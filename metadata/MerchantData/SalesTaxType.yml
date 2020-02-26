@@ -1,0 +1,51 @@
+Nogrod\eBaySDK\MerchantData\SalesTaxType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        salesTaxPercent:
+            expose: true
+            access_type: public_method
+            serialized_name: SalesTaxPercent
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSalesTaxPercent
+                setter: setSalesTaxPercent
+            type: float
+        salesTaxState:
+            expose: true
+            access_type: public_method
+            serialized_name: SalesTaxState
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSalesTaxState
+                setter: setSalesTaxState
+            type: string
+        shippingIncludedInTax:
+            expose: true
+            access_type: public_method
+            serialized_name: ShippingIncludedInTax
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getShippingIncludedInTax
+                setter: setShippingIncludedInTax
+            type: bool
+        salesTaxAmount:
+            expose: true
+            access_type: public_method
+            serialized_name: SalesTaxAmount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSalesTaxAmount
+                setter: setSalesTaxAmount
+            type: Nogrod\eBaySDK\MerchantData\AmountType

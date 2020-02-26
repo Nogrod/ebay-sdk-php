@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\Trading\GetUserContactDetailsRequest:
+    xml_root_name: GetUserContactDetailsRequest
+    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

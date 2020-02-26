@@ -1,0 +1,23 @@
+Nogrod\eBaySDK\Trading\AttributeRecommendationsType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        attributeSetArray:
+            expose: true
+            access_type: public_method
+            serialized_name: AttributeSetArray
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getAttributeSetArray
+                setter: setAttributeSetArray
+            type: array<Nogrod\eBaySDK\Trading\AttributeSetType>
+            xml_list:
+                inline: false
+                entry_name: AttributeSet
+                skip_when_empty: true
+                namespace: 'urn:ebay:apis:eBLBaseComponents'

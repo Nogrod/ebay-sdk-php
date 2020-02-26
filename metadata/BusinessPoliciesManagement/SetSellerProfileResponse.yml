@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\BusinessPoliciesManagement\SetSellerProfileResponse:
+    xml_root_name: setSellerProfileResponse
+    xml_root_namespace: 'http://www.ebay.com/marketplace/selling/v1/services'

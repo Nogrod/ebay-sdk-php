@@ -1,0 +1,77 @@
+Nogrod\eBaySDK\Trading\ReviseSellingManagerTemplateRequestType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        saleTemplateID:
+            expose: true
+            access_type: public_method
+            serialized_name: SaleTemplateID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSaleTemplateID
+                setter: setSaleTemplateID
+            type: int
+        productID:
+            expose: true
+            access_type: public_method
+            serialized_name: ProductID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getProductID
+                setter: setProductID
+            type: int
+        saleTemplateName:
+            expose: true
+            access_type: public_method
+            serialized_name: SaleTemplateName
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSaleTemplateName
+                setter: setSaleTemplateName
+            type: string
+        item:
+            expose: true
+            access_type: public_method
+            serialized_name: Item
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getItem
+                setter: setItem
+            type: Nogrod\eBaySDK\Trading\ItemType
+        deletedField:
+            expose: true
+            access_type: public_method
+            serialized_name: DeletedField
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getDeletedField
+                setter: setDeletedField
+            xml_list:
+                inline: true
+                entry_name: DeletedField
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<string>
+        verifyOnly:
+            expose: true
+            access_type: public_method
+            serialized_name: VerifyOnly
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getVerifyOnly
+                setter: setVerifyOnly
+            type: bool

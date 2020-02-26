@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\Trading\RemoveFromWatchListResponse:
+    xml_root_name: RemoveFromWatchListResponse
+    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

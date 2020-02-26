@@ -1,0 +1,62 @@
+Nogrod\eBaySDK\Trading\AddSecondChanceItemRequestType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        recipientBidderUserID:
+            expose: true
+            access_type: public_method
+            serialized_name: RecipientBidderUserID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getRecipientBidderUserID
+                setter: setRecipientBidderUserID
+            type: string
+        buyItNowPrice:
+            expose: true
+            access_type: public_method
+            serialized_name: BuyItNowPrice
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getBuyItNowPrice
+                setter: setBuyItNowPrice
+            type: Nogrod\eBaySDK\Trading\AmountType
+        duration:
+            expose: true
+            access_type: public_method
+            serialized_name: Duration
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getDuration
+                setter: setDuration
+            type: string
+        itemID:
+            expose: true
+            access_type: public_method
+            serialized_name: ItemID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getItemID
+                setter: setItemID
+            type: string
+        sellerMessage:
+            expose: true
+            access_type: public_method
+            serialized_name: SellerMessage
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSellerMessage
+                setter: setSellerMessage
+            type: string

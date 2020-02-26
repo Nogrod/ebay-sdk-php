@@ -1,0 +1,51 @@
+Nogrod\eBaySDK\Trading\RateTableDetailsType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        domesticRateTable:
+            expose: true
+            access_type: public_method
+            serialized_name: DomesticRateTable
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getDomesticRateTable
+                setter: setDomesticRateTable
+            type: string
+        internationalRateTable:
+            expose: true
+            access_type: public_method
+            serialized_name: InternationalRateTable
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getInternationalRateTable
+                setter: setInternationalRateTable
+            type: string
+        domesticRateTableId:
+            expose: true
+            access_type: public_method
+            serialized_name: DomesticRateTableId
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getDomesticRateTableId
+                setter: setDomesticRateTableId
+            type: string
+        internationalRateTableId:
+            expose: true
+            access_type: public_method
+            serialized_name: InternationalRateTableId
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getInternationalRateTableId
+                setter: setInternationalRateTableId
+            type: string

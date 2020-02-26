@@ -1,0 +1,62 @@
+Nogrod\eBaySDK\Trading\SellingManagerTemplateDetailsType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        saleTemplateID:
+            expose: true
+            access_type: public_method
+            serialized_name: SaleTemplateID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSaleTemplateID
+                setter: setSaleTemplateID
+            type: string
+        saleTemplateName:
+            expose: true
+            access_type: public_method
+            serialized_name: SaleTemplateName
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSaleTemplateName
+                setter: setSaleTemplateName
+            type: string
+        successPercent:
+            expose: true
+            access_type: public_method
+            serialized_name: SuccessPercent
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSuccessPercent
+                setter: setSuccessPercent
+            type: float
+        sellingManagerProductDetails:
+            expose: true
+            access_type: public_method
+            serialized_name: SellingManagerProductDetails
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSellingManagerProductDetails
+                setter: setSellingManagerProductDetails
+            type: Nogrod\eBaySDK\Trading\SellingManagerProductDetailsType
+        template:
+            expose: true
+            access_type: public_method
+            serialized_name: Template
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getTemplate
+                setter: setTemplate
+            type: Nogrod\eBaySDK\Trading\ItemType

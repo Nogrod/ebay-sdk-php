@@ -1,0 +1,48 @@
+Nogrod\eBaySDK\Trading\ReviseMyMessagesFoldersRequestType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        operation:
+            expose: true
+            access_type: public_method
+            serialized_name: Operation
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getOperation
+                setter: setOperation
+            type: string
+        folderID:
+            expose: true
+            access_type: public_method
+            serialized_name: FolderID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getFolderID
+                setter: setFolderID
+            xml_list:
+                inline: true
+                entry_name: FolderID
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<int>
+        folderName:
+            expose: true
+            access_type: public_method
+            serialized_name: FolderName
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getFolderName
+                setter: setFolderName
+            xml_list:
+                inline: true
+                entry_name: FolderName
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<string>

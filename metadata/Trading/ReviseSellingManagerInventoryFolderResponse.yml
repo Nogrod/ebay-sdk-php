@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\Trading\ReviseSellingManagerInventoryFolderResponse:
+    xml_root_name: ReviseSellingManagerInventoryFolderResponse
+    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\Trading\DeleteSellingManagerItemAutomationRuleRequest:
+    xml_root_name: DeleteSellingManagerItemAutomationRuleRequest
+    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

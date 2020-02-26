@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\Trading\SellerReverseDisputeRequest:
+    xml_root_name: SellerReverseDisputeRequest
+    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

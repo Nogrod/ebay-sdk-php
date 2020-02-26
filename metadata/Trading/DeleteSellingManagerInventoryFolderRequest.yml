@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\Trading\DeleteSellingManagerInventoryFolderRequest:
+    xml_root_name: DeleteSellingManagerInventoryFolderRequest
+    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

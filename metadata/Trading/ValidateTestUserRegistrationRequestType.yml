@@ -1,0 +1,73 @@
+Nogrod\eBaySDK\Trading\ValidateTestUserRegistrationRequestType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        feedbackScore:
+            expose: true
+            access_type: public_method
+            serialized_name: FeedbackScore
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getFeedbackScore
+                setter: setFeedbackScore
+            type: int
+        registrationDate:
+            expose: true
+            access_type: public_method
+            serialized_name: RegistrationDate
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getRegistrationDate
+                setter: setRegistrationDate
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime
+        subscribeSA:
+            expose: true
+            access_type: public_method
+            serialized_name: SubscribeSA
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSubscribeSA
+                setter: setSubscribeSA
+            type: bool
+        subscribeSAPro:
+            expose: true
+            access_type: public_method
+            serialized_name: SubscribeSAPro
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSubscribeSAPro
+                setter: setSubscribeSAPro
+            type: bool
+        subscribeSM:
+            expose: true
+            access_type: public_method
+            serialized_name: SubscribeSM
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSubscribeSM
+                setter: setSubscribeSM
+            type: bool
+        subscribeSMPro:
+            expose: true
+            access_type: public_method
+            serialized_name: SubscribeSMPro
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSubscribeSMPro
+                setter: setSubscribeSMPro
+            type: bool

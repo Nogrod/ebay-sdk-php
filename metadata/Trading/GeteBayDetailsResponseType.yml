@@ -1,0 +1,392 @@
+Nogrod\eBaySDK\Trading\GeteBayDetailsResponseType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        countryDetails:
+            expose: true
+            access_type: public_method
+            serialized_name: CountryDetails
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCountryDetails
+                setter: setCountryDetails
+            xml_list:
+                inline: true
+                entry_name: CountryDetails
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<Nogrod\eBaySDK\Trading\CountryDetailsType>
+        currencyDetails:
+            expose: true
+            access_type: public_method
+            serialized_name: CurrencyDetails
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCurrencyDetails
+                setter: setCurrencyDetails
+            xml_list:
+                inline: true
+                entry_name: CurrencyDetails
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<Nogrod\eBaySDK\Trading\CurrencyDetailsType>
+        dispatchTimeMaxDetails:
+            expose: true
+            access_type: public_method
+            serialized_name: DispatchTimeMaxDetails
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getDispatchTimeMaxDetails
+                setter: setDispatchTimeMaxDetails
+            xml_list:
+                inline: true
+                entry_name: DispatchTimeMaxDetails
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<Nogrod\eBaySDK\Trading\DispatchTimeMaxDetailsType>
+        paymentOptionDetails:
+            expose: true
+            access_type: public_method
+            serialized_name: PaymentOptionDetails
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPaymentOptionDetails
+                setter: setPaymentOptionDetails
+            xml_list:
+                inline: true
+                entry_name: PaymentOptionDetails
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<Nogrod\eBaySDK\Trading\PaymentOptionDetailsType>
+        regionDetails:
+            expose: true
+            access_type: public_method
+            serialized_name: RegionDetails
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getRegionDetails
+                setter: setRegionDetails
+            xml_list:
+                inline: true
+                entry_name: RegionDetails
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<Nogrod\eBaySDK\Trading\RegionDetailsType>
+        shippingLocationDetails:
+            expose: true
+            access_type: public_method
+            serialized_name: ShippingLocationDetails
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getShippingLocationDetails
+                setter: setShippingLocationDetails
+            xml_list:
+                inline: true
+                entry_name: ShippingLocationDetails
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<Nogrod\eBaySDK\Trading\ShippingLocationDetailsType>
+        shippingServiceDetails:
+            expose: true
+            access_type: public_method
+            serialized_name: ShippingServiceDetails
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getShippingServiceDetails
+                setter: setShippingServiceDetails
+            xml_list:
+                inline: true
+                entry_name: ShippingServiceDetails
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<Nogrod\eBaySDK\Trading\ShippingServiceDetailsType>
+        siteDetails:
+            expose: true
+            access_type: public_method
+            serialized_name: SiteDetails
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSiteDetails
+                setter: setSiteDetails
+            xml_list:
+                inline: true
+                entry_name: SiteDetails
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<Nogrod\eBaySDK\Trading\SiteDetailsType>
+        taxJurisdiction:
+            expose: true
+            access_type: public_method
+            serialized_name: TaxJurisdiction
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getTaxJurisdiction
+                setter: setTaxJurisdiction
+            xml_list:
+                inline: true
+                entry_name: TaxJurisdiction
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<Nogrod\eBaySDK\Trading\TaxJurisdictionType>
+        uRLDetails:
+            expose: true
+            access_type: public_method
+            serialized_name: URLDetails
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getURLDetails
+                setter: setURLDetails
+            xml_list:
+                inline: true
+                entry_name: URLDetails
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<Nogrod\eBaySDK\Trading\URLDetailsType>
+        timeZoneDetails:
+            expose: true
+            access_type: public_method
+            serialized_name: TimeZoneDetails
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getTimeZoneDetails
+                setter: setTimeZoneDetails
+            xml_list:
+                inline: true
+                entry_name: TimeZoneDetails
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<Nogrod\eBaySDK\Trading\TimeZoneDetailsType>
+        itemSpecificDetails:
+            expose: true
+            access_type: public_method
+            serialized_name: ItemSpecificDetails
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getItemSpecificDetails
+                setter: setItemSpecificDetails
+            xml_list:
+                inline: true
+                entry_name: ItemSpecificDetails
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<Nogrod\eBaySDK\Trading\ItemSpecificDetailsType>
+        unitOfMeasurementDetails:
+            expose: true
+            access_type: public_method
+            serialized_name: UnitOfMeasurementDetails
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getUnitOfMeasurementDetails
+                setter: setUnitOfMeasurementDetails
+            xml_list:
+                inline: true
+                entry_name: UnitOfMeasurementDetails
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<Nogrod\eBaySDK\Trading\UnitOfMeasurementDetailsType>
+        regionOfOriginDetails:
+            expose: true
+            access_type: public_method
+            serialized_name: RegionOfOriginDetails
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getRegionOfOriginDetails
+                setter: setRegionOfOriginDetails
+            xml_list:
+                inline: true
+                entry_name: RegionOfOriginDetails
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<Nogrod\eBaySDK\Trading\RegionOfOriginDetailsType>
+        shippingPackageDetails:
+            expose: true
+            access_type: public_method
+            serialized_name: ShippingPackageDetails
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getShippingPackageDetails
+                setter: setShippingPackageDetails
+            xml_list:
+                inline: true
+                entry_name: ShippingPackageDetails
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<Nogrod\eBaySDK\Trading\ShippingPackageDetailsType>
+        shippingCarrierDetails:
+            expose: true
+            access_type: public_method
+            serialized_name: ShippingCarrierDetails
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getShippingCarrierDetails
+                setter: setShippingCarrierDetails
+            xml_list:
+                inline: true
+                entry_name: ShippingCarrierDetails
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<Nogrod\eBaySDK\Trading\ShippingCarrierDetailsType>
+        returnPolicyDetails:
+            expose: true
+            access_type: public_method
+            serialized_name: ReturnPolicyDetails
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getReturnPolicyDetails
+                setter: setReturnPolicyDetails
+            type: Nogrod\eBaySDK\Trading\ReturnPolicyDetailsType
+        internationalReturnPolicyDetails:
+            expose: true
+            access_type: public_method
+            serialized_name: InternationalReturnPolicyDetails
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getInternationalReturnPolicyDetails
+                setter: setInternationalReturnPolicyDetails
+            type: Nogrod\eBaySDK\Trading\ReturnPolicyDetailsType
+        listingStartPriceDetails:
+            expose: true
+            access_type: public_method
+            serialized_name: ListingStartPriceDetails
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getListingStartPriceDetails
+                setter: setListingStartPriceDetails
+            xml_list:
+                inline: true
+                entry_name: ListingStartPriceDetails
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<Nogrod\eBaySDK\Trading\ListingStartPriceDetailsType>
+        buyerRequirementDetails:
+            expose: true
+            access_type: public_method
+            serialized_name: BuyerRequirementDetails
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getBuyerRequirementDetails
+                setter: setBuyerRequirementDetails
+            xml_list:
+                inline: true
+                entry_name: BuyerRequirementDetails
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<Nogrod\eBaySDK\Trading\SiteBuyerRequirementDetailsType>
+        listingFeatureDetails:
+            expose: true
+            access_type: public_method
+            serialized_name: ListingFeatureDetails
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getListingFeatureDetails
+                setter: setListingFeatureDetails
+            xml_list:
+                inline: true
+                entry_name: ListingFeatureDetails
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<Nogrod\eBaySDK\Trading\ListingFeatureDetailsType>
+        variationDetails:
+            expose: true
+            access_type: public_method
+            serialized_name: VariationDetails
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getVariationDetails
+                setter: setVariationDetails
+            type: Nogrod\eBaySDK\Trading\VariationDetailsType
+        excludeShippingLocationDetails:
+            expose: true
+            access_type: public_method
+            serialized_name: ExcludeShippingLocationDetails
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getExcludeShippingLocationDetails
+                setter: setExcludeShippingLocationDetails
+            xml_list:
+                inline: true
+                entry_name: ExcludeShippingLocationDetails
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<Nogrod\eBaySDK\Trading\ExcludeShippingLocationDetailsType>
+        updateTime:
+            expose: true
+            access_type: public_method
+            serialized_name: UpdateTime
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getUpdateTime
+                setter: setUpdateTime
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime
+        recoupmentPolicyDetails:
+            expose: true
+            access_type: public_method
+            serialized_name: RecoupmentPolicyDetails
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getRecoupmentPolicyDetails
+                setter: setRecoupmentPolicyDetails
+            xml_list:
+                inline: true
+                entry_name: RecoupmentPolicyDetails
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<Nogrod\eBaySDK\Trading\RecoupmentPolicyDetailsType>
+        shippingCategoryDetails:
+            expose: true
+            access_type: public_method
+            serialized_name: ShippingCategoryDetails
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getShippingCategoryDetails
+                setter: setShippingCategoryDetails
+            xml_list:
+                inline: true
+                entry_name: ShippingCategoryDetails
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<Nogrod\eBaySDK\Trading\ShippingCategoryDetailsType>
+        productDetails:
+            expose: true
+            access_type: public_method
+            serialized_name: ProductDetails
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getProductDetails
+                setter: setProductDetails
+            type: Nogrod\eBaySDK\Trading\ProductDetailsType

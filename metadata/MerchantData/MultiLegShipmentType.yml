@@ -1,0 +1,51 @@
+Nogrod\eBaySDK\MerchantData\MultiLegShipmentType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        shippingServiceDetails:
+            expose: true
+            access_type: public_method
+            serialized_name: ShippingServiceDetails
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getShippingServiceDetails
+                setter: setShippingServiceDetails
+            type: Nogrod\eBaySDK\MerchantData\MultiLegShippingServiceType
+        shipToAddress:
+            expose: true
+            access_type: public_method
+            serialized_name: ShipToAddress
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getShipToAddress
+                setter: setShipToAddress
+            type: Nogrod\eBaySDK\MerchantData\AddressType
+        shippingTimeMin:
+            expose: true
+            access_type: public_method
+            serialized_name: ShippingTimeMin
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getShippingTimeMin
+                setter: setShippingTimeMin
+            type: int
+        shippingTimeMax:
+            expose: true
+            access_type: public_method
+            serialized_name: ShippingTimeMax
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getShippingTimeMax
+                setter: setShippingTimeMax
+            type: int

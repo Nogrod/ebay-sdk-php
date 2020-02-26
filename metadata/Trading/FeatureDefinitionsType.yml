@@ -1,0 +1,1601 @@
+Nogrod\eBaySDK\Trading\FeatureDefinitionsType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        listingDurations:
+            expose: true
+            access_type: public_method
+            serialized_name: ListingDurations
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getListingDurations
+                setter: setListingDurations
+            type: Nogrod\eBaySDK\Trading\ListingDurationDefinitionsType
+        shippingTermsRequired:
+            expose: true
+            access_type: public_method
+            serialized_name: ShippingTermsRequired
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getShippingTermsRequired
+                setter: setShippingTermsRequired
+            type: Nogrod\eBaySDK\Trading\ShippingTermRequiredDefinitionType
+        bestOfferEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: BestOfferEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getBestOfferEnabled
+                setter: setBestOfferEnabled
+            type: Nogrod\eBaySDK\Trading\BestOfferEnabledDefinitionType
+        dutchBINEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: DutchBINEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getDutchBINEnabled
+                setter: setDutchBINEnabled
+            type: Nogrod\eBaySDK\Trading\DutchBINEnabledDefinitionType
+        userConsentRequired:
+            expose: true
+            access_type: public_method
+            serialized_name: UserConsentRequired
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getUserConsentRequired
+                setter: setUserConsentRequired
+            type: Nogrod\eBaySDK\Trading\UserConsentRequiredDefinitionType
+        homePageFeaturedEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: HomePageFeaturedEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getHomePageFeaturedEnabled
+                setter: setHomePageFeaturedEnabled
+            type: Nogrod\eBaySDK\Trading\HomePageFeaturedEnabledDefinitionType
+        proPackEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: ProPackEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getProPackEnabled
+                setter: setProPackEnabled
+            type: Nogrod\eBaySDK\Trading\ProPackEnabledDefinitionType
+        basicUpgradePackEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: BasicUpgradePackEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getBasicUpgradePackEnabled
+                setter: setBasicUpgradePackEnabled
+            type: Nogrod\eBaySDK\Trading\BasicUpgradePackEnabledDefinitionType
+        valuePackEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: ValuePackEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getValuePackEnabled
+                setter: setValuePackEnabled
+            type: Nogrod\eBaySDK\Trading\ValuePackEnabledDefinitionType
+        proPackPlusEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: ProPackPlusEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getProPackPlusEnabled
+                setter: setProPackPlusEnabled
+            type: Nogrod\eBaySDK\Trading\ProPackPlusEnabledDefinitionType
+        adFormatEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: AdFormatEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getAdFormatEnabled
+                setter: setAdFormatEnabled
+            type: Nogrod\eBaySDK\Trading\AdFormatEnabledDefinitionType
+        bestOfferCounterEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: BestOfferCounterEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getBestOfferCounterEnabled
+                setter: setBestOfferCounterEnabled
+            type: Nogrod\eBaySDK\Trading\BestOfferCounterEnabledDefinitionType
+        bestOfferAutoDeclineEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: BestOfferAutoDeclineEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getBestOfferAutoDeclineEnabled
+                setter: setBestOfferAutoDeclineEnabled
+            type: Nogrod\eBaySDK\Trading\BestOfferAutoDeclineEnabledDefinitionType
+        localMarketSpecialitySubscription:
+            expose: true
+            access_type: public_method
+            serialized_name: LocalMarketSpecialitySubscription
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getLocalMarketSpecialitySubscription
+                setter: setLocalMarketSpecialitySubscription
+            type: Nogrod\eBaySDK\Trading\LocalMarketSpecialitySubscriptionDefinitionType
+        localMarketRegularSubscription:
+            expose: true
+            access_type: public_method
+            serialized_name: LocalMarketRegularSubscription
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getLocalMarketRegularSubscription
+                setter: setLocalMarketRegularSubscription
+            type: Nogrod\eBaySDK\Trading\LocalMarketRegularSubscriptionDefinitionType
+        localMarketPremiumSubscription:
+            expose: true
+            access_type: public_method
+            serialized_name: LocalMarketPremiumSubscription
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getLocalMarketPremiumSubscription
+                setter: setLocalMarketPremiumSubscription
+            type: Nogrod\eBaySDK\Trading\LocalMarketPremiumSubscriptionDefinitionType
+        localMarketNonSubscription:
+            expose: true
+            access_type: public_method
+            serialized_name: LocalMarketNonSubscription
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getLocalMarketNonSubscription
+                setter: setLocalMarketNonSubscription
+            type: Nogrod\eBaySDK\Trading\LocalMarketNonSubscriptionDefinitionType
+        expressEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: ExpressEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getExpressEnabled
+                setter: setExpressEnabled
+            type: Nogrod\eBaySDK\Trading\ExpressEnabledDefinitionType
+        expressPicturesRequired:
+            expose: true
+            access_type: public_method
+            serialized_name: ExpressPicturesRequired
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getExpressPicturesRequired
+                setter: setExpressPicturesRequired
+            type: Nogrod\eBaySDK\Trading\ExpressPicturesRequiredDefinitionType
+        expressConditionRequired:
+            expose: true
+            access_type: public_method
+            serialized_name: ExpressConditionRequired
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getExpressConditionRequired
+                setter: setExpressConditionRequired
+            type: Nogrod\eBaySDK\Trading\ExpressConditionRequiredDefinitionType
+        minimumReservePrice:
+            expose: true
+            access_type: public_method
+            serialized_name: MinimumReservePrice
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getMinimumReservePrice
+                setter: setMinimumReservePrice
+            type: Nogrod\eBaySDK\Trading\MinimumReservePriceDefinitionType
+        transactionConfirmationRequestEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: TransactionConfirmationRequestEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getTransactionConfirmationRequestEnabled
+                setter: setTransactionConfirmationRequestEnabled
+            type: Nogrod\eBaySDK\Trading\TCREnabledDefinitionType
+        sellerContactDetailsEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: SellerContactDetailsEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSellerContactDetailsEnabled
+                setter: setSellerContactDetailsEnabled
+            type: Nogrod\eBaySDK\Trading\SellerContactDetailsEnabledDefinitionType
+        storeInventoryEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: StoreInventoryEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getStoreInventoryEnabled
+                setter: setStoreInventoryEnabled
+            type: Nogrod\eBaySDK\Trading\StoreInventoryEnabledDefinitionType
+        skypeMeTransactionalEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: SkypeMeTransactionalEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSkypeMeTransactionalEnabled
+                setter: setSkypeMeTransactionalEnabled
+            type: Nogrod\eBaySDK\Trading\SkypeMeTransactionalEnabledDefinitionType
+        skypeMeNonTransactionalEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: SkypeMeNonTransactionalEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSkypeMeNonTransactionalEnabled
+                setter: setSkypeMeNonTransactionalEnabled
+            type: Nogrod\eBaySDK\Trading\SkypeMeNonTransactionalEnabledDefinitionType
+        localListingDistancesRegular:
+            expose: true
+            access_type: public_method
+            serialized_name: LocalListingDistancesRegular
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getLocalListingDistancesRegular
+                setter: setLocalListingDistancesRegular
+            type: Nogrod\eBaySDK\Trading\LocalListingDistancesRegularDefinitionType
+        localListingDistancesSpecialty:
+            expose: true
+            access_type: public_method
+            serialized_name: LocalListingDistancesSpecialty
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getLocalListingDistancesSpecialty
+                setter: setLocalListingDistancesSpecialty
+            type: Nogrod\eBaySDK\Trading\LocalListingDistancesSpecialtyDefinitionType
+        localListingDistancesNonSubscription:
+            expose: true
+            access_type: public_method
+            serialized_name: LocalListingDistancesNonSubscription
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getLocalListingDistancesNonSubscription
+                setter: setLocalListingDistancesNonSubscription
+            type: Nogrod\eBaySDK\Trading\LocalListingDistancesNonSubscriptionDefinitionType
+        classifiedAdPaymentMethodEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: ClassifiedAdPaymentMethodEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getClassifiedAdPaymentMethodEnabled
+                setter: setClassifiedAdPaymentMethodEnabled
+            type: Nogrod\eBaySDK\Trading\ClassifiedAdPaymentMethodEnabledDefinitionType
+        classifiedAdShippingMethodEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: ClassifiedAdShippingMethodEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getClassifiedAdShippingMethodEnabled
+                setter: setClassifiedAdShippingMethodEnabled
+            type: Nogrod\eBaySDK\Trading\ClassifiedAdShippingMethodEnabledDefinitionType
+        classifiedAdBestOfferEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: ClassifiedAdBestOfferEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getClassifiedAdBestOfferEnabled
+                setter: setClassifiedAdBestOfferEnabled
+            type: Nogrod\eBaySDK\Trading\ClassifiedAdBestOfferEnabledDefinitionType
+        classifiedAdCounterOfferEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: ClassifiedAdCounterOfferEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getClassifiedAdCounterOfferEnabled
+                setter: setClassifiedAdCounterOfferEnabled
+            type: Nogrod\eBaySDK\Trading\ClassifiedAdCounterOfferEnabledDefinitionType
+        classifiedAdAutoDeclineEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: ClassifiedAdAutoDeclineEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getClassifiedAdAutoDeclineEnabled
+                setter: setClassifiedAdAutoDeclineEnabled
+            type: Nogrod\eBaySDK\Trading\ClassifiedAdAutoDeclineEnabledDefinitionType
+        classifiedAdContactByPhoneEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: ClassifiedAdContactByPhoneEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getClassifiedAdContactByPhoneEnabled
+                setter: setClassifiedAdContactByPhoneEnabled
+            type: Nogrod\eBaySDK\Trading\ClassifiedAdContactByPhoneEnabledDefinitionType
+        classifiedAdContactByEmailEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: ClassifiedAdContactByEmailEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getClassifiedAdContactByEmailEnabled
+                setter: setClassifiedAdContactByEmailEnabled
+            type: Nogrod\eBaySDK\Trading\ClassifiedAdContactByEmailEnabledDefintionType
+        safePaymentRequired:
+            expose: true
+            access_type: public_method
+            serialized_name: SafePaymentRequired
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSafePaymentRequired
+                setter: setSafePaymentRequired
+            type: Nogrod\eBaySDK\Trading\SafePaymentRequiredDefinitionType
+        classifiedAdPayPerLeadEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: ClassifiedAdPayPerLeadEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getClassifiedAdPayPerLeadEnabled
+                setter: setClassifiedAdPayPerLeadEnabled
+            type: Nogrod\eBaySDK\Trading\ClassifiedAdPayPerLeadEnabledDefinitionType
+        itemSpecificsEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: ItemSpecificsEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getItemSpecificsEnabled
+                setter: setItemSpecificsEnabled
+            type: Nogrod\eBaySDK\Trading\ItemSpecificsEnabledDefinitionType
+        paisaPayFullEscrowEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: PaisaPayFullEscrowEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPaisaPayFullEscrowEnabled
+                setter: setPaisaPayFullEscrowEnabled
+            type: Nogrod\eBaySDK\Trading\PaisaPayFullEscrowEnabledDefinitionType
+        iSBNIdentifierEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: ISBNIdentifierEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getISBNIdentifierEnabled
+                setter: setISBNIdentifierEnabled
+            type: Nogrod\eBaySDK\Trading\ISBNIdentifierEnabledDefinitionType
+        uPCIdentifierEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: UPCIdentifierEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getUPCIdentifierEnabled
+                setter: setUPCIdentifierEnabled
+            type: Nogrod\eBaySDK\Trading\UPCIdentifierEnabledDefinitionType
+        eANIdentifierEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: EANIdentifierEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getEANIdentifierEnabled
+                setter: setEANIdentifierEnabled
+            type: Nogrod\eBaySDK\Trading\EANIdentifierEnabledDefinitionType
+        brandMPNIdentifierEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: BrandMPNIdentifierEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getBrandMPNIdentifierEnabled
+                setter: setBrandMPNIdentifierEnabled
+            type: Nogrod\eBaySDK\Trading\BrandMPNIdentifierEnabledDefinitionType
+        bestOfferAutoAcceptEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: BestOfferAutoAcceptEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getBestOfferAutoAcceptEnabled
+                setter: setBestOfferAutoAcceptEnabled
+            type: Nogrod\eBaySDK\Trading\BestOfferAutoAcceptEnabledDefinitionType
+        classifiedAdAutoAcceptEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: ClassifiedAdAutoAcceptEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getClassifiedAdAutoAcceptEnabled
+                setter: setClassifiedAdAutoAcceptEnabled
+            type: Nogrod\eBaySDK\Trading\ClassifiedAdAutoAcceptEnabledDefinitionType
+        crossBorderTradeNorthAmericaEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: CrossBorderTradeNorthAmericaEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCrossBorderTradeNorthAmericaEnabled
+                setter: setCrossBorderTradeNorthAmericaEnabled
+            type: Nogrod\eBaySDK\Trading\CrossBorderTradeNorthAmericaEnabledDefinitionType
+        crossBorderTradeGBEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: CrossBorderTradeGBEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCrossBorderTradeGBEnabled
+                setter: setCrossBorderTradeGBEnabled
+            type: Nogrod\eBaySDK\Trading\CrossBorderTradeGBEnabledDefinitionType
+        crossBorderTradeAustraliaEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: CrossBorderTradeAustraliaEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCrossBorderTradeAustraliaEnabled
+                setter: setCrossBorderTradeAustraliaEnabled
+            type: Nogrod\eBaySDK\Trading\CrossBorderTradeAustraliaEnabledDefinitionType
+        payPalBuyerProtectionEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: PayPalBuyerProtectionEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPayPalBuyerProtectionEnabled
+                setter: setPayPalBuyerProtectionEnabled
+            type: Nogrod\eBaySDK\Trading\PayPalBuyerProtectionEnabledDefinitionType
+        buyerGuaranteeEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: BuyerGuaranteeEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getBuyerGuaranteeEnabled
+                setter: setBuyerGuaranteeEnabled
+            type: Nogrod\eBaySDK\Trading\BuyerGuaranteeEnabledDefinitionType
+        combinedFixedPriceTreatmentEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: CombinedFixedPriceTreatmentEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCombinedFixedPriceTreatmentEnabled
+                setter: setCombinedFixedPriceTreatmentEnabled
+            type: Nogrod\eBaySDK\Trading\CombinedFixedPriceTreatmentEnabledDefinitionType
+        galleryFeaturedDurations:
+            expose: true
+            access_type: public_method
+            serialized_name: GalleryFeaturedDurations
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getGalleryFeaturedDurations
+                setter: setGalleryFeaturedDurations
+            type: Nogrod\eBaySDK\Trading\ListingEnhancementDurationDefinitionType
+        iNEscrowWorkflowTimeline:
+            expose: true
+            access_type: public_method
+            serialized_name: INEscrowWorkflowTimeline
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getINEscrowWorkflowTimeline
+                setter: setINEscrowWorkflowTimeline
+            type: Nogrod\eBaySDK\Trading\INEscrowWorkflowTimelineDefinitionType
+        payPalRequired:
+            expose: true
+            access_type: public_method
+            serialized_name: PayPalRequired
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPayPalRequired
+                setter: setPayPalRequired
+            type: Nogrod\eBaySDK\Trading\PayPalRequiredDefinitionType
+        eBayMotorsProAdFormatEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: eBayMotorsProAdFormatEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getEBayMotorsProAdFormatEnabled
+                setter: setEBayMotorsProAdFormatEnabled
+            type: Nogrod\eBaySDK\Trading\EBayMotorsProAdFormatEnabledDefinitionType
+        eBayMotorsProContactByPhoneEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: eBayMotorsProContactByPhoneEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getEBayMotorsProContactByPhoneEnabled
+                setter: setEBayMotorsProContactByPhoneEnabled
+            type: Nogrod\eBaySDK\Trading\EBayMotorsProContactByPhoneEnabledDefinitionType
+        eBayMotorsProPhoneCount:
+            expose: true
+            access_type: public_method
+            serialized_name: eBayMotorsProPhoneCount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getEBayMotorsProPhoneCount
+                setter: setEBayMotorsProPhoneCount
+            type: Nogrod\eBaySDK\Trading\EBayMotorsProPhoneCountDefinitionType
+        eBayMotorsProContactByAddressEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: eBayMotorsProContactByAddressEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getEBayMotorsProContactByAddressEnabled
+                setter: setEBayMotorsProContactByAddressEnabled
+            type: Nogrod\eBaySDK\Trading\EBayMotorsProContactByAddressEnabledDefinitionType
+        eBayMotorsProStreetCount:
+            expose: true
+            access_type: public_method
+            serialized_name: eBayMotorsProStreetCount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getEBayMotorsProStreetCount
+                setter: setEBayMotorsProStreetCount
+            type: Nogrod\eBaySDK\Trading\EBayMotorsProStreetCountDefinitionType
+        eBayMotorsProCompanyNameEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: eBayMotorsProCompanyNameEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getEBayMotorsProCompanyNameEnabled
+                setter: setEBayMotorsProCompanyNameEnabled
+            type: Nogrod\eBaySDK\Trading\EBayMotorsProCompanyNameEnabledDefinitionType
+        eBayMotorsProContactByEmailEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: eBayMotorsProContactByEmailEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getEBayMotorsProContactByEmailEnabled
+                setter: setEBayMotorsProContactByEmailEnabled
+            type: Nogrod\eBaySDK\Trading\EBayMotorsProContactByEmailEnabledDefinitionType
+        eBayMotorsProBestOfferEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: eBayMotorsProBestOfferEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getEBayMotorsProBestOfferEnabled
+                setter: setEBayMotorsProBestOfferEnabled
+            type: Nogrod\eBaySDK\Trading\EBayMotorsProBestOfferEnabledDefinitionType
+        eBayMotorsProAutoAcceptEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: eBayMotorsProAutoAcceptEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getEBayMotorsProAutoAcceptEnabled
+                setter: setEBayMotorsProAutoAcceptEnabled
+            type: Nogrod\eBaySDK\Trading\EBayMotorsProAutoAcceptEnabledDefinitionType
+        eBayMotorsProAutoDeclineEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: eBayMotorsProAutoDeclineEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getEBayMotorsProAutoDeclineEnabled
+                setter: setEBayMotorsProAutoDeclineEnabled
+            type: Nogrod\eBaySDK\Trading\EBayMotorsProAutoDeclineEnabledDefinitionType
+        eBayMotorsProPaymentMethodCheckOutEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: eBayMotorsProPaymentMethodCheckOutEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getEBayMotorsProPaymentMethodCheckOutEnabled
+                setter: setEBayMotorsProPaymentMethodCheckOutEnabled
+            type: Nogrod\eBaySDK\Trading\EBayMotorsProPaymentMethodCheckOutEnabledDefinitionType
+        eBayMotorsProShippingMethodEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: eBayMotorsProShippingMethodEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getEBayMotorsProShippingMethodEnabled
+                setter: setEBayMotorsProShippingMethodEnabled
+            type: Nogrod\eBaySDK\Trading\EBayMotorsProShippingMethodEnabledDefinitionType
+        eBayMotorsProCounterOfferEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: eBayMotorsProCounterOfferEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getEBayMotorsProCounterOfferEnabled
+                setter: setEBayMotorsProCounterOfferEnabled
+            type: Nogrod\eBaySDK\Trading\EBayMotorsProCounterOfferEnabledDefinitionType
+        eBayMotorsProSellerContactDetailsEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: eBayMotorsProSellerContactDetailsEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getEBayMotorsProSellerContactDetailsEnabled
+                setter: setEBayMotorsProSellerContactDetailsEnabled
+            type: Nogrod\eBaySDK\Trading\EBayMotorsProSellerContactDetailsEnabledDefinitionType
+        localMarketAdFormatEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: LocalMarketAdFormatEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getLocalMarketAdFormatEnabled
+                setter: setLocalMarketAdFormatEnabled
+            type: Nogrod\eBaySDK\Trading\LocalMarketAdFormatEnabledDefinitionType
+        localMarketContactByPhoneEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: LocalMarketContactByPhoneEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getLocalMarketContactByPhoneEnabled
+                setter: setLocalMarketContactByPhoneEnabled
+            type: Nogrod\eBaySDK\Trading\LocalMarketContactByPhoneEnabledDefinitionType
+        localMarketPhoneCount:
+            expose: true
+            access_type: public_method
+            serialized_name: LocalMarketPhoneCount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getLocalMarketPhoneCount
+                setter: setLocalMarketPhoneCount
+            type: Nogrod\eBaySDK\Trading\LocalMarketPhoneCountDefinitionType
+        localMarketContactByAddressEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: LocalMarketContactByAddressEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getLocalMarketContactByAddressEnabled
+                setter: setLocalMarketContactByAddressEnabled
+            type: Nogrod\eBaySDK\Trading\LocalMarketContactByAddressEnabledDefinitionType
+        localMarketStreetCount:
+            expose: true
+            access_type: public_method
+            serialized_name: LocalMarketStreetCount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getLocalMarketStreetCount
+                setter: setLocalMarketStreetCount
+            type: Nogrod\eBaySDK\Trading\LocalMarketStreetCountDefinitionType
+        localMarketCompanyNameEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: LocalMarketCompanyNameEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getLocalMarketCompanyNameEnabled
+                setter: setLocalMarketCompanyNameEnabled
+            type: Nogrod\eBaySDK\Trading\LocalMarketCompanyNameEnabledDefinitionType
+        localMarketContactByEmailEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: LocalMarketContactByEmailEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getLocalMarketContactByEmailEnabled
+                setter: setLocalMarketContactByEmailEnabled
+            type: Nogrod\eBaySDK\Trading\LocalMarketContactByEmailEnabledDefinitionType
+        localMarketBestOfferEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: LocalMarketBestOfferEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getLocalMarketBestOfferEnabled
+                setter: setLocalMarketBestOfferEnabled
+            type: Nogrod\eBaySDK\Trading\LocalMarketBestOfferEnabledDefinitionType
+        localMarketAutoAcceptEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: LocalMarketAutoAcceptEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getLocalMarketAutoAcceptEnabled
+                setter: setLocalMarketAutoAcceptEnabled
+            type: Nogrod\eBaySDK\Trading\LocalMarketAutoAcceptEnabledDefinitionType
+        localMarketAutoDeclineEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: LocalMarketAutoDeclineEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getLocalMarketAutoDeclineEnabled
+                setter: setLocalMarketAutoDeclineEnabled
+            type: Nogrod\eBaySDK\Trading\LocalMarketAutoDeclineEnabledDefinitionType
+        localMarketPaymentMethodCheckOutEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: LocalMarketPaymentMethodCheckOutEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getLocalMarketPaymentMethodCheckOutEnabled
+                setter: setLocalMarketPaymentMethodCheckOutEnabled
+            type: Nogrod\eBaySDK\Trading\LocalMarketPaymentMethodCheckOutEnabledDefinitionType
+        localMarketShippingMethodEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: LocalMarketShippingMethodEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getLocalMarketShippingMethodEnabled
+                setter: setLocalMarketShippingMethodEnabled
+            type: Nogrod\eBaySDK\Trading\LocalMarketShippingMethodEnabledDefinitionType
+        localMarketCounterOfferEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: LocalMarketCounterOfferEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getLocalMarketCounterOfferEnabled
+                setter: setLocalMarketCounterOfferEnabled
+            type: Nogrod\eBaySDK\Trading\LocalMarketCounterOfferEnabledDefinitionType
+        localMarketSellerContactDetailsEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: LocalMarketSellerContactDetailsEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getLocalMarketSellerContactDetailsEnabled
+                setter: setLocalMarketSellerContactDetailsEnabled
+            type: Nogrod\eBaySDK\Trading\LocalMarketSellerContactDetailsEnabledDefinitionType
+        classifiedAdPhoneCount:
+            expose: true
+            access_type: public_method
+            serialized_name: ClassifiedAdPhoneCount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getClassifiedAdPhoneCount
+                setter: setClassifiedAdPhoneCount
+            type: Nogrod\eBaySDK\Trading\ClassifiedAdPhoneCountDefinitionType
+        classifiedAdContactByAddressEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: ClassifiedAdContactByAddressEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getClassifiedAdContactByAddressEnabled
+                setter: setClassifiedAdContactByAddressEnabled
+            type: Nogrod\eBaySDK\Trading\ClassifiedAdContactByAddressEnabledDefinitionType
+        classifiedAdStreetCount:
+            expose: true
+            access_type: public_method
+            serialized_name: ClassifiedAdStreetCount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getClassifiedAdStreetCount
+                setter: setClassifiedAdStreetCount
+            type: Nogrod\eBaySDK\Trading\ClassifiedAdStreetCountDefinitionType
+        classifiedAdCompanyNameEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: ClassifiedAdCompanyNameEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getClassifiedAdCompanyNameEnabled
+                setter: setClassifiedAdCompanyNameEnabled
+            type: Nogrod\eBaySDK\Trading\ClassifiedAdCompanyNameEnabledDefinitionType
+        specialitySubscription:
+            expose: true
+            access_type: public_method
+            serialized_name: SpecialitySubscription
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSpecialitySubscription
+                setter: setSpecialitySubscription
+            type: Nogrod\eBaySDK\Trading\SpecialitySubscriptionDefinitionType
+        regularSubscription:
+            expose: true
+            access_type: public_method
+            serialized_name: RegularSubscription
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getRegularSubscription
+                setter: setRegularSubscription
+            type: Nogrod\eBaySDK\Trading\RegularSubscriptionDefinitionType
+        premiumSubscription:
+            expose: true
+            access_type: public_method
+            serialized_name: PremiumSubscription
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPremiumSubscription
+                setter: setPremiumSubscription
+            type: Nogrod\eBaySDK\Trading\PremiumSubscriptionDefinitionType
+        nonSubscription:
+            expose: true
+            access_type: public_method
+            serialized_name: NonSubscription
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getNonSubscription
+                setter: setNonSubscription
+            type: Nogrod\eBaySDK\Trading\NonSubscriptionDefinitionType
+        returnPolicyEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: ReturnPolicyEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getReturnPolicyEnabled
+                setter: setReturnPolicyEnabled
+            type: Nogrod\eBaySDK\Trading\ReturnPolicyEnabledDefinitionType
+        handlingTimeEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: HandlingTimeEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getHandlingTimeEnabled
+                setter: setHandlingTimeEnabled
+            type: Nogrod\eBaySDK\Trading\HandlingTimeEnabledDefinitionType
+        payPalRequiredForStoreOwner:
+            expose: true
+            access_type: public_method
+            serialized_name: PayPalRequiredForStoreOwner
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPayPalRequiredForStoreOwner
+                setter: setPayPalRequiredForStoreOwner
+            type: Nogrod\eBaySDK\Trading\PayPalRequiredForStoreOwnerDefinitionType
+        reviseQuantityAllowed:
+            expose: true
+            access_type: public_method
+            serialized_name: ReviseQuantityAllowed
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getReviseQuantityAllowed
+                setter: setReviseQuantityAllowed
+            type: Nogrod\eBaySDK\Trading\ReviseQuantityAllowedDefinitionType
+        revisePriceAllowed:
+            expose: true
+            access_type: public_method
+            serialized_name: RevisePriceAllowed
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getRevisePriceAllowed
+                setter: setRevisePriceAllowed
+            type: Nogrod\eBaySDK\Trading\RevisePriceAllowedDefinitionType
+        storeOwnerExtendedListingDurationsEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: StoreOwnerExtendedListingDurationsEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getStoreOwnerExtendedListingDurationsEnabled
+                setter: setStoreOwnerExtendedListingDurationsEnabled
+            type: Nogrod\eBaySDK\Trading\StoreOwnerExtendedListingDurationsEnabledDefinitionType
+        storeOwnerExtendedListingDurations:
+            expose: true
+            access_type: public_method
+            serialized_name: StoreOwnerExtendedListingDurations
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getStoreOwnerExtendedListingDurations
+                setter: setStoreOwnerExtendedListingDurations
+            type: Nogrod\eBaySDK\Trading\StoreOwnerExtendedListingDurationsDefinitionType
+        paymentMethod:
+            expose: true
+            access_type: public_method
+            serialized_name: PaymentMethod
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPaymentMethod
+                setter: setPaymentMethod
+            type: Nogrod\eBaySDK\Trading\PaymentMethodDefinitionType
+        group1MaxFlatShippingCost:
+            expose: true
+            access_type: public_method
+            serialized_name: Group1MaxFlatShippingCost
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getGroup1MaxFlatShippingCost
+                setter: setGroup1MaxFlatShippingCost
+            type: Nogrod\eBaySDK\Trading\Group1MaxFlatShippingCostDefinitionType
+        group2MaxFlatShippingCost:
+            expose: true
+            access_type: public_method
+            serialized_name: Group2MaxFlatShippingCost
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getGroup2MaxFlatShippingCost
+                setter: setGroup2MaxFlatShippingCost
+            type: Nogrod\eBaySDK\Trading\Group2MaxFlatShippingCostDefinitionType
+        group3MaxFlatShippingCost:
+            expose: true
+            access_type: public_method
+            serialized_name: Group3MaxFlatShippingCost
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getGroup3MaxFlatShippingCost
+                setter: setGroup3MaxFlatShippingCost
+            type: Nogrod\eBaySDK\Trading\Group3MaxFlatShippingCostDefinitionType
+        maxFlatShippingCostCBTExempt:
+            expose: true
+            access_type: public_method
+            serialized_name: MaxFlatShippingCostCBTExempt
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getMaxFlatShippingCostCBTExempt
+                setter: setMaxFlatShippingCostCBTExempt
+            type: Nogrod\eBaySDK\Trading\MaxFlatShippingCostCBTExemptDefinitionType
+        maxFlatShippingCost:
+            expose: true
+            access_type: public_method
+            serialized_name: MaxFlatShippingCost
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getMaxFlatShippingCost
+                setter: setMaxFlatShippingCost
+            type: Nogrod\eBaySDK\Trading\MaxFlatShippingCostDefinitionType
+        variationsEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: VariationsEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getVariationsEnabled
+                setter: setVariationsEnabled
+            type: Nogrod\eBaySDK\Trading\VariationsEnabledDefinitionType
+        attributeConversionEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: AttributeConversionEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getAttributeConversionEnabled
+                setter: setAttributeConversionEnabled
+            type: Nogrod\eBaySDK\Trading\AttributeConversionEnabledFeatureDefinitionType
+        freeGalleryPlusEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: FreeGalleryPlusEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getFreeGalleryPlusEnabled
+                setter: setFreeGalleryPlusEnabled
+            type: Nogrod\eBaySDK\Trading\FreeGalleryPlusEnabledDefinitionType
+        freePicturePackEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: FreePicturePackEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getFreePicturePackEnabled
+                setter: setFreePicturePackEnabled
+            type: Nogrod\eBaySDK\Trading\FreePicturePackEnabledDefinitionType
+        itemCompatibilityEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: ItemCompatibilityEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getItemCompatibilityEnabled
+                setter: setItemCompatibilityEnabled
+            type: Nogrod\eBaySDK\Trading\ItemCompatibilityEnabledDefinitionType
+        maxItemCompatibility:
+            expose: true
+            access_type: public_method
+            serialized_name: MaxItemCompatibility
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getMaxItemCompatibility
+                setter: setMaxItemCompatibility
+            type: Nogrod\eBaySDK\Trading\MaxItemCompatibilityDefinitionType
+        minItemCompatibility:
+            expose: true
+            access_type: public_method
+            serialized_name: MinItemCompatibility
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getMinItemCompatibility
+                setter: setMinItemCompatibility
+            type: Nogrod\eBaySDK\Trading\MinItemCompatibilityDefinitionType
+        conditionEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: ConditionEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getConditionEnabled
+                setter: setConditionEnabled
+            type: Nogrod\eBaySDK\Trading\ConditionEnabledDefinitionType
+        conditionValues:
+            expose: true
+            access_type: public_method
+            serialized_name: ConditionValues
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getConditionValues
+                setter: setConditionValues
+            type: Nogrod\eBaySDK\Trading\ConditionValuesDefinitionType
+        valueCategory:
+            expose: true
+            access_type: public_method
+            serialized_name: ValueCategory
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getValueCategory
+                setter: setValueCategory
+            type: Nogrod\eBaySDK\Trading\ValueCategoryDefinitionType
+        productCreationEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: ProductCreationEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getProductCreationEnabled
+                setter: setProductCreationEnabled
+            type: Nogrod\eBaySDK\Trading\ProductCreationEnabledDefinitionType
+        eANEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: EANEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getEANEnabled
+                setter: setEANEnabled
+            type: Nogrod\eBaySDK\Trading\EANEnabledDefinitionType
+        iSBNEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: ISBNEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getISBNEnabled
+                setter: setISBNEnabled
+            type: Nogrod\eBaySDK\Trading\ISBNEnabledDefinitionType
+        uPCEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: UPCEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getUPCEnabled
+                setter: setUPCEnabled
+            type: Nogrod\eBaySDK\Trading\UPCEnabledDefinitionType
+        compatibleVehicleType:
+            expose: true
+            access_type: public_method
+            serialized_name: CompatibleVehicleType
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCompatibleVehicleType
+                setter: setCompatibleVehicleType
+            type: Nogrod\eBaySDK\Trading\CompatibleVehicleTypeDefinitionType
+        maxGranularFitmentCount:
+            expose: true
+            access_type: public_method
+            serialized_name: MaxGranularFitmentCount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getMaxGranularFitmentCount
+                setter: setMaxGranularFitmentCount
+            type: Nogrod\eBaySDK\Trading\MaxGranularFitmentCountDefinitionType
+        paymentOptionsGroup:
+            expose: true
+            access_type: public_method
+            serialized_name: PaymentOptionsGroup
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPaymentOptionsGroup
+                setter: setPaymentOptionsGroup
+            type: Nogrod\eBaySDK\Trading\PaymentOptionsGroupEnabledDefinitionType
+        shippingProfileCategoryGroup:
+            expose: true
+            access_type: public_method
+            serialized_name: ShippingProfileCategoryGroup
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getShippingProfileCategoryGroup
+                setter: setShippingProfileCategoryGroup
+            type: Nogrod\eBaySDK\Trading\ProfileCategoryGroupDefinitionType
+        paymentProfileCategoryGroup:
+            expose: true
+            access_type: public_method
+            serialized_name: PaymentProfileCategoryGroup
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPaymentProfileCategoryGroup
+                setter: setPaymentProfileCategoryGroup
+            type: Nogrod\eBaySDK\Trading\ProfileCategoryGroupDefinitionType
+        returnPolicyProfileCategoryGroup:
+            expose: true
+            access_type: public_method
+            serialized_name: ReturnPolicyProfileCategoryGroup
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getReturnPolicyProfileCategoryGroup
+                setter: setReturnPolicyProfileCategoryGroup
+            type: Nogrod\eBaySDK\Trading\ProfileCategoryGroupDefinitionType
+        vINSupported:
+            expose: true
+            access_type: public_method
+            serialized_name: VINSupported
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getVINSupported
+                setter: setVINSupported
+            type: Nogrod\eBaySDK\Trading\VINSupportedDefinitionType
+        vRMSupported:
+            expose: true
+            access_type: public_method
+            serialized_name: VRMSupported
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getVRMSupported
+                setter: setVRMSupported
+            type: Nogrod\eBaySDK\Trading\VRMSupportedDefinitionType
+        sellerProvidedTitleSupported:
+            expose: true
+            access_type: public_method
+            serialized_name: SellerProvidedTitleSupported
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSellerProvidedTitleSupported
+                setter: setSellerProvidedTitleSupported
+            type: Nogrod\eBaySDK\Trading\SellerProvidedTitleSupportedDefinitionType
+        depositSupported:
+            expose: true
+            access_type: public_method
+            serialized_name: DepositSupported
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getDepositSupported
+                setter: setDepositSupported
+            type: Nogrod\eBaySDK\Trading\DepositSupportedDefinitionType
+        globalShippingEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: GlobalShippingEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getGlobalShippingEnabled
+                setter: setGlobalShippingEnabled
+            type: Nogrod\eBaySDK\Trading\GlobalShippingEnabledDefinitionType
+        additionalCompatibilityEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: AdditionalCompatibilityEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getAdditionalCompatibilityEnabled
+                setter: setAdditionalCompatibilityEnabled
+            type: Nogrod\eBaySDK\Trading\AdditionalCompatibilityEnabledDefinitionType
+        pickupDropOffEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: PickupDropOffEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPickupDropOffEnabled
+                setter: setPickupDropOffEnabled
+            type: Nogrod\eBaySDK\Trading\PickupDropOffEnabledDefinitionType
+        digitalGoodDeliveryEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: DigitalGoodDeliveryEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getDigitalGoodDeliveryEnabled
+                setter: setDigitalGoodDeliveryEnabled
+            type: Nogrod\eBaySDK\Trading\DigitalGoodDeliveryEnabledDefinitionType
+        epidSupported:
+            expose: true
+            access_type: public_method
+            serialized_name: EpidSupported
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getEpidSupported
+                setter: setEpidSupported
+            type: Nogrod\eBaySDK\Trading\EpidSupportedDefinitionType
+        kTypeSupported:
+            expose: true
+            access_type: public_method
+            serialized_name: KTypeSupported
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getKTypeSupported
+                setter: setKTypeSupported
+            type: Nogrod\eBaySDK\Trading\KTypeSupportedDefinitionType
+        productRequiredEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: ProductRequiredEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getProductRequiredEnabled
+                setter: setProductRequiredEnabled
+            type: Nogrod\eBaySDK\Trading\ProductRequiredEnabledDefinitionType
+        domesticReturnsAcceptedValues:
+            expose: true
+            access_type: public_method
+            serialized_name: DomesticReturnsAcceptedValues
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getDomesticReturnsAcceptedValues
+                setter: setDomesticReturnsAcceptedValues
+            type: Nogrod\eBaySDK\Trading\DomesticReturnsAcceptedDefinitionType
+        internationalReturnsAcceptedValues:
+            expose: true
+            access_type: public_method
+            serialized_name: InternationalReturnsAcceptedValues
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getInternationalReturnsAcceptedValues
+                setter: setInternationalReturnsAcceptedValues
+            type: Nogrod\eBaySDK\Trading\InternationalReturnsAcceptedDefinitionType
+        domesticReturnsDurationValues:
+            expose: true
+            access_type: public_method
+            serialized_name: DomesticReturnsDurationValues
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getDomesticReturnsDurationValues
+                setter: setDomesticReturnsDurationValues
+            type: Nogrod\eBaySDK\Trading\DomesticReturnsDurationDefinitionType
+        internationalReturnsDurationValues:
+            expose: true
+            access_type: public_method
+            serialized_name: InternationalReturnsDurationValues
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getInternationalReturnsDurationValues
+                setter: setInternationalReturnsDurationValues
+            type: Nogrod\eBaySDK\Trading\InternationalReturnsDurationDefinitionType
+        domesticReturnsShipmentPayeeValues:
+            expose: true
+            access_type: public_method
+            serialized_name: DomesticReturnsShipmentPayeeValues
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getDomesticReturnsShipmentPayeeValues
+                setter: setDomesticReturnsShipmentPayeeValues
+            type: Nogrod\eBaySDK\Trading\DomesticReturnsShipmentPayeeDefinitionType
+        internationalReturnsShipmentPayeeValues:
+            expose: true
+            access_type: public_method
+            serialized_name: InternationalReturnsShipmentPayeeValues
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getInternationalReturnsShipmentPayeeValues
+                setter: setInternationalReturnsShipmentPayeeValues
+            type: Nogrod\eBaySDK\Trading\InternationalReturnsShipmentPayeeDefinitionType
+        domesticRefundMethodValues:
+            expose: true
+            access_type: public_method
+            serialized_name: DomesticRefundMethodValues
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getDomesticRefundMethodValues
+                setter: setDomesticRefundMethodValues
+            type: array<string>
+            xml_list:
+                inline: false
+                entry_name: DomesticRefundMethod
+                skip_when_empty: true
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+        internationalRefundMethodValues:
+            expose: true
+            access_type: public_method
+            serialized_name: InternationalRefundMethodValues
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getInternationalRefundMethodValues
+                setter: setInternationalRefundMethodValues
+            type: array<string>
+            xml_list:
+                inline: false
+                entry_name: InternationalRefundMethod
+                skip_when_empty: true
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+        returnPolicyDescriptionEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: ReturnPolicyDescriptionEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getReturnPolicyDescriptionEnabled
+                setter: setReturnPolicyDescriptionEnabled
+            type: Nogrod\eBaySDK\Trading\ReturnPolicyDescriptionEnabledDefinitionType

@@ -1,0 +1,117 @@
+Nogrod\eBaySDK\BusinessPoliciesManagement\ReturnPolicyInfoType:
+    virtual_properties:
+        ns_prop:
+            exp: '"http://www.ebay.com/marketplace/selling/v1/services"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        description:
+            expose: true
+            access_type: public_method
+            serialized_name: description
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getDescription
+                setter: setDescription
+            type: string
+        refundOption:
+            expose: true
+            access_type: public_method
+            serialized_name: refundOption
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getRefundOption
+                setter: setRefundOption
+            type: string
+        shippingCostPaidByOption:
+            expose: true
+            access_type: public_method
+            serialized_name: shippingCostPaidByOption
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getShippingCostPaidByOption
+                setter: setShippingCostPaidByOption
+            type: string
+        returnsWithinOption:
+            expose: true
+            access_type: public_method
+            serialized_name: returnsWithinOption
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getReturnsWithinOption
+                setter: setReturnsWithinOption
+            type: string
+        returnsAcceptedOption:
+            expose: true
+            access_type: public_method
+            serialized_name: returnsAcceptedOption
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getReturnsAcceptedOption
+                setter: setReturnsAcceptedOption
+            type: string
+        warrantyOfferedOption:
+            expose: true
+            access_type: public_method
+            serialized_name: warrantyOfferedOption
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getWarrantyOfferedOption
+                setter: setWarrantyOfferedOption
+            type: string
+        warrantyTypeOption:
+            expose: true
+            access_type: public_method
+            serialized_name: warrantyTypeOption
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getWarrantyTypeOption
+                setter: setWarrantyTypeOption
+            type: string
+        warrantyDurationOption:
+            expose: true
+            access_type: public_method
+            serialized_name: warrantyDurationOption
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getWarrantyDurationOption
+                setter: setWarrantyDurationOption
+            type: string
+        restockingFeeValue:
+            expose: true
+            access_type: public_method
+            serialized_name: restockingFeeValue
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getRestockingFeeValue
+                setter: setRestockingFeeValue
+            type: string
+        holidayReturns:
+            expose: true
+            access_type: public_method
+            serialized_name: holidayReturns
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getHolidayReturns
+                setter: setHolidayReturns
+            type: string

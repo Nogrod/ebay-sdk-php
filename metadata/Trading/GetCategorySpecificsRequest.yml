@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\Trading\GetCategorySpecificsRequest:
+    xml_root_name: GetCategorySpecificsRequest
+    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

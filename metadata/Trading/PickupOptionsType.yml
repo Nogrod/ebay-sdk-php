@@ -1,0 +1,29 @@
+Nogrod\eBaySDK\Trading\PickupOptionsType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        pickupMethod:
+            expose: true
+            access_type: public_method
+            serialized_name: PickupMethod
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPickupMethod
+                setter: setPickupMethod
+            type: string
+        pickupPriority:
+            expose: true
+            access_type: public_method
+            serialized_name: PickupPriority
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPickupPriority
+                setter: setPickupPriority
+            type: int

@@ -1,0 +1,88 @@
+Nogrod\eBaySDK\Trading\CrossPromotionsType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        itemID:
+            expose: true
+            access_type: public_method
+            serialized_name: ItemID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getItemID
+                setter: setItemID
+            type: string
+        primaryScheme:
+            expose: true
+            access_type: public_method
+            serialized_name: PrimaryScheme
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPrimaryScheme
+                setter: setPrimaryScheme
+            type: string
+        promotionMethod:
+            expose: true
+            access_type: public_method
+            serialized_name: PromotionMethod
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPromotionMethod
+                setter: setPromotionMethod
+            type: string
+        sellerID:
+            expose: true
+            access_type: public_method
+            serialized_name: SellerID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSellerID
+                setter: setSellerID
+            type: string
+        shippingDiscount:
+            expose: true
+            access_type: public_method
+            serialized_name: ShippingDiscount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getShippingDiscount
+                setter: setShippingDiscount
+            type: bool
+        storeName:
+            expose: true
+            access_type: public_method
+            serialized_name: StoreName
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getStoreName
+                setter: setStoreName
+            type: string
+        promotedItem:
+            expose: true
+            access_type: public_method
+            serialized_name: PromotedItem
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPromotedItem
+                setter: setPromotedItem
+            xml_list:
+                inline: true
+                entry_name: PromotedItem
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<Nogrod\eBaySDK\Trading\PromotedItemType>

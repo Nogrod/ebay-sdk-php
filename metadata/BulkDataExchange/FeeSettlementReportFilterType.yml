@@ -1,0 +1,18 @@
+Nogrod\eBaySDK\BulkDataExchange\FeeSettlementReportFilterType:
+    virtual_properties:
+        ns_prop:
+            exp: '"http://www.ebay.com/marketplace/services"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        startTime:
+            expose: true
+            access_type: public_method
+            serialized_name: startTime
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/services'
+            accessor:
+                getter: getStartTime
+                setter: setStartTime
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime

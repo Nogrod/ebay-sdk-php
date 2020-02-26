@@ -1,0 +1,62 @@
+Nogrod\eBaySDK\MerchantData\FindReplaceType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        find:
+            expose: true
+            access_type: public_method
+            serialized_name: Find
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getFind
+                setter: setFind
+            type: string
+        replace:
+            expose: true
+            access_type: public_method
+            serialized_name: Replace
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getReplace
+                setter: setReplace
+            type: string
+        findMode:
+            expose: true
+            access_type: public_method
+            serialized_name: FindMode
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getFindMode
+                setter: setFindMode
+            type: string
+        caseSensitive:
+            expose: true
+            access_type: public_method
+            serialized_name: CaseSensitive
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCaseSensitive
+                setter: setCaseSensitive
+            type: bool
+        field:
+            expose: true
+            access_type: public_method
+            serialized_name: Field
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getField
+                setter: setField
+            type: string

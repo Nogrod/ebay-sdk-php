@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\Trading\GetTaxTableResponse:
+    xml_root_name: GetTaxTableResponse
+    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

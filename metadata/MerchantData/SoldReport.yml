@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\MerchantData\SoldReport:
+    xml_root_name: SoldReport
+    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

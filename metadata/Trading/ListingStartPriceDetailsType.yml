@@ -1,0 +1,73 @@
+Nogrod\eBaySDK\Trading\ListingStartPriceDetailsType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        description:
+            expose: true
+            access_type: public_method
+            serialized_name: Description
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getDescription
+                setter: setDescription
+            type: string
+        listingType:
+            expose: true
+            access_type: public_method
+            serialized_name: ListingType
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getListingType
+                setter: setListingType
+            type: string
+        startPrice:
+            expose: true
+            access_type: public_method
+            serialized_name: StartPrice
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getStartPrice
+                setter: setStartPrice
+            type: Nogrod\eBaySDK\Trading\AmountType
+        detailVersion:
+            expose: true
+            access_type: public_method
+            serialized_name: DetailVersion
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getDetailVersion
+                setter: setDetailVersion
+            type: string
+        updateTime:
+            expose: true
+            access_type: public_method
+            serialized_name: UpdateTime
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getUpdateTime
+                setter: setUpdateTime
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime
+        minBuyItNowPricePercent:
+            expose: true
+            access_type: public_method
+            serialized_name: MinBuyItNowPricePercent
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getMinBuyItNowPricePercent
+                setter: setMinBuyItNowPricePercent
+            type: float

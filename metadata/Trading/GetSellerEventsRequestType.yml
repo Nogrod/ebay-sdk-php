@@ -1,0 +1,128 @@
+Nogrod\eBaySDK\Trading\GetSellerEventsRequestType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        userID:
+            expose: true
+            access_type: public_method
+            serialized_name: UserID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getUserID
+                setter: setUserID
+            type: string
+        startTimeFrom:
+            expose: true
+            access_type: public_method
+            serialized_name: StartTimeFrom
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getStartTimeFrom
+                setter: setStartTimeFrom
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime
+        startTimeTo:
+            expose: true
+            access_type: public_method
+            serialized_name: StartTimeTo
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getStartTimeTo
+                setter: setStartTimeTo
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime
+        endTimeFrom:
+            expose: true
+            access_type: public_method
+            serialized_name: EndTimeFrom
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getEndTimeFrom
+                setter: setEndTimeFrom
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime
+        endTimeTo:
+            expose: true
+            access_type: public_method
+            serialized_name: EndTimeTo
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getEndTimeTo
+                setter: setEndTimeTo
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime
+        modTimeFrom:
+            expose: true
+            access_type: public_method
+            serialized_name: ModTimeFrom
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getModTimeFrom
+                setter: setModTimeFrom
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime
+        modTimeTo:
+            expose: true
+            access_type: public_method
+            serialized_name: ModTimeTo
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getModTimeTo
+                setter: setModTimeTo
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime
+        newItemFilter:
+            expose: true
+            access_type: public_method
+            serialized_name: NewItemFilter
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getNewItemFilter
+                setter: setNewItemFilter
+            type: bool
+        includeWatchCount:
+            expose: true
+            access_type: public_method
+            serialized_name: IncludeWatchCount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getIncludeWatchCount
+                setter: setIncludeWatchCount
+            type: bool
+        includeVariationSpecifics:
+            expose: true
+            access_type: public_method
+            serialized_name: IncludeVariationSpecifics
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getIncludeVariationSpecifics
+                setter: setIncludeVariationSpecifics
+            type: bool
+        hideVariations:
+            expose: true
+            access_type: public_method
+            serialized_name: HideVariations
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getHideVariations
+                setter: setHideVariations
+            type: bool

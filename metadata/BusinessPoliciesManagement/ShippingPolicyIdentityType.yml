@@ -1,0 +1,29 @@
+Nogrod\eBaySDK\BusinessPoliciesManagement\ShippingPolicyIdentityType:
+    virtual_properties:
+        ns_prop:
+            exp: '"http://www.ebay.com/marketplace/selling/v1/services"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        shippingPolicyId:
+            expose: true
+            access_type: public_method
+            serialized_name: shippingPolicyId
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getShippingPolicyId
+                setter: setShippingPolicyId
+            type: int
+        shippingPolicyVersionId:
+            expose: true
+            access_type: public_method
+            serialized_name: shippingPolicyVersionId
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getShippingPolicyVersionId
+                setter: setShippingPolicyVersionId
+            type: int

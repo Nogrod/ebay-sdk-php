@@ -1,0 +1,99 @@
+Nogrod\eBaySDK\Trading\GetFeedbackRequestType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        userID:
+            expose: true
+            access_type: public_method
+            serialized_name: UserID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getUserID
+                setter: setUserID
+            type: string
+        feedbackID:
+            expose: true
+            access_type: public_method
+            serialized_name: FeedbackID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getFeedbackID
+                setter: setFeedbackID
+            type: string
+        itemID:
+            expose: true
+            access_type: public_method
+            serialized_name: ItemID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getItemID
+                setter: setItemID
+            type: string
+        transactionID:
+            expose: true
+            access_type: public_method
+            serialized_name: TransactionID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getTransactionID
+                setter: setTransactionID
+            type: string
+        commentType:
+            expose: true
+            access_type: public_method
+            serialized_name: CommentType
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCommentType
+                setter: setCommentType
+            xml_list:
+                inline: true
+                entry_name: CommentType
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<string>
+        feedbackType:
+            expose: true
+            access_type: public_method
+            serialized_name: FeedbackType
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getFeedbackType
+                setter: setFeedbackType
+            type: string
+        pagination:
+            expose: true
+            access_type: public_method
+            serialized_name: Pagination
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPagination
+                setter: setPagination
+            type: Nogrod\eBaySDK\Trading\PaginationType
+        orderLineItemID:
+            expose: true
+            access_type: public_method
+            serialized_name: OrderLineItemID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getOrderLineItemID
+                setter: setOrderLineItemID
+            type: string

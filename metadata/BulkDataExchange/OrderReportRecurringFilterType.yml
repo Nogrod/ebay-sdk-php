@@ -1,0 +1,51 @@
+Nogrod\eBaySDK\BulkDataExchange\OrderReportRecurringFilterType:
+    virtual_properties:
+        ns_prop:
+            exp: '"http://www.ebay.com/marketplace/services"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        createTimeRange:
+            expose: true
+            access_type: public_method
+            serialized_name: createTimeRange
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/services'
+            accessor:
+                getter: getCreateTimeRange
+                setter: setCreateTimeRange
+            type: int
+        modTimeRange:
+            expose: true
+            access_type: public_method
+            serialized_name: modTimeRange
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/services'
+            accessor:
+                getter: getModTimeRange
+                setter: setModTimeRange
+            type: int
+        listingType:
+            expose: true
+            access_type: public_method
+            serialized_name: listingType
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/services'
+            accessor:
+                getter: getListingType
+                setter: setListingType
+            type: string
+        version:
+            expose: true
+            access_type: public_method
+            serialized_name: version
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/services'
+            accessor:
+                getter: getVersion
+                setter: setVersion
+            type: int

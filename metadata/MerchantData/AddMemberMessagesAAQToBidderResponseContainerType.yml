@@ -1,0 +1,29 @@
+Nogrod\eBaySDK\MerchantData\AddMemberMessagesAAQToBidderResponseContainerType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        correlationID:
+            expose: true
+            access_type: public_method
+            serialized_name: CorrelationID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCorrelationID
+                setter: setCorrelationID
+            type: string
+        ack:
+            expose: true
+            access_type: public_method
+            serialized_name: Ack
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getAck
+                setter: setAck
+            type: string

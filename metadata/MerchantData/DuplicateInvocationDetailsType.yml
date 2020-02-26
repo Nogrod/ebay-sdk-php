@@ -1,0 +1,40 @@
+Nogrod\eBaySDK\MerchantData\DuplicateInvocationDetailsType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        duplicateInvocationID:
+            expose: true
+            access_type: public_method
+            serialized_name: DuplicateInvocationID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getDuplicateInvocationID
+                setter: setDuplicateInvocationID
+            type: string
+        status:
+            expose: true
+            access_type: public_method
+            serialized_name: Status
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getStatus
+                setter: setStatus
+            type: string
+        invocationTrackingID:
+            expose: true
+            access_type: public_method
+            serialized_name: InvocationTrackingID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getInvocationTrackingID
+                setter: setInvocationTrackingID
+            type: string

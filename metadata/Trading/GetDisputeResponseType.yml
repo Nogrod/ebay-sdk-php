@@ -1,0 +1,18 @@
+Nogrod\eBaySDK\Trading\GetDisputeResponseType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        dispute:
+            expose: true
+            access_type: public_method
+            serialized_name: Dispute
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getDispute
+                setter: setDispute
+            type: Nogrod\eBaySDK\Trading\DisputeType

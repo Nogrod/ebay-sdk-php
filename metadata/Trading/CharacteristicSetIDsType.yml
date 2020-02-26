@@ -1,0 +1,22 @@
+Nogrod\eBaySDK\Trading\CharacteristicSetIDsType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        iD:
+            expose: true
+            access_type: public_method
+            serialized_name: ID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getID
+                setter: setID
+            xml_list:
+                inline: true
+                entry_name: ID
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<string>

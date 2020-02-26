@@ -1,0 +1,18 @@
+Nogrod\eBaySDK\Trading\DeliveryStatusType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        email:
+            expose: true
+            access_type: public_method
+            serialized_name: Email
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getEmail
+                setter: setEmail
+            type: string

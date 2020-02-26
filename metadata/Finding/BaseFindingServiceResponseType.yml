@@ -1,0 +1,55 @@
+Nogrod\eBaySDK\Finding\BaseFindingServiceResponseType:
+    virtual_properties:
+        ns_prop:
+            exp: '"http://www.ebay.com/marketplace/search/v1/services"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        searchResult:
+            expose: true
+            access_type: public_method
+            serialized_name: searchResult
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/search/v1/services'
+            accessor:
+                getter: getSearchResult
+                setter: setSearchResult
+            type: Nogrod\eBaySDK\Finding\SearchResultType
+        paginationOutput:
+            expose: true
+            access_type: public_method
+            serialized_name: paginationOutput
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/search/v1/services'
+            accessor:
+                getter: getPaginationOutput
+                setter: setPaginationOutput
+            type: Nogrod\eBaySDK\Finding\PaginationOutputType
+        itemSearchURL:
+            expose: true
+            access_type: public_method
+            serialized_name: itemSearchURL
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/search/v1/services'
+            accessor:
+                getter: getItemSearchURL
+                setter: setItemSearchURL
+            type: string
+        extension:
+            expose: true
+            access_type: public_method
+            serialized_name: extension
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/search/v1/services'
+            accessor:
+                getter: getExtension
+                setter: setExtension
+            xml_list:
+                inline: true
+                entry_name: extension
+                namespace: 'http://www.ebay.com/marketplace/search/v1/services'
+            type: array<Nogrod\eBaySDK\Finding\ExtensionTypeType>

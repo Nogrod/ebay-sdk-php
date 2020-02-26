@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\Trading\GetShippingDiscountProfilesRequest:
+    xml_root_name: GetShippingDiscountProfilesRequest
+    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

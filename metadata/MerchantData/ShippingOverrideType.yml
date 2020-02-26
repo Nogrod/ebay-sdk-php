@@ -1,0 +1,34 @@
+Nogrod\eBaySDK\MerchantData\ShippingOverrideType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        shippingServiceCostOverrideList:
+            expose: true
+            access_type: public_method
+            serialized_name: ShippingServiceCostOverrideList
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getShippingServiceCostOverrideList
+                setter: setShippingServiceCostOverrideList
+            type: array<Nogrod\eBaySDK\MerchantData\ShippingServiceCostOverrideType>
+            xml_list:
+                inline: false
+                entry_name: ShippingServiceCostOverride
+                skip_when_empty: true
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+        dispatchTimeMaxOverride:
+            expose: true
+            access_type: public_method
+            serialized_name: DispatchTimeMaxOverride
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getDispatchTimeMaxOverride
+                setter: setDispatchTimeMaxOverride
+            type: int

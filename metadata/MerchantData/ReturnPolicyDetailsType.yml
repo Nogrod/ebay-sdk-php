@@ -1,0 +1,171 @@
+Nogrod\eBaySDK\MerchantData\ReturnPolicyDetailsType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        refund:
+            expose: true
+            access_type: public_method
+            serialized_name: Refund
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getRefund
+                setter: setRefund
+            xml_list:
+                inline: true
+                entry_name: Refund
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<Nogrod\eBaySDK\MerchantData\RefundDetailsType>
+        returnsWithin:
+            expose: true
+            access_type: public_method
+            serialized_name: ReturnsWithin
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getReturnsWithin
+                setter: setReturnsWithin
+            xml_list:
+                inline: true
+                entry_name: ReturnsWithin
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<Nogrod\eBaySDK\MerchantData\ReturnsWithinDetailsType>
+        returnsAccepted:
+            expose: true
+            access_type: public_method
+            serialized_name: ReturnsAccepted
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getReturnsAccepted
+                setter: setReturnsAccepted
+            xml_list:
+                inline: true
+                entry_name: ReturnsAccepted
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<Nogrod\eBaySDK\MerchantData\ReturnsAcceptedDetailsType>
+        description:
+            expose: true
+            access_type: public_method
+            serialized_name: Description
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getDescription
+                setter: setDescription
+            type: bool
+        warrantyOffered:
+            expose: true
+            access_type: public_method
+            serialized_name: WarrantyOffered
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getWarrantyOffered
+                setter: setWarrantyOffered
+            xml_list:
+                inline: true
+                entry_name: WarrantyOffered
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<Nogrod\eBaySDK\MerchantData\WarrantyOfferedDetailsType>
+        warrantyType:
+            expose: true
+            access_type: public_method
+            serialized_name: WarrantyType
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getWarrantyType
+                setter: setWarrantyType
+            xml_list:
+                inline: true
+                entry_name: WarrantyType
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<Nogrod\eBaySDK\MerchantData\WarrantyTypeDetailsType>
+        warrantyDuration:
+            expose: true
+            access_type: public_method
+            serialized_name: WarrantyDuration
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getWarrantyDuration
+                setter: setWarrantyDuration
+            xml_list:
+                inline: true
+                entry_name: WarrantyDuration
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<Nogrod\eBaySDK\MerchantData\WarrantyDurationDetailsType>
+        eAN:
+            expose: true
+            access_type: public_method
+            serialized_name: EAN
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getEAN
+                setter: setEAN
+            type: bool
+        shippingCostPaidBy:
+            expose: true
+            access_type: public_method
+            serialized_name: ShippingCostPaidBy
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getShippingCostPaidBy
+                setter: setShippingCostPaidBy
+            xml_list:
+                inline: true
+                entry_name: ShippingCostPaidBy
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<Nogrod\eBaySDK\MerchantData\ShippingCostPaidByDetailsType>
+        restockingFeeValue:
+            expose: true
+            access_type: public_method
+            serialized_name: RestockingFeeValue
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getRestockingFeeValue
+                setter: setRestockingFeeValue
+            xml_list:
+                inline: true
+                entry_name: RestockingFeeValue
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<Nogrod\eBaySDK\MerchantData\RestockingFeeValueDetailsType>
+        detailVersion:
+            expose: true
+            access_type: public_method
+            serialized_name: DetailVersion
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getDetailVersion
+                setter: setDetailVersion
+            type: string
+        updateTime:
+            expose: true
+            access_type: public_method
+            serialized_name: UpdateTime
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getUpdateTime
+                setter: setUpdateTime
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime

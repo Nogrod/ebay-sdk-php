@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\Trading\SetStoreCustomPageResponse:
+    xml_root_name: SetStoreCustomPageResponse
+    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

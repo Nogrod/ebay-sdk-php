@@ -1,0 +1,117 @@
+Nogrod\eBaySDK\MerchantData\ListingFeatureDetailsType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        boldTitle:
+            expose: true
+            access_type: public_method
+            serialized_name: BoldTitle
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getBoldTitle
+                setter: setBoldTitle
+            type: string
+        border:
+            expose: true
+            access_type: public_method
+            serialized_name: Border
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getBorder
+                setter: setBorder
+            type: string
+        highlight:
+            expose: true
+            access_type: public_method
+            serialized_name: Highlight
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getHighlight
+                setter: setHighlight
+            type: string
+        giftIcon:
+            expose: true
+            access_type: public_method
+            serialized_name: GiftIcon
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getGiftIcon
+                setter: setGiftIcon
+            type: string
+        homePageFeatured:
+            expose: true
+            access_type: public_method
+            serialized_name: HomePageFeatured
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getHomePageFeatured
+                setter: setHomePageFeatured
+            type: string
+        featuredFirst:
+            expose: true
+            access_type: public_method
+            serialized_name: FeaturedFirst
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getFeaturedFirst
+                setter: setFeaturedFirst
+            type: string
+        featuredPlus:
+            expose: true
+            access_type: public_method
+            serialized_name: FeaturedPlus
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getFeaturedPlus
+                setter: setFeaturedPlus
+            type: string
+        proPack:
+            expose: true
+            access_type: public_method
+            serialized_name: ProPack
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getProPack
+                setter: setProPack
+            type: string
+        detailVersion:
+            expose: true
+            access_type: public_method
+            serialized_name: DetailVersion
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getDetailVersion
+                setter: setDetailVersion
+            type: string
+        updateTime:
+            expose: true
+            access_type: public_method
+            serialized_name: UpdateTime
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getUpdateTime
+                setter: setUpdateTime
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime

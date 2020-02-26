@@ -1,0 +1,29 @@
+Nogrod\eBaySDK\Trading\SellerShippingProfileType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        shippingProfileID:
+            expose: true
+            access_type: public_method
+            serialized_name: ShippingProfileID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getShippingProfileID
+                setter: setShippingProfileID
+            type: int
+        shippingProfileName:
+            expose: true
+            access_type: public_method
+            serialized_name: ShippingProfileName
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getShippingProfileName
+                setter: setShippingProfileName
+            type: string

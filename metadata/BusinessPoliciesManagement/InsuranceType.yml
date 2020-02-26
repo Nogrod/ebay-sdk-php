@@ -1,0 +1,51 @@
+Nogrod\eBaySDK\BusinessPoliciesManagement\InsuranceType:
+    virtual_properties:
+        ns_prop:
+            exp: '"http://www.ebay.com/marketplace/selling/v1/services"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        domesticInsuranceFee:
+            expose: true
+            access_type: public_method
+            serialized_name: domesticInsuranceFee
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getDomesticInsuranceFee
+                setter: setDomesticInsuranceFee
+            type: Nogrod\eBaySDK\BusinessPoliciesManagement\AmountType
+        domesticInsuranceOption:
+            expose: true
+            access_type: public_method
+            serialized_name: domesticInsuranceOption
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getDomesticInsuranceOption
+                setter: setDomesticInsuranceOption
+            type: string
+        intlInsuranceOption:
+            expose: true
+            access_type: public_method
+            serialized_name: intlInsuranceOption
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getIntlInsuranceOption
+                setter: setIntlInsuranceOption
+            type: string
+        intlInsuranceFee:
+            expose: true
+            access_type: public_method
+            serialized_name: intlInsuranceFee
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getIntlInsuranceFee
+                setter: setIntlInsuranceFee
+            type: Nogrod\eBaySDK\BusinessPoliciesManagement\AmountType

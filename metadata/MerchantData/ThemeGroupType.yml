@@ -1,0 +1,55 @@
+Nogrod\eBaySDK\MerchantData\ThemeGroupType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        groupID:
+            expose: true
+            access_type: public_method
+            serialized_name: GroupID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getGroupID
+                setter: setGroupID
+            type: int
+        groupName:
+            expose: true
+            access_type: public_method
+            serialized_name: GroupName
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getGroupName
+                setter: setGroupName
+            type: string
+        themeID:
+            expose: true
+            access_type: public_method
+            serialized_name: ThemeID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getThemeID
+                setter: setThemeID
+            xml_list:
+                inline: true
+                entry_name: ThemeID
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<int>
+        themeTotal:
+            expose: true
+            access_type: public_method
+            serialized_name: ThemeTotal
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getThemeTotal
+                setter: setThemeTotal
+            type: int

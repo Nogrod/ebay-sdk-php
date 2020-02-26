@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\Shopping\FindReviewsAndGuidesRequest:
+    xml_root_name: FindReviewsAndGuidesRequest
+    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

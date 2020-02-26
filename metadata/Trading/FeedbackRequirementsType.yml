@@ -1,0 +1,26 @@
+Nogrod\eBaySDK\Trading\FeedbackRequirementsType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        __value:
+            expose: true
+            xml_value: true
+            access_type: public_method
+            accessor:
+                getter: value
+                setter: value
+            type: bool
+            xml_element:
+                cdata: false
+        minimum:
+            expose: true
+            access_type: public_method
+            serialized_name: minimum
+            accessor:
+                getter: getMinimum
+                setter: setMinimum
+            xml_attribute: true
+            type: string

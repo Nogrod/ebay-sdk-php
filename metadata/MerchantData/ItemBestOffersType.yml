@@ -1,0 +1,45 @@
+Nogrod\eBaySDK\MerchantData\ItemBestOffersType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        role:
+            expose: true
+            access_type: public_method
+            serialized_name: Role
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getRole
+                setter: setRole
+            type: string
+        bestOfferArray:
+            expose: true
+            access_type: public_method
+            serialized_name: BestOfferArray
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getBestOfferArray
+                setter: setBestOfferArray
+            type: array<Nogrod\eBaySDK\MerchantData\BestOfferType>
+            xml_list:
+                inline: false
+                entry_name: BestOffer
+                skip_when_empty: true
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+        item:
+            expose: true
+            access_type: public_method
+            serialized_name: Item
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getItem
+                setter: setItem
+            type: Nogrod\eBaySDK\MerchantData\ItemType

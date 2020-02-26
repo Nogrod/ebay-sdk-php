@@ -1,0 +1,66 @@
+Nogrod\eBaySDK\Trading\VariationProductListingDetailsType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        iSBN:
+            expose: true
+            access_type: public_method
+            serialized_name: ISBN
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getISBN
+                setter: setISBN
+            type: string
+        uPC:
+            expose: true
+            access_type: public_method
+            serialized_name: UPC
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getUPC
+                setter: setUPC
+            type: string
+        eAN:
+            expose: true
+            access_type: public_method
+            serialized_name: EAN
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getEAN
+                setter: setEAN
+            type: string
+        productReferenceID:
+            expose: true
+            access_type: public_method
+            serialized_name: ProductReferenceID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getProductReferenceID
+                setter: setProductReferenceID
+            type: string
+        nameValueList:
+            expose: true
+            access_type: public_method
+            serialized_name: NameValueList
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getNameValueList
+                setter: setNameValueList
+            xml_list:
+                inline: true
+                entry_name: NameValueList
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<Nogrod\eBaySDK\Trading\NameValueListType>

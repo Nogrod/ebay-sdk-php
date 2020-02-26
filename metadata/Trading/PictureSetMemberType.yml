@@ -1,0 +1,40 @@
+Nogrod\eBaySDK\Trading\PictureSetMemberType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        memberURL:
+            expose: true
+            access_type: public_method
+            serialized_name: MemberURL
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getMemberURL
+                setter: setMemberURL
+            type: string
+        pictureHeight:
+            expose: true
+            access_type: public_method
+            serialized_name: PictureHeight
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPictureHeight
+                setter: setPictureHeight
+            type: int
+        pictureWidth:
+            expose: true
+            access_type: public_method
+            serialized_name: PictureWidth
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPictureWidth
+                setter: setPictureWidth
+            type: int

@@ -1,0 +1,163 @@
+Nogrod\eBaySDK\Trading\GetMyeBayBuyingResponseType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        buyingSummary:
+            expose: true
+            access_type: public_method
+            serialized_name: BuyingSummary
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getBuyingSummary
+                setter: setBuyingSummary
+            type: Nogrod\eBaySDK\Trading\BuyingSummaryType
+        watchList:
+            expose: true
+            access_type: public_method
+            serialized_name: WatchList
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getWatchList
+                setter: setWatchList
+            type: Nogrod\eBaySDK\Trading\PaginatedItemArrayType
+        bidList:
+            expose: true
+            access_type: public_method
+            serialized_name: BidList
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getBidList
+                setter: setBidList
+            type: Nogrod\eBaySDK\Trading\PaginatedItemArrayType
+        bestOfferList:
+            expose: true
+            access_type: public_method
+            serialized_name: BestOfferList
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getBestOfferList
+                setter: setBestOfferList
+            type: Nogrod\eBaySDK\Trading\PaginatedItemArrayType
+        wonList:
+            expose: true
+            access_type: public_method
+            serialized_name: WonList
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getWonList
+                setter: setWonList
+            type: Nogrod\eBaySDK\Trading\PaginatedOrderTransactionArrayType
+        lostList:
+            expose: true
+            access_type: public_method
+            serialized_name: LostList
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getLostList
+                setter: setLostList
+            type: Nogrod\eBaySDK\Trading\PaginatedItemArrayType
+        favoriteSearches:
+            expose: true
+            access_type: public_method
+            serialized_name: FavoriteSearches
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getFavoriteSearches
+                setter: setFavoriteSearches
+            type: Nogrod\eBaySDK\Trading\MyeBayFavoriteSearchListType
+        favoriteSellers:
+            expose: true
+            access_type: public_method
+            serialized_name: FavoriteSellers
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getFavoriteSellers
+                setter: setFavoriteSellers
+            type: Nogrod\eBaySDK\Trading\MyeBayFavoriteSellerListType
+        secondChanceOffer:
+            expose: true
+            access_type: public_method
+            serialized_name: SecondChanceOffer
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSecondChanceOffer
+                setter: setSecondChanceOffer
+            xml_list:
+                inline: true
+                entry_name: SecondChanceOffer
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<Nogrod\eBaySDK\Trading\ItemType>
+        bidAssistantList:
+            expose: true
+            access_type: public_method
+            serialized_name: BidAssistantList
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getBidAssistantList
+                setter: setBidAssistantList
+            type: array<Nogrod\eBaySDK\Trading\BidGroupType>
+            xml_list:
+                inline: false
+                entry_name: BidGroup
+                skip_when_empty: true
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+        deletedFromWonList:
+            expose: true
+            access_type: public_method
+            serialized_name: DeletedFromWonList
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getDeletedFromWonList
+                setter: setDeletedFromWonList
+            type: Nogrod\eBaySDK\Trading\PaginatedOrderTransactionArrayType
+        deletedFromLostList:
+            expose: true
+            access_type: public_method
+            serialized_name: DeletedFromLostList
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getDeletedFromLostList
+                setter: setDeletedFromLostList
+            type: Nogrod\eBaySDK\Trading\PaginatedItemArrayType
+        userDefinedList:
+            expose: true
+            access_type: public_method
+            serialized_name: UserDefinedList
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getUserDefinedList
+                setter: setUserDefinedList
+            xml_list:
+                inline: true
+                entry_name: UserDefinedList
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<Nogrod\eBaySDK\Trading\UserDefinedListType>

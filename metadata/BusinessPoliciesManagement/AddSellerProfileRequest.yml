@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\BusinessPoliciesManagement\AddSellerProfileRequest:
+    xml_root_name: addSellerProfileRequest
+    xml_root_namespace: 'http://www.ebay.com/marketplace/selling/v1/services'

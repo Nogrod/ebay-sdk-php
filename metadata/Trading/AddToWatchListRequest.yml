@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\Trading\AddToWatchListRequest:
+    xml_root_name: AddToWatchListRequest
+    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

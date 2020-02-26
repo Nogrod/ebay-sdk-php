@@ -1,0 +1,88 @@
+Nogrod\eBaySDK\Trading\GetSellingManagerInventoryRequestType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        sort:
+            expose: true
+            access_type: public_method
+            serialized_name: Sort
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSort
+                setter: setSort
+            type: string
+        folderID:
+            expose: true
+            access_type: public_method
+            serialized_name: FolderID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getFolderID
+                setter: setFolderID
+            type: int
+        pagination:
+            expose: true
+            access_type: public_method
+            serialized_name: Pagination
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPagination
+                setter: setPagination
+            type: Nogrod\eBaySDK\Trading\PaginationType
+        sortOrder:
+            expose: true
+            access_type: public_method
+            serialized_name: SortOrder
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSortOrder
+                setter: setSortOrder
+            type: string
+        search:
+            expose: true
+            access_type: public_method
+            serialized_name: Search
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSearch
+                setter: setSearch
+            type: Nogrod\eBaySDK\Trading\SellingManagerSearchType
+        storeCategoryID:
+            expose: true
+            access_type: public_method
+            serialized_name: StoreCategoryID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getStoreCategoryID
+                setter: setStoreCategoryID
+            type: int
+        filter:
+            expose: true
+            access_type: public_method
+            serialized_name: Filter
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getFilter
+                setter: setFilter
+            xml_list:
+                inline: true
+                entry_name: Filter
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<string>

@@ -1,0 +1,62 @@
+Nogrod\eBaySDK\Finding\PaginationOutputType:
+    virtual_properties:
+        ns_prop:
+            exp: '"http://www.ebay.com/marketplace/search/v1/services"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        pageNumber:
+            expose: true
+            access_type: public_method
+            serialized_name: pageNumber
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/search/v1/services'
+            accessor:
+                getter: getPageNumber
+                setter: setPageNumber
+            type: int
+        entriesPerPage:
+            expose: true
+            access_type: public_method
+            serialized_name: entriesPerPage
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/search/v1/services'
+            accessor:
+                getter: getEntriesPerPage
+                setter: setEntriesPerPage
+            type: int
+        totalPages:
+            expose: true
+            access_type: public_method
+            serialized_name: totalPages
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/search/v1/services'
+            accessor:
+                getter: getTotalPages
+                setter: setTotalPages
+            type: int
+        totalEntries:
+            expose: true
+            access_type: public_method
+            serialized_name: totalEntries
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/search/v1/services'
+            accessor:
+                getter: getTotalEntries
+                setter: setTotalEntries
+            type: int
+        delimiter:
+            expose: true
+            access_type: public_method
+            serialized_name: delimiter
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/search/v1/services'
+            accessor:
+                getter: getDelimiter
+                setter: setDelimiter
+            type: string

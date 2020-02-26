@@ -1,0 +1,89 @@
+Nogrod\eBaySDK\BulkDataExchange\DownloadRequestFilterType:
+    virtual_properties:
+        ns_prop:
+            exp: '"http://www.ebay.com/marketplace/services"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        feeSettlementReportFilter:
+            expose: true
+            access_type: public_method
+            serialized_name: feeSettlementReportFilter
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/services'
+            accessor:
+                getter: getFeeSettlementReportFilter
+                setter: setFeeSettlementReportFilter
+            type: Nogrod\eBaySDK\BulkDataExchange\FeeSettlementReportFilterType
+        getItemInfoReportFilter:
+            expose: true
+            access_type: public_method
+            serialized_name: getItemInfoReportFilter
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/services'
+            accessor:
+                getter: getGetItemInfoReportFilter
+                setter: setGetItemInfoReportFilter
+            type: Nogrod\eBaySDK\BulkDataExchange\GetItemInfoReportFilterType
+        siteFilter:
+            expose: true
+            access_type: public_method
+            serialized_name: siteFilter
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/services'
+            accessor:
+                getter: getSiteFilter
+                setter: setSiteFilter
+            type: array<string>
+            xml_list:
+                inline: false
+                entry_name: globalId
+                skip_when_empty: true
+                namespace: 'http://www.ebay.com/marketplace/services'
+        activeInventoryReportFilter:
+            expose: true
+            access_type: public_method
+            serialized_name: activeInventoryReportFilter
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/services'
+            accessor:
+                getter: getActiveInventoryReportFilter
+                setter: setActiveInventoryReportFilter
+            type: Nogrod\eBaySDK\BulkDataExchange\ActiveInventoryReportFilterType
+        dateFilter:
+            expose: true
+            access_type: public_method
+            serialized_name: dateFilter
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/services'
+            accessor:
+                getter: getDateFilter
+                setter: setDateFilter
+            type: Nogrod\eBaySDK\BulkDataExchange\DateFilterType
+        soldReportFilter:
+            expose: true
+            access_type: public_method
+            serialized_name: soldReportFilter
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/services'
+            accessor:
+                getter: getSoldReportFilter
+                setter: setSoldReportFilter
+            type: Nogrod\eBaySDK\BulkDataExchange\SoldReportFilterType
+        orderReportFilter:
+            expose: true
+            access_type: public_method
+            serialized_name: orderReportFilter
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/services'
+            accessor:
+                getter: getOrderReportFilter
+                setter: setOrderReportFilter
+            type: Nogrod\eBaySDK\BulkDataExchange\OrderReportFilterType

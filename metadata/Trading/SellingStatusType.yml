@@ -1,0 +1,210 @@
+Nogrod\eBaySDK\Trading\SellingStatusType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        bidCount:
+            expose: true
+            access_type: public_method
+            serialized_name: BidCount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getBidCount
+                setter: setBidCount
+            type: int
+        bidIncrement:
+            expose: true
+            access_type: public_method
+            serialized_name: BidIncrement
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getBidIncrement
+                setter: setBidIncrement
+            type: Nogrod\eBaySDK\Trading\AmountType
+        convertedCurrentPrice:
+            expose: true
+            access_type: public_method
+            serialized_name: ConvertedCurrentPrice
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getConvertedCurrentPrice
+                setter: setConvertedCurrentPrice
+            type: Nogrod\eBaySDK\Trading\AmountType
+        currentPrice:
+            expose: true
+            access_type: public_method
+            serialized_name: CurrentPrice
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCurrentPrice
+                setter: setCurrentPrice
+            type: Nogrod\eBaySDK\Trading\AmountType
+        highBidder:
+            expose: true
+            access_type: public_method
+            serialized_name: HighBidder
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getHighBidder
+                setter: setHighBidder
+            type: Nogrod\eBaySDK\Trading\UserType
+        leadCount:
+            expose: true
+            access_type: public_method
+            serialized_name: LeadCount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getLeadCount
+                setter: setLeadCount
+            type: int
+        minimumToBid:
+            expose: true
+            access_type: public_method
+            serialized_name: MinimumToBid
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getMinimumToBid
+                setter: setMinimumToBid
+            type: Nogrod\eBaySDK\Trading\AmountType
+        quantitySold:
+            expose: true
+            access_type: public_method
+            serialized_name: QuantitySold
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getQuantitySold
+                setter: setQuantitySold
+            type: int
+        reserveMet:
+            expose: true
+            access_type: public_method
+            serialized_name: ReserveMet
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getReserveMet
+                setter: setReserveMet
+            type: bool
+        secondChanceEligible:
+            expose: true
+            access_type: public_method
+            serialized_name: SecondChanceEligible
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSecondChanceEligible
+                setter: setSecondChanceEligible
+            type: bool
+        bidderCount:
+            expose: true
+            access_type: public_method
+            serialized_name: BidderCount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getBidderCount
+                setter: setBidderCount
+            type: int
+        listingStatus:
+            expose: true
+            access_type: public_method
+            serialized_name: ListingStatus
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getListingStatus
+                setter: setListingStatus
+            type: string
+        finalValueFee:
+            expose: true
+            access_type: public_method
+            serialized_name: FinalValueFee
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getFinalValueFee
+                setter: setFinalValueFee
+            type: Nogrod\eBaySDK\Trading\AmountType
+        promotionalSaleDetails:
+            expose: true
+            access_type: public_method
+            serialized_name: PromotionalSaleDetails
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPromotionalSaleDetails
+                setter: setPromotionalSaleDetails
+            type: Nogrod\eBaySDK\Trading\PromotionalSaleDetailsType
+        adminEnded:
+            expose: true
+            access_type: public_method
+            serialized_name: AdminEnded
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getAdminEnded
+                setter: setAdminEnded
+            type: bool
+        soldAsBin:
+            expose: true
+            access_type: public_method
+            serialized_name: SoldAsBin
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSoldAsBin
+                setter: setSoldAsBin
+            type: bool
+        quantitySoldByPickupInStore:
+            expose: true
+            access_type: public_method
+            serialized_name: QuantitySoldByPickupInStore
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getQuantitySoldByPickupInStore
+                setter: setQuantitySoldByPickupInStore
+            type: int
+        suggestedBidValues:
+            expose: true
+            access_type: public_method
+            serialized_name: SuggestedBidValues
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSuggestedBidValues
+                setter: setSuggestedBidValues
+            type: array<Nogrod\eBaySDK\Trading\AmountType>
+            xml_list:
+                inline: false
+                entry_name: BidValue
+                skip_when_empty: true
+                namespace: 'urn:ebay:apis:eBLBaseComponents'

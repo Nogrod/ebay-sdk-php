@@ -1,0 +1,40 @@
+Nogrod\eBaySDK\MerchantData\EBayPLUSPreferenceType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        country:
+            expose: true
+            access_type: public_method
+            serialized_name: Country
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCountry
+                setter: setCountry
+            type: string
+        optInStatus:
+            expose: true
+            access_type: public_method
+            serialized_name: OptInStatus
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getOptInStatus
+                setter: setOptInStatus
+            type: bool
+        listingPreference:
+            expose: true
+            access_type: public_method
+            serialized_name: ListingPreference
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getListingPreference
+                setter: setListingPreference
+            type: bool

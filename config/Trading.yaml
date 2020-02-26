@@ -1,0 +1,14 @@
+xml_client:
+  namespaces:
+    'urn:ebay:apis:eBLBaseComponents': 'Nogrod\eBaySDK\Trading'
+  destinations_php:
+    'Nogrod\eBaySDK\Trading': src/Trading
+  destinations_jms:
+    'Nogrod\eBaySDK\Trading': metadata/Trading
+  metadata:
+    'wsdl/Trading.wsdl': ~
+  patch_fields:
+    AbstractRequestType:
+      RequesterCredentials: XMLRequesterCredentialsType
+  configs_jms:
+    xml_cdata: false

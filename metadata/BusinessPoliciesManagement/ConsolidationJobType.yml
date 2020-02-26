@@ -1,0 +1,51 @@
+Nogrod\eBaySDK\BusinessPoliciesManagement\ConsolidationJobType:
+    virtual_properties:
+        ns_prop:
+            exp: '"http://www.ebay.com/marketplace/selling/v1/services"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        jobId:
+            expose: true
+            access_type: public_method
+            serialized_name: JobId
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getJobId
+                setter: setJobId
+            type: int
+        jobType:
+            expose: true
+            access_type: public_method
+            serialized_name: JobType
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getJobType
+                setter: setJobType
+            type: string
+        jobStatus:
+            expose: true
+            access_type: public_method
+            serialized_name: JobStatus
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getJobStatus
+                setter: setJobStatus
+            type: string
+        siteId:
+            expose: true
+            access_type: public_method
+            serialized_name: SiteId
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getSiteId
+                setter: setSiteId
+            type: int

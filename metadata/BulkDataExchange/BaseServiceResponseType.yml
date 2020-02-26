@@ -1,0 +1,56 @@
+Nogrod\eBaySDK\BulkDataExchange\BaseServiceResponseType:
+    virtual_properties:
+        ns_prop:
+            exp: '"http://www.ebay.com/marketplace/services"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        ack:
+            expose: true
+            access_type: public_method
+            serialized_name: ack
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/services'
+            accessor:
+                getter: getAck
+                setter: setAck
+            type: string
+        errorMessage:
+            expose: true
+            access_type: public_method
+            serialized_name: errorMessage
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/services'
+            accessor:
+                getter: getErrorMessage
+                setter: setErrorMessage
+            type: array<Nogrod\eBaySDK\BulkDataExchange\ErrorDataType>
+            xml_list:
+                inline: false
+                entry_name: error
+                skip_when_empty: true
+                namespace: 'http://www.ebay.com/marketplace/services'
+        version:
+            expose: true
+            access_type: public_method
+            serialized_name: version
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/services'
+            accessor:
+                getter: getVersion
+                setter: setVersion
+            type: string
+        timestamp:
+            expose: true
+            access_type: public_method
+            serialized_name: timestamp
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/services'
+            accessor:
+                getter: getTimestamp
+                setter: setTimestamp
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime

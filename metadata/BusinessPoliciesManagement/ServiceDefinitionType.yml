@@ -1,0 +1,51 @@
+Nogrod\eBaySDK\BusinessPoliciesManagement\ServiceDefinitionType:
+    virtual_properties:
+        ns_prop:
+            exp: '"http://www.ebay.com/marketplace/selling/v1/services"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        superscript:
+            expose: true
+            access_type: public_method
+            serialized_name: superscript
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getSuperscript
+                setter: setSuperscript
+            type: string
+        maxDeliveryServiceDefinition:
+            expose: true
+            access_type: public_method
+            serialized_name: maxDeliveryServiceDefinition
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getMaxDeliveryServiceDefinition
+                setter: setMaxDeliveryServiceDefinition
+            type: int
+        minDeliveryServiceDefinition:
+            expose: true
+            access_type: public_method
+            serialized_name: minDeliveryServiceDefinition
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getMinDeliveryServiceDefinition
+                setter: setMinDeliveryServiceDefinition
+            type: int
+        name:
+            expose: true
+            access_type: public_method
+            serialized_name: name
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getName
+                setter: setName
+            type: string

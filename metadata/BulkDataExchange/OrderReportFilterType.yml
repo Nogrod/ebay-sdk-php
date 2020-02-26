@@ -1,0 +1,95 @@
+Nogrod\eBaySDK\BulkDataExchange\OrderReportFilterType:
+    virtual_properties:
+        ns_prop:
+            exp: '"http://www.ebay.com/marketplace/services"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        createTimeFrom:
+            expose: true
+            access_type: public_method
+            serialized_name: createTimeFrom
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/services'
+            accessor:
+                getter: getCreateTimeFrom
+                setter: setCreateTimeFrom
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime
+        createTimeTo:
+            expose: true
+            access_type: public_method
+            serialized_name: createTimeTo
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/services'
+            accessor:
+                getter: getCreateTimeTo
+                setter: setCreateTimeTo
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime
+        modTimeFrom:
+            expose: true
+            access_type: public_method
+            serialized_name: modTimeFrom
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/services'
+            accessor:
+                getter: getModTimeFrom
+                setter: setModTimeFrom
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime
+        modTimeTo:
+            expose: true
+            access_type: public_method
+            serialized_name: modTimeTo
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/services'
+            accessor:
+                getter: getModTimeTo
+                setter: setModTimeTo
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime
+        includeFinalValueFee:
+            expose: true
+            access_type: public_method
+            serialized_name: includeFinalValueFee
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/services'
+            accessor:
+                getter: getIncludeFinalValueFee
+                setter: setIncludeFinalValueFee
+            type: bool
+        listingType:
+            expose: true
+            access_type: public_method
+            serialized_name: listingType
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/services'
+            accessor:
+                getter: getListingType
+                setter: setListingType
+            type: string
+        orderStatus:
+            expose: true
+            access_type: public_method
+            serialized_name: orderStatus
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/services'
+            accessor:
+                getter: getOrderStatus
+                setter: setOrderStatus
+            type: string
+        version:
+            expose: true
+            access_type: public_method
+            serialized_name: version
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/services'
+            accessor:
+                getter: getVersion
+                setter: setVersion
+            type: int

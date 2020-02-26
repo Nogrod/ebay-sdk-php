@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\Trading\RespondToBestOfferRequest:
+    xml_root_name: RespondToBestOfferRequest
+    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

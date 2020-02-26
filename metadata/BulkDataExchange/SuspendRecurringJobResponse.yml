@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\BulkDataExchange\SuspendRecurringJobResponse:
+    xml_root_name: suspendRecurringJobResponse
+    xml_root_namespace: 'http://www.ebay.com/marketplace/services'

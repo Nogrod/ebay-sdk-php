@@ -1,0 +1,40 @@
+Nogrod\eBaySDK\MerchantData\FeedbackInfoType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        commentText:
+            expose: true
+            access_type: public_method
+            serialized_name: CommentText
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCommentText
+                setter: setCommentText
+            type: string
+        commentType:
+            expose: true
+            access_type: public_method
+            serialized_name: CommentType
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCommentType
+                setter: setCommentType
+            type: string
+        targetUser:
+            expose: true
+            access_type: public_method
+            serialized_name: TargetUser
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getTargetUser
+                setter: setTargetUser
+            type: string

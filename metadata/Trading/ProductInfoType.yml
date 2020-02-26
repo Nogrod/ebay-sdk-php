@@ -1,0 +1,60 @@
+Nogrod\eBaySDK\Trading\ProductInfoType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        productInfoID:
+            expose: true
+            access_type: public_method
+            serialized_name: productInfoID
+            accessor:
+                getter: getProductInfoID
+                setter: setProductInfoID
+            xml_attribute: true
+            type: string
+        averageStartPrice:
+            expose: true
+            access_type: public_method
+            serialized_name: AverageStartPrice
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getAverageStartPrice
+                setter: setAverageStartPrice
+            type: Nogrod\eBaySDK\Trading\AmountType
+        averageSoldPrice:
+            expose: true
+            access_type: public_method
+            serialized_name: AverageSoldPrice
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getAverageSoldPrice
+                setter: setAverageSoldPrice
+            type: Nogrod\eBaySDK\Trading\AmountType
+        title:
+            expose: true
+            access_type: public_method
+            serialized_name: Title
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getTitle
+                setter: setTitle
+            type: string
+        productState:
+            expose: true
+            access_type: public_method
+            serialized_name: ProductState
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getProductState
+                setter: setProductState
+            type: string

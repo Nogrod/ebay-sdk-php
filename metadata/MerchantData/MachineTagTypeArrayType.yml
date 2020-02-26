@@ -1,0 +1,22 @@
+Nogrod\eBaySDK\MerchantData\MachineTagTypeArrayType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        tagType:
+            expose: true
+            access_type: public_method
+            serialized_name: TagType
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getTagType
+                setter: setTagType
+            xml_list:
+                inline: true
+                entry_name: TagType
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<string>

@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\Trading\GetChallengeTokenRequest:
+    xml_root_name: GetChallengeTokenRequest
+    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

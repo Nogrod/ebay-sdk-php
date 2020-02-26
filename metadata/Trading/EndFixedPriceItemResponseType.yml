@@ -1,0 +1,29 @@
+Nogrod\eBaySDK\Trading\EndFixedPriceItemResponseType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        endTime:
+            expose: true
+            access_type: public_method
+            serialized_name: EndTime
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getEndTime
+                setter: setEndTime
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime
+        sKU:
+            expose: true
+            access_type: public_method
+            serialized_name: SKU
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSKU
+                setter: setSKU
+            type: string

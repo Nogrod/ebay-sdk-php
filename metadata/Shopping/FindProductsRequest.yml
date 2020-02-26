@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\Shopping\FindProductsRequest:
+    xml_root_name: FindProductsRequest
+    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

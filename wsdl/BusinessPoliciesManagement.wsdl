@@ -1,0 +1,2428 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
+	xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
+	xmlns:tns="http://www.ebay.com/marketplace/selling/v1/services"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	name="SellerProfilesManagementService"
+	targetNamespace="http://www.ebay.com/marketplace/selling/v1/services">
+	<wsdl:types>
+		<xs:schema attributeFormDefault="unqualified"
+			elementFormDefault="qualified"
+			targetNamespace="http://www.ebay.com/marketplace/selling/v1/services">
+            <xs:simpleType name="AckValue">
+				<xs:annotation>
+					<xs:documentation>
+						Indicates whether the error is a severe error
+						(causing the request to fail) or an
+						informational error (a warning) that should be
+						communicated to the user.
+					</xs:documentation>
+					<xs:appinfo>
+						<typeLibrarySource
+							library="MarketPlaceServiceCommonTypeLibrary"
+							namespace="http://www.ebay.com/marketplace/services" />
+					</xs:appinfo>
+				</xs:annotation>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="Success">
+						<xs:annotation>
+							<xs:documentation>
+								The request was processed successfully,
+								but something occurred that may affect
+								your application or the user.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="Failure">
+						<xs:annotation>
+							<xs:documentation>
+								The request that triggered the error was
+								not processed successfully. When a
+								serious application-level error occurs,
+								the error is returned instead of the
+								business data.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="Warning">
+						<xs:annotation>
+							<xs:documentation>
+								The request that triggered the error was
+								processed successfully but with some
+								warnings.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="PartialFailure">
+						<xs:annotation>
+							<xs:documentation>
+								The request that triggered the error was
+								processed successfully but with some
+								warnings.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:enumeration>
+				</xs:restriction>
+			</xs:simpleType>
+
+			<xs:complexType abstract="true" name="BaseRequest">
+				<xs:annotation>
+					<xs:documentation>
+						This is the base class for request container for
+						all service operations.
+					</xs:documentation>
+					<xs:appinfo>
+						<typeLibrarySource
+							library="MarketPlaceServiceCommonTypeLibrary"
+							namespace="http://www.ebay.com/marketplace/services" />
+					</xs:appinfo>
+				</xs:annotation>
+				<xs:sequence>
+					<xs:element maxOccurs="unbounded" minOccurs="0"
+						name="extension" type="tns:ExtensionType" />
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType abstract="true" name="BaseResponse">
+				<xs:annotation>
+					<xs:documentation>
+						Base response container for all service
+						operations. Contains error information
+						associated with the request.
+					</xs:documentation>
+					<xs:appinfo>
+						<typeLibrarySource
+							library="MarketPlaceServiceCommonTypeLibrary"
+							namespace="http://www.ebay.com/marketplace/services" />
+					</xs:appinfo>
+				</xs:annotation>
+				<xs:sequence>
+					<xs:element name="ack" type="tns:AckValue">
+						<xs:annotation>
+							<xs:documentation />
+							<xs:appinfo>
+								<CallInfo>
+									<AllCalls />
+									<Returned>Always</Returned>
+								</CallInfo>
+							</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" name="errorMessage"
+						type="tns:ErrorMessage">
+						<xs:annotation>
+							<xs:documentation>
+								Information for an error or warning that
+								occurred when eBay processed the
+								request.
+							</xs:documentation>
+							<xs:appinfo>
+								<CallInfo>
+									<AllCalls />
+									<Returned>Conditionally</Returned>
+								</CallInfo>
+							</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" name="version"
+						type="xs:string">
+						<xs:annotation>
+							<xs:documentation />
+							<xs:appinfo>
+								<CallInfo>
+									<AllCalls />
+									<Returned>Always</Returned>
+								</CallInfo>
+							</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" name="timestamp"
+						type="xs:dateTime">
+						<xs:annotation>
+							<xs:documentation>
+								This value represents the date and time when eBay processed the request. The time zone of this value is GMT and the format is the ISO 8601 date and time format (YYYY-MM-DDTHH:MM:SS.SSSZ). See Time Values in the eBay Web Services guide for information about this time format and converting to and from the GMT time zone.
+							</xs:documentation>
+							<xs:appinfo>
+								<CallInfo>
+									<AllCalls />
+									<Returned>Always</Returned>
+								</CallInfo>
+							</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="unbounded" minOccurs="0"
+						name="extension" type="tns:ExtensionType" />
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:simpleType name="ErrorCategory">
+				<xs:annotation>
+					<xs:documentation>
+						Documentation goes here.
+					</xs:documentation>
+					<xs:appinfo>
+						<typeLibrarySource
+							library="SOACommonTypeLibrary"
+							namespace="http://www.ebay.com/marketplace/services" />
+					</xs:appinfo>
+				</xs:annotation>
+				<xs:restriction base="xs:token">
+					<xs:enumeration value="System" />
+					<xs:enumeration value="Application" />
+					<xs:enumeration value="Request" />
+				</xs:restriction>
+			</xs:simpleType>
+
+			<xs:complexType name="ErrorData">
+				<xs:annotation>
+					<xs:documentation>
+						Documentation goes here
+					</xs:documentation>
+					<xs:appinfo>
+						<typeLibrarySource
+							library="SOACommonTypeLibrary"
+							namespace="http://www.ebay.com/marketplace/services" />
+					</xs:appinfo>
+				</xs:annotation>
+				<xs:sequence>
+					<xs:element name="errorId" type="xs:long" />
+					<xs:element name="domain" type="xs:string" />
+					<xs:element minOccurs="0" name="subdomain"
+						type="xs:string" />
+					<xs:element name="severity"
+						type="tns:ErrorSeverity" />
+					<xs:element name="category"
+						type="tns:ErrorCategory" />
+					<xs:element name="message" type="xs:string" />
+					<xs:element minOccurs="0" name="exceptionId"
+						type="xs:token" />
+					<xs:element maxOccurs="unbounded" minOccurs="0"
+						name="parameter" type="tns:ErrorParameter" />
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="ErrorMessage">
+				<xs:annotation>
+					<xs:documentation>
+						Documentation goes here
+					</xs:documentation>
+					<xs:appinfo>
+						<typeLibrarySource
+							library="SOACommonTypeLibrary"
+							namespace="http://www.ebay.com/marketplace/services" />
+					</xs:appinfo>
+				</xs:annotation>
+				<!--
+					<xs:sequence>
+					<xs:any maxOccurs="unbounded" minOccurs="0"
+					processContents="lax" />
+					</xs:sequence>
+				-->
+				<xs:sequence>
+					<xs:element maxOccurs="unbounded" minOccurs="0"
+						name="error" type="tns:ErrorData" />
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="ErrorParameter">
+				<xs:annotation>
+					<xs:documentation>
+						Documentation goes here
+					</xs:documentation>
+					<xs:appinfo>
+						<typeLibrarySource
+							library="SOACommonTypeLibrary"
+							namespace="http://www.ebay.com/marketplace/services" />
+					</xs:appinfo>
+				</xs:annotation>
+				<xs:simpleContent>
+					<xs:extension base="xs:string">
+						<xs:attribute name="name" type="xs:string"
+							use="optional" />
+					</xs:extension>
+				</xs:simpleContent>
+			</xs:complexType>
+
+			<xs:simpleType name="ErrorSeverity">
+				<xs:annotation>
+					<xs:documentation>
+						Documentation goes here.
+					</xs:documentation>
+					<xs:appinfo>
+						<typeLibrarySource
+							library="SOACommonTypeLibrary"
+							namespace="http://www.ebay.com/marketplace/services" />
+					</xs:appinfo>
+				</xs:annotation>
+				<xs:restriction base="xs:token">
+					<xs:enumeration value="Error" />
+					<xs:enumeration value="Warning" />
+				</xs:restriction>
+			</xs:simpleType>
+
+			<xs:complexType name="ExtensionType">
+				<xs:annotation>
+					<xs:documentation>
+						Reserved for future use.
+					</xs:documentation>
+					<xs:appinfo>
+						<typeLibrarySource
+							library="MarketPlaceServiceCommonTypeLibrary"
+							namespace="http://www.ebay.com/marketplace/services" />
+					</xs:appinfo>
+				</xs:annotation>
+				<xs:sequence>
+					<xs:element name="id" type="xs:positiveInteger" />
+					<xs:element name="version" type="xs:string" />
+					<xs:element name="contentType" type="xs:string" />
+					<xs:element name="value" type="xs:string" />
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:element name="getVersionRequest"	type="tns:GetVersionRequest">
+      </xs:element>
+
+			<xs:complexType name="GetVersionRequest">
+				<xs:annotation>
+					<xs:documentation>
+						Use this call to obtain the current version of Business policies service that the seller is using.
+					</xs:documentation>
+				</xs:annotation>
+				<xs:complexContent>
+					<xs:extension base="tns:BaseRequest">
+						<xs:sequence />
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+
+			<xs:element name="getVersionResponse" type="tns:GetVersionResponse">
+      </xs:element>
+
+			<xs:complexType name="GetVersionResponse">
+				<xs:annotation>
+					<xs:documentation>
+						Response container for the current version of business services the seller is using.
+					</xs:documentation>
+				</xs:annotation>
+				<xs:complexContent>
+					<xs:extension base="tns:BaseResponse">
+						<xs:sequence />
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+
+
+			<xs:element name="removeProfileRequest" type="tns:RemoveProfileRequest">
+			</xs:element>
+
+			<xs:element name="removeProfileResponse" type="tns:RemoveProfileResponse">
+			</xs:element>
+
+			<xs:complexType name="RemoveProfileRequest">
+				<xs:annotation>
+					<xs:documentation>
+						Use this call to delete an existing policy for a seller.
+          </xs:documentation>
+				</xs:annotation>
+				<xs:complexContent>
+					<xs:extension base="tns:BaseRequest">
+						<xs:sequence>
+							<xs:element name="profileId"	type="xs:long" maxOccurs="1" minOccurs="1">
+								<xs:annotation>
+									<xs:documentation>
+										Unique identifier for a seller profile. Pass this value into a removeProfile request to remove a specific seller profile.
+									</xs:documentation>
+									<xs:appinfo>
+										<callInfo>
+											<callName>removeProfile</callName>
+											<requiredInput>Yes</requiredInput>
+										</callInfo>
+									</xs:appinfo>
+								</xs:annotation>
+							</xs:element>
+						</xs:sequence>
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+
+			<xs:complexType name="RemoveProfileResponse">
+				<xs:annotation>
+					<xs:documentation>
+						The response container for removeProfile call.
+          </xs:documentation>
+				</xs:annotation>
+				<xs:complexContent>
+					<xs:extension base="tns:BaseResponse">
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+
+			<xs:element name="addSellerProfileRequest" type="tns:AddSellerProfileRequest">
+			</xs:element>
+
+			<xs:element name="addSellerProfileResponse" type="tns:AddSellerProfileResponse">
+
+			</xs:element>
+
+			<xs:complexType name="AddSellerProfileRequest">
+			<xs:annotation>
+				<xs:documentation>
+					Use this call to create new payment, return, and shipping policies for a seller.
+				</xs:documentation>
+			</xs:annotation>
+			 <xs:complexContent>
+			  <xs:extension base="tns:BaseRequest">
+			  	<xs:sequence>
+						<xs:element name="paymentProfile"
+							type="tns:PaymentProfile" maxOccurs="1" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>
+									Root container for a seller&#39;s payment policy for a category group. Required.
+								</xs:documentation>
+								<xs:appinfo>
+									<callInfo>
+										<callName>addSellerProfile</callName>
+										<requiredInput>Yes</requiredInput>
+									</callInfo>
+										<callInfo>
+											<callName>getSellerProfiles</callName>
+											<returned>Always</returned>
+										</callInfo>
+								</xs:appinfo>
+			 	      </xs:annotation>
+						</xs:element>
+						<xs:element name="returnPolicyProfile"
+							type="tns:ReturnPolicyProfile" maxOccurs="1" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>
+									Root container consisting of a seller&#39;s return policy for a category group. Optional. Container returned if seller has specified a return policy.
+								</xs:documentation>
+								<xs:appinfo>
+									<callInfo>
+										<callName>addSellerProfile</callName>
+										<requiredInput>Conditionally</requiredInput>
+									</callInfo>
+										<callInfo>
+											<callName>getSellerProfiles</callName>
+											<returned>Conditionally</returned>
+										</callInfo>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="shippingPolicyProfile" type="tns:ShippingPolicyProfile" maxOccurs="1" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>
+									Root container consisting of a seller&#39;s shipping policy for a category group.. Optional. Container returned if seller has specified a shipping policy.
+								</xs:documentation>
+									<xs:appinfo>
+										<callInfo>
+											<callName>addSellerProfile</callName>
+											<requiredInput>Conditionally</requiredInput>
+										</callInfo>
+										<callInfo>
+											<callName>getSellerProfiles</callName>
+											<returned>Conditionally</returned>
+										</callInfo>
+								</xs:appinfo>
+			 	      </xs:annotation>
+					 </xs:element>
+   				</xs:sequence>
+   			</xs:extension>
+	  		</xs:complexContent>
+	  	</xs:complexType>
+
+			<xs:complexType name="AddSellerProfileResponse">
+				<xs:annotation>
+					<xs:documentation>
+						Response container for addSellerProfile that indicates whether the call successfully added a business policy for a seller.
+					</xs:documentation>
+				</xs:annotation>
+				<xs:complexContent>
+					<xs:extension base="tns:BaseResponse">
+						<xs:sequence>
+							<xs:element name="paymentProfile"
+								type="tns:PaymentProfile" maxOccurs="1" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>
+										Root container consisting of a seller&#39;s payment policy for a category group that was created.
+									</xs:documentation>
+									<xs:appinfo>
+									  <callInfo>
+										<callName>addSellerProfile</callName>
+											<returned>Conditionally</returned>
+										</callInfo>
+									</xs:appinfo>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="returnPolicyProfile"
+							 type="tns:ReturnPolicyProfile" maxOccurs="1" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>
+										Root container consisting of a seller&#39;s return policy for a category group.
+									</xs:documentation>
+									<xs:appinfo>
+										<callInfo>
+											<callName>addSellerProfile</callName>
+											<callName>getSellerProfile</callName>
+											<returned>Conditionally</returned>
+										</callInfo>
+									</xs:appinfo>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="shippingPolicyProfile" type="tns:ShippingPolicyProfile" maxOccurs="1" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>
+										Root container consisting of a seller&#39;s shipping policy for a category group.
+									</xs:documentation>
+									<xs:appinfo>
+										<callInfo>
+											<callName>addSellerProfile</callName>
+											<returned>Conditionally</returned>
+										</callInfo>
+									</xs:appinfo>
+								</xs:annotation>
+							</xs:element>
+						</xs:sequence>
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+
+			<xs:element name="getSellerProfilesRequest" type="tns:GetSellerProfilesRequest">
+			</xs:element>
+
+			<xs:element name="getSellerProfilesResponse" type="tns:GetSellerProfilesResponse">
+			</xs:element>
+
+			<xs:element name="setSellerProfileRequest" type="tns:SetSellerProfileRequest">
+			</xs:element>
+
+			<xs:element name="setSellerProfileResponse" type="tns:SetSellerProfileResponse">
+			</xs:element>
+
+			<xs:complexType name="SetSellerProfileRequest">
+				<xs:annotation>
+					<xs:documentation>
+						Use this call to modify or update an existing business policy. Within a single setSellerProfile request, you can modify one of each type of policy (payment, return, and/or shipping).
+					</xs:documentation>
+    		</xs:annotation>
+				<xs:complexContent>
+					<xs:extension base="tns:BaseRequest">
+						<xs:sequence>
+							<xs:element name="paymentProfile"
+								type="tns:PaymentProfile" maxOccurs="1" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>
+										Root container consisting of a seller&#39;s payment policy for a category group that was created with the addSellerProfile call. Only pass in values for the fields you want to change. To delete
+										an optional field, pass the field with an empty value.
+									</xs:documentation>
+									<xs:appinfo>
+										<callInfo>
+											<callName>setSellerProfile</callName>
+											<requiredInput>Conditionally</requiredInput>
+										</callInfo>
+									</xs:appinfo>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="returnPolicyProfile"
+								type="tns:ReturnPolicyProfile" maxOccurs="1" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>
+										Root container consisting of a seller&#39;s return policy for a category group that was created with the addSellerProfile call. Only pass in values for the fields you want to change. To delete
+										an optional field, pass the field with an empty value.
+									</xs:documentation>
+									<xs:appinfo>
+										<callInfo>
+											<callName>setSellerProfile</callName>
+											<requiredInput>Conditionally</requiredInput>
+										</callInfo>
+									</xs:appinfo>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="shippingPolicyProfile" type="tns:ShippingPolicyProfile" maxOccurs="1" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>
+										Root container consisting of a seller&#39;s shipping policy for a category group that was created with the addSellerProfile call. Only pass in values for the fields you want to change. To delete
+										an optional field, pass the field with an empty value.
+									</xs:documentation>
+									<xs:appinfo>
+										<callInfo>
+											<callName>setSellerProfile</callName>
+											<requiredInput>Conditionally</requiredInput>
+										</callInfo>
+										<callInfo>
+											<callName>setSellerProfile</callName>
+											<returned>Conditionally</returned>
+										</callInfo>
+									</xs:appinfo>
+								</xs:annotation>
+							</xs:element>
+						</xs:sequence>
+					</xs:extension>
+      	</xs:complexContent>
+			</xs:complexType>
+
+			<xs:complexType name="SetSellerProfileResponse">
+				<xs:annotation>
+					<xs:documentation>
+						This is the root container that returns all business policies for a specific seller that can be updated.
+					</xs:documentation>
+    		</xs:annotation>
+				<xs:complexContent>
+					<xs:extension base="tns:BaseResponse">
+						<xs:sequence>
+							<xs:element name="paymentProfile"
+								type="tns:PaymentProfile" maxOccurs="1" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>
+										Container that has the details of the payment policy that a seller updated.
+									</xs:documentation>
+									<xs:appinfo>
+										<callInfo>
+											<callName>setSellerProfile</callName>
+						          <callName>getSellerProfiles</callName>
+											<returned>Conditionally</returned>
+										</callInfo>
+									</xs:appinfo>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="returnPolicyProfile"
+								type="tns:ReturnPolicyProfile" maxOccurs="1" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>
+										Container that has the details of the returns policy that a seller updated.
+									</xs:documentation>
+									<xs:appinfo>
+										<callInfo>
+											<callName>setSellerProfile</callName>
+											<callName>getSellerProfiles</callName>
+											<returned>Conditionally</returned>
+										</callInfo>
+									</xs:appinfo>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="shippingPolicyProfile" type="tns:ShippingPolicyProfile" maxOccurs="1" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>
+										Container that has the details of the shipping policy that a seller updated.
+									</xs:documentation>
+									<xs:appinfo>
+										<callInfo>
+											<callName>setSellerProfile</callName>
+											<requiredInput>Conditionally</requiredInput>
+										</callInfo>
+										<callInfo>
+											<callName>setSellerProfile</callName>
+											<callName>getSellerProfiles</callName>
+											<returned>Conditionally</returned>
+										</callInfo>
+									</xs:appinfo>
+								</xs:annotation>
+							</xs:element>
+						</xs:sequence>
+    			</xs:extension>
+      	</xs:complexContent>
+			</xs:complexType>
+
+      <xs:complexType name="GetSellerProfilesResponse">
+				<xs:annotation>
+					<xs:documentation>
+						This is the root container that returns all business policies for a specific seller.
+					</xs:documentation>
+    		</xs:annotation>
+        <xs:complexContent>
+			   <xs:extension base="tns:BaseResponse">
+            	<xs:sequence>
+            		<xs:element name="paymentProfileList"	type="tns:PaymentProfileList" maxOccurs="1" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>
+			          			Container for a list of payment policies that a seller provides. This container can list one or more payment policies that a seller offers.
+			 							 </xs:documentation>
+										<xs:appinfo>
+										<!--Removed callinfo that had removeProfile as requiredInput-->
+										<!--Replace callinfo that had removeProfile with getSellerProfiles returned; within PaymentProfileList-->
+											<callInfo>
+												<callName>getSellerProfiles</callName>
+												<returned>Always</returned>
+											</callInfo>
+										</xs:appinfo>
+									</xs:annotation>
+            		</xs:element>
+            		<xs:element name="returnPolicyProfileList"
+            			type="tns:ReturnPolicyProfileList" maxOccurs="1"	minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>
+											The top-level container for a returns policy that a seller created.
+										</xs:documentation>
+										<xs:appinfo>
+											<callInfo>
+												<callName>getSellerProfiles</callName>
+												<returned>Always</returned>
+											</callInfo>
+										</xs:appinfo>
+									</xs:annotation>
+            		</xs:element>
+            		<xs:element name="shippingPolicyProfile" type="tns:ShippingPolicyProfileList" maxOccurs="1" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>
+											The top-level container for a shipping policy that a seller created.
+										</xs:documentation>
+										<xs:appinfo>
+											<callInfo>
+												<callName>getSellerProfiles</callName>
+												<returned>Always</returned>
+											</callInfo>
+										</xs:appinfo>
+									</xs:annotation>
+            		</xs:element>
+            	</xs:sequence>
+			  </xs:extension>
+			</xs:complexContent>
+    </xs:complexType>
+
+	<xs:complexType name="GetSellerProfilesRequest">
+		<xs:annotation>
+			<xs:documentation>
+				Use this call to obtain all the business policies that a seller has created.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="tns:BaseRequest">
+				<xs:sequence>
+					<xs:element name="profileType" type="tns:ProfileType" maxOccurs="unbounded" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>
+							 <!--Ask Shweta if the values are case sensitive-->
+								The types of business policies that a seller can create. Valid values are PAYMENT, RETURN_POLICY, and SHIPPING. A seller can have multiple policies for each type of business policy. Pass any one of the valid values into a getSellerProfiles request.
+							</xs:documentation>
+							<xs:appinfo>
+								<callInfo>
+									<callName>getSellerProfiles</callName>
+									<requiredInput>Conditionally</requiredInput>
+								</callInfo>
+							</xs:appinfo>
+			 	    </xs:annotation>
+					</xs:element>
+					<xs:element name="profileId" type="xs:long" maxOccurs="unbounded" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>
+							Unique identifier for a seller's profile. Pass this value into a getSellerProfiles request for displaying a specific seller's profile. This field is optional if you  have passed a profileName in a getSellerProfiles request.
+							</xs:documentation>
+							<xs:appinfo>
+								<callInfo>
+									<callName>getSellerProfiles</callName>
+									<requiredInput>Conditionally</requiredInput>
+								</callInfo>
+							</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="profileName" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>
+							 	<!--Are spaces or special characters allowed?-->
+							Unique name for a seller's profile. Pass this value into a getSellerProfiles request
+							for displaying a specific seller's profile. This field is optional if you have passed profileId in a getSellerProfiles request.
+							Max length: 50 characters.
+							</xs:documentation>
+							<xs:appinfo>
+								<callInfo>
+									<callName>getSellerProfiles</callName>
+									<requiredInput>Conditionally</requiredInput>
+								</callInfo>
+							</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="includeDetails" type="xs:boolean" maxOccurs="1" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>
+							 This optional flag determines whether to return more detailed information about a seller's profile. If set to true
+							 (which is the default), the call returns details from the paymentinfo, returnPolicyInfo, and
+							 shippingPolicyInfo containers. If set to false, the call does not return any details from the paymentinfo, returnPolicyInfo, and
+							 shippingPolicyInfo containers.
+							</xs:documentation>
+							<xs:appinfo>
+								<callInfo>
+								 <callName>getSellerProfiles</callName>
+								 <requiredInput>Conditionally</requiredInput>
+								</callInfo>
+							</xs:appinfo>
+			    	</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			 </xs:extension>
+			</xs:complexContent>
+    </xs:complexType>
+
+
+
+
+	<xs:complexType name="DeliveryEstimateMetaInfo">
+		<xs:annotation>
+			<xs:documentation>This info structure is populated with data specific
+				to a particular algorithm that is used.
+      </xs:documentation>
+   		<xs:appinfo><typeLibrarySource library="ShippingDomainTypeLibrary" namespace="http://www.ebay.com/marketplace/shipping/v1/services"></typeLibrarySource></xs:appinfo>
+   	</xs:annotation>
+		<xs:sequence>
+			<xs:element name="key" type="xs:token">
+				<xs:annotation>
+					<xs:documentation>Possible values are:
+						ExternalId
+						ItemId
+						SellerId
+						BuyerId
+						SGuid
+						PGuid
+						TransactionId</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="value" type="xs:token"></xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+
+
+
+
+	<xs:complexType name="ShippingPolicyService">
+		<xs:annotation>
+			<xs:documentation>
+			 ShippingPolicyService:
+			</xs:documentation>
+		<xs:appinfo>
+			<typeLibrarySource library="ShippingDomainTypeLibrary" namespace="http://www.ebay.com/marketplace/shipping/v1/services"></typeLibrarySource></xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element maxOccurs="unbounded" minOccurs="0" name="shipToLocation" type="xs:token">
+				<xs:annotation>
+					<xs:documentation>
+						<!--PM says the type is string()-->
+			      <!--Developer says ShipToLocation element is "NA. This field is not used." Should it be marked as "Reserved for future use"?-->
+			      <!--1-20-12 Murali says this field is a container for both domestic and  shipping. For domestic shipping, this field does not make sense (so leave it blank) For international, use internationalshippingserviceoption.shiptolocation.-->
+
+             <!--from murali 1-24-12-->
+
+						An international location or region to where the item seller will ship the item. These values are string equivalents of values found in ShippingRegionCodeType and CountryCodeType.
+						 See ShipToLocation.
+						 <!--http://developer.ebay.com/DevZone/XML/docs/WebHelp/index.htm?context=eBay_XML_API&topic=ShipToLocation-->
+
+             Applicable values: See CountryCodeType <!--http://developer.ebay.com/devzone/xml/docs/reference/ebay/types/CountryCodeType.html-->, ShippingRegionCodeType <!--http://developer.ebay.com/devzone/xml/docs/reference/ebay/types/ShippingRegionCodeType.html-->
+          </xs:documentation>
+					<xs:appinfo>
+						<callInfo>
+							<callName>addSellerProfile</callName>
+							<callName>setSellerProfile</callName>
+							<requiredInput>Conditionally</requiredInput>
+						</callInfo>
+						<callInfo>
+							<callName>addSellerProfile</callName>
+							<callName>setSellerProfile</callName>
+							<callName>getSellerProfiles</callName>
+							<returned>Conditionally</returned>
+						</callInfo>
+					</xs:appinfo>
+			 	 </xs:annotation>
+			 	</xs:element>
+
+
+			<xs:element maxOccurs="1" minOccurs="1" name="shippingService" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>
+						An international shipping service being offered by the seller to ship an item to a buyer. Valid values are?????
+
+						For flat and calculated shipping.
+					</xs:documentation>
+					<xs:appinfo>
+						<callInfo>
+							<callName>addSellerProfile</callName>
+							<callName>setSellerProfile</callName>
+							<requiredInput>Conditionally</requiredInput>
+						</callInfo>
+						<callInfo>
+							<callName>addSellerProfile</callName>
+							<callName>setSellerProfile</callName>
+							<callName>getSellerProfiles</callName>
+							<returned>Conditionally</returned>
+						</callInfo>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+
+
+			<xs:element maxOccurs="1" minOccurs="0" name="shippingType" type="xs:token">
+				<xs:annotation>
+					<xs:documentation>
+						<!--PM says the type is "string"-->
+						<!--Developer added 1st line about "Type of shipping"-->
+						Defines the types of shipping.
+
+						<!--Murali: Does this paragraph I copied from the Trading API still apply to the shippingType element? Do I still need to keep the the second sentence for GetItemShipping and GetItemTransactions?  Is this still true under Business Policies?                           -->
+						The shipping cost model offered by the seller. This is not returned for various calls since shipping type can be deduced: if a CalculatedShippingRate structure is returned by the call, the shipping type is Calculated. Otherwise, it is one of the other non-Calculated shipping types.
+
+						GetItemShipping and GetItemTransactions: If the type was a mix of flat and calculated services, this is set simply to Flat or Calculated because it is the buyer's selection that results in one of these.
+
+
+						Applicable values:
+						&#149;   Calculated
+
+						(in/out) Calculated shipping model: the cost of shipping is determined in large part by the seller-offered and buyer-selected shipping service. The seller might assess an additional fee via PackagingHandlingCosts.
+
+						&#149;   CalculatedDomesticFlatInternational
+
+						(in/out) The seller specified one or more calculated domestic shipping services and one or more flat international shipping services.
+
+						&#149;   CustomCode
+
+						(in/out) Reserved for future use.
+
+						&#149;   Flat
+
+						(in/out) Flat shipping model: the seller establishes the cost of shipping and cost of shipping insurance, regardless of what any buyer-selected shipping service might charge the seller.
+
+						&#149;   FlatDomesticCalculatedInternational
+
+						(in/out) The seller specified one or more flat domestic shipping services and one or more calculated international shipping services.
+
+						&#149;   FreightFlat
+
+						(in/out) Freight shipping model: freight shipping may be used when flat or calculated shipping cannot be used due to the greater weight of the item. See "Specifying Freight Shipping" in the Shipping chapter for details on freight shipping.
+
+						&#149;   NotSpecified
+
+						(in/out) The seller did not specify the shipping type.
+
+
+						(Not all values in ShippingTypeCodeType apply to this field.)
+          </xs:documentation>
+					<xs:appinfo>
+						<callInfo>
+							<callName>addSellerProfile</callName>
+							<callName>setSellerProfile</callName>
+							<requiredInput>Conditionally</requiredInput>
+						</callInfo>
+						<callInfo>
+							<callName>addSellerProfile</callName>
+							<callName>setSellerProfile</callName>
+							<callName>getSellerProfiles</callName>
+							<returned>Conditionally</returned>
+						</callInfo>
+					</xs:appinfo>
+			 	</xs:annotation>
+			</xs:element>
+
+			<xs:element maxOccurs="1" minOccurs="0" name="sortOrderId" type="xs:int">
+				<xs:annotation>
+					<xs:documentation>
+            <!--Developer added comment below-->
+            The order of the shipping service in a given set of shipping
+						services.
+
+            <!--Edit the two paragraphs. PM says both definitions apply-->
+						This integer value controls the order (relative to other shipping services) in which the corresponding ShippingService will appear in the View Item and Checkout page. The number of shipping services you can specify depends on whether they are domestic or international.
+
+						 For domestic, sellers can specify up to four domestic shipping services (with four ShippingServiceOptions containers), so valid values are 1, 2, 3, and 4. A shipping service with a ShippingServicePriority value of 1 appears at the top. Conversely, a shipping service with a ShippingServicePriority value of 4 appears at the bottom of a list of four shipping service options.
+
+						For international, sellers can specify up to five international shipping services (with five InternationalShippingServiceOption containers), so valid values are 1, 2, 3, 4, and 5. A shipping service with a ShippingServicePriority value of 1 appears at the top. Conversely, a shipping service with a ShippingServicePriority value of 5 appears at the bottom of a list of five shipping service options.
+
+            This field is applicable to Flat and Calculated shipping.
+          </xs:documentation>
+					<xs:appinfo>
+						<callInfo>
+							<callName>addSellerProfile</callName>
+							<callName>setSellerProfile</callName>
+							<requiredInput>Conditionally</requiredInput>
+						</callInfo>
+						<callInfo>
+							<callName>addSellerProfile</callName>
+							<callName>setSellerProfile</callName>
+							<callName>getSellerProfiles</callName>
+							<returned>Conditionally</returned>
+						</callInfo>
+					</xs:appinfo>
+			 	</xs:annotation>
+			</xs:element>
+
+			<xs:element maxOccurs="1" minOccurs="0" name="freeShipping" type="xs:boolean">
+				<xs:annotation>
+					<xs:documentation>
+						<!--1st comment from developer-->
+						If set to true, this means the seller offers free shipping.
+
+						This free shipping applies only to the first specified domestic shipping service. (It is ignored if set for any other shipping service.) If the seller has required shipping insurance as part of shipping (the seller set InsuranceOption to Required) and then the seller specified FreeShipping, eBay sets the insurance cost to 0.00. However, if the seller made shipping insurance optional, eBay preserves the cost of shipping insurance; it is up to the buyer whether to buy shipping insurance, regardless of whether the seller specified FreeShipping.
+						See Specifying Free Shipping.
+          </xs:documentation>
+					<xs:appinfo>
+						<callInfo>
+							<callName>addSellerProfile</callName>
+							<callName>setSellerProfile</callName>
+							<requiredInput>Conditionally</requiredInput>
+						</callInfo>
+						<callInfo>
+							<callName>addSellerProfile</callName>
+							<callName>setSellerProfile</callName>
+							<callName>getSellerProfiles</callName>
+							<returned>Conditionally</returned>
+						</callInfo>
+					</xs:appinfo>
+			 	 </xs:annotation>
+			 </xs:element>
+
+			<xs:element maxOccurs="1" minOccurs="0" name="codFee" type="tns:Amount">
+				<xs:annotation>
+					<xs:documentation>
+					Valid only for the Italy site (site ID 101). Contains the cash-on-delivery (COD) fee for COD shipping.
+
+					See Specifying the Cash on Delivery Option in Shipping Details.
+ 					</xs:documentation>
+					<xs:appinfo>
+						<callInfo>
+							<callName>addSellerProfile</callName>
+							<callName>setSellerProfile</callName>
+							<requiredInput>Conditionally</requiredInput>
+						</callInfo>
+						<callInfo>
+							<callName>addSellerProfile</callName>
+							<callName>setSellerProfile</callName>
+							<callName>getSellerProfiles</callName>
+							<returned>Conditionally</returned>
+						</callInfo>
+					</xs:appinfo>
+			 	</xs:annotation>
+			 </xs:element>
+
+			<xs:element maxOccurs="1" minOccurs="0" name="fastShipping" type="xs:boolean">
+				<xs:annotation>
+					<xs:documentation>
+
+						If true, it indicates that the seller has committed to the GetItFast shipping rules for this listing. Therefore, the seller commits to delivering the item to the buyer-selected shipping service within one day. If false, the shipper does not offer fast shipping.
+
+						Not supported for UK Store Inventory format items.
+
+						See:
+								Enabling Multi-jurisdiction Sales Tax
+								Miscellaneous Item Field Differences
+          </xs:documentation>
+					<xs:appinfo>
+						<callInfo>
+							<callName>addSellerProfile</callName>
+							<callName>setSellerProfile</callName>
+							<requiredInput>Conditionally</requiredInput>
+						</callInfo>
+						<callInfo>
+							<callName>addSellerProfile</callName>
+							<callName>setSellerProfile</callName>
+							<callName>getSellerProfiles</callName>
+							<returned>Conditionally</returned>
+						</callInfo>
+					</xs:appinfo>
+			 	</xs:annotation>
+			</xs:element>
+
+
+			<xs:element maxOccurs="1" minOccurs="0" name="shippingServiceAdditionalCost" type="tns:Amount">
+				<xs:annotation>
+					<xs:documentation>
+					  The cost of shipping each additional item beyond the first item. For input, this is required if the listing is for multiple items. For single-item listings, it should be zero (or is defaulted to zero if not provided). For flat shipping only.
+          </xs:documentation>
+					<xs:appinfo>
+						<callInfo>
+							<callName>addSellerProfile</callName>
+							<callName>setSellerProfile</callName>
+							<requiredInput>Conditionally</requiredInput>
+						</callInfo>
+						<callInfo>
+							<callName>addSellerProfile</callName>
+							<callName>setSellerProfile</callName>
+							<callName>getSellerProfiles</callName>
+							<returned>Conditionally</returned>
+						</callInfo>
+					</xs:appinfo>
+			 	</xs:annotation>
+			</xs:element>
+
+
+			<xs:element maxOccurs="1" minOccurs="0" name="shippingServiceCost" type="tns:Amount">
+				<xs:annotation>
+					<xs:documentation>
+						The meaning of this field depends on the call and on whether flat or calculated under ShippingPolicyService.shippingType has been selected. (For example, it could be the cost to ship a single item, the cost to ship all items, or the cost to ship just the first of many items, with ShippingServiceAdditionalCost accounting for the rest.) The shippingServiceCost includes the packaging and handling cost. For flat and calculated shipping.
+
+						See Shipping.
+						<!--http://developer.ebay.com/DevZone/XML/docs/WebHelp/index.htm?context=eBay_XML_API&topic=Shipping-->
+
+						See Determining Shipping Costs for a Listing.
+						<!--http://developer.ebay.com/DevZone/XML/docs/WebHelp/index.htm?context=eBay_XML_API&topic=ShippingGettingCosts-->
+          </xs:documentation>
+					<xs:appinfo>
+						<callInfo>
+							<callName>addSellerProfile</callName>
+							<callName>setSellerProfile</callName>
+							<requiredInput>Conditionally</requiredInput>
+						</callInfo>
+						<callInfo>
+							<callName>addSellerProfile</callName>
+							<callName>setSellerProfile</callName>
+							<callName>getSellerProfiles</callName>
+							<returned>Conditionally</returned>
+						</callInfo>
+					</xs:appinfo>
+			 	</xs:annotation>
+			</xs:element>
+
+			<xs:element maxOccurs="1" minOccurs="0" name="shippingSurcharge" type="tns:Amount">
+				<xs:annotation>
+					<xs:documentation>
+						An additional fee to charge US buyers who have the item shipped via UPS or FedEx to Alaska, Hawaii or Puerto Rico. For example, some services like UPS Ground, allows seller to provide a surcharge fee in a few selected regions.
+
+						Can only be assigned a value for the eBay US site and for items in the Parts and Accessories category of the eBay Motors site. Only returned if set. If some line items in an order have a surcharge, surcharge is added only for those line items. Flat rate shipping only.
+						</xs:documentation>
+					<xs:appinfo>
+						<callInfo>
+							<callName>addSellerProfile</callName>
+							<callName>setSellerProfile</callName>
+							<requiredInput>Conditionally</requiredInput>
+						</callInfo>
+						<callInfo>
+							<callName>addSellerProfile</callName>
+							<callName>setSellerProfile</callName>
+							<callName>getSellerProfiles</callName>
+							<returned>Conditionally</returned>
+						</callInfo>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element maxOccurs="1" minOccurs="0" name="shippingOverrideFee" type="tns:Amount">
+				<xs:annotation>
+					<xs:documentation>
+						If this is set we reset shipping fee of this
+						service to zero.
+					</xs:documentation>
+					<xs:appinfo>
+						<callInfo>
+							<callName>addSellerProfile</callName>
+							<callName>setSellerProfile</callName>
+							<requiredInput>Conditionally</requiredInput>
+						</callInfo>
+						<callInfo>
+							<callName>addSellerProfile</callName>
+							<callName>setSellerProfile</callName>
+							<callName>getSellerProfiles</callName>
+							<returned>Conditionally</returned>
+						</callInfo>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element maxOccurs="1" minOccurs="0" name="buyerResponsibleForShipping" type="xs:boolean">
+				<xs:annotation>
+					<xs:documentation>
+					<!--1st line is developer comment-->
+					If true, buyer is responsible for contacting and setting up their local shipping service to transport the item. If false, buyer is not responsible for setting up the shipment of the item.
+
+					Applicable for listings in vehicle categories on the US eBay Motors site and eBay Canada site. (No business effect if specified for other categories or sites, as the Web site will not display the information to buyers.) If true, the buyer is responsible for vehicle pickup or shipping. If false, specify vehicle shipping arrangements in the item description. Default is true. (The description can also include vehicle shipping arrangements when this value is true.) If the item has bids or ends within 12 hours, you cannot modify this flag. Do not specify ShippingDetails.ShippingServiceOptions for vehicle listings.
+
+					If true and the listing is on the US eBay Motors site, and you want the listing to be visible on the eBay Canada site, set Item.ShipToLocations to CA. If true and the listing is on the eBay Canada site , and you want your listing to be visible on the US eBay Motors site, set Item.ShipToLocations to US.
+
+					</xs:documentation>
+					<xs:appinfo>
+						<callInfo>
+							<callName>addSellerProfile</callName>
+							<callName>setSellerProfile</callName>
+							<requiredInput>Conditionally</requiredInput>
+						</callInfo>
+						<callInfo>
+							<callName>addSellerProfile</callName>
+							<callName>setSellerProfile</callName>
+							<callName>getSellerProfiles</callName>
+							<returned>Conditionally</returned>
+						</callInfo>
+					</xs:appinfo>
+			 	</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+
+
+
+
+
+	<xs:complexType name="PaymentProfile">
+		<xs:annotation>
+			<xs:documentation>
+			  The root container for all payment policies.
+			</xs:documentation>
+			<xs:appinfo>
+			 <typeLibrarySource library="SellerProfilesServiceTypeLibrary" namespace="http://www.ebay.com/marketplace/selling/v1/types"></typeLibrarySource></xs:appinfo>
+		</xs:annotation>
+   		<!-- <xs:sequence />-->
+
+		<xs:complexContent>
+			<xs:extension base="tns:SellerProfile">
+				<xs:sequence>
+				<xs:element maxOccurs="1" minOccurs="0" name="paymentInfo" type="tns:PaymentInfo">
+				<xs:annotation>
+					<xs:documentation>
+						Defines the payment method that a seller accepts.
+					</xs:documentation>
+					<xs:appinfo>
+						<callInfo>
+							<callName>addSellerProfile</callName>
+							<callName>setSellerProfile</callName>
+							<requiredInput>Conditionally</requiredInput>
+						</callInfo>
+						<callInfo>
+							<callName>addSellerProfile</callName>
+							<callName>setSellerProfile</callName>
+							<callName>getSellerProfiles</callName>
+							<returned>Conditionally</returned>
+						</callInfo>
+					</xs:appinfo>
+			 	</xs:annotation>
+	      </xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="PaymentProfileList">
+		<xs:annotation>
+			<xs:documentation>
+			 The root response container for the getSellerProfiles call that lists all payment policies that a seller accepts.
+			</xs:documentation>
+		  <xs:appinfo>
+		  <typeLibrarySource library="SellerProfilesServiceTypeLibrary" namespace="http://www.ebay.com/marketplace/selling/v1/types"></typeLibrarySource>
+		  </xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element maxOccurs="unbounded" minOccurs="1" name="PaymentProfile" type="tns:PaymentProfile">
+				<xs:annotation>
+					<xs:documentation>
+						Response container for a specific payment policy that a seller accepts. This container includes the category group, profile details, and the payment information that the policy applies to.
+          </xs:documentation>
+					<xs:appinfo>
+						<callInfo>
+							<callName>getSellerProfiles</callName>
+							<requiredInput>Yes</requiredInput>
+						</callInfo>
+						<callInfo>
+							<callName>getSellerProfiles</callName>
+							<returned>Always</returned>
+						</callInfo>
+					</xs:appinfo>
+			 	</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+
+
+
+
+
+	<xs:complexType name="ReturnPolicyProfileList">
+		<xs:annotation>
+			<xs:documentation>
+			 The container for all returns policies that a seller provides.
+			</xs:documentation>
+	  	<xs:appinfo>
+	  		<typeLibrarySource library="SellerProfilesServiceTypeLibrary" namespace="http://www.ebay.com/marketplace/selling/v1/types"></typeLibrarySource>
+  		</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element maxOccurs="unbounded" minOccurs="1" name="ReturnPolicyProfile" type="tns:ReturnPolicyProfile">
+				<xs:annotation>
+					<xs:documentation>
+						Container for a specific returns policy that a seller provides.
+          </xs:documentation>
+					<xs:appinfo>
+						<callInfo>
+							<callName>getSellerProfiles</callName>
+							<returned>Always</returned>
+						</callInfo>
+					</xs:appinfo>
+			 	</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+<xs:complexType name="ShippingPolicyProfile">
+    	<xs:annotation>
+    		<xs:documentation></xs:documentation>
+    	<xs:appinfo><typeLibrarySource library="SellerProfilesServiceTypeLibrary" namespace="http://www.ebay.com/marketplace/selling/v1/types"></typeLibrarySource></xs:appinfo></xs:annotation>
+    	<xs:complexContent>
+    		<xs:extension base="tns:SellerProfile">
+    			<xs:sequence>
+    				<xs:element maxOccurs="1" minOccurs="0" name="shippingPolicyInfo" type="tns:ShippingPolicyInfo">
+    				</xs:element>
+
+
+    			</xs:sequence>
+    		</xs:extension>
+    	</xs:complexContent>
+    </xs:complexType><xs:complexType name="ShippingPolicyProfileList">
+		<xs:annotation>
+			<xs:documentation></xs:documentation>
+		<xs:appinfo><typeLibrarySource library="SellerProfilesServiceTypeLibrary" namespace="http://www.ebay.com/marketplace/selling/v1/types"></typeLibrarySource></xs:appinfo></xs:annotation>
+		<xs:sequence>
+			<xs:element maxOccurs="unbounded" minOccurs="1" name="ShippingPolicyProfile" type="tns:ShippingPolicyProfile"></xs:element>
+		</xs:sequence>
+	</xs:complexType>			<xs:element name="removeSellerProfilesResponse"
+					type="tns:RemoveSellerProfilesResponse">
+	
+				</xs:element>
+				<xs:element name="removeSellerProfilesRequest"
+					type="tns:RemoveSellerProfilesRequest">
+				</xs:element>
+				<xs:complexType name="RemoveSellerProfilesRequest">
+					<xs:complexContent>
+						<xs:extension base="tns:BaseRequest">
+							<xs:sequence>
+								<xs:element name="profileIds"
+									type="xs:long" maxOccurs="unbounded" minOccurs="1">
+								</xs:element>
+							</xs:sequence>
+						</xs:extension>
+					</xs:complexContent>
+				</xs:complexType>
+	
+				<xs:complexType name="RemoveSellerProfilesResponse">
+					<xs:complexContent>
+						<xs:extension base="tns:BaseResponse">
+							<xs:sequence>
+								<xs:element name="sellerProfileResponseStatus"
+									type="tns:SellerProfileResponseStatus" maxOccurs="unbounded" minOccurs="0">
+								</xs:element>
+							</xs:sequence>
+						</xs:extension>
+					</xs:complexContent>
+				</xs:complexType>
+	
+				<xs:complexType name="SellerProfileResponseStatus">
+					<xs:sequence>
+	                    <xs:element name="profileId" type="xs:long" maxOccurs="1" minOccurs="1"></xs:element>
+	                    <xs:element name="ack" type="tns:AckValue" maxOccurs="1" minOccurs="1"></xs:element>
+						<xs:element name="errorMessage" type="tns:ErrorMessage" maxOccurs="1" minOccurs="0"></xs:element>
+	
+					</xs:sequence>
+				</xs:complexType>
+			<xs:complexType name="PaymentInfo">
+			<xs:annotation>
+				<xs:documentation>
+					Defines the common type library for Payment type
+				</xs:documentation>
+			<xs:appinfo><typeLibrarySource library="PaymentTypeLibrary" namespace="http://www.ebay.com/marketplace/selling/v1/types"></typeLibrarySource></xs:appinfo></xs:annotation>
+			<xs:sequence>
+				<xs:element maxOccurs="unbounded" minOccurs="0" name="acceptedPaymentMethod" type="xs:token"></xs:element>
+				<xs:element maxOccurs="1" minOccurs="0" name="immediatePay" type="xs:boolean"></xs:element>
+				<xs:element maxOccurs="1" minOccurs="0" name="paymentInstructions" type="xs:string"></xs:element>
+				<xs:element maxOccurs="1" minOccurs="0" name="paypalEmailAddress" type="xs:token"></xs:element>
+				<xs:element maxOccurs="1" minOccurs="0" name="depositDetails" type="tns:DepositDetails"></xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="daysToFullPayment" type="xs:int">
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>				<xs:element name="consolidateShippingProfilesRequest" type="tns:ConsolidateShippingProfilesRequest">
+				</xs:element>
+				<xs:element name="consolidateShippingProfilesResponse" type="tns:ConsolidateShippingProfilesResponse">
+	
+				</xs:element>
+				<xs:complexType name="ConsolidateShippingProfilesRequest">
+					<xs:complexContent>
+						<xs:extension base="tns:BaseRequest"></xs:extension>
+					</xs:complexContent>
+				</xs:complexType>
+			
+				<xs:complexType
+					name="ConsolidateShippingProfilesResponse">
+					<xs:complexContent>
+						<xs:extension base="tns:BaseResponse">
+	
+							<xs:sequence>
+	
+								<xs:element name="Job"
+									type="tns:ConsolidationJob" maxOccurs="1" minOccurs="0">
+								</xs:element>
+							</xs:sequence>
+						</xs:extension>
+					</xs:complexContent>
+				</xs:complexType>
+				<xs:element name="getConsolidationJobStatusRequest" type="tns:GetConsolidationJobStatusRequest">
+	
+				</xs:element>
+				<xs:element name="getConsolidationJobStatusResponse" type="tns:GetConsolidationJobStatusResponse">
+	
+				</xs:element>
+			
+				<xs:complexType name="GetConsolidationJobStatusRequest">
+					<xs:complexContent>
+						<xs:extension base="tns:BaseRequest">
+							<xs:sequence>
+								<xs:element name="JobId"
+									type="xs:long" maxOccurs="1" minOccurs="0">
+								</xs:element>
+							</xs:sequence>
+						</xs:extension>
+					</xs:complexContent>
+				</xs:complexType>
+			
+				<xs:complexType name="GetConsolidationJobStatusResponse">
+					<xs:complexContent>
+						<xs:extension base="tns:BaseResponse">
+							<xs:sequence>
+	
+	
+								<xs:element name="Job"
+									type="tns:ConsolidationJob" maxOccurs="unbounded" minOccurs="0">
+								</xs:element>
+							</xs:sequence>
+						</xs:extension>
+					</xs:complexContent>
+				</xs:complexType>
+			
+				<xs:simpleType name="ConsolidationJobStatus">
+					<xs:restriction base="xs:string">
+	
+						<xs:enumeration value="Running"></xs:enumeration>
+						<xs:enumeration value="Complete"></xs:enumeration>
+	
+						<xs:enumeration value="Failed"></xs:enumeration>
+	
+					</xs:restriction>
+				</xs:simpleType>
+	
+				<xs:complexType name="ConsolidationJob">
+					<xs:sequence>
+						<xs:element name="JobId" type="xs:long"></xs:element>
+						<xs:element name="JobType" type="tns:ConsolidationJobType"></xs:element>
+						<xs:element name="JobStatus" type="tns:ConsolidationJobStatus"></xs:element>
+						<xs:element name="SiteId" type="xs:int"></xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			
+	        
+			
+				<xs:simpleType name="ConsolidationJobType">
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="ShippingProfilesConsolidation"></xs:enumeration>
+	
+					</xs:restriction>
+				</xs:simpleType>
+	
+				<xs:element name="removeOverridesResponse"
+					type="tns:RemoveOverridesResponse">
+	
+				</xs:element>
+				<xs:element name="removeOverridesRequest"
+					type="tns:RemoveOverridesRequest">
+				</xs:element>
+				<xs:complexType name="RemoveOverridesRequest">
+					<xs:complexContent>
+						<xs:extension base="tns:BaseRequest">
+							<xs:sequence>
+								<xs:element name="profileId"
+									type="xs:long" maxOccurs="1" minOccurs="1">
+								</xs:element>
+							</xs:sequence>
+						</xs:extension>
+					</xs:complexContent>
+				</xs:complexType>
+			
+				<xs:complexType name="RemoveOverridesResponse">
+					<xs:complexContent>
+						<xs:extension base="tns:BaseResponse">
+							<xs:sequence>
+	
+							</xs:sequence>
+						</xs:extension>
+					</xs:complexContent>
+				</xs:complexType>
+		<xs:complexType name="AdditionalServiceShippingOption">
+		<xs:annotation>
+			<xs:documentation></xs:documentation>
+		<xs:appinfo><typeLibrarySource library="ShippingDomainTypeLibrary" namespace="http://www.ebay.com/marketplace/shipping/v1/services"></typeLibrarySource></xs:appinfo></xs:annotation>
+		<xs:sequence>
+			<xs:element maxOccurs="1" minOccurs="1" name="name" type="xs:token">
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="1" name="value" type="xs:boolean"></xs:element>
+		</xs:sequence>
+	</xs:complexType><xs:complexType name="Amount">
+                  <xs:annotation><xs:appinfo><typeLibrarySource library="MarketPlaceServiceCommonTypeLibrary" namespace="http://www.ebay.com/marketplace/services"></typeLibrarySource></xs:appinfo></xs:annotation>
+        <xs:simpleContent>
+                  <xs:extension base="xs:double">
+                      <xs:attribute name="currencyId" type="xs:string" use="required"></xs:attribute>
+                  </xs:extension>
+           </xs:simpleContent>
+       </xs:complexType><xs:complexType name="DeliveryEstimate">
+		<xs:annotation>
+			<xs:documentation>This carries Shipping information related to the order and would ideally present 
+						for orders whose payment is cleared.
+			</xs:documentation>
+		<xs:appinfo><typeLibrarySource library="ShippingDomainTypeLibrary" namespace="http://www.ebay.com/marketplace/shipping/v1/services"></typeLibrarySource></xs:appinfo></xs:annotation>
+		<xs:sequence>
+			<xs:element maxOccurs="1" minOccurs="0" name="maxDelivery" type="xs:int">
+					<xs:annotation>
+							<xs:documentation>
+								Max business days that will be taken to deliver item. 
+							</xs:documentation>
+						</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="minDelivery" type="xs:int">
+					<xs:annotation>
+							<xs:documentation>
+								Min business days that will be taken to deliver item. 
+							</xs:documentation>
+						</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="maxDeliveryDate" type="xs:dateTime">
+					<xs:annotation>
+							<xs:documentation>
+								Max estimated delivery date[considering site holidays/week ends]. 
+							</xs:documentation>
+						</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="minDeliveryDate" type="xs:dateTime">
+					<xs:annotation>
+							<xs:documentation>
+								Min estimated delivery date[considering site holidays/week ends]. 
+							</xs:documentation>
+						</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" name="minConfidence" type="xs:int"></xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="maxConfidence" type="xs:int"></xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="estimateTreatment" type="xs:token"></xs:element>		
+				<xs:element maxOccurs="1" minOccurs="0" name="maxActualDelivery" type="xs:int">
+					<xs:annotation>
+							<xs:documentation>
+								Max Actual days that will be taken to deliver item including holidays. 
+							</xs:documentation>
+						</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="minActualDelivery" type="xs:int">
+					<xs:annotation>
+							<xs:documentation>
+								Min actual days that will be taken to deliver item including holidays. 
+							</xs:documentation>
+						</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType><xs:complexType name="FreightShipping">
+		<xs:annotation>
+			<xs:documentation></xs:documentation>
+		<xs:appinfo><typeLibrarySource library="ShippingDomainTypeLibrary" namespace="http://www.ebay.com/marketplace/shipping/v1/services"></typeLibrarySource></xs:appinfo></xs:annotation>
+		<xs:sequence>
+
+			<xs:element maxOccurs="1" minOccurs="1" name="originPickupLocationType" type="xs:token">
+			<xs:annotation>
+					<xs:documentation>
+					Location type can be residential or commercial
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="1" name="originPickupInside" type="xs:boolean">
+			<xs:annotation>
+					<xs:documentation>
+					Item is picked up inside or outside at the origin
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="1" name="packagingHelpRequired" type="xs:boolean">
+			<xs:annotation>
+					<xs:documentation>
+					Help needed in packaging or not
+					</xs:documentation>
+			</xs:annotation>	
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="1" name="commodityType" type="xs:token">
+			<xs:annotation>
+					<xs:documentation>
+					Type of the freight item
+					</xs:documentation>
+			</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="1" name="freightShippingClass" type="xs:double">
+			<xs:annotation>
+					<xs:documentation>
+					Class of the freight item
+					</xs:documentation>
+			</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="1" name="destPickupLocationType" type="xs:token">
+			<xs:annotation>
+					<xs:documentation>
+					Location type can be residential or commercial
+					</xs:documentation>
+			</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="1" name="destPickupInside" type="xs:boolean">
+			<xs:annotation>
+					<xs:documentation>
+					Item is picked up inside or outside at the destination
+					</xs:documentation>
+			</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType><xs:complexType name="Insurance">
+		<xs:annotation>
+			<xs:documentation>Insurance:</xs:documentation>
+		<xs:appinfo><typeLibrarySource library="ShippingDomainTypeLibrary" namespace="http://www.ebay.com/marketplace/shipping/v1/services"></typeLibrarySource></xs:appinfo></xs:annotation>
+		<xs:sequence>
+			<xs:element maxOccurs="1" minOccurs="0" name="domesticInsuranceFee" type="tns:Amount"></xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="domesticInsuranceOption" type="xs:token"></xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="intlInsuranceOption" type="xs:token"></xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="intlInsuranceFee" type="tns:Amount"></xs:element>
+		</xs:sequence>
+	</xs:complexType><xs:simpleType name="IsoCurrencyCode">
+        <xs:annotation>
+            <xs:documentation>
+             Currency representation based on ISO 4217 Standard: http://www.iso.org/iso/currency_codes_list-1
+             Every currency has the following attributs: 
+                  Numeric Code    - 3 Digits Zero Padded Numeric Code, which uniquely identifies a currency.
+                  Alphabetic Code - 3 Letter Alphabetic Code, which uniquely identifies a currency. 
+                  Currency        - The name of the currency
+                  Antity          - The country/Entity, which uses this currency.
+
+              This type exposes only a sub-set of ISO 4217.
+              The enumeration represents the Alphabetic Code. Comments are included for quick reference.
+            </xs:documentation>
+        <xs:appinfo><typeLibrarySource library="MarketPlaceServiceCommonTypeLibrary" namespace="http://www.ebay.com/marketplace/services"></typeLibrarySource></xs:appinfo></xs:annotation>
+
+        <xs:restriction base="xs:token">   <!-- Currency,                         Entity                          ISO Currency Code -->
+            <xs:enumeration value="USD"></xs:enumeration> <!-- U.S. Dollar                       United States                   840               -->
+            <xs:enumeration value="CAD"></xs:enumeration> <!-- Canadian Dollar                   Canada                          124               -->
+            <xs:enumeration value="GBP"></xs:enumeration> <!-- Pound Sterling                    United Kingdom                  826               -->
+            <xs:enumeration value="DEM"></xs:enumeration> <!-- German Mark                       Germany                         276               -->
+            <xs:enumeration value="AUD"></xs:enumeration> <!-- Australian Dollar                 Australia                       036               -->
+            <xs:enumeration value="JPY"></xs:enumeration> <!-- Japanese Yen                      Japanese Yen                    392               -->
+            <xs:enumeration value="EUR"></xs:enumeration> <!-- Euro                              European Union                  978               -->
+            <xs:enumeration value="FRF"></xs:enumeration> <!-- French Franc                      France                          250               -->
+            <xs:enumeration value="ATS"></xs:enumeration> <!-- Austrian Schilling                Austria                         040               -->
+            <xs:enumeration value="BEF"></xs:enumeration> <!-- Belgian Franc                     Belgium                         056               -->
+            <xs:enumeration value="CHF"></xs:enumeration> <!-- Swiss Franc                       Switzerland                     756               -->
+            <xs:enumeration value="CNY"></xs:enumeration> <!-- Chinese Yuan Renminbi             China                           156               -->
+            <xs:enumeration value="CZK"></xs:enumeration> <!-- Czech Koruna                      Czech Republic                  203               -->
+            <xs:enumeration value="DKK"></xs:enumeration> <!-- Danish Krone                      Denmark                         208               -->
+            <xs:enumeration value="ESP"></xs:enumeration> <!-- Spanish Peseta                    Spain                           724               -->
+            <xs:enumeration value="FIM"></xs:enumeration> <!-- Finnish Markka                    Finland                         246               -->
+            <xs:enumeration value="GRD"></xs:enumeration> <!-- Greek Drachma                     Greece                          300               -->
+            <xs:enumeration value="HKD"></xs:enumeration> <!-- Hong Kong Dollar                  Hong Kong                       344               -->
+            <xs:enumeration value="HUF"></xs:enumeration> <!-- Hungarian Forint                  Hungary                         348               -->
+            <xs:enumeration value="IDR"></xs:enumeration> <!-- Indonesian Rupiah                 Indonesia                       360               -->
+            <xs:enumeration value="IEP"></xs:enumeration> <!-- Irish Pound                       Ireland                         372               -->
+            <xs:enumeration value="ILS"></xs:enumeration> <!-- Israeli new Shekel                Israel                          376               -->
+            <xs:enumeration value="ITL"></xs:enumeration> <!-- Italian Lira                      Italy                           380               -->
+            <xs:enumeration value="NLG"></xs:enumeration> <!-- Dutch Guilder                     Netherlands                     528               -->
+            <xs:enumeration value="NOK"></xs:enumeration> <!-- Norwegian Krone                   Norway                          578               -->
+            <xs:enumeration value="NZD"></xs:enumeration> <!-- New Zealand Dollar                New Zealand                     554               -->
+            <xs:enumeration value="PHP"></xs:enumeration> <!-- Philippine Peso                   Philippines                     608               -->
+            <xs:enumeration value="PLN"></xs:enumeration> <!-- Polish New Zloty                  Poland                          985               -->
+            <xs:enumeration value="PTE"></xs:enumeration> <!-- Portuguese Escudo                 Portugal                        620               -->
+            <xs:enumeration value="RUR"></xs:enumeration> <!-- Russian Ruble                     Russian Federation              810               -->
+            <xs:enumeration value="SEK"></xs:enumeration> <!-- Swedish Krona                     Sweden                          752               -->
+            <xs:enumeration value="SGD"></xs:enumeration> <!-- Singapore Dollar                  Singapore                       702               -->
+            <xs:enumeration value="THB"></xs:enumeration> <!-- Thai Baht                         Thailand                        764               -->
+            <xs:enumeration value="TWD"></xs:enumeration> <!-- New Taiwan dollar                 Taiwan                          901               -->
+            <xs:enumeration value="ZAR"></xs:enumeration> <!-- South African Rand                South Africa                    710               -->
+            <xs:enumeration value="INR"></xs:enumeration> <!-- Indian Rupee                      India                           356               -->
+            <xs:enumeration value="PEN"></xs:enumeration> <!-- Peruvian New Sol                  Peru                            604               -->
+            <xs:enumeration value="MYR"></xs:enumeration> <!-- Malaysian Ringgit                 Malaysia                        458               -->
+            <xs:enumeration value="VND"></xs:enumeration> <!-- Vietnamese New Dong               Vietnam                         704               -->
+            <xs:enumeration value="KRW"></xs:enumeration> <!-- South Korean Won                  South Korea                     410               -->
+            <xs:enumeration value="TRY"></xs:enumeration> <!-- New Turkish Lira                  Turkey                          949               -->
+            <xs:enumeration value="ANG"></xs:enumeration> <!-- Antillian Guilder                 Netherlands Antilles            532               -->
+            <xs:enumeration value="AWG"></xs:enumeration> <!-- Aruban Guilder                    Aruba                           533               -->
+            <xs:enumeration value="BMD"></xs:enumeration> <!-- Bermudan Dollar                   Bermudan Dollar                 060               -->
+            <xs:enumeration value="CRC"></xs:enumeration> <!-- Costa Rican Colon                 Costa Rica                      188               -->
+            <xs:enumeration value="RON"></xs:enumeration> <!-- Romanian New Leu                  Romania                         946               -->
+            <xs:enumeration value="VEF"></xs:enumeration> <!-- Venezuelan Bolivar Fuerte         Venezuela                       937               -->
+            <xs:enumeration value="BBD"></xs:enumeration> <!-- Barbados Dollar                   Barbados                        052               -->
+            <xs:enumeration value="BGN"></xs:enumeration> <!-- Bulgarian Lev                     Bulgaria                        975               -->
+            <xs:enumeration value="BND"></xs:enumeration> <!-- Brunei Dollar                     Brunei                          096               -->
+            <xs:enumeration value="BSD"></xs:enumeration> <!-- Bahamian Dollar                   Bahamas                         044               -->
+            <xs:enumeration value="COP"></xs:enumeration> <!-- Colombian Peso                    Columbia                        170               -->
+            <xs:enumeration value="DOP"></xs:enumeration> <!-- Dominican Peso                    Dominican Republic              214               -->
+            <xs:enumeration value="GTQ"></xs:enumeration> <!-- Guatemalan Quetzal                Guatemala                       320               -->
+            <xs:enumeration value="KYD"></xs:enumeration> <!-- Cayman Isles Dollar               Cayman Islands                  136               -->
+            <xs:enumeration value="MVR"></xs:enumeration> <!-- Maldivian Rufiyaa                 Maldives                        462               -->
+            <xs:enumeration value="QAR"></xs:enumeration> <!-- Qatari Rial                       Qatar                           634               -->
+            <xs:enumeration value="SAR"></xs:enumeration> <!-- Saudi Riyal                       Saudi Arabia                    682               -->
+            <xs:enumeration value="TTD"></xs:enumeration> <!-- Trinidadian and Tobagonian Dollar Trinidad and Tobago             780               -->
+            <xs:enumeration value="UAH"></xs:enumeration> <!-- Ukrainian hryvnia                 Ukraine                         980               -->
+            <xs:enumeration value="UYU"></xs:enumeration> <!-- Peso Uruguayo                     Uruguay                         858               -->
+            <xs:enumeration value="XCD"></xs:enumeration> <!-- East Caribbean Dollar             East Caribbean Currency Area    951               -->
+            <xs:enumeration value="XPF"></xs:enumeration> <!-- French Polynesian Franc           French Polynesia                953               -->
+            <xs:enumeration value="JMD"></xs:enumeration> <!-- Jamaican Dollar                   Jamaica                         388               -->
+            <xs:enumeration value="RUB"></xs:enumeration> <!-- Russian Ruble                     Russian Federation              643               -->
+            <xs:enumeration value="BRL"></xs:enumeration> <!-- Brazilian Real                    Brazil						  986               -->
+            <xs:enumeration value="CLP"></xs:enumeration> <!-- Chilean peso                      Chile                           152               -->
+            <xs:enumeration value="MXN"></xs:enumeration> <!-- Mexican peso                      Mexico                          484               -->
+            <xs:enumeration value="HNL"></xs:enumeration> <!-- Honduran Lempira                  Honduras                        340               -->
+            <xs:enumeration value="NIO"></xs:enumeration> <!-- Nicaraguan córdoba                Nicargua                        558               -->
+            <xs:enumeration value="BOB"></xs:enumeration> <!-- Bolivian boliviano                Bolivia                         068               -->
+            <xs:enumeration value="PYG"></xs:enumeration> <!-- Paraguayan guaraní                Paraguay                        600               -->
+
+
+        </xs:restriction>
+    </xs:simpleType><xs:complexType name="RateTableInfo">
+		<xs:annotation>
+			<xs:documentation></xs:documentation>
+		<xs:appinfo><typeLibrarySource library="ShippingDomainTypeLibrary" namespace="http://www.ebay.com/marketplace/shipping/v1/services"></typeLibrarySource></xs:appinfo></xs:annotation>
+		<xs:sequence>
+			<xs:element maxOccurs="1" minOccurs="0" name="intlRateTable" type="xs:token"></xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="domesticRateTable" type="xs:token"></xs:element>
+		</xs:sequence>
+	</xs:complexType><xs:complexType name="ServiceDefinition">
+		<xs:annotation>
+			<xs:documentation>ServiceDefinition:</xs:documentation>
+		<xs:appinfo><typeLibrarySource library="ShippingDomainTypeLibrary" namespace="http://www.ebay.com/marketplace/shipping/v1/services"></typeLibrarySource></xs:appinfo></xs:annotation>
+		<xs:sequence>
+			<xs:element maxOccurs="1" minOccurs="0" name="superscript" type="xs:string"></xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="maxDeliveryServiceDefinition" type="xs:int"></xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="minDeliveryServiceDefinition" type="xs:int"></xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="name" type="xs:string"></xs:element>
+		</xs:sequence>
+	</xs:complexType><xs:complexType name="ShippingPolicyIdentity">
+		<xs:annotation>
+			<xs:documentation>Identity for shipping policy.
+			</xs:documentation>
+		<xs:appinfo><typeLibrarySource library="ShippingDomainTypeLibrary" namespace="http://www.ebay.com/marketplace/shipping/v1/services"></typeLibrarySource></xs:appinfo></xs:annotation>
+		<xs:sequence>
+			<xs:element maxOccurs="1" minOccurs="0" name="shippingPolicyId" type="xs:long">
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="shippingPolicyVersionId" type="xs:long">
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType><xs:complexType name="ShippingPolicyInfo">
+		<xs:annotation>
+			<xs:documentation>ShippingPolicyInfo:</xs:documentation>
+		<xs:appinfo><typeLibrarySource library="ShippingDomainTypeLibrary" namespace="http://www.ebay.com/marketplace/shipping/v1/services"></typeLibrarySource></xs:appinfo></xs:annotation>
+		<xs:sequence>
+			<xs:element maxOccurs="1" minOccurs="1" name="shippingPolicyName" type="xs:string">
+					<xs:annotation>
+						<xs:documentation>
+							shipping policy name specified by seller.
+						</xs:documentation>
+					</xs:annotation>
+			</xs:element>
+				
+			<xs:element maxOccurs="1" minOccurs="0" name="domesticShippingType" type="xs:token">
+				<xs:annotation>
+						<xs:documentation>
+							The type of shipping service opted by seller, during listing for domestic locations.
+						</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+					
+			<xs:element maxOccurs="1" minOccurs="0" name="intlShippingType" type="xs:token">
+					<xs:annotation>
+						<xs:documentation>
+							The type of shipping service opted by seller, during listing for international locations.
+						</xs:documentation>
+					</xs:annotation>
+			</xs:element>
+			
+			<xs:element maxOccurs="1" minOccurs="0" name="dispatchTimeMax" type="xs:int">
+					<xs:annotation>
+							<xs:documentation>
+								Specifies the maximum number of business days the seller commits to for preparing an 
+								item to be shipped after receiving a cleared payment. This time does not include the 
+								shipping time (the carrier's transit time).
+							</xs:documentation>
+						</xs:annotation>
+			</xs:element>	
+			
+			<xs:element maxOccurs="1" minOccurs="0" name="dispatchTimeReason" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>
+						Describe reason for dispatch time.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>	
+			
+			<xs:element maxOccurs="1" minOccurs="0" name="shippingOption" type="xs:token">
+					<xs:annotation>
+							<xs:documentation>
+								This holds the value of shipping option.
+								Have to pass numerics in request.
+								SITE_ONLY --&gt; 0
+								SITE_PLUS_REGIONS --&gt; 1
+								WORLD_WIDE --&gt; 2
+								WILL_NOT_SHIP --&gt; 3
+								TERMS_AND_CONDITIONS_ONLY --&gt; 4
+								INVALID --&gt; -99999999
+							</xs:documentation>
+						</xs:annotation>
+			</xs:element>
+			
+			<xs:element maxOccurs="unbounded" minOccurs="0" name="excludeShipToLocation" type="xs:token">
+					<xs:annotation>
+							<xs:documentation>
+								List of regions to which seller is not intended to ship the item.
+							</xs:documentation>
+						</xs:annotation>
+			</xs:element>
+			
+			<xs:element maxOccurs="1" minOccurs="0" name="shippingProfileDiscountInfo" type="tns:ShippingProfileDiscountInfo">
+					<xs:annotation>
+							<xs:documentation>
+								Shipping Discount information setup by the seller for particular item.
+							</xs:documentation>
+						</xs:annotation>
+			</xs:element>	
+
+			<xs:element maxOccurs="1" minOccurs="0" name="freightShipping" type="tns:FreightShipping">
+					<xs:annotation>
+							<xs:documentation>
+								Place holder for Freight shipping.
+							</xs:documentation>
+						</xs:annotation>
+			</xs:element>
+
+			<xs:element maxOccurs="unbounded" minOccurs="0" name="shipToLocations" type="xs:token">
+					<xs:annotation>
+							<xs:documentation>
+								List of locations to which seller intended to ship the current item.
+							</xs:documentation>
+						</xs:annotation>
+			</xs:element>
+
+			<xs:element maxOccurs="unbounded" minOccurs="0" name="domesticShippingPolicyInfoService" type="tns:ShippingPolicyInfoService">
+					<xs:annotation>
+							<xs:documentation>
+								Place holder for all domestic shipping services.
+							</xs:documentation>
+						</xs:annotation>
+			</xs:element>
+					
+			<xs:element maxOccurs="unbounded" minOccurs="0" name="intlShippingPolicyInfoService" type="tns:ShippingPolicyInfoService">
+					<xs:annotation>
+							<xs:documentation>
+								Place holder for all international shipping services.
+							</xs:documentation>
+						</xs:annotation>
+			</xs:element>
+				
+			<xs:element maxOccurs="1" minOccurs="0" name="insurance" type="tns:Insurance">
+					<xs:annotation>
+							<xs:documentation>
+								Insurance option opted by the seller.
+							</xs:documentation>
+						</xs:annotation>
+			</xs:element>
+			
+			<xs:element maxOccurs="1" minOccurs="0" name="intlRateTable" type="xs:token"></xs:element>
+						
+			<xs:element maxOccurs="1" minOccurs="0" name="domesticRateTable" type="xs:token"></xs:element>
+			
+			<xs:element maxOccurs="1" minOccurs="0" name="packagingHandlingCosts" type="tns:Amount">
+				<xs:annotation>
+					<xs:documentation>
+						HandlingFee for the item.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element maxOccurs="1" minOccurs="0" name="internationalPackagingHandlingCosts" type="tns:Amount">
+				<xs:annotation>
+					<xs:documentation>
+						NA. Currently not in use.[by
+						CoreShippingService.]
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="1" name="shippingPolicyCurrency" type="tns:IsoCurrencyCode">
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="1" name="shippingPolicyIdentity" type="tns:ShippingPolicyIdentity">
+			</xs:element>
+			<!-- @GSP - Added new tag for GSP shipping service (Start) -->
+			<xs:element maxOccurs="1" minOccurs="0" name="GlobalShipping" type="xs:boolean">
+				<xs:annotation>
+					<xs:documentation>
+							If GSP service checkbox is checked in the UI, this tag will hold the value 'True' 
+							else tag will hold the value 'False'
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<!-- @GSP - Added new tag for GSP shipping service (End) -->
+			
+			<!-- @PUDO - Added new tag for PUDO shipping service (Start) -->
+			<xs:element maxOccurs="1" minOccurs="0" name="EligibleForPickupDropOff" type="xs:boolean">
+				<xs:annotation>
+					<xs:documentation>
+						If EligibleForPickupDropOff option checkbox is checked in the UI, this tag will hold the value 'True' 
+						else tag will hold the value 'False'
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<!-- @PUDO - Added new tag for PUDO shipping service (End) -->
+
+		</xs:sequence>
+	</xs:complexType><xs:complexType name="ShippingPolicyInfoService">
+		<xs:annotation>
+			<xs:documentation>ShippingPolicyInfoService:</xs:documentation>
+		<xs:appinfo><typeLibrarySource library="ShippingDomainTypeLibrary" namespace="http://www.ebay.com/marketplace/shipping/v1/services"></typeLibrarySource></xs:appinfo></xs:annotation>
+		<xs:sequence>
+			<xs:element maxOccurs="unbounded" minOccurs="0" name="shipToLocation" type="xs:token">
+				<xs:annotation>
+					<xs:documentation>
+						NA. This field is not used.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+
+			<xs:element maxOccurs="1" minOccurs="1" name="shippingService" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>
+						Unique service code using which a shipping
+						service can be identified across all the
+						services.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element maxOccurs="1" minOccurs="0" name="sortOrderId" type="xs:int">
+				<xs:annotation>
+					<xs:documentation>
+						The order of shippinf service in a give set of
+						services.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element maxOccurs="1" minOccurs="0" name="freeShipping" type="xs:boolean">
+				<xs:annotation>
+					<xs:documentation>
+						If true, it is a free shipping service.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			
+			<xs:element maxOccurs="1" minOccurs="0" name="codFee" type="tns:Amount">
+				<xs:annotation>
+					<xs:documentation>
+						Cash On Delivery Fee.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element maxOccurs="1" minOccurs="0" name="fastShipping" type="xs:boolean">
+				<xs:annotation>
+					<xs:documentation>
+						If true, it is a fast shipping service.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+
+			<xs:element maxOccurs="1" minOccurs="0" name="shippingServiceAdditionalCost" type="tns:Amount">
+				<xs:annotation>
+					<xs:documentation>
+						Shipping fee for an additional (same)item
+						purchase.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+
+			<xs:element maxOccurs="1" minOccurs="0" name="shippingServiceCost" type="tns:Amount">
+				<xs:annotation>
+					<xs:documentation>
+						Shipping Fee of current shipping service.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element maxOccurs="1" minOccurs="0" name="shippingSurcharge" type="tns:Amount">
+				<xs:annotation>
+					<xs:documentation>
+						Some services like UPS Ground, alows seller to
+						provide SurCharge Fee for few selected regions.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element maxOccurs="1" minOccurs="0" name="buyerResponsibleForShipping" type="xs:boolean">
+				<xs:annotation>
+					<xs:documentation>
+						If true, it is an local shipping service.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			
+			<xs:element maxOccurs="1" minOccurs="0" name="buyerResponsibleForPickup" type="xs:boolean">
+				<xs:annotation>
+					<xs:documentation>
+						If true, it buyer is responsible for PickUp else seller has to describe how he is going to ship package, 
+						use for motors site.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType><xs:complexType name="ShippingProfileDiscountInfo">
+		<xs:annotation>
+			<xs:documentation>Shipping Profile DiscountInfo :</xs:documentation>
+		<xs:appinfo><typeLibrarySource library="ShippingDomainTypeLibrary" namespace="http://www.ebay.com/marketplace/shipping/v1/services"></typeLibrarySource></xs:appinfo></xs:annotation>
+		<xs:sequence>
+			<xs:element maxOccurs="1" minOccurs="0" name="domesticFlatCalcDiscountProfileId" type="xs:long"></xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="intlFlatCalcDiscountProfileId" type="xs:long"></xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="applyDomesticPromoShippingProfile" type="xs:boolean"></xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="applyIntlPromoShippingProfile" type="xs:boolean"></xs:element>
+		</xs:sequence>
+	</xs:complexType><xs:simpleType name="ShippingRateType">
+		<xs:annotation>
+			<xs:documentation>
+				Shipping Rate Type.
+			</xs:documentation>
+		<xs:appinfo><typeLibrarySource library="ShippingDomainTypeLibrary" namespace="http://www.ebay.com/marketplace/shipping/v1/services"></typeLibrarySource></xs:appinfo></xs:annotation>
+		<xs:restriction base="xs:string">
+  			<xs:enumeration value="OnDemand"></xs:enumeration> 
+			<xs:enumeration value="DailyPickup"></xs:enumeration> 
+			<xs:enumeration value="FedexStandardList"></xs:enumeration>
+			<xs:enumeration value="FedexDiscounted"></xs:enumeration>
+			<xs:enumeration value="USPSDiscounted"></xs:enumeration>
+			<xs:enumeration value="USPSCommercialPlus"></xs:enumeration>
+			<xs:enumeration value="GoldSilver"></xs:enumeration>
+			<xs:enumeration value="PlatTitanium"></xs:enumeration>
+			<xs:enumeration value="EbayRates"></xs:enumeration>
+			<xs:enumeration value="Retail"></xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType><xs:complexType name="DepositDetails">
+		<xs:annotation>
+			<xs:documentation></xs:documentation>
+		<xs:appinfo><typeLibrarySource library="PaymentTypeLibrary" namespace="http://www.ebay.com/marketplace/selling/v1/types"></typeLibrarySource></xs:appinfo></xs:annotation>
+		<xs:sequence>
+			<xs:element maxOccurs="1" minOccurs="0" name="hoursToDeposit" type="xs:int">
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="depositAmount" type="tns:Amount">
+			</xs:element>
+		</xs:sequence>
+
+	</xs:complexType><xs:complexType name="Address">
+		<xs:annotation>
+			<xs:documentation></xs:documentation>
+		<xs:appinfo><typeLibrarySource library="ReturnPolicyTypeLibrary" namespace="http://www.ebay.com/marketplace/selling/v1/types"></typeLibrarySource></xs:appinfo></xs:annotation>
+		<xs:sequence>
+    		<xs:element maxOccurs="1" minOccurs="0" name="name" type="xs:string">
+    		</xs:element>
+    		<xs:element maxOccurs="1" minOccurs="0" name="street1" type="xs:string">
+    		</xs:element>
+    		<xs:element maxOccurs="1" minOccurs="0" name="street2" type="xs:string">
+    		</xs:element>
+    		<xs:element maxOccurs="1" minOccurs="0" name="city" type="xs:string">
+    		</xs:element>
+    		<xs:element maxOccurs="1" minOccurs="0" name="county" type="xs:string">
+    		</xs:element>
+    		<xs:element maxOccurs="1" minOccurs="0" name="stateOrProvince" type="xs:string">
+    		</xs:element>
+    		<xs:element maxOccurs="1" minOccurs="0" name="country" type="xs:string">
+    		</xs:element>
+    		<xs:element maxOccurs="1" minOccurs="0" name="postalCode" type="xs:string"></xs:element>
+    	</xs:sequence>
+	</xs:complexType><xs:complexType name="CategoryGroup">
+		<xs:annotation>
+			<xs:documentation></xs:documentation>
+		<xs:appinfo><typeLibrarySource library="SellerProfilesServiceTypeLibrary" namespace="http://www.ebay.com/marketplace/selling/v1/types"></typeLibrarySource></xs:appinfo></xs:annotation>
+		<xs:sequence>
+			<xs:element maxOccurs="1" minOccurs="1" name="default" type="xs:boolean"></xs:element>
+			<xs:element maxOccurs="1" minOccurs="1" name="name" type="xs:string"></xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="ETRS" type="xs:boolean"></xs:element>
+		</xs:sequence>
+	</xs:complexType><xs:complexType name="CategoryGroups">
+		<xs:annotation>
+			<xs:documentation></xs:documentation>
+		<xs:appinfo><typeLibrarySource library="SellerProfilesServiceTypeLibrary" namespace="http://www.ebay.com/marketplace/selling/v1/types"></typeLibrarySource></xs:appinfo></xs:annotation>
+		<xs:sequence>
+			<xs:element maxOccurs="unbounded" minOccurs="1" name="categoryGroup" type="tns:CategoryGroup"></xs:element>
+		</xs:sequence>
+	</xs:complexType><xs:simpleType name="ProfileType">
+		<xs:annotation>
+			<xs:documentation></xs:documentation>
+		<xs:appinfo><typeLibrarySource library="SellerProfilesServiceTypeLibrary" namespace="http://www.ebay.com/marketplace/selling/v1/types"></typeLibrarySource></xs:appinfo></xs:annotation>
+		<xs:restriction base="xs:string">
+
+			<xs:enumeration value="PAYMENT"></xs:enumeration>
+			<xs:enumeration value="RETURN_POLICY"></xs:enumeration>
+			<xs:enumeration value="SHIPPING"></xs:enumeration>
+			<xs:enumeration value="SHIPPING_RATE"></xs:enumeration>
+			<xs:enumeration value="SHIPPING_EXCLUSION"></xs:enumeration>
+			<xs:enumeration value="SHIPPING_DISCOUNT"></xs:enumeration>
+			<xs:enumeration value="BUYER_REQUIREMENTS"></xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType><xs:complexType name="ReturnPolicyInfo">
+            	<xs:annotation><xs:appinfo><typeLibrarySource library="ReturnPolicyTypeLibrary" namespace="http://www.ebay.com/marketplace/selling/v1/types"></typeLibrarySource></xs:appinfo></xs:annotation>
+        <xs:sequence>
+    		<xs:element maxOccurs="1" minOccurs="0" name="description" type="xs:string">
+    		</xs:element>
+    		<xs:element maxOccurs="1" minOccurs="0" name="refundOption" type="xs:token">
+    		</xs:element>
+    		<xs:element maxOccurs="1" minOccurs="0" name="shippingCostPaidByOption" type="xs:token">
+    		</xs:element>
+    		<xs:element maxOccurs="1" minOccurs="0" name="returnsWithinOption" type="xs:token">
+    		</xs:element>
+    		<xs:element maxOccurs="1" minOccurs="0" name="returnsAcceptedOption" type="xs:token">
+    		</xs:element>
+
+    		<xs:element maxOccurs="1" minOccurs="0" name="warrantyOfferedOption" type="xs:token">
+    		</xs:element>
+    		<xs:element maxOccurs="1" minOccurs="0" name="warrantyTypeOption" type="xs:token">
+    		</xs:element>
+    		<xs:element maxOccurs="1" minOccurs="0" name="warrantyDurationOption" type="xs:token">
+    		</xs:element>
+
+    		<xs:element maxOccurs="1" minOccurs="0" name="restockingFeeValue" type="xs:token">
+    		</xs:element>
+    		<xs:element maxOccurs="1" minOccurs="0" name="holidayReturns" type="xs:token"></xs:element>
+    	</xs:sequence>
+    </xs:complexType><xs:complexType name="ReturnPolicyProfile">
+		<xs:annotation>
+			<xs:documentation></xs:documentation>
+		<xs:appinfo><typeLibrarySource library="SellerProfilesServiceTypeLibrary" namespace="http://www.ebay.com/marketplace/selling/v1/types"></typeLibrarySource></xs:appinfo></xs:annotation>
+		<!-- <xs:sequence />
+		  -->
+		<xs:complexContent>
+			<xs:extension base="tns:SellerProfile">
+				<xs:sequence>
+					<xs:element maxOccurs="1" minOccurs="0" name="returnPolicyInfo" type="tns:ReturnPolicyInfo">
+					</xs:element>
+
+					<xs:element maxOccurs="1" minOccurs="0" name="internationalReturnPolicyInfo" type="tns:InternationalReturnPolicyInfo"></xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+		
+	</xs:complexType><xs:complexType name="SellerProfile">
+		<xs:annotation>
+			<xs:documentation></xs:documentation>
+		<xs:appinfo><typeLibrarySource library="SellerProfilesServiceTypeLibrary" namespace="http://www.ebay.com/marketplace/selling/v1/types"></typeLibrarySource></xs:appinfo></xs:annotation>
+		<xs:sequence>
+			<xs:element maxOccurs="1" minOccurs="0" name="forceDuplicate" type="xs:boolean">
+			</xs:element>
+		
+			<xs:element maxOccurs="1" minOccurs="1" name="profileName" type="xs:string"></xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="profileId" type="xs:long"></xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="profileType" type="tns:ProfileType">
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="profileVersion" type="xs:long">
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="profileDesc" type="xs:string">
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="deletedDate" type="xs:dateTime">
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="siteId" type="xs:int">
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="categoryGroups" type="tns:CategoryGroups"></xs:element>
+		</xs:sequence>
+    </xs:complexType><xs:complexType name="InternationalReturnPolicyInfo">
+		<xs:annotation>
+			<xs:documentation></xs:documentation>
+		<xs:appinfo><typeLibrarySource library="ReturnPolicyTypeLibrary" namespace="http://www.ebay.com/marketplace/selling/v1/types"></typeLibrarySource></xs:appinfo></xs:annotation>
+		<xs:sequence>
+			<xs:element maxOccurs="1" minOccurs="0" name="returnsAcceptedOption" type="xs:token"></xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="returnsWithinOption" type="xs:token"></xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="shippingCostPaidByOption" type="xs:token"></xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="refundOption" type="xs:token"></xs:element>
+		</xs:sequence>
+	</xs:complexType></xs:schema>
+</wsdl:types>
+
+	<wsdl:message name="getVersionRequest">
+		<wsdl:part element="tns:getVersionRequest" name="params" />
+	</wsdl:message>
+	<wsdl:message name="getVersionResponse">
+		<wsdl:part element="tns:getVersionResponse" name="params" />
+	</wsdl:message>
+
+
+	<wsdl:message name="removeProfileRequest">
+		<wsdl:part name="params" element="tns:removeProfileRequest"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="removeProfileResponse">
+		<wsdl:part name="params" element="tns:removeProfileResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="addSellerProfileRequest">
+		<wsdl:part name="params" element="tns:addSellerProfileRequest"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="addSellerProfileResponse">
+		<wsdl:part name="params" element="tns:addSellerProfileResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="getSellerProfilesRequest">
+		<wsdl:part name="params" element="tns:getSellerProfilesRequest"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="getSellerProfilesResponse">
+		<wsdl:part name="params" element="tns:getSellerProfilesResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="setSellerProfileRequest">
+		<wsdl:part name="params" element="tns:setSellerProfileRequest"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="setSellerProfileResponse">
+		<wsdl:part name="params" element="tns:setSellerProfileResponse"></wsdl:part>
+	</wsdl:message>
+	
+	<wsdl:message name="removeSellerProfilesRequest">
+		<wsdl:part name="params" element="tns:removeSellerProfilesRequest"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="removeSellerProfilesResponse">
+		<wsdl:part name="params" element="tns:removeSellerProfilesResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="consolidateShippingProfilesRequest">
+		<wsdl:part name="params" element="tns:consolidateShippingProfilesRequest"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="consolidateShippingProfilesResponse">
+		<wsdl:part name="params" element="tns:consolidateShippingProfilesResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="getConsolidationJobStatusRequest">
+		<wsdl:part name="params" element="tns:getConsolidationJobStatusRequest"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="getConsolidationJobStatusResponse">
+		<wsdl:part name="params" element="tns:getConsolidationJobStatusResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="removeOverridesRequest">
+		<wsdl:part name="params" element="tns:removeOverridesRequest"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="removeOverridesResponse">
+		<wsdl:part name="params" element="tns:removeOverridesResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:portType name="SellerProfilesManagementServicePort">
+		<wsdl:operation name="getVersion">
+			<wsdl:documentation>
+				Documentation goes here.
+			</wsdl:documentation>
+			<wsdl:input message="tns:getVersionRequest" />
+			<wsdl:output message="tns:getVersionResponse" />
+		</wsdl:operation>
+
+
+		<wsdl:operation name="removeProfile">
+			<wsdl:input message="tns:removeProfileRequest"></wsdl:input>
+			<wsdl:output message="tns:removeProfileResponse"></wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="addSellerProfile">
+			<wsdl:input message="tns:addSellerProfileRequest"></wsdl:input>
+			<wsdl:output message="tns:addSellerProfileResponse"></wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getSellerProfiles">
+			<wsdl:input message="tns:getSellerProfilesRequest"></wsdl:input>
+			<wsdl:output message="tns:getSellerProfilesResponse"></wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="setSellerProfile">
+			<wsdl:input message="tns:setSellerProfileRequest"></wsdl:input>
+			<wsdl:output message="tns:setSellerProfileResponse"></wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="removeSellerProfiles">
+			<wsdl:input message="tns:removeSellerProfilesRequest"></wsdl:input>
+			<wsdl:output message="tns:removeSellerProfilesResponse"></wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="consolidateShippingProfiles">
+			<wsdl:input message="tns:consolidateShippingProfilesRequest"></wsdl:input>
+			<wsdl:output message="tns:consolidateShippingProfilesResponse"></wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getConsolidationJobStatus">
+			<wsdl:input message="tns:getConsolidationJobStatusRequest"></wsdl:input>
+			<wsdl:output message="tns:getConsolidationJobStatusResponse"></wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="removeOverrides">
+			<wsdl:input message="tns:removeOverridesRequest"></wsdl:input>
+			<wsdl:output message="tns:removeOverridesResponse"></wsdl:output>
+		</wsdl:operation></wsdl:portType>
+	<wsdl:binding name="SellerProfilesManagementServiceHttpBinding"
+		type="tns:SellerProfilesManagementServicePort">
+		<http:binding verb="POST" />
+		<wsdl:operation name="getVersion">
+			<http:operation location="/getVersion" />
+			<wsdl:input>
+				<mime:content type="application/x-www-form-urlencoded" />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:content type="text/xml" />
+			</wsdl:output>
+		</wsdl:operation>
+
+		<wsdl:operation name="removeProfile">
+			<http:operation location="/removeProfile" />
+			<wsdl:input>
+				<mime:content type="application/x-www-form-urlencoded" />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:content type="text/xml" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="addSellerProfile">
+			<http:operation location="/addSellerProfile" />
+			<wsdl:input>
+				<mime:content type="application/x-www-form-urlencoded" />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:content type="text/xml" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getSellerProfiles">
+			<http:operation location="/getSellerProfiles" />
+			<wsdl:input>
+				<mime:content type="application/x-www-form-urlencoded" />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:content type="text/xml" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="setSellerProfile">
+			<http:operation location="/setSellerProfile" />
+			<wsdl:input>
+				<mime:content type="application/x-www-form-urlencoded" />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:content type="text/xml" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="removeSellerProfiles">
+			<http:operation location="/removeSellerProfiles" />
+			<wsdl:input>
+				<mime:content type="application/x-www-form-urlencoded" />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:content type="text/xml" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="consolidateShippingProfiles">
+			<http:operation location="/consolidateShippingProfiles" />
+			<wsdl:input>
+				<mime:content type="application/x-www-form-urlencoded" />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:content type="text/xml" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getConsolidationJobStatus">
+			<http:operation location="/getConsolidationJobStatus" />
+			<wsdl:input>
+				<mime:content type="application/x-www-form-urlencoded" />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:content type="text/xml" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="removeOverrides">
+			<http:operation location="/removeOverrides" />
+			<wsdl:input>
+				<mime:content type="application/x-www-form-urlencoded" />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:content type="text/xml" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:binding name="SellerProfilesManagementServiceSOAPBinding"
+		type="tns:SellerProfilesManagementServicePort">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="getVersion">
+			<soap:operation
+				soapAction="http://www.ebay.com/marketplace/selling/v1/services/getVersion" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+
+		<wsdl:operation name="removeProfile">
+			<soap:operation
+				soapAction="http://www.ebay.com/marketplace/selling/v1/services/removeProfile" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="addSellerProfile">
+			<soap:operation
+				soapAction="http://www.ebay.com/marketplace/selling/v1/services/addSellerProfile" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getSellerProfiles">
+			<soap:operation
+				soapAction="http://www.ebay.com/marketplace/selling/v1/services/getSellerProfiles" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="setSellerProfile">
+			<soap:operation
+				soapAction="http://www.ebay.com/marketplace/selling/v1/services/setSellerProfile" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="removeSellerProfiles">
+			<soap:operation
+				soapAction="http://www.ebay.com/marketplace/selling/v1/services/removeSellerProfiles" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="consolidateShippingProfiles">
+			<soap:operation
+				soapAction="http://www.ebay.com/marketplace/selling/v1/services/consolidateShippingProfiles" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getConsolidationJobStatus">
+			<soap:operation
+				soapAction="http://www.ebay.com/marketplace/selling/v1/services/getConsolidationJobStatus" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="removeOverrides">
+			<soap:operation
+				soapAction="http://www.ebay.com/marketplace/selling/v1/services/removeOverrides" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="SellerProfilesManagementService">
+		<wsdl:documentation>
+			<version>1.1.0</version>
+		</wsdl:documentation>
+		<wsdl:port
+			binding="tns:SellerProfilesManagementServiceHttpBinding"
+			name="SellerProfilesManagementServiceHttpPort">
+			<http:address
+				location="https://svcs.ebay.com/services/selling/v1/SellerProfilesManagementService" />
+		</wsdl:port>
+		<wsdl:port
+			binding="tns:SellerProfilesManagementServiceSOAPBinding"
+			name="SellerProfilesManagementServiceSOAPPort">
+			<soap12:address
+				location="https://svcs.ebay.com/services/selling/v1/SellerProfilesManagementService" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

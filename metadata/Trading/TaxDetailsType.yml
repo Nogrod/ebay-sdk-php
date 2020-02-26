@@ -1,0 +1,95 @@
+Nogrod\eBaySDK\Trading\TaxDetailsType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        imposition:
+            expose: true
+            access_type: public_method
+            serialized_name: Imposition
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getImposition
+                setter: setImposition
+            type: string
+        taxDescription:
+            expose: true
+            access_type: public_method
+            serialized_name: TaxDescription
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getTaxDescription
+                setter: setTaxDescription
+            type: string
+        taxAmount:
+            expose: true
+            access_type: public_method
+            serialized_name: TaxAmount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getTaxAmount
+                setter: setTaxAmount
+            type: Nogrod\eBaySDK\Trading\AmountType
+        taxOnSubtotalAmount:
+            expose: true
+            access_type: public_method
+            serialized_name: TaxOnSubtotalAmount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getTaxOnSubtotalAmount
+                setter: setTaxOnSubtotalAmount
+            type: Nogrod\eBaySDK\Trading\AmountType
+        taxOnShippingAmount:
+            expose: true
+            access_type: public_method
+            serialized_name: TaxOnShippingAmount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getTaxOnShippingAmount
+                setter: setTaxOnShippingAmount
+            type: Nogrod\eBaySDK\Trading\AmountType
+        taxOnHandlingAmount:
+            expose: true
+            access_type: public_method
+            serialized_name: TaxOnHandlingAmount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getTaxOnHandlingAmount
+                setter: setTaxOnHandlingAmount
+            type: Nogrod\eBaySDK\Trading\AmountType
+        taxCode:
+            expose: true
+            access_type: public_method
+            serialized_name: TaxCode
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getTaxCode
+                setter: setTaxCode
+            type: string
+        collectionMethod:
+            expose: true
+            access_type: public_method
+            serialized_name: CollectionMethod
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCollectionMethod
+                setter: setCollectionMethod
+            type: string

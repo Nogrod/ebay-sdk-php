@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\BulkDataExchange\GetJobsResponse:
+    xml_root_name: getJobsResponse
+    xml_root_namespace: 'http://www.ebay.com/marketplace/services'

@@ -1,0 +1,38 @@
+Nogrod\eBaySDK\Trading\DataElementSetType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        attributeSetID:
+            expose: true
+            access_type: public_method
+            serialized_name: attributeSetID
+            accessor:
+                getter: getAttributeSetID
+                setter: setAttributeSetID
+            xml_attribute: true
+            type: int
+        dataElement:
+            expose: true
+            access_type: public_method
+            serialized_name: DataElement
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getDataElement
+                setter: setDataElement
+            type: string
+        dataElementID:
+            expose: true
+            access_type: public_method
+            serialized_name: DataElementID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getDataElementID
+                setter: setDataElementID
+            type: int

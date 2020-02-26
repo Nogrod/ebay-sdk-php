@@ -1,0 +1,11 @@
+xml_client:
+  namespaces:
+    'urn:ebay:apis:eBLBaseComponents': 'Nogrod\eBaySDK\Shopping'
+  destinations_php:
+    'Nogrod\eBaySDK\Shopping': src/Shopping
+  destinations_jms:
+    'Nogrod\eBaySDK\Shopping': metadata/Shopping
+  metadata:
+    'wsdl/Shopping.wsdl': ~
+  configs_jms:
+    xml_cdata: false

@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\Trading\FetchTokenRequest:
+    xml_root_name: FetchTokenRequest
+    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

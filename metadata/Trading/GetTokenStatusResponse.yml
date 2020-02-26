@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\Trading\GetTokenStatusResponse:
+    xml_root_name: GetTokenStatusResponse
+    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

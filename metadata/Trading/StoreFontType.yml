@@ -1,0 +1,106 @@
+Nogrod\eBaySDK\Trading\StoreFontType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        nameFace:
+            expose: true
+            access_type: public_method
+            serialized_name: NameFace
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getNameFace
+                setter: setNameFace
+            type: string
+        nameSize:
+            expose: true
+            access_type: public_method
+            serialized_name: NameSize
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getNameSize
+                setter: setNameSize
+            type: string
+        nameColor:
+            expose: true
+            access_type: public_method
+            serialized_name: NameColor
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getNameColor
+                setter: setNameColor
+            type: string
+        titleFace:
+            expose: true
+            access_type: public_method
+            serialized_name: TitleFace
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getTitleFace
+                setter: setTitleFace
+            type: string
+        titleSize:
+            expose: true
+            access_type: public_method
+            serialized_name: TitleSize
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getTitleSize
+                setter: setTitleSize
+            type: string
+        titleColor:
+            expose: true
+            access_type: public_method
+            serialized_name: TitleColor
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getTitleColor
+                setter: setTitleColor
+            type: string
+        descFace:
+            expose: true
+            access_type: public_method
+            serialized_name: DescFace
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getDescFace
+                setter: setDescFace
+            type: string
+        descSize:
+            expose: true
+            access_type: public_method
+            serialized_name: DescSize
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getDescSize
+                setter: setDescSize
+            type: string
+        descColor:
+            expose: true
+            access_type: public_method
+            serialized_name: DescColor
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getDescColor
+                setter: setDescColor
+            type: string

@@ -1,0 +1,88 @@
+Nogrod\eBaySDK\Shopping\ErrorType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        shortMessage:
+            expose: true
+            access_type: public_method
+            serialized_name: ShortMessage
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getShortMessage
+                setter: setShortMessage
+            type: string
+        longMessage:
+            expose: true
+            access_type: public_method
+            serialized_name: LongMessage
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getLongMessage
+                setter: setLongMessage
+            type: string
+        errorCode:
+            expose: true
+            access_type: public_method
+            serialized_name: ErrorCode
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getErrorCode
+                setter: setErrorCode
+            type: string
+        userDisplayHint:
+            expose: true
+            access_type: public_method
+            serialized_name: UserDisplayHint
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getUserDisplayHint
+                setter: setUserDisplayHint
+            type: bool
+        severityCode:
+            expose: true
+            access_type: public_method
+            serialized_name: SeverityCode
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSeverityCode
+                setter: setSeverityCode
+            type: string
+        errorParameters:
+            expose: true
+            access_type: public_method
+            serialized_name: ErrorParameters
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getErrorParameters
+                setter: setErrorParameters
+            xml_list:
+                inline: true
+                entry_name: ErrorParameters
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<Nogrod\eBaySDK\Shopping\ErrorParameterType>
+        errorClassification:
+            expose: true
+            access_type: public_method
+            serialized_name: ErrorClassification
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getErrorClassification
+                setter: setErrorClassification
+            type: string

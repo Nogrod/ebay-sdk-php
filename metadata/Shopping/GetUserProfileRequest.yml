@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\Shopping\GetUserProfileRequest:
+    xml_root_name: GetUserProfileRequest
+    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

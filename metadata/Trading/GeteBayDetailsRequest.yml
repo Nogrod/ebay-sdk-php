@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\Trading\GeteBayDetailsRequest:
+    xml_root_name: GeteBayDetailsRequest
+    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

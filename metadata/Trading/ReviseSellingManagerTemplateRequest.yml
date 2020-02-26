@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\Trading\ReviseSellingManagerTemplateRequest:
+    xml_root_name: ReviseSellingManagerTemplateRequest
+    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

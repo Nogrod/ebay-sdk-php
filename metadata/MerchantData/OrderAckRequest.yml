@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\MerchantData\OrderAckRequest:
+    xml_root_name: OrderAckRequest
+    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

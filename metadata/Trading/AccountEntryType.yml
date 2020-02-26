@@ -1,0 +1,183 @@
+Nogrod\eBaySDK\Trading\AccountEntryType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        accountDetailsEntryType:
+            expose: true
+            access_type: public_method
+            serialized_name: AccountDetailsEntryType
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getAccountDetailsEntryType
+                setter: setAccountDetailsEntryType
+            type: string
+        description:
+            expose: true
+            access_type: public_method
+            serialized_name: Description
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getDescription
+                setter: setDescription
+            type: string
+        balance:
+            expose: true
+            access_type: public_method
+            serialized_name: Balance
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getBalance
+                setter: setBalance
+            type: Nogrod\eBaySDK\Trading\AmountType
+        date:
+            expose: true
+            access_type: public_method
+            serialized_name: Date
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getDate
+                setter: setDate
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime
+        grossDetailAmount:
+            expose: true
+            access_type: public_method
+            serialized_name: GrossDetailAmount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getGrossDetailAmount
+                setter: setGrossDetailAmount
+            type: Nogrod\eBaySDK\Trading\AmountType
+        itemID:
+            expose: true
+            access_type: public_method
+            serialized_name: ItemID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getItemID
+                setter: setItemID
+            type: string
+        memo:
+            expose: true
+            access_type: public_method
+            serialized_name: Memo
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getMemo
+                setter: setMemo
+            type: string
+        conversionRate:
+            expose: true
+            access_type: public_method
+            serialized_name: ConversionRate
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getConversionRate
+                setter: setConversionRate
+            type: Nogrod\eBaySDK\Trading\AmountType
+        netDetailAmount:
+            expose: true
+            access_type: public_method
+            serialized_name: NetDetailAmount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getNetDetailAmount
+                setter: setNetDetailAmount
+            type: Nogrod\eBaySDK\Trading\AmountType
+        refNumber:
+            expose: true
+            access_type: public_method
+            serialized_name: RefNumber
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getRefNumber
+                setter: setRefNumber
+            type: string
+        vATPercent:
+            expose: true
+            access_type: public_method
+            serialized_name: VATPercent
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getVATPercent
+                setter: setVATPercent
+            type: float
+        title:
+            expose: true
+            access_type: public_method
+            serialized_name: Title
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getTitle
+                setter: setTitle
+            type: string
+        orderLineItemID:
+            expose: true
+            access_type: public_method
+            serialized_name: OrderLineItemID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getOrderLineItemID
+                setter: setOrderLineItemID
+            type: string
+        transactionID:
+            expose: true
+            access_type: public_method
+            serialized_name: TransactionID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getTransactionID
+                setter: setTransactionID
+            type: string
+        receivedTopRatedDiscount:
+            expose: true
+            access_type: public_method
+            serialized_name: ReceivedTopRatedDiscount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getReceivedTopRatedDiscount
+                setter: setReceivedTopRatedDiscount
+            type: bool
+        orderId:
+            expose: true
+            access_type: public_method
+            serialized_name: OrderId
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getOrderId
+                setter: setOrderId
+            type: string

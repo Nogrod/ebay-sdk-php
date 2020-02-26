@@ -1,0 +1,34 @@
+Nogrod\eBaySDK\Trading\GetSellerEventsResponseType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        timeTo:
+            expose: true
+            access_type: public_method
+            serialized_name: TimeTo
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getTimeTo
+                setter: setTimeTo
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime
+        itemArray:
+            expose: true
+            access_type: public_method
+            serialized_name: ItemArray
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getItemArray
+                setter: setItemArray
+            type: array<Nogrod\eBaySDK\Trading\ItemType>
+            xml_list:
+                inline: false
+                entry_name: Item
+                skip_when_empty: true
+                namespace: 'urn:ebay:apis:eBLBaseComponents'

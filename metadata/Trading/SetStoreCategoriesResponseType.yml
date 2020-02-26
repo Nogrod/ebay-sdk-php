@@ -1,0 +1,45 @@
+Nogrod\eBaySDK\Trading\SetStoreCategoriesResponseType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        taskID:
+            expose: true
+            access_type: public_method
+            serialized_name: TaskID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getTaskID
+                setter: setTaskID
+            type: int
+        status:
+            expose: true
+            access_type: public_method
+            serialized_name: Status
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getStatus
+                setter: setStatus
+            type: string
+        customCategory:
+            expose: true
+            access_type: public_method
+            serialized_name: CustomCategory
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCustomCategory
+                setter: setCustomCategory
+            type: array<Nogrod\eBaySDK\Trading\StoreCustomCategoryType>
+            xml_list:
+                inline: false
+                entry_name: CustomCategory
+                skip_when_empty: true
+                namespace: 'urn:ebay:apis:eBLBaseComponents'

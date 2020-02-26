@@ -1,0 +1,39 @@
+Nogrod\eBaySDK\Trading\PaymentsInformationType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        payments:
+            expose: true
+            access_type: public_method
+            serialized_name: Payments
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPayments
+                setter: setPayments
+            type: array<Nogrod\eBaySDK\Trading\PaymentTransactionType>
+            xml_list:
+                inline: false
+                entry_name: Payment
+                skip_when_empty: true
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+        refunds:
+            expose: true
+            access_type: public_method
+            serialized_name: Refunds
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getRefunds
+                setter: setRefunds
+            type: array<Nogrod\eBaySDK\Trading\RefundTransactionInfoType>
+            xml_list:
+                inline: false
+                entry_name: Refund
+                skip_when_empty: true
+                namespace: 'urn:ebay:apis:eBLBaseComponents'

@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\Trading\VeROReportItemsRequest:
+    xml_root_name: VeROReportItemsRequest
+    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

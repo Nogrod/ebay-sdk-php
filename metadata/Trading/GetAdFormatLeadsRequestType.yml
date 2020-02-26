@@ -1,0 +1,62 @@
+Nogrod\eBaySDK\Trading\GetAdFormatLeadsRequestType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        itemID:
+            expose: true
+            access_type: public_method
+            serialized_name: ItemID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getItemID
+                setter: setItemID
+            type: string
+        status:
+            expose: true
+            access_type: public_method
+            serialized_name: Status
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getStatus
+                setter: setStatus
+            type: string
+        includeMemberMessages:
+            expose: true
+            access_type: public_method
+            serialized_name: IncludeMemberMessages
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getIncludeMemberMessages
+                setter: setIncludeMemberMessages
+            type: bool
+        startCreationTime:
+            expose: true
+            access_type: public_method
+            serialized_name: StartCreationTime
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getStartCreationTime
+                setter: setStartCreationTime
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime
+        endCreationTime:
+            expose: true
+            access_type: public_method
+            serialized_name: EndCreationTime
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getEndCreationTime
+                setter: setEndCreationTime
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime

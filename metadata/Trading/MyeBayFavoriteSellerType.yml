@@ -1,0 +1,29 @@
+Nogrod\eBaySDK\Trading\MyeBayFavoriteSellerType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        userID:
+            expose: true
+            access_type: public_method
+            serialized_name: UserID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getUserID
+                setter: setUserID
+            type: string
+        storeName:
+            expose: true
+            access_type: public_method
+            serialized_name: StoreName
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getStoreName
+                setter: setStoreName
+            type: string

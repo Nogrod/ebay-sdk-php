@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\Shopping\GeteBayTimeRequest:
+    xml_root_name: GeteBayTimeRequest
+    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

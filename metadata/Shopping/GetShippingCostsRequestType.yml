@@ -1,0 +1,62 @@
+Nogrod\eBaySDK\Shopping\GetShippingCostsRequestType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        itemID:
+            expose: true
+            access_type: public_method
+            serialized_name: ItemID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getItemID
+                setter: setItemID
+            type: string
+        quantitySold:
+            expose: true
+            access_type: public_method
+            serialized_name: QuantitySold
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getQuantitySold
+                setter: setQuantitySold
+            type: int
+        destinationPostalCode:
+            expose: true
+            access_type: public_method
+            serialized_name: DestinationPostalCode
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getDestinationPostalCode
+                setter: setDestinationPostalCode
+            type: string
+        destinationCountryCode:
+            expose: true
+            access_type: public_method
+            serialized_name: DestinationCountryCode
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getDestinationCountryCode
+                setter: setDestinationCountryCode
+            type: string
+        includeDetails:
+            expose: true
+            access_type: public_method
+            serialized_name: IncludeDetails
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getIncludeDetails
+                setter: setIncludeDetails
+            type: bool

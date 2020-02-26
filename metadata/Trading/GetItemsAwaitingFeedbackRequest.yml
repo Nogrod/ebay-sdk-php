@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\Trading\GetItemsAwaitingFeedbackRequest:
+    xml_root_name: GetItemsAwaitingFeedbackRequest
+    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

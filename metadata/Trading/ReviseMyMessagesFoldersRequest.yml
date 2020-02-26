@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\Trading\ReviseMyMessagesFoldersRequest:
+    xml_root_name: ReviseMyMessagesFoldersRequest
+    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

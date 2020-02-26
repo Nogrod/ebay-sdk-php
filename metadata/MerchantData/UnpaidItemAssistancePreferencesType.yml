@@ -1,0 +1,77 @@
+Nogrod\eBaySDK\MerchantData\UnpaidItemAssistancePreferencesType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        delayBeforeOpeningDispute:
+            expose: true
+            access_type: public_method
+            serialized_name: DelayBeforeOpeningDispute
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getDelayBeforeOpeningDispute
+                setter: setDelayBeforeOpeningDispute
+            type: int
+        optInStatus:
+            expose: true
+            access_type: public_method
+            serialized_name: OptInStatus
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getOptInStatus
+                setter: setOptInStatus
+            type: bool
+        autoRelist:
+            expose: true
+            access_type: public_method
+            serialized_name: AutoRelist
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getAutoRelist
+                setter: setAutoRelist
+            type: bool
+        removeAllExcludedUsers:
+            expose: true
+            access_type: public_method
+            serialized_name: RemoveAllExcludedUsers
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getRemoveAllExcludedUsers
+                setter: setRemoveAllExcludedUsers
+            type: bool
+        excludedUser:
+            expose: true
+            access_type: public_method
+            serialized_name: ExcludedUser
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getExcludedUser
+                setter: setExcludedUser
+            xml_list:
+                inline: true
+                entry_name: ExcludedUser
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<string>
+        autoOptDonationRefund:
+            expose: true
+            access_type: public_method
+            serialized_name: AutoOptDonationRefund
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getAutoOptDonationRefund
+                setter: setAutoOptDonationRefund
+            type: bool

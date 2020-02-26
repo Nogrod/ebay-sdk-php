@@ -1,0 +1,40 @@
+Nogrod\eBaySDK\Trading\SchedulingInfoType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        maxScheduledMinutes:
+            expose: true
+            access_type: public_method
+            serialized_name: MaxScheduledMinutes
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getMaxScheduledMinutes
+                setter: setMaxScheduledMinutes
+            type: int
+        minScheduledMinutes:
+            expose: true
+            access_type: public_method
+            serialized_name: MinScheduledMinutes
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getMinScheduledMinutes
+                setter: setMinScheduledMinutes
+            type: int
+        maxScheduledItems:
+            expose: true
+            access_type: public_method
+            serialized_name: MaxScheduledItems
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getMaxScheduledItems
+                setter: setMaxScheduledItems
+            type: int

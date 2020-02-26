@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\Trading\AddOrderResponse:
+    xml_root_name: AddOrderResponse
+    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

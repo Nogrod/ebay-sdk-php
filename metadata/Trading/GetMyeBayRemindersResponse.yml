@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\Trading\GetMyeBayRemindersResponse:
+    xml_root_name: GetMyeBayRemindersResponse
+    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

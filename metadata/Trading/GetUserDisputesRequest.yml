@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\Trading\GetUserDisputesRequest:
+    xml_root_name: GetUserDisputesRequest
+    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\Trading\RelistFixedPriceItemResponse:
+    xml_root_name: RelistFixedPriceItemResponse
+    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

@@ -1,0 +1,183 @@
+Nogrod\eBaySDK\Trading\ApiAccessRuleType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        callName:
+            expose: true
+            access_type: public_method
+            serialized_name: CallName
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCallName
+                setter: setCallName
+            type: string
+        countsTowardAggregate:
+            expose: true
+            access_type: public_method
+            serialized_name: CountsTowardAggregate
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCountsTowardAggregate
+                setter: setCountsTowardAggregate
+            type: bool
+        dailyHardLimit:
+            expose: true
+            access_type: public_method
+            serialized_name: DailyHardLimit
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getDailyHardLimit
+                setter: setDailyHardLimit
+            type: int
+        dailySoftLimit:
+            expose: true
+            access_type: public_method
+            serialized_name: DailySoftLimit
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getDailySoftLimit
+                setter: setDailySoftLimit
+            type: int
+        dailyUsage:
+            expose: true
+            access_type: public_method
+            serialized_name: DailyUsage
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getDailyUsage
+                setter: setDailyUsage
+            type: int
+        hourlyHardLimit:
+            expose: true
+            access_type: public_method
+            serialized_name: HourlyHardLimit
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getHourlyHardLimit
+                setter: setHourlyHardLimit
+            type: int
+        hourlySoftLimit:
+            expose: true
+            access_type: public_method
+            serialized_name: HourlySoftLimit
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getHourlySoftLimit
+                setter: setHourlySoftLimit
+            type: int
+        hourlyUsage:
+            expose: true
+            access_type: public_method
+            serialized_name: HourlyUsage
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getHourlyUsage
+                setter: setHourlyUsage
+            type: int
+        period:
+            expose: true
+            access_type: public_method
+            serialized_name: Period
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPeriod
+                setter: setPeriod
+            type: int
+        periodicHardLimit:
+            expose: true
+            access_type: public_method
+            serialized_name: PeriodicHardLimit
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPeriodicHardLimit
+                setter: setPeriodicHardLimit
+            type: int
+        periodicSoftLimit:
+            expose: true
+            access_type: public_method
+            serialized_name: PeriodicSoftLimit
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPeriodicSoftLimit
+                setter: setPeriodicSoftLimit
+            type: int
+        periodicUsage:
+            expose: true
+            access_type: public_method
+            serialized_name: PeriodicUsage
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPeriodicUsage
+                setter: setPeriodicUsage
+            type: int
+        periodicStartDate:
+            expose: true
+            access_type: public_method
+            serialized_name: PeriodicStartDate
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPeriodicStartDate
+                setter: setPeriodicStartDate
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime
+        modTime:
+            expose: true
+            access_type: public_method
+            serialized_name: ModTime
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getModTime
+                setter: setModTime
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime
+        ruleCurrentStatus:
+            expose: true
+            access_type: public_method
+            serialized_name: RuleCurrentStatus
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getRuleCurrentStatus
+                setter: setRuleCurrentStatus
+            type: string
+        ruleStatus:
+            expose: true
+            access_type: public_method
+            serialized_name: RuleStatus
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getRuleStatus
+                setter: setRuleStatus
+            type: string

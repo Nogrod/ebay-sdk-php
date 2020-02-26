@@ -1,0 +1,18 @@
+Nogrod\eBaySDK\Trading\GetStoreCategoryUpdateStatusRequestType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        taskID:
+            expose: true
+            access_type: public_method
+            serialized_name: TaskID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getTaskID
+                setter: setTaskID
+            type: int

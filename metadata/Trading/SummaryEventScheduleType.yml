@@ -1,0 +1,40 @@
+Nogrod\eBaySDK\Trading\SummaryEventScheduleType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        eventType:
+            expose: true
+            access_type: public_method
+            serialized_name: EventType
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getEventType
+                setter: setEventType
+            type: string
+        summaryPeriod:
+            expose: true
+            access_type: public_method
+            serialized_name: SummaryPeriod
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSummaryPeriod
+                setter: setSummaryPeriod
+            type: string
+        frequency:
+            expose: true
+            access_type: public_method
+            serialized_name: Frequency
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getFrequency
+                setter: setFrequency
+            type: string

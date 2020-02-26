@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\Trading\RelistItemResponse:
+    xml_root_name: RelistItemResponse
+    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

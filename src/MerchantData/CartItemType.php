@@ -1,0 +1,173 @@
+<?php
+
+namespace Nogrod\eBaySDK\MerchantData;
+
+/**
+ * Class representing CartItemType
+ *
+ * This type is deprecated.
+ * XSD Type: CartItemType
+ */
+class CartItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+{
+
+    /**
+     * This field is deprecated.
+     *
+     * @var \Nogrod\eBaySDK\MerchantData\ItemType $item
+     */
+    private $item = null;
+
+    /**
+     * This field is deprecated.
+     *
+     * @var int $referenceID
+     */
+    private $referenceID = null;
+
+    /**
+     * This field is deprecated.
+     *
+     * @var string $action
+     */
+    private $action = null;
+
+    /**
+     * Gets as item
+     *
+     * This field is deprecated.
+     *
+     * @return \Nogrod\eBaySDK\MerchantData\ItemType
+     */
+    public function getItem()
+    {
+        return $this->item;
+    }
+
+    /**
+     * Sets a new item
+     *
+     * This field is deprecated.
+     *
+     * @param \Nogrod\eBaySDK\MerchantData\ItemType $item
+     * @return self
+     */
+    public function setItem(\Nogrod\eBaySDK\MerchantData\ItemType $item)
+    {
+        $this->item = $item;
+        return $this;
+    }
+
+    /**
+     * Gets as referenceID
+     *
+     * This field is deprecated.
+     *
+     * @return int
+     */
+    public function getReferenceID()
+    {
+        return $this->referenceID;
+    }
+
+    /**
+     * Sets a new referenceID
+     *
+     * This field is deprecated.
+     *
+     * @param int $referenceID
+     * @return self
+     */
+    public function setReferenceID($referenceID)
+    {
+        $this->referenceID = $referenceID;
+        return $this;
+    }
+
+    /**
+     * Gets as action
+     *
+     * This field is deprecated.
+     *
+     * @return string
+     */
+    public function getAction()
+    {
+        return $this->action;
+    }
+
+    /**
+     * Sets a new action
+     *
+     * This field is deprecated.
+     *
+     * @param string $action
+     * @return self
+     */
+    public function setAction($action)
+    {
+        $this->action = $action;
+        return $this;
+    }
+
+    public function xmlSerialize(\Sabre\Xml\Writer $writer)
+    {
+        $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
+        $value = $this->getItem();
+        if (null !== $value) {
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Item", $value);
+        }
+        $value = $this->getReferenceID();
+        if (null !== $value) {
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ReferenceID", $value);
+        }
+        $value = $this->getAction();
+        if (null !== $value) {
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Action", $value);
+        }
+    }
+
+    public static function xmlDeserialize(\Sabre\Xml\Reader $reader)
+    {
+        return self::fromKeyValue($reader->parseInnerTree([]));
+    }
+
+    public static function fromKeyValue($keyValue)
+    {
+        $self = new self();
+        $self->setKeyValue($keyValue);
+        return $self;
+    }
+
+    public function setKeyValue($keyValue)
+    {
+        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Item');
+        if (null !== $value) {
+            $this->setItem(\Nogrod\eBaySDK\MerchantData\ItemType::fromKeyValue($value));
+        }
+        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReferenceID');
+        if (null !== $value) {
+            $this->setReferenceID($value);
+        }
+        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Action');
+        if (null !== $value) {
+            $this->setAction($value);
+        }
+    }
+
+    public static function mapArray(array $array, string $name, bool $isArray = false)
+    {
+        $result = [];
+        foreach ($array as $item) {
+            if ($item['name'] !== $name) {
+                continue;
+            }
+            if ($isArray) {
+                $result[] = $item['value'];
+            } else {
+                return $item['value'];
+            }
+        }
+        return $isArray ? $result : null;
+    }
+}

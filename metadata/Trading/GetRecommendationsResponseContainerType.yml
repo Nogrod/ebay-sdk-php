@@ -1,0 +1,111 @@
+Nogrod\eBaySDK\Trading\GetRecommendationsResponseContainerType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        listingAnalyzerRecommendations:
+            expose: true
+            access_type: public_method
+            serialized_name: ListingAnalyzerRecommendations
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getListingAnalyzerRecommendations
+                setter: setListingAnalyzerRecommendations
+            type: Nogrod\eBaySDK\Trading\ListingAnalyzerRecommendationsType
+        sIFFTASRecommendations:
+            expose: true
+            access_type: public_method
+            serialized_name: SIFFTASRecommendations
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSIFFTASRecommendations
+                setter: setSIFFTASRecommendations
+            type: Nogrod\eBaySDK\Trading\SIFFTASRecommendationsType
+        pricingRecommendations:
+            expose: true
+            access_type: public_method
+            serialized_name: PricingRecommendations
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPricingRecommendations
+                setter: setPricingRecommendations
+            type: Nogrod\eBaySDK\Trading\PricingRecommendationsType
+        attributeRecommendations:
+            expose: true
+            access_type: public_method
+            serialized_name: AttributeRecommendations
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getAttributeRecommendations
+                setter: setAttributeRecommendations
+            type: Nogrod\eBaySDK\Trading\AttributeRecommendationsType
+        productRecommendations:
+            expose: true
+            access_type: public_method
+            serialized_name: ProductRecommendations
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getProductRecommendations
+                setter: setProductRecommendations
+            type: array<Nogrod\eBaySDK\Trading\ProductInfoType>
+            xml_list:
+                inline: false
+                entry_name: Product
+                skip_when_empty: true
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+        correlationID:
+            expose: true
+            access_type: public_method
+            serialized_name: CorrelationID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCorrelationID
+                setter: setCorrelationID
+            type: string
+        recommendations:
+            expose: true
+            access_type: public_method
+            serialized_name: Recommendations
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getRecommendations
+                setter: setRecommendations
+            type: Nogrod\eBaySDK\Trading\RecommendationsType
+        productListingDetails:
+            expose: true
+            access_type: public_method
+            serialized_name: ProductListingDetails
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getProductListingDetails
+                setter: setProductListingDetails
+            type: Nogrod\eBaySDK\Trading\ProductListingDetailsType
+        title:
+            expose: true
+            access_type: public_method
+            serialized_name: Title
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getTitle
+                setter: setTitle
+            type: string

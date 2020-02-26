@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\Trading\ConfirmIdentityRequest:
+    xml_root_name: ConfirmIdentityRequest
+    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

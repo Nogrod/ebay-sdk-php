@@ -1,0 +1,111 @@
+Nogrod\eBaySDK\Trading\LeaveFeedbackRequestType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        itemID:
+            expose: true
+            access_type: public_method
+            serialized_name: ItemID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getItemID
+                setter: setItemID
+            type: string
+        commentText:
+            expose: true
+            access_type: public_method
+            serialized_name: CommentText
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCommentText
+                setter: setCommentText
+            type: string
+        commentType:
+            expose: true
+            access_type: public_method
+            serialized_name: CommentType
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCommentType
+                setter: setCommentType
+            type: string
+        transactionID:
+            expose: true
+            access_type: public_method
+            serialized_name: TransactionID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getTransactionID
+                setter: setTransactionID
+            type: string
+        targetUser:
+            expose: true
+            access_type: public_method
+            serialized_name: TargetUser
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getTargetUser
+                setter: setTargetUser
+            type: string
+        sellerItemRatingDetailArray:
+            expose: true
+            access_type: public_method
+            serialized_name: SellerItemRatingDetailArray
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSellerItemRatingDetailArray
+                setter: setSellerItemRatingDetailArray
+            type: array<Nogrod\eBaySDK\Trading\ItemRatingDetailsType>
+            xml_list:
+                inline: false
+                entry_name: ItemRatingDetails
+                skip_when_empty: true
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+        orderLineItemID:
+            expose: true
+            access_type: public_method
+            serialized_name: OrderLineItemID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getOrderLineItemID
+                setter: setOrderLineItemID
+            type: string
+        itemArrivedWithinEDDType:
+            expose: true
+            access_type: public_method
+            serialized_name: ItemArrivedWithinEDDType
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getItemArrivedWithinEDDType
+                setter: setItemArrivedWithinEDDType
+            type: string
+        itemDeliveredWithinEDD:
+            expose: true
+            access_type: public_method
+            serialized_name: ItemDeliveredWithinEDD
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getItemDeliveredWithinEDD
+                setter: setItemDeliveredWithinEDD
+            type: bool

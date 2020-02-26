@@ -1,0 +1,29 @@
+Nogrod\eBaySDK\Trading\SellerPaymentProfileType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        paymentProfileID:
+            expose: true
+            access_type: public_method
+            serialized_name: PaymentProfileID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPaymentProfileID
+                setter: setPaymentProfileID
+            type: int
+        paymentProfileName:
+            expose: true
+            access_type: public_method
+            serialized_name: PaymentProfileName
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPaymentProfileName
+                setter: setPaymentProfileName
+            type: string

@@ -1,0 +1,89 @@
+Nogrod\eBaySDK\Trading\GetDescriptionTemplatesResponseType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        descriptionTemplate:
+            expose: true
+            access_type: public_method
+            serialized_name: DescriptionTemplate
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getDescriptionTemplate
+                setter: setDescriptionTemplate
+            xml_list:
+                inline: true
+                entry_name: DescriptionTemplate
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<Nogrod\eBaySDK\Trading\DescriptionTemplateType>
+        layoutTotal:
+            expose: true
+            access_type: public_method
+            serialized_name: LayoutTotal
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getLayoutTotal
+                setter: setLayoutTotal
+            type: int
+        obsoleteLayoutID:
+            expose: true
+            access_type: public_method
+            serialized_name: ObsoleteLayoutID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getObsoleteLayoutID
+                setter: setObsoleteLayoutID
+            xml_list:
+                inline: true
+                entry_name: ObsoleteLayoutID
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<int>
+        obsoleteThemeID:
+            expose: true
+            access_type: public_method
+            serialized_name: ObsoleteThemeID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getObsoleteThemeID
+                setter: setObsoleteThemeID
+            xml_list:
+                inline: true
+                entry_name: ObsoleteThemeID
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<int>
+        themeGroup:
+            expose: true
+            access_type: public_method
+            serialized_name: ThemeGroup
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getThemeGroup
+                setter: setThemeGroup
+            xml_list:
+                inline: true
+                entry_name: ThemeGroup
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<Nogrod\eBaySDK\Trading\ThemeGroupType>
+        themeTotal:
+            expose: true
+            access_type: public_method
+            serialized_name: ThemeTotal
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getThemeTotal
+                setter: setThemeTotal
+            type: int

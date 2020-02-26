@@ -1,0 +1,29 @@
+Nogrod\eBaySDK\Trading\GetItemsAwaitingFeedbackRequestType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        sort:
+            expose: true
+            access_type: public_method
+            serialized_name: Sort
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSort
+                setter: setSort
+            type: string
+        pagination:
+            expose: true
+            access_type: public_method
+            serialized_name: Pagination
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPagination
+                setter: setPagination
+            type: Nogrod\eBaySDK\Trading\PaginationType

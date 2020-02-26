@@ -1,0 +1,51 @@
+Nogrod\eBaySDK\Trading\CombinedPaymentPreferencesType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        calculatedShippingPreferences:
+            expose: true
+            access_type: public_method
+            serialized_name: CalculatedShippingPreferences
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCalculatedShippingPreferences
+                setter: setCalculatedShippingPreferences
+            type: Nogrod\eBaySDK\Trading\CalculatedShippingPreferencesType
+        combinedPaymentOption:
+            expose: true
+            access_type: public_method
+            serialized_name: CombinedPaymentOption
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCombinedPaymentOption
+                setter: setCombinedPaymentOption
+            type: string
+        combinedPaymentPeriod:
+            expose: true
+            access_type: public_method
+            serialized_name: CombinedPaymentPeriod
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCombinedPaymentPeriod
+                setter: setCombinedPaymentPeriod
+            type: string
+        flatShippingPreferences:
+            expose: true
+            access_type: public_method
+            serialized_name: FlatShippingPreferences
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getFlatShippingPreferences
+                setter: setFlatShippingPreferences
+            type: Nogrod\eBaySDK\Trading\FlatShippingPreferencesType

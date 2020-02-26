@@ -1,0 +1,177 @@
+Nogrod\eBaySDK\Trading\VariationType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        sKU:
+            expose: true
+            access_type: public_method
+            serialized_name: SKU
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSKU
+                setter: setSKU
+            type: string
+        startPrice:
+            expose: true
+            access_type: public_method
+            serialized_name: StartPrice
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getStartPrice
+                setter: setStartPrice
+            type: Nogrod\eBaySDK\Trading\AmountType
+        quantity:
+            expose: true
+            access_type: public_method
+            serialized_name: Quantity
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getQuantity
+                setter: setQuantity
+            type: int
+        variationSpecifics:
+            expose: true
+            access_type: public_method
+            serialized_name: VariationSpecifics
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getVariationSpecifics
+                setter: setVariationSpecifics
+            type: array<Nogrod\eBaySDK\Trading\NameValueListType>
+            xml_list:
+                inline: false
+                entry_name: NameValueList
+                skip_when_empty: true
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+        unitsAvailable:
+            expose: true
+            access_type: public_method
+            serialized_name: UnitsAvailable
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getUnitsAvailable
+                setter: setUnitsAvailable
+            type: int
+        unitCost:
+            expose: true
+            access_type: public_method
+            serialized_name: UnitCost
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getUnitCost
+                setter: setUnitCost
+            type: Nogrod\eBaySDK\Trading\AmountType
+        sellingStatus:
+            expose: true
+            access_type: public_method
+            serialized_name: SellingStatus
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSellingStatus
+                setter: setSellingStatus
+            type: Nogrod\eBaySDK\Trading\SellingStatusType
+        variationTitle:
+            expose: true
+            access_type: public_method
+            serialized_name: VariationTitle
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getVariationTitle
+                setter: setVariationTitle
+            type: string
+        variationViewItemURL:
+            expose: true
+            access_type: public_method
+            serialized_name: VariationViewItemURL
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getVariationViewItemURL
+                setter: setVariationViewItemURL
+            type: string
+        delete:
+            expose: true
+            access_type: public_method
+            serialized_name: Delete
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getDelete
+                setter: setDelete
+            type: bool
+        sellingManagerProductInventoryStatus:
+            expose: true
+            access_type: public_method
+            serialized_name: SellingManagerProductInventoryStatus
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSellingManagerProductInventoryStatus
+                setter: setSellingManagerProductInventoryStatus
+            type: Nogrod\eBaySDK\Trading\SellingManagerProductInventoryStatusType
+        watchCount:
+            expose: true
+            access_type: public_method
+            serialized_name: WatchCount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getWatchCount
+                setter: setWatchCount
+            type: int
+        privateNotes:
+            expose: true
+            access_type: public_method
+            serialized_name: PrivateNotes
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPrivateNotes
+                setter: setPrivateNotes
+            type: string
+        discountPriceInfo:
+            expose: true
+            access_type: public_method
+            serialized_name: DiscountPriceInfo
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getDiscountPriceInfo
+                setter: setDiscountPriceInfo
+            type: Nogrod\eBaySDK\Trading\DiscountPriceInfoType
+        variationProductListingDetails:
+            expose: true
+            access_type: public_method
+            serialized_name: VariationProductListingDetails
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getVariationProductListingDetails
+                setter: setVariationProductListingDetails
+            type: Nogrod\eBaySDK\Trading\VariationProductListingDetailsType

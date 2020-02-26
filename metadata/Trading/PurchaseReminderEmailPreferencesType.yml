@@ -1,0 +1,18 @@
+Nogrod\eBaySDK\Trading\PurchaseReminderEmailPreferencesType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        purchaseReminderEmailPreferences:
+            expose: true
+            access_type: public_method
+            serialized_name: PurchaseReminderEmailPreferences
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPurchaseReminderEmailPreferences
+                setter: setPurchaseReminderEmailPreferences
+            type: bool

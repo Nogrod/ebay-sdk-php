@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\Trading\SendInvoiceRequest:
+    xml_root_name: SendInvoiceRequest
+    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

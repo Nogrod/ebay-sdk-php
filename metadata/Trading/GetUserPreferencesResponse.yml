@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\Trading\GetUserPreferencesResponse:
+    xml_root_name: GetUserPreferencesResponse
+    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

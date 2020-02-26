@@ -1,0 +1,18 @@
+Nogrod\eBaySDK\MerchantData\SellerReturnPreferencesType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        optedIn:
+            expose: true
+            access_type: public_method
+            serialized_name: OptedIn
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getOptedIn
+                setter: setOptedIn
+            type: bool

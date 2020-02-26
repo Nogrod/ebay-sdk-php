@@ -1,0 +1,55 @@
+Nogrod\eBaySDK\BusinessPoliciesManagement\GetSellerProfilesResponseType:
+    virtual_properties:
+        ns_prop:
+            exp: '"http://www.ebay.com/marketplace/selling/v1/services"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        paymentProfileList:
+            expose: true
+            access_type: public_method
+            serialized_name: paymentProfileList
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getPaymentProfileList
+                setter: setPaymentProfileList
+            type: array<Nogrod\eBaySDK\BusinessPoliciesManagement\PaymentProfileType>
+            xml_list:
+                inline: false
+                entry_name: PaymentProfile
+                skip_when_empty: true
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+        returnPolicyProfileList:
+            expose: true
+            access_type: public_method
+            serialized_name: returnPolicyProfileList
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getReturnPolicyProfileList
+                setter: setReturnPolicyProfileList
+            type: array<Nogrod\eBaySDK\BusinessPoliciesManagement\ReturnPolicyProfileType>
+            xml_list:
+                inline: false
+                entry_name: ReturnPolicyProfile
+                skip_when_empty: true
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+        shippingPolicyProfile:
+            expose: true
+            access_type: public_method
+            serialized_name: shippingPolicyProfile
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getShippingPolicyProfile
+                setter: setShippingPolicyProfile
+            type: array<Nogrod\eBaySDK\BusinessPoliciesManagement\ShippingPolicyProfileType>
+            xml_list:
+                inline: false
+                entry_name: ShippingPolicyProfile
+                skip_when_empty: true
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'

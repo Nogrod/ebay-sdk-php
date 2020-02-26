@@ -1,0 +1,265 @@
+Nogrod\eBaySDK\Trading\CategoryType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        bestOfferEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: BestOfferEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getBestOfferEnabled
+                setter: setBestOfferEnabled
+            type: bool
+        autoPayEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: AutoPayEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getAutoPayEnabled
+                setter: setAutoPayEnabled
+            type: bool
+        b2BVATEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: B2BVATEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getB2BVATEnabled
+                setter: setB2BVATEnabled
+            type: bool
+        catalogEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: CatalogEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCatalogEnabled
+                setter: setCatalogEnabled
+            type: bool
+        categoryID:
+            expose: true
+            access_type: public_method
+            serialized_name: CategoryID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCategoryID
+                setter: setCategoryID
+            type: string
+        categoryLevel:
+            expose: true
+            access_type: public_method
+            serialized_name: CategoryLevel
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCategoryLevel
+                setter: setCategoryLevel
+            type: int
+        categoryName:
+            expose: true
+            access_type: public_method
+            serialized_name: CategoryName
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCategoryName
+                setter: setCategoryName
+            type: string
+        categoryParentID:
+            expose: true
+            access_type: public_method
+            serialized_name: CategoryParentID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCategoryParentID
+                setter: setCategoryParentID
+            xml_list:
+                inline: true
+                entry_name: CategoryParentID
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<string>
+        categoryParentName:
+            expose: true
+            access_type: public_method
+            serialized_name: CategoryParentName
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCategoryParentName
+                setter: setCategoryParentName
+            xml_list:
+                inline: true
+                entry_name: CategoryParentName
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<string>
+        productSearchPageAvailable:
+            expose: true
+            access_type: public_method
+            serialized_name: ProductSearchPageAvailable
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getProductSearchPageAvailable
+                setter: setProductSearchPageAvailable
+            type: bool
+        productFinderIDs:
+            expose: true
+            access_type: public_method
+            serialized_name: ProductFinderIDs
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getProductFinderIDs
+                setter: setProductFinderIDs
+            xml_list:
+                inline: true
+                entry_name: ProductFinderIDs
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<Nogrod\eBaySDK\Trading\ExtendedProductFinderIDType>
+        characteristicsSets:
+            expose: true
+            access_type: public_method
+            serialized_name: CharacteristicsSets
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCharacteristicsSets
+                setter: setCharacteristicsSets
+            xml_list:
+                inline: true
+                entry_name: CharacteristicsSets
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<Nogrod\eBaySDK\Trading\CharacteristicsSetType>
+        expired:
+            expose: true
+            access_type: public_method
+            serialized_name: Expired
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getExpired
+                setter: setExpired
+            type: bool
+        intlAutosFixedCat:
+            expose: true
+            access_type: public_method
+            serialized_name: IntlAutosFixedCat
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getIntlAutosFixedCat
+                setter: setIntlAutosFixedCat
+            type: bool
+        leafCategory:
+            expose: true
+            access_type: public_method
+            serialized_name: LeafCategory
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getLeafCategory
+                setter: setLeafCategory
+            type: bool
+        virtual:
+            expose: true
+            access_type: public_method
+            serialized_name: Virtual
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getVirtual
+                setter: setVirtual
+            type: bool
+        numOfItems:
+            expose: true
+            access_type: public_method
+            serialized_name: NumOfItems
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getNumOfItems
+                setter: setNumOfItems
+            type: int
+        sellerGuaranteeEligible:
+            expose: true
+            access_type: public_method
+            serialized_name: SellerGuaranteeEligible
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSellerGuaranteeEligible
+                setter: setSellerGuaranteeEligible
+            type: bool
+        oRPA:
+            expose: true
+            access_type: public_method
+            serialized_name: ORPA
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getORPA
+                setter: setORPA
+            type: bool
+        oRRA:
+            expose: true
+            access_type: public_method
+            serialized_name: ORRA
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getORRA
+                setter: setORRA
+            type: bool
+        lSD:
+            expose: true
+            access_type: public_method
+            serialized_name: LSD
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getLSD
+                setter: setLSD
+            type: bool
+        keywords:
+            expose: true
+            access_type: public_method
+            serialized_name: Keywords
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getKeywords
+                setter: setKeywords
+            type: string

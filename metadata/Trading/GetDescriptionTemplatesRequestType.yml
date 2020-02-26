@@ -1,0 +1,40 @@
+Nogrod\eBaySDK\Trading\GetDescriptionTemplatesRequestType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        categoryID:
+            expose: true
+            access_type: public_method
+            serialized_name: CategoryID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCategoryID
+                setter: setCategoryID
+            type: string
+        lastModifiedTime:
+            expose: true
+            access_type: public_method
+            serialized_name: LastModifiedTime
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getLastModifiedTime
+                setter: setLastModifiedTime
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime
+        motorVehicles:
+            expose: true
+            access_type: public_method
+            serialized_name: MotorVehicles
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getMotorVehicles
+                setter: setMotorVehicles
+            type: bool

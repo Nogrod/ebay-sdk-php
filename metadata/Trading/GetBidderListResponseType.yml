@@ -1,0 +1,34 @@
+Nogrod\eBaySDK\Trading\GetBidderListResponseType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        bidder:
+            expose: true
+            access_type: public_method
+            serialized_name: Bidder
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getBidder
+                setter: setBidder
+            type: Nogrod\eBaySDK\Trading\UserType
+        bidItemArray:
+            expose: true
+            access_type: public_method
+            serialized_name: BidItemArray
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getBidItemArray
+                setter: setBidItemArray
+            type: array<Nogrod\eBaySDK\Trading\ItemType>
+            xml_list:
+                inline: false
+                entry_name: Item
+                skip_when_empty: true
+                namespace: 'urn:ebay:apis:eBLBaseComponents'

@@ -1,0 +1,139 @@
+Nogrod\eBaySDK\Trading\GetAccountRequestType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        accountHistorySelection:
+            expose: true
+            access_type: public_method
+            serialized_name: AccountHistorySelection
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getAccountHistorySelection
+                setter: setAccountHistorySelection
+            type: string
+        invoiceDate:
+            expose: true
+            access_type: public_method
+            serialized_name: InvoiceDate
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getInvoiceDate
+                setter: setInvoiceDate
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime
+        beginDate:
+            expose: true
+            access_type: public_method
+            serialized_name: BeginDate
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getBeginDate
+                setter: setBeginDate
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime
+        endDate:
+            expose: true
+            access_type: public_method
+            serialized_name: EndDate
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getEndDate
+                setter: setEndDate
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime
+        pagination:
+            expose: true
+            access_type: public_method
+            serialized_name: Pagination
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPagination
+                setter: setPagination
+            type: Nogrod\eBaySDK\Trading\PaginationType
+        excludeBalance:
+            expose: true
+            access_type: public_method
+            serialized_name: ExcludeBalance
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getExcludeBalance
+                setter: setExcludeBalance
+            type: bool
+        excludeSummary:
+            expose: true
+            access_type: public_method
+            serialized_name: ExcludeSummary
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getExcludeSummary
+                setter: setExcludeSummary
+            type: bool
+        includeConversionRate:
+            expose: true
+            access_type: public_method
+            serialized_name: IncludeConversionRate
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getIncludeConversionRate
+                setter: setIncludeConversionRate
+            type: bool
+        accountEntrySortType:
+            expose: true
+            access_type: public_method
+            serialized_name: AccountEntrySortType
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getAccountEntrySortType
+                setter: setAccountEntrySortType
+            type: string
+        currency:
+            expose: true
+            access_type: public_method
+            serialized_name: Currency
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCurrency
+                setter: setCurrency
+            type: string
+        itemID:
+            expose: true
+            access_type: public_method
+            serialized_name: ItemID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getItemID
+                setter: setItemID
+            type: string
+        orderID:
+            expose: true
+            access_type: public_method
+            serialized_name: OrderID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getOrderID
+                setter: setOrderID
+            type: string

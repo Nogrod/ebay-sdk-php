@@ -1,0 +1,18 @@
+Nogrod\eBaySDK\Trading\GetStorePreferencesResponseType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        storePreferences:
+            expose: true
+            access_type: public_method
+            serialized_name: StorePreferences
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getStorePreferences
+                setter: setStorePreferences
+            type: Nogrod\eBaySDK\Trading\StorePreferencesType

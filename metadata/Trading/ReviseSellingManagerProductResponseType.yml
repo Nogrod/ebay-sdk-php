@@ -1,0 +1,18 @@
+Nogrod\eBaySDK\Trading\ReviseSellingManagerProductResponseType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        sellingManagerProductDetails:
+            expose: true
+            access_type: public_method
+            serialized_name: SellingManagerProductDetails
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSellingManagerProductDetails
+                setter: setSellingManagerProductDetails
+            type: Nogrod\eBaySDK\Trading\SellingManagerProductDetailsType

@@ -1,0 +1,161 @@
+Nogrod\eBaySDK\Trading\GetMyeBayBuyingRequestType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        watchList:
+            expose: true
+            access_type: public_method
+            serialized_name: WatchList
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getWatchList
+                setter: setWatchList
+            type: Nogrod\eBaySDK\Trading\ItemListCustomizationType
+        bidList:
+            expose: true
+            access_type: public_method
+            serialized_name: BidList
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getBidList
+                setter: setBidList
+            type: Nogrod\eBaySDK\Trading\ItemListCustomizationType
+        bestOfferList:
+            expose: true
+            access_type: public_method
+            serialized_name: BestOfferList
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getBestOfferList
+                setter: setBestOfferList
+            type: Nogrod\eBaySDK\Trading\ItemListCustomizationType
+        wonList:
+            expose: true
+            access_type: public_method
+            serialized_name: WonList
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getWonList
+                setter: setWonList
+            type: Nogrod\eBaySDK\Trading\ItemListCustomizationType
+        lostList:
+            expose: true
+            access_type: public_method
+            serialized_name: LostList
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getLostList
+                setter: setLostList
+            type: Nogrod\eBaySDK\Trading\ItemListCustomizationType
+        favoriteSearches:
+            expose: true
+            access_type: public_method
+            serialized_name: FavoriteSearches
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getFavoriteSearches
+                setter: setFavoriteSearches
+            type: Nogrod\eBaySDK\Trading\MyeBaySelectionType
+        favoriteSellers:
+            expose: true
+            access_type: public_method
+            serialized_name: FavoriteSellers
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getFavoriteSellers
+                setter: setFavoriteSellers
+            type: Nogrod\eBaySDK\Trading\MyeBaySelectionType
+        secondChanceOffer:
+            expose: true
+            access_type: public_method
+            serialized_name: SecondChanceOffer
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSecondChanceOffer
+                setter: setSecondChanceOffer
+            type: Nogrod\eBaySDK\Trading\MyeBaySelectionType
+        bidAssistantList:
+            expose: true
+            access_type: public_method
+            serialized_name: BidAssistantList
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getBidAssistantList
+                setter: setBidAssistantList
+            type: Nogrod\eBaySDK\Trading\BidAssistantListType
+        deletedFromWonList:
+            expose: true
+            access_type: public_method
+            serialized_name: DeletedFromWonList
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getDeletedFromWonList
+                setter: setDeletedFromWonList
+            type: Nogrod\eBaySDK\Trading\ItemListCustomizationType
+        deletedFromLostList:
+            expose: true
+            access_type: public_method
+            serialized_name: DeletedFromLostList
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getDeletedFromLostList
+                setter: setDeletedFromLostList
+            type: Nogrod\eBaySDK\Trading\ItemListCustomizationType
+        buyingSummary:
+            expose: true
+            access_type: public_method
+            serialized_name: BuyingSummary
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getBuyingSummary
+                setter: setBuyingSummary
+            type: Nogrod\eBaySDK\Trading\ItemListCustomizationType
+        userDefinedLists:
+            expose: true
+            access_type: public_method
+            serialized_name: UserDefinedLists
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getUserDefinedLists
+                setter: setUserDefinedLists
+            type: Nogrod\eBaySDK\Trading\MyeBaySelectionType
+        hideVariations:
+            expose: true
+            access_type: public_method
+            serialized_name: HideVariations
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getHideVariations
+                setter: setHideVariations
+            type: bool

@@ -1,0 +1,29 @@
+Nogrod\eBaySDK\Trading\ShippingEstimatedDeliveryInfoType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        originalDeliveryEstimatedTimeMin:
+            expose: true
+            access_type: public_method
+            serialized_name: OriginalDeliveryEstimatedTimeMin
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getOriginalDeliveryEstimatedTimeMin
+                setter: setOriginalDeliveryEstimatedTimeMin
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime
+        originalDeliveryEstimatedTimeMax:
+            expose: true
+            access_type: public_method
+            serialized_name: OriginalDeliveryEstimatedTimeMax
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getOriginalDeliveryEstimatedTimeMax
+                setter: setOriginalDeliveryEstimatedTimeMax
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime

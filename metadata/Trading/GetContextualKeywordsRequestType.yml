@@ -1,0 +1,44 @@
+Nogrod\eBaySDK\Trading\GetContextualKeywordsRequestType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        uRL:
+            expose: true
+            access_type: public_method
+            serialized_name: URL
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getURL
+                setter: setURL
+            type: string
+        encoding:
+            expose: true
+            access_type: public_method
+            serialized_name: Encoding
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getEncoding
+                setter: setEncoding
+            type: string
+        categoryID:
+            expose: true
+            access_type: public_method
+            serialized_name: CategoryID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCategoryID
+                setter: setCategoryID
+            xml_list:
+                inline: true
+                entry_name: CategoryID
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<string>

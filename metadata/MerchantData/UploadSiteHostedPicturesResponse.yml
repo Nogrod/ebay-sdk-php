@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\MerchantData\UploadSiteHostedPicturesResponse:
+    xml_root_name: UploadSiteHostedPicturesResponse
+    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

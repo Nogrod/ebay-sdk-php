@@ -1,0 +1,51 @@
+Nogrod\eBaySDK\BusinessPoliciesManagement\ShippingProfileDiscountInfoType:
+    virtual_properties:
+        ns_prop:
+            exp: '"http://www.ebay.com/marketplace/selling/v1/services"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        domesticFlatCalcDiscountProfileId:
+            expose: true
+            access_type: public_method
+            serialized_name: domesticFlatCalcDiscountProfileId
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getDomesticFlatCalcDiscountProfileId
+                setter: setDomesticFlatCalcDiscountProfileId
+            type: int
+        intlFlatCalcDiscountProfileId:
+            expose: true
+            access_type: public_method
+            serialized_name: intlFlatCalcDiscountProfileId
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getIntlFlatCalcDiscountProfileId
+                setter: setIntlFlatCalcDiscountProfileId
+            type: int
+        applyDomesticPromoShippingProfile:
+            expose: true
+            access_type: public_method
+            serialized_name: applyDomesticPromoShippingProfile
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getApplyDomesticPromoShippingProfile
+                setter: setApplyDomesticPromoShippingProfile
+            type: bool
+        applyIntlPromoShippingProfile:
+            expose: true
+            access_type: public_method
+            serialized_name: applyIntlPromoShippingProfile
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getApplyIntlPromoShippingProfile
+                setter: setApplyIntlPromoShippingProfile
+            type: bool

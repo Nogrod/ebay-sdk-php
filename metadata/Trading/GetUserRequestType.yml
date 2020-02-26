@@ -1,0 +1,51 @@
+Nogrod\eBaySDK\Trading\GetUserRequestType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        itemID:
+            expose: true
+            access_type: public_method
+            serialized_name: ItemID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getItemID
+                setter: setItemID
+            type: string
+        userID:
+            expose: true
+            access_type: public_method
+            serialized_name: UserID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getUserID
+                setter: setUserID
+            type: string
+        includeExpressRequirements:
+            expose: true
+            access_type: public_method
+            serialized_name: IncludeExpressRequirements
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getIncludeExpressRequirements
+                setter: setIncludeExpressRequirements
+            type: bool
+        includeFeatureEligibility:
+            expose: true
+            access_type: public_method
+            serialized_name: IncludeFeatureEligibility
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getIncludeFeatureEligibility
+                setter: setIncludeFeatureEligibility
+            type: bool

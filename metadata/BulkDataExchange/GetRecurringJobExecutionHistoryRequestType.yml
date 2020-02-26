@@ -1,0 +1,55 @@
+Nogrod\eBaySDK\BulkDataExchange\GetRecurringJobExecutionHistoryRequestType:
+    virtual_properties:
+        ns_prop:
+            exp: '"http://www.ebay.com/marketplace/services"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        startTime:
+            expose: true
+            access_type: public_method
+            serialized_name: startTime
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/services'
+            accessor:
+                getter: getStartTime
+                setter: setStartTime
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime
+        endTime:
+            expose: true
+            access_type: public_method
+            serialized_name: endTime
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/services'
+            accessor:
+                getter: getEndTime
+                setter: setEndTime
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime
+        recurringJobId:
+            expose: true
+            access_type: public_method
+            serialized_name: recurringJobId
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/services'
+            accessor:
+                getter: getRecurringJobId
+                setter: setRecurringJobId
+            type: string
+        jobStatus:
+            expose: true
+            access_type: public_method
+            serialized_name: jobStatus
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/services'
+            accessor:
+                getter: getJobStatus
+                setter: setJobStatus
+            xml_list:
+                inline: true
+                entry_name: jobStatus
+                namespace: 'http://www.ebay.com/marketplace/services'
+            type: array<string>

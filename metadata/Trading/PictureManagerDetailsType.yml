@@ -1,0 +1,88 @@
+Nogrod\eBaySDK\Trading\PictureManagerDetailsType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        subscriptionLevel:
+            expose: true
+            access_type: public_method
+            serialized_name: SubscriptionLevel
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSubscriptionLevel
+                setter: setSubscriptionLevel
+            type: string
+        storageUsed:
+            expose: true
+            access_type: public_method
+            serialized_name: StorageUsed
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getStorageUsed
+                setter: setStorageUsed
+            type: int
+        totalStorageAvailable:
+            expose: true
+            access_type: public_method
+            serialized_name: TotalStorageAvailable
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getTotalStorageAvailable
+                setter: setTotalStorageAvailable
+            type: int
+        keepOriginal:
+            expose: true
+            access_type: public_method
+            serialized_name: KeepOriginal
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getKeepOriginal
+                setter: setKeepOriginal
+            type: bool
+        watermarkEPS:
+            expose: true
+            access_type: public_method
+            serialized_name: WatermarkEPS
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getWatermarkEPS
+                setter: setWatermarkEPS
+            type: bool
+        watermarkUserID:
+            expose: true
+            access_type: public_method
+            serialized_name: WatermarkUserID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getWatermarkUserID
+                setter: setWatermarkUserID
+            type: bool
+        folder:
+            expose: true
+            access_type: public_method
+            serialized_name: Folder
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getFolder
+                setter: setFolder
+            xml_list:
+                inline: true
+                entry_name: Folder
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<Nogrod\eBaySDK\Trading\PictureManagerFolderType>

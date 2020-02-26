@@ -1,0 +1,29 @@
+Nogrod\eBaySDK\Trading\CancelOfferType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        offer:
+            expose: true
+            access_type: public_method
+            serialized_name: Offer
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getOffer
+                setter: setOffer
+            type: Nogrod\eBaySDK\Trading\OfferType
+        explanation:
+            expose: true
+            access_type: public_method
+            serialized_name: Explanation
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getExplanation
+                setter: setExplanation
+            type: string

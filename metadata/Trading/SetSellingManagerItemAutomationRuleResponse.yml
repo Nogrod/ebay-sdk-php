@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\Trading\SetSellingManagerItemAutomationRuleResponse:
+    xml_root_name: SetSellingManagerItemAutomationRuleResponse
+    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

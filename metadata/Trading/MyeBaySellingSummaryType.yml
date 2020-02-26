@@ -1,0 +1,150 @@
+Nogrod\eBaySDK\Trading\MyeBaySellingSummaryType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        activeAuctionCount:
+            expose: true
+            access_type: public_method
+            serialized_name: ActiveAuctionCount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getActiveAuctionCount
+                setter: setActiveAuctionCount
+            type: int
+        auctionSellingCount:
+            expose: true
+            access_type: public_method
+            serialized_name: AuctionSellingCount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getAuctionSellingCount
+                setter: setAuctionSellingCount
+            type: int
+        auctionBidCount:
+            expose: true
+            access_type: public_method
+            serialized_name: AuctionBidCount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getAuctionBidCount
+                setter: setAuctionBidCount
+            type: int
+        totalAuctionSellingValue:
+            expose: true
+            access_type: public_method
+            serialized_name: TotalAuctionSellingValue
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getTotalAuctionSellingValue
+                setter: setTotalAuctionSellingValue
+            type: Nogrod\eBaySDK\Trading\AmountType
+        totalSoldCount:
+            expose: true
+            access_type: public_method
+            serialized_name: TotalSoldCount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getTotalSoldCount
+                setter: setTotalSoldCount
+            type: int
+        totalSoldValue:
+            expose: true
+            access_type: public_method
+            serialized_name: TotalSoldValue
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getTotalSoldValue
+                setter: setTotalSoldValue
+            type: Nogrod\eBaySDK\Trading\AmountType
+        soldDurationInDays:
+            expose: true
+            access_type: public_method
+            serialized_name: SoldDurationInDays
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSoldDurationInDays
+                setter: setSoldDurationInDays
+            type: int
+        classifiedAdCount:
+            expose: true
+            access_type: public_method
+            serialized_name: ClassifiedAdCount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getClassifiedAdCount
+                setter: setClassifiedAdCount
+            type: int
+        totalLeadCount:
+            expose: true
+            access_type: public_method
+            serialized_name: TotalLeadCount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getTotalLeadCount
+                setter: setTotalLeadCount
+            type: int
+        classifiedAdOfferCount:
+            expose: true
+            access_type: public_method
+            serialized_name: ClassifiedAdOfferCount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getClassifiedAdOfferCount
+                setter: setClassifiedAdOfferCount
+            type: int
+        totalListingsWithLeads:
+            expose: true
+            access_type: public_method
+            serialized_name: TotalListingsWithLeads
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getTotalListingsWithLeads
+                setter: setTotalListingsWithLeads
+            type: int
+        quantityLimitRemaining:
+            expose: true
+            access_type: public_method
+            serialized_name: QuantityLimitRemaining
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getQuantityLimitRemaining
+                setter: setQuantityLimitRemaining
+            type: int
+        amountLimitRemaining:
+            expose: true
+            access_type: public_method
+            serialized_name: AmountLimitRemaining
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getAmountLimitRemaining
+                setter: setAmountLimitRemaining
+            type: Nogrod\eBaySDK\Trading\AmountType

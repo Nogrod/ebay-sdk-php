@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\Trading\GetApiAccessRulesRequest:
+    xml_root_name: GetApiAccessRulesRequest
+    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

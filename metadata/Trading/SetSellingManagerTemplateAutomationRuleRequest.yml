@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\Trading\SetSellingManagerTemplateAutomationRuleRequest:
+    xml_root_name: SetSellingManagerTemplateAutomationRuleRequest
+    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

@@ -1,0 +1,40 @@
+Nogrod\eBaySDK\Trading\GetSellingManagerInventoryFolderRequestType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        folderID:
+            expose: true
+            access_type: public_method
+            serialized_name: FolderID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getFolderID
+                setter: setFolderID
+            type: int
+        maxDepth:
+            expose: true
+            access_type: public_method
+            serialized_name: MaxDepth
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getMaxDepth
+                setter: setMaxDepth
+            type: int
+        fullRecursion:
+            expose: true
+            access_type: public_method
+            serialized_name: FullRecursion
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getFullRecursion
+                setter: setFullRecursion
+            type: bool

@@ -1,0 +1,88 @@
+Nogrod\eBaySDK\Trading\SellerFavoriteItemPreferencesType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        searchKeywords:
+            expose: true
+            access_type: public_method
+            serialized_name: SearchKeywords
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSearchKeywords
+                setter: setSearchKeywords
+            type: string
+        storeCategoryID:
+            expose: true
+            access_type: public_method
+            serialized_name: StoreCategoryID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getStoreCategoryID
+                setter: setStoreCategoryID
+            type: int
+        listingType:
+            expose: true
+            access_type: public_method
+            serialized_name: ListingType
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getListingType
+                setter: setListingType
+            type: string
+        searchSortOrder:
+            expose: true
+            access_type: public_method
+            serialized_name: SearchSortOrder
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSearchSortOrder
+                setter: setSearchSortOrder
+            type: string
+        minPrice:
+            expose: true
+            access_type: public_method
+            serialized_name: MinPrice
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getMinPrice
+                setter: setMinPrice
+            type: Nogrod\eBaySDK\Trading\AmountType
+        maxPrice:
+            expose: true
+            access_type: public_method
+            serialized_name: MaxPrice
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getMaxPrice
+                setter: setMaxPrice
+            type: Nogrod\eBaySDK\Trading\AmountType
+        favoriteItemID:
+            expose: true
+            access_type: public_method
+            serialized_name: FavoriteItemID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getFavoriteItemID
+                setter: setFavoriteItemID
+            xml_list:
+                inline: true
+                entry_name: FavoriteItemID
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<string>

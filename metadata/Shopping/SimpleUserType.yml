@@ -1,0 +1,249 @@
+Nogrod\eBaySDK\Shopping\SimpleUserType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        userID:
+            expose: true
+            access_type: public_method
+            serialized_name: UserID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getUserID
+                setter: setUserID
+            type: string
+        feedbackPrivate:
+            expose: true
+            access_type: public_method
+            serialized_name: FeedbackPrivate
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getFeedbackPrivate
+                setter: setFeedbackPrivate
+            type: bool
+        feedbackRatingStar:
+            expose: true
+            access_type: public_method
+            serialized_name: FeedbackRatingStar
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getFeedbackRatingStar
+                setter: setFeedbackRatingStar
+            type: string
+        feedbackScore:
+            expose: true
+            access_type: public_method
+            serialized_name: FeedbackScore
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getFeedbackScore
+                setter: setFeedbackScore
+            type: int
+        userAnonymized:
+            expose: true
+            access_type: public_method
+            serialized_name: UserAnonymized
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getUserAnonymized
+                setter: setUserAnonymized
+            type: bool
+        newUser:
+            expose: true
+            access_type: public_method
+            serialized_name: NewUser
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getNewUser
+                setter: setNewUser
+            type: bool
+        registrationDate:
+            expose: true
+            access_type: public_method
+            serialized_name: RegistrationDate
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getRegistrationDate
+                setter: setRegistrationDate
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime
+        registrationSite:
+            expose: true
+            access_type: public_method
+            serialized_name: RegistrationSite
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getRegistrationSite
+                setter: setRegistrationSite
+            type: string
+        status:
+            expose: true
+            access_type: public_method
+            serialized_name: Status
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getStatus
+                setter: setStatus
+            type: string
+        sellerBusinessType:
+            expose: true
+            access_type: public_method
+            serialized_name: SellerBusinessType
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSellerBusinessType
+                setter: setSellerBusinessType
+            type: string
+        storeURL:
+            expose: true
+            access_type: public_method
+            serialized_name: StoreURL
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getStoreURL
+                setter: setStoreURL
+            type: string
+        storeName:
+            expose: true
+            access_type: public_method
+            serialized_name: StoreName
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getStoreName
+                setter: setStoreName
+            type: string
+        sellerItemsURL:
+            expose: true
+            access_type: public_method
+            serialized_name: SellerItemsURL
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSellerItemsURL
+                setter: setSellerItemsURL
+            type: string
+        aboutMeURL:
+            expose: true
+            access_type: public_method
+            serialized_name: AboutMeURL
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getAboutMeURL
+                setter: setAboutMeURL
+            type: string
+        myWorldURL:
+            expose: true
+            access_type: public_method
+            serialized_name: MyWorldURL
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getMyWorldURL
+                setter: setMyWorldURL
+            type: string
+        myWorldSmallImage:
+            expose: true
+            access_type: public_method
+            serialized_name: MyWorldSmallImage
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getMyWorldSmallImage
+                setter: setMyWorldSmallImage
+            type: string
+        myWorldLargeImage:
+            expose: true
+            access_type: public_method
+            serialized_name: MyWorldLargeImage
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getMyWorldLargeImage
+                setter: setMyWorldLargeImage
+            type: string
+        reviewsAndGuidesURL:
+            expose: true
+            access_type: public_method
+            serialized_name: ReviewsAndGuidesURL
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getReviewsAndGuidesURL
+                setter: setReviewsAndGuidesURL
+            type: string
+        feedbackDetailsURL:
+            expose: true
+            access_type: public_method
+            serialized_name: FeedbackDetailsURL
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getFeedbackDetailsURL
+                setter: setFeedbackDetailsURL
+            type: string
+        positiveFeedbackPercent:
+            expose: true
+            access_type: public_method
+            serialized_name: PositiveFeedbackPercent
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPositiveFeedbackPercent
+                setter: setPositiveFeedbackPercent
+            type: float
+        sellerLevel:
+            expose: true
+            access_type: public_method
+            serialized_name: SellerLevel
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSellerLevel
+                setter: setSellerLevel
+            type: string
+        topRatedSeller:
+            expose: true
+            access_type: public_method
+            serialized_name: TopRatedSeller
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getTopRatedSeller
+                setter: setTopRatedSeller
+            type: bool

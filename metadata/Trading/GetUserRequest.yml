@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\Trading\GetUserRequest:
+    xml_root_name: GetUserRequest
+    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

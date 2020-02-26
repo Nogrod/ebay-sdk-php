@@ -1,0 +1,106 @@
+Nogrod\eBaySDK\Trading\ContactHoursDetailsType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        timeZoneID:
+            expose: true
+            access_type: public_method
+            serialized_name: TimeZoneID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getTimeZoneID
+                setter: setTimeZoneID
+            type: string
+        hours1Days:
+            expose: true
+            access_type: public_method
+            serialized_name: Hours1Days
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getHours1Days
+                setter: setHours1Days
+            type: string
+        hours1AnyTime:
+            expose: true
+            access_type: public_method
+            serialized_name: Hours1AnyTime
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getHours1AnyTime
+                setter: setHours1AnyTime
+            type: bool
+        hours1From:
+            expose: true
+            access_type: public_method
+            serialized_name: Hours1From
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getHours1From
+                setter: setHours1From
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Time
+        hours1To:
+            expose: true
+            access_type: public_method
+            serialized_name: Hours1To
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getHours1To
+                setter: setHours1To
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Time
+        hours2Days:
+            expose: true
+            access_type: public_method
+            serialized_name: Hours2Days
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getHours2Days
+                setter: setHours2Days
+            type: string
+        hours2AnyTime:
+            expose: true
+            access_type: public_method
+            serialized_name: Hours2AnyTime
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getHours2AnyTime
+                setter: setHours2AnyTime
+            type: bool
+        hours2From:
+            expose: true
+            access_type: public_method
+            serialized_name: Hours2From
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getHours2From
+                setter: setHours2From
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Time
+        hours2To:
+            expose: true
+            access_type: public_method
+            serialized_name: Hours2To
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getHours2To
+                setter: setHours2To
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Time

@@ -1,0 +1,53 @@
+<?php
+
+namespace Nogrod\eBaySDK\Shopping\Client;
+
+use Http\Client\HttpClient;
+use Http\Message\MessageFactory;
+use JMS\Serializer\Serializer;
+use Nogrod\eBaySDK\Constants\Version;
+
+class ShoppingClient extends ShoppingBaseClient
+{
+    const X_EBAY_API_APP_ID = 'X-EBAY-API-APP-ID';
+
+    const X_EBAY_API_VERSION = 'X-EBAY-API-VERSION';
+
+    const X_EBAY_API_SITE_ID = 'X-EBAY-API-SITE-ID';
+
+    const X_EBAY_API_CALL_NAME = 'X-EBAY-API-CALL-NAME';
+
+    const X_EBAY_API_REQUEST_ENCODING = 'X-EBAY-API-REQUEST-ENCODING';
+
+    const PRODUCTION_URL = 'http://open.api.ebay.com/shopping';
+
+    const SANDBOX_URL = 'http://open.api.sandbox.ebay.com/shopping';
+
+    public function __construct(array $config = [], Serializer $serializer = null, MessageFactory $messageFactory = null, HttpClient $client = null)
+    {
+        $config = array_merge([
+            'sandbox' => false,
+            'version' => Version::SHOPPING,
+            'siteId' => null,
+            'appId' => null,
+        ], $config);
+        parent::__construct($config, $serializer, $messageFactory, $client);
+    }
+
+    protected function getUrl()
+    {
+        return $this->getConfig('sandbox') ? self::SANDBOX_URL : self::PRODUCTION_URL;
+    }
+
+    protected function buildHeaders(string $operation)
+    {
+        $headers = [];
+        $headers[self::X_EBAY_API_APP_ID] = $this->getConfig('appId');
+        $headers[self::X_EBAY_API_SITE_ID] = $this->getConfig('siteId');
+        $headers[self::X_EBAY_API_CALL_NAME] = $operation;
+        $headers[self::X_EBAY_API_VERSION] = $this->getConfig('version');
+        $headers[self::X_EBAY_API_REQUEST_ENCODING] = 'XML';
+
+        return $headers;
+    }
+}

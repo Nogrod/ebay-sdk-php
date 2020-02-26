@@ -1,0 +1,29 @@
+Nogrod\eBaySDK\MerchantData\QuestionType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        questionID:
+            expose: true
+            access_type: public_method
+            serialized_name: QuestionID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getQuestionID
+                setter: setQuestionID
+            type: int
+        answer:
+            expose: true
+            access_type: public_method
+            serialized_name: Answer
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getAnswer
+                setter: setAnswer
+            type: string

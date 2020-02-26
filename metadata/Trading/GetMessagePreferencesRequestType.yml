@@ -1,0 +1,29 @@
+Nogrod\eBaySDK\Trading\GetMessagePreferencesRequestType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        sellerID:
+            expose: true
+            access_type: public_method
+            serialized_name: SellerID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSellerID
+                setter: setSellerID
+            type: string
+        includeASQPreferences:
+            expose: true
+            access_type: public_method
+            serialized_name: IncludeASQPreferences
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getIncludeASQPreferences
+                setter: setIncludeASQPreferences
+            type: bool

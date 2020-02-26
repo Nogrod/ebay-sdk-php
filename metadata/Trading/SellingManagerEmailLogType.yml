@@ -1,0 +1,51 @@
+Nogrod\eBaySDK\Trading\SellingManagerEmailLogType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        emailType:
+            expose: true
+            access_type: public_method
+            serialized_name: EmailType
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getEmailType
+                setter: setEmailType
+            type: string
+        customEmailName:
+            expose: true
+            access_type: public_method
+            serialized_name: CustomEmailName
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCustomEmailName
+                setter: setCustomEmailName
+            type: string
+        emailState:
+            expose: true
+            access_type: public_method
+            serialized_name: EmailState
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getEmailState
+                setter: setEmailState
+            type: string
+        eventTime:
+            expose: true
+            access_type: public_method
+            serialized_name: EventTime
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getEventTime
+                setter: setEventTime
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime

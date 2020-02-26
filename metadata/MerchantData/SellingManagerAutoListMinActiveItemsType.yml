@@ -1,0 +1,62 @@
+Nogrod\eBaySDK\MerchantData\SellingManagerAutoListMinActiveItemsType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        minActiveItemCount:
+            expose: true
+            access_type: public_method
+            serialized_name: MinActiveItemCount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getMinActiveItemCount
+                setter: setMinActiveItemCount
+            type: int
+        listTimeFrom:
+            expose: true
+            access_type: public_method
+            serialized_name: ListTimeFrom
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getListTimeFrom
+                setter: setListTimeFrom
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Time
+        listTimeTo:
+            expose: true
+            access_type: public_method
+            serialized_name: ListTimeTo
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getListTimeTo
+                setter: setListTimeTo
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Time
+        spacingIntervalInMinutes:
+            expose: true
+            access_type: public_method
+            serialized_name: SpacingIntervalInMinutes
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSpacingIntervalInMinutes
+                setter: setSpacingIntervalInMinutes
+            type: int
+        listingHoldInventoryLevel:
+            expose: true
+            access_type: public_method
+            serialized_name: ListingHoldInventoryLevel
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getListingHoldInventoryLevel
+                setter: setListingHoldInventoryLevel
+            type: int

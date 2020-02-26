@@ -1,0 +1,77 @@
+Nogrod\eBaySDK\BusinessPoliciesManagement\PaymentInfoType:
+    virtual_properties:
+        ns_prop:
+            exp: '"http://www.ebay.com/marketplace/selling/v1/services"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        acceptedPaymentMethod:
+            expose: true
+            access_type: public_method
+            serialized_name: acceptedPaymentMethod
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getAcceptedPaymentMethod
+                setter: setAcceptedPaymentMethod
+            xml_list:
+                inline: true
+                entry_name: acceptedPaymentMethod
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            type: array<string>
+        immediatePay:
+            expose: true
+            access_type: public_method
+            serialized_name: immediatePay
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getImmediatePay
+                setter: setImmediatePay
+            type: bool
+        paymentInstructions:
+            expose: true
+            access_type: public_method
+            serialized_name: paymentInstructions
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getPaymentInstructions
+                setter: setPaymentInstructions
+            type: string
+        paypalEmailAddress:
+            expose: true
+            access_type: public_method
+            serialized_name: paypalEmailAddress
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getPaypalEmailAddress
+                setter: setPaypalEmailAddress
+            type: string
+        depositDetails:
+            expose: true
+            access_type: public_method
+            serialized_name: depositDetails
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getDepositDetails
+                setter: setDepositDetails
+            type: Nogrod\eBaySDK\BusinessPoliciesManagement\DepositDetailsType
+        daysToFullPayment:
+            expose: true
+            access_type: public_method
+            serialized_name: daysToFullPayment
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getDaysToFullPayment
+                setter: setDaysToFullPayment
+            type: int

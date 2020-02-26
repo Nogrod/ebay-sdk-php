@@ -1,0 +1,254 @@
+Nogrod\eBaySDK\BusinessPoliciesManagement\ShippingPolicyInfoType:
+    virtual_properties:
+        ns_prop:
+            exp: '"http://www.ebay.com/marketplace/selling/v1/services"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        shippingPolicyName:
+            expose: true
+            access_type: public_method
+            serialized_name: shippingPolicyName
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getShippingPolicyName
+                setter: setShippingPolicyName
+            type: string
+        domesticShippingType:
+            expose: true
+            access_type: public_method
+            serialized_name: domesticShippingType
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getDomesticShippingType
+                setter: setDomesticShippingType
+            type: string
+        intlShippingType:
+            expose: true
+            access_type: public_method
+            serialized_name: intlShippingType
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getIntlShippingType
+                setter: setIntlShippingType
+            type: string
+        dispatchTimeMax:
+            expose: true
+            access_type: public_method
+            serialized_name: dispatchTimeMax
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getDispatchTimeMax
+                setter: setDispatchTimeMax
+            type: int
+        dispatchTimeReason:
+            expose: true
+            access_type: public_method
+            serialized_name: dispatchTimeReason
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getDispatchTimeReason
+                setter: setDispatchTimeReason
+            type: string
+        shippingOption:
+            expose: true
+            access_type: public_method
+            serialized_name: shippingOption
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getShippingOption
+                setter: setShippingOption
+            type: string
+        excludeShipToLocation:
+            expose: true
+            access_type: public_method
+            serialized_name: excludeShipToLocation
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getExcludeShipToLocation
+                setter: setExcludeShipToLocation
+            xml_list:
+                inline: true
+                entry_name: excludeShipToLocation
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            type: array<string>
+        shippingProfileDiscountInfo:
+            expose: true
+            access_type: public_method
+            serialized_name: shippingProfileDiscountInfo
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getShippingProfileDiscountInfo
+                setter: setShippingProfileDiscountInfo
+            type: Nogrod\eBaySDK\BusinessPoliciesManagement\ShippingProfileDiscountInfoType
+        freightShipping:
+            expose: true
+            access_type: public_method
+            serialized_name: freightShipping
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getFreightShipping
+                setter: setFreightShipping
+            type: Nogrod\eBaySDK\BusinessPoliciesManagement\FreightShippingType
+        shipToLocations:
+            expose: true
+            access_type: public_method
+            serialized_name: shipToLocations
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getShipToLocations
+                setter: setShipToLocations
+            xml_list:
+                inline: true
+                entry_name: shipToLocations
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            type: array<string>
+        domesticShippingPolicyInfoService:
+            expose: true
+            access_type: public_method
+            serialized_name: domesticShippingPolicyInfoService
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getDomesticShippingPolicyInfoService
+                setter: setDomesticShippingPolicyInfoService
+            xml_list:
+                inline: true
+                entry_name: domesticShippingPolicyInfoService
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            type: array<Nogrod\eBaySDK\BusinessPoliciesManagement\ShippingPolicyInfoServiceType>
+        intlShippingPolicyInfoService:
+            expose: true
+            access_type: public_method
+            serialized_name: intlShippingPolicyInfoService
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getIntlShippingPolicyInfoService
+                setter: setIntlShippingPolicyInfoService
+            xml_list:
+                inline: true
+                entry_name: intlShippingPolicyInfoService
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            type: array<Nogrod\eBaySDK\BusinessPoliciesManagement\ShippingPolicyInfoServiceType>
+        insurance:
+            expose: true
+            access_type: public_method
+            serialized_name: insurance
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getInsurance
+                setter: setInsurance
+            type: Nogrod\eBaySDK\BusinessPoliciesManagement\InsuranceType
+        intlRateTable:
+            expose: true
+            access_type: public_method
+            serialized_name: intlRateTable
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getIntlRateTable
+                setter: setIntlRateTable
+            type: string
+        domesticRateTable:
+            expose: true
+            access_type: public_method
+            serialized_name: domesticRateTable
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getDomesticRateTable
+                setter: setDomesticRateTable
+            type: string
+        packagingHandlingCosts:
+            expose: true
+            access_type: public_method
+            serialized_name: packagingHandlingCosts
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getPackagingHandlingCosts
+                setter: setPackagingHandlingCosts
+            type: Nogrod\eBaySDK\BusinessPoliciesManagement\AmountType
+        internationalPackagingHandlingCosts:
+            expose: true
+            access_type: public_method
+            serialized_name: internationalPackagingHandlingCosts
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getInternationalPackagingHandlingCosts
+                setter: setInternationalPackagingHandlingCosts
+            type: Nogrod\eBaySDK\BusinessPoliciesManagement\AmountType
+        shippingPolicyCurrency:
+            expose: true
+            access_type: public_method
+            serialized_name: shippingPolicyCurrency
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getShippingPolicyCurrency
+                setter: setShippingPolicyCurrency
+            type: string
+        shippingPolicyIdentity:
+            expose: true
+            access_type: public_method
+            serialized_name: shippingPolicyIdentity
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getShippingPolicyIdentity
+                setter: setShippingPolicyIdentity
+            type: Nogrod\eBaySDK\BusinessPoliciesManagement\ShippingPolicyIdentityType
+        globalShipping:
+            expose: true
+            access_type: public_method
+            serialized_name: GlobalShipping
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getGlobalShipping
+                setter: setGlobalShipping
+            type: bool
+        eligibleForPickupDropOff:
+            expose: true
+            access_type: public_method
+            serialized_name: EligibleForPickupDropOff
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getEligibleForPickupDropOff
+                setter: setEligibleForPickupDropOff
+            type: bool

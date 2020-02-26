@@ -1,0 +1,29 @@
+Nogrod\eBaySDK\Trading\BrandMPNType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        brand:
+            expose: true
+            access_type: public_method
+            serialized_name: Brand
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getBrand
+                setter: setBrand
+            type: string
+        mPN:
+            expose: true
+            access_type: public_method
+            serialized_name: MPN
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getMPN
+                setter: setMPN
+            type: string

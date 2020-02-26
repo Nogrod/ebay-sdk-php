@@ -1,0 +1,51 @@
+Nogrod\eBaySDK\Trading\SellerDiscountType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        campaignID:
+            expose: true
+            access_type: public_method
+            serialized_name: CampaignID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCampaignID
+                setter: setCampaignID
+            type: int
+        campaignDisplayName:
+            expose: true
+            access_type: public_method
+            serialized_name: CampaignDisplayName
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCampaignDisplayName
+                setter: setCampaignDisplayName
+            type: string
+        itemDiscountAmount:
+            expose: true
+            access_type: public_method
+            serialized_name: ItemDiscountAmount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getItemDiscountAmount
+                setter: setItemDiscountAmount
+            type: Nogrod\eBaySDK\Trading\AmountType
+        shippingDiscountAmount:
+            expose: true
+            access_type: public_method
+            serialized_name: ShippingDiscountAmount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getShippingDiscountAmount
+                setter: setShippingDiscountAmount
+            type: Nogrod\eBaySDK\Trading\AmountType

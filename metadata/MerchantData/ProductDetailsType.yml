@@ -1,0 +1,18 @@
+Nogrod\eBaySDK\MerchantData\ProductDetailsType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        productIdentifierUnavailableText:
+            expose: true
+            access_type: public_method
+            serialized_name: ProductIdentifierUnavailableText
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getProductIdentifierUnavailableText
+                setter: setProductIdentifierUnavailableText
+            type: string

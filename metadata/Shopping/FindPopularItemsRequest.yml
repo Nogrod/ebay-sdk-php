@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\Shopping\FindPopularItemsRequest:
+    xml_root_name: FindPopularItemsRequest
+    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

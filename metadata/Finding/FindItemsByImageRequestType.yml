@@ -1,0 +1,93 @@
+Nogrod\eBaySDK\Finding\FindItemsByImageRequestType:
+    virtual_properties:
+        ns_prop:
+            exp: '"http://www.ebay.com/marketplace/search/v1/services"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        itemId:
+            expose: true
+            access_type: public_method
+            serialized_name: itemId
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/search/v1/services'
+            accessor:
+                getter: getItemId
+                setter: setItemId
+            type: string
+        categoryId:
+            expose: true
+            access_type: public_method
+            serialized_name: categoryId
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/search/v1/services'
+            accessor:
+                getter: getCategoryId
+                setter: setCategoryId
+            xml_list:
+                inline: true
+                entry_name: categoryId
+                namespace: 'http://www.ebay.com/marketplace/search/v1/services'
+            type: array<string>
+        itemFilter:
+            expose: true
+            access_type: public_method
+            serialized_name: itemFilter
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/search/v1/services'
+            accessor:
+                getter: getItemFilter
+                setter: setItemFilter
+            xml_list:
+                inline: true
+                entry_name: itemFilter
+                namespace: 'http://www.ebay.com/marketplace/search/v1/services'
+            type: array<Nogrod\eBaySDK\Finding\ItemFilterType>
+        aspectFilter:
+            expose: true
+            access_type: public_method
+            serialized_name: aspectFilter
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/search/v1/services'
+            accessor:
+                getter: getAspectFilter
+                setter: setAspectFilter
+            xml_list:
+                inline: true
+                entry_name: aspectFilter
+                namespace: 'http://www.ebay.com/marketplace/search/v1/services'
+            type: array<Nogrod\eBaySDK\Finding\AspectFilterType>
+        domainFilter:
+            expose: true
+            access_type: public_method
+            serialized_name: domainFilter
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/search/v1/services'
+            accessor:
+                getter: getDomainFilter
+                setter: setDomainFilter
+            xml_list:
+                inline: true
+                entry_name: domainFilter
+                namespace: 'http://www.ebay.com/marketplace/search/v1/services'
+            type: array<Nogrod\eBaySDK\Finding\DomainFilterType>
+        outputSelector:
+            expose: true
+            access_type: public_method
+            serialized_name: outputSelector
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/search/v1/services'
+            accessor:
+                getter: getOutputSelector
+                setter: setOutputSelector
+            xml_list:
+                inline: true
+                entry_name: outputSelector
+                namespace: 'http://www.ebay.com/marketplace/search/v1/services'
+            type: array<string>

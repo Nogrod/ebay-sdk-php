@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\Shopping\GetSingleItemRequest:
+    xml_root_name: GetSingleItemRequest
+    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

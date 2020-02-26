@@ -1,0 +1,84 @@
+Nogrod\eBaySDK\Shopping\FindReviewsAndGuidesRequestType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        productID:
+            expose: true
+            access_type: public_method
+            serialized_name: ProductID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getProductID
+                setter: setProductID
+            type: Nogrod\eBaySDK\Shopping\ProductIDType
+        userID:
+            expose: true
+            access_type: public_method
+            serialized_name: UserID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getUserID
+                setter: setUserID
+            type: string
+        categoryID:
+            expose: true
+            access_type: public_method
+            serialized_name: CategoryID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCategoryID
+                setter: setCategoryID
+            type: string
+        maxResultsPerPage:
+            expose: true
+            access_type: public_method
+            serialized_name: MaxResultsPerPage
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getMaxResultsPerPage
+                setter: setMaxResultsPerPage
+            type: int
+        pageNumber:
+            expose: true
+            access_type: public_method
+            serialized_name: PageNumber
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPageNumber
+                setter: setPageNumber
+            type: int
+        reviewSort:
+            expose: true
+            access_type: public_method
+            serialized_name: ReviewSort
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getReviewSort
+                setter: setReviewSort
+            type: string
+        sortOrder:
+            expose: true
+            access_type: public_method
+            serialized_name: SortOrder
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSortOrder
+                setter: setSortOrder
+            type: string

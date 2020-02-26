@@ -1,0 +1,158 @@
+Nogrod\eBaySDK\Trading\MemberMessageType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        messageType:
+            expose: true
+            access_type: public_method
+            serialized_name: MessageType
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getMessageType
+                setter: setMessageType
+            type: string
+        questionType:
+            expose: true
+            access_type: public_method
+            serialized_name: QuestionType
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getQuestionType
+                setter: setQuestionType
+            type: string
+        emailCopyToSender:
+            expose: true
+            access_type: public_method
+            serialized_name: EmailCopyToSender
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getEmailCopyToSender
+                setter: setEmailCopyToSender
+            type: bool
+        hideSendersEmailAddress:
+            expose: true
+            access_type: public_method
+            serialized_name: HideSendersEmailAddress
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getHideSendersEmailAddress
+                setter: setHideSendersEmailAddress
+            type: bool
+        displayToPublic:
+            expose: true
+            access_type: public_method
+            serialized_name: DisplayToPublic
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getDisplayToPublic
+                setter: setDisplayToPublic
+            type: bool
+        senderID:
+            expose: true
+            access_type: public_method
+            serialized_name: SenderID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSenderID
+                setter: setSenderID
+            type: string
+        senderEmail:
+            expose: true
+            access_type: public_method
+            serialized_name: SenderEmail
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSenderEmail
+                setter: setSenderEmail
+            type: string
+        recipientID:
+            expose: true
+            access_type: public_method
+            serialized_name: RecipientID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getRecipientID
+                setter: setRecipientID
+            xml_list:
+                inline: true
+                entry_name: RecipientID
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<string>
+        subject:
+            expose: true
+            access_type: public_method
+            serialized_name: Subject
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSubject
+                setter: setSubject
+            type: string
+        body:
+            expose: true
+            access_type: public_method
+            serialized_name: Body
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getBody
+                setter: setBody
+            type: string
+        messageID:
+            expose: true
+            access_type: public_method
+            serialized_name: MessageID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getMessageID
+                setter: setMessageID
+            type: string
+        parentMessageID:
+            expose: true
+            access_type: public_method
+            serialized_name: ParentMessageID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getParentMessageID
+                setter: setParentMessageID
+            type: string
+        messageMedia:
+            expose: true
+            access_type: public_method
+            serialized_name: MessageMedia
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getMessageMedia
+                setter: setMessageMedia
+            xml_list:
+                inline: true
+                entry_name: MessageMedia
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<Nogrod\eBaySDK\Trading\MessageMediaType>

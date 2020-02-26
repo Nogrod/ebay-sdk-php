@@ -1,0 +1,55 @@
+Nogrod\eBaySDK\Trading\PictureManagerPictureType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        pictureURL:
+            expose: true
+            access_type: public_method
+            serialized_name: PictureURL
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPictureURL
+                setter: setPictureURL
+            type: string
+        name:
+            expose: true
+            access_type: public_method
+            serialized_name: Name
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getName
+                setter: setName
+            type: string
+        date:
+            expose: true
+            access_type: public_method
+            serialized_name: Date
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getDate
+                setter: setDate
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime
+        displayFormat:
+            expose: true
+            access_type: public_method
+            serialized_name: DisplayFormat
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getDisplayFormat
+                setter: setDisplayFormat
+            xml_list:
+                inline: true
+                entry_name: DisplayFormat
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<Nogrod\eBaySDK\Trading\PictureManagerPictureDisplayType>

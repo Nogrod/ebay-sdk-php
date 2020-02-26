@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\BusinessPoliciesManagement\GetConsolidationJobStatusResponse:
+    xml_root_name: getConsolidationJobStatusResponse
+    xml_root_namespace: 'http://www.ebay.com/marketplace/selling/v1/services'

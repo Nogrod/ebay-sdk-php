@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\Trading\NotificationMessage:
+    xml_root_name: NotificationMessage
+    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

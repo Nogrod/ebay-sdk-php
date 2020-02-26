@@ -1,0 +1,89 @@
+Nogrod\eBaySDK\Trading\GetCategoriesResponseType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        categoryArray:
+            expose: true
+            access_type: public_method
+            serialized_name: CategoryArray
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCategoryArray
+                setter: setCategoryArray
+            type: array<Nogrod\eBaySDK\Trading\CategoryType>
+            xml_list:
+                inline: false
+                entry_name: Category
+                skip_when_empty: true
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+        categoryCount:
+            expose: true
+            access_type: public_method
+            serialized_name: CategoryCount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCategoryCount
+                setter: setCategoryCount
+            type: int
+        updateTime:
+            expose: true
+            access_type: public_method
+            serialized_name: UpdateTime
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getUpdateTime
+                setter: setUpdateTime
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime
+        categoryVersion:
+            expose: true
+            access_type: public_method
+            serialized_name: CategoryVersion
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCategoryVersion
+                setter: setCategoryVersion
+            type: string
+        reservePriceAllowed:
+            expose: true
+            access_type: public_method
+            serialized_name: ReservePriceAllowed
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getReservePriceAllowed
+                setter: setReservePriceAllowed
+            type: bool
+        minimumReservePrice:
+            expose: true
+            access_type: public_method
+            serialized_name: MinimumReservePrice
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getMinimumReservePrice
+                setter: setMinimumReservePrice
+            type: float
+        reduceReserveAllowed:
+            expose: true
+            access_type: public_method
+            serialized_name: ReduceReserveAllowed
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getReduceReserveAllowed
+                setter: setReduceReserveAllowed
+            type: bool

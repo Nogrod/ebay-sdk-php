@@ -1,0 +1,29 @@
+Nogrod\eBaySDK\MerchantData\FeedbackPeriodType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        periodInDays:
+            expose: true
+            access_type: public_method
+            serialized_name: PeriodInDays
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPeriodInDays
+                setter: setPeriodInDays
+            type: int
+        count:
+            expose: true
+            access_type: public_method
+            serialized_name: Count
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCount
+                setter: setCount
+            type: int

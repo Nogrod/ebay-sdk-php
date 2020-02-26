@@ -1,0 +1,51 @@
+Nogrod\eBaySDK\FileTransfer\UploadFileRequestType:
+    virtual_properties:
+        ns_prop:
+            exp: '"http://www.ebay.com/marketplace/services"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        taskReferenceId:
+            expose: true
+            access_type: public_method
+            serialized_name: taskReferenceId
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/services'
+            accessor:
+                getter: getTaskReferenceId
+                setter: setTaskReferenceId
+            type: string
+        fileReferenceId:
+            expose: true
+            access_type: public_method
+            serialized_name: fileReferenceId
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/services'
+            accessor:
+                getter: getFileReferenceId
+                setter: setFileReferenceId
+            type: string
+        fileFormat:
+            expose: true
+            access_type: public_method
+            serialized_name: fileFormat
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/services'
+            accessor:
+                getter: getFileFormat
+                setter: setFileFormat
+            type: string
+        fileAttachment:
+            expose: true
+            access_type: public_method
+            serialized_name: fileAttachment
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/services'
+            accessor:
+                getter: getFileAttachment
+                setter: setFileAttachment
+            type: Nogrod\eBaySDK\FileTransfer\FileAttachmentType

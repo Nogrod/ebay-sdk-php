@@ -1,0 +1,100 @@
+Nogrod\eBaySDK\Trading\GetSellerTransactionsResponseType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        paginationResult:
+            expose: true
+            access_type: public_method
+            serialized_name: PaginationResult
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPaginationResult
+                setter: setPaginationResult
+            type: Nogrod\eBaySDK\Trading\PaginationResultType
+        hasMoreTransactions:
+            expose: true
+            access_type: public_method
+            serialized_name: HasMoreTransactions
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getHasMoreTransactions
+                setter: setHasMoreTransactions
+            type: bool
+        transactionsPerPage:
+            expose: true
+            access_type: public_method
+            serialized_name: TransactionsPerPage
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getTransactionsPerPage
+                setter: setTransactionsPerPage
+            type: int
+        pageNumber:
+            expose: true
+            access_type: public_method
+            serialized_name: PageNumber
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPageNumber
+                setter: setPageNumber
+            type: int
+        returnedTransactionCountActual:
+            expose: true
+            access_type: public_method
+            serialized_name: ReturnedTransactionCountActual
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getReturnedTransactionCountActual
+                setter: setReturnedTransactionCountActual
+            type: int
+        seller:
+            expose: true
+            access_type: public_method
+            serialized_name: Seller
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSeller
+                setter: setSeller
+            type: Nogrod\eBaySDK\Trading\UserType
+        transactionArray:
+            expose: true
+            access_type: public_method
+            serialized_name: TransactionArray
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getTransactionArray
+                setter: setTransactionArray
+            type: array<Nogrod\eBaySDK\Trading\TransactionType>
+            xml_list:
+                inline: false
+                entry_name: Transaction
+                skip_when_empty: true
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+        payPalPreferred:
+            expose: true
+            access_type: public_method
+            serialized_name: PayPalPreferred
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPayPalPreferred
+                setter: setPayPalPreferred
+            type: bool

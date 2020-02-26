@@ -1,0 +1,84 @@
+Nogrod\eBaySDK\MerchantData\CrossPromotionPreferencesType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        crossPromotionEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: CrossPromotionEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCrossPromotionEnabled
+                setter: setCrossPromotionEnabled
+            type: bool
+        crossSellItemFormatSortFilter:
+            expose: true
+            access_type: public_method
+            serialized_name: CrossSellItemFormatSortFilter
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCrossSellItemFormatSortFilter
+                setter: setCrossSellItemFormatSortFilter
+            type: string
+        crossSellGallerySortFilter:
+            expose: true
+            access_type: public_method
+            serialized_name: CrossSellGallerySortFilter
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCrossSellGallerySortFilter
+                setter: setCrossSellGallerySortFilter
+            type: string
+        crossSellItemSortFilter:
+            expose: true
+            access_type: public_method
+            serialized_name: CrossSellItemSortFilter
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCrossSellItemSortFilter
+                setter: setCrossSellItemSortFilter
+            type: string
+        upSellItemFormatSortFilter:
+            expose: true
+            access_type: public_method
+            serialized_name: UpSellItemFormatSortFilter
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getUpSellItemFormatSortFilter
+                setter: setUpSellItemFormatSortFilter
+            type: string
+        upSellGallerySortFilter:
+            expose: true
+            access_type: public_method
+            serialized_name: UpSellGallerySortFilter
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getUpSellGallerySortFilter
+                setter: setUpSellGallerySortFilter
+            type: string
+        upSellItemSortFilter:
+            expose: true
+            access_type: public_method
+            serialized_name: UpSellItemSortFilter
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getUpSellItemSortFilter
+                setter: setUpSellItemSortFilter
+            type: string

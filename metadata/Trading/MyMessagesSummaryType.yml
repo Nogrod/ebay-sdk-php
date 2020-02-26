@@ -1,0 +1,110 @@
+Nogrod\eBaySDK\Trading\MyMessagesSummaryType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        folderSummary:
+            expose: true
+            access_type: public_method
+            serialized_name: FolderSummary
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getFolderSummary
+                setter: setFolderSummary
+            xml_list:
+                inline: true
+                entry_name: FolderSummary
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<Nogrod\eBaySDK\Trading\MyMessagesFolderSummaryType>
+        newAlertCount:
+            expose: true
+            access_type: public_method
+            serialized_name: NewAlertCount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getNewAlertCount
+                setter: setNewAlertCount
+            type: int
+        newMessageCount:
+            expose: true
+            access_type: public_method
+            serialized_name: NewMessageCount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getNewMessageCount
+                setter: setNewMessageCount
+            type: int
+        unresolvedAlertCount:
+            expose: true
+            access_type: public_method
+            serialized_name: UnresolvedAlertCount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getUnresolvedAlertCount
+                setter: setUnresolvedAlertCount
+            type: int
+        flaggedMessageCount:
+            expose: true
+            access_type: public_method
+            serialized_name: FlaggedMessageCount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getFlaggedMessageCount
+                setter: setFlaggedMessageCount
+            type: int
+        totalAlertCount:
+            expose: true
+            access_type: public_method
+            serialized_name: TotalAlertCount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getTotalAlertCount
+                setter: setTotalAlertCount
+            type: int
+        totalMessageCount:
+            expose: true
+            access_type: public_method
+            serialized_name: TotalMessageCount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getTotalMessageCount
+                setter: setTotalMessageCount
+            type: int
+        newHighPriorityCount:
+            expose: true
+            access_type: public_method
+            serialized_name: NewHighPriorityCount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getNewHighPriorityCount
+                setter: setNewHighPriorityCount
+            type: int
+        totalHighPriorityCount:
+            expose: true
+            access_type: public_method
+            serialized_name: TotalHighPriorityCount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getTotalHighPriorityCount
+                setter: setTotalHighPriorityCount
+            type: int

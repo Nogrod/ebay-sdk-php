@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\BulkDataExchange\AbortJobResponse:
+    xml_root_name: abortJobResponse
+    xml_root_namespace: 'http://www.ebay.com/marketplace/services'

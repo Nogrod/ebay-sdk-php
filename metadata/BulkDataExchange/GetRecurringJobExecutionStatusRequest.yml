@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\BulkDataExchange\GetRecurringJobExecutionStatusRequest:
+    xml_root_name: getRecurringJobExecutionStatusRequest
+    xml_root_namespace: 'http://www.ebay.com/marketplace/services'

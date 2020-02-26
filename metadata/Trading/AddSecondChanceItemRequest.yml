@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\Trading\AddSecondChanceItemRequest:
+    xml_root_name: AddSecondChanceItemRequest
+    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

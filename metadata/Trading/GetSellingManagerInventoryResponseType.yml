@@ -1,0 +1,44 @@
+Nogrod\eBaySDK\Trading\GetSellingManagerInventoryResponseType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        inventoryCountLastCalculatedDate:
+            expose: true
+            access_type: public_method
+            serialized_name: InventoryCountLastCalculatedDate
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getInventoryCountLastCalculatedDate
+                setter: setInventoryCountLastCalculatedDate
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime
+        sellingManagerProduct:
+            expose: true
+            access_type: public_method
+            serialized_name: SellingManagerProduct
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSellingManagerProduct
+                setter: setSellingManagerProduct
+            xml_list:
+                inline: true
+                entry_name: SellingManagerProduct
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<Nogrod\eBaySDK\Trading\SellingManagerProductType>
+        paginationResult:
+            expose: true
+            access_type: public_method
+            serialized_name: PaginationResult
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPaginationResult
+                setter: setPaginationResult
+            type: Nogrod\eBaySDK\Trading\PaginationResultType

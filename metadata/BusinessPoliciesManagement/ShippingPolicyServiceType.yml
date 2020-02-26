@@ -1,0 +1,143 @@
+Nogrod\eBaySDK\BusinessPoliciesManagement\ShippingPolicyServiceType:
+    virtual_properties:
+        ns_prop:
+            exp: '"http://www.ebay.com/marketplace/selling/v1/services"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        shipToLocation:
+            expose: true
+            access_type: public_method
+            serialized_name: shipToLocation
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getShipToLocation
+                setter: setShipToLocation
+            xml_list:
+                inline: true
+                entry_name: shipToLocation
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            type: array<string>
+        shippingService:
+            expose: true
+            access_type: public_method
+            serialized_name: shippingService
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getShippingService
+                setter: setShippingService
+            type: string
+        shippingType:
+            expose: true
+            access_type: public_method
+            serialized_name: shippingType
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getShippingType
+                setter: setShippingType
+            type: string
+        sortOrderId:
+            expose: true
+            access_type: public_method
+            serialized_name: sortOrderId
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getSortOrderId
+                setter: setSortOrderId
+            type: int
+        freeShipping:
+            expose: true
+            access_type: public_method
+            serialized_name: freeShipping
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getFreeShipping
+                setter: setFreeShipping
+            type: bool
+        codFee:
+            expose: true
+            access_type: public_method
+            serialized_name: codFee
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getCodFee
+                setter: setCodFee
+            type: Nogrod\eBaySDK\BusinessPoliciesManagement\AmountType
+        fastShipping:
+            expose: true
+            access_type: public_method
+            serialized_name: fastShipping
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getFastShipping
+                setter: setFastShipping
+            type: bool
+        shippingServiceAdditionalCost:
+            expose: true
+            access_type: public_method
+            serialized_name: shippingServiceAdditionalCost
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getShippingServiceAdditionalCost
+                setter: setShippingServiceAdditionalCost
+            type: Nogrod\eBaySDK\BusinessPoliciesManagement\AmountType
+        shippingServiceCost:
+            expose: true
+            access_type: public_method
+            serialized_name: shippingServiceCost
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getShippingServiceCost
+                setter: setShippingServiceCost
+            type: Nogrod\eBaySDK\BusinessPoliciesManagement\AmountType
+        shippingSurcharge:
+            expose: true
+            access_type: public_method
+            serialized_name: shippingSurcharge
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getShippingSurcharge
+                setter: setShippingSurcharge
+            type: Nogrod\eBaySDK\BusinessPoliciesManagement\AmountType
+        shippingOverrideFee:
+            expose: true
+            access_type: public_method
+            serialized_name: shippingOverrideFee
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getShippingOverrideFee
+                setter: setShippingOverrideFee
+            type: Nogrod\eBaySDK\BusinessPoliciesManagement\AmountType
+        buyerResponsibleForShipping:
+            expose: true
+            access_type: public_method
+            serialized_name: buyerResponsibleForShipping
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getBuyerResponsibleForShipping
+                setter: setBuyerResponsibleForShipping
+            type: bool

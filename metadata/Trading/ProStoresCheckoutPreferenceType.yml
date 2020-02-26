@@ -1,0 +1,29 @@
+Nogrod\eBaySDK\Trading\ProStoresCheckoutPreferenceType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        checkoutRedirectProStores:
+            expose: true
+            access_type: public_method
+            serialized_name: CheckoutRedirectProStores
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCheckoutRedirectProStores
+                setter: setCheckoutRedirectProStores
+            type: bool
+        proStoresDetails:
+            expose: true
+            access_type: public_method
+            serialized_name: ProStoresDetails
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getProStoresDetails
+                setter: setProStoresDetails
+            type: Nogrod\eBaySDK\Trading\ProStoresDetailsType

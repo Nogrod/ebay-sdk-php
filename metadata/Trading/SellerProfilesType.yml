@@ -1,0 +1,40 @@
+Nogrod\eBaySDK\Trading\SellerProfilesType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        sellerShippingProfile:
+            expose: true
+            access_type: public_method
+            serialized_name: SellerShippingProfile
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSellerShippingProfile
+                setter: setSellerShippingProfile
+            type: Nogrod\eBaySDK\Trading\SellerShippingProfileType
+        sellerReturnProfile:
+            expose: true
+            access_type: public_method
+            serialized_name: SellerReturnProfile
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSellerReturnProfile
+                setter: setSellerReturnProfile
+            type: Nogrod\eBaySDK\Trading\SellerReturnProfileType
+        sellerPaymentProfile:
+            expose: true
+            access_type: public_method
+            serialized_name: SellerPaymentProfile
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSellerPaymentProfile
+                setter: setSellerPaymentProfile
+            type: Nogrod\eBaySDK\Trading\SellerPaymentProfileType

@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\Trading\GetSellingManagerEmailLogRequest:
+    xml_root_name: GetSellingManagerEmailLogRequest
+    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

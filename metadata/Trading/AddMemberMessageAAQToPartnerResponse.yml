@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\Trading\AddMemberMessageAAQToPartnerResponse:
+    xml_root_name: AddMemberMessageAAQToPartnerResponse
+    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

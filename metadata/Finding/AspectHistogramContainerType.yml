@@ -1,0 +1,55 @@
+Nogrod\eBaySDK\Finding\AspectHistogramContainerType:
+    virtual_properties:
+        ns_prop:
+            exp: '"http://www.ebay.com/marketplace/search/v1/services"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        domainName:
+            expose: true
+            access_type: public_method
+            serialized_name: domainName
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/search/v1/services'
+            accessor:
+                getter: getDomainName
+                setter: setDomainName
+            type: string
+        domainDisplayName:
+            expose: true
+            access_type: public_method
+            serialized_name: domainDisplayName
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/search/v1/services'
+            accessor:
+                getter: getDomainDisplayName
+                setter: setDomainDisplayName
+            type: string
+        aspect:
+            expose: true
+            access_type: public_method
+            serialized_name: aspect
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/search/v1/services'
+            accessor:
+                getter: getAspect
+                setter: setAspect
+            xml_list:
+                inline: true
+                entry_name: aspect
+                namespace: 'http://www.ebay.com/marketplace/search/v1/services'
+            type: array<Nogrod\eBaySDK\Finding\AspectType>
+        delimiter:
+            expose: true
+            access_type: public_method
+            serialized_name: delimiter
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/search/v1/services'
+            accessor:
+                getter: getDelimiter
+                setter: setDelimiter
+            type: string

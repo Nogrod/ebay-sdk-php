@@ -1,0 +1,40 @@
+Nogrod\eBaySDK\Trading\BotBlockResponseType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        botBlockToken:
+            expose: true
+            access_type: public_method
+            serialized_name: BotBlockToken
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getBotBlockToken
+                setter: setBotBlockToken
+            type: string
+        botBlockUrl:
+            expose: true
+            access_type: public_method
+            serialized_name: BotBlockUrl
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getBotBlockUrl
+                setter: setBotBlockUrl
+            type: string
+        botBlockAudioUrl:
+            expose: true
+            access_type: public_method
+            serialized_name: BotBlockAudioUrl
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getBotBlockAudioUrl
+                setter: setBotBlockAudioUrl
+            type: string

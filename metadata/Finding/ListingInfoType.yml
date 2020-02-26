@@ -1,0 +1,106 @@
+Nogrod\eBaySDK\Finding\ListingInfoType:
+    virtual_properties:
+        ns_prop:
+            exp: '"http://www.ebay.com/marketplace/search/v1/services"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        bestOfferEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: bestOfferEnabled
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/search/v1/services'
+            accessor:
+                getter: getBestOfferEnabled
+                setter: setBestOfferEnabled
+            type: bool
+        buyItNowAvailable:
+            expose: true
+            access_type: public_method
+            serialized_name: buyItNowAvailable
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/search/v1/services'
+            accessor:
+                getter: getBuyItNowAvailable
+                setter: setBuyItNowAvailable
+            type: bool
+        buyItNowPrice:
+            expose: true
+            access_type: public_method
+            serialized_name: buyItNowPrice
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/search/v1/services'
+            accessor:
+                getter: getBuyItNowPrice
+                setter: setBuyItNowPrice
+            type: Nogrod\eBaySDK\Finding\AmountType
+        convertedBuyItNowPrice:
+            expose: true
+            access_type: public_method
+            serialized_name: convertedBuyItNowPrice
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/search/v1/services'
+            accessor:
+                getter: getConvertedBuyItNowPrice
+                setter: setConvertedBuyItNowPrice
+            type: Nogrod\eBaySDK\Finding\AmountType
+        startTime:
+            expose: true
+            access_type: public_method
+            serialized_name: startTime
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/search/v1/services'
+            accessor:
+                getter: getStartTime
+                setter: setStartTime
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime
+        endTime:
+            expose: true
+            access_type: public_method
+            serialized_name: endTime
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/search/v1/services'
+            accessor:
+                getter: getEndTime
+                setter: setEndTime
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime
+        listingType:
+            expose: true
+            access_type: public_method
+            serialized_name: listingType
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/search/v1/services'
+            accessor:
+                getter: getListingType
+                setter: setListingType
+            type: string
+        gift:
+            expose: true
+            access_type: public_method
+            serialized_name: gift
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/search/v1/services'
+            accessor:
+                getter: getGift
+                setter: setGift
+            type: bool
+        delimiter:
+            expose: true
+            access_type: public_method
+            serialized_name: delimiter
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/search/v1/services'
+            accessor:
+                getter: getDelimiter
+                setter: setDelimiter
+            type: string

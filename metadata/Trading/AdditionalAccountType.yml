@@ -1,0 +1,40 @@
+Nogrod\eBaySDK\Trading\AdditionalAccountType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        balance:
+            expose: true
+            access_type: public_method
+            serialized_name: Balance
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getBalance
+                setter: setBalance
+            type: Nogrod\eBaySDK\Trading\AmountType
+        currency:
+            expose: true
+            access_type: public_method
+            serialized_name: Currency
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCurrency
+                setter: setCurrency
+            type: string
+        accountCode:
+            expose: true
+            access_type: public_method
+            serialized_name: AccountCode
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getAccountCode
+                setter: setAccountCode
+            type: string

@@ -1,0 +1,78 @@
+Nogrod\eBaySDK\Trading\GetOrdersResponseType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        paginationResult:
+            expose: true
+            access_type: public_method
+            serialized_name: PaginationResult
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPaginationResult
+                setter: setPaginationResult
+            type: Nogrod\eBaySDK\Trading\PaginationResultType
+        hasMoreOrders:
+            expose: true
+            access_type: public_method
+            serialized_name: HasMoreOrders
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getHasMoreOrders
+                setter: setHasMoreOrders
+            type: bool
+        orderArray:
+            expose: true
+            access_type: public_method
+            serialized_name: OrderArray
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getOrderArray
+                setter: setOrderArray
+            type: array<Nogrod\eBaySDK\Trading\OrderType>
+            xml_list:
+                inline: false
+                entry_name: Order
+                skip_when_empty: true
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+        ordersPerPage:
+            expose: true
+            access_type: public_method
+            serialized_name: OrdersPerPage
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getOrdersPerPage
+                setter: setOrdersPerPage
+            type: int
+        pageNumber:
+            expose: true
+            access_type: public_method
+            serialized_name: PageNumber
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPageNumber
+                setter: setPageNumber
+            type: int
+        returnedOrderCountActual:
+            expose: true
+            access_type: public_method
+            serialized_name: ReturnedOrderCountActual
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getReturnedOrderCountActual
+                setter: setReturnedOrderCountActual
+            type: int

@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\Trading\GetClientAlertsAuthTokenRequest:
+    xml_root_name: GetClientAlertsAuthTokenRequest
+    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

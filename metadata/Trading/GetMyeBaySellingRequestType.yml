@@ -1,0 +1,106 @@
+Nogrod\eBaySDK\Trading\GetMyeBaySellingRequestType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        scheduledList:
+            expose: true
+            access_type: public_method
+            serialized_name: ScheduledList
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getScheduledList
+                setter: setScheduledList
+            type: Nogrod\eBaySDK\Trading\ItemListCustomizationType
+        activeList:
+            expose: true
+            access_type: public_method
+            serialized_name: ActiveList
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getActiveList
+                setter: setActiveList
+            type: Nogrod\eBaySDK\Trading\ItemListCustomizationType
+        soldList:
+            expose: true
+            access_type: public_method
+            serialized_name: SoldList
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSoldList
+                setter: setSoldList
+            type: Nogrod\eBaySDK\Trading\ItemListCustomizationType
+        unsoldList:
+            expose: true
+            access_type: public_method
+            serialized_name: UnsoldList
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getUnsoldList
+                setter: setUnsoldList
+            type: Nogrod\eBaySDK\Trading\ItemListCustomizationType
+        bidList:
+            expose: true
+            access_type: public_method
+            serialized_name: BidList
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getBidList
+                setter: setBidList
+            type: Nogrod\eBaySDK\Trading\ItemListCustomizationType
+        deletedFromSoldList:
+            expose: true
+            access_type: public_method
+            serialized_name: DeletedFromSoldList
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getDeletedFromSoldList
+                setter: setDeletedFromSoldList
+            type: Nogrod\eBaySDK\Trading\ItemListCustomizationType
+        deletedFromUnsoldList:
+            expose: true
+            access_type: public_method
+            serialized_name: DeletedFromUnsoldList
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getDeletedFromUnsoldList
+                setter: setDeletedFromUnsoldList
+            type: Nogrod\eBaySDK\Trading\ItemListCustomizationType
+        sellingSummary:
+            expose: true
+            access_type: public_method
+            serialized_name: SellingSummary
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSellingSummary
+                setter: setSellingSummary
+            type: Nogrod\eBaySDK\Trading\ItemListCustomizationType
+        hideVariations:
+            expose: true
+            access_type: public_method
+            serialized_name: HideVariations
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getHideVariations
+                setter: setHideVariations
+            type: bool

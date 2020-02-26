@@ -1,0 +1,84 @@
+Nogrod\eBaySDK\MerchantData\ItemListCustomizationType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        include:
+            expose: true
+            access_type: public_method
+            serialized_name: Include
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getInclude
+                setter: setInclude
+            type: bool
+        listingType:
+            expose: true
+            access_type: public_method
+            serialized_name: ListingType
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getListingType
+                setter: setListingType
+            type: string
+        sort:
+            expose: true
+            access_type: public_method
+            serialized_name: Sort
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSort
+                setter: setSort
+            type: string
+        durationInDays:
+            expose: true
+            access_type: public_method
+            serialized_name: DurationInDays
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getDurationInDays
+                setter: setDurationInDays
+            type: int
+        includeNotes:
+            expose: true
+            access_type: public_method
+            serialized_name: IncludeNotes
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getIncludeNotes
+                setter: setIncludeNotes
+            type: bool
+        pagination:
+            expose: true
+            access_type: public_method
+            serialized_name: Pagination
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPagination
+                setter: setPagination
+            type: Nogrod\eBaySDK\MerchantData\PaginationType
+        orderStatusFilter:
+            expose: true
+            access_type: public_method
+            serialized_name: OrderStatusFilter
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getOrderStatusFilter
+                setter: setOrderStatusFilter
+            type: string

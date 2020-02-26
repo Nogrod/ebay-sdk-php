@@ -1,0 +1,270 @@
+Nogrod\eBaySDK\Trading\CharityInfoType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        id:
+            expose: true
+            access_type: public_method
+            serialized_name: id
+            accessor:
+                getter: getId
+                setter: setId
+            xml_attribute: true
+            type: string
+        name:
+            expose: true
+            access_type: public_method
+            serialized_name: Name
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getName
+                setter: setName
+            type: string
+        listingNPEmailNotifPref:
+            expose: true
+            access_type: public_method
+            serialized_name: ListingNPEmailNotifPref
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getListingNPEmailNotifPref
+                setter: setListingNPEmailNotifPref
+            type: bool
+        listingNPEmail:
+            expose: true
+            access_type: public_method
+            serialized_name: ListingNPEmail
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getListingNPEmail
+                setter: setListingNPEmail
+            type: string
+        listingNPContactName:
+            expose: true
+            access_type: public_method
+            serialized_name: ListingNPContactName
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getListingNPContactName
+                setter: setListingNPContactName
+            type: string
+        mission:
+            expose: true
+            access_type: public_method
+            serialized_name: Mission
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getMission
+                setter: setMission
+            type: string
+        logoURL:
+            expose: true
+            access_type: public_method
+            serialized_name: LogoURL
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getLogoURL
+                setter: setLogoURL
+            type: string
+        status:
+            expose: true
+            access_type: public_method
+            serialized_name: Status
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getStatus
+                setter: setStatus
+            type: string
+        searchableString:
+            expose: true
+            access_type: public_method
+            serialized_name: SearchableString
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSearchableString
+                setter: setSearchableString
+            type: string
+        charityRegion:
+            expose: true
+            access_type: public_method
+            serialized_name: CharityRegion
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCharityRegion
+                setter: setCharityRegion
+            type: int
+        charityDomain:
+            expose: true
+            access_type: public_method
+            serialized_name: CharityDomain
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCharityDomain
+                setter: setCharityDomain
+            xml_list:
+                inline: true
+                entry_name: CharityDomain
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<int>
+        charityID:
+            expose: true
+            access_type: public_method
+            serialized_name: CharityID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCharityID
+                setter: setCharityID
+            type: string
+        logoURLSelling:
+            expose: true
+            access_type: public_method
+            serialized_name: LogoURLSelling
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getLogoURLSelling
+                setter: setLogoURLSelling
+            type: string
+        displayLogoSelling:
+            expose: true
+            access_type: public_method
+            serialized_name: DisplayLogoSelling
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getDisplayLogoSelling
+                setter: setDisplayLogoSelling
+            type: bool
+        displayNameInCheckout:
+            expose: true
+            access_type: public_method
+            serialized_name: DisplayNameInCheckout
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getDisplayNameInCheckout
+                setter: setDisplayNameInCheckout
+            type: bool
+        description:
+            expose: true
+            access_type: public_method
+            serialized_name: Description
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getDescription
+                setter: setDescription
+            type: string
+        showMultipleDonationAmountInCheckout:
+            expose: true
+            access_type: public_method
+            serialized_name: ShowMultipleDonationAmountInCheckout
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getShowMultipleDonationAmountInCheckout
+                setter: setShowMultipleDonationAmountInCheckout
+            type: bool
+        externalID:
+            expose: true
+            access_type: public_method
+            serialized_name: ExternalID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getExternalID
+                setter: setExternalID
+            type: string
+        popularityIndex:
+            expose: true
+            access_type: public_method
+            serialized_name: PopularityIndex
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPopularityIndex
+                setter: setPopularityIndex
+            type: int
+        eIN:
+            expose: true
+            access_type: public_method
+            serialized_name: EIN
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getEIN
+                setter: setEIN
+            type: string
+        nonProfitSecondName:
+            expose: true
+            access_type: public_method
+            serialized_name: NonProfitSecondName
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getNonProfitSecondName
+                setter: setNonProfitSecondName
+            type: string
+        nonProfitAddress:
+            expose: true
+            access_type: public_method
+            serialized_name: NonProfitAddress
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getNonProfitAddress
+                setter: setNonProfitAddress
+            xml_list:
+                inline: true
+                entry_name: NonProfitAddress
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<Nogrod\eBaySDK\Trading\NonProfitAddressType>
+        nonProfitSocialAddress:
+            expose: true
+            access_type: public_method
+            serialized_name: NonProfitSocialAddress
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getNonProfitSocialAddress
+                setter: setNonProfitSocialAddress
+            xml_list:
+                inline: true
+                entry_name: NonProfitSocialAddress
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<Nogrod\eBaySDK\Trading\NonProfitSocialAddressType>

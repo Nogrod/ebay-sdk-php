@@ -1,0 +1,144 @@
+Nogrod\eBaySDK\Trading\GetOrdersRequestType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        orderIDArray:
+            expose: true
+            access_type: public_method
+            serialized_name: OrderIDArray
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getOrderIDArray
+                setter: setOrderIDArray
+            type: array<string>
+            xml_list:
+                inline: false
+                entry_name: OrderID
+                skip_when_empty: true
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+        createTimeFrom:
+            expose: true
+            access_type: public_method
+            serialized_name: CreateTimeFrom
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCreateTimeFrom
+                setter: setCreateTimeFrom
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime
+        createTimeTo:
+            expose: true
+            access_type: public_method
+            serialized_name: CreateTimeTo
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCreateTimeTo
+                setter: setCreateTimeTo
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime
+        orderRole:
+            expose: true
+            access_type: public_method
+            serialized_name: OrderRole
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getOrderRole
+                setter: setOrderRole
+            type: string
+        orderStatus:
+            expose: true
+            access_type: public_method
+            serialized_name: OrderStatus
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getOrderStatus
+                setter: setOrderStatus
+            type: string
+        listingType:
+            expose: true
+            access_type: public_method
+            serialized_name: ListingType
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getListingType
+                setter: setListingType
+            type: string
+        pagination:
+            expose: true
+            access_type: public_method
+            serialized_name: Pagination
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPagination
+                setter: setPagination
+            type: Nogrod\eBaySDK\Trading\PaginationType
+        modTimeFrom:
+            expose: true
+            access_type: public_method
+            serialized_name: ModTimeFrom
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getModTimeFrom
+                setter: setModTimeFrom
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime
+        modTimeTo:
+            expose: true
+            access_type: public_method
+            serialized_name: ModTimeTo
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getModTimeTo
+                setter: setModTimeTo
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime
+        numberOfDays:
+            expose: true
+            access_type: public_method
+            serialized_name: NumberOfDays
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getNumberOfDays
+                setter: setNumberOfDays
+            type: int
+        includeFinalValueFee:
+            expose: true
+            access_type: public_method
+            serialized_name: IncludeFinalValueFee
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getIncludeFinalValueFee
+                setter: setIncludeFinalValueFee
+            type: bool
+        sortingOrder:
+            expose: true
+            access_type: public_method
+            serialized_name: SortingOrder
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSortingOrder
+                setter: setSortingOrder
+            type: string

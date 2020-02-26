@@ -1,0 +1,22 @@
+Nogrod\eBaySDK\MerchantData\BidderDetailArrayType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        bidderDetail:
+            expose: true
+            access_type: public_method
+            serialized_name: BidderDetail
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getBidderDetail
+                setter: setBidderDetail
+            xml_list:
+                inline: true
+                entry_name: BidderDetail
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<Nogrod\eBaySDK\MerchantData\BidderDetailType>

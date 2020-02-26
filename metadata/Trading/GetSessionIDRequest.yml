@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\Trading\GetSessionIDRequest:
+    xml_root_name: GetSessionIDRequest
+    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

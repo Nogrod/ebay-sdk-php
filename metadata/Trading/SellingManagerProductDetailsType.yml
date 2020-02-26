@@ -1,0 +1,117 @@
+Nogrod\eBaySDK\Trading\SellingManagerProductDetailsType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        productName:
+            expose: true
+            access_type: public_method
+            serialized_name: ProductName
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getProductName
+                setter: setProductName
+            type: string
+        productID:
+            expose: true
+            access_type: public_method
+            serialized_name: ProductID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getProductID
+                setter: setProductID
+            type: int
+        customLabel:
+            expose: true
+            access_type: public_method
+            serialized_name: CustomLabel
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCustomLabel
+                setter: setCustomLabel
+            type: string
+        quantityAvailable:
+            expose: true
+            access_type: public_method
+            serialized_name: QuantityAvailable
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getQuantityAvailable
+                setter: setQuantityAvailable
+            type: int
+        unitCost:
+            expose: true
+            access_type: public_method
+            serialized_name: UnitCost
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getUnitCost
+                setter: setUnitCost
+            type: Nogrod\eBaySDK\Trading\AmountType
+        folderID:
+            expose: true
+            access_type: public_method
+            serialized_name: FolderID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getFolderID
+                setter: setFolderID
+            type: int
+        restockAlert:
+            expose: true
+            access_type: public_method
+            serialized_name: RestockAlert
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getRestockAlert
+                setter: setRestockAlert
+            type: bool
+        restockThreshold:
+            expose: true
+            access_type: public_method
+            serialized_name: RestockThreshold
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getRestockThreshold
+                setter: setRestockThreshold
+            type: int
+        vendorInfo:
+            expose: true
+            access_type: public_method
+            serialized_name: VendorInfo
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getVendorInfo
+                setter: setVendorInfo
+            type: Nogrod\eBaySDK\Trading\SellingManagerVendorDetailsType
+        note:
+            expose: true
+            access_type: public_method
+            serialized_name: Note
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getNote
+                setter: setNote
+            type: string

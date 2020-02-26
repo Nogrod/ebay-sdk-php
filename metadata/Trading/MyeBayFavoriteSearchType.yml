@@ -1,0 +1,316 @@
+Nogrod\eBaySDK\Trading\MyeBayFavoriteSearchType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        searchName:
+            expose: true
+            access_type: public_method
+            serialized_name: SearchName
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSearchName
+                setter: setSearchName
+            type: string
+        searchQuery:
+            expose: true
+            access_type: public_method
+            serialized_name: SearchQuery
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSearchQuery
+                setter: setSearchQuery
+            type: string
+        queryKeywords:
+            expose: true
+            access_type: public_method
+            serialized_name: QueryKeywords
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getQueryKeywords
+                setter: setQueryKeywords
+            type: string
+        categoryID:
+            expose: true
+            access_type: public_method
+            serialized_name: CategoryID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCategoryID
+                setter: setCategoryID
+            type: string
+        itemSort:
+            expose: true
+            access_type: public_method
+            serialized_name: ItemSort
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getItemSort
+                setter: setItemSort
+            type: string
+        sortOrder:
+            expose: true
+            access_type: public_method
+            serialized_name: SortOrder
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSortOrder
+                setter: setSortOrder
+            type: string
+        endTimeFrom:
+            expose: true
+            access_type: public_method
+            serialized_name: EndTimeFrom
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getEndTimeFrom
+                setter: setEndTimeFrom
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime
+        endTimeTo:
+            expose: true
+            access_type: public_method
+            serialized_name: EndTimeTo
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getEndTimeTo
+                setter: setEndTimeTo
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime
+        maxDistance:
+            expose: true
+            access_type: public_method
+            serialized_name: MaxDistance
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getMaxDistance
+                setter: setMaxDistance
+            type: int
+        postalCode:
+            expose: true
+            access_type: public_method
+            serialized_name: PostalCode
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPostalCode
+                setter: setPostalCode
+            type: string
+        itemType:
+            expose: true
+            access_type: public_method
+            serialized_name: ItemType
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getItemType
+                setter: setItemType
+            type: string
+        priceMax:
+            expose: true
+            access_type: public_method
+            serialized_name: PriceMax
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPriceMax
+                setter: setPriceMax
+            type: Nogrod\eBaySDK\Trading\AmountType
+        priceMin:
+            expose: true
+            access_type: public_method
+            serialized_name: PriceMin
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPriceMin
+                setter: setPriceMin
+            type: Nogrod\eBaySDK\Trading\AmountType
+        currency:
+            expose: true
+            access_type: public_method
+            serialized_name: Currency
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCurrency
+                setter: setCurrency
+            type: string
+        bidCountMax:
+            expose: true
+            access_type: public_method
+            serialized_name: BidCountMax
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getBidCountMax
+                setter: setBidCountMax
+            type: int
+        bidCountMin:
+            expose: true
+            access_type: public_method
+            serialized_name: BidCountMin
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getBidCountMin
+                setter: setBidCountMin
+            type: int
+        searchFlag:
+            expose: true
+            access_type: public_method
+            serialized_name: SearchFlag
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSearchFlag
+                setter: setSearchFlag
+            xml_list:
+                inline: true
+                entry_name: SearchFlag
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<string>
+        paymentMethod:
+            expose: true
+            access_type: public_method
+            serialized_name: PaymentMethod
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPaymentMethod
+                setter: setPaymentMethod
+            type: string
+        preferredLocation:
+            expose: true
+            access_type: public_method
+            serialized_name: PreferredLocation
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPreferredLocation
+                setter: setPreferredLocation
+            type: string
+        sellerID:
+            expose: true
+            access_type: public_method
+            serialized_name: SellerID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSellerID
+                setter: setSellerID
+            xml_list:
+                inline: true
+                entry_name: SellerID
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<string>
+        sellerIDExclude:
+            expose: true
+            access_type: public_method
+            serialized_name: SellerIDExclude
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSellerIDExclude
+                setter: setSellerIDExclude
+            xml_list:
+                inline: true
+                entry_name: SellerIDExclude
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<string>
+        itemsAvailableTo:
+            expose: true
+            access_type: public_method
+            serialized_name: ItemsAvailableTo
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getItemsAvailableTo
+                setter: setItemsAvailableTo
+            type: string
+        itemsLocatedIn:
+            expose: true
+            access_type: public_method
+            serialized_name: ItemsLocatedIn
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getItemsLocatedIn
+                setter: setItemsLocatedIn
+            type: string
+        sellerBusinessType:
+            expose: true
+            access_type: public_method
+            serialized_name: SellerBusinessType
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSellerBusinessType
+                setter: setSellerBusinessType
+            type: string
+        condition:
+            expose: true
+            access_type: public_method
+            serialized_name: Condition
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCondition
+                setter: setCondition
+            type: string
+        quantity:
+            expose: true
+            access_type: public_method
+            serialized_name: Quantity
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getQuantity
+                setter: setQuantity
+            type: int
+        quantityOperator:
+            expose: true
+            access_type: public_method
+            serialized_name: QuantityOperator
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getQuantityOperator
+                setter: setQuantityOperator
+            type: string

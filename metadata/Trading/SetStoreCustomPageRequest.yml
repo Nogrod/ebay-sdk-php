@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\Trading\SetStoreCustomPageRequest:
+    xml_root_name: SetStoreCustomPageRequest
+    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

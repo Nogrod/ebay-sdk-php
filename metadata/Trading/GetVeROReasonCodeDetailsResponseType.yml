@@ -1,0 +1,23 @@
+Nogrod\eBaySDK\Trading\GetVeROReasonCodeDetailsResponseType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        veROReasonCodeDetails:
+            expose: true
+            access_type: public_method
+            serialized_name: VeROReasonCodeDetails
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getVeROReasonCodeDetails
+                setter: setVeROReasonCodeDetails
+            type: array<Nogrod\eBaySDK\Trading\VeROSiteDetailType>
+            xml_list:
+                inline: false
+                entry_name: VeROSiteDetail
+                skip_when_empty: true
+                namespace: 'urn:ebay:apis:eBLBaseComponents'

@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\BusinessPoliciesManagement\ConsolidateShippingProfilesResponse:
+    xml_root_name: consolidateShippingProfilesResponse
+    xml_root_namespace: 'http://www.ebay.com/marketplace/selling/v1/services'

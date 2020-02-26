@@ -1,0 +1,106 @@
+Nogrod\eBaySDK\BusinessPoliciesManagement\DeliveryEstimateType:
+    virtual_properties:
+        ns_prop:
+            exp: '"http://www.ebay.com/marketplace/selling/v1/services"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        maxDelivery:
+            expose: true
+            access_type: public_method
+            serialized_name: maxDelivery
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getMaxDelivery
+                setter: setMaxDelivery
+            type: int
+        minDelivery:
+            expose: true
+            access_type: public_method
+            serialized_name: minDelivery
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getMinDelivery
+                setter: setMinDelivery
+            type: int
+        maxDeliveryDate:
+            expose: true
+            access_type: public_method
+            serialized_name: maxDeliveryDate
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getMaxDeliveryDate
+                setter: setMaxDeliveryDate
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime
+        minDeliveryDate:
+            expose: true
+            access_type: public_method
+            serialized_name: minDeliveryDate
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getMinDeliveryDate
+                setter: setMinDeliveryDate
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime
+        minConfidence:
+            expose: true
+            access_type: public_method
+            serialized_name: minConfidence
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getMinConfidence
+                setter: setMinConfidence
+            type: int
+        maxConfidence:
+            expose: true
+            access_type: public_method
+            serialized_name: maxConfidence
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getMaxConfidence
+                setter: setMaxConfidence
+            type: int
+        estimateTreatment:
+            expose: true
+            access_type: public_method
+            serialized_name: estimateTreatment
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getEstimateTreatment
+                setter: setEstimateTreatment
+            type: string
+        maxActualDelivery:
+            expose: true
+            access_type: public_method
+            serialized_name: maxActualDelivery
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getMaxActualDelivery
+                setter: setMaxActualDelivery
+            type: int
+        minActualDelivery:
+            expose: true
+            access_type: public_method
+            serialized_name: minActualDelivery
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getMinActualDelivery
+                setter: setMinActualDelivery
+            type: int

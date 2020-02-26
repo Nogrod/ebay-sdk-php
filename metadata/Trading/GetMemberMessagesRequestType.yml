@@ -1,0 +1,106 @@
+Nogrod\eBaySDK\Trading\GetMemberMessagesRequestType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        itemID:
+            expose: true
+            access_type: public_method
+            serialized_name: ItemID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getItemID
+                setter: setItemID
+            type: string
+        mailMessageType:
+            expose: true
+            access_type: public_method
+            serialized_name: MailMessageType
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getMailMessageType
+                setter: setMailMessageType
+            type: string
+        messageStatus:
+            expose: true
+            access_type: public_method
+            serialized_name: MessageStatus
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getMessageStatus
+                setter: setMessageStatus
+            type: string
+        displayToPublic:
+            expose: true
+            access_type: public_method
+            serialized_name: DisplayToPublic
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getDisplayToPublic
+                setter: setDisplayToPublic
+            type: bool
+        startCreationTime:
+            expose: true
+            access_type: public_method
+            serialized_name: StartCreationTime
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getStartCreationTime
+                setter: setStartCreationTime
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime
+        endCreationTime:
+            expose: true
+            access_type: public_method
+            serialized_name: EndCreationTime
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getEndCreationTime
+                setter: setEndCreationTime
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime
+        pagination:
+            expose: true
+            access_type: public_method
+            serialized_name: Pagination
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPagination
+                setter: setPagination
+            type: Nogrod\eBaySDK\Trading\PaginationType
+        memberMessageID:
+            expose: true
+            access_type: public_method
+            serialized_name: MemberMessageID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getMemberMessageID
+                setter: setMemberMessageID
+            type: string
+        senderID:
+            expose: true
+            access_type: public_method
+            serialized_name: SenderID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSenderID
+                setter: setSenderID
+            type: string

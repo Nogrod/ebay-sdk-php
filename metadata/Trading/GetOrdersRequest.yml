@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\Trading\GetOrdersRequest:
+    xml_root_name: GetOrdersRequest
+    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

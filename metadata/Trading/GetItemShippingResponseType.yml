@@ -1,0 +1,29 @@
+Nogrod\eBaySDK\Trading\GetItemShippingResponseType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        shippingDetails:
+            expose: true
+            access_type: public_method
+            serialized_name: ShippingDetails
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getShippingDetails
+                setter: setShippingDetails
+            type: Nogrod\eBaySDK\Trading\ShippingDetailsType
+        pickUpInStoreDetails:
+            expose: true
+            access_type: public_method
+            serialized_name: PickUpInStoreDetails
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPickUpInStoreDetails
+                setter: setPickUpInStoreDetails
+            type: Nogrod\eBaySDK\Trading\PickupInStoreDetailsType

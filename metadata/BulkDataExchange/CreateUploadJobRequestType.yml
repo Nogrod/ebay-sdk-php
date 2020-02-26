@@ -1,0 +1,40 @@
+Nogrod\eBaySDK\BulkDataExchange\CreateUploadJobRequestType:
+    virtual_properties:
+        ns_prop:
+            exp: '"http://www.ebay.com/marketplace/services"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        uploadJobType:
+            expose: true
+            access_type: public_method
+            serialized_name: uploadJobType
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/services'
+            accessor:
+                getter: getUploadJobType
+                setter: setUploadJobType
+            type: string
+        uUID:
+            expose: true
+            access_type: public_method
+            serialized_name: UUID
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/services'
+            accessor:
+                getter: getUUID
+                setter: setUUID
+            type: string
+        fileType:
+            expose: true
+            access_type: public_method
+            serialized_name: fileType
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/services'
+            accessor:
+                getter: getFileType
+                setter: setFileType
+            type: string

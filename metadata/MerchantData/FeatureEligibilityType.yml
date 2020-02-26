@@ -1,0 +1,62 @@
+Nogrod\eBaySDK\MerchantData\FeatureEligibilityType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        qualifiesForBuyItNow:
+            expose: true
+            access_type: public_method
+            serialized_name: QualifiesForBuyItNow
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getQualifiesForBuyItNow
+                setter: setQualifiesForBuyItNow
+            type: bool
+        qualifiesForBuyItNowMultiple:
+            expose: true
+            access_type: public_method
+            serialized_name: QualifiesForBuyItNowMultiple
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getQualifiesForBuyItNowMultiple
+                setter: setQualifiesForBuyItNowMultiple
+            type: bool
+        qualifiedForFixedPriceOneDayDuration:
+            expose: true
+            access_type: public_method
+            serialized_name: QualifiedForFixedPriceOneDayDuration
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getQualifiedForFixedPriceOneDayDuration
+                setter: setQualifiedForFixedPriceOneDayDuration
+            type: bool
+        qualifiesForVariations:
+            expose: true
+            access_type: public_method
+            serialized_name: QualifiesForVariations
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getQualifiesForVariations
+                setter: setQualifiesForVariations
+            type: bool
+        qualifiedForAuctionOneDayDuration:
+            expose: true
+            access_type: public_method
+            serialized_name: QualifiedForAuctionOneDayDuration
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getQualifiedForAuctionOneDayDuration
+                setter: setQualifiedForAuctionOneDayDuration
+            type: bool

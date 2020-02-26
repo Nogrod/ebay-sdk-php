@@ -1,0 +1,29 @@
+Nogrod\eBaySDK\MerchantData\NotificationEnableType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        eventType:
+            expose: true
+            access_type: public_method
+            serialized_name: EventType
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getEventType
+                setter: setEventType
+            type: string
+        eventEnable:
+            expose: true
+            access_type: public_method
+            serialized_name: EventEnable
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getEventEnable
+                setter: setEventEnable
+            type: string

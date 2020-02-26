@@ -1,0 +1,51 @@
+Nogrod\eBaySDK\Trading\BuyerRoleMetricsType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        positiveFeedbackLeftCount:
+            expose: true
+            access_type: public_method
+            serialized_name: PositiveFeedbackLeftCount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPositiveFeedbackLeftCount
+                setter: setPositiveFeedbackLeftCount
+            type: int
+        negativeFeedbackLeftCount:
+            expose: true
+            access_type: public_method
+            serialized_name: NegativeFeedbackLeftCount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getNegativeFeedbackLeftCount
+                setter: setNegativeFeedbackLeftCount
+            type: int
+        neutralFeedbackLeftCount:
+            expose: true
+            access_type: public_method
+            serialized_name: NeutralFeedbackLeftCount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getNeutralFeedbackLeftCount
+                setter: setNeutralFeedbackLeftCount
+            type: int
+        feedbackLeftPercent:
+            expose: true
+            access_type: public_method
+            serialized_name: FeedbackLeftPercent
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getFeedbackLeftPercent
+                setter: setFeedbackLeftPercent
+            type: float

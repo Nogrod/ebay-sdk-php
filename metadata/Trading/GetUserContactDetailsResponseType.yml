@@ -1,0 +1,40 @@
+Nogrod\eBaySDK\Trading\GetUserContactDetailsResponseType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        userID:
+            expose: true
+            access_type: public_method
+            serialized_name: UserID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getUserID
+                setter: setUserID
+            type: string
+        contactAddress:
+            expose: true
+            access_type: public_method
+            serialized_name: ContactAddress
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getContactAddress
+                setter: setContactAddress
+            type: Nogrod\eBaySDK\Trading\AddressType
+        registrationDate:
+            expose: true
+            access_type: public_method
+            serialized_name: RegistrationDate
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getRegistrationDate
+                setter: setRegistrationDate
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime

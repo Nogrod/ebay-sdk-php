@@ -1,0 +1,51 @@
+Nogrod\eBaySDK\Trading\SetSellingManagerTemplateAutomationRuleRequestType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        saleTemplateID:
+            expose: true
+            access_type: public_method
+            serialized_name: SaleTemplateID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSaleTemplateID
+                setter: setSaleTemplateID
+            type: int
+        automatedListingRule:
+            expose: true
+            access_type: public_method
+            serialized_name: AutomatedListingRule
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getAutomatedListingRule
+                setter: setAutomatedListingRule
+            type: Nogrod\eBaySDK\Trading\SellingManagerAutoListType
+        automatedRelistingRule:
+            expose: true
+            access_type: public_method
+            serialized_name: AutomatedRelistingRule
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getAutomatedRelistingRule
+                setter: setAutomatedRelistingRule
+            type: Nogrod\eBaySDK\Trading\SellingManagerAutoRelistType
+        automatedSecondChanceOfferRule:
+            expose: true
+            access_type: public_method
+            serialized_name: AutomatedSecondChanceOfferRule
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getAutomatedSecondChanceOfferRule
+                setter: setAutomatedSecondChanceOfferRule
+            type: Nogrod\eBaySDK\Trading\SellingManagerAutoSecondChanceOfferType

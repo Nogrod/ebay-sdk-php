@@ -1,0 +1,18 @@
+Nogrod\eBaySDK\Trading\AddOrderRequestType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        order:
+            expose: true
+            access_type: public_method
+            serialized_name: Order
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getOrder
+                setter: setOrder
+            type: Nogrod\eBaySDK\Trading\OrderType

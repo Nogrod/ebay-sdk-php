@@ -1,0 +1,62 @@
+Nogrod\eBaySDK\Finding\DiscountPriceInfoType:
+    virtual_properties:
+        ns_prop:
+            exp: '"http://www.ebay.com/marketplace/search/v1/services"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        originalRetailPrice:
+            expose: true
+            access_type: public_method
+            serialized_name: originalRetailPrice
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/search/v1/services'
+            accessor:
+                getter: getOriginalRetailPrice
+                setter: setOriginalRetailPrice
+            type: Nogrod\eBaySDK\Finding\AmountType
+        minimumAdvertisedPriceExposure:
+            expose: true
+            access_type: public_method
+            serialized_name: minimumAdvertisedPriceExposure
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/search/v1/services'
+            accessor:
+                getter: getMinimumAdvertisedPriceExposure
+                setter: setMinimumAdvertisedPriceExposure
+            type: string
+        pricingTreatment:
+            expose: true
+            access_type: public_method
+            serialized_name: pricingTreatment
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/search/v1/services'
+            accessor:
+                getter: getPricingTreatment
+                setter: setPricingTreatment
+            type: string
+        soldOnEbay:
+            expose: true
+            access_type: public_method
+            serialized_name: soldOnEbay
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/search/v1/services'
+            accessor:
+                getter: getSoldOnEbay
+                setter: setSoldOnEbay
+            type: bool
+        soldOffEbay:
+            expose: true
+            access_type: public_method
+            serialized_name: soldOffEbay
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/search/v1/services'
+            accessor:
+                getter: getSoldOffEbay
+                setter: setSoldOffEbay
+            type: bool

@@ -1,0 +1,29 @@
+Nogrod\eBaySDK\MerchantData\BuyerProtectionDetailsType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        buyerProtectionSource:
+            expose: true
+            access_type: public_method
+            serialized_name: BuyerProtectionSource
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getBuyerProtectionSource
+                setter: setBuyerProtectionSource
+            type: string
+        buyerProtectionStatus:
+            expose: true
+            access_type: public_method
+            serialized_name: BuyerProtectionStatus
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getBuyerProtectionStatus
+                setter: setBuyerProtectionStatus
+            type: string

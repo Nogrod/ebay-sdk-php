@@ -1,0 +1,42 @@
+Nogrod\eBaySDK\Finding\AspectType:
+    virtual_properties:
+        ns_prop:
+            exp: '"http://www.ebay.com/marketplace/search/v1/services"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        name:
+            expose: true
+            access_type: public_method
+            serialized_name: name
+            accessor:
+                getter: getName
+                setter: setName
+            xml_attribute: true
+            type: string
+        valueHistogram:
+            expose: true
+            access_type: public_method
+            serialized_name: valueHistogram
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/search/v1/services'
+            accessor:
+                getter: getValueHistogram
+                setter: setValueHistogram
+            xml_list:
+                inline: true
+                entry_name: valueHistogram
+                namespace: 'http://www.ebay.com/marketplace/search/v1/services'
+            type: array<Nogrod\eBaySDK\Finding\AspectValueHistogramType>
+        delimiter:
+            expose: true
+            access_type: public_method
+            serialized_name: delimiter
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/search/v1/services'
+            accessor:
+                getter: getDelimiter
+                setter: setDelimiter
+            type: string

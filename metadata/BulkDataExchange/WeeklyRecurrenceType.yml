@@ -1,0 +1,29 @@
+Nogrod\eBaySDK\BulkDataExchange\WeeklyRecurrenceType:
+    virtual_properties:
+        ns_prop:
+            exp: '"http://www.ebay.com/marketplace/services"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        dayOfWeek:
+            expose: true
+            access_type: public_method
+            serialized_name: dayOfWeek
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/services'
+            accessor:
+                getter: getDayOfWeek
+                setter: setDayOfWeek
+            type: string
+        timeOfDay:
+            expose: true
+            access_type: public_method
+            serialized_name: timeOfDay
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/services'
+            accessor:
+                getter: getTimeOfDay
+                setter: setTimeOfDay
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Time

@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\Trading\GetSellerEventsResponse:
+    xml_root_name: GetSellerEventsResponse
+    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

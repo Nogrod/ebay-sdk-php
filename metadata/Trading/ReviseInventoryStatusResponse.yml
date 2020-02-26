@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\Trading\ReviseInventoryStatusResponse:
+    xml_root_name: ReviseInventoryStatusResponse
+    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

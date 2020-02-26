@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\Trading\GetStoreCategoryUpdateStatusRequest:
+    xml_root_name: GetStoreCategoryUpdateStatusRequest
+    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

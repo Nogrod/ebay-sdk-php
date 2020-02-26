@@ -1,0 +1,40 @@
+Nogrod\eBaySDK\Finding\StorefrontType:
+    virtual_properties:
+        ns_prop:
+            exp: '"http://www.ebay.com/marketplace/search/v1/services"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        storeName:
+            expose: true
+            access_type: public_method
+            serialized_name: storeName
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/search/v1/services'
+            accessor:
+                getter: getStoreName
+                setter: setStoreName
+            type: string
+        storeURL:
+            expose: true
+            access_type: public_method
+            serialized_name: storeURL
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/search/v1/services'
+            accessor:
+                getter: getStoreURL
+                setter: setStoreURL
+            type: string
+        delimiter:
+            expose: true
+            access_type: public_method
+            serialized_name: delimiter
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/search/v1/services'
+            accessor:
+                getter: getDelimiter
+                setter: setDelimiter
+            type: string

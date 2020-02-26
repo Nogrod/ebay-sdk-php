@@ -1,0 +1,44 @@
+Nogrod\eBaySDK\Finding\AspectFilterType:
+    virtual_properties:
+        ns_prop:
+            exp: '"http://www.ebay.com/marketplace/search/v1/services"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        aspectName:
+            expose: true
+            access_type: public_method
+            serialized_name: aspectName
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/search/v1/services'
+            accessor:
+                getter: getAspectName
+                setter: setAspectName
+            type: string
+        aspectValueName:
+            expose: true
+            access_type: public_method
+            serialized_name: aspectValueName
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/search/v1/services'
+            accessor:
+                getter: getAspectValueName
+                setter: setAspectValueName
+            xml_list:
+                inline: true
+                entry_name: aspectValueName
+                namespace: 'http://www.ebay.com/marketplace/search/v1/services'
+            type: array<string>
+        delimiter:
+            expose: true
+            access_type: public_method
+            serialized_name: delimiter
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/search/v1/services'
+            accessor:
+                getter: getDelimiter
+                setter: setDelimiter
+            type: string

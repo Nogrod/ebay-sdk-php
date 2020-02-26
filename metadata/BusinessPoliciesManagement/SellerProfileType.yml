@@ -1,0 +1,111 @@
+Nogrod\eBaySDK\BusinessPoliciesManagement\SellerProfileType:
+    virtual_properties:
+        ns_prop:
+            exp: '"http://www.ebay.com/marketplace/selling/v1/services"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        forceDuplicate:
+            expose: true
+            access_type: public_method
+            serialized_name: forceDuplicate
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getForceDuplicate
+                setter: setForceDuplicate
+            type: bool
+        profileName:
+            expose: true
+            access_type: public_method
+            serialized_name: profileName
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getProfileName
+                setter: setProfileName
+            type: string
+        profileId:
+            expose: true
+            access_type: public_method
+            serialized_name: profileId
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getProfileId
+                setter: setProfileId
+            type: int
+        profileType:
+            expose: true
+            access_type: public_method
+            serialized_name: profileType
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getProfileType
+                setter: setProfileType
+            type: string
+        profileVersion:
+            expose: true
+            access_type: public_method
+            serialized_name: profileVersion
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getProfileVersion
+                setter: setProfileVersion
+            type: int
+        profileDesc:
+            expose: true
+            access_type: public_method
+            serialized_name: profileDesc
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getProfileDesc
+                setter: setProfileDesc
+            type: string
+        deletedDate:
+            expose: true
+            access_type: public_method
+            serialized_name: deletedDate
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getDeletedDate
+                setter: setDeletedDate
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime
+        siteId:
+            expose: true
+            access_type: public_method
+            serialized_name: siteId
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getSiteId
+                setter: setSiteId
+            type: int
+        categoryGroups:
+            expose: true
+            access_type: public_method
+            serialized_name: categoryGroups
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getCategoryGroups
+                setter: setCategoryGroups
+            type: array<Nogrod\eBaySDK\BusinessPoliciesManagement\CategoryGroupType>
+            xml_list:
+                inline: false
+                entry_name: categoryGroup
+                skip_when_empty: true
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'

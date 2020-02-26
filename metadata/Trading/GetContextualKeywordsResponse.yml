@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\Trading\GetContextualKeywordsResponse:
+    xml_root_name: GetContextualKeywordsResponse
+    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

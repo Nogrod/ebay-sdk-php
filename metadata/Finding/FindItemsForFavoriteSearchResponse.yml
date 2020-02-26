@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\Finding\FindItemsForFavoriteSearchResponse:
+    xml_root_name: findItemsForFavoriteSearchResponse
+    xml_root_namespace: 'http://www.ebay.com/marketplace/search/v1/services'

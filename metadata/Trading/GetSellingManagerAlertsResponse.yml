@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\Trading\GetSellingManagerAlertsResponse:
+    xml_root_name: GetSellingManagerAlertsResponse
+    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

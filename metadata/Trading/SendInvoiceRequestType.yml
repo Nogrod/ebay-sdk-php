@@ -1,0 +1,195 @@
+Nogrod\eBaySDK\Trading\SendInvoiceRequestType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        itemID:
+            expose: true
+            access_type: public_method
+            serialized_name: ItemID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getItemID
+                setter: setItemID
+            type: string
+        transactionID:
+            expose: true
+            access_type: public_method
+            serialized_name: TransactionID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getTransactionID
+                setter: setTransactionID
+            type: string
+        orderID:
+            expose: true
+            access_type: public_method
+            serialized_name: OrderID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getOrderID
+                setter: setOrderID
+            type: string
+        internationalShippingServiceOptions:
+            expose: true
+            access_type: public_method
+            serialized_name: InternationalShippingServiceOptions
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getInternationalShippingServiceOptions
+                setter: setInternationalShippingServiceOptions
+            xml_list:
+                inline: true
+                entry_name: InternationalShippingServiceOptions
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<Nogrod\eBaySDK\Trading\InternationalShippingServiceOptionsType>
+        shippingServiceOptions:
+            expose: true
+            access_type: public_method
+            serialized_name: ShippingServiceOptions
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getShippingServiceOptions
+                setter: setShippingServiceOptions
+            xml_list:
+                inline: true
+                entry_name: ShippingServiceOptions
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<Nogrod\eBaySDK\Trading\ShippingServiceOptionsType>
+        salesTax:
+            expose: true
+            access_type: public_method
+            serialized_name: SalesTax
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSalesTax
+                setter: setSalesTax
+            type: Nogrod\eBaySDK\Trading\SalesTaxType
+        insuranceOption:
+            expose: true
+            access_type: public_method
+            serialized_name: InsuranceOption
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getInsuranceOption
+                setter: setInsuranceOption
+            type: string
+        insuranceFee:
+            expose: true
+            access_type: public_method
+            serialized_name: InsuranceFee
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getInsuranceFee
+                setter: setInsuranceFee
+            type: Nogrod\eBaySDK\Trading\AmountType
+        paymentMethods:
+            expose: true
+            access_type: public_method
+            serialized_name: PaymentMethods
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPaymentMethods
+                setter: setPaymentMethods
+            xml_list:
+                inline: true
+                entry_name: PaymentMethods
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<string>
+        payPalEmailAddress:
+            expose: true
+            access_type: public_method
+            serialized_name: PayPalEmailAddress
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPayPalEmailAddress
+                setter: setPayPalEmailAddress
+            type: string
+        checkoutInstructions:
+            expose: true
+            access_type: public_method
+            serialized_name: CheckoutInstructions
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCheckoutInstructions
+                setter: setCheckoutInstructions
+            type: string
+        emailCopyToSeller:
+            expose: true
+            access_type: public_method
+            serialized_name: EmailCopyToSeller
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getEmailCopyToSeller
+                setter: setEmailCopyToSeller
+            type: bool
+        cODCost:
+            expose: true
+            access_type: public_method
+            serialized_name: CODCost
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCODCost
+                setter: setCODCost
+            type: Nogrod\eBaySDK\Trading\AmountType
+        sKU:
+            expose: true
+            access_type: public_method
+            serialized_name: SKU
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSKU
+                setter: setSKU
+            type: string
+        orderLineItemID:
+            expose: true
+            access_type: public_method
+            serialized_name: OrderLineItemID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getOrderLineItemID
+                setter: setOrderLineItemID
+            type: string
+        adjustmentAmount:
+            expose: true
+            access_type: public_method
+            serialized_name: AdjustmentAmount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getAdjustmentAmount
+                setter: setAdjustmentAmount
+            type: Nogrod\eBaySDK\Trading\AmountType

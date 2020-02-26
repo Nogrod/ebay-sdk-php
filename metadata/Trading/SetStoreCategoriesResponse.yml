@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\Trading\SetStoreCategoriesResponse:
+    xml_root_name: SetStoreCategoriesResponse
+    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

@@ -1,0 +1,42 @@
+Nogrod\eBaySDK\Finding\SearchResultType:
+    virtual_properties:
+        ns_prop:
+            exp: '"http://www.ebay.com/marketplace/search/v1/services"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        count:
+            expose: true
+            access_type: public_method
+            serialized_name: count
+            accessor:
+                getter: getCount
+                setter: setCount
+            xml_attribute: true
+            type: int
+        item:
+            expose: true
+            access_type: public_method
+            serialized_name: item
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/search/v1/services'
+            accessor:
+                getter: getItem
+                setter: setItem
+            xml_list:
+                inline: true
+                entry_name: item
+                namespace: 'http://www.ebay.com/marketplace/search/v1/services'
+            type: array<Nogrod\eBaySDK\Finding\SearchItemType>
+        delimiter:
+            expose: true
+            access_type: public_method
+            serialized_name: delimiter
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/search/v1/services'
+            accessor:
+                getter: getDelimiter
+                setter: setDelimiter
+            type: string

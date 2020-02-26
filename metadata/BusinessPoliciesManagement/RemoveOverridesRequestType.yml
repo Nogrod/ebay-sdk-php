@@ -1,0 +1,18 @@
+Nogrod\eBaySDK\BusinessPoliciesManagement\RemoveOverridesRequestType:
+    virtual_properties:
+        ns_prop:
+            exp: '"http://www.ebay.com/marketplace/selling/v1/services"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        profileId:
+            expose: true
+            access_type: public_method
+            serialized_name: profileId
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getProfileId
+                setter: setProfileId
+            type: int

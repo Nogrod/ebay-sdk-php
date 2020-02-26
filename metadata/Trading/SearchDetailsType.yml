@@ -1,0 +1,40 @@
+Nogrod\eBaySDK\Trading\SearchDetailsType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        buyItNowEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: BuyItNowEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getBuyItNowEnabled
+                setter: setBuyItNowEnabled
+            type: bool
+        picture:
+            expose: true
+            access_type: public_method
+            serialized_name: Picture
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPicture
+                setter: setPicture
+            type: bool
+        recentListing:
+            expose: true
+            access_type: public_method
+            serialized_name: RecentListing
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getRecentListing
+                setter: setRecentListing
+            type: bool

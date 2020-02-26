@@ -1,0 +1,95 @@
+Nogrod\eBaySDK\Trading\AddTransactionConfirmationItemRequestType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        recipientUserID:
+            expose: true
+            access_type: public_method
+            serialized_name: RecipientUserID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getRecipientUserID
+                setter: setRecipientUserID
+            type: string
+        verifyEligibilityOnly:
+            expose: true
+            access_type: public_method
+            serialized_name: VerifyEligibilityOnly
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getVerifyEligibilityOnly
+                setter: setVerifyEligibilityOnly
+            type: string
+        recipientPostalCode:
+            expose: true
+            access_type: public_method
+            serialized_name: RecipientPostalCode
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getRecipientPostalCode
+                setter: setRecipientPostalCode
+            type: string
+        recipientRelationType:
+            expose: true
+            access_type: public_method
+            serialized_name: RecipientRelationType
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getRecipientRelationType
+                setter: setRecipientRelationType
+            type: string
+        negotiatedPrice:
+            expose: true
+            access_type: public_method
+            serialized_name: NegotiatedPrice
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getNegotiatedPrice
+                setter: setNegotiatedPrice
+            type: Nogrod\eBaySDK\Trading\AmountType
+        listingDuration:
+            expose: true
+            access_type: public_method
+            serialized_name: ListingDuration
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getListingDuration
+                setter: setListingDuration
+            type: string
+        itemID:
+            expose: true
+            access_type: public_method
+            serialized_name: ItemID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getItemID
+                setter: setItemID
+            type: string
+        comments:
+            expose: true
+            access_type: public_method
+            serialized_name: Comments
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getComments
+                setter: setComments
+            type: string

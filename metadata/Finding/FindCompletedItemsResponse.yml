@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\Finding\FindCompletedItemsResponse:
+    xml_root_name: findCompletedItemsResponse
+    xml_root_namespace: 'http://www.ebay.com/marketplace/search/v1/services'

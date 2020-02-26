@@ -1,0 +1,18 @@
+Nogrod\eBaySDK\MerchantData\SiteLocationType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        siteID:
+            expose: true
+            access_type: public_method
+            serialized_name: SiteID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSiteID
+                setter: setSiteID
+            type: string

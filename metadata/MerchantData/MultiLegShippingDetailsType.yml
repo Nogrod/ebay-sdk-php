@@ -1,0 +1,29 @@
+Nogrod\eBaySDK\MerchantData\MultiLegShippingDetailsType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        sellerShipmentToLogisticsProvider:
+            expose: true
+            access_type: public_method
+            serialized_name: SellerShipmentToLogisticsProvider
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSellerShipmentToLogisticsProvider
+                setter: setSellerShipmentToLogisticsProvider
+            type: Nogrod\eBaySDK\MerchantData\MultiLegShipmentType
+        logisticsProviderShipmentToBuyer:
+            expose: true
+            access_type: public_method
+            serialized_name: LogisticsProviderShipmentToBuyer
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getLogisticsProviderShipmentToBuyer
+                setter: setLogisticsProviderShipmentToBuyer
+            type: Nogrod\eBaySDK\MerchantData\MultiLegShipmentType

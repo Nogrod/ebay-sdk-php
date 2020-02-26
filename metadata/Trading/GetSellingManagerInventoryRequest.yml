@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\Trading\GetSellingManagerInventoryRequest:
+    xml_root_name: GetSellingManagerInventoryRequest
+    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

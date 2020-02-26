@@ -1,0 +1,29 @@
+Nogrod\eBaySDK\Trading\SellerReverseDisputeRequestType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        disputeID:
+            expose: true
+            access_type: public_method
+            serialized_name: DisputeID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getDisputeID
+                setter: setDisputeID
+            type: string
+        disputeResolutionReason:
+            expose: true
+            access_type: public_method
+            serialized_name: DisputeResolutionReason
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getDisputeResolutionReason
+                setter: setDisputeResolutionReason
+            type: string

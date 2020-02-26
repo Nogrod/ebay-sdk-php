@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\Trading\DeleteMyMessagesRequest:
+    xml_root_name: DeleteMyMessagesRequest
+    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

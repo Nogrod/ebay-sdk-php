@@ -1,0 +1,71 @@
+Nogrod\eBaySDK\Trading\GetNotificationPreferencesResponseType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        applicationDeliveryPreferences:
+            expose: true
+            access_type: public_method
+            serialized_name: ApplicationDeliveryPreferences
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getApplicationDeliveryPreferences
+                setter: setApplicationDeliveryPreferences
+            type: Nogrod\eBaySDK\Trading\ApplicationDeliveryPreferencesType
+        deliveryURLName:
+            expose: true
+            access_type: public_method
+            serialized_name: DeliveryURLName
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getDeliveryURLName
+                setter: setDeliveryURLName
+            type: string
+        userDeliveryPreferenceArray:
+            expose: true
+            access_type: public_method
+            serialized_name: UserDeliveryPreferenceArray
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getUserDeliveryPreferenceArray
+                setter: setUserDeliveryPreferenceArray
+            type: array<Nogrod\eBaySDK\Trading\NotificationEnableType>
+            xml_list:
+                inline: false
+                entry_name: NotificationEnable
+                skip_when_empty: true
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+        userData:
+            expose: true
+            access_type: public_method
+            serialized_name: UserData
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getUserData
+                setter: setUserData
+            type: Nogrod\eBaySDK\Trading\NotificationUserDataType
+        eventProperty:
+            expose: true
+            access_type: public_method
+            serialized_name: EventProperty
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getEventProperty
+                setter: setEventProperty
+            xml_list:
+                inline: true
+                entry_name: EventProperty
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<Nogrod\eBaySDK\Trading\NotificationEventPropertyType>

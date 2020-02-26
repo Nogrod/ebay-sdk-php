@@ -1,0 +1,33 @@
+Nogrod\eBaySDK\Trading\UnitOfMeasurementType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        alternateText:
+            expose: true
+            access_type: public_method
+            serialized_name: AlternateText
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getAlternateText
+                setter: setAlternateText
+            xml_list:
+                inline: true
+                entry_name: AlternateText
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<string>
+        suggestedText:
+            expose: true
+            access_type: public_method
+            serialized_name: SuggestedText
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSuggestedText
+                setter: setSuggestedText
+            type: string

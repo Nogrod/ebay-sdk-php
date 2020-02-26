@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\Trading\RespondToFeedbackRequest:
+    xml_root_name: RespondToFeedbackRequest
+    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

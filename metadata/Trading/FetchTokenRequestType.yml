@@ -1,0 +1,29 @@
+Nogrod\eBaySDK\Trading\FetchTokenRequestType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        secretID:
+            expose: true
+            access_type: public_method
+            serialized_name: SecretID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSecretID
+                setter: setSecretID
+            type: string
+        sessionID:
+            expose: true
+            access_type: public_method
+            serialized_name: SessionID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSessionID
+                setter: setSessionID
+            type: string

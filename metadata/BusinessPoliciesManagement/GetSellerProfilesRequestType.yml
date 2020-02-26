@@ -1,0 +1,63 @@
+Nogrod\eBaySDK\BusinessPoliciesManagement\GetSellerProfilesRequestType:
+    virtual_properties:
+        ns_prop:
+            exp: '"http://www.ebay.com/marketplace/selling/v1/services"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        profileType:
+            expose: true
+            access_type: public_method
+            serialized_name: profileType
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getProfileType
+                setter: setProfileType
+            xml_list:
+                inline: true
+                entry_name: profileType
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            type: array<string>
+        profileId:
+            expose: true
+            access_type: public_method
+            serialized_name: profileId
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getProfileId
+                setter: setProfileId
+            xml_list:
+                inline: true
+                entry_name: profileId
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            type: array<int>
+        profileName:
+            expose: true
+            access_type: public_method
+            serialized_name: profileName
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getProfileName
+                setter: setProfileName
+            xml_list:
+                inline: true
+                entry_name: profileName
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            type: array<string>
+        includeDetails:
+            expose: true
+            access_type: public_method
+            serialized_name: includeDetails
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getIncludeDetails
+                setter: setIncludeDetails
+            type: bool

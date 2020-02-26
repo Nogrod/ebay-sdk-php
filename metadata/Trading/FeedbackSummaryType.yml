@@ -1,0 +1,169 @@
+Nogrod\eBaySDK\Trading\FeedbackSummaryType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        bidRetractionFeedbackPeriodArray:
+            expose: true
+            access_type: public_method
+            serialized_name: BidRetractionFeedbackPeriodArray
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getBidRetractionFeedbackPeriodArray
+                setter: setBidRetractionFeedbackPeriodArray
+            type: array<Nogrod\eBaySDK\Trading\FeedbackPeriodType>
+            xml_list:
+                inline: false
+                entry_name: FeedbackPeriod
+                skip_when_empty: true
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+        negativeFeedbackPeriodArray:
+            expose: true
+            access_type: public_method
+            serialized_name: NegativeFeedbackPeriodArray
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getNegativeFeedbackPeriodArray
+                setter: setNegativeFeedbackPeriodArray
+            type: array<Nogrod\eBaySDK\Trading\FeedbackPeriodType>
+            xml_list:
+                inline: false
+                entry_name: FeedbackPeriod
+                skip_when_empty: true
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+        neutralFeedbackPeriodArray:
+            expose: true
+            access_type: public_method
+            serialized_name: NeutralFeedbackPeriodArray
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getNeutralFeedbackPeriodArray
+                setter: setNeutralFeedbackPeriodArray
+            type: array<Nogrod\eBaySDK\Trading\FeedbackPeriodType>
+            xml_list:
+                inline: false
+                entry_name: FeedbackPeriod
+                skip_when_empty: true
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+        positiveFeedbackPeriodArray:
+            expose: true
+            access_type: public_method
+            serialized_name: PositiveFeedbackPeriodArray
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPositiveFeedbackPeriodArray
+                setter: setPositiveFeedbackPeriodArray
+            type: array<Nogrod\eBaySDK\Trading\FeedbackPeriodType>
+            xml_list:
+                inline: false
+                entry_name: FeedbackPeriod
+                skip_when_empty: true
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+        totalFeedbackPeriodArray:
+            expose: true
+            access_type: public_method
+            serialized_name: TotalFeedbackPeriodArray
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getTotalFeedbackPeriodArray
+                setter: setTotalFeedbackPeriodArray
+            type: array<Nogrod\eBaySDK\Trading\FeedbackPeriodType>
+            xml_list:
+                inline: false
+                entry_name: FeedbackPeriod
+                skip_when_empty: true
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+        neutralCommentCountFromSuspendedUsers:
+            expose: true
+            access_type: public_method
+            serialized_name: NeutralCommentCountFromSuspendedUsers
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getNeutralCommentCountFromSuspendedUsers
+                setter: setNeutralCommentCountFromSuspendedUsers
+            type: int
+        uniqueNegativeFeedbackCount:
+            expose: true
+            access_type: public_method
+            serialized_name: UniqueNegativeFeedbackCount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getUniqueNegativeFeedbackCount
+                setter: setUniqueNegativeFeedbackCount
+            type: int
+        uniquePositiveFeedbackCount:
+            expose: true
+            access_type: public_method
+            serialized_name: UniquePositiveFeedbackCount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getUniquePositiveFeedbackCount
+                setter: setUniquePositiveFeedbackCount
+            type: int
+        uniqueNeutralFeedbackCount:
+            expose: true
+            access_type: public_method
+            serialized_name: UniqueNeutralFeedbackCount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getUniqueNeutralFeedbackCount
+                setter: setUniqueNeutralFeedbackCount
+            type: int
+        sellerRatingSummaryArray:
+            expose: true
+            access_type: public_method
+            serialized_name: SellerRatingSummaryArray
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSellerRatingSummaryArray
+                setter: setSellerRatingSummaryArray
+            type: array<Nogrod\eBaySDK\Trading\AverageRatingSummaryType>
+            xml_list:
+                inline: false
+                entry_name: AverageRatingSummary
+                skip_when_empty: true
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+        sellerRoleMetrics:
+            expose: true
+            access_type: public_method
+            serialized_name: SellerRoleMetrics
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSellerRoleMetrics
+                setter: setSellerRoleMetrics
+            type: Nogrod\eBaySDK\Trading\SellerRoleMetricsType
+        buyerRoleMetrics:
+            expose: true
+            access_type: public_method
+            serialized_name: BuyerRoleMetrics
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getBuyerRoleMetrics
+                setter: setBuyerRoleMetrics
+            type: Nogrod\eBaySDK\Trading\BuyerRoleMetricsType

@@ -1,0 +1,18 @@
+Nogrod\eBaySDK\MerchantData\PricingRecommendationsType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        productInfo:
+            expose: true
+            access_type: public_method
+            serialized_name: ProductInfo
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getProductInfo
+                setter: setProductInfo
+            type: Nogrod\eBaySDK\MerchantData\ProductInfoType

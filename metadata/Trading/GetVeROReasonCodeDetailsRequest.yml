@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\Trading\GetVeROReasonCodeDetailsRequest:
+    xml_root_name: GetVeROReasonCodeDetailsRequest
+    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\Trading\CompleteSaleRequest:
+    xml_root_name: CompleteSaleRequest
+    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

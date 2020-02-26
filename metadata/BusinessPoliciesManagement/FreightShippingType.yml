@@ -1,0 +1,84 @@
+Nogrod\eBaySDK\BusinessPoliciesManagement\FreightShippingType:
+    virtual_properties:
+        ns_prop:
+            exp: '"http://www.ebay.com/marketplace/selling/v1/services"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        originPickupLocationType:
+            expose: true
+            access_type: public_method
+            serialized_name: originPickupLocationType
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getOriginPickupLocationType
+                setter: setOriginPickupLocationType
+            type: string
+        originPickupInside:
+            expose: true
+            access_type: public_method
+            serialized_name: originPickupInside
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getOriginPickupInside
+                setter: setOriginPickupInside
+            type: bool
+        packagingHelpRequired:
+            expose: true
+            access_type: public_method
+            serialized_name: packagingHelpRequired
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getPackagingHelpRequired
+                setter: setPackagingHelpRequired
+            type: bool
+        commodityType:
+            expose: true
+            access_type: public_method
+            serialized_name: commodityType
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getCommodityType
+                setter: setCommodityType
+            type: string
+        freightShippingClass:
+            expose: true
+            access_type: public_method
+            serialized_name: freightShippingClass
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getFreightShippingClass
+                setter: setFreightShippingClass
+            type: float
+        destPickupLocationType:
+            expose: true
+            access_type: public_method
+            serialized_name: destPickupLocationType
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getDestPickupLocationType
+                setter: setDestPickupLocationType
+            type: string
+        destPickupInside:
+            expose: true
+            access_type: public_method
+            serialized_name: destPickupInside
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getDestPickupInside
+                setter: setDestPickupInside
+            type: bool

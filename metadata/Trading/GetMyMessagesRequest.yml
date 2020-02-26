@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\Trading\GetMyMessagesRequest:
+    xml_root_name: GetMyMessagesRequest
+    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

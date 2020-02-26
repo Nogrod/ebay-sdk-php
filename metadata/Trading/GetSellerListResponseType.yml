@@ -1,0 +1,89 @@
+Nogrod\eBaySDK\Trading\GetSellerListResponseType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        paginationResult:
+            expose: true
+            access_type: public_method
+            serialized_name: PaginationResult
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPaginationResult
+                setter: setPaginationResult
+            type: Nogrod\eBaySDK\Trading\PaginationResultType
+        hasMoreItems:
+            expose: true
+            access_type: public_method
+            serialized_name: HasMoreItems
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getHasMoreItems
+                setter: setHasMoreItems
+            type: bool
+        itemArray:
+            expose: true
+            access_type: public_method
+            serialized_name: ItemArray
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getItemArray
+                setter: setItemArray
+            type: array<Nogrod\eBaySDK\Trading\ItemType>
+            xml_list:
+                inline: false
+                entry_name: Item
+                skip_when_empty: true
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+        itemsPerPage:
+            expose: true
+            access_type: public_method
+            serialized_name: ItemsPerPage
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getItemsPerPage
+                setter: setItemsPerPage
+            type: int
+        pageNumber:
+            expose: true
+            access_type: public_method
+            serialized_name: PageNumber
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPageNumber
+                setter: setPageNumber
+            type: int
+        returnedItemCountActual:
+            expose: true
+            access_type: public_method
+            serialized_name: ReturnedItemCountActual
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getReturnedItemCountActual
+                setter: setReturnedItemCountActual
+            type: int
+        seller:
+            expose: true
+            access_type: public_method
+            serialized_name: Seller
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSeller
+                setter: setSeller
+            type: Nogrod\eBaySDK\Trading\UserType

@@ -1,0 +1,94 @@
+Nogrod\eBaySDK\Shopping\FindHalfProductsResponseType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        domainHistogram:
+            expose: true
+            access_type: public_method
+            serialized_name: DomainHistogram
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getDomainHistogram
+                setter: setDomainHistogram
+            type: array<Nogrod\eBaySDK\Shopping\HistogramEntryType>
+            xml_list:
+                inline: false
+                entry_name: Domain
+                skip_when_empty: true
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+        pageNumber:
+            expose: true
+            access_type: public_method
+            serialized_name: PageNumber
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPageNumber
+                setter: setPageNumber
+            type: int
+        approximatePages:
+            expose: true
+            access_type: public_method
+            serialized_name: ApproximatePages
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getApproximatePages
+                setter: setApproximatePages
+            type: int
+        moreResults:
+            expose: true
+            access_type: public_method
+            serialized_name: MoreResults
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getMoreResults
+                setter: setMoreResults
+            type: bool
+        totalProducts:
+            expose: true
+            access_type: public_method
+            serialized_name: TotalProducts
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getTotalProducts
+                setter: setTotalProducts
+            type: int
+        products:
+            expose: true
+            access_type: public_method
+            serialized_name: Products
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getProducts
+                setter: setProducts
+            type: array<Nogrod\eBaySDK\Shopping\HalfCatalogProductType>
+            xml_list:
+                inline: false
+                entry_name: Product
+                skip_when_empty: true
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+        productSearchURL:
+            expose: true
+            access_type: public_method
+            serialized_name: ProductSearchURL
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getProductSearchURL
+                setter: setProductSearchURL
+            type: string

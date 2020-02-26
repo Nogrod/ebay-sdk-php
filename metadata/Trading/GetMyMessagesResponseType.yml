@@ -1,0 +1,50 @@
+Nogrod\eBaySDK\Trading\GetMyMessagesResponseType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        summary:
+            expose: true
+            access_type: public_method
+            serialized_name: Summary
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSummary
+                setter: setSummary
+            type: Nogrod\eBaySDK\Trading\MyMessagesSummaryType
+        alerts:
+            expose: true
+            access_type: public_method
+            serialized_name: Alerts
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getAlerts
+                setter: setAlerts
+            type: array<Nogrod\eBaySDK\Trading\MyMessagesAlertType>
+            xml_list:
+                inline: false
+                entry_name: Alert
+                skip_when_empty: true
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+        messages:
+            expose: true
+            access_type: public_method
+            serialized_name: Messages
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getMessages
+                setter: setMessages
+            type: array<Nogrod\eBaySDK\Trading\MyMessagesMessageType>
+            xml_list:
+                inline: false
+                entry_name: Message
+                skip_when_empty: true
+                namespace: 'urn:ebay:apis:eBLBaseComponents'

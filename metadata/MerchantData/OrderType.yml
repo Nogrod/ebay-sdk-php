@@ -1,0 +1,571 @@
+Nogrod\eBaySDK\MerchantData\OrderType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        orderID:
+            expose: true
+            access_type: public_method
+            serialized_name: OrderID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getOrderID
+                setter: setOrderID
+            type: string
+        orderStatus:
+            expose: true
+            access_type: public_method
+            serialized_name: OrderStatus
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getOrderStatus
+                setter: setOrderStatus
+            type: string
+        adjustmentAmount:
+            expose: true
+            access_type: public_method
+            serialized_name: AdjustmentAmount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getAdjustmentAmount
+                setter: setAdjustmentAmount
+            type: Nogrod\eBaySDK\MerchantData\AmountType
+        amountPaid:
+            expose: true
+            access_type: public_method
+            serialized_name: AmountPaid
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getAmountPaid
+                setter: setAmountPaid
+            type: Nogrod\eBaySDK\MerchantData\AmountType
+        amountSaved:
+            expose: true
+            access_type: public_method
+            serialized_name: AmountSaved
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getAmountSaved
+                setter: setAmountSaved
+            type: Nogrod\eBaySDK\MerchantData\AmountType
+        checkoutStatus:
+            expose: true
+            access_type: public_method
+            serialized_name: CheckoutStatus
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCheckoutStatus
+                setter: setCheckoutStatus
+            type: Nogrod\eBaySDK\MerchantData\CheckoutStatusType
+        shippingDetails:
+            expose: true
+            access_type: public_method
+            serialized_name: ShippingDetails
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getShippingDetails
+                setter: setShippingDetails
+            type: Nogrod\eBaySDK\MerchantData\ShippingDetailsType
+        creatingUserRole:
+            expose: true
+            access_type: public_method
+            serialized_name: CreatingUserRole
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCreatingUserRole
+                setter: setCreatingUserRole
+            type: string
+        createdTime:
+            expose: true
+            access_type: public_method
+            serialized_name: CreatedTime
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCreatedTime
+                setter: setCreatedTime
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime
+        paymentMethods:
+            expose: true
+            access_type: public_method
+            serialized_name: PaymentMethods
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPaymentMethods
+                setter: setPaymentMethods
+            xml_list:
+                inline: true
+                entry_name: PaymentMethods
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<string>
+        sellerEmail:
+            expose: true
+            access_type: public_method
+            serialized_name: SellerEmail
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSellerEmail
+                setter: setSellerEmail
+            type: string
+        shippingAddress:
+            expose: true
+            access_type: public_method
+            serialized_name: ShippingAddress
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getShippingAddress
+                setter: setShippingAddress
+            type: Nogrod\eBaySDK\MerchantData\AddressType
+        shippingServiceSelected:
+            expose: true
+            access_type: public_method
+            serialized_name: ShippingServiceSelected
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getShippingServiceSelected
+                setter: setShippingServiceSelected
+            type: Nogrod\eBaySDK\MerchantData\ShippingServiceOptionsType
+        subtotal:
+            expose: true
+            access_type: public_method
+            serialized_name: Subtotal
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSubtotal
+                setter: setSubtotal
+            type: Nogrod\eBaySDK\MerchantData\AmountType
+        total:
+            expose: true
+            access_type: public_method
+            serialized_name: Total
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getTotal
+                setter: setTotal
+            type: Nogrod\eBaySDK\MerchantData\AmountType
+        externalTransaction:
+            expose: true
+            access_type: public_method
+            serialized_name: ExternalTransaction
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getExternalTransaction
+                setter: setExternalTransaction
+            xml_list:
+                inline: true
+                entry_name: ExternalTransaction
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<Nogrod\eBaySDK\MerchantData\ExternalTransactionType>
+        transactionArray:
+            expose: true
+            access_type: public_method
+            serialized_name: TransactionArray
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getTransactionArray
+                setter: setTransactionArray
+            type: array<Nogrod\eBaySDK\MerchantData\TransactionType>
+            xml_list:
+                inline: false
+                entry_name: Transaction
+                skip_when_empty: true
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+        buyerUserID:
+            expose: true
+            access_type: public_method
+            serialized_name: BuyerUserID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getBuyerUserID
+                setter: setBuyerUserID
+            type: string
+        paidTime:
+            expose: true
+            access_type: public_method
+            serialized_name: PaidTime
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPaidTime
+                setter: setPaidTime
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime
+        shippedTime:
+            expose: true
+            access_type: public_method
+            serialized_name: ShippedTime
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getShippedTime
+                setter: setShippedTime
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime
+        integratedMerchantCreditCardEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: IntegratedMerchantCreditCardEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getIntegratedMerchantCreditCardEnabled
+                setter: setIntegratedMerchantCreditCardEnabled
+            type: bool
+        bundlePurchase:
+            expose: true
+            access_type: public_method
+            serialized_name: BundlePurchase
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getBundlePurchase
+                setter: setBundlePurchase
+            type: bool
+        buyerCheckoutMessage:
+            expose: true
+            access_type: public_method
+            serialized_name: BuyerCheckoutMessage
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getBuyerCheckoutMessage
+                setter: setBuyerCheckoutMessage
+            type: string
+        eIASToken:
+            expose: true
+            access_type: public_method
+            serialized_name: EIASToken
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getEIASToken
+                setter: setEIASToken
+            type: string
+        paymentHoldStatus:
+            expose: true
+            access_type: public_method
+            serialized_name: PaymentHoldStatus
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPaymentHoldStatus
+                setter: setPaymentHoldStatus
+            type: string
+        paymentHoldDetails:
+            expose: true
+            access_type: public_method
+            serialized_name: PaymentHoldDetails
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPaymentHoldDetails
+                setter: setPaymentHoldDetails
+            type: Nogrod\eBaySDK\MerchantData\PaymentHoldDetailType
+        refundAmount:
+            expose: true
+            access_type: public_method
+            serialized_name: RefundAmount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getRefundAmount
+                setter: setRefundAmount
+            type: Nogrod\eBaySDK\MerchantData\AmountType
+        refundStatus:
+            expose: true
+            access_type: public_method
+            serialized_name: RefundStatus
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getRefundStatus
+                setter: setRefundStatus
+            type: string
+        refundArray:
+            expose: true
+            access_type: public_method
+            serialized_name: RefundArray
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getRefundArray
+                setter: setRefundArray
+            type: array<Nogrod\eBaySDK\MerchantData\RefundType>
+            xml_list:
+                inline: false
+                entry_name: Refund
+                skip_when_empty: true
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+        isMultiLegShipping:
+            expose: true
+            access_type: public_method
+            serialized_name: IsMultiLegShipping
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getIsMultiLegShipping
+                setter: setIsMultiLegShipping
+            type: bool
+        multiLegShippingDetails:
+            expose: true
+            access_type: public_method
+            serialized_name: MultiLegShippingDetails
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getMultiLegShippingDetails
+                setter: setMultiLegShippingDetails
+            type: Nogrod\eBaySDK\MerchantData\MultiLegShippingDetailsType
+        monetaryDetails:
+            expose: true
+            access_type: public_method
+            serialized_name: MonetaryDetails
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getMonetaryDetails
+                setter: setMonetaryDetails
+            type: Nogrod\eBaySDK\MerchantData\PaymentsInformationType
+        pickupDetails:
+            expose: true
+            access_type: public_method
+            serialized_name: PickupDetails
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPickupDetails
+                setter: setPickupDetails
+            type: array<Nogrod\eBaySDK\MerchantData\PickupOptionsType>
+            xml_list:
+                inline: false
+                entry_name: PickupOptions
+                skip_when_empty: true
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+        pickupMethodSelected:
+            expose: true
+            access_type: public_method
+            serialized_name: PickupMethodSelected
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPickupMethodSelected
+                setter: setPickupMethodSelected
+            type: Nogrod\eBaySDK\MerchantData\PickupMethodSelectedType
+        sellerUserID:
+            expose: true
+            access_type: public_method
+            serialized_name: SellerUserID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSellerUserID
+                setter: setSellerUserID
+            type: string
+        sellerEIASToken:
+            expose: true
+            access_type: public_method
+            serialized_name: SellerEIASToken
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSellerEIASToken
+                setter: setSellerEIASToken
+            type: string
+        cancelReason:
+            expose: true
+            access_type: public_method
+            serialized_name: CancelReason
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCancelReason
+                setter: setCancelReason
+            type: string
+        cancelStatus:
+            expose: true
+            access_type: public_method
+            serialized_name: CancelStatus
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCancelStatus
+                setter: setCancelStatus
+            type: string
+        cancelReasonDetails:
+            expose: true
+            access_type: public_method
+            serialized_name: CancelReasonDetails
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCancelReasonDetails
+                setter: setCancelReasonDetails
+            type: string
+        shippingConvenienceCharge:
+            expose: true
+            access_type: public_method
+            serialized_name: ShippingConvenienceCharge
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getShippingConvenienceCharge
+                setter: setShippingConvenienceCharge
+            type: Nogrod\eBaySDK\MerchantData\AmountType
+        cancelDetail:
+            expose: true
+            access_type: public_method
+            serialized_name: CancelDetail
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCancelDetail
+                setter: setCancelDetail
+            xml_list:
+                inline: true
+                entry_name: CancelDetail
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<Nogrod\eBaySDK\MerchantData\CancelDetailType>
+        logisticsPlanType:
+            expose: true
+            access_type: public_method
+            serialized_name: LogisticsPlanType
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getLogisticsPlanType
+                setter: setLogisticsPlanType
+            type: string
+        buyerTaxIdentifier:
+            expose: true
+            access_type: public_method
+            serialized_name: BuyerTaxIdentifier
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getBuyerTaxIdentifier
+                setter: setBuyerTaxIdentifier
+            xml_list:
+                inline: true
+                entry_name: BuyerTaxIdentifier
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<Nogrod\eBaySDK\MerchantData\TaxIdentifierType>
+        buyerPackageEnclosures:
+            expose: true
+            access_type: public_method
+            serialized_name: BuyerPackageEnclosures
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getBuyerPackageEnclosures
+                setter: setBuyerPackageEnclosures
+            type: array<Nogrod\eBaySDK\MerchantData\BuyerPackageEnclosureType>
+            xml_list:
+                inline: false
+                entry_name: BuyerPackageEnclosure
+                skip_when_empty: true
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+        extendedOrderID:
+            expose: true
+            access_type: public_method
+            serialized_name: ExtendedOrderID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getExtendedOrderID
+                setter: setExtendedOrderID
+            type: string
+        containseBayPlusTransaction:
+            expose: true
+            access_type: public_method
+            serialized_name: ContainseBayPlusTransaction
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getContainseBayPlusTransaction
+                setter: setContainseBayPlusTransaction
+            type: bool
+        eBayCollectAndRemitTax:
+            expose: true
+            access_type: public_method
+            serialized_name: eBayCollectAndRemitTax
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getEBayCollectAndRemitTax
+                setter: setEBayCollectAndRemitTax
+            type: bool
+        orderLineItemCount:
+            expose: true
+            access_type: public_method
+            serialized_name: OrderLineItemCount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getOrderLineItemCount
+                setter: setOrderLineItemCount
+            type: int

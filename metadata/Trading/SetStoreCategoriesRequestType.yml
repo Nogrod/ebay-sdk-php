@@ -1,0 +1,56 @@
+Nogrod\eBaySDK\Trading\SetStoreCategoriesRequestType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        action:
+            expose: true
+            access_type: public_method
+            serialized_name: Action
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getAction
+                setter: setAction
+            type: string
+        itemDestinationCategoryID:
+            expose: true
+            access_type: public_method
+            serialized_name: ItemDestinationCategoryID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getItemDestinationCategoryID
+                setter: setItemDestinationCategoryID
+            type: int
+        destinationParentCategoryID:
+            expose: true
+            access_type: public_method
+            serialized_name: DestinationParentCategoryID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getDestinationParentCategoryID
+                setter: setDestinationParentCategoryID
+            type: int
+        storeCategories:
+            expose: true
+            access_type: public_method
+            serialized_name: StoreCategories
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getStoreCategories
+                setter: setStoreCategories
+            type: array<Nogrod\eBaySDK\Trading\StoreCustomCategoryType>
+            xml_list:
+                inline: false
+                entry_name: CustomCategory
+                skip_when_empty: true
+                namespace: 'urn:ebay:apis:eBLBaseComponents'

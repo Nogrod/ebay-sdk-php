@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\FileTransfer\UploadFileResponse:
+    xml_root_name: uploadFileResponse
+    xml_root_namespace: 'http://www.ebay.com/marketplace/services'

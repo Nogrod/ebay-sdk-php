@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\Trading\DisableUnpaidItemAssistanceRequest:
+    xml_root_name: DisableUnpaidItemAssistanceRequest
+    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

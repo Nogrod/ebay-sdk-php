@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\Trading\ExtendSiteHostedPicturesRequest:
+    xml_root_name: ExtendSiteHostedPicturesRequest
+    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

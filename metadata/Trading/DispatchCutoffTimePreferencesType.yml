@@ -1,0 +1,18 @@
+Nogrod\eBaySDK\Trading\DispatchCutoffTimePreferencesType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        cutoffTime:
+            expose: true
+            access_type: public_method
+            serialized_name: CutoffTime
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCutoffTime
+                setter: setCutoffTime
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Time

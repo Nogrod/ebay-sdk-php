@@ -1,0 +1,106 @@
+Nogrod\eBaySDK\Shopping\ShippingCostSummaryType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        shippingServiceName:
+            expose: true
+            access_type: public_method
+            serialized_name: ShippingServiceName
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getShippingServiceName
+                setter: setShippingServiceName
+            type: string
+        shippingServiceCost:
+            expose: true
+            access_type: public_method
+            serialized_name: ShippingServiceCost
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getShippingServiceCost
+                setter: setShippingServiceCost
+            type: Nogrod\eBaySDK\Shopping\AmountType
+        insuranceCost:
+            expose: true
+            access_type: public_method
+            serialized_name: InsuranceCost
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getInsuranceCost
+                setter: setInsuranceCost
+            type: Nogrod\eBaySDK\Shopping\AmountType
+        shippingType:
+            expose: true
+            access_type: public_method
+            serialized_name: ShippingType
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getShippingType
+                setter: setShippingType
+            type: string
+        localPickup:
+            expose: true
+            access_type: public_method
+            serialized_name: LocalPickup
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getLocalPickup
+                setter: setLocalPickup
+            type: bool
+        insuranceOption:
+            expose: true
+            access_type: public_method
+            serialized_name: InsuranceOption
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getInsuranceOption
+                setter: setInsuranceOption
+            type: string
+        listedShippingServiceCost:
+            expose: true
+            access_type: public_method
+            serialized_name: ListedShippingServiceCost
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getListedShippingServiceCost
+                setter: setListedShippingServiceCost
+            type: Nogrod\eBaySDK\Shopping\AmountType
+        importCharge:
+            expose: true
+            access_type: public_method
+            serialized_name: ImportCharge
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getImportCharge
+                setter: setImportCharge
+            type: Nogrod\eBaySDK\Shopping\AmountType
+        logisticPlanType:
+            expose: true
+            access_type: public_method
+            serialized_name: LogisticPlanType
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getLogisticPlanType
+                setter: setLogisticPlanType
+            type: string

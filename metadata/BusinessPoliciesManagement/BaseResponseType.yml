@@ -1,0 +1,71 @@
+Nogrod\eBaySDK\BusinessPoliciesManagement\BaseResponseType:
+    virtual_properties:
+        ns_prop:
+            exp: '"http://www.ebay.com/marketplace/selling/v1/services"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        ack:
+            expose: true
+            access_type: public_method
+            serialized_name: ack
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getAck
+                setter: setAck
+            type: string
+        errorMessage:
+            expose: true
+            access_type: public_method
+            serialized_name: errorMessage
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getErrorMessage
+                setter: setErrorMessage
+            type: array<Nogrod\eBaySDK\BusinessPoliciesManagement\ErrorDataType>
+            xml_list:
+                inline: false
+                entry_name: error
+                skip_when_empty: true
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+        version:
+            expose: true
+            access_type: public_method
+            serialized_name: version
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getVersion
+                setter: setVersion
+            type: string
+        timestamp:
+            expose: true
+            access_type: public_method
+            serialized_name: timestamp
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getTimestamp
+                setter: setTimestamp
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime
+        extension:
+            expose: true
+            access_type: public_method
+            serialized_name: extension
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getExtension
+                setter: setExtension
+            xml_list:
+                inline: true
+                entry_name: extension
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            type: array<Nogrod\eBaySDK\BusinessPoliciesManagement\ExtensionType>

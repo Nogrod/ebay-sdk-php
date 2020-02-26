@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\Trading\EndItemsResponse:
+    xml_root_name: EndItemsResponse
+    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

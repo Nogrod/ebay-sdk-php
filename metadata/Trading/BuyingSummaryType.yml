@@ -1,0 +1,84 @@
+Nogrod\eBaySDK\Trading\BuyingSummaryType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        biddingCount:
+            expose: true
+            access_type: public_method
+            serialized_name: BiddingCount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getBiddingCount
+                setter: setBiddingCount
+            type: int
+        winningCount:
+            expose: true
+            access_type: public_method
+            serialized_name: WinningCount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getWinningCount
+                setter: setWinningCount
+            type: int
+        totalWinningCost:
+            expose: true
+            access_type: public_method
+            serialized_name: TotalWinningCost
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getTotalWinningCost
+                setter: setTotalWinningCost
+            type: Nogrod\eBaySDK\Trading\AmountType
+        wonCount:
+            expose: true
+            access_type: public_method
+            serialized_name: WonCount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getWonCount
+                setter: setWonCount
+            type: int
+        totalWonCost:
+            expose: true
+            access_type: public_method
+            serialized_name: TotalWonCost
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getTotalWonCost
+                setter: setTotalWonCost
+            type: Nogrod\eBaySDK\Trading\AmountType
+        wonDurationInDays:
+            expose: true
+            access_type: public_method
+            serialized_name: WonDurationInDays
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getWonDurationInDays
+                setter: setWonDurationInDays
+            type: int
+        bestOfferCount:
+            expose: true
+            access_type: public_method
+            serialized_name: BestOfferCount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getBestOfferCount
+                setter: setBestOfferCount
+            type: int

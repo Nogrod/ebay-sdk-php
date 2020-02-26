@@ -1,0 +1,44 @@
+Nogrod\eBaySDK\Trading\CharitySellerType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        charitySellerStatus:
+            expose: true
+            access_type: public_method
+            serialized_name: CharitySellerStatus
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCharitySellerStatus
+                setter: setCharitySellerStatus
+            type: string
+        charityAffiliation:
+            expose: true
+            access_type: public_method
+            serialized_name: CharityAffiliation
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCharityAffiliation
+                setter: setCharityAffiliation
+            xml_list:
+                inline: true
+                entry_name: CharityAffiliation
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<Nogrod\eBaySDK\Trading\CharityAffiliationType>
+        termsAndConditionsAccepted:
+            expose: true
+            access_type: public_method
+            serialized_name: TermsAndConditionsAccepted
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getTermsAndConditionsAccepted
+                setter: setTermsAndConditionsAccepted
+            type: bool

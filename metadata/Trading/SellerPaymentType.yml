@@ -1,0 +1,150 @@
+Nogrod\eBaySDK\Trading\SellerPaymentType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        itemID:
+            expose: true
+            access_type: public_method
+            serialized_name: ItemID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getItemID
+                setter: setItemID
+            type: string
+        transactionID:
+            expose: true
+            access_type: public_method
+            serialized_name: TransactionID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getTransactionID
+                setter: setTransactionID
+            type: string
+        orderID:
+            expose: true
+            access_type: public_method
+            serialized_name: OrderID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getOrderID
+                setter: setOrderID
+            type: string
+        sellerInventoryID:
+            expose: true
+            access_type: public_method
+            serialized_name: SellerInventoryID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSellerInventoryID
+                setter: setSellerInventoryID
+            type: string
+        privateNotes:
+            expose: true
+            access_type: public_method
+            serialized_name: PrivateNotes
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPrivateNotes
+                setter: setPrivateNotes
+            type: string
+        title:
+            expose: true
+            access_type: public_method
+            serialized_name: Title
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getTitle
+                setter: setTitle
+            type: string
+        paymentType:
+            expose: true
+            access_type: public_method
+            serialized_name: PaymentType
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPaymentType
+                setter: setPaymentType
+            type: string
+        transactionPrice:
+            expose: true
+            access_type: public_method
+            serialized_name: TransactionPrice
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getTransactionPrice
+                setter: setTransactionPrice
+            type: Nogrod\eBaySDK\Trading\AmountType
+        shippingReimbursement:
+            expose: true
+            access_type: public_method
+            serialized_name: ShippingReimbursement
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getShippingReimbursement
+                setter: setShippingReimbursement
+            type: Nogrod\eBaySDK\Trading\AmountType
+        commission:
+            expose: true
+            access_type: public_method
+            serialized_name: Commission
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCommission
+                setter: setCommission
+            type: Nogrod\eBaySDK\Trading\AmountType
+        amountPaid:
+            expose: true
+            access_type: public_method
+            serialized_name: AmountPaid
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getAmountPaid
+                setter: setAmountPaid
+            type: Nogrod\eBaySDK\Trading\AmountType
+        paidTime:
+            expose: true
+            access_type: public_method
+            serialized_name: PaidTime
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPaidTime
+                setter: setPaidTime
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime
+        orderLineItemID:
+            expose: true
+            access_type: public_method
+            serialized_name: OrderLineItemID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getOrderLineItemID
+                setter: setOrderLineItemID
+            type: string

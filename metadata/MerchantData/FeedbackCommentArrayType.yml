@@ -1,0 +1,22 @@
+Nogrod\eBaySDK\MerchantData\FeedbackCommentArrayType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        storedCommentText:
+            expose: true
+            access_type: public_method
+            serialized_name: StoredCommentText
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getStoredCommentText
+                setter: setStoredCommentText
+            xml_list:
+                inline: true
+                entry_name: StoredCommentText
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<string>

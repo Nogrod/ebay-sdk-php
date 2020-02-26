@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\Trading\RelistItemRequest:
+    xml_root_name: RelistItemRequest
+    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

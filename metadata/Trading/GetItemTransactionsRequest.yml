@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\Trading\GetItemTransactionsRequest:
+    xml_root_name: GetItemTransactionsRequest
+    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

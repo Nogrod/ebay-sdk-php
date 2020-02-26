@@ -1,0 +1,40 @@
+Nogrod\eBaySDK\MerchantData\ListingDesignerType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        layoutID:
+            expose: true
+            access_type: public_method
+            serialized_name: LayoutID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getLayoutID
+                setter: setLayoutID
+            type: int
+        optimalPictureSize:
+            expose: true
+            access_type: public_method
+            serialized_name: OptimalPictureSize
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getOptimalPictureSize
+                setter: setOptimalPictureSize
+            type: bool
+        themeID:
+            expose: true
+            access_type: public_method
+            serialized_name: ThemeID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getThemeID
+                setter: setThemeID
+            type: int

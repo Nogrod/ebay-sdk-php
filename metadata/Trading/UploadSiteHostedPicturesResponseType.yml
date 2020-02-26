@@ -1,0 +1,29 @@
+Nogrod\eBaySDK\Trading\UploadSiteHostedPicturesResponseType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        pictureSystemVersion:
+            expose: true
+            access_type: public_method
+            serialized_name: PictureSystemVersion
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPictureSystemVersion
+                setter: setPictureSystemVersion
+            type: int
+        siteHostedPictureDetails:
+            expose: true
+            access_type: public_method
+            serialized_name: SiteHostedPictureDetails
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSiteHostedPictureDetails
+                setter: setSiteHostedPictureDetails
+            type: Nogrod\eBaySDK\Trading\SiteHostedPictureDetailsType

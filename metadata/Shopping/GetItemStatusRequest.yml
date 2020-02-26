@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\Shopping\GetItemStatusRequest:
+    xml_root_name: GetItemStatusRequest
+    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

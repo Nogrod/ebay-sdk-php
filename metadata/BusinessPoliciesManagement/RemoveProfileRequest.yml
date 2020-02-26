@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\BusinessPoliciesManagement\RemoveProfileRequest:
+    xml_root_name: removeProfileRequest
+    xml_root_namespace: 'http://www.ebay.com/marketplace/selling/v1/services'

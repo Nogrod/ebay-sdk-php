@@ -1,0 +1,29 @@
+Nogrod\eBaySDK\Trading\GetMyeBayRemindersRequestType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        buyingReminders:
+            expose: true
+            access_type: public_method
+            serialized_name: BuyingReminders
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getBuyingReminders
+                setter: setBuyingReminders
+            type: Nogrod\eBaySDK\Trading\ReminderCustomizationType
+        sellingReminders:
+            expose: true
+            access_type: public_method
+            serialized_name: SellingReminders
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSellingReminders
+                setter: setSellingReminders
+            type: Nogrod\eBaySDK\Trading\ReminderCustomizationType

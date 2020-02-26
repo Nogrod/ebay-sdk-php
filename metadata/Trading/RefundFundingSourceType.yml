@@ -1,0 +1,62 @@
+Nogrod\eBaySDK\Trading\RefundFundingSourceType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        refundingSourceType:
+            expose: true
+            access_type: public_method
+            serialized_name: RefundingSourceType
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getRefundingSourceType
+                setter: setRefundingSourceType
+            type: string
+        accountNumber:
+            expose: true
+            access_type: public_method
+            serialized_name: AccountNumber
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getAccountNumber
+                setter: setAccountNumber
+            type: string
+        refundAmount:
+            expose: true
+            access_type: public_method
+            serialized_name: RefundAmount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getRefundAmount
+                setter: setRefundAmount
+            type: Nogrod\eBaySDK\Trading\AmountType
+        sellerExternalTransactionID:
+            expose: true
+            access_type: public_method
+            serialized_name: SellerExternalTransactionID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSellerExternalTransactionID
+                setter: setSellerExternalTransactionID
+            type: string
+        buyerExternalTransactionID:
+            expose: true
+            access_type: public_method
+            serialized_name: BuyerExternalTransactionID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getBuyerExternalTransactionID
+                setter: setBuyerExternalTransactionID
+            type: string

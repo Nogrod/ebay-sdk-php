@@ -1,0 +1,33 @@
+Nogrod\eBaySDK\Trading\ProductIdentifiersType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        validationRules:
+            expose: true
+            access_type: public_method
+            serialized_name: ValidationRules
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getValidationRules
+                setter: setValidationRules
+            type: Nogrod\eBaySDK\Trading\GroupValidationRulesType
+        nameRecommendation:
+            expose: true
+            access_type: public_method
+            serialized_name: NameRecommendation
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getNameRecommendation
+                setter: setNameRecommendation
+            xml_list:
+                inline: true
+                entry_name: NameRecommendation
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<Nogrod\eBaySDK\Trading\NameRecommendationType>

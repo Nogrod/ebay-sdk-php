@@ -1,0 +1,67 @@
+Nogrod\eBaySDK\Trading\PlaceOfferRequestType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        offer:
+            expose: true
+            access_type: public_method
+            serialized_name: Offer
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getOffer
+                setter: setOffer
+            type: Nogrod\eBaySDK\Trading\OfferType
+        itemID:
+            expose: true
+            access_type: public_method
+            serialized_name: ItemID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getItemID
+                setter: setItemID
+            type: string
+        blockOnWarning:
+            expose: true
+            access_type: public_method
+            serialized_name: BlockOnWarning
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getBlockOnWarning
+                setter: setBlockOnWarning
+            type: bool
+        affiliateTrackingDetails:
+            expose: true
+            access_type: public_method
+            serialized_name: AffiliateTrackingDetails
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getAffiliateTrackingDetails
+                setter: setAffiliateTrackingDetails
+            type: Nogrod\eBaySDK\Trading\AffiliateTrackingDetailsType
+        variationSpecifics:
+            expose: true
+            access_type: public_method
+            serialized_name: VariationSpecifics
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getVariationSpecifics
+                setter: setVariationSpecifics
+            type: array<Nogrod\eBaySDK\Trading\NameValueListType>
+            xml_list:
+                inline: false
+                entry_name: NameValueList
+                skip_when_empty: true
+                namespace: 'urn:ebay:apis:eBLBaseComponents'

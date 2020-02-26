@@ -1,0 +1,165 @@
+Nogrod\eBaySDK\MerchantData\ShippingServiceOptionsType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        shippingInsuranceCost:
+            expose: true
+            access_type: public_method
+            serialized_name: ShippingInsuranceCost
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getShippingInsuranceCost
+                setter: setShippingInsuranceCost
+            type: Nogrod\eBaySDK\MerchantData\AmountType
+        shippingService:
+            expose: true
+            access_type: public_method
+            serialized_name: ShippingService
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getShippingService
+                setter: setShippingService
+            type: string
+        shippingServiceCost:
+            expose: true
+            access_type: public_method
+            serialized_name: ShippingServiceCost
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getShippingServiceCost
+                setter: setShippingServiceCost
+            type: Nogrod\eBaySDK\MerchantData\AmountType
+        shippingServiceAdditionalCost:
+            expose: true
+            access_type: public_method
+            serialized_name: ShippingServiceAdditionalCost
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getShippingServiceAdditionalCost
+                setter: setShippingServiceAdditionalCost
+            type: Nogrod\eBaySDK\MerchantData\AmountType
+        shippingServicePriority:
+            expose: true
+            access_type: public_method
+            serialized_name: ShippingServicePriority
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getShippingServicePriority
+                setter: setShippingServicePriority
+            type: int
+        expeditedService:
+            expose: true
+            access_type: public_method
+            serialized_name: ExpeditedService
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getExpeditedService
+                setter: setExpeditedService
+            type: bool
+        shippingTimeMin:
+            expose: true
+            access_type: public_method
+            serialized_name: ShippingTimeMin
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getShippingTimeMin
+                setter: setShippingTimeMin
+            type: int
+        shippingTimeMax:
+            expose: true
+            access_type: public_method
+            serialized_name: ShippingTimeMax
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getShippingTimeMax
+                setter: setShippingTimeMax
+            type: int
+        freeShipping:
+            expose: true
+            access_type: public_method
+            serialized_name: FreeShipping
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getFreeShipping
+                setter: setFreeShipping
+            type: bool
+        localPickup:
+            expose: true
+            access_type: public_method
+            serialized_name: LocalPickup
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getLocalPickup
+                setter: setLocalPickup
+            type: bool
+        importCharge:
+            expose: true
+            access_type: public_method
+            serialized_name: ImportCharge
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getImportCharge
+                setter: setImportCharge
+            type: Nogrod\eBaySDK\MerchantData\AmountType
+        shippingPackageInfo:
+            expose: true
+            access_type: public_method
+            serialized_name: ShippingPackageInfo
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getShippingPackageInfo
+                setter: setShippingPackageInfo
+            xml_list:
+                inline: true
+                entry_name: ShippingPackageInfo
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<Nogrod\eBaySDK\MerchantData\ShippingPackageInfoType>
+        shippingServiceCutOffTime:
+            expose: true
+            access_type: public_method
+            serialized_name: ShippingServiceCutOffTime
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getShippingServiceCutOffTime
+                setter: setShippingServiceCutOffTime
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime
+        logisticPlanType:
+            expose: true
+            access_type: public_method
+            serialized_name: LogisticPlanType
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getLogisticPlanType
+                setter: setLogisticPlanType
+            type: string

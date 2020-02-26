@@ -1,0 +1,72 @@
+Nogrod\eBaySDK\Trading\GetNotificationsUsageResponseType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        startTime:
+            expose: true
+            access_type: public_method
+            serialized_name: StartTime
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getStartTime
+                setter: setStartTime
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime
+        endTime:
+            expose: true
+            access_type: public_method
+            serialized_name: EndTime
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getEndTime
+                setter: setEndTime
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime
+        notificationDetailsArray:
+            expose: true
+            access_type: public_method
+            serialized_name: NotificationDetailsArray
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getNotificationDetailsArray
+                setter: setNotificationDetailsArray
+            type: array<Nogrod\eBaySDK\Trading\NotificationDetailsType>
+            xml_list:
+                inline: false
+                entry_name: NotificationDetails
+                skip_when_empty: true
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+        markUpMarkDownHistory:
+            expose: true
+            access_type: public_method
+            serialized_name: MarkUpMarkDownHistory
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getMarkUpMarkDownHistory
+                setter: setMarkUpMarkDownHistory
+            type: array<Nogrod\eBaySDK\Trading\MarkUpMarkDownEventType>
+            xml_list:
+                inline: false
+                entry_name: MarkUpMarkDownEvent
+                skip_when_empty: true
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+        notificationStatistics:
+            expose: true
+            access_type: public_method
+            serialized_name: NotificationStatistics
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getNotificationStatistics
+                setter: setNotificationStatistics
+            type: Nogrod\eBaySDK\Trading\NotificationStatisticsType

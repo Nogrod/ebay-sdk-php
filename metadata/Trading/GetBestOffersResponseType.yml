@@ -1,0 +1,72 @@
+Nogrod\eBaySDK\Trading\GetBestOffersResponseType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        bestOfferArray:
+            expose: true
+            access_type: public_method
+            serialized_name: BestOfferArray
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getBestOfferArray
+                setter: setBestOfferArray
+            type: array<Nogrod\eBaySDK\Trading\BestOfferType>
+            xml_list:
+                inline: false
+                entry_name: BestOffer
+                skip_when_empty: true
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+        item:
+            expose: true
+            access_type: public_method
+            serialized_name: Item
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getItem
+                setter: setItem
+            type: Nogrod\eBaySDK\Trading\ItemType
+        itemBestOffersArray:
+            expose: true
+            access_type: public_method
+            serialized_name: ItemBestOffersArray
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getItemBestOffersArray
+                setter: setItemBestOffersArray
+            type: array<Nogrod\eBaySDK\Trading\ItemBestOffersType>
+            xml_list:
+                inline: false
+                entry_name: ItemBestOffers
+                skip_when_empty: true
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+        pageNumber:
+            expose: true
+            access_type: public_method
+            serialized_name: PageNumber
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPageNumber
+                setter: setPageNumber
+            type: int
+        paginationResult:
+            expose: true
+            access_type: public_method
+            serialized_name: PaginationResult
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPaginationResult
+                setter: setPaginationResult
+            type: Nogrod\eBaySDK\Trading\PaginationResultType

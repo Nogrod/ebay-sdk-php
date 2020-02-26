@@ -1,0 +1,216 @@
+Nogrod\eBaySDK\Trading\RemindersType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        paymentToSendCount:
+            expose: true
+            access_type: public_method
+            serialized_name: PaymentToSendCount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPaymentToSendCount
+                setter: setPaymentToSendCount
+            type: int
+        feedbackToReceiveCount:
+            expose: true
+            access_type: public_method
+            serialized_name: FeedbackToReceiveCount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getFeedbackToReceiveCount
+                setter: setFeedbackToReceiveCount
+            type: int
+        feedbackToSendCount:
+            expose: true
+            access_type: public_method
+            serialized_name: FeedbackToSendCount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getFeedbackToSendCount
+                setter: setFeedbackToSendCount
+            type: int
+        outbidCount:
+            expose: true
+            access_type: public_method
+            serialized_name: OutbidCount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getOutbidCount
+                setter: setOutbidCount
+            type: int
+        paymentToReceiveCount:
+            expose: true
+            access_type: public_method
+            serialized_name: PaymentToReceiveCount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPaymentToReceiveCount
+                setter: setPaymentToReceiveCount
+            type: int
+        secondChanceOfferCount:
+            expose: true
+            access_type: public_method
+            serialized_name: SecondChanceOfferCount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSecondChanceOfferCount
+                setter: setSecondChanceOfferCount
+            type: int
+        shippingNeededCount:
+            expose: true
+            access_type: public_method
+            serialized_name: ShippingNeededCount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getShippingNeededCount
+                setter: setShippingNeededCount
+            type: int
+        relistingNeededCount:
+            expose: true
+            access_type: public_method
+            serialized_name: RelistingNeededCount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getRelistingNeededCount
+                setter: setRelistingNeededCount
+            type: int
+        totalNewLeadsCount:
+            expose: true
+            access_type: public_method
+            serialized_name: TotalNewLeadsCount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getTotalNewLeadsCount
+                setter: setTotalNewLeadsCount
+            type: int
+        docsForCCProcessingToSendCount:
+            expose: true
+            access_type: public_method
+            serialized_name: DocsForCCProcessingToSendCount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getDocsForCCProcessingToSendCount
+                setter: setDocsForCCProcessingToSendCount
+            type: int
+        rTEToProcessCount:
+            expose: true
+            access_type: public_method
+            serialized_name: RTEToProcessCount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getRTEToProcessCount
+                setter: setRTEToProcessCount
+            type: int
+        itemReceiptToConfirmCount:
+            expose: true
+            access_type: public_method
+            serialized_name: ItemReceiptToConfirmCount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getItemReceiptToConfirmCount
+                setter: setItemReceiptToConfirmCount
+            type: int
+        refundOnHoldCount:
+            expose: true
+            access_type: public_method
+            serialized_name: RefundOnHoldCount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getRefundOnHoldCount
+                setter: setRefundOnHoldCount
+            type: int
+        refundCancelledCount:
+            expose: true
+            access_type: public_method
+            serialized_name: RefundCancelledCount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getRefundCancelledCount
+                setter: setRefundCancelledCount
+            type: int
+        shippingDetailsToBeProvidedCount:
+            expose: true
+            access_type: public_method
+            serialized_name: ShippingDetailsToBeProvidedCount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getShippingDetailsToBeProvidedCount
+                setter: setShippingDetailsToBeProvidedCount
+            type: int
+        itemReceiptConfirmationToReceiveCount:
+            expose: true
+            access_type: public_method
+            serialized_name: ItemReceiptConfirmationToReceiveCount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getItemReceiptConfirmationToReceiveCount
+                setter: setItemReceiptConfirmationToReceiveCount
+            type: int
+        refundInitiatedCount:
+            expose: true
+            access_type: public_method
+            serialized_name: RefundInitiatedCount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getRefundInitiatedCount
+                setter: setRefundInitiatedCount
+            type: int
+        pendingRTERequestCount:
+            expose: true
+            access_type: public_method
+            serialized_name: PendingRTERequestCount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPendingRTERequestCount
+                setter: setPendingRTERequestCount
+            type: int
+        declinedRTERequestCount:
+            expose: true
+            access_type: public_method
+            serialized_name: DeclinedRTERequestCount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getDeclinedRTERequestCount
+                setter: setDeclinedRTERequestCount
+            type: int

@@ -1,0 +1,18 @@
+Nogrod\eBaySDK\BulkDataExchange\GetRecurringJobExecutionStatusResponseType:
+    virtual_properties:
+        ns_prop:
+            exp: '"http://www.ebay.com/marketplace/services"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        jobProfile:
+            expose: true
+            access_type: public_method
+            serialized_name: jobProfile
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/services'
+            accessor:
+                getter: getJobProfile
+                setter: setJobProfile
+            type: Nogrod\eBaySDK\BulkDataExchange\JobProfileType

@@ -1,0 +1,40 @@
+Nogrod\eBaySDK\Trading\FetchTokenResponseType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        eBayAuthToken:
+            expose: true
+            access_type: public_method
+            serialized_name: eBayAuthToken
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getEBayAuthToken
+                setter: setEBayAuthToken
+            type: string
+        hardExpirationTime:
+            expose: true
+            access_type: public_method
+            serialized_name: HardExpirationTime
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getHardExpirationTime
+                setter: setHardExpirationTime
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime
+        rESTToken:
+            expose: true
+            access_type: public_method
+            serialized_name: RESTToken
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getRESTToken
+                setter: setRESTToken
+            type: string

@@ -1,0 +1,100 @@
+Nogrod\eBaySDK\Trading\GetAccountResponseType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        accountID:
+            expose: true
+            access_type: public_method
+            serialized_name: AccountID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getAccountID
+                setter: setAccountID
+            type: string
+        accountSummary:
+            expose: true
+            access_type: public_method
+            serialized_name: AccountSummary
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getAccountSummary
+                setter: setAccountSummary
+            type: Nogrod\eBaySDK\Trading\AccountSummaryType
+        currency:
+            expose: true
+            access_type: public_method
+            serialized_name: Currency
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCurrency
+                setter: setCurrency
+            type: string
+        accountEntries:
+            expose: true
+            access_type: public_method
+            serialized_name: AccountEntries
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getAccountEntries
+                setter: setAccountEntries
+            type: array<Nogrod\eBaySDK\Trading\AccountEntryType>
+            xml_list:
+                inline: false
+                entry_name: AccountEntry
+                skip_when_empty: true
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+        paginationResult:
+            expose: true
+            access_type: public_method
+            serialized_name: PaginationResult
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPaginationResult
+                setter: setPaginationResult
+            type: Nogrod\eBaySDK\Trading\PaginationResultType
+        hasMoreEntries:
+            expose: true
+            access_type: public_method
+            serialized_name: HasMoreEntries
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getHasMoreEntries
+                setter: setHasMoreEntries
+            type: bool
+        entriesPerPage:
+            expose: true
+            access_type: public_method
+            serialized_name: EntriesPerPage
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getEntriesPerPage
+                setter: setEntriesPerPage
+            type: int
+        pageNumber:
+            expose: true
+            access_type: public_method
+            serialized_name: PageNumber
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPageNumber
+                setter: setPageNumber
+            type: int

@@ -1,0 +1,92 @@
+Nogrod\eBaySDK\MerchantData\MemberMessageExchangeType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        item:
+            expose: true
+            access_type: public_method
+            serialized_name: Item
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getItem
+                setter: setItem
+            type: Nogrod\eBaySDK\MerchantData\ItemType
+        question:
+            expose: true
+            access_type: public_method
+            serialized_name: Question
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getQuestion
+                setter: setQuestion
+            type: Nogrod\eBaySDK\MerchantData\MemberMessageType
+        response:
+            expose: true
+            access_type: public_method
+            serialized_name: Response
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getResponse
+                setter: setResponse
+            xml_list:
+                inline: true
+                entry_name: Response
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<string>
+        messageStatus:
+            expose: true
+            access_type: public_method
+            serialized_name: MessageStatus
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getMessageStatus
+                setter: setMessageStatus
+            type: string
+        creationDate:
+            expose: true
+            access_type: public_method
+            serialized_name: CreationDate
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCreationDate
+                setter: setCreationDate
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime
+        lastModifiedDate:
+            expose: true
+            access_type: public_method
+            serialized_name: LastModifiedDate
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getLastModifiedDate
+                setter: setLastModifiedDate
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime
+        messageMedia:
+            expose: true
+            access_type: public_method
+            serialized_name: MessageMedia
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getMessageMedia
+                setter: setMessageMedia
+            xml_list:
+                inline: true
+                entry_name: MessageMedia
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<Nogrod\eBaySDK\MerchantData\MessageMediaType>

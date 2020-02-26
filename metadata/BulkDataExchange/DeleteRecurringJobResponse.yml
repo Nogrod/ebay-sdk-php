@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\BulkDataExchange\DeleteRecurringJobResponse:
+    xml_root_name: deleteRecurringJobResponse
+    xml_root_namespace: 'http://www.ebay.com/marketplace/services'

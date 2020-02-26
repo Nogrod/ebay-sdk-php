@@ -1,0 +1,258 @@
+Nogrod\eBaySDK\Trading\GetUserPreferencesResponseType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        bidderNoticePreferences:
+            expose: true
+            access_type: public_method
+            serialized_name: BidderNoticePreferences
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getBidderNoticePreferences
+                setter: setBidderNoticePreferences
+            type: Nogrod\eBaySDK\Trading\BidderNoticePreferencesType
+        combinedPaymentPreferences:
+            expose: true
+            access_type: public_method
+            serialized_name: CombinedPaymentPreferences
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCombinedPaymentPreferences
+                setter: setCombinedPaymentPreferences
+            type: Nogrod\eBaySDK\Trading\CombinedPaymentPreferencesType
+        crossPromotionPreferences:
+            expose: true
+            access_type: public_method
+            serialized_name: CrossPromotionPreferences
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCrossPromotionPreferences
+                setter: setCrossPromotionPreferences
+            type: Nogrod\eBaySDK\Trading\CrossPromotionPreferencesType
+        sellerPaymentPreferences:
+            expose: true
+            access_type: public_method
+            serialized_name: SellerPaymentPreferences
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSellerPaymentPreferences
+                setter: setSellerPaymentPreferences
+            type: Nogrod\eBaySDK\Trading\SellerPaymentPreferencesType
+        sellerFavoriteItemPreferences:
+            expose: true
+            access_type: public_method
+            serialized_name: SellerFavoriteItemPreferences
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSellerFavoriteItemPreferences
+                setter: setSellerFavoriteItemPreferences
+            type: Nogrod\eBaySDK\Trading\SellerFavoriteItemPreferencesType
+        endOfAuctionEmailPreferences:
+            expose: true
+            access_type: public_method
+            serialized_name: EndOfAuctionEmailPreferences
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getEndOfAuctionEmailPreferences
+                setter: setEndOfAuctionEmailPreferences
+            type: Nogrod\eBaySDK\Trading\EndOfAuctionEmailPreferencesType
+        emailShipmentTrackingNumberPreference:
+            expose: true
+            access_type: public_method
+            serialized_name: EmailShipmentTrackingNumberPreference
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getEmailShipmentTrackingNumberPreference
+                setter: setEmailShipmentTrackingNumberPreference
+            type: bool
+        requiredShipPhoneNumberPreference:
+            expose: true
+            access_type: public_method
+            serialized_name: RequiredShipPhoneNumberPreference
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getRequiredShipPhoneNumberPreference
+                setter: setRequiredShipPhoneNumberPreference
+            type: bool
+        proStoresPreference:
+            expose: true
+            access_type: public_method
+            serialized_name: ProStoresPreference
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getProStoresPreference
+                setter: setProStoresPreference
+            type: Nogrod\eBaySDK\Trading\ProStoresCheckoutPreferenceType
+        unpaidItemAssistancePreferences:
+            expose: true
+            access_type: public_method
+            serialized_name: UnpaidItemAssistancePreferences
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getUnpaidItemAssistancePreferences
+                setter: setUnpaidItemAssistancePreferences
+            type: Nogrod\eBaySDK\Trading\UnpaidItemAssistancePreferencesType
+        sellerExcludeShipToLocationPreferences:
+            expose: true
+            access_type: public_method
+            serialized_name: SellerExcludeShipToLocationPreferences
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSellerExcludeShipToLocationPreferences
+                setter: setSellerExcludeShipToLocationPreferences
+            type: array<string>
+            xml_list:
+                inline: false
+                entry_name: ExcludeShipToLocation
+                skip_when_empty: true
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+        purchaseReminderEmailPreferences:
+            expose: true
+            access_type: public_method
+            serialized_name: PurchaseReminderEmailPreferences
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPurchaseReminderEmailPreferences
+                setter: setPurchaseReminderEmailPreferences
+            type: Nogrod\eBaySDK\Trading\PurchaseReminderEmailPreferencesType
+        sellerThirdPartyCheckoutDisabled:
+            expose: true
+            access_type: public_method
+            serialized_name: SellerThirdPartyCheckoutDisabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSellerThirdPartyCheckoutDisabled
+                setter: setSellerThirdPartyCheckoutDisabled
+            type: bool
+        sellerProfilePreferences:
+            expose: true
+            access_type: public_method
+            serialized_name: SellerProfilePreferences
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSellerProfilePreferences
+                setter: setSellerProfilePreferences
+            type: Nogrod\eBaySDK\Trading\SellerProfilePreferencesType
+        sellerReturnPreferences:
+            expose: true
+            access_type: public_method
+            serialized_name: SellerReturnPreferences
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSellerReturnPreferences
+                setter: setSellerReturnPreferences
+            type: Nogrod\eBaySDK\Trading\SellerReturnPreferencesType
+        offerGlobalShippingProgramPreference:
+            expose: true
+            access_type: public_method
+            serialized_name: OfferGlobalShippingProgramPreference
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getOfferGlobalShippingProgramPreference
+                setter: setOfferGlobalShippingProgramPreference
+            type: bool
+        dispatchCutoffTimePreference:
+            expose: true
+            access_type: public_method
+            serialized_name: DispatchCutoffTimePreference
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getDispatchCutoffTimePreference
+                setter: setDispatchCutoffTimePreference
+            type: Nogrod\eBaySDK\Trading\DispatchCutoffTimePreferencesType
+        globalShippingProgramListingPreference:
+            expose: true
+            access_type: public_method
+            serialized_name: GlobalShippingProgramListingPreference
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getGlobalShippingProgramListingPreference
+                setter: setGlobalShippingProgramListingPreference
+            type: bool
+        overrideGSPServiceWithIntlServicePreference:
+            expose: true
+            access_type: public_method
+            serialized_name: OverrideGSPServiceWithIntlServicePreference
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getOverrideGSPServiceWithIntlServicePreference
+                setter: setOverrideGSPServiceWithIntlServicePreference
+            type: bool
+        pickupDropoffSellerPreference:
+            expose: true
+            access_type: public_method
+            serialized_name: PickupDropoffSellerPreference
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPickupDropoffSellerPreference
+                setter: setPickupDropoffSellerPreference
+            type: bool
+        outOfStockControlPreference:
+            expose: true
+            access_type: public_method
+            serialized_name: OutOfStockControlPreference
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getOutOfStockControlPreference
+                setter: setOutOfStockControlPreference
+            type: bool
+        eBayPLUSPreference:
+            expose: true
+            access_type: public_method
+            serialized_name: eBayPLUSPreference
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getEBayPLUSPreference
+                setter: setEBayPLUSPreference
+            xml_list:
+                inline: true
+                entry_name: eBayPLUSPreference
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<Nogrod\eBaySDK\Trading\EBayPLUSPreferenceType>

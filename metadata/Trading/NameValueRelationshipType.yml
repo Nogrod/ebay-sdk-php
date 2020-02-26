@@ -1,0 +1,29 @@
+Nogrod\eBaySDK\Trading\NameValueRelationshipType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        parentName:
+            expose: true
+            access_type: public_method
+            serialized_name: ParentName
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getParentName
+                setter: setParentName
+            type: string
+        parentValue:
+            expose: true
+            access_type: public_method
+            serialized_name: ParentValue
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getParentValue
+                setter: setParentValue
+            type: string

@@ -1,0 +1,249 @@
+Nogrod\eBaySDK\Trading\GetUserPreferencesRequestType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        showBidderNoticePreferences:
+            expose: true
+            access_type: public_method
+            serialized_name: ShowBidderNoticePreferences
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getShowBidderNoticePreferences
+                setter: setShowBidderNoticePreferences
+            type: bool
+        showCombinedPaymentPreferences:
+            expose: true
+            access_type: public_method
+            serialized_name: ShowCombinedPaymentPreferences
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getShowCombinedPaymentPreferences
+                setter: setShowCombinedPaymentPreferences
+            type: bool
+        showCrossPromotionPreferences:
+            expose: true
+            access_type: public_method
+            serialized_name: ShowCrossPromotionPreferences
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getShowCrossPromotionPreferences
+                setter: setShowCrossPromotionPreferences
+            type: bool
+        showSellerPaymentPreferences:
+            expose: true
+            access_type: public_method
+            serialized_name: ShowSellerPaymentPreferences
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getShowSellerPaymentPreferences
+                setter: setShowSellerPaymentPreferences
+            type: bool
+        showEndOfAuctionEmailPreferences:
+            expose: true
+            access_type: public_method
+            serialized_name: ShowEndOfAuctionEmailPreferences
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getShowEndOfAuctionEmailPreferences
+                setter: setShowEndOfAuctionEmailPreferences
+            type: bool
+        showSellerFavoriteItemPreferences:
+            expose: true
+            access_type: public_method
+            serialized_name: ShowSellerFavoriteItemPreferences
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getShowSellerFavoriteItemPreferences
+                setter: setShowSellerFavoriteItemPreferences
+            type: bool
+        showProStoresPreferences:
+            expose: true
+            access_type: public_method
+            serialized_name: ShowProStoresPreferences
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getShowProStoresPreferences
+                setter: setShowProStoresPreferences
+            type: bool
+        showEmailShipmentTrackingNumberPreference:
+            expose: true
+            access_type: public_method
+            serialized_name: ShowEmailShipmentTrackingNumberPreference
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getShowEmailShipmentTrackingNumberPreference
+                setter: setShowEmailShipmentTrackingNumberPreference
+            type: bool
+        showRequiredShipPhoneNumberPreference:
+            expose: true
+            access_type: public_method
+            serialized_name: ShowRequiredShipPhoneNumberPreference
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getShowRequiredShipPhoneNumberPreference
+                setter: setShowRequiredShipPhoneNumberPreference
+            type: bool
+        showSellerExcludeShipToLocationPreference:
+            expose: true
+            access_type: public_method
+            serialized_name: ShowSellerExcludeShipToLocationPreference
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getShowSellerExcludeShipToLocationPreference
+                setter: setShowSellerExcludeShipToLocationPreference
+            type: bool
+        showUnpaidItemAssistancePreference:
+            expose: true
+            access_type: public_method
+            serialized_name: ShowUnpaidItemAssistancePreference
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getShowUnpaidItemAssistancePreference
+                setter: setShowUnpaidItemAssistancePreference
+            type: bool
+        showPurchaseReminderEmailPreferences:
+            expose: true
+            access_type: public_method
+            serialized_name: ShowPurchaseReminderEmailPreferences
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getShowPurchaseReminderEmailPreferences
+                setter: setShowPurchaseReminderEmailPreferences
+            type: bool
+        showUnpaidItemAssistanceExclusionList:
+            expose: true
+            access_type: public_method
+            serialized_name: ShowUnpaidItemAssistanceExclusionList
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getShowUnpaidItemAssistanceExclusionList
+                setter: setShowUnpaidItemAssistanceExclusionList
+            type: bool
+        showSellerProfilePreferences:
+            expose: true
+            access_type: public_method
+            serialized_name: ShowSellerProfilePreferences
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getShowSellerProfilePreferences
+                setter: setShowSellerProfilePreferences
+            type: bool
+        showSellerReturnPreferences:
+            expose: true
+            access_type: public_method
+            serialized_name: ShowSellerReturnPreferences
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getShowSellerReturnPreferences
+                setter: setShowSellerReturnPreferences
+            type: bool
+        showGlobalShippingProgramPreference:
+            expose: true
+            access_type: public_method
+            serialized_name: ShowGlobalShippingProgramPreference
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getShowGlobalShippingProgramPreference
+                setter: setShowGlobalShippingProgramPreference
+            type: bool
+        showDispatchCutoffTimePreferences:
+            expose: true
+            access_type: public_method
+            serialized_name: ShowDispatchCutoffTimePreferences
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getShowDispatchCutoffTimePreferences
+                setter: setShowDispatchCutoffTimePreferences
+            type: bool
+        showGlobalShippingProgramListingPreference:
+            expose: true
+            access_type: public_method
+            serialized_name: ShowGlobalShippingProgramListingPreference
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getShowGlobalShippingProgramListingPreference
+                setter: setShowGlobalShippingProgramListingPreference
+            type: bool
+        showOverrideGSPServiceWithIntlServicePreference:
+            expose: true
+            access_type: public_method
+            serialized_name: ShowOverrideGSPServiceWithIntlServicePreference
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getShowOverrideGSPServiceWithIntlServicePreference
+                setter: setShowOverrideGSPServiceWithIntlServicePreference
+            type: bool
+        showPickupDropoffPreferences:
+            expose: true
+            access_type: public_method
+            serialized_name: ShowPickupDropoffPreferences
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getShowPickupDropoffPreferences
+                setter: setShowPickupDropoffPreferences
+            type: bool
+        showOutOfStockControlPreference:
+            expose: true
+            access_type: public_method
+            serialized_name: ShowOutOfStockControlPreference
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getShowOutOfStockControlPreference
+                setter: setShowOutOfStockControlPreference
+            type: bool
+        showeBayPLUSPreference:
+            expose: true
+            access_type: public_method
+            serialized_name: ShoweBayPLUSPreference
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getShoweBayPLUSPreference
+                setter: setShoweBayPLUSPreference
+            type: bool

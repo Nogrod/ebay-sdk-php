@@ -1,0 +1,77 @@
+Nogrod\eBaySDK\Trading\RespondToBestOfferRequestType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        itemID:
+            expose: true
+            access_type: public_method
+            serialized_name: ItemID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getItemID
+                setter: setItemID
+            type: string
+        bestOfferID:
+            expose: true
+            access_type: public_method
+            serialized_name: BestOfferID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getBestOfferID
+                setter: setBestOfferID
+            xml_list:
+                inline: true
+                entry_name: BestOfferID
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<string>
+        action:
+            expose: true
+            access_type: public_method
+            serialized_name: Action
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getAction
+                setter: setAction
+            type: string
+        sellerResponse:
+            expose: true
+            access_type: public_method
+            serialized_name: SellerResponse
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSellerResponse
+                setter: setSellerResponse
+            type: string
+        counterOfferPrice:
+            expose: true
+            access_type: public_method
+            serialized_name: CounterOfferPrice
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCounterOfferPrice
+                setter: setCounterOfferPrice
+            type: Nogrod\eBaySDK\Trading\AmountType
+        counterOfferQuantity:
+            expose: true
+            access_type: public_method
+            serialized_name: CounterOfferQuantity
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCounterOfferQuantity
+                setter: setCounterOfferQuantity
+            type: int

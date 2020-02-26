@@ -1,0 +1,148 @@
+Nogrod\eBaySDK\Trading\ProductSearchType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        productSearchID:
+            expose: true
+            access_type: public_method
+            serialized_name: ProductSearchID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getProductSearchID
+                setter: setProductSearchID
+            type: string
+        attributeSetID:
+            expose: true
+            access_type: public_method
+            serialized_name: AttributeSetID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getAttributeSetID
+                setter: setAttributeSetID
+            type: int
+        productFinderID:
+            expose: true
+            access_type: public_method
+            serialized_name: ProductFinderID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getProductFinderID
+                setter: setProductFinderID
+            type: int
+        productID:
+            expose: true
+            access_type: public_method
+            serialized_name: ProductID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getProductID
+                setter: setProductID
+            type: string
+        sortAttributeID:
+            expose: true
+            access_type: public_method
+            serialized_name: SortAttributeID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSortAttributeID
+                setter: setSortAttributeID
+            type: int
+        maxChildrenPerFamily:
+            expose: true
+            access_type: public_method
+            serialized_name: MaxChildrenPerFamily
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getMaxChildrenPerFamily
+                setter: setMaxChildrenPerFamily
+            type: int
+        searchAttributes:
+            expose: true
+            access_type: public_method
+            serialized_name: SearchAttributes
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSearchAttributes
+                setter: setSearchAttributes
+            xml_list:
+                inline: true
+                entry_name: SearchAttributes
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<Nogrod\eBaySDK\Trading\SearchAttributesType>
+        pagination:
+            expose: true
+            access_type: public_method
+            serialized_name: Pagination
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPagination
+                setter: setPagination
+            type: Nogrod\eBaySDK\Trading\PaginationType
+        availableItemsOnly:
+            expose: true
+            access_type: public_method
+            serialized_name: AvailableItemsOnly
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getAvailableItemsOnly
+                setter: setAvailableItemsOnly
+            type: bool
+        queryKeywords:
+            expose: true
+            access_type: public_method
+            serialized_name: QueryKeywords
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getQueryKeywords
+                setter: setQueryKeywords
+            type: string
+        characteristicSetIDs:
+            expose: true
+            access_type: public_method
+            serialized_name: CharacteristicSetIDs
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCharacteristicSetIDs
+                setter: setCharacteristicSetIDs
+            type: array<string>
+            xml_list:
+                inline: false
+                entry_name: ID
+                skip_when_empty: true
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+        productReferenceID:
+            expose: true
+            access_type: public_method
+            serialized_name: ProductReferenceID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getProductReferenceID
+                setter: setProductReferenceID
+            type: string

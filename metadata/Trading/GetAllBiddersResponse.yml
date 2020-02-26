@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\Trading\GetAllBiddersResponse:
+    xml_root_name: GetAllBiddersResponse
+    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

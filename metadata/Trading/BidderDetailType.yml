@@ -1,0 +1,73 @@
+Nogrod\eBaySDK\Trading\BidderDetailType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        userID:
+            expose: true
+            access_type: public_method
+            serialized_name: UserID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getUserID
+                setter: setUserID
+            type: string
+        email:
+            expose: true
+            access_type: public_method
+            serialized_name: Email
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getEmail
+                setter: setEmail
+            type: string
+        feedbackScore:
+            expose: true
+            access_type: public_method
+            serialized_name: FeedbackScore
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getFeedbackScore
+                setter: setFeedbackScore
+            type: int
+        uniqueNegativeFeedbackCount:
+            expose: true
+            access_type: public_method
+            serialized_name: UniqueNegativeFeedbackCount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getUniqueNegativeFeedbackCount
+                setter: setUniqueNegativeFeedbackCount
+            type: int
+        uniquePositiveFeedbackCount:
+            expose: true
+            access_type: public_method
+            serialized_name: UniquePositiveFeedbackCount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getUniquePositiveFeedbackCount
+                setter: setUniquePositiveFeedbackCount
+            type: int
+        uniqueNeutralFeedbackCount:
+            expose: true
+            access_type: public_method
+            serialized_name: UniqueNeutralFeedbackCount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getUniqueNeutralFeedbackCount
+                setter: setUniqueNeutralFeedbackCount
+            type: int

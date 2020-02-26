@@ -1,0 +1,89 @@
+Nogrod\eBaySDK\Trading\GetFeedbackResponseType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        feedbackDetailArray:
+            expose: true
+            access_type: public_method
+            serialized_name: FeedbackDetailArray
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getFeedbackDetailArray
+                setter: setFeedbackDetailArray
+            type: array<Nogrod\eBaySDK\Trading\FeedbackDetailType>
+            xml_list:
+                inline: false
+                entry_name: FeedbackDetail
+                skip_when_empty: true
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+        feedbackDetailItemTotal:
+            expose: true
+            access_type: public_method
+            serialized_name: FeedbackDetailItemTotal
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getFeedbackDetailItemTotal
+                setter: setFeedbackDetailItemTotal
+            type: int
+        feedbackSummary:
+            expose: true
+            access_type: public_method
+            serialized_name: FeedbackSummary
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getFeedbackSummary
+                setter: setFeedbackSummary
+            type: Nogrod\eBaySDK\Trading\FeedbackSummaryType
+        feedbackScore:
+            expose: true
+            access_type: public_method
+            serialized_name: FeedbackScore
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getFeedbackScore
+                setter: setFeedbackScore
+            type: int
+        paginationResult:
+            expose: true
+            access_type: public_method
+            serialized_name: PaginationResult
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPaginationResult
+                setter: setPaginationResult
+            type: Nogrod\eBaySDK\Trading\PaginationResultType
+        entriesPerPage:
+            expose: true
+            access_type: public_method
+            serialized_name: EntriesPerPage
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getEntriesPerPage
+                setter: setEntriesPerPage
+            type: int
+        pageNumber:
+            expose: true
+            access_type: public_method
+            serialized_name: PageNumber
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPageNumber
+                setter: setPageNumber
+            type: int

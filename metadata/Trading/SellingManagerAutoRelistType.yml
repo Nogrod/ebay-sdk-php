@@ -1,0 +1,84 @@
+Nogrod\eBaySDK\Trading\SellingManagerAutoRelistType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        type:
+            expose: true
+            access_type: public_method
+            serialized_name: Type
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getType
+                setter: setType
+            type: string
+        relistCondition:
+            expose: true
+            access_type: public_method
+            serialized_name: RelistCondition
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getRelistCondition
+                setter: setRelistCondition
+            type: string
+        relistAfterDays:
+            expose: true
+            access_type: public_method
+            serialized_name: RelistAfterDays
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getRelistAfterDays
+                setter: setRelistAfterDays
+            type: int
+        relistAfterHours:
+            expose: true
+            access_type: public_method
+            serialized_name: RelistAfterHours
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getRelistAfterHours
+                setter: setRelistAfterHours
+            type: int
+        relistAtSpecificTimeOfDay:
+            expose: true
+            access_type: public_method
+            serialized_name: RelistAtSpecificTimeOfDay
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getRelistAtSpecificTimeOfDay
+                setter: setRelistAtSpecificTimeOfDay
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Time
+        bestOfferDetails:
+            expose: true
+            access_type: public_method
+            serialized_name: BestOfferDetails
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getBestOfferDetails
+                setter: setBestOfferDetails
+            type: Nogrod\eBaySDK\Trading\BestOfferDetailsType
+        listingHoldInventoryLevel:
+            expose: true
+            access_type: public_method
+            serialized_name: ListingHoldInventoryLevel
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getListingHoldInventoryLevel
+                setter: setListingHoldInventoryLevel
+            type: int

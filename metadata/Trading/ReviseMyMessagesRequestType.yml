@@ -1,0 +1,72 @@
+Nogrod\eBaySDK\Trading\ReviseMyMessagesRequestType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        messageIDs:
+            expose: true
+            access_type: public_method
+            serialized_name: MessageIDs
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getMessageIDs
+                setter: setMessageIDs
+            type: array<string>
+            xml_list:
+                inline: false
+                entry_name: MessageID
+                skip_when_empty: true
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+        alertIDs:
+            expose: true
+            access_type: public_method
+            serialized_name: AlertIDs
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getAlertIDs
+                setter: setAlertIDs
+            type: array<string>
+            xml_list:
+                inline: false
+                entry_name: AlertID
+                skip_when_empty: true
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+        read:
+            expose: true
+            access_type: public_method
+            serialized_name: Read
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getRead
+                setter: setRead
+            type: bool
+        flagged:
+            expose: true
+            access_type: public_method
+            serialized_name: Flagged
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getFlagged
+                setter: setFlagged
+            type: bool
+        folderID:
+            expose: true
+            access_type: public_method
+            serialized_name: FolderID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getFolderID
+                setter: setFolderID
+            type: int

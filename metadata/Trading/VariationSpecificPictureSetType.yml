@@ -1,0 +1,75 @@
+Nogrod\eBaySDK\Trading\VariationSpecificPictureSetType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        variationSpecificValue:
+            expose: true
+            access_type: public_method
+            serialized_name: VariationSpecificValue
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getVariationSpecificValue
+                setter: setVariationSpecificValue
+            type: string
+        pictureURL:
+            expose: true
+            access_type: public_method
+            serialized_name: PictureURL
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPictureURL
+                setter: setPictureURL
+            xml_list:
+                inline: true
+                entry_name: PictureURL
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<string>
+        galleryURL:
+            expose: true
+            access_type: public_method
+            serialized_name: GalleryURL
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getGalleryURL
+                setter: setGalleryURL
+            type: string
+        externalPictureURL:
+            expose: true
+            access_type: public_method
+            serialized_name: ExternalPictureURL
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getExternalPictureURL
+                setter: setExternalPictureURL
+            xml_list:
+                inline: true
+                entry_name: ExternalPictureURL
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<string>
+        extendedPictureDetails:
+            expose: true
+            access_type: public_method
+            serialized_name: ExtendedPictureDetails
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getExtendedPictureDetails
+                setter: setExtendedPictureDetails
+            type: array<Nogrod\eBaySDK\Trading\PictureURLsType>
+            xml_list:
+                inline: false
+                entry_name: PictureURLs
+                skip_when_empty: true
+                namespace: 'urn:ebay:apis:eBLBaseComponents'

@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\Trading\GetStoreResponse:
+    xml_root_name: GetStoreResponse
+    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

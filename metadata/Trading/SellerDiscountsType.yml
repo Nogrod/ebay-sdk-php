@@ -1,0 +1,55 @@
+Nogrod\eBaySDK\Trading\SellerDiscountsType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        originalItemPrice:
+            expose: true
+            access_type: public_method
+            serialized_name: OriginalItemPrice
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getOriginalItemPrice
+                setter: setOriginalItemPrice
+            type: Nogrod\eBaySDK\Trading\AmountType
+        originalItemShippingCost:
+            expose: true
+            access_type: public_method
+            serialized_name: OriginalItemShippingCost
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getOriginalItemShippingCost
+                setter: setOriginalItemShippingCost
+            type: Nogrod\eBaySDK\Trading\AmountType
+        originalShippingService:
+            expose: true
+            access_type: public_method
+            serialized_name: OriginalShippingService
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getOriginalShippingService
+                setter: setOriginalShippingService
+            type: string
+        sellerDiscount:
+            expose: true
+            access_type: public_method
+            serialized_name: SellerDiscount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSellerDiscount
+                setter: setSellerDiscount
+            xml_list:
+                inline: true
+                entry_name: SellerDiscount
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<Nogrod\eBaySDK\Trading\SellerDiscountType>

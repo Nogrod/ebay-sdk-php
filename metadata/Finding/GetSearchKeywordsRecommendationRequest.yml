@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\Finding\GetSearchKeywordsRecommendationRequest:
+    xml_root_name: getSearchKeywordsRecommendationRequest
+    xml_root_namespace: 'http://www.ebay.com/marketplace/search/v1/services'

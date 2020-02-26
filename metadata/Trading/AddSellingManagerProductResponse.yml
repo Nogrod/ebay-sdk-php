@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\Trading\AddSellingManagerProductResponse:
+    xml_root_name: AddSellingManagerProductResponse
+    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

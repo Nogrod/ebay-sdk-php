@@ -1,0 +1,139 @@
+Nogrod\eBaySDK\MerchantData\ExpressSellerRequirementsType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        expressSellingPreference:
+            expose: true
+            access_type: public_method
+            serialized_name: ExpressSellingPreference
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getExpressSellingPreference
+                setter: setExpressSellingPreference
+            type: bool
+        expressApproved:
+            expose: true
+            access_type: public_method
+            serialized_name: ExpressApproved
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getExpressApproved
+                setter: setExpressApproved
+            type: bool
+        goodStanding:
+            expose: true
+            access_type: public_method
+            serialized_name: GoodStanding
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getGoodStanding
+                setter: setGoodStanding
+            type: bool
+        feedbackScore:
+            expose: true
+            access_type: public_method
+            serialized_name: FeedbackScore
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getFeedbackScore
+                setter: setFeedbackScore
+            type: Nogrod\eBaySDK\MerchantData\FeedbackRequirementsType
+        positiveFeedbackPercent:
+            expose: true
+            access_type: public_method
+            serialized_name: PositiveFeedbackPercent
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPositiveFeedbackPercent
+                setter: setPositiveFeedbackPercent
+            type: Nogrod\eBaySDK\MerchantData\FeedbackRequirementsType
+        feedbackAsSellerScore:
+            expose: true
+            access_type: public_method
+            serialized_name: FeedbackAsSellerScore
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getFeedbackAsSellerScore
+                setter: setFeedbackAsSellerScore
+            type: Nogrod\eBaySDK\MerchantData\FeedbackRequirementsType
+        positiveFeedbackAsSellerPercent:
+            expose: true
+            access_type: public_method
+            serialized_name: PositiveFeedbackAsSellerPercent
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPositiveFeedbackAsSellerPercent
+                setter: setPositiveFeedbackAsSellerPercent
+            type: Nogrod\eBaySDK\MerchantData\FeedbackRequirementsType
+        businessSeller:
+            expose: true
+            access_type: public_method
+            serialized_name: BusinessSeller
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getBusinessSeller
+                setter: setBusinessSeller
+            type: bool
+        eligiblePayPalAccount:
+            expose: true
+            access_type: public_method
+            serialized_name: EligiblePayPalAccount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getEligiblePayPalAccount
+                setter: setEligiblePayPalAccount
+            type: bool
+        payPalAccountAcceptsUnconfirmedAddress:
+            expose: true
+            access_type: public_method
+            serialized_name: PayPalAccountAcceptsUnconfirmedAddress
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPayPalAccountAcceptsUnconfirmedAddress
+                setter: setPayPalAccountAcceptsUnconfirmedAddress
+            type: bool
+        combinedPaymentsAccepted:
+            expose: true
+            access_type: public_method
+            serialized_name: CombinedPaymentsAccepted
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCombinedPaymentsAccepted
+                setter: setCombinedPaymentsAccepted
+            type: bool
+        feedbackPublic:
+            expose: true
+            access_type: public_method
+            serialized_name: FeedbackPublic
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getFeedbackPublic
+                setter: setFeedbackPublic
+            type: bool

@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\BulkDataExchange\StartDownloadJobRequest:
+    xml_root_name: startDownloadJobRequest
+    xml_root_namespace: 'http://www.ebay.com/marketplace/services'

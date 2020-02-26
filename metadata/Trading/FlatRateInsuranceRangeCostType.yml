@@ -1,0 +1,29 @@
+Nogrod\eBaySDK\Trading\FlatRateInsuranceRangeCostType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        flatRateInsuranceRange:
+            expose: true
+            access_type: public_method
+            serialized_name: FlatRateInsuranceRange
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getFlatRateInsuranceRange
+                setter: setFlatRateInsuranceRange
+            type: string
+        insuranceCost:
+            expose: true
+            access_type: public_method
+            serialized_name: InsuranceCost
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getInsuranceCost
+                setter: setInsuranceCost
+            type: Nogrod\eBaySDK\Trading\AmountType

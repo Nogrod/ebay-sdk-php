@@ -1,0 +1,103 @@
+Nogrod\eBaySDK\MerchantData\UploadSiteHostedPicturesRequestType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        pictureName:
+            expose: true
+            access_type: public_method
+            serialized_name: PictureName
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPictureName
+                setter: setPictureName
+            type: string
+        pictureSystemVersion:
+            expose: true
+            access_type: public_method
+            serialized_name: PictureSystemVersion
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPictureSystemVersion
+                setter: setPictureSystemVersion
+            type: int
+        pictureSet:
+            expose: true
+            access_type: public_method
+            serialized_name: PictureSet
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPictureSet
+                setter: setPictureSet
+            type: string
+        pictureData:
+            expose: true
+            access_type: public_method
+            serialized_name: PictureData
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPictureData
+                setter: setPictureData
+            type: Nogrod\eBaySDK\MerchantData\Base64BinaryType
+        pictureUploadPolicy:
+            expose: true
+            access_type: public_method
+            serialized_name: PictureUploadPolicy
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPictureUploadPolicy
+                setter: setPictureUploadPolicy
+            type: string
+        externalPictureURL:
+            expose: true
+            access_type: public_method
+            serialized_name: ExternalPictureURL
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getExternalPictureURL
+                setter: setExternalPictureURL
+            xml_list:
+                inline: true
+                entry_name: ExternalPictureURL
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<string>
+        pictureWatermark:
+            expose: true
+            access_type: public_method
+            serialized_name: PictureWatermark
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPictureWatermark
+                setter: setPictureWatermark
+            xml_list:
+                inline: true
+                entry_name: PictureWatermark
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<string>
+        extensionInDays:
+            expose: true
+            access_type: public_method
+            serialized_name: ExtensionInDays
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getExtensionInDays
+                setter: setExtensionInDays
+            type: int

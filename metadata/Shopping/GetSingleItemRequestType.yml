@@ -1,0 +1,56 @@
+Nogrod\eBaySDK\Shopping\GetSingleItemRequestType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        itemID:
+            expose: true
+            access_type: public_method
+            serialized_name: ItemID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getItemID
+                setter: setItemID
+            type: string
+        variationSKU:
+            expose: true
+            access_type: public_method
+            serialized_name: VariationSKU
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getVariationSKU
+                setter: setVariationSKU
+            type: string
+        variationSpecifics:
+            expose: true
+            access_type: public_method
+            serialized_name: VariationSpecifics
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getVariationSpecifics
+                setter: setVariationSpecifics
+            type: array<Nogrod\eBaySDK\Shopping\NameValueListType>
+            xml_list:
+                inline: false
+                entry_name: NameValueList
+                skip_when_empty: true
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+        includeSelector:
+            expose: true
+            access_type: public_method
+            serialized_name: IncludeSelector
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getIncludeSelector
+                setter: setIncludeSelector
+            type: string

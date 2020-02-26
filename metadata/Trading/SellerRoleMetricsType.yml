@@ -1,0 +1,117 @@
+Nogrod\eBaySDK\Trading\SellerRoleMetricsType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        positiveFeedbackLeftCount:
+            expose: true
+            access_type: public_method
+            serialized_name: PositiveFeedbackLeftCount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPositiveFeedbackLeftCount
+                setter: setPositiveFeedbackLeftCount
+            type: int
+        negativeFeedbackLeftCount:
+            expose: true
+            access_type: public_method
+            serialized_name: NegativeFeedbackLeftCount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getNegativeFeedbackLeftCount
+                setter: setNegativeFeedbackLeftCount
+            type: int
+        neutralFeedbackLeftCount:
+            expose: true
+            access_type: public_method
+            serialized_name: NeutralFeedbackLeftCount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getNeutralFeedbackLeftCount
+                setter: setNeutralFeedbackLeftCount
+            type: int
+        feedbackLeftPercent:
+            expose: true
+            access_type: public_method
+            serialized_name: FeedbackLeftPercent
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getFeedbackLeftPercent
+                setter: setFeedbackLeftPercent
+            type: float
+        repeatBuyerCount:
+            expose: true
+            access_type: public_method
+            serialized_name: RepeatBuyerCount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getRepeatBuyerCount
+                setter: setRepeatBuyerCount
+            type: int
+        repeatBuyerPercent:
+            expose: true
+            access_type: public_method
+            serialized_name: RepeatBuyerPercent
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getRepeatBuyerPercent
+                setter: setRepeatBuyerPercent
+            type: float
+        uniqueBuyerCount:
+            expose: true
+            access_type: public_method
+            serialized_name: UniqueBuyerCount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getUniqueBuyerCount
+                setter: setUniqueBuyerCount
+            type: int
+        transactionPercent:
+            expose: true
+            access_type: public_method
+            serialized_name: TransactionPercent
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getTransactionPercent
+                setter: setTransactionPercent
+            type: float
+        crossBorderTransactionCount:
+            expose: true
+            access_type: public_method
+            serialized_name: CrossBorderTransactionCount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCrossBorderTransactionCount
+                setter: setCrossBorderTransactionCount
+            type: int
+        crossBorderTransactionPercent:
+            expose: true
+            access_type: public_method
+            serialized_name: CrossBorderTransactionPercent
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCrossBorderTransactionPercent
+                setter: setCrossBorderTransactionPercent
+            type: float

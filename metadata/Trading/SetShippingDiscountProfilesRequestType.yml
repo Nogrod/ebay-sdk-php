@@ -1,0 +1,106 @@
+Nogrod\eBaySDK\Trading\SetShippingDiscountProfilesRequestType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        currencyID:
+            expose: true
+            access_type: public_method
+            serialized_name: CurrencyID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCurrencyID
+                setter: setCurrencyID
+            type: string
+        combinedDuration:
+            expose: true
+            access_type: public_method
+            serialized_name: CombinedDuration
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCombinedDuration
+                setter: setCombinedDuration
+            type: string
+        modifyActionCode:
+            expose: true
+            access_type: public_method
+            serialized_name: ModifyActionCode
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getModifyActionCode
+                setter: setModifyActionCode
+            type: string
+        flatShippingDiscount:
+            expose: true
+            access_type: public_method
+            serialized_name: FlatShippingDiscount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getFlatShippingDiscount
+                setter: setFlatShippingDiscount
+            type: Nogrod\eBaySDK\Trading\FlatShippingDiscountType
+        calculatedShippingDiscount:
+            expose: true
+            access_type: public_method
+            serialized_name: CalculatedShippingDiscount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCalculatedShippingDiscount
+                setter: setCalculatedShippingDiscount
+            type: Nogrod\eBaySDK\Trading\CalculatedShippingDiscountType
+        calculatedHandlingDiscount:
+            expose: true
+            access_type: public_method
+            serialized_name: CalculatedHandlingDiscount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCalculatedHandlingDiscount
+                setter: setCalculatedHandlingDiscount
+            type: Nogrod\eBaySDK\Trading\CalculatedHandlingDiscountType
+        promotionalShippingDiscountDetails:
+            expose: true
+            access_type: public_method
+            serialized_name: PromotionalShippingDiscountDetails
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPromotionalShippingDiscountDetails
+                setter: setPromotionalShippingDiscountDetails
+            type: Nogrod\eBaySDK\Trading\PromotionalShippingDiscountDetailsType
+        shippingInsurance:
+            expose: true
+            access_type: public_method
+            serialized_name: ShippingInsurance
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getShippingInsurance
+                setter: setShippingInsurance
+            type: Nogrod\eBaySDK\Trading\ShippingInsuranceType
+        internationalShippingInsurance:
+            expose: true
+            access_type: public_method
+            serialized_name: InternationalShippingInsurance
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getInternationalShippingInsurance
+                setter: setInternationalShippingInsurance
+            type: Nogrod\eBaySDK\Trading\ShippingInsuranceType

@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\Shopping\FindHalfProductsRequest:
+    xml_root_name: FindHalfProductsRequest
+    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

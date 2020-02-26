@@ -1,0 +1,40 @@
+Nogrod\eBaySDK\Finding\FindItemsIneBayStoresResponseType:
+    virtual_properties:
+        ns_prop:
+            exp: '"http://www.ebay.com/marketplace/search/v1/services"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        categoryHistogramContainer:
+            expose: true
+            access_type: public_method
+            serialized_name: categoryHistogramContainer
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/search/v1/services'
+            accessor:
+                getter: getCategoryHistogramContainer
+                setter: setCategoryHistogramContainer
+            type: Nogrod\eBaySDK\Finding\CategoryHistogramContainerType
+        aspectHistogramContainer:
+            expose: true
+            access_type: public_method
+            serialized_name: aspectHistogramContainer
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/search/v1/services'
+            accessor:
+                getter: getAspectHistogramContainer
+                setter: setAspectHistogramContainer
+            type: Nogrod\eBaySDK\Finding\AspectHistogramContainerType
+        conditionHistogramContainer:
+            expose: true
+            access_type: public_method
+            serialized_name: conditionHistogramContainer
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/search/v1/services'
+            accessor:
+                getter: getConditionHistogramContainer
+                setter: setConditionHistogramContainer
+            type: Nogrod\eBaySDK\Finding\ConditionHistogramContainerType

@@ -1,0 +1,40 @@
+Nogrod\eBaySDK\Trading\AddSellingManagerInventoryFolderRequestType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        folderName:
+            expose: true
+            access_type: public_method
+            serialized_name: FolderName
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getFolderName
+                setter: setFolderName
+            type: string
+        parentFolderID:
+            expose: true
+            access_type: public_method
+            serialized_name: ParentFolderID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getParentFolderID
+                setter: setParentFolderID
+            type: int
+        comment:
+            expose: true
+            access_type: public_method
+            serialized_name: Comment
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getComment
+                setter: setComment
+            type: string

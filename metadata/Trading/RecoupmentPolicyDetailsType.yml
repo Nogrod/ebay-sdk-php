@@ -1,0 +1,51 @@
+Nogrod\eBaySDK\Trading\RecoupmentPolicyDetailsType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        enforcedOnListingSite:
+            expose: true
+            access_type: public_method
+            serialized_name: EnforcedOnListingSite
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getEnforcedOnListingSite
+                setter: setEnforcedOnListingSite
+            type: bool
+        enforcedOnRegistrationSite:
+            expose: true
+            access_type: public_method
+            serialized_name: EnforcedOnRegistrationSite
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getEnforcedOnRegistrationSite
+                setter: setEnforcedOnRegistrationSite
+            type: bool
+        detailVersion:
+            expose: true
+            access_type: public_method
+            serialized_name: DetailVersion
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getDetailVersion
+                setter: setDetailVersion
+            type: string
+        updateTime:
+            expose: true
+            access_type: public_method
+            serialized_name: UpdateTime
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getUpdateTime
+                setter: setUpdateTime
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime

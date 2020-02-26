@@ -1,0 +1,22 @@
+Nogrod\eBaySDK\BusinessPoliciesManagement\ReturnPolicyProfileListType:
+    virtual_properties:
+        ns_prop:
+            exp: '"http://www.ebay.com/marketplace/selling/v1/services"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        returnPolicyProfile:
+            expose: true
+            access_type: public_method
+            serialized_name: ReturnPolicyProfile
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getReturnPolicyProfile
+                setter: setReturnPolicyProfile
+            xml_list:
+                inline: true
+                entry_name: ReturnPolicyProfile
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            type: array<Nogrod\eBaySDK\BusinessPoliciesManagement\ReturnPolicyProfileType>

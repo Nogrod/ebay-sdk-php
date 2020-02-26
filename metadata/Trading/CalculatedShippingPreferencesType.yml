@@ -1,0 +1,51 @@
+Nogrod\eBaySDK\Trading\CalculatedShippingPreferencesType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        calculatedShippingAmountForEntireOrder:
+            expose: true
+            access_type: public_method
+            serialized_name: CalculatedShippingAmountForEntireOrder
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCalculatedShippingAmountForEntireOrder
+                setter: setCalculatedShippingAmountForEntireOrder
+            type: Nogrod\eBaySDK\Trading\AmountType
+        calculatedShippingChargeOption:
+            expose: true
+            access_type: public_method
+            serialized_name: CalculatedShippingChargeOption
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCalculatedShippingChargeOption
+                setter: setCalculatedShippingChargeOption
+            type: string
+        calculatedShippingRateOption:
+            expose: true
+            access_type: public_method
+            serialized_name: CalculatedShippingRateOption
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCalculatedShippingRateOption
+                setter: setCalculatedShippingRateOption
+            type: string
+        insuranceOption:
+            expose: true
+            access_type: public_method
+            serialized_name: InsuranceOption
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getInsuranceOption
+                setter: setInsuranceOption
+            type: string

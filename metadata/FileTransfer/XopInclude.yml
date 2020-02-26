@@ -1,0 +1,14 @@
+Nogrod\eBaySDK\FileTransfer\XopInclude:
+    xml_root_name: xop:Include
+    xml_namespaces:
+        xop: 'http://www.w3.org/2004/08/xop/include'
+    properties:
+        href:
+            expose: true
+            access_type: public_method
+            serialized_name: href
+            accessor:
+                getter: getHref
+                setter: setHref
+            xml_attribute: true
+            type: string

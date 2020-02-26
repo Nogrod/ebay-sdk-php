@@ -1,0 +1,40 @@
+Nogrod\eBaySDK\Trading\GetChallengeTokenResponseType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        challengeToken:
+            expose: true
+            access_type: public_method
+            serialized_name: ChallengeToken
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getChallengeToken
+                setter: setChallengeToken
+            type: string
+        imageChallengeURL:
+            expose: true
+            access_type: public_method
+            serialized_name: ImageChallengeURL
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getImageChallengeURL
+                setter: setImageChallengeURL
+            type: string
+        audioChallengeURL:
+            expose: true
+            access_type: public_method
+            serialized_name: AudioChallengeURL
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getAudioChallengeURL
+                setter: setAudioChallengeURL
+            type: string

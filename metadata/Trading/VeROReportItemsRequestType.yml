@@ -1,0 +1,34 @@
+Nogrod\eBaySDK\Trading\VeROReportItemsRequestType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        rightsOwnerID:
+            expose: true
+            access_type: public_method
+            serialized_name: RightsOwnerID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getRightsOwnerID
+                setter: setRightsOwnerID
+            type: string
+        reportItems:
+            expose: true
+            access_type: public_method
+            serialized_name: ReportItems
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getReportItems
+                setter: setReportItems
+            type: array<Nogrod\eBaySDK\Trading\VeROReportItemType>
+            xml_list:
+                inline: false
+                entry_name: ReportItem
+                skip_when_empty: true
+                namespace: 'urn:ebay:apis:eBLBaseComponents'

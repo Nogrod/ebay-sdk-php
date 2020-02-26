@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\Trading\ReviseSellingManagerSaleRecordResponse:
+    xml_root_name: ReviseSellingManagerSaleRecordResponse
+    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

@@ -1,0 +1,390 @@
+Nogrod\eBaySDK\MerchantData\SellerType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        paisaPayStatus:
+            expose: true
+            access_type: public_method
+            serialized_name: PaisaPayStatus
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPaisaPayStatus
+                setter: setPaisaPayStatus
+            type: int
+        allowPaymentEdit:
+            expose: true
+            access_type: public_method
+            serialized_name: AllowPaymentEdit
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getAllowPaymentEdit
+                setter: setAllowPaymentEdit
+            type: bool
+        billingCurrency:
+            expose: true
+            access_type: public_method
+            serialized_name: BillingCurrency
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getBillingCurrency
+                setter: setBillingCurrency
+            type: string
+        checkoutEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: CheckoutEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCheckoutEnabled
+                setter: setCheckoutEnabled
+            type: bool
+        cIPBankAccountStored:
+            expose: true
+            access_type: public_method
+            serialized_name: CIPBankAccountStored
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCIPBankAccountStored
+                setter: setCIPBankAccountStored
+            type: bool
+        goodStanding:
+            expose: true
+            access_type: public_method
+            serialized_name: GoodStanding
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getGoodStanding
+                setter: setGoodStanding
+            type: bool
+        merchandizingPref:
+            expose: true
+            access_type: public_method
+            serialized_name: MerchandizingPref
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getMerchandizingPref
+                setter: setMerchandizingPref
+            type: string
+        qualifiesForB2BVAT:
+            expose: true
+            access_type: public_method
+            serialized_name: QualifiesForB2BVAT
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getQualifiesForB2BVAT
+                setter: setQualifiesForB2BVAT
+            type: bool
+        sellerGuaranteeLevel:
+            expose: true
+            access_type: public_method
+            serialized_name: SellerGuaranteeLevel
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSellerGuaranteeLevel
+                setter: setSellerGuaranteeLevel
+            type: string
+        sellerLevel:
+            expose: true
+            access_type: public_method
+            serialized_name: SellerLevel
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSellerLevel
+                setter: setSellerLevel
+            type: string
+        sellerPaymentAddress:
+            expose: true
+            access_type: public_method
+            serialized_name: SellerPaymentAddress
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSellerPaymentAddress
+                setter: setSellerPaymentAddress
+            type: Nogrod\eBaySDK\MerchantData\AddressType
+        schedulingInfo:
+            expose: true
+            access_type: public_method
+            serialized_name: SchedulingInfo
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSchedulingInfo
+                setter: setSchedulingInfo
+            type: Nogrod\eBaySDK\MerchantData\SchedulingInfoType
+        storeOwner:
+            expose: true
+            access_type: public_method
+            serialized_name: StoreOwner
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getStoreOwner
+                setter: setStoreOwner
+            type: bool
+        storeURL:
+            expose: true
+            access_type: public_method
+            serialized_name: StoreURL
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getStoreURL
+                setter: setStoreURL
+            type: string
+        sellerBusinessType:
+            expose: true
+            access_type: public_method
+            serialized_name: SellerBusinessType
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSellerBusinessType
+                setter: setSellerBusinessType
+            type: string
+        registeredBusinessSeller:
+            expose: true
+            access_type: public_method
+            serialized_name: RegisteredBusinessSeller
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getRegisteredBusinessSeller
+                setter: setRegisteredBusinessSeller
+            type: bool
+        storeSite:
+            expose: true
+            access_type: public_method
+            serialized_name: StoreSite
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getStoreSite
+                setter: setStoreSite
+            type: string
+        paymentMethod:
+            expose: true
+            access_type: public_method
+            serialized_name: PaymentMethod
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPaymentMethod
+                setter: setPaymentMethod
+            type: string
+        proStoresPreference:
+            expose: true
+            access_type: public_method
+            serialized_name: ProStoresPreference
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getProStoresPreference
+                setter: setProStoresPreference
+            type: Nogrod\eBaySDK\MerchantData\ProStoresCheckoutPreferenceType
+        charityRegistered:
+            expose: true
+            access_type: public_method
+            serialized_name: CharityRegistered
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCharityRegistered
+                setter: setCharityRegistered
+            type: bool
+        safePaymentExempt:
+            expose: true
+            access_type: public_method
+            serialized_name: SafePaymentExempt
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSafePaymentExempt
+                setter: setSafePaymentExempt
+            type: bool
+        paisaPayEscrowEMIStatus:
+            expose: true
+            access_type: public_method
+            serialized_name: PaisaPayEscrowEMIStatus
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPaisaPayEscrowEMIStatus
+                setter: setPaisaPayEscrowEMIStatus
+            type: int
+        charityAffiliationDetails:
+            expose: true
+            access_type: public_method
+            serialized_name: CharityAffiliationDetails
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCharityAffiliationDetails
+                setter: setCharityAffiliationDetails
+            type: array<Nogrod\eBaySDK\MerchantData\CharityAffiliationDetailType>
+            xml_list:
+                inline: false
+                entry_name: CharityAffiliationDetail
+                skip_when_empty: true
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+        transactionPercent:
+            expose: true
+            access_type: public_method
+            serialized_name: TransactionPercent
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getTransactionPercent
+                setter: setTransactionPercent
+            type: float
+        integratedMerchantCreditCardInfo:
+            expose: true
+            access_type: public_method
+            serialized_name: IntegratedMerchantCreditCardInfo
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getIntegratedMerchantCreditCardInfo
+                setter: setIntegratedMerchantCreditCardInfo
+            type: array<string>
+            xml_list:
+                inline: false
+                entry_name: SupportedSite
+                skip_when_empty: true
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+        featureEligibility:
+            expose: true
+            access_type: public_method
+            serialized_name: FeatureEligibility
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getFeatureEligibility
+                setter: setFeatureEligibility
+            type: Nogrod\eBaySDK\MerchantData\FeatureEligibilityType
+        topRatedSeller:
+            expose: true
+            access_type: public_method
+            serialized_name: TopRatedSeller
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getTopRatedSeller
+                setter: setTopRatedSeller
+            type: bool
+        topRatedSellerDetails:
+            expose: true
+            access_type: public_method
+            serialized_name: TopRatedSellerDetails
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getTopRatedSellerDetails
+                setter: setTopRatedSellerDetails
+            type: array<string>
+            xml_list:
+                inline: false
+                entry_name: TopRatedProgram
+                skip_when_empty: true
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+        recoupmentPolicyConsent:
+            expose: true
+            access_type: public_method
+            serialized_name: RecoupmentPolicyConsent
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getRecoupmentPolicyConsent
+                setter: setRecoupmentPolicyConsent
+            type: array<string>
+            xml_list:
+                inline: false
+                entry_name: Site
+                skip_when_empty: true
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+        domesticRateTable:
+            expose: true
+            access_type: public_method
+            serialized_name: DomesticRateTable
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getDomesticRateTable
+                setter: setDomesticRateTable
+            type: bool
+        internationalRateTable:
+            expose: true
+            access_type: public_method
+            serialized_name: InternationalRateTable
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getInternationalRateTable
+                setter: setInternationalRateTable
+            type: bool
+        sellereBayPaymentProcessStatus:
+            expose: true
+            access_type: public_method
+            serialized_name: SellereBayPaymentProcessStatus
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSellereBayPaymentProcessStatus
+                setter: setSellereBayPaymentProcessStatus
+            type: string
+        sellereBayPaymentProcessConsent:
+            expose: true
+            access_type: public_method
+            serialized_name: SellereBayPaymentProcessConsent
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSellereBayPaymentProcessConsent
+                setter: setSellereBayPaymentProcessConsent
+            type: Nogrod\eBaySDK\MerchantData\SellereBayPaymentProcessConsentCodeType

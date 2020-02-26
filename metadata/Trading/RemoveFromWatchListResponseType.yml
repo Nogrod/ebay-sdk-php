@@ -1,0 +1,29 @@
+Nogrod\eBaySDK\Trading\RemoveFromWatchListResponseType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        watchListCount:
+            expose: true
+            access_type: public_method
+            serialized_name: WatchListCount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getWatchListCount
+                setter: setWatchListCount
+            type: int
+        watchListMaximum:
+            expose: true
+            access_type: public_method
+            serialized_name: WatchListMaximum
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getWatchListMaximum
+                setter: setWatchListMaximum
+            type: int

@@ -1,0 +1,114 @@
+Nogrod\eBaySDK\Trading\GetCategorySpecificsRequestType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        categoryID:
+            expose: true
+            access_type: public_method
+            serialized_name: CategoryID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCategoryID
+                setter: setCategoryID
+            xml_list:
+                inline: true
+                entry_name: CategoryID
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<string>
+        lastUpdateTime:
+            expose: true
+            access_type: public_method
+            serialized_name: LastUpdateTime
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getLastUpdateTime
+                setter: setLastUpdateTime
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime
+        maxNames:
+            expose: true
+            access_type: public_method
+            serialized_name: MaxNames
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getMaxNames
+                setter: setMaxNames
+            type: int
+        maxValuesPerName:
+            expose: true
+            access_type: public_method
+            serialized_name: MaxValuesPerName
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getMaxValuesPerName
+                setter: setMaxValuesPerName
+            type: int
+        name:
+            expose: true
+            access_type: public_method
+            serialized_name: Name
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getName
+                setter: setName
+            type: string
+        categorySpecific:
+            expose: true
+            access_type: public_method
+            serialized_name: CategorySpecific
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCategorySpecific
+                setter: setCategorySpecific
+            xml_list:
+                inline: true
+                entry_name: CategorySpecific
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<Nogrod\eBaySDK\Trading\CategoryItemSpecificsType>
+        excludeRelationships:
+            expose: true
+            access_type: public_method
+            serialized_name: ExcludeRelationships
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getExcludeRelationships
+                setter: setExcludeRelationships
+            type: bool
+        includeConfidence:
+            expose: true
+            access_type: public_method
+            serialized_name: IncludeConfidence
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getIncludeConfidence
+                setter: setIncludeConfidence
+            type: bool
+        categorySpecificsFileInfo:
+            expose: true
+            access_type: public_method
+            serialized_name: CategorySpecificsFileInfo
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCategorySpecificsFileInfo
+                setter: setCategorySpecificsFileInfo
+            type: bool

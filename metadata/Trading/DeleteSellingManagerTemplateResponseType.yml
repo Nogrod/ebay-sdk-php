@@ -1,0 +1,29 @@
+Nogrod\eBaySDK\Trading\DeleteSellingManagerTemplateResponseType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        deletedSaleTemplateID:
+            expose: true
+            access_type: public_method
+            serialized_name: DeletedSaleTemplateID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getDeletedSaleTemplateID
+                setter: setDeletedSaleTemplateID
+            type: string
+        deletedSaleTemplateName:
+            expose: true
+            access_type: public_method
+            serialized_name: DeletedSaleTemplateName
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getDeletedSaleTemplateName
+                setter: setDeletedSaleTemplateName
+            type: string

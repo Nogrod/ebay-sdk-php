@@ -1,0 +1,11 @@
+xml_client:
+  namespaces:
+    'http://www.ebay.com/marketplace/selling/v1/services': 'Nogrod\eBaySDK\BusinessPoliciesManagement'
+  destinations_php:
+    'Nogrod\eBaySDK\BusinessPoliciesManagement': src/BusinessPoliciesManagement
+  destinations_jms:
+    'Nogrod\eBaySDK\BusinessPoliciesManagement': metadata/BusinessPoliciesManagement
+  metadata:
+    'wsdl/BusinessPoliciesManagement.wsdl': ~
+  configs_jms:
+    xml_cdata: false

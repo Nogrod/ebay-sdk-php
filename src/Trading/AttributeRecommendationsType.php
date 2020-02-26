@@ -1,0 +1,135 @@
+<?php
+
+namespace Nogrod\eBaySDK\Trading;
+
+/**
+ * Class representing AttributeRecommendationsType
+ *
+ * This type is deprecated.
+ * XSD Type: AttributeRecommendationsType
+ */
+class AttributeRecommendationsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+{
+
+    /**
+     * This field is deprecated.
+     *
+     * @var \Nogrod\eBaySDK\Trading\AttributeSetType[] $attributeSetArray
+     */
+    private $attributeSetArray = null;
+
+    /**
+     * Adds as attributeSet
+     *
+     * This field is deprecated.
+     *
+     * @return self
+     * @param \Nogrod\eBaySDK\Trading\AttributeSetType $attributeSet
+     */
+    public function addToAttributeSetArray(\Nogrod\eBaySDK\Trading\AttributeSetType $attributeSet)
+    {
+        $this->attributeSetArray[] = $attributeSet;
+        return $this;
+    }
+
+    /**
+     * isset attributeSetArray
+     *
+     * This field is deprecated.
+     *
+     * @param int|string $index
+     * @return bool
+     */
+    public function issetAttributeSetArray($index)
+    {
+        return isset($this->attributeSetArray[$index]);
+    }
+
+    /**
+     * unset attributeSetArray
+     *
+     * This field is deprecated.
+     *
+     * @param int|string $index
+     * @return void
+     */
+    public function unsetAttributeSetArray($index)
+    {
+        unset($this->attributeSetArray[$index]);
+    }
+
+    /**
+     * Gets as attributeSetArray
+     *
+     * This field is deprecated.
+     *
+     * @return \Nogrod\eBaySDK\Trading\AttributeSetType[]
+     */
+    public function getAttributeSetArray()
+    {
+        return $this->attributeSetArray;
+    }
+
+    /**
+     * Sets a new attributeSetArray
+     *
+     * This field is deprecated.
+     *
+     * @param \Nogrod\eBaySDK\Trading\AttributeSetType[] $attributeSetArray
+     * @return self
+     */
+    public function setAttributeSetArray(array $attributeSetArray)
+    {
+        $this->attributeSetArray = $attributeSetArray;
+        return $this;
+    }
+
+    public function xmlSerialize(\Sabre\Xml\Writer $writer)
+    {
+        $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
+        $value = $this->getAttributeSetArray();
+        if (null !== $value && !empty($this->getAttributeSetArray())) {
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}AttributeSetArray", array_map(function ($v) {
+                return ["AttributeSet" => $v];
+            }, $value));
+        }
+    }
+
+    public static function xmlDeserialize(\Sabre\Xml\Reader $reader)
+    {
+        return self::fromKeyValue($reader->parseInnerTree([]));
+    }
+
+    public static function fromKeyValue($keyValue)
+    {
+        $self = new self();
+        $self->setKeyValue($keyValue);
+        return $self;
+    }
+
+    public function setKeyValue($keyValue)
+    {
+        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AttributeSetArray', true);
+        if (null !== $value && !empty($value)) {
+            $this->setAttributeSetArray(array_map(function ($v) {
+                return \Nogrod\eBaySDK\Trading\AttributeSetType::fromKeyValue($v);
+            }, $value));
+        }
+    }
+
+    public static function mapArray(array $array, string $name, bool $isArray = false)
+    {
+        $result = [];
+        foreach ($array as $item) {
+            if ($item['name'] !== $name) {
+                continue;
+            }
+            if ($isArray) {
+                $result[] = $item['value'];
+            } else {
+                return $item['value'];
+            }
+        }
+        return $isArray ? $result : null;
+    }
+}

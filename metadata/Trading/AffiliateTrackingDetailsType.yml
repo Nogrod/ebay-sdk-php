@@ -1,0 +1,51 @@
+Nogrod\eBaySDK\Trading\AffiliateTrackingDetailsType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        trackingID:
+            expose: true
+            access_type: public_method
+            serialized_name: TrackingID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getTrackingID
+                setter: setTrackingID
+            type: string
+        trackingPartnerCode:
+            expose: true
+            access_type: public_method
+            serialized_name: TrackingPartnerCode
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getTrackingPartnerCode
+                setter: setTrackingPartnerCode
+            type: string
+        applicationDeviceType:
+            expose: true
+            access_type: public_method
+            serialized_name: ApplicationDeviceType
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getApplicationDeviceType
+                setter: setApplicationDeviceType
+            type: string
+        affiliateUserID:
+            expose: true
+            access_type: public_method
+            serialized_name: AffiliateUserID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getAffiliateUserID
+                setter: setAffiliateUserID
+            type: string

@@ -1,0 +1,29 @@
+Nogrod\eBaySDK\Trading\GetClientAlertsAuthTokenResponseType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        clientAlertsAuthToken:
+            expose: true
+            access_type: public_method
+            serialized_name: ClientAlertsAuthToken
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getClientAlertsAuthToken
+                setter: setClientAlertsAuthToken
+            type: string
+        hardExpirationTime:
+            expose: true
+            access_type: public_method
+            serialized_name: HardExpirationTime
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getHardExpirationTime
+                setter: setHardExpirationTime
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime

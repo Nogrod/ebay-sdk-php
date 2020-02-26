@@ -1,0 +1,40 @@
+Nogrod\eBaySDK\BusinessPoliciesManagement\SetSellerProfileRequestType:
+    virtual_properties:
+        ns_prop:
+            exp: '"http://www.ebay.com/marketplace/selling/v1/services"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        paymentProfile:
+            expose: true
+            access_type: public_method
+            serialized_name: paymentProfile
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getPaymentProfile
+                setter: setPaymentProfile
+            type: Nogrod\eBaySDK\BusinessPoliciesManagement\PaymentProfileType
+        returnPolicyProfile:
+            expose: true
+            access_type: public_method
+            serialized_name: returnPolicyProfile
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getReturnPolicyProfile
+                setter: setReturnPolicyProfile
+            type: Nogrod\eBaySDK\BusinessPoliciesManagement\ReturnPolicyProfileType
+        shippingPolicyProfile:
+            expose: true
+            access_type: public_method
+            serialized_name: shippingPolicyProfile
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getShippingPolicyProfile
+                setter: setShippingPolicyProfile
+            type: Nogrod\eBaySDK\BusinessPoliciesManagement\ShippingPolicyProfileType

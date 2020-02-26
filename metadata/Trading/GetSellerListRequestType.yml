@@ -1,0 +1,171 @@
+Nogrod\eBaySDK\Trading\GetSellerListRequestType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        userID:
+            expose: true
+            access_type: public_method
+            serialized_name: UserID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getUserID
+                setter: setUserID
+            type: string
+        motorsDealerUsers:
+            expose: true
+            access_type: public_method
+            serialized_name: MotorsDealerUsers
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getMotorsDealerUsers
+                setter: setMotorsDealerUsers
+            type: array<string>
+            xml_list:
+                inline: false
+                entry_name: UserID
+                skip_when_empty: true
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+        endTimeFrom:
+            expose: true
+            access_type: public_method
+            serialized_name: EndTimeFrom
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getEndTimeFrom
+                setter: setEndTimeFrom
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime
+        endTimeTo:
+            expose: true
+            access_type: public_method
+            serialized_name: EndTimeTo
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getEndTimeTo
+                setter: setEndTimeTo
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime
+        sort:
+            expose: true
+            access_type: public_method
+            serialized_name: Sort
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSort
+                setter: setSort
+            type: int
+        startTimeFrom:
+            expose: true
+            access_type: public_method
+            serialized_name: StartTimeFrom
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getStartTimeFrom
+                setter: setStartTimeFrom
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime
+        startTimeTo:
+            expose: true
+            access_type: public_method
+            serialized_name: StartTimeTo
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getStartTimeTo
+                setter: setStartTimeTo
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime
+        pagination:
+            expose: true
+            access_type: public_method
+            serialized_name: Pagination
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPagination
+                setter: setPagination
+            type: Nogrod\eBaySDK\Trading\PaginationType
+        granularityLevel:
+            expose: true
+            access_type: public_method
+            serialized_name: GranularityLevel
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getGranularityLevel
+                setter: setGranularityLevel
+            type: string
+        sKUArray:
+            expose: true
+            access_type: public_method
+            serialized_name: SKUArray
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSKUArray
+                setter: setSKUArray
+            type: array<string>
+            xml_list:
+                inline: false
+                entry_name: SKU
+                skip_when_empty: true
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+        includeWatchCount:
+            expose: true
+            access_type: public_method
+            serialized_name: IncludeWatchCount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getIncludeWatchCount
+                setter: setIncludeWatchCount
+            type: bool
+        adminEndedItemsOnly:
+            expose: true
+            access_type: public_method
+            serialized_name: AdminEndedItemsOnly
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getAdminEndedItemsOnly
+                setter: setAdminEndedItemsOnly
+            type: bool
+        categoryID:
+            expose: true
+            access_type: public_method
+            serialized_name: CategoryID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCategoryID
+                setter: setCategoryID
+            type: int
+        includeVariations:
+            expose: true
+            access_type: public_method
+            serialized_name: IncludeVariations
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getIncludeVariations
+                setter: setIncludeVariations
+            type: bool

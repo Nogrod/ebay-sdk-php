@@ -1,0 +1,29 @@
+Nogrod\eBaySDK\MerchantData\PickupInStoreDetailsType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        eligibleForPickupInStore:
+            expose: true
+            access_type: public_method
+            serialized_name: EligibleForPickupInStore
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getEligibleForPickupInStore
+                setter: setEligibleForPickupInStore
+            type: bool
+        eligibleForPickupDropOff:
+            expose: true
+            access_type: public_method
+            serialized_name: EligibleForPickupDropOff
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getEligibleForPickupDropOff
+                setter: setEligibleForPickupDropOff
+            type: bool

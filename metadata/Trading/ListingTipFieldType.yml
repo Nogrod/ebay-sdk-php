@@ -1,0 +1,51 @@
+Nogrod\eBaySDK\Trading\ListingTipFieldType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        listingTipFieldID:
+            expose: true
+            access_type: public_method
+            serialized_name: ListingTipFieldID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getListingTipFieldID
+                setter: setListingTipFieldID
+            type: string
+        fieldTip:
+            expose: true
+            access_type: public_method
+            serialized_name: FieldTip
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getFieldTip
+                setter: setFieldTip
+            type: string
+        currentFieldText:
+            expose: true
+            access_type: public_method
+            serialized_name: CurrentFieldText
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCurrentFieldText
+                setter: setCurrentFieldText
+            type: string
+        currentFieldValue:
+            expose: true
+            access_type: public_method
+            serialized_name: CurrentFieldValue
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCurrentFieldValue
+                setter: setCurrentFieldValue
+            type: string

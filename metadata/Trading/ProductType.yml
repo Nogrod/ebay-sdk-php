@@ -1,0 +1,100 @@
+Nogrod\eBaySDK\Trading\ProductType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        productID:
+            expose: true
+            access_type: public_method
+            serialized_name: productID
+            accessor:
+                getter: getProductID
+                setter: setProductID
+            xml_attribute: true
+            type: string
+        stockPhotoURL:
+            expose: true
+            access_type: public_method
+            serialized_name: stockPhotoURL
+            accessor:
+                getter: getStockPhotoURL
+                setter: setStockPhotoURL
+            xml_attribute: true
+            type: string
+        title:
+            expose: true
+            access_type: public_method
+            serialized_name: title
+            accessor:
+                getter: getTitle
+                setter: setTitle
+            xml_attribute: true
+            type: string
+        characteristicsSet:
+            expose: true
+            access_type: public_method
+            serialized_name: CharacteristicsSet
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCharacteristicsSet
+                setter: setCharacteristicsSet
+            type: Nogrod\eBaySDK\Trading\CharacteristicsSetType
+        detailsURL:
+            expose: true
+            access_type: public_method
+            serialized_name: DetailsURL
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getDetailsURL
+                setter: setDetailsURL
+            type: string
+        numItems:
+            expose: true
+            access_type: public_method
+            serialized_name: NumItems
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getNumItems
+                setter: setNumItems
+            type: int
+        minPrice:
+            expose: true
+            access_type: public_method
+            serialized_name: MinPrice
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getMinPrice
+                setter: setMinPrice
+            type: Nogrod\eBaySDK\Trading\AmountType
+        maxPrice:
+            expose: true
+            access_type: public_method
+            serialized_name: MaxPrice
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getMaxPrice
+                setter: setMaxPrice
+            type: Nogrod\eBaySDK\Trading\AmountType
+        productReferenceID:
+            expose: true
+            access_type: public_method
+            serialized_name: ProductReferenceID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getProductReferenceID
+                setter: setProductReferenceID
+            type: string

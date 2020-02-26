@@ -1,0 +1,62 @@
+Nogrod\eBaySDK\Trading\ShippingServiceCostOverrideType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        shippingServicePriority:
+            expose: true
+            access_type: public_method
+            serialized_name: ShippingServicePriority
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getShippingServicePriority
+                setter: setShippingServicePriority
+            type: int
+        shippingServiceType:
+            expose: true
+            access_type: public_method
+            serialized_name: ShippingServiceType
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getShippingServiceType
+                setter: setShippingServiceType
+            type: string
+        shippingServiceCost:
+            expose: true
+            access_type: public_method
+            serialized_name: ShippingServiceCost
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getShippingServiceCost
+                setter: setShippingServiceCost
+            type: Nogrod\eBaySDK\Trading\AmountType
+        shippingServiceAdditionalCost:
+            expose: true
+            access_type: public_method
+            serialized_name: ShippingServiceAdditionalCost
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getShippingServiceAdditionalCost
+                setter: setShippingServiceAdditionalCost
+            type: Nogrod\eBaySDK\Trading\AmountType
+        shippingSurcharge:
+            expose: true
+            access_type: public_method
+            serialized_name: ShippingSurcharge
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getShippingSurcharge
+                setter: setShippingSurcharge
+            type: Nogrod\eBaySDK\Trading\AmountType

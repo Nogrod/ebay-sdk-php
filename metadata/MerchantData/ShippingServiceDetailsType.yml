@@ -1,0 +1,280 @@
+Nogrod\eBaySDK\MerchantData\ShippingServiceDetailsType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        description:
+            expose: true
+            access_type: public_method
+            serialized_name: Description
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getDescription
+                setter: setDescription
+            type: string
+        expeditedService:
+            expose: true
+            access_type: public_method
+            serialized_name: ExpeditedService
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getExpeditedService
+                setter: setExpeditedService
+            type: bool
+        internationalService:
+            expose: true
+            access_type: public_method
+            serialized_name: InternationalService
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getInternationalService
+                setter: setInternationalService
+            type: bool
+        shippingService:
+            expose: true
+            access_type: public_method
+            serialized_name: ShippingService
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getShippingService
+                setter: setShippingService
+            type: string
+        shippingServiceID:
+            expose: true
+            access_type: public_method
+            serialized_name: ShippingServiceID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getShippingServiceID
+                setter: setShippingServiceID
+            type: int
+        shippingTimeMax:
+            expose: true
+            access_type: public_method
+            serialized_name: ShippingTimeMax
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getShippingTimeMax
+                setter: setShippingTimeMax
+            type: int
+        shippingTimeMin:
+            expose: true
+            access_type: public_method
+            serialized_name: ShippingTimeMin
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getShippingTimeMin
+                setter: setShippingTimeMin
+            type: int
+        shippingServiceCode:
+            expose: true
+            access_type: public_method
+            serialized_name: ShippingServiceCode
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getShippingServiceCode
+                setter: setShippingServiceCode
+            type: string
+        serviceType:
+            expose: true
+            access_type: public_method
+            serialized_name: ServiceType
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getServiceType
+                setter: setServiceType
+            xml_list:
+                inline: true
+                entry_name: ServiceType
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<string>
+        shippingPackage:
+            expose: true
+            access_type: public_method
+            serialized_name: ShippingPackage
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getShippingPackage
+                setter: setShippingPackage
+            xml_list:
+                inline: true
+                entry_name: ShippingPackage
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<string>
+        dimensionsRequired:
+            expose: true
+            access_type: public_method
+            serialized_name: DimensionsRequired
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getDimensionsRequired
+                setter: setDimensionsRequired
+            type: bool
+        validForSellingFlow:
+            expose: true
+            access_type: public_method
+            serialized_name: ValidForSellingFlow
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getValidForSellingFlow
+                setter: setValidForSellingFlow
+            type: bool
+        surchargeApplicable:
+            expose: true
+            access_type: public_method
+            serialized_name: SurchargeApplicable
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSurchargeApplicable
+                setter: setSurchargeApplicable
+            type: bool
+        shippingCarrier:
+            expose: true
+            access_type: public_method
+            serialized_name: ShippingCarrier
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getShippingCarrier
+                setter: setShippingCarrier
+            xml_list:
+                inline: true
+                entry_name: ShippingCarrier
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<string>
+        cODService:
+            expose: true
+            access_type: public_method
+            serialized_name: CODService
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCODService
+                setter: setCODService
+            type: bool
+        deprecationDetails:
+            expose: true
+            access_type: public_method
+            serialized_name: DeprecationDetails
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getDeprecationDetails
+                setter: setDeprecationDetails
+            xml_list:
+                inline: true
+                entry_name: DeprecationDetails
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<Nogrod\eBaySDK\MerchantData\AnnouncementMessageType>
+        mappedToShippingServiceID:
+            expose: true
+            access_type: public_method
+            serialized_name: MappedToShippingServiceID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getMappedToShippingServiceID
+                setter: setMappedToShippingServiceID
+            type: int
+        costGroupFlat:
+            expose: true
+            access_type: public_method
+            serialized_name: CostGroupFlat
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCostGroupFlat
+                setter: setCostGroupFlat
+            type: string
+        shippingServicePackageDetails:
+            expose: true
+            access_type: public_method
+            serialized_name: ShippingServicePackageDetails
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getShippingServicePackageDetails
+                setter: setShippingServicePackageDetails
+            xml_list:
+                inline: true
+                entry_name: ShippingServicePackageDetails
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<Nogrod\eBaySDK\MerchantData\ShippingServicePackageDetailsType>
+        weightRequired:
+            expose: true
+            access_type: public_method
+            serialized_name: WeightRequired
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getWeightRequired
+                setter: setWeightRequired
+            type: bool
+        detailVersion:
+            expose: true
+            access_type: public_method
+            serialized_name: DetailVersion
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getDetailVersion
+                setter: setDetailVersion
+            type: string
+        updateTime:
+            expose: true
+            access_type: public_method
+            serialized_name: UpdateTime
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getUpdateTime
+                setter: setUpdateTime
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime
+        shippingCategory:
+            expose: true
+            access_type: public_method
+            serialized_name: ShippingCategory
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getShippingCategory
+                setter: setShippingCategory
+            type: string

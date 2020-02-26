@@ -1,0 +1,26 @@
+Nogrod\eBaySDK\Finding\GalleryURLType:
+    virtual_properties:
+        ns_prop:
+            exp: '"http://www.ebay.com/marketplace/search/v1/services"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        __value:
+            expose: true
+            xml_value: true
+            access_type: public_method
+            accessor:
+                getter: value
+                setter: value
+            type: string
+            xml_element:
+                cdata: false
+        gallerySize:
+            expose: true
+            access_type: public_method
+            serialized_name: gallerySize
+            accessor:
+                getter: getGallerySize
+                setter: setGallerySize
+            xml_attribute: true
+            type: string

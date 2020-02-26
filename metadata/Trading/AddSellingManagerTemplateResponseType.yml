@@ -1,0 +1,89 @@
+Nogrod\eBaySDK\Trading\AddSellingManagerTemplateResponseType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        categoryID:
+            expose: true
+            access_type: public_method
+            serialized_name: CategoryID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCategoryID
+                setter: setCategoryID
+            type: int
+        category2ID:
+            expose: true
+            access_type: public_method
+            serialized_name: Category2ID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCategory2ID
+                setter: setCategory2ID
+            type: int
+        saleTemplateID:
+            expose: true
+            access_type: public_method
+            serialized_name: SaleTemplateID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSaleTemplateID
+                setter: setSaleTemplateID
+            type: int
+        saleTemplateGroupID:
+            expose: true
+            access_type: public_method
+            serialized_name: SaleTemplateGroupID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSaleTemplateGroupID
+                setter: setSaleTemplateGroupID
+            type: int
+        saleTemplateName:
+            expose: true
+            access_type: public_method
+            serialized_name: SaleTemplateName
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSaleTemplateName
+                setter: setSaleTemplateName
+            type: string
+        sellingManagerProductDetails:
+            expose: true
+            access_type: public_method
+            serialized_name: SellingManagerProductDetails
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSellingManagerProductDetails
+                setter: setSellingManagerProductDetails
+            type: Nogrod\eBaySDK\Trading\SellingManagerProductDetailsType
+        fees:
+            expose: true
+            access_type: public_method
+            serialized_name: Fees
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getFees
+                setter: setFees
+            type: array<Nogrod\eBaySDK\Trading\FeeType>
+            xml_list:
+                inline: false
+                entry_name: Fee
+                skip_when_empty: true
+                namespace: 'urn:ebay:apis:eBLBaseComponents'

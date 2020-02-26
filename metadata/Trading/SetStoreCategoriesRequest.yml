@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\Trading\SetStoreCategoriesRequest:
+    xml_root_name: SetStoreCategoriesRequest
+    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

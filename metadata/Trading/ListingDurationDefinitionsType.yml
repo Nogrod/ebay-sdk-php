@@ -1,0 +1,31 @@
+Nogrod\eBaySDK\Trading\ListingDurationDefinitionsType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        version:
+            expose: true
+            access_type: public_method
+            serialized_name: Version
+            accessor:
+                getter: getVersion
+                setter: setVersion
+            xml_attribute: true
+            type: int
+        listingDuration:
+            expose: true
+            access_type: public_method
+            serialized_name: ListingDuration
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getListingDuration
+                setter: setListingDuration
+            xml_list:
+                inline: true
+                entry_name: ListingDuration
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<Nogrod\eBaySDK\Trading\ListingDurationDefinitionType>

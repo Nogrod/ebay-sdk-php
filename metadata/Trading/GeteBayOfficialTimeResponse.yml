@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\Trading\GeteBayOfficialTimeResponse:
+    xml_root_name: GeteBayOfficialTimeResponse
+    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

@@ -1,0 +1,40 @@
+Nogrod\eBaySDK\Trading\CharityAffiliationDetailType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        charityID:
+            expose: true
+            access_type: public_method
+            serialized_name: CharityID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCharityID
+                setter: setCharityID
+            type: string
+        affiliationType:
+            expose: true
+            access_type: public_method
+            serialized_name: AffiliationType
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getAffiliationType
+                setter: setAffiliationType
+            type: string
+        lastUsedTime:
+            expose: true
+            access_type: public_method
+            serialized_name: LastUsedTime
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getLastUsedTime
+                setter: setLastUsedTime
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime

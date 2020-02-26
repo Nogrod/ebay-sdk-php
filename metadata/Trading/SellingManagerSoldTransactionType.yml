@@ -1,0 +1,242 @@
+Nogrod\eBaySDK\Trading\SellingManagerSoldTransactionType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        invoiceNumber:
+            expose: true
+            access_type: public_method
+            serialized_name: InvoiceNumber
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getInvoiceNumber
+                setter: setInvoiceNumber
+            type: string
+        transactionID:
+            expose: true
+            access_type: public_method
+            serialized_name: TransactionID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getTransactionID
+                setter: setTransactionID
+            type: int
+        saleRecordID:
+            expose: true
+            access_type: public_method
+            serialized_name: SaleRecordID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSaleRecordID
+                setter: setSaleRecordID
+            type: int
+        itemID:
+            expose: true
+            access_type: public_method
+            serialized_name: ItemID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getItemID
+                setter: setItemID
+            type: string
+        quantitySold:
+            expose: true
+            access_type: public_method
+            serialized_name: QuantitySold
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getQuantitySold
+                setter: setQuantitySold
+            type: int
+        itemPrice:
+            expose: true
+            access_type: public_method
+            serialized_name: ItemPrice
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getItemPrice
+                setter: setItemPrice
+            type: Nogrod\eBaySDK\Trading\AmountType
+        subtotalAmount:
+            expose: true
+            access_type: public_method
+            serialized_name: SubtotalAmount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSubtotalAmount
+                setter: setSubtotalAmount
+            type: Nogrod\eBaySDK\Trading\AmountType
+        itemTitle:
+            expose: true
+            access_type: public_method
+            serialized_name: ItemTitle
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getItemTitle
+                setter: setItemTitle
+            type: string
+        listingType:
+            expose: true
+            access_type: public_method
+            serialized_name: ListingType
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getListingType
+                setter: setListingType
+            type: string
+        relisted:
+            expose: true
+            access_type: public_method
+            serialized_name: Relisted
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getRelisted
+                setter: setRelisted
+            type: bool
+        watchCount:
+            expose: true
+            access_type: public_method
+            serialized_name: WatchCount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getWatchCount
+                setter: setWatchCount
+            type: int
+        startPrice:
+            expose: true
+            access_type: public_method
+            serialized_name: StartPrice
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getStartPrice
+                setter: setStartPrice
+            type: Nogrod\eBaySDK\Trading\AmountType
+        reservePrice:
+            expose: true
+            access_type: public_method
+            serialized_name: ReservePrice
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getReservePrice
+                setter: setReservePrice
+            type: Nogrod\eBaySDK\Trading\AmountType
+        secondChanceOfferSent:
+            expose: true
+            access_type: public_method
+            serialized_name: SecondChanceOfferSent
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSecondChanceOfferSent
+                setter: setSecondChanceOfferSent
+            type: bool
+        customLabel:
+            expose: true
+            access_type: public_method
+            serialized_name: CustomLabel
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCustomLabel
+                setter: setCustomLabel
+            type: string
+        soldOn:
+            expose: true
+            access_type: public_method
+            serialized_name: SoldOn
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSoldOn
+                setter: setSoldOn
+            type: string
+        listedOn:
+            expose: true
+            access_type: public_method
+            serialized_name: ListedOn
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getListedOn
+                setter: setListedOn
+            xml_list:
+                inline: true
+                entry_name: ListedOn
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<string>
+        shipment:
+            expose: true
+            access_type: public_method
+            serialized_name: Shipment
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getShipment
+                setter: setShipment
+            type: Nogrod\eBaySDK\Trading\ShipmentType
+        charityListing:
+            expose: true
+            access_type: public_method
+            serialized_name: CharityListing
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCharityListing
+                setter: setCharityListing
+            type: bool
+        variation:
+            expose: true
+            access_type: public_method
+            serialized_name: Variation
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getVariation
+                setter: setVariation
+            type: Nogrod\eBaySDK\Trading\VariationType
+        orderLineItemID:
+            expose: true
+            access_type: public_method
+            serialized_name: OrderLineItemID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getOrderLineItemID
+                setter: setOrderLineItemID
+            type: string

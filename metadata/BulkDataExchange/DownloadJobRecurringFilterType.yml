@@ -1,0 +1,18 @@
+Nogrod\eBaySDK\BulkDataExchange\DownloadJobRecurringFilterType:
+    virtual_properties:
+        ns_prop:
+            exp: '"http://www.ebay.com/marketplace/services"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        orderReportRecurringFilter:
+            expose: true
+            access_type: public_method
+            serialized_name: orderReportRecurringFilter
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/services'
+            accessor:
+                getter: getOrderReportRecurringFilter
+                setter: setOrderReportRecurringFilter
+            type: Nogrod\eBaySDK\BulkDataExchange\OrderReportRecurringFilterType

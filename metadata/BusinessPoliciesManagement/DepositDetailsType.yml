@@ -1,0 +1,29 @@
+Nogrod\eBaySDK\BusinessPoliciesManagement\DepositDetailsType:
+    virtual_properties:
+        ns_prop:
+            exp: '"http://www.ebay.com/marketplace/selling/v1/services"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        hoursToDeposit:
+            expose: true
+            access_type: public_method
+            serialized_name: hoursToDeposit
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getHoursToDeposit
+                setter: setHoursToDeposit
+            type: int
+        depositAmount:
+            expose: true
+            access_type: public_method
+            serialized_name: depositAmount
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getDepositAmount
+                setter: setDepositAmount
+            type: Nogrod\eBaySDK\BusinessPoliciesManagement\AmountType

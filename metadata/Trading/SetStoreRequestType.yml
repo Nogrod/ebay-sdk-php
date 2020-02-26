@@ -1,0 +1,18 @@
+Nogrod\eBaySDK\Trading\SetStoreRequestType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        store:
+            expose: true
+            access_type: public_method
+            serialized_name: Store
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getStore
+                setter: setStore
+            type: Nogrod\eBaySDK\Trading\StoreType

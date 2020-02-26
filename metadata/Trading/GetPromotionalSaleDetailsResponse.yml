@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\Trading\GetPromotionalSaleDetailsResponse:
+    xml_root_name: GetPromotionalSaleDetailsResponse
+    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

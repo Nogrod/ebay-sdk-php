@@ -1,0 +1,18 @@
+Nogrod\eBaySDK\Trading\GetStoreCustomPageRequestType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        pageID:
+            expose: true
+            access_type: public_method
+            serialized_name: PageID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPageID
+                setter: setPageID
+            type: int

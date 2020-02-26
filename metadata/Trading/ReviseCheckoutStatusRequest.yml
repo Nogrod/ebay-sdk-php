@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\Trading\ReviseCheckoutStatusRequest:
+    xml_root_name: ReviseCheckoutStatusRequest
+    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

@@ -1,0 +1,221 @@
+Nogrod\eBaySDK\Trading\StoreType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        name:
+            expose: true
+            access_type: public_method
+            serialized_name: Name
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getName
+                setter: setName
+            type: string
+        uRLPath:
+            expose: true
+            access_type: public_method
+            serialized_name: URLPath
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getURLPath
+                setter: setURLPath
+            type: string
+        uRL:
+            expose: true
+            access_type: public_method
+            serialized_name: URL
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getURL
+                setter: setURL
+            type: string
+        subscriptionLevel:
+            expose: true
+            access_type: public_method
+            serialized_name: SubscriptionLevel
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSubscriptionLevel
+                setter: setSubscriptionLevel
+            type: string
+        description:
+            expose: true
+            access_type: public_method
+            serialized_name: Description
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getDescription
+                setter: setDescription
+            type: string
+        logo:
+            expose: true
+            access_type: public_method
+            serialized_name: Logo
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getLogo
+                setter: setLogo
+            type: Nogrod\eBaySDK\Trading\StoreLogoType
+        theme:
+            expose: true
+            access_type: public_method
+            serialized_name: Theme
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getTheme
+                setter: setTheme
+            type: Nogrod\eBaySDK\Trading\StoreThemeType
+        headerStyle:
+            expose: true
+            access_type: public_method
+            serialized_name: HeaderStyle
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getHeaderStyle
+                setter: setHeaderStyle
+            type: string
+        homePage:
+            expose: true
+            access_type: public_method
+            serialized_name: HomePage
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getHomePage
+                setter: setHomePage
+            type: int
+        itemListLayout:
+            expose: true
+            access_type: public_method
+            serialized_name: ItemListLayout
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getItemListLayout
+                setter: setItemListLayout
+            type: string
+        itemListSortOrder:
+            expose: true
+            access_type: public_method
+            serialized_name: ItemListSortOrder
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getItemListSortOrder
+                setter: setItemListSortOrder
+            type: string
+        customHeaderLayout:
+            expose: true
+            access_type: public_method
+            serialized_name: CustomHeaderLayout
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCustomHeaderLayout
+                setter: setCustomHeaderLayout
+            type: string
+        customHeader:
+            expose: true
+            access_type: public_method
+            serialized_name: CustomHeader
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCustomHeader
+                setter: setCustomHeader
+            type: string
+        exportListings:
+            expose: true
+            access_type: public_method
+            serialized_name: ExportListings
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getExportListings
+                setter: setExportListings
+            type: bool
+        customCategories:
+            expose: true
+            access_type: public_method
+            serialized_name: CustomCategories
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCustomCategories
+                setter: setCustomCategories
+            type: array<Nogrod\eBaySDK\Trading\StoreCustomCategoryType>
+            xml_list:
+                inline: false
+                entry_name: CustomCategory
+                skip_when_empty: true
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+        customListingHeader:
+            expose: true
+            access_type: public_method
+            serialized_name: CustomListingHeader
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCustomListingHeader
+                setter: setCustomListingHeader
+            type: Nogrod\eBaySDK\Trading\StoreCustomListingHeaderType
+        merchDisplay:
+            expose: true
+            access_type: public_method
+            serialized_name: MerchDisplay
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getMerchDisplay
+                setter: setMerchDisplay
+            type: string
+        lastOpenedTime:
+            expose: true
+            access_type: public_method
+            serialized_name: LastOpenedTime
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getLastOpenedTime
+                setter: setLastOpenedTime
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime
+        titleWithCompatibility:
+            expose: true
+            access_type: public_method
+            serialized_name: TitleWithCompatibility
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getTitleWithCompatibility
+                setter: setTitleWithCompatibility
+            type: bool

@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\Trading\GetDescriptionTemplatesResponse:
+    xml_root_name: GetDescriptionTemplatesResponse
+    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

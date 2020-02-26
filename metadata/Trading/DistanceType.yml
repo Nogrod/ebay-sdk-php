@@ -1,0 +1,29 @@
+Nogrod\eBaySDK\Trading\DistanceType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        distanceMeasurement:
+            expose: true
+            access_type: public_method
+            serialized_name: DistanceMeasurement
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getDistanceMeasurement
+                setter: setDistanceMeasurement
+            type: int
+        distanceUnit:
+            expose: true
+            access_type: public_method
+            serialized_name: DistanceUnit
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getDistanceUnit
+                setter: setDistanceUnit
+            type: string

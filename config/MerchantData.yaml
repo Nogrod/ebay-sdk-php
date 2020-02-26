@@ -1,0 +1,11 @@
+xml_client:
+  namespaces:
+    'urn:ebay:apis:eBLBaseComponents': 'Nogrod\eBaySDK\MerchantData'
+  destinations_php:
+    'Nogrod\eBaySDK\MerchantData': src/MerchantData
+  destinations_jms:
+    'Nogrod\eBaySDK\MerchantData': metadata/MerchantData
+  metadata:
+    'wsdl/MerchantData.xsd': ~
+  configs_jms:
+    xml_cdata: false

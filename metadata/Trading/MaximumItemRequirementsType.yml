@@ -1,0 +1,29 @@
+Nogrod\eBaySDK\Trading\MaximumItemRequirementsType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        maximumItemCount:
+            expose: true
+            access_type: public_method
+            serialized_name: MaximumItemCount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getMaximumItemCount
+                setter: setMaximumItemCount
+            type: int
+        minimumFeedbackScore:
+            expose: true
+            access_type: public_method
+            serialized_name: MinimumFeedbackScore
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getMinimumFeedbackScore
+                setter: setMinimumFeedbackScore
+            type: int

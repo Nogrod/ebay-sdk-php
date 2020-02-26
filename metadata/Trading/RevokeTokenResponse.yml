@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\Trading\RevokeTokenResponse:
+    xml_root_name: RevokeTokenResponse
+    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

@@ -1,0 +1,151 @@
+<?php
+
+namespace Nogrod\eBaySDK\Trading;
+
+/**
+ * Class representing TransactionArrayType
+ *
+ * Type defining the <b>TransactionArray</b> container, which contains an
+ *  array of <b>Transaction</b> containers. Each <b>Transaction</b>
+ *  container consists of detailed information on one order line item.
+ * XSD Type: TransactionArrayType
+ */
+class TransactionArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+{
+
+    /**
+     * A <b>Transaction</b> container is returned for each line item in the order. This container consists of detailed information on one order line item.
+     *  <br/><br/>
+     *  For the <b>AddOrder</b> call, a <b>Transaction</b> container is used to identified the unpaid order line items that are being combined into one Combined Invoice order.
+     *
+     * @var \Nogrod\eBaySDK\Trading\TransactionType[] $transaction
+     */
+    private $transaction = [
+        
+    ];
+
+    /**
+     * Adds as transaction
+     *
+     * A <b>Transaction</b> container is returned for each line item in the order. This container consists of detailed information on one order line item.
+     *  <br/><br/>
+     *  For the <b>AddOrder</b> call, a <b>Transaction</b> container is used to identified the unpaid order line items that are being combined into one Combined Invoice order.
+     *
+     * @return self
+     * @param \Nogrod\eBaySDK\Trading\TransactionType $transaction
+     */
+    public function addToTransaction(\Nogrod\eBaySDK\Trading\TransactionType $transaction)
+    {
+        $this->transaction[] = $transaction;
+        return $this;
+    }
+
+    /**
+     * isset transaction
+     *
+     * A <b>Transaction</b> container is returned for each line item in the order. This container consists of detailed information on one order line item.
+     *  <br/><br/>
+     *  For the <b>AddOrder</b> call, a <b>Transaction</b> container is used to identified the unpaid order line items that are being combined into one Combined Invoice order.
+     *
+     * @param int|string $index
+     * @return bool
+     */
+    public function issetTransaction($index)
+    {
+        return isset($this->transaction[$index]);
+    }
+
+    /**
+     * unset transaction
+     *
+     * A <b>Transaction</b> container is returned for each line item in the order. This container consists of detailed information on one order line item.
+     *  <br/><br/>
+     *  For the <b>AddOrder</b> call, a <b>Transaction</b> container is used to identified the unpaid order line items that are being combined into one Combined Invoice order.
+     *
+     * @param int|string $index
+     * @return void
+     */
+    public function unsetTransaction($index)
+    {
+        unset($this->transaction[$index]);
+    }
+
+    /**
+     * Gets as transaction
+     *
+     * A <b>Transaction</b> container is returned for each line item in the order. This container consists of detailed information on one order line item.
+     *  <br/><br/>
+     *  For the <b>AddOrder</b> call, a <b>Transaction</b> container is used to identified the unpaid order line items that are being combined into one Combined Invoice order.
+     *
+     * @return \Nogrod\eBaySDK\Trading\TransactionType[]
+     */
+    public function getTransaction()
+    {
+        return $this->transaction;
+    }
+
+    /**
+     * Sets a new transaction
+     *
+     * A <b>Transaction</b> container is returned for each line item in the order. This container consists of detailed information on one order line item.
+     *  <br/><br/>
+     *  For the <b>AddOrder</b> call, a <b>Transaction</b> container is used to identified the unpaid order line items that are being combined into one Combined Invoice order.
+     *
+     * @param \Nogrod\eBaySDK\Trading\TransactionType[] $transaction
+     * @return self
+     */
+    public function setTransaction(array $transaction)
+    {
+        $this->transaction = $transaction;
+        return $this;
+    }
+
+    public function xmlSerialize(\Sabre\Xml\Writer $writer)
+    {
+        $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
+        $value = $this->getTransaction();
+        if (null !== $value && !empty($this->getTransaction())) {
+            $writer->write(array_map(function ($v) {
+                return ["Transaction" => $v];
+            }, $value));
+        }
+    }
+
+    public static function xmlDeserialize(\Sabre\Xml\Reader $reader)
+    {
+        return self::fromKeyValue($reader->parseInnerTree([]));
+    }
+
+    public static function fromKeyValue($keyValue)
+    {
+        $self = new self();
+        $self->setKeyValue($keyValue);
+        return $self;
+    }
+
+    public function setKeyValue($keyValue)
+    {
+        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Transaction', true);
+        if (null !== $value && !empty($value)) {
+            $this->setTransaction(array_map(function ($v) {
+                return \Nogrod\eBaySDK\Trading\TransactionType::fromKeyValue($v);
+            }, $value));
+        }
+    }
+
+    public static function mapArray(array $array, string $name, bool $isArray = false)
+    {
+        $result = [];
+        foreach ($array as $item) {
+            if ($item['name'] !== $name) {
+                continue;
+            }
+            if ($isArray) {
+                $result[] = $item['value'];
+            } else {
+                return $item['value'];
+            }
+        }
+        return $isArray ? $result : null;
+    }
+}

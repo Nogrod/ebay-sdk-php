@@ -1,0 +1,84 @@
+Nogrod\eBaySDK\Trading\StoreVacationPreferencesType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        onVacation:
+            expose: true
+            access_type: public_method
+            serialized_name: OnVacation
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getOnVacation
+                setter: setOnVacation
+            type: bool
+        returnDate:
+            expose: true
+            access_type: public_method
+            serialized_name: ReturnDate
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getReturnDate
+                setter: setReturnDate
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime
+        hideFixedPriceStoreItems:
+            expose: true
+            access_type: public_method
+            serialized_name: HideFixedPriceStoreItems
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getHideFixedPriceStoreItems
+                setter: setHideFixedPriceStoreItems
+            type: bool
+        messageItem:
+            expose: true
+            access_type: public_method
+            serialized_name: MessageItem
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getMessageItem
+                setter: setMessageItem
+            type: bool
+        messageStore:
+            expose: true
+            access_type: public_method
+            serialized_name: MessageStore
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getMessageStore
+                setter: setMessageStore
+            type: bool
+        displayMessageStoreCustomText:
+            expose: true
+            access_type: public_method
+            serialized_name: DisplayMessageStoreCustomText
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getDisplayMessageStoreCustomText
+                setter: setDisplayMessageStoreCustomText
+            type: bool
+        messageStoreCustomText:
+            expose: true
+            access_type: public_method
+            serialized_name: MessageStoreCustomText
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getMessageStoreCustomText
+                setter: setMessageStoreCustomText
+            type: string

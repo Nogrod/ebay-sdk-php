@@ -1,0 +1,183 @@
+Nogrod\eBaySDK\Trading\SellingManagerOrderStatusType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        checkoutStatus:
+            expose: true
+            access_type: public_method
+            serialized_name: CheckoutStatus
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCheckoutStatus
+                setter: setCheckoutStatus
+            type: string
+        paidStatus:
+            expose: true
+            access_type: public_method
+            serialized_name: PaidStatus
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPaidStatus
+                setter: setPaidStatus
+            type: string
+        shippedStatus:
+            expose: true
+            access_type: public_method
+            serialized_name: ShippedStatus
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getShippedStatus
+                setter: setShippedStatus
+            type: string
+        eBayPaymentStatus:
+            expose: true
+            access_type: public_method
+            serialized_name: eBayPaymentStatus
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getEBayPaymentStatus
+                setter: setEBayPaymentStatus
+            type: string
+        payPalTransactionID:
+            expose: true
+            access_type: public_method
+            serialized_name: PayPalTransactionID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPayPalTransactionID
+                setter: setPayPalTransactionID
+            type: string
+        paymentMethodUsed:
+            expose: true
+            access_type: public_method
+            serialized_name: PaymentMethodUsed
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPaymentMethodUsed
+                setter: setPaymentMethodUsed
+            type: string
+        feedbackReceived:
+            expose: true
+            access_type: public_method
+            serialized_name: FeedbackReceived
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getFeedbackReceived
+                setter: setFeedbackReceived
+            type: string
+        feedbackSent:
+            expose: true
+            access_type: public_method
+            serialized_name: FeedbackSent
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getFeedbackSent
+                setter: setFeedbackSent
+            type: bool
+        totalEmailsSent:
+            expose: true
+            access_type: public_method
+            serialized_name: TotalEmailsSent
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getTotalEmailsSent
+                setter: setTotalEmailsSent
+            type: int
+        paymentHoldStatus:
+            expose: true
+            access_type: public_method
+            serialized_name: PaymentHoldStatus
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPaymentHoldStatus
+                setter: setPaymentHoldStatus
+            type: string
+        sellerInvoiceNumber:
+            expose: true
+            access_type: public_method
+            serialized_name: SellerInvoiceNumber
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSellerInvoiceNumber
+                setter: setSellerInvoiceNumber
+            type: string
+        shippedTime:
+            expose: true
+            access_type: public_method
+            serialized_name: ShippedTime
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getShippedTime
+                setter: setShippedTime
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime
+        paidTime:
+            expose: true
+            access_type: public_method
+            serialized_name: PaidTime
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPaidTime
+                setter: setPaidTime
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime
+        lastEmailSentTime:
+            expose: true
+            access_type: public_method
+            serialized_name: LastEmailSentTime
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getLastEmailSentTime
+                setter: setLastEmailSentTime
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime
+        sellerInvoiceTime:
+            expose: true
+            access_type: public_method
+            serialized_name: SellerInvoiceTime
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSellerInvoiceTime
+                setter: setSellerInvoiceTime
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime
+        integratedMerchantCreditCardEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: IntegratedMerchantCreditCardEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getIntegratedMerchantCreditCardEnabled
+                setter: setIntegratedMerchantCreditCardEnabled
+            type: bool

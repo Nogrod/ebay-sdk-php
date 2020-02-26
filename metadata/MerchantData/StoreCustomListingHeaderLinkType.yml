@@ -1,0 +1,40 @@
+Nogrod\eBaySDK\MerchantData\StoreCustomListingHeaderLinkType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        linkID:
+            expose: true
+            access_type: public_method
+            serialized_name: LinkID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getLinkID
+                setter: setLinkID
+            type: int
+        order:
+            expose: true
+            access_type: public_method
+            serialized_name: Order
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getOrder
+                setter: setOrder
+            type: int
+        linkType:
+            expose: true
+            access_type: public_method
+            serialized_name: LinkType
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getLinkType
+                setter: setLinkType
+            type: string

@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\Trading\VerifyAddItemResponse:
+    xml_root_name: VerifyAddItemResponse
+    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

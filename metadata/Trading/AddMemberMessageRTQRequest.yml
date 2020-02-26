@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\Trading\AddMemberMessageRTQRequest:
+    xml_root_name: AddMemberMessageRTQRequest
+    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

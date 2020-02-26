@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\Shopping\GetCategoryInfoResponse:
+    xml_root_name: GetCategoryInfoResponse
+    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

@@ -1,0 +1,33 @@
+Nogrod\eBaySDK\Trading\ExtendSiteHostedPicturesRequestType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        pictureURL:
+            expose: true
+            access_type: public_method
+            serialized_name: PictureURL
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPictureURL
+                setter: setPictureURL
+            xml_list:
+                inline: true
+                entry_name: PictureURL
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<string>
+        extensionInDays:
+            expose: true
+            access_type: public_method
+            serialized_name: ExtensionInDays
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getExtensionInDays
+                setter: setExtensionInDays
+            type: int

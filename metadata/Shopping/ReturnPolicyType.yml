@@ -1,0 +1,172 @@
+Nogrod\eBaySDK\Shopping\ReturnPolicyType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        refund:
+            expose: true
+            access_type: public_method
+            serialized_name: Refund
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getRefund
+                setter: setRefund
+            type: string
+        returnsWithin:
+            expose: true
+            access_type: public_method
+            serialized_name: ReturnsWithin
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getReturnsWithin
+                setter: setReturnsWithin
+            type: string
+        returnsAccepted:
+            expose: true
+            access_type: public_method
+            serialized_name: ReturnsAccepted
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getReturnsAccepted
+                setter: setReturnsAccepted
+            type: string
+        description:
+            expose: true
+            access_type: public_method
+            serialized_name: Description
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getDescription
+                setter: setDescription
+            type: string
+        warrantyOffered:
+            expose: true
+            access_type: public_method
+            serialized_name: WarrantyOffered
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getWarrantyOffered
+                setter: setWarrantyOffered
+            type: string
+        warrantyType:
+            expose: true
+            access_type: public_method
+            serialized_name: WarrantyType
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getWarrantyType
+                setter: setWarrantyType
+            type: string
+        warrantyDuration:
+            expose: true
+            access_type: public_method
+            serialized_name: WarrantyDuration
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getWarrantyDuration
+                setter: setWarrantyDuration
+            type: string
+        eAN:
+            expose: true
+            access_type: public_method
+            serialized_name: EAN
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getEAN
+                setter: setEAN
+            type: string
+        shippingCostPaidBy:
+            expose: true
+            access_type: public_method
+            serialized_name: ShippingCostPaidBy
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getShippingCostPaidBy
+                setter: setShippingCostPaidBy
+            type: string
+        restockingFeeValue:
+            expose: true
+            access_type: public_method
+            serialized_name: RestockingFeeValue
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getRestockingFeeValue
+                setter: setRestockingFeeValue
+            type: string
+        restockingFeeValueOption:
+            expose: true
+            access_type: public_method
+            serialized_name: RestockingFeeValueOption
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getRestockingFeeValueOption
+                setter: setRestockingFeeValueOption
+            type: string
+        internationalRefund:
+            expose: true
+            access_type: public_method
+            serialized_name: InternationalRefund
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getInternationalRefund
+                setter: setInternationalRefund
+            type: string
+        internationalReturnsWithin:
+            expose: true
+            access_type: public_method
+            serialized_name: InternationalReturnsWithin
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getInternationalReturnsWithin
+                setter: setInternationalReturnsWithin
+            type: string
+        internationalReturnsAccepted:
+            expose: true
+            access_type: public_method
+            serialized_name: InternationalReturnsAccepted
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getInternationalReturnsAccepted
+                setter: setInternationalReturnsAccepted
+            type: string
+        internationalShippingCostPaidBy:
+            expose: true
+            access_type: public_method
+            serialized_name: InternationalShippingCostPaidBy
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getInternationalShippingCostPaidBy
+                setter: setInternationalShippingCostPaidBy
+            type: string

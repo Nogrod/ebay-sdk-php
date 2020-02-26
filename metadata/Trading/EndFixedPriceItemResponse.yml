@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\Trading\EndFixedPriceItemResponse:
+    xml_root_name: EndFixedPriceItemResponse
+    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

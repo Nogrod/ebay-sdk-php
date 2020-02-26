@@ -1,0 +1,89 @@
+Nogrod\eBaySDK\Trading\GetVeROReportStatusResponseType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        paginationResult:
+            expose: true
+            access_type: public_method
+            serialized_name: PaginationResult
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPaginationResult
+                setter: setPaginationResult
+            type: Nogrod\eBaySDK\Trading\PaginationResultType
+        hasMoreItems:
+            expose: true
+            access_type: public_method
+            serialized_name: HasMoreItems
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getHasMoreItems
+                setter: setHasMoreItems
+            type: bool
+        itemsPerPage:
+            expose: true
+            access_type: public_method
+            serialized_name: ItemsPerPage
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getItemsPerPage
+                setter: setItemsPerPage
+            type: int
+        pageNumber:
+            expose: true
+            access_type: public_method
+            serialized_name: PageNumber
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPageNumber
+                setter: setPageNumber
+            type: int
+        veROReportPacketID:
+            expose: true
+            access_type: public_method
+            serialized_name: VeROReportPacketID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getVeROReportPacketID
+                setter: setVeROReportPacketID
+            type: int
+        veROReportPacketStatus:
+            expose: true
+            access_type: public_method
+            serialized_name: VeROReportPacketStatus
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getVeROReportPacketStatus
+                setter: setVeROReportPacketStatus
+            type: string
+        reportedItemDetails:
+            expose: true
+            access_type: public_method
+            serialized_name: ReportedItemDetails
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getReportedItemDetails
+                setter: setReportedItemDetails
+            type: array<Nogrod\eBaySDK\Trading\VeROReportedItemType>
+            xml_list:
+                inline: false
+                entry_name: ReportedItem
+                skip_when_empty: true
+                namespace: 'urn:ebay:apis:eBLBaseComponents'

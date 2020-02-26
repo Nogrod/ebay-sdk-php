@@ -1,0 +1,48 @@
+Nogrod\eBaySDK\Finding\FindItemsByProductRequestType:
+    virtual_properties:
+        ns_prop:
+            exp: '"http://www.ebay.com/marketplace/search/v1/services"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        productId:
+            expose: true
+            access_type: public_method
+            serialized_name: productId
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/search/v1/services'
+            accessor:
+                getter: getProductId
+                setter: setProductId
+            type: Nogrod\eBaySDK\Finding\ProductIdType
+        itemFilter:
+            expose: true
+            access_type: public_method
+            serialized_name: itemFilter
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/search/v1/services'
+            accessor:
+                getter: getItemFilter
+                setter: setItemFilter
+            xml_list:
+                inline: true
+                entry_name: itemFilter
+                namespace: 'http://www.ebay.com/marketplace/search/v1/services'
+            type: array<Nogrod\eBaySDK\Finding\ItemFilterType>
+        outputSelector:
+            expose: true
+            access_type: public_method
+            serialized_name: outputSelector
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/search/v1/services'
+            accessor:
+                getter: getOutputSelector
+                setter: setOutputSelector
+            xml_list:
+                inline: true
+                entry_name: outputSelector
+                namespace: 'http://www.ebay.com/marketplace/search/v1/services'
+            type: array<string>

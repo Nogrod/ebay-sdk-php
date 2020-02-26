@@ -1,0 +1,51 @@
+Nogrod\eBaySDK\Trading\GetStoreRequestType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        categoryStructureOnly:
+            expose: true
+            access_type: public_method
+            serialized_name: CategoryStructureOnly
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCategoryStructureOnly
+                setter: setCategoryStructureOnly
+            type: bool
+        rootCategoryID:
+            expose: true
+            access_type: public_method
+            serialized_name: RootCategoryID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getRootCategoryID
+                setter: setRootCategoryID
+            type: int
+        levelLimit:
+            expose: true
+            access_type: public_method
+            serialized_name: LevelLimit
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getLevelLimit
+                setter: setLevelLimit
+            type: int
+        userID:
+            expose: true
+            access_type: public_method
+            serialized_name: UserID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getUserID
+                setter: setUserID
+            type: string

@@ -1,0 +1,99 @@
+Nogrod\eBaySDK\MerchantData\PaymentTransactionCodeType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        paymentStatus:
+            expose: true
+            access_type: public_method
+            serialized_name: PaymentStatus
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPaymentStatus
+                setter: setPaymentStatus
+            type: string
+        payer:
+            expose: true
+            access_type: public_method
+            serialized_name: Payer
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPayer
+                setter: setPayer
+            type: Nogrod\eBaySDK\MerchantData\UserIdentityType
+        payee:
+            expose: true
+            access_type: public_method
+            serialized_name: Payee
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPayee
+                setter: setPayee
+            type: Nogrod\eBaySDK\MerchantData\UserIdentityType
+        paymentTime:
+            expose: true
+            access_type: public_method
+            serialized_name: PaymentTime
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPaymentTime
+                setter: setPaymentTime
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime
+        paymentAmount:
+            expose: true
+            access_type: public_method
+            serialized_name: PaymentAmount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPaymentAmount
+                setter: setPaymentAmount
+            type: Nogrod\eBaySDK\MerchantData\AmountType
+        referenceID:
+            expose: true
+            access_type: public_method
+            serialized_name: ReferenceID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getReferenceID
+                setter: setReferenceID
+            type: Nogrod\eBaySDK\MerchantData\TransactionReferenceType
+        feeOrCreditAmount:
+            expose: true
+            access_type: public_method
+            serialized_name: FeeOrCreditAmount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getFeeOrCreditAmount
+                setter: setFeeOrCreditAmount
+            type: Nogrod\eBaySDK\MerchantData\AmountType
+        paymentReferenceID:
+            expose: true
+            access_type: public_method
+            serialized_name: PaymentReferenceID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPaymentReferenceID
+                setter: setPaymentReferenceID
+            xml_list:
+                inline: true
+                entry_name: PaymentReferenceID
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<Nogrod\eBaySDK\MerchantData\TransactionReferenceType>

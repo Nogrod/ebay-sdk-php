@@ -1,0 +1,95 @@
+Nogrod\eBaySDK\Trading\MyeBaySelectionType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        include:
+            expose: true
+            access_type: public_method
+            serialized_name: Include
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getInclude
+                setter: setInclude
+            type: bool
+        includeItemCount:
+            expose: true
+            access_type: public_method
+            serialized_name: IncludeItemCount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getIncludeItemCount
+                setter: setIncludeItemCount
+            type: bool
+        includeFavoriteSearcheCount:
+            expose: true
+            access_type: public_method
+            serialized_name: IncludeFavoriteSearcheCount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getIncludeFavoriteSearcheCount
+                setter: setIncludeFavoriteSearcheCount
+            type: bool
+        includeFavoriteSellerCount:
+            expose: true
+            access_type: public_method
+            serialized_name: IncludeFavoriteSellerCount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getIncludeFavoriteSellerCount
+                setter: setIncludeFavoriteSellerCount
+            type: bool
+        sort:
+            expose: true
+            access_type: public_method
+            serialized_name: Sort
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSort
+                setter: setSort
+            type: string
+        maxResults:
+            expose: true
+            access_type: public_method
+            serialized_name: MaxResults
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getMaxResults
+                setter: setMaxResults
+            type: int
+        userDefinedListName:
+            expose: true
+            access_type: public_method
+            serialized_name: UserDefinedListName
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getUserDefinedListName
+                setter: setUserDefinedListName
+            type: string
+        includeListContents:
+            expose: true
+            access_type: public_method
+            serialized_name: IncludeListContents
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getIncludeListContents
+                setter: setIncludeListContents
+            type: bool

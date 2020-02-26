@@ -1,0 +1,21 @@
+BulkDataExchange:
+  url: https://developer.ebay.com/webservices/bulk-data-exchange/latest/BulkDataExchangeService.wsdl
+  xsd: https://developer.ebay.com/webservices/bulk-data-exchange/latest/BulkDataExchangeService.xsd
+FileTransfer:
+  url: https://developer.ebay.com/webservices/file-transfer/latest/FileTransferService.wsdl
+  xsd: https://developer.ebay.com/webservices/file-transfer/latest/FileTransferService.xsd
+Finding:
+  url: https://developer.ebay.com/webservices/Finding/latest/FindingService.wsdl
+  xsd: https://developer.ebay.com/webservices/Finding/latest/FindingService.xsd
+Shopping:
+  url: https://developer.ebay.com/webservices/latest/ShoppingService.wsdl
+  xsd: https://developer.ebay.com/webservices/latest/ShoppingService.xsd
+Trading:
+  url: https://developer.ebay.com/webservices/latest/ebaysvc.wsdl
+  xsd: https://developer.ebay.com/webservices/latest/ebaysvc.xsd
+MerchantData:
+  url: ~
+  xsd: https://developer.ebay.com/webservices/latest/merchantdataservice.xsd
+BusinessPoliciesManagement:
+  url: https://developer.ebay.com/webservices/business-policies/latest/SellerProfilesManagementService.wsdl
+  xsd: ~

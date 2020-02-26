@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\Trading\GetSellingManagerSaleRecordRequest:
+    xml_root_name: GetSellingManagerSaleRecordRequest
+    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

@@ -1,0 +1,62 @@
+Nogrod\eBaySDK\Trading\CancelDetailType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        cancelReason:
+            expose: true
+            access_type: public_method
+            serialized_name: CancelReason
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCancelReason
+                setter: setCancelReason
+            type: string
+        cancelReasonDetails:
+            expose: true
+            access_type: public_method
+            serialized_name: CancelReasonDetails
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCancelReasonDetails
+                setter: setCancelReasonDetails
+            type: string
+        cancelIntiator:
+            expose: true
+            access_type: public_method
+            serialized_name: CancelIntiator
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCancelIntiator
+                setter: setCancelIntiator
+            type: string
+        cancelIntiationDate:
+            expose: true
+            access_type: public_method
+            serialized_name: CancelIntiationDate
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCancelIntiationDate
+                setter: setCancelIntiationDate
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime
+        cancelCompleteDate:
+            expose: true
+            access_type: public_method
+            serialized_name: CancelCompleteDate
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCancelCompleteDate
+                setter: setCancelCompleteDate
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime

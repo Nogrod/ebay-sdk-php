@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\Trading\PlaceOfferRequest:
+    xml_root_name: PlaceOfferRequest
+    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

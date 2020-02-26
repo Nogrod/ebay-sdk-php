@@ -1,0 +1,62 @@
+Nogrod\eBaySDK\Trading\GetBidderListRequestType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        activeItemsOnly:
+            expose: true
+            access_type: public_method
+            serialized_name: ActiveItemsOnly
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getActiveItemsOnly
+                setter: setActiveItemsOnly
+            type: bool
+        endTimeFrom:
+            expose: true
+            access_type: public_method
+            serialized_name: EndTimeFrom
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getEndTimeFrom
+                setter: setEndTimeFrom
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime
+        endTimeTo:
+            expose: true
+            access_type: public_method
+            serialized_name: EndTimeTo
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getEndTimeTo
+                setter: setEndTimeTo
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime
+        userID:
+            expose: true
+            access_type: public_method
+            serialized_name: UserID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getUserID
+                setter: setUserID
+            type: string
+        granularityLevel:
+            expose: true
+            access_type: public_method
+            serialized_name: GranularityLevel
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getGranularityLevel
+                setter: setGranularityLevel
+            type: string

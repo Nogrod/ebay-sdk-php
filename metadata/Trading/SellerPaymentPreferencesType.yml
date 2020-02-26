@@ -1,0 +1,106 @@
+Nogrod\eBaySDK\Trading\SellerPaymentPreferencesType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        alwaysUseThisPaymentAddress:
+            expose: true
+            access_type: public_method
+            serialized_name: AlwaysUseThisPaymentAddress
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getAlwaysUseThisPaymentAddress
+                setter: setAlwaysUseThisPaymentAddress
+            type: bool
+        displayPayNowButton:
+            expose: true
+            access_type: public_method
+            serialized_name: DisplayPayNowButton
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getDisplayPayNowButton
+                setter: setDisplayPayNowButton
+            type: string
+        payPalPreferred:
+            expose: true
+            access_type: public_method
+            serialized_name: PayPalPreferred
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPayPalPreferred
+                setter: setPayPalPreferred
+            type: bool
+        defaultPayPalEmailAddress:
+            expose: true
+            access_type: public_method
+            serialized_name: DefaultPayPalEmailAddress
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getDefaultPayPalEmailAddress
+                setter: setDefaultPayPalEmailAddress
+            type: string
+        payPalAlwaysOn:
+            expose: true
+            access_type: public_method
+            serialized_name: PayPalAlwaysOn
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPayPalAlwaysOn
+                setter: setPayPalAlwaysOn
+            type: bool
+        sellerPaymentAddress:
+            expose: true
+            access_type: public_method
+            serialized_name: SellerPaymentAddress
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSellerPaymentAddress
+                setter: setSellerPaymentAddress
+            type: Nogrod\eBaySDK\Trading\AddressType
+        uPSRateOption:
+            expose: true
+            access_type: public_method
+            serialized_name: UPSRateOption
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getUPSRateOption
+                setter: setUPSRateOption
+            type: string
+        fedExRateOption:
+            expose: true
+            access_type: public_method
+            serialized_name: FedExRateOption
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getFedExRateOption
+                setter: setFedExRateOption
+            type: string
+        uSPSRateOption:
+            expose: true
+            access_type: public_method
+            serialized_name: USPSRateOption
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getUSPSRateOption
+                setter: setUSPSRateOption
+            type: string

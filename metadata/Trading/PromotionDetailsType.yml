@@ -1,0 +1,51 @@
+Nogrod\eBaySDK\Trading\PromotionDetailsType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        promotionPrice:
+            expose: true
+            access_type: public_method
+            serialized_name: PromotionPrice
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPromotionPrice
+                setter: setPromotionPrice
+            type: Nogrod\eBaySDK\Trading\AmountType
+        promotionPriceType:
+            expose: true
+            access_type: public_method
+            serialized_name: PromotionPriceType
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPromotionPriceType
+                setter: setPromotionPriceType
+            type: string
+        bidCount:
+            expose: true
+            access_type: public_method
+            serialized_name: BidCount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getBidCount
+                setter: setBidCount
+            type: int
+        convertedPromotionPrice:
+            expose: true
+            access_type: public_method
+            serialized_name: ConvertedPromotionPrice
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getConvertedPromotionPrice
+                setter: setConvertedPromotionPrice
+            type: Nogrod\eBaySDK\Trading\AmountType

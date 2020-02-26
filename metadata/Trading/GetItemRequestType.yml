@@ -1,0 +1,122 @@
+Nogrod\eBaySDK\Trading\GetItemRequestType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        itemID:
+            expose: true
+            access_type: public_method
+            serialized_name: ItemID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getItemID
+                setter: setItemID
+            type: string
+        includeWatchCount:
+            expose: true
+            access_type: public_method
+            serialized_name: IncludeWatchCount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getIncludeWatchCount
+                setter: setIncludeWatchCount
+            type: bool
+        includeCrossPromotion:
+            expose: true
+            access_type: public_method
+            serialized_name: IncludeCrossPromotion
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getIncludeCrossPromotion
+                setter: setIncludeCrossPromotion
+            type: bool
+        includeItemSpecifics:
+            expose: true
+            access_type: public_method
+            serialized_name: IncludeItemSpecifics
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getIncludeItemSpecifics
+                setter: setIncludeItemSpecifics
+            type: bool
+        includeTaxTable:
+            expose: true
+            access_type: public_method
+            serialized_name: IncludeTaxTable
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getIncludeTaxTable
+                setter: setIncludeTaxTable
+            type: bool
+        sKU:
+            expose: true
+            access_type: public_method
+            serialized_name: SKU
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSKU
+                setter: setSKU
+            type: string
+        variationSKU:
+            expose: true
+            access_type: public_method
+            serialized_name: VariationSKU
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getVariationSKU
+                setter: setVariationSKU
+            type: string
+        variationSpecifics:
+            expose: true
+            access_type: public_method
+            serialized_name: VariationSpecifics
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getVariationSpecifics
+                setter: setVariationSpecifics
+            type: array<Nogrod\eBaySDK\Trading\NameValueListType>
+            xml_list:
+                inline: false
+                entry_name: NameValueList
+                skip_when_empty: true
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+        transactionID:
+            expose: true
+            access_type: public_method
+            serialized_name: TransactionID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getTransactionID
+                setter: setTransactionID
+            type: string
+        includeItemCompatibilityList:
+            expose: true
+            access_type: public_method
+            serialized_name: IncludeItemCompatibilityList
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getIncludeItemCompatibilityList
+                setter: setIncludeItemCompatibilityList
+            type: bool

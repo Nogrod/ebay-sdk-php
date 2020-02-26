@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\Trading\AddTransactionConfirmationItemRequest:
+    xml_root_name: AddTransactionConfirmationItemRequest
+    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\Trading\GetNotificationsUsageRequest:
+    xml_root_name: GetNotificationsUsageRequest
+    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

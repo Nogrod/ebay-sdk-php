@@ -1,0 +1,29 @@
+Nogrod\eBaySDK\Trading\SetPromotionalSaleRequestType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        action:
+            expose: true
+            access_type: public_method
+            serialized_name: Action
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getAction
+                setter: setAction
+            type: string
+        promotionalSaleDetails:
+            expose: true
+            access_type: public_method
+            serialized_name: PromotionalSaleDetails
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPromotionalSaleDetails
+                setter: setPromotionalSaleDetails
+            type: Nogrod\eBaySDK\Trading\PromotionalSaleType

@@ -1,0 +1,45 @@
+Nogrod\eBaySDK\Trading\GetMemberMessagesResponseType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        memberMessage:
+            expose: true
+            access_type: public_method
+            serialized_name: MemberMessage
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getMemberMessage
+                setter: setMemberMessage
+            type: array<Nogrod\eBaySDK\Trading\MemberMessageExchangeType>
+            xml_list:
+                inline: false
+                entry_name: MemberMessageExchange
+                skip_when_empty: true
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+        paginationResult:
+            expose: true
+            access_type: public_method
+            serialized_name: PaginationResult
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPaginationResult
+                setter: setPaginationResult
+            type: Nogrod\eBaySDK\Trading\PaginationResultType
+        hasMoreItems:
+            expose: true
+            access_type: public_method
+            serialized_name: HasMoreItems
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getHasMoreItems
+                setter: setHasMoreItems
+            type: bool

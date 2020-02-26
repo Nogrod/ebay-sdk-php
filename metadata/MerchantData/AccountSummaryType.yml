@@ -1,0 +1,231 @@
+Nogrod\eBaySDK\MerchantData\AccountSummaryType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        accountState:
+            expose: true
+            access_type: public_method
+            serialized_name: AccountState
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getAccountState
+                setter: setAccountState
+            type: string
+        invoicePayment:
+            expose: true
+            access_type: public_method
+            serialized_name: InvoicePayment
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getInvoicePayment
+                setter: setInvoicePayment
+            type: Nogrod\eBaySDK\MerchantData\AmountType
+        invoiceCredit:
+            expose: true
+            access_type: public_method
+            serialized_name: InvoiceCredit
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getInvoiceCredit
+                setter: setInvoiceCredit
+            type: Nogrod\eBaySDK\MerchantData\AmountType
+        invoiceNewFee:
+            expose: true
+            access_type: public_method
+            serialized_name: InvoiceNewFee
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getInvoiceNewFee
+                setter: setInvoiceNewFee
+            type: Nogrod\eBaySDK\MerchantData\AmountType
+        additionalAccount:
+            expose: true
+            access_type: public_method
+            serialized_name: AdditionalAccount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getAdditionalAccount
+                setter: setAdditionalAccount
+            xml_list:
+                inline: true
+                entry_name: AdditionalAccount
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<Nogrod\eBaySDK\MerchantData\AdditionalAccountType>
+        amountPastDue:
+            expose: true
+            access_type: public_method
+            serialized_name: AmountPastDue
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getAmountPastDue
+                setter: setAmountPastDue
+            type: Nogrod\eBaySDK\MerchantData\AmountType
+        bankAccountInfo:
+            expose: true
+            access_type: public_method
+            serialized_name: BankAccountInfo
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getBankAccountInfo
+                setter: setBankAccountInfo
+            type: string
+        bankModifyDate:
+            expose: true
+            access_type: public_method
+            serialized_name: BankModifyDate
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getBankModifyDate
+                setter: setBankModifyDate
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime
+        billingCycleDate:
+            expose: true
+            access_type: public_method
+            serialized_name: BillingCycleDate
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getBillingCycleDate
+                setter: setBillingCycleDate
+            type: int
+        creditCardExpiration:
+            expose: true
+            access_type: public_method
+            serialized_name: CreditCardExpiration
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCreditCardExpiration
+                setter: setCreditCardExpiration
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime
+        creditCardInfo:
+            expose: true
+            access_type: public_method
+            serialized_name: CreditCardInfo
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCreditCardInfo
+                setter: setCreditCardInfo
+            type: string
+        creditCardModifyDate:
+            expose: true
+            access_type: public_method
+            serialized_name: CreditCardModifyDate
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCreditCardModifyDate
+                setter: setCreditCardModifyDate
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime
+        currentBalance:
+            expose: true
+            access_type: public_method
+            serialized_name: CurrentBalance
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCurrentBalance
+                setter: setCurrentBalance
+            type: Nogrod\eBaySDK\MerchantData\AmountType
+        email:
+            expose: true
+            access_type: public_method
+            serialized_name: Email
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getEmail
+                setter: setEmail
+            type: string
+        invoiceBalance:
+            expose: true
+            access_type: public_method
+            serialized_name: InvoiceBalance
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getInvoiceBalance
+                setter: setInvoiceBalance
+            type: Nogrod\eBaySDK\MerchantData\AmountType
+        invoiceDate:
+            expose: true
+            access_type: public_method
+            serialized_name: InvoiceDate
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getInvoiceDate
+                setter: setInvoiceDate
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime
+        lastAmountPaid:
+            expose: true
+            access_type: public_method
+            serialized_name: LastAmountPaid
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getLastAmountPaid
+                setter: setLastAmountPaid
+            type: Nogrod\eBaySDK\MerchantData\AmountType
+        lastPaymentDate:
+            expose: true
+            access_type: public_method
+            serialized_name: LastPaymentDate
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getLastPaymentDate
+                setter: setLastPaymentDate
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime
+        pastDue:
+            expose: true
+            access_type: public_method
+            serialized_name: PastDue
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPastDue
+                setter: setPastDue
+            type: bool
+        paymentMethod:
+            expose: true
+            access_type: public_method
+            serialized_name: PaymentMethod
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPaymentMethod
+                setter: setPaymentMethod
+            type: string

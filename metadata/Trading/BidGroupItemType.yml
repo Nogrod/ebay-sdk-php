@@ -1,0 +1,40 @@
+Nogrod\eBaySDK\Trading\BidGroupItemType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        item:
+            expose: true
+            access_type: public_method
+            serialized_name: Item
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getItem
+                setter: setItem
+            type: Nogrod\eBaySDK\Trading\ItemType
+        bidGroupItemStatus:
+            expose: true
+            access_type: public_method
+            serialized_name: BidGroupItemStatus
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getBidGroupItemStatus
+                setter: setBidGroupItemStatus
+            type: string
+        maxBidAmount:
+            expose: true
+            access_type: public_method
+            serialized_name: MaxBidAmount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getMaxBidAmount
+                setter: setMaxBidAmount
+            type: Nogrod\eBaySDK\Trading\AmountType
