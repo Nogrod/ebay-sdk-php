@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\MerchantData;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing StoreFontType
  *
@@ -372,57 +374,41 @@ class StoreFontType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}NameFace');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}NameFace');
         if (null !== $value) {
             $this->setNameFace($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}NameSize');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}NameSize');
         if (null !== $value) {
             $this->setNameSize($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}NameColor');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}NameColor');
         if (null !== $value) {
             $this->setNameColor($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TitleFace');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TitleFace');
         if (null !== $value) {
             $this->setTitleFace($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TitleSize');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TitleSize');
         if (null !== $value) {
             $this->setTitleSize($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TitleColor');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TitleColor');
         if (null !== $value) {
             $this->setTitleColor($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DescFace');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DescFace');
         if (null !== $value) {
             $this->setDescFace($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DescSize');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DescSize');
         if (null !== $value) {
             $this->setDescSize($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DescColor');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DescColor');
         if (null !== $value) {
             $this->setDescColor($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Trading;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing MaximumBuyerPolicyViolationsDetailsType
  *
@@ -190,31 +192,15 @@ class MaximumBuyerPolicyViolationsDetailsType implements \Sabre\Xml\XmlSerializa
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}NumberOfPolicyViolations', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}NumberOfPolicyViolations', true);
         if (null !== $value && !empty($value)) {
             $this->setNumberOfPolicyViolations($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PolicyViolationDuration', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PolicyViolationDuration', true);
         if (null !== $value && !empty($value)) {
             $this->setPolicyViolationDuration(array_map(function ($v) {
                 return \Nogrod\eBaySDK\Trading\PolicyViolationDurationDetailsType::fromKeyValue($v);
             }, $value));
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\BusinessPoliciesManagement;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing BaseResponseType
  *
@@ -291,45 +293,29 @@ class BaseResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}ack');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}ack');
         if (null !== $value) {
             $this->setAck($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}errorMessage', true);
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}errorMessage', true);
         if (null !== $value && !empty($value)) {
             $this->setErrorMessage(array_map(function ($v) {
                 return \Nogrod\eBaySDK\BusinessPoliciesManagement\ErrorDataType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}version');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}version');
         if (null !== $value) {
             $this->setVersion($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}timestamp');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}timestamp');
         if (null !== $value) {
             $this->setTimestamp(new \DateTime($value));
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}extension', true);
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}extension', true);
         if (null !== $value && !empty($value)) {
             $this->setExtension(array_map(function ($v) {
                 return \Nogrod\eBaySDK\BusinessPoliciesManagement\ExtensionType::fromKeyValue($v);
             }, $value));
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

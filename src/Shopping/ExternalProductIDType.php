@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Shopping;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing ExternalProductIDType
  *
@@ -195,37 +197,21 @@ class ExternalProductIDType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Value');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Value');
         if (null !== $value) {
             $this->setValue($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReturnSearchResultOnDuplicates');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReturnSearchResultOnDuplicates');
         if (null !== $value) {
             $this->setReturnSearchResultOnDuplicates($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Type');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Type');
         if (null !== $value) {
             $this->setType($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AlternateValue', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AlternateValue', true);
         if (null !== $value && !empty($value)) {
             $this->setAlternateValue($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

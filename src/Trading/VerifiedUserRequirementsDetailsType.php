@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Trading;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing VerifiedUserRequirementsDetailsType
  *
@@ -131,29 +133,13 @@ class VerifiedUserRequirementsDetailsType implements \Sabre\Xml\XmlSerializable,
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}VerifiedUser');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}VerifiedUser');
         if (null !== $value) {
             $this->setVerifiedUser($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeedbackScore', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeedbackScore', true);
         if (null !== $value && !empty($value)) {
             $this->setFeedbackScore($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

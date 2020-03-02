@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\MerchantData;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing MyMessagesForwardDetailsType
  *
@@ -104,29 +106,13 @@ class MyMessagesForwardDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UserForwardDate');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UserForwardDate');
         if (null !== $value) {
             $this->setUserForwardDate(new \DateTime($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ForwardMessageEncoding');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ForwardMessageEncoding');
         if (null !== $value) {
             $this->setForwardMessageEncoding($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

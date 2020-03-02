@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Finding;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing SearchItemType
  *
@@ -2095,169 +2097,153 @@ class SearchItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}itemId');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}itemId');
         if (null !== $value) {
             $this->setItemId($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}title');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}title');
         if (null !== $value) {
             $this->setTitle($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}globalId');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}globalId');
         if (null !== $value) {
             $this->setGlobalId($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}subtitle');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}subtitle');
         if (null !== $value) {
             $this->setSubtitle($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}primaryCategory');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}primaryCategory');
         if (null !== $value) {
             $this->setPrimaryCategory(\Nogrod\eBaySDK\Finding\CategoryType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}secondaryCategory');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}secondaryCategory');
         if (null !== $value) {
             $this->setSecondaryCategory(\Nogrod\eBaySDK\Finding\CategoryType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}galleryURL');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}galleryURL');
         if (null !== $value) {
             $this->setGalleryURL($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}galleryInfoContainer', true);
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}galleryInfoContainer', true);
         if (null !== $value && !empty($value)) {
             $this->setGalleryInfoContainer(array_map(function ($v) {
                 return \Nogrod\eBaySDK\Finding\GalleryURLType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}viewItemURL');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}viewItemURL');
         if (null !== $value) {
             $this->setViewItemURL($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}charityId');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}charityId');
         if (null !== $value) {
             $this->setCharityId($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}productId');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}productId');
         if (null !== $value) {
             $this->setProductId(\Nogrod\eBaySDK\Finding\ProductIdType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}paymentMethod', true);
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}paymentMethod', true);
         if (null !== $value && !empty($value)) {
             $this->setPaymentMethod($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}autoPay');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}autoPay');
         if (null !== $value) {
             $this->setAutoPay($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}postalCode');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}postalCode');
         if (null !== $value) {
             $this->setPostalCode($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}location');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}location');
         if (null !== $value) {
             $this->setLocation($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}country');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}country');
         if (null !== $value) {
             $this->setCountry($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}storeInfo');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}storeInfo');
         if (null !== $value) {
             $this->setStoreInfo(\Nogrod\eBaySDK\Finding\StorefrontType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}sellerInfo');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}sellerInfo');
         if (null !== $value) {
             $this->setSellerInfo(\Nogrod\eBaySDK\Finding\SellerInfoType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}shippingInfo');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}shippingInfo');
         if (null !== $value) {
             $this->setShippingInfo(\Nogrod\eBaySDK\Finding\ShippingInfoType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}sellingStatus');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}sellingStatus');
         if (null !== $value) {
             $this->setSellingStatus(\Nogrod\eBaySDK\Finding\SellingStatusType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}listingInfo');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}listingInfo');
         if (null !== $value) {
             $this->setListingInfo(\Nogrod\eBaySDK\Finding\ListingInfoType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}returnsAccepted');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}returnsAccepted');
         if (null !== $value) {
             $this->setReturnsAccepted($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}galleryPlusPictureURL', true);
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}galleryPlusPictureURL', true);
         if (null !== $value && !empty($value)) {
             $this->setGalleryPlusPictureURL($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}compatibility');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}compatibility');
         if (null !== $value) {
             $this->setCompatibility($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}distance');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}distance');
         if (null !== $value) {
             $this->setDistance(\Nogrod\eBaySDK\Finding\DistanceType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}condition');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}condition');
         if (null !== $value) {
             $this->setCondition(\Nogrod\eBaySDK\Finding\ConditionType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}isMultiVariationListing');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}isMultiVariationListing');
         if (null !== $value) {
             $this->setIsMultiVariationListing($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}discountPriceInfo');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}discountPriceInfo');
         if (null !== $value) {
             $this->setDiscountPriceInfo(\Nogrod\eBaySDK\Finding\DiscountPriceInfoType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}pictureURLSuperSize');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}pictureURLSuperSize');
         if (null !== $value) {
             $this->setPictureURLSuperSize($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}pictureURLLarge');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}pictureURLLarge');
         if (null !== $value) {
             $this->setPictureURLLarge($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}unitPrice');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}unitPrice');
         if (null !== $value) {
             $this->setUnitPrice(\Nogrod\eBaySDK\Finding\UnitPriceInfoType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}attribute', true);
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}attribute', true);
         if (null !== $value && !empty($value)) {
             $this->setAttribute(array_map(function ($v) {
                 return \Nogrod\eBaySDK\Finding\ItemAttributeType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}topRatedListing');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}topRatedListing');
         if (null !== $value) {
             $this->setTopRatedListing($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}delimiter');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}delimiter');
         if (null !== $value) {
             $this->setDelimiter($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}eekStatus', true);
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}eekStatus', true);
         if (null !== $value && !empty($value)) {
             $this->setEekStatus($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}eBayPlusEnabled');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}eBayPlusEnabled');
         if (null !== $value) {
             $this->setEBayPlusEnabled($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

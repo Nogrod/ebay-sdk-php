@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\MerchantData;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing BidGroupType
  *
@@ -222,39 +224,23 @@ class BidGroupType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BidGroupItem', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BidGroupItem', true);
         if (null !== $value && !empty($value)) {
             $this->setBidGroupItem(array_map(function ($v) {
                 return \Nogrod\eBaySDK\MerchantData\BidGroupItemType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BidGroupID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BidGroupID');
         if (null !== $value) {
             $this->setBidGroupID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BidGroupName');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BidGroupName');
         if (null !== $value) {
             $this->setBidGroupName($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BidGroupStatus');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BidGroupStatus');
         if (null !== $value) {
             $this->setBidGroupStatus($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

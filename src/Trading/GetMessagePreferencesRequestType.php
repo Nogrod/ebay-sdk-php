@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Trading;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing GetMessagePreferencesRequestType
  *
@@ -107,29 +109,13 @@ class GetMessagePreferencesRequestType extends AbstractRequestType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerID');
         if (null !== $value) {
             $this->setSellerID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}IncludeASQPreferences');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}IncludeASQPreferences');
         if (null !== $value) {
             $this->setIncludeASQPreferences($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Shopping;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing FindReviewsAndGuidesRequestType
  *
@@ -312,49 +314,33 @@ class FindReviewsAndGuidesRequestType extends AbstractRequestType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ProductID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ProductID');
         if (null !== $value) {
             $this->setProductID(\Nogrod\eBaySDK\Shopping\ProductIDType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UserID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UserID');
         if (null !== $value) {
             $this->setUserID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CategoryID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CategoryID');
         if (null !== $value) {
             $this->setCategoryID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MaxResultsPerPage');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MaxResultsPerPage');
         if (null !== $value) {
             $this->setMaxResultsPerPage($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PageNumber');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PageNumber');
         if (null !== $value) {
             $this->setPageNumber($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReviewSort');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReviewSort');
         if (null !== $value) {
             $this->setReviewSort($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SortOrder');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SortOrder');
         if (null !== $value) {
             $this->setSortOrder($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

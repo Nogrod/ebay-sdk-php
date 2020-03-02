@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\MerchantData;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing ShipmentType
  *
@@ -1255,139 +1257,123 @@ class ShipmentType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EstimatedDeliveryDate');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EstimatedDeliveryDate');
         if (null !== $value) {
             $this->setEstimatedDeliveryDate(new \DateTime($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}InsuredValue');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}InsuredValue');
         if (null !== $value) {
             $this->setInsuredValue(\Nogrod\eBaySDK\MerchantData\AmountType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PackageDepth');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PackageDepth');
         if (null !== $value) {
             $this->setPackageDepth(\Nogrod\eBaySDK\MerchantData\MeasureType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PackageLength');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PackageLength');
         if (null !== $value) {
             $this->setPackageLength(\Nogrod\eBaySDK\MerchantData\MeasureType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PackageWidth');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PackageWidth');
         if (null !== $value) {
             $this->setPackageWidth(\Nogrod\eBaySDK\MerchantData\MeasureType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PayPalShipmentID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PayPalShipmentID');
         if (null !== $value) {
             $this->setPayPalShipmentID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShipmentID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShipmentID');
         if (null !== $value) {
             $this->setShipmentID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PostageTotal');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PostageTotal');
         if (null !== $value) {
             $this->setPostageTotal(\Nogrod\eBaySDK\MerchantData\AmountType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PrintedTime');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PrintedTime');
         if (null !== $value) {
             $this->setPrintedTime(new \DateTime($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShipFromAddress');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShipFromAddress');
         if (null !== $value) {
             $this->setShipFromAddress(\Nogrod\eBaySDK\MerchantData\AddressType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingAddress');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingAddress');
         if (null !== $value) {
             $this->setShippingAddress(\Nogrod\eBaySDK\MerchantData\AddressType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingCarrierUsed');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingCarrierUsed');
         if (null !== $value) {
             $this->setShippingCarrierUsed($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingFeature', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingFeature', true);
         if (null !== $value && !empty($value)) {
             $this->setShippingFeature($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingPackage');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingPackage');
         if (null !== $value) {
             $this->setShippingPackage($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingServiceUsed');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingServiceUsed');
         if (null !== $value) {
             $this->setShippingServiceUsed($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShipmentTrackingNumber');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShipmentTrackingNumber');
         if (null !== $value) {
             $this->setShipmentTrackingNumber($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}WeightMajor');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}WeightMajor');
         if (null !== $value) {
             $this->setWeightMajor(\Nogrod\eBaySDK\MerchantData\MeasureType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}WeightMinor');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}WeightMinor');
         if (null !== $value) {
             $this->setWeightMinor(\Nogrod\eBaySDK\MerchantData\MeasureType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemTransactionID', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemTransactionID', true);
         if (null !== $value && !empty($value)) {
             $this->setItemTransactionID(array_map(function ($v) {
                 return \Nogrod\eBaySDK\MerchantData\ItemTransactionIDType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DeliveryDate');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DeliveryDate');
         if (null !== $value) {
             $this->setDeliveryDate(new \DateTime($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DeliveryStatus');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DeliveryStatus');
         if (null !== $value) {
             $this->setDeliveryStatus($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RefundGrantedTime');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RefundGrantedTime');
         if (null !== $value) {
             $this->setRefundGrantedTime(new \DateTime($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RefundRequestedTime');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RefundRequestedTime');
         if (null !== $value) {
             $this->setRefundRequestedTime(new \DateTime($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Status');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Status');
         if (null !== $value) {
             $this->setStatus($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippedTime');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippedTime');
         if (null !== $value) {
             $this->setShippedTime(new \DateTime($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Notes');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Notes');
         if (null !== $value) {
             $this->setNotes($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShipmentTrackingDetails', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShipmentTrackingDetails', true);
         if (null !== $value && !empty($value)) {
             $this->setShipmentTrackingDetails(array_map(function ($v) {
                 return \Nogrod\eBaySDK\MerchantData\ShipmentTrackingDetailsType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShipmentLineItem', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShipmentLineItem', true);
         if (null !== $value && !empty($value)) {
             $this->setShipmentLineItem(array_map(function ($v) {
                 return \Nogrod\eBaySDK\MerchantData\LineItemType::fromKeyValue($v);
             }, $value));
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

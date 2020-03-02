@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\BusinessPoliciesManagement;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing PaymentInfoType
  *
@@ -255,45 +257,29 @@ class PaymentInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}acceptedPaymentMethod', true);
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}acceptedPaymentMethod', true);
         if (null !== $value && !empty($value)) {
             $this->setAcceptedPaymentMethod($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}immediatePay');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}immediatePay');
         if (null !== $value) {
             $this->setImmediatePay($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}paymentInstructions');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}paymentInstructions');
         if (null !== $value) {
             $this->setPaymentInstructions($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}paypalEmailAddress');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}paypalEmailAddress');
         if (null !== $value) {
             $this->setPaypalEmailAddress($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}depositDetails');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}depositDetails');
         if (null !== $value) {
             $this->setDepositDetails(\Nogrod\eBaySDK\BusinessPoliciesManagement\DepositDetailsType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}daysToFullPayment');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}daysToFullPayment');
         if (null !== $value) {
             $this->setDaysToFullPayment($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

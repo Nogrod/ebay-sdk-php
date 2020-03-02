@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Trading;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing GetAllBiddersRequestType
  *
@@ -146,33 +148,17 @@ class GetAllBiddersRequestType extends AbstractRequestType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemID');
         if (null !== $value) {
             $this->setItemID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CallMode');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CallMode');
         if (null !== $value) {
             $this->setCallMode($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}IncludeBiddingSummary');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}IncludeBiddingSummary');
         if (null !== $value) {
             $this->setIncludeBiddingSummary($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Trading;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing ShipmentTrackingDetailsType
  *
@@ -238,35 +240,19 @@ class ShipmentTrackingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingCarrierUsed');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingCarrierUsed');
         if (null !== $value) {
             $this->setShippingCarrierUsed($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShipmentTrackingNumber');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShipmentTrackingNumber');
         if (null !== $value) {
             $this->setShipmentTrackingNumber($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShipmentLineItem', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShipmentLineItem', true);
         if (null !== $value && !empty($value)) {
             $this->setShipmentLineItem(array_map(function ($v) {
                 return \Nogrod\eBaySDK\Trading\LineItemType::fromKeyValue($v);
             }, $value));
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Trading;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing MyMessagesAlertType
  *
@@ -809,105 +811,89 @@ class MyMessagesAlertType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Sender');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Sender');
         if (null !== $value) {
             $this->setSender($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RecipientUserID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RecipientUserID');
         if (null !== $value) {
             $this->setRecipientUserID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Subject');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Subject');
         if (null !== $value) {
             $this->setSubject($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Priority');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Priority');
         if (null !== $value) {
             $this->setPriority($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AlertID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AlertID');
         if (null !== $value) {
             $this->setAlertID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExternalAlertID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExternalAlertID');
         if (null !== $value) {
             $this->setExternalAlertID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ContentType');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ContentType');
         if (null !== $value) {
             $this->setContentType($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Text');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Text');
         if (null !== $value) {
             $this->setText($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ResolutionStatus');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ResolutionStatus');
         if (null !== $value) {
             $this->setResolutionStatus($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Read');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Read');
         if (null !== $value) {
             $this->setRead($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CreationDate');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CreationDate');
         if (null !== $value) {
             $this->setCreationDate(new \DateTime($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReceiveDate');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReceiveDate');
         if (null !== $value) {
             $this->setReceiveDate(new \DateTime($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExpirationDate');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExpirationDate');
         if (null !== $value) {
             $this->setExpirationDate(new \DateTime($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ResolutionDate');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ResolutionDate');
         if (null !== $value) {
             $this->setResolutionDate(new \DateTime($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LastReadDate');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LastReadDate');
         if (null !== $value) {
             $this->setLastReadDate(new \DateTime($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemID');
         if (null !== $value) {
             $this->setItemID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}IsTimedResolution');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}IsTimedResolution');
         if (null !== $value) {
             $this->setIsTimedResolution($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ActionURL');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ActionURL');
         if (null !== $value) {
             $this->setActionURL($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ResponseDetails');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ResponseDetails');
         if (null !== $value) {
             $this->setResponseDetails(\Nogrod\eBaySDK\Trading\MyMessagesResponseDetailsType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ForwardDetails');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ForwardDetails');
         if (null !== $value) {
             $this->setForwardDetails(\Nogrod\eBaySDK\Trading\MyMessagesForwardDetailsType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Folder');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Folder');
         if (null !== $value) {
             $this->setFolder(\Nogrod\eBaySDK\Trading\MyMessagesFolderType::fromKeyValue($value));
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Trading;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing GetStoreRequestType
  *
@@ -186,37 +188,21 @@ class GetStoreRequestType extends AbstractRequestType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CategoryStructureOnly');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CategoryStructureOnly');
         if (null !== $value) {
             $this->setCategoryStructureOnly($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RootCategoryID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RootCategoryID');
         if (null !== $value) {
             $this->setRootCategoryID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LevelLimit');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LevelLimit');
         if (null !== $value) {
             $this->setLevelLimit($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UserID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UserID');
         if (null !== $value) {
             $this->setUserID($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

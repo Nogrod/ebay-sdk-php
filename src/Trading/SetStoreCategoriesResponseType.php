@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Trading;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing SetStoreCategoriesResponseType
  *
@@ -214,35 +216,19 @@ class SetStoreCategoriesResponseType extends AbstractResponseType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TaskID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TaskID');
         if (null !== $value) {
             $this->setTaskID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Status');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Status');
         if (null !== $value) {
             $this->setStatus($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CustomCategory', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CustomCategory', true);
         if (null !== $value && !empty($value)) {
             $this->setCustomCategory(array_map(function ($v) {
                 return \Nogrod\eBaySDK\Trading\StoreCustomCategoryType::fromKeyValue($v);
             }, $value));
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

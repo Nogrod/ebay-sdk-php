@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\MerchantData;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing EBayPLUSPreferenceType
  *
@@ -162,33 +164,17 @@ class EBayPLUSPreferenceType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Country');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Country');
         if (null !== $value) {
             $this->setCountry($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}OptInStatus');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}OptInStatus');
         if (null !== $value) {
             $this->setOptInStatus($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ListingPreference');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ListingPreference');
         if (null !== $value) {
             $this->setListingPreference($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

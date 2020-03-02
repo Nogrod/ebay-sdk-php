@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\MerchantData;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing MyeBaySellingSummaryType
  *
@@ -589,73 +591,57 @@ class MyeBaySellingSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ActiveAuctionCount');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ActiveAuctionCount');
         if (null !== $value) {
             $this->setActiveAuctionCount($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AuctionSellingCount');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AuctionSellingCount');
         if (null !== $value) {
             $this->setAuctionSellingCount($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AuctionBidCount');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AuctionBidCount');
         if (null !== $value) {
             $this->setAuctionBidCount($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TotalAuctionSellingValue');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TotalAuctionSellingValue');
         if (null !== $value) {
             $this->setTotalAuctionSellingValue(\Nogrod\eBaySDK\MerchantData\AmountType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TotalSoldCount');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TotalSoldCount');
         if (null !== $value) {
             $this->setTotalSoldCount($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TotalSoldValue');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TotalSoldValue');
         if (null !== $value) {
             $this->setTotalSoldValue(\Nogrod\eBaySDK\MerchantData\AmountType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SoldDurationInDays');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SoldDurationInDays');
         if (null !== $value) {
             $this->setSoldDurationInDays($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ClassifiedAdCount');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ClassifiedAdCount');
         if (null !== $value) {
             $this->setClassifiedAdCount($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TotalLeadCount');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TotalLeadCount');
         if (null !== $value) {
             $this->setTotalLeadCount($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ClassifiedAdOfferCount');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ClassifiedAdOfferCount');
         if (null !== $value) {
             $this->setClassifiedAdOfferCount($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TotalListingsWithLeads');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TotalListingsWithLeads');
         if (null !== $value) {
             $this->setTotalListingsWithLeads($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}QuantityLimitRemaining');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}QuantityLimitRemaining');
         if (null !== $value) {
             $this->setQuantityLimitRemaining($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AmountLimitRemaining');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AmountLimitRemaining');
         if (null !== $value) {
             $this->setAmountLimitRemaining(\Nogrod\eBaySDK\MerchantData\AmountType::fromKeyValue($value));
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

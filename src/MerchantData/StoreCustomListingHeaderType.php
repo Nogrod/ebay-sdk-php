@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\MerchantData;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing StoreCustomListingHeaderType
  *
@@ -306,47 +308,31 @@ class StoreCustomListingHeaderType implements \Sabre\Xml\XmlSerializable, \Sabre
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DisplayType');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DisplayType');
         if (null !== $value) {
             $this->setDisplayType($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Logo');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Logo');
         if (null !== $value) {
             $this->setLogo($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SearchBox');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SearchBox');
         if (null !== $value) {
             $this->setSearchBox($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LinkToInclude', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LinkToInclude', true);
         if (null !== $value && !empty($value)) {
             $this->setLinkToInclude(array_map(function ($v) {
                 return \Nogrod\eBaySDK\MerchantData\StoreCustomListingHeaderLinkType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AddToFavoriteStores');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AddToFavoriteStores');
         if (null !== $value) {
             $this->setAddToFavoriteStores($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SignUpForStoreNewsletter');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SignUpForStoreNewsletter');
         if (null !== $value) {
             $this->setSignUpForStoreNewsletter($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

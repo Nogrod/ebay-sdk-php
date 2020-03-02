@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\MerchantData;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing PaymentDetailsType
  *
@@ -329,37 +331,21 @@ class PaymentDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}HoursToDeposit');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}HoursToDeposit');
         if (null !== $value) {
             $this->setHoursToDeposit($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DaysToFullPayment');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DaysToFullPayment');
         if (null !== $value) {
             $this->setDaysToFullPayment($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DepositAmount');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DepositAmount');
         if (null !== $value) {
             $this->setDepositAmount(\Nogrod\eBaySDK\MerchantData\AmountType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DepositType');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DepositType');
         if (null !== $value) {
             $this->setDepositType($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

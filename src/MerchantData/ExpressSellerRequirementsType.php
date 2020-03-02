@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\MerchantData;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing ExpressSellerRequirementsType
  *
@@ -575,69 +577,53 @@ class ExpressSellerRequirementsType implements \Sabre\Xml\XmlSerializable, \Sabr
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExpressSellingPreference');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExpressSellingPreference');
         if (null !== $value) {
             $this->setExpressSellingPreference($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExpressApproved');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExpressApproved');
         if (null !== $value) {
             $this->setExpressApproved($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}GoodStanding');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}GoodStanding');
         if (null !== $value) {
             $this->setGoodStanding($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeedbackScore');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeedbackScore');
         if (null !== $value) {
             $this->setFeedbackScore(\Nogrod\eBaySDK\MerchantData\FeedbackRequirementsType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PositiveFeedbackPercent');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PositiveFeedbackPercent');
         if (null !== $value) {
             $this->setPositiveFeedbackPercent(\Nogrod\eBaySDK\MerchantData\FeedbackRequirementsType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeedbackAsSellerScore');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeedbackAsSellerScore');
         if (null !== $value) {
             $this->setFeedbackAsSellerScore(\Nogrod\eBaySDK\MerchantData\FeedbackRequirementsType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PositiveFeedbackAsSellerPercent');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PositiveFeedbackAsSellerPercent');
         if (null !== $value) {
             $this->setPositiveFeedbackAsSellerPercent(\Nogrod\eBaySDK\MerchantData\FeedbackRequirementsType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BusinessSeller');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BusinessSeller');
         if (null !== $value) {
             $this->setBusinessSeller($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EligiblePayPalAccount');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EligiblePayPalAccount');
         if (null !== $value) {
             $this->setEligiblePayPalAccount($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PayPalAccountAcceptsUnconfirmedAddress');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PayPalAccountAcceptsUnconfirmedAddress');
         if (null !== $value) {
             $this->setPayPalAccountAcceptsUnconfirmedAddress($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CombinedPaymentsAccepted');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CombinedPaymentsAccepted');
         if (null !== $value) {
             $this->setCombinedPaymentsAccepted($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeedbackPublic');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeedbackPublic');
         if (null !== $value) {
             $this->setFeedbackPublic($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

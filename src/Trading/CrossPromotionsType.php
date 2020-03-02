@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Trading;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing CrossPromotionsType
  *
@@ -334,51 +336,35 @@ class CrossPromotionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemID');
         if (null !== $value) {
             $this->setItemID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PrimaryScheme');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PrimaryScheme');
         if (null !== $value) {
             $this->setPrimaryScheme($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PromotionMethod');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PromotionMethod');
         if (null !== $value) {
             $this->setPromotionMethod($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerID');
         if (null !== $value) {
             $this->setSellerID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingDiscount');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingDiscount');
         if (null !== $value) {
             $this->setShippingDiscount($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}StoreName');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}StoreName');
         if (null !== $value) {
             $this->setStoreName($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PromotedItem', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PromotedItem', true);
         if (null !== $value && !empty($value)) {
             $this->setPromotedItem(array_map(function ($v) {
                 return \Nogrod\eBaySDK\Trading\PromotedItemType::fromKeyValue($v);
             }, $value));
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

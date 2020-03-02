@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\MerchantData;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing DiscountProfileType
  *
@@ -340,49 +342,33 @@ class DiscountProfileType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DiscountProfileID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DiscountProfileID');
         if (null !== $value) {
             $this->setDiscountProfileID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DiscountProfileName');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DiscountProfileName');
         if (null !== $value) {
             $this->setDiscountProfileName($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EachAdditionalAmount');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EachAdditionalAmount');
         if (null !== $value) {
             $this->setEachAdditionalAmount(\Nogrod\eBaySDK\MerchantData\AmountType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EachAdditionalAmountOff');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EachAdditionalAmountOff');
         if (null !== $value) {
             $this->setEachAdditionalAmountOff(\Nogrod\eBaySDK\MerchantData\AmountType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EachAdditionalPercentOff');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EachAdditionalPercentOff');
         if (null !== $value) {
             $this->setEachAdditionalPercentOff($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}WeightOff');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}WeightOff');
         if (null !== $value) {
             $this->setWeightOff(\Nogrod\eBaySDK\MerchantData\MeasureType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MappedDiscountProfileID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MappedDiscountProfileID');
         if (null !== $value) {
             $this->setMappedDiscountProfileID($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

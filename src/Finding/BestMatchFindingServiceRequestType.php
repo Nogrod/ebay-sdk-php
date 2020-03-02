@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Finding;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing BestMatchFindingServiceRequestType
  *
@@ -226,33 +228,17 @@ class BestMatchFindingServiceRequestType extends BaseServiceRequestType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}paginationInput');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}paginationInput');
         if (null !== $value) {
             $this->setPaginationInput(\Nogrod\eBaySDK\Finding\PaginationInputType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}buyerPostalCode');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}buyerPostalCode');
         if (null !== $value) {
             $this->setBuyerPostalCode($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}affiliate');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}affiliate');
         if (null !== $value) {
             $this->setAffiliate(\Nogrod\eBaySDK\Finding\AffiliateType::fromKeyValue($value));
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

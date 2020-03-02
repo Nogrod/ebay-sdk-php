@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\MerchantData;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing SupportedSellerProfileType
  *
@@ -238,41 +240,25 @@ class SupportedSellerProfileType implements \Sabre\Xml\XmlSerializable, \Sabre\X
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ProfileID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ProfileID');
         if (null !== $value) {
             $this->setProfileID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ProfileType');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ProfileType');
         if (null !== $value) {
             $this->setProfileType($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ProfileName');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ProfileName');
         if (null !== $value) {
             $this->setProfileName($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShortSummary');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShortSummary');
         if (null !== $value) {
             $this->setShortSummary($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CategoryGroup');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CategoryGroup');
         if (null !== $value) {
             $this->setCategoryGroup(\Nogrod\eBaySDK\MerchantData\CategoryGroupType::fromKeyValue($value));
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

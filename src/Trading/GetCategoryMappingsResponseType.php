@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Trading;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing GetCategoryMappingsResponseType
  *
@@ -172,31 +174,15 @@ class GetCategoryMappingsResponseType extends AbstractResponseType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CategoryMapping', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CategoryMapping', true);
         if (null !== $value && !empty($value)) {
             $this->setCategoryMapping(array_map(function ($v) {
                 return \Nogrod\eBaySDK\Trading\CategoryMappingType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CategoryVersion');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CategoryVersion');
         if (null !== $value) {
             $this->setCategoryVersion($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

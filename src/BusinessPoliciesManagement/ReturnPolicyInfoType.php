@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\BusinessPoliciesManagement;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing ReturnPolicyInfoType
  *
@@ -340,61 +342,45 @@ class ReturnPolicyInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}description');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}description');
         if (null !== $value) {
             $this->setDescription($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}refundOption');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}refundOption');
         if (null !== $value) {
             $this->setRefundOption($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}shippingCostPaidByOption');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}shippingCostPaidByOption');
         if (null !== $value) {
             $this->setShippingCostPaidByOption($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}returnsWithinOption');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}returnsWithinOption');
         if (null !== $value) {
             $this->setReturnsWithinOption($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}returnsAcceptedOption');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}returnsAcceptedOption');
         if (null !== $value) {
             $this->setReturnsAcceptedOption($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}warrantyOfferedOption');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}warrantyOfferedOption');
         if (null !== $value) {
             $this->setWarrantyOfferedOption($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}warrantyTypeOption');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}warrantyTypeOption');
         if (null !== $value) {
             $this->setWarrantyTypeOption($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}warrantyDurationOption');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}warrantyDurationOption');
         if (null !== $value) {
             $this->setWarrantyDurationOption($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}restockingFeeValue');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}restockingFeeValue');
         if (null !== $value) {
             $this->setRestockingFeeValue($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}holidayReturns');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}holidayReturns');
         if (null !== $value) {
             $this->setHolidayReturns($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

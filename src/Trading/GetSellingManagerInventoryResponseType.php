@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Trading;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing GetSellingManagerInventoryResponseType
  *
@@ -192,35 +194,19 @@ class GetSellingManagerInventoryResponseType extends AbstractResponseType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}InventoryCountLastCalculatedDate');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}InventoryCountLastCalculatedDate');
         if (null !== $value) {
             $this->setInventoryCountLastCalculatedDate(new \DateTime($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellingManagerProduct', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellingManagerProduct', true);
         if (null !== $value && !empty($value)) {
             $this->setSellingManagerProduct(array_map(function ($v) {
                 return \Nogrod\eBaySDK\Trading\SellingManagerProductType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaginationResult');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaginationResult');
         if (null !== $value) {
             $this->setPaginationResult(\Nogrod\eBaySDK\Trading\PaginationResultType::fromKeyValue($value));
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

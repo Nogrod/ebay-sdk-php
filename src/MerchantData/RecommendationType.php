@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\MerchantData;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing RecommendationType
  *
@@ -223,41 +225,25 @@ class RecommendationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FieldGroup');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FieldGroup');
         if (null !== $value) {
             $this->setFieldGroup($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FieldName');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FieldName');
         if (null !== $value) {
             $this->setFieldName($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RecommendationCode');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RecommendationCode');
         if (null !== $value) {
             $this->setRecommendationCode($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RecommendedValue', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RecommendedValue', true);
         if (null !== $value && !empty($value)) {
             $this->setRecommendedValue($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Message');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Message');
         if (null !== $value) {
             $this->setMessage($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

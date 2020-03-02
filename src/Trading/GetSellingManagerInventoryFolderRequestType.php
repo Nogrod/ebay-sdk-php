@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Trading;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing GetSellingManagerInventoryFolderRequestType
  *
@@ -148,33 +150,17 @@ class GetSellingManagerInventoryFolderRequestType extends AbstractRequestType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FolderID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FolderID');
         if (null !== $value) {
             $this->setFolderID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MaxDepth');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MaxDepth');
         if (null !== $value) {
             $this->setMaxDepth($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FullRecursion');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FullRecursion');
         if (null !== $value) {
             $this->setFullRecursion($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\BulkDataExchange;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing FeeSettlementReportFilterType
  *
@@ -73,25 +75,9 @@ class FeeSettlementReportFilterType implements \Sabre\Xml\XmlSerializable, \Sabr
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}startTime');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}startTime');
         if (null !== $value) {
             $this->setStartTime(new \DateTime($value));
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Trading;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing PromotionRuleType
  *
@@ -363,57 +365,41 @@ class PromotionRuleType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PromotedStoreCategoryID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PromotedStoreCategoryID');
         if (null !== $value) {
             $this->setPromotedStoreCategoryID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PromotedeBayCategoryID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PromotedeBayCategoryID');
         if (null !== $value) {
             $this->setPromotedeBayCategoryID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PromotedKeywords');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PromotedKeywords');
         if (null !== $value) {
             $this->setPromotedKeywords($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReferringItemID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReferringItemID');
         if (null !== $value) {
             $this->setReferringItemID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReferringStoreCategoryID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReferringStoreCategoryID');
         if (null !== $value) {
             $this->setReferringStoreCategoryID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReferringeBayCategoryID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReferringeBayCategoryID');
         if (null !== $value) {
             $this->setReferringeBayCategoryID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReferringKeywords');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReferringKeywords');
         if (null !== $value) {
             $this->setReferringKeywords($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PromotionScheme');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PromotionScheme');
         if (null !== $value) {
             $this->setPromotionScheme($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PromotionMethod');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PromotionMethod');
         if (null !== $value) {
             $this->setPromotionMethod($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

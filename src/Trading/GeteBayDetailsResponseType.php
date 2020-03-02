@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Trading;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing GeteBayDetailsResponseType
  *
@@ -2922,173 +2924,157 @@ class GeteBayDetailsResponseType extends AbstractResponseType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CountryDetails', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CountryDetails', true);
         if (null !== $value && !empty($value)) {
             $this->setCountryDetails(array_map(function ($v) {
                 return \Nogrod\eBaySDK\Trading\CountryDetailsType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CurrencyDetails', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CurrencyDetails', true);
         if (null !== $value && !empty($value)) {
             $this->setCurrencyDetails(array_map(function ($v) {
                 return \Nogrod\eBaySDK\Trading\CurrencyDetailsType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DispatchTimeMaxDetails', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DispatchTimeMaxDetails', true);
         if (null !== $value && !empty($value)) {
             $this->setDispatchTimeMaxDetails(array_map(function ($v) {
                 return \Nogrod\eBaySDK\Trading\DispatchTimeMaxDetailsType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaymentOptionDetails', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaymentOptionDetails', true);
         if (null !== $value && !empty($value)) {
             $this->setPaymentOptionDetails(array_map(function ($v) {
                 return \Nogrod\eBaySDK\Trading\PaymentOptionDetailsType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RegionDetails', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RegionDetails', true);
         if (null !== $value && !empty($value)) {
             $this->setRegionDetails(array_map(function ($v) {
                 return \Nogrod\eBaySDK\Trading\RegionDetailsType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingLocationDetails', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingLocationDetails', true);
         if (null !== $value && !empty($value)) {
             $this->setShippingLocationDetails(array_map(function ($v) {
                 return \Nogrod\eBaySDK\Trading\ShippingLocationDetailsType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingServiceDetails', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingServiceDetails', true);
         if (null !== $value && !empty($value)) {
             $this->setShippingServiceDetails(array_map(function ($v) {
                 return \Nogrod\eBaySDK\Trading\ShippingServiceDetailsType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SiteDetails', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SiteDetails', true);
         if (null !== $value && !empty($value)) {
             $this->setSiteDetails(array_map(function ($v) {
                 return \Nogrod\eBaySDK\Trading\SiteDetailsType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TaxJurisdiction', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TaxJurisdiction', true);
         if (null !== $value && !empty($value)) {
             $this->setTaxJurisdiction(array_map(function ($v) {
                 return \Nogrod\eBaySDK\Trading\TaxJurisdictionType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}URLDetails', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}URLDetails', true);
         if (null !== $value && !empty($value)) {
             $this->setURLDetails(array_map(function ($v) {
                 return \Nogrod\eBaySDK\Trading\URLDetailsType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TimeZoneDetails', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TimeZoneDetails', true);
         if (null !== $value && !empty($value)) {
             $this->setTimeZoneDetails(array_map(function ($v) {
                 return \Nogrod\eBaySDK\Trading\TimeZoneDetailsType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemSpecificDetails', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemSpecificDetails', true);
         if (null !== $value && !empty($value)) {
             $this->setItemSpecificDetails(array_map(function ($v) {
                 return \Nogrod\eBaySDK\Trading\ItemSpecificDetailsType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UnitOfMeasurementDetails', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UnitOfMeasurementDetails', true);
         if (null !== $value && !empty($value)) {
             $this->setUnitOfMeasurementDetails(array_map(function ($v) {
                 return \Nogrod\eBaySDK\Trading\UnitOfMeasurementDetailsType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RegionOfOriginDetails', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RegionOfOriginDetails', true);
         if (null !== $value && !empty($value)) {
             $this->setRegionOfOriginDetails(array_map(function ($v) {
                 return \Nogrod\eBaySDK\Trading\RegionOfOriginDetailsType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingPackageDetails', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingPackageDetails', true);
         if (null !== $value && !empty($value)) {
             $this->setShippingPackageDetails(array_map(function ($v) {
                 return \Nogrod\eBaySDK\Trading\ShippingPackageDetailsType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingCarrierDetails', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingCarrierDetails', true);
         if (null !== $value && !empty($value)) {
             $this->setShippingCarrierDetails(array_map(function ($v) {
                 return \Nogrod\eBaySDK\Trading\ShippingCarrierDetailsType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReturnPolicyDetails');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReturnPolicyDetails');
         if (null !== $value) {
             $this->setReturnPolicyDetails(\Nogrod\eBaySDK\Trading\ReturnPolicyDetailsType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}InternationalReturnPolicyDetails');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}InternationalReturnPolicyDetails');
         if (null !== $value) {
             $this->setInternationalReturnPolicyDetails(\Nogrod\eBaySDK\Trading\ReturnPolicyDetailsType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ListingStartPriceDetails', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ListingStartPriceDetails', true);
         if (null !== $value && !empty($value)) {
             $this->setListingStartPriceDetails(array_map(function ($v) {
                 return \Nogrod\eBaySDK\Trading\ListingStartPriceDetailsType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BuyerRequirementDetails', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BuyerRequirementDetails', true);
         if (null !== $value && !empty($value)) {
             $this->setBuyerRequirementDetails(array_map(function ($v) {
                 return \Nogrod\eBaySDK\Trading\SiteBuyerRequirementDetailsType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ListingFeatureDetails', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ListingFeatureDetails', true);
         if (null !== $value && !empty($value)) {
             $this->setListingFeatureDetails(array_map(function ($v) {
                 return \Nogrod\eBaySDK\Trading\ListingFeatureDetailsType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}VariationDetails');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}VariationDetails');
         if (null !== $value) {
             $this->setVariationDetails(\Nogrod\eBaySDK\Trading\VariationDetailsType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExcludeShippingLocationDetails', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExcludeShippingLocationDetails', true);
         if (null !== $value && !empty($value)) {
             $this->setExcludeShippingLocationDetails(array_map(function ($v) {
                 return \Nogrod\eBaySDK\Trading\ExcludeShippingLocationDetailsType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UpdateTime');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UpdateTime');
         if (null !== $value) {
             $this->setUpdateTime(new \DateTime($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RecoupmentPolicyDetails', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RecoupmentPolicyDetails', true);
         if (null !== $value && !empty($value)) {
             $this->setRecoupmentPolicyDetails(array_map(function ($v) {
                 return \Nogrod\eBaySDK\Trading\RecoupmentPolicyDetailsType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingCategoryDetails', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingCategoryDetails', true);
         if (null !== $value && !empty($value)) {
             $this->setShippingCategoryDetails(array_map(function ($v) {
                 return \Nogrod\eBaySDK\Trading\ShippingCategoryDetailsType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ProductDetails');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ProductDetails');
         if (null !== $value) {
             $this->setProductDetails(\Nogrod\eBaySDK\Trading\ProductDetailsType::fromKeyValue($value));
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

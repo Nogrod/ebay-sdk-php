@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Trading;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing CharityAffiliationDetailType
  *
@@ -150,33 +152,17 @@ class CharityAffiliationDetailType implements \Sabre\Xml\XmlSerializable, \Sabre
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CharityID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CharityID');
         if (null !== $value) {
             $this->setCharityID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AffiliationType');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AffiliationType');
         if (null !== $value) {
             $this->setAffiliationType($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LastUsedTime');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LastUsedTime');
         if (null !== $value) {
             $this->setLastUsedTime(new \DateTime($value));
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

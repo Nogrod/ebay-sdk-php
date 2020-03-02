@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\MerchantData;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing PromotionalSaleType
  *
@@ -444,57 +446,41 @@ class PromotionalSaleType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PromotionalSaleID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PromotionalSaleID');
         if (null !== $value) {
             $this->setPromotionalSaleID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PromotionalSaleName');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PromotionalSaleName');
         if (null !== $value) {
             $this->setPromotionalSaleName($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PromotionalSaleItemIDArray', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PromotionalSaleItemIDArray', true);
         if (null !== $value && !empty($value)) {
             $this->setPromotionalSaleItemIDArray($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Status');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Status');
         if (null !== $value) {
             $this->setStatus($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DiscountType');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DiscountType');
         if (null !== $value) {
             $this->setDiscountType($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DiscountValue');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DiscountValue');
         if (null !== $value) {
             $this->setDiscountValue($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PromotionalSaleStartTime');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PromotionalSaleStartTime');
         if (null !== $value) {
             $this->setPromotionalSaleStartTime(new \DateTime($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PromotionalSaleEndTime');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PromotionalSaleEndTime');
         if (null !== $value) {
             $this->setPromotionalSaleEndTime(new \DateTime($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PromotionalSaleType');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PromotionalSaleType');
         if (null !== $value) {
             $this->setPromotionalSaleType($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

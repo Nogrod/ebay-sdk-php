@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\MerchantData;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing NeighborhoodAffiliationsType
  *
@@ -111,25 +113,9 @@ class NeighborhoodAffiliationsType implements \Sabre\Xml\XmlSerializable, \Sabre
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}NeighborhoodID', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}NeighborhoodID', true);
         if (null !== $value && !empty($value)) {
             $this->setNeighborhoodID($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

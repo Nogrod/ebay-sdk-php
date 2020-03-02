@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Trading;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing ReviseMyMessagesFoldersRequestType
  *
@@ -280,33 +282,17 @@ class ReviseMyMessagesFoldersRequestType extends AbstractRequestType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Operation');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Operation');
         if (null !== $value) {
             $this->setOperation($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FolderID', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FolderID', true);
         if (null !== $value && !empty($value)) {
             $this->setFolderID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FolderName', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FolderName', true);
         if (null !== $value && !empty($value)) {
             $this->setFolderName($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

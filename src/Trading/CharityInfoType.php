@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Trading;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing CharityInfoType
  *
@@ -1108,113 +1110,97 @@ class CharityInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Name');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Name');
         if (null !== $value) {
             $this->setName($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ListingNPEmailNotifPref');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ListingNPEmailNotifPref');
         if (null !== $value) {
             $this->setListingNPEmailNotifPref($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ListingNPEmail');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ListingNPEmail');
         if (null !== $value) {
             $this->setListingNPEmail($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ListingNPContactName');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ListingNPContactName');
         if (null !== $value) {
             $this->setListingNPContactName($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Mission');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Mission');
         if (null !== $value) {
             $this->setMission($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LogoURL');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LogoURL');
         if (null !== $value) {
             $this->setLogoURL($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Status');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Status');
         if (null !== $value) {
             $this->setStatus($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SearchableString');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SearchableString');
         if (null !== $value) {
             $this->setSearchableString($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CharityRegion');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CharityRegion');
         if (null !== $value) {
             $this->setCharityRegion($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CharityDomain', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CharityDomain', true);
         if (null !== $value && !empty($value)) {
             $this->setCharityDomain($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CharityID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CharityID');
         if (null !== $value) {
             $this->setCharityID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LogoURLSelling');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LogoURLSelling');
         if (null !== $value) {
             $this->setLogoURLSelling($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DisplayLogoSelling');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DisplayLogoSelling');
         if (null !== $value) {
             $this->setDisplayLogoSelling($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DisplayNameInCheckout');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DisplayNameInCheckout');
         if (null !== $value) {
             $this->setDisplayNameInCheckout($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Description');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Description');
         if (null !== $value) {
             $this->setDescription($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShowMultipleDonationAmountInCheckout');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShowMultipleDonationAmountInCheckout');
         if (null !== $value) {
             $this->setShowMultipleDonationAmountInCheckout($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExternalID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExternalID');
         if (null !== $value) {
             $this->setExternalID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PopularityIndex');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PopularityIndex');
         if (null !== $value) {
             $this->setPopularityIndex($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EIN');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EIN');
         if (null !== $value) {
             $this->setEIN($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}NonProfitSecondName');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}NonProfitSecondName');
         if (null !== $value) {
             $this->setNonProfitSecondName($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}NonProfitAddress', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}NonProfitAddress', true);
         if (null !== $value && !empty($value)) {
             $this->setNonProfitAddress(array_map(function ($v) {
                 return \Nogrod\eBaySDK\Trading\NonProfitAddressType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}NonProfitSocialAddress', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}NonProfitSocialAddress', true);
         if (null !== $value && !empty($value)) {
             $this->setNonProfitSocialAddress(array_map(function ($v) {
                 return \Nogrod\eBaySDK\Trading\NonProfitSocialAddressType::fromKeyValue($v);
             }, $value));
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Trading;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing GetCategoryFeaturesResponseType
  *
@@ -365,43 +367,27 @@ class GetCategoryFeaturesResponseType extends AbstractResponseType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CategoryVersion');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CategoryVersion');
         if (null !== $value) {
             $this->setCategoryVersion($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UpdateTime');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UpdateTime');
         if (null !== $value) {
             $this->setUpdateTime(new \DateTime($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Category', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Category', true);
         if (null !== $value && !empty($value)) {
             $this->setCategory(array_map(function ($v) {
                 return \Nogrod\eBaySDK\Trading\CategoryFeatureType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SiteDefaults');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SiteDefaults');
         if (null !== $value) {
             $this->setSiteDefaults(\Nogrod\eBaySDK\Trading\SiteDefaultsType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeatureDefinitions');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeatureDefinitions');
         if (null !== $value) {
             $this->setFeatureDefinitions(\Nogrod\eBaySDK\Trading\FeatureDefinitionsType::fromKeyValue($value));
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

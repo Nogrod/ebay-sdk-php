@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Trading;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing AddTransactionConfirmationItemRequestType
  *
@@ -336,53 +338,37 @@ class AddTransactionConfirmationItemRequestType extends AbstractRequestType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RecipientUserID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RecipientUserID');
         if (null !== $value) {
             $this->setRecipientUserID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}VerifyEligibilityOnly');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}VerifyEligibilityOnly');
         if (null !== $value) {
             $this->setVerifyEligibilityOnly($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RecipientPostalCode');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RecipientPostalCode');
         if (null !== $value) {
             $this->setRecipientPostalCode($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RecipientRelationType');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RecipientRelationType');
         if (null !== $value) {
             $this->setRecipientRelationType($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}NegotiatedPrice');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}NegotiatedPrice');
         if (null !== $value) {
             $this->setNegotiatedPrice(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ListingDuration');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ListingDuration');
         if (null !== $value) {
             $this->setListingDuration($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemID');
         if (null !== $value) {
             $this->setItemID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Comments');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Comments');
         if (null !== $value) {
             $this->setComments($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

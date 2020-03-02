@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Finding;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing DiscountPriceInfoType
  *
@@ -187,41 +189,25 @@ class DiscountPriceInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}originalRetailPrice');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}originalRetailPrice');
         if (null !== $value) {
             $this->setOriginalRetailPrice(\Nogrod\eBaySDK\Finding\AmountType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}minimumAdvertisedPriceExposure');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}minimumAdvertisedPriceExposure');
         if (null !== $value) {
             $this->setMinimumAdvertisedPriceExposure($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}pricingTreatment');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}pricingTreatment');
         if (null !== $value) {
             $this->setPricingTreatment($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}soldOnEbay');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}soldOnEbay');
         if (null !== $value) {
             $this->setSoldOnEbay($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}soldOffEbay');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}soldOffEbay');
         if (null !== $value) {
             $this->setSoldOffEbay($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

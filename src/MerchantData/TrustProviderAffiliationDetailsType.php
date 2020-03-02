@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\MerchantData;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing TrustProviderAffiliationDetailsType
  *
@@ -141,33 +143,17 @@ class TrustProviderAffiliationDetailsType implements \Sabre\Xml\XmlSerializable,
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TrustProviderID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TrustProviderID');
         if (null !== $value) {
             $this->setTrustProviderID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Tier');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Tier');
         if (null !== $value) {
             $this->setTier($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DegreeOfSeparation');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DegreeOfSeparation');
         if (null !== $value) {
             $this->setDegreeOfSeparation($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\MerchantData;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing DeliveryDetailsType
  *
@@ -116,29 +118,13 @@ class DeliveryDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Recipient');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Recipient');
         if (null !== $value) {
             $this->setRecipient(\Nogrod\eBaySDK\MerchantData\DigitalDeliveryUserType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Sender');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Sender');
         if (null !== $value) {
             $this->setSender(\Nogrod\eBaySDK\MerchantData\DigitalDeliveryUserType::fromKeyValue($value));
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

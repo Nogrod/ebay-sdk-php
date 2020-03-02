@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\MerchantData;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing PaymentHoldDetailType
  *
@@ -269,37 +271,21 @@ class PaymentHoldDetailType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExpectedReleaseDate');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExpectedReleaseDate');
         if (null !== $value) {
             $this->setExpectedReleaseDate(new \DateTime($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RequiredSellerActionArray', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RequiredSellerActionArray', true);
         if (null !== $value && !empty($value)) {
             $this->setRequiredSellerActionArray($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}NumOfReqSellerActions');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}NumOfReqSellerActions');
         if (null !== $value) {
             $this->setNumOfReqSellerActions($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaymentHoldReason');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaymentHoldReason');
         if (null !== $value) {
             $this->setPaymentHoldReason($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

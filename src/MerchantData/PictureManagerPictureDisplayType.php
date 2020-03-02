@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\MerchantData;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing PictureManagerPictureDisplayType
  *
@@ -215,41 +217,25 @@ class PictureManagerPictureDisplayType implements \Sabre\Xml\XmlSerializable, \S
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DisplayType');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DisplayType');
         if (null !== $value) {
             $this->setDisplayType($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}URL');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}URL');
         if (null !== $value) {
             $this->setURL($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Size');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Size');
         if (null !== $value) {
             $this->setSize($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Height');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Height');
         if (null !== $value) {
             $this->setHeight($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Width');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Width');
         if (null !== $value) {
             $this->setWidth($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

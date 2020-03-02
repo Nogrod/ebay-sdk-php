@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\BusinessPoliciesManagement;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing ReturnPolicyProfileType
  *
@@ -93,29 +95,13 @@ class ReturnPolicyProfileType extends SellerProfileType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}returnPolicyInfo');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}returnPolicyInfo');
         if (null !== $value) {
             $this->setReturnPolicyInfo(\Nogrod\eBaySDK\BusinessPoliciesManagement\ReturnPolicyInfoType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}internationalReturnPolicyInfo');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}internationalReturnPolicyInfo');
         if (null !== $value) {
             $this->setInternationalReturnPolicyInfo(\Nogrod\eBaySDK\BusinessPoliciesManagement\InternationalReturnPolicyInfoType::fromKeyValue($value));
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

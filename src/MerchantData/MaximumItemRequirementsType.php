@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\MerchantData;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing MaximumItemRequirementsType
  *
@@ -185,29 +187,13 @@ class MaximumItemRequirementsType implements \Sabre\Xml\XmlSerializable, \Sabre\
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MaximumItemCount');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MaximumItemCount');
         if (null !== $value) {
             $this->setMaximumItemCount($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MinimumFeedbackScore');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MinimumFeedbackScore');
         if (null !== $value) {
             $this->setMinimumFeedbackScore($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Trading;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing UnpaidItemAssistancePreferencesType
  *
@@ -456,45 +458,29 @@ class UnpaidItemAssistancePreferencesType implements \Sabre\Xml\XmlSerializable,
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DelayBeforeOpeningDispute');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DelayBeforeOpeningDispute');
         if (null !== $value) {
             $this->setDelayBeforeOpeningDispute($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}OptInStatus');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}OptInStatus');
         if (null !== $value) {
             $this->setOptInStatus($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AutoRelist');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AutoRelist');
         if (null !== $value) {
             $this->setAutoRelist($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RemoveAllExcludedUsers');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RemoveAllExcludedUsers');
         if (null !== $value) {
             $this->setRemoveAllExcludedUsers($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExcludedUser', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExcludedUser', true);
         if (null !== $value && !empty($value)) {
             $this->setExcludedUser($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AutoOptDonationRefund');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AutoOptDonationRefund');
         if (null !== $value) {
             $this->setAutoOptDonationRefund($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

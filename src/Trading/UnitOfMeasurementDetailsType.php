@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Trading;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing UnitOfMeasurementDetailsType
  *
@@ -185,35 +187,19 @@ class UnitOfMeasurementDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UnitOfMeasurement', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UnitOfMeasurement', true);
         if (null !== $value && !empty($value)) {
             $this->setUnitOfMeasurement(array_map(function ($v) {
                 return \Nogrod\eBaySDK\Trading\UnitOfMeasurementType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DetailVersion');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DetailVersion');
         if (null !== $value) {
             $this->setDetailVersion($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UpdateTime');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UpdateTime');
         if (null !== $value) {
             $this->setUpdateTime(new \DateTime($value));
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

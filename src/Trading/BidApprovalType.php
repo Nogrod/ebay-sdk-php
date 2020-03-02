@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Trading;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing BidApprovalType
  *
@@ -154,37 +156,21 @@ class BidApprovalType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UserID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UserID');
         if (null !== $value) {
             $this->setUserID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ApprovedBiddingLimit');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ApprovedBiddingLimit');
         if (null !== $value) {
             $this->setApprovedBiddingLimit(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DeclinedComment');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DeclinedComment');
         if (null !== $value) {
             $this->setDeclinedComment($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Status');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Status');
         if (null !== $value) {
             $this->setStatus($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

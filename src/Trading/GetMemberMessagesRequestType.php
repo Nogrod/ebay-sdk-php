@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Trading;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing GetMemberMessagesRequestType
  *
@@ -417,57 +419,41 @@ class GetMemberMessagesRequestType extends AbstractRequestType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemID');
         if (null !== $value) {
             $this->setItemID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MailMessageType');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MailMessageType');
         if (null !== $value) {
             $this->setMailMessageType($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MessageStatus');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MessageStatus');
         if (null !== $value) {
             $this->setMessageStatus($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DisplayToPublic');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DisplayToPublic');
         if (null !== $value) {
             $this->setDisplayToPublic($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}StartCreationTime');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}StartCreationTime');
         if (null !== $value) {
             $this->setStartCreationTime(new \DateTime($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EndCreationTime');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EndCreationTime');
         if (null !== $value) {
             $this->setEndCreationTime(new \DateTime($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Pagination');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Pagination');
         if (null !== $value) {
             $this->setPagination(\Nogrod\eBaySDK\Trading\PaginationType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MemberMessageID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MemberMessageID');
         if (null !== $value) {
             $this->setMemberMessageID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SenderID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SenderID');
         if (null !== $value) {
             $this->setSenderID($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

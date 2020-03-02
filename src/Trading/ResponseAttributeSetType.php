@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Trading;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing ResponseAttributeSetType
  *
@@ -379,53 +381,37 @@ class ResponseAttributeSetType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ApproximatePages');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ApproximatePages');
         if (null !== $value) {
             $this->setApproximatePages($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AttributeSetID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AttributeSetID');
         if (null !== $value) {
             $this->setAttributeSetID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}HasMore');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}HasMore');
         if (null !== $value) {
             $this->setHasMore($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ProductFamilies', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ProductFamilies', true);
         if (null !== $value && !empty($value)) {
             $this->setProductFamilies(array_map(function ($v) {
                 return \Nogrod\eBaySDK\Trading\ProductFamilyType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ProductFinderConstraints', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ProductFinderConstraints', true);
         if (null !== $value && !empty($value)) {
             $this->setProductFinderConstraints(array_map(function ($v) {
                 return \Nogrod\eBaySDK\Trading\ProductFinderConstraintType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TooManyMatchesFound');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TooManyMatchesFound');
         if (null !== $value) {
             $this->setTooManyMatchesFound($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TotalProducts');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TotalProducts');
         if (null !== $value) {
             $this->setTotalProducts($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

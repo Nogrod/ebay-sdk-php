@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Finding;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing SellerInfoType
  *
@@ -541,45 +543,29 @@ class SellerInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}sellerUserName');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}sellerUserName');
         if (null !== $value) {
             $this->setSellerUserName($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}feedbackScore');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}feedbackScore');
         if (null !== $value) {
             $this->setFeedbackScore($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}positiveFeedbackPercent');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}positiveFeedbackPercent');
         if (null !== $value) {
             $this->setPositiveFeedbackPercent($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}feedbackRatingStar');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}feedbackRatingStar');
         if (null !== $value) {
             $this->setFeedbackRatingStar($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}topRatedSeller');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}topRatedSeller');
         if (null !== $value) {
             $this->setTopRatedSeller($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}delimiter');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}delimiter');
         if (null !== $value) {
             $this->setDelimiter($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

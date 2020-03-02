@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Trading;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing RespondToBestOfferRequestType
  *
@@ -304,45 +306,29 @@ class RespondToBestOfferRequestType extends AbstractRequestType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemID');
         if (null !== $value) {
             $this->setItemID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BestOfferID', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BestOfferID', true);
         if (null !== $value && !empty($value)) {
             $this->setBestOfferID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Action');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Action');
         if (null !== $value) {
             $this->setAction($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerResponse');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerResponse');
         if (null !== $value) {
             $this->setSellerResponse($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CounterOfferPrice');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CounterOfferPrice');
         if (null !== $value) {
             $this->setCounterOfferPrice(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CounterOfferQuantity');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CounterOfferQuantity');
         if (null !== $value) {
             $this->setCounterOfferQuantity($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

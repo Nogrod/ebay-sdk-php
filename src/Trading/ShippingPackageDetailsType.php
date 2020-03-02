@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Trading;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing ShippingPackageDetailsType
  *
@@ -318,49 +320,33 @@ class ShippingPackageDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PackageID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PackageID');
         if (null !== $value) {
             $this->setPackageID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Description');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Description');
         if (null !== $value) {
             $this->setDescription($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingPackage');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingPackage');
         if (null !== $value) {
             $this->setShippingPackage($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DefaultValue');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DefaultValue');
         if (null !== $value) {
             $this->setDefaultValue($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DimensionsSupported');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DimensionsSupported');
         if (null !== $value) {
             $this->setDimensionsSupported($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DetailVersion');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DetailVersion');
         if (null !== $value) {
             $this->setDetailVersion($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UpdateTime');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UpdateTime');
         if (null !== $value) {
             $this->setUpdateTime(new \DateTime($value));
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

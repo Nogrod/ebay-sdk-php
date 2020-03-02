@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\MerchantData;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing SellingManagerAutoListAccordingToScheduleType
  *
@@ -337,49 +339,33 @@ class SellingManagerAutoListAccordingToScheduleType implements \Sabre\Xml\XmlSer
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DayOfWeek', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DayOfWeek', true);
         if (null !== $value && !empty($value)) {
             $this->setDayOfWeek($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ListingPeriodInWeeks');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ListingPeriodInWeeks');
         if (null !== $value) {
             $this->setListingPeriodInWeeks($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ListAtSpecificTimeOfDay');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ListAtSpecificTimeOfDay');
         if (null !== $value) {
             $this->setListAtSpecificTimeOfDay($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}StartTime');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}StartTime');
         if (null !== $value) {
             $this->setStartTime(new \DateTime($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EndTime');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EndTime');
         if (null !== $value) {
             $this->setEndTime(new \DateTime($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MaxActiveItemCount');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MaxActiveItemCount');
         if (null !== $value) {
             $this->setMaxActiveItemCount($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ListingHoldInventoryLevel');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ListingHoldInventoryLevel');
         if (null !== $value) {
             $this->setListingHoldInventoryLevel($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

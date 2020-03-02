@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Finding;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing ListingInfoType
  *
@@ -702,57 +704,41 @@ class ListingInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}bestOfferEnabled');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}bestOfferEnabled');
         if (null !== $value) {
             $this->setBestOfferEnabled($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}buyItNowAvailable');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}buyItNowAvailable');
         if (null !== $value) {
             $this->setBuyItNowAvailable($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}buyItNowPrice');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}buyItNowPrice');
         if (null !== $value) {
             $this->setBuyItNowPrice(\Nogrod\eBaySDK\Finding\AmountType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}convertedBuyItNowPrice');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}convertedBuyItNowPrice');
         if (null !== $value) {
             $this->setConvertedBuyItNowPrice(\Nogrod\eBaySDK\Finding\AmountType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}startTime');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}startTime');
         if (null !== $value) {
             $this->setStartTime(new \DateTime($value));
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}endTime');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}endTime');
         if (null !== $value) {
             $this->setEndTime(new \DateTime($value));
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}listingType');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}listingType');
         if (null !== $value) {
             $this->setListingType($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}gift');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}gift');
         if (null !== $value) {
             $this->setGift($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}delimiter');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}delimiter');
         if (null !== $value) {
             $this->setDelimiter($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

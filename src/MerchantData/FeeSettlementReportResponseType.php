@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\MerchantData;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing FeeSettlementReportResponseType
  *
@@ -847,95 +849,79 @@ class FeeSettlementReportResponseType extends AbstractResponseType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}InvoiceID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}InvoiceID');
         if (null !== $value) {
             $this->setInvoiceID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerID');
         if (null !== $value) {
             $this->setSellerID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AccountID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AccountID');
         if (null !== $value) {
             $this->setAccountID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReportStartTime');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReportStartTime');
         if (null !== $value) {
             $this->setReportStartTime(new \DateTime($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReportEndTime');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReportEndTime');
         if (null !== $value) {
             $this->setReportEndTime(new \DateTime($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}InvoiceProcessingTime');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}InvoiceProcessingTime');
         if (null !== $value) {
             $this->setInvoiceProcessingTime(new \DateTime($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReportProcessingTime');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReportProcessingTime');
         if (null !== $value) {
             $this->setReportProcessingTime(new \DateTime($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeeSettlementAmount');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeeSettlementAmount');
         if (null !== $value) {
             $this->setFeeSettlementAmount(\Nogrod\eBaySDK\MerchantData\AmountType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LastInvoiceAmount');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LastInvoiceAmount');
         if (null !== $value) {
             $this->setLastInvoiceAmount(\Nogrod\eBaySDK\MerchantData\AmountType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeeRoundingAdjustmentAmount');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeeRoundingAdjustmentAmount');
         if (null !== $value) {
             $this->setFeeRoundingAdjustmentAmount(\Nogrod\eBaySDK\MerchantData\AmountType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeeTotalUsageAdjustmentAmount');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeeTotalUsageAdjustmentAmount');
         if (null !== $value) {
             $this->setFeeTotalUsageAdjustmentAmount(\Nogrod\eBaySDK\MerchantData\AmountType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}OrderTransactionList', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}OrderTransactionList', true);
         if (null !== $value && !empty($value)) {
             $this->setOrderTransactionList(array_map(function ($v) {
                 return \Nogrod\eBaySDK\MerchantData\OrderDetailsType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ListingTransactionList', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ListingTransactionList', true);
         if (null !== $value && !empty($value)) {
             $this->setListingTransactionList(array_map(function ($v) {
                 return \Nogrod\eBaySDK\MerchantData\TransactionListType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}OrderAdjustmentList', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}OrderAdjustmentList', true);
         if (null !== $value && !empty($value)) {
             $this->setOrderAdjustmentList(array_map(function ($v) {
                 return \Nogrod\eBaySDK\MerchantData\OrderDetailsType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AccountTransactionList', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AccountTransactionList', true);
         if (null !== $value && !empty($value)) {
             $this->setAccountTransactionList(array_map(function ($v) {
                 return \Nogrod\eBaySDK\MerchantData\AccountTransactionType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DiscountTransactionList', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DiscountTransactionList', true);
         if (null !== $value && !empty($value)) {
             $this->setDiscountTransactionList(array_map(function ($v) {
                 return \Nogrod\eBaySDK\MerchantData\AccountTransactionType::fromKeyValue($v);
             }, $value));
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Shopping;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing FindReviewsAndGuidesResponseType
  *
@@ -472,65 +474,49 @@ class FindReviewsAndGuidesResponseType extends AbstractResponseType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReviewCount');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReviewCount');
         if (null !== $value) {
             $this->setReviewCount($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BuyingGuideCount');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BuyingGuideCount');
         if (null !== $value) {
             $this->setBuyingGuideCount($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReviewerRank');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReviewerRank');
         if (null !== $value) {
             $this->setReviewerRank($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TotalHelpfulnessVotes');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TotalHelpfulnessVotes');
         if (null !== $value) {
             $this->setTotalHelpfulnessVotes($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ProductID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ProductID');
         if (null !== $value) {
             $this->setProductID(\Nogrod\eBaySDK\Shopping\ProductIDType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReviewsAndGuidesURL');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReviewsAndGuidesURL');
         if (null !== $value) {
             $this->setReviewsAndGuidesURL($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PageNumber');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PageNumber');
         if (null !== $value) {
             $this->setPageNumber($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TotalPages');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TotalPages');
         if (null !== $value) {
             $this->setTotalPages($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BuyingGuideDetails');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BuyingGuideDetails');
         if (null !== $value) {
             $this->setBuyingGuideDetails(\Nogrod\eBaySDK\Shopping\BuyingGuideDetailsType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReviewDetails');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReviewDetails');
         if (null !== $value) {
             $this->setReviewDetails(\Nogrod\eBaySDK\Shopping\ReviewDetailsType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PositiveHelpfulnessVotes');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PositiveHelpfulnessVotes');
         if (null !== $value) {
             $this->setPositiveHelpfulnessVotes($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

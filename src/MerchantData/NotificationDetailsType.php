@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\MerchantData;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing NotificationDetailsType
  *
@@ -430,61 +432,45 @@ class NotificationDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DeliveryURL');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DeliveryURL');
         if (null !== $value) {
             $this->setDeliveryURL($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReferenceID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReferenceID');
         if (null !== $value) {
             $this->setReferenceID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExpirationTime');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExpirationTime');
         if (null !== $value) {
             $this->setExpirationTime(new \DateTime($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Type');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Type');
         if (null !== $value) {
             $this->setType($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Retries');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Retries');
         if (null !== $value) {
             $this->setRetries($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DeliveryStatus');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DeliveryStatus');
         if (null !== $value) {
             $this->setDeliveryStatus($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}NextRetryTime');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}NextRetryTime');
         if (null !== $value) {
             $this->setNextRetryTime(new \DateTime($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DeliveryTime');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DeliveryTime');
         if (null !== $value) {
             $this->setDeliveryTime(new \DateTime($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ErrorMessage');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ErrorMessage');
         if (null !== $value) {
             $this->setErrorMessage($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DeliveryURLName');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DeliveryURLName');
         if (null !== $value) {
             $this->setDeliveryURLName($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Shopping;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing ShippingCostSummaryType
  *
@@ -403,57 +405,41 @@ class ShippingCostSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingServiceName');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingServiceName');
         if (null !== $value) {
             $this->setShippingServiceName($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingServiceCost');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingServiceCost');
         if (null !== $value) {
             $this->setShippingServiceCost(\Nogrod\eBaySDK\Shopping\AmountType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}InsuranceCost');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}InsuranceCost');
         if (null !== $value) {
             $this->setInsuranceCost(\Nogrod\eBaySDK\Shopping\AmountType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingType');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingType');
         if (null !== $value) {
             $this->setShippingType($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LocalPickup');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LocalPickup');
         if (null !== $value) {
             $this->setLocalPickup($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}InsuranceOption');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}InsuranceOption');
         if (null !== $value) {
             $this->setInsuranceOption($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ListedShippingServiceCost');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ListedShippingServiceCost');
         if (null !== $value) {
             $this->setListedShippingServiceCost(\Nogrod\eBaySDK\Shopping\AmountType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ImportCharge');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ImportCharge');
         if (null !== $value) {
             $this->setImportCharge(\Nogrod\eBaySDK\Shopping\AmountType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LogisticPlanType');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LogisticPlanType');
         if (null !== $value) {
             $this->setLogisticPlanType($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

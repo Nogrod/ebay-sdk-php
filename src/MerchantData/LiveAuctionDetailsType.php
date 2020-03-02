@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\MerchantData;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing LiveAuctionDetailsType
  *
@@ -245,41 +247,25 @@ class LiveAuctionDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UserCatalogID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UserCatalogID');
         if (null !== $value) {
             $this->setUserCatalogID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ScheduleID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ScheduleID');
         if (null !== $value) {
             $this->setScheduleID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LotNumber');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LotNumber');
         if (null !== $value) {
             $this->setLotNumber($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}HighEstimate');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}HighEstimate');
         if (null !== $value) {
             $this->setHighEstimate(\Nogrod\eBaySDK\MerchantData\AmountType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LowEstimate');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LowEstimate');
         if (null !== $value) {
             $this->setLowEstimate(\Nogrod\eBaySDK\MerchantData\AmountType::fromKeyValue($value));
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

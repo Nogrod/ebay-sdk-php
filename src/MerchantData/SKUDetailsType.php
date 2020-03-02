@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\MerchantData;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing SKUDetailsType
  *
@@ -467,51 +469,35 @@ class SKUDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SKU');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SKU');
         if (null !== $value) {
             $this->setSKU($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Price');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Price');
         if (null !== $value) {
             $this->setPrice(\Nogrod\eBaySDK\MerchantData\AmountType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Quantity');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Quantity');
         if (null !== $value) {
             $this->setQuantity($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemID');
         if (null !== $value) {
             $this->setItemID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BidCount');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BidCount');
         if (null !== $value) {
             $this->setBidCount($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReserveMet');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReserveMet');
         if (null !== $value) {
             $this->setReserveMet($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Variations', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Variations', true);
         if (null !== $value && !empty($value)) {
             $this->setVariations(array_map(function ($v) {
                 return \Nogrod\eBaySDK\MerchantData\MerchantDataVariationType::fromKeyValue($v);
             }, $value));
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

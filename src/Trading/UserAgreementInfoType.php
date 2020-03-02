@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Trading;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing UserAgreementInfoType
  *
@@ -215,41 +217,25 @@ class UserAgreementInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Site');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Site');
         if (null !== $value) {
             $this->setSite($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellereBayPaymentProcessStatus');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellereBayPaymentProcessStatus');
         if (null !== $value) {
             $this->setSellereBayPaymentProcessStatus($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AcceptedTime');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AcceptedTime');
         if (null !== $value) {
             $this->setAcceptedTime(new \DateTime($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellereBayPaymentProcessEnableTime');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellereBayPaymentProcessEnableTime');
         if (null !== $value) {
             $this->setSellereBayPaymentProcessEnableTime(new \DateTime($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UserAgreementURL');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UserAgreementURL');
         if (null !== $value) {
             $this->setUserAgreementURL($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

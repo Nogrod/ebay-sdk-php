@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\MerchantData;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing SellingManagerProductSpecificsType
  *
@@ -254,35 +256,19 @@ class SellingManagerProductSpecificsType implements \Sabre\Xml\XmlSerializable, 
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PrimaryCategoryID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PrimaryCategoryID');
         if (null !== $value) {
             $this->setPrimaryCategoryID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Variations');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Variations');
         if (null !== $value) {
             $this->setVariations(\Nogrod\eBaySDK\MerchantData\VariationsType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemSpecifics', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemSpecifics', true);
         if (null !== $value && !empty($value)) {
             $this->setItemSpecifics(array_map(function ($v) {
                 return \Nogrod\eBaySDK\MerchantData\NameValueListType::fromKeyValue($v);
             }, $value));
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

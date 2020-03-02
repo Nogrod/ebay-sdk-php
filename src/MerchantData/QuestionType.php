@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\MerchantData;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing QuestionType
  *
@@ -104,29 +106,13 @@ class QuestionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}QuestionID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}QuestionID');
         if (null !== $value) {
             $this->setQuestionID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Answer');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Answer');
         if (null !== $value) {
             $this->setAnswer($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

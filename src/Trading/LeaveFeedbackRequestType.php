@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Trading;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing LeaveFeedbackRequestType
  *
@@ -504,59 +506,43 @@ class LeaveFeedbackRequestType extends AbstractRequestType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemID');
         if (null !== $value) {
             $this->setItemID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CommentText');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CommentText');
         if (null !== $value) {
             $this->setCommentText($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CommentType');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CommentType');
         if (null !== $value) {
             $this->setCommentType($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TransactionID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TransactionID');
         if (null !== $value) {
             $this->setTransactionID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TargetUser');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TargetUser');
         if (null !== $value) {
             $this->setTargetUser($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerItemRatingDetailArray', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerItemRatingDetailArray', true);
         if (null !== $value && !empty($value)) {
             $this->setSellerItemRatingDetailArray(array_map(function ($v) {
                 return \Nogrod\eBaySDK\Trading\ItemRatingDetailsType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}OrderLineItemID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}OrderLineItemID');
         if (null !== $value) {
             $this->setOrderLineItemID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemArrivedWithinEDDType');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemArrivedWithinEDDType');
         if (null !== $value) {
             $this->setItemArrivedWithinEDDType($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemDeliveredWithinEDD');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemDeliveredWithinEDD');
         if (null !== $value) {
             $this->setItemDeliveredWithinEDD($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

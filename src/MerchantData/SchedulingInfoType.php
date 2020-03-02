@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\MerchantData;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing SchedulingInfoType
  *
@@ -141,33 +143,17 @@ class SchedulingInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MaxScheduledMinutes');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MaxScheduledMinutes');
         if (null !== $value) {
             $this->setMaxScheduledMinutes($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MinScheduledMinutes');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MinScheduledMinutes');
         if (null !== $value) {
             $this->setMinScheduledMinutes($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MaxScheduledItems');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MaxScheduledItems');
         if (null !== $value) {
             $this->setMaxScheduledItems($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

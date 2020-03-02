@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Trading;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing RefundFailureReasonType
  *
@@ -67,25 +69,9 @@ class RefundFailureReasonType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RefundFailureCode');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RefundFailureCode');
         if (null !== $value) {
             $this->setRefundFailureCode($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

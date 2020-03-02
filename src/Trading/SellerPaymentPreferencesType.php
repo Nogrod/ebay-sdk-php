@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Trading;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing SellerPaymentPreferencesType
  *
@@ -420,57 +422,41 @@ class SellerPaymentPreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AlwaysUseThisPaymentAddress');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AlwaysUseThisPaymentAddress');
         if (null !== $value) {
             $this->setAlwaysUseThisPaymentAddress($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DisplayPayNowButton');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DisplayPayNowButton');
         if (null !== $value) {
             $this->setDisplayPayNowButton($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PayPalPreferred');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PayPalPreferred');
         if (null !== $value) {
             $this->setPayPalPreferred($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DefaultPayPalEmailAddress');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DefaultPayPalEmailAddress');
         if (null !== $value) {
             $this->setDefaultPayPalEmailAddress($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PayPalAlwaysOn');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PayPalAlwaysOn');
         if (null !== $value) {
             $this->setPayPalAlwaysOn($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerPaymentAddress');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerPaymentAddress');
         if (null !== $value) {
             $this->setSellerPaymentAddress(\Nogrod\eBaySDK\Trading\AddressType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UPSRateOption');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UPSRateOption');
         if (null !== $value) {
             $this->setUPSRateOption($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FedExRateOption');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FedExRateOption');
         if (null !== $value) {
             $this->setFedExRateOption($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}USPSRateOption');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}USPSRateOption');
         if (null !== $value) {
             $this->setUSPSRateOption($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

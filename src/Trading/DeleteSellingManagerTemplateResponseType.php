@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Trading;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing DeleteSellingManagerTemplateResponseType
  *
@@ -105,29 +107,13 @@ class DeleteSellingManagerTemplateResponseType extends AbstractResponseType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DeletedSaleTemplateID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DeletedSaleTemplateID');
         if (null !== $value) {
             $this->setDeletedSaleTemplateID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DeletedSaleTemplateName');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DeletedSaleTemplateName');
         if (null !== $value) {
             $this->setDeletedSaleTemplateName($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

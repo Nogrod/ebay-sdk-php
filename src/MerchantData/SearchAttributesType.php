@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\MerchantData;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing SearchAttributesType
  *
@@ -222,39 +224,23 @@ class SearchAttributesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AttributeID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AttributeID');
         if (null !== $value) {
             $this->setAttributeID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DateSpecifier');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DateSpecifier');
         if (null !== $value) {
             $this->setDateSpecifier($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RangeSpecifier');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RangeSpecifier');
         if (null !== $value) {
             $this->setRangeSpecifier($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ValueList', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ValueList', true);
         if (null !== $value && !empty($value)) {
             $this->setValueList(array_map(function ($v) {
                 return \Nogrod\eBaySDK\MerchantData\ValType::fromKeyValue($v);
             }, $value));
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

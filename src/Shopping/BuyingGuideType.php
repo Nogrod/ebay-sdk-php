@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Shopping;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing BuyingGuideType
  *
@@ -312,49 +314,33 @@ class BuyingGuideType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Name');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Name');
         if (null !== $value) {
             $this->setName($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}URL');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}URL');
         if (null !== $value) {
             $this->setURL($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CategoryID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CategoryID');
         if (null !== $value) {
             $this->setCategoryID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Title');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Title');
         if (null !== $value) {
             $this->setTitle($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Text');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Text');
         if (null !== $value) {
             $this->setText($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CreationTime');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CreationTime');
         if (null !== $value) {
             $this->setCreationTime(new \DateTime($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UserID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UserID');
         if (null !== $value) {
             $this->setUserID($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

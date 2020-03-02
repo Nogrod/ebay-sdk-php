@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\BulkDataExchange;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing SoldReportFilterType
  *
@@ -69,25 +71,9 @@ class SoldReportFilterType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}includeShippingAddress');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}includeShippingAddress');
         if (null !== $value) {
             $this->setIncludeShippingAddress($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

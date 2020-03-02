@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\MerchantData;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing AverageRatingSummaryType
  *
@@ -154,31 +156,15 @@ class AverageRatingSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeedbackSummaryPeriod');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeedbackSummaryPeriod');
         if (null !== $value) {
             $this->setFeedbackSummaryPeriod($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AverageRatingDetails', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AverageRatingDetails', true);
         if (null !== $value && !empty($value)) {
             $this->setAverageRatingDetails(array_map(function ($v) {
                 return \Nogrod\eBaySDK\MerchantData\AverageRatingDetailsType::fromKeyValue($v);
             }, $value));
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

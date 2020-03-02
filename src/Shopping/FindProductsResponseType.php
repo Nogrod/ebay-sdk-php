@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Shopping;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing FindProductsResponseType
  *
@@ -550,59 +552,43 @@ class FindProductsResponseType extends AbstractResponseType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ApproximatePages');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ApproximatePages');
         if (null !== $value) {
             $this->setApproximatePages($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MoreResults');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MoreResults');
         if (null !== $value) {
             $this->setMoreResults($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DomainHistogram', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DomainHistogram', true);
         if (null !== $value && !empty($value)) {
             $this->setDomainHistogram(array_map(function ($v) {
                 return \Nogrod\eBaySDK\Shopping\HistogramEntryType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemArray', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemArray', true);
         if (null !== $value && !empty($value)) {
             $this->setItemArray(array_map(function ($v) {
                 return \Nogrod\eBaySDK\Shopping\SimpleItemType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PageNumber');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PageNumber');
         if (null !== $value) {
             $this->setPageNumber($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Product', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Product', true);
         if (null !== $value && !empty($value)) {
             $this->setProduct(array_map(function ($v) {
                 return \Nogrod\eBaySDK\Shopping\CatalogProductType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TotalProducts');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TotalProducts');
         if (null !== $value) {
             $this->setTotalProducts($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DuplicateItems');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DuplicateItems');
         if (null !== $value) {
             $this->setDuplicateItems($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

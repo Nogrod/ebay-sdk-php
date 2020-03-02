@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Trading;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing GetSellerEventsRequestType
  *
@@ -705,65 +707,49 @@ class GetSellerEventsRequestType extends AbstractRequestType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UserID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UserID');
         if (null !== $value) {
             $this->setUserID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}StartTimeFrom');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}StartTimeFrom');
         if (null !== $value) {
             $this->setStartTimeFrom(new \DateTime($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}StartTimeTo');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}StartTimeTo');
         if (null !== $value) {
             $this->setStartTimeTo(new \DateTime($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EndTimeFrom');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EndTimeFrom');
         if (null !== $value) {
             $this->setEndTimeFrom(new \DateTime($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EndTimeTo');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EndTimeTo');
         if (null !== $value) {
             $this->setEndTimeTo(new \DateTime($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ModTimeFrom');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ModTimeFrom');
         if (null !== $value) {
             $this->setModTimeFrom(new \DateTime($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ModTimeTo');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ModTimeTo');
         if (null !== $value) {
             $this->setModTimeTo(new \DateTime($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}NewItemFilter');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}NewItemFilter');
         if (null !== $value) {
             $this->setNewItemFilter($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}IncludeWatchCount');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}IncludeWatchCount');
         if (null !== $value) {
             $this->setIncludeWatchCount($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}IncludeVariationSpecifics');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}IncludeVariationSpecifics');
         if (null !== $value) {
             $this->setIncludeVariationSpecifics($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}HideVariations');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}HideVariations');
         if (null !== $value) {
             $this->setHideVariations($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

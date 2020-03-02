@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\MerchantData;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing RemindersType
  *
@@ -742,97 +744,81 @@ class RemindersType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaymentToSendCount');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaymentToSendCount');
         if (null !== $value) {
             $this->setPaymentToSendCount($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeedbackToReceiveCount');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeedbackToReceiveCount');
         if (null !== $value) {
             $this->setFeedbackToReceiveCount($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeedbackToSendCount');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeedbackToSendCount');
         if (null !== $value) {
             $this->setFeedbackToSendCount($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}OutbidCount');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}OutbidCount');
         if (null !== $value) {
             $this->setOutbidCount($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaymentToReceiveCount');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaymentToReceiveCount');
         if (null !== $value) {
             $this->setPaymentToReceiveCount($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SecondChanceOfferCount');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SecondChanceOfferCount');
         if (null !== $value) {
             $this->setSecondChanceOfferCount($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingNeededCount');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingNeededCount');
         if (null !== $value) {
             $this->setShippingNeededCount($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RelistingNeededCount');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RelistingNeededCount');
         if (null !== $value) {
             $this->setRelistingNeededCount($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TotalNewLeadsCount');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TotalNewLeadsCount');
         if (null !== $value) {
             $this->setTotalNewLeadsCount($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DocsForCCProcessingToSendCount');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DocsForCCProcessingToSendCount');
         if (null !== $value) {
             $this->setDocsForCCProcessingToSendCount($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RTEToProcessCount');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RTEToProcessCount');
         if (null !== $value) {
             $this->setRTEToProcessCount($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemReceiptToConfirmCount');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemReceiptToConfirmCount');
         if (null !== $value) {
             $this->setItemReceiptToConfirmCount($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RefundOnHoldCount');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RefundOnHoldCount');
         if (null !== $value) {
             $this->setRefundOnHoldCount($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RefundCancelledCount');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RefundCancelledCount');
         if (null !== $value) {
             $this->setRefundCancelledCount($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingDetailsToBeProvidedCount');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingDetailsToBeProvidedCount');
         if (null !== $value) {
             $this->setShippingDetailsToBeProvidedCount($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemReceiptConfirmationToReceiveCount');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemReceiptConfirmationToReceiveCount');
         if (null !== $value) {
             $this->setItemReceiptConfirmationToReceiveCount($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RefundInitiatedCount');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RefundInitiatedCount');
         if (null !== $value) {
             $this->setRefundInitiatedCount($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PendingRTERequestCount');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PendingRTERequestCount');
         if (null !== $value) {
             $this->setPendingRTERequestCount($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DeclinedRTERequestCount');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DeclinedRTERequestCount');
         if (null !== $value) {
             $this->setDeclinedRTERequestCount($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

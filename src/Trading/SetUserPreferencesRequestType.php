@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Trading;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing SetUserPreferencesRequestType
  *
@@ -637,81 +639,65 @@ class SetUserPreferencesRequestType extends AbstractRequestType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BidderNoticePreferences');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BidderNoticePreferences');
         if (null !== $value) {
             $this->setBidderNoticePreferences(\Nogrod\eBaySDK\Trading\BidderNoticePreferencesType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CombinedPaymentPreferences');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CombinedPaymentPreferences');
         if (null !== $value) {
             $this->setCombinedPaymentPreferences(\Nogrod\eBaySDK\Trading\CombinedPaymentPreferencesType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CrossPromotionPreferences');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CrossPromotionPreferences');
         if (null !== $value) {
             $this->setCrossPromotionPreferences(\Nogrod\eBaySDK\Trading\CrossPromotionPreferencesType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerPaymentPreferences');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerPaymentPreferences');
         if (null !== $value) {
             $this->setSellerPaymentPreferences(\Nogrod\eBaySDK\Trading\SellerPaymentPreferencesType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerFavoriteItemPreferences');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerFavoriteItemPreferences');
         if (null !== $value) {
             $this->setSellerFavoriteItemPreferences(\Nogrod\eBaySDK\Trading\SellerFavoriteItemPreferencesType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EndOfAuctionEmailPreferences');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EndOfAuctionEmailPreferences');
         if (null !== $value) {
             $this->setEndOfAuctionEmailPreferences(\Nogrod\eBaySDK\Trading\EndOfAuctionEmailPreferencesType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EmailShipmentTrackingNumberPreference');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EmailShipmentTrackingNumberPreference');
         if (null !== $value) {
             $this->setEmailShipmentTrackingNumberPreference($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RequiredShipPhoneNumberPreference');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RequiredShipPhoneNumberPreference');
         if (null !== $value) {
             $this->setRequiredShipPhoneNumberPreference($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UnpaidItemAssistancePreferences');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UnpaidItemAssistancePreferences');
         if (null !== $value) {
             $this->setUnpaidItemAssistancePreferences(\Nogrod\eBaySDK\Trading\UnpaidItemAssistancePreferencesType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PurchaseReminderEmailPreferences');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PurchaseReminderEmailPreferences');
         if (null !== $value) {
             $this->setPurchaseReminderEmailPreferences(\Nogrod\eBaySDK\Trading\PurchaseReminderEmailPreferencesType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerThirdPartyCheckoutDisabled');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerThirdPartyCheckoutDisabled');
         if (null !== $value) {
             $this->setSellerThirdPartyCheckoutDisabled($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DispatchCutoffTimePreference');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DispatchCutoffTimePreference');
         if (null !== $value) {
             $this->setDispatchCutoffTimePreference(\Nogrod\eBaySDK\Trading\DispatchCutoffTimePreferencesType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}GlobalShippingProgramListingPreference');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}GlobalShippingProgramListingPreference');
         if (null !== $value) {
             $this->setGlobalShippingProgramListingPreference($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}OverrideGSPserviceWithIntlService');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}OverrideGSPserviceWithIntlService');
         if (null !== $value) {
             $this->setOverrideGSPserviceWithIntlService($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}OutOfStockControlPreference');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}OutOfStockControlPreference');
         if (null !== $value) {
             $this->setOutOfStockControlPreference($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

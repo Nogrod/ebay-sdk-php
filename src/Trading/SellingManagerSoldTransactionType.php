@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Trading;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing SellingManagerSoldTransactionType
  *
@@ -939,105 +941,89 @@ class SellingManagerSoldTransactionType implements \Sabre\Xml\XmlSerializable, \
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}InvoiceNumber');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}InvoiceNumber');
         if (null !== $value) {
             $this->setInvoiceNumber($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TransactionID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TransactionID');
         if (null !== $value) {
             $this->setTransactionID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SaleRecordID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SaleRecordID');
         if (null !== $value) {
             $this->setSaleRecordID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemID');
         if (null !== $value) {
             $this->setItemID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}QuantitySold');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}QuantitySold');
         if (null !== $value) {
             $this->setQuantitySold($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemPrice');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemPrice');
         if (null !== $value) {
             $this->setItemPrice(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SubtotalAmount');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SubtotalAmount');
         if (null !== $value) {
             $this->setSubtotalAmount(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemTitle');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemTitle');
         if (null !== $value) {
             $this->setItemTitle($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ListingType');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ListingType');
         if (null !== $value) {
             $this->setListingType($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Relisted');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Relisted');
         if (null !== $value) {
             $this->setRelisted($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}WatchCount');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}WatchCount');
         if (null !== $value) {
             $this->setWatchCount($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}StartPrice');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}StartPrice');
         if (null !== $value) {
             $this->setStartPrice(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReservePrice');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReservePrice');
         if (null !== $value) {
             $this->setReservePrice(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SecondChanceOfferSent');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SecondChanceOfferSent');
         if (null !== $value) {
             $this->setSecondChanceOfferSent($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CustomLabel');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CustomLabel');
         if (null !== $value) {
             $this->setCustomLabel($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SoldOn');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SoldOn');
         if (null !== $value) {
             $this->setSoldOn($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ListedOn', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ListedOn', true);
         if (null !== $value && !empty($value)) {
             $this->setListedOn($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Shipment');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Shipment');
         if (null !== $value) {
             $this->setShipment(\Nogrod\eBaySDK\Trading\ShipmentType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CharityListing');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CharityListing');
         if (null !== $value) {
             $this->setCharityListing($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Variation');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Variation');
         if (null !== $value) {
             $this->setVariation(\Nogrod\eBaySDK\Trading\VariationType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}OrderLineItemID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}OrderLineItemID');
         if (null !== $value) {
             $this->setOrderLineItemID($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

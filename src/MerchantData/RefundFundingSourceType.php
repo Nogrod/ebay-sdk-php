@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\MerchantData;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing RefundFundingSourceType
  *
@@ -215,41 +217,25 @@ class RefundFundingSourceType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RefundingSourceType');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RefundingSourceType');
         if (null !== $value) {
             $this->setRefundingSourceType($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AccountNumber');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AccountNumber');
         if (null !== $value) {
             $this->setAccountNumber($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RefundAmount');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RefundAmount');
         if (null !== $value) {
             $this->setRefundAmount(\Nogrod\eBaySDK\MerchantData\AmountType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerExternalTransactionID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerExternalTransactionID');
         if (null !== $value) {
             $this->setSellerExternalTransactionID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BuyerExternalTransactionID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BuyerExternalTransactionID');
         if (null !== $value) {
             $this->setBuyerExternalTransactionID($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Finding;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing FindItemsForFavoriteSearchRequestType
  *
@@ -173,37 +175,21 @@ class FindItemsForFavoriteSearchRequestType extends BaseServiceRequestType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}searchId');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}searchId');
         if (null !== $value) {
             $this->setSearchId($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}searchName');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}searchName');
         if (null !== $value) {
             $this->setSearchName($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}startTimeFrom');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}startTimeFrom');
         if (null !== $value) {
             $this->setStartTimeFrom(new \DateTime($value));
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}paginationInput');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}paginationInput');
         if (null !== $value) {
             $this->setPaginationInput(\Nogrod\eBaySDK\Finding\PaginationInputType::fromKeyValue($value));
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\MerchantData;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing AnnouncementMessageType
  *
@@ -144,33 +146,17 @@ class AnnouncementMessageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AnnouncementStartTime');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AnnouncementStartTime');
         if (null !== $value) {
             $this->setAnnouncementStartTime(new \DateTime($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EventTime');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EventTime');
         if (null !== $value) {
             $this->setEventTime(new \DateTime($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MessageType');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MessageType');
         if (null !== $value) {
             $this->setMessageType($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

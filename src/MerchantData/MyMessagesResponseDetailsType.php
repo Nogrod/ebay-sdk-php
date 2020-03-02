@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\MerchantData;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing MyMessagesResponseDetailsType
  *
@@ -160,33 +162,17 @@ class MyMessagesResponseDetailsType implements \Sabre\Xml\XmlSerializable, \Sabr
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ResponseEnabled');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ResponseEnabled');
         if (null !== $value) {
             $this->setResponseEnabled($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ResponseURL');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ResponseURL');
         if (null !== $value) {
             $this->setResponseURL($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UserResponseDate');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UserResponseDate');
         if (null !== $value) {
             $this->setUserResponseDate(new \DateTime($value));
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

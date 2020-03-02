@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Trading;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing GetAllBiddersResponseType
  *
@@ -221,39 +223,23 @@ class GetAllBiddersResponseType extends AbstractResponseType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BidArray', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BidArray', true);
         if (null !== $value && !empty($value)) {
             $this->setBidArray(array_map(function ($v) {
                 return \Nogrod\eBaySDK\Trading\OfferType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}HighBidder');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}HighBidder');
         if (null !== $value) {
             $this->setHighBidder($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}HighestBid');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}HighestBid');
         if (null !== $value) {
             $this->setHighestBid(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ListingStatus');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ListingStatus');
         if (null !== $value) {
             $this->setListingStatus($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

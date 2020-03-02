@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\MerchantData;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing PolicyViolationDurationDetailsType
  *
@@ -92,29 +94,13 @@ class PolicyViolationDurationDetailsType implements \Sabre\Xml\XmlSerializable, 
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Period');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Period');
         if (null !== $value) {
             $this->setPeriod($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Description');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Description');
         if (null !== $value) {
             $this->setDescription($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

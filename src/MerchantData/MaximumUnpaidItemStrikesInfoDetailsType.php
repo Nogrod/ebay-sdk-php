@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\MerchantData;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing MaximumUnpaidItemStrikesInfoDetailsType
  *
@@ -190,31 +192,15 @@ class MaximumUnpaidItemStrikesInfoDetailsType implements \Sabre\Xml\XmlSerializa
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MaximumUnpaidItemStrikesCount', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MaximumUnpaidItemStrikesCount', true);
         if (null !== $value && !empty($value)) {
             $this->setMaximumUnpaidItemStrikesCount($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MaximumUnpaidItemStrikesDuration', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MaximumUnpaidItemStrikesDuration', true);
         if (null !== $value && !empty($value)) {
             $this->setMaximumUnpaidItemStrikesDuration(array_map(function ($v) {
                 return \Nogrod\eBaySDK\MerchantData\MaximumUnpaidItemStrikesDurationDetailsType::fromKeyValue($v);
             }, $value));
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

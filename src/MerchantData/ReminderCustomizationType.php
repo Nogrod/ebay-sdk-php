@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\MerchantData;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing ReminderCustomizationType
  *
@@ -111,29 +113,13 @@ class ReminderCustomizationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DurationInDays');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DurationInDays');
         if (null !== $value) {
             $this->setDurationInDays($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Include');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Include');
         if (null !== $value) {
             $this->setInclude($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

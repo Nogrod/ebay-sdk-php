@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\MerchantData;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing NotificationUserDataType
  *
@@ -221,35 +223,19 @@ class NotificationUserDataType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SMSSubscription');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SMSSubscription');
         if (null !== $value) {
             $this->setSMSSubscription(\Nogrod\eBaySDK\MerchantData\SMSSubscriptionType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SummarySchedule', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SummarySchedule', true);
         if (null !== $value && !empty($value)) {
             $this->setSummarySchedule(array_map(function ($v) {
                 return \Nogrod\eBaySDK\MerchantData\SummaryEventScheduleType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExternalUserData');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExternalUserData');
         if (null !== $value) {
             $this->setExternalUserData($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

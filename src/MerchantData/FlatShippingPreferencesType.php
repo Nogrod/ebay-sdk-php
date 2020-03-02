@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\MerchantData;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing FlatShippingPreferencesType
  *
@@ -259,43 +261,27 @@ class FlatShippingPreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre\
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AmountPerAdditionalItem');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AmountPerAdditionalItem');
         if (null !== $value) {
             $this->setAmountPerAdditionalItem(\Nogrod\eBaySDK\MerchantData\AmountType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DeductionAmountPerAdditionalItem');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DeductionAmountPerAdditionalItem');
         if (null !== $value) {
             $this->setDeductionAmountPerAdditionalItem(\Nogrod\eBaySDK\MerchantData\AmountType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FlatRateInsuranceRangeCost', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FlatRateInsuranceRangeCost', true);
         if (null !== $value && !empty($value)) {
             $this->setFlatRateInsuranceRangeCost(array_map(function ($v) {
                 return \Nogrod\eBaySDK\MerchantData\FlatRateInsuranceRangeCostType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FlatShippingRateOption');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FlatShippingRateOption');
         if (null !== $value) {
             $this->setFlatShippingRateOption($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}InsuranceOption');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}InsuranceOption');
         if (null !== $value) {
             $this->setInsuranceOption($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

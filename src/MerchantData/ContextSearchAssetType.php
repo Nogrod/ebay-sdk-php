@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\MerchantData;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing ContextSearchAssetType
  *
@@ -144,33 +146,17 @@ class ContextSearchAssetType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Keyword');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Keyword');
         if (null !== $value) {
             $this->setKeyword($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Category');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Category');
         if (null !== $value) {
             $this->setCategory(\Nogrod\eBaySDK\MerchantData\CategoryType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Ranking');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Ranking');
         if (null !== $value) {
             $this->setRanking($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

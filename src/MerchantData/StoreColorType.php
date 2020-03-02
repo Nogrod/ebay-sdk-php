@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\MerchantData;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing StoreColorType
  *
@@ -150,33 +152,17 @@ class StoreColorType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Primary');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Primary');
         if (null !== $value) {
             $this->setPrimary($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Secondary');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Secondary');
         if (null !== $value) {
             $this->setSecondary($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Accent');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Accent');
         if (null !== $value) {
             $this->setAccent($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

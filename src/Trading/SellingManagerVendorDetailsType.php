@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Trading;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing SellingManagerVendorDetailsType
  *
@@ -104,29 +106,13 @@ class SellingManagerVendorDetailsType implements \Sabre\Xml\XmlSerializable, \Sa
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}VendorName');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}VendorName');
         if (null !== $value) {
             $this->setVendorName($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}VendorContactInfo');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}VendorContactInfo');
         if (null !== $value) {
             $this->setVendorContactInfo($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

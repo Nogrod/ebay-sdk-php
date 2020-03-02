@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\MerchantData;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing ProductIdentifiersType
  *
@@ -168,31 +170,15 @@ class ProductIdentifiersType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ValidationRules');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ValidationRules');
         if (null !== $value) {
             $this->setValidationRules(\Nogrod\eBaySDK\MerchantData\GroupValidationRulesType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}NameRecommendation', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}NameRecommendation', true);
         if (null !== $value && !empty($value)) {
             $this->setNameRecommendation(array_map(function ($v) {
                 return \Nogrod\eBaySDK\MerchantData\NameRecommendationType::fromKeyValue($v);
             }, $value));
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

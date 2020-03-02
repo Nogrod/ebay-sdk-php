@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Trading;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing FeatureEligibilityType
  *
@@ -224,41 +226,25 @@ class FeatureEligibilityType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}QualifiesForBuyItNow');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}QualifiesForBuyItNow');
         if (null !== $value) {
             $this->setQualifiesForBuyItNow($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}QualifiesForBuyItNowMultiple');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}QualifiesForBuyItNowMultiple');
         if (null !== $value) {
             $this->setQualifiesForBuyItNowMultiple($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}QualifiedForFixedPriceOneDayDuration');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}QualifiedForFixedPriceOneDayDuration');
         if (null !== $value) {
             $this->setQualifiedForFixedPriceOneDayDuration($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}QualifiesForVariations');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}QualifiesForVariations');
         if (null !== $value) {
             $this->setQualifiesForVariations($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}QualifiedForAuctionOneDayDuration');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}QualifiedForAuctionOneDayDuration');
         if (null !== $value) {
             $this->setQualifiedForAuctionOneDayDuration($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

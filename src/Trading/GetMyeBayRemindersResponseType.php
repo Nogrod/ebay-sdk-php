@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Trading;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing GetMyeBayRemindersResponseType
  *
@@ -105,29 +107,13 @@ class GetMyeBayRemindersResponseType extends AbstractResponseType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BuyingReminders');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BuyingReminders');
         if (null !== $value) {
             $this->setBuyingReminders(\Nogrod\eBaySDK\Trading\RemindersType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellingReminders');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellingReminders');
         if (null !== $value) {
             $this->setSellingReminders(\Nogrod\eBaySDK\Trading\RemindersType::fromKeyValue($value));
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

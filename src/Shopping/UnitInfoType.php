@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Shopping;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing UnitInfoType
  *
@@ -119,29 +121,13 @@ class UnitInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UnitType');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UnitType');
         if (null !== $value) {
             $this->setUnitType($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UnitQuantity');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UnitQuantity');
         if (null !== $value) {
             $this->setUnitQuantity($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

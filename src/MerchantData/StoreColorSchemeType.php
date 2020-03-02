@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\MerchantData;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing StoreColorSchemeType
  *
@@ -193,37 +195,21 @@ class StoreColorSchemeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ColorSchemeID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ColorSchemeID');
         if (null !== $value) {
             $this->setColorSchemeID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Name');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Name');
         if (null !== $value) {
             $this->setName($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Color');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Color');
         if (null !== $value) {
             $this->setColor(\Nogrod\eBaySDK\MerchantData\StoreColorType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Font');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Font');
         if (null !== $value) {
             $this->setFont(\Nogrod\eBaySDK\MerchantData\StoreFontType::fromKeyValue($value));
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Finding;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing FindItemsIneBayStoresRequestType
  *
@@ -861,55 +863,39 @@ class FindItemsIneBayStoresRequestType extends BaseFindingServiceRequestType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}keywords');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}keywords');
         if (null !== $value) {
             $this->setKeywords($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}storeName');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}storeName');
         if (null !== $value) {
             $this->setStoreName($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}itemFilter', true);
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}itemFilter', true);
         if (null !== $value && !empty($value)) {
             $this->setItemFilter(array_map(function ($v) {
                 return \Nogrod\eBaySDK\Finding\ItemFilterType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}outputSelector', true);
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}outputSelector', true);
         if (null !== $value && !empty($value)) {
             $this->setOutputSelector($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}aspectFilter', true);
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}aspectFilter', true);
         if (null !== $value && !empty($value)) {
             $this->setAspectFilter(array_map(function ($v) {
                 return \Nogrod\eBaySDK\Finding\AspectFilterType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}domainFilter', true);
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}domainFilter', true);
         if (null !== $value && !empty($value)) {
             $this->setDomainFilter(array_map(function ($v) {
                 return \Nogrod\eBaySDK\Finding\DomainFilterType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}categoryId', true);
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}categoryId', true);
         if (null !== $value && !empty($value)) {
             $this->setCategoryId($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\MerchantData;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing MerchantDataRequestHeaderType
  *
@@ -110,29 +112,13 @@ class MerchantDataRequestHeaderType implements \Sabre\Xml\XmlSerializable, \Sabr
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SiteID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SiteID');
         if (null !== $value) {
             $this->setSiteID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Version');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Version');
         if (null !== $value) {
             $this->setVersion($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

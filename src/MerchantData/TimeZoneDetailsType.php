@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\MerchantData;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing TimeZoneDetailsType
  *
@@ -391,53 +393,37 @@ class TimeZoneDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TimeZoneID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TimeZoneID');
         if (null !== $value) {
             $this->setTimeZoneID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}StandardLabel');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}StandardLabel');
         if (null !== $value) {
             $this->setStandardLabel($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}StandardOffset');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}StandardOffset');
         if (null !== $value) {
             $this->setStandardOffset($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DaylightSavingsLabel');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DaylightSavingsLabel');
         if (null !== $value) {
             $this->setDaylightSavingsLabel($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DaylightSavingsOffset');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DaylightSavingsOffset');
         if (null !== $value) {
             $this->setDaylightSavingsOffset($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DaylightSavingsInEffect');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DaylightSavingsInEffect');
         if (null !== $value) {
             $this->setDaylightSavingsInEffect($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DetailVersion');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DetailVersion');
         if (null !== $value) {
             $this->setDetailVersion($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UpdateTime');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UpdateTime');
         if (null !== $value) {
             $this->setUpdateTime(new \DateTime($value));
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

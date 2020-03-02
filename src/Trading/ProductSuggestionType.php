@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Trading;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing ProductSuggestionType
  *
@@ -198,37 +200,21 @@ class ProductSuggestionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Title');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Title');
         if (null !== $value) {
             $this->setTitle($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EPID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EPID');
         if (null !== $value) {
             $this->setEPID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}StockPhoto');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}StockPhoto');
         if (null !== $value) {
             $this->setStockPhoto($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Recommended');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Recommended');
         if (null !== $value) {
             $this->setRecommended($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

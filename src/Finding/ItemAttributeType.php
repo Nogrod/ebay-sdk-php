@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Finding;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing ItemAttributeType
  *
@@ -92,29 +94,13 @@ class ItemAttributeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}name');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}name');
         if (null !== $value) {
             $this->setName($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}value');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}value');
         if (null !== $value) {
             $this->setValue($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

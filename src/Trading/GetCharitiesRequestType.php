@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Trading;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing GetCharitiesRequestType
  *
@@ -393,57 +395,41 @@ class GetCharitiesRequestType extends AbstractRequestType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CharityID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CharityID');
         if (null !== $value) {
             $this->setCharityID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CharityName');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CharityName');
         if (null !== $value) {
             $this->setCharityName($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Query');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Query');
         if (null !== $value) {
             $this->setQuery($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CharityRegion');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CharityRegion');
         if (null !== $value) {
             $this->setCharityRegion($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CharityDomain');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CharityDomain');
         if (null !== $value) {
             $this->setCharityDomain($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}IncludeDescription');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}IncludeDescription');
         if (null !== $value) {
             $this->setIncludeDescription($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MatchType');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MatchType');
         if (null !== $value) {
             $this->setMatchType($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Featured');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Featured');
         if (null !== $value) {
             $this->setFeatured($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CampaignID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CampaignID');
         if (null !== $value) {
             $this->setCampaignID($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

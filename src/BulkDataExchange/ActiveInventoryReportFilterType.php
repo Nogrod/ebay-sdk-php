@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\BulkDataExchange;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing ActiveInventoryReportFilterType
  *
@@ -153,33 +155,17 @@ class ActiveInventoryReportFilterType implements \Sabre\Xml\XmlSerializable, \Sa
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}includeListingType');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}includeListingType');
         if (null !== $value) {
             $this->setIncludeListingType($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}fixedPriceItemDetails');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}fixedPriceItemDetails');
         if (null !== $value) {
             $this->setFixedPriceItemDetails(\Nogrod\eBaySDK\BulkDataExchange\FixedPriceItemDetailsType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}auctionItemDetails');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}auctionItemDetails');
         if (null !== $value) {
             $this->setAuctionItemDetails(\Nogrod\eBaySDK\BulkDataExchange\AuctionItemDetailsType::fromKeyValue($value));
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

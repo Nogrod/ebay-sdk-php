@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Trading;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing DeleteSellingManagerItemAutomationRuleRequestType
  *
@@ -148,33 +150,17 @@ class DeleteSellingManagerItemAutomationRuleRequestType extends AbstractRequestT
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemID');
         if (null !== $value) {
             $this->setItemID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DeleteAutomatedRelistingRule');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DeleteAutomatedRelistingRule');
         if (null !== $value) {
             $this->setDeleteAutomatedRelistingRule($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DeleteAutomatedSecondChanceOfferRule');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DeleteAutomatedSecondChanceOfferRule');
         if (null !== $value) {
             $this->setDeleteAutomatedSecondChanceOfferRule($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

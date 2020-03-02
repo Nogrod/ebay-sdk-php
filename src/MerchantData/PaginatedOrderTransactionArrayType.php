@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\MerchantData;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing PaginatedOrderTransactionArrayType
  *
@@ -149,31 +151,15 @@ class PaginatedOrderTransactionArrayType implements \Sabre\Xml\XmlSerializable, 
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}OrderTransactionArray', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}OrderTransactionArray', true);
         if (null !== $value && !empty($value)) {
             $this->setOrderTransactionArray(array_map(function ($v) {
                 return \Nogrod\eBaySDK\MerchantData\OrderTransactionType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaginationResult');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaginationResult');
         if (null !== $value) {
             $this->setPaginationResult(\Nogrod\eBaySDK\MerchantData\PaginationResultType::fromKeyValue($value));
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

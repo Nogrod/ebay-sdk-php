@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Finding;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing BaseFindingServiceResponseType
  *
@@ -274,39 +276,23 @@ class BaseFindingServiceResponseType extends BaseServiceResponseType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}searchResult');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}searchResult');
         if (null !== $value) {
             $this->setSearchResult(\Nogrod\eBaySDK\Finding\SearchResultType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}paginationOutput');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}paginationOutput');
         if (null !== $value) {
             $this->setPaginationOutput(\Nogrod\eBaySDK\Finding\PaginationOutputType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}itemSearchURL');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}itemSearchURL');
         if (null !== $value) {
             $this->setItemSearchURL($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}extension', true);
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}extension', true);
         if (null !== $value && !empty($value)) {
             $this->setExtension(array_map(function ($v) {
                 return \Nogrod\eBaySDK\Finding\ExtensionTypeType::fromKeyValue($v);
             }, $value));
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

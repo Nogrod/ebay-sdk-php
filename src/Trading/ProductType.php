@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Trading;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing ProductType
  *
@@ -363,45 +365,29 @@ class ProductType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CharacteristicsSet');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CharacteristicsSet');
         if (null !== $value) {
             $this->setCharacteristicsSet(\Nogrod\eBaySDK\Trading\CharacteristicsSetType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DetailsURL');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DetailsURL');
         if (null !== $value) {
             $this->setDetailsURL($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}NumItems');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}NumItems');
         if (null !== $value) {
             $this->setNumItems($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MinPrice');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MinPrice');
         if (null !== $value) {
             $this->setMinPrice(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MaxPrice');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MaxPrice');
         if (null !== $value) {
             $this->setMaxPrice(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ProductReferenceID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ProductReferenceID');
         if (null !== $value) {
             $this->setProductReferenceID($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\BulkDataExchange;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing DownloadRequestFilterType
  *
@@ -352,49 +354,33 @@ class DownloadRequestFilterType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}feeSettlementReportFilter');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}feeSettlementReportFilter');
         if (null !== $value) {
             $this->setFeeSettlementReportFilter(\Nogrod\eBaySDK\BulkDataExchange\FeeSettlementReportFilterType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}getItemInfoReportFilter');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}getItemInfoReportFilter');
         if (null !== $value) {
             $this->setGetItemInfoReportFilter(\Nogrod\eBaySDK\BulkDataExchange\GetItemInfoReportFilterType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}siteFilter', true);
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}siteFilter', true);
         if (null !== $value && !empty($value)) {
             $this->setSiteFilter($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}activeInventoryReportFilter');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}activeInventoryReportFilter');
         if (null !== $value) {
             $this->setActiveInventoryReportFilter(\Nogrod\eBaySDK\BulkDataExchange\ActiveInventoryReportFilterType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}dateFilter');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}dateFilter');
         if (null !== $value) {
             $this->setDateFilter(\Nogrod\eBaySDK\BulkDataExchange\DateFilterType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}soldReportFilter');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}soldReportFilter');
         if (null !== $value) {
             $this->setSoldReportFilter(\Nogrod\eBaySDK\BulkDataExchange\SoldReportFilterType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}orderReportFilter');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}orderReportFilter');
         if (null !== $value) {
             $this->setOrderReportFilter(\Nogrod\eBaySDK\BulkDataExchange\OrderReportFilterType::fromKeyValue($value));
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

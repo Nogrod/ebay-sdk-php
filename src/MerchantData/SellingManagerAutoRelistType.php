@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\MerchantData;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing SellingManagerAutoRelistType
  *
@@ -303,49 +305,33 @@ class SellingManagerAutoRelistType implements \Sabre\Xml\XmlSerializable, \Sabre
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Type');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Type');
         if (null !== $value) {
             $this->setType($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RelistCondition');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RelistCondition');
         if (null !== $value) {
             $this->setRelistCondition($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RelistAfterDays');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RelistAfterDays');
         if (null !== $value) {
             $this->setRelistAfterDays($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RelistAfterHours');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RelistAfterHours');
         if (null !== $value) {
             $this->setRelistAfterHours($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RelistAtSpecificTimeOfDay');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RelistAtSpecificTimeOfDay');
         if (null !== $value) {
             $this->setRelistAtSpecificTimeOfDay($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BestOfferDetails');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BestOfferDetails');
         if (null !== $value) {
             $this->setBestOfferDetails(\Nogrod\eBaySDK\MerchantData\BestOfferDetailsType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ListingHoldInventoryLevel');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ListingHoldInventoryLevel');
         if (null !== $value) {
             $this->setListingHoldInventoryLevel($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

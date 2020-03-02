@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Trading;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing DataElementSetType
  *
@@ -141,29 +143,13 @@ class DataElementSetType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DataElement');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DataElement');
         if (null !== $value) {
             $this->setDataElement($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DataElementID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DataElementID');
         if (null !== $value) {
             $this->setDataElementID($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

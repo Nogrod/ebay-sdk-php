@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\MerchantData;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing AverageRatingDetailsType
  *
@@ -142,33 +144,17 @@ class AverageRatingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RatingDetail');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RatingDetail');
         if (null !== $value) {
             $this->setRatingDetail($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Rating');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Rating');
         if (null !== $value) {
             $this->setRating($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RatingCount');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RatingCount');
         if (null !== $value) {
             $this->setRatingCount($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\MerchantData;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing MultiLegShippingDetailsType
  *
@@ -108,29 +110,13 @@ class MultiLegShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerShipmentToLogisticsProvider');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerShipmentToLogisticsProvider');
         if (null !== $value) {
             $this->setSellerShipmentToLogisticsProvider(\Nogrod\eBaySDK\MerchantData\MultiLegShipmentType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LogisticsProviderShipmentToBuyer');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LogisticsProviderShipmentToBuyer');
         if (null !== $value) {
             $this->setLogisticsProviderShipmentToBuyer(\Nogrod\eBaySDK\MerchantData\MultiLegShipmentType::fromKeyValue($value));
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

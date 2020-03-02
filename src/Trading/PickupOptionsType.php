@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Trading;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing PickupOptionsType
  *
@@ -144,29 +146,13 @@ class PickupOptionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PickupMethod');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PickupMethod');
         if (null !== $value) {
             $this->setPickupMethod($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PickupPriority');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PickupPriority');
         if (null !== $value) {
             $this->setPickupPriority($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

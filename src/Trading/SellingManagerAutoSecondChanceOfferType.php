@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Trading;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing SellingManagerAutoSecondChanceOfferType
  *
@@ -234,41 +236,25 @@ class SellingManagerAutoSecondChanceOfferType implements \Sabre\Xml\XmlSerializa
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SecondChanceOfferCondition');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SecondChanceOfferCondition');
         if (null !== $value) {
             $this->setSecondChanceOfferCondition($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Amount');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Amount');
         if (null !== $value) {
             $this->setAmount(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ProfitPercent');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ProfitPercent');
         if (null !== $value) {
             $this->setProfitPercent($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Duration');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Duration');
         if (null !== $value) {
             $this->setDuration($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ListingHoldInventoryLevel');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ListingHoldInventoryLevel');
         if (null !== $value) {
             $this->setListingHoldInventoryLevel($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

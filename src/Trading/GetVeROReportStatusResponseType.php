@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Trading;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing GetVeROReportStatusResponseType
  *
@@ -357,51 +359,35 @@ class GetVeROReportStatusResponseType extends AbstractResponseType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaginationResult');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaginationResult');
         if (null !== $value) {
             $this->setPaginationResult(\Nogrod\eBaySDK\Trading\PaginationResultType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}HasMoreItems');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}HasMoreItems');
         if (null !== $value) {
             $this->setHasMoreItems($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemsPerPage');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemsPerPage');
         if (null !== $value) {
             $this->setItemsPerPage($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PageNumber');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PageNumber');
         if (null !== $value) {
             $this->setPageNumber($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}VeROReportPacketID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}VeROReportPacketID');
         if (null !== $value) {
             $this->setVeROReportPacketID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}VeROReportPacketStatus');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}VeROReportPacketStatus');
         if (null !== $value) {
             $this->setVeROReportPacketStatus($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReportedItemDetails', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReportedItemDetails', true);
         if (null !== $value && !empty($value)) {
             $this->setReportedItemDetails(array_map(function ($v) {
                 return \Nogrod\eBaySDK\Trading\VeROReportedItemType::fromKeyValue($v);
             }, $value));
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

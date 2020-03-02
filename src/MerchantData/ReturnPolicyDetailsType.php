@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\MerchantData;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing ReturnPolicyDetailsType
  *
@@ -917,85 +919,69 @@ class ReturnPolicyDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Refund', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Refund', true);
         if (null !== $value && !empty($value)) {
             $this->setRefund(array_map(function ($v) {
                 return \Nogrod\eBaySDK\MerchantData\RefundDetailsType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReturnsWithin', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReturnsWithin', true);
         if (null !== $value && !empty($value)) {
             $this->setReturnsWithin(array_map(function ($v) {
                 return \Nogrod\eBaySDK\MerchantData\ReturnsWithinDetailsType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReturnsAccepted', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReturnsAccepted', true);
         if (null !== $value && !empty($value)) {
             $this->setReturnsAccepted(array_map(function ($v) {
                 return \Nogrod\eBaySDK\MerchantData\ReturnsAcceptedDetailsType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Description');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Description');
         if (null !== $value) {
             $this->setDescription($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}WarrantyOffered', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}WarrantyOffered', true);
         if (null !== $value && !empty($value)) {
             $this->setWarrantyOffered(array_map(function ($v) {
                 return \Nogrod\eBaySDK\MerchantData\WarrantyOfferedDetailsType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}WarrantyType', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}WarrantyType', true);
         if (null !== $value && !empty($value)) {
             $this->setWarrantyType(array_map(function ($v) {
                 return \Nogrod\eBaySDK\MerchantData\WarrantyTypeDetailsType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}WarrantyDuration', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}WarrantyDuration', true);
         if (null !== $value && !empty($value)) {
             $this->setWarrantyDuration(array_map(function ($v) {
                 return \Nogrod\eBaySDK\MerchantData\WarrantyDurationDetailsType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EAN');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EAN');
         if (null !== $value) {
             $this->setEAN($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingCostPaidBy', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingCostPaidBy', true);
         if (null !== $value && !empty($value)) {
             $this->setShippingCostPaidBy(array_map(function ($v) {
                 return \Nogrod\eBaySDK\MerchantData\ShippingCostPaidByDetailsType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RestockingFeeValue', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RestockingFeeValue', true);
         if (null !== $value && !empty($value)) {
             $this->setRestockingFeeValue(array_map(function ($v) {
                 return \Nogrod\eBaySDK\MerchantData\RestockingFeeValueDetailsType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DetailVersion');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DetailVersion');
         if (null !== $value) {
             $this->setDetailVersion($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UpdateTime');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UpdateTime');
         if (null !== $value) {
             $this->setUpdateTime(new \DateTime($value));
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

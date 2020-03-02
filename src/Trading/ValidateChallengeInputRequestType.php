@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Trading;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing ValidateChallengeInputRequestType
  *
@@ -144,33 +146,17 @@ class ValidateChallengeInputRequestType extends AbstractRequestType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ChallengeToken');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ChallengeToken');
         if (null !== $value) {
             $this->setChallengeToken($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UserInput');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UserInput');
         if (null !== $value) {
             $this->setUserInput($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}KeepTokenValid');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}KeepTokenValid');
         if (null !== $value) {
             $this->setKeepTokenValid($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

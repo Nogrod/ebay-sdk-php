@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\MerchantData;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing AdditionalAccountType
  *
@@ -149,33 +151,17 @@ class AdditionalAccountType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Balance');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Balance');
         if (null !== $value) {
             $this->setBalance(\Nogrod\eBaySDK\MerchantData\AmountType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Currency');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Currency');
         if (null !== $value) {
             $this->setCurrency($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AccountCode');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AccountCode');
         if (null !== $value) {
             $this->setAccountCode($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

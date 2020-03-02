@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Trading;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing ListingRecommendationType
  *
@@ -650,51 +652,35 @@ class ListingRecommendationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Type');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Type');
         if (null !== $value) {
             $this->setType($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Group');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Group');
         if (null !== $value) {
             $this->setGroup($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FieldName');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FieldName');
         if (null !== $value) {
             $this->setFieldName($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Code');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Code');
         if (null !== $value) {
             $this->setCode($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Value', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Value', true);
         if (null !== $value && !empty($value)) {
             $this->setValue($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Message');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Message');
         if (null !== $value) {
             $this->setMessage($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Metadata', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Metadata', true);
         if (null !== $value && !empty($value)) {
             $this->setMetadata(array_map(function ($v) {
                 return \Nogrod\eBaySDK\Trading\MetadataType::fromKeyValue($v);
             }, $value));
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

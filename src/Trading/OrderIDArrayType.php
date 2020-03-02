@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Trading;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing OrderIDArrayType
  *
@@ -171,25 +173,9 @@ class OrderIDArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}OrderID', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}OrderID', true);
         if (null !== $value && !empty($value)) {
             $this->setOrderID($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\MerchantData;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing FindReplaceType
  *
@@ -237,41 +239,25 @@ class FindReplaceType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Find');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Find');
         if (null !== $value) {
             $this->setFind($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Replace');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Replace');
         if (null !== $value) {
             $this->setReplace($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FindMode');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FindMode');
         if (null !== $value) {
             $this->setFindMode($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CaseSensitive');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CaseSensitive');
         if (null !== $value) {
             $this->setCaseSensitive($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Field');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Field');
         if (null !== $value) {
             $this->setField($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

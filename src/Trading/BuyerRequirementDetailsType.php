@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Trading;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing BuyerRequirementDetailsType
  *
@@ -186,37 +188,21 @@ class BuyerRequirementDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShipToRegistrationCountry');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShipToRegistrationCountry');
         if (null !== $value) {
             $this->setShipToRegistrationCountry($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ZeroFeedbackScore');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ZeroFeedbackScore');
         if (null !== $value) {
             $this->setZeroFeedbackScore($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MaximumItemRequirements');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MaximumItemRequirements');
         if (null !== $value) {
             $this->setMaximumItemRequirements(\Nogrod\eBaySDK\Trading\MaximumItemRequirementsType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MaximumUnpaidItemStrikesInfo');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MaximumUnpaidItemStrikesInfo');
         if (null !== $value) {
             $this->setMaximumUnpaidItemStrikesInfo(\Nogrod\eBaySDK\Trading\MaximumUnpaidItemStrikesInfoType::fromKeyValue($value));
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

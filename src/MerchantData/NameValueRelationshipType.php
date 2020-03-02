@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\MerchantData;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing NameValueRelationshipType
  *
@@ -117,29 +119,13 @@ class NameValueRelationshipType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ParentName');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ParentName');
         if (null !== $value) {
             $this->setParentName($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ParentValue');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ParentValue');
         if (null !== $value) {
             $this->setParentValue($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

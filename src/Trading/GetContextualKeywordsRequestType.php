@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Trading;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing GetContextualKeywordsRequestType
  *
@@ -193,33 +195,17 @@ class GetContextualKeywordsRequestType extends AbstractRequestType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}URL');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}URL');
         if (null !== $value) {
             $this->setURL($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Encoding');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Encoding');
         if (null !== $value) {
             $this->setEncoding($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CategoryID', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CategoryID', true);
         if (null !== $value && !empty($value)) {
             $this->setCategoryID($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

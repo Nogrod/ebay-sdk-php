@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Shopping;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing SimpleUserType
  *
@@ -893,109 +895,93 @@ class SimpleUserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UserID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UserID');
         if (null !== $value) {
             $this->setUserID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeedbackPrivate');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeedbackPrivate');
         if (null !== $value) {
             $this->setFeedbackPrivate($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeedbackRatingStar');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeedbackRatingStar');
         if (null !== $value) {
             $this->setFeedbackRatingStar($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeedbackScore');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeedbackScore');
         if (null !== $value) {
             $this->setFeedbackScore($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UserAnonymized');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UserAnonymized');
         if (null !== $value) {
             $this->setUserAnonymized($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}NewUser');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}NewUser');
         if (null !== $value) {
             $this->setNewUser($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RegistrationDate');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RegistrationDate');
         if (null !== $value) {
             $this->setRegistrationDate(new \DateTime($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RegistrationSite');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RegistrationSite');
         if (null !== $value) {
             $this->setRegistrationSite($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Status');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Status');
         if (null !== $value) {
             $this->setStatus($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerBusinessType');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerBusinessType');
         if (null !== $value) {
             $this->setSellerBusinessType($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}StoreURL');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}StoreURL');
         if (null !== $value) {
             $this->setStoreURL($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}StoreName');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}StoreName');
         if (null !== $value) {
             $this->setStoreName($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerItemsURL');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerItemsURL');
         if (null !== $value) {
             $this->setSellerItemsURL($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AboutMeURL');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AboutMeURL');
         if (null !== $value) {
             $this->setAboutMeURL($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MyWorldURL');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MyWorldURL');
         if (null !== $value) {
             $this->setMyWorldURL($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MyWorldSmallImage');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MyWorldSmallImage');
         if (null !== $value) {
             $this->setMyWorldSmallImage($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MyWorldLargeImage');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MyWorldLargeImage');
         if (null !== $value) {
             $this->setMyWorldLargeImage($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReviewsAndGuidesURL');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReviewsAndGuidesURL');
         if (null !== $value) {
             $this->setReviewsAndGuidesURL($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeedbackDetailsURL');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeedbackDetailsURL');
         if (null !== $value) {
             $this->setFeedbackDetailsURL($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PositiveFeedbackPercent');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PositiveFeedbackPercent');
         if (null !== $value) {
             $this->setPositiveFeedbackPercent($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerLevel');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerLevel');
         if (null !== $value) {
             $this->setSellerLevel($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TopRatedSeller');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TopRatedSeller');
         if (null !== $value) {
             $this->setTopRatedSeller($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

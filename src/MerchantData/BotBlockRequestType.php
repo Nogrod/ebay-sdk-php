@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\MerchantData;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing BotBlockRequestType
  *
@@ -104,29 +106,13 @@ class BotBlockRequestType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BotBlockToken');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BotBlockToken');
         if (null !== $value) {
             $this->setBotBlockToken($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BotBlockUserInput');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BotBlockUserInput');
         if (null !== $value) {
             $this->setBotBlockUserInput($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

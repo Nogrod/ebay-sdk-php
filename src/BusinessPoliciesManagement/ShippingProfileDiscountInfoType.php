@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\BusinessPoliciesManagement;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing ShippingProfileDiscountInfoType
  *
@@ -156,37 +158,21 @@ class ShippingProfileDiscountInfoType implements \Sabre\Xml\XmlSerializable, \Sa
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}domesticFlatCalcDiscountProfileId');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}domesticFlatCalcDiscountProfileId');
         if (null !== $value) {
             $this->setDomesticFlatCalcDiscountProfileId($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}intlFlatCalcDiscountProfileId');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}intlFlatCalcDiscountProfileId');
         if (null !== $value) {
             $this->setIntlFlatCalcDiscountProfileId($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}applyDomesticPromoShippingProfile');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}applyDomesticPromoShippingProfile');
         if (null !== $value) {
             $this->setApplyDomesticPromoShippingProfile($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}applyIntlPromoShippingProfile');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}applyIntlPromoShippingProfile');
         if (null !== $value) {
             $this->setApplyIntlPromoShippingProfile($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

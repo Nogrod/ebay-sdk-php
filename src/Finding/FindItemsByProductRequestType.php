@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Finding;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing FindItemsByProductRequestType
  *
@@ -345,35 +347,19 @@ class FindItemsByProductRequestType extends BaseFindingServiceRequestType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}productId');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}productId');
         if (null !== $value) {
             $this->setProductId(\Nogrod\eBaySDK\Finding\ProductIdType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}itemFilter', true);
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}itemFilter', true);
         if (null !== $value && !empty($value)) {
             $this->setItemFilter(array_map(function ($v) {
                 return \Nogrod\eBaySDK\Finding\ItemFilterType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}outputSelector', true);
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}outputSelector', true);
         if (null !== $value && !empty($value)) {
             $this->setOutputSelector($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

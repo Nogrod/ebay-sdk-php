@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\MerchantData;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing UserIdPasswordType
  *
@@ -266,41 +268,25 @@ class UserIdPasswordType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AppId');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AppId');
         if (null !== $value) {
             $this->setAppId($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DevId');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DevId');
         if (null !== $value) {
             $this->setDevId($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AuthCert');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AuthCert');
         if (null !== $value) {
             $this->setAuthCert($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Username');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Username');
         if (null !== $value) {
             $this->setUsername($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Password');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Password');
         if (null !== $value) {
             $this->setPassword($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

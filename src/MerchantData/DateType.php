@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\MerchantData;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing DateType
  *
@@ -152,33 +154,17 @@ class DateType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Year');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Year');
         if (null !== $value) {
             $this->setYear($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Month');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Month');
         if (null !== $value) {
             $this->setMonth($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Day');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Day');
         if (null !== $value) {
             $this->setDay($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

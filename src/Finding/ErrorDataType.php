@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Finding;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing ErrorDataType
  *
@@ -559,55 +561,39 @@ class ErrorDataType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}errorId');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}errorId');
         if (null !== $value) {
             $this->setErrorId($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}domain');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}domain');
         if (null !== $value) {
             $this->setDomain($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}severity');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}severity');
         if (null !== $value) {
             $this->setSeverity($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}category');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}category');
         if (null !== $value) {
             $this->setCategory($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}message');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}message');
         if (null !== $value) {
             $this->setMessage($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}subdomain');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}subdomain');
         if (null !== $value) {
             $this->setSubdomain($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}exceptionId');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}exceptionId');
         if (null !== $value) {
             $this->setExceptionId($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}parameter', true);
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}parameter', true);
         if (null !== $value && !empty($value)) {
             $this->setParameter(array_map(function ($v) {
                 return \Nogrod\eBaySDK\Finding\ErrorParameterType::fromKeyValue($v);
             }, $value));
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

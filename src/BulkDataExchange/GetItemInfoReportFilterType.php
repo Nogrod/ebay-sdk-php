@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\BulkDataExchange;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing GetItemInfoReportFilterType
  *
@@ -416,53 +418,37 @@ class GetItemInfoReportFilterType implements \Sabre\Xml\XmlSerializable, \Sabre\
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}jobAction');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}jobAction');
         if (null !== $value) {
             $this->setJobAction(\Nogrod\eBaySDK\BulkDataExchange\GetItemJobActionType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}filterType');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}filterType');
         if (null !== $value) {
             $this->setFilterType($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}includeAttributes');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}includeAttributes');
         if (null !== $value) {
             $this->setIncludeAttributes($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}includeDescription');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}includeDescription');
         if (null !== $value) {
             $this->setIncludeDescription($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}reportDateFrom');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}reportDateFrom');
         if (null !== $value) {
             $this->setReportDateFrom(new \DateTime($value));
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}reportDateTo');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}reportDateTo');
         if (null !== $value) {
             $this->setReportDateTo(new \DateTime($value));
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}timeFrame', true);
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}timeFrame', true);
         if (null !== $value && !empty($value)) {
             $this->setTimeFrame($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}changedFieldSelector', true);
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}changedFieldSelector', true);
         if (null !== $value && !empty($value)) {
             $this->setChangedFieldSelector($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

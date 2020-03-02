@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Trading;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing GetMyeBaySellingResponseType
  *
@@ -401,57 +403,41 @@ class GetMyeBaySellingResponseType extends AbstractResponseType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellingSummary');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellingSummary');
         if (null !== $value) {
             $this->setSellingSummary(\Nogrod\eBaySDK\Trading\SellingSummaryType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ScheduledList');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ScheduledList');
         if (null !== $value) {
             $this->setScheduledList(\Nogrod\eBaySDK\Trading\PaginatedItemArrayType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ActiveList');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ActiveList');
         if (null !== $value) {
             $this->setActiveList(\Nogrod\eBaySDK\Trading\PaginatedItemArrayType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SoldList');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SoldList');
         if (null !== $value) {
             $this->setSoldList(\Nogrod\eBaySDK\Trading\PaginatedOrderTransactionArrayType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UnsoldList');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UnsoldList');
         if (null !== $value) {
             $this->setUnsoldList(\Nogrod\eBaySDK\Trading\PaginatedItemArrayType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Summary');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Summary');
         if (null !== $value) {
             $this->setSummary(\Nogrod\eBaySDK\Trading\MyeBaySellingSummaryType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BidList');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BidList');
         if (null !== $value) {
             $this->setBidList(\Nogrod\eBaySDK\Trading\PaginatedItemArrayType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DeletedFromSoldList');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DeletedFromSoldList');
         if (null !== $value) {
             $this->setDeletedFromSoldList(\Nogrod\eBaySDK\Trading\PaginatedOrderTransactionArrayType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DeletedFromUnsoldList');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DeletedFromUnsoldList');
         if (null !== $value) {
             $this->setDeletedFromUnsoldList(\Nogrod\eBaySDK\Trading\PaginatedItemArrayType::fromKeyValue($value));
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

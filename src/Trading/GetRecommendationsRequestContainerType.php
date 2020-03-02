@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Trading;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing GetRecommendationsRequestContainerType
  *
@@ -416,53 +418,37 @@ class GetRecommendationsRequestContainerType implements \Sabre\Xml\XmlSerializab
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ListingFlow');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ListingFlow');
         if (null !== $value) {
             $this->setListingFlow($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Item');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Item');
         if (null !== $value) {
             $this->setItem(\Nogrod\eBaySDK\Trading\ItemType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RecommendationEngine', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RecommendationEngine', true);
         if (null !== $value && !empty($value)) {
             $this->setRecommendationEngine($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Query');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Query');
         if (null !== $value) {
             $this->setQuery($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CorrelationID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CorrelationID');
         if (null !== $value) {
             $this->setCorrelationID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DeletedField', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DeletedField', true);
         if (null !== $value && !empty($value)) {
             $this->setDeletedField($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExcludeRelationships');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExcludeRelationships');
         if (null !== $value) {
             $this->setExcludeRelationships($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}IncludeConfidence');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}IncludeConfidence');
         if (null !== $value) {
             $this->setIncludeConfidence($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

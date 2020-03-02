@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Trading;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing ShippingServiceDetailsType
  *
@@ -1236,117 +1238,101 @@ class ShippingServiceDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Description');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Description');
         if (null !== $value) {
             $this->setDescription($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExpeditedService');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExpeditedService');
         if (null !== $value) {
             $this->setExpeditedService($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}InternationalService');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}InternationalService');
         if (null !== $value) {
             $this->setInternationalService($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingService');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingService');
         if (null !== $value) {
             $this->setShippingService($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingServiceID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingServiceID');
         if (null !== $value) {
             $this->setShippingServiceID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingTimeMax');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingTimeMax');
         if (null !== $value) {
             $this->setShippingTimeMax($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingTimeMin');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingTimeMin');
         if (null !== $value) {
             $this->setShippingTimeMin($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingServiceCode');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingServiceCode');
         if (null !== $value) {
             $this->setShippingServiceCode($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ServiceType', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ServiceType', true);
         if (null !== $value && !empty($value)) {
             $this->setServiceType($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingPackage', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingPackage', true);
         if (null !== $value && !empty($value)) {
             $this->setShippingPackage($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DimensionsRequired');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DimensionsRequired');
         if (null !== $value) {
             $this->setDimensionsRequired($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ValidForSellingFlow');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ValidForSellingFlow');
         if (null !== $value) {
             $this->setValidForSellingFlow($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SurchargeApplicable');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SurchargeApplicable');
         if (null !== $value) {
             $this->setSurchargeApplicable($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingCarrier', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingCarrier', true);
         if (null !== $value && !empty($value)) {
             $this->setShippingCarrier($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CODService');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CODService');
         if (null !== $value) {
             $this->setCODService($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DeprecationDetails', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DeprecationDetails', true);
         if (null !== $value && !empty($value)) {
             $this->setDeprecationDetails(array_map(function ($v) {
                 return \Nogrod\eBaySDK\Trading\AnnouncementMessageType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MappedToShippingServiceID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MappedToShippingServiceID');
         if (null !== $value) {
             $this->setMappedToShippingServiceID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CostGroupFlat');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CostGroupFlat');
         if (null !== $value) {
             $this->setCostGroupFlat($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingServicePackageDetails', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingServicePackageDetails', true);
         if (null !== $value && !empty($value)) {
             $this->setShippingServicePackageDetails(array_map(function ($v) {
                 return \Nogrod\eBaySDK\Trading\ShippingServicePackageDetailsType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}WeightRequired');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}WeightRequired');
         if (null !== $value) {
             $this->setWeightRequired($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DetailVersion');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DetailVersion');
         if (null !== $value) {
             $this->setDetailVersion($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UpdateTime');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UpdateTime');
         if (null !== $value) {
             $this->setUpdateTime(new \DateTime($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingCategory');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingCategory');
         if (null !== $value) {
             $this->setShippingCategory($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

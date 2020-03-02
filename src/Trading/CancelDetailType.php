@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Trading;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing CancelDetailType
  *
@@ -239,41 +241,25 @@ class CancelDetailType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CancelReason');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CancelReason');
         if (null !== $value) {
             $this->setCancelReason($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CancelReasonDetails');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CancelReasonDetails');
         if (null !== $value) {
             $this->setCancelReasonDetails($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CancelIntiator');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CancelIntiator');
         if (null !== $value) {
             $this->setCancelIntiator($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CancelIntiationDate');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CancelIntiationDate');
         if (null !== $value) {
             $this->setCancelIntiationDate(new \DateTime($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CancelCompleteDate');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CancelCompleteDate');
         if (null !== $value) {
             $this->setCancelCompleteDate(new \DateTime($value));
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

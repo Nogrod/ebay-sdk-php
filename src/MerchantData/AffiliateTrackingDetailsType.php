@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\MerchantData;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing AffiliateTrackingDetailsType
  *
@@ -244,37 +246,21 @@ class AffiliateTrackingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TrackingID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TrackingID');
         if (null !== $value) {
             $this->setTrackingID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TrackingPartnerCode');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TrackingPartnerCode');
         if (null !== $value) {
             $this->setTrackingPartnerCode($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ApplicationDeviceType');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ApplicationDeviceType');
         if (null !== $value) {
             $this->setApplicationDeviceType($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AffiliateUserID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AffiliateUserID');
         if (null !== $value) {
             $this->setAffiliateUserID($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Trading;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing SetStoreCategoriesRequestType
  *
@@ -242,39 +244,23 @@ class SetStoreCategoriesRequestType extends AbstractRequestType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Action');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Action');
         if (null !== $value) {
             $this->setAction($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemDestinationCategoryID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemDestinationCategoryID');
         if (null !== $value) {
             $this->setItemDestinationCategoryID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DestinationParentCategoryID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DestinationParentCategoryID');
         if (null !== $value) {
             $this->setDestinationParentCategoryID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}StoreCategories', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}StoreCategories', true);
         if (null !== $value && !empty($value)) {
             $this->setStoreCategories(array_map(function ($v) {
                 return \Nogrod\eBaySDK\Trading\StoreCustomCategoryType::fromKeyValue($v);
             }, $value));
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

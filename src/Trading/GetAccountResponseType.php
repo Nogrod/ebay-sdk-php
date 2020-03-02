@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Trading;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing GetAccountResponseType
  *
@@ -382,55 +384,39 @@ class GetAccountResponseType extends AbstractResponseType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AccountID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AccountID');
         if (null !== $value) {
             $this->setAccountID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AccountSummary');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AccountSummary');
         if (null !== $value) {
             $this->setAccountSummary(\Nogrod\eBaySDK\Trading\AccountSummaryType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Currency');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Currency');
         if (null !== $value) {
             $this->setCurrency($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AccountEntries', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AccountEntries', true);
         if (null !== $value && !empty($value)) {
             $this->setAccountEntries(array_map(function ($v) {
                 return \Nogrod\eBaySDK\Trading\AccountEntryType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaginationResult');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaginationResult');
         if (null !== $value) {
             $this->setPaginationResult(\Nogrod\eBaySDK\Trading\PaginationResultType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}HasMoreEntries');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}HasMoreEntries');
         if (null !== $value) {
             $this->setHasMoreEntries($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EntriesPerPage');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EntriesPerPage');
         if (null !== $value) {
             $this->setEntriesPerPage($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PageNumber');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PageNumber');
         if (null !== $value) {
             $this->setPageNumber($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

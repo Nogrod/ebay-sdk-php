@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Trading;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing PictureManagerSubscriptionType
  *
@@ -141,33 +143,17 @@ class PictureManagerSubscriptionType implements \Sabre\Xml\XmlSerializable, \Sab
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SubscriptionLevel');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SubscriptionLevel');
         if (null !== $value) {
             $this->setSubscriptionLevel($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Fee');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Fee');
         if (null !== $value) {
             $this->setFee(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}StorageSize');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}StorageSize');
         if (null !== $value) {
             $this->setStorageSize($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\FileTransfer;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing DownloadFileRequestType
  *
@@ -170,29 +172,13 @@ class DownloadFileRequestType extends BaseServiceRequestType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}taskReferenceId');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}taskReferenceId');
         if (null !== $value) {
             $this->setTaskReferenceId($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}fileReferenceId');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}fileReferenceId');
         if (null !== $value) {
             $this->setFileReferenceId($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Trading;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing SellingManagerProductDetailsType
  *
@@ -416,61 +418,45 @@ class SellingManagerProductDetailsType implements \Sabre\Xml\XmlSerializable, \S
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ProductName');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ProductName');
         if (null !== $value) {
             $this->setProductName($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ProductID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ProductID');
         if (null !== $value) {
             $this->setProductID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CustomLabel');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CustomLabel');
         if (null !== $value) {
             $this->setCustomLabel($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}QuantityAvailable');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}QuantityAvailable');
         if (null !== $value) {
             $this->setQuantityAvailable($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UnitCost');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UnitCost');
         if (null !== $value) {
             $this->setUnitCost(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FolderID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FolderID');
         if (null !== $value) {
             $this->setFolderID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RestockAlert');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RestockAlert');
         if (null !== $value) {
             $this->setRestockAlert($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RestockThreshold');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RestockThreshold');
         if (null !== $value) {
             $this->setRestockThreshold($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}VendorInfo');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}VendorInfo');
         if (null !== $value) {
             $this->setVendorInfo(\Nogrod\eBaySDK\Trading\SellingManagerVendorDetailsType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Note');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Note');
         if (null !== $value) {
             $this->setNote($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

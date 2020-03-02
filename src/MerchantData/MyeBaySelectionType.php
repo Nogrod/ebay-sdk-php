@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\MerchantData;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing MyeBaySelectionType
  *
@@ -410,53 +412,37 @@ class MyeBaySelectionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Include');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Include');
         if (null !== $value) {
             $this->setInclude($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}IncludeItemCount');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}IncludeItemCount');
         if (null !== $value) {
             $this->setIncludeItemCount($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}IncludeFavoriteSearcheCount');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}IncludeFavoriteSearcheCount');
         if (null !== $value) {
             $this->setIncludeFavoriteSearcheCount($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}IncludeFavoriteSellerCount');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}IncludeFavoriteSellerCount');
         if (null !== $value) {
             $this->setIncludeFavoriteSellerCount($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Sort');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Sort');
         if (null !== $value) {
             $this->setSort($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MaxResults');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MaxResults');
         if (null !== $value) {
             $this->setMaxResults($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UserDefinedListName');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UserDefinedListName');
         if (null !== $value) {
             $this->setUserDefinedListName($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}IncludeListContents');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}IncludeListContents');
         if (null !== $value) {
             $this->setIncludeListContents($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

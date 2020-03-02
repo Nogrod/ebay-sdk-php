@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\MerchantData;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing SellerRoleMetricsType
  *
@@ -403,61 +405,45 @@ class SellerRoleMetricsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PositiveFeedbackLeftCount');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PositiveFeedbackLeftCount');
         if (null !== $value) {
             $this->setPositiveFeedbackLeftCount($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}NegativeFeedbackLeftCount');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}NegativeFeedbackLeftCount');
         if (null !== $value) {
             $this->setNegativeFeedbackLeftCount($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}NeutralFeedbackLeftCount');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}NeutralFeedbackLeftCount');
         if (null !== $value) {
             $this->setNeutralFeedbackLeftCount($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeedbackLeftPercent');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeedbackLeftPercent');
         if (null !== $value) {
             $this->setFeedbackLeftPercent($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RepeatBuyerCount');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RepeatBuyerCount');
         if (null !== $value) {
             $this->setRepeatBuyerCount($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RepeatBuyerPercent');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RepeatBuyerPercent');
         if (null !== $value) {
             $this->setRepeatBuyerPercent($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UniqueBuyerCount');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UniqueBuyerCount');
         if (null !== $value) {
             $this->setUniqueBuyerCount($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TransactionPercent');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TransactionPercent');
         if (null !== $value) {
             $this->setTransactionPercent($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CrossBorderTransactionCount');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CrossBorderTransactionCount');
         if (null !== $value) {
             $this->setCrossBorderTransactionCount($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CrossBorderTransactionPercent');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CrossBorderTransactionPercent');
         if (null !== $value) {
             $this->setCrossBorderTransactionPercent($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

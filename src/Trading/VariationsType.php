@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Trading;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing VariationsType
  *
@@ -811,45 +813,29 @@ class VariationsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Variation', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Variation', true);
         if (null !== $value && !empty($value)) {
             $this->setVariation(array_map(function ($v) {
                 return \Nogrod\eBaySDK\Trading\VariationType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Pictures', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Pictures', true);
         if (null !== $value && !empty($value)) {
             $this->setPictures(array_map(function ($v) {
                 return \Nogrod\eBaySDK\Trading\PicturesType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}VariationSpecificsSet', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}VariationSpecificsSet', true);
         if (null !== $value && !empty($value)) {
             $this->setVariationSpecificsSet(array_map(function ($v) {
                 return \Nogrod\eBaySDK\Trading\NameValueListType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ModifyNameList', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ModifyNameList', true);
         if (null !== $value && !empty($value)) {
             $this->setModifyNameList(array_map(function ($v) {
                 return \Nogrod\eBaySDK\Trading\ModifyNameType::fromKeyValue($v);
             }, $value));
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

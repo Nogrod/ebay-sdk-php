@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Finding;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing ExtensionTypeType
  *
@@ -178,37 +180,21 @@ class ExtensionTypeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}id');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}id');
         if (null !== $value) {
             $this->setId($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}version');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}version');
         if (null !== $value) {
             $this->setVersion($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}contentType');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}contentType');
         if (null !== $value) {
             $this->setContentType($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}value');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}value');
         if (null !== $value) {
             $this->setValue($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

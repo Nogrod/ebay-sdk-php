@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\MerchantData;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing ContactHoursDetailsType
  *
@@ -500,57 +502,41 @@ class ContactHoursDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TimeZoneID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TimeZoneID');
         if (null !== $value) {
             $this->setTimeZoneID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Hours1Days');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Hours1Days');
         if (null !== $value) {
             $this->setHours1Days($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Hours1AnyTime');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Hours1AnyTime');
         if (null !== $value) {
             $this->setHours1AnyTime($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Hours1From');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Hours1From');
         if (null !== $value) {
             $this->setHours1From($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Hours1To');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Hours1To');
         if (null !== $value) {
             $this->setHours1To($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Hours2Days');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Hours2Days');
         if (null !== $value) {
             $this->setHours2Days($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Hours2AnyTime');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Hours2AnyTime');
         if (null !== $value) {
             $this->setHours2AnyTime($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Hours2From');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Hours2From');
         if (null !== $value) {
             $this->setHours2From($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Hours2To');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Hours2To');
         if (null !== $value) {
             $this->setHours2To($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

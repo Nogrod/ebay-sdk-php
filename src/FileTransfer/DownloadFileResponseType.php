@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\FileTransfer;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing DownloadFileResponseType
  *
@@ -71,25 +73,9 @@ class DownloadFileResponseType extends BaseServiceResponseType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}fileAttachment');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}fileAttachment');
         if (null !== $value) {
             $this->setFileAttachment(\Nogrod\eBaySDK\FileTransfer\FileAttachmentType::fromKeyValue($value));
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

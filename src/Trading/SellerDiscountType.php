@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Trading;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing SellerDiscountType
  *
@@ -212,37 +214,21 @@ class SellerDiscountType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CampaignID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CampaignID');
         if (null !== $value) {
             $this->setCampaignID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CampaignDisplayName');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CampaignDisplayName');
         if (null !== $value) {
             $this->setCampaignDisplayName($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemDiscountAmount');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemDiscountAmount');
         if (null !== $value) {
             $this->setItemDiscountAmount(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingDiscountAmount');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingDiscountAmount');
         if (null !== $value) {
             $this->setShippingDiscountAmount(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

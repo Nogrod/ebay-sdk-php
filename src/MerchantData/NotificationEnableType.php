@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\MerchantData;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing NotificationEnableType
  *
@@ -105,29 +107,13 @@ class NotificationEnableType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EventType');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EventType');
         if (null !== $value) {
             $this->setEventType($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EventEnable');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EventEnable');
         if (null !== $value) {
             $this->setEventEnable($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

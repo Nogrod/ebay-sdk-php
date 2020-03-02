@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Trading;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing ItemPolicyViolationType
  *
@@ -105,29 +107,13 @@ class ItemPolicyViolationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PolicyID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PolicyID');
         if (null !== $value) {
             $this->setPolicyID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PolicyText');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PolicyText');
         if (null !== $value) {
             $this->setPolicyText($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

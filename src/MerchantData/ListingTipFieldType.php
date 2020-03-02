@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\MerchantData;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing ListingTipFieldType
  *
@@ -178,37 +180,21 @@ class ListingTipFieldType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ListingTipFieldID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ListingTipFieldID');
         if (null !== $value) {
             $this->setListingTipFieldID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FieldTip');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FieldTip');
         if (null !== $value) {
             $this->setFieldTip($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CurrentFieldText');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CurrentFieldText');
         if (null !== $value) {
             $this->setCurrentFieldText($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CurrentFieldValue');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CurrentFieldValue');
         if (null !== $value) {
             $this->setCurrentFieldValue($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

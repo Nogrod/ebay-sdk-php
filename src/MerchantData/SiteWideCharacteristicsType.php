@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\MerchantData;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing SiteWideCharacteristicsType
  *
@@ -148,29 +150,13 @@ class SiteWideCharacteristicsType implements \Sabre\Xml\XmlSerializable, \Sabre\
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CharacteristicsSet');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CharacteristicsSet');
         if (null !== $value) {
             $this->setCharacteristicsSet(\Nogrod\eBaySDK\MerchantData\CharacteristicsSetType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExcludeCategoryID', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExcludeCategoryID', true);
         if (null !== $value && !empty($value)) {
             $this->setExcludeCategoryID($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

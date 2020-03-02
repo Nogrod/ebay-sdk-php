@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Trading;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing GetNotificationsUsageResponseType
  *
@@ -336,45 +338,29 @@ class GetNotificationsUsageResponseType extends AbstractResponseType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}StartTime');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}StartTime');
         if (null !== $value) {
             $this->setStartTime(new \DateTime($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EndTime');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EndTime');
         if (null !== $value) {
             $this->setEndTime(new \DateTime($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}NotificationDetailsArray', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}NotificationDetailsArray', true);
         if (null !== $value && !empty($value)) {
             $this->setNotificationDetailsArray(array_map(function ($v) {
                 return \Nogrod\eBaySDK\Trading\NotificationDetailsType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MarkUpMarkDownHistory', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MarkUpMarkDownHistory', true);
         if (null !== $value && !empty($value)) {
             $this->setMarkUpMarkDownHistory(array_map(function ($v) {
                 return \Nogrod\eBaySDK\Trading\MarkUpMarkDownEventType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}NotificationStatistics');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}NotificationStatistics');
         if (null !== $value) {
             $this->setNotificationStatistics(\Nogrod\eBaySDK\Trading\NotificationStatisticsType::fromKeyValue($value));
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

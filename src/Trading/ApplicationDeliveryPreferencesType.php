@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Trading;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing ApplicationDeliveryPreferencesType
  *
@@ -466,55 +468,39 @@ class ApplicationDeliveryPreferencesType implements \Sabre\Xml\XmlSerializable, 
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ApplicationURL');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ApplicationURL');
         if (null !== $value) {
             $this->setApplicationURL($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ApplicationEnable');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ApplicationEnable');
         if (null !== $value) {
             $this->setApplicationEnable($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AlertEmail');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AlertEmail');
         if (null !== $value) {
             $this->setAlertEmail($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AlertEnable');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AlertEnable');
         if (null !== $value) {
             $this->setAlertEnable($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}NotificationPayloadType');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}NotificationPayloadType');
         if (null !== $value) {
             $this->setNotificationPayloadType($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DeviceType');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DeviceType');
         if (null !== $value) {
             $this->setDeviceType($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PayloadVersion');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PayloadVersion');
         if (null !== $value) {
             $this->setPayloadVersion($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DeliveryURLDetails', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DeliveryURLDetails', true);
         if (null !== $value && !empty($value)) {
             $this->setDeliveryURLDetails(array_map(function ($v) {
                 return \Nogrod\eBaySDK\Trading\DeliveryURLDetailType::fromKeyValue($v);
             }, $value));
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

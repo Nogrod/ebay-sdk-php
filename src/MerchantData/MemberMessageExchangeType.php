@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\MerchantData;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing MemberMessageExchangeType
  *
@@ -404,51 +406,35 @@ class MemberMessageExchangeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Item');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Item');
         if (null !== $value) {
             $this->setItem(\Nogrod\eBaySDK\MerchantData\ItemType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Question');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Question');
         if (null !== $value) {
             $this->setQuestion(\Nogrod\eBaySDK\MerchantData\MemberMessageType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Response', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Response', true);
         if (null !== $value && !empty($value)) {
             $this->setResponse($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MessageStatus');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MessageStatus');
         if (null !== $value) {
             $this->setMessageStatus($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CreationDate');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CreationDate');
         if (null !== $value) {
             $this->setCreationDate(new \DateTime($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LastModifiedDate');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LastModifiedDate');
         if (null !== $value) {
             $this->setLastModifiedDate(new \DateTime($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MessageMedia', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MessageMedia', true);
         if (null !== $value && !empty($value)) {
             $this->setMessageMedia(array_map(function ($v) {
                 return \Nogrod\eBaySDK\MerchantData\MessageMediaType::fromKeyValue($v);
             }, $value));
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

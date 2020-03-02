@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Trading;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing ListingTipMessageType
  *
@@ -178,37 +180,21 @@ class ListingTipMessageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ListingTipMessageID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ListingTipMessageID');
         if (null !== $value) {
             $this->setListingTipMessageID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShortMessage');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShortMessage');
         if (null !== $value) {
             $this->setShortMessage($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LongMessage');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LongMessage');
         if (null !== $value) {
             $this->setLongMessage($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}HelpURLPath');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}HelpURLPath');
         if (null !== $value) {
             $this->setHelpURLPath($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

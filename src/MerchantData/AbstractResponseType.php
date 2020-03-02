@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\MerchantData;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing AbstractResponseType
  *
@@ -851,83 +853,67 @@ class AbstractResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Timestamp');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Timestamp');
         if (null !== $value) {
             $this->setTimestamp(new \DateTime($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Ack');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Ack');
         if (null !== $value) {
             $this->setAck($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CorrelationID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CorrelationID');
         if (null !== $value) {
             $this->setCorrelationID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Errors', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Errors', true);
         if (null !== $value && !empty($value)) {
             $this->setErrors(array_map(function ($v) {
                 return \Nogrod\eBaySDK\MerchantData\ErrorType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Message');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Message');
         if (null !== $value) {
             $this->setMessage($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Version');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Version');
         if (null !== $value) {
             $this->setVersion($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Build');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Build');
         if (null !== $value) {
             $this->setBuild($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}NotificationEventName');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}NotificationEventName');
         if (null !== $value) {
             $this->setNotificationEventName($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DuplicateInvocationDetails');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DuplicateInvocationDetails');
         if (null !== $value) {
             $this->setDuplicateInvocationDetails(\Nogrod\eBaySDK\MerchantData\DuplicateInvocationDetailsType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RecipientUserID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RecipientUserID');
         if (null !== $value) {
             $this->setRecipientUserID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EIASToken');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EIASToken');
         if (null !== $value) {
             $this->setEIASToken($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}NotificationSignature');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}NotificationSignature');
         if (null !== $value) {
             $this->setNotificationSignature($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}HardExpirationWarning');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}HardExpirationWarning');
         if (null !== $value) {
             $this->setHardExpirationWarning($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BotBlock');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BotBlock');
         if (null !== $value) {
             $this->setBotBlock(\Nogrod\eBaySDK\MerchantData\BotBlockResponseType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExternalUserData');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExternalUserData');
         if (null !== $value) {
             $this->setExternalUserData($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

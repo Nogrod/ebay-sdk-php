@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\BulkDataExchange;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing MonthlyRecurrenceType
  *
@@ -116,29 +118,13 @@ class MonthlyRecurrenceType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}dayOfMonth');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}dayOfMonth');
         if (null !== $value) {
             $this->setDayOfMonth($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}timeOfDay');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}timeOfDay');
         if (null !== $value) {
             $this->setTimeOfDay($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\MerchantData;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing MemberMessageType
  *
@@ -698,75 +700,59 @@ class MemberMessageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MessageType');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MessageType');
         if (null !== $value) {
             $this->setMessageType($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}QuestionType');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}QuestionType');
         if (null !== $value) {
             $this->setQuestionType($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EmailCopyToSender');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EmailCopyToSender');
         if (null !== $value) {
             $this->setEmailCopyToSender($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}HideSendersEmailAddress');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}HideSendersEmailAddress');
         if (null !== $value) {
             $this->setHideSendersEmailAddress($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DisplayToPublic');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DisplayToPublic');
         if (null !== $value) {
             $this->setDisplayToPublic($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SenderID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SenderID');
         if (null !== $value) {
             $this->setSenderID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SenderEmail');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SenderEmail');
         if (null !== $value) {
             $this->setSenderEmail($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RecipientID', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RecipientID', true);
         if (null !== $value && !empty($value)) {
             $this->setRecipientID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Subject');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Subject');
         if (null !== $value) {
             $this->setSubject($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Body');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Body');
         if (null !== $value) {
             $this->setBody($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MessageID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MessageID');
         if (null !== $value) {
             $this->setMessageID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ParentMessageID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ParentMessageID');
         if (null !== $value) {
             $this->setParentMessageID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MessageMedia', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MessageMedia', true);
         if (null !== $value && !empty($value)) {
             $this->setMessageMedia(array_map(function ($v) {
                 return \Nogrod\eBaySDK\MerchantData\MessageMediaType::fromKeyValue($v);
             }, $value));
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

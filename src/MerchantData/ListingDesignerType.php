@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\MerchantData;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing ListingDesignerType
  *
@@ -183,33 +185,17 @@ class ListingDesignerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LayoutID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LayoutID');
         if (null !== $value) {
             $this->setLayoutID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}OptimalPictureSize');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}OptimalPictureSize');
         if (null !== $value) {
             $this->setOptimalPictureSize($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ThemeID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ThemeID');
         if (null !== $value) {
             $this->setThemeID($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

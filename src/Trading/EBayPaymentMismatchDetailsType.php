@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Trading;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing EBayPaymentMismatchDetailsType
  *
@@ -141,33 +143,17 @@ class EBayPaymentMismatchDetailsType implements \Sabre\Xml\XmlSerializable, \Sab
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MismatchType');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MismatchType');
         if (null !== $value) {
             $this->setMismatchType($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ActionRequiredBy');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ActionRequiredBy');
         if (null !== $value) {
             $this->setActionRequiredBy(new \DateTime($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MismatchAmount');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MismatchAmount');
         if (null !== $value) {
             $this->setMismatchAmount(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

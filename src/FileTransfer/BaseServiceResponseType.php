@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\FileTransfer;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing BaseServiceResponseType
  *
@@ -227,39 +229,23 @@ class BaseServiceResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}ack');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}ack');
         if (null !== $value) {
             $this->setAck($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}errorMessage', true);
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}errorMessage', true);
         if (null !== $value && !empty($value)) {
             $this->setErrorMessage(array_map(function ($v) {
                 return \Nogrod\eBaySDK\FileTransfer\ErrorDataType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}version');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}version');
         if (null !== $value) {
             $this->setVersion($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}timestamp');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}timestamp');
         if (null !== $value) {
             $this->setTimestamp(new \DateTime($value));
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

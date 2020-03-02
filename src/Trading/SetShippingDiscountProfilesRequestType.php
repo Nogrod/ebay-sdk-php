@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Trading;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing SetShippingDiscountProfilesRequestType
  *
@@ -386,57 +388,41 @@ class SetShippingDiscountProfilesRequestType extends AbstractRequestType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CurrencyID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CurrencyID');
         if (null !== $value) {
             $this->setCurrencyID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CombinedDuration');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CombinedDuration');
         if (null !== $value) {
             $this->setCombinedDuration($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ModifyActionCode');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ModifyActionCode');
         if (null !== $value) {
             $this->setModifyActionCode($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FlatShippingDiscount');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FlatShippingDiscount');
         if (null !== $value) {
             $this->setFlatShippingDiscount(\Nogrod\eBaySDK\Trading\FlatShippingDiscountType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CalculatedShippingDiscount');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CalculatedShippingDiscount');
         if (null !== $value) {
             $this->setCalculatedShippingDiscount(\Nogrod\eBaySDK\Trading\CalculatedShippingDiscountType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CalculatedHandlingDiscount');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CalculatedHandlingDiscount');
         if (null !== $value) {
             $this->setCalculatedHandlingDiscount(\Nogrod\eBaySDK\Trading\CalculatedHandlingDiscountType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PromotionalShippingDiscountDetails');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PromotionalShippingDiscountDetails');
         if (null !== $value) {
             $this->setPromotionalShippingDiscountDetails(\Nogrod\eBaySDK\Trading\PromotionalShippingDiscountDetailsType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingInsurance');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingInsurance');
         if (null !== $value) {
             $this->setShippingInsurance(\Nogrod\eBaySDK\Trading\ShippingInsuranceType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}InternationalShippingInsurance');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}InternationalShippingInsurance');
         if (null !== $value) {
             $this->setInternationalShippingInsurance(\Nogrod\eBaySDK\Trading\ShippingInsuranceType::fromKeyValue($value));
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

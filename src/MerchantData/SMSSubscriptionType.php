@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\MerchantData;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing SMSSubscriptionType
  *
@@ -218,41 +220,25 @@ class SMSSubscriptionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SMSPhone');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SMSPhone');
         if (null !== $value) {
             $this->setSMSPhone($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UserStatus');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UserStatus');
         if (null !== $value) {
             $this->setUserStatus($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CarrierID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CarrierID');
         if (null !== $value) {
             $this->setCarrierID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ErrorCode');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ErrorCode');
         if (null !== $value) {
             $this->setErrorCode($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemToUnsubscribe');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemToUnsubscribe');
         if (null !== $value) {
             $this->setItemToUnsubscribe($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

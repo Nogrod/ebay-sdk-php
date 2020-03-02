@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\MerchantData;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing CancelOfferType
  *
@@ -104,29 +106,13 @@ class CancelOfferType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Offer');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Offer');
         if (null !== $value) {
             $this->setOffer(\Nogrod\eBaySDK\MerchantData\OfferType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Explanation');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Explanation');
         if (null !== $value) {
             $this->setExplanation($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

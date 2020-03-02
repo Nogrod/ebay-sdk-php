@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\BulkDataExchange;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing GetJobsRequestType
  *
@@ -1279,37 +1281,21 @@ class GetJobsRequestType extends BaseServiceRequestType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}creationTimeFrom');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}creationTimeFrom');
         if (null !== $value) {
             $this->setCreationTimeFrom(new \DateTime($value));
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}creationTimeTo');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}creationTimeTo');
         if (null !== $value) {
             $this->setCreationTimeTo(new \DateTime($value));
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}jobType', true);
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}jobType', true);
         if (null !== $value && !empty($value)) {
             $this->setJobType($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}jobStatus', true);
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}jobStatus', true);
         if (null !== $value && !empty($value)) {
             $this->setJobStatus($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

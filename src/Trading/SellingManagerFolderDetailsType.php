@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Trading;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing SellingManagerFolderDetailsType
  *
@@ -336,51 +338,35 @@ class SellingManagerFolderDetailsType implements \Sabre\Xml\XmlSerializable, \Sa
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FolderID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FolderID');
         if (null !== $value) {
             $this->setFolderID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ParentFolderID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ParentFolderID');
         if (null !== $value) {
             $this->setParentFolderID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FolderLevel');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FolderLevel');
         if (null !== $value) {
             $this->setFolderLevel($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FolderName');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FolderName');
         if (null !== $value) {
             $this->setFolderName($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FolderComment');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FolderComment');
         if (null !== $value) {
             $this->setFolderComment($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ChildFolder', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ChildFolder', true);
         if (null !== $value && !empty($value)) {
             $this->setChildFolder(array_map(function ($v) {
                 return \Nogrod\eBaySDK\Trading\SellingManagerFolderDetailsType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CreationTime');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CreationTime');
         if (null !== $value) {
             $this->setCreationTime(new \DateTime($value));
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

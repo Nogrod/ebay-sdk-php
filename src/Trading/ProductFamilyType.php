@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Trading;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing ProductFamilyType
  *
@@ -186,31 +188,15 @@ class ProductFamilyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ParentProduct');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ParentProduct');
         if (null !== $value) {
             $this->setParentProduct(\Nogrod\eBaySDK\Trading\ProductType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FamilyMembers', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FamilyMembers', true);
         if (null !== $value && !empty($value)) {
             $this->setFamilyMembers(array_map(function ($v) {
                 return \Nogrod\eBaySDK\Trading\ProductType::fromKeyValue($v);
             }, $value));
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

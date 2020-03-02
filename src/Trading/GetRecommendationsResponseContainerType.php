@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Trading;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing GetRecommendationsResponseContainerType
  *
@@ -405,59 +407,43 @@ class GetRecommendationsResponseContainerType implements \Sabre\Xml\XmlSerializa
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ListingAnalyzerRecommendations');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ListingAnalyzerRecommendations');
         if (null !== $value) {
             $this->setListingAnalyzerRecommendations(\Nogrod\eBaySDK\Trading\ListingAnalyzerRecommendationsType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SIFFTASRecommendations');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SIFFTASRecommendations');
         if (null !== $value) {
             $this->setSIFFTASRecommendations(\Nogrod\eBaySDK\Trading\SIFFTASRecommendationsType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PricingRecommendations');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PricingRecommendations');
         if (null !== $value) {
             $this->setPricingRecommendations(\Nogrod\eBaySDK\Trading\PricingRecommendationsType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AttributeRecommendations');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AttributeRecommendations');
         if (null !== $value) {
             $this->setAttributeRecommendations(\Nogrod\eBaySDK\Trading\AttributeRecommendationsType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ProductRecommendations', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ProductRecommendations', true);
         if (null !== $value && !empty($value)) {
             $this->setProductRecommendations(array_map(function ($v) {
                 return \Nogrod\eBaySDK\Trading\ProductInfoType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CorrelationID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CorrelationID');
         if (null !== $value) {
             $this->setCorrelationID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Recommendations');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Recommendations');
         if (null !== $value) {
             $this->setRecommendations(\Nogrod\eBaySDK\Trading\RecommendationsType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ProductListingDetails');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ProductListingDetails');
         if (null !== $value) {
             $this->setProductListingDetails(\Nogrod\eBaySDK\Trading\ProductListingDetailsType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Title');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Title');
         if (null !== $value) {
             $this->setTitle($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

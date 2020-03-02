@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\BulkDataExchange;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing OrderReportRecurringFilterType
  *
@@ -213,37 +215,21 @@ class OrderReportRecurringFilterType extends BaseServiceRequestType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}createTimeRange');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}createTimeRange');
         if (null !== $value) {
             $this->setCreateTimeRange($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}modTimeRange');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}modTimeRange');
         if (null !== $value) {
             $this->setModTimeRange($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}listingType');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}listingType');
         if (null !== $value) {
             $this->setListingType($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}version');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}version');
         if (null !== $value) {
             $this->setVersion($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

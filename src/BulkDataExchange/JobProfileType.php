@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\BulkDataExchange;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing JobProfileType
  *
@@ -933,61 +935,45 @@ class JobProfileType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}jobId');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}jobId');
         if (null !== $value) {
             $this->setJobId($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}jobType');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}jobType');
         if (null !== $value) {
             $this->setJobType($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}jobStatus');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}jobStatus');
         if (null !== $value) {
             $this->setJobStatus($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}creationTime');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}creationTime');
         if (null !== $value) {
             $this->setCreationTime(new \DateTime($value));
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}completionTime');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}completionTime');
         if (null !== $value) {
             $this->setCompletionTime(new \DateTime($value));
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}errorCount');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}errorCount');
         if (null !== $value) {
             $this->setErrorCount($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}percentComplete');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}percentComplete');
         if (null !== $value) {
             $this->setPercentComplete($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}fileReferenceId');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}fileReferenceId');
         if (null !== $value) {
             $this->setFileReferenceId($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}inputFileReferenceId');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}inputFileReferenceId');
         if (null !== $value) {
             $this->setInputFileReferenceId($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}startTime');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}startTime');
         if (null !== $value) {
             $this->setStartTime(new \DateTime($value));
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

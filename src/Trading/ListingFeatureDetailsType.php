@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Trading;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing ListingFeatureDetailsType
  *
@@ -451,61 +453,45 @@ class ListingFeatureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BoldTitle');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BoldTitle');
         if (null !== $value) {
             $this->setBoldTitle($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Border');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Border');
         if (null !== $value) {
             $this->setBorder($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Highlight');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Highlight');
         if (null !== $value) {
             $this->setHighlight($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}GiftIcon');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}GiftIcon');
         if (null !== $value) {
             $this->setGiftIcon($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}HomePageFeatured');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}HomePageFeatured');
         if (null !== $value) {
             $this->setHomePageFeatured($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeaturedFirst');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeaturedFirst');
         if (null !== $value) {
             $this->setFeaturedFirst($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeaturedPlus');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeaturedPlus');
         if (null !== $value) {
             $this->setFeaturedPlus($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ProPack');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ProPack');
         if (null !== $value) {
             $this->setProPack($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DetailVersion');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DetailVersion');
         if (null !== $value) {
             $this->setDetailVersion($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UpdateTime');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UpdateTime');
         if (null !== $value) {
             $this->setUpdateTime(new \DateTime($value));
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

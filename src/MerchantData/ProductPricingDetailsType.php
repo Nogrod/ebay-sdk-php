@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\MerchantData;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing ProductPricingDetailsType
  *
@@ -278,53 +280,37 @@ class ProductPricingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MinimumSoldPrice');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MinimumSoldPrice');
         if (null !== $value) {
             $this->setMinimumSoldPrice(\Nogrod\eBaySDK\MerchantData\AmountType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MaximumSoldPrice');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MaximumSoldPrice');
         if (null !== $value) {
             $this->setMaximumSoldPrice(\Nogrod\eBaySDK\MerchantData\AmountType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AverageSoldPrice');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AverageSoldPrice');
         if (null !== $value) {
             $this->setAverageSoldPrice(\Nogrod\eBaySDK\MerchantData\AmountType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LastSoldPrice');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LastSoldPrice');
         if (null !== $value) {
             $this->setLastSoldPrice(\Nogrod\eBaySDK\MerchantData\AmountType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MinimumSoldPriceOverall');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MinimumSoldPriceOverall');
         if (null !== $value) {
             $this->setMinimumSoldPriceOverall(\Nogrod\eBaySDK\MerchantData\AmountType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MaximumSoldPriceOverall');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MaximumSoldPriceOverall');
         if (null !== $value) {
             $this->setMaximumSoldPriceOverall(\Nogrod\eBaySDK\MerchantData\AmountType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AverageSoldPriceOverall');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AverageSoldPriceOverall');
         if (null !== $value) {
             $this->setAverageSoldPriceOverall(\Nogrod\eBaySDK\MerchantData\AmountType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LastSoldPriceOverall');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LastSoldPriceOverall');
         if (null !== $value) {
             $this->setLastSoldPriceOverall(\Nogrod\eBaySDK\MerchantData\AmountType::fromKeyValue($value));
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

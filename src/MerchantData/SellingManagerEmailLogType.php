@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\MerchantData;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing SellingManagerEmailLogType
  *
@@ -178,37 +180,21 @@ class SellingManagerEmailLogType implements \Sabre\Xml\XmlSerializable, \Sabre\X
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EmailType');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EmailType');
         if (null !== $value) {
             $this->setEmailType($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CustomEmailName');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CustomEmailName');
         if (null !== $value) {
             $this->setCustomEmailName($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EmailState');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EmailState');
         if (null !== $value) {
             $this->setEmailState($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EventTime');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EventTime');
         if (null !== $value) {
             $this->setEventTime(new \DateTime($value));
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

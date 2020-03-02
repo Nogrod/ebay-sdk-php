@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\BulkDataExchange;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing StartDownloadJobRequestType
  *
@@ -373,41 +375,25 @@ class StartDownloadJobRequestType extends BaseServiceRequestType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}downloadJobType');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}downloadJobType');
         if (null !== $value) {
             $this->setDownloadJobType($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}UUID');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}UUID');
         if (null !== $value) {
             $this->setUUID($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}downloadRequestFilter');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}downloadRequestFilter');
         if (null !== $value) {
             $this->setDownloadRequestFilter(\Nogrod\eBaySDK\BulkDataExchange\DownloadRequestFilterType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}sgfAppRecurringGUID');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}sgfAppRecurringGUID');
         if (null !== $value) {
             $this->setSgfAppRecurringGUID($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}recurringJob');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}recurringJob');
         if (null !== $value) {
             $this->setRecurringJob($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Trading;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing SummaryEventScheduleType
  *
@@ -141,33 +143,17 @@ class SummaryEventScheduleType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EventType');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EventType');
         if (null !== $value) {
             $this->setEventType($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SummaryPeriod');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SummaryPeriod');
         if (null !== $value) {
             $this->setSummaryPeriod($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Frequency');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Frequency');
         if (null !== $value) {
             $this->setFrequency($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

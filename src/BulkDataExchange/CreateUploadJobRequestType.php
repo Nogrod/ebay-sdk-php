@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\BulkDataExchange;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing CreateUploadJobRequestType
  *
@@ -469,33 +471,17 @@ class CreateUploadJobRequestType extends BaseServiceRequestType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}uploadJobType');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}uploadJobType');
         if (null !== $value) {
             $this->setUploadJobType($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}UUID');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}UUID');
         if (null !== $value) {
             $this->setUUID($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}fileType');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}fileType');
         if (null !== $value) {
             $this->setFileType($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

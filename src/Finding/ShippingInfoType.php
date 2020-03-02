@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Finding;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing ShippingInfoType
  *
@@ -616,53 +618,37 @@ class ShippingInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}shippingServiceCost');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}shippingServiceCost');
         if (null !== $value) {
             $this->setShippingServiceCost(\Nogrod\eBaySDK\Finding\AmountType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}shippingType');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}shippingType');
         if (null !== $value) {
             $this->setShippingType($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}shipToLocations', true);
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}shipToLocations', true);
         if (null !== $value && !empty($value)) {
             $this->setShipToLocations($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}expeditedShipping');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}expeditedShipping');
         if (null !== $value) {
             $this->setExpeditedShipping($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}oneDayShippingAvailable');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}oneDayShippingAvailable');
         if (null !== $value) {
             $this->setOneDayShippingAvailable($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}handlingTime');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}handlingTime');
         if (null !== $value) {
             $this->setHandlingTime($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}intermediatedShipping');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}intermediatedShipping');
         if (null !== $value) {
             $this->setIntermediatedShipping($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}delimiter');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}delimiter');
         if (null !== $value) {
             $this->setDelimiter($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Trading;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing DistanceType
  *
@@ -104,29 +106,13 @@ class DistanceType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DistanceMeasurement');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DistanceMeasurement');
         if (null !== $value) {
             $this->setDistanceMeasurement($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DistanceUnit');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DistanceUnit');
         if (null !== $value) {
             $this->setDistanceUnit($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

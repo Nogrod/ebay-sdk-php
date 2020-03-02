@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\MerchantData;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing ListingTipType
  *
@@ -178,37 +180,21 @@ class ListingTipType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ListingTipID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ListingTipID');
         if (null !== $value) {
             $this->setListingTipID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Priority');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Priority');
         if (null !== $value) {
             $this->setPriority($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Message');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Message');
         if (null !== $value) {
             $this->setMessage(\Nogrod\eBaySDK\MerchantData\ListingTipMessageType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Field');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Field');
         if (null !== $value) {
             $this->setField(\Nogrod\eBaySDK\MerchantData\ListingTipFieldType::fromKeyValue($value));
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Trading;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing ExpressItemRequirementsType
  *
@@ -714,93 +716,77 @@ class ExpressItemRequirementsType implements \Sabre\Xml\XmlSerializable, \Sabre\
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerExpressEligible');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerExpressEligible');
         if (null !== $value) {
             $this->setSellerExpressEligible($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExpressOptOut');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExpressOptOut');
         if (null !== $value) {
             $this->setExpressOptOut($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExpressApproved');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExpressApproved');
         if (null !== $value) {
             $this->setExpressApproved($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExpressEligibleListingType');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExpressEligibleListingType');
         if (null !== $value) {
             $this->setExpressEligibleListingType($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExpressEnabledCategory');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExpressEnabledCategory');
         if (null !== $value) {
             $this->setExpressEnabledCategory($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EligiblePayPalAccount');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EligiblePayPalAccount');
         if (null !== $value) {
             $this->setEligiblePayPalAccount($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DomesticShippingCost');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DomesticShippingCost');
         if (null !== $value) {
             $this->setDomesticShippingCost($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EligibleReturnPolicy');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EligibleReturnPolicy');
         if (null !== $value) {
             $this->setEligibleReturnPolicy($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Picture');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Picture');
         if (null !== $value) {
             $this->setPicture($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EligibleItemCondition');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EligibleItemCondition');
         if (null !== $value) {
             $this->setEligibleItemCondition($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PriceAboveMinimum');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PriceAboveMinimum');
         if (null !== $value) {
             $this->setPriceAboveMinimum($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PriceBelowMaximum');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PriceBelowMaximum');
         if (null !== $value) {
             $this->setPriceBelowMaximum($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EligibleCheckout');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EligibleCheckout');
         if (null !== $value) {
             $this->setEligibleCheckout($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}NoPreapprovedBidderList');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}NoPreapprovedBidderList');
         if (null !== $value) {
             $this->setNoPreapprovedBidderList($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}NoCharity');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}NoCharity');
         if (null !== $value) {
             $this->setNoCharity($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CombinedShippingDiscount');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CombinedShippingDiscount');
         if (null !== $value) {
             $this->setCombinedShippingDiscount($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShipFromEligibleCountry');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShipFromEligibleCountry');
         if (null !== $value) {
             $this->setShipFromEligibleCountry($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PayPalAccountAcceptsUnconfirmedAddress');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PayPalAccountAcceptsUnconfirmedAddress');
         if (null !== $value) {
             $this->setPayPalAccountAcceptsUnconfirmedAddress($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

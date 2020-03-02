@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\MerchantData;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing MyMessagesSummaryType
  *
@@ -422,59 +424,43 @@ class MyMessagesSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FolderSummary', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FolderSummary', true);
         if (null !== $value && !empty($value)) {
             $this->setFolderSummary(array_map(function ($v) {
                 return \Nogrod\eBaySDK\MerchantData\MyMessagesFolderSummaryType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}NewAlertCount');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}NewAlertCount');
         if (null !== $value) {
             $this->setNewAlertCount($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}NewMessageCount');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}NewMessageCount');
         if (null !== $value) {
             $this->setNewMessageCount($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UnresolvedAlertCount');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UnresolvedAlertCount');
         if (null !== $value) {
             $this->setUnresolvedAlertCount($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FlaggedMessageCount');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FlaggedMessageCount');
         if (null !== $value) {
             $this->setFlaggedMessageCount($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TotalAlertCount');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TotalAlertCount');
         if (null !== $value) {
             $this->setTotalAlertCount($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TotalMessageCount');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TotalMessageCount');
         if (null !== $value) {
             $this->setTotalMessageCount($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}NewHighPriorityCount');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}NewHighPriorityCount');
         if (null !== $value) {
             $this->setNewHighPriorityCount($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TotalHighPriorityCount');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TotalHighPriorityCount');
         if (null !== $value) {
             $this->setTotalHighPriorityCount($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

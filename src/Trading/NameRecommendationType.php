@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Trading;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing NameRecommendationType
  *
@@ -344,47 +346,31 @@ class NameRecommendationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Name');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Name');
         if (null !== $value) {
             $this->setName($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ValidationRules');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ValidationRules');
         if (null !== $value) {
             $this->setValidationRules(\Nogrod\eBaySDK\Trading\RecommendationValidationRulesType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ValueRecommendation', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ValueRecommendation', true);
         if (null !== $value && !empty($value)) {
             $this->setValueRecommendation(array_map(function ($v) {
                 return \Nogrod\eBaySDK\Trading\ValueRecommendationType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}HelpURL');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}HelpURL');
         if (null !== $value) {
             $this->setHelpURL($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Source');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Source');
         if (null !== $value) {
             $this->setSource($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}HelpText');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}HelpText');
         if (null !== $value) {
             $this->setHelpText($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

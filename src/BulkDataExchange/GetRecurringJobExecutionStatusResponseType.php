@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\BulkDataExchange;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing GetRecurringJobExecutionStatusResponseType
  *
@@ -83,25 +85,9 @@ class GetRecurringJobExecutionStatusResponseType extends BaseServiceResponseType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}jobProfile');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}jobProfile');
         if (null !== $value) {
             $this->setJobProfile(\Nogrod\eBaySDK\BulkDataExchange\JobProfileType::fromKeyValue($value));
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

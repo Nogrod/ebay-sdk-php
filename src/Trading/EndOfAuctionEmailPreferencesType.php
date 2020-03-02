@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Trading;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing EndOfAuctionEmailPreferencesType
  *
@@ -347,49 +349,33 @@ class EndOfAuctionEmailPreferencesType implements \Sabre\Xml\XmlSerializable, \S
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TemplateText');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TemplateText');
         if (null !== $value) {
             $this->setTemplateText($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LogoURL');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LogoURL');
         if (null !== $value) {
             $this->setLogoURL($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LogoType');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LogoType');
         if (null !== $value) {
             $this->setLogoType($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EmailCustomized');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EmailCustomized');
         if (null !== $value) {
             $this->setEmailCustomized($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TextCustomized');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TextCustomized');
         if (null !== $value) {
             $this->setTextCustomized($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LogoCustomized');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LogoCustomized');
         if (null !== $value) {
             $this->setLogoCustomized($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CopyEmail');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CopyEmail');
         if (null !== $value) {
             $this->setCopyEmail($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

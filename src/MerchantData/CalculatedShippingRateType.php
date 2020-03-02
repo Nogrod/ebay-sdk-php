@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\MerchantData;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing CalculatedShippingRateType
  *
@@ -302,41 +304,25 @@ class CalculatedShippingRateType implements \Sabre\Xml\XmlSerializable, \Sabre\X
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}OriginatingPostalCode');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}OriginatingPostalCode');
         if (null !== $value) {
             $this->setOriginatingPostalCode($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MeasurementUnit');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MeasurementUnit');
         if (null !== $value) {
             $this->setMeasurementUnit($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PackagingHandlingCosts');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PackagingHandlingCosts');
         if (null !== $value) {
             $this->setPackagingHandlingCosts(\Nogrod\eBaySDK\MerchantData\AmountType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingIrregular');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingIrregular');
         if (null !== $value) {
             $this->setShippingIrregular($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}InternationalPackagingHandlingCosts');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}InternationalPackagingHandlingCosts');
         if (null !== $value) {
             $this->setInternationalPackagingHandlingCosts(\Nogrod\eBaySDK\MerchantData\AmountType::fromKeyValue($value));
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

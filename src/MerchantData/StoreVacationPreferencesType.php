@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\MerchantData;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing StoreVacationPreferencesType
  *
@@ -375,49 +377,33 @@ class StoreVacationPreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}OnVacation');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}OnVacation');
         if (null !== $value) {
             $this->setOnVacation($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReturnDate');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReturnDate');
         if (null !== $value) {
             $this->setReturnDate(new \DateTime($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}HideFixedPriceStoreItems');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}HideFixedPriceStoreItems');
         if (null !== $value) {
             $this->setHideFixedPriceStoreItems($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MessageItem');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MessageItem');
         if (null !== $value) {
             $this->setMessageItem($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MessageStore');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MessageStore');
         if (null !== $value) {
             $this->setMessageStore($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DisplayMessageStoreCustomText');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DisplayMessageStoreCustomText');
         if (null !== $value) {
             $this->setDisplayMessageStoreCustomText($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MessageStoreCustomText');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MessageStoreCustomText');
         if (null !== $value) {
             $this->setMessageStoreCustomText($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

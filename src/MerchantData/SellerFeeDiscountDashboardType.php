@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\MerchantData;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing SellerFeeDiscountDashboardType
  *
@@ -72,25 +74,9 @@ class SellerFeeDiscountDashboardType implements \Sabre\Xml\XmlSerializable, \Sab
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Percent');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Percent');
         if (null !== $value) {
             $this->setPercent($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

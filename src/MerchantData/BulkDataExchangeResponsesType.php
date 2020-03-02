@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\MerchantData;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing BulkDataExchangeResponsesType
  *
@@ -1089,117 +1091,101 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ActiveInventoryReport');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ActiveInventoryReport');
         if (null !== $value) {
             $this->setActiveInventoryReport(\Nogrod\eBaySDK\MerchantData\ActiveInventoryReportResponseType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AddFixedPriceItemResponse', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AddFixedPriceItemResponse', true);
         if (null !== $value && !empty($value)) {
             $this->setAddFixedPriceItemResponse(array_map(function ($v) {
                 return \Nogrod\eBaySDK\MerchantData\AddFixedPriceItemResponseType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AddItemResponse', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AddItemResponse', true);
         if (null !== $value && !empty($value)) {
             $this->setAddItemResponse(array_map(function ($v) {
                 return \Nogrod\eBaySDK\MerchantData\AddItemResponseType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EndFixedPriceItemResponse', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EndFixedPriceItemResponse', true);
         if (null !== $value && !empty($value)) {
             $this->setEndFixedPriceItemResponse(array_map(function ($v) {
                 return \Nogrod\eBaySDK\MerchantData\EndFixedPriceItemResponseType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EndItemResponse', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EndItemResponse', true);
         if (null !== $value && !empty($value)) {
             $this->setEndItemResponse(array_map(function ($v) {
                 return \Nogrod\eBaySDK\MerchantData\EndItemResponseType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeeSettlementReport');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeeSettlementReport');
         if (null !== $value) {
             $this->setFeeSettlementReport(\Nogrod\eBaySDK\MerchantData\FeeSettlementReportResponseType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}OrderAckResponse', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}OrderAckResponse', true);
         if (null !== $value && !empty($value)) {
             $this->setOrderAckResponse(array_map(function ($v) {
                 return \Nogrod\eBaySDK\MerchantData\OrderAckResponseType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RelistFixedPriceItemResponse', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RelistFixedPriceItemResponse', true);
         if (null !== $value && !empty($value)) {
             $this->setRelistFixedPriceItemResponse(array_map(function ($v) {
                 return \Nogrod\eBaySDK\MerchantData\RelistFixedPriceItemResponseType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RelistItemResponse', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RelistItemResponse', true);
         if (null !== $value && !empty($value)) {
             $this->setRelistItemResponse(array_map(function ($v) {
                 return \Nogrod\eBaySDK\MerchantData\RelistItemResponseType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReviseFixedPriceItemResponse', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReviseFixedPriceItemResponse', true);
         if (null !== $value && !empty($value)) {
             $this->setReviseFixedPriceItemResponse(array_map(function ($v) {
                 return \Nogrod\eBaySDK\MerchantData\ReviseFixedPriceItemResponseType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReviseInventoryStatusResponse', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReviseInventoryStatusResponse', true);
         if (null !== $value && !empty($value)) {
             $this->setReviseInventoryStatusResponse(array_map(function ($v) {
                 return \Nogrod\eBaySDK\MerchantData\ReviseInventoryStatusResponseType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReviseItemResponse', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReviseItemResponse', true);
         if (null !== $value && !empty($value)) {
             $this->setReviseItemResponse(array_map(function ($v) {
                 return \Nogrod\eBaySDK\MerchantData\ReviseItemResponseType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SetShipmentTrackingInfoResponse', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SetShipmentTrackingInfoResponse', true);
         if (null !== $value && !empty($value)) {
             $this->setSetShipmentTrackingInfoResponse(array_map(function ($v) {
                 return \Nogrod\eBaySDK\MerchantData\SetShipmentTrackingInfoResponseType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SoldReport');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SoldReport');
         if (null !== $value) {
             $this->setSoldReport(\Nogrod\eBaySDK\MerchantData\SoldReportResponseType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UploadSiteHostedPicturesResponse', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UploadSiteHostedPicturesResponse', true);
         if (null !== $value && !empty($value)) {
             $this->setUploadSiteHostedPicturesResponse(array_map(function ($v) {
                 return \Nogrod\eBaySDK\MerchantData\UploadSiteHostedPicturesResponseType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}VerifyAddFixedPriceItemResponse', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}VerifyAddFixedPriceItemResponse', true);
         if (null !== $value && !empty($value)) {
             $this->setVerifyAddFixedPriceItemResponse(array_map(function ($v) {
                 return \Nogrod\eBaySDK\MerchantData\VerifyAddFixedPriceItemResponseType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}VerifyAddItemResponse', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}VerifyAddItemResponse', true);
         if (null !== $value && !empty($value)) {
             $this->setVerifyAddItemResponse(array_map(function ($v) {
                 return \Nogrod\eBaySDK\MerchantData\VerifyAddItemResponseType::fromKeyValue($v);
             }, $value));
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

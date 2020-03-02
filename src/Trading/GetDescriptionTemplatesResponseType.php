@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Trading;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing GetDescriptionTemplatesResponseType
  *
@@ -429,49 +431,33 @@ class GetDescriptionTemplatesResponseType extends AbstractResponseType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DescriptionTemplate', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DescriptionTemplate', true);
         if (null !== $value && !empty($value)) {
             $this->setDescriptionTemplate(array_map(function ($v) {
                 return \Nogrod\eBaySDK\Trading\DescriptionTemplateType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LayoutTotal');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LayoutTotal');
         if (null !== $value) {
             $this->setLayoutTotal($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ObsoleteLayoutID', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ObsoleteLayoutID', true);
         if (null !== $value && !empty($value)) {
             $this->setObsoleteLayoutID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ObsoleteThemeID', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ObsoleteThemeID', true);
         if (null !== $value && !empty($value)) {
             $this->setObsoleteThemeID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ThemeGroup', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ThemeGroup', true);
         if (null !== $value && !empty($value)) {
             $this->setThemeGroup(array_map(function ($v) {
                 return \Nogrod\eBaySDK\Trading\ThemeGroupType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ThemeTotal');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ThemeTotal');
         if (null !== $value) {
             $this->setThemeTotal($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

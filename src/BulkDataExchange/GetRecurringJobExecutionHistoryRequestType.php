@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\BulkDataExchange;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing GetRecurringJobExecutionHistoryRequestType
  *
@@ -255,37 +257,21 @@ class GetRecurringJobExecutionHistoryRequestType extends BaseServiceRequestType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}startTime');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}startTime');
         if (null !== $value) {
             $this->setStartTime(new \DateTime($value));
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}endTime');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}endTime');
         if (null !== $value) {
             $this->setEndTime(new \DateTime($value));
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}recurringJobId');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}recurringJobId');
         if (null !== $value) {
             $this->setRecurringJobId($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}jobStatus', true);
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}jobStatus', true);
         if (null !== $value && !empty($value)) {
             $this->setJobStatus($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

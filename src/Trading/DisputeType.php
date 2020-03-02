@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Trading;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing DisputeType
  *
@@ -985,109 +987,93 @@ class DisputeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DisputeID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DisputeID');
         if (null !== $value) {
             $this->setDisputeID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DisputeRecordType');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DisputeRecordType');
         if (null !== $value) {
             $this->setDisputeRecordType($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DisputeState');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DisputeState');
         if (null !== $value) {
             $this->setDisputeState($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DisputeStatus');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DisputeStatus');
         if (null !== $value) {
             $this->setDisputeStatus($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}OtherPartyRole');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}OtherPartyRole');
         if (null !== $value) {
             $this->setOtherPartyRole($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}OtherPartyName');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}OtherPartyName');
         if (null !== $value) {
             $this->setOtherPartyName($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UserRole');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UserRole');
         if (null !== $value) {
             $this->setUserRole($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BuyerUserID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BuyerUserID');
         if (null !== $value) {
             $this->setBuyerUserID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerUserID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerUserID');
         if (null !== $value) {
             $this->setSellerUserID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TransactionID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TransactionID');
         if (null !== $value) {
             $this->setTransactionID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Item');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Item');
         if (null !== $value) {
             $this->setItem(\Nogrod\eBaySDK\Trading\ItemType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DisputeReason');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DisputeReason');
         if (null !== $value) {
             $this->setDisputeReason($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DisputeExplanation');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DisputeExplanation');
         if (null !== $value) {
             $this->setDisputeExplanation($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DisputeCreditEligibility');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DisputeCreditEligibility');
         if (null !== $value) {
             $this->setDisputeCreditEligibility($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DisputeCreatedTime');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DisputeCreatedTime');
         if (null !== $value) {
             $this->setDisputeCreatedTime(new \DateTime($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DisputeModifiedTime');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DisputeModifiedTime');
         if (null !== $value) {
             $this->setDisputeModifiedTime(new \DateTime($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DisputeResolution', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DisputeResolution', true);
         if (null !== $value && !empty($value)) {
             $this->setDisputeResolution(array_map(function ($v) {
                 return \Nogrod\eBaySDK\Trading\DisputeResolutionType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DisputeMessage', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DisputeMessage', true);
         if (null !== $value && !empty($value)) {
             $this->setDisputeMessage(array_map(function ($v) {
                 return \Nogrod\eBaySDK\Trading\DisputeMessageType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Escalation');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Escalation');
         if (null !== $value) {
             $this->setEscalation($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PurchaseProtection');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PurchaseProtection');
         if (null !== $value) {
             $this->setPurchaseProtection($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}OrderLineItemID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}OrderLineItemID');
         if (null !== $value) {
             $this->setOrderLineItemID($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

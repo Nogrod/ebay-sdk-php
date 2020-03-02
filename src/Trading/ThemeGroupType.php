@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Trading;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing ThemeGroupType
  *
@@ -232,37 +234,21 @@ class ThemeGroupType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}GroupID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}GroupID');
         if (null !== $value) {
             $this->setGroupID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}GroupName');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}GroupName');
         if (null !== $value) {
             $this->setGroupName($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ThemeID', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ThemeID', true);
         if (null !== $value && !empty($value)) {
             $this->setThemeID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ThemeTotal');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ThemeTotal');
         if (null !== $value) {
             $this->setThemeTotal($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Trading;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing GetSellerDashboardResponseType
  *
@@ -421,51 +423,35 @@ class GetSellerDashboardResponseType extends AbstractResponseType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SearchStanding');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SearchStanding');
         if (null !== $value) {
             $this->setSearchStanding(\Nogrod\eBaySDK\Trading\SearchStandingDashboardType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerFeeDiscount');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerFeeDiscount');
         if (null !== $value) {
             $this->setSellerFeeDiscount(\Nogrod\eBaySDK\Trading\SellerFeeDiscountDashboardType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PowerSellerStatus');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PowerSellerStatus');
         if (null !== $value) {
             $this->setPowerSellerStatus(\Nogrod\eBaySDK\Trading\PowerSellerDashboardType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PolicyCompliance');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PolicyCompliance');
         if (null !== $value) {
             $this->setPolicyCompliance(\Nogrod\eBaySDK\Trading\PolicyComplianceDashboardType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BuyerSatisfaction');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BuyerSatisfaction');
         if (null !== $value) {
             $this->setBuyerSatisfaction(\Nogrod\eBaySDK\Trading\BuyerSatisfactionDashboardType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerAccount');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerAccount');
         if (null !== $value) {
             $this->setSellerAccount(\Nogrod\eBaySDK\Trading\SellerAccountDashboardType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Performance', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Performance', true);
         if (null !== $value && !empty($value)) {
             $this->setPerformance(array_map(function ($v) {
                 return \Nogrod\eBaySDK\Trading\PerformanceDashboardType::fromKeyValue($v);
             }, $value));
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

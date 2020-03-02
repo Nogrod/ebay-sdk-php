@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\MerchantData;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing AccountSummaryType
  *
@@ -827,103 +829,87 @@ class AccountSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AccountState');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AccountState');
         if (null !== $value) {
             $this->setAccountState($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}InvoicePayment');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}InvoicePayment');
         if (null !== $value) {
             $this->setInvoicePayment(\Nogrod\eBaySDK\MerchantData\AmountType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}InvoiceCredit');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}InvoiceCredit');
         if (null !== $value) {
             $this->setInvoiceCredit(\Nogrod\eBaySDK\MerchantData\AmountType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}InvoiceNewFee');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}InvoiceNewFee');
         if (null !== $value) {
             $this->setInvoiceNewFee(\Nogrod\eBaySDK\MerchantData\AmountType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AdditionalAccount', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AdditionalAccount', true);
         if (null !== $value && !empty($value)) {
             $this->setAdditionalAccount(array_map(function ($v) {
                 return \Nogrod\eBaySDK\MerchantData\AdditionalAccountType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AmountPastDue');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AmountPastDue');
         if (null !== $value) {
             $this->setAmountPastDue(\Nogrod\eBaySDK\MerchantData\AmountType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BankAccountInfo');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BankAccountInfo');
         if (null !== $value) {
             $this->setBankAccountInfo($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BankModifyDate');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BankModifyDate');
         if (null !== $value) {
             $this->setBankModifyDate(new \DateTime($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BillingCycleDate');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BillingCycleDate');
         if (null !== $value) {
             $this->setBillingCycleDate($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CreditCardExpiration');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CreditCardExpiration');
         if (null !== $value) {
             $this->setCreditCardExpiration(new \DateTime($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CreditCardInfo');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CreditCardInfo');
         if (null !== $value) {
             $this->setCreditCardInfo($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CreditCardModifyDate');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CreditCardModifyDate');
         if (null !== $value) {
             $this->setCreditCardModifyDate(new \DateTime($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CurrentBalance');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CurrentBalance');
         if (null !== $value) {
             $this->setCurrentBalance(\Nogrod\eBaySDK\MerchantData\AmountType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Email');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Email');
         if (null !== $value) {
             $this->setEmail($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}InvoiceBalance');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}InvoiceBalance');
         if (null !== $value) {
             $this->setInvoiceBalance(\Nogrod\eBaySDK\MerchantData\AmountType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}InvoiceDate');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}InvoiceDate');
         if (null !== $value) {
             $this->setInvoiceDate(new \DateTime($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LastAmountPaid');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LastAmountPaid');
         if (null !== $value) {
             $this->setLastAmountPaid(\Nogrod\eBaySDK\MerchantData\AmountType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LastPaymentDate');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LastPaymentDate');
         if (null !== $value) {
             $this->setLastPaymentDate(new \DateTime($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PastDue');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PastDue');
         if (null !== $value) {
             $this->setPastDue($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaymentMethod');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaymentMethod');
         if (null !== $value) {
             $this->setPaymentMethod($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

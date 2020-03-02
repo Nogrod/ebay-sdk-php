@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\MerchantData;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing PictureManagerDetailsType
  *
@@ -336,51 +338,35 @@ class PictureManagerDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SubscriptionLevel');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SubscriptionLevel');
         if (null !== $value) {
             $this->setSubscriptionLevel($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}StorageUsed');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}StorageUsed');
         if (null !== $value) {
             $this->setStorageUsed($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TotalStorageAvailable');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TotalStorageAvailable');
         if (null !== $value) {
             $this->setTotalStorageAvailable($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}KeepOriginal');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}KeepOriginal');
         if (null !== $value) {
             $this->setKeepOriginal($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}WatermarkEPS');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}WatermarkEPS');
         if (null !== $value) {
             $this->setWatermarkEPS($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}WatermarkUserID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}WatermarkUserID');
         if (null !== $value) {
             $this->setWatermarkUserID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Folder', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Folder', true);
         if (null !== $value && !empty($value)) {
             $this->setFolder(array_map(function ($v) {
                 return \Nogrod\eBaySDK\MerchantData\PictureManagerFolderType::fromKeyValue($v);
             }, $value));
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

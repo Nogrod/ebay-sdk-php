@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Finding;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing AspectHistogramContainerType
  *
@@ -387,39 +389,23 @@ class AspectHistogramContainerType implements \Sabre\Xml\XmlSerializable, \Sabre
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}domainName');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}domainName');
         if (null !== $value) {
             $this->setDomainName($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}domainDisplayName');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}domainDisplayName');
         if (null !== $value) {
             $this->setDomainDisplayName($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}aspect', true);
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}aspect', true);
         if (null !== $value && !empty($value)) {
             $this->setAspect(array_map(function ($v) {
                 return \Nogrod\eBaySDK\Finding\AspectType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}delimiter');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}delimiter');
         if (null !== $value) {
             $this->setDelimiter($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

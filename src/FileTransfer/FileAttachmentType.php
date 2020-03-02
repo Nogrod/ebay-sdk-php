@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\FileTransfer;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing FileAttachmentType
  *
@@ -132,29 +134,13 @@ class FileAttachmentType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}Size');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}Size');
         if (null !== $value) {
             $this->setSize($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}Data');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}Data');
         if (null !== $value) {
             $this->setData($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

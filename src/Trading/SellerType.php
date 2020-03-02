@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Trading;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing SellerType
  *
@@ -1620,155 +1622,139 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaisaPayStatus');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaisaPayStatus');
         if (null !== $value) {
             $this->setPaisaPayStatus($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AllowPaymentEdit');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AllowPaymentEdit');
         if (null !== $value) {
             $this->setAllowPaymentEdit($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BillingCurrency');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BillingCurrency');
         if (null !== $value) {
             $this->setBillingCurrency($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CheckoutEnabled');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CheckoutEnabled');
         if (null !== $value) {
             $this->setCheckoutEnabled($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CIPBankAccountStored');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CIPBankAccountStored');
         if (null !== $value) {
             $this->setCIPBankAccountStored($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}GoodStanding');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}GoodStanding');
         if (null !== $value) {
             $this->setGoodStanding($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MerchandizingPref');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MerchandizingPref');
         if (null !== $value) {
             $this->setMerchandizingPref($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}QualifiesForB2BVAT');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}QualifiesForB2BVAT');
         if (null !== $value) {
             $this->setQualifiesForB2BVAT($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerGuaranteeLevel');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerGuaranteeLevel');
         if (null !== $value) {
             $this->setSellerGuaranteeLevel($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerLevel');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerLevel');
         if (null !== $value) {
             $this->setSellerLevel($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerPaymentAddress');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerPaymentAddress');
         if (null !== $value) {
             $this->setSellerPaymentAddress(\Nogrod\eBaySDK\Trading\AddressType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SchedulingInfo');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SchedulingInfo');
         if (null !== $value) {
             $this->setSchedulingInfo(\Nogrod\eBaySDK\Trading\SchedulingInfoType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}StoreOwner');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}StoreOwner');
         if (null !== $value) {
             $this->setStoreOwner($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}StoreURL');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}StoreURL');
         if (null !== $value) {
             $this->setStoreURL($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerBusinessType');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerBusinessType');
         if (null !== $value) {
             $this->setSellerBusinessType($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RegisteredBusinessSeller');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RegisteredBusinessSeller');
         if (null !== $value) {
             $this->setRegisteredBusinessSeller($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}StoreSite');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}StoreSite');
         if (null !== $value) {
             $this->setStoreSite($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaymentMethod');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaymentMethod');
         if (null !== $value) {
             $this->setPaymentMethod($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ProStoresPreference');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ProStoresPreference');
         if (null !== $value) {
             $this->setProStoresPreference(\Nogrod\eBaySDK\Trading\ProStoresCheckoutPreferenceType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CharityRegistered');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CharityRegistered');
         if (null !== $value) {
             $this->setCharityRegistered($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SafePaymentExempt');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SafePaymentExempt');
         if (null !== $value) {
             $this->setSafePaymentExempt($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaisaPayEscrowEMIStatus');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaisaPayEscrowEMIStatus');
         if (null !== $value) {
             $this->setPaisaPayEscrowEMIStatus($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CharityAffiliationDetails', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CharityAffiliationDetails', true);
         if (null !== $value && !empty($value)) {
             $this->setCharityAffiliationDetails(array_map(function ($v) {
                 return \Nogrod\eBaySDK\Trading\CharityAffiliationDetailType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TransactionPercent');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TransactionPercent');
         if (null !== $value) {
             $this->setTransactionPercent($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}IntegratedMerchantCreditCardInfo', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}IntegratedMerchantCreditCardInfo', true);
         if (null !== $value && !empty($value)) {
             $this->setIntegratedMerchantCreditCardInfo($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeatureEligibility');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeatureEligibility');
         if (null !== $value) {
             $this->setFeatureEligibility(\Nogrod\eBaySDK\Trading\FeatureEligibilityType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TopRatedSeller');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TopRatedSeller');
         if (null !== $value) {
             $this->setTopRatedSeller($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TopRatedSellerDetails', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TopRatedSellerDetails', true);
         if (null !== $value && !empty($value)) {
             $this->setTopRatedSellerDetails($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RecoupmentPolicyConsent', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RecoupmentPolicyConsent', true);
         if (null !== $value && !empty($value)) {
             $this->setRecoupmentPolicyConsent($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DomesticRateTable');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DomesticRateTable');
         if (null !== $value) {
             $this->setDomesticRateTable($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}InternationalRateTable');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}InternationalRateTable');
         if (null !== $value) {
             $this->setInternationalRateTable($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellereBayPaymentProcessStatus');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellereBayPaymentProcessStatus');
         if (null !== $value) {
             $this->setSellereBayPaymentProcessStatus($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellereBayPaymentProcessConsent');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellereBayPaymentProcessConsent');
         if (null !== $value) {
             $this->setSellereBayPaymentProcessConsent(\Nogrod\eBaySDK\Trading\SellereBayPaymentProcessConsentCodeType::fromKeyValue($value));
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

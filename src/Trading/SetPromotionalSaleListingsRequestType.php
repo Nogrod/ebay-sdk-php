@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Trading;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing SetPromotionalSaleListingsRequestType
  *
@@ -390,53 +392,37 @@ class SetPromotionalSaleListingsRequestType extends AbstractRequestType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PromotionalSaleID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PromotionalSaleID');
         if (null !== $value) {
             $this->setPromotionalSaleID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Action');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Action');
         if (null !== $value) {
             $this->setAction($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PromotionalSaleItemIDArray', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PromotionalSaleItemIDArray', true);
         if (null !== $value && !empty($value)) {
             $this->setPromotionalSaleItemIDArray($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}StoreCategoryID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}StoreCategoryID');
         if (null !== $value) {
             $this->setStoreCategoryID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CategoryID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CategoryID');
         if (null !== $value) {
             $this->setCategoryID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AllFixedPriceItems');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AllFixedPriceItems');
         if (null !== $value) {
             $this->setAllFixedPriceItems($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AllStoreInventoryItems');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AllStoreInventoryItems');
         if (null !== $value) {
             $this->setAllStoreInventoryItems($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AllAuctionItems');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AllAuctionItems');
         if (null !== $value) {
             $this->setAllAuctionItems($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

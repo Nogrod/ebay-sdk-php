@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Trading;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing GetMyMessagesResponseType
  *
@@ -240,37 +242,21 @@ class GetMyMessagesResponseType extends AbstractResponseType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Summary');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Summary');
         if (null !== $value) {
             $this->setSummary(\Nogrod\eBaySDK\Trading\MyMessagesSummaryType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Alerts', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Alerts', true);
         if (null !== $value && !empty($value)) {
             $this->setAlerts(array_map(function ($v) {
                 return \Nogrod\eBaySDK\Trading\MyMessagesAlertType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Messages', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Messages', true);
         if (null !== $value && !empty($value)) {
             $this->setMessages(array_map(function ($v) {
                 return \Nogrod\eBaySDK\Trading\MyMessagesMessageType::fromKeyValue($v);
             }, $value));
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Trading;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing RecommendationValidationRulesType
  *
@@ -867,75 +869,59 @@ class RecommendationValidationRulesType implements \Sabre\Xml\XmlSerializable, \
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ValueType');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ValueType');
         if (null !== $value) {
             $this->setValueType($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MinValues');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MinValues');
         if (null !== $value) {
             $this->setMinValues($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MaxValues');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MaxValues');
         if (null !== $value) {
             $this->setMaxValues($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SelectionMode');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SelectionMode');
         if (null !== $value) {
             $this->setSelectionMode($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AspectUsage');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AspectUsage');
         if (null !== $value) {
             $this->setAspectUsage($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MaxValueLength');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MaxValueLength');
         if (null !== $value) {
             $this->setMaxValueLength($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ProductRequired');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ProductRequired');
         if (null !== $value) {
             $this->setProductRequired($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UsageConstraint');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UsageConstraint');
         if (null !== $value) {
             $this->setUsageConstraint($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Confidence');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Confidence');
         if (null !== $value) {
             $this->setConfidence($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Relationship', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Relationship', true);
         if (null !== $value && !empty($value)) {
             $this->setRelationship(array_map(function ($v) {
                 return \Nogrod\eBaySDK\Trading\NameValueRelationshipType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}VariationPicture');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}VariationPicture');
         if (null !== $value) {
             $this->setVariationPicture($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}VariationSpecifics');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}VariationSpecifics');
         if (null !== $value) {
             $this->setVariationSpecifics($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ValueFormat');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ValueFormat');
         if (null !== $value) {
             $this->setValueFormat($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

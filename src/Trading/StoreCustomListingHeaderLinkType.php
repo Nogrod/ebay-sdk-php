@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Trading;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing StoreCustomListingHeaderLinkType
  *
@@ -147,33 +149,17 @@ class StoreCustomListingHeaderLinkType implements \Sabre\Xml\XmlSerializable, \S
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LinkID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LinkID');
         if (null !== $value) {
             $this->setLinkID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Order');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Order');
         if (null !== $value) {
             $this->setOrder($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LinkType');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LinkType');
         if (null !== $value) {
             $this->setLinkType($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Trading;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing ErrorType
  *
@@ -369,51 +371,35 @@ class ErrorType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShortMessage');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShortMessage');
         if (null !== $value) {
             $this->setShortMessage($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LongMessage');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LongMessage');
         if (null !== $value) {
             $this->setLongMessage($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ErrorCode');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ErrorCode');
         if (null !== $value) {
             $this->setErrorCode($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UserDisplayHint');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UserDisplayHint');
         if (null !== $value) {
             $this->setUserDisplayHint($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SeverityCode');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SeverityCode');
         if (null !== $value) {
             $this->setSeverityCode($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ErrorParameters', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ErrorParameters', true);
         if (null !== $value && !empty($value)) {
             $this->setErrorParameters(array_map(function ($v) {
                 return \Nogrod\eBaySDK\Trading\ErrorParameterType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ErrorClassification');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ErrorClassification');
         if (null !== $value) {
             $this->setErrorClassification($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

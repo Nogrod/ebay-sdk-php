@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Finding;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing UnitPriceInfoType
  *
@@ -92,29 +94,13 @@ class UnitPriceInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}type');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}type');
         if (null !== $value) {
             $this->setType($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}quantity');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}quantity');
         if (null !== $value) {
             $this->setQuantity($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

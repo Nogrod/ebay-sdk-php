@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\MerchantData;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing OrderReportResponseType
  *
@@ -304,45 +306,29 @@ class OrderReportResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}HardExpirationWarning');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}HardExpirationWarning');
         if (null !== $value) {
             $this->setHardExpirationWarning(new \DateTime($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Ack');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Ack');
         if (null !== $value) {
             $this->setAck($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Version');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Version');
         if (null !== $value) {
             $this->setVersion($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Errors', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Errors', true);
         if (null !== $value && !empty($value)) {
             $this->setErrors(array_map(function ($v) {
                 return \Nogrod\eBaySDK\MerchantData\ErrorType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}OrderArray', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}OrderArray', true);
         if (null !== $value && !empty($value)) {
             $this->setOrderArray(array_map(function ($v) {
                 return \Nogrod\eBaySDK\MerchantData\OrderType::fromKeyValue($v);
             }, $value));
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Shopping;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing GetUserProfileResponseType
  *
@@ -201,35 +203,19 @@ class GetUserProfileResponseType extends AbstractResponseType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}User');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}User');
         if (null !== $value) {
             $this->setUser(\Nogrod\eBaySDK\Shopping\SimpleUserType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeedbackHistory');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeedbackHistory');
         if (null !== $value) {
             $this->setFeedbackHistory(\Nogrod\eBaySDK\Shopping\FeedbackHistoryType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeedbackDetails', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeedbackDetails', true);
         if (null !== $value && !empty($value)) {
             $this->setFeedbackDetails(array_map(function ($v) {
                 return \Nogrod\eBaySDK\Shopping\FeedbackDetailType::fromKeyValue($v);
             }, $value));
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\MerchantData;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing ItemCompatibilityListType
  *
@@ -189,31 +191,15 @@ class ItemCompatibilityListType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Compatibility', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Compatibility', true);
         if (null !== $value && !empty($value)) {
             $this->setCompatibility(array_map(function ($v) {
                 return \Nogrod\eBaySDK\MerchantData\ItemCompatibilityType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReplaceAll');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReplaceAll');
         if (null !== $value) {
             $this->setReplaceAll($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Trading;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing VATDetailsType
  *
@@ -285,41 +287,25 @@ class VATDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BusinessSeller');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BusinessSeller');
         if (null !== $value) {
             $this->setBusinessSeller($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RestrictedToBusiness');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RestrictedToBusiness');
         if (null !== $value) {
             $this->setRestrictedToBusiness($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}VATPercent');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}VATPercent');
         if (null !== $value) {
             $this->setVATPercent($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}VATSite');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}VATSite');
         if (null !== $value) {
             $this->setVATSite($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}VATID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}VATID');
         if (null !== $value) {
             $this->setVATID($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Trading;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing ApiAccessRuleType
  *
@@ -662,85 +664,69 @@ class ApiAccessRuleType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CallName');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CallName');
         if (null !== $value) {
             $this->setCallName($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CountsTowardAggregate');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CountsTowardAggregate');
         if (null !== $value) {
             $this->setCountsTowardAggregate($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DailyHardLimit');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DailyHardLimit');
         if (null !== $value) {
             $this->setDailyHardLimit($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DailySoftLimit');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DailySoftLimit');
         if (null !== $value) {
             $this->setDailySoftLimit($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DailyUsage');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DailyUsage');
         if (null !== $value) {
             $this->setDailyUsage($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}HourlyHardLimit');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}HourlyHardLimit');
         if (null !== $value) {
             $this->setHourlyHardLimit($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}HourlySoftLimit');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}HourlySoftLimit');
         if (null !== $value) {
             $this->setHourlySoftLimit($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}HourlyUsage');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}HourlyUsage');
         if (null !== $value) {
             $this->setHourlyUsage($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Period');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Period');
         if (null !== $value) {
             $this->setPeriod($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PeriodicHardLimit');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PeriodicHardLimit');
         if (null !== $value) {
             $this->setPeriodicHardLimit($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PeriodicSoftLimit');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PeriodicSoftLimit');
         if (null !== $value) {
             $this->setPeriodicSoftLimit($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PeriodicUsage');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PeriodicUsage');
         if (null !== $value) {
             $this->setPeriodicUsage($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PeriodicStartDate');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PeriodicStartDate');
         if (null !== $value) {
             $this->setPeriodicStartDate(new \DateTime($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ModTime');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ModTime');
         if (null !== $value) {
             $this->setModTime(new \DateTime($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RuleCurrentStatus');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RuleCurrentStatus');
         if (null !== $value) {
             $this->setRuleCurrentStatus($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RuleStatus');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RuleStatus');
         if (null !== $value) {
             $this->setRuleStatus($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

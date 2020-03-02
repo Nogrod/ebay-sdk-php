@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Trading;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing SellingManagerAutoListType
  *
@@ -152,33 +154,17 @@ class SellingManagerAutoListType implements \Sabre\Xml\XmlSerializable, \Sabre\X
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SourceSaleTemplateID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SourceSaleTemplateID');
         if (null !== $value) {
             $this->setSourceSaleTemplateID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}KeepMinActive');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}KeepMinActive');
         if (null !== $value) {
             $this->setKeepMinActive(\Nogrod\eBaySDK\Trading\SellingManagerAutoListMinActiveItemsType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ListAccordingToSchedule');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ListAccordingToSchedule');
         if (null !== $value) {
             $this->setListAccordingToSchedule(\Nogrod\eBaySDK\Trading\SellingManagerAutoListAccordingToScheduleType::fromKeyValue($value));
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

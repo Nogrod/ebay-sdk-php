@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Trading;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing DescriptionTemplateType
  *
@@ -252,45 +254,29 @@ class DescriptionTemplateType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}GroupID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}GroupID');
         if (null !== $value) {
             $this->setGroupID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ID');
         if (null !== $value) {
             $this->setID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ImageURL');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ImageURL');
         if (null !== $value) {
             $this->setImageURL($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Name');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Name');
         if (null !== $value) {
             $this->setName($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TemplateXML');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TemplateXML');
         if (null !== $value) {
             $this->setTemplateXML($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Type');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Type');
         if (null !== $value) {
             $this->setType($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

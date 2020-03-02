@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Shopping;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing DiscountPriceInfoType
  *
@@ -372,45 +374,29 @@ class DiscountPriceInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}OriginalRetailPrice');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}OriginalRetailPrice');
         if (null !== $value) {
             $this->setOriginalRetailPrice(\Nogrod\eBaySDK\Shopping\AmountType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MinimumAdvertisedPrice');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MinimumAdvertisedPrice');
         if (null !== $value) {
             $this->setMinimumAdvertisedPrice(\Nogrod\eBaySDK\Shopping\AmountType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MinimumAdvertisedPriceExposure');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MinimumAdvertisedPriceExposure');
         if (null !== $value) {
             $this->setMinimumAdvertisedPriceExposure($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PricingTreatment');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PricingTreatment');
         if (null !== $value) {
             $this->setPricingTreatment($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SoldOneBay');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SoldOneBay');
         if (null !== $value) {
             $this->setSoldOneBay($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SoldOffeBay');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SoldOffeBay');
         if (null !== $value) {
             $this->setSoldOffeBay($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

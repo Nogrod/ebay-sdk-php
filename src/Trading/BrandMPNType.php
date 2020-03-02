@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Trading;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing BrandMPNType
  *
@@ -145,29 +147,13 @@ class BrandMPNType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Brand');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Brand');
         if (null !== $value) {
             $this->setBrand($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MPN');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MPN');
         if (null !== $value) {
             $this->setMPN($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\MerchantData;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing ProductSearchResultType
  *
@@ -223,39 +225,23 @@ class ProductSearchResultType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ID');
         if (null !== $value) {
             $this->setID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}NumProducts');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}NumProducts');
         if (null !== $value) {
             $this->setNumProducts($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AttributeSet', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AttributeSet', true);
         if (null !== $value && !empty($value)) {
             $this->setAttributeSet(array_map(function ($v) {
                 return \Nogrod\eBaySDK\MerchantData\ResponseAttributeSetType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DisplayStockPhotos');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DisplayStockPhotos');
         if (null !== $value) {
             $this->setDisplayStockPhotos($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

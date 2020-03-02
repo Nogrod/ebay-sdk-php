@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Trading;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing BotBlockResponseType
  *
@@ -153,33 +155,17 @@ class BotBlockResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BotBlockToken');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BotBlockToken');
         if (null !== $value) {
             $this->setBotBlockToken($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BotBlockUrl');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BotBlockUrl');
         if (null !== $value) {
             $this->setBotBlockUrl($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BotBlockAudioUrl');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BotBlockAudioUrl');
         if (null !== $value) {
             $this->setBotBlockAudioUrl($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

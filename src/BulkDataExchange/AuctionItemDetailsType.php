@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\BulkDataExchange;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing AuctionItemDetailsType
  *
@@ -106,29 +108,13 @@ class AuctionItemDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}includeBidCount');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}includeBidCount');
         if (null !== $value) {
             $this->setIncludeBidCount($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}includeReservePriceMet');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}includeReservePriceMet');
         if (null !== $value) {
             $this->setIncludeReservePriceMet($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

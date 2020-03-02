@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Shopping;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing AbstractResponseType
  *
@@ -429,47 +431,31 @@ class AbstractResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Timestamp');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Timestamp');
         if (null !== $value) {
             $this->setTimestamp(new \DateTime($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Ack');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Ack');
         if (null !== $value) {
             $this->setAck($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Errors', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Errors', true);
         if (null !== $value && !empty($value)) {
             $this->setErrors(array_map(function ($v) {
                 return \Nogrod\eBaySDK\Shopping\ErrorType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Build');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Build');
         if (null !== $value) {
             $this->setBuild($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Version');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Version');
         if (null !== $value) {
             $this->setVersion($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CorrelationID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CorrelationID');
         if (null !== $value) {
             $this->setCorrelationID($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

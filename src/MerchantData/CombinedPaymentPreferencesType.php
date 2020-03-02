@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\MerchantData;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing CombinedPaymentPreferencesType
  *
@@ -203,37 +205,21 @@ class CombinedPaymentPreferencesType implements \Sabre\Xml\XmlSerializable, \Sab
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CalculatedShippingPreferences');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CalculatedShippingPreferences');
         if (null !== $value) {
             $this->setCalculatedShippingPreferences(\Nogrod\eBaySDK\MerchantData\CalculatedShippingPreferencesType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CombinedPaymentOption');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CombinedPaymentOption');
         if (null !== $value) {
             $this->setCombinedPaymentOption($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CombinedPaymentPeriod');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CombinedPaymentPeriod');
         if (null !== $value) {
             $this->setCombinedPaymentPeriod($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FlatShippingPreferences');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FlatShippingPreferences');
         if (null !== $value) {
             $this->setFlatShippingPreferences(\Nogrod\eBaySDK\MerchantData\FlatShippingPreferencesType::fromKeyValue($value));
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

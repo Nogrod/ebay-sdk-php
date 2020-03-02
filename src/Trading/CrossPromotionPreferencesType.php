@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Trading;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing CrossPromotionPreferencesType
  *
@@ -290,49 +292,33 @@ class CrossPromotionPreferencesType implements \Sabre\Xml\XmlSerializable, \Sabr
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CrossPromotionEnabled');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CrossPromotionEnabled');
         if (null !== $value) {
             $this->setCrossPromotionEnabled($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CrossSellItemFormatSortFilter');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CrossSellItemFormatSortFilter');
         if (null !== $value) {
             $this->setCrossSellItemFormatSortFilter($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CrossSellGallerySortFilter');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CrossSellGallerySortFilter');
         if (null !== $value) {
             $this->setCrossSellGallerySortFilter($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CrossSellItemSortFilter');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CrossSellItemSortFilter');
         if (null !== $value) {
             $this->setCrossSellItemSortFilter($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UpSellItemFormatSortFilter');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UpSellItemFormatSortFilter');
         if (null !== $value) {
             $this->setUpSellItemFormatSortFilter($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UpSellGallerySortFilter');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UpSellGallerySortFilter');
         if (null !== $value) {
             $this->setUpSellGallerySortFilter($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UpSellItemSortFilter');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UpSellItemSortFilter');
         if (null !== $value) {
             $this->setUpSellItemSortFilter($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

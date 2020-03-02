@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\MerchantData;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing SellereBayPaymentProcessConsentCodeType
  *
@@ -186,35 +188,19 @@ class SellereBayPaymentProcessConsentCodeType implements \Sabre\Xml\XmlSerializa
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PayoutMethodSet');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PayoutMethodSet');
         if (null !== $value) {
             $this->setPayoutMethodSet($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PayoutMethod');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PayoutMethod');
         if (null !== $value) {
             $this->setPayoutMethod($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UserAgreementInfo', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UserAgreementInfo', true);
         if (null !== $value && !empty($value)) {
             $this->setUserAgreementInfo(array_map(function ($v) {
                 return \Nogrod\eBaySDK\MerchantData\UserAgreementInfoType::fromKeyValue($v);
             }, $value));
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

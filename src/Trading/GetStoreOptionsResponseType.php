@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Trading;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing GetStoreOptionsResponseType
  *
@@ -337,49 +339,33 @@ class GetStoreOptionsResponseType extends AbstractResponseType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BasicThemeArray');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BasicThemeArray');
         if (null !== $value) {
             $this->setBasicThemeArray(\Nogrod\eBaySDK\Trading\StoreThemeArrayType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AdvancedThemeArray');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AdvancedThemeArray');
         if (null !== $value) {
             $this->setAdvancedThemeArray(\Nogrod\eBaySDK\Trading\StoreThemeArrayType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LogoArray', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LogoArray', true);
         if (null !== $value && !empty($value)) {
             $this->setLogoArray(array_map(function ($v) {
                 return \Nogrod\eBaySDK\Trading\StoreLogoType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SubscriptionArray', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SubscriptionArray', true);
         if (null !== $value && !empty($value)) {
             $this->setSubscriptionArray(array_map(function ($v) {
                 return \Nogrod\eBaySDK\Trading\StoreSubscriptionType::fromKeyValue($v);
             }, $value));
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MaxCategories');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MaxCategories');
         if (null !== $value) {
             $this->setMaxCategories($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MaxCategoryLevels');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MaxCategoryLevels');
         if (null !== $value) {
             $this->setMaxCategoryLevels($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

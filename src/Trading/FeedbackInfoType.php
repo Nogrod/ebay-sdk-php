@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Trading;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing FeedbackInfoType
  *
@@ -184,33 +186,17 @@ class FeedbackInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CommentText');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CommentText');
         if (null !== $value) {
             $this->setCommentText($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CommentType');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CommentType');
         if (null !== $value) {
             $this->setCommentType($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TargetUser');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TargetUser');
         if (null !== $value) {
             $this->setTargetUser($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

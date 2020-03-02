@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Trading;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing StoreCustomPageType
  *
@@ -551,57 +553,41 @@ class StoreCustomPageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Name');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Name');
         if (null !== $value) {
             $this->setName($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PageID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PageID');
         if (null !== $value) {
             $this->setPageID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}URLPath');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}URLPath');
         if (null !== $value) {
             $this->setURLPath($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}URL');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}URL');
         if (null !== $value) {
             $this->setURL($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Status');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Status');
         if (null !== $value) {
             $this->setStatus($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Content');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Content');
         if (null !== $value) {
             $this->setContent($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LeftNav');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LeftNav');
         if (null !== $value) {
             $this->setLeftNav($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PreviewEnabled');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PreviewEnabled');
         if (null !== $value) {
             $this->setPreviewEnabled($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Order');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Order');
         if (null !== $value) {
             $this->setOrder($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

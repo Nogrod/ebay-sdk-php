@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\BulkDataExchange;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing CreateRecurringJobRequestType
  *
@@ -450,49 +452,33 @@ class CreateRecurringJobRequestType extends BaseServiceRequestType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}UUID');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}UUID');
         if (null !== $value) {
             $this->setUUID($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}downloadJobRecurringFilter');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}downloadJobRecurringFilter');
         if (null !== $value) {
             $this->setDownloadJobRecurringFilter(\Nogrod\eBaySDK\BulkDataExchange\DownloadJobRecurringFilterType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}frequencyInMinutes');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}frequencyInMinutes');
         if (null !== $value) {
             $this->setFrequencyInMinutes($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}downloadJobType');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}downloadJobType');
         if (null !== $value) {
             $this->setDownloadJobType($value);
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}monthlyRecurrence');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}monthlyRecurrence');
         if (null !== $value) {
             $this->setMonthlyRecurrence(\Nogrod\eBaySDK\BulkDataExchange\MonthlyRecurrenceType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}weeklyRecurrence');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}weeklyRecurrence');
         if (null !== $value) {
             $this->setWeeklyRecurrence(\Nogrod\eBaySDK\BulkDataExchange\WeeklyRecurrenceType::fromKeyValue($value));
         }
-        $value = self::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}dailyRecurrence');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/services}dailyRecurrence');
         if (null !== $value) {
             $this->setDailyRecurrence(\Nogrod\eBaySDK\BulkDataExchange\DailyRecurrenceType::fromKeyValue($value));
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }

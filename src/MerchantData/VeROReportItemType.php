@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\MerchantData;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing VeROReportItemType
  *
@@ -445,53 +447,37 @@ class VeROReportItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
 
     public function setKeyValue($keyValue)
     {
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemID');
         if (null !== $value) {
             $this->setItemID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}VeROReasonCodeID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}VeROReasonCodeID');
         if (null !== $value) {
             $this->setVeROReasonCodeID($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MessageToSeller');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MessageToSeller');
         if (null !== $value) {
             $this->setMessageToSeller($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CopyEmailToRightsOwner');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CopyEmailToRightsOwner');
         if (null !== $value) {
             $this->setCopyEmailToRightsOwner($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Region', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Region', true);
         if (null !== $value && !empty($value)) {
             $this->setRegion($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Country', true);
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Country', true);
         if (null !== $value && !empty($value)) {
             $this->setCountry($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Patent');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Patent');
         if (null !== $value) {
             $this->setPatent($value);
         }
-        $value = self::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DetailedMessage');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DetailedMessage');
         if (null !== $value) {
             $this->setDetailedMessage($value);
         }
-    }
-
-    public static function mapArray(array $array, string $name, bool $isArray = false)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item['name'] !== $name) {
-                continue;
-            }
-            if ($isArray) {
-                $result[] = $item['value'];
-            } else {
-                return $item['value'];
-            }
-        }
-        return $isArray ? $result : null;
     }
 }
