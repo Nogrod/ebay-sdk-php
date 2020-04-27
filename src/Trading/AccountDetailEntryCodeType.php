@@ -2903,16 +2903,94 @@ class AccountDetailEntryCodeType
     public const VAL_AUSTRALIA_GSTCREDIT = 'AustraliaGSTCredit';
 
     /**
+     * Constant for 'UspsLabelFee' value.
+     *
+     * This enumeration value indicates that eBay is billing the seller for a USPS
+     * shipping label that was purchased through the seller's eBay account.
+     *  <br><br>
+     *  This enumeration value is only applicable for eBay sellers that are opted in to
+     * eBay managed payments.
+     */
+    public const VAL_USPS_LABEL_FEE = 'UspsLabelFee';
+
+    /**
+     * Constant for 'UspsLabelFeeCredit' value.
+     *
+     * This enumeration value indicates that eBay is giving a credit to the seller for
+     * a USPS shipping label that was purchased through the seller's eBay account.
+     *  <br><br>
+     *  This enumeration value is only applicable for eBay sellers that are opted in to
+     * eBay managed payments.
+     */
+    public const VAL_USPS_LABEL_FEE_CREDIT = 'UspsLabelFeeCredit';
+
+    /**
+     * Constant for 'ShippingInsuranceFee' value.
+     *
+     * This enumeration value indicates that eBay is billing the seller for shipping
+     * insurance (such as ShipCover through USPS) that was purchased through the
+     * seller's eBay account.
+     *  <br><br>
+     *  This enumeration value is only applicable for eBay sellers that are opted in to
+     * eBay managed payments.
+     */
+    public const VAL_SHIPPING_INSURANCE_FEE = 'ShippingInsuranceFee';
+
+    /**
+     * Constant for 'ShippingInsuranceFeeCredit' value.
+     *
+     * This enumeration value indicates that eBay is giving a credit to the seller for
+     * shipping insurance (such as ShipCover through USPS) that was purchased through
+     * the seller's eBay account.
+     *  <br><br>
+     *  This enumeration value is only applicable for eBay sellers that are opted in to
+     * eBay managed payments.
+     */
+    public const VAL_SHIPPING_INSURANCE_FEE_CREDIT = 'ShippingInsuranceFeeCredit';
+
+    /**
+     * Constant for 'UspsShortpaidFee' value.
+     *
+     * This enumeration value indicates that eBay is billing the seller for
+     * underpayment for a USPS shipping label that was purchased through the seller's
+     * eBay account. Underpayment may occur if the seller paid for a shipping label
+     * based on specific package weight and dimensions, but either or both package
+     * weight and dimensions were not accurate, hence the seller owes more money to
+     * USPS for postage.
+     *  <br><br>
+     *  This enumeration value is only applicable for eBay sellers that are opted in to
+     * eBay managed payments.
+     */
+    public const VAL_USPS_SHORTPAID_FEE = 'UspsShortpaidFee';
+
+    /**
+     * Constant for 'UspsShortpaidFeeCredit' value.
+     *
+     * This enumeration value indicates that eBay is giving credit to the seller for
+     * underpayment for a USPS shipping label that was purchased through the seller's
+     * eBay account. Underpayment may occur if the seller paid for a shipping label
+     * based on specific package weight and dimensions, but either or both package
+     * weight and dimensions were not accurate, hence the seller owes more money to
+     * USPS for postage.
+     *  <br><br>
+     *  This enumeration value is only applicable for eBay sellers that are opted in to
+     * eBay managed payments.
+     */
+    public const VAL_USPS_SHORTPAID_FEE_CREDIT = 'UspsShortpaidFeeCredit';
+
+    /**
      * Constant for 'CoFundingCharge' value.
      *
-     * (out) Co-Funding Charge
+     * This enumeration value indicates that eBay is billing the seller for a
+     * co-funding charge.
      */
     public const VAL_CO_FUNDING_CHARGE = 'CoFundingCharge';
 
     /**
      * Constant for 'CoFundingChargeCredit' value.
      *
-     * (out) Co-Funding Charge Credit
+     * This enumeration value indicates that eBay is giving credit to the seller for a
+     * co-funding charge.
      */
     public const VAL_CO_FUNDING_CHARGE_CREDIT = 'CoFundingChargeCredit';
 

@@ -14,7 +14,7 @@ class GetCharitiesResponseType extends AbstractResponseType
 {
 
     /**
-     * Each <b>Charity</b> container consists of information about a specific nonprofit organization. Each nonprofit organization is identified by the <b>id</b> attribute of the container. If no nonprofit organization are found that match the input criteria, no <b>Charity</b> containers are returned.
+     * Each <b>Charity</b> container consists of information about a specific nonprofit organization. The eBay unique identifier of each nonprofit organization is shown in the <b>id</b> attribute of the container. If no nonprofit organizations are found that match the input criteria, no <b>Charity</b> containers are returned.
      *
      * @var \Nogrod\eBaySDK\Trading\CharityInfoType[] $charity
      */
@@ -25,7 +25,7 @@ class GetCharitiesResponseType extends AbstractResponseType
     /**
      * Adds as charity
      *
-     * Each <b>Charity</b> container consists of information about a specific nonprofit organization. Each nonprofit organization is identified by the <b>id</b> attribute of the container. If no nonprofit organization are found that match the input criteria, no <b>Charity</b> containers are returned.
+     * Each <b>Charity</b> container consists of information about a specific nonprofit organization. The eBay unique identifier of each nonprofit organization is shown in the <b>id</b> attribute of the container. If no nonprofit organizations are found that match the input criteria, no <b>Charity</b> containers are returned.
      *
      * @return self
      * @param \Nogrod\eBaySDK\Trading\CharityInfoType $charity
@@ -39,7 +39,7 @@ class GetCharitiesResponseType extends AbstractResponseType
     /**
      * isset charity
      *
-     * Each <b>Charity</b> container consists of information about a specific nonprofit organization. Each nonprofit organization is identified by the <b>id</b> attribute of the container. If no nonprofit organization are found that match the input criteria, no <b>Charity</b> containers are returned.
+     * Each <b>Charity</b> container consists of information about a specific nonprofit organization. The eBay unique identifier of each nonprofit organization is shown in the <b>id</b> attribute of the container. If no nonprofit organizations are found that match the input criteria, no <b>Charity</b> containers are returned.
      *
      * @param int|string $index
      * @return bool
@@ -52,7 +52,7 @@ class GetCharitiesResponseType extends AbstractResponseType
     /**
      * unset charity
      *
-     * Each <b>Charity</b> container consists of information about a specific nonprofit organization. Each nonprofit organization is identified by the <b>id</b> attribute of the container. If no nonprofit organization are found that match the input criteria, no <b>Charity</b> containers are returned.
+     * Each <b>Charity</b> container consists of information about a specific nonprofit organization. The eBay unique identifier of each nonprofit organization is shown in the <b>id</b> attribute of the container. If no nonprofit organizations are found that match the input criteria, no <b>Charity</b> containers are returned.
      *
      * @param int|string $index
      * @return void
@@ -65,7 +65,7 @@ class GetCharitiesResponseType extends AbstractResponseType
     /**
      * Gets as charity
      *
-     * Each <b>Charity</b> container consists of information about a specific nonprofit organization. Each nonprofit organization is identified by the <b>id</b> attribute of the container. If no nonprofit organization are found that match the input criteria, no <b>Charity</b> containers are returned.
+     * Each <b>Charity</b> container consists of information about a specific nonprofit organization. The eBay unique identifier of each nonprofit organization is shown in the <b>id</b> attribute of the container. If no nonprofit organizations are found that match the input criteria, no <b>Charity</b> containers are returned.
      *
      * @return \Nogrod\eBaySDK\Trading\CharityInfoType[]
      */
@@ -77,7 +77,7 @@ class GetCharitiesResponseType extends AbstractResponseType
     /**
      * Sets a new charity
      *
-     * Each <b>Charity</b> container consists of information about a specific nonprofit organization. Each nonprofit organization is identified by the <b>id</b> attribute of the container. If no nonprofit organization are found that match the input criteria, no <b>Charity</b> containers are returned.
+     * Each <b>Charity</b> container consists of information about a specific nonprofit organization. The eBay unique identifier of each nonprofit organization is shown in the <b>id</b> attribute of the container. If no nonprofit organizations are found that match the input criteria, no <b>Charity</b> containers are returned.
      *
      * @param \Nogrod\eBaySDK\Trading\CharityInfoType[] $charity
      * @return self

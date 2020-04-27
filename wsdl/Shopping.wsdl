@@ -8,8 +8,8 @@
 	xmlns="urn:ebay:apis:eBLBaseComponents"
 	targetNamespace="urn:ebay:apis:eBLBaseComponents">
 	<wsdl:types>
-<!-- Version 1119 -->
-<!-- (c) 2019 eBay, Inc. All rights reserved -->
+<!-- Version 1145 -->
+<!-- (c) 2020 eBay, Inc. All rights reserved -->
 		<xs:schema targetNamespace="urn:ebay:apis:eBLBaseComponents"  
 		xmlns:ns="urn:ebay:apis:eBLBaseComponents" 
 		xmlns="urn:ebay:apis:eBLBaseComponents"
@@ -3104,7 +3104,7 @@
 					&lt;br&gt;
 				</xs:documentation>
 				<xs:appinfo>
-					<MaxLength>64</MaxLength>
+					<MaxLength>GB, DE - 35; US, CA - 40; AU - 80; Other countries - 50</MaxLength>
 					<CallInfo>
 						<CallName>GetSingleItem</CallName>
 						<CallName>GetMultipleItems</CallName>
@@ -3121,7 +3121,7 @@
 					&lt;br&gt;
 				</xs:documentation>
 				<xs:appinfo>
-					<MaxLength>64</MaxLength>
+					<MaxLength>GB, DE - 35; US, CA - 40; AU - 80; Other countries - 50</MaxLength>
 					<CallInfo>
 						<CallName>GetSingleItem</CallName>
 						<CallName>GetMultipleItems</CallName>
@@ -3138,7 +3138,7 @@
 					&lt;br&gt;
 				</xs:documentation>
 				<xs:appinfo>
-					<MaxLength>64</MaxLength>
+					<MaxLength>GB, DE - 35; US, CA - 40; AU - 80; Other countries - 50</MaxLength>
 					<CallInfo>
 						<CallName>GetSingleItem</CallName>
 						<CallName>GetMultipleItems</CallName>
@@ -3165,7 +3165,7 @@
 					&lt;br&gt;
 				</xs:documentation>
 				<xs:appinfo>
-					<MaxLength>64</MaxLength>
+					<MaxLength>GB, DE - 35; US, CA - 40; AU - 80; Other countries - 50</MaxLength>
 					<CallInfo>
 						<CallName>GetSingleItem</CallName>
 						<CallName>GetMultipleItems</CallName>
@@ -3280,7 +3280,7 @@
 					&lt;br&gt;
 				</xs:documentation>
 				<xs:appinfo>
-					<MaxLength>12</MaxLength>
+					<MaxLength>GB, DE - 35; US, CA - 40; AU - 80; Other countries - 50</MaxLength>
 					<CallInfo>
 						<CallName>GetSingleItem</CallName>
 						<CallName>GetMultipleItems</CallName>
@@ -4453,14 +4453,14 @@
 	<xs:complexType name="CharityType">
 		<xs:annotation>
 			<xs:documentation>
-				This type is used to provide details about a nonprofit organization registered with the PayPal Giving Fund. This type is used by the &lt;b&gt;Charity&lt;/b&gt; container that is returned in &lt;b&gt;GetSingleItem&lt;/b&gt; and &lt;b&gt;GetMultipleItems&lt;/b&gt; if the proceeds of an eBay listing go towards benefiting a nonprofit organization.
+				This type is used to provide details about a nonprofit organization registered with eBay for Charity. This type is used by the &lt;b&gt;Charity&lt;/b&gt; container that is returned in &lt;b&gt;GetSingleItem&lt;/b&gt; and &lt;b&gt;GetMultipleItems&lt;/b&gt; if the sale proceeds of an eBay listing go towards benefiting a nonprofit organization.
 			</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
 			<xs:element name="CharityID" type="xs:string" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>
-						This identifier is assigned to the nonprofit organization when the organization registers with the PayPal Giving Fund. This identifier should not be confused with the &lt;b&gt;CharityNumber&lt;/b&gt; value, which is the nonprofit organization's globally unique identifier.
+						The unique identifier that eBay creates and assigns to each nonprofit organization that is registered with eBay for Charity. This is the unique identifier that should be used if the user wishes to retrieve more details on a nonprofit organization by using the Trading API's lt;b&gt;GetCharities&lt;/b&gt; call, or used by a seller in an Add/Revise/Relist call when they want to identify the nonprofit organization that will receive sale proceeds for a listing.
 					</xs:documentation>
 					<xs:appinfo>
 						<CallInfo>
@@ -4476,7 +4476,7 @@
 				<xs:annotation>
 					<xs:documentation>
 						The name of the benefiting nonprofit organization selected by the
-						charity seller.
+						charity seller to receive sale proceeds for the listing.
 					</xs:documentation>
 					<xs:appinfo>
 						<CallInfo>
@@ -4491,7 +4491,12 @@
 			<xs:element name="CharityNumber" type="xs:int" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>
-						This value is the globally unique identifier for the nonprofit organization. This identifier should not be confused with the &lt;b&gt;CharityID&lt;/b&gt; value, which is the unique identifier that the PayPal Giving Fund assigns to the nonprofit organization.
+						The unique identifier that the PayPal Giving Fund assigns to each nonprofit organization that registers with eBay for Charity.
+						&lt;br&gt;
+						&lt;br&gt;
+						&lt;span class="tablenote"&gt;&lt;strong&gt;Note:&lt;/strong&gt;
+							The &lt;b&gt;CharityNumber&lt;/b&gt; field has been scheduled for deprecation. It is the &lt;b&gt;CharityID&lt;/b&gt; value that should be used instead if the user wishes to retrieve more details on a nonprofit organization by using the Trading API's &lt;b&gt;GetCharities&lt;/b&gt; call, or used by a seller in an Add/Revise/Relist call when they want to identify the nonprofit organization that will receive sale proceeds for a listing.
+						&lt;/span&gt;
 					</xs:documentation>
 					<xs:appinfo>
 						<CallInfo>
@@ -4570,7 +4575,7 @@
 			<xs:element name="Status" type="ns:CharityStatusCodeType" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>
-						The enumeration value in this field indicates the current status of the nonprofit organization in accordance with the PayPal Giving Fund requirements.
+						This enumeration value indicates whether or not the nonprofit organization is a valid eBay for Charity organization, and is able to receive proceeds from eBay sales.
 					</xs:documentation>
 					<xs:appinfo>
 						<CallInfo>
@@ -12504,6 +12509,9 @@
 				<xs:annotation>
 					<xs:documentation>
 						This string value is the postal code (or zip code) of the item's physical location. Knowing the location gives the buyer a general indication of where the item will be shipped from, and if calculated shipping is used, shipping charges may be higher the further away that the buyer resides from the shipping location.
+						&lt;br&gt;&lt;br&gt;
+							&lt;span class="tablenote"&gt;&lt;b&gt;Note:&lt;/b&gt; As of late January 2020, the displayed postal code returned in &lt;b&gt;GetSingleItem&lt;/b&gt; and &lt;b&gt;GetMultipleItems&lt;/b&gt; is now masked to all users except for the seller of the item. Different countries will mask postal/zip codes in slightly different ways, but an example would be &lt;code&gt;951**&lt;/code&gt;.
+						&lt;/span&gt;
 					</xs:documentation>
 					<xs:appinfo>
 						<CallInfo>
@@ -12989,7 +12997,7 @@
 			<xs:element name="Charity" type="ns:CharityType" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>
-						This container is returned if any percentage of the sales proceeds is going to a nonprofit organization registered with the PayPal Giving Fund. This container consists of details related to the nonprofit charity organization, including the name and identifier of the charity, as well as the percentage rate of the sale proceeds that will go to the charity for each sale.
+						This container is returned if any percentage of the sales proceeds is going to a nonprofit organization that is registered with eBay for Charity. This container consists of details related to the nonprofit charity organization, including the name, mission, and unique identifier of the charity, as well as the percentage rate of the sale proceeds that will go to the charity for each sale.
 						&lt;br&gt;
 						&lt;br&gt;
 						This container is not returned for non-charitable listings.
@@ -14564,7 +14572,7 @@
 	
 	<wsdl:service name="Shopping">
 			<wsdl:documentation>
-				<Version>1119</Version>
+				<Version>1145</Version>
 			</wsdl:documentation>
 		<wsdl:port binding="ns:ShoppingBinding" name="Shopping">
 			<wsdlsoap:address location="http://open.api.ebay.com/shopping"/>

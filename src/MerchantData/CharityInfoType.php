@@ -7,7 +7,7 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing CharityInfoType
  *
- * Type defining the <b>Charity</b> container, which consists of all details
+ * Type defining the <b>Charity</b> container returned in <b>GetCharities</b>, which consists of all details
  *  related to a nonprofit charity organization.
  * XSD Type: CharityInfoType
  */
@@ -23,7 +23,7 @@ class CharityInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     private $id = null;
 
     /**
-     * The name of a nonprofit charity organization. The <b>Name</b> field is required for a non-registered charity organization, since these companies will not have a PayPal Giving Fund <b>CharityID</b>
+     * The name of a nonprofit charity organization.
      *  <br/><br/>
      *
      * @var string $name
@@ -52,7 +52,7 @@ class CharityInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     private $listingNPContactName = null;
 
     /**
-     * The mission statement of a nonprofit charity organization registered with the PayPal Giving Fund. The mission statement is returned in <b>GetCharities</b> and is displayed in listings if the nonprofit charity organization is registered with the PayPal Giving Fund.
+     * The mission statement of the nonprofit charity organization. This field will be returned if the organization's mission statement is available.
      *  <br/><br/>
      *
      * @var string $mission
@@ -60,14 +60,14 @@ class CharityInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     private $mission = null;
 
     /**
-     * This URL indicates the location of the nonprofit charity organization's logo image. The image file must be JPG or GIF format, and its size cannot exceed 50 KB. This logo is displayed in listings if the nonprofit charity organization is registered with the PayPal Giving Fund. A standard eBay for Charity logo is used in place of the charity organization's logo if the <b>LogoURL</b> or <b>LogoURLSelling</b> values are not provided, or these values point to bad URLs or to URLs containing no images or images not meeting eBay logo size and format requirements. This value is returned if set.
+     * The URL to the nonprofit charity organization's logo image. The image file will be in JPG or GIF format. This logo is displayed in charitable listings in the eBay for Charity section of the View Item page. This field is returned if available for the nonprofit organization.
      *
      * @var string $logoURL
      */
     private $logoURL = null;
 
     /**
-     * Enumeration value that indicates whether or not the charity is a valid eBay for Charity nonprofit organization.
+     * This enumeration value indicates whether or not the nonprofit organization is a valid eBay for Charity organization, and is able to receive proceeds from eBay sales.
      *
      * @var string $status
      */
@@ -81,7 +81,7 @@ class CharityInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     private $searchableString = null;
 
     /**
-     * Integer value that indicates the nonprofit charity organization's region. Each nonprofit charity organization may be associated with only one region.
+     * Integer value that indicates the nonprofit charity organization's region. Each nonprofit charity organization may only be associated with one region.
      *
      * @var int $charityRegion
      */
@@ -97,21 +97,21 @@ class CharityInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     ];
 
     /**
-     * A unique identifier created by eBay and assigned to registered nonprofit charity organizations. This identifier can be used as a filter in the <b>GetCharities</b> request, and it will always be returned if the nonprofit charity organization is registered with the PayPal Giving Fund.
+     * This field is no longer returned. eBay's unique identifier for nonprofit organizations is now returned in the <b>id</b> attribute of the the opening <b>Charity</b> tag instead.
      *
      * @var string $charityID
      */
     private $charityID = null;
 
     /**
-     * An alternative to the <b>LogoURL</b> value. This URL indicates the location of the nonprofit charity organization's logo image. The image file must be JPG or GIF format, and its size cannot exceed 50 KB. This URL will be used if the <b>LogoURL</b> value points to a broken link or if that location either contains no image or contains an image that does not meet the eBay requirements - GIF or JPG file; maximum size of 50 KB. A nonprofit charity organization's logo is displayed in item listings if the nonprofit charity organization is registered with the PayPal Giving Fund. A standard eBay for Charity logo is used in place of the charity organization's logo if the Logo URL is not provided. This value is returned if set.
+     * An alternative to the <b>LogoURL</b> value. This URL indicates the location of the nonprofit charity organization's logo image. The image file will be in JPG or GIF format. This URL will be used if the <b>LogoURL</b> value points to a broken link or if that location either contains no image or contains an image that does not meet the eBay requirements - GIF or JPG file; maximum size of 50 KB. A nonprofit charity organization's logo is displayed in the eBay for Charity section of the View Item page for a charitable listing.
      *
      * @var string $logoURLSelling
      */
     private $logoURLSelling = null;
 
     /**
-     * This boolean value indicates if the eBay Charity logo will appear in the listing.
+     * This boolean value indicates if the <b>LogoURLSelling</b> image will appear in the eBay for Charity section of the View Item page for a charitable listing.
      *
      * @var bool $displayLogoSelling
      */
@@ -125,8 +125,8 @@ class CharityInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     private $displayNameInCheckout = null;
 
     /**
-     * This field provides a short description about the nonprofit charity organization's primary purpose. "I want to support" will be added to the beginning of the contents of this field. For example, if the description is "the fight against cancer", then on the checkout page "I want to support the fight against cancer" will be displayed. The description may contain a maximum of 115 characters. This value is returned if set.
-     *  <br/><br/>
+     * This field provides a description about the nonprofit charity organization's primary purpose. "I want to support" will be added to the beginning of the contents of this field. For example, if the description is "the fight against cancer", then on the checkout page "I want to support the fight against cancer" will be displayed. This field is returned if available for the nonprofit organization.
+     *  <br/>
      *
      * @var string $description
      */
@@ -152,7 +152,6 @@ class CharityInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
 
     /**
      * A unique identifier created and used by PayPal Giving Fund to identify a registered nonprofit charity organization. This field is only returned for charities that are registered with PayPal Giving Fund.
-     *  <br/><br/>
      *
      * @var string $externalID
      */
@@ -166,10 +165,7 @@ class CharityInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     private $popularityIndex = null;
 
     /**
-     * This value is the Employer Identification Number (EIN) of the nonprofit charity
-     *  organization. A nonprofit company's EIN is used for tax purposes by the Internal
-     *  Revenue Service. This value is returned if the nonprofit organization has an EIN and
-     *  it has been set.
+     * This value is the Employer Identification Number (EIN) of the nonprofit charity organization. A nonprofit company's EIN is used for tax purposes by the Internal Revenue Service. This value is returned if the nonprofit organization has an EIN and it has been set.
      *
      * @var string $eIN
      */
@@ -194,11 +190,7 @@ class CharityInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     ];
 
     /**
-     * Container consisting of the nonprofit charity organization's social networking site ID/handle.
-     *  A <b>NonProfitSocialAddress</b> container will exist for each social
-     *  networking site that the charity organization is associated with. Supported social
-     *  networking sites include Facebook, Twitter, LinkedIn, Google+, MySpace, and Orkut. One
-     *  or more of these containers are returned if set.
+     * Container consisting of the nonprofit charity organization's social networking site ID/handle. A <b>NonProfitSocialAddress</b> container will exist for each social networking site that the charity organization is associated with. Supported social networking sites include Facebook, Twitter, LinkedIn, Google+, MySpace, and Orkut. One or more of these containers are returned if set.
      *
      * @var \Nogrod\eBaySDK\MerchantData\NonProfitSocialAddressType[] $nonProfitSocialAddress
      */
@@ -237,7 +229,7 @@ class CharityInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     /**
      * Gets as name
      *
-     * The name of a nonprofit charity organization. The <b>Name</b> field is required for a non-registered charity organization, since these companies will not have a PayPal Giving Fund <b>CharityID</b>
+     * The name of a nonprofit charity organization.
      *  <br/><br/>
      *
      * @return string
@@ -250,7 +242,7 @@ class CharityInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     /**
      * Sets a new name
      *
-     * The name of a nonprofit charity organization. The <b>Name</b> field is required for a non-registered charity organization, since these companies will not have a PayPal Giving Fund <b>CharityID</b>
+     * The name of a nonprofit charity organization.
      *  <br/><br/>
      *
      * @param string $name
@@ -343,7 +335,7 @@ class CharityInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     /**
      * Gets as mission
      *
-     * The mission statement of a nonprofit charity organization registered with the PayPal Giving Fund. The mission statement is returned in <b>GetCharities</b> and is displayed in listings if the nonprofit charity organization is registered with the PayPal Giving Fund.
+     * The mission statement of the nonprofit charity organization. This field will be returned if the organization's mission statement is available.
      *  <br/><br/>
      *
      * @return string
@@ -356,7 +348,7 @@ class CharityInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     /**
      * Sets a new mission
      *
-     * The mission statement of a nonprofit charity organization registered with the PayPal Giving Fund. The mission statement is returned in <b>GetCharities</b> and is displayed in listings if the nonprofit charity organization is registered with the PayPal Giving Fund.
+     * The mission statement of the nonprofit charity organization. This field will be returned if the organization's mission statement is available.
      *  <br/><br/>
      *
      * @param string $mission
@@ -371,7 +363,7 @@ class CharityInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     /**
      * Gets as logoURL
      *
-     * This URL indicates the location of the nonprofit charity organization's logo image. The image file must be JPG or GIF format, and its size cannot exceed 50 KB. This logo is displayed in listings if the nonprofit charity organization is registered with the PayPal Giving Fund. A standard eBay for Charity logo is used in place of the charity organization's logo if the <b>LogoURL</b> or <b>LogoURLSelling</b> values are not provided, or these values point to bad URLs or to URLs containing no images or images not meeting eBay logo size and format requirements. This value is returned if set.
+     * The URL to the nonprofit charity organization's logo image. The image file will be in JPG or GIF format. This logo is displayed in charitable listings in the eBay for Charity section of the View Item page. This field is returned if available for the nonprofit organization.
      *
      * @return string
      */
@@ -383,7 +375,7 @@ class CharityInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     /**
      * Sets a new logoURL
      *
-     * This URL indicates the location of the nonprofit charity organization's logo image. The image file must be JPG or GIF format, and its size cannot exceed 50 KB. This logo is displayed in listings if the nonprofit charity organization is registered with the PayPal Giving Fund. A standard eBay for Charity logo is used in place of the charity organization's logo if the <b>LogoURL</b> or <b>LogoURLSelling</b> values are not provided, or these values point to bad URLs or to URLs containing no images or images not meeting eBay logo size and format requirements. This value is returned if set.
+     * The URL to the nonprofit charity organization's logo image. The image file will be in JPG or GIF format. This logo is displayed in charitable listings in the eBay for Charity section of the View Item page. This field is returned if available for the nonprofit organization.
      *
      * @param string $logoURL
      * @return self
@@ -397,7 +389,7 @@ class CharityInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     /**
      * Gets as status
      *
-     * Enumeration value that indicates whether or not the charity is a valid eBay for Charity nonprofit organization.
+     * This enumeration value indicates whether or not the nonprofit organization is a valid eBay for Charity organization, and is able to receive proceeds from eBay sales.
      *
      * @return string
      */
@@ -409,7 +401,7 @@ class CharityInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     /**
      * Sets a new status
      *
-     * Enumeration value that indicates whether or not the charity is a valid eBay for Charity nonprofit organization.
+     * This enumeration value indicates whether or not the nonprofit organization is a valid eBay for Charity organization, and is able to receive proceeds from eBay sales.
      *
      * @param string $status
      * @return self
@@ -449,7 +441,7 @@ class CharityInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     /**
      * Gets as charityRegion
      *
-     * Integer value that indicates the nonprofit charity organization's region. Each nonprofit charity organization may be associated with only one region.
+     * Integer value that indicates the nonprofit charity organization's region. Each nonprofit charity organization may only be associated with one region.
      *
      * @return int
      */
@@ -461,7 +453,7 @@ class CharityInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     /**
      * Sets a new charityRegion
      *
-     * Integer value that indicates the nonprofit charity organization's region. Each nonprofit charity organization may be associated with only one region.
+     * Integer value that indicates the nonprofit charity organization's region. Each nonprofit charity organization may only be associated with one region.
      *
      * @param int $charityRegion
      * @return self
@@ -541,7 +533,7 @@ class CharityInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     /**
      * Gets as charityID
      *
-     * A unique identifier created by eBay and assigned to registered nonprofit charity organizations. This identifier can be used as a filter in the <b>GetCharities</b> request, and it will always be returned if the nonprofit charity organization is registered with the PayPal Giving Fund.
+     * This field is no longer returned. eBay's unique identifier for nonprofit organizations is now returned in the <b>id</b> attribute of the the opening <b>Charity</b> tag instead.
      *
      * @return string
      */
@@ -553,7 +545,7 @@ class CharityInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     /**
      * Sets a new charityID
      *
-     * A unique identifier created by eBay and assigned to registered nonprofit charity organizations. This identifier can be used as a filter in the <b>GetCharities</b> request, and it will always be returned if the nonprofit charity organization is registered with the PayPal Giving Fund.
+     * This field is no longer returned. eBay's unique identifier for nonprofit organizations is now returned in the <b>id</b> attribute of the the opening <b>Charity</b> tag instead.
      *
      * @param string $charityID
      * @return self
@@ -567,7 +559,7 @@ class CharityInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     /**
      * Gets as logoURLSelling
      *
-     * An alternative to the <b>LogoURL</b> value. This URL indicates the location of the nonprofit charity organization's logo image. The image file must be JPG or GIF format, and its size cannot exceed 50 KB. This URL will be used if the <b>LogoURL</b> value points to a broken link or if that location either contains no image or contains an image that does not meet the eBay requirements - GIF or JPG file; maximum size of 50 KB. A nonprofit charity organization's logo is displayed in item listings if the nonprofit charity organization is registered with the PayPal Giving Fund. A standard eBay for Charity logo is used in place of the charity organization's logo if the Logo URL is not provided. This value is returned if set.
+     * An alternative to the <b>LogoURL</b> value. This URL indicates the location of the nonprofit charity organization's logo image. The image file will be in JPG or GIF format. This URL will be used if the <b>LogoURL</b> value points to a broken link or if that location either contains no image or contains an image that does not meet the eBay requirements - GIF or JPG file; maximum size of 50 KB. A nonprofit charity organization's logo is displayed in the eBay for Charity section of the View Item page for a charitable listing.
      *
      * @return string
      */
@@ -579,7 +571,7 @@ class CharityInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     /**
      * Sets a new logoURLSelling
      *
-     * An alternative to the <b>LogoURL</b> value. This URL indicates the location of the nonprofit charity organization's logo image. The image file must be JPG or GIF format, and its size cannot exceed 50 KB. This URL will be used if the <b>LogoURL</b> value points to a broken link or if that location either contains no image or contains an image that does not meet the eBay requirements - GIF or JPG file; maximum size of 50 KB. A nonprofit charity organization's logo is displayed in item listings if the nonprofit charity organization is registered with the PayPal Giving Fund. A standard eBay for Charity logo is used in place of the charity organization's logo if the Logo URL is not provided. This value is returned if set.
+     * An alternative to the <b>LogoURL</b> value. This URL indicates the location of the nonprofit charity organization's logo image. The image file will be in JPG or GIF format. This URL will be used if the <b>LogoURL</b> value points to a broken link or if that location either contains no image or contains an image that does not meet the eBay requirements - GIF or JPG file; maximum size of 50 KB. A nonprofit charity organization's logo is displayed in the eBay for Charity section of the View Item page for a charitable listing.
      *
      * @param string $logoURLSelling
      * @return self
@@ -593,7 +585,7 @@ class CharityInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     /**
      * Gets as displayLogoSelling
      *
-     * This boolean value indicates if the eBay Charity logo will appear in the listing.
+     * This boolean value indicates if the <b>LogoURLSelling</b> image will appear in the eBay for Charity section of the View Item page for a charitable listing.
      *
      * @return bool
      */
@@ -605,7 +597,7 @@ class CharityInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     /**
      * Sets a new displayLogoSelling
      *
-     * This boolean value indicates if the eBay Charity logo will appear in the listing.
+     * This boolean value indicates if the <b>LogoURLSelling</b> image will appear in the eBay for Charity section of the View Item page for a charitable listing.
      *
      * @param bool $displayLogoSelling
      * @return self
@@ -645,8 +637,8 @@ class CharityInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     /**
      * Gets as description
      *
-     * This field provides a short description about the nonprofit charity organization's primary purpose. "I want to support" will be added to the beginning of the contents of this field. For example, if the description is "the fight against cancer", then on the checkout page "I want to support the fight against cancer" will be displayed. The description may contain a maximum of 115 characters. This value is returned if set.
-     *  <br/><br/>
+     * This field provides a description about the nonprofit charity organization's primary purpose. "I want to support" will be added to the beginning of the contents of this field. For example, if the description is "the fight against cancer", then on the checkout page "I want to support the fight against cancer" will be displayed. This field is returned if available for the nonprofit organization.
+     *  <br/>
      *
      * @return string
      */
@@ -658,8 +650,8 @@ class CharityInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     /**
      * Sets a new description
      *
-     * This field provides a short description about the nonprofit charity organization's primary purpose. "I want to support" will be added to the beginning of the contents of this field. For example, if the description is "the fight against cancer", then on the checkout page "I want to support the fight against cancer" will be displayed. The description may contain a maximum of 115 characters. This value is returned if set.
-     *  <br/><br/>
+     * This field provides a description about the nonprofit charity organization's primary purpose. "I want to support" will be added to the beginning of the contents of this field. For example, if the description is "the fight against cancer", then on the checkout page "I want to support the fight against cancer" will be displayed. This field is returned if available for the nonprofit organization.
+     *  <br/>
      *
      * @param string $description
      * @return self
@@ -722,7 +714,6 @@ class CharityInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      * Gets as externalID
      *
      * A unique identifier created and used by PayPal Giving Fund to identify a registered nonprofit charity organization. This field is only returned for charities that are registered with PayPal Giving Fund.
-     *  <br/><br/>
      *
      * @return string
      */
@@ -735,7 +726,6 @@ class CharityInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      * Sets a new externalID
      *
      * A unique identifier created and used by PayPal Giving Fund to identify a registered nonprofit charity organization. This field is only returned for charities that are registered with PayPal Giving Fund.
-     *  <br/><br/>
      *
      * @param string $externalID
      * @return self
@@ -775,10 +765,7 @@ class CharityInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     /**
      * Gets as eIN
      *
-     * This value is the Employer Identification Number (EIN) of the nonprofit charity
-     *  organization. A nonprofit company's EIN is used for tax purposes by the Internal
-     *  Revenue Service. This value is returned if the nonprofit organization has an EIN and
-     *  it has been set.
+     * This value is the Employer Identification Number (EIN) of the nonprofit charity organization. A nonprofit company's EIN is used for tax purposes by the Internal Revenue Service. This value is returned if the nonprofit organization has an EIN and it has been set.
      *
      * @return string
      */
@@ -790,10 +777,7 @@ class CharityInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     /**
      * Sets a new eIN
      *
-     * This value is the Employer Identification Number (EIN) of the nonprofit charity
-     *  organization. A nonprofit company's EIN is used for tax purposes by the Internal
-     *  Revenue Service. This value is returned if the nonprofit organization has an EIN and
-     *  it has been set.
+     * This value is the Employer Identification Number (EIN) of the nonprofit charity organization. A nonprofit company's EIN is used for tax purposes by the Internal Revenue Service. This value is returned if the nonprofit organization has an EIN and it has been set.
      *
      * @param string $eIN
      * @return self
@@ -906,11 +890,7 @@ class CharityInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     /**
      * Adds as nonProfitSocialAddress
      *
-     * Container consisting of the nonprofit charity organization's social networking site ID/handle.
-     *  A <b>NonProfitSocialAddress</b> container will exist for each social
-     *  networking site that the charity organization is associated with. Supported social
-     *  networking sites include Facebook, Twitter, LinkedIn, Google+, MySpace, and Orkut. One
-     *  or more of these containers are returned if set.
+     * Container consisting of the nonprofit charity organization's social networking site ID/handle. A <b>NonProfitSocialAddress</b> container will exist for each social networking site that the charity organization is associated with. Supported social networking sites include Facebook, Twitter, LinkedIn, Google+, MySpace, and Orkut. One or more of these containers are returned if set.
      *
      * @return self
      * @param \Nogrod\eBaySDK\MerchantData\NonProfitSocialAddressType $nonProfitSocialAddress
@@ -924,11 +904,7 @@ class CharityInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     /**
      * isset nonProfitSocialAddress
      *
-     * Container consisting of the nonprofit charity organization's social networking site ID/handle.
-     *  A <b>NonProfitSocialAddress</b> container will exist for each social
-     *  networking site that the charity organization is associated with. Supported social
-     *  networking sites include Facebook, Twitter, LinkedIn, Google+, MySpace, and Orkut. One
-     *  or more of these containers are returned if set.
+     * Container consisting of the nonprofit charity organization's social networking site ID/handle. A <b>NonProfitSocialAddress</b> container will exist for each social networking site that the charity organization is associated with. Supported social networking sites include Facebook, Twitter, LinkedIn, Google+, MySpace, and Orkut. One or more of these containers are returned if set.
      *
      * @param int|string $index
      * @return bool
@@ -941,11 +917,7 @@ class CharityInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     /**
      * unset nonProfitSocialAddress
      *
-     * Container consisting of the nonprofit charity organization's social networking site ID/handle.
-     *  A <b>NonProfitSocialAddress</b> container will exist for each social
-     *  networking site that the charity organization is associated with. Supported social
-     *  networking sites include Facebook, Twitter, LinkedIn, Google+, MySpace, and Orkut. One
-     *  or more of these containers are returned if set.
+     * Container consisting of the nonprofit charity organization's social networking site ID/handle. A <b>NonProfitSocialAddress</b> container will exist for each social networking site that the charity organization is associated with. Supported social networking sites include Facebook, Twitter, LinkedIn, Google+, MySpace, and Orkut. One or more of these containers are returned if set.
      *
      * @param int|string $index
      * @return void
@@ -958,11 +930,7 @@ class CharityInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     /**
      * Gets as nonProfitSocialAddress
      *
-     * Container consisting of the nonprofit charity organization's social networking site ID/handle.
-     *  A <b>NonProfitSocialAddress</b> container will exist for each social
-     *  networking site that the charity organization is associated with. Supported social
-     *  networking sites include Facebook, Twitter, LinkedIn, Google+, MySpace, and Orkut. One
-     *  or more of these containers are returned if set.
+     * Container consisting of the nonprofit charity organization's social networking site ID/handle. A <b>NonProfitSocialAddress</b> container will exist for each social networking site that the charity organization is associated with. Supported social networking sites include Facebook, Twitter, LinkedIn, Google+, MySpace, and Orkut. One or more of these containers are returned if set.
      *
      * @return \Nogrod\eBaySDK\MerchantData\NonProfitSocialAddressType[]
      */
@@ -974,11 +942,7 @@ class CharityInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     /**
      * Sets a new nonProfitSocialAddress
      *
-     * Container consisting of the nonprofit charity organization's social networking site ID/handle.
-     *  A <b>NonProfitSocialAddress</b> container will exist for each social
-     *  networking site that the charity organization is associated with. Supported social
-     *  networking sites include Facebook, Twitter, LinkedIn, Google+, MySpace, and Orkut. One
-     *  or more of these containers are returned if set.
+     * Container consisting of the nonprofit charity organization's social networking site ID/handle. A <b>NonProfitSocialAddress</b> container will exist for each social networking site that the charity organization is associated with. Supported social networking sites include Facebook, Twitter, LinkedIn, Google+, MySpace, and Orkut. One or more of these containers are returned if set.
      *
      * @param \Nogrod\eBaySDK\MerchantData\NonProfitSocialAddressType[] $nonProfitSocialAddress
      * @return self

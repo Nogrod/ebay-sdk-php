@@ -14,24 +14,21 @@ class CharityAffiliationDetailType implements \Sabre\Xml\XmlSerializable, \Sabre
 {
 
     /**
-     * The affiliation ID for nonprofit charity organizations
-     *  registered with the PayPal Giving Fund.
+     * The eBay unique identifier of the nonprofit organization associated with the seller's account. Once a nonprofit organization comes aboard as an eBay for Charity organization, eBay creates and assigns this ID to the nonprofit organization.
      *
      * @var string $charityID
      */
     private $charityID = null;
 
     /**
-     * Indicates the affiliation status of the nonprofit charity
-     *  organization registered with the PayPal Giving Fund.
+     * The enumeration value returned here indicates whether the eBay user is just selling on the behalf of the nonprofit organization, or if the eBay user is directly affiliated with/representing the nonprofit organization, or the eBay user has been added as a Direct Seller by the nonprofit organization.
      *
      * @var string $affiliationType
      */
     private $affiliationType = null;
 
     /**
-     * Indicates the affiliation last used date of the nonprofit charity
-     *  organization registered with the PayPal Giving Fund.
+     * This timestamp indicates when the eBay user last contributed to the nonprofit organization through the donated proceeds of an eBay sale.
      *
      * @var \DateTime $lastUsedTime
      */
@@ -40,8 +37,7 @@ class CharityAffiliationDetailType implements \Sabre\Xml\XmlSerializable, \Sabre
     /**
      * Gets as charityID
      *
-     * The affiliation ID for nonprofit charity organizations
-     *  registered with the PayPal Giving Fund.
+     * The eBay unique identifier of the nonprofit organization associated with the seller's account. Once a nonprofit organization comes aboard as an eBay for Charity organization, eBay creates and assigns this ID to the nonprofit organization.
      *
      * @return string
      */
@@ -53,8 +49,7 @@ class CharityAffiliationDetailType implements \Sabre\Xml\XmlSerializable, \Sabre
     /**
      * Sets a new charityID
      *
-     * The affiliation ID for nonprofit charity organizations
-     *  registered with the PayPal Giving Fund.
+     * The eBay unique identifier of the nonprofit organization associated with the seller's account. Once a nonprofit organization comes aboard as an eBay for Charity organization, eBay creates and assigns this ID to the nonprofit organization.
      *
      * @param string $charityID
      * @return self
@@ -68,8 +63,7 @@ class CharityAffiliationDetailType implements \Sabre\Xml\XmlSerializable, \Sabre
     /**
      * Gets as affiliationType
      *
-     * Indicates the affiliation status of the nonprofit charity
-     *  organization registered with the PayPal Giving Fund.
+     * The enumeration value returned here indicates whether the eBay user is just selling on the behalf of the nonprofit organization, or if the eBay user is directly affiliated with/representing the nonprofit organization, or the eBay user has been added as a Direct Seller by the nonprofit organization.
      *
      * @return string
      */
@@ -81,8 +75,7 @@ class CharityAffiliationDetailType implements \Sabre\Xml\XmlSerializable, \Sabre
     /**
      * Sets a new affiliationType
      *
-     * Indicates the affiliation status of the nonprofit charity
-     *  organization registered with the PayPal Giving Fund.
+     * The enumeration value returned here indicates whether the eBay user is just selling on the behalf of the nonprofit organization, or if the eBay user is directly affiliated with/representing the nonprofit organization, or the eBay user has been added as a Direct Seller by the nonprofit organization.
      *
      * @param string $affiliationType
      * @return self
@@ -96,8 +89,7 @@ class CharityAffiliationDetailType implements \Sabre\Xml\XmlSerializable, \Sabre
     /**
      * Gets as lastUsedTime
      *
-     * Indicates the affiliation last used date of the nonprofit charity
-     *  organization registered with the PayPal Giving Fund.
+     * This timestamp indicates when the eBay user last contributed to the nonprofit organization through the donated proceeds of an eBay sale.
      *
      * @return \DateTime
      */
@@ -109,8 +101,7 @@ class CharityAffiliationDetailType implements \Sabre\Xml\XmlSerializable, \Sabre
     /**
      * Sets a new lastUsedTime
      *
-     * Indicates the affiliation last used date of the nonprofit charity
-     *  organization registered with the PayPal Giving Fund.
+     * This timestamp indicates when the eBay user last contributed to the nonprofit organization through the donated proceeds of an eBay sale.
      *
      * @param \DateTime $lastUsedTime
      * @return self

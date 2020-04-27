@@ -5,8 +5,7 @@ namespace Nogrod\eBaySDK\Trading;
 /**
  * Class representing CharityIDType
  *
- * Defines the affiliation status for a nonprofit charity
- *  organization registered with the eBay Giving Works provider.
+ * The type is used to indicate how an eBay seller is affiliated with the nonprofit organization registered with eBay for Charity.
  * XSD Type: CharityIDType
  */
 class CharityIDType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
@@ -18,8 +17,7 @@ class CharityIDType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
     private $__value = null;
 
     /**
-     * Indicates the affiliation status of the nonprofit charity
-     *  organization registered with the eBay Giving Works provider.
+     * This attribute value is used to indicate how an eBay seller is affiliated with the nonprofit organization registered with eBay for Charity.
      *
      * @var string $type
      */
@@ -62,8 +60,7 @@ class CharityIDType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
     /**
      * Gets as type
      *
-     * Indicates the affiliation status of the nonprofit charity
-     *  organization registered with the eBay Giving Works provider.
+     * This attribute value is used to indicate how an eBay seller is affiliated with the nonprofit organization registered with eBay for Charity.
      *
      * @return string
      */
@@ -75,8 +72,7 @@ class CharityIDType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
     /**
      * Sets a new type
      *
-     * Indicates the affiliation status of the nonprofit charity
-     *  organization registered with the eBay Giving Works provider.
+     * This attribute value is used to indicate how an eBay seller is affiliated with the nonprofit organization registered with eBay for Charity.
      *
      * @param string $type
      * @return self

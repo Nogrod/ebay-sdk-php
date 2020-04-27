@@ -14,26 +14,27 @@ class CharityAffiliationTypeCodeType
     /**
      * Constant for 'Community' value.
      *
-     * This enumeration value indicates that the seller is selling to benefit a
-     * nonprofit charity organization identified through the <b>CharityID</b> field.
+     * This enumeration value indicates that the eBay user is just selling on the
+     * behalf of the nonprofit organization, and is not directly affiliated with the
+     * organization.
      */
     public const VAL_COMMUNITY = 'Community';
 
     /**
      * Constant for 'Direct' value.
      *
-     * This enumeration value indicates that the seller is a direct, non-profit
-     * organization registered with the PayPal Giving Fund, and selling to directly
-     * benefit their association.
+     * This enumeration value indicates that the eBay user is directly affiliated with
+     * or represents the nonprofit organization, or the eBay user has been added as a
+     * Direct Seller by the same nonprofit organization.
      */
     public const VAL_DIRECT = 'Direct';
 
     /**
      * Constant for 'Remove' value.
      *
-     * This enumeration value may be returned if a direct, non-profit organization has
-     * recently unregistered with the PayPal Giving Fund, or if a Community Seller has
-     * recently removed the charity feature from a listing.
+     * This enumeration value may be returned if the nonprofit organization has
+     * recently unregistered as an eBay for Charity organization, or it may be returned
+     * if the eBay user has recently removed the charity feature from a listing.
      */
     public const VAL_REMOVE = 'Remove';
 

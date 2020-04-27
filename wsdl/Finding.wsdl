@@ -174,7 +174,7 @@
 										words in context with each other. If you are using a URL request and
 										your keyword query consists of multiple words, use "%20" to separate
 										the words. For example, use "Harry%20Potter" to search for items
-										containing those words in any order. Queries aren't case-sensitive, 
+										containing those words in any order. Queries aren't case-sensitive,
 										so it doesn't matter whether you use uppercase or lowercase letters.
 										&lt;br&gt;&lt;br&gt;
 										You can incorporate wildcards in a multi-word search. For example,
@@ -227,9 +227,9 @@
 							<xs:element minOccurs="0" maxOccurs="unbounded" name="itemFilter" type="tns:ItemFilter">
 								<xs:annotation>
 									<xs:documentation>
-										Reduce the number of items returned by a find request using item 
-										filters. Use &lt;b class="con"&gt;itemFilter&lt;/b&gt; to specify 
-										name/value pairs. You can include multiple item filters in a single 
+										Reduce the number of items returned by a find request using item
+										filters. Use &lt;b class="con"&gt;itemFilter&lt;/b&gt; to specify
+										name/value pairs. You can include multiple item filters in a single
 										request.
 									</xs:documentation>
 									<xs:appinfo>
@@ -495,7 +495,7 @@
 										Contains a spell-checked version of the submitted keywords. If no
 										recommended spelling can be identified for the submitted keywords,
 										the response contains a warning to that effect and an empty keywords
-										field is returned. 
+										field is returned.
 									</xs:documentation>
 									<xs:appinfo>
 										<MaxLength>350</MaxLength>
@@ -553,7 +553,7 @@
 										words in context with each other. If you are using a URL request and
 										your keyword query consists of multiple words, use "%20" to separate
 										the words. For example, use "Harry%20Potter" to search for items
-										containing those words in any order. Queries aren't case-sensitive, 
+										containing those words in any order. Queries aren't case-sensitive,
 										so it doesn't matter whether you use uppercase or lowercase letters.
 										&lt;br&gt;&lt;br&gt;
 										You can incorporate wildcards in a multi-word search. For example,
@@ -580,9 +580,9 @@
 							<xs:element minOccurs="0" maxOccurs="unbounded" name="itemFilter" type="tns:ItemFilter">
 								<xs:annotation>
 									<xs:documentation>
-										Reduce the number of items returned by a find request using item 
-										filters. Use &lt;b class="con"&gt;itemFilter&lt;/b&gt; to specify 
-										name/value pairs. You can include multiple item filters in a single 
+										Reduce the number of items returned by a find request using item
+										filters. Use &lt;b class="con"&gt;itemFilter&lt;/b&gt; to specify
+										name/value pairs. You can include multiple item filters in a single
 										request.
 									</xs:documentation>
 									<xs:appinfo>
@@ -739,8 +739,8 @@
 										That is, only returned when you have not yet narrowed
 										your search based on specific conditions.&lt;br&gt;
 										&lt;br&gt;
-										Supported for all eBay sites except US eBay Motors, 
-										India (IN), Malaysia (MY) and Philippines (PH). 
+										Supported for all eBay sites except US eBay Motors,
+										India (IN), Malaysia (MY) and Philippines (PH).
 										International items that appear in search results
 										are included in a site's histogram counts.
 									</xs:documentation>
@@ -812,9 +812,9 @@
 							<xs:element minOccurs="0" maxOccurs="unbounded" name="itemFilter" type="tns:ItemFilter">
 								<xs:annotation>
 									<xs:documentation>
-										Reduce the number of items returned by a find request using item 
-										filters. Use &lt;b class="con"&gt;itemFilter&lt;/b&gt; to specify 
-										name/value pairs. You can include multiple item filters in a single 
+										Reduce the number of items returned by a find request using item
+										filters. Use &lt;b class="con"&gt;itemFilter&lt;/b&gt; to specify
+										name/value pairs. You can include multiple item filters in a single
 										request.
 									</xs:documentation>
 									<xs:appinfo>
@@ -1031,7 +1031,7 @@
 										words in context with each other. If you are using a URL request and
 										your keyword query consists of multiple words, use "%20" to separate
 										the words. For example, use "Harry%20Potter" to search for items
-										containing those words in any order. Queries aren't case-sensitive, 
+										containing those words in any order. Queries aren't case-sensitive,
 										so it doesn't matter whether you use uppercase or lowercase letters.
 										&lt;br&gt;&lt;br&gt;
 										You can incorporate wildcards in a multi-word search. For example,
@@ -1105,9 +1105,9 @@
 							<xs:element minOccurs="0" maxOccurs="unbounded" name="itemFilter" type="tns:ItemFilter">
 								<xs:annotation>
 									<xs:documentation>
-										Reduce the number of items returned by a find request using item 
-										filters. Use &lt;b class="con"&gt;itemFilter&lt;/b&gt; to specify 
-										name/value pairs. You can include multiple item filters in a single 
+										Reduce the number of items returned by a find request using item
+										filters. Use &lt;b class="con"&gt;itemFilter&lt;/b&gt; to specify
+										name/value pairs. You can include multiple item filters in a single
 										request.
 									</xs:documentation>
 									<xs:appinfo>
@@ -1361,9 +1361,9 @@
 							<xs:element minOccurs="0" maxOccurs="unbounded" name="itemFilter" type="tns:ItemFilter">
 								<xs:annotation>
 									<xs:documentation>
-										Reduce the number of items returned by a find request using item 
-										filters. Use &lt;b class="con"&gt;itemFilter&lt;/b&gt; to specify 
-										name/value pairs. You can include multiple item filters in a single 
+										Reduce the number of items returned by a find request using item
+										filters. Use &lt;b class="con"&gt;itemFilter&lt;/b&gt; to specify
+										name/value pairs. You can include multiple item filters in a single
 										request.
 									</xs:documentation>
 									<xs:appinfo>
@@ -1496,7 +1496,7 @@
 										words in context with each other. If you are using a URL request and
 										your keyword query consists of multiple words, use "%20" to separate
 										the words. For example, use "Harry%20Potter" to search for items
-										containing those words in any order. Queries aren't case-sensitive, 
+										containing those words in any order. Queries aren't case-sensitive,
 										so it doesn't matter whether you use uppercase or lowercase letters.
 										&lt;br&gt;&lt;br&gt;
 										You can incorporate wildcards in a multi-word search. For example,
@@ -1554,9 +1554,9 @@
 							<xs:element minOccurs="0" maxOccurs="unbounded" name="itemFilter" type="tns:ItemFilter">
 								<xs:annotation>
 									<xs:documentation>
-										Reduce the number of items returned by a find request using item 
-										filters. Use &lt;b class="con"&gt;itemFilter&lt;/b&gt; to specify 
-										name/value pairs. You can include multiple item filters in a single 
+										Reduce the number of items returned by a find request using item
+										filters. Use &lt;b class="con"&gt;itemFilter&lt;/b&gt; to specify
+										name/value pairs. You can include multiple item filters in a single
 										request.
 									</xs:documentation>
 									<xs:appinfo>
@@ -1794,10 +1794,10 @@
 								type="xs:string">
 								<xs:annotation>
 									<xs:documentation>
-										Specifies the item that the customer wants to use for retrieving 
-										more listings with similar images. The item must active and it must 
-										be listed in a Clothing, Shoes &amp; Accessories category (parent 
-										category ID 11450 on the eBay US site). 
+										Specifies the item that the customer wants to use for retrieving
+										more listings with similar images. The item must active and it must
+										be listed in a Clothing, Shoes &amp; Accessories category (parent
+										category ID 11450 on the eBay US site).
 									</xs:documentation>
 									<xs:appinfo>
 										<MaxLength>
@@ -1814,19 +1814,19 @@
 								type="xs:string">
 								<xs:annotation>
 									<xs:documentation>
-										Specifies the leaf category from which you want to retrieve item 
-										listings with similar images. If no category is specified, search 
-										results can come from any Clothing, Shoes &amp; Accessories leaf 
-										category. This field can be repeated (up to 3 times) to include 
+										Specifies the leaf category from which you want to retrieve item
+										listings with similar images. If no category is specified, search
+										results can come from any Clothing, Shoes &amp; Accessories leaf
+										category. This field can be repeated (up to 3 times) to include
 										multiple categories.
 										&lt;br&gt;&lt;br&gt;
 										Image similarity searches are only supported in Clothing, Shoes &amp;
-										Accessories leaf categories on the eBay US, UK, and Germany sites. 
+										Accessories leaf categories on the eBay US, UK, and Germany sites.
 										&lt;br&gt;&lt;br&gt;
 										If a specified category ID doesn't match an existing category for the
 										site, eBay returns an invalid-category error message. To determine
-										valid leaf categories, use the Trading API &lt;b 
-										class="con"&gt;GetCategories&lt;/b&gt; call. 
+										valid leaf categories, use the Trading API &lt;b
+										class="con"&gt;GetCategories&lt;/b&gt; call.
 									</xs:documentation>
 									<xs:appinfo>
 										<MaxLength>10</MaxLength>
@@ -1840,9 +1840,9 @@
 							<xs:element minOccurs="0" maxOccurs="unbounded" name="itemFilter" type="tns:ItemFilter">
 								<xs:annotation>
 									<xs:documentation>
-										Reduce the number of items returned by a find request using item 
-										filters. Use &lt;b class="con"&gt;itemFilter&lt;/b&gt; to specify 
-										name/value pairs. You can include multiple item filters in a single 
+										Reduce the number of items returned by a find request using item
+										filters. Use &lt;b class="con"&gt;itemFilter&lt;/b&gt; to specify
+										name/value pairs. You can include multiple item filters in a single
 										request.
 									</xs:documentation>
 									<xs:appinfo>
@@ -1963,7 +1963,7 @@
 										&lt;span class="tablenote"&gt;&lt;strong&gt;Note:&lt;/strong&gt;
 										 The category IDs returned for items in search results are for the
 										 leaf categories in which the items are listed. If you use these
-										 category IDs as input, the response will not return a category 
+										 category IDs as input, the response will not return a category
 										 histogram.
 										&lt;/span&gt;
 										&lt;br&gt;&lt;br&gt;
@@ -2010,7 +2010,7 @@
 								</xs:annotation>
 							</xs:element>
 						</xs:sequence>
-					</xs:extension>					
+					</xs:extension>
 				</xs:complexContent>
 			</xs:complexType>
 
@@ -2197,8 +2197,8 @@
 										class="con"&gt;MaxDistance&lt;/b&gt; and &lt;b
 										class="con"&gt;LocalSearch&lt;/b&gt;.
 										&lt;br&gt;&lt;br&gt;
-										&lt;b&gt;Note: &lt;/b&gt; To get the accurate shipping cost for items 
-										listed using a rate table, you &lt;i&gt;must&lt;/i&gt; include 
+										&lt;b&gt;Note: &lt;/b&gt; To get the accurate shipping cost for items
+										listed using a rate table, you &lt;i&gt;must&lt;/i&gt; include
 										&lt;b&gt;buyerPostalCode&lt;/b&gt; in the request.
 									</xs:documentation>
 									<xs:appinfo>
@@ -2464,7 +2464,7 @@
 							namespace="https://www.ebay.com/marketplace/search/v1/services">
 						</typeLibrarySource>
 					</xs:appinfo>
-				</xs:annotation>		
+				</xs:annotation>
 				<xs:sequence>
 					<xs:element minOccurs="0" name="trackingId" type="xs:string">
 						<xs:annotation>
@@ -3120,7 +3120,7 @@
 					</xs:enumeration>
 				</xs:restriction>
 		</xs:simpleType>
-	
+
 		<xs:simpleType name="PriceTreatmentEnum">
 				<xs:annotation>
 					<xs:documentation />
@@ -3147,7 +3147,7 @@
 					</xs:enumeration>
 				</xs:restriction>
 		</xs:simpleType>
-	
+
 			<xs:complexType name="DomainFilter">
 				<xs:annotation>
 					<xs:documentation>
@@ -3508,54 +3508,8 @@
 					<xs:element name="name" type="tns:ItemFilterType" maxOccurs="1" minOccurs="1">
 						<xs:annotation>
 							<xs:documentation>
-								Specify the name of the item filter you want to use. The itemFilter name
-								must have a corresponding value. You can apply multiple itemFilter
-								Name/Value pairs in a single request.
-								&lt;br&gt;&lt;br&gt;
-								&lt;b&gt;Item Filter Names&lt;/b&gt;:
-								&lt;br&gt;&lt;br&gt;
-								&lt;ul&gt;
-								&lt;li&gt;AvailableTo&lt;/li&gt;
-								&lt;li&gt;BestOfferOnly&lt;/li&gt;
-								&lt;li&gt;CharityOnly&lt;/li&gt;
-								&lt;li&gt;Condition&lt;/li&gt;
-								&lt;li&gt;Currency&lt;/li&gt;
-								&lt;li&gt;EndTimeFrom&lt;/li&gt;
-								&lt;li&gt;EndTimeTo&lt;/li&gt;
-								&lt;li&gt;ExcludeAutoPay&lt;/li&gt;
-								&lt;li&gt;ExcludeCategory&lt;/li&gt;
-								&lt;li&gt;ExcludeSeller&lt;/li&gt;
-								&lt;li&gt;ExpeditedShippingType&lt;/li&gt;
-								&lt;li&gt;FeaturedOnly&lt;/li&gt;
-								&lt;li&gt;FeedbackScoreMax&lt;/li&gt;
-								&lt;li&gt;FeedbackScoreMin&lt;/li&gt;
-								&lt;li&gt;FreeShippingOnly&lt;/li&gt;
-								&lt;li&gt;GetItFastOnly&lt;/li&gt;
-								&lt;li&gt;HideDuplicateItems&lt;/li&gt;
-								&lt;li&gt;ListedIn&lt;/li&gt;
-								&lt;li&gt;ListingType&lt;/li&gt;
-								&lt;li&gt;LocalPickupOnly&lt;/li&gt;
-								&lt;li&gt;LocalSearchOnly&lt;/li&gt;
-								&lt;li&gt;LocatedIn&lt;/li&gt;
-								&lt;li&gt;LotsOnly&lt;/li&gt;
-								&lt;li&gt;MaxBids&lt;/li&gt;
-								&lt;li&gt;MaxDistance&lt;/li&gt;
-								&lt;li&gt;MaxHandlingTime&lt;/li&gt;
-								&lt;li&gt;MaxPrice&lt;/li&gt;
-								&lt;li&gt;MaxQuantity&lt;/li&gt;
-								&lt;li&gt;MinBids&lt;/li&gt;
-								&lt;li&gt;MinPrice&lt;/li&gt;
-								&lt;li&gt;MinQuantity&lt;/li&gt;
-								&lt;li&gt;ModTimeFrom&lt;/li&gt;
-								&lt;li&gt;PaymentMethod&lt;/li&gt;
-								&lt;li&gt;ReturnsAcceptedOnly&lt;/li&gt;
-								&lt;li&gt;Seller&lt;/li&gt;
-								&lt;li&gt;SellerBusinessType&lt;/li&gt;
-								&lt;li&gt;TopRatedSellerOnly&lt;/li&gt;
-								&lt;li&gt;ValueBoxInventory&lt;/li&gt;
-								&lt;li&gt;WorldOfGoodOnly&lt;/li&gt;
-								&lt;/ul&gt;
-
+								Specify the name of the item filter you want to use. The filter type specified in the &lt;b&gt;itemFilter.name&lt;/b&gt; field must have a corresponding value. You can apply multiple &lt;b&gt;itemFilter&lt;/b&gt;
+								name/value pairs in a single request. See &lt;b&gt;ItemFilterType&lt;/b&gt; for more information on the available filters and the values supported/associated with each filter type.
 							</xs:documentation>
 							<xs:appinfo>
 								<CallInfo>
@@ -5552,7 +5506,7 @@
 							</xs:documentation>
 						</xs:annotation>
 					</xs:enumeration>
-					
+
 					<xs:enumeration value="StartTimeTo">
 						<xs:annotation>
 							<xs:documentation>
@@ -5572,7 +5526,7 @@
 
 	</xs:simpleType><xs:complexType name="UnitPriceInfo">
 		<xs:annotation>
-			<xs:documentation> 
+			<xs:documentation>
 				This type contains the type (e.g kg,lb) and quantity of the unit.
 			</xs:documentation>
 		<xs:appinfo><typeLibrarySource library="SearchTypeLibrary" namespace="http://www.ebay.com/marketplace/search/v1/services"></typeLibrarySource></xs:appinfo></xs:annotation>
@@ -5885,21 +5839,21 @@
 							&lt;b&gt;In condition histograms:&lt;/b&gt; If you search against
 							a specific category and some items match based on their
 							secondary category, the histogram only shows the display name
-							if the secondary category supports the condition. 
+							if the secondary category supports the condition.
 							(Condition IDs and names are dependent on the primary category.)
-							However, the histogram shows the condition ID and item counts. 
-							This should only occur in a very small percent of results. 
-							Histograms may support display names in these cases later in 2011. 
-							As a workaround, you can fill in the missing name based on the 
-							"Item Condition IDs and Names" (link below) or based on 
+							However, the histogram shows the condition ID and item counts.
+							This should only occur in a very small percent of results.
+							Histograms may support display names in these cases later in 2011.
+							As a workaround, you can fill in the missing name based on the
+							"Item Condition IDs and Names" (link below) or based on
 							the condition from an applicable item in the results.&lt;br&gt;
 							&lt;br&gt;
-							For example, suppose a seller lists a concert T-shirt in a 
-							clothing category with the condition "New without tags" (1500), 
-							and also in a music accessories secondary category (where 
-							"New without tags" isn't a recognized condition). 
-							If you specify the music accessories category in your request, 
-							the condition ID (1500) is shown in the histogram, but not the 
+							For example, suppose a seller lists a concert T-shirt in a
+							clothing category with the condition "New without tags" (1500),
+							and also in a music accessories secondary category (where
+							"New without tags" isn't a recognized condition).
+							If you specify the music accessories category in your request,
+							the condition ID (1500) is shown in the histogram, but not the
 							display name. However, the display name is shown within the items.
 						</xs:documentation>
 						<xs:appinfo>
@@ -5976,7 +5930,7 @@
 						<xs:element name="galleryURL" minOccurs="1" maxOccurs="3" type="tns:GalleryURL">
 							<xs:annotation>
 								<xs:documentation>
-										URL for a single item image thumbnail of a specific size. 
+										URL for a single item image thumbnail of a specific size.
 								</xs:documentation>
 								<xs:appinfo>
 									<CallInfo>
@@ -6038,8 +5992,8 @@
 						<xs:attribute name="gallerySize" use="required" type="tns:GallerySizeEnum">
 							<xs:annotation>
 								<xs:documentation>
-									Relative size (Large, Medium, or Small) of the image thumbnail for the 
-									item. 
+									Relative size (Large, Medium, or Small) of the image thumbnail for the
+									item.
 								</xs:documentation>
 								<xs:appinfo>
 									<CallInfo>
@@ -6497,8 +6451,8 @@
 					<xs:element minOccurs="0" name="galleryURL" type="xs:anyURI">
 						<xs:annotation>
 							<xs:documentation>
-								URL for the Gallery thumbnail image. Returned only if the seller 
-								uploaded images for the item or the item was listed using a product 
+								URL for the Gallery thumbnail image. Returned only if the seller
+								uploaded images for the item or the item was listed using a product
 								identifier.
 							</xs:documentation>
 							<xs:appinfo>
@@ -6519,10 +6473,10 @@
 					<xs:element minOccurs="0" name="galleryInfoContainer" type="tns:GalleryInfoContainer">
 						<xs:annotation>
 							<xs:documentation>
-								Contains three URLs for item thumbnail images in standard sizes. Not 
-								returned if the item has no images. That is, if the item was not listed 
-								using a product identifier and the seller has not uploaded images, the 
-								container will not be returned, even when the outputSelector is set to 
+								Contains three URLs for item thumbnail images in standard sizes. Not
+								returned if the item has no images. That is, if the item was not listed
+								using a product identifier and the seller has not uploaded images, the
+								container will not be returned, even when the outputSelector is set to
 								GalleryInfo.
 							</xs:documentation>
 							<xs:appinfo>
@@ -6582,7 +6536,7 @@
 							</xs:appinfo>
 						</xs:annotation>
 					</xs:element>
-					
+
 					<xs:element minOccurs="0" name="charityId" type="xs:string">
 						<xs:annotation>
 							<xs:documentation>
@@ -6721,8 +6675,8 @@
 						<xs:annotation>
 							<xs:documentation>
 								The postal code where the listed item is located. This field is returned
-								only if a postal code has been specified by the seller. Sellers set a postal code 
-								(or zip code in US) for items when they are listed. The postal code is used for 
+								only if a postal code has been specified by the seller. Sellers set a postal code
+								(or zip code in US) for items when they are listed. The postal code is used for
 								calculating proximity searches. It is anonymized when returned via the API.
 								&lt;br&gt;&lt;br&gt;eBay proximity and local search behavior can use the combination of buyerPostalCode and postalCode values.
 							</xs:documentation>
@@ -6918,10 +6872,10 @@
 						<xs:annotation>
 							<xs:documentation>
 								URL for the Gallery Plus image. The size of Gallery Plus images (up to
-								500 pixels on the longest side) is bigger than the size of standard 
-								gallery images. In site search results, you can view the Gallery Plus 
-								image by hovering over or clicking the Enlarge link or magifying glass 
-								icon. This field is only returned when the seller has opted for 
+								500 pixels on the longest side) is bigger than the size of standard
+								gallery images. In site search results, you can view the Gallery Plus
+								image by hovering over or clicking the Enlarge link or magifying glass
+								icon. This field is only returned when the seller has opted for
 								the Gallery Plus option for the given item.
 							</xs:documentation>
 							<xs:appinfo>
@@ -7160,7 +7114,7 @@
 					<xs:element minOccurs="0" name="topRatedListing" type="xs:boolean">
 						<xs:annotation>
 							<xs:documentation>
-								Indicates whether the item is Top Rated Plus item. A top rated plus 
+								Indicates whether the item is Top Rated Plus item. A top rated plus
 								item:
 								&lt;ul&gt;
 								&lt;li&gt; is listed by experienced sellers with highest buyer 								ratings;/li&gt;
@@ -7210,7 +7164,7 @@
 					<xs:element minOccurs="0" name="eBayPlusEnabled" type="xs:boolean">
 						<xs:annotation>
 							<xs:documentation>
-								Indicates whether the item is ebayPlus item. A eBayPlus 
+								Indicates whether the item is ebayPlus item. A eBayPlus
 								item:
 								&lt;ul&gt;
 								&lt;li&gt; Cassini returns the ebayPlus flag;/li&gt;
@@ -7446,12 +7400,12 @@
 							</xs:appinfo>
 						</xs:annotation>
 					</xs:element>
-						
+
 					<xs:sequence minOccurs="0">
 						<xs:element name="delimiter" type="xs:string"/>
 						<xs:any processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
 					</xs:sequence>
-					
+
 				</xs:sequence>
   			</xs:complexType>
   			<xs:complexType name="SellingStatus">
@@ -7845,18 +7799,18 @@
 							</xs:appinfo>
 						</xs:annotation>
 					</xs:element>
-	
+
 					<xs:element minOccurs="0" name="intermediatedShipping" type="xs:boolean">
 						<xs:annotation>
 							<xs:documentation>
 							</xs:documentation>
 						</xs:annotation>
-					</xs:element>	
+					</xs:element>
 					<xs:sequence minOccurs="0">
 						<xs:element name="delimiter" type="xs:string"/>
 						<xs:any processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
 					</xs:sequence>
-								
+
 				</xs:sequence>
 			</xs:complexType><xs:complexType name="Storefront">
 				<xs:annotation>
@@ -7920,7 +7874,7 @@
 
 <xs:complexType name="ItemAttribute">
 		<xs:annotation>
-			<xs:documentation> 
+			<xs:documentation>
 				This type contains the item attribute name and value.
 			</xs:documentation>
 		<xs:appinfo><typeLibrarySource library="SearchTypeLibrary" namespace="http://www.ebay.com/marketplace/search/v1/services"></typeLibrarySource></xs:appinfo></xs:annotation>

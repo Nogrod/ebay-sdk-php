@@ -116,13 +116,13 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     private $categoryMappingAllowed = null;
 
     /**
-     * This container identifies the nonprofit organization that will benefit with a percentage of the proceeds from the sale of an item through an auction or fixed-price listing. Charity names and IDs can be found by going to <a href="https://charity.ebay.com/charity-auctions/my-causes" target="_blank">eBay for Charity</a> page and doing a search for a charity registered with the PayPal Giving Fund. The donation percentage can be set in 5 percent increments from 10 percent to 100 percent. If a benefitting charity is specified, the seller must also accept PayPal as a payment method for the item (see <b>Item.PaymentMethods</b>).
+     * This container identifies the nonprofit organization that will benefit with a percentage of the proceeds from each sale of an item through an auction or fixed-price listing. Charity names and IDs can be found by going to <a href="https://charity.ebay.com/charity-auctions/my-causes" target="_blank">eBay for Charity</a> page and doing a search, or by doing a search with the <b>GetCharities</b> call. The donation percentage can be set in 5 percent increments from 10 percent to 100 percent. For all charitable listings, PayPal must be an accepted payment method(see <b>Item.PaymentMethods</b>).
      *  <br><br>
      *  When it comes to revising an auction or fixed-price listing, you can add a benefitting charity (as long as there is at least 12 hours left before end of listing/close of auction), but you cannot remove or change a nonprofit company once one is already established in the original listing.
      *  <br><br>
      *  <b>For Revise calls</b>: The non-profit organization and donation percentage can now be modified in a Revise call as long as there are no active bids on an auction listing, or no pending Best Offers/Counter Offers on a listing.
      *  <br><br>
-     *  This container will only be returned in Get calls for listings that will benefit a nonprofit organization if the item sells.
+     *  This container will only be returned in Get calls for charitable listings. Charitable listings are only supported in the US and UK marketplaces.
      *
      * @var \Nogrod\eBaySDK\MerchantData\CharityType $charity
      */
@@ -1079,7 +1079,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <b>Item.Location</b>. If you specify <b>PostalCode</b>, but do not specify <b>Item.Location</b>,
      *  then <b>Item.Location</b> is given a default value derived from the postal code.
      *  <br><br>
-     *  <span class="tablenote"><b>Note:</b> Beginning in late January 2020, the displayed postal code returned in <b>GetItem</b> will be masked to all users except for the seller of the item. Different countries will mask postal/zip codes in slightly different ways, but an example would be <code>951**</code>.
+     *  <span class="tablenote"><b>Note:</b> As of late January 2020, the displayed postal code returned in <b>GetItem</b> is now masked to all users except for the seller of the item. Different countries will mask postal/zip codes in slightly different ways, but an example would be <code>951**</code>.
      *  </span>
      *
      * @var string $postalCode
@@ -2397,13 +2397,13 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Gets as charity
      *
-     * This container identifies the nonprofit organization that will benefit with a percentage of the proceeds from the sale of an item through an auction or fixed-price listing. Charity names and IDs can be found by going to <a href="https://charity.ebay.com/charity-auctions/my-causes" target="_blank">eBay for Charity</a> page and doing a search for a charity registered with the PayPal Giving Fund. The donation percentage can be set in 5 percent increments from 10 percent to 100 percent. If a benefitting charity is specified, the seller must also accept PayPal as a payment method for the item (see <b>Item.PaymentMethods</b>).
+     * This container identifies the nonprofit organization that will benefit with a percentage of the proceeds from each sale of an item through an auction or fixed-price listing. Charity names and IDs can be found by going to <a href="https://charity.ebay.com/charity-auctions/my-causes" target="_blank">eBay for Charity</a> page and doing a search, or by doing a search with the <b>GetCharities</b> call. The donation percentage can be set in 5 percent increments from 10 percent to 100 percent. For all charitable listings, PayPal must be an accepted payment method(see <b>Item.PaymentMethods</b>).
      *  <br><br>
      *  When it comes to revising an auction or fixed-price listing, you can add a benefitting charity (as long as there is at least 12 hours left before end of listing/close of auction), but you cannot remove or change a nonprofit company once one is already established in the original listing.
      *  <br><br>
      *  <b>For Revise calls</b>: The non-profit organization and donation percentage can now be modified in a Revise call as long as there are no active bids on an auction listing, or no pending Best Offers/Counter Offers on a listing.
      *  <br><br>
-     *  This container will only be returned in Get calls for listings that will benefit a nonprofit organization if the item sells.
+     *  This container will only be returned in Get calls for charitable listings. Charitable listings are only supported in the US and UK marketplaces.
      *
      * @return \Nogrod\eBaySDK\MerchantData\CharityType
      */
@@ -2415,13 +2415,13 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Sets a new charity
      *
-     * This container identifies the nonprofit organization that will benefit with a percentage of the proceeds from the sale of an item through an auction or fixed-price listing. Charity names and IDs can be found by going to <a href="https://charity.ebay.com/charity-auctions/my-causes" target="_blank">eBay for Charity</a> page and doing a search for a charity registered with the PayPal Giving Fund. The donation percentage can be set in 5 percent increments from 10 percent to 100 percent. If a benefitting charity is specified, the seller must also accept PayPal as a payment method for the item (see <b>Item.PaymentMethods</b>).
+     * This container identifies the nonprofit organization that will benefit with a percentage of the proceeds from each sale of an item through an auction or fixed-price listing. Charity names and IDs can be found by going to <a href="https://charity.ebay.com/charity-auctions/my-causes" target="_blank">eBay for Charity</a> page and doing a search, or by doing a search with the <b>GetCharities</b> call. The donation percentage can be set in 5 percent increments from 10 percent to 100 percent. For all charitable listings, PayPal must be an accepted payment method(see <b>Item.PaymentMethods</b>).
      *  <br><br>
      *  When it comes to revising an auction or fixed-price listing, you can add a benefitting charity (as long as there is at least 12 hours left before end of listing/close of auction), but you cannot remove or change a nonprofit company once one is already established in the original listing.
      *  <br><br>
      *  <b>For Revise calls</b>: The non-profit organization and donation percentage can now be modified in a Revise call as long as there are no active bids on an auction listing, or no pending Best Offers/Counter Offers on a listing.
      *  <br><br>
-     *  This container will only be returned in Get calls for listings that will benefit a nonprofit organization if the item sells.
+     *  This container will only be returned in Get calls for charitable listings. Charitable listings are only supported in the US and UK marketplaces.
      *
      * @param \Nogrod\eBaySDK\MerchantData\CharityType $charity
      * @return self
@@ -5412,7 +5412,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <b>Item.Location</b>. If you specify <b>PostalCode</b>, but do not specify <b>Item.Location</b>,
      *  then <b>Item.Location</b> is given a default value derived from the postal code.
      *  <br><br>
-     *  <span class="tablenote"><b>Note:</b> Beginning in late January 2020, the displayed postal code returned in <b>GetItem</b> will be masked to all users except for the seller of the item. Different countries will mask postal/zip codes in slightly different ways, but an example would be <code>951**</code>.
+     *  <span class="tablenote"><b>Note:</b> As of late January 2020, the displayed postal code returned in <b>GetItem</b> is now masked to all users except for the seller of the item. Different countries will mask postal/zip codes in slightly different ways, but an example would be <code>951**</code>.
      *  </span>
      *
      * @return string
@@ -5431,7 +5431,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <b>Item.Location</b>. If you specify <b>PostalCode</b>, but do not specify <b>Item.Location</b>,
      *  then <b>Item.Location</b> is given a default value derived from the postal code.
      *  <br><br>
-     *  <span class="tablenote"><b>Note:</b> Beginning in late January 2020, the displayed postal code returned in <b>GetItem</b> will be masked to all users except for the seller of the item. Different countries will mask postal/zip codes in slightly different ways, but an example would be <code>951**</code>.
+     *  <span class="tablenote"><b>Note:</b> As of late January 2020, the displayed postal code returned in <b>GetItem</b> is now masked to all users except for the seller of the item. Different countries will mask postal/zip codes in slightly different ways, but an example would be <code>951**</code>.
      *  </span>
      *
      * @param string $postalCode

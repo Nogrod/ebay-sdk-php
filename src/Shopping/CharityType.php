@@ -7,14 +7,14 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing CharityType
  *
- * This type is used to provide details about a nonprofit organization registered with the PayPal Giving Fund. This type is used by the <b>Charity</b> container that is returned in <b>GetSingleItem</b> and <b>GetMultipleItems</b> if the proceeds of an eBay listing go towards benefiting a nonprofit organization.
+ * This type is used to provide details about a nonprofit organization registered with eBay for Charity. This type is used by the <b>Charity</b> container that is returned in <b>GetSingleItem</b> and <b>GetMultipleItems</b> if the sale proceeds of an eBay listing go towards benefiting a nonprofit organization.
  * XSD Type: CharityType
  */
 class CharityType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
 
     /**
-     * This identifier is assigned to the nonprofit organization when the organization registers with the PayPal Giving Fund. This identifier should not be confused with the <b>CharityNumber</b> value, which is the nonprofit organization's globally unique identifier.
+     * The unique identifier that eBay creates and assigns to each nonprofit organization that is registered with eBay for Charity. This is the unique identifier that should be used if the user wishes to retrieve more details on a nonprofit organization by using the Trading API's lt;b>GetCharities</b> call, or used by a seller in an Add/Revise/Relist call when they want to identify the nonprofit organization that will receive sale proceeds for a listing.
      *
      * @var string $charityID
      */
@@ -22,14 +22,19 @@ class CharityType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
 
     /**
      * The name of the benefiting nonprofit organization selected by the
-     *  charity seller.
+     *  charity seller to receive sale proceeds for the listing.
      *
      * @var string $charityName
      */
     private $charityName = null;
 
     /**
-     * This value is the globally unique identifier for the nonprofit organization. This identifier should not be confused with the <b>CharityID</b> value, which is the unique identifier that the PayPal Giving Fund assigns to the nonprofit organization.
+     * The unique identifier that the PayPal Giving Fund assigns to each nonprofit organization that registers with eBay for Charity.
+     *  <br>
+     *  <br>
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  The <b>CharityNumber</b> field has been scheduled for deprecation. It is the <b>CharityID</b> value that should be used instead if the user wishes to retrieve more details on a nonprofit organization by using the Trading API's <b>GetCharities</b> call, or used by a seller in an Add/Revise/Relist call when they want to identify the nonprofit organization that will receive sale proceeds for a listing.
+     *  </span>
      *
      * @var int $charityNumber
      */
@@ -64,7 +69,7 @@ class CharityType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
     private $charityListing = null;
 
     /**
-     * The enumeration value in this field indicates the current status of the nonprofit organization in accordance with the PayPal Giving Fund requirements.
+     * This enumeration value indicates whether or not the nonprofit organization is a valid eBay for Charity organization, and is able to receive proceeds from eBay sales.
      *
      * @var string $status
      */
@@ -73,7 +78,7 @@ class CharityType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
     /**
      * Gets as charityID
      *
-     * This identifier is assigned to the nonprofit organization when the organization registers with the PayPal Giving Fund. This identifier should not be confused with the <b>CharityNumber</b> value, which is the nonprofit organization's globally unique identifier.
+     * The unique identifier that eBay creates and assigns to each nonprofit organization that is registered with eBay for Charity. This is the unique identifier that should be used if the user wishes to retrieve more details on a nonprofit organization by using the Trading API's lt;b>GetCharities</b> call, or used by a seller in an Add/Revise/Relist call when they want to identify the nonprofit organization that will receive sale proceeds for a listing.
      *
      * @return string
      */
@@ -85,7 +90,7 @@ class CharityType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
     /**
      * Sets a new charityID
      *
-     * This identifier is assigned to the nonprofit organization when the organization registers with the PayPal Giving Fund. This identifier should not be confused with the <b>CharityNumber</b> value, which is the nonprofit organization's globally unique identifier.
+     * The unique identifier that eBay creates and assigns to each nonprofit organization that is registered with eBay for Charity. This is the unique identifier that should be used if the user wishes to retrieve more details on a nonprofit organization by using the Trading API's lt;b>GetCharities</b> call, or used by a seller in an Add/Revise/Relist call when they want to identify the nonprofit organization that will receive sale proceeds for a listing.
      *
      * @param string $charityID
      * @return self
@@ -100,7 +105,7 @@ class CharityType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
      * Gets as charityName
      *
      * The name of the benefiting nonprofit organization selected by the
-     *  charity seller.
+     *  charity seller to receive sale proceeds for the listing.
      *
      * @return string
      */
@@ -113,7 +118,7 @@ class CharityType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
      * Sets a new charityName
      *
      * The name of the benefiting nonprofit organization selected by the
-     *  charity seller.
+     *  charity seller to receive sale proceeds for the listing.
      *
      * @param string $charityName
      * @return self
@@ -127,7 +132,12 @@ class CharityType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
     /**
      * Gets as charityNumber
      *
-     * This value is the globally unique identifier for the nonprofit organization. This identifier should not be confused with the <b>CharityID</b> value, which is the unique identifier that the PayPal Giving Fund assigns to the nonprofit organization.
+     * The unique identifier that the PayPal Giving Fund assigns to each nonprofit organization that registers with eBay for Charity.
+     *  <br>
+     *  <br>
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  The <b>CharityNumber</b> field has been scheduled for deprecation. It is the <b>CharityID</b> value that should be used instead if the user wishes to retrieve more details on a nonprofit organization by using the Trading API's <b>GetCharities</b> call, or used by a seller in an Add/Revise/Relist call when they want to identify the nonprofit organization that will receive sale proceeds for a listing.
+     *  </span>
      *
      * @return int
      */
@@ -139,7 +149,12 @@ class CharityType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
     /**
      * Sets a new charityNumber
      *
-     * This value is the globally unique identifier for the nonprofit organization. This identifier should not be confused with the <b>CharityID</b> value, which is the unique identifier that the PayPal Giving Fund assigns to the nonprofit organization.
+     * The unique identifier that the PayPal Giving Fund assigns to each nonprofit organization that registers with eBay for Charity.
+     *  <br>
+     *  <br>
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  The <b>CharityNumber</b> field has been scheduled for deprecation. It is the <b>CharityID</b> value that should be used instead if the user wishes to retrieve more details on a nonprofit organization by using the Trading API's <b>GetCharities</b> call, or used by a seller in an Add/Revise/Relist call when they want to identify the nonprofit organization that will receive sale proceeds for a listing.
+     *  </span>
      *
      * @param int $charityNumber
      * @return self
@@ -257,7 +272,7 @@ class CharityType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
     /**
      * Gets as status
      *
-     * The enumeration value in this field indicates the current status of the nonprofit organization in accordance with the PayPal Giving Fund requirements.
+     * This enumeration value indicates whether or not the nonprofit organization is a valid eBay for Charity organization, and is able to receive proceeds from eBay sales.
      *
      * @return string
      */
@@ -269,7 +284,7 @@ class CharityType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
     /**
      * Sets a new status
      *
-     * The enumeration value in this field indicates the current status of the nonprofit organization in accordance with the PayPal Giving Fund requirements.
+     * This enumeration value indicates whether or not the nonprofit organization is a valid eBay for Charity organization, and is able to receive proceeds from eBay sales.
      *
      * @param string $status
      * @return self

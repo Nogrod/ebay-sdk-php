@@ -150,6 +150,9 @@ class SimpleItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
 
     /**
      * This string value is the postal code (or zip code) of the item's physical location. Knowing the location gives the buyer a general indication of where the item will be shipped from, and if calculated shipping is used, shipping charges may be higher the further away that the buyer resides from the shipping location.
+     *  <br><br>
+     *  <span class="tablenote"><b>Note:</b> As of late January 2020, the displayed postal code returned in <b>GetSingleItem</b> and <b>GetMultipleItems</b> is now masked to all users except for the seller of the item. Different countries will mask postal/zip codes in slightly different ways, but an example would be <code>951**</code>.
+     *  </span>
      *
      * @var string $postalCode
      */
@@ -395,7 +398,7 @@ class SimpleItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
     private $secondaryCategoryIDPath = null;
 
     /**
-     * This container is returned if any percentage of the sales proceeds is going to a nonprofit organization registered with the PayPal Giving Fund. This container consists of details related to the nonprofit charity organization, including the name and identifier of the charity, as well as the percentage rate of the sale proceeds that will go to the charity for each sale.
+     * This container is returned if any percentage of the sales proceeds is going to a nonprofit organization that is registered with eBay for Charity. This container consists of details related to the nonprofit charity organization, including the name, mission, and unique identifier of the charity, as well as the percentage rate of the sale proceeds that will go to the charity for each sale.
      *  <br>
      *  <br>
      *  This container is not returned for non-charitable listings.
@@ -1385,6 +1388,9 @@ class SimpleItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      * Gets as postalCode
      *
      * This string value is the postal code (or zip code) of the item's physical location. Knowing the location gives the buyer a general indication of where the item will be shipped from, and if calculated shipping is used, shipping charges may be higher the further away that the buyer resides from the shipping location.
+     *  <br><br>
+     *  <span class="tablenote"><b>Note:</b> As of late January 2020, the displayed postal code returned in <b>GetSingleItem</b> and <b>GetMultipleItems</b> is now masked to all users except for the seller of the item. Different countries will mask postal/zip codes in slightly different ways, but an example would be <code>951**</code>.
+     *  </span>
      *
      * @return string
      */
@@ -1397,6 +1403,9 @@ class SimpleItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      * Sets a new postalCode
      *
      * This string value is the postal code (or zip code) of the item's physical location. Knowing the location gives the buyer a general indication of where the item will be shipped from, and if calculated shipping is used, shipping charges may be higher the further away that the buyer resides from the shipping location.
+     *  <br><br>
+     *  <span class="tablenote"><b>Note:</b> As of late January 2020, the displayed postal code returned in <b>GetSingleItem</b> and <b>GetMultipleItems</b> is now masked to all users except for the seller of the item. Different countries will mask postal/zip codes in slightly different ways, but an example would be <code>951**</code>.
+     *  </span>
      *
      * @param string $postalCode
      * @return self
@@ -2294,7 +2303,7 @@ class SimpleItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
     /**
      * Gets as charity
      *
-     * This container is returned if any percentage of the sales proceeds is going to a nonprofit organization registered with the PayPal Giving Fund. This container consists of details related to the nonprofit charity organization, including the name and identifier of the charity, as well as the percentage rate of the sale proceeds that will go to the charity for each sale.
+     * This container is returned if any percentage of the sales proceeds is going to a nonprofit organization that is registered with eBay for Charity. This container consists of details related to the nonprofit charity organization, including the name, mission, and unique identifier of the charity, as well as the percentage rate of the sale proceeds that will go to the charity for each sale.
      *  <br>
      *  <br>
      *  This container is not returned for non-charitable listings.
@@ -2309,7 +2318,7 @@ class SimpleItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
     /**
      * Sets a new charity
      *
-     * This container is returned if any percentage of the sales proceeds is going to a nonprofit organization registered with the PayPal Giving Fund. This container consists of details related to the nonprofit charity organization, including the name and identifier of the charity, as well as the percentage rate of the sale proceeds that will go to the charity for each sale.
+     * This container is returned if any percentage of the sales proceeds is going to a nonprofit organization that is registered with eBay for Charity. This container consists of details related to the nonprofit charity organization, including the name, mission, and unique identifier of the charity, as well as the percentage rate of the sale proceeds that will go to the charity for each sale.
      *  <br>
      *  <br>
      *  This container is not returned for non-charitable listings.

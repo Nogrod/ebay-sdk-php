@@ -48,53 +48,8 @@ class ItemFilterType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
     private $paramValue = null;
 
     /**
-     * Specify the name of the item filter you want to use. The itemFilter name
-     *  must have a corresponding value. You can apply multiple itemFilter
-     *  Name/Value pairs in a single request.
-     *  <br><br>
-     *  <b>Item Filter Names</b>:
-     *  <br><br>
-     *  <ul>
-     *  <li>AvailableTo</li>
-     *  <li>BestOfferOnly</li>
-     *  <li>CharityOnly</li>
-     *  <li>Condition</li>
-     *  <li>Currency</li>
-     *  <li>EndTimeFrom</li>
-     *  <li>EndTimeTo</li>
-     *  <li>ExcludeAutoPay</li>
-     *  <li>ExcludeCategory</li>
-     *  <li>ExcludeSeller</li>
-     *  <li>ExpeditedShippingType</li>
-     *  <li>FeaturedOnly</li>
-     *  <li>FeedbackScoreMax</li>
-     *  <li>FeedbackScoreMin</li>
-     *  <li>FreeShippingOnly</li>
-     *  <li>GetItFastOnly</li>
-     *  <li>HideDuplicateItems</li>
-     *  <li>ListedIn</li>
-     *  <li>ListingType</li>
-     *  <li>LocalPickupOnly</li>
-     *  <li>LocalSearchOnly</li>
-     *  <li>LocatedIn</li>
-     *  <li>LotsOnly</li>
-     *  <li>MaxBids</li>
-     *  <li>MaxDistance</li>
-     *  <li>MaxHandlingTime</li>
-     *  <li>MaxPrice</li>
-     *  <li>MaxQuantity</li>
-     *  <li>MinBids</li>
-     *  <li>MinPrice</li>
-     *  <li>MinQuantity</li>
-     *  <li>ModTimeFrom</li>
-     *  <li>PaymentMethod</li>
-     *  <li>ReturnsAcceptedOnly</li>
-     *  <li>Seller</li>
-     *  <li>SellerBusinessType</li>
-     *  <li>TopRatedSellerOnly</li>
-     *  <li>ValueBoxInventory</li>
-     *  <li>WorldOfGoodOnly</li>
-     *  </ul>
+     * Specify the name of the item filter you want to use. The filter type specified in the <b>itemFilter.name</b> field must have a corresponding value. You can apply multiple <b>itemFilter</b>
+     *  name/value pairs in a single request. See <b>ItemFilterType</b> for more information on the available filters and the values supported/associated with each filter type.
      *
      * @var string $name
      */
@@ -206,53 +161,8 @@ class ItemFilterType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
     /**
      * Gets as name
      *
-     * Specify the name of the item filter you want to use. The itemFilter name
-     *  must have a corresponding value. You can apply multiple itemFilter
-     *  Name/Value pairs in a single request.
-     *  <br><br>
-     *  <b>Item Filter Names</b>:
-     *  <br><br>
-     *  <ul>
-     *  <li>AvailableTo</li>
-     *  <li>BestOfferOnly</li>
-     *  <li>CharityOnly</li>
-     *  <li>Condition</li>
-     *  <li>Currency</li>
-     *  <li>EndTimeFrom</li>
-     *  <li>EndTimeTo</li>
-     *  <li>ExcludeAutoPay</li>
-     *  <li>ExcludeCategory</li>
-     *  <li>ExcludeSeller</li>
-     *  <li>ExpeditedShippingType</li>
-     *  <li>FeaturedOnly</li>
-     *  <li>FeedbackScoreMax</li>
-     *  <li>FeedbackScoreMin</li>
-     *  <li>FreeShippingOnly</li>
-     *  <li>GetItFastOnly</li>
-     *  <li>HideDuplicateItems</li>
-     *  <li>ListedIn</li>
-     *  <li>ListingType</li>
-     *  <li>LocalPickupOnly</li>
-     *  <li>LocalSearchOnly</li>
-     *  <li>LocatedIn</li>
-     *  <li>LotsOnly</li>
-     *  <li>MaxBids</li>
-     *  <li>MaxDistance</li>
-     *  <li>MaxHandlingTime</li>
-     *  <li>MaxPrice</li>
-     *  <li>MaxQuantity</li>
-     *  <li>MinBids</li>
-     *  <li>MinPrice</li>
-     *  <li>MinQuantity</li>
-     *  <li>ModTimeFrom</li>
-     *  <li>PaymentMethod</li>
-     *  <li>ReturnsAcceptedOnly</li>
-     *  <li>Seller</li>
-     *  <li>SellerBusinessType</li>
-     *  <li>TopRatedSellerOnly</li>
-     *  <li>ValueBoxInventory</li>
-     *  <li>WorldOfGoodOnly</li>
-     *  </ul>
+     * Specify the name of the item filter you want to use. The filter type specified in the <b>itemFilter.name</b> field must have a corresponding value. You can apply multiple <b>itemFilter</b>
+     *  name/value pairs in a single request. See <b>ItemFilterType</b> for more information on the available filters and the values supported/associated with each filter type.
      *
      * @return string
      */
@@ -264,53 +174,8 @@ class ItemFilterType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
     /**
      * Sets a new name
      *
-     * Specify the name of the item filter you want to use. The itemFilter name
-     *  must have a corresponding value. You can apply multiple itemFilter
-     *  Name/Value pairs in a single request.
-     *  <br><br>
-     *  <b>Item Filter Names</b>:
-     *  <br><br>
-     *  <ul>
-     *  <li>AvailableTo</li>
-     *  <li>BestOfferOnly</li>
-     *  <li>CharityOnly</li>
-     *  <li>Condition</li>
-     *  <li>Currency</li>
-     *  <li>EndTimeFrom</li>
-     *  <li>EndTimeTo</li>
-     *  <li>ExcludeAutoPay</li>
-     *  <li>ExcludeCategory</li>
-     *  <li>ExcludeSeller</li>
-     *  <li>ExpeditedShippingType</li>
-     *  <li>FeaturedOnly</li>
-     *  <li>FeedbackScoreMax</li>
-     *  <li>FeedbackScoreMin</li>
-     *  <li>FreeShippingOnly</li>
-     *  <li>GetItFastOnly</li>
-     *  <li>HideDuplicateItems</li>
-     *  <li>ListedIn</li>
-     *  <li>ListingType</li>
-     *  <li>LocalPickupOnly</li>
-     *  <li>LocalSearchOnly</li>
-     *  <li>LocatedIn</li>
-     *  <li>LotsOnly</li>
-     *  <li>MaxBids</li>
-     *  <li>MaxDistance</li>
-     *  <li>MaxHandlingTime</li>
-     *  <li>MaxPrice</li>
-     *  <li>MaxQuantity</li>
-     *  <li>MinBids</li>
-     *  <li>MinPrice</li>
-     *  <li>MinQuantity</li>
-     *  <li>ModTimeFrom</li>
-     *  <li>PaymentMethod</li>
-     *  <li>ReturnsAcceptedOnly</li>
-     *  <li>Seller</li>
-     *  <li>SellerBusinessType</li>
-     *  <li>TopRatedSellerOnly</li>
-     *  <li>ValueBoxInventory</li>
-     *  <li>WorldOfGoodOnly</li>
-     *  </ul>
+     * Specify the name of the item filter you want to use. The filter type specified in the <b>itemFilter.name</b> field must have a corresponding value. You can apply multiple <b>itemFilter</b>
+     *  name/value pairs in a single request. See <b>ItemFilterType</b> for more information on the available filters and the values supported/associated with each filter type.
      *
      * @param string $name
      * @return self
