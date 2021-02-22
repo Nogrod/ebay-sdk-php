@@ -14,7 +14,15 @@ class ConditionValuesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 {
 
     /**
-     * Defines an item condition that a category supports.
+     * This repeatable container shows the display name and unique identifier of each item condition supported by the corresponding eBay category.
+     *  <br>
+     *  <br>
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  In all eBay marketplaces, Condition ID 2000 now maps to an item condition of 'Certified Refurbished', and not 'Manufacturer Refurbished'. To list an item as 'Certified Refurbished', a seller must be pre-qualified by eBay for this feature. Any seller who is not eligible for this feature will be blocked if they try to create a new listing or revise an existing listing with this item condition. Any active listings on any eBay marketplace that had 'Manufacturer Refurbished' as the item condition should have been automatically updated by eBay to the 'Seller Refurbished' item condition (Condition ID 2500).
+     *  <br>
+     *  <br>
+     *  Any seller that is interested in eligibility requirements to list with 'Certified Refurbished' should see the <a href="https://pages.ebay.com/seller-center/listing-and-marketing/certified-refurbished-program.html" target="_blank">Certified refurbished program</a> page in Seller Center.
+     *  </span>
      *
      * @var \Nogrod\eBaySDK\MerchantData\ConditionType[] $condition
      */
@@ -39,7 +47,15 @@ class ConditionValuesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     /**
      * Adds as condition
      *
-     * Defines an item condition that a category supports.
+     * This repeatable container shows the display name and unique identifier of each item condition supported by the corresponding eBay category.
+     *  <br>
+     *  <br>
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  In all eBay marketplaces, Condition ID 2000 now maps to an item condition of 'Certified Refurbished', and not 'Manufacturer Refurbished'. To list an item as 'Certified Refurbished', a seller must be pre-qualified by eBay for this feature. Any seller who is not eligible for this feature will be blocked if they try to create a new listing or revise an existing listing with this item condition. Any active listings on any eBay marketplace that had 'Manufacturer Refurbished' as the item condition should have been automatically updated by eBay to the 'Seller Refurbished' item condition (Condition ID 2500).
+     *  <br>
+     *  <br>
+     *  Any seller that is interested in eligibility requirements to list with 'Certified Refurbished' should see the <a href="https://pages.ebay.com/seller-center/listing-and-marketing/certified-refurbished-program.html" target="_blank">Certified refurbished program</a> page in Seller Center.
+     *  </span>
      *
      * @return self
      * @param \Nogrod\eBaySDK\MerchantData\ConditionType $condition
@@ -53,7 +69,15 @@ class ConditionValuesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     /**
      * isset condition
      *
-     * Defines an item condition that a category supports.
+     * This repeatable container shows the display name and unique identifier of each item condition supported by the corresponding eBay category.
+     *  <br>
+     *  <br>
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  In all eBay marketplaces, Condition ID 2000 now maps to an item condition of 'Certified Refurbished', and not 'Manufacturer Refurbished'. To list an item as 'Certified Refurbished', a seller must be pre-qualified by eBay for this feature. Any seller who is not eligible for this feature will be blocked if they try to create a new listing or revise an existing listing with this item condition. Any active listings on any eBay marketplace that had 'Manufacturer Refurbished' as the item condition should have been automatically updated by eBay to the 'Seller Refurbished' item condition (Condition ID 2500).
+     *  <br>
+     *  <br>
+     *  Any seller that is interested in eligibility requirements to list with 'Certified Refurbished' should see the <a href="https://pages.ebay.com/seller-center/listing-and-marketing/certified-refurbished-program.html" target="_blank">Certified refurbished program</a> page in Seller Center.
+     *  </span>
      *
      * @param int|string $index
      * @return bool
@@ -66,7 +90,15 @@ class ConditionValuesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     /**
      * unset condition
      *
-     * Defines an item condition that a category supports.
+     * This repeatable container shows the display name and unique identifier of each item condition supported by the corresponding eBay category.
+     *  <br>
+     *  <br>
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  In all eBay marketplaces, Condition ID 2000 now maps to an item condition of 'Certified Refurbished', and not 'Manufacturer Refurbished'. To list an item as 'Certified Refurbished', a seller must be pre-qualified by eBay for this feature. Any seller who is not eligible for this feature will be blocked if they try to create a new listing or revise an existing listing with this item condition. Any active listings on any eBay marketplace that had 'Manufacturer Refurbished' as the item condition should have been automatically updated by eBay to the 'Seller Refurbished' item condition (Condition ID 2500).
+     *  <br>
+     *  <br>
+     *  Any seller that is interested in eligibility requirements to list with 'Certified Refurbished' should see the <a href="https://pages.ebay.com/seller-center/listing-and-marketing/certified-refurbished-program.html" target="_blank">Certified refurbished program</a> page in Seller Center.
+     *  </span>
      *
      * @param int|string $index
      * @return void
@@ -79,7 +111,15 @@ class ConditionValuesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     /**
      * Gets as condition
      *
-     * Defines an item condition that a category supports.
+     * This repeatable container shows the display name and unique identifier of each item condition supported by the corresponding eBay category.
+     *  <br>
+     *  <br>
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  In all eBay marketplaces, Condition ID 2000 now maps to an item condition of 'Certified Refurbished', and not 'Manufacturer Refurbished'. To list an item as 'Certified Refurbished', a seller must be pre-qualified by eBay for this feature. Any seller who is not eligible for this feature will be blocked if they try to create a new listing or revise an existing listing with this item condition. Any active listings on any eBay marketplace that had 'Manufacturer Refurbished' as the item condition should have been automatically updated by eBay to the 'Seller Refurbished' item condition (Condition ID 2500).
+     *  <br>
+     *  <br>
+     *  Any seller that is interested in eligibility requirements to list with 'Certified Refurbished' should see the <a href="https://pages.ebay.com/seller-center/listing-and-marketing/certified-refurbished-program.html" target="_blank">Certified refurbished program</a> page in Seller Center.
+     *  </span>
      *
      * @return \Nogrod\eBaySDK\MerchantData\ConditionType[]
      */
@@ -91,7 +131,15 @@ class ConditionValuesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     /**
      * Sets a new condition
      *
-     * Defines an item condition that a category supports.
+     * This repeatable container shows the display name and unique identifier of each item condition supported by the corresponding eBay category.
+     *  <br>
+     *  <br>
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  In all eBay marketplaces, Condition ID 2000 now maps to an item condition of 'Certified Refurbished', and not 'Manufacturer Refurbished'. To list an item as 'Certified Refurbished', a seller must be pre-qualified by eBay for this feature. Any seller who is not eligible for this feature will be blocked if they try to create a new listing or revise an existing listing with this item condition. Any active listings on any eBay marketplace that had 'Manufacturer Refurbished' as the item condition should have been automatically updated by eBay to the 'Seller Refurbished' item condition (Condition ID 2500).
+     *  <br>
+     *  <br>
+     *  Any seller that is interested in eligibility requirements to list with 'Certified Refurbished' should see the <a href="https://pages.ebay.com/seller-center/listing-and-marketing/certified-refurbished-program.html" target="_blank">Certified refurbished program</a> page in Seller Center.
+     *  </span>
      *
      * @param \Nogrod\eBaySDK\MerchantData\ConditionType[] $condition
      * @return self

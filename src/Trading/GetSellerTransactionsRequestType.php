@@ -49,7 +49,13 @@ class GetSellerTransactionsRequestType extends AbstractRequestType
 
     /**
      * This field is included and set to <code>true</code> if the user wants to view the Final Value Fee (FVF) for all order line items in the response. The Final Value Fee is returned in the <b>Transaction.FinalValueFee</b> field. The Final Value Fee is assessed right after the creation of an order line item.
-     *  <br/>
+     *  <br>
+     *  <br>
+     *  <span class="tablenote"><b>Note:</b>
+     *  The calculation of the Final Value Fee is changing for managed payments sellers, so the value returned in the <b>FinalValueFee</b> fields for each order line item in the response should only be considered as estimated values. The <b>getTransactions</b> method of the <b>Finances API</b> can be used to get accurate Final Value Fee values.
+     *  <br><br>
+     *  See the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/selling-fees?id=4822" target="_blank">Selling fees for managed payments sellers</a> help page for more information about how Final Value Fees are changing for managed payments sellers.
+     *  </span>
      *
      * @var bool $includeFinalValueFee
      */
@@ -218,7 +224,13 @@ class GetSellerTransactionsRequestType extends AbstractRequestType
      * Gets as includeFinalValueFee
      *
      * This field is included and set to <code>true</code> if the user wants to view the Final Value Fee (FVF) for all order line items in the response. The Final Value Fee is returned in the <b>Transaction.FinalValueFee</b> field. The Final Value Fee is assessed right after the creation of an order line item.
-     *  <br/>
+     *  <br>
+     *  <br>
+     *  <span class="tablenote"><b>Note:</b>
+     *  The calculation of the Final Value Fee is changing for managed payments sellers, so the value returned in the <b>FinalValueFee</b> fields for each order line item in the response should only be considered as estimated values. The <b>getTransactions</b> method of the <b>Finances API</b> can be used to get accurate Final Value Fee values.
+     *  <br><br>
+     *  See the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/selling-fees?id=4822" target="_blank">Selling fees for managed payments sellers</a> help page for more information about how Final Value Fees are changing for managed payments sellers.
+     *  </span>
      *
      * @return bool
      */
@@ -231,7 +243,13 @@ class GetSellerTransactionsRequestType extends AbstractRequestType
      * Sets a new includeFinalValueFee
      *
      * This field is included and set to <code>true</code> if the user wants to view the Final Value Fee (FVF) for all order line items in the response. The Final Value Fee is returned in the <b>Transaction.FinalValueFee</b> field. The Final Value Fee is assessed right after the creation of an order line item.
-     *  <br/>
+     *  <br>
+     *  <br>
+     *  <span class="tablenote"><b>Note:</b>
+     *  The calculation of the Final Value Fee is changing for managed payments sellers, so the value returned in the <b>FinalValueFee</b> fields for each order line item in the response should only be considered as estimated values. The <b>getTransactions</b> method of the <b>Finances API</b> can be used to get accurate Final Value Fee values.
+     *  <br><br>
+     *  See the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/selling-fees?id=4822" target="_blank">Selling fees for managed payments sellers</a> help page for more information about how Final Value Fees are changing for managed payments sellers.
+     *  </span>
      *
      * @param bool $includeFinalValueFee
      * @return self

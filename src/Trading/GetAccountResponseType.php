@@ -21,6 +21,18 @@ class GetAccountResponseType extends AbstractResponseType
     private $accountID = null;
 
     /**
+     * This enumeration value indicates the current status of the seller's account for the fee netting mechanism. The seller's account has to be enabled for eBay managed payments in order for fee netting to be available. If the <code>Enabled</code> value is returned, the seller may include the <b>IncludeNettedEntries</b> field in the request to retrieve the total net amount of all charges/fees that have been deducted from seller payouts instead of being invoiced to the seller. The total net amount of any seller credits related to these fees is also shown in the <b>AccountSummary.NettedTransactionSummary</b> container in the response.
+     *  <br>
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b>
+     *  For a limited number of managed payments sellers, final value fees and payment processing fees will start getting deducted from seller payouts as early as mid-June 2020, but for many other managed payments sellers, these fees won't start getting deducted from seller payouts until mid-July 2020.
+     *  </span>
+     *
+     * @var string $feeNettingStatus
+     */
+    private $feeNettingStatus = null;
+
+    /**
      * Contains summary data for the seller's account, such as the overall
      *  balance, bank account and credit card information, and amount and
      *  date of any past due balances. Can also contain data for
@@ -96,6 +108,42 @@ class GetAccountResponseType extends AbstractResponseType
     public function setAccountID($accountID)
     {
         $this->accountID = $accountID;
+        return $this;
+    }
+
+    /**
+     * Gets as feeNettingStatus
+     *
+     * This enumeration value indicates the current status of the seller's account for the fee netting mechanism. The seller's account has to be enabled for eBay managed payments in order for fee netting to be available. If the <code>Enabled</code> value is returned, the seller may include the <b>IncludeNettedEntries</b> field in the request to retrieve the total net amount of all charges/fees that have been deducted from seller payouts instead of being invoiced to the seller. The total net amount of any seller credits related to these fees is also shown in the <b>AccountSummary.NettedTransactionSummary</b> container in the response.
+     *  <br>
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b>
+     *  For a limited number of managed payments sellers, final value fees and payment processing fees will start getting deducted from seller payouts as early as mid-June 2020, but for many other managed payments sellers, these fees won't start getting deducted from seller payouts until mid-July 2020.
+     *  </span>
+     *
+     * @return string
+     */
+    public function getFeeNettingStatus()
+    {
+        return $this->feeNettingStatus;
+    }
+
+    /**
+     * Sets a new feeNettingStatus
+     *
+     * This enumeration value indicates the current status of the seller's account for the fee netting mechanism. The seller's account has to be enabled for eBay managed payments in order for fee netting to be available. If the <code>Enabled</code> value is returned, the seller may include the <b>IncludeNettedEntries</b> field in the request to retrieve the total net amount of all charges/fees that have been deducted from seller payouts instead of being invoiced to the seller. The total net amount of any seller credits related to these fees is also shown in the <b>AccountSummary.NettedTransactionSummary</b> container in the response.
+     *  <br>
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b>
+     *  For a limited number of managed payments sellers, final value fees and payment processing fees will start getting deducted from seller payouts as early as mid-June 2020, but for many other managed payments sellers, these fees won't start getting deducted from seller payouts until mid-July 2020.
+     *  </span>
+     *
+     * @param string $feeNettingStatus
+     * @return self
+     */
+    public function setFeeNettingStatus($feeNettingStatus)
+    {
+        $this->feeNettingStatus = $feeNettingStatus;
         return $this;
     }
 
@@ -336,6 +384,10 @@ class GetAccountResponseType extends AbstractResponseType
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}AccountID", $value);
         }
+        $value = $this->getFeeNettingStatus();
+        if (null !== $value) {
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}FeeNettingStatus", $value);
+        }
         $value = $this->getAccountSummary();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}AccountSummary", $value);
@@ -387,6 +439,10 @@ class GetAccountResponseType extends AbstractResponseType
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AccountID');
         if (null !== $value) {
             $this->setAccountID($value);
+        }
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeeNettingStatus');
+        if (null !== $value) {
+            $this->setFeeNettingStatus($value);
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AccountSummary');
         if (null !== $value) {

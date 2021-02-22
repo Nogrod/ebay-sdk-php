@@ -10,6 +10,9 @@ use Nogrod\XMLClientRuntime\Func;
  * Contains the IDs for the Listing Designer theme and template (if either are
  *  used) associated with an item, which can optionally be used to enhance the
  *  appearance of the item's description. Cannot be used with Photo Display.
+ *  <br>
+ *  <br>
+ *  <span class="tablenote"><b>Note:</b> As of May 31, 2020, sellers are no longer able to use Listing Designer templates when they create or revise listings. Existing listings that are already using a Listing Designer template will remain unchanged. The <b>ListingDesigner</b> container has been removed from the WSDL and this type is also staged for removal. If a seller tries to use the <b>ListingDesigner</b> container, it will have no effect on the listing, but the seller will receive a warning message about Listing Designer templates no longer being available.</span>
  * XSD Type: ListingDesignerType
  */
 class ListingDesignerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable

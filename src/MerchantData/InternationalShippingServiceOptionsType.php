@@ -88,7 +88,7 @@ class InternationalShippingServiceOptionsType implements \Sabre\Xml\XmlSerializa
      *  <b>ShippingServicePriority</b> value of 5 appears at the bottom of a list of five
      *  shipping service options. If the Global Shipping Program is enabled on the listing for international shipping, only four additional shipping services may be specified.
      *  <br><br>
-     *  This field is applicable to Flat and Calculated shipping.
+     *  If this field is omitted from international shipping service options, the order of the shipping service options in View Item and Checkout pages will be determined by the order that these shipping service options are presented in the request payload of an Add/Revise/Relist call.
      *
      * @var int $shippingServicePriority
      */
@@ -308,7 +308,7 @@ class InternationalShippingServiceOptionsType implements \Sabre\Xml\XmlSerializa
      *  <b>ShippingServicePriority</b> value of 5 appears at the bottom of a list of five
      *  shipping service options. If the Global Shipping Program is enabled on the listing for international shipping, only four additional shipping services may be specified.
      *  <br><br>
-     *  This field is applicable to Flat and Calculated shipping.
+     *  If this field is omitted from international shipping service options, the order of the shipping service options in View Item and Checkout pages will be determined by the order that these shipping service options are presented in the request payload of an Add/Revise/Relist call.
      *
      * @return int
      */
@@ -329,7 +329,7 @@ class InternationalShippingServiceOptionsType implements \Sabre\Xml\XmlSerializa
      *  <b>ShippingServicePriority</b> value of 5 appears at the bottom of a list of five
      *  shipping service options. If the Global Shipping Program is enabled on the listing for international shipping, only four additional shipping services may be specified.
      *  <br><br>
-     *  This field is applicable to Flat and Calculated shipping.
+     *  If this field is omitted from international shipping service options, the order of the shipping service options in View Item and Checkout pages will be determined by the order that these shipping service options are presented in the request payload of an Add/Revise/Relist call.
      *
      * @param int $shippingServicePriority
      * @return self

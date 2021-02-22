@@ -8,8 +8,8 @@
 	xmlns="urn:ebay:apis:eBLBaseComponents"
 	targetNamespace="urn:ebay:apis:eBLBaseComponents">
 	<wsdl:types>
-<!-- Version 1145 -->
-<!-- (c) 2020 eBay, Inc. All rights reserved -->
+<!-- Version 1173 -->
+<!-- (c) 2021 eBay, Inc. All rights reserved -->
 		<xs:schema targetNamespace="urn:ebay:apis:eBLBaseComponents"  
 		xmlns:ns="urn:ebay:apis:eBLBaseComponents" 
 		xmlns="urn:ebay:apis:eBLBaseComponents"
@@ -2153,6 +2153,9 @@
 				Enumerated type that consists of the five different Power Seller levels. Each Power Seller tier is based on average monthly sales, and eBay reviews eligibility on a monthly basis. Available benefits and services to the seller vary for each tier.
 			</xs:documentation>
 		</xs:annotation>
+		<xs:appinfo>
+			<allValuesExcept>Diamond</allValuesExcept>
+		</xs:appinfo>
 		<xs:restriction base="xs:token">
 			<xs:enumeration value="Bronze">
 				<xs:annotation>
@@ -7368,6 +7371,10 @@
 							</xs:appinfo>
 						</xs:annotation>
 					</xs:element>
+								<CallInfo>
+									<CallName>FindHalfProducts</CallName>
+									<RequiredInput>No</RequiredInput>
+								</CallInfo>
 					<xs:element name="MaxEntries" type="xs:int" minOccurs="0">
 						<xs:annotation>
 							<xs:documentation>
@@ -10916,7 +10923,7 @@
 	<xs:complexType name="ReturnPolicyType">
 		<xs:annotation>
 			<xs:documentation>
-				Type used to express the details of the Return Policy that the seller has defined for the listing.
+				Type used to express the details of the Return Policy that the seller has defined for the listing. Sellers have the ability to create separate return policies for domestic and international returns, but if a seller (who ships internationally) does not set up a separate international return policy, the settings in the domestic return policy fields will also apply to international returns.
 			</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
@@ -10924,6 +10931,8 @@
 				<xs:annotation>
 					<xs:documentation>
 						This field indicates how the seller compensates domestic buyers for &lt;a href="http://developer.ebay.com/DevZone/guides/ebayfeatures/Development/Post-Order-Returns.html#return-reasons" target="_blank">remorse returns&lt;/a>. On many eBay marketplaces, 'Money Back' is the only option for domestic and international returns. The eBay US marketplace also allows sellers to offer buyers a 'Money Back Or Replacement' option, where the seller still wants the item they purchased, and prefers that the seller send an identical replacement item instead of a refund. This will typically happen if the originally purchased item arrived damaged or was missing parts.
+						&lt;br&gt;&lt;br&gt;
+						&lt;span class="tablenote"&gt;&lt;b&gt;Note:&lt;/b&gt; If the seller ships internationally, but did not specify a separate international return policy for the listing, the refund method in this field will also apply for international returns. &lt;/span&gt;
 					</xs:documentation>
 					<xs:appinfo>
 						<CallInfo>
@@ -10938,7 +10947,9 @@
 			<xs:element name="ReturnsWithin" type="xs:string" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>
-						The value in this field indicates the number of days that a domestic buyer has to return an item. The return period begins when the item is marked "delivered" at the buyer's specified ship-to location.  Most marketplaces and categories support 30-day and 60-day return periods. The return period must be specified by the seller if that seller accepts returns (&lt;b>ReturnsAcceptedOption=ReturnsAccepted&lt;/b>).
+						The value in this field indicates the number of days that a domestic buyer has to return an item. The return period begins when the item is marked 'delivered' at the buyer's specified ship-to location.  Most marketplaces and categories support 30-day and 60-day return periods. The return period must be specified by the seller if that seller accepts returns (&lt;b>ReturnsAcceptedOption=ReturnsAccepted&lt;/b>).
+						&lt;br&gt;&lt;br&gt;
+						&lt;span class="tablenote"&gt;&lt;b&gt;Note:&lt;/b&gt; If the seller ships internationally, but did not specify a separate international return policy for the listing, the return period in this field will also apply for international returns. &lt;/span&gt;
 					</xs:documentation>
 					<xs:appinfo>
 						<CallInfo>
@@ -10954,6 +10965,8 @@
 				<xs:annotation>
 					<xs:documentation>
 						This field is always returned with the &lt;b>ReturnPolicy&lt;/b>  container, even if the seller does not accept returns for the item. If the value of this field is &lt;code>ReturnsNotAccepted&lt;/code>, the seller does not accept domestic returns (except in the case of a defective item or 'significantly not as described' item), and this field may be the only field returned under the &lt;b>ReturnPolicy&lt;/b> container. If the value of this field is &lt;code>ReturnsAccepted&lt;/code>, the seller does accept domestic returns, and other fields under the &lt;b>ReturnPolicy&lt;/b> container will state the length of the return period, the refund method, and order partner that is responsible for return shipping costs.
+						&lt;br&gt;&lt;br&gt;
+						&lt;span class="tablenote"&gt;&lt;b&gt;Note:&lt;/b&gt; If the seller ships internationally, but did not specify a separate international return policy for the listing, the 'returns accepted' value in this field will also apply for international returns. &lt;/span&gt;
 					</xs:documentation>
 					<xs:appinfo>
 						<CallInfo>
@@ -11033,6 +11046,8 @@
 						This field specifies either the 'Buyer' or the 'Seller' as the party who pays for domestic return shipping costs. It is up to the seller to decide whether the buyer or seller pays for return shipping costs, but the seller does have an incentive to pay return shipping costs, as the listing will be marked in search results as having '&lt;b&gt;Free Returns&lt;/b&gt;' if the seller pays return shipping costs.
 						&lt;br>&lt;br>
 						Note that the seller is always responsible for return shipping costs for SNAD-related issues, including defective items.
+						&lt;br&gt;&lt;br&gt;
+						&lt;span class="tablenote"&gt;&lt;b&gt;Note:&lt;/b&gt; If the seller ships internationally, but did not specify a separate international return policy for the listing, the return shipping cost payee in this field will also apply for international returns. &lt;/span&gt;
 					</xs:documentation>
 					<xs:appinfo>
 						<CallInfo>
@@ -11068,6 +11083,8 @@
 				<xs:annotation>
 					<xs:documentation>
 						This field indicates how the seller compensates international buyers for &lt;a href="http://developer.ebay.com/DevZone/guides/ebayfeatures/Development/Post-Order-Returns.html#return-reasons" target="_blank">remorse returns&lt;/a>. On many eBay marketplaces, 'Money Back' is the only option for domestic and international returns. The eBay US marketplace also allows sellers to offer buyers a 'Money Back Or Replacement' option, where the seller still wants the item they purchased, and prefers that the seller send an identical replacement item instead of a refund. This will typically happen if the originally purchased item arrived damaged or was missing parts.
+						&lt;br&gt;&lt;br&gt;
+						&lt;span class="tablenote"&gt;&lt;b&gt;Note:&lt;/b&gt; If the seller ships internationally, but did not specify a separate international return policy for the listing, this field is not returned, and the refund method in the &lt;b&gt;Refund&lt;/b&gt; field will also apply for international returns. &lt;/span&gt;
 					</xs:documentation>
 					<xs:appinfo>
 						<CallInfo>
@@ -11083,6 +11100,8 @@
 				<xs:annotation>
 					<xs:documentation>
 						The value in this field indicates the number of days that an international buyer has to return an item. The return period begins when the item is marked "delivered" at the buyer's specified ship-to location.  Most marketplaces and categories support 30-day and 60-day return periods. The return period must be specified by the seller if that seller accepts international returns from countries they ship to (&lt;b>InternationalReturnsAcceptedOption=ReturnsAccepted&lt;/b>).
+						&lt;br&gt;&lt;br&gt;
+						&lt;span class="tablenote"&gt;&lt;b&gt;Note:&lt;/b&gt; If the seller ships internationally, but did not specify a separate international return policy for the listing, this field is not returned, and the return period in the &lt;b&gt;ReturnsWithin&lt;/b&gt; field will also apply for international returns. &lt;/span&gt;
 					</xs:documentation>
 					<xs:appinfo>
 						<CallInfo>
@@ -11098,6 +11117,8 @@
 				<xs:annotation>
 					<xs:documentation>
 						This field is always returned with the &lt;b>ReturnPolicy&lt;/b> container if the seller ships items to other countries, even if the seller does not accept returns for the item. If the value of this field is &lt;code>ReturnsNotAccepted&lt;/code>, the seller does not accept international returns (except in the case of a defective item or 'significantly not as described' item). If the value of this field is &lt;code>ReturnsAccepted&lt;/code>, the seller does accept international returns, and other fields under the &lt;b>ReturnPolicy&lt;/b> container will state the length of the international return period, the refund method, and order partner that is responsible for return shipping costs.
+						&lt;br&gt;&lt;br&gt;
+						&lt;span class="tablenote"&gt;&lt;b&gt;Note:&lt;/b&gt; If the seller ships internationally, but did not specify a separate international return policy for the listing, this field is not returned, and the 'returns accepted' value in the &lt;b&gt;ReturnsAccepted&lt;/b&gt; field will also apply for international returns. &lt;/span&gt;
 					</xs:documentation>
 					<xs:appinfo>
 						<CallInfo>
@@ -11115,6 +11136,8 @@
 						This field specifies either the 'Buyer' or the 'Seller' as the party who pays for international return shipping costs. It is up to the seller to decide whether the buyer or seller pays for return shipping costs, but the seller does have an incentive to pay return shipping costs, as the listing will be marked in search results as having '&lt;b&gt;Free Returns&lt;/b&gt;' if the seller pays return shipping costs.
 						&lt;br>&lt;br>
 						Note that the seller is always responsible for return shipping costs for SNAD-related issues, including defective items.
+						&lt;br&gt;&lt;br&gt;
+						&lt;span class="tablenote"&gt;&lt;b&gt;Note:&lt;/b&gt; If the seller ships internationally, but did not specify a separate international return policy for the listing, this field is not returned, and the return shipping cost payee in the &lt;b&gt;ShippingCostPaidBy&lt;/b&gt; field will also apply for international returns. &lt;/span&gt;
 					</xs:documentation>
 					<xs:appinfo>
 						<CallInfo>
@@ -13153,6 +13176,8 @@
 				<xs:annotation>
 					<xs:documentation>
 						This container consists of details related to the seller's Return Policy, both for domestic and international buyers (if the seller ships internationally). If the seller does not accept returns, only the &lt;b&gt;ReturnsAccepted&lt;/b&gt; field (or &lt;b&gt;InternationalReturnsAccepted&lt;/b&gt; field for international buyers) is returned with a value of &lt;code&gt;ReturnsNotAccepted&lt;/code&gt;. If a seller does accept returns, more details are returned, including the return period, the refund method, and the order partner (buyer or seller) who is responsible for return shipping costs. This container is only returned if the &lt;b&gt;IncludeSelector&lt;/b&gt; field is included in the call request and set to &lt;code&gt;Details&lt;/code&gt;.
+						&lt;br&gt;&lt;br&gt;
+						&lt;span class="tablenote"&gt;&lt;b&gt;Note:&lt;/b&gt; If the seller ships internationally, but did not specify a separate international return policy for the listing, the settings in the domestic return policy fields will be used instead for international returns. &lt;/span&gt;
 					</xs:documentation>
 					<xs:appinfo>
 						<CallInfo>
@@ -13340,6 +13365,11 @@
 						A numeric identifier that represents the condition of an item. These numeric IDs can vary by eBay category, but many are the same across categories. For example, &lt;code&gt;1000&lt;/code&gt; indicates an item in &lt;em&gt;New&lt;/em&gt; condition, &lt;code&gt;3000&lt;/code&gt; indicates an item in &lt;em&gt;Used&lt;/em&gt; condition, and &lt;code&gt;5000&lt;/code&gt; indicates an item in &lt;em&gt;Good&lt;/em&gt; condition.
 						&lt;br/&gt;&lt;br/&gt;
 						This field will get returned for most listings since most eBay listing categories require an item condition, but this field may not get returned for listings in eBay categories that don't require an item condition. A &lt;b&gt;ConditionID&lt;/b&gt; value always maps to a text-based description of the condition, and this display text is shown in the &lt;b&gt;ConditionDisplayName&lt;/b&gt; field.
+						&lt;br&gt;
+						&lt;br&gt;
+						&lt;span class="tablenote"&gt;&lt;strong&gt;Note:&lt;/strong&gt;
+							In all eBay marketplaces, Condition ID 2000 now maps to an item condition of 'Certified Refurbished', and not 'Manufacturer Refurbished'. To list an item as 'Certified Refurbished', a seller must be pre-qualified by eBay for this feature.
+						&lt;/span&gt;
 					</xs:documentation>
 					<xs:appinfo>
 						<CallInfo>
@@ -13354,12 +13384,17 @@
 			<xs:element name="ConditionDisplayName" type="xs:string" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>
-						The user-friendly display name for the item condition, such as &lt;em&gt;New&lt;/em&gt;, &lt;em&gt;Like New&lt;/em&gt; &lt;em&gt;Used&lt;/em&gt;, &lt;em&gt;Good&lt;/em&gt;, or &lt;em&gt;Manufacturer refurbished&lt;/em&gt;. Display names are localized for the site on which they're listed (not necessarily the site on which they're viewed).
+						The user-friendly display name for the item condition, such as &lt;em&gt;New&lt;/em&gt;, &lt;em&gt;Like New&lt;/em&gt; &lt;em&gt;Used&lt;/em&gt;, or &lt;em&gt;Good&lt;/em&gt;. Display names are localized for the site on which they're listed (not necessarily the site on which they're viewed).
 						&lt;br&gt;
 						&lt;br&gt;
 						&lt;b&gt;ConditionDisplayName&lt;/b&gt; values all map to &lt;b&gt;ConditionID&lt;/b&gt; values, but keep in mind that based on the eBay category, some item conditions can have the same &lt;b&gt;ConditionID&lt;/b&gt;, but a slightly different &lt;b&gt;ConditionDisplayName&lt;/b&gt;. For example, a &lt;b&gt;ConditionID&lt;/b&gt; value of &lt;code&gt;1000&lt;/code&gt; typically indicates an item in new condtion, but the text displayed in the &lt;b&gt;ConditionDisplayName&lt;/b&gt; can be just &lt;em&gt;New&lt;/em&gt;, or some categories will show &lt;em&gt;Brand New&lt;/em&gt;, &lt;em&gt;New with tags&lt;/em&gt;, or &lt;em&gt;New with box&lt;/em&gt;.
 						&lt;br/&gt;&lt;br/&gt;
 						This field will get returned for most listings since most eBay listing categories require an item condition, but this field may not get returned for listings in eBay categories that don't require an item condition. A &lt;b&gt;ConditionDisplayName&lt;/b&gt; value always maps to a text-based description of the condition, and this Condition ID is shown in the &lt;b&gt;ConditionID&lt;/b&gt; field.
+						&lt;br&gt;
+						&lt;br&gt;
+						&lt;span class="tablenote"&gt;&lt;strong&gt;Note:&lt;/strong&gt;
+							In all eBay marketplaces, Condition ID 2000 now maps to an item condition of 'Certified Refurbished', and not 'Manufacturer Refurbished'. To list an item as 'Certified Refurbished', a seller must be pre-qualified by eBay for this feature.
+						&lt;/span&gt;
 					</xs:documentation>
 					<xs:appinfo>
 						<CallInfo>
@@ -14572,7 +14607,7 @@
 	
 	<wsdl:service name="Shopping">
 			<wsdl:documentation>
-				<Version>1145</Version>
+				<Version>1173</Version>
 			</wsdl:documentation>
 		<wsdl:port binding="ns:ShoppingBinding" name="Shopping">
 			<wsdlsoap:address location="http://open.api.ebay.com/shopping"/>

@@ -8,7 +8,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Class representing IntegratedMerchantCreditCardInfoType
  *
  * <span class="tablenote"><b>Note: </b>
- *  As of May 1, 2019, eBay no longer support electronic payments through Integrated Merchant Credit Card accounts. To accept online credit card payments from buyers, a seller must use specify PayPal as an accepted payment method, or opt in to eBay Managed Payments program (if the program is available to that seller).
+ *  As of May 1, 2019, eBay no longer support electronic payments through Integrated Merchant Credit Card accounts. To accept online credit card payments from buyers, a seller must use specify PayPal as an accepted payment method, or opt in to eBay managed payments program (if the program is available to that seller).
  *  </span>
  *  <br/>
  *  This type is used by the <b>IntegratedMerchantCreditCardInfo</b> container that is returned in the <b>GetUser</b> response if the seller has a payment gateway account on one or more eBay marketplaces.
@@ -19,7 +19,7 @@ class IntegratedMerchantCreditCardInfoType implements \Sabre\Xml\XmlSerializable
 
     /**
      * <span class="tablenote"><b>Note: </b>
-     *  As of May 1, 2019, eBay no longer support electronic payments through Integrated Merchant Credit Card accounts. To accept online credit card payments from buyers, a seller must use specify PayPal as an accepted payment method, or opt in to eBay Managed Payments program (if the program is available to that seller).
+     *  As of May 1, 2019, eBay no longer support electronic payments through Integrated Merchant Credit Card accounts. To accept online credit card payments from buyers, a seller must use specify PayPal as an accepted payment method, or opt in to eBay managed payments program (if the program is available to that seller).
      *  </span>
      *  <br/>
      *  This enumeration value indicates the eBay marketplace on which the seller has a payment gateway account, an account that allows the seller to accept credit card payments from buyers.
@@ -34,7 +34,7 @@ class IntegratedMerchantCreditCardInfoType implements \Sabre\Xml\XmlSerializable
      * Adds as supportedSite
      *
      * <span class="tablenote"><b>Note: </b>
-     *  As of May 1, 2019, eBay no longer support electronic payments through Integrated Merchant Credit Card accounts. To accept online credit card payments from buyers, a seller must use specify PayPal as an accepted payment method, or opt in to eBay Managed Payments program (if the program is available to that seller).
+     *  As of May 1, 2019, eBay no longer support electronic payments through Integrated Merchant Credit Card accounts. To accept online credit card payments from buyers, a seller must use specify PayPal as an accepted payment method, or opt in to eBay managed payments program (if the program is available to that seller).
      *  </span>
      *  <br/>
      *  This enumeration value indicates the eBay marketplace on which the seller has a payment gateway account, an account that allows the seller to accept credit card payments from buyers.
@@ -52,7 +52,7 @@ class IntegratedMerchantCreditCardInfoType implements \Sabre\Xml\XmlSerializable
      * isset supportedSite
      *
      * <span class="tablenote"><b>Note: </b>
-     *  As of May 1, 2019, eBay no longer support electronic payments through Integrated Merchant Credit Card accounts. To accept online credit card payments from buyers, a seller must use specify PayPal as an accepted payment method, or opt in to eBay Managed Payments program (if the program is available to that seller).
+     *  As of May 1, 2019, eBay no longer support electronic payments through Integrated Merchant Credit Card accounts. To accept online credit card payments from buyers, a seller must use specify PayPal as an accepted payment method, or opt in to eBay managed payments program (if the program is available to that seller).
      *  </span>
      *  <br/>
      *  This enumeration value indicates the eBay marketplace on which the seller has a payment gateway account, an account that allows the seller to accept credit card payments from buyers.
@@ -69,7 +69,7 @@ class IntegratedMerchantCreditCardInfoType implements \Sabre\Xml\XmlSerializable
      * unset supportedSite
      *
      * <span class="tablenote"><b>Note: </b>
-     *  As of May 1, 2019, eBay no longer support electronic payments through Integrated Merchant Credit Card accounts. To accept online credit card payments from buyers, a seller must use specify PayPal as an accepted payment method, or opt in to eBay Managed Payments program (if the program is available to that seller).
+     *  As of May 1, 2019, eBay no longer support electronic payments through Integrated Merchant Credit Card accounts. To accept online credit card payments from buyers, a seller must use specify PayPal as an accepted payment method, or opt in to eBay managed payments program (if the program is available to that seller).
      *  </span>
      *  <br/>
      *  This enumeration value indicates the eBay marketplace on which the seller has a payment gateway account, an account that allows the seller to accept credit card payments from buyers.
@@ -86,7 +86,7 @@ class IntegratedMerchantCreditCardInfoType implements \Sabre\Xml\XmlSerializable
      * Gets as supportedSite
      *
      * <span class="tablenote"><b>Note: </b>
-     *  As of May 1, 2019, eBay no longer support electronic payments through Integrated Merchant Credit Card accounts. To accept online credit card payments from buyers, a seller must use specify PayPal as an accepted payment method, or opt in to eBay Managed Payments program (if the program is available to that seller).
+     *  As of May 1, 2019, eBay no longer support electronic payments through Integrated Merchant Credit Card accounts. To accept online credit card payments from buyers, a seller must use specify PayPal as an accepted payment method, or opt in to eBay managed payments program (if the program is available to that seller).
      *  </span>
      *  <br/>
      *  This enumeration value indicates the eBay marketplace on which the seller has a payment gateway account, an account that allows the seller to accept credit card payments from buyers.
@@ -102,7 +102,7 @@ class IntegratedMerchantCreditCardInfoType implements \Sabre\Xml\XmlSerializable
      * Sets a new supportedSite
      *
      * <span class="tablenote"><b>Note: </b>
-     *  As of May 1, 2019, eBay no longer support electronic payments through Integrated Merchant Credit Card accounts. To accept online credit card payments from buyers, a seller must use specify PayPal as an accepted payment method, or opt in to eBay Managed Payments program (if the program is available to that seller).
+     *  As of May 1, 2019, eBay no longer support electronic payments through Integrated Merchant Credit Card accounts. To accept online credit card payments from buyers, a seller must use specify PayPal as an accepted payment method, or opt in to eBay managed payments program (if the program is available to that seller).
      *  </span>
      *  <br/>
      *  This enumeration value indicates the eBay marketplace on which the seller has a payment gateway account, an account that allows the seller to accept credit card payments from buyers.

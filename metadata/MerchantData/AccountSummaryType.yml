@@ -229,3 +229,14 @@ Nogrod\eBaySDK\MerchantData\AccountSummaryType:
                 getter: getPaymentMethod
                 setter: setPaymentMethod
             type: string
+        nettedTransactionSummary:
+            expose: true
+            access_type: public_method
+            serialized_name: NettedTransactionSummary
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getNettedTransactionSummary
+                setter: setNettedTransactionSummary
+            type: Nogrod\eBaySDK\MerchantData\NettedTransactionSummaryType

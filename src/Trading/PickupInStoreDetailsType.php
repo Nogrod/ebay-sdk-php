@@ -30,6 +30,7 @@ class PickupInStoreDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
      *  When a seller is successful at listing an item with the In-Store Pickup feature enabled, prospective buyers within a reasonable distance (25 miles or so) from one of the seller's stores (that has stock available) will see the "Available for In-Store Pickup" option on the listing, along with information on the closest store that has the item.
      *  <br/><br/>
      *  This field is returned in the 'Get' calls if the listing is enabled with the In-Store Pickup feature.
+     *  <br/>
      *
      * @var bool $eligibleForPickupInStore
      */
@@ -60,6 +61,7 @@ class PickupInStoreDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
      *  When a seller is successful at listing an item with the In-Store Pickup feature enabled, prospective buyers within a reasonable distance (25 miles or so) from one of the seller's stores (that has stock available) will see the "Available for In-Store Pickup" option on the listing, along with information on the closest store that has the item.
      *  <br/><br/>
      *  This field is returned in the 'Get' calls if the listing is enabled with the In-Store Pickup feature.
+     *  <br/>
      *
      * @return bool
      */
@@ -83,6 +85,7 @@ class PickupInStoreDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
      *  When a seller is successful at listing an item with the In-Store Pickup feature enabled, prospective buyers within a reasonable distance (25 miles or so) from one of the seller's stores (that has stock available) will see the "Available for In-Store Pickup" option on the listing, along with information on the closest store that has the item.
      *  <br/><br/>
      *  This field is returned in the 'Get' calls if the listing is enabled with the In-Store Pickup feature.
+     *  <br/>
      *
      * @param bool $eligibleForPickupInStore
      * @return self

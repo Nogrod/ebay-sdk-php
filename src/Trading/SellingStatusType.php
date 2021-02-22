@@ -179,6 +179,13 @@ class SellingStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
      *  If a seller requests a Final Value Fee credit, the value of
      *  <b>Transaction.FinalValueFee</b> will not change if a credit is
      *  issued. The credit only appears in the seller's account data.
+     *  <br>
+     *  <br>
+     *  <span class="tablenote"><b>Note:</b>
+     *  The calculation of the Final Value Fee is changing for managed payments sellers, so the value returned in this field should only be considered as an estimated value. The <b>getTransactions</b> method of the <b>Finances API</b> can be used to get accurate Final Value Fee values.
+     *  <br><br>
+     *  See the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/selling-fees?id=4822" target="_blank">Selling fees for managed payments sellers</a> help page for more information about how Final Value Fees are changing for managed payments sellers.
+     *  </span>
      *
      * @var \Nogrod\eBaySDK\Trading\AmountType $finalValueFee
      */
@@ -701,6 +708,13 @@ class SellingStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
      *  If a seller requests a Final Value Fee credit, the value of
      *  <b>Transaction.FinalValueFee</b> will not change if a credit is
      *  issued. The credit only appears in the seller's account data.
+     *  <br>
+     *  <br>
+     *  <span class="tablenote"><b>Note:</b>
+     *  The calculation of the Final Value Fee is changing for managed payments sellers, so the value returned in this field should only be considered as an estimated value. The <b>getTransactions</b> method of the <b>Finances API</b> can be used to get accurate Final Value Fee values.
+     *  <br><br>
+     *  See the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/selling-fees?id=4822" target="_blank">Selling fees for managed payments sellers</a> help page for more information about how Final Value Fees are changing for managed payments sellers.
+     *  </span>
      *
      * @return \Nogrod\eBaySDK\Trading\AmountType
      */
@@ -728,6 +742,13 @@ class SellingStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
      *  If a seller requests a Final Value Fee credit, the value of
      *  <b>Transaction.FinalValueFee</b> will not change if a credit is
      *  issued. The credit only appears in the seller's account data.
+     *  <br>
+     *  <br>
+     *  <span class="tablenote"><b>Note:</b>
+     *  The calculation of the Final Value Fee is changing for managed payments sellers, so the value returned in this field should only be considered as an estimated value. The <b>getTransactions</b> method of the <b>Finances API</b> can be used to get accurate Final Value Fee values.
+     *  <br><br>
+     *  See the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/selling-fees?id=4822" target="_blank">Selling fees for managed payments sellers</a> help page for more information about how Final Value Fees are changing for managed payments sellers.
+     *  </span>
      *
      * @param \Nogrod\eBaySDK\Trading\AmountType $finalValueFee
      * @return self

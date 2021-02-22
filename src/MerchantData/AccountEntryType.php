@@ -113,6 +113,9 @@ class AccountEntryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
 
     /**
      * The unique identifier of an order line item. This field is only returned if the account entry is associated with an order line item.
+     *  <br>
+     *  <br>
+     *  The <b>TransactionID</b> value for auction listings is always <code>0</code> since there can be only one winning bidder/one sale for an auction listing.
      *
      * @var string $transactionID
      */
@@ -130,7 +133,7 @@ class AccountEntryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * This field is returned if the account fee or credit is associated with an entire (single or multiple line item) order, and not necessarily for a single line item within the order.
      *  <br/><br/>
-     *  <span class="tablenote"><b>Note: </b> In June 2019, eBay introduced a new order ID format, but allowed developers/sellers to decide whether to immediately adopt the new format, or to continue working with the old format. Users who wanted to adopt the new format, could either use a Trading WSDL Version 1113 (or newer), or they could even use an older Trading WSDL but set the <b>X-EBAY-API-COMPATIBILITY-LEVEL</b> HTTP header value to <code>1113</code> in API calls. <b>Beginning in April 2020, only the new order ID format will be returned in response payloads for paid orders, regardless of the WSDL version number or compatibility level.</b>
+     *  <span class="tablenote"><b>Note: </b> In June 2019, eBay introduced a new order ID format, but allowed developers/sellers to decide whether to immediately adopt the new format, or to continue working with the old format. Users who wanted to adopt the new format, could either use a Trading WSDL Version 1113 (or newer), or they could even use an older Trading WSDL but set the <b>X-EBAY-API-COMPATIBILITY-LEVEL</b> HTTP header value to <code>1113</code> in API calls. <b>Beginning in June 2020, only the new order ID format will be returned in response payloads for paid orders, regardless of the WSDL version number or compatibility level.</b>
      *  <br><br>
      *  Note that the unique identifier of a 'non-immediate payment' order will change as it goes from an unpaid order to a paid order. Due to this scenario, all calls that accept Order ID values as filters in the request payload, including the <b>GetAccount</b> call, will support the identifiers for both unpaid and paid orders. The new order ID format is a non-parsable string, globally unique across all eBay marketplaces, and consistent for both single line item and multiple line item orders. Unlike in the past, instead of just being known and exposed to the seller, these unique order identifiers will also be known and used/referenced by the buyer and eBay customer support.
      *  <br><br>
@@ -140,6 +143,28 @@ class AccountEntryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      * @var string $orderId
      */
     private $orderId = null;
+
+    /**
+     * This container is an array of one or more discounts applied to the corresponding accounty entry. This container will not be returned if there are no discounts applied to the corresponding accounty entry.
+     *
+     * @var \Nogrod\eBaySDK\MerchantData\DiscountType[] $discountDetail
+     */
+    private $discountDetail = null;
+
+    /**
+     * This boolean field is returned with each account entry if the <b>IncludeNettedEntries</b> field is included in the request and set to <code>true</code>. The value indicates whether or not the corresponding account entry value (charge or credit) is a part of the 'Total Netted Charge Amount' or 'Total Netted Credit Amount' values returned in the <b>AccountSummary.NettedTransactionSummary</b> container.
+     *  <br>
+     *  <br>
+     *  If this value is <code>true</code>, it indicates that the corresponding fee was deducted from a seller payout. If the value is <code>false</code>, it indicates that the fee or credit was invoiced to the seller instead.
+     *  <br>
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b>
+     *  For seller accounts not yet enabled for eBay managed payments, the returned value will always be <code>false</code>. There may also be some seller accounts enabled for managed payments, but the fee netting mechanism may not yet be available for an account. A seller can check their status for the fee netting mechanism by checking the value in the <b>FeeNettingStatus</b> field.
+     *  </span>
+     *
+     * @var bool $netted
+     */
+    private $netted = null;
 
     /**
      * Gets as accountDetailsEntryType
@@ -497,6 +522,9 @@ class AccountEntryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      * Gets as transactionID
      *
      * The unique identifier of an order line item. This field is only returned if the account entry is associated with an order line item.
+     *  <br>
+     *  <br>
+     *  The <b>TransactionID</b> value for auction listings is always <code>0</code> since there can be only one winning bidder/one sale for an auction listing.
      *
      * @return string
      */
@@ -509,6 +537,9 @@ class AccountEntryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      * Sets a new transactionID
      *
      * The unique identifier of an order line item. This field is only returned if the account entry is associated with an order line item.
+     *  <br>
+     *  <br>
+     *  The <b>TransactionID</b> value for auction listings is always <code>0</code> since there can be only one winning bidder/one sale for an auction listing.
      *
      * @param string $transactionID
      * @return self
@@ -554,7 +585,7 @@ class AccountEntryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      *
      * This field is returned if the account fee or credit is associated with an entire (single or multiple line item) order, and not necessarily for a single line item within the order.
      *  <br/><br/>
-     *  <span class="tablenote"><b>Note: </b> In June 2019, eBay introduced a new order ID format, but allowed developers/sellers to decide whether to immediately adopt the new format, or to continue working with the old format. Users who wanted to adopt the new format, could either use a Trading WSDL Version 1113 (or newer), or they could even use an older Trading WSDL but set the <b>X-EBAY-API-COMPATIBILITY-LEVEL</b> HTTP header value to <code>1113</code> in API calls. <b>Beginning in April 2020, only the new order ID format will be returned in response payloads for paid orders, regardless of the WSDL version number or compatibility level.</b>
+     *  <span class="tablenote"><b>Note: </b> In June 2019, eBay introduced a new order ID format, but allowed developers/sellers to decide whether to immediately adopt the new format, or to continue working with the old format. Users who wanted to adopt the new format, could either use a Trading WSDL Version 1113 (or newer), or they could even use an older Trading WSDL but set the <b>X-EBAY-API-COMPATIBILITY-LEVEL</b> HTTP header value to <code>1113</code> in API calls. <b>Beginning in June 2020, only the new order ID format will be returned in response payloads for paid orders, regardless of the WSDL version number or compatibility level.</b>
      *  <br><br>
      *  Note that the unique identifier of a 'non-immediate payment' order will change as it goes from an unpaid order to a paid order. Due to this scenario, all calls that accept Order ID values as filters in the request payload, including the <b>GetAccount</b> call, will support the identifiers for both unpaid and paid orders. The new order ID format is a non-parsable string, globally unique across all eBay marketplaces, and consistent for both single line item and multiple line item orders. Unlike in the past, instead of just being known and exposed to the seller, these unique order identifiers will also be known and used/referenced by the buyer and eBay customer support.
      *  <br><br>
@@ -573,7 +604,7 @@ class AccountEntryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      *
      * This field is returned if the account fee or credit is associated with an entire (single or multiple line item) order, and not necessarily for a single line item within the order.
      *  <br/><br/>
-     *  <span class="tablenote"><b>Note: </b> In June 2019, eBay introduced a new order ID format, but allowed developers/sellers to decide whether to immediately adopt the new format, or to continue working with the old format. Users who wanted to adopt the new format, could either use a Trading WSDL Version 1113 (or newer), or they could even use an older Trading WSDL but set the <b>X-EBAY-API-COMPATIBILITY-LEVEL</b> HTTP header value to <code>1113</code> in API calls. <b>Beginning in April 2020, only the new order ID format will be returned in response payloads for paid orders, regardless of the WSDL version number or compatibility level.</b>
+     *  <span class="tablenote"><b>Note: </b> In June 2019, eBay introduced a new order ID format, but allowed developers/sellers to decide whether to immediately adopt the new format, or to continue working with the old format. Users who wanted to adopt the new format, could either use a Trading WSDL Version 1113 (or newer), or they could even use an older Trading WSDL but set the <b>X-EBAY-API-COMPATIBILITY-LEVEL</b> HTTP header value to <code>1113</code> in API calls. <b>Beginning in June 2020, only the new order ID format will be returned in response payloads for paid orders, regardless of the WSDL version number or compatibility level.</b>
      *  <br><br>
      *  Note that the unique identifier of a 'non-immediate payment' order will change as it goes from an unpaid order to a paid order. Due to this scenario, all calls that accept Order ID values as filters in the request payload, including the <b>GetAccount</b> call, will support the identifiers for both unpaid and paid orders. The new order ID format is a non-parsable string, globally unique across all eBay marketplaces, and consistent for both single line item and multiple line item orders. Unlike in the past, instead of just being known and exposed to the seller, these unique order identifiers will also be known and used/referenced by the buyer and eBay customer support.
      *  <br><br>
@@ -586,6 +617,114 @@ class AccountEntryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     public function setOrderId($orderId)
     {
         $this->orderId = $orderId;
+        return $this;
+    }
+
+    /**
+     * Adds as discount
+     *
+     * This container is an array of one or more discounts applied to the corresponding accounty entry. This container will not be returned if there are no discounts applied to the corresponding accounty entry.
+     *
+     * @return self
+     * @param \Nogrod\eBaySDK\MerchantData\DiscountType $discount
+     */
+    public function addToDiscountDetail(\Nogrod\eBaySDK\MerchantData\DiscountType $discount)
+    {
+        $this->discountDetail[] = $discount;
+        return $this;
+    }
+
+    /**
+     * isset discountDetail
+     *
+     * This container is an array of one or more discounts applied to the corresponding accounty entry. This container will not be returned if there are no discounts applied to the corresponding accounty entry.
+     *
+     * @param int|string $index
+     * @return bool
+     */
+    public function issetDiscountDetail($index)
+    {
+        return isset($this->discountDetail[$index]);
+    }
+
+    /**
+     * unset discountDetail
+     *
+     * This container is an array of one or more discounts applied to the corresponding accounty entry. This container will not be returned if there are no discounts applied to the corresponding accounty entry.
+     *
+     * @param int|string $index
+     * @return void
+     */
+    public function unsetDiscountDetail($index)
+    {
+        unset($this->discountDetail[$index]);
+    }
+
+    /**
+     * Gets as discountDetail
+     *
+     * This container is an array of one or more discounts applied to the corresponding accounty entry. This container will not be returned if there are no discounts applied to the corresponding accounty entry.
+     *
+     * @return \Nogrod\eBaySDK\MerchantData\DiscountType[]
+     */
+    public function getDiscountDetail()
+    {
+        return $this->discountDetail;
+    }
+
+    /**
+     * Sets a new discountDetail
+     *
+     * This container is an array of one or more discounts applied to the corresponding accounty entry. This container will not be returned if there are no discounts applied to the corresponding accounty entry.
+     *
+     * @param \Nogrod\eBaySDK\MerchantData\DiscountType[] $discountDetail
+     * @return self
+     */
+    public function setDiscountDetail(array $discountDetail)
+    {
+        $this->discountDetail = $discountDetail;
+        return $this;
+    }
+
+    /**
+     * Gets as netted
+     *
+     * This boolean field is returned with each account entry if the <b>IncludeNettedEntries</b> field is included in the request and set to <code>true</code>. The value indicates whether or not the corresponding account entry value (charge or credit) is a part of the 'Total Netted Charge Amount' or 'Total Netted Credit Amount' values returned in the <b>AccountSummary.NettedTransactionSummary</b> container.
+     *  <br>
+     *  <br>
+     *  If this value is <code>true</code>, it indicates that the corresponding fee was deducted from a seller payout. If the value is <code>false</code>, it indicates that the fee or credit was invoiced to the seller instead.
+     *  <br>
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b>
+     *  For seller accounts not yet enabled for eBay managed payments, the returned value will always be <code>false</code>. There may also be some seller accounts enabled for managed payments, but the fee netting mechanism may not yet be available for an account. A seller can check their status for the fee netting mechanism by checking the value in the <b>FeeNettingStatus</b> field.
+     *  </span>
+     *
+     * @return bool
+     */
+    public function getNetted()
+    {
+        return $this->netted;
+    }
+
+    /**
+     * Sets a new netted
+     *
+     * This boolean field is returned with each account entry if the <b>IncludeNettedEntries</b> field is included in the request and set to <code>true</code>. The value indicates whether or not the corresponding account entry value (charge or credit) is a part of the 'Total Netted Charge Amount' or 'Total Netted Credit Amount' values returned in the <b>AccountSummary.NettedTransactionSummary</b> container.
+     *  <br>
+     *  <br>
+     *  If this value is <code>true</code>, it indicates that the corresponding fee was deducted from a seller payout. If the value is <code>false</code>, it indicates that the fee or credit was invoiced to the seller instead.
+     *  <br>
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b>
+     *  For seller accounts not yet enabled for eBay managed payments, the returned value will always be <code>false</code>. There may also be some seller accounts enabled for managed payments, but the fee netting mechanism may not yet be available for an account. A seller can check their status for the fee netting mechanism by checking the value in the <b>FeeNettingStatus</b> field.
+     *  </span>
+     *
+     * @param bool $netted
+     * @return self
+     */
+    public function setNetted($netted)
+    {
+        $this->netted = $netted;
         return $this;
     }
 
@@ -656,6 +795,15 @@ class AccountEntryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
         $value = $this->getOrderId();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}OrderId", $value);
+        }
+        $value = $this->getDiscountDetail();
+        if (null !== $value) {
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DiscountDetail", $value);
+        }
+        $value = $this->getNetted();
+        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        if (null !== $value) {
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Netted", $value);
         }
     }
 
@@ -736,6 +884,16 @@ class AccountEntryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}OrderId');
         if (null !== $value) {
             $this->setOrderId($value);
+        }
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DiscountDetail', true);
+        if (null !== $value && !empty($value)) {
+            $this->setDiscountDetail(array_map(function ($v) {
+                return \Nogrod\eBaySDK\MerchantData\DiscountType::fromKeyValue($v);
+            }, $value));
+        }
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Netted');
+        if (null !== $value) {
+            $this->setNetted($value);
         }
     }
 }

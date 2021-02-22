@@ -93,6 +93,9 @@ class DisputeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
      *  buyer to purchase an item. In the case of <b>GetDispute</b> and <b>GetUserDisputes</b>
      *  responses, this value identifies the order line item involved in the
      *  dispute.
+     *  <br>
+     *  <br>
+     *  The <b>TransactionID</b> value for auction listings is always <code>0</code> since there can be only one winning bidder/one sale for an auction listing.
      *
      * @var string $transactionID
      */
@@ -449,6 +452,9 @@ class DisputeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
      *  buyer to purchase an item. In the case of <b>GetDispute</b> and <b>GetUserDisputes</b>
      *  responses, this value identifies the order line item involved in the
      *  dispute.
+     *  <br>
+     *  <br>
+     *  The <b>TransactionID</b> value for auction listings is always <code>0</code> since there can be only one winning bidder/one sale for an auction listing.
      *
      * @return string
      */
@@ -465,6 +471,9 @@ class DisputeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
      *  buyer to purchase an item. In the case of <b>GetDispute</b> and <b>GetUserDisputes</b>
      *  responses, this value identifies the order line item involved in the
      *  dispute.
+     *  <br>
+     *  <br>
+     *  The <b>TransactionID</b> value for auction listings is always <code>0</code> since there can be only one winning bidder/one sale for an auction listing.
      *
      * @param string $transactionID
      * @return self

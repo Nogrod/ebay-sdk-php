@@ -38,6 +38,9 @@ class VATRateType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
      *  <b>ReviseSellingManagerSaleRecord</b>. However, if <b>OrderID</b> is passed in as an input
      *  filter for <b>ReviseSellingManagerSaleRecord</b>, the <b>ItemID</b>/<b>TransactionID</b> pair is
      *  ignored.
+     *  <br>
+     *  <br>
+     *  The <b>TransactionID</b> value for auction listings is always <code>0</code> since there can be only one winning bidder/one sale for an auction listing.
      *
      * @var string $transactionID
      */
@@ -119,6 +122,9 @@ class VATRateType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
      *  <b>ReviseSellingManagerSaleRecord</b>. However, if <b>OrderID</b> is passed in as an input
      *  filter for <b>ReviseSellingManagerSaleRecord</b>, the <b>ItemID</b>/<b>TransactionID</b> pair is
      *  ignored.
+     *  <br>
+     *  <br>
+     *  The <b>TransactionID</b> value for auction listings is always <code>0</code> since there can be only one winning bidder/one sale for an auction listing.
      *
      * @return string
      */
@@ -138,6 +144,9 @@ class VATRateType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
      *  <b>ReviseSellingManagerSaleRecord</b>. However, if <b>OrderID</b> is passed in as an input
      *  filter for <b>ReviseSellingManagerSaleRecord</b>, the <b>ItemID</b>/<b>TransactionID</b> pair is
      *  ignored.
+     *  <br>
+     *  <br>
+     *  The <b>TransactionID</b> value for auction listings is always <code>0</code> since there can be only one winning bidder/one sale for an auction listing.
      *
      * @param string $transactionID
      * @return self

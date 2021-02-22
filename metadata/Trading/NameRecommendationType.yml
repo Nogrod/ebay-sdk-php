@@ -16,6 +16,17 @@ Nogrod\eBaySDK\Trading\NameRecommendationType:
                 getter: getName
                 setter: setName
             type: string
+        relevanceIndicator:
+            expose: true
+            access_type: public_method
+            serialized_name: RelevanceIndicator
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getRelevanceIndicator
+                setter: setRelevanceIndicator
+            type: Nogrod\eBaySDK\Trading\RelevanceIndicatorType
         validationRules:
             expose: true
             access_type: public_method

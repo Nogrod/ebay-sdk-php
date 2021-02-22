@@ -41,6 +41,9 @@ class GetFeedbackRequestType extends AbstractRequestType
      *  pair or an <b>OrderLineItemID</b> value is used to retrieve a feedback record
      *  on a specific order line item, the <b>FeedbackType</b> and <b>Pagination</b>
      *  fields (if included) are ignored.
+     *  <br>
+     *  <br>
+     *  The <b>TransactionID</b> value for auction listings is always <code>0</code> since there can be only one winning bidder/one sale for an auction listing.
      *
      * @var string $transactionID
      */
@@ -178,6 +181,9 @@ class GetFeedbackRequestType extends AbstractRequestType
      *  pair or an <b>OrderLineItemID</b> value is used to retrieve a feedback record
      *  on a specific order line item, the <b>FeedbackType</b> and <b>Pagination</b>
      *  fields (if included) are ignored.
+     *  <br>
+     *  <br>
+     *  The <b>TransactionID</b> value for auction listings is always <code>0</code> since there can be only one winning bidder/one sale for an auction listing.
      *
      * @return string
      */
@@ -195,6 +201,9 @@ class GetFeedbackRequestType extends AbstractRequestType
      *  pair or an <b>OrderLineItemID</b> value is used to retrieve a feedback record
      *  on a specific order line item, the <b>FeedbackType</b> and <b>Pagination</b>
      *  fields (if included) are ignored.
+     *  <br>
+     *  <br>
+     *  The <b>TransactionID</b> value for auction listings is always <code>0</code> since there can be only one winning bidder/one sale for an auction listing.
      *
      * @param string $transactionID
      * @return self

@@ -7,7 +7,7 @@ namespace Nogrod\eBaySDK\MerchantData;
  *
  * This enumerated type is used to control how the "Buy It Now" button is displayed on a listing.
  *  <br><br>
- *  <span class="tablenote"><b>Note:</b> Sellers opted in to the new eBay Managed Payments program cannot control the display of the "Buy It Now" button in listings, and although the <b>DisplayPayNowButton</b> value can still be set in <b>SetUserPreferences</b> and returned in <b>GetUserPreferences</b>, the setting will not have any affect on any current or future listings for the seller. eBay Managed Payments is currently only available to a limited number of sellers on the US site. The rollout to more sellers in more countries will be a multi-year journey, but eBay expects to transition a majority of sellers Worldwide to Managed Payments by 2021.
+ *  <span class="tablenote"><b>Note:</b> Sellers opted in to the new eBay managed payments program cannot control the display of the "Buy It Now" button in listings, and although the <b>DisplayPayNowButton</b> value can still be set in <b>SetUserPreferences</b> and returned in <b>GetUserPreferences</b>, the setting will not have any affect on any current or future listings for the seller. For the current list of eBay marketplaces in which eBay managed payments has rolled out, see the <a href="https://developer.ebay.com/managed-payments" target="_blank">eBay Managed Payments</a> landing page.
  *  </span>
  *  <br>
  * XSD Type: DisplayPayNowButtonCodeType

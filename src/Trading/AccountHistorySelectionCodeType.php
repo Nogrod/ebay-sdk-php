@@ -61,7 +61,7 @@ class AccountHistorySelectionCodeType
      * adopt the new format, could either use a Trading WSDL Version 1113 (or newer),
      * or they could even use an older Trading WSDL but set the
      * <b>X-EBAY-API-COMPATIBILITY-LEVEL</b> HTTP header value to <code>1113</code> in
-     * API calls. <b>Beginning in April 2020, only the new order ID format will be
+     * API calls. <b>Beginning in June 2020, only the new order ID format will be
      * returned in response payloads for paid orders, regardless of the WSDL version
      * number or compatibility level.</b>
      *  <br><br>

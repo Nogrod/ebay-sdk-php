@@ -184,6 +184,13 @@ class ListingInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     private $gift = null;
 
     /**
+     * The number of users that have added the item to their watch list.
+     *
+     * @var int $watchCount
+     */
+    private $watchCount = null;
+
+    /**
      * @var string $delimiter
      */
     private $delimiter = null;
@@ -625,6 +632,32 @@ class ListingInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     }
 
     /**
+     * Gets as watchCount
+     *
+     * The number of users that have added the item to their watch list.
+     *
+     * @return int
+     */
+    public function getWatchCount()
+    {
+        return $this->watchCount;
+    }
+
+    /**
+     * Sets a new watchCount
+     *
+     * The number of users that have added the item to their watch list.
+     *
+     * @param int $watchCount
+     * @return self
+     */
+    public function setWatchCount($watchCount)
+    {
+        $this->watchCount = $watchCount;
+        return $this;
+    }
+
+    /**
      * Gets as delimiter
      *
      * @return string
@@ -684,6 +717,10 @@ class ListingInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
         if (null !== $value) {
             $writer->writeElement("{http://www.ebay.com/marketplace/search/v1/services}gift", $value);
         }
+        $value = $this->getWatchCount();
+        if (null !== $value) {
+            $writer->writeElement("{http://www.ebay.com/marketplace/search/v1/services}watchCount", $value);
+        }
         $value = $this->getDelimiter();
         if (null !== $value) {
             $writer->writeElement("{http://www.ebay.com/marketplace/search/v1/services}delimiter", $value);
@@ -735,6 +772,10 @@ class ListingInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
         $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}gift');
         if (null !== $value) {
             $this->setGift($value);
+        }
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}watchCount');
+        if (null !== $value) {
+            $this->setWatchCount($value);
         }
         $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}delimiter');
         if (null !== $value) {

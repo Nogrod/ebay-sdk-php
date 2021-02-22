@@ -93,6 +93,17 @@ Nogrod\eBaySDK\Trading\GetAccountRequestType:
                 getter: getIncludeConversionRate
                 setter: setIncludeConversionRate
             type: bool
+        includeNettedEntries:
+            expose: true
+            access_type: public_method
+            serialized_name: IncludeNettedEntries
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getIncludeNettedEntries
+                setter: setIncludeNettedEntries
+            type: bool
         accountEntrySortType:
             expose: true
             access_type: public_method

@@ -1285,7 +1285,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     private $kTypeSupported = null;
 
     /**
-     * This field indicates whether or not the specified eBay site supports Product-Based Shopping Experience listings - listings that are associated with an eBay catalog product. The Product-Based Shopping Experience (PBSE) is currently supported by the US, UK, Germany, Australia, and Canada (English) sites.
+     * This field indicates whether or not the specified eBay site supports Product-Based Shopping Experience listings - listings that are associated with an eBay catalog product.
      *  <br>
      *  <br>
      *  <span class="tablenote"><b>Note:</b>
@@ -5697,7 +5697,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Gets as productRequiredEnabled
      *
-     * This field indicates whether or not the specified eBay site supports Product-Based Shopping Experience listings - listings that are associated with an eBay catalog product. The Product-Based Shopping Experience (PBSE) is currently supported by the US, UK, Germany, Australia, and Canada (English) sites.
+     * This field indicates whether or not the specified eBay site supports Product-Based Shopping Experience listings - listings that are associated with an eBay catalog product.
      *  <br>
      *  <br>
      *  <span class="tablenote"><b>Note:</b>
@@ -5714,7 +5714,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Sets a new productRequiredEnabled
      *
-     * This field indicates whether or not the specified eBay site supports Product-Based Shopping Experience listings - listings that are associated with an eBay catalog product. The Product-Based Shopping Experience (PBSE) is currently supported by the US, UK, Germany, Australia, and Canada (English) sites.
+     * This field indicates whether or not the specified eBay site supports Product-Based Shopping Experience listings - listings that are associated with an eBay catalog product.
      *  <br>
      *  <br>
      *  <span class="tablenote"><b>Note:</b>

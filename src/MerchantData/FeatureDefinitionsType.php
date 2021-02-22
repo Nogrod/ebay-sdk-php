@@ -1072,9 +1072,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     private $kTypeSupported = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites supports Product-Based Shopping Experience listings (listings associated with eBay catalog products). PBSE is currently supported by the US, UK, Germany, Australia, and Canada (English) sites. This field is only returned if <code>Enabled</code>.
-     *  <br><br>
-     *  Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ProductRequiredEnabled</code>.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites supports Product-Based Shopping Experience listings (listings associated with eBay catalog products).
      *  <br><br>
      *  <span class="tablenote"><b>Note:</b>
      *  Due to the rollback of the Product-Based Shopping Experience mandate for all eBay categories, association with an eBay catalog product will no longer be required for any categories on any eBay marketplace.</span>
@@ -4873,9 +4871,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as productRequiredEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites supports Product-Based Shopping Experience listings (listings associated with eBay catalog products). PBSE is currently supported by the US, UK, Germany, Australia, and Canada (English) sites. This field is only returned if <code>Enabled</code>.
-     *  <br><br>
-     *  Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ProductRequiredEnabled</code>.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites supports Product-Based Shopping Experience listings (listings associated with eBay catalog products).
      *  <br><br>
      *  <span class="tablenote"><b>Note:</b>
      *  Due to the rollback of the Product-Based Shopping Experience mandate for all eBay categories, association with an eBay catalog product will no longer be required for any categories on any eBay marketplace.</span>
@@ -4890,9 +4886,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new productRequiredEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites supports Product-Based Shopping Experience listings (listings associated with eBay catalog products). PBSE is currently supported by the US, UK, Germany, Australia, and Canada (English) sites. This field is only returned if <code>Enabled</code>.
-     *  <br><br>
-     *  Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ProductRequiredEnabled</code>.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites supports Product-Based Shopping Experience listings (listings associated with eBay catalog products).
      *  <br><br>
      *  <span class="tablenote"><b>Note:</b>
      *  Due to the rollback of the Product-Based Shopping Experience mandate for all eBay categories, association with an eBay catalog product will no longer be required for any categories on any eBay marketplace.</span>

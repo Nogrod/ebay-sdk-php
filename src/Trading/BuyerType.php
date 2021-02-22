@@ -14,8 +14,11 @@ class BuyerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
 {
 
     /**
-     * This container uses <b>AddressType</b>, and each call that uses <b>BuyerType</b> uses the <b>ShippingAddress</b> container a little differently. See the Call Reference documentation for each call to see what fields of <b>AddressType</b> are used by each call.
-     *  Output only.
+     * This container shows the buyer's shipping address.
+     *  <br>
+     *  <br>
+     *  <span class="tablenote"><b>Note:</b> For an Authenticity Guarantee program order returned in <b>GetItemTransactions</b> or <b>GetSellerTransactions</b>, this is the address of the authenticator's warehouse. The authenticator is responsible for delivery to the buyer's shipping address.
+     *  </span>
      *
      * @var \Nogrod\eBaySDK\Trading\AddressType $shippingAddress
      */
@@ -39,8 +42,11 @@ class BuyerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
     /**
      * Gets as shippingAddress
      *
-     * This container uses <b>AddressType</b>, and each call that uses <b>BuyerType</b> uses the <b>ShippingAddress</b> container a little differently. See the Call Reference documentation for each call to see what fields of <b>AddressType</b> are used by each call.
-     *  Output only.
+     * This container shows the buyer's shipping address.
+     *  <br>
+     *  <br>
+     *  <span class="tablenote"><b>Note:</b> For an Authenticity Guarantee program order returned in <b>GetItemTransactions</b> or <b>GetSellerTransactions</b>, this is the address of the authenticator's warehouse. The authenticator is responsible for delivery to the buyer's shipping address.
+     *  </span>
      *
      * @return \Nogrod\eBaySDK\Trading\AddressType
      */
@@ -52,8 +58,11 @@ class BuyerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
     /**
      * Sets a new shippingAddress
      *
-     * This container uses <b>AddressType</b>, and each call that uses <b>BuyerType</b> uses the <b>ShippingAddress</b> container a little differently. See the Call Reference documentation for each call to see what fields of <b>AddressType</b> are used by each call.
-     *  Output only.
+     * This container shows the buyer's shipping address.
+     *  <br>
+     *  <br>
+     *  <span class="tablenote"><b>Note:</b> For an Authenticity Guarantee program order returned in <b>GetItemTransactions</b> or <b>GetSellerTransactions</b>, this is the address of the authenticator's warehouse. The authenticator is responsible for delivery to the buyer's shipping address.
+     *  </span>
      *
      * @param \Nogrod\eBaySDK\Trading\AddressType $shippingAddress
      * @return self

@@ -229,17 +229,6 @@ Nogrod\eBaySDK\Trading\ItemType:
                 getter: getListingDetails
                 setter: setListingDetails
             type: Nogrod\eBaySDK\Trading\ListingDetailsType
-        listingDesigner:
-            expose: true
-            access_type: public_method
-            serialized_name: ListingDesigner
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getListingDesigner
-                setter: setListingDesigner
-            type: Nogrod\eBaySDK\Trading\ListingDesignerType
         listingDuration:
             expose: true
             access_type: public_method

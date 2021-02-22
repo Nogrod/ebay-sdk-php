@@ -14,11 +14,7 @@ class ApplicationDeliveryPreferencesType implements \Sabre\Xml\XmlSerializable, 
 {
 
     /**
-     * The URL to which eBay delivers all Platform Notifications and Client Alerts sent to the application. For
-     *  delivery to a server, the URL begins with "<code>http://</code>" or "<code>https://</code>" and must be well
-     *  formed. For delivery to
-     *  an email address, the URL begins with ""<code>mailto://</code>" and specifies a valid email
-     *  address.
+     * The URL to which eBay delivers all Platform Notifications and Client Alerts sent to the application. For delivery to a server, the URL must begin with "<code>https://</code>" and must be well formed.
      *
      * @var string $applicationURL
      */
@@ -99,11 +95,7 @@ class ApplicationDeliveryPreferencesType implements \Sabre\Xml\XmlSerializable, 
     /**
      * Gets as applicationURL
      *
-     * The URL to which eBay delivers all Platform Notifications and Client Alerts sent to the application. For
-     *  delivery to a server, the URL begins with "<code>http://</code>" or "<code>https://</code>" and must be well
-     *  formed. For delivery to
-     *  an email address, the URL begins with ""<code>mailto://</code>" and specifies a valid email
-     *  address.
+     * The URL to which eBay delivers all Platform Notifications and Client Alerts sent to the application. For delivery to a server, the URL must begin with "<code>https://</code>" and must be well formed.
      *
      * @return string
      */
@@ -115,11 +107,7 @@ class ApplicationDeliveryPreferencesType implements \Sabre\Xml\XmlSerializable, 
     /**
      * Sets a new applicationURL
      *
-     * The URL to which eBay delivers all Platform Notifications and Client Alerts sent to the application. For
-     *  delivery to a server, the URL begins with "<code>http://</code>" or "<code>https://</code>" and must be well
-     *  formed. For delivery to
-     *  an email address, the URL begins with ""<code>mailto://</code>" and specifies a valid email
-     *  address.
+     * The URL to which eBay delivers all Platform Notifications and Client Alerts sent to the application. For delivery to a server, the URL must begin with "<code>https://</code>" and must be well formed.
      *
      * @param string $applicationURL
      * @return self

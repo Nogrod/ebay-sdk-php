@@ -9,7 +9,7 @@ use Nogrod\XMLClientRuntime\Func;
  *
  * Type used by the <b>Membership</b> container that is returned in the response of the <b>GetUser</b> call if the seller is enrolled in one or more eBay membership programs such as eBay Plus.
  *  <br/><br/>
- *  <span class="tablenote"><b>Note:</b> Currently, eBay Plus is available only to buyers in Germany, Austria, and Australia marketplaces in the near future.
+ *  <span class="tablenote"><b>Note:</b> Currently, eBay Plus is available only to buyers on Germany and Australia marketplaces.
  *  </span>
  * XSD Type: MembershipDetailsType
  */

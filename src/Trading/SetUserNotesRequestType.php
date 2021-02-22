@@ -47,6 +47,9 @@ class SetUserNotesRequestType extends AbstractRequestType
      *  sellers can view user notes made on order line items in
      *  the <b>PrivateNotes</b> field of the <b>SoldList</b> and <b>DeletedFromSoldList</b>
      *  containers in <b>GetMyeBaySellinging</b>.
+     *  <br>
+     *  <br>
+     *  The <b>TransactionID</b> value for auction listings is always <code>0</code> since there can be only one winning bidder/one sale for an auction listing.
      *
      * @var string $transactionID
      */
@@ -201,6 +204,9 @@ class SetUserNotesRequestType extends AbstractRequestType
      *  sellers can view user notes made on order line items in
      *  the <b>PrivateNotes</b> field of the <b>SoldList</b> and <b>DeletedFromSoldList</b>
      *  containers in <b>GetMyeBaySellinging</b>.
+     *  <br>
+     *  <br>
+     *  The <b>TransactionID</b> value for auction listings is always <code>0</code> since there can be only one winning bidder/one sale for an auction listing.
      *
      * @return string
      */
@@ -220,6 +226,9 @@ class SetUserNotesRequestType extends AbstractRequestType
      *  sellers can view user notes made on order line items in
      *  the <b>PrivateNotes</b> field of the <b>SoldList</b> and <b>DeletedFromSoldList</b>
      *  containers in <b>GetMyeBaySellinging</b>.
+     *  <br>
+     *  <br>
+     *  The <b>TransactionID</b> value for auction listings is always <code>0</code> since there can be only one winning bidder/one sale for an auction listing.
      *
      * @param string $transactionID
      * @return self

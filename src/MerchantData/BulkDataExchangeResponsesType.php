@@ -59,6 +59,11 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
     ];
 
     /**
+     * @var \Nogrod\eBaySDK\MerchantData\OrderReportResponseType $orderReport
+     */
+    private $orderReport = null;
+
+    /**
      * @var \Nogrod\eBaySDK\MerchantData\RelistFixedPriceItemResponseType[] $relistFixedPriceItemResponse
      */
     private $relistFixedPriceItemResponse = [
@@ -99,11 +104,6 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
     private $setShipmentTrackingInfoResponse = [
         
     ];
-
-    /**
-     * @var \Nogrod\eBaySDK\MerchantData\SoldReportResponseType $soldReport
-     */
-    private $soldReport = null;
 
     /**
      * @var \Nogrod\eBaySDK\MerchantData\UploadSiteHostedPicturesResponseType[] $uploadSiteHostedPicturesResponse
@@ -451,6 +451,28 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
     }
 
     /**
+     * Gets as orderReport
+     *
+     * @return \Nogrod\eBaySDK\MerchantData\OrderReportResponseType
+     */
+    public function getOrderReport()
+    {
+        return $this->orderReport;
+    }
+
+    /**
+     * Sets a new orderReport
+     *
+     * @param \Nogrod\eBaySDK\MerchantData\OrderReportResponseType $orderReport
+     * @return self
+     */
+    public function setOrderReport(\Nogrod\eBaySDK\MerchantData\OrderReportResponseType $orderReport)
+    {
+        $this->orderReport = $orderReport;
+        return $this;
+    }
+
+    /**
      * Adds as relistFixedPriceItemResponse
      *
      * @return self
@@ -787,28 +809,6 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
     }
 
     /**
-     * Gets as soldReport
-     *
-     * @return \Nogrod\eBaySDK\MerchantData\SoldReportResponseType
-     */
-    public function getSoldReport()
-    {
-        return $this->soldReport;
-    }
-
-    /**
-     * Sets a new soldReport
-     *
-     * @param \Nogrod\eBaySDK\MerchantData\SoldReportResponseType $soldReport
-     * @return self
-     */
-    public function setSoldReport(\Nogrod\eBaySDK\MerchantData\SoldReportResponseType $soldReport)
-    {
-        $this->soldReport = $soldReport;
-        return $this;
-    }
-
-    /**
      * Adds as uploadSiteHostedPicturesResponse
      *
      * @return self
@@ -1017,6 +1017,10 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
                 return ["OrderAckResponse" => $v];
             }, $value));
         }
+        $value = $this->getOrderReport();
+        if (null !== $value) {
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}OrderReport", $value);
+        }
         $value = $this->getRelistFixedPriceItemResponse();
         if (null !== $value && !empty($this->getRelistFixedPriceItemResponse())) {
             $writer->write(array_map(function ($v) {
@@ -1052,10 +1056,6 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
             $writer->write(array_map(function ($v) {
                 return ["SetShipmentTrackingInfoResponse" => $v];
             }, $value));
-        }
-        $value = $this->getSoldReport();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SoldReport", $value);
         }
         $value = $this->getUploadSiteHostedPicturesResponse();
         if (null !== $value && !empty($this->getUploadSiteHostedPicturesResponse())) {
@@ -1129,6 +1129,10 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
                 return \Nogrod\eBaySDK\MerchantData\OrderAckResponseType::fromKeyValue($v);
             }, $value));
         }
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}OrderReport');
+        if (null !== $value) {
+            $this->setOrderReport(\Nogrod\eBaySDK\MerchantData\OrderReportResponseType::fromKeyValue($value));
+        }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RelistFixedPriceItemResponse', true);
         if (null !== $value && !empty($value)) {
             $this->setRelistFixedPriceItemResponse(array_map(function ($v) {
@@ -1164,10 +1168,6 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
             $this->setSetShipmentTrackingInfoResponse(array_map(function ($v) {
                 return \Nogrod\eBaySDK\MerchantData\SetShipmentTrackingInfoResponseType::fromKeyValue($v);
             }, $value));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SoldReport');
-        if (null !== $value) {
-            $this->setSoldReport(\Nogrod\eBaySDK\MerchantData\SoldReportResponseType::fromKeyValue($value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UploadSiteHostedPicturesResponse', true);
         if (null !== $value && !empty($value)) {

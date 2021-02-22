@@ -30,9 +30,14 @@ class VerifyAddFixedPriceItemResponseType extends AbstractResponseType
     private $sKU = null;
 
     /**
-     * Child elements contain the estimated listing fees for the new item listing.
-     *  The fees do not include the Final Value Fee (FVF), which cannot be determined
-     *  until an item is sold.
+     * This container is an array of fees that would incur if the listing defined in request payload of the <b>VerifyAddFixedPriceItem<b> call was published. The fees in this container will not include any fees that are based on the purchase price (such as Final Value Fee) and only come into play when the listing has a sale.
+     *  <br>
+     *  <br>
+     *  All listing fee types are returned, even if those fees are not applicable for the listing and are '0.0'.
+     *  <br>
+     *  <br>
+     *  <span class="tablenote"><b>Note:</b> The currency used for all fees returned under the <b>Fees</b> container reflects the currency used for the listing site, and not necessarily in the seller's default/home currency. For example, if a Canadian seller is using the <b>VerifyAddFixedPriceItem</b> call to verify a listing on the eBay US site, the currency type shown for each fee will be <code>USD</code> and not <code>CAD</code>.
+     *  </span>
      *
      * @var \Nogrod\eBaySDK\MerchantData\FeeType[] $fees
      */
@@ -152,9 +157,14 @@ class VerifyAddFixedPriceItemResponseType extends AbstractResponseType
     /**
      * Adds as fee
      *
-     * Child elements contain the estimated listing fees for the new item listing.
-     *  The fees do not include the Final Value Fee (FVF), which cannot be determined
-     *  until an item is sold.
+     * This container is an array of fees that would incur if the listing defined in request payload of the <b>VerifyAddFixedPriceItem<b> call was published. The fees in this container will not include any fees that are based on the purchase price (such as Final Value Fee) and only come into play when the listing has a sale.
+     *  <br>
+     *  <br>
+     *  All listing fee types are returned, even if those fees are not applicable for the listing and are '0.0'.
+     *  <br>
+     *  <br>
+     *  <span class="tablenote"><b>Note:</b> The currency used for all fees returned under the <b>Fees</b> container reflects the currency used for the listing site, and not necessarily in the seller's default/home currency. For example, if a Canadian seller is using the <b>VerifyAddFixedPriceItem</b> call to verify a listing on the eBay US site, the currency type shown for each fee will be <code>USD</code> and not <code>CAD</code>.
+     *  </span>
      *
      * @return self
      * @param \Nogrod\eBaySDK\MerchantData\FeeType $fee
@@ -168,9 +178,14 @@ class VerifyAddFixedPriceItemResponseType extends AbstractResponseType
     /**
      * isset fees
      *
-     * Child elements contain the estimated listing fees for the new item listing.
-     *  The fees do not include the Final Value Fee (FVF), which cannot be determined
-     *  until an item is sold.
+     * This container is an array of fees that would incur if the listing defined in request payload of the <b>VerifyAddFixedPriceItem<b> call was published. The fees in this container will not include any fees that are based on the purchase price (such as Final Value Fee) and only come into play when the listing has a sale.
+     *  <br>
+     *  <br>
+     *  All listing fee types are returned, even if those fees are not applicable for the listing and are '0.0'.
+     *  <br>
+     *  <br>
+     *  <span class="tablenote"><b>Note:</b> The currency used for all fees returned under the <b>Fees</b> container reflects the currency used for the listing site, and not necessarily in the seller's default/home currency. For example, if a Canadian seller is using the <b>VerifyAddFixedPriceItem</b> call to verify a listing on the eBay US site, the currency type shown for each fee will be <code>USD</code> and not <code>CAD</code>.
+     *  </span>
      *
      * @param int|string $index
      * @return bool
@@ -183,9 +198,14 @@ class VerifyAddFixedPriceItemResponseType extends AbstractResponseType
     /**
      * unset fees
      *
-     * Child elements contain the estimated listing fees for the new item listing.
-     *  The fees do not include the Final Value Fee (FVF), which cannot be determined
-     *  until an item is sold.
+     * This container is an array of fees that would incur if the listing defined in request payload of the <b>VerifyAddFixedPriceItem<b> call was published. The fees in this container will not include any fees that are based on the purchase price (such as Final Value Fee) and only come into play when the listing has a sale.
+     *  <br>
+     *  <br>
+     *  All listing fee types are returned, even if those fees are not applicable for the listing and are '0.0'.
+     *  <br>
+     *  <br>
+     *  <span class="tablenote"><b>Note:</b> The currency used for all fees returned under the <b>Fees</b> container reflects the currency used for the listing site, and not necessarily in the seller's default/home currency. For example, if a Canadian seller is using the <b>VerifyAddFixedPriceItem</b> call to verify a listing on the eBay US site, the currency type shown for each fee will be <code>USD</code> and not <code>CAD</code>.
+     *  </span>
      *
      * @param int|string $index
      * @return void
@@ -198,9 +218,14 @@ class VerifyAddFixedPriceItemResponseType extends AbstractResponseType
     /**
      * Gets as fees
      *
-     * Child elements contain the estimated listing fees for the new item listing.
-     *  The fees do not include the Final Value Fee (FVF), which cannot be determined
-     *  until an item is sold.
+     * This container is an array of fees that would incur if the listing defined in request payload of the <b>VerifyAddFixedPriceItem<b> call was published. The fees in this container will not include any fees that are based on the purchase price (such as Final Value Fee) and only come into play when the listing has a sale.
+     *  <br>
+     *  <br>
+     *  All listing fee types are returned, even if those fees are not applicable for the listing and are '0.0'.
+     *  <br>
+     *  <br>
+     *  <span class="tablenote"><b>Note:</b> The currency used for all fees returned under the <b>Fees</b> container reflects the currency used for the listing site, and not necessarily in the seller's default/home currency. For example, if a Canadian seller is using the <b>VerifyAddFixedPriceItem</b> call to verify a listing on the eBay US site, the currency type shown for each fee will be <code>USD</code> and not <code>CAD</code>.
+     *  </span>
      *
      * @return \Nogrod\eBaySDK\MerchantData\FeeType[]
      */
@@ -212,9 +237,14 @@ class VerifyAddFixedPriceItemResponseType extends AbstractResponseType
     /**
      * Sets a new fees
      *
-     * Child elements contain the estimated listing fees for the new item listing.
-     *  The fees do not include the Final Value Fee (FVF), which cannot be determined
-     *  until an item is sold.
+     * This container is an array of fees that would incur if the listing defined in request payload of the <b>VerifyAddFixedPriceItem<b> call was published. The fees in this container will not include any fees that are based on the purchase price (such as Final Value Fee) and only come into play when the listing has a sale.
+     *  <br>
+     *  <br>
+     *  All listing fee types are returned, even if those fees are not applicable for the listing and are '0.0'.
+     *  <br>
+     *  <br>
+     *  <span class="tablenote"><b>Note:</b> The currency used for all fees returned under the <b>Fees</b> container reflects the currency used for the listing site, and not necessarily in the seller's default/home currency. For example, if a Canadian seller is using the <b>VerifyAddFixedPriceItem</b> call to verify a listing on the eBay US site, the currency type shown for each fee will be <code>USD</code> and not <code>CAD</code>.
+     *  </span>
      *
      * @param \Nogrod\eBaySDK\MerchantData\FeeType[] $fees
      * @return self

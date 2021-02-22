@@ -15,8 +15,7 @@ class CharityInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
 {
 
     /**
-     * This attribute is a unique identifier used by the corresponding social networking site to
-     *  identify the nonprofit charity organization.
+     * This attribute is the eBay-assigned, unique identifier of the nonprofit charity organization.
      *
      * @var string $id
      */
@@ -201,8 +200,7 @@ class CharityInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     /**
      * Gets as id
      *
-     * This attribute is a unique identifier used by the corresponding social networking site to
-     *  identify the nonprofit charity organization.
+     * This attribute is the eBay-assigned, unique identifier of the nonprofit charity organization.
      *
      * @return string
      */
@@ -214,8 +212,7 @@ class CharityInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     /**
      * Sets a new id
      *
-     * This attribute is a unique identifier used by the corresponding social networking site to
-     *  identify the nonprofit charity organization.
+     * This attribute is the eBay-assigned, unique identifier of the nonprofit charity organization.
      *
      * @param string $id
      * @return self

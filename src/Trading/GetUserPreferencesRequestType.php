@@ -182,7 +182,7 @@ class GetUserPreferencesRequestType extends AbstractRequestType
      *  The <strong>eBayPLUSPreference</strong> container is returned in the response with information about each country where the seller is eligible to offer eBay Plus on listings (one <strong>eBayPLUSPreference</strong> container per country), as well as the seller's opt-in status and listing preference for each country.
      *  <br/><br/>
      *  <span class="tablenote">
-     *  <strong>Note:</strong> Currently, eBay Plus is available only to buyers in Germany, Austria, and Australia.
+     *  <strong>Note:</strong> Currently, eBay Plus is available only to buyers in Germany and Australia. In Australia, the seller has no control/responsibility over setting the eBay Plus feature for a listing. Instead, eBay will evaluate/determine whether a listing is eligible for eBay Plus.
      *  </span>
      *
      * @var bool $showeBayPLUSPreference
@@ -773,7 +773,7 @@ class GetUserPreferencesRequestType extends AbstractRequestType
      *  The <strong>eBayPLUSPreference</strong> container is returned in the response with information about each country where the seller is eligible to offer eBay Plus on listings (one <strong>eBayPLUSPreference</strong> container per country), as well as the seller's opt-in status and listing preference for each country.
      *  <br/><br/>
      *  <span class="tablenote">
-     *  <strong>Note:</strong> Currently, eBay Plus is available only to buyers in Germany, Austria, and Australia.
+     *  <strong>Note:</strong> Currently, eBay Plus is available only to buyers in Germany and Australia. In Australia, the seller has no control/responsibility over setting the eBay Plus feature for a listing. Instead, eBay will evaluate/determine whether a listing is eligible for eBay Plus.
      *  </span>
      *
      * @return bool
@@ -793,7 +793,7 @@ class GetUserPreferencesRequestType extends AbstractRequestType
      *  The <strong>eBayPLUSPreference</strong> container is returned in the response with information about each country where the seller is eligible to offer eBay Plus on listings (one <strong>eBayPLUSPreference</strong> container per country), as well as the seller's opt-in status and listing preference for each country.
      *  <br/><br/>
      *  <span class="tablenote">
-     *  <strong>Note:</strong> Currently, eBay Plus is available only to buyers in Germany, Austria, and Australia.
+     *  <strong>Note:</strong> Currently, eBay Plus is available only to buyers in Germany and Australia. In Australia, the seller has no control/responsibility over setting the eBay Plus feature for a listing. Instead, eBay will evaluate/determine whether a listing is eligible for eBay Plus.
      *  </span>
      *
      * @param bool $showeBayPLUSPreference

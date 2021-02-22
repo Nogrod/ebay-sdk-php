@@ -37,7 +37,7 @@ class BuyerRequirementDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\
     private $maximumItemRequirements = null;
 
     /**
-     * The seller uses this container as a mechanism to block prospective buyers who have one or more Unpaid Item Strikes on their account during a specified time period. A buyer receives an Unpaid Item Strike is a seller files an Unpaid Item case against the buyer, and eBay rules in favor of the seller.
+     * The seller uses this container as a mechanism to block prospective buyers who have one or more Unpaid Item strikes on their account during a specified time period. A buyer receives an Unpaid Item strike if a seller files an Unpaid Item case against the buyer, and eBay rules in favor of the seller.
      *
      * @var \Nogrod\eBaySDK\Trading\MaximumUnpaidItemStrikesInfoType $maximumUnpaidItemStrikesInfo
      */
@@ -128,7 +128,7 @@ class BuyerRequirementDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\
     /**
      * Gets as maximumUnpaidItemStrikesInfo
      *
-     * The seller uses this container as a mechanism to block prospective buyers who have one or more Unpaid Item Strikes on their account during a specified time period. A buyer receives an Unpaid Item Strike is a seller files an Unpaid Item case against the buyer, and eBay rules in favor of the seller.
+     * The seller uses this container as a mechanism to block prospective buyers who have one or more Unpaid Item strikes on their account during a specified time period. A buyer receives an Unpaid Item strike if a seller files an Unpaid Item case against the buyer, and eBay rules in favor of the seller.
      *
      * @return \Nogrod\eBaySDK\Trading\MaximumUnpaidItemStrikesInfoType
      */
@@ -140,7 +140,7 @@ class BuyerRequirementDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\
     /**
      * Sets a new maximumUnpaidItemStrikesInfo
      *
-     * The seller uses this container as a mechanism to block prospective buyers who have one or more Unpaid Item Strikes on their account during a specified time period. A buyer receives an Unpaid Item Strike is a seller files an Unpaid Item case against the buyer, and eBay rules in favor of the seller.
+     * The seller uses this container as a mechanism to block prospective buyers who have one or more Unpaid Item strikes on their account during a specified time period. A buyer receives an Unpaid Item strike if a seller files an Unpaid Item case against the buyer, and eBay rules in favor of the seller.
      *
      * @param \Nogrod\eBaySDK\Trading\MaximumUnpaidItemStrikesInfoType $maximumUnpaidItemStrikesInfo
      * @return self

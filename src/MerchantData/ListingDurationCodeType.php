@@ -124,9 +124,9 @@ class ListingDurationCodeType
      *
      * This value is used to set the duration of the listing to 'Good 'Til Cancelled.
      * This option is available for fixed-price and Classified Ad listings. "Good 'Til
-     * Cancelled" fixed-price listings will be relisted automatically every 30 days
-     * until all inventory is sold out (e.g., <b>Item.Quantity</b>=0 in a
-     * single-variation fixed-price listing, or all occurences of
+     * Cancelled" fixed-price listings will be relisted automatically each month until
+     * all inventory is sold out (e.g., <b>Item.Quantity</b>=0 in a single-variation
+     * fixed-price listing, or all occurences of
      * <b>Item.Variations.Variation.Quantity</b>=0 in a multi-variation fixed-price
      * listing), or the seller ends the fixed-price listing.
      *  <br>
@@ -142,8 +142,8 @@ class ListingDurationCodeType
      *  </span>
      *  <br>
      *  <span class="tablenote"><b>Note: </b>
-     *  As of July 1, 2019, the Good 'Til Cancelled renewal schedule has been modified
-     * from every 30 days to once per calendar month. For example, if a GTC listing is
+     *  On July 1, 2019, the Good 'Til Cancelled renewal schedule was modified from
+     * every 30 days to once per calendar month. For example, if a GTC listing is
      * created July 5, the next monthly renewal date will be August 5. If a GTC listing
      * is created on the 31st of the month, but the following month only has 30 days,
      * the renewal will happen on the 30th in the following month. Finally, if a GTC

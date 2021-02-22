@@ -7,7 +7,7 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing AddItemRequestType
  *
- * Base request type for the <b>AddItem</b> call, which is used to create a fixed-price, auction, or classified ad listing.
+ * Base request type for the <b>AddItem</b> call, which is used to create a fixed-price, auction, or classified ad listing. The <b>AddItem</b> call does not support multiple-variation listings, so the <b>AddFixedPriceItem</b> call must be used to create multiple-variation listings.
  * XSD Type: AddItemRequestType
  */
 class AddItemRequestType extends AbstractRequestType

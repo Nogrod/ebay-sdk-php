@@ -35,15 +35,10 @@ class GalleryTypeCodeType
      * upgrade.
      *  <br/><br/>
      *  <span class="tablenote"><strong>Note:</strong>
-     *  Beginning in mid-August 2019, the Featured First listing upgrade can no longer
-     * be added for new listings in any eBay marketplace. Existing listings enabled
-     * with this feature will still be honored until mid-September 2019, at which time
-     * the feature will be fully disabled.
-     *  <br/><br/>
-     *  After August 1, 2019, if this value is used in an Add/Revise/Relist call,
-     * sellers will get a warning message about this value/feature being deprecated. In
-     * mid-August 2019, sellers will no longer be able to use this value for new
-     * listings or for revising existing listings.
+     *  The Featured First listing upgrade can no longer be used for new listings or
+     * revising existing listings in any eBay marketplace. If this value is used in an
+     * Add/Revise/Relist call, sellers will get a warning message about this
+     * value/feature being deprecated.
      *  </span>
      */
     public const VAL_FEATURED = 'Featured';

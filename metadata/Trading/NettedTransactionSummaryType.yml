@@ -1,0 +1,29 @@
+Nogrod\eBaySDK\Trading\NettedTransactionSummaryType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        totalNettedChargeAmount:
+            expose: true
+            access_type: public_method
+            serialized_name: TotalNettedChargeAmount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getTotalNettedChargeAmount
+                setter: setTotalNettedChargeAmount
+            type: Nogrod\eBaySDK\Trading\AmountType
+        totalNettedCreditAmount:
+            expose: true
+            access_type: public_method
+            serialized_name: TotalNettedCreditAmount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getTotalNettedCreditAmount
+                setter: setTotalNettedCreditAmount
+            type: Nogrod\eBaySDK\Trading\AmountType

@@ -5,7 +5,7 @@ namespace Nogrod\eBaySDK\Trading;
 /**
  * Class representing SelectionModeCodeType
  *
- * This enumerated type contains the values that will be returned in a <b>GetCategorySpecifics</b> call. The value that is returned will determine how a seller uses/sets mandatory and recommended Item Specifics.
+ * This enumerated type contains the values that will indicate whether a seller can specify their own custom values for an Item Specific, or if they need to use a value (or values) that eBay has defined.
  * XSD Type: SelectionModeCodeType
  */
 class SelectionModeCodeType
@@ -28,19 +28,23 @@ class SelectionModeCodeType
     /**
      * Constant for 'Prefilled' value.
      *
-     * Indicates that mandatory and recommended Item Specifics will be pre-filled after
-     * a successful <b>Add</b>/<b>Revise</b>/<b>Relist</b> call if eBay is able to
-     * match a provided eBay Product ID (ePID), Global Trade Identification Number
-     * (UPC, EAN, ISBN), or Brand/MPN pair to an eBay catalog product.
+     * Indicates that the Item Specifics defined for an eBay catalog product will get
+     * pre-filled for a listing if the seller successfully matches their item to a
+     * product in eBay's catalog. To match an item to an eBay catalog product when
+     * adding or revising a listing, the seller provides either an
+     * <b>Add</b>/<b>Revise</b>/<b>Relist</b> eBay Product ID (ePID), or a Global Trade
+     * Identification Number such as a UPC, an EAN, anISBN), or a Brand/MPN pair.
      */
     public const VAL_PREFILLED = 'Prefilled';
 
     /**
      * Constant for 'SelectionOnly' value.
      *
-     * Indicates that the seller must use the exact string provided in the
-     * corresponding <b>NameRecommendation.Name</b> field when creating, revising, or
-     * relisting an item and using that particular Item Specific.
+     * If this value is returned, it is recommended that the seller only use one of the
+     * recommended values for the corresponding Item Specific. In other words, the
+     * seller should use the exact string provided in one of the corresponding
+     * <b>ValueRecommendation.Value</b> fields when creating, revising, or relisting an
+     * item and using that particular Item Specific.
      */
     public const VAL_SELECTION_ONLY = 'SelectionOnly';
 

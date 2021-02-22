@@ -143,13 +143,6 @@ class ListingTypeCodeType
      * their particular marketplace and category.
      *  <br>
      *  <br>
-     *  <span class="tablenote"><b>Note: </b> For active fixed-price listings with
-     * listing durations other than 'GTC', sellers do not have to take any action. For
-     * listings that are automatically renewed by eBay, the renewed listings will
-     * automatically be set to 'GTC'. For any listings that are relisted by the seller,
-     * the only listing duration value that will be accepted is 'GTC'.
-     *  </span>
-     *  <br>
      *  <span class="tablenote"><b>Note: </b>
      *  As of July 1, 2019, the Good 'Til Cancelled renewal schedule has been modified
      * from every 30 days to once per calendar month. For example, if a GTC listing is

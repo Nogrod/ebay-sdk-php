@@ -52,6 +52,10 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <br><br>
      *  For the <b>GetOrders</b> call, the buyer's email address will be returned (to the seller only) for orders less than two weeks old, but for orders that occurred more than two weeks in the past, the buyer's email address will no longer be returned. This <b>Email</b> field will still be returned, but 'dummy data', such as <code>Invalid Request</code> will replace the actual email address.
      *  <br>
+     *  <br>
+     *  <span class="tablenote"><b>Note:</b>
+     *  For the <b>GetItemTransactions</b> call, this field is only returned to the seller of the order; this field is not returned for the buyer or third party.
+     *  </span>
      *
      * @var string $email
      */
@@ -281,6 +285,10 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <br><br>
      *  Since a bidder's user info is anonymous, this tag will be returned only to that bidder,
      *  and to the seller of an item that the user is bidding on.
+     *  <br> <br>
+     *  <span class="tablenote"><b>Note:</b>
+     *  For the <strong>GetItemTransactions</strong> call, this field is only returned to the seller of the order; this field is not returned for the buyer or third party.
+     *  </span>
      *
      * @var bool $userIDChanged
      */
@@ -291,6 +299,10 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <br><br>
      *  Since a bidder's user info is anonymous, this tag will be returned only to that bidder,
      *  and to the seller of an item that the user is bidding on.
+     *  <br> <br>
+     *  <span class="tablenote"><b>Note:</b>
+     *  For the <strong>GetItemTransactions</strong> call, this field is only returned to the seller of the order; this field is not returned for the buyer or third party.
+     *  </span>
      *
      * @var \DateTime $userIDLastChanged
      */
@@ -614,6 +626,10 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <br><br>
      *  For the <b>GetOrders</b> call, the buyer's email address will be returned (to the seller only) for orders less than two weeks old, but for orders that occurred more than two weeks in the past, the buyer's email address will no longer be returned. This <b>Email</b> field will still be returned, but 'dummy data', such as <code>Invalid Request</code> will replace the actual email address.
      *  <br>
+     *  <br>
+     *  <span class="tablenote"><b>Note:</b>
+     *  For the <b>GetItemTransactions</b> call, this field is only returned to the seller of the order; this field is not returned for the buyer or third party.
+     *  </span>
      *
      * @return string
      */
@@ -644,6 +660,10 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <br><br>
      *  For the <b>GetOrders</b> call, the buyer's email address will be returned (to the seller only) for orders less than two weeks old, but for orders that occurred more than two weeks in the past, the buyer's email address will no longer be returned. This <b>Email</b> field will still be returned, but 'dummy data', such as <code>Invalid Request</code> will replace the actual email address.
      *  <br>
+     *  <br>
+     *  <span class="tablenote"><b>Note:</b>
+     *  For the <b>GetItemTransactions</b> call, this field is only returned to the seller of the order; this field is not returned for the buyer or third party.
+     *  </span>
      *
      * @param string $email
      * @return self
@@ -1266,6 +1286,10 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <br><br>
      *  Since a bidder's user info is anonymous, this tag will be returned only to that bidder,
      *  and to the seller of an item that the user is bidding on.
+     *  <br> <br>
+     *  <span class="tablenote"><b>Note:</b>
+     *  For the <strong>GetItemTransactions</strong> call, this field is only returned to the seller of the order; this field is not returned for the buyer or third party.
+     *  </span>
      *
      * @return bool
      */
@@ -1282,6 +1306,10 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <br><br>
      *  Since a bidder's user info is anonymous, this tag will be returned only to that bidder,
      *  and to the seller of an item that the user is bidding on.
+     *  <br> <br>
+     *  <span class="tablenote"><b>Note:</b>
+     *  For the <strong>GetItemTransactions</strong> call, this field is only returned to the seller of the order; this field is not returned for the buyer or third party.
+     *  </span>
      *
      * @param bool $userIDChanged
      * @return self
@@ -1299,6 +1327,10 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <br><br>
      *  Since a bidder's user info is anonymous, this tag will be returned only to that bidder,
      *  and to the seller of an item that the user is bidding on.
+     *  <br> <br>
+     *  <span class="tablenote"><b>Note:</b>
+     *  For the <strong>GetItemTransactions</strong> call, this field is only returned to the seller of the order; this field is not returned for the buyer or third party.
+     *  </span>
      *
      * @return \DateTime
      */
@@ -1314,6 +1346,10 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <br><br>
      *  Since a bidder's user info is anonymous, this tag will be returned only to that bidder,
      *  and to the seller of an item that the user is bidding on.
+     *  <br> <br>
+     *  <span class="tablenote"><b>Note:</b>
+     *  For the <strong>GetItemTransactions</strong> call, this field is only returned to the seller of the order; this field is not returned for the buyer or third party.
+     *  </span>
      *
      * @param \DateTime $userIDLastChanged
      * @return self

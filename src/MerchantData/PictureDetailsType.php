@@ -17,16 +17,13 @@ class PictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      * <a name="galleryTypeField"></a>
      *  This field is used to specify the type of picture gallery to use for the listing. If this field is omitted, a standard picture gallery is used for the listing. There is no listing fee for a standard picture gallery.
      *  <br/><br/>
-     *  To use the Gallery Plus feature, you must include this field and set its value to <code>Plus</code>. To use the Featured Gallery feature (a feature that includes the Gallery Plus feature, you must include this field and set its value to <code>Featured</code>.
+     *  To use the Gallery Plus feature, you must include this field and set its value to <code>Plus</code>.
      *  <br/><br/>
      *  The Gallery image will be the first URL passed
      *  into the first <b>PictureURL</b> field, so if you want a specific picture to be the Gallery image, you should make sure you pass the URL for this picture in the first <b>PictureURL</b> field.
      *  <br/><br/>
      *  When revising a listing, if you disable the Gallery Plus or Featured Gallery feature by including the <b>GalleryType</b> and setting its value to <code>Gallery</code>, the original feature fee for either of these features will not be credited to the seller.
-     *  <br/><br/>
-     *  <span class="tablenote"><b>Note:</b>
-     *  The Featured Gallery listing feature is being deprecated for all sites. If a seller attempts to set the value of <b>GalleryType</b> to <code>Featured</code>, it is allowed, but a warning will be returned announcing the deprecation of the feature. Starting August 15, 2019, this feature cannot be added when creating a new listing or revising an existing listing. For existing listings that already have the feature, the seller will not be able to change the duration to <code>Lifetime</code>. On September 15, 2019, this feature will be wired off. If a seller revises an existing listing that had this feature set, the <b>GalleryType</b> value will automatically default to <code>Gallery</code>.
-     *  </span>
+     *  <br/>
      *
      * @var string $galleryType
      */
@@ -36,10 +33,6 @@ class PictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      * Specifies the type of image display used in a listing. Some options are
      *  only available if images are hosted through eBay Picture Services (EPS).
      *  eBay determines this by parsing the associated <b>PictureURL</b>.
-     *  <br><br>
-     *  You cannot use <b>PhotoDisplay</b> in combination with Listing Designer layouts.
-     *  Specify <code>None</code> or do not add <b>PhotoDisplay</b> when <b>ListingDesigner.LayoutID</b>
-     *  is a value other than 0.
      *  <br><br>
      *  Some <b>PhotoDisplay</b> options can result in listing fees, even when the item is relisted. If you are relisting an item that was originally listed with a <b>PhotoDisplay</b> option, and you do not want that <b>PhotoDisplay</b> enhancement in your relisted item, you need to specifically
      *  remove <b>PhotoDisplay</b> in your <b>RelistItem</b> call (or <b>RelistFixedPriceItem</b>, as applicable) by
@@ -66,7 +59,6 @@ class PictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      *  </span>
      *  To specify multiple pictures, send each URL in a separate, <b>PictureDetails.PictureURL</b> element. The first URL passed in defaults to be the 'gallery image', and will be the first picture that is shown when a user lands on the View Item page.
      *  <br><br>
-     *  <br><br>
      *  If a listing uses a single, self-hosted picture (except in the case of a multiple-variation listing), the picture will be copied to eBay Picture Services (EPS) and the <b>PictureDetails.PictureURL</b> value returned by <b>GetItem</b> will be an EPS URL.
      *  <br/><br/>
      *  <b>For VerifyAddItem only:</b> You must include a picture even when using <b>VerifyAddItem</b>. If you don't have a image file, you can use the following
@@ -92,6 +84,7 @@ class PictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      * The service hosting the pictures in <b>PictureURL</b>, if any. This information is
      *  primarily useful for Picture Manager subscribers, who pay a flat subscription
      *  fee instead of individual picture fees per listing. Only returned when <b>PictureURL</b> is returned.
+     *  <br/>
      *
      * @var string $pictureSource
      */
@@ -140,16 +133,13 @@ class PictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      * <a name="galleryTypeField"></a>
      *  This field is used to specify the type of picture gallery to use for the listing. If this field is omitted, a standard picture gallery is used for the listing. There is no listing fee for a standard picture gallery.
      *  <br/><br/>
-     *  To use the Gallery Plus feature, you must include this field and set its value to <code>Plus</code>. To use the Featured Gallery feature (a feature that includes the Gallery Plus feature, you must include this field and set its value to <code>Featured</code>.
+     *  To use the Gallery Plus feature, you must include this field and set its value to <code>Plus</code>.
      *  <br/><br/>
      *  The Gallery image will be the first URL passed
      *  into the first <b>PictureURL</b> field, so if you want a specific picture to be the Gallery image, you should make sure you pass the URL for this picture in the first <b>PictureURL</b> field.
      *  <br/><br/>
      *  When revising a listing, if you disable the Gallery Plus or Featured Gallery feature by including the <b>GalleryType</b> and setting its value to <code>Gallery</code>, the original feature fee for either of these features will not be credited to the seller.
-     *  <br/><br/>
-     *  <span class="tablenote"><b>Note:</b>
-     *  The Featured Gallery listing feature is being deprecated for all sites. If a seller attempts to set the value of <b>GalleryType</b> to <code>Featured</code>, it is allowed, but a warning will be returned announcing the deprecation of the feature. Starting August 15, 2019, this feature cannot be added when creating a new listing or revising an existing listing. For existing listings that already have the feature, the seller will not be able to change the duration to <code>Lifetime</code>. On September 15, 2019, this feature will be wired off. If a seller revises an existing listing that had this feature set, the <b>GalleryType</b> value will automatically default to <code>Gallery</code>.
-     *  </span>
+     *  <br/>
      *
      * @return string
      */
@@ -164,16 +154,13 @@ class PictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      * <a name="galleryTypeField"></a>
      *  This field is used to specify the type of picture gallery to use for the listing. If this field is omitted, a standard picture gallery is used for the listing. There is no listing fee for a standard picture gallery.
      *  <br/><br/>
-     *  To use the Gallery Plus feature, you must include this field and set its value to <code>Plus</code>. To use the Featured Gallery feature (a feature that includes the Gallery Plus feature, you must include this field and set its value to <code>Featured</code>.
+     *  To use the Gallery Plus feature, you must include this field and set its value to <code>Plus</code>.
      *  <br/><br/>
      *  The Gallery image will be the first URL passed
      *  into the first <b>PictureURL</b> field, so if you want a specific picture to be the Gallery image, you should make sure you pass the URL for this picture in the first <b>PictureURL</b> field.
      *  <br/><br/>
      *  When revising a listing, if you disable the Gallery Plus or Featured Gallery feature by including the <b>GalleryType</b> and setting its value to <code>Gallery</code>, the original feature fee for either of these features will not be credited to the seller.
-     *  <br/><br/>
-     *  <span class="tablenote"><b>Note:</b>
-     *  The Featured Gallery listing feature is being deprecated for all sites. If a seller attempts to set the value of <b>GalleryType</b> to <code>Featured</code>, it is allowed, but a warning will be returned announcing the deprecation of the feature. Starting August 15, 2019, this feature cannot be added when creating a new listing or revising an existing listing. For existing listings that already have the feature, the seller will not be able to change the duration to <code>Lifetime</code>. On September 15, 2019, this feature will be wired off. If a seller revises an existing listing that had this feature set, the <b>GalleryType</b> value will automatically default to <code>Gallery</code>.
-     *  </span>
+     *  <br/>
      *
      * @param string $galleryType
      * @return self
@@ -190,10 +177,6 @@ class PictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      * Specifies the type of image display used in a listing. Some options are
      *  only available if images are hosted through eBay Picture Services (EPS).
      *  eBay determines this by parsing the associated <b>PictureURL</b>.
-     *  <br><br>
-     *  You cannot use <b>PhotoDisplay</b> in combination with Listing Designer layouts.
-     *  Specify <code>None</code> or do not add <b>PhotoDisplay</b> when <b>ListingDesigner.LayoutID</b>
-     *  is a value other than 0.
      *  <br><br>
      *  Some <b>PhotoDisplay</b> options can result in listing fees, even when the item is relisted. If you are relisting an item that was originally listed with a <b>PhotoDisplay</b> option, and you do not want that <b>PhotoDisplay</b> enhancement in your relisted item, you need to specifically
      *  remove <b>PhotoDisplay</b> in your <b>RelistItem</b> call (or <b>RelistFixedPriceItem</b>, as applicable) by
@@ -213,10 +196,6 @@ class PictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      * Specifies the type of image display used in a listing. Some options are
      *  only available if images are hosted through eBay Picture Services (EPS).
      *  eBay determines this by parsing the associated <b>PictureURL</b>.
-     *  <br><br>
-     *  You cannot use <b>PhotoDisplay</b> in combination with Listing Designer layouts.
-     *  Specify <code>None</code> or do not add <b>PhotoDisplay</b> when <b>ListingDesigner.LayoutID</b>
-     *  is a value other than 0.
      *  <br><br>
      *  Some <b>PhotoDisplay</b> options can result in listing fees, even when the item is relisted. If you are relisting an item that was originally listed with a <b>PhotoDisplay</b> option, and you do not want that <b>PhotoDisplay</b> enhancement in your relisted item, you need to specifically
      *  remove <b>PhotoDisplay</b> in your <b>RelistItem</b> call (or <b>RelistFixedPriceItem</b>, as applicable) by
@@ -249,7 +228,6 @@ class PictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      *  All images, whether they are hosted by EPS or self-hosted, must comply with eBay picture requirements, including the requirement that all images must be at least 500 pixels on its longest side. If the image does not satisfy the 500 pixels requirement, the listing may be blocked. For more information about other requirements and tips for adding pictures to listings, see the <a href="https://www.ebay.com/help/selling/listings/adding-pictures-listings?id=4148">Adding pictures to your listings</a> help page.
      *  </span>
      *  To specify multiple pictures, send each URL in a separate, <b>PictureDetails.PictureURL</b> element. The first URL passed in defaults to be the 'gallery image', and will be the first picture that is shown when a user lands on the View Item page.
-     *  <br><br>
      *  <br><br>
      *  If a listing uses a single, self-hosted picture (except in the case of a multiple-variation listing), the picture will be copied to eBay Picture Services (EPS) and the <b>PictureDetails.PictureURL</b> value returned by <b>GetItem</b> will be an EPS URL.
      *  <br/><br/>
@@ -293,7 +271,6 @@ class PictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      *  </span>
      *  To specify multiple pictures, send each URL in a separate, <b>PictureDetails.PictureURL</b> element. The first URL passed in defaults to be the 'gallery image', and will be the first picture that is shown when a user lands on the View Item page.
      *  <br><br>
-     *  <br><br>
      *  If a listing uses a single, self-hosted picture (except in the case of a multiple-variation listing), the picture will be copied to eBay Picture Services (EPS) and the <b>PictureDetails.PictureURL</b> value returned by <b>GetItem</b> will be an EPS URL.
      *  <br/><br/>
      *  <b>For VerifyAddItem only:</b> You must include a picture even when using <b>VerifyAddItem</b>. If you don't have a image file, you can use the following
@@ -334,7 +311,6 @@ class PictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      *  All images, whether they are hosted by EPS or self-hosted, must comply with eBay picture requirements, including the requirement that all images must be at least 500 pixels on its longest side. If the image does not satisfy the 500 pixels requirement, the listing may be blocked. For more information about other requirements and tips for adding pictures to listings, see the <a href="https://www.ebay.com/help/selling/listings/adding-pictures-listings?id=4148">Adding pictures to your listings</a> help page.
      *  </span>
      *  To specify multiple pictures, send each URL in a separate, <b>PictureDetails.PictureURL</b> element. The first URL passed in defaults to be the 'gallery image', and will be the first picture that is shown when a user lands on the View Item page.
-     *  <br><br>
      *  <br><br>
      *  If a listing uses a single, self-hosted picture (except in the case of a multiple-variation listing), the picture will be copied to eBay Picture Services (EPS) and the <b>PictureDetails.PictureURL</b> value returned by <b>GetItem</b> will be an EPS URL.
      *  <br/><br/>
@@ -377,7 +353,6 @@ class PictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      *  </span>
      *  To specify multiple pictures, send each URL in a separate, <b>PictureDetails.PictureURL</b> element. The first URL passed in defaults to be the 'gallery image', and will be the first picture that is shown when a user lands on the View Item page.
      *  <br><br>
-     *  <br><br>
      *  If a listing uses a single, self-hosted picture (except in the case of a multiple-variation listing), the picture will be copied to eBay Picture Services (EPS) and the <b>PictureDetails.PictureURL</b> value returned by <b>GetItem</b> will be an EPS URL.
      *  <br/><br/>
      *  <b>For VerifyAddItem only:</b> You must include a picture even when using <b>VerifyAddItem</b>. If you don't have a image file, you can use the following
@@ -418,7 +393,6 @@ class PictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      *  </span>
      *  To specify multiple pictures, send each URL in a separate, <b>PictureDetails.PictureURL</b> element. The first URL passed in defaults to be the 'gallery image', and will be the first picture that is shown when a user lands on the View Item page.
      *  <br><br>
-     *  <br><br>
      *  If a listing uses a single, self-hosted picture (except in the case of a multiple-variation listing), the picture will be copied to eBay Picture Services (EPS) and the <b>PictureDetails.PictureURL</b> value returned by <b>GetItem</b> will be an EPS URL.
      *  <br/><br/>
      *  <b>For VerifyAddItem only:</b> You must include a picture even when using <b>VerifyAddItem</b>. If you don't have a image file, you can use the following
@@ -449,6 +423,7 @@ class PictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      * The service hosting the pictures in <b>PictureURL</b>, if any. This information is
      *  primarily useful for Picture Manager subscribers, who pay a flat subscription
      *  fee instead of individual picture fees per listing. Only returned when <b>PictureURL</b> is returned.
+     *  <br/>
      *
      * @return string
      */
@@ -463,6 +438,7 @@ class PictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      * The service hosting the pictures in <b>PictureURL</b>, if any. This information is
      *  primarily useful for Picture Manager subscribers, who pay a flat subscription
      *  fee instead of individual picture fees per listing. Only returned when <b>PictureURL</b> is returned.
+     *  <br/>
      *
      * @param string $pictureSource
      * @return self

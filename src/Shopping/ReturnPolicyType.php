@@ -7,7 +7,7 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing ReturnPolicyType
  *
- * Type used to express the details of the Return Policy that the seller has defined for the listing.
+ * Type used to express the details of the Return Policy that the seller has defined for the listing. Sellers have the ability to create separate return policies for domestic and international returns, but if a seller (who ships internationally) does not set up a separate international return policy, the settings in the domestic return policy fields will also apply to international returns.
  * XSD Type: ReturnPolicyType
  */
 class ReturnPolicyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
@@ -15,13 +15,17 @@ class ReturnPolicyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
 
     /**
      * This field indicates how the seller compensates domestic buyers for <a href="http://developer.ebay.com/DevZone/guides/ebayfeatures/Development/Post-Order-Returns.html#return-reasons" target="_blank">remorse returns</a>. On many eBay marketplaces, 'Money Back' is the only option for domestic and international returns. The eBay US marketplace also allows sellers to offer buyers a 'Money Back Or Replacement' option, where the seller still wants the item they purchased, and prefers that the seller send an identical replacement item instead of a refund. This will typically happen if the originally purchased item arrived damaged or was missing parts.
+     *  <br><br>
+     *  <span class="tablenote"><b>Note:</b> If the seller ships internationally, but did not specify a separate international return policy for the listing, the refund method in this field will also apply for international returns. </span>
      *
      * @var string $refund
      */
     private $refund = null;
 
     /**
-     * The value in this field indicates the number of days that a domestic buyer has to return an item. The return period begins when the item is marked "delivered" at the buyer's specified ship-to location. Most marketplaces and categories support 30-day and 60-day return periods. The return period must be specified by the seller if that seller accepts returns (<b>ReturnsAcceptedOption=ReturnsAccepted</b>).
+     * The value in this field indicates the number of days that a domestic buyer has to return an item. The return period begins when the item is marked 'delivered' at the buyer's specified ship-to location. Most marketplaces and categories support 30-day and 60-day return periods. The return period must be specified by the seller if that seller accepts returns (<b>ReturnsAcceptedOption=ReturnsAccepted</b>).
+     *  <br><br>
+     *  <span class="tablenote"><b>Note:</b> If the seller ships internationally, but did not specify a separate international return policy for the listing, the return period in this field will also apply for international returns. </span>
      *
      * @var string $returnsWithin
      */
@@ -29,6 +33,8 @@ class ReturnPolicyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
 
     /**
      * This field is always returned with the <b>ReturnPolicy</b> container, even if the seller does not accept returns for the item. If the value of this field is <code>ReturnsNotAccepted</code>, the seller does not accept domestic returns (except in the case of a defective item or 'significantly not as described' item), and this field may be the only field returned under the <b>ReturnPolicy</b> container. If the value of this field is <code>ReturnsAccepted</code>, the seller does accept domestic returns, and other fields under the <b>ReturnPolicy</b> container will state the length of the return period, the refund method, and order partner that is responsible for return shipping costs.
+     *  <br><br>
+     *  <span class="tablenote"><b>Note:</b> If the seller ships internationally, but did not specify a separate international return policy for the listing, the 'returns accepted' value in this field will also apply for international returns. </span>
      *
      * @var string $returnsAccepted
      */
@@ -79,6 +85,8 @@ class ReturnPolicyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      * This field specifies either the 'Buyer' or the 'Seller' as the party who pays for domestic return shipping costs. It is up to the seller to decide whether the buyer or seller pays for return shipping costs, but the seller does have an incentive to pay return shipping costs, as the listing will be marked in search results as having '<b>Free Returns</b>' if the seller pays return shipping costs.
      *  <br><br>
      *  Note that the seller is always responsible for return shipping costs for SNAD-related issues, including defective items.
+     *  <br><br>
+     *  <span class="tablenote"><b>Note:</b> If the seller ships internationally, but did not specify a separate international return policy for the listing, the return shipping cost payee in this field will also apply for international returns. </span>
      *
      * @var string $shippingCostPaidBy
      */
@@ -100,6 +108,8 @@ class ReturnPolicyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
 
     /**
      * This field indicates how the seller compensates international buyers for <a href="http://developer.ebay.com/DevZone/guides/ebayfeatures/Development/Post-Order-Returns.html#return-reasons" target="_blank">remorse returns</a>. On many eBay marketplaces, 'Money Back' is the only option for domestic and international returns. The eBay US marketplace also allows sellers to offer buyers a 'Money Back Or Replacement' option, where the seller still wants the item they purchased, and prefers that the seller send an identical replacement item instead of a refund. This will typically happen if the originally purchased item arrived damaged or was missing parts.
+     *  <br><br>
+     *  <span class="tablenote"><b>Note:</b> If the seller ships internationally, but did not specify a separate international return policy for the listing, this field is not returned, and the refund method in the <b>Refund</b> field will also apply for international returns. </span>
      *
      * @var string $internationalRefund
      */
@@ -107,6 +117,8 @@ class ReturnPolicyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
 
     /**
      * The value in this field indicates the number of days that an international buyer has to return an item. The return period begins when the item is marked "delivered" at the buyer's specified ship-to location. Most marketplaces and categories support 30-day and 60-day return periods. The return period must be specified by the seller if that seller accepts international returns from countries they ship to (<b>InternationalReturnsAcceptedOption=ReturnsAccepted</b>).
+     *  <br><br>
+     *  <span class="tablenote"><b>Note:</b> If the seller ships internationally, but did not specify a separate international return policy for the listing, this field is not returned, and the return period in the <b>ReturnsWithin</b> field will also apply for international returns. </span>
      *
      * @var string $internationalReturnsWithin
      */
@@ -114,6 +126,8 @@ class ReturnPolicyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
 
     /**
      * This field is always returned with the <b>ReturnPolicy</b> container if the seller ships items to other countries, even if the seller does not accept returns for the item. If the value of this field is <code>ReturnsNotAccepted</code>, the seller does not accept international returns (except in the case of a defective item or 'significantly not as described' item). If the value of this field is <code>ReturnsAccepted</code>, the seller does accept international returns, and other fields under the <b>ReturnPolicy</b> container will state the length of the international return period, the refund method, and order partner that is responsible for return shipping costs.
+     *  <br><br>
+     *  <span class="tablenote"><b>Note:</b> If the seller ships internationally, but did not specify a separate international return policy for the listing, this field is not returned, and the 'returns accepted' value in the <b>ReturnsAccepted</b> field will also apply for international returns. </span>
      *
      * @var string $internationalReturnsAccepted
      */
@@ -123,6 +137,8 @@ class ReturnPolicyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      * This field specifies either the 'Buyer' or the 'Seller' as the party who pays for international return shipping costs. It is up to the seller to decide whether the buyer or seller pays for return shipping costs, but the seller does have an incentive to pay return shipping costs, as the listing will be marked in search results as having '<b>Free Returns</b>' if the seller pays return shipping costs.
      *  <br><br>
      *  Note that the seller is always responsible for return shipping costs for SNAD-related issues, including defective items.
+     *  <br><br>
+     *  <span class="tablenote"><b>Note:</b> If the seller ships internationally, but did not specify a separate international return policy for the listing, this field is not returned, and the return shipping cost payee in the <b>ShippingCostPaidBy</b> field will also apply for international returns. </span>
      *
      * @var string $internationalShippingCostPaidBy
      */
@@ -132,6 +148,8 @@ class ReturnPolicyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      * Gets as refund
      *
      * This field indicates how the seller compensates domestic buyers for <a href="http://developer.ebay.com/DevZone/guides/ebayfeatures/Development/Post-Order-Returns.html#return-reasons" target="_blank">remorse returns</a>. On many eBay marketplaces, 'Money Back' is the only option for domestic and international returns. The eBay US marketplace also allows sellers to offer buyers a 'Money Back Or Replacement' option, where the seller still wants the item they purchased, and prefers that the seller send an identical replacement item instead of a refund. This will typically happen if the originally purchased item arrived damaged or was missing parts.
+     *  <br><br>
+     *  <span class="tablenote"><b>Note:</b> If the seller ships internationally, but did not specify a separate international return policy for the listing, the refund method in this field will also apply for international returns. </span>
      *
      * @return string
      */
@@ -144,6 +162,8 @@ class ReturnPolicyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      * Sets a new refund
      *
      * This field indicates how the seller compensates domestic buyers for <a href="http://developer.ebay.com/DevZone/guides/ebayfeatures/Development/Post-Order-Returns.html#return-reasons" target="_blank">remorse returns</a>. On many eBay marketplaces, 'Money Back' is the only option for domestic and international returns. The eBay US marketplace also allows sellers to offer buyers a 'Money Back Or Replacement' option, where the seller still wants the item they purchased, and prefers that the seller send an identical replacement item instead of a refund. This will typically happen if the originally purchased item arrived damaged or was missing parts.
+     *  <br><br>
+     *  <span class="tablenote"><b>Note:</b> If the seller ships internationally, but did not specify a separate international return policy for the listing, the refund method in this field will also apply for international returns. </span>
      *
      * @param string $refund
      * @return self
@@ -157,7 +177,9 @@ class ReturnPolicyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Gets as returnsWithin
      *
-     * The value in this field indicates the number of days that a domestic buyer has to return an item. The return period begins when the item is marked "delivered" at the buyer's specified ship-to location. Most marketplaces and categories support 30-day and 60-day return periods. The return period must be specified by the seller if that seller accepts returns (<b>ReturnsAcceptedOption=ReturnsAccepted</b>).
+     * The value in this field indicates the number of days that a domestic buyer has to return an item. The return period begins when the item is marked 'delivered' at the buyer's specified ship-to location. Most marketplaces and categories support 30-day and 60-day return periods. The return period must be specified by the seller if that seller accepts returns (<b>ReturnsAcceptedOption=ReturnsAccepted</b>).
+     *  <br><br>
+     *  <span class="tablenote"><b>Note:</b> If the seller ships internationally, but did not specify a separate international return policy for the listing, the return period in this field will also apply for international returns. </span>
      *
      * @return string
      */
@@ -169,7 +191,9 @@ class ReturnPolicyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Sets a new returnsWithin
      *
-     * The value in this field indicates the number of days that a domestic buyer has to return an item. The return period begins when the item is marked "delivered" at the buyer's specified ship-to location. Most marketplaces and categories support 30-day and 60-day return periods. The return period must be specified by the seller if that seller accepts returns (<b>ReturnsAcceptedOption=ReturnsAccepted</b>).
+     * The value in this field indicates the number of days that a domestic buyer has to return an item. The return period begins when the item is marked 'delivered' at the buyer's specified ship-to location. Most marketplaces and categories support 30-day and 60-day return periods. The return period must be specified by the seller if that seller accepts returns (<b>ReturnsAcceptedOption=ReturnsAccepted</b>).
+     *  <br><br>
+     *  <span class="tablenote"><b>Note:</b> If the seller ships internationally, but did not specify a separate international return policy for the listing, the return period in this field will also apply for international returns. </span>
      *
      * @param string $returnsWithin
      * @return self
@@ -184,6 +208,8 @@ class ReturnPolicyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      * Gets as returnsAccepted
      *
      * This field is always returned with the <b>ReturnPolicy</b> container, even if the seller does not accept returns for the item. If the value of this field is <code>ReturnsNotAccepted</code>, the seller does not accept domestic returns (except in the case of a defective item or 'significantly not as described' item), and this field may be the only field returned under the <b>ReturnPolicy</b> container. If the value of this field is <code>ReturnsAccepted</code>, the seller does accept domestic returns, and other fields under the <b>ReturnPolicy</b> container will state the length of the return period, the refund method, and order partner that is responsible for return shipping costs.
+     *  <br><br>
+     *  <span class="tablenote"><b>Note:</b> If the seller ships internationally, but did not specify a separate international return policy for the listing, the 'returns accepted' value in this field will also apply for international returns. </span>
      *
      * @return string
      */
@@ -196,6 +222,8 @@ class ReturnPolicyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      * Sets a new returnsAccepted
      *
      * This field is always returned with the <b>ReturnPolicy</b> container, even if the seller does not accept returns for the item. If the value of this field is <code>ReturnsNotAccepted</code>, the seller does not accept domestic returns (except in the case of a defective item or 'significantly not as described' item), and this field may be the only field returned under the <b>ReturnPolicy</b> container. If the value of this field is <code>ReturnsAccepted</code>, the seller does accept domestic returns, and other fields under the <b>ReturnPolicy</b> container will state the length of the return period, the refund method, and order partner that is responsible for return shipping costs.
+     *  <br><br>
+     *  <span class="tablenote"><b>Note:</b> If the seller ships internationally, but did not specify a separate international return policy for the listing, the 'returns accepted' value in this field will also apply for international returns. </span>
      *
      * @param string $returnsAccepted
      * @return self
@@ -354,6 +382,8 @@ class ReturnPolicyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      * This field specifies either the 'Buyer' or the 'Seller' as the party who pays for domestic return shipping costs. It is up to the seller to decide whether the buyer or seller pays for return shipping costs, but the seller does have an incentive to pay return shipping costs, as the listing will be marked in search results as having '<b>Free Returns</b>' if the seller pays return shipping costs.
      *  <br><br>
      *  Note that the seller is always responsible for return shipping costs for SNAD-related issues, including defective items.
+     *  <br><br>
+     *  <span class="tablenote"><b>Note:</b> If the seller ships internationally, but did not specify a separate international return policy for the listing, the return shipping cost payee in this field will also apply for international returns. </span>
      *
      * @return string
      */
@@ -368,6 +398,8 @@ class ReturnPolicyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      * This field specifies either the 'Buyer' or the 'Seller' as the party who pays for domestic return shipping costs. It is up to the seller to decide whether the buyer or seller pays for return shipping costs, but the seller does have an incentive to pay return shipping costs, as the listing will be marked in search results as having '<b>Free Returns</b>' if the seller pays return shipping costs.
      *  <br><br>
      *  Note that the seller is always responsible for return shipping costs for SNAD-related issues, including defective items.
+     *  <br><br>
+     *  <span class="tablenote"><b>Note:</b> If the seller ships internationally, but did not specify a separate international return policy for the listing, the return shipping cost payee in this field will also apply for international returns. </span>
      *
      * @param string $shippingCostPaidBy
      * @return self
@@ -434,6 +466,8 @@ class ReturnPolicyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      * Gets as internationalRefund
      *
      * This field indicates how the seller compensates international buyers for <a href="http://developer.ebay.com/DevZone/guides/ebayfeatures/Development/Post-Order-Returns.html#return-reasons" target="_blank">remorse returns</a>. On many eBay marketplaces, 'Money Back' is the only option for domestic and international returns. The eBay US marketplace also allows sellers to offer buyers a 'Money Back Or Replacement' option, where the seller still wants the item they purchased, and prefers that the seller send an identical replacement item instead of a refund. This will typically happen if the originally purchased item arrived damaged or was missing parts.
+     *  <br><br>
+     *  <span class="tablenote"><b>Note:</b> If the seller ships internationally, but did not specify a separate international return policy for the listing, this field is not returned, and the refund method in the <b>Refund</b> field will also apply for international returns. </span>
      *
      * @return string
      */
@@ -446,6 +480,8 @@ class ReturnPolicyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      * Sets a new internationalRefund
      *
      * This field indicates how the seller compensates international buyers for <a href="http://developer.ebay.com/DevZone/guides/ebayfeatures/Development/Post-Order-Returns.html#return-reasons" target="_blank">remorse returns</a>. On many eBay marketplaces, 'Money Back' is the only option for domestic and international returns. The eBay US marketplace also allows sellers to offer buyers a 'Money Back Or Replacement' option, where the seller still wants the item they purchased, and prefers that the seller send an identical replacement item instead of a refund. This will typically happen if the originally purchased item arrived damaged or was missing parts.
+     *  <br><br>
+     *  <span class="tablenote"><b>Note:</b> If the seller ships internationally, but did not specify a separate international return policy for the listing, this field is not returned, and the refund method in the <b>Refund</b> field will also apply for international returns. </span>
      *
      * @param string $internationalRefund
      * @return self
@@ -460,6 +496,8 @@ class ReturnPolicyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      * Gets as internationalReturnsWithin
      *
      * The value in this field indicates the number of days that an international buyer has to return an item. The return period begins when the item is marked "delivered" at the buyer's specified ship-to location. Most marketplaces and categories support 30-day and 60-day return periods. The return period must be specified by the seller if that seller accepts international returns from countries they ship to (<b>InternationalReturnsAcceptedOption=ReturnsAccepted</b>).
+     *  <br><br>
+     *  <span class="tablenote"><b>Note:</b> If the seller ships internationally, but did not specify a separate international return policy for the listing, this field is not returned, and the return period in the <b>ReturnsWithin</b> field will also apply for international returns. </span>
      *
      * @return string
      */
@@ -472,6 +510,8 @@ class ReturnPolicyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      * Sets a new internationalReturnsWithin
      *
      * The value in this field indicates the number of days that an international buyer has to return an item. The return period begins when the item is marked "delivered" at the buyer's specified ship-to location. Most marketplaces and categories support 30-day and 60-day return periods. The return period must be specified by the seller if that seller accepts international returns from countries they ship to (<b>InternationalReturnsAcceptedOption=ReturnsAccepted</b>).
+     *  <br><br>
+     *  <span class="tablenote"><b>Note:</b> If the seller ships internationally, but did not specify a separate international return policy for the listing, this field is not returned, and the return period in the <b>ReturnsWithin</b> field will also apply for international returns. </span>
      *
      * @param string $internationalReturnsWithin
      * @return self
@@ -486,6 +526,8 @@ class ReturnPolicyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      * Gets as internationalReturnsAccepted
      *
      * This field is always returned with the <b>ReturnPolicy</b> container if the seller ships items to other countries, even if the seller does not accept returns for the item. If the value of this field is <code>ReturnsNotAccepted</code>, the seller does not accept international returns (except in the case of a defective item or 'significantly not as described' item). If the value of this field is <code>ReturnsAccepted</code>, the seller does accept international returns, and other fields under the <b>ReturnPolicy</b> container will state the length of the international return period, the refund method, and order partner that is responsible for return shipping costs.
+     *  <br><br>
+     *  <span class="tablenote"><b>Note:</b> If the seller ships internationally, but did not specify a separate international return policy for the listing, this field is not returned, and the 'returns accepted' value in the <b>ReturnsAccepted</b> field will also apply for international returns. </span>
      *
      * @return string
      */
@@ -498,6 +540,8 @@ class ReturnPolicyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      * Sets a new internationalReturnsAccepted
      *
      * This field is always returned with the <b>ReturnPolicy</b> container if the seller ships items to other countries, even if the seller does not accept returns for the item. If the value of this field is <code>ReturnsNotAccepted</code>, the seller does not accept international returns (except in the case of a defective item or 'significantly not as described' item). If the value of this field is <code>ReturnsAccepted</code>, the seller does accept international returns, and other fields under the <b>ReturnPolicy</b> container will state the length of the international return period, the refund method, and order partner that is responsible for return shipping costs.
+     *  <br><br>
+     *  <span class="tablenote"><b>Note:</b> If the seller ships internationally, but did not specify a separate international return policy for the listing, this field is not returned, and the 'returns accepted' value in the <b>ReturnsAccepted</b> field will also apply for international returns. </span>
      *
      * @param string $internationalReturnsAccepted
      * @return self
@@ -514,6 +558,8 @@ class ReturnPolicyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      * This field specifies either the 'Buyer' or the 'Seller' as the party who pays for international return shipping costs. It is up to the seller to decide whether the buyer or seller pays for return shipping costs, but the seller does have an incentive to pay return shipping costs, as the listing will be marked in search results as having '<b>Free Returns</b>' if the seller pays return shipping costs.
      *  <br><br>
      *  Note that the seller is always responsible for return shipping costs for SNAD-related issues, including defective items.
+     *  <br><br>
+     *  <span class="tablenote"><b>Note:</b> If the seller ships internationally, but did not specify a separate international return policy for the listing, this field is not returned, and the return shipping cost payee in the <b>ShippingCostPaidBy</b> field will also apply for international returns. </span>
      *
      * @return string
      */
@@ -528,6 +574,8 @@ class ReturnPolicyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      * This field specifies either the 'Buyer' or the 'Seller' as the party who pays for international return shipping costs. It is up to the seller to decide whether the buyer or seller pays for return shipping costs, but the seller does have an incentive to pay return shipping costs, as the listing will be marked in search results as having '<b>Free Returns</b>' if the seller pays return shipping costs.
      *  <br><br>
      *  Note that the seller is always responsible for return shipping costs for SNAD-related issues, including defective items.
+     *  <br><br>
+     *  <span class="tablenote"><b>Note:</b> If the seller ships internationally, but did not specify a separate international return policy for the listing, this field is not returned, and the return shipping cost payee in the <b>ShippingCostPaidBy</b> field will also apply for international returns. </span>
      *
      * @param string $internationalShippingCostPaidBy
      * @return self

@@ -162,6 +162,21 @@ class AccountSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
     private $paymentMethod = null;
 
     /**
+     * This container shows the total amount of fees (and credits if applicable) that have already been paid through seller payout deductions. The seller must include the <b>IncludeNettedEntries</b> field in the request and set it to <code>true</code> in order for this container to be returned.
+     *  <br>
+     *  <br>
+     *  The seller's account has to be enabled for managed payments and the fee netting mechanism must be enabled for the managed payments account in order to retrieve the fee netted amounts. A seller can check their status for the fee netting mechanism by checking the value in the <b>FeeNettingStatus</b> field.
+     *  <br>
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b>
+     *  For a limited number of managed payments sellers, final value fees and payment processing fees will start getting deducted from seller payouts as early as mid-June 2020, but for many other managed payments sellers, these fees won't start getting deducted from seller payouts until mid-July 2020.
+     *  </span>
+     *
+     * @var \Nogrod\eBaySDK\Trading\NettedTransactionSummaryType $nettedTransactionSummary
+     */
+    private $nettedTransactionSummary = null;
+
+    /**
      * Gets as accountState
      *
      * Indicates the current state of the account (such as active or inactive).
@@ -727,6 +742,48 @@ class AccountSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
         return $this;
     }
 
+    /**
+     * Gets as nettedTransactionSummary
+     *
+     * This container shows the total amount of fees (and credits if applicable) that have already been paid through seller payout deductions. The seller must include the <b>IncludeNettedEntries</b> field in the request and set it to <code>true</code> in order for this container to be returned.
+     *  <br>
+     *  <br>
+     *  The seller's account has to be enabled for managed payments and the fee netting mechanism must be enabled for the managed payments account in order to retrieve the fee netted amounts. A seller can check their status for the fee netting mechanism by checking the value in the <b>FeeNettingStatus</b> field.
+     *  <br>
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b>
+     *  For a limited number of managed payments sellers, final value fees and payment processing fees will start getting deducted from seller payouts as early as mid-June 2020, but for many other managed payments sellers, these fees won't start getting deducted from seller payouts until mid-July 2020.
+     *  </span>
+     *
+     * @return \Nogrod\eBaySDK\Trading\NettedTransactionSummaryType
+     */
+    public function getNettedTransactionSummary()
+    {
+        return $this->nettedTransactionSummary;
+    }
+
+    /**
+     * Sets a new nettedTransactionSummary
+     *
+     * This container shows the total amount of fees (and credits if applicable) that have already been paid through seller payout deductions. The seller must include the <b>IncludeNettedEntries</b> field in the request and set it to <code>true</code> in order for this container to be returned.
+     *  <br>
+     *  <br>
+     *  The seller's account has to be enabled for managed payments and the fee netting mechanism must be enabled for the managed payments account in order to retrieve the fee netted amounts. A seller can check their status for the fee netting mechanism by checking the value in the <b>FeeNettingStatus</b> field.
+     *  <br>
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b>
+     *  For a limited number of managed payments sellers, final value fees and payment processing fees will start getting deducted from seller payouts as early as mid-June 2020, but for many other managed payments sellers, these fees won't start getting deducted from seller payouts until mid-July 2020.
+     *  </span>
+     *
+     * @param \Nogrod\eBaySDK\Trading\NettedTransactionSummaryType $nettedTransactionSummary
+     * @return self
+     */
+    public function setNettedTransactionSummary(\Nogrod\eBaySDK\Trading\NettedTransactionSummaryType $nettedTransactionSummary)
+    {
+        $this->nettedTransactionSummary = $nettedTransactionSummary;
+        return $this;
+    }
+
     public function xmlSerialize(\Sabre\Xml\Writer $writer)
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
@@ -812,6 +869,10 @@ class AccountSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
         $value = $this->getPaymentMethod();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PaymentMethod", $value);
+        }
+        $value = $this->getNettedTransactionSummary();
+        if (null !== $value) {
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}NettedTransactionSummary", $value);
         }
     }
 
@@ -910,6 +971,10 @@ class AccountSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaymentMethod');
         if (null !== $value) {
             $this->setPaymentMethod($value);
+        }
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}NettedTransactionSummary');
+        if (null !== $value) {
+            $this->setNettedTransactionSummary(\Nogrod\eBaySDK\Trading\NettedTransactionSummaryType::fromKeyValue($value));
         }
     }
 }

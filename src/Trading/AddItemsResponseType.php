@@ -14,7 +14,7 @@ class AddItemsResponseType extends AbstractResponseType
 {
 
     /**
-     * One <b>AddItemResponseContainer</b> container is returned for each listing that is being created with the <b>AddItems</b> call. Each container includes the <b>ItemID</b> of each newly created listings, the eBay category each item is listed under, the seller-defined SKUs of the items (if any), the listing recommendations for each item (if applicable), the start and end time of each listing, and the estimated fees that each listing will incur.
+     * One <b>AddItemResponseContainer</b> container is returned for each listing that was created with the <b>AddItems</b> call. Each container includes the <b>ItemID</b> of each newly created listings, the eBay category each item is listed under, the seller-defined SKUs of the items (if any), the listing recommendations for each item (if applicable), the start and end time of each listing, and the estimated fees that each listing will incur.
      *
      * @var \Nogrod\eBaySDK\Trading\AddItemResponseContainerType[] $addItemResponseContainer
      */
@@ -25,7 +25,7 @@ class AddItemsResponseType extends AbstractResponseType
     /**
      * Adds as addItemResponseContainer
      *
-     * One <b>AddItemResponseContainer</b> container is returned for each listing that is being created with the <b>AddItems</b> call. Each container includes the <b>ItemID</b> of each newly created listings, the eBay category each item is listed under, the seller-defined SKUs of the items (if any), the listing recommendations for each item (if applicable), the start and end time of each listing, and the estimated fees that each listing will incur.
+     * One <b>AddItemResponseContainer</b> container is returned for each listing that was created with the <b>AddItems</b> call. Each container includes the <b>ItemID</b> of each newly created listings, the eBay category each item is listed under, the seller-defined SKUs of the items (if any), the listing recommendations for each item (if applicable), the start and end time of each listing, and the estimated fees that each listing will incur.
      *
      * @return self
      * @param \Nogrod\eBaySDK\Trading\AddItemResponseContainerType $addItemResponseContainer
@@ -39,7 +39,7 @@ class AddItemsResponseType extends AbstractResponseType
     /**
      * isset addItemResponseContainer
      *
-     * One <b>AddItemResponseContainer</b> container is returned for each listing that is being created with the <b>AddItems</b> call. Each container includes the <b>ItemID</b> of each newly created listings, the eBay category each item is listed under, the seller-defined SKUs of the items (if any), the listing recommendations for each item (if applicable), the start and end time of each listing, and the estimated fees that each listing will incur.
+     * One <b>AddItemResponseContainer</b> container is returned for each listing that was created with the <b>AddItems</b> call. Each container includes the <b>ItemID</b> of each newly created listings, the eBay category each item is listed under, the seller-defined SKUs of the items (if any), the listing recommendations for each item (if applicable), the start and end time of each listing, and the estimated fees that each listing will incur.
      *
      * @param int|string $index
      * @return bool
@@ -52,7 +52,7 @@ class AddItemsResponseType extends AbstractResponseType
     /**
      * unset addItemResponseContainer
      *
-     * One <b>AddItemResponseContainer</b> container is returned for each listing that is being created with the <b>AddItems</b> call. Each container includes the <b>ItemID</b> of each newly created listings, the eBay category each item is listed under, the seller-defined SKUs of the items (if any), the listing recommendations for each item (if applicable), the start and end time of each listing, and the estimated fees that each listing will incur.
+     * One <b>AddItemResponseContainer</b> container is returned for each listing that was created with the <b>AddItems</b> call. Each container includes the <b>ItemID</b> of each newly created listings, the eBay category each item is listed under, the seller-defined SKUs of the items (if any), the listing recommendations for each item (if applicable), the start and end time of each listing, and the estimated fees that each listing will incur.
      *
      * @param int|string $index
      * @return void
@@ -65,7 +65,7 @@ class AddItemsResponseType extends AbstractResponseType
     /**
      * Gets as addItemResponseContainer
      *
-     * One <b>AddItemResponseContainer</b> container is returned for each listing that is being created with the <b>AddItems</b> call. Each container includes the <b>ItemID</b> of each newly created listings, the eBay category each item is listed under, the seller-defined SKUs of the items (if any), the listing recommendations for each item (if applicable), the start and end time of each listing, and the estimated fees that each listing will incur.
+     * One <b>AddItemResponseContainer</b> container is returned for each listing that was created with the <b>AddItems</b> call. Each container includes the <b>ItemID</b> of each newly created listings, the eBay category each item is listed under, the seller-defined SKUs of the items (if any), the listing recommendations for each item (if applicable), the start and end time of each listing, and the estimated fees that each listing will incur.
      *
      * @return \Nogrod\eBaySDK\Trading\AddItemResponseContainerType[]
      */
@@ -77,7 +77,7 @@ class AddItemsResponseType extends AbstractResponseType
     /**
      * Sets a new addItemResponseContainer
      *
-     * One <b>AddItemResponseContainer</b> container is returned for each listing that is being created with the <b>AddItems</b> call. Each container includes the <b>ItemID</b> of each newly created listings, the eBay category each item is listed under, the seller-defined SKUs of the items (if any), the listing recommendations for each item (if applicable), the start and end time of each listing, and the estimated fees that each listing will incur.
+     * One <b>AddItemResponseContainer</b> container is returned for each listing that was created with the <b>AddItems</b> call. Each container includes the <b>ItemID</b> of each newly created listings, the eBay category each item is listed under, the seller-defined SKUs of the items (if any), the listing recommendations for each item (if applicable), the start and end time of each listing, and the estimated fees that each listing will incur.
      *
      * @param \Nogrod\eBaySDK\Trading\AddItemResponseContainerType[] $addItemResponseContainer
      * @return self

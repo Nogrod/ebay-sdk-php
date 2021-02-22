@@ -8,6 +8,9 @@ use Nogrod\XMLClientRuntime\Func;
  * Class representing GetDescriptionTemplatesResponseType
  *
  * This is the base response type for the <b>GetDescriptionTemplates</b> call. This call retrieves the Listing Designer templates that are available for use by the seller. The user has the option of retrieving all available Listing Designer templates for all categories, for all motor vehicle categories, or for a specific eBay category.
+ *  <br>
+ *  <br>
+ *  <span class="tablenote"><b>Note:</b> As of May 31, 2020, sellers are no longer able to use Listing Designer templates when they create or revise listings. Existing listings that are already using a Listing Designer template will remain unchanged. The <b>GetDescriptionTemplates</b> call will eventually get deprecated and decommissioned, and more information will be provided on timing at a later date. The <b>GetDescriptionTemplates</b> call will still retrieve Listing Designer template data, but none of retrieved templates will be usable to create or revise a listing.</span>
  * XSD Type: GetDescriptionTemplatesResponseType
  */
 class GetDescriptionTemplatesResponseType extends AbstractResponseType

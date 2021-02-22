@@ -9,20 +9,21 @@ use Nogrod\XMLClientRuntime\Func;
  *
  * Type used to express the details of the return policy for an item.
  *  <br><br>
- *  To get the metadata on the values you can use for specific marketplaces, call <b>GeteBayDetails</b> with <b>DetailName</b> set to <code>ReturnPolicyDetails</code>, and then review the <b>ReturnPolicyDetails</b> fields in the response.
+ *  Historically, the <b>GeteBayDetails</b> call has been used to retrieve site-level return policy metadata. However, the <b>GetCategoryFeatures</b> call is now recommended instead because this call now returns category-level metadata for both domestic and international return policies.
  *  <br><br>
- *  <span class="tablenote"><b>Note:</b> Historically, the <b>GeteBayDetails</b> call has been used to retrieve return policy metadata. However, the <b>GetCategoryFeatures</b> call now returns category-level metadata for both domestic and international return policies, and developers should make plans to use that call for this metadata.</span>
+ *  <span class="tablenote"><b>Note:</b> If a seller does not add a separate international return policy, the settings in the domestic return policy will be used instead. For more information on setting separate domestic and international return policies, see the
+ *  <a href="https://pages.ebay.com/seller-center/seller-updates/2018-summer/simplified-returns.html#international-returns-policy" target="_blank">International returns policy</a> help topic. </span>
  * XSD Type: ReturnPolicyType
  */
 class ReturnPolicyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
 
     /**
-     * This field indicates how the seller compensates buyers for <a href="http://developer.ebay.com/DevZone/guides/features-guide/default.html#development/Post-Order-Returns.html#return-reasons" target="_blank">returns</a>. You must set this value to <code>MoneyBack</code> for all eBay marketplaces except for the US marketplace.
-     *  <br><br>
-     *  On <code>EBAY_US</code>: You can set this value to either <code>MoneyBack</code> or <code>MoneyBackOrReplacement</code>. If a seller has the depth of inventory to support an exchange for an identical item, you can set <code>MoneyBackOrReplacement</code>. Otherwise, set this value to <code>MoneyBack</code>.
+     * This field indicates how the seller compensates buyers for returns</a>. <code>MoneyBack</code> is the only supported value for all marketplaces except for the US. On the US marketplace, you can set this value to either <code>MoneyBack</code> or <code>MoneyBackOrReplacement</code>. <code>MoneyBackOrReplacement</code> can be used by sellers that have the depth of inventory to support an exchange for an identical item. However, ultimately, it is up to the buyer on whether they want money back or a replacement item.
      *  <br><br>
      *  <b>For ReviseItem only:</b> You cannot change the value of this field if the listing has bids or sales, or if the listing ends within 12 hours. For more details, see the <b>ReturnPolicy</b> description.
+     *  <br><br>
+     *  <span class="tablenote"><b>Note:</b> If a seller ships internationally, and wants to define and use a separate international returns policy, the international equivalent of this field is the <b>InternationalRefundOption</b> field.</span>
      *
      * @var string $refundOption
      */
@@ -40,12 +41,11 @@ class ReturnPolicyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Specifies the amount of time the buyer has to return an item. The return period begins when the item is marked "delivered" at the buyer's specified ship-to location. Most marketplaces and categories support 30-day and 60-day return periods. eBay sites often set 30-days as the default value for this field and sellers are obligated to honor the values that are set for a listing. This value is required if <b>ReturnsAcceptedOption=ReturnsAccepted</b>.
      *  <br><br>
-     *  <b>Applicable values:</b> Retrieve the values supported by a marketplace by calling <b>GeteBayDetails</b> with <b>DetailName</b> set to <code>ReturnPolicyDetails</code>, then review <b>ReturnPolicyDetails.ReturnsWithin.ReturnsWithinOption</b> in the response.
+     *  <b>Applicable values:</b> Retrieve the values supported by a marketplace and category by calling <b>GetCategoryFeatures</b> with <b>FeatureID</b> set to <code>DomesticReturnsDurationValues</code>, then see the values returned under the <b>Category.DomesticReturnsDurationValues</b> container in the response.
      *  <br/><br/>
      *  <b>For ReviseItem only:</b> You cannot change the value of this field if the listing has bids or sales, or if the listing ends within 12 hours. For more details, see the <b>ReturnPolicy</b> description.
-     *  <br/><br/>
-     *  <span class="tablenote"><b>Note:</b> In version 1061, the options for this field were reduced. An error will be thrown if you attempt to list an item with this field set to a value that is not accepted by the target marketplace. See the <a href="/devzone/xml/docs/releasenotes.html#1061">Release Notes</a> for details.</span>
-     *  <br>
+     *  <br><br>
+     *  <span class="tablenote"><b>Note:</b> If a seller ships internationally, and wants to define and use a separate international returns policy, the international equivalent of this field is the <b>InternationalReturnsWithinOption</b> field.</span>
      *
      * @var string $returnsWithinOption
      */
@@ -65,15 +65,17 @@ class ReturnPolicyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * This required field indicates whether or not the seller accepts returns.
      *  <br><br>
-     *  Applicable values are <code>ReturnsAccepted</code> or <code>ReturnsNotAccepted</code>. When set to <code>ReturnsAccepted</code>, this option indicates the seller allows items to be returned. Specify <b>ReturnsNotAccepted</b> for an item if the seller does not accept returns.
+     *  Applicable values are <code>ReturnsAccepted</code> or <code>ReturnsNotAccepted</code>. When set to <code>ReturnsAccepted</code>, this option indicates the seller allows items to be returned. Specify <b>ReturnsNotAccepted</b> for a listing if returns are not accepted.
      *  <br><br>
-     *  On the eBay DE, IE, and UK, registered business sellers must accept returns for fixed-price items (including auction items with Buy It Now and any other fixed price formats) when the category requires a return policy. On some European sites, such as eBay Germany (DE), registered business sellers are required to accept returns. Use the Trading call <b>GetUser</b> to determine the status of an eBay business seller in DE, IE, and UK. Review the <b>User.SellerInfo.SellerBusinessType</b> field in the response.
+     *  On the eBay DE, IE, and UK marketplaces, registered business sellers must accept returns for fixed-price items (including auction items with Buy It Now and any other fixed price formats) when the category requires a return policy. On some European sites, such as eBay Germany (DE), registered business sellers are required to accept returns. Use the Trading call <b>GetUser</b> to determine the status of an eBay business seller in DE, IE, and UK. Review the <b>User.SellerInfo.SellerBusinessType</b> field in the response.
      *  <br> <br>
      *  <span class="tablenote"><b>Note:</b> In order for Top-Rated sellers to receive a Top-Rated Plus seal for their listings, returns must be accepted for their items (<b>ReturnsAcceptedOption</b> = <code>ReturnsAccepted</code>) and handling time should be set to zero-day (same-day shipping) or one-day shipping. Set the handling time (in days) using the <b>Item.DispatchTimeMax</b> field.</span>
      *  <br>
-     *  Top-Rated listings qualify for the greatest average boost in Best Match and for the 20 percent Final Value Fee discount. For more information on eBay's Top-Rated seller program, see the <a href="http://pages.ebay.com/help/sell/top-rated.html">Becoming a Top Rated Seller and qualifying for Top Rated Plus</a> page.</p>
+     *  Top-Rated listings qualify for the greatest average boost in Best Match and for the 20 percent Final Value Fee discount. For more information on eBay's Top-Rated seller program, see the <a href="https://pages.ebay.com/help/sell/top-rated.html">Seller levels and performance standards</a> page.</p>
      *  <br>
      *  <b>For ReviseItem only:</b> You cannot change the value of this field if the listing has bids or sales, or if the listing ends within 12 hours. For more details, see the <b>ReturnPolicy</b> description.
+     *  <br><br>
+     *  <span class="tablenote"><b>Note:</b> If a seller ships internationally, and wants to define and use a separate international returns policy, the international equivalent of this field is the <b>InternationalReturnsAcceptedOption</b> field.</span>
      *
      * @var string $returnsAcceptedOption
      */
@@ -154,13 +156,13 @@ class ReturnPolicyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     private $warrantyDuration = null;
 
     /**
-     * This option specifies either the buyer or the seller as the party who pays for return shipping charges. Accepted values are <code>Buyer</code> or <code>Seller</code>. eBay sites often set <code>Seller</code> as the default value for this field, and sellers are obligated to honor the values that are set for a listing. This value is required if <b>ReturnsAcceptedOption=ReturnsAccepted</b>.
+     * This option specifies whether the buyer or the seller pays for return shipping charges. Accepted values are <code>Buyer</code> or <code>Seller</code>. eBay sites often set <code>Seller</code> as the default value for this field, and sellers are obligated to honor the values that are set for a listing. This value is required if <b>ReturnsAcceptedOption=ReturnsAccepted</b>.
      *  <br><br>
-     *  Depending on the seller's return policy and the specifics of a return, either the buyer or the seller can be responsible for the return shipping costs. Note that the seller is always responsible for return shipping costs for SNAD-related issues.
-     *  <br><br>
-     *  Use <b>GeteBayDetails</b> (with <b>DetailName=ReturnPolicyDetails</b>) and review the returned <b>ReturnPolicyDetails.ShippingCostPaidBy</b> values to see the values supported by a marketplace.
+     *  Depending on the seller's return policy and the specifics of a return, either the buyer or the seller can be responsible for the return shipping costs. Note that the seller is always responsible for return shipping costs for SNAD-related issues or for late shipments.
      *  <br><br>
      *  <b>For ReviseItem only:</b> You cannot change the value of this field if the listing has bids or sales, or if the listing ends within 12 hours. For more details, see the <b>ReturnPolicy</b> description.
+     *  <br><br>
+     *  <span class="tablenote"><b>Note:</b> If a seller ships internationally, and wants to define and use a separate international returns policy, the international equivalent of this field is the <b>InternationalShippingCostPaidByOption</b> field.</span>
      *
      * @var string $shippingCostPaidByOption
      */
@@ -199,52 +201,55 @@ class ReturnPolicyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     private $extendedHolidayReturns = null;
 
     /**
-     * This field indicates how the seller compensates buyers for <a href="http://developer.ebay.com/DevZone/guides/features-guide/default.html#development/Post-Order-Returns.html#return-reasons" target="_blank">returns</a>. You must set this value to <code>MoneyBack</code> for all eBay marketplaces except for the US marketplace.
-     *  <br><br>
-     *  On <code>EBAY_US</code>: You can set this value to either <code>MoneyBack</code> or <code>MoneyBackOrReplacement</code>. If a seller has the depth of inventory to support an exchange for an identical item, you can set <code>MoneyBackOrReplacement</code>. Otherwise, set this value to <code>MoneyBack</code>.
+     * This field indicates how the seller compensates international buyers for returns</a>. <code>MoneyBack</code> is the only supported value for all marketplaces except for the US. On the US marketplace, you can set this value to either <code>MoneyBack</code> or <code>MoneyBackOrReplacement</code>. <code>MoneyBackOrReplacement</code> can be used by sellers that have the depth of inventory to support an exchange for an identical item. However, ultimately, it is up to the buyer on whether they want money back or a replacement item.
      *  <br><br>
      *  <b>For ReviseItem only:</b> You cannot change the value of this field if the listing has bids or sales, or if the listing ends within 12 hours. For more details, see the <b>ReturnPolicy</b> description.
+     *  <br><br>
+     *  <span class="tablenote"><b>Note:</b> If a seller does not add a separate international return policy, the settings in the domestic return policy will be used instead. So if this field is not used in an add/revise/relist call, the refund option(s) for international returns will default to the value specified in the <b>RefundOption</b> field.</span>
      *
      * @var string $internationalRefundOption
      */
     private $internationalRefundOption = null;
 
     /**
-     * This optional field indicates whether or not the seller accepts international returns (returns that need to be shipped via an international shipping service).
+     * This field is conditionally required if a seller wants to use a separate return policy for international returns. The value in this field indicates whether or not the seller accepts returns from international buyers.
      *  <br><br>
-     *  Applicable values are <code>ReturnsAccepted</code> or <code>ReturnsNotAccepted</code>. When set to <code>ReturnsAccepted</code>, this option indicates the seller allows international returns. If the seller does not accept international returns, they can specify <b>ReturnsNotAccepted</b>.
+     *  Applicable values are <code>ReturnsAccepted</code> or <code>ReturnsNotAccepted</code>. When set to <code>ReturnsAccepted</code>, this option indicates the seller allows international buyers to return items. Specify <b>ReturnsNotAccepted</b> for a listing if returns are not accepted from international buyers.
      *  <br><br>
      *  On the eBay DE, IE, and UK, registered business sellers must accept returns for fixed-price items (including auction items with Buy It Now and any other fixed price formats) when the category requires a return policy. On some European sites, such as eBay Germany (DE), registered business sellers are required to accept returns. Use the Trading call <b>GetUser</b> to determine the status of an eBay business seller in DE, IE, and UK. Review the <b>User.SellerInfo.SellerBusinessType</b> field in the response.
      *  <br><br>
      *  <b>For ReviseItem only:</b> You cannot change the value of this field if the listing has bids or sales, or if the listing ends within 12 hours. For more details, see the <b>ReturnPolicy</b> description.
+     *  <br><br>
+     *  <span class="tablenote"><b>Note:</b> If a seller does not add a separate international return policy, the settings in the domestic return policy will be used instead. So if this field is not used in an add/revise/relist call, the return accepted value for international returns will default to the value specified in the <b>ReturnsAcceptedOption</b> field.</span>
      *
      * @var string $internationalReturnsAcceptedOption
      */
     private $internationalReturnsAcceptedOption = null;
 
     /**
-     * A buyer can return an item that was shipped via an international shipping service to the seller within the period of time specified by this field. The time period begins the day the buyer receives the item.
+     * This field is conditionally required if a seller is using a separate return policy for international returns, and is accepting international returns. The value in this field indicates the number of days that an international buyer has to return an item. The time period begins on the day that the buyer receives the item. Most marketplaces and categories support 30-day and 60-day return periods. eBay sites often set 30-days as the default value for this field and sellers are obligated to honor the values that are set for a listing.
      *  <br><br>
-     *  <b>Applicable values:</b> To get the applicable <b>ReturnsWithinOption</b> values for your site, call <b>GeteBayDetails</b> with <b>DetailName</b> set to <code>ReturnPolicyDetails</code>.
+     *  <b>Applicable values:</b> Retrieve the values supported by a marketplace and category by calling <b>GetCategoryFeatures</b> with <b>FeatureID</b> set to <code>InternationalReturnsDurationValues</code>, then see the values returned under the <b>Category.InternationalReturnsDurationValues</b> container in the response.
      *  <br><br>
      *  <b>For AddItem, VerifyAddItem, and RelistItem:</b> If the seller accepts international returns (InternationalReturnsAcceptedOption is set to ReturnsAccepted) but does not specify this field for a listing, eBay sets a default value (often Days_30) and the seller is obligated to honor this setting.
      *  <br><br>
      *  <b>For ReviseItem only:</b> You cannot change the value of this field if the listing has bids or sales, or if the listing ends within 12 hours. For more details, see the <b>ReturnPolicy</b> description.
      *  <br><br>
-     *  <span class="tablenote"><b>Note:</b> The <b>GetCategoryFeatures</b> call now returns category-level metadata for both domestic and international return policies, and developers should make plans to use that call for this metadata.</span>
+     *  <span class="tablenote"><b>Note:</b> If a seller does not add a separate international return policy, the settings in the domestic return policy will be used instead. So if this field is not used in an add/revise/relist call, the return period for international returns will default to the value specified in the <b>ReturnsWithinOption</b> field.</span>
      *
      * @var string $internationalReturnsWithinOption
      */
     private $internationalReturnsWithinOption = null;
 
     /**
-     * This option specifies either the buyer or the seller as the party who pays for international return shipping charges. Accepted values are <code>Buyer</code> or <code>Seller</code>. eBay sites often set <code>Seller</code> as the default value for this field, and sellers are obligated to honor the values that are set for a listing. This value is required if <b>ReturnsAcceptedOption=ReturnsAccepted</b>.
+     * This field is conditionally required if a seller is using a separate return policy for international returns, and is accepting international returns.
+     *  The value in this field specifies whether the buyer or the seller pays for international return shipping charges. Accepted values are <code>Buyer</code> or <code>Seller</code>. eBay sites often set <code>Seller</code> as the default value for this field, and sellers are obligated to honor the values that are set for a listing.
      *  <br><br>
-     *  Depending on the seller's return policy and the specifics of a return, either the buyer or the seller can be responsible for the return shipping costs. Note that the seller is always responsible for return shipping costs for SNAD-related issues.
-     *  <br><br>
-     *  <b>For AddItem, VerifyAddItem, and RelistItem:</b> If the seller accepts returns (<b>InternationalReturnsAcceptedOption</b> = <code>ReturnsAccepted</code>) but does not set this field when listing an item, some eBay sites may set a default value (like Buyer). Because sellers are obligated to honor the policies specified on their View Item pages, be sure this is set to the value desired by the seller.
+     *  Depending on the seller's return policy and the specifics of a return, either the buyer or the seller can be responsible for the return shipping costs. Note that the seller is always responsible for return shipping costs for SNAD-related issues or for late shipments.
      *  <br><br>
      *  <b>For ReviseItem only:</b> You cannot change the value of this field if the listing has bids or sales, or if the listing ends within 12 hours. For more details, see the <b>ReturnPolicy</b> description.
+     *  <br><br>
+     *  <span class="tablenote"><b>Note:</b> If a seller does not add a separate international return policy, the settings in the domestic return policy will be used instead. So if this field is not used in an add/revise/relist call, return shipping cost payee for international returns will default to the value specified in the <b>ShippingCostPaidByOption</b> field.</span>
      *
      * @var string $internationalShippingCostPaidByOption
      */
@@ -253,11 +258,11 @@ class ReturnPolicyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Gets as refundOption
      *
-     * This field indicates how the seller compensates buyers for <a href="http://developer.ebay.com/DevZone/guides/features-guide/default.html#development/Post-Order-Returns.html#return-reasons" target="_blank">returns</a>. You must set this value to <code>MoneyBack</code> for all eBay marketplaces except for the US marketplace.
-     *  <br><br>
-     *  On <code>EBAY_US</code>: You can set this value to either <code>MoneyBack</code> or <code>MoneyBackOrReplacement</code>. If a seller has the depth of inventory to support an exchange for an identical item, you can set <code>MoneyBackOrReplacement</code>. Otherwise, set this value to <code>MoneyBack</code>.
+     * This field indicates how the seller compensates buyers for returns</a>. <code>MoneyBack</code> is the only supported value for all marketplaces except for the US. On the US marketplace, you can set this value to either <code>MoneyBack</code> or <code>MoneyBackOrReplacement</code>. <code>MoneyBackOrReplacement</code> can be used by sellers that have the depth of inventory to support an exchange for an identical item. However, ultimately, it is up to the buyer on whether they want money back or a replacement item.
      *  <br><br>
      *  <b>For ReviseItem only:</b> You cannot change the value of this field if the listing has bids or sales, or if the listing ends within 12 hours. For more details, see the <b>ReturnPolicy</b> description.
+     *  <br><br>
+     *  <span class="tablenote"><b>Note:</b> If a seller ships internationally, and wants to define and use a separate international returns policy, the international equivalent of this field is the <b>InternationalRefundOption</b> field.</span>
      *
      * @return string
      */
@@ -269,11 +274,11 @@ class ReturnPolicyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Sets a new refundOption
      *
-     * This field indicates how the seller compensates buyers for <a href="http://developer.ebay.com/DevZone/guides/features-guide/default.html#development/Post-Order-Returns.html#return-reasons" target="_blank">returns</a>. You must set this value to <code>MoneyBack</code> for all eBay marketplaces except for the US marketplace.
-     *  <br><br>
-     *  On <code>EBAY_US</code>: You can set this value to either <code>MoneyBack</code> or <code>MoneyBackOrReplacement</code>. If a seller has the depth of inventory to support an exchange for an identical item, you can set <code>MoneyBackOrReplacement</code>. Otherwise, set this value to <code>MoneyBack</code>.
+     * This field indicates how the seller compensates buyers for returns</a>. <code>MoneyBack</code> is the only supported value for all marketplaces except for the US. On the US marketplace, you can set this value to either <code>MoneyBack</code> or <code>MoneyBackOrReplacement</code>. <code>MoneyBackOrReplacement</code> can be used by sellers that have the depth of inventory to support an exchange for an identical item. However, ultimately, it is up to the buyer on whether they want money back or a replacement item.
      *  <br><br>
      *  <b>For ReviseItem only:</b> You cannot change the value of this field if the listing has bids or sales, or if the listing ends within 12 hours. For more details, see the <b>ReturnPolicy</b> description.
+     *  <br><br>
+     *  <span class="tablenote"><b>Note:</b> If a seller ships internationally, and wants to define and use a separate international returns policy, the international equivalent of this field is the <b>InternationalRefundOption</b> field.</span>
      *
      * @param string $refundOption
      * @return self
@@ -319,12 +324,11 @@ class ReturnPolicyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      *
      * Specifies the amount of time the buyer has to return an item. The return period begins when the item is marked "delivered" at the buyer's specified ship-to location. Most marketplaces and categories support 30-day and 60-day return periods. eBay sites often set 30-days as the default value for this field and sellers are obligated to honor the values that are set for a listing. This value is required if <b>ReturnsAcceptedOption=ReturnsAccepted</b>.
      *  <br><br>
-     *  <b>Applicable values:</b> Retrieve the values supported by a marketplace by calling <b>GeteBayDetails</b> with <b>DetailName</b> set to <code>ReturnPolicyDetails</code>, then review <b>ReturnPolicyDetails.ReturnsWithin.ReturnsWithinOption</b> in the response.
+     *  <b>Applicable values:</b> Retrieve the values supported by a marketplace and category by calling <b>GetCategoryFeatures</b> with <b>FeatureID</b> set to <code>DomesticReturnsDurationValues</code>, then see the values returned under the <b>Category.DomesticReturnsDurationValues</b> container in the response.
      *  <br/><br/>
      *  <b>For ReviseItem only:</b> You cannot change the value of this field if the listing has bids or sales, or if the listing ends within 12 hours. For more details, see the <b>ReturnPolicy</b> description.
-     *  <br/><br/>
-     *  <span class="tablenote"><b>Note:</b> In version 1061, the options for this field were reduced. An error will be thrown if you attempt to list an item with this field set to a value that is not accepted by the target marketplace. See the <a href="/devzone/xml/docs/releasenotes.html#1061">Release Notes</a> for details.</span>
-     *  <br>
+     *  <br><br>
+     *  <span class="tablenote"><b>Note:</b> If a seller ships internationally, and wants to define and use a separate international returns policy, the international equivalent of this field is the <b>InternationalReturnsWithinOption</b> field.</span>
      *
      * @return string
      */
@@ -338,12 +342,11 @@ class ReturnPolicyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      *
      * Specifies the amount of time the buyer has to return an item. The return period begins when the item is marked "delivered" at the buyer's specified ship-to location. Most marketplaces and categories support 30-day and 60-day return periods. eBay sites often set 30-days as the default value for this field and sellers are obligated to honor the values that are set for a listing. This value is required if <b>ReturnsAcceptedOption=ReturnsAccepted</b>.
      *  <br><br>
-     *  <b>Applicable values:</b> Retrieve the values supported by a marketplace by calling <b>GeteBayDetails</b> with <b>DetailName</b> set to <code>ReturnPolicyDetails</code>, then review <b>ReturnPolicyDetails.ReturnsWithin.ReturnsWithinOption</b> in the response.
+     *  <b>Applicable values:</b> Retrieve the values supported by a marketplace and category by calling <b>GetCategoryFeatures</b> with <b>FeatureID</b> set to <code>DomesticReturnsDurationValues</code>, then see the values returned under the <b>Category.DomesticReturnsDurationValues</b> container in the response.
      *  <br/><br/>
      *  <b>For ReviseItem only:</b> You cannot change the value of this field if the listing has bids or sales, or if the listing ends within 12 hours. For more details, see the <b>ReturnPolicy</b> description.
-     *  <br/><br/>
-     *  <span class="tablenote"><b>Note:</b> In version 1061, the options for this field were reduced. An error will be thrown if you attempt to list an item with this field set to a value that is not accepted by the target marketplace. See the <a href="/devzone/xml/docs/releasenotes.html#1061">Release Notes</a> for details.</span>
-     *  <br>
+     *  <br><br>
+     *  <span class="tablenote"><b>Note:</b> If a seller ships internationally, and wants to define and use a separate international returns policy, the international equivalent of this field is the <b>InternationalReturnsWithinOption</b> field.</span>
      *
      * @param string $returnsWithinOption
      * @return self
@@ -393,15 +396,17 @@ class ReturnPolicyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      *
      * This required field indicates whether or not the seller accepts returns.
      *  <br><br>
-     *  Applicable values are <code>ReturnsAccepted</code> or <code>ReturnsNotAccepted</code>. When set to <code>ReturnsAccepted</code>, this option indicates the seller allows items to be returned. Specify <b>ReturnsNotAccepted</b> for an item if the seller does not accept returns.
+     *  Applicable values are <code>ReturnsAccepted</code> or <code>ReturnsNotAccepted</code>. When set to <code>ReturnsAccepted</code>, this option indicates the seller allows items to be returned. Specify <b>ReturnsNotAccepted</b> for a listing if returns are not accepted.
      *  <br><br>
-     *  On the eBay DE, IE, and UK, registered business sellers must accept returns for fixed-price items (including auction items with Buy It Now and any other fixed price formats) when the category requires a return policy. On some European sites, such as eBay Germany (DE), registered business sellers are required to accept returns. Use the Trading call <b>GetUser</b> to determine the status of an eBay business seller in DE, IE, and UK. Review the <b>User.SellerInfo.SellerBusinessType</b> field in the response.
+     *  On the eBay DE, IE, and UK marketplaces, registered business sellers must accept returns for fixed-price items (including auction items with Buy It Now and any other fixed price formats) when the category requires a return policy. On some European sites, such as eBay Germany (DE), registered business sellers are required to accept returns. Use the Trading call <b>GetUser</b> to determine the status of an eBay business seller in DE, IE, and UK. Review the <b>User.SellerInfo.SellerBusinessType</b> field in the response.
      *  <br> <br>
      *  <span class="tablenote"><b>Note:</b> In order for Top-Rated sellers to receive a Top-Rated Plus seal for their listings, returns must be accepted for their items (<b>ReturnsAcceptedOption</b> = <code>ReturnsAccepted</code>) and handling time should be set to zero-day (same-day shipping) or one-day shipping. Set the handling time (in days) using the <b>Item.DispatchTimeMax</b> field.</span>
      *  <br>
-     *  Top-Rated listings qualify for the greatest average boost in Best Match and for the 20 percent Final Value Fee discount. For more information on eBay's Top-Rated seller program, see the <a href="http://pages.ebay.com/help/sell/top-rated.html">Becoming a Top Rated Seller and qualifying for Top Rated Plus</a> page.</p>
+     *  Top-Rated listings qualify for the greatest average boost in Best Match and for the 20 percent Final Value Fee discount. For more information on eBay's Top-Rated seller program, see the <a href="https://pages.ebay.com/help/sell/top-rated.html">Seller levels and performance standards</a> page.</p>
      *  <br>
      *  <b>For ReviseItem only:</b> You cannot change the value of this field if the listing has bids or sales, or if the listing ends within 12 hours. For more details, see the <b>ReturnPolicy</b> description.
+     *  <br><br>
+     *  <span class="tablenote"><b>Note:</b> If a seller ships internationally, and wants to define and use a separate international returns policy, the international equivalent of this field is the <b>InternationalReturnsAcceptedOption</b> field.</span>
      *
      * @return string
      */
@@ -415,15 +420,17 @@ class ReturnPolicyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      *
      * This required field indicates whether or not the seller accepts returns.
      *  <br><br>
-     *  Applicable values are <code>ReturnsAccepted</code> or <code>ReturnsNotAccepted</code>. When set to <code>ReturnsAccepted</code>, this option indicates the seller allows items to be returned. Specify <b>ReturnsNotAccepted</b> for an item if the seller does not accept returns.
+     *  Applicable values are <code>ReturnsAccepted</code> or <code>ReturnsNotAccepted</code>. When set to <code>ReturnsAccepted</code>, this option indicates the seller allows items to be returned. Specify <b>ReturnsNotAccepted</b> for a listing if returns are not accepted.
      *  <br><br>
-     *  On the eBay DE, IE, and UK, registered business sellers must accept returns for fixed-price items (including auction items with Buy It Now and any other fixed price formats) when the category requires a return policy. On some European sites, such as eBay Germany (DE), registered business sellers are required to accept returns. Use the Trading call <b>GetUser</b> to determine the status of an eBay business seller in DE, IE, and UK. Review the <b>User.SellerInfo.SellerBusinessType</b> field in the response.
+     *  On the eBay DE, IE, and UK marketplaces, registered business sellers must accept returns for fixed-price items (including auction items with Buy It Now and any other fixed price formats) when the category requires a return policy. On some European sites, such as eBay Germany (DE), registered business sellers are required to accept returns. Use the Trading call <b>GetUser</b> to determine the status of an eBay business seller in DE, IE, and UK. Review the <b>User.SellerInfo.SellerBusinessType</b> field in the response.
      *  <br> <br>
      *  <span class="tablenote"><b>Note:</b> In order for Top-Rated sellers to receive a Top-Rated Plus seal for their listings, returns must be accepted for their items (<b>ReturnsAcceptedOption</b> = <code>ReturnsAccepted</code>) and handling time should be set to zero-day (same-day shipping) or one-day shipping. Set the handling time (in days) using the <b>Item.DispatchTimeMax</b> field.</span>
      *  <br>
-     *  Top-Rated listings qualify for the greatest average boost in Best Match and for the 20 percent Final Value Fee discount. For more information on eBay's Top-Rated seller program, see the <a href="http://pages.ebay.com/help/sell/top-rated.html">Becoming a Top Rated Seller and qualifying for Top Rated Plus</a> page.</p>
+     *  Top-Rated listings qualify for the greatest average boost in Best Match and for the 20 percent Final Value Fee discount. For more information on eBay's Top-Rated seller program, see the <a href="https://pages.ebay.com/help/sell/top-rated.html">Seller levels and performance standards</a> page.</p>
      *  <br>
      *  <b>For ReviseItem only:</b> You cannot change the value of this field if the listing has bids or sales, or if the listing ends within 12 hours. For more details, see the <b>ReturnPolicy</b> description.
+     *  <br><br>
+     *  <span class="tablenote"><b>Note:</b> If a seller ships internationally, and wants to define and use a separate international returns policy, the international equivalent of this field is the <b>InternationalReturnsAcceptedOption</b> field.</span>
      *
      * @param string $returnsAcceptedOption
      * @return self
@@ -681,13 +688,13 @@ class ReturnPolicyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Gets as shippingCostPaidByOption
      *
-     * This option specifies either the buyer or the seller as the party who pays for return shipping charges. Accepted values are <code>Buyer</code> or <code>Seller</code>. eBay sites often set <code>Seller</code> as the default value for this field, and sellers are obligated to honor the values that are set for a listing. This value is required if <b>ReturnsAcceptedOption=ReturnsAccepted</b>.
+     * This option specifies whether the buyer or the seller pays for return shipping charges. Accepted values are <code>Buyer</code> or <code>Seller</code>. eBay sites often set <code>Seller</code> as the default value for this field, and sellers are obligated to honor the values that are set for a listing. This value is required if <b>ReturnsAcceptedOption=ReturnsAccepted</b>.
      *  <br><br>
-     *  Depending on the seller's return policy and the specifics of a return, either the buyer or the seller can be responsible for the return shipping costs. Note that the seller is always responsible for return shipping costs for SNAD-related issues.
-     *  <br><br>
-     *  Use <b>GeteBayDetails</b> (with <b>DetailName=ReturnPolicyDetails</b>) and review the returned <b>ReturnPolicyDetails.ShippingCostPaidBy</b> values to see the values supported by a marketplace.
+     *  Depending on the seller's return policy and the specifics of a return, either the buyer or the seller can be responsible for the return shipping costs. Note that the seller is always responsible for return shipping costs for SNAD-related issues or for late shipments.
      *  <br><br>
      *  <b>For ReviseItem only:</b> You cannot change the value of this field if the listing has bids or sales, or if the listing ends within 12 hours. For more details, see the <b>ReturnPolicy</b> description.
+     *  <br><br>
+     *  <span class="tablenote"><b>Note:</b> If a seller ships internationally, and wants to define and use a separate international returns policy, the international equivalent of this field is the <b>InternationalShippingCostPaidByOption</b> field.</span>
      *
      * @return string
      */
@@ -699,13 +706,13 @@ class ReturnPolicyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Sets a new shippingCostPaidByOption
      *
-     * This option specifies either the buyer or the seller as the party who pays for return shipping charges. Accepted values are <code>Buyer</code> or <code>Seller</code>. eBay sites often set <code>Seller</code> as the default value for this field, and sellers are obligated to honor the values that are set for a listing. This value is required if <b>ReturnsAcceptedOption=ReturnsAccepted</b>.
+     * This option specifies whether the buyer or the seller pays for return shipping charges. Accepted values are <code>Buyer</code> or <code>Seller</code>. eBay sites often set <code>Seller</code> as the default value for this field, and sellers are obligated to honor the values that are set for a listing. This value is required if <b>ReturnsAcceptedOption=ReturnsAccepted</b>.
      *  <br><br>
-     *  Depending on the seller's return policy and the specifics of a return, either the buyer or the seller can be responsible for the return shipping costs. Note that the seller is always responsible for return shipping costs for SNAD-related issues.
-     *  <br><br>
-     *  Use <b>GeteBayDetails</b> (with <b>DetailName=ReturnPolicyDetails</b>) and review the returned <b>ReturnPolicyDetails.ShippingCostPaidBy</b> values to see the values supported by a marketplace.
+     *  Depending on the seller's return policy and the specifics of a return, either the buyer or the seller can be responsible for the return shipping costs. Note that the seller is always responsible for return shipping costs for SNAD-related issues or for late shipments.
      *  <br><br>
      *  <b>For ReviseItem only:</b> You cannot change the value of this field if the listing has bids or sales, or if the listing ends within 12 hours. For more details, see the <b>ReturnPolicy</b> description.
+     *  <br><br>
+     *  <span class="tablenote"><b>Note:</b> If a seller ships internationally, and wants to define and use a separate international returns policy, the international equivalent of this field is the <b>InternationalShippingCostPaidByOption</b> field.</span>
      *
      * @param string $shippingCostPaidByOption
      * @return self
@@ -831,11 +838,11 @@ class ReturnPolicyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Gets as internationalRefundOption
      *
-     * This field indicates how the seller compensates buyers for <a href="http://developer.ebay.com/DevZone/guides/features-guide/default.html#development/Post-Order-Returns.html#return-reasons" target="_blank">returns</a>. You must set this value to <code>MoneyBack</code> for all eBay marketplaces except for the US marketplace.
-     *  <br><br>
-     *  On <code>EBAY_US</code>: You can set this value to either <code>MoneyBack</code> or <code>MoneyBackOrReplacement</code>. If a seller has the depth of inventory to support an exchange for an identical item, you can set <code>MoneyBackOrReplacement</code>. Otherwise, set this value to <code>MoneyBack</code>.
+     * This field indicates how the seller compensates international buyers for returns</a>. <code>MoneyBack</code> is the only supported value for all marketplaces except for the US. On the US marketplace, you can set this value to either <code>MoneyBack</code> or <code>MoneyBackOrReplacement</code>. <code>MoneyBackOrReplacement</code> can be used by sellers that have the depth of inventory to support an exchange for an identical item. However, ultimately, it is up to the buyer on whether they want money back or a replacement item.
      *  <br><br>
      *  <b>For ReviseItem only:</b> You cannot change the value of this field if the listing has bids or sales, or if the listing ends within 12 hours. For more details, see the <b>ReturnPolicy</b> description.
+     *  <br><br>
+     *  <span class="tablenote"><b>Note:</b> If a seller does not add a separate international return policy, the settings in the domestic return policy will be used instead. So if this field is not used in an add/revise/relist call, the refund option(s) for international returns will default to the value specified in the <b>RefundOption</b> field.</span>
      *
      * @return string
      */
@@ -847,11 +854,11 @@ class ReturnPolicyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Sets a new internationalRefundOption
      *
-     * This field indicates how the seller compensates buyers for <a href="http://developer.ebay.com/DevZone/guides/features-guide/default.html#development/Post-Order-Returns.html#return-reasons" target="_blank">returns</a>. You must set this value to <code>MoneyBack</code> for all eBay marketplaces except for the US marketplace.
-     *  <br><br>
-     *  On <code>EBAY_US</code>: You can set this value to either <code>MoneyBack</code> or <code>MoneyBackOrReplacement</code>. If a seller has the depth of inventory to support an exchange for an identical item, you can set <code>MoneyBackOrReplacement</code>. Otherwise, set this value to <code>MoneyBack</code>.
+     * This field indicates how the seller compensates international buyers for returns</a>. <code>MoneyBack</code> is the only supported value for all marketplaces except for the US. On the US marketplace, you can set this value to either <code>MoneyBack</code> or <code>MoneyBackOrReplacement</code>. <code>MoneyBackOrReplacement</code> can be used by sellers that have the depth of inventory to support an exchange for an identical item. However, ultimately, it is up to the buyer on whether they want money back or a replacement item.
      *  <br><br>
      *  <b>For ReviseItem only:</b> You cannot change the value of this field if the listing has bids or sales, or if the listing ends within 12 hours. For more details, see the <b>ReturnPolicy</b> description.
+     *  <br><br>
+     *  <span class="tablenote"><b>Note:</b> If a seller does not add a separate international return policy, the settings in the domestic return policy will be used instead. So if this field is not used in an add/revise/relist call, the refund option(s) for international returns will default to the value specified in the <b>RefundOption</b> field.</span>
      *
      * @param string $internationalRefundOption
      * @return self
@@ -865,13 +872,15 @@ class ReturnPolicyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Gets as internationalReturnsAcceptedOption
      *
-     * This optional field indicates whether or not the seller accepts international returns (returns that need to be shipped via an international shipping service).
+     * This field is conditionally required if a seller wants to use a separate return policy for international returns. The value in this field indicates whether or not the seller accepts returns from international buyers.
      *  <br><br>
-     *  Applicable values are <code>ReturnsAccepted</code> or <code>ReturnsNotAccepted</code>. When set to <code>ReturnsAccepted</code>, this option indicates the seller allows international returns. If the seller does not accept international returns, they can specify <b>ReturnsNotAccepted</b>.
+     *  Applicable values are <code>ReturnsAccepted</code> or <code>ReturnsNotAccepted</code>. When set to <code>ReturnsAccepted</code>, this option indicates the seller allows international buyers to return items. Specify <b>ReturnsNotAccepted</b> for a listing if returns are not accepted from international buyers.
      *  <br><br>
      *  On the eBay DE, IE, and UK, registered business sellers must accept returns for fixed-price items (including auction items with Buy It Now and any other fixed price formats) when the category requires a return policy. On some European sites, such as eBay Germany (DE), registered business sellers are required to accept returns. Use the Trading call <b>GetUser</b> to determine the status of an eBay business seller in DE, IE, and UK. Review the <b>User.SellerInfo.SellerBusinessType</b> field in the response.
      *  <br><br>
      *  <b>For ReviseItem only:</b> You cannot change the value of this field if the listing has bids or sales, or if the listing ends within 12 hours. For more details, see the <b>ReturnPolicy</b> description.
+     *  <br><br>
+     *  <span class="tablenote"><b>Note:</b> If a seller does not add a separate international return policy, the settings in the domestic return policy will be used instead. So if this field is not used in an add/revise/relist call, the return accepted value for international returns will default to the value specified in the <b>ReturnsAcceptedOption</b> field.</span>
      *
      * @return string
      */
@@ -883,13 +892,15 @@ class ReturnPolicyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Sets a new internationalReturnsAcceptedOption
      *
-     * This optional field indicates whether or not the seller accepts international returns (returns that need to be shipped via an international shipping service).
+     * This field is conditionally required if a seller wants to use a separate return policy for international returns. The value in this field indicates whether or not the seller accepts returns from international buyers.
      *  <br><br>
-     *  Applicable values are <code>ReturnsAccepted</code> or <code>ReturnsNotAccepted</code>. When set to <code>ReturnsAccepted</code>, this option indicates the seller allows international returns. If the seller does not accept international returns, they can specify <b>ReturnsNotAccepted</b>.
+     *  Applicable values are <code>ReturnsAccepted</code> or <code>ReturnsNotAccepted</code>. When set to <code>ReturnsAccepted</code>, this option indicates the seller allows international buyers to return items. Specify <b>ReturnsNotAccepted</b> for a listing if returns are not accepted from international buyers.
      *  <br><br>
      *  On the eBay DE, IE, and UK, registered business sellers must accept returns for fixed-price items (including auction items with Buy It Now and any other fixed price formats) when the category requires a return policy. On some European sites, such as eBay Germany (DE), registered business sellers are required to accept returns. Use the Trading call <b>GetUser</b> to determine the status of an eBay business seller in DE, IE, and UK. Review the <b>User.SellerInfo.SellerBusinessType</b> field in the response.
      *  <br><br>
      *  <b>For ReviseItem only:</b> You cannot change the value of this field if the listing has bids or sales, or if the listing ends within 12 hours. For more details, see the <b>ReturnPolicy</b> description.
+     *  <br><br>
+     *  <span class="tablenote"><b>Note:</b> If a seller does not add a separate international return policy, the settings in the domestic return policy will be used instead. So if this field is not used in an add/revise/relist call, the return accepted value for international returns will default to the value specified in the <b>ReturnsAcceptedOption</b> field.</span>
      *
      * @param string $internationalReturnsAcceptedOption
      * @return self
@@ -903,15 +914,15 @@ class ReturnPolicyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Gets as internationalReturnsWithinOption
      *
-     * A buyer can return an item that was shipped via an international shipping service to the seller within the period of time specified by this field. The time period begins the day the buyer receives the item.
+     * This field is conditionally required if a seller is using a separate return policy for international returns, and is accepting international returns. The value in this field indicates the number of days that an international buyer has to return an item. The time period begins on the day that the buyer receives the item. Most marketplaces and categories support 30-day and 60-day return periods. eBay sites often set 30-days as the default value for this field and sellers are obligated to honor the values that are set for a listing.
      *  <br><br>
-     *  <b>Applicable values:</b> To get the applicable <b>ReturnsWithinOption</b> values for your site, call <b>GeteBayDetails</b> with <b>DetailName</b> set to <code>ReturnPolicyDetails</code>.
+     *  <b>Applicable values:</b> Retrieve the values supported by a marketplace and category by calling <b>GetCategoryFeatures</b> with <b>FeatureID</b> set to <code>InternationalReturnsDurationValues</code>, then see the values returned under the <b>Category.InternationalReturnsDurationValues</b> container in the response.
      *  <br><br>
      *  <b>For AddItem, VerifyAddItem, and RelistItem:</b> If the seller accepts international returns (InternationalReturnsAcceptedOption is set to ReturnsAccepted) but does not specify this field for a listing, eBay sets a default value (often Days_30) and the seller is obligated to honor this setting.
      *  <br><br>
      *  <b>For ReviseItem only:</b> You cannot change the value of this field if the listing has bids or sales, or if the listing ends within 12 hours. For more details, see the <b>ReturnPolicy</b> description.
      *  <br><br>
-     *  <span class="tablenote"><b>Note:</b> The <b>GetCategoryFeatures</b> call now returns category-level metadata for both domestic and international return policies, and developers should make plans to use that call for this metadata.</span>
+     *  <span class="tablenote"><b>Note:</b> If a seller does not add a separate international return policy, the settings in the domestic return policy will be used instead. So if this field is not used in an add/revise/relist call, the return period for international returns will default to the value specified in the <b>ReturnsWithinOption</b> field.</span>
      *
      * @return string
      */
@@ -923,15 +934,15 @@ class ReturnPolicyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Sets a new internationalReturnsWithinOption
      *
-     * A buyer can return an item that was shipped via an international shipping service to the seller within the period of time specified by this field. The time period begins the day the buyer receives the item.
+     * This field is conditionally required if a seller is using a separate return policy for international returns, and is accepting international returns. The value in this field indicates the number of days that an international buyer has to return an item. The time period begins on the day that the buyer receives the item. Most marketplaces and categories support 30-day and 60-day return periods. eBay sites often set 30-days as the default value for this field and sellers are obligated to honor the values that are set for a listing.
      *  <br><br>
-     *  <b>Applicable values:</b> To get the applicable <b>ReturnsWithinOption</b> values for your site, call <b>GeteBayDetails</b> with <b>DetailName</b> set to <code>ReturnPolicyDetails</code>.
+     *  <b>Applicable values:</b> Retrieve the values supported by a marketplace and category by calling <b>GetCategoryFeatures</b> with <b>FeatureID</b> set to <code>InternationalReturnsDurationValues</code>, then see the values returned under the <b>Category.InternationalReturnsDurationValues</b> container in the response.
      *  <br><br>
      *  <b>For AddItem, VerifyAddItem, and RelistItem:</b> If the seller accepts international returns (InternationalReturnsAcceptedOption is set to ReturnsAccepted) but does not specify this field for a listing, eBay sets a default value (often Days_30) and the seller is obligated to honor this setting.
      *  <br><br>
      *  <b>For ReviseItem only:</b> You cannot change the value of this field if the listing has bids or sales, or if the listing ends within 12 hours. For more details, see the <b>ReturnPolicy</b> description.
      *  <br><br>
-     *  <span class="tablenote"><b>Note:</b> The <b>GetCategoryFeatures</b> call now returns category-level metadata for both domestic and international return policies, and developers should make plans to use that call for this metadata.</span>
+     *  <span class="tablenote"><b>Note:</b> If a seller does not add a separate international return policy, the settings in the domestic return policy will be used instead. So if this field is not used in an add/revise/relist call, the return period for international returns will default to the value specified in the <b>ReturnsWithinOption</b> field.</span>
      *
      * @param string $internationalReturnsWithinOption
      * @return self
@@ -945,13 +956,14 @@ class ReturnPolicyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Gets as internationalShippingCostPaidByOption
      *
-     * This option specifies either the buyer or the seller as the party who pays for international return shipping charges. Accepted values are <code>Buyer</code> or <code>Seller</code>. eBay sites often set <code>Seller</code> as the default value for this field, and sellers are obligated to honor the values that are set for a listing. This value is required if <b>ReturnsAcceptedOption=ReturnsAccepted</b>.
+     * This field is conditionally required if a seller is using a separate return policy for international returns, and is accepting international returns.
+     *  The value in this field specifies whether the buyer or the seller pays for international return shipping charges. Accepted values are <code>Buyer</code> or <code>Seller</code>. eBay sites often set <code>Seller</code> as the default value for this field, and sellers are obligated to honor the values that are set for a listing.
      *  <br><br>
-     *  Depending on the seller's return policy and the specifics of a return, either the buyer or the seller can be responsible for the return shipping costs. Note that the seller is always responsible for return shipping costs for SNAD-related issues.
-     *  <br><br>
-     *  <b>For AddItem, VerifyAddItem, and RelistItem:</b> If the seller accepts returns (<b>InternationalReturnsAcceptedOption</b> = <code>ReturnsAccepted</code>) but does not set this field when listing an item, some eBay sites may set a default value (like Buyer). Because sellers are obligated to honor the policies specified on their View Item pages, be sure this is set to the value desired by the seller.
+     *  Depending on the seller's return policy and the specifics of a return, either the buyer or the seller can be responsible for the return shipping costs. Note that the seller is always responsible for return shipping costs for SNAD-related issues or for late shipments.
      *  <br><br>
      *  <b>For ReviseItem only:</b> You cannot change the value of this field if the listing has bids or sales, or if the listing ends within 12 hours. For more details, see the <b>ReturnPolicy</b> description.
+     *  <br><br>
+     *  <span class="tablenote"><b>Note:</b> If a seller does not add a separate international return policy, the settings in the domestic return policy will be used instead. So if this field is not used in an add/revise/relist call, return shipping cost payee for international returns will default to the value specified in the <b>ShippingCostPaidByOption</b> field.</span>
      *
      * @return string
      */
@@ -963,13 +975,14 @@ class ReturnPolicyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Sets a new internationalShippingCostPaidByOption
      *
-     * This option specifies either the buyer or the seller as the party who pays for international return shipping charges. Accepted values are <code>Buyer</code> or <code>Seller</code>. eBay sites often set <code>Seller</code> as the default value for this field, and sellers are obligated to honor the values that are set for a listing. This value is required if <b>ReturnsAcceptedOption=ReturnsAccepted</b>.
+     * This field is conditionally required if a seller is using a separate return policy for international returns, and is accepting international returns.
+     *  The value in this field specifies whether the buyer or the seller pays for international return shipping charges. Accepted values are <code>Buyer</code> or <code>Seller</code>. eBay sites often set <code>Seller</code> as the default value for this field, and sellers are obligated to honor the values that are set for a listing.
      *  <br><br>
-     *  Depending on the seller's return policy and the specifics of a return, either the buyer or the seller can be responsible for the return shipping costs. Note that the seller is always responsible for return shipping costs for SNAD-related issues.
-     *  <br><br>
-     *  <b>For AddItem, VerifyAddItem, and RelistItem:</b> If the seller accepts returns (<b>InternationalReturnsAcceptedOption</b> = <code>ReturnsAccepted</code>) but does not set this field when listing an item, some eBay sites may set a default value (like Buyer). Because sellers are obligated to honor the policies specified on their View Item pages, be sure this is set to the value desired by the seller.
+     *  Depending on the seller's return policy and the specifics of a return, either the buyer or the seller can be responsible for the return shipping costs. Note that the seller is always responsible for return shipping costs for SNAD-related issues or for late shipments.
      *  <br><br>
      *  <b>For ReviseItem only:</b> You cannot change the value of this field if the listing has bids or sales, or if the listing ends within 12 hours. For more details, see the <b>ReturnPolicy</b> description.
+     *  <br><br>
+     *  <span class="tablenote"><b>Note:</b> If a seller does not add a separate international return policy, the settings in the domestic return policy will be used instead. So if this field is not used in an add/revise/relist call, return shipping cost payee for international returns will default to the value specified in the <b>ShippingCostPaidByOption</b> field.</span>
      *
      * @param string $internationalShippingCostPaidByOption
      * @return self

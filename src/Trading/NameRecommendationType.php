@@ -23,6 +23,18 @@ class NameRecommendationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     private $name = null;
 
     /**
+     * This container is returned for an item specific if eBay has data on how many searches have been performed for listings in the category using that item specific.
+     *  <br>
+     *  <br>
+     *  <span class="tablenote"><b>Note:</b>
+     *  This container is restricted to applications that have been granted permission to access this feature. You must submit an <a href="https://developer.ebay.com/my/support/tickets?tab=app-check" target="_blank">App Check ticket</a> to request this access. In the App Check form, add a note to the <b>Application Title/Summary</b> and/or <b>Application Details</b> fields that you want access to 'Buyer Demand Data' in <b>GetCategorySpecifics</b>.
+     *  </span>
+     *
+     * @var \Nogrod\eBaySDK\Trading\RelevanceIndicatorType $relevanceIndicator
+     */
+    private $relevanceIndicator = null;
+
+    /**
      * This container provides details, instructions, and constraint information for each Item Specific name-value pairs. The fields that are returned under the <b>ValidationRules</b> container will vary per Item Specific.
      *  <br/><br/>
      *  Three key fields to look for are <b>MinValues</b>, <b>MaxValues</b>, and <b>VariationSpecifics</b>. If the <b>MinValues</b> appears for an Item Specific (usually with a value of '1'), it indicates that the Item Specific is required for the category. For many Item Specifics, the <b>MaxValues</b> field is returned with a value of '1', but the value will be higher for Item Specifics that support more than one value. The <b>VariationSpecifics</b> field is only returned (with a value of 'Disabled') when a seller is not allowed to pass in that Item Specific at the variation level in a multiple-variation listing.
@@ -95,6 +107,42 @@ class NameRecommendationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     public function setName($name)
     {
         $this->name = $name;
+        return $this;
+    }
+
+    /**
+     * Gets as relevanceIndicator
+     *
+     * This container is returned for an item specific if eBay has data on how many searches have been performed for listings in the category using that item specific.
+     *  <br>
+     *  <br>
+     *  <span class="tablenote"><b>Note:</b>
+     *  This container is restricted to applications that have been granted permission to access this feature. You must submit an <a href="https://developer.ebay.com/my/support/tickets?tab=app-check" target="_blank">App Check ticket</a> to request this access. In the App Check form, add a note to the <b>Application Title/Summary</b> and/or <b>Application Details</b> fields that you want access to 'Buyer Demand Data' in <b>GetCategorySpecifics</b>.
+     *  </span>
+     *
+     * @return \Nogrod\eBaySDK\Trading\RelevanceIndicatorType
+     */
+    public function getRelevanceIndicator()
+    {
+        return $this->relevanceIndicator;
+    }
+
+    /**
+     * Sets a new relevanceIndicator
+     *
+     * This container is returned for an item specific if eBay has data on how many searches have been performed for listings in the category using that item specific.
+     *  <br>
+     *  <br>
+     *  <span class="tablenote"><b>Note:</b>
+     *  This container is restricted to applications that have been granted permission to access this feature. You must submit an <a href="https://developer.ebay.com/my/support/tickets?tab=app-check" target="_blank">App Check ticket</a> to request this access. In the App Check form, add a note to the <b>Application Title/Summary</b> and/or <b>Application Details</b> fields that you want access to 'Buyer Demand Data' in <b>GetCategorySpecifics</b>.
+     *  </span>
+     *
+     * @param \Nogrod\eBaySDK\Trading\RelevanceIndicatorType $relevanceIndicator
+     * @return self
+     */
+    public function setRelevanceIndicator(\Nogrod\eBaySDK\Trading\RelevanceIndicatorType $relevanceIndicator)
+    {
+        $this->relevanceIndicator = $relevanceIndicator;
         return $this;
     }
 
@@ -308,6 +356,10 @@ class NameRecommendationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Name", $value);
         }
+        $value = $this->getRelevanceIndicator();
+        if (null !== $value) {
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}RelevanceIndicator", $value);
+        }
         $value = $this->getValidationRules();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ValidationRules", $value);
@@ -349,6 +401,10 @@ class NameRecommendationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Name');
         if (null !== $value) {
             $this->setName($value);
+        }
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RelevanceIndicator');
+        if (null !== $value) {
+            $this->setRelevanceIndicator(\Nogrod\eBaySDK\Trading\RelevanceIndicatorType::fromKeyValue($value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ValidationRules');
         if (null !== $value) {

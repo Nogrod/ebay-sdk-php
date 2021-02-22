@@ -176,7 +176,7 @@ class AbstractRequestType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * The version number of the API code that you are
-     *  programming against (e.g., 859).
+     *  programming against (e.g., 1149).
      *  The version you specify for a call has these basic effects:
      *  <b></b>
      *  <ul>
@@ -788,7 +788,7 @@ class AbstractRequestType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as version
      *
      * The version number of the API code that you are
-     *  programming against (e.g., 859).
+     *  programming against (e.g., 1149).
      *  The version you specify for a call has these basic effects:
      *  <b></b>
      *  <ul>
@@ -822,7 +822,7 @@ class AbstractRequestType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new version
      *
      * The version number of the API code that you are
-     *  programming against (e.g., 859).
+     *  programming against (e.g., 1149).
      *  The version you specify for a call has these basic effects:
      *  <b></b>
      *  <ul>

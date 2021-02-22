@@ -46,7 +46,10 @@ class ShippingServiceCostOverrideType implements \Sabre\Xml\XmlSerializable, \Sa
     private $shippingServiceAdditionalCost = null;
 
     /**
-     * This dollar value indicates the shipping surcharge applicable to the domestic shipping service. If the shipping service costs override operation is successful, this value will override the corresponding <strong>shippingSurcharge</strong> value set in the <strong>domesticShippingPolicyInfoService</strong> container in the Business Policies shipping profile.
+     * <span class="tablenote"><b>Note:</b>
+     *  DO NOT USE THIS FIELD. Shipping surcharges for shipping service options can no longer be set with shipping business policies. To set a shipping surcharge for a shipping service option, only the <b>Shipping rate tables</b> tool in My eBay can be used. This field will be removed in a later release.
+     *  </span>
+     *  This dollar value indicates the shipping surcharge applicable to the domestic shipping service. If the shipping service costs override operation is successful, this value will override the corresponding <strong>shippingSurcharge</strong> value set in the <strong>domesticShippingPolicyInfoService</strong> container in the Business Policies shipping profile.
      *  <br/><br/>
      *  This field can only be used if the shipping surcharges are applicable for the corresponding shipping service.
      *
@@ -169,7 +172,10 @@ class ShippingServiceCostOverrideType implements \Sabre\Xml\XmlSerializable, \Sa
     /**
      * Gets as shippingSurcharge
      *
-     * This dollar value indicates the shipping surcharge applicable to the domestic shipping service. If the shipping service costs override operation is successful, this value will override the corresponding <strong>shippingSurcharge</strong> value set in the <strong>domesticShippingPolicyInfoService</strong> container in the Business Policies shipping profile.
+     * <span class="tablenote"><b>Note:</b>
+     *  DO NOT USE THIS FIELD. Shipping surcharges for shipping service options can no longer be set with shipping business policies. To set a shipping surcharge for a shipping service option, only the <b>Shipping rate tables</b> tool in My eBay can be used. This field will be removed in a later release.
+     *  </span>
+     *  This dollar value indicates the shipping surcharge applicable to the domestic shipping service. If the shipping service costs override operation is successful, this value will override the corresponding <strong>shippingSurcharge</strong> value set in the <strong>domesticShippingPolicyInfoService</strong> container in the Business Policies shipping profile.
      *  <br/><br/>
      *  This field can only be used if the shipping surcharges are applicable for the corresponding shipping service.
      *
@@ -183,7 +189,10 @@ class ShippingServiceCostOverrideType implements \Sabre\Xml\XmlSerializable, \Sa
     /**
      * Sets a new shippingSurcharge
      *
-     * This dollar value indicates the shipping surcharge applicable to the domestic shipping service. If the shipping service costs override operation is successful, this value will override the corresponding <strong>shippingSurcharge</strong> value set in the <strong>domesticShippingPolicyInfoService</strong> container in the Business Policies shipping profile.
+     * <span class="tablenote"><b>Note:</b>
+     *  DO NOT USE THIS FIELD. Shipping surcharges for shipping service options can no longer be set with shipping business policies. To set a shipping surcharge for a shipping service option, only the <b>Shipping rate tables</b> tool in My eBay can be used. This field will be removed in a later release.
+     *  </span>
+     *  This dollar value indicates the shipping surcharge applicable to the domestic shipping service. If the shipping service costs override operation is successful, this value will override the corresponding <strong>shippingSurcharge</strong> value set in the <strong>domesticShippingPolicyInfoService</strong> container in the Business Policies shipping profile.
      *  <br/><br/>
      *  This field can only be used if the shipping surcharges are applicable for the corresponding shipping service.
      *

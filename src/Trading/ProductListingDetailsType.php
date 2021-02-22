@@ -21,7 +21,7 @@ class ProductListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     /**
      * If this value is <code>true</code>, the listing will use the eBay catalog product's stock photo. In an Add/Revise/Relist call, this field is set to <code>true</code> by default. If you will be using an eBay catalog product to list your item, it is always advised to include the stock photo. Sellers can also add their own pictures using one or more <b>Item.PictureDetails.PictureURL</b> fields. Seller photos are particularly recommended for used and modified products to give prospective buyers a clear sense of exactly what they are purchasing.
      *  In <b>GetItem</b> and other 'Get' calls, the URL of the stock photo will be returned in the <b>StockPhotoURL</b> field.
-     *  <br/><br/>
+     *  <br/>
      *
      * @var bool $includeStockPhotoURL
      */
@@ -29,7 +29,7 @@ class ProductListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
 
     /**
      * If this value is <code>true</code>, the listing will use the eBay catalog product's stock photo as the Gallery thumbnail photo. In an Add/Revise/Relist call, this field is set to <code>true</code> by default. If this field is set to <code>true</code>, the <b>IncludeStockPhotoURL</b> field must also be set to <code>true</code> or this field will have no effect. Sellers can also add their own pictures using one or more <b>Item.PictureDetails.PictureURL</b> fields, but none of these photos will be the Gallery thumbnail photo.
-     *  <br><br>
+     *  <br>
      *
      * @var bool $useStockPhotoURLAsGallery
      */
@@ -54,7 +54,7 @@ class ProductListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     ];
 
     /**
-     * In an Add/Revise/Relist call, this field is used to pass in the eBay Product ID (e.g. ePID), which is the unique identifier of an eBay catalog product. Although an eBay catalog product match can be found using one or more GTIN values, passing in an ePID value is the best way to try and discover the appropriate eBay catalog product. For more information on finding a product in the eBay catalog, see the <a href="https://developer.ebay.com/api-docs/sell/static/inventory/pbse_playbook_intro.html" target="_blank">Product-Based Shopping Experience Playbook</a>.
+     * In an Add/Revise/Relist call, this field is used to pass in the eBay Product ID (e.g. ePID), which is the unique identifier of an eBay catalog product. Although an eBay catalog product match can be found using one or more GTIN values, passing in an ePID value is the best way to try and discover the appropriate eBay catalog product.
      *  <br>
      *  <br>
      *  This field is also returned in <b>GetItem</b> if the listing is associated with a eBay catalog product.
@@ -175,8 +175,8 @@ class ProductListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     /**
      * This boolean field controls whether or not an eBay catalog product is used to create or revise a listing. If an ePID or GTIN value is provided through the <b>ProductListingDetails</b> container when adding, revising, or relisting an item, the default behavior is for eBay to try and find a match for the product in the eBay catalog, and then automatically create/revise the listing using the product title, product description, item specifics, and stock photo defined for the catalog product.
      *  <br><br>
-     *  If the seller wants to use an eBay catalog product to create/revise a listing, the seller can include this field and set its value to <code>true</code>, or just omit this field, as it default value is <code>true</code>. If a seller doesn't want use an eBay catalog product to create/revise their listing, this field should be included and set to <code>false</code>. If the seller declines to use an eBay catalog product, they will be required to pass in their own listing title, listing description, item specifics, a listing category, and at least one picture.
-     *  <br><br>
+     *  If the seller wants to use an eBay catalog product to create/revise a listing, the seller can include this field and set its value to <code>true</code>, or just omit this field, as its default value is <code>true</code>. If a seller doesn't want use an eBay catalog product to create/revise their listing, this field should be included and set to <code>false</code>. If the seller declines to use an eBay catalog product, they will be required to pass in their own listing title, listing description, item specifics, a listing category, and at least one picture.
+     *  <br>
      *
      * @var bool $includeeBayProductDetails
      */
@@ -196,7 +196,7 @@ class ProductListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
      *
      * If this value is <code>true</code>, the listing will use the eBay catalog product's stock photo. In an Add/Revise/Relist call, this field is set to <code>true</code> by default. If you will be using an eBay catalog product to list your item, it is always advised to include the stock photo. Sellers can also add their own pictures using one or more <b>Item.PictureDetails.PictureURL</b> fields. Seller photos are particularly recommended for used and modified products to give prospective buyers a clear sense of exactly what they are purchasing.
      *  In <b>GetItem</b> and other 'Get' calls, the URL of the stock photo will be returned in the <b>StockPhotoURL</b> field.
-     *  <br/><br/>
+     *  <br/>
      *
      * @return bool
      */
@@ -210,7 +210,7 @@ class ProductListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
      *
      * If this value is <code>true</code>, the listing will use the eBay catalog product's stock photo. In an Add/Revise/Relist call, this field is set to <code>true</code> by default. If you will be using an eBay catalog product to list your item, it is always advised to include the stock photo. Sellers can also add their own pictures using one or more <b>Item.PictureDetails.PictureURL</b> fields. Seller photos are particularly recommended for used and modified products to give prospective buyers a clear sense of exactly what they are purchasing.
      *  In <b>GetItem</b> and other 'Get' calls, the URL of the stock photo will be returned in the <b>StockPhotoURL</b> field.
-     *  <br/><br/>
+     *  <br/>
      *
      * @param bool $includeStockPhotoURL
      * @return self
@@ -225,7 +225,7 @@ class ProductListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
      * Gets as useStockPhotoURLAsGallery
      *
      * If this value is <code>true</code>, the listing will use the eBay catalog product's stock photo as the Gallery thumbnail photo. In an Add/Revise/Relist call, this field is set to <code>true</code> by default. If this field is set to <code>true</code>, the <b>IncludeStockPhotoURL</b> field must also be set to <code>true</code> or this field will have no effect. Sellers can also add their own pictures using one or more <b>Item.PictureDetails.PictureURL</b> fields, but none of these photos will be the Gallery thumbnail photo.
-     *  <br><br>
+     *  <br>
      *
      * @return bool
      */
@@ -238,7 +238,7 @@ class ProductListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
      * Sets a new useStockPhotoURLAsGallery
      *
      * If this value is <code>true</code>, the listing will use the eBay catalog product's stock photo as the Gallery thumbnail photo. In an Add/Revise/Relist call, this field is set to <code>true</code> by default. If this field is set to <code>true</code>, the <b>IncludeStockPhotoURL</b> field must also be set to <code>true</code> or this field will have no effect. Sellers can also add their own pictures using one or more <b>Item.PictureDetails.PictureURL</b> fields, but none of these photos will be the Gallery thumbnail photo.
-     *  <br><br>
+     *  <br>
      *
      * @param bool $useStockPhotoURLAsGallery
      * @return self
@@ -351,7 +351,7 @@ class ProductListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     /**
      * Gets as productReferenceID
      *
-     * In an Add/Revise/Relist call, this field is used to pass in the eBay Product ID (e.g. ePID), which is the unique identifier of an eBay catalog product. Although an eBay catalog product match can be found using one or more GTIN values, passing in an ePID value is the best way to try and discover the appropriate eBay catalog product. For more information on finding a product in the eBay catalog, see the <a href="https://developer.ebay.com/api-docs/sell/static/inventory/pbse_playbook_intro.html" target="_blank">Product-Based Shopping Experience Playbook</a>.
+     * In an Add/Revise/Relist call, this field is used to pass in the eBay Product ID (e.g. ePID), which is the unique identifier of an eBay catalog product. Although an eBay catalog product match can be found using one or more GTIN values, passing in an ePID value is the best way to try and discover the appropriate eBay catalog product.
      *  <br>
      *  <br>
      *  This field is also returned in <b>GetItem</b> if the listing is associated with a eBay catalog product.
@@ -367,7 +367,7 @@ class ProductListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     /**
      * Sets a new productReferenceID
      *
-     * In an Add/Revise/Relist call, this field is used to pass in the eBay Product ID (e.g. ePID), which is the unique identifier of an eBay catalog product. Although an eBay catalog product match can be found using one or more GTIN values, passing in an ePID value is the best way to try and discover the appropriate eBay catalog product. For more information on finding a product in the eBay catalog, see the <a href="https://developer.ebay.com/api-docs/sell/static/inventory/pbse_playbook_intro.html" target="_blank">Product-Based Shopping Experience Playbook</a>.
+     * In an Add/Revise/Relist call, this field is used to pass in the eBay Product ID (e.g. ePID), which is the unique identifier of an eBay catalog product. Although an eBay catalog product match can be found using one or more GTIN values, passing in an ePID value is the best way to try and discover the appropriate eBay catalog product.
      *  <br>
      *  <br>
      *  This field is also returned in <b>GetItem</b> if the listing is associated with a eBay catalog product.
@@ -711,8 +711,8 @@ class ProductListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
      *
      * This boolean field controls whether or not an eBay catalog product is used to create or revise a listing. If an ePID or GTIN value is provided through the <b>ProductListingDetails</b> container when adding, revising, or relisting an item, the default behavior is for eBay to try and find a match for the product in the eBay catalog, and then automatically create/revise the listing using the product title, product description, item specifics, and stock photo defined for the catalog product.
      *  <br><br>
-     *  If the seller wants to use an eBay catalog product to create/revise a listing, the seller can include this field and set its value to <code>true</code>, or just omit this field, as it default value is <code>true</code>. If a seller doesn't want use an eBay catalog product to create/revise their listing, this field should be included and set to <code>false</code>. If the seller declines to use an eBay catalog product, they will be required to pass in their own listing title, listing description, item specifics, a listing category, and at least one picture.
-     *  <br><br>
+     *  If the seller wants to use an eBay catalog product to create/revise a listing, the seller can include this field and set its value to <code>true</code>, or just omit this field, as its default value is <code>true</code>. If a seller doesn't want use an eBay catalog product to create/revise their listing, this field should be included and set to <code>false</code>. If the seller declines to use an eBay catalog product, they will be required to pass in their own listing title, listing description, item specifics, a listing category, and at least one picture.
+     *  <br>
      *
      * @return bool
      */
@@ -726,8 +726,8 @@ class ProductListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
      *
      * This boolean field controls whether or not an eBay catalog product is used to create or revise a listing. If an ePID or GTIN value is provided through the <b>ProductListingDetails</b> container when adding, revising, or relisting an item, the default behavior is for eBay to try and find a match for the product in the eBay catalog, and then automatically create/revise the listing using the product title, product description, item specifics, and stock photo defined for the catalog product.
      *  <br><br>
-     *  If the seller wants to use an eBay catalog product to create/revise a listing, the seller can include this field and set its value to <code>true</code>, or just omit this field, as it default value is <code>true</code>. If a seller doesn't want use an eBay catalog product to create/revise their listing, this field should be included and set to <code>false</code>. If the seller declines to use an eBay catalog product, they will be required to pass in their own listing title, listing description, item specifics, a listing category, and at least one picture.
-     *  <br><br>
+     *  If the seller wants to use an eBay catalog product to create/revise a listing, the seller can include this field and set its value to <code>true</code>, or just omit this field, as its default value is <code>true</code>. If a seller doesn't want use an eBay catalog product to create/revise their listing, this field should be included and set to <code>false</code>. If the seller declines to use an eBay catalog product, they will be required to pass in their own listing title, listing description, item specifics, a listing category, and at least one picture.
+     *  <br>
      *
      * @param bool $includeeBayProductDetails
      * @return self

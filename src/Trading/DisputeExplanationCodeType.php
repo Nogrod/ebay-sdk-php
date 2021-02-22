@@ -133,8 +133,7 @@ class DisputeExplanationCodeType
      * This value can be used when no other explanation in <b>
      *  DisputeExplanationCodeType</b> is appropriate for the situation. This value is
      *  allowed when the <b>DisputeReason</b> value is
-     *  <b>BuyerHasNotPaid</b> or
-     *  <b>TransactionMutuallyCanceled</b>.
+     *  <b>BuyerHasNotPaid</b>.
      */
     public const VAL_OTHER_EXPLANATION = 'OtherExplanation';
 

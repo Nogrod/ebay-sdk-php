@@ -85,7 +85,7 @@ class ShippingServiceOptionsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
      *  Conversely, a shipping service with a <b>ShippingServicePriority</b> value of 4 appears
      *  at the bottom of a list of four shipping service options.
      *  <br><br>
-     *  If this field is omitted from domestic shipping service options, the order of the shipping service options in View Item and Checkout pages will be determined by the order that these shipping services are presented in the request payload of an Add/Revise/Relist call.
+     *  If this field is omitted from domestic shipping service options, the order of the shipping service options in View Item and Checkout pages will be determined by the order that these shipping service options are presented in the request payload of an Add/Revise/Relist call.
      *
      * @var int $shippingServicePriority
      */
@@ -352,7 +352,7 @@ class ShippingServiceOptionsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
      *  Conversely, a shipping service with a <b>ShippingServicePriority</b> value of 4 appears
      *  at the bottom of a list of four shipping service options.
      *  <br><br>
-     *  If this field is omitted from domestic shipping service options, the order of the shipping service options in View Item and Checkout pages will be determined by the order that these shipping services are presented in the request payload of an Add/Revise/Relist call.
+     *  If this field is omitted from domestic shipping service options, the order of the shipping service options in View Item and Checkout pages will be determined by the order that these shipping service options are presented in the request payload of an Add/Revise/Relist call.
      *
      * @return int
      */
@@ -374,7 +374,7 @@ class ShippingServiceOptionsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
      *  Conversely, a shipping service with a <b>ShippingServicePriority</b> value of 4 appears
      *  at the bottom of a list of four shipping service options.
      *  <br><br>
-     *  If this field is omitted from domestic shipping service options, the order of the shipping service options in View Item and Checkout pages will be determined by the order that these shipping services are presented in the request payload of an Add/Revise/Relist call.
+     *  If this field is omitted from domestic shipping service options, the order of the shipping service options in View Item and Checkout pages will be determined by the order that these shipping service options are presented in the request payload of an Add/Revise/Relist call.
      *
      * @param int $shippingServicePriority
      * @return self

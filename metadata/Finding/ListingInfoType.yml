@@ -93,6 +93,17 @@ Nogrod\eBaySDK\Finding\ListingInfoType:
                 getter: getGift
                 setter: setGift
             type: bool
+        watchCount:
+            expose: true
+            access_type: public_method
+            serialized_name: watchCount
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/search/v1/services'
+            accessor:
+                getter: getWatchCount
+                setter: setWatchCount
+            type: int
         delimiter:
             expose: true
             access_type: public_method

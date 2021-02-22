@@ -71,6 +71,10 @@ class TransactionStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
 
     /**
      * This field indicates the type and/or status of a payment hold on the item.
+     *  <br> <br>
+     *  <span class="tablenote"><b>Note:</b>
+     *  For the <strong>GetItemTransactions</strong>, <strong>GetOrders</strong>, and <strong>GetOrderTransactions</strong> calls, this field is only returned to the seller of the order; this field is not returned for the buyer or third party.
+     *  </span>
      *
      * @var string $paymentHoldStatus
      */
@@ -81,6 +85,10 @@ class TransactionStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
      *  <br><br>
      *  <span class="tablenote"><b>Note: </b>
      *  Beginning on May 1, 2019, eBay will no longer support electronic payments through Integrated Merchant Credit Card accounts. To accept online credit card payments from buyers, a seller must use specify PayPal as an accepted payment method, or opt in to eBay Managed Payments program (if the program is available to that seller).
+     *  </span>
+     *  <br> <br>
+     *  <span class="tablenote"><b>Note:</b>
+     *  For the <strong>GetItemTransactions</strong>, <strong>GetOrders</strong>, and <strong>GetOrderTransactions</strong> calls, this field is only returned to the seller of the order; this field is not returned for the buyer or third party.
      *  </span>
      *
      * @var bool $integratedMerchantCreditCardEnabled
@@ -315,6 +323,10 @@ class TransactionStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
      * Gets as paymentHoldStatus
      *
      * This field indicates the type and/or status of a payment hold on the item.
+     *  <br> <br>
+     *  <span class="tablenote"><b>Note:</b>
+     *  For the <strong>GetItemTransactions</strong>, <strong>GetOrders</strong>, and <strong>GetOrderTransactions</strong> calls, this field is only returned to the seller of the order; this field is not returned for the buyer or third party.
+     *  </span>
      *
      * @return string
      */
@@ -327,6 +339,10 @@ class TransactionStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
      * Sets a new paymentHoldStatus
      *
      * This field indicates the type and/or status of a payment hold on the item.
+     *  <br> <br>
+     *  <span class="tablenote"><b>Note:</b>
+     *  For the <strong>GetItemTransactions</strong>, <strong>GetOrders</strong>, and <strong>GetOrderTransactions</strong> calls, this field is only returned to the seller of the order; this field is not returned for the buyer or third party.
+     *  </span>
      *
      * @param string $paymentHoldStatus
      * @return self
@@ -345,6 +361,10 @@ class TransactionStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
      *  <span class="tablenote"><b>Note: </b>
      *  Beginning on May 1, 2019, eBay will no longer support electronic payments through Integrated Merchant Credit Card accounts. To accept online credit card payments from buyers, a seller must use specify PayPal as an accepted payment method, or opt in to eBay Managed Payments program (if the program is available to that seller).
      *  </span>
+     *  <br> <br>
+     *  <span class="tablenote"><b>Note:</b>
+     *  For the <strong>GetItemTransactions</strong>, <strong>GetOrders</strong>, and <strong>GetOrderTransactions</strong> calls, this field is only returned to the seller of the order; this field is not returned for the buyer or third party.
+     *  </span>
      *
      * @return bool
      */
@@ -360,6 +380,10 @@ class TransactionStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
      *  <br><br>
      *  <span class="tablenote"><b>Note: </b>
      *  Beginning on May 1, 2019, eBay will no longer support electronic payments through Integrated Merchant Credit Card accounts. To accept online credit card payments from buyers, a seller must use specify PayPal as an accepted payment method, or opt in to eBay Managed Payments program (if the program is available to that seller).
+     *  </span>
+     *  <br> <br>
+     *  <span class="tablenote"><b>Note:</b>
+     *  For the <strong>GetItemTransactions</strong>, <strong>GetOrders</strong>, and <strong>GetOrderTransactions</strong> calls, this field is only returned to the seller of the order; this field is not returned for the buyer or third party.
      *  </span>
      *
      * @param bool $integratedMerchantCreditCardEnabled

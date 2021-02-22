@@ -14,161 +14,26 @@ class ItemFilterTypeType
     /**
      * Constant for 'Condition' value.
      *
-     * <a name="Condition"></a>
-     *  Limits items to those that have the matching item condition.
-     *  The order of the results depends on the sortOrder you specify
-     *  (not ordered by conditions).
+     * This item condition filter allows a user to filter items based on item
+     * condition. Multiple item condition filters may be used. The
+     * <code>Condition</code> enum value is specified in the <b>itemfilter.name</b>
+     * field, and either the condition ID or the condition name can be specified in the
+     * <b>itemfilter.value</b> field. The condition ID is actually recommended, because
+     * these identifiers are consistent across eBay categories, whereas condition names
+     * can vary slightly between eBay categories, such as 'New', 'New in Box', or 'New
+     * with Tags'.
      *  <br><br>
-     *  Mostly useful to filter items where the seller used one of
-     *  eBay's structured item condition formats (conditionId or
-     *  item specifics) to specify the item condition. If the
-     *  seller used item specifics, the condition is only returned
-     *  in conditionDisplayName.
-     *  As of July 2010, many categories require items to use
-     *  the condition ID format. Older GTC listings may continue to
-     *  use item specifics to specify condition until spring 2011.<br>
-     *  <br>
-     *  If you repeat condition values, the values are processed using
-     *  OR logic. For example:<br>
-     *  To precisely find only brand new and
-     *  manufacturer-refurbished items, pass the filter with values of
-     *  1000 and 2000 in the same request.<br>
-     *  To find all flavors of new items plus refurbished items (but not used items),
-     * pass the filter with values of
-     *  New, 2000, and 2500.<br>
-     *  To find a much broader set of new items, plus items with no
-     *  condition specified, pass the filter with values of
-     *  New and Unspecified.<br>
-     *  (The order of the values does not affect the results.
-     *  That is, passing New, 2000, and then 2500 gives the same
-     *  results as passing 2000, New, and then 2500.)
-     *  <br>
-     *  <blockquote>
-     *  <p>
-     *  <b>Allowed text values (<a
-     *  class="defn_type" href="../types/simpleTypes.html#string">string</a>):</b>
-     *  <br>
-     *  These text values (except Unspecified) limit results to items
-     *  with the condition defined in conditionId or item specifics.
-     *  </p>
-     *  <dl>
-     *  <dt>
-     *  New
-     *  </dt>
-     *  <dd>
-     *  New (or the equivalent). Excludes items with used,
-     *  refurbished, for parts, or unspecified conditions.
-     *  </dd>
-     *  <dt>
-     *  Used
-     *  </dt>
-     *  <dd>
-     *  Used, refurbished, or for parts.
-     *  Excludes items with new or unspecified conditions.
-     *  </dd>
-     *  <dt>
-     *  Unspecified
-     *  </dt>
-     *  <dd>
-     *  The seller did not specify an item condition using one of
-     *  eBay's structured formats. That is, either the item has no
-     *  condition, or the seller only specified the condition in the
-     *  title or narrative description. (You can try including words
-     *  like "new" in your search keywords to reduce unspecified
-     *  results. In this case, if you're using findItemsAdvanced, you
-     *  can also try setting descriptionSearch to true to find items
-     *  with the condition value in the description.)
-     *  Excludes items that the seller listed as new, used, refurbished,
-     *  for parts, or the equivalent.
-     *  </dd>
-     *  </dl>
-     *  </p>
-     *  <p>
-     *  <b>Allowed ID values (<a
-     *  class="defn_type" href="../types/simpleTypes.html#string">string</a>):</b>
-     *  <br>
-     *  These IDs limit results to items with the condition defined in
-     *  conditionId.
+     *  See the <a
+     * href="https://developer.ebay.com/Devzone/finding/CallRef/Enums/conditionIdList.html">Item
+     * Condition IDs and Names</a> page to view a table that maps condition IDs to
+     * condition names.
      *  <br><br>
-     *  For details about the meaning of each condition, see
-     *  <a href="../Enums/conditionIdList.html">Item Condition IDs and Names</a>.
-     *  More importantly, always see the seller's listing for full
-     *  details and description of any imperfections before purchasing
-     *  an item.
-     *  </p>
-     *  <dl>
-     *  <dt>
-     *  1000
-     *  </dt>
-     *  <dd>
-     *  New
-     *  </dd>
-     *  <dt>
-     *  1500
-     *  </dt>
-     *  <dd>
-     *  New other (see details)
-     *  </dd>
-     *  <dt>
-     *  1750
-     *  </dt>
-     *  <dd>
-     *  New with defects
-     *  </dd>
-     *  <dt>
-     *  2000
-     *  </dt>
-     *  <dd>
-     *  Manufacturer refurbished
-     *  </dd>
-     *  <dt>
-     *  2500
-     *  </dt>
-     *  <dd>
-     *  Seller refurbished
-     *  </dd>
-     *  <dt>
-     *  3000
-     *  </dt>
-     *  <dd>
-     *  Used
-     *  </dd>
-     *  <dt>
-     *  4000
-     *  </dt>
-     *  <dd>
-     *  Very Good
-     *  </dd>
-     *  <dt>
-     *  5000
-     *  </dt>
-     *  <dd>
-     *  Good
-     *  </dd>
-     *  <dt>
-     *  6000
-     *  </dt>
-     *  <dd>
-     *  Acceptable
-     *  </dd>
-     *  <dt>
-     *  7000
-     *  </dt>
-     *  <dd>
-     *  For parts or not working
-     *  </dd>
-     *  </dl>
-     *  </blockquote>
-     *  <b>Example:</b>
-     *  <br>
-     *  <pre>
-     *  ...<br>
-     *  &itemFilter(0).name=Condition<br>
-     *  &itemFilter(0).value(0)=New<br>
-     *  &itemFilter(0).value(1)=2000<br>
-     *  &itemFilter(0).value(2)=2500<br>
-     *  ...
-     *  </pre>
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  In all eBay marketplaces, Condition ID 2000 now maps to an item condition of
+     * 'Certified Refurbished', and not 'Manufacturer Refurbished'. To list an item as
+     * 'Certified Refurbished', a seller must be pre-qualified by eBay for this
+     * feature.
+     *  </span>
      */
     public const VAL_CONDITION = 'Condition';
 

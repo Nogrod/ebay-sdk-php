@@ -27,6 +27,9 @@ class PlaceOfferResponseType extends AbstractResponseType
      *  to <b>Purchase</b> in the input and the purchase was successful. A Purchase
      *  action in <b>PlaceOffer</b> can be used for a fixed-price listing, or for an
      *  auction listing where the Buy It Now option is available.
+     *  <br>
+     *  <br>
+     *  The <b>TransactionID</b> value for auction listings is always <code>0</code> since there can be only one winning bidder/one sale for an auction listing.
      *
      * @var string $transactionID
      */
@@ -87,6 +90,9 @@ class PlaceOfferResponseType extends AbstractResponseType
      *  to <b>Purchase</b> in the input and the purchase was successful. A Purchase
      *  action in <b>PlaceOffer</b> can be used for a fixed-price listing, or for an
      *  auction listing where the Buy It Now option is available.
+     *  <br>
+     *  <br>
+     *  The <b>TransactionID</b> value for auction listings is always <code>0</code> since there can be only one winning bidder/one sale for an auction listing.
      *
      * @return string
      */
@@ -103,6 +109,9 @@ class PlaceOfferResponseType extends AbstractResponseType
      *  to <b>Purchase</b> in the input and the purchase was successful. A Purchase
      *  action in <b>PlaceOffer</b> can be used for a fixed-price listing, or for an
      *  auction listing where the Buy It Now option is available.
+     *  <br>
+     *  <br>
+     *  The <b>TransactionID</b> value for auction listings is always <code>0</code> since there can be only one winning bidder/one sale for an auction listing.
      *
      * @param string $transactionID
      * @return self

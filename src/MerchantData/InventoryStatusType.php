@@ -51,7 +51,9 @@ class InventoryStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     private $itemID = null;
 
     /**
-     * This field is used to set the revised price of the listing (or of a
+     * <span class="tablenote"><b>Note: </b> The <b>StartPrice</b> response field is being deprecated, and it will no longer be supported after April 30, 2022. eBay has found that the value returned for this field is not reliably accurate and recommends that the response for this field be ignored.<br><br>The <b>StartPrice</b> request field can still be used, and sellers can leverage the <a href="https://developer.ebay.com/Devzone/XML/docs/Reference/eBay/GetItem.html">GetItem</a> call to verify that the requested price updates were successful.</span>
+     *  <br>
+     *  This field is used to set the revised price of the listing (or of a
      *  variation within a multiple-variation listing).
      *  <br>
      *  <br>
@@ -65,7 +67,9 @@ class InventoryStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     private $startPrice = null;
 
     /**
-     * This field is used to set the revised quantity of the listing (or of a
+     * <span class="tablenote"><b>Note: </b> The <b>Quantity</b> response field is being deprecated, and it will no longer be supported after April 30, 2022. eBay has found that the value returned for this field is not reliably accurate and recommends that the response for this field be ignored.<br><br>The <b>Quantity</b> request field can still be used, and sellers can leverage the <a href="https://developer.ebay.com/Devzone/XML/docs/Reference/eBay/GetItem.html">GetItem</a> call to verify that the requested quantity updates were successful.</span>
+     *  <br>
+     *  This field is used to set the revised quantity of the listing (or of a
      *  variation within a multiple-variation listing).
      *  <br>
      *  <br>
@@ -181,7 +185,9 @@ class InventoryStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     /**
      * Gets as startPrice
      *
-     * This field is used to set the revised price of the listing (or of a
+     * <span class="tablenote"><b>Note: </b> The <b>StartPrice</b> response field is being deprecated, and it will no longer be supported after April 30, 2022. eBay has found that the value returned for this field is not reliably accurate and recommends that the response for this field be ignored.<br><br>The <b>StartPrice</b> request field can still be used, and sellers can leverage the <a href="https://developer.ebay.com/Devzone/XML/docs/Reference/eBay/GetItem.html">GetItem</a> call to verify that the requested price updates were successful.</span>
+     *  <br>
+     *  This field is used to set the revised price of the listing (or of a
      *  variation within a multiple-variation listing).
      *  <br>
      *  <br>
@@ -200,7 +206,9 @@ class InventoryStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     /**
      * Sets a new startPrice
      *
-     * This field is used to set the revised price of the listing (or of a
+     * <span class="tablenote"><b>Note: </b> The <b>StartPrice</b> response field is being deprecated, and it will no longer be supported after April 30, 2022. eBay has found that the value returned for this field is not reliably accurate and recommends that the response for this field be ignored.<br><br>The <b>StartPrice</b> request field can still be used, and sellers can leverage the <a href="https://developer.ebay.com/Devzone/XML/docs/Reference/eBay/GetItem.html">GetItem</a> call to verify that the requested price updates were successful.</span>
+     *  <br>
+     *  This field is used to set the revised price of the listing (or of a
      *  variation within a multiple-variation listing).
      *  <br>
      *  <br>
@@ -221,7 +229,9 @@ class InventoryStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     /**
      * Gets as quantity
      *
-     * This field is used to set the revised quantity of the listing (or of a
+     * <span class="tablenote"><b>Note: </b> The <b>Quantity</b> response field is being deprecated, and it will no longer be supported after April 30, 2022. eBay has found that the value returned for this field is not reliably accurate and recommends that the response for this field be ignored.<br><br>The <b>Quantity</b> request field can still be used, and sellers can leverage the <a href="https://developer.ebay.com/Devzone/XML/docs/Reference/eBay/GetItem.html">GetItem</a> call to verify that the requested quantity updates were successful.</span>
+     *  <br>
+     *  This field is used to set the revised quantity of the listing (or of a
      *  variation within a multiple-variation listing).
      *  <br>
      *  <br>
@@ -242,7 +252,9 @@ class InventoryStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     /**
      * Sets a new quantity
      *
-     * This field is used to set the revised quantity of the listing (or of a
+     * <span class="tablenote"><b>Note: </b> The <b>Quantity</b> response field is being deprecated, and it will no longer be supported after April 30, 2022. eBay has found that the value returned for this field is not reliably accurate and recommends that the response for this field be ignored.<br><br>The <b>Quantity</b> request field can still be used, and sellers can leverage the <a href="https://developer.ebay.com/Devzone/XML/docs/Reference/eBay/GetItem.html">GetItem</a> call to verify that the requested quantity updates were successful.</span>
+     *  <br>
+     *  This field is used to set the revised quantity of the listing (or of a
      *  variation within a multiple-variation listing).
      *  <br>
      *  <br>

@@ -9,7 +9,7 @@ use Nogrod\XMLClientRuntime\Func;
  *
  * Type used by the <b>Program</b> container that is returned in the response of the <b>GetUser</b> call if the seller is enrolled in one or more eBay membership programs, such as eBay Plus. The <b>Program</b> container provides the eBay site, program (such as '<code>EBAYPLUS</code>'), and the membership expiration date.
  *  <br/><br/>
- *  <span class="tablenote"><b>Note:</b> Currently, eBay Plus is available only to buyers in Germany, Austria, and Australia marketplaces in the near future.
+ *  <span class="tablenote"><b>Note:</b> Currently, eBay Plus is available only to buyers on Germany and Australia marketplaces. In Australia, the seller has no control/responsibility over setting the eBay Plus feature for a listing. Instead, eBay will evaluate/determine whether a listing is eligible for eBay Plus.
  *  </span>
  * XSD Type: MembershipDetailType
  */

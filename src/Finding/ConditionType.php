@@ -19,14 +19,15 @@ class ConditionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
      *  In item results, this is only returned when the seller listed the
      *  item with a condition ID.
      *  Some categories don't support or require condition IDs
-     *  (e.g., most Antiques categories don't). Also, until spring 2011,
-     *  some GTC listings may define the item condition in item specifics
-     *  instead, so no ID is returned.<br>
+     *  (e.g., most Antiques categories don't). <br>
      *  <br>
-     *  If you specify Condition in itemFilter, the response returns items
-     *  with the correctly matching condition(s), even if conditionId is
-     *  not returned. For example, if you specify a value of "New"
-     *  or "1000" in the item filter, the response only returns new items.
+     *  If you Condition as a <strong>itemFilter</strong>, the response returns items
+     *  with the correctly matching condition(s), even if <strong>conditionId</strong> is
+     *  not returned.
+     *  <br><br>
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  In all eBay marketplaces, Condition ID 2000 now maps to an item condition of 'Certified Refurbished', and not 'Manufacturer Refurbished'. To list an item as 'Certified Refurbished', a seller must be pre-qualified by eBay for this feature.
+     *  </span>
      *
      * @var int $conditionId
      */
@@ -38,8 +39,7 @@ class ConditionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
      *  (not necessarily the site on which they're viewed).<br>
      *  <br>
      *  In item results, this is only returned when the seller specified the item's condition
-     *  using a structured format eBay recognizes (e.g., conditionId or an
-     *  older item specifics format).<br>
+     *  using a structured format eBay recognizes.<br>
      *  <br>
      *  <b>When conditionId is also present:</b>
      *  Most categories use the same display name for the same
@@ -64,7 +64,6 @@ class ConditionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
      *  (Condition IDs and names are dependent on the primary category.)
      *  However, the histogram shows the condition ID and item counts.
      *  This should only occur in a very small percent of results.
-     *  Histograms may support display names in these cases later in 2011.
      *  As a workaround, you can fill in the missing name based on the
      *  "Item Condition IDs and Names" (link below) or based on
      *  the condition from an applicable item in the results.<br>
@@ -94,14 +93,15 @@ class ConditionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
      *  In item results, this is only returned when the seller listed the
      *  item with a condition ID.
      *  Some categories don't support or require condition IDs
-     *  (e.g., most Antiques categories don't). Also, until spring 2011,
-     *  some GTC listings may define the item condition in item specifics
-     *  instead, so no ID is returned.<br>
+     *  (e.g., most Antiques categories don't). <br>
      *  <br>
-     *  If you specify Condition in itemFilter, the response returns items
-     *  with the correctly matching condition(s), even if conditionId is
-     *  not returned. For example, if you specify a value of "New"
-     *  or "1000" in the item filter, the response only returns new items.
+     *  If you Condition as a <strong>itemFilter</strong>, the response returns items
+     *  with the correctly matching condition(s), even if <strong>conditionId</strong> is
+     *  not returned.
+     *  <br><br>
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  In all eBay marketplaces, Condition ID 2000 now maps to an item condition of 'Certified Refurbished', and not 'Manufacturer Refurbished'. To list an item as 'Certified Refurbished', a seller must be pre-qualified by eBay for this feature.
+     *  </span>
      *
      * @return int
      */
@@ -118,14 +118,15 @@ class ConditionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
      *  In item results, this is only returned when the seller listed the
      *  item with a condition ID.
      *  Some categories don't support or require condition IDs
-     *  (e.g., most Antiques categories don't). Also, until spring 2011,
-     *  some GTC listings may define the item condition in item specifics
-     *  instead, so no ID is returned.<br>
+     *  (e.g., most Antiques categories don't). <br>
      *  <br>
-     *  If you specify Condition in itemFilter, the response returns items
-     *  with the correctly matching condition(s), even if conditionId is
-     *  not returned. For example, if you specify a value of "New"
-     *  or "1000" in the item filter, the response only returns new items.
+     *  If you Condition as a <strong>itemFilter</strong>, the response returns items
+     *  with the correctly matching condition(s), even if <strong>conditionId</strong> is
+     *  not returned.
+     *  <br><br>
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  In all eBay marketplaces, Condition ID 2000 now maps to an item condition of 'Certified Refurbished', and not 'Manufacturer Refurbished'. To list an item as 'Certified Refurbished', a seller must be pre-qualified by eBay for this feature.
+     *  </span>
      *
      * @param int $conditionId
      * @return self
@@ -144,8 +145,7 @@ class ConditionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
      *  (not necessarily the site on which they're viewed).<br>
      *  <br>
      *  In item results, this is only returned when the seller specified the item's condition
-     *  using a structured format eBay recognizes (e.g., conditionId or an
-     *  older item specifics format).<br>
+     *  using a structured format eBay recognizes.<br>
      *  <br>
      *  <b>When conditionId is also present:</b>
      *  Most categories use the same display name for the same
@@ -170,7 +170,6 @@ class ConditionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
      *  (Condition IDs and names are dependent on the primary category.)
      *  However, the histogram shows the condition ID and item counts.
      *  This should only occur in a very small percent of results.
-     *  Histograms may support display names in these cases later in 2011.
      *  As a workaround, you can fill in the missing name based on the
      *  "Item Condition IDs and Names" (link below) or based on
      *  the condition from an applicable item in the results.<br>
@@ -198,8 +197,7 @@ class ConditionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
      *  (not necessarily the site on which they're viewed).<br>
      *  <br>
      *  In item results, this is only returned when the seller specified the item's condition
-     *  using a structured format eBay recognizes (e.g., conditionId or an
-     *  older item specifics format).<br>
+     *  using a structured format eBay recognizes.<br>
      *  <br>
      *  <b>When conditionId is also present:</b>
      *  Most categories use the same display name for the same
@@ -224,7 +222,6 @@ class ConditionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
      *  (Condition IDs and names are dependent on the primary category.)
      *  However, the histogram shows the condition ID and item counts.
      *  This should only occur in a very small percent of results.
-     *  Histograms may support display names in these cases later in 2011.
      *  As a workaround, you can fill in the missing name based on the
      *  "Item Condition IDs and Names" (link below) or based on
      *  the condition from an applicable item in the results.<br>

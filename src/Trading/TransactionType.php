@@ -150,6 +150,9 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      * Unique identifier for an eBay sales transaction. This identifier
      *  is created once there is a commitment from a buyer to
      *  purchase an item, or if/when the buyer actually purchases the line item through a 'Buy it Now' option. An <b>ItemID</b>/<b>TransactionID</b> pair can be used and referenced during an order checkout flow to identify a line item.
+     *  <br>
+     *  <br>
+     *  The <b>TransactionID</b> value for auction listings is always <code>0</code> since there can be only one winning bidder/one sale for an auction listing.
      *  <br><br>
      *  <b>For GetOrders, GetOrderTransactions, and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this field will only be returned to the buyer, seller, or PayPal (if payment method is PayPal), and no longer returned at all to third parties (except for PayPal). If using a Trading WSDL older than Version 1019, transaction ID is only returned to the buyer, seller or PayPal, and a dummy value of <code>10000000000000</code> will be returned to all third parties (except for PayPal).
      *
@@ -311,6 +314,13 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      *  If a seller requests a Final Value Fee credit, the value of
      *  <b>Transaction.FinalValueFee</b> will not change if a credit is
      *  issued. The credit only appears in the seller's account data.
+     *  <br>
+     *  <br>
+     *  <span class="tablenote"><b>Note:</b>
+     *  The calculation of the Final Value Fee is changing for managed payments sellers, so the value returned in this field should only be considered as an estimated value. The <b>getTransactions</b> method of the <b>Finances API</b> can be used to get accurate Final Value Fee values.
+     *  <br><br>
+     *  See the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/selling-fees?id=4822" target="_blank">Selling fees for managed payments sellers</a> help page for more information about how Final Value Fees are changing for managed payments sellers.
+     *  </span>
      *
      * @var \Nogrod\eBaySDK\Trading\AmountType $finalValueFee
      */
@@ -517,16 +527,18 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     private $codiceFiscale = null;
 
     /**
-     * If <strong>IsMultilegShipping</strong> is <code>true</code>, the order line item will be shipped internationally using the Global Shipping Program (GSP). With GSP, the shipment has a domestic leg and an international leg. In the domestic leg, the seller ships the item to eBay's shipping partner. This shipping address can be found in the <strong>MultiLegShippingDetails.SellerShipmentToLogisticsProvider.ShipToAddress</strong> container. eBay's shipping partner will be responsible for the international leg of the shipment and the order's final destination.
+     * If <strong>IsMultilegShipping</strong> is <code>true</code>, the order line item will not be shipped directly to the buyer. Instead, the item may be shipped to eBay's Global Shipping Program (GSP) partner who will handle the international leg of shipment, or the item may be shipped to eBay's Authenticity Guarantee service partner if the item is subject to the Authenticity Guarantee service program. In both cases, the partner's shipping address can be found in the <strong>MultiLegShippingDetails.SellerShipmentToLogisticsProvider.ShipToAddress</strong> container.
+     *  <br><br>
+     *  If an order line item is subject to the Authenticity Guarantee service, the <b>Transaction.Program<b> container will be returned.
      *
      * @var bool $isMultiLegShipping
      */
     private $isMultiLegShipping = null;
 
     /**
-     * This container consists of details about the domestic leg of a Global Shipping Program (GSP) shipment. With GSP, the shipment has a domestic leg and an international leg. In the domestic leg, the seller ships the item to eBay's shipping partner.
+     * This container consists of details about the domestic leg of a Global Shipping Program (GSP) shipment or shipment to eBay's Authenticity Guarantee service partner. With GSP, the shipment has a domestic leg and an international leg. In the domestic leg, the seller ships the item to eBay's shipping partner. In the Authenticity Guarantee service, the seller ships the item to the authentication partner, and if the item passes an authentication inspection, the authentication partner ships it directly to the buyer.
      *  <br/><br/>
-     *  This container is only returned if the order line item requires shipping through GSP. It is not returned if <strong>IsMultilegShipping</strong> is <code>false</code>.
+     *  This container is only returned if the order has one or more order line items that require shipping through GSP or shipment to an Authenticity Guarantee service partner. It is not returned if <strong>IsMultilegShipping</strong> is <code>false</code>.
      *
      * @var \Nogrod\eBaySDK\Trading\MultiLegShippingDetailsType $multiLegShippingDetails
      */
@@ -638,7 +650,7 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     /**
      * If <code>true</code>, the buyer of the order line item has a eBay Plus program subscription, and is eligible to receive the benefits of this program, such as fast, free shipping and free returns. Top-Rated eBay sellers must opt in to eBay Plus to be able offer the program on qualifying listings. Sellers must commit to next-day delivery of those items.
      *  <br/><br/>
-     *  <span class="tablenote"><b>Note:</b> Currently, eBay Plus is available only to buyers in Germany, Austria, and Australia.
+     *  <span class="tablenote"><b>Note:</b> Currently, eBay Plus is available only to buyers in Germany and Australia.
      *  </span>
      *
      * @var bool $eBayPlusTransaction
@@ -695,7 +707,7 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      *  <br/><br/>
      *  Australian 'Goods and Services' tax (GST) is automatically charged to buyers outside of Australia when they purchase items on the eBay Australia site. Sellers on the Australia site do not have to take any extra steps to enable the collection of GST, as this tax is collected by eBay and remitted to the Australian government. For more information about Australian GST, see the <a href="https://www.ebay.com.au/help/selling/fees-credits-invoices/taxes-import-charges?id=4121">Taxes and import charges</a> help topic.
      *  <br/><br/>
-     *  As of July 1, 2019, buyers in 22 US states will automatically be charged sales tax for eBay purchases, and at least six more US states are scheduled to be subject to eBay Collect and Remit Tax by the end of 2019. eBay will collect and remit this sales tax to the proper taxing authority on the buyer's behalf. Sellers do not have to take any extra steps to enable the collection of this sales tax. If the seller is employing a Sales Tax Table for the listing, and a sales tax rate is established for a state that is subject to 'eBay Collect and Remit', this sales tax rate will be ignored by eBay. For a list of the US states that are or will become subject to 'eBay Collect and Remit Tax' (and effective dates), see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section4">eBay sales tax collection</a> help topic.
+     *  As of April 1, 2020, buyers in 40 US states will automatically be charged sales tax for eBay purchases, and are subject to eBay Collect and Remit Tax. eBay will collect and remit this sales tax to the proper taxing authority on the buyer's behalf. Sellers do not have to take any extra steps to enable the collection of this sales tax. If the seller is employing a Sales Tax Table for the listing, and a sales tax rate is established for a state that is subject to 'eBay Collect and Remit', this sales tax rate will be ignored by eBay. For a list of the US states that are or will become subject to 'eBay Collect and Remit Tax' (and effective dates), see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section4">eBay sales tax collection</a> help topic.
      *
      * @var bool $eBayCollectAndRemitTax
      */
@@ -706,11 +718,20 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      *  <br/><br/>
      *  Australian 'Goods and Services' tax (GST) is automatically charged to buyers outside of Australia when they purchase items on the eBay Australia site. Sellers on the Australia site do not have to take any extra steps to enable the collection of GST, as this tax is collected by eBay and remitted to the Australian government. For more information about Australian GST, see the <a href="https://www.ebay.com.au/help/selling/fees-credits-invoices/taxes-import-charges?id=4121">Taxes and import charges</a> help topic.
      *  <br/><br/>
-     *  As of January 1, 2019, buyers in some US states will automatically be charged sales tax for eBay purchases. eBay will collect and remit this sales tax to the proper taxing authority on the buyer's behalf. Sellers do not have to take any extra steps to enable the collection of this sales tax. If the seller is employing a Sales Tax Table for the listing, and a sales tax rate is established for a state that is subject to 'eBay Collect and Remit', this sales tax rate will be ignored by eBay. For a list of the US states that will become subject to 'eBay Collect and Remit' (and effective dates), see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section4">eBay sales tax collection</a> help topic.
+     *  As of April 1, 2020, buyers in 41 US states will automatically be charged sales tax for eBay purchases. eBay will collect and remit this sales tax to the proper taxing authority on the buyer's behalf. Sellers do not have to take any extra steps to enable the collection of this sales tax. If the seller is employing a Sales Tax Table for the listing, and a sales tax rate is established for a state that is subject to 'eBay Collect and Remit', this sales tax rate will be ignored by eBay. For a list of the US states that will become subject to 'eBay Collect and Remit' (and effective dates), see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section4">eBay sales tax collection</a> help topic.
      *
      * @var \Nogrod\eBaySDK\Trading\TaxesType $eBayCollectAndRemitTaxes
      */
     private $eBayCollectAndRemitTaxes = null;
+
+    /**
+     * This container gives the status of an order line item going through the Authenticity Guarantee service process. In the Authenticity Guarantee service program, a third-party authenticator must verify the authenticity of the item before it can be sent to the buyer.
+     *  <br/><br/>
+     *  This container is only returned for order line items subject to the Authenticity Guarantee service process, and if it is returned, the seller must make sure to send the item to the third-party authenticator's address (shown in the <b>MultiLegShippingDetails.SellerShipmentToLogisticsProvider.ShipToAddress</b> field), and not to the buyer's shipping address. If the item is successfully authenticated, the authenticator will ship the item to the buyer.
+     *
+     * @var \Nogrod\eBaySDK\Trading\TransactionProgramType $program
+     */
+    private $program = null;
 
     /**
      * Gets as amountPaid
@@ -1126,6 +1147,9 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      * Unique identifier for an eBay sales transaction. This identifier
      *  is created once there is a commitment from a buyer to
      *  purchase an item, or if/when the buyer actually purchases the line item through a 'Buy it Now' option. An <b>ItemID</b>/<b>TransactionID</b> pair can be used and referenced during an order checkout flow to identify a line item.
+     *  <br>
+     *  <br>
+     *  The <b>TransactionID</b> value for auction listings is always <code>0</code> since there can be only one winning bidder/one sale for an auction listing.
      *  <br><br>
      *  <b>For GetOrders, GetOrderTransactions, and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this field will only be returned to the buyer, seller, or PayPal (if payment method is PayPal), and no longer returned at all to third parties (except for PayPal). If using a Trading WSDL older than Version 1019, transaction ID is only returned to the buyer, seller or PayPal, and a dummy value of <code>10000000000000</code> will be returned to all third parties (except for PayPal).
      *
@@ -1142,6 +1166,9 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      * Unique identifier for an eBay sales transaction. This identifier
      *  is created once there is a commitment from a buyer to
      *  purchase an item, or if/when the buyer actually purchases the line item through a 'Buy it Now' option. An <b>ItemID</b>/<b>TransactionID</b> pair can be used and referenced during an order checkout flow to identify a line item.
+     *  <br>
+     *  <br>
+     *  The <b>TransactionID</b> value for auction listings is always <code>0</code> since there can be only one winning bidder/one sale for an auction listing.
      *  <br><br>
      *  <b>For GetOrders, GetOrderTransactions, and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this field will only be returned to the buyer, seller, or PayPal (if payment method is PayPal), and no longer returned at all to third parties (except for PayPal). If using a Trading WSDL older than Version 1019, transaction ID is only returned to the buyer, seller or PayPal, and a dummy value of <code>10000000000000</code> will be returned to all third parties (except for PayPal).
      *
@@ -1701,6 +1728,13 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      *  If a seller requests a Final Value Fee credit, the value of
      *  <b>Transaction.FinalValueFee</b> will not change if a credit is
      *  issued. The credit only appears in the seller's account data.
+     *  <br>
+     *  <br>
+     *  <span class="tablenote"><b>Note:</b>
+     *  The calculation of the Final Value Fee is changing for managed payments sellers, so the value returned in this field should only be considered as an estimated value. The <b>getTransactions</b> method of the <b>Finances API</b> can be used to get accurate Final Value Fee values.
+     *  <br><br>
+     *  See the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/selling-fees?id=4822" target="_blank">Selling fees for managed payments sellers</a> help page for more information about how Final Value Fees are changing for managed payments sellers.
+     *  </span>
      *
      * @return \Nogrod\eBaySDK\Trading\AmountType
      */
@@ -1720,6 +1754,13 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      *  If a seller requests a Final Value Fee credit, the value of
      *  <b>Transaction.FinalValueFee</b> will not change if a credit is
      *  issued. The credit only appears in the seller's account data.
+     *  <br>
+     *  <br>
+     *  <span class="tablenote"><b>Note:</b>
+     *  The calculation of the Final Value Fee is changing for managed payments sellers, so the value returned in this field should only be considered as an estimated value. The <b>getTransactions</b> method of the <b>Finances API</b> can be used to get accurate Final Value Fee values.
+     *  <br><br>
+     *  See the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/selling-fees?id=4822" target="_blank">Selling fees for managed payments sellers</a> help page for more information about how Final Value Fees are changing for managed payments sellers.
+     *  </span>
      *
      * @param \Nogrod\eBaySDK\Trading\AmountType $finalValueFee
      * @return self
@@ -2452,7 +2493,9 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     /**
      * Gets as isMultiLegShipping
      *
-     * If <strong>IsMultilegShipping</strong> is <code>true</code>, the order line item will be shipped internationally using the Global Shipping Program (GSP). With GSP, the shipment has a domestic leg and an international leg. In the domestic leg, the seller ships the item to eBay's shipping partner. This shipping address can be found in the <strong>MultiLegShippingDetails.SellerShipmentToLogisticsProvider.ShipToAddress</strong> container. eBay's shipping partner will be responsible for the international leg of the shipment and the order's final destination.
+     * If <strong>IsMultilegShipping</strong> is <code>true</code>, the order line item will not be shipped directly to the buyer. Instead, the item may be shipped to eBay's Global Shipping Program (GSP) partner who will handle the international leg of shipment, or the item may be shipped to eBay's Authenticity Guarantee service partner if the item is subject to the Authenticity Guarantee service program. In both cases, the partner's shipping address can be found in the <strong>MultiLegShippingDetails.SellerShipmentToLogisticsProvider.ShipToAddress</strong> container.
+     *  <br><br>
+     *  If an order line item is subject to the Authenticity Guarantee service, the <b>Transaction.Program<b> container will be returned.
      *
      * @return bool
      */
@@ -2464,7 +2507,9 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     /**
      * Sets a new isMultiLegShipping
      *
-     * If <strong>IsMultilegShipping</strong> is <code>true</code>, the order line item will be shipped internationally using the Global Shipping Program (GSP). With GSP, the shipment has a domestic leg and an international leg. In the domestic leg, the seller ships the item to eBay's shipping partner. This shipping address can be found in the <strong>MultiLegShippingDetails.SellerShipmentToLogisticsProvider.ShipToAddress</strong> container. eBay's shipping partner will be responsible for the international leg of the shipment and the order's final destination.
+     * If <strong>IsMultilegShipping</strong> is <code>true</code>, the order line item will not be shipped directly to the buyer. Instead, the item may be shipped to eBay's Global Shipping Program (GSP) partner who will handle the international leg of shipment, or the item may be shipped to eBay's Authenticity Guarantee service partner if the item is subject to the Authenticity Guarantee service program. In both cases, the partner's shipping address can be found in the <strong>MultiLegShippingDetails.SellerShipmentToLogisticsProvider.ShipToAddress</strong> container.
+     *  <br><br>
+     *  If an order line item is subject to the Authenticity Guarantee service, the <b>Transaction.Program<b> container will be returned.
      *
      * @param bool $isMultiLegShipping
      * @return self
@@ -2478,9 +2523,9 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     /**
      * Gets as multiLegShippingDetails
      *
-     * This container consists of details about the domestic leg of a Global Shipping Program (GSP) shipment. With GSP, the shipment has a domestic leg and an international leg. In the domestic leg, the seller ships the item to eBay's shipping partner.
+     * This container consists of details about the domestic leg of a Global Shipping Program (GSP) shipment or shipment to eBay's Authenticity Guarantee service partner. With GSP, the shipment has a domestic leg and an international leg. In the domestic leg, the seller ships the item to eBay's shipping partner. In the Authenticity Guarantee service, the seller ships the item to the authentication partner, and if the item passes an authentication inspection, the authentication partner ships it directly to the buyer.
      *  <br/><br/>
-     *  This container is only returned if the order line item requires shipping through GSP. It is not returned if <strong>IsMultilegShipping</strong> is <code>false</code>.
+     *  This container is only returned if the order has one or more order line items that require shipping through GSP or shipment to an Authenticity Guarantee service partner. It is not returned if <strong>IsMultilegShipping</strong> is <code>false</code>.
      *
      * @return \Nogrod\eBaySDK\Trading\MultiLegShippingDetailsType
      */
@@ -2492,9 +2537,9 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     /**
      * Sets a new multiLegShippingDetails
      *
-     * This container consists of details about the domestic leg of a Global Shipping Program (GSP) shipment. With GSP, the shipment has a domestic leg and an international leg. In the domestic leg, the seller ships the item to eBay's shipping partner.
+     * This container consists of details about the domestic leg of a Global Shipping Program (GSP) shipment or shipment to eBay's Authenticity Guarantee service partner. With GSP, the shipment has a domestic leg and an international leg. In the domestic leg, the seller ships the item to eBay's shipping partner. In the Authenticity Guarantee service, the seller ships the item to the authentication partner, and if the item passes an authentication inspection, the authentication partner ships it directly to the buyer.
      *  <br/><br/>
-     *  This container is only returned if the order line item requires shipping through GSP. It is not returned if <strong>IsMultilegShipping</strong> is <code>false</code>.
+     *  This container is only returned if the order has one or more order line items that require shipping through GSP or shipment to an Authenticity Guarantee service partner. It is not returned if <strong>IsMultilegShipping</strong> is <code>false</code>.
      *
      * @param \Nogrod\eBaySDK\Trading\MultiLegShippingDetailsType $multiLegShippingDetails
      * @return self
@@ -2946,7 +2991,7 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      *
      * If <code>true</code>, the buyer of the order line item has a eBay Plus program subscription, and is eligible to receive the benefits of this program, such as fast, free shipping and free returns. Top-Rated eBay sellers must opt in to eBay Plus to be able offer the program on qualifying listings. Sellers must commit to next-day delivery of those items.
      *  <br/><br/>
-     *  <span class="tablenote"><b>Note:</b> Currently, eBay Plus is available only to buyers in Germany, Austria, and Australia.
+     *  <span class="tablenote"><b>Note:</b> Currently, eBay Plus is available only to buyers in Germany and Australia.
      *  </span>
      *
      * @return bool
@@ -2961,7 +3006,7 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      *
      * If <code>true</code>, the buyer of the order line item has a eBay Plus program subscription, and is eligible to receive the benefits of this program, such as fast, free shipping and free returns. Top-Rated eBay sellers must opt in to eBay Plus to be able offer the program on qualifying listings. Sellers must commit to next-day delivery of those items.
      *  <br/><br/>
-     *  <span class="tablenote"><b>Note:</b> Currently, eBay Plus is available only to buyers in Germany, Austria, and Australia.
+     *  <span class="tablenote"><b>Note:</b> Currently, eBay Plus is available only to buyers in Germany and Australia.
      *  </span>
      *
      * @param bool $eBayPlusTransaction
@@ -3130,7 +3175,7 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      *  <br/><br/>
      *  Australian 'Goods and Services' tax (GST) is automatically charged to buyers outside of Australia when they purchase items on the eBay Australia site. Sellers on the Australia site do not have to take any extra steps to enable the collection of GST, as this tax is collected by eBay and remitted to the Australian government. For more information about Australian GST, see the <a href="https://www.ebay.com.au/help/selling/fees-credits-invoices/taxes-import-charges?id=4121">Taxes and import charges</a> help topic.
      *  <br/><br/>
-     *  As of July 1, 2019, buyers in 22 US states will automatically be charged sales tax for eBay purchases, and at least six more US states are scheduled to be subject to eBay Collect and Remit Tax by the end of 2019. eBay will collect and remit this sales tax to the proper taxing authority on the buyer's behalf. Sellers do not have to take any extra steps to enable the collection of this sales tax. If the seller is employing a Sales Tax Table for the listing, and a sales tax rate is established for a state that is subject to 'eBay Collect and Remit', this sales tax rate will be ignored by eBay. For a list of the US states that are or will become subject to 'eBay Collect and Remit Tax' (and effective dates), see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section4">eBay sales tax collection</a> help topic.
+     *  As of April 1, 2020, buyers in 40 US states will automatically be charged sales tax for eBay purchases, and are subject to eBay Collect and Remit Tax. eBay will collect and remit this sales tax to the proper taxing authority on the buyer's behalf. Sellers do not have to take any extra steps to enable the collection of this sales tax. If the seller is employing a Sales Tax Table for the listing, and a sales tax rate is established for a state that is subject to 'eBay Collect and Remit', this sales tax rate will be ignored by eBay. For a list of the US states that are or will become subject to 'eBay Collect and Remit Tax' (and effective dates), see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section4">eBay sales tax collection</a> help topic.
      *
      * @return bool
      */
@@ -3146,7 +3191,7 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      *  <br/><br/>
      *  Australian 'Goods and Services' tax (GST) is automatically charged to buyers outside of Australia when they purchase items on the eBay Australia site. Sellers on the Australia site do not have to take any extra steps to enable the collection of GST, as this tax is collected by eBay and remitted to the Australian government. For more information about Australian GST, see the <a href="https://www.ebay.com.au/help/selling/fees-credits-invoices/taxes-import-charges?id=4121">Taxes and import charges</a> help topic.
      *  <br/><br/>
-     *  As of July 1, 2019, buyers in 22 US states will automatically be charged sales tax for eBay purchases, and at least six more US states are scheduled to be subject to eBay Collect and Remit Tax by the end of 2019. eBay will collect and remit this sales tax to the proper taxing authority on the buyer's behalf. Sellers do not have to take any extra steps to enable the collection of this sales tax. If the seller is employing a Sales Tax Table for the listing, and a sales tax rate is established for a state that is subject to 'eBay Collect and Remit', this sales tax rate will be ignored by eBay. For a list of the US states that are or will become subject to 'eBay Collect and Remit Tax' (and effective dates), see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section4">eBay sales tax collection</a> help topic.
+     *  As of April 1, 2020, buyers in 40 US states will automatically be charged sales tax for eBay purchases, and are subject to eBay Collect and Remit Tax. eBay will collect and remit this sales tax to the proper taxing authority on the buyer's behalf. Sellers do not have to take any extra steps to enable the collection of this sales tax. If the seller is employing a Sales Tax Table for the listing, and a sales tax rate is established for a state that is subject to 'eBay Collect and Remit', this sales tax rate will be ignored by eBay. For a list of the US states that are or will become subject to 'eBay Collect and Remit Tax' (and effective dates), see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section4">eBay sales tax collection</a> help topic.
      *
      * @param bool $eBayCollectAndRemitTax
      * @return self
@@ -3164,7 +3209,7 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      *  <br/><br/>
      *  Australian 'Goods and Services' tax (GST) is automatically charged to buyers outside of Australia when they purchase items on the eBay Australia site. Sellers on the Australia site do not have to take any extra steps to enable the collection of GST, as this tax is collected by eBay and remitted to the Australian government. For more information about Australian GST, see the <a href="https://www.ebay.com.au/help/selling/fees-credits-invoices/taxes-import-charges?id=4121">Taxes and import charges</a> help topic.
      *  <br/><br/>
-     *  As of January 1, 2019, buyers in some US states will automatically be charged sales tax for eBay purchases. eBay will collect and remit this sales tax to the proper taxing authority on the buyer's behalf. Sellers do not have to take any extra steps to enable the collection of this sales tax. If the seller is employing a Sales Tax Table for the listing, and a sales tax rate is established for a state that is subject to 'eBay Collect and Remit', this sales tax rate will be ignored by eBay. For a list of the US states that will become subject to 'eBay Collect and Remit' (and effective dates), see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section4">eBay sales tax collection</a> help topic.
+     *  As of April 1, 2020, buyers in 41 US states will automatically be charged sales tax for eBay purchases. eBay will collect and remit this sales tax to the proper taxing authority on the buyer's behalf. Sellers do not have to take any extra steps to enable the collection of this sales tax. If the seller is employing a Sales Tax Table for the listing, and a sales tax rate is established for a state that is subject to 'eBay Collect and Remit', this sales tax rate will be ignored by eBay. For a list of the US states that will become subject to 'eBay Collect and Remit' (and effective dates), see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section4">eBay sales tax collection</a> help topic.
      *
      * @return \Nogrod\eBaySDK\Trading\TaxesType
      */
@@ -3180,7 +3225,7 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      *  <br/><br/>
      *  Australian 'Goods and Services' tax (GST) is automatically charged to buyers outside of Australia when they purchase items on the eBay Australia site. Sellers on the Australia site do not have to take any extra steps to enable the collection of GST, as this tax is collected by eBay and remitted to the Australian government. For more information about Australian GST, see the <a href="https://www.ebay.com.au/help/selling/fees-credits-invoices/taxes-import-charges?id=4121">Taxes and import charges</a> help topic.
      *  <br/><br/>
-     *  As of January 1, 2019, buyers in some US states will automatically be charged sales tax for eBay purchases. eBay will collect and remit this sales tax to the proper taxing authority on the buyer's behalf. Sellers do not have to take any extra steps to enable the collection of this sales tax. If the seller is employing a Sales Tax Table for the listing, and a sales tax rate is established for a state that is subject to 'eBay Collect and Remit', this sales tax rate will be ignored by eBay. For a list of the US states that will become subject to 'eBay Collect and Remit' (and effective dates), see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section4">eBay sales tax collection</a> help topic.
+     *  As of April 1, 2020, buyers in 41 US states will automatically be charged sales tax for eBay purchases. eBay will collect and remit this sales tax to the proper taxing authority on the buyer's behalf. Sellers do not have to take any extra steps to enable the collection of this sales tax. If the seller is employing a Sales Tax Table for the listing, and a sales tax rate is established for a state that is subject to 'eBay Collect and Remit', this sales tax rate will be ignored by eBay. For a list of the US states that will become subject to 'eBay Collect and Remit' (and effective dates), see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section4">eBay sales tax collection</a> help topic.
      *
      * @param \Nogrod\eBaySDK\Trading\TaxesType $eBayCollectAndRemitTaxes
      * @return self
@@ -3188,6 +3233,36 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     public function setEBayCollectAndRemitTaxes(\Nogrod\eBaySDK\Trading\TaxesType $eBayCollectAndRemitTaxes)
     {
         $this->eBayCollectAndRemitTaxes = $eBayCollectAndRemitTaxes;
+        return $this;
+    }
+
+    /**
+     * Gets as program
+     *
+     * This container gives the status of an order line item going through the Authenticity Guarantee service process. In the Authenticity Guarantee service program, a third-party authenticator must verify the authenticity of the item before it can be sent to the buyer.
+     *  <br/><br/>
+     *  This container is only returned for order line items subject to the Authenticity Guarantee service process, and if it is returned, the seller must make sure to send the item to the third-party authenticator's address (shown in the <b>MultiLegShippingDetails.SellerShipmentToLogisticsProvider.ShipToAddress</b> field), and not to the buyer's shipping address. If the item is successfully authenticated, the authenticator will ship the item to the buyer.
+     *
+     * @return \Nogrod\eBaySDK\Trading\TransactionProgramType
+     */
+    public function getProgram()
+    {
+        return $this->program;
+    }
+
+    /**
+     * Sets a new program
+     *
+     * This container gives the status of an order line item going through the Authenticity Guarantee service process. In the Authenticity Guarantee service program, a third-party authenticator must verify the authenticity of the item before it can be sent to the buyer.
+     *  <br/><br/>
+     *  This container is only returned for order line items subject to the Authenticity Guarantee service process, and if it is returned, the seller must make sure to send the item to the third-party authenticator's address (shown in the <b>MultiLegShippingDetails.SellerShipmentToLogisticsProvider.ShipToAddress</b> field), and not to the buyer's shipping address. If the item is successfully authenticated, the authenticator will ship the item to the buyer.
+     *
+     * @param \Nogrod\eBaySDK\Trading\TransactionProgramType $program
+     * @return self
+     */
+    public function setProgram(\Nogrod\eBaySDK\Trading\TransactionProgramType $program)
+    {
+        $this->program = $program;
         return $this;
     }
 
@@ -3508,6 +3583,10 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}eBayCollectAndRemitTaxes", $value);
         }
+        $value = $this->getProgram();
+        if (null !== $value) {
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Program", $value);
+        }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader)
@@ -3827,6 +3906,10 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}eBayCollectAndRemitTaxes');
         if (null !== $value) {
             $this->setEBayCollectAndRemitTaxes(\Nogrod\eBaySDK\Trading\TaxesType::fromKeyValue($value));
+        }
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Program');
+        if (null !== $value) {
+            $this->setProgram(\Nogrod\eBaySDK\Trading\TransactionProgramType::fromKeyValue($value));
         }
     }
 }

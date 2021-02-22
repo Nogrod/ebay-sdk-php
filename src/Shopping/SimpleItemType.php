@@ -503,6 +503,8 @@ class SimpleItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
 
     /**
      * This container consists of details related to the seller's Return Policy, both for domestic and international buyers (if the seller ships internationally). If the seller does not accept returns, only the <b>ReturnsAccepted</b> field (or <b>InternationalReturnsAccepted</b> field for international buyers) is returned with a value of <code>ReturnsNotAccepted</code>. If a seller does accept returns, more details are returned, including the return period, the refund method, and the order partner (buyer or seller) who is responsible for return shipping costs. This container is only returned if the <b>IncludeSelector</b> field is included in the call request and set to <code>Details</code>.
+     *  <br><br>
+     *  <span class="tablenote"><b>Note:</b> If the seller ships internationally, but did not specify a separate international return policy for the listing, the settings in the domestic return policy fields will be used instead for international returns. </span>
      *
      * @var \Nogrod\eBaySDK\Shopping\ReturnPolicyType $returnPolicy
      */
@@ -606,18 +608,28 @@ class SimpleItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      * A numeric identifier that represents the condition of an item. These numeric IDs can vary by eBay category, but many are the same across categories. For example, <code>1000</code> indicates an item in <em>New</em> condition, <code>3000</code> indicates an item in <em>Used</em> condition, and <code>5000</code> indicates an item in <em>Good</em> condition.
      *  <br/><br/>
      *  This field will get returned for most listings since most eBay listing categories require an item condition, but this field may not get returned for listings in eBay categories that don't require an item condition. A <b>ConditionID</b> value always maps to a text-based description of the condition, and this display text is shown in the <b>ConditionDisplayName</b> field.
+     *  <br>
+     *  <br>
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  In all eBay marketplaces, Condition ID 2000 now maps to an item condition of 'Certified Refurbished', and not 'Manufacturer Refurbished'. To list an item as 'Certified Refurbished', a seller must be pre-qualified by eBay for this feature.
+     *  </span>
      *
      * @var int $conditionID
      */
     private $conditionID = null;
 
     /**
-     * The user-friendly display name for the item condition, such as <em>New</em>, <em>Like New</em> <em>Used</em>, <em>Good</em>, or <em>Manufacturer refurbished</em>. Display names are localized for the site on which they're listed (not necessarily the site on which they're viewed).
+     * The user-friendly display name for the item condition, such as <em>New</em>, <em>Like New</em> <em>Used</em>, or <em>Good</em>. Display names are localized for the site on which they're listed (not necessarily the site on which they're viewed).
      *  <br>
      *  <br>
      *  <b>ConditionDisplayName</b> values all map to <b>ConditionID</b> values, but keep in mind that based on the eBay category, some item conditions can have the same <b>ConditionID</b>, but a slightly different <b>ConditionDisplayName</b>. For example, a <b>ConditionID</b> value of <code>1000</code> typically indicates an item in new condtion, but the text displayed in the <b>ConditionDisplayName</b> can be just <em>New</em>, or some categories will show <em>Brand New</em>, <em>New with tags</em>, or <em>New with box</em>.
      *  <br/><br/>
      *  This field will get returned for most listings since most eBay listing categories require an item condition, but this field may not get returned for listings in eBay categories that don't require an item condition. A <b>ConditionDisplayName</b> value always maps to a text-based description of the condition, and this Condition ID is shown in the <b>ConditionID</b> field.
+     *  <br>
+     *  <br>
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  In all eBay marketplaces, Condition ID 2000 now maps to an item condition of 'Certified Refurbished', and not 'Manufacturer Refurbished'. To list an item as 'Certified Refurbished', a seller must be pre-qualified by eBay for this feature.
+     *  </span>
      *
      * @var string $conditionDisplayName
      */
@@ -2656,6 +2668,8 @@ class SimpleItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      * Gets as returnPolicy
      *
      * This container consists of details related to the seller's Return Policy, both for domestic and international buyers (if the seller ships internationally). If the seller does not accept returns, only the <b>ReturnsAccepted</b> field (or <b>InternationalReturnsAccepted</b> field for international buyers) is returned with a value of <code>ReturnsNotAccepted</code>. If a seller does accept returns, more details are returned, including the return period, the refund method, and the order partner (buyer or seller) who is responsible for return shipping costs. This container is only returned if the <b>IncludeSelector</b> field is included in the call request and set to <code>Details</code>.
+     *  <br><br>
+     *  <span class="tablenote"><b>Note:</b> If the seller ships internationally, but did not specify a separate international return policy for the listing, the settings in the domestic return policy fields will be used instead for international returns. </span>
      *
      * @return \Nogrod\eBaySDK\Shopping\ReturnPolicyType
      */
@@ -2668,6 +2682,8 @@ class SimpleItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      * Sets a new returnPolicy
      *
      * This container consists of details related to the seller's Return Policy, both for domestic and international buyers (if the seller ships internationally). If the seller does not accept returns, only the <b>ReturnsAccepted</b> field (or <b>InternationalReturnsAccepted</b> field for international buyers) is returned with a value of <code>ReturnsNotAccepted</code>. If a seller does accept returns, more details are returned, including the return period, the refund method, and the order partner (buyer or seller) who is responsible for return shipping costs. This container is only returned if the <b>IncludeSelector</b> field is included in the call request and set to <code>Details</code>.
+     *  <br><br>
+     *  <span class="tablenote"><b>Note:</b> If the seller ships internationally, but did not specify a separate international return policy for the listing, the settings in the domestic return policy fields will be used instead for international returns. </span>
      *
      * @param \Nogrod\eBaySDK\Shopping\ReturnPolicyType $returnPolicy
      * @return self
@@ -3019,6 +3035,11 @@ class SimpleItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      * A numeric identifier that represents the condition of an item. These numeric IDs can vary by eBay category, but many are the same across categories. For example, <code>1000</code> indicates an item in <em>New</em> condition, <code>3000</code> indicates an item in <em>Used</em> condition, and <code>5000</code> indicates an item in <em>Good</em> condition.
      *  <br/><br/>
      *  This field will get returned for most listings since most eBay listing categories require an item condition, but this field may not get returned for listings in eBay categories that don't require an item condition. A <b>ConditionID</b> value always maps to a text-based description of the condition, and this display text is shown in the <b>ConditionDisplayName</b> field.
+     *  <br>
+     *  <br>
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  In all eBay marketplaces, Condition ID 2000 now maps to an item condition of 'Certified Refurbished', and not 'Manufacturer Refurbished'. To list an item as 'Certified Refurbished', a seller must be pre-qualified by eBay for this feature.
+     *  </span>
      *
      * @return int
      */
@@ -3033,6 +3054,11 @@ class SimpleItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      * A numeric identifier that represents the condition of an item. These numeric IDs can vary by eBay category, but many are the same across categories. For example, <code>1000</code> indicates an item in <em>New</em> condition, <code>3000</code> indicates an item in <em>Used</em> condition, and <code>5000</code> indicates an item in <em>Good</em> condition.
      *  <br/><br/>
      *  This field will get returned for most listings since most eBay listing categories require an item condition, but this field may not get returned for listings in eBay categories that don't require an item condition. A <b>ConditionID</b> value always maps to a text-based description of the condition, and this display text is shown in the <b>ConditionDisplayName</b> field.
+     *  <br>
+     *  <br>
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  In all eBay marketplaces, Condition ID 2000 now maps to an item condition of 'Certified Refurbished', and not 'Manufacturer Refurbished'. To list an item as 'Certified Refurbished', a seller must be pre-qualified by eBay for this feature.
+     *  </span>
      *
      * @param int $conditionID
      * @return self
@@ -3046,12 +3072,17 @@ class SimpleItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
     /**
      * Gets as conditionDisplayName
      *
-     * The user-friendly display name for the item condition, such as <em>New</em>, <em>Like New</em> <em>Used</em>, <em>Good</em>, or <em>Manufacturer refurbished</em>. Display names are localized for the site on which they're listed (not necessarily the site on which they're viewed).
+     * The user-friendly display name for the item condition, such as <em>New</em>, <em>Like New</em> <em>Used</em>, or <em>Good</em>. Display names are localized for the site on which they're listed (not necessarily the site on which they're viewed).
      *  <br>
      *  <br>
      *  <b>ConditionDisplayName</b> values all map to <b>ConditionID</b> values, but keep in mind that based on the eBay category, some item conditions can have the same <b>ConditionID</b>, but a slightly different <b>ConditionDisplayName</b>. For example, a <b>ConditionID</b> value of <code>1000</code> typically indicates an item in new condtion, but the text displayed in the <b>ConditionDisplayName</b> can be just <em>New</em>, or some categories will show <em>Brand New</em>, <em>New with tags</em>, or <em>New with box</em>.
      *  <br/><br/>
      *  This field will get returned for most listings since most eBay listing categories require an item condition, but this field may not get returned for listings in eBay categories that don't require an item condition. A <b>ConditionDisplayName</b> value always maps to a text-based description of the condition, and this Condition ID is shown in the <b>ConditionID</b> field.
+     *  <br>
+     *  <br>
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  In all eBay marketplaces, Condition ID 2000 now maps to an item condition of 'Certified Refurbished', and not 'Manufacturer Refurbished'. To list an item as 'Certified Refurbished', a seller must be pre-qualified by eBay for this feature.
+     *  </span>
      *
      * @return string
      */
@@ -3063,12 +3094,17 @@ class SimpleItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
     /**
      * Sets a new conditionDisplayName
      *
-     * The user-friendly display name for the item condition, such as <em>New</em>, <em>Like New</em> <em>Used</em>, <em>Good</em>, or <em>Manufacturer refurbished</em>. Display names are localized for the site on which they're listed (not necessarily the site on which they're viewed).
+     * The user-friendly display name for the item condition, such as <em>New</em>, <em>Like New</em> <em>Used</em>, or <em>Good</em>. Display names are localized for the site on which they're listed (not necessarily the site on which they're viewed).
      *  <br>
      *  <br>
      *  <b>ConditionDisplayName</b> values all map to <b>ConditionID</b> values, but keep in mind that based on the eBay category, some item conditions can have the same <b>ConditionID</b>, but a slightly different <b>ConditionDisplayName</b>. For example, a <b>ConditionID</b> value of <code>1000</code> typically indicates an item in new condtion, but the text displayed in the <b>ConditionDisplayName</b> can be just <em>New</em>, or some categories will show <em>Brand New</em>, <em>New with tags</em>, or <em>New with box</em>.
      *  <br/><br/>
      *  This field will get returned for most listings since most eBay listing categories require an item condition, but this field may not get returned for listings in eBay categories that don't require an item condition. A <b>ConditionDisplayName</b> value always maps to a text-based description of the condition, and this Condition ID is shown in the <b>ConditionID</b> field.
+     *  <br>
+     *  <br>
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  In all eBay marketplaces, Condition ID 2000 now maps to an item condition of 'Certified Refurbished', and not 'Manufacturer Refurbished'. To list an item as 'Certified Refurbished', a seller must be pre-qualified by eBay for this feature.
+     *  </span>
      *
      * @param string $conditionDisplayName
      * @return self

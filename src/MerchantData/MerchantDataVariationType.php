@@ -77,14 +77,6 @@ class MerchantDataVariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     private $variationSpecifics = null;
 
     /**
-     * Contains the variation's quantity sold.
-     *  Always returned when variations are present.
-     *
-     * @var \Nogrod\eBaySDK\MerchantData\MerchantDataSellingStatusType $sellingStatus
-     */
-    private $sellingStatus = null;
-
-    /**
      * Gets as sKU
      *
      * Stock Keeping Unit that serves as the seller's unique
@@ -331,34 +323,6 @@ class MerchantDataVariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
         return $this;
     }
 
-    /**
-     * Gets as sellingStatus
-     *
-     * Contains the variation's quantity sold.
-     *  Always returned when variations are present.
-     *
-     * @return \Nogrod\eBaySDK\MerchantData\MerchantDataSellingStatusType
-     */
-    public function getSellingStatus()
-    {
-        return $this->sellingStatus;
-    }
-
-    /**
-     * Sets a new sellingStatus
-     *
-     * Contains the variation's quantity sold.
-     *  Always returned when variations are present.
-     *
-     * @param \Nogrod\eBaySDK\MerchantData\MerchantDataSellingStatusType $sellingStatus
-     * @return self
-     */
-    public function setSellingStatus(\Nogrod\eBaySDK\MerchantData\MerchantDataSellingStatusType $sellingStatus)
-    {
-        $this->sellingStatus = $sellingStatus;
-        return $this;
-    }
-
     public function xmlSerialize(\Sabre\Xml\Writer $writer)
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
@@ -379,10 +343,6 @@ class MerchantDataVariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}VariationSpecifics", array_map(function ($v) {
                 return ["NameValueList" => $v];
             }, $value));
-        }
-        $value = $this->getSellingStatus();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SellingStatus", $value);
         }
     }
 
@@ -417,10 +377,6 @@ class MerchantDataVariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
             $this->setVariationSpecifics(array_map(function ($v) {
                 return \Nogrod\eBaySDK\MerchantData\NameValueListType::fromKeyValue($v);
             }, $value));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellingStatus');
-        if (null !== $value) {
-            $this->setSellingStatus(\Nogrod\eBaySDK\MerchantData\MerchantDataSellingStatusType::fromKeyValue($value));
         }
     }
 }

@@ -320,25 +320,11 @@ class SearchItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
     private $distance = null;
 
     /**
-     * Contains information about the item's condition.
-     *  Only returned when the seller listed the item with an
-     *  item condition.<br>
-     *  <br>
-     *  Different categories can support different
-     *  condition choices. If a listing is in two categories,
-     *  the seller uses condition details that are supported in
-     *  the primary category. Thus, even if two nearly identical
-     *  items are found in the same category search, they could support
-     *  different condition details if they have different
-     *  primary categories.
-     *  For example, suppose Seller A lists a concert T-shirt
-     *  in clothing, and also in music accessories as the
-     *  secondary category. Seller B lists an identical shirt in
-     *  music accessories only.
-     *  If you search against the music accessories category,
-     *  you will find both items, but seller A's shirt may have
-     *  condition details that are slightly different from seller B's
-     *  shirt, because the listings have different primary categories.
+     * This container shows the name and unique ID of the item's condition. This container will generally get returned unless the item is in an eBay category that does not require an item condition. Supported item conditions vary by category.
+     *  <br><br>
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  In all eBay marketplaces, Condition ID 2000 now maps to an item condition of 'Certified Refurbished', and not 'Manufacturer Refurbished'. To list an item as 'Certified Refurbished', a seller must be pre-qualified by eBay for this feature.
+     *  </span>
      *
      * @var \Nogrod\eBaySDK\Finding\ConditionType $condition
      */
@@ -1504,25 +1490,11 @@ class SearchItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
     /**
      * Gets as condition
      *
-     * Contains information about the item's condition.
-     *  Only returned when the seller listed the item with an
-     *  item condition.<br>
-     *  <br>
-     *  Different categories can support different
-     *  condition choices. If a listing is in two categories,
-     *  the seller uses condition details that are supported in
-     *  the primary category. Thus, even if two nearly identical
-     *  items are found in the same category search, they could support
-     *  different condition details if they have different
-     *  primary categories.
-     *  For example, suppose Seller A lists a concert T-shirt
-     *  in clothing, and also in music accessories as the
-     *  secondary category. Seller B lists an identical shirt in
-     *  music accessories only.
-     *  If you search against the music accessories category,
-     *  you will find both items, but seller A's shirt may have
-     *  condition details that are slightly different from seller B's
-     *  shirt, because the listings have different primary categories.
+     * This container shows the name and unique ID of the item's condition. This container will generally get returned unless the item is in an eBay category that does not require an item condition. Supported item conditions vary by category.
+     *  <br><br>
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  In all eBay marketplaces, Condition ID 2000 now maps to an item condition of 'Certified Refurbished', and not 'Manufacturer Refurbished'. To list an item as 'Certified Refurbished', a seller must be pre-qualified by eBay for this feature.
+     *  </span>
      *
      * @return \Nogrod\eBaySDK\Finding\ConditionType
      */
@@ -1534,25 +1506,11 @@ class SearchItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
     /**
      * Sets a new condition
      *
-     * Contains information about the item's condition.
-     *  Only returned when the seller listed the item with an
-     *  item condition.<br>
-     *  <br>
-     *  Different categories can support different
-     *  condition choices. If a listing is in two categories,
-     *  the seller uses condition details that are supported in
-     *  the primary category. Thus, even if two nearly identical
-     *  items are found in the same category search, they could support
-     *  different condition details if they have different
-     *  primary categories.
-     *  For example, suppose Seller A lists a concert T-shirt
-     *  in clothing, and also in music accessories as the
-     *  secondary category. Seller B lists an identical shirt in
-     *  music accessories only.
-     *  If you search against the music accessories category,
-     *  you will find both items, but seller A's shirt may have
-     *  condition details that are slightly different from seller B's
-     *  shirt, because the listings have different primary categories.
+     * This container shows the name and unique ID of the item's condition. This container will generally get returned unless the item is in an eBay category that does not require an item condition. Supported item conditions vary by category.
+     *  <br><br>
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  In all eBay marketplaces, Condition ID 2000 now maps to an item condition of 'Certified Refurbished', and not 'Manufacturer Refurbished'. To list an item as 'Certified Refurbished', a seller must be pre-qualified by eBay for this feature.
+     *  </span>
      *
      * @param \Nogrod\eBaySDK\Finding\ConditionType $condition
      * @return self

@@ -53,6 +53,9 @@ class RespondToFeedbackRequestType extends AbstractRequestType
      *  <b>RespondToFeedback</b> call. Unless the specific Feedback record is
      *  identified by a <b>FeedbackID</b> or an <b>OrderLineItemID</b> in the request, an
      *  <b>ItemID</b>/<b>TransactionID</b> pair is required.
+     *  <br>
+     *  <br>
+     *  The <b>TransactionID</b> value for auction listings is always <code>0</code> since there can be only one winning bidder/one sale for an auction listing.
      *
      * @var string $transactionID
      */
@@ -195,6 +198,9 @@ class RespondToFeedbackRequestType extends AbstractRequestType
      *  <b>RespondToFeedback</b> call. Unless the specific Feedback record is
      *  identified by a <b>FeedbackID</b> or an <b>OrderLineItemID</b> in the request, an
      *  <b>ItemID</b>/<b>TransactionID</b> pair is required.
+     *  <br>
+     *  <br>
+     *  The <b>TransactionID</b> value for auction listings is always <code>0</code> since there can be only one winning bidder/one sale for an auction listing.
      *
      * @return string
      */
@@ -212,6 +218,9 @@ class RespondToFeedbackRequestType extends AbstractRequestType
      *  <b>RespondToFeedback</b> call. Unless the specific Feedback record is
      *  identified by a <b>FeedbackID</b> or an <b>OrderLineItemID</b> in the request, an
      *  <b>ItemID</b>/<b>TransactionID</b> pair is required.
+     *  <br>
+     *  <br>
+     *  The <b>TransactionID</b> value for auction listings is always <code>0</code> since there can be only one winning bidder/one sale for an auction listing.
      *
      * @param string $transactionID
      * @return self

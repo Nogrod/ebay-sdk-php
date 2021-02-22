@@ -7,14 +7,14 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing AddItemsRequestType
  *
- * Defines from one to five items and lists them on a specified eBay site.
+ * Base request type for the <b>AddItems</b> call, which is used to create one to five fixed-price, auction, or classified ad listings. The <b>AddItems</b> call does not support multiple-variation listings, so multiple-variation listings cannot be created with this call.
  * XSD Type: AddItemsRequestType
  */
 class AddItemsRequestType extends AbstractRequestType
 {
 
     /**
-     * Defines a single item to be listed on eBay. This container is similar to an <b>AddItem</b> request. Up to five of these containers can be included in one <b>AddItems</b> request.
+     * An <b>AddItemRequestContainer</b> container is required for each listing that will be created with the <b>AddItems</b> request. Up to five of these containers can be included in one <b>AddItems</b> request.
      *
      * @var \Nogrod\eBaySDK\Trading\AddItemRequestContainerType[] $addItemRequestContainer
      */
@@ -25,7 +25,7 @@ class AddItemsRequestType extends AbstractRequestType
     /**
      * Adds as addItemRequestContainer
      *
-     * Defines a single item to be listed on eBay. This container is similar to an <b>AddItem</b> request. Up to five of these containers can be included in one <b>AddItems</b> request.
+     * An <b>AddItemRequestContainer</b> container is required for each listing that will be created with the <b>AddItems</b> request. Up to five of these containers can be included in one <b>AddItems</b> request.
      *
      * @return self
      * @param \Nogrod\eBaySDK\Trading\AddItemRequestContainerType $addItemRequestContainer
@@ -39,7 +39,7 @@ class AddItemsRequestType extends AbstractRequestType
     /**
      * isset addItemRequestContainer
      *
-     * Defines a single item to be listed on eBay. This container is similar to an <b>AddItem</b> request. Up to five of these containers can be included in one <b>AddItems</b> request.
+     * An <b>AddItemRequestContainer</b> container is required for each listing that will be created with the <b>AddItems</b> request. Up to five of these containers can be included in one <b>AddItems</b> request.
      *
      * @param int|string $index
      * @return bool
@@ -52,7 +52,7 @@ class AddItemsRequestType extends AbstractRequestType
     /**
      * unset addItemRequestContainer
      *
-     * Defines a single item to be listed on eBay. This container is similar to an <b>AddItem</b> request. Up to five of these containers can be included in one <b>AddItems</b> request.
+     * An <b>AddItemRequestContainer</b> container is required for each listing that will be created with the <b>AddItems</b> request. Up to five of these containers can be included in one <b>AddItems</b> request.
      *
      * @param int|string $index
      * @return void
@@ -65,7 +65,7 @@ class AddItemsRequestType extends AbstractRequestType
     /**
      * Gets as addItemRequestContainer
      *
-     * Defines a single item to be listed on eBay. This container is similar to an <b>AddItem</b> request. Up to five of these containers can be included in one <b>AddItems</b> request.
+     * An <b>AddItemRequestContainer</b> container is required for each listing that will be created with the <b>AddItems</b> request. Up to five of these containers can be included in one <b>AddItems</b> request.
      *
      * @return \Nogrod\eBaySDK\Trading\AddItemRequestContainerType[]
      */
@@ -77,7 +77,7 @@ class AddItemsRequestType extends AbstractRequestType
     /**
      * Sets a new addItemRequestContainer
      *
-     * Defines a single item to be listed on eBay. This container is similar to an <b>AddItem</b> request. Up to five of these containers can be included in one <b>AddItems</b> request.
+     * An <b>AddItemRequestContainer</b> container is required for each listing that will be created with the <b>AddItems</b> request. Up to five of these containers can be included in one <b>AddItems</b> request.
      *
      * @param \Nogrod\eBaySDK\Trading\AddItemRequestContainerType[] $addItemRequestContainer
      * @return self

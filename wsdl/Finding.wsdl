@@ -3508,8 +3508,54 @@
 					<xs:element name="name" type="tns:ItemFilterType" maxOccurs="1" minOccurs="1">
 						<xs:annotation>
 							<xs:documentation>
-								Specify the name of the item filter you want to use. The filter type specified in the &lt;b&gt;itemFilter.name&lt;/b&gt; field must have a corresponding value. You can apply multiple &lt;b&gt;itemFilter&lt;/b&gt;
-								name/value pairs in a single request. See &lt;b&gt;ItemFilterType&lt;/b&gt; for more information on the available filters and the values supported/associated with each filter type.
+								Specify the name of the item filter you want to use. The itemFilter name
+								must have a corresponding value. You can apply multiple itemFilter
+								Name/Value pairs in a single request.
+								&lt;br&gt;&lt;br&gt;
+								&lt;b&gt;Item Filter Names&lt;/b&gt;:
+								&lt;br&gt;&lt;br&gt;
+								&lt;ul&gt;
+								&lt;li&gt;AvailableTo&lt;/li&gt;
+								&lt;li&gt;BestOfferOnly&lt;/li&gt;
+								&lt;li&gt;CharityOnly&lt;/li&gt;
+								&lt;li&gt;Condition&lt;/li&gt;
+								&lt;li&gt;Currency&lt;/li&gt;
+								&lt;li&gt;EndTimeFrom&lt;/li&gt;
+								&lt;li&gt;EndTimeTo&lt;/li&gt;
+								&lt;li&gt;ExcludeAutoPay&lt;/li&gt;
+								&lt;li&gt;ExcludeCategory&lt;/li&gt;
+								&lt;li&gt;ExcludeSeller&lt;/li&gt;
+								&lt;li&gt;ExpeditedShippingType&lt;/li&gt;
+								&lt;li&gt;FeaturedOnly&lt;/li&gt;
+								&lt;li&gt;FeedbackScoreMax&lt;/li&gt;
+								&lt;li&gt;FeedbackScoreMin&lt;/li&gt;
+								&lt;li&gt;FreeShippingOnly&lt;/li&gt;
+								&lt;li&gt;GetItFastOnly&lt;/li&gt;
+								&lt;li&gt;HideDuplicateItems&lt;/li&gt;
+								&lt;li&gt;ListedIn&lt;/li&gt;
+								&lt;li&gt;ListingType&lt;/li&gt;
+								&lt;li&gt;LocalPickupOnly&lt;/li&gt;
+								&lt;li&gt;LocalSearchOnly&lt;/li&gt;
+								&lt;li&gt;LocatedIn&lt;/li&gt;
+								&lt;li&gt;LotsOnly&lt;/li&gt;
+								&lt;li&gt;MaxBids&lt;/li&gt;
+								&lt;li&gt;MaxDistance&lt;/li&gt;
+								&lt;li&gt;MaxHandlingTime&lt;/li&gt;
+								&lt;li&gt;MaxPrice&lt;/li&gt;
+								&lt;li&gt;MaxQuantity&lt;/li&gt;
+								&lt;li&gt;MinBids&lt;/li&gt;
+								&lt;li&gt;MinPrice&lt;/li&gt;
+								&lt;li&gt;MinQuantity&lt;/li&gt;
+								&lt;li&gt;ModTimeFrom&lt;/li&gt;
+								&lt;li&gt;PaymentMethod&lt;/li&gt;
+								&lt;li&gt;ReturnsAcceptedOnly&lt;/li&gt;
+								&lt;li&gt;Seller&lt;/li&gt;
+								&lt;li&gt;SellerBusinessType&lt;/li&gt;
+								&lt;li&gt;TopRatedSellerOnly&lt;/li&gt;
+								&lt;li&gt;ValueBoxInventory&lt;/li&gt;
+								&lt;li&gt;WorldOfGoodOnly&lt;/li&gt;
+								&lt;/ul&gt;
+
 							</xs:documentation>
 							<xs:appinfo>
 								<CallInfo>
@@ -3649,7 +3695,11 @@
 					<xs:element maxOccurs="1" minOccurs="1" name="condition" type="tns:Condition">
 					<xs:annotation>
 						<xs:documentation>
-							The ID and name of a condition that was found in the item results.
+							The name and unique ID of the item condition for which the count is being displayed.
+							&lt;br&gt;&lt;br&gt;
+								&lt;span class="tablenote"&gt;&lt;strong&gt;Note:&lt;/strong&gt;
+								In all eBay marketplaces, Condition ID 2000 now maps to an item condition of 'Certified Refurbished', and not 'Manufacturer Refurbished'. To list an item as 'Certified Refurbished', a seller must be pre-qualified by eBay for this feature.
+							&lt;/span&gt;
 						</xs:documentation>
 							<xs:appinfo>
 								<CallInfo>
@@ -4461,160 +4511,13 @@
 			<xs:enumeration value="Condition">
 						<xs:annotation>
 							<xs:documentation>
-								&lt;a name="Condition"&gt;&lt;/a&gt;
-								Limits items to those that have the matching item condition.
-								The order of the results depends on the sortOrder you specify
-								(not ordered by conditions).
+								This item condition filter allows a user to filter items based on item condition. Multiple item condition filters may be used. The &lt;code&gt;Condition&lt;/code&gt; enum value is specified in the &lt;b&gt;itemfilter.name&lt;/b&gt; field, and either the condition ID or the condition name can be specified in the &lt;b&gt;itemfilter.value&lt;/b&gt; field. The condition ID is actually recommended, because these identifiers are consistent across eBay categories, whereas condition names can vary slightly between eBay categories, such as 'New', 'New in Box', or 'New with Tags'.
 								&lt;br&gt;&lt;br&gt;
-								Mostly useful to filter items where the seller used one of
-								eBay's structured item condition formats (conditionId or
-								item specifics) to specify the item condition. If the
-								seller used item specifics, the condition is only returned
-								in conditionDisplayName.
-								As of July 2010, many categories require items to use
-								the condition ID format. Older GTC listings may continue to
-								use item specifics to specify condition until spring 2011.&lt;br&gt;
-								&lt;br&gt;
-								If you repeat condition values, the values are processed using
-								OR logic. For example:&lt;br&gt;
-								To precisely find only brand new and
-								manufacturer-refurbished items, pass the filter with values of
-								1000 and 2000 in the same request.&lt;br&gt;
-								To find all flavors of new items plus refurbished items (but not used items), pass the filter with values of
-								New, 2000, and 2500.&lt;br&gt;
-								To find a much broader set of new items, plus items with no
-								condition specified, pass the filter with values of
-								New and Unspecified.&lt;br&gt;
-								(The order of the values does not affect the results.
-								That is, passing New, 2000, and then 2500 gives the same
-								results as passing 2000, New, and then 2500.)
-								&lt;br&gt;
-								&lt;blockquote&gt;
-								&lt;p&gt;
-								&lt;b&gt;Allowed text values (&lt;a
-								class="defn_type" href="../types/simpleTypes.html#string"&gt;string&lt;/a&gt;):&lt;/b&gt;
-								&lt;br&gt;
-								These text values (except Unspecified) limit results to items
-								with the condition defined in conditionId or item specifics.
-								&lt;/p&gt;
-								&lt;dl&gt;
-								&lt;dt&gt;
-									New
-								&lt;/dt&gt;
-								&lt;dd&gt;
-									New (or the equivalent). Excludes items with used,
-									refurbished, for parts, or unspecified conditions.
-								&lt;/dd&gt;
-								&lt;dt&gt;
-									Used
-								&lt;/dt&gt;
-								&lt;dd&gt;
-									Used, refurbished, or for parts.
-									Excludes items with new or unspecified conditions.
-								&lt;/dd&gt;
-								&lt;dt&gt;
-									Unspecified
-								&lt;/dt&gt;
-								&lt;dd&gt;
-									The seller did not specify an item condition using one of
-									eBay's structured formats. That is, either the item has no
-									condition, or the seller only specified the condition in the
-									title or narrative description. (You can try including words
-									like "new" in your search keywords to reduce unspecified
-									results. In this case, if you're using findItemsAdvanced, you
-									can also try setting descriptionSearch to true to find items
-									with the condition value in the description.)
-									Excludes items that the seller listed as new, used, refurbished,
-									for parts, or the equivalent.
-								&lt;/dd&gt;
-								&lt;/dl&gt;
-								&lt;/p&gt;
-								&lt;p&gt;
-								&lt;b&gt;Allowed ID values (&lt;a
-								class="defn_type" href="../types/simpleTypes.html#string"&gt;string&lt;/a&gt;):&lt;/b&gt;
-								&lt;br&gt;
-								These IDs limit results to items with the condition defined in
-								conditionId.
+								See the &lt;a href="https://developer.ebay.com/Devzone/finding/CallRef/Enums/conditionIdList.html"&gt;Item Condition IDs and Names&lt;/a&gt; page to view a table that maps condition IDs to condition names.
 								&lt;br&gt;&lt;br&gt;
-								For details about the meaning of each condition, see
-								&lt;a href="../Enums/conditionIdList.html"&gt;Item Condition IDs and Names&lt;/a&gt;.
-								More importantly, always see the seller's listing for full
-								details and description of any imperfections before purchasing
-								an item.
-								&lt;/p&gt;
-								&lt;dl&gt;
-								&lt;dt&gt;
-									1000
-								&lt;/dt&gt;
-								&lt;dd&gt;
-									New
-								&lt;/dd&gt;
-								&lt;dt&gt;
-									1500
-								&lt;/dt&gt;
-								&lt;dd&gt;
-									New other (see details)
-								&lt;/dd&gt;
-								&lt;dt&gt;
-									1750
-								&lt;/dt&gt;
-								&lt;dd&gt;
-									New with defects
-								&lt;/dd&gt;
-								&lt;dt&gt;
-									2000
-								&lt;/dt&gt;
-								&lt;dd&gt;
-									Manufacturer refurbished
-								&lt;/dd&gt;
-								&lt;dt&gt;
-									2500
-								&lt;/dt&gt;
-								&lt;dd&gt;
-									Seller refurbished
-								&lt;/dd&gt;
-								&lt;dt&gt;
-									3000
-								&lt;/dt&gt;
-								&lt;dd&gt;
-									Used
-								&lt;/dd&gt;
-								&lt;dt&gt;
-									4000
-								&lt;/dt&gt;
-								&lt;dd&gt;
-									Very Good
-								&lt;/dd&gt;
-								&lt;dt&gt;
-									5000
-								&lt;/dt&gt;
-								&lt;dd&gt;
-									Good
-								&lt;/dd&gt;
-								&lt;dt&gt;
-									6000
-								&lt;/dt&gt;
-								&lt;dd&gt;
-									Acceptable
-								&lt;/dd&gt;
-								&lt;dt&gt;
-									7000
-								&lt;/dt&gt;
-								&lt;dd&gt;
-									For parts or not working
-								&lt;/dd&gt;
-								&lt;/dl&gt;
-								&lt;/blockquote&gt;
-								&lt;b&gt;Example:&lt;/b&gt;
-								&lt;br&gt;
-								&lt;pre&gt;
-								...&lt;br&gt;
-								&amp;itemFilter(0).name=Condition&lt;br&gt;
-								&amp;itemFilter(0).value(0)=New&lt;br&gt;
-								&amp;itemFilter(0).value(1)=2000&lt;br&gt;
-								&amp;itemFilter(0).value(2)=2500&lt;br&gt;
-								...
-								&lt;/pre&gt;
+								&lt;span class="tablenote"&gt;&lt;strong&gt;Note:&lt;/strong&gt;
+									In all eBay marketplaces, Condition ID 2000 now maps to an item condition of 'Certified Refurbished', and not 'Manufacturer Refurbished'. To list an item as 'Certified Refurbished', a seller must be pre-qualified by eBay for this feature.
+								&lt;/span&gt;
 							</xs:documentation>
 						</xs:annotation>
 					</xs:enumeration>
@@ -5774,19 +5677,18 @@
 							In item results, this is only returned when the seller listed the
 							item with a condition ID.
 							Some categories don't support or require condition IDs
-							(e.g., most Antiques categories don't). Also, until spring 2011,
-							some GTC listings may define the item condition in item specifics
-							instead, so no ID is returned.&lt;br&gt;
+							(e.g., most Antiques categories don't). &lt;br&gt;
 							&lt;br&gt;
-							If you specify Condition in itemFilter, the response returns items
-							with the correctly matching condition(s), even if conditionId is
-							not returned. For example, if you specify a value of "New"
-							or "1000" in the item filter, the response only returns new items.
+							If you Condition as a &lt;strong&gt;itemFilter&lt;/strong&gt;, the response returns items
+							with the correctly matching condition(s), even if &lt;strong&gt;conditionId&lt;/strong&gt; is
+							not returned.
+							&lt;br&gt;&lt;br&gt;
+								&lt;span class="tablenote"&gt;&lt;strong&gt;Note:&lt;/strong&gt;
+								In all eBay marketplaces, Condition ID 2000 now maps to an item condition of 'Certified Refurbished', and not 'Manufacturer Refurbished'. To list an item as 'Certified Refurbished', a seller must be pre-qualified by eBay for this feature.
+							&lt;/span&gt;
 						</xs:documentation>
 						<xs:appinfo>
 							<CallInfo>
-								<min>1000</min>
-								<max>7000</max>
 								<CallName>findItemsByCategory</CallName>
 								<CallName>findItemsAdvanced</CallName>
 								<CallName>findItemsByKeywords</CallName>
@@ -5817,8 +5719,7 @@
 							(not necessarily the site on which they're viewed).&lt;br&gt;
 							&lt;br&gt;
 							In item results, this is only returned when the seller specified the item's condition
-							using a structured format eBay recognizes (e.g., conditionId or an
-							older item specifics format).&lt;br&gt;
+							using a structured format eBay recognizes.&lt;br&gt;
 							&lt;br&gt;
 							&lt;b&gt;When conditionId is also present:&lt;/b&gt;
 							Most categories use the same display name for the same
@@ -5843,7 +5744,6 @@
 							(Condition IDs and names are dependent on the primary category.)
 							However, the histogram shows the condition ID and item counts.
 							This should only occur in a very small percent of results.
-							Histograms may support display names in these cases later in 2011.
 							As a workaround, you can fill in the missing name based on the
 							"Item Condition IDs and Names" (link below) or based on
 							the condition from an applicable item in the results.&lt;br&gt;
@@ -6295,6 +6195,23 @@
 							</xs:appinfo>
 						</xs:annotation>
 					</xs:element>
+					<xs:element minOccurs="0" name="watchCount" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>
+								The number of users that have added the item to their watch list.
+							</xs:documentation>
+							<xs:appinfo>
+								<Default/>
+								<Min>0</Min>
+								<Max/>
+								<CallInfo>
+									<CallName>findItemsAdvanced</CallName>
+									<Details>outputSelector: none</Details>
+									<Returned>Conditionally</Returned>
+								</CallInfo>
+							</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
 					<xs:sequence minOccurs="0">
 						<xs:element name="delimiter" type="xs:string"/>
 						<xs:any processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
@@ -6306,7 +6223,7 @@
 					<xs:documentation>
 						Container for the data of a single item that matches the search criteria.
 					</xs:documentation>
-
+"
 				<xs:appinfo><typeLibrarySource library="SearchTypeLibrary" namespace="http://www.ebay.com/marketplace/search/v1/services"></typeLibrarySource></xs:appinfo></xs:annotation>
 				<xs:sequence>
 					<xs:element name="itemId" type="xs:string" maxOccurs="1" minOccurs="1">
@@ -6971,25 +6888,11 @@
 					<xs:element name="condition" type="tns:Condition" maxOccurs="1" minOccurs="0">
 						<xs:annotation>
 							<xs:documentation>
-								Contains information about the item's condition.
-								Only returned when the seller listed the item with an
-								item condition.&lt;br&gt;
-								&lt;br&gt;
-								Different categories can support different
-								condition choices. If a listing is in two categories,
-								the seller uses condition details that are supported in
-								the primary category. Thus, even if two nearly identical
-								items are found in the same category search, they could support
-								different condition details if they have different
-								primary categories.
-								For example, suppose Seller A lists a concert T-shirt
-								in clothing, and also in music accessories as the
-								secondary category. Seller B lists an identical shirt in
-								music accessories only.
-								If you search against the music accessories category,
-								you will find both items, but seller A's shirt may have
-								condition details that are slightly different from seller B's
-								shirt, because the listings have different primary categories.
+								This container shows the name and unique ID of the item's condition. This container will generally get returned unless the item is in an eBay category that does not require an item condition. Supported item conditions vary by category.
+								&lt;br&gt;&lt;br&gt;
+								&lt;span class="tablenote"&gt;&lt;strong&gt;Note:&lt;/strong&gt;
+								In all eBay marketplaces, Condition ID 2000 now maps to an item condition of 'Certified Refurbished', and not 'Manufacturer Refurbished'. To list an item as 'Certified Refurbished', a seller must be pre-qualified by eBay for this feature.
+								&lt;/span&gt;
 							</xs:documentation>
 							<xs:appinfo>
 								<CallInfo>
@@ -7996,10 +7899,10 @@
 			<wsdl:input message="tns:findItemsIneBayStoresRequest"/>
 			<wsdl:output message="tns:findItemsIneBayStoresResponse"/>
 		</wsdl:operation>
-		<wsdl:operation name="findItemsByImage">
-			<wsdl:input message="tns:findItemsByImageRequest"/>
-			<wsdl:output message="tns:findItemsByImageResponse"/>
-		</wsdl:operation>
+    <wsdl:operation name="findItemsByImage">
+      <wsdl:input message="tns:findItemsByImageRequest"/>
+      <wsdl:output message="tns:findItemsByImageResponse"/>
+    </wsdl:operation>
 		<wsdl:operation name="getHistograms">
 			<wsdl:input message="tns:getHistogramsRequest"/>
 			<wsdl:output message="tns:getHistogramsResponse"/>
@@ -8008,10 +7911,10 @@
 			<wsdl:input message="tns:getVersionRequest"/>
 			<wsdl:output message="tns:getVersionResponse"/>
 		</wsdl:operation>
-		<wsdl:operation name="findItemsForFavoriteSearch">
-			<wsdl:input message="tns:findItemsForFavoriteSearchRequest"/>
-			<wsdl:output message="tns:findItemsForFavoriteSearchResponse"/>
-		</wsdl:operation>
+    <wsdl:operation name="findItemsForFavoriteSearch">
+      <wsdl:input message="tns:findItemsForFavoriteSearchRequest"/>
+      <wsdl:output message="tns:findItemsForFavoriteSearchResponse"/>
+    </wsdl:operation>
 		<wsdl:operation name="findCompletedItems">
 			<wsdl:input message="tns:findCompletedItemsRequest"/>
 			<wsdl:output message="tns:findCompletedItemsResponse"/>

@@ -7,7 +7,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  *
  * Specifies the type of image display used in a listing. Some options are
  *  only available if images are hosted through eBay Picture Services (EPS).
- *  Cannot be used with Listing Designer layouts (specified in Item.ListingDesigner).
  * XSD Type: PhotoDisplayCodeType
  */
 class PhotoDisplayCodeType

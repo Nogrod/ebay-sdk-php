@@ -41,8 +41,8 @@ class DisputeReasonCodeType
     /**
      * Constant for 'TransactionMutuallyCanceled' value.
      *
-     * With the mutual consent of the buyer, the seller is canceling the order line
-     * item.
+     * This value indicates that the dispute involves an order that is being cancelled
+     * by seller with mutual consent from the buyer.
      */
     public const VAL_TRANSACTION_MUTUALLY_CANCELED = 'TransactionMutuallyCanceled';
 

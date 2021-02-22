@@ -141,6 +141,9 @@ class GetItemRequestType extends AbstractRequestType
      *  <br><br>
      *  Specifying a <b>TransactionID</b> in the <b>GetItem</b> request allows you to retrieve
      *  a snapshot of the listing as it was when the order line item was created.
+     *  <br>
+     *  <br>
+     *  The <b>TransactionID</b> value for auction listings is always <code>0</code> since there can be only one winning bidder/one sale for an auction listing.
      *
      * @var string $transactionID
      */
@@ -585,6 +588,9 @@ class GetItemRequestType extends AbstractRequestType
      *  <br><br>
      *  Specifying a <b>TransactionID</b> in the <b>GetItem</b> request allows you to retrieve
      *  a snapshot of the listing as it was when the order line item was created.
+     *  <br>
+     *  <br>
+     *  The <b>TransactionID</b> value for auction listings is always <code>0</code> since there can be only one winning bidder/one sale for an auction listing.
      *
      * @return string
      */
@@ -610,6 +616,9 @@ class GetItemRequestType extends AbstractRequestType
      *  <br><br>
      *  Specifying a <b>TransactionID</b> in the <b>GetItem</b> request allows you to retrieve
      *  a snapshot of the listing as it was when the order line item was created.
+     *  <br>
+     *  <br>
+     *  The <b>TransactionID</b> value for auction listings is always <code>0</code> since there can be only one winning bidder/one sale for an auction listing.
      *
      * @param string $transactionID
      * @return self

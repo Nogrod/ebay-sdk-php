@@ -54,6 +54,9 @@ class GetItemTransactionsRequestType extends AbstractRequestType
      * Include a <b>TransactionID</b> field in the request if you want to retrieve the data for a specific order line item for the listing specified in the <b>ItemID</b> field. This field is really only applicable for a multiple-quantity or multiple-variation, fixed-price listing that may have multiple sales. An auction listing or a single-quantity, fixed-price listing will only result in one order line item, so this field is not needed in these two cases. If an <b>OrderLineItemID</b> value is used instead to identify an order line item, this field is ignored.
      *  <br><br>
      *  If this field is used, any specified date filter is ignored.
+     *  <br>
+     *  <br>
+     *  The <b>TransactionID</b> value for auction listings is always <code>0</code> since there can be only one winning bidder/one sale for an auction listing.
      *
      * @var string $transactionID
      */
@@ -68,7 +71,13 @@ class GetItemTransactionsRequestType extends AbstractRequestType
 
     /**
      * This field is included and set to <code>true</code> if the user wants to view the Final Value Fee (FVF) for all order line items in the response. The Final Value Fee is returned in the <b>Transaction.FinalValueFee</b> field. The Final Value Fee is assessed right after the creation of an order line item.
-     *  <br/><br/>
+     *  <br>
+     *  <br>
+     *  <span class="tablenote"><b>Note:</b>
+     *  The calculation of the Final Value Fee is changing for managed payments sellers, so the value returned in the <b>FinalValueFee</b> fields for each order line item in the response should only be considered as estimated values. The <b>getTransactions</b> method of the <b>Finances API</b> can be used to get accurate Final Value Fee values.
+     *  <br><br>
+     *  See the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/selling-fees?id=4822" target="_blank">Selling fees for managed payments sellers</a> help page for more information about how Final Value Fees are changing for managed payments sellers.
+     *  </span>
      *
      * @var bool $includeFinalValueFee
      */
@@ -218,6 +227,9 @@ class GetItemTransactionsRequestType extends AbstractRequestType
      * Include a <b>TransactionID</b> field in the request if you want to retrieve the data for a specific order line item for the listing specified in the <b>ItemID</b> field. This field is really only applicable for a multiple-quantity or multiple-variation, fixed-price listing that may have multiple sales. An auction listing or a single-quantity, fixed-price listing will only result in one order line item, so this field is not needed in these two cases. If an <b>OrderLineItemID</b> value is used instead to identify an order line item, this field is ignored.
      *  <br><br>
      *  If this field is used, any specified date filter is ignored.
+     *  <br>
+     *  <br>
+     *  The <b>TransactionID</b> value for auction listings is always <code>0</code> since there can be only one winning bidder/one sale for an auction listing.
      *
      * @return string
      */
@@ -232,6 +244,9 @@ class GetItemTransactionsRequestType extends AbstractRequestType
      * Include a <b>TransactionID</b> field in the request if you want to retrieve the data for a specific order line item for the listing specified in the <b>ItemID</b> field. This field is really only applicable for a multiple-quantity or multiple-variation, fixed-price listing that may have multiple sales. An auction listing or a single-quantity, fixed-price listing will only result in one order line item, so this field is not needed in these two cases. If an <b>OrderLineItemID</b> value is used instead to identify an order line item, this field is ignored.
      *  <br><br>
      *  If this field is used, any specified date filter is ignored.
+     *  <br>
+     *  <br>
+     *  The <b>TransactionID</b> value for auction listings is always <code>0</code> since there can be only one winning bidder/one sale for an auction listing.
      *
      * @param string $transactionID
      * @return self
@@ -272,7 +287,13 @@ class GetItemTransactionsRequestType extends AbstractRequestType
      * Gets as includeFinalValueFee
      *
      * This field is included and set to <code>true</code> if the user wants to view the Final Value Fee (FVF) for all order line items in the response. The Final Value Fee is returned in the <b>Transaction.FinalValueFee</b> field. The Final Value Fee is assessed right after the creation of an order line item.
-     *  <br/><br/>
+     *  <br>
+     *  <br>
+     *  <span class="tablenote"><b>Note:</b>
+     *  The calculation of the Final Value Fee is changing for managed payments sellers, so the value returned in the <b>FinalValueFee</b> fields for each order line item in the response should only be considered as estimated values. The <b>getTransactions</b> method of the <b>Finances API</b> can be used to get accurate Final Value Fee values.
+     *  <br><br>
+     *  See the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/selling-fees?id=4822" target="_blank">Selling fees for managed payments sellers</a> help page for more information about how Final Value Fees are changing for managed payments sellers.
+     *  </span>
      *
      * @return bool
      */
@@ -285,7 +306,13 @@ class GetItemTransactionsRequestType extends AbstractRequestType
      * Sets a new includeFinalValueFee
      *
      * This field is included and set to <code>true</code> if the user wants to view the Final Value Fee (FVF) for all order line items in the response. The Final Value Fee is returned in the <b>Transaction.FinalValueFee</b> field. The Final Value Fee is assessed right after the creation of an order line item.
-     *  <br/><br/>
+     *  <br>
+     *  <br>
+     *  <span class="tablenote"><b>Note:</b>
+     *  The calculation of the Final Value Fee is changing for managed payments sellers, so the value returned in the <b>FinalValueFee</b> fields for each order line item in the response should only be considered as estimated values. The <b>getTransactions</b> method of the <b>Finances API</b> can be used to get accurate Final Value Fee values.
+     *  <br><br>
+     *  See the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/selling-fees?id=4822" target="_blank">Selling fees for managed payments sellers</a> help page for more information about how Final Value Fees are changing for managed payments sellers.
+     *  </span>
      *
      * @param bool $includeFinalValueFee
      * @return self

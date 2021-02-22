@@ -7,7 +7,9 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing AddItemResponseType
  *
- * The base response of the <b>AddItem</b> call. The response will include the Item ID of the newly created listing, SKU (if any), listing recommendations (if applicable), the estimated fees for the new listing (except the Final Value Fee, which isn't calculated until the item has sold), the start and end times of the listing, and other details.
+ * If the new listing is created successfully, the <b>AddItem</b> response includes the unique identifier of the new listing (<b>ItemID</b>) and the estimated values of any fees (such as insertion fee and any other listing upgrade fees) generated as a result of the listing being created.
+ *  <br/><br/>
+ *  Other response fields include the the start and end times of the listing, and any other applicable fields such as the product SKU (if defined by seller), listing recommendations (if applicable), or other details.
  * XSD Type: AddItemResponseType
  */
 class AddItemResponseType extends AbstractResponseType
@@ -28,19 +30,25 @@ class AddItemResponseType extends AbstractResponseType
     private $startTime = null;
 
     /**
-     * Date and time when the new listing is scheduled to end based on the start time and the listing duration value that was set in the <b>ListingDuration</b> field at listing time. If the value of <b>ListingDuration</b> was set to <code>GTC</code> (Good 'Til Cancelled) this value will be set 30 days ahead of the start time, although this value will be updated if the GTC listing is still alive and automatically renewed 30 days after start time. Note that GTC is not an option with auction listings.
+     * Date and time when the new listing is scheduled to end based on the start time and the listing duration value that was set in the <b>ListingDuration</b> field at listing time. If the value of <b>ListingDuration</b> was set to <code>GTC</code> (Good 'Til Cancelled) this value will be set one month ahead of the start time, and this value will continue to be updated one month ahead each time the GTC listing needs to be renewed. Fixed-price listings get renewed automatically as long as there is still a quantity of <code>1</code> or above, or even if the quantity is <code>0</code>, but the 'out-of-stock control' feature is enabled.
      *  <br><br>
-     *  <span class="tablenote"><b>Note: </b>
-     *  As of July 1, 2019, the Good 'Til Cancelled renewal schedule has been modified from every 30 days to once per calendar month. For example, if a GTC listing is created July 5, the next monthly renewal date will be August 5. If a GTC listing is created on the 31st of the month, but the following month only has 30 days, the renewal will happen on the 30th in the following month. Finally, if a GTC listing is created on January 29-31, the renewal will happen on February 28th (or 29th during a 'Leap Year'). See the
-     *  <a href="https://pages.ebay.com/seller-center/seller-updates/2019-spring/marketplace-updates.html#good-til-cancelled" target="_blank">Good 'Til Cancelled listings update</a> in the <b>Spring 2019 Seller Updates</b> for more information about this change.
-     *  </span>
+     *  Note that <code>GTC</code> is not a supported listing duration for auction listings, but is the only supported listing duration for fixed-price listings except for a few motor vehicle categories on eBay Motors US, eBay UK, and eBay Italy.
+     *  <br><br>
+     *  <span class="tablenote"><b>Note: </b> As of July 1, 2019, the Good 'Til Cancelled renewal schedule has been modified from every 30 days to once per calendar month. For example, if a GTC listing is created July 5, the next monthly renewal date will be August 5. If a GTC listing is created on the 31st of the month, but the following month only has 30 days, the renewal will happen on the 30th in the following month. Finally, if a GTC listing is created on January 29-31, the renewal will happen on February 28th (or 29th during a 'Leap Year'). See the <a href="https://pages.ebay.com/seller-center/seller-updates/2019-spring/marketplace-updates.html#good-til-cancelled" target="_blank">Good 'Til Cancelled listings update</a> in the <b>Spring 2019 Seller Updates</b> for more information about this change. </span>
      *
      * @var \DateTime $endTime
      */
     private $endTime = null;
 
     /**
-     * This container is an array of fees associated with the creation of the listing. The fees do not include the Final Value Fee (FVF), which cannot be determined until an item is sold.
+     * This container is an array of fees associated with the creation of the listing. The fees in this container will not include any fees that are based on the purchase price (such as Final Value Fee) and only come into play when the listing has a sale.
+     *  <br>
+     *  <br>
+     *  All listing fee types are returned, even if those fees are not applicable for the new listing and are '0.0'.
+     *  <br>
+     *  <br>
+     *  <span class="tablenote"><b>Note:</b> The currency used for all fees returned under the <b>Fees</b> container reflects the currency used for the listing site, and not necessarily in the seller's default/home currency. For example, if a Canadian seller is using the <b>AddItem</b> call to list an item on the eBay US site, the currency type shown for each fee will be <code>USD</code> and not <code>CAD</code>.
+     *  </span>
      *
      * @var \Nogrod\eBaySDK\MerchantData\FeeType[] $fees
      */
@@ -146,12 +154,11 @@ class AddItemResponseType extends AbstractResponseType
     /**
      * Gets as endTime
      *
-     * Date and time when the new listing is scheduled to end based on the start time and the listing duration value that was set in the <b>ListingDuration</b> field at listing time. If the value of <b>ListingDuration</b> was set to <code>GTC</code> (Good 'Til Cancelled) this value will be set 30 days ahead of the start time, although this value will be updated if the GTC listing is still alive and automatically renewed 30 days after start time. Note that GTC is not an option with auction listings.
+     * Date and time when the new listing is scheduled to end based on the start time and the listing duration value that was set in the <b>ListingDuration</b> field at listing time. If the value of <b>ListingDuration</b> was set to <code>GTC</code> (Good 'Til Cancelled) this value will be set one month ahead of the start time, and this value will continue to be updated one month ahead each time the GTC listing needs to be renewed. Fixed-price listings get renewed automatically as long as there is still a quantity of <code>1</code> or above, or even if the quantity is <code>0</code>, but the 'out-of-stock control' feature is enabled.
      *  <br><br>
-     *  <span class="tablenote"><b>Note: </b>
-     *  As of July 1, 2019, the Good 'Til Cancelled renewal schedule has been modified from every 30 days to once per calendar month. For example, if a GTC listing is created July 5, the next monthly renewal date will be August 5. If a GTC listing is created on the 31st of the month, but the following month only has 30 days, the renewal will happen on the 30th in the following month. Finally, if a GTC listing is created on January 29-31, the renewal will happen on February 28th (or 29th during a 'Leap Year'). See the
-     *  <a href="https://pages.ebay.com/seller-center/seller-updates/2019-spring/marketplace-updates.html#good-til-cancelled" target="_blank">Good 'Til Cancelled listings update</a> in the <b>Spring 2019 Seller Updates</b> for more information about this change.
-     *  </span>
+     *  Note that <code>GTC</code> is not a supported listing duration for auction listings, but is the only supported listing duration for fixed-price listings except for a few motor vehicle categories on eBay Motors US, eBay UK, and eBay Italy.
+     *  <br><br>
+     *  <span class="tablenote"><b>Note: </b> As of July 1, 2019, the Good 'Til Cancelled renewal schedule has been modified from every 30 days to once per calendar month. For example, if a GTC listing is created July 5, the next monthly renewal date will be August 5. If a GTC listing is created on the 31st of the month, but the following month only has 30 days, the renewal will happen on the 30th in the following month. Finally, if a GTC listing is created on January 29-31, the renewal will happen on February 28th (or 29th during a 'Leap Year'). See the <a href="https://pages.ebay.com/seller-center/seller-updates/2019-spring/marketplace-updates.html#good-til-cancelled" target="_blank">Good 'Til Cancelled listings update</a> in the <b>Spring 2019 Seller Updates</b> for more information about this change. </span>
      *
      * @return \DateTime
      */
@@ -163,12 +170,11 @@ class AddItemResponseType extends AbstractResponseType
     /**
      * Sets a new endTime
      *
-     * Date and time when the new listing is scheduled to end based on the start time and the listing duration value that was set in the <b>ListingDuration</b> field at listing time. If the value of <b>ListingDuration</b> was set to <code>GTC</code> (Good 'Til Cancelled) this value will be set 30 days ahead of the start time, although this value will be updated if the GTC listing is still alive and automatically renewed 30 days after start time. Note that GTC is not an option with auction listings.
+     * Date and time when the new listing is scheduled to end based on the start time and the listing duration value that was set in the <b>ListingDuration</b> field at listing time. If the value of <b>ListingDuration</b> was set to <code>GTC</code> (Good 'Til Cancelled) this value will be set one month ahead of the start time, and this value will continue to be updated one month ahead each time the GTC listing needs to be renewed. Fixed-price listings get renewed automatically as long as there is still a quantity of <code>1</code> or above, or even if the quantity is <code>0</code>, but the 'out-of-stock control' feature is enabled.
      *  <br><br>
-     *  <span class="tablenote"><b>Note: </b>
-     *  As of July 1, 2019, the Good 'Til Cancelled renewal schedule has been modified from every 30 days to once per calendar month. For example, if a GTC listing is created July 5, the next monthly renewal date will be August 5. If a GTC listing is created on the 31st of the month, but the following month only has 30 days, the renewal will happen on the 30th in the following month. Finally, if a GTC listing is created on January 29-31, the renewal will happen on February 28th (or 29th during a 'Leap Year'). See the
-     *  <a href="https://pages.ebay.com/seller-center/seller-updates/2019-spring/marketplace-updates.html#good-til-cancelled" target="_blank">Good 'Til Cancelled listings update</a> in the <b>Spring 2019 Seller Updates</b> for more information about this change.
-     *  </span>
+     *  Note that <code>GTC</code> is not a supported listing duration for auction listings, but is the only supported listing duration for fixed-price listings except for a few motor vehicle categories on eBay Motors US, eBay UK, and eBay Italy.
+     *  <br><br>
+     *  <span class="tablenote"><b>Note: </b> As of July 1, 2019, the Good 'Til Cancelled renewal schedule has been modified from every 30 days to once per calendar month. For example, if a GTC listing is created July 5, the next monthly renewal date will be August 5. If a GTC listing is created on the 31st of the month, but the following month only has 30 days, the renewal will happen on the 30th in the following month. Finally, if a GTC listing is created on January 29-31, the renewal will happen on February 28th (or 29th during a 'Leap Year'). See the <a href="https://pages.ebay.com/seller-center/seller-updates/2019-spring/marketplace-updates.html#good-til-cancelled" target="_blank">Good 'Til Cancelled listings update</a> in the <b>Spring 2019 Seller Updates</b> for more information about this change. </span>
      *
      * @param \DateTime $endTime
      * @return self
@@ -182,7 +188,14 @@ class AddItemResponseType extends AbstractResponseType
     /**
      * Adds as fee
      *
-     * This container is an array of fees associated with the creation of the listing. The fees do not include the Final Value Fee (FVF), which cannot be determined until an item is sold.
+     * This container is an array of fees associated with the creation of the listing. The fees in this container will not include any fees that are based on the purchase price (such as Final Value Fee) and only come into play when the listing has a sale.
+     *  <br>
+     *  <br>
+     *  All listing fee types are returned, even if those fees are not applicable for the new listing and are '0.0'.
+     *  <br>
+     *  <br>
+     *  <span class="tablenote"><b>Note:</b> The currency used for all fees returned under the <b>Fees</b> container reflects the currency used for the listing site, and not necessarily in the seller's default/home currency. For example, if a Canadian seller is using the <b>AddItem</b> call to list an item on the eBay US site, the currency type shown for each fee will be <code>USD</code> and not <code>CAD</code>.
+     *  </span>
      *
      * @return self
      * @param \Nogrod\eBaySDK\MerchantData\FeeType $fee
@@ -196,7 +209,14 @@ class AddItemResponseType extends AbstractResponseType
     /**
      * isset fees
      *
-     * This container is an array of fees associated with the creation of the listing. The fees do not include the Final Value Fee (FVF), which cannot be determined until an item is sold.
+     * This container is an array of fees associated with the creation of the listing. The fees in this container will not include any fees that are based on the purchase price (such as Final Value Fee) and only come into play when the listing has a sale.
+     *  <br>
+     *  <br>
+     *  All listing fee types are returned, even if those fees are not applicable for the new listing and are '0.0'.
+     *  <br>
+     *  <br>
+     *  <span class="tablenote"><b>Note:</b> The currency used for all fees returned under the <b>Fees</b> container reflects the currency used for the listing site, and not necessarily in the seller's default/home currency. For example, if a Canadian seller is using the <b>AddItem</b> call to list an item on the eBay US site, the currency type shown for each fee will be <code>USD</code> and not <code>CAD</code>.
+     *  </span>
      *
      * @param int|string $index
      * @return bool
@@ -209,7 +229,14 @@ class AddItemResponseType extends AbstractResponseType
     /**
      * unset fees
      *
-     * This container is an array of fees associated with the creation of the listing. The fees do not include the Final Value Fee (FVF), which cannot be determined until an item is sold.
+     * This container is an array of fees associated with the creation of the listing. The fees in this container will not include any fees that are based on the purchase price (such as Final Value Fee) and only come into play when the listing has a sale.
+     *  <br>
+     *  <br>
+     *  All listing fee types are returned, even if those fees are not applicable for the new listing and are '0.0'.
+     *  <br>
+     *  <br>
+     *  <span class="tablenote"><b>Note:</b> The currency used for all fees returned under the <b>Fees</b> container reflects the currency used for the listing site, and not necessarily in the seller's default/home currency. For example, if a Canadian seller is using the <b>AddItem</b> call to list an item on the eBay US site, the currency type shown for each fee will be <code>USD</code> and not <code>CAD</code>.
+     *  </span>
      *
      * @param int|string $index
      * @return void
@@ -222,7 +249,14 @@ class AddItemResponseType extends AbstractResponseType
     /**
      * Gets as fees
      *
-     * This container is an array of fees associated with the creation of the listing. The fees do not include the Final Value Fee (FVF), which cannot be determined until an item is sold.
+     * This container is an array of fees associated with the creation of the listing. The fees in this container will not include any fees that are based on the purchase price (such as Final Value Fee) and only come into play when the listing has a sale.
+     *  <br>
+     *  <br>
+     *  All listing fee types are returned, even if those fees are not applicable for the new listing and are '0.0'.
+     *  <br>
+     *  <br>
+     *  <span class="tablenote"><b>Note:</b> The currency used for all fees returned under the <b>Fees</b> container reflects the currency used for the listing site, and not necessarily in the seller's default/home currency. For example, if a Canadian seller is using the <b>AddItem</b> call to list an item on the eBay US site, the currency type shown for each fee will be <code>USD</code> and not <code>CAD</code>.
+     *  </span>
      *
      * @return \Nogrod\eBaySDK\MerchantData\FeeType[]
      */
@@ -234,7 +268,14 @@ class AddItemResponseType extends AbstractResponseType
     /**
      * Sets a new fees
      *
-     * This container is an array of fees associated with the creation of the listing. The fees do not include the Final Value Fee (FVF), which cannot be determined until an item is sold.
+     * This container is an array of fees associated with the creation of the listing. The fees in this container will not include any fees that are based on the purchase price (such as Final Value Fee) and only come into play when the listing has a sale.
+     *  <br>
+     *  <br>
+     *  All listing fee types are returned, even if those fees are not applicable for the new listing and are '0.0'.
+     *  <br>
+     *  <br>
+     *  <span class="tablenote"><b>Note:</b> The currency used for all fees returned under the <b>Fees</b> container reflects the currency used for the listing site, and not necessarily in the seller's default/home currency. For example, if a Canadian seller is using the <b>AddItem</b> call to list an item on the eBay US site, the currency type shown for each fee will be <code>USD</code> and not <code>CAD</code>.
+     *  </span>
      *
      * @param \Nogrod\eBaySDK\MerchantData\FeeType[] $fees
      * @return self

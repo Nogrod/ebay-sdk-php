@@ -28,11 +28,10 @@ class DeliveryURLDetailType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
      *  This address applies to the DeliveryURLName
      *  within the same
      *  ApplicationDeliveryPreferences.DeliveryURLDetails container.
-     *  For delivery to a server, the URL
-     *  begins with http:// or https:// and must be well
+     *  For delivery to a server, the URL must
+     *  begin with "<code>https://</code>" and must be well
      *  formed. Use a URL that is functional at the time of the
-     *  call. For delivery to an email address, the URL begins
-     *  with mailto: and specifies a valid email address.
+     *  call.
      *
      * @var string $deliveryURL
      */
@@ -87,11 +86,10 @@ class DeliveryURLDetailType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
      *  This address applies to the DeliveryURLName
      *  within the same
      *  ApplicationDeliveryPreferences.DeliveryURLDetails container.
-     *  For delivery to a server, the URL
-     *  begins with http:// or https:// and must be well
+     *  For delivery to a server, the URL must
+     *  begin with "<code>https://</code>" and must be well
      *  formed. Use a URL that is functional at the time of the
-     *  call. For delivery to an email address, the URL begins
-     *  with mailto: and specifies a valid email address.
+     *  call.
      *
      * @return string
      */
@@ -107,11 +105,10 @@ class DeliveryURLDetailType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
      *  This address applies to the DeliveryURLName
      *  within the same
      *  ApplicationDeliveryPreferences.DeliveryURLDetails container.
-     *  For delivery to a server, the URL
-     *  begins with http:// or https:// and must be well
+     *  For delivery to a server, the URL must
+     *  begin with "<code>https://</code>" and must be well
      *  formed. Use a URL that is functional at the time of the
-     *  call. For delivery to an email address, the URL begins
-     *  with mailto: and specifies a valid email address.
+     *  call.
      *
      * @param string $deliveryURL
      * @return self

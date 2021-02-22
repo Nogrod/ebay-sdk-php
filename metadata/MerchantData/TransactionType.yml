@@ -838,3 +838,14 @@ Nogrod\eBaySDK\MerchantData\TransactionType:
                 getter: getEBayCollectAndRemitTaxes
                 setter: setEBayCollectAndRemitTaxes
             type: Nogrod\eBaySDK\MerchantData\TaxesType
+        program:
+            expose: true
+            access_type: public_method
+            serialized_name: Program
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getProgram
+                setter: setProgram
+            type: Nogrod\eBaySDK\MerchantData\TransactionProgramType

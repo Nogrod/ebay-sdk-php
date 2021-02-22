@@ -126,6 +126,12 @@ class ListingEnhancementsCodeType
      * applied to the listing. The Value Pack bundle includes the Gallery Plus feature,
      * a listing subtitle, and use of a Listing Designer template for a discounted
      * price. Support for this feature varies by site and category.
+     *  <br>
+     *  <br>
+     *  <span class="tablenote"><b>Note:</b> As of May 31, 2020, sellers are no longer
+     * able to use Listing Designer templates when they create or revise listings, so
+     * use of a Listing Designer template will no longer be a part of this
+     * bundle.</span>
      */
     public const VAL_VALUE_PACK_BUNDLE = 'ValuePackBundle';
 

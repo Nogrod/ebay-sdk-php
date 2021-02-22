@@ -50,6 +50,9 @@ class LineItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
 
     /**
      * Unique identifier for an eBay order line item (transaction). The <b>TransactionID</b> should match the <b>ItemID</b> specified in each <b>ItemTransactionID</b> node included in the request. Optionally, an <b>OrderLineItemID</b> value can substitute for the <b>ItemID</b>/<b>TransactionID</b> pair.
+     *  <br>
+     *  <br>
+     *  The <b>TransactionID</b> value for auction listings is always <code>0</code> since there can be only one winning bidder/one sale for an auction listing.
      *
      * @var string $transactionID
      */
@@ -177,6 +180,9 @@ class LineItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
      * Gets as transactionID
      *
      * Unique identifier for an eBay order line item (transaction). The <b>TransactionID</b> should match the <b>ItemID</b> specified in each <b>ItemTransactionID</b> node included in the request. Optionally, an <b>OrderLineItemID</b> value can substitute for the <b>ItemID</b>/<b>TransactionID</b> pair.
+     *  <br>
+     *  <br>
+     *  The <b>TransactionID</b> value for auction listings is always <code>0</code> since there can be only one winning bidder/one sale for an auction listing.
      *
      * @return string
      */
@@ -189,6 +195,9 @@ class LineItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
      * Sets a new transactionID
      *
      * Unique identifier for an eBay order line item (transaction). The <b>TransactionID</b> should match the <b>ItemID</b> specified in each <b>ItemTransactionID</b> node included in the request. Optionally, an <b>OrderLineItemID</b> value can substitute for the <b>ItemID</b>/<b>TransactionID</b> pair.
+     *  <br>
+     *  <br>
+     *  The <b>TransactionID</b> value for auction listings is always <code>0</code> since there can be only one winning bidder/one sale for an auction listing.
      *
      * @param string $transactionID
      * @return self

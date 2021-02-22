@@ -7,29 +7,31 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing AddDisputeRequestType
  *
- * Enables a seller to create an Unpaid Item case against a buyer, or to cancel a
- *  single line item order.
+ * Enables a seller to create an Unpaid Item case against a buyer.
  *  <br>
  *  <br>
  *  Although the seller is eligible to open up an Unpaid Item case two days after the buyer purchases the item or wins the item through an auction, it is recommended that the seller contact the buyer first to try and make it right before opening a case. The <a href="http://pages.ebay.com/help/sell/unpaid-items.html" target="_blank">Unpaid Items</a> help page talks more about how a seller should handle an unpaid item.
  *  <br>
  *  <br>
- *  To cancel a multiple line item order programmatically, the seller would have to use the <a href="https://developer.ebay.com/Devzone/post-order/post-order_v2_cancellation__post.html" target="_blank">POST /post-order/v2/cancellation</a> call of the <b>Post-Order API</b>.
+ *  <span class="tablenote"><strong>Note:</strong>
+ *  To create a cancellation request programmatically, the seller would have to use the <b>POST /post-order/v2/cancellation</b> method of the Post-Order API.
+ *  </span>
  * XSD Type: AddDisputeRequestType
  */
 class AddDisputeRequestType extends AbstractRequestType
 {
 
     /**
-     * This enumerated value gives the explanation of why the seller opened a case (or why seller canceled a single line item order). Not all values contained in <b>DisputeExplanationCodeType</b> are allowed in the <b>AddDispute</b> call, and the values that are allowed must match the <b>DisputeReason</b> value.
+     * This enumerated value gives the explanation of why the seller opened a case. Not all values contained in <b>DisputeExplanationCodeType</b> are allowed in the <b>AddDispute</b> call, and the values that are allowed must match the <b>DisputeReason</b> value.
+     *  <br>
      *
      * @var string $disputeExplanation
      */
     private $disputeExplanation = null;
 
     /**
-     * The enumeration value passed into this required field will depend on the action being taken. The seller will pass in <code>BuyerHasNotPaid</code> if the seller is creating an Unpaid Item case against the buyer, or
-     *  <code>TransactionMutuallyCanceled</code> if the seller is cancelling a single line item order at the request of the buyer, or if the seller has ran out of stock on the item or otherwise cannot fulfill the order.
+     * The enumeration value passed into this required field will depend on the action being taken. The seller will pass in <code>BuyerHasNotPaid</code> if the seller is creating an Unpaid Item case against the buyer, or if the seller has ran out of stock on the item, or otherwise cannot fulfill the order.
+     *  <br>
      *
      * @var string $disputeReason
      */
@@ -45,6 +47,9 @@ class AddDisputeRequestType extends AbstractRequestType
 
     /**
      * The unique identifier of a buyer's purchase. A <b>TransactionID</b> is created by eBay once a buyer purchases the item through a fixed-priced listing or by using the Buy It Now feature in an auction listing, or when an auction listing ends with a winning bidder. To identify a specific order line item, either an <b>ItemID</b>/<b>TransactionID</b> pair or an <b>OrderLineItemID</b> value must be passed in the request. So, unless <b>OrderLineItemID</b> is used, this field is required.
+     *  <br>
+     *  <br>
+     *  The <b>TransactionID</b> value for auction listings is always <code>0</code> since there can be only one winning bidder/one sale for an auction listing.
      *  <br>
      *
      * @var string $transactionID
@@ -62,7 +67,8 @@ class AddDisputeRequestType extends AbstractRequestType
     /**
      * Gets as disputeExplanation
      *
-     * This enumerated value gives the explanation of why the seller opened a case (or why seller canceled a single line item order). Not all values contained in <b>DisputeExplanationCodeType</b> are allowed in the <b>AddDispute</b> call, and the values that are allowed must match the <b>DisputeReason</b> value.
+     * This enumerated value gives the explanation of why the seller opened a case. Not all values contained in <b>DisputeExplanationCodeType</b> are allowed in the <b>AddDispute</b> call, and the values that are allowed must match the <b>DisputeReason</b> value.
+     *  <br>
      *
      * @return string
      */
@@ -74,7 +80,8 @@ class AddDisputeRequestType extends AbstractRequestType
     /**
      * Sets a new disputeExplanation
      *
-     * This enumerated value gives the explanation of why the seller opened a case (or why seller canceled a single line item order). Not all values contained in <b>DisputeExplanationCodeType</b> are allowed in the <b>AddDispute</b> call, and the values that are allowed must match the <b>DisputeReason</b> value.
+     * This enumerated value gives the explanation of why the seller opened a case. Not all values contained in <b>DisputeExplanationCodeType</b> are allowed in the <b>AddDispute</b> call, and the values that are allowed must match the <b>DisputeReason</b> value.
+     *  <br>
      *
      * @param string $disputeExplanation
      * @return self
@@ -88,8 +95,8 @@ class AddDisputeRequestType extends AbstractRequestType
     /**
      * Gets as disputeReason
      *
-     * The enumeration value passed into this required field will depend on the action being taken. The seller will pass in <code>BuyerHasNotPaid</code> if the seller is creating an Unpaid Item case against the buyer, or
-     *  <code>TransactionMutuallyCanceled</code> if the seller is cancelling a single line item order at the request of the buyer, or if the seller has ran out of stock on the item or otherwise cannot fulfill the order.
+     * The enumeration value passed into this required field will depend on the action being taken. The seller will pass in <code>BuyerHasNotPaid</code> if the seller is creating an Unpaid Item case against the buyer, or if the seller has ran out of stock on the item, or otherwise cannot fulfill the order.
+     *  <br>
      *
      * @return string
      */
@@ -101,8 +108,8 @@ class AddDisputeRequestType extends AbstractRequestType
     /**
      * Sets a new disputeReason
      *
-     * The enumeration value passed into this required field will depend on the action being taken. The seller will pass in <code>BuyerHasNotPaid</code> if the seller is creating an Unpaid Item case against the buyer, or
-     *  <code>TransactionMutuallyCanceled</code> if the seller is cancelling a single line item order at the request of the buyer, or if the seller has ran out of stock on the item or otherwise cannot fulfill the order.
+     * The enumeration value passed into this required field will depend on the action being taken. The seller will pass in <code>BuyerHasNotPaid</code> if the seller is creating an Unpaid Item case against the buyer, or if the seller has ran out of stock on the item, or otherwise cannot fulfill the order.
+     *  <br>
      *
      * @param string $disputeReason
      * @return self
@@ -146,6 +153,9 @@ class AddDisputeRequestType extends AbstractRequestType
      *
      * The unique identifier of a buyer's purchase. A <b>TransactionID</b> is created by eBay once a buyer purchases the item through a fixed-priced listing or by using the Buy It Now feature in an auction listing, or when an auction listing ends with a winning bidder. To identify a specific order line item, either an <b>ItemID</b>/<b>TransactionID</b> pair or an <b>OrderLineItemID</b> value must be passed in the request. So, unless <b>OrderLineItemID</b> is used, this field is required.
      *  <br>
+     *  <br>
+     *  The <b>TransactionID</b> value for auction listings is always <code>0</code> since there can be only one winning bidder/one sale for an auction listing.
+     *  <br>
      *
      * @return string
      */
@@ -158,6 +168,9 @@ class AddDisputeRequestType extends AbstractRequestType
      * Sets a new transactionID
      *
      * The unique identifier of a buyer's purchase. A <b>TransactionID</b> is created by eBay once a buyer purchases the item through a fixed-priced listing or by using the Buy It Now feature in an auction listing, or when an auction listing ends with a winning bidder. To identify a specific order line item, either an <b>ItemID</b>/<b>TransactionID</b> pair or an <b>OrderLineItemID</b> value must be passed in the request. So, unless <b>OrderLineItemID</b> is used, this field is required.
+     *  <br>
+     *  <br>
+     *  The <b>TransactionID</b> value for auction listings is always <code>0</code> since there can be only one winning bidder/one sale for an auction listing.
      *  <br>
      *
      * @param string $transactionID

@@ -8,7 +8,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Class representing ListingEnhancementDurationReferenceType
  *
  * <span class="tablenote"><b>Note:</b>
- *  This type is no longer applicable, as the Featured Gallery listing feature is being deprecated for all sites. If a seller attempts to add Featured Gallery as a listing enhancement, it is allowed, but a warning will be returned announcing the deprecation of the feature. Starting August 15, 2019, this feature cannot be added when creating a new listing or revising an existing listing. For existing listings that already have the feature, the seller will not be able to change the duration to <code>Lifetime</code>. On September 15, 2019, this feature will be wired off. If a seller revises an existing listing that had this feature set, the <b>GalleryType</b> value will automatically default to <code>Gallery</code>.
+ *  This type is no longer applicable, as the Featured Gallery listing feature is being deprecated for all sites. If a seller attempts to add Featured Gallery as a listing enhancement, it is allowed, but a warning will be returned announcing the deprecation of the feature. This feature was wired off in September 2019.
  *  </span>
  *  <br>
  *  Type used by the <b>GalleryFeaturedDurations</b> container that is returned at the <b>SiteDefaults</b> and <b>Category</b> level in a <b>GetCategoryFeatures</b> response. <b>GalleryFeaturedDurations</b> container consists of the supported time durations that a picture gallery can be featured
@@ -19,7 +19,7 @@ class ListingEnhancementDurationReferenceType implements \Sabre\Xml\XmlSerializa
 
     /**
      * <span class="tablenote"><b>Note:</b>
-     *  <b>Duration</b> fields are currently still being returned in <b>GetCategoryFeatures</b> response, but Featured Gallery listing feature is being deprecated for all sites. If a seller attempts to add Featured Gallery as a listing enhancement, it is allowed, but a warning will be returned announcing the deprecation of the feature. Starting August 15, 2019, this feature cannot be added when creating a new listing or revising an existing listing. For existing listings that already have the feature, the seller will not be able to change the duration to <code>Lifetime</code>. On September 15, 2019, this feature will be wired off. If a seller revises an existing listing that had this feature set, the <b>GalleryType</b> value will automatically default to <code>Gallery</code>.
+     *  <b>Duration</b> fields are currently still being returned in <b>GetCategoryFeatures</b> response, but Featured Gallery listing feature is deprecated for all sites. If a seller attempts to add Featured Gallery as a listing enhancement, it is allowed, but a warning will be returned announcing the deprecation of the feature.
      *  </span>
      *  <br>
      *  Each returned <b>Duration</b> field indicates a supported time duration that a picture gallery can be featured.
@@ -35,7 +35,7 @@ class ListingEnhancementDurationReferenceType implements \Sabre\Xml\XmlSerializa
      * Adds as duration
      *
      * <span class="tablenote"><b>Note:</b>
-     *  <b>Duration</b> fields are currently still being returned in <b>GetCategoryFeatures</b> response, but Featured Gallery listing feature is being deprecated for all sites. If a seller attempts to add Featured Gallery as a listing enhancement, it is allowed, but a warning will be returned announcing the deprecation of the feature. Starting August 15, 2019, this feature cannot be added when creating a new listing or revising an existing listing. For existing listings that already have the feature, the seller will not be able to change the duration to <code>Lifetime</code>. On September 15, 2019, this feature will be wired off. If a seller revises an existing listing that had this feature set, the <b>GalleryType</b> value will automatically default to <code>Gallery</code>.
+     *  <b>Duration</b> fields are currently still being returned in <b>GetCategoryFeatures</b> response, but Featured Gallery listing feature is deprecated for all sites. If a seller attempts to add Featured Gallery as a listing enhancement, it is allowed, but a warning will be returned announcing the deprecation of the feature.
      *  </span>
      *  <br>
      *  Each returned <b>Duration</b> field indicates a supported time duration that a picture gallery can be featured.
@@ -54,7 +54,7 @@ class ListingEnhancementDurationReferenceType implements \Sabre\Xml\XmlSerializa
      * isset duration
      *
      * <span class="tablenote"><b>Note:</b>
-     *  <b>Duration</b> fields are currently still being returned in <b>GetCategoryFeatures</b> response, but Featured Gallery listing feature is being deprecated for all sites. If a seller attempts to add Featured Gallery as a listing enhancement, it is allowed, but a warning will be returned announcing the deprecation of the feature. Starting August 15, 2019, this feature cannot be added when creating a new listing or revising an existing listing. For existing listings that already have the feature, the seller will not be able to change the duration to <code>Lifetime</code>. On September 15, 2019, this feature will be wired off. If a seller revises an existing listing that had this feature set, the <b>GalleryType</b> value will automatically default to <code>Gallery</code>.
+     *  <b>Duration</b> fields are currently still being returned in <b>GetCategoryFeatures</b> response, but Featured Gallery listing feature is deprecated for all sites. If a seller attempts to add Featured Gallery as a listing enhancement, it is allowed, but a warning will be returned announcing the deprecation of the feature.
      *  </span>
      *  <br>
      *  Each returned <b>Duration</b> field indicates a supported time duration that a picture gallery can be featured.
@@ -72,7 +72,7 @@ class ListingEnhancementDurationReferenceType implements \Sabre\Xml\XmlSerializa
      * unset duration
      *
      * <span class="tablenote"><b>Note:</b>
-     *  <b>Duration</b> fields are currently still being returned in <b>GetCategoryFeatures</b> response, but Featured Gallery listing feature is being deprecated for all sites. If a seller attempts to add Featured Gallery as a listing enhancement, it is allowed, but a warning will be returned announcing the deprecation of the feature. Starting August 15, 2019, this feature cannot be added when creating a new listing or revising an existing listing. For existing listings that already have the feature, the seller will not be able to change the duration to <code>Lifetime</code>. On September 15, 2019, this feature will be wired off. If a seller revises an existing listing that had this feature set, the <b>GalleryType</b> value will automatically default to <code>Gallery</code>.
+     *  <b>Duration</b> fields are currently still being returned in <b>GetCategoryFeatures</b> response, but Featured Gallery listing feature is deprecated for all sites. If a seller attempts to add Featured Gallery as a listing enhancement, it is allowed, but a warning will be returned announcing the deprecation of the feature.
      *  </span>
      *  <br>
      *  Each returned <b>Duration</b> field indicates a supported time duration that a picture gallery can be featured.
@@ -90,7 +90,7 @@ class ListingEnhancementDurationReferenceType implements \Sabre\Xml\XmlSerializa
      * Gets as duration
      *
      * <span class="tablenote"><b>Note:</b>
-     *  <b>Duration</b> fields are currently still being returned in <b>GetCategoryFeatures</b> response, but Featured Gallery listing feature is being deprecated for all sites. If a seller attempts to add Featured Gallery as a listing enhancement, it is allowed, but a warning will be returned announcing the deprecation of the feature. Starting August 15, 2019, this feature cannot be added when creating a new listing or revising an existing listing. For existing listings that already have the feature, the seller will not be able to change the duration to <code>Lifetime</code>. On September 15, 2019, this feature will be wired off. If a seller revises an existing listing that had this feature set, the <b>GalleryType</b> value will automatically default to <code>Gallery</code>.
+     *  <b>Duration</b> fields are currently still being returned in <b>GetCategoryFeatures</b> response, but Featured Gallery listing feature is deprecated for all sites. If a seller attempts to add Featured Gallery as a listing enhancement, it is allowed, but a warning will be returned announcing the deprecation of the feature.
      *  </span>
      *  <br>
      *  Each returned <b>Duration</b> field indicates a supported time duration that a picture gallery can be featured.
@@ -107,7 +107,7 @@ class ListingEnhancementDurationReferenceType implements \Sabre\Xml\XmlSerializa
      * Sets a new duration
      *
      * <span class="tablenote"><b>Note:</b>
-     *  <b>Duration</b> fields are currently still being returned in <b>GetCategoryFeatures</b> response, but Featured Gallery listing feature is being deprecated for all sites. If a seller attempts to add Featured Gallery as a listing enhancement, it is allowed, but a warning will be returned announcing the deprecation of the feature. Starting August 15, 2019, this feature cannot be added when creating a new listing or revising an existing listing. For existing listings that already have the feature, the seller will not be able to change the duration to <code>Lifetime</code>. On September 15, 2019, this feature will be wired off. If a seller revises an existing listing that had this feature set, the <b>GalleryType</b> value will automatically default to <code>Gallery</code>.
+     *  <b>Duration</b> fields are currently still being returned in <b>GetCategoryFeatures</b> response, but Featured Gallery listing feature is deprecated for all sites. If a seller attempts to add Featured Gallery as a listing enhancement, it is allowed, but a warning will be returned announcing the deprecation of the feature.
      *  </span>
      *  <br>
      *  Each returned <b>Duration</b> field indicates a supported time duration that a picture gallery can be featured.

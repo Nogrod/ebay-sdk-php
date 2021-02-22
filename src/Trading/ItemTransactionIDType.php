@@ -27,6 +27,9 @@ class ItemTransactionIDType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
      *  node included in the request. Optionally, an <b>OrderLineItemID</b> or <b>SKU</b> value can
      *  substitute for the <b>ItemID</b>/<b>TransactionID</b> pair.
      *  <br>
+     *  <br>
+     *  The <b>TransactionID</b> value for auction listings is always <code>0</code> since there can be only one winning bidder/one sale for an auction listing.
+     *  <br>
      *
      * @var string $transactionID
      */
@@ -92,6 +95,9 @@ class ItemTransactionIDType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
      *  node included in the request. Optionally, an <b>OrderLineItemID</b> or <b>SKU</b> value can
      *  substitute for the <b>ItemID</b>/<b>TransactionID</b> pair.
      *  <br>
+     *  <br>
+     *  The <b>TransactionID</b> value for auction listings is always <code>0</code> since there can be only one winning bidder/one sale for an auction listing.
+     *  <br>
      *
      * @return string
      */
@@ -107,6 +113,9 @@ class ItemTransactionIDType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
      *  <b>TransactionID</b> should match the <b>ItemID</b> specified in each <b>ItemTransactionID</b>
      *  node included in the request. Optionally, an <b>OrderLineItemID</b> or <b>SKU</b> value can
      *  substitute for the <b>ItemID</b>/<b>TransactionID</b> pair.
+     *  <br>
+     *  <br>
+     *  The <b>TransactionID</b> value for auction listings is always <code>0</code> since there can be only one winning bidder/one sale for an auction listing.
      *  <br>
      *
      * @param string $transactionID

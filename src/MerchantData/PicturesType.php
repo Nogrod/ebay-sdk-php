@@ -23,6 +23,7 @@ class PicturesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
      *  <b>VariationSpecifics</b> container.
      *  <br><br>
      *  This field is required in each <b>Item.Variations.Pictures</b> container that is used.
+     *  <br>
      *
      * @var string $variationSpecificName
      */
@@ -68,6 +69,7 @@ class PicturesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
      *  <b>VariationSpecifics</b> container.
      *  <br><br>
      *  This field is required in each <b>Item.Variations.Pictures</b> container that is used.
+     *  <br>
      *
      * @return string
      */
@@ -87,6 +89,7 @@ class PicturesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
      *  <b>VariationSpecifics</b> container.
      *  <br><br>
      *  This field is required in each <b>Item.Variations.Pictures</b> container that is used.
+     *  <br>
      *
      * @param string $variationSpecificName
      * @return self

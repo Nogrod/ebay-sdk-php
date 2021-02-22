@@ -56,7 +56,7 @@ class AddSellingManagerTemplateResponseType extends AbstractResponseType
     private $sellingManagerProductDetails = null;
 
     /**
-     * This container consists of listing fees that can be expected to be assessed against an eBay listing created with Selling Manager template. Each <b>Fee</b> container will contain the name of the listing fee, the expected amount, and any eBay promotional discount that will be applied towards the expected fee. The Final Value Fee (FVF) will never be returned in this container, as this fee cannot be determined until an item is sold.
+     * This container is an array of fees associated with the creation of the listing. The fees in this container will not include any Final Value Fee, because this fee is based on the purchase price and only comes into play when the listing has a sale.
      *
      * @var \Nogrod\eBaySDK\Trading\FeeType[] $fees
      */
@@ -221,7 +221,7 @@ class AddSellingManagerTemplateResponseType extends AbstractResponseType
     /**
      * Adds as fee
      *
-     * This container consists of listing fees that can be expected to be assessed against an eBay listing created with Selling Manager template. Each <b>Fee</b> container will contain the name of the listing fee, the expected amount, and any eBay promotional discount that will be applied towards the expected fee. The Final Value Fee (FVF) will never be returned in this container, as this fee cannot be determined until an item is sold.
+     * This container is an array of fees associated with the creation of the listing. The fees in this container will not include any Final Value Fee, because this fee is based on the purchase price and only comes into play when the listing has a sale.
      *
      * @return self
      * @param \Nogrod\eBaySDK\Trading\FeeType $fee
@@ -235,7 +235,7 @@ class AddSellingManagerTemplateResponseType extends AbstractResponseType
     /**
      * isset fees
      *
-     * This container consists of listing fees that can be expected to be assessed against an eBay listing created with Selling Manager template. Each <b>Fee</b> container will contain the name of the listing fee, the expected amount, and any eBay promotional discount that will be applied towards the expected fee. The Final Value Fee (FVF) will never be returned in this container, as this fee cannot be determined until an item is sold.
+     * This container is an array of fees associated with the creation of the listing. The fees in this container will not include any Final Value Fee, because this fee is based on the purchase price and only comes into play when the listing has a sale.
      *
      * @param int|string $index
      * @return bool
@@ -248,7 +248,7 @@ class AddSellingManagerTemplateResponseType extends AbstractResponseType
     /**
      * unset fees
      *
-     * This container consists of listing fees that can be expected to be assessed against an eBay listing created with Selling Manager template. Each <b>Fee</b> container will contain the name of the listing fee, the expected amount, and any eBay promotional discount that will be applied towards the expected fee. The Final Value Fee (FVF) will never be returned in this container, as this fee cannot be determined until an item is sold.
+     * This container is an array of fees associated with the creation of the listing. The fees in this container will not include any Final Value Fee, because this fee is based on the purchase price and only comes into play when the listing has a sale.
      *
      * @param int|string $index
      * @return void
@@ -261,7 +261,7 @@ class AddSellingManagerTemplateResponseType extends AbstractResponseType
     /**
      * Gets as fees
      *
-     * This container consists of listing fees that can be expected to be assessed against an eBay listing created with Selling Manager template. Each <b>Fee</b> container will contain the name of the listing fee, the expected amount, and any eBay promotional discount that will be applied towards the expected fee. The Final Value Fee (FVF) will never be returned in this container, as this fee cannot be determined until an item is sold.
+     * This container is an array of fees associated with the creation of the listing. The fees in this container will not include any Final Value Fee, because this fee is based on the purchase price and only comes into play when the listing has a sale.
      *
      * @return \Nogrod\eBaySDK\Trading\FeeType[]
      */
@@ -273,7 +273,7 @@ class AddSellingManagerTemplateResponseType extends AbstractResponseType
     /**
      * Sets a new fees
      *
-     * This container consists of listing fees that can be expected to be assessed against an eBay listing created with Selling Manager template. Each <b>Fee</b> container will contain the name of the listing fee, the expected amount, and any eBay promotional discount that will be applied towards the expected fee. The Final Value Fee (FVF) will never be returned in this container, as this fee cannot be determined until an item is sold.
+     * This container is an array of fees associated with the creation of the listing. The fees in this container will not include any Final Value Fee, because this fee is based on the purchase price and only comes into play when the listing has a sale.
      *
      * @param \Nogrod\eBaySDK\Trading\FeeType[] $fees
      * @return self

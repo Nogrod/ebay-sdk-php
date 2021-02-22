@@ -102,6 +102,17 @@ Nogrod\eBaySDK\MerchantData\BulkDataExchangeResponsesType:
                 entry_name: OrderAckResponse
                 namespace: 'urn:ebay:apis:eBLBaseComponents'
             type: array<Nogrod\eBaySDK\MerchantData\OrderAckResponseType>
+        orderReport:
+            expose: true
+            access_type: public_method
+            serialized_name: OrderReport
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getOrderReport
+                setter: setOrderReport
+            type: Nogrod\eBaySDK\MerchantData\OrderReportResponseType
         relistFixedPriceItemResponse:
             expose: true
             access_type: public_method
@@ -192,17 +203,6 @@ Nogrod\eBaySDK\MerchantData\BulkDataExchangeResponsesType:
                 entry_name: SetShipmentTrackingInfoResponse
                 namespace: 'urn:ebay:apis:eBLBaseComponents'
             type: array<Nogrod\eBaySDK\MerchantData\SetShipmentTrackingInfoResponseType>
-        soldReport:
-            expose: true
-            access_type: public_method
-            serialized_name: SoldReport
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getSoldReport
-                setter: setSoldReport
-            type: Nogrod\eBaySDK\MerchantData\SoldReportResponseType
         uploadSiteHostedPicturesResponse:
             expose: true
             access_type: public_method

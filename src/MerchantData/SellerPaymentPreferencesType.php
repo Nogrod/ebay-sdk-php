@@ -11,7 +11,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  consists of the seller's payment preferences. Payment preferences specified in a
  *  <b>SetUserPreferences</b> call override the settings in My eBay payment preferences.
  *  <br><br>
- *  <span class="tablenote"><b>Note:</b> Sellers opted in to the new eBay Managed Payments program cannot control some of the settings under the <b>SellerPaymentPreferences</b> container, and although some of these fields can still be set in <b>SetUserPreferences</b> and returned in <b>GetUserPreferences</b>, the settings will not have any affect on any current or future listings for the seller. eBay Managed Payments is currently only available to a limited number of sellers on the US site. The rollout to more sellers in more countries will be a multi-year journey, but eBay expects to transition a majority of sellers Worldwide to Managed Payments by 2021.
+ *  <span class="tablenote"><b>Note:</b> Sellers in the eBay managed payments program cannot control some of the settings under the <b>SellerPaymentPreferences</b> container, and although some of these fields can still be set in <b>SetUserPreferences</b> and returned in <b>GetUserPreferences</b>, the settings will not have any affect on any current or future listings for the seller. eBay managed payments is currently available to a select set of sellers. For the current list of eBay marketplaces in which eBay managed payments has rolled out, see the <a href="https://developer.ebay.com/managed-payments" target="_blank">eBay Managed Payments</a> landing page.
  *  </span>
  *  <br>
  * XSD Type: SellerPaymentPreferencesType
@@ -34,7 +34,7 @@ class SellerPaymentPreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre
     /**
      * If set, this field determines whether a Pay Now button is displayed for all of the user's listings. The user has the option of using a PayPal only version of the Pay Now button or a Pay Now button for all payment methods.
      *  <br><br>
-     *  <span class="tablenote"><b>Note:</b> Sellers opted in to the new eBay Managed Payments program cannot control the display of the "Buy It Now" button in listings, and although the <b>DisplayPayNowButton</b> value can still be set in <b>SetUserPreferences</b> and returned in <b>GetUserPreferences</b>, the setting will not have any affect on any current or future listings for the seller. eBay Managed Payments is currently only available to a limited number of sellers on the US site. The rollout to more sellers in more countries will be a multi-year journey, but eBay expects to transition a majority of sellers Worldwide to Managed Payments by 2021.
+     *  <span class="tablenote"><b>Note:</b> Sellers in the eBay managed payments program cannot control the display of the "Buy It Now" button in listings, and although the <b>DisplayPayNowButton</b> value can still be set in <b>SetUserPreferences</b> and returned in <b>GetUserPreferences</b>, the setting will not have any affect on any current or future listings for the seller. eBay managed payments is currently available to a select set of sellers. For the current list of eBay marketplaces in which eBay managed payments has rolled out, see the <a href="https://developer.ebay.com/managed-payments" target="_blank">eBay Managed Payments</a> landing page.
      *  </span>
      *  <br>
      *
@@ -46,7 +46,7 @@ class SellerPaymentPreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre
      * Specifies whether a seller wants to let buyers know that PayPal payments
      *  are preferred.
      *  <br><br>
-     *  <span class="tablenote"><b>Note:</b> Sellers opted in to the new eBay Managed Payments program cannot control the display of the "PayPal Preferred" setting in listings, and although the <b>PayPalPreferred</b> boolean value can still be set in <b>SetUserPreferences</b> and returned in <b>GetUserPreferences</b>, the setting will not have any affect on any current or future listings for the seller. eBay Managed Payments is currently only available to a limited number of sellers on the US site. The rollout to more sellers in more countries will be a multi-year journey, but eBay expects to transition a majority of sellers Worldwide to Managed Payments by 2021.
+     *  <span class="tablenote"><b>Note:</b> Sellers in the eBay managed payments program cannot control the display of the "PayPal Preferred" setting in listings, and although the <b>PayPalPreferred</b> boolean value can still be set in <b>SetUserPreferences</b> and returned in <b>GetUserPreferences</b>, the setting will not have any affect on any current or future listings for the seller. eBay managed payments is currently available to a select set of sellers. For the current list of eBay marketplaces in which eBay managed payments has rolled out, see the <a href="https://developer.ebay.com/managed-payments" target="_blank">eBay Managed Payments</a> landing page.
      *  </span>
      *
      * @var bool $payPalPreferred
@@ -63,7 +63,7 @@ class SellerPaymentPreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre
     /**
      * Indicates whether PayPal is always accepted for the seller's listings.
      *  <br><br>
-     *  <span class="tablenote"><b>Note:</b> Sellers opted in to the new eBay Managed Payments program cannot control the "PayPal Always On" setting in listings, and although the <b>PayPalAlwaysOn</b> boolean value can still be set in <b>SetUserPreferences</b> and returned in <b>GetUserPreferences</b>, the setting will not have any affect on any current or future listings for the seller. eBay Managed Payments is currently only available to a limited number of sellers on the US site. The rollout to more sellers in more countries will be a multi-year journey, but eBay expects to transition a majority of sellers Worldwide to Managed Payments by 2021.
+     *  <span class="tablenote"><b>Note:</b> Sellers in the eBay managed payments program cannot control the "PayPal Always On" setting in listings, and although the <b>PayPalAlwaysOn</b> boolean value can still be set in <b>SetUserPreferences</b> and returned in <b>GetUserPreferences</b>, the setting will not have any affect on any current or future listings for the seller. eBay managed payments is currently available to a select set of sellers. For the current list of eBay marketplaces in which eBay managed payments has rolled out, see the <a href="https://developer.ebay.com/managed-payments" target="_blank">eBay Managed Payments</a> landing page.
      *  </span>
      *
      * @var bool $payPalAlwaysOn
@@ -139,7 +139,7 @@ class SellerPaymentPreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre
      *
      * If set, this field determines whether a Pay Now button is displayed for all of the user's listings. The user has the option of using a PayPal only version of the Pay Now button or a Pay Now button for all payment methods.
      *  <br><br>
-     *  <span class="tablenote"><b>Note:</b> Sellers opted in to the new eBay Managed Payments program cannot control the display of the "Buy It Now" button in listings, and although the <b>DisplayPayNowButton</b> value can still be set in <b>SetUserPreferences</b> and returned in <b>GetUserPreferences</b>, the setting will not have any affect on any current or future listings for the seller. eBay Managed Payments is currently only available to a limited number of sellers on the US site. The rollout to more sellers in more countries will be a multi-year journey, but eBay expects to transition a majority of sellers Worldwide to Managed Payments by 2021.
+     *  <span class="tablenote"><b>Note:</b> Sellers in the eBay managed payments program cannot control the display of the "Buy It Now" button in listings, and although the <b>DisplayPayNowButton</b> value can still be set in <b>SetUserPreferences</b> and returned in <b>GetUserPreferences</b>, the setting will not have any affect on any current or future listings for the seller. eBay managed payments is currently available to a select set of sellers. For the current list of eBay marketplaces in which eBay managed payments has rolled out, see the <a href="https://developer.ebay.com/managed-payments" target="_blank">eBay Managed Payments</a> landing page.
      *  </span>
      *  <br>
      *
@@ -155,7 +155,7 @@ class SellerPaymentPreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre
      *
      * If set, this field determines whether a Pay Now button is displayed for all of the user's listings. The user has the option of using a PayPal only version of the Pay Now button or a Pay Now button for all payment methods.
      *  <br><br>
-     *  <span class="tablenote"><b>Note:</b> Sellers opted in to the new eBay Managed Payments program cannot control the display of the "Buy It Now" button in listings, and although the <b>DisplayPayNowButton</b> value can still be set in <b>SetUserPreferences</b> and returned in <b>GetUserPreferences</b>, the setting will not have any affect on any current or future listings for the seller. eBay Managed Payments is currently only available to a limited number of sellers on the US site. The rollout to more sellers in more countries will be a multi-year journey, but eBay expects to transition a majority of sellers Worldwide to Managed Payments by 2021.
+     *  <span class="tablenote"><b>Note:</b> Sellers in the eBay managed payments program cannot control the display of the "Buy It Now" button in listings, and although the <b>DisplayPayNowButton</b> value can still be set in <b>SetUserPreferences</b> and returned in <b>GetUserPreferences</b>, the setting will not have any affect on any current or future listings for the seller. eBay managed payments is currently available to a select set of sellers. For the current list of eBay marketplaces in which eBay managed payments has rolled out, see the <a href="https://developer.ebay.com/managed-payments" target="_blank">eBay Managed Payments</a> landing page.
      *  </span>
      *  <br>
      *
@@ -174,7 +174,7 @@ class SellerPaymentPreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre
      * Specifies whether a seller wants to let buyers know that PayPal payments
      *  are preferred.
      *  <br><br>
-     *  <span class="tablenote"><b>Note:</b> Sellers opted in to the new eBay Managed Payments program cannot control the display of the "PayPal Preferred" setting in listings, and although the <b>PayPalPreferred</b> boolean value can still be set in <b>SetUserPreferences</b> and returned in <b>GetUserPreferences</b>, the setting will not have any affect on any current or future listings for the seller. eBay Managed Payments is currently only available to a limited number of sellers on the US site. The rollout to more sellers in more countries will be a multi-year journey, but eBay expects to transition a majority of sellers Worldwide to Managed Payments by 2021.
+     *  <span class="tablenote"><b>Note:</b> Sellers in the eBay managed payments program cannot control the display of the "PayPal Preferred" setting in listings, and although the <b>PayPalPreferred</b> boolean value can still be set in <b>SetUserPreferences</b> and returned in <b>GetUserPreferences</b>, the setting will not have any affect on any current or future listings for the seller. eBay managed payments is currently available to a select set of sellers. For the current list of eBay marketplaces in which eBay managed payments has rolled out, see the <a href="https://developer.ebay.com/managed-payments" target="_blank">eBay Managed Payments</a> landing page.
      *  </span>
      *
      * @return bool
@@ -190,7 +190,7 @@ class SellerPaymentPreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre
      * Specifies whether a seller wants to let buyers know that PayPal payments
      *  are preferred.
      *  <br><br>
-     *  <span class="tablenote"><b>Note:</b> Sellers opted in to the new eBay Managed Payments program cannot control the display of the "PayPal Preferred" setting in listings, and although the <b>PayPalPreferred</b> boolean value can still be set in <b>SetUserPreferences</b> and returned in <b>GetUserPreferences</b>, the setting will not have any affect on any current or future listings for the seller. eBay Managed Payments is currently only available to a limited number of sellers on the US site. The rollout to more sellers in more countries will be a multi-year journey, but eBay expects to transition a majority of sellers Worldwide to Managed Payments by 2021.
+     *  <span class="tablenote"><b>Note:</b> Sellers in the eBay managed payments program cannot control the display of the "PayPal Preferred" setting in listings, and although the <b>PayPalPreferred</b> boolean value can still be set in <b>SetUserPreferences</b> and returned in <b>GetUserPreferences</b>, the setting will not have any affect on any current or future listings for the seller. eBay managed payments is currently available to a select set of sellers. For the current list of eBay marketplaces in which eBay managed payments has rolled out, see the <a href="https://developer.ebay.com/managed-payments" target="_blank">eBay Managed Payments</a> landing page.
      *  </span>
      *
      * @param bool $payPalPreferred
@@ -233,7 +233,7 @@ class SellerPaymentPreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre
      *
      * Indicates whether PayPal is always accepted for the seller's listings.
      *  <br><br>
-     *  <span class="tablenote"><b>Note:</b> Sellers opted in to the new eBay Managed Payments program cannot control the "PayPal Always On" setting in listings, and although the <b>PayPalAlwaysOn</b> boolean value can still be set in <b>SetUserPreferences</b> and returned in <b>GetUserPreferences</b>, the setting will not have any affect on any current or future listings for the seller. eBay Managed Payments is currently only available to a limited number of sellers on the US site. The rollout to more sellers in more countries will be a multi-year journey, but eBay expects to transition a majority of sellers Worldwide to Managed Payments by 2021.
+     *  <span class="tablenote"><b>Note:</b> Sellers in the eBay managed payments program cannot control the "PayPal Always On" setting in listings, and although the <b>PayPalAlwaysOn</b> boolean value can still be set in <b>SetUserPreferences</b> and returned in <b>GetUserPreferences</b>, the setting will not have any affect on any current or future listings for the seller. eBay managed payments is currently available to a select set of sellers. For the current list of eBay marketplaces in which eBay managed payments has rolled out, see the <a href="https://developer.ebay.com/managed-payments" target="_blank">eBay Managed Payments</a> landing page.
      *  </span>
      *
      * @return bool
@@ -248,7 +248,7 @@ class SellerPaymentPreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre
      *
      * Indicates whether PayPal is always accepted for the seller's listings.
      *  <br><br>
-     *  <span class="tablenote"><b>Note:</b> Sellers opted in to the new eBay Managed Payments program cannot control the "PayPal Always On" setting in listings, and although the <b>PayPalAlwaysOn</b> boolean value can still be set in <b>SetUserPreferences</b> and returned in <b>GetUserPreferences</b>, the setting will not have any affect on any current or future listings for the seller. eBay Managed Payments is currently only available to a limited number of sellers on the US site. The rollout to more sellers in more countries will be a multi-year journey, but eBay expects to transition a majority of sellers Worldwide to Managed Payments by 2021.
+     *  <span class="tablenote"><b>Note:</b> Sellers in the eBay managed payments program cannot control the "PayPal Always On" setting in listings, and although the <b>PayPalAlwaysOn</b> boolean value can still be set in <b>SetUserPreferences</b> and returned in <b>GetUserPreferences</b>, the setting will not have any affect on any current or future listings for the seller. eBay managed payments is currently available to a select set of sellers. For the current list of eBay marketplaces in which eBay managed payments has rolled out, see the <a href="https://developer.ebay.com/managed-payments" target="_blank">eBay Managed Payments</a> landing page.
      *  </span>
      *
      * @param bool $payPalAlwaysOn

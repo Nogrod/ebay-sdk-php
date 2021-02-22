@@ -14,7 +14,11 @@ class ConditionHistogramType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
 {
 
     /**
-     * The ID and name of a condition that was found in the item results.
+     * The name and unique ID of the item condition for which the count is being displayed.
+     *  <br><br>
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  In all eBay marketplaces, Condition ID 2000 now maps to an item condition of 'Certified Refurbished', and not 'Manufacturer Refurbished'. To list an item as 'Certified Refurbished', a seller must be pre-qualified by eBay for this feature.
+     *  </span>
      *
      * @var \Nogrod\eBaySDK\Finding\ConditionType $condition
      */
@@ -37,7 +41,11 @@ class ConditionHistogramType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as condition
      *
-     * The ID and name of a condition that was found in the item results.
+     * The name and unique ID of the item condition for which the count is being displayed.
+     *  <br><br>
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  In all eBay marketplaces, Condition ID 2000 now maps to an item condition of 'Certified Refurbished', and not 'Manufacturer Refurbished'. To list an item as 'Certified Refurbished', a seller must be pre-qualified by eBay for this feature.
+     *  </span>
      *
      * @return \Nogrod\eBaySDK\Finding\ConditionType
      */
@@ -49,7 +57,11 @@ class ConditionHistogramType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new condition
      *
-     * The ID and name of a condition that was found in the item results.
+     * The name and unique ID of the item condition for which the count is being displayed.
+     *  <br><br>
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  In all eBay marketplaces, Condition ID 2000 now maps to an item condition of 'Certified Refurbished', and not 'Manufacturer Refurbished'. To list an item as 'Certified Refurbished', a seller must be pre-qualified by eBay for this feature.
+     *  </span>
      *
      * @param \Nogrod\eBaySDK\Finding\ConditionType $condition
      * @return self

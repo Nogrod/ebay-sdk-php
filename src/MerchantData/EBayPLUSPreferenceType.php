@@ -12,7 +12,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  eBay Plus is a premium account option for buyers, which provides benefits such as fast free domestic shipping and free returns on selected items. Top Rated eBay sellers must opt in to eBay Plus to be able offer the program on qualifying listings. Sellers must commit to next-day delivery of those items.
  *  <br/><br/>
  *  <span class="tablenote">
- *  <strong>Note:</strong> Currently, eBay Plus is available only to buyers in Germany, Austria, and Australia.
+ *  <strong>Note:</strong> Currently, eBay Plus is available only to buyers in Germany and Australia. In Australia, the seller has no control/responsibility over setting the eBay Plus feature for a listing. Instead, eBay will evaluate/determine whether a listing is eligible for eBay Plus.
  *  </span>
  *  For more details about eBay Plus, see <a href="../../../../guides/features-guide/default.html#development/Feature-eBayPlus.html">Offering eBay Plus</a>.
  * XSD Type: eBayPLUSPreferenceType
@@ -24,7 +24,7 @@ class EBayPLUSPreferenceType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      * An ISO 3166 standard two-letter code that identifies a country where the seller is eligible to offer eBay Plus on fixed price listings.
      *  <br/><br/>
      *  <span class="tablenote">
-     *  <strong>Note:</strong> Currently, eBay Plus is available only to buyers in Germany, Austria, and Australia..
+     *  <strong>Note:</strong> Currently, eBay Plus is available only to buyers in Germany and Australia.
      *  </span>
      *
      * @var string $country
@@ -51,7 +51,7 @@ class EBayPLUSPreferenceType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      * An ISO 3166 standard two-letter code that identifies a country where the seller is eligible to offer eBay Plus on fixed price listings.
      *  <br/><br/>
      *  <span class="tablenote">
-     *  <strong>Note:</strong> Currently, eBay Plus is available only to buyers in Germany, Austria, and Australia..
+     *  <strong>Note:</strong> Currently, eBay Plus is available only to buyers in Germany and Australia.
      *  </span>
      *
      * @return string
@@ -67,7 +67,7 @@ class EBayPLUSPreferenceType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      * An ISO 3166 standard two-letter code that identifies a country where the seller is eligible to offer eBay Plus on fixed price listings.
      *  <br/><br/>
      *  <span class="tablenote">
-     *  <strong>Note:</strong> Currently, eBay Plus is available only to buyers in Germany, Austria, and Australia..
+     *  <strong>Note:</strong> Currently, eBay Plus is available only to buyers in Germany and Australia.
      *  </span>
      *
      * @param string $country

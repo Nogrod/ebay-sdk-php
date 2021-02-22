@@ -21,6 +21,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  a part number. For a SKU in an eBay.com listing, use the <b>SKU</b>
      *  element instead. To remove this value when revising or relisting an
      *  item, use <b>DeletedField</b>.
+     *  <br/>
      *
      * @var string $applicationData
      */
@@ -48,22 +49,18 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     private $lookupAttributeArray = null;
 
     /**
-     * If <code>true</code>, the seller requests immediate payment for the item.
-     *  If <code>false</code> or not specified, immediate payment is not requested.
-     *  (In responses, does not indicate whether the item is actually still a
-     *  candidate for purchase via immediate payment.)<br>
-     *  <br>
-     *  Only applicable to items listed on PayPal-enabled sites
-     *  in categories that support immediate payment (see <b>AutoPayEnabled</b> in
-     *  <b>GetCategories</b>), or if the seller is opted into the new eBay Managed Payments program.
+     * If <code>true</code>, the seller requests immediate payment for a fixed-price item or an auction item that is purchased with the 'Buy it Now' feature. If <code>false</code> or not specified, immediate payment is not requested. (In responses, does not indicate whether the item is actually still a candidate for purchase via immediate payment.)
      *  <br>
      *  <br>
-     *  To create an Immediate Payment listing, <b>AutoPay</b> must be <code>true</code>,
-     *  <b>PayPalEmailAddress</b> must be a valid PayPal email address for the seller, and the only included
+     *  <b>For sellers not opted in to eBay managed payments</b>: immediate payment is only available if the eBay marketplace supports PayPal as a payment method, and the listing category supports immediate payment (the <b>AutoPayEnabled</b> should be returned as <code>true</code> in the <b>GetCategories</b> response). To enable the listing with the immediated payment requirement, <b>AutoPay</b> must be <code>true</code>, the
+     *  <b>PayPalEmailAddress</b> field must be included and must have a valid PayPal email address for the seller, and the only specified
      *  <b>PaymentMethods</b> value must be <code>PayPal</code>.
+     *  <br>
+     *  <br>
+     *  <b>For sellers opted in to eBay managed payments</b>: the only requirement is that the listing category supports immediate payments. With managed payments, eBay handles the payment methods available to the buyer, so the seller will not have to specify any payment methods, and will not have include the <b>PayPalEmailAddress</b> field. The seller only has to include the <b>AutoPay</b> field and set it to <code>true</code> to create an Immediate Payment listing.
      *  <br/><br/>
-     *  For a non-Immediate Payment listing,
-     *  the <b>AutoPay</b> flag is not required since it defaults to <code>false</code>.
+     *  If a seller does not wish to require immediate payment, the <b>AutoPay</b> flag is not required since it defaults to <code>false</code>.
+     *  <br/>
      *
      * @var bool $autoPay
      */
@@ -227,13 +224,6 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     private $listingDetails = null;
 
     /**
-     * Contains the detail data for the Listing Designer theme and template (if either are used), which can optionally be used to enhance the appearance of the description area of an item's description.
-     *
-     * @var \Nogrod\eBaySDK\MerchantData\ListingDesignerType $listingDesigner
-     */
-    private $listingDesigner = null;
-
-    /**
      * Describes the number of days the seller wants the listing to be active (available for bidding/buying). The duration specifies the seller's initial intent at listing time.
      *  <br/><br/>
      *  The end time for a listing is calculated by adding the duration to the item's start time. If the listing ends early, the value of the listing duration does not change. When a listing's duration is changed, any related fees (e.g., 10-day fee) may be debited or credited (as applicable).
@@ -346,16 +336,16 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Identifies the payment method (such as PayPal) that the seller will accept
      *  when the buyer pays for the item. For Add/Revise/Relist calls, at least
-     *  one payment method must be specified unless the seller is opted in to the new eBay Managed Payments program.
+     *  one payment method must be specified unless the seller is onboarded for eBay managed payments.
      *  <br>
      *  <br>
      *  <span class="tablenote"><b>Note: </b> If you set up a payment policy via the <a href="https://developer.ebay.com/api-docs/sell/account/resources/payment_policy/methods/createPaymentPolicy">Account API</a> or the <a href="https://developer.ebay.com/Devzone/business-policies/CallRef/addSellerProfile.html">Business Polices Managment API</a>, then you should not populate this field. Instead, indicate your payment policy using the <b>SellerProfiles.SellerPaymentProfile</b> container.
      *  </span>
      *  <br>
-     *  <span class="tablenote"><b>Note:</b> The new eBay Managed Payments program is currently only available to a limited number of sellers on the US site. For sellers in the eBay Managed Payments program, a payment method does not need to be specified at listing time. Any payment method that is specified at listing time (or defined in a payment business policy) will be ignored and dropped from the listing, and the seller will get a warning message in the response. Immediate payment is supported for sellers in the eBay Managed Payments program, so they can include the <b>AutoPay</b> field in the request and set its value to <code>true</code>.
+     *  <span class="tablenote"><b>Note:</b> eBay managed payments is currently available to a select set of sellers. For the current list of eBay marketplaces in which eBay managed payments has rolled out, see the <a href="https://developer.ebay.com/managed-payments" target="_blank">eBay Managed Payments</a> landing page. For sellers in the eBay managed payments program, a payment method does not need to be specified at listing time. Any payment method that is specified at listing time (or defined in a payment business policy) will be ignored and dropped from the listing, and the seller will get a warning message in the response. Immediate payment is supported for sellers in the eBay managed payments program, so they can include the <b>AutoPay</b> field in the request and set its value to <code>true</code>.
      *  </span>
      *  <br>
-     *  <span class="tablenote"><b>Note:</b> As of May 1, 2019, eBay no longer supports electronic payments through a seller's Integrated Merchant Credit Card account. To accept online credit card payments from buyers, a seller must either specify <code>PayPal</code> as an accepted payment method, or opt in to the eBay Managed Payments program. If <code>IMCC</code> is passed in as a value, this value will be ignored and dropped (and listing will possibly get blocked if <code>IMCC</code> is the only specified payment method).
+     *  <span class="tablenote"><b>Note:</b> As of May 1, 2019, eBay no longer supports electronic payments through a seller's Integrated Merchant Credit Card account. If <code>IMCC</code> is passed in as a value, this value will be ignored and dropped (and listing will possibly get blocked if <code>IMCC</code> is the only specified payment method).
      *  </span><br>
      *  Use <b>GetCategoryFeatures</b> to determine the payment methods that are allowed for a category on a site. For example, the response data of <b>GetCategoryFeatures</b> will show that on the US site, most categories only allow electronic payments. Also use <b>GetCategoryFeatures</b> to determine the default payment methods for a site.
      *  <br><br>
@@ -468,10 +458,10 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     private $privateListing = null;
 
     /**
-     * This container is used to provide one or more product identifiers for a product, and if desired by the seller, or required by eBay, the product can be matched to an eBay Catalog product. If a seller's product is matched to an eBay Catalog product, the product details associated with that catalog product will be prefilled for the listing. Product details defined for a catalog product include the product title, product description, product aspects, and stock image(s) of the product.
+     * This container is used to provide one or more product identifiers for a product, and if desired by the seller, eBay will use the identifier(s) of the product to try to match it to a defined product in the eBay catalog. If a seller's product is matched to an eBay catalog product, the product details associated with that catalog product will be prefilled for the listing. Product details defined for a catalog product include the product title, product description, product aspects, and stock image(s) of the product (if available).
      *  <br>
      *  <br>
-     *  In some eBay categories, one or more product identifier types (e.g. UPC or ISBN) may be required, but the category may not have any eBay Catalog products defined, or the category does not allow listings to be created using a catalog product. Note that the <b>GetCategorySpecifics</b> call or the <b>GetCategoryFeatures</b> call can be used to retrieve supported/required product identifier types.
+     *  In some eBay categories, one or more product identifier types (e.g. UPC or ISBN) may be required, but the category may not have any eBay catalog products defined, or the category does not allow listings to be created using a catalog product. Note that the <b>GetCategorySpecifics</b> call or the <b>GetCategoryFeatures</b> call can be used to retrieve supported/required product identifier types.
      *  <br>
      *  <br>
      *  <span class="tablenote"><b>Note:</b>
@@ -495,7 +485,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     private $productListingDetails = null;
 
     /**
-     * <b>For <b>AddItem</b> family of calls:</b> The <b>Quantity</b> value for auction listings must always be <code>1</code>. For a fixed-price listing, the <b>Quantity</b> value indicates the number of identical items the seller has available for sale in the listing. If variations are specified in <b>AddFixedPriceItem</b> or <b> VerifyAddFixedPriceItem</b>, the <b>Item.Quantity</b> is not required since the quantity of variations is specified in <b>Variation.Quantity</b> instead. See the <a href="https://pages.ebay.com/help/sell/listing-variations.html">Creating a listing with variations</a> eBay Help page for more information on variations.
+     * <b>For <b>AddItem</b> family of calls:</b> The <b>Quantity</b> value for auction listings must always be <code>1</code>. For a fixed-price listing, the <b>Quantity</b> value indicates the number of identical items the seller has available for sale in the listing. If this field is not included when creating a new fixed-price listing, quantity defaults to '1'. If variations are specified in <b>AddFixedPriceItem</b> or <b> VerifyAddFixedPriceItem</b>, the <b>Item.Quantity</b> is not required since the quantity of variations is specified in <b>Variation.Quantity</b> instead. See the <a href="https://pages.ebay.com/help/sell/listing-variations.html">Creating a listing with variations</a> eBay Help page for more information on variations.
      *  <br><br>
      *  <b>For ReviseItem and ReviseFixedPriceItem:</b>
      *  This value can only be changed for a fixed-price listing with no variations. The
@@ -633,15 +623,8 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  If you list on the main eBay site, the primary category could be 57988 and
      *  the secondary category could be 6750. <br>
      *  <br>
-     *  If eBay has designated a category as a value category
-     *  (see ValueCategory in <b>GetCategoryFeatures</b>), items in that category
-     *  cannot be listed in two categories.
-     *  For example, if your <b>AddItem</b> request
-     *  includes a primary or secondary category that is a value category, then eBay drops <b>SecondaryCategory</b> and lists
-     *  the item with only the <b>PrimaryCategory</b> you selected.
-     *  Also, if the listing request includes Item Specifics
-     *  (in <b>ItemSpecifics</b>) that are associated with <b>SecondaryCategory</b>, eBay drops those values when we drop <b>SecondaryCategory</b>. (The same logic is used if you revise an existing
-     *  listing to add a secondary category or to change one of the categories: If either the primary or secondary category is a value category, eBay drops the secondary category from your request.)<br>
+     *  If eBay has designated a listing category as a value category (see ValueCategory in <b>GetCategoryFeatures</b>), and that listing category will be the seller's primary category, the seller will not be able to list their item in a secondary category. If a seller's request payload includes a primary or a secondary category that is designated as a value category, then eBay drops the <b>SecondaryCategory</b> ID and only lists the item in the category specified with the <b>PrimaryCategory</b> ID. Also, if the listing request includes Item Specifics (in <b>ItemSpecifics</b>) that are associated with the <b>SecondaryCategory</b>, eBay drops those values as well when the <b>SecondaryCategory</b> is dropped. The same logic is used if you revise an existing listing to add a secondary category, or to change one of the categories: If either the primary or secondary category is a value category, eBay drops the secondary category from your request.)
+     *  <br>
      *  <br>
      *  To remove this value when relisting an item, use <b>DeletedField</b>.
      *  <br><br>
@@ -755,7 +738,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     ];
 
     /**
-     * The name of the site on which the item is listed. The listing site affects
+     * The name of the eBay listing site. The listing site affects
      *  the business logic and validation rules that are applied to the request,
      *  which in turn affect the values that are returned in the response, as well
      *  as values that appear on the eBay site. For example, the listing site
@@ -769,7 +752,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <br>
      *  When you specify <b>Item.Site</b> in <b>AddItem</b> or <b>AddFixedPriceItem</b>, it must be consistent with the
      *  numeric site ID that you specify in the request URL (for the SOAP API) or
-     *  the <b>X-EBAY- API-SITEID</b> header (for the XML API).
+     *  the <b>X-EBAY-API-SITEID</b> header (for the XML API).
      *
      * @var string $site
      */
@@ -948,6 +931,9 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  created programmatically using the <b>SetTaxTable</b> call, or it can be created
      *  manually in My eBay's Payment Preferences. If <b>UseTaxTable</b> is set to <code>true</code>,
      *  the values contained in the seller's sales tax table will supersede the values contained in the <b>Item.ShippingDetails.SalesTax</b> container (if included in the request).
+     *  <br><br>
+     *  <span class="tablenote"><b>Note: </b> As of September 1, 2020, buyers in over 40 US states will automatically be charged sales tax for eBay purchases. eBay will collect and remit this sales tax to the proper taxing authority on the buyer's behalf. The Sales Tax Table page for eBay US is being updated as each US state starts requiring collection of sales tax. This means that the seller no longer has control over, nor can specify a sales tax rate for these states. For a list of the US states that are currently subject to 'eBay Collect and Remit', or will become subject to 'eBay Collect and Remit', see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section4">eBay sales tax collection</a> help topic.
+     *  </span>
      *
      * @var bool $useTaxTable
      */
@@ -1100,7 +1086,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  commits to for preparing an item to be shipped after receiving a
      *  cleared payment. This time does not include the shipping time (the carrier's transit time).
      *  <br><br>
-     *  <span class="tablenote"><b>Note:</b> If the seller opts into the eBay Guaranteed Delivery feature and wants to make a listing eligible for eBay Guaranteed Delivery, the <b>DispatchTimeMax</b> value must be set to <code>0</code> or <code>1</code> (days) and the cumulative value of <b>DispatchTimeMax</b> plus the transit time of the shipping service (returned in <b>ShippingServiceDetails.ShippingTimeMax</b> field of <b>GeteBayDetails</b>) must be 4 business days or less to be eligible for this feature. See the <a href="https://pages.ebay.com/seller-center/shipping/ebay-guaranteed-delivery.html" target="_blank">eBay Guaranteed Delivery</a> page in Seller Center for more information on this program.
+     *  <span class="tablenote"><b>Note:</b> If the seller opts into the eBay Guaranteed Delivery feature and wants to make a listing eligible for eBay Guaranteed Delivery, the <b>DispatchTimeMax</b> value must be set to <code>0</code> or <code>1</code> (days) and the cumulative value of <b>DispatchTimeMax</b> plus the transit time of the shipping service (returned in <b>ShippingServiceDetails.ShippingTimeMax</b> field of <b>GeteBayDetails</b>) must be 4 business days or less to be eligible for this feature. See the <a href="https://pages.ebay.com/seller-center/shipping/ebay-guaranteed-delivery.html" target="_blank">eBay Guaranteed Delivery</a> page in Seller Center for more information on this program. The eBay Guaranteed Delivery feature is only available on the US and Australia marketplaces.
      *  </span>
      *  <br>
      *  <b>For Add/Revise/Relist calls:</b> Required for
@@ -1108,14 +1094,10 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  (with delivery) are offered. See <b>HandlingTimeEnabled</b> in
      *  <b>GetCategoryFeatures</b>.<br>
      *  <br>
-     *  The seller sets this to a positive integer value corresponding to the number of days. For a list of allowed values
-     *  on each eBay site, use <b>DispatchTimeMaxDetails</b> in <b>GeteBayDetails</b>.
-     *  (Typical values are <code>1</code>, <code>2</code>, <code>3</code>, <code>4</code>, <code>5</code>, <code>10</code>, <code>15</code>, or <code>20</code>, but this can vary
-     *  by site and these may change over time.)<br>
+     *  The seller sets this to a positive integer value corresponding to the number of 'handling' days. For a list of allowed values
+     *  on each eBay site, use <b>DispatchTimeMaxDetails</b> in <b>GeteBayDetails</b>. Supported handling times for most sites in most categories range from 0 (same-day handling) to 3 business days, but this can vary by site. Some categories on some sites support longer handling times, and this generally comes into play with extremely large items where freight shipping may be required. <br>
      *  <br>
-     *  Valid for flat and calculated shipping. Does not apply when
-     *  there is no shipping, when it is local pickup only or it is freight shipping. For example, when <b>ShippingService</b> = <code>Pickup</code> or
-     *  <b>ShipToLocations</b> = <code>None</code>, then <b>DispatchTimeMax</b> is not required (or it can be <code>0</code>).<br>
+     *  This field is required whenever flat-rate or calculated shipping is used, but does not apply when there is no shipping involved, which is the case for digital gift card listings, or any orders where local pickup is available and this option is selected by the buyer.<br>
      *  <br>
      *  <b>For ReviseItem only:</b>
      *  If the listing has bids or sales and it ends within 12 hours, you can't change this value.
@@ -1346,11 +1328,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  provide the entire set of buyer requirements to modify or add any of the
      *  requirements.
      *  <br/><br/>
-     *  Unless otherwise specified, most buyer requirements are only
-     *  returned if the caller is the seller. All global My eBay Buyer Requirements
-     *  are overridden by the contents of this container. This means that buyer
-     *  requirements set in My eBay cannot be combined with buyer requirements
-     *  included in this container.
+     *  Unless otherwise specified, most buyer requirements are only returned if the caller is the seller. Any and all My eBay account-level Buyer Requirements are overridden by the contents of this container. This means that buyer requirements set in My eBay cannot be combined with buyer requirements included in this container.
      *
      * @var \Nogrod\eBaySDK\MerchantData\BuyerRequirementDetailsType $buyerRequirementDetails
      */
@@ -1395,6 +1373,9 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  listing site.
      *  <br><br>
      *  <span class="tablenote"><b>Note:</b> The <b>GeteBayDetails</b> call can be used to retrieve site-wide return policy metadata, but it is recommended that sellers use the <b>GetCategoryFeatures</b> call instead, as this call was recently updated to retrieve category-level metadata for both domestic and international return policies.</span>
+     *  <br>
+     *  <span class="tablenote"><b>Note:</b> In May 2018, eBay added the ability to create a separate international return policy for items that are shipped to international customers. If a seller does not add a separate international return policy, the settings in the domestic return policy will be used instead for international returns. For more information on setting separate domestic and international return policies, see the
+     *  <a href="https://pages.ebay.com/seller-center/seller-updates/2018-summer/simplified-returns.html#international-returns-policy" target="_blank">International returns policy</a> help topic. For the international equivalent of this field, see the <b>InternationalRefundMethodValues</b> field.</span>
      *
      * @var \Nogrod\eBaySDK\MerchantData\ReturnPolicyType $returnPolicy
      */
@@ -1417,6 +1398,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  If a seller will be converting an existing eBay listing into the new Inventory model using the <b>bulkMigrateListings</b> call of the <b>Inventory API</b>, the <b>InventoryTrackingMethod</b> value must be set to <code>ItemID</code> (default value), but the item must also have a SKU value (Item.<b>SKU</b> or Variation.<b>SKU</b>) associated with it.
      *  <b>For GetItem and related calls</b>:
      *  Only returned when the value is <code>SKU</code>; not returned when the value is <code>ItemID</code>.
+     *  <br>
      *
      * @var string $inventoryTrackingMethod
      */
@@ -1434,7 +1416,11 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  Express, and Discover).
      *  <br><br>
      *  <span class="tablenote"><b>Note: </b>
-     *  As of May 1, 2019, eBay no longer supports electronic payments through Integrated Merchant Credit Card accounts. To accept online credit card payments from buyers, a seller must specify PayPal as an accepted payment method, or opt in to eBay Managed Payments program (if the program is available to that seller).
+     *  As of May 1, 2019, eBay no longer supports electronic payments through Integrated Merchant Credit Card accounts. To accept online credit card payments from buyers, a seller must specify PayPal as an accepted payment method, or opt in to eBay managed payments program (if the program is available to that seller).
+     *  </span>
+     *  <br> <br>
+     *  <span class="tablenote"><b>Note:</b>
+     *  For the <strong>GetItemTransactions</strong>, <strong>GetOrders</strong>, and <strong>GetOrderTransactions</strong> calls, this field is only returned to the seller of the order; this field is not returned for the buyer or third party.
      *  </span>
      *
      * @var bool $integratedMerchantCreditCardEnabled
@@ -1551,7 +1537,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * This is a numeric identifier for an item's condition. All numeric Condition ID values map to an item condition string value. For example, numeric identifer <code>1000</code> maps to <code>New</code> condition.
      *  <br><br>
-     *  Most eBay categories require an item condition, but a few eBay categories do not. To verify if the listing category requires an item condition, and if so, what are the supported item condition and <b>ConditionID</b> values, you can call <b>GetCategoryFeatures</b>. In this <b>GetCategoryFeatures</b> call, you'd pass in the listing <b>CategoryID</b> value and two <b>FeatureID</b> fields - one of these fields set to <code>ConditionEnabled</code>, and the other field set to <code>ConditionValues</code>.
+     *  Most eBay listing categories require an item condition, but a few eBay categories do not (such as Digital Gift Cards or Antiques categories). To verify if the listing category requires an item condition, and if so, what are the supported item condition and <b>ConditionID</b> values, you can call <b>GetCategoryFeatures</b>. In this <b>GetCategoryFeatures</b> call, you'd pass in the listing <b>CategoryID</b> value and two <b>FeatureID</b> fields - one of these fields set to <code>ConditionEnabled</code>, and the other field set to <code>ConditionValues</code>.
      *  <br><br>
      *  In the <b>GetCategoryFeatures</b> response, look at the Category.<b>ConditionEnabled</b> to see if item condition is required for the category. Then look at the Category.<b>ConditionValues</b> container in the response for the full list of Condition IDs that you can pass in through the <b>ConditionID</b> field of an Add/Revise/Relist/Verify call. Note that the Condition.<b>DisplayName</b> value in the response is the actual condition value that will appear in the actual eBay listing.
      *  <br>
@@ -1566,6 +1552,14 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <b>For GetItem:</b> The
      *  <b>ConditionID</b> value is always returned if set for the listing. <b>GetItem</b> also returns
      *  the item condition string value in the <b>ConditionDisplayName</b> field.
+     *  <br>
+     *  <br>
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  In all eBay marketplaces, Condition ID 2000 now maps to an item condition of 'Certified Refurbished', and not 'Manufacturer Refurbished'. To list an item as 'Certified Refurbished', a seller must be pre-qualified by eBay for this feature. Any seller who is not eligible for this feature will be blocked if they try to create a new listing or revise an existing listing with this item condition. Any active listings on any eBay marketplace that had 'Manufacturer Refurbished' as the item condition should have been automatically updated by eBay to the 'Seller Refurbished' item condition (Condition ID 2500).
+     *  <br>
+     *  <br>
+     *  Any seller that is interested in eligibility requirements to list with 'Certified Refurbished' should see the <a href="https://pages.ebay.com/seller-center/listing-and-marketing/certified-refurbished-program.html" target="_blank">Certified refurbished program</a> page in Seller Center.
+     *  </span>
      *
      * @var int $conditionID
      */
@@ -1720,22 +1714,22 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     private $quantityInfo = null;
 
     /**
-     * This container is used if the seller would like to use/reference Business Policies to create, revise, relist, or verify their listing. The seller's account must be opted in to Business Policies to use this container. If this container is used, exactly one Payment Business Policy, one Shipping Business Policy, and one Return Business Policy is applied to the listing. If the seller's account is not opted in to Business Policies, that seller may not use this container. Sellers must opt-in to Business Policies through My eBay or by using the <b>optInToProgram</b> call of the <b>eBay Account API</b>.
+     * This container is used if the seller would like to use/reference business policies to create, revise, relist, or verify their listing. The seller's account must be opted in to business policies to use this container. If this container is used, exactly one Payment Business Policy, one Shipping Business Policy, and one Return Business Policy must be specified and applied to the listing. If the seller's account is not opted in to business policies, that seller may not use this container. Sellers must opt-in to business policies through My eBay or by using the <b>optInToProgram</b> call of the <b>eBay Account API</b>.
      *  <br><br>
-     *  If Business Policies are applied to a listing, all payment, shipping, and return policy settings in these policies will override any other payment, shipping, or return policy legacy fields that are included in the call request.
+     *  If business policies are applied to a listing, all payment, shipping, and return policy settings in these policies will override any other payment, shipping, or return policy legacy fields that are included in the call request.
      *  <br><br>
-     *  This container is only returned in 'Get' calls if Business Policies are set for the listing, and the person making the API call is the seller of the listing.
+     *  This container is only returned in 'Get' calls if business policies are set for the listing, and the person making the API call is the seller of the listing.
      *
      * @var \Nogrod\eBaySDK\MerchantData\SellerProfilesType $sellerProfiles
      */
     private $sellerProfiles = null;
 
     /**
-     * This container is used when the seller wants to override the flat shipping costs for all domestic and/or all international shipping services defined in the Business Policies shipping profile referenced in the <b>SellerProfiles.SellerShippingProfile.ShippingProfileID</b> field. Shipping costs include the cost to ship one item, the cost to ship each additional identical item, and any shipping surcharges applicable to domestic shipping services.
+     * This container is used when the seller wants to override the flat shipping costs for all domestic and/or all international shipping services defined in the shipping business policy referenced in the <b>SellerProfiles.SellerShippingProfile.ShippingProfileID</b> field. Shipping costs include the cost to ship one item, the cost to ship each additional identical item, and any shipping surcharges applicable to domestic shipping services.
      *  <br><br>
-     *  A <b>ShippingServiceCostOverrideList.ShippingServiceCostOverride</b> container is required for each domestic and/or international shipping service that is defined in the <b>domesticShippingPolicyInfoService</b> and <b>intlShippingPolicyInfoService</b> containers of the Business Policies shipping profile.
+     *  A <b>ShippingServiceCostOverrideList.ShippingServiceCostOverride</b> container is required for each domestic and/or international shipping service that is defined in the <b>domesticShippingPolicyInfoService</b> and <b>intlShippingPolicyInfoService</b> containers of the shipping business policy.
      *  <br><br>
-     *  Shipping service cost overrides are a listing-level concept, and the shipping costs specified through each <b>ShippingServiceCostOverrideList.ShippingServiceCostOverride</b> container will not change the shipping costs defined for the same shipping services in the Business Policies shipping profile.
+     *  Shipping service cost overrides are a listing-level concept, and the shipping costs specified through each <b>ShippingServiceCostOverrideList.ShippingServiceCostOverride</b> container will not change the shipping costs defined for the same shipping services in the shipping business policy.
      *  <br><br>
      *  <b>For Revise and Relist calls</b>: To delete all shipping service cost overrides when you revise or relist, specify <b>Item.ShippingServiceCostOverrideList</b> in <b>DeletedField</b>, and don't pass <b>ShippingServiceCostOverrideList</b> in the request.
      *
@@ -1923,19 +1917,30 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     private $digitalGoodInfo = null;
 
     /**
-     * If <code>true</code>, this item is being offered under the eBay Plus program. eBay Plus is a premium account option for buyers, which provides benefits such as fast free domestic shipping and free returns on selected items. Top-Rated eBay sellers must opt in to eBay Plus to be able to offer the program on qualifying listings. Sellers must commit to next-day delivery of those items.
+     * eBay Plus is a premium account option for buyers, which provides benefits such as fast and free domestic shipping, and free returns on selected items. To offer this feature to buyers, sellers must opt in to eBay Plus, and their selling status must be 'Above Standard' or above.
      *  <br/><br/>
-     *  <span class="tablenote"><b>Note:</b> Currently, eBay Plus is available only to buyers in Germany, Austria, and Australia marketplaces.
+     *  <span class="tablenote"><b>Note:</b> Currently, eBay Plus is only available to buyers on the Germany and Australia marketplaces, and this field should only be used by sellers selling eligible items in Germany.
+     *  <br/><br/>
+     *  In Australia, the seller has no control/responsibility over setting the eBay Plus feature for a listing. Instead, eBay will evaluate/determine whether a listing is eligible for eBay Plus. Due to this fact, an Australian seller will also get the <code>21919431: This listing isn't eligible for eBay Plus.</code> warning message in an add/revise/relist call, even though eBay may ultimately set the eBay Plus feature on the listing if the item is eligible.
      *  </span>
+     *  <br/>
+     *  In an add/revise/relist call, a seller on the Germany site must include this field and set its value to <code>true</code>. If the seller is not eligible for/opted in to eBay Plus and/or the listing category or item does not qualify for eBay Plus, a warning message will be returned to the seller in the response indicating this. In addition to the seller, listing category, and item being eligible for eBay Plus, the seller must also set/commit to the following for the listing:
+     *  <ul>
+     *  <li>Listing format must be fixed-price.</li>
+     *  <li>Same-day or one-day handling (<b>DispatchTimeMax</b> set to <code>0</code> or <code>1</code>). </li>
+     *  <li>A free, next-day shipping option offered.</li>
+     *  <li>A return policy that offers a 30-day (or longer) return period.</li>
+     *  </ul>
+     *  If this field is returned as <code>true</code> in a 'Get' call, it indicates that the item is eligible for eBay Plus treatment, but eBay Plus will only come into play if the buyer is subscribed to eBay Plus.
      *
      * @var bool $eBayPlus
      */
     private $eBayPlus = null;
 
     /**
-     * If <code>true</code>, this item is eligible to be listed under the eBay Plus program. eBay Plus is a premium account option for buyers, which provides benefits such as fast free domestic shipping and free returns on selected items. Top-Rated eBay sellers must opt in to eBay Plus to be able offer the program on qualifying listings. Sellers must commit to next-day delivery of those items.
+     * If this field is returned as <code>true</code>, this item is eligible to be listed under the eBay Plus program. eBay Plus is a premium account option for buyers, which provides benefits such as fast and free domestic shipping and free returns on selected items. eBay sellers must opt in to eBay Plus to be able offer the program on qualifying listings. Among other requirements, sellers must commit to next-day delivery of those items.
      *  <br/><br/>
-     *  <span class="tablenote"><b>Note:</b> Currently, eBay Plus is available only to buyers in Germany, Austria, and Australia marketplaces.
+     *  <span class="tablenote"><b>Note:</b> Currently, eBay Plus is available only to buyers in Germany and Australia marketplaces.
      *  </span>
      *
      * @var bool $eBayPlusEligible
@@ -1972,6 +1977,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  a part number. For a SKU in an eBay.com listing, use the <b>SKU</b>
      *  element instead. To remove this value when revising or relisting an
      *  item, use <b>DeletedField</b>.
+     *  <br/>
      *
      * @return string
      */
@@ -1990,6 +1996,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  a part number. For a SKU in an eBay.com listing, use the <b>SKU</b>
      *  element instead. To remove this value when revising or relisting an
      *  item, use <b>DeletedField</b>.
+     *  <br/>
      *
      * @param string $applicationData
      * @return self
@@ -2201,22 +2208,18 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Gets as autoPay
      *
-     * If <code>true</code>, the seller requests immediate payment for the item.
-     *  If <code>false</code> or not specified, immediate payment is not requested.
-     *  (In responses, does not indicate whether the item is actually still a
-     *  candidate for purchase via immediate payment.)<br>
-     *  <br>
-     *  Only applicable to items listed on PayPal-enabled sites
-     *  in categories that support immediate payment (see <b>AutoPayEnabled</b> in
-     *  <b>GetCategories</b>), or if the seller is opted into the new eBay Managed Payments program.
+     * If <code>true</code>, the seller requests immediate payment for a fixed-price item or an auction item that is purchased with the 'Buy it Now' feature. If <code>false</code> or not specified, immediate payment is not requested. (In responses, does not indicate whether the item is actually still a candidate for purchase via immediate payment.)
      *  <br>
      *  <br>
-     *  To create an Immediate Payment listing, <b>AutoPay</b> must be <code>true</code>,
-     *  <b>PayPalEmailAddress</b> must be a valid PayPal email address for the seller, and the only included
+     *  <b>For sellers not opted in to eBay managed payments</b>: immediate payment is only available if the eBay marketplace supports PayPal as a payment method, and the listing category supports immediate payment (the <b>AutoPayEnabled</b> should be returned as <code>true</code> in the <b>GetCategories</b> response). To enable the listing with the immediated payment requirement, <b>AutoPay</b> must be <code>true</code>, the
+     *  <b>PayPalEmailAddress</b> field must be included and must have a valid PayPal email address for the seller, and the only specified
      *  <b>PaymentMethods</b> value must be <code>PayPal</code>.
+     *  <br>
+     *  <br>
+     *  <b>For sellers opted in to eBay managed payments</b>: the only requirement is that the listing category supports immediate payments. With managed payments, eBay handles the payment methods available to the buyer, so the seller will not have to specify any payment methods, and will not have include the <b>PayPalEmailAddress</b> field. The seller only has to include the <b>AutoPay</b> field and set it to <code>true</code> to create an Immediate Payment listing.
      *  <br/><br/>
-     *  For a non-Immediate Payment listing,
-     *  the <b>AutoPay</b> flag is not required since it defaults to <code>false</code>.
+     *  If a seller does not wish to require immediate payment, the <b>AutoPay</b> flag is not required since it defaults to <code>false</code>.
+     *  <br/>
      *
      * @return bool
      */
@@ -2228,22 +2231,18 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Sets a new autoPay
      *
-     * If <code>true</code>, the seller requests immediate payment for the item.
-     *  If <code>false</code> or not specified, immediate payment is not requested.
-     *  (In responses, does not indicate whether the item is actually still a
-     *  candidate for purchase via immediate payment.)<br>
-     *  <br>
-     *  Only applicable to items listed on PayPal-enabled sites
-     *  in categories that support immediate payment (see <b>AutoPayEnabled</b> in
-     *  <b>GetCategories</b>), or if the seller is opted into the new eBay Managed Payments program.
+     * If <code>true</code>, the seller requests immediate payment for a fixed-price item or an auction item that is purchased with the 'Buy it Now' feature. If <code>false</code> or not specified, immediate payment is not requested. (In responses, does not indicate whether the item is actually still a candidate for purchase via immediate payment.)
      *  <br>
      *  <br>
-     *  To create an Immediate Payment listing, <b>AutoPay</b> must be <code>true</code>,
-     *  <b>PayPalEmailAddress</b> must be a valid PayPal email address for the seller, and the only included
+     *  <b>For sellers not opted in to eBay managed payments</b>: immediate payment is only available if the eBay marketplace supports PayPal as a payment method, and the listing category supports immediate payment (the <b>AutoPayEnabled</b> should be returned as <code>true</code> in the <b>GetCategories</b> response). To enable the listing with the immediated payment requirement, <b>AutoPay</b> must be <code>true</code>, the
+     *  <b>PayPalEmailAddress</b> field must be included and must have a valid PayPal email address for the seller, and the only specified
      *  <b>PaymentMethods</b> value must be <code>PayPal</code>.
+     *  <br>
+     *  <br>
+     *  <b>For sellers opted in to eBay managed payments</b>: the only requirement is that the listing category supports immediate payments. With managed payments, eBay handles the payment methods available to the buyer, so the seller will not have to specify any payment methods, and will not have include the <b>PayPalEmailAddress</b> field. The seller only has to include the <b>AutoPay</b> field and set it to <code>true</code> to create an Immediate Payment listing.
      *  <br/><br/>
-     *  For a non-Immediate Payment listing,
-     *  the <b>AutoPay</b> flag is not required since it defaults to <code>false</code>.
+     *  If a seller does not wish to require immediate payment, the <b>AutoPay</b> flag is not required since it defaults to <code>false</code>.
+     *  <br/>
      *
      * @param bool $autoPay
      * @return self
@@ -2737,32 +2736,6 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     }
 
     /**
-     * Gets as listingDesigner
-     *
-     * Contains the detail data for the Listing Designer theme and template (if either are used), which can optionally be used to enhance the appearance of the description area of an item's description.
-     *
-     * @return \Nogrod\eBaySDK\MerchantData\ListingDesignerType
-     */
-    public function getListingDesigner()
-    {
-        return $this->listingDesigner;
-    }
-
-    /**
-     * Sets a new listingDesigner
-     *
-     * Contains the detail data for the Listing Designer theme and template (if either are used), which can optionally be used to enhance the appearance of the description area of an item's description.
-     *
-     * @param \Nogrod\eBaySDK\MerchantData\ListingDesignerType $listingDesigner
-     * @return self
-     */
-    public function setListingDesigner(\Nogrod\eBaySDK\MerchantData\ListingDesignerType $listingDesigner)
-    {
-        $this->listingDesigner = $listingDesigner;
-        return $this;
-    }
-
-    /**
      * Gets as listingDuration
      *
      * Describes the number of days the seller wants the listing to be active (available for bidding/buying). The duration specifies the seller's initial intent at listing time.
@@ -3137,16 +3110,16 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *
      * Identifies the payment method (such as PayPal) that the seller will accept
      *  when the buyer pays for the item. For Add/Revise/Relist calls, at least
-     *  one payment method must be specified unless the seller is opted in to the new eBay Managed Payments program.
+     *  one payment method must be specified unless the seller is onboarded for eBay managed payments.
      *  <br>
      *  <br>
      *  <span class="tablenote"><b>Note: </b> If you set up a payment policy via the <a href="https://developer.ebay.com/api-docs/sell/account/resources/payment_policy/methods/createPaymentPolicy">Account API</a> or the <a href="https://developer.ebay.com/Devzone/business-policies/CallRef/addSellerProfile.html">Business Polices Managment API</a>, then you should not populate this field. Instead, indicate your payment policy using the <b>SellerProfiles.SellerPaymentProfile</b> container.
      *  </span>
      *  <br>
-     *  <span class="tablenote"><b>Note:</b> The new eBay Managed Payments program is currently only available to a limited number of sellers on the US site. For sellers in the eBay Managed Payments program, a payment method does not need to be specified at listing time. Any payment method that is specified at listing time (or defined in a payment business policy) will be ignored and dropped from the listing, and the seller will get a warning message in the response. Immediate payment is supported for sellers in the eBay Managed Payments program, so they can include the <b>AutoPay</b> field in the request and set its value to <code>true</code>.
+     *  <span class="tablenote"><b>Note:</b> eBay managed payments is currently available to a select set of sellers. For the current list of eBay marketplaces in which eBay managed payments has rolled out, see the <a href="https://developer.ebay.com/managed-payments" target="_blank">eBay Managed Payments</a> landing page. For sellers in the eBay managed payments program, a payment method does not need to be specified at listing time. Any payment method that is specified at listing time (or defined in a payment business policy) will be ignored and dropped from the listing, and the seller will get a warning message in the response. Immediate payment is supported for sellers in the eBay managed payments program, so they can include the <b>AutoPay</b> field in the request and set its value to <code>true</code>.
      *  </span>
      *  <br>
-     *  <span class="tablenote"><b>Note:</b> As of May 1, 2019, eBay no longer supports electronic payments through a seller's Integrated Merchant Credit Card account. To accept online credit card payments from buyers, a seller must either specify <code>PayPal</code> as an accepted payment method, or opt in to the eBay Managed Payments program. If <code>IMCC</code> is passed in as a value, this value will be ignored and dropped (and listing will possibly get blocked if <code>IMCC</code> is the only specified payment method).
+     *  <span class="tablenote"><b>Note:</b> As of May 1, 2019, eBay no longer supports electronic payments through a seller's Integrated Merchant Credit Card account. If <code>IMCC</code> is passed in as a value, this value will be ignored and dropped (and listing will possibly get blocked if <code>IMCC</code> is the only specified payment method).
      *  </span><br>
      *  Use <b>GetCategoryFeatures</b> to determine the payment methods that are allowed for a category on a site. For example, the response data of <b>GetCategoryFeatures</b> will show that on the US site, most categories only allow electronic payments. Also use <b>GetCategoryFeatures</b> to determine the default payment methods for a site.
      *  <br><br>
@@ -3205,16 +3178,16 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *
      * Identifies the payment method (such as PayPal) that the seller will accept
      *  when the buyer pays for the item. For Add/Revise/Relist calls, at least
-     *  one payment method must be specified unless the seller is opted in to the new eBay Managed Payments program.
+     *  one payment method must be specified unless the seller is onboarded for eBay managed payments.
      *  <br>
      *  <br>
      *  <span class="tablenote"><b>Note: </b> If you set up a payment policy via the <a href="https://developer.ebay.com/api-docs/sell/account/resources/payment_policy/methods/createPaymentPolicy">Account API</a> or the <a href="https://developer.ebay.com/Devzone/business-policies/CallRef/addSellerProfile.html">Business Polices Managment API</a>, then you should not populate this field. Instead, indicate your payment policy using the <b>SellerProfiles.SellerPaymentProfile</b> container.
      *  </span>
      *  <br>
-     *  <span class="tablenote"><b>Note:</b> The new eBay Managed Payments program is currently only available to a limited number of sellers on the US site. For sellers in the eBay Managed Payments program, a payment method does not need to be specified at listing time. Any payment method that is specified at listing time (or defined in a payment business policy) will be ignored and dropped from the listing, and the seller will get a warning message in the response. Immediate payment is supported for sellers in the eBay Managed Payments program, so they can include the <b>AutoPay</b> field in the request and set its value to <code>true</code>.
+     *  <span class="tablenote"><b>Note:</b> eBay managed payments is currently available to a select set of sellers. For the current list of eBay marketplaces in which eBay managed payments has rolled out, see the <a href="https://developer.ebay.com/managed-payments" target="_blank">eBay Managed Payments</a> landing page. For sellers in the eBay managed payments program, a payment method does not need to be specified at listing time. Any payment method that is specified at listing time (or defined in a payment business policy) will be ignored and dropped from the listing, and the seller will get a warning message in the response. Immediate payment is supported for sellers in the eBay managed payments program, so they can include the <b>AutoPay</b> field in the request and set its value to <code>true</code>.
      *  </span>
      *  <br>
-     *  <span class="tablenote"><b>Note:</b> As of May 1, 2019, eBay no longer supports electronic payments through a seller's Integrated Merchant Credit Card account. To accept online credit card payments from buyers, a seller must either specify <code>PayPal</code> as an accepted payment method, or opt in to the eBay Managed Payments program. If <code>IMCC</code> is passed in as a value, this value will be ignored and dropped (and listing will possibly get blocked if <code>IMCC</code> is the only specified payment method).
+     *  <span class="tablenote"><b>Note:</b> As of May 1, 2019, eBay no longer supports electronic payments through a seller's Integrated Merchant Credit Card account. If <code>IMCC</code> is passed in as a value, this value will be ignored and dropped (and listing will possibly get blocked if <code>IMCC</code> is the only specified payment method).
      *  </span><br>
      *  Use <b>GetCategoryFeatures</b> to determine the payment methods that are allowed for a category on a site. For example, the response data of <b>GetCategoryFeatures</b> will show that on the US site, most categories only allow electronic payments. Also use <b>GetCategoryFeatures</b> to determine the default payment methods for a site.
      *  <br><br>
@@ -3272,16 +3245,16 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *
      * Identifies the payment method (such as PayPal) that the seller will accept
      *  when the buyer pays for the item. For Add/Revise/Relist calls, at least
-     *  one payment method must be specified unless the seller is opted in to the new eBay Managed Payments program.
+     *  one payment method must be specified unless the seller is onboarded for eBay managed payments.
      *  <br>
      *  <br>
      *  <span class="tablenote"><b>Note: </b> If you set up a payment policy via the <a href="https://developer.ebay.com/api-docs/sell/account/resources/payment_policy/methods/createPaymentPolicy">Account API</a> or the <a href="https://developer.ebay.com/Devzone/business-policies/CallRef/addSellerProfile.html">Business Polices Managment API</a>, then you should not populate this field. Instead, indicate your payment policy using the <b>SellerProfiles.SellerPaymentProfile</b> container.
      *  </span>
      *  <br>
-     *  <span class="tablenote"><b>Note:</b> The new eBay Managed Payments program is currently only available to a limited number of sellers on the US site. For sellers in the eBay Managed Payments program, a payment method does not need to be specified at listing time. Any payment method that is specified at listing time (or defined in a payment business policy) will be ignored and dropped from the listing, and the seller will get a warning message in the response. Immediate payment is supported for sellers in the eBay Managed Payments program, so they can include the <b>AutoPay</b> field in the request and set its value to <code>true</code>.
+     *  <span class="tablenote"><b>Note:</b> eBay managed payments is currently available to a select set of sellers. For the current list of eBay marketplaces in which eBay managed payments has rolled out, see the <a href="https://developer.ebay.com/managed-payments" target="_blank">eBay Managed Payments</a> landing page. For sellers in the eBay managed payments program, a payment method does not need to be specified at listing time. Any payment method that is specified at listing time (or defined in a payment business policy) will be ignored and dropped from the listing, and the seller will get a warning message in the response. Immediate payment is supported for sellers in the eBay managed payments program, so they can include the <b>AutoPay</b> field in the request and set its value to <code>true</code>.
      *  </span>
      *  <br>
-     *  <span class="tablenote"><b>Note:</b> As of May 1, 2019, eBay no longer supports electronic payments through a seller's Integrated Merchant Credit Card account. To accept online credit card payments from buyers, a seller must either specify <code>PayPal</code> as an accepted payment method, or opt in to the eBay Managed Payments program. If <code>IMCC</code> is passed in as a value, this value will be ignored and dropped (and listing will possibly get blocked if <code>IMCC</code> is the only specified payment method).
+     *  <span class="tablenote"><b>Note:</b> As of May 1, 2019, eBay no longer supports electronic payments through a seller's Integrated Merchant Credit Card account. If <code>IMCC</code> is passed in as a value, this value will be ignored and dropped (and listing will possibly get blocked if <code>IMCC</code> is the only specified payment method).
      *  </span><br>
      *  Use <b>GetCategoryFeatures</b> to determine the payment methods that are allowed for a category on a site. For example, the response data of <b>GetCategoryFeatures</b> will show that on the US site, most categories only allow electronic payments. Also use <b>GetCategoryFeatures</b> to determine the default payment methods for a site.
      *  <br><br>
@@ -3339,16 +3312,16 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *
      * Identifies the payment method (such as PayPal) that the seller will accept
      *  when the buyer pays for the item. For Add/Revise/Relist calls, at least
-     *  one payment method must be specified unless the seller is opted in to the new eBay Managed Payments program.
+     *  one payment method must be specified unless the seller is onboarded for eBay managed payments.
      *  <br>
      *  <br>
      *  <span class="tablenote"><b>Note: </b> If you set up a payment policy via the <a href="https://developer.ebay.com/api-docs/sell/account/resources/payment_policy/methods/createPaymentPolicy">Account API</a> or the <a href="https://developer.ebay.com/Devzone/business-policies/CallRef/addSellerProfile.html">Business Polices Managment API</a>, then you should not populate this field. Instead, indicate your payment policy using the <b>SellerProfiles.SellerPaymentProfile</b> container.
      *  </span>
      *  <br>
-     *  <span class="tablenote"><b>Note:</b> The new eBay Managed Payments program is currently only available to a limited number of sellers on the US site. For sellers in the eBay Managed Payments program, a payment method does not need to be specified at listing time. Any payment method that is specified at listing time (or defined in a payment business policy) will be ignored and dropped from the listing, and the seller will get a warning message in the response. Immediate payment is supported for sellers in the eBay Managed Payments program, so they can include the <b>AutoPay</b> field in the request and set its value to <code>true</code>.
+     *  <span class="tablenote"><b>Note:</b> eBay managed payments is currently available to a select set of sellers. For the current list of eBay marketplaces in which eBay managed payments has rolled out, see the <a href="https://developer.ebay.com/managed-payments" target="_blank">eBay Managed Payments</a> landing page. For sellers in the eBay managed payments program, a payment method does not need to be specified at listing time. Any payment method that is specified at listing time (or defined in a payment business policy) will be ignored and dropped from the listing, and the seller will get a warning message in the response. Immediate payment is supported for sellers in the eBay managed payments program, so they can include the <b>AutoPay</b> field in the request and set its value to <code>true</code>.
      *  </span>
      *  <br>
-     *  <span class="tablenote"><b>Note:</b> As of May 1, 2019, eBay no longer supports electronic payments through a seller's Integrated Merchant Credit Card account. To accept online credit card payments from buyers, a seller must either specify <code>PayPal</code> as an accepted payment method, or opt in to the eBay Managed Payments program. If <code>IMCC</code> is passed in as a value, this value will be ignored and dropped (and listing will possibly get blocked if <code>IMCC</code> is the only specified payment method).
+     *  <span class="tablenote"><b>Note:</b> As of May 1, 2019, eBay no longer supports electronic payments through a seller's Integrated Merchant Credit Card account. If <code>IMCC</code> is passed in as a value, this value will be ignored and dropped (and listing will possibly get blocked if <code>IMCC</code> is the only specified payment method).
      *  </span><br>
      *  Use <b>GetCategoryFeatures</b> to determine the payment methods that are allowed for a category on a site. For example, the response data of <b>GetCategoryFeatures</b> will show that on the US site, most categories only allow electronic payments. Also use <b>GetCategoryFeatures</b> to determine the default payment methods for a site.
      *  <br><br>
@@ -3405,16 +3378,16 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *
      * Identifies the payment method (such as PayPal) that the seller will accept
      *  when the buyer pays for the item. For Add/Revise/Relist calls, at least
-     *  one payment method must be specified unless the seller is opted in to the new eBay Managed Payments program.
+     *  one payment method must be specified unless the seller is onboarded for eBay managed payments.
      *  <br>
      *  <br>
      *  <span class="tablenote"><b>Note: </b> If you set up a payment policy via the <a href="https://developer.ebay.com/api-docs/sell/account/resources/payment_policy/methods/createPaymentPolicy">Account API</a> or the <a href="https://developer.ebay.com/Devzone/business-policies/CallRef/addSellerProfile.html">Business Polices Managment API</a>, then you should not populate this field. Instead, indicate your payment policy using the <b>SellerProfiles.SellerPaymentProfile</b> container.
      *  </span>
      *  <br>
-     *  <span class="tablenote"><b>Note:</b> The new eBay Managed Payments program is currently only available to a limited number of sellers on the US site. For sellers in the eBay Managed Payments program, a payment method does not need to be specified at listing time. Any payment method that is specified at listing time (or defined in a payment business policy) will be ignored and dropped from the listing, and the seller will get a warning message in the response. Immediate payment is supported for sellers in the eBay Managed Payments program, so they can include the <b>AutoPay</b> field in the request and set its value to <code>true</code>.
+     *  <span class="tablenote"><b>Note:</b> eBay managed payments is currently available to a select set of sellers. For the current list of eBay marketplaces in which eBay managed payments has rolled out, see the <a href="https://developer.ebay.com/managed-payments" target="_blank">eBay Managed Payments</a> landing page. For sellers in the eBay managed payments program, a payment method does not need to be specified at listing time. Any payment method that is specified at listing time (or defined in a payment business policy) will be ignored and dropped from the listing, and the seller will get a warning message in the response. Immediate payment is supported for sellers in the eBay managed payments program, so they can include the <b>AutoPay</b> field in the request and set its value to <code>true</code>.
      *  </span>
      *  <br>
-     *  <span class="tablenote"><b>Note:</b> As of May 1, 2019, eBay no longer supports electronic payments through a seller's Integrated Merchant Credit Card account. To accept online credit card payments from buyers, a seller must either specify <code>PayPal</code> as an accepted payment method, or opt in to the eBay Managed Payments program. If <code>IMCC</code> is passed in as a value, this value will be ignored and dropped (and listing will possibly get blocked if <code>IMCC</code> is the only specified payment method).
+     *  <span class="tablenote"><b>Note:</b> As of May 1, 2019, eBay no longer supports electronic payments through a seller's Integrated Merchant Credit Card account. If <code>IMCC</code> is passed in as a value, this value will be ignored and dropped (and listing will possibly get blocked if <code>IMCC</code> is the only specified payment method).
      *  </span><br>
      *  Use <b>GetCategoryFeatures</b> to determine the payment methods that are allowed for a category on a site. For example, the response data of <b>GetCategoryFeatures</b> will show that on the US site, most categories only allow electronic payments. Also use <b>GetCategoryFeatures</b> to determine the default payment methods for a site.
      *  <br><br>
@@ -3629,10 +3602,10 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Gets as productListingDetails
      *
-     * This container is used to provide one or more product identifiers for a product, and if desired by the seller, or required by eBay, the product can be matched to an eBay Catalog product. If a seller's product is matched to an eBay Catalog product, the product details associated with that catalog product will be prefilled for the listing. Product details defined for a catalog product include the product title, product description, product aspects, and stock image(s) of the product.
+     * This container is used to provide one or more product identifiers for a product, and if desired by the seller, eBay will use the identifier(s) of the product to try to match it to a defined product in the eBay catalog. If a seller's product is matched to an eBay catalog product, the product details associated with that catalog product will be prefilled for the listing. Product details defined for a catalog product include the product title, product description, product aspects, and stock image(s) of the product (if available).
      *  <br>
      *  <br>
-     *  In some eBay categories, one or more product identifier types (e.g. UPC or ISBN) may be required, but the category may not have any eBay Catalog products defined, or the category does not allow listings to be created using a catalog product. Note that the <b>GetCategorySpecifics</b> call or the <b>GetCategoryFeatures</b> call can be used to retrieve supported/required product identifier types.
+     *  In some eBay categories, one or more product identifier types (e.g. UPC or ISBN) may be required, but the category may not have any eBay catalog products defined, or the category does not allow listings to be created using a catalog product. Note that the <b>GetCategorySpecifics</b> call or the <b>GetCategoryFeatures</b> call can be used to retrieve supported/required product identifier types.
      *  <br>
      *  <br>
      *  <span class="tablenote"><b>Note:</b>
@@ -3661,10 +3634,10 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Sets a new productListingDetails
      *
-     * This container is used to provide one or more product identifiers for a product, and if desired by the seller, or required by eBay, the product can be matched to an eBay Catalog product. If a seller's product is matched to an eBay Catalog product, the product details associated with that catalog product will be prefilled for the listing. Product details defined for a catalog product include the product title, product description, product aspects, and stock image(s) of the product.
+     * This container is used to provide one or more product identifiers for a product, and if desired by the seller, eBay will use the identifier(s) of the product to try to match it to a defined product in the eBay catalog. If a seller's product is matched to an eBay catalog product, the product details associated with that catalog product will be prefilled for the listing. Product details defined for a catalog product include the product title, product description, product aspects, and stock image(s) of the product (if available).
      *  <br>
      *  <br>
-     *  In some eBay categories, one or more product identifier types (e.g. UPC or ISBN) may be required, but the category may not have any eBay Catalog products defined, or the category does not allow listings to be created using a catalog product. Note that the <b>GetCategorySpecifics</b> call or the <b>GetCategoryFeatures</b> call can be used to retrieve supported/required product identifier types.
+     *  In some eBay categories, one or more product identifier types (e.g. UPC or ISBN) may be required, but the category may not have any eBay catalog products defined, or the category does not allow listings to be created using a catalog product. Note that the <b>GetCategorySpecifics</b> call or the <b>GetCategoryFeatures</b> call can be used to retrieve supported/required product identifier types.
      *  <br>
      *  <br>
      *  <span class="tablenote"><b>Note:</b>
@@ -3695,7 +3668,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Gets as quantity
      *
-     * <b>For <b>AddItem</b> family of calls:</b> The <b>Quantity</b> value for auction listings must always be <code>1</code>. For a fixed-price listing, the <b>Quantity</b> value indicates the number of identical items the seller has available for sale in the listing. If variations are specified in <b>AddFixedPriceItem</b> or <b> VerifyAddFixedPriceItem</b>, the <b>Item.Quantity</b> is not required since the quantity of variations is specified in <b>Variation.Quantity</b> instead. See the <a href="https://pages.ebay.com/help/sell/listing-variations.html">Creating a listing with variations</a> eBay Help page for more information on variations.
+     * <b>For <b>AddItem</b> family of calls:</b> The <b>Quantity</b> value for auction listings must always be <code>1</code>. For a fixed-price listing, the <b>Quantity</b> value indicates the number of identical items the seller has available for sale in the listing. If this field is not included when creating a new fixed-price listing, quantity defaults to '1'. If variations are specified in <b>AddFixedPriceItem</b> or <b> VerifyAddFixedPriceItem</b>, the <b>Item.Quantity</b> is not required since the quantity of variations is specified in <b>Variation.Quantity</b> instead. See the <a href="https://pages.ebay.com/help/sell/listing-variations.html">Creating a listing with variations</a> eBay Help page for more information on variations.
      *  <br><br>
      *  <b>For ReviseItem and ReviseFixedPriceItem:</b>
      *  This value can only be changed for a fixed-price listing with no variations. The
@@ -3745,7 +3718,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Sets a new quantity
      *
-     * <b>For <b>AddItem</b> family of calls:</b> The <b>Quantity</b> value for auction listings must always be <code>1</code>. For a fixed-price listing, the <b>Quantity</b> value indicates the number of identical items the seller has available for sale in the listing. If variations are specified in <b>AddFixedPriceItem</b> or <b> VerifyAddFixedPriceItem</b>, the <b>Item.Quantity</b> is not required since the quantity of variations is specified in <b>Variation.Quantity</b> instead. See the <a href="https://pages.ebay.com/help/sell/listing-variations.html">Creating a listing with variations</a> eBay Help page for more information on variations.
+     * <b>For <b>AddItem</b> family of calls:</b> The <b>Quantity</b> value for auction listings must always be <code>1</code>. For a fixed-price listing, the <b>Quantity</b> value indicates the number of identical items the seller has available for sale in the listing. If this field is not included when creating a new fixed-price listing, quantity defaults to '1'. If variations are specified in <b>AddFixedPriceItem</b> or <b> VerifyAddFixedPriceItem</b>, the <b>Item.Quantity</b> is not required since the quantity of variations is specified in <b>Variation.Quantity</b> instead. See the <a href="https://pages.ebay.com/help/sell/listing-variations.html">Creating a listing with variations</a> eBay Help page for more information on variations.
      *  <br><br>
      *  <b>For ReviseItem and ReviseFixedPriceItem:</b>
      *  This value can only be changed for a fixed-price listing with no variations. The
@@ -4036,15 +4009,8 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  If you list on the main eBay site, the primary category could be 57988 and
      *  the secondary category could be 6750. <br>
      *  <br>
-     *  If eBay has designated a category as a value category
-     *  (see ValueCategory in <b>GetCategoryFeatures</b>), items in that category
-     *  cannot be listed in two categories.
-     *  For example, if your <b>AddItem</b> request
-     *  includes a primary or secondary category that is a value category, then eBay drops <b>SecondaryCategory</b> and lists
-     *  the item with only the <b>PrimaryCategory</b> you selected.
-     *  Also, if the listing request includes Item Specifics
-     *  (in <b>ItemSpecifics</b>) that are associated with <b>SecondaryCategory</b>, eBay drops those values when we drop <b>SecondaryCategory</b>. (The same logic is used if you revise an existing
-     *  listing to add a secondary category or to change one of the categories: If either the primary or secondary category is a value category, eBay drops the secondary category from your request.)<br>
+     *  If eBay has designated a listing category as a value category (see ValueCategory in <b>GetCategoryFeatures</b>), and that listing category will be the seller's primary category, the seller will not be able to list their item in a secondary category. If a seller's request payload includes a primary or a secondary category that is designated as a value category, then eBay drops the <b>SecondaryCategory</b> ID and only lists the item in the category specified with the <b>PrimaryCategory</b> ID. Also, if the listing request includes Item Specifics (in <b>ItemSpecifics</b>) that are associated with the <b>SecondaryCategory</b>, eBay drops those values as well when the <b>SecondaryCategory</b> is dropped. The same logic is used if you revise an existing listing to add a secondary category, or to change one of the categories: If either the primary or secondary category is a value category, eBay drops the secondary category from your request.)
+     *  <br>
      *  <br>
      *  To remove this value when relisting an item, use <b>DeletedField</b>.
      *  <br><br>
@@ -4082,15 +4048,8 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  If you list on the main eBay site, the primary category could be 57988 and
      *  the secondary category could be 6750. <br>
      *  <br>
-     *  If eBay has designated a category as a value category
-     *  (see ValueCategory in <b>GetCategoryFeatures</b>), items in that category
-     *  cannot be listed in two categories.
-     *  For example, if your <b>AddItem</b> request
-     *  includes a primary or secondary category that is a value category, then eBay drops <b>SecondaryCategory</b> and lists
-     *  the item with only the <b>PrimaryCategory</b> you selected.
-     *  Also, if the listing request includes Item Specifics
-     *  (in <b>ItemSpecifics</b>) that are associated with <b>SecondaryCategory</b>, eBay drops those values when we drop <b>SecondaryCategory</b>. (The same logic is used if you revise an existing
-     *  listing to add a secondary category or to change one of the categories: If either the primary or secondary category is a value category, eBay drops the secondary category from your request.)<br>
+     *  If eBay has designated a listing category as a value category (see ValueCategory in <b>GetCategoryFeatures</b>), and that listing category will be the seller's primary category, the seller will not be able to list their item in a secondary category. If a seller's request payload includes a primary or a secondary category that is designated as a value category, then eBay drops the <b>SecondaryCategory</b> ID and only lists the item in the category specified with the <b>PrimaryCategory</b> ID. Also, if the listing request includes Item Specifics (in <b>ItemSpecifics</b>) that are associated with the <b>SecondaryCategory</b>, eBay drops those values as well when the <b>SecondaryCategory</b> is dropped. The same logic is used if you revise an existing listing to add a secondary category, or to change one of the categories: If either the primary or secondary category is a value category, eBay drops the secondary category from your request.)
+     *  <br>
      *  <br>
      *  To remove this value when relisting an item, use <b>DeletedField</b>.
      *  <br><br>
@@ -4482,7 +4441,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Gets as site
      *
-     * The name of the site on which the item is listed. The listing site affects
+     * The name of the eBay listing site. The listing site affects
      *  the business logic and validation rules that are applied to the request,
      *  which in turn affect the values that are returned in the response, as well
      *  as values that appear on the eBay site. For example, the listing site
@@ -4496,7 +4455,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <br>
      *  When you specify <b>Item.Site</b> in <b>AddItem</b> or <b>AddFixedPriceItem</b>, it must be consistent with the
      *  numeric site ID that you specify in the request URL (for the SOAP API) or
-     *  the <b>X-EBAY- API-SITEID</b> header (for the XML API).
+     *  the <b>X-EBAY-API-SITEID</b> header (for the XML API).
      *
      * @return string
      */
@@ -4508,7 +4467,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Sets a new site
      *
-     * The name of the site on which the item is listed. The listing site affects
+     * The name of the eBay listing site. The listing site affects
      *  the business logic and validation rules that are applied to the request,
      *  which in turn affect the values that are returned in the response, as well
      *  as values that appear on the eBay site. For example, the listing site
@@ -4522,7 +4481,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <br>
      *  When you specify <b>Item.Site</b> in <b>AddItem</b> or <b>AddFixedPriceItem</b>, it must be consistent with the
      *  numeric site ID that you specify in the request URL (for the SOAP API) or
-     *  the <b>X-EBAY- API-SITEID</b> header (for the XML API).
+     *  the <b>X-EBAY-API-SITEID</b> header (for the XML API).
      *
      * @param string $site
      * @return self
@@ -5031,6 +4990,9 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  created programmatically using the <b>SetTaxTable</b> call, or it can be created
      *  manually in My eBay's Payment Preferences. If <b>UseTaxTable</b> is set to <code>true</code>,
      *  the values contained in the seller's sales tax table will supersede the values contained in the <b>Item.ShippingDetails.SalesTax</b> container (if included in the request).
+     *  <br><br>
+     *  <span class="tablenote"><b>Note: </b> As of September 1, 2020, buyers in over 40 US states will automatically be charged sales tax for eBay purchases. eBay will collect and remit this sales tax to the proper taxing authority on the buyer's behalf. The Sales Tax Table page for eBay US is being updated as each US state starts requiring collection of sales tax. This means that the seller no longer has control over, nor can specify a sales tax rate for these states. For a list of the US states that are currently subject to 'eBay Collect and Remit', or will become subject to 'eBay Collect and Remit', see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section4">eBay sales tax collection</a> help topic.
+     *  </span>
      *
      * @return bool
      */
@@ -5047,6 +5009,9 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  created programmatically using the <b>SetTaxTable</b> call, or it can be created
      *  manually in My eBay's Payment Preferences. If <b>UseTaxTable</b> is set to <code>true</code>,
      *  the values contained in the seller's sales tax table will supersede the values contained in the <b>Item.ShippingDetails.SalesTax</b> container (if included in the request).
+     *  <br><br>
+     *  <span class="tablenote"><b>Note: </b> As of September 1, 2020, buyers in over 40 US states will automatically be charged sales tax for eBay purchases. eBay will collect and remit this sales tax to the proper taxing authority on the buyer's behalf. The Sales Tax Table page for eBay US is being updated as each US state starts requiring collection of sales tax. This means that the seller no longer has control over, nor can specify a sales tax rate for these states. For a list of the US states that are currently subject to 'eBay Collect and Remit', or will become subject to 'eBay Collect and Remit', see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section4">eBay sales tax collection</a> help topic.
+     *  </span>
      *
      * @param bool $useTaxTable
      * @return self
@@ -5480,7 +5445,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  commits to for preparing an item to be shipped after receiving a
      *  cleared payment. This time does not include the shipping time (the carrier's transit time).
      *  <br><br>
-     *  <span class="tablenote"><b>Note:</b> If the seller opts into the eBay Guaranteed Delivery feature and wants to make a listing eligible for eBay Guaranteed Delivery, the <b>DispatchTimeMax</b> value must be set to <code>0</code> or <code>1</code> (days) and the cumulative value of <b>DispatchTimeMax</b> plus the transit time of the shipping service (returned in <b>ShippingServiceDetails.ShippingTimeMax</b> field of <b>GeteBayDetails</b>) must be 4 business days or less to be eligible for this feature. See the <a href="https://pages.ebay.com/seller-center/shipping/ebay-guaranteed-delivery.html" target="_blank">eBay Guaranteed Delivery</a> page in Seller Center for more information on this program.
+     *  <span class="tablenote"><b>Note:</b> If the seller opts into the eBay Guaranteed Delivery feature and wants to make a listing eligible for eBay Guaranteed Delivery, the <b>DispatchTimeMax</b> value must be set to <code>0</code> or <code>1</code> (days) and the cumulative value of <b>DispatchTimeMax</b> plus the transit time of the shipping service (returned in <b>ShippingServiceDetails.ShippingTimeMax</b> field of <b>GeteBayDetails</b>) must be 4 business days or less to be eligible for this feature. See the <a href="https://pages.ebay.com/seller-center/shipping/ebay-guaranteed-delivery.html" target="_blank">eBay Guaranteed Delivery</a> page in Seller Center for more information on this program. The eBay Guaranteed Delivery feature is only available on the US and Australia marketplaces.
      *  </span>
      *  <br>
      *  <b>For Add/Revise/Relist calls:</b> Required for
@@ -5488,14 +5453,10 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  (with delivery) are offered. See <b>HandlingTimeEnabled</b> in
      *  <b>GetCategoryFeatures</b>.<br>
      *  <br>
-     *  The seller sets this to a positive integer value corresponding to the number of days. For a list of allowed values
-     *  on each eBay site, use <b>DispatchTimeMaxDetails</b> in <b>GeteBayDetails</b>.
-     *  (Typical values are <code>1</code>, <code>2</code>, <code>3</code>, <code>4</code>, <code>5</code>, <code>10</code>, <code>15</code>, or <code>20</code>, but this can vary
-     *  by site and these may change over time.)<br>
+     *  The seller sets this to a positive integer value corresponding to the number of 'handling' days. For a list of allowed values
+     *  on each eBay site, use <b>DispatchTimeMaxDetails</b> in <b>GeteBayDetails</b>. Supported handling times for most sites in most categories range from 0 (same-day handling) to 3 business days, but this can vary by site. Some categories on some sites support longer handling times, and this generally comes into play with extremely large items where freight shipping may be required. <br>
      *  <br>
-     *  Valid for flat and calculated shipping. Does not apply when
-     *  there is no shipping, when it is local pickup only or it is freight shipping. For example, when <b>ShippingService</b> = <code>Pickup</code> or
-     *  <b>ShipToLocations</b> = <code>None</code>, then <b>DispatchTimeMax</b> is not required (or it can be <code>0</code>).<br>
+     *  This field is required whenever flat-rate or calculated shipping is used, but does not apply when there is no shipping involved, which is the case for digital gift card listings, or any orders where local pickup is available and this option is selected by the buyer.<br>
      *  <br>
      *  <b>For ReviseItem only:</b>
      *  If the listing has bids or sales and it ends within 12 hours, you can't change this value.
@@ -5522,7 +5483,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  commits to for preparing an item to be shipped after receiving a
      *  cleared payment. This time does not include the shipping time (the carrier's transit time).
      *  <br><br>
-     *  <span class="tablenote"><b>Note:</b> If the seller opts into the eBay Guaranteed Delivery feature and wants to make a listing eligible for eBay Guaranteed Delivery, the <b>DispatchTimeMax</b> value must be set to <code>0</code> or <code>1</code> (days) and the cumulative value of <b>DispatchTimeMax</b> plus the transit time of the shipping service (returned in <b>ShippingServiceDetails.ShippingTimeMax</b> field of <b>GeteBayDetails</b>) must be 4 business days or less to be eligible for this feature. See the <a href="https://pages.ebay.com/seller-center/shipping/ebay-guaranteed-delivery.html" target="_blank">eBay Guaranteed Delivery</a> page in Seller Center for more information on this program.
+     *  <span class="tablenote"><b>Note:</b> If the seller opts into the eBay Guaranteed Delivery feature and wants to make a listing eligible for eBay Guaranteed Delivery, the <b>DispatchTimeMax</b> value must be set to <code>0</code> or <code>1</code> (days) and the cumulative value of <b>DispatchTimeMax</b> plus the transit time of the shipping service (returned in <b>ShippingServiceDetails.ShippingTimeMax</b> field of <b>GeteBayDetails</b>) must be 4 business days or less to be eligible for this feature. See the <a href="https://pages.ebay.com/seller-center/shipping/ebay-guaranteed-delivery.html" target="_blank">eBay Guaranteed Delivery</a> page in Seller Center for more information on this program. The eBay Guaranteed Delivery feature is only available on the US and Australia marketplaces.
      *  </span>
      *  <br>
      *  <b>For Add/Revise/Relist calls:</b> Required for
@@ -5530,14 +5491,10 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  (with delivery) are offered. See <b>HandlingTimeEnabled</b> in
      *  <b>GetCategoryFeatures</b>.<br>
      *  <br>
-     *  The seller sets this to a positive integer value corresponding to the number of days. For a list of allowed values
-     *  on each eBay site, use <b>DispatchTimeMaxDetails</b> in <b>GeteBayDetails</b>.
-     *  (Typical values are <code>1</code>, <code>2</code>, <code>3</code>, <code>4</code>, <code>5</code>, <code>10</code>, <code>15</code>, or <code>20</code>, but this can vary
-     *  by site and these may change over time.)<br>
+     *  The seller sets this to a positive integer value corresponding to the number of 'handling' days. For a list of allowed values
+     *  on each eBay site, use <b>DispatchTimeMaxDetails</b> in <b>GeteBayDetails</b>. Supported handling times for most sites in most categories range from 0 (same-day handling) to 3 business days, but this can vary by site. Some categories on some sites support longer handling times, and this generally comes into play with extremely large items where freight shipping may be required. <br>
      *  <br>
-     *  Valid for flat and calculated shipping. Does not apply when
-     *  there is no shipping, when it is local pickup only or it is freight shipping. For example, when <b>ShippingService</b> = <code>Pickup</code> or
-     *  <b>ShipToLocations</b> = <code>None</code>, then <b>DispatchTimeMax</b> is not required (or it can be <code>0</code>).<br>
+     *  This field is required whenever flat-rate or calculated shipping is used, but does not apply when there is no shipping involved, which is the case for digital gift card listings, or any orders where local pickup is available and this option is selected by the buyer.<br>
      *  <br>
      *  <b>For ReviseItem only:</b>
      *  If the listing has bids or sales and it ends within 12 hours, you can't change this value.
@@ -6386,11 +6343,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  provide the entire set of buyer requirements to modify or add any of the
      *  requirements.
      *  <br/><br/>
-     *  Unless otherwise specified, most buyer requirements are only
-     *  returned if the caller is the seller. All global My eBay Buyer Requirements
-     *  are overridden by the contents of this container. This means that buyer
-     *  requirements set in My eBay cannot be combined with buyer requirements
-     *  included in this container.
+     *  Unless otherwise specified, most buyer requirements are only returned if the caller is the seller. Any and all My eBay account-level Buyer Requirements are overridden by the contents of this container. This means that buyer requirements set in My eBay cannot be combined with buyer requirements included in this container.
      *
      * @return \Nogrod\eBaySDK\MerchantData\BuyerRequirementDetailsType
      */
@@ -6410,11 +6363,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  provide the entire set of buyer requirements to modify or add any of the
      *  requirements.
      *  <br/><br/>
-     *  Unless otherwise specified, most buyer requirements are only
-     *  returned if the caller is the seller. All global My eBay Buyer Requirements
-     *  are overridden by the contents of this container. This means that buyer
-     *  requirements set in My eBay cannot be combined with buyer requirements
-     *  included in this container.
+     *  Unless otherwise specified, most buyer requirements are only returned if the caller is the seller. Any and all My eBay account-level Buyer Requirements are overridden by the contents of this container. This means that buyer requirements set in My eBay cannot be combined with buyer requirements included in this container.
      *
      * @param \Nogrod\eBaySDK\MerchantData\BuyerRequirementDetailsType $buyerRequirementDetails
      * @return self
@@ -6466,6 +6415,9 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  listing site.
      *  <br><br>
      *  <span class="tablenote"><b>Note:</b> The <b>GeteBayDetails</b> call can be used to retrieve site-wide return policy metadata, but it is recommended that sellers use the <b>GetCategoryFeatures</b> call instead, as this call was recently updated to retrieve category-level metadata for both domestic and international return policies.</span>
+     *  <br>
+     *  <span class="tablenote"><b>Note:</b> In May 2018, eBay added the ability to create a separate international return policy for items that are shipped to international customers. If a seller does not add a separate international return policy, the settings in the domestic return policy will be used instead for international returns. For more information on setting separate domestic and international return policies, see the
+     *  <a href="https://pages.ebay.com/seller-center/seller-updates/2018-summer/simplified-returns.html#international-returns-policy" target="_blank">International returns policy</a> help topic. For the international equivalent of this field, see the <b>InternationalRefundMethodValues</b> field.</span>
      *
      * @return \Nogrod\eBaySDK\MerchantData\ReturnPolicyType
      */
@@ -6515,6 +6467,9 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  listing site.
      *  <br><br>
      *  <span class="tablenote"><b>Note:</b> The <b>GeteBayDetails</b> call can be used to retrieve site-wide return policy metadata, but it is recommended that sellers use the <b>GetCategoryFeatures</b> call instead, as this call was recently updated to retrieve category-level metadata for both domestic and international return policies.</span>
+     *  <br>
+     *  <span class="tablenote"><b>Note:</b> In May 2018, eBay added the ability to create a separate international return policy for items that are shipped to international customers. If a seller does not add a separate international return policy, the settings in the domestic return policy will be used instead for international returns. For more information on setting separate domestic and international return policies, see the
+     *  <a href="https://pages.ebay.com/seller-center/seller-updates/2018-summer/simplified-returns.html#international-returns-policy" target="_blank">International returns policy</a> help topic. For the international equivalent of this field, see the <b>InternationalRefundMethodValues</b> field.</span>
      *
      * @param \Nogrod\eBaySDK\MerchantData\ReturnPolicyType $returnPolicy
      * @return self
@@ -6605,6 +6560,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  If a seller will be converting an existing eBay listing into the new Inventory model using the <b>bulkMigrateListings</b> call of the <b>Inventory API</b>, the <b>InventoryTrackingMethod</b> value must be set to <code>ItemID</code> (default value), but the item must also have a SKU value (Item.<b>SKU</b> or Variation.<b>SKU</b>) associated with it.
      *  <b>For GetItem and related calls</b>:
      *  Only returned when the value is <code>SKU</code>; not returned when the value is <code>ItemID</code>.
+     *  <br>
      *
      * @return string
      */
@@ -6622,6 +6578,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  If a seller will be converting an existing eBay listing into the new Inventory model using the <b>bulkMigrateListings</b> call of the <b>Inventory API</b>, the <b>InventoryTrackingMethod</b> value must be set to <code>ItemID</code> (default value), but the item must also have a SKU value (Item.<b>SKU</b> or Variation.<b>SKU</b>) associated with it.
      *  <b>For GetItem and related calls</b>:
      *  Only returned when the value is <code>SKU</code>; not returned when the value is <code>ItemID</code>.
+     *  <br>
      *
      * @param string $inventoryTrackingMethod
      * @return self
@@ -6646,7 +6603,11 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  Express, and Discover).
      *  <br><br>
      *  <span class="tablenote"><b>Note: </b>
-     *  As of May 1, 2019, eBay no longer supports electronic payments through Integrated Merchant Credit Card accounts. To accept online credit card payments from buyers, a seller must specify PayPal as an accepted payment method, or opt in to eBay Managed Payments program (if the program is available to that seller).
+     *  As of May 1, 2019, eBay no longer supports electronic payments through Integrated Merchant Credit Card accounts. To accept online credit card payments from buyers, a seller must specify PayPal as an accepted payment method, or opt in to eBay managed payments program (if the program is available to that seller).
+     *  </span>
+     *  <br> <br>
+     *  <span class="tablenote"><b>Note:</b>
+     *  For the <strong>GetItemTransactions</strong>, <strong>GetOrders</strong>, and <strong>GetOrderTransactions</strong> calls, this field is only returned to the seller of the order; this field is not returned for the buyer or third party.
      *  </span>
      *
      * @return bool
@@ -6670,7 +6631,11 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  Express, and Discover).
      *  <br><br>
      *  <span class="tablenote"><b>Note: </b>
-     *  As of May 1, 2019, eBay no longer supports electronic payments through Integrated Merchant Credit Card accounts. To accept online credit card payments from buyers, a seller must specify PayPal as an accepted payment method, or opt in to eBay Managed Payments program (if the program is available to that seller).
+     *  As of May 1, 2019, eBay no longer supports electronic payments through Integrated Merchant Credit Card accounts. To accept online credit card payments from buyers, a seller must specify PayPal as an accepted payment method, or opt in to eBay managed payments program (if the program is available to that seller).
+     *  </span>
+     *  <br> <br>
+     *  <span class="tablenote"><b>Note:</b>
+     *  For the <strong>GetItemTransactions</strong>, <strong>GetOrders</strong>, and <strong>GetOrderTransactions</strong> calls, this field is only returned to the seller of the order; this field is not returned for the buyer or third party.
      *  </span>
      *
      * @param bool $integratedMerchantCreditCardEnabled
@@ -6937,7 +6902,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *
      * This is a numeric identifier for an item's condition. All numeric Condition ID values map to an item condition string value. For example, numeric identifer <code>1000</code> maps to <code>New</code> condition.
      *  <br><br>
-     *  Most eBay categories require an item condition, but a few eBay categories do not. To verify if the listing category requires an item condition, and if so, what are the supported item condition and <b>ConditionID</b> values, you can call <b>GetCategoryFeatures</b>. In this <b>GetCategoryFeatures</b> call, you'd pass in the listing <b>CategoryID</b> value and two <b>FeatureID</b> fields - one of these fields set to <code>ConditionEnabled</code>, and the other field set to <code>ConditionValues</code>.
+     *  Most eBay listing categories require an item condition, but a few eBay categories do not (such as Digital Gift Cards or Antiques categories). To verify if the listing category requires an item condition, and if so, what are the supported item condition and <b>ConditionID</b> values, you can call <b>GetCategoryFeatures</b>. In this <b>GetCategoryFeatures</b> call, you'd pass in the listing <b>CategoryID</b> value and two <b>FeatureID</b> fields - one of these fields set to <code>ConditionEnabled</code>, and the other field set to <code>ConditionValues</code>.
      *  <br><br>
      *  In the <b>GetCategoryFeatures</b> response, look at the Category.<b>ConditionEnabled</b> to see if item condition is required for the category. Then look at the Category.<b>ConditionValues</b> container in the response for the full list of Condition IDs that you can pass in through the <b>ConditionID</b> field of an Add/Revise/Relist/Verify call. Note that the Condition.<b>DisplayName</b> value in the response is the actual condition value that will appear in the actual eBay listing.
      *  <br>
@@ -6952,6 +6917,14 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <b>For GetItem:</b> The
      *  <b>ConditionID</b> value is always returned if set for the listing. <b>GetItem</b> also returns
      *  the item condition string value in the <b>ConditionDisplayName</b> field.
+     *  <br>
+     *  <br>
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  In all eBay marketplaces, Condition ID 2000 now maps to an item condition of 'Certified Refurbished', and not 'Manufacturer Refurbished'. To list an item as 'Certified Refurbished', a seller must be pre-qualified by eBay for this feature. Any seller who is not eligible for this feature will be blocked if they try to create a new listing or revise an existing listing with this item condition. Any active listings on any eBay marketplace that had 'Manufacturer Refurbished' as the item condition should have been automatically updated by eBay to the 'Seller Refurbished' item condition (Condition ID 2500).
+     *  <br>
+     *  <br>
+     *  Any seller that is interested in eligibility requirements to list with 'Certified Refurbished' should see the <a href="https://pages.ebay.com/seller-center/listing-and-marketing/certified-refurbished-program.html" target="_blank">Certified refurbished program</a> page in Seller Center.
+     *  </span>
      *
      * @return int
      */
@@ -6965,7 +6938,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *
      * This is a numeric identifier for an item's condition. All numeric Condition ID values map to an item condition string value. For example, numeric identifer <code>1000</code> maps to <code>New</code> condition.
      *  <br><br>
-     *  Most eBay categories require an item condition, but a few eBay categories do not. To verify if the listing category requires an item condition, and if so, what are the supported item condition and <b>ConditionID</b> values, you can call <b>GetCategoryFeatures</b>. In this <b>GetCategoryFeatures</b> call, you'd pass in the listing <b>CategoryID</b> value and two <b>FeatureID</b> fields - one of these fields set to <code>ConditionEnabled</code>, and the other field set to <code>ConditionValues</code>.
+     *  Most eBay listing categories require an item condition, but a few eBay categories do not (such as Digital Gift Cards or Antiques categories). To verify if the listing category requires an item condition, and if so, what are the supported item condition and <b>ConditionID</b> values, you can call <b>GetCategoryFeatures</b>. In this <b>GetCategoryFeatures</b> call, you'd pass in the listing <b>CategoryID</b> value and two <b>FeatureID</b> fields - one of these fields set to <code>ConditionEnabled</code>, and the other field set to <code>ConditionValues</code>.
      *  <br><br>
      *  In the <b>GetCategoryFeatures</b> response, look at the Category.<b>ConditionEnabled</b> to see if item condition is required for the category. Then look at the Category.<b>ConditionValues</b> container in the response for the full list of Condition IDs that you can pass in through the <b>ConditionID</b> field of an Add/Revise/Relist/Verify call. Note that the Condition.<b>DisplayName</b> value in the response is the actual condition value that will appear in the actual eBay listing.
      *  <br>
@@ -6980,6 +6953,14 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <b>For GetItem:</b> The
      *  <b>ConditionID</b> value is always returned if set for the listing. <b>GetItem</b> also returns
      *  the item condition string value in the <b>ConditionDisplayName</b> field.
+     *  <br>
+     *  <br>
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  In all eBay marketplaces, Condition ID 2000 now maps to an item condition of 'Certified Refurbished', and not 'Manufacturer Refurbished'. To list an item as 'Certified Refurbished', a seller must be pre-qualified by eBay for this feature. Any seller who is not eligible for this feature will be blocked if they try to create a new listing or revise an existing listing with this item condition. Any active listings on any eBay marketplace that had 'Manufacturer Refurbished' as the item condition should have been automatically updated by eBay to the 'Seller Refurbished' item condition (Condition ID 2500).
+     *  <br>
+     *  <br>
+     *  Any seller that is interested in eligibility requirements to list with 'Certified Refurbished' should see the <a href="https://pages.ebay.com/seller-center/listing-and-marketing/certified-refurbished-program.html" target="_blank">Certified refurbished program</a> page in Seller Center.
+     *  </span>
      *
      * @param int $conditionID
      * @return self
@@ -7433,11 +7414,11 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Gets as sellerProfiles
      *
-     * This container is used if the seller would like to use/reference Business Policies to create, revise, relist, or verify their listing. The seller's account must be opted in to Business Policies to use this container. If this container is used, exactly one Payment Business Policy, one Shipping Business Policy, and one Return Business Policy is applied to the listing. If the seller's account is not opted in to Business Policies, that seller may not use this container. Sellers must opt-in to Business Policies through My eBay or by using the <b>optInToProgram</b> call of the <b>eBay Account API</b>.
+     * This container is used if the seller would like to use/reference business policies to create, revise, relist, or verify their listing. The seller's account must be opted in to business policies to use this container. If this container is used, exactly one Payment Business Policy, one Shipping Business Policy, and one Return Business Policy must be specified and applied to the listing. If the seller's account is not opted in to business policies, that seller may not use this container. Sellers must opt-in to business policies through My eBay or by using the <b>optInToProgram</b> call of the <b>eBay Account API</b>.
      *  <br><br>
-     *  If Business Policies are applied to a listing, all payment, shipping, and return policy settings in these policies will override any other payment, shipping, or return policy legacy fields that are included in the call request.
+     *  If business policies are applied to a listing, all payment, shipping, and return policy settings in these policies will override any other payment, shipping, or return policy legacy fields that are included in the call request.
      *  <br><br>
-     *  This container is only returned in 'Get' calls if Business Policies are set for the listing, and the person making the API call is the seller of the listing.
+     *  This container is only returned in 'Get' calls if business policies are set for the listing, and the person making the API call is the seller of the listing.
      *
      * @return \Nogrod\eBaySDK\MerchantData\SellerProfilesType
      */
@@ -7449,11 +7430,11 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Sets a new sellerProfiles
      *
-     * This container is used if the seller would like to use/reference Business Policies to create, revise, relist, or verify their listing. The seller's account must be opted in to Business Policies to use this container. If this container is used, exactly one Payment Business Policy, one Shipping Business Policy, and one Return Business Policy is applied to the listing. If the seller's account is not opted in to Business Policies, that seller may not use this container. Sellers must opt-in to Business Policies through My eBay or by using the <b>optInToProgram</b> call of the <b>eBay Account API</b>.
+     * This container is used if the seller would like to use/reference business policies to create, revise, relist, or verify their listing. The seller's account must be opted in to business policies to use this container. If this container is used, exactly one Payment Business Policy, one Shipping Business Policy, and one Return Business Policy must be specified and applied to the listing. If the seller's account is not opted in to business policies, that seller may not use this container. Sellers must opt-in to business policies through My eBay or by using the <b>optInToProgram</b> call of the <b>eBay Account API</b>.
      *  <br><br>
-     *  If Business Policies are applied to a listing, all payment, shipping, and return policy settings in these policies will override any other payment, shipping, or return policy legacy fields that are included in the call request.
+     *  If business policies are applied to a listing, all payment, shipping, and return policy settings in these policies will override any other payment, shipping, or return policy legacy fields that are included in the call request.
      *  <br><br>
-     *  This container is only returned in 'Get' calls if Business Policies are set for the listing, and the person making the API call is the seller of the listing.
+     *  This container is only returned in 'Get' calls if business policies are set for the listing, and the person making the API call is the seller of the listing.
      *
      * @param \Nogrod\eBaySDK\MerchantData\SellerProfilesType $sellerProfiles
      * @return self
@@ -7467,11 +7448,11 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Adds as shippingServiceCostOverride
      *
-     * This container is used when the seller wants to override the flat shipping costs for all domestic and/or all international shipping services defined in the Business Policies shipping profile referenced in the <b>SellerProfiles.SellerShippingProfile.ShippingProfileID</b> field. Shipping costs include the cost to ship one item, the cost to ship each additional identical item, and any shipping surcharges applicable to domestic shipping services.
+     * This container is used when the seller wants to override the flat shipping costs for all domestic and/or all international shipping services defined in the shipping business policy referenced in the <b>SellerProfiles.SellerShippingProfile.ShippingProfileID</b> field. Shipping costs include the cost to ship one item, the cost to ship each additional identical item, and any shipping surcharges applicable to domestic shipping services.
      *  <br><br>
-     *  A <b>ShippingServiceCostOverrideList.ShippingServiceCostOverride</b> container is required for each domestic and/or international shipping service that is defined in the <b>domesticShippingPolicyInfoService</b> and <b>intlShippingPolicyInfoService</b> containers of the Business Policies shipping profile.
+     *  A <b>ShippingServiceCostOverrideList.ShippingServiceCostOverride</b> container is required for each domestic and/or international shipping service that is defined in the <b>domesticShippingPolicyInfoService</b> and <b>intlShippingPolicyInfoService</b> containers of the shipping business policy.
      *  <br><br>
-     *  Shipping service cost overrides are a listing-level concept, and the shipping costs specified through each <b>ShippingServiceCostOverrideList.ShippingServiceCostOverride</b> container will not change the shipping costs defined for the same shipping services in the Business Policies shipping profile.
+     *  Shipping service cost overrides are a listing-level concept, and the shipping costs specified through each <b>ShippingServiceCostOverrideList.ShippingServiceCostOverride</b> container will not change the shipping costs defined for the same shipping services in the shipping business policy.
      *  <br><br>
      *  <b>For Revise and Relist calls</b>: To delete all shipping service cost overrides when you revise or relist, specify <b>Item.ShippingServiceCostOverrideList</b> in <b>DeletedField</b>, and don't pass <b>ShippingServiceCostOverrideList</b> in the request.
      *
@@ -7487,11 +7468,11 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * isset shippingServiceCostOverrideList
      *
-     * This container is used when the seller wants to override the flat shipping costs for all domestic and/or all international shipping services defined in the Business Policies shipping profile referenced in the <b>SellerProfiles.SellerShippingProfile.ShippingProfileID</b> field. Shipping costs include the cost to ship one item, the cost to ship each additional identical item, and any shipping surcharges applicable to domestic shipping services.
+     * This container is used when the seller wants to override the flat shipping costs for all domestic and/or all international shipping services defined in the shipping business policy referenced in the <b>SellerProfiles.SellerShippingProfile.ShippingProfileID</b> field. Shipping costs include the cost to ship one item, the cost to ship each additional identical item, and any shipping surcharges applicable to domestic shipping services.
      *  <br><br>
-     *  A <b>ShippingServiceCostOverrideList.ShippingServiceCostOverride</b> container is required for each domestic and/or international shipping service that is defined in the <b>domesticShippingPolicyInfoService</b> and <b>intlShippingPolicyInfoService</b> containers of the Business Policies shipping profile.
+     *  A <b>ShippingServiceCostOverrideList.ShippingServiceCostOverride</b> container is required for each domestic and/or international shipping service that is defined in the <b>domesticShippingPolicyInfoService</b> and <b>intlShippingPolicyInfoService</b> containers of the shipping business policy.
      *  <br><br>
-     *  Shipping service cost overrides are a listing-level concept, and the shipping costs specified through each <b>ShippingServiceCostOverrideList.ShippingServiceCostOverride</b> container will not change the shipping costs defined for the same shipping services in the Business Policies shipping profile.
+     *  Shipping service cost overrides are a listing-level concept, and the shipping costs specified through each <b>ShippingServiceCostOverrideList.ShippingServiceCostOverride</b> container will not change the shipping costs defined for the same shipping services in the shipping business policy.
      *  <br><br>
      *  <b>For Revise and Relist calls</b>: To delete all shipping service cost overrides when you revise or relist, specify <b>Item.ShippingServiceCostOverrideList</b> in <b>DeletedField</b>, and don't pass <b>ShippingServiceCostOverrideList</b> in the request.
      *
@@ -7506,11 +7487,11 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * unset shippingServiceCostOverrideList
      *
-     * This container is used when the seller wants to override the flat shipping costs for all domestic and/or all international shipping services defined in the Business Policies shipping profile referenced in the <b>SellerProfiles.SellerShippingProfile.ShippingProfileID</b> field. Shipping costs include the cost to ship one item, the cost to ship each additional identical item, and any shipping surcharges applicable to domestic shipping services.
+     * This container is used when the seller wants to override the flat shipping costs for all domestic and/or all international shipping services defined in the shipping business policy referenced in the <b>SellerProfiles.SellerShippingProfile.ShippingProfileID</b> field. Shipping costs include the cost to ship one item, the cost to ship each additional identical item, and any shipping surcharges applicable to domestic shipping services.
      *  <br><br>
-     *  A <b>ShippingServiceCostOverrideList.ShippingServiceCostOverride</b> container is required for each domestic and/or international shipping service that is defined in the <b>domesticShippingPolicyInfoService</b> and <b>intlShippingPolicyInfoService</b> containers of the Business Policies shipping profile.
+     *  A <b>ShippingServiceCostOverrideList.ShippingServiceCostOverride</b> container is required for each domestic and/or international shipping service that is defined in the <b>domesticShippingPolicyInfoService</b> and <b>intlShippingPolicyInfoService</b> containers of the shipping business policy.
      *  <br><br>
-     *  Shipping service cost overrides are a listing-level concept, and the shipping costs specified through each <b>ShippingServiceCostOverrideList.ShippingServiceCostOverride</b> container will not change the shipping costs defined for the same shipping services in the Business Policies shipping profile.
+     *  Shipping service cost overrides are a listing-level concept, and the shipping costs specified through each <b>ShippingServiceCostOverrideList.ShippingServiceCostOverride</b> container will not change the shipping costs defined for the same shipping services in the shipping business policy.
      *  <br><br>
      *  <b>For Revise and Relist calls</b>: To delete all shipping service cost overrides when you revise or relist, specify <b>Item.ShippingServiceCostOverrideList</b> in <b>DeletedField</b>, and don't pass <b>ShippingServiceCostOverrideList</b> in the request.
      *
@@ -7525,11 +7506,11 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Gets as shippingServiceCostOverrideList
      *
-     * This container is used when the seller wants to override the flat shipping costs for all domestic and/or all international shipping services defined in the Business Policies shipping profile referenced in the <b>SellerProfiles.SellerShippingProfile.ShippingProfileID</b> field. Shipping costs include the cost to ship one item, the cost to ship each additional identical item, and any shipping surcharges applicable to domestic shipping services.
+     * This container is used when the seller wants to override the flat shipping costs for all domestic and/or all international shipping services defined in the shipping business policy referenced in the <b>SellerProfiles.SellerShippingProfile.ShippingProfileID</b> field. Shipping costs include the cost to ship one item, the cost to ship each additional identical item, and any shipping surcharges applicable to domestic shipping services.
      *  <br><br>
-     *  A <b>ShippingServiceCostOverrideList.ShippingServiceCostOverride</b> container is required for each domestic and/or international shipping service that is defined in the <b>domesticShippingPolicyInfoService</b> and <b>intlShippingPolicyInfoService</b> containers of the Business Policies shipping profile.
+     *  A <b>ShippingServiceCostOverrideList.ShippingServiceCostOverride</b> container is required for each domestic and/or international shipping service that is defined in the <b>domesticShippingPolicyInfoService</b> and <b>intlShippingPolicyInfoService</b> containers of the shipping business policy.
      *  <br><br>
-     *  Shipping service cost overrides are a listing-level concept, and the shipping costs specified through each <b>ShippingServiceCostOverrideList.ShippingServiceCostOverride</b> container will not change the shipping costs defined for the same shipping services in the Business Policies shipping profile.
+     *  Shipping service cost overrides are a listing-level concept, and the shipping costs specified through each <b>ShippingServiceCostOverrideList.ShippingServiceCostOverride</b> container will not change the shipping costs defined for the same shipping services in the shipping business policy.
      *  <br><br>
      *  <b>For Revise and Relist calls</b>: To delete all shipping service cost overrides when you revise or relist, specify <b>Item.ShippingServiceCostOverrideList</b> in <b>DeletedField</b>, and don't pass <b>ShippingServiceCostOverrideList</b> in the request.
      *
@@ -7543,11 +7524,11 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Sets a new shippingServiceCostOverrideList
      *
-     * This container is used when the seller wants to override the flat shipping costs for all domestic and/or all international shipping services defined in the Business Policies shipping profile referenced in the <b>SellerProfiles.SellerShippingProfile.ShippingProfileID</b> field. Shipping costs include the cost to ship one item, the cost to ship each additional identical item, and any shipping surcharges applicable to domestic shipping services.
+     * This container is used when the seller wants to override the flat shipping costs for all domestic and/or all international shipping services defined in the shipping business policy referenced in the <b>SellerProfiles.SellerShippingProfile.ShippingProfileID</b> field. Shipping costs include the cost to ship one item, the cost to ship each additional identical item, and any shipping surcharges applicable to domestic shipping services.
      *  <br><br>
-     *  A <b>ShippingServiceCostOverrideList.ShippingServiceCostOverride</b> container is required for each domestic and/or international shipping service that is defined in the <b>domesticShippingPolicyInfoService</b> and <b>intlShippingPolicyInfoService</b> containers of the Business Policies shipping profile.
+     *  A <b>ShippingServiceCostOverrideList.ShippingServiceCostOverride</b> container is required for each domestic and/or international shipping service that is defined in the <b>domesticShippingPolicyInfoService</b> and <b>intlShippingPolicyInfoService</b> containers of the shipping business policy.
      *  <br><br>
-     *  Shipping service cost overrides are a listing-level concept, and the shipping costs specified through each <b>ShippingServiceCostOverrideList.ShippingServiceCostOverride</b> container will not change the shipping costs defined for the same shipping services in the Business Policies shipping profile.
+     *  Shipping service cost overrides are a listing-level concept, and the shipping costs specified through each <b>ShippingServiceCostOverrideList.ShippingServiceCostOverride</b> container will not change the shipping costs defined for the same shipping services in the shipping business policy.
      *  <br><br>
      *  <b>For Revise and Relist calls</b>: To delete all shipping service cost overrides when you revise or relist, specify <b>Item.ShippingServiceCostOverrideList</b> in <b>DeletedField</b>, and don't pass <b>ShippingServiceCostOverrideList</b> in the request.
      *
@@ -8161,10 +8142,21 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Gets as eBayPlus
      *
-     * If <code>true</code>, this item is being offered under the eBay Plus program. eBay Plus is a premium account option for buyers, which provides benefits such as fast free domestic shipping and free returns on selected items. Top-Rated eBay sellers must opt in to eBay Plus to be able to offer the program on qualifying listings. Sellers must commit to next-day delivery of those items.
+     * eBay Plus is a premium account option for buyers, which provides benefits such as fast and free domestic shipping, and free returns on selected items. To offer this feature to buyers, sellers must opt in to eBay Plus, and their selling status must be 'Above Standard' or above.
      *  <br/><br/>
-     *  <span class="tablenote"><b>Note:</b> Currently, eBay Plus is available only to buyers in Germany, Austria, and Australia marketplaces.
+     *  <span class="tablenote"><b>Note:</b> Currently, eBay Plus is only available to buyers on the Germany and Australia marketplaces, and this field should only be used by sellers selling eligible items in Germany.
+     *  <br/><br/>
+     *  In Australia, the seller has no control/responsibility over setting the eBay Plus feature for a listing. Instead, eBay will evaluate/determine whether a listing is eligible for eBay Plus. Due to this fact, an Australian seller will also get the <code>21919431: This listing isn't eligible for eBay Plus.</code> warning message in an add/revise/relist call, even though eBay may ultimately set the eBay Plus feature on the listing if the item is eligible.
      *  </span>
+     *  <br/>
+     *  In an add/revise/relist call, a seller on the Germany site must include this field and set its value to <code>true</code>. If the seller is not eligible for/opted in to eBay Plus and/or the listing category or item does not qualify for eBay Plus, a warning message will be returned to the seller in the response indicating this. In addition to the seller, listing category, and item being eligible for eBay Plus, the seller must also set/commit to the following for the listing:
+     *  <ul>
+     *  <li>Listing format must be fixed-price.</li>
+     *  <li>Same-day or one-day handling (<b>DispatchTimeMax</b> set to <code>0</code> or <code>1</code>). </li>
+     *  <li>A free, next-day shipping option offered.</li>
+     *  <li>A return policy that offers a 30-day (or longer) return period.</li>
+     *  </ul>
+     *  If this field is returned as <code>true</code> in a 'Get' call, it indicates that the item is eligible for eBay Plus treatment, but eBay Plus will only come into play if the buyer is subscribed to eBay Plus.
      *
      * @return bool
      */
@@ -8176,10 +8168,21 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Sets a new eBayPlus
      *
-     * If <code>true</code>, this item is being offered under the eBay Plus program. eBay Plus is a premium account option for buyers, which provides benefits such as fast free domestic shipping and free returns on selected items. Top-Rated eBay sellers must opt in to eBay Plus to be able to offer the program on qualifying listings. Sellers must commit to next-day delivery of those items.
+     * eBay Plus is a premium account option for buyers, which provides benefits such as fast and free domestic shipping, and free returns on selected items. To offer this feature to buyers, sellers must opt in to eBay Plus, and their selling status must be 'Above Standard' or above.
      *  <br/><br/>
-     *  <span class="tablenote"><b>Note:</b> Currently, eBay Plus is available only to buyers in Germany, Austria, and Australia marketplaces.
+     *  <span class="tablenote"><b>Note:</b> Currently, eBay Plus is only available to buyers on the Germany and Australia marketplaces, and this field should only be used by sellers selling eligible items in Germany.
+     *  <br/><br/>
+     *  In Australia, the seller has no control/responsibility over setting the eBay Plus feature for a listing. Instead, eBay will evaluate/determine whether a listing is eligible for eBay Plus. Due to this fact, an Australian seller will also get the <code>21919431: This listing isn't eligible for eBay Plus.</code> warning message in an add/revise/relist call, even though eBay may ultimately set the eBay Plus feature on the listing if the item is eligible.
      *  </span>
+     *  <br/>
+     *  In an add/revise/relist call, a seller on the Germany site must include this field and set its value to <code>true</code>. If the seller is not eligible for/opted in to eBay Plus and/or the listing category or item does not qualify for eBay Plus, a warning message will be returned to the seller in the response indicating this. In addition to the seller, listing category, and item being eligible for eBay Plus, the seller must also set/commit to the following for the listing:
+     *  <ul>
+     *  <li>Listing format must be fixed-price.</li>
+     *  <li>Same-day or one-day handling (<b>DispatchTimeMax</b> set to <code>0</code> or <code>1</code>). </li>
+     *  <li>A free, next-day shipping option offered.</li>
+     *  <li>A return policy that offers a 30-day (or longer) return period.</li>
+     *  </ul>
+     *  If this field is returned as <code>true</code> in a 'Get' call, it indicates that the item is eligible for eBay Plus treatment, but eBay Plus will only come into play if the buyer is subscribed to eBay Plus.
      *
      * @param bool $eBayPlus
      * @return self
@@ -8193,9 +8196,9 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Gets as eBayPlusEligible
      *
-     * If <code>true</code>, this item is eligible to be listed under the eBay Plus program. eBay Plus is a premium account option for buyers, which provides benefits such as fast free domestic shipping and free returns on selected items. Top-Rated eBay sellers must opt in to eBay Plus to be able offer the program on qualifying listings. Sellers must commit to next-day delivery of those items.
+     * If this field is returned as <code>true</code>, this item is eligible to be listed under the eBay Plus program. eBay Plus is a premium account option for buyers, which provides benefits such as fast and free domestic shipping and free returns on selected items. eBay sellers must opt in to eBay Plus to be able offer the program on qualifying listings. Among other requirements, sellers must commit to next-day delivery of those items.
      *  <br/><br/>
-     *  <span class="tablenote"><b>Note:</b> Currently, eBay Plus is available only to buyers in Germany, Austria, and Australia marketplaces.
+     *  <span class="tablenote"><b>Note:</b> Currently, eBay Plus is available only to buyers in Germany and Australia marketplaces.
      *  </span>
      *
      * @return bool
@@ -8208,9 +8211,9 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Sets a new eBayPlusEligible
      *
-     * If <code>true</code>, this item is eligible to be listed under the eBay Plus program. eBay Plus is a premium account option for buyers, which provides benefits such as fast free domestic shipping and free returns on selected items. Top-Rated eBay sellers must opt in to eBay Plus to be able offer the program on qualifying listings. Sellers must commit to next-day delivery of those items.
+     * If this field is returned as <code>true</code>, this item is eligible to be listed under the eBay Plus program. eBay Plus is a premium account option for buyers, which provides benefits such as fast and free domestic shipping and free returns on selected items. eBay sellers must opt in to eBay Plus to be able offer the program on qualifying listings. Among other requirements, sellers must commit to next-day delivery of those items.
      *  <br/><br/>
-     *  <span class="tablenote"><b>Note:</b> Currently, eBay Plus is available only to buyers in Germany, Austria, and Australia marketplaces.
+     *  <span class="tablenote"><b>Note:</b> Currently, eBay Plus is available only to buyers in Germany and Australia marketplaces.
      *  </span>
      *
      * @param bool $eBayPlusEligible
@@ -8372,10 +8375,6 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         $value = $this->getListingDetails();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ListingDetails", $value);
-        }
-        $value = $this->getListingDesigner();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ListingDesigner", $value);
         }
         $value = $this->getListingDuration();
         if (null !== $value) {
@@ -9001,10 +9000,6 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ListingDetails');
         if (null !== $value) {
             $this->setListingDetails(\Nogrod\eBaySDK\MerchantData\ListingDetailsType::fromKeyValue($value));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ListingDesigner');
-        if (null !== $value) {
-            $this->setListingDesigner(\Nogrod\eBaySDK\MerchantData\ListingDesignerType::fromKeyValue($value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ListingDuration');
         if (null !== $value) {

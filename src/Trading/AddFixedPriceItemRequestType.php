@@ -13,7 +13,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  whereas <b>AddItem</b> supports all listing formats.
  *  <br>
  *  <br>
- *  Also, only <b>AddFixedPriceItem</b> supports multipl-variation listings
+ *  Also, only <b>AddFixedPriceItem</b> supports multiple-variation listings
  *  and tracking inventory by a seller-defined SKU value. <b>AddItem</b> does not support
  *  Variations or the <b>InventoryTrackingMethod</b> field.
  * XSD Type: AddFixedPriceItemRequestType

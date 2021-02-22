@@ -54,14 +54,3 @@ Nogrod\eBaySDK\MerchantData\MerchantDataVariationType:
                 entry_name: NameValueList
                 skip_when_empty: true
                 namespace: 'urn:ebay:apis:eBLBaseComponents'
-        sellingStatus:
-            expose: true
-            access_type: public_method
-            serialized_name: SellingStatus
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getSellingStatus
-                setter: setSellingStatus
-            type: Nogrod\eBaySDK\MerchantData\MerchantDataSellingStatusType
