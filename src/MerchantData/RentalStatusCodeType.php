@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class RentalStatusCodeType
 {
-
     /**
      * Constant for 'Extended' value.
      *

@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class URLTypeCodeType
 {
-
     /**
      * Constant for 'ViewItemURL' value.
      *

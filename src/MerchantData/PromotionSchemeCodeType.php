@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class PromotionSchemeCodeType
 {
-
     /**
      * Constant for 'ItemToItem' value.
      *

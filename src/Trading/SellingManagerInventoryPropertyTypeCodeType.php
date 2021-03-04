@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class SellingManagerInventoryPropertyTypeCodeType
 {
-
     /**
      * Constant for 'ProductsOutOfStock' value.
      *

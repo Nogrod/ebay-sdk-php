@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class CategoryGroupsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * @var \Nogrod\eBaySDK\BusinessPoliciesManagement\CategoryGroupType[] $categoryGroup
      */

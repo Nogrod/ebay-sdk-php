@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class SellingStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * This field is no longer returned.
      *

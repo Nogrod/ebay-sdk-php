@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Shopping;
  */
 class SortOrderCodeType
 {
-
     /**
      * Constant for 'Ascending' value.
      *

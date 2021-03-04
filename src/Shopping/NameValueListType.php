@@ -18,7 +18,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class NameValueListType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * The name of the Item Specific for either an eBay Catalog Product (<b>FindProducts</b> call only), a single-variation listing, and individual variation within a multiple-variation listing, or a Parts Compatibility aspect for a motor vehicle part or accessory listing.
      *  <br>

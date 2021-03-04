@@ -13,7 +13,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class FileAttachmentType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * This is the size of the file you are attaching (that contains the Merchant Data API
      *  or Trading API requests that you want to upload) or of the file you are receiving

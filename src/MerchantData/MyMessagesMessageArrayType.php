@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class MyMessagesMessageArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * A <b>Message</b> container is returned for each message that matches the input criteria in the call request. Each <b>Message</b> container consists of detailed information on a message. The amount of information that is returned in each <b>Message</b> container is partially dependent on the value that is set in the required <b>DetailLevel</b> field.
      *

@@ -13,7 +13,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class PaymentDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * This integer value indicates the number of hours that a buyer has (after he/she commits to
      *  buy) to make a deposit to the seller as a down payment on a motor vehicle. <b>Valid values:</b> 24, 48 (default), and 72.

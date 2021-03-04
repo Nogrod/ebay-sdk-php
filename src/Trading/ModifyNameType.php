@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class ModifyNameType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * In this field, the seller identifies the current name (e.g., Material) of a Variation Specific in the active listing that the seller wishes to change. If this field is used, the <b>NewName</b> field must also be specified.
      *  <br>

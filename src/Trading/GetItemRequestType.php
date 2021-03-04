@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetItemRequestType extends AbstractRequestType
 {
-
     /**
      * This field is used to identify the eBay listing by Item ID value.
      *  <br><br>

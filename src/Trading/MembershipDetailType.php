@@ -15,7 +15,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class MembershipDetailType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * This value indicates the name of the membership program, such as <code>EBAYPLUS</code>. This field will always be returned with each <b>Program</b> container.
      *

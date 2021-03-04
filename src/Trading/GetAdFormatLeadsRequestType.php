@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetAdFormatLeadsRequestType extends AbstractRequestType
 {
-
     /**
      * The unique identifier of an item listed on the eBay site.
      *  Returned by eBay when the item is created. This ID must correspond

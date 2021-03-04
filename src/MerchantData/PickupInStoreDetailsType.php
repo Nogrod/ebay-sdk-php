@@ -16,7 +16,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class PickupInStoreDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * <b>For Add/Revise/Relist/Verify calls</b>: this field is included to enable the listing for In-Store Pickup. To enable the listing for In-Store Pickup, the seller includes this boolean field and sets its value to <code>true</code>. In-Store Pickup as a fulfillment method is only available to a limited number of large retail merchants in the US, Canada, UK, Germany, and Australia marketplaces. The In-Store Pickup feature can only be applied to multiple-quantity, fixed-price listings.
      *  <br/><br/>

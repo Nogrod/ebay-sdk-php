@@ -11,7 +11,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class ValueFormatCodeType
 {
-
     /**
      * Constant for 'FullDate' value.
      *

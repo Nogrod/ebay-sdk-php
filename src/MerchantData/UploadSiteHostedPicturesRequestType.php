@@ -13,7 +13,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class UploadSiteHostedPicturesRequestType extends AbstractRequestType
 {
-
     /**
      * A seller-defined name for the picture. This field is optional, but can make it easier for a seller to track than an arbitrary, eBay-assigned URL.
      *

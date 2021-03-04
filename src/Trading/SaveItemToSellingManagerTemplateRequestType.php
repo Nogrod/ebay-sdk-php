@@ -14,7 +14,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class SaveItemToSellingManagerTemplateRequestType extends AbstractRequestType
 {
-
     /**
      * The unique identifier of the eBay listing which should be used as a model to create the Selling Manager template and save it to Selling Manager inventory.
      *

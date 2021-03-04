@@ -11,7 +11,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class ProPackCodeType
 {
-
     /**
      * Constant for 'Enabled' value.
      *

@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class PictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * <a name="galleryTypeField"></a>
      *  This field is used to specify the type of picture gallery to use for the listing. If this field is omitted, a standard picture gallery is used for the listing. There is no listing fee for a standard picture gallery.

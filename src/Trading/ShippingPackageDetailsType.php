@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class ShippingPackageDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Numeric identifier.
      *  Some applications use this ID to look up shipping packages more efficiently.

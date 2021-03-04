@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class WarrantyOfferedCodeType
 {
-
     /**
      * Constant for 'WarrantyOffered' value.
      *

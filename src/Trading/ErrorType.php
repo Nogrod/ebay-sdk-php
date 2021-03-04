@@ -14,7 +14,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class ErrorType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * A brief description of the condition that raised the error.
      *

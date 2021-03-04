@@ -15,7 +15,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class PaginationInputType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Specifies which subset of data (or "page") to return in the call
      *  response. The number of data pages is determined by the total number of

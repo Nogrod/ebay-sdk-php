@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class SelectionModeCodeType
 {
-
     /**
      * Constant for 'Automatic' value.
      *

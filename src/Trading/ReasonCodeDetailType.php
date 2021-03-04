@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class ReasonCodeDetailType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * A unique identifier assigned to a reason code.
      *

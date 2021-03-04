@@ -15,7 +15,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class ProductRequiredCodeType
 {
-
     /**
      * Constant for 'Disabled' value.
      *

@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class TaxJurisdictionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Unique identifier of the sales tax jurisdiction (typically, a state or province). In the US, the two-digit acronyms for the states are used (such as 'CA' for California).
      *

@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class SellingManagerTemplateDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * ID of the template.
      *

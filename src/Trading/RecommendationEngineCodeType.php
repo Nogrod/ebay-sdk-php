@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class RecommendationEngineCodeType
 {
-
     /**
      * Constant for 'ListingAnalyzer' value.
      *

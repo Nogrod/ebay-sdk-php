@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class ListingDurationDefinitionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * The integer value in this attribute identifies the type of listing to which the set of durations applies. To match a <b>durationSetID</b> value to a specific listing type, see the <b>Category.ListingDuration</b> field in the call response.
      *

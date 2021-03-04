@@ -13,7 +13,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class SearchFlagCodeType
 {
-
     /**
      * Constant for 'Charity' value.
      *

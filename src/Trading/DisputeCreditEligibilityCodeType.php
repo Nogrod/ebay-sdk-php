@@ -17,7 +17,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class DisputeCreditEligibilityCodeType
 {
-
     /**
      * Constant for 'InEligible' value.
      *

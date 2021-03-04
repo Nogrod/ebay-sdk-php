@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class SellerShippingProfileType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * The unique identifier of a shipping business policy. A <b>ShippingProfileID</b> and/or a <b>ShipppingProfileName</b> value is used in the Add/Revise/Relist/Verify call to reference and use the shippping-related settings/values of a shipping business policy. If both fields are provided and their values don't match, the <b>ShipppingProfileID</b> takes precedence.
      *  <br/><br/>

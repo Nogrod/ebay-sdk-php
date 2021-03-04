@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class MachineTagTypeArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * A list of Machine Tags that were used to track the user.
      *

@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class ItemCompatibilityType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Removes individual parts compatibility nodes from the compatibility list. Set
      *  to <code>true</code> within the compatibility to delete.

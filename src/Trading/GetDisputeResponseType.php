@@ -16,7 +16,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetDisputeResponseType extends AbstractResponseType
 {
-
     /**
      * If the dispute that is specified in the call request is found, this <b>Dispute</b> container is returned in the response. This container includes detailed information about the dispute, the buyer and seller user IDs, and information on the listing that is associated with the dispute.
      *

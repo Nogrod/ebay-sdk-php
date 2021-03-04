@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class AddressStatusCodeType
 {
-
     /**
      * Constant for 'None' value.
      *

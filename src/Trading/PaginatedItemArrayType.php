@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class PaginatedItemArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * An array of one or more items returned under one or more containers in a <b>GetMyeBayBuying</b> or <b>GetMyeBaySelling</b> call response.
      *

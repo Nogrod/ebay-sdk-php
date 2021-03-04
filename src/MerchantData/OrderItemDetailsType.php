@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class OrderItemDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Specifics for the sale data for a single SKU or item.
      *

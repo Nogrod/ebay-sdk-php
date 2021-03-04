@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetSellerProfilesResponseType extends BaseResponseType
 {
-
     /**
      * Container for a list of payment policies that a seller provides. This container can list one or more payment policies that a seller offers.
      *

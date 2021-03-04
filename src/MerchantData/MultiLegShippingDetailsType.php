@@ -16,7 +16,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class MultiLegShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Contains information about the domestic leg of a Global Shipping Programn shipment, including the seller-selected shipping service, the domestic shipping cost, the domestic address of the international shipping provider, and the estimated shipping time range.
      *

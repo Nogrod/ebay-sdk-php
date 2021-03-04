@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class RemoveProfileRequestType extends BaseRequestType
 {
-
     /**
      * Unique identifier for a seller profile. Pass this value into a removeProfile request to remove a specific seller profile.
      *

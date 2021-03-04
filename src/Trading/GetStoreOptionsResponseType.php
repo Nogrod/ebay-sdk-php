@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetStoreOptionsResponseType extends AbstractResponseType
 {
-
     /**
      * This container consists of the current set of basic themes available for eBay Stores. Each basic theme definition consists of settings like colors, font style, and font size. This theme data can be reused in a <b>SetStore</b> call to set/modify the theme for an eBay Store.
      *

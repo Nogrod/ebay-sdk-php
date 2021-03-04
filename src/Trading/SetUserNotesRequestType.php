@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class SetUserNotesRequestType extends AbstractRequestType
 {
-
     /**
      * Unique identifier of the listing to which the My eBay note will be
      *  attached. Notes can only be added to items that are

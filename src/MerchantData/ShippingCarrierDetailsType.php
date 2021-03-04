@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class ShippingCarrierDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Numeric identifier.
      *  Some applications use this ID

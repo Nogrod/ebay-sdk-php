@@ -13,7 +13,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class FindReviewsAndGuidesRequestType extends AbstractRequestType
 {
-
     /**
      * <span class="tablenote"><b>Note: </b> <b>FindReviewsAndGuidesRequestType</b> and all of its elements are deprecated along with the <b>FindReviewsAndGuides</b> call.
      *  </span>

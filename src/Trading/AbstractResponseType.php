@@ -18,7 +18,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class AbstractResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * This value represents the date and time when eBay processed the
      *  request. The time zone of this value is GMT and the format is the

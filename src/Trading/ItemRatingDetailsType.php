@@ -13,7 +13,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class ItemRatingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * The area of a specific detailed seller rating for an order line item.
      *  When buyers leave an overall Feedback rating (positive, neutral, or negative)

@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class EndItemsRequestType extends AbstractRequestType
 {
-
     /**
      * An <b>EndItemRequestContainer</b> container is required for each eBay listing that the seller plans to end through the <b>EndItems</b> call. Up to 10 eBay listings can be ended with one <b>EndItems</b> call.
      *

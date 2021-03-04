@@ -13,7 +13,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class OfferType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Indicates the type of offer being made on the specified listing.
      *  If the item is Best Offer-enabled and the buyer

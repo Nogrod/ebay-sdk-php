@@ -12,7 +12,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class PictureSetCodeType
 {
-
     /**
      * Constant for 'Standard' value.
      *

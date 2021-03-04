@@ -16,7 +16,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class SetShippingDiscountProfilesRequestType extends AbstractRequestType
 {
-
     /**
      * The three-digit code of the currency to be used for shipping discounts on Combined Invoice orders. A discount profile can only be associated with a listing if the <b>CurrencyID</b> value of the profile matches the <b>Item.Currency</b> value specified in a listing. This field is required if the user is adding or updating one or more shipping discount profiles.
      *  <br><br>

@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetMyeBayRemindersRequestType extends AbstractRequestType
 {
-
     /**
      * This container should be included if the user wishes to retrieve the counts of My eBay Buying Reminders. Counts will only be retrieved for My eBay Buying Reminders that the user received.
      *

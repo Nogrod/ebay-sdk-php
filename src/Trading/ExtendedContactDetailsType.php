@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class ExtendedContactDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * This containers consists of fields that allows the seller of a Classified Ad listing to tell potential buyers what days and times they may be contacted to inquire about the listing.
      *

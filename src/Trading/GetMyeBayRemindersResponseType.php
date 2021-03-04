@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetMyeBayRemindersResponseType extends AbstractResponseType
 {
-
     /**
      * This container is returned if the user included the <b>BuyingReminders</b> container in the call request and set the <b>BuyingReminders.Include</b> value to <code>true</code>. Counts will only be retrieved for My eBay Buying Reminders that the user received during the number of days specified in the <b>BuyingReminders.DurationInDays</b> field in the call request.
      *

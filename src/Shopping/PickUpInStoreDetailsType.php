@@ -16,7 +16,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class PickUpInStoreDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * This field is returned as <code>true</code> if the listing is eligible for In-Store Pickup or Click and Collect features. A seller must be eligible for the In-Store Pickup or Click and Collect features to list an item that is eligible for these features. At this time, the In-Store Pickup feature is generally only available to large retail merchants in the US, Canada, UK, Germany, and Australia, and the Click and Collect feature is generally only available to large retail merchants in the UK, Australia, and Germany. Both of these features can only be applied to multiple-quantity, fixed-price listings.
      *  <br/><br/>

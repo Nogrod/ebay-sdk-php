@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class QuestionTypeCodeType
 {
-
     /**
      * Constant for 'General' value.
      *

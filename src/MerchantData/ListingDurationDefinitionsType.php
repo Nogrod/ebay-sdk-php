@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class ListingDurationDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * This attribute indicates the current version of the Listing Durations data. This can be helpful to let users know when modifications have been made to Listing Durations.
      *

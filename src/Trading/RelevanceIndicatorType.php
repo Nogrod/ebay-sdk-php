@@ -17,7 +17,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class RelevanceIndicatorType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * The integer in this field indicates how many searches have been performed for listings in the category (in the last 30 days) using that item specific.
      *

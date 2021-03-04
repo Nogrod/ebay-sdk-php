@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class ReviseInventoryStatusResponseType extends AbstractResponseType
 {
-
     /**
      * One <b>InventoryStatus</b> container is returned for each item or item variation that was revised. Whether updating the price and/or quantity of a single-variation listing or a specific variation within a multiple-variation listing, the limit of items or item variations that can be modified with one call is four.
      *  <br>

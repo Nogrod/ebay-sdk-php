@@ -14,7 +14,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class SearchStandingDashboardType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Your earned search standing status. To qualify for a Standard or Raised
      *  search standing, make sure your ratings meet or exceed the required minimum

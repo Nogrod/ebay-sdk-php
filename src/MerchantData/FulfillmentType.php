@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class FulfillmentType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * The value returned in this field indicates the party that is handling fulfillment of the order line item.
      *

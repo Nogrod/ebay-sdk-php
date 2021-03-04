@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class PlaceOfferRequestType extends AbstractRequestType
 {
-
     /**
      * This container specifies the type of offer being made for the listing specified in the <b>ItemID</b> field. The <b>Offer.Action</b> is used to set the action that is being taken on the listing.
      *

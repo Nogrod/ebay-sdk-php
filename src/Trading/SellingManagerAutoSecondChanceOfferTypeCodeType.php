@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class SellingManagerAutoSecondChanceOfferTypeCodeType
 {
-
     /**
      * Constant for 'BidsGreaterThanAmount' value.
      *

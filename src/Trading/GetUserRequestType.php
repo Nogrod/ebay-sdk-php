@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetUserRequestType extends AbstractRequestType
 {
-
     /**
      * Specify the <strong>ItemID</strong> value for a successfully concluded listing in which the
      *  requestor and target user were participants (one as seller and the other

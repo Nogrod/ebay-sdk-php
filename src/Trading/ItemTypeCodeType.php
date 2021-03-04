@@ -11,7 +11,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class ItemTypeCodeType
 {
-
     /**
      * Constant for 'AuctionItemsOnly' value.
      *

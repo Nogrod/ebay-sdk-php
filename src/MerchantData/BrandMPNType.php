@@ -17,7 +17,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class BrandMPNType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * The brand of the product. Both <b>Brand</b> and <b>MPN</b> should be specified if the <b>BrandMPN</b> container is used, or an error may occur. If Brand is a required or recommended item specific for a category, but an MPN is not applicable to the category/product, the Brand value should be specified in an <b>Item.ItemSpecifics.NameValueList</b> container instead.
      *  <br>

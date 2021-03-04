@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class StorefrontType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * The name of the seller's eBay Store.
      *

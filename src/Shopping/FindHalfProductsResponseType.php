@@ -13,7 +13,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class FindHalfProductsResponseType extends AbstractResponseType
 {
-
     /**
      * <span class="tablenote"><b>Note: </b> <b>FindHalfProductsResponseType</b> and all of its elements are deprecated along with the <b>FindHalfProducts</b> call.
      *  </span>

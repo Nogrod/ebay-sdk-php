@@ -11,7 +11,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class ClassifiedAdPaymentMethodEnabledCodeType
 {
-
     /**
      * Constant for 'EnabledWithCheckout' value.
      *

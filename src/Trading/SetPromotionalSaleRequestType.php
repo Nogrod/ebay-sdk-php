@@ -16,7 +16,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class SetPromotionalSaleRequestType extends AbstractRequestType
 {
-
     /**
      * The seller must include this field and set it to 'Add' to create a new promotional sale, or set it to 'Update' to modify an existing promotional sale, or set it to 'Delete' to delete a promotional sale.
      *

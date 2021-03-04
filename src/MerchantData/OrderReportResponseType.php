@@ -17,7 +17,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class OrderReportResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Contains information about Expiration date of the user's authentication token. Only returned within the 7-day period prior to a token's expiration
      *

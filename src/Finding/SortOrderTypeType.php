@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Finding;
  */
 class SortOrderTypeType
 {
-
     /**
      * Constant for 'BestMatch' value.
      *

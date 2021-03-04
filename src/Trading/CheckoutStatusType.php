@@ -14,7 +14,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class CheckoutStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * This value indicates the payment status of an order.
      *

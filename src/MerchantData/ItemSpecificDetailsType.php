@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class ItemSpecificDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * This value is the maximum number of Item Specifics name-value pairs that can be used when creating, revising, or relisting an item on the specified site. Item Specifics are used to provide descriptive details of an item in a structured manner.
      *

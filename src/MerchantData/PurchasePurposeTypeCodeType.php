@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class PurchasePurposeTypeCodeType
 {
-
     /**
      * Constant for 'Other' value.
      *

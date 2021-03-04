@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class ShippingTrackingEventCodeType
 {
-
     /**
      * Constant for 'ValetReadyForPickup' value.
      *

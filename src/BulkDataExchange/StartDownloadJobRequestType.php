@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class StartDownloadJobRequestType extends BaseServiceRequestType
 {
-
     /**
      * This field is used to specify the Merchant Data report type to download when File Transfer API's <b>downloadFile</b> call is invoked.
      *  Each Bulk Data Exchange job can only have one job type per job.

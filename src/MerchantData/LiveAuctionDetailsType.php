@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class LiveAuctionDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Number that identifies the seller's eBay Live Auctions catalog
      *  within which the lot item will be listed. Use GetLiveAuctionCatalogDetails

@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class NotificationUserDataType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * User data related to SMS notifications. SMS is currently reserved for future use.
      *

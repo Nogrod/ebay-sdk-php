@@ -12,7 +12,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class DepositTypeCodeType
 {
-
     /**
      * Constant for 'None' value.
      *

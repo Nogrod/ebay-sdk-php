@@ -19,7 +19,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetVeROReportStatusRequestType extends AbstractRequestType
 {
-
     /**
      * Packet identifier associated with the reported items for which you want to
      *  retrieve status. By default, reported item details are not returned when

@@ -14,7 +14,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class FeedbackHistoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * A <b>BidRetractionFeedbackPeriods</b> container shows the cumulative number of Withdrawn Feedback entries (shown in <b>Count</b> field) for the specified time period (shown in <b>PeriodInDays</b> field).
      *

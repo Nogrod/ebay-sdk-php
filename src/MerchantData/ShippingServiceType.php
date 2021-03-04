@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class ShippingServiceType
 {
-
     /**
      * Constant for 'Domestic' value.
      *

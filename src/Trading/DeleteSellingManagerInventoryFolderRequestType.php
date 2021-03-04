@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class DeleteSellingManagerInventoryFolderRequestType extends AbstractRequestType
 {
-
     /**
      * Unique ID of the Selling Manager Inventory folder to be deleted.
      *

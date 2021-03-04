@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class FindPopularSearchesRequestType extends AbstractRequestType
 {
-
     /**
      * This field is deprecated.
      *

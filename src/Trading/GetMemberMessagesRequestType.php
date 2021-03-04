@@ -13,7 +13,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetMemberMessagesRequestType extends AbstractRequestType
 {
-
     /**
      * The unique identifier of the eBay listing for which you wish to retrieve member messages.
      *  <br><br>

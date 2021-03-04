@@ -14,7 +14,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetSellingManagerSoldListingsRequestType extends AbstractRequestType
 {
-
     /**
      * This container is used if the seller would like to search for Selling Manager Sele Records based on certain identifiers like Saler Record ID, Item ID, listing title, buyer user ID, etc. The seller will specify one of the supported search types in <b>SellingManagerSearchTypeCodeType</b>, and then provides the value for that search type.
      *

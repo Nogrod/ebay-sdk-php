@@ -13,7 +13,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class PlaceOfferResponseType extends AbstractResponseType
 {
-
     /**
      * This container indicates the current bidding/purchase state of the order line item regarding the offer extended using <b>PlaceOffer</b>. The fields that are returned under this container will depend on the attempted action and the results of that action.
      *

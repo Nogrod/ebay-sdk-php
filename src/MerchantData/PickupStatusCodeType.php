@@ -14,7 +14,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class PickupStatusCodeType
 {
-
     /**
      * Constant for 'Invalid' value.
      *

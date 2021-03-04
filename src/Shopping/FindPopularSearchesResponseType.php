@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class FindPopularSearchesResponseType extends AbstractResponseType
 {
-
     /**
      * This field is deprecated.
      *

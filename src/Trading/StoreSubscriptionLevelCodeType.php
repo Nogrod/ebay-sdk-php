@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class StoreSubscriptionLevelCodeType
 {
-
     /**
      * Constant for 'Close' value.
      *

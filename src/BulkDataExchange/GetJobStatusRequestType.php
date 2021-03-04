@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetJobStatusRequestType extends BaseServiceRequestType
 {
-
     /**
      * Unique ID assigned by the Bulk Data Exchange service for managing your
      *  upload or download job. Use the <b>jobId</b> value

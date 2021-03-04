@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class DeleteSellingManagerTemplateAutomationRuleResponseType extends AbstractResponseType
 {
-
     /**
      * This container is returned if automated listing rules are set up for the Selling Manager template.
      *

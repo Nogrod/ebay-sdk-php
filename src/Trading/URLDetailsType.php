@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class URLDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * This enumeration value indicates the type of eBay page.
      *

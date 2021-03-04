@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class GalleryTypeCodeType
 {
-
     /**
      * Constant for 'None' value.
      *

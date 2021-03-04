@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class RefundTransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * This field is deprecated.
      *

@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class CompleteSaleRequestType extends AbstractRequestType
 {
-
     /**
      * Unique identifier for an eBay listing. An <b>ItemID</b> value can be paired up with a corresponding <b>TransactionID</b> value in a <b>CompleteSale</b> request to identify a single order line item. Alternatively, the <b>OrderLineItemID</b> value for the order line item can be used.
      *  <br><br>

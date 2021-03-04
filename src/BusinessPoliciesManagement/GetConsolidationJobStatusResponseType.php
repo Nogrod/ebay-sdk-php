@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetConsolidationJobStatusResponseType extends BaseResponseType
 {
-
     /**
      * @var \Nogrod\eBaySDK\BusinessPoliciesManagement\ConsolidationJobType[] $job
      */

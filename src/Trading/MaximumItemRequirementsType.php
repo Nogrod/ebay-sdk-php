@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class MaximumItemRequirementsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * This field is conditionally required if the <b>MaximumItemRequirements</b>
      *  container is used.

@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetItemsAwaitingFeedbackRequestType extends AbstractRequestType
 {
-
     /**
      * This field allows the user to control how the order line items are returned in the response. If this field is not used, order line items are returned based on end time (from most recent to oldest).
      *  Valid values for this field are:

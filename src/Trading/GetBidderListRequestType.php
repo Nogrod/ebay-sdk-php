@@ -13,7 +13,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetBidderListRequestType extends AbstractRequestType
 {
-
     /**
      * Indicates whether or not to limit the result set to active items. If <code>true</code>, only
      *  active items are returned and the <b>EndTimeFrom</b> and <b>EndTimeTo</b> filters are

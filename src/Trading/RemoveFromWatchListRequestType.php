@@ -14,7 +14,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class RemoveFromWatchListRequestType extends AbstractRequestType
 {
-
     /**
      * The unique identifier of the item to be removed from the
      *  user's Watch List. Multiple <b>ItemID</b> fields can be specified in the same request, but note that the <b>RemoveAllItems</b> field or <b>VariationKey</b> container cannot be specified if one or more <b>ItemID</b> fields are used.

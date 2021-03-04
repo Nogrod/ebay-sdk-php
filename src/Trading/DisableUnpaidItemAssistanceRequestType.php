@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class DisableUnpaidItemAssistanceRequestType extends AbstractRequestType
 {
-
     /**
      * Unique identifier for an eBay listing. A listing can have multiple order line items, but only one <b>ItemID</b>. To identify a specific order line item for which to disable the Unpaid Item Assistant mechanism, either an <b>ItemID</b>/<b>TransactionID</b> pair, an <b>OrderLineItemID</b>, or a <b>DisputeID</b> (if an Unpaid Item case already exists) is required in the request.
      *

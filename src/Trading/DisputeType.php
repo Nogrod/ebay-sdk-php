@@ -16,7 +16,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class DisputeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * The unique identifier of an eBay dispute.
      *

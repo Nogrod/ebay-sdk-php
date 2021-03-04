@@ -13,7 +13,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class SellingManagerAlertType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * This field indicates the type of Selling Manager alert returned to the seller. This
      *  field is always returned with the <b>Alert</b> container in the

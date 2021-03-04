@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class FetchTokenResponseType extends AbstractResponseType
 {
-
     /**
      * The authentication token for the user.
      *

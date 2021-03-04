@@ -13,7 +13,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class FlatShippingDiscountType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * The type of discount or rule that is being used by the profile.
      *  The value corresponding to the selected rule is set in the same-named field

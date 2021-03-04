@@ -13,7 +13,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class PicturesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * One aspect of the variations that will be illustrated in the
      *  pictures for all variations. For example, if each variation

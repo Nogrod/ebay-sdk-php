@@ -11,7 +11,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class ItemTypeCodeType
 {
-
     /**
      * Constant for 'AuctionItemsOnly' value.
      *

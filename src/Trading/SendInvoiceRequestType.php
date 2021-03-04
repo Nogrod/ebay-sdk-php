@@ -15,7 +15,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class SendInvoiceRequestType extends AbstractRequestType
 {
-
     /**
      * Unique identifier for an eBay listing. Unless <b>OrderID</b> or
      *  <b>OrderLineItemID</b> is provided in the request, the <b>ItemID</b> (or <b>SKU</b>) is

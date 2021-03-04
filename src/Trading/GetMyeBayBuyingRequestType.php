@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetMyeBayBuyingRequestType extends AbstractRequestType
 {
-
     /**
      * Include this container and set the <b>WatchList.Include</b> field to <code>true</code> to return the list of items on the eBay user's Watch List.
      *  <br><br>

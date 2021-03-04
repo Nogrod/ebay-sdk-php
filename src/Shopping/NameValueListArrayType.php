@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class NameValueListArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * This list is an array of Item Specifics name-value pairs for an eBay Catalog product (if <b>FindProducts</b> is used) or Item Specifics name-value pairs for a single-variation listing or individual variation within a multiple-variation listing (if <b>GetSingleItem</b> or <b>GetMultipleItems</b> is used).
      *  <br><br>

@@ -11,7 +11,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class HighlightCodeType
 {
-
     /**
      * Constant for 'Enabled' value.
      *

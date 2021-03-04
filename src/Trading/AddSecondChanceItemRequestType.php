@@ -18,7 +18,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class AddSecondChanceItemRequestType extends AbstractRequestType
 {
-
     /**
      * This field is used to specify the bidder that is being offered the Second Chance Offer. The eBay User ID of the bidder is used in this field. Specify only one <b>RecipientBidderUserID</b> per call. If multiple users are specified, only the last one specified receives the offer. User ID values will be returned in the <b>Offer.User.UserID</b> field of the <b>GetAllBidders</b> call response.
      *

@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Shopping;
  */
 class FeedbackRatingStarCodeType
 {
-
     /**
      * Constant for 'None' value.
      *

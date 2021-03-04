@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class CancelInitiatorCodeType
 {
-
     /**
      * Constant for 'Unknown' value.
      *

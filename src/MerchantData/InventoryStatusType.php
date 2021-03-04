@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class InventoryStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * This value is the seller-defined SKU value of the item being revised.
      *  <br>

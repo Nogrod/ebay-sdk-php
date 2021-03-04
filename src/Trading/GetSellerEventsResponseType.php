@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetSellerEventsResponseType extends AbstractResponseType
 {
-
     /**
      * Indicates the latest (most recent) date for any date-based filtering specified as
      *  input. Specifically, this field contains the value you specified in the <b>StartTimeFrom</b>, <b>EndTimeFrom</b>, or <b>ModTimeFrom</b> filter, if you used a time filter in the request. If no time filter was specified, <b>TimeTo</b> returns the current time.

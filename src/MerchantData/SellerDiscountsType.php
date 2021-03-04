@@ -14,7 +14,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class SellerDiscountsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * The original purchase price of the order line item (before any seller discounts are
      *  applied).

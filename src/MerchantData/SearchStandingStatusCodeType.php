@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class SearchStandingStatusCodeType
 {
-
     /**
      * Constant for 'Raised' value.
      *

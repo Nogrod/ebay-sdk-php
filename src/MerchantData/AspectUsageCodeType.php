@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class AspectUsageCodeType
 {
-
     /**
      * Constant for 'Product' value.
      *

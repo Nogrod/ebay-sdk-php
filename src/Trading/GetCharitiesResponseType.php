@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetCharitiesResponseType extends AbstractResponseType
 {
-
     /**
      * Each <b>Charity</b> container consists of information about a specific nonprofit organization. The eBay unique identifier of each nonprofit organization is shown in the <b>id</b> attribute of the container. If no nonprofit organizations are found that match the input criteria, no <b>Charity</b> containers are returned.
      *

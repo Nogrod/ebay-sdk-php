@@ -14,7 +14,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class ItemCompatibilityListType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * A <b>Compatibility</b> container is returned for each motor vehicle that is compatible with the motor vehicle part or accessory. The Year, Make, Model, Trim, and Engine type of the vehicle is expressed through name-value pairs, and notes about compatibility (if available/applicable) is expressed through the <b>CompatibilityNotes</b> field.
      *

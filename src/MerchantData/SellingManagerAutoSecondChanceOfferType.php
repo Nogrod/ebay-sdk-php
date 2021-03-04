@@ -13,7 +13,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class SellingManagerAutoSecondChanceOfferType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * The condition under which a Second Chance Offer should be sent.
      *

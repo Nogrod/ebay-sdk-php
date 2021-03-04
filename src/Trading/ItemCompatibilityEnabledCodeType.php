@@ -11,7 +11,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class ItemCompatibilityEnabledCodeType
 {
-
     /**
      * Constant for 'Disabled' value.
      *

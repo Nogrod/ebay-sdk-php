@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class ExcludeShippingLocationDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * The localized location name.
      *

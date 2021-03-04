@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class RefundLineTypeCodeType
 {
-
     /**
      * Constant for 'PurchasePrice' value.
      *

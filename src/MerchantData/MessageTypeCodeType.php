@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class MessageTypeCodeType
 {
-
     /**
      * Constant for 'AskSellerQuestion' value.
      *

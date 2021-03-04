@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class FeaturedPlusCodeType
 {
-
     /**
      * Constant for 'Enabled' value.
      *

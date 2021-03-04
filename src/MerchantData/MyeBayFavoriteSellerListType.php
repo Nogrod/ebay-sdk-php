@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class MyeBayFavoriteSellerListType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * The total number of favorite sellers saved.
      *

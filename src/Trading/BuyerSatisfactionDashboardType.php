@@ -15,7 +15,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class BuyerSatisfactionDashboardType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * This field indicates the seller's buyer satisfaction rating. To determine this
      *  rating, eBay considers your detailed seller ratings, your overall feedback rating,

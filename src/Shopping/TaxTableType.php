@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class TaxTableType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * A <b>TaxJurisdiction</b> container is returned for each tax jurisdiction where the seller has defined a sales tax rate (using the <b>Sales Tax Table </b> UI in My eBay), and each of these containers show the sales tax rate for the corresponding tax jurisdiction (and not just the tax jurisdiction associated with the specified <b>DestinationPostalCode</b> in the call request).
      *  <br><br>

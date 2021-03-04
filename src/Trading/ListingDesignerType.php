@@ -17,7 +17,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class ListingDesignerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Identifies the Layout template to use when displaying the
      *  item's description. Call <b>GetDescriptionTemplates</b> for valid IDs.

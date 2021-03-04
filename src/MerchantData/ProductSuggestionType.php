@@ -13,7 +13,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class ProductSuggestionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * The title of the product from the eBay catalog.
      *

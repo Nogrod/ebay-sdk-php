@@ -13,7 +13,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class ItemIDArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * A unique identifier for an item listing.
      *  <br/><br/>

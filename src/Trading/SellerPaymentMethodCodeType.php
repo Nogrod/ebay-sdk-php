@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class SellerPaymentMethodCodeType
 {
-
     /**
      * Constant for 'NothingOnFile' value.
      *

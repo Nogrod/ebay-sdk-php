@@ -16,7 +16,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class PaginationResultType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Indicates the total number of pages of data that could be returned by repeated
      *  requests. Returned with a value of 0 if no pages are available.

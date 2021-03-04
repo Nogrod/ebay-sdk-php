@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class BaseFindingServiceRequestType extends BestMatchFindingServiceRequestType
 {
-
     /**
      * Sort the returned items according to a single specified sort order.
      *

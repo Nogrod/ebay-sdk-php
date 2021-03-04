@@ -14,7 +14,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class ValueTypeCodeType
 {
-
     /**
      * Constant for 'Decimal' value.
      *

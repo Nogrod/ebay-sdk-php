@@ -13,7 +13,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class BaseRequestType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * @var \Nogrod\eBaySDK\BusinessPoliciesManagement\ExtensionType[] $extension
      */

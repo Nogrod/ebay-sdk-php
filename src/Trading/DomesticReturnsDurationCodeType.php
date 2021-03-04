@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class DomesticReturnsDurationCodeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Defines the available options for the return durations for domestic returns in the specified marketplace and category. This is the time the buyer has to initiate a return once they receive the item.
      *

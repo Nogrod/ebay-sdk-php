@@ -17,7 +17,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class ProductListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * If this value is <code>true</code>, the listing will use the eBay catalog product's stock photo. In an Add/Revise/Relist call, this field is set to <code>true</code> by default. If you will be using an eBay catalog product to list your item, it is always advised to include the stock photo. Sellers can also add their own pictures using one or more <b>Item.PictureDetails.PictureURL</b> fields. Seller photos are particularly recommended for used and modified products to give prospective buyers a clear sense of exactly what they are purchasing.
      *  In <b>GetItem</b> and other 'Get' calls, the URL of the stock photo will be returned in the <b>StockPhotoURL</b> field.

@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class EndItemsResponseType extends AbstractResponseType
 {
-
     /**
      * Returns a response for an individually ended item. Mutiple containers will be listed if multiple items are ended.
      *

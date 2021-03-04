@@ -13,7 +13,6 @@ namespace Nogrod\eBaySDK\Finding;
  */
 class ErrorCategoryType
 {
-
     /**
      * Constant for 'System' value.
      *

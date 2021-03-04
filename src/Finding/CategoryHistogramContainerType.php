@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class CategoryHistogramContainerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Statistical (item count) information on the categories that contain items
      *  that match the search criteria or specified category or categories. A

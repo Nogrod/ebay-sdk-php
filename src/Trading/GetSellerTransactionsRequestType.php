@@ -14,7 +14,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetSellerTransactionsRequestType extends AbstractRequestType
 {
-
     /**
      * The <b>ModTimeFrom</b> and <b>ModTimeTo</b> fields are used to specify a date range for retrieving order line items associated with the seller. The <b>ModTimeFrom</b> field is the starting date range. All of the seller's order line items that were created (or last modified) within this date range are returned in the output. The maximum date range that may be specified is 30 days. This value cannot be set back more than 90 days in the past, as this call cannot retrieve sales older than 90 days. This field is not applicable if the <b>NumberOfDays</b> date filter is used.
      *  <br><br>

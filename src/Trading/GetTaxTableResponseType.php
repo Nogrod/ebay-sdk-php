@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetTaxTableResponseType extends AbstractResponseType
 {
-
     /**
      * The last time (in GMT) that the tax table was updated. Only returned if the user previously created a tax table and if the site has jurisdictions. <b>LastUpdateTime</b> is useful for synchronization. If you cache the user's tax table, you can use <b>GetTaxTable</b> to check if it has changed and whether you need to update the cached tax table.
      *

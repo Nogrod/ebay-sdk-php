@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class StoreThemeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Store theme ID (use GetStoreOptions to get the list of valid theme
      *  IDs).

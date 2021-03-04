@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class StoreCustomHeaderLayoutCodeType
 {
-
     /**
      * Constant for 'NoHeader' value.
      *

@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class ConditionValuesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * This repeatable container shows the display name and unique identifier of each item condition supported by the corresponding eBay category.
      *  <br>

@@ -25,7 +25,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class SetSellingManagerItemAutomationRuleRequestType extends AbstractRequestType
 {
-
     /**
      * The unique identifier of the listing whose automation rules you want to change.
      *

@@ -13,7 +13,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class ExpressDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Large gallery image that appears in the "Grid View" in search results on the
      *  Express site. The longest dimension is 140 pixels. Only returned when

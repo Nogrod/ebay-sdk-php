@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class StoreCustomPageStatusCodeType
 {
-
     /**
      * Constant for 'Active' value.
      *

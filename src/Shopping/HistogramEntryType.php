@@ -16,7 +16,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class HistogramEntryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * This is the name of eBay category domain. An eBay catalog product can be mapped to more than one eBay category domain.
      *

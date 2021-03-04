@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class DiscountCodeType
 {
-
     /**
      * Constant for 'Percentage' value.
      *

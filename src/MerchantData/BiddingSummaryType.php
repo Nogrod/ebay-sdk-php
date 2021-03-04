@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class BiddingSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * This integer value indicates the length of time (in number of days) that is being used to calculate all counts in the <b>BiddingSummary</b> container. This value is generally <code>30</code> (days), which means that all counts in the container have been calculated from the present time and going back 30 days in the past.
      *  <br/><br/>

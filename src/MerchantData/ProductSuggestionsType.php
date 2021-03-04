@@ -13,7 +13,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class ProductSuggestionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Contains details for one or more individual product suggestions. The product
      *  details include the EPID, Title, Stock photo url and whether or not the product

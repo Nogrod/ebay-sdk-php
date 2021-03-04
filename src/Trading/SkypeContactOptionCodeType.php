@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class SkypeContactOptionCodeType
 {
-
     /**
      * Constant for 'Chat' value.
      *

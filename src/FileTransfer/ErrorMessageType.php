@@ -13,7 +13,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class ErrorMessageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Details about a single error.
      *

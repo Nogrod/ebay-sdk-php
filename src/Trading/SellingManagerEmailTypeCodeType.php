@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class SellingManagerEmailTypeCodeType
 {
-
     /**
      * Constant for 'ManualEntry' value.
      *

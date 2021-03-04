@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class AddressType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * The name associated with the Business Seller. This field is only returned if defined and available.
      *  <br>

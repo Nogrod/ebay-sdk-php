@@ -16,7 +16,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class PaginationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * This integer value is used to specify the maximum number of entries to return
      *  in a single "page" of data. This value, along with the number of entries that

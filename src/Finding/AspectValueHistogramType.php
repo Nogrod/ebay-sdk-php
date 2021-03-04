@@ -13,7 +13,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class AspectValueHistogramType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Name of an aspect value. For example, "Short Sleeve" could be an aspect
      *  value of the Sleeve Style aspect in the Women's Dresses domain, or

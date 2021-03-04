@@ -15,7 +15,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class NotificationDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Returns the destination address for the notification. This is the value set
      *  using SetNotificationPreferences.

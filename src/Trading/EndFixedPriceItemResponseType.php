@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class EndFixedPriceItemResponseType extends AbstractResponseType
 {
-
     /**
      * Timestamp that indicates the date and time (GMT) that the specified listing was ended.
      *

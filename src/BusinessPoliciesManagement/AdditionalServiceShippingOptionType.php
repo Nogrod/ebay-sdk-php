@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class AdditionalServiceShippingOptionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * @var string $name
      */

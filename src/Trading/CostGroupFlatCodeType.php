@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class CostGroupFlatCodeType
 {
-
     /**
      * Constant for 'Group1MaxFlatShippingCost' value.
      *

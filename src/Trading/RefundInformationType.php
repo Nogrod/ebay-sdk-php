@@ -16,7 +16,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class RefundInformationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * This container consists of detailed information on an In-Store Pickup item refund. This container is only returned if the merchant is refunding (or providing a store credit) the buyer for an In-Store Pickup item. A separate <strong>Refund</strong> container will be returned for each <strong>ORDER.RETURNED</strong> notification that the merchant sends to eBay through the <strong>Inbound Notifications API</strong>.
      *  <br/><br/>

@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class TransactionProgramType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * This container gives status on whether the order line item has passed or failed the authenticity inspection.
      *

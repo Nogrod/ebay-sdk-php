@@ -19,7 +19,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class DisputeResolutionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * The action resulting from the resolution, affecting either
      *  the buyer or the seller.

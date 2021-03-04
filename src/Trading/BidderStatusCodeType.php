@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class BidderStatusCodeType
 {
-
     /**
      * Constant for 'Approved' value.
      *

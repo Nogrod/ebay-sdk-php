@@ -11,7 +11,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class INEscrowWorkflowTimelineCodeType
 {
-
     /**
      * Constant for 'Default' value.
      *

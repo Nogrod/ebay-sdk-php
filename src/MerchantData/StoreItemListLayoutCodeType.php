@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class StoreItemListLayoutCodeType
 {
-
     /**
      * Constant for 'ListView' value.
      *

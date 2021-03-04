@@ -16,7 +16,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetJobsRequestType extends BaseServiceRequestType
 {
-
     /**
      * Use this field to designate the start of a date/time range. By default, 30
      *  days worth of data is returned.

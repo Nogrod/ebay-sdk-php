@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class BulkCatalogListerStatusCodeType
 {
-
     /**
      * Constant for 'Preapproved' value.
      *

@@ -29,7 +29,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class DisputeStatusCodeType
 {
-
     /**
      * Constant for 'Closed' value.
      *

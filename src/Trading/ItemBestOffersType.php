@@ -15,7 +15,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class ItemBestOffersType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Indicates whether the eBay user is in the Buyer or
      *  Seller role for the corresponding Best Offer.

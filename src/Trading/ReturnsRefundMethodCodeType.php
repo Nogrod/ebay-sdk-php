@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class ReturnsRefundMethodCodeType
 {
-
     /**
      * Constant for 'MoneyBack' value.
      *

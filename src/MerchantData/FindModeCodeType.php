@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class FindModeCodeType
 {
-
     /**
      * Constant for 'CustomCode' value.
      *

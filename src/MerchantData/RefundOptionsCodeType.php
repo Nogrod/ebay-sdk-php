@@ -11,7 +11,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class RefundOptionsCodeType
 {
-
     /**
      * Constant for 'MoneyBack' value.
      *

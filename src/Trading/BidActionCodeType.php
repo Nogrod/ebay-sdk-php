@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class BidActionCodeType
 {
-
     /**
      * Constant for 'Unknown' value.
      *

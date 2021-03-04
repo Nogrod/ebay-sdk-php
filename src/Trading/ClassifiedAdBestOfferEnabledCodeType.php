@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class ClassifiedAdBestOfferEnabledCodeType
 {
-
     /**
      * Constant for 'Disabled' value.
      *

@@ -17,7 +17,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class PromotionalSaleArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Each <strong>PromotionalSale</strong> container consists of detailed information on a seller's promotional sale. Each promotional sale that matches the input criteria is returned.
      *  <br/><br/>

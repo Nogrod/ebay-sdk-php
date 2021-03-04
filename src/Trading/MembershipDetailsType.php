@@ -15,7 +15,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class MembershipDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * A <b>Program</b> container will be returned for each eBay membership program for which the seller is enrolled. This container provides the the eBay site, the membership program (such as '<code>EBAYPLUS</code>'), and the membership expiration date.
      *

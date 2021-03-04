@@ -11,7 +11,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class SellerBusinessCodeType
 {
-
     /**
      * Constant for 'Undefined' value.
      *

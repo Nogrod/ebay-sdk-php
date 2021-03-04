@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class TransactionListType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Description of the fee type.
      *

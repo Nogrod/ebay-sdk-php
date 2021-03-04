@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class ReviseSellingManagerProductResponseType extends AbstractResponseType
 {
-
     /**
      * The details of the product.
      *

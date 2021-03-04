@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class SellingManagerProductType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Container for information about the product.
      *

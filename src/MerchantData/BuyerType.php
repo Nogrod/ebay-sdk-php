@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class BuyerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * This container shows the buyer's shipping address.
      *  <br>

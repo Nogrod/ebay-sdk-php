@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class BoldTitleCodeType
 {
-
     /**
      * Constant for 'Enabled' value.
      *

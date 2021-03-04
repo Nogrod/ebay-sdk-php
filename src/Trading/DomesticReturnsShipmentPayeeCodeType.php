@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class DomesticReturnsShipmentPayeeCodeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Defines the available options for who pays the return shipping costs for domestic returns in the specified marketplace and category.
      *

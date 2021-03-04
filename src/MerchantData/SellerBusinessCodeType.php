@@ -11,7 +11,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class SellerBusinessCodeType
 {
-
     /**
      * Constant for 'Undefined' value.
      *

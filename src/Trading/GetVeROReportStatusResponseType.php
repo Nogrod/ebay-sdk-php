@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetVeROReportStatusResponseType extends AbstractResponseType
 {
-
     /**
      * Contains information regarding the pagination of data (if pagination is
      *  used), including total number of pages and total number of entries.

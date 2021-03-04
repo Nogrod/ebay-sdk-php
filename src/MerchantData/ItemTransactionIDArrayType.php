@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class ItemTransactionIDArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * An <b>ItemTransactionID</b> container is required to specify a specific order line item to retrieve.
      *  <br><br>

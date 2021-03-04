@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class SummaryEventScheduleType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * The event type associated with this alert.
      *

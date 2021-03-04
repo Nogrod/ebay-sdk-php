@@ -13,7 +13,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetSellingManagerAlertsResponseType extends AbstractResponseType
 {
-
     /**
      * Container consisting of details related to a Selling Manager alert. Alert types include listing automation, inventory, item sold, and a general alert.
      *

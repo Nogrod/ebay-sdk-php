@@ -13,7 +13,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class DeliveryEstimateMetaInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Possible values are:
      *  ExternalId

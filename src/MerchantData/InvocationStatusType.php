@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class InvocationStatusType
 {
-
     /**
      * Constant for 'InProgress' value.
      */

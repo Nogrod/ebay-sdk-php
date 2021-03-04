@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class BidGroupItemStatusCodeType
 {
-
     /**
      * Constant for 'CurrentBid' value.
      *

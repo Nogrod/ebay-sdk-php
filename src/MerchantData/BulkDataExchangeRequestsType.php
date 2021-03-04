@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class BulkDataExchangeRequestsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Defines default or required values for requests in the payload.
      *

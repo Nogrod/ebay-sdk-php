@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class StoreCustomCategoryArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * A custom category for your eBay Store.
      *

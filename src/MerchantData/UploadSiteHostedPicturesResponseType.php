@@ -13,7 +13,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class UploadSiteHostedPicturesResponseType extends AbstractResponseType
 {
-
     /**
      * Specifies the picture system version that was used to upload pictures.
      *  Only version 2 is valid.

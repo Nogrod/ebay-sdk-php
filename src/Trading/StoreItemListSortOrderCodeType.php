@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class StoreItemListSortOrderCodeType
 {
-
     /**
      * Constant for 'EndingFirst' value.
      *

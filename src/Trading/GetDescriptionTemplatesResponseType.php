@@ -15,7 +15,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetDescriptionTemplatesResponseType extends AbstractResponseType
 {
-
     /**
      * A <b>DescriptionTemplate</b> container is retrieved for each available Listing Designer template. Each <b>DescriptionTemplate</b> container includes the unique identifier of the template, the Listing Designer Theme Group that it belongs to, the CDATA representation of the Listing Designer template, and the URL to an image that serves as an example of the Listing Designer template.
      *

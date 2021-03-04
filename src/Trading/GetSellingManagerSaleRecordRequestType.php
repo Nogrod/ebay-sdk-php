@@ -14,7 +14,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetSellingManagerSaleRecordRequestType extends AbstractRequestType
 {
-
     /**
      * Unique identifier for the eBay listing associated with the Selling
      *  Manager sale record. Unless the <b>OrderID</b> or <b>OrderLineItemID</b> value is

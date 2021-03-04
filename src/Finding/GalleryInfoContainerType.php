@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GalleryInfoContainerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * URL for a single item image thumbnail of a specific size.
      *

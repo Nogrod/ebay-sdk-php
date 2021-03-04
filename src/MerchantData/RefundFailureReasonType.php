@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class RefundFailureReasonType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * This field is deprecated.
      *

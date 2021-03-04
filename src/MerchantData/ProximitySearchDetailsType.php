@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class ProximitySearchDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Not returned with compatibility level 483 and higher.
      *  Remove application dependencies on this element.

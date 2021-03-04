@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class PictureWatermarkCodeType
 {
-
     /**
      * Constant for 'User' value.
      *

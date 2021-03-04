@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetSellerProfilesRequestType extends BaseRequestType
 {
-
     /**
      * The types of business policies that a seller can create. Valid values are PAYMENT, RETURN_POLICY, and SHIPPING. A seller can have multiple policies for each type of business policy. Pass any one of the valid values into a getSellerProfiles request.
      *

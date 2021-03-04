@@ -20,7 +20,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class AddDisputeRequestType extends AbstractRequestType
 {
-
     /**
      * This enumerated value gives the explanation of why the seller opened a case. Not all values contained in <b>DisputeExplanationCodeType</b> are allowed in the <b>AddDispute</b> call, and the values that are allowed must match the <b>DisputeReason</b> value.
      *  <br>

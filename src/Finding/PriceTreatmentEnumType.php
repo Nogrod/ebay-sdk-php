@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Finding;
  */
 class PriceTreatmentEnumType
 {
-
     /**
      * Constant for 'STP' value.
      *

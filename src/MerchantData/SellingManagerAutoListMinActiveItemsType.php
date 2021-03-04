@@ -13,7 +13,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class SellingManagerAutoListMinActiveItemsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * The minimum number of listings that should be active on the site.
      *

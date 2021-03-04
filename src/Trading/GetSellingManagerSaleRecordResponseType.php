@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetSellingManagerSaleRecordResponseType extends AbstractResponseType
 {
-
     /**
      * Contains the data in a Selling Manager Sale Record.
      *

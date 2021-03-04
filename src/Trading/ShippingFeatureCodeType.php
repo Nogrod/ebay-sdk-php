@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class ShippingFeatureCodeType
 {
-
     /**
      * Constant for 'DeliveryConfirmation' value.
      *

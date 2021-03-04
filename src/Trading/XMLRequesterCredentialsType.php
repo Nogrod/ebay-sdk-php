@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class XMLRequesterCredentialsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * eBay user ID (i.e., eBay.com Web site login name) for the user the application
      *  is retrieving a token for. This is typically the application's end-user (not

@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class StartDownloadJobResponseType extends BaseServiceResponseType
 {
-
     /**
      * Unique ID that is assigned for a job by the Bulk Data Exchange API
      *  after a successful <b>startDownloadJob</ b> call. This value is passed into the File Transfer API's <b>downloadJob</b> call.

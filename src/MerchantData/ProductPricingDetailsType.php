@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class ProductPricingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * @var \Nogrod\eBaySDK\MerchantData\AmountType $minimumSoldPrice
      */

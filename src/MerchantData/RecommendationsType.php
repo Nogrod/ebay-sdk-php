@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class RecommendationsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * The unique identifier of the leaf category for which the recommended Item Specifics and Product Identifier types apply to.
      *  This is always a category ID that you specified in the request.<br>

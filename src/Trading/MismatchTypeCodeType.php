@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class MismatchTypeCodeType
 {
-
     /**
      * Constant for 'OverPayment' value.
      *

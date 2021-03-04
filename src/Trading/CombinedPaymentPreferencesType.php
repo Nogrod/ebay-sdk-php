@@ -16,7 +16,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class CombinedPaymentPreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * DO NOT USE THIS CONTAINER. As an alternative, use <b>SetShippingDiscountProfiles</b> to set all Calculated Shipping rules and preferences, and use <b>GetShippingDiscountProfiles</b> to retrieve the same information.
      *

@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class ReminderCustomizationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * The length of time the reminder has existed in the user's My eBay account,
      *  in days. Valid values are 1-60.

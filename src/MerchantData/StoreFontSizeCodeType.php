@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class StoreFontSizeCodeType
 {
-
     /**
      * Constant for 'XXS' value.
      *

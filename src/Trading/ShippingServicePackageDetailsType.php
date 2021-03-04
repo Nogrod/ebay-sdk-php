@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class ShippingServicePackageDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * The name of the package type.
      *

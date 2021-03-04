@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetSellingManagerTemplatesRequestType extends AbstractRequestType
 {
-
     /**
      * The unique identifier of the Selling Manager Template whose data will be returned. A Selling Manager Template contains the data needed to list an item. One or more template IDs can be specified, each in its own field. You can obtain a <b>SaleTemplateID</b> by calling <b>GetSellingManagerInventory</b>.
      *

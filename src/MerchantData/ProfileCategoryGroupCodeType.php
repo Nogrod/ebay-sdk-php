@@ -11,7 +11,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class ProfileCategoryGroupCodeType
 {
-
     /**
      * Constant for 'Inherit' value.
      *

@@ -17,7 +17,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class ListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * If <code>true</code>, the item is listed in a Mature category. Users must accept
      *  the Mature Category agreement on the eBay site to retrieve

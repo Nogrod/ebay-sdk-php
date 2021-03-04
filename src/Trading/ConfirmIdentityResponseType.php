@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class ConfirmIdentityResponseType extends AbstractResponseType
 {
-
     /**
      * Unique eBay user ID for the user.
      *

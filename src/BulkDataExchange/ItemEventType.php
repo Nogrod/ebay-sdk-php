@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\BulkDataExchange;
  */
 class ItemEventType
 {
-
     /**
      * Constant for 'New' value.
      *

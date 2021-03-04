@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class VeROReasonCodeDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Contains reason code details for a site.
      *

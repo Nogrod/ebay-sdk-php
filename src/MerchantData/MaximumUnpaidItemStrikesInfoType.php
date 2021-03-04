@@ -15,7 +15,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class MaximumUnpaidItemStrikesInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * This integer value sets the maximum number of unpaid item strikes that a prospective buyer
      *  is allowed to have during a specified time period

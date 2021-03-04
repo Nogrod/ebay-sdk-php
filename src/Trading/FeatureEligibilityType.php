@@ -13,7 +13,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class FeatureEligibilityType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Indicates whether the seller is eligible to create auction listings enabled with the 'Buy It Now' option. A value of <code>true</code> means that the seller is eligible; a value of <code>false</code> indicates that they are not eligible.
      *

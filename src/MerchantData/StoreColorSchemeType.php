@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class StoreColorSchemeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Store color scheme ID. (use GetStoreOptions to get the list of
      *  valid theme color scheme IDs).

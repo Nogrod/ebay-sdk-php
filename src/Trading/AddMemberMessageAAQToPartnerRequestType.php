@@ -13,7 +13,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class AddMemberMessageAAQToPartnerRequestType extends AbstractRequestType
 {
-
     /**
      * Unique identifier for the listing that is being discussed between the two order partners.
      *

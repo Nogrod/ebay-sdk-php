@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class DuplicateInvocationDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * This value represents the duplicate <b>InvocationID</b> or <b>InvocationTrackingID</b> that was used in the call request.
      *

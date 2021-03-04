@@ -14,7 +14,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetSellingManagerInventoryFolderRequestType extends AbstractRequestType
 {
-
     /**
      * A unique identifier for a Selling Manager Inventory folder. The <b>FolderID</b> is used if the seller wants to retrieve a specific folder.
      *

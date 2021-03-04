@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class FindItemsAdvancedResponseType extends BaseFindingServiceResponseType
 {
-
     /**
      * Response container for category histograms. Only returned when one or
      *  more category histograms are returned. A category histogram is not

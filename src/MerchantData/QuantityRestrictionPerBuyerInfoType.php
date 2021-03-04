@@ -14,7 +14,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class QuantityRestrictionPerBuyerInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * This integer value indicates the maximum quantity of items that a single buyer may
      *  purchase during the duration of a fixed-price listing (single or multi-variation).

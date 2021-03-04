@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class CategoryItemSpecificsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * An eBay category ID is passed into this field to identify the eBay category for which the seller is providing Item Specific name-value(s) pairs. Multiple <b>CategoryID</b> fields can be passed in if the Item Specific name-value(s) pairs are applicable for multiple categories. However, more categories can result in longer call response times. If your request times out, specify fewer category IDs.
      *  <br>

@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class SellerPIStatusCodeType
 {
-
     /**
      * Constant for 'AcceptedUA' value.
      *

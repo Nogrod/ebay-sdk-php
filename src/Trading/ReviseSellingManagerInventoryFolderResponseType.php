@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class ReviseSellingManagerInventoryFolderResponseType extends AbstractResponseType
 {
-
     /**
      * This container will show the results of the action made on the Selling Manager Inventory folder.
      *

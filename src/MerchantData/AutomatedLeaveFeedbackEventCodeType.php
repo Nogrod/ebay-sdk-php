@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class AutomatedLeaveFeedbackEventCodeType
 {
-
     /**
      * Constant for 'PositiveFeedbackReceived' value.
      *

@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class AddDisputeResponseType extends AbstractResponseType
 {
-
     /**
      * This field will show the unique identifier of an Unpaid Item case that was created, or the unique identifier of the order cancellation.
      *

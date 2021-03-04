@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class AddTransactionConfirmationItemResponseType extends AbstractResponseType
 {
-
     /**
      * This field contains the Item ID associated with the Transaction Confirmation Item that was just created with the <b>AddTransactionConfirmationItem</b> call. This field is not returned if the request was only used to verify that a new TCR could be created.
      *

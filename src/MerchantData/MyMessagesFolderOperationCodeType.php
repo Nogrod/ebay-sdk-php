@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class MyMessagesFolderOperationCodeType
 {
-
     /**
      * Constant for 'Display' value.
      *

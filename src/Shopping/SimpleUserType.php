@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class SimpleUserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * The unique identifier of the eBay user. An eBay user ID is unique across all eBay marketplaces.
      *  <br />

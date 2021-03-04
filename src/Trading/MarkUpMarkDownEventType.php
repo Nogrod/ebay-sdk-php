@@ -15,7 +15,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class MarkUpMarkDownEventType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Whether the application has been marked up or marked down.
      *

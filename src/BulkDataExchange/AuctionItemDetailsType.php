@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class AuctionItemDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * The boolean value in this field will control whether or not the <b>SKUDetails.BidCount</b> field is returned in a <b>ActiveInventoryReport</b> response.
      *

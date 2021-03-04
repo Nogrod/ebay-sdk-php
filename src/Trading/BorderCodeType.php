@@ -11,7 +11,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class BorderCodeType
 {
-
     /**
      * Constant for 'Enabled' value.
      *

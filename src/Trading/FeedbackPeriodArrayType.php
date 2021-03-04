@@ -14,7 +14,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class FeedbackPeriodArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Contains one feedback statistic giving length of the period being reported
      *  (e.g. last 7 days prior to the call), and total number of feedback entries

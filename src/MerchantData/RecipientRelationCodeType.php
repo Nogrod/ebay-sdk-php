@@ -13,7 +13,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class RecipientRelationCodeType
 {
-
     /**
      * Constant for '1' value.
      *

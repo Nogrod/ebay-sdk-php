@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class DeleteSellingManagerProductResponseType extends AbstractResponseType
 {
-
     /**
      * This container consists of the unique identifier and name of the Seller
      *  Manager product.

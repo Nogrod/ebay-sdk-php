@@ -12,7 +12,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class MarkUpMarkDownEventTypeCodeType
 {
-
     /**
      * Constant for 'MarkUp' value.
      *

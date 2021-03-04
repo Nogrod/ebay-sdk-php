@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetChallengeTokenResponseType extends AbstractResponseType
 {
-
     /**
      * Botblock token that is used to validate that the user is a human and not a bot.
      *

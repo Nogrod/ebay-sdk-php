@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class WarrantyTypeOptionsCodeType
 {
-
     /**
      * Constant for 'ReplacementWarranty' value.
      *

@@ -13,7 +13,6 @@ namespace Nogrod\eBaySDK\BusinessPoliciesManagement;
  */
 class AckValueType
 {
-
     /**
      * Constant for 'Success' value.
      *

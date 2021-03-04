@@ -13,7 +13,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class UnpaidItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * This field indicates the status of the Unpaid Item case. This field is always
      *  returned with the <strong>UnpaidItem</strong> container.

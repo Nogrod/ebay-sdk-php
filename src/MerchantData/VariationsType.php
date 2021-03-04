@@ -17,7 +17,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class VariationsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Contains data that distinguishes one item variation from another.
      *  For example, if an item varies by color and size, each <b>Variation</b>

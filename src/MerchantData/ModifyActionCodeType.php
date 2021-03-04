@@ -25,7 +25,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class ModifyActionCodeType
 {
-
     /**
      * Constant for 'Add' value.
      *

@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class PromotionItemSelectionCodeType
 {
-
     /**
      * Constant for 'Manual' value.
      *

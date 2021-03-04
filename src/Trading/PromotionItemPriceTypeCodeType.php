@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class PromotionItemPriceTypeCodeType
 {
-
     /**
      * Constant for 'AuctionPrice' value.
      *

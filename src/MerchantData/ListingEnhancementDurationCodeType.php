@@ -14,7 +14,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class ListingEnhancementDurationCodeType
 {
-
     /**
      * Constant for 'Days_1' value.
      *

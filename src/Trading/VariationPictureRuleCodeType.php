@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class VariationPictureRuleCodeType
 {
-
     /**
      * Constant for 'Required' value.
      *

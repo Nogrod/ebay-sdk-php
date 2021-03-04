@@ -13,7 +13,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetBidderListResponseType extends AbstractResponseType
 {
-
     /**
      * Data for one eBay bidder.
      *

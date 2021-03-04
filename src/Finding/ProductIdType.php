@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Finding;
  */
 class ProductIdType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * @var string $__value
      */

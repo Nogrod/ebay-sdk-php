@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class NameRecommendationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * This string field is the name of the mandatory or recommended Item Specific or Product Identifier type (e.g. Brand/MPN). The seller should use the actual string in this field when creating, revising, or relisting an item with this Item Specific. The number of Item Specifics that are returned can be controlled with the <b>MaxNames</b> field in the call request.
      *  <br/><br/>

@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\BusinessPoliciesManagement;
  */
 class ErrorCategoryType
 {
-
     /**
      * Constant for 'System' value.
      */

@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class CalculatedHandlingDiscountType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * The type of discount that is detailed in the profile.
      *  If the selection is <code>EachAdditionalAmount</code>, <code>EachAdditionalAmountOff</code> or

@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class BaseFindingServiceResponseType extends BaseServiceResponseType
 {
-
     /**
      * Container for the item listings that matched the search criteria.
      *  The data for each item is returned in individual containers, if

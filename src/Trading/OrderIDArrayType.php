@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class OrderIDArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * A unique identifier for an eBay order. If one or more <b>OrderID</b> values are used in a <b>GetOrders</b> or <b>GetOrderTransactions</b> call, any order status or date range filters are ignored.
      *  <br><br>

@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class FlatRateInsuranceRangeCodeType
 {
-
     /**
      * Constant for 'FlatRateInsuranceRange1' value.
      *

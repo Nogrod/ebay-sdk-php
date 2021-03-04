@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class AddDisputeResponseRequestType extends AbstractRequestType
 {
-
     /**
      * The unique identifier of the eBay Unpaid Item case or PayPal INR dispute. This identifier is created by eBay or PayPal upon case/dispute creation.
      *

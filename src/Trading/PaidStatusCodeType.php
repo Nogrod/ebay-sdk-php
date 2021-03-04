@@ -11,7 +11,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class PaidStatusCodeType
 {
-
     /**
      * Constant for 'NotPaid' value.
      *

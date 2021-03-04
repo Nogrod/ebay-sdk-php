@@ -14,7 +14,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class DeleteRecurringJobRequestType extends BaseServiceRequestType
 {
-
     /**
      * Unique ID assigned by the Bulk Data Exchange API for managing your
      *  recurring job. Use the <b>recurringJobId</b> value

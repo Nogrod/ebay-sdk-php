@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class ItemSpecificsEnabledCodeType
 {
-
     /**
      * Constant for 'Disabled' value.
      *

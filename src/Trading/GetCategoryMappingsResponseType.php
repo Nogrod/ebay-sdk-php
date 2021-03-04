@@ -14,7 +14,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetCategoryMappingsResponseType extends AbstractResponseType
 {
-
     /**
      * Mapping between an old category ID and an active category ID. Returned when
      *  category mappings exist and the value of CategoryVersion is different from

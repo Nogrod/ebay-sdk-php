@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetAllBiddersResponseType extends AbstractResponseType
 {
-
     /**
      * This container consists of an array of bids made on the specified auction listing. Each <b>OfferType</b> object represents the data for one bid.
      *

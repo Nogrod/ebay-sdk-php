@@ -13,7 +13,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class SupportedSellerProfilesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Container consisting of information related to specific Business Policies payment, return,
      *  and shipping policy profiles. The profile type is found in the

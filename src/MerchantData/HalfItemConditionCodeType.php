@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class HalfItemConditionCodeType
 {
-
     /**
      * Constant for 'BrandNew' value.
      */

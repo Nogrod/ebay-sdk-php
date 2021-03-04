@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class PictureSourceCodeType
 {
-
     /**
      * Constant for 'EPS' value.
      *

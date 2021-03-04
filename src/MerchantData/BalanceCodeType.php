@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class BalanceCodeType
 {
-
     /**
      * Constant for 'Other' value.
      *

@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class StorePreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Store vacation hold preferences.
      *

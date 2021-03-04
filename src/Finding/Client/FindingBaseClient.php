@@ -7,7 +7,6 @@ namespace Nogrod\eBaySDK\Finding\Client;
  */
 class FindingBaseClient extends \Nogrod\XMLClientRuntime\Client
 {
-
     /**
      * Call getSearchKeywordsRecommendation
      *

@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class SKUDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Stock Keeping Unit that serves as a unique identifier for an item.
      *  Many merchants assign a SKU number to an item of a specific type,

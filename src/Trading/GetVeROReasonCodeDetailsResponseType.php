@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetVeROReasonCodeDetailsResponseType extends AbstractResponseType
 {
-
     /**
      * This container consists of one or more VeRO Program copyright/intellectual property infringement violation types for one or more eBay sites.
      *

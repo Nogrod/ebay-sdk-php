@@ -15,7 +15,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class SetPromotionalSaleListingsRequestType extends AbstractRequestType
 {
-
     /**
      * The unique identifier of the seller's promotional sale. Based on the <b>Action</b>
      *  value, listings will either be added to or removed from the promotional sale.

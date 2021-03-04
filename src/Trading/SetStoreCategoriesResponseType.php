@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class SetStoreCategoriesResponseType extends AbstractResponseType
 {
-
     /**
      * The task ID associated with the category structure change request. For a
      *  simple change, the <b>SetStoreCategories</b> call is processed synchronously.

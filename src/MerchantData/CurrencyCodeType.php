@@ -40,7 +40,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class CurrencyCodeType
 {
-
     /**
      * Constant for 'AFA' value.
      *

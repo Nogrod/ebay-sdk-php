@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetCategoryFeaturesResponseType extends AbstractResponseType
 {
-
     /**
      * Returns the current version of the set of feature meta-data.
      *  Compare this value to the version of the last version you

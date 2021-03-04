@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class InternationalShippingServiceOptionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * This field is no longer applicable as it is not longer possible for a seller to offer a buyer shipping insurance.
      *

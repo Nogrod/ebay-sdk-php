@@ -15,7 +15,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class NonProfitSocialAddressType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Enumeration value that indicates the social networking site that the nonprofit charity
      *  organization is associated with. This is a required field for each social networking

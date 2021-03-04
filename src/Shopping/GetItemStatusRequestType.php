@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetItemStatusRequestType extends AbstractRequestType
 {
-
     /**
      * The unique identifier of the eBay listing to retrieve. You can retrieve the status of up to 20 listings per call, and a separate <b>ItemID</b> field is required for each listing.
      *

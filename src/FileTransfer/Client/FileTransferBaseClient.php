@@ -7,7 +7,6 @@ namespace Nogrod\eBaySDK\FileTransfer\Client;
  */
 class FileTransferBaseClient extends \Nogrod\XMLClientRuntime\Client
 {
-
     /**
      * Call uploadFile
      *

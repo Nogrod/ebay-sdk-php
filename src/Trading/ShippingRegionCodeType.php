@@ -11,7 +11,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class ShippingRegionCodeType
 {
-
     /**
      * Constant for 'Africa' value.
      *

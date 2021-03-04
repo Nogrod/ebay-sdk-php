@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class BaseServiceResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Returns the acknowledgement of the call success or failure.
      *

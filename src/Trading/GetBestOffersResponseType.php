@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetBestOffersResponseType extends AbstractResponseType
 {
-
     /**
      * All Best Offers for the item according to the filter or Best Offer ID (or both) used in the input. The buyer and seller messages are returned only if the detail level is defined. Includes the buyer and seller message only if the <code>ReturnAll</code> detail level is used. Only returned if Best Offers have been made.
      *

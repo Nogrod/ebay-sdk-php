@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class ReturnStatusCodeType
 {
-
     /**
      * Constant for 'Invalid' value.
      *

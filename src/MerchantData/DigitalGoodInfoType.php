@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class DigitalGoodInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * This field must be included in the request and set to <code>true</code> if the seller plans to list a digital gift card in a category that supports digital gift cards.
      *  <br><br>

@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class AspectHistogramContainerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * A buy-side group of items that share aspects, but not necessarily an eBay
      *  category. For example "Women's Dresses" or "Digital Cameras" could be

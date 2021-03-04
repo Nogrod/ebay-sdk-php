@@ -13,7 +13,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetMessagePreferencesRequestType extends AbstractRequestType
 {
-
     /**
      * The eBay user ID of the seller to retrieve ASQ subjects for. A user can retrieve their own ASQ subjects or those of another eBay user with a seller account.
      *

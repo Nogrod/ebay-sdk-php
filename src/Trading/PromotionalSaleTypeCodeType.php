@@ -15,7 +15,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class PromotionalSaleTypeCodeType
 {
-
     /**
      * Constant for 'PriceDiscountOnly' value.
      *

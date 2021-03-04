@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class BuyerPaymentInstrumentCodeType
 {
-
     /**
      * Constant for 'None' value.
      *

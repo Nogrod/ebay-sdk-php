@@ -13,7 +13,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class CharityInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * This attribute is the eBay-assigned, unique identifier of the nonprofit charity organization.
      *

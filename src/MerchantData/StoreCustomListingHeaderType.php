@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class StoreCustomListingHeaderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Display type for the custom listing header.
      *

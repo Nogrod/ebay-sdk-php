@@ -14,7 +14,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class AddItemResponseType extends AbstractResponseType
 {
-
     /**
      * Unique identifier for the new listing. This field is returned as long as the listing was successfully created.
      *

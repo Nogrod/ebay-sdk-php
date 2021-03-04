@@ -16,7 +16,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class ErrorHandlingCodeType
 {
-
     /**
      * Constant for 'Legacy' value.
      *

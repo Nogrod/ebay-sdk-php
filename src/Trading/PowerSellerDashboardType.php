@@ -14,7 +14,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class PowerSellerDashboardType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * This field indicates the seller's eBay PowerSeller tier. PowerSellers are
      *  distinguished in five tiers based on average monthly sales. Benefits and services vary

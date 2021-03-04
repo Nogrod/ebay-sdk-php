@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class ExtensionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * @var int $id
      */

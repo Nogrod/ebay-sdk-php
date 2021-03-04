@@ -14,7 +14,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class InternationalShippingServiceOptionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * An international shipping service being offered by the seller to ship an item to
      *  a buyer. For a list of valid values, call <b>GeteBayDetails</b>

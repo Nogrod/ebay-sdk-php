@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class RefundLineType extends AmountType
 {
-
     /**
      * This field is deprecated.
      *

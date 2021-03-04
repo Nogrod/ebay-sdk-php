@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class RefundSourceTypeCodeType
 {
-
     /**
      * Constant for 'StoreCredit' value.
      *

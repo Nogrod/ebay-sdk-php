@@ -11,7 +11,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class FeedbackRatingDetailCodeType
 {
-
     /**
      * Constant for 'ItemAsDescribed' value.
      *

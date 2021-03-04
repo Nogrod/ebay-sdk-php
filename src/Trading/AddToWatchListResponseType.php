@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class AddToWatchListResponseType extends AbstractResponseType
 {
-
     /**
      * This integer value indicates the total number of items in the user's Watch List (after those specified in the call request have been successfully added).
      *

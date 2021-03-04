@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class RelistFixedPriceItemRequestType extends AbstractRequestType
 {
-
     /**
      * The <b>Item</b> container is used to configure the item that will be relisted. If the seller plans to relist the item with no changes, the only field under the <b>Item</b> container that is required is the <b>ItemID</b> field. In the <b>ItemID</b> field, the seller specifies the item that will be relisted. If the seller wishes to change anything else for the listing, the seller should include this field in the call request and give it a new value.
      *  <br/><br/>

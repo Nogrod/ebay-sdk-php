@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class OrderArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Details of an eBay order. One eBay order can have one or more order line items (<b>Transaction</b> objects).
      *

@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class UserIdentityType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * @var string $__value
      */

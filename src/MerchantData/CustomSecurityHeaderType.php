@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class CustomSecurityHeaderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Authentication token representing the user who is making the
      *  request. The user's token must be retrieved from eBay. To determine

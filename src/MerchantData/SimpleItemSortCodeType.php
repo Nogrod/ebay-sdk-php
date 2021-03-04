@@ -12,7 +12,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class SimpleItemSortCodeType
 {
-
     /**
      * Constant for 'BestMatch' value.
      *

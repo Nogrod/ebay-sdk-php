@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class ListingTypeCodeType
 {
-
     /**
      * Constant for 'Unknown' value.
      *

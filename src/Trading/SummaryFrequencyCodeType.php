@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class SummaryFrequencyCodeType
 {
-
     /**
      * Constant for 'EverySunday' value.
      *

@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class ExtensionTypeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Reserved for future use.
      *

@@ -12,7 +12,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class ShippingPackageCodeType
 {
-
     /**
      * Constant for 'None' value.
      *

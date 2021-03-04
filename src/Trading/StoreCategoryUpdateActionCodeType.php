@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class StoreCategoryUpdateActionCodeType
 {
-
     /**
      * Constant for 'Add' value.
      *

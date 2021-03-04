@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class OrderAckRequestType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * A unique identifier for an eBay order. An eBay order can contain one or more order line items. This field is used to acknowledge a single line item order. If the eBay order has multiple line items, an <b>OrderAck</b> call will be required to acknowledge each of those order line items, and the <b>OrderLineItemID</b> field must be used instead.
      *  <br><br>

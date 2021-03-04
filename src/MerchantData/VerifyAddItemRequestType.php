@@ -18,7 +18,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class VerifyAddItemRequestType extends AbstractRequestType
 {
-
     /**
      * Root container holding all values that define a new
      *  listing.

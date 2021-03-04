@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class PictureUploadPolicyCodeType
 {
-
     /**
      * Constant for 'Add' value.
      *

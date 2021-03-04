@@ -14,7 +14,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class ReviseMyMessagesFoldersRequestType extends AbstractRequestType
 {
-
     /**
      * This required field is used to indicate the type of operation to perform (add, remove, or rename a folder). See the enumeration descriptions below for more information on the usage, requirements, and limitations on each operation.
      *

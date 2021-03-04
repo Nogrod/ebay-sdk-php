@@ -18,7 +18,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class UnpaidItemAssistancePreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * This value indicates the number of days that should elapse before the Unpaid
      *  Item Assistant mechanism opens an Unpaid Item case on behalf of the seller.

@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class ActivateRecurringJobRequestType extends BaseServiceRequestType
 {
-
     /**
      * Unique ID assigned by the Bulk Data Exchange API for managing your
      *  recurring job. The specified <b>recurringJobId</b> value will control which recurring job is activated.

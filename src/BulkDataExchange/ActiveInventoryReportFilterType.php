@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class ActiveInventoryReportFilterType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * This field allows the user to control whether fixed-price and/or auction listings are returned in an <b>ActiveInventoryReport</b> response. If the <b>downloadJobType</b> value is set to 'ActiveInventoryReport', this value defaults to 'AuctionAndFixedPrice' and both listing types are returned in the <b>ActiveInventoryReport</b> response. However, there may be times when the user only wants to retrieve fixed-price listings or only auction listings, in which case the user would include and set the <b>includeListingType</b> field to 'FixedPrice' or 'Auction' as appropriate.
      *

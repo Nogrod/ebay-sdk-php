@@ -14,7 +14,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class BuyerProtectionDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * This value indicates the type of buyer protection program applicable for the item.
      *  This field is always returned with the <strong>ApplyBuyerProtection</strong> container.

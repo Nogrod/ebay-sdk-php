@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class BidGroupStatusCodeType
 {
-
     /**
      * Constant for 'Open' value.
      *

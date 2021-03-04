@@ -13,7 +13,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetContextualKeywordsRequestType extends AbstractRequestType
 {
-
     /**
      * The URL of the web page from which eBay is to extract keywords.
      *

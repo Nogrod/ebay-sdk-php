@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class StoreCustomListingHeaderDisplayCodeType
 {
-
     /**
      * Constant for 'None' value.
      *

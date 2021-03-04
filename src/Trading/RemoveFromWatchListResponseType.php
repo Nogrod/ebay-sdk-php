@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class RemoveFromWatchListResponseType extends AbstractResponseType
 {
-
     /**
      * The current number of items in the user's Watch List (considering that the items specified in the call request were successfully removed).
      *

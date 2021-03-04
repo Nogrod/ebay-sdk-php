@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class USPSRateOptionCodeType
 {
-
     /**
      * Constant for 'USPSDiscounted' value.
      *

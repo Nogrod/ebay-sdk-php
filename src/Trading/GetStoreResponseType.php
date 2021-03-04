@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetStoreResponseType extends AbstractResponseType
 {
-
     /**
      * This container consists of detailed information on the seller's eBay Store. The amount of information in this container will partially depend on the settings made in the call request.
      *

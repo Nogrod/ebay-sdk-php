@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class MessageStatusTypeCodeType
 {
-
     /**
      * Constant for 'Answered' value.
      *

@@ -14,7 +14,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class SetShipmentTrackingInfoRequestType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * A unique identifier that identifies a single line item or multiple line item
      *  order. Either the <b>OrderID</b> or <b>OrderLineItemID</b> value must be

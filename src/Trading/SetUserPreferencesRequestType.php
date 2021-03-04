@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class SetUserPreferencesRequestType extends AbstractRequestType
 {
-
     /**
      * This container is included if the seller wishes to receive contact information for unsuccessful bidders. This preference is only applicable for auction listings.
      *

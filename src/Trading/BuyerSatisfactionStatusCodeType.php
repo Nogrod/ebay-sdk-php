@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class BuyerSatisfactionStatusCodeType
 {
-
     /**
      * Constant for 'Excellent' value.
      *

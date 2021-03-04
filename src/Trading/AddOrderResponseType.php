@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class AddOrderResponseType extends AbstractResponseType
 {
-
     /**
      * The unique identifier of the successfully-created 'Combined Invoice' order. This value is only created and returned if the <b>AddOrder</b> call is successful in creating the new order.
      *  <br/><br/>

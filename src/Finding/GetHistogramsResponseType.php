@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetHistogramsResponseType extends BaseServiceResponseType
 {
-
     /**
      * Response container for category histograms. This container is
      *  returned only when the specified category has children categories.

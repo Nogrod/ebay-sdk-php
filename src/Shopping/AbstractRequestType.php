@@ -16,7 +16,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class AbstractRequestType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * If you pass a value into the <b>MessageID</b> field in a request,
      *  the same value is returned in <b>CorrelationID</b> field in the response.

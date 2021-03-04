@@ -12,7 +12,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class PictureSetCodeType
 {
-
     /**
      * Constant for 'Standard' value.
      *

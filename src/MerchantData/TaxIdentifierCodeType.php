@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class TaxIdentifierCodeType
 {
-
     /**
      * Constant for 'CodiceFiscale' value.
      */

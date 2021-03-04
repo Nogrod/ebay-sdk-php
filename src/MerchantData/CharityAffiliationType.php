@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class CharityAffiliationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * This attribute is deprecated. Replaced by the <b>CharityID</b> field of <b>CharityAffiliationDetailType</b>.
      *

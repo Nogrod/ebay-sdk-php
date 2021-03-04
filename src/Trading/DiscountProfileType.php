@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class DiscountProfileType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * The unique eBay-created unique identifier for the shipping discount, assigned when the shipping discount rule is created.
      *  <br/>

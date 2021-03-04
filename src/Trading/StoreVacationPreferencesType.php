@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class StoreVacationPreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * In a <b>SetStorePreferences</b> call, this field should be included in the request and set to <code>true</code> if the eBay store owner is going on vacation and wants to temporarily turn off all active listings. Conversely, if the eBay store owner is back from vacation, this field can be included and set to <code>false</code> to turn off the vacation setting.
      *  <br/><br/>

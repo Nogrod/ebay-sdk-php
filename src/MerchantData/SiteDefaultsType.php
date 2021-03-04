@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Specifies the ID of a set of default durations for a certain type of listing.
      *  The actual duration values are returned within the FeatureDefinitions node.

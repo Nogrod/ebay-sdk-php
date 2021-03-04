@@ -14,7 +14,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class ShippingCarrierCodeType
 {
-
     /**
      * Constant for 'UPS' value.
      *

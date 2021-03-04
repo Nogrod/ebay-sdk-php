@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\BusinessPoliciesManagement;
  */
 class ErrorSeverityType
 {
-
     /**
      * Constant for 'Error' value.
      */

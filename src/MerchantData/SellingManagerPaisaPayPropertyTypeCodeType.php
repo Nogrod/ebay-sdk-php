@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class SellingManagerPaisaPayPropertyTypeCodeType
 {
-
     /**
      * Constant for 'PaisaPayAwaitingShipment' value.
      *

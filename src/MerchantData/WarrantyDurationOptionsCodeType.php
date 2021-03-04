@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class WarrantyDurationOptionsCodeType
 {
-
     /**
      * Constant for 'Months_1' value.
      *

@@ -13,7 +13,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class SellingManagerAutoListAccordingToScheduleType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * The day of the week on which items should be listed.
      *

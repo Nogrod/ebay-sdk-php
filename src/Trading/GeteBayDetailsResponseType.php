@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GeteBayDetailsResponseType extends AbstractResponseType
 {
-
     /**
      * Lists the country code and associated name of the countries supported by
      *  the eBay system, regardless of the site specified in the request.

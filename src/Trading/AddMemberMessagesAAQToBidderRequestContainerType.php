@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class AddMemberMessagesAAQToBidderRequestContainerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * A <b>CorrelationID</b> value is required for
      *  each <b>AddMemberMessagesAAQToBidderRequestContainer</b> container that is used in the request. The

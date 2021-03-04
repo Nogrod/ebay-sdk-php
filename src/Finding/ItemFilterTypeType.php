@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Finding;
  */
 class ItemFilterTypeType
 {
-
     /**
      * Constant for 'Condition' value.
      *

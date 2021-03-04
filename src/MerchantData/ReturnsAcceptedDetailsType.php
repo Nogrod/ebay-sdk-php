@@ -15,7 +15,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class ReturnsAcceptedDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Whether the seller allows the buyer to return the item.
      *  This value can be passed in the AddItem family of calls.

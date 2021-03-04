@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class FeeSettlementReportFilterType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * The date-time specified in this field will control which fee data is returned in a <b>FeeSettlementReport</b> response. Only fee data on eBay invoices sent to the seller after this specified date-time are returned in the <b>FeeSettlementReport</b> response.
      *  <br><br>

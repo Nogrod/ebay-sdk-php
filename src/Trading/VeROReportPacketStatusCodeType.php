@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class VeROReportPacketStatusCodeType
 {
-
     /**
      * Constant for 'Received' value.
      *

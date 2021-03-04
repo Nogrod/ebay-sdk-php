@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class BestOfferActionCodeType
 {
-
     /**
      * Constant for 'Accept' value.
      *

@@ -11,7 +11,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class AnnouncementMessageCodeType
 {
-
     /**
      * Constant for 'None' value.
      *

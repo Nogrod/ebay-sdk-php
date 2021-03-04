@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class SellingManagerEmailLogType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Specifies the type of Selling Manager email.
      *

@@ -17,7 +17,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * This field is deprecated and has been replaced by the <b>ShippingDetails.PaymentEdited</b> field.
      *

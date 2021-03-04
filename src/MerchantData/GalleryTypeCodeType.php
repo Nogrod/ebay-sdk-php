@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class GalleryTypeCodeType
 {
-
     /**
      * Constant for 'None' value.
      *

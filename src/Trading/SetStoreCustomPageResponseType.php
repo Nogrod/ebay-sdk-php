@@ -13,7 +13,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class SetStoreCustomPageResponseType extends AbstractResponseType
 {
-
     /**
      * This container consists of details for the newly-added or modified eBay Store custom page.
      *

@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class FindItemsForFavoriteSearchResponseType extends BaseFindingServiceResponseType
 {
-
     /**
      * Reserved for future use.
      *

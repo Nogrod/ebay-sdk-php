@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class CharitySellerStatusCodeType
 {
-
     /**
      * Constant for 'Suspended' value.
      *

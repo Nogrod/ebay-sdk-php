@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class BidGroupItemStatusCodeType
 {
-
     /**
      * Constant for 'CurrentBid' value.
      *

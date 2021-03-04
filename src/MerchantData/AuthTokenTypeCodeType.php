@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class AuthTokenTypeCodeType
 {
-
     /**
      * Constant for 'ClientAlertsToken' value.
      *

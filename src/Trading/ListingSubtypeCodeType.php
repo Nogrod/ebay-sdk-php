@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class ListingSubtypeCodeType
 {
-
     /**
      * Constant for 'ClassifiedAd' value.
      *

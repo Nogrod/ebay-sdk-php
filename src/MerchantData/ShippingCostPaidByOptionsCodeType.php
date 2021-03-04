@@ -13,7 +13,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class ShippingCostPaidByOptionsCodeType
 {
-
     /**
      * Constant for 'Buyer' value.
      *

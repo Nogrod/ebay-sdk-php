@@ -11,7 +11,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class DescriptionReviseModeCodeType
 {
-
     /**
      * Constant for 'Replace' value.
      *

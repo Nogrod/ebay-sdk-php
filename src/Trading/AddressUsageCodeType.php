@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class AddressUsageCodeType
 {
-
     /**
      * Constant for 'DefaultShipping' value.
      *

@@ -13,7 +13,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class SellingStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Number of bids placed so far against the auction item.
      *

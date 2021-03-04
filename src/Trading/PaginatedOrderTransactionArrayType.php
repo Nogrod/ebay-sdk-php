@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class PaginatedOrderTransactionArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Contains the list of orders.
      *

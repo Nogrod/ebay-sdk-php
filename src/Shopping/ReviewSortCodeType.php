@@ -11,7 +11,6 @@ namespace Nogrod\eBaySDK\Shopping;
  */
 class ReviewSortCodeType
 {
-
     /**
      * Constant for 'CreationTime' value.
      *

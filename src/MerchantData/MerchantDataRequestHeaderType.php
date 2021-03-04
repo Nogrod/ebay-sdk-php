@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class MerchantDataRequestHeaderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * The numeric eBay Site Code for which to route the
      *  requests in the payload. E.g. 77 for eBay Germany.

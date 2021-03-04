@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetSessionIDResponseType extends AbstractResponseType
 {
-
     /**
      * A 40-character identifier supplied by eBay to an application. Used to confirm the
      *  identities of the user and the application in a URL redirect during the

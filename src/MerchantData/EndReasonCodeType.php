@@ -11,7 +11,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class EndReasonCodeType
 {
-
     /**
      * Constant for 'LostOrBroken' value.
      *

@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class SetSellerProfileResponseType extends BaseResponseType
 {
-
     /**
      * Container that has the details of the payment policy that a seller updated.
      *

@@ -17,7 +17,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class SiteBuyerRequirementDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * <span class="tablenote"><b>Note: </b>
      *  This field is no longer applicable, as sellers can no longer set the Buyer Requirement that buyers must have a PayPal account linked to their eBay account in order to purchase an item.

@@ -11,7 +11,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class UnitCodeType
 {
-
     /**
      * Constant for 'kg' value.
      *

@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class TokenStatusCodeType
 {
-
     /**
      * Constant for 'Active' value.
      *

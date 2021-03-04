@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class ReviseSellingManagerTemplateResponseType extends AbstractResponseType
 {
-
     /**
      * This sale template ID uniquely identifies the template that was revised
      *  in the request. This sale template ID should match the

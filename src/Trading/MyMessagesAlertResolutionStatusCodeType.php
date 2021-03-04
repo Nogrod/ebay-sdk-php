@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class MyMessagesAlertResolutionStatusCodeType
 {
-
     /**
      * Constant for 'Unresolved' value.
      *

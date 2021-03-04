@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class NotificationPayloadTypeCodeType
 {
-
     /**
      * Constant for 'eBLSchemaSOAP' value.
      *

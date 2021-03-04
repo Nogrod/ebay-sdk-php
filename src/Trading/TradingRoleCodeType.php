@@ -11,7 +11,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class TradingRoleCodeType
 {
-
     /**
      * Constant for 'Buyer' value.
      *

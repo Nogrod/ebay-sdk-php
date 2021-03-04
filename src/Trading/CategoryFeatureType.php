@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Specifies the unique identifier of the eBay category. All eBay feature information that is returned under the corresponding <b>Category</b> container is relevant to this eBay category.
      *

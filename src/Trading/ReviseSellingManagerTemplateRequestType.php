@@ -14,7 +14,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class ReviseSellingManagerTemplateRequestType extends AbstractRequestType
 {
-
     /**
      * The unique identifier of the Selling Manager template. You can obtain a
      *  <b>SaleTemplateID</b> value by calling <b>GetSellingManagerInventory</b>.

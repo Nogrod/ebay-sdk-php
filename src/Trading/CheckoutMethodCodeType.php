@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class CheckoutMethodCodeType
 {
-
     /**
      * Constant for 'Other' value.
      *

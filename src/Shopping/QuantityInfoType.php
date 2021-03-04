@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class QuantityInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * This field indicates the minimum ticket quantity that must remain after a buyer purchases one or more (but not all) tickets in an event-based listing. This feature helps the seller avoid the scenario of being left with only one ticket in a multiple-quantity, fixed-priced event-based listing. In some cases, a solo seat to an event can be harder to sell, especially as the event date approaches.
      *  <br> <br>

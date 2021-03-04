@@ -11,7 +11,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class ItemConditionCodeType
 {
-
     /**
      * Constant for 'New' value.
      *

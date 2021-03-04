@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class GetAllBiddersModeCodeType
 {
-
     /**
      * Constant for 'ViewAll' value.
      *

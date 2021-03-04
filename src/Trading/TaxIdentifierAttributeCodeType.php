@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class TaxIdentifierAttributeCodeType
 {
-
     /**
      * Constant for 'IssuingCountry' value.
      *

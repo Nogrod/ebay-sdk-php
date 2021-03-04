@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class SellingManagerAlertTypeCodeType
 {
-
     /**
      * Constant for 'Sold' value.
      *

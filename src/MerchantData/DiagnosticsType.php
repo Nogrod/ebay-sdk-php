@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class DiagnosticsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * only returns for if showdiag is defined in the header and the request is from internal IP
      *

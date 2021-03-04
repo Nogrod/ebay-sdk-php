@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class AccountEntriesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Container consisting of detailed information for each debit or credit transaction that occurs on an eBay user's account.
      *

@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class SetUserNotesActionCodeType
 {
-
     /**
      * Constant for 'AddOrUpdate' value.
      *

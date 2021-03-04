@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class UserIdentityCodeType
 {
-
     /**
      * Constant for 'eBayUser' value.
      *

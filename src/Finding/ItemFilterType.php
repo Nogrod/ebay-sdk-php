@@ -14,7 +14,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class ItemFilterType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * In addition to filter Name/Value pairs, some itemFilters use an
      *  additional parameter Name/Value pair. Specifically, filters that use

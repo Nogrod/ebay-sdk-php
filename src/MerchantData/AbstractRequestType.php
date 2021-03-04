@@ -17,7 +17,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class AbstractRequestType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Detail levels are instructions that define standard subsets of
      *  data to return for particular data components (e.g., each

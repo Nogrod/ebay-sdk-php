@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class DeviceTypeCodeType
 {
-
     /**
      * Constant for 'Platform' value.
      *

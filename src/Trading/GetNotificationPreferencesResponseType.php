@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetNotificationPreferencesResponseType extends AbstractResponseType
 {
-
     /**
      * Specifies application-based event preferences that have been enabled.
      *

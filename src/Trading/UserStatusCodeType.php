@@ -11,7 +11,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class UserStatusCodeType
 {
-
     /**
      * Constant for 'Unknown' value.
      *

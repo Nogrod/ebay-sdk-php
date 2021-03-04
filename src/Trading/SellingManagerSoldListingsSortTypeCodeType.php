@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class SellingManagerSoldListingsSortTypeCodeType
 {
-
     /**
      * Constant for 'SalesRecordID' value.
      *

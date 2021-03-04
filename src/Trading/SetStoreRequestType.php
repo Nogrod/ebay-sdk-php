@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class SetStoreRequestType extends AbstractRequestType
 {
-
     /**
      * This container is used to set/modify the configuration of a seller's eBay Store.
      *

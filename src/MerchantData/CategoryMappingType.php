@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class CategoryMappingType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * This attribute value is the unique identifier of an eBay category that has been recently updated to a new Category ID, which is specified in the <b>id</b> attribute. The user will want to use the Category ID value in the <b>id</b> attribute the next time they run a call that requires a Category ID. Note that Category IDs are unique to each eBay site. This attribute is always returned with the <b>CategoryMapping</b> field.
      *

@@ -7,7 +7,6 @@ namespace Nogrod\eBaySDK\Shopping\Client;
  */
 class ShoppingBaseClient extends \Nogrod\XMLClientRuntime\Client
 {
-
     /**
      * Call FindProducts
      *

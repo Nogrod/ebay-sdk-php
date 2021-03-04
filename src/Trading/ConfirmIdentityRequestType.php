@@ -13,7 +13,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class ConfirmIdentityRequestType extends AbstractRequestType
 {
-
     /**
      * A string obtained by making a <b>GetSessionID</b> call, passed in redirect URL to the eBay signin page.
      *

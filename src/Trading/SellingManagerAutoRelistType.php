@@ -14,7 +14,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class SellingManagerAutoRelistType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * The type of auto-relist rule for the item.
      *

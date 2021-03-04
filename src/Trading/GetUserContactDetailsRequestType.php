@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetUserContactDetailsRequestType extends AbstractRequestType
 {
-
     /**
      * A unique identifier for the eBay listing that the caller and order partner have in common.
      *

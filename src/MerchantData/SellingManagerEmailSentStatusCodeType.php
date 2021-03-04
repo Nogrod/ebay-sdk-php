@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class SellingManagerEmailSentStatusCodeType
 {
-
     /**
      * Constant for 'Successful' value.
      *

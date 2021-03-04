@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class ReturnsShipmentPayeeCodeType
 {
-
     /**
      * Constant for 'Buyer' value.
      *

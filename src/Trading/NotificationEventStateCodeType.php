@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class NotificationEventStateCodeType
 {
-
     /**
      * Constant for 'New' value.
      *

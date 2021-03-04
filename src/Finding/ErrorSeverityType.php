@@ -11,7 +11,6 @@ namespace Nogrod\eBaySDK\Finding;
  */
 class ErrorSeverityType
 {
-
     /**
      * Constant for 'Error' value.
      *

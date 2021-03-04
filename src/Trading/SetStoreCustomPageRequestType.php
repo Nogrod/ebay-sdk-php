@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class SetStoreCustomPageRequestType extends AbstractRequestType
 {
-
     /**
      * This container is used to create a new eBay Store custom page or modify an existing custom page.
      *

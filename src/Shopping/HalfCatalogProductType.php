@@ -13,7 +13,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class HalfCatalogProductType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * <span class="tablenote"><b>Note: </b> <b>HalfCatalogProductType</b> and all of its elements are deprecated along with the <b>FindHalfProducts</b> call.
      *  </span>

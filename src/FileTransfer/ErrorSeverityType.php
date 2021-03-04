@@ -12,7 +12,6 @@ namespace Nogrod\eBaySDK\FileTransfer;
  */
 class ErrorSeverityType
 {
-
     /**
      * Constant for 'Error' value.
      *

@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class CalculatedShippingRateOptionCodeType
 {
-
     /**
      * Constant for 'CombinedItemWeight' value.
      *

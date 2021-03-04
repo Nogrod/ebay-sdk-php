@@ -16,7 +16,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class PickupOptionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * This value indicates an available pickup method. This field is always returned with the <strong>PickupOptions</strong> container.
      *  <br/><br/>

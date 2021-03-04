@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class MerchantDataVariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Stock Keeping Unit that serves as the seller's unique
      *  identifier for items within the same variation.

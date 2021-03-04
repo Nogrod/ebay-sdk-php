@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class CategoryGroupType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * @var bool $default
      */

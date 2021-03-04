@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class PaymentInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * @var string[] $acceptedPaymentMethod
      */

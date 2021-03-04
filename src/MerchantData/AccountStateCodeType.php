@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class AccountStateCodeType
 {
-
     /**
      * Constant for 'Active' value.
      *

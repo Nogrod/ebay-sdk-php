@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class DeviceTypeCodeType
 {
-
     /**
      * Constant for 'Platform' value.
      *

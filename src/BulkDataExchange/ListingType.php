@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\BulkDataExchange;
  */
 class ListingType
 {
-
     /**
      * Constant for 'Half' value.
      *

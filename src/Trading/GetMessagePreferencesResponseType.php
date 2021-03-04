@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetMessagePreferencesResponseType extends AbstractResponseType
 {
-
     /**
      * Returns a seller's ASQ subjects, each in its own Subject
      *  node. If the seller has not customized the ASQ subjects

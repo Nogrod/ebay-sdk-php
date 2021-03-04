@@ -18,7 +18,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class BuyingSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * The number of auction items the user has bid on.
      *

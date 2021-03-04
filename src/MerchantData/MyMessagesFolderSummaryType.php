@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class MyMessagesFolderSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * An ID that uniquely identifies a My Messages
      *  folder. Always returned for detail level

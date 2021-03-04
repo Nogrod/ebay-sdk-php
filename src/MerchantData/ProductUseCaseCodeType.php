@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class ProductUseCaseCodeType
 {
-
     /**
      * Constant for 'AddItem' value.
      *

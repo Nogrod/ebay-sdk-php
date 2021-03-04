@@ -14,7 +14,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class TransactionArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * A <b>Transaction</b> container is returned for each line item in the order. This container consists of detailed information on one order line item.
      *  <br/><br/>

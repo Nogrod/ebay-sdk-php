@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetClientAlertsAuthTokenResponseType extends AbstractResponseType
 {
-
     /**
      * This token string is required for the Login call in the Client Alerts API.
      *  The Client Alerts GetUserAlerts call, which returns alerts about events

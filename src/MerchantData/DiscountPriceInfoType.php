@@ -17,7 +17,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class DiscountPriceInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * The actual retail price set by the manufacturer (OEM).
      *  eBay does not maintain or validate the <b>OriginalRetailPrice</b> supplied

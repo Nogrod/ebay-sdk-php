@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class PromotionSchemeCodeType
 {
-
     /**
      * Constant for 'ItemToItem' value.
      *

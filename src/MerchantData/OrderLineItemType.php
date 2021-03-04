@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class OrderLineItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * An ID that uniquely identifies each line item within an order. If the buyer only
      *  purchased one item, there will be one Order ID and one Order Line Item ID. If a

@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class AccountDetailEntryCodeType
 {
-
     /**
      * Constant for 'Unknown' value.
      *

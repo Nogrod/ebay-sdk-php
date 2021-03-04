@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class EndOfAuctionEmailPreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * The seller can customize the text of the email that is sent to the winner of an auction listing. The text of the email is provided in this field. If the seller is going to customize the text of the email through this field, the seller must also include the <b>TextCustomized</b> field and set its value to <code>true</code>.The text of the custom message for the email.
      *  <br>

@@ -17,7 +17,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class DisputeCreditEligibilityCodeType
 {
-
     /**
      * Constant for 'InEligible' value.
      *

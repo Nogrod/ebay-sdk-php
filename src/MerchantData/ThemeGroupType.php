@@ -13,7 +13,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class ThemeGroupType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Unique identifier for this theme group.
      *

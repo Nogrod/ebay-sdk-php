@@ -14,7 +14,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class CollectionMethodCodeType
 {
-
     /**
      * Constant for 'INVOICE' value.
      *

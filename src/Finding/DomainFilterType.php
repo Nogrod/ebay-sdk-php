@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class DomainFilterType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Specify the name of the domain to which you want to restrict search
      *  results. Only items listed within the specified domain will be returned

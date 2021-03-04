@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class RespondToBestOfferResponseType extends AbstractResponseType
 {
-
     /**
      * The <b>BestOffer.CallStatus</b> value returned in this container will indicate whether or not the action specified in the call request (accept, decline, or counter offer) was successful. The accept and counter offer actions can only be applied toward a single Best Offer. However, multiple Best Offers on a listing can be declined with one call. All Best Offers must be successfully declined with the <b>RespondToBestOffer</b> call for the <b> BestOffer.CallStatus</b> value to be <code>Success</code>.
      *

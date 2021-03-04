@@ -13,7 +13,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class FindItemsByProductRequestType extends BaseFindingServiceRequestType
 {
-
     /**
      * Input ISBN, UPC, EAN, or ReferenceID (ePID) to specify the type of
      *  product for which you want to search.

@@ -13,7 +13,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetAccountRequestType extends AbstractRequestType
 {
-
     /**
      * Specifies the report format in which to return account entries.
      *

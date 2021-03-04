@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class PreferredLocationCodeType
 {
-
     /**
      * Constant for 'ListedInCurrencyImplied' value.
      *

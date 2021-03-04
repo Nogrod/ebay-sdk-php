@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class RevokeTokenRequestType extends AbstractRequestType
 {
-
     /**
      * Cancels notification subscriptions for the user/application if set to true. Default value is false.
      *

@@ -15,7 +15,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class StartUploadJobRequestType extends BaseServiceRequestType
 {
-
     /**
      * Unique ID assigned by the Bulk Data Exchange API for managing your
      *  upload job. Use the <b>jobId</b> value returned in

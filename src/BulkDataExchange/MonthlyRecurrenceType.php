@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class MonthlyRecurrenceType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * This value is used to specify which day of each month that the recurring job should be executed. Supported values are 'Day_1', 'Day_2', 'Day_3', and all the way up to 'Day_28'. 'Day_Last' is also a supported value and indicates that the recurring job should be executed on the last day of each month, whether that be the 28th (in February), the 29th (in February during a leap year), the 30th, or 31st.
      *  <br/><br/>

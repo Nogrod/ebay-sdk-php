@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class BestOfferType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Unique identifier for a Best Offer. This identifier is created once a prospective buyer makes a Best Offer on an item.
      *

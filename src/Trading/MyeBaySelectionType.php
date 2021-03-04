@@ -13,7 +13,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class MyeBaySelectionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Specifies whether or not to include the container in the response.
      *  Set the value to true to return the default set of fields for the

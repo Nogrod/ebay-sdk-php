@@ -15,7 +15,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class FeenettingStatusCodeType
 {
-
     /**
      * Constant for 'Enabled' value.
      *

@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetCharitiesRequestType extends AbstractRequestType
 {
-
     /**
      * The unique identifier that eBay creates and assigns to each nonprofit organization. This is NOT the unique identifier used by the PayPal Giving Fund. This eBay unique identifier is returned in the <b>Charity.CharityID</b> field of a <b>GetItem</b> call for charitable listings.
      *  <br><br>

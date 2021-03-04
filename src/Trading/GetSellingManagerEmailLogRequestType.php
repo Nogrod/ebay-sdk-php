@@ -15,7 +15,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetSellingManagerEmailLogRequestType extends AbstractRequestType
 {
-
     /**
      * Unique identifier for the eBay listing associated with the Selling
      *  Manager email log. Unless the <b>OrderID</b> or <b>OrderLineItemID</b> value is

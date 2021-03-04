@@ -12,7 +12,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class CommentTypeCodeType
 {
-
     /**
      * Constant for 'Positive' value.
      *

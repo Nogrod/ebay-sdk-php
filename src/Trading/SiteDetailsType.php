@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class SiteDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Short name that identifies an eBay site. Usually, an eBay site is associated
      *  with a particular country or region (e.g., US or Belgium_French). Specialty

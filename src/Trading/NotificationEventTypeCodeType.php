@@ -12,7 +12,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class NotificationEventTypeCodeType
 {
-
     /**
      * Constant for 'None' value.
      *

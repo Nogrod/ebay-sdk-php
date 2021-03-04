@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class SetNotificationPreferencesRequestType extends AbstractRequestType
 {
-
     /**
      * Specifies application-level event preferences that have been enabled,
      *  including the URL to which notifications should be delivered and whether

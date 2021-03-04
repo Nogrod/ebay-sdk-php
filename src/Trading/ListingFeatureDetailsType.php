@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class ListingFeatureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * The enumeration value returned in this field indicates whether or not the Bold Title featured is enabled for the eBay site. If this feature is available for an eBay site, the seller can pass in <code>BoldTitle</code> as an enumeration value in the <b>ListingEnhancement</b> field of an Add/Revise/Relist call.
      *

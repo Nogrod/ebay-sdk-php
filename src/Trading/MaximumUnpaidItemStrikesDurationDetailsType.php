@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class MaximumUnpaidItemStrikesDurationDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * The period is the number of days (last 60 days, last 180 days, etc.)
      *  during which the buyer's unpaid item strikes are calculated.

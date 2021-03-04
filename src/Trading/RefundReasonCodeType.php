@@ -11,7 +11,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class RefundReasonCodeType
 {
-
     /**
      * Constant for 'CannotShipProduct' value.
      *

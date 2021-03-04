@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class MyMessagesResponseDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Whether a message can be responded
      *  to. To respond to a message, use the URL

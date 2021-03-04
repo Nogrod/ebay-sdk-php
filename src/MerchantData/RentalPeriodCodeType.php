@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class RentalPeriodCodeType
 {
-
     /**
      * Constant for 'Days30' value.
      *

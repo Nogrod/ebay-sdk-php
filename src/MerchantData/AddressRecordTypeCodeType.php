@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class AddressRecordTypeCodeType
 {
-
     /**
      * Constant for 'Residential' value.
      *

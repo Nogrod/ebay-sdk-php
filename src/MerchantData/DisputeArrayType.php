@@ -16,7 +16,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class DisputeArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * The information that describes a dispute, including
      *  the buyer's name, the transaction ID, the dispute state

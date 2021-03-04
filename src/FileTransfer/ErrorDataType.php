@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class ErrorDataType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * A unique code that identifies the particular error condition that occurred.
      *  Your application can use error codes as identifiers in your customized

@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetSearchKeywordsRecommendationResponseType extends BaseServiceResponseType
 {
-
     /**
      * Contains a spell-checked version of the submitted keywords. If no
      *  recommended spelling can be identified for the submitted keywords,

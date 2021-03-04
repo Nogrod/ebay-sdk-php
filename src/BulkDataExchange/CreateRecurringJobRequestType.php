@@ -19,7 +19,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class CreateRecurringJobRequestType extends BaseServiceRequestType
 {
-
     /**
      * A Universally Unique Identifier (UUID) provided by the seller's
      *  application.

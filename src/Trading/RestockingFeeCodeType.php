@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class RestockingFeeCodeType
 {
-
     /**
      * Constant for 'NoRestockingFee' value.
      *

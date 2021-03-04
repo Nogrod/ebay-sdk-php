@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class StoreFontSizeCodeType
 {
-
     /**
      * Constant for 'XXS' value.
      *

@@ -12,7 +12,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class CombinedPaymentOptionCodeType
 {
-
     /**
      * Constant for 'NoCombinedPayment' value.
      *

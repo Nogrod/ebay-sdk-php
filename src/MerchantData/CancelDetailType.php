@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class CancelDetailType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * This value indicates the reason why the order cancellation was initiated. This field is always returned with the <b>CancelDetail</b> container. Typical buyer-initiated cancellation reasons include <code>OrderPlacedByMistake</code>, <code>WontArriveInTime</code>, or <code>FoundCheaperPrice</code>. Sellers may initiate an order cancellation on behalf of the buyer. In this scenario, the seller should state the cancellation reason as <code>BuyerCancelOrder</code>. If the seller is cancelling an order because he/she is out of stock on an item, the seller should state the cancellation reason as <code>OutOfStock</code>. Unfortunately, in this scenario, the seller will receive a seller defect for this cancellation reason. Other order cancellation reasons are specific to eBay Scheduled Delivery orders. eBay Scheduled Delivery is similar to the eBay Now service in the US (now retired), and is only available in the UK. See <a href="types/CancelReasonCodeType.html">CancelReasonCodeType</a> for the complete list of enumeration values that can be returned in this field.
      *  <br><br>

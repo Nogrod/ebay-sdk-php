@@ -13,7 +13,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class SimpleItemArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * <span class="tablenote"><b>Note: </b> <b>SimpleItemArrayType</b> and the <b>Item</b> element are deprecated along with the <b>FindHalfProducts</b> call.
      *  </span>

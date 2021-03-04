@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class MemberMessageExchangeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * The item about which the question was asked. Returned if the parent container is returned.
      *

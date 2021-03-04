@@ -11,7 +11,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class SiteCodeType
 {
-
     /**
      * Constant for 'US' value.
      *

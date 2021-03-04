@@ -13,7 +13,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class RefundTypeCodeType
 {
-
     /**
      * Constant for 'Full' value.
      *

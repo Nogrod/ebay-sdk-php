@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class ItemBidDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * The unique identifier of an item listed on the eBay site.
      *  <br><br>

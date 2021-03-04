@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class NonProfitAddressType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * The street address of a nonprofit charity organization.
      *

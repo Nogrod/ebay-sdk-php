@@ -14,7 +14,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class SellingManagerProductSpecificsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * This optional field sets the primary eBay listing category for the Selling Manager Product. If the primary eBay listing category ID is not specified with <b>AddSellingManagerProduct</b> or <b>ReviseSellingManagerProduct</b> call, the seller can pass in this information with a subsequent <b>AddSellingManagerTemplate</b> call.
      *  <br><br>

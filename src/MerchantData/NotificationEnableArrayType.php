@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class NotificationEnableArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * In a <b>SetNotificationPreferences</b> call, one <b>NotificationEnable</b> container is used for each notification that the user either wants to subsribe to or disable.
      *  <br><br>

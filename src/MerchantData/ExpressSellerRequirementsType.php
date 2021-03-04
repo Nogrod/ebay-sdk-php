@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class ExpressSellerRequirementsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * If true, the seller's preferences in My eBay are set
      *  to include listings on eBay Express.

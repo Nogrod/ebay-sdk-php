@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetHistogramsRequestType extends BaseServiceRequestType
 {
-
     /**
      * Specifies the category from which you want to retrieve histogram
      *  information.

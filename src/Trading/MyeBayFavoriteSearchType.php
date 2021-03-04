@@ -17,7 +17,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class MyeBayFavoriteSearchType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * The name of the buyer's Saved Search on My eBay. The name defaults to the user's
      *  original search string, or the user has the option of modifying the name of the

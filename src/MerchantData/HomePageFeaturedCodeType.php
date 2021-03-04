@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class HomePageFeaturedCodeType
 {
-
     /**
      * Constant for 'Enabled' value.
      *

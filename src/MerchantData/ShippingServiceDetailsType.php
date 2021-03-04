@@ -14,7 +14,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class ShippingServiceDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Display string that applications can use to present a list of shipping service
      *  options in a more user-friendly format (such as in a drop-down list).

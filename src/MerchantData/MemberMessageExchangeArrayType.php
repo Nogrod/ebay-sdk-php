@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class MemberMessageExchangeArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Each <b>MemberMessageExchange</b> container consists of detailed information about a member-to-member message.
      *

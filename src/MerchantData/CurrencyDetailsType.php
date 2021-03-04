@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class CurrencyDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Three-digit currency codes as defined in ISO 4217. The currency codes returned in
      *  <b>GeteBayDetails</b> can be used as values in the

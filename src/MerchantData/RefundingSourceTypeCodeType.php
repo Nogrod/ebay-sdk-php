@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class RefundingSourceTypeCodeType
 {
-
     /**
      * Constant for 'ScheduledPayout' value.
      *

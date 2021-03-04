@@ -14,7 +14,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class SellingManagerAutoListType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * The source template ID for the rule that was retrieved.
      *  In the case of automated listing rules retrieved for an item, even if the item

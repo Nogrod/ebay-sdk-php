@@ -15,7 +15,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetPromotionalSaleDetailsResponseType extends AbstractResponseType
 {
-
     /**
      * This container consists of an array of one or more promotional sales for an eBay store owner. A <b>PromotionalSaleDetails.PromotionalSale</b> container is returned for each promotional sale that matches the input criteria in the call request.
      *

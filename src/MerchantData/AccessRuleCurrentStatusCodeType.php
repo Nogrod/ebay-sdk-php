@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class AccessRuleCurrentStatusCodeType
 {
-
     /**
      * Constant for 'NotSet' value.
      *

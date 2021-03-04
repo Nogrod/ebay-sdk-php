@@ -14,7 +14,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class SetTaxTableRequestType extends AbstractRequestType
 {
-
     /**
      * This table is used to set or modify sales tax rates for one or more tax jurisdictions within that country. A <b>TaxJurisdiction</b> container is required for each tax jurisdiction that is being added/updated.
      *

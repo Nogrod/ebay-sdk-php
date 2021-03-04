@@ -16,7 +16,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class RefundTransactionInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * This value indicates the success or failure of the attempt by the merchant to refund or provide store credit to the buyer for a returned In-Store Pickup item. This field is always returned with the <strong>Refund</strong> container.
      *  <br/><br/>

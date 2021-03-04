@@ -13,7 +13,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class FeedbackInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Textual comment that explains, clarifies, or justifies the Feedback rating specified
      *  in <b>CommentType</b>. This field is required in <b>CompleteSale</b> if the

@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class SalesTaxType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Percent of an item's price to be charged as the sales tax for the transaction. The sales tax percentage value is stored with a precision of three digits after the decimal point (##.###).
      *

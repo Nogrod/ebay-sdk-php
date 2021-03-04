@@ -16,7 +16,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class DisputeFilterCountType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * A filter used to reduce the number of disputes returned. The filter uses criteria
      *  such as whether the dispute is awaiting a response, is closed, or is eligible for

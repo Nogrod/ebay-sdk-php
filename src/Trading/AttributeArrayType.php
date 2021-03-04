@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class AttributeArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * <b>AttributeArrayType</b> and the <b>Attribute</b> element are only applicable for Half.com listings, and since the Half.com site was taken down, this field is no longer applicable.
      *

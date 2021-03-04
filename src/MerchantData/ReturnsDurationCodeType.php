@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class ReturnsDurationCodeType
 {
-
     /**
      * Constant for 'Days_14' value.
      *

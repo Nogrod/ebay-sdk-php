@@ -12,7 +12,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class VATStatusCodeType
 {
-
     /**
      * Constant for 'NoVATTax' value.
      *

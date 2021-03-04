@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class SellingManagerPaidStatusCodeType
 {
-
     /**
      * Constant for 'Paid' value.
      *

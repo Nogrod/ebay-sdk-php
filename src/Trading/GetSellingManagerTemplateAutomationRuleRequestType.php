@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetSellingManagerTemplateAutomationRuleRequestType extends AbstractRequestType
 {
-
     /**
      * The unique ID of the Selling Manager Template whose Selling Manager
      *  automation rules you want to retrieve.

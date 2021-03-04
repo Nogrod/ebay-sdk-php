@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class SetSellingManagerTemplateAutomationRuleResponseType extends AbstractResponseType
 {
-
     /**
      * Contains the automated listing rule associated with this template.
      *

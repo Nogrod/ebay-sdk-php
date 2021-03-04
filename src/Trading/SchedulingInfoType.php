@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class SchedulingInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Maximum number of minutes that a listing may be scheduled in advance of its going live.
      *

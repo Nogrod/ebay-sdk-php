@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class TopRatedSellerDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * A <b>TopRatedProgram</b> field is returned for each Top-Rated Seller program that the eBay user qualifies for.
      *

@@ -13,7 +13,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class VeROReportedItemDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Contains the data and status of a reported item.
      *

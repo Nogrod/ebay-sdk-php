@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class VeROReportItemsResponseType extends AbstractResponseType
 {
-
     /**
      * A unique packet identifier for the items reported.
      *

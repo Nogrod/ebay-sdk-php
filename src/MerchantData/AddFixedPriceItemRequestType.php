@@ -20,7 +20,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class AddFixedPriceItemRequestType extends AbstractRequestType
 {
-
     /**
      * This container is used to specify all of the values and settings that define a new fixed-price listing.
      *

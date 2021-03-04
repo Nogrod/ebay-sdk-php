@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class StoreOwnerExtendedListingDurationsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Specifies the additional listing duration(s) (in days) supported by the eBay site and/or category. A <b>Duration</b> field is returned for each additional listing duration that the eBay marketplace or category supports.
      *

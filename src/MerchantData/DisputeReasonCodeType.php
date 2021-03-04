@@ -19,7 +19,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class DisputeReasonCodeType
 {
-
     /**
      * Constant for 'BuyerHasNotPaid' value.
      *

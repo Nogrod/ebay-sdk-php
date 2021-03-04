@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class AffiliateTrackingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * <span class="tablenote"><b>Note: </b> If you are using
      *  affiliate tracking, this field is required.

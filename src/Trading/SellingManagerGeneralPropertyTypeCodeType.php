@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class SellingManagerGeneralPropertyTypeCodeType
 {
-
     /**
      * Constant for 'NegativeFeedbackReceived' value.
      *

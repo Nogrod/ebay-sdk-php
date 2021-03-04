@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetRecurringJobExecutionStatusResponseType extends BaseServiceResponseType
 {
-
     /**
      * A <b>jobProfile</b> container is returned for a successfully retrieved recurring job. The <b>jobProfile</b> container consists of unique identifiers for the recurring job, as well as data that indicates the current status of the recurring job.
      *  <br><br>

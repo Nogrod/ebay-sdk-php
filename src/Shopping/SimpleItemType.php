@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class SimpleItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * This boolean field indicates whether the seller will accept a Best Offer for the item. The Best Offer feature allows a buyer to propose a price that is lower than the fixed price or lower than the current bid price on an auction listing. A buyer should consider their Best Offer as a binding offer, and if the seller accepts the offer, that buyer is expected to purchase the item (and is actually charged immediately if the listing is set up for immediate payment.
      *  <br/><br/>

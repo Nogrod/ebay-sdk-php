@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class DeliveryDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * This container consists of the name and email of the person who is receiving the digital gift card. If the buyer has purchased the gift card for themselves, the buyer's name and email will appear in this container. If the buyer is giving the gift card to another individual, that individual's name and email will appear in this container. This container is always returned for a digital gift card line item.
      *  <br><br>

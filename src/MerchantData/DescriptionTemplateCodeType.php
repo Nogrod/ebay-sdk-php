@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class DescriptionTemplateCodeType
 {
-
     /**
      * Constant for 'Layout' value.
      *

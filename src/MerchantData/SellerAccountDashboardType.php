@@ -13,7 +13,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class SellerAccountDashboardType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * This field indicates the status of your seller's account. Specifically, you'll find out if your
      *  account is current and active, or if your account has a past due balance or is on

@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support multiple listing durations. Listing durations will vary based on the selling format (auction, fixed-price, or classified ad) and the eBay category. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ListingDurations</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *

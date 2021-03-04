@@ -14,7 +14,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class Base64BinaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * @var mixed $__value
      */

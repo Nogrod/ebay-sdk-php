@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class FeedbackCommentArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * This comment is for use as feedback for buyers. No more than ten (10)
      *  comments can be stored.

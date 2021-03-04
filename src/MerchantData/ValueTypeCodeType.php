@@ -14,7 +14,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class ValueTypeCodeType
 {
-
     /**
      * Constant for 'Decimal' value.
      *

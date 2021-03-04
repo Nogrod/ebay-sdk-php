@@ -15,7 +15,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class RefundDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Indicates how the seller will compensate the buyer for a returned item. This value can be passed in the Add/Revise/Relist/VerifyAdd API calls.
      *  <br/><br/>

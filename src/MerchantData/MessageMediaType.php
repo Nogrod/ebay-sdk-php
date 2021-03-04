@@ -21,7 +21,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class MessageMediaType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * URL of an image to be included in a message.
      *  The image must be uploaded to

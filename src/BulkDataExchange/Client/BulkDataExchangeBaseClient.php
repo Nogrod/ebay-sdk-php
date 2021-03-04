@@ -7,7 +7,6 @@ namespace Nogrod\eBaySDK\BulkDataExchange\Client;
  */
 class BulkDataExchangeBaseClient extends \Nogrod\XMLClientRuntime\Client
 {
-
     /**
      * Call createUploadJob
      *

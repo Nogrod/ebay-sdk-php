@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class EndOfAuctionLogoTypeCodeType
 {
-
     /**
      * Constant for 'WinningBidderNotice' value.
      *

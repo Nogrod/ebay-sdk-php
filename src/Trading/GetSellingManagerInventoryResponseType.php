@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetSellingManagerInventoryResponseType extends AbstractResponseType
 {
-
     /**
      * Returns the date the inventory counts were last calculated.
      *

@@ -14,7 +14,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class SetSellingManagerFeedbackOptionsRequestType extends AbstractRequestType
 {
-
     /**
      * Specifies the event that will trigger automated feedback to the buyer.
      *

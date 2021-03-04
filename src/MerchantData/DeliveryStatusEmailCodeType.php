@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class DeliveryStatusEmailCodeType
 {
-
     /**
      * Constant for 'Notified' value.
      *

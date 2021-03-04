@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class ShippingCostSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * This field shows the name of the lowest-priced shipping service option that is available to the eBay user making the call. An example of a shipping service option is <b>USPS First Class Package</b>.
      *  <br/><br/>

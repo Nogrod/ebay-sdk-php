@@ -17,7 +17,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetCategoriesResponseType extends AbstractResponseType
 {
-
     /**
      * List of the returned categories. The category array contains one CategoryType
      *  object for each returned category. Returns empty if no detail level is specified.

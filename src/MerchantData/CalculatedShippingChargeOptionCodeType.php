@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class CalculatedShippingChargeOptionCodeType
 {
-
     /**
      * Constant for 'ChargeEachItem' value.
      *

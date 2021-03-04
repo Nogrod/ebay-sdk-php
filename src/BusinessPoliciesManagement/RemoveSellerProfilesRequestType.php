@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class RemoveSellerProfilesRequestType extends BaseRequestType
 {
-
     /**
      * @var int[] $profileIds
      */

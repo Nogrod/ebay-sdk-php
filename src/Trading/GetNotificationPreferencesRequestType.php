@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetNotificationPreferencesRequestType extends AbstractRequestType
 {
-
     /**
      * Specifies the type of preferences to retrieve. For example, preferences can be associated with a user, with
      *  an application, or with events.

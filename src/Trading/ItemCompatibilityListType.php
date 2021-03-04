@@ -16,7 +16,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class ItemCompatibilityListType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Details for an individual compatible application, consisting of the name-value pair and related parts compatibility notes. When revising or relisting, the <b>Delete</b> field can be used to delete individual parts compatibility nodes.
      *  <br/><br/>

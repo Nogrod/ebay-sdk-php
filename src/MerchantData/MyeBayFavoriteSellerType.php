@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class MyeBayFavoriteSellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * The favorite seller's eBay user ID.
      *

@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class DiagramSpecificsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * A name-value pair describing the diagram specifics for single compatible application.
      *  <br><br>

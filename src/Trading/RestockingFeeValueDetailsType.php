@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class RestockingFeeValueDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * @var string $restockingFeeValueOption
      */

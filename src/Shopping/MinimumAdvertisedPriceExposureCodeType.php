@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Shopping;
  */
 class MinimumAdvertisedPriceExposureCodeType
 {
-
     /**
      * Constant for 'PreCheckout' value.
      *

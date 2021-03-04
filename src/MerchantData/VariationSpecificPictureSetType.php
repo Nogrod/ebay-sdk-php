@@ -15,7 +15,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class VariationSpecificPictureSetType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * A value that is associated with <b>VariationSpecificName</b>. For example,
      *  suppose this set of pictures is showing blue shirts, and some of

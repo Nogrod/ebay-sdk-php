@@ -13,7 +13,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class SetShipmentTrackingInfoResponseType extends AbstractResponseType
 {
-
     /**
      * OrderLineItemID is required upon input and always returned in the
      *  response. You can use this field to track whether or not a response is

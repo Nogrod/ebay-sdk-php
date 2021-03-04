@@ -13,7 +13,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class SearchResultType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * The total number of items returned in the search response. This is often
      *  equal to the <b class="con">entriesPerPage</b> value. If the

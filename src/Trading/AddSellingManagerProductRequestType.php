@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class AddSellingManagerProductRequestType extends AbstractRequestType
 {
-
     /**
      * This container is used to provide details about the Selling Manager product, such as product name, quantity available, and unit price.
      *

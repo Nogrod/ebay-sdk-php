@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class BestMatchFindingServiceRequestType extends BaseServiceRequestType
 {
-
     /**
      * Controls the pagination of the result set. Child elements specify the
      *  maximum number of item listings to return per call and the page of

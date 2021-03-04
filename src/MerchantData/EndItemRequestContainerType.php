@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class EndItemRequestContainerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * The unique identifier of the eBay listing to end.
      *

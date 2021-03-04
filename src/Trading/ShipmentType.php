@@ -15,7 +15,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class ShipmentType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * @var \DateTime $estimatedDeliveryDate
      */

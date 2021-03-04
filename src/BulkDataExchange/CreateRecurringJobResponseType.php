@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class CreateRecurringJobResponseType extends BaseServiceResponseType
 {
-
     /**
      * Unique ID that is assigned for the recurring job by the Bulk Data Exchange API
      *  after a successful <b>createRecurringJob</ b> call. This value is passed into the request of other recurring job calls of the File Transfer API.

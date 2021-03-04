@@ -16,7 +16,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetVeROReasonCodeDetailsRequestType extends AbstractRequestType
 {
-
     /**
      * Unique identifier for a reason code. If this <strong>ReasonCodeID</strong> field is passed in, only the details related to this <strong>ReasonCodeID</strong> will be returned. If no reason code is specified, all reason codes are returned.
      *

@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class PromotionMethodCodeType
 {
-
     /**
      * Constant for 'CrossSell' value.
      *

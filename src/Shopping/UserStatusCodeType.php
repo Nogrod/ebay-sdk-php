@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Shopping;
  */
 class UserStatusCodeType
 {
-
     /**
      * Constant for 'Unknown' value.
      *

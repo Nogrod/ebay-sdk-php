@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class SupportedEventTypesArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * @var string[] $eventType
      */

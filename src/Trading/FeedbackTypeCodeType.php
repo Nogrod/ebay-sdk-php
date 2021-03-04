@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class FeedbackTypeCodeType
 {
-
     /**
      * Constant for 'FeedbackReceivedAsSeller' value.
      *

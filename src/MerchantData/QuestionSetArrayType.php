@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class QuestionSetArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Contains details about self claims questions selected and answers provided by seller during listing.
      *

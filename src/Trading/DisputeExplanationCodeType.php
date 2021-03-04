@@ -19,7 +19,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class DisputeExplanationCodeType
 {
-
     /**
      * Constant for 'BuyerHasNotResponded' value.
      *

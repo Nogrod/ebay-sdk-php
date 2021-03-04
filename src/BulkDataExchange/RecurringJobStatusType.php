@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\BulkDataExchange;
  */
 class RecurringJobStatusType
 {
-
     /**
      * Constant for 'Active' value.
      *

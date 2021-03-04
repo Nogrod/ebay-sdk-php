@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class UnpaidItemStatusTypeCodeType
 {
-
     /**
      * Constant for 'FinalValueFeeDenied' value.
      *

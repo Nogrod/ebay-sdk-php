@@ -30,7 +30,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetSearchKeywordsRecommendationRequestType extends BaseServiceRequestType
 {
-
     /**
      * Specify one or more words to use in a search query for finding items
      *  on eBay. It is best to include the complete keywords value, as words

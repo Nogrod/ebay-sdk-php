@@ -13,7 +13,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class TicketListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * The name of the event, as shown on the ticket. Typically the
      *  headliner. There is no maximum number of words or characters.

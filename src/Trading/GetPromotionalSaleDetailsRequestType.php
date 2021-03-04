@@ -15,7 +15,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetPromotionalSaleDetailsRequestType extends AbstractRequestType
 {
-
     /**
      * The unique identifier of the promotional sale to retrieve. This field is used if the eBay store owner only wants to retrieve a specific promotional sale. Any <b>PromotionalSaleStatus</b> fields that are included will be ignored if the <b>PromotionalSaleID</b> field is used.
      *  <br><br>

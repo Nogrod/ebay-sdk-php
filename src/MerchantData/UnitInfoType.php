@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class UnitInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Designation of size, weight, volume or count to be used to specify the unit quantity of the item. This value can be one of the following:
      *  <br/>

@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class EndItemResponseType extends AbstractResponseType
 {
-
     /**
      * This timestamp indicates the date and time (returned in GMT) when the specified eBay listing was ended.
      *

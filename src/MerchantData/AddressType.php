@@ -14,7 +14,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class AddressType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * The eBay user's name associated with an address on file with eBay.
      *  <br>

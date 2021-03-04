@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class GeneralPaymentMethodCodeType
 {
-
     /**
      * Constant for 'Other' value.
      *

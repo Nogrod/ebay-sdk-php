@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\BusinessPoliciesManagement;
  */
 class ConsolidationJobStatusType
 {
-
     /**
      * Constant for 'Running' value.
      */

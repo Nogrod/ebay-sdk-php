@@ -11,7 +11,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class GiftIconCodeType
 {
-
     /**
      * Constant for 'Enabled' value.
      *

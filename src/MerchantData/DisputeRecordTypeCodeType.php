@@ -14,7 +14,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class DisputeRecordTypeCodeType
 {
-
     /**
      * Constant for 'UnpaidItem' value.
      *

@@ -16,7 +16,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class MarkUpMarkDownHistoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Details for a MarkDown or MarkUp event.
      *

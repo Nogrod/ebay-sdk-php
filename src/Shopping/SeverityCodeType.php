@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Shopping;
  */
 class SeverityCodeType
 {
-
     /**
      * Constant for 'Warning' value.
      *

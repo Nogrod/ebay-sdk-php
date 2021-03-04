@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Shopping;
  */
 class ErrorClassificationCodeType
 {
-
     /**
      * Constant for 'RequestError' value.
      *

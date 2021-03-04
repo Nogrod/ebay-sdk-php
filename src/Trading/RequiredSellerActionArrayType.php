@@ -13,7 +13,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class RequiredSellerActionArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * This field contains a possible action that a seller can take to expedite the
      *  release of a payment hold. There can be one or more <b>RequiredSellerAction</b>

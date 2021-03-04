@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class NonUsageTransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * The date time when the transaction occur.
      *

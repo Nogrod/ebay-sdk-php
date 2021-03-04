@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class FeatureIDCodeType
 {
-
     /**
      * Constant for 'ListingDurations' value.
      *

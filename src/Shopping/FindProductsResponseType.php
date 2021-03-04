@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class FindProductsResponseType extends AbstractResponseType
 {
-
     /**
      * The total number of pages in the results set based on the current search criteria. The number of pages in the results set will be determined by how many catalog products are found based on the search criteria (<b>QueryKeywords</b> string, <b>DomainName</b> filter(s), and <b>CategoryID</b> restriction), and the number of catalog products to return on each page of results (set in the <b>MaxEntries</b> field). If 200 catalog products were found (as shown in the <b>TotalProducts</b> field), and the <b>MaxEntries</b> value is <code>25</code> (25 catalog products per page), the <b>ApproximatePages</b> value will be <code>8</code> (200 (records)/25 (records per page) = 8 (pages).
      *

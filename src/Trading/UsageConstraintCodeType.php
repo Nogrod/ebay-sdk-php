@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class UsageConstraintCodeType
 {
-
     /**
      * Constant for 'Optional' value.
      *

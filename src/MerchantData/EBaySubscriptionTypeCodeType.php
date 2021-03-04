@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class EBaySubscriptionTypeCodeType
 {
-
     /**
      * Constant for 'SellerAssistant' value.
      *

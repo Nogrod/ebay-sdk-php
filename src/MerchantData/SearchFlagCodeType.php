@@ -13,7 +13,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class SearchFlagCodeType
 {
-
     /**
      * Constant for 'Charity' value.
      *

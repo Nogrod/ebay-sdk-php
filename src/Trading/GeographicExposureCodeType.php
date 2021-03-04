@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class GeographicExposureCodeType
 {
-
     /**
      * Constant for 'National' value.
      *

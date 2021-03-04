@@ -11,7 +11,6 @@ namespace Nogrod\eBaySDK\Finding;
  */
 class AckValueType
 {
-
     /**
      * Constant for 'Success' value.
      *

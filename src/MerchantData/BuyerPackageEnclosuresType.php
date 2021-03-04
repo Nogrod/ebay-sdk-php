@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class BuyerPackageEnclosuresType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * A <b>BuyerPackageEnclosure</b> container will be returned for each shipping package containing payment instructions. The 'Pay Upon Invoice' option is only available on the German site.
      *

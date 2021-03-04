@@ -11,7 +11,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class HighlightCodeType
 {
-
     /**
      * Constant for 'Enabled' value.
      *

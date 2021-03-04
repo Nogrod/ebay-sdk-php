@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class FeesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * A <b>Fee</b> container is returned for each listing fee associated with listing an item. Each <b>Fee</b> container consists of the fee type, the amount of the fee, and any applicable eBay promotional discount on that listing fee. A <b>Fee</b> container is returned for each listing feature, even if the associated cost is 0.
      *

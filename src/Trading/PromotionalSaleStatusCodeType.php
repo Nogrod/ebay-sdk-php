@@ -14,7 +14,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class PromotionalSaleStatusCodeType
 {
-
     /**
      * Constant for 'Active' value.
      *

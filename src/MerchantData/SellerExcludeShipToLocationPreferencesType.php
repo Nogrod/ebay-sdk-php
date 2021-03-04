@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class SellerExcludeShipToLocationPreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * One <b>ExcludeShipToLocation</b> field is returned for each geographical region or country excluded
      *  as a possible shipping location in the seller's My eBay Shipping Preferences.

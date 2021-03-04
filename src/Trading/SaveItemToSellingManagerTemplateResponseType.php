@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class SaveItemToSellingManagerTemplateResponseType extends AbstractResponseType
 {
-
     /**
      * The unique identifier of the newly-created Selling Manager template. As long as the call was successful, this field is always returned.
      *

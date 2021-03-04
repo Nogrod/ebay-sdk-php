@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class AdFormatEnabledCodeType
 {
-
     /**
      * Constant for 'Disabled' value.
      *

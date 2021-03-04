@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetJobStatusResponseType extends BaseServiceResponseType
 {
-
     /**
      * A <b>jobProfile</b> container is returned for a successfully retrieved job. The <b>jobProfile</b> container consists of unique identifiers for the job, as well as data that indicates the current status of the job.
      *  <br><br>

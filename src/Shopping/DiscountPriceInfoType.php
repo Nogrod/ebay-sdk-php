@@ -19,7 +19,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class DiscountPriceInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * This field specifies the price to which the discounted-price display
      *  treatment will be applied (for example, a strikethrough price). The

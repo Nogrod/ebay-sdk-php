@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class ConditionHistogramContainerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Statistical (item count) information on the condition of items
      *  that match the search criteria (or specified category).

@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class DispatchCutoffTimePreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * If the seller specifies a <strong>DispatchTimeMax</strong> value of <code>0</code> to indicate same-day handling for an item, the seller's shipping commitment depends on the value of <strong>CutoffTime</strong> for the eBay site on which the item is listed.
      *  <br/><br/>

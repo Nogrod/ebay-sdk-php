@@ -16,7 +16,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class GranularityLevelCodeType
 {
-
     /**
      * Constant for 'Coarse' value.
      *

@@ -15,7 +15,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class CreateUploadJobRequestType extends BaseServiceRequestType
 {
-
     /**
      * Specifies the Merchant Data API request used in a Bulk Data
      *  Exchange upload job. Each Bulk Data Exchange job can only have one <b>uploadjobType</b>

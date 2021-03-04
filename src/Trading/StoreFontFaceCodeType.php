@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class StoreFontFaceCodeType
 {
-
     /**
      * Constant for 'Arial' value.
      *

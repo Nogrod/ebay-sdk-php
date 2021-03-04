@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class SocialAddressTypeCodeType
 {
-
     /**
      * Constant for 'Facebook' value.
      *

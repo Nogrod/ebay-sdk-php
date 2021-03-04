@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class MaximumBuyerPolicyViolationsDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * As a Maximum Buyer Policy Violations threshold value can no longer be set at the account or listing level, this field is no longer applicable.
      *

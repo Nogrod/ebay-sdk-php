@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class LineItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * The number of units of the order line item in this package; this is required for customs. The seller must ensure that this matches the quantity of the order line item enclosed in the package.
      *  <br/><br/>

@@ -11,7 +11,6 @@ namespace Nogrod\eBaySDK\Shopping;
  */
 class CurrencyCodeType
 {
-
     /**
      * Constant for 'AFA' value.
      *

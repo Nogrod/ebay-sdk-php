@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class OrderRoleCodeType
 {
-
     /**
      * Constant for 'Buyer' value.
      */

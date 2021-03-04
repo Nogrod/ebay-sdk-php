@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Finding;
  */
 class MapExposureEnumType
 {
-
     /**
      * Constant for 'PreCheckout' value.
      *

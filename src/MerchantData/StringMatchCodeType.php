@@ -13,7 +13,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class StringMatchCodeType
 {
-
     /**
      * Constant for 'CustomCode' value.
      *

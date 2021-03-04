@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class BestOfferTypeCodeType
 {
-
     /**
      * Constant for 'BuyerBestOffer' value.
      *

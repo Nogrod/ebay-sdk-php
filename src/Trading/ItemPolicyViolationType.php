@@ -13,7 +13,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class ItemPolicyViolationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Policy ID of the violated policy which resulted in item being administratively canceled.
      *

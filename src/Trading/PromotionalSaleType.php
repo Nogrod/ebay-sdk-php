@@ -15,7 +15,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class PromotionalSaleType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Unique ID of a promotional sale (discount and/or free shipping) for items.
      *  This field is an input field only for the SetPromotionalSale call

@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetMultipleItemsRequestType extends AbstractRequestType
 {
-
     /**
      * The uniqe ID that identifies the listing for which to
      *  retrieve the data. You can provide a maximum of 20 <b>ItemID</b> values. When making a

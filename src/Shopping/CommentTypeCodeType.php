@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Shopping;
  */
 class CommentTypeCodeType
 {
-
     /**
      * Constant for 'Positive' value.
      *

@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class WarningLevelCodeType
 {
-
     /**
      * Constant for 'Low' value.
      *

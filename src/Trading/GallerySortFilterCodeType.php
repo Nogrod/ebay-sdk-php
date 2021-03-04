@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class GallerySortFilterCodeType
 {
-
     /**
      * Constant for 'ShowAnyItems' value.
      *

@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class ShippingPolicyServiceType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * An international location or region to where the item seller will ship the item. These values are string equivalents of values found in ShippingRegionCodeType and CountryCodeType.
      *  See ShipToLocation.

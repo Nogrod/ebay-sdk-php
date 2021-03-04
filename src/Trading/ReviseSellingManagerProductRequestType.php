@@ -15,7 +15,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class ReviseSellingManagerProductRequestType extends AbstractRequestType
 {
-
     /**
      * The details of the product that is being revised.
      *

@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class BusinessRoleType
 {
-
     /**
      * Constant for 'Shopper' value.
      *

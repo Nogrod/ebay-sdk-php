@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class BoldTitleCodeType
 {
-
     /**
      * Constant for 'Enabled' value.
      *

@@ -16,7 +16,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class RespondToBestOfferRequestType extends AbstractRequestType
 {
-
     /**
      * The unique identifier of the listing to which the seller is responding to a Best Offer.
      *

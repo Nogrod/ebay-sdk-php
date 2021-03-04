@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class NotificationRoleCodeType
 {
-
     /**
      * Constant for 'Application' value.
      *

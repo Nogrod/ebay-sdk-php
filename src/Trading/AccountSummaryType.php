@@ -15,7 +15,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class AccountSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Indicates the current state of the account (such as active or inactive).
      *  Possible values are enumerated in <b>AccountStateCodeType</b>.

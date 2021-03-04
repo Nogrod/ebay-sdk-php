@@ -14,7 +14,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class DateType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * A year in the form YYYY.
      *

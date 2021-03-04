@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class VeROReportItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * The unique identifier for the listing being reported for the alleged infringement, which is specified in the <b>VeROReasonCodeID</b> field.
      *

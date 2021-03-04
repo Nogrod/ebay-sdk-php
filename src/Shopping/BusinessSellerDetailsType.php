@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class BusinessSellerDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * This field shows the address on file for the Business Seller.
      *

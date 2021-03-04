@@ -13,7 +13,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class FindItemsByCategoryRequestType extends BaseFindingServiceRequestType
 {
-
     /**
      * Specifies the category from which you want to retrieve item listings.
      *  This field can be repeated to include multiple categories.

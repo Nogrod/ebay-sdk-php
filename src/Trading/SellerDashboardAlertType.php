@@ -13,7 +13,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class SellerDashboardAlertType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * The severity level helps you understand whether the alert is identifying a
      *  problem (a warning or strong warning) or if it is informational in nature.

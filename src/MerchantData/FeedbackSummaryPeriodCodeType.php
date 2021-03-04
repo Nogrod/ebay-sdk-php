@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class FeedbackSummaryPeriodCodeType
 {
-
     /**
      * Constant for 'ThirtyDays' value.
      *

@@ -15,7 +15,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class SellerProfilePreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Boolean flag indicating whether or not a seller has opted in to Business
      *  Policies. Sellers must opt in to Business Policies to create and manage payment,

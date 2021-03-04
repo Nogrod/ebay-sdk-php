@@ -16,7 +16,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class MeasureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * @var float $__value
      */

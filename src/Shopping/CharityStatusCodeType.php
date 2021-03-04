@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Shopping;
  */
 class CharityStatusCodeType
 {
-
     /**
      * Constant for 'Valid' value.
      *

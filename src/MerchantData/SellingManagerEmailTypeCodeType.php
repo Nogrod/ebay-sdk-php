@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class SellingManagerEmailTypeCodeType
 {
-
     /**
      * Constant for 'ManualEntry' value.
      *

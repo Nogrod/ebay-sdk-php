@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class DownloadRequestFilterType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * If the <b>startDownloadJob</b> request is using 'FeeSettlementReport' as the <b>downloadJobType</b>, the <b>feeSettlementReportFilter</b> container allows the user to set a <b>startTime</b> value, and only fee data on invoices sent to the seller after this date-time are returned in a <b>FeeSettlementReport</b> response.
      *  <br/><br/>

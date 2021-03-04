@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetSellingManagerTemplatesResponseType extends AbstractResponseType
 {
-
     /**
      * This container consists of an array of Selling Manager Templates that match the input criteria.
      *

@@ -13,7 +13,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class SetMessagePreferencesRequestType extends AbstractRequestType
 {
-
     /**
      * This container can be used to set customized ASQ subjects, or it can be used to reset the ASQ subjects to the eBay defaults. Up to nine customized ASQ subjects can be set.
      *

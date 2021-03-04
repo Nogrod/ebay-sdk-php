@@ -11,7 +11,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class ProfileCategoryGroupCodeType
 {
-
     /**
      * Constant for 'Inherit' value.
      *

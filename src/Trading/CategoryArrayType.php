@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class CategoryArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * This container provides details about the eBay category identified in the <b>CategoryID</b> field. The <b>DetailLevel</b> field must be included and set to <code>ReturnAll</code> for <b>Category</b>, nodes to appear.
      *

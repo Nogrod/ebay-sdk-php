@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class QuantityAvailableHintCodeType
 {
-
     /**
      * Constant for 'Limited' value.
      *

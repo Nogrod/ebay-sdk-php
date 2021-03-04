@@ -11,7 +11,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class ValueFormatCodeType
 {
-
     /**
      * Constant for 'FullDate' value.
      *

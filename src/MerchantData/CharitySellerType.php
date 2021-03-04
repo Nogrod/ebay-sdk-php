@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class CharitySellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Indicates the status of the seller's charity seller account.
      *

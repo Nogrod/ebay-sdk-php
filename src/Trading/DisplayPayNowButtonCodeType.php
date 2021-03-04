@@ -14,7 +14,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class DisplayPayNowButtonCodeType
 {
-
     /**
      * Constant for 'ShowPayNowButtonForAllPaymentMethods' value.
      *

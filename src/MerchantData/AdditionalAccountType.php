@@ -17,7 +17,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class AdditionalAccountType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Indicates the current balance of the additional account.
      *

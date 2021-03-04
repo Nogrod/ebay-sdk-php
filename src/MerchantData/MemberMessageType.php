@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class MemberMessageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Type of message being retrieved. Note that some message
      *  types can only be created via the eBay Web site.

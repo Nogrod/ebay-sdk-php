@@ -13,7 +13,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetCategoryFeaturesRequestType extends AbstractRequestType
 {
-
     /**
      * Specifies the category for which you want to retrieve the feature settings.
      *  <br><br>

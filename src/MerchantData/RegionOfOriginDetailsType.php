@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class RegionOfOriginDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * String identifier for a continent, a geographic region, or a country.
      *

@@ -14,7 +14,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class BuyingGuideType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * <span class="tablenote"><b>Note: </b> <b>BuyingGuideType</b> and all of its elements are deprecated along with the <b>FindReviewsAndGuides</b> call.
      *  </span>

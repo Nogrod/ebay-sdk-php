@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class BuyerProtectionSourceCodeType
 {
-
     /**
      * Constant for 'eBay' value.
      *

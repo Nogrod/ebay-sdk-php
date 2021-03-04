@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class FeedbackRequirementsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * @var bool $__value
      */

@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class TopRatedProgramCodeType
 {
-
     /**
      * Constant for 'US' value.
      *

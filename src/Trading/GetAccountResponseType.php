@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetAccountResponseType extends AbstractResponseType
 {
-
     /**
      * Specifies the seller's unique account number.
      *

@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class CategoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * The numeric identifier of a category on an eBay marketplace. For the root category of an eBay marketplace, the value will be <code>-1</code>.
      *  <br>

@@ -14,7 +14,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class DisputeStateCodeType
 {
-
     /**
      * Constant for 'Locked' value.
      *

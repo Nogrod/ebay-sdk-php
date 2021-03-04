@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class VariationKeyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * The unique identifier of the fixed-price listing whose variation(s) should be added to or removed from the watch list.
      *

@@ -11,7 +11,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class SiteCodeType
 {
-
     /**
      * Constant for 'US' value.
      *

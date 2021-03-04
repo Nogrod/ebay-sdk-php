@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class MerchandizingPrefCodeType
 {
-
     /**
      * Constant for 'OptIn' value.
      *

@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class PaymentProfileType extends SellerProfileType
 {
-
     /**
      * Defines the payment method that a seller accepts.
      *

@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class ProductSortCodeType
 {
-
     /**
      * Constant for 'PopularityAsc' value.
      *

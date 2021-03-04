@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class PaymentProfileListType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Response container for a specific payment policy that a seller accepts. This container includes the category group, profile details, and the payment information that the policy applies to.
      *

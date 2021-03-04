@@ -17,7 +17,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class CombinedPaymentPeriodCodeType
 {
-
     /**
      * Constant for 'Days_3' value.
      *

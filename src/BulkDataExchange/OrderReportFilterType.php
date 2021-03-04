@@ -15,7 +15,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class OrderReportFilterType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * The <b>createTimeFrom</b> and <b>createTimeTo</b> fields specify a date range for retrieving orders. The <b>createTimeFrom</b> value is the start of the date range. All eBay orders that were created within this date range are returned in the output. The maximum date range that may be specified is 30 days.
      *  <br><br>

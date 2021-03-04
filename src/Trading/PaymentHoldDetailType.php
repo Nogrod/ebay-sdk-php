@@ -16,7 +16,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class PaymentHoldDetailType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Timestamp that indicates the expected date in which eBay/PayPal will
      *  distribute the funds to the seller's account. This is not a firm date and

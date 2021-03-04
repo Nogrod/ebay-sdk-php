@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class OfferArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Each <b>Offer</b> container consists of detailed information on each bid made on an auction listing that is specified in the call request. Information in this container includes the amount of the bid, the time of the bid, and data for the user making the bid.
      *

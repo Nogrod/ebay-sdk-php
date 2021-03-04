@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class BestOfferStatusCodeType
 {
-
     /**
      * Constant for 'Pending' value.
      *

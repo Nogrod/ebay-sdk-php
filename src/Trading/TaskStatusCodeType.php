@@ -14,7 +14,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class TaskStatusCodeType
 {
-
     /**
      * Constant for 'Pending' value.
      *

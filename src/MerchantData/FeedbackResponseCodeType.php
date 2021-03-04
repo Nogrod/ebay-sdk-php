@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class FeedbackResponseCodeType
 {
-
     /**
      * Constant for 'Reply' value.
      *

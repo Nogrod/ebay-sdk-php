@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class AddSellingManagerInventoryFolderRequestType extends AbstractRequestType
 {
-
     /**
      * Name of the new Selling Manager inventory folder.
      *

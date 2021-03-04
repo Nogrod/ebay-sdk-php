@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class AdFormatEnabledCodeType
 {
-
     /**
      * Constant for 'Disabled' value.
      *

@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class PictureManagerSubscriptionLevelCodeType
 {
-
     /**
      * Constant for 'Free' value.
      *

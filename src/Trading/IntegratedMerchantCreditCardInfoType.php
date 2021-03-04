@@ -16,7 +16,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class IntegratedMerchantCreditCardInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * <span class="tablenote"><b>Note: </b>
      *  As of May 1, 2019, eBay no longer support electronic payments through Integrated Merchant Credit Card accounts. To accept online credit card payments from buyers, a seller must use specify PayPal as an accepted payment method, or opt in to eBay managed payments program (if the program is available to that seller).

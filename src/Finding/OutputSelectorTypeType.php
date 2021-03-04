@@ -11,7 +11,6 @@ namespace Nogrod\eBaySDK\Finding;
  */
 class OutputSelectorTypeType
 {
-
     /**
      * Constant for 'SellerInfo' value.
      *

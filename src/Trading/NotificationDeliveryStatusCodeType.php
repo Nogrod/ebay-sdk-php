@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class NotificationDeliveryStatusCodeType
 {
-
     /**
      * Constant for 'CustomCode' value.
      */

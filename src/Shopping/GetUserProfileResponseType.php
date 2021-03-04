@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetUserProfileResponseType extends AbstractResponseType
 {
-
     /**
      * This container consists of various details about the eBay user, including Feedback rating, Seller Level, link to profile page, and other information. This container is always returned, but more fields will be returned under this container if the user includes the <b>IncludeSelector</b> field in the request and sets its value to <code>Details</code>.
      *

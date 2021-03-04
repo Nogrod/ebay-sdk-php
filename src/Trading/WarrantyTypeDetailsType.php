@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class WarrantyTypeDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * @var string $warrantyTypeOption
      */

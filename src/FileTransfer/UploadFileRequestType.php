@@ -14,7 +14,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class UploadFileRequestType extends BaseServiceRequestType
 {
-
     /**
      * This is an external identifier used by a service that interacts with the
      *  File Transfer Service.

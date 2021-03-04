@@ -12,7 +12,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class AddressTypeCodeType
 {
-
     /**
      * Constant for 'Contact' value.
      *

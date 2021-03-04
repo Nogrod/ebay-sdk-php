@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class DateFilterType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Reserved for internal or future use.
      *

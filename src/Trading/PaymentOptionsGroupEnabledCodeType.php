@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class PaymentOptionsGroupEnabledCodeType
 {
-
     /**
      * Constant for 'eBayPaymentProcessEnabled' value.
      *

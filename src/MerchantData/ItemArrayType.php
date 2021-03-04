@@ -13,7 +13,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class ItemArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Contains the data properties that define one item listing. <b>GetSellerEvents</b> and
      *  <b>GetSellerList</b> only return items if any are available for the seller within the

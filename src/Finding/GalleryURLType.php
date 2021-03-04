@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Finding;
  */
 class GalleryURLType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * @var string $__value
      */

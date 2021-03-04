@@ -11,7 +11,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class TradingAssistantCodeType
 {
-
     /**
      * Constant for 'NotATradingAssistant' value.
      *

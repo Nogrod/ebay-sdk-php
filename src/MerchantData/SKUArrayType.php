@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class SKUArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * A SKU (stock keeping unit) is an identifier defined by a seller.
      *  Some sellers use SKUs to track complex flows of products

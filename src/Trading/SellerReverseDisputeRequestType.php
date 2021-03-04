@@ -22,7 +22,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class SellerReverseDisputeRequestType extends AbstractRequestType
 {
-
     /**
      * The unique identifier of the dispute that was returned when the dispute was created.
      *  The dispute must be an Unpaid Item dispute that the seller opened.

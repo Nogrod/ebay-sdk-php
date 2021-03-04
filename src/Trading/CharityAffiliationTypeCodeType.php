@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class CharityAffiliationTypeCodeType
 {
-
     /**
      * Constant for 'Community' value.
      *

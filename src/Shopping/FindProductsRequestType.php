@@ -16,7 +16,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class FindProductsRequestType extends AbstractRequestType
 {
-
     /**
      * <span class="tablenote"><b>Important:</b>
      *  The use of domain histograms and <b>DomainName</b> filters is no longer recommended, as the domain histogram data that is returned in the response, and filtering by domain logic is no longer reliable. <code>DomainHistogram</code> is the only value that can be used for <b>IncludeSelector</b>, so this filter has no practical use, and may be deprecated in the near future.

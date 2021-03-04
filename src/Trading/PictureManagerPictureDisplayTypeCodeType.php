@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class PictureManagerPictureDisplayTypeCodeType
 {
-
     /**
      * Constant for 'Thumbnail' value.
      *

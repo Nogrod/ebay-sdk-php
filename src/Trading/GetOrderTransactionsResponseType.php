@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetOrderTransactionsResponseType extends AbstractResponseType
 {
-
     /**
      * This container consists of an array of eBay orders that match the input criteria that was passed into the call request.
      *

@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class BuyerPackageEnclosureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * @var string $__value
      */

@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class AddItemFromSellingManagerTemplateRequestType extends AbstractRequestType
 {
-
     /**
      * The unique identifier of the Selling Manager template that a seller is using to create a listing. Unique identifiers of Selling Manager templates can be retrieved programatically by using the <b>GetSellingManagerInventory</b> call.
      *

@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetSellerDashboardResponseType extends AbstractResponseType
 {
-
     /**
      * Provides information about the visibility level you have earned for your
      *  listings. The higher your search standing rating, the higher your items

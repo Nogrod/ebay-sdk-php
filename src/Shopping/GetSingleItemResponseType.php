@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetSingleItemResponseType extends AbstractResponseType
 {
-
     /**
      * Contains details about the listing whose ID was specified in
      *  the request.

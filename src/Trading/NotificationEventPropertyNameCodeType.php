@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class NotificationEventPropertyNameCodeType
 {
-
     /**
      * Constant for 'TimeLeft' value.
      *

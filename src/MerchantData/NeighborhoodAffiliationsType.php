@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class NeighborhoodAffiliationsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Contains Id of a neighborhood.
      *

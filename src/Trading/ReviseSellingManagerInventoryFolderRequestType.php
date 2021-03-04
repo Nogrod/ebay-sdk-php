@@ -14,7 +14,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class ReviseSellingManagerInventoryFolderRequestType extends AbstractRequestType
 {
-
     /**
      * This container is used to identify the Selling Manager Inventory folder that will be renamed and/or moved.
      *

@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class PayPalAccountTypeCodeType
 {
-
     /**
      * Constant for 'Personal' value.
      *

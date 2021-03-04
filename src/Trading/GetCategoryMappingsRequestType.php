@@ -13,7 +13,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetCategoryMappingsRequestType extends AbstractRequestType
 {
-
     /**
      * A version of the category mapping for the site. Filters
      *  out data from the call to return only the category

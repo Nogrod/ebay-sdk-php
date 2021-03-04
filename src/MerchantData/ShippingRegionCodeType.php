@@ -11,7 +11,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class ShippingRegionCodeType
 {
-
     /**
      * Constant for 'Africa' value.
      *

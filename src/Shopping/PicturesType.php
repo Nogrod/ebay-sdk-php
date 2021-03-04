@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class PicturesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * This field defines the product aspect in which pictures in the listing will vary based on the individual variations. For example, if the product aspect in this field is <code>Color</code>, the picture URLs in each <b>VariationSpecificPictureSet</b> container would point to one or more pictures of the corresponding variation (defined in the <b>VariationSpecificValue</b> field).
      *

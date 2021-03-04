@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class BuyingGuideDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Information that identifies a buying guide. A buying guide contains content about particular
      *  product areas, categories, or subjects to help buyers decide which type of item

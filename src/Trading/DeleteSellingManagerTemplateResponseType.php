@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class DeleteSellingManagerTemplateResponseType extends AbstractResponseType
 {
-
     /**
      * The unique identifier of the Selling Manager template.
      *

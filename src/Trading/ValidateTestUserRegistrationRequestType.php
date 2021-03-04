@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class ValidateTestUserRegistrationRequestType extends AbstractRequestType
 {
-
     /**
      * Value for the feedback score of a user. If no value is passed in the request,
      *  or if the value is zero, the feedback score is unchanged. This element is not intended

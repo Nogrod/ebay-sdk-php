@@ -14,7 +14,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class BaseResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * @var string $ack
      */

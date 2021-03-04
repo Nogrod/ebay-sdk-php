@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class VideoDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Unique identifier of a video. This identifier is created by eBay after a video is uploaded to the system.
      *

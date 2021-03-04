@@ -14,7 +14,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class AddFixedPriceItemResponseType extends AbstractResponseType
 {
-
     /**
      * Unique identifier for the new fixed-price listing. This field is returned as long as the listing was successfully created.
      *

@@ -13,7 +13,6 @@ namespace Nogrod\eBaySDK\FileTransfer;
  */
 class ErrorCategoryType
 {
-
     /**
      * Constant for 'System' value.
      *

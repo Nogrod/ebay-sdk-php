@@ -14,7 +14,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class FaultDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Error code can be used by a receiving application to debug a SOAP response
      *  message that contains one or more SOAP fault details.

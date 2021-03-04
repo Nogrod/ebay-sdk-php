@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class HitCounterCodeType
 {
-
     /**
      * Constant for 'NoHitCounter' value.
      *

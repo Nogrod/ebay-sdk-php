@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class BulkSellingFlowCodeType
 {
-
     /**
      * Constant for 'BulkSIFToCore' value.
      *

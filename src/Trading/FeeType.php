@@ -13,7 +13,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class FeeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * This is the name of the listing feature, such as <code>ListingFee</code>, <code>SubtitleFee</code>, or <code>BoldFee</code>.
      *

@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\BulkDataExchange;
  */
 class IncludeShippingAddressType
 {
-
     /**
      * Constant for 'Always' value.
      *

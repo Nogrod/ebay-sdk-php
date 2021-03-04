@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class DigitalStatusCodeType
 {
-
     /**
      * Constant for 'Inactive' value.
      *

@@ -13,7 +13,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class ItemBestOffersArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * A collection of details about the Best Offers received for a specific item. Empty if there are no Best Offers. Includes the buyer and seller messages only if the <code>ReturnAll</code> detail level is used.
      *

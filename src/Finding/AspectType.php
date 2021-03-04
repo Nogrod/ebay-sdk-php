@@ -17,7 +17,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class AspectType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Name of an aspect that is part of a domain. For example, "Optical Zoom" or
      *  "Megapixels" could be aspects of the Digital Cameras domain. For the

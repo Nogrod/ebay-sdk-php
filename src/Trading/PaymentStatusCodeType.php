@@ -12,7 +12,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class PaymentStatusCodeType
 {
-
     /**
      * Constant for 'NoPaymentFailure' value.
      *

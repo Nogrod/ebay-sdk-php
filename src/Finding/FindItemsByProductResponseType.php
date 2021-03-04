@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class FindItemsByProductResponseType extends BaseFindingServiceResponseType
 {
-
     /**
      * Response container for aspect histograms.
      *

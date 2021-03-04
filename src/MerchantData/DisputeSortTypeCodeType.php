@@ -14,7 +14,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class DisputeSortTypeCodeType
 {
-
     /**
      * Constant for 'None' value.
      *

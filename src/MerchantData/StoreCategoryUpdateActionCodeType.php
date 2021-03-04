@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class StoreCategoryUpdateActionCodeType
 {
-
     /**
      * Constant for 'Add' value.
      *

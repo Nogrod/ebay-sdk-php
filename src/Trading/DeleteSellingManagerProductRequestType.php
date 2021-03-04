@@ -14,7 +14,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class DeleteSellingManagerProductRequestType extends AbstractRequestType
 {
-
     /**
      * The unique identifier of the Selling Manager product to be deleted.
      *

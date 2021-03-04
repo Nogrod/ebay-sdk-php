@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class SellerGuaranteeLevelCodeType
 {
-
     /**
      * Constant for 'NotEligible' value.
      *

@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class MyMessagesExternalMessageIDArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Currently available on the US site. A message ID that uniquely identifies a message
      *  for a given user. If provided at the time of message creation, this ID can be used

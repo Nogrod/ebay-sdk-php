@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\BulkDataExchange;
  */
 class FileType
 {
-
     /**
      * Constant for 'XML' value.
      *

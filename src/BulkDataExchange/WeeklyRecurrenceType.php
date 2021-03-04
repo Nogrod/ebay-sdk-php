@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class WeeklyRecurrenceType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * This value is used to specify which day of the week that the recurring job should be executed. Supported values are 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', and 'Saturday'.
      *  <br/><br/>

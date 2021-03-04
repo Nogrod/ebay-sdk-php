@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class DetailNameCodeType
 {
-
     /**
      * Constant for 'CountryDetails' value.
      *

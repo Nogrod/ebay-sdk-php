@@ -12,7 +12,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class PaymentMethodSearchCodeType
 {
-
     /**
      * Constant for 'PayPal' value.
      *

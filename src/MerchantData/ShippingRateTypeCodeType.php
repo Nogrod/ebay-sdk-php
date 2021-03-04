@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class ShippingRateTypeCodeType
 {
-
     /**
      * Constant for 'OnDemand' value.
      *

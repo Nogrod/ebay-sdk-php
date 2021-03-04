@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class CharityType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * The unique identifier that eBay creates and assigns to each nonprofit organization that is registered with eBay for Charity. This is the unique identifier that should be used if the user wishes to retrieve more details on a nonprofit organization by using the Trading API's lt;b>GetCharities</b> call, or used by a seller in an Add/Revise/Relist call when they want to identify the nonprofit organization that will receive sale proceeds for a listing.
      *

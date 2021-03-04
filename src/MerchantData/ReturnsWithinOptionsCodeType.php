@@ -13,7 +13,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class ReturnsWithinOptionsCodeType
 {
-
     /**
      * Constant for 'Days_3' value.
      *

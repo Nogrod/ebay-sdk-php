@@ -15,7 +15,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class ShippingCostPaidByDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * The party who pays the shipping cost for a returned item.
      *  This value can be passed in the Add/Revise/Relist calls.

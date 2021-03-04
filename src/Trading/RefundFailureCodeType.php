@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class RefundFailureCodeType
 {
-
     /**
      * Constant for 'PaypalBillingAgreementCanceled' value.
      *

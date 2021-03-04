@@ -14,7 +14,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class JobProfileType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Unique ID that is assigned for a job by the Bulk Data Exchange API after a successful <b>startDownloadJob</ b> call. This value is always returned with the <b>jobProfile</b> container.
      *

@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class StoreItemListLayoutCodeType
 {
-
     /**
      * Constant for 'ListView' value.
      *

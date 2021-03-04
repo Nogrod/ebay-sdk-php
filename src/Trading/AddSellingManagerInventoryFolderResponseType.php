@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class AddSellingManagerInventoryFolderResponseType extends AbstractResponseType
 {
-
     /**
      * The unique identifier of the newly created Selling Manager Inventory Folder. This field will generally be returned unless the call is not successful at creating the new folder.
      *

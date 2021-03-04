@@ -16,7 +16,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class ListingEnhancementDurationReferenceType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * <span class="tablenote"><b>Note:</b>
      *  <b>Duration</b> fields are currently still being returned in <b>GetCategoryFeatures</b> response, but Featured Gallery listing feature is deprecated for all sites. If a seller attempts to add Featured Gallery as a listing enhancement, it is allowed, but a warning will be returned announcing the deprecation of the feature.

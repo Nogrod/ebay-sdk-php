@@ -16,7 +16,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class PickupDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Container consisting of a pickup method and the priority of the pickup method. The priority of each pickup method controls the order (relative to other pickup methods) in which the corresponding pickup method will appear in the View Item and Checkout page.
      *  <br/><br/>

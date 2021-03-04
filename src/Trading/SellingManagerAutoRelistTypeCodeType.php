@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class SellingManagerAutoRelistTypeCodeType
 {
-
     /**
      * Constant for 'RelistOnceIfNotSold' value.
      *

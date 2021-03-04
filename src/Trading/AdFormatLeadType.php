@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class AdFormatLeadType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * This field shows the message that was sent from the prospective buyer to the seller. This will be the same content that is returned in the <b>AdFormatLead.MemberMessage.MemberMessageExchange.Question.Body</b> field (that is only displayed if the <b>IncludeMemberMessages</b> boolean field is included in the request and set to <code>true</code>). The advantage of retrieving the <b>MemberMessageExchange</b> node, however, is that you retrieve the entire exchange between the seller and the prospective buyer.
      *

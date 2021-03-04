@@ -13,7 +13,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetUserPreferencesResponseType extends AbstractResponseType
 {
-
     /**
      * Container consisting of the seller's preference for receiving contact information for unsuccessful bidders. This container is returned when <b>ShowBidderNoticePreferences</b> is included and set to <code>true</code> in the request. This preference is only applicable for auction listings.
      *

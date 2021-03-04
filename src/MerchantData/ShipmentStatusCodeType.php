@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class ShipmentStatusCodeType
 {
-
     /**
      * Constant for 'Active' value.
      */

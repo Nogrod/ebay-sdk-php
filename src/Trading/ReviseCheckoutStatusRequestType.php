@@ -13,7 +13,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class ReviseCheckoutStatusRequestType extends AbstractRequestType
 {
-
     /**
      * Unique identifier for an eBay listing. A listing can have multiple order line items, but only one <b>ItemID</b> value. An <b>ItemID</b> value can be paired up with a corresponding <b>TransactionID</b> value to identify and order line item in a <b>ReviseCheckoutStatus</b> call.
      *  <br><br>

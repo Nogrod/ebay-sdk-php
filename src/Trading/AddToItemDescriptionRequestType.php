@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class AddToItemDescriptionRequestType extends AbstractRequestType
 {
-
     /**
      * This field is used to identify the active listing that will be updated with additional text in the item description field. The Item ID is a unique identifier for a listing.
      *

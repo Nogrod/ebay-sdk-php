@@ -13,7 +13,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class NameValueListArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * <b>For the <b>AddItem</b> family of calls:</b>
      *  Contains the name and value(s) for an Item Specific.

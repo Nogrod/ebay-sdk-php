@@ -16,7 +16,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class AffiliateType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Specify the affiliate value obtained from your tracking partner. For the
      *  eBay Partner Network, the tracking ID is the provided Campaign ID

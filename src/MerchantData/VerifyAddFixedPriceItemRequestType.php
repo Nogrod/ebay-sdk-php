@@ -13,7 +13,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class VerifyAddFixedPriceItemRequestType extends AbstractRequestType
 {
-
     /**
      * Root container holding all values that define a new
      *  fixed-price listing.

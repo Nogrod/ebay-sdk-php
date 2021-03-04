@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class TrustProviderAffiliationDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Trust Provider ID
      *

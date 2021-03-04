@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class ListingSubtypeCodeType
 {
-
     /**
      * Constant for 'ClassifiedAd' value.
      *

@@ -11,7 +11,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class BorderCodeType
 {
-
     /**
      * Constant for 'Enabled' value.
      *

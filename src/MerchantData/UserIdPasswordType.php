@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class UserIdPasswordType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * The application ID that is unique to each application you (or your company)
      *  has registered with the eBay Developers Program. If you are executing a call

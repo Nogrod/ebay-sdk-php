@@ -18,7 +18,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class ReviseItemRequestType extends AbstractRequestType
 {
-
     /**
      * The <b>Item</b> container is used to make changes to the active listing. The seller must pass in the <b>ItemID</b> value for the listing that is being revised. For anything else that the seller wishes to change, such as quantity or price, the seller should include this field in the call request and give it a new value.
      *  <br/><br/>

@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class VerifyAddFixedPriceItemResponseType extends AbstractResponseType
 {
-
     /**
      * With a successful <b>VerifyAddFixedPriceItem</b> call, this field is always returned, but the returned value is always <code>0</code>, since this call only validates the data passed in through the request payload and does not actually create an active listing.
      *

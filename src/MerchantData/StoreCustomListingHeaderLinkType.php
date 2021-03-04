@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class StoreCustomListingHeaderLinkType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Link ID for the listing header link. The ID is used when the link
      *  is a custom category or for a custom page, and it is not needed

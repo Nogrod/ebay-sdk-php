@@ -14,7 +14,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class DisputeResolutionRecordTypeCodeType
 {
-
     /**
      * Constant for 'StrikeBuyer' value.
      *

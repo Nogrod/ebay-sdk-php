@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class CalculatedShippingDiscountType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * This enumeration value indicates the type of calculated shipping discount rule that is being applied. Each rule is explained below.
      *

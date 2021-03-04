@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class ValueRecommendationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * A recommended value for the corresponding, recommended Item Specific. Only returned when a recommended value is available.
      *

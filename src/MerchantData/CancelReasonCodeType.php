@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class CancelReasonCodeType
 {
-
     /**
      * Constant for 'OutOfStock' value.
      *

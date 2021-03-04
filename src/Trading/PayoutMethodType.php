@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class PayoutMethodType
 {
-
     /**
      * Constant for 'PAYPAL' value.
      *

@@ -14,7 +14,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class ActiveInventoryReportResponseType extends AbstractResponseType
 {
-
     /**
      * Describes or includes keywords associated with the SKU.
      *

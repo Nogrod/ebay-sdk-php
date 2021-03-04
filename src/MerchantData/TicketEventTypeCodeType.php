@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class TicketEventTypeCodeType
 {
-
     /**
      * Constant for 'Any' value.
      *

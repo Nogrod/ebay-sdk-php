@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetItemsAwaitingFeedbackResponseType extends AbstractResponseType
 {
-
     /**
      * This container consists of one or more order line items that are awaiting Feedback from the user that made the call. Each order line item is returned in its own <b>TransactionArray.Transaction</b> container.
      *  <br><br>

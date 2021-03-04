@@ -14,7 +14,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetRecurringJobExecutionHistoryRequestType extends BaseServiceRequestType
 {
-
     /**
      * The <b>startTime</b> and <b>endTime</b> date range filters can be used to restrict recurring job instances retrieved in the response to those instances executed within the specified date range.
      *  <br/><br/>

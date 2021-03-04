@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class ReturnPolicyProfileType extends SellerProfileType
 {
-
     /**
      * @var \Nogrod\eBaySDK\BusinessPoliciesManagement\ReturnPolicyInfoType $returnPolicyInfo
      */

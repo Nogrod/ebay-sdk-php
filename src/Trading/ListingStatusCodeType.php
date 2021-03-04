@@ -17,7 +17,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class ListingStatusCodeType
 {
-
     /**
      * Constant for 'Active' value.
      *

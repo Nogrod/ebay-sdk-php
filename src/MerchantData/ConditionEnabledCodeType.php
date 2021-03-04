@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class ConditionEnabledCodeType
 {
-
     /**
      * Constant for 'Disabled' value.
      *

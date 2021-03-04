@@ -16,7 +16,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class FeedbackDetailType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * The eBay User ID of the user who left the Feedback entry.
      *  <br/><br/>

@@ -20,7 +20,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class CalculatedShippingRateType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * The postal code for the location from which the package will be shipped. A postal code is required for calculated shipping. This field is not necessary if a postal code is already specified through the <strong>Item.PostalCode</strong> field. If a postal code is included in both fields, the value in <strong>Item.PostalCode</strong> field is used, and the value in <strong>OriginatingPostalCode</strong> is ignored.
      *

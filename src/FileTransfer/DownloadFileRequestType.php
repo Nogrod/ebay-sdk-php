@@ -44,7 +44,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class DownloadFileRequestType extends BaseServiceRequestType
 {
-
     /**
      * This is ID is determimed by a service (or API) that interacts with the
      *  File Transfer API.

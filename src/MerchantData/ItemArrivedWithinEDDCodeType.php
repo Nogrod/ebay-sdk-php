@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class ItemArrivedWithinEDDCodeType
 {
-
     /**
      * Constant for 'EddQuestionWasNotAsked' value.
      *

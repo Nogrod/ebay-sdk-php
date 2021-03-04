@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class ListingDurationReferenceType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * @var int $__value
      */

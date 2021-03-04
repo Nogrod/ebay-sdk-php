@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class SummaryWindowPeriodCodeType
 {
-
     /**
      * Constant for 'Last24Hours' value.
      *

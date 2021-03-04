@@ -11,7 +11,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class RelistUseCaseCodeType
 {
-
     /**
      * Constant for 'Relist' value.
      *

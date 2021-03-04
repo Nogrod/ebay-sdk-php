@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class CharityType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * The full name of the nonprofit organization.
      *  <br>

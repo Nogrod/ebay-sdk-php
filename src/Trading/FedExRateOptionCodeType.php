@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class FedExRateOptionCodeType
 {
-
     /**
      * Constant for 'FedExStandardList' value.
      *

@@ -7,7 +7,6 @@ namespace Nogrod\eBaySDK\BusinessPoliciesManagement\Client;
  */
 class SellerProfilesManagementBaseClient extends \Nogrod\XMLClientRuntime\Client
 {
-
     /**
      * Call getVersion
      *

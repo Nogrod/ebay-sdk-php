@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetOrdersResponseType extends AbstractResponseType
 {
-
     /**
      * Contains information regarding the pagination of data, including the total number of pages and the total number of orders.
      *

@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetSellingManagerEmailLogResponseType extends AbstractResponseType
 {
-
     /**
      * Email logs associated with this order.
      *

@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class SecondChanceOfferDurationCodeType
 {
-
     /**
      * Constant for 'Days_1' value.
      *

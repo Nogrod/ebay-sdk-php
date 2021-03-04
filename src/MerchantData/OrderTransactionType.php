@@ -14,7 +14,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class OrderTransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Contains the information describing an order.
      *

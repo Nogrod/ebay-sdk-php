@@ -17,7 +17,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class MerchantDataVariationsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Contains data that distinguishes one variation from
      *  another.

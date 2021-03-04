@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class SetSellerProfileRequestType extends BaseRequestType
 {
-
     /**
      * Root container consisting of a seller's payment policy for a category group that was created with the addSellerProfile call. Only pass in values for the fields you want to change. To delete
      *  an optional field, pass the field with an empty value.

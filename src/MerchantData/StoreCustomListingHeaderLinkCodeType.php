@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class StoreCustomListingHeaderLinkCodeType
 {
-
     /**
      * Constant for 'None' value.
      *

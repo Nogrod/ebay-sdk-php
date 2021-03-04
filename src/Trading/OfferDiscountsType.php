@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class OfferDiscountsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * <b>DO NOT USE THIS FIELD</b>. This field is only for internal or future use.
      *

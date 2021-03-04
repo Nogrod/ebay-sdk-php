@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class VariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * A SKU (stock keeping unit) is a seller-defined identifier. It is only intended for the seller's use (not necessarily for buyers). A SKU value is not required, but many large sellers like to add SKU values for their products. If SKU values are defined for variations in a multiple-variation listing, the seller can specify a variation's SKU value in the <b>VariationSKU</b> field of a <b>GetSingleItem</b> call to retrieve details on that particular variation. The <b>VariationSKU</b> field is not available in the <b>GetMultipleItems</b> call.
      *  <br>

@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class PickupMethodCodeType
 {
-
     /**
      * Constant for 'InStorePickup' value.
      *

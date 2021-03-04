@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class RelistItemResponseType extends AbstractResponseType
 {
-
     /**
      * The unique identifier for the relisted item. Note that the <b>ItemID</b> value changes when a listing is relisted, so this will not be the same <b>ItemID</b> value that was passed in the call request.
      *  <br/><br/>

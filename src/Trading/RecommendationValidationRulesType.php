@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class RecommendationValidationRulesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * The data type (e.g., date) that eBay expects the value to
      *  adhere to in listing requests.

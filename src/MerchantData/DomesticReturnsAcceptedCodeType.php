@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class DomesticReturnsAcceptedCodeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Defines the available options the seller has for accepting domestic returns in the specified marketplace and category.
      *

@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class MaximumItemRequirementsDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Values returned in this field indicate the maximum quantity of an order line item that one buyer can purchase during a consecutive 10-day period.
      *

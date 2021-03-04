@@ -12,7 +12,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class SiteIDFilterCodeType
 {
-
     /**
      * Constant for 'ListedInCurrencyImplied' value.
      *

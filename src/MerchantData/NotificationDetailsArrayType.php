@@ -14,7 +14,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class NotificationDetailsArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Each <b>NotificationDetails</b> container consists of detailed information about one notification. <b>NotificationDetails</b> container(s) are only returned if an <b>ItemID</b> value was specified in the request, and there were one or more notifications related to this listing during the specified time range.
      *

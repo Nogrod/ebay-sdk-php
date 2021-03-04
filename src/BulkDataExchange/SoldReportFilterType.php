@@ -14,7 +14,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class SoldReportFilterType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * The enumeration value in this field will control whether buyers' shipping addresses are always returned in Merchant Data's <b>SoldReport</b> response, or only when payment has been cleared.
      *

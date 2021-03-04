@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class ConditionEnabledCodeType
 {
-
     /**
      * Constant for 'Disabled' value.
      *

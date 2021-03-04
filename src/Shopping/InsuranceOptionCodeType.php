@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Shopping;
  */
 class InsuranceOptionCodeType
 {
-
     /**
      * Constant for 'Optional' value.
      *

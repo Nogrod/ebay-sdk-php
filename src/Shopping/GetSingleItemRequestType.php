@@ -17,7 +17,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetSingleItemRequestType extends AbstractRequestType
 {
-
     /**
      * The item ID that uniquely identifies the item listing
      *  for which to retrieve the data.<br>

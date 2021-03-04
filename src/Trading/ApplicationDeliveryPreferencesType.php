@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class ApplicationDeliveryPreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * The URL to which eBay delivers all Platform Notifications and Client Alerts sent to the application. For delivery to a server, the URL must begin with "<code>https://</code>" and must be well formed.
      *

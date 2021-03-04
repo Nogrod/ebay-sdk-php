@@ -18,7 +18,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class BuyerPaymentMethodCodeType
 {
-
     /**
      * Constant for 'None' value.
      *

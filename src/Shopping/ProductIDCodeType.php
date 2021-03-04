@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Shopping;
  */
 class ProductIDCodeType
 {
-
     /**
      * Constant for 'ISBN' value.
      *

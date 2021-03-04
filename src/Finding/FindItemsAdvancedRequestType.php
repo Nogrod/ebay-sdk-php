@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class FindItemsAdvancedRequestType extends BaseFindingServiceRequestType
 {
-
     /**
      * Specify one or more words to use in a search query for finding items
      *  on eBay. By default, queries search item titles only. When running

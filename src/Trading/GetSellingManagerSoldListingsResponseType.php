@@ -13,7 +13,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetSellingManagerSoldListingsResponseType extends AbstractResponseType
 {
-
     /**
      * A <b>SaleRecord</b> container is returned for each order that matches the input criteria.
      *

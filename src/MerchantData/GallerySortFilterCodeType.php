@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class GallerySortFilterCodeType
 {
-
     /**
      * Constant for 'ShowAnyItems' value.
      *

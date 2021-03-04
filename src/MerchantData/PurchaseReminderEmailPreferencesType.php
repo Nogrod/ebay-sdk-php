@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class PurchaseReminderEmailPreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * If true, a payment reminder Email is sent to buyers.
      *

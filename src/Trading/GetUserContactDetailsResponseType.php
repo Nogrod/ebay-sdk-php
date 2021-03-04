@@ -14,7 +14,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetUserContactDetailsResponseType extends AbstractResponseType
 {
-
     /**
      * An eBay ID that uniquely identifies the given user whose information is given in the call response.
      *

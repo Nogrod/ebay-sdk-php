@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class PerformanceStatusCodeType
 {
-
     /**
      * Constant for 'TopRated' value.
      *

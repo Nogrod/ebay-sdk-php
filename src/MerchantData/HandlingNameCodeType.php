@@ -11,7 +11,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class HandlingNameCodeType
 {
-
     /**
      * Constant for 'EachAdditionalAmount' value.
      *

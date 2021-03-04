@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class DiscountDetailType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * This container indicates the discount type and amount applied to an account entry.
      *  <br>

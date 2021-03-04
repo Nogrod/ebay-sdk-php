@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class OrderStatusFilterCodeType
 {
-
     /**
      * Constant for 'All' value.
      *

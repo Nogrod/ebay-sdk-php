@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class UnpaidItemCaseOpenTypeCodeType
 {
-
     /**
      * Constant for 'Auto' value.
      *

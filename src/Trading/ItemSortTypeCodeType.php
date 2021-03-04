@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class ItemSortTypeCodeType
 {
-
     /**
      * Constant for 'ItemID' value.
      *

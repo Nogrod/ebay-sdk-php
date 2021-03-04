@@ -13,7 +13,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class SellerDiscountType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Unique identifier for a seller discount campaign. This ID is automatically
      *  created when the seller creates the discount campaign. This field is always returned

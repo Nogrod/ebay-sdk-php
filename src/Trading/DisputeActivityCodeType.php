@@ -17,7 +17,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class DisputeActivityCodeType
 {
-
     /**
      * Constant for 'SellerAddInformation' value.
      *

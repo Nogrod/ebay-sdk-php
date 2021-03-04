@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetItemShippingRequestType extends AbstractRequestType
 {
-
     /**
      * The unique identifier of the eBay listing for which to retrieve estimated shipping costs for all offered shipping service options. The <b>ItemID</b> value passed into this field should be for an listing that offers at least one calculated shipping service option, and for an item that has yet to be shipped.
      *

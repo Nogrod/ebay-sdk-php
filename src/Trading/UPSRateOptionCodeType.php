@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class UPSRateOptionCodeType
 {
-
     /**
      * Constant for 'UPSDailyRates' value.
      *

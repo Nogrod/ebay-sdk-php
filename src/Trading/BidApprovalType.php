@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class BidApprovalType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * @var string $userID
      */

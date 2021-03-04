@@ -14,7 +14,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class DeleteSellingManagerTemplateRequestType extends AbstractRequestType
 {
-
     /**
      * Unique identifier of the Selling Manager template to be deleted.
      *  You can obtain a <b>SaleTemplateID</b> by calling <b>GetSellingManagerInventory</b>.

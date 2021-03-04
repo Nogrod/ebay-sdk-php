@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class DescriptionTemplateCodeType
 {
-
     /**
      * Constant for 'Layout' value.
      *

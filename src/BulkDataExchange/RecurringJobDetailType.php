@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class RecurringJobDetailType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * The unique identifier of a recurring job that is assigned by the Bulk Data Exchange API after a successful <b>createRecurringJob</ b> call. This value is passed into the request of other recurring job calls of the File Transfer API.
      *

@@ -13,7 +13,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class NotificationStatisticsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Returns the number of notifications delivered successfully during the given
      *  time period.

@@ -11,7 +11,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class RequiredSellerActionCodeType
 {
-
     /**
      * Constant for 'ResolveeBPCase' value.
      *

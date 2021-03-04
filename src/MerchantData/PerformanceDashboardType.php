@@ -15,7 +15,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class PerformanceDashboardType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * The eBay site(s) on which the seller's performance is being evaluated.
      *  <br />

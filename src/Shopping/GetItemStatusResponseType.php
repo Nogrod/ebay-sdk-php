@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetItemStatusResponseType extends AbstractResponseType
 {
-
     /**
      * An <b>Item</b> container is returned for each <b>ItemID</b> value that was specified in the call request. One <b>GetItemStatus</b> call can retrieve up to 20 eBay listings.
      *

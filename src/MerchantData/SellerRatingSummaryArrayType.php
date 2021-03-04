@@ -18,7 +18,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class SellerRatingSummaryArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Container consisting of a seller's Detailed Seller Rating (DSR) for each type of
      *  rating (Communication, Item As Described, Shipping and Handling Charges, or Shipping

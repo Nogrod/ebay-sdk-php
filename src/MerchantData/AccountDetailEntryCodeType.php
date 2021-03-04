@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class AccountDetailEntryCodeType
 {
-
     /**
      * Constant for 'Unknown' value.
      *

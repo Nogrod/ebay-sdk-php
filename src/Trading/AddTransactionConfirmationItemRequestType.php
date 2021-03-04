@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class AddTransactionConfirmationItemRequestType extends AbstractRequestType
 {
-
     /**
      * This field is used to specify the recipient of the Transaction
      *  Confirmation Request (TCR).

@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\BulkDataExchange;
  */
 class JobStatusType
 {
-
     /**
      * Constant for 'Created' value.
      *

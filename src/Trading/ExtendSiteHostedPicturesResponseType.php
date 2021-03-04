@@ -13,7 +13,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class ExtendSiteHostedPicturesResponseType extends AbstractResponseType
 {
-
     /**
      * The URL of the site-hosted picture whose expiration date was extended through the <b>ExtendSiteHostedPictures</b> call. This field will be returned if the expiration date of the site-hosted picture was successfully extended.
      *

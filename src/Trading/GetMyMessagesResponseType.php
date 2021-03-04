@@ -14,7 +14,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetMyMessagesResponseType extends AbstractResponseType
 {
-
     /**
      * Summary data for a given user's messages. This includes the numbers of new
      *  messages, flagged messages, and total messages. The amount and type of

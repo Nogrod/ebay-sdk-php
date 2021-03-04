@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\BulkDataExchange;
  */
 class OrderStatusTypesType
 {
-
     /**
      * Constant for 'Active' value.
      *

@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class AddItemRequestContainerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Container holding all values that define a new listing. One <b>Item</b>
      *  container is required for each <b>AddItemRequestContainer</b>.

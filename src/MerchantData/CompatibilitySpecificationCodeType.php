@@ -11,7 +11,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class CompatibilitySpecificationCodeType
 {
-
     /**
      * Constant for 'NameValue' value.
      *

@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class EndItemRequestType extends AbstractRequestType
 {
-
     /**
      * Unique item ID that identifies the listing that you want to end.
      *

@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Shopping;
  */
 class DistanceType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * @var float $__value
      */

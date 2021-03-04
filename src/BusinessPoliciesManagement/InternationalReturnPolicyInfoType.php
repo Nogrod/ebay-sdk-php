@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class InternationalReturnPolicyInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * @var string $returnsAcceptedOption
      */

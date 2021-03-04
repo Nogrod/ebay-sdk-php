@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class SubscriptionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * @var string $eIASToken
      */

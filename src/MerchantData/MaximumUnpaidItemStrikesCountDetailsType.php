@@ -21,7 +21,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class MaximumUnpaidItemStrikesCountDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Each value returned in each <b>MaximumUnpaidItemStrikesCount.Count</b> field
      *  can be used in the <b>BuyerRequirementDetails.MaximumUnpaidItemStrikesInfo.Count</b>

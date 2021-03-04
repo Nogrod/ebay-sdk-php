@@ -11,7 +11,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class GiftIconCodeType
 {
-
     /**
      * Constant for 'Enabled' value.
      *

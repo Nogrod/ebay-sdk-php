@@ -12,7 +12,6 @@ namespace Nogrod\eBaySDK\FileTransfer;
  */
 class AckValueType
 {
-
     /**
      * Constant for 'Success' value.
      *

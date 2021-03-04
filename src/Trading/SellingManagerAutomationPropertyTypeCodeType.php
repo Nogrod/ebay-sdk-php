@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class SellingManagerAutomationPropertyTypeCodeType
 {
-
     /**
      * Constant for 'ItemListFailedAutomationRules' value.
      *

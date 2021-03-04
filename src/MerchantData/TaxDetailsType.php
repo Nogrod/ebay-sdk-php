@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class TaxDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * This field indicates the tax type. A separate <b>TaxDetails</b> container is returned for each unique imposition (tax type).
      *

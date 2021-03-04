@@ -13,7 +13,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class DeliveryEstimateType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Max business days that will be taken to deliver item.
      *

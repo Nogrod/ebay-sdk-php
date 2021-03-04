@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class DiscountNameCodeType
 {
-
     /**
      * Constant for 'EachAdditionalAmount' value.
      *

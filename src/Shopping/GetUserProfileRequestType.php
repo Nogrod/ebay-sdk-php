@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetUserProfileRequestType extends AbstractRequestType
 {
-
     /**
      * An eBay user ID is input into this field to retrieve information about that eBay user.
      *

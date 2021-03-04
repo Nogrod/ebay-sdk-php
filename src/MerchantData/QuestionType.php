@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class QuestionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * The self claims question id selected by the user during listing
      *

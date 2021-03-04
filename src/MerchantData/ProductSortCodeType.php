@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class ProductSortCodeType
 {
-
     /**
      * Constant for 'PopularityAsc' value.
      *

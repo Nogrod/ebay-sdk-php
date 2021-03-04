@@ -13,7 +13,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class ValidateChallengeInputRequestType extends AbstractRequestType
 {
-
     /**
      * Botblock token that was returned by <b>GetChallengeToken</b>.
      *

@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class UnpaidItemCaseStatusTypeCodeType
 {
-
     /**
      * Constant for 'Open' value.
      *

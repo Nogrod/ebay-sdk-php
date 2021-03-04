@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class ContextSearchAssetType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * The name of the keyword that was found in the search.
      *

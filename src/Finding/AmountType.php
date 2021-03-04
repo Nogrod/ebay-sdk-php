@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Finding;
  */
 class AmountType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * @var float $__value
      */

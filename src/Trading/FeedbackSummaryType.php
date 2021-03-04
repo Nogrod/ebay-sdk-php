@@ -15,7 +15,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class FeedbackSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Bid retractions count, for multiple predefined time periods preceding
      *  the call. Returned if no detail level is specified.

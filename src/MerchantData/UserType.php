@@ -15,7 +15,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * If <code>true</code>, indicates that the user has set up an About Me page.
      *

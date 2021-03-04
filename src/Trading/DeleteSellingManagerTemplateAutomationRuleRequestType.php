@@ -15,7 +15,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class DeleteSellingManagerTemplateAutomationRuleRequestType extends AbstractRequestType
 {
-
     /**
      * The unique identifier of the Selling Manager template from which you want to remove automation rules.
      *  You can obtain a <b>SaleTemplateID</b> by calling <b>GetSellingManagerInventory</b>.

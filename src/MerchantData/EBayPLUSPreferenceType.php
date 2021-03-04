@@ -19,7 +19,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class EBayPLUSPreferenceType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * An ISO 3166 standard two-letter code that identifies a country where the seller is eligible to offer eBay Plus on fixed price listings.
      *  <br/><br/>

@@ -17,7 +17,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class ConditionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * The numeric ID of a condition (e.g., 1000). Use the ID in
      *  AddItem and related calls.

@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class NameValueListType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Depending on the call and context, this value is either a name of an Item/Category/Variation Specific, or a Parts Compatibility name.
      *  <br>

@@ -12,7 +12,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class TransactionPlatformCodeType
 {
-
     /**
      * Constant for 'eBay' value.
      *

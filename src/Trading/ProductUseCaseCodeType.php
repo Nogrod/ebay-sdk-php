@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class ProductUseCaseCodeType
 {
-
     /**
      * Constant for 'AddItem' value.
      *

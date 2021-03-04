@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class ConditionHistogramType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * The name and unique ID of the item condition for which the count is being displayed.
      *  <br><br>

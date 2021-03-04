@@ -18,7 +18,6 @@ namespace Nogrod\eBaySDK\BusinessPoliciesManagement;
  */
 class IsoCurrencyCodeType
 {
-
     /**
      * Constant for 'USD' value.
      */

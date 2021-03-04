@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class EnableCodeType
 {
-
     /**
      * Constant for 'Enable' value.
      *

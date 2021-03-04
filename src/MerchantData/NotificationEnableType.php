@@ -13,7 +13,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class NotificationEnableType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * The name of the notification event.
      *

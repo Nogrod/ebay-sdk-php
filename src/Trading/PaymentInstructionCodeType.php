@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class PaymentInstructionCodeType
 {
-
     /**
      * Constant for 'PaymentInstruction' value.
      *

@@ -12,7 +12,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class SellerLevelCodeType
 {
-
     /**
      * Constant for 'Bronze' value.
      *

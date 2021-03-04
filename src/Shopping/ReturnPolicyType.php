@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class ReturnPolicyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * This field indicates how the seller compensates domestic buyers for <a href="http://developer.ebay.com/DevZone/guides/ebayfeatures/Development/Post-Order-Returns.html#return-reasons" target="_blank">remorse returns</a>. On many eBay marketplaces, 'Money Back' is the only option for domestic and international returns. The eBay US marketplace also allows sellers to offer buyers a 'Money Back Or Replacement' option, where the seller still wants the item they purchased, and prefers that the seller send an identical replacement item instead of a refund. This will typically happen if the originally purchased item arrived damaged or was missing parts.
      *  <br><br>

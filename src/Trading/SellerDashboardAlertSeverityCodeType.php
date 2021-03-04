@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class SellerDashboardAlertSeverityCodeType
 {
-
     /**
      * Constant for 'Informational' value.
      *

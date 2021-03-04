@@ -15,7 +15,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class CategoryHistogramType extends CategoryType
 {
-
     /**
      * The total number of items in the associated category that match the
      *  search criteria.

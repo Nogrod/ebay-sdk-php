@@ -15,7 +15,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class PaymentHoldReasonCodeType
 {
-
     /**
      * Constant for 'NewSeller' value.
      *

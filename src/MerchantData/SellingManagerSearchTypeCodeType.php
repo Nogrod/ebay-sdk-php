@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class SellingManagerSearchTypeCodeType
 {
-
     /**
      * Constant for 'BuyerUserID' value.
      *

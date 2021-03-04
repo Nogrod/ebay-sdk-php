@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class MeasurementSystemCodeType
 {
-
     /**
      * Constant for 'English' value.
      *

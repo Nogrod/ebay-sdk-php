@@ -15,7 +15,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class VeROReportItemsRequestType extends AbstractRequestType
 {
-
     /**
      * User ID of the VeRO member reporting the items.
      *

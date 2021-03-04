@@ -15,7 +15,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class ReturnsWithinDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Value indicates the number of days that a buyer has to return an item from the day they receive the item. This value can be passed in the Add/Revise/Relist family of API calls. Supported values can vary by eBay site.
      *

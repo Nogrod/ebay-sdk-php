@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Finding;
  */
 class GallerySizeEnumType
 {
-
     /**
      * Constant for 'Small' value.
      *

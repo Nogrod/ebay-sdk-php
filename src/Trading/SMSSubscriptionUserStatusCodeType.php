@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class SMSSubscriptionUserStatusCodeType
 {
-
     /**
      * Constant for 'Registered' value.
      *

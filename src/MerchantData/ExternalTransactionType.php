@@ -15,7 +15,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class ExternalTransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Unique identifier for a PayPal payment of an eBay order. If the order was purchased
      *  with a payment method other than PayPal, "SIS" is returned, which stands for "Send

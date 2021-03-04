@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class AddSellerProfileResponseType extends BaseResponseType
 {
-
     /**
      * Root container consisting of a seller's payment policy for a category group that was created.
      *

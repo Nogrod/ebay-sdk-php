@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class ValidateChallengeInputResponseType extends AbstractResponseType
 {
-
     /**
      * Indicates whether the token is valid.
      *

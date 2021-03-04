@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class MetadataType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * The name of the price guidance parameter is returned in this field. Any of the following price guidance parameters may be returned in a <b>Metadata</b> container:
      *  <ul>

@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class SiteFilterType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Reserved for internal or future use.
      *

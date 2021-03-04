@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class DiscountReasonCodeType
 {
-
     /**
      * Constant for 'SpecialOffer' value.
      *

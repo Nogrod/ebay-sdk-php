@@ -16,7 +16,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class DeleteSellingManagerItemAutomationRuleRequestType extends AbstractRequestType
 {
-
     /**
      * The unique identifier of the listing from which to delete automation rules.
      *

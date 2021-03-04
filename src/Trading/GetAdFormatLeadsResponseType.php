@@ -13,7 +13,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetAdFormatLeadsResponseType extends AbstractResponseType
 {
-
     /**
      * Contains contact and other information for one lead. One node is
      *  returned for each lead. Only returned at a detail level of ReturnAll. At

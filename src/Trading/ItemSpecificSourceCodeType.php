@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class ItemSpecificSourceCodeType
 {
-
     /**
      * Constant for 'ItemSpecific' value.
      *

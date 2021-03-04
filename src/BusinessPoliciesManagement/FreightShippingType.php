@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class FreightShippingType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Location type can be residential or commercial
      *

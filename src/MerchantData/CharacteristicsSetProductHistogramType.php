@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class CharacteristicsSetProductHistogramType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * This field is deprecated.
      *

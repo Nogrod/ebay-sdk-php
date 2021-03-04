@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class FetchTokenRequestType extends AbstractRequestType
 {
-
     /**
      * A value associated with the token retrieval request. SecretID is
      *  defined by the application, and is passed in the redirect URL to the

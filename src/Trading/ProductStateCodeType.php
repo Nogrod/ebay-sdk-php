@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class ProductStateCodeType
 {
-
     /**
      * Constant for 'Update' value.
      *

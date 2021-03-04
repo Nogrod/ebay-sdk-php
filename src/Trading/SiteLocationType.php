@@ -13,7 +13,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class SiteLocationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Specifies the criteria for filtering search results by site, where site is
      *  determined by the site ID in the SOAP URL or, for Unified Schema XML requests,

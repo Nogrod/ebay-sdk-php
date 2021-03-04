@@ -24,7 +24,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class SetSellingManagerTemplateAutomationRuleRequestType extends AbstractRequestType
 {
-
     /**
      * The ID of the Selling Manager template whose automation rules you want to change. You can obtain a <b>SaleTemplateID</b> by calling <b>GetSellingManagerInventory</b>.
      *

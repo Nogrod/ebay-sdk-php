@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class DataElementSetType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * This attribute is deprecated.
      *

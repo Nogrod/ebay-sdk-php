@@ -12,7 +12,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class PaymentTypeCodeType
 {
-
     /**
      * Constant for 'Sale' value.
      *

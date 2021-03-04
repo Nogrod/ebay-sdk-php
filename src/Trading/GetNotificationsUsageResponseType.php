@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetNotificationsUsageResponseType extends AbstractResponseType
 {
-
     /**
      * Returns the start date and time for the notification information that is
      *  returned by this call.

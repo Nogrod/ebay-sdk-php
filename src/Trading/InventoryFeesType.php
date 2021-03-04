@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class InventoryFeesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * The unique identifier of the listing being changed. <br>
      *  <br> The <b>ReviseInventoryStatus</b> response includes a separate

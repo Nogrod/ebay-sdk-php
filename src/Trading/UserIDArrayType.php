@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class UserIDArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Unique eBay user ID for the user.
      *  Applies to eBay Motors Pro applications only.

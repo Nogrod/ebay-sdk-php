@@ -14,7 +14,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class DisputeMessageSourceCodeType
 {
-
     /**
      * Constant for 'Buyer' value.
      *

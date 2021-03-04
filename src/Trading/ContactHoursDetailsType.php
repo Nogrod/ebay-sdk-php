@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class ContactHoursDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Indicates the local time zone of the values provided for Hours1From/Hours1To
      *  and Hours2From/Hours2To. If you specify a contact hours time range with

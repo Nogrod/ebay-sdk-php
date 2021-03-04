@@ -11,7 +11,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class PaymentHoldStatusCodeType
 {
-
     /**
      * Constant for 'PaymentReview' value.
      *

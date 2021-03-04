@@ -16,7 +16,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GroupValidationRulesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * <span class="tablenote"><strong>Note:</strong>
      *  <strong>GroupValidationRulesTypetype</strong> and the <b>ProductIdentifiers</b> container were originally introduced into the Trading schema with the intention of separating Global Trade Item Numbers (GTINs) and other descriptive item specifics, but these schema elements were never wired on/returned in <b>GetCategorySpecifics</b>. Instead, users will still find one or more relevant GTIN types under a <b>Recommendations.NameRecommendation.Name</b> field.

@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class ProductIdentiferEnabledCodeType
 {
-
     /**
      * Constant for 'Disabled' value.
      *

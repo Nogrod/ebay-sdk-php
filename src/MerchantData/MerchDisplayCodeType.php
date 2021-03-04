@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class MerchDisplayCodeType
 {
-
     /**
      * Constant for 'DefaultTheme' value.
      *

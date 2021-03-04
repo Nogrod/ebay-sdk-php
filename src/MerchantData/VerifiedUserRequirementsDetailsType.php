@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class VerifiedUserRequirementsDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * @var bool $verifiedUser
      */

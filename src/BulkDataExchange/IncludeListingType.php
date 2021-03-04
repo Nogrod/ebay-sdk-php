@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\BulkDataExchange;
  */
 class IncludeListingType
 {
-
     /**
      * Constant for 'Auction' value.
      *

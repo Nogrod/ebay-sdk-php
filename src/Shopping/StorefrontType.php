@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class StorefrontType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * The URL of the seller's eBay Store. This field is always returned with the <b>Storefront</b> container.
      *

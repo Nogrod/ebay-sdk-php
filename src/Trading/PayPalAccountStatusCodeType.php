@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class PayPalAccountStatusCodeType
 {
-
     /**
      * Constant for 'Active' value.
      *

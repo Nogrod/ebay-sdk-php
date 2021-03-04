@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class DailyRecurrenceType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * This value is used to specify the time of day that the job will execute on a daily basis. The 24-hour clock and GMT are used. 'HH:MM:SS' is the convention that is used, where 'HH' is hours, 'MM' is minutes, and 'SS' is seconds. A sample value is '05:00:00', which would mean that the recurring job would be executed at 5 AM GMT.
      *  <br/><br/>

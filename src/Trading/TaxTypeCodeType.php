@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class TaxTypeCodeType
 {
-
     /**
      * Constant for 'SalesTax' value.
      *

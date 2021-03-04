@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class PictureManagerActionCodeType
 {
-
     /**
      * Constant for 'Add' value.
      *

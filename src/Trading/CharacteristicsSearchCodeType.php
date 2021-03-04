@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class CharacteristicsSearchCodeType
 {
-
     /**
      * Constant for 'Single' value.
      *

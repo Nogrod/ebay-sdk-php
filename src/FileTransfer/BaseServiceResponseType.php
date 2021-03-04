@@ -13,7 +13,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class BaseServiceResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Indicates the success or failure of transferring data to eBay's servers.
      *

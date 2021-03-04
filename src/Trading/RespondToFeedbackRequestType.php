@@ -13,7 +13,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class RespondToFeedbackRequestType extends AbstractRequestType
 {
-
     /**
      * A unique identifier for a Feedback record. Buying and selling partners
      *  leave feedback for one another after the completion of an order.

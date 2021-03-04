@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class SellerReturnPreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * This flag indicates whether or not an eligible seller has opted in to eBay
      *  Managed Returns through the Return Preferences of My eBay.

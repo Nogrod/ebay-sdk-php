@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class ListingFlowCodeType
 {
-
     /**
      * Constant for 'AddItem' value.
      *

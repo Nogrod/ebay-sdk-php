@@ -15,7 +15,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class SetPromotionalSaleResponseType extends AbstractResponseType
 {
-
     /**
      * The enumeration value in this field indicates the status of the promotional sale action (add or delete). See <b>PromotionalSaleStatusCodeType</b> for more information on status values.
      *

@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Shopping;
  */
 class ShippingTypeCodeType
 {
-
     /**
      * Constant for 'Flat' value.
      *

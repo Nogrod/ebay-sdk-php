@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetSellingManagerItemAutomationRuleRequestType extends AbstractRequestType
 {
-
     /**
      * The unique identifier of the listing whose Selling Manager automation rules you want to retrieve.
      *

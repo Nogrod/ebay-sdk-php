@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class AckCodeType
 {
-
     /**
      * Constant for 'Success' value.
      *

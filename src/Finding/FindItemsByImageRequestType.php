@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class FindItemsByImageRequestType extends BestMatchFindingServiceRequestType
 {
-
     /**
      * Specifies the item that the customer wants to use for retrieving
      *  more listings with similar images. The item must active and it must

@@ -16,7 +16,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class VATRateType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Unique identifier for an eBay listing. A listing can have multiple
      *  order line items (transactions), but only one <b>ItemID</b>. An <b>ItemID</b> can be

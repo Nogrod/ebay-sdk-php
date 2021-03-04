@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class AdFormatLeadStatusCodeType
 {
-
     /**
      * Constant for 'New' value.
      *

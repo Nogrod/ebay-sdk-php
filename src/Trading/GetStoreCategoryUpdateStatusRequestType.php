@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetStoreCategoryUpdateStatusRequestType extends AbstractRequestType
 {
-
     /**
      * The unique identifier of an eBay Store Category hierarchy change task. A <b>TaskID</b> value is returned in the response of a successful <b>SetStoreCategories</b> call.
      *  <br/><br/>

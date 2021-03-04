@@ -13,7 +13,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class ReviewDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * <span class="tablenote"><b>Note: </b> <b>ReviewDetailsType</b> and all of its elements are deprecated along with the <b>FindReviewsAndGuides</b> call.
      *  </span>

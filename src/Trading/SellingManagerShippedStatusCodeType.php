@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class SellingManagerShippedStatusCodeType
 {
-
     /**
      * Constant for 'Shipped' value.
      *

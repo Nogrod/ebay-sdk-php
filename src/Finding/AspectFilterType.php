@@ -14,7 +14,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class AspectFilterType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Name of a standard item characteristic associated with a given domain.
      *  For example, "Optical Zoom" or "Megapixels" are aspects for the Digital

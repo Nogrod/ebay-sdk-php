@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class ListingTypeCodeType
 {
-
     /**
      * Constant for 'Unknown' value.
      *

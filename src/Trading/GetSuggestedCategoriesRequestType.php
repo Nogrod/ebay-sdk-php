@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetSuggestedCategoriesRequestType extends AbstractRequestType
 {
-
     /**
      * This field is used to specify the search query, consisting of one or
      *  more keywords to search for in listing titles and descriptions.

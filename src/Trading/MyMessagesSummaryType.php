@@ -15,7 +15,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class MyMessagesSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Folder summary for each folder. Always
      *  returned for detail level ReturnSummary.

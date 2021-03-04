@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * @var \Nogrod\eBaySDK\MerchantData\ActiveInventoryReportResponseType $activeInventoryReport
      */

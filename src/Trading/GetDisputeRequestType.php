@@ -16,7 +16,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetDisputeRequestType extends AbstractRequestType
 {
-
     /**
      * The unique identifier of an seller-initiated dispute. The caller passes in this value to retrieve detailed information on a specific dispute.
      *  <br/><br/>

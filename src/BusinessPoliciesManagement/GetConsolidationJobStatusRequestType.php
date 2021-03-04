@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetConsolidationJobStatusRequestType extends BaseRequestType
 {
-
     /**
      * @var int $jobId
      */

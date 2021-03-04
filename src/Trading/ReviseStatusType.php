@@ -14,7 +14,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class ReviseStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * This field is returned as <code>true</code> if the original listing has been revised. This field is always returned with the <b>ReviseStatus</b> container.
      *

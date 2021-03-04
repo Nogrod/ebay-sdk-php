@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class OrderStatusCodeType
 {
-
     /**
      * Constant for 'Active' value.
      *

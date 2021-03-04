@@ -14,7 +14,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetSellerEventsRequestType extends AbstractRequestType
 {
-
     /**
      * <span class="tablenote"><strong>Note:</strong>
      *  This field should no longer be used, and will be ignored if it is included in a <b>GetSellerEvents</b> request. There are plans to remove this field from the public WSDL. The only eBay user ID that can be used is the one associated with the authentication token.

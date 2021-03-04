@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class VeROSiteDetailType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * This enumeration value indicates the eBay site for which reason code details are returned.
      *

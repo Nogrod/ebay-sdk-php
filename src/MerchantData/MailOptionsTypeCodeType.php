@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class MailOptionsTypeCodeType
 {
-
     /**
      * Constant for 'DoNotSendEmail' value.
      *

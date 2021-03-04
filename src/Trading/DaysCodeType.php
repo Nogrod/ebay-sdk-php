@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class DaysCodeType
 {
-
     /**
      * Constant for 'None' value.
      *

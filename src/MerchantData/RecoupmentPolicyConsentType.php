@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class RecoupmentPolicyConsentType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * A unique identifier for an eBay site. Each site where the user (specified in <strong>UserID</strong> field of call request) has signed a cross-border trade Recoupment Policy Agreement is returned. The enumeration values that represent these eBay sites can be found in <strong>SiteCodeType</strong>.
      *

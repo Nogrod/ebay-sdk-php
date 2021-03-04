@@ -14,7 +14,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class SuggestedCategoryArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Describes a category that contains listings that match
      *  specified keywords in the query. Returned if a category matches the query.

@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class AccountHistorySelectionCodeType
 {
-
     /**
      * Constant for 'LastInvoice' value.
      *

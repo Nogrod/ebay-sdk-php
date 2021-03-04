@@ -16,7 +16,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class PickupMethodSelectedType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * This value indicates the local pickup method that was selected by the buyer at checkout. This field is always returned with the <strong>PickupMethodSelected</strong> container.
      *  <br/><br/>

@@ -13,7 +13,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class VerifyAddSecondChanceItemRequestType extends AbstractRequestType
 {
-
     /**
      * Specifies the bidder from the original, ended listing to whom the seller
      *  is extending the second chance offer. Specify only one

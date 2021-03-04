@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class RemoveOverridesRequestType extends BaseRequestType
 {
-
     /**
      * @var int $profileId
      */

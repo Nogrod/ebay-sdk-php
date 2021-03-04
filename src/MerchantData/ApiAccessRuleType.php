@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class ApiAccessRuleType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * The value in this field can be the name of a Trading API call, or it can be <code>ApplicationAggregate</code> (returns totals for all calls),
      *  <code>PasswordAuthenticationLimiter</code> (dummy call), or <code>NonUTF8UsageLimiter</code>. All of the other data in the <b>ApiAccessRule</b> container will pertain to this call, including the call limits.

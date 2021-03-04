@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class PictureManagerDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * This type is deprecated.
      *

@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class RemoveSellerProfilesResponseType extends BaseResponseType
 {
-
     /**
      * @var \Nogrod\eBaySDK\BusinessPoliciesManagement\SellerProfileResponseStatusType[] $sellerProfileResponseStatus
      */

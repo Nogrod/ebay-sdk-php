@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class QuantityInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Enables a seller to avoid being left with quanity of <code>1</code> in an event listing. A typical use case is event tickets in reserved,
      *  adjacent seats, or items that typically only sell if more than

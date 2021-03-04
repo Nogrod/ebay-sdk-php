@@ -13,7 +13,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class ExtendedPictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * This container returns the <b>eBayPictureURL</b> (images hosted by eBay
      *  Picture Services) and the <b>ExternalPictureURL</b> (images hosted outside of eBay) fields.

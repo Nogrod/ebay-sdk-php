@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class DayOfWeekCodeType
 {
-
     /**
      * Constant for 'Sunday' value.
      *

@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class FixedPriceItemDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * The boolean value in this field will control whether or not the <b>Variations</b> container is returned in a <b>ActiveInventoryReport</b> response.
      *  <br><br>

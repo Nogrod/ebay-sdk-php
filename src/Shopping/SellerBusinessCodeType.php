@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Shopping;
  */
 class SellerBusinessCodeType
 {
-
     /**
      * Constant for 'Undefined' value.
      *

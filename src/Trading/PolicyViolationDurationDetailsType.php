@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class PolicyViolationDurationDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * @var string $period
      */

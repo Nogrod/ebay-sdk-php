@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class CatalogProductType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * The name of the eBay category-related domain most closely associated with the catalog product. If the catalog product is associated with multiple category-related domains, eBay returns the most applicable domain (as determined by eBay).
      *  <br>

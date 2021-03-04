@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class MyMessagesFolderOperationCodeType
 {
-
     /**
      * Constant for 'Display' value.
      *

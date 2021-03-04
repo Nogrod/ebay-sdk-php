@@ -16,7 +16,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class VeROReportedItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * The unique identifier (<b>ItemID</b>) of the listing reported for
      *  copyright, trademark, or intellectual property right infringment.

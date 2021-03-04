@@ -12,7 +12,6 @@ namespace Nogrod\eBaySDK\BulkDataExchange;
  */
 class AckValueType
 {
-
     /**
      * Constant for 'Success' value.
      *

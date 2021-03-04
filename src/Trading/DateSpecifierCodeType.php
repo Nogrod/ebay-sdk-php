@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class DateSpecifierCodeType
 {
-
     /**
      * Constant for 'M' value.
      *

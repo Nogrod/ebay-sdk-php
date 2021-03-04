@@ -21,7 +21,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class DownloadJobRecurringFilterType extends BaseServiceRequestType
 {
-
     /**
      * Creates a recurrring job for Order Report.
      *

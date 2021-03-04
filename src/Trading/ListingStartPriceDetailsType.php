@@ -20,7 +20,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class ListingStartPriceDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * This value is a string description of the listing type for which the pricing data
      *  is intended, such as "Pricing for the auction-like listings".

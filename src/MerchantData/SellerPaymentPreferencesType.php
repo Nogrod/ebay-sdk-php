@@ -18,7 +18,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class SellerPaymentPreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Sellers include this field and set it to <code>true</code> if they want buyers to mail payment
      *  to the payment address specified in the

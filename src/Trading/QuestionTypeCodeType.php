@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class QuestionTypeCodeType
 {
-
     /**
      * Constant for 'General' value.
      *

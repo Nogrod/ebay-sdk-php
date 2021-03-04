@@ -15,7 +15,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class PictureSetMemberType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * URL for the picture.
      *

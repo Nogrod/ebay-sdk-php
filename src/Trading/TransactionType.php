@@ -13,7 +13,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * The total amount the buyer paid for the order line item. This
      *  amount includes all costs such as item cost, shipping/handling charges, and sales tax that is applied to the order by the seller. If the

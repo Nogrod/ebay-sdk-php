@@ -15,7 +15,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class VariationDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * This value indicates the maximum number of item variations that the site will allow within one multi-variation listing.
      *

@@ -13,7 +13,6 @@ namespace Nogrod\eBaySDK\BulkDataExchange;
  */
 class ErrorCategoryType
 {
-
     /**
      * Constant for 'System' value.
      *

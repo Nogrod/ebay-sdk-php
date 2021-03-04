@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetSellerListResponseType extends AbstractResponseType
 {
-
     /**
      * This container shows the total number or pages in the result set, as well as the total number of listings that match the current input criteria.
      *

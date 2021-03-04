@@ -13,7 +13,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class BaseServiceResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Indicates whether or not errors or warnings were generated during the
      *  processing of the request.

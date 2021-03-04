@@ -15,7 +15,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class ListingEnhancementsCodeType
 {
-
     /**
      * Constant for 'Border' value.
      *

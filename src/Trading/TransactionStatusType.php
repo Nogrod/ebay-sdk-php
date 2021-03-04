@@ -13,7 +13,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class TransactionStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Indicates the success or failure of the buyer's online payment for an order.
      *  Applicable for the payment method that the buyer chose for the order. If the

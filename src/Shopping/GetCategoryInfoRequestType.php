@@ -15,7 +15,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetCategoryInfoRequestType extends AbstractRequestType
 {
-
     /**
      * In this required field, the user specifies the unique identifier of an eBay category. Detailed information is returned for this category.
      *  <br>

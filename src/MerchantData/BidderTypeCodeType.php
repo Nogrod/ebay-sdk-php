@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class BidderTypeCodeType
 {
-
     /**
      * Constant for 'AllBidder' value.
      *

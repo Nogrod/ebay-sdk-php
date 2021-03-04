@@ -64,7 +64,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class AuthenticityVerificationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * The value in this field indicates whether the order line item has passed or failed the authenticity inspection, or if the test and/or results are still pending. The possible values returned here are <code>PENDING</code>, <code>PASSED</code>, <code>PASSED_WITH_EXCEPTION</code>, or <code>FAILED</code>.
      *

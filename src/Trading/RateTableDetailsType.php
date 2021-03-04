@@ -20,7 +20,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class RateTableDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * This field is used in an Add/Revise/Relist/Verify call to apply the domestic shipping rate table to the listing. Domestic shipping rate tables can be used only for items listed on the eBay US, Australia, UK, Germany, Canada (English and French), and Italy sites.
      *  <br><br>

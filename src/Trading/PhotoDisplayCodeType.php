@@ -11,7 +11,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class PhotoDisplayCodeType
 {
-
     /**
      * Constant for 'None' value.
      *

@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class DiscountPriceInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * @var \Nogrod\eBaySDK\Finding\AmountType $originalRetailPrice
      */

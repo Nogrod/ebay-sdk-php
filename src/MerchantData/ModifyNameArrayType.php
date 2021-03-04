@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class ModifyNameArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * A <b>ModifyName</b> container is needed for each Variation Specific name that the seller wishes to change in a multiple-variation listing.
      *  <br><br>

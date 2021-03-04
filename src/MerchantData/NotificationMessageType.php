@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class NotificationMessageType extends AbstractResponseType
 {
-
     /**
      * The SMS message.
      *

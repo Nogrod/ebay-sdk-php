@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class UsageConstraintCodeType
 {
-
     /**
      * Constant for 'Optional' value.
      *

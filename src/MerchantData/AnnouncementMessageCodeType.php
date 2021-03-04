@@ -11,7 +11,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class AnnouncementMessageCodeType
 {
-
     /**
      * Constant for 'None' value.
      *

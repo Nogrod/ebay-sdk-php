@@ -28,7 +28,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class OrderReportRecurringFilterType extends BaseServiceRequestType
 {
-
     /**
      * Specify the range in minutes. The Order Report will retrieve orders that have not been acked during the provided create time range
      *

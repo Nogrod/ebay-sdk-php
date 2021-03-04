@@ -13,7 +13,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class EndFixedPriceItemRequestType extends AbstractRequestType
 {
-
     /**
      * Unique identifier of the listing that you want to end.
      *  <br><br>

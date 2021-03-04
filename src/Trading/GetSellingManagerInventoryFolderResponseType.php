@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetSellingManagerInventoryFolderResponseType extends AbstractResponseType
 {
-
     /**
      * This container consists of detailed information on the Selling Manager Inventory folder that matches the input criteria, as well as detailed information about any child folders if <b>FullRecursion</b> was set to <code>true</code> or if the <b>MaxDepth</b> field is set to an integer value greater than <code>0</code>.
      *

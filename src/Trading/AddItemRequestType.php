@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class AddItemRequestType extends AbstractRequestType
 {
-
     /**
      * This container is used to specify all of the values and settings that define a new listing.
      *

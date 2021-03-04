@@ -13,7 +13,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class FeeSettlementReportResponseType extends AbstractResponseType
 {
-
     /**
      * The invoice identifier is an alphanumeric value that uniquely identifies the invoice for the specified invoice period for the associated customer account.
      *

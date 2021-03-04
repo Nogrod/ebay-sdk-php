@@ -20,7 +20,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * A unique identifier for a single or multiple line item eBay order. In the <b>ContainingOrder</b> container of a <b>GetItemTransactions</b> or <b>GetSellerTransactions</b> response, this identifier identifies the parent order of the order line item. A single buyer payment is made for each order.
      *  <br/><br/>

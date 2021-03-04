@@ -14,7 +14,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class ShippingInsuranceType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Whether the seller offers shipping insurance and, if
      *  so, whether the insurance is optional or required. Flat and

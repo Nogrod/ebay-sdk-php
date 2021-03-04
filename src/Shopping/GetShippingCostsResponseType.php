@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetShippingCostsResponseType extends AbstractResponseType
 {
-
     /**
      * This container consists of shipping details related to the specified item and specified shipping destination. This container is only
      *  returned if the <b>IncludeDetails</b> field is included and set to <code>true</code> in the call request. If the specified shipping destination is a domestic location, one or more <b>ShippingServiceOption</b> containers are returned - one for each available shipping service option. If the specified shipping destination is an international location, one or more <b>InternationalShippingServiceOption</b> containers are returned - one for each available shipping service option.

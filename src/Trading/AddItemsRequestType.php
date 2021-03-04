@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class AddItemsRequestType extends AbstractRequestType
 {
-
     /**
      * An <b>AddItemRequestContainer</b> container is required for each listing that will be created with the <b>AddItems</b> request. Up to five of these containers can be included in one <b>AddItems</b> request.
      *

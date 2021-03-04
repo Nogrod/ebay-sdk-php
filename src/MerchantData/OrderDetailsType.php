@@ -14,7 +14,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class OrderDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * A unique identifier for a single or multiple line item order. When a buyer
      *  purchases multiple items from the same listing, each item purchased will have an Order Line

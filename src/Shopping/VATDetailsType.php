@@ -17,7 +17,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class VATDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * This field is only returned if set on the listing, and the person making the call owns the listing.
      *

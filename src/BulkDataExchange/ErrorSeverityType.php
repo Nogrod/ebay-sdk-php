@@ -12,7 +12,6 @@ namespace Nogrod\eBaySDK\BulkDataExchange;
  */
 class ErrorSeverityType
 {
-
     /**
      * Constant for 'Error' value.
      *

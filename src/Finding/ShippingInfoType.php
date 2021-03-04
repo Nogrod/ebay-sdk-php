@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class ShippingInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * The basic shipping cost of the item. This reflects the domestic shipping
      *  cost or the international shipping costs, depending on which applies

@@ -13,7 +13,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class TimeZoneDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * A unique identifier for a given time zone. This ID does not change for a
      *  given time zone, even if the time zone supports both standard and daylight

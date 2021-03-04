@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class CountryDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Two-letter code representing a country. These two-letter codes are typically used
      *  in Add/Revise/Relist calls when referring to a country.

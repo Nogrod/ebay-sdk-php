@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class RefundStatusCodeType
 {
-
     /**
      * Constant for 'Successful' value.
      *

@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class ReturnsAcceptedOptionsCodeType
 {
-
     /**
      * Constant for 'ReturnsAccepted' value.
      *

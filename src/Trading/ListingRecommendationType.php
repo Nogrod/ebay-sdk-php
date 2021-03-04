@@ -18,7 +18,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class ListingRecommendationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * This value indicates the specific type of listing recommendation being provided to
      *  the seller. Possible values include the following:

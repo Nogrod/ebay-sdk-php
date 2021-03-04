@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class BuyerProtectionCodeType
 {
-
     /**
      * Constant for 'ItemIneligible' value.
      *

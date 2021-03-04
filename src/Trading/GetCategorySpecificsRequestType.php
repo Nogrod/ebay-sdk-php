@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetCategorySpecificsRequestType extends AbstractRequestType
 {
-
     /**
      * A unique identifer for an eBay category. Recommended Item Specifics names and values will be retrieved for each eBay category that is specified. Up to 100 <b>CategoryID</b> values may be specified in one call. Although Item Specifics metadata can be retrieved for any eBay category at any level in the hierarchy, it is recommended that users specify leaf category IDs, especially if they are using <b>GetCategorySpecifics</b> to retrieve the Item Specifics applicable to the listing categories they use.
      *  <br><br>

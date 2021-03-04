@@ -14,7 +14,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class MyMessagesMessageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Display name of the eBay user that sent the message.
      *

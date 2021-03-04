@@ -14,7 +14,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class PromotionalSaleDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Original price of an item whose price a seller has reduced with the Promotional Price
      *  Display feature.

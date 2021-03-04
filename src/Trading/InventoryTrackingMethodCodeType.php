@@ -12,7 +12,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class InventoryTrackingMethodCodeType
 {
-
     /**
      * Constant for 'ItemID' value.
      *

@@ -14,7 +14,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class DisputeResolutionReasonCodeType
 {
-
     /**
      * Constant for 'Unresolved' value.
      *

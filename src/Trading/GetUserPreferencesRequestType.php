@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetUserPreferencesRequestType extends AbstractRequestType
 {
-
     /**
      * If included and set to <code>true</code>, the seller's preference for receiving contact information for unsuccessful bidders is returned in the response.
      *

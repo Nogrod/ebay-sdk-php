@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class VariationSpecificsRuleCodeType
 {
-
     /**
      * Constant for 'Enabled' value.
      *

@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class CategoryFeatureDetailLevelCodeType
 {
-
     /**
      * Constant for 'ReturnAll' value.
      *

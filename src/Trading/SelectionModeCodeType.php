@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class SelectionModeCodeType
 {
-
     /**
      * Constant for 'Automatic' value.
      *

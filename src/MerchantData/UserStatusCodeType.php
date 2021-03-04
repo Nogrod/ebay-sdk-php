@@ -11,7 +11,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class UserStatusCodeType
 {
-
     /**
      * Constant for 'Unknown' value.
      *

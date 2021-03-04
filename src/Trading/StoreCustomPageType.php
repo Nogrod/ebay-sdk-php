@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class StoreCustomPageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Name of the eBay Store custom page. This value is required if you are creating a new
      *  page (and omitting a <b>PageID</b> value). Note that you must include a

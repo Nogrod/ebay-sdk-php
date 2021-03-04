@@ -17,7 +17,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class DisputeMessageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * An ID that uniquely identifies the message.
      *

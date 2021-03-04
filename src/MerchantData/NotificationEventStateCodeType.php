@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class NotificationEventStateCodeType
 {
-
     /**
      * Constant for 'New' value.
      *

@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetMyMessagesRequestType extends AbstractRequestType
 {
-
     /**
      * This container is deprecated.
      *

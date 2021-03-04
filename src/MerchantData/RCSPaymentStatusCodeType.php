@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class RCSPaymentStatusCodeType
 {
-
     /**
      * Constant for 'Canceled' value.
      *

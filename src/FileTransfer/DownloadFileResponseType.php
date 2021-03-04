@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class DownloadFileResponseType extends BaseServiceResponseType
 {
-
     /**
      * A zipped report file that is encoded in Base64 Binary format and included
      *  in the response according to the SOAP MTOM standard.

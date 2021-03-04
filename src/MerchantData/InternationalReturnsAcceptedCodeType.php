@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class InternationalReturnsAcceptedCodeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Defines the available options the seller has for accepting international returns in the specified marketplace and category.
      *

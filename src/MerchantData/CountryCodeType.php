@@ -14,7 +14,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class CountryCodeType
 {
-
     /**
      * Constant for 'AF' value.
      *

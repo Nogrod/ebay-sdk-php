@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class SMSSubscriptionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * The wireless phone number to be used for receiving SMS messages.
      *  Max length of phone number varies by country.

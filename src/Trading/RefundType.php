@@ -14,7 +14,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class RefundType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * <span class="tablenote"><b>Note: </b> <b>RefundType</b> and all of its fields are no longer applicable since the Half.com site has been shut down.
      *  </span>

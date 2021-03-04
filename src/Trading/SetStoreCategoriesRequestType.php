@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class SetStoreCategoriesRequestType extends AbstractRequestType
 {
-
     /**
      * Specifies the type of action (Add, Move, Delete, or Rename) to carry out
      *  for the specified eBay Store categories.

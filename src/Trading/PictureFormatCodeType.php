@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class PictureFormatCodeType
 {
-
     /**
      * Constant for 'JPG' value.
      *

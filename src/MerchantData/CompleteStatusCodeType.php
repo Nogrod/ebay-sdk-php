@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class CompleteStatusCodeType
 {
-
     /**
      * Constant for 'Incomplete' value.
      *

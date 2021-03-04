@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class LeaveFeedbackResponseType extends AbstractResponseType
 {
-
     /**
      * The unique identifier of the Feedback entry that has been submitted by the caller.
      *

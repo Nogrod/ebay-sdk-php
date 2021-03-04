@@ -15,7 +15,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class PaginationOutputType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * The subset of item data returned in the current response. Search results
      *  are divided into sets, or "pages," of item data. The number of pages is

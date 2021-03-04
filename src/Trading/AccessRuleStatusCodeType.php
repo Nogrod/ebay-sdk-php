@@ -11,7 +11,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class AccessRuleStatusCodeType
 {
-
     /**
      * Constant for 'RuleOff' value.
      *

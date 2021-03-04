@@ -28,7 +28,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetItemTransactionsResponseType extends AbstractResponseType
 {
-
     /**
      * Contains the total number of pages (<b>TotalNumberOfPages</b>) and the total number
      *  of entries (<b>TotalNumberOfEntries</b>) that could be returned given repeated calls

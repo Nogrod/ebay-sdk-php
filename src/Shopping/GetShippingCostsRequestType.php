@@ -22,7 +22,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetShippingCostsRequestType extends AbstractRequestType
 {
-
     /**
      * The item ID that uniquely identifies the listing for which to retrieve the data.
      *

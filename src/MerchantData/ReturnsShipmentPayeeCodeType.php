@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class ReturnsShipmentPayeeCodeType
 {
-
     /**
      * Constant for 'Buyer' value.
      *

@@ -13,7 +13,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class DetailLevelCodeType
 {
-
     /**
      * Constant for 'ReturnAll' value.
      *

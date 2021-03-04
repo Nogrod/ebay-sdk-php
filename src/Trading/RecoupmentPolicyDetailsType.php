@@ -13,7 +13,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class RecoupmentPolicyDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Indicates whether recoupment policy is enforced on the site on which the item is listed.
      *

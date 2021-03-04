@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class PayPalAccountLevelCodeType
 {
-
     /**
      * Constant for 'Unverified' value.
      *

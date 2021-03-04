@@ -14,7 +14,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class UserDefinedListType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * The user's chosen name for this list.
      *

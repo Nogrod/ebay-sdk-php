@@ -11,7 +11,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class UnitCodeType
 {
-
     /**
      * Constant for 'kg' value.
      *

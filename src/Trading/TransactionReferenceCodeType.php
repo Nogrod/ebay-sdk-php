@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class TransactionReferenceCodeType
 {
-
     /**
      * Constant for 'ExternalTransactionID' value.
      *

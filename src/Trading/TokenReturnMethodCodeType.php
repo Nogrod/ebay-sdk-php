@@ -11,7 +11,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class TokenReturnMethodCodeType
 {
-
     /**
      * Constant for 'Redirect' value.
      *

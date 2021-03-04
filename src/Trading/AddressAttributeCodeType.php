@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class AddressAttributeCodeType
 {
-
     /**
      * Constant for 'ReferenceNumber' value.
      *

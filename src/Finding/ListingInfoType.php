@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class ListingInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Shows whether or not the seller will accept a best offer for the
      *  associated item. Best Offer allows a buyer to make a lower-priced binding

@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetStoreCategoryUpdateStatusResponseType extends AbstractResponseType
 {
-
     /**
      * The enumeration value indicates the status of an update to the
      *  eBay Store Category hierarchy.

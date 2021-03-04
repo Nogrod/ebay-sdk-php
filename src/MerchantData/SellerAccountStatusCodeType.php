@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class SellerAccountStatusCodeType
 {
-
     /**
      * Constant for 'Current' value.
      *

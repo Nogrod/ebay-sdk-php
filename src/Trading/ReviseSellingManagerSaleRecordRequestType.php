@@ -14,7 +14,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class ReviseSellingManagerSaleRecordRequestType extends AbstractRequestType
 {
-
     /**
      * Unique identifier for an eBay listing. A listing can have multiple
      *  order line items, but only one <b>ItemID</b> value. An <b>ItemID</b> can be

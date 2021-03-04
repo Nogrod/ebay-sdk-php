@@ -12,7 +12,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class CommentTypeCodeType
 {
-
     /**
      * Constant for 'Positive' value.
      *

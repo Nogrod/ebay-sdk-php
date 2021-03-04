@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class InquiryStatusCodeType
 {
-
     /**
      * Constant for 'Invalid' value.
      *

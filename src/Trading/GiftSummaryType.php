@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GiftSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * This free-form text contains the message that the purchaser of the digital gift card left for the recipient of the gift card.
      *  <br><br>

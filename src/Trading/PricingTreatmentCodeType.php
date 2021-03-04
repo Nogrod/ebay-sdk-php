@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class PricingTreatmentCodeType
 {
-
     /**
      * Constant for 'STP' value.
      *

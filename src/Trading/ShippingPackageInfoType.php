@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class ShippingPackageInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * The unique identifier of the store from where the order will be delivered. This field is only applicable to 'In-Store Pickup' and 'Click and Collect' orders.
      *

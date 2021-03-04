@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class DigitalDeliverySelectedType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * This value indicates the method in which the digital gift card will be delivered to the buyer or to the person whom the purchaser is giving the digital gift card to. Currently, the only supported delivery method is by email.
      *

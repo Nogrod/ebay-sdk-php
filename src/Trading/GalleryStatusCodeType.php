@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class GalleryStatusCodeType
 {
-
     /**
      * Constant for 'Success' value.
      *

@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class VerifyAddSecondChanceItemResponseType extends AbstractResponseType
 {
-
     /**
      * Indicates the date and time when the the new
      *  Second Chance Offer listing became active and

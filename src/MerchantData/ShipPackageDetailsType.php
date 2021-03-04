@@ -21,7 +21,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class ShipPackageDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Specifies the unit type of the weight and dimensions of a
      *  shipping package.

@@ -13,7 +13,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class LeaveFeedbackRequestType extends AbstractRequestType
 {
-
     /**
      * Unique identifier for an eBay listing. A listing can have multiple
      *  order line items, but only one <b>ItemID</b>. Unless an

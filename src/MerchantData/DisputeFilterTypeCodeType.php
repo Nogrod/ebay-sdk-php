@@ -15,7 +15,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class DisputeFilterTypeCodeType
 {
-
     /**
      * Constant for 'AllInvolvedDisputes' value.
      *

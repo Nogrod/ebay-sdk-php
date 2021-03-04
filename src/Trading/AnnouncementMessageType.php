@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class AnnouncementMessageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * The date on which an upcoming event can start to be announced.
      *

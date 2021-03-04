@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetMultipleItemsResponseType extends AbstractResponseType
 {
-
     /**
      * Contains details for a listing (or multiple) listings that correspond to the item ID(s) specified in the request.
      *

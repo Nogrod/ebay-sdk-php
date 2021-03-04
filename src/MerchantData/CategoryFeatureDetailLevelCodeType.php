@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class CategoryFeatureDetailLevelCodeType
 {
-
     /**
      * Constant for 'ReturnAll' value.
      *

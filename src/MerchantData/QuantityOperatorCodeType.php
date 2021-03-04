@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class QuantityOperatorCodeType
 {
-
     /**
      * Constant for 'LessThan' value.
      *

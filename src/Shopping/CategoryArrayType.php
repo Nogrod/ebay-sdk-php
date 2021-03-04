@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class CategoryArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * This container consists of high-level details of a category, including its category ID value, full category path (by name and by category ID), its level in the eBay site's category hierarchy, category ID of its parent category, and a boolean value to indicate if it is a listing (leaf) category.
      *  <br/><br/>

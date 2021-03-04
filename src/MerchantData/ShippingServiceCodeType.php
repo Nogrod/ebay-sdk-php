@@ -14,7 +14,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class ShippingServiceCodeType
 {
-
     /**
      * Constant for 'UPSGround' value.
      *

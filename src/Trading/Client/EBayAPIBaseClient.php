@@ -7,7 +7,6 @@ namespace Nogrod\eBaySDK\Trading\Client;
  */
 class EBayAPIBaseClient extends \Nogrod\XMLClientRuntime\Client
 {
-
     /**
      * Call AddDispute
      *

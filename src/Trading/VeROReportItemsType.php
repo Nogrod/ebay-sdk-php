@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class VeROReportItemsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * A <b>ReportItem</b> container is required for each eBay item that the product owner is reporting as violating the product owner's copyright, trademark, or intellectual property rights. The <b>ItemID</b> and <b>VeROReasonCodeID</b> fields are required, and the rest of the <b>ReportItem</b> fields can be supplied based on the situation.
      *

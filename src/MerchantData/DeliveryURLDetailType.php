@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class DeliveryURLDetailType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * The name of a notification delivery URL. You can list up to 25 instances of
      *  DeliveryURLName, and then subscribe these URLs to notifications by listing them in comma-

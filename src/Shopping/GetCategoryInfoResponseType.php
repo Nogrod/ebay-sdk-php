@@ -15,7 +15,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetCategoryInfoResponseType extends AbstractResponseType
 {
-
     /**
      * This container consists of an array of one or more <b>Category</b> nodes. The first <b>Category</b> node in the response is always the category that was specified in the <b>CategoryID</b> field in the request, and additional <b>Category</b> nodes are returned if the <b>IncludeSelector</b> field is included in the request and set to <code>ChildCategories</code>.
      *

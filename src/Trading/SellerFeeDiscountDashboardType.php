@@ -14,7 +14,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class SellerFeeDiscountDashboardType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * PowerSeller discount as a percentage. For example, a 5% discount is returned
      *  as 0.05.

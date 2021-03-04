@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class TimeRangeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Specifies the earliest (oldest) date to be used in a date range.
      *

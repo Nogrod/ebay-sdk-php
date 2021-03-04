@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class CharityAffiliationDetailType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * The eBay unique identifier of the nonprofit organization associated with the seller's account. Once a nonprofit organization comes aboard as an eBay for Charity organization, eBay creates and assigns this ID to the nonprofit organization.
      *

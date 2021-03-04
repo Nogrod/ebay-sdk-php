@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class ApplicationDeviceTypeCodeType
 {
-
     /**
      * Constant for 'Browser' value.
      *

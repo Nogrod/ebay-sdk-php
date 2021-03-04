@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class VariationSpecificPictureSetType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * This field shows the corresponding value of the product aspect that is shown in the the <b>Variations.Pictures.VariationSpecificName</b> field. For example, if the <b>Variations.Pictures.VariationSpecificName</b> value is 'Color',
      *  the value in this field will be one of the values that is shown in the <b>Variations.VariationSpecificsSet.NameValueList</b> container. So, if the <b>Name</b> field of that <b>NameValueList</b> container was 'Color', the value in the <b>VariationSpecificPictureSet.VariationSpecificValue</b> would have to be one of the defined colors for the multiple-variation listing.

@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetRecurringJobsResponseType extends BaseServiceResponseType
 {
-
     /**
      * One or more <b>recurringJobDetail</b> containers are returned for each retrieved recurring job. The <b>recurringJobDetail</b> container consists of a unique identifier for the recurring job, the current status of the recurring job ('Active' or 'Suspended), the frequency of the recurring job (daily, weekly, monthly), and the download job type.
      *

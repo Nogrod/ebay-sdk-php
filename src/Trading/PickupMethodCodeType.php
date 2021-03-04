@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class PickupMethodCodeType
 {
-
     /**
      * Constant for 'InStorePickup' value.
      *

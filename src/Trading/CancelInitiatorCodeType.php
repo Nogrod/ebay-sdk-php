@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class CancelInitiatorCodeType
 {
-
     /**
      * Constant for 'Unknown' value.
      *

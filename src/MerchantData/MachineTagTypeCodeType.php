@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class MachineTagTypeCodeType
 {
-
     /**
      * Constant for 'ServerFlash' value.
      *

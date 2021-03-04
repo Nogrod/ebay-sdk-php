@@ -15,7 +15,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class MoveSellingManagerInventoryFolderRequestType extends AbstractRequestType
 {
-
     /**
      * Unique ID of the Selling Manager Inventory folder that will be moved. A user can retrieve <b>FolderID</b> values by using <b>GetSellingManagerInventoryFolder</b>.
      *

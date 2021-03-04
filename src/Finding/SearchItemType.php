@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class SearchItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * The ID that uniquely identifies the item listing. eBay generates this
      *  ID when an item is listed. ID values are unique across all eBay sites.

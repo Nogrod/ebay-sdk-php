@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetCategorySpecificsResponseType extends AbstractResponseType
 {
-
     /**
      * This container provide details about relevant Item Specifics for the specified category. Required Item Specifics are generally returned at the top of the response payload, followed by the other most common/popular Item Specifics for the category. If an Item Specific is required, a <b>MinValues</b> field will be returned with a value of <code>1</code>, and the corresponding <b>UsageConstraint</b> field will show a value of <code>Required</code>. Optional Item Specifics are returned after required and recommended Item Specifics, but sellers should still provide any optional Item Specific name-value pairs if known and relevant for the product.
      *  <br>

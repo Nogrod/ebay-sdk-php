@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetContextualKeywordsResponseType extends AbstractResponseType
 {
-
     /**
      * An array of either keyword/category pairs or categories, with ranking and score.
      *

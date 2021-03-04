@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\Shopping;
  */
 class SiteCodeType
 {
-
     /**
      * Constant for 'US' value.
      *

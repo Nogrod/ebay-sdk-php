@@ -13,7 +13,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class GetRecurringJobExecutionStatusRequestType extends BaseServiceRequestType
 {
-
     /**
      * Unique ID assigned by the Bulk Data Exchange API for managing your
      *  recurring job. Use the <b>recurringJobId</b> value

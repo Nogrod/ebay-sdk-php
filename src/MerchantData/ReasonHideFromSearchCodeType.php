@@ -11,7 +11,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class ReasonHideFromSearchCodeType
 {
-
     /**
      * Constant for 'DuplicateListing' value.
      *

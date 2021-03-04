@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class PictureManagerDetailLevelCodeType
 {
-
     /**
      * Constant for 'ReturnAll' value.
      *

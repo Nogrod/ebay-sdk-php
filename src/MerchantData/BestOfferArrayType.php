@@ -12,7 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class BestOfferArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * For <b>GetBestOffers</b>, each <b>BestOffer</b> container consists of detailed information on the Best Offer/Counter Offer, including the type of Best Offer (Best Offer, Buyer/Seller Counter Offer), amount of the Best Offer/Counter Offer, and status of Best Offer/Counter Offer.
      *  <br/><br/>

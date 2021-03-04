@@ -14,7 +14,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class PromotionalSaleStatusCodeType
 {
-
     /**
      * Constant for 'Active' value.
      *

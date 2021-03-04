@@ -10,7 +10,6 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class PeriodCodeType
 {
-
     /**
      * Constant for 'Days_1' value.
      *

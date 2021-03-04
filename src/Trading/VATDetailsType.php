@@ -17,7 +17,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class VATDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * This field should be included in an Add/Revise/Relist call and set to <code>true</code> if the seller is registered on the selling site as a Business Seller. This field must be included and set to <code>true</code> if the <b>RestrictedToBusiness</b> field is also included and set to <code>true</code>. The <b>RestrictedToBusiness</b> field is used by German (Site ID 77), Austrian (Site ID 16), and Swiss (Site ID 193) sellers who wish to restrict sales of their item to other users registered as business users.
      *  <br><br>
