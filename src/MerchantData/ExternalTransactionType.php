@@ -7,18 +7,13 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing ExternalTransactionType
  *
- * Container consisting of details related to payment of an eBay order on an
- *  external system such as PayPal. This container is only returned if payment has
- *  been made on an order. For <b>GetSellerTransaactions</b> and <b>GetItemTransactions</b>, this
- *  container is not returned for multiple line item orders.
+ * Container consisting of details related to payment of an eBay order on an external system. This container is only returned if order payment has been made on an external system. For <b>GetSellerTransaactions</b> and <b>GetItemTransactions</b>, this container is not returned for multiple line item orders.
  * XSD Type: ExternalTransactionType
  */
 class ExternalTransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
     /**
-     * Unique identifier for a PayPal payment of an eBay order. If the order was purchased
-     *  with a payment method other than PayPal, "SIS" is returned, which stands for "Send
-     *  Information To Seller." This field is only returned after payment has been made.
+     * Unique identifier for a payment of an eBay order that occurred outside of eBay's system. If the order was purchased with a payment method other than PayPal, a value of <code>SIS</code> is returned, which stands for 'Send Information To Seller.' This field is only returned after payment has been made.
      *
      * @var string $externalTransactionID
      */
@@ -39,7 +34,7 @@ class ExternalTransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
     private $feeOrCreditAmount = null;
 
     /**
-     * If this dollar value is a positive amount, this is the amount that the buyer pays the seller through PayPal for purchase of the order. If this dollar value is a negative amount, this is the amount refunded to the buyer.
+     * If this dollar value is a positive amount, this is the amount that the buyer pays the seller through for purchase of the order. If this dollar value is a negative amount, this is the amount refunded to the buyer.
      *  <br><br>
      *  <span class="tablenote"><b>Note: </b> If a refund is due to the buyer, the amount in this field will not include any 'Collect and Remit' tax (mandated US state sales tax or 'Goods and Services' tax in Australia or New Zealand) charged to the buyer for one or more order line items, since this tax is collected by eBay and not by the seller.
      *  </span>
@@ -65,9 +60,7 @@ class ExternalTransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
     /**
      * Gets as externalTransactionID
      *
-     * Unique identifier for a PayPal payment of an eBay order. If the order was purchased
-     *  with a payment method other than PayPal, "SIS" is returned, which stands for "Send
-     *  Information To Seller." This field is only returned after payment has been made.
+     * Unique identifier for a payment of an eBay order that occurred outside of eBay's system. If the order was purchased with a payment method other than PayPal, a value of <code>SIS</code> is returned, which stands for 'Send Information To Seller.' This field is only returned after payment has been made.
      *
      * @return string
      */
@@ -79,9 +72,7 @@ class ExternalTransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
     /**
      * Sets a new externalTransactionID
      *
-     * Unique identifier for a PayPal payment of an eBay order. If the order was purchased
-     *  with a payment method other than PayPal, "SIS" is returned, which stands for "Send
-     *  Information To Seller." This field is only returned after payment has been made.
+     * Unique identifier for a payment of an eBay order that occurred outside of eBay's system. If the order was purchased with a payment method other than PayPal, a value of <code>SIS</code> is returned, which stands for 'Send Information To Seller.' This field is only returned after payment has been made.
      *
      * @param string $externalTransactionID
      * @return self
@@ -147,7 +138,7 @@ class ExternalTransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
     /**
      * Gets as paymentOrRefundAmount
      *
-     * If this dollar value is a positive amount, this is the amount that the buyer pays the seller through PayPal for purchase of the order. If this dollar value is a negative amount, this is the amount refunded to the buyer.
+     * If this dollar value is a positive amount, this is the amount that the buyer pays the seller through for purchase of the order. If this dollar value is a negative amount, this is the amount refunded to the buyer.
      *  <br><br>
      *  <span class="tablenote"><b>Note: </b> If a refund is due to the buyer, the amount in this field will not include any 'Collect and Remit' tax (mandated US state sales tax or 'Goods and Services' tax in Australia or New Zealand) charged to the buyer for one or more order line items, since this tax is collected by eBay and not by the seller.
      *  </span>
@@ -169,7 +160,7 @@ class ExternalTransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
     /**
      * Sets a new paymentOrRefundAmount
      *
-     * If this dollar value is a positive amount, this is the amount that the buyer pays the seller through PayPal for purchase of the order. If this dollar value is a negative amount, this is the amount refunded to the buyer.
+     * If this dollar value is a positive amount, this is the amount that the buyer pays the seller through for purchase of the order. If this dollar value is a negative amount, this is the amount refunded to the buyer.
      *  <br><br>
      *  <span class="tablenote"><b>Note: </b> If a refund is due to the buyer, the amount in this field will not include any 'Collect and Remit' tax (mandated US state sales tax or 'Goods and Services' tax in Australia or New Zealand) charged to the buyer for one or more order line items, since this tax is collected by eBay and not by the seller.
      *  </span>

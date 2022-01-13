@@ -49,14 +49,3 @@ Nogrod\eBaySDK\MerchantData\ShippingServiceCostOverrideType:
                 getter: getShippingServiceAdditionalCost
                 setter: setShippingServiceAdditionalCost
             type: Nogrod\eBaySDK\MerchantData\AmountType
-        shippingSurcharge:
-            expose: true
-            access_type: public_method
-            serialized_name: ShippingSurcharge
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getShippingSurcharge
-                setter: setShippingSurcharge
-            type: Nogrod\eBaySDK\MerchantData\AmountType

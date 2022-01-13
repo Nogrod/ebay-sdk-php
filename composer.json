@@ -37,5 +37,10 @@
       "php-cs-fixer fix src"
     ],
     "download": "@php wsdldl.php"
+  },
+  "config": {
+    "allow-plugins": {
+      "composer/package-versions-deprecated": true
+    }
   }
 }

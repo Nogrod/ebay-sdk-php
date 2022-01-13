@@ -18,12 +18,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  the effects of those filters on the current response and the estimated effects if
  *  the same filters are used in subsequent calls.
  *  <br><br>
- *  Data from the <b>TransactionArray</b> may be used to trigger the following Platform
- *  Notifications: EndOfAuction, AuctionCheckoutComplete, FixedPriceEndOfTransaction,
- *  CheckoutBuyerRequestTotal, FixedPriceTransaction, Checkout,
- *  FixedPriceTransactionForSeller, FixedPriceTransactionForBuyer, ItemMarkedAsShipped,
- *  and ItemMarkedAsPaid. Each notification will be based on the state of the item
- *  (a 'snapshot' of the item) at the time the order line item was created.
+ *  Data from the <b>TransactionArray</b> may be used to trigger the following Platform Notifications: <b>EndOfAuction</b>, <b>AuctionCheckoutComplete</b>, <b>FixedPriceTransaction</b>, <b>CheckoutBuyerRequestsTotal</b>, <b>ItemMarkedShipped</b>, and <b>ItemMarkedPaid</b>. Each notification will be based on the state of the item (a 'snapshot' of the item) at the time the order line item was created.
  * XSD Type: GetItemTransactionsResponseType
  */
 class GetItemTransactionsResponseType extends AbstractResponseType
@@ -92,11 +87,7 @@ class GetItemTransactionsResponseType extends AbstractResponseType
     private $transactionArray = null;
 
     /**
-     * Indicates whether the item's seller has the preference enabled that shows
-     *  that the seller prefers PayPal as the method of payment for an item. This
-     *  preference is indicated on an item's View Item page and is intended to
-     *  influence a buyer to use PayPal
-     *  to pay for the item.
+     * This field may still be returned for orders currently, but it can be ignored since eBay now manages all online payment methods available to buyers.
      *
      * @var bool $payPalPreferred
      */
@@ -367,11 +358,7 @@ class GetItemTransactionsResponseType extends AbstractResponseType
     /**
      * Gets as payPalPreferred
      *
-     * Indicates whether the item's seller has the preference enabled that shows
-     *  that the seller prefers PayPal as the method of payment for an item. This
-     *  preference is indicated on an item's View Item page and is intended to
-     *  influence a buyer to use PayPal
-     *  to pay for the item.
+     * This field may still be returned for orders currently, but it can be ignored since eBay now manages all online payment methods available to buyers.
      *
      * @return bool
      */
@@ -383,11 +370,7 @@ class GetItemTransactionsResponseType extends AbstractResponseType
     /**
      * Sets a new payPalPreferred
      *
-     * Indicates whether the item's seller has the preference enabled that shows
-     *  that the seller prefers PayPal as the method of payment for an item. This
-     *  preference is indicated on an item's View Item page and is intended to
-     *  influence a buyer to use PayPal
-     *  to pay for the item.
+     * This field may still be returned for orders currently, but it can be ignored since eBay now manages all online payment methods available to buyers.
      *
      * @param bool $payPalPreferred
      * @return self

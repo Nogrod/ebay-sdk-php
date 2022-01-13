@@ -80,15 +80,7 @@ class TransactionStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
     private $paymentHoldStatus = null;
 
     /**
-     * This field being returned with a value of <code>true</code> indicates that the order line item can be paid for with a credit card through the seller's payment gateway account.
-     *  <br><br>
-     *  <span class="tablenote"><b>Note: </b>
-     *  Beginning on May 1, 2019, eBay will no longer support electronic payments through Integrated Merchant Credit Card accounts. To accept online credit card payments from buyers, a seller must use specify PayPal as an accepted payment method, or opt in to eBay Managed Payments program (if the program is available to that seller).
-     *  </span>
-     *  <br> <br>
-     *  <span class="tablenote"><b>Note:</b>
-     *  For the <strong>GetItemTransactions</strong>, <strong>GetOrders</strong>, and <strong>GetOrderTransactions</strong> calls, this field is only returned to the seller of the order; this field is not returned for the buyer or third party.
-     *  </span>
+     * This field is no longer applicable as eBay sellers can no longer use iMCC gateway accounts to handle buyer payments.
      *
      * @var bool $integratedMerchantCreditCardEnabled
      */
@@ -355,15 +347,7 @@ class TransactionStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
     /**
      * Gets as integratedMerchantCreditCardEnabled
      *
-     * This field being returned with a value of <code>true</code> indicates that the order line item can be paid for with a credit card through the seller's payment gateway account.
-     *  <br><br>
-     *  <span class="tablenote"><b>Note: </b>
-     *  Beginning on May 1, 2019, eBay will no longer support electronic payments through Integrated Merchant Credit Card accounts. To accept online credit card payments from buyers, a seller must use specify PayPal as an accepted payment method, or opt in to eBay Managed Payments program (if the program is available to that seller).
-     *  </span>
-     *  <br> <br>
-     *  <span class="tablenote"><b>Note:</b>
-     *  For the <strong>GetItemTransactions</strong>, <strong>GetOrders</strong>, and <strong>GetOrderTransactions</strong> calls, this field is only returned to the seller of the order; this field is not returned for the buyer or third party.
-     *  </span>
+     * This field is no longer applicable as eBay sellers can no longer use iMCC gateway accounts to handle buyer payments.
      *
      * @return bool
      */
@@ -375,15 +359,7 @@ class TransactionStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
     /**
      * Sets a new integratedMerchantCreditCardEnabled
      *
-     * This field being returned with a value of <code>true</code> indicates that the order line item can be paid for with a credit card through the seller's payment gateway account.
-     *  <br><br>
-     *  <span class="tablenote"><b>Note: </b>
-     *  Beginning on May 1, 2019, eBay will no longer support electronic payments through Integrated Merchant Credit Card accounts. To accept online credit card payments from buyers, a seller must use specify PayPal as an accepted payment method, or opt in to eBay Managed Payments program (if the program is available to that seller).
-     *  </span>
-     *  <br> <br>
-     *  <span class="tablenote"><b>Note:</b>
-     *  For the <strong>GetItemTransactions</strong>, <strong>GetOrders</strong>, and <strong>GetOrderTransactions</strong> calls, this field is only returned to the seller of the order; this field is not returned for the buyer or third party.
-     *  </span>
+     * This field is no longer applicable as eBay sellers can no longer use iMCC gateway accounts to handle buyer payments.
      *
      * @param bool $integratedMerchantCreditCardEnabled
      * @return self

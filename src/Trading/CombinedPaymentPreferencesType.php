@@ -7,7 +7,7 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing CombinedPaymentPreferencesType
  *
- * Type used to indicate if the seller supports <a href="http://developer.ebay.com/DevZone/guides/features-guide/default.html#development/Listing-AnItem.html#CombinedInvoice">Combined Invoice</a>
+ * Type used to indicate if the seller supports <a href="https://developer.ebay.com/DevZone/guides/features-guide/default.html#development/Listing-AnItem.html#CombinedInvoice">Combined Invoice</a>
  *  orders, and if so, defines whether the seller specifies any shipping discount before or after purchase.
  *  <br/><br/>
  *  <span class="tablenote"><b>Note:</b> In the past, this type was also used to indicate more settings related to Combined Invoice discounts, including the number of days that buyers have to combine line items into a Combined Invoice, and detailed information on Calculated and Flat-Rate shipping discount profiles. However, these settings are now set through the <b>SetShippingDiscountProfiles</b> call (or through Shipping Preferences in My eBay), and retrieved with the <b>GetShippingDiscountProfiles</b> call.

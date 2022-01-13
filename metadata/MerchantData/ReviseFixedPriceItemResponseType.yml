@@ -118,19 +118,3 @@ Nogrod\eBaySDK\MerchantData\ReviseFixedPriceItemResponseType:
                 entry_name: ProductSuggestion
                 skip_when_empty: true
                 namespace: 'urn:ebay:apis:eBLBaseComponents'
-        listingRecommendations:
-            expose: true
-            access_type: public_method
-            serialized_name: ListingRecommendations
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getListingRecommendations
-                setter: setListingRecommendations
-            type: array<Nogrod\eBaySDK\MerchantData\ListingRecommendationType>
-            xml_list:
-                inline: false
-                entry_name: Recommendation
-                skip_when_empty: true
-                namespace: 'urn:ebay:apis:eBLBaseComponents'

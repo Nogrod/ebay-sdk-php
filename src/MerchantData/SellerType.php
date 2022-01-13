@@ -181,12 +181,7 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
     private $charityRegistered = null;
 
     /**
-     * If this field is <code>true</code>, the user is currently exempt from the requirement to offer at least
-     *  one safe payment method (PayPal/PaisaPay or one of the credit cards specified
-     *  in <b>Item.PaymentMethods</b>) when listing items. This value should only return <code>true</code>
-     *  for sellers who registered before January 17, 2007. Otherwise, it should
-     *  return <code>false</code>. This setting overrides both the site and category values for
-     *  <b>SafePaymentRequired</b>.
+     * If this field is <code>true</code>, the user is exempt from the requirement to offer at least one safe payment method when listing items. This setting overrides both the site and category values for <b>SafePaymentRequired</b>.
      *
      * @var bool $safePaymentExempt
      */
@@ -215,10 +210,7 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
     private $transactionPercent = null;
 
     /**
-     * <span class="tablenote"><b>Note: </b>
-     *  As of May 1, 2019, eBay no longer support electronic payments through Integrated Merchant Credit Card accounts. To accept online credit card payments from buyers, a seller must use specify PayPal as an accepted payment method, or opt in to eBay Managed Payments program (if the program is available to that seller).
-     *  </span>
-     *  This container is returned if the seller has a payment gateway account on one or more eBay marketplaces.
+     * The container is no longer returned in <b>GetUser</b> response, as eBay sellers can no longer use iMCC gateway accounts to handle buyer payments.
      *
      * @var string[] $integratedMerchantCreditCardInfo
      */
@@ -272,14 +264,14 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
     private $recoupmentPolicyConsent = null;
 
     /**
-     * If true, the seller has configured a domestic shipping rate table on the DE, UK or US website.
+     * A returned value of <code>true</code> indicates that the seller has configured a default, domestic shipping rate table in their My eBay shipping preferences.
      *
      * @var bool $domesticRateTable
      */
     private $domesticRateTable = null;
 
     /**
-     * If true, the seller has configured an international shipping rate table on the US, UK or DE website.
+     * A returned value of <code>true</code> indicates that the seller has configured a default, international shipping rate table in their My eBay shipping preferences.
      *
      * @var bool $internationalRateTable
      */
@@ -878,12 +870,7 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
     /**
      * Gets as safePaymentExempt
      *
-     * If this field is <code>true</code>, the user is currently exempt from the requirement to offer at least
-     *  one safe payment method (PayPal/PaisaPay or one of the credit cards specified
-     *  in <b>Item.PaymentMethods</b>) when listing items. This value should only return <code>true</code>
-     *  for sellers who registered before January 17, 2007. Otherwise, it should
-     *  return <code>false</code>. This setting overrides both the site and category values for
-     *  <b>SafePaymentRequired</b>.
+     * If this field is <code>true</code>, the user is exempt from the requirement to offer at least one safe payment method when listing items. This setting overrides both the site and category values for <b>SafePaymentRequired</b>.
      *
      * @return bool
      */
@@ -895,12 +882,7 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
     /**
      * Sets a new safePaymentExempt
      *
-     * If this field is <code>true</code>, the user is currently exempt from the requirement to offer at least
-     *  one safe payment method (PayPal/PaisaPay or one of the credit cards specified
-     *  in <b>Item.PaymentMethods</b>) when listing items. This value should only return <code>true</code>
-     *  for sellers who registered before January 17, 2007. Otherwise, it should
-     *  return <code>false</code>. This setting overrides both the site and category values for
-     *  <b>SafePaymentRequired</b>.
+     * If this field is <code>true</code>, the user is exempt from the requirement to offer at least one safe payment method when listing items. This setting overrides both the site and category values for <b>SafePaymentRequired</b>.
      *
      * @param bool $safePaymentExempt
      * @return self
@@ -1034,10 +1016,7 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
     /**
      * Adds as supportedSite
      *
-     * <span class="tablenote"><b>Note: </b>
-     *  As of May 1, 2019, eBay no longer support electronic payments through Integrated Merchant Credit Card accounts. To accept online credit card payments from buyers, a seller must use specify PayPal as an accepted payment method, or opt in to eBay Managed Payments program (if the program is available to that seller).
-     *  </span>
-     *  This container is returned if the seller has a payment gateway account on one or more eBay marketplaces.
+     * The container is no longer returned in <b>GetUser</b> response, as eBay sellers can no longer use iMCC gateway accounts to handle buyer payments.
      *
      * @return self
      * @param string $supportedSite
@@ -1051,10 +1030,7 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
     /**
      * isset integratedMerchantCreditCardInfo
      *
-     * <span class="tablenote"><b>Note: </b>
-     *  As of May 1, 2019, eBay no longer support electronic payments through Integrated Merchant Credit Card accounts. To accept online credit card payments from buyers, a seller must use specify PayPal as an accepted payment method, or opt in to eBay Managed Payments program (if the program is available to that seller).
-     *  </span>
-     *  This container is returned if the seller has a payment gateway account on one or more eBay marketplaces.
+     * The container is no longer returned in <b>GetUser</b> response, as eBay sellers can no longer use iMCC gateway accounts to handle buyer payments.
      *
      * @param int|string $index
      * @return bool
@@ -1067,10 +1043,7 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
     /**
      * unset integratedMerchantCreditCardInfo
      *
-     * <span class="tablenote"><b>Note: </b>
-     *  As of May 1, 2019, eBay no longer support electronic payments through Integrated Merchant Credit Card accounts. To accept online credit card payments from buyers, a seller must use specify PayPal as an accepted payment method, or opt in to eBay Managed Payments program (if the program is available to that seller).
-     *  </span>
-     *  This container is returned if the seller has a payment gateway account on one or more eBay marketplaces.
+     * The container is no longer returned in <b>GetUser</b> response, as eBay sellers can no longer use iMCC gateway accounts to handle buyer payments.
      *
      * @param int|string $index
      * @return void
@@ -1083,10 +1056,7 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
     /**
      * Gets as integratedMerchantCreditCardInfo
      *
-     * <span class="tablenote"><b>Note: </b>
-     *  As of May 1, 2019, eBay no longer support electronic payments through Integrated Merchant Credit Card accounts. To accept online credit card payments from buyers, a seller must use specify PayPal as an accepted payment method, or opt in to eBay Managed Payments program (if the program is available to that seller).
-     *  </span>
-     *  This container is returned if the seller has a payment gateway account on one or more eBay marketplaces.
+     * The container is no longer returned in <b>GetUser</b> response, as eBay sellers can no longer use iMCC gateway accounts to handle buyer payments.
      *
      * @return string[]
      */
@@ -1098,10 +1068,7 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
     /**
      * Sets a new integratedMerchantCreditCardInfo
      *
-     * <span class="tablenote"><b>Note: </b>
-     *  As of May 1, 2019, eBay no longer support electronic payments through Integrated Merchant Credit Card accounts. To accept online credit card payments from buyers, a seller must use specify PayPal as an accepted payment method, or opt in to eBay Managed Payments program (if the program is available to that seller).
-     *  </span>
-     *  This container is returned if the seller has a payment gateway account on one or more eBay marketplaces.
+     * The container is no longer returned in <b>GetUser</b> response, as eBay sellers can no longer use iMCC gateway accounts to handle buyer payments.
      *
      * @param string $integratedMerchantCreditCardInfo
      * @return self
@@ -1349,7 +1316,7 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
     /**
      * Gets as domesticRateTable
      *
-     * If true, the seller has configured a domestic shipping rate table on the DE, UK or US website.
+     * A returned value of <code>true</code> indicates that the seller has configured a default, domestic shipping rate table in their My eBay shipping preferences.
      *
      * @return bool
      */
@@ -1361,7 +1328,7 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
     /**
      * Sets a new domesticRateTable
      *
-     * If true, the seller has configured a domestic shipping rate table on the DE, UK or US website.
+     * A returned value of <code>true</code> indicates that the seller has configured a default, domestic shipping rate table in their My eBay shipping preferences.
      *
      * @param bool $domesticRateTable
      * @return self
@@ -1375,7 +1342,7 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
     /**
      * Gets as internationalRateTable
      *
-     * If true, the seller has configured an international shipping rate table on the US, UK or DE website.
+     * A returned value of <code>true</code> indicates that the seller has configured a default, international shipping rate table in their My eBay shipping preferences.
      *
      * @return bool
      */
@@ -1387,7 +1354,7 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
     /**
      * Sets a new internationalRateTable
      *
-     * If true, the seller has configured an international shipping rate table on the US, UK or DE website.
+     * A returned value of <code>true</code> indicates that the seller has configured a default, international shipping rate table in their My eBay shipping preferences.
      *
      * @param bool $internationalRateTable
      * @return self

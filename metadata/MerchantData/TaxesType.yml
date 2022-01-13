@@ -5,6 +5,17 @@ Nogrod\eBaySDK\MerchantData\TaxesType:
             serialized_name: xmlns
             xml_attribute: true
     properties:
+        eBayReference:
+            expose: true
+            access_type: public_method
+            serialized_name: eBayReference
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getEBayReference
+                setter: setEBayReference
+            type: Nogrod\eBaySDK\MerchantData\EBayTaxReferenceValueType
         totalTaxAmount:
             expose: true
             access_type: public_method

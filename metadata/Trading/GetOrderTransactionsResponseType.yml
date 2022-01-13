@@ -15,9 +15,4 @@ Nogrod\eBaySDK\Trading\GetOrderTransactionsResponseType:
             accessor:
                 getter: getOrderArray
                 setter: setOrderArray
-            type: array<Nogrod\eBaySDK\Trading\OrderType>
-            xml_list:
-                inline: false
-                entry_name: Order
-                skip_when_empty: true
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: Nogrod\eBaySDK\Trading\OrderArrayType

@@ -572,6 +572,11 @@ class FeatureIDCodeType
      * eBay site and individual categories are enabled with PayPal Purchase Protection.
      * Of course, an eligible item must be purchased with PayPal to be eligible for
      * PayPal Purchase Protection.
+     *  <br><br>
+     *  <span class="tablenote"><b>Note: </b>
+     *  PayPal Buyer Protection is not applicable if the seller is onboarded for
+     * managed payments.
+     *  </span>
      */
     public const VAL_PAY_PAL_BUYER_PROTECTION_ENABLED = 'PayPalBuyerProtectionEnabled';
 
@@ -624,7 +629,12 @@ class FeatureIDCodeType
      * <b>Category.PayPalRequired</b> boolean fields in the <b>GetCategoryFeatures</b>
      * response will indicate whether or not the specified eBay site and individual
      * categories require PayPal as one of the accepted payment methods in a listing.
-     * This value is not applicable in countries where PayPal is not available.
+     *  <br><br>
+     *  <span class="tablenote"><b>Note: </b>
+     *  PayPal or any electronic payment methods are never required for managed
+     * payments sellers, so this filter value is not applicable for sellers onboarded
+     * for managed payments.
+     *  </span>
      */
     public const VAL_PAY_PAL_REQUIRED = 'PayPalRequired';
 
@@ -1520,7 +1530,7 @@ class FeatureIDCodeType
      *  For more information on using an ePID to identify a compatible motorcycle or
      * scooter through an Add/Revise/Relist API call on the Germany or UK site, see the
      * documentation for the <a href="
-     *  http://developer.ebay.com/Devzone/XML/docs/Reference/eBay/AddItem.html#Request.Item.ItemCompatibilityList.Compatibility.NameValueList">Compatibility.NameValueList</a>
+     *  https://developer.ebay.com/Devzone/XML/docs/Reference/eBay/AddItem.html#Request.Item.ItemCompatibilityList.Compatibility.NameValueList">Compatibility.NameValueList</a>
      * container.
      */
     public const VAL_EPID_SUPPORTED = 'EpidSupported';
@@ -1536,7 +1546,7 @@ class FeatureIDCodeType
      *  For more information on using a K Type vehicle number to identify a compatible
      * car or truck through an Add/Revise/Relist API call on the Germany site, see the
      * documentation for the <a href="
-     *  http://developer.ebay.com/Devzone/XML/docs/Reference/eBay/AddItem.html#Request.Item.ItemCompatibilityList.Compatibility.NameValueList">Compatibility.NameValueList</a>
+     *  https://developer.ebay.com/Devzone/XML/docs/Reference/eBay/AddItem.html#Request.Item.ItemCompatibilityList.Compatibility.NameValueList">Compatibility.NameValueList</a>
      * container.
      */
     public const VAL_KTYPE_SUPPORTED = 'KTypeSupported';

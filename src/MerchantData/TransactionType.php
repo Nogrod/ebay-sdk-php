@@ -27,11 +27,7 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      *  order line items belong to the same 'Combined Invoice' order by checking
      *  to see if the <b>ContainingOrder.OrderID</b> value is the same.
      *  <br><br>
-     *  <span class="tablenote"><b>Note: </b> As of November 2019, for orders subject to eBay 'Collect and Remit' taxes, PayPal has begun distributing order funds to the seller's account with the sales tax included. eBay 'Collect and Remit' tax includes US sales tax for numerous states, and 'Good and Services' tax that is applicable to Australian and New Zealand sellers. This 'Collect and Remit' tax amount for the order will be included in the <b>AmountPaid</b> value. To determine if 'Collect and Remit' taxes were added into <b>AmountPaid</b> value, the user can check for the <b>Transaction.eBayCollectAndRemitTaxes.TaxDetails</b> and the <b>Transaction.Taxes.TaxDetails</b> containers in the response. If both of these containers appear in the response with a <b>TaxDetails.TaxDescription</b> value of <code>SalesTax</code> (in US) or <code>GST</code> (in Australia or New Zealand), the tax amount that the buyer paid is in this amount.
-     *  <br><br>
-     *  Sellers should be aware that the sales tax that the buyer pays for the order will initially be included when the order funds are distributed to their PayPal account, but that PayPal will pull out the sales tax amount shortly after the payment clears, and will distribute the sales tax to the appropriate taxing authority. Previous to this change, PayPal would strip out the 'Collect and Remit' tax before distributing order funds to the seller's account.
-     *  <br><br>
-     *  This logic change does not apply to sellers who are in eBay managed payments, so the amount in this field will never reflect any 'Collect and Remit' tax, even if the order is subject to 'Collect and Remit' tax.
+     *  <span class="tablenote"><b>Note: </b> For non-managed payments orders subject to eBay 'Collect and Remit' taxes, keep in mind that PayPal distributes order funds to the seller's PayPal account with the tax included, but this amount will be backed out of the seller's PayPal account shortly after the buyer's payment clears and will be distributed to the appropriate taxing authority. eBay 'Collect and Remit' tax includes US sales tax for a majority of US states, and 'Good and Services' tax that is applicable to Australian and New Zealand sellers. This 'Collect and Remit' tax amount for the order will be included in the <b>AmountPaid</b> value. To determine if 'Collect and Remit' taxes were added into <b>AmountPaid</b> value, the user can check for the <b>Transaction.eBayCollectAndRemitTaxes.TaxDetails</b> and the <b>Transaction.Taxes.TaxDetails</b> containers in the response. If both of these containers appear in the response with a <b>TaxDetails.TaxDescription</b> value of <code>SalesTax</code> (in US) or <code>GST</code> (in Australia or New Zealand), the tax amount that the buyer paid is in this amount.
      *  </span>
      *
      * @var \Nogrod\eBaySDK\MerchantData\AmountType $amountPaid
@@ -81,11 +77,7 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      *  <br><br>
      *  This field is always returned for paid orders. This value should be the same as the value in <b>AmountPaid</b> if the eBay listing site and the site that returned the response are the same, or use the same currency.
      *  <br><br>
-     *  <span class="tablenote"><b>Note: </b> As of November 2019, for orders subject to eBay 'Collect and Remit' taxes, PayPal has begun distributing order funds to the seller's account with the sales tax included. eBay 'Collect and Remit' tax includes US sales tax for numerous states, and 'Good and Services' tax that is applicable to Australian and New Zealand sellers. This 'Collect and Remit' tax amount for the order will be included in the <b>ConvertedAmountPaid</b> value. To determine if 'Collect and Remit' taxes were added into <b>ConvertedAmountPaid</b> value, the user can check for the <b>Transaction.eBayCollectAndRemitTaxes.TaxDetails</b> and the <b>Transaction.Taxes.TaxDetails</b> containers in the response. If both of these containers appear in the response with a <b>TaxDetails.TaxDescription</b> value of <code>SalesTax</code> (in US) or <code>GST</code> (in Australia or New Zealand), the tax amount that the buyer paid is in this amount.
-     *  <br><br>
-     *  Sellers should be aware that the sales tax that the buyer pays for the order will initially be included when the order funds are distributed to their PayPal account, but that PayPal will pull out the sales tax amount shortly after the payment clears, and will distribute the sales tax to the appropriate taxing authority. Previous to this change, PayPal would strip out the 'Collect and Remit' tax before distributing order funds to the seller's account.
-     *  <br><br>
-     *  This logic change does not apply to sellers who are in eBay managed payments, so the amount in this field will never reflect any 'Collect and Remit' tax, even if the order is subject to 'Collect and Remit' tax.
+     *  <span class="tablenote"><b>Note: </b> For non-managed payments orders subject to eBay 'Collect and Remit' taxes, keep in mind that PayPal distributes order funds to the seller's PayPal account with the tax included, but this amount will be backed out of the seller's PayPal account shortly after the buyer's payment clears and will be distributed to the appropriate taxing authority. eBay 'Collect and Remit' tax includes US sales tax for a majority of US states, and 'Good and Services' tax that is applicable to Australian and New Zealand sellers. This 'Collect and Remit' tax amount for the order will be included in the <b>ConvertedAmountPaid</b> value. To determine if 'Collect and Remit' taxes were added into <b>AmountPaid</b> value, the user can check for the <b>Transaction.eBayCollectAndRemitTaxes.TaxDetails</b> and the <b>Transaction.Taxes.TaxDetails</b> containers in the response. If both of these containers appear in the response with a <b>TaxDetails.TaxDescription</b> value of <code>SalesTax</code> (in US) or <code>GST</code> (in Australia or New Zealand), the tax amount that the buyer paid is in this amount.
      *  </span>
      *
      * @var \Nogrod\eBaySDK\MerchantData\AmountType $convertedAmountPaid
@@ -249,7 +241,7 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      *  <ul>
      *  <li>Automatically when a payment is made through eBay's system</li>
      *  <li>Seller marks the item as paid in My eBay or through Selling Manager Pro </li>
-     *  <li>Programmatically by the seller through the <b>ReviseCheckoutStatus</b> or <b>CompleteSale</b> calls.</li>
+     *  <li>Programmatically by the seller through the <b>CompleteSale</b> call.</li>
      *  </ul>
      *
      * @var \DateTime $paidTime
@@ -257,10 +249,10 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     private $paidTime = null;
 
     /**
-     * Indicates the time when the line item was marked as 'Shipped'. This value will only be visible to the user on either side of the order. An order can be marked as 'Shipped' by purchasing an eBay shipping label, providing shipment tracking in My eBay or through Selling Manager Pro, or programmatically by the seller through the <b>ReviseCheckoutStatus</b> or <b>CompleteSale</b> call.
+     * Indicates the time when the line item was marked as 'Shipped'. This value will only be visible to the user on either side of the order. An order can be marked as 'Shipped' by purchasing an eBay shipping label, providing shipment tracking in My eBay or through Selling Manager Pro, or programmatically by the seller through the <b>CompleteSale</b> call.
      *  <br><br>
      *  <span class="tablenote"><b>Note:</b>
-     *  This field does not appear in Merchant Data API's <b>OrderReport</b> or <b>SoldReport</b> responses, because once shipment tracking information is provided to the buyer (or marked as shipped), the order/order line item is considered acknowledged, and acknowledged orders do not show up in <b>OrderReport</b> or <b>SoldReport</b> responses.
+     *  This field does not appear in Merchant Data API's <b>OrderReport</b> responses, because once shipment tracking information is provided to the buyer (or marked as shipped), the order/order line item is considered acknowledged, and acknowledged orders do not show up in <b>OrderReport</b> responses.
      *  </span>
      *
      * @var \DateTime $shippedTime
@@ -373,7 +365,11 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
 
     /**
      * The seller's PayPal email address. This value is only revealed if it is the
-     *  seller making the call.
+     *  seller making the call. For others, this field may still get returned but its value will be <code>Invalid Request</code>.
+     *  <br/><br/>
+     *  <span class="tablenote">
+     *  <strong>Note:</strong> This field is not applicable to managed payments sellers. However, it may still get returned in the response but with a value of <code>Invalid Request</code>.
+     *  </span>
      *
      * @var string $payPalEmailAddress
      */
@@ -528,7 +524,7 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     /**
      * If <strong>IsMultilegShipping</strong> is <code>true</code>, the order line item will not be shipped directly to the buyer. Instead, the item may be shipped to eBay's Global Shipping Program (GSP) partner who will handle the international leg of shipment, or the item may be shipped to eBay's Authenticity Guarantee service partner if the item is subject to the Authenticity Guarantee service program. In both cases, the partner's shipping address can be found in the <strong>MultiLegShippingDetails.SellerShipmentToLogisticsProvider.ShipToAddress</strong> container.
      *  <br><br>
-     *  If an order line item is subject to the Authenticity Guarantee service, the <b>Transaction.Program<b> container will be returned.
+     *  If an order line item is subject to the Authenticity Guarantee service, the <b>Transaction.Program</b> container will be returned.
      *
      * @var bool $isMultiLegShipping
      */
@@ -748,11 +744,7 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      *  order line items belong to the same 'Combined Invoice' order by checking
      *  to see if the <b>ContainingOrder.OrderID</b> value is the same.
      *  <br><br>
-     *  <span class="tablenote"><b>Note: </b> As of November 2019, for orders subject to eBay 'Collect and Remit' taxes, PayPal has begun distributing order funds to the seller's account with the sales tax included. eBay 'Collect and Remit' tax includes US sales tax for numerous states, and 'Good and Services' tax that is applicable to Australian and New Zealand sellers. This 'Collect and Remit' tax amount for the order will be included in the <b>AmountPaid</b> value. To determine if 'Collect and Remit' taxes were added into <b>AmountPaid</b> value, the user can check for the <b>Transaction.eBayCollectAndRemitTaxes.TaxDetails</b> and the <b>Transaction.Taxes.TaxDetails</b> containers in the response. If both of these containers appear in the response with a <b>TaxDetails.TaxDescription</b> value of <code>SalesTax</code> (in US) or <code>GST</code> (in Australia or New Zealand), the tax amount that the buyer paid is in this amount.
-     *  <br><br>
-     *  Sellers should be aware that the sales tax that the buyer pays for the order will initially be included when the order funds are distributed to their PayPal account, but that PayPal will pull out the sales tax amount shortly after the payment clears, and will distribute the sales tax to the appropriate taxing authority. Previous to this change, PayPal would strip out the 'Collect and Remit' tax before distributing order funds to the seller's account.
-     *  <br><br>
-     *  This logic change does not apply to sellers who are in eBay managed payments, so the amount in this field will never reflect any 'Collect and Remit' tax, even if the order is subject to 'Collect and Remit' tax.
+     *  <span class="tablenote"><b>Note: </b> For non-managed payments orders subject to eBay 'Collect and Remit' taxes, keep in mind that PayPal distributes order funds to the seller's PayPal account with the tax included, but this amount will be backed out of the seller's PayPal account shortly after the buyer's payment clears and will be distributed to the appropriate taxing authority. eBay 'Collect and Remit' tax includes US sales tax for a majority of US states, and 'Good and Services' tax that is applicable to Australian and New Zealand sellers. This 'Collect and Remit' tax amount for the order will be included in the <b>AmountPaid</b> value. To determine if 'Collect and Remit' taxes were added into <b>AmountPaid</b> value, the user can check for the <b>Transaction.eBayCollectAndRemitTaxes.TaxDetails</b> and the <b>Transaction.Taxes.TaxDetails</b> containers in the response. If both of these containers appear in the response with a <b>TaxDetails.TaxDescription</b> value of <code>SalesTax</code> (in US) or <code>GST</code> (in Australia or New Zealand), the tax amount that the buyer paid is in this amount.
      *  </span>
      *
      * @return \Nogrod\eBaySDK\MerchantData\AmountType
@@ -778,11 +770,7 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      *  order line items belong to the same 'Combined Invoice' order by checking
      *  to see if the <b>ContainingOrder.OrderID</b> value is the same.
      *  <br><br>
-     *  <span class="tablenote"><b>Note: </b> As of November 2019, for orders subject to eBay 'Collect and Remit' taxes, PayPal has begun distributing order funds to the seller's account with the sales tax included. eBay 'Collect and Remit' tax includes US sales tax for numerous states, and 'Good and Services' tax that is applicable to Australian and New Zealand sellers. This 'Collect and Remit' tax amount for the order will be included in the <b>AmountPaid</b> value. To determine if 'Collect and Remit' taxes were added into <b>AmountPaid</b> value, the user can check for the <b>Transaction.eBayCollectAndRemitTaxes.TaxDetails</b> and the <b>Transaction.Taxes.TaxDetails</b> containers in the response. If both of these containers appear in the response with a <b>TaxDetails.TaxDescription</b> value of <code>SalesTax</code> (in US) or <code>GST</code> (in Australia or New Zealand), the tax amount that the buyer paid is in this amount.
-     *  <br><br>
-     *  Sellers should be aware that the sales tax that the buyer pays for the order will initially be included when the order funds are distributed to their PayPal account, but that PayPal will pull out the sales tax amount shortly after the payment clears, and will distribute the sales tax to the appropriate taxing authority. Previous to this change, PayPal would strip out the 'Collect and Remit' tax before distributing order funds to the seller's account.
-     *  <br><br>
-     *  This logic change does not apply to sellers who are in eBay managed payments, so the amount in this field will never reflect any 'Collect and Remit' tax, even if the order is subject to 'Collect and Remit' tax.
+     *  <span class="tablenote"><b>Note: </b> For non-managed payments orders subject to eBay 'Collect and Remit' taxes, keep in mind that PayPal distributes order funds to the seller's PayPal account with the tax included, but this amount will be backed out of the seller's PayPal account shortly after the buyer's payment clears and will be distributed to the appropriate taxing authority. eBay 'Collect and Remit' tax includes US sales tax for a majority of US states, and 'Good and Services' tax that is applicable to Australian and New Zealand sellers. This 'Collect and Remit' tax amount for the order will be included in the <b>AmountPaid</b> value. To determine if 'Collect and Remit' taxes were added into <b>AmountPaid</b> value, the user can check for the <b>Transaction.eBayCollectAndRemitTaxes.TaxDetails</b> and the <b>Transaction.Taxes.TaxDetails</b> containers in the response. If both of these containers appear in the response with a <b>TaxDetails.TaxDescription</b> value of <code>SalesTax</code> (in US) or <code>GST</code> (in Australia or New Zealand), the tax amount that the buyer paid is in this amount.
      *  </span>
      *
      * @param \Nogrod\eBaySDK\MerchantData\AmountType $amountPaid
@@ -925,11 +913,7 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      *  <br><br>
      *  This field is always returned for paid orders. This value should be the same as the value in <b>AmountPaid</b> if the eBay listing site and the site that returned the response are the same, or use the same currency.
      *  <br><br>
-     *  <span class="tablenote"><b>Note: </b> As of November 2019, for orders subject to eBay 'Collect and Remit' taxes, PayPal has begun distributing order funds to the seller's account with the sales tax included. eBay 'Collect and Remit' tax includes US sales tax for numerous states, and 'Good and Services' tax that is applicable to Australian and New Zealand sellers. This 'Collect and Remit' tax amount for the order will be included in the <b>ConvertedAmountPaid</b> value. To determine if 'Collect and Remit' taxes were added into <b>ConvertedAmountPaid</b> value, the user can check for the <b>Transaction.eBayCollectAndRemitTaxes.TaxDetails</b> and the <b>Transaction.Taxes.TaxDetails</b> containers in the response. If both of these containers appear in the response with a <b>TaxDetails.TaxDescription</b> value of <code>SalesTax</code> (in US) or <code>GST</code> (in Australia or New Zealand), the tax amount that the buyer paid is in this amount.
-     *  <br><br>
-     *  Sellers should be aware that the sales tax that the buyer pays for the order will initially be included when the order funds are distributed to their PayPal account, but that PayPal will pull out the sales tax amount shortly after the payment clears, and will distribute the sales tax to the appropriate taxing authority. Previous to this change, PayPal would strip out the 'Collect and Remit' tax before distributing order funds to the seller's account.
-     *  <br><br>
-     *  This logic change does not apply to sellers who are in eBay managed payments, so the amount in this field will never reflect any 'Collect and Remit' tax, even if the order is subject to 'Collect and Remit' tax.
+     *  <span class="tablenote"><b>Note: </b> For non-managed payments orders subject to eBay 'Collect and Remit' taxes, keep in mind that PayPal distributes order funds to the seller's PayPal account with the tax included, but this amount will be backed out of the seller's PayPal account shortly after the buyer's payment clears and will be distributed to the appropriate taxing authority. eBay 'Collect and Remit' tax includes US sales tax for a majority of US states, and 'Good and Services' tax that is applicable to Australian and New Zealand sellers. This 'Collect and Remit' tax amount for the order will be included in the <b>ConvertedAmountPaid</b> value. To determine if 'Collect and Remit' taxes were added into <b>AmountPaid</b> value, the user can check for the <b>Transaction.eBayCollectAndRemitTaxes.TaxDetails</b> and the <b>Transaction.Taxes.TaxDetails</b> containers in the response. If both of these containers appear in the response with a <b>TaxDetails.TaxDescription</b> value of <code>SalesTax</code> (in US) or <code>GST</code> (in Australia or New Zealand), the tax amount that the buyer paid is in this amount.
      *  </span>
      *
      * @return \Nogrod\eBaySDK\MerchantData\AmountType
@@ -946,11 +930,7 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      *  <br><br>
      *  This field is always returned for paid orders. This value should be the same as the value in <b>AmountPaid</b> if the eBay listing site and the site that returned the response are the same, or use the same currency.
      *  <br><br>
-     *  <span class="tablenote"><b>Note: </b> As of November 2019, for orders subject to eBay 'Collect and Remit' taxes, PayPal has begun distributing order funds to the seller's account with the sales tax included. eBay 'Collect and Remit' tax includes US sales tax for numerous states, and 'Good and Services' tax that is applicable to Australian and New Zealand sellers. This 'Collect and Remit' tax amount for the order will be included in the <b>ConvertedAmountPaid</b> value. To determine if 'Collect and Remit' taxes were added into <b>ConvertedAmountPaid</b> value, the user can check for the <b>Transaction.eBayCollectAndRemitTaxes.TaxDetails</b> and the <b>Transaction.Taxes.TaxDetails</b> containers in the response. If both of these containers appear in the response with a <b>TaxDetails.TaxDescription</b> value of <code>SalesTax</code> (in US) or <code>GST</code> (in Australia or New Zealand), the tax amount that the buyer paid is in this amount.
-     *  <br><br>
-     *  Sellers should be aware that the sales tax that the buyer pays for the order will initially be included when the order funds are distributed to their PayPal account, but that PayPal will pull out the sales tax amount shortly after the payment clears, and will distribute the sales tax to the appropriate taxing authority. Previous to this change, PayPal would strip out the 'Collect and Remit' tax before distributing order funds to the seller's account.
-     *  <br><br>
-     *  This logic change does not apply to sellers who are in eBay managed payments, so the amount in this field will never reflect any 'Collect and Remit' tax, even if the order is subject to 'Collect and Remit' tax.
+     *  <span class="tablenote"><b>Note: </b> For non-managed payments orders subject to eBay 'Collect and Remit' taxes, keep in mind that PayPal distributes order funds to the seller's PayPal account with the tax included, but this amount will be backed out of the seller's PayPal account shortly after the buyer's payment clears and will be distributed to the appropriate taxing authority. eBay 'Collect and Remit' tax includes US sales tax for a majority of US states, and 'Good and Services' tax that is applicable to Australian and New Zealand sellers. This 'Collect and Remit' tax amount for the order will be included in the <b>ConvertedAmountPaid</b> value. To determine if 'Collect and Remit' taxes were added into <b>AmountPaid</b> value, the user can check for the <b>Transaction.eBayCollectAndRemitTaxes.TaxDetails</b> and the <b>Transaction.Taxes.TaxDetails</b> containers in the response. If both of these containers appear in the response with a <b>TaxDetails.TaxDescription</b> value of <code>SalesTax</code> (in US) or <code>GST</code> (in Australia or New Zealand), the tax amount that the buyer paid is in this amount.
      *  </span>
      *
      * @param \Nogrod\eBaySDK\MerchantData\AmountType $convertedAmountPaid
@@ -1529,7 +1509,7 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      *  <ul>
      *  <li>Automatically when a payment is made through eBay's system</li>
      *  <li>Seller marks the item as paid in My eBay or through Selling Manager Pro </li>
-     *  <li>Programmatically by the seller through the <b>ReviseCheckoutStatus</b> or <b>CompleteSale</b> calls.</li>
+     *  <li>Programmatically by the seller through the <b>CompleteSale</b> call.</li>
      *  </ul>
      *
      * @return \DateTime
@@ -1548,7 +1528,7 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      *  <ul>
      *  <li>Automatically when a payment is made through eBay's system</li>
      *  <li>Seller marks the item as paid in My eBay or through Selling Manager Pro </li>
-     *  <li>Programmatically by the seller through the <b>ReviseCheckoutStatus</b> or <b>CompleteSale</b> calls.</li>
+     *  <li>Programmatically by the seller through the <b>CompleteSale</b> call.</li>
      *  </ul>
      *
      * @param \DateTime $paidTime
@@ -1563,10 +1543,10 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     /**
      * Gets as shippedTime
      *
-     * Indicates the time when the line item was marked as 'Shipped'. This value will only be visible to the user on either side of the order. An order can be marked as 'Shipped' by purchasing an eBay shipping label, providing shipment tracking in My eBay or through Selling Manager Pro, or programmatically by the seller through the <b>ReviseCheckoutStatus</b> or <b>CompleteSale</b> call.
+     * Indicates the time when the line item was marked as 'Shipped'. This value will only be visible to the user on either side of the order. An order can be marked as 'Shipped' by purchasing an eBay shipping label, providing shipment tracking in My eBay or through Selling Manager Pro, or programmatically by the seller through the <b>CompleteSale</b> call.
      *  <br><br>
      *  <span class="tablenote"><b>Note:</b>
-     *  This field does not appear in Merchant Data API's <b>OrderReport</b> or <b>SoldReport</b> responses, because once shipment tracking information is provided to the buyer (or marked as shipped), the order/order line item is considered acknowledged, and acknowledged orders do not show up in <b>OrderReport</b> or <b>SoldReport</b> responses.
+     *  This field does not appear in Merchant Data API's <b>OrderReport</b> responses, because once shipment tracking information is provided to the buyer (or marked as shipped), the order/order line item is considered acknowledged, and acknowledged orders do not show up in <b>OrderReport</b> responses.
      *  </span>
      *
      * @return \DateTime
@@ -1579,10 +1559,10 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     /**
      * Sets a new shippedTime
      *
-     * Indicates the time when the line item was marked as 'Shipped'. This value will only be visible to the user on either side of the order. An order can be marked as 'Shipped' by purchasing an eBay shipping label, providing shipment tracking in My eBay or through Selling Manager Pro, or programmatically by the seller through the <b>ReviseCheckoutStatus</b> or <b>CompleteSale</b> call.
+     * Indicates the time when the line item was marked as 'Shipped'. This value will only be visible to the user on either side of the order. An order can be marked as 'Shipped' by purchasing an eBay shipping label, providing shipment tracking in My eBay or through Selling Manager Pro, or programmatically by the seller through the <b>CompleteSale</b> call.
      *  <br><br>
      *  <span class="tablenote"><b>Note:</b>
-     *  This field does not appear in Merchant Data API's <b>OrderReport</b> or <b>SoldReport</b> responses, because once shipment tracking information is provided to the buyer (or marked as shipped), the order/order line item is considered acknowledged, and acknowledged orders do not show up in <b>OrderReport</b> or <b>SoldReport</b> responses.
+     *  This field does not appear in Merchant Data API's <b>OrderReport</b> responses, because once shipment tracking information is provided to the buyer (or marked as shipped), the order/order line item is considered acknowledged, and acknowledged orders do not show up in <b>OrderReport</b> responses.
      *  </span>
      *
      * @param \DateTime $shippedTime
@@ -1981,7 +1961,11 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      * Gets as payPalEmailAddress
      *
      * The seller's PayPal email address. This value is only revealed if it is the
-     *  seller making the call.
+     *  seller making the call. For others, this field may still get returned but its value will be <code>Invalid Request</code>.
+     *  <br/><br/>
+     *  <span class="tablenote">
+     *  <strong>Note:</strong> This field is not applicable to managed payments sellers. However, it may still get returned in the response but with a value of <code>Invalid Request</code>.
+     *  </span>
      *
      * @return string
      */
@@ -1994,7 +1978,11 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      * Sets a new payPalEmailAddress
      *
      * The seller's PayPal email address. This value is only revealed if it is the
-     *  seller making the call.
+     *  seller making the call. For others, this field may still get returned but its value will be <code>Invalid Request</code>.
+     *  <br/><br/>
+     *  <span class="tablenote">
+     *  <strong>Note:</strong> This field is not applicable to managed payments sellers. However, it may still get returned in the response but with a value of <code>Invalid Request</code>.
+     *  </span>
      *
      * @param string $payPalEmailAddress
      * @return self
@@ -2494,7 +2482,7 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      *
      * If <strong>IsMultilegShipping</strong> is <code>true</code>, the order line item will not be shipped directly to the buyer. Instead, the item may be shipped to eBay's Global Shipping Program (GSP) partner who will handle the international leg of shipment, or the item may be shipped to eBay's Authenticity Guarantee service partner if the item is subject to the Authenticity Guarantee service program. In both cases, the partner's shipping address can be found in the <strong>MultiLegShippingDetails.SellerShipmentToLogisticsProvider.ShipToAddress</strong> container.
      *  <br><br>
-     *  If an order line item is subject to the Authenticity Guarantee service, the <b>Transaction.Program<b> container will be returned.
+     *  If an order line item is subject to the Authenticity Guarantee service, the <b>Transaction.Program</b> container will be returned.
      *
      * @return bool
      */
@@ -2508,7 +2496,7 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      *
      * If <strong>IsMultilegShipping</strong> is <code>true</code>, the order line item will not be shipped directly to the buyer. Instead, the item may be shipped to eBay's Global Shipping Program (GSP) partner who will handle the international leg of shipment, or the item may be shipped to eBay's Authenticity Guarantee service partner if the item is subject to the Authenticity Guarantee service program. In both cases, the partner's shipping address can be found in the <strong>MultiLegShippingDetails.SellerShipmentToLogisticsProvider.ShipToAddress</strong> container.
      *  <br><br>
-     *  If an order line item is subject to the Authenticity Guarantee service, the <b>Transaction.Program<b> container will be returned.
+     *  If an order line item is subject to the Authenticity Guarantee service, the <b>Transaction.Program</b> container will be returned.
      *
      * @param bool $isMultiLegShipping
      * @return self

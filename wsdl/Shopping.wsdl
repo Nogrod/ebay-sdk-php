@@ -8,7 +8,7 @@
 	xmlns="urn:ebay:apis:eBLBaseComponents"
 	targetNamespace="urn:ebay:apis:eBLBaseComponents">
 	<wsdl:types>
-<!-- Version 1173 -->
+<!-- Version 1199 -->
 <!-- (c) 2021 eBay, Inc. All rights reserved -->
 		<xs:schema targetNamespace="urn:ebay:apis:eBLBaseComponents"  
 		xmlns:ns="urn:ebay:apis:eBLBaseComponents" 
@@ -75,7 +75,7 @@
 				<xs:annotation>
 					<xs:documentation>
 						This value represents the date and time when eBay processed the
-						request. The time zone of this value is &lt;a href="http://developer.ebay.com/DevZone/shopping/docs/CallRef/types/simpleTypes.html#dateTime"&gt;GMT&lt;/a&gt;
+						request. The time zone of this value is &lt;a href="https://developer.ebay.com/DevZone/shopping/docs/CallRef/types/simpleTypes.html#dateTime"&gt;GMT&lt;/a&gt;
 						and the format is the
 						ISO 8601 date and time format (YYYY-MM-DDTHH:MM:SS.SSSZ).
 						See the "dateTime" type for information about this
@@ -165,7 +165,7 @@
 						</CallInfo>
 						<SeeLink>
 							<Title>Schema Versioning Strategy</Title>
-							<URL>http://developer.ebay.com/DevZone/XML/docs/HowTo/eBayWS/eBaySchemaVersioning.html</URL>
+							<URL>https://developer.ebay.com/DevZone/XML/docs/HowTo/eBayWS/eBaySchemaVersioning.html</URL>
 						</SeeLink>
 					</xs:appinfo>
 				</xs:annotation>
@@ -2842,7 +2842,7 @@
 				<xs:annotation>
 					<xs:documentation>
 						Placeholder value. See
-						&lt;a href="http://developer.ebay.com/DevZone/shopping/docs/CallRef/types/simpleTypes.html#token"&gt;token&lt;/a&gt;.
+						&lt;a href="https://developer.ebay.com/DevZone/shopping/docs/CallRef/types/simpleTypes.html#token"&gt;token&lt;/a&gt;.
 					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
@@ -4114,7 +4114,7 @@
 					Total number of listings on the requested eBay site that use
 					stock information from this catalog product. This value can be greater
 					than the number of listings returned in ItemArray. To retrieve more
-					listings, use the &lt;a href="http://www.developer.ebay.com/DevZone/finding/CallRef/index.html"&gt;Finding API&lt;/a&gt;.
+					listings, use the &lt;a href="https://developer.ebay.com/DevZone/finding/CallRef/index.html"&gt;Finding API&lt;/a&gt;.
 					Only returned when you search by ProductID (and you pass
 					Items or Details in IncludeSelector).
 					-->
@@ -6345,7 +6345,7 @@
 				<xs:annotation>
 					<xs:documentation>
 						Placeholder value. See
-						&lt;a href="http://developer.ebay.com/DevZone/shopping/docs/CallRef/types/simpleTypes.html#token"&gt;token&lt;/a&gt;.
+						&lt;a href="https://developer.ebay.com/DevZone/shopping/docs/CallRef/types/simpleTypes.html#token"&gt;token&lt;/a&gt;.
 					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
@@ -6385,7 +6385,7 @@
 						</CallInfo>
 						<SeeLink>
 							<Title>Displaying Discount Pricing Information to Buyers</Title>
-							<URL>http://developer.ebay.com/DevZone/guides/features-guide/Development/Items-Retrieving.html</URL>
+							<URL>https://developer.ebay.com/DevZone/guides/features-guide/Development/Items-Retrieving.html</URL>
 							<For>guidelines on displaying STP and MAP items</For>
 						</SeeLink>
 					</xs:appinfo>
@@ -6752,7 +6752,7 @@
 						The comment is returned as text in the language that the comment was originally left in. This comment will still be displayed even if a submitted Feedback entry is withdrawn.
 					</xs:documentation>
 					<xs:appinfo>
-						<MaxLength>125 (but varies by eBay marketplace)</MaxLength>
+						<MaxLength>500</MaxLength>
 						<CallInfo>
 							<CallName>GetUserProfile</CallName>
 							<Details>IncludeSelector: FeedbackDetails</Details>
@@ -6799,7 +6799,7 @@
 						This free-form text is the comment that the recipient of the Feedback may leave in response or rebuttal to the Feedback. Responses to Feedback comments cannot be submitted or edited via the API. This field is returned as an empty tag if no response to the Feedback entry has been submitted.
 					</xs:documentation>
 					<xs:appinfo>
-						<MaxLength>125 (but varies by eBay marketplace)</MaxLength>
+						<MaxLength>500</MaxLength>
 						<CallInfo>
 							<CallName>GetUserProfile</CallName>
 							<Details>IncludeSelector: FeedbackDetails</Details>
@@ -6814,7 +6814,7 @@
 						This free-form text is the explanation that a user can give to a submitted Feedback response. Follow-ups to Feedback comments cannot be submitted or edited via the API. This field is returned as an empty tag if no Follow-Up to the Feedback response has been submitted.
 					</xs:documentation>
 					<xs:appinfo>
-						<MaxLength>125 (but varies by eBay marketplace)</MaxLength>
+						<MaxLength>500</MaxLength>
 						<CallInfo>
 							<CallName>GetUserProfile</CallName>
 							<Details>IncludeSelector: FeedbackDetails</Details>
@@ -7229,529 +7229,6 @@
 	</xs:simpleType>
 <!--
 
-##### from file ../Shopping/xsd/FindHalfProductsRequest.xsd #####
-
--->
-		<xs:element name="FindHalfProductsRequest" type="ns:FindHalfProductsRequestType"/>
-<xs:complexType name="FindHalfProductsRequestType">
-		<xs:annotation>
-			<xs:documentation>
-				&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; The &lt;b&gt;FindHalfProducts&lt;/b&gt; call is deprecated.
-				&lt;/span&gt;
-			</xs:documentation>
-			<xs:appinfo>
-				<Summary>
-					Searches Half.com for stock product information (stock description
-					and Item Specifics), such as information about a particular
-					kind of DVD or book. Also, retrieves up to 30 Half.com listings associated
-					with a product.
-				</Summary>
-			</xs:appinfo>
-		</xs:annotation>
-		<xs:complexContent>
-			<xs:extension base="ns:AbstractRequestType">
-				<xs:sequence>
-					<xs:element name="IncludeSelector" type="xs:string" minOccurs="0">
-						<xs:annotation>
-							<xs:documentation>
-								&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;FindHalfProductsRequestType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindHalfProducts&lt;/b&gt; call.
-								&lt;/span&gt;
-							</xs:documentation>
-							<xs:appinfo>
-								<NoCalls/>
-								<DeprecationVersion>1027</DeprecationVersion>
-								<DeprecationDetails>NoOp</DeprecationDetails>
-								<EndOfLifeVersion>1033</EndOfLifeVersion>
-								<UseInstead/>
-							</xs:appinfo>
-						</xs:annotation>
-					</xs:element>
-					<xs:element name="AvailableItemsOnly" type="xs:boolean" minOccurs="0">
-						<xs:annotation>
-							<xs:documentation>
-								&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;FindHalfProductsRequestType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindHalfProducts&lt;/b&gt; call.
-								&lt;/span&gt;
-							</xs:documentation>
-							<xs:appinfo>
-								<NoCalls/>
-								<DeprecationVersion>1027</DeprecationVersion>
-								<DeprecationDetails>NoOp</DeprecationDetails>
-								<EndOfLifeVersion>1033</EndOfLifeVersion>
-								<UseInstead/>
-							</xs:appinfo>
-						</xs:annotation>
-					</xs:element>
-					<xs:element name="DomainName" type="xs:string" minOccurs="0" maxOccurs="unbounded">
-						<xs:annotation>
-							<xs:documentation>
-								&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;FindHalfProductsRequestType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindHalfProducts&lt;/b&gt; call.
-								&lt;/span&gt;
-							</xs:documentation>
-							<xs:appinfo>
-								<NoCalls/>
-								<DeprecationVersion>1027</DeprecationVersion>
-								<DeprecationDetails>NoOp</DeprecationDetails>
-								<EndOfLifeVersion>1033</EndOfLifeVersion>
-								<UseInstead/>
-							</xs:appinfo>
-						</xs:annotation>
-					</xs:element>
-					<xs:element name="ProductID" type="ns:ProductIDType" minOccurs="0">
-						<xs:annotation>
-							<xs:documentation>
-								&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;FindHalfProductsRequestType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindHalfProducts&lt;/b&gt; call.
-								&lt;/span&gt;
-							</xs:documentation>
-							<xs:appinfo>
-								<NoCalls/>
-								<DeprecationVersion>1027</DeprecationVersion>
-								<DeprecationDetails>NoOp</DeprecationDetails>
-								<EndOfLifeVersion>1033</EndOfLifeVersion>
-								<UseInstead/>
-							</xs:appinfo>
-						</xs:annotation>
-					</xs:element>
-					<xs:element name="QueryKeywords" type="xs:string" minOccurs="0">
-						<xs:annotation>
-							<xs:documentation>
-								&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;FindHalfProductsRequestType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindHalfProducts&lt;/b&gt; call.
-								&lt;/span&gt;
-								</xs:documentation>
-							<xs:appinfo>
-								<NoCalls/>
-								<DeprecationVersion>1027</DeprecationVersion>
-								<DeprecationDetails>NoOp</DeprecationDetails>
-								<EndOfLifeVersion>1033</EndOfLifeVersion>
-								<UseInstead/>
-							</xs:appinfo>
-						</xs:annotation>
-					</xs:element>
-					<xs:element name="SellerID" type="xs:string" minOccurs="0">
-						<xs:annotation>
-							<xs:documentation>
-								&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;FindHalfProductsRequestType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindHalfProducts&lt;/b&gt; call.
-								&lt;/span&gt;
-							</xs:documentation>
-							<xs:appinfo>
-								<NoCalls/>
-								<DeprecationVersion>1027</DeprecationVersion>
-								<DeprecationDetails>NoOp</DeprecationDetails>
-								<EndOfLifeVersion>1033</EndOfLifeVersion>
-								<UseInstead/>
-							</xs:appinfo>
-						</xs:annotation>
-					</xs:element>
-					<xs:element name="ProductSort" type="ns:ProductSortCodeType" minOccurs="0">
-						<xs:annotation>
-							<xs:documentation>
-								&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;FindHalfProductsRequestType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindHalfProducts&lt;/b&gt; call.
-								&lt;/span&gt;
-							</xs:documentation>
-							<xs:appinfo>
-								<NoCalls/>
-								<DeprecationVersion>1027</DeprecationVersion>
-								<DeprecationDetails>NoOp</DeprecationDetails>
-								<EndOfLifeVersion>1033</EndOfLifeVersion>
-								<UseInstead/>
-							</xs:appinfo>
-						</xs:annotation>
-					</xs:element>
-					<xs:element name="SortOrder" type="ns:SortOrderCodeType" minOccurs="0">
-						<xs:annotation>
-							<xs:documentation>
-								&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;FindHalfProductsRequestType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindHalfProducts&lt;/b&gt; call.
-								&lt;/span&gt;
-							</xs:documentation>
-							<xs:appinfo>
-								<NoCalls/>
-								<DeprecationVersion>1027</DeprecationVersion>
-								<DeprecationDetails>NoOp</DeprecationDetails>
-								<EndOfLifeVersion>1033</EndOfLifeVersion>
-								<UseInstead/>
-							</xs:appinfo>
-						</xs:annotation>
-					</xs:element>
-								<CallInfo>
-									<CallName>FindHalfProducts</CallName>
-									<RequiredInput>No</RequiredInput>
-								</CallInfo>
-					<xs:element name="MaxEntries" type="xs:int" minOccurs="0">
-						<xs:annotation>
-							<xs:documentation>
-								&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;FindHalfProductsRequestType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindHalfProducts&lt;/b&gt; call.
-								&lt;/span&gt;
-							</xs:documentation>
-							<xs:appinfo>
-								<NoCalls/>
-								<DeprecationVersion>1027</DeprecationVersion>
-								<DeprecationDetails>NoOp</DeprecationDetails>
-								<EndOfLifeVersion>1033</EndOfLifeVersion>
-								<UseInstead/>
-							</xs:appinfo>
-						</xs:annotation>
-					</xs:element>
-					<xs:element name="PageNumber" type="xs:int" minOccurs="0">
-						<xs:annotation>
-							<xs:documentation>
-								&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;FindHalfProductsRequestType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindHalfProducts&lt;/b&gt; call.
-								&lt;/span&gt;
-							</xs:documentation>
-							<xs:appinfo>
-								<NoCalls/>
-								<DeprecationVersion>1027</DeprecationVersion>
-								<DeprecationDetails>NoOp</DeprecationDetails>
-								<EndOfLifeVersion>1033</EndOfLifeVersion>
-								<UseInstead/>
-							</xs:appinfo>
-						</xs:annotation>
-					</xs:element>
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-<!--
-
-##### from file ../Shopping/xsd/FindHalfProductsResponse.xsd #####
-
--->
-		<xs:element name="FindHalfProductsResponse" type="ns:FindHalfProductsResponseType"/>
-<xs:complexType name="FindHalfProductsResponseType">
-		<xs:annotation>
-			<xs:documentation>
-				&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; The &lt;b&gt;FindHalfProducts&lt;/b&gt; call is deprecated.
-				&lt;/span&gt;
-			</xs:documentation>
-		</xs:annotation>
-		<xs:complexContent>
-			<xs:extension base="ns:AbstractResponseType">
-				<xs:sequence>
-					<xs:element name="DomainHistogram" type="ns:DomainHistogramType" minOccurs="0">
-						<xs:annotation>
-							<xs:documentation>
-								&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;FindHalfProductsResponseType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindHalfProducts&lt;/b&gt; call.
-								&lt;/span&gt;
-							</xs:documentation>
-							<xs:appinfo>
-								<NoCalls/>
-								<DeprecationVersion>1027</DeprecationVersion>
-								<DeprecationDetails>NoOp</DeprecationDetails>
-								<EndOfLifeVersion>1033</EndOfLifeVersion>
-								<UseInstead/>
-							</xs:appinfo>
-						</xs:annotation>
-					</xs:element>
-					<xs:element name="PageNumber" type="xs:int" minOccurs="0">
-						<xs:annotation>
-							<xs:documentation>
-								&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;FindHalfProductsResponseType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindHalfProducts&lt;/b&gt; call.
-								&lt;/span&gt;
-							</xs:documentation>
-							<xs:appinfo>
-								<NoCalls/>
-								<DeprecationVersion>1027</DeprecationVersion>
-								<DeprecationDetails>NoOp</DeprecationDetails>
-								<EndOfLifeVersion>1033</EndOfLifeVersion>
-								<UseInstead/>
-							</xs:appinfo>
-						</xs:annotation>
-					</xs:element>
-					<xs:element name="ApproximatePages" type="xs:int" minOccurs="0">
-						<xs:annotation>
-							<xs:documentation>
-								&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;FindHalfProductsResponseType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindHalfProducts&lt;/b&gt; call.
-								&lt;/span&gt;
-							</xs:documentation>
-							<xs:appinfo>
-								<NoCalls/>
-								<DeprecationVersion>1027</DeprecationVersion>
-								<DeprecationDetails>NoOp</DeprecationDetails>
-								<EndOfLifeVersion>1033</EndOfLifeVersion>
-								<UseInstead/>
-							</xs:appinfo>
-						</xs:annotation>
-					</xs:element>
-					<xs:element name="MoreResults" type="xs:boolean" minOccurs="0">
-						<xs:annotation>
-							<xs:documentation>
-								&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;FindHalfProductsResponseType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindHalfProducts&lt;/b&gt; call.
-								&lt;/span&gt;
-							</xs:documentation>
-							<xs:appinfo>
-								<NoCalls/>
-								<DeprecationVersion>1027</DeprecationVersion>
-								<DeprecationDetails>NoOp</DeprecationDetails>
-								<EndOfLifeVersion>1033</EndOfLifeVersion>
-								<UseInstead/>
-							</xs:appinfo>
-						</xs:annotation>
-					</xs:element>
-					<xs:element name="TotalProducts" type="xs:int" minOccurs="0">
-						<xs:annotation>
-							<xs:documentation>
-								&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;FindHalfProductsResponseType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindHalfProducts&lt;/b&gt; call.
-								&lt;/span&gt;
-							</xs:documentation>
-							<xs:appinfo>
-								<NoCalls/>
-								<DeprecationVersion>1027</DeprecationVersion>
-								<DeprecationDetails>NoOp</DeprecationDetails>
-								<EndOfLifeVersion>1033</EndOfLifeVersion>
-								<UseInstead/>
-							</xs:appinfo>
-						</xs:annotation>
-					</xs:element>
-					<xs:element name="Products" type="ns:HalfProductsType" minOccurs="0">
-						<xs:annotation>
-							<xs:documentation>
-								&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;FindHalfProductsResponseType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindHalfProducts&lt;/b&gt; call.
-								&lt;/span&gt;
-							</xs:documentation>
-							<xs:appinfo>
-								<NoCalls/>
-								<DeprecationVersion>1027</DeprecationVersion>
-								<DeprecationDetails>NoOp</DeprecationDetails>
-								<EndOfLifeVersion>1033</EndOfLifeVersion>
-								<UseInstead/>
-							</xs:appinfo>
-						</xs:annotation>
-					</xs:element>
-					<xs:element name="ProductSearchURL" type="xs:anyURI" minOccurs="0">
-						<xs:annotation>
-							<xs:documentation>
-								&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;FindHalfProductsResponseType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindHalfProducts&lt;/b&gt; call.
-								&lt;/span&gt;
-							</xs:documentation>
-							<xs:appinfo>
-								<NoCalls/>
-								<DeprecationVersion>1027</DeprecationVersion>
-								<DeprecationDetails>NoOp</DeprecationDetails>
-								<EndOfLifeVersion>1033</EndOfLifeVersion>
-								<UseInstead/>
-							</xs:appinfo>
-						</xs:annotation>
-					</xs:element>
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-<!--
-
-##### from file ../Shopping/xsd/FindPopularItemsRequest.xsd #####
-
--->
-		<xs:element name="FindPopularItemsRequest" type="ns:FindPopularItemsRequestType"/>
-<xs:complexType name="FindPopularItemsRequestType">
-		<xs:annotation>
-			<xs:documentation>
-					&lt;b&gt;This call is deprecated.&lt;/b&gt;
-			</xs:documentation>
-		</xs:annotation>
-		<xs:complexContent>
-			<xs:extension base="ns:AbstractRequestType">
-				<xs:sequence>
-					<xs:element name="CategoryID" type="xs:string" minOccurs="0" maxOccurs="unbounded">
-						<xs:annotation>
-							<xs:documentation>
-								This field is deprecated.
-							</xs:documentation>
-							<xs:appinfo>
-								<noCalls/>
-							</xs:appinfo>
-						</xs:annotation>
-					</xs:element>
-					<xs:element name="QueryKeywords" type="xs:string" minOccurs="0">
-						<xs:annotation>
-							<xs:documentation>
-								This field is deprecated.
-							</xs:documentation>
-							<xs:appinfo>
-								<noCalls/>
-							</xs:appinfo>
-						</xs:annotation>
-					</xs:element>
-					<xs:element name="CategoryIDExclude" type="xs:string" minOccurs="0" maxOccurs="unbounded">
-						<xs:annotation>
-							<xs:documentation>
-								This field is deprecated.
-							</xs:documentation>
-							<xs:appinfo>
-								<noCalls/>
-							</xs:appinfo>
-						</xs:annotation>
-					</xs:element>
-					<xs:element name="MaxEntries" type="xs:int" minOccurs="0">
-						<xs:annotation>
-							<xs:documentation> 
-								This field is deprecated.
-							</xs:documentation>
-							<xs:appinfo>
-								<noCalls/>
-							</xs:appinfo>
-						</xs:annotation>
-					</xs:element>
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-<!--
-
-##### from file ../Shopping/xsd/FindPopularItemsResponse.xsd #####
-
--->
-		<xs:element name="FindPopularItemsResponse" type="ns:FindPopularItemsResponseType"/>
-<xs:complexType name="FindPopularItemsResponseType">
-		<xs:annotation>
-			<xs:documentation>
-					&lt;b&gt;This call is deprecated.&lt;/b&gt;
-			</xs:documentation>
-		</xs:annotation>
-		<xs:complexContent>
-			<xs:extension base="ns:AbstractResponseType">
-				<xs:sequence>
-					<xs:element name="ItemArray" type="ns:SimpleItemArrayType" minOccurs="0">
-						<xs:annotation>
-							<xs:documentation>
-								This field is deprecated.
-							</xs:documentation>
-							<xs:appinfo>
-								<noCalls/>
-							</xs:appinfo>
-						</xs:annotation>
-					</xs:element>
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-<!--
-
-##### from file ../Shopping/xsd/FindPopularSearchesRequest.xsd #####
-
--->
-		<xs:element name="FindPopularSearchesRequest" type="ns:FindPopularSearchesRequestType"/>
-<xs:complexType name="FindPopularSearchesRequestType">
-		<xs:annotation>
-			<xs:documentation>
-					&lt;b&gt;This call is deprecated.&lt;/b&gt;
-			</xs:documentation>
-		</xs:annotation>
-		<xs:complexContent>
-			<xs:extension base="ns:AbstractRequestType">
-				<xs:sequence>
-					<xs:element name="CategoryID" type="xs:string" minOccurs="0" maxOccurs="unbounded">
-						<xs:annotation>
-							<xs:documentation>
-								This field is deprecated.
-							</xs:documentation>
-							<xs:appinfo>
-								<noCalls/>
-							</xs:appinfo>
-						</xs:annotation>
-					</xs:element>
-					<xs:element name="QueryKeywords" type="xs:string" minOccurs="0" maxOccurs="unbounded">
-						<xs:annotation>
-							<xs:documentation>
-								This field is deprecated.
-							</xs:documentation>
-							<xs:appinfo>
-								<noCalls/>
-							</xs:appinfo>
-						</xs:annotation>
-					</xs:element>
-					<xs:element name="MaxKeywords" type="xs:int" minOccurs="0">
-						<xs:annotation>
-							<xs:documentation>
-								This field is deprecated.
-							</xs:documentation>
-							<xs:appinfo>
-								<noCalls/>
-							</xs:appinfo>
-						</xs:annotation>
-					</xs:element>
-					<xs:element name="MaxResultsPerPage" type="xs:int" minOccurs="0">
-						<xs:annotation>
-							<xs:documentation>
-								This field is deprecated.
-							</xs:documentation>
-							<xs:appinfo>
-								<noCalls/>
-							</xs:appinfo>
-						</xs:annotation>
-					</xs:element>
-					<xs:element name="PageNumber" type="xs:int" minOccurs="0">
-						<xs:annotation>
-							<xs:documentation>
-								This field is deprecated.
-							</xs:documentation>
-							<xs:appinfo>
-								<noCalls/>
-							</xs:appinfo>
-						</xs:annotation>
-					</xs:element>
-					<xs:element name="IncludeChildCategories" type="xs:boolean" minOccurs="0">
-						<xs:annotation>
-							<xs:documentation>
-								This field is deprecated.
-							</xs:documentation>
-							<xs:appinfo>
-								<noCalls/>
-							</xs:appinfo>
-						</xs:annotation>
-					</xs:element>
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-<!--
-
-##### from file ../Shopping/xsd/FindPopularSearchesResponse.xsd #####
-
--->
-		<xs:element name="FindPopularSearchesResponse" type="ns:FindPopularSearchesResponseType"/>
-<xs:complexType name="FindPopularSearchesResponseType">
-		<xs:annotation>
-			<xs:documentation>
-					&lt;b&gt;This call is deprecated.&lt;/b&gt;
-			</xs:documentation>
-		</xs:annotation>
-		<xs:complexContent>
-			<xs:extension base="ns:AbstractResponseType">
-				<xs:sequence>
-					<xs:element name="PopularSearchResult" type="ns:PopularSearchesType" minOccurs="0" maxOccurs="unbounded">
-						<xs:annotation>
-							<xs:documentation>
-								This field is deprecated.
-							</xs:documentation>
-							<xs:appinfo>
-								<noCalls/>
-							</xs:appinfo>
-						</xs:annotation>
-					</xs:element>
-					<xs:element name="PageNumber" type="xs:int" minOccurs="0">
-						<xs:annotation>
-							<xs:documentation>
-								This field is deprecated.
-							</xs:documentation>
-							<xs:appinfo>
-								<noCalls/>
-							</xs:appinfo>
-						</xs:annotation>
-					</xs:element>
-					<xs:element name="TotalPages" type="xs:int" minOccurs="0">
-						<xs:annotation>
-							<xs:documentation>
-								This field is deprecated.
-							</xs:documentation>
-							<xs:appinfo>
-								<noCalls/>
-							</xs:appinfo>
-						</xs:annotation>
-					</xs:element>
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-<!--
-
 ##### from file ../Shopping/xsd/FindProductsRequest.xsd #####
 
 -->
@@ -8097,19 +7574,6 @@
 							</xs:appinfo>
 						</xs:annotation>
 					</xs:element>
-					<xs:element name="ItemArray" type="ns:SimpleItemArrayType" minOccurs="0">
-						<xs:annotation>
-							<xs:documentation>
-								This container has been deprecated from the &lt;b&gt;FindProducts&lt;/b&gt; call. To retrieve active items associated with a product, you can use the &lt;b&gt;findItemsByProduct&lt;/b&gt; call of the Finding API instead.
-							</xs:documentation>
-							<xs:appinfo>
-								<NoCalls/>
-								<DeprecationVersion>1007</DeprecationVersion>
-								<EndOfLifeVersion>1085</EndOfLifeVersion>
-        				<DeprecationDetails>NoOp</DeprecationDetails>
-							</xs:appinfo>
-						</xs:annotation>
-					</xs:element>
 					<xs:element name="PageNumber" type="xs:int" minOccurs="0">
 						<xs:annotation>
 							<xs:documentation>
@@ -8177,321 +7641,6 @@
 									<Returned>Conditionally</Returned>
 									<Details>IncludeSelector: Items, Details</Details>
 								</CallInfo> -->
-							</xs:appinfo>
-						</xs:annotation>
-					</xs:element>
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-<!--
-
-##### from file ../Shopping/xsd/FindReviewsAndGuidesRequest.xsd #####
-
--->
-		<xs:element name="FindReviewsAndGuidesRequest" type="ns:FindReviewsAndGuidesRequestType"/>
-<xs:complexType name="FindReviewsAndGuidesRequestType">
-		<xs:annotation>
-			<xs:documentation>
-				&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; The &lt;b&gt;FindReviewsAndGuides&lt;/b&gt; call is deprecated.
-				&lt;/span&gt;
-			</xs:documentation>
-			<xs:appinfo>
-				<Summary>
-					Searches reviews and guides based on product, category, or user.  The response provides information about each user or product's reviews and guides.
-				</Summary>
-			</xs:appinfo>
-		</xs:annotation>
-		<xs:complexContent>
-			<xs:extension base="ns:AbstractRequestType">
-				<xs:sequence>
-					<xs:element name="ProductID" type="ns:ProductIDType" minOccurs="0">
-						<xs:annotation>
-							<xs:documentation>
-								&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;FindReviewsAndGuidesRequestType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindReviewsAndGuides&lt;/b&gt; call.
-								&lt;/span&gt;
-							</xs:documentation>
-							<xs:appinfo>
-								<NoCalls/>
-								<UseInstead/>
-								<DeprecationVersion>971</DeprecationVersion>
-								<EndOfLifeVersion>1027</EndOfLifeVersion>
-								<DeprecationDetails>NoOp</DeprecationDetails>
-							</xs:appinfo>
-						</xs:annotation>
-					</xs:element>
-					<xs:element name="UserID" type="xs:string" minOccurs="0">
-						<xs:annotation>
-							<xs:documentation>
-								&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;FindReviewsAndGuidesRequestType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindReviewsAndGuides&lt;/b&gt; call.
-								&lt;/span&gt;
-							</xs:documentation>
-							<xs:appinfo>
-								<NoCalls/>
-								<UseInstead/>
-								<DeprecationVersion>971</DeprecationVersion>
-								<EndOfLifeVersion>1027</EndOfLifeVersion>
-								<DeprecationDetails>NoOp</DeprecationDetails>
-							</xs:appinfo>
-						</xs:annotation>
-					</xs:element>
-					<xs:element name="CategoryID" type="xs:string" minOccurs="0">
-						<xs:annotation>
-							<xs:documentation>
-								&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;FindReviewsAndGuidesRequestType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindReviewsAndGuides&lt;/b&gt; call.
-								&lt;/span&gt;
-							</xs:documentation>
-							<xs:appinfo>
-								<NoCalls/>
-								<UseInstead/>
-								<DeprecationVersion>971</DeprecationVersion>
-								<EndOfLifeVersion>1027</EndOfLifeVersion>
-								<DeprecationDetails>NoOp</DeprecationDetails>
-							</xs:appinfo>
-						</xs:annotation>
-					</xs:element>
-					<xs:element name="MaxResultsPerPage" type="xs:int" minOccurs="0">
-						<xs:annotation>
-							<xs:documentation>
-								&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;FindReviewsAndGuidesRequestType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindReviewsAndGuides&lt;/b&gt; call.
-								&lt;/span&gt;
-							</xs:documentation>
-							<xs:appinfo>
-								<NoCalls/>
-								<UseInstead/>
-								<DeprecationVersion>971</DeprecationVersion>
-								<EndOfLifeVersion>1027</EndOfLifeVersion>
-								<DeprecationDetails>NoOp</DeprecationDetails>
-							</xs:appinfo>
-						</xs:annotation>
-					</xs:element>
-					<xs:element name="PageNumber" type="xs:int" minOccurs="0">
-						<xs:annotation>
-							<xs:documentation>
-								&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;FindReviewsAndGuidesRequestType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindReviewsAndGuides&lt;/b&gt; call.
-								&lt;/span&gt;
-							</xs:documentation>
-							<xs:appinfo>
-								<NoCalls/>
-								<UseInstead/>
-								<DeprecationVersion>971</DeprecationVersion>
-								<EndOfLifeVersion>1027</EndOfLifeVersion>
-								<DeprecationDetails>NoOp</DeprecationDetails>
-							</xs:appinfo>
-						</xs:annotation>
-					</xs:element>
-					<xs:element name="ReviewSort" type="ns:ReviewSortCodeType" minOccurs="0">
-						<xs:annotation>
-							<xs:documentation>
-								&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;FindReviewsAndGuidesRequestType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindReviewsAndGuides&lt;/b&gt; call.
-								&lt;/span&gt;
-							</xs:documentation>
-							<xs:appinfo>
-								<NoCalls/>
-								<UseInstead/>
-								<DeprecationVersion>971</DeprecationVersion>
-								<EndOfLifeVersion>1027</EndOfLifeVersion>
-								<DeprecationDetails>NoOp</DeprecationDetails>
-							</xs:appinfo>
-						</xs:annotation>
-					</xs:element>
-					<xs:element name="SortOrder" type="ns:SortOrderCodeType" minOccurs="0">
-						<xs:annotation>
-							<xs:documentation>
-								&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;FindReviewsAndGuidesRequestType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindReviewsAndGuides&lt;/b&gt; call.
-								&lt;/span&gt;
-							</xs:documentation>
-							<xs:appinfo>
-								<NoCalls/>
-								<UseInstead/>
-								<DeprecationVersion>971</DeprecationVersion>
-								<EndOfLifeVersion>1027</EndOfLifeVersion>
-								<DeprecationDetails>NoOp</DeprecationDetails>
-							</xs:appinfo>
-						</xs:annotation>
-					</xs:element>
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-<!--
-
-##### from file ../Shopping/xsd/FindReviewsAndGuidesResponse.xsd #####
-
--->
-		<xs:element name="FindReviewsAndGuidesResponse" type="ns:FindReviewsAndGuidesResponseType"/>
-<xs:complexType name="FindReviewsAndGuidesResponseType">
-		<xs:annotation>
-			<xs:documentation>
-				&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; The &lt;b&gt;FindReviewsAndGuides&lt;/b&gt; call is deprecated.
-				&lt;/span&gt;
-			</xs:documentation>
-		</xs:annotation>
-		<xs:complexContent>
-			<xs:extension base="ns:AbstractResponseType">
-				<xs:sequence>
-					<xs:element name="ReviewCount" type="xs:int" minOccurs="0">
-						<xs:annotation>
-							<xs:documentation>
-								&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;FindReviewsAndGuidesResponseType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindReviewsAndGuides&lt;/b&gt; call.
-								&lt;/span&gt;
-							</xs:documentation>
-							<xs:appinfo>
-								<NoCalls/>
-								<UseInstead/>
-								<DeprecationVersion>971</DeprecationVersion>
-								<EndOfLifeVersion>1027</EndOfLifeVersion>
-								<DeprecationDetails>NoOp</DeprecationDetails>
-							</xs:appinfo>
-						</xs:annotation>
-					</xs:element>
-					<xs:element name="BuyingGuideCount" type="xs:int" minOccurs="0">
-						<xs:annotation>
-							<xs:documentation>
-								&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;FindReviewsAndGuidesResponseType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindReviewsAndGuides&lt;/b&gt; call.
-								&lt;/span&gt;
-							</xs:documentation>
-							<xs:appinfo>
-								<NoCalls/>
-								<UseInstead/>
-								<DeprecationVersion>971</DeprecationVersion>
-								<EndOfLifeVersion>1027</EndOfLifeVersion>
-								<DeprecationDetails>NoOp</DeprecationDetails>
-							</xs:appinfo>
-						</xs:annotation>
-					</xs:element>
-					<xs:element name="ReviewerRank" type="xs:int" minOccurs="0">
-						<xs:annotation>
-							<xs:documentation>
-								&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;FindReviewsAndGuidesResponseType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindReviewsAndGuides&lt;/b&gt; call.
-								&lt;/span&gt;
-							</xs:documentation>
-							<xs:appinfo>
-								<NoCalls/>
-								<UseInstead/>
-								<DeprecationVersion>971</DeprecationVersion>
-								<EndOfLifeVersion>1027</EndOfLifeVersion>
-								<DeprecationDetails>NoOp</DeprecationDetails>
-							</xs:appinfo>
-						</xs:annotation>
-					</xs:element>
-					<xs:element name="TotalHelpfulnessVotes" type="xs:int" minOccurs="0">
-						<xs:annotation>
-							<xs:documentation>
-								&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;FindReviewsAndGuidesResponseType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindReviewsAndGuides&lt;/b&gt; call.
-								&lt;/span&gt;
-							</xs:documentation>
-							<xs:appinfo>
-								<NoCalls/>
-								<UseInstead/>
-								<DeprecationVersion>971</DeprecationVersion>
-								<EndOfLifeVersion>1027</EndOfLifeVersion>
-								<DeprecationDetails>NoOp</DeprecationDetails>
-							</xs:appinfo>
-						</xs:annotation>
-					</xs:element>
-					<xs:element name="ProductID" type="ns:ProductIDType" minOccurs="0">
-						<xs:annotation>
-							<xs:documentation>
-								&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;FindReviewsAndGuidesResponseType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindReviewsAndGuides&lt;/b&gt; call.
-								&lt;/span&gt;
-							</xs:documentation>
-							<xs:appinfo>
-								<NoCalls/>
-								<UseInstead/>
-								<DeprecationVersion>971</DeprecationVersion>
-								<EndOfLifeVersion>1027</EndOfLifeVersion>
-								<DeprecationDetails>NoOp</DeprecationDetails>
-							</xs:appinfo>
-						</xs:annotation>
-					</xs:element>
-					<xs:element name="ReviewsAndGuidesURL" type="xs:anyURI" minOccurs="0">
-						<xs:annotation>
-							<xs:documentation>
-								&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;FindReviewsAndGuidesResponseType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindReviewsAndGuides&lt;/b&gt; call.
-								&lt;/span&gt;
-							</xs:documentation>
-							<xs:appinfo>
-								<NoCalls/>
-								<UseInstead/>
-								<DeprecationVersion>971</DeprecationVersion>
-								<EndOfLifeVersion>1027</EndOfLifeVersion>
-								<DeprecationDetails>NoOp</DeprecationDetails>
-							</xs:appinfo>
-						</xs:annotation>
-					</xs:element>
-					<xs:element name="PageNumber" type="xs:int" minOccurs="0">
-						<xs:annotation>
-							<xs:documentation>
-								&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;FindReviewsAndGuidesResponseType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindReviewsAndGuides&lt;/b&gt; call.
-								&lt;/span&gt;
-							</xs:documentation>
-							<xs:appinfo>
-								<NoCalls/>
-								<UseInstead/>
-								<DeprecationVersion>971</DeprecationVersion>
-								<EndOfLifeVersion>1027</EndOfLifeVersion>
-								<DeprecationDetails>NoOp</DeprecationDetails>
-							</xs:appinfo>
-						</xs:annotation>
-					</xs:element>
-					<xs:element name="TotalPages" type="xs:int" minOccurs="0">
-						<xs:annotation>
-							<xs:documentation>
-								&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;FindReviewsAndGuidesResponseType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindReviewsAndGuides&lt;/b&gt; call.
-								&lt;/span&gt;
-							</xs:documentation>
-							<xs:appinfo>
-								<NoCalls/>
-								<UseInstead/>
-								<DeprecationVersion>971</DeprecationVersion>
-								<EndOfLifeVersion>1027</EndOfLifeVersion>
-								<DeprecationDetails>NoOp</DeprecationDetails>
-							</xs:appinfo>
-						</xs:annotation>
-					</xs:element>
-					<xs:element name="BuyingGuideDetails" type="ns:BuyingGuideDetailsType" minOccurs="0">
-						<xs:annotation>
-							<xs:documentation>
-								&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;FindReviewsAndGuidesResponseType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindReviewsAndGuides&lt;/b&gt; call.
-								&lt;/span&gt;
-							</xs:documentation>
-							<xs:appinfo>
-								<NoCalls/>
-								<UseInstead/>
-								<DeprecationVersion>971</DeprecationVersion>
-								<EndOfLifeVersion>1027</EndOfLifeVersion>
-								<DeprecationDetails>NoOp</DeprecationDetails>
-							</xs:appinfo>
-						</xs:annotation>
-					</xs:element>
-					<xs:element name="ReviewDetails" type="ns:ReviewDetailsType" minOccurs="0">
-						<xs:annotation>
-							<xs:documentation>
-								&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;FindReviewsAndGuidesResponseType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindReviewsAndGuides&lt;/b&gt; call.
-								&lt;/span&gt;
-							</xs:documentation>
-							<xs:appinfo>
-								<NoCalls/>
-								<UseInstead/>
-								<DeprecationVersion>971</DeprecationVersion>
-								<EndOfLifeVersion>1027</EndOfLifeVersion>
-								<DeprecationDetails>NoOp</DeprecationDetails>
-							</xs:appinfo>
-						</xs:annotation>
-					</xs:element>
-					<xs:element name="PositiveHelpfulnessVotes" type="xs:int" minOccurs="0">
-						<xs:annotation>
-							<xs:documentation>
-								&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;FindReviewsAndGuidesResponseType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindReviewsAndGuides&lt;/b&gt; call.
-								&lt;/span&gt;
-							</xs:documentation>
-							<xs:appinfo>
-								<NoCalls/>
-								<UseInstead/>
-								<DeprecationVersion>971</DeprecationVersion>
-								<EndOfLifeVersion>1027</EndOfLifeVersion>
-								<DeprecationDetails>NoOp</DeprecationDetails>
 							</xs:appinfo>
 						</xs:annotation>
 					</xs:element>
@@ -8734,7 +7883,7 @@
 								) for convenience.
 								&lt;br&gt;&lt;br&gt;
 								You can determine an item's ID by calling findItemsAdvanced (&lt;a
-								href="http://www.developer.ebay.com/DevZone/finding/CallRef/index.html"
+								href="https://developer.ebay.com/DevZone/finding/CallRef/index.html"
 								&gt;Finding API&lt;/a&gt;) or from the  eBay Web site. Provide ItemID for
 								every item for which you want information.
 							</xs:documentation>
@@ -8742,7 +7891,7 @@
 								<MaxLength>19 (Note: The eBay database specifies 38. Currently, Item IDs are usually 9 to 12 digits)</MaxLength>
 								<SeeLink>
 									<Title>(findItemsAdvanced) item.itemId</Title>
-									<URL>http://www.developer.ebay.com/DevZone/finding/CallRef/findItemsAdvanced.html#Response.searchResult.item.itemId</URL>
+									<URL>https://developer.ebay.com/DevZone/finding/CallRef/findItemsAdvanced.html#Response.searchResult.item.itemId</URL>
 								</SeeLink>
 								<CallInfo>
 									<CallName>GetMultipleItems</CallName>
@@ -8856,7 +8005,7 @@
 				are calculated by eBay with its shipping partners based on postal code. To determine whether a listing has ended, use &lt;b&gt;GetSingleItem&lt;/b&gt;.
 				It is best to call &lt;b&gt;GetShippingCosts&lt;/b&gt; only after determining via &lt;b&gt;GetSingleItem&lt;/b&gt;
 				or &lt;b&gt;findItemsAdvanced&lt;/b&gt; (&lt;a
-				href="http://www.developer.ebay.com/DevZone/finding/CallRef/index.html"
+				href="https://developer.ebay.com/DevZone/finding/CallRef/index.html"
 				&gt;Finding API&lt;/a&gt;) that the item actually has shipping cost information.
 			</xs:documentation>
 			<xs:appinfo>
@@ -9051,14 +8200,14 @@
 									for which to retrieve the data.&lt;br&gt;
 									&lt;br&gt;
 									You can determine an item's ID by calling &lt;b&gt;findItemsAdvanced&lt;/b&gt;( &lt;a
-									href="http://www.developer.ebay.com/DevZone/finding/CallRef/index.html"
+									href="https://developer.ebay.com/DevZone/finding/CallRef/index.html"
 									&gt;Finding API&lt;/a&gt;) or from the eBay Web site.
 								</xs:documentation>
 							<xs:appinfo>
 								<MaxLength>19 (Note: The eBay database specifies 38. Currently, Item IDs are usually 9 to 12 digits)</MaxLength>
 								<SeeLink>
 									<Title>(findItemsAdvanced) item.itemId</Title>
-									<URL>http://www.developer.ebay.com/DevZone/finding/CallRef/findItemsAdvanced.html#Response.searchResult.item.itemId</URL>
+									<URL>https://developer.ebay.com/DevZone/finding/CallRef/findItemsAdvanced.html#Response.searchResult.item.itemId</URL>
 								</SeeLink>
 								<CallInfo>
 									<CallName>GetSingleItem</CallName>
@@ -9382,307 +8531,6 @@
 			<xs:extension base="ns:AbstractResponseType">
 			</xs:extension>
 		</xs:complexContent>
-	</xs:complexType>
-<!--
-
-##### from file ../Shopping/xsd/HalfCatalogProductType.xsd #####
-
--->
-	<xs:complexType name="HalfCatalogProductType">
-		<xs:annotation>
-			<xs:documentation>
-				&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;HalfCatalogProductType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindHalfProducts&lt;/b&gt; call.
-				&lt;/span&gt;
-			</xs:documentation>
-		</xs:annotation>
-		<xs:sequence>
-			<xs:element name="Title" type="xs:string" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation>
-						&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;HalfCatalogProductType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindHalfProducts&lt;/b&gt; call.
-						&lt;/span&gt;
-					</xs:documentation>
-					<xs:appinfo>
-						<NoCalls/>
-						<DeprecationVersion>1027</DeprecationVersion>
-						<DeprecationDetails>NoOp</DeprecationDetails>
-						<EndOfLifeVersion>1033</EndOfLifeVersion>
-						<UseInstead/>
-					</xs:appinfo>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="DetailsURL" type="xs:anyURI" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation>
-						&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;HalfCatalogProductType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindHalfProducts&lt;/b&gt; call.
-						&lt;/span&gt;
-					</xs:documentation>
-					<xs:appinfo>
-						<NoCalls/>
-						<DeprecationVersion>1027</DeprecationVersion>
-						<DeprecationDetails>NoOp</DeprecationDetails>
-						<EndOfLifeVersion>1033</EndOfLifeVersion>
-						<UseInstead/>
-					</xs:appinfo>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="StockPhotoURL" type="xs:anyURI" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation>
-						&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;HalfCatalogProductType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindHalfProducts&lt;/b&gt; call.
-						&lt;/span&gt;
-					</xs:documentation>
-					<xs:appinfo>
-						<NoCalls/>
-						<DeprecationVersion>1027</DeprecationVersion>
-						<DeprecationDetails>NoOp</DeprecationDetails>
-						<EndOfLifeVersion>1033</EndOfLifeVersion>
-						<UseInstead/>
-					</xs:appinfo>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="ShippingCostSummary" type="ns:ShippingCostSummaryType" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation>
-						&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;HalfCatalogProductType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindHalfProducts&lt;/b&gt; call.
-						&lt;/span&gt;
-					</xs:documentation>
-					<xs:appinfo>
-						<NoCalls/>
-						<DeprecationVersion>1027</DeprecationVersion>
-						<DeprecationDetails>NoOp</DeprecationDetails>
-						<EndOfLifeVersion>1033</EndOfLifeVersion>
-						<UseInstead/>
-					</xs:appinfo>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="DisplayStockPhotos" type="xs:boolean" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation>
-						&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;HalfCatalogProductType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindHalfProducts&lt;/b&gt; call.
-						&lt;/span&gt;
-					</xs:documentation>
-					<xs:appinfo>
-						<NoCalls/>
-						<DeprecationVersion>1027</DeprecationVersion>
-						<DeprecationDetails>NoOp</DeprecationDetails>
-						<EndOfLifeVersion>1033</EndOfLifeVersion>
-						<UseInstead/>
-					</xs:appinfo>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="ItemCount" type="xs:int" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation>
-						&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;HalfCatalogProductType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindHalfProducts&lt;/b&gt; call.
-						&lt;/span&gt;
-					</xs:documentation>
-					<xs:appinfo>
-						<NoCalls/>
-						<DeprecationVersion>1027</DeprecationVersion>
-						<DeprecationDetails>NoOp</DeprecationDetails>
-						<EndOfLifeVersion>1033</EndOfLifeVersion>
-						<UseInstead/>
-					</xs:appinfo>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="ProductID" type="ns:ProductIDType" minOccurs="0" maxOccurs="unbounded">
-				<xs:annotation>
-					<xs:documentation>
-						&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;HalfCatalogProductType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindHalfProducts&lt;/b&gt; call.
-						&lt;/span&gt;
-					</xs:documentation>
-					<xs:appinfo>
-						<NoCalls/>
-						<DeprecationVersion>1027</DeprecationVersion>
-						<DeprecationDetails>NoOp</DeprecationDetails>
-						<EndOfLifeVersion>1033</EndOfLifeVersion>
-						<UseInstead/>
-					</xs:appinfo>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="DomainName" type="xs:string" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation>
-						&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;HalfCatalogProductType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindHalfProducts&lt;/b&gt; call.
-						&lt;/span&gt;
-					</xs:documentation>
-					<xs:appinfo>
-						<NoCalls/>
-						<DeprecationVersion>1027</DeprecationVersion>
-						<DeprecationDetails>NoOp</DeprecationDetails>
-						<EndOfLifeVersion>1033</EndOfLifeVersion>
-						<UseInstead/>
-					</xs:appinfo>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="ItemSpecifics" type="ns:NameValueListArrayType" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation>
-						&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;HalfCatalogProductType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindHalfProducts&lt;/b&gt; call.
-						&lt;/span&gt;
-					</xs:documentation>
-					<xs:appinfo>
-						<NoCalls/>
-						<DeprecationVersion>1027</DeprecationVersion>
-						<DeprecationDetails>NoOp</DeprecationDetails>
-						<EndOfLifeVersion>1033</EndOfLifeVersion>
-						<UseInstead/>
-					</xs:appinfo>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="ItemArray" type="ns:SimpleItemArrayType" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation>
-						&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;HalfCatalogProductType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindHalfProducts&lt;/b&gt; call.
-						&lt;/span&gt;
-					</xs:documentation>
-					<xs:appinfo>
-						<NoCalls/>
-						<DeprecationVersion>1027</DeprecationVersion>
-						<DeprecationDetails>NoOp</DeprecationDetails>
-						<EndOfLifeVersion>1033</EndOfLifeVersion>
-						<UseInstead/>
-					</xs:appinfo>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="ReviewCount" type="xs:int" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation>
-						&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;HalfCatalogProductType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindHalfProducts&lt;/b&gt; call.
-						&lt;/span&gt;
-					</xs:documentation>
-					<xs:appinfo>
-						<NoCalls/>
-						<DeprecationVersion>1027</DeprecationVersion>
-						<DeprecationDetails>NoOp</DeprecationDetails>
-						<EndOfLifeVersion>1033</EndOfLifeVersion>
-						<UseInstead/>
-					</xs:appinfo>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="MinPrice" type="ns:AmountType" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation>
-						&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;HalfCatalogProductType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindHalfProducts&lt;/b&gt; call.
-						&lt;/span&gt;
-					</xs:documentation>
-					<xs:appinfo>
-						<NoCalls/>
-						<DeprecationVersion>1027</DeprecationVersion>
-						<DeprecationDetails>NoOp</DeprecationDetails>
-						<EndOfLifeVersion>1033</EndOfLifeVersion>
-						<UseInstead/>
-					</xs:appinfo>
-				</xs:annotation>
-			</xs:element>
-			<xs:any processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
-		</xs:sequence>
-	</xs:complexType>
-<!--
-
-##### from file ../Shopping/xsd/HalfItemConditionCodeType.xsd #####
-
--->
-	<xs:simpleType name="HalfItemConditionCodeType">
-		<xs:annotation>
-			<xs:documentation>
-				&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;HalfItemConditionCodeType&lt;/b&gt; and all of its enumeration values are deprecated along with the &lt;b&gt;FindHalfProducts&lt;/b&gt; call.
-				&lt;/span&gt;
-				Controls values for item condition, especially for Books catalog.
-			</xs:documentation>
-			<xs:appinfo>
-				<OnlyTheseValues/>
-			</xs:appinfo>
-		</xs:annotation>
-		<xs:restriction base="xs:token">
-			<xs:enumeration value="BrandNew">
-				<xs:annotation>
-					<xs:documentation>
-						&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;HalfItemConditionCodeType&lt;/b&gt; and all of its enumeration values are deprecated along with the &lt;b&gt;FindHalfProducts&lt;/b&gt; call.
-						&lt;/span&gt;
-					</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="LikeNew">
-				<xs:annotation>
-					<xs:documentation>
-						&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;HalfItemConditionCodeType&lt;/b&gt; and all of its enumeration values are deprecated along with the &lt;b&gt;FindHalfProducts&lt;/b&gt; call.
-						&lt;/span&gt;
-					</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="VeryGood">
-				<xs:annotation>
-					<xs:documentation>
-						&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;HalfItemConditionCodeType&lt;/b&gt; and all of its enumeration values are deprecated along with the &lt;b&gt;FindHalfProducts&lt;/b&gt; call.
-						&lt;/span&gt;
-					</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="Good">
-				<xs:annotation>
-					<xs:documentation>
-						&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;HalfItemConditionCodeType&lt;/b&gt; and all of its enumeration values are deprecated along with the &lt;b&gt;FindHalfProducts&lt;/b&gt; call.
-						&lt;/span&gt;
-					</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="Acceptable">
-				<xs:annotation>
-					<xs:documentation>
-						&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;HalfItemConditionCodeType&lt;/b&gt; and all of its enumeration values are deprecated along with the &lt;b&gt;FindHalfProducts&lt;/b&gt; call.
-						&lt;/span&gt;
-					</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="Used">
-				<xs:annotation>
-					<xs:documentation>
-						&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;HalfItemConditionCodeType&lt;/b&gt; and all of its enumeration values are deprecated along with the &lt;b&gt;FindHalfProducts&lt;/b&gt; call.
-						&lt;/span&gt;
-					</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="CustomCode">
-				<xs:annotation>
-					<xs:documentation>
-						(out) Reserved for internal or future use
-					</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-		</xs:restriction>
-	</xs:simpleType>
-<!--
-
-##### from file ../Shopping/xsd/HalfProductsType.xsd #####
-
--->
-	<xs:complexType name="HalfProductsType">
-		<xs:annotation>
-			<xs:documentation>
-				&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;HalfProductsType&lt;/b&gt; and the &lt;b&gt;Product&lt;/b&gt; element are deprecated along with the &lt;b&gt;FindHalfProducts&lt;/b&gt; call.
-				&lt;/span&gt;
-			</xs:documentation>
-		</xs:annotation>
-		<xs:sequence>
-			<xs:element name="Product" type="ns:HalfCatalogProductType" minOccurs="0" maxOccurs="unbounded">
-				<xs:annotation>
-					<xs:documentation>
-						&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;HalfProductsType&lt;/b&gt; and the &lt;b&gt;Product&lt;/b&gt; element are deprecated along with the &lt;b&gt;FindHalfProducts&lt;/b&gt; call.
-						&lt;/span&gt;
-					</xs:documentation>
-					<xs:appinfo>
-						<NoCalls/>
-						<DeprecationVersion>1027</DeprecationVersion>
-						<DeprecationDetails>NoOp</DeprecationDetails>
-						<EndOfLifeVersion>1033</EndOfLifeVersion>
-						<UseInstead/>
-					</xs:appinfo>
-				</xs:annotation>
-			</xs:element>
-			<xs:any processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
-		</xs:sequence>
 	</xs:complexType>
 <!--
 
@@ -10190,7 +9038,7 @@
 				<xs:annotation>
 					<xs:documentation>
 						Placeholder value. See
-						&lt;a href="http://developer.ebay.com/DevZone/shopping/docs/CallRef/types/simpleTypes.html#token"&gt;token&lt;/a&gt;.
+						&lt;a href="https://developer.ebay.com/DevZone/shopping/docs/CallRef/types/simpleTypes.html#token"&gt;token&lt;/a&gt;.
 					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
@@ -10484,103 +9332,6 @@
 							<Returned>Conditionally</Returned>
 							<Details>IncludeSelector: Variations</Details>
 						</CallInfo>
-					</xs:appinfo>
-				</xs:annotation>
-			</xs:element>
-			<xs:any processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
-		</xs:sequence>
-	</xs:complexType>
-<!--
-
-##### from file ../Shopping/xsd/PopularSearchesType.xsd #####
-
--->
-	<xs:complexType name="PopularSearchesType">
-		<xs:annotation>
-			<xs:documentation>
-				This type is deprecated, as it was only used by the deprecated &lt;b&gt;FindPopularSearches&lt;/b&gt; call.
-			</xs:documentation>
-		</xs:annotation>
-		<xs:sequence>
-			<xs:element name="CategoryID" type="xs:string" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation>
-						<!-- Numeric ID of a category on eBay. -->
-					</xs:documentation>
-					<xs:appinfo>
-						<noCalls/>
-					</xs:appinfo>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="CategoryParentID" type="xs:string" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation>
-						<!-- Category ID identifying a category that is the parent category
-						of the category indicated in the request. -->
-					</xs:documentation>
-					<xs:appinfo>
-						<noCalls/>
-					</xs:appinfo>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="QueryKeywords" type="xs:string" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation>
-						<!-- Specifies which QueryKeywords corresponds to this PopularSearchResult.
-						Query Keywords are returned in the output to clarify which result set corresponds to
-						which QueryKeyword inputs (as there can be more than one set of keywords in the input). -->
-					</xs:documentation>
-					<xs:appinfo>
-						<noCalls/>
-					</xs:appinfo>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="AlternativeSearches" type="xs:string" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation>
-						<!-- Alternative search keywords for the query keywords, separated by semicolons.
-						You can use this to find other search terms buyers and sellers may be interested in.
-						For example, if a seller lists an item with "wedding" in the title, they may also be
-						interested in adding "bridal" to the title because bridal is an alternative search
-						keyword which buyers have used. -->
-					</xs:documentation>
-					<xs:appinfo>
-						<noCalls/>
-					</xs:appinfo>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="RelatedSearches" type="xs:string" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation>
-						<!-- Keywords related to the query keywords, separated by semicolons.
-						You can use this to find more detailed related keywords.  For example,
-						the query keyword "wedding" is related to searches for
-						"wedding decorations;wedding favors;wedding supplies;wedding dresses..." which helps
-						the seller and buyer specify their query with more detail and precision. -->
-					</xs:documentation>
-					<xs:appinfo>
-						<noCalls/>
-					</xs:appinfo>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="CategoryName" type="xs:string" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation>
-						<!-- Category Name identifying the name of current CategoryID. -->
-					</xs:documentation>
-					<xs:appinfo>
-						<noCalls/>
-					</xs:appinfo>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="CategoryParentName" type="xs:string" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation>
-						<!-- The name of category which is a parent category to the CategoryID
-						specified in the request. -->
-					</xs:documentation>
-					<xs:appinfo>
-						<noCalls/>
 					</xs:appinfo>
 				</xs:annotation>
 			</xs:element>
@@ -10930,7 +9681,7 @@
 			<xs:element name="Refund" type="xs:string" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>
-						This field indicates how the seller compensates domestic buyers for &lt;a href="http://developer.ebay.com/DevZone/guides/ebayfeatures/Development/Post-Order-Returns.html#return-reasons" target="_blank">remorse returns&lt;/a>. On many eBay marketplaces, 'Money Back' is the only option for domestic and international returns. The eBay US marketplace also allows sellers to offer buyers a 'Money Back Or Replacement' option, where the seller still wants the item they purchased, and prefers that the seller send an identical replacement item instead of a refund. This will typically happen if the originally purchased item arrived damaged or was missing parts.
+						This field indicates how the seller compensates domestic buyers for &lt;a href="https://developer.ebay.com/DevZone/guides/ebayfeatures/Development/Post-Order-Returns.html#return-reasons" target="_blank">remorse returns&lt;/a>. On many eBay marketplaces, 'Money Back' is the only option for domestic and international returns. The eBay US marketplace also allows sellers to offer buyers a 'Money Back Or Replacement' option, where the seller still wants the item they purchased, and prefers that the seller send an identical replacement item instead of a refund. This will typically happen if the originally purchased item arrived damaged or was missing parts.
 						&lt;br&gt;&lt;br&gt;
 						&lt;span class="tablenote"&gt;&lt;b&gt;Note:&lt;/b&gt; If the seller ships internationally, but did not specify a separate international return policy for the listing, the refund method in this field will also apply for international returns. &lt;/span&gt;
 					</xs:documentation>
@@ -11082,7 +9833,7 @@
 			<xs:element name="InternationalRefund" type="xs:string" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>
-						This field indicates how the seller compensates international buyers for &lt;a href="http://developer.ebay.com/DevZone/guides/ebayfeatures/Development/Post-Order-Returns.html#return-reasons" target="_blank">remorse returns&lt;/a>. On many eBay marketplaces, 'Money Back' is the only option for domestic and international returns. The eBay US marketplace also allows sellers to offer buyers a 'Money Back Or Replacement' option, where the seller still wants the item they purchased, and prefers that the seller send an identical replacement item instead of a refund. This will typically happen if the originally purchased item arrived damaged or was missing parts.
+						This field indicates how the seller compensates international buyers for &lt;a href="https://developer.ebay.com/DevZone/guides/ebayfeatures/Development/Post-Order-Returns.html#return-reasons" target="_blank">remorse returns&lt;/a>. On many eBay marketplaces, 'Money Back' is the only option for domestic and international returns. The eBay US marketplace also allows sellers to offer buyers a 'Money Back Or Replacement' option, where the seller still wants the item they purchased, and prefers that the seller send an identical replacement item instead of a refund. This will typically happen if the originally purchased item arrived damaged or was missing parts.
 						&lt;br&gt;&lt;br&gt;
 						&lt;span class="tablenote"&gt;&lt;b&gt;Note:&lt;/b&gt; If the seller ships internationally, but did not specify a separate international return policy for the listing, this field is not returned, and the refund method in the &lt;b&gt;Refund&lt;/b&gt; field will also apply for international returns. &lt;/span&gt;
 					</xs:documentation>
@@ -11146,228 +9897,6 @@
 							<Returned>Conditionally</Returned>
 							<Details>IncludeSelector: Details</Details>
 						</CallInfo>
-					</xs:appinfo>
-				</xs:annotation>
-			</xs:element>
-			<xs:any processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
-		</xs:sequence>
-	</xs:complexType>
-<!--
-
-##### from file ../Shopping/xsd/ReviewDetailsType.xsd #####
-
--->
-	<xs:complexType name="ReviewDetailsType">
-		<xs:annotation>
-			<xs:documentation>
-				&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;ReviewDetailsType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindReviewsAndGuides&lt;/b&gt; call.
-				&lt;/span&gt;
-				<!-- Contains product reviews written by eBay members. -->
-			 </xs:documentation>
-		</xs:annotation>
-		<xs:sequence>
-			<xs:element name="AverageRating" type="xs:float" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation>
-						&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;ReviewDetailsType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindReviewsAndGuides&lt;/b&gt; call.
-						&lt;/span&gt;
-						<!-- The product's average rating (out of 5) based on all reviews.
-						For example, a value like 4.5 would mean the average rating
-						is 4.5 out of 5. (See ReviewCount for the total number of reviews.) -->
-					</xs:documentation>
-					<xs:appinfo>
-						<Min>0</Min>
-						<Max>5</Max>
-						<NoCalls/>
-						<UseInstead/>
-						<DeprecationVersion>971</DeprecationVersion>
-						<EndOfLifeVersion>1027</EndOfLifeVersion>
-						<DeprecationDetails>NoOp</DeprecationDetails>
-					</xs:appinfo>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="Review" type="ns:ReviewType" minOccurs="0" maxOccurs="unbounded">
-				<xs:annotation>
-					<xs:documentation>
-						&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;ReviewDetailsType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindReviewsAndGuides&lt;/b&gt; call.
-						&lt;/span&gt;
-						<!-- An eBay member's review of the product. -->
-					</xs:documentation>
-					<xs:appinfo>
-						<MaxOccurs>20</MaxOccurs>
-						<NoCalls/>
-						<UseInstead/>
-						<DeprecationVersion>971</DeprecationVersion>
-						<EndOfLifeVersion>1027</EndOfLifeVersion>
-						<DeprecationDetails>NoOp</DeprecationDetails>
-					</xs:appinfo>
-				</xs:annotation>
-			</xs:element>
-			<xs:any processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
-		</xs:sequence>
-	</xs:complexType>
-<!--
-
-##### from file ../Shopping/xsd/ReviewSortCodeList.xsd #####
-
--->
-	<xs:simpleType name="ReviewSortCodeType">
-		<xs:annotation>
-			<xs:documentation>
-				&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;ReviewSortCodeType&lt;/b&gt; and all of its enumeration values are deprecated along with the &lt;b&gt;FindReviewsAndGuides&lt;/b&gt; call.
-				&lt;/span&gt;
-				<!-- Enumeration type that contains the values in which product reviews may be sorted in the response. -->
-			</xs:documentation>
-			<xs:appinfo>
-				<OnlyTheseValues/>
-			</xs:appinfo>
-		</xs:annotation>
-		<xs:restriction base="xs:token">
-			<xs:enumeration value="CreationTime">
-				<xs:annotation>
-					<xs:documentation>
-						&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;ReviewSortCodeType&lt;/b&gt; and its enumeration values are deprecated along with the &lt;b&gt;FindReviewsAndGuides&lt;/b&gt; call.
-						&lt;/span&gt;
-						<!-- Sorts reviews by creation time, in ascending or descending order. -->
-					</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="CustomCode">
-				<xs:annotation>
-					<xs:documentation>
-						&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;ReviewSortCodeType&lt;/b&gt; and its enumeration values are deprecated along with the &lt;b&gt;FindReviewsAndGuides&lt;/b&gt; call.
-						&lt;/span&gt;
-						<!-- Reserved for values that are not available in the version of the schema
-						you are using. This means if in a newer version of the API eBay adds a new
-						value to &lt;b&gt;ProductSortCodeList&lt;/b&gt; type and the request was using
-						a &lt;i&gt;lower&lt;/i&gt; version, 'CustomCode' is returned instead of the -->
-						new value.
-					</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-		</xs:restriction>
-	</xs:simpleType>
-<!--
-
-##### from file ../Shopping/xsd/ReviewType.xsd #####
-
--->
-	<xs:complexType name="ReviewType">
-		<xs:annotation>
-			<xs:documentation>
-				&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;ReviewType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindReviewsAndGuides&lt;/b&gt; call.
-				&lt;/span&gt;
-				<!-- A product review written by an eBay member. -->
-			</xs:documentation>
-		</xs:annotation>
-		<xs:sequence>
-			<xs:element name="URL" type="xs:anyURI" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation>
-						&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;ReviewType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindReviewsAndGuides&lt;/b&gt; call.
-						&lt;/span&gt;
-						<!-- A link to the full review on the eBay Web site.
-						This URL optimized for natural search: "_W0QQ" is like "?"
-						(question mark), "QQ" is like "&amp;" (ampersand),
-						and "Z" is like "=" (equals sign).&lt;br&gt;
-						&lt;br&gt;
-						&lt;span class="tablenote"&gt;&lt;b&gt;Note:&lt;/b&gt;
-						For a link to all reviews for the product, remove the upvr parameter
-						from this URL. See the eBay Features Guide for an example.
-						&lt;/span&gt; -->
-					</xs:documentation>
-					<xs:appinfo>
-						<NoCalls/>
-						<UseInstead/>
-						<DeprecationVersion>971</DeprecationVersion>
-						<EndOfLifeVersion>1027</EndOfLifeVersion>
-						<DeprecationDetails>NoOp</DeprecationDetails>
-					</xs:appinfo>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="Title" type="xs:string" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation>
-						&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;ReviewType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindReviewsAndGuides&lt;/b&gt; call.
-						&lt;/span&gt;
-						<!-- The title of the review. -->
-					</xs:documentation>
-					<xs:appinfo>
-						<MaxLength>55</MaxLength>
-						<NoCalls/>
-						<UseInstead/>
-						<DeprecationVersion>971</DeprecationVersion>
-						<EndOfLifeVersion>1027</EndOfLifeVersion>
-						<DeprecationDetails>NoOp</DeprecationDetails>
-					</xs:appinfo>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="Rating" type="xs:int" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation>
-						&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;ReviewType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindReviewsAndGuides&lt;/b&gt; call.
-						&lt;/span&gt;
-						<!-- The eBay member's rating of the product. -->
-					</xs:documentation>
-					<xs:appinfo>
-						<Min>0</Min>
-						<Max>5</Max>
-						<NoCalls/>
-						<UseInstead/>
-						<DeprecationVersion>971</DeprecationVersion>
-						<EndOfLifeVersion>1027</EndOfLifeVersion>
-						<DeprecationDetails>NoOp</DeprecationDetails>
-					</xs:appinfo>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="Text" type="xs:string" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation>
-						&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;ReviewType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindReviewsAndGuides&lt;/b&gt; call.
-						&lt;/span&gt;
-						<!-- The text of the review. If the review is longer than
-						2000 characters, the text is cut off and it ends with "...".
-						See Review.URL for a link to the full text of the review. -->
-					</xs:documentation>
-					<xs:appinfo>
-						<MaxLength>2000</MaxLength>
-						<NoCalls/>
-						<UseInstead/>
-						<DeprecationVersion>971</DeprecationVersion>
-						<EndOfLifeVersion>1027</EndOfLifeVersion>
-						<DeprecationDetails>NoOp</DeprecationDetails>
-					</xs:appinfo>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="UserID" type="xs:string" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation>
-						&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;ReviewType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindReviewsAndGuides&lt;/b&gt; call.
-						&lt;/span&gt;
-						<!-- The reviewer's eBay user ID. -->
-					</xs:documentation>
-					<xs:appinfo>
-						<NoCalls/>
-						<UseInstead/>
-						<DeprecationVersion>971</DeprecationVersion>
-						<EndOfLifeVersion>1027</EndOfLifeVersion>
-						<DeprecationDetails>NoOp</DeprecationDetails>
-					</xs:appinfo>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="CreationTime" type="xs:dateTime" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation>
-						&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;ReviewType&lt;/b&gt; and all of its elements are deprecated along with the &lt;b&gt;FindReviewsAndGuides&lt;/b&gt; call.
-						&lt;/span&gt;
-						<!-- The time and date when the reviewer posted the review. -->
-					</xs:documentation>
-					<xs:appinfo>
-						<NoCalls/>
-						<UseInstead/>
-						<DeprecationVersion>971</DeprecationVersion>
-						<EndOfLifeVersion>1027</EndOfLifeVersion>
-						<DeprecationDetails>NoOp</DeprecationDetails>
 					</xs:appinfo>
 				</xs:annotation>
 			</xs:element>
@@ -12171,45 +10700,12 @@
 				<xs:annotation>
 					<xs:documentation>
 						Placeholder value. See
-						&lt;a href="http://developer.ebay.com/DevZone/shopping/docs/CallRef/types/simpleTypes.html#token"&gt;token&lt;/a&gt;.
+						&lt;a href="https://developer.ebay.com/DevZone/shopping/docs/CallRef/types/simpleTypes.html#token"&gt;token&lt;/a&gt;.
 					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			</xs:restriction>
 	</xs:simpleType>
-<!--
-
-##### from file ../Shopping/xsd/SimpleItemArrayType.xsd #####
-
--->
-	<xs:complexType name="SimpleItemArrayType">
-		<xs:annotation>
-			<xs:documentation>
-				&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;SimpleItemArrayType&lt;/b&gt; and the &lt;b&gt;Item&lt;/b&gt; element are deprecated along with the &lt;b&gt;FindHalfProducts&lt;/b&gt; call.
-				&lt;/span&gt;
-				<!-- Container for a list of items. Can contain zero, one, or multiple
-				SimpleItemType objects, each of which conveys the data for one item listing. -->
-			</xs:documentation>
-		</xs:annotation>
-		<xs:sequence>
-			<xs:element name="Item" type="ns:SimpleItemType" minOccurs="0" maxOccurs="unbounded">
-				<xs:annotation>
-					<xs:documentation>
-						&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt; &lt;b&gt;SimpleItemArrayType&lt;/b&gt; and the &lt;b&gt;Item&lt;/b&gt; element are deprecated along with the &lt;b&gt;FindHalfProducts&lt;/b&gt; call.
-						&lt;/span&gt;
-						<!-- Contains data for an item listing. -->
-					</xs:documentation>
-					<xs:appinfo>
-						<NoCalls/>
-						<UseInstead/>
-						<DeprecationVersion>971</DeprecationVersion>
-						<EndOfLifeVersion>1027</EndOfLifeVersion>
-						<DeprecationDetails>NoOp</DeprecationDetails>
-					</xs:appinfo>
-				</xs:annotation>
-			</xs:element>
-		</xs:sequence>
-	</xs:complexType>
 <!--
 
 ##### from file ../Shopping/xsd/SimpleItemType.xsd #####
@@ -12549,7 +11045,7 @@
 			<xs:element name="PrimaryCategoryID" type="xs:string" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>
-						The unique identifier of the eBay listing's primay category. This field is always returned. Some listings are shown in an additional secondary category, and if this is the case, the unique identifier of the secondary category is shown in the &lt;b&gt;SecondaryCategoryID&lt;/b&gt; field.
+						The unique identifier of the eBay listing's primary category. This field is always returned. Some listings are shown in an additional secondary category, and if this is the case, the unique identifier of the secondary category is shown in the &lt;b&gt;SecondaryCategoryID&lt;/b&gt; field.
 					</xs:documentation>
 					<xs:appinfo>
 						<CallInfo>
@@ -13152,7 +11648,7 @@
 					</xs:appinfo>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="HalfItemCondition" type="ns:HalfItemConditionCodeType" minOccurs="0">
+			<xs:element name="HalfItemCondition" type="xs:string" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>
 						This field is deprecated.
@@ -13334,7 +11830,7 @@
 						</CallInfo>
 						<seeLink>
 							<Title>Handling Time and Estimated Delivery Time</Title>
-							<URL>http://developer.ebay.com/Devzone/guides/ebayfeatures/Development/Shipping-Services.html#HandlingTimeandEstimatedDeliveryTime</URL>
+							<URL>https://developer.ebay.com/Devzone/guides/ebayfeatures/Development/Shipping-Services.html#HandlingTimeandEstimatedDeliveryTime</URL>
 							<For>details about same day handling and default cutoff times</For>
 						</seeLink>
 					</xs:appinfo>
@@ -13362,6 +11858,9 @@
 			<xs:element name="ConditionID" type="xs:int" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>
+						&lt;span class="tablenote"&gt;&lt;strong&gt;Note:&lt;/strong&gt;
+							As of September 1, 2021, condition ID 2500 ('Seller Refurbished') is no longer a valid item condition in the Cell Phones &amp; Smartphones category (category ID 9355) for the following marketplaces: US, Canada, UK, Germany, and Australia. This refurbished item condition has been replaced by three new refurbished values, which include 'Excellent - Refurbished' (condition ID 2010), 'Very Good - Refurbished' (condition ID 2020), and 'Good - Refurbished' (condition ID 2030).
+						&lt;/span&gt;
 						A numeric identifier that represents the condition of an item. These numeric IDs can vary by eBay category, but many are the same across categories. For example, &lt;code&gt;1000&lt;/code&gt; indicates an item in &lt;em&gt;New&lt;/em&gt; condition, &lt;code&gt;3000&lt;/code&gt; indicates an item in &lt;em&gt;Used&lt;/em&gt; condition, and &lt;code&gt;5000&lt;/code&gt; indicates an item in &lt;em&gt;Good&lt;/em&gt; condition.
 						&lt;br/&gt;&lt;br/&gt;
 						This field will get returned for most listings since most eBay listing categories require an item condition, but this field may not get returned for listings in eBay categories that don't require an item condition. A &lt;b&gt;ConditionID&lt;/b&gt; value always maps to a text-based description of the condition, and this display text is shown in the &lt;b&gt;ConditionDisplayName&lt;/b&gt; field.
@@ -13384,6 +11883,9 @@
 			<xs:element name="ConditionDisplayName" type="xs:string" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>
+						&lt;span class="tablenote"&gt;&lt;strong&gt;Note:&lt;/strong&gt;
+							As of September 1, 2021, condition ID 2500 ('Seller Refurbished') is no longer a valid item condition in the Cell Phones &amp; Smartphones category (category ID 9355) for the following marketplaces: US, Canada, UK, Germany, and Australia. This refurbished item condition has been replaced by three new refurbished values, which include 'Excellent - Refurbished' (condition ID 2010), 'Very Good - Refurbished' (condition ID 2020), and 'Good - Refurbished' (condition ID 2030).
+						&lt;/span&gt;
 						The user-friendly display name for the item condition, such as &lt;em&gt;New&lt;/em&gt;, &lt;em&gt;Like New&lt;/em&gt; &lt;em&gt;Used&lt;/em&gt;, or &lt;em&gt;Good&lt;/em&gt;. Display names are localized for the site on which they're listed (not necessarily the site on which they're viewed).
 						&lt;br&gt;
 						&lt;br&gt;
@@ -13759,7 +12261,7 @@
 						&lt;a href="http://ebay.co.uk/clickandcollect/"&gt;Click and Collect&lt;/a&gt; home page on the eBay UK site, the &lt;a href="http://sellercentre.ebay.com.au/click-and-collect"&gt;Click and Collect&lt;/a&gt; home page on the eBay Australia site, or the &lt;a href="https://pages.ebay.de/einkaufen/click-and-collect.html"&gt;Click and Collect&lt;/a&gt; home page on the eBay Germany site.
 						&lt;br&gt;
 						&lt;br&gt;
-						Not all categories on the UK, Australia, and Germany sites support Click and Collect listings. To verify if a specific category on these eBay sites support Click and Collect listings, use the &lt;a href="http://developer.ebay.com/DevZone/XML/docs/Reference/eBay/GetCategoryFeatures.html"&gt;GetCategoryFeatures&lt;/a&gt; call, passing in one or more &lt;b&gt;CategoryID&lt;/b&gt; values and a &lt;b&gt;PickupDropOffEnabled&lt;/b&gt; value in the &lt;b&gt;FeatureID&lt;/b&gt; field.
+						Not all categories on the UK, Australia, and Germany sites support Click and Collect listings. To verify if a specific category on these eBay sites support Click and Collect listings, use the &lt;a href="https://developer.ebay.com/DevZone/XML/docs/Reference/eBay/GetCategoryFeatures.html"&gt;GetCategoryFeatures&lt;/a&gt; call, passing in one or more &lt;b&gt;CategoryID&lt;/b&gt; values and a &lt;b&gt;PickupDropOffEnabled&lt;/b&gt; value in the &lt;b&gt;FeatureID&lt;/b&gt; field.
 						&lt;br/&gt;&lt;br/&gt;
 						Look for a &lt;code&gt;true&lt;/code&gt; value in the &lt;b&gt;PickupDropOffEnabled&lt;/b&gt; field of the corresponding &lt;b&gt;Category&lt;/b&gt; node (match up the &lt;b&gt;CategoryID&lt;/b&gt; values if more than one Category IDs were passed in the request).
 					</xs:documentation>
@@ -14312,7 +12814,7 @@
 					<xs:appinfo>
 						<SeeLink>
 							<Title>Displaying Discount Pricing Information to Buyers</Title>
-							<URL>http://developer.ebay.com/DevZone/guides/features-guide/Development/Items-Retrieving.html</URL>
+							<URL>https://developer.ebay.com/DevZone/guides/features-guide/Development/Items-Retrieving.html</URL>
 						</SeeLink>
 						<CallInfo>
 							<CallName>GetSingleItem</CallName>
@@ -14607,7 +13109,7 @@
 	
 	<wsdl:service name="Shopping">
 			<wsdl:documentation>
-				<Version>1173</Version>
+				<Version>1199</Version>
 			</wsdl:documentation>
 		<wsdl:port binding="ns:ShoppingBinding" name="Shopping">
 			<wsdlsoap:address location="http://open.api.ebay.com/shopping"/>

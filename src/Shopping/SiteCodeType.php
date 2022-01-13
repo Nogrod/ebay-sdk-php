@@ -203,7 +203,7 @@ class SiteCodeType
      *
      * Placeholder value. See
      *  <a
-     * href="http://developer.ebay.com/DevZone/shopping/docs/CallRef/types/simpleTypes.html#token">token</a>.
+     * href="https://developer.ebay.com/DevZone/shopping/docs/CallRef/types/simpleTypes.html#token">token</a>.
      */
     public const VAL_CUSTOM_CODE = 'CustomCode';
 

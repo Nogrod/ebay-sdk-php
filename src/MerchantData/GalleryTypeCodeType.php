@@ -55,7 +55,7 @@ class GalleryTypeCodeType
      * supersize, popup, etc.), which are used by the various Gallery enhancements.
      *  <br/><br/>
      *  All images must comply to the <a
-     * href="http://developer.ebay.com/DevZone/guides/features-guide/default.html#development/Pictures-Intro.html">Picture
+     * href="https://developer.ebay.com/DevZone/guides/features-guide/default.html#development/Pictures-Intro.html">Picture
      * Requirements.</a>
      */
     public const VAL_GALLERY = 'Gallery';

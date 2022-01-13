@@ -52,7 +52,7 @@ class SeverityCodeType
      *  </ul>
      *  <br/><br/>
      *  See the <a
-     * href="http://developer.ebay.com/DevZone/guides/features-guide/default.html#Basics/Call-UsingLiveData.html#CompatibleApplicationCheck">Compatible
+     * href="https://developer.ebay.com/DevZone/guides/features-guide/default.html#Basics/Call-UsingLiveData.html#CompatibleApplicationCheck">Compatible
      * Application Check</a> section of the
      *  eBay Features Guide for more information.
      */

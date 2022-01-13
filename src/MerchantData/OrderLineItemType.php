@@ -22,7 +22,7 @@ class OrderLineItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
      *  is the Transaction ID. The Transaction field in the Trading API is a container that can include
      *  many types of order line item (transaction) information.
      *  <br><br>
-     *  See <a href="http://developer.ebay.com/DevZone/XML/docs/Reference/eBay/GetSellerTransactions.html#Response.TransactionArray.Transaction.TransactionID" target="_blank">Trading API</a>
+     *  See <a href="https://developer.ebay.com/DevZone/XML/docs/Reference/eBay/GetSellerTransactions.html#Response.TransactionArray.Transaction.TransactionID" target="_blank">Trading API</a>
      *  for more information.
      *
      * @var string $orderLineItemID
@@ -150,7 +150,6 @@ class OrderLineItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
 
     /**
      * The date and time that the payment was acknowledged.
-     *  Only returned for SoldReport if payment has been marked as received.
      *
      * @var \DateTime $paymentClearedTime
      */
@@ -206,90 +205,6 @@ class OrderLineItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
     private $feeAmount = null;
 
     /**
-     * For users of the Selling Manager or Selling Manager Pro tools only. If you are not
-     *  using Selling Manager or Selling Manager Pro, this field will not be returned in your response.
-     *  <br><br>
-     *  Unique identifier for the record, assigned by eBay. An example of a recordId:
-     *  1111:222:333:444:x.
-     *
-     * @var int $sellingManagerSaleRecordID
-     */
-    private $sellingManagerSaleRecordID = null;
-
-    /**
-     * If payment has been marked as sent (on the Buyer's MyeBay page), this field returns
-     *  the transaction number assigned to the payment event by the eBay application. Sellers
-     *  might use this field to determine when they can ship an item. This field is only
-     *  included in the response after the Buyer has completed checkout.
-     *  <br><br>
-     *  If a buyer has completed checkout using PayPal, the Payment is automatically marked
-     *  as sent, and the BuyerPaymentTransactionNumber will be the same number as the PayPal
-     *  External Transaction ID. Otherwise, the buyer must mark the item as paid manually on
-     *  the MyeBay page.
-     *
-     * @var string $buyerPaymentTransactionNumber
-     */
-    private $buyerPaymentTransactionNumber = null;
-
-    /**
-     * Variations are multiple similar (but not identical) items in one
-     *  fixed-price listing. For example, a clothing listing can
-     *  contain items of the same brand that vary by color and size.
-     *  Each variation specifies a combination of one of these
-     *  colors and sizes. Each variation can have a different
-     *  quantity and price. Only returned if the order line item is for
-     *  a variation.
-     *
-     * @var \Nogrod\eBaySDK\MerchantData\MerchantDataVariationType $variation
-     */
-    private $variation = null;
-
-    /**
-     * A tax exception category code. This is returned only if set
-     *  for the listing.
-     *
-     * @var string $taxCategory
-     */
-    private $taxCategory = null;
-
-    /**
-     * Details about taxes applicable to this order line item (transaction).
-     *  Returned only if enabled for the account.
-     *  (Otherwise see OrderLineItem.TaxAmount.)
-     *
-     * @var \Nogrod\eBaySDK\MerchantData\TaxesType $taxes
-     */
-    private $taxes = null;
-
-    /**
-     * Container consisting of status details of an order line item,
-     *  including payment information. Several of these fields change values during
-     *  the checkout flow. See <b>TransactionStatusType</b> for its child elements.
-     *  <br><br>
-     *  For <b>SoldReport</b>, only the
-     *  <b>PaymentHoldStatus</b> child element is returned. The
-     *  fields indicating the status of the order are actually found in the
-     *  <b>OrderDetails.CheckoutStatus</b> container.
-     *
-     * @var \Nogrod\eBaySDK\MerchantData\TransactionStatusType $status
-     */
-    private $status = null;
-
-    /**
-     * This indicates the shipping cost for the order line item, and it's only emitted if promotional shipping service is selected and payment has been made.
-     *
-     * @var \Nogrod\eBaySDK\MerchantData\AmountType $actualShippingCost
-     */
-    private $actualShippingCost = null;
-
-    /**
-     * Unpaid Item Details.
-     *
-     * @var \Nogrod\eBaySDK\MerchantData\UnpaidItemType $unpaidItem
-     */
-    private $unpaidItem = null;
-
-    /**
      * Gets as orderLineItemID
      *
      * An ID that uniquely identifies each line item within an order. If the buyer only
@@ -301,7 +216,7 @@ class OrderLineItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
      *  is the Transaction ID. The Transaction field in the Trading API is a container that can include
      *  many types of order line item (transaction) information.
      *  <br><br>
-     *  See <a href="http://developer.ebay.com/DevZone/XML/docs/Reference/eBay/GetSellerTransactions.html#Response.TransactionArray.Transaction.TransactionID" target="_blank">Trading API</a>
+     *  See <a href="https://developer.ebay.com/DevZone/XML/docs/Reference/eBay/GetSellerTransactions.html#Response.TransactionArray.Transaction.TransactionID" target="_blank">Trading API</a>
      *  for more information.
      *
      * @return string
@@ -323,7 +238,7 @@ class OrderLineItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
      *  is the Transaction ID. The Transaction field in the Trading API is a container that can include
      *  many types of order line item (transaction) information.
      *  <br><br>
-     *  See <a href="http://developer.ebay.com/DevZone/XML/docs/Reference/eBay/GetSellerTransactions.html#Response.TransactionArray.Transaction.TransactionID" target="_blank">Trading API</a>
+     *  See <a href="https://developer.ebay.com/DevZone/XML/docs/Reference/eBay/GetSellerTransactions.html#Response.TransactionArray.Transaction.TransactionID" target="_blank">Trading API</a>
      *  for more information.
      *
      * @param string $orderLineItemID
@@ -745,7 +660,6 @@ class OrderLineItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
      * Gets as paymentClearedTime
      *
      * The date and time that the payment was acknowledged.
-     *  Only returned for SoldReport if payment has been marked as received.
      *
      * @return \DateTime
      */
@@ -758,7 +672,6 @@ class OrderLineItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
      * Sets a new paymentClearedTime
      *
      * The date and time that the payment was acknowledged.
-     *  Only returned for SoldReport if payment has been marked as received.
      *
      * @param \DateTime $paymentClearedTime
      * @return self
@@ -951,270 +864,6 @@ class OrderLineItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
         return $this;
     }
 
-    /**
-     * Gets as sellingManagerSaleRecordID
-     *
-     * For users of the Selling Manager or Selling Manager Pro tools only. If you are not
-     *  using Selling Manager or Selling Manager Pro, this field will not be returned in your response.
-     *  <br><br>
-     *  Unique identifier for the record, assigned by eBay. An example of a recordId:
-     *  1111:222:333:444:x.
-     *
-     * @return int
-     */
-    public function getSellingManagerSaleRecordID()
-    {
-        return $this->sellingManagerSaleRecordID;
-    }
-
-    /**
-     * Sets a new sellingManagerSaleRecordID
-     *
-     * For users of the Selling Manager or Selling Manager Pro tools only. If you are not
-     *  using Selling Manager or Selling Manager Pro, this field will not be returned in your response.
-     *  <br><br>
-     *  Unique identifier for the record, assigned by eBay. An example of a recordId:
-     *  1111:222:333:444:x.
-     *
-     * @param int $sellingManagerSaleRecordID
-     * @return self
-     */
-    public function setSellingManagerSaleRecordID($sellingManagerSaleRecordID)
-    {
-        $this->sellingManagerSaleRecordID = $sellingManagerSaleRecordID;
-        return $this;
-    }
-
-    /**
-     * Gets as buyerPaymentTransactionNumber
-     *
-     * If payment has been marked as sent (on the Buyer's MyeBay page), this field returns
-     *  the transaction number assigned to the payment event by the eBay application. Sellers
-     *  might use this field to determine when they can ship an item. This field is only
-     *  included in the response after the Buyer has completed checkout.
-     *  <br><br>
-     *  If a buyer has completed checkout using PayPal, the Payment is automatically marked
-     *  as sent, and the BuyerPaymentTransactionNumber will be the same number as the PayPal
-     *  External Transaction ID. Otherwise, the buyer must mark the item as paid manually on
-     *  the MyeBay page.
-     *
-     * @return string
-     */
-    public function getBuyerPaymentTransactionNumber()
-    {
-        return $this->buyerPaymentTransactionNumber;
-    }
-
-    /**
-     * Sets a new buyerPaymentTransactionNumber
-     *
-     * If payment has been marked as sent (on the Buyer's MyeBay page), this field returns
-     *  the transaction number assigned to the payment event by the eBay application. Sellers
-     *  might use this field to determine when they can ship an item. This field is only
-     *  included in the response after the Buyer has completed checkout.
-     *  <br><br>
-     *  If a buyer has completed checkout using PayPal, the Payment is automatically marked
-     *  as sent, and the BuyerPaymentTransactionNumber will be the same number as the PayPal
-     *  External Transaction ID. Otherwise, the buyer must mark the item as paid manually on
-     *  the MyeBay page.
-     *
-     * @param string $buyerPaymentTransactionNumber
-     * @return self
-     */
-    public function setBuyerPaymentTransactionNumber($buyerPaymentTransactionNumber)
-    {
-        $this->buyerPaymentTransactionNumber = $buyerPaymentTransactionNumber;
-        return $this;
-    }
-
-    /**
-     * Gets as variation
-     *
-     * Variations are multiple similar (but not identical) items in one
-     *  fixed-price listing. For example, a clothing listing can
-     *  contain items of the same brand that vary by color and size.
-     *  Each variation specifies a combination of one of these
-     *  colors and sizes. Each variation can have a different
-     *  quantity and price. Only returned if the order line item is for
-     *  a variation.
-     *
-     * @return \Nogrod\eBaySDK\MerchantData\MerchantDataVariationType
-     */
-    public function getVariation()
-    {
-        return $this->variation;
-    }
-
-    /**
-     * Sets a new variation
-     *
-     * Variations are multiple similar (but not identical) items in one
-     *  fixed-price listing. For example, a clothing listing can
-     *  contain items of the same brand that vary by color and size.
-     *  Each variation specifies a combination of one of these
-     *  colors and sizes. Each variation can have a different
-     *  quantity and price. Only returned if the order line item is for
-     *  a variation.
-     *
-     * @param \Nogrod\eBaySDK\MerchantData\MerchantDataVariationType $variation
-     * @return self
-     */
-    public function setVariation(\Nogrod\eBaySDK\MerchantData\MerchantDataVariationType $variation)
-    {
-        $this->variation = $variation;
-        return $this;
-    }
-
-    /**
-     * Gets as taxCategory
-     *
-     * A tax exception category code. This is returned only if set
-     *  for the listing.
-     *
-     * @return string
-     */
-    public function getTaxCategory()
-    {
-        return $this->taxCategory;
-    }
-
-    /**
-     * Sets a new taxCategory
-     *
-     * A tax exception category code. This is returned only if set
-     *  for the listing.
-     *
-     * @param string $taxCategory
-     * @return self
-     */
-    public function setTaxCategory($taxCategory)
-    {
-        $this->taxCategory = $taxCategory;
-        return $this;
-    }
-
-    /**
-     * Gets as taxes
-     *
-     * Details about taxes applicable to this order line item (transaction).
-     *  Returned only if enabled for the account.
-     *  (Otherwise see OrderLineItem.TaxAmount.)
-     *
-     * @return \Nogrod\eBaySDK\MerchantData\TaxesType
-     */
-    public function getTaxes()
-    {
-        return $this->taxes;
-    }
-
-    /**
-     * Sets a new taxes
-     *
-     * Details about taxes applicable to this order line item (transaction).
-     *  Returned only if enabled for the account.
-     *  (Otherwise see OrderLineItem.TaxAmount.)
-     *
-     * @param \Nogrod\eBaySDK\MerchantData\TaxesType $taxes
-     * @return self
-     */
-    public function setTaxes(\Nogrod\eBaySDK\MerchantData\TaxesType $taxes)
-    {
-        $this->taxes = $taxes;
-        return $this;
-    }
-
-    /**
-     * Gets as status
-     *
-     * Container consisting of status details of an order line item,
-     *  including payment information. Several of these fields change values during
-     *  the checkout flow. See <b>TransactionStatusType</b> for its child elements.
-     *  <br><br>
-     *  For <b>SoldReport</b>, only the
-     *  <b>PaymentHoldStatus</b> child element is returned. The
-     *  fields indicating the status of the order are actually found in the
-     *  <b>OrderDetails.CheckoutStatus</b> container.
-     *
-     * @return \Nogrod\eBaySDK\MerchantData\TransactionStatusType
-     */
-    public function getStatus()
-    {
-        return $this->status;
-    }
-
-    /**
-     * Sets a new status
-     *
-     * Container consisting of status details of an order line item,
-     *  including payment information. Several of these fields change values during
-     *  the checkout flow. See <b>TransactionStatusType</b> for its child elements.
-     *  <br><br>
-     *  For <b>SoldReport</b>, only the
-     *  <b>PaymentHoldStatus</b> child element is returned. The
-     *  fields indicating the status of the order are actually found in the
-     *  <b>OrderDetails.CheckoutStatus</b> container.
-     *
-     * @param \Nogrod\eBaySDK\MerchantData\TransactionStatusType $status
-     * @return self
-     */
-    public function setStatus(\Nogrod\eBaySDK\MerchantData\TransactionStatusType $status)
-    {
-        $this->status = $status;
-        return $this;
-    }
-
-    /**
-     * Gets as actualShippingCost
-     *
-     * This indicates the shipping cost for the order line item, and it's only emitted if promotional shipping service is selected and payment has been made.
-     *
-     * @return \Nogrod\eBaySDK\MerchantData\AmountType
-     */
-    public function getActualShippingCost()
-    {
-        return $this->actualShippingCost;
-    }
-
-    /**
-     * Sets a new actualShippingCost
-     *
-     * This indicates the shipping cost for the order line item, and it's only emitted if promotional shipping service is selected and payment has been made.
-     *
-     * @param \Nogrod\eBaySDK\MerchantData\AmountType $actualShippingCost
-     * @return self
-     */
-    public function setActualShippingCost(\Nogrod\eBaySDK\MerchantData\AmountType $actualShippingCost)
-    {
-        $this->actualShippingCost = $actualShippingCost;
-        return $this;
-    }
-
-    /**
-     * Gets as unpaidItem
-     *
-     * Unpaid Item Details.
-     *
-     * @return \Nogrod\eBaySDK\MerchantData\UnpaidItemType
-     */
-    public function getUnpaidItem()
-    {
-        return $this->unpaidItem;
-    }
-
-    /**
-     * Sets a new unpaidItem
-     *
-     * Unpaid Item Details.
-     *
-     * @param \Nogrod\eBaySDK\MerchantData\UnpaidItemType $unpaidItem
-     * @return self
-     */
-    public function setUnpaidItem(\Nogrod\eBaySDK\MerchantData\UnpaidItemType $unpaidItem)
-    {
-        $this->unpaidItem = $unpaidItem;
-        return $this;
-    }
-
     public function xmlSerialize(\Sabre\Xml\Writer $writer)
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
@@ -1310,38 +959,6 @@ class OrderLineItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
         $value = $this->getFeeAmount();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}FeeAmount", $value);
-        }
-        $value = $this->getSellingManagerSaleRecordID();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SellingManagerSaleRecordID", $value);
-        }
-        $value = $this->getBuyerPaymentTransactionNumber();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BuyerPaymentTransactionNumber", $value);
-        }
-        $value = $this->getVariation();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Variation", $value);
-        }
-        $value = $this->getTaxCategory();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TaxCategory", $value);
-        }
-        $value = $this->getTaxes();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Taxes", $value);
-        }
-        $value = $this->getStatus();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Status", $value);
-        }
-        $value = $this->getActualShippingCost();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ActualShippingCost", $value);
-        }
-        $value = $this->getUnpaidItem();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}UnpaidItem", $value);
         }
     }
 
@@ -1450,38 +1067,6 @@ class OrderLineItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeeAmount');
         if (null !== $value) {
             $this->setFeeAmount(\Nogrod\eBaySDK\MerchantData\AmountType::fromKeyValue($value));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellingManagerSaleRecordID');
-        if (null !== $value) {
-            $this->setSellingManagerSaleRecordID($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BuyerPaymentTransactionNumber');
-        if (null !== $value) {
-            $this->setBuyerPaymentTransactionNumber($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Variation');
-        if (null !== $value) {
-            $this->setVariation(\Nogrod\eBaySDK\MerchantData\MerchantDataVariationType::fromKeyValue($value));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TaxCategory');
-        if (null !== $value) {
-            $this->setTaxCategory($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Taxes');
-        if (null !== $value) {
-            $this->setTaxes(\Nogrod\eBaySDK\MerchantData\TaxesType::fromKeyValue($value));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Status');
-        if (null !== $value) {
-            $this->setStatus(\Nogrod\eBaySDK\MerchantData\TransactionStatusType::fromKeyValue($value));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ActualShippingCost');
-        if (null !== $value) {
-            $this->setActualShippingCost(\Nogrod\eBaySDK\MerchantData\AmountType::fromKeyValue($value));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UnpaidItem');
-        if (null !== $value) {
-            $this->setUnpaidItem(\Nogrod\eBaySDK\MerchantData\UnpaidItemType::fromKeyValue($value));
         }
     }
 }

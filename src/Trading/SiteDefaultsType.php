@@ -7,15 +7,13 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing SiteDefaultsType
  *
- * A container for feature definitions that apply to the entire site.
+ * This type is used by the <b>SiteDefaults</b> container to display the features/settings that are default for most categories on the eBay marketplace.
  * XSD Type: SiteDefaultsType
  */
 class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
     /**
-     * Specifies the ID of a set of default durations for a certain type of listing.
-     *  The actual duration values are returned within the FeatureDefinitions node.
-     *  The type of listing is named in the type attribute.
+     * A <b>ListingDuration</b> field will be returned for each different listing type that is supported on the eBay marketplace. Each field will show the listing type and the identifier associated with this listing type. These IDs will be used to match the default listing duration values that are displayed in the <b>FeatureDefinitions.ListingDurations</b> containers.
      *
      * @var \Nogrod\eBaySDK\Trading\ListingDurationReferenceType[] $listingDuration
      */
@@ -24,10 +22,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     ];
 
     /**
-     * Specifies the default site setting for whether sellers are
-     *  required to specify a domestic shipping service and its associated cost
-     *  when listing items. True means the shipping terms are required
-     *  unless a specific category overrides this setting.
+     * Specifies the default site setting for whether sellers are required to specify a domestic shipping service and its associated cost when listing items. True means the shipping terms are required unless a specific category overrides this setting.
      *
      * @var bool $shippingTermsRequired
      */
@@ -42,90 +37,69 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
 
     /**
      * This field is no longer applicable as Dutch auctions are no longer available on eBay sites.
-     *  </span>
-     *  <br>
      *
      * @var bool $dutchBINEnabled
      */
     private $dutchBINEnabled = null;
 
     /**
-     * Specifies the default site setting for whether a bidder must consent to the
-     *  bid by confirming that he or she read and agrees to the terms in eBay's
-     *  privacy policy.
+     * Specifies the default site setting for whether a bidder must consent to the bid by confirming that he or she read and agrees to the terms in eBay's privacy policy.
      *
      * @var bool $userConsentRequired
      */
     private $userConsentRequired = null;
 
     /**
-     * Indicates whether or not it is possible to enhance a listing by putting
-     *  it into a rotation for display on a special area of the eBay home page.
-     *  Support for this feature varies by site. Item or feedback restrictions may apply.
+     * Indicates whether or not it is possible to enhance a listing by putting it into a rotation for display on a special area of the eBay home page. Support for this feature varies by site. Item or feedback restrictions may apply.
      *
      * @var bool $homePageFeaturedEnabled
      */
     private $homePageFeaturedEnabled = null;
 
     /**
-     * Specifies the default site setting for whether categories allow
-     *  the ProPack feature (a feature pack). True means ProPack is allowed site-wide,
-     *  unless a specific category overrides the setting.
+     * Specifies the default site setting for whether categories allow the ProPack feature (a feature pack). True means ProPack is allowed site-wide, unless a specific category overrides the setting.
      *
      * @var bool $proPackEnabled
      */
     private $proPackEnabled = null;
 
     /**
-     * Specifies the default site setting for whether
-     *  categories allow the <b>BasicUpgradePack</b> feature (a feature pack).
-     *  No longer allowed on any sites.
-     *  Formerly, Australia site (site ID 15, abbreviation AU) only.
+     * Specifies the default site setting for whether categories allow the <b>BasicUpgradePack</b> feature (a feature pack). No longer allowed on any sites. Formerly, Australia site (site ID 15, abbreviation AU) only.
      *
      * @var bool $basicUpgradePackEnabled
      */
     private $basicUpgradePackEnabled = null;
 
     /**
-     * Specifies the default site setting for whether
-     *  categories allow the ValuePack feature (a feature pack).
-     *  A value of <code>true</code> means it is allowed site-wide, unless a specific category overrides the setting.
+     * Specifies the default site setting for whether categories allow the ValuePack feature (a feature pack). A value of <code>true</code> means it is allowed site-wide, unless a specific category overrides the setting.
      *
      * @var bool $valuePackEnabled
      */
     private $valuePackEnabled = null;
 
     /**
-     * Specifies the default site setting for whether
-     *  categories allow the ProPackPlus feature (a feature pack).
-     *  A value of <code>true</code> means it is allowed site-wide, unless a specific category overrides the setting.
+     * Specifies the default site setting for whether categories allow the ProPackPlus feature (a feature pack). A value of <code>true</code> means it is allowed site-wide, unless a specific category overrides the setting.
      *
      * @var bool $proPackPlusEnabled
      */
     private $proPackPlusEnabled = null;
 
     /**
-     * Specifies the default site setting for whether categories allow
-     *  Classified Ad format listings. A value of <code>true</code> means the feature is allowed site-wide,
-     *  unless a specific category overrides the setting.
+     * Specifies the default site setting for whether categories allow Classified Ad format listings. A value of <code>true</code> means the feature is allowed site-wide, unless a specific category overrides the setting.
      *
      * @var string $adFormatEnabled
      */
     private $adFormatEnabled = null;
 
     /**
-     * Specifies the default site setting for whether categories allow counter offers
-     *  for Best Offers. A value of <code>true</code> means counter offers are allowed site-wide, unless a
-     *  specific category overrides the setting.
+     * Specifies the default site setting for whether categories allow counter offers for Best Offers. A value of <code>true</code> means counter offers are allowed site-wide, unless a specific category overrides the setting.
      *
      * @var bool $bestOfferCounterEnabled
      */
     private $bestOfferCounterEnabled = null;
 
     /**
-     * Specifies the default site setting for whether categories allow
-     *  auto decline for Best Offers. A value of <code>true</code> means auto decline is allowed site-wide,
-     *  unless a specific category overrides the setting.
+     * Specifies the default site setting for whether categories allow auto decline for Best Offers. A value of <code>true</code> means auto decline is allowed site-wide, unless a specific category overrides the setting.
      *
      * @var bool $bestOfferAutoDeclineEnabled
      */
@@ -185,28 +159,23 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     private $expressConditionRequired = null;
 
     /**
-     * Specifies the default site setting for whether the Minimum Reserve Price
-     *  feature is supported for most categories.
+     * Specifies the default site setting for whether the Minimum Reserve Price feature is supported for most categories.
      *
      * @var float $minimumReservePrice
      */
     private $minimumReservePrice = null;
 
     /**
-     * Specifies the default site setting for whether most categories allow seller-
-     *  level contact information for Classified Ad listings.
+     * Specifies the default site setting for whether most categories allow seller-level contact information for Classified Ad listings.
      *  <br/><br/>
-     *  A value of <code>true</code> means
-     *  seller-level contact information is available for Classified Ad format
-     *  listings site-wide, unless a specific category overrides the setting.
+     *  A value of <code>true</code> means seller-level contact information is available for Classified Ad format listings site-wide, unless a specific category overrides the setting.
      *
      * @var bool $sellerContactDetailsEnabled
      */
     private $sellerContactDetailsEnabled = null;
 
     /**
-     * Specifies the default site setting for whether the Transaction Confirmation
-     *  Request feature is supported for most categories.
+     * Specifies the default site setting for whether the Transaction Confirmation Request feature is supported for most categories.
      *
      * @var bool $transactionConfirmationRequestEnabled
      */
@@ -314,20 +283,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     private $classifiedAdContactByEmailEnabled = null;
 
     /**
-     * Specifies whether categories on the site require a seller to offer a safe payment method (i.e. PayPal or one of the credit cards specified in <b>Item.PaymentMethods</b>). If a seller has a 'SafePaymentExempt' status, they are exempt from the category requirement to offer at least one safe payment method, even if the site and category have the safe payment method turned on.
-     *  <br/><br/>
-     *  If <code>true</code>, items on
-     *  the site need to have the safe payment method selected, but specific
-     *  categories can override the setting if they don't need this requirement. For
-     *  example, Business and Industrial, Motors, Real Estate, and Mature Audiences
-     *  categories, and all listings that don't support <b>Item.PaymentMethods</b> are
-     *  exempt from this requirement, which means that any seller can list without
-     *  any safe payment method selected.
-     *  <br><br/>
-     *  If <code>false</code>, all sellers in all categories can list without any safe payment
-     *  method selected and this setting cannot be overridden at the category level.
-     *  If site is not enabled, there is no category where this requirement is
-     *  enabled on that site.
+     * eBay controls all forms of electronic payment methods that are avaialable to buyers, so this field is no longer applicable.
      *
      * @var bool $safePaymentRequired
      */
@@ -378,8 +334,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     private $eANIdentifierEnabled = null;
 
     /**
-     * Indicates whether the category is enabled for the <b>BrandMPN</b> field for a specific item. If
-     *  <code>true</code>, sellers can add <b>BrandMPN</b> for that item.
+     * Indicates whether the category is enabled for the <b>BrandMPN</b> field for a specific item. If <code>true</code>, sellers can add <b>BrandMPN</b> for that item.
      *
      * @var bool $brandMPNIdentifierEnabled
      */
@@ -394,53 +349,42 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     private $classifiedAdAutoAcceptEnabled = null;
 
     /**
-     * Specifies the default site setting for whether categories allow
-     *  auto-accept for Best Offers.
+     * Specifies the default site setting for whether categories allow auto-accept for Best Offers.
      *
      * @var bool $bestOfferAutoAcceptEnabled
      */
     private $bestOfferAutoAcceptEnabled = null;
 
     /**
-     * Specifies the default site setting for whether categories allow
-     *  you to specify that listings be displayed in the default search
-     *  results of the respective sites.
+     * Specifies the default site setting for whether categories allow you to specify that listings be displayed in the default search results of the respective sites.
      *
      * @var bool $crossBorderTradeNorthAmericaEnabled
      */
     private $crossBorderTradeNorthAmericaEnabled = null;
 
     /**
-     * Specifies the default site setting for whether categories allow
-     *  you to specify that listings be displayed in the default search
-     *  results of the respective site.
+     * Specifies the default site setting for whether categories allow you to specify that listings be displayed in the default search results of the respective site.
      *
      * @var bool $crossBorderTradeGBEnabled
      */
     private $crossBorderTradeGBEnabled = null;
 
     /**
-     * Specifies the default site setting for whether categories allow
-     *  you to specify that listings be displayed in the default search
-     *  results of the respective site.
+     * Specifies the default site setting for whether categories allow you to specify that listings be displayed in the default search results of the respective site.
      *
      * @var bool $crossBorderTradeAustraliaEnabled
      */
     private $crossBorderTradeAustraliaEnabled = null;
 
     /**
-     * For the Australia site, if both <b>PayPalBuyerProtectionEnabled</b> and
-     *  <b>BuyerGuaranteeEnabled</b> are returned, then the default site setting
-     *  is that categories allow buyer protection.
+     * This field is deprecated. eBay now manages the complete payment and checkout process, so PayPal Purchase Protection no longer applies to eBay orders.
      *
      * @var bool $payPalBuyerProtectionEnabled
      */
     private $payPalBuyerProtectionEnabled = null;
 
     /**
-     * For the Australia site, if both <b>PayPalBuyerProtectionEnabled</b> and
-     *  <b>BuyerGuaranteeEnabled</b> are returned, then the default site setting
-     *  is that categories allow buyer protection.
+     * For the Australia site, if the <b>BuyerGuaranteeEnabled</b> is returned, then the default site setting is that categories allow buyer protection.
      *
      * @var bool $buyerGuaranteeEnabled
      */
@@ -462,25 +406,21 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     private $combinedFixedPriceTreatmentEnabled = null;
 
     /**
-     * Specifies the default site setting
-     *  that enables durations for "Gallery Featured".
+     * Specifies the default site setting that enables durations for "Gallery Featured".
      *
      * @var string[] $galleryFeaturedDurations
      */
     private $galleryFeaturedDurations = null;
 
     /**
-     * Specifies the default site setting for whether
-     *  categories have PayPal as a required payment method for listings.
+     * This field is deprecated. eBay now controls the electronic payment methods avaialable to buyers, and the seller does not specify any electronic payment methods.
      *
      * @var bool $payPalRequired
      */
     private $payPalRequired = null;
 
     /**
-     * Specifies the default site setting for whether categories allow
-     *  Classified Ad listings. A value of <code>true</code> means the feature is allowed site-wide,
-     *  unless a specific category overrides the setting. This element is for eBay Motors Pro users.
+     * Specifies the default site setting for whether categories allow Classified Ad listings. A value of <code>true</code> means the feature is allowed site-wide, unless a specific category overrides the setting. This element is for eBay Motors Pro users.
      *
      * @var string $eBayMotorsProAdFormatEnabled
      */
@@ -495,8 +435,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     private $eBayMotorsProContactByPhoneEnabled = null;
 
     /**
-     * Indicates which telephone option is enabled to
-     *  contact the seller. This element is for eBay Motors Pro users.
+     * Indicates which telephone option is enabled to contact the seller. This element is for eBay Motors Pro users.
      *
      * @var int $eBayMotorsProPhoneCount
      */
@@ -561,9 +500,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     private $eBayMotorsProAutoDeclineEnabled = null;
 
     /**
-     * Indicates if the payment method should be displayed to the user
-     *  for most categories. Even if enabled, checkout may or may not
-     *  be enabled. This element is for eBay Motors Pro users.
+     * Indicates if the payment method should be displayed to the user for most categories. Even if enabled, checkout may or may not be enabled. This element is for eBay Motors Pro users.
      *
      * @var string $eBayMotorsProPaymentMethodCheckOutEnabled
      */
@@ -597,9 +534,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     private $eBayMotorsProSellerContactDetailsEnabled = null;
 
     /**
-     * Specifies the default site setting for whether categories allow Classified Ad
-     *  listings. A value of <code>true</code> means the feature is allowed site-wide, unless a specific
-     *  category overrides the setting. This element is for Local Market dealers.
+     * Specifies the default site setting for whether categories allow Classified Ad listings. A value of <code>true</code> means the feature is allowed site-wide, unless a specific category overrides the setting. This element is for Local Market dealers.
      *
      * @var string $localMarketAdFormatEnabled
      */
@@ -614,8 +549,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     private $localMarketContactByPhoneEnabled = null;
 
     /**
-     * Indicates which telephone option is enabled to
-     *  contact the seller. This element is for Local Market dealers.
+     * Indicates which telephone option is enabled to contact the seller. This element is for Local Market dealers.
      *
      * @var int $localMarketPhoneCount
      */
@@ -662,27 +596,21 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     private $localMarketBestOfferEnabled = null;
 
     /**
-     * Specifies the default site setting for whether categories allow
-     *  auto-accept for Best Offers for Classified Ads.
-     *  This element is for Local Market dealers.
+     * Specifies the default site setting for whether categories allow auto-accept for Best Offers for Classified Ads. This element is for Local Market dealers.
      *
      * @var bool $localMarketAutoAcceptEnabled
      */
     private $localMarketAutoAcceptEnabled = null;
 
     /**
-     * Specifies the default site setting for whether categories allow
-     *  auto-decline for Best Offers for Classified Ads.
-     *  This element is for Local Market dealers.
+     * Specifies the default site setting for whether categories allow auto-decline for Best Offers for Classified Ads. This element is for Local Market dealers.
      *
      * @var bool $localMarketAutoDeclineEnabled
      */
     private $localMarketAutoDeclineEnabled = null;
 
     /**
-     * Indicates if the payment method should be displayed to the user
-     *  for most categories. Even if enabled, checkout may or may not
-     *  be enabled. This element is for Local Market dealers.
+     * Indicates if the payment method should be displayed to the user for most categories. Even if enabled, checkout may or may not be enabled. This element is for Local Market dealers.
      *
      * @var string $localMarketPaymentMethodCheckOutEnabled
      */
@@ -705,11 +633,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     private $localMarketCounterOfferEnabled = null;
 
     /**
-     * Specifies the default site setting for whether most categories allow seller-
-     *  level contact information for Classified Ad format listings. A value of <code>true</code>
-     *  means seller-level contact information is available for Classified Ad format
-     *  listings site-wide, unless a specific category overrides the setting. This
-     *  element is for Local Market dealers.
+     * Specifies the default site setting for whether most categories allow seller- level contact information for Classified Ad format listings. A value of <code>true</code> means seller-level contact information is available for Classified Ad format listings site-wide, unless a specific category overrides the setting. This element is for Local Market dealers.
      *
      * @var bool $localMarketSellerContactDetailsEnabled
      */
@@ -780,7 +704,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     private $nonSubscription = null;
 
     /**
-     * This field is deprecated and will no longer be returned.
+     * This field is deprecated.
      *
      * @var bool $payPalRequiredForStoreOwner
      */
@@ -822,16 +746,14 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     private $storeOwnerExtendedListingDurations = null;
 
     /**
-     * Specifies the default site setting for whether a return policy is
-     *  required for most categories.<br>
+     * Specifies the default site setting for whether a return policy is required for most categories.
      *  <br>
-     *  <b>For most sites:</b> If true, listings in most
-     *  categories require a return policy. <br>
      *  <br>
-     *  <b>For eBay Australia (AU) and
-     *  US eBay Motors Parts and Accessories:</b>
-     *  If true, most categories support but do not require a
-     *  return policy.<br>
+     *  <b>For most sites:</b> If true, listings in most categories require a return policy.
+     *  <br>
+     *  <br>
+     *  <b>For eBay Australia (AU) and US eBay Motors Parts and Accessories:</b> If true, most categories support but do not require a return policy.
+     *  <br>
      *  <br>
      *  Individual categories can override the site default.
      *
@@ -841,25 +763,20 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
 
     /**
      * Specifies the default site setting for whether a handling time (dispatch time) is
-     *  required for most categories.<br>
+     *  required for most categories.
      *  <br>
-     *  The handling time is the maximum number of business days the seller
-     *  commits to for preparing an item to be shipped after receiving a
-     *  cleared payment. The seller's handling time does not include the
-     *  shipping time (the carrier's transit time).<br>
      *  <br>
-     *  If <code>false</code>, most listings on the site require a handling time
-     *  (see <b>DispatchTimeMax</b> in <b>AddItem</b>) when flat or calculated shipping
-     *  is specified. (A handling time is not required for local pickup
-     *  or for freight shipping.)<br>
+     *  The handling time is the maximum number of business days the seller commits to for preparing an item to be shipped after receiving a cleared payment. The seller's handling time does not include the shipping time (the carrier's transit time).
      *  <br>
-     *  For a list of the handling time values allowed for each site, use
-     *  <b>DispatchTimeMaxDetails</b> in <b>GeteBayDetails</b>.<br>
+     *  <br>
+     *  If <code>false</code>, most listings on the site require a handling time (see <b>DispatchTimeMax</b> in <b>AddItem</b>) when flat or calculated shipping is specified. (A handling time is not required for local pickup or for freight shipping.)
+     *  <br>
+     *  <br>
+     *  For a list of the handling time values allowed for each site, use <b>DispatchTimeMaxDetails</b> in <b>GeteBayDetails</b>.
+     *  <br>
      *  <br>
      *  <span class="tablenote"><b>Note:</b>
-     *  Although the field name ends with "Enabled", a value of <code>true</code> means
-     *  that a handling time is NOT required, and value of <code>false</code> means
-     *  that a handling time IS required.</span>
+     *  Although the field name ends with "Enabled", a value of <code>true</code> means that a handling time is NOT required, and value of <code>false</code> means that a handling time IS required.</span>
      *
      * @var bool $handlingTimeEnabled
      */
@@ -905,6 +822,9 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
 
     /**
      * Indicates the acceptable payment methods that can be used when using the <b>Add</b>/<b>Revise</b>/<b>Relist</b> calls for an item listed on the corresponding site.
+     *  <br><br>
+     *  <span class="tablenote"><b>Note:</b>
+     *  eBay now controls all electronic payment methods available to buyers, but sellers still need to specify offline payment methods for listings that require/support offline payment such as motor vehicle listings.</span>
      *
      * @var string[] $paymentMethod
      */
@@ -913,16 +833,10 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     ];
 
     /**
-     * Specifies the default site setting for whether categories support
-     *  multi-variation listings. If true, you can pass in Item.Variations
-     *  in the AddFixedPriceItem family of calls when you list in
-     *  categories that support this feature.<br>
+     * Specifies the default site setting for whether categories support multi-variation listings. If true, you can pass in Item.Variations in the AddFixedPriceItem family of calls when you list in categories that support this feature.
      *  <br>
-     *  Multi-variation listings contain items that are logically the same
-     *  product, but that vary in their manufacturing details or packaging.
-     *  For example, a particular brand and style of shirt could be
-     *  available in different sizes and colors, such as "large blue" and
-     *  "medium black" variations.
+     *  <br>
+     *  Multi-variation listings contain items that are logically the same product, but that vary in their manufacturing details or packaging. For example, a particular brand and style of shirt could be available in different sizes and colors, such as "large blue" and "medium black" variations.
      *
      * @var bool $variationsEnabled
      */
@@ -936,93 +850,54 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     private $attributeConversionEnabled = null;
 
     /**
-     * Specifies the default site setting for whether categories allow
-     *  free, automatic upgrades for Gallery Plus, which enhances pictures
-     *  in search results.
+     * Specifies the default site setting for whether categories allow free, automatic upgrades for Gallery Plus, which enhances pictures in search results.
      *
      * @var bool $freeGalleryPlusEnabled
      */
     private $freeGalleryPlusEnabled = null;
 
     /**
-     * Specifies the default site setting for whether categories allow
-     *  free, automatic upgrades for Picture Pack, a discount package
-     *  that includes super-sizing of pictures.
+     * Specifies the default site setting for whether categories allow free, automatic upgrades for Picture Pack, a discount package that includes super-sizing of pictures.
      *
      * @var bool $freePicturePackEnabled
      */
     private $freePicturePackEnabled = null;
 
     /**
-     * Specifies the default site setting for whether listing items with parts
-     *  compatibility is supported by application (<code>ByApplication</code>), by specification
-     *  (<code>BySpecification</code>), or not at all (<code>Disabled</code>). A given category cannot support
-     *  both types of parts compatibility.
+     * Specifies the default site setting for whether listing items with parts compatibility is supported by application (<code>ByApplication</code>), by specification (<code>BySpecification</code>), or not at all (<code>Disabled</code>). A given category cannot support both types of parts compatibility.
      *  <br><br>
-     *  Parts compatibility listings contain information to determine the assemblies
-     *  with which a part is compatible. For example, an automotive part or accessory
-     *  listed with parts compatibility can be matched with vehicles (e.g., specific
-     *  years, makes, and models) with which the part or accessory can be used.
+     *  Parts compatibility listings contain information to determine the assemblies with which a part is compatible. For example, an automotive part or accessory listed with parts compatibility can be matched with vehicles (e.g., specific years, makes, and models) with which the part or accessory can be used.
      *  <br><br>
-     *  Parts Compatibility is supported in limited Parts & Accessories
-     *  categories for the US eBay Motors site only.
+     *  Parts Compatibility is supported in limited Parts & Accessories categories for the US eBay Motors site only.
      *
      * @var string $itemCompatibilityEnabled
      */
     private $itemCompatibilityEnabled = null;
 
     /**
-     * Specifies the default site setting for whether parts compatibility
-     *  information is required when listing items, and if so, how many
-     *  compatibilities must be specified. If the value is "0," you are not required
-     *  to specify compatibility information. A value greater than "0" indicates that
-     *  listing with parts compatibity is mandatory and the listing must contain the
-     *  specified number of compatibilities at a minimum.
+     * Specifies the default site setting for whether parts compatibility information is required when listing items, and if so, how many compatibilities must be specified. If the value is "0," you are not required to specify compatibility information. A value greater than "0" indicates that listing with parts compatibity is mandatory and the listing must contain the specified number of compatibilities at a minimum.
      *  <br><br>
-     *  Parts compatibility listings contain information to determine the assemblies
-     *  with which a part is compatible. For example, an automotive part or accessory
-     *  listed witih parts compatibility can be matched with vehicles (e.g., specific
-     *  years, makes, and models) with which the part or accessory can be used.
+     *  Parts compatibility listings contain information to determine the assemblies with which a part is compatible. For example, an automotive part or accessory listed witih parts compatibility can be matched with vehicles (e.g., specific years, makes, and models) with which the part or accessory can be used.
      *  <br><br>
-     *  This field applies only to listings in which compatibility is specified by
-     *  application. Entering parts compatibility by application specifies the
-     *  assemblies (e.g., a specific year, make, and model of car) to which the item
-     *  applies. This can be done automatically by listing with a catalog product
-     *  that supports parts compatibility, or manually, using
-     *  <b class="con">Item.ItemCompatibilityList</b> when listing or
-     *  revising an item.
+     *  This field applies only to listings in which compatibility is specified by application. Entering parts compatibility by application specifies the assemblies (e.g., a specific year, make, and model of car) to which the item applies. This can be done automatically by listing with a catalog product that supports parts compatibility, or manually, using <b class="con">Item.ItemCompatibilityList</b> when listing or revising an item.
      *
      * @var int $minItemCompatibility
      */
     private $minItemCompatibility = null;
 
     /**
-     * Specifies the default site setting for the maximum number of compatible
-     *  applications allowed per item when adding or revising items with parts
-     *  compatibility.
+     * Specifies the default site setting for the maximum number of compatible applications allowed per item when adding or revising items with parts compatibility.
      *  <br><br>
-     *  Parts compatibility listings contain structured information to determine the
-     *  assemblies with which a part is compatible. For example, an automotive part
-     *  or accessory listed with parts compatibility can be matched with vehicles
-     *  (e.g., specific years, makes, and models) with which the part or accessory
-     *  can be used.
+     *  Parts compatibility listings contain structured information to determine the assemblies with which a part is compatible. For example, an automotive part or accessory listed with parts compatibility can be matched with vehicles (e.g., specific years, makes, and models) with which the part or accessory can be used.
      *  <br><br>
-     *  This field applies only to listings in which compatibility is specified by
-     *  application manually when listing or revising an item. Entering parts
-     *  compatibility by application manually specifies the assemblies (e.g., a
-     *  specific year, make, and model of car) to which the item applies, using <b
-     *  class="con">Item.ItemCompatibilityList</b>.
+     *  This field applies only to listings in which compatibility is specified by application manually when listing or revising an item. Entering parts compatibility by application manually specifies the assemblies (e.g., a specific year, make, and model of car) to which the item applies, using <b class="con">Item.ItemCompatibilityList</b>.
      *
      * @var int $maxItemCompatibility
      */
     private $maxItemCompatibility = null;
 
     /**
-     * Specifies the default site setting for whether most categories
-     *  support (or require) <b>Item.ConditionID</b> in listings.
-     *  Use this to determine whether to use
-     *  <b>ConditionID</b> in <b>AddItem</b> and related calls.
-     *  See <b>ConditionValues</b> for a list of valid IDs.
+     * Specifies the default site setting for whether most categories support (or require) <b>Item.ConditionID</b> in listings. Use this to determine whether to use <b>ConditionID</b> in <b>AddItem</b> and related calls. See <b>ConditionValues</b> for a list of valid IDs.
      *  <br><br>
      *  In general, this is set to <code>Disabled</code>, and meta-categories
      *  (level 1 categories) define their own default settings.
@@ -1032,51 +907,39 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     private $conditionEnabled = null;
 
     /**
-     * The comprehensive list of item conditions on the site. That is,
-     *  this lists any value that could be supported by at least one
-     *  category on the site.
-     *  Individual meta-categories define their own default set of
-     *  condition values. (In other words, categories always override
-     *  this list with a customized subset of these values.)
+     * This container shows the site default item condition values. Individual leaf categories define their own default set of item condition values and always override this list.
      *
      * @var \Nogrod\eBaySDK\Trading\ConditionValuesType $conditionValues
      */
     private $conditionValues = null;
 
     /**
-     * Specifies the default site setting for whether most categories
-     *  follow specific rules associated with "value categories".<br>
+     * This container shows the site default special item condition values, such as <b>Certified - Refurbished</b> condition (condition ID 2000), <b>Excellent - Refurbished</b> condition (condition ID 2010), <b>Very Good - Refurbished</b> condition (condition ID 2020), and <b>Good - Refurbished</b> condition (condition ID 2030). A seller must be pre-qualified by eBay to list items with the any of these refurbished item conditions. The <b>Excellent - Refurbished</b>, <b>Very Good - Refurbished</b> and <b>Good - Refurbished</b> conditions are currently only applicable for the <strong>Cell Phones & Smartphones</strong> category (category ID 9355).
+     *  <br/><br/>
+     *  All other item conditions supported by a category will be returned in the <b>ConditionValues</b> container instead. Individual leaf categories define their own default set of item condition values and always override this list.
+     *
+     * @var \Nogrod\eBaySDK\Trading\ConditionValuesType $specialFeatures
+     */
+    private $specialFeatures = null;
+
+    /**
+     * Specifies the default site setting for whether most categories follow specific rules associated with "value categories".
      *  <br>
-     *  Some eBay sites may select a few categories and designate them as
-     *  "value categories". These are typically selected from
-     *  categories where buyers can find great deals. (Not all categories
-     *  with great deals are designated as value categories.)
-     *  This designation can change over time. <br>
      *  <br>
-     *  While a category is designated as a value category
-     *  (i.e., when <b>ValueCategory</b> = <code>true</code>),
-     *  it is subject to the following rule: Items in value categories can only be listed in one category.<br>
+     *  Some eBay sites may select a few categories and designate them as "value categories". These are typically selected from categories where buyers can find great deals. (Not all categories with great deals are designated as value categories.) This designation can change over time.
      *  <br>
-     *  For example, if you attempt to list in two categories and the
-     *  <b>PrimaryCategory</b> or <b>SecondaryCategory</b> is a value category,
-     *  then eBay drops the <b>SecondaryCategory</b> and lists the
-     *  item in the <b>PrimaryCategory</b> only.
-     *  Similarly, if you attempt to add a secondary category to an existing
-     *  listing, or you change the category for an existing listing,
-     *  and if the primary or secondary category is a value category,
-     *  then eBay drops the secondary category.
+     *  <br>
+     *  While a category is designated as a value category (i.e., when <b>ValueCategory</b> = <code>true</code>), it is subject to the following rule: Items in value categories can only be listed in one category.
+     *  <br>
+     *  <br>
+     *  For example, if you attempt to list in two categories and the <b>PrimaryCategory</b> or <b>SecondaryCategory</b> is a value category, then eBay drops the <b>SecondaryCategory</b> and lists the item in the <b>PrimaryCategory</b> only. Similarly, if you attempt to add a secondary category to an existing listing, or you change the category for an existing listing, and if the primary or secondary category is a value category, then eBay drops the secondary category.
      *
      * @var bool $valueCategory
      */
     private $valueCategory = null;
 
     /**
-     * Specifies the default site setting for whether most categories
-     *  support (or require) product creation in listings.
-     *  Use this to determine whether it is mandatory to send
-     *  product id in AddItem and related calls.
-     *  In general, this is set to Disabled, and meta-categories
-     *  (level 1 categories) define their own default settings.
+     * Specifies the default site setting for whether most categories support creating/revising listings based off an eBay catalog product.
      *
      * @var string $productCreationEnabled
      */
@@ -1153,8 +1016,6 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
 
     /**
      * Specifies what categories the Payment profile is applicable to.
-     *  Only returned when this value (or this category's setting)
-     *  overrides the value inherited from the category's parent.
      *
      * @var string $paymentProfileCategoryGroup
      */
@@ -1162,8 +1023,6 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
 
     /**
      * Specifies what categories the Return Policy profile is applicable to.
-     *  Only returned when this value (or this category's setting)
-     *  overrides the value inherited from the category's parent.
      *
      * @var string $returnPolicyProfileCategoryGroup
      */
@@ -1258,7 +1117,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      *  information on using an ePID to identify a compatible motorcycle or scooter
      *  through an Add/Revise/Relist API call on the Germany or UK site, see the
      *  documentation for the <a href="
-     *  http://developer.ebay.com/Devzone/XML/docs/Reference/eBay/AddItem.html#Request
+     *  https://developer.ebay.com/Devzone/XML/docs/Reference/eBay/AddItem.html#Request
      *  .Item.ItemCompatibilityList.Compatibility.NameValueList">Compatibility.Name
      *  ValueList</a> container.
      *
@@ -1275,7 +1134,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      *  using a K Type vehicle number to identify a compatible car or truck through an
      *  Add/Revise/Relist API call on the Germany site, see the documentation for the
      *  <a href="
-     *  http://developer.ebay.com/Devzone/XML/docs/Reference/eBay/AddItem.html#Request
+     *  https://developer.ebay.com/Devzone/XML/docs/Reference/eBay/AddItem.html#Request
      *  .Item.ItemCompatibilityList.Compatibility.NameValueList">Compatibility.Name
      *  ValueList</a> container.
      *
@@ -1284,19 +1143,14 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     private $kTypeSupported = null;
 
     /**
-     * This field indicates whether or not the specified eBay site supports Product-Based Shopping Experience listings - listings that are associated with an eBay catalog product.
-     *  <br>
-     *  <br>
-     *  <span class="tablenote"><b>Note:</b>
-     *  Due to the rollback of the Product-Based Shopping Experience mandate for all eBay categories, the <b>SiteDefaults.ProductRequiredEnabled</b> field no longer has any practical use, since its value with always be <code>Disabled</code>.
-     *  </span>
+     * This field is deprecated. No eBay categories require listings based on an eBay catalog product.
      *
      * @var string $productRequiredEnabled
      */
     private $productRequiredEnabled = null;
 
     /**
-     * This field returns the options a seller has for accepting or not accepting domestic item returns.
+     * This field returns the options a seller has for accepting or not accepting returns from domestic buyers.
      *  <br><br>
      *  The values returned in this field are pertinent only if <b>ReturnPolicyEnabled</b> in GetCategoryFeatures is set to <code>true</code> for the associated marketplace and category.
      *
@@ -1305,7 +1159,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     private $domesticReturnsAcceptedValues = null;
 
     /**
-     * This field returns the options a seller has for accepting or not accepting international item returns.
+     * This field returns the options a seller has for accepting or not accepting returns from international buyers.
      *  <br><br>
      *  The values returned in this field are pertinent only if <b>ReturnPolicyEnabled</b> in GetCategoryFeatures is set to <code>true</code> for the associated marketplace and category.
      *
@@ -1314,7 +1168,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     private $internationalReturnsAcceptedValues = null;
 
     /**
-     * This field returns the options a seller has for specifying the return period for domestic item returns. The return period is the amount of time the buyer has to initiate a return once they have received the item.
+     * This field returns the options a seller has for specifying the return period for returns from domestic buyers. The return period is the amount of time the buyer has to initiate a return once they have received the item.
      *  <br><br>
      *  The values returned in this field are pertinent only if <b>ReturnPolicyEnabled</b> in GetCategoryFeatures is set to <code>true</code> for the associated marketplace and category.
      *
@@ -1323,7 +1177,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     private $domesticReturnsDurationValues = null;
 
     /**
-     * This field returns the options a seller has for specifying the return period for international item returns. The return period is the amount of time the buyer has to initiate a return once they have received the item.
+     * This field returns the options a seller has for specifying the return period for returns from international buyers. The return period is the amount of time the buyer has to initiate a return once they have received the item.
      *  <br><br>
      *  The values returned in this field are pertinent only if <b>ReturnPolicyEnabled</b> in GetCategoryFeatures is set to <code>true</code> for the associated marketplace and category.
      *
@@ -1379,9 +1233,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Adds as listingDuration
      *
-     * Specifies the ID of a set of default durations for a certain type of listing.
-     *  The actual duration values are returned within the FeatureDefinitions node.
-     *  The type of listing is named in the type attribute.
+     * A <b>ListingDuration</b> field will be returned for each different listing type that is supported on the eBay marketplace. Each field will show the listing type and the identifier associated with this listing type. These IDs will be used to match the default listing duration values that are displayed in the <b>FeatureDefinitions.ListingDurations</b> containers.
      *
      * @return self
      * @param \Nogrod\eBaySDK\Trading\ListingDurationReferenceType $listingDuration
@@ -1395,9 +1247,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * isset listingDuration
      *
-     * Specifies the ID of a set of default durations for a certain type of listing.
-     *  The actual duration values are returned within the FeatureDefinitions node.
-     *  The type of listing is named in the type attribute.
+     * A <b>ListingDuration</b> field will be returned for each different listing type that is supported on the eBay marketplace. Each field will show the listing type and the identifier associated with this listing type. These IDs will be used to match the default listing duration values that are displayed in the <b>FeatureDefinitions.ListingDurations</b> containers.
      *
      * @param int|string $index
      * @return bool
@@ -1410,9 +1260,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * unset listingDuration
      *
-     * Specifies the ID of a set of default durations for a certain type of listing.
-     *  The actual duration values are returned within the FeatureDefinitions node.
-     *  The type of listing is named in the type attribute.
+     * A <b>ListingDuration</b> field will be returned for each different listing type that is supported on the eBay marketplace. Each field will show the listing type and the identifier associated with this listing type. These IDs will be used to match the default listing duration values that are displayed in the <b>FeatureDefinitions.ListingDurations</b> containers.
      *
      * @param int|string $index
      * @return void
@@ -1425,9 +1273,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Gets as listingDuration
      *
-     * Specifies the ID of a set of default durations for a certain type of listing.
-     *  The actual duration values are returned within the FeatureDefinitions node.
-     *  The type of listing is named in the type attribute.
+     * A <b>ListingDuration</b> field will be returned for each different listing type that is supported on the eBay marketplace. Each field will show the listing type and the identifier associated with this listing type. These IDs will be used to match the default listing duration values that are displayed in the <b>FeatureDefinitions.ListingDurations</b> containers.
      *
      * @return \Nogrod\eBaySDK\Trading\ListingDurationReferenceType[]
      */
@@ -1439,9 +1285,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Sets a new listingDuration
      *
-     * Specifies the ID of a set of default durations for a certain type of listing.
-     *  The actual duration values are returned within the FeatureDefinitions node.
-     *  The type of listing is named in the type attribute.
+     * A <b>ListingDuration</b> field will be returned for each different listing type that is supported on the eBay marketplace. Each field will show the listing type and the identifier associated with this listing type. These IDs will be used to match the default listing duration values that are displayed in the <b>FeatureDefinitions.ListingDurations</b> containers.
      *
      * @param \Nogrod\eBaySDK\Trading\ListingDurationReferenceType[] $listingDuration
      * @return self
@@ -1455,10 +1299,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Gets as shippingTermsRequired
      *
-     * Specifies the default site setting for whether sellers are
-     *  required to specify a domestic shipping service and its associated cost
-     *  when listing items. True means the shipping terms are required
-     *  unless a specific category overrides this setting.
+     * Specifies the default site setting for whether sellers are required to specify a domestic shipping service and its associated cost when listing items. True means the shipping terms are required unless a specific category overrides this setting.
      *
      * @return bool
      */
@@ -1470,10 +1311,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Sets a new shippingTermsRequired
      *
-     * Specifies the default site setting for whether sellers are
-     *  required to specify a domestic shipping service and its associated cost
-     *  when listing items. True means the shipping terms are required
-     *  unless a specific category overrides this setting.
+     * Specifies the default site setting for whether sellers are required to specify a domestic shipping service and its associated cost when listing items. True means the shipping terms are required unless a specific category overrides this setting.
      *
      * @param bool $shippingTermsRequired
      * @return self
@@ -1514,8 +1352,6 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      * Gets as dutchBINEnabled
      *
      * This field is no longer applicable as Dutch auctions are no longer available on eBay sites.
-     *  </span>
-     *  <br>
      *
      * @return bool
      */
@@ -1528,8 +1364,6 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      * Sets a new dutchBINEnabled
      *
      * This field is no longer applicable as Dutch auctions are no longer available on eBay sites.
-     *  </span>
-     *  <br>
      *
      * @param bool $dutchBINEnabled
      * @return self
@@ -1543,9 +1377,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Gets as userConsentRequired
      *
-     * Specifies the default site setting for whether a bidder must consent to the
-     *  bid by confirming that he or she read and agrees to the terms in eBay's
-     *  privacy policy.
+     * Specifies the default site setting for whether a bidder must consent to the bid by confirming that he or she read and agrees to the terms in eBay's privacy policy.
      *
      * @return bool
      */
@@ -1557,9 +1389,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Sets a new userConsentRequired
      *
-     * Specifies the default site setting for whether a bidder must consent to the
-     *  bid by confirming that he or she read and agrees to the terms in eBay's
-     *  privacy policy.
+     * Specifies the default site setting for whether a bidder must consent to the bid by confirming that he or she read and agrees to the terms in eBay's privacy policy.
      *
      * @param bool $userConsentRequired
      * @return self
@@ -1573,9 +1403,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Gets as homePageFeaturedEnabled
      *
-     * Indicates whether or not it is possible to enhance a listing by putting
-     *  it into a rotation for display on a special area of the eBay home page.
-     *  Support for this feature varies by site. Item or feedback restrictions may apply.
+     * Indicates whether or not it is possible to enhance a listing by putting it into a rotation for display on a special area of the eBay home page. Support for this feature varies by site. Item or feedback restrictions may apply.
      *
      * @return bool
      */
@@ -1587,9 +1415,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Sets a new homePageFeaturedEnabled
      *
-     * Indicates whether or not it is possible to enhance a listing by putting
-     *  it into a rotation for display on a special area of the eBay home page.
-     *  Support for this feature varies by site. Item or feedback restrictions may apply.
+     * Indicates whether or not it is possible to enhance a listing by putting it into a rotation for display on a special area of the eBay home page. Support for this feature varies by site. Item or feedback restrictions may apply.
      *
      * @param bool $homePageFeaturedEnabled
      * @return self
@@ -1603,9 +1429,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Gets as proPackEnabled
      *
-     * Specifies the default site setting for whether categories allow
-     *  the ProPack feature (a feature pack). True means ProPack is allowed site-wide,
-     *  unless a specific category overrides the setting.
+     * Specifies the default site setting for whether categories allow the ProPack feature (a feature pack). True means ProPack is allowed site-wide, unless a specific category overrides the setting.
      *
      * @return bool
      */
@@ -1617,9 +1441,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Sets a new proPackEnabled
      *
-     * Specifies the default site setting for whether categories allow
-     *  the ProPack feature (a feature pack). True means ProPack is allowed site-wide,
-     *  unless a specific category overrides the setting.
+     * Specifies the default site setting for whether categories allow the ProPack feature (a feature pack). True means ProPack is allowed site-wide, unless a specific category overrides the setting.
      *
      * @param bool $proPackEnabled
      * @return self
@@ -1633,10 +1455,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Gets as basicUpgradePackEnabled
      *
-     * Specifies the default site setting for whether
-     *  categories allow the <b>BasicUpgradePack</b> feature (a feature pack).
-     *  No longer allowed on any sites.
-     *  Formerly, Australia site (site ID 15, abbreviation AU) only.
+     * Specifies the default site setting for whether categories allow the <b>BasicUpgradePack</b> feature (a feature pack). No longer allowed on any sites. Formerly, Australia site (site ID 15, abbreviation AU) only.
      *
      * @return bool
      */
@@ -1648,10 +1467,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Sets a new basicUpgradePackEnabled
      *
-     * Specifies the default site setting for whether
-     *  categories allow the <b>BasicUpgradePack</b> feature (a feature pack).
-     *  No longer allowed on any sites.
-     *  Formerly, Australia site (site ID 15, abbreviation AU) only.
+     * Specifies the default site setting for whether categories allow the <b>BasicUpgradePack</b> feature (a feature pack). No longer allowed on any sites. Formerly, Australia site (site ID 15, abbreviation AU) only.
      *
      * @param bool $basicUpgradePackEnabled
      * @return self
@@ -1665,9 +1481,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Gets as valuePackEnabled
      *
-     * Specifies the default site setting for whether
-     *  categories allow the ValuePack feature (a feature pack).
-     *  A value of <code>true</code> means it is allowed site-wide, unless a specific category overrides the setting.
+     * Specifies the default site setting for whether categories allow the ValuePack feature (a feature pack). A value of <code>true</code> means it is allowed site-wide, unless a specific category overrides the setting.
      *
      * @return bool
      */
@@ -1679,9 +1493,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Sets a new valuePackEnabled
      *
-     * Specifies the default site setting for whether
-     *  categories allow the ValuePack feature (a feature pack).
-     *  A value of <code>true</code> means it is allowed site-wide, unless a specific category overrides the setting.
+     * Specifies the default site setting for whether categories allow the ValuePack feature (a feature pack). A value of <code>true</code> means it is allowed site-wide, unless a specific category overrides the setting.
      *
      * @param bool $valuePackEnabled
      * @return self
@@ -1695,9 +1507,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Gets as proPackPlusEnabled
      *
-     * Specifies the default site setting for whether
-     *  categories allow the ProPackPlus feature (a feature pack).
-     *  A value of <code>true</code> means it is allowed site-wide, unless a specific category overrides the setting.
+     * Specifies the default site setting for whether categories allow the ProPackPlus feature (a feature pack). A value of <code>true</code> means it is allowed site-wide, unless a specific category overrides the setting.
      *
      * @return bool
      */
@@ -1709,9 +1519,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Sets a new proPackPlusEnabled
      *
-     * Specifies the default site setting for whether
-     *  categories allow the ProPackPlus feature (a feature pack).
-     *  A value of <code>true</code> means it is allowed site-wide, unless a specific category overrides the setting.
+     * Specifies the default site setting for whether categories allow the ProPackPlus feature (a feature pack). A value of <code>true</code> means it is allowed site-wide, unless a specific category overrides the setting.
      *
      * @param bool $proPackPlusEnabled
      * @return self
@@ -1725,9 +1533,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Gets as adFormatEnabled
      *
-     * Specifies the default site setting for whether categories allow
-     *  Classified Ad format listings. A value of <code>true</code> means the feature is allowed site-wide,
-     *  unless a specific category overrides the setting.
+     * Specifies the default site setting for whether categories allow Classified Ad format listings. A value of <code>true</code> means the feature is allowed site-wide, unless a specific category overrides the setting.
      *
      * @return string
      */
@@ -1739,9 +1545,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Sets a new adFormatEnabled
      *
-     * Specifies the default site setting for whether categories allow
-     *  Classified Ad format listings. A value of <code>true</code> means the feature is allowed site-wide,
-     *  unless a specific category overrides the setting.
+     * Specifies the default site setting for whether categories allow Classified Ad format listings. A value of <code>true</code> means the feature is allowed site-wide, unless a specific category overrides the setting.
      *
      * @param string $adFormatEnabled
      * @return self
@@ -1755,9 +1559,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Gets as bestOfferCounterEnabled
      *
-     * Specifies the default site setting for whether categories allow counter offers
-     *  for Best Offers. A value of <code>true</code> means counter offers are allowed site-wide, unless a
-     *  specific category overrides the setting.
+     * Specifies the default site setting for whether categories allow counter offers for Best Offers. A value of <code>true</code> means counter offers are allowed site-wide, unless a specific category overrides the setting.
      *
      * @return bool
      */
@@ -1769,9 +1571,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Sets a new bestOfferCounterEnabled
      *
-     * Specifies the default site setting for whether categories allow counter offers
-     *  for Best Offers. A value of <code>true</code> means counter offers are allowed site-wide, unless a
-     *  specific category overrides the setting.
+     * Specifies the default site setting for whether categories allow counter offers for Best Offers. A value of <code>true</code> means counter offers are allowed site-wide, unless a specific category overrides the setting.
      *
      * @param bool $bestOfferCounterEnabled
      * @return self
@@ -1785,9 +1585,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Gets as bestOfferAutoDeclineEnabled
      *
-     * Specifies the default site setting for whether categories allow
-     *  auto decline for Best Offers. A value of <code>true</code> means auto decline is allowed site-wide,
-     *  unless a specific category overrides the setting.
+     * Specifies the default site setting for whether categories allow auto decline for Best Offers. A value of <code>true</code> means auto decline is allowed site-wide, unless a specific category overrides the setting.
      *
      * @return bool
      */
@@ -1799,9 +1597,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Sets a new bestOfferAutoDeclineEnabled
      *
-     * Specifies the default site setting for whether categories allow
-     *  auto decline for Best Offers. A value of <code>true</code> means auto decline is allowed site-wide,
-     *  unless a specific category overrides the setting.
+     * Specifies the default site setting for whether categories allow auto decline for Best Offers. A value of <code>true</code> means auto decline is allowed site-wide, unless a specific category overrides the setting.
      *
      * @param bool $bestOfferAutoDeclineEnabled
      * @return self
@@ -2005,8 +1801,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Gets as minimumReservePrice
      *
-     * Specifies the default site setting for whether the Minimum Reserve Price
-     *  feature is supported for most categories.
+     * Specifies the default site setting for whether the Minimum Reserve Price feature is supported for most categories.
      *
      * @return float
      */
@@ -2018,8 +1813,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Sets a new minimumReservePrice
      *
-     * Specifies the default site setting for whether the Minimum Reserve Price
-     *  feature is supported for most categories.
+     * Specifies the default site setting for whether the Minimum Reserve Price feature is supported for most categories.
      *
      * @param float $minimumReservePrice
      * @return self
@@ -2033,12 +1827,9 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Gets as sellerContactDetailsEnabled
      *
-     * Specifies the default site setting for whether most categories allow seller-
-     *  level contact information for Classified Ad listings.
+     * Specifies the default site setting for whether most categories allow seller-level contact information for Classified Ad listings.
      *  <br/><br/>
-     *  A value of <code>true</code> means
-     *  seller-level contact information is available for Classified Ad format
-     *  listings site-wide, unless a specific category overrides the setting.
+     *  A value of <code>true</code> means seller-level contact information is available for Classified Ad format listings site-wide, unless a specific category overrides the setting.
      *
      * @return bool
      */
@@ -2050,12 +1841,9 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Sets a new sellerContactDetailsEnabled
      *
-     * Specifies the default site setting for whether most categories allow seller-
-     *  level contact information for Classified Ad listings.
+     * Specifies the default site setting for whether most categories allow seller-level contact information for Classified Ad listings.
      *  <br/><br/>
-     *  A value of <code>true</code> means
-     *  seller-level contact information is available for Classified Ad format
-     *  listings site-wide, unless a specific category overrides the setting.
+     *  A value of <code>true</code> means seller-level contact information is available for Classified Ad format listings site-wide, unless a specific category overrides the setting.
      *
      * @param bool $sellerContactDetailsEnabled
      * @return self
@@ -2069,8 +1857,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Gets as transactionConfirmationRequestEnabled
      *
-     * Specifies the default site setting for whether the Transaction Confirmation
-     *  Request feature is supported for most categories.
+     * Specifies the default site setting for whether the Transaction Confirmation Request feature is supported for most categories.
      *
      * @return bool
      */
@@ -2082,8 +1869,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Sets a new transactionConfirmationRequestEnabled
      *
-     * Specifies the default site setting for whether the Transaction Confirmation
-     *  Request feature is supported for most categories.
+     * Specifies the default site setting for whether the Transaction Confirmation Request feature is supported for most categories.
      *
      * @param bool $transactionConfirmationRequestEnabled
      * @return self
@@ -2455,20 +2241,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Gets as safePaymentRequired
      *
-     * Specifies whether categories on the site require a seller to offer a safe payment method (i.e. PayPal or one of the credit cards specified in <b>Item.PaymentMethods</b>). If a seller has a 'SafePaymentExempt' status, they are exempt from the category requirement to offer at least one safe payment method, even if the site and category have the safe payment method turned on.
-     *  <br/><br/>
-     *  If <code>true</code>, items on
-     *  the site need to have the safe payment method selected, but specific
-     *  categories can override the setting if they don't need this requirement. For
-     *  example, Business and Industrial, Motors, Real Estate, and Mature Audiences
-     *  categories, and all listings that don't support <b>Item.PaymentMethods</b> are
-     *  exempt from this requirement, which means that any seller can list without
-     *  any safe payment method selected.
-     *  <br><br/>
-     *  If <code>false</code>, all sellers in all categories can list without any safe payment
-     *  method selected and this setting cannot be overridden at the category level.
-     *  If site is not enabled, there is no category where this requirement is
-     *  enabled on that site.
+     * eBay controls all forms of electronic payment methods that are avaialable to buyers, so this field is no longer applicable.
      *
      * @return bool
      */
@@ -2480,20 +2253,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Sets a new safePaymentRequired
      *
-     * Specifies whether categories on the site require a seller to offer a safe payment method (i.e. PayPal or one of the credit cards specified in <b>Item.PaymentMethods</b>). If a seller has a 'SafePaymentExempt' status, they are exempt from the category requirement to offer at least one safe payment method, even if the site and category have the safe payment method turned on.
-     *  <br/><br/>
-     *  If <code>true</code>, items on
-     *  the site need to have the safe payment method selected, but specific
-     *  categories can override the setting if they don't need this requirement. For
-     *  example, Business and Industrial, Motors, Real Estate, and Mature Audiences
-     *  categories, and all listings that don't support <b>Item.PaymentMethods</b> are
-     *  exempt from this requirement, which means that any seller can list without
-     *  any safe payment method selected.
-     *  <br><br/>
-     *  If <code>false</code>, all sellers in all categories can list without any safe payment
-     *  method selected and this setting cannot be overridden at the category level.
-     *  If site is not enabled, there is no category where this requirement is
-     *  enabled on that site.
+     * eBay controls all forms of electronic payment methods that are avaialable to buyers, so this field is no longer applicable.
      *
      * @param bool $safePaymentRequired
      * @return self
@@ -2667,8 +2427,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Gets as brandMPNIdentifierEnabled
      *
-     * Indicates whether the category is enabled for the <b>BrandMPN</b> field for a specific item. If
-     *  <code>true</code>, sellers can add <b>BrandMPN</b> for that item.
+     * Indicates whether the category is enabled for the <b>BrandMPN</b> field for a specific item. If <code>true</code>, sellers can add <b>BrandMPN</b> for that item.
      *
      * @return bool
      */
@@ -2680,8 +2439,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Sets a new brandMPNIdentifierEnabled
      *
-     * Indicates whether the category is enabled for the <b>BrandMPN</b> field for a specific item. If
-     *  <code>true</code>, sellers can add <b>BrandMPN</b> for that item.
+     * Indicates whether the category is enabled for the <b>BrandMPN</b> field for a specific item. If <code>true</code>, sellers can add <b>BrandMPN</b> for that item.
      *
      * @param bool $brandMPNIdentifierEnabled
      * @return self
@@ -2723,8 +2481,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Gets as bestOfferAutoAcceptEnabled
      *
-     * Specifies the default site setting for whether categories allow
-     *  auto-accept for Best Offers.
+     * Specifies the default site setting for whether categories allow auto-accept for Best Offers.
      *
      * @return bool
      */
@@ -2736,8 +2493,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Sets a new bestOfferAutoAcceptEnabled
      *
-     * Specifies the default site setting for whether categories allow
-     *  auto-accept for Best Offers.
+     * Specifies the default site setting for whether categories allow auto-accept for Best Offers.
      *
      * @param bool $bestOfferAutoAcceptEnabled
      * @return self
@@ -2751,9 +2507,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Gets as crossBorderTradeNorthAmericaEnabled
      *
-     * Specifies the default site setting for whether categories allow
-     *  you to specify that listings be displayed in the default search
-     *  results of the respective sites.
+     * Specifies the default site setting for whether categories allow you to specify that listings be displayed in the default search results of the respective sites.
      *
      * @return bool
      */
@@ -2765,9 +2519,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Sets a new crossBorderTradeNorthAmericaEnabled
      *
-     * Specifies the default site setting for whether categories allow
-     *  you to specify that listings be displayed in the default search
-     *  results of the respective sites.
+     * Specifies the default site setting for whether categories allow you to specify that listings be displayed in the default search results of the respective sites.
      *
      * @param bool $crossBorderTradeNorthAmericaEnabled
      * @return self
@@ -2781,9 +2533,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Gets as crossBorderTradeGBEnabled
      *
-     * Specifies the default site setting for whether categories allow
-     *  you to specify that listings be displayed in the default search
-     *  results of the respective site.
+     * Specifies the default site setting for whether categories allow you to specify that listings be displayed in the default search results of the respective site.
      *
      * @return bool
      */
@@ -2795,9 +2545,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Sets a new crossBorderTradeGBEnabled
      *
-     * Specifies the default site setting for whether categories allow
-     *  you to specify that listings be displayed in the default search
-     *  results of the respective site.
+     * Specifies the default site setting for whether categories allow you to specify that listings be displayed in the default search results of the respective site.
      *
      * @param bool $crossBorderTradeGBEnabled
      * @return self
@@ -2811,9 +2559,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Gets as crossBorderTradeAustraliaEnabled
      *
-     * Specifies the default site setting for whether categories allow
-     *  you to specify that listings be displayed in the default search
-     *  results of the respective site.
+     * Specifies the default site setting for whether categories allow you to specify that listings be displayed in the default search results of the respective site.
      *
      * @return bool
      */
@@ -2825,9 +2571,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Sets a new crossBorderTradeAustraliaEnabled
      *
-     * Specifies the default site setting for whether categories allow
-     *  you to specify that listings be displayed in the default search
-     *  results of the respective site.
+     * Specifies the default site setting for whether categories allow you to specify that listings be displayed in the default search results of the respective site.
      *
      * @param bool $crossBorderTradeAustraliaEnabled
      * @return self
@@ -2841,9 +2585,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Gets as payPalBuyerProtectionEnabled
      *
-     * For the Australia site, if both <b>PayPalBuyerProtectionEnabled</b> and
-     *  <b>BuyerGuaranteeEnabled</b> are returned, then the default site setting
-     *  is that categories allow buyer protection.
+     * This field is deprecated. eBay now manages the complete payment and checkout process, so PayPal Purchase Protection no longer applies to eBay orders.
      *
      * @return bool
      */
@@ -2855,9 +2597,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Sets a new payPalBuyerProtectionEnabled
      *
-     * For the Australia site, if both <b>PayPalBuyerProtectionEnabled</b> and
-     *  <b>BuyerGuaranteeEnabled</b> are returned, then the default site setting
-     *  is that categories allow buyer protection.
+     * This field is deprecated. eBay now manages the complete payment and checkout process, so PayPal Purchase Protection no longer applies to eBay orders.
      *
      * @param bool $payPalBuyerProtectionEnabled
      * @return self
@@ -2871,9 +2611,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Gets as buyerGuaranteeEnabled
      *
-     * For the Australia site, if both <b>PayPalBuyerProtectionEnabled</b> and
-     *  <b>BuyerGuaranteeEnabled</b> are returned, then the default site setting
-     *  is that categories allow buyer protection.
+     * For the Australia site, if the <b>BuyerGuaranteeEnabled</b> is returned, then the default site setting is that categories allow buyer protection.
      *
      * @return bool
      */
@@ -2885,9 +2623,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Sets a new buyerGuaranteeEnabled
      *
-     * For the Australia site, if both <b>PayPalBuyerProtectionEnabled</b> and
-     *  <b>BuyerGuaranteeEnabled</b> are returned, then the default site setting
-     *  is that categories allow buyer protection.
+     * For the Australia site, if the <b>BuyerGuaranteeEnabled</b> is returned, then the default site setting is that categories allow buyer protection.
      *
      * @param bool $buyerGuaranteeEnabled
      * @return self
@@ -2955,8 +2691,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Adds as duration
      *
-     * Specifies the default site setting
-     *  that enables durations for "Gallery Featured".
+     * Specifies the default site setting that enables durations for "Gallery Featured".
      *
      * @return self
      * @param string $duration
@@ -2970,8 +2705,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * isset galleryFeaturedDurations
      *
-     * Specifies the default site setting
-     *  that enables durations for "Gallery Featured".
+     * Specifies the default site setting that enables durations for "Gallery Featured".
      *
      * @param int|string $index
      * @return bool
@@ -2984,8 +2718,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * unset galleryFeaturedDurations
      *
-     * Specifies the default site setting
-     *  that enables durations for "Gallery Featured".
+     * Specifies the default site setting that enables durations for "Gallery Featured".
      *
      * @param int|string $index
      * @return void
@@ -2998,8 +2731,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Gets as galleryFeaturedDurations
      *
-     * Specifies the default site setting
-     *  that enables durations for "Gallery Featured".
+     * Specifies the default site setting that enables durations for "Gallery Featured".
      *
      * @return string[]
      */
@@ -3011,8 +2743,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Sets a new galleryFeaturedDurations
      *
-     * Specifies the default site setting
-     *  that enables durations for "Gallery Featured".
+     * Specifies the default site setting that enables durations for "Gallery Featured".
      *
      * @param string[] $galleryFeaturedDurations
      * @return self
@@ -3026,8 +2757,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Gets as payPalRequired
      *
-     * Specifies the default site setting for whether
-     *  categories have PayPal as a required payment method for listings.
+     * This field is deprecated. eBay now controls the electronic payment methods avaialable to buyers, and the seller does not specify any electronic payment methods.
      *
      * @return bool
      */
@@ -3039,8 +2769,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Sets a new payPalRequired
      *
-     * Specifies the default site setting for whether
-     *  categories have PayPal as a required payment method for listings.
+     * This field is deprecated. eBay now controls the electronic payment methods avaialable to buyers, and the seller does not specify any electronic payment methods.
      *
      * @param bool $payPalRequired
      * @return self
@@ -3054,9 +2783,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Gets as eBayMotorsProAdFormatEnabled
      *
-     * Specifies the default site setting for whether categories allow
-     *  Classified Ad listings. A value of <code>true</code> means the feature is allowed site-wide,
-     *  unless a specific category overrides the setting. This element is for eBay Motors Pro users.
+     * Specifies the default site setting for whether categories allow Classified Ad listings. A value of <code>true</code> means the feature is allowed site-wide, unless a specific category overrides the setting. This element is for eBay Motors Pro users.
      *
      * @return string
      */
@@ -3068,9 +2795,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Sets a new eBayMotorsProAdFormatEnabled
      *
-     * Specifies the default site setting for whether categories allow
-     *  Classified Ad listings. A value of <code>true</code> means the feature is allowed site-wide,
-     *  unless a specific category overrides the setting. This element is for eBay Motors Pro users.
+     * Specifies the default site setting for whether categories allow Classified Ad listings. A value of <code>true</code> means the feature is allowed site-wide, unless a specific category overrides the setting. This element is for eBay Motors Pro users.
      *
      * @param string $eBayMotorsProAdFormatEnabled
      * @return self
@@ -3112,8 +2837,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Gets as eBayMotorsProPhoneCount
      *
-     * Indicates which telephone option is enabled to
-     *  contact the seller. This element is for eBay Motors Pro users.
+     * Indicates which telephone option is enabled to contact the seller. This element is for eBay Motors Pro users.
      *
      * @return int
      */
@@ -3125,8 +2849,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Sets a new eBayMotorsProPhoneCount
      *
-     * Indicates which telephone option is enabled to
-     *  contact the seller. This element is for eBay Motors Pro users.
+     * Indicates which telephone option is enabled to contact the seller. This element is for eBay Motors Pro users.
      *
      * @param int $eBayMotorsProPhoneCount
      * @return self
@@ -3340,9 +3063,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Gets as eBayMotorsProPaymentMethodCheckOutEnabled
      *
-     * Indicates if the payment method should be displayed to the user
-     *  for most categories. Even if enabled, checkout may or may not
-     *  be enabled. This element is for eBay Motors Pro users.
+     * Indicates if the payment method should be displayed to the user for most categories. Even if enabled, checkout may or may not be enabled. This element is for eBay Motors Pro users.
      *
      * @return string
      */
@@ -3354,9 +3075,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Sets a new eBayMotorsProPaymentMethodCheckOutEnabled
      *
-     * Indicates if the payment method should be displayed to the user
-     *  for most categories. Even if enabled, checkout may or may not
-     *  be enabled. This element is for eBay Motors Pro users.
+     * Indicates if the payment method should be displayed to the user for most categories. Even if enabled, checkout may or may not be enabled. This element is for eBay Motors Pro users.
      *
      * @param string $eBayMotorsProPaymentMethodCheckOutEnabled
      * @return self
@@ -3460,9 +3179,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Gets as localMarketAdFormatEnabled
      *
-     * Specifies the default site setting for whether categories allow Classified Ad
-     *  listings. A value of <code>true</code> means the feature is allowed site-wide, unless a specific
-     *  category overrides the setting. This element is for Local Market dealers.
+     * Specifies the default site setting for whether categories allow Classified Ad listings. A value of <code>true</code> means the feature is allowed site-wide, unless a specific category overrides the setting. This element is for Local Market dealers.
      *
      * @return string
      */
@@ -3474,9 +3191,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Sets a new localMarketAdFormatEnabled
      *
-     * Specifies the default site setting for whether categories allow Classified Ad
-     *  listings. A value of <code>true</code> means the feature is allowed site-wide, unless a specific
-     *  category overrides the setting. This element is for Local Market dealers.
+     * Specifies the default site setting for whether categories allow Classified Ad listings. A value of <code>true</code> means the feature is allowed site-wide, unless a specific category overrides the setting. This element is for Local Market dealers.
      *
      * @param string $localMarketAdFormatEnabled
      * @return self
@@ -3518,8 +3233,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Gets as localMarketPhoneCount
      *
-     * Indicates which telephone option is enabled to
-     *  contact the seller. This element is for Local Market dealers.
+     * Indicates which telephone option is enabled to contact the seller. This element is for Local Market dealers.
      *
      * @return int
      */
@@ -3531,8 +3245,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Sets a new localMarketPhoneCount
      *
-     * Indicates which telephone option is enabled to
-     *  contact the seller. This element is for Local Market dealers.
+     * Indicates which telephone option is enabled to contact the seller. This element is for Local Market dealers.
      *
      * @param int $localMarketPhoneCount
      * @return self
@@ -3686,9 +3399,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Gets as localMarketAutoAcceptEnabled
      *
-     * Specifies the default site setting for whether categories allow
-     *  auto-accept for Best Offers for Classified Ads.
-     *  This element is for Local Market dealers.
+     * Specifies the default site setting for whether categories allow auto-accept for Best Offers for Classified Ads. This element is for Local Market dealers.
      *
      * @return bool
      */
@@ -3700,9 +3411,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Sets a new localMarketAutoAcceptEnabled
      *
-     * Specifies the default site setting for whether categories allow
-     *  auto-accept for Best Offers for Classified Ads.
-     *  This element is for Local Market dealers.
+     * Specifies the default site setting for whether categories allow auto-accept for Best Offers for Classified Ads. This element is for Local Market dealers.
      *
      * @param bool $localMarketAutoAcceptEnabled
      * @return self
@@ -3716,9 +3425,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Gets as localMarketAutoDeclineEnabled
      *
-     * Specifies the default site setting for whether categories allow
-     *  auto-decline for Best Offers for Classified Ads.
-     *  This element is for Local Market dealers.
+     * Specifies the default site setting for whether categories allow auto-decline for Best Offers for Classified Ads. This element is for Local Market dealers.
      *
      * @return bool
      */
@@ -3730,9 +3437,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Sets a new localMarketAutoDeclineEnabled
      *
-     * Specifies the default site setting for whether categories allow
-     *  auto-decline for Best Offers for Classified Ads.
-     *  This element is for Local Market dealers.
+     * Specifies the default site setting for whether categories allow auto-decline for Best Offers for Classified Ads. This element is for Local Market dealers.
      *
      * @param bool $localMarketAutoDeclineEnabled
      * @return self
@@ -3746,9 +3451,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Gets as localMarketPaymentMethodCheckOutEnabled
      *
-     * Indicates if the payment method should be displayed to the user
-     *  for most categories. Even if enabled, checkout may or may not
-     *  be enabled. This element is for Local Market dealers.
+     * Indicates if the payment method should be displayed to the user for most categories. Even if enabled, checkout may or may not be enabled. This element is for Local Market dealers.
      *
      * @return string
      */
@@ -3760,9 +3463,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Sets a new localMarketPaymentMethodCheckOutEnabled
      *
-     * Indicates if the payment method should be displayed to the user
-     *  for most categories. Even if enabled, checkout may or may not
-     *  be enabled. This element is for Local Market dealers.
+     * Indicates if the payment method should be displayed to the user for most categories. Even if enabled, checkout may or may not be enabled. This element is for Local Market dealers.
      *
      * @param string $localMarketPaymentMethodCheckOutEnabled
      * @return self
@@ -3832,11 +3533,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Gets as localMarketSellerContactDetailsEnabled
      *
-     * Specifies the default site setting for whether most categories allow seller-
-     *  level contact information for Classified Ad format listings. A value of <code>true</code>
-     *  means seller-level contact information is available for Classified Ad format
-     *  listings site-wide, unless a specific category overrides the setting. This
-     *  element is for Local Market dealers.
+     * Specifies the default site setting for whether most categories allow seller- level contact information for Classified Ad format listings. A value of <code>true</code> means seller-level contact information is available for Classified Ad format listings site-wide, unless a specific category overrides the setting. This element is for Local Market dealers.
      *
      * @return bool
      */
@@ -3848,11 +3545,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Sets a new localMarketSellerContactDetailsEnabled
      *
-     * Specifies the default site setting for whether most categories allow seller-
-     *  level contact information for Classified Ad format listings. A value of <code>true</code>
-     *  means seller-level contact information is available for Classified Ad format
-     *  listings site-wide, unless a specific category overrides the setting. This
-     *  element is for Local Market dealers.
+     * Specifies the default site setting for whether most categories allow seller- level contact information for Classified Ad format listings. A value of <code>true</code> means seller-level contact information is available for Classified Ad format listings site-wide, unless a specific category overrides the setting. This element is for Local Market dealers.
      *
      * @param bool $localMarketSellerContactDetailsEnabled
      * @return self
@@ -4090,7 +3783,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Gets as payPalRequiredForStoreOwner
      *
-     * This field is deprecated and will no longer be returned.
+     * This field is deprecated.
      *
      * @return bool
      */
@@ -4102,7 +3795,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Sets a new payPalRequiredForStoreOwner
      *
-     * This field is deprecated and will no longer be returned.
+     * This field is deprecated.
      *
      * @param bool $payPalRequiredForStoreOwner
      * @return self
@@ -4280,16 +3973,14 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Gets as returnPolicyEnabled
      *
-     * Specifies the default site setting for whether a return policy is
-     *  required for most categories.<br>
+     * Specifies the default site setting for whether a return policy is required for most categories.
      *  <br>
-     *  <b>For most sites:</b> If true, listings in most
-     *  categories require a return policy. <br>
      *  <br>
-     *  <b>For eBay Australia (AU) and
-     *  US eBay Motors Parts and Accessories:</b>
-     *  If true, most categories support but do not require a
-     *  return policy.<br>
+     *  <b>For most sites:</b> If true, listings in most categories require a return policy.
+     *  <br>
+     *  <br>
+     *  <b>For eBay Australia (AU) and US eBay Motors Parts and Accessories:</b> If true, most categories support but do not require a return policy.
+     *  <br>
      *  <br>
      *  Individual categories can override the site default.
      *
@@ -4303,16 +3994,14 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Sets a new returnPolicyEnabled
      *
-     * Specifies the default site setting for whether a return policy is
-     *  required for most categories.<br>
+     * Specifies the default site setting for whether a return policy is required for most categories.
      *  <br>
-     *  <b>For most sites:</b> If true, listings in most
-     *  categories require a return policy. <br>
      *  <br>
-     *  <b>For eBay Australia (AU) and
-     *  US eBay Motors Parts and Accessories:</b>
-     *  If true, most categories support but do not require a
-     *  return policy.<br>
+     *  <b>For most sites:</b> If true, listings in most categories require a return policy.
+     *  <br>
+     *  <br>
+     *  <b>For eBay Australia (AU) and US eBay Motors Parts and Accessories:</b> If true, most categories support but do not require a return policy.
+     *  <br>
      *  <br>
      *  Individual categories can override the site default.
      *
@@ -4329,25 +4018,20 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      * Gets as handlingTimeEnabled
      *
      * Specifies the default site setting for whether a handling time (dispatch time) is
-     *  required for most categories.<br>
+     *  required for most categories.
      *  <br>
-     *  The handling time is the maximum number of business days the seller
-     *  commits to for preparing an item to be shipped after receiving a
-     *  cleared payment. The seller's handling time does not include the
-     *  shipping time (the carrier's transit time).<br>
      *  <br>
-     *  If <code>false</code>, most listings on the site require a handling time
-     *  (see <b>DispatchTimeMax</b> in <b>AddItem</b>) when flat or calculated shipping
-     *  is specified. (A handling time is not required for local pickup
-     *  or for freight shipping.)<br>
+     *  The handling time is the maximum number of business days the seller commits to for preparing an item to be shipped after receiving a cleared payment. The seller's handling time does not include the shipping time (the carrier's transit time).
      *  <br>
-     *  For a list of the handling time values allowed for each site, use
-     *  <b>DispatchTimeMaxDetails</b> in <b>GeteBayDetails</b>.<br>
+     *  <br>
+     *  If <code>false</code>, most listings on the site require a handling time (see <b>DispatchTimeMax</b> in <b>AddItem</b>) when flat or calculated shipping is specified. (A handling time is not required for local pickup or for freight shipping.)
+     *  <br>
+     *  <br>
+     *  For a list of the handling time values allowed for each site, use <b>DispatchTimeMaxDetails</b> in <b>GeteBayDetails</b>.
+     *  <br>
      *  <br>
      *  <span class="tablenote"><b>Note:</b>
-     *  Although the field name ends with "Enabled", a value of <code>true</code> means
-     *  that a handling time is NOT required, and value of <code>false</code> means
-     *  that a handling time IS required.</span>
+     *  Although the field name ends with "Enabled", a value of <code>true</code> means that a handling time is NOT required, and value of <code>false</code> means that a handling time IS required.</span>
      *
      * @return bool
      */
@@ -4360,25 +4044,20 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      * Sets a new handlingTimeEnabled
      *
      * Specifies the default site setting for whether a handling time (dispatch time) is
-     *  required for most categories.<br>
+     *  required for most categories.
      *  <br>
-     *  The handling time is the maximum number of business days the seller
-     *  commits to for preparing an item to be shipped after receiving a
-     *  cleared payment. The seller's handling time does not include the
-     *  shipping time (the carrier's transit time).<br>
      *  <br>
-     *  If <code>false</code>, most listings on the site require a handling time
-     *  (see <b>DispatchTimeMax</b> in <b>AddItem</b>) when flat or calculated shipping
-     *  is specified. (A handling time is not required for local pickup
-     *  or for freight shipping.)<br>
+     *  The handling time is the maximum number of business days the seller commits to for preparing an item to be shipped after receiving a cleared payment. The seller's handling time does not include the shipping time (the carrier's transit time).
      *  <br>
-     *  For a list of the handling time values allowed for each site, use
-     *  <b>DispatchTimeMaxDetails</b> in <b>GeteBayDetails</b>.<br>
+     *  <br>
+     *  If <code>false</code>, most listings on the site require a handling time (see <b>DispatchTimeMax</b> in <b>AddItem</b>) when flat or calculated shipping is specified. (A handling time is not required for local pickup or for freight shipping.)
+     *  <br>
+     *  <br>
+     *  For a list of the handling time values allowed for each site, use <b>DispatchTimeMaxDetails</b> in <b>GeteBayDetails</b>.
+     *  <br>
      *  <br>
      *  <span class="tablenote"><b>Note:</b>
-     *  Although the field name ends with "Enabled", a value of <code>true</code> means
-     *  that a handling time is NOT required, and value of <code>false</code> means
-     *  that a handling time IS required.</span>
+     *  Although the field name ends with "Enabled", a value of <code>true</code> means that a handling time is NOT required, and value of <code>false</code> means that a handling time IS required.</span>
      *
      * @param bool $handlingTimeEnabled
      * @return self
@@ -4529,6 +4208,9 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      * Adds as paymentMethod
      *
      * Indicates the acceptable payment methods that can be used when using the <b>Add</b>/<b>Revise</b>/<b>Relist</b> calls for an item listed on the corresponding site.
+     *  <br><br>
+     *  <span class="tablenote"><b>Note:</b>
+     *  eBay now controls all electronic payment methods available to buyers, but sellers still need to specify offline payment methods for listings that require/support offline payment such as motor vehicle listings.</span>
      *
      * @return self
      * @param string $paymentMethod
@@ -4543,6 +4225,9 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      * isset paymentMethod
      *
      * Indicates the acceptable payment methods that can be used when using the <b>Add</b>/<b>Revise</b>/<b>Relist</b> calls for an item listed on the corresponding site.
+     *  <br><br>
+     *  <span class="tablenote"><b>Note:</b>
+     *  eBay now controls all electronic payment methods available to buyers, but sellers still need to specify offline payment methods for listings that require/support offline payment such as motor vehicle listings.</span>
      *
      * @param int|string $index
      * @return bool
@@ -4556,6 +4241,9 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      * unset paymentMethod
      *
      * Indicates the acceptable payment methods that can be used when using the <b>Add</b>/<b>Revise</b>/<b>Relist</b> calls for an item listed on the corresponding site.
+     *  <br><br>
+     *  <span class="tablenote"><b>Note:</b>
+     *  eBay now controls all electronic payment methods available to buyers, but sellers still need to specify offline payment methods for listings that require/support offline payment such as motor vehicle listings.</span>
      *
      * @param int|string $index
      * @return void
@@ -4569,6 +4257,9 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      * Gets as paymentMethod
      *
      * Indicates the acceptable payment methods that can be used when using the <b>Add</b>/<b>Revise</b>/<b>Relist</b> calls for an item listed on the corresponding site.
+     *  <br><br>
+     *  <span class="tablenote"><b>Note:</b>
+     *  eBay now controls all electronic payment methods available to buyers, but sellers still need to specify offline payment methods for listings that require/support offline payment such as motor vehicle listings.</span>
      *
      * @return string[]
      */
@@ -4581,6 +4272,9 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      * Sets a new paymentMethod
      *
      * Indicates the acceptable payment methods that can be used when using the <b>Add</b>/<b>Revise</b>/<b>Relist</b> calls for an item listed on the corresponding site.
+     *  <br><br>
+     *  <span class="tablenote"><b>Note:</b>
+     *  eBay now controls all electronic payment methods available to buyers, but sellers still need to specify offline payment methods for listings that require/support offline payment such as motor vehicle listings.</span>
      *
      * @param string $paymentMethod
      * @return self
@@ -4594,16 +4288,10 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Gets as variationsEnabled
      *
-     * Specifies the default site setting for whether categories support
-     *  multi-variation listings. If true, you can pass in Item.Variations
-     *  in the AddFixedPriceItem family of calls when you list in
-     *  categories that support this feature.<br>
+     * Specifies the default site setting for whether categories support multi-variation listings. If true, you can pass in Item.Variations in the AddFixedPriceItem family of calls when you list in categories that support this feature.
      *  <br>
-     *  Multi-variation listings contain items that are logically the same
-     *  product, but that vary in their manufacturing details or packaging.
-     *  For example, a particular brand and style of shirt could be
-     *  available in different sizes and colors, such as "large blue" and
-     *  "medium black" variations.
+     *  <br>
+     *  Multi-variation listings contain items that are logically the same product, but that vary in their manufacturing details or packaging. For example, a particular brand and style of shirt could be available in different sizes and colors, such as "large blue" and "medium black" variations.
      *
      * @return bool
      */
@@ -4615,16 +4303,10 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Sets a new variationsEnabled
      *
-     * Specifies the default site setting for whether categories support
-     *  multi-variation listings. If true, you can pass in Item.Variations
-     *  in the AddFixedPriceItem family of calls when you list in
-     *  categories that support this feature.<br>
+     * Specifies the default site setting for whether categories support multi-variation listings. If true, you can pass in Item.Variations in the AddFixedPriceItem family of calls when you list in categories that support this feature.
      *  <br>
-     *  Multi-variation listings contain items that are logically the same
-     *  product, but that vary in their manufacturing details or packaging.
-     *  For example, a particular brand and style of shirt could be
-     *  available in different sizes and colors, such as "large blue" and
-     *  "medium black" variations.
+     *  <br>
+     *  Multi-variation listings contain items that are logically the same product, but that vary in their manufacturing details or packaging. For example, a particular brand and style of shirt could be available in different sizes and colors, such as "large blue" and "medium black" variations.
      *
      * @param bool $variationsEnabled
      * @return self
@@ -4664,9 +4346,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Gets as freeGalleryPlusEnabled
      *
-     * Specifies the default site setting for whether categories allow
-     *  free, automatic upgrades for Gallery Plus, which enhances pictures
-     *  in search results.
+     * Specifies the default site setting for whether categories allow free, automatic upgrades for Gallery Plus, which enhances pictures in search results.
      *
      * @return bool
      */
@@ -4678,9 +4358,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Sets a new freeGalleryPlusEnabled
      *
-     * Specifies the default site setting for whether categories allow
-     *  free, automatic upgrades for Gallery Plus, which enhances pictures
-     *  in search results.
+     * Specifies the default site setting for whether categories allow free, automatic upgrades for Gallery Plus, which enhances pictures in search results.
      *
      * @param bool $freeGalleryPlusEnabled
      * @return self
@@ -4694,9 +4372,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Gets as freePicturePackEnabled
      *
-     * Specifies the default site setting for whether categories allow
-     *  free, automatic upgrades for Picture Pack, a discount package
-     *  that includes super-sizing of pictures.
+     * Specifies the default site setting for whether categories allow free, automatic upgrades for Picture Pack, a discount package that includes super-sizing of pictures.
      *
      * @return bool
      */
@@ -4708,9 +4384,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Sets a new freePicturePackEnabled
      *
-     * Specifies the default site setting for whether categories allow
-     *  free, automatic upgrades for Picture Pack, a discount package
-     *  that includes super-sizing of pictures.
+     * Specifies the default site setting for whether categories allow free, automatic upgrades for Picture Pack, a discount package that includes super-sizing of pictures.
      *
      * @param bool $freePicturePackEnabled
      * @return self
@@ -4724,18 +4398,11 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Gets as itemCompatibilityEnabled
      *
-     * Specifies the default site setting for whether listing items with parts
-     *  compatibility is supported by application (<code>ByApplication</code>), by specification
-     *  (<code>BySpecification</code>), or not at all (<code>Disabled</code>). A given category cannot support
-     *  both types of parts compatibility.
+     * Specifies the default site setting for whether listing items with parts compatibility is supported by application (<code>ByApplication</code>), by specification (<code>BySpecification</code>), or not at all (<code>Disabled</code>). A given category cannot support both types of parts compatibility.
      *  <br><br>
-     *  Parts compatibility listings contain information to determine the assemblies
-     *  with which a part is compatible. For example, an automotive part or accessory
-     *  listed with parts compatibility can be matched with vehicles (e.g., specific
-     *  years, makes, and models) with which the part or accessory can be used.
+     *  Parts compatibility listings contain information to determine the assemblies with which a part is compatible. For example, an automotive part or accessory listed with parts compatibility can be matched with vehicles (e.g., specific years, makes, and models) with which the part or accessory can be used.
      *  <br><br>
-     *  Parts Compatibility is supported in limited Parts & Accessories
-     *  categories for the US eBay Motors site only.
+     *  Parts Compatibility is supported in limited Parts & Accessories categories for the US eBay Motors site only.
      *
      * @return string
      */
@@ -4747,18 +4414,11 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Sets a new itemCompatibilityEnabled
      *
-     * Specifies the default site setting for whether listing items with parts
-     *  compatibility is supported by application (<code>ByApplication</code>), by specification
-     *  (<code>BySpecification</code>), or not at all (<code>Disabled</code>). A given category cannot support
-     *  both types of parts compatibility.
+     * Specifies the default site setting for whether listing items with parts compatibility is supported by application (<code>ByApplication</code>), by specification (<code>BySpecification</code>), or not at all (<code>Disabled</code>). A given category cannot support both types of parts compatibility.
      *  <br><br>
-     *  Parts compatibility listings contain information to determine the assemblies
-     *  with which a part is compatible. For example, an automotive part or accessory
-     *  listed with parts compatibility can be matched with vehicles (e.g., specific
-     *  years, makes, and models) with which the part or accessory can be used.
+     *  Parts compatibility listings contain information to determine the assemblies with which a part is compatible. For example, an automotive part or accessory listed with parts compatibility can be matched with vehicles (e.g., specific years, makes, and models) with which the part or accessory can be used.
      *  <br><br>
-     *  Parts Compatibility is supported in limited Parts & Accessories
-     *  categories for the US eBay Motors site only.
+     *  Parts Compatibility is supported in limited Parts & Accessories categories for the US eBay Motors site only.
      *
      * @param string $itemCompatibilityEnabled
      * @return self
@@ -4772,25 +4432,11 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Gets as minItemCompatibility
      *
-     * Specifies the default site setting for whether parts compatibility
-     *  information is required when listing items, and if so, how many
-     *  compatibilities must be specified. If the value is "0," you are not required
-     *  to specify compatibility information. A value greater than "0" indicates that
-     *  listing with parts compatibity is mandatory and the listing must contain the
-     *  specified number of compatibilities at a minimum.
+     * Specifies the default site setting for whether parts compatibility information is required when listing items, and if so, how many compatibilities must be specified. If the value is "0," you are not required to specify compatibility information. A value greater than "0" indicates that listing with parts compatibity is mandatory and the listing must contain the specified number of compatibilities at a minimum.
      *  <br><br>
-     *  Parts compatibility listings contain information to determine the assemblies
-     *  with which a part is compatible. For example, an automotive part or accessory
-     *  listed witih parts compatibility can be matched with vehicles (e.g., specific
-     *  years, makes, and models) with which the part or accessory can be used.
+     *  Parts compatibility listings contain information to determine the assemblies with which a part is compatible. For example, an automotive part or accessory listed witih parts compatibility can be matched with vehicles (e.g., specific years, makes, and models) with which the part or accessory can be used.
      *  <br><br>
-     *  This field applies only to listings in which compatibility is specified by
-     *  application. Entering parts compatibility by application specifies the
-     *  assemblies (e.g., a specific year, make, and model of car) to which the item
-     *  applies. This can be done automatically by listing with a catalog product
-     *  that supports parts compatibility, or manually, using
-     *  <b class="con">Item.ItemCompatibilityList</b> when listing or
-     *  revising an item.
+     *  This field applies only to listings in which compatibility is specified by application. Entering parts compatibility by application specifies the assemblies (e.g., a specific year, make, and model of car) to which the item applies. This can be done automatically by listing with a catalog product that supports parts compatibility, or manually, using <b class="con">Item.ItemCompatibilityList</b> when listing or revising an item.
      *
      * @return int
      */
@@ -4802,25 +4448,11 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Sets a new minItemCompatibility
      *
-     * Specifies the default site setting for whether parts compatibility
-     *  information is required when listing items, and if so, how many
-     *  compatibilities must be specified. If the value is "0," you are not required
-     *  to specify compatibility information. A value greater than "0" indicates that
-     *  listing with parts compatibity is mandatory and the listing must contain the
-     *  specified number of compatibilities at a minimum.
+     * Specifies the default site setting for whether parts compatibility information is required when listing items, and if so, how many compatibilities must be specified. If the value is "0," you are not required to specify compatibility information. A value greater than "0" indicates that listing with parts compatibity is mandatory and the listing must contain the specified number of compatibilities at a minimum.
      *  <br><br>
-     *  Parts compatibility listings contain information to determine the assemblies
-     *  with which a part is compatible. For example, an automotive part or accessory
-     *  listed witih parts compatibility can be matched with vehicles (e.g., specific
-     *  years, makes, and models) with which the part or accessory can be used.
+     *  Parts compatibility listings contain information to determine the assemblies with which a part is compatible. For example, an automotive part or accessory listed witih parts compatibility can be matched with vehicles (e.g., specific years, makes, and models) with which the part or accessory can be used.
      *  <br><br>
-     *  This field applies only to listings in which compatibility is specified by
-     *  application. Entering parts compatibility by application specifies the
-     *  assemblies (e.g., a specific year, make, and model of car) to which the item
-     *  applies. This can be done automatically by listing with a catalog product
-     *  that supports parts compatibility, or manually, using
-     *  <b class="con">Item.ItemCompatibilityList</b> when listing or
-     *  revising an item.
+     *  This field applies only to listings in which compatibility is specified by application. Entering parts compatibility by application specifies the assemblies (e.g., a specific year, make, and model of car) to which the item applies. This can be done automatically by listing with a catalog product that supports parts compatibility, or manually, using <b class="con">Item.ItemCompatibilityList</b> when listing or revising an item.
      *
      * @param int $minItemCompatibility
      * @return self
@@ -4834,21 +4466,11 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Gets as maxItemCompatibility
      *
-     * Specifies the default site setting for the maximum number of compatible
-     *  applications allowed per item when adding or revising items with parts
-     *  compatibility.
+     * Specifies the default site setting for the maximum number of compatible applications allowed per item when adding or revising items with parts compatibility.
      *  <br><br>
-     *  Parts compatibility listings contain structured information to determine the
-     *  assemblies with which a part is compatible. For example, an automotive part
-     *  or accessory listed with parts compatibility can be matched with vehicles
-     *  (e.g., specific years, makes, and models) with which the part or accessory
-     *  can be used.
+     *  Parts compatibility listings contain structured information to determine the assemblies with which a part is compatible. For example, an automotive part or accessory listed with parts compatibility can be matched with vehicles (e.g., specific years, makes, and models) with which the part or accessory can be used.
      *  <br><br>
-     *  This field applies only to listings in which compatibility is specified by
-     *  application manually when listing or revising an item. Entering parts
-     *  compatibility by application manually specifies the assemblies (e.g., a
-     *  specific year, make, and model of car) to which the item applies, using <b
-     *  class="con">Item.ItemCompatibilityList</b>.
+     *  This field applies only to listings in which compatibility is specified by application manually when listing or revising an item. Entering parts compatibility by application manually specifies the assemblies (e.g., a specific year, make, and model of car) to which the item applies, using <b class="con">Item.ItemCompatibilityList</b>.
      *
      * @return int
      */
@@ -4860,21 +4482,11 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Sets a new maxItemCompatibility
      *
-     * Specifies the default site setting for the maximum number of compatible
-     *  applications allowed per item when adding or revising items with parts
-     *  compatibility.
+     * Specifies the default site setting for the maximum number of compatible applications allowed per item when adding or revising items with parts compatibility.
      *  <br><br>
-     *  Parts compatibility listings contain structured information to determine the
-     *  assemblies with which a part is compatible. For example, an automotive part
-     *  or accessory listed with parts compatibility can be matched with vehicles
-     *  (e.g., specific years, makes, and models) with which the part or accessory
-     *  can be used.
+     *  Parts compatibility listings contain structured information to determine the assemblies with which a part is compatible. For example, an automotive part or accessory listed with parts compatibility can be matched with vehicles (e.g., specific years, makes, and models) with which the part or accessory can be used.
      *  <br><br>
-     *  This field applies only to listings in which compatibility is specified by
-     *  application manually when listing or revising an item. Entering parts
-     *  compatibility by application manually specifies the assemblies (e.g., a
-     *  specific year, make, and model of car) to which the item applies, using <b
-     *  class="con">Item.ItemCompatibilityList</b>.
+     *  This field applies only to listings in which compatibility is specified by application manually when listing or revising an item. Entering parts compatibility by application manually specifies the assemblies (e.g., a specific year, make, and model of car) to which the item applies, using <b class="con">Item.ItemCompatibilityList</b>.
      *
      * @param int $maxItemCompatibility
      * @return self
@@ -4888,11 +4500,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Gets as conditionEnabled
      *
-     * Specifies the default site setting for whether most categories
-     *  support (or require) <b>Item.ConditionID</b> in listings.
-     *  Use this to determine whether to use
-     *  <b>ConditionID</b> in <b>AddItem</b> and related calls.
-     *  See <b>ConditionValues</b> for a list of valid IDs.
+     * Specifies the default site setting for whether most categories support (or require) <b>Item.ConditionID</b> in listings. Use this to determine whether to use <b>ConditionID</b> in <b>AddItem</b> and related calls. See <b>ConditionValues</b> for a list of valid IDs.
      *  <br><br>
      *  In general, this is set to <code>Disabled</code>, and meta-categories
      *  (level 1 categories) define their own default settings.
@@ -4907,11 +4515,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Sets a new conditionEnabled
      *
-     * Specifies the default site setting for whether most categories
-     *  support (or require) <b>Item.ConditionID</b> in listings.
-     *  Use this to determine whether to use
-     *  <b>ConditionID</b> in <b>AddItem</b> and related calls.
-     *  See <b>ConditionValues</b> for a list of valid IDs.
+     * Specifies the default site setting for whether most categories support (or require) <b>Item.ConditionID</b> in listings. Use this to determine whether to use <b>ConditionID</b> in <b>AddItem</b> and related calls. See <b>ConditionValues</b> for a list of valid IDs.
      *  <br><br>
      *  In general, this is set to <code>Disabled</code>, and meta-categories
      *  (level 1 categories) define their own default settings.
@@ -4928,12 +4532,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Gets as conditionValues
      *
-     * The comprehensive list of item conditions on the site. That is,
-     *  this lists any value that could be supported by at least one
-     *  category on the site.
-     *  Individual meta-categories define their own default set of
-     *  condition values. (In other words, categories always override
-     *  this list with a customized subset of these values.)
+     * This container shows the site default item condition values. Individual leaf categories define their own default set of item condition values and always override this list.
      *
      * @return \Nogrod\eBaySDK\Trading\ConditionValuesType
      */
@@ -4945,12 +4544,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Sets a new conditionValues
      *
-     * The comprehensive list of item conditions on the site. That is,
-     *  this lists any value that could be supported by at least one
-     *  category on the site.
-     *  Individual meta-categories define their own default set of
-     *  condition values. (In other words, categories always override
-     *  this list with a customized subset of these values.)
+     * This container shows the site default item condition values. Individual leaf categories define their own default set of item condition values and always override this list.
      *
      * @param \Nogrod\eBaySDK\Trading\ConditionValuesType $conditionValues
      * @return self
@@ -4962,29 +4556,48 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     }
 
     /**
+     * Gets as specialFeatures
+     *
+     * This container shows the site default special item condition values, such as <b>Certified - Refurbished</b> condition (condition ID 2000), <b>Excellent - Refurbished</b> condition (condition ID 2010), <b>Very Good - Refurbished</b> condition (condition ID 2020), and <b>Good - Refurbished</b> condition (condition ID 2030). A seller must be pre-qualified by eBay to list items with the any of these refurbished item conditions. The <b>Excellent - Refurbished</b>, <b>Very Good - Refurbished</b> and <b>Good - Refurbished</b> conditions are currently only applicable for the <strong>Cell Phones & Smartphones</strong> category (category ID 9355).
+     *  <br/><br/>
+     *  All other item conditions supported by a category will be returned in the <b>ConditionValues</b> container instead. Individual leaf categories define their own default set of item condition values and always override this list.
+     *
+     * @return \Nogrod\eBaySDK\Trading\ConditionValuesType
+     */
+    public function getSpecialFeatures()
+    {
+        return $this->specialFeatures;
+    }
+
+    /**
+     * Sets a new specialFeatures
+     *
+     * This container shows the site default special item condition values, such as <b>Certified - Refurbished</b> condition (condition ID 2000), <b>Excellent - Refurbished</b> condition (condition ID 2010), <b>Very Good - Refurbished</b> condition (condition ID 2020), and <b>Good - Refurbished</b> condition (condition ID 2030). A seller must be pre-qualified by eBay to list items with the any of these refurbished item conditions. The <b>Excellent - Refurbished</b>, <b>Very Good - Refurbished</b> and <b>Good - Refurbished</b> conditions are currently only applicable for the <strong>Cell Phones & Smartphones</strong> category (category ID 9355).
+     *  <br/><br/>
+     *  All other item conditions supported by a category will be returned in the <b>ConditionValues</b> container instead. Individual leaf categories define their own default set of item condition values and always override this list.
+     *
+     * @param \Nogrod\eBaySDK\Trading\ConditionValuesType $specialFeatures
+     * @return self
+     */
+    public function setSpecialFeatures(\Nogrod\eBaySDK\Trading\ConditionValuesType $specialFeatures)
+    {
+        $this->specialFeatures = $specialFeatures;
+        return $this;
+    }
+
+    /**
      * Gets as valueCategory
      *
-     * Specifies the default site setting for whether most categories
-     *  follow specific rules associated with "value categories".<br>
+     * Specifies the default site setting for whether most categories follow specific rules associated with "value categories".
      *  <br>
-     *  Some eBay sites may select a few categories and designate them as
-     *  "value categories". These are typically selected from
-     *  categories where buyers can find great deals. (Not all categories
-     *  with great deals are designated as value categories.)
-     *  This designation can change over time. <br>
      *  <br>
-     *  While a category is designated as a value category
-     *  (i.e., when <b>ValueCategory</b> = <code>true</code>),
-     *  it is subject to the following rule: Items in value categories can only be listed in one category.<br>
+     *  Some eBay sites may select a few categories and designate them as "value categories". These are typically selected from categories where buyers can find great deals. (Not all categories with great deals are designated as value categories.) This designation can change over time.
      *  <br>
-     *  For example, if you attempt to list in two categories and the
-     *  <b>PrimaryCategory</b> or <b>SecondaryCategory</b> is a value category,
-     *  then eBay drops the <b>SecondaryCategory</b> and lists the
-     *  item in the <b>PrimaryCategory</b> only.
-     *  Similarly, if you attempt to add a secondary category to an existing
-     *  listing, or you change the category for an existing listing,
-     *  and if the primary or secondary category is a value category,
-     *  then eBay drops the secondary category.
+     *  <br>
+     *  While a category is designated as a value category (i.e., when <b>ValueCategory</b> = <code>true</code>), it is subject to the following rule: Items in value categories can only be listed in one category.
+     *  <br>
+     *  <br>
+     *  For example, if you attempt to list in two categories and the <b>PrimaryCategory</b> or <b>SecondaryCategory</b> is a value category, then eBay drops the <b>SecondaryCategory</b> and lists the item in the <b>PrimaryCategory</b> only. Similarly, if you attempt to add a secondary category to an existing listing, or you change the category for an existing listing, and if the primary or secondary category is a value category, then eBay drops the secondary category.
      *
      * @return bool
      */
@@ -4996,27 +4609,16 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Sets a new valueCategory
      *
-     * Specifies the default site setting for whether most categories
-     *  follow specific rules associated with "value categories".<br>
+     * Specifies the default site setting for whether most categories follow specific rules associated with "value categories".
      *  <br>
-     *  Some eBay sites may select a few categories and designate them as
-     *  "value categories". These are typically selected from
-     *  categories where buyers can find great deals. (Not all categories
-     *  with great deals are designated as value categories.)
-     *  This designation can change over time. <br>
      *  <br>
-     *  While a category is designated as a value category
-     *  (i.e., when <b>ValueCategory</b> = <code>true</code>),
-     *  it is subject to the following rule: Items in value categories can only be listed in one category.<br>
+     *  Some eBay sites may select a few categories and designate them as "value categories". These are typically selected from categories where buyers can find great deals. (Not all categories with great deals are designated as value categories.) This designation can change over time.
      *  <br>
-     *  For example, if you attempt to list in two categories and the
-     *  <b>PrimaryCategory</b> or <b>SecondaryCategory</b> is a value category,
-     *  then eBay drops the <b>SecondaryCategory</b> and lists the
-     *  item in the <b>PrimaryCategory</b> only.
-     *  Similarly, if you attempt to add a secondary category to an existing
-     *  listing, or you change the category for an existing listing,
-     *  and if the primary or secondary category is a value category,
-     *  then eBay drops the secondary category.
+     *  <br>
+     *  While a category is designated as a value category (i.e., when <b>ValueCategory</b> = <code>true</code>), it is subject to the following rule: Items in value categories can only be listed in one category.
+     *  <br>
+     *  <br>
+     *  For example, if you attempt to list in two categories and the <b>PrimaryCategory</b> or <b>SecondaryCategory</b> is a value category, then eBay drops the <b>SecondaryCategory</b> and lists the item in the <b>PrimaryCategory</b> only. Similarly, if you attempt to add a secondary category to an existing listing, or you change the category for an existing listing, and if the primary or secondary category is a value category, then eBay drops the secondary category.
      *
      * @param bool $valueCategory
      * @return self
@@ -5030,12 +4632,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Gets as productCreationEnabled
      *
-     * Specifies the default site setting for whether most categories
-     *  support (or require) product creation in listings.
-     *  Use this to determine whether it is mandatory to send
-     *  product id in AddItem and related calls.
-     *  In general, this is set to Disabled, and meta-categories
-     *  (level 1 categories) define their own default settings.
+     * Specifies the default site setting for whether most categories support creating/revising listings based off an eBay catalog product.
      *
      * @return string
      */
@@ -5047,12 +4644,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Sets a new productCreationEnabled
      *
-     * Specifies the default site setting for whether most categories
-     *  support (or require) product creation in listings.
-     *  Use this to determine whether it is mandatory to send
-     *  product id in AddItem and related calls.
-     *  In general, this is set to Disabled, and meta-categories
-     *  (level 1 categories) define their own default settings.
+     * Specifies the default site setting for whether most categories support creating/revising listings based off an eBay catalog product.
      *
      * @param string $productCreationEnabled
      * @return self
@@ -5289,8 +4881,6 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      * Gets as paymentProfileCategoryGroup
      *
      * Specifies what categories the Payment profile is applicable to.
-     *  Only returned when this value (or this category's setting)
-     *  overrides the value inherited from the category's parent.
      *
      * @return string
      */
@@ -5303,8 +4893,6 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      * Sets a new paymentProfileCategoryGroup
      *
      * Specifies what categories the Payment profile is applicable to.
-     *  Only returned when this value (or this category's setting)
-     *  overrides the value inherited from the category's parent.
      *
      * @param string $paymentProfileCategoryGroup
      * @return self
@@ -5319,8 +4907,6 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      * Gets as returnPolicyProfileCategoryGroup
      *
      * Specifies what categories the Return Policy profile is applicable to.
-     *  Only returned when this value (or this category's setting)
-     *  overrides the value inherited from the category's parent.
      *
      * @return string
      */
@@ -5333,8 +4919,6 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      * Sets a new returnPolicyProfileCategoryGroup
      *
      * Specifies what categories the Return Policy profile is applicable to.
-     *  Only returned when this value (or this category's setting)
-     *  overrides the value inherited from the category's parent.
      *
      * @param string $returnPolicyProfileCategoryGroup
      * @return self
@@ -5612,7 +5196,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      *  information on using an ePID to identify a compatible motorcycle or scooter
      *  through an Add/Revise/Relist API call on the Germany or UK site, see the
      *  documentation for the <a href="
-     *  http://developer.ebay.com/Devzone/XML/docs/Reference/eBay/AddItem.html#Request
+     *  https://developer.ebay.com/Devzone/XML/docs/Reference/eBay/AddItem.html#Request
      *  .Item.ItemCompatibilityList.Compatibility.NameValueList">Compatibility.Name
      *  ValueList</a> container.
      *
@@ -5634,7 +5218,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      *  information on using an ePID to identify a compatible motorcycle or scooter
      *  through an Add/Revise/Relist API call on the Germany or UK site, see the
      *  documentation for the <a href="
-     *  http://developer.ebay.com/Devzone/XML/docs/Reference/eBay/AddItem.html#Request
+     *  https://developer.ebay.com/Devzone/XML/docs/Reference/eBay/AddItem.html#Request
      *  .Item.ItemCompatibilityList.Compatibility.NameValueList">Compatibility.Name
      *  ValueList</a> container.
      *
@@ -5658,7 +5242,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      *  using a K Type vehicle number to identify a compatible car or truck through an
      *  Add/Revise/Relist API call on the Germany site, see the documentation for the
      *  <a href="
-     *  http://developer.ebay.com/Devzone/XML/docs/Reference/eBay/AddItem.html#Request
+     *  https://developer.ebay.com/Devzone/XML/docs/Reference/eBay/AddItem.html#Request
      *  .Item.ItemCompatibilityList.Compatibility.NameValueList">Compatibility.Name
      *  ValueList</a> container.
      *
@@ -5680,7 +5264,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      *  using a K Type vehicle number to identify a compatible car or truck through an
      *  Add/Revise/Relist API call on the Germany site, see the documentation for the
      *  <a href="
-     *  http://developer.ebay.com/Devzone/XML/docs/Reference/eBay/AddItem.html#Request
+     *  https://developer.ebay.com/Devzone/XML/docs/Reference/eBay/AddItem.html#Request
      *  .Item.ItemCompatibilityList.Compatibility.NameValueList">Compatibility.Name
      *  ValueList</a> container.
      *
@@ -5696,12 +5280,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Gets as productRequiredEnabled
      *
-     * This field indicates whether or not the specified eBay site supports Product-Based Shopping Experience listings - listings that are associated with an eBay catalog product.
-     *  <br>
-     *  <br>
-     *  <span class="tablenote"><b>Note:</b>
-     *  Due to the rollback of the Product-Based Shopping Experience mandate for all eBay categories, the <b>SiteDefaults.ProductRequiredEnabled</b> field no longer has any practical use, since its value with always be <code>Disabled</code>.
-     *  </span>
+     * This field is deprecated. No eBay categories require listings based on an eBay catalog product.
      *
      * @return string
      */
@@ -5713,12 +5292,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Sets a new productRequiredEnabled
      *
-     * This field indicates whether or not the specified eBay site supports Product-Based Shopping Experience listings - listings that are associated with an eBay catalog product.
-     *  <br>
-     *  <br>
-     *  <span class="tablenote"><b>Note:</b>
-     *  Due to the rollback of the Product-Based Shopping Experience mandate for all eBay categories, the <b>SiteDefaults.ProductRequiredEnabled</b> field no longer has any practical use, since its value with always be <code>Disabled</code>.
-     *  </span>
+     * This field is deprecated. No eBay categories require listings based on an eBay catalog product.
      *
      * @param string $productRequiredEnabled
      * @return self
@@ -5732,7 +5306,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Adds as domesticReturnsAccepted
      *
-     * This field returns the options a seller has for accepting or not accepting domestic item returns.
+     * This field returns the options a seller has for accepting or not accepting returns from domestic buyers.
      *  <br><br>
      *  The values returned in this field are pertinent only if <b>ReturnPolicyEnabled</b> in GetCategoryFeatures is set to <code>true</code> for the associated marketplace and category.
      *
@@ -5748,7 +5322,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * isset domesticReturnsAcceptedValues
      *
-     * This field returns the options a seller has for accepting or not accepting domestic item returns.
+     * This field returns the options a seller has for accepting or not accepting returns from domestic buyers.
      *  <br><br>
      *  The values returned in this field are pertinent only if <b>ReturnPolicyEnabled</b> in GetCategoryFeatures is set to <code>true</code> for the associated marketplace and category.
      *
@@ -5763,7 +5337,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * unset domesticReturnsAcceptedValues
      *
-     * This field returns the options a seller has for accepting or not accepting domestic item returns.
+     * This field returns the options a seller has for accepting or not accepting returns from domestic buyers.
      *  <br><br>
      *  The values returned in this field are pertinent only if <b>ReturnPolicyEnabled</b> in GetCategoryFeatures is set to <code>true</code> for the associated marketplace and category.
      *
@@ -5778,7 +5352,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Gets as domesticReturnsAcceptedValues
      *
-     * This field returns the options a seller has for accepting or not accepting domestic item returns.
+     * This field returns the options a seller has for accepting or not accepting returns from domestic buyers.
      *  <br><br>
      *  The values returned in this field are pertinent only if <b>ReturnPolicyEnabled</b> in GetCategoryFeatures is set to <code>true</code> for the associated marketplace and category.
      *
@@ -5792,7 +5366,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Sets a new domesticReturnsAcceptedValues
      *
-     * This field returns the options a seller has for accepting or not accepting domestic item returns.
+     * This field returns the options a seller has for accepting or not accepting returns from domestic buyers.
      *  <br><br>
      *  The values returned in this field are pertinent only if <b>ReturnPolicyEnabled</b> in GetCategoryFeatures is set to <code>true</code> for the associated marketplace and category.
      *
@@ -5808,7 +5382,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Adds as internationalReturnsAccepted
      *
-     * This field returns the options a seller has for accepting or not accepting international item returns.
+     * This field returns the options a seller has for accepting or not accepting returns from international buyers.
      *  <br><br>
      *  The values returned in this field are pertinent only if <b>ReturnPolicyEnabled</b> in GetCategoryFeatures is set to <code>true</code> for the associated marketplace and category.
      *
@@ -5824,7 +5398,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * isset internationalReturnsAcceptedValues
      *
-     * This field returns the options a seller has for accepting or not accepting international item returns.
+     * This field returns the options a seller has for accepting or not accepting returns from international buyers.
      *  <br><br>
      *  The values returned in this field are pertinent only if <b>ReturnPolicyEnabled</b> in GetCategoryFeatures is set to <code>true</code> for the associated marketplace and category.
      *
@@ -5839,7 +5413,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * unset internationalReturnsAcceptedValues
      *
-     * This field returns the options a seller has for accepting or not accepting international item returns.
+     * This field returns the options a seller has for accepting or not accepting returns from international buyers.
      *  <br><br>
      *  The values returned in this field are pertinent only if <b>ReturnPolicyEnabled</b> in GetCategoryFeatures is set to <code>true</code> for the associated marketplace and category.
      *
@@ -5854,7 +5428,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Gets as internationalReturnsAcceptedValues
      *
-     * This field returns the options a seller has for accepting or not accepting international item returns.
+     * This field returns the options a seller has for accepting or not accepting returns from international buyers.
      *  <br><br>
      *  The values returned in this field are pertinent only if <b>ReturnPolicyEnabled</b> in GetCategoryFeatures is set to <code>true</code> for the associated marketplace and category.
      *
@@ -5868,7 +5442,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Sets a new internationalReturnsAcceptedValues
      *
-     * This field returns the options a seller has for accepting or not accepting international item returns.
+     * This field returns the options a seller has for accepting or not accepting returns from international buyers.
      *  <br><br>
      *  The values returned in this field are pertinent only if <b>ReturnPolicyEnabled</b> in GetCategoryFeatures is set to <code>true</code> for the associated marketplace and category.
      *
@@ -5884,7 +5458,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Adds as domesticReturnsDuration
      *
-     * This field returns the options a seller has for specifying the return period for domestic item returns. The return period is the amount of time the buyer has to initiate a return once they have received the item.
+     * This field returns the options a seller has for specifying the return period for returns from domestic buyers. The return period is the amount of time the buyer has to initiate a return once they have received the item.
      *  <br><br>
      *  The values returned in this field are pertinent only if <b>ReturnPolicyEnabled</b> in GetCategoryFeatures is set to <code>true</code> for the associated marketplace and category.
      *
@@ -5900,7 +5474,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * isset domesticReturnsDurationValues
      *
-     * This field returns the options a seller has for specifying the return period for domestic item returns. The return period is the amount of time the buyer has to initiate a return once they have received the item.
+     * This field returns the options a seller has for specifying the return period for returns from domestic buyers. The return period is the amount of time the buyer has to initiate a return once they have received the item.
      *  <br><br>
      *  The values returned in this field are pertinent only if <b>ReturnPolicyEnabled</b> in GetCategoryFeatures is set to <code>true</code> for the associated marketplace and category.
      *
@@ -5915,7 +5489,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * unset domesticReturnsDurationValues
      *
-     * This field returns the options a seller has for specifying the return period for domestic item returns. The return period is the amount of time the buyer has to initiate a return once they have received the item.
+     * This field returns the options a seller has for specifying the return period for returns from domestic buyers. The return period is the amount of time the buyer has to initiate a return once they have received the item.
      *  <br><br>
      *  The values returned in this field are pertinent only if <b>ReturnPolicyEnabled</b> in GetCategoryFeatures is set to <code>true</code> for the associated marketplace and category.
      *
@@ -5930,7 +5504,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Gets as domesticReturnsDurationValues
      *
-     * This field returns the options a seller has for specifying the return period for domestic item returns. The return period is the amount of time the buyer has to initiate a return once they have received the item.
+     * This field returns the options a seller has for specifying the return period for returns from domestic buyers. The return period is the amount of time the buyer has to initiate a return once they have received the item.
      *  <br><br>
      *  The values returned in this field are pertinent only if <b>ReturnPolicyEnabled</b> in GetCategoryFeatures is set to <code>true</code> for the associated marketplace and category.
      *
@@ -5944,7 +5518,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Sets a new domesticReturnsDurationValues
      *
-     * This field returns the options a seller has for specifying the return period for domestic item returns. The return period is the amount of time the buyer has to initiate a return once they have received the item.
+     * This field returns the options a seller has for specifying the return period for returns from domestic buyers. The return period is the amount of time the buyer has to initiate a return once they have received the item.
      *  <br><br>
      *  The values returned in this field are pertinent only if <b>ReturnPolicyEnabled</b> in GetCategoryFeatures is set to <code>true</code> for the associated marketplace and category.
      *
@@ -5960,7 +5534,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Adds as internationalReturnsDuration
      *
-     * This field returns the options a seller has for specifying the return period for international item returns. The return period is the amount of time the buyer has to initiate a return once they have received the item.
+     * This field returns the options a seller has for specifying the return period for returns from international buyers. The return period is the amount of time the buyer has to initiate a return once they have received the item.
      *  <br><br>
      *  The values returned in this field are pertinent only if <b>ReturnPolicyEnabled</b> in GetCategoryFeatures is set to <code>true</code> for the associated marketplace and category.
      *
@@ -5976,7 +5550,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * isset internationalReturnsDurationValues
      *
-     * This field returns the options a seller has for specifying the return period for international item returns. The return period is the amount of time the buyer has to initiate a return once they have received the item.
+     * This field returns the options a seller has for specifying the return period for returns from international buyers. The return period is the amount of time the buyer has to initiate a return once they have received the item.
      *  <br><br>
      *  The values returned in this field are pertinent only if <b>ReturnPolicyEnabled</b> in GetCategoryFeatures is set to <code>true</code> for the associated marketplace and category.
      *
@@ -5991,7 +5565,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * unset internationalReturnsDurationValues
      *
-     * This field returns the options a seller has for specifying the return period for international item returns. The return period is the amount of time the buyer has to initiate a return once they have received the item.
+     * This field returns the options a seller has for specifying the return period for returns from international buyers. The return period is the amount of time the buyer has to initiate a return once they have received the item.
      *  <br><br>
      *  The values returned in this field are pertinent only if <b>ReturnPolicyEnabled</b> in GetCategoryFeatures is set to <code>true</code> for the associated marketplace and category.
      *
@@ -6006,7 +5580,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Gets as internationalReturnsDurationValues
      *
-     * This field returns the options a seller has for specifying the return period for international item returns. The return period is the amount of time the buyer has to initiate a return once they have received the item.
+     * This field returns the options a seller has for specifying the return period for returns from international buyers. The return period is the amount of time the buyer has to initiate a return once they have received the item.
      *  <br><br>
      *  The values returned in this field are pertinent only if <b>ReturnPolicyEnabled</b> in GetCategoryFeatures is set to <code>true</code> for the associated marketplace and category.
      *
@@ -6020,7 +5594,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Sets a new internationalReturnsDurationValues
      *
-     * This field returns the options a seller has for specifying the return period for international item returns. The return period is the amount of time the buyer has to initiate a return once they have received the item.
+     * This field returns the options a seller has for specifying the return period for returns from international buyers. The return period is the amount of time the buyer has to initiate a return once they have received the item.
      *  <br><br>
      *  The values returned in this field are pertinent only if <b>ReturnPolicyEnabled</b> in GetCategoryFeatures is set to <code>true</code> for the associated marketplace and category.
      *
@@ -6904,6 +6478,10 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ConditionValues", $value);
         }
+        $value = $this->getSpecialFeatures();
+        if (null !== $value) {
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SpecialFeatures", $value);
+        }
         $value = $this->getValueCategory();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;
         if (null !== $value) {
@@ -7525,6 +7103,10 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ConditionValues');
         if (null !== $value) {
             $this->setConditionValues(\Nogrod\eBaySDK\Trading\ConditionValuesType::fromKeyValue($value));
+        }
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SpecialFeatures');
+        if (null !== $value) {
+            $this->setSpecialFeatures(\Nogrod\eBaySDK\Trading\ConditionValuesType::fromKeyValue($value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ValueCategory');
         if (null !== $value) {

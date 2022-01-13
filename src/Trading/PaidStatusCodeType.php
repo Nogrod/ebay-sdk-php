@@ -5,8 +5,7 @@ namespace Nogrod\eBaySDK\Trading;
 /**
  * Class representing PaidStatusCodeType
  *
- * Specifies the payment status of an order, as
- *  seen by the buyer and seller.
+ * Enumerated type that lists the possible states of buyer payment for an order.
  * XSD Type: PaidStatusCodeType
  */
 class PaidStatusCodeType
@@ -14,40 +13,40 @@ class PaidStatusCodeType
     /**
      * Constant for 'NotPaid' value.
      *
-     * The buyer has completed checkout, but eBay has not recognized that the buyer has
-     * paid for the order. It is possible that the buyer has paid with an 'offline'
-     * payment method, but the order has not been marked as paid.
+     * This enumeration value is returned if the buyer has completed checkout, but eBay
+     * cannot confirm whether or not the buyer has paid for the order. It is possible
+     * that the buyer has paid with an 'offline' payment method, but the order has not
+     * been marked as paid.
      */
     public const VAL_NOT_PAID = 'NotPaid';
 
     /**
      * Constant for 'BuyerHasNotCompletedCheckout' value.
      *
-     * The buyer has not completed the checkout process and so has not made payment.
+     * This enumeration value is returned if the buyer has not completed the checkout
+     * process and so has not made payment.
      */
     public const VAL_BUYER_HAS_NOT_COMPLETED_CHECKOUT = 'BuyerHasNotCompletedCheckout';
 
     /**
      * Constant for 'PaymentPendingWithPayPal' value.
      *
-     * The buyer has made a PayPal payment, but the seller has not yet received it.
+     * This value is deprecated and should no longer be returned.
      */
     public const VAL_PAYMENT_PENDING_WITH_PAY_PAL = 'PaymentPendingWithPayPal';
 
     /**
      * Constant for 'PaidWithPayPal' value.
      *
-     * The buyer has made a PayPal payment, and the payment is complete.
-     *  But please also see the documentation for PaymentHoldStatus and its applicable
-     * values.
-     *  PaymentHoldStatus contains the current status of a hold on a PayPal payment.
+     * This value is deprecated and should no longer be returned.
      */
     public const VAL_PAID_WITH_PAY_PAL = 'PaidWithPayPal';
 
     /**
      * Constant for 'MarkedAsPaid' value.
      *
-     * The order is marked as paid by either the buyer or seller.
+     * This enumeration value is returned if the order was marked as paid by eBay or
+     * the seller.
      */
     public const VAL_MARKED_AS_PAID = 'MarkedAsPaid';
 
@@ -89,8 +88,8 @@ class PaidStatusCodeType
     /**
      * Constant for 'PaymentPending' value.
      *
-     * The buyer has made a payment other than PayPal, but the
-     *  payment is still being processed.
+     * This enumeration value is returned if the buyer's payment is in process, but not
+     * yet complete.
      */
     public const VAL_PAYMENT_PENDING = 'PaymentPending';
 
@@ -118,7 +117,7 @@ class PaidStatusCodeType
     /**
      * Constant for 'Refunded' value.
      *
-     * The buyer's payment was refunded.
+     * This enumeration value is returned if the buyer's payment was refunded.
      */
     public const VAL_REFUNDED = 'Refunded';
 
@@ -147,18 +146,18 @@ class PaidStatusCodeType
     /**
      * Constant for 'Paid' value.
      *
-     * The order has been paid for.
+     * This enumeration value is returned if the buyer has paid for the order.
      */
     public const VAL_PAID = 'Paid';
 
     /**
      * Constant for 'PayUponInvoice' value.
      *
-     * This value indicates that the buyer was offered the 'Pay Upon Invoice' option.
-     * The 'Pay Upon Invoice' option is only available to eligible German buyers as
-     * part of Progressive Checkout on the German site. If a German buyer is offered
-     * the 'Pay Upon Invoice' option, that buyer is not required to pay for the order
-     * until after receiving an order invoice from the seller.
+     * This enumeration value is returned if the buyer was offered the 'Pay Upon
+     * Invoice' option. The 'Pay Upon Invoice' option is only available to eligible
+     * German buyers as part of Progressive Checkout on the German site. If a German
+     * buyer is offered the 'Pay Upon Invoice' option, that buyer is not required to
+     * pay for the order until after receiving an order invoice from the seller.
      */
     public const VAL_PAY_UPON_INVOICE = 'PayUponInvoice';
 

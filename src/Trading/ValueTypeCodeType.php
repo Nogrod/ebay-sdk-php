@@ -186,6 +186,14 @@ class ValueTypeCodeType
     public const VAL_CNPJ = 'CNPJ';
 
     /**
+     * Constant for 'VATIN' value.
+     *
+     * This value indicates that the tax ID in the <b>ID</b> field is a VAT
+     * Identification Number for the buyer.
+     */
+    public const VAL_VATIN = 'VATIN';
+
+    /**
      * Constant for 'CustomCode' value.
      *
      * Reserved for future use.

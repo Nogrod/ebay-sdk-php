@@ -29,7 +29,7 @@ class GetOrdersResponseType extends AbstractResponseType
     /**
      * The set of orders that match the order IDs or filter criteria specified.
      *
-     * @var \Nogrod\eBaySDK\Trading\OrderType[] $orderArray
+     * @var \Nogrod\eBaySDK\Trading\OrderArrayType $orderArray
      */
     private $orderArray = null;
 
@@ -107,51 +107,11 @@ class GetOrdersResponseType extends AbstractResponseType
     }
 
     /**
-     * Adds as order
-     *
-     * The set of orders that match the order IDs or filter criteria specified.
-     *
-     * @return self
-     * @param \Nogrod\eBaySDK\Trading\OrderType $order
-     */
-    public function addToOrderArray(\Nogrod\eBaySDK\Trading\OrderType $order)
-    {
-        $this->orderArray[] = $order;
-        return $this;
-    }
-
-    /**
-     * isset orderArray
-     *
-     * The set of orders that match the order IDs or filter criteria specified.
-     *
-     * @param int|string $index
-     * @return bool
-     */
-    public function issetOrderArray($index)
-    {
-        return isset($this->orderArray[$index]);
-    }
-
-    /**
-     * unset orderArray
-     *
-     * The set of orders that match the order IDs or filter criteria specified.
-     *
-     * @param int|string $index
-     * @return void
-     */
-    public function unsetOrderArray($index)
-    {
-        unset($this->orderArray[$index]);
-    }
-
-    /**
      * Gets as orderArray
      *
      * The set of orders that match the order IDs or filter criteria specified.
      *
-     * @return \Nogrod\eBaySDK\Trading\OrderType[]
+     * @return \Nogrod\eBaySDK\Trading\OrderArrayType
      */
     public function getOrderArray()
     {
@@ -163,10 +123,10 @@ class GetOrdersResponseType extends AbstractResponseType
      *
      * The set of orders that match the order IDs or filter criteria specified.
      *
-     * @param \Nogrod\eBaySDK\Trading\OrderType[] $orderArray
+     * @param \Nogrod\eBaySDK\Trading\OrderArrayType $orderArray
      * @return self
      */
-    public function setOrderArray(array $orderArray)
+    public function setOrderArray(\Nogrod\eBaySDK\Trading\OrderArrayType $orderArray)
     {
         $this->orderArray = $orderArray;
         return $this;
@@ -263,10 +223,8 @@ class GetOrdersResponseType extends AbstractResponseType
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}HasMoreOrders", $value);
         }
         $value = $this->getOrderArray();
-        if (null !== $value && !empty($this->getOrderArray())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}OrderArray", array_map(function ($v) {
-                return ["Order" => $v];
-            }, $value));
+        if (null !== $value) {
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}OrderArray", $value);
         }
         $value = $this->getOrdersPerPage();
         if (null !== $value) {
@@ -305,11 +263,9 @@ class GetOrdersResponseType extends AbstractResponseType
         if (null !== $value) {
             $this->setHasMoreOrders($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}OrderArray', true);
-        if (null !== $value && !empty($value)) {
-            $this->setOrderArray(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\OrderType::fromKeyValue($v);
-            }, $value));
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}OrderArray');
+        if (null !== $value) {
+            $this->setOrderArray(\Nogrod\eBaySDK\Trading\OrderArrayType::fromKeyValue($value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}OrdersPerPage');
         if (null !== $value) {

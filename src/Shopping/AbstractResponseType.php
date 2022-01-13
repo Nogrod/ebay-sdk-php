@@ -18,7 +18,7 @@ class AbstractResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
 {
     /**
      * This value represents the date and time when eBay processed the
-     *  request. The time zone of this value is <a href="http://developer.ebay.com/DevZone/shopping/docs/CallRef/types/simpleTypes.html#dateTime">GMT</a>
+     *  request. The time zone of this value is <a href="https://developer.ebay.com/DevZone/shopping/docs/CallRef/types/simpleTypes.html#dateTime">GMT</a>
      *  and the format is the
      *  ISO 8601 date and time format (YYYY-MM-DDTHH:MM:SS.SSSZ).
      *  See the "dateTime" type for information about this
@@ -96,7 +96,7 @@ class AbstractResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
      * Gets as timestamp
      *
      * This value represents the date and time when eBay processed the
-     *  request. The time zone of this value is <a href="http://developer.ebay.com/DevZone/shopping/docs/CallRef/types/simpleTypes.html#dateTime">GMT</a>
+     *  request. The time zone of this value is <a href="https://developer.ebay.com/DevZone/shopping/docs/CallRef/types/simpleTypes.html#dateTime">GMT</a>
      *  and the format is the
      *  ISO 8601 date and time format (YYYY-MM-DDTHH:MM:SS.SSSZ).
      *  See the "dateTime" type for information about this
@@ -113,7 +113,7 @@ class AbstractResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
      * Sets a new timestamp
      *
      * This value represents the date and time when eBay processed the
-     *  request. The time zone of this value is <a href="http://developer.ebay.com/DevZone/shopping/docs/CallRef/types/simpleTypes.html#dateTime">GMT</a>
+     *  request. The time zone of this value is <a href="https://developer.ebay.com/DevZone/shopping/docs/CallRef/types/simpleTypes.html#dateTime">GMT</a>
      *  and the format is the
      *  ISO 8601 date and time format (YYYY-MM-DDTHH:MM:SS.SSSZ).
      *  See the "dateTime" type for information about this

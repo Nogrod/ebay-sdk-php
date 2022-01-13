@@ -55,16 +55,9 @@ class PaymentDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      *  specified, this value defaults to '0.0'. If the seller is requiring that the buyer put down
      *  a deposit on the vehicle, the seller must include and set the <b>DepositType</b>
      *  field to <code>OtherMethod</code> and specify an <b>HoursToDeposit</b> value.
-     *  If specified, then also specify <b>HoursToDeposit</b>
      *  <br>
      *  <br>
-     *  Deposits can only be paid using PayPal, so if <b>DepositAmount</b> is
-     *  specified (and not '0.0'), then the listing must offer
-     *  'PayPal' as a payment method (in addition to the payment methods
-     *  offered for the full payment). Unlike other listings, PayPal is not
-     *  automatically added to a Motors listing even if the seller has a
-     *  PayPal preference set in My eBay. The seller also needs to have a
-     *  linked PayPal account in order to require a deposit.<br>
+     *  For sellers that are not onboarded for managed payments, deposits can only be paid with PayPal, so these sellers must make sure that <code>PayPal</code> is specified as one of the <b>Item.PaymentMethods</b> values (along with the other offline payment method values that will be options for full payment). For managed payments listings, the buyer may have other payment options for the deposit, and managed payment sellers never have to specify any electronic payment methods since eBay controls these payment methods, and not the seller. <br>
      *  <br>
      *  The deposit amount appears in the shipping, payment details and return policy section of the
      *  View Item page.<br>
@@ -193,16 +186,9 @@ class PaymentDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      *  specified, this value defaults to '0.0'. If the seller is requiring that the buyer put down
      *  a deposit on the vehicle, the seller must include and set the <b>DepositType</b>
      *  field to <code>OtherMethod</code> and specify an <b>HoursToDeposit</b> value.
-     *  If specified, then also specify <b>HoursToDeposit</b>
      *  <br>
      *  <br>
-     *  Deposits can only be paid using PayPal, so if <b>DepositAmount</b> is
-     *  specified (and not '0.0'), then the listing must offer
-     *  'PayPal' as a payment method (in addition to the payment methods
-     *  offered for the full payment). Unlike other listings, PayPal is not
-     *  automatically added to a Motors listing even if the seller has a
-     *  PayPal preference set in My eBay. The seller also needs to have a
-     *  linked PayPal account in order to require a deposit.<br>
+     *  For sellers that are not onboarded for managed payments, deposits can only be paid with PayPal, so these sellers must make sure that <code>PayPal</code> is specified as one of the <b>Item.PaymentMethods</b> values (along with the other offline payment method values that will be options for full payment). For managed payments listings, the buyer may have other payment options for the deposit, and managed payment sellers never have to specify any electronic payment methods since eBay controls these payment methods, and not the seller. <br>
      *  <br>
      *  The deposit amount appears in the shipping, payment details and return policy section of the
      *  View Item page.<br>
@@ -233,16 +219,9 @@ class PaymentDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      *  specified, this value defaults to '0.0'. If the seller is requiring that the buyer put down
      *  a deposit on the vehicle, the seller must include and set the <b>DepositType</b>
      *  field to <code>OtherMethod</code> and specify an <b>HoursToDeposit</b> value.
-     *  If specified, then also specify <b>HoursToDeposit</b>
      *  <br>
      *  <br>
-     *  Deposits can only be paid using PayPal, so if <b>DepositAmount</b> is
-     *  specified (and not '0.0'), then the listing must offer
-     *  'PayPal' as a payment method (in addition to the payment methods
-     *  offered for the full payment). Unlike other listings, PayPal is not
-     *  automatically added to a Motors listing even if the seller has a
-     *  PayPal preference set in My eBay. The seller also needs to have a
-     *  linked PayPal account in order to require a deposit.<br>
+     *  For sellers that are not onboarded for managed payments, deposits can only be paid with PayPal, so these sellers must make sure that <code>PayPal</code> is specified as one of the <b>Item.PaymentMethods</b> values (along with the other offline payment method values that will be options for full payment). For managed payments listings, the buyer may have other payment options for the deposit, and managed payment sellers never have to specify any electronic payment methods since eBay controls these payment methods, and not the seller. <br>
      *  <br>
      *  The deposit amount appears in the shipping, payment details and return policy section of the
      *  View Item page.<br>

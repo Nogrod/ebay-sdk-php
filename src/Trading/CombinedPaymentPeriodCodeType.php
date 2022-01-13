@@ -8,7 +8,7 @@ namespace Nogrod\eBaySDK\Trading;
  * This enumerated type contains the list of values that can be used by the seller to set
  *  the number of days after item purchase that an unpaid order can be combined with one
  *  or more other mutual (same buyer and same seller) unpaid orders into one
- *  <a href="http://developer.ebay.com/DevZone/guides/features-guide/default.html#development/Listing-AnItem.html#CombinedInvoice">Combined Invoice</a>
+ *  <a href="https://developer.ebay.com/DevZone/guides/features-guide/default.html#development/Listing-AnItem.html#CombinedInvoice">Combined Invoice</a>
  *  order. Either the buyer or the seller can initiate the Combined Invoice
  *  process. Sellers can offer buyers shipping discounts through Combined Invoice orders,
  *  and buyers only have to make one payment for multiple orders as opposed to a payment

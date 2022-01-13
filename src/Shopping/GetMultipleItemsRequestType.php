@@ -24,7 +24,7 @@ class GetMultipleItemsRequestType extends AbstractRequestType
      *  ) for convenience.
      *  <br><br>
      *  You can determine an item's ID by calling findItemsAdvanced (<a
-     *  href="http://www.developer.ebay.com/DevZone/finding/CallRef/index.html"
+     *  href="https://developer.ebay.com/DevZone/finding/CallRef/index.html"
      *  >Finding API</a>) or from the eBay Web site. Provide ItemID for
      *  every item for which you want information.
      *
@@ -82,7 +82,7 @@ class GetMultipleItemsRequestType extends AbstractRequestType
      *  ) for convenience.
      *  <br><br>
      *  You can determine an item's ID by calling findItemsAdvanced (<a
-     *  href="http://www.developer.ebay.com/DevZone/finding/CallRef/index.html"
+     *  href="https://developer.ebay.com/DevZone/finding/CallRef/index.html"
      *  >Finding API</a>) or from the eBay Web site. Provide ItemID for
      *  every item for which you want information.
      *
@@ -109,7 +109,7 @@ class GetMultipleItemsRequestType extends AbstractRequestType
      *  ) for convenience.
      *  <br><br>
      *  You can determine an item's ID by calling findItemsAdvanced (<a
-     *  href="http://www.developer.ebay.com/DevZone/finding/CallRef/index.html"
+     *  href="https://developer.ebay.com/DevZone/finding/CallRef/index.html"
      *  >Finding API</a>) or from the eBay Web site. Provide ItemID for
      *  every item for which you want information.
      *
@@ -135,7 +135,7 @@ class GetMultipleItemsRequestType extends AbstractRequestType
      *  ) for convenience.
      *  <br><br>
      *  You can determine an item's ID by calling findItemsAdvanced (<a
-     *  href="http://www.developer.ebay.com/DevZone/finding/CallRef/index.html"
+     *  href="https://developer.ebay.com/DevZone/finding/CallRef/index.html"
      *  >Finding API</a>) or from the eBay Web site. Provide ItemID for
      *  every item for which you want information.
      *
@@ -161,7 +161,7 @@ class GetMultipleItemsRequestType extends AbstractRequestType
      *  ) for convenience.
      *  <br><br>
      *  You can determine an item's ID by calling findItemsAdvanced (<a
-     *  href="http://www.developer.ebay.com/DevZone/finding/CallRef/index.html"
+     *  href="https://developer.ebay.com/DevZone/finding/CallRef/index.html"
      *  >Finding API</a>) or from the eBay Web site. Provide ItemID for
      *  every item for which you want information.
      *
@@ -186,7 +186,7 @@ class GetMultipleItemsRequestType extends AbstractRequestType
      *  ) for convenience.
      *  <br><br>
      *  You can determine an item's ID by calling findItemsAdvanced (<a
-     *  href="http://www.developer.ebay.com/DevZone/finding/CallRef/index.html"
+     *  href="https://developer.ebay.com/DevZone/finding/CallRef/index.html"
      *  >Finding API</a>) or from the eBay Web site. Provide ItemID for
      *  every item for which you want information.
      *

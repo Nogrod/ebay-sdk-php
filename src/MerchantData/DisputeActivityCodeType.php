@@ -7,7 +7,7 @@ namespace Nogrod\eBaySDK\MerchantData;
  *
  * Defines the action taken on a dispute with <b>AddDisputeResponse</b>. The value
  *  you can use at a given time depends on the current value of <b>DisputeState</b>
- *  (see the <a href="http://developer.ebay.com/DevZone/guides/features-guide/default.html#Development/UPI-Assistant.html">Unpaid Item Assistant</a> for more information). Some values are for
+ *  (see the <a href="https://developer.ebay.com/DevZone/guides/features-guide/default.html#Development/UPI-Assistant.html">Unpaid Item Assistant</a> for more information). Some values are for
  *  <i>Unpaid Item</i> disputes and some are for <i>Item Not Received</i> disputes.
  *  <br/><br/>
  *  <span class="tablenote"><strong>Note:</strong>

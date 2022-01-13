@@ -5,15 +5,17 @@ namespace Nogrod\eBaySDK\Trading;
 /**
  * Class representing DisputeReasonCodeType
  *
- * Enumerated type that contains the top-level reasons for a buyer or seller to create a
- *  case against one another. These values are specified in the
+ * Enumerated type that contains the top-level reasons for a seller to create a
+ *  Unpaid Item case against a buyer. These values are specified in the
  *  <b>DisputeReason</b> field of <b>AddDispute</b>, and are returned
  *  in the <b>GetUserDisputes</b> and <b>GetDispute</b> calls.
- *  The <b>DisputeReason</b> value will dictate what
+ *  The <b>DisputeReason</b> value will dictate which
  *  <b>DisputeExplanation</b> values that can be used/returned.
  *  <br/><br/>
  *  <span class="tablenote"><strong>Note:</strong>
- *  The dispute calls in the Trading API are not compatible with 'Item Not Received' or 'Significantly Not As Described' cases initiated by buyers through the eBay Money Back Guarantee program. The <a href="https://developer.ebay.com/Devzone/post-order/concepts/UsageGuide.html">Post-Order API</a> is used to retrieve and/or respond to eBay Money Back Guarantee cases programmatically.
+ *  The Dispute calls of the Trading API now only support Unpaid Item cases, and no longer support Item not Received (INR) or Significantly not as Described (SNAD) disputes created through PayPal, since this is no longer an option for eBay buyers. eBay buyers must create an INR case through eBay's Resolution Center, and these calls do not support eBay Money Back Guarantee cases.
+ *  <br><br>
+ *  To respond to an eBay Money Back Guarantee case, the seller should use the <a href="https://developer.ebay.com/Devzone/post-order/index.html" target="_blank">Case Management calls</a> of the <b>Post-Order API</b> or manage/respond to cases manually through the eBay Resolution Center.
  *  </span>
  * XSD Type: DisputeReasonCodeType
  */
@@ -22,58 +24,45 @@ class DisputeReasonCodeType
     /**
      * Constant for 'BuyerHasNotPaid' value.
      *
-     * The seller has opened a case against the buyer because the buyer has not paid
-     * for
+     * The seller has opened an Unpaid Item case against the buyer because the buyer
+     * has not paid for
      *  the order line item. A seller can open an <i>Unpaid Item</i> case as early as
-     * two days after
-     *  the end of the auction listing. An exception to this rule occurs when the
-     * seller
-     *  allows combined payment orders. If the seller does allow the buyer to combine
-     * orders
-     *  and make one payment for those orders, the seller would not be able to open an
-     * Unpaid
-     *  Item case until after the time period to combine orders expires.
-     *  <br>
+     * four days after
+     *  the buyer commits to purchasing the item.
      */
     public const VAL_BUYER_HAS_NOT_PAID = 'BuyerHasNotPaid';
 
     /**
      * Constant for 'TransactionMutuallyCanceled' value.
      *
-     * This value indicates that the dispute involves an order that is being cancelled
-     * by seller with mutual consent from the buyer.
+     * This value indicates that the seller cancelled an order after getting mutual
+     * consent from the buyer. This may be due to the buyer requesting that it be
+     * cancelled, or it could be that the seller ran out of stock on the item.
      */
     public const VAL_TRANSACTION_MUTUALLY_CANCELED = 'TransactionMutuallyCanceled';
 
     /**
      * Constant for 'ItemNotReceived' value.
      *
-     * The buyer has opened a case against the seller because the item has not been
-     *  received by the buyer. A buyer can open an <i>Item Not Received</i> case after
-     * the
-     *  Estimated Delivery Date of the item has passed, or 7 days after payment if the
-     *  Estimated Delivery Date wasn't given by the seller. This value cannot be used
-     * in
-     *  <b>AddDispute</b>.
+     * This enumeration value is no longer applicable since the Dispute calls in
+     * Trading API no longer support INR disputes.
      */
     public const VAL_ITEM_NOT_RECEIVED = 'ItemNotReceived';
 
     /**
      * Constant for 'SignificantlyNotAsDescribed' value.
      *
-     * The buyer has opened a case against the seller because the item was received but
-     *  does not match the item description in the listing. A buyer can open an <i>Item
-     *  Significantly Not As Described</i> case immediately after receiving the item.
-     * This value
-     *  cannot be used in <b>AddDispute</b>.
+     * This enumeration value is no longer applicable since the Dispute calls in
+     * Trading API no longer support SNAD disputes.
      */
     public const VAL_SIGNIFICANTLY_NOT_AS_DESCRIBED = 'SignificantlyNotAsDescribed';
 
     /**
      * Constant for 'NoRefund' value.
      *
-     * The item was returned but no refund was given. This value cannot be used in
-     *  <b>AddDispute</b>.
+     * This enumeration value is no longer applicable since the Dispute calls in
+     * Trading API only support Unpaid Item cases, and there will be no refund
+     * involved.
      */
     public const VAL_NO_REFUND = 'NoRefund';
 

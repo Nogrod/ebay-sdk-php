@@ -71,7 +71,7 @@ class SKUDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      *  a value of true in the activeInventoryReportFilter of a Bulk Data Exchange Service
      *  startDownloadJob request.
      *  <br><br>
-     *  See <a href="http://developer.ebay.com/DevZone/bulk-data-exchange/CallRef/startDownloadJob.html#Request.downloadRequestFilter.activeInventoryReportFilter" target="_blank">activeInventoryReportFilter</a>
+     *  See <a href="https://developer.ebay.com/DevZone/bulk-data-exchange/CallRef/startDownloadJob.html#Request.downloadRequestFilter.activeInventoryReportFilter" target="_blank">activeInventoryReportFilter</a>
      *
      * @var int $bidCount
      */
@@ -83,7 +83,7 @@ class SKUDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      *  a value of true in the activeInventoryReportFilter of a Bulk Data Exchange Service
      *  startDownloadJob request.
      *  <br><br>
-     *  See <a href="http://developer.ebay.com/DevZone/bulk-data-exchange/CallRef/startDownloadJob.html#Request.downloadRequestFilter.activeInventoryReportFilter" target="_blank">activeInventoryReportFilter</a>
+     *  See <a href="https://developer.ebay.com/DevZone/bulk-data-exchange/CallRef/startDownloadJob.html#Request.downloadRequestFilter.activeInventoryReportFilter" target="_blank">activeInventoryReportFilter</a>
      *
      * @var bool $reserveMet
      */
@@ -263,7 +263,7 @@ class SKUDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      *  a value of true in the activeInventoryReportFilter of a Bulk Data Exchange Service
      *  startDownloadJob request.
      *  <br><br>
-     *  See <a href="http://developer.ebay.com/DevZone/bulk-data-exchange/CallRef/startDownloadJob.html#Request.downloadRequestFilter.activeInventoryReportFilter" target="_blank">activeInventoryReportFilter</a>
+     *  See <a href="https://developer.ebay.com/DevZone/bulk-data-exchange/CallRef/startDownloadJob.html#Request.downloadRequestFilter.activeInventoryReportFilter" target="_blank">activeInventoryReportFilter</a>
      *
      * @return int
      */
@@ -280,7 +280,7 @@ class SKUDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      *  a value of true in the activeInventoryReportFilter of a Bulk Data Exchange Service
      *  startDownloadJob request.
      *  <br><br>
-     *  See <a href="http://developer.ebay.com/DevZone/bulk-data-exchange/CallRef/startDownloadJob.html#Request.downloadRequestFilter.activeInventoryReportFilter" target="_blank">activeInventoryReportFilter</a>
+     *  See <a href="https://developer.ebay.com/DevZone/bulk-data-exchange/CallRef/startDownloadJob.html#Request.downloadRequestFilter.activeInventoryReportFilter" target="_blank">activeInventoryReportFilter</a>
      *
      * @param int $bidCount
      * @return self
@@ -299,7 +299,7 @@ class SKUDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      *  a value of true in the activeInventoryReportFilter of a Bulk Data Exchange Service
      *  startDownloadJob request.
      *  <br><br>
-     *  See <a href="http://developer.ebay.com/DevZone/bulk-data-exchange/CallRef/startDownloadJob.html#Request.downloadRequestFilter.activeInventoryReportFilter" target="_blank">activeInventoryReportFilter</a>
+     *  See <a href="https://developer.ebay.com/DevZone/bulk-data-exchange/CallRef/startDownloadJob.html#Request.downloadRequestFilter.activeInventoryReportFilter" target="_blank">activeInventoryReportFilter</a>
      *
      * @return bool
      */
@@ -316,7 +316,7 @@ class SKUDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      *  a value of true in the activeInventoryReportFilter of a Bulk Data Exchange Service
      *  startDownloadJob request.
      *  <br><br>
-     *  See <a href="http://developer.ebay.com/DevZone/bulk-data-exchange/CallRef/startDownloadJob.html#Request.downloadRequestFilter.activeInventoryReportFilter" target="_blank">activeInventoryReportFilter</a>
+     *  See <a href="https://developer.ebay.com/DevZone/bulk-data-exchange/CallRef/startDownloadJob.html#Request.downloadRequestFilter.activeInventoryReportFilter" target="_blank">activeInventoryReportFilter</a>
      *
      * @param bool $reserveMet
      * @return self

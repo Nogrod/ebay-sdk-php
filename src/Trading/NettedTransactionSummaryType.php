@@ -8,11 +8,6 @@ use Nogrod\XMLClientRuntime\Func;
  * Class representing NettedTransactionSummaryType
  *
  * This type is used by the <b>NettedTransactionSummary</b> container, which shows the total amount of fees (and credits if applicable) that have already been paid through seller payout deductions.
- *  <br>
- *  <br>
- *  <span class="tablenote"><b>Note: </b>
- *  For a limited number of managed payments sellers, final value fees and payment processing fees will start getting deducted from seller payouts as early as mid-June 2020, but for many other managed payments sellers, these fees won't start getting deducted from seller payouts until mid-July 2020.
- *  </span>
  * XSD Type: NettedTransactionSummaryType
  */
 class NettedTransactionSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable

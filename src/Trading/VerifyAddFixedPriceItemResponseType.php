@@ -89,15 +89,6 @@ class VerifyAddFixedPriceItemResponseType extends AbstractResponseType
     ];
 
     /**
-     * Container consisting of one or more <b>Recommendation</b> containers. Each <b>Recommendation</b> container provides a message to the seller on how a listing can be improved or brought up to standard in regards to top-rated seller/listing requirements, mandated or recommended Item Specifics, picture quality requirements, pricing and/or listing format recommendations, recommended keywords and/or Item Specifics in a Title, and/or a recommendation to offer fast handling (same-day handling or handling time of 1 day) and/or a free shipping option in order to qualify the listing for a Fast 'N Free badge.
-     *  <br><br>
-     *  This container is only returned if the <b>IncludeRecommendations</b> flag was included and set to 'true' in the <b>VerifyAddFixedPriceItem</b> request, and if at least one listing recommendation exists for the listing about to be listed. If one or more listing recommendations are returned, it will be at the seller's discretion about whether to revise the listing based on eBay's listing recommendation(s) before actually creating the listing through an <b>AddFixedPriceItem</b> call.
-     *
-     * @var \Nogrod\eBaySDK\Trading\ListingRecommendationType[] $listingRecommendations
-     */
-    private $listingRecommendations = null;
-
-    /**
      * Gets as itemID
      *
      * With a successful <b>VerifyAddFixedPriceItem</b> call, this field is always returned, but the returned value is always <code>0</code>, since this call only validates the data passed in through the request payload and does not actually create an active listing.
@@ -445,82 +436,6 @@ class VerifyAddFixedPriceItemResponseType extends AbstractResponseType
         return $this;
     }
 
-    /**
-     * Adds as recommendation
-     *
-     * Container consisting of one or more <b>Recommendation</b> containers. Each <b>Recommendation</b> container provides a message to the seller on how a listing can be improved or brought up to standard in regards to top-rated seller/listing requirements, mandated or recommended Item Specifics, picture quality requirements, pricing and/or listing format recommendations, recommended keywords and/or Item Specifics in a Title, and/or a recommendation to offer fast handling (same-day handling or handling time of 1 day) and/or a free shipping option in order to qualify the listing for a Fast 'N Free badge.
-     *  <br><br>
-     *  This container is only returned if the <b>IncludeRecommendations</b> flag was included and set to 'true' in the <b>VerifyAddFixedPriceItem</b> request, and if at least one listing recommendation exists for the listing about to be listed. If one or more listing recommendations are returned, it will be at the seller's discretion about whether to revise the listing based on eBay's listing recommendation(s) before actually creating the listing through an <b>AddFixedPriceItem</b> call.
-     *
-     * @return self
-     * @param \Nogrod\eBaySDK\Trading\ListingRecommendationType $recommendation
-     */
-    public function addToListingRecommendations(\Nogrod\eBaySDK\Trading\ListingRecommendationType $recommendation)
-    {
-        $this->listingRecommendations[] = $recommendation;
-        return $this;
-    }
-
-    /**
-     * isset listingRecommendations
-     *
-     * Container consisting of one or more <b>Recommendation</b> containers. Each <b>Recommendation</b> container provides a message to the seller on how a listing can be improved or brought up to standard in regards to top-rated seller/listing requirements, mandated or recommended Item Specifics, picture quality requirements, pricing and/or listing format recommendations, recommended keywords and/or Item Specifics in a Title, and/or a recommendation to offer fast handling (same-day handling or handling time of 1 day) and/or a free shipping option in order to qualify the listing for a Fast 'N Free badge.
-     *  <br><br>
-     *  This container is only returned if the <b>IncludeRecommendations</b> flag was included and set to 'true' in the <b>VerifyAddFixedPriceItem</b> request, and if at least one listing recommendation exists for the listing about to be listed. If one or more listing recommendations are returned, it will be at the seller's discretion about whether to revise the listing based on eBay's listing recommendation(s) before actually creating the listing through an <b>AddFixedPriceItem</b> call.
-     *
-     * @param int|string $index
-     * @return bool
-     */
-    public function issetListingRecommendations($index)
-    {
-        return isset($this->listingRecommendations[$index]);
-    }
-
-    /**
-     * unset listingRecommendations
-     *
-     * Container consisting of one or more <b>Recommendation</b> containers. Each <b>Recommendation</b> container provides a message to the seller on how a listing can be improved or brought up to standard in regards to top-rated seller/listing requirements, mandated or recommended Item Specifics, picture quality requirements, pricing and/or listing format recommendations, recommended keywords and/or Item Specifics in a Title, and/or a recommendation to offer fast handling (same-day handling or handling time of 1 day) and/or a free shipping option in order to qualify the listing for a Fast 'N Free badge.
-     *  <br><br>
-     *  This container is only returned if the <b>IncludeRecommendations</b> flag was included and set to 'true' in the <b>VerifyAddFixedPriceItem</b> request, and if at least one listing recommendation exists for the listing about to be listed. If one or more listing recommendations are returned, it will be at the seller's discretion about whether to revise the listing based on eBay's listing recommendation(s) before actually creating the listing through an <b>AddFixedPriceItem</b> call.
-     *
-     * @param int|string $index
-     * @return void
-     */
-    public function unsetListingRecommendations($index)
-    {
-        unset($this->listingRecommendations[$index]);
-    }
-
-    /**
-     * Gets as listingRecommendations
-     *
-     * Container consisting of one or more <b>Recommendation</b> containers. Each <b>Recommendation</b> container provides a message to the seller on how a listing can be improved or brought up to standard in regards to top-rated seller/listing requirements, mandated or recommended Item Specifics, picture quality requirements, pricing and/or listing format recommendations, recommended keywords and/or Item Specifics in a Title, and/or a recommendation to offer fast handling (same-day handling or handling time of 1 day) and/or a free shipping option in order to qualify the listing for a Fast 'N Free badge.
-     *  <br><br>
-     *  This container is only returned if the <b>IncludeRecommendations</b> flag was included and set to 'true' in the <b>VerifyAddFixedPriceItem</b> request, and if at least one listing recommendation exists for the listing about to be listed. If one or more listing recommendations are returned, it will be at the seller's discretion about whether to revise the listing based on eBay's listing recommendation(s) before actually creating the listing through an <b>AddFixedPriceItem</b> call.
-     *
-     * @return \Nogrod\eBaySDK\Trading\ListingRecommendationType[]
-     */
-    public function getListingRecommendations()
-    {
-        return $this->listingRecommendations;
-    }
-
-    /**
-     * Sets a new listingRecommendations
-     *
-     * Container consisting of one or more <b>Recommendation</b> containers. Each <b>Recommendation</b> container provides a message to the seller on how a listing can be improved or brought up to standard in regards to top-rated seller/listing requirements, mandated or recommended Item Specifics, picture quality requirements, pricing and/or listing format recommendations, recommended keywords and/or Item Specifics in a Title, and/or a recommendation to offer fast handling (same-day handling or handling time of 1 day) and/or a free shipping option in order to qualify the listing for a Fast 'N Free badge.
-     *  <br><br>
-     *  This container is only returned if the <b>IncludeRecommendations</b> flag was included and set to 'true' in the <b>VerifyAddFixedPriceItem</b> request, and if at least one listing recommendation exists for the listing about to be listed. If one or more listing recommendations are returned, it will be at the seller's discretion about whether to revise the listing based on eBay's listing recommendation(s) before actually creating the listing through an <b>AddFixedPriceItem</b> call.
-     *
-     * @param \Nogrod\eBaySDK\Trading\ListingRecommendationType[] $listingRecommendations
-     * @return self
-     */
-    public function setListingRecommendations(array $listingRecommendations)
-    {
-        $this->listingRecommendations = $listingRecommendations;
-        return $this;
-    }
-
     public function xmlSerialize(\Sabre\Xml\Writer $writer)
     {
         parent::xmlSerialize($writer);
@@ -559,12 +474,6 @@ class VerifyAddFixedPriceItemResponseType extends AbstractResponseType
         if (null !== $value && !empty($this->getDiscountReason())) {
             $writer->write(array_map(function ($v) {
                 return ["DiscountReason" => $v];
-            }, $value));
-        }
-        $value = $this->getListingRecommendations();
-        if (null !== $value && !empty($this->getListingRecommendations())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ListingRecommendations", array_map(function ($v) {
-                return ["Recommendation" => $v];
             }, $value));
         }
     }
@@ -617,12 +526,6 @@ class VerifyAddFixedPriceItemResponseType extends AbstractResponseType
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DiscountReason', true);
         if (null !== $value && !empty($value)) {
             $this->setDiscountReason($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ListingRecommendations', true);
-        if (null !== $value && !empty($value)) {
-            $this->setListingRecommendations(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\ListingRecommendationType::fromKeyValue($v);
-            }, $value));
         }
     }
 }

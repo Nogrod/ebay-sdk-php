@@ -7,13 +7,13 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing AddDisputeResponseType
  *
- * Type defining the response of the <b>AddDispute</b> call. Upon a successful call, the response contains a newly created <b>DisputeID</b> value, which confirms that an Unpaid Item case was created, or that a single line item order was successfully cancelled.
+ * Type defining the response of the <b>AddDispute</b> call. Upon a successful call, the response contains a newly created <b>DisputeID</b> value, which confirms that an Unpaid Item case was created.
  * XSD Type: AddDisputeResponseType
  */
 class AddDisputeResponseType extends AbstractResponseType
 {
     /**
-     * This field will show the unique identifier of an Unpaid Item case that was created, or the unique identifier of the order cancellation.
+     * This field will show the unique identifier of an Unpaid Item case that was created.
      *
      * @var string $disputeID
      */
@@ -22,7 +22,7 @@ class AddDisputeResponseType extends AbstractResponseType
     /**
      * Gets as disputeID
      *
-     * This field will show the unique identifier of an Unpaid Item case that was created, or the unique identifier of the order cancellation.
+     * This field will show the unique identifier of an Unpaid Item case that was created.
      *
      * @return string
      */
@@ -34,7 +34,7 @@ class AddDisputeResponseType extends AbstractResponseType
     /**
      * Sets a new disputeID
      *
-     * This field will show the unique identifier of an Unpaid Item case that was created, or the unique identifier of the order cancellation.
+     * This field will show the unique identifier of an Unpaid Item case that was created.
      *
      * @param string $disputeID
      * @return self

@@ -1266,6 +1266,17 @@ Nogrod\eBaySDK\Trading\SiteDefaultsType:
                 getter: getConditionValues
                 setter: setConditionValues
             type: Nogrod\eBaySDK\Trading\ConditionValuesType
+        specialFeatures:
+            expose: true
+            access_type: public_method
+            serialized_name: SpecialFeatures
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSpecialFeatures
+                setter: setSpecialFeatures
+            type: Nogrod\eBaySDK\Trading\ConditionValuesType
         valueCategory:
             expose: true
             access_type: public_method

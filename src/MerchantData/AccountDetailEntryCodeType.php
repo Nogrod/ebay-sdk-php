@@ -2494,22 +2494,19 @@ class AccountDetailEntryCodeType
     /**
      * Constant for 'FeeAd' value.
      *
-     * This enumeration value indicates that the account entry is a fee charged for an
-     * Ad on eBay. This Ad fee is charged only for sellers who sign up to create
-     * Promoted Listings campaigns. When sellers advertise their listings, the listings
-     * are displayed on the search results pages based on buyer search query. When a
-     * buyer clicks on an ad and then goes on to purchase that same item within 30 days
-     * of click, the seller is charged an Ad fee. The Ad fee that is charged is at the
-     * rate set by seller themselves. They choose the bid percentage for each item
-     * listing.
+     * This enumeration value indicates that the account entry is a fee charged for a
+     * Standard Promoted Listing ad on eBay. With Standard Promoted Listings, the
+     * seller is charged a fee when a buyer clicks on the ad and then goes on to
+     * purchase that same item within 30 days of that click. The seller chooses the bid
+     * percentage for the ad, and this rate is applied toward the total purchase price.
      */
     public const VAL_FEE_AD = 'FeeAd';
 
     /**
      * Constant for 'CreditAd' value.
      *
-     * This enumeration value indicates that the account entry is a credit issued by
-     * eBay for an Ad charge.
+     * This enumeration value indicates that the account entry is a credit issued
+     * toward a Standard Promoted Listing ad fee.
      */
     public const VAL_CREDIT_AD = 'CreditAd';
 
@@ -2655,15 +2652,20 @@ class AccountDetailEntryCodeType
     /**
      * Constant for 'AdFeePremium' value.
      *
-     * This enumeration value indicates the invoice charge is for a Premium Ad Fee.
+     * This enumeration value indicates that the account entry is a fee charged for a
+     * Advanced Promoted Listing ad on eBay. With Advanced Promoted Listings, the
+     * seller uses keywords to promote the listing, and if buyers find the listing
+     * based on a keyword defined in the seller's Promoted Listings campaign, the
+     * seller is charged a fee each time the ad is clicked. The seller chooses the bid
+     * percentage rate for the ad, and this rate is charged for each click on the ad.
      */
     public const VAL_AD_FEE_PREMIUM = 'AdFeePremium';
 
     /**
      * Constant for 'AdFeePremiumCredit' value.
      *
-     * This enumeration value indicates that a credit was issued for a Premium Ad Fee
-     * charge.
+     * This enumeration value indicates that a credit was issued toward an Advanced
+     * Promoted Listing ad fee.
      */
     public const VAL_AD_FEE_PREMIUM_CREDIT = 'AdFeePremiumCredit';
 
@@ -2800,19 +2802,24 @@ class AccountDetailEntryCodeType
      * Constant for 'USInternetSalesTax' value.
      *
      * This enumeration value indicates that PayPal has pulled out the 'Collect and
-     * Remit' sales tax amount that was originally deposited to the seller's account.
-     * This enumeration value is only applicable to US sellers not opted in to eBay
-     * managed payments, and for orders that are subject to eBay 'Collect and Remit'
-     * sales tax. See the corresponding <b>OrderId</b> value to determine which eBay
-     * order this sales tax pertains to.
+     * Remit' sales tax amount that was originally deposited to the seller's PayPal
+     * account. This enumeration value is only applicable if the buyer is based in the
+     * US, and their state of residence mandates the collection of sales tax. See the
+     * corresponding <b>OrderId</b> value to determine which eBay order this sales tax
+     * pertains to.
+     *  <br><br>
+     *  This enumeration value does not apply to sellers onboarded for eBay managed
+     * payments.
      *  <br><br>
      *  <span class="tablenote"><b>Note: </b>
-     *  For US sellers not enabled for eBay managed payments, PayPal will now deposit
-     * the entire order amount, including the 'Collect and Remit' sales tax, into the
-     * seller's account, and once the order funds clear, this sales tax will be pulled
-     * from the seller's account and submitted to the proper tax authority. This change
-     * went into effect on October 24, 2019. Previous to this date, PayPal pulled out
-     * the 'Collect and Remit' sales tax before distributing order funds to the seller.
+     *  As stated above, this enumeration value only applies to sellers who have not
+     * yet onboarded for managed payments. In late 2019, PayPal initiated a new process
+     * for any 'Collect and Remit' tax. In this process, PayPal first deposits the
+     * entire order amount, including the 'Collect and Remit' sales tax, into the
+     * seller's PayPal account, and shortly after the buyer's funds clear, this sales
+     * tax is then pulled from the seller's PayPal account and submitted to the proper
+     * tax authority. Previous to this change, PayPal pulled out the 'Collect and
+     * Remit' sales tax before distributing order funds to the seller's PayPal Account.
      *  </span>
      */
     public const VAL_USINTERNET_SALES_TAX = 'USInternetSalesTax';
@@ -2822,20 +2829,25 @@ class AccountDetailEntryCodeType
      *
      * This enumeration value indicates that PayPal has deposited the 'Collect and
      * Remit' sales tax amount (for the order identified by the corresponding
-     * <b>OrderId</b> field) to the seller's account. This enumeration value is only
-     * applicable to US sellers not enabled for eBay managed payments, and for orders
-     * that are subject to eBay 'Collect and Remit' sales tax. This sales tax will
-     * actually get pulled from the seller's account shortly after the order funds
-     * clear, and the seller should then see a <b>USInternetSalesTax</b> account entry
-     * with a matching amount.
+     * <b>OrderId</b> field) to the seller's PayPal account. This enumeration value is
+     * only applicable if the buyer is based in the US, and their state of residence
+     * mandates the collection of sales tax. This sales tax will actually get pulled
+     * from the seller's PayPal account shortly after the buyer's funds clear, and the
+     * seller should then see a <b>USInternetSalesTax</b> account entry with a matching
+     * amount.
+     *  <br><br>
+     *  This enumeration value does not apply to sellers onboarded for eBay managed
+     * payments.
      *  <br><br>
      *  <span class="tablenote"><b>Note: </b>
-     *  For US sellers not enabled for eBay managed payments, PayPal will now deposit
-     * the entire order amount, including the 'Collect and Remit' sales tax, into the
-     * seller's account, and once the order funds clear, this sales tax will be pulled
-     * from the seller's account and submitted to the proper tax authority. This change
-     * went into effect on October 24, 2019. Previous to this date, PayPal pulled out
-     * the 'Collect and Remit' sales tax before distributing order funds to the seller.
+     *  As stated above, this enumeration value only applies to sellers who have not
+     * yet onboarded for managed payments. In late 2019, PayPal initiated a new process
+     * for any 'Collect and Remit' tax. In this process, PayPal first deposits the
+     * entire order amount, including the 'Collect and Remit' sales tax, into the
+     * seller's PayPal account, and shortly after the buyer's funds clear, this sales
+     * tax is then pulled from the seller's PayPal account and submitted to the proper
+     * tax authority. Previous to this change, PayPal pulled out the 'Collect and
+     * Remit' sales tax before distributing order funds to the seller's PayPal Account.
      *  </span>
      */
     public const VAL_USINTERNET_SALES_TAX_CREDIT = 'USInternetSalesTaxCredit';
@@ -2844,18 +2856,23 @@ class AccountDetailEntryCodeType
      * Constant for 'NewZealandGST' value.
      *
      * This enumeration value indicates that PayPal has pulled out the 'Goods and
-     * Services' tax amount that was originally deposited to the seller's account. This
-     * enumeration value is only applicable to New Zealand sellers for orders that are
-     * subject to 'Goods and Services' tax. See the corresponding <b>OrderId</b> value
-     * to determine which eBay order this tax pertains to.
+     * Services' tax amount that was originally deposited to the seller's PayPal
+     * account. This enumeration value is only applicable to New Zealand sellers for
+     * orders that are subject to 'Goods and Services' tax. See the corresponding
+     * <b>OrderId</b> value to determine which eBay order this tax pertains to.
+     *  <br><br>
+     *  This enumeration value does not apply to sellers onboarded for eBay managed
+     * payments.
      *  <br><br>
      *  <span class="tablenote"><b>Note: </b>
-     *  PayPal will now deposit the entire order amount, including the 'Goods and
-     * Services' tax, into the seller's account, and once the order funds clear, this
-     * sales tax will be pulled from the seller's account and submitted to the proper
-     * tax authority. This change just went into effect on October 24, 2019. Previous
-     * to this date, PayPal pulled out the 'Goods and Services' tax before distributing
-     * order funds to the seller.
+     *  As stated above, this enumeration value only applies to sellers who have not
+     * yet onboarded for managed payments. In late 2019, PayPal initiated a new process
+     * for any 'Collect and Remit' tax. In this process, PayPal first deposits the
+     * entire order amount, including the 'Collect and Remit' GST tax, into the
+     * seller's PayPal account, and shortly after the buyer's funds clear, this GST tax
+     * is then pulled from the seller's PayPal account and submitted to the proper tax
+     * authority. Previous to this change, PayPal pulled out the 'Collect and Remit'
+     * GST tax before distributing order funds to the seller's PayPal Account.
      *  </span>
      */
     public const VAL_NEW_ZEALAND_GST = 'NewZealandGST';
@@ -2871,13 +2888,18 @@ class AccountDetailEntryCodeType
      * shortly after the order funds clear, and the seller should then see a
      * <b>NewZealandGST</b> account entry with a matching amount.
      *  <br><br>
+     *  This enumeration value does not apply to sellers onboarded for eBay managed
+     * payments.
+     *  <br><br>
      *  <span class="tablenote"><b>Note: </b>
-     *  PayPal will now deposit the entire order amount, including the 'Goods and
-     * Services' tax, into the seller's account, and once the order funds clear, this
-     * sales tax will be pulled from the seller's account and submitted to the proper
-     * tax authority. This change just went into effect on October 24, 2019. Previous
-     * to this date, PayPal pulled out the 'Goods and Services' tax before distributing
-     * order funds to the seller.
+     *  As stated above, this enumeration value only applies to sellers who have not
+     * yet onboarded for managed payments. In late 2019, PayPal initiated a new process
+     * for any 'Collect and Remit' tax. In this process, PayPal first deposits the
+     * entire order amount, including the 'Collect and Remit' GST tax, into the
+     * seller's PayPal account, and shortly after the buyer's funds clear, this GST tax
+     * is then pulled from the seller's PayPal account and submitted to the proper tax
+     * authority. Previous to this change, PayPal pulled out the 'Collect and Remit'
+     * GST tax before distributing order funds to the seller's PayPal Account.
      *  </span>
      */
     public const VAL_NEW_ZEALAND_GSTCREDIT = 'NewZealandGSTCredit';
@@ -2886,18 +2908,23 @@ class AccountDetailEntryCodeType
      * Constant for 'AustraliaGST' value.
      *
      * This enumeration value indicates that PayPal has pulled out the 'Goods and
-     * Services' tax amount that was originally deposited to the seller's account. This
-     * enumeration value is only applicable to Australian sellers for orders that are
-     * subject to 'Goods and Services' tax. See the corresponding <b>OrderId</b> value
-     * to determine which eBay order this tax pertains to.
+     * Services' tax amount that was originally deposited to the seller's PayPal
+     * account. This enumeration value is only applicable to Australian sellers for
+     * orders that are subject to 'Goods and Services' tax. See the corresponding
+     * <b>OrderId</b> value to determine which eBay order this tax pertains to.
+     *  <br><br>
+     *  This enumeration value does not apply to sellers onboarded for eBay managed
+     * payments.
      *  <br><br>
      *  <span class="tablenote"><b>Note: </b>
-     *  PayPal will now deposit the entire order amount, including the 'Goods and
-     * Services' tax, into the seller's account, and once the order funds clear, this
-     * sales tax will be pulled from the seller's account and submitted to the proper
-     * tax authority. This change just went into effect on October 24, 2019. Previous
-     * to this date, PayPal pulled out the 'Goods and Services' tax before distributing
-     * order funds to the seller.
+     *  As stated above, this enumeration value only applies to sellers who have not
+     * yet onboarded for managed payments. In late 2019, PayPal initiated a new process
+     * for any 'Collect and Remit' tax. In this process, PayPal first deposits the
+     * entire order amount, including the 'Collect and Remit' GST tax, into the
+     * seller's PayPal account, and shortly after the buyer's funds clear, this GST tax
+     * is then pulled from the seller's PayPal account and submitted to the proper tax
+     * authority. Previous to this change, PayPal pulled out the 'Collect and Remit'
+     * GST tax before distributing order funds to the seller's PayPal Account.
      *  </span>
      */
     public const VAL_AUSTRALIA_GST = 'AustraliaGST';
@@ -2908,18 +2935,23 @@ class AccountDetailEntryCodeType
      * This enumeration value indicates that PayPal has deposited the 'Goods and
      * Services' tax amount (for the order identified by the corresponding
      * <b>OrderId</b> field) to the seller's account. This enumeration value is only
-     * applicable to Australia sellers for orders that are subject to 'Goods and
+     * applicable to Australian sellers for orders that are subject to 'Goods and
      * Services' tax. This tax will actually get pulled from the seller's account
      * shortly after the order funds clear, and the seller should then see a
      * <b>AustraliaGST</b> account entry with a matching amount.
      *  <br><br>
+     *  This enumeration value does not apply to sellers onboarded for eBay managed
+     * payments.
+     *  <br><br>
      *  <span class="tablenote"><b>Note: </b>
-     *  PayPal will now deposit the entire order amount, including the 'Goods and
-     * Services' tax, into the seller's account, and once the order funds clear, this
-     * sales tax will be pulled from the seller's account and submitted to the proper
-     * tax authority. This change just went into effect on October 24, 2019. Previous
-     * to this date, PayPal pulled out the 'Goods and Services' tax before distributing
-     * order funds to the seller.
+     *  As stated above, this enumeration value only applies to sellers who have not
+     * yet onboarded for managed payments. In late 2019, PayPal initiated a new process
+     * for any 'Collect and Remit' tax. In this process, PayPal first deposits the
+     * entire order amount, including the 'Collect and Remit' GST tax, into the
+     * seller's PayPal account, and shortly after the buyer's funds clear, this GST tax
+     * is then pulled from the seller's PayPal account and submitted to the proper tax
+     * authority. Previous to this change, PayPal pulled out the 'Collect and Remit'
+     * GST tax before distributing order funds to the seller's PayPal Account.
      *  </span>
      */
     public const VAL_AUSTRALIA_GSTCREDIT = 'AustraliaGSTCredit';
@@ -3193,6 +3225,54 @@ class AccountDetailEntryCodeType
      *  </span>
      */
     public const VAL_FINAL_VALUE_FEE_BELOW_STANDARD_CREDIT = 'FinalValueFeeBelowStandardCredit';
+
+    /**
+     * Constant for 'AdFeeExpress' value.
+     *
+     * This enumeration value indicates that the account entry is a Promoted Listing
+     * Express fee.
+     */
+    public const VAL_AD_FEE_EXPRESS = 'AdFeeExpress';
+
+    /**
+     * Constant for 'AdFeeExpressCredit' value.
+     *
+     * This enumeration value indicates that the account entry is a credit applied
+     * against a Promoted Listing Express fee.
+     */
+    public const VAL_AD_FEE_EXPRESS_CREDIT = 'AdFeeExpressCredit';
+
+    /**
+     * Constant for 'DepositProcessingVariableFee' value.
+     *
+     * This enumeration value indicates that the account entry is a Deposit Processing
+     * Variable fee.
+     */
+    public const VAL_DEPOSIT_PROCESSING_VARIABLE_FEE = 'DepositProcessingVariableFee';
+
+    /**
+     * Constant for 'DepositProcessingVariableFeeCredit' value.
+     *
+     * This enumeration value indicates that the account entry is a credit applied
+     * against a Deposit Processing Variable fee.
+     */
+    public const VAL_DEPOSIT_PROCESSING_VARIABLE_FEE_CREDIT = 'DepositProcessingVariableFeeCredit';
+
+    /**
+     * Constant for 'DepositProcessingFixedFee' value.
+     *
+     * This enumeration value indicates that the account entry is a Deposit Processing
+     * Fixed fee.
+     */
+    public const VAL_DEPOSIT_PROCESSING_FIXED_FEE = 'DepositProcessingFixedFee';
+
+    /**
+     * Constant for 'DepositProcessingFixedFeeCredit' value.
+     *
+     * This enumeration value indicates that the account entry is a credit applied
+     * against a Deposit Processing Fixed fee.
+     */
+    public const VAL_DEPOSIT_PROCESSING_FIXED_FEE_CREDIT = 'DepositProcessingFixedFeeCredit';
 
     /**
      * @var string $__value

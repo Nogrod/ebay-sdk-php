@@ -5,9 +5,7 @@ namespace Nogrod\eBaySDK\Trading;
 /**
  * Class representing DepositTypeCodeType
  *
- * For vehicles listed through the US eBay Motors site, DepositType
- *  indicates how the buyer should pay the deposit amount. It is
- *  used in conjunction with a buyer payment method (BuyerPaymentMethodCodeType).
+ * This enumerated type is a list of applicable values that indicate how a motor vehicle deposit should be paid.
  * XSD Type: DepositTypeCodeType
  */
 class DepositTypeCodeType
@@ -15,15 +13,21 @@ class DepositTypeCodeType
     /**
      * Constant for 'None' value.
      *
-     * (out) No deposit needed.
+     * This value indicates that no deposit is required.
      */
     public const VAL_NONE = 'None';
 
     /**
      * Constant for 'OtherMethod' value.
      *
-     * (out) Pay the deposit using PayPal, and then
-     *  use any of the other specified payment methods to pay the balance.
+     * This value indicates that a deposit is required from the buyer when purchasing a
+     * motor vehicle. Deposits for a motor vehicle are either due in 24, 48, or 72
+     * hours after commitment to purchase. Or, in the case of a motor vehicle listing
+     * that is requiring immediate payment, the deposit it due immediately after
+     * commitment to purchase.
+     *  <br><br>
+     *  This value should be used in an Add/Revise call if the seller is requiring a
+     * deposit for a motor vehicle listing.
      */
     public const VAL_OTHER_METHOD = 'OtherMethod';
 

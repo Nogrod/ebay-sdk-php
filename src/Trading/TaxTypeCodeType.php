@@ -38,6 +38,28 @@ class TaxTypeCodeType
     public const VAL_GST = 'GST';
 
     /**
+     * Constant for 'ImportVAT' value.
+     *
+     * This enumeration value indicates that French VAT tax was charged to the buyer
+     * against the order line item.
+     *  <br/><br/>
+     *  This tax type is only applicable for items sold on the eBay France
+     * marketplaces.
+     */
+    public const VAL_IMPORT_VAT = 'ImportVAT';
+
+    /**
+     * Constant for 'VAT' value.
+     *
+     * This enumeration value indicates that European VAT tax was charged to the buyer
+     * against the order line item.
+     *  <br/><br/>
+     *  This enumeration applies to VAT tax on the UK marketplace, the Norway
+     * marketplace, and other EU marketplaces (except for France).
+     */
+    public const VAL_VAT = 'VAT';
+
+    /**
      * Constant for 'CustomCode' value.
      *
      * Reserved for internal or future use.

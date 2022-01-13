@@ -65,17 +65,6 @@ Nogrod\eBaySDK\MerchantData\VariationType:
                 getter: getUnitsAvailable
                 setter: setUnitsAvailable
             type: int
-        unitCost:
-            expose: true
-            access_type: public_method
-            serialized_name: UnitCost
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getUnitCost
-                setter: setUnitCost
-            type: Nogrod\eBaySDK\MerchantData\AmountType
         sellingStatus:
             expose: true
             access_type: public_method
@@ -120,17 +109,6 @@ Nogrod\eBaySDK\MerchantData\VariationType:
                 getter: getDelete
                 setter: setDelete
             type: bool
-        sellingManagerProductInventoryStatus:
-            expose: true
-            access_type: public_method
-            serialized_name: SellingManagerProductInventoryStatus
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getSellingManagerProductInventoryStatus
-                setter: setSellingManagerProductInventoryStatus
-            type: Nogrod\eBaySDK\MerchantData\SellingManagerProductInventoryStatusType
         watchCount:
             expose: true
             access_type: public_method

@@ -352,7 +352,7 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     private $businessRole = null;
 
     /**
-     * This type is deprecated. Use instead <b>User.SellerInfo.CharityAffiliationDetail</b>.
+     * This field is deprecated.
      *
      * @var \Nogrod\eBaySDK\MerchantData\CharityIDType[] $charityAffiliations
      */
@@ -1498,7 +1498,7 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Adds as charityID
      *
-     * This type is deprecated. Use instead <b>User.SellerInfo.CharityAffiliationDetail</b>.
+     * This field is deprecated.
      *
      * @return self
      * @param \Nogrod\eBaySDK\MerchantData\CharityIDType $charityID
@@ -1512,7 +1512,7 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * isset charityAffiliations
      *
-     * This type is deprecated. Use instead <b>User.SellerInfo.CharityAffiliationDetail</b>.
+     * This field is deprecated.
      *
      * @param int|string $index
      * @return bool
@@ -1525,7 +1525,7 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * unset charityAffiliations
      *
-     * This type is deprecated. Use instead <b>User.SellerInfo.CharityAffiliationDetail</b>.
+     * This field is deprecated.
      *
      * @param int|string $index
      * @return void
@@ -1538,7 +1538,7 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Gets as charityAffiliations
      *
-     * This type is deprecated. Use instead <b>User.SellerInfo.CharityAffiliationDetail</b>.
+     * This field is deprecated.
      *
      * @return \Nogrod\eBaySDK\MerchantData\CharityIDType[]
      */
@@ -1550,7 +1550,7 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Sets a new charityAffiliations
      *
-     * This type is deprecated. Use instead <b>User.SellerInfo.CharityAffiliationDetail</b>.
+     * This field is deprecated.
      *
      * @param \Nogrod\eBaySDK\MerchantData\CharityIDType[] $charityAffiliations
      * @return self

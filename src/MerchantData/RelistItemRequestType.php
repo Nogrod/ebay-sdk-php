@@ -23,7 +23,7 @@ class RelistItemRequestType extends AbstractRequestType
 
     /**
      * Specifies the name of the field to delete from a listing.
-     *  See <a href="http://developer.ebay.com/Devzone/guides/features-guide/default.html#development/Listings-RelistingItems.html">Relisting Items</a> for rules on deleting values when relisting items.
+     *  See <a href="https://developer.ebay.com/Devzone/guides/features-guide/default.html#development/Listings-RelistingItems.html">Relisting Items</a> for rules on deleting values when relisting items.
      *  Also see the relevant field descriptions to determine when to use <b>DeletedField</b> (and potential consequences).
      *  The request can contain zero, one, or many instances of <b>DeletedField</b> (one for each field to be deleted).
      *  <br><br>
@@ -73,7 +73,7 @@ class RelistItemRequestType extends AbstractRequestType
      * Adds as deletedField
      *
      * Specifies the name of the field to delete from a listing.
-     *  See <a href="http://developer.ebay.com/Devzone/guides/features-guide/default.html#development/Listings-RelistingItems.html">Relisting Items</a> for rules on deleting values when relisting items.
+     *  See <a href="https://developer.ebay.com/Devzone/guides/features-guide/default.html#development/Listings-RelistingItems.html">Relisting Items</a> for rules on deleting values when relisting items.
      *  Also see the relevant field descriptions to determine when to use <b>DeletedField</b> (and potential consequences).
      *  The request can contain zero, one, or many instances of <b>DeletedField</b> (one for each field to be deleted).
      *  <br><br>
@@ -96,7 +96,7 @@ class RelistItemRequestType extends AbstractRequestType
      * isset deletedField
      *
      * Specifies the name of the field to delete from a listing.
-     *  See <a href="http://developer.ebay.com/Devzone/guides/features-guide/default.html#development/Listings-RelistingItems.html">Relisting Items</a> for rules on deleting values when relisting items.
+     *  See <a href="https://developer.ebay.com/Devzone/guides/features-guide/default.html#development/Listings-RelistingItems.html">Relisting Items</a> for rules on deleting values when relisting items.
      *  Also see the relevant field descriptions to determine when to use <b>DeletedField</b> (and potential consequences).
      *  The request can contain zero, one, or many instances of <b>DeletedField</b> (one for each field to be deleted).
      *  <br><br>
@@ -118,7 +118,7 @@ class RelistItemRequestType extends AbstractRequestType
      * unset deletedField
      *
      * Specifies the name of the field to delete from a listing.
-     *  See <a href="http://developer.ebay.com/Devzone/guides/features-guide/default.html#development/Listings-RelistingItems.html">Relisting Items</a> for rules on deleting values when relisting items.
+     *  See <a href="https://developer.ebay.com/Devzone/guides/features-guide/default.html#development/Listings-RelistingItems.html">Relisting Items</a> for rules on deleting values when relisting items.
      *  Also see the relevant field descriptions to determine when to use <b>DeletedField</b> (and potential consequences).
      *  The request can contain zero, one, or many instances of <b>DeletedField</b> (one for each field to be deleted).
      *  <br><br>
@@ -140,7 +140,7 @@ class RelistItemRequestType extends AbstractRequestType
      * Gets as deletedField
      *
      * Specifies the name of the field to delete from a listing.
-     *  See <a href="http://developer.ebay.com/Devzone/guides/features-guide/default.html#development/Listings-RelistingItems.html">Relisting Items</a> for rules on deleting values when relisting items.
+     *  See <a href="https://developer.ebay.com/Devzone/guides/features-guide/default.html#development/Listings-RelistingItems.html">Relisting Items</a> for rules on deleting values when relisting items.
      *  Also see the relevant field descriptions to determine when to use <b>DeletedField</b> (and potential consequences).
      *  The request can contain zero, one, or many instances of <b>DeletedField</b> (one for each field to be deleted).
      *  <br><br>
@@ -161,7 +161,7 @@ class RelistItemRequestType extends AbstractRequestType
      * Sets a new deletedField
      *
      * Specifies the name of the field to delete from a listing.
-     *  See <a href="http://developer.ebay.com/Devzone/guides/features-guide/default.html#development/Listings-RelistingItems.html">Relisting Items</a> for rules on deleting values when relisting items.
+     *  See <a href="https://developer.ebay.com/Devzone/guides/features-guide/default.html#development/Listings-RelistingItems.html">Relisting Items</a> for rules on deleting values when relisting items.
      *  Also see the relevant field descriptions to determine when to use <b>DeletedField</b> (and potential consequences).
      *  The request can contain zero, one, or many instances of <b>DeletedField</b> (one for each field to be deleted).
      *  <br><br>

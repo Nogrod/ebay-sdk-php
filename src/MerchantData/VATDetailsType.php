@@ -48,7 +48,7 @@ class VATDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      *  <br>
      *  <br>
      *  <span class="tablenote"><b>Note:</b>
-     *  The float value input into an Add/Revise/Relist call can have up to three digits beyond the decimal point (e.g. 12.346).
+     *  Previously, up to three digits beyond the decimal point were allowed for this float value, but now a seller can include only one digit beyond the decimal point (e.g. 12.3) when using an Add/Revise/Relist call to set this value. An error will occur if more digits beyond the decimal point are specified.
      *  </span>
      *
      * @var float $vATPercent
@@ -150,7 +150,7 @@ class VATDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      *  <br>
      *  <br>
      *  <span class="tablenote"><b>Note:</b>
-     *  The float value input into an Add/Revise/Relist call can have up to three digits beyond the decimal point (e.g. 12.346).
+     *  Previously, up to three digits beyond the decimal point were allowed for this float value, but now a seller can include only one digit beyond the decimal point (e.g. 12.3) when using an Add/Revise/Relist call to set this value. An error will occur if more digits beyond the decimal point are specified.
      *  </span>
      *
      * @return float
@@ -173,7 +173,7 @@ class VATDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      *  <br>
      *  <br>
      *  <span class="tablenote"><b>Note:</b>
-     *  The float value input into an Add/Revise/Relist call can have up to three digits beyond the decimal point (e.g. 12.346).
+     *  Previously, up to three digits beyond the decimal point were allowed for this float value, but now a seller can include only one digit beyond the decimal point (e.g. 12.3) when using an Add/Revise/Relist call to set this value. An error will occur if more digits beyond the decimal point are specified.
      *  </span>
      *
      * @param float $vATPercent

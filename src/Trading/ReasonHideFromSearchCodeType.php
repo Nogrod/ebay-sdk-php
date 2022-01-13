@@ -35,7 +35,7 @@ class ReasonHideFromSearchCodeType
      * greater than zero. The 'Out-of-stock' option is set by the seller at the account
      * level. This option can be enabled in My eBay Site Preferences, or the seller can
      * use the <a
-     * href="http://developer.ebay.com/DevZone/XML/docs/Reference/ebay/SetUserPreferences.html#Request.OutOfStockControlPreference">OutOfStockControlPreference</a>
+     * href="https://developer.ebay.com/DevZone/XML/docs/Reference/ebay/SetUserPreferences.html#Request.OutOfStockControlPreference">OutOfStockControlPreference</a>
      * field in the <b>SetUserPreferences</b> call.
      */
     public const VAL_OUT_OF_STOCK = 'OutOfStock';

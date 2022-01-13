@@ -46,12 +46,7 @@ class PaymentHoldDetailType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
     private $numOfReqSellerActions = null;
 
     /**
-     * Enumerated value that indicates why the buyer's payment for the order is
-     *  being held by PayPal instead of being distributed to the seller's account.
-     *  A seller's funds for an order can be held by PayPal for as little as three
-     *  days after the buyer receives the order, but the hold can be up to 21 days
-     *  based on the scenario, and in some cases, the seller's lack of action in
-     *  helping to expedite the release of funds.
+     * Enumerated value that indicates why the buyer's payment for the order is being held by eBay/PayPal instead of being distributed to the seller's account. A seller's funds for an order can be held by PayPal for as little as three days after the buyer receives the order, but the hold can be up to 21 days based on the scenario, and in some cases, the seller's lack of action in helping to expedite the release of funds.
      *
      * @var string $paymentHoldReason
      */
@@ -200,12 +195,7 @@ class PaymentHoldDetailType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
     /**
      * Gets as paymentHoldReason
      *
-     * Enumerated value that indicates why the buyer's payment for the order is
-     *  being held by PayPal instead of being distributed to the seller's account.
-     *  A seller's funds for an order can be held by PayPal for as little as three
-     *  days after the buyer receives the order, but the hold can be up to 21 days
-     *  based on the scenario, and in some cases, the seller's lack of action in
-     *  helping to expedite the release of funds.
+     * Enumerated value that indicates why the buyer's payment for the order is being held by eBay/PayPal instead of being distributed to the seller's account. A seller's funds for an order can be held by PayPal for as little as three days after the buyer receives the order, but the hold can be up to 21 days based on the scenario, and in some cases, the seller's lack of action in helping to expedite the release of funds.
      *
      * @return string
      */
@@ -217,12 +207,7 @@ class PaymentHoldDetailType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
     /**
      * Sets a new paymentHoldReason
      *
-     * Enumerated value that indicates why the buyer's payment for the order is
-     *  being held by PayPal instead of being distributed to the seller's account.
-     *  A seller's funds for an order can be held by PayPal for as little as three
-     *  days after the buyer receives the order, but the hold can be up to 21 days
-     *  based on the scenario, and in some cases, the seller's lack of action in
-     *  helping to expedite the release of funds.
+     * Enumerated value that indicates why the buyer's payment for the order is being held by eBay/PayPal instead of being distributed to the seller's account. A seller's funds for an order can be held by PayPal for as little as three days after the buyer receives the order, but the hold can be up to 21 days based on the scenario, and in some cases, the seller's lack of action in helping to expedite the release of funds.
      *
      * @param string $paymentHoldReason
      * @return self

@@ -7,21 +7,19 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing GetDisputeRequestType
  *
- * This is the base request type for the <b>GetDispute</b> call. This call retrieves the details of a seller-initiated dispute. Seller-initiated disputes include mutually-cancelled transactions and unpaid items.
+ * This is the base request type for the <b>GetDispute</b> call. This call retrieves the details of an Unpaid Item case.
  *  <br/><br/>
  *  <span class="tablenote"><strong>Note:</strong>
- *  This call does not support buyer-initiated cases created through eBay's Resolution Center. Buyer-initiated cases include Item Not Received (INR) and escalated Return cases. To retrieve and manage eBay Money Back Guarantee cases, the Case Management calls of the <a href="http://developer.ebay.com/Devzone/post-order/index.html" target="_blank">Post-Order API</a> can be used instead.
+ *  The <b>GetDispute</b> call now only retrieves Unpaid Item cases, and is no longer used to retrieve Item not Received (INR) disputes created through PayPal, since this is no longer an option for eBay buyers. eBay buyers must create an INR case through eBay's Resolution Center, and this call also does not support eBay Money Back Guarantee cases.
+ *  <br><br>
+ *  To respond to an eBay Money Back Guarantee case, the seller should use the <a href="https://developer.ebay.com/Devzone/post-order/index.html" target="_blank">Case Management calls</a> of the <b>Post-Order API</b> or manage/respond to cases manually through the eBay Resolution Center.
  *  </span>
  * XSD Type: GetDisputeRequestType
  */
 class GetDisputeRequestType extends AbstractRequestType
 {
     /**
-     * The unique identifier of an seller-initiated dispute. The caller passes in this value to retrieve detailed information on a specific dispute.
-     *  <br/><br/>
-     *  <span class="tablenote"><strong>Note:</strong>
-     *  Buyer-initiated Money Back Guarantee cases are not supported with this call. To retrieve and manage eBay Money Back Guarantee cases, the Case Management calls of the <a href="https://developer.ebay.com/Devzone/post-order/index.html" target="_blank">Post-Order API</a> can be used instead.
-     *  </span>
+     * The unique identifier of an Unpaid Item case. This value is passed in to retrieve detailed information on a specific case.
      *
      * @var string $disputeID
      */
@@ -30,11 +28,7 @@ class GetDisputeRequestType extends AbstractRequestType
     /**
      * Gets as disputeID
      *
-     * The unique identifier of an seller-initiated dispute. The caller passes in this value to retrieve detailed information on a specific dispute.
-     *  <br/><br/>
-     *  <span class="tablenote"><strong>Note:</strong>
-     *  Buyer-initiated Money Back Guarantee cases are not supported with this call. To retrieve and manage eBay Money Back Guarantee cases, the Case Management calls of the <a href="https://developer.ebay.com/Devzone/post-order/index.html" target="_blank">Post-Order API</a> can be used instead.
-     *  </span>
+     * The unique identifier of an Unpaid Item case. This value is passed in to retrieve detailed information on a specific case.
      *
      * @return string
      */
@@ -46,11 +40,7 @@ class GetDisputeRequestType extends AbstractRequestType
     /**
      * Sets a new disputeID
      *
-     * The unique identifier of an seller-initiated dispute. The caller passes in this value to retrieve detailed information on a specific dispute.
-     *  <br/><br/>
-     *  <span class="tablenote"><strong>Note:</strong>
-     *  Buyer-initiated Money Back Guarantee cases are not supported with this call. To retrieve and manage eBay Money Back Guarantee cases, the Case Management calls of the <a href="https://developer.ebay.com/Devzone/post-order/index.html" target="_blank">Post-Order API</a> can be used instead.
-     *  </span>
+     * The unique identifier of an Unpaid Item case. This value is passed in to retrieve detailed information on a specific case.
      *
      * @param string $disputeID
      * @return self

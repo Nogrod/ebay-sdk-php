@@ -68,10 +68,7 @@ class GetSellerTransactionsResponseType extends AbstractResponseType
     private $transactionArray = null;
 
     /**
-     * Indicates whether the seller has the preference enabled that shows that the seller
-     *  prefers PayPal as the method of payment for an item. This preference is indicated on
-     *  an item's View Item page and is intended to influence a buyer to use PayPal
-     *  to pay for the item.
+     * This field may still be returned for orders currently, but it can be ignored since eBay now manages all online payment methods available to buyers.
      *
      * @var bool $payPalPreferred
      */
@@ -326,10 +323,7 @@ class GetSellerTransactionsResponseType extends AbstractResponseType
     /**
      * Gets as payPalPreferred
      *
-     * Indicates whether the seller has the preference enabled that shows that the seller
-     *  prefers PayPal as the method of payment for an item. This preference is indicated on
-     *  an item's View Item page and is intended to influence a buyer to use PayPal
-     *  to pay for the item.
+     * This field may still be returned for orders currently, but it can be ignored since eBay now manages all online payment methods available to buyers.
      *
      * @return bool
      */
@@ -341,10 +335,7 @@ class GetSellerTransactionsResponseType extends AbstractResponseType
     /**
      * Sets a new payPalPreferred
      *
-     * Indicates whether the seller has the preference enabled that shows that the seller
-     *  prefers PayPal as the method of payment for an item. This preference is indicated on
-     *  an item's View Item page and is intended to influence a buyer to use PayPal
-     *  to pay for the item.
+     * This field may still be returned for orders currently, but it can be ignored since eBay now manages all online payment methods available to buyers.
      *
      * @param bool $payPalPreferred
      * @return self

@@ -50,7 +50,7 @@ class PaymentHoldStatusCodeType
     /**
      * Constant for 'NewSellerHold' value.
      *
-     * This value indicates that there is a "new seller hold" on the item. PayPal
+     * This value indicates that there is a "new seller hold" on the item. eBay/PayPal
      *  may hold payments to a new seller for up to 21 days.
      *  Sellers are
      *  considered "new" until they have met all three criteria below:
@@ -80,8 +80,7 @@ class PaymentHoldStatusCodeType
     /**
      * Constant for 'ReleaseConfirmed' value.
      *
-     * This value indicates that the funds are available in the seller's PayPal
-     *  account.
+     * This value indicates that the funds are available in the seller's account.
      */
     public const VAL_RELEASE_CONFIRMED = 'ReleaseConfirmed';
 

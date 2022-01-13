@@ -24,7 +24,7 @@ class URLDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      *  to launch eBay Web site pages in a browser.<br><br>
      *  Logo URLs are required to be used in certain types of applications.
      *  See your API license agreement. Also see this page for logo usage rules:<br>
-     *  http://developer.ebay.com/join/licenses/apilogousage
+     *  https://developer.ebay.com/join/licenses/apilogousage
      *
      * @var string $uRL
      */
@@ -80,7 +80,7 @@ class URLDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      *  to launch eBay Web site pages in a browser.<br><br>
      *  Logo URLs are required to be used in certain types of applications.
      *  See your API license agreement. Also see this page for logo usage rules:<br>
-     *  http://developer.ebay.com/join/licenses/apilogousage
+     *  https://developer.ebay.com/join/licenses/apilogousage
      *
      * @return string
      */
@@ -96,7 +96,7 @@ class URLDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      *  to launch eBay Web site pages in a browser.<br><br>
      *  Logo URLs are required to be used in certain types of applications.
      *  See your API license agreement. Also see this page for logo usage rules:<br>
-     *  http://developer.ebay.com/join/licenses/apilogousage
+     *  https://developer.ebay.com/join/licenses/apilogousage
      *
      * @param string $uRL
      * @return self

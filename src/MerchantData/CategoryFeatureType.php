@@ -21,7 +21,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * A <b>ListingDuration</b> field is returned for each listing type and listing duration combination that is supported for the category. The integer value indicates the number of days of the listing duration, and the <b>type</b> attribute identifies the supported listing type.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ListingDurations</code>.
      *
      * @var \Nogrod\eBaySDK\MerchantData\ListingDurationReferenceType[] $listingDuration
@@ -32,7 +32,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * Indicates whether the category requires sellers to specify shipping details at listing time.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ShippingTermsRequired</code>.
      *
      * @var bool $shippingTermsRequired
@@ -41,7 +41,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * Indicates whether the category supports the Best Offer feature for listings.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>BestOfferEnabled</code>.
      *
      * @var bool $bestOfferEnabled
@@ -58,7 +58,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     /**
      * Indicates whether a bidder must consent to the bid by confirming that
      *  he or she read and agrees to the terms in eBay's privacy policy.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>UserConsentRequired</code>.
      *
      * @var bool $userConsentRequired
@@ -69,7 +69,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Indicates whether or not it is possible to enhance a listing by putting
      *  it into a rotation for display on a special area of the eBay home page.
      *  Support for this feature varies by site. Item or feedback restrictions may apply.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>HomePageFeaturedEnabled</code>.
      *
      * @var bool $homePageFeaturedEnabled
@@ -78,7 +78,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * Indicates whether the category supports the Pro Pack Bundle listing upgrade.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ProPack</code>.
      *
      * @var bool $proPackEnabled
@@ -94,7 +94,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * Indicates whether the category supports the Value Pack bundle listing upgrade.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ValuePack</code>.
      *
      * @var bool $valuePackEnabled
@@ -103,7 +103,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * Indicates whether the category supports the Pro Pack Plus bundle listing upgrade.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ProPackPlus</code>.
      *
      * @var bool $proPackPlusEnabled
@@ -112,7 +112,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * Indicates whether the category supports Classified Ad listings.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>AdFormatEnabled</code>.
      *
      * @var string $adFormatEnabled
@@ -121,7 +121,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * Indicates whether the category supports sellers offering a counter offer against a buyer's Best Offer, or a buyer offering a counter offer against the seller's counter offer.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>BestOfferCounterEnabled</code>.
      *
      * @var bool $bestOfferCounterEnabled
@@ -130,7 +130,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * Indicates whether the category supports the Best Offer Auto Decline feature.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>BestOfferAutoDeclineEnabled</code>.
      *
      * @var bool $bestOfferAutoDeclineEnabled
@@ -139,7 +139,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * Indicates whether the category supports the Speciality level subscription to Motors Local Market listings. This feature is only available to licensed vehicle dealers.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>LocalMarketSpecialitySubscription</code>.
      *
      * @var bool $localMarketSpecialitySubscription
@@ -148,7 +148,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * Indicates whether the category supports the Regular level subscription to Motors Local Market listings. This feature is only available to licensed vehicle dealers.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>LocalMarketRegularSubscription</code>.
      *
      * @var bool $localMarketRegularSubscription
@@ -157,7 +157,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * Indicates whether the category supports the Premium level subscription Motors Local Market listings. This feature is only available to licensed vehicle dealers.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>LocalMarketPremiumSubscription</code>.
      *
      * @var bool $localMarketPremiumSubscription
@@ -166,7 +166,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * Indicates whether the category supports a seller creating a Motors Local Market listing without a subscription. This feature is only available to licensed vehicle dealers.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>LocalMarketNonSubscription</code>.
      *
      * @var bool $localMarketNonSubscription
@@ -196,7 +196,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * Indicates the Minimum Reserve Price for an auction listing in this category. If there is no Minimum Reserve Price, a value of <code>0.0</code> is returned in this field.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>MinimumReservePrice</code>.
      *
      * @var float $minimumReservePrice
@@ -205,7 +205,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * Indicates whether this category supports seller-level contact information for Classified Ad listings.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>SellerContactDetailsEnabled</code>.
      *
      * @var bool $sellerContactDetailsEnabled
@@ -214,7 +214,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * Indicates whether the Transaction Confirmation Request feature is supported for this category.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default.
      *
      * @var bool $transactionConfirmationRequestEnabled
@@ -246,7 +246,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Indicates whether the payment method should be displayed to the user for
      *  Classified Ad format listings.
      *  Even if enabled, checkout may or may not be enabled.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ClassifiedAdPaymentMethodEnabled</code>.
      *
      * @var string $classifiedAdPaymentMethodEnabled
@@ -256,7 +256,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     /**
      * Indicates if shipping options are available for Classified Ad listings
      *  in the category.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ClassifiedAdShippingMethodEnabled</code>.
      *
      * @var bool $classifiedAdShippingMethodEnabled
@@ -265,7 +265,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * Indicates if Best offer is enabled for Classified Ad listings for this category.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ClassifiedAdBestOfferEnabled</code>.
      *
      * @var string $classifiedAdBestOfferEnabled
@@ -275,7 +275,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     /**
      * Indicates whether counter offers are allowed in Classified Ad listings
      *  for this category.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ClassifiedAdCounterOfferEnabled</code>.
      *
      * @var bool $classifiedAdCounterOfferEnabled
@@ -284,7 +284,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * Indicates whether automatic decline for best offers for Classified Ad listings is enabled for this category.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ClassifiedAdAutoDeclineEnabled</code>.
      *
      * @var bool $classifiedAdAutoDeclineEnabled
@@ -293,7 +293,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * Indicates whether the category supports the telephone as a contact method for Classified Ad listings.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ClassifiedAdContactByPhoneEnabled</code>.
      *
      * @var bool $classifiedAdContactByPhoneEnabled
@@ -302,7 +302,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * Indicates whether the category supports email as a contact method for Classified Ad listings.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ClassifiedAdContactByEmailEnabled</code>.
      *
      * @var bool $classifiedAdContactByEmailEnabled
@@ -311,7 +311,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * Indicates whether listings in this category need to have a safe payment method.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>SafePaymentRequired</code>.
      *
      * @var bool $safePaymentRequired
@@ -320,7 +320,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * Indicates if pay-per-lead listings are allowed for this category. Pay-per-lead listings can be applicable if the value of <b>ListingType</b> is <code>LeadGeneration</code> and the value of <b>ListingSubtype</b> is <code>ClassifiedAd</code>.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default.
      *
      * @var bool $classifiedAdPayPerLeadEnabled
@@ -329,7 +329,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * Indicates whether the category supports the use of Item Specifics in listings. If enabled, sellers can use the <b>Item.ItemSpecifics</b> node in Add/Revise/Relist calls to specify Item Specific name-value pairs.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ItemSpecificsEnabled</code>.
      *
      * @var string $itemSpecificsEnabled
@@ -340,7 +340,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * <span class="tablenote"><b>Note:</b>
      *  This field is deprecated since it is only applicable to the eBay India site, and this marketplace is no longer available.</span>
      *  Indicates whether the category supports the <code>PaisaPayEscrow</code> payment method. This feature is only applicable to the India site.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>PaisaPayFullEscrowEnabled</code>.
      *
      * @var bool $paisaPayFullEscrowEnabled
@@ -349,7 +349,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * Indicates whether the category supports the capability to identify a product using the brand/manufacturer part number combination.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>BrandMPNIdentifierEnabled</code>.
      *
      * @var bool $brandMPNIdentifierEnabled
@@ -358,7 +358,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * Indicates whether the category supports the Best Offer Automatic Accept feature for Classified Ad listings.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ClassifiedAdAutoAcceptEnabled</code>.
      *
      * @var bool $classifiedAdAutoAcceptEnabled
@@ -367,7 +367,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * Indicates whether the category supports the Best Offer Automatic Accept feature for listings.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>BestOfferAutoAcceptEnabled</code>.
      *
      * @var bool $bestOfferAutoAcceptEnabled
@@ -376,7 +376,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * Indicates whether the category supports specifying that listings be displayed in the default search results of North America sites (US and Canada (English).
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>CrossBorderTradeEnabled</code>.
      *
      * @var bool $crossBorderTradeNorthAmericaEnabled
@@ -385,7 +385,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * Indicates whether the category supports specifying that listings be displayed in the default search results of the UK and Ireland sites.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>CrossBorderTradeEnabled</code>.
      *
      * @var bool $crossBorderTradeGBEnabled
@@ -394,7 +394,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * Indicates whether the category supports specifying that listings be displayed in the default search results of the Australia site.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>CrossBorderTradeEnabled</code>.
      *
      * @var bool $crossBorderTradeAustraliaEnabled
@@ -403,7 +403,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * For the Australia site, if both <b>PayPalBuyerProtectionEnabled</b> and <b>BuyerGuaranteeEnabled</b> are returned, then buyer protection is allowed for this category.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>PayPalBuyerProtectionEnabled</code>.
      *
      * @var bool $payPalBuyerProtectionEnabled
@@ -412,7 +412,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * For the Australia site, if both <b>PayPalBuyerProtectionEnabled</b> and <b>BuyerGuaranteeEnabled</b> are returned, then buyer protection is allowed for this category.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>PayPalBuyerProtectionEnabled</code>.
      *
      * @var bool $buyerGuaranteeEnabled
@@ -428,7 +428,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * This field is returned if the Featured Gallery feature is supported for the category. The time unit that is returned in this field indicates how long a gallery will be featured on eBay.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>GalleryFeaturedDurations</code>.
      *
      * @var string[] $galleryFeaturedDurations
@@ -437,8 +437,12 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * Indicates whether the category requires PayPal as a payment method.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>PayPalRequired</code>.
+     *  <br><br>
+     *  <span class="tablenote"><b>Note: </b>
+     *  PayPal or any electronic payment methods are never required for managed payments sellers, so sellers onboarded for managed payments can disregard this field even if it is returned as <code>true</code>.
+     *  </span>
      *
      * @var bool $payPalRequired
      */
@@ -446,7 +450,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * Specifies whether this category allows Classified Ad listings on eBay Motors. This element is applicable for eBay Motors Pro users.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>eBayMotorsProAdFormatEnabled</code>.
      *
      * @var string $eBayMotorsProAdFormatEnabled
@@ -455,7 +459,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * Indicates whether this category supports including the telephone in the seller's contact information. This element is for eBay Motors Pro users.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>eBayMotorsProContactByPhoneEnabled</code>.
      *
      * @var bool $eBayMotorsProContactByPhoneEnabled
@@ -464,7 +468,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * Indicates which telephone option is enabled for the seller's contact information. This element is for eBay Motors Pro users.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>eBayMotorsProContactByPhoneEnabled</code>.
      *
      * @var int $eBayMotorsProPhoneCount
@@ -473,7 +477,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * Indicates whether this category supports including the address in the seller's contact information. This element is for eBay Motors Pro users.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>eBayMotorsProContactByAddressEnabled</code>.
      *
      * @var bool $eBayMotorsProContactByAddressEnabled
@@ -482,7 +486,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * Indicates which address option is enabled for the seller's contact information. This element is for eBay Motors Pro users.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>eBayMotorsProContactByAddressEnabled</code>.
      *
      * @var int $eBayMotorsProStreetCount
@@ -491,7 +495,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * Indicates whether this category supports including the company name in the seller's contact information. This element is for eBay Motors Pro users.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>eBayMotorsProCompanyNameEnabled</code>.
      *
      * @var bool $eBayMotorsProCompanyNameEnabled
@@ -500,7 +504,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * Indicates whether this category supports including an email address in the seller's contact information. This element is for eBay Motors Pro users.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>eBayMotorsProContactByEmailEnabled</code>.
      *
      * @var bool $eBayMotorsProContactByEmailEnabled
@@ -509,7 +513,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * Indicates if Best Offer is supported for eBay Motors Classified Ad listings in this category. This element is for eBay Motors Pro users.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>eBayMotorsProBestOfferEnabled</code>.
      *
      * @var string $eBayMotorsProBestOfferEnabled
@@ -518,7 +522,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * Specifies whether this category allows auto-accept for Best Offers for eBay Motors Classified Ad listings. This element is for eBay Motors Pro users.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>eBayMotorsProAutoAcceptEnabled</code>.
      *
      * @var bool $eBayMotorsProAutoAcceptEnabled
@@ -527,7 +531,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * Specifies whether this category allows auto-decline for Best Offers for eBay Motors Classified Ad listings. This element is for eBay Motors Pro users.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>eBayMotorsProAutoDeclineEnabled</code>.
      *
      * @var bool $eBayMotorsProAutoDeclineEnabled
@@ -536,7 +540,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * Indicates if the payment method should be displayed to the user for this category in an eBay Motors Classified Ad listing. Even if enabled, checkout may or may not be enabled. This element is for eBay Motors Pro users.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>eBayMotorsProPaymentMethodCheckOutEnabled</code>.
      *
      * @var string $eBayMotorsProPaymentMethodCheckOutEnabled
@@ -545,7 +549,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * Indicates if shipping options should be displayed to the user for this category in an eBay Motors Classified Ad listing. This element is for eBay Motors Pro users.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>eBayMotorsProShippingMethodEnabled</code>.
      *
      * @var bool $eBayMotorsProShippingMethodEnabled
@@ -554,7 +558,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * Indicates whether counter offers are allowed on Best Offers for this category in an eBay Motors Classified Ad listing. This element is for eBay Motors Pro users.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>eBayMotorsProCounterOfferEnabled</code>.
      *
      * @var bool $eBayMotorsProCounterOfferEnabled
@@ -563,7 +567,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * Specifies whether this category allows seller-level contact information for eBay Motors Classified Ad listings. A value of true means seller-level contact information is available for Classified Ad listings. This element is for eBay Motors Pro users.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>eBayMotorsProSellerContactDetailsEnabled</code>.
      *
      * @var bool $eBayMotorsProSellerContactDetailsEnabled
@@ -572,7 +576,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * Specifies whether this category supports Motor Local Market Classified Ad listings. This element is for Local Market dealers.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>LocalMarketAdFormatEnabled</code>.
      *
      * @var string $localMarketAdFormatEnabled
@@ -581,7 +585,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * Indicates whether this category supports including the telephone in the seller's contact information. This element is for Local Market dealers.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>LocalMarketContactByPhoneEnabled</code>.
      *
      * @var bool $localMarketContactByPhoneEnabled
@@ -590,7 +594,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * Indicates which telephone option is enabled for the seller's contact information. This element is for Local Market dealers.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>LocalMarketContactByPhoneEnabled</code>.
      *
      * @var int $localMarketPhoneCount
@@ -599,7 +603,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * Indicates whether this category supports including the address in the seller's contact information. This element is for Local Market dealers.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>LocalMarketContactByAddressEnabled</code>.
      *
      * @var bool $localMarketContactByAddressEnabled
@@ -608,7 +612,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * Indicates which address option is enabled for the seller's contact information. This element is for Local Market dealers.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>LocalMarketContactByAddressEnabled</code>.
      *
      * @var int $localMarketStreetCount
@@ -617,7 +621,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * Indicates whether the category supports including a company name in the seller's contact information. This element is for Local Market dealers.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>LocalMarketCompanyNameEnabled</code>.
      *
      * @var bool $localMarketCompanyNameEnabled
@@ -626,7 +630,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * Indicates whether the category supports including an email address in the seller's contact information. This element is for Local Market dealers.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>LocalMarketContactByEmailEnabled</code>.
      *
      * @var bool $localMarketContactByEmailEnabled
@@ -635,7 +639,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * Indicates if Best Offer is enabled/required for Motors Local Market Classified Ad listings in this category. This element is for Local Market dealers.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>LocalMarketBestOfferEnabled</code>.
      *
      * @var string $localMarketBestOfferEnabled
@@ -644,7 +648,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * Specifies whether this category supports auto-accept for Best Offers for Motors Local Market Classified Ads. This element is for Local Market dealers.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>LocalMarketAutoAcceptEnabled</code>.
      *
      * @var bool $localMarketAutoAcceptEnabled
@@ -653,7 +657,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * Specifies whether this category supports auto-decline for Best Offers for Motors Local Market Classified Ads. This element is for Local Market dealers.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>LocalMarketAutoDeclineEnabled</code>.
      *
      * @var bool $localMarketAutoDeclineEnabled
@@ -662,7 +666,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * Indicates if the payment method should be displayed to the user for this category in an Motors Local Market Classified Ad listing. Even if enabled, checkout may or may not be enabled. This element is for Local Market dealers.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>LocalMarketPaymentMethodCheckOutEnabled</code>.
      *
      * @var string $localMarketPaymentMethodCheckOutEnabled
@@ -671,7 +675,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * Indicates if shipping methods should be displayed to the user for this category in an Motors Local Market Classified Ad listing. Even if enabled, checkout may or may not be enabled. This element is for Local market dealers.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>LocalMarketShippingMethodEnabled</code>.
      *
      * @var bool $localMarketShippingMethodEnabled
@@ -680,7 +684,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * Indicates whether counter offers are allowed on Best Offers for this category for Motors Local Market Classified Ad listings. This element is for Local market dealers.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>LocalMarketCounterOfferEnabled</code>.
      *
      * @var bool $localMarketCounterOfferEnabled
@@ -689,7 +693,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * Specifies the whether this category allows seller-level contact information for Motors Local Market Classified Ad listings. This element is for Local Market dealers.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>LocalMarketSellerContactDetailsEnabled</code>.
      *
      * @var bool $localMarketSellerContactDetailsEnabled
@@ -698,7 +702,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * Indicates which telephone option is included in the seller's contact information. This element is for For Sale By Owner listings.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ClassifiedAdContactByPhoneEnabled</code>.
      *
      * @var int $classifiedAdPhoneCount
@@ -707,7 +711,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * Indicates whether this category supports including an address in the seller's contact information. This element is for For Sale By Owner listings.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ClassifiedAdContactByAddressEnabled</code>.
      *
      * @var bool $classifiedAdContactByAddressEnabled
@@ -716,7 +720,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * Indicates which address option is included in the seller's contact information. This element is for For Sale By Owner listings.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ClassifiedAdContactByAddressEnabled</code>.
      *
      * @var int $classifiedAdStreetCount
@@ -725,7 +729,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * Indicates whether this category supports including a company name in the seller's contact information. This element is for For Sale By Owner listings.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ClassifiedAdCompanyNameEnabled</code>.
      *
      * @var bool $classifiedAdCompanyNameEnabled
@@ -734,7 +738,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * The value in this field indicates whether the category supports Motors Local Market listings if the seller has a Specialty vehicle subscription.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>SpecialitySubscription</code>.
      *
      * @var string $specialitySubscription
@@ -743,7 +747,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * The value in this field indicates whether the category supports Motors Local Market listings if the seller has a Regular vehicle subscription.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>RegularSubscription</code>.
      *
      * @var string $regularSubscription
@@ -752,7 +756,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * The value in this field indicates whether the category supports Motors Local Market listings if the seller has a Premium vehicle subscription.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>PremiumSubscription</code>.
      *
      * @var string $premiumSubscription
@@ -761,7 +765,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * The value in this field indicates whether the category supports Motors Local Market listings if the seller does not have a vehicle subscription.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>NonSubscription</code>.
      *
      * @var string $nonSubscription
@@ -772,7 +776,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * <span class="tablenote"><b>Note:</b>
      *  This field is deprecated since it is only applicable to the eBay India site, and this marketplace is no longer available.</span>
      *  Indicates the escrow workflow version that applies to the category on the India site: Default Workflow, Workflow A or Workflow B.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>INEscrowWorkflowTimeline</code>.
      *
      * @var string $iNEscrowWorkflowTimeline
@@ -788,7 +792,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * Indicates if the category allows the seller to revise the quantity of a multi-quantity, active listing.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ReviseQuantityAllowed</code>.
      *
      * @var bool $reviseQuantityAllowed
@@ -797,7 +801,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * Indicates if the category allows the seller to revise the price of a fixed-price listing.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>RevisePriceAllowed</code>.
      *
      * @var bool $revisePriceAllowed
@@ -806,7 +810,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * Indicates if an eBay Store owner gets extended listing durations in a given category. When the value of this element is true, it means the listing duration values defined in <b>StoreOwnerExtendedListingDurations</b> are applicable to fixed-price listings in a given category.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>StoreOwnerExtendedListingDurationsEnabled</code>.
      *
      * @var bool $storeOwnerExtendedListingDurationsEnabled
@@ -815,7 +819,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * Provides additional listings durations that are available to eBay Store owners. The extended listing durations provided here in this element should be merged in with the baseline listing durations provided in the <b>ListingDurations</b> element. Applies to fixed-price Listings.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>StoreOwnerExtendedListingDurations</code>.
      *
      * @var string[] $storeOwnerExtendedListingDurations
@@ -824,13 +828,13 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * <b>For most sites:</b> If true, listings in this
-     *  category require a return policy. <br>
-     *  <br>
+     *  category require a return policy. <br/>
+     *  <br/>
      *  <b>For eBay Australia (AU) and
      *  US eBay Motors Parts and Accessories:</b>
      *  If true, the category supports but does not require a
      *  return policy.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ReturnPolicyEnabled</code>.
      *
      * @var bool $returnPolicyEnabled
@@ -838,20 +842,20 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     private $returnPolicyEnabled = null;
 
     /**
-     * Indicates if a seller's stated handling time is enabled for a category. A handling time is generally needed for items that are shipped to the buyer, but not necessarily applicable to freight shipping or local pickup. <br>
-     *  <br>
+     * Indicates if a seller's stated handling time is enabled for a category. A handling time is generally needed for items that are shipped to the buyer, but not necessarily applicable to freight shipping or local pickup. <br/>
+     *  <br/>
      *  The handling time is the maximum number of business days the seller
      *  commits to for preparing an item to be shipped after receiving a
      *  cleared payment. The seller's handling time does not include the
      *  shipping time (the carrier's transit time).
-     *  <br>
+     *  <br/>
      *  For a list of the handling time values allowed for each site, use
-     *  <code>DispatchTimeMaxDetails</code> in <b>GeteBayDetails</b>.<br>
-     *  <br>
+     *  <code>DispatchTimeMaxDetails</code> in <b>GeteBayDetails</b>.<br/>
+     *  <br/>
      *  <span class="tablenote"><b>Note:</b>
      *  Although the field name ends with "Enabled", a value of true means
      *  that a handling time is NOT supported, and value of false means
-     *  that a handling time IS supported.</span><br>
+     *  that a handling time IS supported.</span><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>HandlingTimeEnabled</code>.
      *
      * @var bool $handlingTimeEnabled
@@ -862,7 +866,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * The maximum cost the seller can charge for the first domestic flat-rate shipping
      *  service.
      *  Mutually exclusive with the <b>Group</b><code>N</code><b>MaxFlatShippingCost</b> elements.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>MaxFlatShippingCost</code>.
      *
      * @var \Nogrod\eBaySDK\MerchantData\AmountType $maxFlatShippingCost
@@ -871,7 +875,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * Returns the applicable max cap per shipping cost for shipping service group1.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>Group1MaxFlatShippingCost</code>.
      *
      * @var \Nogrod\eBaySDK\MerchantData\AmountType $group1MaxFlatShippingCost
@@ -880,7 +884,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * Returns the applicable max cap per shipping cost for shipping service group2.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>Group2MaxFlatShippingCost</code>.
      *
      * @var \Nogrod\eBaySDK\MerchantData\AmountType $group2MaxFlatShippingCost
@@ -889,7 +893,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * Returns the applicable max cap per shipping cost for shipping service group3.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>Group3MaxFlatShippingCost</code>.
      *
      * @var \Nogrod\eBaySDK\MerchantData\AmountType $group3MaxFlatShippingCost
@@ -898,7 +902,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * Indicates the acceptable payment methods that can be used when listing an item for sale in the corresponding category.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>PaymentMethods</code>.
      *
      * @var string[] $paymentMethod
@@ -910,14 +914,14 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     /**
      * If <code>true</code>, you can pass in <b>Item.Variations</b> in an
      *  Add/Revise/Relist fixed-price item call when you list in this
-     *  category.<br>
-     *  <br>
+     *  category.<br/>
+     *  <br/>
      *  Multi-variation listings contain items that are logically the same
      *  product, but that vary in their manufacturing details or packaging.
      *  For example, a particular brand and style of shirt could be
      *  available in different sizes and colors, such as "large blue" and
      *  "medium black" variations.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>VariationsEnabled</code>.
      *
      * @var bool $variationsEnabled
@@ -933,7 +937,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * Indicates whether the category supports free, automatic upgrades for Gallery Plus, which enhances pictures in search results.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>FreeGalleryPlusEnabled</code>.
      *
      * @var bool $freeGalleryPlusEnabled
@@ -942,7 +946,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * Indicates whether the category supports free, automatic upgrades for Picture Pack, a discount package that includes super-sizing of pictures.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>FreePicturePackEnabled</code>.
      *
      * @var bool $freePicturePackEnabled
@@ -953,10 +957,10 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Indicates whether the category supports parts compatibility by application
      *  (<b>ByApplication</b>), by specification (<b>BySpecification</b>), or not at all
      *  (<b>Disabled</b>). Categories cannot support both types of parts compatibility.
-     *  <br><br>
+     *  <br/><br/>
      *  Parts Compatibility is supported in limited Parts & Accessories
      *  categories for the eBay Motors (US) site (site ID 100) only.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>CompatibilityEnabled</code>.
      *
      * @var string $itemCompatibilityEnabled
@@ -967,13 +971,13 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * This field specifies the minimum number of required compatible applications
      *  for listing items. A value of "0" indicates it is not mandatory to specify
      *  parts compatibilities when listing.
-     *  <br><br>
+     *  <br/><br/>
      *  This applies to categories that are enabled for compatibility by application
      *  only. Parts compatiblity by application can be specified by listing with a
      *  catalog product that supports parts compatibility or by specifying parts
      *  compatibility by application manually (<b class="con">
      *  Item.ItemCompatibilityList</b>).
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>MinCompatibleApplications</code>.
      *
      * @var int $minItemCompatibility
@@ -985,11 +989,11 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  per item when adding or revising items. This is relevant for specifying parts
      *  compatibility by application manually (<b class="con">
      *  Item.ItemCompatibilityList</b>) only.
-     *  <br><br>
+     *  <br/><br/>
      *  Applicable for the US site only.
-     *  <br><br>
+     *  <br/><br/>
      *  For DE, UK, and AU sites, this field returns the same value as <b>MaxGranularFitmentCount</b>.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>MaxCompatibleApplications</code>.
      *
      * @var int $maxItemCompatibility
@@ -997,8 +1001,8 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     private $maxItemCompatibility = null;
 
     /**
-     * Indicates whether the category supports (or requires) using <b>Item.ConditionID</b> to specify an item's condition in Add/Revise/Relist calls. See the <b>ConditionValues</b> type for a list of valid condition ID values.
-     *  <br><br>
+     * Indicates whether the category supports, requires, or doesn't support the use item condition for an item listing. For categories that require or support the use of item condition, see the <b>ConditionValues</b> and/or <b>SpecialFeatures</b> containers for a list of valid item conditions (display names and ID values).
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ConditionEnabled</code>.
      *
      * @var string $conditionEnabled
@@ -1006,25 +1010,42 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     private $conditionEnabled = null;
 
     /**
-     * Specifies the supported item conditions for the category, plus related policies and other details.
-     *  <br><br>
-     *  Only returned <b>ConditionEnabled</b> value is <code>Enabled</code> or <code>Required</code> and when any of the condition values are different from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ConditionValues</code>.
+     * This container specifies all of the item conditions that are supported for the corresponding category. The display name of the item condiation and the ID associated with the description are both shown.
+     *  <br/><br/>
+     *  This container will not be returned for any eBay categories that don't support the use of an item condition value. To see which categories require, support, or don't support the use of item conditions, you can include a <b>FeatureID</b> value of <code>ConditionEnabled</code>. Any eBay category that does not support the use of an item condition value will return a <b>ConditionEnabled</b> value of <code>Disabled</code>.
+     *  <br/><br/>
+     *  This container will also not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ConditionValues</code>.
+     *  <br/>
+     *  <br/>
+     *  <span class="tablenote"><b>Note:</b>
+     *  The <b>Certified - Refurbished</b> condition (condition ID 2000), <b>Excellent - Refurbished</b> condition (condition ID 2010), <b>Very Good - Refurbished</b> condition (condition ID 2020), and <b>Good - Refurbished</b> condition (condition ID 2030) are returned in the <b>SpecialFeatures</b> container. A seller must be pre-qualified by eBay to list items with the any of these refurbished item conditions. The <b>Excellent - Refurbished</b>, <b>Very Good - Refurbished</b> and <b>Good - Refurbished</b> conditions are currently only applicable for the <strong>Cell Phones & Smartphones</strong> category (category ID 9355).</span>
      *
      * @var \Nogrod\eBaySDK\MerchantData\ConditionValuesType $conditionValues
      */
     private $conditionValues = null;
 
     /**
+     * This container is only returned if the corresponding category supports a special item condition such as <b>Certified - Refurbished</b> condition (condition ID 2000), <b>Excellent - Refurbished</b> condition (condition ID 2010), <b>Very Good - Refurbished</b> condition (condition ID 2020), and <b>Good - Refurbished</b> condition (condition ID 2030). A seller must be pre-qualified by eBay to list items with the any of these refurbished item conditions. The <b>Excellent - Refurbished</b>, <b>Very Good - Refurbished</b> and <b>Good - Refurbished</b> conditions are currently only applicable for the <strong>Cell Phones & Smartphones</strong> category (category ID 9355).
+     *  <br/><br/>
+     *  All other item conditions supported by a category will be returned in the <b>ConditionValues</b> container instead.
+     *  <br/><br/>
+     *  Neither the <b>ConditionValues</b> or the <b>SpecialFeatures</b> containers will be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ConditionValues</code>.
+     *
+     * @var \Nogrod\eBaySDK\MerchantData\ConditionValuesType $specialFeatures
+     */
+    private $specialFeatures = null;
+
+    /**
      * Some eBay sites may select a few categories and designate them as
      *  "value categories". These are typically selected from
      *  categories where buyers can find great deals. (Not all categories
      *  with great deals are designated as value categories.)
-     *  This designation can change over time. <br>
-     *  <br>
+     *  This designation can change over time. <br/>
+     *  <br/>
      *  While a category is designated as a value category (i.e.,
      *  when <b>ValueCategory</b> is <code>true</code>), it is subject to the following rule:
-     *  Items in value categories can only be listed in one category.<br>
-     *  <br>
+     *  Items in value categories can only be listed in one category.<br/>
+     *  <br/>
      *  For example, if you attempt to list in two categories and the
      *  primary category or secondary category is a value category,
      *  then eBay drops the secondary category and lists the
@@ -1033,7 +1054,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  listing, or you change the category for an existing listing,
      *  and if the primary or secondary category is a value category,
      *  then eBay drops the secondary category.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ValueCategory</code>.
      *
      * @var bool $valueCategory
@@ -1042,7 +1063,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * Indicates whether a category supports (or requires) the creation of a listing using an eBay Catalog product. To create a listing based on an eBay Catalog product, the seller passed in Global Trade Item Number (GTIN) or eBay Product ID (ePID) value in an Add/Revise/Relist call and then eBay tries to match the product identifier to a product in the eBay Catalog. If a match is found, the listing picks up the details of the eBay Catalog product, including product title, product description, product aspects, primary eBay listing category ID, and links to any product stock photos.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ProductCreationEnabled</code>.
      *
      * @var string $productCreationEnabled
@@ -1051,10 +1072,10 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * Indicates whether or not European Article Numbers (EANs) are supported/required when listing products in the category. A value of <code>Disabled</code> indicates that EANs cannot be used for the category, a value of <code>Enabled</code> indicates that EANs can be used for the category, and a value of <code>Required</code> indicates that an EAN is required when listing a product in this category.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>EANEnabled</code>.
-     *  <br>
-     *  <br>
+     *  <br/>
+     *  <br/>
      *  <span class="tablenote"><b>Note:</b>
      *  It is recommended that sellers always use <b>GetCategoryFeatures</b> to see if an eBay category requires a Global Trade Item Number (GTIN) or a Brand/MPN combination. So, that means that they should look for <b>EANEnabled</b>, <b>ISBNEnabled</b>, <b>UPCEnabled</b>, and <b>BrandMPNIdentifierEnabled</b> at the category level in the <b>GetCategoryFeatures</b> response. </span>
      *
@@ -1064,10 +1085,10 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * Indicates whether or not International Standard Book Numbers (ISBNs) are supported/required when listing products in the category. A value of <code>Disabled</code> indicates that ISBNs cannot be used for the category, a value of <code>Enabled</code> indicates that ISBNs can be used for the category, and a value of <code>Required</code> indicates that an ISBN is required when listing a product in this category.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ISBNEnabled</code>.
-     *  <br>
-     *  <br>
+     *  <br/>
+     *  <br/>
      *  <span class="tablenote"><b>Note:</b>
      *  It is recommended that sellers always use <b>GetCategoryFeatures</b> to see if an eBay category requires a Global Trade Item Number (GTIN) or a Brand/MPN combination. So, that means that they should look for <b>ISBNEnabled</b>, <b>EANEnabled</b>, <b>UPCEnabled</b>, and <b>BrandMPNIdentifierEnabled</b> at the category level in the <b>GetCategoryFeatures</b> response. </span>
      *
@@ -1077,10 +1098,10 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * Indicates whether or not Universal Product Codes (UPCs) are supported/required when listing products in the category. A value of <code>Disabled</code> indicates that UPCs cannot be used for the category, a value of <code>Enabled</code> indicates that UPCs can be used for the category, and a value of <code>Required</code> indicates that a UPC is required when listing a product in this category.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>UPCEnabled</code>.
-     *  <br>
-     *  <br>
+     *  <br/>
+     *  <br/>
      *  <span class="tablenote"><b>Note:</b>
      *  It is recommended that sellers always use <b>GetCategoryFeatures</b> to see if an eBay category requires a Global Trade Item Number (GTIN) or a Brand/MPN combination. So, that means that they should look for <b>UPCEnabled</b>, <b>ISBNEnabled</b>, <b>EANEnabled</b>, and <b>BrandMPNIdentifierEnabled</b> at the category level in the <b>GetCategoryFeatures</b> response. </span>
      *
@@ -1090,7 +1111,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * Indicates the maximum number of compatible applications allowed per item when adding or revising items with compatibilities provided at the most detailed granularity. For example, in Car and Truck Parts on the US site, the most granular application would include Year, Make, Model, Trim, and Engine.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>MaxGranularFitmentCount</code>.
      *
      * @var int $maxGranularFitmentCount
@@ -1099,7 +1120,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * This field is for future use. It is currently returned as an empty field, but in the future, the string value in this field will indicate Parts Compatibility vehicle type (e.g. cars, motorcycles, boats).
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>CompatibleVehicleType</code>.
      *
      * @var string $compatibleVehicleType
@@ -1115,7 +1136,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * Indicates the Business Policies category group that may be used for Shipping profiles.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ShippingProfileCategoryGroup</code>.
      *
      * @var string $shippingProfileCategoryGroup
@@ -1124,7 +1145,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * Indicates the Business Policies category group that may be used for Payment profiles.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>PaymentProfileCategoryGroup</code>.
      *
      * @var string $paymentProfileCategoryGroup
@@ -1133,7 +1154,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * Indicates the Business Policies category group that may be used for Return Policy profiles.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ReturnPolicyProfileCategoryGroup</code>.
      *
      * @var string $returnPolicyProfileCategoryGroup
@@ -1170,7 +1191,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * Indicates if the Global Shipping Program (GSP) is supported for the category.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>GlobalShippingEnabled</code>.
      *
      * @var bool $globalShippingEnabled
@@ -1179,7 +1200,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * This field indicates whether or not the category (specified in the <b>Category.CategoryID</b> field) supports Boats and Motorcycles Parts compatibility. If <code>true</code>, parts compatibility name-value pairs for boats and motorcycles can be added to an item listed in the specified category.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>AdditionalCompatibilityEnabled</code>.
      *
      * @var bool $additionalCompatibilityEnabled
@@ -1190,10 +1211,10 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * A <code>true</code> value in this field indicates that items listed in the category (specified in the <b>Category.CategoryID</b> field) may be enabled with the 'Click and Collect' feature. With the 'Click and Collect' feature, a buyer can purchase certain items on an eBay site and collect them at a local store. Buyers are notified by eBay once their items are available. A <code>false</code> value in this field indicates that items listed in the category are not eligible for the 'Click and Collect' feature.
      *  <br/><br/>
      *  The 'Click and Collect' feature is only available to large merchants on the eBay UK (site ID - 3), eBay Australia (Site ID - 15), and eBay Germany (Site ID - 77) sites.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>PickupDropOffEnabled</code>.
-     *  <br>
-     *  <br>
+     *  <br/>
+     *  <br/>
      *  <span class="tablenote"><b>Note:</b> For Click and Collect eligible sellers, the Click and Collect feature can only be enabled at the account level, and then each of the seller's listings within an Click and Collect enabled category will be automatically evaluated for Click and Collect eligibility.
      *  </span>
      *
@@ -1212,7 +1233,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  </ul>
      *  For more information on eBay's Gift Card policy, see the <a href="
      *  http://pages.ebay.com/help/policies/gift.html" target="_blank">Gift cards policy Help page</a>.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>DigitalGoodDeliveryEnabled</code>.
      *
      * @var bool $digitalGoodDeliveryEnabled
@@ -1223,8 +1244,8 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * This field is returned as <code>true</code> if the category supports the use of an eBay Product ID (e.g. ePID) in an Add/Revise/Relist API call to identify which motorcycles and/or scooters are compatible with a motor vehicle part or accessory. ePIDs can only be used to identify motorcycles and scooters on the Germany and UK sites.
      *  <br/><br/>
      *  For more information on using an ePID to identify a compatible motorcycle or scooter through an Add/Revise/Relist API call on the Germany or UK site, see the documentation for the <a href="
-     *  http://developer.ebay.com/Devzone/XML/docs/Reference/eBay/AddItem.html#Request.Item.ItemCompatibilityList.Compatibility.NameValueList">Compatibility.NameValueList</a> container.
-     *  <br><br>
+     *  https://developer.ebay.com/Devzone/XML/docs/Reference/eBay/AddItem.html#Request.Item.ItemCompatibilityList.Compatibility.NameValueList">Compatibility.NameValueList</a> container.
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>EpidSupported</code>.
      *
      * @var bool $epidSupported
@@ -1235,8 +1256,8 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * This field is returned as <code>true</code> if the category supports the use of a K Type vehicle number in an Add/Revise/Relist API call to identify which cars and/or trucks are compatible with a motor vehicle part or accessory. K type vehicle numbers can only be used to identify cars and trucks on the Germany site.
      *  <br/><br/>
      *  For more information on using a K Type vehicle number to identify a compatible car or truck through an Add/Revise/Relist API call on the Germany site, see the documentation for the <a href="
-     *  http://developer.ebay.com/Devzone/XML/docs/Reference/eBay/AddItem.html#Request.Item.ItemCompatibilityList.Compatibility.NameValueList">Compatibility.NameValueList</a> container.
-     *  <br><br>
+     *  https://developer.ebay.com/Devzone/XML/docs/Reference/eBay/AddItem.html#Request.Item.ItemCompatibilityList.Compatibility.NameValueList">Compatibility.NameValueList</a> container.
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>KTypeSupported</code>.
      *
      * @var bool $kTypeSupported
@@ -1245,7 +1266,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * This field indicates if the category supports Product-Based Shopping Experience listings (listings associated with eBay catalog products).
-     *  <br><br>
+     *  <br/><br/>
      *  <span class="tablenote"><b>Note:</b>
      *  Due to the rollback of the Product-Based Shopping Experience mandate for all eBay categories, the value for this field should never get returned as <code>Enabled</code> for any production categories.</span>
      *
@@ -1255,7 +1276,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * The values returned in this field indicate whether or not the seller accepts domestic returns for items listed in the associated marketplace and category. <br><br>While most categories return the <b>ReturnsAccepted</b> flag (indicating the category supports returns), some categories will also return the <b>ReturnsNotAccepted</b> flag to indicate the seller can choose to not accept returns for an item listed in that category. <br><br>The values returned in this field are pertinent only if <b>ReturnPolicyEnabled</b> in GetCategoryFeatures is set to <code>true</code> for the associated category, which indicates that items listed in the category must include a return policy. Here, it's worth noting that not accepting returns is a return policy. The values returned in this field are valid in AddItem and its related family of calls, and in the return policies you configure for use with the Account and Business Policies Management APIs.
-     *  <br><br>
+     *  <br/><br/>
      *  <span class="tablenote"><b>Note:</b> In May 2018, eBay added the ability to create a separate international return policy for items that are shipped to international customers. If a seller does not add a separate international return policy, the settings in the domestic return policy will be used instead. For more information on setting separate domestic and international return policies, see the
      *  <a href="https://pages.ebay.com/seller-center/seller-updates/2018-summer/simplified-returns.html#international-returns-policy" target="_blank">International returns policy</a> help topic. For the international equivalent of this field, see the <b>InternationalReturnsAcceptedValues</b> field.</span>
      *
@@ -1265,7 +1286,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * The values returned in this field indicate whether or not the seller can offer international returns. <br><br>The values returned in this field are pertinent only if <b>ReturnPolicyEnabled</b> in GetCategoryFeatures is set to <code>true</code> for the associated category, which indicates that items listed in the category must include a return policy. The values returned in this field are valid in AddItem and its related family of calls, and in the return policies you configure for use with the Account and Business Policies Management APIs.
-     *  <br><br>
+     *  <br/><br/>
      *  <span class="tablenote"><b>Note:</b> In May 2018, eBay added the ability to create a separate international return policy for items that are shipped to international customers. If a seller does not add a separate international return policy, the settings in the domestic return policy will be used instead. For more information on setting separate domestic and international return policies, see the
      *  <a href="https://pages.ebay.com/seller-center/seller-updates/2018-summer/simplified-returns.html#international-returns-policy" target="_blank">International returns policy</a> help topic. </span>
      *
@@ -1275,7 +1296,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * The values returned in this field indicate the return duration options that are available for domestic returns for items listed in the associated marketplace and category. <br><br>The values returned in this field are pertinent only if <b>ReturnPolicyEnabled</b> in GetCategoryFeatures is set to <code>true</code> for the associated category, which indicates that items listed in the category must include a return policy. The values returned in this field are valid in AddItem and its related family of calls, and in the return policies you configure for use with the Account and Business Policies Management APIs.
-     *  <br><br>
+     *  <br/><br/>
      *  <span class="tablenote"><b>Note:</b> In May 2018, eBay added the ability to create a separate international return policy for items that are shipped to international customers. If a seller does not add a separate international return policy, the settings in the domestic return policy will be used instead. For more information on setting separate domestic and international return policies, see the
      *  <a href="https://pages.ebay.com/seller-center/seller-updates/2018-summer/simplified-returns.html#international-returns-policy" target="_blank">International returns policy</a> help topic. For the international equivalent of this field, see the <b>InternationalReturnsDurationValues</b> field.</span>
      *
@@ -1285,7 +1306,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * The values returned in this field indicate the return duration options that are available for international returns for items listed in the associated marketplace and category. <br><br>The values returned in this field are pertinent only if <b>ReturnPolicyEnabled</b> in GetCategoryFeatures is set to <code>true</code> for the associated category, which indicates that items listed in the category must include a return policy. The values returned in this field are valid in AddItem and its related family of calls, and in the return policies you configure for use with the Account and Business Policies Management APIs.
-     *  <br><br>
+     *  <br/><br/>
      *  <span class="tablenote"><b>Note:</b> In May 2018, eBay added the ability to create a separate international return policy for items that are shipped to international customers. If a seller does not add a separate international return policy, the settings in the domestic return policy will be used instead. For more information on setting separate domestic and international return policies, see the
      *  <a href="https://pages.ebay.com/seller-center/seller-updates/2018-summer/simplified-returns.html#international-returns-policy" target="_blank">International returns policy</a> help topic.
      *
@@ -1295,7 +1316,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * The values returned in this field indicate the available options for who pays the return shipping for domestic returns. Possible values are <code>BUYER</code> and <code>SELLER</code>. <br><br>The values returned in this field are pertinent only if <b>ReturnPolicyEnabled</b> in GetCategoryFeatures is set to <code>true</code> for the associated category, which indicates that items listed in the category must include a return policy. The values returned in this field are valid in AddItem and its related family of calls, and in the return policies you configure for use with the Account and Business Policies Management APIs.
-     *  <br><br>
+     *  <br/><br/>
      *  <span class="tablenote"><b>Note:</b> In May 2018, eBay added the ability to create a separate international return policy for items that are shipped to international customers. If a seller does not add a separate international return policy, the settings in the domestic return policy will be used instead. For more information on setting separate domestic and international return policies, see the
      *  <a href="https://pages.ebay.com/seller-center/seller-updates/2018-summer/simplified-returns.html#international-returns-policy" target="_blank">International returns policy</a> help topic. For the international equivalent of this field, see the <b>InternationalReturnsShipmentPayeeValues</b> field.</span>
      *
@@ -1305,7 +1326,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * The values returned in this field indicate the available options for who pays the return shipping for international returns. Possible values are <code>BUYER</code> and <code>SELLER</code>. <br><br>The values returned in this field are pertinent only if <b>ReturnPolicyEnabled</b> in GetCategoryFeatures is set to <code>true</code> for the associated category, which indicates that items listed in the category must include a return policy. The values returned in this field are valid in AddItem and its related family of calls, and in the return policies you configure for use with the Account and Business Policies Management APIs.
-     *  <br><br>
+     *  <br/><br/>
      *  <span class="tablenote"><b>Note:</b> In May 2018, eBay added the ability to create a separate international return policy for items that are shipped to international customers. If a seller does not add a separate international return policy, the settings in the domestic return policy will be used instead. For more information on setting separate domestic and international return policies, see the
      *  <a href="https://pages.ebay.com/seller-center/seller-updates/2018-summer/simplified-returns.html#international-returns-policy" target="_blank">International returns policy</a> help topic.
      *
@@ -1315,7 +1336,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * On the EBAY_US marketplace only, sellers can offer item replacement in addition to offering money back returns. This flag defines the availability of such options for the given US marketplace category. Sellers can offer item replacements only if returns are enabled (<b>returnPolicyEnabled</b> is set to <code>true</code>) for the item. You can specify item replacement in the AddItem family of calls and in the return policy settings of the Account and Business Policies Management APIs.
-     *  <br><br>
+     *  <br/><br/>
      *  <span class="tablenote"><b>Note:</b> In May 2018, eBay added the ability to create a separate international return policy for items that are shipped to international customers. If a seller does not add a separate international return policy, the settings in the domestic return policy will be used instead. For more information on setting separate domestic and international return policies, see the
      *  <a href="https://pages.ebay.com/seller-center/seller-updates/2018-summer/simplified-returns.html#international-returns-policy" target="_blank">International returns policy</a> help topic. For the international equivalent of this field, see the <b>InternationalRefundMethodValues</b> field.</span>
      *
@@ -1325,7 +1346,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * In US, sellers can offer an item replacement for returns, in addition to offering money back returns. The values returned in this field indicate the availability of such options for the given marketplace and category. <br><br>The values returned in this field are pertinent only if <b>ReturnPolicyEnabled</b> in GetCategoryFeatures is set to <code>true</code> for the associated category, which indicates that items listed in the category must include a return policy. The values returned in this field are valid in AddItem and its related family of calls, and in the return policies you configure for use with the Account and Business Policies Management APIs.
-     *  <br><br>
+     *  <br/><br/>
      *  <span class="tablenote"><b>Note:</b> In May 2018, eBay added the ability to create a separate international return policy for items that are shipped to international customers. If a seller does not add a separate international return policy, the settings in the domestic return policy will be used instead. For more information on setting separate domestic and international return policies, see the
      *  <a href="https://pages.ebay.com/seller-center/seller-updates/2018-summer/simplified-returns.html#international-returns-policy" target="_blank">International returns policy</a> help topic. </span>
      *
@@ -1370,7 +1391,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Adds as listingDuration
      *
      * A <b>ListingDuration</b> field is returned for each listing type and listing duration combination that is supported for the category. The integer value indicates the number of days of the listing duration, and the <b>type</b> attribute identifies the supported listing type.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ListingDurations</code>.
      *
      * @return self
@@ -1386,7 +1407,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * isset listingDuration
      *
      * A <b>ListingDuration</b> field is returned for each listing type and listing duration combination that is supported for the category. The integer value indicates the number of days of the listing duration, and the <b>type</b> attribute identifies the supported listing type.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ListingDurations</code>.
      *
      * @param int|string $index
@@ -1401,7 +1422,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * unset listingDuration
      *
      * A <b>ListingDuration</b> field is returned for each listing type and listing duration combination that is supported for the category. The integer value indicates the number of days of the listing duration, and the <b>type</b> attribute identifies the supported listing type.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ListingDurations</code>.
      *
      * @param int|string $index
@@ -1416,7 +1437,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as listingDuration
      *
      * A <b>ListingDuration</b> field is returned for each listing type and listing duration combination that is supported for the category. The integer value indicates the number of days of the listing duration, and the <b>type</b> attribute identifies the supported listing type.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ListingDurations</code>.
      *
      * @return \Nogrod\eBaySDK\MerchantData\ListingDurationReferenceType[]
@@ -1430,7 +1451,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new listingDuration
      *
      * A <b>ListingDuration</b> field is returned for each listing type and listing duration combination that is supported for the category. The integer value indicates the number of days of the listing duration, and the <b>type</b> attribute identifies the supported listing type.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ListingDurations</code>.
      *
      * @param \Nogrod\eBaySDK\MerchantData\ListingDurationReferenceType[] $listingDuration
@@ -1446,7 +1467,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as shippingTermsRequired
      *
      * Indicates whether the category requires sellers to specify shipping details at listing time.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ShippingTermsRequired</code>.
      *
      * @return bool
@@ -1460,7 +1481,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new shippingTermsRequired
      *
      * Indicates whether the category requires sellers to specify shipping details at listing time.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ShippingTermsRequired</code>.
      *
      * @param bool $shippingTermsRequired
@@ -1476,7 +1497,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as bestOfferEnabled
      *
      * Indicates whether the category supports the Best Offer feature for listings.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>BestOfferEnabled</code>.
      *
      * @return bool
@@ -1490,7 +1511,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new bestOfferEnabled
      *
      * Indicates whether the category supports the Best Offer feature for listings.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>BestOfferEnabled</code>.
      *
      * @param bool $bestOfferEnabled
@@ -1533,7 +1554,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *
      * Indicates whether a bidder must consent to the bid by confirming that
      *  he or she read and agrees to the terms in eBay's privacy policy.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>UserConsentRequired</code>.
      *
      * @return bool
@@ -1548,7 +1569,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *
      * Indicates whether a bidder must consent to the bid by confirming that
      *  he or she read and agrees to the terms in eBay's privacy policy.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>UserConsentRequired</code>.
      *
      * @param bool $userConsentRequired
@@ -1566,7 +1587,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Indicates whether or not it is possible to enhance a listing by putting
      *  it into a rotation for display on a special area of the eBay home page.
      *  Support for this feature varies by site. Item or feedback restrictions may apply.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>HomePageFeaturedEnabled</code>.
      *
      * @return bool
@@ -1582,7 +1603,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Indicates whether or not it is possible to enhance a listing by putting
      *  it into a rotation for display on a special area of the eBay home page.
      *  Support for this feature varies by site. Item or feedback restrictions may apply.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>HomePageFeaturedEnabled</code>.
      *
      * @param bool $homePageFeaturedEnabled
@@ -1598,7 +1619,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as proPackEnabled
      *
      * Indicates whether the category supports the Pro Pack Bundle listing upgrade.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ProPack</code>.
      *
      * @return bool
@@ -1612,7 +1633,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new proPackEnabled
      *
      * Indicates whether the category supports the Pro Pack Bundle listing upgrade.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ProPack</code>.
      *
      * @param bool $proPackEnabled
@@ -1654,7 +1675,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as valuePackEnabled
      *
      * Indicates whether the category supports the Value Pack bundle listing upgrade.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ValuePack</code>.
      *
      * @return bool
@@ -1668,7 +1689,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new valuePackEnabled
      *
      * Indicates whether the category supports the Value Pack bundle listing upgrade.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ValuePack</code>.
      *
      * @param bool $valuePackEnabled
@@ -1684,7 +1705,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as proPackPlusEnabled
      *
      * Indicates whether the category supports the Pro Pack Plus bundle listing upgrade.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ProPackPlus</code>.
      *
      * @return bool
@@ -1698,7 +1719,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new proPackPlusEnabled
      *
      * Indicates whether the category supports the Pro Pack Plus bundle listing upgrade.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ProPackPlus</code>.
      *
      * @param bool $proPackPlusEnabled
@@ -1714,7 +1735,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as adFormatEnabled
      *
      * Indicates whether the category supports Classified Ad listings.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>AdFormatEnabled</code>.
      *
      * @return string
@@ -1728,7 +1749,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new adFormatEnabled
      *
      * Indicates whether the category supports Classified Ad listings.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>AdFormatEnabled</code>.
      *
      * @param string $adFormatEnabled
@@ -1744,7 +1765,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as bestOfferCounterEnabled
      *
      * Indicates whether the category supports sellers offering a counter offer against a buyer's Best Offer, or a buyer offering a counter offer against the seller's counter offer.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>BestOfferCounterEnabled</code>.
      *
      * @return bool
@@ -1758,7 +1779,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new bestOfferCounterEnabled
      *
      * Indicates whether the category supports sellers offering a counter offer against a buyer's Best Offer, or a buyer offering a counter offer against the seller's counter offer.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>BestOfferCounterEnabled</code>.
      *
      * @param bool $bestOfferCounterEnabled
@@ -1774,7 +1795,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as bestOfferAutoDeclineEnabled
      *
      * Indicates whether the category supports the Best Offer Auto Decline feature.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>BestOfferAutoDeclineEnabled</code>.
      *
      * @return bool
@@ -1788,7 +1809,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new bestOfferAutoDeclineEnabled
      *
      * Indicates whether the category supports the Best Offer Auto Decline feature.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>BestOfferAutoDeclineEnabled</code>.
      *
      * @param bool $bestOfferAutoDeclineEnabled
@@ -1804,7 +1825,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as localMarketSpecialitySubscription
      *
      * Indicates whether the category supports the Speciality level subscription to Motors Local Market listings. This feature is only available to licensed vehicle dealers.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>LocalMarketSpecialitySubscription</code>.
      *
      * @return bool
@@ -1818,7 +1839,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new localMarketSpecialitySubscription
      *
      * Indicates whether the category supports the Speciality level subscription to Motors Local Market listings. This feature is only available to licensed vehicle dealers.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>LocalMarketSpecialitySubscription</code>.
      *
      * @param bool $localMarketSpecialitySubscription
@@ -1834,7 +1855,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as localMarketRegularSubscription
      *
      * Indicates whether the category supports the Regular level subscription to Motors Local Market listings. This feature is only available to licensed vehicle dealers.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>LocalMarketRegularSubscription</code>.
      *
      * @return bool
@@ -1848,7 +1869,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new localMarketRegularSubscription
      *
      * Indicates whether the category supports the Regular level subscription to Motors Local Market listings. This feature is only available to licensed vehicle dealers.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>LocalMarketRegularSubscription</code>.
      *
      * @param bool $localMarketRegularSubscription
@@ -1864,7 +1885,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as localMarketPremiumSubscription
      *
      * Indicates whether the category supports the Premium level subscription Motors Local Market listings. This feature is only available to licensed vehicle dealers.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>LocalMarketPremiumSubscription</code>.
      *
      * @return bool
@@ -1878,7 +1899,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new localMarketPremiumSubscription
      *
      * Indicates whether the category supports the Premium level subscription Motors Local Market listings. This feature is only available to licensed vehicle dealers.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>LocalMarketPremiumSubscription</code>.
      *
      * @param bool $localMarketPremiumSubscription
@@ -1894,7 +1915,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as localMarketNonSubscription
      *
      * Indicates whether the category supports a seller creating a Motors Local Market listing without a subscription. This feature is only available to licensed vehicle dealers.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>LocalMarketNonSubscription</code>.
      *
      * @return bool
@@ -1908,7 +1929,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new localMarketNonSubscription
      *
      * Indicates whether the category supports a seller creating a Motors Local Market listing without a subscription. This feature is only available to licensed vehicle dealers.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>LocalMarketNonSubscription</code>.
      *
      * @param bool $localMarketNonSubscription
@@ -2002,7 +2023,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as minimumReservePrice
      *
      * Indicates the Minimum Reserve Price for an auction listing in this category. If there is no Minimum Reserve Price, a value of <code>0.0</code> is returned in this field.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>MinimumReservePrice</code>.
      *
      * @return float
@@ -2016,7 +2037,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new minimumReservePrice
      *
      * Indicates the Minimum Reserve Price for an auction listing in this category. If there is no Minimum Reserve Price, a value of <code>0.0</code> is returned in this field.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>MinimumReservePrice</code>.
      *
      * @param float $minimumReservePrice
@@ -2032,7 +2053,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as sellerContactDetailsEnabled
      *
      * Indicates whether this category supports seller-level contact information for Classified Ad listings.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>SellerContactDetailsEnabled</code>.
      *
      * @return bool
@@ -2046,7 +2067,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new sellerContactDetailsEnabled
      *
      * Indicates whether this category supports seller-level contact information for Classified Ad listings.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>SellerContactDetailsEnabled</code>.
      *
      * @param bool $sellerContactDetailsEnabled
@@ -2062,7 +2083,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as transactionConfirmationRequestEnabled
      *
      * Indicates whether the Transaction Confirmation Request feature is supported for this category.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default.
      *
      * @return bool
@@ -2076,7 +2097,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new transactionConfirmationRequestEnabled
      *
      * Indicates whether the Transaction Confirmation Request feature is supported for this category.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default.
      *
      * @param bool $transactionConfirmationRequestEnabled
@@ -2172,7 +2193,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Indicates whether the payment method should be displayed to the user for
      *  Classified Ad format listings.
      *  Even if enabled, checkout may or may not be enabled.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ClassifiedAdPaymentMethodEnabled</code>.
      *
      * @return string
@@ -2188,7 +2209,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Indicates whether the payment method should be displayed to the user for
      *  Classified Ad format listings.
      *  Even if enabled, checkout may or may not be enabled.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ClassifiedAdPaymentMethodEnabled</code>.
      *
      * @param string $classifiedAdPaymentMethodEnabled
@@ -2205,7 +2226,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *
      * Indicates if shipping options are available for Classified Ad listings
      *  in the category.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ClassifiedAdShippingMethodEnabled</code>.
      *
      * @return bool
@@ -2220,7 +2241,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *
      * Indicates if shipping options are available for Classified Ad listings
      *  in the category.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ClassifiedAdShippingMethodEnabled</code>.
      *
      * @param bool $classifiedAdShippingMethodEnabled
@@ -2236,7 +2257,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as classifiedAdBestOfferEnabled
      *
      * Indicates if Best offer is enabled for Classified Ad listings for this category.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ClassifiedAdBestOfferEnabled</code>.
      *
      * @return string
@@ -2250,7 +2271,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new classifiedAdBestOfferEnabled
      *
      * Indicates if Best offer is enabled for Classified Ad listings for this category.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ClassifiedAdBestOfferEnabled</code>.
      *
      * @param string $classifiedAdBestOfferEnabled
@@ -2267,7 +2288,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *
      * Indicates whether counter offers are allowed in Classified Ad listings
      *  for this category.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ClassifiedAdCounterOfferEnabled</code>.
      *
      * @return bool
@@ -2282,7 +2303,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *
      * Indicates whether counter offers are allowed in Classified Ad listings
      *  for this category.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ClassifiedAdCounterOfferEnabled</code>.
      *
      * @param bool $classifiedAdCounterOfferEnabled
@@ -2298,7 +2319,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as classifiedAdAutoDeclineEnabled
      *
      * Indicates whether automatic decline for best offers for Classified Ad listings is enabled for this category.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ClassifiedAdAutoDeclineEnabled</code>.
      *
      * @return bool
@@ -2312,7 +2333,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new classifiedAdAutoDeclineEnabled
      *
      * Indicates whether automatic decline for best offers for Classified Ad listings is enabled for this category.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ClassifiedAdAutoDeclineEnabled</code>.
      *
      * @param bool $classifiedAdAutoDeclineEnabled
@@ -2328,7 +2349,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as classifiedAdContactByPhoneEnabled
      *
      * Indicates whether the category supports the telephone as a contact method for Classified Ad listings.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ClassifiedAdContactByPhoneEnabled</code>.
      *
      * @return bool
@@ -2342,7 +2363,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new classifiedAdContactByPhoneEnabled
      *
      * Indicates whether the category supports the telephone as a contact method for Classified Ad listings.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ClassifiedAdContactByPhoneEnabled</code>.
      *
      * @param bool $classifiedAdContactByPhoneEnabled
@@ -2358,7 +2379,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as classifiedAdContactByEmailEnabled
      *
      * Indicates whether the category supports email as a contact method for Classified Ad listings.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ClassifiedAdContactByEmailEnabled</code>.
      *
      * @return bool
@@ -2372,7 +2393,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new classifiedAdContactByEmailEnabled
      *
      * Indicates whether the category supports email as a contact method for Classified Ad listings.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ClassifiedAdContactByEmailEnabled</code>.
      *
      * @param bool $classifiedAdContactByEmailEnabled
@@ -2388,7 +2409,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as safePaymentRequired
      *
      * Indicates whether listings in this category need to have a safe payment method.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>SafePaymentRequired</code>.
      *
      * @return bool
@@ -2402,7 +2423,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new safePaymentRequired
      *
      * Indicates whether listings in this category need to have a safe payment method.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>SafePaymentRequired</code>.
      *
      * @param bool $safePaymentRequired
@@ -2418,7 +2439,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as classifiedAdPayPerLeadEnabled
      *
      * Indicates if pay-per-lead listings are allowed for this category. Pay-per-lead listings can be applicable if the value of <b>ListingType</b> is <code>LeadGeneration</code> and the value of <b>ListingSubtype</b> is <code>ClassifiedAd</code>.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default.
      *
      * @return bool
@@ -2432,7 +2453,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new classifiedAdPayPerLeadEnabled
      *
      * Indicates if pay-per-lead listings are allowed for this category. Pay-per-lead listings can be applicable if the value of <b>ListingType</b> is <code>LeadGeneration</code> and the value of <b>ListingSubtype</b> is <code>ClassifiedAd</code>.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default.
      *
      * @param bool $classifiedAdPayPerLeadEnabled
@@ -2448,7 +2469,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as itemSpecificsEnabled
      *
      * Indicates whether the category supports the use of Item Specifics in listings. If enabled, sellers can use the <b>Item.ItemSpecifics</b> node in Add/Revise/Relist calls to specify Item Specific name-value pairs.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ItemSpecificsEnabled</code>.
      *
      * @return string
@@ -2462,7 +2483,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new itemSpecificsEnabled
      *
      * Indicates whether the category supports the use of Item Specifics in listings. If enabled, sellers can use the <b>Item.ItemSpecifics</b> node in Add/Revise/Relist calls to specify Item Specific name-value pairs.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ItemSpecificsEnabled</code>.
      *
      * @param string $itemSpecificsEnabled
@@ -2480,7 +2501,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * <span class="tablenote"><b>Note:</b>
      *  This field is deprecated since it is only applicable to the eBay India site, and this marketplace is no longer available.</span>
      *  Indicates whether the category supports the <code>PaisaPayEscrow</code> payment method. This feature is only applicable to the India site.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>PaisaPayFullEscrowEnabled</code>.
      *
      * @return bool
@@ -2496,7 +2517,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * <span class="tablenote"><b>Note:</b>
      *  This field is deprecated since it is only applicable to the eBay India site, and this marketplace is no longer available.</span>
      *  Indicates whether the category supports the <code>PaisaPayEscrow</code> payment method. This feature is only applicable to the India site.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>PaisaPayFullEscrowEnabled</code>.
      *
      * @param bool $paisaPayFullEscrowEnabled
@@ -2512,7 +2533,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as brandMPNIdentifierEnabled
      *
      * Indicates whether the category supports the capability to identify a product using the brand/manufacturer part number combination.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>BrandMPNIdentifierEnabled</code>.
      *
      * @return bool
@@ -2526,7 +2547,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new brandMPNIdentifierEnabled
      *
      * Indicates whether the category supports the capability to identify a product using the brand/manufacturer part number combination.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>BrandMPNIdentifierEnabled</code>.
      *
      * @param bool $brandMPNIdentifierEnabled
@@ -2542,7 +2563,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as classifiedAdAutoAcceptEnabled
      *
      * Indicates whether the category supports the Best Offer Automatic Accept feature for Classified Ad listings.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ClassifiedAdAutoAcceptEnabled</code>.
      *
      * @return bool
@@ -2556,7 +2577,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new classifiedAdAutoAcceptEnabled
      *
      * Indicates whether the category supports the Best Offer Automatic Accept feature for Classified Ad listings.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ClassifiedAdAutoAcceptEnabled</code>.
      *
      * @param bool $classifiedAdAutoAcceptEnabled
@@ -2572,7 +2593,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as bestOfferAutoAcceptEnabled
      *
      * Indicates whether the category supports the Best Offer Automatic Accept feature for listings.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>BestOfferAutoAcceptEnabled</code>.
      *
      * @return bool
@@ -2586,7 +2607,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new bestOfferAutoAcceptEnabled
      *
      * Indicates whether the category supports the Best Offer Automatic Accept feature for listings.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>BestOfferAutoAcceptEnabled</code>.
      *
      * @param bool $bestOfferAutoAcceptEnabled
@@ -2602,7 +2623,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as crossBorderTradeNorthAmericaEnabled
      *
      * Indicates whether the category supports specifying that listings be displayed in the default search results of North America sites (US and Canada (English).
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>CrossBorderTradeEnabled</code>.
      *
      * @return bool
@@ -2616,7 +2637,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new crossBorderTradeNorthAmericaEnabled
      *
      * Indicates whether the category supports specifying that listings be displayed in the default search results of North America sites (US and Canada (English).
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>CrossBorderTradeEnabled</code>.
      *
      * @param bool $crossBorderTradeNorthAmericaEnabled
@@ -2632,7 +2653,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as crossBorderTradeGBEnabled
      *
      * Indicates whether the category supports specifying that listings be displayed in the default search results of the UK and Ireland sites.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>CrossBorderTradeEnabled</code>.
      *
      * @return bool
@@ -2646,7 +2667,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new crossBorderTradeGBEnabled
      *
      * Indicates whether the category supports specifying that listings be displayed in the default search results of the UK and Ireland sites.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>CrossBorderTradeEnabled</code>.
      *
      * @param bool $crossBorderTradeGBEnabled
@@ -2662,7 +2683,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as crossBorderTradeAustraliaEnabled
      *
      * Indicates whether the category supports specifying that listings be displayed in the default search results of the Australia site.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>CrossBorderTradeEnabled</code>.
      *
      * @return bool
@@ -2676,7 +2697,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new crossBorderTradeAustraliaEnabled
      *
      * Indicates whether the category supports specifying that listings be displayed in the default search results of the Australia site.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>CrossBorderTradeEnabled</code>.
      *
      * @param bool $crossBorderTradeAustraliaEnabled
@@ -2692,7 +2713,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as payPalBuyerProtectionEnabled
      *
      * For the Australia site, if both <b>PayPalBuyerProtectionEnabled</b> and <b>BuyerGuaranteeEnabled</b> are returned, then buyer protection is allowed for this category.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>PayPalBuyerProtectionEnabled</code>.
      *
      * @return bool
@@ -2706,7 +2727,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new payPalBuyerProtectionEnabled
      *
      * For the Australia site, if both <b>PayPalBuyerProtectionEnabled</b> and <b>BuyerGuaranteeEnabled</b> are returned, then buyer protection is allowed for this category.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>PayPalBuyerProtectionEnabled</code>.
      *
      * @param bool $payPalBuyerProtectionEnabled
@@ -2722,7 +2743,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as buyerGuaranteeEnabled
      *
      * For the Australia site, if both <b>PayPalBuyerProtectionEnabled</b> and <b>BuyerGuaranteeEnabled</b> are returned, then buyer protection is allowed for this category.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>PayPalBuyerProtectionEnabled</code>.
      *
      * @return bool
@@ -2736,7 +2757,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new buyerGuaranteeEnabled
      *
      * For the Australia site, if both <b>PayPalBuyerProtectionEnabled</b> and <b>BuyerGuaranteeEnabled</b> are returned, then buyer protection is allowed for this category.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>PayPalBuyerProtectionEnabled</code>.
      *
      * @param bool $buyerGuaranteeEnabled
@@ -2778,7 +2799,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Adds as duration
      *
      * This field is returned if the Featured Gallery feature is supported for the category. The time unit that is returned in this field indicates how long a gallery will be featured on eBay.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>GalleryFeaturedDurations</code>.
      *
      * @return self
@@ -2794,7 +2815,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * isset galleryFeaturedDurations
      *
      * This field is returned if the Featured Gallery feature is supported for the category. The time unit that is returned in this field indicates how long a gallery will be featured on eBay.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>GalleryFeaturedDurations</code>.
      *
      * @param int|string $index
@@ -2809,7 +2830,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * unset galleryFeaturedDurations
      *
      * This field is returned if the Featured Gallery feature is supported for the category. The time unit that is returned in this field indicates how long a gallery will be featured on eBay.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>GalleryFeaturedDurations</code>.
      *
      * @param int|string $index
@@ -2824,7 +2845,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as galleryFeaturedDurations
      *
      * This field is returned if the Featured Gallery feature is supported for the category. The time unit that is returned in this field indicates how long a gallery will be featured on eBay.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>GalleryFeaturedDurations</code>.
      *
      * @return string[]
@@ -2838,7 +2859,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new galleryFeaturedDurations
      *
      * This field is returned if the Featured Gallery feature is supported for the category. The time unit that is returned in this field indicates how long a gallery will be featured on eBay.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>GalleryFeaturedDurations</code>.
      *
      * @param string[] $galleryFeaturedDurations
@@ -2854,8 +2875,12 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as payPalRequired
      *
      * Indicates whether the category requires PayPal as a payment method.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>PayPalRequired</code>.
+     *  <br><br>
+     *  <span class="tablenote"><b>Note: </b>
+     *  PayPal or any electronic payment methods are never required for managed payments sellers, so sellers onboarded for managed payments can disregard this field even if it is returned as <code>true</code>.
+     *  </span>
      *
      * @return bool
      */
@@ -2868,8 +2893,12 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new payPalRequired
      *
      * Indicates whether the category requires PayPal as a payment method.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>PayPalRequired</code>.
+     *  <br><br>
+     *  <span class="tablenote"><b>Note: </b>
+     *  PayPal or any electronic payment methods are never required for managed payments sellers, so sellers onboarded for managed payments can disregard this field even if it is returned as <code>true</code>.
+     *  </span>
      *
      * @param bool $payPalRequired
      * @return self
@@ -2884,7 +2913,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as eBayMotorsProAdFormatEnabled
      *
      * Specifies whether this category allows Classified Ad listings on eBay Motors. This element is applicable for eBay Motors Pro users.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>eBayMotorsProAdFormatEnabled</code>.
      *
      * @return string
@@ -2898,7 +2927,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new eBayMotorsProAdFormatEnabled
      *
      * Specifies whether this category allows Classified Ad listings on eBay Motors. This element is applicable for eBay Motors Pro users.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>eBayMotorsProAdFormatEnabled</code>.
      *
      * @param string $eBayMotorsProAdFormatEnabled
@@ -2914,7 +2943,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as eBayMotorsProContactByPhoneEnabled
      *
      * Indicates whether this category supports including the telephone in the seller's contact information. This element is for eBay Motors Pro users.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>eBayMotorsProContactByPhoneEnabled</code>.
      *
      * @return bool
@@ -2928,7 +2957,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new eBayMotorsProContactByPhoneEnabled
      *
      * Indicates whether this category supports including the telephone in the seller's contact information. This element is for eBay Motors Pro users.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>eBayMotorsProContactByPhoneEnabled</code>.
      *
      * @param bool $eBayMotorsProContactByPhoneEnabled
@@ -2944,7 +2973,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as eBayMotorsProPhoneCount
      *
      * Indicates which telephone option is enabled for the seller's contact information. This element is for eBay Motors Pro users.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>eBayMotorsProContactByPhoneEnabled</code>.
      *
      * @return int
@@ -2958,7 +2987,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new eBayMotorsProPhoneCount
      *
      * Indicates which telephone option is enabled for the seller's contact information. This element is for eBay Motors Pro users.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>eBayMotorsProContactByPhoneEnabled</code>.
      *
      * @param int $eBayMotorsProPhoneCount
@@ -2974,7 +3003,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as eBayMotorsProContactByAddressEnabled
      *
      * Indicates whether this category supports including the address in the seller's contact information. This element is for eBay Motors Pro users.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>eBayMotorsProContactByAddressEnabled</code>.
      *
      * @return bool
@@ -2988,7 +3017,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new eBayMotorsProContactByAddressEnabled
      *
      * Indicates whether this category supports including the address in the seller's contact information. This element is for eBay Motors Pro users.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>eBayMotorsProContactByAddressEnabled</code>.
      *
      * @param bool $eBayMotorsProContactByAddressEnabled
@@ -3004,7 +3033,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as eBayMotorsProStreetCount
      *
      * Indicates which address option is enabled for the seller's contact information. This element is for eBay Motors Pro users.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>eBayMotorsProContactByAddressEnabled</code>.
      *
      * @return int
@@ -3018,7 +3047,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new eBayMotorsProStreetCount
      *
      * Indicates which address option is enabled for the seller's contact information. This element is for eBay Motors Pro users.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>eBayMotorsProContactByAddressEnabled</code>.
      *
      * @param int $eBayMotorsProStreetCount
@@ -3034,7 +3063,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as eBayMotorsProCompanyNameEnabled
      *
      * Indicates whether this category supports including the company name in the seller's contact information. This element is for eBay Motors Pro users.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>eBayMotorsProCompanyNameEnabled</code>.
      *
      * @return bool
@@ -3048,7 +3077,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new eBayMotorsProCompanyNameEnabled
      *
      * Indicates whether this category supports including the company name in the seller's contact information. This element is for eBay Motors Pro users.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>eBayMotorsProCompanyNameEnabled</code>.
      *
      * @param bool $eBayMotorsProCompanyNameEnabled
@@ -3064,7 +3093,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as eBayMotorsProContactByEmailEnabled
      *
      * Indicates whether this category supports including an email address in the seller's contact information. This element is for eBay Motors Pro users.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>eBayMotorsProContactByEmailEnabled</code>.
      *
      * @return bool
@@ -3078,7 +3107,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new eBayMotorsProContactByEmailEnabled
      *
      * Indicates whether this category supports including an email address in the seller's contact information. This element is for eBay Motors Pro users.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>eBayMotorsProContactByEmailEnabled</code>.
      *
      * @param bool $eBayMotorsProContactByEmailEnabled
@@ -3094,7 +3123,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as eBayMotorsProBestOfferEnabled
      *
      * Indicates if Best Offer is supported for eBay Motors Classified Ad listings in this category. This element is for eBay Motors Pro users.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>eBayMotorsProBestOfferEnabled</code>.
      *
      * @return string
@@ -3108,7 +3137,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new eBayMotorsProBestOfferEnabled
      *
      * Indicates if Best Offer is supported for eBay Motors Classified Ad listings in this category. This element is for eBay Motors Pro users.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>eBayMotorsProBestOfferEnabled</code>.
      *
      * @param string $eBayMotorsProBestOfferEnabled
@@ -3124,7 +3153,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as eBayMotorsProAutoAcceptEnabled
      *
      * Specifies whether this category allows auto-accept for Best Offers for eBay Motors Classified Ad listings. This element is for eBay Motors Pro users.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>eBayMotorsProAutoAcceptEnabled</code>.
      *
      * @return bool
@@ -3138,7 +3167,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new eBayMotorsProAutoAcceptEnabled
      *
      * Specifies whether this category allows auto-accept for Best Offers for eBay Motors Classified Ad listings. This element is for eBay Motors Pro users.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>eBayMotorsProAutoAcceptEnabled</code>.
      *
      * @param bool $eBayMotorsProAutoAcceptEnabled
@@ -3154,7 +3183,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as eBayMotorsProAutoDeclineEnabled
      *
      * Specifies whether this category allows auto-decline for Best Offers for eBay Motors Classified Ad listings. This element is for eBay Motors Pro users.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>eBayMotorsProAutoDeclineEnabled</code>.
      *
      * @return bool
@@ -3168,7 +3197,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new eBayMotorsProAutoDeclineEnabled
      *
      * Specifies whether this category allows auto-decline for Best Offers for eBay Motors Classified Ad listings. This element is for eBay Motors Pro users.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>eBayMotorsProAutoDeclineEnabled</code>.
      *
      * @param bool $eBayMotorsProAutoDeclineEnabled
@@ -3184,7 +3213,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as eBayMotorsProPaymentMethodCheckOutEnabled
      *
      * Indicates if the payment method should be displayed to the user for this category in an eBay Motors Classified Ad listing. Even if enabled, checkout may or may not be enabled. This element is for eBay Motors Pro users.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>eBayMotorsProPaymentMethodCheckOutEnabled</code>.
      *
      * @return string
@@ -3198,7 +3227,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new eBayMotorsProPaymentMethodCheckOutEnabled
      *
      * Indicates if the payment method should be displayed to the user for this category in an eBay Motors Classified Ad listing. Even if enabled, checkout may or may not be enabled. This element is for eBay Motors Pro users.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>eBayMotorsProPaymentMethodCheckOutEnabled</code>.
      *
      * @param string $eBayMotorsProPaymentMethodCheckOutEnabled
@@ -3214,7 +3243,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as eBayMotorsProShippingMethodEnabled
      *
      * Indicates if shipping options should be displayed to the user for this category in an eBay Motors Classified Ad listing. This element is for eBay Motors Pro users.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>eBayMotorsProShippingMethodEnabled</code>.
      *
      * @return bool
@@ -3228,7 +3257,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new eBayMotorsProShippingMethodEnabled
      *
      * Indicates if shipping options should be displayed to the user for this category in an eBay Motors Classified Ad listing. This element is for eBay Motors Pro users.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>eBayMotorsProShippingMethodEnabled</code>.
      *
      * @param bool $eBayMotorsProShippingMethodEnabled
@@ -3244,7 +3273,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as eBayMotorsProCounterOfferEnabled
      *
      * Indicates whether counter offers are allowed on Best Offers for this category in an eBay Motors Classified Ad listing. This element is for eBay Motors Pro users.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>eBayMotorsProCounterOfferEnabled</code>.
      *
      * @return bool
@@ -3258,7 +3287,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new eBayMotorsProCounterOfferEnabled
      *
      * Indicates whether counter offers are allowed on Best Offers for this category in an eBay Motors Classified Ad listing. This element is for eBay Motors Pro users.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>eBayMotorsProCounterOfferEnabled</code>.
      *
      * @param bool $eBayMotorsProCounterOfferEnabled
@@ -3274,7 +3303,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as eBayMotorsProSellerContactDetailsEnabled
      *
      * Specifies whether this category allows seller-level contact information for eBay Motors Classified Ad listings. A value of true means seller-level contact information is available for Classified Ad listings. This element is for eBay Motors Pro users.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>eBayMotorsProSellerContactDetailsEnabled</code>.
      *
      * @return bool
@@ -3288,7 +3317,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new eBayMotorsProSellerContactDetailsEnabled
      *
      * Specifies whether this category allows seller-level contact information for eBay Motors Classified Ad listings. A value of true means seller-level contact information is available for Classified Ad listings. This element is for eBay Motors Pro users.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>eBayMotorsProSellerContactDetailsEnabled</code>.
      *
      * @param bool $eBayMotorsProSellerContactDetailsEnabled
@@ -3304,7 +3333,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as localMarketAdFormatEnabled
      *
      * Specifies whether this category supports Motor Local Market Classified Ad listings. This element is for Local Market dealers.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>LocalMarketAdFormatEnabled</code>.
      *
      * @return string
@@ -3318,7 +3347,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new localMarketAdFormatEnabled
      *
      * Specifies whether this category supports Motor Local Market Classified Ad listings. This element is for Local Market dealers.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>LocalMarketAdFormatEnabled</code>.
      *
      * @param string $localMarketAdFormatEnabled
@@ -3334,7 +3363,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as localMarketContactByPhoneEnabled
      *
      * Indicates whether this category supports including the telephone in the seller's contact information. This element is for Local Market dealers.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>LocalMarketContactByPhoneEnabled</code>.
      *
      * @return bool
@@ -3348,7 +3377,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new localMarketContactByPhoneEnabled
      *
      * Indicates whether this category supports including the telephone in the seller's contact information. This element is for Local Market dealers.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>LocalMarketContactByPhoneEnabled</code>.
      *
      * @param bool $localMarketContactByPhoneEnabled
@@ -3364,7 +3393,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as localMarketPhoneCount
      *
      * Indicates which telephone option is enabled for the seller's contact information. This element is for Local Market dealers.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>LocalMarketContactByPhoneEnabled</code>.
      *
      * @return int
@@ -3378,7 +3407,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new localMarketPhoneCount
      *
      * Indicates which telephone option is enabled for the seller's contact information. This element is for Local Market dealers.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>LocalMarketContactByPhoneEnabled</code>.
      *
      * @param int $localMarketPhoneCount
@@ -3394,7 +3423,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as localMarketContactByAddressEnabled
      *
      * Indicates whether this category supports including the address in the seller's contact information. This element is for Local Market dealers.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>LocalMarketContactByAddressEnabled</code>.
      *
      * @return bool
@@ -3408,7 +3437,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new localMarketContactByAddressEnabled
      *
      * Indicates whether this category supports including the address in the seller's contact information. This element is for Local Market dealers.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>LocalMarketContactByAddressEnabled</code>.
      *
      * @param bool $localMarketContactByAddressEnabled
@@ -3424,7 +3453,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as localMarketStreetCount
      *
      * Indicates which address option is enabled for the seller's contact information. This element is for Local Market dealers.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>LocalMarketContactByAddressEnabled</code>.
      *
      * @return int
@@ -3438,7 +3467,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new localMarketStreetCount
      *
      * Indicates which address option is enabled for the seller's contact information. This element is for Local Market dealers.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>LocalMarketContactByAddressEnabled</code>.
      *
      * @param int $localMarketStreetCount
@@ -3454,7 +3483,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as localMarketCompanyNameEnabled
      *
      * Indicates whether the category supports including a company name in the seller's contact information. This element is for Local Market dealers.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>LocalMarketCompanyNameEnabled</code>.
      *
      * @return bool
@@ -3468,7 +3497,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new localMarketCompanyNameEnabled
      *
      * Indicates whether the category supports including a company name in the seller's contact information. This element is for Local Market dealers.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>LocalMarketCompanyNameEnabled</code>.
      *
      * @param bool $localMarketCompanyNameEnabled
@@ -3484,7 +3513,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as localMarketContactByEmailEnabled
      *
      * Indicates whether the category supports including an email address in the seller's contact information. This element is for Local Market dealers.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>LocalMarketContactByEmailEnabled</code>.
      *
      * @return bool
@@ -3498,7 +3527,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new localMarketContactByEmailEnabled
      *
      * Indicates whether the category supports including an email address in the seller's contact information. This element is for Local Market dealers.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>LocalMarketContactByEmailEnabled</code>.
      *
      * @param bool $localMarketContactByEmailEnabled
@@ -3514,7 +3543,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as localMarketBestOfferEnabled
      *
      * Indicates if Best Offer is enabled/required for Motors Local Market Classified Ad listings in this category. This element is for Local Market dealers.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>LocalMarketBestOfferEnabled</code>.
      *
      * @return string
@@ -3528,7 +3557,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new localMarketBestOfferEnabled
      *
      * Indicates if Best Offer is enabled/required for Motors Local Market Classified Ad listings in this category. This element is for Local Market dealers.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>LocalMarketBestOfferEnabled</code>.
      *
      * @param string $localMarketBestOfferEnabled
@@ -3544,7 +3573,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as localMarketAutoAcceptEnabled
      *
      * Specifies whether this category supports auto-accept for Best Offers for Motors Local Market Classified Ads. This element is for Local Market dealers.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>LocalMarketAutoAcceptEnabled</code>.
      *
      * @return bool
@@ -3558,7 +3587,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new localMarketAutoAcceptEnabled
      *
      * Specifies whether this category supports auto-accept for Best Offers for Motors Local Market Classified Ads. This element is for Local Market dealers.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>LocalMarketAutoAcceptEnabled</code>.
      *
      * @param bool $localMarketAutoAcceptEnabled
@@ -3574,7 +3603,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as localMarketAutoDeclineEnabled
      *
      * Specifies whether this category supports auto-decline for Best Offers for Motors Local Market Classified Ads. This element is for Local Market dealers.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>LocalMarketAutoDeclineEnabled</code>.
      *
      * @return bool
@@ -3588,7 +3617,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new localMarketAutoDeclineEnabled
      *
      * Specifies whether this category supports auto-decline for Best Offers for Motors Local Market Classified Ads. This element is for Local Market dealers.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>LocalMarketAutoDeclineEnabled</code>.
      *
      * @param bool $localMarketAutoDeclineEnabled
@@ -3604,7 +3633,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as localMarketPaymentMethodCheckOutEnabled
      *
      * Indicates if the payment method should be displayed to the user for this category in an Motors Local Market Classified Ad listing. Even if enabled, checkout may or may not be enabled. This element is for Local Market dealers.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>LocalMarketPaymentMethodCheckOutEnabled</code>.
      *
      * @return string
@@ -3618,7 +3647,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new localMarketPaymentMethodCheckOutEnabled
      *
      * Indicates if the payment method should be displayed to the user for this category in an Motors Local Market Classified Ad listing. Even if enabled, checkout may or may not be enabled. This element is for Local Market dealers.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>LocalMarketPaymentMethodCheckOutEnabled</code>.
      *
      * @param string $localMarketPaymentMethodCheckOutEnabled
@@ -3634,7 +3663,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as localMarketShippingMethodEnabled
      *
      * Indicates if shipping methods should be displayed to the user for this category in an Motors Local Market Classified Ad listing. Even if enabled, checkout may or may not be enabled. This element is for Local market dealers.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>LocalMarketShippingMethodEnabled</code>.
      *
      * @return bool
@@ -3648,7 +3677,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new localMarketShippingMethodEnabled
      *
      * Indicates if shipping methods should be displayed to the user for this category in an Motors Local Market Classified Ad listing. Even if enabled, checkout may or may not be enabled. This element is for Local market dealers.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>LocalMarketShippingMethodEnabled</code>.
      *
      * @param bool $localMarketShippingMethodEnabled
@@ -3664,7 +3693,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as localMarketCounterOfferEnabled
      *
      * Indicates whether counter offers are allowed on Best Offers for this category for Motors Local Market Classified Ad listings. This element is for Local market dealers.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>LocalMarketCounterOfferEnabled</code>.
      *
      * @return bool
@@ -3678,7 +3707,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new localMarketCounterOfferEnabled
      *
      * Indicates whether counter offers are allowed on Best Offers for this category for Motors Local Market Classified Ad listings. This element is for Local market dealers.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>LocalMarketCounterOfferEnabled</code>.
      *
      * @param bool $localMarketCounterOfferEnabled
@@ -3694,7 +3723,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as localMarketSellerContactDetailsEnabled
      *
      * Specifies the whether this category allows seller-level contact information for Motors Local Market Classified Ad listings. This element is for Local Market dealers.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>LocalMarketSellerContactDetailsEnabled</code>.
      *
      * @return bool
@@ -3708,7 +3737,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new localMarketSellerContactDetailsEnabled
      *
      * Specifies the whether this category allows seller-level contact information for Motors Local Market Classified Ad listings. This element is for Local Market dealers.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>LocalMarketSellerContactDetailsEnabled</code>.
      *
      * @param bool $localMarketSellerContactDetailsEnabled
@@ -3724,7 +3753,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as classifiedAdPhoneCount
      *
      * Indicates which telephone option is included in the seller's contact information. This element is for For Sale By Owner listings.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ClassifiedAdContactByPhoneEnabled</code>.
      *
      * @return int
@@ -3738,7 +3767,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new classifiedAdPhoneCount
      *
      * Indicates which telephone option is included in the seller's contact information. This element is for For Sale By Owner listings.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ClassifiedAdContactByPhoneEnabled</code>.
      *
      * @param int $classifiedAdPhoneCount
@@ -3754,7 +3783,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as classifiedAdContactByAddressEnabled
      *
      * Indicates whether this category supports including an address in the seller's contact information. This element is for For Sale By Owner listings.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ClassifiedAdContactByAddressEnabled</code>.
      *
      * @return bool
@@ -3768,7 +3797,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new classifiedAdContactByAddressEnabled
      *
      * Indicates whether this category supports including an address in the seller's contact information. This element is for For Sale By Owner listings.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ClassifiedAdContactByAddressEnabled</code>.
      *
      * @param bool $classifiedAdContactByAddressEnabled
@@ -3784,7 +3813,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as classifiedAdStreetCount
      *
      * Indicates which address option is included in the seller's contact information. This element is for For Sale By Owner listings.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ClassifiedAdContactByAddressEnabled</code>.
      *
      * @return int
@@ -3798,7 +3827,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new classifiedAdStreetCount
      *
      * Indicates which address option is included in the seller's contact information. This element is for For Sale By Owner listings.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ClassifiedAdContactByAddressEnabled</code>.
      *
      * @param int $classifiedAdStreetCount
@@ -3814,7 +3843,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as classifiedAdCompanyNameEnabled
      *
      * Indicates whether this category supports including a company name in the seller's contact information. This element is for For Sale By Owner listings.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ClassifiedAdCompanyNameEnabled</code>.
      *
      * @return bool
@@ -3828,7 +3857,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new classifiedAdCompanyNameEnabled
      *
      * Indicates whether this category supports including a company name in the seller's contact information. This element is for For Sale By Owner listings.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ClassifiedAdCompanyNameEnabled</code>.
      *
      * @param bool $classifiedAdCompanyNameEnabled
@@ -3844,7 +3873,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as specialitySubscription
      *
      * The value in this field indicates whether the category supports Motors Local Market listings if the seller has a Specialty vehicle subscription.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>SpecialitySubscription</code>.
      *
      * @return string
@@ -3858,7 +3887,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new specialitySubscription
      *
      * The value in this field indicates whether the category supports Motors Local Market listings if the seller has a Specialty vehicle subscription.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>SpecialitySubscription</code>.
      *
      * @param string $specialitySubscription
@@ -3874,7 +3903,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as regularSubscription
      *
      * The value in this field indicates whether the category supports Motors Local Market listings if the seller has a Regular vehicle subscription.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>RegularSubscription</code>.
      *
      * @return string
@@ -3888,7 +3917,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new regularSubscription
      *
      * The value in this field indicates whether the category supports Motors Local Market listings if the seller has a Regular vehicle subscription.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>RegularSubscription</code>.
      *
      * @param string $regularSubscription
@@ -3904,7 +3933,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as premiumSubscription
      *
      * The value in this field indicates whether the category supports Motors Local Market listings if the seller has a Premium vehicle subscription.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>PremiumSubscription</code>.
      *
      * @return string
@@ -3918,7 +3947,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new premiumSubscription
      *
      * The value in this field indicates whether the category supports Motors Local Market listings if the seller has a Premium vehicle subscription.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>PremiumSubscription</code>.
      *
      * @param string $premiumSubscription
@@ -3934,7 +3963,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as nonSubscription
      *
      * The value in this field indicates whether the category supports Motors Local Market listings if the seller does not have a vehicle subscription.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>NonSubscription</code>.
      *
      * @return string
@@ -3948,7 +3977,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new nonSubscription
      *
      * The value in this field indicates whether the category supports Motors Local Market listings if the seller does not have a vehicle subscription.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>NonSubscription</code>.
      *
      * @param string $nonSubscription
@@ -3966,7 +3995,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * <span class="tablenote"><b>Note:</b>
      *  This field is deprecated since it is only applicable to the eBay India site, and this marketplace is no longer available.</span>
      *  Indicates the escrow workflow version that applies to the category on the India site: Default Workflow, Workflow A or Workflow B.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>INEscrowWorkflowTimeline</code>.
      *
      * @return string
@@ -3982,7 +4011,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * <span class="tablenote"><b>Note:</b>
      *  This field is deprecated since it is only applicable to the eBay India site, and this marketplace is no longer available.</span>
      *  Indicates the escrow workflow version that applies to the category on the India site: Default Workflow, Workflow A or Workflow B.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>INEscrowWorkflowTimeline</code>.
      *
      * @param string $iNEscrowWorkflowTimeline
@@ -4024,7 +4053,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as reviseQuantityAllowed
      *
      * Indicates if the category allows the seller to revise the quantity of a multi-quantity, active listing.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ReviseQuantityAllowed</code>.
      *
      * @return bool
@@ -4038,7 +4067,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new reviseQuantityAllowed
      *
      * Indicates if the category allows the seller to revise the quantity of a multi-quantity, active listing.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ReviseQuantityAllowed</code>.
      *
      * @param bool $reviseQuantityAllowed
@@ -4054,7 +4083,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as revisePriceAllowed
      *
      * Indicates if the category allows the seller to revise the price of a fixed-price listing.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>RevisePriceAllowed</code>.
      *
      * @return bool
@@ -4068,7 +4097,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new revisePriceAllowed
      *
      * Indicates if the category allows the seller to revise the price of a fixed-price listing.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>RevisePriceAllowed</code>.
      *
      * @param bool $revisePriceAllowed
@@ -4084,7 +4113,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as storeOwnerExtendedListingDurationsEnabled
      *
      * Indicates if an eBay Store owner gets extended listing durations in a given category. When the value of this element is true, it means the listing duration values defined in <b>StoreOwnerExtendedListingDurations</b> are applicable to fixed-price listings in a given category.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>StoreOwnerExtendedListingDurationsEnabled</code>.
      *
      * @return bool
@@ -4098,7 +4127,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new storeOwnerExtendedListingDurationsEnabled
      *
      * Indicates if an eBay Store owner gets extended listing durations in a given category. When the value of this element is true, it means the listing duration values defined in <b>StoreOwnerExtendedListingDurations</b> are applicable to fixed-price listings in a given category.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>StoreOwnerExtendedListingDurationsEnabled</code>.
      *
      * @param bool $storeOwnerExtendedListingDurationsEnabled
@@ -4114,7 +4143,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Adds as duration
      *
      * Provides additional listings durations that are available to eBay Store owners. The extended listing durations provided here in this element should be merged in with the baseline listing durations provided in the <b>ListingDurations</b> element. Applies to fixed-price Listings.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>StoreOwnerExtendedListingDurations</code>.
      *
      * @return self
@@ -4130,7 +4159,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * isset storeOwnerExtendedListingDurations
      *
      * Provides additional listings durations that are available to eBay Store owners. The extended listing durations provided here in this element should be merged in with the baseline listing durations provided in the <b>ListingDurations</b> element. Applies to fixed-price Listings.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>StoreOwnerExtendedListingDurations</code>.
      *
      * @param int|string $index
@@ -4145,7 +4174,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * unset storeOwnerExtendedListingDurations
      *
      * Provides additional listings durations that are available to eBay Store owners. The extended listing durations provided here in this element should be merged in with the baseline listing durations provided in the <b>ListingDurations</b> element. Applies to fixed-price Listings.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>StoreOwnerExtendedListingDurations</code>.
      *
      * @param int|string $index
@@ -4160,7 +4189,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as storeOwnerExtendedListingDurations
      *
      * Provides additional listings durations that are available to eBay Store owners. The extended listing durations provided here in this element should be merged in with the baseline listing durations provided in the <b>ListingDurations</b> element. Applies to fixed-price Listings.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>StoreOwnerExtendedListingDurations</code>.
      *
      * @return string[]
@@ -4174,7 +4203,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new storeOwnerExtendedListingDurations
      *
      * Provides additional listings durations that are available to eBay Store owners. The extended listing durations provided here in this element should be merged in with the baseline listing durations provided in the <b>ListingDurations</b> element. Applies to fixed-price Listings.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>StoreOwnerExtendedListingDurations</code>.
      *
      * @param string[] $storeOwnerExtendedListingDurations
@@ -4190,13 +4219,13 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as returnPolicyEnabled
      *
      * <b>For most sites:</b> If true, listings in this
-     *  category require a return policy. <br>
-     *  <br>
+     *  category require a return policy. <br/>
+     *  <br/>
      *  <b>For eBay Australia (AU) and
      *  US eBay Motors Parts and Accessories:</b>
      *  If true, the category supports but does not require a
      *  return policy.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ReturnPolicyEnabled</code>.
      *
      * @return bool
@@ -4210,13 +4239,13 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new returnPolicyEnabled
      *
      * <b>For most sites:</b> If true, listings in this
-     *  category require a return policy. <br>
-     *  <br>
+     *  category require a return policy. <br/>
+     *  <br/>
      *  <b>For eBay Australia (AU) and
      *  US eBay Motors Parts and Accessories:</b>
      *  If true, the category supports but does not require a
      *  return policy.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ReturnPolicyEnabled</code>.
      *
      * @param bool $returnPolicyEnabled
@@ -4231,20 +4260,20 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     /**
      * Gets as handlingTimeEnabled
      *
-     * Indicates if a seller's stated handling time is enabled for a category. A handling time is generally needed for items that are shipped to the buyer, but not necessarily applicable to freight shipping or local pickup. <br>
-     *  <br>
+     * Indicates if a seller's stated handling time is enabled for a category. A handling time is generally needed for items that are shipped to the buyer, but not necessarily applicable to freight shipping or local pickup. <br/>
+     *  <br/>
      *  The handling time is the maximum number of business days the seller
      *  commits to for preparing an item to be shipped after receiving a
      *  cleared payment. The seller's handling time does not include the
      *  shipping time (the carrier's transit time).
-     *  <br>
+     *  <br/>
      *  For a list of the handling time values allowed for each site, use
-     *  <code>DispatchTimeMaxDetails</code> in <b>GeteBayDetails</b>.<br>
-     *  <br>
+     *  <code>DispatchTimeMaxDetails</code> in <b>GeteBayDetails</b>.<br/>
+     *  <br/>
      *  <span class="tablenote"><b>Note:</b>
      *  Although the field name ends with "Enabled", a value of true means
      *  that a handling time is NOT supported, and value of false means
-     *  that a handling time IS supported.</span><br>
+     *  that a handling time IS supported.</span><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>HandlingTimeEnabled</code>.
      *
      * @return bool
@@ -4257,20 +4286,20 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     /**
      * Sets a new handlingTimeEnabled
      *
-     * Indicates if a seller's stated handling time is enabled for a category. A handling time is generally needed for items that are shipped to the buyer, but not necessarily applicable to freight shipping or local pickup. <br>
-     *  <br>
+     * Indicates if a seller's stated handling time is enabled for a category. A handling time is generally needed for items that are shipped to the buyer, but not necessarily applicable to freight shipping or local pickup. <br/>
+     *  <br/>
      *  The handling time is the maximum number of business days the seller
      *  commits to for preparing an item to be shipped after receiving a
      *  cleared payment. The seller's handling time does not include the
      *  shipping time (the carrier's transit time).
-     *  <br>
+     *  <br/>
      *  For a list of the handling time values allowed for each site, use
-     *  <code>DispatchTimeMaxDetails</code> in <b>GeteBayDetails</b>.<br>
-     *  <br>
+     *  <code>DispatchTimeMaxDetails</code> in <b>GeteBayDetails</b>.<br/>
+     *  <br/>
      *  <span class="tablenote"><b>Note:</b>
      *  Although the field name ends with "Enabled", a value of true means
      *  that a handling time is NOT supported, and value of false means
-     *  that a handling time IS supported.</span><br>
+     *  that a handling time IS supported.</span><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>HandlingTimeEnabled</code>.
      *
      * @param bool $handlingTimeEnabled
@@ -4288,7 +4317,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * The maximum cost the seller can charge for the first domestic flat-rate shipping
      *  service.
      *  Mutually exclusive with the <b>Group</b><code>N</code><b>MaxFlatShippingCost</b> elements.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>MaxFlatShippingCost</code>.
      *
      * @return \Nogrod\eBaySDK\MerchantData\AmountType
@@ -4304,7 +4333,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * The maximum cost the seller can charge for the first domestic flat-rate shipping
      *  service.
      *  Mutually exclusive with the <b>Group</b><code>N</code><b>MaxFlatShippingCost</b> elements.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>MaxFlatShippingCost</code>.
      *
      * @param \Nogrod\eBaySDK\MerchantData\AmountType $maxFlatShippingCost
@@ -4320,7 +4349,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as group1MaxFlatShippingCost
      *
      * Returns the applicable max cap per shipping cost for shipping service group1.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>Group1MaxFlatShippingCost</code>.
      *
      * @return \Nogrod\eBaySDK\MerchantData\AmountType
@@ -4334,7 +4363,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new group1MaxFlatShippingCost
      *
      * Returns the applicable max cap per shipping cost for shipping service group1.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>Group1MaxFlatShippingCost</code>.
      *
      * @param \Nogrod\eBaySDK\MerchantData\AmountType $group1MaxFlatShippingCost
@@ -4350,7 +4379,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as group2MaxFlatShippingCost
      *
      * Returns the applicable max cap per shipping cost for shipping service group2.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>Group2MaxFlatShippingCost</code>.
      *
      * @return \Nogrod\eBaySDK\MerchantData\AmountType
@@ -4364,7 +4393,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new group2MaxFlatShippingCost
      *
      * Returns the applicable max cap per shipping cost for shipping service group2.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>Group2MaxFlatShippingCost</code>.
      *
      * @param \Nogrod\eBaySDK\MerchantData\AmountType $group2MaxFlatShippingCost
@@ -4380,7 +4409,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as group3MaxFlatShippingCost
      *
      * Returns the applicable max cap per shipping cost for shipping service group3.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>Group3MaxFlatShippingCost</code>.
      *
      * @return \Nogrod\eBaySDK\MerchantData\AmountType
@@ -4394,7 +4423,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new group3MaxFlatShippingCost
      *
      * Returns the applicable max cap per shipping cost for shipping service group3.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>Group3MaxFlatShippingCost</code>.
      *
      * @param \Nogrod\eBaySDK\MerchantData\AmountType $group3MaxFlatShippingCost
@@ -4410,7 +4439,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Adds as paymentMethod
      *
      * Indicates the acceptable payment methods that can be used when listing an item for sale in the corresponding category.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>PaymentMethods</code>.
      *
      * @return self
@@ -4426,7 +4455,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * isset paymentMethod
      *
      * Indicates the acceptable payment methods that can be used when listing an item for sale in the corresponding category.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>PaymentMethods</code>.
      *
      * @param int|string $index
@@ -4441,7 +4470,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * unset paymentMethod
      *
      * Indicates the acceptable payment methods that can be used when listing an item for sale in the corresponding category.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>PaymentMethods</code>.
      *
      * @param int|string $index
@@ -4456,7 +4485,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as paymentMethod
      *
      * Indicates the acceptable payment methods that can be used when listing an item for sale in the corresponding category.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>PaymentMethods</code>.
      *
      * @return string[]
@@ -4470,7 +4499,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new paymentMethod
      *
      * Indicates the acceptable payment methods that can be used when listing an item for sale in the corresponding category.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>PaymentMethods</code>.
      *
      * @param string $paymentMethod
@@ -4487,14 +4516,14 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *
      * If <code>true</code>, you can pass in <b>Item.Variations</b> in an
      *  Add/Revise/Relist fixed-price item call when you list in this
-     *  category.<br>
-     *  <br>
+     *  category.<br/>
+     *  <br/>
      *  Multi-variation listings contain items that are logically the same
      *  product, but that vary in their manufacturing details or packaging.
      *  For example, a particular brand and style of shirt could be
      *  available in different sizes and colors, such as "large blue" and
      *  "medium black" variations.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>VariationsEnabled</code>.
      *
      * @return bool
@@ -4509,14 +4538,14 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *
      * If <code>true</code>, you can pass in <b>Item.Variations</b> in an
      *  Add/Revise/Relist fixed-price item call when you list in this
-     *  category.<br>
-     *  <br>
+     *  category.<br/>
+     *  <br/>
      *  Multi-variation listings contain items that are logically the same
      *  product, but that vary in their manufacturing details or packaging.
      *  For example, a particular brand and style of shirt could be
      *  available in different sizes and colors, such as "large blue" and
      *  "medium black" variations.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>VariationsEnabled</code>.
      *
      * @param bool $variationsEnabled
@@ -4558,7 +4587,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as freeGalleryPlusEnabled
      *
      * Indicates whether the category supports free, automatic upgrades for Gallery Plus, which enhances pictures in search results.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>FreeGalleryPlusEnabled</code>.
      *
      * @return bool
@@ -4572,7 +4601,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new freeGalleryPlusEnabled
      *
      * Indicates whether the category supports free, automatic upgrades for Gallery Plus, which enhances pictures in search results.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>FreeGalleryPlusEnabled</code>.
      *
      * @param bool $freeGalleryPlusEnabled
@@ -4588,7 +4617,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as freePicturePackEnabled
      *
      * Indicates whether the category supports free, automatic upgrades for Picture Pack, a discount package that includes super-sizing of pictures.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>FreePicturePackEnabled</code>.
      *
      * @return bool
@@ -4602,7 +4631,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new freePicturePackEnabled
      *
      * Indicates whether the category supports free, automatic upgrades for Picture Pack, a discount package that includes super-sizing of pictures.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>FreePicturePackEnabled</code>.
      *
      * @param bool $freePicturePackEnabled
@@ -4620,10 +4649,10 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Indicates whether the category supports parts compatibility by application
      *  (<b>ByApplication</b>), by specification (<b>BySpecification</b>), or not at all
      *  (<b>Disabled</b>). Categories cannot support both types of parts compatibility.
-     *  <br><br>
+     *  <br/><br/>
      *  Parts Compatibility is supported in limited Parts & Accessories
      *  categories for the eBay Motors (US) site (site ID 100) only.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>CompatibilityEnabled</code>.
      *
      * @return string
@@ -4639,10 +4668,10 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Indicates whether the category supports parts compatibility by application
      *  (<b>ByApplication</b>), by specification (<b>BySpecification</b>), or not at all
      *  (<b>Disabled</b>). Categories cannot support both types of parts compatibility.
-     *  <br><br>
+     *  <br/><br/>
      *  Parts Compatibility is supported in limited Parts & Accessories
      *  categories for the eBay Motors (US) site (site ID 100) only.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>CompatibilityEnabled</code>.
      *
      * @param string $itemCompatibilityEnabled
@@ -4660,13 +4689,13 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * This field specifies the minimum number of required compatible applications
      *  for listing items. A value of "0" indicates it is not mandatory to specify
      *  parts compatibilities when listing.
-     *  <br><br>
+     *  <br/><br/>
      *  This applies to categories that are enabled for compatibility by application
      *  only. Parts compatiblity by application can be specified by listing with a
      *  catalog product that supports parts compatibility or by specifying parts
      *  compatibility by application manually (<b class="con">
      *  Item.ItemCompatibilityList</b>).
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>MinCompatibleApplications</code>.
      *
      * @return int
@@ -4682,13 +4711,13 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * This field specifies the minimum number of required compatible applications
      *  for listing items. A value of "0" indicates it is not mandatory to specify
      *  parts compatibilities when listing.
-     *  <br><br>
+     *  <br/><br/>
      *  This applies to categories that are enabled for compatibility by application
      *  only. Parts compatiblity by application can be specified by listing with a
      *  catalog product that supports parts compatibility or by specifying parts
      *  compatibility by application manually (<b class="con">
      *  Item.ItemCompatibilityList</b>).
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>MinCompatibleApplications</code>.
      *
      * @param int $minItemCompatibility
@@ -4707,11 +4736,11 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  per item when adding or revising items. This is relevant for specifying parts
      *  compatibility by application manually (<b class="con">
      *  Item.ItemCompatibilityList</b>) only.
-     *  <br><br>
+     *  <br/><br/>
      *  Applicable for the US site only.
-     *  <br><br>
+     *  <br/><br/>
      *  For DE, UK, and AU sites, this field returns the same value as <b>MaxGranularFitmentCount</b>.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>MaxCompatibleApplications</code>.
      *
      * @return int
@@ -4728,11 +4757,11 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  per item when adding or revising items. This is relevant for specifying parts
      *  compatibility by application manually (<b class="con">
      *  Item.ItemCompatibilityList</b>) only.
-     *  <br><br>
+     *  <br/><br/>
      *  Applicable for the US site only.
-     *  <br><br>
+     *  <br/><br/>
      *  For DE, UK, and AU sites, this field returns the same value as <b>MaxGranularFitmentCount</b>.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>MaxCompatibleApplications</code>.
      *
      * @param int $maxItemCompatibility
@@ -4747,8 +4776,8 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     /**
      * Gets as conditionEnabled
      *
-     * Indicates whether the category supports (or requires) using <b>Item.ConditionID</b> to specify an item's condition in Add/Revise/Relist calls. See the <b>ConditionValues</b> type for a list of valid condition ID values.
-     *  <br><br>
+     * Indicates whether the category supports, requires, or doesn't support the use item condition for an item listing. For categories that require or support the use of item condition, see the <b>ConditionValues</b> and/or <b>SpecialFeatures</b> containers for a list of valid item conditions (display names and ID values).
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ConditionEnabled</code>.
      *
      * @return string
@@ -4761,8 +4790,8 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     /**
      * Sets a new conditionEnabled
      *
-     * Indicates whether the category supports (or requires) using <b>Item.ConditionID</b> to specify an item's condition in Add/Revise/Relist calls. See the <b>ConditionValues</b> type for a list of valid condition ID values.
-     *  <br><br>
+     * Indicates whether the category supports, requires, or doesn't support the use item condition for an item listing. For categories that require or support the use of item condition, see the <b>ConditionValues</b> and/or <b>SpecialFeatures</b> containers for a list of valid item conditions (display names and ID values).
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ConditionEnabled</code>.
      *
      * @param string $conditionEnabled
@@ -4777,9 +4806,15 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     /**
      * Gets as conditionValues
      *
-     * Specifies the supported item conditions for the category, plus related policies and other details.
-     *  <br><br>
-     *  Only returned <b>ConditionEnabled</b> value is <code>Enabled</code> or <code>Required</code> and when any of the condition values are different from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ConditionValues</code>.
+     * This container specifies all of the item conditions that are supported for the corresponding category. The display name of the item condiation and the ID associated with the description are both shown.
+     *  <br/><br/>
+     *  This container will not be returned for any eBay categories that don't support the use of an item condition value. To see which categories require, support, or don't support the use of item conditions, you can include a <b>FeatureID</b> value of <code>ConditionEnabled</code>. Any eBay category that does not support the use of an item condition value will return a <b>ConditionEnabled</b> value of <code>Disabled</code>.
+     *  <br/><br/>
+     *  This container will also not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ConditionValues</code>.
+     *  <br/>
+     *  <br/>
+     *  <span class="tablenote"><b>Note:</b>
+     *  The <b>Certified - Refurbished</b> condition (condition ID 2000), <b>Excellent - Refurbished</b> condition (condition ID 2010), <b>Very Good - Refurbished</b> condition (condition ID 2020), and <b>Good - Refurbished</b> condition (condition ID 2030) are returned in the <b>SpecialFeatures</b> container. A seller must be pre-qualified by eBay to list items with the any of these refurbished item conditions. The <b>Excellent - Refurbished</b>, <b>Very Good - Refurbished</b> and <b>Good - Refurbished</b> conditions are currently only applicable for the <strong>Cell Phones & Smartphones</strong> category (category ID 9355).</span>
      *
      * @return \Nogrod\eBaySDK\MerchantData\ConditionValuesType
      */
@@ -4791,9 +4826,15 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     /**
      * Sets a new conditionValues
      *
-     * Specifies the supported item conditions for the category, plus related policies and other details.
-     *  <br><br>
-     *  Only returned <b>ConditionEnabled</b> value is <code>Enabled</code> or <code>Required</code> and when any of the condition values are different from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ConditionValues</code>.
+     * This container specifies all of the item conditions that are supported for the corresponding category. The display name of the item condiation and the ID associated with the description are both shown.
+     *  <br/><br/>
+     *  This container will not be returned for any eBay categories that don't support the use of an item condition value. To see which categories require, support, or don't support the use of item conditions, you can include a <b>FeatureID</b> value of <code>ConditionEnabled</code>. Any eBay category that does not support the use of an item condition value will return a <b>ConditionEnabled</b> value of <code>Disabled</code>.
+     *  <br/><br/>
+     *  This container will also not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ConditionValues</code>.
+     *  <br/>
+     *  <br/>
+     *  <span class="tablenote"><b>Note:</b>
+     *  The <b>Certified - Refurbished</b> condition (condition ID 2000), <b>Excellent - Refurbished</b> condition (condition ID 2010), <b>Very Good - Refurbished</b> condition (condition ID 2020), and <b>Good - Refurbished</b> condition (condition ID 2030) are returned in the <b>SpecialFeatures</b> container. A seller must be pre-qualified by eBay to list items with the any of these refurbished item conditions. The <b>Excellent - Refurbished</b>, <b>Very Good - Refurbished</b> and <b>Good - Refurbished</b> conditions are currently only applicable for the <strong>Cell Phones & Smartphones</strong> category (category ID 9355).</span>
      *
      * @param \Nogrod\eBaySDK\MerchantData\ConditionValuesType $conditionValues
      * @return self
@@ -4805,18 +4846,52 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     }
 
     /**
+     * Gets as specialFeatures
+     *
+     * This container is only returned if the corresponding category supports a special item condition such as <b>Certified - Refurbished</b> condition (condition ID 2000), <b>Excellent - Refurbished</b> condition (condition ID 2010), <b>Very Good - Refurbished</b> condition (condition ID 2020), and <b>Good - Refurbished</b> condition (condition ID 2030). A seller must be pre-qualified by eBay to list items with the any of these refurbished item conditions. The <b>Excellent - Refurbished</b>, <b>Very Good - Refurbished</b> and <b>Good - Refurbished</b> conditions are currently only applicable for the <strong>Cell Phones & Smartphones</strong> category (category ID 9355).
+     *  <br/><br/>
+     *  All other item conditions supported by a category will be returned in the <b>ConditionValues</b> container instead.
+     *  <br/><br/>
+     *  Neither the <b>ConditionValues</b> or the <b>SpecialFeatures</b> containers will be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ConditionValues</code>.
+     *
+     * @return \Nogrod\eBaySDK\MerchantData\ConditionValuesType
+     */
+    public function getSpecialFeatures()
+    {
+        return $this->specialFeatures;
+    }
+
+    /**
+     * Sets a new specialFeatures
+     *
+     * This container is only returned if the corresponding category supports a special item condition such as <b>Certified - Refurbished</b> condition (condition ID 2000), <b>Excellent - Refurbished</b> condition (condition ID 2010), <b>Very Good - Refurbished</b> condition (condition ID 2020), and <b>Good - Refurbished</b> condition (condition ID 2030). A seller must be pre-qualified by eBay to list items with the any of these refurbished item conditions. The <b>Excellent - Refurbished</b>, <b>Very Good - Refurbished</b> and <b>Good - Refurbished</b> conditions are currently only applicable for the <strong>Cell Phones & Smartphones</strong> category (category ID 9355).
+     *  <br/><br/>
+     *  All other item conditions supported by a category will be returned in the <b>ConditionValues</b> container instead.
+     *  <br/><br/>
+     *  Neither the <b>ConditionValues</b> or the <b>SpecialFeatures</b> containers will be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ConditionValues</code>.
+     *
+     * @param \Nogrod\eBaySDK\MerchantData\ConditionValuesType $specialFeatures
+     * @return self
+     */
+    public function setSpecialFeatures(\Nogrod\eBaySDK\MerchantData\ConditionValuesType $specialFeatures)
+    {
+        $this->specialFeatures = $specialFeatures;
+        return $this;
+    }
+
+    /**
      * Gets as valueCategory
      *
      * Some eBay sites may select a few categories and designate them as
      *  "value categories". These are typically selected from
      *  categories where buyers can find great deals. (Not all categories
      *  with great deals are designated as value categories.)
-     *  This designation can change over time. <br>
-     *  <br>
+     *  This designation can change over time. <br/>
+     *  <br/>
      *  While a category is designated as a value category (i.e.,
      *  when <b>ValueCategory</b> is <code>true</code>), it is subject to the following rule:
-     *  Items in value categories can only be listed in one category.<br>
-     *  <br>
+     *  Items in value categories can only be listed in one category.<br/>
+     *  <br/>
      *  For example, if you attempt to list in two categories and the
      *  primary category or secondary category is a value category,
      *  then eBay drops the secondary category and lists the
@@ -4825,7 +4900,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  listing, or you change the category for an existing listing,
      *  and if the primary or secondary category is a value category,
      *  then eBay drops the secondary category.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ValueCategory</code>.
      *
      * @return bool
@@ -4842,12 +4917,12 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  "value categories". These are typically selected from
      *  categories where buyers can find great deals. (Not all categories
      *  with great deals are designated as value categories.)
-     *  This designation can change over time. <br>
-     *  <br>
+     *  This designation can change over time. <br/>
+     *  <br/>
      *  While a category is designated as a value category (i.e.,
      *  when <b>ValueCategory</b> is <code>true</code>), it is subject to the following rule:
-     *  Items in value categories can only be listed in one category.<br>
-     *  <br>
+     *  Items in value categories can only be listed in one category.<br/>
+     *  <br/>
      *  For example, if you attempt to list in two categories and the
      *  primary category or secondary category is a value category,
      *  then eBay drops the secondary category and lists the
@@ -4856,7 +4931,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  listing, or you change the category for an existing listing,
      *  and if the primary or secondary category is a value category,
      *  then eBay drops the secondary category.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ValueCategory</code>.
      *
      * @param bool $valueCategory
@@ -4872,7 +4947,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as productCreationEnabled
      *
      * Indicates whether a category supports (or requires) the creation of a listing using an eBay Catalog product. To create a listing based on an eBay Catalog product, the seller passed in Global Trade Item Number (GTIN) or eBay Product ID (ePID) value in an Add/Revise/Relist call and then eBay tries to match the product identifier to a product in the eBay Catalog. If a match is found, the listing picks up the details of the eBay Catalog product, including product title, product description, product aspects, primary eBay listing category ID, and links to any product stock photos.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ProductCreationEnabled</code>.
      *
      * @return string
@@ -4886,7 +4961,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new productCreationEnabled
      *
      * Indicates whether a category supports (or requires) the creation of a listing using an eBay Catalog product. To create a listing based on an eBay Catalog product, the seller passed in Global Trade Item Number (GTIN) or eBay Product ID (ePID) value in an Add/Revise/Relist call and then eBay tries to match the product identifier to a product in the eBay Catalog. If a match is found, the listing picks up the details of the eBay Catalog product, including product title, product description, product aspects, primary eBay listing category ID, and links to any product stock photos.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ProductCreationEnabled</code>.
      *
      * @param string $productCreationEnabled
@@ -4902,10 +4977,10 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as eANEnabled
      *
      * Indicates whether or not European Article Numbers (EANs) are supported/required when listing products in the category. A value of <code>Disabled</code> indicates that EANs cannot be used for the category, a value of <code>Enabled</code> indicates that EANs can be used for the category, and a value of <code>Required</code> indicates that an EAN is required when listing a product in this category.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>EANEnabled</code>.
-     *  <br>
-     *  <br>
+     *  <br/>
+     *  <br/>
      *  <span class="tablenote"><b>Note:</b>
      *  It is recommended that sellers always use <b>GetCategoryFeatures</b> to see if an eBay category requires a Global Trade Item Number (GTIN) or a Brand/MPN combination. So, that means that they should look for <b>EANEnabled</b>, <b>ISBNEnabled</b>, <b>UPCEnabled</b>, and <b>BrandMPNIdentifierEnabled</b> at the category level in the <b>GetCategoryFeatures</b> response. </span>
      *
@@ -4920,10 +4995,10 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new eANEnabled
      *
      * Indicates whether or not European Article Numbers (EANs) are supported/required when listing products in the category. A value of <code>Disabled</code> indicates that EANs cannot be used for the category, a value of <code>Enabled</code> indicates that EANs can be used for the category, and a value of <code>Required</code> indicates that an EAN is required when listing a product in this category.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>EANEnabled</code>.
-     *  <br>
-     *  <br>
+     *  <br/>
+     *  <br/>
      *  <span class="tablenote"><b>Note:</b>
      *  It is recommended that sellers always use <b>GetCategoryFeatures</b> to see if an eBay category requires a Global Trade Item Number (GTIN) or a Brand/MPN combination. So, that means that they should look for <b>EANEnabled</b>, <b>ISBNEnabled</b>, <b>UPCEnabled</b>, and <b>BrandMPNIdentifierEnabled</b> at the category level in the <b>GetCategoryFeatures</b> response. </span>
      *
@@ -4940,10 +5015,10 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as iSBNEnabled
      *
      * Indicates whether or not International Standard Book Numbers (ISBNs) are supported/required when listing products in the category. A value of <code>Disabled</code> indicates that ISBNs cannot be used for the category, a value of <code>Enabled</code> indicates that ISBNs can be used for the category, and a value of <code>Required</code> indicates that an ISBN is required when listing a product in this category.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ISBNEnabled</code>.
-     *  <br>
-     *  <br>
+     *  <br/>
+     *  <br/>
      *  <span class="tablenote"><b>Note:</b>
      *  It is recommended that sellers always use <b>GetCategoryFeatures</b> to see if an eBay category requires a Global Trade Item Number (GTIN) or a Brand/MPN combination. So, that means that they should look for <b>ISBNEnabled</b>, <b>EANEnabled</b>, <b>UPCEnabled</b>, and <b>BrandMPNIdentifierEnabled</b> at the category level in the <b>GetCategoryFeatures</b> response. </span>
      *
@@ -4958,10 +5033,10 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new iSBNEnabled
      *
      * Indicates whether or not International Standard Book Numbers (ISBNs) are supported/required when listing products in the category. A value of <code>Disabled</code> indicates that ISBNs cannot be used for the category, a value of <code>Enabled</code> indicates that ISBNs can be used for the category, and a value of <code>Required</code> indicates that an ISBN is required when listing a product in this category.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ISBNEnabled</code>.
-     *  <br>
-     *  <br>
+     *  <br/>
+     *  <br/>
      *  <span class="tablenote"><b>Note:</b>
      *  It is recommended that sellers always use <b>GetCategoryFeatures</b> to see if an eBay category requires a Global Trade Item Number (GTIN) or a Brand/MPN combination. So, that means that they should look for <b>ISBNEnabled</b>, <b>EANEnabled</b>, <b>UPCEnabled</b>, and <b>BrandMPNIdentifierEnabled</b> at the category level in the <b>GetCategoryFeatures</b> response. </span>
      *
@@ -4978,10 +5053,10 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as uPCEnabled
      *
      * Indicates whether or not Universal Product Codes (UPCs) are supported/required when listing products in the category. A value of <code>Disabled</code> indicates that UPCs cannot be used for the category, a value of <code>Enabled</code> indicates that UPCs can be used for the category, and a value of <code>Required</code> indicates that a UPC is required when listing a product in this category.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>UPCEnabled</code>.
-     *  <br>
-     *  <br>
+     *  <br/>
+     *  <br/>
      *  <span class="tablenote"><b>Note:</b>
      *  It is recommended that sellers always use <b>GetCategoryFeatures</b> to see if an eBay category requires a Global Trade Item Number (GTIN) or a Brand/MPN combination. So, that means that they should look for <b>UPCEnabled</b>, <b>ISBNEnabled</b>, <b>EANEnabled</b>, and <b>BrandMPNIdentifierEnabled</b> at the category level in the <b>GetCategoryFeatures</b> response. </span>
      *
@@ -4996,10 +5071,10 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new uPCEnabled
      *
      * Indicates whether or not Universal Product Codes (UPCs) are supported/required when listing products in the category. A value of <code>Disabled</code> indicates that UPCs cannot be used for the category, a value of <code>Enabled</code> indicates that UPCs can be used for the category, and a value of <code>Required</code> indicates that a UPC is required when listing a product in this category.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>UPCEnabled</code>.
-     *  <br>
-     *  <br>
+     *  <br/>
+     *  <br/>
      *  <span class="tablenote"><b>Note:</b>
      *  It is recommended that sellers always use <b>GetCategoryFeatures</b> to see if an eBay category requires a Global Trade Item Number (GTIN) or a Brand/MPN combination. So, that means that they should look for <b>UPCEnabled</b>, <b>ISBNEnabled</b>, <b>EANEnabled</b>, and <b>BrandMPNIdentifierEnabled</b> at the category level in the <b>GetCategoryFeatures</b> response. </span>
      *
@@ -5016,7 +5091,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as maxGranularFitmentCount
      *
      * Indicates the maximum number of compatible applications allowed per item when adding or revising items with compatibilities provided at the most detailed granularity. For example, in Car and Truck Parts on the US site, the most granular application would include Year, Make, Model, Trim, and Engine.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>MaxGranularFitmentCount</code>.
      *
      * @return int
@@ -5030,7 +5105,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new maxGranularFitmentCount
      *
      * Indicates the maximum number of compatible applications allowed per item when adding or revising items with compatibilities provided at the most detailed granularity. For example, in Car and Truck Parts on the US site, the most granular application would include Year, Make, Model, Trim, and Engine.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>MaxGranularFitmentCount</code>.
      *
      * @param int $maxGranularFitmentCount
@@ -5046,7 +5121,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as compatibleVehicleType
      *
      * This field is for future use. It is currently returned as an empty field, but in the future, the string value in this field will indicate Parts Compatibility vehicle type (e.g. cars, motorcycles, boats).
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>CompatibleVehicleType</code>.
      *
      * @return string
@@ -5060,7 +5135,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new compatibleVehicleType
      *
      * This field is for future use. It is currently returned as an empty field, but in the future, the string value in this field will indicate Parts Compatibility vehicle type (e.g. cars, motorcycles, boats).
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>CompatibleVehicleType</code>.
      *
      * @param string $compatibleVehicleType
@@ -5102,7 +5177,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as shippingProfileCategoryGroup
      *
      * Indicates the Business Policies category group that may be used for Shipping profiles.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ShippingProfileCategoryGroup</code>.
      *
      * @return string
@@ -5116,7 +5191,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new shippingProfileCategoryGroup
      *
      * Indicates the Business Policies category group that may be used for Shipping profiles.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ShippingProfileCategoryGroup</code>.
      *
      * @param string $shippingProfileCategoryGroup
@@ -5132,7 +5207,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as paymentProfileCategoryGroup
      *
      * Indicates the Business Policies category group that may be used for Payment profiles.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>PaymentProfileCategoryGroup</code>.
      *
      * @return string
@@ -5146,7 +5221,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new paymentProfileCategoryGroup
      *
      * Indicates the Business Policies category group that may be used for Payment profiles.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>PaymentProfileCategoryGroup</code>.
      *
      * @param string $paymentProfileCategoryGroup
@@ -5162,7 +5237,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as returnPolicyProfileCategoryGroup
      *
      * Indicates the Business Policies category group that may be used for Return Policy profiles.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ReturnPolicyProfileCategoryGroup</code>.
      *
      * @return string
@@ -5176,7 +5251,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new returnPolicyProfileCategoryGroup
      *
      * Indicates the Business Policies category group that may be used for Return Policy profiles.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ReturnPolicyProfileCategoryGroup</code>.
      *
      * @param string $returnPolicyProfileCategoryGroup
@@ -5296,7 +5371,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as globalShippingEnabled
      *
      * Indicates if the Global Shipping Program (GSP) is supported for the category.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>GlobalShippingEnabled</code>.
      *
      * @return bool
@@ -5310,7 +5385,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new globalShippingEnabled
      *
      * Indicates if the Global Shipping Program (GSP) is supported for the category.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>GlobalShippingEnabled</code>.
      *
      * @param bool $globalShippingEnabled
@@ -5326,7 +5401,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as additionalCompatibilityEnabled
      *
      * This field indicates whether or not the category (specified in the <b>Category.CategoryID</b> field) supports Boats and Motorcycles Parts compatibility. If <code>true</code>, parts compatibility name-value pairs for boats and motorcycles can be added to an item listed in the specified category.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>AdditionalCompatibilityEnabled</code>.
      *
      * @return bool
@@ -5340,7 +5415,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new additionalCompatibilityEnabled
      *
      * This field indicates whether or not the category (specified in the <b>Category.CategoryID</b> field) supports Boats and Motorcycles Parts compatibility. If <code>true</code>, parts compatibility name-value pairs for boats and motorcycles can be added to an item listed in the specified category.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>AdditionalCompatibilityEnabled</code>.
      *
      * @param bool $additionalCompatibilityEnabled
@@ -5358,10 +5433,10 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * A <code>true</code> value in this field indicates that items listed in the category (specified in the <b>Category.CategoryID</b> field) may be enabled with the 'Click and Collect' feature. With the 'Click and Collect' feature, a buyer can purchase certain items on an eBay site and collect them at a local store. Buyers are notified by eBay once their items are available. A <code>false</code> value in this field indicates that items listed in the category are not eligible for the 'Click and Collect' feature.
      *  <br/><br/>
      *  The 'Click and Collect' feature is only available to large merchants on the eBay UK (site ID - 3), eBay Australia (Site ID - 15), and eBay Germany (Site ID - 77) sites.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>PickupDropOffEnabled</code>.
-     *  <br>
-     *  <br>
+     *  <br/>
+     *  <br/>
      *  <span class="tablenote"><b>Note:</b> For Click and Collect eligible sellers, the Click and Collect feature can only be enabled at the account level, and then each of the seller's listings within an Click and Collect enabled category will be automatically evaluated for Click and Collect eligibility.
      *  </span>
      *
@@ -5378,10 +5453,10 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * A <code>true</code> value in this field indicates that items listed in the category (specified in the <b>Category.CategoryID</b> field) may be enabled with the 'Click and Collect' feature. With the 'Click and Collect' feature, a buyer can purchase certain items on an eBay site and collect them at a local store. Buyers are notified by eBay once their items are available. A <code>false</code> value in this field indicates that items listed in the category are not eligible for the 'Click and Collect' feature.
      *  <br/><br/>
      *  The 'Click and Collect' feature is only available to large merchants on the eBay UK (site ID - 3), eBay Australia (Site ID - 15), and eBay Germany (Site ID - 77) sites.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>PickupDropOffEnabled</code>.
-     *  <br>
-     *  <br>
+     *  <br/>
+     *  <br/>
      *  <span class="tablenote"><b>Note:</b> For Click and Collect eligible sellers, the Click and Collect feature can only be enabled at the account level, and then each of the seller's listings within an Click and Collect enabled category will be automatically evaluated for Click and Collect eligibility.
      *  </span>
      *
@@ -5407,7 +5482,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  </ul>
      *  For more information on eBay's Gift Card policy, see the <a href="
      *  http://pages.ebay.com/help/policies/gift.html" target="_blank">Gift cards policy Help page</a>.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>DigitalGoodDeliveryEnabled</code>.
      *
      * @return bool
@@ -5430,7 +5505,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  </ul>
      *  For more information on eBay's Gift Card policy, see the <a href="
      *  http://pages.ebay.com/help/policies/gift.html" target="_blank">Gift cards policy Help page</a>.
-     *  <br><br>
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>DigitalGoodDeliveryEnabled</code>.
      *
      * @param bool $digitalGoodDeliveryEnabled
@@ -5448,8 +5523,8 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * This field is returned as <code>true</code> if the category supports the use of an eBay Product ID (e.g. ePID) in an Add/Revise/Relist API call to identify which motorcycles and/or scooters are compatible with a motor vehicle part or accessory. ePIDs can only be used to identify motorcycles and scooters on the Germany and UK sites.
      *  <br/><br/>
      *  For more information on using an ePID to identify a compatible motorcycle or scooter through an Add/Revise/Relist API call on the Germany or UK site, see the documentation for the <a href="
-     *  http://developer.ebay.com/Devzone/XML/docs/Reference/eBay/AddItem.html#Request.Item.ItemCompatibilityList.Compatibility.NameValueList">Compatibility.NameValueList</a> container.
-     *  <br><br>
+     *  https://developer.ebay.com/Devzone/XML/docs/Reference/eBay/AddItem.html#Request.Item.ItemCompatibilityList.Compatibility.NameValueList">Compatibility.NameValueList</a> container.
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>EpidSupported</code>.
      *
      * @return bool
@@ -5465,8 +5540,8 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * This field is returned as <code>true</code> if the category supports the use of an eBay Product ID (e.g. ePID) in an Add/Revise/Relist API call to identify which motorcycles and/or scooters are compatible with a motor vehicle part or accessory. ePIDs can only be used to identify motorcycles and scooters on the Germany and UK sites.
      *  <br/><br/>
      *  For more information on using an ePID to identify a compatible motorcycle or scooter through an Add/Revise/Relist API call on the Germany or UK site, see the documentation for the <a href="
-     *  http://developer.ebay.com/Devzone/XML/docs/Reference/eBay/AddItem.html#Request.Item.ItemCompatibilityList.Compatibility.NameValueList">Compatibility.NameValueList</a> container.
-     *  <br><br>
+     *  https://developer.ebay.com/Devzone/XML/docs/Reference/eBay/AddItem.html#Request.Item.ItemCompatibilityList.Compatibility.NameValueList">Compatibility.NameValueList</a> container.
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>EpidSupported</code>.
      *
      * @param bool $epidSupported
@@ -5484,8 +5559,8 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * This field is returned as <code>true</code> if the category supports the use of a K Type vehicle number in an Add/Revise/Relist API call to identify which cars and/or trucks are compatible with a motor vehicle part or accessory. K type vehicle numbers can only be used to identify cars and trucks on the Germany site.
      *  <br/><br/>
      *  For more information on using a K Type vehicle number to identify a compatible car or truck through an Add/Revise/Relist API call on the Germany site, see the documentation for the <a href="
-     *  http://developer.ebay.com/Devzone/XML/docs/Reference/eBay/AddItem.html#Request.Item.ItemCompatibilityList.Compatibility.NameValueList">Compatibility.NameValueList</a> container.
-     *  <br><br>
+     *  https://developer.ebay.com/Devzone/XML/docs/Reference/eBay/AddItem.html#Request.Item.ItemCompatibilityList.Compatibility.NameValueList">Compatibility.NameValueList</a> container.
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>KTypeSupported</code>.
      *
      * @return bool
@@ -5501,8 +5576,8 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * This field is returned as <code>true</code> if the category supports the use of a K Type vehicle number in an Add/Revise/Relist API call to identify which cars and/or trucks are compatible with a motor vehicle part or accessory. K type vehicle numbers can only be used to identify cars and trucks on the Germany site.
      *  <br/><br/>
      *  For more information on using a K Type vehicle number to identify a compatible car or truck through an Add/Revise/Relist API call on the Germany site, see the documentation for the <a href="
-     *  http://developer.ebay.com/Devzone/XML/docs/Reference/eBay/AddItem.html#Request.Item.ItemCompatibilityList.Compatibility.NameValueList">Compatibility.NameValueList</a> container.
-     *  <br><br>
+     *  https://developer.ebay.com/Devzone/XML/docs/Reference/eBay/AddItem.html#Request.Item.ItemCompatibilityList.Compatibility.NameValueList">Compatibility.NameValueList</a> container.
+     *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>KTypeSupported</code>.
      *
      * @param bool $kTypeSupported
@@ -5518,7 +5593,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as productRequiredEnabled
      *
      * This field indicates if the category supports Product-Based Shopping Experience listings (listings associated with eBay catalog products).
-     *  <br><br>
+     *  <br/><br/>
      *  <span class="tablenote"><b>Note:</b>
      *  Due to the rollback of the Product-Based Shopping Experience mandate for all eBay categories, the value for this field should never get returned as <code>Enabled</code> for any production categories.</span>
      *
@@ -5533,7 +5608,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new productRequiredEnabled
      *
      * This field indicates if the category supports Product-Based Shopping Experience listings (listings associated with eBay catalog products).
-     *  <br><br>
+     *  <br/><br/>
      *  <span class="tablenote"><b>Note:</b>
      *  Due to the rollback of the Product-Based Shopping Experience mandate for all eBay categories, the value for this field should never get returned as <code>Enabled</code> for any production categories.</span>
      *
@@ -5550,7 +5625,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Adds as domesticReturnsAccepted
      *
      * The values returned in this field indicate whether or not the seller accepts domestic returns for items listed in the associated marketplace and category. <br><br>While most categories return the <b>ReturnsAccepted</b> flag (indicating the category supports returns), some categories will also return the <b>ReturnsNotAccepted</b> flag to indicate the seller can choose to not accept returns for an item listed in that category. <br><br>The values returned in this field are pertinent only if <b>ReturnPolicyEnabled</b> in GetCategoryFeatures is set to <code>true</code> for the associated category, which indicates that items listed in the category must include a return policy. Here, it's worth noting that not accepting returns is a return policy. The values returned in this field are valid in AddItem and its related family of calls, and in the return policies you configure for use with the Account and Business Policies Management APIs.
-     *  <br><br>
+     *  <br/><br/>
      *  <span class="tablenote"><b>Note:</b> In May 2018, eBay added the ability to create a separate international return policy for items that are shipped to international customers. If a seller does not add a separate international return policy, the settings in the domestic return policy will be used instead. For more information on setting separate domestic and international return policies, see the
      *  <a href="https://pages.ebay.com/seller-center/seller-updates/2018-summer/simplified-returns.html#international-returns-policy" target="_blank">International returns policy</a> help topic. For the international equivalent of this field, see the <b>InternationalReturnsAcceptedValues</b> field.</span>
      *
@@ -5567,7 +5642,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * isset domesticReturnsAcceptedValues
      *
      * The values returned in this field indicate whether or not the seller accepts domestic returns for items listed in the associated marketplace and category. <br><br>While most categories return the <b>ReturnsAccepted</b> flag (indicating the category supports returns), some categories will also return the <b>ReturnsNotAccepted</b> flag to indicate the seller can choose to not accept returns for an item listed in that category. <br><br>The values returned in this field are pertinent only if <b>ReturnPolicyEnabled</b> in GetCategoryFeatures is set to <code>true</code> for the associated category, which indicates that items listed in the category must include a return policy. Here, it's worth noting that not accepting returns is a return policy. The values returned in this field are valid in AddItem and its related family of calls, and in the return policies you configure for use with the Account and Business Policies Management APIs.
-     *  <br><br>
+     *  <br/><br/>
      *  <span class="tablenote"><b>Note:</b> In May 2018, eBay added the ability to create a separate international return policy for items that are shipped to international customers. If a seller does not add a separate international return policy, the settings in the domestic return policy will be used instead. For more information on setting separate domestic and international return policies, see the
      *  <a href="https://pages.ebay.com/seller-center/seller-updates/2018-summer/simplified-returns.html#international-returns-policy" target="_blank">International returns policy</a> help topic. For the international equivalent of this field, see the <b>InternationalReturnsAcceptedValues</b> field.</span>
      *
@@ -5583,7 +5658,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * unset domesticReturnsAcceptedValues
      *
      * The values returned in this field indicate whether or not the seller accepts domestic returns for items listed in the associated marketplace and category. <br><br>While most categories return the <b>ReturnsAccepted</b> flag (indicating the category supports returns), some categories will also return the <b>ReturnsNotAccepted</b> flag to indicate the seller can choose to not accept returns for an item listed in that category. <br><br>The values returned in this field are pertinent only if <b>ReturnPolicyEnabled</b> in GetCategoryFeatures is set to <code>true</code> for the associated category, which indicates that items listed in the category must include a return policy. Here, it's worth noting that not accepting returns is a return policy. The values returned in this field are valid in AddItem and its related family of calls, and in the return policies you configure for use with the Account and Business Policies Management APIs.
-     *  <br><br>
+     *  <br/><br/>
      *  <span class="tablenote"><b>Note:</b> In May 2018, eBay added the ability to create a separate international return policy for items that are shipped to international customers. If a seller does not add a separate international return policy, the settings in the domestic return policy will be used instead. For more information on setting separate domestic and international return policies, see the
      *  <a href="https://pages.ebay.com/seller-center/seller-updates/2018-summer/simplified-returns.html#international-returns-policy" target="_blank">International returns policy</a> help topic. For the international equivalent of this field, see the <b>InternationalReturnsAcceptedValues</b> field.</span>
      *
@@ -5599,7 +5674,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as domesticReturnsAcceptedValues
      *
      * The values returned in this field indicate whether or not the seller accepts domestic returns for items listed in the associated marketplace and category. <br><br>While most categories return the <b>ReturnsAccepted</b> flag (indicating the category supports returns), some categories will also return the <b>ReturnsNotAccepted</b> flag to indicate the seller can choose to not accept returns for an item listed in that category. <br><br>The values returned in this field are pertinent only if <b>ReturnPolicyEnabled</b> in GetCategoryFeatures is set to <code>true</code> for the associated category, which indicates that items listed in the category must include a return policy. Here, it's worth noting that not accepting returns is a return policy. The values returned in this field are valid in AddItem and its related family of calls, and in the return policies you configure for use with the Account and Business Policies Management APIs.
-     *  <br><br>
+     *  <br/><br/>
      *  <span class="tablenote"><b>Note:</b> In May 2018, eBay added the ability to create a separate international return policy for items that are shipped to international customers. If a seller does not add a separate international return policy, the settings in the domestic return policy will be used instead. For more information on setting separate domestic and international return policies, see the
      *  <a href="https://pages.ebay.com/seller-center/seller-updates/2018-summer/simplified-returns.html#international-returns-policy" target="_blank">International returns policy</a> help topic. For the international equivalent of this field, see the <b>InternationalReturnsAcceptedValues</b> field.</span>
      *
@@ -5614,7 +5689,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new domesticReturnsAcceptedValues
      *
      * The values returned in this field indicate whether or not the seller accepts domestic returns for items listed in the associated marketplace and category. <br><br>While most categories return the <b>ReturnsAccepted</b> flag (indicating the category supports returns), some categories will also return the <b>ReturnsNotAccepted</b> flag to indicate the seller can choose to not accept returns for an item listed in that category. <br><br>The values returned in this field are pertinent only if <b>ReturnPolicyEnabled</b> in GetCategoryFeatures is set to <code>true</code> for the associated category, which indicates that items listed in the category must include a return policy. Here, it's worth noting that not accepting returns is a return policy. The values returned in this field are valid in AddItem and its related family of calls, and in the return policies you configure for use with the Account and Business Policies Management APIs.
-     *  <br><br>
+     *  <br/><br/>
      *  <span class="tablenote"><b>Note:</b> In May 2018, eBay added the ability to create a separate international return policy for items that are shipped to international customers. If a seller does not add a separate international return policy, the settings in the domestic return policy will be used instead. For more information on setting separate domestic and international return policies, see the
      *  <a href="https://pages.ebay.com/seller-center/seller-updates/2018-summer/simplified-returns.html#international-returns-policy" target="_blank">International returns policy</a> help topic. For the international equivalent of this field, see the <b>InternationalReturnsAcceptedValues</b> field.</span>
      *
@@ -5631,7 +5706,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Adds as internationalReturnsAccepted
      *
      * The values returned in this field indicate whether or not the seller can offer international returns. <br><br>The values returned in this field are pertinent only if <b>ReturnPolicyEnabled</b> in GetCategoryFeatures is set to <code>true</code> for the associated category, which indicates that items listed in the category must include a return policy. The values returned in this field are valid in AddItem and its related family of calls, and in the return policies you configure for use with the Account and Business Policies Management APIs.
-     *  <br><br>
+     *  <br/><br/>
      *  <span class="tablenote"><b>Note:</b> In May 2018, eBay added the ability to create a separate international return policy for items that are shipped to international customers. If a seller does not add a separate international return policy, the settings in the domestic return policy will be used instead. For more information on setting separate domestic and international return policies, see the
      *  <a href="https://pages.ebay.com/seller-center/seller-updates/2018-summer/simplified-returns.html#international-returns-policy" target="_blank">International returns policy</a> help topic. </span>
      *
@@ -5648,7 +5723,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * isset internationalReturnsAcceptedValues
      *
      * The values returned in this field indicate whether or not the seller can offer international returns. <br><br>The values returned in this field are pertinent only if <b>ReturnPolicyEnabled</b> in GetCategoryFeatures is set to <code>true</code> for the associated category, which indicates that items listed in the category must include a return policy. The values returned in this field are valid in AddItem and its related family of calls, and in the return policies you configure for use with the Account and Business Policies Management APIs.
-     *  <br><br>
+     *  <br/><br/>
      *  <span class="tablenote"><b>Note:</b> In May 2018, eBay added the ability to create a separate international return policy for items that are shipped to international customers. If a seller does not add a separate international return policy, the settings in the domestic return policy will be used instead. For more information on setting separate domestic and international return policies, see the
      *  <a href="https://pages.ebay.com/seller-center/seller-updates/2018-summer/simplified-returns.html#international-returns-policy" target="_blank">International returns policy</a> help topic. </span>
      *
@@ -5664,7 +5739,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * unset internationalReturnsAcceptedValues
      *
      * The values returned in this field indicate whether or not the seller can offer international returns. <br><br>The values returned in this field are pertinent only if <b>ReturnPolicyEnabled</b> in GetCategoryFeatures is set to <code>true</code> for the associated category, which indicates that items listed in the category must include a return policy. The values returned in this field are valid in AddItem and its related family of calls, and in the return policies you configure for use with the Account and Business Policies Management APIs.
-     *  <br><br>
+     *  <br/><br/>
      *  <span class="tablenote"><b>Note:</b> In May 2018, eBay added the ability to create a separate international return policy for items that are shipped to international customers. If a seller does not add a separate international return policy, the settings in the domestic return policy will be used instead. For more information on setting separate domestic and international return policies, see the
      *  <a href="https://pages.ebay.com/seller-center/seller-updates/2018-summer/simplified-returns.html#international-returns-policy" target="_blank">International returns policy</a> help topic. </span>
      *
@@ -5680,7 +5755,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as internationalReturnsAcceptedValues
      *
      * The values returned in this field indicate whether or not the seller can offer international returns. <br><br>The values returned in this field are pertinent only if <b>ReturnPolicyEnabled</b> in GetCategoryFeatures is set to <code>true</code> for the associated category, which indicates that items listed in the category must include a return policy. The values returned in this field are valid in AddItem and its related family of calls, and in the return policies you configure for use with the Account and Business Policies Management APIs.
-     *  <br><br>
+     *  <br/><br/>
      *  <span class="tablenote"><b>Note:</b> In May 2018, eBay added the ability to create a separate international return policy for items that are shipped to international customers. If a seller does not add a separate international return policy, the settings in the domestic return policy will be used instead. For more information on setting separate domestic and international return policies, see the
      *  <a href="https://pages.ebay.com/seller-center/seller-updates/2018-summer/simplified-returns.html#international-returns-policy" target="_blank">International returns policy</a> help topic. </span>
      *
@@ -5695,7 +5770,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new internationalReturnsAcceptedValues
      *
      * The values returned in this field indicate whether or not the seller can offer international returns. <br><br>The values returned in this field are pertinent only if <b>ReturnPolicyEnabled</b> in GetCategoryFeatures is set to <code>true</code> for the associated category, which indicates that items listed in the category must include a return policy. The values returned in this field are valid in AddItem and its related family of calls, and in the return policies you configure for use with the Account and Business Policies Management APIs.
-     *  <br><br>
+     *  <br/><br/>
      *  <span class="tablenote"><b>Note:</b> In May 2018, eBay added the ability to create a separate international return policy for items that are shipped to international customers. If a seller does not add a separate international return policy, the settings in the domestic return policy will be used instead. For more information on setting separate domestic and international return policies, see the
      *  <a href="https://pages.ebay.com/seller-center/seller-updates/2018-summer/simplified-returns.html#international-returns-policy" target="_blank">International returns policy</a> help topic. </span>
      *
@@ -5712,7 +5787,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Adds as domesticReturnsDuration
      *
      * The values returned in this field indicate the return duration options that are available for domestic returns for items listed in the associated marketplace and category. <br><br>The values returned in this field are pertinent only if <b>ReturnPolicyEnabled</b> in GetCategoryFeatures is set to <code>true</code> for the associated category, which indicates that items listed in the category must include a return policy. The values returned in this field are valid in AddItem and its related family of calls, and in the return policies you configure for use with the Account and Business Policies Management APIs.
-     *  <br><br>
+     *  <br/><br/>
      *  <span class="tablenote"><b>Note:</b> In May 2018, eBay added the ability to create a separate international return policy for items that are shipped to international customers. If a seller does not add a separate international return policy, the settings in the domestic return policy will be used instead. For more information on setting separate domestic and international return policies, see the
      *  <a href="https://pages.ebay.com/seller-center/seller-updates/2018-summer/simplified-returns.html#international-returns-policy" target="_blank">International returns policy</a> help topic. For the international equivalent of this field, see the <b>InternationalReturnsDurationValues</b> field.</span>
      *
@@ -5729,7 +5804,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * isset domesticReturnsDurationValues
      *
      * The values returned in this field indicate the return duration options that are available for domestic returns for items listed in the associated marketplace and category. <br><br>The values returned in this field are pertinent only if <b>ReturnPolicyEnabled</b> in GetCategoryFeatures is set to <code>true</code> for the associated category, which indicates that items listed in the category must include a return policy. The values returned in this field are valid in AddItem and its related family of calls, and in the return policies you configure for use with the Account and Business Policies Management APIs.
-     *  <br><br>
+     *  <br/><br/>
      *  <span class="tablenote"><b>Note:</b> In May 2018, eBay added the ability to create a separate international return policy for items that are shipped to international customers. If a seller does not add a separate international return policy, the settings in the domestic return policy will be used instead. For more information on setting separate domestic and international return policies, see the
      *  <a href="https://pages.ebay.com/seller-center/seller-updates/2018-summer/simplified-returns.html#international-returns-policy" target="_blank">International returns policy</a> help topic. For the international equivalent of this field, see the <b>InternationalReturnsDurationValues</b> field.</span>
      *
@@ -5745,7 +5820,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * unset domesticReturnsDurationValues
      *
      * The values returned in this field indicate the return duration options that are available for domestic returns for items listed in the associated marketplace and category. <br><br>The values returned in this field are pertinent only if <b>ReturnPolicyEnabled</b> in GetCategoryFeatures is set to <code>true</code> for the associated category, which indicates that items listed in the category must include a return policy. The values returned in this field are valid in AddItem and its related family of calls, and in the return policies you configure for use with the Account and Business Policies Management APIs.
-     *  <br><br>
+     *  <br/><br/>
      *  <span class="tablenote"><b>Note:</b> In May 2018, eBay added the ability to create a separate international return policy for items that are shipped to international customers. If a seller does not add a separate international return policy, the settings in the domestic return policy will be used instead. For more information on setting separate domestic and international return policies, see the
      *  <a href="https://pages.ebay.com/seller-center/seller-updates/2018-summer/simplified-returns.html#international-returns-policy" target="_blank">International returns policy</a> help topic. For the international equivalent of this field, see the <b>InternationalReturnsDurationValues</b> field.</span>
      *
@@ -5761,7 +5836,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as domesticReturnsDurationValues
      *
      * The values returned in this field indicate the return duration options that are available for domestic returns for items listed in the associated marketplace and category. <br><br>The values returned in this field are pertinent only if <b>ReturnPolicyEnabled</b> in GetCategoryFeatures is set to <code>true</code> for the associated category, which indicates that items listed in the category must include a return policy. The values returned in this field are valid in AddItem and its related family of calls, and in the return policies you configure for use with the Account and Business Policies Management APIs.
-     *  <br><br>
+     *  <br/><br/>
      *  <span class="tablenote"><b>Note:</b> In May 2018, eBay added the ability to create a separate international return policy for items that are shipped to international customers. If a seller does not add a separate international return policy, the settings in the domestic return policy will be used instead. For more information on setting separate domestic and international return policies, see the
      *  <a href="https://pages.ebay.com/seller-center/seller-updates/2018-summer/simplified-returns.html#international-returns-policy" target="_blank">International returns policy</a> help topic. For the international equivalent of this field, see the <b>InternationalReturnsDurationValues</b> field.</span>
      *
@@ -5776,7 +5851,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new domesticReturnsDurationValues
      *
      * The values returned in this field indicate the return duration options that are available for domestic returns for items listed in the associated marketplace and category. <br><br>The values returned in this field are pertinent only if <b>ReturnPolicyEnabled</b> in GetCategoryFeatures is set to <code>true</code> for the associated category, which indicates that items listed in the category must include a return policy. The values returned in this field are valid in AddItem and its related family of calls, and in the return policies you configure for use with the Account and Business Policies Management APIs.
-     *  <br><br>
+     *  <br/><br/>
      *  <span class="tablenote"><b>Note:</b> In May 2018, eBay added the ability to create a separate international return policy for items that are shipped to international customers. If a seller does not add a separate international return policy, the settings in the domestic return policy will be used instead. For more information on setting separate domestic and international return policies, see the
      *  <a href="https://pages.ebay.com/seller-center/seller-updates/2018-summer/simplified-returns.html#international-returns-policy" target="_blank">International returns policy</a> help topic. For the international equivalent of this field, see the <b>InternationalReturnsDurationValues</b> field.</span>
      *
@@ -5793,7 +5868,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Adds as internationalReturnsDuration
      *
      * The values returned in this field indicate the return duration options that are available for international returns for items listed in the associated marketplace and category. <br><br>The values returned in this field are pertinent only if <b>ReturnPolicyEnabled</b> in GetCategoryFeatures is set to <code>true</code> for the associated category, which indicates that items listed in the category must include a return policy. The values returned in this field are valid in AddItem and its related family of calls, and in the return policies you configure for use with the Account and Business Policies Management APIs.
-     *  <br><br>
+     *  <br/><br/>
      *  <span class="tablenote"><b>Note:</b> In May 2018, eBay added the ability to create a separate international return policy for items that are shipped to international customers. If a seller does not add a separate international return policy, the settings in the domestic return policy will be used instead. For more information on setting separate domestic and international return policies, see the
      *  <a href="https://pages.ebay.com/seller-center/seller-updates/2018-summer/simplified-returns.html#international-returns-policy" target="_blank">International returns policy</a> help topic.
      *
@@ -5810,7 +5885,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * isset internationalReturnsDurationValues
      *
      * The values returned in this field indicate the return duration options that are available for international returns for items listed in the associated marketplace and category. <br><br>The values returned in this field are pertinent only if <b>ReturnPolicyEnabled</b> in GetCategoryFeatures is set to <code>true</code> for the associated category, which indicates that items listed in the category must include a return policy. The values returned in this field are valid in AddItem and its related family of calls, and in the return policies you configure for use with the Account and Business Policies Management APIs.
-     *  <br><br>
+     *  <br/><br/>
      *  <span class="tablenote"><b>Note:</b> In May 2018, eBay added the ability to create a separate international return policy for items that are shipped to international customers. If a seller does not add a separate international return policy, the settings in the domestic return policy will be used instead. For more information on setting separate domestic and international return policies, see the
      *  <a href="https://pages.ebay.com/seller-center/seller-updates/2018-summer/simplified-returns.html#international-returns-policy" target="_blank">International returns policy</a> help topic.
      *
@@ -5826,7 +5901,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * unset internationalReturnsDurationValues
      *
      * The values returned in this field indicate the return duration options that are available for international returns for items listed in the associated marketplace and category. <br><br>The values returned in this field are pertinent only if <b>ReturnPolicyEnabled</b> in GetCategoryFeatures is set to <code>true</code> for the associated category, which indicates that items listed in the category must include a return policy. The values returned in this field are valid in AddItem and its related family of calls, and in the return policies you configure for use with the Account and Business Policies Management APIs.
-     *  <br><br>
+     *  <br/><br/>
      *  <span class="tablenote"><b>Note:</b> In May 2018, eBay added the ability to create a separate international return policy for items that are shipped to international customers. If a seller does not add a separate international return policy, the settings in the domestic return policy will be used instead. For more information on setting separate domestic and international return policies, see the
      *  <a href="https://pages.ebay.com/seller-center/seller-updates/2018-summer/simplified-returns.html#international-returns-policy" target="_blank">International returns policy</a> help topic.
      *
@@ -5842,7 +5917,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as internationalReturnsDurationValues
      *
      * The values returned in this field indicate the return duration options that are available for international returns for items listed in the associated marketplace and category. <br><br>The values returned in this field are pertinent only if <b>ReturnPolicyEnabled</b> in GetCategoryFeatures is set to <code>true</code> for the associated category, which indicates that items listed in the category must include a return policy. The values returned in this field are valid in AddItem and its related family of calls, and in the return policies you configure for use with the Account and Business Policies Management APIs.
-     *  <br><br>
+     *  <br/><br/>
      *  <span class="tablenote"><b>Note:</b> In May 2018, eBay added the ability to create a separate international return policy for items that are shipped to international customers. If a seller does not add a separate international return policy, the settings in the domestic return policy will be used instead. For more information on setting separate domestic and international return policies, see the
      *  <a href="https://pages.ebay.com/seller-center/seller-updates/2018-summer/simplified-returns.html#international-returns-policy" target="_blank">International returns policy</a> help topic.
      *
@@ -5857,7 +5932,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new internationalReturnsDurationValues
      *
      * The values returned in this field indicate the return duration options that are available for international returns for items listed in the associated marketplace and category. <br><br>The values returned in this field are pertinent only if <b>ReturnPolicyEnabled</b> in GetCategoryFeatures is set to <code>true</code> for the associated category, which indicates that items listed in the category must include a return policy. The values returned in this field are valid in AddItem and its related family of calls, and in the return policies you configure for use with the Account and Business Policies Management APIs.
-     *  <br><br>
+     *  <br/><br/>
      *  <span class="tablenote"><b>Note:</b> In May 2018, eBay added the ability to create a separate international return policy for items that are shipped to international customers. If a seller does not add a separate international return policy, the settings in the domestic return policy will be used instead. For more information on setting separate domestic and international return policies, see the
      *  <a href="https://pages.ebay.com/seller-center/seller-updates/2018-summer/simplified-returns.html#international-returns-policy" target="_blank">International returns policy</a> help topic.
      *
@@ -5874,7 +5949,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Adds as domesticReturnsShipmentPayee
      *
      * The values returned in this field indicate the available options for who pays the return shipping for domestic returns. Possible values are <code>BUYER</code> and <code>SELLER</code>. <br><br>The values returned in this field are pertinent only if <b>ReturnPolicyEnabled</b> in GetCategoryFeatures is set to <code>true</code> for the associated category, which indicates that items listed in the category must include a return policy. The values returned in this field are valid in AddItem and its related family of calls, and in the return policies you configure for use with the Account and Business Policies Management APIs.
-     *  <br><br>
+     *  <br/><br/>
      *  <span class="tablenote"><b>Note:</b> In May 2018, eBay added the ability to create a separate international return policy for items that are shipped to international customers. If a seller does not add a separate international return policy, the settings in the domestic return policy will be used instead. For more information on setting separate domestic and international return policies, see the
      *  <a href="https://pages.ebay.com/seller-center/seller-updates/2018-summer/simplified-returns.html#international-returns-policy" target="_blank">International returns policy</a> help topic. For the international equivalent of this field, see the <b>InternationalReturnsShipmentPayeeValues</b> field.</span>
      *
@@ -5891,7 +5966,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * isset domesticReturnsShipmentPayeeValues
      *
      * The values returned in this field indicate the available options for who pays the return shipping for domestic returns. Possible values are <code>BUYER</code> and <code>SELLER</code>. <br><br>The values returned in this field are pertinent only if <b>ReturnPolicyEnabled</b> in GetCategoryFeatures is set to <code>true</code> for the associated category, which indicates that items listed in the category must include a return policy. The values returned in this field are valid in AddItem and its related family of calls, and in the return policies you configure for use with the Account and Business Policies Management APIs.
-     *  <br><br>
+     *  <br/><br/>
      *  <span class="tablenote"><b>Note:</b> In May 2018, eBay added the ability to create a separate international return policy for items that are shipped to international customers. If a seller does not add a separate international return policy, the settings in the domestic return policy will be used instead. For more information on setting separate domestic and international return policies, see the
      *  <a href="https://pages.ebay.com/seller-center/seller-updates/2018-summer/simplified-returns.html#international-returns-policy" target="_blank">International returns policy</a> help topic. For the international equivalent of this field, see the <b>InternationalReturnsShipmentPayeeValues</b> field.</span>
      *
@@ -5907,7 +5982,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * unset domesticReturnsShipmentPayeeValues
      *
      * The values returned in this field indicate the available options for who pays the return shipping for domestic returns. Possible values are <code>BUYER</code> and <code>SELLER</code>. <br><br>The values returned in this field are pertinent only if <b>ReturnPolicyEnabled</b> in GetCategoryFeatures is set to <code>true</code> for the associated category, which indicates that items listed in the category must include a return policy. The values returned in this field are valid in AddItem and its related family of calls, and in the return policies you configure for use with the Account and Business Policies Management APIs.
-     *  <br><br>
+     *  <br/><br/>
      *  <span class="tablenote"><b>Note:</b> In May 2018, eBay added the ability to create a separate international return policy for items that are shipped to international customers. If a seller does not add a separate international return policy, the settings in the domestic return policy will be used instead. For more information on setting separate domestic and international return policies, see the
      *  <a href="https://pages.ebay.com/seller-center/seller-updates/2018-summer/simplified-returns.html#international-returns-policy" target="_blank">International returns policy</a> help topic. For the international equivalent of this field, see the <b>InternationalReturnsShipmentPayeeValues</b> field.</span>
      *
@@ -5923,7 +5998,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as domesticReturnsShipmentPayeeValues
      *
      * The values returned in this field indicate the available options for who pays the return shipping for domestic returns. Possible values are <code>BUYER</code> and <code>SELLER</code>. <br><br>The values returned in this field are pertinent only if <b>ReturnPolicyEnabled</b> in GetCategoryFeatures is set to <code>true</code> for the associated category, which indicates that items listed in the category must include a return policy. The values returned in this field are valid in AddItem and its related family of calls, and in the return policies you configure for use with the Account and Business Policies Management APIs.
-     *  <br><br>
+     *  <br/><br/>
      *  <span class="tablenote"><b>Note:</b> In May 2018, eBay added the ability to create a separate international return policy for items that are shipped to international customers. If a seller does not add a separate international return policy, the settings in the domestic return policy will be used instead. For more information on setting separate domestic and international return policies, see the
      *  <a href="https://pages.ebay.com/seller-center/seller-updates/2018-summer/simplified-returns.html#international-returns-policy" target="_blank">International returns policy</a> help topic. For the international equivalent of this field, see the <b>InternationalReturnsShipmentPayeeValues</b> field.</span>
      *
@@ -5938,7 +6013,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new domesticReturnsShipmentPayeeValues
      *
      * The values returned in this field indicate the available options for who pays the return shipping for domestic returns. Possible values are <code>BUYER</code> and <code>SELLER</code>. <br><br>The values returned in this field are pertinent only if <b>ReturnPolicyEnabled</b> in GetCategoryFeatures is set to <code>true</code> for the associated category, which indicates that items listed in the category must include a return policy. The values returned in this field are valid in AddItem and its related family of calls, and in the return policies you configure for use with the Account and Business Policies Management APIs.
-     *  <br><br>
+     *  <br/><br/>
      *  <span class="tablenote"><b>Note:</b> In May 2018, eBay added the ability to create a separate international return policy for items that are shipped to international customers. If a seller does not add a separate international return policy, the settings in the domestic return policy will be used instead. For more information on setting separate domestic and international return policies, see the
      *  <a href="https://pages.ebay.com/seller-center/seller-updates/2018-summer/simplified-returns.html#international-returns-policy" target="_blank">International returns policy</a> help topic. For the international equivalent of this field, see the <b>InternationalReturnsShipmentPayeeValues</b> field.</span>
      *
@@ -5955,7 +6030,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Adds as internationalReturnsShipmentPayee
      *
      * The values returned in this field indicate the available options for who pays the return shipping for international returns. Possible values are <code>BUYER</code> and <code>SELLER</code>. <br><br>The values returned in this field are pertinent only if <b>ReturnPolicyEnabled</b> in GetCategoryFeatures is set to <code>true</code> for the associated category, which indicates that items listed in the category must include a return policy. The values returned in this field are valid in AddItem and its related family of calls, and in the return policies you configure for use with the Account and Business Policies Management APIs.
-     *  <br><br>
+     *  <br/><br/>
      *  <span class="tablenote"><b>Note:</b> In May 2018, eBay added the ability to create a separate international return policy for items that are shipped to international customers. If a seller does not add a separate international return policy, the settings in the domestic return policy will be used instead. For more information on setting separate domestic and international return policies, see the
      *  <a href="https://pages.ebay.com/seller-center/seller-updates/2018-summer/simplified-returns.html#international-returns-policy" target="_blank">International returns policy</a> help topic.
      *
@@ -5972,7 +6047,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * isset internationalReturnsShipmentPayeeValues
      *
      * The values returned in this field indicate the available options for who pays the return shipping for international returns. Possible values are <code>BUYER</code> and <code>SELLER</code>. <br><br>The values returned in this field are pertinent only if <b>ReturnPolicyEnabled</b> in GetCategoryFeatures is set to <code>true</code> for the associated category, which indicates that items listed in the category must include a return policy. The values returned in this field are valid in AddItem and its related family of calls, and in the return policies you configure for use with the Account and Business Policies Management APIs.
-     *  <br><br>
+     *  <br/><br/>
      *  <span class="tablenote"><b>Note:</b> In May 2018, eBay added the ability to create a separate international return policy for items that are shipped to international customers. If a seller does not add a separate international return policy, the settings in the domestic return policy will be used instead. For more information on setting separate domestic and international return policies, see the
      *  <a href="https://pages.ebay.com/seller-center/seller-updates/2018-summer/simplified-returns.html#international-returns-policy" target="_blank">International returns policy</a> help topic.
      *
@@ -5988,7 +6063,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * unset internationalReturnsShipmentPayeeValues
      *
      * The values returned in this field indicate the available options for who pays the return shipping for international returns. Possible values are <code>BUYER</code> and <code>SELLER</code>. <br><br>The values returned in this field are pertinent only if <b>ReturnPolicyEnabled</b> in GetCategoryFeatures is set to <code>true</code> for the associated category, which indicates that items listed in the category must include a return policy. The values returned in this field are valid in AddItem and its related family of calls, and in the return policies you configure for use with the Account and Business Policies Management APIs.
-     *  <br><br>
+     *  <br/><br/>
      *  <span class="tablenote"><b>Note:</b> In May 2018, eBay added the ability to create a separate international return policy for items that are shipped to international customers. If a seller does not add a separate international return policy, the settings in the domestic return policy will be used instead. For more information on setting separate domestic and international return policies, see the
      *  <a href="https://pages.ebay.com/seller-center/seller-updates/2018-summer/simplified-returns.html#international-returns-policy" target="_blank">International returns policy</a> help topic.
      *
@@ -6004,7 +6079,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as internationalReturnsShipmentPayeeValues
      *
      * The values returned in this field indicate the available options for who pays the return shipping for international returns. Possible values are <code>BUYER</code> and <code>SELLER</code>. <br><br>The values returned in this field are pertinent only if <b>ReturnPolicyEnabled</b> in GetCategoryFeatures is set to <code>true</code> for the associated category, which indicates that items listed in the category must include a return policy. The values returned in this field are valid in AddItem and its related family of calls, and in the return policies you configure for use with the Account and Business Policies Management APIs.
-     *  <br><br>
+     *  <br/><br/>
      *  <span class="tablenote"><b>Note:</b> In May 2018, eBay added the ability to create a separate international return policy for items that are shipped to international customers. If a seller does not add a separate international return policy, the settings in the domestic return policy will be used instead. For more information on setting separate domestic and international return policies, see the
      *  <a href="https://pages.ebay.com/seller-center/seller-updates/2018-summer/simplified-returns.html#international-returns-policy" target="_blank">International returns policy</a> help topic.
      *
@@ -6019,7 +6094,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new internationalReturnsShipmentPayeeValues
      *
      * The values returned in this field indicate the available options for who pays the return shipping for international returns. Possible values are <code>BUYER</code> and <code>SELLER</code>. <br><br>The values returned in this field are pertinent only if <b>ReturnPolicyEnabled</b> in GetCategoryFeatures is set to <code>true</code> for the associated category, which indicates that items listed in the category must include a return policy. The values returned in this field are valid in AddItem and its related family of calls, and in the return policies you configure for use with the Account and Business Policies Management APIs.
-     *  <br><br>
+     *  <br/><br/>
      *  <span class="tablenote"><b>Note:</b> In May 2018, eBay added the ability to create a separate international return policy for items that are shipped to international customers. If a seller does not add a separate international return policy, the settings in the domestic return policy will be used instead. For more information on setting separate domestic and international return policies, see the
      *  <a href="https://pages.ebay.com/seller-center/seller-updates/2018-summer/simplified-returns.html#international-returns-policy" target="_blank">International returns policy</a> help topic.
      *
@@ -6036,7 +6111,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Adds as domesticRefundMethod
      *
      * On the EBAY_US marketplace only, sellers can offer item replacement in addition to offering money back returns. This flag defines the availability of such options for the given US marketplace category. Sellers can offer item replacements only if returns are enabled (<b>returnPolicyEnabled</b> is set to <code>true</code>) for the item. You can specify item replacement in the AddItem family of calls and in the return policy settings of the Account and Business Policies Management APIs.
-     *  <br><br>
+     *  <br/><br/>
      *  <span class="tablenote"><b>Note:</b> In May 2018, eBay added the ability to create a separate international return policy for items that are shipped to international customers. If a seller does not add a separate international return policy, the settings in the domestic return policy will be used instead. For more information on setting separate domestic and international return policies, see the
      *  <a href="https://pages.ebay.com/seller-center/seller-updates/2018-summer/simplified-returns.html#international-returns-policy" target="_blank">International returns policy</a> help topic. For the international equivalent of this field, see the <b>InternationalRefundMethodValues</b> field.</span>
      *
@@ -6053,7 +6128,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * isset domesticRefundMethodValues
      *
      * On the EBAY_US marketplace only, sellers can offer item replacement in addition to offering money back returns. This flag defines the availability of such options for the given US marketplace category. Sellers can offer item replacements only if returns are enabled (<b>returnPolicyEnabled</b> is set to <code>true</code>) for the item. You can specify item replacement in the AddItem family of calls and in the return policy settings of the Account and Business Policies Management APIs.
-     *  <br><br>
+     *  <br/><br/>
      *  <span class="tablenote"><b>Note:</b> In May 2018, eBay added the ability to create a separate international return policy for items that are shipped to international customers. If a seller does not add a separate international return policy, the settings in the domestic return policy will be used instead. For more information on setting separate domestic and international return policies, see the
      *  <a href="https://pages.ebay.com/seller-center/seller-updates/2018-summer/simplified-returns.html#international-returns-policy" target="_blank">International returns policy</a> help topic. For the international equivalent of this field, see the <b>InternationalRefundMethodValues</b> field.</span>
      *
@@ -6069,7 +6144,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * unset domesticRefundMethodValues
      *
      * On the EBAY_US marketplace only, sellers can offer item replacement in addition to offering money back returns. This flag defines the availability of such options for the given US marketplace category. Sellers can offer item replacements only if returns are enabled (<b>returnPolicyEnabled</b> is set to <code>true</code>) for the item. You can specify item replacement in the AddItem family of calls and in the return policy settings of the Account and Business Policies Management APIs.
-     *  <br><br>
+     *  <br/><br/>
      *  <span class="tablenote"><b>Note:</b> In May 2018, eBay added the ability to create a separate international return policy for items that are shipped to international customers. If a seller does not add a separate international return policy, the settings in the domestic return policy will be used instead. For more information on setting separate domestic and international return policies, see the
      *  <a href="https://pages.ebay.com/seller-center/seller-updates/2018-summer/simplified-returns.html#international-returns-policy" target="_blank">International returns policy</a> help topic. For the international equivalent of this field, see the <b>InternationalRefundMethodValues</b> field.</span>
      *
@@ -6085,7 +6160,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as domesticRefundMethodValues
      *
      * On the EBAY_US marketplace only, sellers can offer item replacement in addition to offering money back returns. This flag defines the availability of such options for the given US marketplace category. Sellers can offer item replacements only if returns are enabled (<b>returnPolicyEnabled</b> is set to <code>true</code>) for the item. You can specify item replacement in the AddItem family of calls and in the return policy settings of the Account and Business Policies Management APIs.
-     *  <br><br>
+     *  <br/><br/>
      *  <span class="tablenote"><b>Note:</b> In May 2018, eBay added the ability to create a separate international return policy for items that are shipped to international customers. If a seller does not add a separate international return policy, the settings in the domestic return policy will be used instead. For more information on setting separate domestic and international return policies, see the
      *  <a href="https://pages.ebay.com/seller-center/seller-updates/2018-summer/simplified-returns.html#international-returns-policy" target="_blank">International returns policy</a> help topic. For the international equivalent of this field, see the <b>InternationalRefundMethodValues</b> field.</span>
      *
@@ -6100,7 +6175,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new domesticRefundMethodValues
      *
      * On the EBAY_US marketplace only, sellers can offer item replacement in addition to offering money back returns. This flag defines the availability of such options for the given US marketplace category. Sellers can offer item replacements only if returns are enabled (<b>returnPolicyEnabled</b> is set to <code>true</code>) for the item. You can specify item replacement in the AddItem family of calls and in the return policy settings of the Account and Business Policies Management APIs.
-     *  <br><br>
+     *  <br/><br/>
      *  <span class="tablenote"><b>Note:</b> In May 2018, eBay added the ability to create a separate international return policy for items that are shipped to international customers. If a seller does not add a separate international return policy, the settings in the domestic return policy will be used instead. For more information on setting separate domestic and international return policies, see the
      *  <a href="https://pages.ebay.com/seller-center/seller-updates/2018-summer/simplified-returns.html#international-returns-policy" target="_blank">International returns policy</a> help topic. For the international equivalent of this field, see the <b>InternationalRefundMethodValues</b> field.</span>
      *
@@ -6117,7 +6192,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Adds as internationalRefundMethod
      *
      * In US, sellers can offer an item replacement for returns, in addition to offering money back returns. The values returned in this field indicate the availability of such options for the given marketplace and category. <br><br>The values returned in this field are pertinent only if <b>ReturnPolicyEnabled</b> in GetCategoryFeatures is set to <code>true</code> for the associated category, which indicates that items listed in the category must include a return policy. The values returned in this field are valid in AddItem and its related family of calls, and in the return policies you configure for use with the Account and Business Policies Management APIs.
-     *  <br><br>
+     *  <br/><br/>
      *  <span class="tablenote"><b>Note:</b> In May 2018, eBay added the ability to create a separate international return policy for items that are shipped to international customers. If a seller does not add a separate international return policy, the settings in the domestic return policy will be used instead. For more information on setting separate domestic and international return policies, see the
      *  <a href="https://pages.ebay.com/seller-center/seller-updates/2018-summer/simplified-returns.html#international-returns-policy" target="_blank">International returns policy</a> help topic. </span>
      *
@@ -6134,7 +6209,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * isset internationalRefundMethodValues
      *
      * In US, sellers can offer an item replacement for returns, in addition to offering money back returns. The values returned in this field indicate the availability of such options for the given marketplace and category. <br><br>The values returned in this field are pertinent only if <b>ReturnPolicyEnabled</b> in GetCategoryFeatures is set to <code>true</code> for the associated category, which indicates that items listed in the category must include a return policy. The values returned in this field are valid in AddItem and its related family of calls, and in the return policies you configure for use with the Account and Business Policies Management APIs.
-     *  <br><br>
+     *  <br/><br/>
      *  <span class="tablenote"><b>Note:</b> In May 2018, eBay added the ability to create a separate international return policy for items that are shipped to international customers. If a seller does not add a separate international return policy, the settings in the domestic return policy will be used instead. For more information on setting separate domestic and international return policies, see the
      *  <a href="https://pages.ebay.com/seller-center/seller-updates/2018-summer/simplified-returns.html#international-returns-policy" target="_blank">International returns policy</a> help topic. </span>
      *
@@ -6150,7 +6225,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * unset internationalRefundMethodValues
      *
      * In US, sellers can offer an item replacement for returns, in addition to offering money back returns. The values returned in this field indicate the availability of such options for the given marketplace and category. <br><br>The values returned in this field are pertinent only if <b>ReturnPolicyEnabled</b> in GetCategoryFeatures is set to <code>true</code> for the associated category, which indicates that items listed in the category must include a return policy. The values returned in this field are valid in AddItem and its related family of calls, and in the return policies you configure for use with the Account and Business Policies Management APIs.
-     *  <br><br>
+     *  <br/><br/>
      *  <span class="tablenote"><b>Note:</b> In May 2018, eBay added the ability to create a separate international return policy for items that are shipped to international customers. If a seller does not add a separate international return policy, the settings in the domestic return policy will be used instead. For more information on setting separate domestic and international return policies, see the
      *  <a href="https://pages.ebay.com/seller-center/seller-updates/2018-summer/simplified-returns.html#international-returns-policy" target="_blank">International returns policy</a> help topic. </span>
      *
@@ -6166,7 +6241,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as internationalRefundMethodValues
      *
      * In US, sellers can offer an item replacement for returns, in addition to offering money back returns. The values returned in this field indicate the availability of such options for the given marketplace and category. <br><br>The values returned in this field are pertinent only if <b>ReturnPolicyEnabled</b> in GetCategoryFeatures is set to <code>true</code> for the associated category, which indicates that items listed in the category must include a return policy. The values returned in this field are valid in AddItem and its related family of calls, and in the return policies you configure for use with the Account and Business Policies Management APIs.
-     *  <br><br>
+     *  <br/><br/>
      *  <span class="tablenote"><b>Note:</b> In May 2018, eBay added the ability to create a separate international return policy for items that are shipped to international customers. If a seller does not add a separate international return policy, the settings in the domestic return policy will be used instead. For more information on setting separate domestic and international return policies, see the
      *  <a href="https://pages.ebay.com/seller-center/seller-updates/2018-summer/simplified-returns.html#international-returns-policy" target="_blank">International returns policy</a> help topic. </span>
      *
@@ -6181,7 +6256,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new internationalRefundMethodValues
      *
      * In US, sellers can offer an item replacement for returns, in addition to offering money back returns. The values returned in this field indicate the availability of such options for the given marketplace and category. <br><br>The values returned in this field are pertinent only if <b>ReturnPolicyEnabled</b> in GetCategoryFeatures is set to <code>true</code> for the associated category, which indicates that items listed in the category must include a return policy. The values returned in this field are valid in AddItem and its related family of calls, and in the return policies you configure for use with the Account and Business Policies Management APIs.
-     *  <br><br>
+     *  <br/><br/>
      *  <span class="tablenote"><b>Note:</b> In May 2018, eBay added the ability to create a separate international return policy for items that are shipped to international customers. If a seller does not add a separate international return policy, the settings in the domestic return policy will be used instead. For more information on setting separate domestic and international return policies, see the
      *  <a href="https://pages.ebay.com/seller-center/seller-updates/2018-summer/simplified-returns.html#international-returns-policy" target="_blank">International returns policy</a> help topic. </span>
      *
@@ -6728,6 +6803,10 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
         $value = $this->getConditionValues();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ConditionValues", $value);
+        }
+        $value = $this->getSpecialFeatures();
+        if (null !== $value) {
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SpecialFeatures", $value);
         }
         $value = $this->getValueCategory();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;
@@ -7326,6 +7405,10 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ConditionValues');
         if (null !== $value) {
             $this->setConditionValues(\Nogrod\eBaySDK\MerchantData\ConditionValuesType::fromKeyValue($value));
+        }
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SpecialFeatures');
+        if (null !== $value) {
+            $this->setSpecialFeatures(\Nogrod\eBaySDK\MerchantData\ConditionValuesType::fromKeyValue($value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ValueCategory');
         if (null !== $value) {

@@ -20,7 +20,7 @@ class ShippingTypeCodeType
      *  <span class="tablenote">
      *  <strong>Note:</strong> This shipping type includes an option for a <em>Flat
      * Rate Freight</em> shipping service. For details about freight shipping, see <a
-     * href="http://developer.ebay.com/devzone/guides/features-guide/default.html#development/Shipping-TypesCosts.html#SpecifyingFreightShipping">Specifying
+     * href="https://developer.ebay.com/devzone/guides/features-guide/default.html#development/Shipping-TypesCosts.html#SpecifyingFreightShipping">Specifying
      * Freight Shipping</a> in the eBay Features Guide.
      *  </span>
      */
@@ -50,7 +50,7 @@ class ShippingTypeCodeType
      *  <br/><br/>
      *  For details about types of freight shipping that you can specify via API, see
      * <a
-     * href="http://developer.ebay.com/devzone/guides/features-guide/default.html#development/Shipping-TypesCosts.html#SpecifyingFreightShipping">Specifying
+     * href="https://developer.ebay.com/devzone/guides/features-guide/default.html#development/Shipping-TypesCosts.html#SpecifyingFreightShipping">Specifying
      * Freight Shipping</a> in the eBay Features Guide.
      *  </span>
      */
@@ -100,7 +100,7 @@ class ShippingTypeCodeType
      * calculated shipping cannot be used due to the greater weight of the item.
      *  <br/><br/>
      *  For details about freight shipping, see <a
-     * href="http://developer.ebay.com/devzone/guides/features-guide/default.html#development/Shipping-TypesCosts.html#SpecifyingFreightShipping">Specifying
+     * href="https://developer.ebay.com/devzone/guides/features-guide/default.html#development/Shipping-TypesCosts.html#SpecifyingFreightShipping">Specifying
      * Freight Shipping</a> in the eBay Features Guide.
      */
     public const VAL_FREIGHT_FLAT = 'FreightFlat';

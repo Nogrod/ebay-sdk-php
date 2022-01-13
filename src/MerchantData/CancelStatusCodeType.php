@@ -70,9 +70,7 @@ class CancelStatusCodeType
      * Constant for 'CancelClosedUnknownRefund' value.
      *
      * This value indicates that the order cancellation request has been closed, and it
-     * is unknown whether or not a refund was issued to the buyer. This value will
-     * generally be returned when the payment method used to pay for the order was
-     * something other than PayPal.
+     * is unknown whether or not a refund was issued to the buyer.
      */
     public const VAL_CANCEL_CLOSED_UNKNOWN_REFUND = 'CancelClosedUnknownRefund';
 

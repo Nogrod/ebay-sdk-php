@@ -45,18 +45,6 @@ class ShippingServiceCostOverrideType implements \Sabre\Xml\XmlSerializable, \Sa
     private $shippingServiceAdditionalCost = null;
 
     /**
-     * <span class="tablenote"><b>Note:</b>
-     *  DO NOT USE THIS FIELD. Shipping surcharges for shipping service options can no longer be set with shipping business policies. To set a shipping surcharge for a shipping service option, only the <b>Shipping rate tables</b> tool in My eBay can be used. This field will be removed in a later release.
-     *  </span>
-     *  This dollar value indicates the shipping surcharge applicable to the domestic shipping service. If the shipping service costs override operation is successful, this value will override the corresponding <strong>shippingSurcharge</strong> value set in the <strong>domesticShippingPolicyInfoService</strong> container in the Business Policies shipping profile.
-     *  <br/><br/>
-     *  This field can only be used if the shipping surcharges are applicable for the corresponding shipping service.
-     *
-     * @var \Nogrod\eBaySDK\Trading\AmountType $shippingSurcharge
-     */
-    private $shippingSurcharge = null;
-
-    /**
      * Gets as shippingServicePriority
      *
      * This integer value maps the particular instance of the <strong>ShippingServiceCostOverride</strong> container to the <strong>domesticShippingPolicyInfoService</strong> or <strong>intlShippingPolicyInfoService</strong> container of the Business Policies shipping profile. The <strong>ShippingServicePriority</strong> value should match the <strong>sortOrderId</strong> value for the matching shipping service in the Business Policies shipping profile. If overriding the shipping costs for a domestic shipping service, the <strong>ShippingServiceType</strong> field should be set to 'Domestic', and to override the shipping costs for an international shipping service, the <strong>ShippingServiceType</strong> field should be set to 'International'.
@@ -168,42 +156,6 @@ class ShippingServiceCostOverrideType implements \Sabre\Xml\XmlSerializable, \Sa
         return $this;
     }
 
-    /**
-     * Gets as shippingSurcharge
-     *
-     * <span class="tablenote"><b>Note:</b>
-     *  DO NOT USE THIS FIELD. Shipping surcharges for shipping service options can no longer be set with shipping business policies. To set a shipping surcharge for a shipping service option, only the <b>Shipping rate tables</b> tool in My eBay can be used. This field will be removed in a later release.
-     *  </span>
-     *  This dollar value indicates the shipping surcharge applicable to the domestic shipping service. If the shipping service costs override operation is successful, this value will override the corresponding <strong>shippingSurcharge</strong> value set in the <strong>domesticShippingPolicyInfoService</strong> container in the Business Policies shipping profile.
-     *  <br/><br/>
-     *  This field can only be used if the shipping surcharges are applicable for the corresponding shipping service.
-     *
-     * @return \Nogrod\eBaySDK\Trading\AmountType
-     */
-    public function getShippingSurcharge()
-    {
-        return $this->shippingSurcharge;
-    }
-
-    /**
-     * Sets a new shippingSurcharge
-     *
-     * <span class="tablenote"><b>Note:</b>
-     *  DO NOT USE THIS FIELD. Shipping surcharges for shipping service options can no longer be set with shipping business policies. To set a shipping surcharge for a shipping service option, only the <b>Shipping rate tables</b> tool in My eBay can be used. This field will be removed in a later release.
-     *  </span>
-     *  This dollar value indicates the shipping surcharge applicable to the domestic shipping service. If the shipping service costs override operation is successful, this value will override the corresponding <strong>shippingSurcharge</strong> value set in the <strong>domesticShippingPolicyInfoService</strong> container in the Business Policies shipping profile.
-     *  <br/><br/>
-     *  This field can only be used if the shipping surcharges are applicable for the corresponding shipping service.
-     *
-     * @param \Nogrod\eBaySDK\Trading\AmountType $shippingSurcharge
-     * @return self
-     */
-    public function setShippingSurcharge(\Nogrod\eBaySDK\Trading\AmountType $shippingSurcharge)
-    {
-        $this->shippingSurcharge = $shippingSurcharge;
-        return $this;
-    }
-
     public function xmlSerialize(\Sabre\Xml\Writer $writer)
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
@@ -222,10 +174,6 @@ class ShippingServiceCostOverrideType implements \Sabre\Xml\XmlSerializable, \Sa
         $value = $this->getShippingServiceAdditionalCost();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippingServiceAdditionalCost", $value);
-        }
-        $value = $this->getShippingSurcharge();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippingSurcharge", $value);
         }
     }
 
@@ -258,10 +206,6 @@ class ShippingServiceCostOverrideType implements \Sabre\Xml\XmlSerializable, \Sa
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingServiceAdditionalCost');
         if (null !== $value) {
             $this->setShippingServiceAdditionalCost(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingSurcharge');
-        if (null !== $value) {
-            $this->setShippingSurcharge(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
         }
     }
 }

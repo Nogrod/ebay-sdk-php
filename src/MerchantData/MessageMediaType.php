@@ -9,7 +9,7 @@ use Nogrod\XMLClientRuntime\Func;
  *
  * Container for the image file that is to be sent in a message, which lets sellers share photos in messages using the API.
  *  The photo must be uploaded by the seller or buyer to
- *  <a href="http://developer.ebay.com/devzone/xml/docs/reference/ebay/uploadsitehostedpictures.html">EPS (eBay Picture Services)</a>
+ *  <a href="https://developer.ebay.com/devzone/xml/docs/reference/ebay/uploadsitehostedpictures.html">EPS (eBay Picture Services)</a>
  *  using a separate API call or the web flow. After the image is on the eBay server, you can
  *  use <b>AddMemberMessage</b> calls to pass the URL of the image in a message. The
  *  uploaded images will be available as part of the email as a thumbnail image.
@@ -24,7 +24,7 @@ class MessageMediaType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * URL of an image to be included in a message.
      *  The image must be uploaded to
-     *  <a href="http://developer.ebay.com/devzone/xml/docs/reference/ebay/uploadsitehostedpictures.html">EPS
+     *  <a href="https://developer.ebay.com/devzone/xml/docs/reference/ebay/uploadsitehostedpictures.html">EPS
      *  (eBay Picture Services)</a>
      *  using a separate API call or the web flow. This URL will be
      *  validated and if it doesn't exist, the request will fail.
@@ -45,7 +45,7 @@ class MessageMediaType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      *
      * URL of an image to be included in a message.
      *  The image must be uploaded to
-     *  <a href="http://developer.ebay.com/devzone/xml/docs/reference/ebay/uploadsitehostedpictures.html">EPS
+     *  <a href="https://developer.ebay.com/devzone/xml/docs/reference/ebay/uploadsitehostedpictures.html">EPS
      *  (eBay Picture Services)</a>
      *  using a separate API call or the web flow. This URL will be
      *  validated and if it doesn't exist, the request will fail.
@@ -62,7 +62,7 @@ class MessageMediaType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      *
      * URL of an image to be included in a message.
      *  The image must be uploaded to
-     *  <a href="http://developer.ebay.com/devzone/xml/docs/reference/ebay/uploadsitehostedpictures.html">EPS
+     *  <a href="https://developer.ebay.com/devzone/xml/docs/reference/ebay/uploadsitehostedpictures.html">EPS
      *  (eBay Picture Services)</a>
      *  using a separate API call or the web flow. This URL will be
      *  validated and if it doesn't exist, the request will fail.

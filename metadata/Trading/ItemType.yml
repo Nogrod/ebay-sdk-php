@@ -813,6 +813,44 @@ Nogrod\eBaySDK\Trading\ItemType:
                 getter: getPictureDetails
                 setter: setPictureDetails
             type: Nogrod\eBaySDK\Trading\PictureDetailsType
+        videoDetails:
+            expose: true
+            access_type: public_method
+            serialized_name: VideoDetails
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getVideoDetails
+                setter: setVideoDetails
+            type: array<string>
+            xml_list:
+                inline: false
+                entry_name: VideoID
+                skip_when_empty: true
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+        extendedProducerResponsibility:
+            expose: true
+            access_type: public_method
+            serialized_name: ExtendedProducerResponsibility
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getExtendedProducerResponsibility
+                setter: setExtendedProducerResponsibility
+            type: Nogrod\eBaySDK\Trading\ExtendedProducerResponsibilityType
+        customPolicies:
+            expose: true
+            access_type: public_method
+            serialized_name: CustomPolicies
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCustomPolicies
+                setter: setCustomPolicies
+            type: Nogrod\eBaySDK\Trading\CustomPoliciesType
         dispatchTimeMax:
             expose: true
             access_type: public_method
@@ -1458,17 +1496,6 @@ Nogrod\eBaySDK\Trading\ItemType:
                 getter: getReasonHideFromSearch
                 setter: setReasonHideFromSearch
             type: string
-        includeRecommendations:
-            expose: true
-            access_type: public_method
-            serialized_name: IncludeRecommendations
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getIncludeRecommendations
-                setter: setIncludeRecommendations
-            type: bool
         pickupInStoreDetails:
             expose: true
             access_type: public_method
@@ -1480,17 +1507,6 @@ Nogrod\eBaySDK\Trading\ItemType:
                 getter: getPickupInStoreDetails
                 setter: setPickupInStoreDetails
             type: Nogrod\eBaySDK\Trading\PickupInStoreDetailsType
-        siteId:
-            expose: true
-            access_type: public_method
-            serialized_name: SiteId
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getSiteId
-                setter: setSiteId
-            type: int
         ignoreQuantity:
             expose: true
             access_type: public_method

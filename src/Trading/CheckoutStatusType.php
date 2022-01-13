@@ -15,7 +15,7 @@ use Nogrod\XMLClientRuntime\Func;
 class CheckoutStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
     /**
-     * This value indicates the payment status of an order.
+     * Indicates the status of the buyer's payment for an order. If the payment was successfuly processed, a value of <code>NoPaymentFailure</code> will be returned.
      *
      * @var string $eBayPaymentStatus
      */
@@ -33,7 +33,7 @@ class CheckoutStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      * The payment method that the buyer selected to pay for the order.
      *  <br><br>
      *  <span class="tablenote"><b>Note: </b>
-     *  For sellers opted in to eBay managed payments, a payment method is not needed at listing time, but this field is still returned. For eBay managed payments orders, the value returned in this field will be <code>CreditCard</code>, unless an eBay gift card was used by the buyer to pay a partial or full balance of the order. If this is the case, the the value returned in this field will be <code>CCAccepted</code>. Either of these two values will be returned for eBay managed payments orders, regardless of the actual payment method that the buyer uses.
+     *  Sellers no longer have to specify any electronic payment methods at listing time, but this field is still returned. The value returned in this field will generally be <code>CreditCard</code>, unless an eBay gift card was used by the buyer to pay a partial or full balance of the order. If this is the case, the value returned in this field will be <code>CCAccepted</code>. Either of these two values will be returned, but neither accurately reflects the actual payment method that the buyer used. If the order was paid for off of eBay's platform using an 'offline' payment method such as 'CashOnPickup' or 'MOCC' (money order or cashier's check), and the seller marked the order as paid, either of those values may get returned here.
      *  </span>
      *
      * @var string $paymentMethod
@@ -46,8 +46,7 @@ class CheckoutStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      *  <b>Note</b>: If the <b>PaymentMethod</b> is <code>CashOnPickup</code>, the <b>Status</b> value
      *  will read <code>Complete</code> right at checkout, even though the seller may not have been
      *  officially paid yet, and the <b>eBayPaymentStatus</b> field will read <code>NoPaymentFailure</code>.
-     *  The <b>Status</b> value will remain as <code>Complete</code> even if the seller uses
-     *  <b>ReviseCheckoutStatus</b> to change the checkout status to <code>Pending</code>. However, the
+     *  The <b>Status</b> value will remain as <code>Complete</code> even if the seller changes the checkout status to Pending. However, the
      *  <b>eBayPaymentStatus</b> value in <b>GetOrders</b> will change from <code>NoPaymentFailure</code> to
      *  <code>PaymentInProcess</code>.
      *
@@ -56,17 +55,7 @@ class CheckoutStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
     private $status = null;
 
     /**
-     * This field being returned as <code>true</code> indicates that the order can be paid for through the seller's payment gateway account.
-     *  <br><br>
-     *  <span class="tablenote"><b>Note: </b>
-     *  As of May 1, 2019, no eBay marketplace support electronic payments through a seller's Integrated Merchant Credit Card (IMCC) account. To accept online credit card payments from buyers, a seller must use accept PayPal, or opt in to eBay managed payments program (if available to seller).
-     *  <br><br>
-     *  For sellers who are opted in to eBay managed payments, this field will actually be returned as <code>true</code>, but this will indicate that the seller is opted in to eBay managed payments, and does not indicate that the seller's IMCC account is being used for payments.
-     *  </span>
-     *  <br> <br>
-     *  <span class="tablenote"><b>Note:</b>
-     *  For the <strong>GetItemTransactions</strong>, <strong>GetOrders</strong>, and <strong>GetOrderTransactions</strong> calls, this field is only returned to the seller of the order; this field is not returned for the buyer or third party.
-     *  </span>
+     * This field is no longer applicable as eBay sellers can no longer use iMCC gateway accounts to handle buyer payments.
      *
      * @var bool $integratedMerchantCreditCardEnabled
      */
@@ -89,7 +78,7 @@ class CheckoutStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
     /**
      * Gets as eBayPaymentStatus
      *
-     * This value indicates the payment status of an order.
+     * Indicates the status of the buyer's payment for an order. If the payment was successfuly processed, a value of <code>NoPaymentFailure</code> will be returned.
      *
      * @return string
      */
@@ -101,7 +90,7 @@ class CheckoutStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
     /**
      * Sets a new eBayPaymentStatus
      *
-     * This value indicates the payment status of an order.
+     * Indicates the status of the buyer's payment for an order. If the payment was successfuly processed, a value of <code>NoPaymentFailure</code> will be returned.
      *
      * @param string $eBayPaymentStatus
      * @return self
@@ -146,7 +135,7 @@ class CheckoutStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      * The payment method that the buyer selected to pay for the order.
      *  <br><br>
      *  <span class="tablenote"><b>Note: </b>
-     *  For sellers opted in to eBay managed payments, a payment method is not needed at listing time, but this field is still returned. For eBay managed payments orders, the value returned in this field will be <code>CreditCard</code>, unless an eBay gift card was used by the buyer to pay a partial or full balance of the order. If this is the case, the the value returned in this field will be <code>CCAccepted</code>. Either of these two values will be returned for eBay managed payments orders, regardless of the actual payment method that the buyer uses.
+     *  Sellers no longer have to specify any electronic payment methods at listing time, but this field is still returned. The value returned in this field will generally be <code>CreditCard</code>, unless an eBay gift card was used by the buyer to pay a partial or full balance of the order. If this is the case, the value returned in this field will be <code>CCAccepted</code>. Either of these two values will be returned, but neither accurately reflects the actual payment method that the buyer used. If the order was paid for off of eBay's platform using an 'offline' payment method such as 'CashOnPickup' or 'MOCC' (money order or cashier's check), and the seller marked the order as paid, either of those values may get returned here.
      *  </span>
      *
      * @return string
@@ -162,7 +151,7 @@ class CheckoutStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      * The payment method that the buyer selected to pay for the order.
      *  <br><br>
      *  <span class="tablenote"><b>Note: </b>
-     *  For sellers opted in to eBay managed payments, a payment method is not needed at listing time, but this field is still returned. For eBay managed payments orders, the value returned in this field will be <code>CreditCard</code>, unless an eBay gift card was used by the buyer to pay a partial or full balance of the order. If this is the case, the the value returned in this field will be <code>CCAccepted</code>. Either of these two values will be returned for eBay managed payments orders, regardless of the actual payment method that the buyer uses.
+     *  Sellers no longer have to specify any electronic payment methods at listing time, but this field is still returned. The value returned in this field will generally be <code>CreditCard</code>, unless an eBay gift card was used by the buyer to pay a partial or full balance of the order. If this is the case, the value returned in this field will be <code>CCAccepted</code>. Either of these two values will be returned, but neither accurately reflects the actual payment method that the buyer used. If the order was paid for off of eBay's platform using an 'offline' payment method such as 'CashOnPickup' or 'MOCC' (money order or cashier's check), and the seller marked the order as paid, either of those values may get returned here.
      *  </span>
      *
      * @param string $paymentMethod
@@ -182,8 +171,7 @@ class CheckoutStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      *  <b>Note</b>: If the <b>PaymentMethod</b> is <code>CashOnPickup</code>, the <b>Status</b> value
      *  will read <code>Complete</code> right at checkout, even though the seller may not have been
      *  officially paid yet, and the <b>eBayPaymentStatus</b> field will read <code>NoPaymentFailure</code>.
-     *  The <b>Status</b> value will remain as <code>Complete</code> even if the seller uses
-     *  <b>ReviseCheckoutStatus</b> to change the checkout status to <code>Pending</code>. However, the
+     *  The <b>Status</b> value will remain as <code>Complete</code> even if the seller changes the checkout status to Pending. However, the
      *  <b>eBayPaymentStatus</b> value in <b>GetOrders</b> will change from <code>NoPaymentFailure</code> to
      *  <code>PaymentInProcess</code>.
      *
@@ -202,8 +190,7 @@ class CheckoutStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      *  <b>Note</b>: If the <b>PaymentMethod</b> is <code>CashOnPickup</code>, the <b>Status</b> value
      *  will read <code>Complete</code> right at checkout, even though the seller may not have been
      *  officially paid yet, and the <b>eBayPaymentStatus</b> field will read <code>NoPaymentFailure</code>.
-     *  The <b>Status</b> value will remain as <code>Complete</code> even if the seller uses
-     *  <b>ReviseCheckoutStatus</b> to change the checkout status to <code>Pending</code>. However, the
+     *  The <b>Status</b> value will remain as <code>Complete</code> even if the seller changes the checkout status to Pending. However, the
      *  <b>eBayPaymentStatus</b> value in <b>GetOrders</b> will change from <code>NoPaymentFailure</code> to
      *  <code>PaymentInProcess</code>.
      *
@@ -219,17 +206,7 @@ class CheckoutStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
     /**
      * Gets as integratedMerchantCreditCardEnabled
      *
-     * This field being returned as <code>true</code> indicates that the order can be paid for through the seller's payment gateway account.
-     *  <br><br>
-     *  <span class="tablenote"><b>Note: </b>
-     *  As of May 1, 2019, no eBay marketplace support electronic payments through a seller's Integrated Merchant Credit Card (IMCC) account. To accept online credit card payments from buyers, a seller must use accept PayPal, or opt in to eBay managed payments program (if available to seller).
-     *  <br><br>
-     *  For sellers who are opted in to eBay managed payments, this field will actually be returned as <code>true</code>, but this will indicate that the seller is opted in to eBay managed payments, and does not indicate that the seller's IMCC account is being used for payments.
-     *  </span>
-     *  <br> <br>
-     *  <span class="tablenote"><b>Note:</b>
-     *  For the <strong>GetItemTransactions</strong>, <strong>GetOrders</strong>, and <strong>GetOrderTransactions</strong> calls, this field is only returned to the seller of the order; this field is not returned for the buyer or third party.
-     *  </span>
+     * This field is no longer applicable as eBay sellers can no longer use iMCC gateway accounts to handle buyer payments.
      *
      * @return bool
      */
@@ -241,17 +218,7 @@ class CheckoutStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
     /**
      * Sets a new integratedMerchantCreditCardEnabled
      *
-     * This field being returned as <code>true</code> indicates that the order can be paid for through the seller's payment gateway account.
-     *  <br><br>
-     *  <span class="tablenote"><b>Note: </b>
-     *  As of May 1, 2019, no eBay marketplace support electronic payments through a seller's Integrated Merchant Credit Card (IMCC) account. To accept online credit card payments from buyers, a seller must use accept PayPal, or opt in to eBay managed payments program (if available to seller).
-     *  <br><br>
-     *  For sellers who are opted in to eBay managed payments, this field will actually be returned as <code>true</code>, but this will indicate that the seller is opted in to eBay managed payments, and does not indicate that the seller's IMCC account is being used for payments.
-     *  </span>
-     *  <br> <br>
-     *  <span class="tablenote"><b>Note:</b>
-     *  For the <strong>GetItemTransactions</strong>, <strong>GetOrders</strong>, and <strong>GetOrderTransactions</strong> calls, this field is only returned to the seller of the order; this field is not returned for the buyer or third party.
-     *  </span>
+     * This field is no longer applicable as eBay sellers can no longer use iMCC gateway accounts to handle buyer payments.
      *
      * @param bool $integratedMerchantCreditCardEnabled
      * @return self

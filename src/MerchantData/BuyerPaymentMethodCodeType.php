@@ -12,7 +12,7 @@ namespace Nogrod\eBaySDK\MerchantData;
  *  </ul>
  *  <br>
  *  <span class="tablenote"><b>Note: </b>
- *  If a seller's account is enabled for eBay managed payments, a payment method does not need to be specified at listing time, as eBay manages the payment methods that are available to the buyer. Any payment method that is specified at listing time (or defined in a payment business policy) will be ignored and dropped from the listing, and the seller will get a warning message in the response. eBay managed payments is currently available to a select set of sellers. For the current list of eBay marketplaces in which eBay managed payments has rolled out, see the <a href="https://developer.ebay.com/managed-payments" target="_blank">eBay Managed Payments</a> landing page.
+ *  For sellers that are onboarded for eBay managed payments, a payment method generally does not need to be specified at listing time, as eBay manages the electronic payment methods that are available to the buyers for managed payments listing. Any payment method that is specified at listing time (or defined in a payment business policy) will be ignored and dropped from the listing, and the seller will get a warning message in the response. However, eBay managed payments sellers are required to specify offline payment methods for categories/listings that support payments offline.
  *  </span>
  * XSD Type: BuyerPaymentMethodCodeType
  */

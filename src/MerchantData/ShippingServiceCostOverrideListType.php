@@ -21,7 +21,7 @@ class ShippingServiceCostOverrideListType implements \Sabre\Xml\XmlSerializable,
      *  <br/><br/>
      *  To override the shipping costs for any domestic shipping service option in the Business Policies shipping profile, the <b>ShippingServiceType</b> field should be set to 'Domestic', and to override the shipping costs for any international shipping service option, the <b>ShippingServiceType</b> field should be set to 'International'. For both domestic and international shipping services, the <b>ShippingServicePriority</b> value should match the <b>sortOrderId</b> value for the matching shipping service in the shipping profile. If any of the domestic and/or international shipping service priorities and shipping service options in the Add/Revise/Relist call and Business Policies shipping profile do not match, an error occurs.
      *  <br/><br/>
-     *  If shipping service cost overrides are used in a listing, the <b>ShippingServiceCostOverride</b> container will be returned in the <b>GetItem</b>, <b>GetSellerList</b>, and <b>GetSellingManagerTemplates</b> calls.
+     *  If shipping service cost overrides are used in a listing, the <b>ShippingServiceCostOverride</b> container will be returned in the <b>GetItem</b>, and <b>GetSellerList</b> calls.
      *
      * @var \Nogrod\eBaySDK\MerchantData\ShippingServiceCostOverrideType[] $shippingServiceCostOverride
      */
@@ -38,7 +38,7 @@ class ShippingServiceCostOverrideListType implements \Sabre\Xml\XmlSerializable,
      *  <br/><br/>
      *  To override the shipping costs for any domestic shipping service option in the Business Policies shipping profile, the <b>ShippingServiceType</b> field should be set to 'Domestic', and to override the shipping costs for any international shipping service option, the <b>ShippingServiceType</b> field should be set to 'International'. For both domestic and international shipping services, the <b>ShippingServicePriority</b> value should match the <b>sortOrderId</b> value for the matching shipping service in the shipping profile. If any of the domestic and/or international shipping service priorities and shipping service options in the Add/Revise/Relist call and Business Policies shipping profile do not match, an error occurs.
      *  <br/><br/>
-     *  If shipping service cost overrides are used in a listing, the <b>ShippingServiceCostOverride</b> container will be returned in the <b>GetItem</b>, <b>GetSellerList</b>, and <b>GetSellingManagerTemplates</b> calls.
+     *  If shipping service cost overrides are used in a listing, the <b>ShippingServiceCostOverride</b> container will be returned in the <b>GetItem</b>, and <b>GetSellerList</b> calls.
      *
      * @return self
      * @param \Nogrod\eBaySDK\MerchantData\ShippingServiceCostOverrideType $shippingServiceCostOverride
@@ -58,7 +58,7 @@ class ShippingServiceCostOverrideListType implements \Sabre\Xml\XmlSerializable,
      *  <br/><br/>
      *  To override the shipping costs for any domestic shipping service option in the Business Policies shipping profile, the <b>ShippingServiceType</b> field should be set to 'Domestic', and to override the shipping costs for any international shipping service option, the <b>ShippingServiceType</b> field should be set to 'International'. For both domestic and international shipping services, the <b>ShippingServicePriority</b> value should match the <b>sortOrderId</b> value for the matching shipping service in the shipping profile. If any of the domestic and/or international shipping service priorities and shipping service options in the Add/Revise/Relist call and Business Policies shipping profile do not match, an error occurs.
      *  <br/><br/>
-     *  If shipping service cost overrides are used in a listing, the <b>ShippingServiceCostOverride</b> container will be returned in the <b>GetItem</b>, <b>GetSellerList</b>, and <b>GetSellingManagerTemplates</b> calls.
+     *  If shipping service cost overrides are used in a listing, the <b>ShippingServiceCostOverride</b> container will be returned in the <b>GetItem</b>, and <b>GetSellerList</b> calls.
      *
      * @param int|string $index
      * @return bool
@@ -77,7 +77,7 @@ class ShippingServiceCostOverrideListType implements \Sabre\Xml\XmlSerializable,
      *  <br/><br/>
      *  To override the shipping costs for any domestic shipping service option in the Business Policies shipping profile, the <b>ShippingServiceType</b> field should be set to 'Domestic', and to override the shipping costs for any international shipping service option, the <b>ShippingServiceType</b> field should be set to 'International'. For both domestic and international shipping services, the <b>ShippingServicePriority</b> value should match the <b>sortOrderId</b> value for the matching shipping service in the shipping profile. If any of the domestic and/or international shipping service priorities and shipping service options in the Add/Revise/Relist call and Business Policies shipping profile do not match, an error occurs.
      *  <br/><br/>
-     *  If shipping service cost overrides are used in a listing, the <b>ShippingServiceCostOverride</b> container will be returned in the <b>GetItem</b>, <b>GetSellerList</b>, and <b>GetSellingManagerTemplates</b> calls.
+     *  If shipping service cost overrides are used in a listing, the <b>ShippingServiceCostOverride</b> container will be returned in the <b>GetItem</b>, and <b>GetSellerList</b> calls.
      *
      * @param int|string $index
      * @return void
@@ -96,7 +96,7 @@ class ShippingServiceCostOverrideListType implements \Sabre\Xml\XmlSerializable,
      *  <br/><br/>
      *  To override the shipping costs for any domestic shipping service option in the Business Policies shipping profile, the <b>ShippingServiceType</b> field should be set to 'Domestic', and to override the shipping costs for any international shipping service option, the <b>ShippingServiceType</b> field should be set to 'International'. For both domestic and international shipping services, the <b>ShippingServicePriority</b> value should match the <b>sortOrderId</b> value for the matching shipping service in the shipping profile. If any of the domestic and/or international shipping service priorities and shipping service options in the Add/Revise/Relist call and Business Policies shipping profile do not match, an error occurs.
      *  <br/><br/>
-     *  If shipping service cost overrides are used in a listing, the <b>ShippingServiceCostOverride</b> container will be returned in the <b>GetItem</b>, <b>GetSellerList</b>, and <b>GetSellingManagerTemplates</b> calls.
+     *  If shipping service cost overrides are used in a listing, the <b>ShippingServiceCostOverride</b> container will be returned in the <b>GetItem</b>, and <b>GetSellerList</b> calls.
      *
      * @return \Nogrod\eBaySDK\MerchantData\ShippingServiceCostOverrideType[]
      */
@@ -114,7 +114,7 @@ class ShippingServiceCostOverrideListType implements \Sabre\Xml\XmlSerializable,
      *  <br/><br/>
      *  To override the shipping costs for any domestic shipping service option in the Business Policies shipping profile, the <b>ShippingServiceType</b> field should be set to 'Domestic', and to override the shipping costs for any international shipping service option, the <b>ShippingServiceType</b> field should be set to 'International'. For both domestic and international shipping services, the <b>ShippingServicePriority</b> value should match the <b>sortOrderId</b> value for the matching shipping service in the shipping profile. If any of the domestic and/or international shipping service priorities and shipping service options in the Add/Revise/Relist call and Business Policies shipping profile do not match, an error occurs.
      *  <br/><br/>
-     *  If shipping service cost overrides are used in a listing, the <b>ShippingServiceCostOverride</b> container will be returned in the <b>GetItem</b>, <b>GetSellerList</b>, and <b>GetSellingManagerTemplates</b> calls.
+     *  If shipping service cost overrides are used in a listing, the <b>ShippingServiceCostOverride</b> container will be returned in the <b>GetItem</b>, and <b>GetSellerList</b> calls.
      *
      * @param \Nogrod\eBaySDK\MerchantData\ShippingServiceCostOverrideType[] $shippingServiceCostOverride
      * @return self

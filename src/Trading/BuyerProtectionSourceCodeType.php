@@ -6,6 +6,10 @@ namespace Nogrod\eBaySDK\Trading;
  * Class representing BuyerProtectionSourceCodeType
  *
  * This enumeration type indicates the applicable buyer protection program that the item is eligible to be covered under.
+ *  <br/><br/>
+ *  <span class="tablenote"><strong>Note:</strong>
+ *  eBay now fully manages the payment/checkout process for all orders, so the <code>eBay</code> value should always be returned in the <b>BuyerProtectionSource</b> field.
+ *  </span>
  * XSD Type: BuyerProtectionSourceCodeType
  */
 class BuyerProtectionSourceCodeType
@@ -21,8 +25,7 @@ class BuyerProtectionSourceCodeType
     /**
      * Constant for 'PayPal' value.
      *
-     * This value indicates that the item is possibly eligible for buyer protection
-     * under the PayPal Purchase Protection Program.
+     * This value is deprecated.
      */
     public const VAL_PAY_PAL = 'PayPal';
 

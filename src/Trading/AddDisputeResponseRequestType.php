@@ -7,49 +7,54 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing AddDisputeResponseRequestType
  *
- * This call enables the seller to respond to an Item Not Received (INR) dispute opened by a buyer through PayPal's Purchase Protection program, or to update an Unpaid Item case. To respond to a case opened by the buyer through eBay's Resolution Center, the seller should use the <a href="http://developer.ebay.com/Devzone/post-order/index.html" target="_blank">Case Management calls</a> of the <b>Post-Order API</b>, the <a href="http://developer.ebay.com/Devzone/resolution-case-management/CallRef/index.html" target="_blank">Resolution Case Management API</a>, or manage the case manually through the eBay Resolution Center.
+ * This call enables the seller to update an Unpaid Item case.
+ *  <br/><br/>
+ *  <span class="tablenote"><strong>Note:</strong>
+ *  The <strong>AddDisputeResponse</strong> call now only supports the update of Unpaid Item cases, and no longer support Item not Received (INR) or Significantly not as Described (SNAD) disputes created through PayPal, since this is no longer an option for eBay buyers. eBay buyers must create an INR case through eBay's Resolution Center, and this call also does not support eBay Money Back Guarantee cases.
+ *  <br><br>
+ *  To respond to an eBay Money Back Guarantee case, the seller should use the <a href="https://developer.ebay.com/Devzone/post-order/index.html" target="_blank">Case Management calls</a> of the <b>Post-Order API</b> or manage/respond to cases manually through the eBay Resolution Center.
+ *  </span>
  * XSD Type: AddDisputeResponseRequestType
  */
 class AddDisputeResponseRequestType extends AbstractRequestType
 {
     /**
-     * The unique identifier of the eBay Unpaid Item case or PayPal INR dispute. This identifier is created by eBay or PayPal upon case/dispute creation.
+     * The unique identifier of the Unpaid Item case. This identifier is created by eBay upon case creation.
      *
      * @var string $disputeID
      */
     private $disputeID = null;
 
     /**
-     * The text of a comment or response being posted to the case/dispute. Required when <b>DisputeActivity</b> is <b>SellerAddInformation</b>, <b>SellerComment</b>, or <b>SellerPaymentNotReceived</b>. Otherwise, this field is optional.
+     * This field is used to provide a text-based comment regarding the Unpaid Item case. This field is conditionally required when <b>DisputeActivity</b> value is set to <code>SellerAddInformation</code>, <code>SellerComment</code>, or <code>SellerPaymentNotReceived</code>. Otherwise, this field is optional.
      *
      * @var string $messageText
      */
     private $messageText = null;
 
     /**
-     * The type of activity the seller plans to take on the case/dispute. The allowed value is determined by the current state of the case/dispute and whether the seller is updating an Unpaid Item case or responding to a PayPal INR dispute.
+     * This field is used to indicate the type of action or update that the seller is making with the <b>AddDisputeResponse</b> call. See <b>DisputeActivityCodeType</b> for more information on the supported enum values.
      *
      * @var string $disputeActivity
      */
     private $disputeActivity = null;
 
     /**
-     * The shipping carrier used to ship the item in dispute. This field is not case sensitive in the <strong>AddDisputeResponse</strong> request. Non-alphanumeric characters are not allowed. This field (along with <b>ShipmentTrackNumber</b>) is required if the value of <b>DisputeActivity</b> is set to <code>SellerShippedItem</code>.
+     * <b>DO NOT USE</b>. This field is no longer applicable. This field was only applicable for PayPal INR disputes, which this call no longer supports.
      *
      * @var string $shippingCarrierUsed
      */
     private $shippingCarrierUsed = null;
 
     /**
-     * The tracking number associated with one package of a shipment. The seller is responsible for the accuracy of the shipment tracking number, as eBay only verifies that the tracking number is consistent with the numbering scheme used by the specified shipping carrier, but cannot verify the accuracy of the tracking number. This field (along with <b>ShippingCarrierUsed</b>) is required if the value of <b>DisputeActivity</b> is set to <code>SellerShippedItem</code>.
+     * <b>DO NOT USE</b>. This field is no longer applicable. This field was only applicable for PayPal INR disputes, which this call no longer supports.
      *
      * @var string $shipmentTrackNumber
      */
     private $shipmentTrackNumber = null;
 
     /**
-     * This timestamp indicates the date and time when the item under dispute was
-     *  shipped. This field is required if the value of <b>DisputeActivity</b> is set to <code>SellerShippedItem</code>.
+     * <b>DO NOT USE</b>. This field is no longer applicable. This field was only applicable for PayPal INR disputes, which this call no longer supports.
      *
      * @var \DateTime $shippingTime
      */
@@ -58,7 +63,7 @@ class AddDisputeResponseRequestType extends AbstractRequestType
     /**
      * Gets as disputeID
      *
-     * The unique identifier of the eBay Unpaid Item case or PayPal INR dispute. This identifier is created by eBay or PayPal upon case/dispute creation.
+     * The unique identifier of the Unpaid Item case. This identifier is created by eBay upon case creation.
      *
      * @return string
      */
@@ -70,7 +75,7 @@ class AddDisputeResponseRequestType extends AbstractRequestType
     /**
      * Sets a new disputeID
      *
-     * The unique identifier of the eBay Unpaid Item case or PayPal INR dispute. This identifier is created by eBay or PayPal upon case/dispute creation.
+     * The unique identifier of the Unpaid Item case. This identifier is created by eBay upon case creation.
      *
      * @param string $disputeID
      * @return self
@@ -84,7 +89,7 @@ class AddDisputeResponseRequestType extends AbstractRequestType
     /**
      * Gets as messageText
      *
-     * The text of a comment or response being posted to the case/dispute. Required when <b>DisputeActivity</b> is <b>SellerAddInformation</b>, <b>SellerComment</b>, or <b>SellerPaymentNotReceived</b>. Otherwise, this field is optional.
+     * This field is used to provide a text-based comment regarding the Unpaid Item case. This field is conditionally required when <b>DisputeActivity</b> value is set to <code>SellerAddInformation</code>, <code>SellerComment</code>, or <code>SellerPaymentNotReceived</code>. Otherwise, this field is optional.
      *
      * @return string
      */
@@ -96,7 +101,7 @@ class AddDisputeResponseRequestType extends AbstractRequestType
     /**
      * Sets a new messageText
      *
-     * The text of a comment or response being posted to the case/dispute. Required when <b>DisputeActivity</b> is <b>SellerAddInformation</b>, <b>SellerComment</b>, or <b>SellerPaymentNotReceived</b>. Otherwise, this field is optional.
+     * This field is used to provide a text-based comment regarding the Unpaid Item case. This field is conditionally required when <b>DisputeActivity</b> value is set to <code>SellerAddInformation</code>, <code>SellerComment</code>, or <code>SellerPaymentNotReceived</code>. Otherwise, this field is optional.
      *
      * @param string $messageText
      * @return self
@@ -110,7 +115,7 @@ class AddDisputeResponseRequestType extends AbstractRequestType
     /**
      * Gets as disputeActivity
      *
-     * The type of activity the seller plans to take on the case/dispute. The allowed value is determined by the current state of the case/dispute and whether the seller is updating an Unpaid Item case or responding to a PayPal INR dispute.
+     * This field is used to indicate the type of action or update that the seller is making with the <b>AddDisputeResponse</b> call. See <b>DisputeActivityCodeType</b> for more information on the supported enum values.
      *
      * @return string
      */
@@ -122,7 +127,7 @@ class AddDisputeResponseRequestType extends AbstractRequestType
     /**
      * Sets a new disputeActivity
      *
-     * The type of activity the seller plans to take on the case/dispute. The allowed value is determined by the current state of the case/dispute and whether the seller is updating an Unpaid Item case or responding to a PayPal INR dispute.
+     * This field is used to indicate the type of action or update that the seller is making with the <b>AddDisputeResponse</b> call. See <b>DisputeActivityCodeType</b> for more information on the supported enum values.
      *
      * @param string $disputeActivity
      * @return self
@@ -136,7 +141,7 @@ class AddDisputeResponseRequestType extends AbstractRequestType
     /**
      * Gets as shippingCarrierUsed
      *
-     * The shipping carrier used to ship the item in dispute. This field is not case sensitive in the <strong>AddDisputeResponse</strong> request. Non-alphanumeric characters are not allowed. This field (along with <b>ShipmentTrackNumber</b>) is required if the value of <b>DisputeActivity</b> is set to <code>SellerShippedItem</code>.
+     * <b>DO NOT USE</b>. This field is no longer applicable. This field was only applicable for PayPal INR disputes, which this call no longer supports.
      *
      * @return string
      */
@@ -148,7 +153,7 @@ class AddDisputeResponseRequestType extends AbstractRequestType
     /**
      * Sets a new shippingCarrierUsed
      *
-     * The shipping carrier used to ship the item in dispute. This field is not case sensitive in the <strong>AddDisputeResponse</strong> request. Non-alphanumeric characters are not allowed. This field (along with <b>ShipmentTrackNumber</b>) is required if the value of <b>DisputeActivity</b> is set to <code>SellerShippedItem</code>.
+     * <b>DO NOT USE</b>. This field is no longer applicable. This field was only applicable for PayPal INR disputes, which this call no longer supports.
      *
      * @param string $shippingCarrierUsed
      * @return self
@@ -162,7 +167,7 @@ class AddDisputeResponseRequestType extends AbstractRequestType
     /**
      * Gets as shipmentTrackNumber
      *
-     * The tracking number associated with one package of a shipment. The seller is responsible for the accuracy of the shipment tracking number, as eBay only verifies that the tracking number is consistent with the numbering scheme used by the specified shipping carrier, but cannot verify the accuracy of the tracking number. This field (along with <b>ShippingCarrierUsed</b>) is required if the value of <b>DisputeActivity</b> is set to <code>SellerShippedItem</code>.
+     * <b>DO NOT USE</b>. This field is no longer applicable. This field was only applicable for PayPal INR disputes, which this call no longer supports.
      *
      * @return string
      */
@@ -174,7 +179,7 @@ class AddDisputeResponseRequestType extends AbstractRequestType
     /**
      * Sets a new shipmentTrackNumber
      *
-     * The tracking number associated with one package of a shipment. The seller is responsible for the accuracy of the shipment tracking number, as eBay only verifies that the tracking number is consistent with the numbering scheme used by the specified shipping carrier, but cannot verify the accuracy of the tracking number. This field (along with <b>ShippingCarrierUsed</b>) is required if the value of <b>DisputeActivity</b> is set to <code>SellerShippedItem</code>.
+     * <b>DO NOT USE</b>. This field is no longer applicable. This field was only applicable for PayPal INR disputes, which this call no longer supports.
      *
      * @param string $shipmentTrackNumber
      * @return self
@@ -188,8 +193,7 @@ class AddDisputeResponseRequestType extends AbstractRequestType
     /**
      * Gets as shippingTime
      *
-     * This timestamp indicates the date and time when the item under dispute was
-     *  shipped. This field is required if the value of <b>DisputeActivity</b> is set to <code>SellerShippedItem</code>.
+     * <b>DO NOT USE</b>. This field is no longer applicable. This field was only applicable for PayPal INR disputes, which this call no longer supports.
      *
      * @return \DateTime
      */
@@ -201,8 +205,7 @@ class AddDisputeResponseRequestType extends AbstractRequestType
     /**
      * Sets a new shippingTime
      *
-     * This timestamp indicates the date and time when the item under dispute was
-     *  shipped. This field is required if the value of <b>DisputeActivity</b> is set to <code>SellerShippedItem</code>.
+     * <b>DO NOT USE</b>. This field is no longer applicable. This field was only applicable for PayPal INR disputes, which this call no longer supports.
      *
      * @param \DateTime $shippingTime
      * @return self

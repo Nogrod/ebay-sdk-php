@@ -7,26 +7,20 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing SendInvoiceRequestType
  *
- * Enables a seller to send an order invoice to a buyer. Where applicable, updates
- *  to shipping, payment methods, and sales tax made in this request are applied to
- *  the specified order as a whole and to the individual order line items whose data
- *  are stored in individual <b>Transaction</b> objects.
+ * This call enables a seller to send an order invoice to a buyer. Optionally, and when applicable, this call can also be used to update the shipping service options available for shipment, to provide payment or checkout instructions to the buyer, to make a cost adjustment for the order/order line item, or to provide one or more offline payment methods (for orders where offline payment is an option).
  * XSD Type: SendInvoiceRequestType
  */
 class SendInvoiceRequestType extends AbstractRequestType
 {
     /**
-     * Unique identifier for an eBay listing. Unless <b>OrderID</b> or
-     *  <b>OrderLineItemID</b> is provided in the request, the <b>ItemID</b> (or <b>SKU</b>) is
-     *  required and must be paired with the corresponding <b>TransactionID</b> to
-     *  identify a single line item order. For a multiple line item order, <b>OrderID</b> should be used.
+     * Unique identifier of the eBay listing. Unless <b>OrderID</b> or <b>OrderLineItemID</b> is provided in the request, the <b>ItemID</b> value (or <b>SKU</b> value) is conditionally required and must be paired with the corresponding <b>TransactionID</b> value to identify an order line item. For a multiple line item order, <b>OrderID</b> should be used.
      *
      * @var string $itemID
      */
     private $itemID = null;
 
     /**
-     * Unique identifier for an eBay sales transaction. This identifier is created once there is a commitment from a buyer to purchase an item. Since an auction listing can only have one sales transaction during the duration of the listing, the <b>TransactionID</b> value for auction listings is always <code>0</code>. Unless <b>OrderID</b> or <b>OrderLineItemID</b> is provided in the request, the <b>TransactionID</b> is required and must be paired with the corresponding <b>ItemID</b> to identify a single line item order. For a multiple line item order, <b>OrderID</b> should be used.
+     * Unique identifier for an eBay sales transaction. This identifier is created once there is a commitment from a buyer to purchase an item. Since an auction listing can only have one sales transaction during the duration of the listing, the <b>TransactionID</b> value for auction listings is always <code>0</code>. Unless <b>OrderID</b> or <b>OrderLineItemID</b> is provided in the request, the <b>TransactionID</b> value is required and must be paired with the corresponding <b>ItemID</b> value to identify an order line item. For a multiple line item order, <b>OrderID</b> should be used.
      *
      * @var string $transactionID
      */
@@ -36,13 +30,12 @@ class SendInvoiceRequestType extends AbstractRequestType
      * A unique identifier that identifies a single line item or multiple line
      *  item order.
      *  <br><br>
-     *  Unless the <b>ItemID</b> (or SKU) and corresponding <b>TransactionID</b>, or the <b>OrderLineItemID</b> is provided in the request to identify a single line item order, the <b>OrderID</b> must be specified. If <b>OrderID</b> is specified, <b>OrderLineItemID</b>, <b>ItemID</b>, <b>TransactionID</b>, and <b>SKU</b> are ignored if present in the same request.
+     *  Unless the <b>ItemID</b> value (or <b>SKU</b> value) and corresponding <b>TransactionID</b> value, or the <b>OrderLineItemID</b> value is provided in the request to identify a single line item order, the <b>OrderID</b> value must be specified. If <b>OrderID</b> value is specified, <b>OrderLineItemID</b>, <b>ItemID</b>, <b>TransactionID</b>, and <b>SKU</b> fields are ignored if present in the same request.
      *  <br><br>
-     *  <span class="tablenote"><b>Note: </b> In June 2019, eBay introduced a new order ID format, but allowed developers/sellers to decide whether to immediately adopt the new format, or to continue working with the old format. Users who wanted to adopt the new format, could either use a Trading WSDL Version 1113 (or newer), or they could even use an older Trading WSDL but set the <b>X-EBAY-API-COMPATIBILITY-LEVEL</b> HTTP header value to <code>1113</code> in API calls. <b>Beginning in June 2020, only the new order ID format will be returned in response payloads for paid orders, regardless of the WSDL version number or compatibility level.</b>
+     *  <span class="tablenote"><b>Note: </b>
+     *  Note that the unique identifier of a 'non-immediate payment' order will change as it goes from an unpaid order to a paid order. Due to this scenario, all Trading API calls that accept Order ID values as filters in the request payload will support the identifiers for both unpaid and paid orders.
      *  <br><br>
-     *  Note that the unique identifier of a 'non-immediate payment' order will change as it goes from an unpaid order to a paid order. Due to this scenario, all calls that accept Order ID values as filters in the request payload, including the <b>SendInvoice</b> call, will support the identifiers for both unpaid and paid orders. The new order ID format is a non-parsable string, globally unique across all eBay marketplaces, and consistent for both single line item and multiple line item orders. Unlike in the past, instead of just being known and exposed to the seller, these unique order identifiers will also be known and used/referenced by the buyer and eBay customer support.
-     *  <br><br>
-     *  Sellers can check to see if an order has been paid by looking for a value of 'Complete' in the <b>CheckoutStatus.Status</b> field in the response of <b>GetOrders</b> or <b>GetOrderTransactions</b> call, or in the <b>Status.CompleteStatus</b> field in the response of <b>GetItemTransactions</b> or <b>GetSellerTransactions</b> call. Sellers should not fulfill orders until buyer has made payment.
+     *  Sellers can check to see if an order has been paid by looking for a value of <code>Complete</code> in the <b>CheckoutStatus.Status</b> field in the response of <b>GetOrders</b> or <b>GetOrderTransactions</b> call, or in the <b>Status.CompleteStatus</b> field in the response of <b>GetItemTransactions</b> or <b>GetSellerTransactions</b> call. Sellers should not fulfill orders until buyer has made payment.
      *  </span>
      *
      * @var string $orderID
@@ -50,10 +43,7 @@ class SendInvoiceRequestType extends AbstractRequestType
     private $orderID = null;
 
     /**
-     * If the buyer has an International shipping address, use this container
-     *  to offer up to four International shipping services (or five if one of them is a Global Shipping Program service). If International
-     *  shipping services are offered, (domestic) <b>ShippingServiceOptions</b> should
-     *  not be included in the request.
+     * If the buyer has an international shipping address, use this container to offer up to four international shipping service options (or five if one of them is Global Shipping Program). If one or more international shipping service options are offered through this container, the (domestic) <b>ShippingServiceOptions</b> container should not be included in the same request.
      *  <br>
      *
      * @var \Nogrod\eBaySDK\Trading\InternationalShippingServiceOptionsType[] $internationalShippingServiceOptions
@@ -64,9 +54,9 @@ class SendInvoiceRequestType extends AbstractRequestType
 
     /**
      * If the buyer has a domestic shipping address, use this container
-     *  to offer up to four domestic shipping services. If domestic
-     *  shipping services are offered, <b>InternationalShippingServiceOptions</b> should
-     *  not be included in the request.
+     *  to offer up to four domestic shipping service options. If one or more domestic
+     *  shipping service options are offered through this container, the <b>InternationalShippingServiceOptions</b> container should
+     *  not be included in the same request.
      *  <br>
      *
      * @var \Nogrod\eBaySDK\Trading\ShippingServiceOptionsType[] $shippingServiceOptions
@@ -76,9 +66,9 @@ class SendInvoiceRequestType extends AbstractRequestType
     ];
 
     /**
-     * This container is used if the seller wishes to apply sales tax to the order. The amount of sales tax applied to the order is dependent on the sales tax rate in the buyer's state and whether sales tax is being applied to the cost of the order only or the cost of the order plus shipping and handling.
+     * This container is used if the seller wishes to apply sales tax to the order if the buyer lives in a state/jurisdiction where sales tax is not already collected automatically by eBay and remitted to the tax authority. The amount of sales tax applied to the order is dependent on the sales tax rate in the buyer's state and whether sales tax is being applied to the cost of the order only or the cost of the order plus shipping and handling.
      *  <br><br>
-     *  <span class="tablenote"><b>Note: </b> As of January 1, 2019, buyers in some US states will automatically be charged sales tax for eBay purchases. eBay will collect and remit this sales tax to the proper taxing authority on the buyer's behalf. So, if the order's buyer is in a state that is subject to 'eBay Collect and Remit Tax', the seller should not send the buyer any sales tax information, since eBay will be handling the sales tax instead without buyer's assistance. For a list of the US states that will become subject to 'eBay Collect and Remit' (and effective dates), see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section4">eBay sales tax collection</a> help topic.
+     *  <span class="tablenote"><b>Note: </b> As of November 4, 2021, eBay now collects and remits sales tax to the tax authorities for all but one US state (Missouri) and five US territories. So, in most cases, this container will not be applicable and should not be used in a request. For more information, see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section4">eBay sales tax collection</a> help topic.
      *  </span>
      *
      * @var \Nogrod\eBaySDK\Trading\SalesTaxType $salesTax
@@ -100,7 +90,8 @@ class SendInvoiceRequestType extends AbstractRequestType
     private $insuranceFee = null;
 
     /**
-     * This optional field allows a US or German seller to add specific payment methods that were not in the original listing. The only valid values for this field are 'PayPal' for a US listing (or 'CreditCard' for sellers opted in to eBay managed payments), or 'MoneyXferAcceptedInCheckout' (CIP+) for a listing on the Germany site.
+     * This field should only be used if the seller needs to add one or more offline payment options for an order that requires/supports offline payment. A seller should not submit any online payment methods here since eBay now controls the available online payment options that are available to buyers, and not the seller.
+     *  </span>
      *
      * @var string[] $paymentMethods
      */
@@ -109,7 +100,7 @@ class SendInvoiceRequestType extends AbstractRequestType
     ];
 
     /**
-     * If the <b>PaymentMethods</b> field is used and set to <code>PayPal</code>, the seller provides his/her PayPal email address in this field.
+     * <b>DO NOT USE</b>. This field is no longer applicable, as eBay now controls the available online payment options that are available to buyers, and not the seller.
      *
      * @var string $payPalEmailAddress
      */
@@ -142,15 +133,10 @@ class SendInvoiceRequestType extends AbstractRequestType
     private $cODCost = null;
 
     /**
-     * The seller's unique identifier for an item that is being tracked by this
-     *  SKU. If <b>OrderID</b> or <b>OrderLineItemID</b> are not provided, both <b>SKU</b> (or
-     *  <b>ItemID</b>) and corresponding <b>TransactionID</b> must be provided to uniquely
-     *  identify a single line item order. For a multiple line item order, <b>OrderID</b> must be used.
+     * The seller's unique identifier for an item that is being tracked by this SKU. If <b>OrderID</b> or <b>OrderLineItemID</b> are not provided, both <b>SKU</b> (or <b>ItemID</b>) and corresponding <b>TransactionID</b> must be provided to uniquely identify a single line item order. For a multiple line item order, <b>OrderID</b> must be used.
      *  <br>
      *  <br>
-     *  This field can only be used if the <b>Item.InventoryTrackingMethod</b> field
-     *  (set with the <b>AddFixedPriceItem</b> or <b>RelistFixedPriceItem</b> calls) is set to
-     *  <code>SKU</code>.
+     *  This field should only be used if the <b>Item.InventoryTrackingMethod</b> field (set with the <b>AddFixedPriceItem</b> or <b>RelistFixedPriceItem</b> calls) is set to <code>SKU</code>.
      *
      * @var string $sKU
      */
@@ -182,10 +168,7 @@ class SendInvoiceRequestType extends AbstractRequestType
     /**
      * Gets as itemID
      *
-     * Unique identifier for an eBay listing. Unless <b>OrderID</b> or
-     *  <b>OrderLineItemID</b> is provided in the request, the <b>ItemID</b> (or <b>SKU</b>) is
-     *  required and must be paired with the corresponding <b>TransactionID</b> to
-     *  identify a single line item order. For a multiple line item order, <b>OrderID</b> should be used.
+     * Unique identifier of the eBay listing. Unless <b>OrderID</b> or <b>OrderLineItemID</b> is provided in the request, the <b>ItemID</b> value (or <b>SKU</b> value) is conditionally required and must be paired with the corresponding <b>TransactionID</b> value to identify an order line item. For a multiple line item order, <b>OrderID</b> should be used.
      *
      * @return string
      */
@@ -197,10 +180,7 @@ class SendInvoiceRequestType extends AbstractRequestType
     /**
      * Sets a new itemID
      *
-     * Unique identifier for an eBay listing. Unless <b>OrderID</b> or
-     *  <b>OrderLineItemID</b> is provided in the request, the <b>ItemID</b> (or <b>SKU</b>) is
-     *  required and must be paired with the corresponding <b>TransactionID</b> to
-     *  identify a single line item order. For a multiple line item order, <b>OrderID</b> should be used.
+     * Unique identifier of the eBay listing. Unless <b>OrderID</b> or <b>OrderLineItemID</b> is provided in the request, the <b>ItemID</b> value (or <b>SKU</b> value) is conditionally required and must be paired with the corresponding <b>TransactionID</b> value to identify an order line item. For a multiple line item order, <b>OrderID</b> should be used.
      *
      * @param string $itemID
      * @return self
@@ -214,7 +194,7 @@ class SendInvoiceRequestType extends AbstractRequestType
     /**
      * Gets as transactionID
      *
-     * Unique identifier for an eBay sales transaction. This identifier is created once there is a commitment from a buyer to purchase an item. Since an auction listing can only have one sales transaction during the duration of the listing, the <b>TransactionID</b> value for auction listings is always <code>0</code>. Unless <b>OrderID</b> or <b>OrderLineItemID</b> is provided in the request, the <b>TransactionID</b> is required and must be paired with the corresponding <b>ItemID</b> to identify a single line item order. For a multiple line item order, <b>OrderID</b> should be used.
+     * Unique identifier for an eBay sales transaction. This identifier is created once there is a commitment from a buyer to purchase an item. Since an auction listing can only have one sales transaction during the duration of the listing, the <b>TransactionID</b> value for auction listings is always <code>0</code>. Unless <b>OrderID</b> or <b>OrderLineItemID</b> is provided in the request, the <b>TransactionID</b> value is required and must be paired with the corresponding <b>ItemID</b> value to identify an order line item. For a multiple line item order, <b>OrderID</b> should be used.
      *
      * @return string
      */
@@ -226,7 +206,7 @@ class SendInvoiceRequestType extends AbstractRequestType
     /**
      * Sets a new transactionID
      *
-     * Unique identifier for an eBay sales transaction. This identifier is created once there is a commitment from a buyer to purchase an item. Since an auction listing can only have one sales transaction during the duration of the listing, the <b>TransactionID</b> value for auction listings is always <code>0</code>. Unless <b>OrderID</b> or <b>OrderLineItemID</b> is provided in the request, the <b>TransactionID</b> is required and must be paired with the corresponding <b>ItemID</b> to identify a single line item order. For a multiple line item order, <b>OrderID</b> should be used.
+     * Unique identifier for an eBay sales transaction. This identifier is created once there is a commitment from a buyer to purchase an item. Since an auction listing can only have one sales transaction during the duration of the listing, the <b>TransactionID</b> value for auction listings is always <code>0</code>. Unless <b>OrderID</b> or <b>OrderLineItemID</b> is provided in the request, the <b>TransactionID</b> value is required and must be paired with the corresponding <b>ItemID</b> value to identify an order line item. For a multiple line item order, <b>OrderID</b> should be used.
      *
      * @param string $transactionID
      * @return self
@@ -243,13 +223,12 @@ class SendInvoiceRequestType extends AbstractRequestType
      * A unique identifier that identifies a single line item or multiple line
      *  item order.
      *  <br><br>
-     *  Unless the <b>ItemID</b> (or SKU) and corresponding <b>TransactionID</b>, or the <b>OrderLineItemID</b> is provided in the request to identify a single line item order, the <b>OrderID</b> must be specified. If <b>OrderID</b> is specified, <b>OrderLineItemID</b>, <b>ItemID</b>, <b>TransactionID</b>, and <b>SKU</b> are ignored if present in the same request.
+     *  Unless the <b>ItemID</b> value (or <b>SKU</b> value) and corresponding <b>TransactionID</b> value, or the <b>OrderLineItemID</b> value is provided in the request to identify a single line item order, the <b>OrderID</b> value must be specified. If <b>OrderID</b> value is specified, <b>OrderLineItemID</b>, <b>ItemID</b>, <b>TransactionID</b>, and <b>SKU</b> fields are ignored if present in the same request.
      *  <br><br>
-     *  <span class="tablenote"><b>Note: </b> In June 2019, eBay introduced a new order ID format, but allowed developers/sellers to decide whether to immediately adopt the new format, or to continue working with the old format. Users who wanted to adopt the new format, could either use a Trading WSDL Version 1113 (or newer), or they could even use an older Trading WSDL but set the <b>X-EBAY-API-COMPATIBILITY-LEVEL</b> HTTP header value to <code>1113</code> in API calls. <b>Beginning in June 2020, only the new order ID format will be returned in response payloads for paid orders, regardless of the WSDL version number or compatibility level.</b>
+     *  <span class="tablenote"><b>Note: </b>
+     *  Note that the unique identifier of a 'non-immediate payment' order will change as it goes from an unpaid order to a paid order. Due to this scenario, all Trading API calls that accept Order ID values as filters in the request payload will support the identifiers for both unpaid and paid orders.
      *  <br><br>
-     *  Note that the unique identifier of a 'non-immediate payment' order will change as it goes from an unpaid order to a paid order. Due to this scenario, all calls that accept Order ID values as filters in the request payload, including the <b>SendInvoice</b> call, will support the identifiers for both unpaid and paid orders. The new order ID format is a non-parsable string, globally unique across all eBay marketplaces, and consistent for both single line item and multiple line item orders. Unlike in the past, instead of just being known and exposed to the seller, these unique order identifiers will also be known and used/referenced by the buyer and eBay customer support.
-     *  <br><br>
-     *  Sellers can check to see if an order has been paid by looking for a value of 'Complete' in the <b>CheckoutStatus.Status</b> field in the response of <b>GetOrders</b> or <b>GetOrderTransactions</b> call, or in the <b>Status.CompleteStatus</b> field in the response of <b>GetItemTransactions</b> or <b>GetSellerTransactions</b> call. Sellers should not fulfill orders until buyer has made payment.
+     *  Sellers can check to see if an order has been paid by looking for a value of <code>Complete</code> in the <b>CheckoutStatus.Status</b> field in the response of <b>GetOrders</b> or <b>GetOrderTransactions</b> call, or in the <b>Status.CompleteStatus</b> field in the response of <b>GetItemTransactions</b> or <b>GetSellerTransactions</b> call. Sellers should not fulfill orders until buyer has made payment.
      *  </span>
      *
      * @return string
@@ -265,13 +244,12 @@ class SendInvoiceRequestType extends AbstractRequestType
      * A unique identifier that identifies a single line item or multiple line
      *  item order.
      *  <br><br>
-     *  Unless the <b>ItemID</b> (or SKU) and corresponding <b>TransactionID</b>, or the <b>OrderLineItemID</b> is provided in the request to identify a single line item order, the <b>OrderID</b> must be specified. If <b>OrderID</b> is specified, <b>OrderLineItemID</b>, <b>ItemID</b>, <b>TransactionID</b>, and <b>SKU</b> are ignored if present in the same request.
+     *  Unless the <b>ItemID</b> value (or <b>SKU</b> value) and corresponding <b>TransactionID</b> value, or the <b>OrderLineItemID</b> value is provided in the request to identify a single line item order, the <b>OrderID</b> value must be specified. If <b>OrderID</b> value is specified, <b>OrderLineItemID</b>, <b>ItemID</b>, <b>TransactionID</b>, and <b>SKU</b> fields are ignored if present in the same request.
      *  <br><br>
-     *  <span class="tablenote"><b>Note: </b> In June 2019, eBay introduced a new order ID format, but allowed developers/sellers to decide whether to immediately adopt the new format, or to continue working with the old format. Users who wanted to adopt the new format, could either use a Trading WSDL Version 1113 (or newer), or they could even use an older Trading WSDL but set the <b>X-EBAY-API-COMPATIBILITY-LEVEL</b> HTTP header value to <code>1113</code> in API calls. <b>Beginning in June 2020, only the new order ID format will be returned in response payloads for paid orders, regardless of the WSDL version number or compatibility level.</b>
+     *  <span class="tablenote"><b>Note: </b>
+     *  Note that the unique identifier of a 'non-immediate payment' order will change as it goes from an unpaid order to a paid order. Due to this scenario, all Trading API calls that accept Order ID values as filters in the request payload will support the identifiers for both unpaid and paid orders.
      *  <br><br>
-     *  Note that the unique identifier of a 'non-immediate payment' order will change as it goes from an unpaid order to a paid order. Due to this scenario, all calls that accept Order ID values as filters in the request payload, including the <b>SendInvoice</b> call, will support the identifiers for both unpaid and paid orders. The new order ID format is a non-parsable string, globally unique across all eBay marketplaces, and consistent for both single line item and multiple line item orders. Unlike in the past, instead of just being known and exposed to the seller, these unique order identifiers will also be known and used/referenced by the buyer and eBay customer support.
-     *  <br><br>
-     *  Sellers can check to see if an order has been paid by looking for a value of 'Complete' in the <b>CheckoutStatus.Status</b> field in the response of <b>GetOrders</b> or <b>GetOrderTransactions</b> call, or in the <b>Status.CompleteStatus</b> field in the response of <b>GetItemTransactions</b> or <b>GetSellerTransactions</b> call. Sellers should not fulfill orders until buyer has made payment.
+     *  Sellers can check to see if an order has been paid by looking for a value of <code>Complete</code> in the <b>CheckoutStatus.Status</b> field in the response of <b>GetOrders</b> or <b>GetOrderTransactions</b> call, or in the <b>Status.CompleteStatus</b> field in the response of <b>GetItemTransactions</b> or <b>GetSellerTransactions</b> call. Sellers should not fulfill orders until buyer has made payment.
      *  </span>
      *
      * @param string $orderID
@@ -286,10 +264,7 @@ class SendInvoiceRequestType extends AbstractRequestType
     /**
      * Adds as internationalShippingServiceOptions
      *
-     * If the buyer has an International shipping address, use this container
-     *  to offer up to four International shipping services (or five if one of them is a Global Shipping Program service). If International
-     *  shipping services are offered, (domestic) <b>ShippingServiceOptions</b> should
-     *  not be included in the request.
+     * If the buyer has an international shipping address, use this container to offer up to four international shipping service options (or five if one of them is Global Shipping Program). If one or more international shipping service options are offered through this container, the (domestic) <b>ShippingServiceOptions</b> container should not be included in the same request.
      *  <br>
      *
      * @return self
@@ -304,10 +279,7 @@ class SendInvoiceRequestType extends AbstractRequestType
     /**
      * isset internationalShippingServiceOptions
      *
-     * If the buyer has an International shipping address, use this container
-     *  to offer up to four International shipping services (or five if one of them is a Global Shipping Program service). If International
-     *  shipping services are offered, (domestic) <b>ShippingServiceOptions</b> should
-     *  not be included in the request.
+     * If the buyer has an international shipping address, use this container to offer up to four international shipping service options (or five if one of them is Global Shipping Program). If one or more international shipping service options are offered through this container, the (domestic) <b>ShippingServiceOptions</b> container should not be included in the same request.
      *  <br>
      *
      * @param int|string $index
@@ -321,10 +293,7 @@ class SendInvoiceRequestType extends AbstractRequestType
     /**
      * unset internationalShippingServiceOptions
      *
-     * If the buyer has an International shipping address, use this container
-     *  to offer up to four International shipping services (or five if one of them is a Global Shipping Program service). If International
-     *  shipping services are offered, (domestic) <b>ShippingServiceOptions</b> should
-     *  not be included in the request.
+     * If the buyer has an international shipping address, use this container to offer up to four international shipping service options (or five if one of them is Global Shipping Program). If one or more international shipping service options are offered through this container, the (domestic) <b>ShippingServiceOptions</b> container should not be included in the same request.
      *  <br>
      *
      * @param int|string $index
@@ -338,10 +307,7 @@ class SendInvoiceRequestType extends AbstractRequestType
     /**
      * Gets as internationalShippingServiceOptions
      *
-     * If the buyer has an International shipping address, use this container
-     *  to offer up to four International shipping services (or five if one of them is a Global Shipping Program service). If International
-     *  shipping services are offered, (domestic) <b>ShippingServiceOptions</b> should
-     *  not be included in the request.
+     * If the buyer has an international shipping address, use this container to offer up to four international shipping service options (or five if one of them is Global Shipping Program). If one or more international shipping service options are offered through this container, the (domestic) <b>ShippingServiceOptions</b> container should not be included in the same request.
      *  <br>
      *
      * @return \Nogrod\eBaySDK\Trading\InternationalShippingServiceOptionsType[]
@@ -354,10 +320,7 @@ class SendInvoiceRequestType extends AbstractRequestType
     /**
      * Sets a new internationalShippingServiceOptions
      *
-     * If the buyer has an International shipping address, use this container
-     *  to offer up to four International shipping services (or five if one of them is a Global Shipping Program service). If International
-     *  shipping services are offered, (domestic) <b>ShippingServiceOptions</b> should
-     *  not be included in the request.
+     * If the buyer has an international shipping address, use this container to offer up to four international shipping service options (or five if one of them is Global Shipping Program). If one or more international shipping service options are offered through this container, the (domestic) <b>ShippingServiceOptions</b> container should not be included in the same request.
      *  <br>
      *
      * @param \Nogrod\eBaySDK\Trading\InternationalShippingServiceOptionsType[] $internationalShippingServiceOptions
@@ -373,9 +336,9 @@ class SendInvoiceRequestType extends AbstractRequestType
      * Adds as shippingServiceOptions
      *
      * If the buyer has a domestic shipping address, use this container
-     *  to offer up to four domestic shipping services. If domestic
-     *  shipping services are offered, <b>InternationalShippingServiceOptions</b> should
-     *  not be included in the request.
+     *  to offer up to four domestic shipping service options. If one or more domestic
+     *  shipping service options are offered through this container, the <b>InternationalShippingServiceOptions</b> container should
+     *  not be included in the same request.
      *  <br>
      *
      * @return self
@@ -391,9 +354,9 @@ class SendInvoiceRequestType extends AbstractRequestType
      * isset shippingServiceOptions
      *
      * If the buyer has a domestic shipping address, use this container
-     *  to offer up to four domestic shipping services. If domestic
-     *  shipping services are offered, <b>InternationalShippingServiceOptions</b> should
-     *  not be included in the request.
+     *  to offer up to four domestic shipping service options. If one or more domestic
+     *  shipping service options are offered through this container, the <b>InternationalShippingServiceOptions</b> container should
+     *  not be included in the same request.
      *  <br>
      *
      * @param int|string $index
@@ -408,9 +371,9 @@ class SendInvoiceRequestType extends AbstractRequestType
      * unset shippingServiceOptions
      *
      * If the buyer has a domestic shipping address, use this container
-     *  to offer up to four domestic shipping services. If domestic
-     *  shipping services are offered, <b>InternationalShippingServiceOptions</b> should
-     *  not be included in the request.
+     *  to offer up to four domestic shipping service options. If one or more domestic
+     *  shipping service options are offered through this container, the <b>InternationalShippingServiceOptions</b> container should
+     *  not be included in the same request.
      *  <br>
      *
      * @param int|string $index
@@ -425,9 +388,9 @@ class SendInvoiceRequestType extends AbstractRequestType
      * Gets as shippingServiceOptions
      *
      * If the buyer has a domestic shipping address, use this container
-     *  to offer up to four domestic shipping services. If domestic
-     *  shipping services are offered, <b>InternationalShippingServiceOptions</b> should
-     *  not be included in the request.
+     *  to offer up to four domestic shipping service options. If one or more domestic
+     *  shipping service options are offered through this container, the <b>InternationalShippingServiceOptions</b> container should
+     *  not be included in the same request.
      *  <br>
      *
      * @return \Nogrod\eBaySDK\Trading\ShippingServiceOptionsType[]
@@ -441,9 +404,9 @@ class SendInvoiceRequestType extends AbstractRequestType
      * Sets a new shippingServiceOptions
      *
      * If the buyer has a domestic shipping address, use this container
-     *  to offer up to four domestic shipping services. If domestic
-     *  shipping services are offered, <b>InternationalShippingServiceOptions</b> should
-     *  not be included in the request.
+     *  to offer up to four domestic shipping service options. If one or more domestic
+     *  shipping service options are offered through this container, the <b>InternationalShippingServiceOptions</b> container should
+     *  not be included in the same request.
      *  <br>
      *
      * @param \Nogrod\eBaySDK\Trading\ShippingServiceOptionsType[] $shippingServiceOptions
@@ -458,9 +421,9 @@ class SendInvoiceRequestType extends AbstractRequestType
     /**
      * Gets as salesTax
      *
-     * This container is used if the seller wishes to apply sales tax to the order. The amount of sales tax applied to the order is dependent on the sales tax rate in the buyer's state and whether sales tax is being applied to the cost of the order only or the cost of the order plus shipping and handling.
+     * This container is used if the seller wishes to apply sales tax to the order if the buyer lives in a state/jurisdiction where sales tax is not already collected automatically by eBay and remitted to the tax authority. The amount of sales tax applied to the order is dependent on the sales tax rate in the buyer's state and whether sales tax is being applied to the cost of the order only or the cost of the order plus shipping and handling.
      *  <br><br>
-     *  <span class="tablenote"><b>Note: </b> As of January 1, 2019, buyers in some US states will automatically be charged sales tax for eBay purchases. eBay will collect and remit this sales tax to the proper taxing authority on the buyer's behalf. So, if the order's buyer is in a state that is subject to 'eBay Collect and Remit Tax', the seller should not send the buyer any sales tax information, since eBay will be handling the sales tax instead without buyer's assistance. For a list of the US states that will become subject to 'eBay Collect and Remit' (and effective dates), see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section4">eBay sales tax collection</a> help topic.
+     *  <span class="tablenote"><b>Note: </b> As of November 4, 2021, eBay now collects and remits sales tax to the tax authorities for all but one US state (Missouri) and five US territories. So, in most cases, this container will not be applicable and should not be used in a request. For more information, see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section4">eBay sales tax collection</a> help topic.
      *  </span>
      *
      * @return \Nogrod\eBaySDK\Trading\SalesTaxType
@@ -473,9 +436,9 @@ class SendInvoiceRequestType extends AbstractRequestType
     /**
      * Sets a new salesTax
      *
-     * This container is used if the seller wishes to apply sales tax to the order. The amount of sales tax applied to the order is dependent on the sales tax rate in the buyer's state and whether sales tax is being applied to the cost of the order only or the cost of the order plus shipping and handling.
+     * This container is used if the seller wishes to apply sales tax to the order if the buyer lives in a state/jurisdiction where sales tax is not already collected automatically by eBay and remitted to the tax authority. The amount of sales tax applied to the order is dependent on the sales tax rate in the buyer's state and whether sales tax is being applied to the cost of the order only or the cost of the order plus shipping and handling.
      *  <br><br>
-     *  <span class="tablenote"><b>Note: </b> As of January 1, 2019, buyers in some US states will automatically be charged sales tax for eBay purchases. eBay will collect and remit this sales tax to the proper taxing authority on the buyer's behalf. So, if the order's buyer is in a state that is subject to 'eBay Collect and Remit Tax', the seller should not send the buyer any sales tax information, since eBay will be handling the sales tax instead without buyer's assistance. For a list of the US states that will become subject to 'eBay Collect and Remit' (and effective dates), see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section4">eBay sales tax collection</a> help topic.
+     *  <span class="tablenote"><b>Note: </b> As of November 4, 2021, eBay now collects and remits sales tax to the tax authorities for all but one US state (Missouri) and five US territories. So, in most cases, this container will not be applicable and should not be used in a request. For more information, see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section4">eBay sales tax collection</a> help topic.
      *  </span>
      *
      * @param \Nogrod\eBaySDK\Trading\SalesTaxType $salesTax
@@ -542,7 +505,8 @@ class SendInvoiceRequestType extends AbstractRequestType
     /**
      * Adds as paymentMethods
      *
-     * This optional field allows a US or German seller to add specific payment methods that were not in the original listing. The only valid values for this field are 'PayPal' for a US listing (or 'CreditCard' for sellers opted in to eBay managed payments), or 'MoneyXferAcceptedInCheckout' (CIP+) for a listing on the Germany site.
+     * This field should only be used if the seller needs to add one or more offline payment options for an order that requires/supports offline payment. A seller should not submit any online payment methods here since eBay now controls the available online payment options that are available to buyers, and not the seller.
+     *  </span>
      *
      * @return self
      * @param string $paymentMethods
@@ -556,7 +520,8 @@ class SendInvoiceRequestType extends AbstractRequestType
     /**
      * isset paymentMethods
      *
-     * This optional field allows a US or German seller to add specific payment methods that were not in the original listing. The only valid values for this field are 'PayPal' for a US listing (or 'CreditCard' for sellers opted in to eBay managed payments), or 'MoneyXferAcceptedInCheckout' (CIP+) for a listing on the Germany site.
+     * This field should only be used if the seller needs to add one or more offline payment options for an order that requires/supports offline payment. A seller should not submit any online payment methods here since eBay now controls the available online payment options that are available to buyers, and not the seller.
+     *  </span>
      *
      * @param int|string $index
      * @return bool
@@ -569,7 +534,8 @@ class SendInvoiceRequestType extends AbstractRequestType
     /**
      * unset paymentMethods
      *
-     * This optional field allows a US or German seller to add specific payment methods that were not in the original listing. The only valid values for this field are 'PayPal' for a US listing (or 'CreditCard' for sellers opted in to eBay managed payments), or 'MoneyXferAcceptedInCheckout' (CIP+) for a listing on the Germany site.
+     * This field should only be used if the seller needs to add one or more offline payment options for an order that requires/supports offline payment. A seller should not submit any online payment methods here since eBay now controls the available online payment options that are available to buyers, and not the seller.
+     *  </span>
      *
      * @param int|string $index
      * @return void
@@ -582,7 +548,8 @@ class SendInvoiceRequestType extends AbstractRequestType
     /**
      * Gets as paymentMethods
      *
-     * This optional field allows a US or German seller to add specific payment methods that were not in the original listing. The only valid values for this field are 'PayPal' for a US listing (or 'CreditCard' for sellers opted in to eBay managed payments), or 'MoneyXferAcceptedInCheckout' (CIP+) for a listing on the Germany site.
+     * This field should only be used if the seller needs to add one or more offline payment options for an order that requires/supports offline payment. A seller should not submit any online payment methods here since eBay now controls the available online payment options that are available to buyers, and not the seller.
+     *  </span>
      *
      * @return string[]
      */
@@ -594,7 +561,8 @@ class SendInvoiceRequestType extends AbstractRequestType
     /**
      * Sets a new paymentMethods
      *
-     * This optional field allows a US or German seller to add specific payment methods that were not in the original listing. The only valid values for this field are 'PayPal' for a US listing (or 'CreditCard' for sellers opted in to eBay managed payments), or 'MoneyXferAcceptedInCheckout' (CIP+) for a listing on the Germany site.
+     * This field should only be used if the seller needs to add one or more offline payment options for an order that requires/supports offline payment. A seller should not submit any online payment methods here since eBay now controls the available online payment options that are available to buyers, and not the seller.
+     *  </span>
      *
      * @param string $paymentMethods
      * @return self
@@ -608,7 +576,7 @@ class SendInvoiceRequestType extends AbstractRequestType
     /**
      * Gets as payPalEmailAddress
      *
-     * If the <b>PaymentMethods</b> field is used and set to <code>PayPal</code>, the seller provides his/her PayPal email address in this field.
+     * <b>DO NOT USE</b>. This field is no longer applicable, as eBay now controls the available online payment options that are available to buyers, and not the seller.
      *
      * @return string
      */
@@ -620,7 +588,7 @@ class SendInvoiceRequestType extends AbstractRequestType
     /**
      * Sets a new payPalEmailAddress
      *
-     * If the <b>PaymentMethods</b> field is used and set to <code>PayPal</code>, the seller provides his/her PayPal email address in this field.
+     * <b>DO NOT USE</b>. This field is no longer applicable, as eBay now controls the available online payment options that are available to buyers, and not the seller.
      *
      * @param string $payPalEmailAddress
      * @return self
@@ -722,15 +690,10 @@ class SendInvoiceRequestType extends AbstractRequestType
     /**
      * Gets as sKU
      *
-     * The seller's unique identifier for an item that is being tracked by this
-     *  SKU. If <b>OrderID</b> or <b>OrderLineItemID</b> are not provided, both <b>SKU</b> (or
-     *  <b>ItemID</b>) and corresponding <b>TransactionID</b> must be provided to uniquely
-     *  identify a single line item order. For a multiple line item order, <b>OrderID</b> must be used.
+     * The seller's unique identifier for an item that is being tracked by this SKU. If <b>OrderID</b> or <b>OrderLineItemID</b> are not provided, both <b>SKU</b> (or <b>ItemID</b>) and corresponding <b>TransactionID</b> must be provided to uniquely identify a single line item order. For a multiple line item order, <b>OrderID</b> must be used.
      *  <br>
      *  <br>
-     *  This field can only be used if the <b>Item.InventoryTrackingMethod</b> field
-     *  (set with the <b>AddFixedPriceItem</b> or <b>RelistFixedPriceItem</b> calls) is set to
-     *  <code>SKU</code>.
+     *  This field should only be used if the <b>Item.InventoryTrackingMethod</b> field (set with the <b>AddFixedPriceItem</b> or <b>RelistFixedPriceItem</b> calls) is set to <code>SKU</code>.
      *
      * @return string
      */
@@ -742,15 +705,10 @@ class SendInvoiceRequestType extends AbstractRequestType
     /**
      * Sets a new sKU
      *
-     * The seller's unique identifier for an item that is being tracked by this
-     *  SKU. If <b>OrderID</b> or <b>OrderLineItemID</b> are not provided, both <b>SKU</b> (or
-     *  <b>ItemID</b>) and corresponding <b>TransactionID</b> must be provided to uniquely
-     *  identify a single line item order. For a multiple line item order, <b>OrderID</b> must be used.
+     * The seller's unique identifier for an item that is being tracked by this SKU. If <b>OrderID</b> or <b>OrderLineItemID</b> are not provided, both <b>SKU</b> (or <b>ItemID</b>) and corresponding <b>TransactionID</b> must be provided to uniquely identify a single line item order. For a multiple line item order, <b>OrderID</b> must be used.
      *  <br>
      *  <br>
-     *  This field can only be used if the <b>Item.InventoryTrackingMethod</b> field
-     *  (set with the <b>AddFixedPriceItem</b> or <b>RelistFixedPriceItem</b> calls) is set to
-     *  <code>SKU</code>.
+     *  This field should only be used if the <b>Item.InventoryTrackingMethod</b> field (set with the <b>AddFixedPriceItem</b> or <b>RelistFixedPriceItem</b> calls) is set to <code>SKU</code>.
      *
      * @param string $sKU
      * @return self

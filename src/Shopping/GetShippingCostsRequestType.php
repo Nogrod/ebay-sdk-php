@@ -16,7 +16,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  are calculated by eBay with its shipping partners based on postal code. To determine whether a listing has ended, use <b>GetSingleItem</b>.
  *  It is best to call <b>GetShippingCosts</b> only after determining via <b>GetSingleItem</b>
  *  or <b>findItemsAdvanced</b> (<a
- *  href="http://www.developer.ebay.com/DevZone/finding/CallRef/index.html"
+ *  href="https://developer.ebay.com/DevZone/finding/CallRef/index.html"
  *  >Finding API</a>) that the item actually has shipping cost information.
  * XSD Type: GetShippingCostsRequestType
  */

@@ -5,7 +5,10 @@ namespace Nogrod\eBaySDK\MerchantData;
 /**
  * Class representing ActiveInventoryReportRequestType
  *
- * A report that contains price and quantity information for all of the active
+ * <span class="tablenote">
+ *  <strong>Note:</strong> Large Merchant Services functionality as a SOAP service is deprecated and will be decommissioned by the end of April 2022. It is fully migrated into the REST-based <a href="https://developer.ebay.com/api-docs/sell/feed/resources/methods" target=\"_blank\" >Sell Feed API</a> The <strong>Sell Feed API</strong> supports the same XML data files that LMS supported but through REST methods. For more information, see the <a href="https://developer.ebay.com/api-docs/sell/static/lms-migration-landing.html" target="_blank" >LMS Migration Guide</a>.
+ *  </span>
+ *  A report that contains price and quantity information for all of the active
  *  listings for a specific seller. A seller can use this information to maintain
  *  their inventory on eBay.
  *  <br><br>

@@ -22,6 +22,15 @@ class OrderArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
     ];
 
     /**
+     * This container will be returned if there are one or more errors or warnings with the corresponding order. This container consists of detailed information on the warning or error, including the actual error message and information on any input parameters that actually triggered the warning or error.
+     *
+     * @var \Nogrod\eBaySDK\Trading\ErrorType[] $errors
+     */
+    private $errors = [
+        
+    ];
+
+    /**
      * Adds as order
      *
      * Details of an eBay order. One eBay order can have one or more order line items (<b>Transaction</b> objects).
@@ -87,6 +96,72 @@ class OrderArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
         return $this;
     }
 
+    /**
+     * Adds as errors
+     *
+     * This container will be returned if there are one or more errors or warnings with the corresponding order. This container consists of detailed information on the warning or error, including the actual error message and information on any input parameters that actually triggered the warning or error.
+     *
+     * @return self
+     * @param \Nogrod\eBaySDK\Trading\ErrorType $errors
+     */
+    public function addToErrors(\Nogrod\eBaySDK\Trading\ErrorType $errors)
+    {
+        $this->errors[] = $errors;
+        return $this;
+    }
+
+    /**
+     * isset errors
+     *
+     * This container will be returned if there are one or more errors or warnings with the corresponding order. This container consists of detailed information on the warning or error, including the actual error message and information on any input parameters that actually triggered the warning or error.
+     *
+     * @param int|string $index
+     * @return bool
+     */
+    public function issetErrors($index)
+    {
+        return isset($this->errors[$index]);
+    }
+
+    /**
+     * unset errors
+     *
+     * This container will be returned if there are one or more errors or warnings with the corresponding order. This container consists of detailed information on the warning or error, including the actual error message and information on any input parameters that actually triggered the warning or error.
+     *
+     * @param int|string $index
+     * @return void
+     */
+    public function unsetErrors($index)
+    {
+        unset($this->errors[$index]);
+    }
+
+    /**
+     * Gets as errors
+     *
+     * This container will be returned if there are one or more errors or warnings with the corresponding order. This container consists of detailed information on the warning or error, including the actual error message and information on any input parameters that actually triggered the warning or error.
+     *
+     * @return \Nogrod\eBaySDK\Trading\ErrorType[]
+     */
+    public function getErrors()
+    {
+        return $this->errors;
+    }
+
+    /**
+     * Sets a new errors
+     *
+     * This container will be returned if there are one or more errors or warnings with the corresponding order. This container consists of detailed information on the warning or error, including the actual error message and information on any input parameters that actually triggered the warning or error.
+     *
+     * @param \Nogrod\eBaySDK\Trading\ErrorType[] $errors
+     * @return self
+     */
+    public function setErrors(array $errors)
+    {
+        $this->errors = $errors;
+        return $this;
+    }
+
     public function xmlSerialize(\Sabre\Xml\Writer $writer)
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
@@ -94,6 +169,12 @@ class OrderArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
         if (null !== $value && !empty($this->getOrder())) {
             $writer->write(array_map(function ($v) {
                 return ["Order" => $v];
+            }, $value));
+        }
+        $value = $this->getErrors();
+        if (null !== $value && !empty($this->getErrors())) {
+            $writer->write(array_map(function ($v) {
+                return ["Errors" => $v];
             }, $value));
         }
     }
@@ -116,6 +197,12 @@ class OrderArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
         if (null !== $value && !empty($value)) {
             $this->setOrder(array_map(function ($v) {
                 return \Nogrod\eBaySDK\Trading\OrderType::fromKeyValue($v);
+            }, $value));
+        }
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Errors', true);
+        if (null !== $value && !empty($value)) {
+            $this->setErrors(array_map(function ($v) {
+                return \Nogrod\eBaySDK\Trading\ErrorType::fromKeyValue($v);
             }, $value));
         }
     }

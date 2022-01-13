@@ -5,10 +5,12 @@ namespace Nogrod\eBaySDK\Trading;
 /**
  * Class representing DisputeResolutionRecordTypeCodeType
  *
- * Enumerated type that lists the actions that eBay may take once a dispute is resolved.
+ * Enumerated type that lists the actions that eBay may take once an Unpaid Item case is resolved.
  *  <br/><br/>
  *  <span class="tablenote"><strong>Note:</strong>
- *  'Item Not Received' or 'Significantly Not As Described' cases, initiated by buyers through the eBay Money Back Guarantee program, are not returned with <b>GetUserDisputes</b>. The <a href="https://developer.ebay.com/Devzone/post-order/post-order_v2_casemanagement-caseId__get.html#overview">getCase</a> method of the <a href="https://developer.ebay.com/Devzone/post-order/concepts/UsageGuide.html">Post-Order API</a> is used to retrieve Money Back Guarantee cases programmatically.
+ *  The <strong>GetUserDisputes</strong> call of the Trading API now only supports Unpaid Item cases, and no longer supports Item not Received (INR) or Significantly not as Described (SNAD) disputes created through PayPal, since this is no longer an option for eBay buyers. eBay buyers must create an INR or SNAD case through eBay's Resolution Center, and this call also does not support eBay Money Back Guarantee cases.
+ *  <br><br>
+ *  To respond to an eBay Money Back Guarantee case, the seller should use the <a href="https://developer.ebay.com/Devzone/post-order/index.html" target="_blank">Case Management calls</a> of the <b>Post-Order API</b> or manage/respond to cases manually through the eBay Resolution Center.
  *  </span>
  * XSD Type: DisputeResolutionRecordTypeCodeType
  */
@@ -41,14 +43,15 @@ class DisputeResolutionRecordTypeCodeType
      * Constant for 'FVFCredit' value.
      *
      * This enumeration value indicates that the seller received a Final Value Fee
-     * credit.
+     * credit for the order line item.
      */
     public const VAL_FVFCREDIT = 'FVFCredit';
 
     /**
      * Constant for 'InsertionFeeCredit' value.
      *
-     * This enumeration value indicates that the seller's listing fees were credited.
+     * This enumeration value indicates that the seller received a credit for the
+     * insertion fee of the listing.
      */
     public const VAL_INSERTION_FEE_CREDIT = 'InsertionFeeCredit';
 
@@ -63,7 +66,8 @@ class DisputeResolutionRecordTypeCodeType
     /**
      * Constant for 'UnsuspendBuyer' value.
      *
-     * This enumeration value indicates that the buyer's account has been reinstated.
+     * This enumeration value indicates that the buyer's account has been reinstated by
+     * eBay.
      */
     public const VAL_UNSUSPEND_BUYER = 'UnsuspendBuyer';
 
@@ -71,7 +75,7 @@ class DisputeResolutionRecordTypeCodeType
      * Constant for 'UnrestrictBuyer' value.
      *
      * This enumeration value indicates that all restrictions on the buyer's account
-     * have ended.
+     * have been ended by eBay.
      */
     public const VAL_UNRESTRICT_BUYER = 'UnrestrictBuyer';
 
@@ -79,14 +83,14 @@ class DisputeResolutionRecordTypeCodeType
      * Constant for 'ReverseFVFCredit' value.
      *
      * This enumeration value indicates that the seller's Final Value Fee credit was
-     * reversed.
+     * reversed by eBay.
      */
     public const VAL_REVERSE_FVFCREDIT = 'ReverseFVFCredit';
 
     /**
      * Constant for 'ReverseInsertionFeeCredit' value.
      *
-     * This enumeration value indicates that the seller's listing fees credit was
+     * This enumeration value indicates that the seller's insertion fee credit was
      * reversed.
      */
     public const VAL_REVERSE_INSERTION_FEE_CREDIT = 'ReverseInsertionFeeCredit';

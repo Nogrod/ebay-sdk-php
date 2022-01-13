@@ -7,38 +7,34 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing FeatureDefinitionsType
  *
- * This type is used by the <b>FeatureDefinitions</b> container that is returned in the <b>GetCategoryFeatures</b> response to indicate which eBay features are available on one more eBay API-enabled sites. If no <b>FeatureID</b> field is included in the call request, all eBay features available for one more eBay API-enabled sites are returned. If one or more <b>FeatureID</b> fields are included in the call request, only those eBay features specified in each <b>FeatureID</b> field are returned in the response.
+ * This type is used by the <b>FeatureDefinitions</b> container that is returned in the <b>GetCategoryFeatures</b> response to indicate which eBay features are available on one more eBay marketplaces. If no <b>FeatureID</b> field is included in the call request, all eBay features available for one more eBay marketplaces are returned. If one or more <b>FeatureID</b> fields are included in the call request, only those eBay features specified in each <b>FeatureID</b> field are returned in the response.
  * XSD Type: FeatureDefinitionsType
  */
 class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support multiple listing durations. Listing durations will vary based on the selling format (auction, fixed-price, or classified ad) and the eBay category. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ListingDurations</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support multiple listing durations. Listing durations will vary based on the selling format (auction, fixed-price, or classified ad) and the eBay category. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ListingDurations</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @var \Nogrod\eBaySDK\Trading\ListingDurationDefinitionsType $listingDurations
      */
     private $listingDurations = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites require shipping terms at listing time, whiche includesat least one domestic shipping service option and its associated costs. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ShippingTermsRequired</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces require shipping terms at listing time, which includes at least one domestic shipping service option and its associated costs. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ShippingTermsRequired</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @var \Nogrod\eBaySDK\Trading\ShippingTermRequiredDefinitionType $shippingTermsRequired
      */
     private $shippingTermsRequired = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the Best Offer feature. The Best Offer feature allows buyers and sellers to negotiate the price of the item. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>BestOfferEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
-     *  <br/><br/>
-     *  <span class="tablenote"><b>Note: </b>
-     *  The Best Offer feature is now available for auction listings on the following sites: US, Canada, UK, Germany, Australia, France, Italy, and Spain. However, sellers must choose between offering Best Offer or Buy It Now on an auction listing, as both features cannot be enabled on the same auction listing.
-     *  </span>
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the Best Offer feature. The Best Offer feature allows buyers and sellers to negotiate the price of the item. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>BestOfferEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @var \Nogrod\eBaySDK\Trading\BestOfferEnabledDefinitionType $bestOfferEnabled
      */
     private $bestOfferEnabled = null;
 
     /**
-     * This field is deprecated.
+     * This field is no longer applicable as Dutch auctions are no longer supported on any eBay marketplace.
      *
      * @var \Nogrod\eBaySDK\Trading\DutchBINEnabledDefinitionType $dutchBINEnabled
      */
@@ -52,14 +48,14 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     private $userConsentRequired = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the temporary display of a seller's listing on a section of the eBay Home Page. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>HomePageFeaturedEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the temporary display of a seller's listing on a section of the eBay Home Page. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>HomePageFeaturedEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @var \Nogrod\eBaySDK\Trading\HomePageFeaturedEnabledDefinitionType $homePageFeaturedEnabled
      */
     private $homePageFeaturedEnabled = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the Pro Pack listing upgrade bundle. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ProPackEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the Pro Pack listing upgrade bundle. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ProPackEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @var \Nogrod\eBaySDK\Trading\ProPackEnabledDefinitionType $proPackEnabled
      */
@@ -73,83 +69,63 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     private $basicUpgradePackEnabled = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the Value Pack listing upgrade bundle. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ValuePackEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the Value Pack listing upgrade bundle. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ValuePackEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @var \Nogrod\eBaySDK\Trading\ValuePackEnabledDefinitionType $valuePackEnabled
      */
     private $valuePackEnabled = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the Pro Pack Plus listing upgrade bundle. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ProPackPlusEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the Pro Pack Plus listing upgrade bundle. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ProPackPlusEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @var \Nogrod\eBaySDK\Trading\ProPackPlusEnabledDefinitionType $proPackPlusEnabled
      */
     private $proPackPlusEnabled = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support Classified Ad listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>AdFormatEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support Classified Ad listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>AdFormatEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @var \Nogrod\eBaySDK\Trading\AdFormatEnabledDefinitionType $adFormatEnabled
      */
     private $adFormatEnabled = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support counter offers to Best Offers. The Best Offer feature allows buyers and sellers to negotiate the price of the item, and once a Best Offer price is proposed, the seller can send the buyer a counter offer, and a buyer may even send another counter offer to the seller's counter offer. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>BestOfferCounterEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
-     *  <br/><br/>
-     *  <span class="tablenote"><b>Note: </b>
-     *  The Best Offer feature is now available for auction listings on the following sites: US, Canada, UK, Germany, Australia, France, Italy, and Spain. However, sellers must choose between offering Best Offer or Buy It Now on an auction listing, as both features cannot be enabled on the same auction listing.
-     *  </span>
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support counter offers to Best Offers. The Best Offer feature allows buyers and sellers to negotiate the price of the item, and once a Best Offer price is proposed, the seller can send the buyer a counter offer, and a buyer may even send another counter offer to the seller's counter offer. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>BestOfferCounterEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @var \Nogrod\eBaySDK\Trading\BestOfferCounterEnabledDefinitionType $bestOfferCounterEnabled
      */
     private $bestOfferCounterEnabled = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the Best Offer Auto-Decline feature. The Best Offer Auto-Decline feature allows a seller to set a lower threshold dollar value on a listing, and any Best Offer amount below this amount is automatically declined by the eBay system. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>BestOfferAutoDeclineEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
-     *  <br/><br/>
-     *  <span class="tablenote"><b>Note: </b>
-     *  The Best Offer feature is now available for auction listings on the following sites: US, Canada, UK, Germany, Australia, France, Italy, and Spain. However, sellers must choose between offering Best Offer or Buy It Now on an auction listing, as both features cannot be enabled on the same auction listing.
-     *  </span>
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the Best Offer Auto-Decline feature. The Best Offer Auto-Decline feature allows a seller to set a lower threshold dollar value on a listing, and any Best Offer amount below this amount is automatically declined by the eBay system. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>BestOfferAutoDeclineEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @var \Nogrod\eBaySDK\Trading\BestOfferAutoDeclineEnabledDefinitionType $bestOfferAutoDeclineEnabled
      */
     private $bestOfferAutoDeclineEnabled = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support Motors Local Market listings for dealership subscribers with a specialty subscription. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalMarketSpecialitySubscription</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
-     *  <br><br>
-     *  See the <a href="
-     *  http://pages.ebay.com/help/sell/formats.html#market" target="_blank">Motors Local Market listing help topic</a> for more information.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support Motors Local Market listings for dealership subscribers with a specialty subscription. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalMarketSpecialitySubscription</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @var \Nogrod\eBaySDK\Trading\LocalMarketSpecialitySubscriptionDefinitionType $localMarketSpecialitySubscription
      */
     private $localMarketSpecialitySubscription = null;
 
     /**
-     * TThis field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support Motors Local Market listings for dealership subscribers with a regular subscription. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalMarketRegularSubscription</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
-     *  <br><br>
-     *  See the <a href="
-     *  http://pages.ebay.com/help/sell/formats.html#market" target="_blank">Motors Local Market listing help topic</a> for more information.
+     * TThis field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support Motors Local Market listings for dealership subscribers with a regular subscription. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalMarketRegularSubscription</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @var \Nogrod\eBaySDK\Trading\LocalMarketRegularSubscriptionDefinitionType $localMarketRegularSubscription
      */
     private $localMarketRegularSubscription = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support Motors Local Market listings for dealership subscribers with a premium subscription. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalMarketPremiumSubscription</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
-     *  <br><br>
-     *  See the <a href="
-     *  http://pages.ebay.com/help/sell/formats.html#market" target="_blank">Motors Local Market listing help topic</a> for more information.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support Motors Local Market listings for dealership subscribers with a premium subscription. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalMarketPremiumSubscription</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @var \Nogrod\eBaySDK\Trading\LocalMarketPremiumSubscriptionDefinitionType $localMarketPremiumSubscription
      */
     private $localMarketPremiumSubscription = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support Motors Local Market listings for dealerships without a subscription. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalMarketNonSubscription</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
-     *  <br><br>
-     *  See the <a href="
-     *  http://pages.ebay.com/help/sell/formats.html#market" target="_blank">Motors Local Market listing help topic</a> for more information.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support Motors Local Market listings for dealerships without a subscription. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalMarketNonSubscription</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @var \Nogrod\eBaySDK\Trading\LocalMarketNonSubscriptionDefinitionType $localMarketNonSubscription
      */
@@ -177,7 +153,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     private $expressConditionRequired = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites require a minimum reserve price for an auction item. This feature is only applicable to auction listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>MinimumReservePrice</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces require a minimum reserve price for an auction item. This feature is only applicable to auction listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>MinimumReservePrice</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @var \Nogrod\eBaySDK\Trading\MinimumReservePriceDefinitionType $minimumReservePrice
      */
@@ -191,7 +167,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     private $transactionConfirmationRequestEnabled = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites allow the seller to provide contact information at listing time for a classified ad listing. This feature is only applicable to classified ad listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>SellerContactDetailsEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces allow the seller to provide contact information at listing time for a classified ad listing. This feature is only applicable to classified ad listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>SellerContactDetailsEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @var \Nogrod\eBaySDK\Trading\SellerContactDetailsEnabledDefinitionType $sellerContactDetailsEnabled
      */
@@ -219,63 +195,63 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     private $skypeMeNonTransactionalEnabled = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support allow dealership subscribers with a regular subscription to specify local market radius for Motors Local Market listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalListingDistancesRegular</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support allow dealership subscribers with a regular subscription to specify local market radius for Motors Local Market listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalListingDistancesRegular</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @var \Nogrod\eBaySDK\Trading\LocalListingDistancesRegularDefinitionType $localListingDistancesRegular
      */
     private $localListingDistancesRegular = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites allow dealership subscribers with a specialty subscription to specify local market radius for Motors Local Market listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalListingDistancesSpecialty</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces allow dealership subscribers with a specialty subscription to specify local market radius for Motors Local Market listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalListingDistancesSpecialty</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @var \Nogrod\eBaySDK\Trading\LocalListingDistancesSpecialtyDefinitionType $localListingDistancesSpecialty
      */
     private $localListingDistancesSpecialty = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites allow dealership subscribers without a subscription to specify local market radius for Motors Local Market listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalListingDistancesNonSubscription</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces allow dealership subscribers without a subscription to specify local market radius for Motors Local Market listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalListingDistancesNonSubscription</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @var \Nogrod\eBaySDK\Trading\LocalListingDistancesNonSubscriptionDefinitionType $localListingDistancesNonSubscription
      */
     private $localListingDistancesNonSubscription = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites allow for the display of acceptable payment methods for classified ad listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ClassifiedAdPaymentMethodEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces allow for the display of acceptable payment methods for classified ad listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ClassifiedAdPaymentMethodEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @var \Nogrod\eBaySDK\Trading\ClassifiedAdPaymentMethodEnabledDefinitionType $classifiedAdPaymentMethodEnabled
      */
     private $classifiedAdPaymentMethodEnabled = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites allow for the display of shipping service options for classified ad listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ClassifiedAdShippingMethodEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces allow for the display of shipping service options for classified ad listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ClassifiedAdShippingMethodEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @var \Nogrod\eBaySDK\Trading\ClassifiedAdShippingMethodEnabledDefinitionType $classifiedAdShippingMethodEnabled
      */
     private $classifiedAdShippingMethodEnabled = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the Best Offer feature for classified ad listings. The Best Offer feature allows buyers and sellers to negotiate the price of the item. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ClassifiedAdBestOfferEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the Best Offer feature for classified ad listings. The Best Offer feature allows buyers and sellers to negotiate the price of the item. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ClassifiedAdBestOfferEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @var \Nogrod\eBaySDK\Trading\ClassifiedAdBestOfferEnabledDefinitionType $classifiedAdBestOfferEnabled
      */
     private $classifiedAdBestOfferEnabled = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support counter offers to Best Offers for classified ad listings. The Best Offer feature allows buyers and sellers to negotiate the price of the item, and once a Best Offer price is proposed, the seller can send the buyer a counter offer, and a buyer may even send another counter offer to the seller's counter offer. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ClassifiedAdCounterOfferEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support counter offers to Best Offers for classified ad listings. The Best Offer feature allows buyers and sellers to negotiate the price of the item, and once a Best Offer price is proposed, the seller can send the buyer a counter offer, and a buyer may even send another counter offer to the seller's counter offer. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ClassifiedAdCounterOfferEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @var \Nogrod\eBaySDK\Trading\ClassifiedAdCounterOfferEnabledDefinitionType $classifiedAdCounterOfferEnabled
      */
     private $classifiedAdCounterOfferEnabled = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the Best Offer Auto-Decline feature for classified ad listings. The Best Offer Auto-Decline feature allows a seller to set a lower threshold dollar value on a listing, and any Best Offer amount below this amount is automatically declined by the eBay system. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ClassifiedAdAutoDeclineEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the Best Offer Auto-Decline feature for classified ad listings. The Best Offer Auto-Decline feature allows a seller to set a lower threshold dollar value on a listing, and any Best Offer amount below this amount is automatically declined by the eBay system. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ClassifiedAdAutoDeclineEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @var \Nogrod\eBaySDK\Trading\ClassifiedAdAutoDeclineEnabledDefinitionType $classifiedAdAutoDeclineEnabled
      */
     private $classifiedAdAutoDeclineEnabled = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the use of a phone number when contacting the
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the use of a phone number when contacting the
      *  seller about a classified ad listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ClassifiedAdContactByPhoneEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @var \Nogrod\eBaySDK\Trading\ClassifiedAdContactByPhoneEnabledDefinitionType $classifiedAdContactByPhoneEnabled
@@ -283,35 +259,14 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     private $classifiedAdContactByPhoneEnabled = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the use of an email address when contacting the seller about a classified ad listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ClassifiedAdContactByEmailEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the use of an email address when contacting the seller about a classified ad listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ClassifiedAdContactByEmailEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @var \Nogrod\eBaySDK\Trading\ClassifiedAdContactByEmailEnabledDefintionType $classifiedAdContactByEmailEnabled
      */
     private $classifiedAdContactByEmailEnabled = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites require at least one form of safe payment. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>SafePaymentRequired</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
-     *  <br><br>
-     *  For the US, Canada and Australia sites, users registered after January
-     *  17, 2007 are required to offer at least one safe payment method (i.e.
-     *  PayPal/PaisaPay, or one of the credit cards specified in
-     *  <b>Item.PaymentMethods</b>).
-     *  <br><br>
-     *  If a seller has a <code>SafePaymentExempt</code> status, they are exempt from the
-     *  requirement to offer at least one safe payment method when listing
-     *  an item on a site that has the safe payment requirement.
-     *  <br>
-     *  The safe payment requirement also applies to two-category listings that have
-     *  one ship-to or available-to location in the US, Canada, or Australia. The
-     *  French Canadian (CAFR) site is a special case, because listings on the CAFR
-     *  site with ship-to or available-to locations in Canada do not require a Safe
-     *  Payment method, yet listings on the CAFR site with ship-to or available-to
-     *  locations in the US or Australia do require a Safe Payment method.
-     *  <br><br>
-     *  The Business and Industrial, Motors, Real Estate, and Mature Audiences
-     *  categories, and all listings that don't support the <b>Item.PaymentMethods</b> field are
-     *  exempt from this requirement. Therefore, listings in those categories do not
-     *  require a safe payment method.
+     * eBay controls all forms of electronic payment methods that are avaialable to buyers, so this field is no longer applicable.
      *
      * @var \Nogrod\eBaySDK\Trading\SafePaymentRequiredDefinitionType $safePaymentRequired
      */
@@ -325,14 +280,14 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     private $classifiedAdPayPerLeadEnabled = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the use of Item Specifics in listings. Item Specifics are typical aspects that items in a specific category tend to have, and they allow sellers to provide descriptive details of an item in a structured manner. For example, in a jewelry category, sellers might describe lockets with Item Specifics name-value pairs like "Chain Length=18 in." and "Main Shape=Heart", or in a Washers & Dryers category, sellers might include "Type=Top-Loading". This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ItemSpecificsEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the use of Item Specifics in listings. Item Specifics are typical aspects that items in a specific category tend to have, and they allow sellers to provide descriptive details of an item in a structured manner. For example, in a jewelry category, sellers might describe lockets with Item Specifics name-value pairs like "Chain Length=18 in." and "Main Shape=Heart", or in a Washers & Dryers category, sellers might include "Type=Top-Loading". This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ItemSpecificsEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @var \Nogrod\eBaySDK\Trading\ItemSpecificsEnabledDefinitionType $itemSpecificsEnabled
      */
     private $itemSpecificsEnabled = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the use of PaisaPay Full Escrow as a payment method. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>PaisaPayFullEscrowEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * PaisaPay is a deprecated payment method, so this field is no longer applicable.
      *
      * @var \Nogrod\eBaySDK\Trading\PaisaPayFullEscrowEnabledDefinitionType $paisaPayFullEscrowEnabled
      */
@@ -360,39 +315,35 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     private $eANIdentifierEnabled = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the use of Brand and MPN (Manufacturer Part Number) to identify a product. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>BrandMPNIdentifierEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the use of Brand and MPN (Manufacturer Part Number) to identify a product. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>BrandMPNIdentifierEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @var \Nogrod\eBaySDK\Trading\BrandMPNIdentifierEnabledDefinitionType $brandMPNIdentifierEnabled
      */
     private $brandMPNIdentifierEnabled = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the Best Offer Auto-Accept feature. The Best Offer Auto-Accept feature allows a seller to set a threshold dollar value on a listing, and any Best Offer amount at or above this amount is automatically accepted by the eBay system. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>BestOfferAutoAcceptEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
-     *  <br/><br/>
-     *  <span class="tablenote"><b>Note: </b>
-     *  The Best Offer feature is now available for auction listings on the following sites: US, Canada, UK, Germany, Australia, France, Italy, and Spain. However, sellers must choose between offering Best Offer or Buy It Now on an auction listing, as both features cannot be enabled on the same auction listing.
-     *  </span>
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the Best Offer Auto-Accept feature. The Best Offer Auto-Accept feature allows a seller to set a threshold dollar value on a listing, and any Best Offer amount at or above this amount is automatically accepted by the eBay system. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>BestOfferAutoAcceptEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @var \Nogrod\eBaySDK\Trading\BestOfferAutoAcceptEnabledDefinitionType $bestOfferAutoAcceptEnabled
      */
     private $bestOfferAutoAcceptEnabled = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the Best Offer Auto-Accept feature for classified ad listings. The Best Offer Auto-Accept feature allows a seller to set a threshold dollar value on a listing, and any Best Offer amount at or above this amount is automatically accepted by the eBay system. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ClassifiedAdAutoAcceptEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the Best Offer Auto-Accept feature for classified ad listings. The Best Offer Auto-Accept feature allows a seller to set a threshold dollar value on a listing, and any Best Offer amount at or above this amount is automatically accepted by the eBay system. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ClassifiedAdAutoAcceptEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @var \Nogrod\eBaySDK\Trading\ClassifiedAdAutoAcceptEnabledDefinitionType $classifiedAdAutoAcceptEnabled
      */
     private $classifiedAdAutoAcceptEnabled = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support cross-border trading on the US and CA (English) sites. In cross-border trading, also referred to as International site visibility, a seller is able to post a listing to an additional eBay site for an additional small fee. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>CrossBorderTradeNorthAmericaEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support cross-border trading on the US and CA (English) sites. In cross-border trading, also referred to as International site visibility, a seller is able to post a listing to an additional eBay site for an additional small fee. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>CrossBorderTradeNorthAmericaEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @var \Nogrod\eBaySDK\Trading\CrossBorderTradeNorthAmericaEnabledDefinitionType $crossBorderTradeNorthAmericaEnabled
      */
     private $crossBorderTradeNorthAmericaEnabled = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support cross-border trading on the UK and Ireland sites. In cross-border trading, also referred to as International site visibility, a seller is able to post a listing to an additional eBay site for an additional small fee. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>CrossBorderTradeGBEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support cross-border trading on the UK and Ireland sites. In cross-border trading, also referred to as International site visibility, a seller is able to post a listing to an additional eBay site for an additional small fee. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>CrossBorderTradeGBEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @var \Nogrod\eBaySDK\Trading\CrossBorderTradeGBEnabledDefinitionType $crossBorderTradeGBEnabled
      */
@@ -406,7 +357,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     private $crossBorderTradeAustraliaEnabled = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support PayPal Purchase Protection. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>PayPalBuyerProtectionEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is deprecated. eBay now manages the complete payment and checkout process, so PayPal Purchase Protection no longer applies to eBay orders.
      *
      * @var \Nogrod\eBaySDK\Trading\PayPalBuyerProtectionEnabledDefinitionType $payPalBuyerProtectionEnabled
      */
@@ -434,28 +385,28 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     private $galleryFeaturedDurations = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support PaisaPay Full Escrow workflow timeline.This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>INEscrowWorkflowTimeline</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * PaisaPay is a deprecated payment method, so this field is no longer applicable.
      *
      * @var \Nogrod\eBaySDK\Trading\INEscrowWorkflowTimelineDefinitionType $iNEscrowWorkflowTimeline
      */
     private $iNEscrowWorkflowTimeline = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites require that PayPal is included as an accepted payment method. This is not applicable to classified ad listings, as payment is handled by the buyer and seller, and not eBay. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>PayPalRequired</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is deprecated. eBay now controls the electronic payment methods avaialable to buyers, and the seller does not specify any electronic payment methods.
      *
      * @var \Nogrod\eBaySDK\Trading\PayPalRequiredDefinitionType $payPalRequired
      */
     private $payPalRequired = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support motor vehicle classified ad listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>eBayMotorsProAdFormatEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support motor vehicle classified ad listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>eBayMotorsProAdFormatEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @var \Nogrod\eBaySDK\Trading\EBayMotorsProAdFormatEnabledDefinitionType $eBayMotorsProAdFormatEnabled
      */
     private $eBayMotorsProAdFormatEnabled = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the use of a phone number when contacting the
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the use of a phone number when contacting the
      *  seller about a motor vehicle classified ad listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>eBayMotorsProContactByPhoneEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @var \Nogrod\eBaySDK\Trading\EBayMotorsProContactByPhoneEnabledDefinitionType $eBayMotorsProContactByPhoneEnabled
@@ -463,14 +414,14 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     private $eBayMotorsProContactByPhoneEnabled = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the use of multiple phone numbers for the seller for a motor vehicle classified ad listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>eBayMotorsProContactByPhoneEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the use of multiple phone numbers for the seller for a motor vehicle classified ad listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>eBayMotorsProContactByPhoneEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @var \Nogrod\eBaySDK\Trading\EBayMotorsProPhoneCountDefinitionType $eBayMotorsProPhoneCount
      */
     private $eBayMotorsProPhoneCount = null;
 
     /**
-     * TThis field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the use of an address when contacting the
+     * TThis field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the use of an address when contacting the
      *  seller about a motor vehicle classified ad listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>eBayMotorsProContactByAddressEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @var \Nogrod\eBaySDK\Trading\EBayMotorsProContactByAddressEnabledDefinitionType $eBayMotorsProContactByAddressEnabled
@@ -478,14 +429,14 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     private $eBayMotorsProContactByAddressEnabled = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the use of multiple street address for the seller for a motor vehicle classified ad listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>eBayMotorsProContactByAddressEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the use of multiple street address for the seller for a motor vehicle classified ad listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>eBayMotorsProContactByAddressEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @var \Nogrod\eBaySDK\Trading\EBayMotorsProStreetCountDefinitionType $eBayMotorsProStreetCount
      */
     private $eBayMotorsProStreetCount = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the use of a company name when contacting the
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the use of a company name when contacting the
      *  seller about a motor vehicle classified ad listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>eBayMotorsProCompanyNameEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @var \Nogrod\eBaySDK\Trading\EBayMotorsProCompanyNameEnabledDefinitionType $eBayMotorsProCompanyNameEnabled
@@ -493,70 +444,70 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     private $eBayMotorsProCompanyNameEnabled = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the use of an email address when contacting the seller about a motor vehicle classified ad listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>eBayMotorsProContactByEmailEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the use of an email address when contacting the seller about a motor vehicle classified ad listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>eBayMotorsProContactByEmailEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @var \Nogrod\eBaySDK\Trading\EBayMotorsProContactByEmailEnabledDefinitionType $eBayMotorsProContactByEmailEnabled
      */
     private $eBayMotorsProContactByEmailEnabled = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the Best Offer feature is for motor vehicle classified ad listings. The Best Offer feature allows buyers and sellers to negotiate the price of the item. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>eBayMotorsProBestOfferEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the Best Offer feature is for motor vehicle classified ad listings. The Best Offer feature allows buyers and sellers to negotiate the price of the item. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>eBayMotorsProBestOfferEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @var \Nogrod\eBaySDK\Trading\EBayMotorsProBestOfferEnabledDefinitionType $eBayMotorsProBestOfferEnabled
      */
     private $eBayMotorsProBestOfferEnabled = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the Best Offer Auto-Accept feature for motor vehicle classified ad listings. The Best Offer Auto-Accept feature allows a seller to set a threshold dollar value on a listing, and any Best Offer amount at or above this amount is automatically accepted by the eBay system. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>eBayMotorsProAutoAcceptEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the Best Offer Auto-Accept feature for motor vehicle classified ad listings. The Best Offer Auto-Accept feature allows a seller to set a threshold dollar value on a listing, and any Best Offer amount at or above this amount is automatically accepted by the eBay system. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>eBayMotorsProAutoAcceptEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @var \Nogrod\eBaySDK\Trading\EBayMotorsProAutoAcceptEnabledDefinitionType $eBayMotorsProAutoAcceptEnabled
      */
     private $eBayMotorsProAutoAcceptEnabled = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the Best Offer Auto-Decline feature for motor vehicle classified ad listings. The Best Offer Auto-Decline feature allows a seller to set a lower threshold dollar value on a listing, and any Best Offer amount below this amount is automatically declined by the eBay system. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>eBayMotorsProAutoDeclineEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the Best Offer Auto-Decline feature for motor vehicle classified ad listings. The Best Offer Auto-Decline feature allows a seller to set a lower threshold dollar value on a listing, and any Best Offer amount below this amount is automatically declined by the eBay system. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>eBayMotorsProAutoDeclineEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @var \Nogrod\eBaySDK\Trading\EBayMotorsProAutoDeclineEnabledDefinitionType $eBayMotorsProAutoDeclineEnabled
      */
     private $eBayMotorsProAutoDeclineEnabled = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites allow for the display of acceptable payment methods for motor vehicle classified ad listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>eBayMotorsProPaymentMethodCheckOutEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces allow for the display of acceptable payment methods for motor vehicle classified ad listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>eBayMotorsProPaymentMethodCheckOutEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @var \Nogrod\eBaySDK\Trading\EBayMotorsProPaymentMethodCheckOutEnabledDefinitionType $eBayMotorsProPaymentMethodCheckOutEnabled
      */
     private $eBayMotorsProPaymentMethodCheckOutEnabled = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites allow for the display of shipping service options for motor vehicle classified ad listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>eBayMotorsProShippingMethodEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces allow for the display of shipping service options for motor vehicle classified ad listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>eBayMotorsProShippingMethodEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @var \Nogrod\eBaySDK\Trading\EBayMotorsProShippingMethodEnabledDefinitionType $eBayMotorsProShippingMethodEnabled
      */
     private $eBayMotorsProShippingMethodEnabled = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support counter offers to Best Offers for motor vehicle classified ad listings. The Best Offer feature allows buyers and sellers to negotiate the price of the item, and once a Best Offer price is proposed, the seller can send the buyer a counter offer, and a buyer may even send another counter offer to the seller's counter offer. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>eBayMotorsProCounterOfferEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support counter offers to Best Offers for motor vehicle classified ad listings. The Best Offer feature allows buyers and sellers to negotiate the price of the item, and once a Best Offer price is proposed, the seller can send the buyer a counter offer, and a buyer may even send another counter offer to the seller's counter offer. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>eBayMotorsProCounterOfferEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @var \Nogrod\eBaySDK\Trading\EBayMotorsProCounterOfferEnabledDefinitionType $eBayMotorsProCounterOfferEnabled
      */
     private $eBayMotorsProCounterOfferEnabled = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites allow the seller to provide contact information at listing time for a motor vehicle classified ad listing. This feature is only applicable to motor vehicle classified ad listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>eBayMotorsProSellerContactDetailsEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces allow the seller to provide contact information at listing time for a motor vehicle classified ad listing. This feature is only applicable to motor vehicle classified ad listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>eBayMotorsProSellerContactDetailsEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @var \Nogrod\eBaySDK\Trading\EBayMotorsProSellerContactDetailsEnabledDefinitionType $eBayMotorsProSellerContactDetailsEnabled
      */
     private $eBayMotorsProSellerContactDetailsEnabled = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support Motors Local Market listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalMarketAdFormatEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support Motors Local Market listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalMarketAdFormatEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @var \Nogrod\eBaySDK\Trading\LocalMarketAdFormatEnabledDefinitionType $localMarketAdFormatEnabled
      */
     private $localMarketAdFormatEnabled = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites allow the use of a phone number when contacting the
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces allow the use of a phone number when contacting the
      *  seller about a Motors Local Market listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalMarketContactByPhoneEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @var \Nogrod\eBaySDK\Trading\LocalMarketContactByPhoneEnabledDefinitionType $localMarketContactByPhoneEnabled
@@ -564,14 +515,14 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     private $localMarketContactByPhoneEnabled = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites allow the use of multiple phone numbers for the seller for a Motors Local Market listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalMarketPhoneCount</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces allow the use of multiple phone numbers for the seller for a Motors Local Market listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalMarketPhoneCount</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @var \Nogrod\eBaySDK\Trading\LocalMarketPhoneCountDefinitionType $localMarketPhoneCount
      */
     private $localMarketPhoneCount = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites allow the use of an address when contacting the
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces allow the use of an address when contacting the
      *  seller about a Motors Local Market listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalMarketContactByAddressEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @var \Nogrod\eBaySDK\Trading\LocalMarketContactByAddressEnabledDefinitionType $localMarketContactByAddressEnabled
@@ -579,14 +530,14 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     private $localMarketContactByAddressEnabled = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites allow the use of multiple street address for the seller for a Motors Local Market listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalMarketStreetCount</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces allow the use of multiple street address for the seller for a Motors Local Market listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalMarketStreetCount</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @var \Nogrod\eBaySDK\Trading\LocalMarketStreetCountDefinitionType $localMarketStreetCount
      */
     private $localMarketStreetCount = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the use of a company name when contacting the
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the use of a company name when contacting the
      *  seller about a Motors Local Market listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalMarketCompanyNameEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @var \Nogrod\eBaySDK\Trading\LocalMarketCompanyNameEnabledDefinitionType $localMarketCompanyNameEnabled
@@ -594,70 +545,70 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     private $localMarketCompanyNameEnabled = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the use of an email address when contacting the seller about a Motors Local Market listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalMarketContactByEmailEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the use of an email address when contacting the seller about a Motors Local Market listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalMarketContactByEmailEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @var \Nogrod\eBaySDK\Trading\LocalMarketContactByEmailEnabledDefinitionType $localMarketContactByEmailEnabled
      */
     private $localMarketContactByEmailEnabled = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the Best Offer feature is for Motors Local Market listings. The Best Offer feature allows buyers and sellers to negotiate the price of the item. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalMarketBestOfferEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the Best Offer feature is for Motors Local Market listings. The Best Offer feature allows buyers and sellers to negotiate the price of the item. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalMarketBestOfferEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @var \Nogrod\eBaySDK\Trading\LocalMarketBestOfferEnabledDefinitionType $localMarketBestOfferEnabled
      */
     private $localMarketBestOfferEnabled = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the Best Offer Auto-Accept feature for Motors Local Market listings. The Best Offer Auto-Accept feature allows a seller to set a threshold dollar value on a listing, and any Best Offer amount at or above this amount is automatically accepted by the eBay system. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalMarketAutoAcceptEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the Best Offer Auto-Accept feature for Motors Local Market listings. The Best Offer Auto-Accept feature allows a seller to set a threshold dollar value on a listing, and any Best Offer amount at or above this amount is automatically accepted by the eBay system. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalMarketAutoAcceptEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @var \Nogrod\eBaySDK\Trading\LocalMarketAutoAcceptEnabledDefinitionType $localMarketAutoAcceptEnabled
      */
     private $localMarketAutoAcceptEnabled = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the Best Offer Auto-Decline feature for Motors Local Market listings. The Best Offer Auto-Accept feature allows a seller to set a threshold dollar value on a listing, and any Best Offer amount at or above this amount is automatically accepted by the eBay system. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalMarketAutoDeclineEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the Best Offer Auto-Decline feature for Motors Local Market listings. The Best Offer Auto-Accept feature allows a seller to set a threshold dollar value on a listing, and any Best Offer amount at or above this amount is automatically accepted by the eBay system. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalMarketAutoDeclineEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @var \Nogrod\eBaySDK\Trading\LocalMarketAutoDeclineEnabledDefinitionType $localMarketAutoDeclineEnabled
      */
     private $localMarketAutoDeclineEnabled = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites allow for the display of acceptable payment methods for Motors Local Market listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalMarketPaymentMethodCheckOutEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces allow for the display of acceptable payment methods for Motors Local Market listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalMarketPaymentMethodCheckOutEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @var \Nogrod\eBaySDK\Trading\LocalMarketPaymentMethodCheckOutEnabledDefinitionType $localMarketPaymentMethodCheckOutEnabled
      */
     private $localMarketPaymentMethodCheckOutEnabled = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites allow for the display of shipping service options for Motors Local Market listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalMarketShippingMethodEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces allow for the display of shipping service options for Motors Local Market listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalMarketShippingMethodEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @var \Nogrod\eBaySDK\Trading\LocalMarketShippingMethodEnabledDefinitionType $localMarketShippingMethodEnabled
      */
     private $localMarketShippingMethodEnabled = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support counter offers to Best Offers for Motors Local Market listings. The Best Offer feature allows buyers and sellers to negotiate the price of the item, and once a Best Offer price is proposed, the seller can send the buyer a counter offer, and a buyer may even send another counter offer to the seller's counter offer. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalMarketCounterOfferEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support counter offers to Best Offers for Motors Local Market listings. The Best Offer feature allows buyers and sellers to negotiate the price of the item, and once a Best Offer price is proposed, the seller can send the buyer a counter offer, and a buyer may even send another counter offer to the seller's counter offer. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalMarketCounterOfferEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @var \Nogrod\eBaySDK\Trading\LocalMarketCounterOfferEnabledDefinitionType $localMarketCounterOfferEnabled
      */
     private $localMarketCounterOfferEnabled = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites allow the seller to provide contact information at listing time for Motors Local Market listings. This feature is only applicable to motor vehicle classified ad listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalMarketSellerContactDetailsEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces allow the seller to provide contact information at listing time for Motors Local Market listings. This feature is only applicable to motor vehicle classified ad listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalMarketSellerContactDetailsEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @var \Nogrod\eBaySDK\Trading\LocalMarketSellerContactDetailsEnabledDefinitionType $localMarketSellerContactDetailsEnabled
      */
     private $localMarketSellerContactDetailsEnabled = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the use of multiple phone numbers for the seller for a classified ad listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ClassifiedAdPhoneCount</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the use of multiple phone numbers for the seller for a classified ad listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ClassifiedAdPhoneCount</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @var \Nogrod\eBaySDK\Trading\ClassifiedAdPhoneCountDefinitionType $classifiedAdPhoneCount
      */
     private $classifiedAdPhoneCount = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the use of an address when contacting the
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the use of an address when contacting the
      *  seller about a classified ad listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ClassifiedAdContactByAddressEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a>
      *
      * @var \Nogrod\eBaySDK\Trading\ClassifiedAdContactByAddressEnabledDefinitionType $classifiedAdContactByAddressEnabled
@@ -665,14 +616,14 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     private $classifiedAdContactByAddressEnabled = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the use of multiple street addresses for the seller for a classified ad listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ClassifiedAdStreetCount</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the use of multiple street addresses for the seller for a classified ad listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ClassifiedAdStreetCount</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @var \Nogrod\eBaySDK\Trading\ClassifiedAdStreetCountDefinitionType $classifiedAdStreetCount
      */
     private $classifiedAdStreetCount = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the use of a company name when contacting the
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the use of a company name when contacting the
      *  seller about a classified ad listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ClassifiedAdCompanyNameEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @var \Nogrod\eBaySDK\Trading\ClassifiedAdCompanyNameEnabledDefinitionType $classifiedAdCompanyNameEnabled
@@ -708,14 +659,14 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     private $nonSubscription = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the use of return policies in listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ReturnPolicyEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the use of return policies in listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ReturnPolicyEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @var \Nogrod\eBaySDK\Trading\ReturnPolicyEnabledDefinitionType $returnPolicyEnabled
      */
     private $returnPolicyEnabled = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the use of a stated handling time in listings. The handling time is the maximum number of business days the seller
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the use of a stated handling time in listings. The handling time is the maximum number of business days the seller
      *  commits to for preparing an item to be shipped after receiving a
      *  cleared payment. The seller's handling time does not include the
      *  shipping time (the carrier's transit time). This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>HandlingTimeEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
@@ -732,21 +683,21 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     private $payPalRequiredForStoreOwner = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites allow the quantity of a listing to be revised during the life of the listing. This feature is not applicable to auction listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ReviseQuantityAllowed</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces allow the quantity of a listing to be revised during the life of the listing. This feature is not applicable to auction listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ReviseQuantityAllowed</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @var \Nogrod\eBaySDK\Trading\ReviseQuantityAllowedDefinitionType $reviseQuantityAllowed
      */
     private $reviseQuantityAllowed = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites allow the price of a listing to be revised during the life of the listing. This feature is not applicable to auction listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>RevisePriceAllowed</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces allow the price of a listing to be revised during the life of the listing. This feature is not applicable to auction listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>RevisePriceAllowed</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @var \Nogrod\eBaySDK\Trading\RevisePriceAllowedDefinitionType $revisePriceAllowed
      */
     private $revisePriceAllowed = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support extended listing durations for eBay Business Sellers with eBay Stores. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>RevisePriceAllowed</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support extended listing durations for eBay Business Sellers with eBay Stores. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>RevisePriceAllowed</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @var \Nogrod\eBaySDK\Trading\StoreOwnerExtendedListingDurationsEnabledDefinitionType $storeOwnerExtendedListingDurationsEnabled
      */
@@ -760,49 +711,52 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     private $storeOwnerExtendedListingDurations = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites allow for the display of acceptable payment methods in listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>PaymentMethod</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces allow for the display of acceptable payment methods in listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>PaymentMethod</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     *  <br><br>
+     *  <span class="tablenote"><b>Note:</b>
+     *  eBay now controls all electronic payment methods available to buyers, but sellers still need to specify offline payment methods for listings that require/support offline payment such as motor vehicle listings.</span>
      *
      * @var \Nogrod\eBaySDK\Trading\PaymentMethodDefinitionType $paymentMethod
      */
     private $paymentMethod = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites allow for the applicable max cap per shipping cost for shipping service group1. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>Group1MaxFlatShippingCost</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces allow for the applicable max cap per shipping cost for shipping service group1. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>Group1MaxFlatShippingCost</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @var \Nogrod\eBaySDK\Trading\Group1MaxFlatShippingCostDefinitionType $group1MaxFlatShippingCost
      */
     private $group1MaxFlatShippingCost = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites allow for the applicable max cap per shipping cost for shipping service group2. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>Group2MaxFlatShippingCost</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces allow for the applicable max cap per shipping cost for shipping service group2. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>Group2MaxFlatShippingCost</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @var \Nogrod\eBaySDK\Trading\Group2MaxFlatShippingCostDefinitionType $group2MaxFlatShippingCost
      */
     private $group2MaxFlatShippingCost = null;
 
     /**
-     * TThis field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites allow for the applicable max cap per shipping cost for shipping service group3. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>Group3MaxFlatShippingCost</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * TThis field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces allow for the applicable max cap per shipping cost for shipping service group3. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>Group3MaxFlatShippingCost</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @var \Nogrod\eBaySDK\Trading\Group3MaxFlatShippingCostDefinitionType $group3MaxFlatShippingCost
      */
     private $group3MaxFlatShippingCost = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites do not impose a maximum flat-rate shipping cost if the item is being shipped internationally. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>MaxFlatShippingCostCBTExempt</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces do not impose a maximum flat-rate shipping cost if the item is being shipped internationally. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>MaxFlatShippingCostCBTExempt</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @var \Nogrod\eBaySDK\Trading\MaxFlatShippingCostCBTExemptDefinitionType $maxFlatShippingCostCBTExempt
      */
     private $maxFlatShippingCostCBTExempt = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites do not impose a maximum flat-rate shipping cost. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>MaxFlatShippingCost</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces do not impose a maximum flat-rate shipping cost. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>MaxFlatShippingCost</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @var \Nogrod\eBaySDK\Trading\MaxFlatShippingCostDefinitionType $maxFlatShippingCost
      */
     private $maxFlatShippingCost = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support multiple-variation listings for some categories. Multiple-variation listings contain items that are logically the same product, but that vary in color, size, or other aspect. For example, a particular brand and style of shirt could be available in different sizes and colors, such as "large blue" and "medium black" variations. This feature is only applicable to fixed-price listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>VariationsEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support multiple-variation listings for some categories. Multiple-variation listings contain items that are logically the same product, but that vary in color, size, or other aspect. For example, a particular brand and style of shirt could be available in different sizes and colors, such as "large blue" and "medium black" variations. This feature is only applicable to fixed-price listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>VariationsEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @var \Nogrod\eBaySDK\Trading\VariationsEnabledDefinitionType $variationsEnabled
      */
@@ -816,70 +770,70 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     private $attributeConversionEnabled = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support free, automatic upgrades for Gallery Plus for some categories. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>FreeGalleryPlusEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support free, automatic upgrades for Gallery Plus for some categories. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>FreeGalleryPlusEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @var \Nogrod\eBaySDK\Trading\FreeGalleryPlusEnabledDefinitionType $freeGalleryPlusEnabled
      */
     private $freeGalleryPlusEnabled = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support a free Picture Pack upgrade for some categories. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>FreePicturePackEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support a free Picture Pack upgrade for some categories. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>FreePicturePackEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @var \Nogrod\eBaySDK\Trading\FreePicturePackEnabledDefinitionType $freePicturePackEnabled
      */
     private $freePicturePackEnabled = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support Parts Compatibility for some Parts & Accessories categories. Parts compatibility allows a seller to show a list of all the vehicles that a part or accessory is compatible with in a listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ItemCompatibilityEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support Parts Compatibility for some Parts & Accessories categories. Parts compatibility allows a seller to show a list of all the vehicles that a part or accessory is compatible with in a listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ItemCompatibilityEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @var \Nogrod\eBaySDK\Trading\ItemCompatibilityEnabledDefinitionType $itemCompatibilityEnabled
      */
     private $itemCompatibilityEnabled = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites define a maximum limit for the number of compatible applications for items listed with parts compatibilities by application. Parts compatibility allows a seller to show a list of all the vehicles that a part or accessory is compatible with in a listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>MaxItemCompatibility</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces define a maximum limit for the number of compatible applications for items listed with parts compatibilities by application. Parts compatibility allows a seller to show a list of all the vehicles that a part or accessory is compatible with in a listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>MaxItemCompatibility</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @var \Nogrod\eBaySDK\Trading\MaxItemCompatibilityDefinitionType $maxItemCompatibility
      */
     private $maxItemCompatibility = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites define a minimum amount for the number of compatible applications for items listed with parts compatibilities by application. Parts compatibility allows a seller to show a list of all the vehicles that a part or accessory is compatible with in a listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>MinItemCompatibility</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces define a minimum amount for the number of compatible applications for items listed with parts compatibilities by application. Parts compatibility allows a seller to show a list of all the vehicles that a part or accessory is compatible with in a listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>MinItemCompatibility</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @var \Nogrod\eBaySDK\Trading\MinItemCompatibilityDefinitionType $minItemCompatibility
      */
     private $minItemCompatibility = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the textual description of an item's condition at listing time. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ConditionEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the textual description of an item's condition at listing time. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ConditionEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @var \Nogrod\eBaySDK\Trading\ConditionEnabledDefinitionType $conditionEnabled
      */
     private $conditionEnabled = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support Condition IDs to specify an item's condition at listing time. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ConditionValues</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support Condition IDs to specify an item's condition at listing time. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ConditionValues</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @var \Nogrod\eBaySDK\Trading\ConditionValuesDefinitionType $conditionValues
      */
     private $conditionValues = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support value categories. A Value category will typically have lower listing fees or another eBay promotion. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ValueCategory</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support value categories. A Value category will typically have lower listing fees or another eBay promotion. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ValueCategory</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @var \Nogrod\eBaySDK\Trading\ValueCategoryDefinitionType $valueCategory
      */
     private $valueCategory = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the creation of listings through the specification of Global Trade Identification Numbers (GTINs) like UPC, ISBN, EAN, or Brand/MPN combination. If a GTIN is matched to a product in eBay product catalog, a listing will automatically be created using the eBay catalog product's images, product aspects, description, and title. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ProductCreationEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the creation of listings through the specification of Global Trade Identification Numbers (GTINs) like UPC, ISBN, EAN, or Brand/MPN combination. If a GTIN is matched to a product in eBay product catalog, a listing will automatically be created using the eBay catalog product's images, product aspects, description, and title. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ProductCreationEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @var \Nogrod\eBaySDK\Trading\ProductCreationEnabledDefinitionType $productCreationEnabled
      */
     private $productCreationEnabled = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the EAN product identifying feature. This field will be returned as long as <b>EANEnabled</b> is included as a <b>FeatureID</b> value in the call request or no <b>FeatureID</b> values are passed into the call request.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the EAN product identifying feature. This field will be returned as long as <b>EANEnabled</b> is included as a <b>FeatureID</b> value in the call request or no <b>FeatureID</b> values are passed into the call request.
      *  <br>
      *  <br>
      *  To verify if a specific eBay site supports the EAN product identifying feature (for most categories), look for a <code>true</code> value in the <b>SiteDefaults.EANEnabled</b> field.
@@ -892,7 +846,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     private $eANEnabled = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the ISBN product identifying feature. This field will be returned as long as <b>ISBNEnabled</b> is included as a <b>FeatureID</b> value in the call request or no <b>FeatureID</b> values are passed into the call request.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the ISBN product identifying feature. This field will be returned as long as <b>ISBNEnabled</b> is included as a <b>FeatureID</b> value in the call request or no <b>FeatureID</b> values are passed into the call request.
      *  <br>
      *  <br>
      *  To verify if a specific eBay site supports the ISBN product identifying feature (for most categories), look for a <code>true</code> value in the <b>SiteDefaults.ISBNEnabled</b> field.
@@ -905,7 +859,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     private $iSBNEnabled = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the UPC product identifying feature. This field will be returned as long as <b>UPCEnabled</b> is included as a <b>FeatureID</b> value in the call request or no <b>FeatureID</b> values are passed into the call request.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the UPC product identifying feature. This field will be returned as long as <b>UPCEnabled</b> is included as a <b>FeatureID</b> value in the call request or no <b>FeatureID</b> values are passed into the call request.
      *  <br>
      *  <br>
      *  To verify if a specific eBay site supports the UPC product identifying feature (for most categories), look for a <code>true</code> value in the <b>SiteDefaults.UPCEnabled</b> field.
@@ -918,14 +872,14 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     private $uPCEnabled = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the Parts Compatibility feature for motor vehicles. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>CompatibleVehicleType</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the Parts Compatibility feature for motor vehicles. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>CompatibleVehicleType</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @var \Nogrod\eBaySDK\Trading\CompatibleVehicleTypeDefinitionType $compatibleVehicleType
      */
     private $compatibleVehicleType = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites define a maximum limit for the number of fine-grained item compatibilities that can be applied to a listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>MaxGranularFitmentCount</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces define a maximum limit for the number of fine-grained item compatibilities that can be applied to a listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>MaxGranularFitmentCount</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @var \Nogrod\eBaySDK\Trading\MaxGranularFitmentCountDefinitionType $maxGranularFitmentCount
      */
@@ -939,63 +893,63 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     private $paymentOptionsGroup = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the use of category groups in shipping business policies. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ShippingProfileCategoryGroup</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the use of category groups in shipping business policies. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ShippingProfileCategoryGroup</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @var \Nogrod\eBaySDK\Trading\ProfileCategoryGroupDefinitionType $shippingProfileCategoryGroup
      */
     private $shippingProfileCategoryGroup = null;
 
     /**
-     * TThis field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the use of category groups in payment business policies. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>PaymentProfileCategoryGroup</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * TThis field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the use of category groups in payment business policies. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>PaymentProfileCategoryGroup</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @var \Nogrod\eBaySDK\Trading\ProfileCategoryGroupDefinitionType $paymentProfileCategoryGroup
      */
     private $paymentProfileCategoryGroup = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the use of category groups in return business policies. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ReturnPolicyProfileCategoryGroup</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the use of category groups in return business policies. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ReturnPolicyProfileCategoryGroup</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @var \Nogrod\eBaySDK\Trading\ProfileCategoryGroupDefinitionType $returnPolicyProfileCategoryGroup
      */
     private $returnPolicyProfileCategoryGroup = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the use of the VIN (Vehicle Identification Number) field to identify a motor vehicle and create a listing is supported. VINs are supported on the US, Canada, Canada-French, and Australia sites. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>VINSupported</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the use of the VIN (Vehicle Identification Number) field to identify a motor vehicle and create a listing is supported. VINs are supported on the US, Canada, Canada-French, and Australia sites. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>VINSupported</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @var \Nogrod\eBaySDK\Trading\VINSupportedDefinitionType $vINSupported
      */
     private $vINSupported = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the use of the VRM (Vehicle Registration Mark) field to identify a motor vehicle and create a listing is supported. VRMs are only supported on the UK site. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>VRMSupported</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the use of the VRM (Vehicle Registration Mark) field to identify a motor vehicle and create a listing is supported. VRMs are only supported on the UK site. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>VRMSupported</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @var \Nogrod\eBaySDK\Trading\VRMSupportedDefinitionType $vRMSupported
      */
     private $vRMSupported = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support seller-provided titles in motor vehicle listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>SellerProvidedTitleSupported</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support seller-provided titles in motor vehicle listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>SellerProvidedTitleSupported</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @var \Nogrod\eBaySDK\Trading\SellerProvidedTitleSupportedDefinitionType $sellerProvidedTitleSupported
      */
     private $sellerProvidedTitleSupported = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support deposits/down payments for motor vehicle listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>DepositSupported</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support deposits for motor vehicle listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>DepositSupported</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @var \Nogrod\eBaySDK\Trading\DepositSupportedDefinitionType $depositSupported
      */
     private $depositSupported = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the Global Shipping Program (GSP) as the method for shipping orders internationally. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>GlobalShippingEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the Global Shipping Program (GSP) as the method for shipping orders internationally. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>GlobalShippingEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @var \Nogrod\eBaySDK\Trading\GlobalShippingEnabledDefinitionType $globalShippingEnabled
      */
     private $globalShippingEnabled = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the Boat and Motorcycle Parts Compatibility feature. This field will be returned as long as <b>AdditionalCompatibilityEnabled</b> is included as a <b>FeatureID</b> value in the call request or no <a href="types/FeatureIDCodeType.html">FeatureID</a> values are passed into the call request.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the Boat and Motorcycle Parts Compatibility feature. This field will be returned as long as <b>AdditionalCompatibilityEnabled</b> is included as a <b>FeatureID</b> value in the call request or no <a href="types/FeatureIDCodeType.html">FeatureID</a> values are passed into the call request.
      *  <br>
      *  <br>
      *  To verify if a specific eBay site supports Boat or Motorcycle Parts Compatibility (for most categories), look for a <code>true</code> value in the <b>SiteDefaults.AdditionalCompatibilityEnabled</b> field.
@@ -1011,7 +965,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     private $additionalCompatibilityEnabled = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the Click and Collect feature. This field will be returned as long as <b>PickupDropOffEnabled</b> is included as a <b>FeatureID</b> value in the call request or no <a href="types/FeatureIDCodeType.html">FeatureID</a> values are passed into the call request.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the Click and Collect feature. This field will be returned as long as <b>PickupDropOffEnabled</b> is included as a <b>FeatureID</b> value in the call request or no <a href="types/FeatureIDCodeType.html">FeatureID</a> values are passed into the call request.
      *  <br>
      *  <br>
      *  To verify if a specific eBay site supports the Click and Collect feature (for most categories), look for a <code>true</code> value in the <b>SiteDefaults.PickupDropOffEnabled</b> field.
@@ -1028,7 +982,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     private $pickupDropOffEnabled = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support digital gift card listings. This field will be returned as long as <b>DigitalGoodDeliveryEnabled</b> is included as a <b>FeatureID</b> value in the call request or no <a href="types/FeatureIDCodeType.html">FeatureID</a> values are passed into the call request.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support digital gift card listings. This field will be returned as long as <b>DigitalGoodDeliveryEnabled</b> is included as a <b>FeatureID</b> value in the call request or no <a href="types/FeatureIDCodeType.html">FeatureID</a> values are passed into the call request.
      *  <br>
      *  <br>
      *  To verify if a specific eBay site supports digital gift card listings (for most categories), look for a <code>true</code> value in the <b>SiteDefaults.DigitalGoodDeliveryEnabled</b> field.
@@ -1051,30 +1005,27 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     private $digitalGoodDeliveryEnabled = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the use of an eBay Product ID (e.g. ePID) in an Add/Revise/Relist API call to identify which motorcycles and/or scooters are compatible with a motor vehicle part or accessory. ePIDs can only be used to identify motorcycles and scooters on the Germany and UK sites. This field will be returned as long as <b>EpidSupported</b> is included as a <b>FeatureID</b> value in the call request or no <a href="types/FeatureIDCodeType.html">FeatureID</a> values are passed into the call request.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the use of an eBay Product ID (e.g. ePID) in an Add/Revise/Relist API call to identify which motorcycles and/or scooters are compatible with a motor vehicle part or accessory. ePIDs can only be used to identify motorcycles and scooters on the Germany and UK sites. This field will be returned as long as <b>EpidSupported</b> is included as a <b>FeatureID</b> value in the call request or no <a href="types/FeatureIDCodeType.html">FeatureID</a> values are passed into the call request.
      *  <br/><br/>
      *  For more information on using an ePID to identify a compatible motorcycle or scooter through an Add/Revise/Relist API call on the Germany or UK site, see the documentation for the <a href="
-     *  http://developer.ebay.com/Devzone/XML/docs/Reference/eBay/AddItem.html#Request.Item.ItemCompatibilityList.Compatibility.NameValueList">Compatibility.NameValueList</a> container.
+     *  https://developer.ebay.com/Devzone/XML/docs/Reference/eBay/AddItem.html#Request.Item.ItemCompatibilityList.Compatibility.NameValueList">Compatibility.NameValueList</a> container.
      *
      * @var \Nogrod\eBaySDK\Trading\EpidSupportedDefinitionType $epidSupported
      */
     private $epidSupported = null;
 
     /**
-     * TThis field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the use of a K Type vehicle number in an Add/Revise/Relist API call to identify which cars and/or trucks are compatible with a motor vehicle part or accessory. K type vehicle numbers can only be used to identify cars and trucks on the Germany site. This field will be returned as long as <b>KTypeSupported</b> is included as a <b>FeatureID</b> value in the call request or no <a href="types/FeatureIDCodeType.html">FeatureID</a> values are passed into the call request.
+     * TThis field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the use of a K Type vehicle number in an Add/Revise/Relist API call to identify which cars and/or trucks are compatible with a motor vehicle part or accessory. K type vehicle numbers can only be used to identify cars and trucks on the Germany site. This field will be returned as long as <b>KTypeSupported</b> is included as a <b>FeatureID</b> value in the call request or no <a href="types/FeatureIDCodeType.html">FeatureID</a> values are passed into the call request.
      *  <br/><br/>
      *  For more information on using a K Type vehicle number to identify a compatible car or truck through an Add/Revise/Relist API call on the Germany site, see the documentation for the <a href="
-     *  http://developer.ebay.com/Devzone/XML/docs/Reference/eBay/AddItem.html#Request.Item.ItemCompatibilityList.Compatibility.NameValueList">Compatibility.NameValueList</a> container.
+     *  https://developer.ebay.com/Devzone/XML/docs/Reference/eBay/AddItem.html#Request.Item.ItemCompatibilityList.Compatibility.NameValueList">Compatibility.NameValueList</a> container.
      *
      * @var \Nogrod\eBaySDK\Trading\KTypeSupportedDefinitionType $kTypeSupported
      */
     private $kTypeSupported = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites supports Product-Based Shopping Experience listings (listings associated with eBay catalog products).
-     *  <br><br>
-     *  <span class="tablenote"><b>Note:</b>
-     *  Due to the rollback of the Product-Based Shopping Experience mandate for all eBay categories, association with an eBay catalog product will no longer be required for any categories on any eBay marketplace.</span>
+     * This field is deprecated. No eBay categories require listings based on an eBay catalog product.
      *
      * @var \Nogrod\eBaySDK\Trading\ProductRequiredEnabledDefinitionType $productRequiredEnabled
      */
@@ -1146,7 +1097,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as listingDurations
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support multiple listing durations. Listing durations will vary based on the selling format (auction, fixed-price, or classified ad) and the eBay category. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ListingDurations</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support multiple listing durations. Listing durations will vary based on the selling format (auction, fixed-price, or classified ad) and the eBay category. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ListingDurations</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @return \Nogrod\eBaySDK\Trading\ListingDurationDefinitionsType
      */
@@ -1158,7 +1109,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new listingDurations
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support multiple listing durations. Listing durations will vary based on the selling format (auction, fixed-price, or classified ad) and the eBay category. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ListingDurations</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support multiple listing durations. Listing durations will vary based on the selling format (auction, fixed-price, or classified ad) and the eBay category. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ListingDurations</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @param \Nogrod\eBaySDK\Trading\ListingDurationDefinitionsType $listingDurations
      * @return self
@@ -1172,7 +1123,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as shippingTermsRequired
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites require shipping terms at listing time, whiche includesat least one domestic shipping service option and its associated costs. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ShippingTermsRequired</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces require shipping terms at listing time, which includes at least one domestic shipping service option and its associated costs. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ShippingTermsRequired</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @return \Nogrod\eBaySDK\Trading\ShippingTermRequiredDefinitionType
      */
@@ -1184,7 +1135,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new shippingTermsRequired
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites require shipping terms at listing time, whiche includesat least one domestic shipping service option and its associated costs. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ShippingTermsRequired</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces require shipping terms at listing time, which includes at least one domestic shipping service option and its associated costs. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ShippingTermsRequired</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @param \Nogrod\eBaySDK\Trading\ShippingTermRequiredDefinitionType $shippingTermsRequired
      * @return self
@@ -1198,11 +1149,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as bestOfferEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the Best Offer feature. The Best Offer feature allows buyers and sellers to negotiate the price of the item. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>BestOfferEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
-     *  <br/><br/>
-     *  <span class="tablenote"><b>Note: </b>
-     *  The Best Offer feature is now available for auction listings on the following sites: US, Canada, UK, Germany, Australia, France, Italy, and Spain. However, sellers must choose between offering Best Offer or Buy It Now on an auction listing, as both features cannot be enabled on the same auction listing.
-     *  </span>
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the Best Offer feature. The Best Offer feature allows buyers and sellers to negotiate the price of the item. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>BestOfferEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @return \Nogrod\eBaySDK\Trading\BestOfferEnabledDefinitionType
      */
@@ -1214,11 +1161,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new bestOfferEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the Best Offer feature. The Best Offer feature allows buyers and sellers to negotiate the price of the item. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>BestOfferEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
-     *  <br/><br/>
-     *  <span class="tablenote"><b>Note: </b>
-     *  The Best Offer feature is now available for auction listings on the following sites: US, Canada, UK, Germany, Australia, France, Italy, and Spain. However, sellers must choose between offering Best Offer or Buy It Now on an auction listing, as both features cannot be enabled on the same auction listing.
-     *  </span>
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the Best Offer feature. The Best Offer feature allows buyers and sellers to negotiate the price of the item. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>BestOfferEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @param \Nogrod\eBaySDK\Trading\BestOfferEnabledDefinitionType $bestOfferEnabled
      * @return self
@@ -1232,7 +1175,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as dutchBINEnabled
      *
-     * This field is deprecated.
+     * This field is no longer applicable as Dutch auctions are no longer supported on any eBay marketplace.
      *
      * @return \Nogrod\eBaySDK\Trading\DutchBINEnabledDefinitionType
      */
@@ -1244,7 +1187,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new dutchBINEnabled
      *
-     * This field is deprecated.
+     * This field is no longer applicable as Dutch auctions are no longer supported on any eBay marketplace.
      *
      * @param \Nogrod\eBaySDK\Trading\DutchBINEnabledDefinitionType $dutchBINEnabled
      * @return self
@@ -1284,7 +1227,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as homePageFeaturedEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the temporary display of a seller's listing on a section of the eBay Home Page. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>HomePageFeaturedEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the temporary display of a seller's listing on a section of the eBay Home Page. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>HomePageFeaturedEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @return \Nogrod\eBaySDK\Trading\HomePageFeaturedEnabledDefinitionType
      */
@@ -1296,7 +1239,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new homePageFeaturedEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the temporary display of a seller's listing on a section of the eBay Home Page. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>HomePageFeaturedEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the temporary display of a seller's listing on a section of the eBay Home Page. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>HomePageFeaturedEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @param \Nogrod\eBaySDK\Trading\HomePageFeaturedEnabledDefinitionType $homePageFeaturedEnabled
      * @return self
@@ -1310,7 +1253,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as proPackEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the Pro Pack listing upgrade bundle. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ProPackEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the Pro Pack listing upgrade bundle. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ProPackEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @return \Nogrod\eBaySDK\Trading\ProPackEnabledDefinitionType
      */
@@ -1322,7 +1265,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new proPackEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the Pro Pack listing upgrade bundle. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ProPackEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the Pro Pack listing upgrade bundle. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ProPackEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @param \Nogrod\eBaySDK\Trading\ProPackEnabledDefinitionType $proPackEnabled
      * @return self
@@ -1362,7 +1305,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as valuePackEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the Value Pack listing upgrade bundle. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ValuePackEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the Value Pack listing upgrade bundle. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ValuePackEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @return \Nogrod\eBaySDK\Trading\ValuePackEnabledDefinitionType
      */
@@ -1374,7 +1317,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new valuePackEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the Value Pack listing upgrade bundle. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ValuePackEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the Value Pack listing upgrade bundle. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ValuePackEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @param \Nogrod\eBaySDK\Trading\ValuePackEnabledDefinitionType $valuePackEnabled
      * @return self
@@ -1388,7 +1331,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as proPackPlusEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the Pro Pack Plus listing upgrade bundle. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ProPackPlusEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the Pro Pack Plus listing upgrade bundle. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ProPackPlusEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @return \Nogrod\eBaySDK\Trading\ProPackPlusEnabledDefinitionType
      */
@@ -1400,7 +1343,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new proPackPlusEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the Pro Pack Plus listing upgrade bundle. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ProPackPlusEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the Pro Pack Plus listing upgrade bundle. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ProPackPlusEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @param \Nogrod\eBaySDK\Trading\ProPackPlusEnabledDefinitionType $proPackPlusEnabled
      * @return self
@@ -1414,7 +1357,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as adFormatEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support Classified Ad listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>AdFormatEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support Classified Ad listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>AdFormatEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @return \Nogrod\eBaySDK\Trading\AdFormatEnabledDefinitionType
      */
@@ -1426,7 +1369,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new adFormatEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support Classified Ad listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>AdFormatEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support Classified Ad listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>AdFormatEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @param \Nogrod\eBaySDK\Trading\AdFormatEnabledDefinitionType $adFormatEnabled
      * @return self
@@ -1440,11 +1383,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as bestOfferCounterEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support counter offers to Best Offers. The Best Offer feature allows buyers and sellers to negotiate the price of the item, and once a Best Offer price is proposed, the seller can send the buyer a counter offer, and a buyer may even send another counter offer to the seller's counter offer. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>BestOfferCounterEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
-     *  <br/><br/>
-     *  <span class="tablenote"><b>Note: </b>
-     *  The Best Offer feature is now available for auction listings on the following sites: US, Canada, UK, Germany, Australia, France, Italy, and Spain. However, sellers must choose between offering Best Offer or Buy It Now on an auction listing, as both features cannot be enabled on the same auction listing.
-     *  </span>
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support counter offers to Best Offers. The Best Offer feature allows buyers and sellers to negotiate the price of the item, and once a Best Offer price is proposed, the seller can send the buyer a counter offer, and a buyer may even send another counter offer to the seller's counter offer. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>BestOfferCounterEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @return \Nogrod\eBaySDK\Trading\BestOfferCounterEnabledDefinitionType
      */
@@ -1456,11 +1395,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new bestOfferCounterEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support counter offers to Best Offers. The Best Offer feature allows buyers and sellers to negotiate the price of the item, and once a Best Offer price is proposed, the seller can send the buyer a counter offer, and a buyer may even send another counter offer to the seller's counter offer. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>BestOfferCounterEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
-     *  <br/><br/>
-     *  <span class="tablenote"><b>Note: </b>
-     *  The Best Offer feature is now available for auction listings on the following sites: US, Canada, UK, Germany, Australia, France, Italy, and Spain. However, sellers must choose between offering Best Offer or Buy It Now on an auction listing, as both features cannot be enabled on the same auction listing.
-     *  </span>
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support counter offers to Best Offers. The Best Offer feature allows buyers and sellers to negotiate the price of the item, and once a Best Offer price is proposed, the seller can send the buyer a counter offer, and a buyer may even send another counter offer to the seller's counter offer. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>BestOfferCounterEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @param \Nogrod\eBaySDK\Trading\BestOfferCounterEnabledDefinitionType $bestOfferCounterEnabled
      * @return self
@@ -1474,11 +1409,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as bestOfferAutoDeclineEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the Best Offer Auto-Decline feature. The Best Offer Auto-Decline feature allows a seller to set a lower threshold dollar value on a listing, and any Best Offer amount below this amount is automatically declined by the eBay system. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>BestOfferAutoDeclineEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
-     *  <br/><br/>
-     *  <span class="tablenote"><b>Note: </b>
-     *  The Best Offer feature is now available for auction listings on the following sites: US, Canada, UK, Germany, Australia, France, Italy, and Spain. However, sellers must choose between offering Best Offer or Buy It Now on an auction listing, as both features cannot be enabled on the same auction listing.
-     *  </span>
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the Best Offer Auto-Decline feature. The Best Offer Auto-Decline feature allows a seller to set a lower threshold dollar value on a listing, and any Best Offer amount below this amount is automatically declined by the eBay system. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>BestOfferAutoDeclineEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @return \Nogrod\eBaySDK\Trading\BestOfferAutoDeclineEnabledDefinitionType
      */
@@ -1490,11 +1421,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new bestOfferAutoDeclineEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the Best Offer Auto-Decline feature. The Best Offer Auto-Decline feature allows a seller to set a lower threshold dollar value on a listing, and any Best Offer amount below this amount is automatically declined by the eBay system. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>BestOfferAutoDeclineEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
-     *  <br/><br/>
-     *  <span class="tablenote"><b>Note: </b>
-     *  The Best Offer feature is now available for auction listings on the following sites: US, Canada, UK, Germany, Australia, France, Italy, and Spain. However, sellers must choose between offering Best Offer or Buy It Now on an auction listing, as both features cannot be enabled on the same auction listing.
-     *  </span>
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the Best Offer Auto-Decline feature. The Best Offer Auto-Decline feature allows a seller to set a lower threshold dollar value on a listing, and any Best Offer amount below this amount is automatically declined by the eBay system. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>BestOfferAutoDeclineEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @param \Nogrod\eBaySDK\Trading\BestOfferAutoDeclineEnabledDefinitionType $bestOfferAutoDeclineEnabled
      * @return self
@@ -1508,10 +1435,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as localMarketSpecialitySubscription
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support Motors Local Market listings for dealership subscribers with a specialty subscription. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalMarketSpecialitySubscription</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
-     *  <br><br>
-     *  See the <a href="
-     *  http://pages.ebay.com/help/sell/formats.html#market" target="_blank">Motors Local Market listing help topic</a> for more information.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support Motors Local Market listings for dealership subscribers with a specialty subscription. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalMarketSpecialitySubscription</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @return \Nogrod\eBaySDK\Trading\LocalMarketSpecialitySubscriptionDefinitionType
      */
@@ -1523,10 +1447,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new localMarketSpecialitySubscription
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support Motors Local Market listings for dealership subscribers with a specialty subscription. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalMarketSpecialitySubscription</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
-     *  <br><br>
-     *  See the <a href="
-     *  http://pages.ebay.com/help/sell/formats.html#market" target="_blank">Motors Local Market listing help topic</a> for more information.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support Motors Local Market listings for dealership subscribers with a specialty subscription. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalMarketSpecialitySubscription</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @param \Nogrod\eBaySDK\Trading\LocalMarketSpecialitySubscriptionDefinitionType $localMarketSpecialitySubscription
      * @return self
@@ -1540,10 +1461,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as localMarketRegularSubscription
      *
-     * TThis field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support Motors Local Market listings for dealership subscribers with a regular subscription. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalMarketRegularSubscription</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
-     *  <br><br>
-     *  See the <a href="
-     *  http://pages.ebay.com/help/sell/formats.html#market" target="_blank">Motors Local Market listing help topic</a> for more information.
+     * TThis field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support Motors Local Market listings for dealership subscribers with a regular subscription. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalMarketRegularSubscription</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @return \Nogrod\eBaySDK\Trading\LocalMarketRegularSubscriptionDefinitionType
      */
@@ -1555,10 +1473,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new localMarketRegularSubscription
      *
-     * TThis field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support Motors Local Market listings for dealership subscribers with a regular subscription. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalMarketRegularSubscription</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
-     *  <br><br>
-     *  See the <a href="
-     *  http://pages.ebay.com/help/sell/formats.html#market" target="_blank">Motors Local Market listing help topic</a> for more information.
+     * TThis field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support Motors Local Market listings for dealership subscribers with a regular subscription. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalMarketRegularSubscription</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @param \Nogrod\eBaySDK\Trading\LocalMarketRegularSubscriptionDefinitionType $localMarketRegularSubscription
      * @return self
@@ -1572,10 +1487,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as localMarketPremiumSubscription
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support Motors Local Market listings for dealership subscribers with a premium subscription. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalMarketPremiumSubscription</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
-     *  <br><br>
-     *  See the <a href="
-     *  http://pages.ebay.com/help/sell/formats.html#market" target="_blank">Motors Local Market listing help topic</a> for more information.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support Motors Local Market listings for dealership subscribers with a premium subscription. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalMarketPremiumSubscription</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @return \Nogrod\eBaySDK\Trading\LocalMarketPremiumSubscriptionDefinitionType
      */
@@ -1587,10 +1499,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new localMarketPremiumSubscription
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support Motors Local Market listings for dealership subscribers with a premium subscription. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalMarketPremiumSubscription</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
-     *  <br><br>
-     *  See the <a href="
-     *  http://pages.ebay.com/help/sell/formats.html#market" target="_blank">Motors Local Market listing help topic</a> for more information.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support Motors Local Market listings for dealership subscribers with a premium subscription. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalMarketPremiumSubscription</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @param \Nogrod\eBaySDK\Trading\LocalMarketPremiumSubscriptionDefinitionType $localMarketPremiumSubscription
      * @return self
@@ -1604,10 +1513,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as localMarketNonSubscription
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support Motors Local Market listings for dealerships without a subscription. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalMarketNonSubscription</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
-     *  <br><br>
-     *  See the <a href="
-     *  http://pages.ebay.com/help/sell/formats.html#market" target="_blank">Motors Local Market listing help topic</a> for more information.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support Motors Local Market listings for dealerships without a subscription. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalMarketNonSubscription</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @return \Nogrod\eBaySDK\Trading\LocalMarketNonSubscriptionDefinitionType
      */
@@ -1619,10 +1525,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new localMarketNonSubscription
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support Motors Local Market listings for dealerships without a subscription. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalMarketNonSubscription</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
-     *  <br><br>
-     *  See the <a href="
-     *  http://pages.ebay.com/help/sell/formats.html#market" target="_blank">Motors Local Market listing help topic</a> for more information.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support Motors Local Market listings for dealerships without a subscription. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalMarketNonSubscription</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @param \Nogrod\eBaySDK\Trading\LocalMarketNonSubscriptionDefinitionType $localMarketNonSubscription
      * @return self
@@ -1714,7 +1617,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as minimumReservePrice
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites require a minimum reserve price for an auction item. This feature is only applicable to auction listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>MinimumReservePrice</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces require a minimum reserve price for an auction item. This feature is only applicable to auction listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>MinimumReservePrice</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @return \Nogrod\eBaySDK\Trading\MinimumReservePriceDefinitionType
      */
@@ -1726,7 +1629,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new minimumReservePrice
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites require a minimum reserve price for an auction item. This feature is only applicable to auction listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>MinimumReservePrice</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces require a minimum reserve price for an auction item. This feature is only applicable to auction listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>MinimumReservePrice</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @param \Nogrod\eBaySDK\Trading\MinimumReservePriceDefinitionType $minimumReservePrice
      * @return self
@@ -1766,7 +1669,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as sellerContactDetailsEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites allow the seller to provide contact information at listing time for a classified ad listing. This feature is only applicable to classified ad listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>SellerContactDetailsEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces allow the seller to provide contact information at listing time for a classified ad listing. This feature is only applicable to classified ad listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>SellerContactDetailsEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @return \Nogrod\eBaySDK\Trading\SellerContactDetailsEnabledDefinitionType
      */
@@ -1778,7 +1681,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new sellerContactDetailsEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites allow the seller to provide contact information at listing time for a classified ad listing. This feature is only applicable to classified ad listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>SellerContactDetailsEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces allow the seller to provide contact information at listing time for a classified ad listing. This feature is only applicable to classified ad listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>SellerContactDetailsEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @param \Nogrod\eBaySDK\Trading\SellerContactDetailsEnabledDefinitionType $sellerContactDetailsEnabled
      * @return self
@@ -1870,7 +1773,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as localListingDistancesRegular
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support allow dealership subscribers with a regular subscription to specify local market radius for Motors Local Market listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalListingDistancesRegular</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support allow dealership subscribers with a regular subscription to specify local market radius for Motors Local Market listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalListingDistancesRegular</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @return \Nogrod\eBaySDK\Trading\LocalListingDistancesRegularDefinitionType
      */
@@ -1882,7 +1785,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new localListingDistancesRegular
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support allow dealership subscribers with a regular subscription to specify local market radius for Motors Local Market listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalListingDistancesRegular</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support allow dealership subscribers with a regular subscription to specify local market radius for Motors Local Market listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalListingDistancesRegular</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @param \Nogrod\eBaySDK\Trading\LocalListingDistancesRegularDefinitionType $localListingDistancesRegular
      * @return self
@@ -1896,7 +1799,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as localListingDistancesSpecialty
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites allow dealership subscribers with a specialty subscription to specify local market radius for Motors Local Market listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalListingDistancesSpecialty</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces allow dealership subscribers with a specialty subscription to specify local market radius for Motors Local Market listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalListingDistancesSpecialty</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @return \Nogrod\eBaySDK\Trading\LocalListingDistancesSpecialtyDefinitionType
      */
@@ -1908,7 +1811,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new localListingDistancesSpecialty
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites allow dealership subscribers with a specialty subscription to specify local market radius for Motors Local Market listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalListingDistancesSpecialty</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces allow dealership subscribers with a specialty subscription to specify local market radius for Motors Local Market listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalListingDistancesSpecialty</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @param \Nogrod\eBaySDK\Trading\LocalListingDistancesSpecialtyDefinitionType $localListingDistancesSpecialty
      * @return self
@@ -1922,7 +1825,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as localListingDistancesNonSubscription
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites allow dealership subscribers without a subscription to specify local market radius for Motors Local Market listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalListingDistancesNonSubscription</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces allow dealership subscribers without a subscription to specify local market radius for Motors Local Market listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalListingDistancesNonSubscription</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @return \Nogrod\eBaySDK\Trading\LocalListingDistancesNonSubscriptionDefinitionType
      */
@@ -1934,7 +1837,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new localListingDistancesNonSubscription
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites allow dealership subscribers without a subscription to specify local market radius for Motors Local Market listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalListingDistancesNonSubscription</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces allow dealership subscribers without a subscription to specify local market radius for Motors Local Market listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalListingDistancesNonSubscription</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @param \Nogrod\eBaySDK\Trading\LocalListingDistancesNonSubscriptionDefinitionType $localListingDistancesNonSubscription
      * @return self
@@ -1948,7 +1851,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as classifiedAdPaymentMethodEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites allow for the display of acceptable payment methods for classified ad listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ClassifiedAdPaymentMethodEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces allow for the display of acceptable payment methods for classified ad listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ClassifiedAdPaymentMethodEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @return \Nogrod\eBaySDK\Trading\ClassifiedAdPaymentMethodEnabledDefinitionType
      */
@@ -1960,7 +1863,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new classifiedAdPaymentMethodEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites allow for the display of acceptable payment methods for classified ad listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ClassifiedAdPaymentMethodEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces allow for the display of acceptable payment methods for classified ad listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ClassifiedAdPaymentMethodEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @param \Nogrod\eBaySDK\Trading\ClassifiedAdPaymentMethodEnabledDefinitionType $classifiedAdPaymentMethodEnabled
      * @return self
@@ -1974,7 +1877,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as classifiedAdShippingMethodEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites allow for the display of shipping service options for classified ad listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ClassifiedAdShippingMethodEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces allow for the display of shipping service options for classified ad listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ClassifiedAdShippingMethodEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @return \Nogrod\eBaySDK\Trading\ClassifiedAdShippingMethodEnabledDefinitionType
      */
@@ -1986,7 +1889,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new classifiedAdShippingMethodEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites allow for the display of shipping service options for classified ad listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ClassifiedAdShippingMethodEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces allow for the display of shipping service options for classified ad listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ClassifiedAdShippingMethodEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @param \Nogrod\eBaySDK\Trading\ClassifiedAdShippingMethodEnabledDefinitionType $classifiedAdShippingMethodEnabled
      * @return self
@@ -2000,7 +1903,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as classifiedAdBestOfferEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the Best Offer feature for classified ad listings. The Best Offer feature allows buyers and sellers to negotiate the price of the item. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ClassifiedAdBestOfferEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the Best Offer feature for classified ad listings. The Best Offer feature allows buyers and sellers to negotiate the price of the item. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ClassifiedAdBestOfferEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @return \Nogrod\eBaySDK\Trading\ClassifiedAdBestOfferEnabledDefinitionType
      */
@@ -2012,7 +1915,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new classifiedAdBestOfferEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the Best Offer feature for classified ad listings. The Best Offer feature allows buyers and sellers to negotiate the price of the item. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ClassifiedAdBestOfferEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the Best Offer feature for classified ad listings. The Best Offer feature allows buyers and sellers to negotiate the price of the item. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ClassifiedAdBestOfferEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @param \Nogrod\eBaySDK\Trading\ClassifiedAdBestOfferEnabledDefinitionType $classifiedAdBestOfferEnabled
      * @return self
@@ -2026,7 +1929,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as classifiedAdCounterOfferEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support counter offers to Best Offers for classified ad listings. The Best Offer feature allows buyers and sellers to negotiate the price of the item, and once a Best Offer price is proposed, the seller can send the buyer a counter offer, and a buyer may even send another counter offer to the seller's counter offer. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ClassifiedAdCounterOfferEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support counter offers to Best Offers for classified ad listings. The Best Offer feature allows buyers and sellers to negotiate the price of the item, and once a Best Offer price is proposed, the seller can send the buyer a counter offer, and a buyer may even send another counter offer to the seller's counter offer. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ClassifiedAdCounterOfferEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @return \Nogrod\eBaySDK\Trading\ClassifiedAdCounterOfferEnabledDefinitionType
      */
@@ -2038,7 +1941,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new classifiedAdCounterOfferEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support counter offers to Best Offers for classified ad listings. The Best Offer feature allows buyers and sellers to negotiate the price of the item, and once a Best Offer price is proposed, the seller can send the buyer a counter offer, and a buyer may even send another counter offer to the seller's counter offer. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ClassifiedAdCounterOfferEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support counter offers to Best Offers for classified ad listings. The Best Offer feature allows buyers and sellers to negotiate the price of the item, and once a Best Offer price is proposed, the seller can send the buyer a counter offer, and a buyer may even send another counter offer to the seller's counter offer. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ClassifiedAdCounterOfferEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @param \Nogrod\eBaySDK\Trading\ClassifiedAdCounterOfferEnabledDefinitionType $classifiedAdCounterOfferEnabled
      * @return self
@@ -2052,7 +1955,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as classifiedAdAutoDeclineEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the Best Offer Auto-Decline feature for classified ad listings. The Best Offer Auto-Decline feature allows a seller to set a lower threshold dollar value on a listing, and any Best Offer amount below this amount is automatically declined by the eBay system. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ClassifiedAdAutoDeclineEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the Best Offer Auto-Decline feature for classified ad listings. The Best Offer Auto-Decline feature allows a seller to set a lower threshold dollar value on a listing, and any Best Offer amount below this amount is automatically declined by the eBay system. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ClassifiedAdAutoDeclineEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @return \Nogrod\eBaySDK\Trading\ClassifiedAdAutoDeclineEnabledDefinitionType
      */
@@ -2064,7 +1967,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new classifiedAdAutoDeclineEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the Best Offer Auto-Decline feature for classified ad listings. The Best Offer Auto-Decline feature allows a seller to set a lower threshold dollar value on a listing, and any Best Offer amount below this amount is automatically declined by the eBay system. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ClassifiedAdAutoDeclineEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the Best Offer Auto-Decline feature for classified ad listings. The Best Offer Auto-Decline feature allows a seller to set a lower threshold dollar value on a listing, and any Best Offer amount below this amount is automatically declined by the eBay system. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ClassifiedAdAutoDeclineEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @param \Nogrod\eBaySDK\Trading\ClassifiedAdAutoDeclineEnabledDefinitionType $classifiedAdAutoDeclineEnabled
      * @return self
@@ -2078,7 +1981,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as classifiedAdContactByPhoneEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the use of a phone number when contacting the
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the use of a phone number when contacting the
      *  seller about a classified ad listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ClassifiedAdContactByPhoneEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @return \Nogrod\eBaySDK\Trading\ClassifiedAdContactByPhoneEnabledDefinitionType
@@ -2091,7 +1994,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new classifiedAdContactByPhoneEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the use of a phone number when contacting the
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the use of a phone number when contacting the
      *  seller about a classified ad listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ClassifiedAdContactByPhoneEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @param \Nogrod\eBaySDK\Trading\ClassifiedAdContactByPhoneEnabledDefinitionType $classifiedAdContactByPhoneEnabled
@@ -2106,7 +2009,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as classifiedAdContactByEmailEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the use of an email address when contacting the seller about a classified ad listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ClassifiedAdContactByEmailEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the use of an email address when contacting the seller about a classified ad listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ClassifiedAdContactByEmailEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @return \Nogrod\eBaySDK\Trading\ClassifiedAdContactByEmailEnabledDefintionType
      */
@@ -2118,7 +2021,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new classifiedAdContactByEmailEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the use of an email address when contacting the seller about a classified ad listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ClassifiedAdContactByEmailEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the use of an email address when contacting the seller about a classified ad listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ClassifiedAdContactByEmailEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @param \Nogrod\eBaySDK\Trading\ClassifiedAdContactByEmailEnabledDefintionType $classifiedAdContactByEmailEnabled
      * @return self
@@ -2132,28 +2035,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as safePaymentRequired
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites require at least one form of safe payment. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>SafePaymentRequired</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
-     *  <br><br>
-     *  For the US, Canada and Australia sites, users registered after January
-     *  17, 2007 are required to offer at least one safe payment method (i.e.
-     *  PayPal/PaisaPay, or one of the credit cards specified in
-     *  <b>Item.PaymentMethods</b>).
-     *  <br><br>
-     *  If a seller has a <code>SafePaymentExempt</code> status, they are exempt from the
-     *  requirement to offer at least one safe payment method when listing
-     *  an item on a site that has the safe payment requirement.
-     *  <br>
-     *  The safe payment requirement also applies to two-category listings that have
-     *  one ship-to or available-to location in the US, Canada, or Australia. The
-     *  French Canadian (CAFR) site is a special case, because listings on the CAFR
-     *  site with ship-to or available-to locations in Canada do not require a Safe
-     *  Payment method, yet listings on the CAFR site with ship-to or available-to
-     *  locations in the US or Australia do require a Safe Payment method.
-     *  <br><br>
-     *  The Business and Industrial, Motors, Real Estate, and Mature Audiences
-     *  categories, and all listings that don't support the <b>Item.PaymentMethods</b> field are
-     *  exempt from this requirement. Therefore, listings in those categories do not
-     *  require a safe payment method.
+     * eBay controls all forms of electronic payment methods that are avaialable to buyers, so this field is no longer applicable.
      *
      * @return \Nogrod\eBaySDK\Trading\SafePaymentRequiredDefinitionType
      */
@@ -2165,28 +2047,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new safePaymentRequired
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites require at least one form of safe payment. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>SafePaymentRequired</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
-     *  <br><br>
-     *  For the US, Canada and Australia sites, users registered after January
-     *  17, 2007 are required to offer at least one safe payment method (i.e.
-     *  PayPal/PaisaPay, or one of the credit cards specified in
-     *  <b>Item.PaymentMethods</b>).
-     *  <br><br>
-     *  If a seller has a <code>SafePaymentExempt</code> status, they are exempt from the
-     *  requirement to offer at least one safe payment method when listing
-     *  an item on a site that has the safe payment requirement.
-     *  <br>
-     *  The safe payment requirement also applies to two-category listings that have
-     *  one ship-to or available-to location in the US, Canada, or Australia. The
-     *  French Canadian (CAFR) site is a special case, because listings on the CAFR
-     *  site with ship-to or available-to locations in Canada do not require a Safe
-     *  Payment method, yet listings on the CAFR site with ship-to or available-to
-     *  locations in the US or Australia do require a Safe Payment method.
-     *  <br><br>
-     *  The Business and Industrial, Motors, Real Estate, and Mature Audiences
-     *  categories, and all listings that don't support the <b>Item.PaymentMethods</b> field are
-     *  exempt from this requirement. Therefore, listings in those categories do not
-     *  require a safe payment method.
+     * eBay controls all forms of electronic payment methods that are avaialable to buyers, so this field is no longer applicable.
      *
      * @param \Nogrod\eBaySDK\Trading\SafePaymentRequiredDefinitionType $safePaymentRequired
      * @return self
@@ -2226,7 +2087,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as itemSpecificsEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the use of Item Specifics in listings. Item Specifics are typical aspects that items in a specific category tend to have, and they allow sellers to provide descriptive details of an item in a structured manner. For example, in a jewelry category, sellers might describe lockets with Item Specifics name-value pairs like "Chain Length=18 in." and "Main Shape=Heart", or in a Washers & Dryers category, sellers might include "Type=Top-Loading". This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ItemSpecificsEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the use of Item Specifics in listings. Item Specifics are typical aspects that items in a specific category tend to have, and they allow sellers to provide descriptive details of an item in a structured manner. For example, in a jewelry category, sellers might describe lockets with Item Specifics name-value pairs like "Chain Length=18 in." and "Main Shape=Heart", or in a Washers & Dryers category, sellers might include "Type=Top-Loading". This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ItemSpecificsEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @return \Nogrod\eBaySDK\Trading\ItemSpecificsEnabledDefinitionType
      */
@@ -2238,7 +2099,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new itemSpecificsEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the use of Item Specifics in listings. Item Specifics are typical aspects that items in a specific category tend to have, and they allow sellers to provide descriptive details of an item in a structured manner. For example, in a jewelry category, sellers might describe lockets with Item Specifics name-value pairs like "Chain Length=18 in." and "Main Shape=Heart", or in a Washers & Dryers category, sellers might include "Type=Top-Loading". This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ItemSpecificsEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the use of Item Specifics in listings. Item Specifics are typical aspects that items in a specific category tend to have, and they allow sellers to provide descriptive details of an item in a structured manner. For example, in a jewelry category, sellers might describe lockets with Item Specifics name-value pairs like "Chain Length=18 in." and "Main Shape=Heart", or in a Washers & Dryers category, sellers might include "Type=Top-Loading". This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ItemSpecificsEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @param \Nogrod\eBaySDK\Trading\ItemSpecificsEnabledDefinitionType $itemSpecificsEnabled
      * @return self
@@ -2252,7 +2113,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as paisaPayFullEscrowEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the use of PaisaPay Full Escrow as a payment method. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>PaisaPayFullEscrowEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * PaisaPay is a deprecated payment method, so this field is no longer applicable.
      *
      * @return \Nogrod\eBaySDK\Trading\PaisaPayFullEscrowEnabledDefinitionType
      */
@@ -2264,7 +2125,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new paisaPayFullEscrowEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the use of PaisaPay Full Escrow as a payment method. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>PaisaPayFullEscrowEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * PaisaPay is a deprecated payment method, so this field is no longer applicable.
      *
      * @param \Nogrod\eBaySDK\Trading\PaisaPayFullEscrowEnabledDefinitionType $paisaPayFullEscrowEnabled
      * @return self
@@ -2356,7 +2217,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as brandMPNIdentifierEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the use of Brand and MPN (Manufacturer Part Number) to identify a product. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>BrandMPNIdentifierEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the use of Brand and MPN (Manufacturer Part Number) to identify a product. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>BrandMPNIdentifierEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @return \Nogrod\eBaySDK\Trading\BrandMPNIdentifierEnabledDefinitionType
      */
@@ -2368,7 +2229,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new brandMPNIdentifierEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the use of Brand and MPN (Manufacturer Part Number) to identify a product. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>BrandMPNIdentifierEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the use of Brand and MPN (Manufacturer Part Number) to identify a product. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>BrandMPNIdentifierEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @param \Nogrod\eBaySDK\Trading\BrandMPNIdentifierEnabledDefinitionType $brandMPNIdentifierEnabled
      * @return self
@@ -2382,11 +2243,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as bestOfferAutoAcceptEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the Best Offer Auto-Accept feature. The Best Offer Auto-Accept feature allows a seller to set a threshold dollar value on a listing, and any Best Offer amount at or above this amount is automatically accepted by the eBay system. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>BestOfferAutoAcceptEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
-     *  <br/><br/>
-     *  <span class="tablenote"><b>Note: </b>
-     *  The Best Offer feature is now available for auction listings on the following sites: US, Canada, UK, Germany, Australia, France, Italy, and Spain. However, sellers must choose between offering Best Offer or Buy It Now on an auction listing, as both features cannot be enabled on the same auction listing.
-     *  </span>
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the Best Offer Auto-Accept feature. The Best Offer Auto-Accept feature allows a seller to set a threshold dollar value on a listing, and any Best Offer amount at or above this amount is automatically accepted by the eBay system. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>BestOfferAutoAcceptEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @return \Nogrod\eBaySDK\Trading\BestOfferAutoAcceptEnabledDefinitionType
      */
@@ -2398,11 +2255,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new bestOfferAutoAcceptEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the Best Offer Auto-Accept feature. The Best Offer Auto-Accept feature allows a seller to set a threshold dollar value on a listing, and any Best Offer amount at or above this amount is automatically accepted by the eBay system. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>BestOfferAutoAcceptEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
-     *  <br/><br/>
-     *  <span class="tablenote"><b>Note: </b>
-     *  The Best Offer feature is now available for auction listings on the following sites: US, Canada, UK, Germany, Australia, France, Italy, and Spain. However, sellers must choose between offering Best Offer or Buy It Now on an auction listing, as both features cannot be enabled on the same auction listing.
-     *  </span>
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the Best Offer Auto-Accept feature. The Best Offer Auto-Accept feature allows a seller to set a threshold dollar value on a listing, and any Best Offer amount at or above this amount is automatically accepted by the eBay system. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>BestOfferAutoAcceptEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @param \Nogrod\eBaySDK\Trading\BestOfferAutoAcceptEnabledDefinitionType $bestOfferAutoAcceptEnabled
      * @return self
@@ -2416,7 +2269,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as classifiedAdAutoAcceptEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the Best Offer Auto-Accept feature for classified ad listings. The Best Offer Auto-Accept feature allows a seller to set a threshold dollar value on a listing, and any Best Offer amount at or above this amount is automatically accepted by the eBay system. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ClassifiedAdAutoAcceptEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the Best Offer Auto-Accept feature for classified ad listings. The Best Offer Auto-Accept feature allows a seller to set a threshold dollar value on a listing, and any Best Offer amount at or above this amount is automatically accepted by the eBay system. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ClassifiedAdAutoAcceptEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @return \Nogrod\eBaySDK\Trading\ClassifiedAdAutoAcceptEnabledDefinitionType
      */
@@ -2428,7 +2281,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new classifiedAdAutoAcceptEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the Best Offer Auto-Accept feature for classified ad listings. The Best Offer Auto-Accept feature allows a seller to set a threshold dollar value on a listing, and any Best Offer amount at or above this amount is automatically accepted by the eBay system. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ClassifiedAdAutoAcceptEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the Best Offer Auto-Accept feature for classified ad listings. The Best Offer Auto-Accept feature allows a seller to set a threshold dollar value on a listing, and any Best Offer amount at or above this amount is automatically accepted by the eBay system. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ClassifiedAdAutoAcceptEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @param \Nogrod\eBaySDK\Trading\ClassifiedAdAutoAcceptEnabledDefinitionType $classifiedAdAutoAcceptEnabled
      * @return self
@@ -2442,7 +2295,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as crossBorderTradeNorthAmericaEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support cross-border trading on the US and CA (English) sites. In cross-border trading, also referred to as International site visibility, a seller is able to post a listing to an additional eBay site for an additional small fee. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>CrossBorderTradeNorthAmericaEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support cross-border trading on the US and CA (English) sites. In cross-border trading, also referred to as International site visibility, a seller is able to post a listing to an additional eBay site for an additional small fee. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>CrossBorderTradeNorthAmericaEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @return \Nogrod\eBaySDK\Trading\CrossBorderTradeNorthAmericaEnabledDefinitionType
      */
@@ -2454,7 +2307,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new crossBorderTradeNorthAmericaEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support cross-border trading on the US and CA (English) sites. In cross-border trading, also referred to as International site visibility, a seller is able to post a listing to an additional eBay site for an additional small fee. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>CrossBorderTradeNorthAmericaEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support cross-border trading on the US and CA (English) sites. In cross-border trading, also referred to as International site visibility, a seller is able to post a listing to an additional eBay site for an additional small fee. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>CrossBorderTradeNorthAmericaEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @param \Nogrod\eBaySDK\Trading\CrossBorderTradeNorthAmericaEnabledDefinitionType $crossBorderTradeNorthAmericaEnabled
      * @return self
@@ -2468,7 +2321,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as crossBorderTradeGBEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support cross-border trading on the UK and Ireland sites. In cross-border trading, also referred to as International site visibility, a seller is able to post a listing to an additional eBay site for an additional small fee. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>CrossBorderTradeGBEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support cross-border trading on the UK and Ireland sites. In cross-border trading, also referred to as International site visibility, a seller is able to post a listing to an additional eBay site for an additional small fee. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>CrossBorderTradeGBEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @return \Nogrod\eBaySDK\Trading\CrossBorderTradeGBEnabledDefinitionType
      */
@@ -2480,7 +2333,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new crossBorderTradeGBEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support cross-border trading on the UK and Ireland sites. In cross-border trading, also referred to as International site visibility, a seller is able to post a listing to an additional eBay site for an additional small fee. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>CrossBorderTradeGBEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support cross-border trading on the UK and Ireland sites. In cross-border trading, also referred to as International site visibility, a seller is able to post a listing to an additional eBay site for an additional small fee. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>CrossBorderTradeGBEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @param \Nogrod\eBaySDK\Trading\CrossBorderTradeGBEnabledDefinitionType $crossBorderTradeGBEnabled
      * @return self
@@ -2520,7 +2373,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as payPalBuyerProtectionEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support PayPal Purchase Protection. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>PayPalBuyerProtectionEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is deprecated. eBay now manages the complete payment and checkout process, so PayPal Purchase Protection no longer applies to eBay orders.
      *
      * @return \Nogrod\eBaySDK\Trading\PayPalBuyerProtectionEnabledDefinitionType
      */
@@ -2532,7 +2385,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new payPalBuyerProtectionEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support PayPal Purchase Protection. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>PayPalBuyerProtectionEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is deprecated. eBay now manages the complete payment and checkout process, so PayPal Purchase Protection no longer applies to eBay orders.
      *
      * @param \Nogrod\eBaySDK\Trading\PayPalBuyerProtectionEnabledDefinitionType $payPalBuyerProtectionEnabled
      * @return self
@@ -2624,7 +2477,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as iNEscrowWorkflowTimeline
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support PaisaPay Full Escrow workflow timeline.This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>INEscrowWorkflowTimeline</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * PaisaPay is a deprecated payment method, so this field is no longer applicable.
      *
      * @return \Nogrod\eBaySDK\Trading\INEscrowWorkflowTimelineDefinitionType
      */
@@ -2636,7 +2489,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new iNEscrowWorkflowTimeline
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support PaisaPay Full Escrow workflow timeline.This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>INEscrowWorkflowTimeline</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * PaisaPay is a deprecated payment method, so this field is no longer applicable.
      *
      * @param \Nogrod\eBaySDK\Trading\INEscrowWorkflowTimelineDefinitionType $iNEscrowWorkflowTimeline
      * @return self
@@ -2650,7 +2503,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as payPalRequired
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites require that PayPal is included as an accepted payment method. This is not applicable to classified ad listings, as payment is handled by the buyer and seller, and not eBay. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>PayPalRequired</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is deprecated. eBay now controls the electronic payment methods avaialable to buyers, and the seller does not specify any electronic payment methods.
      *
      * @return \Nogrod\eBaySDK\Trading\PayPalRequiredDefinitionType
      */
@@ -2662,7 +2515,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new payPalRequired
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites require that PayPal is included as an accepted payment method. This is not applicable to classified ad listings, as payment is handled by the buyer and seller, and not eBay. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>PayPalRequired</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is deprecated. eBay now controls the electronic payment methods avaialable to buyers, and the seller does not specify any electronic payment methods.
      *
      * @param \Nogrod\eBaySDK\Trading\PayPalRequiredDefinitionType $payPalRequired
      * @return self
@@ -2676,7 +2529,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as eBayMotorsProAdFormatEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support motor vehicle classified ad listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>eBayMotorsProAdFormatEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support motor vehicle classified ad listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>eBayMotorsProAdFormatEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @return \Nogrod\eBaySDK\Trading\EBayMotorsProAdFormatEnabledDefinitionType
      */
@@ -2688,7 +2541,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new eBayMotorsProAdFormatEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support motor vehicle classified ad listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>eBayMotorsProAdFormatEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support motor vehicle classified ad listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>eBayMotorsProAdFormatEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @param \Nogrod\eBaySDK\Trading\EBayMotorsProAdFormatEnabledDefinitionType $eBayMotorsProAdFormatEnabled
      * @return self
@@ -2702,7 +2555,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as eBayMotorsProContactByPhoneEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the use of a phone number when contacting the
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the use of a phone number when contacting the
      *  seller about a motor vehicle classified ad listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>eBayMotorsProContactByPhoneEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @return \Nogrod\eBaySDK\Trading\EBayMotorsProContactByPhoneEnabledDefinitionType
@@ -2715,7 +2568,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new eBayMotorsProContactByPhoneEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the use of a phone number when contacting the
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the use of a phone number when contacting the
      *  seller about a motor vehicle classified ad listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>eBayMotorsProContactByPhoneEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @param \Nogrod\eBaySDK\Trading\EBayMotorsProContactByPhoneEnabledDefinitionType $eBayMotorsProContactByPhoneEnabled
@@ -2730,7 +2583,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as eBayMotorsProPhoneCount
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the use of multiple phone numbers for the seller for a motor vehicle classified ad listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>eBayMotorsProContactByPhoneEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the use of multiple phone numbers for the seller for a motor vehicle classified ad listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>eBayMotorsProContactByPhoneEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @return \Nogrod\eBaySDK\Trading\EBayMotorsProPhoneCountDefinitionType
      */
@@ -2742,7 +2595,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new eBayMotorsProPhoneCount
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the use of multiple phone numbers for the seller for a motor vehicle classified ad listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>eBayMotorsProContactByPhoneEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the use of multiple phone numbers for the seller for a motor vehicle classified ad listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>eBayMotorsProContactByPhoneEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @param \Nogrod\eBaySDK\Trading\EBayMotorsProPhoneCountDefinitionType $eBayMotorsProPhoneCount
      * @return self
@@ -2756,7 +2609,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as eBayMotorsProContactByAddressEnabled
      *
-     * TThis field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the use of an address when contacting the
+     * TThis field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the use of an address when contacting the
      *  seller about a motor vehicle classified ad listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>eBayMotorsProContactByAddressEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @return \Nogrod\eBaySDK\Trading\EBayMotorsProContactByAddressEnabledDefinitionType
@@ -2769,7 +2622,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new eBayMotorsProContactByAddressEnabled
      *
-     * TThis field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the use of an address when contacting the
+     * TThis field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the use of an address when contacting the
      *  seller about a motor vehicle classified ad listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>eBayMotorsProContactByAddressEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @param \Nogrod\eBaySDK\Trading\EBayMotorsProContactByAddressEnabledDefinitionType $eBayMotorsProContactByAddressEnabled
@@ -2784,7 +2637,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as eBayMotorsProStreetCount
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the use of multiple street address for the seller for a motor vehicle classified ad listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>eBayMotorsProContactByAddressEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the use of multiple street address for the seller for a motor vehicle classified ad listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>eBayMotorsProContactByAddressEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @return \Nogrod\eBaySDK\Trading\EBayMotorsProStreetCountDefinitionType
      */
@@ -2796,7 +2649,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new eBayMotorsProStreetCount
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the use of multiple street address for the seller for a motor vehicle classified ad listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>eBayMotorsProContactByAddressEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the use of multiple street address for the seller for a motor vehicle classified ad listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>eBayMotorsProContactByAddressEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @param \Nogrod\eBaySDK\Trading\EBayMotorsProStreetCountDefinitionType $eBayMotorsProStreetCount
      * @return self
@@ -2810,7 +2663,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as eBayMotorsProCompanyNameEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the use of a company name when contacting the
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the use of a company name when contacting the
      *  seller about a motor vehicle classified ad listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>eBayMotorsProCompanyNameEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @return \Nogrod\eBaySDK\Trading\EBayMotorsProCompanyNameEnabledDefinitionType
@@ -2823,7 +2676,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new eBayMotorsProCompanyNameEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the use of a company name when contacting the
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the use of a company name when contacting the
      *  seller about a motor vehicle classified ad listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>eBayMotorsProCompanyNameEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @param \Nogrod\eBaySDK\Trading\EBayMotorsProCompanyNameEnabledDefinitionType $eBayMotorsProCompanyNameEnabled
@@ -2838,7 +2691,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as eBayMotorsProContactByEmailEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the use of an email address when contacting the seller about a motor vehicle classified ad listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>eBayMotorsProContactByEmailEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the use of an email address when contacting the seller about a motor vehicle classified ad listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>eBayMotorsProContactByEmailEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @return \Nogrod\eBaySDK\Trading\EBayMotorsProContactByEmailEnabledDefinitionType
      */
@@ -2850,7 +2703,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new eBayMotorsProContactByEmailEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the use of an email address when contacting the seller about a motor vehicle classified ad listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>eBayMotorsProContactByEmailEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the use of an email address when contacting the seller about a motor vehicle classified ad listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>eBayMotorsProContactByEmailEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @param \Nogrod\eBaySDK\Trading\EBayMotorsProContactByEmailEnabledDefinitionType $eBayMotorsProContactByEmailEnabled
      * @return self
@@ -2864,7 +2717,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as eBayMotorsProBestOfferEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the Best Offer feature is for motor vehicle classified ad listings. The Best Offer feature allows buyers and sellers to negotiate the price of the item. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>eBayMotorsProBestOfferEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the Best Offer feature is for motor vehicle classified ad listings. The Best Offer feature allows buyers and sellers to negotiate the price of the item. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>eBayMotorsProBestOfferEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @return \Nogrod\eBaySDK\Trading\EBayMotorsProBestOfferEnabledDefinitionType
      */
@@ -2876,7 +2729,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new eBayMotorsProBestOfferEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the Best Offer feature is for motor vehicle classified ad listings. The Best Offer feature allows buyers and sellers to negotiate the price of the item. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>eBayMotorsProBestOfferEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the Best Offer feature is for motor vehicle classified ad listings. The Best Offer feature allows buyers and sellers to negotiate the price of the item. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>eBayMotorsProBestOfferEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @param \Nogrod\eBaySDK\Trading\EBayMotorsProBestOfferEnabledDefinitionType $eBayMotorsProBestOfferEnabled
      * @return self
@@ -2890,7 +2743,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as eBayMotorsProAutoAcceptEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the Best Offer Auto-Accept feature for motor vehicle classified ad listings. The Best Offer Auto-Accept feature allows a seller to set a threshold dollar value on a listing, and any Best Offer amount at or above this amount is automatically accepted by the eBay system. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>eBayMotorsProAutoAcceptEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the Best Offer Auto-Accept feature for motor vehicle classified ad listings. The Best Offer Auto-Accept feature allows a seller to set a threshold dollar value on a listing, and any Best Offer amount at or above this amount is automatically accepted by the eBay system. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>eBayMotorsProAutoAcceptEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @return \Nogrod\eBaySDK\Trading\EBayMotorsProAutoAcceptEnabledDefinitionType
      */
@@ -2902,7 +2755,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new eBayMotorsProAutoAcceptEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the Best Offer Auto-Accept feature for motor vehicle classified ad listings. The Best Offer Auto-Accept feature allows a seller to set a threshold dollar value on a listing, and any Best Offer amount at or above this amount is automatically accepted by the eBay system. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>eBayMotorsProAutoAcceptEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the Best Offer Auto-Accept feature for motor vehicle classified ad listings. The Best Offer Auto-Accept feature allows a seller to set a threshold dollar value on a listing, and any Best Offer amount at or above this amount is automatically accepted by the eBay system. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>eBayMotorsProAutoAcceptEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @param \Nogrod\eBaySDK\Trading\EBayMotorsProAutoAcceptEnabledDefinitionType $eBayMotorsProAutoAcceptEnabled
      * @return self
@@ -2916,7 +2769,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as eBayMotorsProAutoDeclineEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the Best Offer Auto-Decline feature for motor vehicle classified ad listings. The Best Offer Auto-Decline feature allows a seller to set a lower threshold dollar value on a listing, and any Best Offer amount below this amount is automatically declined by the eBay system. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>eBayMotorsProAutoDeclineEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the Best Offer Auto-Decline feature for motor vehicle classified ad listings. The Best Offer Auto-Decline feature allows a seller to set a lower threshold dollar value on a listing, and any Best Offer amount below this amount is automatically declined by the eBay system. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>eBayMotorsProAutoDeclineEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @return \Nogrod\eBaySDK\Trading\EBayMotorsProAutoDeclineEnabledDefinitionType
      */
@@ -2928,7 +2781,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new eBayMotorsProAutoDeclineEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the Best Offer Auto-Decline feature for motor vehicle classified ad listings. The Best Offer Auto-Decline feature allows a seller to set a lower threshold dollar value on a listing, and any Best Offer amount below this amount is automatically declined by the eBay system. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>eBayMotorsProAutoDeclineEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the Best Offer Auto-Decline feature for motor vehicle classified ad listings. The Best Offer Auto-Decline feature allows a seller to set a lower threshold dollar value on a listing, and any Best Offer amount below this amount is automatically declined by the eBay system. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>eBayMotorsProAutoDeclineEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @param \Nogrod\eBaySDK\Trading\EBayMotorsProAutoDeclineEnabledDefinitionType $eBayMotorsProAutoDeclineEnabled
      * @return self
@@ -2942,7 +2795,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as eBayMotorsProPaymentMethodCheckOutEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites allow for the display of acceptable payment methods for motor vehicle classified ad listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>eBayMotorsProPaymentMethodCheckOutEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces allow for the display of acceptable payment methods for motor vehicle classified ad listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>eBayMotorsProPaymentMethodCheckOutEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @return \Nogrod\eBaySDK\Trading\EBayMotorsProPaymentMethodCheckOutEnabledDefinitionType
      */
@@ -2954,7 +2807,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new eBayMotorsProPaymentMethodCheckOutEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites allow for the display of acceptable payment methods for motor vehicle classified ad listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>eBayMotorsProPaymentMethodCheckOutEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces allow for the display of acceptable payment methods for motor vehicle classified ad listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>eBayMotorsProPaymentMethodCheckOutEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @param \Nogrod\eBaySDK\Trading\EBayMotorsProPaymentMethodCheckOutEnabledDefinitionType $eBayMotorsProPaymentMethodCheckOutEnabled
      * @return self
@@ -2968,7 +2821,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as eBayMotorsProShippingMethodEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites allow for the display of shipping service options for motor vehicle classified ad listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>eBayMotorsProShippingMethodEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces allow for the display of shipping service options for motor vehicle classified ad listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>eBayMotorsProShippingMethodEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @return \Nogrod\eBaySDK\Trading\EBayMotorsProShippingMethodEnabledDefinitionType
      */
@@ -2980,7 +2833,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new eBayMotorsProShippingMethodEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites allow for the display of shipping service options for motor vehicle classified ad listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>eBayMotorsProShippingMethodEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces allow for the display of shipping service options for motor vehicle classified ad listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>eBayMotorsProShippingMethodEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @param \Nogrod\eBaySDK\Trading\EBayMotorsProShippingMethodEnabledDefinitionType $eBayMotorsProShippingMethodEnabled
      * @return self
@@ -2994,7 +2847,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as eBayMotorsProCounterOfferEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support counter offers to Best Offers for motor vehicle classified ad listings. The Best Offer feature allows buyers and sellers to negotiate the price of the item, and once a Best Offer price is proposed, the seller can send the buyer a counter offer, and a buyer may even send another counter offer to the seller's counter offer. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>eBayMotorsProCounterOfferEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support counter offers to Best Offers for motor vehicle classified ad listings. The Best Offer feature allows buyers and sellers to negotiate the price of the item, and once a Best Offer price is proposed, the seller can send the buyer a counter offer, and a buyer may even send another counter offer to the seller's counter offer. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>eBayMotorsProCounterOfferEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @return \Nogrod\eBaySDK\Trading\EBayMotorsProCounterOfferEnabledDefinitionType
      */
@@ -3006,7 +2859,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new eBayMotorsProCounterOfferEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support counter offers to Best Offers for motor vehicle classified ad listings. The Best Offer feature allows buyers and sellers to negotiate the price of the item, and once a Best Offer price is proposed, the seller can send the buyer a counter offer, and a buyer may even send another counter offer to the seller's counter offer. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>eBayMotorsProCounterOfferEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support counter offers to Best Offers for motor vehicle classified ad listings. The Best Offer feature allows buyers and sellers to negotiate the price of the item, and once a Best Offer price is proposed, the seller can send the buyer a counter offer, and a buyer may even send another counter offer to the seller's counter offer. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>eBayMotorsProCounterOfferEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @param \Nogrod\eBaySDK\Trading\EBayMotorsProCounterOfferEnabledDefinitionType $eBayMotorsProCounterOfferEnabled
      * @return self
@@ -3020,7 +2873,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as eBayMotorsProSellerContactDetailsEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites allow the seller to provide contact information at listing time for a motor vehicle classified ad listing. This feature is only applicable to motor vehicle classified ad listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>eBayMotorsProSellerContactDetailsEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces allow the seller to provide contact information at listing time for a motor vehicle classified ad listing. This feature is only applicable to motor vehicle classified ad listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>eBayMotorsProSellerContactDetailsEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @return \Nogrod\eBaySDK\Trading\EBayMotorsProSellerContactDetailsEnabledDefinitionType
      */
@@ -3032,7 +2885,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new eBayMotorsProSellerContactDetailsEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites allow the seller to provide contact information at listing time for a motor vehicle classified ad listing. This feature is only applicable to motor vehicle classified ad listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>eBayMotorsProSellerContactDetailsEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces allow the seller to provide contact information at listing time for a motor vehicle classified ad listing. This feature is only applicable to motor vehicle classified ad listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>eBayMotorsProSellerContactDetailsEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @param \Nogrod\eBaySDK\Trading\EBayMotorsProSellerContactDetailsEnabledDefinitionType $eBayMotorsProSellerContactDetailsEnabled
      * @return self
@@ -3046,7 +2899,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as localMarketAdFormatEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support Motors Local Market listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalMarketAdFormatEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support Motors Local Market listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalMarketAdFormatEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @return \Nogrod\eBaySDK\Trading\LocalMarketAdFormatEnabledDefinitionType
      */
@@ -3058,7 +2911,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new localMarketAdFormatEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support Motors Local Market listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalMarketAdFormatEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support Motors Local Market listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalMarketAdFormatEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @param \Nogrod\eBaySDK\Trading\LocalMarketAdFormatEnabledDefinitionType $localMarketAdFormatEnabled
      * @return self
@@ -3072,7 +2925,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as localMarketContactByPhoneEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites allow the use of a phone number when contacting the
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces allow the use of a phone number when contacting the
      *  seller about a Motors Local Market listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalMarketContactByPhoneEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @return \Nogrod\eBaySDK\Trading\LocalMarketContactByPhoneEnabledDefinitionType
@@ -3085,7 +2938,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new localMarketContactByPhoneEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites allow the use of a phone number when contacting the
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces allow the use of a phone number when contacting the
      *  seller about a Motors Local Market listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalMarketContactByPhoneEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @param \Nogrod\eBaySDK\Trading\LocalMarketContactByPhoneEnabledDefinitionType $localMarketContactByPhoneEnabled
@@ -3100,7 +2953,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as localMarketPhoneCount
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites allow the use of multiple phone numbers for the seller for a Motors Local Market listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalMarketPhoneCount</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces allow the use of multiple phone numbers for the seller for a Motors Local Market listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalMarketPhoneCount</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @return \Nogrod\eBaySDK\Trading\LocalMarketPhoneCountDefinitionType
      */
@@ -3112,7 +2965,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new localMarketPhoneCount
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites allow the use of multiple phone numbers for the seller for a Motors Local Market listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalMarketPhoneCount</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces allow the use of multiple phone numbers for the seller for a Motors Local Market listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalMarketPhoneCount</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @param \Nogrod\eBaySDK\Trading\LocalMarketPhoneCountDefinitionType $localMarketPhoneCount
      * @return self
@@ -3126,7 +2979,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as localMarketContactByAddressEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites allow the use of an address when contacting the
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces allow the use of an address when contacting the
      *  seller about a Motors Local Market listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalMarketContactByAddressEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @return \Nogrod\eBaySDK\Trading\LocalMarketContactByAddressEnabledDefinitionType
@@ -3139,7 +2992,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new localMarketContactByAddressEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites allow the use of an address when contacting the
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces allow the use of an address when contacting the
      *  seller about a Motors Local Market listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalMarketContactByAddressEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @param \Nogrod\eBaySDK\Trading\LocalMarketContactByAddressEnabledDefinitionType $localMarketContactByAddressEnabled
@@ -3154,7 +3007,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as localMarketStreetCount
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites allow the use of multiple street address for the seller for a Motors Local Market listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalMarketStreetCount</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces allow the use of multiple street address for the seller for a Motors Local Market listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalMarketStreetCount</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @return \Nogrod\eBaySDK\Trading\LocalMarketStreetCountDefinitionType
      */
@@ -3166,7 +3019,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new localMarketStreetCount
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites allow the use of multiple street address for the seller for a Motors Local Market listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalMarketStreetCount</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces allow the use of multiple street address for the seller for a Motors Local Market listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalMarketStreetCount</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @param \Nogrod\eBaySDK\Trading\LocalMarketStreetCountDefinitionType $localMarketStreetCount
      * @return self
@@ -3180,7 +3033,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as localMarketCompanyNameEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the use of a company name when contacting the
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the use of a company name when contacting the
      *  seller about a Motors Local Market listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalMarketCompanyNameEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @return \Nogrod\eBaySDK\Trading\LocalMarketCompanyNameEnabledDefinitionType
@@ -3193,7 +3046,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new localMarketCompanyNameEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the use of a company name when contacting the
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the use of a company name when contacting the
      *  seller about a Motors Local Market listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalMarketCompanyNameEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @param \Nogrod\eBaySDK\Trading\LocalMarketCompanyNameEnabledDefinitionType $localMarketCompanyNameEnabled
@@ -3208,7 +3061,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as localMarketContactByEmailEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the use of an email address when contacting the seller about a Motors Local Market listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalMarketContactByEmailEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the use of an email address when contacting the seller about a Motors Local Market listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalMarketContactByEmailEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @return \Nogrod\eBaySDK\Trading\LocalMarketContactByEmailEnabledDefinitionType
      */
@@ -3220,7 +3073,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new localMarketContactByEmailEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the use of an email address when contacting the seller about a Motors Local Market listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalMarketContactByEmailEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the use of an email address when contacting the seller about a Motors Local Market listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalMarketContactByEmailEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @param \Nogrod\eBaySDK\Trading\LocalMarketContactByEmailEnabledDefinitionType $localMarketContactByEmailEnabled
      * @return self
@@ -3234,7 +3087,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as localMarketBestOfferEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the Best Offer feature is for Motors Local Market listings. The Best Offer feature allows buyers and sellers to negotiate the price of the item. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalMarketBestOfferEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the Best Offer feature is for Motors Local Market listings. The Best Offer feature allows buyers and sellers to negotiate the price of the item. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalMarketBestOfferEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @return \Nogrod\eBaySDK\Trading\LocalMarketBestOfferEnabledDefinitionType
      */
@@ -3246,7 +3099,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new localMarketBestOfferEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the Best Offer feature is for Motors Local Market listings. The Best Offer feature allows buyers and sellers to negotiate the price of the item. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalMarketBestOfferEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the Best Offer feature is for Motors Local Market listings. The Best Offer feature allows buyers and sellers to negotiate the price of the item. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalMarketBestOfferEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @param \Nogrod\eBaySDK\Trading\LocalMarketBestOfferEnabledDefinitionType $localMarketBestOfferEnabled
      * @return self
@@ -3260,7 +3113,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as localMarketAutoAcceptEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the Best Offer Auto-Accept feature for Motors Local Market listings. The Best Offer Auto-Accept feature allows a seller to set a threshold dollar value on a listing, and any Best Offer amount at or above this amount is automatically accepted by the eBay system. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalMarketAutoAcceptEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the Best Offer Auto-Accept feature for Motors Local Market listings. The Best Offer Auto-Accept feature allows a seller to set a threshold dollar value on a listing, and any Best Offer amount at or above this amount is automatically accepted by the eBay system. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalMarketAutoAcceptEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @return \Nogrod\eBaySDK\Trading\LocalMarketAutoAcceptEnabledDefinitionType
      */
@@ -3272,7 +3125,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new localMarketAutoAcceptEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the Best Offer Auto-Accept feature for Motors Local Market listings. The Best Offer Auto-Accept feature allows a seller to set a threshold dollar value on a listing, and any Best Offer amount at or above this amount is automatically accepted by the eBay system. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalMarketAutoAcceptEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the Best Offer Auto-Accept feature for Motors Local Market listings. The Best Offer Auto-Accept feature allows a seller to set a threshold dollar value on a listing, and any Best Offer amount at or above this amount is automatically accepted by the eBay system. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalMarketAutoAcceptEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @param \Nogrod\eBaySDK\Trading\LocalMarketAutoAcceptEnabledDefinitionType $localMarketAutoAcceptEnabled
      * @return self
@@ -3286,7 +3139,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as localMarketAutoDeclineEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the Best Offer Auto-Decline feature for Motors Local Market listings. The Best Offer Auto-Accept feature allows a seller to set a threshold dollar value on a listing, and any Best Offer amount at or above this amount is automatically accepted by the eBay system. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalMarketAutoDeclineEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the Best Offer Auto-Decline feature for Motors Local Market listings. The Best Offer Auto-Accept feature allows a seller to set a threshold dollar value on a listing, and any Best Offer amount at or above this amount is automatically accepted by the eBay system. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalMarketAutoDeclineEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @return \Nogrod\eBaySDK\Trading\LocalMarketAutoDeclineEnabledDefinitionType
      */
@@ -3298,7 +3151,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new localMarketAutoDeclineEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the Best Offer Auto-Decline feature for Motors Local Market listings. The Best Offer Auto-Accept feature allows a seller to set a threshold dollar value on a listing, and any Best Offer amount at or above this amount is automatically accepted by the eBay system. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalMarketAutoDeclineEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the Best Offer Auto-Decline feature for Motors Local Market listings. The Best Offer Auto-Accept feature allows a seller to set a threshold dollar value on a listing, and any Best Offer amount at or above this amount is automatically accepted by the eBay system. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalMarketAutoDeclineEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @param \Nogrod\eBaySDK\Trading\LocalMarketAutoDeclineEnabledDefinitionType $localMarketAutoDeclineEnabled
      * @return self
@@ -3312,7 +3165,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as localMarketPaymentMethodCheckOutEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites allow for the display of acceptable payment methods for Motors Local Market listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalMarketPaymentMethodCheckOutEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces allow for the display of acceptable payment methods for Motors Local Market listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalMarketPaymentMethodCheckOutEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @return \Nogrod\eBaySDK\Trading\LocalMarketPaymentMethodCheckOutEnabledDefinitionType
      */
@@ -3324,7 +3177,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new localMarketPaymentMethodCheckOutEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites allow for the display of acceptable payment methods for Motors Local Market listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalMarketPaymentMethodCheckOutEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces allow for the display of acceptable payment methods for Motors Local Market listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalMarketPaymentMethodCheckOutEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @param \Nogrod\eBaySDK\Trading\LocalMarketPaymentMethodCheckOutEnabledDefinitionType $localMarketPaymentMethodCheckOutEnabled
      * @return self
@@ -3338,7 +3191,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as localMarketShippingMethodEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites allow for the display of shipping service options for Motors Local Market listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalMarketShippingMethodEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces allow for the display of shipping service options for Motors Local Market listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalMarketShippingMethodEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @return \Nogrod\eBaySDK\Trading\LocalMarketShippingMethodEnabledDefinitionType
      */
@@ -3350,7 +3203,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new localMarketShippingMethodEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites allow for the display of shipping service options for Motors Local Market listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalMarketShippingMethodEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces allow for the display of shipping service options for Motors Local Market listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalMarketShippingMethodEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @param \Nogrod\eBaySDK\Trading\LocalMarketShippingMethodEnabledDefinitionType $localMarketShippingMethodEnabled
      * @return self
@@ -3364,7 +3217,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as localMarketCounterOfferEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support counter offers to Best Offers for Motors Local Market listings. The Best Offer feature allows buyers and sellers to negotiate the price of the item, and once a Best Offer price is proposed, the seller can send the buyer a counter offer, and a buyer may even send another counter offer to the seller's counter offer. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalMarketCounterOfferEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support counter offers to Best Offers for Motors Local Market listings. The Best Offer feature allows buyers and sellers to negotiate the price of the item, and once a Best Offer price is proposed, the seller can send the buyer a counter offer, and a buyer may even send another counter offer to the seller's counter offer. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalMarketCounterOfferEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @return \Nogrod\eBaySDK\Trading\LocalMarketCounterOfferEnabledDefinitionType
      */
@@ -3376,7 +3229,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new localMarketCounterOfferEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support counter offers to Best Offers for Motors Local Market listings. The Best Offer feature allows buyers and sellers to negotiate the price of the item, and once a Best Offer price is proposed, the seller can send the buyer a counter offer, and a buyer may even send another counter offer to the seller's counter offer. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalMarketCounterOfferEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support counter offers to Best Offers for Motors Local Market listings. The Best Offer feature allows buyers and sellers to negotiate the price of the item, and once a Best Offer price is proposed, the seller can send the buyer a counter offer, and a buyer may even send another counter offer to the seller's counter offer. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalMarketCounterOfferEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @param \Nogrod\eBaySDK\Trading\LocalMarketCounterOfferEnabledDefinitionType $localMarketCounterOfferEnabled
      * @return self
@@ -3390,7 +3243,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as localMarketSellerContactDetailsEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites allow the seller to provide contact information at listing time for Motors Local Market listings. This feature is only applicable to motor vehicle classified ad listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalMarketSellerContactDetailsEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces allow the seller to provide contact information at listing time for Motors Local Market listings. This feature is only applicable to motor vehicle classified ad listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalMarketSellerContactDetailsEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @return \Nogrod\eBaySDK\Trading\LocalMarketSellerContactDetailsEnabledDefinitionType
      */
@@ -3402,7 +3255,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new localMarketSellerContactDetailsEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites allow the seller to provide contact information at listing time for Motors Local Market listings. This feature is only applicable to motor vehicle classified ad listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalMarketSellerContactDetailsEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces allow the seller to provide contact information at listing time for Motors Local Market listings. This feature is only applicable to motor vehicle classified ad listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>LocalMarketSellerContactDetailsEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @param \Nogrod\eBaySDK\Trading\LocalMarketSellerContactDetailsEnabledDefinitionType $localMarketSellerContactDetailsEnabled
      * @return self
@@ -3416,7 +3269,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as classifiedAdPhoneCount
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the use of multiple phone numbers for the seller for a classified ad listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ClassifiedAdPhoneCount</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the use of multiple phone numbers for the seller for a classified ad listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ClassifiedAdPhoneCount</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @return \Nogrod\eBaySDK\Trading\ClassifiedAdPhoneCountDefinitionType
      */
@@ -3428,7 +3281,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new classifiedAdPhoneCount
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the use of multiple phone numbers for the seller for a classified ad listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ClassifiedAdPhoneCount</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the use of multiple phone numbers for the seller for a classified ad listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ClassifiedAdPhoneCount</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @param \Nogrod\eBaySDK\Trading\ClassifiedAdPhoneCountDefinitionType $classifiedAdPhoneCount
      * @return self
@@ -3442,7 +3295,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as classifiedAdContactByAddressEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the use of an address when contacting the
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the use of an address when contacting the
      *  seller about a classified ad listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ClassifiedAdContactByAddressEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a>
      *
      * @return \Nogrod\eBaySDK\Trading\ClassifiedAdContactByAddressEnabledDefinitionType
@@ -3455,7 +3308,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new classifiedAdContactByAddressEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the use of an address when contacting the
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the use of an address when contacting the
      *  seller about a classified ad listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ClassifiedAdContactByAddressEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a>
      *
      * @param \Nogrod\eBaySDK\Trading\ClassifiedAdContactByAddressEnabledDefinitionType $classifiedAdContactByAddressEnabled
@@ -3470,7 +3323,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as classifiedAdStreetCount
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the use of multiple street addresses for the seller for a classified ad listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ClassifiedAdStreetCount</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the use of multiple street addresses for the seller for a classified ad listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ClassifiedAdStreetCount</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @return \Nogrod\eBaySDK\Trading\ClassifiedAdStreetCountDefinitionType
      */
@@ -3482,7 +3335,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new classifiedAdStreetCount
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the use of multiple street addresses for the seller for a classified ad listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ClassifiedAdStreetCount</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the use of multiple street addresses for the seller for a classified ad listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ClassifiedAdStreetCount</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @param \Nogrod\eBaySDK\Trading\ClassifiedAdStreetCountDefinitionType $classifiedAdStreetCount
      * @return self
@@ -3496,7 +3349,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as classifiedAdCompanyNameEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the use of a company name when contacting the
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the use of a company name when contacting the
      *  seller about a classified ad listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ClassifiedAdCompanyNameEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @return \Nogrod\eBaySDK\Trading\ClassifiedAdCompanyNameEnabledDefinitionType
@@ -3509,7 +3362,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new classifiedAdCompanyNameEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the use of a company name when contacting the
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the use of a company name when contacting the
      *  seller about a classified ad listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ClassifiedAdCompanyNameEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @param \Nogrod\eBaySDK\Trading\ClassifiedAdCompanyNameEnabledDefinitionType $classifiedAdCompanyNameEnabled
@@ -3628,7 +3481,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as returnPolicyEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the use of return policies in listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ReturnPolicyEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the use of return policies in listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ReturnPolicyEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @return \Nogrod\eBaySDK\Trading\ReturnPolicyEnabledDefinitionType
      */
@@ -3640,7 +3493,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new returnPolicyEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the use of return policies in listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ReturnPolicyEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the use of return policies in listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ReturnPolicyEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @param \Nogrod\eBaySDK\Trading\ReturnPolicyEnabledDefinitionType $returnPolicyEnabled
      * @return self
@@ -3654,7 +3507,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as handlingTimeEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the use of a stated handling time in listings. The handling time is the maximum number of business days the seller
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the use of a stated handling time in listings. The handling time is the maximum number of business days the seller
      *  commits to for preparing an item to be shipped after receiving a
      *  cleared payment. The seller's handling time does not include the
      *  shipping time (the carrier's transit time). This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>HandlingTimeEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
@@ -3669,7 +3522,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new handlingTimeEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the use of a stated handling time in listings. The handling time is the maximum number of business days the seller
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the use of a stated handling time in listings. The handling time is the maximum number of business days the seller
      *  commits to for preparing an item to be shipped after receiving a
      *  cleared payment. The seller's handling time does not include the
      *  shipping time (the carrier's transit time). This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>HandlingTimeEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
@@ -3712,7 +3565,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as reviseQuantityAllowed
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites allow the quantity of a listing to be revised during the life of the listing. This feature is not applicable to auction listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ReviseQuantityAllowed</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces allow the quantity of a listing to be revised during the life of the listing. This feature is not applicable to auction listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ReviseQuantityAllowed</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @return \Nogrod\eBaySDK\Trading\ReviseQuantityAllowedDefinitionType
      */
@@ -3724,7 +3577,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new reviseQuantityAllowed
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites allow the quantity of a listing to be revised during the life of the listing. This feature is not applicable to auction listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ReviseQuantityAllowed</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces allow the quantity of a listing to be revised during the life of the listing. This feature is not applicable to auction listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ReviseQuantityAllowed</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @param \Nogrod\eBaySDK\Trading\ReviseQuantityAllowedDefinitionType $reviseQuantityAllowed
      * @return self
@@ -3738,7 +3591,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as revisePriceAllowed
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites allow the price of a listing to be revised during the life of the listing. This feature is not applicable to auction listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>RevisePriceAllowed</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces allow the price of a listing to be revised during the life of the listing. This feature is not applicable to auction listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>RevisePriceAllowed</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @return \Nogrod\eBaySDK\Trading\RevisePriceAllowedDefinitionType
      */
@@ -3750,7 +3603,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new revisePriceAllowed
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites allow the price of a listing to be revised during the life of the listing. This feature is not applicable to auction listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>RevisePriceAllowed</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces allow the price of a listing to be revised during the life of the listing. This feature is not applicable to auction listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>RevisePriceAllowed</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @param \Nogrod\eBaySDK\Trading\RevisePriceAllowedDefinitionType $revisePriceAllowed
      * @return self
@@ -3764,7 +3617,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as storeOwnerExtendedListingDurationsEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support extended listing durations for eBay Business Sellers with eBay Stores. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>RevisePriceAllowed</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support extended listing durations for eBay Business Sellers with eBay Stores. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>RevisePriceAllowed</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @return \Nogrod\eBaySDK\Trading\StoreOwnerExtendedListingDurationsEnabledDefinitionType
      */
@@ -3776,7 +3629,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new storeOwnerExtendedListingDurationsEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support extended listing durations for eBay Business Sellers with eBay Stores. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>RevisePriceAllowed</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support extended listing durations for eBay Business Sellers with eBay Stores. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>RevisePriceAllowed</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @param \Nogrod\eBaySDK\Trading\StoreOwnerExtendedListingDurationsEnabledDefinitionType $storeOwnerExtendedListingDurationsEnabled
      * @return self
@@ -3816,7 +3669,10 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as paymentMethod
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites allow for the display of acceptable payment methods in listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>PaymentMethod</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces allow for the display of acceptable payment methods in listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>PaymentMethod</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     *  <br><br>
+     *  <span class="tablenote"><b>Note:</b>
+     *  eBay now controls all electronic payment methods available to buyers, but sellers still need to specify offline payment methods for listings that require/support offline payment such as motor vehicle listings.</span>
      *
      * @return \Nogrod\eBaySDK\Trading\PaymentMethodDefinitionType
      */
@@ -3828,7 +3684,10 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new paymentMethod
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites allow for the display of acceptable payment methods in listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>PaymentMethod</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces allow for the display of acceptable payment methods in listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>PaymentMethod</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     *  <br><br>
+     *  <span class="tablenote"><b>Note:</b>
+     *  eBay now controls all electronic payment methods available to buyers, but sellers still need to specify offline payment methods for listings that require/support offline payment such as motor vehicle listings.</span>
      *
      * @param \Nogrod\eBaySDK\Trading\PaymentMethodDefinitionType $paymentMethod
      * @return self
@@ -3842,7 +3701,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as group1MaxFlatShippingCost
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites allow for the applicable max cap per shipping cost for shipping service group1. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>Group1MaxFlatShippingCost</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces allow for the applicable max cap per shipping cost for shipping service group1. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>Group1MaxFlatShippingCost</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @return \Nogrod\eBaySDK\Trading\Group1MaxFlatShippingCostDefinitionType
      */
@@ -3854,7 +3713,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new group1MaxFlatShippingCost
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites allow for the applicable max cap per shipping cost for shipping service group1. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>Group1MaxFlatShippingCost</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces allow for the applicable max cap per shipping cost for shipping service group1. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>Group1MaxFlatShippingCost</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @param \Nogrod\eBaySDK\Trading\Group1MaxFlatShippingCostDefinitionType $group1MaxFlatShippingCost
      * @return self
@@ -3868,7 +3727,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as group2MaxFlatShippingCost
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites allow for the applicable max cap per shipping cost for shipping service group2. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>Group2MaxFlatShippingCost</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces allow for the applicable max cap per shipping cost for shipping service group2. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>Group2MaxFlatShippingCost</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @return \Nogrod\eBaySDK\Trading\Group2MaxFlatShippingCostDefinitionType
      */
@@ -3880,7 +3739,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new group2MaxFlatShippingCost
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites allow for the applicable max cap per shipping cost for shipping service group2. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>Group2MaxFlatShippingCost</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces allow for the applicable max cap per shipping cost for shipping service group2. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>Group2MaxFlatShippingCost</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @param \Nogrod\eBaySDK\Trading\Group2MaxFlatShippingCostDefinitionType $group2MaxFlatShippingCost
      * @return self
@@ -3894,7 +3753,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as group3MaxFlatShippingCost
      *
-     * TThis field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites allow for the applicable max cap per shipping cost for shipping service group3. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>Group3MaxFlatShippingCost</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * TThis field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces allow for the applicable max cap per shipping cost for shipping service group3. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>Group3MaxFlatShippingCost</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @return \Nogrod\eBaySDK\Trading\Group3MaxFlatShippingCostDefinitionType
      */
@@ -3906,7 +3765,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new group3MaxFlatShippingCost
      *
-     * TThis field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites allow for the applicable max cap per shipping cost for shipping service group3. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>Group3MaxFlatShippingCost</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * TThis field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces allow for the applicable max cap per shipping cost for shipping service group3. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>Group3MaxFlatShippingCost</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @param \Nogrod\eBaySDK\Trading\Group3MaxFlatShippingCostDefinitionType $group3MaxFlatShippingCost
      * @return self
@@ -3920,7 +3779,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as maxFlatShippingCostCBTExempt
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites do not impose a maximum flat-rate shipping cost if the item is being shipped internationally. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>MaxFlatShippingCostCBTExempt</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces do not impose a maximum flat-rate shipping cost if the item is being shipped internationally. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>MaxFlatShippingCostCBTExempt</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @return \Nogrod\eBaySDK\Trading\MaxFlatShippingCostCBTExemptDefinitionType
      */
@@ -3932,7 +3791,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new maxFlatShippingCostCBTExempt
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites do not impose a maximum flat-rate shipping cost if the item is being shipped internationally. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>MaxFlatShippingCostCBTExempt</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces do not impose a maximum flat-rate shipping cost if the item is being shipped internationally. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>MaxFlatShippingCostCBTExempt</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @param \Nogrod\eBaySDK\Trading\MaxFlatShippingCostCBTExemptDefinitionType $maxFlatShippingCostCBTExempt
      * @return self
@@ -3946,7 +3805,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as maxFlatShippingCost
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites do not impose a maximum flat-rate shipping cost. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>MaxFlatShippingCost</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces do not impose a maximum flat-rate shipping cost. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>MaxFlatShippingCost</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @return \Nogrod\eBaySDK\Trading\MaxFlatShippingCostDefinitionType
      */
@@ -3958,7 +3817,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new maxFlatShippingCost
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites do not impose a maximum flat-rate shipping cost. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>MaxFlatShippingCost</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces do not impose a maximum flat-rate shipping cost. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>MaxFlatShippingCost</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @param \Nogrod\eBaySDK\Trading\MaxFlatShippingCostDefinitionType $maxFlatShippingCost
      * @return self
@@ -3972,7 +3831,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as variationsEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support multiple-variation listings for some categories. Multiple-variation listings contain items that are logically the same product, but that vary in color, size, or other aspect. For example, a particular brand and style of shirt could be available in different sizes and colors, such as "large blue" and "medium black" variations. This feature is only applicable to fixed-price listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>VariationsEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support multiple-variation listings for some categories. Multiple-variation listings contain items that are logically the same product, but that vary in color, size, or other aspect. For example, a particular brand and style of shirt could be available in different sizes and colors, such as "large blue" and "medium black" variations. This feature is only applicable to fixed-price listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>VariationsEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @return \Nogrod\eBaySDK\Trading\VariationsEnabledDefinitionType
      */
@@ -3984,7 +3843,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new variationsEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support multiple-variation listings for some categories. Multiple-variation listings contain items that are logically the same product, but that vary in color, size, or other aspect. For example, a particular brand and style of shirt could be available in different sizes and colors, such as "large blue" and "medium black" variations. This feature is only applicable to fixed-price listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>VariationsEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support multiple-variation listings for some categories. Multiple-variation listings contain items that are logically the same product, but that vary in color, size, or other aspect. For example, a particular brand and style of shirt could be available in different sizes and colors, such as "large blue" and "medium black" variations. This feature is only applicable to fixed-price listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>VariationsEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @param \Nogrod\eBaySDK\Trading\VariationsEnabledDefinitionType $variationsEnabled
      * @return self
@@ -4024,7 +3883,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as freeGalleryPlusEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support free, automatic upgrades for Gallery Plus for some categories. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>FreeGalleryPlusEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support free, automatic upgrades for Gallery Plus for some categories. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>FreeGalleryPlusEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @return \Nogrod\eBaySDK\Trading\FreeGalleryPlusEnabledDefinitionType
      */
@@ -4036,7 +3895,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new freeGalleryPlusEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support free, automatic upgrades for Gallery Plus for some categories. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>FreeGalleryPlusEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support free, automatic upgrades for Gallery Plus for some categories. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>FreeGalleryPlusEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @param \Nogrod\eBaySDK\Trading\FreeGalleryPlusEnabledDefinitionType $freeGalleryPlusEnabled
      * @return self
@@ -4050,7 +3909,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as freePicturePackEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support a free Picture Pack upgrade for some categories. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>FreePicturePackEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support a free Picture Pack upgrade for some categories. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>FreePicturePackEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @return \Nogrod\eBaySDK\Trading\FreePicturePackEnabledDefinitionType
      */
@@ -4062,7 +3921,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new freePicturePackEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support a free Picture Pack upgrade for some categories. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>FreePicturePackEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support a free Picture Pack upgrade for some categories. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>FreePicturePackEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @param \Nogrod\eBaySDK\Trading\FreePicturePackEnabledDefinitionType $freePicturePackEnabled
      * @return self
@@ -4076,7 +3935,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as itemCompatibilityEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support Parts Compatibility for some Parts & Accessories categories. Parts compatibility allows a seller to show a list of all the vehicles that a part or accessory is compatible with in a listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ItemCompatibilityEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support Parts Compatibility for some Parts & Accessories categories. Parts compatibility allows a seller to show a list of all the vehicles that a part or accessory is compatible with in a listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ItemCompatibilityEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @return \Nogrod\eBaySDK\Trading\ItemCompatibilityEnabledDefinitionType
      */
@@ -4088,7 +3947,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new itemCompatibilityEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support Parts Compatibility for some Parts & Accessories categories. Parts compatibility allows a seller to show a list of all the vehicles that a part or accessory is compatible with in a listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ItemCompatibilityEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support Parts Compatibility for some Parts & Accessories categories. Parts compatibility allows a seller to show a list of all the vehicles that a part or accessory is compatible with in a listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ItemCompatibilityEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @param \Nogrod\eBaySDK\Trading\ItemCompatibilityEnabledDefinitionType $itemCompatibilityEnabled
      * @return self
@@ -4102,7 +3961,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as maxItemCompatibility
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites define a maximum limit for the number of compatible applications for items listed with parts compatibilities by application. Parts compatibility allows a seller to show a list of all the vehicles that a part or accessory is compatible with in a listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>MaxItemCompatibility</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces define a maximum limit for the number of compatible applications for items listed with parts compatibilities by application. Parts compatibility allows a seller to show a list of all the vehicles that a part or accessory is compatible with in a listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>MaxItemCompatibility</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @return \Nogrod\eBaySDK\Trading\MaxItemCompatibilityDefinitionType
      */
@@ -4114,7 +3973,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new maxItemCompatibility
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites define a maximum limit for the number of compatible applications for items listed with parts compatibilities by application. Parts compatibility allows a seller to show a list of all the vehicles that a part or accessory is compatible with in a listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>MaxItemCompatibility</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces define a maximum limit for the number of compatible applications for items listed with parts compatibilities by application. Parts compatibility allows a seller to show a list of all the vehicles that a part or accessory is compatible with in a listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>MaxItemCompatibility</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @param \Nogrod\eBaySDK\Trading\MaxItemCompatibilityDefinitionType $maxItemCompatibility
      * @return self
@@ -4128,7 +3987,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as minItemCompatibility
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites define a minimum amount for the number of compatible applications for items listed with parts compatibilities by application. Parts compatibility allows a seller to show a list of all the vehicles that a part or accessory is compatible with in a listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>MinItemCompatibility</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces define a minimum amount for the number of compatible applications for items listed with parts compatibilities by application. Parts compatibility allows a seller to show a list of all the vehicles that a part or accessory is compatible with in a listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>MinItemCompatibility</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @return \Nogrod\eBaySDK\Trading\MinItemCompatibilityDefinitionType
      */
@@ -4140,7 +3999,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new minItemCompatibility
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites define a minimum amount for the number of compatible applications for items listed with parts compatibilities by application. Parts compatibility allows a seller to show a list of all the vehicles that a part or accessory is compatible with in a listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>MinItemCompatibility</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces define a minimum amount for the number of compatible applications for items listed with parts compatibilities by application. Parts compatibility allows a seller to show a list of all the vehicles that a part or accessory is compatible with in a listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>MinItemCompatibility</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @param \Nogrod\eBaySDK\Trading\MinItemCompatibilityDefinitionType $minItemCompatibility
      * @return self
@@ -4154,7 +4013,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as conditionEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the textual description of an item's condition at listing time. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ConditionEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the textual description of an item's condition at listing time. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ConditionEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @return \Nogrod\eBaySDK\Trading\ConditionEnabledDefinitionType
      */
@@ -4166,7 +4025,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new conditionEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the textual description of an item's condition at listing time. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ConditionEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the textual description of an item's condition at listing time. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ConditionEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @param \Nogrod\eBaySDK\Trading\ConditionEnabledDefinitionType $conditionEnabled
      * @return self
@@ -4180,7 +4039,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as conditionValues
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support Condition IDs to specify an item's condition at listing time. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ConditionValues</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support Condition IDs to specify an item's condition at listing time. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ConditionValues</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @return \Nogrod\eBaySDK\Trading\ConditionValuesDefinitionType
      */
@@ -4192,7 +4051,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new conditionValues
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support Condition IDs to specify an item's condition at listing time. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ConditionValues</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support Condition IDs to specify an item's condition at listing time. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ConditionValues</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @param \Nogrod\eBaySDK\Trading\ConditionValuesDefinitionType $conditionValues
      * @return self
@@ -4206,7 +4065,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as valueCategory
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support value categories. A Value category will typically have lower listing fees or another eBay promotion. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ValueCategory</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support value categories. A Value category will typically have lower listing fees or another eBay promotion. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ValueCategory</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @return \Nogrod\eBaySDK\Trading\ValueCategoryDefinitionType
      */
@@ -4218,7 +4077,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new valueCategory
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support value categories. A Value category will typically have lower listing fees or another eBay promotion. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ValueCategory</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support value categories. A Value category will typically have lower listing fees or another eBay promotion. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ValueCategory</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @param \Nogrod\eBaySDK\Trading\ValueCategoryDefinitionType $valueCategory
      * @return self
@@ -4232,7 +4091,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as productCreationEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the creation of listings through the specification of Global Trade Identification Numbers (GTINs) like UPC, ISBN, EAN, or Brand/MPN combination. If a GTIN is matched to a product in eBay product catalog, a listing will automatically be created using the eBay catalog product's images, product aspects, description, and title. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ProductCreationEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the creation of listings through the specification of Global Trade Identification Numbers (GTINs) like UPC, ISBN, EAN, or Brand/MPN combination. If a GTIN is matched to a product in eBay product catalog, a listing will automatically be created using the eBay catalog product's images, product aspects, description, and title. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ProductCreationEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @return \Nogrod\eBaySDK\Trading\ProductCreationEnabledDefinitionType
      */
@@ -4244,7 +4103,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new productCreationEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the creation of listings through the specification of Global Trade Identification Numbers (GTINs) like UPC, ISBN, EAN, or Brand/MPN combination. If a GTIN is matched to a product in eBay product catalog, a listing will automatically be created using the eBay catalog product's images, product aspects, description, and title. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ProductCreationEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the creation of listings through the specification of Global Trade Identification Numbers (GTINs) like UPC, ISBN, EAN, or Brand/MPN combination. If a GTIN is matched to a product in eBay product catalog, a listing will automatically be created using the eBay catalog product's images, product aspects, description, and title. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ProductCreationEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @param \Nogrod\eBaySDK\Trading\ProductCreationEnabledDefinitionType $productCreationEnabled
      * @return self
@@ -4258,7 +4117,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as eANEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the EAN product identifying feature. This field will be returned as long as <b>EANEnabled</b> is included as a <b>FeatureID</b> value in the call request or no <b>FeatureID</b> values are passed into the call request.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the EAN product identifying feature. This field will be returned as long as <b>EANEnabled</b> is included as a <b>FeatureID</b> value in the call request or no <b>FeatureID</b> values are passed into the call request.
      *  <br>
      *  <br>
      *  To verify if a specific eBay site supports the EAN product identifying feature (for most categories), look for a <code>true</code> value in the <b>SiteDefaults.EANEnabled</b> field.
@@ -4276,7 +4135,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new eANEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the EAN product identifying feature. This field will be returned as long as <b>EANEnabled</b> is included as a <b>FeatureID</b> value in the call request or no <b>FeatureID</b> values are passed into the call request.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the EAN product identifying feature. This field will be returned as long as <b>EANEnabled</b> is included as a <b>FeatureID</b> value in the call request or no <b>FeatureID</b> values are passed into the call request.
      *  <br>
      *  <br>
      *  To verify if a specific eBay site supports the EAN product identifying feature (for most categories), look for a <code>true</code> value in the <b>SiteDefaults.EANEnabled</b> field.
@@ -4296,7 +4155,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as iSBNEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the ISBN product identifying feature. This field will be returned as long as <b>ISBNEnabled</b> is included as a <b>FeatureID</b> value in the call request or no <b>FeatureID</b> values are passed into the call request.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the ISBN product identifying feature. This field will be returned as long as <b>ISBNEnabled</b> is included as a <b>FeatureID</b> value in the call request or no <b>FeatureID</b> values are passed into the call request.
      *  <br>
      *  <br>
      *  To verify if a specific eBay site supports the ISBN product identifying feature (for most categories), look for a <code>true</code> value in the <b>SiteDefaults.ISBNEnabled</b> field.
@@ -4314,7 +4173,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new iSBNEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the ISBN product identifying feature. This field will be returned as long as <b>ISBNEnabled</b> is included as a <b>FeatureID</b> value in the call request or no <b>FeatureID</b> values are passed into the call request.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the ISBN product identifying feature. This field will be returned as long as <b>ISBNEnabled</b> is included as a <b>FeatureID</b> value in the call request or no <b>FeatureID</b> values are passed into the call request.
      *  <br>
      *  <br>
      *  To verify if a specific eBay site supports the ISBN product identifying feature (for most categories), look for a <code>true</code> value in the <b>SiteDefaults.ISBNEnabled</b> field.
@@ -4334,7 +4193,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as uPCEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the UPC product identifying feature. This field will be returned as long as <b>UPCEnabled</b> is included as a <b>FeatureID</b> value in the call request or no <b>FeatureID</b> values are passed into the call request.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the UPC product identifying feature. This field will be returned as long as <b>UPCEnabled</b> is included as a <b>FeatureID</b> value in the call request or no <b>FeatureID</b> values are passed into the call request.
      *  <br>
      *  <br>
      *  To verify if a specific eBay site supports the UPC product identifying feature (for most categories), look for a <code>true</code> value in the <b>SiteDefaults.UPCEnabled</b> field.
@@ -4352,7 +4211,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new uPCEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the UPC product identifying feature. This field will be returned as long as <b>UPCEnabled</b> is included as a <b>FeatureID</b> value in the call request or no <b>FeatureID</b> values are passed into the call request.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the UPC product identifying feature. This field will be returned as long as <b>UPCEnabled</b> is included as a <b>FeatureID</b> value in the call request or no <b>FeatureID</b> values are passed into the call request.
      *  <br>
      *  <br>
      *  To verify if a specific eBay site supports the UPC product identifying feature (for most categories), look for a <code>true</code> value in the <b>SiteDefaults.UPCEnabled</b> field.
@@ -4372,7 +4231,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as compatibleVehicleType
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the Parts Compatibility feature for motor vehicles. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>CompatibleVehicleType</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the Parts Compatibility feature for motor vehicles. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>CompatibleVehicleType</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @return \Nogrod\eBaySDK\Trading\CompatibleVehicleTypeDefinitionType
      */
@@ -4384,7 +4243,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new compatibleVehicleType
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the Parts Compatibility feature for motor vehicles. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>CompatibleVehicleType</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the Parts Compatibility feature for motor vehicles. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>CompatibleVehicleType</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @param \Nogrod\eBaySDK\Trading\CompatibleVehicleTypeDefinitionType $compatibleVehicleType
      * @return self
@@ -4398,7 +4257,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as maxGranularFitmentCount
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites define a maximum limit for the number of fine-grained item compatibilities that can be applied to a listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>MaxGranularFitmentCount</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces define a maximum limit for the number of fine-grained item compatibilities that can be applied to a listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>MaxGranularFitmentCount</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @return \Nogrod\eBaySDK\Trading\MaxGranularFitmentCountDefinitionType
      */
@@ -4410,7 +4269,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new maxGranularFitmentCount
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites define a maximum limit for the number of fine-grained item compatibilities that can be applied to a listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>MaxGranularFitmentCount</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces define a maximum limit for the number of fine-grained item compatibilities that can be applied to a listing. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>MaxGranularFitmentCount</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @param \Nogrod\eBaySDK\Trading\MaxGranularFitmentCountDefinitionType $maxGranularFitmentCount
      * @return self
@@ -4450,7 +4309,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as shippingProfileCategoryGroup
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the use of category groups in shipping business policies. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ShippingProfileCategoryGroup</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the use of category groups in shipping business policies. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ShippingProfileCategoryGroup</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @return \Nogrod\eBaySDK\Trading\ProfileCategoryGroupDefinitionType
      */
@@ -4462,7 +4321,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new shippingProfileCategoryGroup
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the use of category groups in shipping business policies. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ShippingProfileCategoryGroup</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the use of category groups in shipping business policies. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ShippingProfileCategoryGroup</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @param \Nogrod\eBaySDK\Trading\ProfileCategoryGroupDefinitionType $shippingProfileCategoryGroup
      * @return self
@@ -4476,7 +4335,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as paymentProfileCategoryGroup
      *
-     * TThis field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the use of category groups in payment business policies. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>PaymentProfileCategoryGroup</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * TThis field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the use of category groups in payment business policies. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>PaymentProfileCategoryGroup</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @return \Nogrod\eBaySDK\Trading\ProfileCategoryGroupDefinitionType
      */
@@ -4488,7 +4347,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new paymentProfileCategoryGroup
      *
-     * TThis field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the use of category groups in payment business policies. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>PaymentProfileCategoryGroup</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * TThis field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the use of category groups in payment business policies. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>PaymentProfileCategoryGroup</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @param \Nogrod\eBaySDK\Trading\ProfileCategoryGroupDefinitionType $paymentProfileCategoryGroup
      * @return self
@@ -4502,7 +4361,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as returnPolicyProfileCategoryGroup
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the use of category groups in return business policies. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ReturnPolicyProfileCategoryGroup</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the use of category groups in return business policies. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ReturnPolicyProfileCategoryGroup</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @return \Nogrod\eBaySDK\Trading\ProfileCategoryGroupDefinitionType
      */
@@ -4514,7 +4373,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new returnPolicyProfileCategoryGroup
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the use of category groups in return business policies. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ReturnPolicyProfileCategoryGroup</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the use of category groups in return business policies. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ReturnPolicyProfileCategoryGroup</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @param \Nogrod\eBaySDK\Trading\ProfileCategoryGroupDefinitionType $returnPolicyProfileCategoryGroup
      * @return self
@@ -4528,7 +4387,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as vINSupported
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the use of the VIN (Vehicle Identification Number) field to identify a motor vehicle and create a listing is supported. VINs are supported on the US, Canada, Canada-French, and Australia sites. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>VINSupported</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the use of the VIN (Vehicle Identification Number) field to identify a motor vehicle and create a listing is supported. VINs are supported on the US, Canada, Canada-French, and Australia sites. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>VINSupported</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @return \Nogrod\eBaySDK\Trading\VINSupportedDefinitionType
      */
@@ -4540,7 +4399,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new vINSupported
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the use of the VIN (Vehicle Identification Number) field to identify a motor vehicle and create a listing is supported. VINs are supported on the US, Canada, Canada-French, and Australia sites. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>VINSupported</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the use of the VIN (Vehicle Identification Number) field to identify a motor vehicle and create a listing is supported. VINs are supported on the US, Canada, Canada-French, and Australia sites. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>VINSupported</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @param \Nogrod\eBaySDK\Trading\VINSupportedDefinitionType $vINSupported
      * @return self
@@ -4554,7 +4413,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as vRMSupported
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the use of the VRM (Vehicle Registration Mark) field to identify a motor vehicle and create a listing is supported. VRMs are only supported on the UK site. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>VRMSupported</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the use of the VRM (Vehicle Registration Mark) field to identify a motor vehicle and create a listing is supported. VRMs are only supported on the UK site. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>VRMSupported</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @return \Nogrod\eBaySDK\Trading\VRMSupportedDefinitionType
      */
@@ -4566,7 +4425,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new vRMSupported
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the use of the VRM (Vehicle Registration Mark) field to identify a motor vehicle and create a listing is supported. VRMs are only supported on the UK site. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>VRMSupported</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the use of the VRM (Vehicle Registration Mark) field to identify a motor vehicle and create a listing is supported. VRMs are only supported on the UK site. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>VRMSupported</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @param \Nogrod\eBaySDK\Trading\VRMSupportedDefinitionType $vRMSupported
      * @return self
@@ -4580,7 +4439,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as sellerProvidedTitleSupported
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support seller-provided titles in motor vehicle listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>SellerProvidedTitleSupported</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support seller-provided titles in motor vehicle listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>SellerProvidedTitleSupported</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @return \Nogrod\eBaySDK\Trading\SellerProvidedTitleSupportedDefinitionType
      */
@@ -4592,7 +4451,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new sellerProvidedTitleSupported
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support seller-provided titles in motor vehicle listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>SellerProvidedTitleSupported</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support seller-provided titles in motor vehicle listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>SellerProvidedTitleSupported</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @param \Nogrod\eBaySDK\Trading\SellerProvidedTitleSupportedDefinitionType $sellerProvidedTitleSupported
      * @return self
@@ -4606,7 +4465,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as depositSupported
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support deposits/down payments for motor vehicle listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>DepositSupported</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support deposits for motor vehicle listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>DepositSupported</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @return \Nogrod\eBaySDK\Trading\DepositSupportedDefinitionType
      */
@@ -4618,7 +4477,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new depositSupported
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support deposits/down payments for motor vehicle listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>DepositSupported</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support deposits for motor vehicle listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>DepositSupported</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @param \Nogrod\eBaySDK\Trading\DepositSupportedDefinitionType $depositSupported
      * @return self
@@ -4632,7 +4491,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as globalShippingEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the Global Shipping Program (GSP) as the method for shipping orders internationally. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>GlobalShippingEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the Global Shipping Program (GSP) as the method for shipping orders internationally. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>GlobalShippingEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @return \Nogrod\eBaySDK\Trading\GlobalShippingEnabledDefinitionType
      */
@@ -4644,7 +4503,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new globalShippingEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the Global Shipping Program (GSP) as the method for shipping orders internationally. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>GlobalShippingEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the Global Shipping Program (GSP) as the method for shipping orders internationally. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>GlobalShippingEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @param \Nogrod\eBaySDK\Trading\GlobalShippingEnabledDefinitionType $globalShippingEnabled
      * @return self
@@ -4658,7 +4517,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as additionalCompatibilityEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the Boat and Motorcycle Parts Compatibility feature. This field will be returned as long as <b>AdditionalCompatibilityEnabled</b> is included as a <b>FeatureID</b> value in the call request or no <a href="types/FeatureIDCodeType.html">FeatureID</a> values are passed into the call request.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the Boat and Motorcycle Parts Compatibility feature. This field will be returned as long as <b>AdditionalCompatibilityEnabled</b> is included as a <b>FeatureID</b> value in the call request or no <a href="types/FeatureIDCodeType.html">FeatureID</a> values are passed into the call request.
      *  <br>
      *  <br>
      *  To verify if a specific eBay site supports Boat or Motorcycle Parts Compatibility (for most categories), look for a <code>true</code> value in the <b>SiteDefaults.AdditionalCompatibilityEnabled</b> field.
@@ -4679,7 +4538,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new additionalCompatibilityEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the Boat and Motorcycle Parts Compatibility feature. This field will be returned as long as <b>AdditionalCompatibilityEnabled</b> is included as a <b>FeatureID</b> value in the call request or no <a href="types/FeatureIDCodeType.html">FeatureID</a> values are passed into the call request.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the Boat and Motorcycle Parts Compatibility feature. This field will be returned as long as <b>AdditionalCompatibilityEnabled</b> is included as a <b>FeatureID</b> value in the call request or no <a href="types/FeatureIDCodeType.html">FeatureID</a> values are passed into the call request.
      *  <br>
      *  <br>
      *  To verify if a specific eBay site supports Boat or Motorcycle Parts Compatibility (for most categories), look for a <code>true</code> value in the <b>SiteDefaults.AdditionalCompatibilityEnabled</b> field.
@@ -4702,7 +4561,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as pickupDropOffEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the Click and Collect feature. This field will be returned as long as <b>PickupDropOffEnabled</b> is included as a <b>FeatureID</b> value in the call request or no <a href="types/FeatureIDCodeType.html">FeatureID</a> values are passed into the call request.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the Click and Collect feature. This field will be returned as long as <b>PickupDropOffEnabled</b> is included as a <b>FeatureID</b> value in the call request or no <a href="types/FeatureIDCodeType.html">FeatureID</a> values are passed into the call request.
      *  <br>
      *  <br>
      *  To verify if a specific eBay site supports the Click and Collect feature (for most categories), look for a <code>true</code> value in the <b>SiteDefaults.PickupDropOffEnabled</b> field.
@@ -4724,7 +4583,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new pickupDropOffEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the Click and Collect feature. This field will be returned as long as <b>PickupDropOffEnabled</b> is included as a <b>FeatureID</b> value in the call request or no <a href="types/FeatureIDCodeType.html">FeatureID</a> values are passed into the call request.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the Click and Collect feature. This field will be returned as long as <b>PickupDropOffEnabled</b> is included as a <b>FeatureID</b> value in the call request or no <a href="types/FeatureIDCodeType.html">FeatureID</a> values are passed into the call request.
      *  <br>
      *  <br>
      *  To verify if a specific eBay site supports the Click and Collect feature (for most categories), look for a <code>true</code> value in the <b>SiteDefaults.PickupDropOffEnabled</b> field.
@@ -4748,7 +4607,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as digitalGoodDeliveryEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support digital gift card listings. This field will be returned as long as <b>DigitalGoodDeliveryEnabled</b> is included as a <b>FeatureID</b> value in the call request or no <a href="types/FeatureIDCodeType.html">FeatureID</a> values are passed into the call request.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support digital gift card listings. This field will be returned as long as <b>DigitalGoodDeliveryEnabled</b> is included as a <b>FeatureID</b> value in the call request or no <a href="types/FeatureIDCodeType.html">FeatureID</a> values are passed into the call request.
      *  <br>
      *  <br>
      *  To verify if a specific eBay site supports digital gift card listings (for most categories), look for a <code>true</code> value in the <b>SiteDefaults.DigitalGoodDeliveryEnabled</b> field.
@@ -4776,7 +4635,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new digitalGoodDeliveryEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support digital gift card listings. This field will be returned as long as <b>DigitalGoodDeliveryEnabled</b> is included as a <b>FeatureID</b> value in the call request or no <a href="types/FeatureIDCodeType.html">FeatureID</a> values are passed into the call request.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support digital gift card listings. This field will be returned as long as <b>DigitalGoodDeliveryEnabled</b> is included as a <b>FeatureID</b> value in the call request or no <a href="types/FeatureIDCodeType.html">FeatureID</a> values are passed into the call request.
      *  <br>
      *  <br>
      *  To verify if a specific eBay site supports digital gift card listings (for most categories), look for a <code>true</code> value in the <b>SiteDefaults.DigitalGoodDeliveryEnabled</b> field.
@@ -4806,10 +4665,10 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as epidSupported
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the use of an eBay Product ID (e.g. ePID) in an Add/Revise/Relist API call to identify which motorcycles and/or scooters are compatible with a motor vehicle part or accessory. ePIDs can only be used to identify motorcycles and scooters on the Germany and UK sites. This field will be returned as long as <b>EpidSupported</b> is included as a <b>FeatureID</b> value in the call request or no <a href="types/FeatureIDCodeType.html">FeatureID</a> values are passed into the call request.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the use of an eBay Product ID (e.g. ePID) in an Add/Revise/Relist API call to identify which motorcycles and/or scooters are compatible with a motor vehicle part or accessory. ePIDs can only be used to identify motorcycles and scooters on the Germany and UK sites. This field will be returned as long as <b>EpidSupported</b> is included as a <b>FeatureID</b> value in the call request or no <a href="types/FeatureIDCodeType.html">FeatureID</a> values are passed into the call request.
      *  <br/><br/>
      *  For more information on using an ePID to identify a compatible motorcycle or scooter through an Add/Revise/Relist API call on the Germany or UK site, see the documentation for the <a href="
-     *  http://developer.ebay.com/Devzone/XML/docs/Reference/eBay/AddItem.html#Request.Item.ItemCompatibilityList.Compatibility.NameValueList">Compatibility.NameValueList</a> container.
+     *  https://developer.ebay.com/Devzone/XML/docs/Reference/eBay/AddItem.html#Request.Item.ItemCompatibilityList.Compatibility.NameValueList">Compatibility.NameValueList</a> container.
      *
      * @return \Nogrod\eBaySDK\Trading\EpidSupportedDefinitionType
      */
@@ -4821,10 +4680,10 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new epidSupported
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the use of an eBay Product ID (e.g. ePID) in an Add/Revise/Relist API call to identify which motorcycles and/or scooters are compatible with a motor vehicle part or accessory. ePIDs can only be used to identify motorcycles and scooters on the Germany and UK sites. This field will be returned as long as <b>EpidSupported</b> is included as a <b>FeatureID</b> value in the call request or no <a href="types/FeatureIDCodeType.html">FeatureID</a> values are passed into the call request.
+     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the use of an eBay Product ID (e.g. ePID) in an Add/Revise/Relist API call to identify which motorcycles and/or scooters are compatible with a motor vehicle part or accessory. ePIDs can only be used to identify motorcycles and scooters on the Germany and UK sites. This field will be returned as long as <b>EpidSupported</b> is included as a <b>FeatureID</b> value in the call request or no <a href="types/FeatureIDCodeType.html">FeatureID</a> values are passed into the call request.
      *  <br/><br/>
      *  For more information on using an ePID to identify a compatible motorcycle or scooter through an Add/Revise/Relist API call on the Germany or UK site, see the documentation for the <a href="
-     *  http://developer.ebay.com/Devzone/XML/docs/Reference/eBay/AddItem.html#Request.Item.ItemCompatibilityList.Compatibility.NameValueList">Compatibility.NameValueList</a> container.
+     *  https://developer.ebay.com/Devzone/XML/docs/Reference/eBay/AddItem.html#Request.Item.ItemCompatibilityList.Compatibility.NameValueList">Compatibility.NameValueList</a> container.
      *
      * @param \Nogrod\eBaySDK\Trading\EpidSupportedDefinitionType $epidSupported
      * @return self
@@ -4838,10 +4697,10 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as kTypeSupported
      *
-     * TThis field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the use of a K Type vehicle number in an Add/Revise/Relist API call to identify which cars and/or trucks are compatible with a motor vehicle part or accessory. K type vehicle numbers can only be used to identify cars and trucks on the Germany site. This field will be returned as long as <b>KTypeSupported</b> is included as a <b>FeatureID</b> value in the call request or no <a href="types/FeatureIDCodeType.html">FeatureID</a> values are passed into the call request.
+     * TThis field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the use of a K Type vehicle number in an Add/Revise/Relist API call to identify which cars and/or trucks are compatible with a motor vehicle part or accessory. K type vehicle numbers can only be used to identify cars and trucks on the Germany site. This field will be returned as long as <b>KTypeSupported</b> is included as a <b>FeatureID</b> value in the call request or no <a href="types/FeatureIDCodeType.html">FeatureID</a> values are passed into the call request.
      *  <br/><br/>
      *  For more information on using a K Type vehicle number to identify a compatible car or truck through an Add/Revise/Relist API call on the Germany site, see the documentation for the <a href="
-     *  http://developer.ebay.com/Devzone/XML/docs/Reference/eBay/AddItem.html#Request.Item.ItemCompatibilityList.Compatibility.NameValueList">Compatibility.NameValueList</a> container.
+     *  https://developer.ebay.com/Devzone/XML/docs/Reference/eBay/AddItem.html#Request.Item.ItemCompatibilityList.Compatibility.NameValueList">Compatibility.NameValueList</a> container.
      *
      * @return \Nogrod\eBaySDK\Trading\KTypeSupportedDefinitionType
      */
@@ -4853,10 +4712,10 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new kTypeSupported
      *
-     * TThis field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites support the use of a K Type vehicle number in an Add/Revise/Relist API call to identify which cars and/or trucks are compatible with a motor vehicle part or accessory. K type vehicle numbers can only be used to identify cars and trucks on the Germany site. This field will be returned as long as <b>KTypeSupported</b> is included as a <b>FeatureID</b> value in the call request or no <a href="types/FeatureIDCodeType.html">FeatureID</a> values are passed into the call request.
+     * TThis field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the use of a K Type vehicle number in an Add/Revise/Relist API call to identify which cars and/or trucks are compatible with a motor vehicle part or accessory. K type vehicle numbers can only be used to identify cars and trucks on the Germany site. This field will be returned as long as <b>KTypeSupported</b> is included as a <b>FeatureID</b> value in the call request or no <a href="types/FeatureIDCodeType.html">FeatureID</a> values are passed into the call request.
      *  <br/><br/>
      *  For more information on using a K Type vehicle number to identify a compatible car or truck through an Add/Revise/Relist API call on the Germany site, see the documentation for the <a href="
-     *  http://developer.ebay.com/Devzone/XML/docs/Reference/eBay/AddItem.html#Request.Item.ItemCompatibilityList.Compatibility.NameValueList">Compatibility.NameValueList</a> container.
+     *  https://developer.ebay.com/Devzone/XML/docs/Reference/eBay/AddItem.html#Request.Item.ItemCompatibilityList.Compatibility.NameValueList">Compatibility.NameValueList</a> container.
      *
      * @param \Nogrod\eBaySDK\Trading\KTypeSupportedDefinitionType $kTypeSupported
      * @return self
@@ -4870,10 +4729,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as productRequiredEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites supports Product-Based Shopping Experience listings (listings associated with eBay catalog products).
-     *  <br><br>
-     *  <span class="tablenote"><b>Note:</b>
-     *  Due to the rollback of the Product-Based Shopping Experience mandate for all eBay categories, association with an eBay catalog product will no longer be required for any categories on any eBay marketplace.</span>
+     * This field is deprecated. No eBay categories require listings based on an eBay catalog product.
      *
      * @return \Nogrod\eBaySDK\Trading\ProductRequiredEnabledDefinitionType
      */
@@ -4885,10 +4741,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new productRequiredEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay API-enabled sites supports Product-Based Shopping Experience listings (listings associated with eBay catalog products).
-     *  <br><br>
-     *  <span class="tablenote"><b>Note:</b>
-     *  Due to the rollback of the Product-Based Shopping Experience mandate for all eBay categories, association with an eBay catalog product will no longer be required for any categories on any eBay marketplace.</span>
+     * This field is deprecated. No eBay categories require listings based on an eBay catalog product.
      *
      * @param \Nogrod\eBaySDK\Trading\ProductRequiredEnabledDefinitionType $productRequiredEnabled
      * @return self

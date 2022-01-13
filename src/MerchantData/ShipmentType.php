@@ -8,9 +8,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Class representing ShipmentType
  *
  * Type defining the <b>Shipment</b> container, which is used by
- *  the seller in <b>CompleteSale</b> to provide shipping information. The
- *  <b>Shipment</b> container is also returned in the
- *  <b>GetSellingManagerSaleRecord</b> response.
+ *  the seller in <b>CompleteSale</b> to provide shipping information.
  * XSD Type: ShipmentType
  */
 class ShipmentType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
@@ -212,13 +210,6 @@ class ShipmentType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
     private $shipmentTrackingDetails = [
         
     ];
-
-    /**
-     * Contains information about one or more order line items in a Global Shipping Program package. Required or returned if the value of <strong>ShippingCarrierUsed</strong> is <code>PBI</code>.
-     *
-     * @var \Nogrod\eBaySDK\MerchantData\LineItemType[] $shipmentLineItem
-     */
-    private $shipmentLineItem = null;
 
     /**
      * Gets as estimatedDeliveryDate
@@ -1051,72 +1042,6 @@ class ShipmentType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
         return $this;
     }
 
-    /**
-     * Adds as lineItem
-     *
-     * Contains information about one or more order line items in a Global Shipping Program package. Required or returned if the value of <strong>ShippingCarrierUsed</strong> is <code>PBI</code>.
-     *
-     * @return self
-     * @param \Nogrod\eBaySDK\MerchantData\LineItemType $lineItem
-     */
-    public function addToShipmentLineItem(\Nogrod\eBaySDK\MerchantData\LineItemType $lineItem)
-    {
-        $this->shipmentLineItem[] = $lineItem;
-        return $this;
-    }
-
-    /**
-     * isset shipmentLineItem
-     *
-     * Contains information about one or more order line items in a Global Shipping Program package. Required or returned if the value of <strong>ShippingCarrierUsed</strong> is <code>PBI</code>.
-     *
-     * @param int|string $index
-     * @return bool
-     */
-    public function issetShipmentLineItem($index)
-    {
-        return isset($this->shipmentLineItem[$index]);
-    }
-
-    /**
-     * unset shipmentLineItem
-     *
-     * Contains information about one or more order line items in a Global Shipping Program package. Required or returned if the value of <strong>ShippingCarrierUsed</strong> is <code>PBI</code>.
-     *
-     * @param int|string $index
-     * @return void
-     */
-    public function unsetShipmentLineItem($index)
-    {
-        unset($this->shipmentLineItem[$index]);
-    }
-
-    /**
-     * Gets as shipmentLineItem
-     *
-     * Contains information about one or more order line items in a Global Shipping Program package. Required or returned if the value of <strong>ShippingCarrierUsed</strong> is <code>PBI</code>.
-     *
-     * @return \Nogrod\eBaySDK\MerchantData\LineItemType[]
-     */
-    public function getShipmentLineItem()
-    {
-        return $this->shipmentLineItem;
-    }
-
-    /**
-     * Sets a new shipmentLineItem
-     *
-     * Contains information about one or more order line items in a Global Shipping Program package. Required or returned if the value of <strong>ShippingCarrierUsed</strong> is <code>PBI</code>.
-     *
-     * @param \Nogrod\eBaySDK\MerchantData\LineItemType[] $shipmentLineItem
-     * @return self
-     */
-    public function setShipmentLineItem(array $shipmentLineItem)
-    {
-        $this->shipmentLineItem = $shipmentLineItem;
-        return $this;
-    }
-
     public function xmlSerialize(\Sabre\Xml\Writer $writer)
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
@@ -1232,12 +1157,6 @@ class ShipmentType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
         if (null !== $value && !empty($this->getShipmentTrackingDetails())) {
             $writer->write(array_map(function ($v) {
                 return ["ShipmentTrackingDetails" => $v];
-            }, $value));
-        }
-        $value = $this->getShipmentLineItem();
-        if (null !== $value && !empty($this->getShipmentLineItem())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShipmentLineItem", array_map(function ($v) {
-                return ["LineItem" => $v];
             }, $value));
         }
     }
@@ -1366,12 +1285,6 @@ class ShipmentType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
         if (null !== $value && !empty($value)) {
             $this->setShipmentTrackingDetails(array_map(function ($v) {
                 return \Nogrod\eBaySDK\MerchantData\ShipmentTrackingDetailsType::fromKeyValue($v);
-            }, $value));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShipmentLineItem', true);
-        if (null !== $value && !empty($value)) {
-            $this->setShipmentLineItem(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\LineItemType::fromKeyValue($v);
             }, $value));
         }
     }

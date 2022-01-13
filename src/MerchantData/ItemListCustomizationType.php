@@ -66,13 +66,11 @@ class ItemListCustomizationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     private $pagination = null;
 
     /**
-     * Filter to reduce the SoldList response based on whether the seller (or eBay) marked the applicable order as Paid and/or Shipped
+     * Filter to reduce the <b>SoldList</b> response based on whether the seller (or eBay) marked the applicable order as Paid and/or Shipped
      *  in My eBay.<br>
      *  <br>
-     *  (Sellers can use CompleteSale or the eBay Web site UI to mark an
-     *  order as Paid or Shipped in My eBay. Sellers can also specify
-     *  PaymentStatus in ReviseCheckoutStatus to mark an order as
-     *  Paid or awaiting payment in My eBay.)
+     *  Sellers can use <b>CompleteSale</b> or My eBay to mark an
+     *  order as Paid or Shipped.
      *
      * @var string $orderStatusFilter
      */
@@ -259,13 +257,11 @@ class ItemListCustomizationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     /**
      * Gets as orderStatusFilter
      *
-     * Filter to reduce the SoldList response based on whether the seller (or eBay) marked the applicable order as Paid and/or Shipped
+     * Filter to reduce the <b>SoldList</b> response based on whether the seller (or eBay) marked the applicable order as Paid and/or Shipped
      *  in My eBay.<br>
      *  <br>
-     *  (Sellers can use CompleteSale or the eBay Web site UI to mark an
-     *  order as Paid or Shipped in My eBay. Sellers can also specify
-     *  PaymentStatus in ReviseCheckoutStatus to mark an order as
-     *  Paid or awaiting payment in My eBay.)
+     *  Sellers can use <b>CompleteSale</b> or My eBay to mark an
+     *  order as Paid or Shipped.
      *
      * @return string
      */
@@ -277,13 +273,11 @@ class ItemListCustomizationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     /**
      * Sets a new orderStatusFilter
      *
-     * Filter to reduce the SoldList response based on whether the seller (or eBay) marked the applicable order as Paid and/or Shipped
+     * Filter to reduce the <b>SoldList</b> response based on whether the seller (or eBay) marked the applicable order as Paid and/or Shipped
      *  in My eBay.<br>
      *  <br>
-     *  (Sellers can use CompleteSale or the eBay Web site UI to mark an
-     *  order as Paid or Shipped in My eBay. Sellers can also specify
-     *  PaymentStatus in ReviseCheckoutStatus to mark an order as
-     *  Paid or awaiting payment in My eBay.)
+     *  Sellers can use <b>CompleteSale</b> or My eBay to mark an
+     *  order as Paid or Shipped.
      *
      * @param string $orderStatusFilter
      * @return self

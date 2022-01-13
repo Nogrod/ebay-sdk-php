@@ -7,31 +7,22 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing SellerReverseDisputeRequestType
  *
- * Enables a seller to "reverse" an Unpaid Item dispute that has been closed in case the buyer and seller are able to reach a mutual agreement. If this action is successful, the seller receives a Final Value Fee
- *  credit and the buyer's Unpaid Item strike are both reversed, if applicable.
- *  The dispute might have resulted
- *  in a strike to the buyer and a Final Value Fee credit to the seller. A buyer and
- *  seller sometimes come to agreement after a dispute has been closed. In particular,
- *  the seller might discover that the buyer actually paid, or the buyer might agree
- *  to pay the seller's fees in exchange for having the strike removed.
+ * This call allows a seller to reverse the results of an Unpaid Item case in a situation where the buyer and seller are able to reach a mutual agreement. If this action is successful, the buyer might have an Unpaid Item strike removed (if applicable).
  *  <br><br>
- *  A dispute can only be reversed if it was closed with <b>DisputeActivity</b> set to
- *  <b>SellerEndCommunication</b>, <b>CameToAgreementNeedFVFCredit</b>, or
- *  <b>MutualAgreementOrNoBuyerResponse</b>.
+ *  An Unpaid Item case can only be reversed if it was closed with <b>DisputeActivity</b> set to <b>SellerEndCommunication</b>, <b>CameToAgreementNeedFVFCredit</b>, or <b>MutualAgreementOrNoBuyerResponse</b>.
  * XSD Type: SellerReverseDisputeRequestType
  */
 class SellerReverseDisputeRequestType extends AbstractRequestType
 {
     /**
-     * The unique identifier of the dispute that was returned when the dispute was created.
-     *  The dispute must be an Unpaid Item dispute that the seller opened.
+     * The unique identifier of the Unpaid Item case that the seller is attempting to reverse the results of.
      *
      * @var string $disputeID
      */
     private $disputeID = null;
 
     /**
-     * The reason the dispute is being reversed.
+     * The reason why the seller is attempting to reverse the results of the Unpaid Item case.
      *
      * @var string $disputeResolutionReason
      */
@@ -40,8 +31,7 @@ class SellerReverseDisputeRequestType extends AbstractRequestType
     /**
      * Gets as disputeID
      *
-     * The unique identifier of the dispute that was returned when the dispute was created.
-     *  The dispute must be an Unpaid Item dispute that the seller opened.
+     * The unique identifier of the Unpaid Item case that the seller is attempting to reverse the results of.
      *
      * @return string
      */
@@ -53,8 +43,7 @@ class SellerReverseDisputeRequestType extends AbstractRequestType
     /**
      * Sets a new disputeID
      *
-     * The unique identifier of the dispute that was returned when the dispute was created.
-     *  The dispute must be an Unpaid Item dispute that the seller opened.
+     * The unique identifier of the Unpaid Item case that the seller is attempting to reverse the results of.
      *
      * @param string $disputeID
      * @return self
@@ -68,7 +57,7 @@ class SellerReverseDisputeRequestType extends AbstractRequestType
     /**
      * Gets as disputeResolutionReason
      *
-     * The reason the dispute is being reversed.
+     * The reason why the seller is attempting to reverse the results of the Unpaid Item case.
      *
      * @return string
      */
@@ -80,7 +69,7 @@ class SellerReverseDisputeRequestType extends AbstractRequestType
     /**
      * Sets a new disputeResolutionReason
      *
-     * The reason the dispute is being reversed.
+     * The reason why the seller is attempting to reverse the results of the Unpaid Item case.
      *
      * @param string $disputeResolutionReason
      * @return self

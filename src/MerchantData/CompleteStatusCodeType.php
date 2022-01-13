@@ -32,10 +32,8 @@ class CompleteStatusCodeType
      *  <code>Complete</code> at checkout time, even though the seller may not have
      * been officially paid
      *  yet. The <b>CheckoutStatus.Status</b> value in <b>GetOrders</b> will
-     *  remain as <code>Complete</code> even if the seller uses
-     * <b>ReviseCheckoutStatus</b> to
-     *  change the checkout status to <code>Pending</code>. However, the
-     * <b>eBayPaymentStatus</b>
+     *  remain as <code>Complete</code> even if the seller
+     *  changes the checkout status to Pending. However, the <b>eBayPaymentStatus</b>
      *  value in <b>GetOrders</b> will change from <code>NoPaymentFailure</code> to
      *  <code>PaymentInProcess</code>.
      *  </span>
@@ -56,8 +54,7 @@ class CompleteStatusCodeType
      *  even though the seller may not have been officially paid yet. The
      *  <b>CheckoutStatus.Status</b> value in <b>GetOrders</b> will remain as
      * <code>Complete</code> even if the
-     *  seller uses <b>ReviseCheckoutStatus</b> to change the checkout status to
-     * <code>Pending</code>.
+     *  seller changes the checkout status to Pending.
      *  However, the <b>eBayPaymentStatus</b> value in <b>GetOrders</b> will change
      * from
      *  <code>NoPaymentFailure</code> to <code>PaymentInProcess</code>.

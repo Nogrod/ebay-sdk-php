@@ -48,7 +48,7 @@ class PicturesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
      *  black color variations, but not the pink variations.
      *  <br/><br/>
      *  <span class="tablenote"><b>Note: </b>
-     *  All images must comply with the <a href="http://developer.ebay.com/DevZone/guides/features-guide/default.html#development/Pictures-Intro.html">Picture Requirements</a>.
+     *  All images must comply with the <a href="https://developer.ebay.com/DevZone/guides/features-guide/default.html#development/Pictures-Intro.html">Picture Requirements</a>.
      *  </span>
      *
      * @var \Nogrod\eBaySDK\MerchantData\VariationSpecificPictureSetType[] $variationSpecificPictureSet
@@ -121,7 +121,7 @@ class PicturesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
      *  black color variations, but not the pink variations.
      *  <br/><br/>
      *  <span class="tablenote"><b>Note: </b>
-     *  All images must comply with the <a href="http://developer.ebay.com/DevZone/guides/features-guide/default.html#development/Pictures-Intro.html">Picture Requirements</a>.
+     *  All images must comply with the <a href="https://developer.ebay.com/DevZone/guides/features-guide/default.html#development/Pictures-Intro.html">Picture Requirements</a>.
      *  </span>
      *
      * @return self
@@ -155,7 +155,7 @@ class PicturesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
      *  black color variations, but not the pink variations.
      *  <br/><br/>
      *  <span class="tablenote"><b>Note: </b>
-     *  All images must comply with the <a href="http://developer.ebay.com/DevZone/guides/features-guide/default.html#development/Pictures-Intro.html">Picture Requirements</a>.
+     *  All images must comply with the <a href="https://developer.ebay.com/DevZone/guides/features-guide/default.html#development/Pictures-Intro.html">Picture Requirements</a>.
      *  </span>
      *
      * @param int|string $index
@@ -188,7 +188,7 @@ class PicturesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
      *  black color variations, but not the pink variations.
      *  <br/><br/>
      *  <span class="tablenote"><b>Note: </b>
-     *  All images must comply with the <a href="http://developer.ebay.com/DevZone/guides/features-guide/default.html#development/Pictures-Intro.html">Picture Requirements</a>.
+     *  All images must comply with the <a href="https://developer.ebay.com/DevZone/guides/features-guide/default.html#development/Pictures-Intro.html">Picture Requirements</a>.
      *  </span>
      *
      * @param int|string $index
@@ -221,7 +221,7 @@ class PicturesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
      *  black color variations, but not the pink variations.
      *  <br/><br/>
      *  <span class="tablenote"><b>Note: </b>
-     *  All images must comply with the <a href="http://developer.ebay.com/DevZone/guides/features-guide/default.html#development/Pictures-Intro.html">Picture Requirements</a>.
+     *  All images must comply with the <a href="https://developer.ebay.com/DevZone/guides/features-guide/default.html#development/Pictures-Intro.html">Picture Requirements</a>.
      *  </span>
      *
      * @return \Nogrod\eBaySDK\MerchantData\VariationSpecificPictureSetType[]
@@ -253,7 +253,7 @@ class PicturesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
      *  black color variations, but not the pink variations.
      *  <br/><br/>
      *  <span class="tablenote"><b>Note: </b>
-     *  All images must comply with the <a href="http://developer.ebay.com/DevZone/guides/features-guide/default.html#development/Pictures-Intro.html">Picture Requirements</a>.
+     *  All images must comply with the <a href="https://developer.ebay.com/DevZone/guides/features-guide/default.html#development/Pictures-Intro.html">Picture Requirements</a>.
      *  </span>
      *
      * @param \Nogrod\eBaySDK\MerchantData\VariationSpecificPictureSetType[] $variationSpecificPictureSet

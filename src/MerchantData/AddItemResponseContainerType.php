@@ -123,20 +123,6 @@ class AddItemResponseContainerType implements \Sabre\Xml\XmlSerializable, \Sabre
     ];
 
     /**
-     * Container consisting of one or more <b>Recommendation</b> containers. Each <b>Recommendation</b> container provides a message to the seller on how a listing can be improved or brought up to standard in regards to top-rated seller/listing requirements, mandated or recommended Item Specifics, picture quality requirements, pricing and/or listing format recommendations, recommended keywords and/or Item Specifics in a Title, and/or a recommendation to offer fast handling (same-day handling or handling time of 1 day) and/or a free shipping option in order to qualify the listing for a Fast 'N Free badge.
-     *  <br><br>
-     *  This container is only returned if the <b>IncludeRecommendations</b>
-     *  flag was included and set to 'true' in the <b>AddItems</b> request, and if
-     *  at least one listing recommendation exists for the newly created listing. If
-     *  one or more listing recommendations are returned for one or more of the newly
-     *  created listings, it will be at the seller's discretion about whether to revise the
-     *  item(s) based on eBay's listing recommendation(s).
-     *
-     * @var \Nogrod\eBaySDK\MerchantData\ListingRecommendationType[] $listingRecommendations
-     */
-    private $listingRecommendations = null;
-
-    /**
      * Gets as itemID
      *
      * Unique identifier for the new listing. This field is returned as long as the listing was successfully created.
@@ -618,107 +604,6 @@ class AddItemResponseContainerType implements \Sabre\Xml\XmlSerializable, \Sabre
         return $this;
     }
 
-    /**
-     * Adds as recommendation
-     *
-     * Container consisting of one or more <b>Recommendation</b> containers. Each <b>Recommendation</b> container provides a message to the seller on how a listing can be improved or brought up to standard in regards to top-rated seller/listing requirements, mandated or recommended Item Specifics, picture quality requirements, pricing and/or listing format recommendations, recommended keywords and/or Item Specifics in a Title, and/or a recommendation to offer fast handling (same-day handling or handling time of 1 day) and/or a free shipping option in order to qualify the listing for a Fast 'N Free badge.
-     *  <br><br>
-     *  This container is only returned if the <b>IncludeRecommendations</b>
-     *  flag was included and set to 'true' in the <b>AddItems</b> request, and if
-     *  at least one listing recommendation exists for the newly created listing. If
-     *  one or more listing recommendations are returned for one or more of the newly
-     *  created listings, it will be at the seller's discretion about whether to revise the
-     *  item(s) based on eBay's listing recommendation(s).
-     *
-     * @return self
-     * @param \Nogrod\eBaySDK\MerchantData\ListingRecommendationType $recommendation
-     */
-    public function addToListingRecommendations(\Nogrod\eBaySDK\MerchantData\ListingRecommendationType $recommendation)
-    {
-        $this->listingRecommendations[] = $recommendation;
-        return $this;
-    }
-
-    /**
-     * isset listingRecommendations
-     *
-     * Container consisting of one or more <b>Recommendation</b> containers. Each <b>Recommendation</b> container provides a message to the seller on how a listing can be improved or brought up to standard in regards to top-rated seller/listing requirements, mandated or recommended Item Specifics, picture quality requirements, pricing and/or listing format recommendations, recommended keywords and/or Item Specifics in a Title, and/or a recommendation to offer fast handling (same-day handling or handling time of 1 day) and/or a free shipping option in order to qualify the listing for a Fast 'N Free badge.
-     *  <br><br>
-     *  This container is only returned if the <b>IncludeRecommendations</b>
-     *  flag was included and set to 'true' in the <b>AddItems</b> request, and if
-     *  at least one listing recommendation exists for the newly created listing. If
-     *  one or more listing recommendations are returned for one or more of the newly
-     *  created listings, it will be at the seller's discretion about whether to revise the
-     *  item(s) based on eBay's listing recommendation(s).
-     *
-     * @param int|string $index
-     * @return bool
-     */
-    public function issetListingRecommendations($index)
-    {
-        return isset($this->listingRecommendations[$index]);
-    }
-
-    /**
-     * unset listingRecommendations
-     *
-     * Container consisting of one or more <b>Recommendation</b> containers. Each <b>Recommendation</b> container provides a message to the seller on how a listing can be improved or brought up to standard in regards to top-rated seller/listing requirements, mandated or recommended Item Specifics, picture quality requirements, pricing and/or listing format recommendations, recommended keywords and/or Item Specifics in a Title, and/or a recommendation to offer fast handling (same-day handling or handling time of 1 day) and/or a free shipping option in order to qualify the listing for a Fast 'N Free badge.
-     *  <br><br>
-     *  This container is only returned if the <b>IncludeRecommendations</b>
-     *  flag was included and set to 'true' in the <b>AddItems</b> request, and if
-     *  at least one listing recommendation exists for the newly created listing. If
-     *  one or more listing recommendations are returned for one or more of the newly
-     *  created listings, it will be at the seller's discretion about whether to revise the
-     *  item(s) based on eBay's listing recommendation(s).
-     *
-     * @param int|string $index
-     * @return void
-     */
-    public function unsetListingRecommendations($index)
-    {
-        unset($this->listingRecommendations[$index]);
-    }
-
-    /**
-     * Gets as listingRecommendations
-     *
-     * Container consisting of one or more <b>Recommendation</b> containers. Each <b>Recommendation</b> container provides a message to the seller on how a listing can be improved or brought up to standard in regards to top-rated seller/listing requirements, mandated or recommended Item Specifics, picture quality requirements, pricing and/or listing format recommendations, recommended keywords and/or Item Specifics in a Title, and/or a recommendation to offer fast handling (same-day handling or handling time of 1 day) and/or a free shipping option in order to qualify the listing for a Fast 'N Free badge.
-     *  <br><br>
-     *  This container is only returned if the <b>IncludeRecommendations</b>
-     *  flag was included and set to 'true' in the <b>AddItems</b> request, and if
-     *  at least one listing recommendation exists for the newly created listing. If
-     *  one or more listing recommendations are returned for one or more of the newly
-     *  created listings, it will be at the seller's discretion about whether to revise the
-     *  item(s) based on eBay's listing recommendation(s).
-     *
-     * @return \Nogrod\eBaySDK\MerchantData\ListingRecommendationType[]
-     */
-    public function getListingRecommendations()
-    {
-        return $this->listingRecommendations;
-    }
-
-    /**
-     * Sets a new listingRecommendations
-     *
-     * Container consisting of one or more <b>Recommendation</b> containers. Each <b>Recommendation</b> container provides a message to the seller on how a listing can be improved or brought up to standard in regards to top-rated seller/listing requirements, mandated or recommended Item Specifics, picture quality requirements, pricing and/or listing format recommendations, recommended keywords and/or Item Specifics in a Title, and/or a recommendation to offer fast handling (same-day handling or handling time of 1 day) and/or a free shipping option in order to qualify the listing for a Fast 'N Free badge.
-     *  <br><br>
-     *  This container is only returned if the <b>IncludeRecommendations</b>
-     *  flag was included and set to 'true' in the <b>AddItems</b> request, and if
-     *  at least one listing recommendation exists for the newly created listing. If
-     *  one or more listing recommendations are returned for one or more of the newly
-     *  created listings, it will be at the seller's discretion about whether to revise the
-     *  item(s) based on eBay's listing recommendation(s).
-     *
-     * @param \Nogrod\eBaySDK\MerchantData\ListingRecommendationType[] $listingRecommendations
-     * @return self
-     */
-    public function setListingRecommendations(array $listingRecommendations)
-    {
-        $this->listingRecommendations = $listingRecommendations;
-        return $this;
-    }
-
     public function xmlSerialize(\Sabre\Xml\Writer $writer)
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
@@ -766,12 +651,6 @@ class AddItemResponseContainerType implements \Sabre\Xml\XmlSerializable, \Sabre
         if (null !== $value && !empty($this->getDiscountReason())) {
             $writer->write(array_map(function ($v) {
                 return ["DiscountReason" => $v];
-            }, $value));
-        }
-        $value = $this->getListingRecommendations();
-        if (null !== $value && !empty($this->getListingRecommendations())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ListingRecommendations", array_map(function ($v) {
-                return ["Recommendation" => $v];
             }, $value));
         }
     }
@@ -833,12 +712,6 @@ class AddItemResponseContainerType implements \Sabre\Xml\XmlSerializable, \Sabre
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DiscountReason', true);
         if (null !== $value && !empty($value)) {
             $this->setDiscountReason($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ListingRecommendations', true);
-        if (null !== $value && !empty($value)) {
-            $this->setListingRecommendations(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\ListingRecommendationType::fromKeyValue($v);
-            }, $value));
         }
     }
 }

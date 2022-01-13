@@ -74,7 +74,7 @@ class VariationSpecificPictureSetType implements \Sabre\Xml\XmlSerializable, \Sa
      *  When you list, revise, or relist a variation, use VariationSpecificPictureSet.PictureURL (not ExternalPictureURL) to specify your self-hosted picture or EPS picture.<br>
      *  <br/>
      *  <span class="tablenote"><b>Note: </b>
-     *  All images must comply to the <a href="http://developer.ebay.com/DevZone/guides/features-guide/default.html#development/Pictures-Intro.html">Picture Requirements</a>.
+     *  All images must comply to the <a href="https://developer.ebay.com/DevZone/guides/features-guide/default.html#development/Pictures-Intro.html">Picture Requirements</a>.
      *  </span>
      *  This is returned only when the seller used a self-hosted picture for the variation.
      *
@@ -358,7 +358,7 @@ class VariationSpecificPictureSetType implements \Sabre\Xml\XmlSerializable, \Sa
      *  When you list, revise, or relist a variation, use VariationSpecificPictureSet.PictureURL (not ExternalPictureURL) to specify your self-hosted picture or EPS picture.<br>
      *  <br/>
      *  <span class="tablenote"><b>Note: </b>
-     *  All images must comply to the <a href="http://developer.ebay.com/DevZone/guides/features-guide/default.html#development/Pictures-Intro.html">Picture Requirements</a>.
+     *  All images must comply to the <a href="https://developer.ebay.com/DevZone/guides/features-guide/default.html#development/Pictures-Intro.html">Picture Requirements</a>.
      *  </span>
      *  This is returned only when the seller used a self-hosted picture for the variation.
      *
@@ -379,7 +379,7 @@ class VariationSpecificPictureSetType implements \Sabre\Xml\XmlSerializable, \Sa
      *  When you list, revise, or relist a variation, use VariationSpecificPictureSet.PictureURL (not ExternalPictureURL) to specify your self-hosted picture or EPS picture.<br>
      *  <br/>
      *  <span class="tablenote"><b>Note: </b>
-     *  All images must comply to the <a href="http://developer.ebay.com/DevZone/guides/features-guide/default.html#development/Pictures-Intro.html">Picture Requirements</a>.
+     *  All images must comply to the <a href="https://developer.ebay.com/DevZone/guides/features-guide/default.html#development/Pictures-Intro.html">Picture Requirements</a>.
      *  </span>
      *  This is returned only when the seller used a self-hosted picture for the variation.
      *
@@ -399,7 +399,7 @@ class VariationSpecificPictureSetType implements \Sabre\Xml\XmlSerializable, \Sa
      *  When you list, revise, or relist a variation, use VariationSpecificPictureSet.PictureURL (not ExternalPictureURL) to specify your self-hosted picture or EPS picture.<br>
      *  <br/>
      *  <span class="tablenote"><b>Note: </b>
-     *  All images must comply to the <a href="http://developer.ebay.com/DevZone/guides/features-guide/default.html#development/Pictures-Intro.html">Picture Requirements</a>.
+     *  All images must comply to the <a href="https://developer.ebay.com/DevZone/guides/features-guide/default.html#development/Pictures-Intro.html">Picture Requirements</a>.
      *  </span>
      *  This is returned only when the seller used a self-hosted picture for the variation.
      *
@@ -419,7 +419,7 @@ class VariationSpecificPictureSetType implements \Sabre\Xml\XmlSerializable, \Sa
      *  When you list, revise, or relist a variation, use VariationSpecificPictureSet.PictureURL (not ExternalPictureURL) to specify your self-hosted picture or EPS picture.<br>
      *  <br/>
      *  <span class="tablenote"><b>Note: </b>
-     *  All images must comply to the <a href="http://developer.ebay.com/DevZone/guides/features-guide/default.html#development/Pictures-Intro.html">Picture Requirements</a>.
+     *  All images must comply to the <a href="https://developer.ebay.com/DevZone/guides/features-guide/default.html#development/Pictures-Intro.html">Picture Requirements</a>.
      *  </span>
      *  This is returned only when the seller used a self-hosted picture for the variation.
      *
@@ -438,7 +438,7 @@ class VariationSpecificPictureSetType implements \Sabre\Xml\XmlSerializable, \Sa
      *  When you list, revise, or relist a variation, use VariationSpecificPictureSet.PictureURL (not ExternalPictureURL) to specify your self-hosted picture or EPS picture.<br>
      *  <br/>
      *  <span class="tablenote"><b>Note: </b>
-     *  All images must comply to the <a href="http://developer.ebay.com/DevZone/guides/features-guide/default.html#development/Pictures-Intro.html">Picture Requirements</a>.
+     *  All images must comply to the <a href="https://developer.ebay.com/DevZone/guides/features-guide/default.html#development/Pictures-Intro.html">Picture Requirements</a>.
      *  </span>
      *  This is returned only when the seller used a self-hosted picture for the variation.
      *

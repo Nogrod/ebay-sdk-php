@@ -24,13 +24,9 @@ class AccountHistorySelectionCodeType
     /**
      * Constant for 'SpecifiedInvoice' value.
      *
-     * This value should be used if the eBay user wants to see the account entries for
-     * a specific invoice that was sent to the user by eBay. If this value is used, the
-     * specific invoice is identified by including the <b>InvoiceDate</b> field and
-     * setting its value to the actual invoice date. If this value is used, the
-     * <b>BeginDate</b>, and <b>EndDate</b> fields of the <b>GetAccount</b> request are
-     * no longer applicable and will be ignored if they are included in the call
-     * request.
+     * This value is no longer applicable or supported, and an error occurs if it is
+     * used. As an alternative, users can use <code>BetweenSpecifiedDates</code>
+     * instead.
      */
     public const VAL_SPECIFIED_INVOICE = 'SpecifiedInvoice';
 

@@ -46,13 +46,6 @@ class FindProductsResponseType extends AbstractResponseType
     private $domainHistogram = null;
 
     /**
-     * This container has been deprecated from the <b>FindProducts</b> call. To retrieve active items associated with a product, you can use the <b>findItemsByProduct</b> call of the Finding API instead.
-     *
-     * @var \Nogrod\eBaySDK\Shopping\SimpleItemType[] $itemArray
-     */
-    private $itemArray = null;
-
-    /**
      * This integer value shows the current page number of the results set that is being displayed. The number of pages in the results set depends on how many catalog products exist based on the search criteria, and how many catalog products are being returned per page (set in the <b>MaxEntries</b> field in the call request). The total number of pages in the results set is shown in the <b>ApproximatePages</b> field.
      *  <br/><br/>
      *  The <b>PageNumber</b> value in the response always reflects the <b>PageNumber</b> value that is set in the call request, or, if the <b>PageNumber</b> field is not used in the call request, the first (and perhaps only) page is returned by default.
@@ -262,72 +255,6 @@ class FindProductsResponseType extends AbstractResponseType
     }
 
     /**
-     * Adds as item
-     *
-     * This container has been deprecated from the <b>FindProducts</b> call. To retrieve active items associated with a product, you can use the <b>findItemsByProduct</b> call of the Finding API instead.
-     *
-     * @return self
-     * @param \Nogrod\eBaySDK\Shopping\SimpleItemType $item
-     */
-    public function addToItemArray(\Nogrod\eBaySDK\Shopping\SimpleItemType $item)
-    {
-        $this->itemArray[] = $item;
-        return $this;
-    }
-
-    /**
-     * isset itemArray
-     *
-     * This container has been deprecated from the <b>FindProducts</b> call. To retrieve active items associated with a product, you can use the <b>findItemsByProduct</b> call of the Finding API instead.
-     *
-     * @param int|string $index
-     * @return bool
-     */
-    public function issetItemArray($index)
-    {
-        return isset($this->itemArray[$index]);
-    }
-
-    /**
-     * unset itemArray
-     *
-     * This container has been deprecated from the <b>FindProducts</b> call. To retrieve active items associated with a product, you can use the <b>findItemsByProduct</b> call of the Finding API instead.
-     *
-     * @param int|string $index
-     * @return void
-     */
-    public function unsetItemArray($index)
-    {
-        unset($this->itemArray[$index]);
-    }
-
-    /**
-     * Gets as itemArray
-     *
-     * This container has been deprecated from the <b>FindProducts</b> call. To retrieve active items associated with a product, you can use the <b>findItemsByProduct</b> call of the Finding API instead.
-     *
-     * @return \Nogrod\eBaySDK\Shopping\SimpleItemType[]
-     */
-    public function getItemArray()
-    {
-        return $this->itemArray;
-    }
-
-    /**
-     * Sets a new itemArray
-     *
-     * This container has been deprecated from the <b>FindProducts</b> call. To retrieve active items associated with a product, you can use the <b>findItemsByProduct</b> call of the Finding API instead.
-     *
-     * @param \Nogrod\eBaySDK\Shopping\SimpleItemType[] $itemArray
-     * @return self
-     */
-    public function setItemArray(array $itemArray)
-    {
-        $this->itemArray = $itemArray;
-        return $this;
-    }
-
-    /**
      * Gets as pageNumber
      *
      * This integer value shows the current page number of the results set that is being displayed. The number of pages in the results set depends on how many catalog products exist based on the search criteria, and how many catalog products are being returned per page (set in the <b>MaxEntries</b> field in the call request). The total number of pages in the results set is shown in the <b>ApproximatePages</b> field.
@@ -509,12 +436,6 @@ class FindProductsResponseType extends AbstractResponseType
                 return ["Domain" => $v];
             }, $value));
         }
-        $value = $this->getItemArray();
-        if (null !== $value && !empty($this->getItemArray())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ItemArray", array_map(function ($v) {
-                return ["Item" => $v];
-            }, $value));
-        }
         $value = $this->getPageNumber();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PageNumber", $value);
@@ -563,12 +484,6 @@ class FindProductsResponseType extends AbstractResponseType
         if (null !== $value && !empty($value)) {
             $this->setDomainHistogram(array_map(function ($v) {
                 return \Nogrod\eBaySDK\Shopping\HistogramEntryType::fromKeyValue($v);
-            }, $value));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemArray', true);
-        if (null !== $value && !empty($value)) {
-            $this->setItemArray(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Shopping\SimpleItemType::fromKeyValue($v);
             }, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PageNumber');

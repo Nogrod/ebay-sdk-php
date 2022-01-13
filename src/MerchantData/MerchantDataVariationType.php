@@ -46,12 +46,6 @@ class MerchantDataVariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
      * <b>For ActiveInventoryReport:</b>
      *  The number of items available for sale that are associated
      *  with this variation.<br>
-     *  <br>
-     *  <b>For SoldReport:</b>
-     *  The total number of items associated with the variation
-     *  (including the quantity sold). To calculate the quantity
-     *  available for sale, subtract the variation's
-     *  QuantitySold from this value.
      *
      * @var int $quantity
      */
@@ -165,12 +159,6 @@ class MerchantDataVariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
      * <b>For ActiveInventoryReport:</b>
      *  The number of items available for sale that are associated
      *  with this variation.<br>
-     *  <br>
-     *  <b>For SoldReport:</b>
-     *  The total number of items associated with the variation
-     *  (including the quantity sold). To calculate the quantity
-     *  available for sale, subtract the variation's
-     *  QuantitySold from this value.
      *
      * @return int
      */
@@ -185,12 +173,6 @@ class MerchantDataVariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
      * <b>For ActiveInventoryReport:</b>
      *  The number of items available for sale that are associated
      *  with this variation.<br>
-     *  <br>
-     *  <b>For SoldReport:</b>
-     *  The total number of items associated with the variation
-     *  (including the quantity sold). To calculate the quantity
-     *  available for sale, subtract the variation's
-     *  QuantitySold from this value.
      *
      * @param int $quantity
      * @return self

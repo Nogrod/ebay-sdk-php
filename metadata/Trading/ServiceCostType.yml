@@ -1,0 +1,29 @@
+Nogrod\eBaySDK\Trading\ServiceCostType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        amount:
+            expose: true
+            access_type: public_method
+            serialized_name: Amount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getAmount
+                setter: setAmount
+            type: Nogrod\eBaySDK\Trading\AmountType
+        convertedFromAmount:
+            expose: true
+            access_type: public_method
+            serialized_name: ConvertedFromAmount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getConvertedFromAmount
+                setter: setConvertedFromAmount
+            type: Nogrod\eBaySDK\Trading\AmountType

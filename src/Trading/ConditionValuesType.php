@@ -13,14 +13,18 @@ use Nogrod\XMLClientRuntime\Func;
 class ConditionValuesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
     /**
-     * This repeatable container shows the display name and unique identifier of each item condition supported by the corresponding eBay category.
+     * This repeatable container shows the display name and unique identifier of each item condition supported by the corresponding eBay category. All refurbished item conditions are returned in the
      *  <br>
      *  <br>
      *  <span class="tablenote"><strong>Note:</strong>
-     *  In all eBay marketplaces, Condition ID 2000 now maps to an item condition of 'Certified Refurbished', and not 'Manufacturer Refurbished'. To list an item as 'Certified Refurbished', a seller must be pre-qualified by eBay for this feature. Any seller who is not eligible for this feature will be blocked if they try to create a new listing or revise an existing listing with this item condition. Any active listings on any eBay marketplace that had 'Manufacturer Refurbished' as the item condition should have been automatically updated by eBay to the 'Seller Refurbished' item condition (Condition ID 2500).
+     *  In all eBay marketplaces, Condition ID 2000 now maps to an item condition of 'Certified - Refurbished', and not 'Manufacturer Refurbished'. To list an item as 'Certified - Refurbished', a seller must be pre-qualified by eBay for this feature. Any seller who is not eligible for this feature will be blocked if they try to create a new listing or revise an existing listing with this item condition.
      *  <br>
      *  <br>
-     *  Any seller that is interested in eligibility requirements to list with 'Certified Refurbished' should see the <a href="https://pages.ebay.com/seller-center/listing-and-marketing/certified-refurbished-program.html" target="_blank">Certified refurbished program</a> page in Seller Center.
+     *  Any seller that is interested in eligibility requirements to list with 'Certified - Refurbished' should see the <a href="https://pages.ebay.com/seller-center/listing-and-marketing/certified-refurbished-program.html" target="_blank">Certified refurbished program</a> page in Seller Center.
+     *  </span>
+     *  <br>
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  As of September 1, 2021, condition ID 2500 ('Seller Refurbished') can no longer be used in the <strong>Cell Phones & Smartphones</strong> category (category ID 9355) for the following marketplaces: US, Canada, UK, Germany, and Australia. The 'Seller Refurbished' item condition will be replaced by one of three new refurbished values, which include condition ID 2010 ('Excellent - Refurbished'), condition ID 2020 ('Very Good - Refurbished'), and condition ID 2030 ('Good - Refurbished'). Similar to the condition ID 2000 ('Certified - Refurbished') item condition, the three new seller refurbished item conditions will be returned under the <strong>Category.SpecialFeatures</strong> container. To use any of these new refurbished item conditions in category 9355, sellers must go through an application and qualification process. The new item condition values appearing in the <strong>Category.SpecialFeatures</strong> container does not necessarily mean that a seller is eligible to list in category 9355 with these item conditions.
      *  </span>
      *
      * @var \Nogrod\eBaySDK\Trading\ConditionType[] $condition
@@ -46,14 +50,18 @@ class ConditionValuesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     /**
      * Adds as condition
      *
-     * This repeatable container shows the display name and unique identifier of each item condition supported by the corresponding eBay category.
+     * This repeatable container shows the display name and unique identifier of each item condition supported by the corresponding eBay category. All refurbished item conditions are returned in the
      *  <br>
      *  <br>
      *  <span class="tablenote"><strong>Note:</strong>
-     *  In all eBay marketplaces, Condition ID 2000 now maps to an item condition of 'Certified Refurbished', and not 'Manufacturer Refurbished'. To list an item as 'Certified Refurbished', a seller must be pre-qualified by eBay for this feature. Any seller who is not eligible for this feature will be blocked if they try to create a new listing or revise an existing listing with this item condition. Any active listings on any eBay marketplace that had 'Manufacturer Refurbished' as the item condition should have been automatically updated by eBay to the 'Seller Refurbished' item condition (Condition ID 2500).
+     *  In all eBay marketplaces, Condition ID 2000 now maps to an item condition of 'Certified - Refurbished', and not 'Manufacturer Refurbished'. To list an item as 'Certified - Refurbished', a seller must be pre-qualified by eBay for this feature. Any seller who is not eligible for this feature will be blocked if they try to create a new listing or revise an existing listing with this item condition.
      *  <br>
      *  <br>
-     *  Any seller that is interested in eligibility requirements to list with 'Certified Refurbished' should see the <a href="https://pages.ebay.com/seller-center/listing-and-marketing/certified-refurbished-program.html" target="_blank">Certified refurbished program</a> page in Seller Center.
+     *  Any seller that is interested in eligibility requirements to list with 'Certified - Refurbished' should see the <a href="https://pages.ebay.com/seller-center/listing-and-marketing/certified-refurbished-program.html" target="_blank">Certified refurbished program</a> page in Seller Center.
+     *  </span>
+     *  <br>
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  As of September 1, 2021, condition ID 2500 ('Seller Refurbished') can no longer be used in the <strong>Cell Phones & Smartphones</strong> category (category ID 9355) for the following marketplaces: US, Canada, UK, Germany, and Australia. The 'Seller Refurbished' item condition will be replaced by one of three new refurbished values, which include condition ID 2010 ('Excellent - Refurbished'), condition ID 2020 ('Very Good - Refurbished'), and condition ID 2030 ('Good - Refurbished'). Similar to the condition ID 2000 ('Certified - Refurbished') item condition, the three new seller refurbished item conditions will be returned under the <strong>Category.SpecialFeatures</strong> container. To use any of these new refurbished item conditions in category 9355, sellers must go through an application and qualification process. The new item condition values appearing in the <strong>Category.SpecialFeatures</strong> container does not necessarily mean that a seller is eligible to list in category 9355 with these item conditions.
      *  </span>
      *
      * @return self
@@ -68,14 +76,18 @@ class ConditionValuesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     /**
      * isset condition
      *
-     * This repeatable container shows the display name and unique identifier of each item condition supported by the corresponding eBay category.
+     * This repeatable container shows the display name and unique identifier of each item condition supported by the corresponding eBay category. All refurbished item conditions are returned in the
      *  <br>
      *  <br>
      *  <span class="tablenote"><strong>Note:</strong>
-     *  In all eBay marketplaces, Condition ID 2000 now maps to an item condition of 'Certified Refurbished', and not 'Manufacturer Refurbished'. To list an item as 'Certified Refurbished', a seller must be pre-qualified by eBay for this feature. Any seller who is not eligible for this feature will be blocked if they try to create a new listing or revise an existing listing with this item condition. Any active listings on any eBay marketplace that had 'Manufacturer Refurbished' as the item condition should have been automatically updated by eBay to the 'Seller Refurbished' item condition (Condition ID 2500).
+     *  In all eBay marketplaces, Condition ID 2000 now maps to an item condition of 'Certified - Refurbished', and not 'Manufacturer Refurbished'. To list an item as 'Certified - Refurbished', a seller must be pre-qualified by eBay for this feature. Any seller who is not eligible for this feature will be blocked if they try to create a new listing or revise an existing listing with this item condition.
      *  <br>
      *  <br>
-     *  Any seller that is interested in eligibility requirements to list with 'Certified Refurbished' should see the <a href="https://pages.ebay.com/seller-center/listing-and-marketing/certified-refurbished-program.html" target="_blank">Certified refurbished program</a> page in Seller Center.
+     *  Any seller that is interested in eligibility requirements to list with 'Certified - Refurbished' should see the <a href="https://pages.ebay.com/seller-center/listing-and-marketing/certified-refurbished-program.html" target="_blank">Certified refurbished program</a> page in Seller Center.
+     *  </span>
+     *  <br>
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  As of September 1, 2021, condition ID 2500 ('Seller Refurbished') can no longer be used in the <strong>Cell Phones & Smartphones</strong> category (category ID 9355) for the following marketplaces: US, Canada, UK, Germany, and Australia. The 'Seller Refurbished' item condition will be replaced by one of three new refurbished values, which include condition ID 2010 ('Excellent - Refurbished'), condition ID 2020 ('Very Good - Refurbished'), and condition ID 2030 ('Good - Refurbished'). Similar to the condition ID 2000 ('Certified - Refurbished') item condition, the three new seller refurbished item conditions will be returned under the <strong>Category.SpecialFeatures</strong> container. To use any of these new refurbished item conditions in category 9355, sellers must go through an application and qualification process. The new item condition values appearing in the <strong>Category.SpecialFeatures</strong> container does not necessarily mean that a seller is eligible to list in category 9355 with these item conditions.
      *  </span>
      *
      * @param int|string $index
@@ -89,14 +101,18 @@ class ConditionValuesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     /**
      * unset condition
      *
-     * This repeatable container shows the display name and unique identifier of each item condition supported by the corresponding eBay category.
+     * This repeatable container shows the display name and unique identifier of each item condition supported by the corresponding eBay category. All refurbished item conditions are returned in the
      *  <br>
      *  <br>
      *  <span class="tablenote"><strong>Note:</strong>
-     *  In all eBay marketplaces, Condition ID 2000 now maps to an item condition of 'Certified Refurbished', and not 'Manufacturer Refurbished'. To list an item as 'Certified Refurbished', a seller must be pre-qualified by eBay for this feature. Any seller who is not eligible for this feature will be blocked if they try to create a new listing or revise an existing listing with this item condition. Any active listings on any eBay marketplace that had 'Manufacturer Refurbished' as the item condition should have been automatically updated by eBay to the 'Seller Refurbished' item condition (Condition ID 2500).
+     *  In all eBay marketplaces, Condition ID 2000 now maps to an item condition of 'Certified - Refurbished', and not 'Manufacturer Refurbished'. To list an item as 'Certified - Refurbished', a seller must be pre-qualified by eBay for this feature. Any seller who is not eligible for this feature will be blocked if they try to create a new listing or revise an existing listing with this item condition.
      *  <br>
      *  <br>
-     *  Any seller that is interested in eligibility requirements to list with 'Certified Refurbished' should see the <a href="https://pages.ebay.com/seller-center/listing-and-marketing/certified-refurbished-program.html" target="_blank">Certified refurbished program</a> page in Seller Center.
+     *  Any seller that is interested in eligibility requirements to list with 'Certified - Refurbished' should see the <a href="https://pages.ebay.com/seller-center/listing-and-marketing/certified-refurbished-program.html" target="_blank">Certified refurbished program</a> page in Seller Center.
+     *  </span>
+     *  <br>
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  As of September 1, 2021, condition ID 2500 ('Seller Refurbished') can no longer be used in the <strong>Cell Phones & Smartphones</strong> category (category ID 9355) for the following marketplaces: US, Canada, UK, Germany, and Australia. The 'Seller Refurbished' item condition will be replaced by one of three new refurbished values, which include condition ID 2010 ('Excellent - Refurbished'), condition ID 2020 ('Very Good - Refurbished'), and condition ID 2030 ('Good - Refurbished'). Similar to the condition ID 2000 ('Certified - Refurbished') item condition, the three new seller refurbished item conditions will be returned under the <strong>Category.SpecialFeatures</strong> container. To use any of these new refurbished item conditions in category 9355, sellers must go through an application and qualification process. The new item condition values appearing in the <strong>Category.SpecialFeatures</strong> container does not necessarily mean that a seller is eligible to list in category 9355 with these item conditions.
      *  </span>
      *
      * @param int|string $index
@@ -110,14 +126,18 @@ class ConditionValuesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     /**
      * Gets as condition
      *
-     * This repeatable container shows the display name and unique identifier of each item condition supported by the corresponding eBay category.
+     * This repeatable container shows the display name and unique identifier of each item condition supported by the corresponding eBay category. All refurbished item conditions are returned in the
      *  <br>
      *  <br>
      *  <span class="tablenote"><strong>Note:</strong>
-     *  In all eBay marketplaces, Condition ID 2000 now maps to an item condition of 'Certified Refurbished', and not 'Manufacturer Refurbished'. To list an item as 'Certified Refurbished', a seller must be pre-qualified by eBay for this feature. Any seller who is not eligible for this feature will be blocked if they try to create a new listing or revise an existing listing with this item condition. Any active listings on any eBay marketplace that had 'Manufacturer Refurbished' as the item condition should have been automatically updated by eBay to the 'Seller Refurbished' item condition (Condition ID 2500).
+     *  In all eBay marketplaces, Condition ID 2000 now maps to an item condition of 'Certified - Refurbished', and not 'Manufacturer Refurbished'. To list an item as 'Certified - Refurbished', a seller must be pre-qualified by eBay for this feature. Any seller who is not eligible for this feature will be blocked if they try to create a new listing or revise an existing listing with this item condition.
      *  <br>
      *  <br>
-     *  Any seller that is interested in eligibility requirements to list with 'Certified Refurbished' should see the <a href="https://pages.ebay.com/seller-center/listing-and-marketing/certified-refurbished-program.html" target="_blank">Certified refurbished program</a> page in Seller Center.
+     *  Any seller that is interested in eligibility requirements to list with 'Certified - Refurbished' should see the <a href="https://pages.ebay.com/seller-center/listing-and-marketing/certified-refurbished-program.html" target="_blank">Certified refurbished program</a> page in Seller Center.
+     *  </span>
+     *  <br>
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  As of September 1, 2021, condition ID 2500 ('Seller Refurbished') can no longer be used in the <strong>Cell Phones & Smartphones</strong> category (category ID 9355) for the following marketplaces: US, Canada, UK, Germany, and Australia. The 'Seller Refurbished' item condition will be replaced by one of three new refurbished values, which include condition ID 2010 ('Excellent - Refurbished'), condition ID 2020 ('Very Good - Refurbished'), and condition ID 2030 ('Good - Refurbished'). Similar to the condition ID 2000 ('Certified - Refurbished') item condition, the three new seller refurbished item conditions will be returned under the <strong>Category.SpecialFeatures</strong> container. To use any of these new refurbished item conditions in category 9355, sellers must go through an application and qualification process. The new item condition values appearing in the <strong>Category.SpecialFeatures</strong> container does not necessarily mean that a seller is eligible to list in category 9355 with these item conditions.
      *  </span>
      *
      * @return \Nogrod\eBaySDK\Trading\ConditionType[]
@@ -130,14 +150,18 @@ class ConditionValuesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     /**
      * Sets a new condition
      *
-     * This repeatable container shows the display name and unique identifier of each item condition supported by the corresponding eBay category.
+     * This repeatable container shows the display name and unique identifier of each item condition supported by the corresponding eBay category. All refurbished item conditions are returned in the
      *  <br>
      *  <br>
      *  <span class="tablenote"><strong>Note:</strong>
-     *  In all eBay marketplaces, Condition ID 2000 now maps to an item condition of 'Certified Refurbished', and not 'Manufacturer Refurbished'. To list an item as 'Certified Refurbished', a seller must be pre-qualified by eBay for this feature. Any seller who is not eligible for this feature will be blocked if they try to create a new listing or revise an existing listing with this item condition. Any active listings on any eBay marketplace that had 'Manufacturer Refurbished' as the item condition should have been automatically updated by eBay to the 'Seller Refurbished' item condition (Condition ID 2500).
+     *  In all eBay marketplaces, Condition ID 2000 now maps to an item condition of 'Certified - Refurbished', and not 'Manufacturer Refurbished'. To list an item as 'Certified - Refurbished', a seller must be pre-qualified by eBay for this feature. Any seller who is not eligible for this feature will be blocked if they try to create a new listing or revise an existing listing with this item condition.
      *  <br>
      *  <br>
-     *  Any seller that is interested in eligibility requirements to list with 'Certified Refurbished' should see the <a href="https://pages.ebay.com/seller-center/listing-and-marketing/certified-refurbished-program.html" target="_blank">Certified refurbished program</a> page in Seller Center.
+     *  Any seller that is interested in eligibility requirements to list with 'Certified - Refurbished' should see the <a href="https://pages.ebay.com/seller-center/listing-and-marketing/certified-refurbished-program.html" target="_blank">Certified refurbished program</a> page in Seller Center.
+     *  </span>
+     *  <br>
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  As of September 1, 2021, condition ID 2500 ('Seller Refurbished') can no longer be used in the <strong>Cell Phones & Smartphones</strong> category (category ID 9355) for the following marketplaces: US, Canada, UK, Germany, and Australia. The 'Seller Refurbished' item condition will be replaced by one of three new refurbished values, which include condition ID 2010 ('Excellent - Refurbished'), condition ID 2020 ('Very Good - Refurbished'), and condition ID 2030 ('Good - Refurbished'). Similar to the condition ID 2000 ('Certified - Refurbished') item condition, the three new seller refurbished item conditions will be returned under the <strong>Category.SpecialFeatures</strong> container. To use any of these new refurbished item conditions in category 9355, sellers must go through an application and qualification process. The new item condition values appearing in the <strong>Category.SpecialFeatures</strong> container does not necessarily mean that a seller is eligible to list in category 9355 with these item conditions.
      *  </span>
      *
      * @param \Nogrod\eBaySDK\Trading\ConditionType[] $condition

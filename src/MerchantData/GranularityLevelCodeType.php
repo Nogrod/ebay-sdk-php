@@ -8,7 +8,7 @@ namespace Nogrod\eBaySDK\MerchantData;
  * Specifies a predefined subset of fields to return. The predefined set of fields
  *  can vary for different calls. Only applicable to certain calls (see request types
  *  that include a GranularityLevel property). For calls that support this filter, see
- *  the <a href="http://developer.ebay.com/DevZone/guides/features-guide/default.html#basics/eBay-SelectingFields.html">eBay Features Guide</a> for a list of the output fields that are returned for
+ *  the <a href="https://developer.ebay.com/DevZone/guides/features-guide/default.html#basics/eBay-SelectingFields.html">eBay Features Guide</a> for a list of the output fields that are returned for
  *  each level. Only one level can be specified at a time. For GetSellerList, use
  *  DetailLevel or GranularityLevel in a given request, but not both. For
  *  GetSellerList, if GranularityLevel is specified, DetailLevel is ignored.
@@ -21,7 +21,7 @@ class GranularityLevelCodeType
      *
      * (in) For each record in the response, retrieves less data than Medium.
      *  See the <a
-     * href="http://developer.ebay.com/DevZone/guides/features-guide/default.html#basics/eBay-SelectingFields.html">eBay
+     * href="https://developer.ebay.com/DevZone/guides/features-guide/default.html#basics/eBay-SelectingFields.html">eBay
      * Features Guide</a> for a list of the output fields
      *  that are returned when this level is specified.
      */
@@ -32,7 +32,7 @@ class GranularityLevelCodeType
      *
      * For each record in the response, retrieves more data than Medium.
      *  See the <a
-     * href="http://developer.ebay.com/DevZone/guides/features-guide/default.html#basics/eBay-SelectingFields.html">eBay
+     * href="https://developer.ebay.com/DevZone/guides/features-guide/default.html#basics/eBay-SelectingFields.html">eBay
      * Features Guide</a> for a list of the output fields
      *  that are returned when this level is specified.
      */
@@ -43,7 +43,7 @@ class GranularityLevelCodeType
      *
      * For each record in the response, retrieves more data than Coarse and less data
      *  than Fine. See the <a
-     * href="http://developer.ebay.com/DevZone/guides/features-guide/default.html#basics/eBay-SelectingFields.html">eBay
+     * href="https://developer.ebay.com/DevZone/guides/features-guide/default.html#basics/eBay-SelectingFields.html">eBay
      * Features Guide</a> for a list of the output fields
      *  that are returned when this level is specified.
      */

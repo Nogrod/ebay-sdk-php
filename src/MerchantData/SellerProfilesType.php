@@ -31,12 +31,12 @@ class SellerProfilesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
     private $sellerReturnProfile = null;
 
     /**
-     * The <b>SellerPaymentProfile</b> container is used in an Add/Revise/Relist/Verify Trading API call to reference and use the settings/values of a payment business policy. Payment business policies contain accepted payment methods, a flag to set up the immediate payment feature, a payment instructions field, and a field to specify the seller's PayPal email address. Muliple payment business policies can be created and saved at the account level by sellers, and it is possible to make one policy the default policy.
+     * The <b>SellerPaymentProfile</b> container is used in an Add/Revise/Relist/Verify Trading API call to reference and use the settings/values of a payment business policy. Payment business policies contain accepted payment methods, a flag to set up the immediate payment feature, a field to specify the seller's PayPal email address, a container to set up a required deposity for a motor vehicle listing, and a payment instructions field. Muliple payment business policies can be created and saved at the account level by sellers, and it is possible to make one policy the default policy.
      *  <br/><br/>
      *  This container is only returned in 'Get' calls if Business Policies are set for the listing, and the person making the API call is the seller of the listing.
      *  <br>
      *  <br>
-     *  <span class="tablenote"><b>Note:</b> For sellers onboarded for eBay managed payments, payment methods do not need to be specified, and the PayPal email address is never relevant. The immediate payment boolean field is available to managed payments sellers if they want to required immediate payment for 'Buy it Now' items.
+     *  <span class="tablenote"><b>Note:</b> For sellers onboarded for eBay managed payments, electronic payment methods are never specified, but offline payment methods are required for listings where offline payment is required or supported. An example of this would be a motor vehicle listing. A PayPal email address is never relevant for a managed payments seller.
      *  </span>
      *
      * @var \Nogrod\eBaySDK\MerchantData\SellerPaymentProfileType $sellerPaymentProfile
@@ -106,12 +106,12 @@ class SellerProfilesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
     /**
      * Gets as sellerPaymentProfile
      *
-     * The <b>SellerPaymentProfile</b> container is used in an Add/Revise/Relist/Verify Trading API call to reference and use the settings/values of a payment business policy. Payment business policies contain accepted payment methods, a flag to set up the immediate payment feature, a payment instructions field, and a field to specify the seller's PayPal email address. Muliple payment business policies can be created and saved at the account level by sellers, and it is possible to make one policy the default policy.
+     * The <b>SellerPaymentProfile</b> container is used in an Add/Revise/Relist/Verify Trading API call to reference and use the settings/values of a payment business policy. Payment business policies contain accepted payment methods, a flag to set up the immediate payment feature, a field to specify the seller's PayPal email address, a container to set up a required deposity for a motor vehicle listing, and a payment instructions field. Muliple payment business policies can be created and saved at the account level by sellers, and it is possible to make one policy the default policy.
      *  <br/><br/>
      *  This container is only returned in 'Get' calls if Business Policies are set for the listing, and the person making the API call is the seller of the listing.
      *  <br>
      *  <br>
-     *  <span class="tablenote"><b>Note:</b> For sellers onboarded for eBay managed payments, payment methods do not need to be specified, and the PayPal email address is never relevant. The immediate payment boolean field is available to managed payments sellers if they want to required immediate payment for 'Buy it Now' items.
+     *  <span class="tablenote"><b>Note:</b> For sellers onboarded for eBay managed payments, electronic payment methods are never specified, but offline payment methods are required for listings where offline payment is required or supported. An example of this would be a motor vehicle listing. A PayPal email address is never relevant for a managed payments seller.
      *  </span>
      *
      * @return \Nogrod\eBaySDK\MerchantData\SellerPaymentProfileType
@@ -124,12 +124,12 @@ class SellerProfilesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
     /**
      * Sets a new sellerPaymentProfile
      *
-     * The <b>SellerPaymentProfile</b> container is used in an Add/Revise/Relist/Verify Trading API call to reference and use the settings/values of a payment business policy. Payment business policies contain accepted payment methods, a flag to set up the immediate payment feature, a payment instructions field, and a field to specify the seller's PayPal email address. Muliple payment business policies can be created and saved at the account level by sellers, and it is possible to make one policy the default policy.
+     * The <b>SellerPaymentProfile</b> container is used in an Add/Revise/Relist/Verify Trading API call to reference and use the settings/values of a payment business policy. Payment business policies contain accepted payment methods, a flag to set up the immediate payment feature, a field to specify the seller's PayPal email address, a container to set up a required deposity for a motor vehicle listing, and a payment instructions field. Muliple payment business policies can be created and saved at the account level by sellers, and it is possible to make one policy the default policy.
      *  <br/><br/>
      *  This container is only returned in 'Get' calls if Business Policies are set for the listing, and the person making the API call is the seller of the listing.
      *  <br>
      *  <br>
-     *  <span class="tablenote"><b>Note:</b> For sellers onboarded for eBay managed payments, payment methods do not need to be specified, and the PayPal email address is never relevant. The immediate payment boolean field is available to managed payments sellers if they want to required immediate payment for 'Buy it Now' items.
+     *  <span class="tablenote"><b>Note:</b> For sellers onboarded for eBay managed payments, electronic payment methods are never specified, but offline payment methods are required for listings where offline payment is required or supported. An example of this would be a motor vehicle listing. A PayPal email address is never relevant for a managed payments seller.
      *  </span>
      *
      * @param \Nogrod\eBaySDK\MerchantData\SellerPaymentProfileType $sellerPaymentProfile

@@ -22,7 +22,7 @@ class GetSingleItemRequestType extends AbstractRequestType
      *  for which to retrieve the data.<br>
      *  <br>
      *  You can determine an item's ID by calling <b>findItemsAdvanced</b>( <a
-     *  href="http://www.developer.ebay.com/DevZone/finding/CallRef/index.html"
+     *  href="https://developer.ebay.com/DevZone/finding/CallRef/index.html"
      *  >Finding API</a>) or from the eBay Web site.
      *
      * @var string $itemID
@@ -111,7 +111,7 @@ class GetSingleItemRequestType extends AbstractRequestType
      *  for which to retrieve the data.<br>
      *  <br>
      *  You can determine an item's ID by calling <b>findItemsAdvanced</b>( <a
-     *  href="http://www.developer.ebay.com/DevZone/finding/CallRef/index.html"
+     *  href="https://developer.ebay.com/DevZone/finding/CallRef/index.html"
      *  >Finding API</a>) or from the eBay Web site.
      *
      * @return string
@@ -128,7 +128,7 @@ class GetSingleItemRequestType extends AbstractRequestType
      *  for which to retrieve the data.<br>
      *  <br>
      *  You can determine an item's ID by calling <b>findItemsAdvanced</b>( <a
-     *  href="http://www.developer.ebay.com/DevZone/finding/CallRef/index.html"
+     *  href="https://developer.ebay.com/DevZone/finding/CallRef/index.html"
      *  >Finding API</a>) or from the eBay Web site.
      *
      * @param string $itemID

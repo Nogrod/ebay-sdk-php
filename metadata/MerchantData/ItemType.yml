@@ -813,6 +813,22 @@ Nogrod\eBaySDK\MerchantData\ItemType:
                 getter: getPictureDetails
                 setter: setPictureDetails
             type: Nogrod\eBaySDK\MerchantData\PictureDetailsType
+        videoDetails:
+            expose: true
+            access_type: public_method
+            serialized_name: VideoDetails
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getVideoDetails
+                setter: setVideoDetails
+            type: array<string>
+            xml_list:
+                inline: false
+                entry_name: VideoID
+                skip_when_empty: true
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
         dispatchTimeMax:
             expose: true
             access_type: public_method
@@ -1458,17 +1474,6 @@ Nogrod\eBaySDK\MerchantData\ItemType:
                 getter: getReasonHideFromSearch
                 setter: setReasonHideFromSearch
             type: string
-        includeRecommendations:
-            expose: true
-            access_type: public_method
-            serialized_name: IncludeRecommendations
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getIncludeRecommendations
-                setter: setIncludeRecommendations
-            type: bool
         pickupInStoreDetails:
             expose: true
             access_type: public_method
@@ -1480,17 +1485,6 @@ Nogrod\eBaySDK\MerchantData\ItemType:
                 getter: getPickupInStoreDetails
                 setter: setPickupInStoreDetails
             type: Nogrod\eBaySDK\MerchantData\PickupInStoreDetailsType
-        siteId:
-            expose: true
-            access_type: public_method
-            serialized_name: SiteId
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getSiteId
-                setter: setSiteId
-            type: int
         ignoreQuantity:
             expose: true
             access_type: public_method

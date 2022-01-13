@@ -35,12 +35,8 @@ class MinimumAdvertisedPriceExposureCodeType
     /**
      * Constant for 'None' value.
      *
-     * This enumeration value indicates that the discounted price is shown on the View
-     * Item page, and the buyer is not required to add the item to his/her cart or
-     * click Buy button to view the discounted price. To enable this pricing treatment
-     * when adding/revising/relisting an item, include the
-     * <b>DiscountPriceInfo.MinimumAdvertisedPriceExposure</b> field in an
-     * Add/Revise/Relist call and set its value to <code>None</code>.
+     * The value None is no longer valid. If provided in the request, it will be mapped
+     * to <code>PreCheckout</code>.
      */
     public const VAL_NONE = 'None';
 

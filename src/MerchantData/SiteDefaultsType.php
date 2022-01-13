@@ -314,7 +314,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     private $classifiedAdContactByEmailEnabled = null;
 
     /**
-     * Specifies whether categories on the site require a seller to offer a safe payment method (i.e. PayPal or one of the credit cards specified in <b>Item.PaymentMethods</b>). If a seller has a 'SafePaymentExempt' status, they are exempt from the category requirement to offer at least one safe payment method, even if the site and category have the safe payment method turned on.
+     * Specifies whether categories on the site require a seller to offer a safe payment method. If a seller has a 'SafePaymentExempt' status, they are exempt from the category requirement to offer at least one safe payment method, even if the site and category have the safe payment method turned on.
      *  <br/><br/>
      *  If <code>true</code>, items on
      *  the site need to have the safe payment method selected, but specific
@@ -472,6 +472,10 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Specifies the default site setting for whether
      *  categories have PayPal as a required payment method for listings.
+     *  <br>
+     *  <br>
+     *  <span class="tablenote"><b>Note:</b>
+     *  PayPal or any electronic payment methods are never required for managed payments sellers, so sellers onboarded for managed payments can ignore this field even if it is returned as true.</span>
      *
      * @var bool $payPalRequired
      */
@@ -1032,16 +1036,20 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     private $conditionEnabled = null;
 
     /**
-     * The comprehensive list of item conditions on the site. That is,
-     *  this lists any value that could be supported by at least one
-     *  category on the site.
-     *  Individual meta-categories define their own default set of
-     *  condition values. (In other words, categories always override
-     *  this list with a customized subset of these values.)
+     * This container shows the site default item condition values. Individual leaf categories define their own default set of item condition values and always override this list.
      *
      * @var \Nogrod\eBaySDK\MerchantData\ConditionValuesType $conditionValues
      */
     private $conditionValues = null;
+
+    /**
+     * This container shows the site default special item condition values, such as <b>Certified - Refurbished</b> condition (condition ID 2000), <b>Excellent - Refurbished</b> condition (condition ID 2010), <b>Very Good - Refurbished</b> condition (condition ID 2020), and <b>Good - Refurbished</b> condition (condition ID 2030). A seller must be pre-qualified by eBay to list items with the any of these refurbished item conditions. The <b>Excellent - Refurbished</b>, <b>Very Good - Refurbished</b> and <b>Good - Refurbished</b> conditions are currently only applicable for the <strong>Cell Phones & Smartphones</strong> category (category ID 9355).
+     *  <br/><br/>
+     *  All other item conditions supported by a category will be returned in the <b>ConditionValues</b> container instead. Individual leaf categories define their own default set of item condition values and always override this list.
+     *
+     * @var \Nogrod\eBaySDK\MerchantData\ConditionValuesType $specialFeatures
+     */
+    private $specialFeatures = null;
 
     /**
      * Specifies the default site setting for whether most categories
@@ -1258,7 +1266,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      *  information on using an ePID to identify a compatible motorcycle or scooter
      *  through an Add/Revise/Relist API call on the Germany or UK site, see the
      *  documentation for the <a href="
-     *  http://developer.ebay.com/Devzone/XML/docs/Reference/eBay/AddItem.html#Request
+     *  https://developer.ebay.com/Devzone/XML/docs/Reference/eBay/AddItem.html#Request
      *  .Item.ItemCompatibilityList.Compatibility.NameValueList">Compatibility.Name
      *  ValueList</a> container.
      *
@@ -1275,7 +1283,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      *  using a K Type vehicle number to identify a compatible car or truck through an
      *  Add/Revise/Relist API call on the Germany site, see the documentation for the
      *  <a href="
-     *  http://developer.ebay.com/Devzone/XML/docs/Reference/eBay/AddItem.html#Request
+     *  https://developer.ebay.com/Devzone/XML/docs/Reference/eBay/AddItem.html#Request
      *  .Item.ItemCompatibilityList.Compatibility.NameValueList">Compatibility.Name
      *  ValueList</a> container.
      *
@@ -2455,7 +2463,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Gets as safePaymentRequired
      *
-     * Specifies whether categories on the site require a seller to offer a safe payment method (i.e. PayPal or one of the credit cards specified in <b>Item.PaymentMethods</b>). If a seller has a 'SafePaymentExempt' status, they are exempt from the category requirement to offer at least one safe payment method, even if the site and category have the safe payment method turned on.
+     * Specifies whether categories on the site require a seller to offer a safe payment method. If a seller has a 'SafePaymentExempt' status, they are exempt from the category requirement to offer at least one safe payment method, even if the site and category have the safe payment method turned on.
      *  <br/><br/>
      *  If <code>true</code>, items on
      *  the site need to have the safe payment method selected, but specific
@@ -2480,7 +2488,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Sets a new safePaymentRequired
      *
-     * Specifies whether categories on the site require a seller to offer a safe payment method (i.e. PayPal or one of the credit cards specified in <b>Item.PaymentMethods</b>). If a seller has a 'SafePaymentExempt' status, they are exempt from the category requirement to offer at least one safe payment method, even if the site and category have the safe payment method turned on.
+     * Specifies whether categories on the site require a seller to offer a safe payment method. If a seller has a 'SafePaymentExempt' status, they are exempt from the category requirement to offer at least one safe payment method, even if the site and category have the safe payment method turned on.
      *  <br/><br/>
      *  If <code>true</code>, items on
      *  the site need to have the safe payment method selected, but specific
@@ -3028,6 +3036,10 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      *
      * Specifies the default site setting for whether
      *  categories have PayPal as a required payment method for listings.
+     *  <br>
+     *  <br>
+     *  <span class="tablenote"><b>Note:</b>
+     *  PayPal or any electronic payment methods are never required for managed payments sellers, so sellers onboarded for managed payments can ignore this field even if it is returned as true.</span>
      *
      * @return bool
      */
@@ -3041,6 +3053,10 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      *
      * Specifies the default site setting for whether
      *  categories have PayPal as a required payment method for listings.
+     *  <br>
+     *  <br>
+     *  <span class="tablenote"><b>Note:</b>
+     *  PayPal or any electronic payment methods are never required for managed payments sellers, so sellers onboarded for managed payments can ignore this field even if it is returned as true.</span>
      *
      * @param bool $payPalRequired
      * @return self
@@ -4928,12 +4944,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Gets as conditionValues
      *
-     * The comprehensive list of item conditions on the site. That is,
-     *  this lists any value that could be supported by at least one
-     *  category on the site.
-     *  Individual meta-categories define their own default set of
-     *  condition values. (In other words, categories always override
-     *  this list with a customized subset of these values.)
+     * This container shows the site default item condition values. Individual leaf categories define their own default set of item condition values and always override this list.
      *
      * @return \Nogrod\eBaySDK\MerchantData\ConditionValuesType
      */
@@ -4945,12 +4956,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Sets a new conditionValues
      *
-     * The comprehensive list of item conditions on the site. That is,
-     *  this lists any value that could be supported by at least one
-     *  category on the site.
-     *  Individual meta-categories define their own default set of
-     *  condition values. (In other words, categories always override
-     *  this list with a customized subset of these values.)
+     * This container shows the site default item condition values. Individual leaf categories define their own default set of item condition values and always override this list.
      *
      * @param \Nogrod\eBaySDK\MerchantData\ConditionValuesType $conditionValues
      * @return self
@@ -4958,6 +4964,36 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     public function setConditionValues(\Nogrod\eBaySDK\MerchantData\ConditionValuesType $conditionValues)
     {
         $this->conditionValues = $conditionValues;
+        return $this;
+    }
+
+    /**
+     * Gets as specialFeatures
+     *
+     * This container shows the site default special item condition values, such as <b>Certified - Refurbished</b> condition (condition ID 2000), <b>Excellent - Refurbished</b> condition (condition ID 2010), <b>Very Good - Refurbished</b> condition (condition ID 2020), and <b>Good - Refurbished</b> condition (condition ID 2030). A seller must be pre-qualified by eBay to list items with the any of these refurbished item conditions. The <b>Excellent - Refurbished</b>, <b>Very Good - Refurbished</b> and <b>Good - Refurbished</b> conditions are currently only applicable for the <strong>Cell Phones & Smartphones</strong> category (category ID 9355).
+     *  <br/><br/>
+     *  All other item conditions supported by a category will be returned in the <b>ConditionValues</b> container instead. Individual leaf categories define their own default set of item condition values and always override this list.
+     *
+     * @return \Nogrod\eBaySDK\MerchantData\ConditionValuesType
+     */
+    public function getSpecialFeatures()
+    {
+        return $this->specialFeatures;
+    }
+
+    /**
+     * Sets a new specialFeatures
+     *
+     * This container shows the site default special item condition values, such as <b>Certified - Refurbished</b> condition (condition ID 2000), <b>Excellent - Refurbished</b> condition (condition ID 2010), <b>Very Good - Refurbished</b> condition (condition ID 2020), and <b>Good - Refurbished</b> condition (condition ID 2030). A seller must be pre-qualified by eBay to list items with the any of these refurbished item conditions. The <b>Excellent - Refurbished</b>, <b>Very Good - Refurbished</b> and <b>Good - Refurbished</b> conditions are currently only applicable for the <strong>Cell Phones & Smartphones</strong> category (category ID 9355).
+     *  <br/><br/>
+     *  All other item conditions supported by a category will be returned in the <b>ConditionValues</b> container instead. Individual leaf categories define their own default set of item condition values and always override this list.
+     *
+     * @param \Nogrod\eBaySDK\MerchantData\ConditionValuesType $specialFeatures
+     * @return self
+     */
+    public function setSpecialFeatures(\Nogrod\eBaySDK\MerchantData\ConditionValuesType $specialFeatures)
+    {
+        $this->specialFeatures = $specialFeatures;
         return $this;
     }
 
@@ -5612,7 +5648,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      *  information on using an ePID to identify a compatible motorcycle or scooter
      *  through an Add/Revise/Relist API call on the Germany or UK site, see the
      *  documentation for the <a href="
-     *  http://developer.ebay.com/Devzone/XML/docs/Reference/eBay/AddItem.html#Request
+     *  https://developer.ebay.com/Devzone/XML/docs/Reference/eBay/AddItem.html#Request
      *  .Item.ItemCompatibilityList.Compatibility.NameValueList">Compatibility.Name
      *  ValueList</a> container.
      *
@@ -5634,7 +5670,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      *  information on using an ePID to identify a compatible motorcycle or scooter
      *  through an Add/Revise/Relist API call on the Germany or UK site, see the
      *  documentation for the <a href="
-     *  http://developer.ebay.com/Devzone/XML/docs/Reference/eBay/AddItem.html#Request
+     *  https://developer.ebay.com/Devzone/XML/docs/Reference/eBay/AddItem.html#Request
      *  .Item.ItemCompatibilityList.Compatibility.NameValueList">Compatibility.Name
      *  ValueList</a> container.
      *
@@ -5658,7 +5694,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      *  using a K Type vehicle number to identify a compatible car or truck through an
      *  Add/Revise/Relist API call on the Germany site, see the documentation for the
      *  <a href="
-     *  http://developer.ebay.com/Devzone/XML/docs/Reference/eBay/AddItem.html#Request
+     *  https://developer.ebay.com/Devzone/XML/docs/Reference/eBay/AddItem.html#Request
      *  .Item.ItemCompatibilityList.Compatibility.NameValueList">Compatibility.Name
      *  ValueList</a> container.
      *
@@ -5680,7 +5716,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      *  using a K Type vehicle number to identify a compatible car or truck through an
      *  Add/Revise/Relist API call on the Germany site, see the documentation for the
      *  <a href="
-     *  http://developer.ebay.com/Devzone/XML/docs/Reference/eBay/AddItem.html#Request
+     *  https://developer.ebay.com/Devzone/XML/docs/Reference/eBay/AddItem.html#Request
      *  .Item.ItemCompatibilityList.Compatibility.NameValueList">Compatibility.Name
      *  ValueList</a> container.
      *
@@ -6904,6 +6940,10 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ConditionValues", $value);
         }
+        $value = $this->getSpecialFeatures();
+        if (null !== $value) {
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SpecialFeatures", $value);
+        }
         $value = $this->getValueCategory();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;
         if (null !== $value) {
@@ -7525,6 +7565,10 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ConditionValues');
         if (null !== $value) {
             $this->setConditionValues(\Nogrod\eBaySDK\MerchantData\ConditionValuesType::fromKeyValue($value));
+        }
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SpecialFeatures');
+        if (null !== $value) {
+            $this->setSpecialFeatures(\Nogrod\eBaySDK\MerchantData\ConditionValuesType::fromKeyValue($value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ValueCategory');
         if (null !== $value) {

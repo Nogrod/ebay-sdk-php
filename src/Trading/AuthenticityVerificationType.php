@@ -81,6 +81,13 @@ class AuthenticityVerificationType implements \Sabre\Xml\XmlSerializable, \Sabre
     private $outcomeReason = null;
 
     /**
+     * This container shows service cost to the buyer for an item that will go through the Authenticity Guarantee process.
+     *
+     * @var \Nogrod\eBaySDK\Trading\ServiceCostType $serviceCost
+     */
+    private $serviceCost = null;
+
+    /**
      * Gets as status
      *
      * The value in this field indicates whether the order line item has passed or failed the authenticity inspection, or if the test and/or results are still pending. The possible values returned here are <code>PENDING</code>, <code>PASSED</code>, <code>PASSED_WITH_EXCEPTION</code>, or <code>FAILED</code>.
@@ -136,6 +143,32 @@ class AuthenticityVerificationType implements \Sabre\Xml\XmlSerializable, \Sabre
         return $this;
     }
 
+    /**
+     * Gets as serviceCost
+     *
+     * This container shows service cost to the buyer for an item that will go through the Authenticity Guarantee process.
+     *
+     * @return \Nogrod\eBaySDK\Trading\ServiceCostType
+     */
+    public function getServiceCost()
+    {
+        return $this->serviceCost;
+    }
+
+    /**
+     * Sets a new serviceCost
+     *
+     * This container shows service cost to the buyer for an item that will go through the Authenticity Guarantee process.
+     *
+     * @param \Nogrod\eBaySDK\Trading\ServiceCostType $serviceCost
+     * @return self
+     */
+    public function setServiceCost(\Nogrod\eBaySDK\Trading\ServiceCostType $serviceCost)
+    {
+        $this->serviceCost = $serviceCost;
+        return $this;
+    }
+
     public function xmlSerialize(\Sabre\Xml\Writer $writer)
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
@@ -146,6 +179,10 @@ class AuthenticityVerificationType implements \Sabre\Xml\XmlSerializable, \Sabre
         $value = $this->getOutcomeReason();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}OutcomeReason", $value);
+        }
+        $value = $this->getServiceCost();
+        if (null !== $value) {
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ServiceCost", $value);
         }
     }
 
@@ -170,6 +207,10 @@ class AuthenticityVerificationType implements \Sabre\Xml\XmlSerializable, \Sabre
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}OutcomeReason');
         if (null !== $value) {
             $this->setOutcomeReason($value);
+        }
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ServiceCost');
+        if (null !== $value) {
+            $this->setServiceCost(\Nogrod\eBaySDK\Trading\ServiceCostType::fromKeyValue($value));
         }
     }
 }

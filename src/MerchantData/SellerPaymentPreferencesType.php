@@ -19,12 +19,11 @@ use Nogrod\XMLClientRuntime\Func;
 class SellerPaymentPreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
     /**
-     * Sellers include this field and set it to <code>true</code> if they want buyers to mail payment
-     *  to the payment address specified in the
-     *  <b>SellerPaymentPreferences.SellerPaymentAddress</b> field. A payment
-     *  address only comes into play if the item's category allows offline payments, and the
-     *  seller has allowed the buyer to mail a payment. This payment address will only be
-     *  displayed to winning bidders and buyers.
+     * Sellers include this field and set it to <code>true</code> if they want buyers to mail payment to the payment address specified in the <b>SellerPaymentPreferences.SellerPaymentAddress</b> field. A payment address only comes into play if the item's category allows offline payments, and the seller has allowed the buyer to mail a payment. This payment address will only be displayed to winning bidders and buyers.
+     *  <br><br>
+     *  <span class="tablenote"><b>Note:</b> Although it can still be set as a payment preference, this field does not apply to sellers onboarded for managed payments since having a PayPal account is not a requirement for these sellers.
+     *  </span>
+     *  <br>
      *
      * @var bool $alwaysUseThisPaymentAddress
      */
@@ -54,6 +53,9 @@ class SellerPaymentPreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre
 
     /**
      * Specifies the default email address the seller uses for receiving PayPal payments.
+     *  <br><br>
+     *  <span class="tablenote"><b>Note:</b> Although it can still be set as a payment preference, this field does not apply to sellers onboarded for managed payments since having a PayPal account is not a requirement for these sellers.
+     *  </span>
      *
      * @var string $defaultPayPalEmailAddress
      */
@@ -100,12 +102,11 @@ class SellerPaymentPreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre
     /**
      * Gets as alwaysUseThisPaymentAddress
      *
-     * Sellers include this field and set it to <code>true</code> if they want buyers to mail payment
-     *  to the payment address specified in the
-     *  <b>SellerPaymentPreferences.SellerPaymentAddress</b> field. A payment
-     *  address only comes into play if the item's category allows offline payments, and the
-     *  seller has allowed the buyer to mail a payment. This payment address will only be
-     *  displayed to winning bidders and buyers.
+     * Sellers include this field and set it to <code>true</code> if they want buyers to mail payment to the payment address specified in the <b>SellerPaymentPreferences.SellerPaymentAddress</b> field. A payment address only comes into play if the item's category allows offline payments, and the seller has allowed the buyer to mail a payment. This payment address will only be displayed to winning bidders and buyers.
+     *  <br><br>
+     *  <span class="tablenote"><b>Note:</b> Although it can still be set as a payment preference, this field does not apply to sellers onboarded for managed payments since having a PayPal account is not a requirement for these sellers.
+     *  </span>
+     *  <br>
      *
      * @return bool
      */
@@ -117,12 +118,11 @@ class SellerPaymentPreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre
     /**
      * Sets a new alwaysUseThisPaymentAddress
      *
-     * Sellers include this field and set it to <code>true</code> if they want buyers to mail payment
-     *  to the payment address specified in the
-     *  <b>SellerPaymentPreferences.SellerPaymentAddress</b> field. A payment
-     *  address only comes into play if the item's category allows offline payments, and the
-     *  seller has allowed the buyer to mail a payment. This payment address will only be
-     *  displayed to winning bidders and buyers.
+     * Sellers include this field and set it to <code>true</code> if they want buyers to mail payment to the payment address specified in the <b>SellerPaymentPreferences.SellerPaymentAddress</b> field. A payment address only comes into play if the item's category allows offline payments, and the seller has allowed the buyer to mail a payment. This payment address will only be displayed to winning bidders and buyers.
+     *  <br><br>
+     *  <span class="tablenote"><b>Note:</b> Although it can still be set as a payment preference, this field does not apply to sellers onboarded for managed payments since having a PayPal account is not a requirement for these sellers.
+     *  </span>
+     *  <br>
      *
      * @param bool $alwaysUseThisPaymentAddress
      * @return self
@@ -205,6 +205,9 @@ class SellerPaymentPreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre
      * Gets as defaultPayPalEmailAddress
      *
      * Specifies the default email address the seller uses for receiving PayPal payments.
+     *  <br><br>
+     *  <span class="tablenote"><b>Note:</b> Although it can still be set as a payment preference, this field does not apply to sellers onboarded for managed payments since having a PayPal account is not a requirement for these sellers.
+     *  </span>
      *
      * @return string
      */
@@ -217,6 +220,9 @@ class SellerPaymentPreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre
      * Sets a new defaultPayPalEmailAddress
      *
      * Specifies the default email address the seller uses for receiving PayPal payments.
+     *  <br><br>
+     *  <span class="tablenote"><b>Note:</b> Although it can still be set as a payment preference, this field does not apply to sellers onboarded for managed payments since having a PayPal account is not a requirement for these sellers.
+     *  </span>
      *
      * @param string $defaultPayPalEmailAddress
      * @return self

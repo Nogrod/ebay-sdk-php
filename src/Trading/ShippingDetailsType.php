@@ -88,23 +88,7 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     private $paymentEdited = null;
 
     /**
-     * This free-form string field gives sellers the ability add detailed payment instructions to their listings.
-     *  The payment instructions appear on eBay's View Item and Checkout pages.
-     *  <br><br>
-     *  Sellers can use this field to specify payment instructions, how soon the item will shipped, feedback
-     *  instructions, and other items that the buyer should be aware of when they bid on or buy an item.
-     *  eBay recommends sellers use this field to clarify payment policies for motor vehicle listings on eBay Motors.
-     *  For example, sellers can include the specifics on the deposit (if required), pickup/delivery arrangements,
-     *  and full payment details on the vehicle.
-     *  <br><br>
-     *  The field allows only 500 characters as input, but due to the way the eBay web site UI treats characters,
-     *  this field can return more than 500 characters in the response. For example, characters like & and '
-     *  (ampersand and single quote) count as 5 characters each.
-     *  <br><br>
-     *  This field can be specified regardless of the shipping type. Use <b>DeletedField</b> to remove
-     *  this value when revising or relisting an item.
-     *  <br><br>
-     *  Applicable to eBay Motors (usually used to elaborate on the return policy).
+     * This free-form string field gives sellers the ability to add detailed payment instructions to their listings.
      *  <br>
      *
      * @var string $paymentInstructions
@@ -118,10 +102,7 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  <br><br>
      *  This container is only returned in order management 'Get' calls if sales tax is applicable to the order line item. For eBay Collect and Remit states, the sales tax information is displayed in the <b>Transaction.Taxes</b> container instead.
      *  <br><br>
-     *  <span class="tablenote"><b>Note: </b> As of September 1, 2020, buyers in over 40 US states will automatically be charged sales tax for eBay purchases. eBay will collect and remit this sales tax to the proper taxing authority on the buyer's behalf. So, if a sales tax rate is applied by the seller for a state that is subject to 'eBay Collect and Remit', this sales tax rate will be ignored by eBay during checkout process. For a list of the US states that are currently subject to 'eBay Collect and Remit', see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section4">eBay sales tax collection</a> help topic.
-     *  </span>
-     *  <br>
-     *  <span class="tablenote"><b>Note: </b> For eBay managed payment orders that are subject to 'Collect and Remit' taxes, these taxes will only be shown in the <b>eBayCollectAndRemitTaxes</b> container for line items, and the <b>SalesTax</b> will not be returned at all. For non-eBay managed payment orders, the 'Collect and Remit' taxes will be shown in both the <b>eBayCollectAndRemitTaxes</b> and <b>SalesTax</b> containers.
+     *  <span class="tablenote"><b>Note: </b> As of November 2021, buyers in all US states except for Missouri (and several US territories), will automatically be charged sales tax for purchases, and the seller does not set this rate. eBay will collect and remit this sales tax to the proper taxing authority on the buyer's behalf. For more US state-level information on sales tax, see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section4">eBay sales tax collection</a> help topic.
      *  </span>
      *
      * @var \Nogrod\eBaySDK\Trading\SalesTaxType $salesTax
@@ -236,8 +217,6 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  In the following calls,
      *  the value for the sale record ID is in the <b>SellingManagerSalesRecordNumber</b> field:
      *  <b>GetItemTransactions</b>, <b>GetSellerTransactions</b>, <b>GetOrders</b>, <b>GetOrderTransactions</b>.
-     *  In the Selling Manager calls, the value for the sale record ID is in the
-     *  <b>SaleRecordID</b> field.
      *  <br><br>
      *  <b>For GetOrders, GetOrderTransactions, and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this field will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, the real record number is only returned to the buyer or seller, and a dummy value of <code>0</code> will be returned to all third parties.
      *  <br/><br/>
@@ -520,7 +499,7 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  </span>
      *  <br>
      *  <span class="tablenote"><b>Note:</b>
-     *  Shipment tracking information does not appear in Merchant Data API's <b>OrderReport</b> or <b>SoldReport</b> responses, because once shipment tracking information is provided to the buyer, the order/order line item is considered acknowledged, and acknowledged orders do not show up in <b>OrderReport</b> or <b>SoldReport</b> responses.
+     *  Shipment tracking information does not appear in Merchant Data API's <b>OrderReport</b> responses, because once shipment tracking information is provided to the buyer, the order/order line item is considered acknowledged, and acknowledged orders do not show up in <b>OrderReport</b> responses.
      *  </span>
      *
      * @var \Nogrod\eBaySDK\Trading\ShipmentTrackingDetailsType[] $shipmentTrackingDetails
@@ -530,9 +509,9 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     ];
 
     /**
-     * This container is used to reference and apply a seller's specific domestic and/or international shipping rate tables to a listing. Shipping rate tables allow sellers to configure specific shipping costs based on the shipping destinations and level of service (e.g. economy, standard, expedited, and one-day). Generally speaking, sellers want to use these shipping rate tables so they can charge a higher shipping cost to the buyer whenever shipping costs are higher for them as well. For example, shipping to Alaska or Hawaii is generally more expensive than shipping to any other of the 48 US states, or in regards to international shipping, shipping to some regions and countries are more expensive than others.
+     * This container is used to reference and apply a seller's domestic and/or international shipping rate tables to a listing. Shipping rate tables allow sellers to configure specific shipping costs based on the shipping destinations and level of service (e.g. economy, standard, expedited, and one-day). Generally speaking, sellers want to use these shipping rate tables so they can charge a higher shipping cost to the buyer whenever shipping costs are higher for them as well. For example, shipping to Alaska or Hawaii is generally more expensive than shipping to any other of the 48 US states, or in regards to international shipping, shipping to some regions and countries are more expensive than others.
      *  <br><br>
-     *  Sellers configure domestic and international shipping rate tables in My eBay Shipping Preferences. To apply shipping rate tables, the shipping cost type must be flat-rate.
+     *  Sellers configure domestic and international shipping rate tables in My eBay Shipping Preferences. To apply shipping rate tables to a listing, the shipping cost type must be flat-rate.
      *  <br><br>
      *  For domestic shipping rate tables, the three supported domestic regions are Alaska & Hawaii, US Protectorates (e.g. Puerto Rico and Guam), and APO/FPO destinations, which are US military bases/locations outside of the continental US. In addition to setting one flat rate based on the destination and service level, the seller also has the option of adding an extra charge based on the weight of the shipping package, or they can add a surcharge instead. To determine if a domestic shipping rate table is set up for the seller's account, the <b>GetUser</b> call can be used, and then the seller will look for a value of <code>true</code> in the <b>User.SellerInfo.DomesticRateTable</b> field. Although the <b>GetUser</b> call can be used to see if a domestic shipping rate table exists for the seller's account, details of the shipping rate table, including all specified costs for the different regions, can only be viewed and modified in My eBay Shipping Preferences. This functionality is not yet available in any public APIs.
      *  <br><br>
@@ -542,7 +521,7 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  <br><br>
      *  This container is only returned in the 'Get' calls if one or more shipping rate tables have been applied to the listing, and if the call is being made by the seller who listed the item.
      *  <br/><br/>
-     *  <span class="tablenote"><b>Note: </b> The capability to create and use multiple domestic and international shipping rate tables (up to 40 per seller account) has rolled out to the US, Australia, Canada (English and French), and Italy sites. For other sites, only one domestic and one international shipping rate table may be set up per seller. Whether a seller is using the old default domestic and international shipping rate tables or the new shipping rate tables, these shipping rate tables are set up in My eBay Shipping Preferences or as part of a Shipping Business Policy. If using the Trading API to create a listing that will use the new shipping rate tables, the <b>DomesticRateTableId</b> and <b>InternationalRateTableId</b> fields are used to reference and apply these new shipping rate tables to the listing. If desired, sellers can still use the old default shipping rate tables, but they are not allowed to mix and match old and new shipping rate tables, meaning that they will get an error if they pass in both the old fields (<b>DomesticRateTable</b> and <b>InternationalRateTable</b>) and the new fields (<b>DomesticRateTableId</b> and <b>InternationalRateTableId</b>). The new shipping rate tables have all of the functionality of the old shipping rate tables, plus the seller has access to all domestic regions and not just the special regions (such as Alaska & Hawaii, US Protectorates, and APO/FPO locations in US).</span>
+     *  <span class="tablenote"><b>Note: </b> The capability to create and use multiple domestic and international shipping rate tables (up to 40 per seller account) has rolled out to the US, Australia, Canada (English and French), Italy, UK, and Germany sites. For other sites, only one domestic and one international shipping rate table may be set up per seller. Whether a seller is using the old default domestic and international shipping rate tables or the new shipping rate tables, these shipping rate tables are set up in My eBay Shipping Preferences or as part of a Shipping Business Policy. If using the Trading API to create a listing that will use the new shipping rate tables, the <b>DomesticRateTableId</b> and <b>InternationalRateTableId</b> fields are used to reference and apply these new shipping rate tables to the listing. If desired, sellers can still use the old default shipping rate tables, but they are not allowed to mix and match old and new shipping rate tables, meaning that they will get an error if they pass in both the old fields (<b>DomesticRateTable</b> and <b>InternationalRateTable</b>) and the new fields (<b>DomesticRateTableId</b> and <b>InternationalRateTableId</b>). The new shipping rate tables have all of the functionality of the old shipping rate tables, plus the seller has access to all domestic regions and not just the special regions (such as Alaska & Hawaii, US Protectorates, and APO/FPO locations in US).</span>
      *
      * @var \Nogrod\eBaySDK\Trading\RateTableDetailsType $rateTableDetails
      */
@@ -775,23 +754,7 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     /**
      * Gets as paymentInstructions
      *
-     * This free-form string field gives sellers the ability add detailed payment instructions to their listings.
-     *  The payment instructions appear on eBay's View Item and Checkout pages.
-     *  <br><br>
-     *  Sellers can use this field to specify payment instructions, how soon the item will shipped, feedback
-     *  instructions, and other items that the buyer should be aware of when they bid on or buy an item.
-     *  eBay recommends sellers use this field to clarify payment policies for motor vehicle listings on eBay Motors.
-     *  For example, sellers can include the specifics on the deposit (if required), pickup/delivery arrangements,
-     *  and full payment details on the vehicle.
-     *  <br><br>
-     *  The field allows only 500 characters as input, but due to the way the eBay web site UI treats characters,
-     *  this field can return more than 500 characters in the response. For example, characters like & and '
-     *  (ampersand and single quote) count as 5 characters each.
-     *  <br><br>
-     *  This field can be specified regardless of the shipping type. Use <b>DeletedField</b> to remove
-     *  this value when revising or relisting an item.
-     *  <br><br>
-     *  Applicable to eBay Motors (usually used to elaborate on the return policy).
+     * This free-form string field gives sellers the ability to add detailed payment instructions to their listings.
      *  <br>
      *
      * @return string
@@ -804,23 +767,7 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     /**
      * Sets a new paymentInstructions
      *
-     * This free-form string field gives sellers the ability add detailed payment instructions to their listings.
-     *  The payment instructions appear on eBay's View Item and Checkout pages.
-     *  <br><br>
-     *  Sellers can use this field to specify payment instructions, how soon the item will shipped, feedback
-     *  instructions, and other items that the buyer should be aware of when they bid on or buy an item.
-     *  eBay recommends sellers use this field to clarify payment policies for motor vehicle listings on eBay Motors.
-     *  For example, sellers can include the specifics on the deposit (if required), pickup/delivery arrangements,
-     *  and full payment details on the vehicle.
-     *  <br><br>
-     *  The field allows only 500 characters as input, but due to the way the eBay web site UI treats characters,
-     *  this field can return more than 500 characters in the response. For example, characters like & and '
-     *  (ampersand and single quote) count as 5 characters each.
-     *  <br><br>
-     *  This field can be specified regardless of the shipping type. Use <b>DeletedField</b> to remove
-     *  this value when revising or relisting an item.
-     *  <br><br>
-     *  Applicable to eBay Motors (usually used to elaborate on the return policy).
+     * This free-form string field gives sellers the ability to add detailed payment instructions to their listings.
      *  <br>
      *
      * @param string $paymentInstructions
@@ -841,10 +788,7 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  <br><br>
      *  This container is only returned in order management 'Get' calls if sales tax is applicable to the order line item. For eBay Collect and Remit states, the sales tax information is displayed in the <b>Transaction.Taxes</b> container instead.
      *  <br><br>
-     *  <span class="tablenote"><b>Note: </b> As of September 1, 2020, buyers in over 40 US states will automatically be charged sales tax for eBay purchases. eBay will collect and remit this sales tax to the proper taxing authority on the buyer's behalf. So, if a sales tax rate is applied by the seller for a state that is subject to 'eBay Collect and Remit', this sales tax rate will be ignored by eBay during checkout process. For a list of the US states that are currently subject to 'eBay Collect and Remit', see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section4">eBay sales tax collection</a> help topic.
-     *  </span>
-     *  <br>
-     *  <span class="tablenote"><b>Note: </b> For eBay managed payment orders that are subject to 'Collect and Remit' taxes, these taxes will only be shown in the <b>eBayCollectAndRemitTaxes</b> container for line items, and the <b>SalesTax</b> will not be returned at all. For non-eBay managed payment orders, the 'Collect and Remit' taxes will be shown in both the <b>eBayCollectAndRemitTaxes</b> and <b>SalesTax</b> containers.
+     *  <span class="tablenote"><b>Note: </b> As of November 2021, buyers in all US states except for Missouri (and several US territories), will automatically be charged sales tax for purchases, and the seller does not set this rate. eBay will collect and remit this sales tax to the proper taxing authority on the buyer's behalf. For more US state-level information on sales tax, see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section4">eBay sales tax collection</a> help topic.
      *  </span>
      *
      * @return \Nogrod\eBaySDK\Trading\SalesTaxType
@@ -863,10 +807,7 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  <br><br>
      *  This container is only returned in order management 'Get' calls if sales tax is applicable to the order line item. For eBay Collect and Remit states, the sales tax information is displayed in the <b>Transaction.Taxes</b> container instead.
      *  <br><br>
-     *  <span class="tablenote"><b>Note: </b> As of September 1, 2020, buyers in over 40 US states will automatically be charged sales tax for eBay purchases. eBay will collect and remit this sales tax to the proper taxing authority on the buyer's behalf. So, if a sales tax rate is applied by the seller for a state that is subject to 'eBay Collect and Remit', this sales tax rate will be ignored by eBay during checkout process. For a list of the US states that are currently subject to 'eBay Collect and Remit', see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section4">eBay sales tax collection</a> help topic.
-     *  </span>
-     *  <br>
-     *  <span class="tablenote"><b>Note: </b> For eBay managed payment orders that are subject to 'Collect and Remit' taxes, these taxes will only be shown in the <b>eBayCollectAndRemitTaxes</b> container for line items, and the <b>SalesTax</b> will not be returned at all. For non-eBay managed payment orders, the 'Collect and Remit' taxes will be shown in both the <b>eBayCollectAndRemitTaxes</b> and <b>SalesTax</b> containers.
+     *  <span class="tablenote"><b>Note: </b> As of November 2021, buyers in all US states except for Missouri (and several US territories), will automatically be charged sales tax for purchases, and the seller does not set this rate. eBay will collect and remit this sales tax to the proper taxing authority on the buyer's behalf. For more US state-level information on sales tax, see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section4">eBay sales tax collection</a> help topic.
      *  </span>
      *
      * @param \Nogrod\eBaySDK\Trading\SalesTaxType $salesTax
@@ -1350,8 +1291,6 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  In the following calls,
      *  the value for the sale record ID is in the <b>SellingManagerSalesRecordNumber</b> field:
      *  <b>GetItemTransactions</b>, <b>GetSellerTransactions</b>, <b>GetOrders</b>, <b>GetOrderTransactions</b>.
-     *  In the Selling Manager calls, the value for the sale record ID is in the
-     *  <b>SaleRecordID</b> field.
      *  <br><br>
      *  <b>For GetOrders, GetOrderTransactions, and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this field will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, the real record number is only returned to the buyer or seller, and a dummy value of <code>0</code> will be returned to all third parties.
      *  <br/><br/>
@@ -1380,8 +1319,6 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  In the following calls,
      *  the value for the sale record ID is in the <b>SellingManagerSalesRecordNumber</b> field:
      *  <b>GetItemTransactions</b>, <b>GetSellerTransactions</b>, <b>GetOrders</b>, <b>GetOrderTransactions</b>.
-     *  In the Selling Manager calls, the value for the sale record ID is in the
-     *  <b>SaleRecordID</b> field.
      *  <br><br>
      *  <b>For GetOrders, GetOrderTransactions, and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this field will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, the real record number is only returned to the buyer or seller, and a dummy value of <code>0</code> will be returned to all third parties.
      *  <br/><br/>
@@ -2372,7 +2309,7 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  </span>
      *  <br>
      *  <span class="tablenote"><b>Note:</b>
-     *  Shipment tracking information does not appear in Merchant Data API's <b>OrderReport</b> or <b>SoldReport</b> responses, because once shipment tracking information is provided to the buyer, the order/order line item is considered acknowledged, and acknowledged orders do not show up in <b>OrderReport</b> or <b>SoldReport</b> responses.
+     *  Shipment tracking information does not appear in Merchant Data API's <b>OrderReport</b> responses, because once shipment tracking information is provided to the buyer, the order/order line item is considered acknowledged, and acknowledged orders do not show up in <b>OrderReport</b> responses.
      *  </span>
      *
      * @return self
@@ -2402,7 +2339,7 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  </span>
      *  <br>
      *  <span class="tablenote"><b>Note:</b>
-     *  Shipment tracking information does not appear in Merchant Data API's <b>OrderReport</b> or <b>SoldReport</b> responses, because once shipment tracking information is provided to the buyer, the order/order line item is considered acknowledged, and acknowledged orders do not show up in <b>OrderReport</b> or <b>SoldReport</b> responses.
+     *  Shipment tracking information does not appear in Merchant Data API's <b>OrderReport</b> responses, because once shipment tracking information is provided to the buyer, the order/order line item is considered acknowledged, and acknowledged orders do not show up in <b>OrderReport</b> responses.
      *  </span>
      *
      * @param int|string $index
@@ -2431,7 +2368,7 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  </span>
      *  <br>
      *  <span class="tablenote"><b>Note:</b>
-     *  Shipment tracking information does not appear in Merchant Data API's <b>OrderReport</b> or <b>SoldReport</b> responses, because once shipment tracking information is provided to the buyer, the order/order line item is considered acknowledged, and acknowledged orders do not show up in <b>OrderReport</b> or <b>SoldReport</b> responses.
+     *  Shipment tracking information does not appear in Merchant Data API's <b>OrderReport</b> responses, because once shipment tracking information is provided to the buyer, the order/order line item is considered acknowledged, and acknowledged orders do not show up in <b>OrderReport</b> responses.
      *  </span>
      *
      * @param int|string $index
@@ -2460,7 +2397,7 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  </span>
      *  <br>
      *  <span class="tablenote"><b>Note:</b>
-     *  Shipment tracking information does not appear in Merchant Data API's <b>OrderReport</b> or <b>SoldReport</b> responses, because once shipment tracking information is provided to the buyer, the order/order line item is considered acknowledged, and acknowledged orders do not show up in <b>OrderReport</b> or <b>SoldReport</b> responses.
+     *  Shipment tracking information does not appear in Merchant Data API's <b>OrderReport</b> responses, because once shipment tracking information is provided to the buyer, the order/order line item is considered acknowledged, and acknowledged orders do not show up in <b>OrderReport</b> responses.
      *  </span>
      *
      * @return \Nogrod\eBaySDK\Trading\ShipmentTrackingDetailsType[]
@@ -2488,7 +2425,7 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  </span>
      *  <br>
      *  <span class="tablenote"><b>Note:</b>
-     *  Shipment tracking information does not appear in Merchant Data API's <b>OrderReport</b> or <b>SoldReport</b> responses, because once shipment tracking information is provided to the buyer, the order/order line item is considered acknowledged, and acknowledged orders do not show up in <b>OrderReport</b> or <b>SoldReport</b> responses.
+     *  Shipment tracking information does not appear in Merchant Data API's <b>OrderReport</b> responses, because once shipment tracking information is provided to the buyer, the order/order line item is considered acknowledged, and acknowledged orders do not show up in <b>OrderReport</b> responses.
      *  </span>
      *
      * @param \Nogrod\eBaySDK\Trading\ShipmentTrackingDetailsType[] $shipmentTrackingDetails
@@ -2503,9 +2440,9 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     /**
      * Gets as rateTableDetails
      *
-     * This container is used to reference and apply a seller's specific domestic and/or international shipping rate tables to a listing. Shipping rate tables allow sellers to configure specific shipping costs based on the shipping destinations and level of service (e.g. economy, standard, expedited, and one-day). Generally speaking, sellers want to use these shipping rate tables so they can charge a higher shipping cost to the buyer whenever shipping costs are higher for them as well. For example, shipping to Alaska or Hawaii is generally more expensive than shipping to any other of the 48 US states, or in regards to international shipping, shipping to some regions and countries are more expensive than others.
+     * This container is used to reference and apply a seller's domestic and/or international shipping rate tables to a listing. Shipping rate tables allow sellers to configure specific shipping costs based on the shipping destinations and level of service (e.g. economy, standard, expedited, and one-day). Generally speaking, sellers want to use these shipping rate tables so they can charge a higher shipping cost to the buyer whenever shipping costs are higher for them as well. For example, shipping to Alaska or Hawaii is generally more expensive than shipping to any other of the 48 US states, or in regards to international shipping, shipping to some regions and countries are more expensive than others.
      *  <br><br>
-     *  Sellers configure domestic and international shipping rate tables in My eBay Shipping Preferences. To apply shipping rate tables, the shipping cost type must be flat-rate.
+     *  Sellers configure domestic and international shipping rate tables in My eBay Shipping Preferences. To apply shipping rate tables to a listing, the shipping cost type must be flat-rate.
      *  <br><br>
      *  For domestic shipping rate tables, the three supported domestic regions are Alaska & Hawaii, US Protectorates (e.g. Puerto Rico and Guam), and APO/FPO destinations, which are US military bases/locations outside of the continental US. In addition to setting one flat rate based on the destination and service level, the seller also has the option of adding an extra charge based on the weight of the shipping package, or they can add a surcharge instead. To determine if a domestic shipping rate table is set up for the seller's account, the <b>GetUser</b> call can be used, and then the seller will look for a value of <code>true</code> in the <b>User.SellerInfo.DomesticRateTable</b> field. Although the <b>GetUser</b> call can be used to see if a domestic shipping rate table exists for the seller's account, details of the shipping rate table, including all specified costs for the different regions, can only be viewed and modified in My eBay Shipping Preferences. This functionality is not yet available in any public APIs.
      *  <br><br>
@@ -2515,7 +2452,7 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  <br><br>
      *  This container is only returned in the 'Get' calls if one or more shipping rate tables have been applied to the listing, and if the call is being made by the seller who listed the item.
      *  <br/><br/>
-     *  <span class="tablenote"><b>Note: </b> The capability to create and use multiple domestic and international shipping rate tables (up to 40 per seller account) has rolled out to the US, Australia, Canada (English and French), and Italy sites. For other sites, only one domestic and one international shipping rate table may be set up per seller. Whether a seller is using the old default domestic and international shipping rate tables or the new shipping rate tables, these shipping rate tables are set up in My eBay Shipping Preferences or as part of a Shipping Business Policy. If using the Trading API to create a listing that will use the new shipping rate tables, the <b>DomesticRateTableId</b> and <b>InternationalRateTableId</b> fields are used to reference and apply these new shipping rate tables to the listing. If desired, sellers can still use the old default shipping rate tables, but they are not allowed to mix and match old and new shipping rate tables, meaning that they will get an error if they pass in both the old fields (<b>DomesticRateTable</b> and <b>InternationalRateTable</b>) and the new fields (<b>DomesticRateTableId</b> and <b>InternationalRateTableId</b>). The new shipping rate tables have all of the functionality of the old shipping rate tables, plus the seller has access to all domestic regions and not just the special regions (such as Alaska & Hawaii, US Protectorates, and APO/FPO locations in US).</span>
+     *  <span class="tablenote"><b>Note: </b> The capability to create and use multiple domestic and international shipping rate tables (up to 40 per seller account) has rolled out to the US, Australia, Canada (English and French), Italy, UK, and Germany sites. For other sites, only one domestic and one international shipping rate table may be set up per seller. Whether a seller is using the old default domestic and international shipping rate tables or the new shipping rate tables, these shipping rate tables are set up in My eBay Shipping Preferences or as part of a Shipping Business Policy. If using the Trading API to create a listing that will use the new shipping rate tables, the <b>DomesticRateTableId</b> and <b>InternationalRateTableId</b> fields are used to reference and apply these new shipping rate tables to the listing. If desired, sellers can still use the old default shipping rate tables, but they are not allowed to mix and match old and new shipping rate tables, meaning that they will get an error if they pass in both the old fields (<b>DomesticRateTable</b> and <b>InternationalRateTable</b>) and the new fields (<b>DomesticRateTableId</b> and <b>InternationalRateTableId</b>). The new shipping rate tables have all of the functionality of the old shipping rate tables, plus the seller has access to all domestic regions and not just the special regions (such as Alaska & Hawaii, US Protectorates, and APO/FPO locations in US).</span>
      *
      * @return \Nogrod\eBaySDK\Trading\RateTableDetailsType
      */
@@ -2527,9 +2464,9 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     /**
      * Sets a new rateTableDetails
      *
-     * This container is used to reference and apply a seller's specific domestic and/or international shipping rate tables to a listing. Shipping rate tables allow sellers to configure specific shipping costs based on the shipping destinations and level of service (e.g. economy, standard, expedited, and one-day). Generally speaking, sellers want to use these shipping rate tables so they can charge a higher shipping cost to the buyer whenever shipping costs are higher for them as well. For example, shipping to Alaska or Hawaii is generally more expensive than shipping to any other of the 48 US states, or in regards to international shipping, shipping to some regions and countries are more expensive than others.
+     * This container is used to reference and apply a seller's domestic and/or international shipping rate tables to a listing. Shipping rate tables allow sellers to configure specific shipping costs based on the shipping destinations and level of service (e.g. economy, standard, expedited, and one-day). Generally speaking, sellers want to use these shipping rate tables so they can charge a higher shipping cost to the buyer whenever shipping costs are higher for them as well. For example, shipping to Alaska or Hawaii is generally more expensive than shipping to any other of the 48 US states, or in regards to international shipping, shipping to some regions and countries are more expensive than others.
      *  <br><br>
-     *  Sellers configure domestic and international shipping rate tables in My eBay Shipping Preferences. To apply shipping rate tables, the shipping cost type must be flat-rate.
+     *  Sellers configure domestic and international shipping rate tables in My eBay Shipping Preferences. To apply shipping rate tables to a listing, the shipping cost type must be flat-rate.
      *  <br><br>
      *  For domestic shipping rate tables, the three supported domestic regions are Alaska & Hawaii, US Protectorates (e.g. Puerto Rico and Guam), and APO/FPO destinations, which are US military bases/locations outside of the continental US. In addition to setting one flat rate based on the destination and service level, the seller also has the option of adding an extra charge based on the weight of the shipping package, or they can add a surcharge instead. To determine if a domestic shipping rate table is set up for the seller's account, the <b>GetUser</b> call can be used, and then the seller will look for a value of <code>true</code> in the <b>User.SellerInfo.DomesticRateTable</b> field. Although the <b>GetUser</b> call can be used to see if a domestic shipping rate table exists for the seller's account, details of the shipping rate table, including all specified costs for the different regions, can only be viewed and modified in My eBay Shipping Preferences. This functionality is not yet available in any public APIs.
      *  <br><br>
@@ -2539,7 +2476,7 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  <br><br>
      *  This container is only returned in the 'Get' calls if one or more shipping rate tables have been applied to the listing, and if the call is being made by the seller who listed the item.
      *  <br/><br/>
-     *  <span class="tablenote"><b>Note: </b> The capability to create and use multiple domestic and international shipping rate tables (up to 40 per seller account) has rolled out to the US, Australia, Canada (English and French), and Italy sites. For other sites, only one domestic and one international shipping rate table may be set up per seller. Whether a seller is using the old default domestic and international shipping rate tables or the new shipping rate tables, these shipping rate tables are set up in My eBay Shipping Preferences or as part of a Shipping Business Policy. If using the Trading API to create a listing that will use the new shipping rate tables, the <b>DomesticRateTableId</b> and <b>InternationalRateTableId</b> fields are used to reference and apply these new shipping rate tables to the listing. If desired, sellers can still use the old default shipping rate tables, but they are not allowed to mix and match old and new shipping rate tables, meaning that they will get an error if they pass in both the old fields (<b>DomesticRateTable</b> and <b>InternationalRateTable</b>) and the new fields (<b>DomesticRateTableId</b> and <b>InternationalRateTableId</b>). The new shipping rate tables have all of the functionality of the old shipping rate tables, plus the seller has access to all domestic regions and not just the special regions (such as Alaska & Hawaii, US Protectorates, and APO/FPO locations in US).</span>
+     *  <span class="tablenote"><b>Note: </b> The capability to create and use multiple domestic and international shipping rate tables (up to 40 per seller account) has rolled out to the US, Australia, Canada (English and French), Italy, UK, and Germany sites. For other sites, only one domestic and one international shipping rate table may be set up per seller. Whether a seller is using the old default domestic and international shipping rate tables or the new shipping rate tables, these shipping rate tables are set up in My eBay Shipping Preferences or as part of a Shipping Business Policy. If using the Trading API to create a listing that will use the new shipping rate tables, the <b>DomesticRateTableId</b> and <b>InternationalRateTableId</b> fields are used to reference and apply these new shipping rate tables to the listing. If desired, sellers can still use the old default shipping rate tables, but they are not allowed to mix and match old and new shipping rate tables, meaning that they will get an error if they pass in both the old fields (<b>DomesticRateTable</b> and <b>InternationalRateTable</b>) and the new fields (<b>DomesticRateTableId</b> and <b>InternationalRateTableId</b>). The new shipping rate tables have all of the functionality of the old shipping rate tables, plus the seller has access to all domestic regions and not just the special regions (such as Alaska & Hawaii, US Protectorates, and APO/FPO locations in US).</span>
      *
      * @param \Nogrod\eBaySDK\Trading\RateTableDetailsType $rateTableDetails
      * @return self

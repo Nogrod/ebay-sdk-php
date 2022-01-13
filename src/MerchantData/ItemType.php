@@ -51,12 +51,12 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      * If <code>true</code>, the seller requests immediate payment for a fixed-price item or an auction item that is purchased with the 'Buy it Now' feature. If <code>false</code> or not specified, immediate payment is not requested. (In responses, does not indicate whether the item is actually still a candidate for purchase via immediate payment.)
      *  <br>
      *  <br>
+     *  <b>For sellers opted in to eBay managed payments</b>: the only requirement is that the listing category supports immediate payments. With managed payments, eBay handles the payment methods available to the buyer, so the seller will not have to specify any payment methods, and will not have include the <b>PayPalEmailAddress</b> field. The seller only has to include the <b>AutoPay</b> field and set it to <code>true</code> to create an Immediate Payment listing.
+     *  <br>
+     *  <br>
      *  <b>For sellers not opted in to eBay managed payments</b>: immediate payment is only available if the eBay marketplace supports PayPal as a payment method, and the listing category supports immediate payment (the <b>AutoPayEnabled</b> should be returned as <code>true</code> in the <b>GetCategories</b> response). To enable the listing with the immediated payment requirement, <b>AutoPay</b> must be <code>true</code>, the
      *  <b>PayPalEmailAddress</b> field must be included and must have a valid PayPal email address for the seller, and the only specified
      *  <b>PaymentMethods</b> value must be <code>PayPal</code>.
-     *  <br>
-     *  <br>
-     *  <b>For sellers opted in to eBay managed payments</b>: the only requirement is that the listing category supports immediate payments. With managed payments, eBay handles the payment methods available to the buyer, so the seller will not have to specify any payment methods, and will not have include the <b>PayPalEmailAddress</b> field. The seller only has to include the <b>AutoPay</b> field and set it to <code>true</code> to create an Immediate Payment listing.
      *  <br/><br/>
      *  If a seller does not wish to require immediate payment, the <b>AutoPay</b> flag is not required since it defaults to <code>false</code>.
      *  <br/>
@@ -73,10 +73,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     private $biddingDetails = null;
 
     /**
-     * Flag to indicate an item's eligibility for the PayPal Buyer Protection
-     *  program. This field is only returned if <code>true</code>. If this field is not returned, the item is not eligible for PayPal Buyer Protection. For more information on
-     *  items that are eligible for PayPal Buyer Protection, see the
-     *  <a href="https://pages.ebay.com/help/buy/paypal-buyer-protection.html#paypal">PayPal Buyer Protection</a> help page.
+     * The enumeration value returned in this field indicates whether an item is eligible for the PayPal Buyer Protection program.
      *
      * @var string $buyerProtection
      */
@@ -112,7 +109,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     private $categoryMappingAllowed = null;
 
     /**
-     * This container identifies the nonprofit organization that will benefit with a percentage of the proceeds from each sale of an item through an auction or fixed-price listing. Charity names and IDs can be found by going to <a href="https://charity.ebay.com/charity-auctions/my-causes" target="_blank">eBay for Charity</a> page and doing a search, or by doing a search with the <b>GetCharities</b> call. The donation percentage can be set in 5 percent increments from 10 percent to 100 percent. For all charitable listings, PayPal must be an accepted payment method(see <b>Item.PaymentMethods</b>).
+     * This container identifies the nonprofit organization that will benefit with a percentage of the proceeds from each sale of an item through an auction or fixed-price listing. Charity names and IDs can be found by going to <a href="https://charity.ebay.com/charity-auctions/my-causes" target="_blank">eBay for Charity</a> page and doing a search, or by doing a search with the <b>GetCharities</b> call. The donation percentage can be set in 5 percent increments from 10 percent to 100 percent.
      *  <br><br>
      *  When it comes to revising an auction or fixed-price listing, you can add a benefitting charity (as long as there is at least 12 hours left before end of listing/close of auction), but you cannot remove or change a nonprofit company once one is already established in the original listing.
      *  <br><br>
@@ -264,7 +261,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * The selling format of the eBay listing, such as auction (indicated with <code>Chinese</code> value), fixed-price (indicated with <code>FixedPriceItem</code> value), or classified ad (indicated with <code>AdType</code> value).
      *  <br><br>
-     *  If this field is not included in an <b>AddItem</b>, <b>AddItems</b>, <b>AddSellingManagerTemplate</b>, or <b>VerifyAddItem</b> call, the listing type defaults to auction
+     *  If this field is not included in an <b>AddItem</b>, <b>AddItems</b>, or <b>VerifyAddItem</b> call, the listing type defaults to auction
      *  <br><br>
      *  For <b>AddFixedPriceItem</b>, <b>RelistFixedPriceItem</b>, or <b>VerifyAddFixedPriceItem</b> call, this field must be included and set to <code>FixedPriceItem</code>, since these calls only work with fixed-price listings.
      *  <br><br>
@@ -333,19 +330,18 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     private $paymentDetails = null;
 
     /**
-     * Identifies the payment method (such as PayPal) that the seller will accept
-     *  when the buyer pays for the item. For Add/Revise/Relist calls, at least
-     *  one payment method must be specified unless the seller is onboarded for eBay managed payments.
+     * Each <b>PaymentMethods</b> field identifies a payment method that can be used by the buyer to pay for the item.
      *  <br>
      *  <br>
-     *  <span class="tablenote"><b>Note: </b> If you set up a payment policy via the <a href="https://developer.ebay.com/api-docs/sell/account/resources/payment_policy/methods/createPaymentPolicy">Account API</a> or the <a href="https://developer.ebay.com/Devzone/business-policies/CallRef/addSellerProfile.html">Business Polices Managment API</a>, then you should not populate this field. Instead, indicate your payment policy using the <b>SellerProfiles.SellerPaymentProfile</b> container.
+     *  <b>For Add/Revise/Relist calls used by managed payments sellers</b>: One or more <b>PaymentMethods</b> fields are only needed for listings where an offline payment is required or supported. An example would be a motor vehicle listing where the final payment occurs between the buyer and seller offline. Offline payment methods can vary be eBay marketplace and/or category, but some typical offline payment method enumeration values include <code>MOCC</code> (Money Order/Cashier Check), <code>LoanCheck</code>, and <code>PersonalCheck</code>. Electonic payment methods (that occur on eBay's platform) should never be specified by the seller, as eBay controls the electronic payment methods that are available to the buyer for each eBay marketplace.
+     *  <br>
+     *  <br>
+     *  <b>For Add/Revise/Relist calls used by non-managed payments sellers</b>: <code>PayPal</code> is the only supported value for electronic payments, and is generally required unless the seller is using a payment business policy instead. Similar to managed payment sellers, non-managed payment sellers will also use one or more <b>PaymentMethods</b> fields for listings where an offline payment is required or supported.
+     *  <br>
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> If you are already referencing a payments business policy in an Add/Revise/Relist call with the <b>SellerProfiles.SellerPaymentProfile</b> container, no lt;b>PaymentMethods</b> fields will be needed, as these settings will already be set in the payments business policy.
      *  </span>
      *  <br>
-     *  <span class="tablenote"><b>Note:</b> eBay managed payments is currently available to a select set of sellers. For the current list of eBay marketplaces in which eBay managed payments has rolled out, see the <a href="https://developer.ebay.com/managed-payments" target="_blank">eBay Managed Payments</a> landing page. For sellers in the eBay managed payments program, a payment method does not need to be specified at listing time. Any payment method that is specified at listing time (or defined in a payment business policy) will be ignored and dropped from the listing, and the seller will get a warning message in the response. Immediate payment is supported for sellers in the eBay managed payments program, so they can include the <b>AutoPay</b> field in the request and set its value to <code>true</code>.
-     *  </span>
-     *  <br>
-     *  <span class="tablenote"><b>Note:</b> As of May 1, 2019, eBay no longer supports electronic payments through a seller's Integrated Merchant Credit Card account. If <code>IMCC</code> is passed in as a value, this value will be ignored and dropped (and listing will possibly get blocked if <code>IMCC</code> is the only specified payment method).
-     *  </span><br>
      *  Use <b>GetCategoryFeatures</b> to determine the payment methods that are allowed for a category on a site. For example, the response data of <b>GetCategoryFeatures</b> will show that on the US site, most categories only allow electronic payments. Also use <b>GetCategoryFeatures</b> to determine the default payment methods for a site.
      *  <br><br>
      *  Do not use <b>GeteBayDetails</b> to determine the payment methods for a site.
@@ -371,23 +367,6 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  are required or allowed to specify.
      *  </span><br>
      *  Payment methods are not applicable to any classified ad listings, as any agreement and payment is handled off of the eBay platform.
-     *  <br>
-     *  <br>
-     *  <b>For <b>ReviseItem</b> and <b>RelistItem</b> only:</b>
-     *  A listing must have at least one valid payment method.
-     *  When you revise or relist an item and you specify a payment method
-     *  that is invalid for the target site, eBay ignores the
-     *  invalid payment method, applies the other valid
-     *  changes, and returns a warning to indicate that the
-     *  invalid payment method was ignored.
-     *  <br/><br/>
-     *  If multiple payment methods were
-     *  invalid, the warning indicates that they were all ignored.
-     *  If you modify the listing so that it includes no valid
-     *  payment methods, an error is returned. This situation could occur when
-     *  the seller removes all valid payment methods or when all
-     *  the payment methods specified for the item are no longer valid
-     *  on the target site.
      *
      * @var string[] $paymentMethods
      */
@@ -396,30 +375,14 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     ];
 
     /**
-     * Valid PayPal email address for the PayPal account that the seller will use
-     *  if they offer PayPal as a payment method for the listing.
+     * This is the seller's PayPal payment email address, and this field is required in an Add/Revise/Relist call if <code>PayPal</code> is specified as a <b>PaymentsMethod</b> value.
      *  <br>
      *  <br>
-     *  <span class="tablenote"><b>Note: </b> If you set up a payment policy via the <a href="https://developer.ebay.com/api-docs/sell/account/resources/payment_policy/methods/createPaymentPolicy">Account API</a> or the <a href="https://developer.ebay.com/Devzone/business-policies/CallRef/addSellerProfile.html">Business Polices Managment API</a>, then you should not populate this field. Instead, indicate your payment policy using the <b>SellerProfiles.SellerPaymentProfile</b> container.
+     *  <span class="tablenote"><b>Note: </b> This field is no longer needed/applicable for sellers who are onboarded for managed payments.
      *  </span>
      *  <br>
-     *  eBay uses this to identify the correct PayPal account when the buyer pays via PayPal during
-     *  the checkout process. (As a seller can have more than one PayPal account,
-     *  you cannot necessarily rely on PayPal account data returned from <b>GetUser</b> for
-     *  details about the account associated with the PayPal email address that the
-     *  seller specifies.)<br>
-     *  <br>
-     *  Required if seller has chosen PayPal as a payment method (<b>PaymentMethods</b>)
-     *  for the listing.<br>
-     *  <br>
-     *  For digital listings, the seller needs to use an email address that is
-     *  associated with a PayPal Premier or PayPal business account. <br>
-     *  <br>
-     *  <b>For ReviseItem and RelistItem only:</b> To remove this value
-     *  when you revise or relist an item, use <b>DeletedField</b>. When you revise a
-     *  listing, if the listing has bids (or items have been sold) or it ends within
-     *  12 hours, you can add <b>PayPalEmailAddress</b>, but you cannot remove
-     *  it.
+     *  <span class="tablenote"><b>Note: </b> If you are already referencing a payments business policy in an Add/Revise/Relist call with the <b>SellerProfiles.SellerPaymentProfile</b> container, no <b>PaymentMethods</b> field(s) or <b>PayPalEmailAddress</b> field will be needed, as these settings will already be set in the payments business policy.
+     *  </span>
      *
      * @var string $payPalEmailAddress
      */
@@ -564,12 +527,11 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     private $relistLink = null;
 
     /**
-     * The lowest price at which the seller is willing to sell an auction item. (<b>StartPrice</b>
-     *  must be lower than <b>ReservePrice</b> .) Not all categories support a Reserve Price.
-     *  Use <b>GetCategories</b> to see if a category supports a Reserve Price.
-     *  In calls that retrieve item data, the <b>ReservePrice</b> field will only be returned to the auction item's seller, and only if a Reserve Price has been set up. A Reserve Price is not applicable to fixed-price or classified ad listings.<br>
-     *  <br>
-     *  You can remove the Reserve price of a US eBay Motors listing if the category allows it, the current Reserve Price has not been met, and the Reserve Price is at least $2.00 more than the current high bid. In this case, if the item has bids, the Reserve Price is set to $1.00 over the current high bid. The next bid meets the Reserve Price and wins. See <i>Fees Overview</i> below for information about fee credits that may be available when the Reserve Price is removed for a Motors listing.
+     * This field is used to set the lowest price at which the seller is willing to sell an auction item. The <b>StartPrice</b> value must be lower than the <b>ReservePrice</b> value. Note that setting a reserve price will incur a listing fee of $5 or 7.5% of the reserve price, whichever is greater, and this fee is charged regardless of whether or not the auction item has a qualifying, winning bidder.
+     *  <br> <br>
+     *  As long as no bidder has matched your reserve price, and the scheduled end time of the auction is 12 or more hours away, you can lower or remove the reserve price. However, even if you remove the reserve price from an active listing, you will still be charged the fee and not eligible for a credit.
+     *  <br> <br>
+     *  In 'get' calls that retrieve item data, the <b>ReservePrice</b> field will only be returned to the seller of that particular auction item, and only if a reserve price has been set up. The reserve price is never exposed to anyone other than the seller of the item.
      *
      * @var \Nogrod\eBaySDK\MerchantData\AmountType $reservePrice
      */
@@ -1081,6 +1043,17 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     private $pictureDetails = null;
 
     /**
+     * This container is used if the seller wants to add a video to their listing. At this time, only one video can be added per listing, and the video must be uploaded to eBay via the <a href="/api-docs/commerce/media/overview.html" target="_blank">Media API</a>. See the <a href="/api-docs/commerce/media/overview.html" target="_blank">Media API</a> reference documentation for all of the necessary details to upload videos to eBay.
+     *  <br/><br/>
+     *  This container will only be returned in <b>GetItem</b> if the listing contains a video, and the seller of the item is the one making the <b>GetItem</b> call.
+     *  <br/><br/>
+     *  <span class="tablenote"><b>Note: </b> Videos can only be attached to listings on supported eBay marketplaces and can only be viewed through supported platforms. See <a href="/api-docs/sell/static/inventory/managing-video-media.html#AddingVideos" target="_blank">Managing videos</a> in the Selling Integration Guide for a full list of supported marketplaces and platforms.</span>
+     *
+     * @var string[] $videoDetails
+     */
+    private $videoDetails = null;
+
+    /**
      * Specifies the maximum number of business days the seller
      *  commits to for preparing an item to be shipped after receiving a
      *  cleared payment. This time does not include the shipping time (the carrier's transit time).
@@ -1191,7 +1164,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <br><br>
      *  If the <b>ProductListingDetails</b> container in an Add/Revise/Relist call is successfully used to find and use an eBay catalog product to create/revise listing, the seller should not remove or change the value of any Item Specific name or value that is defined as part of the eBay catalog product definition.
      *  <br><br>
-     *  <span class="tablenote"><b>Note:</b> If a listing is associated with an eBay catalog product, the seller does not need to pass in any Item Specifics that are already defined in the eBay catalog product. Sellers can make a <b>GetCategorySpecifics</b> call to see if the listing category supports any 'instance aspects', which can be thought of as Item Specifics that are unique to the specific item that is being listed. Instance aspects are identified in the <b>GetCategorySpecifics</b> response by looking for a value of <code>Instance</code> in one or more <b>NameRecommendation.ValidationRules.aspectUsage</b> fields. Many categories support the following instance aspects: <em>Custom Bundle</em>, <em>Bundle Description</em>, <em>Modified Item</em>, <em>Modification Description</em>, and <em>California Prop 65 Warning</em>. These instance aspects allow the seller to provide more information about product bundles or modified products in a structured way. Depending on the category, there are other instance aspects as well. For more information about creating bundle listings or modified product listings, see the <a href="https://developer.ebay.com/api-docs/sell/static/inventory/pbse-special-listings.html" target="_blank">Associating catalog products to special listings</a> topic.
+     *  <span class="tablenote"><b>Note:</b> If a listing is associated with an eBay catalog product, the seller does not need to pass in any Item Specifics that are already defined in the eBay catalog product. Sellers can make a <b>GetCategorySpecifics</b> call to see if the listing category supports any 'instance aspects', which can be thought of as Item Specifics that are unique to the specific item that is being listed. Instance aspects are identified in the <b>GetCategorySpecifics</b> response by looking for a value of <code>Instance</code> in one or more <b>NameRecommendation.ValidationRules.aspectUsage</b> fields. Many categories support the following instance aspects: <em>Custom Bundle</em>, <em>Bundle Description</em>, <em>Modified Item</em>, <em>Modification Description</em>, and <em>California Prop 65 Warning</em>. These instance aspects allow the seller to provide more information about product bundles or modified products in a structured way. Depending on the category, there are other instance aspects as well.
      *  </span>
      *  <span class="tablenote"><b>Note:</b> To specify an item's condition, use the <b>ConditionID</b> field instead of a condition Item Specific. Use <b>GetCategoryFeatures</b> to see which categories support <b>ConditionID</b> and to get a list of valid condition IDs. (If you specify <b>ConditionID</b> and you also specify <b>Condition</b> as a Item Specific, eBay drops the condition Item Specific.)
      *  </span>
@@ -1404,23 +1377,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     private $inventoryTrackingMethod = null;
 
     /**
-     * Indicates whether the item can be paid for through a payment gateway
-     *  (Payflow) account. If <b>IntegratedMerchantCreditCardEnabled</b> is <code>true</code>, then
-     *  integrated merchant credit card (IMCC) is enabled for credit cards because
-     *  the seller has a payment gateway account. Therefore, if
-     *  <b>IntegratedMerchantCreditCardEnabled</b> is <code>true</code>, an AmEx, Discover, or VisaMC
-     *  is returned for an item, then on checkout, an online credit-card payment is
-     *  processed through a payment gateway account. A payment gateway account is
-     *  used by sellers to accept online credit cards (Visa, MasterCard, American
-     *  Express, and Discover).
-     *  <br><br>
-     *  <span class="tablenote"><b>Note: </b>
-     *  As of May 1, 2019, eBay no longer supports electronic payments through Integrated Merchant Credit Card accounts. To accept online credit card payments from buyers, a seller must specify PayPal as an accepted payment method, or opt in to eBay managed payments program (if the program is available to that seller).
-     *  </span>
-     *  <br> <br>
-     *  <span class="tablenote"><b>Note:</b>
-     *  For the <strong>GetItemTransactions</strong>, <strong>GetOrders</strong>, and <strong>GetOrderTransactions</strong> calls, this field is only returned to the seller of the order; this field is not returned for the buyer or third party.
-     *  </span>
+     * This field is no longer applicable as eBay sellers can no longer use iMCC gateway accounts to handle buyer payments.
      *
      * @var bool $integratedMerchantCreditCardEnabled
      */
@@ -1554,10 +1511,14 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <br>
      *  <br>
      *  <span class="tablenote"><strong>Note:</strong>
-     *  In all eBay marketplaces, Condition ID 2000 now maps to an item condition of 'Certified Refurbished', and not 'Manufacturer Refurbished'. To list an item as 'Certified Refurbished', a seller must be pre-qualified by eBay for this feature. Any seller who is not eligible for this feature will be blocked if they try to create a new listing or revise an existing listing with this item condition. Any active listings on any eBay marketplace that had 'Manufacturer Refurbished' as the item condition should have been automatically updated by eBay to the 'Seller Refurbished' item condition (Condition ID 2500).
+     *  In all eBay marketplaces, Condition ID 2000 now maps to an item condition of 'Certified - Refurbished', and not 'Manufacturer Refurbished'. To list an item as 'Certified - Refurbished', a seller must be pre-qualified by eBay for this feature. Any seller who is not eligible for this feature will be blocked if they try to create a new listing or revise an existing listing with this item condition.
      *  <br>
      *  <br>
-     *  Any seller that is interested in eligibility requirements to list with 'Certified Refurbished' should see the <a href="https://pages.ebay.com/seller-center/listing-and-marketing/certified-refurbished-program.html" target="_blank">Certified refurbished program</a> page in Seller Center.
+     *  Any seller that is interested in eligibility requirements to list with 'Certified - Refurbished' should see the <a href="https://pages.ebay.com/seller-center/listing-and-marketing/certified-refurbished-program.html" target="_blank">Certified refurbished program</a> page in Seller Center.
+     *  </span>
+     *  <br>
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  As of September 1, 2021, condition ID 2500 ('Seller Refurbished') can no longer be used in the <strong>Cell Phones & Smartphones</strong> category (category ID 9355) for the following marketplaces: US, Canada, UK, Germany, and Australia. The 'Seller Refurbished' item condition will be replaced by one of three new refurbished values, which include condition ID 2010 ('Excellent - Refurbished'), condition ID 2020 ('Very Good - Refurbished'), and condition ID 2030 ('Good - Refurbished'). To use any of these new refurbished item conditions in category 9355, sellers must go through an application and qualification process. Any seller who is not eligible to use these new refurbished item conditions in category 9355 will be blocked if they try to create a new listing or revise an existing listing with any of these three new item conditions. Any active listings in category 9355 that had condition ID 2500 ('Seller Refurbished') as the item condition should have been administratively ended by eBay. Sellers will have to relist these items, and until they are eligible to list with the new refurbished item conditions, they will need to use another item condition supported in category 9355, like condition ID 3000 ('Used').
      *  </span>
      *
      * @var int $conditionID
@@ -1832,23 +1793,6 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     private $reasonHideFromSearch = null;
 
     /**
-     * This boolean field should be included and set to <code>true</code> if the seller wishes to see listing recommendations in the call response via the <b>ListingRecommendations</b> container. Listing recommendations provide one or more messages to the seller on recommendations on:
-     *  <b></b>
-     *  <ul>
-     *  <li>improving a listing </li>
-     *  <li>bringing a listing up to standard in regards to Top-Rated seller/listing requirements </li>
-     *  <li>mandated or recommended Item Specifics </li>
-     *  <li>picture quality requirements </li>
-     *  <li>pricing and/or listing format recommendations </li>
-     *  <li>recommended keywords and/or Item Specifics in a Title </li>
-     *  <li>offering fast handling (same-day handling or handling time of 1 day) and/or a free shipping option in order to qualify the listing for a Fast 'N Free badge </li>
-     *  </ul>
-     *
-     * @var bool $includeRecommendations
-     */
-    private $includeRecommendations = null;
-
-    /**
      * This container is used in <b>Add</b>/<b>Revise</b>/<b>Relist</b>/<b>Verify</b> listing calls by the seller to enable a listing with the 'In-Store Pickup' feature. The 'In-Store Pickup' feature is only available to a limited number of large retail merchants in the US, Canada, UK, Germany, and Australia marketplaces.
      *  <br/><br/>
      *  This container is returned in the 'Get' calls if the listing is enabled with the In-Store Pickup feature.
@@ -1856,13 +1800,6 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      * @var \Nogrod\eBaySDK\MerchantData\PickupInStoreDetailsType $pickupInStoreDetails
      */
     private $pickupInStoreDetails = null;
-
-    /**
-     * The unique identifier of the eBay site on which the item is listed. If the Site ID is already passed in as an HTTP header, this field is not needed. If Site ID is specified in the HTTP header and through this request field, the value in this field will override the value in the HTTP headerWhen this is given we would ignore the site Id, which is given in header. See <strong>SiteCodeType</strong> for a full list of Site IDs for the eBay sites that are compatible with the Trading API.
-     *
-     * @var int $siteId
-     */
-    private $siteId = null;
 
     /**
      * This boolean field is returned as <code>true</code> if the actual quantity of a multiple-quantity, fixed-price listing (indicated in the <b>Item.Quantity</b> field) can not be accurately determined by eBay.
@@ -2210,12 +2147,12 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      * If <code>true</code>, the seller requests immediate payment for a fixed-price item or an auction item that is purchased with the 'Buy it Now' feature. If <code>false</code> or not specified, immediate payment is not requested. (In responses, does not indicate whether the item is actually still a candidate for purchase via immediate payment.)
      *  <br>
      *  <br>
+     *  <b>For sellers opted in to eBay managed payments</b>: the only requirement is that the listing category supports immediate payments. With managed payments, eBay handles the payment methods available to the buyer, so the seller will not have to specify any payment methods, and will not have include the <b>PayPalEmailAddress</b> field. The seller only has to include the <b>AutoPay</b> field and set it to <code>true</code> to create an Immediate Payment listing.
+     *  <br>
+     *  <br>
      *  <b>For sellers not opted in to eBay managed payments</b>: immediate payment is only available if the eBay marketplace supports PayPal as a payment method, and the listing category supports immediate payment (the <b>AutoPayEnabled</b> should be returned as <code>true</code> in the <b>GetCategories</b> response). To enable the listing with the immediated payment requirement, <b>AutoPay</b> must be <code>true</code>, the
      *  <b>PayPalEmailAddress</b> field must be included and must have a valid PayPal email address for the seller, and the only specified
      *  <b>PaymentMethods</b> value must be <code>PayPal</code>.
-     *  <br>
-     *  <br>
-     *  <b>For sellers opted in to eBay managed payments</b>: the only requirement is that the listing category supports immediate payments. With managed payments, eBay handles the payment methods available to the buyer, so the seller will not have to specify any payment methods, and will not have include the <b>PayPalEmailAddress</b> field. The seller only has to include the <b>AutoPay</b> field and set it to <code>true</code> to create an Immediate Payment listing.
      *  <br/><br/>
      *  If a seller does not wish to require immediate payment, the <b>AutoPay</b> flag is not required since it defaults to <code>false</code>.
      *  <br/>
@@ -2233,12 +2170,12 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      * If <code>true</code>, the seller requests immediate payment for a fixed-price item or an auction item that is purchased with the 'Buy it Now' feature. If <code>false</code> or not specified, immediate payment is not requested. (In responses, does not indicate whether the item is actually still a candidate for purchase via immediate payment.)
      *  <br>
      *  <br>
+     *  <b>For sellers opted in to eBay managed payments</b>: the only requirement is that the listing category supports immediate payments. With managed payments, eBay handles the payment methods available to the buyer, so the seller will not have to specify any payment methods, and will not have include the <b>PayPalEmailAddress</b> field. The seller only has to include the <b>AutoPay</b> field and set it to <code>true</code> to create an Immediate Payment listing.
+     *  <br>
+     *  <br>
      *  <b>For sellers not opted in to eBay managed payments</b>: immediate payment is only available if the eBay marketplace supports PayPal as a payment method, and the listing category supports immediate payment (the <b>AutoPayEnabled</b> should be returned as <code>true</code> in the <b>GetCategories</b> response). To enable the listing with the immediated payment requirement, <b>AutoPay</b> must be <code>true</code>, the
      *  <b>PayPalEmailAddress</b> field must be included and must have a valid PayPal email address for the seller, and the only specified
      *  <b>PaymentMethods</b> value must be <code>PayPal</code>.
-     *  <br>
-     *  <br>
-     *  <b>For sellers opted in to eBay managed payments</b>: the only requirement is that the listing category supports immediate payments. With managed payments, eBay handles the payment methods available to the buyer, so the seller will not have to specify any payment methods, and will not have include the <b>PayPalEmailAddress</b> field. The seller only has to include the <b>AutoPay</b> field and set it to <code>true</code> to create an Immediate Payment listing.
      *  <br/><br/>
      *  If a seller does not wish to require immediate payment, the <b>AutoPay</b> flag is not required since it defaults to <code>false</code>.
      *  <br/>
@@ -2281,10 +2218,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Gets as buyerProtection
      *
-     * Flag to indicate an item's eligibility for the PayPal Buyer Protection
-     *  program. This field is only returned if <code>true</code>. If this field is not returned, the item is not eligible for PayPal Buyer Protection. For more information on
-     *  items that are eligible for PayPal Buyer Protection, see the
-     *  <a href="https://pages.ebay.com/help/buy/paypal-buyer-protection.html#paypal">PayPal Buyer Protection</a> help page.
+     * The enumeration value returned in this field indicates whether an item is eligible for the PayPal Buyer Protection program.
      *
      * @return string
      */
@@ -2296,10 +2230,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Sets a new buyerProtection
      *
-     * Flag to indicate an item's eligibility for the PayPal Buyer Protection
-     *  program. This field is only returned if <code>true</code>. If this field is not returned, the item is not eligible for PayPal Buyer Protection. For more information on
-     *  items that are eligible for PayPal Buyer Protection, see the
-     *  <a href="https://pages.ebay.com/help/buy/paypal-buyer-protection.html#paypal">PayPal Buyer Protection</a> help page.
+     * The enumeration value returned in this field indicates whether an item is eligible for the PayPal Buyer Protection program.
      *
      * @param string $buyerProtection
      * @return self
@@ -2395,7 +2326,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Gets as charity
      *
-     * This container identifies the nonprofit organization that will benefit with a percentage of the proceeds from each sale of an item through an auction or fixed-price listing. Charity names and IDs can be found by going to <a href="https://charity.ebay.com/charity-auctions/my-causes" target="_blank">eBay for Charity</a> page and doing a search, or by doing a search with the <b>GetCharities</b> call. The donation percentage can be set in 5 percent increments from 10 percent to 100 percent. For all charitable listings, PayPal must be an accepted payment method(see <b>Item.PaymentMethods</b>).
+     * This container identifies the nonprofit organization that will benefit with a percentage of the proceeds from each sale of an item through an auction or fixed-price listing. Charity names and IDs can be found by going to <a href="https://charity.ebay.com/charity-auctions/my-causes" target="_blank">eBay for Charity</a> page and doing a search, or by doing a search with the <b>GetCharities</b> call. The donation percentage can be set in 5 percent increments from 10 percent to 100 percent.
      *  <br><br>
      *  When it comes to revising an auction or fixed-price listing, you can add a benefitting charity (as long as there is at least 12 hours left before end of listing/close of auction), but you cannot remove or change a nonprofit company once one is already established in the original listing.
      *  <br><br>
@@ -2413,7 +2344,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Sets a new charity
      *
-     * This container identifies the nonprofit organization that will benefit with a percentage of the proceeds from each sale of an item through an auction or fixed-price listing. Charity names and IDs can be found by going to <a href="https://charity.ebay.com/charity-auctions/my-causes" target="_blank">eBay for Charity</a> page and doing a search, or by doing a search with the <b>GetCharities</b> call. The donation percentage can be set in 5 percent increments from 10 percent to 100 percent. For all charitable listings, PayPal must be an accepted payment method(see <b>Item.PaymentMethods</b>).
+     * This container identifies the nonprofit organization that will benefit with a percentage of the proceeds from each sale of an item through an auction or fixed-price listing. Charity names and IDs can be found by going to <a href="https://charity.ebay.com/charity-auctions/my-causes" target="_blank">eBay for Charity</a> page and doing a search, or by doing a search with the <b>GetCharities</b> call. The donation percentage can be set in 5 percent increments from 10 percent to 100 percent.
      *  <br><br>
      *  When it comes to revising an auction or fixed-price listing, you can add a benefitting charity (as long as there is at least 12 hours left before end of listing/close of auction), but you cannot remove or change a nonprofit company once one is already established in the original listing.
      *  <br><br>
@@ -2895,7 +2826,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *
      * The selling format of the eBay listing, such as auction (indicated with <code>Chinese</code> value), fixed-price (indicated with <code>FixedPriceItem</code> value), or classified ad (indicated with <code>AdType</code> value).
      *  <br><br>
-     *  If this field is not included in an <b>AddItem</b>, <b>AddItems</b>, <b>AddSellingManagerTemplate</b>, or <b>VerifyAddItem</b> call, the listing type defaults to auction
+     *  If this field is not included in an <b>AddItem</b>, <b>AddItems</b>, or <b>VerifyAddItem</b> call, the listing type defaults to auction
      *  <br><br>
      *  For <b>AddFixedPriceItem</b>, <b>RelistFixedPriceItem</b>, or <b>VerifyAddFixedPriceItem</b> call, this field must be included and set to <code>FixedPriceItem</code>, since these calls only work with fixed-price listings.
      *  <br><br>
@@ -2913,7 +2844,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *
      * The selling format of the eBay listing, such as auction (indicated with <code>Chinese</code> value), fixed-price (indicated with <code>FixedPriceItem</code> value), or classified ad (indicated with <code>AdType</code> value).
      *  <br><br>
-     *  If this field is not included in an <b>AddItem</b>, <b>AddItems</b>, <b>AddSellingManagerTemplate</b>, or <b>VerifyAddItem</b> call, the listing type defaults to auction
+     *  If this field is not included in an <b>AddItem</b>, <b>AddItems</b>, or <b>VerifyAddItem</b> call, the listing type defaults to auction
      *  <br><br>
      *  For <b>AddFixedPriceItem</b>, <b>RelistFixedPriceItem</b>, or <b>VerifyAddFixedPriceItem</b> call, this field must be included and set to <code>FixedPriceItem</code>, since these calls only work with fixed-price listings.
      *  <br><br>
@@ -3107,19 +3038,18 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Adds as paymentMethods
      *
-     * Identifies the payment method (such as PayPal) that the seller will accept
-     *  when the buyer pays for the item. For Add/Revise/Relist calls, at least
-     *  one payment method must be specified unless the seller is onboarded for eBay managed payments.
+     * Each <b>PaymentMethods</b> field identifies a payment method that can be used by the buyer to pay for the item.
      *  <br>
      *  <br>
-     *  <span class="tablenote"><b>Note: </b> If you set up a payment policy via the <a href="https://developer.ebay.com/api-docs/sell/account/resources/payment_policy/methods/createPaymentPolicy">Account API</a> or the <a href="https://developer.ebay.com/Devzone/business-policies/CallRef/addSellerProfile.html">Business Polices Managment API</a>, then you should not populate this field. Instead, indicate your payment policy using the <b>SellerProfiles.SellerPaymentProfile</b> container.
+     *  <b>For Add/Revise/Relist calls used by managed payments sellers</b>: One or more <b>PaymentMethods</b> fields are only needed for listings where an offline payment is required or supported. An example would be a motor vehicle listing where the final payment occurs between the buyer and seller offline. Offline payment methods can vary be eBay marketplace and/or category, but some typical offline payment method enumeration values include <code>MOCC</code> (Money Order/Cashier Check), <code>LoanCheck</code>, and <code>PersonalCheck</code>. Electonic payment methods (that occur on eBay's platform) should never be specified by the seller, as eBay controls the electronic payment methods that are available to the buyer for each eBay marketplace.
+     *  <br>
+     *  <br>
+     *  <b>For Add/Revise/Relist calls used by non-managed payments sellers</b>: <code>PayPal</code> is the only supported value for electronic payments, and is generally required unless the seller is using a payment business policy instead. Similar to managed payment sellers, non-managed payment sellers will also use one or more <b>PaymentMethods</b> fields for listings where an offline payment is required or supported.
+     *  <br>
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> If you are already referencing a payments business policy in an Add/Revise/Relist call with the <b>SellerProfiles.SellerPaymentProfile</b> container, no lt;b>PaymentMethods</b> fields will be needed, as these settings will already be set in the payments business policy.
      *  </span>
      *  <br>
-     *  <span class="tablenote"><b>Note:</b> eBay managed payments is currently available to a select set of sellers. For the current list of eBay marketplaces in which eBay managed payments has rolled out, see the <a href="https://developer.ebay.com/managed-payments" target="_blank">eBay Managed Payments</a> landing page. For sellers in the eBay managed payments program, a payment method does not need to be specified at listing time. Any payment method that is specified at listing time (or defined in a payment business policy) will be ignored and dropped from the listing, and the seller will get a warning message in the response. Immediate payment is supported for sellers in the eBay managed payments program, so they can include the <b>AutoPay</b> field in the request and set its value to <code>true</code>.
-     *  </span>
-     *  <br>
-     *  <span class="tablenote"><b>Note:</b> As of May 1, 2019, eBay no longer supports electronic payments through a seller's Integrated Merchant Credit Card account. If <code>IMCC</code> is passed in as a value, this value will be ignored and dropped (and listing will possibly get blocked if <code>IMCC</code> is the only specified payment method).
-     *  </span><br>
      *  Use <b>GetCategoryFeatures</b> to determine the payment methods that are allowed for a category on a site. For example, the response data of <b>GetCategoryFeatures</b> will show that on the US site, most categories only allow electronic payments. Also use <b>GetCategoryFeatures</b> to determine the default payment methods for a site.
      *  <br><br>
      *  Do not use <b>GeteBayDetails</b> to determine the payment methods for a site.
@@ -3145,23 +3075,6 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  are required or allowed to specify.
      *  </span><br>
      *  Payment methods are not applicable to any classified ad listings, as any agreement and payment is handled off of the eBay platform.
-     *  <br>
-     *  <br>
-     *  <b>For <b>ReviseItem</b> and <b>RelistItem</b> only:</b>
-     *  A listing must have at least one valid payment method.
-     *  When you revise or relist an item and you specify a payment method
-     *  that is invalid for the target site, eBay ignores the
-     *  invalid payment method, applies the other valid
-     *  changes, and returns a warning to indicate that the
-     *  invalid payment method was ignored.
-     *  <br/><br/>
-     *  If multiple payment methods were
-     *  invalid, the warning indicates that they were all ignored.
-     *  If you modify the listing so that it includes no valid
-     *  payment methods, an error is returned. This situation could occur when
-     *  the seller removes all valid payment methods or when all
-     *  the payment methods specified for the item are no longer valid
-     *  on the target site.
      *
      * @return self
      * @param string $paymentMethods
@@ -3175,19 +3088,18 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * isset paymentMethods
      *
-     * Identifies the payment method (such as PayPal) that the seller will accept
-     *  when the buyer pays for the item. For Add/Revise/Relist calls, at least
-     *  one payment method must be specified unless the seller is onboarded for eBay managed payments.
+     * Each <b>PaymentMethods</b> field identifies a payment method that can be used by the buyer to pay for the item.
      *  <br>
      *  <br>
-     *  <span class="tablenote"><b>Note: </b> If you set up a payment policy via the <a href="https://developer.ebay.com/api-docs/sell/account/resources/payment_policy/methods/createPaymentPolicy">Account API</a> or the <a href="https://developer.ebay.com/Devzone/business-policies/CallRef/addSellerProfile.html">Business Polices Managment API</a>, then you should not populate this field. Instead, indicate your payment policy using the <b>SellerProfiles.SellerPaymentProfile</b> container.
+     *  <b>For Add/Revise/Relist calls used by managed payments sellers</b>: One or more <b>PaymentMethods</b> fields are only needed for listings where an offline payment is required or supported. An example would be a motor vehicle listing where the final payment occurs between the buyer and seller offline. Offline payment methods can vary be eBay marketplace and/or category, but some typical offline payment method enumeration values include <code>MOCC</code> (Money Order/Cashier Check), <code>LoanCheck</code>, and <code>PersonalCheck</code>. Electonic payment methods (that occur on eBay's platform) should never be specified by the seller, as eBay controls the electronic payment methods that are available to the buyer for each eBay marketplace.
+     *  <br>
+     *  <br>
+     *  <b>For Add/Revise/Relist calls used by non-managed payments sellers</b>: <code>PayPal</code> is the only supported value for electronic payments, and is generally required unless the seller is using a payment business policy instead. Similar to managed payment sellers, non-managed payment sellers will also use one or more <b>PaymentMethods</b> fields for listings where an offline payment is required or supported.
+     *  <br>
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> If you are already referencing a payments business policy in an Add/Revise/Relist call with the <b>SellerProfiles.SellerPaymentProfile</b> container, no lt;b>PaymentMethods</b> fields will be needed, as these settings will already be set in the payments business policy.
      *  </span>
      *  <br>
-     *  <span class="tablenote"><b>Note:</b> eBay managed payments is currently available to a select set of sellers. For the current list of eBay marketplaces in which eBay managed payments has rolled out, see the <a href="https://developer.ebay.com/managed-payments" target="_blank">eBay Managed Payments</a> landing page. For sellers in the eBay managed payments program, a payment method does not need to be specified at listing time. Any payment method that is specified at listing time (or defined in a payment business policy) will be ignored and dropped from the listing, and the seller will get a warning message in the response. Immediate payment is supported for sellers in the eBay managed payments program, so they can include the <b>AutoPay</b> field in the request and set its value to <code>true</code>.
-     *  </span>
-     *  <br>
-     *  <span class="tablenote"><b>Note:</b> As of May 1, 2019, eBay no longer supports electronic payments through a seller's Integrated Merchant Credit Card account. If <code>IMCC</code> is passed in as a value, this value will be ignored and dropped (and listing will possibly get blocked if <code>IMCC</code> is the only specified payment method).
-     *  </span><br>
      *  Use <b>GetCategoryFeatures</b> to determine the payment methods that are allowed for a category on a site. For example, the response data of <b>GetCategoryFeatures</b> will show that on the US site, most categories only allow electronic payments. Also use <b>GetCategoryFeatures</b> to determine the default payment methods for a site.
      *  <br><br>
      *  Do not use <b>GeteBayDetails</b> to determine the payment methods for a site.
@@ -3213,23 +3125,6 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  are required or allowed to specify.
      *  </span><br>
      *  Payment methods are not applicable to any classified ad listings, as any agreement and payment is handled off of the eBay platform.
-     *  <br>
-     *  <br>
-     *  <b>For <b>ReviseItem</b> and <b>RelistItem</b> only:</b>
-     *  A listing must have at least one valid payment method.
-     *  When you revise or relist an item and you specify a payment method
-     *  that is invalid for the target site, eBay ignores the
-     *  invalid payment method, applies the other valid
-     *  changes, and returns a warning to indicate that the
-     *  invalid payment method was ignored.
-     *  <br/><br/>
-     *  If multiple payment methods were
-     *  invalid, the warning indicates that they were all ignored.
-     *  If you modify the listing so that it includes no valid
-     *  payment methods, an error is returned. This situation could occur when
-     *  the seller removes all valid payment methods or when all
-     *  the payment methods specified for the item are no longer valid
-     *  on the target site.
      *
      * @param int|string $index
      * @return bool
@@ -3242,19 +3137,18 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * unset paymentMethods
      *
-     * Identifies the payment method (such as PayPal) that the seller will accept
-     *  when the buyer pays for the item. For Add/Revise/Relist calls, at least
-     *  one payment method must be specified unless the seller is onboarded for eBay managed payments.
+     * Each <b>PaymentMethods</b> field identifies a payment method that can be used by the buyer to pay for the item.
      *  <br>
      *  <br>
-     *  <span class="tablenote"><b>Note: </b> If you set up a payment policy via the <a href="https://developer.ebay.com/api-docs/sell/account/resources/payment_policy/methods/createPaymentPolicy">Account API</a> or the <a href="https://developer.ebay.com/Devzone/business-policies/CallRef/addSellerProfile.html">Business Polices Managment API</a>, then you should not populate this field. Instead, indicate your payment policy using the <b>SellerProfiles.SellerPaymentProfile</b> container.
+     *  <b>For Add/Revise/Relist calls used by managed payments sellers</b>: One or more <b>PaymentMethods</b> fields are only needed for listings where an offline payment is required or supported. An example would be a motor vehicle listing where the final payment occurs between the buyer and seller offline. Offline payment methods can vary be eBay marketplace and/or category, but some typical offline payment method enumeration values include <code>MOCC</code> (Money Order/Cashier Check), <code>LoanCheck</code>, and <code>PersonalCheck</code>. Electonic payment methods (that occur on eBay's platform) should never be specified by the seller, as eBay controls the electronic payment methods that are available to the buyer for each eBay marketplace.
+     *  <br>
+     *  <br>
+     *  <b>For Add/Revise/Relist calls used by non-managed payments sellers</b>: <code>PayPal</code> is the only supported value for electronic payments, and is generally required unless the seller is using a payment business policy instead. Similar to managed payment sellers, non-managed payment sellers will also use one or more <b>PaymentMethods</b> fields for listings where an offline payment is required or supported.
+     *  <br>
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> If you are already referencing a payments business policy in an Add/Revise/Relist call with the <b>SellerProfiles.SellerPaymentProfile</b> container, no lt;b>PaymentMethods</b> fields will be needed, as these settings will already be set in the payments business policy.
      *  </span>
      *  <br>
-     *  <span class="tablenote"><b>Note:</b> eBay managed payments is currently available to a select set of sellers. For the current list of eBay marketplaces in which eBay managed payments has rolled out, see the <a href="https://developer.ebay.com/managed-payments" target="_blank">eBay Managed Payments</a> landing page. For sellers in the eBay managed payments program, a payment method does not need to be specified at listing time. Any payment method that is specified at listing time (or defined in a payment business policy) will be ignored and dropped from the listing, and the seller will get a warning message in the response. Immediate payment is supported for sellers in the eBay managed payments program, so they can include the <b>AutoPay</b> field in the request and set its value to <code>true</code>.
-     *  </span>
-     *  <br>
-     *  <span class="tablenote"><b>Note:</b> As of May 1, 2019, eBay no longer supports electronic payments through a seller's Integrated Merchant Credit Card account. If <code>IMCC</code> is passed in as a value, this value will be ignored and dropped (and listing will possibly get blocked if <code>IMCC</code> is the only specified payment method).
-     *  </span><br>
      *  Use <b>GetCategoryFeatures</b> to determine the payment methods that are allowed for a category on a site. For example, the response data of <b>GetCategoryFeatures</b> will show that on the US site, most categories only allow electronic payments. Also use <b>GetCategoryFeatures</b> to determine the default payment methods for a site.
      *  <br><br>
      *  Do not use <b>GeteBayDetails</b> to determine the payment methods for a site.
@@ -3280,23 +3174,6 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  are required or allowed to specify.
      *  </span><br>
      *  Payment methods are not applicable to any classified ad listings, as any agreement and payment is handled off of the eBay platform.
-     *  <br>
-     *  <br>
-     *  <b>For <b>ReviseItem</b> and <b>RelistItem</b> only:</b>
-     *  A listing must have at least one valid payment method.
-     *  When you revise or relist an item and you specify a payment method
-     *  that is invalid for the target site, eBay ignores the
-     *  invalid payment method, applies the other valid
-     *  changes, and returns a warning to indicate that the
-     *  invalid payment method was ignored.
-     *  <br/><br/>
-     *  If multiple payment methods were
-     *  invalid, the warning indicates that they were all ignored.
-     *  If you modify the listing so that it includes no valid
-     *  payment methods, an error is returned. This situation could occur when
-     *  the seller removes all valid payment methods or when all
-     *  the payment methods specified for the item are no longer valid
-     *  on the target site.
      *
      * @param int|string $index
      * @return void
@@ -3309,19 +3186,18 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Gets as paymentMethods
      *
-     * Identifies the payment method (such as PayPal) that the seller will accept
-     *  when the buyer pays for the item. For Add/Revise/Relist calls, at least
-     *  one payment method must be specified unless the seller is onboarded for eBay managed payments.
+     * Each <b>PaymentMethods</b> field identifies a payment method that can be used by the buyer to pay for the item.
      *  <br>
      *  <br>
-     *  <span class="tablenote"><b>Note: </b> If you set up a payment policy via the <a href="https://developer.ebay.com/api-docs/sell/account/resources/payment_policy/methods/createPaymentPolicy">Account API</a> or the <a href="https://developer.ebay.com/Devzone/business-policies/CallRef/addSellerProfile.html">Business Polices Managment API</a>, then you should not populate this field. Instead, indicate your payment policy using the <b>SellerProfiles.SellerPaymentProfile</b> container.
+     *  <b>For Add/Revise/Relist calls used by managed payments sellers</b>: One or more <b>PaymentMethods</b> fields are only needed for listings where an offline payment is required or supported. An example would be a motor vehicle listing where the final payment occurs between the buyer and seller offline. Offline payment methods can vary be eBay marketplace and/or category, but some typical offline payment method enumeration values include <code>MOCC</code> (Money Order/Cashier Check), <code>LoanCheck</code>, and <code>PersonalCheck</code>. Electonic payment methods (that occur on eBay's platform) should never be specified by the seller, as eBay controls the electronic payment methods that are available to the buyer for each eBay marketplace.
+     *  <br>
+     *  <br>
+     *  <b>For Add/Revise/Relist calls used by non-managed payments sellers</b>: <code>PayPal</code> is the only supported value for electronic payments, and is generally required unless the seller is using a payment business policy instead. Similar to managed payment sellers, non-managed payment sellers will also use one or more <b>PaymentMethods</b> fields for listings where an offline payment is required or supported.
+     *  <br>
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> If you are already referencing a payments business policy in an Add/Revise/Relist call with the <b>SellerProfiles.SellerPaymentProfile</b> container, no lt;b>PaymentMethods</b> fields will be needed, as these settings will already be set in the payments business policy.
      *  </span>
      *  <br>
-     *  <span class="tablenote"><b>Note:</b> eBay managed payments is currently available to a select set of sellers. For the current list of eBay marketplaces in which eBay managed payments has rolled out, see the <a href="https://developer.ebay.com/managed-payments" target="_blank">eBay Managed Payments</a> landing page. For sellers in the eBay managed payments program, a payment method does not need to be specified at listing time. Any payment method that is specified at listing time (or defined in a payment business policy) will be ignored and dropped from the listing, and the seller will get a warning message in the response. Immediate payment is supported for sellers in the eBay managed payments program, so they can include the <b>AutoPay</b> field in the request and set its value to <code>true</code>.
-     *  </span>
-     *  <br>
-     *  <span class="tablenote"><b>Note:</b> As of May 1, 2019, eBay no longer supports electronic payments through a seller's Integrated Merchant Credit Card account. If <code>IMCC</code> is passed in as a value, this value will be ignored and dropped (and listing will possibly get blocked if <code>IMCC</code> is the only specified payment method).
-     *  </span><br>
      *  Use <b>GetCategoryFeatures</b> to determine the payment methods that are allowed for a category on a site. For example, the response data of <b>GetCategoryFeatures</b> will show that on the US site, most categories only allow electronic payments. Also use <b>GetCategoryFeatures</b> to determine the default payment methods for a site.
      *  <br><br>
      *  Do not use <b>GeteBayDetails</b> to determine the payment methods for a site.
@@ -3347,23 +3223,6 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  are required or allowed to specify.
      *  </span><br>
      *  Payment methods are not applicable to any classified ad listings, as any agreement and payment is handled off of the eBay platform.
-     *  <br>
-     *  <br>
-     *  <b>For <b>ReviseItem</b> and <b>RelistItem</b> only:</b>
-     *  A listing must have at least one valid payment method.
-     *  When you revise or relist an item and you specify a payment method
-     *  that is invalid for the target site, eBay ignores the
-     *  invalid payment method, applies the other valid
-     *  changes, and returns a warning to indicate that the
-     *  invalid payment method was ignored.
-     *  <br/><br/>
-     *  If multiple payment methods were
-     *  invalid, the warning indicates that they were all ignored.
-     *  If you modify the listing so that it includes no valid
-     *  payment methods, an error is returned. This situation could occur when
-     *  the seller removes all valid payment methods or when all
-     *  the payment methods specified for the item are no longer valid
-     *  on the target site.
      *
      * @return string[]
      */
@@ -3375,19 +3234,18 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Sets a new paymentMethods
      *
-     * Identifies the payment method (such as PayPal) that the seller will accept
-     *  when the buyer pays for the item. For Add/Revise/Relist calls, at least
-     *  one payment method must be specified unless the seller is onboarded for eBay managed payments.
+     * Each <b>PaymentMethods</b> field identifies a payment method that can be used by the buyer to pay for the item.
      *  <br>
      *  <br>
-     *  <span class="tablenote"><b>Note: </b> If you set up a payment policy via the <a href="https://developer.ebay.com/api-docs/sell/account/resources/payment_policy/methods/createPaymentPolicy">Account API</a> or the <a href="https://developer.ebay.com/Devzone/business-policies/CallRef/addSellerProfile.html">Business Polices Managment API</a>, then you should not populate this field. Instead, indicate your payment policy using the <b>SellerProfiles.SellerPaymentProfile</b> container.
+     *  <b>For Add/Revise/Relist calls used by managed payments sellers</b>: One or more <b>PaymentMethods</b> fields are only needed for listings where an offline payment is required or supported. An example would be a motor vehicle listing where the final payment occurs between the buyer and seller offline. Offline payment methods can vary be eBay marketplace and/or category, but some typical offline payment method enumeration values include <code>MOCC</code> (Money Order/Cashier Check), <code>LoanCheck</code>, and <code>PersonalCheck</code>. Electonic payment methods (that occur on eBay's platform) should never be specified by the seller, as eBay controls the electronic payment methods that are available to the buyer for each eBay marketplace.
+     *  <br>
+     *  <br>
+     *  <b>For Add/Revise/Relist calls used by non-managed payments sellers</b>: <code>PayPal</code> is the only supported value for electronic payments, and is generally required unless the seller is using a payment business policy instead. Similar to managed payment sellers, non-managed payment sellers will also use one or more <b>PaymentMethods</b> fields for listings where an offline payment is required or supported.
+     *  <br>
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> If you are already referencing a payments business policy in an Add/Revise/Relist call with the <b>SellerProfiles.SellerPaymentProfile</b> container, no lt;b>PaymentMethods</b> fields will be needed, as these settings will already be set in the payments business policy.
      *  </span>
      *  <br>
-     *  <span class="tablenote"><b>Note:</b> eBay managed payments is currently available to a select set of sellers. For the current list of eBay marketplaces in which eBay managed payments has rolled out, see the <a href="https://developer.ebay.com/managed-payments" target="_blank">eBay Managed Payments</a> landing page. For sellers in the eBay managed payments program, a payment method does not need to be specified at listing time. Any payment method that is specified at listing time (or defined in a payment business policy) will be ignored and dropped from the listing, and the seller will get a warning message in the response. Immediate payment is supported for sellers in the eBay managed payments program, so they can include the <b>AutoPay</b> field in the request and set its value to <code>true</code>.
-     *  </span>
-     *  <br>
-     *  <span class="tablenote"><b>Note:</b> As of May 1, 2019, eBay no longer supports electronic payments through a seller's Integrated Merchant Credit Card account. If <code>IMCC</code> is passed in as a value, this value will be ignored and dropped (and listing will possibly get blocked if <code>IMCC</code> is the only specified payment method).
-     *  </span><br>
      *  Use <b>GetCategoryFeatures</b> to determine the payment methods that are allowed for a category on a site. For example, the response data of <b>GetCategoryFeatures</b> will show that on the US site, most categories only allow electronic payments. Also use <b>GetCategoryFeatures</b> to determine the default payment methods for a site.
      *  <br><br>
      *  Do not use <b>GeteBayDetails</b> to determine the payment methods for a site.
@@ -3413,23 +3271,6 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  are required or allowed to specify.
      *  </span><br>
      *  Payment methods are not applicable to any classified ad listings, as any agreement and payment is handled off of the eBay platform.
-     *  <br>
-     *  <br>
-     *  <b>For <b>ReviseItem</b> and <b>RelistItem</b> only:</b>
-     *  A listing must have at least one valid payment method.
-     *  When you revise or relist an item and you specify a payment method
-     *  that is invalid for the target site, eBay ignores the
-     *  invalid payment method, applies the other valid
-     *  changes, and returns a warning to indicate that the
-     *  invalid payment method was ignored.
-     *  <br/><br/>
-     *  If multiple payment methods were
-     *  invalid, the warning indicates that they were all ignored.
-     *  If you modify the listing so that it includes no valid
-     *  payment methods, an error is returned. This situation could occur when
-     *  the seller removes all valid payment methods or when all
-     *  the payment methods specified for the item are no longer valid
-     *  on the target site.
      *
      * @param string $paymentMethods
      * @return self
@@ -3443,30 +3284,14 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Gets as payPalEmailAddress
      *
-     * Valid PayPal email address for the PayPal account that the seller will use
-     *  if they offer PayPal as a payment method for the listing.
+     * This is the seller's PayPal payment email address, and this field is required in an Add/Revise/Relist call if <code>PayPal</code> is specified as a <b>PaymentsMethod</b> value.
      *  <br>
      *  <br>
-     *  <span class="tablenote"><b>Note: </b> If you set up a payment policy via the <a href="https://developer.ebay.com/api-docs/sell/account/resources/payment_policy/methods/createPaymentPolicy">Account API</a> or the <a href="https://developer.ebay.com/Devzone/business-policies/CallRef/addSellerProfile.html">Business Polices Managment API</a>, then you should not populate this field. Instead, indicate your payment policy using the <b>SellerProfiles.SellerPaymentProfile</b> container.
+     *  <span class="tablenote"><b>Note: </b> This field is no longer needed/applicable for sellers who are onboarded for managed payments.
      *  </span>
      *  <br>
-     *  eBay uses this to identify the correct PayPal account when the buyer pays via PayPal during
-     *  the checkout process. (As a seller can have more than one PayPal account,
-     *  you cannot necessarily rely on PayPal account data returned from <b>GetUser</b> for
-     *  details about the account associated with the PayPal email address that the
-     *  seller specifies.)<br>
-     *  <br>
-     *  Required if seller has chosen PayPal as a payment method (<b>PaymentMethods</b>)
-     *  for the listing.<br>
-     *  <br>
-     *  For digital listings, the seller needs to use an email address that is
-     *  associated with a PayPal Premier or PayPal business account. <br>
-     *  <br>
-     *  <b>For ReviseItem and RelistItem only:</b> To remove this value
-     *  when you revise or relist an item, use <b>DeletedField</b>. When you revise a
-     *  listing, if the listing has bids (or items have been sold) or it ends within
-     *  12 hours, you can add <b>PayPalEmailAddress</b>, but you cannot remove
-     *  it.
+     *  <span class="tablenote"><b>Note: </b> If you are already referencing a payments business policy in an Add/Revise/Relist call with the <b>SellerProfiles.SellerPaymentProfile</b> container, no <b>PaymentMethods</b> field(s) or <b>PayPalEmailAddress</b> field will be needed, as these settings will already be set in the payments business policy.
+     *  </span>
      *
      * @return string
      */
@@ -3478,30 +3303,14 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Sets a new payPalEmailAddress
      *
-     * Valid PayPal email address for the PayPal account that the seller will use
-     *  if they offer PayPal as a payment method for the listing.
+     * This is the seller's PayPal payment email address, and this field is required in an Add/Revise/Relist call if <code>PayPal</code> is specified as a <b>PaymentsMethod</b> value.
      *  <br>
      *  <br>
-     *  <span class="tablenote"><b>Note: </b> If you set up a payment policy via the <a href="https://developer.ebay.com/api-docs/sell/account/resources/payment_policy/methods/createPaymentPolicy">Account API</a> or the <a href="https://developer.ebay.com/Devzone/business-policies/CallRef/addSellerProfile.html">Business Polices Managment API</a>, then you should not populate this field. Instead, indicate your payment policy using the <b>SellerProfiles.SellerPaymentProfile</b> container.
+     *  <span class="tablenote"><b>Note: </b> This field is no longer needed/applicable for sellers who are onboarded for managed payments.
      *  </span>
      *  <br>
-     *  eBay uses this to identify the correct PayPal account when the buyer pays via PayPal during
-     *  the checkout process. (As a seller can have more than one PayPal account,
-     *  you cannot necessarily rely on PayPal account data returned from <b>GetUser</b> for
-     *  details about the account associated with the PayPal email address that the
-     *  seller specifies.)<br>
-     *  <br>
-     *  Required if seller has chosen PayPal as a payment method (<b>PaymentMethods</b>)
-     *  for the listing.<br>
-     *  <br>
-     *  For digital listings, the seller needs to use an email address that is
-     *  associated with a PayPal Premier or PayPal business account. <br>
-     *  <br>
-     *  <b>For ReviseItem and RelistItem only:</b> To remove this value
-     *  when you revise or relist an item, use <b>DeletedField</b>. When you revise a
-     *  listing, if the listing has bids (or items have been sold) or it ends within
-     *  12 hours, you can add <b>PayPalEmailAddress</b>, but you cannot remove
-     *  it.
+     *  <span class="tablenote"><b>Note: </b> If you are already referencing a payments business policy in an Add/Revise/Relist call with the <b>SellerProfiles.SellerPaymentProfile</b> container, no <b>PaymentMethods</b> field(s) or <b>PayPalEmailAddress</b> field will be needed, as these settings will already be set in the payments business policy.
+     *  </span>
      *
      * @param string $payPalEmailAddress
      * @return self
@@ -3875,12 +3684,11 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Gets as reservePrice
      *
-     * The lowest price at which the seller is willing to sell an auction item. (<b>StartPrice</b>
-     *  must be lower than <b>ReservePrice</b> .) Not all categories support a Reserve Price.
-     *  Use <b>GetCategories</b> to see if a category supports a Reserve Price.
-     *  In calls that retrieve item data, the <b>ReservePrice</b> field will only be returned to the auction item's seller, and only if a Reserve Price has been set up. A Reserve Price is not applicable to fixed-price or classified ad listings.<br>
-     *  <br>
-     *  You can remove the Reserve price of a US eBay Motors listing if the category allows it, the current Reserve Price has not been met, and the Reserve Price is at least $2.00 more than the current high bid. In this case, if the item has bids, the Reserve Price is set to $1.00 over the current high bid. The next bid meets the Reserve Price and wins. See <i>Fees Overview</i> below for information about fee credits that may be available when the Reserve Price is removed for a Motors listing.
+     * This field is used to set the lowest price at which the seller is willing to sell an auction item. The <b>StartPrice</b> value must be lower than the <b>ReservePrice</b> value. Note that setting a reserve price will incur a listing fee of $5 or 7.5% of the reserve price, whichever is greater, and this fee is charged regardless of whether or not the auction item has a qualifying, winning bidder.
+     *  <br> <br>
+     *  As long as no bidder has matched your reserve price, and the scheduled end time of the auction is 12 or more hours away, you can lower or remove the reserve price. However, even if you remove the reserve price from an active listing, you will still be charged the fee and not eligible for a credit.
+     *  <br> <br>
+     *  In 'get' calls that retrieve item data, the <b>ReservePrice</b> field will only be returned to the seller of that particular auction item, and only if a reserve price has been set up. The reserve price is never exposed to anyone other than the seller of the item.
      *
      * @return \Nogrod\eBaySDK\MerchantData\AmountType
      */
@@ -3892,12 +3700,11 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Sets a new reservePrice
      *
-     * The lowest price at which the seller is willing to sell an auction item. (<b>StartPrice</b>
-     *  must be lower than <b>ReservePrice</b> .) Not all categories support a Reserve Price.
-     *  Use <b>GetCategories</b> to see if a category supports a Reserve Price.
-     *  In calls that retrieve item data, the <b>ReservePrice</b> field will only be returned to the auction item's seller, and only if a Reserve Price has been set up. A Reserve Price is not applicable to fixed-price or classified ad listings.<br>
-     *  <br>
-     *  You can remove the Reserve price of a US eBay Motors listing if the category allows it, the current Reserve Price has not been met, and the Reserve Price is at least $2.00 more than the current high bid. In this case, if the item has bids, the Reserve Price is set to $1.00 over the current high bid. The next bid meets the Reserve Price and wins. See <i>Fees Overview</i> below for information about fee credits that may be available when the Reserve Price is removed for a Motors listing.
+     * This field is used to set the lowest price at which the seller is willing to sell an auction item. The <b>StartPrice</b> value must be lower than the <b>ReservePrice</b> value. Note that setting a reserve price will incur a listing fee of $5 or 7.5% of the reserve price, whichever is greater, and this fee is charged regardless of whether or not the auction item has a qualifying, winning bidder.
+     *  <br> <br>
+     *  As long as no bidder has matched your reserve price, and the scheduled end time of the auction is 12 or more hours away, you can lower or remove the reserve price. However, even if you remove the reserve price from an active listing, you will still be charged the fee and not eligible for a credit.
+     *  <br> <br>
+     *  In 'get' calls that retrieve item data, the <b>ReservePrice</b> field will only be returned to the seller of that particular auction item, and only if a reserve price has been set up. The reserve price is never exposed to anyone other than the seller of the item.
      *
      * @param \Nogrod\eBaySDK\MerchantData\AmountType $reservePrice
      * @return self
@@ -5438,6 +5245,92 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     }
 
     /**
+     * Adds as videoID
+     *
+     * This container is used if the seller wants to add a video to their listing. At this time, only one video can be added per listing, and the video must be uploaded to eBay via the <a href="/api-docs/commerce/media/overview.html" target="_blank">Media API</a>. See the <a href="/api-docs/commerce/media/overview.html" target="_blank">Media API</a> reference documentation for all of the necessary details to upload videos to eBay.
+     *  <br/><br/>
+     *  This container will only be returned in <b>GetItem</b> if the listing contains a video, and the seller of the item is the one making the <b>GetItem</b> call.
+     *  <br/><br/>
+     *  <span class="tablenote"><b>Note: </b> Videos can only be attached to listings on supported eBay marketplaces and can only be viewed through supported platforms. See <a href="/api-docs/sell/static/inventory/managing-video-media.html#AddingVideos" target="_blank">Managing videos</a> in the Selling Integration Guide for a full list of supported marketplaces and platforms.</span>
+     *
+     * @return self
+     * @param string $videoID
+     */
+    public function addToVideoDetails($videoID)
+    {
+        $this->videoDetails[] = $videoID;
+        return $this;
+    }
+
+    /**
+     * isset videoDetails
+     *
+     * This container is used if the seller wants to add a video to their listing. At this time, only one video can be added per listing, and the video must be uploaded to eBay via the <a href="/api-docs/commerce/media/overview.html" target="_blank">Media API</a>. See the <a href="/api-docs/commerce/media/overview.html" target="_blank">Media API</a> reference documentation for all of the necessary details to upload videos to eBay.
+     *  <br/><br/>
+     *  This container will only be returned in <b>GetItem</b> if the listing contains a video, and the seller of the item is the one making the <b>GetItem</b> call.
+     *  <br/><br/>
+     *  <span class="tablenote"><b>Note: </b> Videos can only be attached to listings on supported eBay marketplaces and can only be viewed through supported platforms. See <a href="/api-docs/sell/static/inventory/managing-video-media.html#AddingVideos" target="_blank">Managing videos</a> in the Selling Integration Guide for a full list of supported marketplaces and platforms.</span>
+     *
+     * @param int|string $index
+     * @return bool
+     */
+    public function issetVideoDetails($index)
+    {
+        return isset($this->videoDetails[$index]);
+    }
+
+    /**
+     * unset videoDetails
+     *
+     * This container is used if the seller wants to add a video to their listing. At this time, only one video can be added per listing, and the video must be uploaded to eBay via the <a href="/api-docs/commerce/media/overview.html" target="_blank">Media API</a>. See the <a href="/api-docs/commerce/media/overview.html" target="_blank">Media API</a> reference documentation for all of the necessary details to upload videos to eBay.
+     *  <br/><br/>
+     *  This container will only be returned in <b>GetItem</b> if the listing contains a video, and the seller of the item is the one making the <b>GetItem</b> call.
+     *  <br/><br/>
+     *  <span class="tablenote"><b>Note: </b> Videos can only be attached to listings on supported eBay marketplaces and can only be viewed through supported platforms. See <a href="/api-docs/sell/static/inventory/managing-video-media.html#AddingVideos" target="_blank">Managing videos</a> in the Selling Integration Guide for a full list of supported marketplaces and platforms.</span>
+     *
+     * @param int|string $index
+     * @return void
+     */
+    public function unsetVideoDetails($index)
+    {
+        unset($this->videoDetails[$index]);
+    }
+
+    /**
+     * Gets as videoDetails
+     *
+     * This container is used if the seller wants to add a video to their listing. At this time, only one video can be added per listing, and the video must be uploaded to eBay via the <a href="/api-docs/commerce/media/overview.html" target="_blank">Media API</a>. See the <a href="/api-docs/commerce/media/overview.html" target="_blank">Media API</a> reference documentation for all of the necessary details to upload videos to eBay.
+     *  <br/><br/>
+     *  This container will only be returned in <b>GetItem</b> if the listing contains a video, and the seller of the item is the one making the <b>GetItem</b> call.
+     *  <br/><br/>
+     *  <span class="tablenote"><b>Note: </b> Videos can only be attached to listings on supported eBay marketplaces and can only be viewed through supported platforms. See <a href="/api-docs/sell/static/inventory/managing-video-media.html#AddingVideos" target="_blank">Managing videos</a> in the Selling Integration Guide for a full list of supported marketplaces and platforms.</span>
+     *
+     * @return string[]
+     */
+    public function getVideoDetails()
+    {
+        return $this->videoDetails;
+    }
+
+    /**
+     * Sets a new videoDetails
+     *
+     * This container is used if the seller wants to add a video to their listing. At this time, only one video can be added per listing, and the video must be uploaded to eBay via the <a href="/api-docs/commerce/media/overview.html" target="_blank">Media API</a>. See the <a href="/api-docs/commerce/media/overview.html" target="_blank">Media API</a> reference documentation for all of the necessary details to upload videos to eBay.
+     *  <br/><br/>
+     *  This container will only be returned in <b>GetItem</b> if the listing contains a video, and the seller of the item is the one making the <b>GetItem</b> call.
+     *  <br/><br/>
+     *  <span class="tablenote"><b>Note: </b> Videos can only be attached to listings on supported eBay marketplaces and can only be viewed through supported platforms. See <a href="/api-docs/sell/static/inventory/managing-video-media.html#AddingVideos" target="_blank">Managing videos</a> in the Selling Integration Guide for a full list of supported marketplaces and platforms.</span>
+     *
+     * @param string[] $videoDetails
+     * @return self
+     */
+    public function setVideoDetails(array $videoDetails)
+    {
+        $this->videoDetails = $videoDetails;
+        return $this;
+    }
+
+    /**
      * Gets as dispatchTimeMax
      *
      * Specifies the maximum number of business days the seller
@@ -5758,7 +5651,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <br><br>
      *  If the <b>ProductListingDetails</b> container in an Add/Revise/Relist call is successfully used to find and use an eBay catalog product to create/revise listing, the seller should not remove or change the value of any Item Specific name or value that is defined as part of the eBay catalog product definition.
      *  <br><br>
-     *  <span class="tablenote"><b>Note:</b> If a listing is associated with an eBay catalog product, the seller does not need to pass in any Item Specifics that are already defined in the eBay catalog product. Sellers can make a <b>GetCategorySpecifics</b> call to see if the listing category supports any 'instance aspects', which can be thought of as Item Specifics that are unique to the specific item that is being listed. Instance aspects are identified in the <b>GetCategorySpecifics</b> response by looking for a value of <code>Instance</code> in one or more <b>NameRecommendation.ValidationRules.aspectUsage</b> fields. Many categories support the following instance aspects: <em>Custom Bundle</em>, <em>Bundle Description</em>, <em>Modified Item</em>, <em>Modification Description</em>, and <em>California Prop 65 Warning</em>. These instance aspects allow the seller to provide more information about product bundles or modified products in a structured way. Depending on the category, there are other instance aspects as well. For more information about creating bundle listings or modified product listings, see the <a href="https://developer.ebay.com/api-docs/sell/static/inventory/pbse-special-listings.html" target="_blank">Associating catalog products to special listings</a> topic.
+     *  <span class="tablenote"><b>Note:</b> If a listing is associated with an eBay catalog product, the seller does not need to pass in any Item Specifics that are already defined in the eBay catalog product. Sellers can make a <b>GetCategorySpecifics</b> call to see if the listing category supports any 'instance aspects', which can be thought of as Item Specifics that are unique to the specific item that is being listed. Instance aspects are identified in the <b>GetCategorySpecifics</b> response by looking for a value of <code>Instance</code> in one or more <b>NameRecommendation.ValidationRules.aspectUsage</b> fields. Many categories support the following instance aspects: <em>Custom Bundle</em>, <em>Bundle Description</em>, <em>Modified Item</em>, <em>Modification Description</em>, and <em>California Prop 65 Warning</em>. These instance aspects allow the seller to provide more information about product bundles or modified products in a structured way. Depending on the category, there are other instance aspects as well.
      *  </span>
      *  <span class="tablenote"><b>Note:</b> To specify an item's condition, use the <b>ConditionID</b> field instead of a condition Item Specific. Use <b>GetCategoryFeatures</b> to see which categories support <b>ConditionID</b> and to get a list of valid condition IDs. (If you specify <b>ConditionID</b> and you also specify <b>Condition</b> as a Item Specific, eBay drops the condition Item Specific.)
      *  </span>
@@ -5788,7 +5681,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <br><br>
      *  If the <b>ProductListingDetails</b> container in an Add/Revise/Relist call is successfully used to find and use an eBay catalog product to create/revise listing, the seller should not remove or change the value of any Item Specific name or value that is defined as part of the eBay catalog product definition.
      *  <br><br>
-     *  <span class="tablenote"><b>Note:</b> If a listing is associated with an eBay catalog product, the seller does not need to pass in any Item Specifics that are already defined in the eBay catalog product. Sellers can make a <b>GetCategorySpecifics</b> call to see if the listing category supports any 'instance aspects', which can be thought of as Item Specifics that are unique to the specific item that is being listed. Instance aspects are identified in the <b>GetCategorySpecifics</b> response by looking for a value of <code>Instance</code> in one or more <b>NameRecommendation.ValidationRules.aspectUsage</b> fields. Many categories support the following instance aspects: <em>Custom Bundle</em>, <em>Bundle Description</em>, <em>Modified Item</em>, <em>Modification Description</em>, and <em>California Prop 65 Warning</em>. These instance aspects allow the seller to provide more information about product bundles or modified products in a structured way. Depending on the category, there are other instance aspects as well. For more information about creating bundle listings or modified product listings, see the <a href="https://developer.ebay.com/api-docs/sell/static/inventory/pbse-special-listings.html" target="_blank">Associating catalog products to special listings</a> topic.
+     *  <span class="tablenote"><b>Note:</b> If a listing is associated with an eBay catalog product, the seller does not need to pass in any Item Specifics that are already defined in the eBay catalog product. Sellers can make a <b>GetCategorySpecifics</b> call to see if the listing category supports any 'instance aspects', which can be thought of as Item Specifics that are unique to the specific item that is being listed. Instance aspects are identified in the <b>GetCategorySpecifics</b> response by looking for a value of <code>Instance</code> in one or more <b>NameRecommendation.ValidationRules.aspectUsage</b> fields. Many categories support the following instance aspects: <em>Custom Bundle</em>, <em>Bundle Description</em>, <em>Modified Item</em>, <em>Modification Description</em>, and <em>California Prop 65 Warning</em>. These instance aspects allow the seller to provide more information about product bundles or modified products in a structured way. Depending on the category, there are other instance aspects as well.
      *  </span>
      *  <span class="tablenote"><b>Note:</b> To specify an item's condition, use the <b>ConditionID</b> field instead of a condition Item Specific. Use <b>GetCategoryFeatures</b> to see which categories support <b>ConditionID</b> and to get a list of valid condition IDs. (If you specify <b>ConditionID</b> and you also specify <b>Condition</b> as a Item Specific, eBay drops the condition Item Specific.)
      *  </span>
@@ -5817,7 +5710,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <br><br>
      *  If the <b>ProductListingDetails</b> container in an Add/Revise/Relist call is successfully used to find and use an eBay catalog product to create/revise listing, the seller should not remove or change the value of any Item Specific name or value that is defined as part of the eBay catalog product definition.
      *  <br><br>
-     *  <span class="tablenote"><b>Note:</b> If a listing is associated with an eBay catalog product, the seller does not need to pass in any Item Specifics that are already defined in the eBay catalog product. Sellers can make a <b>GetCategorySpecifics</b> call to see if the listing category supports any 'instance aspects', which can be thought of as Item Specifics that are unique to the specific item that is being listed. Instance aspects are identified in the <b>GetCategorySpecifics</b> response by looking for a value of <code>Instance</code> in one or more <b>NameRecommendation.ValidationRules.aspectUsage</b> fields. Many categories support the following instance aspects: <em>Custom Bundle</em>, <em>Bundle Description</em>, <em>Modified Item</em>, <em>Modification Description</em>, and <em>California Prop 65 Warning</em>. These instance aspects allow the seller to provide more information about product bundles or modified products in a structured way. Depending on the category, there are other instance aspects as well. For more information about creating bundle listings or modified product listings, see the <a href="https://developer.ebay.com/api-docs/sell/static/inventory/pbse-special-listings.html" target="_blank">Associating catalog products to special listings</a> topic.
+     *  <span class="tablenote"><b>Note:</b> If a listing is associated with an eBay catalog product, the seller does not need to pass in any Item Specifics that are already defined in the eBay catalog product. Sellers can make a <b>GetCategorySpecifics</b> call to see if the listing category supports any 'instance aspects', which can be thought of as Item Specifics that are unique to the specific item that is being listed. Instance aspects are identified in the <b>GetCategorySpecifics</b> response by looking for a value of <code>Instance</code> in one or more <b>NameRecommendation.ValidationRules.aspectUsage</b> fields. Many categories support the following instance aspects: <em>Custom Bundle</em>, <em>Bundle Description</em>, <em>Modified Item</em>, <em>Modification Description</em>, and <em>California Prop 65 Warning</em>. These instance aspects allow the seller to provide more information about product bundles or modified products in a structured way. Depending on the category, there are other instance aspects as well.
      *  </span>
      *  <span class="tablenote"><b>Note:</b> To specify an item's condition, use the <b>ConditionID</b> field instead of a condition Item Specific. Use <b>GetCategoryFeatures</b> to see which categories support <b>ConditionID</b> and to get a list of valid condition IDs. (If you specify <b>ConditionID</b> and you also specify <b>Condition</b> as a Item Specific, eBay drops the condition Item Specific.)
      *  </span>
@@ -5846,7 +5739,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <br><br>
      *  If the <b>ProductListingDetails</b> container in an Add/Revise/Relist call is successfully used to find and use an eBay catalog product to create/revise listing, the seller should not remove or change the value of any Item Specific name or value that is defined as part of the eBay catalog product definition.
      *  <br><br>
-     *  <span class="tablenote"><b>Note:</b> If a listing is associated with an eBay catalog product, the seller does not need to pass in any Item Specifics that are already defined in the eBay catalog product. Sellers can make a <b>GetCategorySpecifics</b> call to see if the listing category supports any 'instance aspects', which can be thought of as Item Specifics that are unique to the specific item that is being listed. Instance aspects are identified in the <b>GetCategorySpecifics</b> response by looking for a value of <code>Instance</code> in one or more <b>NameRecommendation.ValidationRules.aspectUsage</b> fields. Many categories support the following instance aspects: <em>Custom Bundle</em>, <em>Bundle Description</em>, <em>Modified Item</em>, <em>Modification Description</em>, and <em>California Prop 65 Warning</em>. These instance aspects allow the seller to provide more information about product bundles or modified products in a structured way. Depending on the category, there are other instance aspects as well. For more information about creating bundle listings or modified product listings, see the <a href="https://developer.ebay.com/api-docs/sell/static/inventory/pbse-special-listings.html" target="_blank">Associating catalog products to special listings</a> topic.
+     *  <span class="tablenote"><b>Note:</b> If a listing is associated with an eBay catalog product, the seller does not need to pass in any Item Specifics that are already defined in the eBay catalog product. Sellers can make a <b>GetCategorySpecifics</b> call to see if the listing category supports any 'instance aspects', which can be thought of as Item Specifics that are unique to the specific item that is being listed. Instance aspects are identified in the <b>GetCategorySpecifics</b> response by looking for a value of <code>Instance</code> in one or more <b>NameRecommendation.ValidationRules.aspectUsage</b> fields. Many categories support the following instance aspects: <em>Custom Bundle</em>, <em>Bundle Description</em>, <em>Modified Item</em>, <em>Modification Description</em>, and <em>California Prop 65 Warning</em>. These instance aspects allow the seller to provide more information about product bundles or modified products in a structured way. Depending on the category, there are other instance aspects as well.
      *  </span>
      *  <span class="tablenote"><b>Note:</b> To specify an item's condition, use the <b>ConditionID</b> field instead of a condition Item Specific. Use <b>GetCategoryFeatures</b> to see which categories support <b>ConditionID</b> and to get a list of valid condition IDs. (If you specify <b>ConditionID</b> and you also specify <b>Condition</b> as a Item Specific, eBay drops the condition Item Specific.)
      *  </span>
@@ -5874,7 +5767,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <br><br>
      *  If the <b>ProductListingDetails</b> container in an Add/Revise/Relist call is successfully used to find and use an eBay catalog product to create/revise listing, the seller should not remove or change the value of any Item Specific name or value that is defined as part of the eBay catalog product definition.
      *  <br><br>
-     *  <span class="tablenote"><b>Note:</b> If a listing is associated with an eBay catalog product, the seller does not need to pass in any Item Specifics that are already defined in the eBay catalog product. Sellers can make a <b>GetCategorySpecifics</b> call to see if the listing category supports any 'instance aspects', which can be thought of as Item Specifics that are unique to the specific item that is being listed. Instance aspects are identified in the <b>GetCategorySpecifics</b> response by looking for a value of <code>Instance</code> in one or more <b>NameRecommendation.ValidationRules.aspectUsage</b> fields. Many categories support the following instance aspects: <em>Custom Bundle</em>, <em>Bundle Description</em>, <em>Modified Item</em>, <em>Modification Description</em>, and <em>California Prop 65 Warning</em>. These instance aspects allow the seller to provide more information about product bundles or modified products in a structured way. Depending on the category, there are other instance aspects as well. For more information about creating bundle listings or modified product listings, see the <a href="https://developer.ebay.com/api-docs/sell/static/inventory/pbse-special-listings.html" target="_blank">Associating catalog products to special listings</a> topic.
+     *  <span class="tablenote"><b>Note:</b> If a listing is associated with an eBay catalog product, the seller does not need to pass in any Item Specifics that are already defined in the eBay catalog product. Sellers can make a <b>GetCategorySpecifics</b> call to see if the listing category supports any 'instance aspects', which can be thought of as Item Specifics that are unique to the specific item that is being listed. Instance aspects are identified in the <b>GetCategorySpecifics</b> response by looking for a value of <code>Instance</code> in one or more <b>NameRecommendation.ValidationRules.aspectUsage</b> fields. Many categories support the following instance aspects: <em>Custom Bundle</em>, <em>Bundle Description</em>, <em>Modified Item</em>, <em>Modification Description</em>, and <em>California Prop 65 Warning</em>. These instance aspects allow the seller to provide more information about product bundles or modified products in a structured way. Depending on the category, there are other instance aspects as well.
      *  </span>
      *  <span class="tablenote"><b>Note:</b> To specify an item's condition, use the <b>ConditionID</b> field instead of a condition Item Specific. Use <b>GetCategoryFeatures</b> to see which categories support <b>ConditionID</b> and to get a list of valid condition IDs. (If you specify <b>ConditionID</b> and you also specify <b>Condition</b> as a Item Specific, eBay drops the condition Item Specific.)
      *  </span>
@@ -6591,23 +6484,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Gets as integratedMerchantCreditCardEnabled
      *
-     * Indicates whether the item can be paid for through a payment gateway
-     *  (Payflow) account. If <b>IntegratedMerchantCreditCardEnabled</b> is <code>true</code>, then
-     *  integrated merchant credit card (IMCC) is enabled for credit cards because
-     *  the seller has a payment gateway account. Therefore, if
-     *  <b>IntegratedMerchantCreditCardEnabled</b> is <code>true</code>, an AmEx, Discover, or VisaMC
-     *  is returned for an item, then on checkout, an online credit-card payment is
-     *  processed through a payment gateway account. A payment gateway account is
-     *  used by sellers to accept online credit cards (Visa, MasterCard, American
-     *  Express, and Discover).
-     *  <br><br>
-     *  <span class="tablenote"><b>Note: </b>
-     *  As of May 1, 2019, eBay no longer supports electronic payments through Integrated Merchant Credit Card accounts. To accept online credit card payments from buyers, a seller must specify PayPal as an accepted payment method, or opt in to eBay managed payments program (if the program is available to that seller).
-     *  </span>
-     *  <br> <br>
-     *  <span class="tablenote"><b>Note:</b>
-     *  For the <strong>GetItemTransactions</strong>, <strong>GetOrders</strong>, and <strong>GetOrderTransactions</strong> calls, this field is only returned to the seller of the order; this field is not returned for the buyer or third party.
-     *  </span>
+     * This field is no longer applicable as eBay sellers can no longer use iMCC gateway accounts to handle buyer payments.
      *
      * @return bool
      */
@@ -6619,23 +6496,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Sets a new integratedMerchantCreditCardEnabled
      *
-     * Indicates whether the item can be paid for through a payment gateway
-     *  (Payflow) account. If <b>IntegratedMerchantCreditCardEnabled</b> is <code>true</code>, then
-     *  integrated merchant credit card (IMCC) is enabled for credit cards because
-     *  the seller has a payment gateway account. Therefore, if
-     *  <b>IntegratedMerchantCreditCardEnabled</b> is <code>true</code>, an AmEx, Discover, or VisaMC
-     *  is returned for an item, then on checkout, an online credit-card payment is
-     *  processed through a payment gateway account. A payment gateway account is
-     *  used by sellers to accept online credit cards (Visa, MasterCard, American
-     *  Express, and Discover).
-     *  <br><br>
-     *  <span class="tablenote"><b>Note: </b>
-     *  As of May 1, 2019, eBay no longer supports electronic payments through Integrated Merchant Credit Card accounts. To accept online credit card payments from buyers, a seller must specify PayPal as an accepted payment method, or opt in to eBay managed payments program (if the program is available to that seller).
-     *  </span>
-     *  <br> <br>
-     *  <span class="tablenote"><b>Note:</b>
-     *  For the <strong>GetItemTransactions</strong>, <strong>GetOrders</strong>, and <strong>GetOrderTransactions</strong> calls, this field is only returned to the seller of the order; this field is not returned for the buyer or third party.
-     *  </span>
+     * This field is no longer applicable as eBay sellers can no longer use iMCC gateway accounts to handle buyer payments.
      *
      * @param bool $integratedMerchantCreditCardEnabled
      * @return self
@@ -6919,10 +6780,14 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <br>
      *  <br>
      *  <span class="tablenote"><strong>Note:</strong>
-     *  In all eBay marketplaces, Condition ID 2000 now maps to an item condition of 'Certified Refurbished', and not 'Manufacturer Refurbished'. To list an item as 'Certified Refurbished', a seller must be pre-qualified by eBay for this feature. Any seller who is not eligible for this feature will be blocked if they try to create a new listing or revise an existing listing with this item condition. Any active listings on any eBay marketplace that had 'Manufacturer Refurbished' as the item condition should have been automatically updated by eBay to the 'Seller Refurbished' item condition (Condition ID 2500).
+     *  In all eBay marketplaces, Condition ID 2000 now maps to an item condition of 'Certified - Refurbished', and not 'Manufacturer Refurbished'. To list an item as 'Certified - Refurbished', a seller must be pre-qualified by eBay for this feature. Any seller who is not eligible for this feature will be blocked if they try to create a new listing or revise an existing listing with this item condition.
      *  <br>
      *  <br>
-     *  Any seller that is interested in eligibility requirements to list with 'Certified Refurbished' should see the <a href="https://pages.ebay.com/seller-center/listing-and-marketing/certified-refurbished-program.html" target="_blank">Certified refurbished program</a> page in Seller Center.
+     *  Any seller that is interested in eligibility requirements to list with 'Certified - Refurbished' should see the <a href="https://pages.ebay.com/seller-center/listing-and-marketing/certified-refurbished-program.html" target="_blank">Certified refurbished program</a> page in Seller Center.
+     *  </span>
+     *  <br>
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  As of September 1, 2021, condition ID 2500 ('Seller Refurbished') can no longer be used in the <strong>Cell Phones & Smartphones</strong> category (category ID 9355) for the following marketplaces: US, Canada, UK, Germany, and Australia. The 'Seller Refurbished' item condition will be replaced by one of three new refurbished values, which include condition ID 2010 ('Excellent - Refurbished'), condition ID 2020 ('Very Good - Refurbished'), and condition ID 2030 ('Good - Refurbished'). To use any of these new refurbished item conditions in category 9355, sellers must go through an application and qualification process. Any seller who is not eligible to use these new refurbished item conditions in category 9355 will be blocked if they try to create a new listing or revise an existing listing with any of these three new item conditions. Any active listings in category 9355 that had condition ID 2500 ('Seller Refurbished') as the item condition should have been administratively ended by eBay. Sellers will have to relist these items, and until they are eligible to list with the new refurbished item conditions, they will need to use another item condition supported in category 9355, like condition ID 3000 ('Used').
      *  </span>
      *
      * @return int
@@ -6955,10 +6820,14 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <br>
      *  <br>
      *  <span class="tablenote"><strong>Note:</strong>
-     *  In all eBay marketplaces, Condition ID 2000 now maps to an item condition of 'Certified Refurbished', and not 'Manufacturer Refurbished'. To list an item as 'Certified Refurbished', a seller must be pre-qualified by eBay for this feature. Any seller who is not eligible for this feature will be blocked if they try to create a new listing or revise an existing listing with this item condition. Any active listings on any eBay marketplace that had 'Manufacturer Refurbished' as the item condition should have been automatically updated by eBay to the 'Seller Refurbished' item condition (Condition ID 2500).
+     *  In all eBay marketplaces, Condition ID 2000 now maps to an item condition of 'Certified - Refurbished', and not 'Manufacturer Refurbished'. To list an item as 'Certified - Refurbished', a seller must be pre-qualified by eBay for this feature. Any seller who is not eligible for this feature will be blocked if they try to create a new listing or revise an existing listing with this item condition.
      *  <br>
      *  <br>
-     *  Any seller that is interested in eligibility requirements to list with 'Certified Refurbished' should see the <a href="https://pages.ebay.com/seller-center/listing-and-marketing/certified-refurbished-program.html" target="_blank">Certified refurbished program</a> page in Seller Center.
+     *  Any seller that is interested in eligibility requirements to list with 'Certified - Refurbished' should see the <a href="https://pages.ebay.com/seller-center/listing-and-marketing/certified-refurbished-program.html" target="_blank">Certified refurbished program</a> page in Seller Center.
+     *  </span>
+     *  <br>
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  As of September 1, 2021, condition ID 2500 ('Seller Refurbished') can no longer be used in the <strong>Cell Phones & Smartphones</strong> category (category ID 9355) for the following marketplaces: US, Canada, UK, Germany, and Australia. The 'Seller Refurbished' item condition will be replaced by one of three new refurbished values, which include condition ID 2010 ('Excellent - Refurbished'), condition ID 2020 ('Very Good - Refurbished'), and condition ID 2030 ('Good - Refurbished'). To use any of these new refurbished item conditions in category 9355, sellers must go through an application and qualification process. Any seller who is not eligible to use these new refurbished item conditions in category 9355 will be blocked if they try to create a new listing or revise an existing listing with any of these three new item conditions. Any active listings in category 9355 that had condition ID 2500 ('Seller Refurbished') as the item condition should have been administratively ended by eBay. Sellers will have to relist these items, and until they are eligible to list with the new refurbished item conditions, they will need to use another item condition supported in category 9355, like condition ID 3000 ('Used').
      *  </span>
      *
      * @param int $conditionID
@@ -7875,52 +7744,6 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     }
 
     /**
-     * Gets as includeRecommendations
-     *
-     * This boolean field should be included and set to <code>true</code> if the seller wishes to see listing recommendations in the call response via the <b>ListingRecommendations</b> container. Listing recommendations provide one or more messages to the seller on recommendations on:
-     *  <b></b>
-     *  <ul>
-     *  <li>improving a listing </li>
-     *  <li>bringing a listing up to standard in regards to Top-Rated seller/listing requirements </li>
-     *  <li>mandated or recommended Item Specifics </li>
-     *  <li>picture quality requirements </li>
-     *  <li>pricing and/or listing format recommendations </li>
-     *  <li>recommended keywords and/or Item Specifics in a Title </li>
-     *  <li>offering fast handling (same-day handling or handling time of 1 day) and/or a free shipping option in order to qualify the listing for a Fast 'N Free badge </li>
-     *  </ul>
-     *
-     * @return bool
-     */
-    public function getIncludeRecommendations()
-    {
-        return $this->includeRecommendations;
-    }
-
-    /**
-     * Sets a new includeRecommendations
-     *
-     * This boolean field should be included and set to <code>true</code> if the seller wishes to see listing recommendations in the call response via the <b>ListingRecommendations</b> container. Listing recommendations provide one or more messages to the seller on recommendations on:
-     *  <b></b>
-     *  <ul>
-     *  <li>improving a listing </li>
-     *  <li>bringing a listing up to standard in regards to Top-Rated seller/listing requirements </li>
-     *  <li>mandated or recommended Item Specifics </li>
-     *  <li>picture quality requirements </li>
-     *  <li>pricing and/or listing format recommendations </li>
-     *  <li>recommended keywords and/or Item Specifics in a Title </li>
-     *  <li>offering fast handling (same-day handling or handling time of 1 day) and/or a free shipping option in order to qualify the listing for a Fast 'N Free badge </li>
-     *  </ul>
-     *
-     * @param bool $includeRecommendations
-     * @return self
-     */
-    public function setIncludeRecommendations($includeRecommendations)
-    {
-        $this->includeRecommendations = $includeRecommendations;
-        return $this;
-    }
-
-    /**
      * Gets as pickupInStoreDetails
      *
      * This container is used in <b>Add</b>/<b>Revise</b>/<b>Relist</b>/<b>Verify</b> listing calls by the seller to enable a listing with the 'In-Store Pickup' feature. The 'In-Store Pickup' feature is only available to a limited number of large retail merchants in the US, Canada, UK, Germany, and Australia marketplaces.
@@ -7947,32 +7770,6 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     public function setPickupInStoreDetails(\Nogrod\eBaySDK\MerchantData\PickupInStoreDetailsType $pickupInStoreDetails)
     {
         $this->pickupInStoreDetails = $pickupInStoreDetails;
-        return $this;
-    }
-
-    /**
-     * Gets as siteId
-     *
-     * The unique identifier of the eBay site on which the item is listed. If the Site ID is already passed in as an HTTP header, this field is not needed. If Site ID is specified in the HTTP header and through this request field, the value in this field will override the value in the HTTP headerWhen this is given we would ignore the site Id, which is given in header. See <strong>SiteCodeType</strong> for a full list of Site IDs for the eBay sites that are compatible with the Trading API.
-     *
-     * @return int
-     */
-    public function getSiteId()
-    {
-        return $this->siteId;
-    }
-
-    /**
-     * Sets a new siteId
-     *
-     * The unique identifier of the eBay site on which the item is listed. If the Site ID is already passed in as an HTTP header, this field is not needed. If Site ID is specified in the HTTP header and through this request field, the value in this field will override the value in the HTTP headerWhen this is given we would ignore the site Id, which is given in header. See <strong>SiteCodeType</strong> for a full list of Site IDs for the eBay sites that are compatible with the Trading API.
-     *
-     * @param int $siteId
-     * @return self
-     */
-    public function setSiteId($siteId)
-    {
-        $this->siteId = $siteId;
         return $this;
     }
 
@@ -8598,6 +8395,12 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PictureDetails", $value);
         }
+        $value = $this->getVideoDetails();
+        if (null !== $value && !empty($this->getVideoDetails())) {
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}VideoDetails", array_map(function ($v) {
+                return ["VideoID" => $v];
+            }, $value));
+        }
         $value = $this->getDispatchTimeMax();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DispatchTimeMax", $value);
@@ -8845,18 +8648,9 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ReasonHideFromSearch", $value);
         }
-        $value = $this->getIncludeRecommendations();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}IncludeRecommendations", $value);
-        }
         $value = $this->getPickupInStoreDetails();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PickupInStoreDetails", $value);
-        }
-        $value = $this->getSiteId();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SiteId", $value);
         }
         $value = $this->getIgnoreQuantity();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;
@@ -9208,6 +9002,10 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         if (null !== $value) {
             $this->setPictureDetails(\Nogrod\eBaySDK\MerchantData\PictureDetailsType::fromKeyValue($value));
         }
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}VideoDetails', true);
+        if (null !== $value && !empty($value)) {
+            $this->setVideoDetails($value);
+        }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DispatchTimeMax');
         if (null !== $value) {
             $this->setDispatchTimeMax($value);
@@ -9440,17 +9238,9 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         if (null !== $value) {
             $this->setReasonHideFromSearch($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}IncludeRecommendations');
-        if (null !== $value) {
-            $this->setIncludeRecommendations($value);
-        }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PickupInStoreDetails');
         if (null !== $value) {
             $this->setPickupInStoreDetails(\Nogrod\eBaySDK\MerchantData\PickupInStoreDetailsType::fromKeyValue($value));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SiteId');
-        if (null !== $value) {
-            $this->setSiteId($value);
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}IgnoreQuantity');
         if (null !== $value) {

@@ -54,7 +54,7 @@ class VariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
      *  available for purchase. If you set <b>Variation.Quantity</b> to <code>0</code> when
      *  you create, revise, or relist an item listing, the variation is dropped from
      *  the listing. To prevent this, you can set
-     *  <a href="http://developer.ebay.com/DevZone/XML/docs/Reference/ebay/SetUserPreferences.html#Request.OutOfStockControlPreference">SetUserPreferences.OutOfStockControlPreference</a> to <code>true</code>.
+     *  <a href="https://developer.ebay.com/DevZone/XML/docs/Reference/ebay/SetUserPreferences.html#Request.OutOfStockControlPreference">SetUserPreferences.OutOfStockControlPreference</a> to <code>true</code>.
      *  <br/><br/>
      *  For <b>GetItem</b> (and other related calls that retrieve the Item
      *  object), the <b>Variation.Quantity</b> value indicates the total quantity associated with the variation, including the quantity available and the
@@ -70,7 +70,7 @@ class VariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
      *  <br> <br>
      *  <b>For ReviseFixedPriceItem:</b>
      *  You can revise a variation's quantity at any time, even if
-     *  it has purchases. However, unless you set the <a href="http://developer.ebay.com/DevZone/XML/docs/Reference/ebay/SetUserPreferences.html#Request.OutOfStockControlPreference">OutOfStockControlPreference</a> boolean field of the <b>SetUserPreferences</b> call to <code>true</code>, at least one variation must remain
+     *  it has purchases. However, unless you set the <a href="https://developer.ebay.com/DevZone/XML/docs/Reference/ebay/SetUserPreferences.html#Request.OutOfStockControlPreference">OutOfStockControlPreference</a> boolean field of the <b>SetUserPreferences</b> call to <code>true</code>, at least one variation must remain
      *  with a non-zero quantity in order for the listing to remain active. If you set the <b>OutOfStockControlPreference</b> field to <code>true</code>, a multiple-variation listing will remain active but hidden from search even if the quantity of all variations in the listing is set to <code>0</code>.
      *  When you modify a variation during revise or
      *  relist, you need to include both its <b>StartPrice</b> and <b>Quantity</b>.
@@ -83,7 +83,7 @@ class VariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
      *  <br> <br>
      *  <b>For GetSellerTransactions:</b> See <b>Item.Quantity</b> instead.<br>
      *  <br>
-     *  See the <a href="http://developer.ebay.com/Devzone/guides/features-guide/default.html#development/Variations-Updating.html">eBay Features Guide</a>
+     *  See the <a href="https://developer.ebay.com/Devzone/guides/features-guide/default.html#development/Variations-Updating.html">eBay Features Guide</a>
      *  for more details about setting and modifying a variation's quantity.
      *  <br><br>
      *  <span class="tablenote"><b>Note:</b>
@@ -130,13 +130,6 @@ class VariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
     private $unitsAvailable = null;
 
     /**
-     * Cost of the Selling Manager product that matches this variation.
-     *
-     * @var \Nogrod\eBaySDK\Trading\AmountType $unitCost
-     */
-    private $unitCost = null;
-
-    /**
      * Contains the variation's quantity sold.
      *  Always returned when variations are present.
      *
@@ -150,8 +143,7 @@ class VariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
      *  For example, if the Title is "Polo Shirt" and the variation is
      *  for a medium pink shirt, the variation title could be
      *  "Polo Shirt[Pink,M].
-     *  PayPal may also use this value
-     *  to identify item variations (for buyers and sellers).
+     *  <br/>
      *
      * @var string $variationTitle
      */
@@ -195,14 +187,6 @@ class VariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
      * @var bool $delete
      */
     private $delete = null;
-
-    /**
-     * Container for statistics about the Selling Manager product
-     *  that is associated with this variation.
-     *
-     * @var \Nogrod\eBaySDK\Trading\SellingManagerProductInventoryStatusType $sellingManagerProductInventoryStatus
-     */
-    private $sellingManagerProductInventoryStatus = null;
 
     /**
      * The number of watches placed on this variation by eBay users.
@@ -258,6 +242,14 @@ class VariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
      * @var \Nogrod\eBaySDK\Trading\VariationProductListingDetailsType $variationProductListingDetails
      */
     private $variationProductListingDetails = null;
+
+    /**
+     * <span class="tablenote"><b>Note:</b> Support for extended producer responsibility regulations and custom policies will become active mid-December 2021. Additional resources such as the custom policies resource (for the <b>Account API</b>), the <b>getExtendedProducerResponsibilityPolicies</b> method (for the <b>Sell Metadata API</b>), and the <a href="https://www.ebay.com/help/selling/custom-policies/custom-policies?id=5311" target="_blank">Custom Policies</a> help page will also become active.</span>
+     *  This container defines variation-specific Extended Producer Responsibility information, specifically the <strong>EcoParticipationFee</strong>.
+     *
+     * @var \Nogrod\eBaySDK\Trading\VariationExtendedProducerResponsibilityType $variationExtendedProducerResponsibility
+     */
+    private $variationExtendedProducerResponsibility = null;
 
     /**
      * Gets as sKU
@@ -364,7 +356,7 @@ class VariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
      *  available for purchase. If you set <b>Variation.Quantity</b> to <code>0</code> when
      *  you create, revise, or relist an item listing, the variation is dropped from
      *  the listing. To prevent this, you can set
-     *  <a href="http://developer.ebay.com/DevZone/XML/docs/Reference/ebay/SetUserPreferences.html#Request.OutOfStockControlPreference">SetUserPreferences.OutOfStockControlPreference</a> to <code>true</code>.
+     *  <a href="https://developer.ebay.com/DevZone/XML/docs/Reference/ebay/SetUserPreferences.html#Request.OutOfStockControlPreference">SetUserPreferences.OutOfStockControlPreference</a> to <code>true</code>.
      *  <br/><br/>
      *  For <b>GetItem</b> (and other related calls that retrieve the Item
      *  object), the <b>Variation.Quantity</b> value indicates the total quantity associated with the variation, including the quantity available and the
@@ -380,7 +372,7 @@ class VariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
      *  <br> <br>
      *  <b>For ReviseFixedPriceItem:</b>
      *  You can revise a variation's quantity at any time, even if
-     *  it has purchases. However, unless you set the <a href="http://developer.ebay.com/DevZone/XML/docs/Reference/ebay/SetUserPreferences.html#Request.OutOfStockControlPreference">OutOfStockControlPreference</a> boolean field of the <b>SetUserPreferences</b> call to <code>true</code>, at least one variation must remain
+     *  it has purchases. However, unless you set the <a href="https://developer.ebay.com/DevZone/XML/docs/Reference/ebay/SetUserPreferences.html#Request.OutOfStockControlPreference">OutOfStockControlPreference</a> boolean field of the <b>SetUserPreferences</b> call to <code>true</code>, at least one variation must remain
      *  with a non-zero quantity in order for the listing to remain active. If you set the <b>OutOfStockControlPreference</b> field to <code>true</code>, a multiple-variation listing will remain active but hidden from search even if the quantity of all variations in the listing is set to <code>0</code>.
      *  When you modify a variation during revise or
      *  relist, you need to include both its <b>StartPrice</b> and <b>Quantity</b>.
@@ -393,7 +385,7 @@ class VariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
      *  <br> <br>
      *  <b>For GetSellerTransactions:</b> See <b>Item.Quantity</b> instead.<br>
      *  <br>
-     *  See the <a href="http://developer.ebay.com/Devzone/guides/features-guide/default.html#development/Variations-Updating.html">eBay Features Guide</a>
+     *  See the <a href="https://developer.ebay.com/Devzone/guides/features-guide/default.html#development/Variations-Updating.html">eBay Features Guide</a>
      *  for more details about setting and modifying a variation's quantity.
      *  <br><br>
      *  <span class="tablenote"><b>Note:</b>
@@ -415,7 +407,7 @@ class VariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
      *  available for purchase. If you set <b>Variation.Quantity</b> to <code>0</code> when
      *  you create, revise, or relist an item listing, the variation is dropped from
      *  the listing. To prevent this, you can set
-     *  <a href="http://developer.ebay.com/DevZone/XML/docs/Reference/ebay/SetUserPreferences.html#Request.OutOfStockControlPreference">SetUserPreferences.OutOfStockControlPreference</a> to <code>true</code>.
+     *  <a href="https://developer.ebay.com/DevZone/XML/docs/Reference/ebay/SetUserPreferences.html#Request.OutOfStockControlPreference">SetUserPreferences.OutOfStockControlPreference</a> to <code>true</code>.
      *  <br/><br/>
      *  For <b>GetItem</b> (and other related calls that retrieve the Item
      *  object), the <b>Variation.Quantity</b> value indicates the total quantity associated with the variation, including the quantity available and the
@@ -431,7 +423,7 @@ class VariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
      *  <br> <br>
      *  <b>For ReviseFixedPriceItem:</b>
      *  You can revise a variation's quantity at any time, even if
-     *  it has purchases. However, unless you set the <a href="http://developer.ebay.com/DevZone/XML/docs/Reference/ebay/SetUserPreferences.html#Request.OutOfStockControlPreference">OutOfStockControlPreference</a> boolean field of the <b>SetUserPreferences</b> call to <code>true</code>, at least one variation must remain
+     *  it has purchases. However, unless you set the <a href="https://developer.ebay.com/DevZone/XML/docs/Reference/ebay/SetUserPreferences.html#Request.OutOfStockControlPreference">OutOfStockControlPreference</a> boolean field of the <b>SetUserPreferences</b> call to <code>true</code>, at least one variation must remain
      *  with a non-zero quantity in order for the listing to remain active. If you set the <b>OutOfStockControlPreference</b> field to <code>true</code>, a multiple-variation listing will remain active but hidden from search even if the quantity of all variations in the listing is set to <code>0</code>.
      *  When you modify a variation during revise or
      *  relist, you need to include both its <b>StartPrice</b> and <b>Quantity</b>.
@@ -444,7 +436,7 @@ class VariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
      *  <br> <br>
      *  <b>For GetSellerTransactions:</b> See <b>Item.Quantity</b> instead.<br>
      *  <br>
-     *  See the <a href="http://developer.ebay.com/Devzone/guides/features-guide/default.html#development/Variations-Updating.html">eBay Features Guide</a>
+     *  See the <a href="https://developer.ebay.com/Devzone/guides/features-guide/default.html#development/Variations-Updating.html">eBay Features Guide</a>
      *  for more details about setting and modifying a variation's quantity.
      *  <br><br>
      *  <span class="tablenote"><b>Note:</b>
@@ -645,32 +637,6 @@ class VariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
     }
 
     /**
-     * Gets as unitCost
-     *
-     * Cost of the Selling Manager product that matches this variation.
-     *
-     * @return \Nogrod\eBaySDK\Trading\AmountType
-     */
-    public function getUnitCost()
-    {
-        return $this->unitCost;
-    }
-
-    /**
-     * Sets a new unitCost
-     *
-     * Cost of the Selling Manager product that matches this variation.
-     *
-     * @param \Nogrod\eBaySDK\Trading\AmountType $unitCost
-     * @return self
-     */
-    public function setUnitCost(\Nogrod\eBaySDK\Trading\AmountType $unitCost)
-    {
-        $this->unitCost = $unitCost;
-        return $this;
-    }
-
-    /**
      * Gets as sellingStatus
      *
      * Contains the variation's quantity sold.
@@ -706,8 +672,7 @@ class VariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
      *  For example, if the Title is "Polo Shirt" and the variation is
      *  for a medium pink shirt, the variation title could be
      *  "Polo Shirt[Pink,M].
-     *  PayPal may also use this value
-     *  to identify item variations (for buyers and sellers).
+     *  <br/>
      *
      * @return string
      */
@@ -724,8 +689,7 @@ class VariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
      *  For example, if the Title is "Polo Shirt" and the variation is
      *  for a medium pink shirt, the variation title could be
      *  "Polo Shirt[Pink,M].
-     *  PayPal may also use this value
-     *  to identify item variations (for buyers and sellers).
+     *  <br/>
      *
      * @param string $variationTitle
      * @return self
@@ -835,34 +799,6 @@ class VariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
     public function setDelete($delete)
     {
         $this->delete = $delete;
-        return $this;
-    }
-
-    /**
-     * Gets as sellingManagerProductInventoryStatus
-     *
-     * Container for statistics about the Selling Manager product
-     *  that is associated with this variation.
-     *
-     * @return \Nogrod\eBaySDK\Trading\SellingManagerProductInventoryStatusType
-     */
-    public function getSellingManagerProductInventoryStatus()
-    {
-        return $this->sellingManagerProductInventoryStatus;
-    }
-
-    /**
-     * Sets a new sellingManagerProductInventoryStatus
-     *
-     * Container for statistics about the Selling Manager product
-     *  that is associated with this variation.
-     *
-     * @param \Nogrod\eBaySDK\Trading\SellingManagerProductInventoryStatusType $sellingManagerProductInventoryStatus
-     * @return self
-     */
-    public function setSellingManagerProductInventoryStatus(\Nogrod\eBaySDK\Trading\SellingManagerProductInventoryStatusType $sellingManagerProductInventoryStatus)
-    {
-        $this->sellingManagerProductInventoryStatus = $sellingManagerProductInventoryStatus;
         return $this;
     }
 
@@ -1024,6 +960,34 @@ class VariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
         return $this;
     }
 
+    /**
+     * Gets as variationExtendedProducerResponsibility
+     *
+     * <span class="tablenote"><b>Note:</b> Support for extended producer responsibility regulations and custom policies will become active mid-December 2021. Additional resources such as the custom policies resource (for the <b>Account API</b>), the <b>getExtendedProducerResponsibilityPolicies</b> method (for the <b>Sell Metadata API</b>), and the <a href="https://www.ebay.com/help/selling/custom-policies/custom-policies?id=5311" target="_blank">Custom Policies</a> help page will also become active.</span>
+     *  This container defines variation-specific Extended Producer Responsibility information, specifically the <strong>EcoParticipationFee</strong>.
+     *
+     * @return \Nogrod\eBaySDK\Trading\VariationExtendedProducerResponsibilityType
+     */
+    public function getVariationExtendedProducerResponsibility()
+    {
+        return $this->variationExtendedProducerResponsibility;
+    }
+
+    /**
+     * Sets a new variationExtendedProducerResponsibility
+     *
+     * <span class="tablenote"><b>Note:</b> Support for extended producer responsibility regulations and custom policies will become active mid-December 2021. Additional resources such as the custom policies resource (for the <b>Account API</b>), the <b>getExtendedProducerResponsibilityPolicies</b> method (for the <b>Sell Metadata API</b>), and the <a href="https://www.ebay.com/help/selling/custom-policies/custom-policies?id=5311" target="_blank">Custom Policies</a> help page will also become active.</span>
+     *  This container defines variation-specific Extended Producer Responsibility information, specifically the <strong>EcoParticipationFee</strong>.
+     *
+     * @param \Nogrod\eBaySDK\Trading\VariationExtendedProducerResponsibilityType $variationExtendedProducerResponsibility
+     * @return self
+     */
+    public function setVariationExtendedProducerResponsibility(\Nogrod\eBaySDK\Trading\VariationExtendedProducerResponsibilityType $variationExtendedProducerResponsibility)
+    {
+        $this->variationExtendedProducerResponsibility = $variationExtendedProducerResponsibility;
+        return $this;
+    }
+
     public function xmlSerialize(\Sabre\Xml\Writer $writer)
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
@@ -1049,10 +1013,6 @@ class VariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}UnitsAvailable", $value);
         }
-        $value = $this->getUnitCost();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}UnitCost", $value);
-        }
         $value = $this->getSellingStatus();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SellingStatus", $value);
@@ -1070,10 +1030,6 @@ class VariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Delete", $value);
         }
-        $value = $this->getSellingManagerProductInventoryStatus();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SellingManagerProductInventoryStatus", $value);
-        }
         $value = $this->getWatchCount();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}WatchCount", $value);
@@ -1089,6 +1045,10 @@ class VariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
         $value = $this->getVariationProductListingDetails();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}VariationProductListingDetails", $value);
+        }
+        $value = $this->getVariationExtendedProducerResponsibility();
+        if (null !== $value) {
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}VariationExtendedProducerResponsibility", $value);
         }
     }
 
@@ -1128,10 +1088,6 @@ class VariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
         if (null !== $value) {
             $this->setUnitsAvailable($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UnitCost');
-        if (null !== $value) {
-            $this->setUnitCost(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
-        }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellingStatus');
         if (null !== $value) {
             $this->setSellingStatus(\Nogrod\eBaySDK\Trading\SellingStatusType::fromKeyValue($value));
@@ -1148,10 +1104,6 @@ class VariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
         if (null !== $value) {
             $this->setDelete($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellingManagerProductInventoryStatus');
-        if (null !== $value) {
-            $this->setSellingManagerProductInventoryStatus(\Nogrod\eBaySDK\Trading\SellingManagerProductInventoryStatusType::fromKeyValue($value));
-        }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}WatchCount');
         if (null !== $value) {
             $this->setWatchCount($value);
@@ -1167,6 +1119,10 @@ class VariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}VariationProductListingDetails');
         if (null !== $value) {
             $this->setVariationProductListingDetails(\Nogrod\eBaySDK\Trading\VariationProductListingDetailsType::fromKeyValue($value));
+        }
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}VariationExtendedProducerResponsibility');
+        if (null !== $value) {
+            $this->setVariationExtendedProducerResponsibility(\Nogrod\eBaySDK\Trading\VariationExtendedProducerResponsibilityType::fromKeyValue($value));
         }
     }
 }

@@ -19,7 +19,7 @@ class SiteBuyerRequirementDetailsType implements \Sabre\Xml\XmlSerializable, \Sa
 {
     /**
      * <span class="tablenote"><b>Note: </b>
-     *  This field is no longer applicable, as sellers can no longer set the Buyer Requirement that buyers must have a PayPal account linked to their eBay account in order to purchase an item.
+     *  Although this field is currently still returned (always as <code>false</code>), it is no longer applicable since having an eBay account linked to a PayPal account is no longer a requirement of any eBay user.
      *  </span>
      *
      * @var bool $linkedPayPalAccount
@@ -93,7 +93,7 @@ class SiteBuyerRequirementDetailsType implements \Sabre\Xml\XmlSerializable, \Sa
      * Gets as linkedPayPalAccount
      *
      * <span class="tablenote"><b>Note: </b>
-     *  This field is no longer applicable, as sellers can no longer set the Buyer Requirement that buyers must have a PayPal account linked to their eBay account in order to purchase an item.
+     *  Although this field is currently still returned (always as <code>false</code>), it is no longer applicable since having an eBay account linked to a PayPal account is no longer a requirement of any eBay user.
      *  </span>
      *
      * @return bool
@@ -107,7 +107,7 @@ class SiteBuyerRequirementDetailsType implements \Sabre\Xml\XmlSerializable, \Sa
      * Sets a new linkedPayPalAccount
      *
      * <span class="tablenote"><b>Note: </b>
-     *  This field is no longer applicable, as sellers can no longer set the Buyer Requirement that buyers must have a PayPal account linked to their eBay account in order to purchase an item.
+     *  Although this field is currently still returned (always as <code>false</code>), it is no longer applicable since having an eBay account linked to a PayPal account is no longer a requirement of any eBay user.
      *  </span>
      *
      * @param bool $linkedPayPalAccount

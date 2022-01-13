@@ -7,14 +7,28 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing TaxesType
  *
- * Type defining the Taxes container, which contains detailed sales tax information for an
- *  order line item. The Taxes container is only returned if the seller is using the Vertex-
- *  based Premium Sales Tax Engine solution. The information in this container
- *  supercedes/overrides the sales tax information in the ShippingDetails.SalesTax container.
+ * Type defining the <b>Taxes</b> container, which contains detailed tax information (sales tax and VAT) for an
+ *  order line item. The information in this container
+ *  supercedes/overrides the sales tax information in the <b>ShippingDetails.SalesTax</b> container.
  * XSD Type: TaxesType
  */
 class TaxesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
+    /**
+     * The value returned in this field is the VAT ID for eBay, and this value may vary based on the region or country. The <b>eBayReference</b> field's <b>name</b> attribute will show the type of VAT ID, such as <code>IOSS</code>, <code>OSS</code>, or <code>ABN</code>. This field will be returned if VAT tax is applicable for the order. See the <a href="types/eBayTaxReferenceValue.html">eBayTaxReferenceValue</a> type page for more information on the VAT tax type strings that may appear for the <b>name</b> attribute.
+     *  <br>
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> For all VAT ID/VATIN values to be returned (except for France), developers will need to use a Trading WSDL with a version number of 1211 (or newer). For French VAT ID/VATIN values to be returned, developers will need to use a Trading WSDL with a version number of 1225 (or newer). Otherwise, the VAT information will be returned in the <b>Order.ShippingAddress.Street2</b> field. Developers will also have the option of using older version, but setting the <b>X-EBAY-API-COMPATIBILITY-LEVEL</b> header value to 1211 or 1225 or higher.
+     *  <br>
+     *  <br>
+     *  On January 31, 2022, the <b>Order.ShippingAddress.Street2</b> will stop being used to return VAT information regardless of WSDL version or compatibility level.
+     *  </span>
+     *  <br>
+     *
+     * @var \Nogrod\eBaySDK\MerchantData\EBayTaxReferenceValueType $eBayReference
+     */
+    private $eBayReference = null;
+
     /**
      * This value indicates the total tax amount for the order line item, for all tax types, which may include sales tax (seller-applied or 'eBay Collect and Remit'), 'Goods and Services' tax (for Australian or New Zealand sellers), or other fees like an electronic waste recycling fee.
      *  <br><br>
@@ -39,6 +53,48 @@ class TaxesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
     private $taxDetails = [
         
     ];
+
+    /**
+     * Gets as eBayReference
+     *
+     * The value returned in this field is the VAT ID for eBay, and this value may vary based on the region or country. The <b>eBayReference</b> field's <b>name</b> attribute will show the type of VAT ID, such as <code>IOSS</code>, <code>OSS</code>, or <code>ABN</code>. This field will be returned if VAT tax is applicable for the order. See the <a href="types/eBayTaxReferenceValue.html">eBayTaxReferenceValue</a> type page for more information on the VAT tax type strings that may appear for the <b>name</b> attribute.
+     *  <br>
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> For all VAT ID/VATIN values to be returned (except for France), developers will need to use a Trading WSDL with a version number of 1211 (or newer). For French VAT ID/VATIN values to be returned, developers will need to use a Trading WSDL with a version number of 1225 (or newer). Otherwise, the VAT information will be returned in the <b>Order.ShippingAddress.Street2</b> field. Developers will also have the option of using older version, but setting the <b>X-EBAY-API-COMPATIBILITY-LEVEL</b> header value to 1211 or 1225 or higher.
+     *  <br>
+     *  <br>
+     *  On January 31, 2022, the <b>Order.ShippingAddress.Street2</b> will stop being used to return VAT information regardless of WSDL version or compatibility level.
+     *  </span>
+     *  <br>
+     *
+     * @return \Nogrod\eBaySDK\MerchantData\EBayTaxReferenceValueType
+     */
+    public function getEBayReference()
+    {
+        return $this->eBayReference;
+    }
+
+    /**
+     * Sets a new eBayReference
+     *
+     * The value returned in this field is the VAT ID for eBay, and this value may vary based on the region or country. The <b>eBayReference</b> field's <b>name</b> attribute will show the type of VAT ID, such as <code>IOSS</code>, <code>OSS</code>, or <code>ABN</code>. This field will be returned if VAT tax is applicable for the order. See the <a href="types/eBayTaxReferenceValue.html">eBayTaxReferenceValue</a> type page for more information on the VAT tax type strings that may appear for the <b>name</b> attribute.
+     *  <br>
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> For all VAT ID/VATIN values to be returned (except for France), developers will need to use a Trading WSDL with a version number of 1211 (or newer). For French VAT ID/VATIN values to be returned, developers will need to use a Trading WSDL with a version number of 1225 (or newer). Otherwise, the VAT information will be returned in the <b>Order.ShippingAddress.Street2</b> field. Developers will also have the option of using older version, but setting the <b>X-EBAY-API-COMPATIBILITY-LEVEL</b> header value to 1211 or 1225 or higher.
+     *  <br>
+     *  <br>
+     *  On January 31, 2022, the <b>Order.ShippingAddress.Street2</b> will stop being used to return VAT information regardless of WSDL version or compatibility level.
+     *  </span>
+     *  <br>
+     *
+     * @param \Nogrod\eBaySDK\MerchantData\EBayTaxReferenceValueType $eBayReference
+     * @return self
+     */
+    public function setEBayReference(\Nogrod\eBaySDK\MerchantData\EBayTaxReferenceValueType $eBayReference)
+    {
+        $this->eBayReference = $eBayReference;
+        return $this;
+    }
 
     /**
      * Gets as totalTaxAmount
@@ -159,6 +215,10 @@ class TaxesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
     public function xmlSerialize(\Sabre\Xml\Writer $writer)
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
+        $value = $this->getEBayReference();
+        if (null !== $value) {
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}eBayReference", $value);
+        }
         $value = $this->getTotalTaxAmount();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TotalTaxAmount", $value);
@@ -185,6 +245,10 @@ class TaxesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
 
     public function setKeyValue($keyValue)
     {
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}eBayReference');
+        if (null !== $value) {
+            $this->setEBayReference(\Nogrod\eBaySDK\MerchantData\EBayTaxReferenceValueType::fromKeyValue($value));
+        }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TotalTaxAmount');
         if (null !== $value) {
             $this->setTotalTaxAmount(\Nogrod\eBaySDK\MerchantData\AmountType::fromKeyValue($value));

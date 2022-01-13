@@ -352,40 +352,28 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     private $businessRole = null;
 
     /**
-     * This type is deprecated. Use instead <b>User.SellerInfo.CharityAffiliationDetail</b>.
+     * This field is deprecated.
      *
      * @var \Nogrod\eBaySDK\Trading\CharityIDType[] $charityAffiliations
      */
     private $charityAffiliations = null;
 
     /**
-     * The user's PayPal account level. Only returned for the user identified in
-     *  eBayAuthToken. That is, you cannot see someone else's PayPal account level.
-     *  Use this information to check whether a seller is eligible to list digital
-     *  downloadable items. See the eBay Web site online
-     *  help for current PayPal requirements for listing digital items.
+     * This field is currently still returned, but is no longer relevant since having a PayPal account linked to your eBay account is no longer required.
      *
      * @var string $payPalAccountLevel
      */
     private $payPalAccountLevel = null;
 
     /**
-     * The user's PayPal account type. Only returned for the user identified in
-     *  <b>eBayAuthToken</b>. That is, you cannot see someone else's PayPal account type.
-     *  Use this information to check whether a seller is likely to be eligible to
-     *  list digital downloadable items. See the eBay Web site online help for
-     *  current PayPal requirements for listing digital items.
+     * This field is currently still returned, but is no longer relevant since having a PayPal account linked to your eBay account is no longer required.
      *
      * @var string $payPalAccountType
      */
     private $payPalAccountType = null;
 
     /**
-     * The user's PayPal account status. Only returned for the user identified in
-     *  <b>eBayAuthToken</b>. That is, you cannot see someone else's PayPal account status.
-     *  Use this information to check whether a seller is eligible to list digital
-     *  downloadable items. See the eBay Web site online
-     *  help for current PayPal requirements for listing digital items.
+     * This field is currently still returned, but is no longer relevant since having a PayPal account linked to your eBay account is no longer required.
      *
      * @var string $payPalAccountStatus
      */
@@ -1498,7 +1486,7 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Adds as charityID
      *
-     * This type is deprecated. Use instead <b>User.SellerInfo.CharityAffiliationDetail</b>.
+     * This field is deprecated.
      *
      * @return self
      * @param \Nogrod\eBaySDK\Trading\CharityIDType $charityID
@@ -1512,7 +1500,7 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * isset charityAffiliations
      *
-     * This type is deprecated. Use instead <b>User.SellerInfo.CharityAffiliationDetail</b>.
+     * This field is deprecated.
      *
      * @param int|string $index
      * @return bool
@@ -1525,7 +1513,7 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * unset charityAffiliations
      *
-     * This type is deprecated. Use instead <b>User.SellerInfo.CharityAffiliationDetail</b>.
+     * This field is deprecated.
      *
      * @param int|string $index
      * @return void
@@ -1538,7 +1526,7 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Gets as charityAffiliations
      *
-     * This type is deprecated. Use instead <b>User.SellerInfo.CharityAffiliationDetail</b>.
+     * This field is deprecated.
      *
      * @return \Nogrod\eBaySDK\Trading\CharityIDType[]
      */
@@ -1550,7 +1538,7 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Sets a new charityAffiliations
      *
-     * This type is deprecated. Use instead <b>User.SellerInfo.CharityAffiliationDetail</b>.
+     * This field is deprecated.
      *
      * @param \Nogrod\eBaySDK\Trading\CharityIDType[] $charityAffiliations
      * @return self
@@ -1564,11 +1552,7 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Gets as payPalAccountLevel
      *
-     * The user's PayPal account level. Only returned for the user identified in
-     *  eBayAuthToken. That is, you cannot see someone else's PayPal account level.
-     *  Use this information to check whether a seller is eligible to list digital
-     *  downloadable items. See the eBay Web site online
-     *  help for current PayPal requirements for listing digital items.
+     * This field is currently still returned, but is no longer relevant since having a PayPal account linked to your eBay account is no longer required.
      *
      * @return string
      */
@@ -1580,11 +1564,7 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Sets a new payPalAccountLevel
      *
-     * The user's PayPal account level. Only returned for the user identified in
-     *  eBayAuthToken. That is, you cannot see someone else's PayPal account level.
-     *  Use this information to check whether a seller is eligible to list digital
-     *  downloadable items. See the eBay Web site online
-     *  help for current PayPal requirements for listing digital items.
+     * This field is currently still returned, but is no longer relevant since having a PayPal account linked to your eBay account is no longer required.
      *
      * @param string $payPalAccountLevel
      * @return self
@@ -1598,11 +1578,7 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Gets as payPalAccountType
      *
-     * The user's PayPal account type. Only returned for the user identified in
-     *  <b>eBayAuthToken</b>. That is, you cannot see someone else's PayPal account type.
-     *  Use this information to check whether a seller is likely to be eligible to
-     *  list digital downloadable items. See the eBay Web site online help for
-     *  current PayPal requirements for listing digital items.
+     * This field is currently still returned, but is no longer relevant since having a PayPal account linked to your eBay account is no longer required.
      *
      * @return string
      */
@@ -1614,11 +1590,7 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Sets a new payPalAccountType
      *
-     * The user's PayPal account type. Only returned for the user identified in
-     *  <b>eBayAuthToken</b>. That is, you cannot see someone else's PayPal account type.
-     *  Use this information to check whether a seller is likely to be eligible to
-     *  list digital downloadable items. See the eBay Web site online help for
-     *  current PayPal requirements for listing digital items.
+     * This field is currently still returned, but is no longer relevant since having a PayPal account linked to your eBay account is no longer required.
      *
      * @param string $payPalAccountType
      * @return self
@@ -1632,11 +1604,7 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Gets as payPalAccountStatus
      *
-     * The user's PayPal account status. Only returned for the user identified in
-     *  <b>eBayAuthToken</b>. That is, you cannot see someone else's PayPal account status.
-     *  Use this information to check whether a seller is eligible to list digital
-     *  downloadable items. See the eBay Web site online
-     *  help for current PayPal requirements for listing digital items.
+     * This field is currently still returned, but is no longer relevant since having a PayPal account linked to your eBay account is no longer required.
      *
      * @return string
      */
@@ -1648,11 +1616,7 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Sets a new payPalAccountStatus
      *
-     * The user's PayPal account status. Only returned for the user identified in
-     *  <b>eBayAuthToken</b>. That is, you cannot see someone else's PayPal account status.
-     *  Use this information to check whether a seller is eligible to list digital
-     *  downloadable items. See the eBay Web site online
-     *  help for current PayPal requirements for listing digital items.
+     * This field is currently still returned, but is no longer relevant since having a PayPal account linked to your eBay account is no longer required.
      *
      * @param string $payPalAccountStatus
      * @return self

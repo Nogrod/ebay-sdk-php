@@ -7,17 +7,19 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing GetDisputeResponseType
  *
- * This is the base response type for the <b>GetDispute</b> call. This call retrieves the details of a seller-initiated dispute. Seller-initiated disputes include mutually-cancelled transactions and unpaid items.
+ * This is the base response type for the <b>GetDispute</b> call. This call retrieves the details of an Unpaid Item case.
  *  <br/><br/>
  *  <span class="tablenote"><strong>Note:</strong>
- *  This call does not support buyer-initiated cases created through eBay's Resolution Center. Buyer-initiated cases include Item Not Received (INR) and escalated Return cases. To retrieve and manage eBay Money Back Guarantee cases, the Case Management calls of the <a href="http://developer.ebay.com/Devzone/post-order/index.html" target="_blank">Post-Order API</a> can be used instead.
+ *  The <b>GetDispute</b> call now only retrieves Unpaid Item cases, and is no longer used to retrieve Item not Received (INR) disputes created through PayPal, since this is no longer an option for eBay buyers. eBay buyers must create an INR case through eBay's Resolution Center, and this call also does not support eBay Money Back Guarantee cases.
+ *  <br><br>
+ *  To respond to an eBay Money Back Guarantee case, the seller should use the <a href="https://developer.ebay.com/Devzone/post-order/index.html" target="_blank">Case Management calls</a> of the <b>Post-Order API</b> or manage/respond to cases manually through the eBay Resolution Center.
  *  </span>
  * XSD Type: GetDisputeResponseType
  */
 class GetDisputeResponseType extends AbstractResponseType
 {
     /**
-     * If the dispute that is specified in the call request is found, this <b>Dispute</b> container is returned in the response. This container includes detailed information about the dispute, the buyer and seller user IDs, and information on the listing that is associated with the dispute.
+     * If the Unpaid Item case that is specified in the call request is found, this <b>Dispute</b> container is returned in the response. This container includes detailed information about the Unpaid Item case, the buyer and seller user IDs, and information on the listing that is associated with the dispute.
      *
      * @var \Nogrod\eBaySDK\Trading\DisputeType $dispute
      */
@@ -26,7 +28,7 @@ class GetDisputeResponseType extends AbstractResponseType
     /**
      * Gets as dispute
      *
-     * If the dispute that is specified in the call request is found, this <b>Dispute</b> container is returned in the response. This container includes detailed information about the dispute, the buyer and seller user IDs, and information on the listing that is associated with the dispute.
+     * If the Unpaid Item case that is specified in the call request is found, this <b>Dispute</b> container is returned in the response. This container includes detailed information about the Unpaid Item case, the buyer and seller user IDs, and information on the listing that is associated with the dispute.
      *
      * @return \Nogrod\eBaySDK\Trading\DisputeType
      */
@@ -38,7 +40,7 @@ class GetDisputeResponseType extends AbstractResponseType
     /**
      * Sets a new dispute
      *
-     * If the dispute that is specified in the call request is found, this <b>Dispute</b> container is returned in the response. This container includes detailed information about the dispute, the buyer and seller user IDs, and information on the listing that is associated with the dispute.
+     * If the Unpaid Item case that is specified in the call request is found, this <b>Dispute</b> container is returned in the response. This container includes detailed information about the Unpaid Item case, the buyer and seller user IDs, and information on the listing that is associated with the dispute.
      *
      * @param \Nogrod\eBaySDK\Trading\DisputeType $dispute
      * @return self

@@ -20,12 +20,7 @@ class GetAccountResponseType extends AbstractResponseType
     private $accountID = null;
 
     /**
-     * This enumeration value indicates the current status of the seller's account for the fee netting mechanism. The seller's account has to be enabled for eBay managed payments in order for fee netting to be available. If the <code>Enabled</code> value is returned, the seller may include the <b>IncludeNettedEntries</b> field in the request to retrieve the total net amount of all charges/fees that have been deducted from seller payouts instead of being invoiced to the seller. The total net amount of any seller credits related to these fees is also shown in the <b>AccountSummary.NettedTransactionSummary</b> container in the response.
-     *  <br>
-     *  <br>
-     *  <span class="tablenote"><b>Note: </b>
-     *  For a limited number of managed payments sellers, final value fees and payment processing fees will start getting deducted from seller payouts as early as mid-June 2020, but for many other managed payments sellers, these fees won't start getting deducted from seller payouts until mid-July 2020.
-     *  </span>
+     * This enumeration value indicates the current status of the seller's account for the fee netting mechanism. If the <code>Enabled</code> value is returned, the seller may include the <b>IncludeNettedEntries</b> field in the request to retrieve the total net amount of all charges/fees that have been deducted from seller payouts instead of being invoiced to the seller. The total net amount of any seller credits related to these fees is also shown in the <b>AccountSummary.NettedTransactionSummary</b> container in the response.
      *
      * @var string $feeNettingStatus
      */
@@ -50,7 +45,7 @@ class GetAccountResponseType extends AbstractResponseType
     private $currency = null;
 
     /**
-     * This container holds an array of account entries. The account entries that are returned are dependent on the selection that the user made in the <b>AccountHistorySelection</b> field in the call request. Each <b>AccountEntry</b> container consists of one credit, one debit, or one administrative action on the account. It is possible that no <b>AccountEntry</b> containers will be returned if no account entries exist since the last invoice (if 'LastInvoice' value is used), between the specified dates (if 'BetweenSpecifiedDates' value is used), or on a specified invoice (if 'SpecifiedInvoice' value is used).
+     * This container holds an array of account entries. The account entries that are returned are dependent on the selection that the user made in the <b>AccountHistorySelection</b> field in the call request. Each <b>AccountEntry</b> container consists of one credit, one debit, or one administrative action on the account. It is possible that no <b>AccountEntry</b> containers will be returned if no account entries exist since the last invoice (if <code>LastInvoice</code> value is used), between the specified dates (if <code>BetweenSpecifiedDates</code> value is used), or no entries exist for an order (if <code>OrderId</code> value is used).
      *
      * @var \Nogrod\eBaySDK\Trading\AccountEntryType[] $accountEntries
      */
@@ -113,12 +108,7 @@ class GetAccountResponseType extends AbstractResponseType
     /**
      * Gets as feeNettingStatus
      *
-     * This enumeration value indicates the current status of the seller's account for the fee netting mechanism. The seller's account has to be enabled for eBay managed payments in order for fee netting to be available. If the <code>Enabled</code> value is returned, the seller may include the <b>IncludeNettedEntries</b> field in the request to retrieve the total net amount of all charges/fees that have been deducted from seller payouts instead of being invoiced to the seller. The total net amount of any seller credits related to these fees is also shown in the <b>AccountSummary.NettedTransactionSummary</b> container in the response.
-     *  <br>
-     *  <br>
-     *  <span class="tablenote"><b>Note: </b>
-     *  For a limited number of managed payments sellers, final value fees and payment processing fees will start getting deducted from seller payouts as early as mid-June 2020, but for many other managed payments sellers, these fees won't start getting deducted from seller payouts until mid-July 2020.
-     *  </span>
+     * This enumeration value indicates the current status of the seller's account for the fee netting mechanism. If the <code>Enabled</code> value is returned, the seller may include the <b>IncludeNettedEntries</b> field in the request to retrieve the total net amount of all charges/fees that have been deducted from seller payouts instead of being invoiced to the seller. The total net amount of any seller credits related to these fees is also shown in the <b>AccountSummary.NettedTransactionSummary</b> container in the response.
      *
      * @return string
      */
@@ -130,12 +120,7 @@ class GetAccountResponseType extends AbstractResponseType
     /**
      * Sets a new feeNettingStatus
      *
-     * This enumeration value indicates the current status of the seller's account for the fee netting mechanism. The seller's account has to be enabled for eBay managed payments in order for fee netting to be available. If the <code>Enabled</code> value is returned, the seller may include the <b>IncludeNettedEntries</b> field in the request to retrieve the total net amount of all charges/fees that have been deducted from seller payouts instead of being invoiced to the seller. The total net amount of any seller credits related to these fees is also shown in the <b>AccountSummary.NettedTransactionSummary</b> container in the response.
-     *  <br>
-     *  <br>
-     *  <span class="tablenote"><b>Note: </b>
-     *  For a limited number of managed payments sellers, final value fees and payment processing fees will start getting deducted from seller payouts as early as mid-June 2020, but for many other managed payments sellers, these fees won't start getting deducted from seller payouts until mid-July 2020.
-     *  </span>
+     * This enumeration value indicates the current status of the seller's account for the fee netting mechanism. If the <code>Enabled</code> value is returned, the seller may include the <b>IncludeNettedEntries</b> field in the request to retrieve the total net amount of all charges/fees that have been deducted from seller payouts instead of being invoiced to the seller. The total net amount of any seller credits related to these fees is also shown in the <b>AccountSummary.NettedTransactionSummary</b> container in the response.
      *
      * @param string $feeNettingStatus
      * @return self
@@ -209,7 +194,7 @@ class GetAccountResponseType extends AbstractResponseType
     /**
      * Adds as accountEntry
      *
-     * This container holds an array of account entries. The account entries that are returned are dependent on the selection that the user made in the <b>AccountHistorySelection</b> field in the call request. Each <b>AccountEntry</b> container consists of one credit, one debit, or one administrative action on the account. It is possible that no <b>AccountEntry</b> containers will be returned if no account entries exist since the last invoice (if 'LastInvoice' value is used), between the specified dates (if 'BetweenSpecifiedDates' value is used), or on a specified invoice (if 'SpecifiedInvoice' value is used).
+     * This container holds an array of account entries. The account entries that are returned are dependent on the selection that the user made in the <b>AccountHistorySelection</b> field in the call request. Each <b>AccountEntry</b> container consists of one credit, one debit, or one administrative action on the account. It is possible that no <b>AccountEntry</b> containers will be returned if no account entries exist since the last invoice (if <code>LastInvoice</code> value is used), between the specified dates (if <code>BetweenSpecifiedDates</code> value is used), or no entries exist for an order (if <code>OrderId</code> value is used).
      *
      * @return self
      * @param \Nogrod\eBaySDK\Trading\AccountEntryType $accountEntry
@@ -223,7 +208,7 @@ class GetAccountResponseType extends AbstractResponseType
     /**
      * isset accountEntries
      *
-     * This container holds an array of account entries. The account entries that are returned are dependent on the selection that the user made in the <b>AccountHistorySelection</b> field in the call request. Each <b>AccountEntry</b> container consists of one credit, one debit, or one administrative action on the account. It is possible that no <b>AccountEntry</b> containers will be returned if no account entries exist since the last invoice (if 'LastInvoice' value is used), between the specified dates (if 'BetweenSpecifiedDates' value is used), or on a specified invoice (if 'SpecifiedInvoice' value is used).
+     * This container holds an array of account entries. The account entries that are returned are dependent on the selection that the user made in the <b>AccountHistorySelection</b> field in the call request. Each <b>AccountEntry</b> container consists of one credit, one debit, or one administrative action on the account. It is possible that no <b>AccountEntry</b> containers will be returned if no account entries exist since the last invoice (if <code>LastInvoice</code> value is used), between the specified dates (if <code>BetweenSpecifiedDates</code> value is used), or no entries exist for an order (if <code>OrderId</code> value is used).
      *
      * @param int|string $index
      * @return bool
@@ -236,7 +221,7 @@ class GetAccountResponseType extends AbstractResponseType
     /**
      * unset accountEntries
      *
-     * This container holds an array of account entries. The account entries that are returned are dependent on the selection that the user made in the <b>AccountHistorySelection</b> field in the call request. Each <b>AccountEntry</b> container consists of one credit, one debit, or one administrative action on the account. It is possible that no <b>AccountEntry</b> containers will be returned if no account entries exist since the last invoice (if 'LastInvoice' value is used), between the specified dates (if 'BetweenSpecifiedDates' value is used), or on a specified invoice (if 'SpecifiedInvoice' value is used).
+     * This container holds an array of account entries. The account entries that are returned are dependent on the selection that the user made in the <b>AccountHistorySelection</b> field in the call request. Each <b>AccountEntry</b> container consists of one credit, one debit, or one administrative action on the account. It is possible that no <b>AccountEntry</b> containers will be returned if no account entries exist since the last invoice (if <code>LastInvoice</code> value is used), between the specified dates (if <code>BetweenSpecifiedDates</code> value is used), or no entries exist for an order (if <code>OrderId</code> value is used).
      *
      * @param int|string $index
      * @return void
@@ -249,7 +234,7 @@ class GetAccountResponseType extends AbstractResponseType
     /**
      * Gets as accountEntries
      *
-     * This container holds an array of account entries. The account entries that are returned are dependent on the selection that the user made in the <b>AccountHistorySelection</b> field in the call request. Each <b>AccountEntry</b> container consists of one credit, one debit, or one administrative action on the account. It is possible that no <b>AccountEntry</b> containers will be returned if no account entries exist since the last invoice (if 'LastInvoice' value is used), between the specified dates (if 'BetweenSpecifiedDates' value is used), or on a specified invoice (if 'SpecifiedInvoice' value is used).
+     * This container holds an array of account entries. The account entries that are returned are dependent on the selection that the user made in the <b>AccountHistorySelection</b> field in the call request. Each <b>AccountEntry</b> container consists of one credit, one debit, or one administrative action on the account. It is possible that no <b>AccountEntry</b> containers will be returned if no account entries exist since the last invoice (if <code>LastInvoice</code> value is used), between the specified dates (if <code>BetweenSpecifiedDates</code> value is used), or no entries exist for an order (if <code>OrderId</code> value is used).
      *
      * @return \Nogrod\eBaySDK\Trading\AccountEntryType[]
      */
@@ -261,7 +246,7 @@ class GetAccountResponseType extends AbstractResponseType
     /**
      * Sets a new accountEntries
      *
-     * This container holds an array of account entries. The account entries that are returned are dependent on the selection that the user made in the <b>AccountHistorySelection</b> field in the call request. Each <b>AccountEntry</b> container consists of one credit, one debit, or one administrative action on the account. It is possible that no <b>AccountEntry</b> containers will be returned if no account entries exist since the last invoice (if 'LastInvoice' value is used), between the specified dates (if 'BetweenSpecifiedDates' value is used), or on a specified invoice (if 'SpecifiedInvoice' value is used).
+     * This container holds an array of account entries. The account entries that are returned are dependent on the selection that the user made in the <b>AccountHistorySelection</b> field in the call request. Each <b>AccountEntry</b> container consists of one credit, one debit, or one administrative action on the account. It is possible that no <b>AccountEntry</b> containers will be returned if no account entries exist since the last invoice (if <code>LastInvoice</code> value is used), between the specified dates (if <code>BetweenSpecifiedDates</code> value is used), or no entries exist for an order (if <code>OrderId</code> value is used).
      *
      * @param \Nogrod\eBaySDK\Trading\AccountEntryType[] $accountEntries
      * @return self

@@ -155,11 +155,6 @@ class AccountEntryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      *  <br>
      *  <br>
      *  If this value is <code>true</code>, it indicates that the corresponding fee was deducted from a seller payout. If the value is <code>false</code>, it indicates that the fee or credit was invoiced to the seller instead.
-     *  <br>
-     *  <br>
-     *  <span class="tablenote"><b>Note: </b>
-     *  For seller accounts not yet enabled for eBay managed payments, the returned value will always be <code>false</code>. There may also be some seller accounts enabled for managed payments, but the fee netting mechanism may not yet be available for an account. A seller can check their status for the fee netting mechanism by checking the value in the <b>FeeNettingStatus</b> field.
-     *  </span>
      *
      * @var bool $netted
      */
@@ -692,11 +687,6 @@ class AccountEntryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      *  <br>
      *  <br>
      *  If this value is <code>true</code>, it indicates that the corresponding fee was deducted from a seller payout. If the value is <code>false</code>, it indicates that the fee or credit was invoiced to the seller instead.
-     *  <br>
-     *  <br>
-     *  <span class="tablenote"><b>Note: </b>
-     *  For seller accounts not yet enabled for eBay managed payments, the returned value will always be <code>false</code>. There may also be some seller accounts enabled for managed payments, but the fee netting mechanism may not yet be available for an account. A seller can check their status for the fee netting mechanism by checking the value in the <b>FeeNettingStatus</b> field.
-     *  </span>
      *
      * @return bool
      */
@@ -712,11 +702,6 @@ class AccountEntryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      *  <br>
      *  <br>
      *  If this value is <code>true</code>, it indicates that the corresponding fee was deducted from a seller payout. If the value is <code>false</code>, it indicates that the fee or credit was invoiced to the seller instead.
-     *  <br>
-     *  <br>
-     *  <span class="tablenote"><b>Note: </b>
-     *  For seller accounts not yet enabled for eBay managed payments, the returned value will always be <code>false</code>. There may also be some seller accounts enabled for managed payments, but the fee netting mechanism may not yet be available for an account. A seller can check their status for the fee netting mechanism by checking the value in the <b>FeeNettingStatus</b> field.
-     *  </span>
      *
      * @param bool $netted
      * @return self

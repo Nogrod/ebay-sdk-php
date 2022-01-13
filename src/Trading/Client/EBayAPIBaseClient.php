@@ -52,17 +52,6 @@ class EBayAPIBaseClient extends \Nogrod\XMLClientRuntime\Client
     }
 
     /**
-     * Call AddItemFromSellingManagerTemplate
-     *
-     * @param \Nogrod\eBaySDK\Trading\AddItemFromSellingManagerTemplateRequest $addItemFromSellingManagerTemplateRequest
-     * @return \Nogrod\eBaySDK\Trading\AddItemFromSellingManagerTemplateResponse
-     */
-    public function addItemFromSellingManagerTemplate(\Nogrod\eBaySDK\Trading\AddItemFromSellingManagerTemplateRequest $addItemFromSellingManagerTemplateRequest) : \Nogrod\eBaySDK\Trading\AddItemFromSellingManagerTemplateResponse
-    {
-        return $this->call('AddItemFromSellingManagerTemplate', 'Nogrod\eBaySDK\Trading\AddItemFromSellingManagerTemplateResponse', $addItemFromSellingManagerTemplateRequest);
-    }
-
-    /**
      * Call AddItems
      *
      * @param \Nogrod\eBaySDK\Trading\AddItemsRequest $addItemsRequest
@@ -129,39 +118,6 @@ class EBayAPIBaseClient extends \Nogrod\XMLClientRuntime\Client
     }
 
     /**
-     * Call AddSellingManagerInventoryFolder
-     *
-     * @param \Nogrod\eBaySDK\Trading\AddSellingManagerInventoryFolderRequest $addSellingManagerInventoryFolderRequest
-     * @return \Nogrod\eBaySDK\Trading\AddSellingManagerInventoryFolderResponse
-     */
-    public function addSellingManagerInventoryFolder(\Nogrod\eBaySDK\Trading\AddSellingManagerInventoryFolderRequest $addSellingManagerInventoryFolderRequest) : \Nogrod\eBaySDK\Trading\AddSellingManagerInventoryFolderResponse
-    {
-        return $this->call('AddSellingManagerInventoryFolder', 'Nogrod\eBaySDK\Trading\AddSellingManagerInventoryFolderResponse', $addSellingManagerInventoryFolderRequest);
-    }
-
-    /**
-     * Call AddSellingManagerProduct
-     *
-     * @param \Nogrod\eBaySDK\Trading\AddSellingManagerProductRequest $addSellingManagerProductRequest
-     * @return \Nogrod\eBaySDK\Trading\AddSellingManagerProductResponse
-     */
-    public function addSellingManagerProduct(\Nogrod\eBaySDK\Trading\AddSellingManagerProductRequest $addSellingManagerProductRequest) : \Nogrod\eBaySDK\Trading\AddSellingManagerProductResponse
-    {
-        return $this->call('AddSellingManagerProduct', 'Nogrod\eBaySDK\Trading\AddSellingManagerProductResponse', $addSellingManagerProductRequest);
-    }
-
-    /**
-     * Call AddSellingManagerTemplate
-     *
-     * @param \Nogrod\eBaySDK\Trading\AddSellingManagerTemplateRequest $addSellingManagerTemplateRequest
-     * @return \Nogrod\eBaySDK\Trading\AddSellingManagerTemplateResponse
-     */
-    public function addSellingManagerTemplate(\Nogrod\eBaySDK\Trading\AddSellingManagerTemplateRequest $addSellingManagerTemplateRequest) : \Nogrod\eBaySDK\Trading\AddSellingManagerTemplateResponse
-    {
-        return $this->call('AddSellingManagerTemplate', 'Nogrod\eBaySDK\Trading\AddSellingManagerTemplateResponse', $addSellingManagerTemplateRequest);
-    }
-
-    /**
      * Call AddToItemDescription
      *
      * @param \Nogrod\eBaySDK\Trading\AddToItemDescriptionRequest $addToItemDescriptionRequest
@@ -225,61 +181,6 @@ class EBayAPIBaseClient extends \Nogrod\XMLClientRuntime\Client
     public function deleteMyMessages(\Nogrod\eBaySDK\Trading\DeleteMyMessagesRequest $deleteMyMessagesRequest) : \Nogrod\eBaySDK\Trading\DeleteMyMessagesResponse
     {
         return $this->call('DeleteMyMessages', 'Nogrod\eBaySDK\Trading\DeleteMyMessagesResponse', $deleteMyMessagesRequest);
-    }
-
-    /**
-     * Call DeleteSellingManagerInventoryFolder
-     *
-     * @param \Nogrod\eBaySDK\Trading\DeleteSellingManagerInventoryFolderRequest $deleteSellingManagerInventoryFolderRequest
-     * @return \Nogrod\eBaySDK\Trading\DeleteSellingManagerInventoryFolderResponse
-     */
-    public function deleteSellingManagerInventoryFolder(\Nogrod\eBaySDK\Trading\DeleteSellingManagerInventoryFolderRequest $deleteSellingManagerInventoryFolderRequest) : \Nogrod\eBaySDK\Trading\DeleteSellingManagerInventoryFolderResponse
-    {
-        return $this->call('DeleteSellingManagerInventoryFolder', 'Nogrod\eBaySDK\Trading\DeleteSellingManagerInventoryFolderResponse', $deleteSellingManagerInventoryFolderRequest);
-    }
-
-    /**
-     * Call DeleteSellingManagerItemAutomationRule
-     *
-     * @param \Nogrod\eBaySDK\Trading\DeleteSellingManagerItemAutomationRuleRequest $deleteSellingManagerItemAutomationRuleRequest
-     * @return \Nogrod\eBaySDK\Trading\DeleteSellingManagerItemAutomationRuleResponse
-     */
-    public function deleteSellingManagerItemAutomationRule(\Nogrod\eBaySDK\Trading\DeleteSellingManagerItemAutomationRuleRequest $deleteSellingManagerItemAutomationRuleRequest) : \Nogrod\eBaySDK\Trading\DeleteSellingManagerItemAutomationRuleResponse
-    {
-        return $this->call('DeleteSellingManagerItemAutomationRule', 'Nogrod\eBaySDK\Trading\DeleteSellingManagerItemAutomationRuleResponse', $deleteSellingManagerItemAutomationRuleRequest);
-    }
-
-    /**
-     * Call DeleteSellingManagerProduct
-     *
-     * @param \Nogrod\eBaySDK\Trading\DeleteSellingManagerProductRequest $deleteSellingManagerProductRequest
-     * @return \Nogrod\eBaySDK\Trading\DeleteSellingManagerProductResponse
-     */
-    public function deleteSellingManagerProduct(\Nogrod\eBaySDK\Trading\DeleteSellingManagerProductRequest $deleteSellingManagerProductRequest) : \Nogrod\eBaySDK\Trading\DeleteSellingManagerProductResponse
-    {
-        return $this->call('DeleteSellingManagerProduct', 'Nogrod\eBaySDK\Trading\DeleteSellingManagerProductResponse', $deleteSellingManagerProductRequest);
-    }
-
-    /**
-     * Call DeleteSellingManagerTemplate
-     *
-     * @param \Nogrod\eBaySDK\Trading\DeleteSellingManagerTemplateRequest $deleteSellingManagerTemplateRequest
-     * @return \Nogrod\eBaySDK\Trading\DeleteSellingManagerTemplateResponse
-     */
-    public function deleteSellingManagerTemplate(\Nogrod\eBaySDK\Trading\DeleteSellingManagerTemplateRequest $deleteSellingManagerTemplateRequest) : \Nogrod\eBaySDK\Trading\DeleteSellingManagerTemplateResponse
-    {
-        return $this->call('DeleteSellingManagerTemplate', 'Nogrod\eBaySDK\Trading\DeleteSellingManagerTemplateResponse', $deleteSellingManagerTemplateRequest);
-    }
-
-    /**
-     * Call DeleteSellingManagerTemplateAutomationRule
-     *
-     * @param \Nogrod\eBaySDK\Trading\DeleteSellingManagerTemplateAutomationRuleRequest $deleteSellingManagerTemplateAutomationRuleRequest
-     * @return \Nogrod\eBaySDK\Trading\DeleteSellingManagerTemplateAutomationRuleResponse
-     */
-    public function deleteSellingManagerTemplateAutomationRule(\Nogrod\eBaySDK\Trading\DeleteSellingManagerTemplateAutomationRuleRequest $deleteSellingManagerTemplateAutomationRuleRequest) : \Nogrod\eBaySDK\Trading\DeleteSellingManagerTemplateAutomationRuleResponse
-    {
-        return $this->call('DeleteSellingManagerTemplateAutomationRule', 'Nogrod\eBaySDK\Trading\DeleteSellingManagerTemplateAutomationRuleResponse', $deleteSellingManagerTemplateAutomationRuleRequest);
     }
 
     /**
@@ -690,17 +591,6 @@ class EBayAPIBaseClient extends \Nogrod\XMLClientRuntime\Client
     }
 
     /**
-     * Call GetPromotionalSaleDetails
-     *
-     * @param \Nogrod\eBaySDK\Trading\GetPromotionalSaleDetailsRequest $getPromotionalSaleDetailsRequest
-     * @return \Nogrod\eBaySDK\Trading\GetPromotionalSaleDetailsResponse
-     */
-    public function getPromotionalSaleDetails(\Nogrod\eBaySDK\Trading\GetPromotionalSaleDetailsRequest $getPromotionalSaleDetailsRequest) : \Nogrod\eBaySDK\Trading\GetPromotionalSaleDetailsResponse
-    {
-        return $this->call('GetPromotionalSaleDetails', 'Nogrod\eBaySDK\Trading\GetPromotionalSaleDetailsResponse', $getPromotionalSaleDetailsRequest);
-    }
-
-    /**
      * Call GetSellerDashboard
      *
      * @param \Nogrod\eBaySDK\Trading\GetSellerDashboardRequest $getSellerDashboardRequest
@@ -742,105 +632,6 @@ class EBayAPIBaseClient extends \Nogrod\XMLClientRuntime\Client
     public function getSellerTransactions(\Nogrod\eBaySDK\Trading\GetSellerTransactionsRequest $getSellerTransactionsRequest) : \Nogrod\eBaySDK\Trading\GetSellerTransactionsResponse
     {
         return $this->call('GetSellerTransactions', 'Nogrod\eBaySDK\Trading\GetSellerTransactionsResponse', $getSellerTransactionsRequest);
-    }
-
-    /**
-     * Call GetSellingManagerAlerts
-     *
-     * @param \Nogrod\eBaySDK\Trading\GetSellingManagerAlertsRequest $getSellingManagerAlertsRequest
-     * @return \Nogrod\eBaySDK\Trading\GetSellingManagerAlertsResponse
-     */
-    public function getSellingManagerAlerts(\Nogrod\eBaySDK\Trading\GetSellingManagerAlertsRequest $getSellingManagerAlertsRequest) : \Nogrod\eBaySDK\Trading\GetSellingManagerAlertsResponse
-    {
-        return $this->call('GetSellingManagerAlerts', 'Nogrod\eBaySDK\Trading\GetSellingManagerAlertsResponse', $getSellingManagerAlertsRequest);
-    }
-
-    /**
-     * Call GetSellingManagerEmailLog
-     *
-     * @param \Nogrod\eBaySDK\Trading\GetSellingManagerEmailLogRequest $getSellingManagerEmailLogRequest
-     * @return \Nogrod\eBaySDK\Trading\GetSellingManagerEmailLogResponse
-     */
-    public function getSellingManagerEmailLog(\Nogrod\eBaySDK\Trading\GetSellingManagerEmailLogRequest $getSellingManagerEmailLogRequest) : \Nogrod\eBaySDK\Trading\GetSellingManagerEmailLogResponse
-    {
-        return $this->call('GetSellingManagerEmailLog', 'Nogrod\eBaySDK\Trading\GetSellingManagerEmailLogResponse', $getSellingManagerEmailLogRequest);
-    }
-
-    /**
-     * Call GetSellingManagerInventory
-     *
-     * @param \Nogrod\eBaySDK\Trading\GetSellingManagerInventoryRequest $getSellingManagerInventoryRequest
-     * @return \Nogrod\eBaySDK\Trading\GetSellingManagerInventoryResponse
-     */
-    public function getSellingManagerInventory(\Nogrod\eBaySDK\Trading\GetSellingManagerInventoryRequest $getSellingManagerInventoryRequest) : \Nogrod\eBaySDK\Trading\GetSellingManagerInventoryResponse
-    {
-        return $this->call('GetSellingManagerInventory', 'Nogrod\eBaySDK\Trading\GetSellingManagerInventoryResponse', $getSellingManagerInventoryRequest);
-    }
-
-    /**
-     * Call GetSellingManagerInventoryFolder
-     *
-     * @param \Nogrod\eBaySDK\Trading\GetSellingManagerInventoryFolderRequest $getSellingManagerInventoryFolderRequest
-     * @return \Nogrod\eBaySDK\Trading\GetSellingManagerInventoryFolderResponse
-     */
-    public function getSellingManagerInventoryFolder(\Nogrod\eBaySDK\Trading\GetSellingManagerInventoryFolderRequest $getSellingManagerInventoryFolderRequest) : \Nogrod\eBaySDK\Trading\GetSellingManagerInventoryFolderResponse
-    {
-        return $this->call('GetSellingManagerInventoryFolder', 'Nogrod\eBaySDK\Trading\GetSellingManagerInventoryFolderResponse', $getSellingManagerInventoryFolderRequest);
-    }
-
-    /**
-     * Call GetSellingManagerItemAutomationRule
-     *
-     * @param \Nogrod\eBaySDK\Trading\GetSellingManagerItemAutomationRuleRequest $getSellingManagerItemAutomationRuleRequest
-     * @return \Nogrod\eBaySDK\Trading\GetSellingManagerItemAutomationRuleResponse
-     */
-    public function getSellingManagerItemAutomationRule(\Nogrod\eBaySDK\Trading\GetSellingManagerItemAutomationRuleRequest $getSellingManagerItemAutomationRuleRequest) : \Nogrod\eBaySDK\Trading\GetSellingManagerItemAutomationRuleResponse
-    {
-        return $this->call('GetSellingManagerItemAutomationRule', 'Nogrod\eBaySDK\Trading\GetSellingManagerItemAutomationRuleResponse', $getSellingManagerItemAutomationRuleRequest);
-    }
-
-    /**
-     * Call GetSellingManagerSaleRecord
-     *
-     * @param \Nogrod\eBaySDK\Trading\GetSellingManagerSaleRecordRequest $getSellingManagerSaleRecordRequest
-     * @return \Nogrod\eBaySDK\Trading\GetSellingManagerSaleRecordResponse
-     */
-    public function getSellingManagerSaleRecord(\Nogrod\eBaySDK\Trading\GetSellingManagerSaleRecordRequest $getSellingManagerSaleRecordRequest) : \Nogrod\eBaySDK\Trading\GetSellingManagerSaleRecordResponse
-    {
-        return $this->call('GetSellingManagerSaleRecord', 'Nogrod\eBaySDK\Trading\GetSellingManagerSaleRecordResponse', $getSellingManagerSaleRecordRequest);
-    }
-
-    /**
-     * Call GetSellingManagerSoldListings
-     *
-     * @param \Nogrod\eBaySDK\Trading\GetSellingManagerSoldListingsRequest $getSellingManagerSoldListingsRequest
-     * @return \Nogrod\eBaySDK\Trading\GetSellingManagerSoldListingsResponse
-     */
-    public function getSellingManagerSoldListings(\Nogrod\eBaySDK\Trading\GetSellingManagerSoldListingsRequest $getSellingManagerSoldListingsRequest) : \Nogrod\eBaySDK\Trading\GetSellingManagerSoldListingsResponse
-    {
-        return $this->call('GetSellingManagerSoldListings', 'Nogrod\eBaySDK\Trading\GetSellingManagerSoldListingsResponse', $getSellingManagerSoldListingsRequest);
-    }
-
-    /**
-     * Call GetSellingManagerTemplateAutomationRule
-     *
-     * @param \Nogrod\eBaySDK\Trading\GetSellingManagerTemplateAutomationRuleRequest $getSellingManagerTemplateAutomationRuleRequest
-     * @return \Nogrod\eBaySDK\Trading\GetSellingManagerTemplateAutomationRuleResponse
-     */
-    public function getSellingManagerTemplateAutomationRule(\Nogrod\eBaySDK\Trading\GetSellingManagerTemplateAutomationRuleRequest $getSellingManagerTemplateAutomationRuleRequest) : \Nogrod\eBaySDK\Trading\GetSellingManagerTemplateAutomationRuleResponse
-    {
-        return $this->call('GetSellingManagerTemplateAutomationRule', 'Nogrod\eBaySDK\Trading\GetSellingManagerTemplateAutomationRuleResponse', $getSellingManagerTemplateAutomationRuleRequest);
-    }
-
-    /**
-     * Call GetSellingManagerTemplates
-     *
-     * @param \Nogrod\eBaySDK\Trading\GetSellingManagerTemplatesRequest $getSellingManagerTemplatesRequest
-     * @return \Nogrod\eBaySDK\Trading\GetSellingManagerTemplatesResponse
-     */
-    public function getSellingManagerTemplates(\Nogrod\eBaySDK\Trading\GetSellingManagerTemplatesRequest $getSellingManagerTemplatesRequest) : \Nogrod\eBaySDK\Trading\GetSellingManagerTemplatesResponse
-    {
-        return $this->call('GetSellingManagerTemplates', 'Nogrod\eBaySDK\Trading\GetSellingManagerTemplatesResponse', $getSellingManagerTemplatesRequest);
     }
 
     /**
@@ -1053,17 +844,6 @@ class EBayAPIBaseClient extends \Nogrod\XMLClientRuntime\Client
     }
 
     /**
-     * Call MoveSellingManagerInventoryFolder
-     *
-     * @param \Nogrod\eBaySDK\Trading\MoveSellingManagerInventoryFolderRequest $moveSellingManagerInventoryFolderRequest
-     * @return \Nogrod\eBaySDK\Trading\MoveSellingManagerInventoryFolderResponse
-     */
-    public function moveSellingManagerInventoryFolder(\Nogrod\eBaySDK\Trading\MoveSellingManagerInventoryFolderRequest $moveSellingManagerInventoryFolderRequest) : \Nogrod\eBaySDK\Trading\MoveSellingManagerInventoryFolderResponse
-    {
-        return $this->call('MoveSellingManagerInventoryFolder', 'Nogrod\eBaySDK\Trading\MoveSellingManagerInventoryFolderResponse', $moveSellingManagerInventoryFolderRequest);
-    }
-
-    /**
      * Call PlaceOffer
      *
      * @param \Nogrod\eBaySDK\Trading\PlaceOfferRequest $placeOfferRequest
@@ -1130,17 +910,6 @@ class EBayAPIBaseClient extends \Nogrod\XMLClientRuntime\Client
     }
 
     /**
-     * Call ReviseCheckoutStatus
-     *
-     * @param \Nogrod\eBaySDK\Trading\ReviseCheckoutStatusRequest $reviseCheckoutStatusRequest
-     * @return \Nogrod\eBaySDK\Trading\ReviseCheckoutStatusResponse
-     */
-    public function reviseCheckoutStatus(\Nogrod\eBaySDK\Trading\ReviseCheckoutStatusRequest $reviseCheckoutStatusRequest) : \Nogrod\eBaySDK\Trading\ReviseCheckoutStatusResponse
-    {
-        return $this->call('ReviseCheckoutStatus', 'Nogrod\eBaySDK\Trading\ReviseCheckoutStatusResponse', $reviseCheckoutStatusRequest);
-    }
-
-    /**
      * Call ReviseFixedPriceItem
      *
      * @param \Nogrod\eBaySDK\Trading\ReviseFixedPriceItemRequest $reviseFixedPriceItemRequest
@@ -1196,50 +965,6 @@ class EBayAPIBaseClient extends \Nogrod\XMLClientRuntime\Client
     }
 
     /**
-     * Call ReviseSellingManagerInventoryFolder
-     *
-     * @param \Nogrod\eBaySDK\Trading\ReviseSellingManagerInventoryFolderRequest $reviseSellingManagerInventoryFolderRequest
-     * @return \Nogrod\eBaySDK\Trading\ReviseSellingManagerInventoryFolderResponse
-     */
-    public function reviseSellingManagerInventoryFolder(\Nogrod\eBaySDK\Trading\ReviseSellingManagerInventoryFolderRequest $reviseSellingManagerInventoryFolderRequest) : \Nogrod\eBaySDK\Trading\ReviseSellingManagerInventoryFolderResponse
-    {
-        return $this->call('ReviseSellingManagerInventoryFolder', 'Nogrod\eBaySDK\Trading\ReviseSellingManagerInventoryFolderResponse', $reviseSellingManagerInventoryFolderRequest);
-    }
-
-    /**
-     * Call ReviseSellingManagerProduct
-     *
-     * @param \Nogrod\eBaySDK\Trading\ReviseSellingManagerProductRequest $reviseSellingManagerProductRequest
-     * @return \Nogrod\eBaySDK\Trading\ReviseSellingManagerProductResponse
-     */
-    public function reviseSellingManagerProduct(\Nogrod\eBaySDK\Trading\ReviseSellingManagerProductRequest $reviseSellingManagerProductRequest) : \Nogrod\eBaySDK\Trading\ReviseSellingManagerProductResponse
-    {
-        return $this->call('ReviseSellingManagerProduct', 'Nogrod\eBaySDK\Trading\ReviseSellingManagerProductResponse', $reviseSellingManagerProductRequest);
-    }
-
-    /**
-     * Call ReviseSellingManagerSaleRecord
-     *
-     * @param \Nogrod\eBaySDK\Trading\ReviseSellingManagerSaleRecordRequest $reviseSellingManagerSaleRecordRequest
-     * @return \Nogrod\eBaySDK\Trading\ReviseSellingManagerSaleRecordResponse
-     */
-    public function reviseSellingManagerSaleRecord(\Nogrod\eBaySDK\Trading\ReviseSellingManagerSaleRecordRequest $reviseSellingManagerSaleRecordRequest) : \Nogrod\eBaySDK\Trading\ReviseSellingManagerSaleRecordResponse
-    {
-        return $this->call('ReviseSellingManagerSaleRecord', 'Nogrod\eBaySDK\Trading\ReviseSellingManagerSaleRecordResponse', $reviseSellingManagerSaleRecordRequest);
-    }
-
-    /**
-     * Call ReviseSellingManagerTemplate
-     *
-     * @param \Nogrod\eBaySDK\Trading\ReviseSellingManagerTemplateRequest $reviseSellingManagerTemplateRequest
-     * @return \Nogrod\eBaySDK\Trading\ReviseSellingManagerTemplateResponse
-     */
-    public function reviseSellingManagerTemplate(\Nogrod\eBaySDK\Trading\ReviseSellingManagerTemplateRequest $reviseSellingManagerTemplateRequest) : \Nogrod\eBaySDK\Trading\ReviseSellingManagerTemplateResponse
-    {
-        return $this->call('ReviseSellingManagerTemplate', 'Nogrod\eBaySDK\Trading\ReviseSellingManagerTemplateResponse', $reviseSellingManagerTemplateRequest);
-    }
-
-    /**
      * Call RevokeToken
      *
      * @param \Nogrod\eBaySDK\Trading\RevokeTokenRequest $revokeTokenRequest
@@ -1248,17 +973,6 @@ class EBayAPIBaseClient extends \Nogrod\XMLClientRuntime\Client
     public function revokeToken(\Nogrod\eBaySDK\Trading\RevokeTokenRequest $revokeTokenRequest) : \Nogrod\eBaySDK\Trading\RevokeTokenResponse
     {
         return $this->call('RevokeToken', 'Nogrod\eBaySDK\Trading\RevokeTokenResponse', $revokeTokenRequest);
-    }
-
-    /**
-     * Call SaveItemToSellingManagerTemplate
-     *
-     * @param \Nogrod\eBaySDK\Trading\SaveItemToSellingManagerTemplateRequest $saveItemToSellingManagerTemplateRequest
-     * @return \Nogrod\eBaySDK\Trading\SaveItemToSellingManagerTemplateResponse
-     */
-    public function saveItemToSellingManagerTemplate(\Nogrod\eBaySDK\Trading\SaveItemToSellingManagerTemplateRequest $saveItemToSellingManagerTemplateRequest) : \Nogrod\eBaySDK\Trading\SaveItemToSellingManagerTemplateResponse
-    {
-        return $this->call('SaveItemToSellingManagerTemplate', 'Nogrod\eBaySDK\Trading\SaveItemToSellingManagerTemplateResponse', $saveItemToSellingManagerTemplateRequest);
     }
 
     /**
@@ -1303,61 +1017,6 @@ class EBayAPIBaseClient extends \Nogrod\XMLClientRuntime\Client
     public function setNotificationPreferences(\Nogrod\eBaySDK\Trading\SetNotificationPreferencesRequest $setNotificationPreferencesRequest) : \Nogrod\eBaySDK\Trading\SetNotificationPreferencesResponse
     {
         return $this->call('SetNotificationPreferences', 'Nogrod\eBaySDK\Trading\SetNotificationPreferencesResponse', $setNotificationPreferencesRequest);
-    }
-
-    /**
-     * Call SetPromotionalSale
-     *
-     * @param \Nogrod\eBaySDK\Trading\SetPromotionalSaleRequest $setPromotionalSaleRequest
-     * @return \Nogrod\eBaySDK\Trading\SetPromotionalSaleResponse
-     */
-    public function setPromotionalSale(\Nogrod\eBaySDK\Trading\SetPromotionalSaleRequest $setPromotionalSaleRequest) : \Nogrod\eBaySDK\Trading\SetPromotionalSaleResponse
-    {
-        return $this->call('SetPromotionalSale', 'Nogrod\eBaySDK\Trading\SetPromotionalSaleResponse', $setPromotionalSaleRequest);
-    }
-
-    /**
-     * Call SetPromotionalSaleListings
-     *
-     * @param \Nogrod\eBaySDK\Trading\SetPromotionalSaleListingsRequest $setPromotionalSaleListingsRequest
-     * @return \Nogrod\eBaySDK\Trading\SetPromotionalSaleListingsResponse
-     */
-    public function setPromotionalSaleListings(\Nogrod\eBaySDK\Trading\SetPromotionalSaleListingsRequest $setPromotionalSaleListingsRequest) : \Nogrod\eBaySDK\Trading\SetPromotionalSaleListingsResponse
-    {
-        return $this->call('SetPromotionalSaleListings', 'Nogrod\eBaySDK\Trading\SetPromotionalSaleListingsResponse', $setPromotionalSaleListingsRequest);
-    }
-
-    /**
-     * Call SetSellingManagerFeedbackOptions
-     *
-     * @param \Nogrod\eBaySDK\Trading\SetSellingManagerFeedbackOptionsRequest $setSellingManagerFeedbackOptionsRequest
-     * @return \Nogrod\eBaySDK\Trading\SetSellingManagerFeedbackOptionsResponse
-     */
-    public function setSellingManagerFeedbackOptions(\Nogrod\eBaySDK\Trading\SetSellingManagerFeedbackOptionsRequest $setSellingManagerFeedbackOptionsRequest) : \Nogrod\eBaySDK\Trading\SetSellingManagerFeedbackOptionsResponse
-    {
-        return $this->call('SetSellingManagerFeedbackOptions', 'Nogrod\eBaySDK\Trading\SetSellingManagerFeedbackOptionsResponse', $setSellingManagerFeedbackOptionsRequest);
-    }
-
-    /**
-     * Call SetSellingManagerItemAutomationRule
-     *
-     * @param \Nogrod\eBaySDK\Trading\SetSellingManagerItemAutomationRuleRequest $setSellingManagerItemAutomationRuleRequest
-     * @return \Nogrod\eBaySDK\Trading\SetSellingManagerItemAutomationRuleResponse
-     */
-    public function setSellingManagerItemAutomationRule(\Nogrod\eBaySDK\Trading\SetSellingManagerItemAutomationRuleRequest $setSellingManagerItemAutomationRuleRequest) : \Nogrod\eBaySDK\Trading\SetSellingManagerItemAutomationRuleResponse
-    {
-        return $this->call('SetSellingManagerItemAutomationRule', 'Nogrod\eBaySDK\Trading\SetSellingManagerItemAutomationRuleResponse', $setSellingManagerItemAutomationRuleRequest);
-    }
-
-    /**
-     * Call SetSellingManagerTemplateAutomationRule
-     *
-     * @param \Nogrod\eBaySDK\Trading\SetSellingManagerTemplateAutomationRuleRequest $setSellingManagerTemplateAutomationRuleRequest
-     * @return \Nogrod\eBaySDK\Trading\SetSellingManagerTemplateAutomationRuleResponse
-     */
-    public function setSellingManagerTemplateAutomationRule(\Nogrod\eBaySDK\Trading\SetSellingManagerTemplateAutomationRuleRequest $setSellingManagerTemplateAutomationRuleRequest) : \Nogrod\eBaySDK\Trading\SetSellingManagerTemplateAutomationRuleResponse
-    {
-        return $this->call('SetSellingManagerTemplateAutomationRule', 'Nogrod\eBaySDK\Trading\SetSellingManagerTemplateAutomationRuleResponse', $setSellingManagerTemplateAutomationRuleRequest);
     }
 
     /**

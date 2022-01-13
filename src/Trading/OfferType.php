@@ -21,7 +21,7 @@ class OfferType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      *  the buyer can get the status of the Best Offer
      *  (and a seller-counter-offer, etc.)
      *  using the <b>GetBestOffers</b> call. See the
-     *  <a href="http://developer.ebay.com/DevZone/guides/features-guide/default.html#development/Feature-BestOffer.html">eBay Features Guide</a>
+     *  <a href="https://developer.ebay.com/DevZone/guides/features-guide/default.html#development/Feature-BestOffer.html">eBay Features Guide</a>
      *  for information about Best Offer-enabled listings and about <b>GetBestOffers</b>.
      *
      * @var string $action
@@ -183,7 +183,7 @@ class OfferType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      *  the buyer can get the status of the Best Offer
      *  (and a seller-counter-offer, etc.)
      *  using the <b>GetBestOffers</b> call. See the
-     *  <a href="http://developer.ebay.com/DevZone/guides/features-guide/default.html#development/Feature-BestOffer.html">eBay Features Guide</a>
+     *  <a href="https://developer.ebay.com/DevZone/guides/features-guide/default.html#development/Feature-BestOffer.html">eBay Features Guide</a>
      *  for information about Best Offer-enabled listings and about <b>GetBestOffers</b>.
      *
      * @return string
@@ -203,7 +203,7 @@ class OfferType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      *  the buyer can get the status of the Best Offer
      *  (and a seller-counter-offer, etc.)
      *  using the <b>GetBestOffers</b> call. See the
-     *  <a href="http://developer.ebay.com/DevZone/guides/features-guide/default.html#development/Feature-BestOffer.html">eBay Features Guide</a>
+     *  <a href="https://developer.ebay.com/DevZone/guides/features-guide/default.html#development/Feature-BestOffer.html">eBay Features Guide</a>
      *  for information about Best Offer-enabled listings and about <b>GetBestOffers</b>.
      *
      * @param string $action

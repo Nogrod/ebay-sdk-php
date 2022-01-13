@@ -22,8 +22,12 @@ class DepositTypeCodeType
     /**
      * Constant for 'OtherMethod' value.
      *
-     * (out) Pay the deposit using PayPal, and then
-     *  use any of the other specified payment methods to pay the balance.
+     * (out) This value indicates that a deposit is required from the buyer when
+     * purchasing a motor vehicle. Deposits for a motor vehicle are either due in 24,
+     * 48, or 72 hours after commitment to purchase.
+     *  <br><br>
+     *  This value should be used in an Add/Revise call if the seller is requiring a
+     * deposit for a motor vehicle listing.
      */
     public const VAL_OTHER_METHOD = 'OtherMethod';
 

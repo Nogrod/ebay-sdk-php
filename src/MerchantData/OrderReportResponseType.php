@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * <b>OrderReport</b> shows detailed information on all unacknowledged orders, and all unacknowledged line items in each order from the past 30 days. The unique identifier of each order is shown in the <b>Order.OrderID</b> response field, and unique identifier of each order line item is shown in a separate <b>Transaction.OrderLineItemID</b> response field. Only unfulfilled orders will appear in the response, and orders that have already shipped will not. Sellers use the information in <b>OrderReport</b> to make inventory updates and start order fulfillment.
  *  <br/><br/>
  *  <span class="tablenote"><b>Note: </b> Once orders and order line items have been acknowledged with the <b>OrderAck</b> call, those orders and order line items will no longer appear in the <b>OrderReport</b> response. See
- *  <a href="http://developer.ebay.com/DevZone/large-merchant-services/Concepts/LMS_APIGuide.html#soldrpt"
+ *  <a href="https://developer.ebay.com/DevZone/large-merchant-services/Concepts/LMS_APIGuide.html#soldrpt"
  *  target="_blank">Acknowledging Sales</a> for more information.
  *  </span>
  * XSD Type: OrderReportResponseType
@@ -50,7 +50,7 @@ class OrderReportResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
     /**
      * This container is an array of unacknowledged orders for the seller that occurred within the last 30 days (or less based on the Bulk Data Exchange job).
      *
-     * @var \Nogrod\eBaySDK\MerchantData\OrderType[] $orderArray
+     * @var \Nogrod\eBaySDK\MerchantData\OrderArrayType $orderArray
      */
     private $orderArray = null;
 
@@ -199,51 +199,11 @@ class OrderReportResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
     }
 
     /**
-     * Adds as order
-     *
-     * This container is an array of unacknowledged orders for the seller that occurred within the last 30 days (or less based on the Bulk Data Exchange job).
-     *
-     * @return self
-     * @param \Nogrod\eBaySDK\MerchantData\OrderType $order
-     */
-    public function addToOrderArray(\Nogrod\eBaySDK\MerchantData\OrderType $order)
-    {
-        $this->orderArray[] = $order;
-        return $this;
-    }
-
-    /**
-     * isset orderArray
-     *
-     * This container is an array of unacknowledged orders for the seller that occurred within the last 30 days (or less based on the Bulk Data Exchange job).
-     *
-     * @param int|string $index
-     * @return bool
-     */
-    public function issetOrderArray($index)
-    {
-        return isset($this->orderArray[$index]);
-    }
-
-    /**
-     * unset orderArray
-     *
-     * This container is an array of unacknowledged orders for the seller that occurred within the last 30 days (or less based on the Bulk Data Exchange job).
-     *
-     * @param int|string $index
-     * @return void
-     */
-    public function unsetOrderArray($index)
-    {
-        unset($this->orderArray[$index]);
-    }
-
-    /**
      * Gets as orderArray
      *
      * This container is an array of unacknowledged orders for the seller that occurred within the last 30 days (or less based on the Bulk Data Exchange job).
      *
-     * @return \Nogrod\eBaySDK\MerchantData\OrderType[]
+     * @return \Nogrod\eBaySDK\MerchantData\OrderArrayType
      */
     public function getOrderArray()
     {
@@ -255,10 +215,10 @@ class OrderReportResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
      *
      * This container is an array of unacknowledged orders for the seller that occurred within the last 30 days (or less based on the Bulk Data Exchange job).
      *
-     * @param \Nogrod\eBaySDK\MerchantData\OrderType[] $orderArray
+     * @param \Nogrod\eBaySDK\MerchantData\OrderArrayType $orderArray
      * @return self
      */
-    public function setOrderArray(array $orderArray)
+    public function setOrderArray(\Nogrod\eBaySDK\MerchantData\OrderArrayType $orderArray)
     {
         $this->orderArray = $orderArray;
         return $this;
@@ -323,11 +283,9 @@ class OrderReportResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
                 return \Nogrod\eBaySDK\MerchantData\ErrorType::fromKeyValue($v);
             }, $value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}OrderArray', true);
-        if (null !== $value && !empty($value)) {
-            $this->setOrderArray(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\OrderType::fromKeyValue($v);
-            }, $value));
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}OrderArray');
+        if (null !== $value) {
+            $this->setOrderArray(\Nogrod\eBaySDK\MerchantData\OrderArrayType::fromKeyValue($value));
         }
     }
 }

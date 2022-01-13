@@ -20,3 +20,18 @@ Nogrod\eBaySDK\MerchantData\OrderArrayType:
                 entry_name: Order
                 namespace: 'urn:ebay:apis:eBLBaseComponents'
             type: array<Nogrod\eBaySDK\MerchantData\OrderType>
+        errors:
+            expose: true
+            access_type: public_method
+            serialized_name: Errors
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getErrors
+                setter: setErrors
+            xml_list:
+                inline: true
+                entry_name: Errors
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<Nogrod\eBaySDK\MerchantData\ErrorType>
