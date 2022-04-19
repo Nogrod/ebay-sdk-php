@@ -1,4 +1,5 @@
 <?php
+
 namespace Nogrod\eBaySDK\OAuth;
 
 trait StatusCodeTrait

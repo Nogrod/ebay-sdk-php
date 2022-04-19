@@ -54,7 +54,7 @@ class AbstractRequestType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * @var string[] $detailLevel
      */
     private $detailLevel = [
-        
+
     ];
 
     /**
@@ -268,7 +268,7 @@ class AbstractRequestType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * @var string[] $outputSelector
      */
     private $outputSelector = [
-        
+
     ];
 
     /**

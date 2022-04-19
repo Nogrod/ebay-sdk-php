@@ -95,7 +95,7 @@ class GetMyeBayBuyingResponseType extends AbstractResponseType
      * @var \Nogrod\eBaySDK\Trading\ItemType[] $secondChanceOffer
      */
     private $secondChanceOffer = [
-        
+
     ];
 
     /**
@@ -131,7 +131,7 @@ class GetMyeBayBuyingResponseType extends AbstractResponseType
      * @var \Nogrod\eBaySDK\Trading\UserDefinedListType[] $userDefinedList
      */
     private $userDefinedList = [
-        
+
     ];
 
     /**

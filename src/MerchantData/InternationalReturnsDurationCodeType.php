@@ -18,7 +18,7 @@ class InternationalReturnsDurationCodeType implements \Sabre\Xml\XmlSerializable
      * @var string[] $internationalReturnsDuration
      */
     private $internationalReturnsDuration = [
-        
+
     ];
 
     /**

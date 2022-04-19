@@ -18,7 +18,7 @@ class IntegratedMerchantCreditCardInfoType implements \Sabre\Xml\XmlSerializable
      * @var string[] $supportedSite
      */
     private $supportedSite = [
-        
+
     ];
 
     /**

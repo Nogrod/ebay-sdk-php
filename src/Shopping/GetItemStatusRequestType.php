@@ -18,7 +18,7 @@ class GetItemStatusRequestType extends AbstractRequestType
      * @var string[] $itemID
      */
     private $itemID = [
-        
+
     ];
 
     /**

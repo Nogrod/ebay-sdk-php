@@ -18,7 +18,7 @@ class UnitOfMeasurementDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre
      * @var \Nogrod\eBaySDK\Trading\UnitOfMeasurementType[] $unitOfMeasurement
      */
     private $unitOfMeasurement = [
-        
+
     ];
 
     /**

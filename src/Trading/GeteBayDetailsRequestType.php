@@ -20,7 +20,7 @@ class GeteBayDetailsRequestType extends AbstractRequestType
      * @var string[] $detailName
      */
     private $detailName = [
-        
+
     ];
 
     /**

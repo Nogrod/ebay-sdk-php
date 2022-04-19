@@ -28,7 +28,7 @@ class PickupDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
      * @var \Nogrod\eBaySDK\Trading\PickupOptionsType[] $pickupOptions
      */
     private $pickupOptions = [
-        
+
     ];
 
     /**

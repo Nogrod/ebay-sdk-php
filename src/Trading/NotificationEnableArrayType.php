@@ -22,7 +22,7 @@ class NotificationEnableArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\
      * @var \Nogrod\eBaySDK\Trading\NotificationEnableType[] $notificationEnable
      */
     private $notificationEnable = [
-        
+
     ];
 
     /**

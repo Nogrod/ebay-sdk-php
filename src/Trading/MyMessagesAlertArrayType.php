@@ -18,7 +18,7 @@ class MyMessagesAlertArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
      * @var \Nogrod\eBaySDK\Trading\MyMessagesAlertType[] $alert
      */
     private $alert = [
-        
+
     ];
 
     /**

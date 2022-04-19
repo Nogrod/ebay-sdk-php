@@ -60,7 +60,7 @@ class PictureManagerDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
      * @var \Nogrod\eBaySDK\Trading\PictureManagerFolderType[] $folder
      */
     private $folder = [
-        
+
     ];
 
     /**

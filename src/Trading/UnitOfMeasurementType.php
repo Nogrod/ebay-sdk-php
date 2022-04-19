@@ -18,7 +18,7 @@ class UnitOfMeasurementType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
      * @var string[] $alternateText
      */
     private $alternateText = [
-        
+
     ];
 
     /**

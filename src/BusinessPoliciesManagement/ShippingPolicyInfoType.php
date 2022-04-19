@@ -69,7 +69,7 @@ class ShippingPolicyInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      * @var string[] $excludeShipToLocation
      */
     private $excludeShipToLocation = [
-        
+
     ];
 
     /**
@@ -92,7 +92,7 @@ class ShippingPolicyInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      * @var string[] $shipToLocations
      */
     private $shipToLocations = [
-        
+
     ];
 
     /**
@@ -101,7 +101,7 @@ class ShippingPolicyInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      * @var \Nogrod\eBaySDK\BusinessPoliciesManagement\ShippingPolicyInfoServiceType[] $domesticShippingPolicyInfoService
      */
     private $domesticShippingPolicyInfoService = [
-        
+
     ];
 
     /**
@@ -110,7 +110,7 @@ class ShippingPolicyInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      * @var \Nogrod\eBaySDK\BusinessPoliciesManagement\ShippingPolicyInfoServiceType[] $intlShippingPolicyInfoService
      */
     private $intlShippingPolicyInfoService = [
-        
+
     ];
 
     /**

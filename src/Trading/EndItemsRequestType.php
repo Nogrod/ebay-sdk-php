@@ -18,7 +18,7 @@ class EndItemsRequestType extends AbstractRequestType
      * @var \Nogrod\eBaySDK\Trading\EndItemRequestContainerType[] $endItemRequestContainer
      */
     private $endItemRequestContainer = [
-        
+
     ];
 
     /**

@@ -149,7 +149,7 @@ class RecommendationValidationRulesType implements \Sabre\Xml\XmlSerializable, \
      * @var \Nogrod\eBaySDK\Trading\NameValueRelationshipType[] $relationship
      */
     private $relationship = [
-        
+
     ];
 
     /**

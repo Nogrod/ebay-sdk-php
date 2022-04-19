@@ -25,7 +25,7 @@ class MyeBaySecondChanceOfferListType implements \Sabre\Xml\XmlSerializable, \Sa
      * @var \Nogrod\eBaySDK\MerchantData\ItemType[] $secondChanceOffer
      */
     private $secondChanceOffer = [
-        
+
     ];
 
     /**

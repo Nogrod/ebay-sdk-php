@@ -18,7 +18,7 @@ class GetContextualKeywordsResponseType extends AbstractResponseType
      * @var \Nogrod\eBaySDK\Trading\ContextSearchAssetType[] $contextSearchAsset
      */
     private $contextSearchAsset = [
-        
+
     ];
 
     /**

@@ -32,7 +32,7 @@ class ProductFamilyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
      * @var \Nogrod\eBaySDK\MerchantData\ProductType[] $familyMembers
      */
     private $familyMembers = [
-        
+
     ];
 
     /**

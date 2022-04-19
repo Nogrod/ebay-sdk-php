@@ -19,7 +19,7 @@ class FeedbackCommentArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
      * @var string[] $storedCommentText
      */
     private $storedCommentText = [
-        
+
     ];
 
     /**

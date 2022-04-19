@@ -18,7 +18,7 @@ class GetCharitiesResponseType extends AbstractResponseType
      * @var \Nogrod\eBaySDK\Trading\CharityInfoType[] $charity
      */
     private $charity = [
-        
+
     ];
 
     /**

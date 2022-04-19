@@ -27,7 +27,7 @@ class NameValueListArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      * @var \Nogrod\eBaySDK\Shopping\NameValueListType[] $nameValueList
      */
     private $nameValueList = [
-        
+
     ];
 
     /**

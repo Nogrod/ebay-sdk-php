@@ -51,7 +51,7 @@ class ErrorDataType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
      * @var \Nogrod\eBaySDK\BusinessPoliciesManagement\ErrorParameterType[] $parameter
      */
     private $parameter = [
-        
+
     ];
 
     /**

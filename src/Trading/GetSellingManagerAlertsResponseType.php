@@ -19,7 +19,7 @@ class GetSellingManagerAlertsResponseType extends AbstractResponseType
      * @var \Nogrod\eBaySDK\Trading\SellingManagerAlertType[] $alert
      */
     private $alert = [
-        
+
     ];
 
     /**

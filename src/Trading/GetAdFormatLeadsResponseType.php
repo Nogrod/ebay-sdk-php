@@ -22,7 +22,7 @@ class GetAdFormatLeadsResponseType extends AbstractResponseType
      * @var \Nogrod\eBaySDK\Trading\AdFormatLeadType[] $adFormatLead
      */
     private $adFormatLead = [
-        
+
     ];
 
     /**

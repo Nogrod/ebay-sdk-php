@@ -50,7 +50,7 @@ class GetCategoryFeaturesResponseType extends AbstractResponseType
      * @var \Nogrod\eBaySDK\Trading\CategoryFeatureType[] $category
      */
     private $category = [
-        
+
     ];
 
     /**

@@ -22,7 +22,7 @@ class SellingManagerTemplateDetailsArrayType implements \Sabre\Xml\XmlSerializab
      * @var \Nogrod\eBaySDK\Trading\SellingManagerTemplateDetailsType[] $sellingManagerTemplateDetails
      */
     private $sellingManagerTemplateDetails = [
-        
+
     ];
 
     /**

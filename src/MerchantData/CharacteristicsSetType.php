@@ -39,7 +39,7 @@ class CharacteristicsSetType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      * @var \Nogrod\eBaySDK\MerchantData\CharacteristicType[] $characteristics
      */
     private $characteristics = [
-        
+
     ];
 
     /**

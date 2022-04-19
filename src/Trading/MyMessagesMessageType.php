@@ -237,7 +237,7 @@ class MyMessagesMessageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
      * @var \Nogrod\eBaySDK\Trading\MessageMediaType[] $messageMedia
      */
     private $messageMedia = [
-        
+
     ];
 
     /**

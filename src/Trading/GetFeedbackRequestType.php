@@ -54,7 +54,7 @@ class GetFeedbackRequestType extends AbstractRequestType
      * @var string[] $commentType
      */
     private $commentType = [
-        
+
     ];
 
     /**

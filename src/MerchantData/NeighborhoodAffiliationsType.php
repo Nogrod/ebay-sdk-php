@@ -18,7 +18,7 @@ class NeighborhoodAffiliationsType implements \Sabre\Xml\XmlSerializable, \Sabre
      * @var int[] $neighborhoodID
      */
     private $neighborhoodID = [
-        
+
     ];
 
     /**

@@ -20,7 +20,7 @@ class BestOfferArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      * @var \Nogrod\eBaySDK\MerchantData\BestOfferType[] $bestOffer
      */
     private $bestOffer = [
-        
+
     ];
 
     /**

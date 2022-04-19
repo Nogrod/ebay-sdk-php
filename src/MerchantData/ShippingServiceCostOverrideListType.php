@@ -26,7 +26,7 @@ class ShippingServiceCostOverrideListType implements \Sabre\Xml\XmlSerializable,
      * @var \Nogrod\eBaySDK\MerchantData\ShippingServiceCostOverrideType[] $shippingServiceCostOverride
      */
     private $shippingServiceCostOverride = [
-        
+
     ];
 
     /**

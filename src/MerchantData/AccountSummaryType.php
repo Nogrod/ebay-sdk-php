@@ -50,7 +50,7 @@ class AccountSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      * @var \Nogrod\eBaySDK\MerchantData\AdditionalAccountType[] $additionalAccount
      */
     private $additionalAccount = [
-        
+
     ];
 
     /**

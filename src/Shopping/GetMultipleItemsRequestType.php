@@ -31,7 +31,7 @@ class GetMultipleItemsRequestType extends AbstractRequestType
      * @var string[] $itemID
      */
     private $itemID = [
-        
+
     ];
 
     /**

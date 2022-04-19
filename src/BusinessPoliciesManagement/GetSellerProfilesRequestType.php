@@ -18,7 +18,7 @@ class GetSellerProfilesRequestType extends BaseRequestType
      * @var string[] $profileType
      */
     private $profileType = [
-        
+
     ];
 
     /**
@@ -27,7 +27,7 @@ class GetSellerProfilesRequestType extends BaseRequestType
      * @var int[] $profileId
      */
     private $profileId = [
-        
+
     ];
 
     /**
@@ -38,7 +38,7 @@ class GetSellerProfilesRequestType extends BaseRequestType
      * @var string[] $profileName
      */
     private $profileName = [
-        
+
     ];
 
     /**

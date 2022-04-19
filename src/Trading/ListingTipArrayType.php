@@ -18,7 +18,7 @@ class ListingTipArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * @var \Nogrod\eBaySDK\Trading\ListingTipType[] $listingTip
      */
     private $listingTip = [
-        
+
     ];
 
     /**

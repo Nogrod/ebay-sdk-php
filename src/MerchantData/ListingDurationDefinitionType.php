@@ -25,7 +25,7 @@ class ListingDurationDefinitionType implements \Sabre\Xml\XmlSerializable, \Sabr
      * @var string[] $duration
      */
     private $duration = [
-        
+
     ];
 
     /**

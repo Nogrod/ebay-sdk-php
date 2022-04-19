@@ -81,7 +81,7 @@ class PictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      * @var string[] $pictureURL
      */
     private $pictureURL = [
-        
+
     ];
 
     /**
@@ -121,7 +121,7 @@ class PictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      * @var string[] $externalPictureURL
      */
     private $externalPictureURL = [
-        
+
     ];
 
     /**

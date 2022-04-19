@@ -275,7 +275,7 @@ class AddressType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
      * @var \Nogrod\eBaySDK\Trading\AddressAttributeType[] $addressAttribute
      */
     private $addressAttribute = [
-        
+
     ];
 
     /**

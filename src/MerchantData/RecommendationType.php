@@ -31,7 +31,7 @@ class RecommendationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      * @var string[] $recommendedValue
      */
     private $recommendedValue = [
-        
+
     ];
 
     /**

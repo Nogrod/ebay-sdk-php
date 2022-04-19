@@ -23,7 +23,7 @@ class GetRecurringJobExecutionHistoryResponseType extends BaseServiceResponseTyp
      * @var \Nogrod\eBaySDK\BulkDataExchange\JobProfileType[] $jobProfile
      */
     private $jobProfile = [
-        
+
     ];
 
     /**

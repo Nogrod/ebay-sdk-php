@@ -87,7 +87,7 @@ class AddFixedPriceItemResponseType extends AbstractResponseType
      * @var string[] $discountReason
      */
     private $discountReason = [
-        
+
     ];
 
     /**

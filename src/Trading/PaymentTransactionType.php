@@ -77,7 +77,7 @@ class PaymentTransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      * @var \Nogrod\eBaySDK\Trading\TransactionReferenceType[] $paymentReferenceID
      */
     private $paymentReferenceID = [
-        
+
     ];
 
     /**

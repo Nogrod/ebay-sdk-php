@@ -34,7 +34,7 @@ class ItemArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
      * @var \Nogrod\eBaySDK\MerchantData\ItemType[] $item
      */
     private $item = [
-        
+
     ];
 
     /**

@@ -55,7 +55,7 @@ class NameRecommendationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      * @var \Nogrod\eBaySDK\Trading\ValueRecommendationType[] $valueRecommendation
      */
     private $valueRecommendation = [
-        
+
     ];
 
     /**

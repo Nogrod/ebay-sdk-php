@@ -18,7 +18,7 @@ class GetMultipleItemsResponseType extends AbstractResponseType
      * @var \Nogrod\eBaySDK\Shopping\SimpleItemType[] $item
      */
     private $item = [
-        
+
     ];
 
     /**

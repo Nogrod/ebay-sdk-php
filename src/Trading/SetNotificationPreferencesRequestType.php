@@ -44,7 +44,7 @@ class SetNotificationPreferencesRequestType extends AbstractRequestType
      * @var \Nogrod\eBaySDK\Trading\NotificationEventPropertyType[] $eventProperty
      */
     private $eventProperty = [
-        
+
     ];
 
     /**

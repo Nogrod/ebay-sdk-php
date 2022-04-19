@@ -16,7 +16,7 @@ class CategoryGroupsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      * @var \Nogrod\eBaySDK\BusinessPoliciesManagement\CategoryGroupType[] $categoryGroup
      */
     private $categoryGroup = [
-        
+
     ];
 
     /**

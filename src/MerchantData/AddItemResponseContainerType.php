@@ -94,7 +94,7 @@ class AddItemResponseContainerType implements \Sabre\Xml\XmlSerializable, \Sabre
      * @var \Nogrod\eBaySDK\MerchantData\ErrorType[] $errors
      */
     private $errors = [
-        
+
     ];
 
     /**
@@ -119,7 +119,7 @@ class AddItemResponseContainerType implements \Sabre\Xml\XmlSerializable, \Sabre
      * @var string[] $discountReason
      */
     private $discountReason = [
-        
+
     ];
 
     /**

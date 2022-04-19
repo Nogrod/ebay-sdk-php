@@ -18,7 +18,7 @@ class FindPopularItemsRequestType extends AbstractRequestType
      * @var string[] $categoryID
      */
     private $categoryID = [
-        
+
     ];
 
     /**
@@ -34,7 +34,7 @@ class FindPopularItemsRequestType extends AbstractRequestType
      * @var string[] $categoryIDExclude
      */
     private $categoryIDExclude = [
-        
+
     ];
 
     /**

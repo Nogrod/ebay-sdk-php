@@ -18,7 +18,7 @@ class StoreOwnerExtendedListingDurationsType implements \Sabre\Xml\XmlSerializab
      * @var string[] $duration
      */
     private $duration = [
-        
+
     ];
 
     /**

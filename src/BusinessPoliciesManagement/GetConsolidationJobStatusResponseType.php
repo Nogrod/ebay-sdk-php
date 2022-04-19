@@ -16,7 +16,7 @@ class GetConsolidationJobStatusResponseType extends BaseResponseType
      * @var \Nogrod\eBaySDK\BusinessPoliciesManagement\ConsolidationJobType[] $job
      */
     private $job = [
-        
+
     ];
 
     /**

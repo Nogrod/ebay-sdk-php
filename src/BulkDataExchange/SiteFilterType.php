@@ -18,7 +18,7 @@ class SiteFilterType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      * @var string[] $globalId
      */
     private $globalId = [
-        
+
     ];
 
     /**

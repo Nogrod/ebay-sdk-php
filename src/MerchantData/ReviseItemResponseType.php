@@ -88,7 +88,7 @@ class ReviseItemResponseType extends AbstractResponseType
      * @var string[] $discountReason
      */
     private $discountReason = [
-        
+
     ];
 
     /**

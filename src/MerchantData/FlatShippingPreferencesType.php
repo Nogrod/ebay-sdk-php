@@ -32,7 +32,7 @@ class FlatShippingPreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre\
      * @var \Nogrod\eBaySDK\MerchantData\FlatRateInsuranceRangeCostType[] $flatRateInsuranceRangeCost
      */
     private $flatRateInsuranceRangeCost = [
-        
+
     ];
 
     /**

@@ -151,7 +151,7 @@ class SearchItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      * @var string[] $paymentMethod
      */
     private $paymentMethod = [
-        
+
     ];
 
     /**
@@ -266,7 +266,7 @@ class SearchItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      * @var string[] $galleryPlusPictureURL
      */
     private $galleryPlusPictureURL = [
-        
+
     ];
 
     /**
@@ -371,7 +371,7 @@ class SearchItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      * @var \Nogrod\eBaySDK\Finding\ItemAttributeType[] $attribute
      */
     private $attribute = [
-        
+
     ];
 
     /**
@@ -397,7 +397,7 @@ class SearchItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      * @var string[] $eekStatus
      */
     private $eekStatus = [
-        
+
     ];
 
     /**

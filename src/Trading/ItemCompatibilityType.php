@@ -55,7 +55,7 @@ class ItemCompatibilityType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
      * @var \Nogrod\eBaySDK\Trading\NameValueListType[] $nameValueList
      */
     private $nameValueList = [
-        
+
     ];
 
     /**

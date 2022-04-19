@@ -33,7 +33,7 @@ class ExternalProductIDType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
      * @var string[] $alternateValue
      */
     private $alternateValue = [
-        
+
     ];
 
     /**

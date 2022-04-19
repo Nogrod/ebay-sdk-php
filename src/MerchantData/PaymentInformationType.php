@@ -21,7 +21,7 @@ class PaymentInformationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      * @var \Nogrod\eBaySDK\MerchantData\PaymentTransactionType[] $payment
      */
     private $payment = [
-        
+
     ];
 
     /**

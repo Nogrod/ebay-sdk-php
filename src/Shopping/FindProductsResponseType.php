@@ -64,7 +64,7 @@ class FindProductsResponseType extends AbstractResponseType
      * @var \Nogrod\eBaySDK\Shopping\CatalogProductType[] $product
      */
     private $product = [
-        
+
     ];
 
     /**

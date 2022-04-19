@@ -53,7 +53,7 @@ class GetHistogramsResponseType extends BaseServiceResponseType
      * @var \Nogrod\eBaySDK\Finding\ExtensionTypeType[] $extension
      */
     private $extension = [
-        
+
     ];
 
     /**

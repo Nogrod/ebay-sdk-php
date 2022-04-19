@@ -84,7 +84,7 @@ class RelistFixedPriceItemResponseType extends AbstractResponseType
      * @var string[] $discountReason
      */
     private $discountReason = [
-        
+
     ];
 
     /**

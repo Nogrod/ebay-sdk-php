@@ -18,7 +18,7 @@ class InternationalReturnsAcceptedCodeType implements \Sabre\Xml\XmlSerializable
      * @var string[] $internationalReturnsAccepted
      */
     private $internationalReturnsAccepted = [
-        
+
     ];
 
     /**

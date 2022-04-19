@@ -1,4 +1,5 @@
 <?php
+
 namespace Nogrod\eBaySDK\Constants;
 
 /**
@@ -6,26 +7,26 @@ namespace Nogrod\eBaySDK\Constants;
  */
 class GlobalIds
 {
-    const US = 'EBAY-US';
-    const ENCA = 'EBAY-ENCA';
-    const GB = 'EBAY-GB';
-    const AU = 'EBAY-AU';
-    const AT = 'EBAY-AT';
-    const FRBE = 'EBAY-FRBE';
-    const FR = 'EBAY-FR';
-    const DE = 'EBAY-DE';
-    const MOTORS = 'EBAY-MOTOR';
-    const IT = 'EBAY-IT';
-    const NLBE = 'EBAY-NLBE';
-    const NL = 'EBAY-NL';
-    const ES = 'EBAY-ES';
-    const CH = 'EBAY-CH';
-    const HK = 'EBAY-HK';
-    const IN = 'EBAY-IN';
-    const IE = 'EBAY-IE';
-    const MY = 'EBAY-MY';
-    const FRCA = 'EBAY-FRCA';
-    const PH = 'EBAY-PH';
-    const PL = 'EBAY-PL';
-    const SG = 'EBAY-SG';
+    public const US = 'EBAY-US';
+    public const ENCA = 'EBAY-ENCA';
+    public const GB = 'EBAY-GB';
+    public const AU = 'EBAY-AU';
+    public const AT = 'EBAY-AT';
+    public const FRBE = 'EBAY-FRBE';
+    public const FR = 'EBAY-FR';
+    public const DE = 'EBAY-DE';
+    public const MOTORS = 'EBAY-MOTOR';
+    public const IT = 'EBAY-IT';
+    public const NLBE = 'EBAY-NLBE';
+    public const NL = 'EBAY-NL';
+    public const ES = 'EBAY-ES';
+    public const CH = 'EBAY-CH';
+    public const HK = 'EBAY-HK';
+    public const IN = 'EBAY-IN';
+    public const IE = 'EBAY-IE';
+    public const MY = 'EBAY-MY';
+    public const FRCA = 'EBAY-FRCA';
+    public const PH = 'EBAY-PH';
+    public const PL = 'EBAY-PL';
+    public const SG = 'EBAY-SG';
 }

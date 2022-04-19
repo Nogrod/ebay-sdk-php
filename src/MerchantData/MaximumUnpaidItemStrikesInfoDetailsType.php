@@ -25,7 +25,7 @@ class MaximumUnpaidItemStrikesInfoDetailsType implements \Sabre\Xml\XmlSerializa
      * @var \Nogrod\eBaySDK\MerchantData\MaximumUnpaidItemStrikesDurationDetailsType[] $maximumUnpaidItemStrikesDuration
      */
     private $maximumUnpaidItemStrikesDuration = [
-        
+
     ];
 
     /**

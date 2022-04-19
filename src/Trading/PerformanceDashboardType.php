@@ -25,7 +25,7 @@ class PerformanceDashboardType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
      * @var string[] $site
      */
     private $site = [
-        
+
     ];
 
     /**

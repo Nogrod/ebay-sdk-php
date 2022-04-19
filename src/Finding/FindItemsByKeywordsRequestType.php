@@ -44,7 +44,7 @@ class FindItemsByKeywordsRequestType extends BaseFindingServiceRequestType
      * @var \Nogrod\eBaySDK\Finding\ItemFilterType[] $itemFilter
      */
     private $itemFilter = [
-        
+
     ];
 
     /**
@@ -68,7 +68,7 @@ class FindItemsByKeywordsRequestType extends BaseFindingServiceRequestType
      * @var \Nogrod\eBaySDK\Finding\AspectFilterType[] $aspectFilter
      */
     private $aspectFilter = [
-        
+
     ];
 
     /**
@@ -88,7 +88,7 @@ class FindItemsByKeywordsRequestType extends BaseFindingServiceRequestType
      * @var string[] $outputSelector
      */
     private $outputSelector = [
-        
+
     ];
 
     /**
@@ -99,7 +99,7 @@ class FindItemsByKeywordsRequestType extends BaseFindingServiceRequestType
      * @var \Nogrod\eBaySDK\Finding\DomainFilterType[] $domainFilter
      */
     private $domainFilter = [
-        
+
     ];
 
     /**

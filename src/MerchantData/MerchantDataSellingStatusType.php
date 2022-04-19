@@ -13,7 +13,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class MerchantDataSellingStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
-
     /**
      * Total number of items sold in the variation (across the
      *  variation's lifetime). To determine the quantity sold

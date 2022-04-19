@@ -91,7 +91,7 @@ class CharityInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      * @var int[] $charityDomain
      */
     private $charityDomain = [
-        
+
     ];
 
     /**
@@ -184,7 +184,7 @@ class CharityInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      * @var \Nogrod\eBaySDK\MerchantData\NonProfitAddressType[] $nonProfitAddress
      */
     private $nonProfitAddress = [
-        
+
     ];
 
     /**
@@ -193,7 +193,7 @@ class CharityInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      * @var \Nogrod\eBaySDK\MerchantData\NonProfitSocialAddressType[] $nonProfitSocialAddress
      */
     private $nonProfitSocialAddress = [
-        
+
     ];
 
     /**

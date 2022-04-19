@@ -47,7 +47,7 @@ class VeROReportItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      * @var string[] $region
      */
     private $region = [
-        
+
     ];
 
     /**
@@ -59,7 +59,7 @@ class VeROReportItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      * @var string[] $country
      */
     private $country = [
-        
+
     ];
 
     /**

@@ -29,7 +29,7 @@ class NotificationUserDataType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
      * @var \Nogrod\eBaySDK\MerchantData\SummaryEventScheduleType[] $summarySchedule
      */
     private $summarySchedule = [
-        
+
     ];
 
     /**

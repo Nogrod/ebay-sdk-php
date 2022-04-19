@@ -18,7 +18,7 @@ class AccountEntriesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      * @var \Nogrod\eBaySDK\Trading\AccountEntryType[] $accountEntry
      */
     private $accountEntry = [
-        
+
     ];
 
     /**

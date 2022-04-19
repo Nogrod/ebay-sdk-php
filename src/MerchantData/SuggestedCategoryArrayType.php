@@ -21,7 +21,7 @@ class SuggestedCategoryArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\X
      * @var \Nogrod\eBaySDK\MerchantData\SuggestedCategoryType[] $suggestedCategory
      */
     private $suggestedCategory = [
-        
+
     ];
 
     /**

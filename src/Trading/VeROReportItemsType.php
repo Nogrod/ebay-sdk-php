@@ -18,7 +18,7 @@ class VeROReportItemsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * @var \Nogrod\eBaySDK\Trading\VeROReportItemType[] $reportItem
      */
     private $reportItem = [
-        
+
     ];
 
     /**

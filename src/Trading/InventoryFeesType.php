@@ -29,7 +29,7 @@ class InventoryFeesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
      * @var \Nogrod\eBaySDK\Trading\FeeType[] $fee
      */
     private $fee = [
-        
+
     ];
 
     /**

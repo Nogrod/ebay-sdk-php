@@ -59,7 +59,7 @@ class VariationProductListingDetailsType implements \Sabre\Xml\XmlSerializable, 
      * @var \Nogrod\eBaySDK\Trading\NameValueListType[] $nameValueList
      */
     private $nameValueList = [
-        
+
     ];
 
     /**

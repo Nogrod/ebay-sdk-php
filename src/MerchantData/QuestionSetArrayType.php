@@ -18,7 +18,7 @@ class QuestionSetArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
      * @var \Nogrod\eBaySDK\MerchantData\QuestionType[] $question
      */
     private $question = [
-        
+
     ];
 
     /**

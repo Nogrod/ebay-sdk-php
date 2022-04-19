@@ -35,7 +35,7 @@ class ASQPreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      * @var string[] $subject
      */
     private $subject = [
-        
+
     ];
 
     /**

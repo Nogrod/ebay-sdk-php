@@ -18,7 +18,7 @@ class DomesticReturnsDurationCodeType implements \Sabre\Xml\XmlSerializable, \Sa
      * @var string[] $domesticReturnsDuration
      */
     private $domesticReturnsDuration = [
-        
+
     ];
 
     /**

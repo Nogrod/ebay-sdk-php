@@ -52,7 +52,7 @@ class AbstractResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
      * @var \Nogrod\eBaySDK\Shopping\ErrorType[] $errors
      */
     private $errors = [
-        
+
     ];
 
     /**

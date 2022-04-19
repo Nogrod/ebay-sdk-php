@@ -27,7 +27,7 @@ class ReturnPolicyDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
      * @var \Nogrod\eBaySDK\Trading\RefundDetailsType[] $refund
      */
     private $refund = [
-        
+
     ];
 
     /**
@@ -40,7 +40,7 @@ class ReturnPolicyDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
      * @var \Nogrod\eBaySDK\Trading\ReturnsWithinDetailsType[] $returnsWithin
      */
     private $returnsWithin = [
-        
+
     ];
 
     /**
@@ -53,7 +53,7 @@ class ReturnPolicyDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
      * @var \Nogrod\eBaySDK\Trading\ReturnsAcceptedDetailsType[] $returnsAccepted
      */
     private $returnsAccepted = [
-        
+
     ];
 
     /**
@@ -73,7 +73,7 @@ class ReturnPolicyDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
      * @var \Nogrod\eBaySDK\Trading\WarrantyOfferedDetailsType[] $warrantyOffered
      */
     private $warrantyOffered = [
-        
+
     ];
 
     /**
@@ -82,7 +82,7 @@ class ReturnPolicyDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
      * @var \Nogrod\eBaySDK\Trading\WarrantyTypeDetailsType[] $warrantyType
      */
     private $warrantyType = [
-        
+
     ];
 
     /**
@@ -91,7 +91,7 @@ class ReturnPolicyDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
      * @var \Nogrod\eBaySDK\Trading\WarrantyDurationDetailsType[] $warrantyDuration
      */
     private $warrantyDuration = [
-        
+
     ];
 
     /**
@@ -107,7 +107,7 @@ class ReturnPolicyDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
      * @var \Nogrod\eBaySDK\Trading\ShippingCostPaidByDetailsType[] $shippingCostPaidBy
      */
     private $shippingCostPaidBy = [
-        
+
     ];
 
     /**
@@ -116,7 +116,7 @@ class ReturnPolicyDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
      * @var \Nogrod\eBaySDK\Trading\RestockingFeeValueDetailsType[] $restockingFeeValue
      */
     private $restockingFeeValue = [
-        
+
     ];
 
     /**

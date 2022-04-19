@@ -194,7 +194,7 @@ class MyeBayFavoriteSearchType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
      * @var string[] $searchFlag
      */
     private $searchFlag = [
-        
+
     ];
 
     /**
@@ -220,7 +220,7 @@ class MyeBayFavoriteSearchType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
      * @var string[] $sellerID
      */
     private $sellerID = [
-        
+
     ];
 
     /**
@@ -230,7 +230,7 @@ class MyeBayFavoriteSearchType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
      * @var string[] $sellerIDExclude
      */
     private $sellerIDExclude = [
-        
+
     ];
 
     /**

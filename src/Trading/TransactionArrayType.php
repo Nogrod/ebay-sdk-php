@@ -22,7 +22,7 @@ class TransactionArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
      * @var \Nogrod\eBaySDK\Trading\TransactionType[] $transaction
      */
     private $transaction = [
-        
+
     ];
 
     /**

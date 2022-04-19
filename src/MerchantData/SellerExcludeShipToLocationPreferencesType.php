@@ -45,7 +45,7 @@ class SellerExcludeShipToLocationPreferencesType implements \Sabre\Xml\XmlSerial
      * @var string[] $excludeShipToLocation
      */
     private $excludeShipToLocation = [
-        
+
     ];
 
     /**

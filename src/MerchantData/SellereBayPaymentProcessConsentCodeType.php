@@ -32,7 +32,7 @@ class SellereBayPaymentProcessConsentCodeType implements \Sabre\Xml\XmlSerializa
      * @var \Nogrod\eBaySDK\MerchantData\UserAgreementInfoType[] $userAgreementInfo
      */
     private $userAgreementInfo = [
-        
+
     ];
 
     /**

@@ -16,7 +16,7 @@ class ShippingPolicyProfileListType implements \Sabre\Xml\XmlSerializable, \Sabr
      * @var \Nogrod\eBaySDK\BusinessPoliciesManagement\ShippingPolicyProfileType[] $shippingPolicyProfile
      */
     private $shippingPolicyProfile = [
-        
+
     ];
 
     /**

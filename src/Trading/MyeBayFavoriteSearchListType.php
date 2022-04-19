@@ -25,7 +25,7 @@ class MyeBayFavoriteSearchListType implements \Sabre\Xml\XmlSerializable, \Sabre
      * @var \Nogrod\eBaySDK\Trading\MyeBayFavoriteSearchType[] $favoriteSearch
      */
     private $favoriteSearch = [
-        
+
     ];
 
     /**

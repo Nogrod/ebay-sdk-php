@@ -40,7 +40,7 @@ class FindItemsByImageRequestType extends BestMatchFindingServiceRequestType
      * @var string[] $categoryId
      */
     private $categoryId = [
-        
+
     ];
 
     /**
@@ -52,7 +52,7 @@ class FindItemsByImageRequestType extends BestMatchFindingServiceRequestType
      * @var \Nogrod\eBaySDK\Finding\ItemFilterType[] $itemFilter
      */
     private $itemFilter = [
-        
+
     ];
 
     /**
@@ -76,7 +76,7 @@ class FindItemsByImageRequestType extends BestMatchFindingServiceRequestType
      * @var \Nogrod\eBaySDK\Finding\AspectFilterType[] $aspectFilter
      */
     private $aspectFilter = [
-        
+
     ];
 
     /**
@@ -87,7 +87,7 @@ class FindItemsByImageRequestType extends BestMatchFindingServiceRequestType
      * @var \Nogrod\eBaySDK\Finding\DomainFilterType[] $domainFilter
      */
     private $domainFilter = [
-        
+
     ];
 
     /**
@@ -107,7 +107,7 @@ class FindItemsByImageRequestType extends BestMatchFindingServiceRequestType
      * @var string[] $outputSelector
      */
     private $outputSelector = [
-        
+
     ];
 
     /**

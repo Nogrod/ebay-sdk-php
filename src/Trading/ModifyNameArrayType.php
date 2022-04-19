@@ -22,7 +22,7 @@ class ModifyNameArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * @var \Nogrod\eBaySDK\Trading\ModifyNameType[] $modifyName
      */
     private $modifyName = [
-        
+
     ];
 
     /**

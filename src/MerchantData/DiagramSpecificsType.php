@@ -19,7 +19,7 @@ class DiagramSpecificsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
      * @var \Nogrod\eBaySDK\MerchantData\NameValueListType[] $nameValueList
      */
     private $nameValueList = [
-        
+
     ];
 
     /**

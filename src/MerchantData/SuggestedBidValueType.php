@@ -18,7 +18,7 @@ class SuggestedBidValueType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
      * @var \Nogrod\eBaySDK\MerchantData\AmountType[] $bidValue
      */
     private $bidValue = [
-        
+
     ];
 
     /**

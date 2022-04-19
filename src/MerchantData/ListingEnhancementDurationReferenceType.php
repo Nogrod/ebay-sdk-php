@@ -27,7 +27,7 @@ class ListingEnhancementDurationReferenceType implements \Sabre\Xml\XmlSerializa
      * @var string[] $duration
      */
     private $duration = [
-        
+
     ];
 
     /**

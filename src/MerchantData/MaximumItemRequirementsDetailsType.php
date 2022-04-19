@@ -18,7 +18,7 @@ class MaximumItemRequirementsDetailsType implements \Sabre\Xml\XmlSerializable, 
      * @var int[] $maximumItemCount
      */
     private $maximumItemCount = [
-        
+
     ];
 
     /**
@@ -27,7 +27,7 @@ class MaximumItemRequirementsDetailsType implements \Sabre\Xml\XmlSerializable, 
      * @var int[] $minimumFeedbackScore
      */
     private $minimumFeedbackScore = [
-        
+
     ];
 
     /**

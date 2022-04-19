@@ -23,7 +23,7 @@ class GetJobStatusResponseType extends BaseServiceResponseType
      * @var \Nogrod\eBaySDK\BulkDataExchange\JobProfileType[] $jobProfile
      */
     private $jobProfile = [
-        
+
     ];
 
     /**

@@ -31,7 +31,7 @@ class VideoDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      * @var string[] $videoID
      */
     private $videoID = [
-        
+
     ];
 
     /**

@@ -27,7 +27,7 @@ class ReturnPolicyDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
      * @var \Nogrod\eBaySDK\MerchantData\RefundDetailsType[] $refund
      */
     private $refund = [
-        
+
     ];
 
     /**
@@ -40,7 +40,7 @@ class ReturnPolicyDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
      * @var \Nogrod\eBaySDK\MerchantData\ReturnsWithinDetailsType[] $returnsWithin
      */
     private $returnsWithin = [
-        
+
     ];
 
     /**
@@ -53,7 +53,7 @@ class ReturnPolicyDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
      * @var \Nogrod\eBaySDK\MerchantData\ReturnsAcceptedDetailsType[] $returnsAccepted
      */
     private $returnsAccepted = [
-        
+
     ];
 
     /**
@@ -73,7 +73,7 @@ class ReturnPolicyDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
      * @var \Nogrod\eBaySDK\MerchantData\WarrantyOfferedDetailsType[] $warrantyOffered
      */
     private $warrantyOffered = [
-        
+
     ];
 
     /**
@@ -82,7 +82,7 @@ class ReturnPolicyDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
      * @var \Nogrod\eBaySDK\MerchantData\WarrantyTypeDetailsType[] $warrantyType
      */
     private $warrantyType = [
-        
+
     ];
 
     /**
@@ -91,7 +91,7 @@ class ReturnPolicyDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
      * @var \Nogrod\eBaySDK\MerchantData\WarrantyDurationDetailsType[] $warrantyDuration
      */
     private $warrantyDuration = [
-        
+
     ];
 
     /**
@@ -107,7 +107,7 @@ class ReturnPolicyDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
      * @var \Nogrod\eBaySDK\MerchantData\ShippingCostPaidByDetailsType[] $shippingCostPaidBy
      */
     private $shippingCostPaidBy = [
-        
+
     ];
 
     /**
@@ -116,7 +116,7 @@ class ReturnPolicyDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
      * @var \Nogrod\eBaySDK\MerchantData\RestockingFeeValueDetailsType[] $restockingFeeValue
      */
     private $restockingFeeValue = [
-        
+
     ];
 
     /**

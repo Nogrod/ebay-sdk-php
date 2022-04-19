@@ -34,7 +34,7 @@ class BuyerSatisfactionDashboardType implements \Sabre\Xml\XmlSerializable, \Sab
      * @var \Nogrod\eBaySDK\MerchantData\SellerDashboardAlertType[] $alert
      */
     private $alert = [
-        
+
     ];
 
     /**

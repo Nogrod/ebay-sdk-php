@@ -29,7 +29,7 @@ class MaximumUnpaidItemStrikesCountDetailsType implements \Sabre\Xml\XmlSerializ
      * @var int[] $count
      */
     private $count = [
-        
+
     ];
 
     /**

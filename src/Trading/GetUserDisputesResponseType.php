@@ -53,7 +53,7 @@ class GetUserDisputesResponseType extends AbstractResponseType
      * @var \Nogrod\eBaySDK\Trading\DisputeFilterCountType[] $disputeFilterCount
      */
     private $disputeFilterCount = [
-        
+
     ];
 
     /**

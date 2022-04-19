@@ -88,7 +88,7 @@ class ApplicationDeliveryPreferencesType implements \Sabre\Xml\XmlSerializable, 
      * @var \Nogrod\eBaySDK\Trading\DeliveryURLDetailType[] $deliveryURLDetails
      */
     private $deliveryURLDetails = [
-        
+
     ];
 
     /**

@@ -90,7 +90,7 @@ class ShippingServiceDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
      * @var string[] $serviceType
      */
     private $serviceType = [
-        
+
     ];
 
     /**
@@ -99,7 +99,7 @@ class ShippingServiceDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
      * @var string[] $shippingPackage
      */
     private $shippingPackage = [
-        
+
     ];
 
     /**
@@ -133,7 +133,7 @@ class ShippingServiceDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
      * @var string[] $shippingCarrier
      */
     private $shippingCarrier = [
-        
+
     ];
 
     /**
@@ -155,7 +155,7 @@ class ShippingServiceDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
      * @var \Nogrod\eBaySDK\Trading\AnnouncementMessageType[] $deprecationDetails
      */
     private $deprecationDetails = [
-        
+
     ];
 
     /**
@@ -180,7 +180,7 @@ class ShippingServiceDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
      * @var \Nogrod\eBaySDK\Trading\ShippingServicePackageDetailsType[] $shippingServicePackageDetails
      */
     private $shippingServicePackageDetails = [
-        
+
     ];
 
     /**

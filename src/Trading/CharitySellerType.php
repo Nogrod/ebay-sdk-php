@@ -25,7 +25,7 @@ class CharitySellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
      * @var \Nogrod\eBaySDK\Trading\CharityAffiliationType[] $charityAffiliation
      */
     private $charityAffiliation = [
-        
+
     ];
 
     /**

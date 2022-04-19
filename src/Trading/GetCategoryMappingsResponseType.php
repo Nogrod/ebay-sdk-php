@@ -22,7 +22,7 @@ class GetCategoryMappingsResponseType extends AbstractResponseType
      * @var \Nogrod\eBaySDK\Trading\CategoryMappingType[] $categoryMapping
      */
     private $categoryMapping = [
-        
+
     ];
 
     /**

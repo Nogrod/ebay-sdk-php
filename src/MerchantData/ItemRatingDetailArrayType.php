@@ -20,7 +20,7 @@ class ItemRatingDetailArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
      * @var \Nogrod\eBaySDK\MerchantData\ItemRatingDetailsType[] $itemRatingDetails
      */
     private $itemRatingDetails = [
-        
+
     ];
 
     /**

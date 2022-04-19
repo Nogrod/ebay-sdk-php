@@ -19,7 +19,7 @@ class SellingManagerAutoListAccordingToScheduleType implements \Sabre\Xml\XmlSer
      * @var string[] $dayOfWeek
      */
     private $dayOfWeek = [
-        
+
     ];
 
     /**

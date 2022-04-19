@@ -18,7 +18,7 @@ class StoreCustomPageArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
      * @var \Nogrod\eBaySDK\MerchantData\StoreCustomPageType[] $customPage
      */
     private $customPage = [
-        
+
     ];
 
     /**

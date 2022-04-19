@@ -23,7 +23,7 @@ class FeedbackPeriodArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
      * @var \Nogrod\eBaySDK\MerchantData\FeedbackPeriodType[] $feedbackPeriod
      */
     private $feedbackPeriod = [
-        
+
     ];
 
     /**

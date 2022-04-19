@@ -3,7 +3,6 @@
  * This file is auto-generated. DO NOT EDIT!
  */
 
-
 namespace Nogrod\eBaySDK\Constants;
 
 class Version

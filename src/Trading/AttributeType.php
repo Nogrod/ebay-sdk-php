@@ -32,7 +32,7 @@ class AttributeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
      * @var \Nogrod\eBaySDK\Trading\ValType[] $value
      */
     private $value = [
-        
+
     ];
 
     /**

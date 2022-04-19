@@ -25,7 +25,7 @@ class ReviewDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
      * @var \Nogrod\eBaySDK\Trading\ReviewType[] $review
      */
     private $review = [
-        
+
     ];
 
     /**

@@ -28,7 +28,7 @@ class GetSearchKeywordsRecommendationResponseType extends BaseServiceResponseTyp
      * @var \Nogrod\eBaySDK\Finding\ExtensionTypeType[] $extension
      */
     private $extension = [
-        
+
     ];
 
     /**

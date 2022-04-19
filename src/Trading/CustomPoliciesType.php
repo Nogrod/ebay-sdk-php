@@ -26,7 +26,7 @@ class CustomPoliciesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      * @var int[] $productCompliancePolicyID
      */
     private $productCompliancePolicyID = [
-        
+
     ];
 
     /**

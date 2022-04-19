@@ -18,7 +18,7 @@ class AttributeArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      * @var \Nogrod\eBaySDK\Trading\AttributeType[] $attribute
      */
     private $attribute = [
-        
+
     ];
 
     /**

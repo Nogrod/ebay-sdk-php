@@ -27,7 +27,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * @var \Nogrod\eBaySDK\Trading\ListingDurationReferenceType[] $listingDuration
      */
     private $listingDuration = [
-        
+
     ];
 
     /**
@@ -892,7 +892,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * @var string[] $paymentMethod
      */
     private $paymentMethod = [
-        
+
     ];
 
     /**

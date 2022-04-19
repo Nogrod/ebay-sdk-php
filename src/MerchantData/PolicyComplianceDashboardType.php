@@ -25,7 +25,7 @@ class PolicyComplianceDashboardType implements \Sabre\Xml\XmlSerializable, \Sabr
      * @var \Nogrod\eBaySDK\MerchantData\SellerDashboardAlertType[] $alert
      */
     private $alert = [
-        
+
     ];
 
     /**

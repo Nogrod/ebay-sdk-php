@@ -17,7 +17,7 @@ class BaseRequestType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      * @var \Nogrod\eBaySDK\BusinessPoliciesManagement\ExtensionType[] $extension
      */
     private $extension = [
-        
+
     ];
 
     /**

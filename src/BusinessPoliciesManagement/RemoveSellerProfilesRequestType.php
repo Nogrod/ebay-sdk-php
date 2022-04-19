@@ -16,7 +16,7 @@ class RemoveSellerProfilesRequestType extends BaseRequestType
      * @var int[] $profileIds
      */
     private $profileIds = [
-        
+
     ];
 
     /**

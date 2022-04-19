@@ -18,7 +18,7 @@ class GetSellingManagerEmailLogResponseType extends AbstractResponseType
      * @var \Nogrod\eBaySDK\Trading\SellingManagerEmailLogType[] $emailLog
      */
     private $emailLog = [
-        
+
     ];
 
     /**

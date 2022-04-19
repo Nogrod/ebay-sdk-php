@@ -18,7 +18,7 @@ class FeedbackDetailArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
      * @var \Nogrod\eBaySDK\MerchantData\FeedbackDetailType[] $feedbackDetail
      */
     private $feedbackDetail = [
-        
+
     ];
 
     /**

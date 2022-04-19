@@ -60,7 +60,7 @@ class CharacteristicType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      * @var \Nogrod\eBaySDK\Trading\ValType[] $valueList
      */
     private $valueList = [
-        
+
     ];
 
     /**

@@ -19,7 +19,7 @@ class ErrorMessageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      * @var \Nogrod\eBaySDK\FileTransfer\ErrorDataType[] $error
      */
     private $error = [
-        
+
     ];
 
     /**

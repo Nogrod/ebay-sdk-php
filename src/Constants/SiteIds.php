@@ -1,4 +1,5 @@
 <?php
+
 namespace Nogrod\eBaySDK\Constants;
 
 /**
@@ -6,26 +7,26 @@ namespace Nogrod\eBaySDK\Constants;
  */
 class SiteIds
 {
-    const US = 0;
-    const ENCA = 2;
-    const GB = 3;
-    const AU = 15;
-    const AT = 16;
-    const FRBE = 23;
-    const FR = 71;
-    const DE = 77;
-    const MOTORS = 100;
-    const IT = 101;
-    const NLBE = 123;
-    const NL = 146;
-    const ES = 186;
-    const CH = 193;
-    const HK = 201;
-    const IN = 203;
-    const IE = 205;
-    const MY = 207;
-    const FRCA = 210;
-    const PH = 211;
-    const PL = 212;
-    const SG = 216;
+    public const US = 0;
+    public const ENCA = 2;
+    public const GB = 3;
+    public const AU = 15;
+    public const AT = 16;
+    public const FRBE = 23;
+    public const FR = 71;
+    public const DE = 77;
+    public const MOTORS = 100;
+    public const IT = 101;
+    public const NLBE = 123;
+    public const NL = 146;
+    public const ES = 186;
+    public const CH = 193;
+    public const HK = 201;
+    public const IN = 203;
+    public const IE = 205;
+    public const MY = 207;
+    public const FRCA = 210;
+    public const PH = 211;
+    public const PL = 212;
+    public const SG = 216;
 }

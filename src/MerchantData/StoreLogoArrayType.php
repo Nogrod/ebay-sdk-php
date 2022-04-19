@@ -18,7 +18,7 @@ class StoreLogoArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      * @var \Nogrod\eBaySDK\MerchantData\StoreLogoType[] $logo
      */
     private $logo = [
-        
+
     ];
 
     /**

@@ -18,7 +18,7 @@ class PromotionRuleArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      * @var \Nogrod\eBaySDK\Trading\PromotionRuleType[] $promotionRule
      */
     private $promotionRule = [
-        
+
     ];
 
     /**

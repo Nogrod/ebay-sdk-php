@@ -49,7 +49,7 @@ class SendInvoiceRequestType extends AbstractRequestType
      * @var \Nogrod\eBaySDK\Trading\InternationalShippingServiceOptionsType[] $internationalShippingServiceOptions
      */
     private $internationalShippingServiceOptions = [
-        
+
     ];
 
     /**
@@ -62,7 +62,7 @@ class SendInvoiceRequestType extends AbstractRequestType
      * @var \Nogrod\eBaySDK\Trading\ShippingServiceOptionsType[] $shippingServiceOptions
      */
     private $shippingServiceOptions = [
-        
+
     ];
 
     /**
@@ -96,7 +96,7 @@ class SendInvoiceRequestType extends AbstractRequestType
      * @var string[] $paymentMethods
      */
     private $paymentMethods = [
-        
+
     ];
 
     /**

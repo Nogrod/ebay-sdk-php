@@ -148,7 +148,7 @@ class SellingManagerSoldTransactionType implements \Sabre\Xml\XmlSerializable, \
      * @var string[] $listedOn
      */
     private $listedOn = [
-        
+
     ];
 
     /**

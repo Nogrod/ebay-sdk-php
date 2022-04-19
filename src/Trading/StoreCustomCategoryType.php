@@ -42,7 +42,7 @@ class StoreCustomCategoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
      * @var \Nogrod\eBaySDK\Trading\StoreCustomCategoryType[] $childCategory
      */
     private $childCategory = [
-        
+
     ];
 
     /**

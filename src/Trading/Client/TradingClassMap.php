@@ -2,7 +2,7 @@
 
 namespace Nogrod\eBaySDK\Trading\Client;
 
-use \Sabre\Xml\Writer;
+use Sabre\Xml\Writer;
 
 class TradingClassMap
 {
@@ -16,7 +16,7 @@ class TradingClassMap
             $writer->write($value);
         },
         'DateTime' => function (Writer $writer, $elem) {
-            $writer->write($elem->format(\DateTime::W3C));
+            $writer->write($elem->format('Y-m-d\TH:i:s.v\Z'));
         },
         'Date' => function (Writer $writer, $elem) {
             $writer->write($elem->format('Y-m-d'));

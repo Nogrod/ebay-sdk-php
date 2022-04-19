@@ -18,7 +18,7 @@ class RefundFundingSourceArrayType implements \Sabre\Xml\XmlSerializable, \Sabre
      * @var \Nogrod\eBaySDK\Trading\RefundFundingSourceType[] $refundFundingSource
      */
     private $refundFundingSource = [
-        
+
     ];
 
     /**

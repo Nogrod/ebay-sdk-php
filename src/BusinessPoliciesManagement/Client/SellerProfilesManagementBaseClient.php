@@ -15,7 +15,7 @@ class SellerProfilesManagementBaseClient extends \Nogrod\XMLClientRuntime\Client
      * @param \Nogrod\eBaySDK\BusinessPoliciesManagement\GetVersionRequest $params
      * @return \Nogrod\eBaySDK\BusinessPoliciesManagement\GetVersionResponse
      */
-    public function getVersion(\Nogrod\eBaySDK\BusinessPoliciesManagement\GetVersionRequest $params) : \Nogrod\eBaySDK\BusinessPoliciesManagement\GetVersionResponse
+    public function getVersion(\Nogrod\eBaySDK\BusinessPoliciesManagement\GetVersionRequest $params): \Nogrod\eBaySDK\BusinessPoliciesManagement\GetVersionResponse
     {
         return $this->call('getVersion', 'Nogrod\eBaySDK\BusinessPoliciesManagement\GetVersionResponse', $params);
     }
@@ -26,7 +26,7 @@ class SellerProfilesManagementBaseClient extends \Nogrod\XMLClientRuntime\Client
      * @param \Nogrod\eBaySDK\BusinessPoliciesManagement\RemoveProfileRequest $params
      * @return \Nogrod\eBaySDK\BusinessPoliciesManagement\RemoveProfileResponse
      */
-    public function removeProfile(\Nogrod\eBaySDK\BusinessPoliciesManagement\RemoveProfileRequest $params) : \Nogrod\eBaySDK\BusinessPoliciesManagement\RemoveProfileResponse
+    public function removeProfile(\Nogrod\eBaySDK\BusinessPoliciesManagement\RemoveProfileRequest $params): \Nogrod\eBaySDK\BusinessPoliciesManagement\RemoveProfileResponse
     {
         return $this->call('removeProfile', 'Nogrod\eBaySDK\BusinessPoliciesManagement\RemoveProfileResponse', $params);
     }
@@ -37,7 +37,7 @@ class SellerProfilesManagementBaseClient extends \Nogrod\XMLClientRuntime\Client
      * @param \Nogrod\eBaySDK\BusinessPoliciesManagement\AddSellerProfileRequest $params
      * @return \Nogrod\eBaySDK\BusinessPoliciesManagement\AddSellerProfileResponse
      */
-    public function addSellerProfile(\Nogrod\eBaySDK\BusinessPoliciesManagement\AddSellerProfileRequest $params) : \Nogrod\eBaySDK\BusinessPoliciesManagement\AddSellerProfileResponse
+    public function addSellerProfile(\Nogrod\eBaySDK\BusinessPoliciesManagement\AddSellerProfileRequest $params): \Nogrod\eBaySDK\BusinessPoliciesManagement\AddSellerProfileResponse
     {
         return $this->call('addSellerProfile', 'Nogrod\eBaySDK\BusinessPoliciesManagement\AddSellerProfileResponse', $params);
     }
@@ -48,7 +48,7 @@ class SellerProfilesManagementBaseClient extends \Nogrod\XMLClientRuntime\Client
      * @param \Nogrod\eBaySDK\BusinessPoliciesManagement\GetSellerProfilesRequest $params
      * @return \Nogrod\eBaySDK\BusinessPoliciesManagement\GetSellerProfilesResponse
      */
-    public function getSellerProfiles(\Nogrod\eBaySDK\BusinessPoliciesManagement\GetSellerProfilesRequest $params) : \Nogrod\eBaySDK\BusinessPoliciesManagement\GetSellerProfilesResponse
+    public function getSellerProfiles(\Nogrod\eBaySDK\BusinessPoliciesManagement\GetSellerProfilesRequest $params): \Nogrod\eBaySDK\BusinessPoliciesManagement\GetSellerProfilesResponse
     {
         return $this->call('getSellerProfiles', 'Nogrod\eBaySDK\BusinessPoliciesManagement\GetSellerProfilesResponse', $params);
     }
@@ -59,7 +59,7 @@ class SellerProfilesManagementBaseClient extends \Nogrod\XMLClientRuntime\Client
      * @param \Nogrod\eBaySDK\BusinessPoliciesManagement\SetSellerProfileRequest $params
      * @return \Nogrod\eBaySDK\BusinessPoliciesManagement\SetSellerProfileResponse
      */
-    public function setSellerProfile(\Nogrod\eBaySDK\BusinessPoliciesManagement\SetSellerProfileRequest $params) : \Nogrod\eBaySDK\BusinessPoliciesManagement\SetSellerProfileResponse
+    public function setSellerProfile(\Nogrod\eBaySDK\BusinessPoliciesManagement\SetSellerProfileRequest $params): \Nogrod\eBaySDK\BusinessPoliciesManagement\SetSellerProfileResponse
     {
         return $this->call('setSellerProfile', 'Nogrod\eBaySDK\BusinessPoliciesManagement\SetSellerProfileResponse', $params);
     }
@@ -70,7 +70,7 @@ class SellerProfilesManagementBaseClient extends \Nogrod\XMLClientRuntime\Client
      * @param \Nogrod\eBaySDK\BusinessPoliciesManagement\RemoveSellerProfilesRequest $params
      * @return \Nogrod\eBaySDK\BusinessPoliciesManagement\RemoveSellerProfilesResponse
      */
-    public function removeSellerProfiles(\Nogrod\eBaySDK\BusinessPoliciesManagement\RemoveSellerProfilesRequest $params) : \Nogrod\eBaySDK\BusinessPoliciesManagement\RemoveSellerProfilesResponse
+    public function removeSellerProfiles(\Nogrod\eBaySDK\BusinessPoliciesManagement\RemoveSellerProfilesRequest $params): \Nogrod\eBaySDK\BusinessPoliciesManagement\RemoveSellerProfilesResponse
     {
         return $this->call('removeSellerProfiles', 'Nogrod\eBaySDK\BusinessPoliciesManagement\RemoveSellerProfilesResponse', $params);
     }
@@ -81,7 +81,7 @@ class SellerProfilesManagementBaseClient extends \Nogrod\XMLClientRuntime\Client
      * @param \Nogrod\eBaySDK\BusinessPoliciesManagement\ConsolidateShippingProfilesRequest $params
      * @return \Nogrod\eBaySDK\BusinessPoliciesManagement\ConsolidateShippingProfilesResponse
      */
-    public function consolidateShippingProfiles(\Nogrod\eBaySDK\BusinessPoliciesManagement\ConsolidateShippingProfilesRequest $params) : \Nogrod\eBaySDK\BusinessPoliciesManagement\ConsolidateShippingProfilesResponse
+    public function consolidateShippingProfiles(\Nogrod\eBaySDK\BusinessPoliciesManagement\ConsolidateShippingProfilesRequest $params): \Nogrod\eBaySDK\BusinessPoliciesManagement\ConsolidateShippingProfilesResponse
     {
         return $this->call('consolidateShippingProfiles', 'Nogrod\eBaySDK\BusinessPoliciesManagement\ConsolidateShippingProfilesResponse', $params);
     }
@@ -92,7 +92,7 @@ class SellerProfilesManagementBaseClient extends \Nogrod\XMLClientRuntime\Client
      * @param \Nogrod\eBaySDK\BusinessPoliciesManagement\GetConsolidationJobStatusRequest $params
      * @return \Nogrod\eBaySDK\BusinessPoliciesManagement\GetConsolidationJobStatusResponse
      */
-    public function getConsolidationJobStatus(\Nogrod\eBaySDK\BusinessPoliciesManagement\GetConsolidationJobStatusRequest $params) : \Nogrod\eBaySDK\BusinessPoliciesManagement\GetConsolidationJobStatusResponse
+    public function getConsolidationJobStatus(\Nogrod\eBaySDK\BusinessPoliciesManagement\GetConsolidationJobStatusRequest $params): \Nogrod\eBaySDK\BusinessPoliciesManagement\GetConsolidationJobStatusResponse
     {
         return $this->call('getConsolidationJobStatus', 'Nogrod\eBaySDK\BusinessPoliciesManagement\GetConsolidationJobStatusResponse', $params);
     }
@@ -103,7 +103,7 @@ class SellerProfilesManagementBaseClient extends \Nogrod\XMLClientRuntime\Client
      * @param \Nogrod\eBaySDK\BusinessPoliciesManagement\RemoveOverridesRequest $params
      * @return \Nogrod\eBaySDK\BusinessPoliciesManagement\RemoveOverridesResponse
      */
-    public function removeOverrides(\Nogrod\eBaySDK\BusinessPoliciesManagement\RemoveOverridesRequest $params) : \Nogrod\eBaySDK\BusinessPoliciesManagement\RemoveOverridesResponse
+    public function removeOverrides(\Nogrod\eBaySDK\BusinessPoliciesManagement\RemoveOverridesRequest $params): \Nogrod\eBaySDK\BusinessPoliciesManagement\RemoveOverridesResponse
     {
         return $this->call('removeOverrides', 'Nogrod\eBaySDK\BusinessPoliciesManagement\RemoveOverridesResponse', $params);
     }

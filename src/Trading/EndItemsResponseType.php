@@ -18,7 +18,7 @@ class EndItemsResponseType extends AbstractResponseType
      * @var \Nogrod\eBaySDK\Trading\EndItemResponseContainerType[] $endItemResponseContainer
      */
     private $endItemResponseContainer = [
-        
+
     ];
 
     /**

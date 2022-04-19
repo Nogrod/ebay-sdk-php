@@ -25,7 +25,7 @@ class GetSellingManagerInventoryResponseType extends AbstractResponseType
      * @var \Nogrod\eBaySDK\Trading\SellingManagerProductType[] $sellingManagerProduct
      */
     private $sellingManagerProduct = [
-        
+
     ];
 
     /**

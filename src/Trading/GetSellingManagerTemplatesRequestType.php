@@ -18,7 +18,7 @@ class GetSellingManagerTemplatesRequestType extends AbstractRequestType
      * @var int[] $saleTemplateID
      */
     private $saleTemplateID = [
-        
+
     ];
 
     /**

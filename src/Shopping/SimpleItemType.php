@@ -119,7 +119,7 @@ class SimpleItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      * @var string[] $paymentMethods
      */
     private $paymentMethods = [
-        
+
     ];
 
     /**
@@ -144,7 +144,7 @@ class SimpleItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      * @var string[] $pictureURL
      */
     private $pictureURL = [
-        
+
     ];
 
     /**
@@ -291,7 +291,7 @@ class SimpleItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      * @var string[] $shipToLocations
      */
     private $shipToLocations = [
-        
+
     ];
 
     /**
@@ -552,7 +552,7 @@ class SimpleItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      * @var string[] $paymentAllowedSite
      */
     private $paymentAllowedSite = [
-        
+
     ];
 
     /**
@@ -678,7 +678,7 @@ class SimpleItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      * @var string[] $excludeShipToLocation
      */
     private $excludeShipToLocation = [
-        
+
     ];
 
     /**

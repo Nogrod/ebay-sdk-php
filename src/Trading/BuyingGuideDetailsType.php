@@ -23,7 +23,7 @@ class BuyingGuideDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      * @var \Nogrod\eBaySDK\Trading\BuyingGuideType[] $buyingGuide
      */
     private $buyingGuide = [
-        
+
     ];
 
     /**

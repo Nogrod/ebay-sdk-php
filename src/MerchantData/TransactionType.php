@@ -186,7 +186,7 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      * @var \Nogrod\eBaySDK\MerchantData\ExternalTransactionType[] $externalTransaction
      */
     private $externalTransaction = [
-        
+
     ];
 
     /**

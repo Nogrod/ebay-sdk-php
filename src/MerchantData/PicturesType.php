@@ -54,7 +54,7 @@ class PicturesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
      * @var \Nogrod\eBaySDK\MerchantData\VariationSpecificPictureSetType[] $variationSpecificPictureSet
      */
     private $variationSpecificPictureSet = [
-        
+
     ];
 
     /**

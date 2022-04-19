@@ -18,7 +18,7 @@ class OfferArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      * @var \Nogrod\eBaySDK\MerchantData\OfferType[] $offer
      */
     private $offer = [
-        
+
     ];
 
     /**

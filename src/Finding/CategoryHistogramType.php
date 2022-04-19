@@ -32,7 +32,7 @@ class CategoryHistogramType extends CategoryType
      * @var \Nogrod\eBaySDK\Finding\CategoryHistogramType[] $childCategoryHistogram
      */
     private $childCategoryHistogram = [
-        
+
     ];
 
     /**

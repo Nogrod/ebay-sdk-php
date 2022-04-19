@@ -24,7 +24,7 @@ class DisputeArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      * @var \Nogrod\eBaySDK\Trading\DisputeType[] $dispute
      */
     private $dispute = [
-        
+
     ];
 
     /**

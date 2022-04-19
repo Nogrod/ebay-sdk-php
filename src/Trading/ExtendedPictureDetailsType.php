@@ -20,7 +20,7 @@ class ExtendedPictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
      * @var \Nogrod\eBaySDK\Trading\PictureURLsType[] $pictureURLs
      */
     private $pictureURLs = [
-        
+
     ];
 
     /**

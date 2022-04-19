@@ -17,7 +17,6 @@ use Nogrod\XMLClientRuntime\Func;
  */
 class SoldReportResponseType extends AbstractResponseType
 {
-
     /**
      * Contains information about the sold item, such as: order ID, order line item ID, buyer information, shipping information, order creation time, payment cleared time, tax amount, and total cost.
      *  <br><br>
@@ -29,7 +28,7 @@ class SoldReportResponseType extends AbstractResponseType
      * @var \Nogrod\eBaySDK\MerchantData\OrderDetailsType[] $orderDetails
      */
     private $orderDetails = [
-        
+
     ];
 
     /**

@@ -18,7 +18,7 @@ class TrustProviderAffiliationDetailsArrayType implements \Sabre\Xml\XmlSerializ
      * @var \Nogrod\eBaySDK\MerchantData\TrustProviderAffiliationDetailsType[] $trustProviderAffiliation
      */
     private $trustProviderAffiliation = [
-        
+
     ];
 
     /**

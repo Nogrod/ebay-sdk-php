@@ -205,7 +205,7 @@ class GetJobsRequestType extends BaseServiceRequestType
      * @var string[] $jobType
      */
     private $jobType = [
-        
+
     ];
 
     /**
@@ -214,7 +214,7 @@ class GetJobsRequestType extends BaseServiceRequestType
      * @var string[] $jobStatus
      */
     private $jobStatus = [
-        
+
     ];
 
     /**

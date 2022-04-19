@@ -84,7 +84,7 @@ class ReviseSellingManagerTemplateRequestType extends AbstractRequestType
      * @var string[] $deletedField
      */
     private $deletedField = [
-        
+
     ];
 
     /**

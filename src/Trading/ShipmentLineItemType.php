@@ -18,7 +18,7 @@ class ShipmentLineItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
      * @var \Nogrod\eBaySDK\Trading\LineItemType[] $lineItem
      */
     private $lineItem = [
-        
+
     ];
 
     /**

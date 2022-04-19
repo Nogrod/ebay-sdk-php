@@ -30,7 +30,7 @@ class ConditionValuesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * @var \Nogrod\eBaySDK\MerchantData\ConditionType[] $condition
      */
     private $condition = [
-        
+
     ];
 
     /**

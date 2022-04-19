@@ -72,7 +72,7 @@ class BiddingSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      * @var \Nogrod\eBaySDK\Trading\ItemBidDetailsType[] $itemBidDetails
      */
     private $itemBidDetails = [
-        
+
     ];
 
     /**

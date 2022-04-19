@@ -16,7 +16,7 @@ class PaymentInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      * @var string[] $acceptedPaymentMethod
      */
     private $acceptedPaymentMethod = [
-        
+
     ];
 
     /**

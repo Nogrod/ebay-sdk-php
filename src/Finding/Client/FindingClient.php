@@ -9,17 +9,17 @@ use Nogrod\eBaySDK\Constants\Version;
 
 class FindingClient extends FindingBaseClient
 {
-    const X_EBAY_SOA_SERVICE_VERSION = 'X-EBAY-SOA-SERVICE-VERSION';
+    public const X_EBAY_SOA_SERVICE_VERSION = 'X-EBAY-SOA-SERVICE-VERSION';
 
-    const X_EBAY_SOA_SECURITY_APPNAME = 'X-EBAY-SOA-SECURITY-APPNAME';
+    public const X_EBAY_SOA_SECURITY_APPNAME = 'X-EBAY-SOA-SECURITY-APPNAME';
 
-    const X_EBAY_SOA_GLOBAL_ID = 'X-EBAY-SOA-GLOBAL-ID';
+    public const X_EBAY_SOA_GLOBAL_ID = 'X-EBAY-SOA-GLOBAL-ID';
 
-    const X_EBAY_SOA_OPERATION_NAME = 'X-EBAY-SOA-OPERATION-NAME';
+    public const X_EBAY_SOA_OPERATION_NAME = 'X-EBAY-SOA-OPERATION-NAME';
 
-    const PRODUCTION_URL = 'https://svcs.ebay.com/services/search/FindingService/v1';
+    public const PRODUCTION_URL = 'https://svcs.ebay.com/services/search/FindingService/v1';
 
-    const SANDBOX_URL = 'https://svcs.sandbox.ebay.com/services/search/FindingService/v1';
+    public const SANDBOX_URL = 'https://svcs.sandbox.ebay.com/services/search/FindingService/v1';
 
     public function __construct(array $config = [], Serializer $serializer = null, MessageFactory $messageFactory = null, HttpClient $client = null)
     {

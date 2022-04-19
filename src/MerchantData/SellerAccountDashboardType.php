@@ -30,7 +30,7 @@ class SellerAccountDashboardType implements \Sabre\Xml\XmlSerializable, \Sabre\X
      * @var \Nogrod\eBaySDK\MerchantData\SellerDashboardAlertType[] $alert
      */
     private $alert = [
-        
+
     ];
 
     /**

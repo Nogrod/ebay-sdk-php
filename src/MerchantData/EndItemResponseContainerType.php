@@ -55,7 +55,7 @@ class EndItemResponseContainerType implements \Sabre\Xml\XmlSerializable, \Sabre
      * @var \Nogrod\eBaySDK\MerchantData\ErrorType[] $errors
      */
     private $errors = [
-        
+
     ];
 
     /**

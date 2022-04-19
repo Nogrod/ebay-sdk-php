@@ -18,7 +18,7 @@ class SellingManagerSoldOrderType implements \Sabre\Xml\XmlSerializable, \Sabre\
      * @var \Nogrod\eBaySDK\MerchantData\SellingManagerSoldTransactionType[] $sellingManagerSoldTransaction
      */
     private $sellingManagerSoldTransaction = [
-        
+
     ];
 
     /**
@@ -71,7 +71,7 @@ class SellingManagerSoldOrderType implements \Sabre\Xml\XmlSerializable, \Sabre\
      * @var \Nogrod\eBaySDK\MerchantData\VATRateType[] $vATRate
      */
     private $vATRate = [
-        
+
     ];
 
     /**

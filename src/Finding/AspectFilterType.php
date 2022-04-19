@@ -34,7 +34,7 @@ class AspectFilterType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      * @var string[] $aspectValueName
      */
     private $aspectValueName = [
-        
+
     ];
 
     /**

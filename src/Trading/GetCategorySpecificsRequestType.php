@@ -26,7 +26,7 @@ class GetCategorySpecificsRequestType extends AbstractRequestType
      * @var string[] $categoryID
      */
     private $categoryID = [
-        
+
     ];
 
     /**
@@ -87,7 +87,7 @@ class GetCategorySpecificsRequestType extends AbstractRequestType
      * @var \Nogrod\eBaySDK\Trading\CategoryItemSpecificsType[] $categorySpecific
      */
     private $categorySpecific = [
-        
+
     ];
 
     /**

@@ -18,7 +18,7 @@ class GalleryInfoContainerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
      * @var \Nogrod\eBaySDK\Finding\GalleryURLType[] $galleryURL
      */
     private $galleryURL = [
-        
+
     ];
 
     /**

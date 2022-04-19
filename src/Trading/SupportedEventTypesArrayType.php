@@ -16,7 +16,7 @@ class SupportedEventTypesArrayType implements \Sabre\Xml\XmlSerializable, \Sabre
      * @var string[] $eventType
      */
     private $eventType = [
-        
+
     ];
 
     /**

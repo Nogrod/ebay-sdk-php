@@ -25,7 +25,7 @@ class OrderIDArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      * @var string[] $orderID
      */
     private $orderID = [
-        
+
     ];
 
     /**

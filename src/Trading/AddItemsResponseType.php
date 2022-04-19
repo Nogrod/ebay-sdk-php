@@ -18,7 +18,7 @@ class AddItemsResponseType extends AbstractResponseType
      * @var \Nogrod\eBaySDK\Trading\AddItemResponseContainerType[] $addItemResponseContainer
      */
     private $addItemResponseContainer = [
-        
+
     ];
 
     /**

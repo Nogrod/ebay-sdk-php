@@ -18,7 +18,7 @@ class BuyerPackageEnclosuresType implements \Sabre\Xml\XmlSerializable, \Sabre\X
      * @var \Nogrod\eBaySDK\Trading\BuyerPackageEnclosureType[] $buyerPackageEnclosure
      */
     private $buyerPackageEnclosure = [
-        
+
     ];
 
     /**

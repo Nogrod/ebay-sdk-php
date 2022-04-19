@@ -114,7 +114,7 @@ class ShippingInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      * @var string[] $shipToLocations
      */
     private $shipToLocations = [
-        
+
     ];
 
     /**

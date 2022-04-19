@@ -54,7 +54,7 @@ class SiteHostedPictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre
      * @var \Nogrod\eBaySDK\MerchantData\PictureSetMemberType[] $pictureSetMember
      */
     private $pictureSetMember = [
-        
+
     ];
 
     /**

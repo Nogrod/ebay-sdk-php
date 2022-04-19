@@ -28,7 +28,7 @@ class MerchantDataVariationsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
      * @var \Nogrod\eBaySDK\MerchantData\MerchantDataVariationType[] $variation
      */
     private $variation = [
-        
+
     ];
 
     /**

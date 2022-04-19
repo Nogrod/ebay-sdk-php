@@ -85,7 +85,7 @@ class VerifyAddFixedPriceItemResponseType extends AbstractResponseType
      * @var string[] $discountReason
      */
     private $discountReason = [
-        
+
     ];
 
     /**

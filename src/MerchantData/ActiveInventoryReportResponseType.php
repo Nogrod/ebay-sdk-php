@@ -20,7 +20,7 @@ class ActiveInventoryReportResponseType extends AbstractResponseType
      * @var \Nogrod\eBaySDK\MerchantData\SKUDetailsType[] $sKUDetails
      */
     private $sKUDetails = [
-        
+
     ];
 
     /**

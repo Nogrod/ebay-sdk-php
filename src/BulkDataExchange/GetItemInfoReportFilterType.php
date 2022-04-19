@@ -60,7 +60,7 @@ class GetItemInfoReportFilterType implements \Sabre\Xml\XmlSerializable, \Sabre\
      * @var string[] $timeFrame
      */
     private $timeFrame = [
-        
+
     ];
 
     /**
@@ -69,7 +69,7 @@ class GetItemInfoReportFilterType implements \Sabre\Xml\XmlSerializable, \Sabre\
      * @var string[] $changedFieldSelector
      */
     private $changedFieldSelector = [
-        
+
     ];
 
     /**

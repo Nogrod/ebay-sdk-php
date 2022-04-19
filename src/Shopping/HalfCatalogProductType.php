@@ -68,7 +68,7 @@ class HalfCatalogProductType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      * @var \Nogrod\eBaySDK\Shopping\ProductIDType[] $productID
      */
     private $productID = [
-        
+
     ];
 
     /**

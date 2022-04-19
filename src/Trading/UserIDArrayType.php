@@ -19,7 +19,7 @@ class UserIDArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      * @var string[] $userID
      */
     private $userID = [
-        
+
     ];
 
     /**

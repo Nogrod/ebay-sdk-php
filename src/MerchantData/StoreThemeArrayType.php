@@ -18,7 +18,7 @@ class StoreThemeArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * @var \Nogrod\eBaySDK\MerchantData\StoreThemeType[] $theme
      */
     private $theme = [
-        
+
     ];
 
     /**

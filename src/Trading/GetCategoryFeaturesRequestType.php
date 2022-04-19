@@ -71,7 +71,7 @@ class GetCategoryFeaturesRequestType extends AbstractRequestType
      * @var string[] $featureID
      */
     private $featureID = [
-        
+
     ];
 
     /**

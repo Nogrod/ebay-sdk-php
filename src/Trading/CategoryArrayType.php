@@ -18,7 +18,7 @@ class CategoryArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
      * @var \Nogrod\eBaySDK\Trading\CategoryType[] $category
      */
     private $category = [
-        
+
     ];
 
     /**

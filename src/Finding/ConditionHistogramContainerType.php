@@ -36,7 +36,7 @@ class ConditionHistogramContainerType implements \Sabre\Xml\XmlSerializable, \Sa
      * @var \Nogrod\eBaySDK\Finding\ConditionHistogramType[] $conditionHistogram
      */
     private $conditionHistogram = [
-        
+
     ];
 
     /**

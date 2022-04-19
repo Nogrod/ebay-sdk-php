@@ -20,7 +20,7 @@ class SimpleItemArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * @var \Nogrod\eBaySDK\Shopping\SimpleItemType[] $item
      */
     private $item = [
-        
+
     ];
 
     /**

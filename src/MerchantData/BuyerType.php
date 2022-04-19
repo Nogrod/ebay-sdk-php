@@ -35,7 +35,7 @@ class BuyerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      * @var \Nogrod\eBaySDK\MerchantData\TaxIdentifierType[] $buyerTaxIdentifier
      */
     private $buyerTaxIdentifier = [
-        
+
     ];
 
     /**

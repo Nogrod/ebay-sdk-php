@@ -41,7 +41,7 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * @var \Nogrod\eBaySDK\Shopping\InternationalShippingServiceOptionType[] $internationalShippingServiceOption
      */
     private $internationalShippingServiceOption = [
-        
+
     ];
 
     /**
@@ -66,7 +66,7 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * @var \Nogrod\eBaySDK\Shopping\ShippingServiceOptionType[] $shippingServiceOption
      */
     private $shippingServiceOption = [
-        
+
     ];
 
     /**
@@ -105,7 +105,7 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * @var string[] $excludeShipToLocation
      */
     private $excludeShipToLocation = [
-        
+
     ];
 
     /**

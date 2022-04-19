@@ -60,7 +60,7 @@ class GetSellingManagerInventoryRequestType extends AbstractRequestType
      * @var string[] $filter
      */
     private $filter = [
-        
+
     ];
 
     /**

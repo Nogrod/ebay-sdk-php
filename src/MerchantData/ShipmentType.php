@@ -95,7 +95,7 @@ class ShipmentType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
      * @var string[] $shippingFeature
      */
     private $shippingFeature = [
-        
+
     ];
 
     /**
@@ -140,7 +140,7 @@ class ShipmentType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
      * @var \Nogrod\eBaySDK\MerchantData\ItemTransactionIDType[] $itemTransactionID
      */
     private $itemTransactionID = [
-        
+
     ];
 
     /**
@@ -208,7 +208,7 @@ class ShipmentType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
      * @var \Nogrod\eBaySDK\MerchantData\ShipmentTrackingDetailsType[] $shipmentTrackingDetails
      */
     private $shipmentTrackingDetails = [
-        
+
     ];
 
     /**

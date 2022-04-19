@@ -51,7 +51,7 @@ class FindProductsRequestType extends AbstractRequestType
      * @var string[] $domainName
      */
     private $domainName = [
-        
+
     ];
 
     /**

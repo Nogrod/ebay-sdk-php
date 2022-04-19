@@ -30,7 +30,7 @@ class SearchResultType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      * @var \Nogrod\eBaySDK\Finding\SearchItemType[] $item
      */
     private $item = [
-        
+
     ];
 
     /**

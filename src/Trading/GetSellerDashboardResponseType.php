@@ -89,7 +89,7 @@ class GetSellerDashboardResponseType extends AbstractResponseType
      * @var \Nogrod\eBaySDK\Trading\PerformanceDashboardType[] $performance
      */
     private $performance = [
-        
+
     ];
 
     /**

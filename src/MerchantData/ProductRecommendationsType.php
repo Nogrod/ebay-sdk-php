@@ -18,7 +18,7 @@ class ProductRecommendationsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
      * @var \Nogrod\eBaySDK\MerchantData\ProductInfoType[] $product
      */
     private $product = [
-        
+
     ];
 
     /**

@@ -21,7 +21,7 @@ class MinimumFeedbackScoreDetailsType implements \Sabre\Xml\XmlSerializable, \Sa
      * @var int[] $feedbackScore
      */
     private $feedbackScore = [
-        
+
     ];
 
     /**

@@ -18,7 +18,7 @@ class InternationalReturnsShipmentPayeeCodeType implements \Sabre\Xml\XmlSeriali
      * @var string[] $internationalReturnsShipmentPayee
      */
     private $internationalReturnsShipmentPayee = [
-        
+
     ];
 
     /**

@@ -34,7 +34,7 @@ class GetContextualKeywordsRequestType extends AbstractRequestType
      * @var string[] $categoryID
      */
     private $categoryID = [
-        
+
     ];
 
     /**

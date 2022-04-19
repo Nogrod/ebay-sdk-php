@@ -39,7 +39,7 @@ class PictureManagerPictureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
      * @var \Nogrod\eBaySDK\Trading\PictureManagerPictureDisplayType[] $displayFormat
      */
     private $displayFormat = [
-        
+
     ];
 
     /**

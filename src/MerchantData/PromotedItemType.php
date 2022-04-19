@@ -58,7 +58,7 @@ class PromotedItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      * @var \Nogrod\eBaySDK\MerchantData\PromotionDetailsType[] $promotionDetails
      */
     private $promotionDetails = [
-        
+
     ];
 
     /**

@@ -60,7 +60,7 @@ class CrossPromotionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * @var \Nogrod\eBaySDK\MerchantData\PromotedItemType[] $promotedItem
      */
     private $promotedItem = [
-        
+
     ];
 
     /**

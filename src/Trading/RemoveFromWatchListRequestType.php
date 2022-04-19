@@ -22,7 +22,7 @@ class RemoveFromWatchListRequestType extends AbstractRequestType
      * @var string[] $itemID
      */
     private $itemID = [
-        
+
     ];
 
     /**
@@ -39,7 +39,7 @@ class RemoveFromWatchListRequestType extends AbstractRequestType
      * @var \Nogrod\eBaySDK\Trading\VariationKeyType[] $variationKey
      */
     private $variationKey = [
-        
+
     ];
 
     /**

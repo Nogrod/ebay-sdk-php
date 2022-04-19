@@ -36,7 +36,7 @@ class NameValueListType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
      * @var string[] $value
      */
     private $value = [
-        
+
     ];
 
     /**

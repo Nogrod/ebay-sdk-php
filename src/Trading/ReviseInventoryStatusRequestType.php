@@ -21,7 +21,7 @@ class ReviseInventoryStatusRequestType extends AbstractRequestType
      * @var \Nogrod\eBaySDK\Trading\InventoryStatusType[] $inventoryStatus
      */
     private $inventoryStatus = [
-        
+
     ];
 
     /**

@@ -22,7 +22,7 @@ class MyMessagesSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
      * @var \Nogrod\eBaySDK\MerchantData\MyMessagesFolderSummaryType[] $folderSummary
      */
     private $folderSummary = [
-        
+
     ];
 
     /**

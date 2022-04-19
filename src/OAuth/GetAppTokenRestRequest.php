@@ -1,4 +1,5 @@
 <?php
+
 namespace Nogrod\eBaySDK\OAuth;
 
 class GetAppTokenRestRequest extends BaseType

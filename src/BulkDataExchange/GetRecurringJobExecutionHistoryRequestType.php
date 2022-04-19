@@ -51,7 +51,7 @@ class GetRecurringJobExecutionHistoryRequestType extends BaseServiceRequestType
      * @var string[] $jobStatus
      */
     private $jobStatus = [
-        
+
     ];
 
     /**

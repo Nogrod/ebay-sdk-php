@@ -18,7 +18,7 @@ class DomesticRefundMethodCodeType implements \Sabre\Xml\XmlSerializable, \Sabre
      * @var string[] $domesticRefundMethod
      */
     private $domesticRefundMethod = [
-        
+
     ];
 
     /**

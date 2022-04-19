@@ -21,7 +21,7 @@ class MembershipDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
      * @var \Nogrod\eBaySDK\Trading\MembershipDetailType[] $program
      */
     private $program = [
-        
+
     ];
 
     /**

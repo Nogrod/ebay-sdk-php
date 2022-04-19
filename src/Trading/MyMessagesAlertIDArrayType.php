@@ -18,7 +18,7 @@ class MyMessagesAlertIDArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\X
      * @var string[] $alertID
      */
     private $alertID = [
-        
+
     ];
 
     /**

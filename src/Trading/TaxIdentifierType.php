@@ -32,7 +32,7 @@ class TaxIdentifierType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
      * @var \Nogrod\eBaySDK\Trading\TaxIdentifierAttributeType[] $attribute
      */
     private $attribute = [
-        
+
     ];
 
     /**

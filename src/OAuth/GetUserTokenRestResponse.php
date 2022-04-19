@@ -1,4 +1,5 @@
 <?php
+
 namespace Nogrod\eBaySDK\OAuth;
 
 class GetUserTokenRestResponse extends BaseType

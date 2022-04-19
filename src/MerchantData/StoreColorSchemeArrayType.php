@@ -18,7 +18,7 @@ class StoreColorSchemeArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
      * @var \Nogrod\eBaySDK\MerchantData\StoreColorSchemeType[] $colorScheme
      */
     private $colorScheme = [
-        
+
     ];
 
     /**

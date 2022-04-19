@@ -18,7 +18,7 @@ class RefundLineArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * @var \Nogrod\eBaySDK\Trading\RefundLineType[] $refundLine
      */
     private $refundLine = [
-        
+
     ];
 
     /**

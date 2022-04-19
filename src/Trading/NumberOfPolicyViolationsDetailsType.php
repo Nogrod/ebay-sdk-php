@@ -18,7 +18,7 @@ class NumberOfPolicyViolationsDetailsType implements \Sabre\Xml\XmlSerializable,
      * @var int[] $count
      */
     private $count = [
-        
+
     ];
 
     /**

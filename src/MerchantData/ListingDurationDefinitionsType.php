@@ -25,7 +25,7 @@ class ListingDurationDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sab
      * @var \Nogrod\eBaySDK\MerchantData\ListingDurationDefinitionType[] $listingDuration
      */
     private $listingDuration = [
-        
+
     ];
 
     /**

@@ -85,7 +85,7 @@ class MemberMessageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
      * @var string[] $recipientID
      */
     private $recipientID = [
-        
+
     ];
 
     /**
@@ -130,7 +130,7 @@ class MemberMessageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
      * @var \Nogrod\eBaySDK\Trading\MessageMediaType[] $messageMedia
      */
     private $messageMedia = [
-        
+
     ];
 
     /**

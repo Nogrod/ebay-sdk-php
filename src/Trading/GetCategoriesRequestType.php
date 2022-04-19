@@ -39,7 +39,7 @@ class GetCategoriesRequestType extends AbstractRequestType
      * @var string[] $categoryParent
      */
     private $categoryParent = [
-        
+
     ];
 
     /**

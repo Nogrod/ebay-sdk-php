@@ -18,7 +18,7 @@ class MemberMessageExchangeArrayType implements \Sabre\Xml\XmlSerializable, \Sab
      * @var \Nogrod\eBaySDK\Trading\MemberMessageExchangeType[] $memberMessageExchange
      */
     private $memberMessageExchange = [
-        
+
     ];
 
     /**

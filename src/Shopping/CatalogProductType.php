@@ -61,7 +61,7 @@ class CatalogProductType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      * @var \Nogrod\eBaySDK\Shopping\ProductIDType[] $productID
      */
     private $productID = [
-        
+
     ];
 
     /**

@@ -44,7 +44,7 @@ class BaseResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      * @var \Nogrod\eBaySDK\BusinessPoliciesManagement\ExtensionType[] $extension
      */
     private $extension = [
-        
+
     ];
 
     /**

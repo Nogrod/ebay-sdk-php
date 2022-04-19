@@ -18,7 +18,7 @@ class OrderArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      * @var \Nogrod\eBaySDK\MerchantData\OrderType[] $order
      */
     private $order = [
-        
+
     ];
 
     /**
@@ -27,7 +27,7 @@ class OrderArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      * @var \Nogrod\eBaySDK\MerchantData\ErrorType[] $errors
      */
     private $errors = [
-        
+
     ];
 
     /**

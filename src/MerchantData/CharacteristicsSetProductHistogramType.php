@@ -18,7 +18,7 @@ class CharacteristicsSetProductHistogramType implements \Sabre\Xml\XmlSerializab
      * @var \Nogrod\eBaySDK\MerchantData\HistogramEntryType[] $histogramEntry
      */
     private $histogramEntry = [
-        
+
     ];
 
     /**

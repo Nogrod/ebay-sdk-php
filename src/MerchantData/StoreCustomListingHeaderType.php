@@ -39,7 +39,7 @@ class StoreCustomListingHeaderType implements \Sabre\Xml\XmlSerializable, \Sabre
      * @var \Nogrod\eBaySDK\MerchantData\StoreCustomListingHeaderLinkType[] $linkToInclude
      */
     private $linkToInclude = [
-        
+
     ];
 
     /**

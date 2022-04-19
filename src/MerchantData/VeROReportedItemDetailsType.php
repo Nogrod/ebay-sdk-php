@@ -19,7 +19,7 @@ class VeROReportedItemDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\
      * @var \Nogrod\eBaySDK\MerchantData\VeROReportedItemType[] $reportedItem
      */
     private $reportedItem = [
-        
+
     ];
 
     /**

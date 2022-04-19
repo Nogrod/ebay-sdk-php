@@ -36,7 +36,7 @@ class FindHalfProductsRequestType extends AbstractRequestType
      * @var string[] $domainName
      */
     private $domainName = [
-        
+
     ];
 
     /**

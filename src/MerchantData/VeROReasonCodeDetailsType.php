@@ -18,7 +18,7 @@ class VeROReasonCodeDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
      * @var \Nogrod\eBaySDK\MerchantData\VeROSiteDetailType[] $veROSiteDetail
      */
     private $veROSiteDetail = [
-        
+
     ];
 
     /**

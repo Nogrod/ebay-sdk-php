@@ -21,7 +21,7 @@ class TaxTableType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
      * @var \Nogrod\eBaySDK\Shopping\TaxJurisdictionType[] $taxJurisdiction
      */
     private $taxJurisdiction = [
-        
+
     ];
 
     /**

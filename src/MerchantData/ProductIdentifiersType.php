@@ -31,7 +31,7 @@ class ProductIdentifiersType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      * @var \Nogrod\eBaySDK\MerchantData\NameRecommendationType[] $nameRecommendation
      */
     private $nameRecommendation = [
-        
+
     ];
 
     /**

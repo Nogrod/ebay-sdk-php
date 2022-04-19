@@ -13,7 +13,7 @@ class FileTransferBaseClient extends \Nogrod\XMLClientRuntime\Client
      * @param \Nogrod\eBaySDK\FileTransfer\UploadFileRequest $params
      * @return \Nogrod\eBaySDK\FileTransfer\UploadFileResponse
      */
-    public function uploadFile(\Nogrod\eBaySDK\FileTransfer\UploadFileRequest $params) : \Nogrod\eBaySDK\FileTransfer\UploadFileResponse
+    public function uploadFile(\Nogrod\eBaySDK\FileTransfer\UploadFileRequest $params): \Nogrod\eBaySDK\FileTransfer\UploadFileResponse
     {
         return $this->call('uploadFile', 'Nogrod\eBaySDK\FileTransfer\UploadFileResponse', $params);
     }
@@ -24,7 +24,7 @@ class FileTransferBaseClient extends \Nogrod\XMLClientRuntime\Client
      * @param \Nogrod\eBaySDK\FileTransfer\DownloadFileRequest $params
      * @return \Nogrod\eBaySDK\FileTransfer\DownloadFileResponse
      */
-    public function downloadFile(\Nogrod\eBaySDK\FileTransfer\DownloadFileRequest $params) : \Nogrod\eBaySDK\FileTransfer\DownloadFileResponse
+    public function downloadFile(\Nogrod\eBaySDK\FileTransfer\DownloadFileRequest $params): \Nogrod\eBaySDK\FileTransfer\DownloadFileResponse
     {
         return $this->call('downloadFile', 'Nogrod\eBaySDK\FileTransfer\DownloadFileResponse', $params);
     }

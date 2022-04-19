@@ -18,7 +18,7 @@ class GetRecurringJobsResponseType extends BaseServiceResponseType
      * @var \Nogrod\eBaySDK\BulkDataExchange\RecurringJobDetailType[] $recurringJobDetail
      */
     private $recurringJobDetail = [
-        
+
     ];
 
     /**

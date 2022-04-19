@@ -18,7 +18,7 @@ class InternationalRefundMethodCodeType implements \Sabre\Xml\XmlSerializable, \
      * @var string[] $internationalRefundMethod
      */
     private $internationalRefundMethod = [
-        
+
     ];
 
     /**

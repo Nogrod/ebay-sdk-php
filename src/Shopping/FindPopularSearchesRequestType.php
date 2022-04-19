@@ -18,7 +18,7 @@ class FindPopularSearchesRequestType extends AbstractRequestType
      * @var string[] $categoryID
      */
     private $categoryID = [
-        
+
     ];
 
     /**
@@ -27,7 +27,7 @@ class FindPopularSearchesRequestType extends AbstractRequestType
      * @var string[] $queryKeywords
      */
     private $queryKeywords = [
-        
+
     ];
 
     /**

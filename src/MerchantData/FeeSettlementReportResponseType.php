@@ -97,7 +97,7 @@ class FeeSettlementReportResponseType extends AbstractResponseType
      * @var \Nogrod\eBaySDK\MerchantData\OrderDetailsType[] $orderTransactionList
      */
     private $orderTransactionList = [
-        
+
     ];
 
     /**
@@ -106,7 +106,7 @@ class FeeSettlementReportResponseType extends AbstractResponseType
      * @var \Nogrod\eBaySDK\MerchantData\TransactionListType[] $listingTransactionList
      */
     private $listingTransactionList = [
-        
+
     ];
 
     /**
@@ -115,7 +115,7 @@ class FeeSettlementReportResponseType extends AbstractResponseType
      * @var \Nogrod\eBaySDK\MerchantData\OrderDetailsType[] $orderAdjustmentList
      */
     private $orderAdjustmentList = [
-        
+
     ];
 
     /**
@@ -124,7 +124,7 @@ class FeeSettlementReportResponseType extends AbstractResponseType
      * @var \Nogrod\eBaySDK\MerchantData\AccountTransactionType[] $accountTransactionList
      */
     private $accountTransactionList = [
-        
+
     ];
 
     /**
@@ -133,7 +133,7 @@ class FeeSettlementReportResponseType extends AbstractResponseType
      * @var \Nogrod\eBaySDK\MerchantData\AccountTransactionType[] $discountTransactionList
      */
     private $discountTransactionList = [
-        
+
     ];
 
     /**

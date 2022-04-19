@@ -31,7 +31,7 @@ class PowerSellerDashboardType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
      * @var \Nogrod\eBaySDK\MerchantData\SellerDashboardAlertType[] $alert
      */
     private $alert = [
-        
+
     ];
 
     /**

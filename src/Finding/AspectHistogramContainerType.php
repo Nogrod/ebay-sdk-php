@@ -64,7 +64,7 @@ class AspectHistogramContainerType implements \Sabre\Xml\XmlSerializable, \Sabre
      * @var \Nogrod\eBaySDK\Finding\AspectType[] $aspect
      */
     private $aspect = [
-        
+
     ];
 
     /**

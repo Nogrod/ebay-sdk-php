@@ -25,7 +25,7 @@ class MyeBayFavoriteSellerListType implements \Sabre\Xml\XmlSerializable, \Sabre
      * @var \Nogrod\eBaySDK\MerchantData\MyeBayFavoriteSellerType[] $favoriteSeller
      */
     private $favoriteSeller = [
-        
+
     ];
 
     /**

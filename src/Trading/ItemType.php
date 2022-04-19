@@ -246,7 +246,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      * @var string[] $listingEnhancement
      */
     private $listingEnhancement = [
-        
+
     ];
 
     /**
@@ -338,7 +338,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      * @var string[] $paymentMethods
      */
     private $paymentMethods = [
-        
+
     ];
 
     /**
@@ -655,7 +655,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      * @var string[] $shipToLocations
      */
     private $shipToLocations = [
-        
+
     ];
 
     /**
@@ -1249,7 +1249,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      * @var string[] $crossBorderTrade
      */
     private $crossBorderTrade = [
-        
+
     ];
 
     /**
@@ -1341,7 +1341,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      * @var string[] $paymentAllowedSite
      */
     private $paymentAllowedSite = [
-        
+
     ];
 
     /**

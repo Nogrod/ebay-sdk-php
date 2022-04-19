@@ -60,7 +60,7 @@ class ProductSearchType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
      * @var \Nogrod\eBaySDK\MerchantData\SearchAttributesType[] $searchAttributes
      */
     private $searchAttributes = [
-        
+
     ];
 
     /**

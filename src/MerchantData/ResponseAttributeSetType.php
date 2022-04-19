@@ -39,7 +39,7 @@ class ResponseAttributeSetType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
      * @var \Nogrod\eBaySDK\MerchantData\ProductFamilyType[] $productFamilies
      */
     private $productFamilies = [
-        
+
     ];
 
     /**
@@ -48,7 +48,7 @@ class ResponseAttributeSetType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
      * @var \Nogrod\eBaySDK\MerchantData\ProductFinderConstraintType[] $productFinderConstraints
      */
     private $productFinderConstraints = [
-        
+
     ];
 
     /**

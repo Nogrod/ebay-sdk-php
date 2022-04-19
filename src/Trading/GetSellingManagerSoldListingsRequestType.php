@@ -34,7 +34,7 @@ class GetSellingManagerSoldListingsRequestType extends AbstractRequestType
      * @var string[] $filter
      */
     private $filter = [
-        
+
     ];
 
     /**

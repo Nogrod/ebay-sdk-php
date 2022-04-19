@@ -23,7 +23,7 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      * @var \Nogrod\eBaySDK\Trading\CountryDetailsType[] $countryDetails
      */
     private $countryDetails = [
-        
+
     ];
 
     /**
@@ -39,7 +39,7 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      * @var \Nogrod\eBaySDK\Trading\CurrencyDetailsType[] $currencyDetails
      */
     private $currencyDetails = [
-        
+
     ];
 
     /**
@@ -54,7 +54,7 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      * @var \Nogrod\eBaySDK\Trading\DispatchTimeMaxDetailsType[] $dispatchTimeMaxDetails
      */
     private $dispatchTimeMaxDetails = [
-        
+
     ];
 
     /**
@@ -66,7 +66,7 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      * @var \Nogrod\eBaySDK\Trading\PaymentOptionDetailsType[] $paymentOptionDetails
      */
     private $paymentOptionDetails = [
-        
+
     ];
 
     /**
@@ -81,7 +81,7 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      * @var \Nogrod\eBaySDK\Trading\RegionDetailsType[] $regionDetails
      */
     private $regionDetails = [
-        
+
     ];
 
     /**
@@ -96,7 +96,7 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      * @var \Nogrod\eBaySDK\Trading\ShippingLocationDetailsType[] $shippingLocationDetails
      */
     private $shippingLocationDetails = [
-        
+
     ];
 
     /**
@@ -111,7 +111,7 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      * @var \Nogrod\eBaySDK\Trading\ShippingServiceDetailsType[] $shippingServiceDetails
      */
     private $shippingServiceDetails = [
-        
+
     ];
 
     /**
@@ -126,7 +126,7 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      * @var \Nogrod\eBaySDK\Trading\SiteDetailsType[] $siteDetails
      */
     private $siteDetails = [
-        
+
     ];
 
     /**
@@ -142,7 +142,7 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      * @var \Nogrod\eBaySDK\Trading\TaxJurisdictionType[] $taxJurisdiction
      */
     private $taxJurisdiction = [
-        
+
     ];
 
     /**
@@ -157,7 +157,7 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      * @var \Nogrod\eBaySDK\Trading\URLDetailsType[] $uRLDetails
      */
     private $uRLDetails = [
-        
+
     ];
 
     /**
@@ -172,7 +172,7 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      * @var \Nogrod\eBaySDK\Trading\TimeZoneDetailsType[] $timeZoneDetails
      */
     private $timeZoneDetails = [
-        
+
     ];
 
     /**
@@ -187,7 +187,7 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      * @var \Nogrod\eBaySDK\Trading\ItemSpecificDetailsType[] $itemSpecificDetails
      */
     private $itemSpecificDetails = [
-        
+
     ];
 
     /**
@@ -196,7 +196,7 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      * @var \Nogrod\eBaySDK\Trading\UnitOfMeasurementDetailsType[] $unitOfMeasurementDetails
      */
     private $unitOfMeasurementDetails = [
-        
+
     ];
 
     /**
@@ -211,7 +211,7 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      * @var \Nogrod\eBaySDK\Trading\RegionOfOriginDetailsType[] $regionOfOriginDetails
      */
     private $regionOfOriginDetails = [
-        
+
     ];
 
     /**
@@ -226,7 +226,7 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      * @var \Nogrod\eBaySDK\Trading\ShippingPackageDetailsType[] $shippingPackageDetails
      */
     private $shippingPackageDetails = [
-        
+
     ];
 
     /**
@@ -241,7 +241,7 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      * @var \Nogrod\eBaySDK\Trading\ShippingCarrierDetailsType[] $shippingCarrierDetails
      */
     private $shippingCarrierDetails = [
-        
+
     ];
 
     /**
@@ -281,7 +281,7 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      * @var \Nogrod\eBaySDK\Trading\ListingStartPriceDetailsType[] $listingStartPriceDetails
      */
     private $listingStartPriceDetails = [
-        
+
     ];
 
     /**
@@ -296,7 +296,7 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      * @var \Nogrod\eBaySDK\Trading\SiteBuyerRequirementDetailsType[] $buyerRequirementDetails
      */
     private $buyerRequirementDetails = [
-        
+
     ];
 
     /**
@@ -311,7 +311,7 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      * @var \Nogrod\eBaySDK\Trading\ListingFeatureDetailsType[] $listingFeatureDetails
      */
     private $listingFeatureDetails = [
-        
+
     ];
 
     /**
@@ -344,7 +344,7 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      * @var \Nogrod\eBaySDK\Trading\ExcludeShippingLocationDetailsType[] $excludeShippingLocationDetails
      */
     private $excludeShippingLocationDetails = [
-        
+
     ];
 
     /**
@@ -368,7 +368,7 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      * @var \Nogrod\eBaySDK\Trading\RecoupmentPolicyDetailsType[] $recoupmentPolicyDetails
      */
     private $recoupmentPolicyDetails = [
-        
+
     ];
 
     /**
@@ -396,7 +396,7 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      * @var \Nogrod\eBaySDK\Trading\ShippingCategoryDetailsType[] $shippingCategoryDetails
      */
     private $shippingCategoryDetails = [
-        
+
     ];
 
     /**

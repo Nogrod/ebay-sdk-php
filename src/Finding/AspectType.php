@@ -41,7 +41,7 @@ class AspectType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
      * @var \Nogrod\eBaySDK\Finding\AspectValueHistogramType[] $valueHistogram
      */
     private $valueHistogram = [
-        
+
     ];
 
     /**

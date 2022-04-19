@@ -188,7 +188,7 @@ class GetUserPreferencesResponseType extends AbstractResponseType
      * @var \Nogrod\eBaySDK\Trading\EBayPLUSPreferenceType[] $eBayPLUSPreference
      */
     private $eBayPLUSPreference = [
-        
+
     ];
 
     /**

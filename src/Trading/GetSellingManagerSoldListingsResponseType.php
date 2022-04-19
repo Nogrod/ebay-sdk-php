@@ -19,7 +19,7 @@ class GetSellingManagerSoldListingsResponseType extends AbstractResponseType
      * @var \Nogrod\eBaySDK\Trading\SellingManagerSoldOrderType[] $saleRecord
      */
     private $saleRecord = [
-        
+
     ];
 
     /**

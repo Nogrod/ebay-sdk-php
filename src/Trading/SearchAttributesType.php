@@ -39,7 +39,7 @@ class SearchAttributesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
      * @var \Nogrod\eBaySDK\Trading\ValType[] $valueList
      */
     private $valueList = [
-        
+
     ];
 
     /**

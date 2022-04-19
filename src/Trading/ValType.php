@@ -35,7 +35,7 @@ class ValType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializabl
      * @var string[] $suggestedValueLiteral
      */
     private $suggestedValueLiteral = [
-        
+
     ];
 
     /**

@@ -22,7 +22,7 @@ class MarkUpMarkDownHistoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
      * @var \Nogrod\eBaySDK\Trading\MarkUpMarkDownEventType[] $markUpMarkDownEvent
      */
     private $markUpMarkDownEvent = [
-        
+
     ];
 
     /**

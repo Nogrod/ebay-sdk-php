@@ -18,7 +18,7 @@ class AddMemberMessagesAAQToBidderResponseType extends AbstractResponseType
      * @var \Nogrod\eBaySDK\Trading\AddMemberMessagesAAQToBidderResponseContainerType[] $addMemberMessagesAAQToBidderResponseContainer
      */
     private $addMemberMessagesAAQToBidderResponseContainer = [
-        
+
     ];
 
     /**

@@ -18,7 +18,7 @@ class CharacteristicSetIDsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
      * @var string[] $iD
      */
     private $iD = [
-        
+
     ];
 
     /**

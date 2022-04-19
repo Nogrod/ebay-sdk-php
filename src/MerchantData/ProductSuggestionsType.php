@@ -22,7 +22,7 @@ class ProductSuggestionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      * @var \Nogrod\eBaySDK\MerchantData\ProductSuggestionType[] $productSuggestion
      */
     private $productSuggestion = [
-        
+
     ];
 
     /**

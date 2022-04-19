@@ -20,7 +20,7 @@ class HalfProductsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      * @var \Nogrod\eBaySDK\Shopping\HalfCatalogProductType[] $product
      */
     private $product = [
-        
+
     ];
 
     /**

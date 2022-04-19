@@ -18,7 +18,7 @@ class TopRatedSellerDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
      * @var string[] $topRatedProgram
      */
     private $topRatedProgram = [
-        
+
     ];
 
     /**

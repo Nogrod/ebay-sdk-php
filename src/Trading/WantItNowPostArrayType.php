@@ -18,7 +18,7 @@ class WantItNowPostArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      * @var \Nogrod\eBaySDK\Trading\WantItNowPostType[] $wantItNowPost
      */
     private $wantItNowPost = [
-        
+
     ];
 
     /**

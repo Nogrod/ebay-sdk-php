@@ -107,7 +107,7 @@ class InternationalShippingServiceOptionsType implements \Sabre\Xml\XmlSerializa
      * @var string[] $shipToLocation
      */
     private $shipToLocation = [
-        
+
     ];
 
     /**

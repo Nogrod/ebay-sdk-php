@@ -21,7 +21,7 @@ class VerifiedUserRequirementsDetailsType implements \Sabre\Xml\XmlSerializable,
      * @var int[] $feedbackScore
      */
     private $feedbackScore = [
-        
+
     ];
 
     /**

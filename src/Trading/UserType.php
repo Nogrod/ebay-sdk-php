@@ -385,7 +385,7 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      * @var string[] $userSubscription
      */
     private $userSubscription = [
-        
+
     ];
 
     /**
@@ -401,7 +401,7 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      * @var string[] $skypeID
      */
     private $skypeID = [
-        
+
     ];
 
     /**

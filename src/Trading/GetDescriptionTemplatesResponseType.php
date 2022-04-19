@@ -21,7 +21,7 @@ class GetDescriptionTemplatesResponseType extends AbstractResponseType
      * @var \Nogrod\eBaySDK\Trading\DescriptionTemplateType[] $descriptionTemplate
      */
     private $descriptionTemplate = [
-        
+
     ];
 
     /**
@@ -37,7 +37,7 @@ class GetDescriptionTemplatesResponseType extends AbstractResponseType
      * @var int[] $obsoleteLayoutID
      */
     private $obsoleteLayoutID = [
-        
+
     ];
 
     /**
@@ -46,7 +46,7 @@ class GetDescriptionTemplatesResponseType extends AbstractResponseType
      * @var int[] $obsoleteThemeID
      */
     private $obsoleteThemeID = [
-        
+
     ];
 
     /**
@@ -55,7 +55,7 @@ class GetDescriptionTemplatesResponseType extends AbstractResponseType
      * @var \Nogrod\eBaySDK\Trading\ThemeGroupType[] $themeGroup
      */
     private $themeGroup = [
-        
+
     ];
 
     /**

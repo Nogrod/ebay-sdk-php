@@ -18,7 +18,7 @@ class AttributeSetArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
      * @var \Nogrod\eBaySDK\MerchantData\AttributeSetType[] $attributeSet
      */
     private $attributeSet = [
-        
+
     ];
 
     /**

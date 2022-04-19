@@ -22,7 +22,7 @@ class ShippingPolicyServiceType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
      * @var string[] $shipToLocation
      */
     private $shipToLocation = [
-        
+
     ];
 
     /**

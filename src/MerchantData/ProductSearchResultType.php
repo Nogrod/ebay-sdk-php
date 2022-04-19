@@ -32,7 +32,7 @@ class ProductSearchResultType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
      * @var \Nogrod\eBaySDK\MerchantData\ResponseAttributeSetType[] $attributeSet
      */
     private $attributeSet = [
-        
+
     ];
 
     /**

@@ -44,7 +44,7 @@ class OrderReportResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
      * @var \Nogrod\eBaySDK\MerchantData\ErrorType[] $errors
      */
     private $errors = [
-        
+
     ];
 
     /**

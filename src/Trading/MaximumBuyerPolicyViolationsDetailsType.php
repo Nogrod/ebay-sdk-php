@@ -25,7 +25,7 @@ class MaximumBuyerPolicyViolationsDetailsType implements \Sabre\Xml\XmlSerializa
      * @var \Nogrod\eBaySDK\Trading\PolicyViolationDurationDetailsType[] $policyViolationDuration
      */
     private $policyViolationDuration = [
-        
+
     ];
 
     /**

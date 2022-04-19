@@ -43,7 +43,7 @@ class SellerDiscountsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * @var \Nogrod\eBaySDK\Trading\SellerDiscountType[] $sellerDiscount
      */
     private $sellerDiscount = [
-        
+
     ];
 
     /**

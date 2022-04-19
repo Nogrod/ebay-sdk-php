@@ -68,7 +68,7 @@ class InternationalShippingServiceOptionType implements \Sabre\Xml\XmlSerializab
      * @var string[] $shipsTo
      */
     private $shipsTo = [
-        
+
     ];
 
     /**

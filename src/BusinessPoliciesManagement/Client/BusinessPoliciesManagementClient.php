@@ -9,19 +9,19 @@ use Nogrod\eBaySDK\Constants\Version;
 
 class BusinessPoliciesManagementClient extends SellerProfilesManagementBaseClient
 {
-    const X_EBAY_SOA_SERVICE_VERSION = 'X-EBAY-SOA-SERVICE-VERSION';
+    public const X_EBAY_SOA_SERVICE_VERSION = 'X-EBAY-SOA-SERVICE-VERSION';
 
-    const X_EBAY_SOA_SECURITY_TOKEN = 'X-EBAY-SOA-SECURITY-TOKEN';
+    public const X_EBAY_SOA_SECURITY_TOKEN = 'X-EBAY-SOA-SECURITY-TOKEN';
 
-    const X_EBAY_SOA_SECURITY_IAFTOKEN = 'X-EBAY-SOA-SECURITY-IAFTOKEN';
+    public const X_EBAY_SOA_SECURITY_IAFTOKEN = 'X-EBAY-SOA-SECURITY-IAFTOKEN';
 
-    const X_EBAY_SOA_OPERATION_NAME = 'X-EBAY-SOA-OPERATION-NAME';
+    public const X_EBAY_SOA_OPERATION_NAME = 'X-EBAY-SOA-OPERATION-NAME';
 
-    const X_EBAY_SOA_GLOBAL_ID = 'X-EBAY-SOA-GLOBAL-ID';
+    public const X_EBAY_SOA_GLOBAL_ID = 'X-EBAY-SOA-GLOBAL-ID';
 
-    const PRODUCTION_URL = 'https://svcs.ebay.com/services/selling/v1/SellerProfilesManagementService';
+    public const PRODUCTION_URL = 'https://svcs.ebay.com/services/selling/v1/SellerProfilesManagementService';
 
-    const SANDBOX_URL = 'https://svcs.sandbox.ebay.com/services/selling/v1/SellerProfilesManagementService';
+    public const SANDBOX_URL = 'https://svcs.sandbox.ebay.com/services/selling/v1/SellerProfilesManagementService';
 
     public function __construct(array $config = [], Serializer $serializer = null, MessageFactory $messageFactory = null, HttpClient $client = null)
     {

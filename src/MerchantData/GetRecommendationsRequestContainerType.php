@@ -32,7 +32,7 @@ class GetRecommendationsRequestContainerType implements \Sabre\Xml\XmlSerializab
      * @var string[] $recommendationEngine
      */
     private $recommendationEngine = [
-        
+
     ];
 
     /**
@@ -55,7 +55,7 @@ class GetRecommendationsRequestContainerType implements \Sabre\Xml\XmlSerializab
      * @var string[] $deletedField
      */
     private $deletedField = [
-        
+
     ];
 
     /**

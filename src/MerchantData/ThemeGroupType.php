@@ -35,7 +35,7 @@ class ThemeGroupType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      * @var int[] $themeID
      */
     private $themeID = [
-        
+
     ];
 
     /**

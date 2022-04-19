@@ -82,7 +82,7 @@ class UnpaidItemAssistancePreferencesType implements \Sabre\Xml\XmlSerializable,
      * @var string[] $excludedUser
      */
     private $excludedUser = [
-        
+
     ];
 
     /**

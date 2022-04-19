@@ -18,7 +18,7 @@ class RecoupmentPolicyConsentType implements \Sabre\Xml\XmlSerializable, \Sabre\
      * @var string[] $site
      */
     private $site = [
-        
+
     ];
 
     /**

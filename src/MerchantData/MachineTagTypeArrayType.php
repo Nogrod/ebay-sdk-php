@@ -18,7 +18,7 @@ class MachineTagTypeArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
      * @var string[] $tagType
      */
     private $tagType = [
-        
+
     ];
 
     /**

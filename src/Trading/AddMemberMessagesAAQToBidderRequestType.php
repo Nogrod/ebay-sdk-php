@@ -18,7 +18,7 @@ class AddMemberMessagesAAQToBidderRequestType extends AbstractRequestType
      * @var \Nogrod\eBaySDK\Trading\AddMemberMessagesAAQToBidderRequestContainerType[] $addMemberMessagesAAQToBidderRequestContainer
      */
     private $addMemberMessagesAAQToBidderRequestContainer = [
-        
+
     ];
 
     /**

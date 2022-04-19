@@ -56,7 +56,7 @@ class BaseFindingServiceResponseType extends BaseServiceResponseType
      * @var \Nogrod\eBaySDK\Finding\ExtensionTypeType[] $extension
      */
     private $extension = [
-        
+
     ];
 
     /**

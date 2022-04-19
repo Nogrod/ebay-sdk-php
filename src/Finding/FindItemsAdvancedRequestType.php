@@ -65,7 +65,7 @@ class FindItemsAdvancedRequestType extends BaseFindingServiceRequestType
      * @var string[] $categoryId
      */
     private $categoryId = [
-        
+
     ];
 
     /**
@@ -77,7 +77,7 @@ class FindItemsAdvancedRequestType extends BaseFindingServiceRequestType
      * @var \Nogrod\eBaySDK\Finding\ItemFilterType[] $itemFilter
      */
     private $itemFilter = [
-        
+
     ];
 
     /**
@@ -101,7 +101,7 @@ class FindItemsAdvancedRequestType extends BaseFindingServiceRequestType
      * @var \Nogrod\eBaySDK\Finding\AspectFilterType[] $aspectFilter
      */
     private $aspectFilter = [
-        
+
     ];
 
     /**
@@ -121,7 +121,7 @@ class FindItemsAdvancedRequestType extends BaseFindingServiceRequestType
      * @var string[] $outputSelector
      */
     private $outputSelector = [
-        
+
     ];
 
     /**
@@ -144,7 +144,7 @@ class FindItemsAdvancedRequestType extends BaseFindingServiceRequestType
      * @var \Nogrod\eBaySDK\Finding\DomainFilterType[] $domainFilter
      */
     private $domainFilter = [
-        
+
     ];
 
     /**

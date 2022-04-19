@@ -20,7 +20,7 @@ class ItemTransactionIDArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\X
      * @var \Nogrod\eBaySDK\MerchantData\ItemTransactionIDType[] $itemTransactionID
      */
     private $itemTransactionID = [
-        
+
     ];
 
     /**

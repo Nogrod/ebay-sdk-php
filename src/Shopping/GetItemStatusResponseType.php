@@ -18,7 +18,7 @@ class GetItemStatusResponseType extends AbstractResponseType
      * @var \Nogrod\eBaySDK\Shopping\SimpleItemType[] $item
      */
     private $item = [
-        
+
     ];
 
     /**

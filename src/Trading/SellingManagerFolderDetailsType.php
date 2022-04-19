@@ -54,7 +54,7 @@ class SellingManagerFolderDetailsType implements \Sabre\Xml\XmlSerializable, \Sa
      * @var \Nogrod\eBaySDK\Trading\SellingManagerFolderDetailsType[] $childFolder
      */
     private $childFolder = [
-        
+
     ];
 
     /**

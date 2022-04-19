@@ -33,7 +33,7 @@ class VariationsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      * @var \Nogrod\eBaySDK\MerchantData\VariationType[] $variation
      */
     private $variation = [
-        
+
     ];
 
     /**
@@ -67,7 +67,7 @@ class VariationsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      * @var \Nogrod\eBaySDK\MerchantData\PicturesType[] $pictures
      */
     private $pictures = [
-        
+
     ];
 
     /**

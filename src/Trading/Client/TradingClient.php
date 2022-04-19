@@ -11,23 +11,23 @@ use Nogrod\eBaySDK\Trading\XMLRequesterCredentialsType;
 
 class TradingClient extends EBayAPIBaseClient
 {
-    const X_EBAY_API_IAF_TOKEN = 'X-EBAY-API-IAF-TOKEN';
+    public const X_EBAY_API_IAF_TOKEN = 'X-EBAY-API-IAF-TOKEN';
 
-    const X_EBAY_API_COMPATIBILITY_LEVEL = 'X-EBAY-API-COMPATIBILITY-LEVEL';
+    public const X_EBAY_API_COMPATIBILITY_LEVEL = 'X-EBAY-API-COMPATIBILITY-LEVEL';
 
-    const X_EBAY_API_DEV_NAME = 'X-EBAY-API-DEV-NAME';
+    public const X_EBAY_API_DEV_NAME = 'X-EBAY-API-DEV-NAME';
 
-    const X_EBAY_API_APP_NAME = 'X-EBAY-API-APP-NAME';
+    public const X_EBAY_API_APP_NAME = 'X-EBAY-API-APP-NAME';
 
-    const X_EBAY_API_CERT_NAME = 'X-EBAY-API-CERT-NAME';
+    public const X_EBAY_API_CERT_NAME = 'X-EBAY-API-CERT-NAME';
 
-    const X_EBAY_API_CALL_NAME = 'X-EBAY-API-CALL-NAME';
+    public const X_EBAY_API_CALL_NAME = 'X-EBAY-API-CALL-NAME';
 
-    const X_EBAY_API_SITEID = 'X-EBAY-API-SITEID';
+    public const X_EBAY_API_SITEID = 'X-EBAY-API-SITEID';
 
-    const PRODUCTION_URL = 'https://api.ebay.com/ws/api.dll';
+    public const PRODUCTION_URL = 'https://api.ebay.com/ws/api.dll';
 
-    const SANDBOX_URL = 'https://api.sandbox.ebay.com/ws/api.dll';
+    public const SANDBOX_URL = 'https://api.sandbox.ebay.com/ws/api.dll';
 
     public function __construct(array $config = [], Serializer $serializer = null, MessageFactory $messageFactory = null, HttpClient $client = null)
     {

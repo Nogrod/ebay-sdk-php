@@ -121,7 +121,7 @@ class ErrorDataType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
      * @var \Nogrod\eBaySDK\FileTransfer\ErrorParameterType[] $parameter
      */
     private $parameter = [
-        
+
     ];
 
     /**

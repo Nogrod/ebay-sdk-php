@@ -60,7 +60,7 @@ class SellerFavoriteItemPreferencesType implements \Sabre\Xml\XmlSerializable, \
      * @var string[] $favoriteItemID
      */
     private $favoriteItemID = [
-        
+
     ];
 
     /**

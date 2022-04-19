@@ -18,7 +18,7 @@ class ExternalAlertIDArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
      * @var string[] $externalAlertID
      */
     private $externalAlertID = [
-        
+
     ];
 
     /**

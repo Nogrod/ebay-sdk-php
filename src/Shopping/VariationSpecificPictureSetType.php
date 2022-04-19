@@ -30,7 +30,7 @@ class VariationSpecificPictureSetType implements \Sabre\Xml\XmlSerializable, \Sa
      * @var string[] $pictureURL
      */
     private $pictureURL = [
-        
+
     ];
 
     /**

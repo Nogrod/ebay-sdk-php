@@ -18,7 +18,7 @@ class OrderItemDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
      * @var \Nogrod\eBaySDK\MerchantData\OrderLineItemType[] $orderLineItem
      */
     private $orderLineItem = [
-        
+
     ];
 
     /**

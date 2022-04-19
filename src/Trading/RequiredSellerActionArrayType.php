@@ -21,7 +21,7 @@ class RequiredSellerActionArrayType implements \Sabre\Xml\XmlSerializable, \Sabr
      * @var string[] $requiredSellerAction
      */
     private $requiredSellerAction = [
-        
+
     ];
 
     /**

@@ -22,7 +22,7 @@ class RefundArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      * @var \Nogrod\eBaySDK\MerchantData\RefundType[] $refund
      */
     private $refund = [
-        
+
     ];
 
     /**

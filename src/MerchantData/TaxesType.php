@@ -51,7 +51,7 @@ class TaxesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      * @var \Nogrod\eBaySDK\MerchantData\TaxDetailsType[] $taxDetails
      */
     private $taxDetails = [
-        
+
     ];
 
     /**

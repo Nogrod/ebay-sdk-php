@@ -28,7 +28,7 @@ class FlatShippingDiscountType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
      * @var \Nogrod\eBaySDK\MerchantData\DiscountProfileType[] $discountProfile
      */
     private $discountProfile = [
-        
+
     ];
 
     /**

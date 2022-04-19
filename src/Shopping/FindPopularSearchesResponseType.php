@@ -18,7 +18,7 @@ class FindPopularSearchesResponseType extends AbstractResponseType
      * @var \Nogrod\eBaySDK\Shopping\PopularSearchesType[] $popularSearchResult
      */
     private $popularSearchResult = [
-        
+
     ];
 
     /**

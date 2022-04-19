@@ -18,7 +18,7 @@ class MyMessagesMessageIDArrayType implements \Sabre\Xml\XmlSerializable, \Sabre
      * @var string[] $messageID
      */
     private $messageID = [
-        
+
     ];
 
     /**

@@ -30,7 +30,7 @@ class RecommendationsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * @var \Nogrod\eBaySDK\MerchantData\ProductIdentifiersType[] $productIdentifiers
      */
     private $productIdentifiers = [
-        
+
     ];
 
     /**
@@ -41,7 +41,7 @@ class RecommendationsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * @var \Nogrod\eBaySDK\MerchantData\NameRecommendationType[] $nameRecommendation
      */
     private $nameRecommendation = [
-        
+
     ];
 
     /**

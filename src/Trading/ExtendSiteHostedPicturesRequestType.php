@@ -18,7 +18,7 @@ class ExtendSiteHostedPicturesRequestType extends AbstractRequestType
      * @var string[] $pictureURL
      */
     private $pictureURL = [
-        
+
     ];
 
     /**

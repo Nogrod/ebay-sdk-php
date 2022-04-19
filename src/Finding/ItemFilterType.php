@@ -106,7 +106,7 @@ class ItemFilterType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      * @var string[] $value
      */
     private $value = [
-        
+
     ];
 
     /**

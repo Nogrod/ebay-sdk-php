@@ -35,7 +35,7 @@ class CategoryHistogramContainerType implements \Sabre\Xml\XmlSerializable, \Sab
      * @var \Nogrod\eBaySDK\Finding\CategoryHistogramType[] $categoryHistogram
      */
     private $categoryHistogram = [
-        
+
     ];
 
     /**

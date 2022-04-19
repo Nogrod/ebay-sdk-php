@@ -18,7 +18,7 @@ class GetApiAccessRulesResponseType extends AbstractResponseType
      * @var \Nogrod\eBaySDK\Trading\ApiAccessRuleType[] $apiAccessRule
      */
     private $apiAccessRule = [
-        
+
     ];
 
     /**

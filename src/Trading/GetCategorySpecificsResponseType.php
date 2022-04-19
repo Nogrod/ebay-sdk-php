@@ -34,7 +34,7 @@ class GetCategorySpecificsResponseType extends AbstractResponseType
      * @var \Nogrod\eBaySDK\Trading\RecommendationsType[] $recommendations
      */
     private $recommendations = [
-        
+
     ];
 
     /**

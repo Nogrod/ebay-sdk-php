@@ -18,7 +18,7 @@ class BidderDetailArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
      * @var \Nogrod\eBaySDK\MerchantData\BidderDetailType[] $bidderDetail
      */
     private $bidderDetail = [
-        
+
     ];
 
     /**

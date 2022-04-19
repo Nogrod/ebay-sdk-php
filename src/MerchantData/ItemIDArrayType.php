@@ -28,7 +28,7 @@ class ItemIDArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      * @var string[] $itemID
      */
     private $itemID = [
-        
+
     ];
 
     /**

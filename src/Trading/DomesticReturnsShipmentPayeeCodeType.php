@@ -18,7 +18,7 @@ class DomesticReturnsShipmentPayeeCodeType implements \Sabre\Xml\XmlSerializable
      * @var string[] $domesticReturnsShipmentPayee
      */
     private $domesticReturnsShipmentPayee = [
-        
+
     ];
 
     /**

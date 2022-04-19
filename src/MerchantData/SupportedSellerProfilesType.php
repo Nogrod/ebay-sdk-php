@@ -21,7 +21,7 @@ class SupportedSellerProfilesType implements \Sabre\Xml\XmlSerializable, \Sabre\
      * @var \Nogrod\eBaySDK\MerchantData\SupportedSellerProfileType[] $supportedSellerProfile
      */
     private $supportedSellerProfile = [
-        
+
     ];
 
     /**

@@ -18,7 +18,7 @@ class BidGroupType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
      * @var \Nogrod\eBaySDK\MerchantData\BidGroupItemType[] $bidGroupItem
      */
     private $bidGroupItem = [
-        
+
     ];
 
     /**

@@ -26,7 +26,7 @@ class ItemCompatibilityListType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
      * @var \Nogrod\eBaySDK\MerchantData\ItemCompatibilityType[] $compatibility
      */
     private $compatibility = [
-        
+
     ];
 
     /**

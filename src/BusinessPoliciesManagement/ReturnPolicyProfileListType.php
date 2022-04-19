@@ -18,7 +18,7 @@ class ReturnPolicyProfileListType implements \Sabre\Xml\XmlSerializable, \Sabre\
      * @var \Nogrod\eBaySDK\BusinessPoliciesManagement\ReturnPolicyProfileType[] $returnPolicyProfile
      */
     private $returnPolicyProfile = [
-        
+
     ];
 
     /**

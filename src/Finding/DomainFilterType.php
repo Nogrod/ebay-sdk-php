@@ -21,7 +21,7 @@ class DomainFilterType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      * @var string[] $domainName
      */
     private $domainName = [
-        
+
     ];
 
     /**

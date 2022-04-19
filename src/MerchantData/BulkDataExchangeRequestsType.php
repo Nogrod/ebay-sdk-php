@@ -23,98 +23,98 @@ class BulkDataExchangeRequestsType implements \Sabre\Xml\XmlSerializable, \Sabre
      * @var \Nogrod\eBaySDK\MerchantData\AddFixedPriceItemRequestType[] $addFixedPriceItemRequest
      */
     private $addFixedPriceItemRequest = [
-        
+
     ];
 
     /**
      * @var \Nogrod\eBaySDK\MerchantData\AddItemRequestType[] $addItemRequest
      */
     private $addItemRequest = [
-        
+
     ];
 
     /**
      * @var \Nogrod\eBaySDK\MerchantData\EndFixedPriceItemRequestType[] $endFixedPriceItemRequest
      */
     private $endFixedPriceItemRequest = [
-        
+
     ];
 
     /**
      * @var \Nogrod\eBaySDK\MerchantData\EndItemRequestType[] $endItemRequest
      */
     private $endItemRequest = [
-        
+
     ];
 
     /**
      * @var \Nogrod\eBaySDK\MerchantData\OrderAckRequestType[] $orderAckRequest
      */
     private $orderAckRequest = [
-        
+
     ];
 
     /**
      * @var \Nogrod\eBaySDK\MerchantData\RelistFixedPriceItemRequestType[] $relistFixedPriceItemRequest
      */
     private $relistFixedPriceItemRequest = [
-        
+
     ];
 
     /**
      * @var \Nogrod\eBaySDK\MerchantData\RelistItemRequestType[] $relistItemRequest
      */
     private $relistItemRequest = [
-        
+
     ];
 
     /**
      * @var \Nogrod\eBaySDK\MerchantData\ReviseFixedPriceItemRequestType[] $reviseFixedPriceItemRequest
      */
     private $reviseFixedPriceItemRequest = [
-        
+
     ];
 
     /**
      * @var \Nogrod\eBaySDK\MerchantData\ReviseInventoryStatusRequestType[] $reviseInventoryStatusRequest
      */
     private $reviseInventoryStatusRequest = [
-        
+
     ];
 
     /**
      * @var \Nogrod\eBaySDK\MerchantData\ReviseItemRequestType[] $reviseItemRequest
      */
     private $reviseItemRequest = [
-        
+
     ];
 
     /**
      * @var \Nogrod\eBaySDK\MerchantData\SetShipmentTrackingInfoRequestType[] $setShipmentTrackingInfoRequest
      */
     private $setShipmentTrackingInfoRequest = [
-        
+
     ];
 
     /**
      * @var \Nogrod\eBaySDK\MerchantData\UploadSiteHostedPicturesRequestType[] $uploadSiteHostedPicturesRequest
      */
     private $uploadSiteHostedPicturesRequest = [
-        
+
     ];
 
     /**
      * @var \Nogrod\eBaySDK\MerchantData\VerifyAddFixedPriceItemRequestType[] $verifyAddFixedPriceItemRequest
      */
     private $verifyAddFixedPriceItemRequest = [
-        
+
     ];
 
     /**
      * @var \Nogrod\eBaySDK\MerchantData\VerifyAddItemRequestType[] $verifyAddItemRequest
      */
     private $verifyAddItemRequest = [
-        
+
     ];
 
     /**

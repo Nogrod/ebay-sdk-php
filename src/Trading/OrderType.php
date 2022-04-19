@@ -121,7 +121,7 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      * @var string[] $paymentMethods
      */
     private $paymentMethods = [
-        
+
     ];
 
     /**
@@ -181,7 +181,7 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      * @var \Nogrod\eBaySDK\Trading\ExternalTransactionType[] $externalTransaction
      */
     private $externalTransaction = [
-        
+
     ];
 
     /**
@@ -423,7 +423,7 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      * @var \Nogrod\eBaySDK\Trading\CancelDetailType[] $cancelDetail
      */
     private $cancelDetail = [
-        
+
     ];
 
     /**
@@ -447,7 +447,7 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      * @var \Nogrod\eBaySDK\Trading\TaxIdentifierType[] $buyerTaxIdentifier
      */
     private $buyerTaxIdentifier = [
-        
+
     ];
 
     /**

@@ -25,7 +25,7 @@ class TransactionListType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * @var \Nogrod\eBaySDK\MerchantData\ListingTransactionType[] $listingTransaction
      */
     private $listingTransaction = [
-        
+
     ];
 
     /**

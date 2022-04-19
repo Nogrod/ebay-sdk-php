@@ -83,7 +83,7 @@ class CategoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
      * @var string[] $categoryParentID
      */
     private $categoryParentID = [
-        
+
     ];
 
     /**
@@ -96,7 +96,7 @@ class CategoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
      * @var string[] $categoryParentName
      */
     private $categoryParentName = [
-        
+
     ];
 
     /**
@@ -112,7 +112,7 @@ class CategoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
      * @var \Nogrod\eBaySDK\Trading\ExtendedProductFinderIDType[] $productFinderIDs
      */
     private $productFinderIDs = [
-        
+
     ];
 
     /**
@@ -121,7 +121,7 @@ class CategoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
      * @var \Nogrod\eBaySDK\Trading\CharacteristicsSetType[] $characteristicsSets
      */
     private $characteristicsSets = [
-        
+
     ];
 
     /**

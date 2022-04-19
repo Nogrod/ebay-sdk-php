@@ -23,7 +23,7 @@ class DiscountDetailType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      * @var \Nogrod\eBaySDK\MerchantData\DiscountType[] $discount
      */
     private $discount = [
-        
+
     ];
 
     /**

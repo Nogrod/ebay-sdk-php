@@ -49,7 +49,7 @@ class ProductListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
      * @var string[] $copyright
      */
     private $copyright = [
-        
+
     ];
 
     /**
@@ -187,7 +187,7 @@ class ProductListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
      * @var \Nogrod\eBaySDK\MerchantData\NameValueListType[] $nameValueList
      */
     private $nameValueList = [
-        
+
     ];
 
     /**

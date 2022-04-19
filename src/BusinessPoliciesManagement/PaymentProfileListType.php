@@ -18,7 +18,7 @@ class PaymentProfileListType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      * @var \Nogrod\eBaySDK\BusinessPoliciesManagement\PaymentProfileType[] $paymentProfile
      */
     private $paymentProfile = [
-        
+
     ];
 
     /**

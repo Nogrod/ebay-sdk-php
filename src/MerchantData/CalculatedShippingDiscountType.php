@@ -34,7 +34,7 @@ class CalculatedShippingDiscountType implements \Sabre\Xml\XmlSerializable, \Sab
      * @var \Nogrod\eBaySDK\MerchantData\DiscountProfileType[] $discountProfile
      */
     private $discountProfile = [
-        
+
     ];
 
     /**

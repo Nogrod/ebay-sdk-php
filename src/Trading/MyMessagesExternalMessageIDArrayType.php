@@ -21,7 +21,7 @@ class MyMessagesExternalMessageIDArrayType implements \Sabre\Xml\XmlSerializable
      * @var string[] $externalMessageID
      */
     private $externalMessageID = [
-        
+
     ];
 
     /**

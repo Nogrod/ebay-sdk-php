@@ -77,7 +77,7 @@ class UploadSiteHostedPicturesRequestType extends AbstractRequestType
      * @var string[] $externalPictureURL
      */
     private $externalPictureURL = [
-        
+
     ];
 
     /**
@@ -86,7 +86,7 @@ class UploadSiteHostedPicturesRequestType extends AbstractRequestType
      * @var string[] $pictureWatermark
      */
     private $pictureWatermark = [
-        
+
     ];
 
     /**

@@ -28,7 +28,7 @@ class SellerRatingSummaryArrayType implements \Sabre\Xml\XmlSerializable, \Sabre
      * @var \Nogrod\eBaySDK\Trading\AverageRatingSummaryType[] $averageRatingSummary
      */
     private $averageRatingSummary = [
-        
+
     ];
 
     /**

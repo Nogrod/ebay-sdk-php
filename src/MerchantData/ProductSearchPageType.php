@@ -32,7 +32,7 @@ class ProductSearchPageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
      * @var \Nogrod\eBaySDK\MerchantData\CharacteristicType[] $sortCharacteristics
      */
     private $sortCharacteristics = [
-        
+
     ];
 
     /**
@@ -41,7 +41,7 @@ class ProductSearchPageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
      * @var \Nogrod\eBaySDK\MerchantData\DataElementSetType[] $dataElementSet
      */
     private $dataElementSet = [
-        
+
     ];
 
     /**

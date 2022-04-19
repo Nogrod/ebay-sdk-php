@@ -18,7 +18,7 @@ class FeesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      * @var \Nogrod\eBaySDK\MerchantData\FeeType[] $fee
      */
     private $fee = [
-        
+
     ];
 
     /**

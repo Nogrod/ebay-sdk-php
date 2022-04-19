@@ -18,7 +18,7 @@ class DomesticReturnsAcceptedCodeType implements \Sabre\Xml\XmlSerializable, \Sa
      * @var string[] $domesticReturnsAccepted
      */
     private $domesticReturnsAccepted = [
-        
+
     ];
 
     /**

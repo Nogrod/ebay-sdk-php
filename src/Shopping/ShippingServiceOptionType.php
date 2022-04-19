@@ -99,7 +99,7 @@ class ShippingServiceOptionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
      * @var string[] $shipsTo
      */
     private $shipsTo = [
-        
+
     ];
 
     /**

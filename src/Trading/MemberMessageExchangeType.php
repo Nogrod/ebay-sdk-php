@@ -37,7 +37,7 @@ class MemberMessageExchangeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
      * @var string[] $response
      */
     private $response = [
-        
+
     ];
 
     /**
@@ -67,7 +67,7 @@ class MemberMessageExchangeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
      * @var \Nogrod\eBaySDK\Trading\MessageMediaType[] $messageMedia
      */
     private $messageMedia = [
-        
+
     ];
 
     /**

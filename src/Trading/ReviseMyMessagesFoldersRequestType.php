@@ -30,7 +30,7 @@ class ReviseMyMessagesFoldersRequestType extends AbstractRequestType
      * @var int[] $folderID
      */
     private $folderID = [
-        
+
     ];
 
     /**
@@ -44,7 +44,7 @@ class ReviseMyMessagesFoldersRequestType extends AbstractRequestType
      * @var string[] $folderName
      */
     private $folderName = [
-        
+
     ];
 
     /**

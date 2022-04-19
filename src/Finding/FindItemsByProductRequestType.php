@@ -39,7 +39,7 @@ class FindItemsByProductRequestType extends BaseFindingServiceRequestType
      * @var \Nogrod\eBaySDK\Finding\ItemFilterType[] $itemFilter
      */
     private $itemFilter = [
-        
+
     ];
 
     /**
@@ -59,7 +59,7 @@ class FindItemsByProductRequestType extends BaseFindingServiceRequestType
      * @var string[] $outputSelector
      */
     private $outputSelector = [
-        
+
     ];
 
     /**

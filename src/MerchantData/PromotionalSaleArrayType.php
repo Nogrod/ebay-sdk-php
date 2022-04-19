@@ -25,7 +25,7 @@ class PromotionalSaleArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
      * @var \Nogrod\eBaySDK\MerchantData\PromotionalSaleType[] $promotionalSale
      */
     private $promotionalSale = [
-        
+
     ];
 
     /**

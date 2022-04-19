@@ -18,7 +18,7 @@ class AddToWatchListRequestType extends AbstractRequestType
      * @var string[] $itemID
      */
     private $itemID = [
-        
+
     ];
 
     /**
@@ -31,7 +31,7 @@ class AddToWatchListRequestType extends AbstractRequestType
      * @var \Nogrod\eBaySDK\Trading\VariationKeyType[] $variationKey
      */
     private $variationKey = [
-        
+
     ];
 
     /**

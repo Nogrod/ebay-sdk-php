@@ -35,7 +35,7 @@ class GetUserProfileResponseType extends AbstractResponseType
      * @var \Nogrod\eBaySDK\Shopping\FeedbackDetailType[] $feedbackDetails
      */
     private $feedbackDetails = [
-        
+
     ];
 
     /**

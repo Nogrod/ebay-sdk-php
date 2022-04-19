@@ -32,7 +32,7 @@ class PictureManagerFolderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
      * @var \Nogrod\eBaySDK\MerchantData\PictureManagerPictureType[] $picture
      */
     private $picture = [
-        
+
     ];
 
     /**

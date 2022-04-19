@@ -18,7 +18,7 @@ class AddItemsRequestType extends AbstractRequestType
      * @var \Nogrod\eBaySDK\Trading\AddItemRequestContainerType[] $addItemRequestContainer
      */
     private $addItemRequestContainer = [
-        
+
     ];
 
     /**

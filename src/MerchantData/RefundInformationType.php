@@ -26,7 +26,7 @@ class RefundInformationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
      * @var \Nogrod\eBaySDK\MerchantData\RefundTransactionInfoType[] $refund
      */
     private $refund = [
-        
+
     ];
 
     /**

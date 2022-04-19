@@ -20,7 +20,7 @@ class FeedbackHistoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * @var \Nogrod\eBaySDK\Shopping\FeedbackPeriodType[] $bidRetractionFeedbackPeriods
      */
     private $bidRetractionFeedbackPeriods = [
-        
+
     ];
 
     /**
@@ -29,7 +29,7 @@ class FeedbackHistoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * @var \Nogrod\eBaySDK\Shopping\FeedbackPeriodType[] $negativeFeedbackPeriods
      */
     private $negativeFeedbackPeriods = [
-        
+
     ];
 
     /**
@@ -38,7 +38,7 @@ class FeedbackHistoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * @var \Nogrod\eBaySDK\Shopping\FeedbackPeriodType[] $neutralFeedbackPeriods
      */
     private $neutralFeedbackPeriods = [
-        
+
     ];
 
     /**
@@ -47,7 +47,7 @@ class FeedbackHistoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * @var \Nogrod\eBaySDK\Shopping\FeedbackPeriodType[] $positiveFeedbackPeriods
      */
     private $positiveFeedbackPeriods = [
-        
+
     ];
 
     /**
@@ -56,7 +56,7 @@ class FeedbackHistoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * @var \Nogrod\eBaySDK\Shopping\FeedbackPeriodType[] $totalFeedbackPeriods
      */
     private $totalFeedbackPeriods = [
-        
+
     ];
 
     /**
@@ -81,7 +81,7 @@ class FeedbackHistoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * @var \Nogrod\eBaySDK\Shopping\AverageRatingDetailsType[] $averageRatingDetails
      */
     private $averageRatingDetails = [
-        
+
     ];
 
     /**

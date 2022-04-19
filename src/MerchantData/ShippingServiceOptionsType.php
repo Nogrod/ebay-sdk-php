@@ -155,7 +155,7 @@ class ShippingServiceOptionsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
      * @var \Nogrod\eBaySDK\MerchantData\ShippingPackageInfoType[] $shippingPackageInfo
      */
     private $shippingPackageInfo = [
-        
+
     ];
 
     /**

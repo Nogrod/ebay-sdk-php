@@ -20,7 +20,7 @@ class NotificationDetailsArrayType implements \Sabre\Xml\XmlSerializable, \Sabre
      * @var \Nogrod\eBaySDK\Trading\NotificationDetailsType[] $notificationDetails
      */
     private $notificationDetails = [
-        
+
     ];
 
     /**

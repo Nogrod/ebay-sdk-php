@@ -21,7 +21,7 @@ class ReviseInventoryStatusResponseType extends AbstractResponseType
      * @var \Nogrod\eBaySDK\Trading\InventoryStatusType[] $inventoryStatus
      */
     private $inventoryStatus = [
-        
+
     ];
 
     /**
@@ -33,7 +33,7 @@ class ReviseInventoryStatusResponseType extends AbstractResponseType
      * @var \Nogrod\eBaySDK\Trading\InventoryFeesType[] $fees
      */
     private $fees = [
-        
+
     ];
 
     /**

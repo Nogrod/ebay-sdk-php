@@ -186,7 +186,7 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * @var \Nogrod\eBaySDK\MerchantData\ShippingServiceOptionsType[] $shippingServiceOptions
      */
     private $shippingServiceOptions = [
-        
+
     ];
 
     /**
@@ -205,7 +205,7 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * @var \Nogrod\eBaySDK\MerchantData\InternationalShippingServiceOptionsType[] $internationalShippingServiceOption
      */
     private $internationalShippingServiceOption = [
-        
+
     ];
 
     /**
@@ -482,7 +482,7 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * @var string[] $excludeShipToLocation
      */
     private $excludeShipToLocation = [
-        
+
     ];
 
     /**
@@ -524,7 +524,7 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * @var \Nogrod\eBaySDK\MerchantData\ShipmentTrackingDetailsType[] $shipmentTrackingDetails
      */
     private $shipmentTrackingDetails = [
-        
+
     ];
 
     /**

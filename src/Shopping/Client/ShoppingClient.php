@@ -9,19 +9,19 @@ use Nogrod\eBaySDK\Constants\Version;
 
 class ShoppingClient extends ShoppingBaseClient
 {
-    const X_EBAY_API_APP_ID = 'X-EBAY-API-APP-ID';
+    public const X_EBAY_API_APP_ID = 'X-EBAY-API-APP-ID';
 
-    const X_EBAY_API_VERSION = 'X-EBAY-API-VERSION';
+    public const X_EBAY_API_VERSION = 'X-EBAY-API-VERSION';
 
-    const X_EBAY_API_SITE_ID = 'X-EBAY-API-SITE-ID';
+    public const X_EBAY_API_SITE_ID = 'X-EBAY-API-SITE-ID';
 
-    const X_EBAY_API_CALL_NAME = 'X-EBAY-API-CALL-NAME';
+    public const X_EBAY_API_CALL_NAME = 'X-EBAY-API-CALL-NAME';
 
-    const X_EBAY_API_REQUEST_ENCODING = 'X-EBAY-API-REQUEST-ENCODING';
+    public const X_EBAY_API_REQUEST_ENCODING = 'X-EBAY-API-REQUEST-ENCODING';
 
-    const PRODUCTION_URL = 'http://open.api.ebay.com/shopping';
+    public const PRODUCTION_URL = 'http://open.api.ebay.com/shopping';
 
-    const SANDBOX_URL = 'http://open.api.sandbox.ebay.com/shopping';
+    public const SANDBOX_URL = 'http://open.api.sandbox.ebay.com/shopping';
 
     public function __construct(array $config = [], Serializer $serializer = null, MessageFactory $messageFactory = null, HttpClient $client = null)
     {

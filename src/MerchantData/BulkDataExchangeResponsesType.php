@@ -21,28 +21,28 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
      * @var \Nogrod\eBaySDK\MerchantData\AddFixedPriceItemResponseType[] $addFixedPriceItemResponse
      */
     private $addFixedPriceItemResponse = [
-        
+
     ];
 
     /**
      * @var \Nogrod\eBaySDK\MerchantData\AddItemResponseType[] $addItemResponse
      */
     private $addItemResponse = [
-        
+
     ];
 
     /**
      * @var \Nogrod\eBaySDK\MerchantData\EndFixedPriceItemResponseType[] $endFixedPriceItemResponse
      */
     private $endFixedPriceItemResponse = [
-        
+
     ];
 
     /**
      * @var \Nogrod\eBaySDK\MerchantData\EndItemResponseType[] $endItemResponse
      */
     private $endItemResponse = [
-        
+
     ];
 
     /**
@@ -54,7 +54,7 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
      * @var \Nogrod\eBaySDK\MerchantData\OrderAckResponseType[] $orderAckResponse
      */
     private $orderAckResponse = [
-        
+
     ];
 
     /**
@@ -66,63 +66,63 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
      * @var \Nogrod\eBaySDK\MerchantData\RelistFixedPriceItemResponseType[] $relistFixedPriceItemResponse
      */
     private $relistFixedPriceItemResponse = [
-        
+
     ];
 
     /**
      * @var \Nogrod\eBaySDK\MerchantData\RelistItemResponseType[] $relistItemResponse
      */
     private $relistItemResponse = [
-        
+
     ];
 
     /**
      * @var \Nogrod\eBaySDK\MerchantData\ReviseFixedPriceItemResponseType[] $reviseFixedPriceItemResponse
      */
     private $reviseFixedPriceItemResponse = [
-        
+
     ];
 
     /**
      * @var \Nogrod\eBaySDK\MerchantData\ReviseInventoryStatusResponseType[] $reviseInventoryStatusResponse
      */
     private $reviseInventoryStatusResponse = [
-        
+
     ];
 
     /**
      * @var \Nogrod\eBaySDK\MerchantData\ReviseItemResponseType[] $reviseItemResponse
      */
     private $reviseItemResponse = [
-        
+
     ];
 
     /**
      * @var \Nogrod\eBaySDK\MerchantData\SetShipmentTrackingInfoResponseType[] $setShipmentTrackingInfoResponse
      */
     private $setShipmentTrackingInfoResponse = [
-        
+
     ];
 
     /**
      * @var \Nogrod\eBaySDK\MerchantData\UploadSiteHostedPicturesResponseType[] $uploadSiteHostedPicturesResponse
      */
     private $uploadSiteHostedPicturesResponse = [
-        
+
     ];
 
     /**
      * @var \Nogrod\eBaySDK\MerchantData\VerifyAddFixedPriceItemResponseType[] $verifyAddFixedPriceItemResponse
      */
     private $verifyAddFixedPriceItemResponse = [
-        
+
     ];
 
     /**
      * @var \Nogrod\eBaySDK\MerchantData\VerifyAddItemResponseType[] $verifyAddItemResponse
      */
     private $verifyAddItemResponse = [
-        
+
     ];
 
     /**

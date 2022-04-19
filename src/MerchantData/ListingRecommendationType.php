@@ -119,7 +119,7 @@ class ListingRecommendationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
      * @var string[] $value
      */
     private $value = [
-        
+
     ];
 
     /**
@@ -139,7 +139,7 @@ class ListingRecommendationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
      * @var \Nogrod\eBaySDK\MerchantData\MetadataType[] $metadata
      */
     private $metadata = [
-        
+
     ];
 
     /**

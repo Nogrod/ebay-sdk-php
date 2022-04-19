@@ -40,7 +40,7 @@ class SKUArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
      * @var string[] $sKU
      */
     private $sKU = [
-        
+
     ];
 
     /**

@@ -18,7 +18,7 @@ class StoreSubscriptionArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\X
      * @var \Nogrod\eBaySDK\Trading\StoreSubscriptionType[] $subscription
      */
     private $subscription = [
-        
+
     ];
 
     /**

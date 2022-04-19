@@ -152,7 +152,7 @@ class DisputeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
      * @var \Nogrod\eBaySDK\Trading\DisputeResolutionType[] $disputeResolution
      */
     private $disputeResolution = [
-        
+
     ];
 
     /**
@@ -162,7 +162,7 @@ class DisputeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
      * @var \Nogrod\eBaySDK\Trading\DisputeMessageType[] $disputeMessage
      */
     private $disputeMessage = [
-        
+
     ];
 
     /**

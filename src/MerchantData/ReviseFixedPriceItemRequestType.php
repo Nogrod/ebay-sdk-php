@@ -52,7 +52,7 @@ class ReviseFixedPriceItemRequestType extends AbstractRequestType
      * @var string[] $deletedField
      */
     private $deletedField = [
-        
+
     ];
 
     /**

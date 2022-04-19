@@ -18,7 +18,7 @@ class CancelOfferArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
      * @var \Nogrod\eBaySDK\MerchantData\CancelOfferType[] $cancelOffer
      */
     private $cancelOffer = [
-        
+
     ];
 
     /**

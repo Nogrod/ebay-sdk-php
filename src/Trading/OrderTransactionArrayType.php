@@ -18,7 +18,7 @@ class OrderTransactionArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
      * @var \Nogrod\eBaySDK\Trading\OrderTransactionType[] $orderTransaction
      */
     private $orderTransaction = [
-        
+
     ];
 
     /**

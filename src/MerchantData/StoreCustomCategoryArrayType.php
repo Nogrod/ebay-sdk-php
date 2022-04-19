@@ -18,7 +18,7 @@ class StoreCustomCategoryArrayType implements \Sabre\Xml\XmlSerializable, \Sabre
      * @var \Nogrod\eBaySDK\MerchantData\StoreCustomCategoryType[] $customCategory
      */
     private $customCategory = [
-        
+
     ];
 
     /**

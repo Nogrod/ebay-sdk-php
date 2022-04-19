@@ -19,7 +19,7 @@ class ExtendSiteHostedPicturesResponseType extends AbstractResponseType
      * @var string[] $pictureURL
      */
     private $pictureURL = [
-        
+
     ];
 
     /**

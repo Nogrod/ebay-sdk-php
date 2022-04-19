@@ -29,7 +29,7 @@ class RespondToBestOfferRequestType extends AbstractRequestType
      * @var string[] $bestOfferID
      */
     private $bestOfferID = [
-        
+
     ];
 
     /**

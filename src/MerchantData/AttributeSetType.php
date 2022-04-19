@@ -32,7 +32,7 @@ class AttributeSetType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      * @var \Nogrod\eBaySDK\MerchantData\AttributeType[] $attribute
      */
     private $attribute = [
-        
+
     ];
 
     /**

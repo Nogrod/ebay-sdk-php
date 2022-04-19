@@ -21,7 +21,7 @@ class DomainHistogramType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * @var \Nogrod\eBaySDK\Shopping\HistogramEntryType[] $domain
      */
     private $domain = [
-        
+
     ];
 
     /**

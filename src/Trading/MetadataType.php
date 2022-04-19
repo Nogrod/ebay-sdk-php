@@ -32,7 +32,7 @@ class MetadataType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
      * @var string[] $value
      */
     private $value = [
-        
+
     ];
 
     /**

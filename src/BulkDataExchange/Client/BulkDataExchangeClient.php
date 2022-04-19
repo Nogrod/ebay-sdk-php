@@ -9,15 +9,15 @@ use Nogrod\eBaySDK\Constants\Version;
 
 class BulkDataExchangeClient extends BulkDataExchangeBaseClient
 {
-    const X_EBAY_SOA_SERVICE_VERSION = 'X-EBAY-SOA-SERVICE-VERSION';
+    public const X_EBAY_SOA_SERVICE_VERSION = 'X-EBAY-SOA-SERVICE-VERSION';
 
-    const X_EBAY_SOA_SECURITY_TOKEN = 'X-EBAY-SOA-SECURITY-TOKEN';
+    public const X_EBAY_SOA_SECURITY_TOKEN = 'X-EBAY-SOA-SECURITY-TOKEN';
 
-    const X_EBAY_SOA_OPERATION_NAME = 'X-EBAY-SOA-OPERATION-NAME';
+    public const X_EBAY_SOA_OPERATION_NAME = 'X-EBAY-SOA-OPERATION-NAME';
 
-    const PRODUCTION_URL = 'https://webservices.ebay.com/BulkDataExchangeService';
+    public const PRODUCTION_URL = 'https://webservices.ebay.com/BulkDataExchangeService';
 
-    const SANDBOX_URL = 'https://webservices.sandbox.ebay.com/BulkDataExchangeService';
+    public const SANDBOX_URL = 'https://webservices.sandbox.ebay.com/BulkDataExchangeService';
 
     public function __construct(array $config = [], Serializer $serializer = null, MessageFactory $messageFactory = null, HttpClient $client = null)
     {

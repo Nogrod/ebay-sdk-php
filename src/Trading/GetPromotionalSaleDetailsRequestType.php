@@ -32,7 +32,7 @@ class GetPromotionalSaleDetailsRequestType extends AbstractRequestType
      * @var string[] $promotionalSaleStatus
      */
     private $promotionalSaleStatus = [
-        
+
     ];
 
     /**

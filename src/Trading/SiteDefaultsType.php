@@ -18,7 +18,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      * @var \Nogrod\eBaySDK\Trading\ListingDurationReferenceType[] $listingDuration
      */
     private $listingDuration = [
-        
+
     ];
 
     /**
@@ -829,7 +829,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      * @var string[] $paymentMethod
      */
     private $paymentMethod = [
-        
+
     ];
 
     /**

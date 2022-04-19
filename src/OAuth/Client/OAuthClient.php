@@ -1,4 +1,5 @@
 <?php
+
 namespace Nogrod\eBaySDK\OAuth\Client;
 
 use Http\Client\HttpClient;
@@ -15,11 +16,11 @@ use Nogrod\eBaySDK\OAuth\RefreshUserTokenRestResponse;
 
 class OAuthClient
 {
-    const VERSION = 'v1';
+    public const VERSION = 'v1';
 
-    const PRODUCTION_URL = 'https://api.ebay.com/identity/v1/oauth2/token';
+    public const PRODUCTION_URL = 'https://api.ebay.com/identity/v1/oauth2/token';
 
-    const SANDBOX_URL = 'https://api.sandbox.ebay.com/identity/v1/oauth2/token';
+    public const SANDBOX_URL = 'https://api.sandbox.ebay.com/identity/v1/oauth2/token';
 
     /**
      * @var HttpClient

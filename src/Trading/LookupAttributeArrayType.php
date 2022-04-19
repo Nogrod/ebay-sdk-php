@@ -18,7 +18,7 @@ class LookupAttributeArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
      * @var \Nogrod\eBaySDK\Trading\LookupAttributeType[] $lookupAttribute
      */
     private $lookupAttribute = [
-        
+
     ];
 
     /**

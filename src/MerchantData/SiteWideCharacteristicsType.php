@@ -25,7 +25,7 @@ class SiteWideCharacteristicsType implements \Sabre\Xml\XmlSerializable, \Sabre\
      * @var string[] $excludeCategoryID
      */
     private $excludeCategoryID = [
-        
+
     ];
 
     /**
