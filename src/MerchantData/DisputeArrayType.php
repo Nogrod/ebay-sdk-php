@@ -7,20 +7,19 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing DisputeArrayType
  *
- * Type used by the <b>DisputeArray</b> container that is returned in the response of the <b>GetUserDisputes</b> call. The <b>DisputeArray</b> container holds an array of one or more disputes that match the filter criteria in the call request.
+ * Type used by the <b>DisputeArray</b> container that is returned in the response of the <b>GetUserDisputes</b> call. The <b>DisputeArray</b> container holds an array of one or more Unpaid Item cases that match the filter criteria in the call request.
  *  <br/><br/>
  *  <span class="tablenote"><strong>Note:</strong>
- *  'Item Not Received' or 'Significantly Not As Described' cases, initiated by buyers through the eBay Money Back Guarantee program, are not returned with <b>GetUserDisputes</b>. The <a href="https://developer.ebay.com/Devzone/post-order/post-order_v2_casemanagement-caseId__get.html#overview">getCase</a> method of the <a href="https://developer.ebay.com/Devzone/post-order/concepts/UsageGuide.html">Post-Order API</a> is used to retrieve Money Back Guarantee cases programmatically.
+ *  The <b>GetUserDisputes</b> call now only retrieves Unpaid Item cases, and is no longer used to retrieve Item not Received (INR) disputes created through PayPal, since this is no longer an option for eBay buyers. eBay buyers must create an INR case through eBay's Resolution Center, and these calls do not support eBay Money Back Guarantee cases.
+ *  <br><br>
+ *  To respond to an eBay Money Back Guarantee case, the seller should use the <a href="https://developer.ebay.com/Devzone/post-order/index.html" target="_blank">Case Management calls</a> of the <b>Post-Order API</b> or manage/respond to cases manually through the eBay Resolution Center.
  *  </span>
  * XSD Type: DisputeArrayType
  */
 class DisputeArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
     /**
-     * The information that describes a dispute, including
-     *  the buyer's name, the transaction ID, the dispute state
-     *  and status, whether the dispute is resolved,
-     *  and any messages posted to the dispute.
+     * This container consists of detailed information on each Unpaid Item case that matches the input criteria.
      *
      * @var \Nogrod\eBaySDK\MerchantData\DisputeType[] $dispute
      */
@@ -31,10 +30,7 @@ class DisputeArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Adds as dispute
      *
-     * The information that describes a dispute, including
-     *  the buyer's name, the transaction ID, the dispute state
-     *  and status, whether the dispute is resolved,
-     *  and any messages posted to the dispute.
+     * This container consists of detailed information on each Unpaid Item case that matches the input criteria.
      *
      * @return self
      * @param \Nogrod\eBaySDK\MerchantData\DisputeType $dispute
@@ -48,10 +44,7 @@ class DisputeArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * isset dispute
      *
-     * The information that describes a dispute, including
-     *  the buyer's name, the transaction ID, the dispute state
-     *  and status, whether the dispute is resolved,
-     *  and any messages posted to the dispute.
+     * This container consists of detailed information on each Unpaid Item case that matches the input criteria.
      *
      * @param int|string $index
      * @return bool
@@ -64,10 +57,7 @@ class DisputeArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * unset dispute
      *
-     * The information that describes a dispute, including
-     *  the buyer's name, the transaction ID, the dispute state
-     *  and status, whether the dispute is resolved,
-     *  and any messages posted to the dispute.
+     * This container consists of detailed information on each Unpaid Item case that matches the input criteria.
      *
      * @param int|string $index
      * @return void
@@ -80,10 +70,7 @@ class DisputeArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Gets as dispute
      *
-     * The information that describes a dispute, including
-     *  the buyer's name, the transaction ID, the dispute state
-     *  and status, whether the dispute is resolved,
-     *  and any messages posted to the dispute.
+     * This container consists of detailed information on each Unpaid Item case that matches the input criteria.
      *
      * @return \Nogrod\eBaySDK\MerchantData\DisputeType[]
      */
@@ -95,10 +82,7 @@ class DisputeArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Sets a new dispute
      *
-     * The information that describes a dispute, including
-     *  the buyer's name, the transaction ID, the dispute state
-     *  and status, whether the dispute is resolved,
-     *  and any messages posted to the dispute.
+     * This container consists of detailed information on each Unpaid Item case that matches the input criteria.
      *
      * @param \Nogrod\eBaySDK\MerchantData\DisputeType[] $dispute
      * @return self

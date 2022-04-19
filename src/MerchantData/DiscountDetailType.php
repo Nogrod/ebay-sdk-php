@@ -17,7 +17,7 @@ class DiscountDetailType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      *  <br>
      *  <br>
      *  <span class="tablenote"><b>Note: </b>
-     *  The discount type will be shown for any account entry where a discount applies, but the discount amount will only be shown if the corresponding fee was deducted from a seller payout for a managed payments seller.
+     *  The discount type will be shown for any account entry where a discount applies, but the discount amount will only be shown if the corresponding fee was deducted from a seller payout.
      *  </span>
      *
      * @var \Nogrod\eBaySDK\MerchantData\DiscountType[] $discount
@@ -33,7 +33,7 @@ class DiscountDetailType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      *  <br>
      *  <br>
      *  <span class="tablenote"><b>Note: </b>
-     *  The discount type will be shown for any account entry where a discount applies, but the discount amount will only be shown if the corresponding fee was deducted from a seller payout for a managed payments seller.
+     *  The discount type will be shown for any account entry where a discount applies, but the discount amount will only be shown if the corresponding fee was deducted from a seller payout.
      *  </span>
      *
      * @return self
@@ -52,7 +52,7 @@ class DiscountDetailType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      *  <br>
      *  <br>
      *  <span class="tablenote"><b>Note: </b>
-     *  The discount type will be shown for any account entry where a discount applies, but the discount amount will only be shown if the corresponding fee was deducted from a seller payout for a managed payments seller.
+     *  The discount type will be shown for any account entry where a discount applies, but the discount amount will only be shown if the corresponding fee was deducted from a seller payout.
      *  </span>
      *
      * @param int|string $index
@@ -70,7 +70,7 @@ class DiscountDetailType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      *  <br>
      *  <br>
      *  <span class="tablenote"><b>Note: </b>
-     *  The discount type will be shown for any account entry where a discount applies, but the discount amount will only be shown if the corresponding fee was deducted from a seller payout for a managed payments seller.
+     *  The discount type will be shown for any account entry where a discount applies, but the discount amount will only be shown if the corresponding fee was deducted from a seller payout.
      *  </span>
      *
      * @param int|string $index
@@ -88,7 +88,7 @@ class DiscountDetailType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      *  <br>
      *  <br>
      *  <span class="tablenote"><b>Note: </b>
-     *  The discount type will be shown for any account entry where a discount applies, but the discount amount will only be shown if the corresponding fee was deducted from a seller payout for a managed payments seller.
+     *  The discount type will be shown for any account entry where a discount applies, but the discount amount will only be shown if the corresponding fee was deducted from a seller payout.
      *  </span>
      *
      * @return \Nogrod\eBaySDK\MerchantData\DiscountType[]
@@ -105,7 +105,7 @@ class DiscountDetailType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      *  <br>
      *  <br>
      *  <span class="tablenote"><b>Note: </b>
-     *  The discount type will be shown for any account entry where a discount applies, but the discount amount will only be shown if the corresponding fee was deducted from a seller payout for a managed payments seller.
+     *  The discount type will be shown for any account entry where a discount applies, but the discount amount will only be shown if the corresponding fee was deducted from a seller payout.
      *  </span>
      *
      * @param \Nogrod\eBaySDK\MerchantData\DiscountType[] $discount

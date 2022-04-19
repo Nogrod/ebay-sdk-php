@@ -829,6 +829,28 @@ Nogrod\eBaySDK\MerchantData\ItemType:
                 entry_name: VideoID
                 skip_when_empty: true
                 namespace: 'urn:ebay:apis:eBLBaseComponents'
+        extendedProducerResponsibility:
+            expose: true
+            access_type: public_method
+            serialized_name: ExtendedProducerResponsibility
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getExtendedProducerResponsibility
+                setter: setExtendedProducerResponsibility
+            type: Nogrod\eBaySDK\MerchantData\ExtendedProducerResponsibilityType
+        customPolicies:
+            expose: true
+            access_type: public_method
+            serialized_name: CustomPolicies
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCustomPolicies
+                setter: setCustomPolicies
+            type: Nogrod\eBaySDK\MerchantData\CustomPoliciesType
         dispatchTimeMax:
             expose: true
             access_type: public_method

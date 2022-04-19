@@ -5,15 +5,17 @@ namespace Nogrod\eBaySDK\MerchantData;
 /**
  * Class representing DisputeExplanationCodeType
  *
- * Enumerated type that contains the explanations for a buyer or seller opening a case
- *  against one another. These values are specified in the <b>DisputeExplanation</b>
- *  field of <b>AddDispute</b>, and are returned in the
+ * Enumerated type that contains the explanations that a seller can give for opening up an Unpaid Item case
+ *  against a buyer. These values are specified in the <b>DisputeExplanation</b>
+ *  field of <b>AddDispute</b> call, and are returned in the
  *  <b>GetUserDisputes</b> and <b>GetDispute</b> calls. The
  *  <b>DisputeReason</b> value will dictate what
  *  <b>DisputeExplanation</b> values that can be used/returned.
  *  <br/><br/>
  *  <span class="tablenote"><strong>Note:</strong>
- *  The dispute calls in the Trading API are not compatible with 'Item Not Received' or 'Significantly Not As Described' cases initiated by buyers through the eBay Money Back Guarantee program. The <a href="https://developer.ebay.com/Devzone/post-order/concepts/UsageGuide.html">Post-Order API</a> is used to retrieve and/or respond to eBay Money Back Guarantee cases programmatically.
+ *  Only Unpaid Item cases are now supported by the Dispute calls of the Trading API. These calls no longer support Item not Received (INR) or Significantly not as Described (SNAD) disputes created through PayPal, since this is no longer an option for eBay buyers. eBay buyers must create an INR case through eBay's Resolution Center, and these calls also do not support eBay Money Back Guarantee cases.
+ *  <br><br>
+ *  To respond to an eBay Money Back Guarantee case, the seller should use the <a href="https://developer.ebay.com/Devzone/post-order/index.html" target="_blank">Case Management calls</a> of the <b>Post-Order API</b> or manage/respond to cases manually through the eBay Resolution Center.
  *  </span>
  * XSD Type: DisputeExplanationCodeType
  */
@@ -53,11 +55,10 @@ class DisputeExplanationCodeType
     /**
      * Constant for 'BuyerReturnedItemForRefund' value.
      *
-     * This value indicates that the buyer has returned the item, and seller has agreed
-     * to
-     *  cancel the order and issue a refund to the buyer. This value is allowed when
-     * the
-     *  <b>DisputeReason</b> value is <b>TransactionMutuallyCanceled</b>.
+     * This value is no longer applicable and should not be used in an
+     * <b>AddDispute</b> call, as it only pertains to <i>Significantly Not As
+     * Described</i> disputes initiated through PayPal, and those disputes are no
+     * longer supported by the <b>AddDispute</b>.
      */
     public const VAL_BUYER_RETURNED_ITEM_FOR_REFUND = 'BuyerReturnedItemForRefund';
 
@@ -76,11 +77,8 @@ class DisputeExplanationCodeType
      * Constant for 'BuyerNoLongerWantsItem' value.
      *
      * This value indicates that the buyer no longer wants the item (buyer remorse),
-     * and
-     *  the seller is willing to cancel the order line item. This value is allowed when
-     * the
-     *  <b>DisputeReason</b> value is
-     *  <b>TransactionMutuallyCanceled</b>.
+     * and the seller is willing to cancel the order line item. This value is allowed
+     * when the <b>DisputeReason</b> value is <b>TransactionMutuallyCanceled</b>.
      */
     public const VAL_BUYER_NO_LONGER_WANTS_ITEM = 'BuyerNoLongerWantsItem';
 
@@ -88,10 +86,8 @@ class DisputeExplanationCodeType
      * Constant for 'BuyerPurchasingMistake' value.
      *
      * This value indicates that the buyer made a mistake by purchasing the item, and
-     *  the seller is willing to cancel the order line item. This value is allowed when
-     * the
-     *  <b>DisputeReason</b> value is
-     *  <b>TransactionMutuallyCanceled</b>.
+     * the seller is willing to cancel the order line item. This value is allowed when
+     * the <b>DisputeReason</b> value is <b>TransactionMutuallyCanceled</b>.
      */
     public const VAL_BUYER_PURCHASING_MISTAKE = 'BuyerPurchasingMistake';
 
@@ -122,7 +118,7 @@ class DisputeExplanationCodeType
     /**
      * Constant for 'BuyerNoLongerRegistered' value.
      *
-     * This value is deprecated.
+     * This value is deprecated, and should not be used.
      */
     public const VAL_BUYER_NO_LONGER_REGISTERED = 'BuyerNoLongerRegistered';
 
@@ -139,21 +135,18 @@ class DisputeExplanationCodeType
     /**
      * Constant for 'Unspecified' value.
      *
-     * This value can be used when no other explanation in
-     *  <b>DisputeExplanationCodeType</b> is appropriate for the situation. This
-     *  value is allowed when the <b>DisputeReason</b> value is
-     *  <b>ItemNotReceived</b> or <b>SignificantlyNotAsDescribed</b>.
-     *  This value cannot be used in <b>AddDispute</b>.
+     * This value cannot be used in <b>AddDispute</b>, but it may be returned in the
+     * <b>GetDispute</b> or <b>GetUserDisputes</b> calls if the dispute explanation is
+     * unknown or was not specified.
      */
     public const VAL_UNSPECIFIED = 'Unspecified';
 
     /**
      * Constant for 'UPIAssistance' value.
      *
-     * This value indicates that the Unpaid Item case was opened by eBay through the
-     * Unpaid
-     *  Item Assistance mechanism. This value cannot be used in
-     *  <b>AddDispute</b>.
+     * This value will be returned in <b>GetDispute</b> or <b>GetUserDisputes</b> calls
+     * if the Unpaid Item case was opened by eBay through the Unpaid Item Assistance
+     * mechanism. This value cannot be used in <b>AddDispute</b>.
      */
     public const VAL_UPIASSISTANCE = 'UPIAssistance';
 
@@ -205,11 +198,8 @@ class DisputeExplanationCodeType
      * Constant for 'SellerRanOutOfStock' value.
      *
      * This value indicates that the seller ran out of stock on the item, cannot
-     * fulfill
-     *  the order, and has to cancel the order line item. This value is allowed when
-     * the
-     *  <b>DisputeReason</b> value is
-     *  <b>TransactionMutuallyCanceled</b>.
+     * fulfill the order, and has to cancel the order line item. This value is allowed
+     * when the <b>DisputeReason</b> value is <b>TransactionMutuallyCanceled</b>.
      */
     public const VAL_SELLER_RAN_OUT_OF_STOCK = 'SellerRanOutOfStock';
 

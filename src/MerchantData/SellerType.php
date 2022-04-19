@@ -36,10 +36,7 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
     private $billingCurrency = null;
 
     /**
-     * This flag indicates whether or not the seller's Checkout Enabled preference is turned on (at account level or at
-     *  listing level). This preference is managed through Payment Preferences in My eBay. If this preference is enabled,
-     *  a Pay Now button will appear in checkout flow pages and in the email notifications that are sent to buyers. This
-     *  preferance is enabled by default if PayPal is one of the payment methods.
+     * This flag indicates whether or not the seller's Checkout Enabled preference is turned on (at account level or at listing level). This preference is managed through Payment Preferences in My eBay. If this preference is enabled, a Pay Now button will appear in checkout flow pages and in the email notifications that are sent to buyers.
      *
      * @var bool $checkoutEnabled
      */
@@ -57,7 +54,7 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
 
     /**
      * If true, indicates that the user is in good standing with eBay. (One of the
-     *  requirements for listing a new item with Immediate Payment.)
+     *  requirements for listing a new item with immediate payment.)
      *
      * @var bool $goodStanding
      */
@@ -104,10 +101,7 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
     private $sellerPaymentAddress = null;
 
     /**
-     * Container for scheduling limits for the user.
-     *  Conveys the minimum and maximum
-     *  minutes the user may schedule listings in advance, as well as the maximum
-     *  number of items the user may schedule.
+     * Container for scheduling limits for the user. Conveys the minimum and maximum minutes the user may schedule listings in advance, as well as the maximum number of items the user may schedule at any given time.
      *
      * @var \Nogrod\eBaySDK\MerchantData\SchedulingInfoType $schedulingInfo
      */
@@ -121,21 +115,14 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
     private $storeOwner = null;
 
     /**
-     * The URL for the seller's eBay Store. This field is only returned if the seller is a store
-     *  owner. To determine if a seller is a Store owner, check for the <b>User.SellerInfo.StoreOwner</b>
-     *  and a value of true. The eBay Stores domain that is returned in this field is based on the
-     *  <b>SITEID</b> header that is passed in the request, and not on the user's
-     *  registration address, as was the case prior to version 757. So, if the seller's
-     *  registration county is the UK, but a <b>SITEID</b> value of 71 (France) is
-     *  passed into the call, the eBay Stores domain that is returned would be stores.ebay.fr.
+     * The URL for the seller's eBay Store. This field is only returned if the seller is a store owner (look for a value of <code>true</code> in the <b>SellerInfo.StoreOwner</b> field).
      *
      * @var string $storeURL
      */
     private $storeURL = null;
 
     /**
-     * Type of seller account. This value is returned if the German
-     *  (ID 77), UK (ID 3), Ireland (ID 205), or US eBay Motors (ID 0) sites are specified.
+     * This enumeration value indicates the type of eBay account used by the seller.
      *
      * @var string $sellerBusinessType
      */
@@ -149,16 +136,14 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
     private $registeredBusinessSeller = null;
 
     /**
-     * The site associated with the seller's eBay Store.
+     * This enumeration value indicates the eBay marketplace hosting the seller's eBay Store.
      *
      * @var string $storeSite
      */
     private $storeSite = null;
 
     /**
-     * Indicates the method the seller selected to pay eBay with for
-     *  the account.
-     *  The payment methods vary from one eBay site to the next.
+     * This enumeration value indicates the default payment method that the seller is using to pay eBay fees.
      *
      * @var string $paymentMethod
      */
@@ -181,7 +166,7 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
     private $charityRegistered = null;
 
     /**
-     * If this field is <code>true</code>, the user is exempt from the requirement to offer at least one safe payment method when listing items. This setting overrides both the site and category values for <b>SafePaymentRequired</b>.
+     * If this field is <code>true</code>, the user is exempt from the requirement to offer at least one safe payment method when listing items.
      *
      * @var bool $safePaymentExempt
      */
@@ -218,7 +203,7 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
 
     /**
      * Contains eligibility details about seller- or platform-based features. This is returned only
-     *  if IncludeFeatureEligibility is set to true in the request.
+     *  if the <b>IncludeFeatureEligibility</b> field is included and set to <code>true</code> in the request.
      *
      * @var \Nogrod\eBaySDK\MerchantData\FeatureEligibilityType $featureEligibility
      */
@@ -238,7 +223,7 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
      *  <li>eBay AU: <a href="http://pages.ebay.com.au/help/sell/top-rated.html">
      * Becoming a Top Rated Seller and qualifying for eBay Premium Service</a></li>
      *  </ul>
-     *  Top Rated Sellers, registered in the US, can qualify for Top Rated Seller programs in other countries as long as they meet the selling requirments in those countries. However, even if US sellers qualify for programs in other countries, they will not receive the Final Value Fee discount on sales in those countries. For more information, see the <a href="http://pages.ebay.com/help/sell/top-rated.html#qualifying">
+     *  Top Rated Sellers, registered in the US, can qualify for Top Rated Seller programs in other countries as long as they meet the selling requirements in those countries. However, even if US sellers qualify for programs in other countries, they will not receive the Final Value Fee discount on sales in those countries. For more information, see the <a href="http://pages.ebay.com/help/sell/top-rated.html#qualifying">
      * Qualifying for Top Rated Seller status on other eBay sites</a> help topic.
      *
      * @var bool $topRatedSeller
@@ -376,10 +361,7 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
     /**
      * Gets as checkoutEnabled
      *
-     * This flag indicates whether or not the seller's Checkout Enabled preference is turned on (at account level or at
-     *  listing level). This preference is managed through Payment Preferences in My eBay. If this preference is enabled,
-     *  a Pay Now button will appear in checkout flow pages and in the email notifications that are sent to buyers. This
-     *  preferance is enabled by default if PayPal is one of the payment methods.
+     * This flag indicates whether or not the seller's Checkout Enabled preference is turned on (at account level or at listing level). This preference is managed through Payment Preferences in My eBay. If this preference is enabled, a Pay Now button will appear in checkout flow pages and in the email notifications that are sent to buyers.
      *
      * @return bool
      */
@@ -391,10 +373,7 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
     /**
      * Sets a new checkoutEnabled
      *
-     * This flag indicates whether or not the seller's Checkout Enabled preference is turned on (at account level or at
-     *  listing level). This preference is managed through Payment Preferences in My eBay. If this preference is enabled,
-     *  a Pay Now button will appear in checkout flow pages and in the email notifications that are sent to buyers. This
-     *  preferance is enabled by default if PayPal is one of the payment methods.
+     * This flag indicates whether or not the seller's Checkout Enabled preference is turned on (at account level or at listing level). This preference is managed through Payment Preferences in My eBay. If this preference is enabled, a Pay Now button will appear in checkout flow pages and in the email notifications that are sent to buyers.
      *
      * @param bool $checkoutEnabled
      * @return self
@@ -441,7 +420,7 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
      * Gets as goodStanding
      *
      * If true, indicates that the user is in good standing with eBay. (One of the
-     *  requirements for listing a new item with Immediate Payment.)
+     *  requirements for listing a new item with immediate payment.)
      *
      * @return bool
      */
@@ -454,7 +433,7 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
      * Sets a new goodStanding
      *
      * If true, indicates that the user is in good standing with eBay. (One of the
-     *  requirements for listing a new item with Immediate Payment.)
+     *  requirements for listing a new item with immediate payment.)
      *
      * @param bool $goodStanding
      * @return self
@@ -608,10 +587,7 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
     /**
      * Gets as schedulingInfo
      *
-     * Container for scheduling limits for the user.
-     *  Conveys the minimum and maximum
-     *  minutes the user may schedule listings in advance, as well as the maximum
-     *  number of items the user may schedule.
+     * Container for scheduling limits for the user. Conveys the minimum and maximum minutes the user may schedule listings in advance, as well as the maximum number of items the user may schedule at any given time.
      *
      * @return \Nogrod\eBaySDK\MerchantData\SchedulingInfoType
      */
@@ -623,10 +599,7 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
     /**
      * Sets a new schedulingInfo
      *
-     * Container for scheduling limits for the user.
-     *  Conveys the minimum and maximum
-     *  minutes the user may schedule listings in advance, as well as the maximum
-     *  number of items the user may schedule.
+     * Container for scheduling limits for the user. Conveys the minimum and maximum minutes the user may schedule listings in advance, as well as the maximum number of items the user may schedule at any given time.
      *
      * @param \Nogrod\eBaySDK\MerchantData\SchedulingInfoType $schedulingInfo
      * @return self
@@ -666,13 +639,7 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
     /**
      * Gets as storeURL
      *
-     * The URL for the seller's eBay Store. This field is only returned if the seller is a store
-     *  owner. To determine if a seller is a Store owner, check for the <b>User.SellerInfo.StoreOwner</b>
-     *  and a value of true. The eBay Stores domain that is returned in this field is based on the
-     *  <b>SITEID</b> header that is passed in the request, and not on the user's
-     *  registration address, as was the case prior to version 757. So, if the seller's
-     *  registration county is the UK, but a <b>SITEID</b> value of 71 (France) is
-     *  passed into the call, the eBay Stores domain that is returned would be stores.ebay.fr.
+     * The URL for the seller's eBay Store. This field is only returned if the seller is a store owner (look for a value of <code>true</code> in the <b>SellerInfo.StoreOwner</b> field).
      *
      * @return string
      */
@@ -684,13 +651,7 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
     /**
      * Sets a new storeURL
      *
-     * The URL for the seller's eBay Store. This field is only returned if the seller is a store
-     *  owner. To determine if a seller is a Store owner, check for the <b>User.SellerInfo.StoreOwner</b>
-     *  and a value of true. The eBay Stores domain that is returned in this field is based on the
-     *  <b>SITEID</b> header that is passed in the request, and not on the user's
-     *  registration address, as was the case prior to version 757. So, if the seller's
-     *  registration county is the UK, but a <b>SITEID</b> value of 71 (France) is
-     *  passed into the call, the eBay Stores domain that is returned would be stores.ebay.fr.
+     * The URL for the seller's eBay Store. This field is only returned if the seller is a store owner (look for a value of <code>true</code> in the <b>SellerInfo.StoreOwner</b> field).
      *
      * @param string $storeURL
      * @return self
@@ -704,8 +665,7 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
     /**
      * Gets as sellerBusinessType
      *
-     * Type of seller account. This value is returned if the German
-     *  (ID 77), UK (ID 3), Ireland (ID 205), or US eBay Motors (ID 0) sites are specified.
+     * This enumeration value indicates the type of eBay account used by the seller.
      *
      * @return string
      */
@@ -717,8 +677,7 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
     /**
      * Sets a new sellerBusinessType
      *
-     * Type of seller account. This value is returned if the German
-     *  (ID 77), UK (ID 3), Ireland (ID 205), or US eBay Motors (ID 0) sites are specified.
+     * This enumeration value indicates the type of eBay account used by the seller.
      *
      * @param string $sellerBusinessType
      * @return self
@@ -758,7 +717,7 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
     /**
      * Gets as storeSite
      *
-     * The site associated with the seller's eBay Store.
+     * This enumeration value indicates the eBay marketplace hosting the seller's eBay Store.
      *
      * @return string
      */
@@ -770,7 +729,7 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
     /**
      * Sets a new storeSite
      *
-     * The site associated with the seller's eBay Store.
+     * This enumeration value indicates the eBay marketplace hosting the seller's eBay Store.
      *
      * @param string $storeSite
      * @return self
@@ -784,9 +743,7 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
     /**
      * Gets as paymentMethod
      *
-     * Indicates the method the seller selected to pay eBay with for
-     *  the account.
-     *  The payment methods vary from one eBay site to the next.
+     * This enumeration value indicates the default payment method that the seller is using to pay eBay fees.
      *
      * @return string
      */
@@ -798,9 +755,7 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
     /**
      * Sets a new paymentMethod
      *
-     * Indicates the method the seller selected to pay eBay with for
-     *  the account.
-     *  The payment methods vary from one eBay site to the next.
+     * This enumeration value indicates the default payment method that the seller is using to pay eBay fees.
      *
      * @param string $paymentMethod
      * @return self
@@ -870,7 +825,7 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
     /**
      * Gets as safePaymentExempt
      *
-     * If this field is <code>true</code>, the user is exempt from the requirement to offer at least one safe payment method when listing items. This setting overrides both the site and category values for <b>SafePaymentRequired</b>.
+     * If this field is <code>true</code>, the user is exempt from the requirement to offer at least one safe payment method when listing items.
      *
      * @return bool
      */
@@ -882,7 +837,7 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
     /**
      * Sets a new safePaymentExempt
      *
-     * If this field is <code>true</code>, the user is exempt from the requirement to offer at least one safe payment method when listing items. This setting overrides both the site and category values for <b>SafePaymentRequired</b>.
+     * If this field is <code>true</code>, the user is exempt from the requirement to offer at least one safe payment method when listing items.
      *
      * @param bool $safePaymentExempt
      * @return self
@@ -1083,7 +1038,7 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
      * Gets as featureEligibility
      *
      * Contains eligibility details about seller- or platform-based features. This is returned only
-     *  if IncludeFeatureEligibility is set to true in the request.
+     *  if the <b>IncludeFeatureEligibility</b> field is included and set to <code>true</code> in the request.
      *
      * @return \Nogrod\eBaySDK\MerchantData\FeatureEligibilityType
      */
@@ -1096,7 +1051,7 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
      * Sets a new featureEligibility
      *
      * Contains eligibility details about seller- or platform-based features. This is returned only
-     *  if IncludeFeatureEligibility is set to true in the request.
+     *  if the <b>IncludeFeatureEligibility</b> field is included and set to <code>true</code> in the request.
      *
      * @param \Nogrod\eBaySDK\MerchantData\FeatureEligibilityType $featureEligibility
      * @return self
@@ -1123,7 +1078,7 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
      *  <li>eBay AU: <a href="http://pages.ebay.com.au/help/sell/top-rated.html">
      * Becoming a Top Rated Seller and qualifying for eBay Premium Service</a></li>
      *  </ul>
-     *  Top Rated Sellers, registered in the US, can qualify for Top Rated Seller programs in other countries as long as they meet the selling requirments in those countries. However, even if US sellers qualify for programs in other countries, they will not receive the Final Value Fee discount on sales in those countries. For more information, see the <a href="http://pages.ebay.com/help/sell/top-rated.html#qualifying">
+     *  Top Rated Sellers, registered in the US, can qualify for Top Rated Seller programs in other countries as long as they meet the selling requirements in those countries. However, even if US sellers qualify for programs in other countries, they will not receive the Final Value Fee discount on sales in those countries. For more information, see the <a href="http://pages.ebay.com/help/sell/top-rated.html#qualifying">
      * Qualifying for Top Rated Seller status on other eBay sites</a> help topic.
      *
      * @return bool
@@ -1149,7 +1104,7 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
      *  <li>eBay AU: <a href="http://pages.ebay.com.au/help/sell/top-rated.html">
      * Becoming a Top Rated Seller and qualifying for eBay Premium Service</a></li>
      *  </ul>
-     *  Top Rated Sellers, registered in the US, can qualify for Top Rated Seller programs in other countries as long as they meet the selling requirments in those countries. However, even if US sellers qualify for programs in other countries, they will not receive the Final Value Fee discount on sales in those countries. For more information, see the <a href="http://pages.ebay.com/help/sell/top-rated.html#qualifying">
+     *  Top Rated Sellers, registered in the US, can qualify for Top Rated Seller programs in other countries as long as they meet the selling requirements in those countries. However, even if US sellers qualify for programs in other countries, they will not receive the Final Value Fee discount on sales in those countries. For more information, see the <a href="http://pages.ebay.com/help/sell/top-rated.html#qualifying">
      * Qualifying for Top Rated Seller status on other eBay sites</a> help topic.
      *
      * @param bool $topRatedSeller

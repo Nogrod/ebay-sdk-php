@@ -7,19 +7,13 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing PaymentHoldDetailType
  *
- * This type defines the <b>PaymentHoldDetails</b> container, which
- *  consists of information related to the payment hold on the order, including the
- *  reason why the buyer's payment for the order is being held, the expected
- *  release date of the funds into the seller's account, and possible action(s) the
- *  seller can take to expedite the payout of funds into their account.
+ * This type defines the <b>PaymentHoldDetails</b> container, which consists of information related to eBay holding the payment proceeds for an order, including the reason why eBay is holding the money, the expected release date of the funds to the seller, and possible action(s) the seller can take to expedite the release of funds.
  * XSD Type: PaymentHoldDetailType
  */
 class PaymentHoldDetailType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
     /**
-     * Timestamp that indicates the expected date in which eBay/PayPal will
-     *  distribute the funds to the seller's account. This is not a firm date and
-     *  is subject to change. This field is only returned after checkout is complete and if the <b>PaymentHoldStatus</b> indicates a hold has been placed on payment.
+     * Timestamp that indicates the expected date in which eBay will distribute the funds to the seller's account. This is not a firm date and is subject to change. This field is only returned after checkout is complete and if the <b>PaymentHoldStatus</b> indicates a hold has been placed on payment.
      *
      * @var \DateTime $expectedReleaseDate
      */
@@ -35,18 +29,14 @@ class PaymentHoldDetailType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
     private $requiredSellerActionArray = null;
 
     /**
-     * Integer value that indicates the number of possible actions that a seller
-     *  can take to possibly expedite the release of funds into their account. This
-     *  value should equal the number of <b>RequiredSellerAction</b>
-     *  fields contained in the <b>RequiredSellerActionArray</b>
-     *  container.
+     * Integer value that indicates the number of possible actions that a seller can take to possibly expedite the release of funds into their account. This value should equal the number of <b>RequiredSellerAction</b> fields contained in the <b>RequiredSellerActionArray</b> container.
      *
      * @var int $numOfReqSellerActions
      */
     private $numOfReqSellerActions = null;
 
     /**
-     * Enumerated value that indicates why the buyer's payment for the order is being held by eBay/PayPal instead of being distributed to the seller's account. A seller's funds for an order can be held by PayPal for as little as three days after the buyer receives the order, but the hold can be up to 21 days based on the scenario, and in some cases, the seller's lack of action in helping to expedite the release of funds.
+     * Enumerated value that indicates why the buyer's payment for the order is being held by eBay instead of being distributed to the seller's account.
      *
      * @var string $paymentHoldReason
      */
@@ -55,9 +45,7 @@ class PaymentHoldDetailType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
     /**
      * Gets as expectedReleaseDate
      *
-     * Timestamp that indicates the expected date in which eBay/PayPal will
-     *  distribute the funds to the seller's account. This is not a firm date and
-     *  is subject to change. This field is only returned after checkout is complete and if the <b>PaymentHoldStatus</b> indicates a hold has been placed on payment.
+     * Timestamp that indicates the expected date in which eBay will distribute the funds to the seller's account. This is not a firm date and is subject to change. This field is only returned after checkout is complete and if the <b>PaymentHoldStatus</b> indicates a hold has been placed on payment.
      *
      * @return \DateTime
      */
@@ -69,9 +57,7 @@ class PaymentHoldDetailType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
     /**
      * Sets a new expectedReleaseDate
      *
-     * Timestamp that indicates the expected date in which eBay/PayPal will
-     *  distribute the funds to the seller's account. This is not a firm date and
-     *  is subject to change. This field is only returned after checkout is complete and if the <b>PaymentHoldStatus</b> indicates a hold has been placed on payment.
+     * Timestamp that indicates the expected date in which eBay will distribute the funds to the seller's account. This is not a firm date and is subject to change. This field is only returned after checkout is complete and if the <b>PaymentHoldStatus</b> indicates a hold has been placed on payment.
      *
      * @param \DateTime $expectedReleaseDate
      * @return self
@@ -161,11 +147,7 @@ class PaymentHoldDetailType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
     /**
      * Gets as numOfReqSellerActions
      *
-     * Integer value that indicates the number of possible actions that a seller
-     *  can take to possibly expedite the release of funds into their account. This
-     *  value should equal the number of <b>RequiredSellerAction</b>
-     *  fields contained in the <b>RequiredSellerActionArray</b>
-     *  container.
+     * Integer value that indicates the number of possible actions that a seller can take to possibly expedite the release of funds into their account. This value should equal the number of <b>RequiredSellerAction</b> fields contained in the <b>RequiredSellerActionArray</b> container.
      *
      * @return int
      */
@@ -177,11 +159,7 @@ class PaymentHoldDetailType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
     /**
      * Sets a new numOfReqSellerActions
      *
-     * Integer value that indicates the number of possible actions that a seller
-     *  can take to possibly expedite the release of funds into their account. This
-     *  value should equal the number of <b>RequiredSellerAction</b>
-     *  fields contained in the <b>RequiredSellerActionArray</b>
-     *  container.
+     * Integer value that indicates the number of possible actions that a seller can take to possibly expedite the release of funds into their account. This value should equal the number of <b>RequiredSellerAction</b> fields contained in the <b>RequiredSellerActionArray</b> container.
      *
      * @param int $numOfReqSellerActions
      * @return self
@@ -195,7 +173,7 @@ class PaymentHoldDetailType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
     /**
      * Gets as paymentHoldReason
      *
-     * Enumerated value that indicates why the buyer's payment for the order is being held by eBay/PayPal instead of being distributed to the seller's account. A seller's funds for an order can be held by PayPal for as little as three days after the buyer receives the order, but the hold can be up to 21 days based on the scenario, and in some cases, the seller's lack of action in helping to expedite the release of funds.
+     * Enumerated value that indicates why the buyer's payment for the order is being held by eBay instead of being distributed to the seller's account.
      *
      * @return string
      */
@@ -207,7 +185,7 @@ class PaymentHoldDetailType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
     /**
      * Sets a new paymentHoldReason
      *
-     * Enumerated value that indicates why the buyer's payment for the order is being held by eBay/PayPal instead of being distributed to the seller's account. A seller's funds for an order can be held by PayPal for as little as three days after the buyer receives the order, but the hold can be up to 21 days based on the scenario, and in some cases, the seller's lack of action in helping to expedite the release of funds.
+     * Enumerated value that indicates why the buyer's payment for the order is being held by eBay instead of being distributed to the seller's account.
      *
      * @param string $paymentHoldReason
      * @return self

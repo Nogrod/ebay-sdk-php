@@ -27,15 +27,13 @@ class ShippingServiceOptionsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
      *  with <b>DetailName</b> set to <code>ShippingServiceDetails</code>. The
      *  <b>ShippingServiceDetails.ValidForSellingFlow</b> flag must also be present. Otherwise,
      *  that particular shipping service option is no longer valid and cannot be offered
-     *  to buyers through a listing.
-     *  <br><br>
+     *  to buyers through a listing.<br><br>
      *  To view the full list of domestic shipping service options in the response, look for the
      *  <b>ShippingServiceDetails.ShippingService</b> fields. Domestic shipping service options will
      *  not have a <b>InternationalService</b> = <code>true</code> field, as this indicates that the <b>ShippingService</b>
-     *  value is an International shipping service option.<br>
-     *  <br>
+     *  value is an International shipping service option.<br><br>
      *  <span class="tablenote"><strong>Note:</strong>
-     *  The eBay standard envelope (eSE) is a domestic envelope service with tracking through eBay. This service applies to specific sub-categories of Trading Cards categories, and to Coins & Paper Money, Postcards, and Stamps. To use this service, send envelopes using the USPS mail and set the <b>ShippingService</b> field to <code>US_eBayStandardEnvelope</code>. See <a href="https://pages.ebay.com/seller-center/shipping/ebay-standard-envelope.html#lower-cost-way">eBay standard envelope</a> for details and restrictions. For the REST equivalent, see <a href=" https://edp.qa.ebay.com/api-docs/sell/static/seller-accounts/using-the-ebay-standard-envelope-service.html" target=/"_blank/">Using eBay standard envelope (eSE) service</a>.
+     *  The eBay standard envelope (eSE) is a domestic envelope service with tracking through eBay. This service applies to specific sub-categories of Trading Cards categories, and to Coins & Paper Money, Postcards, and Stamps. To use this service, send envelopes using the USPS mail and set the <b>ShippingService</b> field to <code>US_eBayStandardEnvelope</code>. See <a href="https://pages.ebay.com/seller-center/shipping/ebay-standard-envelope.html#lower-cost-way">eBay standard envelope</a> for details and restrictions. For the REST equivalent, see <a href="https://developer.ebay.com/api-docs/sell/static/seller-accounts/using-the-ebay-standard-envelope-service.html" target=/"_blank/">Using the eBay standard envelope (eSE) service</a>.
      *  </span>
      *
      * @var string $shippingService
@@ -209,15 +207,13 @@ class ShippingServiceOptionsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
      *  with <b>DetailName</b> set to <code>ShippingServiceDetails</code>. The
      *  <b>ShippingServiceDetails.ValidForSellingFlow</b> flag must also be present. Otherwise,
      *  that particular shipping service option is no longer valid and cannot be offered
-     *  to buyers through a listing.
-     *  <br><br>
+     *  to buyers through a listing.<br><br>
      *  To view the full list of domestic shipping service options in the response, look for the
      *  <b>ShippingServiceDetails.ShippingService</b> fields. Domestic shipping service options will
      *  not have a <b>InternationalService</b> = <code>true</code> field, as this indicates that the <b>ShippingService</b>
-     *  value is an International shipping service option.<br>
-     *  <br>
+     *  value is an International shipping service option.<br><br>
      *  <span class="tablenote"><strong>Note:</strong>
-     *  The eBay standard envelope (eSE) is a domestic envelope service with tracking through eBay. This service applies to specific sub-categories of Trading Cards categories, and to Coins & Paper Money, Postcards, and Stamps. To use this service, send envelopes using the USPS mail and set the <b>ShippingService</b> field to <code>US_eBayStandardEnvelope</code>. See <a href="https://pages.ebay.com/seller-center/shipping/ebay-standard-envelope.html#lower-cost-way">eBay standard envelope</a> for details and restrictions. For the REST equivalent, see <a href=" https://edp.qa.ebay.com/api-docs/sell/static/seller-accounts/using-the-ebay-standard-envelope-service.html" target=/"_blank/">Using eBay standard envelope (eSE) service</a>.
+     *  The eBay standard envelope (eSE) is a domestic envelope service with tracking through eBay. This service applies to specific sub-categories of Trading Cards categories, and to Coins & Paper Money, Postcards, and Stamps. To use this service, send envelopes using the USPS mail and set the <b>ShippingService</b> field to <code>US_eBayStandardEnvelope</code>. See <a href="https://pages.ebay.com/seller-center/shipping/ebay-standard-envelope.html#lower-cost-way">eBay standard envelope</a> for details and restrictions. For the REST equivalent, see <a href="https://developer.ebay.com/api-docs/sell/static/seller-accounts/using-the-ebay-standard-envelope-service.html" target=/"_blank/">Using the eBay standard envelope (eSE) service</a>.
      *  </span>
      *
      * @return string
@@ -236,15 +232,13 @@ class ShippingServiceOptionsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
      *  with <b>DetailName</b> set to <code>ShippingServiceDetails</code>. The
      *  <b>ShippingServiceDetails.ValidForSellingFlow</b> flag must also be present. Otherwise,
      *  that particular shipping service option is no longer valid and cannot be offered
-     *  to buyers through a listing.
-     *  <br><br>
+     *  to buyers through a listing.<br><br>
      *  To view the full list of domestic shipping service options in the response, look for the
      *  <b>ShippingServiceDetails.ShippingService</b> fields. Domestic shipping service options will
      *  not have a <b>InternationalService</b> = <code>true</code> field, as this indicates that the <b>ShippingService</b>
-     *  value is an International shipping service option.<br>
-     *  <br>
+     *  value is an International shipping service option.<br><br>
      *  <span class="tablenote"><strong>Note:</strong>
-     *  The eBay standard envelope (eSE) is a domestic envelope service with tracking through eBay. This service applies to specific sub-categories of Trading Cards categories, and to Coins & Paper Money, Postcards, and Stamps. To use this service, send envelopes using the USPS mail and set the <b>ShippingService</b> field to <code>US_eBayStandardEnvelope</code>. See <a href="https://pages.ebay.com/seller-center/shipping/ebay-standard-envelope.html#lower-cost-way">eBay standard envelope</a> for details and restrictions. For the REST equivalent, see <a href=" https://edp.qa.ebay.com/api-docs/sell/static/seller-accounts/using-the-ebay-standard-envelope-service.html" target=/"_blank/">Using eBay standard envelope (eSE) service</a>.
+     *  The eBay standard envelope (eSE) is a domestic envelope service with tracking through eBay. This service applies to specific sub-categories of Trading Cards categories, and to Coins & Paper Money, Postcards, and Stamps. To use this service, send envelopes using the USPS mail and set the <b>ShippingService</b> field to <code>US_eBayStandardEnvelope</code>. See <a href="https://pages.ebay.com/seller-center/shipping/ebay-standard-envelope.html#lower-cost-way">eBay standard envelope</a> for details and restrictions. For the REST equivalent, see <a href="https://developer.ebay.com/api-docs/sell/static/seller-accounts/using-the-ebay-standard-envelope-service.html" target=/"_blank/">Using the eBay standard envelope (eSE) service</a>.
      *  </span>
      *
      * @param string $shippingService

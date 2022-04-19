@@ -6,7 +6,7 @@ namespace Nogrod\eBaySDK\MerchantData;
  * Class representing RefundOptionsCodeType
  *
  * This enumerated type contains the possible refund, exchange, or store credit options that a
- *  seller may offer a buyer when the buyer wants to return the item.
+ *  seller may offer the buyer as part of the return policy.
  * XSD Type: RefundOptionsCodeType
  */
 class RefundOptionsCodeType
@@ -15,40 +15,25 @@ class RefundOptionsCodeType
      * Constant for 'MoneyBack' value.
      *
      * This value indicates that the seller will refund the buyer the cost of the item,
-     * excluding shipping and handling costs and any restocking fee (US only).
-     *  <br><br>
-     *  The seller should use the <b>ReturnPolicy.Description</b> field in the Add API
-     * call to explain how the refund will be handled (such as whether the refund will
-     * occur via PayPal).
+     * excluding shipping and handling costs.
      */
     public const VAL_MONEY_BACK = 'MoneyBack';
 
     /**
      * Constant for 'Exchange' value.
      *
-     * <span class="tablenote"><b>Note:</b>
-     *  This value is deprecated on the US site, and all listings attempting to use
-     * this
-     *  value will be blocked.
-     *  </span>
-     *  This value indicates that the seller will exchange the returned item for
-     * another item.
-     *  The seller should use the <b>ReturnPolicy.Description</b> field in the Add API
-     * call to explain how this will occur (such as whether the seller will send an
-     * identical item in place of the returned item).
+     * This value is deprecated since receiving money back must always be one of the
+     * options in a return policy and not just exchanging the item. If a seller wants
+     * to make an exchange one of the options, the <code>MoneyBackOrExchange</code>
+     * option should be used.
      */
     public const VAL_EXCHANGE = 'Exchange';
 
     /**
      * Constant for 'MerchandiseCredit' value.
      *
-     * <span class="tablenote"><b>Note:</b>
-     *  This value is deprecated on the US site, and all listings attempting to use
-     * this value are blocked.
-     *  </span>
-     *  The seller will give the buyer a credit toward the purchase of another item.
-     * The seller should use the <b>ReturnPolicy.Description</b> field in the Add API
-     * call to explain how the buyer can redeem this credit.
+     * This value is deprecated since receiving money back must always be one of the
+     * options in a return policy and not just store credit.
      */
     public const VAL_MERCHANDISE_CREDIT = 'MerchandiseCredit';
 
@@ -60,14 +45,6 @@ class RefundOptionsCodeType
      * or offer an identical replacement item should use the
      * <code>MoneyBackOrReplacement</code> value instead.
      *  </span>
-     *  This value indicates that the seller will refund the buyer the cost of the
-     * item, excluding shipping and handling costs and any restocking fee (US only), or
-     * the seller will exchange the returned item for another identical item.
-     *  <br><br>
-     *  The seller should use the <b>ReturnPolicy.Description</b> field in the Add API
-     * call to explain how the refund will be handled, such as whether the refund will
-     * occur via PayPal, or how the exchange will occur, such as whether the seller
-     * will send an identical item in place of the returned item.
      */
     public const VAL_MONEY_BACK_OR_EXCHANGE = 'MoneyBackOrExchange';
 
@@ -79,13 +56,8 @@ class RefundOptionsCodeType
      * if they are willing to refund buyers or offer an identical replacement item.
      *  </span>
      *  This value indicates that the seller will refund the buyer the cost of the item
-     * (excluding shipping and handling costs and any restocking fee) through eBay
-     * returns, or the seller will replace the returned item with another identical
-     * item.
-     *  <br><br>
-     *  The seller should use the <b>ReturnPolicy.Description</b> field in the Add API
-     * call to explain to buyer that are refunds and replacements will be handled
-     * through the eBay returns process.
+     * (excluding shipping and handling costs) through eBay returns, or the seller will
+     * replace the returned item with another identical item if the buyer prefers this.
      */
     public const VAL_MONEY_BACK_OR_REPLACEMENT = 'MoneyBackOrReplacement';
 

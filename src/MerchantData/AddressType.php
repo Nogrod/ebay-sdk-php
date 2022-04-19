@@ -9,7 +9,7 @@ use Nogrod\XMLClientRuntime\Func;
  *
  * Contains the data for an eBay user's address. This is the base type for a
  *  number of user addresses, including seller payment address, buyer
- *  shipping address and buyer and seller registration address.
+ *  shipping address, and buyer and seller registration address.
  * XSD Type: AddressType
  */
 class AddressType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
@@ -175,7 +175,7 @@ class AddressType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
     private $addressID = null;
 
     /**
-     * The realm to which the address belongs (e.g. eBay vs PayPal).
+     * This enumeration value returned here indicates the company that has the address on file. Previously, this value could be <code>eBay</code> or <code>PayPal</code>, but now the value returned here should always be <code>eBay</code>.
      *
      * @var string $addressOwner
      */
@@ -187,7 +187,7 @@ class AddressType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
     private $addressStatus = null;
 
     /**
-     * This is a unique identifier assigned to the customer address if the address is on file with PayPal. The <b>AddressOwner</b> field will indicate if the address is on file with eBay or PayPal. This field will only be applicable/returned if it is a PayPal-owned address. The ID changes if a user changes their address.
+     * This field is no longer applicable, and should not returned.
      *  <br>
      *
      * @var string $externalAddressID
@@ -793,7 +793,7 @@ class AddressType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
     /**
      * Gets as addressOwner
      *
-     * The realm to which the address belongs (e.g. eBay vs PayPal).
+     * This enumeration value returned here indicates the company that has the address on file. Previously, this value could be <code>eBay</code> or <code>PayPal</code>, but now the value returned here should always be <code>eBay</code>.
      *
      * @return string
      */
@@ -805,7 +805,7 @@ class AddressType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
     /**
      * Sets a new addressOwner
      *
-     * The realm to which the address belongs (e.g. eBay vs PayPal).
+     * This enumeration value returned here indicates the company that has the address on file. Previously, this value could be <code>eBay</code> or <code>PayPal</code>, but now the value returned here should always be <code>eBay</code>.
      *
      * @param string $addressOwner
      * @return self
@@ -841,7 +841,7 @@ class AddressType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
     /**
      * Gets as externalAddressID
      *
-     * This is a unique identifier assigned to the customer address if the address is on file with PayPal. The <b>AddressOwner</b> field will indicate if the address is on file with eBay or PayPal. This field will only be applicable/returned if it is a PayPal-owned address. The ID changes if a user changes their address.
+     * This field is no longer applicable, and should not returned.
      *  <br>
      *
      * @return string
@@ -854,7 +854,7 @@ class AddressType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
     /**
      * Sets a new externalAddressID
      *
-     * This is a unique identifier assigned to the customer address if the address is on file with PayPal. The <b>AddressOwner</b> field will indicate if the address is on file with eBay or PayPal. This field will only be applicable/returned if it is a PayPal-owned address. The ID changes if a user changes their address.
+     * This field is no longer applicable, and should not returned.
      *  <br>
      *
      * @param string $externalAddressID

@@ -12,7 +12,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  <span class="tablenote"><b>Note: </b> Although site-level payment options are still returned in <b>GeteBayDetails</b>, it may be better to use the <b>GetCategoryFeatures</b> call instead, as this call returns the specific payment options that are accepted in specific categories.
  *  </span>
  *  <br>
- *  <span class="tablenote"><b>Note: </b> For sellers opted in to the new eBay Managed Payments program, an accepted payment method is no longer necessary as listing time, so no payment options will be passed in to a <b>PaymentMethods</b> fields in an Add/Revise/Relist call.
+ *  <span class="tablenote"><b>Note: </b> Sellers no longer have to specify any electronic payment methods for listings, so one or more <b>PaymentMethods</b> fields will only be needed for listings that require/support payments off of eBay's platform. If an electronic payment is supplied in a <b>PaymentMethods</b> field, a warning will be triggered and the payment method will be dropped.
  *  </span>
  * XSD Type: PaymentOptionDetailsType
  */

@@ -8,8 +8,8 @@
 	xmlns="urn:ebay:apis:eBLBaseComponents"
 	targetNamespace="urn:ebay:apis:eBLBaseComponents">
 	<wsdl:types>
-<!-- Version 1199 -->
-<!-- (c) 2021 eBay, Inc. All rights reserved -->
+<!-- Version 1247 -->
+<!-- (c) 2022 eBay, Inc. All rights reserved -->
 		<xs:schema targetNamespace="urn:ebay:apis:eBLBaseComponents"  
 		xmlns:ns="urn:ebay:apis:eBLBaseComponents" 
 		xmlns="urn:ebay:apis:eBLBaseComponents"
@@ -3593,10 +3593,6 @@
 		<xs:annotation>
 			<xs:documentation>
 				This enumerated type includes all forms of payment that buyers may use to pay for order line items.
-				&lt;br&gt;&lt;br&gt;
-				&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt;
-					At this time, if the seller is opted in to eBay managed payments, the available payment methods (which are controlled by eBay and not the seller) may not be returned in the response of a &lt;b&gt;GetSingleItem&lt;/b&gt; or &lt;b&gt;GetMultipleItems&lt;/b&gt; call, but those payment methods will be exposed on the listing's View Item page.
-				&lt;/span&gt;
 			</xs:documentation>
 			<xs:appinfo>
 			 	<allValuesExcept>Escrow, PrePayDelivery, CODPrePayDelivery, PostalTransfer, StandardPayment, Moneybookers, ProPay, Paymate, StandardPayment, CashInPerson, PaisaPayAccepted, PaisaPayEscrowEMI</allValuesExcept>
@@ -10966,12 +10962,7 @@
 			<xs:element name="PaymentMethods" type="ns:BuyerPaymentMethodCodeType" minOccurs="0" maxOccurs="unbounded">
 				<xs:annotation>
 					<xs:documentation>
-						Identifies the payment method (such as PayPal) that the seller will accept when the buyer pays for the order line item.
-						&lt;br&gt;
-						&lt;br&gt;
-						&lt;span class="tablenote"&gt;&lt;b&gt;Note:&lt;/b&gt;
-						At this time, if the seller is opted in to eBay managed payments, the available payment methods (which are controlled by eBay and not the seller) may not be returned, but those payment methods will be exposed on the listing's View Item page.
-						&lt;/span&gt;
+						Identifies the payment method(s) that are available to a buyer to purchase the order line item.
 					</xs:documentation>
 					<xs:appinfo>
 						<CallInfo>
@@ -11418,14 +11409,17 @@
 			<xs:element name="HitCount" type="xs:long" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>
-						The number of times the listing's View Item page has been viewed (as determined by
-						eBay). Only returned if the seller has chosen to include a hit counter in the
-						listing, and if the seller has also chosen to make the listing's hit count publicly
-						visible. This field is retrieved asynchronously. If you believe the item has a
-						publicly visible hit count, but this field is not returned, retry the call.
+						&lt;b&gt;THIS FIELD IS DEPRECATED&lt;/b&gt;. Hit counters are no longer displayed in View Item pages, so this field is no longer applicable and is scheduled for decommission. 
+						&lt;br/&gt;&lt;br/&gt;
+						For developers/sellers who are interested in seeing page views and listing performance, the &lt;a href="https://developer.ebay.com/api-docs/sell/analytics/resources/traffic_report/methods/getTrafficReport">getTrafficReport&lt;/a> method of the &lt;b&gt;Sell Analytics API&lt;/b&gt; can be used.
+						&lt;br/&gt;&lt;br/&gt;
+						Until this field is decommissioned, it will still be returned in &lt;b&gt;GetSingleItem&lt;/b&gt; and &lt;b&gt;GetMultipleItems&lt;/b&gt;.
 					</xs:documentation>
 					<xs:appinfo>
 						<CallInfo>
+							<DeprecationVersion>1247</DeprecationVersion>
+							<EndOfLifeVersion>1257</EndOfLifeVersion>
+							<DeprecationDetails>NoOp</DeprecationDetails>
 							<CallName>GetSingleItem</CallName>
 							<CallName>GetMultipleItems</CallName>
 							<Returned>Conditionally</Returned>
@@ -11726,7 +11720,6 @@
 						&lt;li&gt;Auction listings that end with a winning bidder&lt;/li&gt;
 						&lt;li&gt;A buyer's Best Offer (on Fixed-Price or Auction items) that is accepted by the seller&lt;/li&gt;
 						&lt;/ul&gt;
-						The immediate payment feature is only applicable to listings on PayPal-enabled sites in categories that support immediate payment, or if the seller is opted into the new eBay Managed Payments program. For the former, the only returned &lt;b&gt;PaymentMethods&lt;/b&gt; value should be &lt;code&gt;PayPal&lt;/code&gt;. For sellers, opted into the new eBay Managed Payments program, the supported payment methods are managed by eBay, so no payment methods may get returned.
 					</xs:documentation>
 					<xs:appinfo>
 						<CallInfo>
@@ -11772,19 +11765,7 @@
 			<xs:element name="IntegratedMerchantCreditCardEnabled" type="xs:boolean" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>
-						Indicates whether the item can be paid for through a payment gateway
-						(Payflow) account. If &lt;b&gt;IntegratedMerchantCreditCardEnabled&lt;/b&gt; is &lt;code&gt;true&lt;/code&gt;, then
-						integrated merchant credit card (IMCC) is enabled for credit cards because
-						the seller has a payment gateway account. Therefore, if
-						&lt;b&gt;IntegratedMerchantCreditCardEnabled&lt;/b&gt; is &lt;code&gt;true&lt;/code&gt;, an AmEx, Discover, or VisaMC
-						is returned for an item, then on checkout, an online credit-card payment is
-						processed through a payment gateway account. A payment gateway account is
-						used by sellers to accept online credit cards (Visa, MasterCard, American
-						Express, and Discover).
-						&lt;br&gt;&lt;br&gt;
-						&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt;
-							As of May 1, 2019,  eBay no longer supports electronic payments through Integrated Merchant Credit Card accounts. To accept online credit card payments from buyers, a seller must specify PayPal as an accepted payment method, or opt in to eBay Managed Payments program (if the program is available to that seller).
-						&lt;/span&gt;
+						This field is no longer applicable as eBay sellers can no longer use iMCC gateway accounts to handle buyer payments.
 					</xs:documentation>
 					<xs:appinfo>
 						<CallInfo>
@@ -11858,17 +11839,9 @@
 			<xs:element name="ConditionID" type="xs:int" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>
-						&lt;span class="tablenote"&gt;&lt;strong&gt;Note:&lt;/strong&gt;
-							As of September 1, 2021, condition ID 2500 ('Seller Refurbished') is no longer a valid item condition in the Cell Phones &amp; Smartphones category (category ID 9355) for the following marketplaces: US, Canada, UK, Germany, and Australia. This refurbished item condition has been replaced by three new refurbished values, which include 'Excellent - Refurbished' (condition ID 2010), 'Very Good - Refurbished' (condition ID 2020), and 'Good - Refurbished' (condition ID 2030).
-						&lt;/span&gt;
 						A numeric identifier that represents the condition of an item. These numeric IDs can vary by eBay category, but many are the same across categories. For example, &lt;code&gt;1000&lt;/code&gt; indicates an item in &lt;em&gt;New&lt;/em&gt; condition, &lt;code&gt;3000&lt;/code&gt; indicates an item in &lt;em&gt;Used&lt;/em&gt; condition, and &lt;code&gt;5000&lt;/code&gt; indicates an item in &lt;em&gt;Good&lt;/em&gt; condition.
 						&lt;br/&gt;&lt;br/&gt;
 						This field will get returned for most listings since most eBay listing categories require an item condition, but this field may not get returned for listings in eBay categories that don't require an item condition. A &lt;b&gt;ConditionID&lt;/b&gt; value always maps to a text-based description of the condition, and this display text is shown in the &lt;b&gt;ConditionDisplayName&lt;/b&gt; field.
-						&lt;br&gt;
-						&lt;br&gt;
-						&lt;span class="tablenote"&gt;&lt;strong&gt;Note:&lt;/strong&gt;
-							In all eBay marketplaces, Condition ID 2000 now maps to an item condition of 'Certified Refurbished', and not 'Manufacturer Refurbished'. To list an item as 'Certified Refurbished', a seller must be pre-qualified by eBay for this feature.
-						&lt;/span&gt;
 					</xs:documentation>
 					<xs:appinfo>
 						<CallInfo>
@@ -11883,20 +11856,12 @@
 			<xs:element name="ConditionDisplayName" type="xs:string" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>
-						&lt;span class="tablenote"&gt;&lt;strong&gt;Note:&lt;/strong&gt;
-							As of September 1, 2021, condition ID 2500 ('Seller Refurbished') is no longer a valid item condition in the Cell Phones &amp; Smartphones category (category ID 9355) for the following marketplaces: US, Canada, UK, Germany, and Australia. This refurbished item condition has been replaced by three new refurbished values, which include 'Excellent - Refurbished' (condition ID 2010), 'Very Good - Refurbished' (condition ID 2020), and 'Good - Refurbished' (condition ID 2030).
-						&lt;/span&gt;
 						The user-friendly display name for the item condition, such as &lt;em&gt;New&lt;/em&gt;, &lt;em&gt;Like New&lt;/em&gt; &lt;em&gt;Used&lt;/em&gt;, or &lt;em&gt;Good&lt;/em&gt;. Display names are localized for the site on which they're listed (not necessarily the site on which they're viewed).
 						&lt;br&gt;
 						&lt;br&gt;
 						&lt;b&gt;ConditionDisplayName&lt;/b&gt; values all map to &lt;b&gt;ConditionID&lt;/b&gt; values, but keep in mind that based on the eBay category, some item conditions can have the same &lt;b&gt;ConditionID&lt;/b&gt;, but a slightly different &lt;b&gt;ConditionDisplayName&lt;/b&gt;. For example, a &lt;b&gt;ConditionID&lt;/b&gt; value of &lt;code&gt;1000&lt;/code&gt; typically indicates an item in new condtion, but the text displayed in the &lt;b&gt;ConditionDisplayName&lt;/b&gt; can be just &lt;em&gt;New&lt;/em&gt;, or some categories will show &lt;em&gt;Brand New&lt;/em&gt;, &lt;em&gt;New with tags&lt;/em&gt;, or &lt;em&gt;New with box&lt;/em&gt;.
 						&lt;br/&gt;&lt;br/&gt;
 						This field will get returned for most listings since most eBay listing categories require an item condition, but this field may not get returned for listings in eBay categories that don't require an item condition. A &lt;b&gt;ConditionDisplayName&lt;/b&gt; value always maps to a text-based description of the condition, and this Condition ID is shown in the &lt;b&gt;ConditionID&lt;/b&gt; field.
-						&lt;br&gt;
-						&lt;br&gt;
-						&lt;span class="tablenote"&gt;&lt;strong&gt;Note:&lt;/strong&gt;
-							In all eBay marketplaces, Condition ID 2000 now maps to an item condition of 'Certified Refurbished', and not 'Manufacturer Refurbished'. To list an item as 'Certified Refurbished', a seller must be pre-qualified by eBay for this feature.
-						&lt;/span&gt;
 					</xs:documentation>
 					<xs:appinfo>
 						<CallInfo>
@@ -13109,7 +13074,7 @@
 	
 	<wsdl:service name="Shopping">
 			<wsdl:documentation>
-				<Version>1199</Version>
+				<Version>1247</Version>
 			</wsdl:documentation>
 		<wsdl:port binding="ns:ShoppingBinding" name="Shopping">
 			<wsdlsoap:address location="http://open.api.ebay.com/shopping"/>

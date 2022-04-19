@@ -15,14 +15,9 @@ class RequiredSellerActionCodeType
      * Constant for 'ResolveeBPCase' value.
      *
      * This value indicates that there is an open eBay Money Back Guarantee case
-     *  involving the seller and the item. The seller must address and get
+     *  involving the seller and the order. The seller must address and get
      *  the case resolved before the funds can be scheduled for release to the
-     *  seller's account. See the
-     *  <a
-     * href="https://developer.ebay.com/Devzone/guides/features-guide/default.html#development/Post-Order.html">Resolving
-     * Order Issues</a>
-     *  page for information about retrieving and managing eBay Money Back Guarantee
-     * cases.
+     *  seller's account.
      */
     public const VAL_RESOLVEE_BPCASE = 'ResolveeBPCase';
 
@@ -33,11 +28,7 @@ class RequiredSellerActionCodeType
      * expedite
      *  the release of funds into their account. The seller can use the
      * <b>CompleteSale</b>
-     *  call to mark an item as shipped. If an order line item is marked as shipped, it
-     * is possible
-     *  that the seller's funds for the order will be released as soon as seven days
-     * after the latest
-     *  estimated delivery date.
+     *  call or My eBay to mark an item as shipped.
      */
     public const VAL_MARK_AS_SHIPPED = 'MarkAsShipped';
 
@@ -53,10 +44,9 @@ class RequiredSellerActionCodeType
     /**
      * Constant for 'ResolvePPPIcase' value.
      *
-     * This value indicates that the seller must resolve the PayPal Buyer Protection
-     * case filed
-     *  against the order line item to expedite the release of funds into their
-     * account.
+     * This value should no longer get returned as eBay buyers no longer have the
+     * option of creating Item not Received (INR) or Significantly not as Described
+     * (SNAD) disputes through PayPal's system.
      */
     public const VAL_RESOLVE_PPPICASE = 'ResolvePPPIcase';
 
@@ -84,24 +74,20 @@ class RequiredSellerActionCodeType
     /**
      * Constant for 'UploadTrackingInfo' value.
      *
-     * This value indicates that the seller must provide the buyer the tracking
-     * information for
+     * This value indicates that the seller must provide shipment tracking information
+     * for
      *  the order line item to expedite the release of funds into their account. The
      * seller can
      *  use the <b>CompleteSale</b> call to provide tracking information for an
-     *  order line item. If the tracking information for an order line item is
-     * provided, it is
-     *  possible that the seller's funds for the order will be released as soon as
-     * three days
-     *  after eBay has confirmed that the item has been delivered.
+     *  order line item.
      */
     public const VAL_UPLOAD_TRACKING_INFO = 'UploadTrackingInfo';
 
     /**
      * Constant for 'ResolveBuyerMessageInr' value.
      *
-     * This value indicates that the buyer has not received the item, and the buyer has
-     * contacted
+     * This value indicates that the buyer has not received the order, and the buyer
+     * has contacted
      *  the seller through the eBay system in an effort to resolve the issue with the
      * seller. The
      *  seller must make it right with the buyer in order to expedite the release of
@@ -113,7 +99,7 @@ class RequiredSellerActionCodeType
     /**
      * Constant for 'ResolveBuyerMessageSnad' value.
      *
-     * This value indicates that the buyer has received the item, but the item is not
+     * This value indicates that the buyer has received the order, but the item is not
      * as
      *  described in the listing; hence, the buyer has contacted the seller through the
      * eBay
@@ -133,15 +119,11 @@ class RequiredSellerActionCodeType
     /**
      * Constant for 'ResolveReturn' value.
      *
-     * This value indicates that the buyer is returning the item through eBay's managed
-     * return
-     *  process. Upon receiving the returned item from the buyer, the seller must issue
-     * a refund
-     *  to the buyer within five business days, and shortly after this happens, eBay
-     * will credit
-     *  the seller's account with the Final Value Fee that was originally assessed on
-     * the sale
-     *  of the item.
+     * This value indicates that the buyer is returning the item through eBay's return
+     * process. Upon receiving the returned item from the buyer, the seller must issue
+     * a refund to the buyer within five business days, and shortly after this happens,
+     * eBay will credit the seller's account with the Final Value Fee that was
+     * originally assessed on the sale of the item.
      */
     public const VAL_RESOLVE_RETURN = 'ResolveReturn';
 

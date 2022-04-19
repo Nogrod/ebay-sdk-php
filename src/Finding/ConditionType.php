@@ -23,10 +23,6 @@ class ConditionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
      *  If you Condition as a <strong>itemFilter</strong>, the response returns items
      *  with the correctly matching condition(s), even if <strong>conditionId</strong> is
      *  not returned.
-     *  <br><br>
-     *  <span class="tablenote"><strong>Note:</strong>
-     *  In all eBay marketplaces, Condition ID 2000 now maps to an item condition of 'Certified Refurbished', and not 'Manufacturer Refurbished'. To list an item as 'Certified Refurbished', a seller must be pre-qualified by eBay for this feature.
-     *  </span>
      *
      * @var int $conditionId
      */
@@ -97,10 +93,6 @@ class ConditionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
      *  If you Condition as a <strong>itemFilter</strong>, the response returns items
      *  with the correctly matching condition(s), even if <strong>conditionId</strong> is
      *  not returned.
-     *  <br><br>
-     *  <span class="tablenote"><strong>Note:</strong>
-     *  In all eBay marketplaces, Condition ID 2000 now maps to an item condition of 'Certified Refurbished', and not 'Manufacturer Refurbished'. To list an item as 'Certified Refurbished', a seller must be pre-qualified by eBay for this feature.
-     *  </span>
      *
      * @return int
      */
@@ -122,10 +114,6 @@ class ConditionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
      *  If you Condition as a <strong>itemFilter</strong>, the response returns items
      *  with the correctly matching condition(s), even if <strong>conditionId</strong> is
      *  not returned.
-     *  <br><br>
-     *  <span class="tablenote"><strong>Note:</strong>
-     *  In all eBay marketplaces, Condition ID 2000 now maps to an item condition of 'Certified Refurbished', and not 'Manufacturer Refurbished'. To list an item as 'Certified Refurbished', a seller must be pre-qualified by eBay for this feature.
-     *  </span>
      *
      * @param int $conditionId
      * @return self

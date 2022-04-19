@@ -36,7 +36,7 @@ class ItemCompatibilityType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
      *  <a href="https://developer.ebay.com/DevZone/guides/features-guide/default.html#development/CompatibleParts-Listing.html#SpecifyingPartsCompatibilityManually"
      *  target="_blank">Features Guide</a>.
      *  <br><br>
-     *  The eBay Germany, UK, Austria, France, Italy, and Spain sites support the use of <em>K type</em> vehicle numbers to specify vehicle
+     *  The eBay Germany, UK, France, Italy, Spain, and Australia sites support the use of <em>K type</em> vehicle numbers to specify vehicle
      *  parts compatibility. To use a K type number, set the <b>Name</b> field to "<code>KType</code>"
      *  and set the corresponding <b>Value</b> field to the appropriate K type number.
      *  <br><br>
@@ -118,7 +118,7 @@ class ItemCompatibilityType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
      *  <a href="https://developer.ebay.com/DevZone/guides/features-guide/default.html#development/CompatibleParts-Listing.html#SpecifyingPartsCompatibilityManually"
      *  target="_blank">Features Guide</a>.
      *  <br><br>
-     *  The eBay Germany, UK, Austria, France, Italy, and Spain sites support the use of <em>K type</em> vehicle numbers to specify vehicle
+     *  The eBay Germany, UK, France, Italy, Spain, and Australia sites support the use of <em>K type</em> vehicle numbers to specify vehicle
      *  parts compatibility. To use a K type number, set the <b>Name</b> field to "<code>KType</code>"
      *  and set the corresponding <b>Value</b> field to the appropriate K type number.
      *  <br><br>
@@ -155,7 +155,7 @@ class ItemCompatibilityType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
      *  <a href="https://developer.ebay.com/DevZone/guides/features-guide/default.html#development/CompatibleParts-Listing.html#SpecifyingPartsCompatibilityManually"
      *  target="_blank">Features Guide</a>.
      *  <br><br>
-     *  The eBay Germany, UK, Austria, France, Italy, and Spain sites support the use of <em>K type</em> vehicle numbers to specify vehicle
+     *  The eBay Germany, UK, France, Italy, Spain, and Australia sites support the use of <em>K type</em> vehicle numbers to specify vehicle
      *  parts compatibility. To use a K type number, set the <b>Name</b> field to "<code>KType</code>"
      *  and set the corresponding <b>Value</b> field to the appropriate K type number.
      *  <br><br>
@@ -191,7 +191,7 @@ class ItemCompatibilityType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
      *  <a href="https://developer.ebay.com/DevZone/guides/features-guide/default.html#development/CompatibleParts-Listing.html#SpecifyingPartsCompatibilityManually"
      *  target="_blank">Features Guide</a>.
      *  <br><br>
-     *  The eBay Germany, UK, Austria, France, Italy, and Spain sites support the use of <em>K type</em> vehicle numbers to specify vehicle
+     *  The eBay Germany, UK, France, Italy, Spain, and Australia sites support the use of <em>K type</em> vehicle numbers to specify vehicle
      *  parts compatibility. To use a K type number, set the <b>Name</b> field to "<code>KType</code>"
      *  and set the corresponding <b>Value</b> field to the appropriate K type number.
      *  <br><br>
@@ -227,7 +227,7 @@ class ItemCompatibilityType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
      *  <a href="https://developer.ebay.com/DevZone/guides/features-guide/default.html#development/CompatibleParts-Listing.html#SpecifyingPartsCompatibilityManually"
      *  target="_blank">Features Guide</a>.
      *  <br><br>
-     *  The eBay Germany, UK, Austria, France, Italy, and Spain sites support the use of <em>K type</em> vehicle numbers to specify vehicle
+     *  The eBay Germany, UK, France, Italy, Spain, and Australia sites support the use of <em>K type</em> vehicle numbers to specify vehicle
      *  parts compatibility. To use a K type number, set the <b>Name</b> field to "<code>KType</code>"
      *  and set the corresponding <b>Value</b> field to the appropriate K type number.
      *  <br><br>
@@ -262,7 +262,7 @@ class ItemCompatibilityType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
      *  <a href="https://developer.ebay.com/DevZone/guides/features-guide/default.html#development/CompatibleParts-Listing.html#SpecifyingPartsCompatibilityManually"
      *  target="_blank">Features Guide</a>.
      *  <br><br>
-     *  The eBay Germany, UK, Austria, France, Italy, and Spain sites support the use of <em>K type</em> vehicle numbers to specify vehicle
+     *  The eBay Germany, UK, France, Italy, Spain, and Australia sites support the use of <em>K type</em> vehicle numbers to specify vehicle
      *  parts compatibility. To use a K type number, set the <b>Name</b> field to "<code>KType</code>"
      *  and set the corresponding <b>Value</b> field to the appropriate K type number.
      *  <br><br>

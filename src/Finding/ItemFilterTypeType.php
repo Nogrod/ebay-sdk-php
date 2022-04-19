@@ -26,13 +26,6 @@ class ItemFilterTypeType
      * href="https://developer.ebay.com/Devzone/finding/CallRef/Enums/conditionIdList.html">Item
      * Condition IDs and Names</a> page to view a table that maps condition IDs to
      * condition names.
-     *  <br><br>
-     *  <span class="tablenote"><strong>Note:</strong>
-     *  In all eBay marketplaces, Condition ID 2000 now maps to an item condition of
-     * 'Certified Refurbished', and not 'Manufacturer Refurbished'. To list an item as
-     * 'Certified Refurbished', a seller must be pre-qualified by eBay for this
-     * feature.
-     *  </span>
      */
     public const VAL_CONDITION = 'Condition';
 
@@ -249,8 +242,7 @@ class ItemFilterTypeType
      * Constant for 'AvailableTo' value.
      *
      * <a name="AvailableTo"></a>
-     *  Limits items to those available to the specified country only. Item
-     *  filter LocatedIn cannot be used together with item filter AvailableTo.
+     *  Limits items to those available to the specified country only.
      *  <br><br>
      *  <b>Allowed values (<a
      *  class="defn_type"
@@ -270,8 +262,7 @@ class ItemFilterTypeType
      *
      * <a name="LocatedIn"></a>
      *  Limits the result set to just those items located in the specified
-     *  country. Item filter AvailableTo cannot be used together with item filter
-     *  LocatedIn.
+     *  country.
      *  <br><br>
      *  <b>Allowed values (<a
      *  class="defn_type"

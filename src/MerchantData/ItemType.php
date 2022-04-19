@@ -48,18 +48,9 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     private $lookupAttributeArray = null;
 
     /**
-     * If <code>true</code>, the seller requests immediate payment for a fixed-price item or an auction item that is purchased with the 'Buy it Now' feature. If <code>false</code> or not specified, immediate payment is not requested. (In responses, does not indicate whether the item is actually still a candidate for purchase via immediate payment.)
-     *  <br>
-     *  <br>
-     *  <b>For sellers opted in to eBay managed payments</b>: the only requirement is that the listing category supports immediate payments. With managed payments, eBay handles the payment methods available to the buyer, so the seller will not have to specify any payment methods, and will not have include the <b>PayPalEmailAddress</b> field. The seller only has to include the <b>AutoPay</b> field and set it to <code>true</code> to create an Immediate Payment listing.
-     *  <br>
-     *  <br>
-     *  <b>For sellers not opted in to eBay managed payments</b>: immediate payment is only available if the eBay marketplace supports PayPal as a payment method, and the listing category supports immediate payment (the <b>AutoPayEnabled</b> should be returned as <code>true</code> in the <b>GetCategories</b> response). To enable the listing with the immediated payment requirement, <b>AutoPay</b> must be <code>true</code>, the
-     *  <b>PayPalEmailAddress</b> field must be included and must have a valid PayPal email address for the seller, and the only specified
-     *  <b>PaymentMethods</b> value must be <code>PayPal</code>.
+     * This field is included and set to if <code>true</code> in an Add/Revise/Relist call if the seller wants to require immediate payment from the buyer. If this field is set to <code>false</code> or not included, the seller is not requestinng immediate payment.
      *  <br/><br/>
-     *  If a seller does not wish to require immediate payment, the <b>AutoPay</b> flag is not required since it defaults to <code>false</code>.
-     *  <br/>
+     *  Note that this field may be set to <code>true</code>, but that does not necessarily mean that the buyer will be required to pay right away. For example, immediate payment is not currently applicable to auctions items won in a competitive bidding process or to items where the buyer and seller negotiated the price through the Best Offer feature. Immediate payment is also not applicable to listings where the payment happens offline between the buyer and seller.
      *
      * @var bool $autoPay
      */
@@ -73,7 +64,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     private $biddingDetails = null;
 
     /**
-     * The enumeration value returned in this field indicates whether an item is eligible for the PayPal Buyer Protection program.
+     * The enumeration value returned in this field indicates whether an item is eligible for the buyer protection.
      *
      * @var string $buyerProtection
      */
@@ -184,9 +175,12 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     private $distance = null;
 
     /**
-     * Indicates whether an optional hit counter is displayed on the item's listing
-     *  page and, if so, what type. See <b>HitCounterCodeType</b> for specific values.
-     *  <br/> Restriction: <HitCounter>HiddenStyle</HitCounter> is not enabled on the Germany, Austria, Switzerland, or Poland sites.
+     * <b>DO NOT USE THIS FIELD</b>. Hit counters are no longer displayed in View Item pages, so this field is no longer applicable and is scheduled for decommission. If this field is used in an add/revise/relist/verify call, it will be ignored and a warning message will be returned.
+     *  <br/><br/>
+     *  For developers/sellers who are interested in seeing page views and listing performance, the <a href="https://developer.ebay.com/api-docs/sell/analytics/resources/traffic_report/methods/getTrafficReport">getTrafficReport</a> method of the <b>Sell Analytics API</b> can be used.
+     *  <br/><br/>
+     *  Until this field is decommissioned, it will still be returned in <b>GetItem</b>, <b>GetBidderList</b>, <b>GetSellerEvents</b>, and <b>GetSellerList</b>. The default value for the marketplace will be returned, such as <code>NoHitCounter</code> or <code>HiddenStyle</code>.
+     *  <br/>
      *
      * @var string $hitCounter
      */
@@ -246,7 +240,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Describes listing upgrades that sellers can select for a fee, such as the
      *  <b>BoldTitle</b> upgrade. Also includes feature packs for saving on listing upgrades.
-     *  See <a href="https://pages.ebay.com/help/sell/ia/promoting_your_item.html">Listing Upgrades</a>
+     *  See <a href="https://pages.ebay.com/help/sell/ia/promoting_your_item.html" target="_blank">Listing Upgrades</a>
      *  in the eBay site help.
      *  <br><br>
      *  You cannot remove listing upgrades when you revise a listing. When you
@@ -317,10 +311,10 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     private $partnerName = null;
 
     /**
-     * This container is used in an <b>Add/Revise/Relist/Verify</b> call if the seller is selling a motor vehicle, and is requiring an initial deposit on that vehicle. This container is only applicable for motor vehicle listings.
+     * This container is used in an <b>Add/Revise/Relist/Verify</b> call if the seller is selling a motor vehicle. It is used by the seller to specify the amount of the initial deposit, and the due dates for the deposit and the full payment for a motor vehicle listing.
      *  <br>
      *  <br>
-     *  <span class="tablenote"><b>Note: </b> If you set up a payment policy via the <a href="https://developer.ebay.com/api-docs/sell/account/resources/payment_policy/methods/createPaymentPolicy">Account API</a> or the <a href="https://developer.ebay.com/Devzone/business-policies/CallRef/addSellerProfile.html">Business Polices Managment API</a>, then you should not populate the fields in this <b>PaymentDetails</b> container. Instead, indicate your payment policy using the <b>SellerProfiles.SellerPaymentProfile</b> container.
+     *  <span class="tablenote"><b>Note: </b> If you are using business policies with your listing, the details set up in this container will instead be set up via the payment business policy. Payment business policies are associated with the listing via the <b>SellerProfiles.SellerPaymentProfile</b> container.
      *  </span>
      *  <br>
      *  This container will only be returned in 'Get' calls for motor vehicle listings where an initial deposit is required for that vehicle.
@@ -330,43 +324,19 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     private $paymentDetails = null;
 
     /**
-     * Each <b>PaymentMethods</b> field identifies a payment method that can be used by the buyer to pay for the item.
+     * <b>For Add/Revise/Relist calls</b>: A <b>PaymentMethods</b> field is required for each offline payment method supported by the seller for the listing.
      *  <br>
      *  <br>
-     *  <b>For Add/Revise/Relist calls used by managed payments sellers</b>: One or more <b>PaymentMethods</b> fields are only needed for listings where an offline payment is required or supported. An example would be a motor vehicle listing where the final payment occurs between the buyer and seller offline. Offline payment methods can vary be eBay marketplace and/or category, but some typical offline payment method enumeration values include <code>MOCC</code> (Money Order/Cashier Check), <code>LoanCheck</code>, and <code>PersonalCheck</code>. Electonic payment methods (that occur on eBay's platform) should never be specified by the seller, as eBay controls the electronic payment methods that are available to the buyer for each eBay marketplace.
-     *  <br>
-     *  <br>
-     *  <b>For Add/Revise/Relist calls used by non-managed payments sellers</b>: <code>PayPal</code> is the only supported value for electronic payments, and is generally required unless the seller is using a payment business policy instead. Similar to managed payment sellers, non-managed payment sellers will also use one or more <b>PaymentMethods</b> fields for listings where an offline payment is required or supported.
-     *  <br>
+     *  <span class="tablenote"><b>Note: </b> Sellers no longer have to specify any electronic payment methods for listings, so one or more <b>PaymentMethods</b> fields will only be needed for listings that require/support payments off of eBay's platform. If an electronic payment is supplied in a <b>PaymentMethods</b> field, a warning will be triggered and the payment method will be dropped.
+     *  </span>
      *  <br>
      *  <span class="tablenote"><b>Note: </b> If you are already referencing a payments business policy in an Add/Revise/Relist call with the <b>SellerProfiles.SellerPaymentProfile</b> container, no lt;b>PaymentMethods</b> fields will be needed, as these settings will already be set in the payments business policy.
      *  </span>
      *  <br>
-     *  Use <b>GetCategoryFeatures</b> to determine the payment methods that are allowed for a category on a site. For example, the response data of <b>GetCategoryFeatures</b> will show that on the US site, most categories only allow electronic payments. Also use <b>GetCategoryFeatures</b> to determine the default payment methods for a site.
-     *  <br><br>
-     *  Do not use <b>GeteBayDetails</b> to determine the payment methods for a site.
-     *  <br><br>
-     *  If you specify multiple <b>PaymentMethods</b> fields, the repeating fields must be contiguous. For example, you can specify <b>PayPalEmailAddress</b> after a list of
-     *  repeating <b>PaymentMethods</b> fields, but not between them:<br>
-     *  <br>
-     *  <code>
-     *  &lt;PaymentMethods&gt;VisaMC&lt;/PaymentMethods&gt;<br>
-     *  &lt;PaymentMethods&gt;PayPal&lt;/PaymentMethods&gt;<br>
-     *  &lt;PayPalEmailAddress&gt;mypaypalemail@ebay.com&lt;/PayPalEmailAddress&gt;
-     *  </code>
-     *  <br><br>
-     *  In general, if you separate repeating instances of a field, the results will
-     *  be unpredictable. This rule applies to all repeating fields
-     *  (<code>maxOccurs="unbounded"</code> or greater than 1) in the schema. See <a href="https://developer.ebay.com/DevZone/guides/features-guide/default.html#basics/Call-APISchema.html#OverviewoftheAPISchema">Overview of the API Schema</a> in the eBay Features Guide.
-     *  <br>
-     *  <br>
-     *  <span class="tablenote"><b>Note:</b>
-     *  Required or allowed payment methods vary by site and category. Refer to <a href="https://developer.ebay.com/DevZone/guides/features-guide/default.html#development/Listing-PaymentMethod.html">
-     *  Determining the Payment Methods Allowed for a Category</a> in the eBay Features Guide
-     *  to help you determine which payment methods you
-     *  are required or allowed to specify.
-     *  </span><br>
      *  Payment methods are not applicable to any classified ad listings, as any agreement and payment is handled off of the eBay platform.
+     *  <br>
+     *  <br>
+     *  <b>For Get calls that return <b>PaymentMethods</b> fields </b>: One or more <b>PaymentMethods</b> fields will only be returned if the seller set one or more offline payment methods for the listing.
      *
      * @var string[] $paymentMethods
      */
@@ -375,14 +345,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     ];
 
     /**
-     * This is the seller's PayPal payment email address, and this field is required in an Add/Revise/Relist call if <code>PayPal</code> is specified as a <b>PaymentsMethod</b> value.
-     *  <br>
-     *  <br>
-     *  <span class="tablenote"><b>Note: </b> This field is no longer needed/applicable for sellers who are onboarded for managed payments.
-     *  </span>
-     *  <br>
-     *  <span class="tablenote"><b>Note: </b> If you are already referencing a payments business policy in an Add/Revise/Relist call with the <b>SellerProfiles.SellerPaymentProfile</b> container, no <b>PaymentMethods</b> field(s) or <b>PayPalEmailAddress</b> field will be needed, as these settings will already be set in the payments business policy.
-     *  </span>
+     * This field is no longer applicable, as eBay now controls all electronic payment methods and handles the payment from the buyer.
      *
      * @var string $payPalEmailAddress
      */
@@ -412,7 +375,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     private $primaryCategory = null;
 
     /**
-     * A <code>true</code> value in this field indicates that the listing is private. In a private listing, a bidder or buyer's user ID will not be exposed to any other eBay user besides the seller of the listing. Sellers may want to use this option when they believe that a listing's potential bidders/buyers would not want their user IDs exposed to other users.
+     * A <code>true</code> value in this field indicates that the listing is private. Sellers may want to use this option when they believe that a listing's potential bidders/buyers would not want their obfuscated user IDs (and feedback scores) exposed to other users.
      *  <br>
      *
      * @var bool $privateListing
@@ -447,7 +410,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     private $productListingDetails = null;
 
     /**
-     * <b>For <b>AddItem</b> family of calls:</b> The <b>Quantity</b> value for auction listings must always be <code>1</code>. For a fixed-price listing, the <b>Quantity</b> value indicates the number of identical items the seller has available for sale in the listing. If this field is not included when creating a new fixed-price listing, quantity defaults to '1'. If variations are specified in <b>AddFixedPriceItem</b> or <b> VerifyAddFixedPriceItem</b>, the <b>Item.Quantity</b> is not required since the quantity of variations is specified in <b>Variation.Quantity</b> instead. See the <a href="https://pages.ebay.com/help/sell/listing-variations.html">Creating a listing with variations</a> eBay Help page for more information on variations.
+     * <b>For <b>AddItem</b> family of calls:</b> The <b>Quantity</b> value for auction listings must always be <code>1</code>. For a fixed-price listing, the <b>Quantity</b> value indicates the number of identical items the seller has available for sale in the listing. If this field is not included when creating a new fixed-price listing, quantity defaults to '1'. If variations are specified in <b>AddFixedPriceItem</b> or <b> VerifyAddFixedPriceItem</b>, the <b>Item.Quantity</b> is not required since the quantity of variations is specified in <b>Variation.Quantity</b> instead. See the <a href="https://pages.ebay.com/help/sell/listing-variations.html" target="_blank">Creating a listing with variations</a> eBay Help page for more information on variations.
      *  <br><br>
      *  <b>For ReviseItem and ReviseFixedPriceItem:</b>
      *  This value can only be changed for a fixed-price listing with no variations. The
@@ -484,7 +447,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  variation (quantity available plus quantity sold).
      *  <br>
      *  <br>
-     *  <span class="tablenote"><b>Note: </b> For the US site, new eBay sellers are subject to <a href="https://developer.ebay.com/DevZone/guides/features-guide/default.html#development/Listing-Policies.html#SellerLimits">Seller Limits</a>, which limit the quantity of items that may be listed and/or the total cumulative value of these listings. While subject to these selling limits, an eBay seller can use the <b>GetMyeBaySelling</b> call to retrieve both the remaining number of listings they can create and the remaining cumulative value of these listings. These values are shown in the <b>Summary.QuantityLimitRemaining</b> and <b>Summary.AmountLimitRemaining</b> fields in the <b>GetMyeBaySelling</b> response. If a call to add an item or revise an item would result in the exceeding of these limits, the add item or revise item call will fail. These fields will only be returned if the seller is subject to seller limits.
+     *  <span class="tablenote"><b>Note: </b> For the US site, new eBay sellers are subject to <a href="/DevZone/guides/features-guide/default.html#development/Listing-Policies.html#SellerLimits">Seller Limits</a>, which limit the quantity of items that may be listed and/or the total cumulative value of these listings. While subject to these selling limits, an eBay seller can use the <b>GetMyeBaySelling</b> call to retrieve both the remaining number of listings they can create and the remaining cumulative value of these listings. These values are shown in the <b>Summary.QuantityLimitRemaining</b> and <b>Summary.AmountLimitRemaining</b> fields in the <b>GetMyeBaySelling</b> response. If a call to add an item or revise an item would result in the exceeding of these limits, the add item or revise item call will fail. These fields will only be returned if the seller is subject to seller limits.
      *  </span>
      *
      * @var int $quantity
@@ -557,7 +520,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <code>AT, BEFR, BENL, CH, DE, ES, FR, IE, IT, NL, PL, UK</code>
      *  <br><br>
      *  Also see the following article in the Knowledge Base: <a href=
-     *  "https://ebaydts.com/eBayKBDetails?KBid=1473"
+     *  "https://ebaydts.com/eBayKBDetails?KBid=1473" target="_blank"
      *  >Why scheduled time is sometimes getting reset</a>.
      *
      * @var \DateTime $scheduleTime
@@ -628,7 +591,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      * The shipping-related details for an order, including flat and calculated shipping costs.
      *  <br>
      *  <br>
-     *  <span class="tablenote"><b>Note: </b> For sellers who are using a shipping (aka Fulfillment) business policy to create/revise/relist an item, none of the fields under the <b>ShippingDetails</b> container are necessary. A fulfillment business policy can be set up and/or modified in My eBay, or via the <a href="https://developer.ebay.com/api-docs/sell/account/resources/fulfillment_policy/methods/createFulfillmentPolicy">Account API</a> or the <a href="https://developer.ebay.com/Devzone/business-policies/CallRef/addSellerProfile.html">Business Polices Managment API</a>. A fulfillment business policy is associated to a listing through the <b>Item.SellerProfiles.SellerShippingProfile</b> container.
+     *  <span class="tablenote"><b>Note: </b> For sellers who are using a shipping (aka Fulfillment) business policy to create/revise/relist an item, none of the fields under the <b>ShippingDetails</b> container are necessary. A fulfillment business policy can be set up and/or modified in My eBay, or via the <a href="https://developer.ebay.com/api-docs/sell/account/resources/fulfillment_policy/methods/createFulfillmentPolicy">Account API</a>. A fulfillment business policy is associated to a listing through the <b>Item.SellerProfiles.SellerShippingProfile</b> container.
      *  <br>
      *  <br>
      *  If you <i>do not</i> use a fulfillment business policy, many of the fields under this <b>ShippingDetails</b> container become required in your request.
@@ -669,7 +632,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  regardless of shipping service. The country of the listing site is added by eBay.
      *  <br>
      *  <br>
-     *  <span class="tablenote"><b>Note: </b> If you set up a fulfillment policy via the <a href="https://developer.ebay.com/api-docs/sell/account/resources/fulfillment_policy/methods/createFulfillmentPolicy">Account API</a> or the <a href="https://developer.ebay.com/Devzone/business-policies/CallRef/addSellerProfile.html">Business Polices Managment API</a>, then you should not populate the <b>ShipToLocations</b> field. Instead, indicate your fulfillment policy using the <b>SellerProfiles.SellerShippingProfile</b> container.
+     *  <span class="tablenote"><b>Note: </b> For sellers who are using a shipping (aka Fulfillment) business policy to create/revise/relist an item, the <b>ShipToLocations</b> field should not be used in the request. A fulfillment business policy can be set up and/or modified in My eBay, or via the <a href="https://developer.ebay.com/api-docs/sell/account/resources/fulfillment_policy/methods/createFulfillmentPolicy">Account API</a>. A fulfillment business policy is associated to a listing through the <b>Item.SellerProfiles.SellerShippingProfile</b> container.
      *  </span>
      *  <br>
      *  Use <b>GeteBayDetails</b> with a <b>DetailName</b> of <b>ShippingLocationDetails</b> to
@@ -743,7 +706,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <b>For Revise calls:</b>
      *  If the <b>StartPrice</b> value for a fixed-price item is changed with a Revise call, the <b>MinimumBestOfferPrice</b> and <b>BestOfferAutoAcceptPrice</b> fields in the <b>ListingDetails</b> container will be dropped (if set), basically turning off the Best Offer Auto Accept and/or Auto Decline features. If the seller wanted to reintroduce either of these Best Offer threshold values in the listing again, an additional Revise call would have to be made, passing in the desired threshold values.
      *  <br><br>
-     *  <span class="tablenote"><b>Note: </b> For the US site, new eBay sellers are subject to <a href="https://developer.ebay.com/DevZone/guides/features-guide/default.html#development/Listing-Policies.html#SellerLimits">Seller Limits</a>, which limit the quantity of items that may be listed and/or the total cumulative value of these listings. While subject to these selling limits, an eBay seller can use the <b>GetMyeBaySelling</b> call to retrieve both the remaining number of listings they can create and the remaining cumulative value of these listings. These values are shown in the <b>Summary.QuantityLimitRemaining</b> and <b>Summary.AmountLimitRemaining</b> fields in the <b>GetMyeBaySelling</b> response. If a call to add an item or revise an item would result in the exceeding of these limits, the add item or revise item call will fail. These fields will only be returned if the seller is subject to seller limits.
+     *  <span class="tablenote"><b>Note: </b> For the US site, new eBay sellers are subject to <a href="/DevZone/guides/features-guide/default.html#development/Listing-Policies.html#SellerLimits">Seller Limits</a>, which limit the quantity of items that may be listed and/or the total cumulative value of these listings. While subject to these selling limits, an eBay seller can use the <b>GetMyeBaySelling</b> call to retrieve both the remaining number of listings they can create and the remaining cumulative value of these listings. These values are shown in the <b>Summary.QuantityLimitRemaining</b> and <b>Summary.AmountLimitRemaining</b> fields in the <b>GetMyeBaySelling</b> response. If a call to add an item or revise an item would result in the exceeding of these limits, the add item or revise item call will fail. These fields will only be returned if the seller is subject to seller limits.
      *  </span>
      *
      * @var \Nogrod\eBaySDK\MerchantData\AmountType $startPrice
@@ -847,8 +810,11 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     private $watchCount = null;
 
     /**
-     * This value indicates the number of page views for the listing. This number is calculated by eBay and is returned in 'Get' calls if the <b>HitCounter</b> value is set to <code>BasicStyle</code>,
-     *  <code>RetroStyle</code>, or <code>HiddenStyle</code>.
+     * <b>THIS FIELD IS DEPRECATED</b>. Hit counters are no longer displayed in View Item pages, so this field is no longer applicable and is scheduled for decommission.
+     *  <br/><br/>
+     *  For developers/sellers who are interested in seeing page views and listing performance, the <a href="https://developer.ebay.com/api-docs/sell/analytics/resources/traffic_report/methods/getTrafficReport">getTrafficReport</a> method of the <b>Sell Analytics API</b> can be used.
+     *  <br/><br/>
+     *  Until this field is decommissioned, it will still be returned in <b>GetItem</b>, <b>GetBidderList</b>, <b>GetSellerEvents</b>, and <b>GetSellerList</b>.
      *
      * @var int $hitCount
      */
@@ -887,13 +853,9 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     private $locationDefaulted = null;
 
     /**
-     * Indicates whether the seller's tax table is to be used when applying and
-     *  calculating sales tax for an order line item. A sales tax table can be
-     *  created programmatically using the <b>SetTaxTable</b> call, or it can be created
-     *  manually in My eBay's Payment Preferences. If <b>UseTaxTable</b> is set to <code>true</code>,
-     *  the values contained in the seller's sales tax table will supersede the values contained in the <b>Item.ShippingDetails.SalesTax</b> container (if included in the request).
+     * Indicates whether the seller's tax table is to be used when applying and calculating sales tax for an order line item. A sales tax table can be created programmatically using the <b>SetTaxTable</b> call of Trading API or the <a href="https://developer.ebay.com/api-docs/sell/account/resources/sales_tax/methods/createOrReplaceSalesTax">createOrReplaceSalesTax</a> method of Account API. If <b>UseTaxTable</b> is set to <code>true</code>, the values contained in the seller's sales tax table will supersede the values contained in the <b>Item.ShippingDetails.SalesTax</b> container (if included in the request).
      *  <br><br>
-     *  <span class="tablenote"><b>Note: </b> As of September 1, 2020, buyers in over 40 US states will automatically be charged sales tax for eBay purchases. eBay will collect and remit this sales tax to the proper taxing authority on the buyer's behalf. The Sales Tax Table page for eBay US is being updated as each US state starts requiring collection of sales tax. This means that the seller no longer has control over, nor can specify a sales tax rate for these states. For a list of the US states that are currently subject to 'eBay Collect and Remit', or will become subject to 'eBay Collect and Remit', see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section4">eBay sales tax collection</a> help topic.
+     *  <span class="tablenote"><b>Note: </b> As of November 2021, buyers in all US states except for Missouri (and several US territories), will automatically be charged sales tax for purchases, and the seller does not set this rate. eBay will collect and remit this sales tax to the proper taxing authority on the buyer's behalf. For more US state-level information on sales tax, see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section4" target="_blank">eBay sales tax collection</a> help topic.
      *  </span>
      *
      * @var bool $useTaxTable
@@ -1043,15 +1005,29 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     private $pictureDetails = null;
 
     /**
-     * This container is used if the seller wants to add a video to their listing. At this time, only one video can be added per listing, and the video must be uploaded to eBay via the <a href="/api-docs/commerce/media/overview.html" target="_blank">Media API</a>. See the <a href="/api-docs/commerce/media/overview.html" target="_blank">Media API</a> reference documentation for all of the necessary details to upload videos to eBay.
+     * This container is used if the seller wants to add a video to their listing. At this time, only one video can be added per listing. The video can be uploaded to eBay using the <a href="https://developer.ebay.com/api-docs/commerce/media/overview.html" target="_blank">Media API</a>. See the <a href="https://developer.ebay.com/api-docs/commerce/media/overview.html" target="_blank">Media API</a> reference documentation for all of the necessary details to upload videos to eBay.
      *  <br/><br/>
      *  This container will only be returned in <b>GetItem</b> if the listing contains a video, and the seller of the item is the one making the <b>GetItem</b> call.
      *  <br/><br/>
-     *  <span class="tablenote"><b>Note: </b> Videos can only be attached to listings on supported eBay marketplaces and can only be viewed through supported platforms. See <a href="/api-docs/sell/static/inventory/managing-video-media.html#AddingVideos" target="_blank">Managing videos</a> in the Selling Integration Guide for a full list of supported marketplaces and platforms.</span>
+     *  <span class="tablenote"><b>Note: </b> Videos can only be attached to listings on supported eBay marketplaces and can only be viewed through supported platforms. See <a href="https://developer.ebay.com/api-docs/sell/static/inventory/managing-video-media.html#AddingVideos" target="_blank">Managing videos</a> in the Selling Integration Guide for a full list of supported marketplaces and platforms.</span>
      *
      * @var string[] $videoDetails
      */
     private $videoDetails = null;
+
+    /**
+     * This container provides IDs for the producer or importer related to the new item, packaging, added documentation, or an eco participation fee. In some markets, such as in France, this may be the importer of the item. For more information, see the <b>Extended Producer Responsibility for business sellers</b> page for your site (for example, <a href="https://www.ebay.com/help/selling/all-about-selling/selling-internationally/extended-producer-responsibility-for-business-sellers?id=5314" target="_blank">https://www.ebay.com/help/selling/all-about-selling/selling-internationally/extended-producer-responsibility-for-business-sellers?id=5314</a>). This field is supported by a limited number of sites and specific categories. Use the <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getExtendedProducerResponsibilityPolicies" target="_blank">getExtendedProducerResponsibilityPolicies</a> method of the <b>Sell Metadata API</b> to retrieve valid categories for a site.
+     *
+     * @var \Nogrod\eBaySDK\MerchantData\ExtendedProducerResponsibilityType $extendedProducerResponsibility
+     */
+    private $extendedProducerResponsibility = null;
+
+    /**
+     * This container is used to apply one or more custom policies to the listing by specifying custom policy IDs. Custom policies include Product Compliance and Take-Back Policies. For more information, see the <b>Custom Policies</b> page for your site (for example, <a href="https://www.ebay.fr/help/selling/custom-policies/custom-policies?id=5311" target="_blank">https://www.ebay.fr/help/selling/custom-policies/custom-policies?id=5311</a>). This container is supported by a limited number of sites and specific categories. Use the <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getExtendedProducerResponsibilityPolicies" target="_blank">getExtendedProducerResponsibilityPolicies</a> method of the <b>Sell Metadata API</b> to retrieve valid categories for a site. To create and manage custom policies, use the <a href="https://developer.ebay.com/api-docs/sell/account/resources/methods#h2-custom_policy" target="_blank">custom_policy</a> resource of the <b>Account API</b>.
+     *
+     * @var \Nogrod\eBaySDK\MerchantData\CustomPoliciesType $customPolicies
+     */
+    private $customPolicies = null;
 
     /**
      * Specifies the maximum number of business days the seller
@@ -1311,7 +1287,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  eBay sites require the seller to clearly specify whether or not
      *  returns are accepted (see <b>ReturnsAcceptedOption</b>). <br>
      *  <br>
-     *  <span class="tablenote"><b>Note: </b> If you set up a return policy via the <a href="https://developer.ebay.com/api-docs/sell/account/resources/return_policy/methods/createReturnPolicy">Account API</a> or the <a href="https://developer.ebay.com/Devzone/business-policies/CallRef/addSellerProfile.html">Business Polices Managment API</a>, then you should not populate the fields in this <b>ReturnPolicy</b> container. Instead, indicate your return policy using the <b>SellerProfiles.SellerReturnProfile</b> container.
+     *  <span class="tablenote"><b>Note: </b> If you are using a return business policy set up through My eBay or via the <a href="https://developer.ebay.com/api-docs/sell/account/resources/return_policy/methods/createReturnPolicy">Account API</a>, then you should not populate the fields in this <b>ReturnPolicy</b> container. Instead, indicate your return policy using the <b>SellerProfiles.SellerReturnProfile</b> container.
      *  <br>
      *  <br>
      *  However, if you <i>do not</i> configure a return policy, all the fields in this <b>ReturnPolicy</b> container that are marked <b>conditional</b> must be populated in your request.
@@ -1511,14 +1487,10 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <br>
      *  <br>
      *  <span class="tablenote"><strong>Note:</strong>
-     *  In all eBay marketplaces, Condition ID 2000 now maps to an item condition of 'Certified - Refurbished', and not 'Manufacturer Refurbished'. To list an item as 'Certified - Refurbished', a seller must be pre-qualified by eBay for this feature. Any seller who is not eligible for this feature will be blocked if they try to create a new listing or revise an existing listing with this item condition.
+     *  As of February 2022, in the US, Canada, UK, Germany, France, Italy, and Australia marketplaces, condition ID 2500 ('Seller Refurbished') can no longer be used In the following categories: <b>Cell Phones & Smartphones</b> (category ID 9355); <b>Smart Watches</b> (category ID 178893); and <b>Tablets & eBook Readers</b> (category ID 171485). In these three categories, the 'Seller Refurbished' item condition has been replaced by one of three new refurbished values, which include condition ID 2010 ('Excellent - Refurbished'), condition ID 2020 ('Very Good - Refurbished'), and condition ID 2030 ('Good - Refurbished'). To use any of these new refurbished item conditions in category 9355, in category 178893, or in category 171485, sellers must go through an application and qualification process. Any seller who is not eligible to use these new refurbished item conditions in these three categories will be blocked if they try to create a new listing or revise an existing listing with any of these three new item conditions. Any active listings in these three categories that had condition ID 2500 ('Seller Refurbished') as the item condition should have been administratively ended by eBay. Sellers will have to relist these items, and until they are eligible to list with the new refurbished item conditions, they will need to use another item condition supported in these categories, such as condition ID 3000 ('Used').
      *  <br>
      *  <br>
-     *  Any seller that is interested in eligibility requirements to list with 'Certified - Refurbished' should see the <a href="https://pages.ebay.com/seller-center/listing-and-marketing/certified-refurbished-program.html" target="_blank">Certified refurbished program</a> page in Seller Center.
-     *  </span>
-     *  <br>
-     *  <span class="tablenote"><strong>Note:</strong>
-     *  As of September 1, 2021, condition ID 2500 ('Seller Refurbished') can no longer be used in the <strong>Cell Phones & Smartphones</strong> category (category ID 9355) for the following marketplaces: US, Canada, UK, Germany, and Australia. The 'Seller Refurbished' item condition will be replaced by one of three new refurbished values, which include condition ID 2010 ('Excellent - Refurbished'), condition ID 2020 ('Very Good - Refurbished'), and condition ID 2030 ('Good - Refurbished'). To use any of these new refurbished item conditions in category 9355, sellers must go through an application and qualification process. Any seller who is not eligible to use these new refurbished item conditions in category 9355 will be blocked if they try to create a new listing or revise an existing listing with any of these three new item conditions. Any active listings in category 9355 that had condition ID 2500 ('Seller Refurbished') as the item condition should have been administratively ended by eBay. Sellers will have to relist these items, and until they are eligible to list with the new refurbished item conditions, they will need to use another item condition supported in category 9355, like condition ID 3000 ('Used').
+     *  Any seller that is interested in eligibility requirements to list with any refurbished item condition, including condition ID 2000 ('Certified - Refurbished'), should see the <a href="https://pages.ebay.com/seller-center/listing-and-marketing/ebay-refurbished-program.html" target="_blank">eBay Refurbished Program</a> page in Seller Center.
      *  </span>
      *
      * @var int $conditionID
@@ -1531,13 +1503,6 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <br>
      *  The <b>ConditionDescription</b> field is available for all categories, including categories where the condition type is not applicable (e.g., Antiques). This field is applicable for all item conditions except 'New', 'Brand New', 'New with tags', and 'New in box'. If <b>ConditionDescription</b> is used with these conditions (Condition IDs 1000-1499), eBay will simply ignore this field if included, and eBay will return a warning message to the user.
      *  <br>
-     *  <br>
-     *  This field should only be used to further clarify the condition of the used item. For example, "The right leg of the chair has a small scratch, and on the seat back there is a light blue stain about the shape and size of a coin." It should not be used for branding, promotions, shipping, returns, payment or other information unrelated to the condition of the item. Make sure that the condition type (<b>Item.ConditionID</b>), condition description, item description (<b>Item.Description</b>), and the listing's pictures do not contradict one another.
-     *  <br><br>
-     *  <span class="tablenote"><strong>Note:</strong>
-     *  The <b>ConditionDescription</b> field is optional For <b>Add</b>/<b>Revise</b>/<b>Relist</b> API calls.
-     *  <b>ConditionDescription</b> is currently supported on the eBay US and US eBay Motors (0), UK (3), CA (2), CAFR (210), AU (15), AT (16), BEFR (23), BENL (123), FR (71), DE (77), IT (101), NL (146), ES (186), CH (193), IE (205) and PL (212) sites.
-     *  </span>
      *  <br>
      *  The <b>ConditionDescription</b> field is returned by <b>GetItem</b> (and other related calls that return the Item object) if a condition description is specified in the listing.
      *  <br>
@@ -2144,18 +2109,9 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Gets as autoPay
      *
-     * If <code>true</code>, the seller requests immediate payment for a fixed-price item or an auction item that is purchased with the 'Buy it Now' feature. If <code>false</code> or not specified, immediate payment is not requested. (In responses, does not indicate whether the item is actually still a candidate for purchase via immediate payment.)
-     *  <br>
-     *  <br>
-     *  <b>For sellers opted in to eBay managed payments</b>: the only requirement is that the listing category supports immediate payments. With managed payments, eBay handles the payment methods available to the buyer, so the seller will not have to specify any payment methods, and will not have include the <b>PayPalEmailAddress</b> field. The seller only has to include the <b>AutoPay</b> field and set it to <code>true</code> to create an Immediate Payment listing.
-     *  <br>
-     *  <br>
-     *  <b>For sellers not opted in to eBay managed payments</b>: immediate payment is only available if the eBay marketplace supports PayPal as a payment method, and the listing category supports immediate payment (the <b>AutoPayEnabled</b> should be returned as <code>true</code> in the <b>GetCategories</b> response). To enable the listing with the immediated payment requirement, <b>AutoPay</b> must be <code>true</code>, the
-     *  <b>PayPalEmailAddress</b> field must be included and must have a valid PayPal email address for the seller, and the only specified
-     *  <b>PaymentMethods</b> value must be <code>PayPal</code>.
+     * This field is included and set to if <code>true</code> in an Add/Revise/Relist call if the seller wants to require immediate payment from the buyer. If this field is set to <code>false</code> or not included, the seller is not requestinng immediate payment.
      *  <br/><br/>
-     *  If a seller does not wish to require immediate payment, the <b>AutoPay</b> flag is not required since it defaults to <code>false</code>.
-     *  <br/>
+     *  Note that this field may be set to <code>true</code>, but that does not necessarily mean that the buyer will be required to pay right away. For example, immediate payment is not currently applicable to auctions items won in a competitive bidding process or to items where the buyer and seller negotiated the price through the Best Offer feature. Immediate payment is also not applicable to listings where the payment happens offline between the buyer and seller.
      *
      * @return bool
      */
@@ -2167,18 +2123,9 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Sets a new autoPay
      *
-     * If <code>true</code>, the seller requests immediate payment for a fixed-price item or an auction item that is purchased with the 'Buy it Now' feature. If <code>false</code> or not specified, immediate payment is not requested. (In responses, does not indicate whether the item is actually still a candidate for purchase via immediate payment.)
-     *  <br>
-     *  <br>
-     *  <b>For sellers opted in to eBay managed payments</b>: the only requirement is that the listing category supports immediate payments. With managed payments, eBay handles the payment methods available to the buyer, so the seller will not have to specify any payment methods, and will not have include the <b>PayPalEmailAddress</b> field. The seller only has to include the <b>AutoPay</b> field and set it to <code>true</code> to create an Immediate Payment listing.
-     *  <br>
-     *  <br>
-     *  <b>For sellers not opted in to eBay managed payments</b>: immediate payment is only available if the eBay marketplace supports PayPal as a payment method, and the listing category supports immediate payment (the <b>AutoPayEnabled</b> should be returned as <code>true</code> in the <b>GetCategories</b> response). To enable the listing with the immediated payment requirement, <b>AutoPay</b> must be <code>true</code>, the
-     *  <b>PayPalEmailAddress</b> field must be included and must have a valid PayPal email address for the seller, and the only specified
-     *  <b>PaymentMethods</b> value must be <code>PayPal</code>.
+     * This field is included and set to if <code>true</code> in an Add/Revise/Relist call if the seller wants to require immediate payment from the buyer. If this field is set to <code>false</code> or not included, the seller is not requestinng immediate payment.
      *  <br/><br/>
-     *  If a seller does not wish to require immediate payment, the <b>AutoPay</b> flag is not required since it defaults to <code>false</code>.
-     *  <br/>
+     *  Note that this field may be set to <code>true</code>, but that does not necessarily mean that the buyer will be required to pay right away. For example, immediate payment is not currently applicable to auctions items won in a competitive bidding process or to items where the buyer and seller negotiated the price through the Best Offer feature. Immediate payment is also not applicable to listings where the payment happens offline between the buyer and seller.
      *
      * @param bool $autoPay
      * @return self
@@ -2218,7 +2165,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Gets as buyerProtection
      *
-     * The enumeration value returned in this field indicates whether an item is eligible for the PayPal Buyer Protection program.
+     * The enumeration value returned in this field indicates whether an item is eligible for the buyer protection.
      *
      * @return string
      */
@@ -2230,7 +2177,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Sets a new buyerProtection
      *
-     * The enumeration value returned in this field indicates whether an item is eligible for the PayPal Buyer Protection program.
+     * The enumeration value returned in this field indicates whether an item is eligible for the buyer protection.
      *
      * @param string $buyerProtection
      * @return self
@@ -2560,9 +2507,12 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Gets as hitCounter
      *
-     * Indicates whether an optional hit counter is displayed on the item's listing
-     *  page and, if so, what type. See <b>HitCounterCodeType</b> for specific values.
-     *  <br/> Restriction: <HitCounter>HiddenStyle</HitCounter> is not enabled on the Germany, Austria, Switzerland, or Poland sites.
+     * <b>DO NOT USE THIS FIELD</b>. Hit counters are no longer displayed in View Item pages, so this field is no longer applicable and is scheduled for decommission. If this field is used in an add/revise/relist/verify call, it will be ignored and a warning message will be returned.
+     *  <br/><br/>
+     *  For developers/sellers who are interested in seeing page views and listing performance, the <a href="https://developer.ebay.com/api-docs/sell/analytics/resources/traffic_report/methods/getTrafficReport">getTrafficReport</a> method of the <b>Sell Analytics API</b> can be used.
+     *  <br/><br/>
+     *  Until this field is decommissioned, it will still be returned in <b>GetItem</b>, <b>GetBidderList</b>, <b>GetSellerEvents</b>, and <b>GetSellerList</b>. The default value for the marketplace will be returned, such as <code>NoHitCounter</code> or <code>HiddenStyle</code>.
+     *  <br/>
      *
      * @return string
      */
@@ -2574,9 +2524,12 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Sets a new hitCounter
      *
-     * Indicates whether an optional hit counter is displayed on the item's listing
-     *  page and, if so, what type. See <b>HitCounterCodeType</b> for specific values.
-     *  <br/> Restriction: <HitCounter>HiddenStyle</HitCounter> is not enabled on the Germany, Austria, Switzerland, or Poland sites.
+     * <b>DO NOT USE THIS FIELD</b>. Hit counters are no longer displayed in View Item pages, so this field is no longer applicable and is scheduled for decommission. If this field is used in an add/revise/relist/verify call, it will be ignored and a warning message will be returned.
+     *  <br/><br/>
+     *  For developers/sellers who are interested in seeing page views and listing performance, the <a href="https://developer.ebay.com/api-docs/sell/analytics/resources/traffic_report/methods/getTrafficReport">getTrafficReport</a> method of the <b>Sell Analytics API</b> can be used.
+     *  <br/><br/>
+     *  Until this field is decommissioned, it will still be returned in <b>GetItem</b>, <b>GetBidderList</b>, <b>GetSellerEvents</b>, and <b>GetSellerList</b>. The default value for the marketplace will be returned, such as <code>NoHitCounter</code> or <code>HiddenStyle</code>.
+     *  <br/>
      *
      * @param string $hitCounter
      * @return self
@@ -2730,7 +2683,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *
      * Describes listing upgrades that sellers can select for a fee, such as the
      *  <b>BoldTitle</b> upgrade. Also includes feature packs for saving on listing upgrades.
-     *  See <a href="https://pages.ebay.com/help/sell/ia/promoting_your_item.html">Listing Upgrades</a>
+     *  See <a href="https://pages.ebay.com/help/sell/ia/promoting_your_item.html" target="_blank">Listing Upgrades</a>
      *  in the eBay site help.
      *  <br><br>
      *  You cannot remove listing upgrades when you revise a listing. When you
@@ -2750,7 +2703,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *
      * Describes listing upgrades that sellers can select for a fee, such as the
      *  <b>BoldTitle</b> upgrade. Also includes feature packs for saving on listing upgrades.
-     *  See <a href="https://pages.ebay.com/help/sell/ia/promoting_your_item.html">Listing Upgrades</a>
+     *  See <a href="https://pages.ebay.com/help/sell/ia/promoting_your_item.html" target="_blank">Listing Upgrades</a>
      *  in the eBay site help.
      *  <br><br>
      *  You cannot remove listing upgrades when you revise a listing. When you
@@ -2769,7 +2722,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *
      * Describes listing upgrades that sellers can select for a fee, such as the
      *  <b>BoldTitle</b> upgrade. Also includes feature packs for saving on listing upgrades.
-     *  See <a href="https://pages.ebay.com/help/sell/ia/promoting_your_item.html">Listing Upgrades</a>
+     *  See <a href="https://pages.ebay.com/help/sell/ia/promoting_your_item.html" target="_blank">Listing Upgrades</a>
      *  in the eBay site help.
      *  <br><br>
      *  You cannot remove listing upgrades when you revise a listing. When you
@@ -2788,7 +2741,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *
      * Describes listing upgrades that sellers can select for a fee, such as the
      *  <b>BoldTitle</b> upgrade. Also includes feature packs for saving on listing upgrades.
-     *  See <a href="https://pages.ebay.com/help/sell/ia/promoting_your_item.html">Listing Upgrades</a>
+     *  See <a href="https://pages.ebay.com/help/sell/ia/promoting_your_item.html" target="_blank">Listing Upgrades</a>
      *  in the eBay site help.
      *  <br><br>
      *  You cannot remove listing upgrades when you revise a listing. When you
@@ -2806,7 +2759,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *
      * Describes listing upgrades that sellers can select for a fee, such as the
      *  <b>BoldTitle</b> upgrade. Also includes feature packs for saving on listing upgrades.
-     *  See <a href="https://pages.ebay.com/help/sell/ia/promoting_your_item.html">Listing Upgrades</a>
+     *  See <a href="https://pages.ebay.com/help/sell/ia/promoting_your_item.html" target="_blank">Listing Upgrades</a>
      *  in the eBay site help.
      *  <br><br>
      *  You cannot remove listing upgrades when you revise a listing. When you
@@ -3000,10 +2953,10 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Gets as paymentDetails
      *
-     * This container is used in an <b>Add/Revise/Relist/Verify</b> call if the seller is selling a motor vehicle, and is requiring an initial deposit on that vehicle. This container is only applicable for motor vehicle listings.
+     * This container is used in an <b>Add/Revise/Relist/Verify</b> call if the seller is selling a motor vehicle. It is used by the seller to specify the amount of the initial deposit, and the due dates for the deposit and the full payment for a motor vehicle listing.
      *  <br>
      *  <br>
-     *  <span class="tablenote"><b>Note: </b> If you set up a payment policy via the <a href="https://developer.ebay.com/api-docs/sell/account/resources/payment_policy/methods/createPaymentPolicy">Account API</a> or the <a href="https://developer.ebay.com/Devzone/business-policies/CallRef/addSellerProfile.html">Business Polices Managment API</a>, then you should not populate the fields in this <b>PaymentDetails</b> container. Instead, indicate your payment policy using the <b>SellerProfiles.SellerPaymentProfile</b> container.
+     *  <span class="tablenote"><b>Note: </b> If you are using business policies with your listing, the details set up in this container will instead be set up via the payment business policy. Payment business policies are associated with the listing via the <b>SellerProfiles.SellerPaymentProfile</b> container.
      *  </span>
      *  <br>
      *  This container will only be returned in 'Get' calls for motor vehicle listings where an initial deposit is required for that vehicle.
@@ -3018,10 +2971,10 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Sets a new paymentDetails
      *
-     * This container is used in an <b>Add/Revise/Relist/Verify</b> call if the seller is selling a motor vehicle, and is requiring an initial deposit on that vehicle. This container is only applicable for motor vehicle listings.
+     * This container is used in an <b>Add/Revise/Relist/Verify</b> call if the seller is selling a motor vehicle. It is used by the seller to specify the amount of the initial deposit, and the due dates for the deposit and the full payment for a motor vehicle listing.
      *  <br>
      *  <br>
-     *  <span class="tablenote"><b>Note: </b> If you set up a payment policy via the <a href="https://developer.ebay.com/api-docs/sell/account/resources/payment_policy/methods/createPaymentPolicy">Account API</a> or the <a href="https://developer.ebay.com/Devzone/business-policies/CallRef/addSellerProfile.html">Business Polices Managment API</a>, then you should not populate the fields in this <b>PaymentDetails</b> container. Instead, indicate your payment policy using the <b>SellerProfiles.SellerPaymentProfile</b> container.
+     *  <span class="tablenote"><b>Note: </b> If you are using business policies with your listing, the details set up in this container will instead be set up via the payment business policy. Payment business policies are associated with the listing via the <b>SellerProfiles.SellerPaymentProfile</b> container.
      *  </span>
      *  <br>
      *  This container will only be returned in 'Get' calls for motor vehicle listings where an initial deposit is required for that vehicle.
@@ -3038,43 +2991,19 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Adds as paymentMethods
      *
-     * Each <b>PaymentMethods</b> field identifies a payment method that can be used by the buyer to pay for the item.
+     * <b>For Add/Revise/Relist calls</b>: A <b>PaymentMethods</b> field is required for each offline payment method supported by the seller for the listing.
      *  <br>
      *  <br>
-     *  <b>For Add/Revise/Relist calls used by managed payments sellers</b>: One or more <b>PaymentMethods</b> fields are only needed for listings where an offline payment is required or supported. An example would be a motor vehicle listing where the final payment occurs between the buyer and seller offline. Offline payment methods can vary be eBay marketplace and/or category, but some typical offline payment method enumeration values include <code>MOCC</code> (Money Order/Cashier Check), <code>LoanCheck</code>, and <code>PersonalCheck</code>. Electonic payment methods (that occur on eBay's platform) should never be specified by the seller, as eBay controls the electronic payment methods that are available to the buyer for each eBay marketplace.
-     *  <br>
-     *  <br>
-     *  <b>For Add/Revise/Relist calls used by non-managed payments sellers</b>: <code>PayPal</code> is the only supported value for electronic payments, and is generally required unless the seller is using a payment business policy instead. Similar to managed payment sellers, non-managed payment sellers will also use one or more <b>PaymentMethods</b> fields for listings where an offline payment is required or supported.
-     *  <br>
+     *  <span class="tablenote"><b>Note: </b> Sellers no longer have to specify any electronic payment methods for listings, so one or more <b>PaymentMethods</b> fields will only be needed for listings that require/support payments off of eBay's platform. If an electronic payment is supplied in a <b>PaymentMethods</b> field, a warning will be triggered and the payment method will be dropped.
+     *  </span>
      *  <br>
      *  <span class="tablenote"><b>Note: </b> If you are already referencing a payments business policy in an Add/Revise/Relist call with the <b>SellerProfiles.SellerPaymentProfile</b> container, no lt;b>PaymentMethods</b> fields will be needed, as these settings will already be set in the payments business policy.
      *  </span>
      *  <br>
-     *  Use <b>GetCategoryFeatures</b> to determine the payment methods that are allowed for a category on a site. For example, the response data of <b>GetCategoryFeatures</b> will show that on the US site, most categories only allow electronic payments. Also use <b>GetCategoryFeatures</b> to determine the default payment methods for a site.
-     *  <br><br>
-     *  Do not use <b>GeteBayDetails</b> to determine the payment methods for a site.
-     *  <br><br>
-     *  If you specify multiple <b>PaymentMethods</b> fields, the repeating fields must be contiguous. For example, you can specify <b>PayPalEmailAddress</b> after a list of
-     *  repeating <b>PaymentMethods</b> fields, but not between them:<br>
-     *  <br>
-     *  <code>
-     *  &lt;PaymentMethods&gt;VisaMC&lt;/PaymentMethods&gt;<br>
-     *  &lt;PaymentMethods&gt;PayPal&lt;/PaymentMethods&gt;<br>
-     *  &lt;PayPalEmailAddress&gt;mypaypalemail@ebay.com&lt;/PayPalEmailAddress&gt;
-     *  </code>
-     *  <br><br>
-     *  In general, if you separate repeating instances of a field, the results will
-     *  be unpredictable. This rule applies to all repeating fields
-     *  (<code>maxOccurs="unbounded"</code> or greater than 1) in the schema. See <a href="https://developer.ebay.com/DevZone/guides/features-guide/default.html#basics/Call-APISchema.html#OverviewoftheAPISchema">Overview of the API Schema</a> in the eBay Features Guide.
-     *  <br>
-     *  <br>
-     *  <span class="tablenote"><b>Note:</b>
-     *  Required or allowed payment methods vary by site and category. Refer to <a href="https://developer.ebay.com/DevZone/guides/features-guide/default.html#development/Listing-PaymentMethod.html">
-     *  Determining the Payment Methods Allowed for a Category</a> in the eBay Features Guide
-     *  to help you determine which payment methods you
-     *  are required or allowed to specify.
-     *  </span><br>
      *  Payment methods are not applicable to any classified ad listings, as any agreement and payment is handled off of the eBay platform.
+     *  <br>
+     *  <br>
+     *  <b>For Get calls that return <b>PaymentMethods</b> fields </b>: One or more <b>PaymentMethods</b> fields will only be returned if the seller set one or more offline payment methods for the listing.
      *
      * @return self
      * @param string $paymentMethods
@@ -3088,43 +3017,19 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * isset paymentMethods
      *
-     * Each <b>PaymentMethods</b> field identifies a payment method that can be used by the buyer to pay for the item.
+     * <b>For Add/Revise/Relist calls</b>: A <b>PaymentMethods</b> field is required for each offline payment method supported by the seller for the listing.
      *  <br>
      *  <br>
-     *  <b>For Add/Revise/Relist calls used by managed payments sellers</b>: One or more <b>PaymentMethods</b> fields are only needed for listings where an offline payment is required or supported. An example would be a motor vehicle listing where the final payment occurs between the buyer and seller offline. Offline payment methods can vary be eBay marketplace and/or category, but some typical offline payment method enumeration values include <code>MOCC</code> (Money Order/Cashier Check), <code>LoanCheck</code>, and <code>PersonalCheck</code>. Electonic payment methods (that occur on eBay's platform) should never be specified by the seller, as eBay controls the electronic payment methods that are available to the buyer for each eBay marketplace.
-     *  <br>
-     *  <br>
-     *  <b>For Add/Revise/Relist calls used by non-managed payments sellers</b>: <code>PayPal</code> is the only supported value for electronic payments, and is generally required unless the seller is using a payment business policy instead. Similar to managed payment sellers, non-managed payment sellers will also use one or more <b>PaymentMethods</b> fields for listings where an offline payment is required or supported.
-     *  <br>
+     *  <span class="tablenote"><b>Note: </b> Sellers no longer have to specify any electronic payment methods for listings, so one or more <b>PaymentMethods</b> fields will only be needed for listings that require/support payments off of eBay's platform. If an electronic payment is supplied in a <b>PaymentMethods</b> field, a warning will be triggered and the payment method will be dropped.
+     *  </span>
      *  <br>
      *  <span class="tablenote"><b>Note: </b> If you are already referencing a payments business policy in an Add/Revise/Relist call with the <b>SellerProfiles.SellerPaymentProfile</b> container, no lt;b>PaymentMethods</b> fields will be needed, as these settings will already be set in the payments business policy.
      *  </span>
      *  <br>
-     *  Use <b>GetCategoryFeatures</b> to determine the payment methods that are allowed for a category on a site. For example, the response data of <b>GetCategoryFeatures</b> will show that on the US site, most categories only allow electronic payments. Also use <b>GetCategoryFeatures</b> to determine the default payment methods for a site.
-     *  <br><br>
-     *  Do not use <b>GeteBayDetails</b> to determine the payment methods for a site.
-     *  <br><br>
-     *  If you specify multiple <b>PaymentMethods</b> fields, the repeating fields must be contiguous. For example, you can specify <b>PayPalEmailAddress</b> after a list of
-     *  repeating <b>PaymentMethods</b> fields, but not between them:<br>
-     *  <br>
-     *  <code>
-     *  &lt;PaymentMethods&gt;VisaMC&lt;/PaymentMethods&gt;<br>
-     *  &lt;PaymentMethods&gt;PayPal&lt;/PaymentMethods&gt;<br>
-     *  &lt;PayPalEmailAddress&gt;mypaypalemail@ebay.com&lt;/PayPalEmailAddress&gt;
-     *  </code>
-     *  <br><br>
-     *  In general, if you separate repeating instances of a field, the results will
-     *  be unpredictable. This rule applies to all repeating fields
-     *  (<code>maxOccurs="unbounded"</code> or greater than 1) in the schema. See <a href="https://developer.ebay.com/DevZone/guides/features-guide/default.html#basics/Call-APISchema.html#OverviewoftheAPISchema">Overview of the API Schema</a> in the eBay Features Guide.
-     *  <br>
-     *  <br>
-     *  <span class="tablenote"><b>Note:</b>
-     *  Required or allowed payment methods vary by site and category. Refer to <a href="https://developer.ebay.com/DevZone/guides/features-guide/default.html#development/Listing-PaymentMethod.html">
-     *  Determining the Payment Methods Allowed for a Category</a> in the eBay Features Guide
-     *  to help you determine which payment methods you
-     *  are required or allowed to specify.
-     *  </span><br>
      *  Payment methods are not applicable to any classified ad listings, as any agreement and payment is handled off of the eBay platform.
+     *  <br>
+     *  <br>
+     *  <b>For Get calls that return <b>PaymentMethods</b> fields </b>: One or more <b>PaymentMethods</b> fields will only be returned if the seller set one or more offline payment methods for the listing.
      *
      * @param int|string $index
      * @return bool
@@ -3137,43 +3042,19 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * unset paymentMethods
      *
-     * Each <b>PaymentMethods</b> field identifies a payment method that can be used by the buyer to pay for the item.
+     * <b>For Add/Revise/Relist calls</b>: A <b>PaymentMethods</b> field is required for each offline payment method supported by the seller for the listing.
      *  <br>
      *  <br>
-     *  <b>For Add/Revise/Relist calls used by managed payments sellers</b>: One or more <b>PaymentMethods</b> fields are only needed for listings where an offline payment is required or supported. An example would be a motor vehicle listing where the final payment occurs between the buyer and seller offline. Offline payment methods can vary be eBay marketplace and/or category, but some typical offline payment method enumeration values include <code>MOCC</code> (Money Order/Cashier Check), <code>LoanCheck</code>, and <code>PersonalCheck</code>. Electonic payment methods (that occur on eBay's platform) should never be specified by the seller, as eBay controls the electronic payment methods that are available to the buyer for each eBay marketplace.
-     *  <br>
-     *  <br>
-     *  <b>For Add/Revise/Relist calls used by non-managed payments sellers</b>: <code>PayPal</code> is the only supported value for electronic payments, and is generally required unless the seller is using a payment business policy instead. Similar to managed payment sellers, non-managed payment sellers will also use one or more <b>PaymentMethods</b> fields for listings where an offline payment is required or supported.
-     *  <br>
+     *  <span class="tablenote"><b>Note: </b> Sellers no longer have to specify any electronic payment methods for listings, so one or more <b>PaymentMethods</b> fields will only be needed for listings that require/support payments off of eBay's platform. If an electronic payment is supplied in a <b>PaymentMethods</b> field, a warning will be triggered and the payment method will be dropped.
+     *  </span>
      *  <br>
      *  <span class="tablenote"><b>Note: </b> If you are already referencing a payments business policy in an Add/Revise/Relist call with the <b>SellerProfiles.SellerPaymentProfile</b> container, no lt;b>PaymentMethods</b> fields will be needed, as these settings will already be set in the payments business policy.
      *  </span>
      *  <br>
-     *  Use <b>GetCategoryFeatures</b> to determine the payment methods that are allowed for a category on a site. For example, the response data of <b>GetCategoryFeatures</b> will show that on the US site, most categories only allow electronic payments. Also use <b>GetCategoryFeatures</b> to determine the default payment methods for a site.
-     *  <br><br>
-     *  Do not use <b>GeteBayDetails</b> to determine the payment methods for a site.
-     *  <br><br>
-     *  If you specify multiple <b>PaymentMethods</b> fields, the repeating fields must be contiguous. For example, you can specify <b>PayPalEmailAddress</b> after a list of
-     *  repeating <b>PaymentMethods</b> fields, but not between them:<br>
-     *  <br>
-     *  <code>
-     *  &lt;PaymentMethods&gt;VisaMC&lt;/PaymentMethods&gt;<br>
-     *  &lt;PaymentMethods&gt;PayPal&lt;/PaymentMethods&gt;<br>
-     *  &lt;PayPalEmailAddress&gt;mypaypalemail@ebay.com&lt;/PayPalEmailAddress&gt;
-     *  </code>
-     *  <br><br>
-     *  In general, if you separate repeating instances of a field, the results will
-     *  be unpredictable. This rule applies to all repeating fields
-     *  (<code>maxOccurs="unbounded"</code> or greater than 1) in the schema. See <a href="https://developer.ebay.com/DevZone/guides/features-guide/default.html#basics/Call-APISchema.html#OverviewoftheAPISchema">Overview of the API Schema</a> in the eBay Features Guide.
-     *  <br>
-     *  <br>
-     *  <span class="tablenote"><b>Note:</b>
-     *  Required or allowed payment methods vary by site and category. Refer to <a href="https://developer.ebay.com/DevZone/guides/features-guide/default.html#development/Listing-PaymentMethod.html">
-     *  Determining the Payment Methods Allowed for a Category</a> in the eBay Features Guide
-     *  to help you determine which payment methods you
-     *  are required or allowed to specify.
-     *  </span><br>
      *  Payment methods are not applicable to any classified ad listings, as any agreement and payment is handled off of the eBay platform.
+     *  <br>
+     *  <br>
+     *  <b>For Get calls that return <b>PaymentMethods</b> fields </b>: One or more <b>PaymentMethods</b> fields will only be returned if the seller set one or more offline payment methods for the listing.
      *
      * @param int|string $index
      * @return void
@@ -3186,43 +3067,19 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Gets as paymentMethods
      *
-     * Each <b>PaymentMethods</b> field identifies a payment method that can be used by the buyer to pay for the item.
+     * <b>For Add/Revise/Relist calls</b>: A <b>PaymentMethods</b> field is required for each offline payment method supported by the seller for the listing.
      *  <br>
      *  <br>
-     *  <b>For Add/Revise/Relist calls used by managed payments sellers</b>: One or more <b>PaymentMethods</b> fields are only needed for listings where an offline payment is required or supported. An example would be a motor vehicle listing where the final payment occurs between the buyer and seller offline. Offline payment methods can vary be eBay marketplace and/or category, but some typical offline payment method enumeration values include <code>MOCC</code> (Money Order/Cashier Check), <code>LoanCheck</code>, and <code>PersonalCheck</code>. Electonic payment methods (that occur on eBay's platform) should never be specified by the seller, as eBay controls the electronic payment methods that are available to the buyer for each eBay marketplace.
-     *  <br>
-     *  <br>
-     *  <b>For Add/Revise/Relist calls used by non-managed payments sellers</b>: <code>PayPal</code> is the only supported value for electronic payments, and is generally required unless the seller is using a payment business policy instead. Similar to managed payment sellers, non-managed payment sellers will also use one or more <b>PaymentMethods</b> fields for listings where an offline payment is required or supported.
-     *  <br>
+     *  <span class="tablenote"><b>Note: </b> Sellers no longer have to specify any electronic payment methods for listings, so one or more <b>PaymentMethods</b> fields will only be needed for listings that require/support payments off of eBay's platform. If an electronic payment is supplied in a <b>PaymentMethods</b> field, a warning will be triggered and the payment method will be dropped.
+     *  </span>
      *  <br>
      *  <span class="tablenote"><b>Note: </b> If you are already referencing a payments business policy in an Add/Revise/Relist call with the <b>SellerProfiles.SellerPaymentProfile</b> container, no lt;b>PaymentMethods</b> fields will be needed, as these settings will already be set in the payments business policy.
      *  </span>
      *  <br>
-     *  Use <b>GetCategoryFeatures</b> to determine the payment methods that are allowed for a category on a site. For example, the response data of <b>GetCategoryFeatures</b> will show that on the US site, most categories only allow electronic payments. Also use <b>GetCategoryFeatures</b> to determine the default payment methods for a site.
-     *  <br><br>
-     *  Do not use <b>GeteBayDetails</b> to determine the payment methods for a site.
-     *  <br><br>
-     *  If you specify multiple <b>PaymentMethods</b> fields, the repeating fields must be contiguous. For example, you can specify <b>PayPalEmailAddress</b> after a list of
-     *  repeating <b>PaymentMethods</b> fields, but not between them:<br>
-     *  <br>
-     *  <code>
-     *  &lt;PaymentMethods&gt;VisaMC&lt;/PaymentMethods&gt;<br>
-     *  &lt;PaymentMethods&gt;PayPal&lt;/PaymentMethods&gt;<br>
-     *  &lt;PayPalEmailAddress&gt;mypaypalemail@ebay.com&lt;/PayPalEmailAddress&gt;
-     *  </code>
-     *  <br><br>
-     *  In general, if you separate repeating instances of a field, the results will
-     *  be unpredictable. This rule applies to all repeating fields
-     *  (<code>maxOccurs="unbounded"</code> or greater than 1) in the schema. See <a href="https://developer.ebay.com/DevZone/guides/features-guide/default.html#basics/Call-APISchema.html#OverviewoftheAPISchema">Overview of the API Schema</a> in the eBay Features Guide.
-     *  <br>
-     *  <br>
-     *  <span class="tablenote"><b>Note:</b>
-     *  Required or allowed payment methods vary by site and category. Refer to <a href="https://developer.ebay.com/DevZone/guides/features-guide/default.html#development/Listing-PaymentMethod.html">
-     *  Determining the Payment Methods Allowed for a Category</a> in the eBay Features Guide
-     *  to help you determine which payment methods you
-     *  are required or allowed to specify.
-     *  </span><br>
      *  Payment methods are not applicable to any classified ad listings, as any agreement and payment is handled off of the eBay platform.
+     *  <br>
+     *  <br>
+     *  <b>For Get calls that return <b>PaymentMethods</b> fields </b>: One or more <b>PaymentMethods</b> fields will only be returned if the seller set one or more offline payment methods for the listing.
      *
      * @return string[]
      */
@@ -3234,43 +3091,19 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Sets a new paymentMethods
      *
-     * Each <b>PaymentMethods</b> field identifies a payment method that can be used by the buyer to pay for the item.
+     * <b>For Add/Revise/Relist calls</b>: A <b>PaymentMethods</b> field is required for each offline payment method supported by the seller for the listing.
      *  <br>
      *  <br>
-     *  <b>For Add/Revise/Relist calls used by managed payments sellers</b>: One or more <b>PaymentMethods</b> fields are only needed for listings where an offline payment is required or supported. An example would be a motor vehicle listing where the final payment occurs between the buyer and seller offline. Offline payment methods can vary be eBay marketplace and/or category, but some typical offline payment method enumeration values include <code>MOCC</code> (Money Order/Cashier Check), <code>LoanCheck</code>, and <code>PersonalCheck</code>. Electonic payment methods (that occur on eBay's platform) should never be specified by the seller, as eBay controls the electronic payment methods that are available to the buyer for each eBay marketplace.
-     *  <br>
-     *  <br>
-     *  <b>For Add/Revise/Relist calls used by non-managed payments sellers</b>: <code>PayPal</code> is the only supported value for electronic payments, and is generally required unless the seller is using a payment business policy instead. Similar to managed payment sellers, non-managed payment sellers will also use one or more <b>PaymentMethods</b> fields for listings where an offline payment is required or supported.
-     *  <br>
+     *  <span class="tablenote"><b>Note: </b> Sellers no longer have to specify any electronic payment methods for listings, so one or more <b>PaymentMethods</b> fields will only be needed for listings that require/support payments off of eBay's platform. If an electronic payment is supplied in a <b>PaymentMethods</b> field, a warning will be triggered and the payment method will be dropped.
+     *  </span>
      *  <br>
      *  <span class="tablenote"><b>Note: </b> If you are already referencing a payments business policy in an Add/Revise/Relist call with the <b>SellerProfiles.SellerPaymentProfile</b> container, no lt;b>PaymentMethods</b> fields will be needed, as these settings will already be set in the payments business policy.
      *  </span>
      *  <br>
-     *  Use <b>GetCategoryFeatures</b> to determine the payment methods that are allowed for a category on a site. For example, the response data of <b>GetCategoryFeatures</b> will show that on the US site, most categories only allow electronic payments. Also use <b>GetCategoryFeatures</b> to determine the default payment methods for a site.
-     *  <br><br>
-     *  Do not use <b>GeteBayDetails</b> to determine the payment methods for a site.
-     *  <br><br>
-     *  If you specify multiple <b>PaymentMethods</b> fields, the repeating fields must be contiguous. For example, you can specify <b>PayPalEmailAddress</b> after a list of
-     *  repeating <b>PaymentMethods</b> fields, but not between them:<br>
-     *  <br>
-     *  <code>
-     *  &lt;PaymentMethods&gt;VisaMC&lt;/PaymentMethods&gt;<br>
-     *  &lt;PaymentMethods&gt;PayPal&lt;/PaymentMethods&gt;<br>
-     *  &lt;PayPalEmailAddress&gt;mypaypalemail@ebay.com&lt;/PayPalEmailAddress&gt;
-     *  </code>
-     *  <br><br>
-     *  In general, if you separate repeating instances of a field, the results will
-     *  be unpredictable. This rule applies to all repeating fields
-     *  (<code>maxOccurs="unbounded"</code> or greater than 1) in the schema. See <a href="https://developer.ebay.com/DevZone/guides/features-guide/default.html#basics/Call-APISchema.html#OverviewoftheAPISchema">Overview of the API Schema</a> in the eBay Features Guide.
-     *  <br>
-     *  <br>
-     *  <span class="tablenote"><b>Note:</b>
-     *  Required or allowed payment methods vary by site and category. Refer to <a href="https://developer.ebay.com/DevZone/guides/features-guide/default.html#development/Listing-PaymentMethod.html">
-     *  Determining the Payment Methods Allowed for a Category</a> in the eBay Features Guide
-     *  to help you determine which payment methods you
-     *  are required or allowed to specify.
-     *  </span><br>
      *  Payment methods are not applicable to any classified ad listings, as any agreement and payment is handled off of the eBay platform.
+     *  <br>
+     *  <br>
+     *  <b>For Get calls that return <b>PaymentMethods</b> fields </b>: One or more <b>PaymentMethods</b> fields will only be returned if the seller set one or more offline payment methods for the listing.
      *
      * @param string $paymentMethods
      * @return self
@@ -3284,14 +3117,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Gets as payPalEmailAddress
      *
-     * This is the seller's PayPal payment email address, and this field is required in an Add/Revise/Relist call if <code>PayPal</code> is specified as a <b>PaymentsMethod</b> value.
-     *  <br>
-     *  <br>
-     *  <span class="tablenote"><b>Note: </b> This field is no longer needed/applicable for sellers who are onboarded for managed payments.
-     *  </span>
-     *  <br>
-     *  <span class="tablenote"><b>Note: </b> If you are already referencing a payments business policy in an Add/Revise/Relist call with the <b>SellerProfiles.SellerPaymentProfile</b> container, no <b>PaymentMethods</b> field(s) or <b>PayPalEmailAddress</b> field will be needed, as these settings will already be set in the payments business policy.
-     *  </span>
+     * This field is no longer applicable, as eBay now controls all electronic payment methods and handles the payment from the buyer.
      *
      * @return string
      */
@@ -3303,14 +3129,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Sets a new payPalEmailAddress
      *
-     * This is the seller's PayPal payment email address, and this field is required in an Add/Revise/Relist call if <code>PayPal</code> is specified as a <b>PaymentsMethod</b> value.
-     *  <br>
-     *  <br>
-     *  <span class="tablenote"><b>Note: </b> This field is no longer needed/applicable for sellers who are onboarded for managed payments.
-     *  </span>
-     *  <br>
-     *  <span class="tablenote"><b>Note: </b> If you are already referencing a payments business policy in an Add/Revise/Relist call with the <b>SellerProfiles.SellerPaymentProfile</b> container, no <b>PaymentMethods</b> field(s) or <b>PayPalEmailAddress</b> field will be needed, as these settings will already be set in the payments business policy.
-     *  </span>
+     * This field is no longer applicable, as eBay now controls all electronic payment methods and handles the payment from the buyer.
      *
      * @param string $payPalEmailAddress
      * @return self
@@ -3382,7 +3201,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Gets as privateListing
      *
-     * A <code>true</code> value in this field indicates that the listing is private. In a private listing, a bidder or buyer's user ID will not be exposed to any other eBay user besides the seller of the listing. Sellers may want to use this option when they believe that a listing's potential bidders/buyers would not want their user IDs exposed to other users.
+     * A <code>true</code> value in this field indicates that the listing is private. Sellers may want to use this option when they believe that a listing's potential bidders/buyers would not want their obfuscated user IDs (and feedback scores) exposed to other users.
      *  <br>
      *
      * @return bool
@@ -3395,7 +3214,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Sets a new privateListing
      *
-     * A <code>true</code> value in this field indicates that the listing is private. In a private listing, a bidder or buyer's user ID will not be exposed to any other eBay user besides the seller of the listing. Sellers may want to use this option when they believe that a listing's potential bidders/buyers would not want their user IDs exposed to other users.
+     * A <code>true</code> value in this field indicates that the listing is private. Sellers may want to use this option when they believe that a listing's potential bidders/buyers would not want their obfuscated user IDs (and feedback scores) exposed to other users.
      *  <br>
      *
      * @param bool $privateListing
@@ -3476,7 +3295,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Gets as quantity
      *
-     * <b>For <b>AddItem</b> family of calls:</b> The <b>Quantity</b> value for auction listings must always be <code>1</code>. For a fixed-price listing, the <b>Quantity</b> value indicates the number of identical items the seller has available for sale in the listing. If this field is not included when creating a new fixed-price listing, quantity defaults to '1'. If variations are specified in <b>AddFixedPriceItem</b> or <b> VerifyAddFixedPriceItem</b>, the <b>Item.Quantity</b> is not required since the quantity of variations is specified in <b>Variation.Quantity</b> instead. See the <a href="https://pages.ebay.com/help/sell/listing-variations.html">Creating a listing with variations</a> eBay Help page for more information on variations.
+     * <b>For <b>AddItem</b> family of calls:</b> The <b>Quantity</b> value for auction listings must always be <code>1</code>. For a fixed-price listing, the <b>Quantity</b> value indicates the number of identical items the seller has available for sale in the listing. If this field is not included when creating a new fixed-price listing, quantity defaults to '1'. If variations are specified in <b>AddFixedPriceItem</b> or <b> VerifyAddFixedPriceItem</b>, the <b>Item.Quantity</b> is not required since the quantity of variations is specified in <b>Variation.Quantity</b> instead. See the <a href="https://pages.ebay.com/help/sell/listing-variations.html" target="_blank">Creating a listing with variations</a> eBay Help page for more information on variations.
      *  <br><br>
      *  <b>For ReviseItem and ReviseFixedPriceItem:</b>
      *  This value can only be changed for a fixed-price listing with no variations. The
@@ -3513,7 +3332,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  variation (quantity available plus quantity sold).
      *  <br>
      *  <br>
-     *  <span class="tablenote"><b>Note: </b> For the US site, new eBay sellers are subject to <a href="https://developer.ebay.com/DevZone/guides/features-guide/default.html#development/Listing-Policies.html#SellerLimits">Seller Limits</a>, which limit the quantity of items that may be listed and/or the total cumulative value of these listings. While subject to these selling limits, an eBay seller can use the <b>GetMyeBaySelling</b> call to retrieve both the remaining number of listings they can create and the remaining cumulative value of these listings. These values are shown in the <b>Summary.QuantityLimitRemaining</b> and <b>Summary.AmountLimitRemaining</b> fields in the <b>GetMyeBaySelling</b> response. If a call to add an item or revise an item would result in the exceeding of these limits, the add item or revise item call will fail. These fields will only be returned if the seller is subject to seller limits.
+     *  <span class="tablenote"><b>Note: </b> For the US site, new eBay sellers are subject to <a href="/DevZone/guides/features-guide/default.html#development/Listing-Policies.html#SellerLimits">Seller Limits</a>, which limit the quantity of items that may be listed and/or the total cumulative value of these listings. While subject to these selling limits, an eBay seller can use the <b>GetMyeBaySelling</b> call to retrieve both the remaining number of listings they can create and the remaining cumulative value of these listings. These values are shown in the <b>Summary.QuantityLimitRemaining</b> and <b>Summary.AmountLimitRemaining</b> fields in the <b>GetMyeBaySelling</b> response. If a call to add an item or revise an item would result in the exceeding of these limits, the add item or revise item call will fail. These fields will only be returned if the seller is subject to seller limits.
      *  </span>
      *
      * @return int
@@ -3526,7 +3345,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Sets a new quantity
      *
-     * <b>For <b>AddItem</b> family of calls:</b> The <b>Quantity</b> value for auction listings must always be <code>1</code>. For a fixed-price listing, the <b>Quantity</b> value indicates the number of identical items the seller has available for sale in the listing. If this field is not included when creating a new fixed-price listing, quantity defaults to '1'. If variations are specified in <b>AddFixedPriceItem</b> or <b> VerifyAddFixedPriceItem</b>, the <b>Item.Quantity</b> is not required since the quantity of variations is specified in <b>Variation.Quantity</b> instead. See the <a href="https://pages.ebay.com/help/sell/listing-variations.html">Creating a listing with variations</a> eBay Help page for more information on variations.
+     * <b>For <b>AddItem</b> family of calls:</b> The <b>Quantity</b> value for auction listings must always be <code>1</code>. For a fixed-price listing, the <b>Quantity</b> value indicates the number of identical items the seller has available for sale in the listing. If this field is not included when creating a new fixed-price listing, quantity defaults to '1'. If variations are specified in <b>AddFixedPriceItem</b> or <b> VerifyAddFixedPriceItem</b>, the <b>Item.Quantity</b> is not required since the quantity of variations is specified in <b>Variation.Quantity</b> instead. See the <a href="https://pages.ebay.com/help/sell/listing-variations.html" target="_blank">Creating a listing with variations</a> eBay Help page for more information on variations.
      *  <br><br>
      *  <b>For ReviseItem and ReviseFixedPriceItem:</b>
      *  This value can only be changed for a fixed-price listing with no variations. The
@@ -3563,7 +3382,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  variation (quantity available plus quantity sold).
      *  <br>
      *  <br>
-     *  <span class="tablenote"><b>Note: </b> For the US site, new eBay sellers are subject to <a href="https://developer.ebay.com/DevZone/guides/features-guide/default.html#development/Listing-Policies.html#SellerLimits">Seller Limits</a>, which limit the quantity of items that may be listed and/or the total cumulative value of these listings. While subject to these selling limits, an eBay seller can use the <b>GetMyeBaySelling</b> call to retrieve both the remaining number of listings they can create and the remaining cumulative value of these listings. These values are shown in the <b>Summary.QuantityLimitRemaining</b> and <b>Summary.AmountLimitRemaining</b> fields in the <b>GetMyeBaySelling</b> response. If a call to add an item or revise an item would result in the exceeding of these limits, the add item or revise item call will fail. These fields will only be returned if the seller is subject to seller limits.
+     *  <span class="tablenote"><b>Note: </b> For the US site, new eBay sellers are subject to <a href="/DevZone/guides/features-guide/default.html#development/Listing-Policies.html#SellerLimits">Seller Limits</a>, which limit the quantity of items that may be listed and/or the total cumulative value of these listings. While subject to these selling limits, an eBay seller can use the <b>GetMyeBaySelling</b> call to retrieve both the remaining number of listings they can create and the remaining cumulative value of these listings. These values are shown in the <b>Summary.QuantityLimitRemaining</b> and <b>Summary.AmountLimitRemaining</b> fields in the <b>GetMyeBaySelling</b> response. If a call to add an item or revise an item would result in the exceeding of these limits, the add item or revise item call will fail. These fields will only be returned if the seller is subject to seller limits.
      *  </span>
      *
      * @param int $quantity
@@ -3756,7 +3575,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <code>AT, BEFR, BENL, CH, DE, ES, FR, IE, IT, NL, PL, UK</code>
      *  <br><br>
      *  Also see the following article in the Knowledge Base: <a href=
-     *  "https://ebaydts.com/eBayKBDetails?KBid=1473"
+     *  "https://ebaydts.com/eBayKBDetails?KBid=1473" target="_blank"
      *  >Why scheduled time is sometimes getting reset</a>.
      *
      * @return \DateTime
@@ -3781,7 +3600,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <code>AT, BEFR, BENL, CH, DE, ES, FR, IE, IT, NL, PL, UK</code>
      *  <br><br>
      *  Also see the following article in the Knowledge Base: <a href=
-     *  "https://ebaydts.com/eBayKBDetails?KBid=1473"
+     *  "https://ebaydts.com/eBayKBDetails?KBid=1473" target="_blank"
      *  >Why scheduled time is sometimes getting reset</a>.
      *
      * @param \DateTime $scheduleTime
@@ -3967,7 +3786,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      * The shipping-related details for an order, including flat and calculated shipping costs.
      *  <br>
      *  <br>
-     *  <span class="tablenote"><b>Note: </b> For sellers who are using a shipping (aka Fulfillment) business policy to create/revise/relist an item, none of the fields under the <b>ShippingDetails</b> container are necessary. A fulfillment business policy can be set up and/or modified in My eBay, or via the <a href="https://developer.ebay.com/api-docs/sell/account/resources/fulfillment_policy/methods/createFulfillmentPolicy">Account API</a> or the <a href="https://developer.ebay.com/Devzone/business-policies/CallRef/addSellerProfile.html">Business Polices Managment API</a>. A fulfillment business policy is associated to a listing through the <b>Item.SellerProfiles.SellerShippingProfile</b> container.
+     *  <span class="tablenote"><b>Note: </b> For sellers who are using a shipping (aka Fulfillment) business policy to create/revise/relist an item, none of the fields under the <b>ShippingDetails</b> container are necessary. A fulfillment business policy can be set up and/or modified in My eBay, or via the <a href="https://developer.ebay.com/api-docs/sell/account/resources/fulfillment_policy/methods/createFulfillmentPolicy">Account API</a>. A fulfillment business policy is associated to a listing through the <b>Item.SellerProfiles.SellerShippingProfile</b> container.
      *  <br>
      *  <br>
      *  If you <i>do not</i> use a fulfillment business policy, many of the fields under this <b>ShippingDetails</b> container become required in your request.
@@ -4012,7 +3831,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      * The shipping-related details for an order, including flat and calculated shipping costs.
      *  <br>
      *  <br>
-     *  <span class="tablenote"><b>Note: </b> For sellers who are using a shipping (aka Fulfillment) business policy to create/revise/relist an item, none of the fields under the <b>ShippingDetails</b> container are necessary. A fulfillment business policy can be set up and/or modified in My eBay, or via the <a href="https://developer.ebay.com/api-docs/sell/account/resources/fulfillment_policy/methods/createFulfillmentPolicy">Account API</a> or the <a href="https://developer.ebay.com/Devzone/business-policies/CallRef/addSellerProfile.html">Business Polices Managment API</a>. A fulfillment business policy is associated to a listing through the <b>Item.SellerProfiles.SellerShippingProfile</b> container.
+     *  <span class="tablenote"><b>Note: </b> For sellers who are using a shipping (aka Fulfillment) business policy to create/revise/relist an item, none of the fields under the <b>ShippingDetails</b> container are necessary. A fulfillment business policy can be set up and/or modified in My eBay, or via the <a href="https://developer.ebay.com/api-docs/sell/account/resources/fulfillment_policy/methods/createFulfillmentPolicy">Account API</a>. A fulfillment business policy is associated to a listing through the <b>Item.SellerProfiles.SellerShippingProfile</b> container.
      *  <br>
      *  <br>
      *  If you <i>do not</i> use a fulfillment business policy, many of the fields under this <b>ShippingDetails</b> container become required in your request.
@@ -4060,7 +3879,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  regardless of shipping service. The country of the listing site is added by eBay.
      *  <br>
      *  <br>
-     *  <span class="tablenote"><b>Note: </b> If you set up a fulfillment policy via the <a href="https://developer.ebay.com/api-docs/sell/account/resources/fulfillment_policy/methods/createFulfillmentPolicy">Account API</a> or the <a href="https://developer.ebay.com/Devzone/business-policies/CallRef/addSellerProfile.html">Business Polices Managment API</a>, then you should not populate the <b>ShipToLocations</b> field. Instead, indicate your fulfillment policy using the <b>SellerProfiles.SellerShippingProfile</b> container.
+     *  <span class="tablenote"><b>Note: </b> For sellers who are using a shipping (aka Fulfillment) business policy to create/revise/relist an item, the <b>ShipToLocations</b> field should not be used in the request. A fulfillment business policy can be set up and/or modified in My eBay, or via the <a href="https://developer.ebay.com/api-docs/sell/account/resources/fulfillment_policy/methods/createFulfillmentPolicy">Account API</a>. A fulfillment business policy is associated to a listing through the <b>Item.SellerProfiles.SellerShippingProfile</b> container.
      *  </span>
      *  <br>
      *  Use <b>GeteBayDetails</b> with a <b>DetailName</b> of <b>ShippingLocationDetails</b> to
@@ -4099,7 +3918,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  regardless of shipping service. The country of the listing site is added by eBay.
      *  <br>
      *  <br>
-     *  <span class="tablenote"><b>Note: </b> If you set up a fulfillment policy via the <a href="https://developer.ebay.com/api-docs/sell/account/resources/fulfillment_policy/methods/createFulfillmentPolicy">Account API</a> or the <a href="https://developer.ebay.com/Devzone/business-policies/CallRef/addSellerProfile.html">Business Polices Managment API</a>, then you should not populate the <b>ShipToLocations</b> field. Instead, indicate your fulfillment policy using the <b>SellerProfiles.SellerShippingProfile</b> container.
+     *  <span class="tablenote"><b>Note: </b> For sellers who are using a shipping (aka Fulfillment) business policy to create/revise/relist an item, the <b>ShipToLocations</b> field should not be used in the request. A fulfillment business policy can be set up and/or modified in My eBay, or via the <a href="https://developer.ebay.com/api-docs/sell/account/resources/fulfillment_policy/methods/createFulfillmentPolicy">Account API</a>. A fulfillment business policy is associated to a listing through the <b>Item.SellerProfiles.SellerShippingProfile</b> container.
      *  </span>
      *  <br>
      *  Use <b>GeteBayDetails</b> with a <b>DetailName</b> of <b>ShippingLocationDetails</b> to
@@ -4137,7 +3956,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  regardless of shipping service. The country of the listing site is added by eBay.
      *  <br>
      *  <br>
-     *  <span class="tablenote"><b>Note: </b> If you set up a fulfillment policy via the <a href="https://developer.ebay.com/api-docs/sell/account/resources/fulfillment_policy/methods/createFulfillmentPolicy">Account API</a> or the <a href="https://developer.ebay.com/Devzone/business-policies/CallRef/addSellerProfile.html">Business Polices Managment API</a>, then you should not populate the <b>ShipToLocations</b> field. Instead, indicate your fulfillment policy using the <b>SellerProfiles.SellerShippingProfile</b> container.
+     *  <span class="tablenote"><b>Note: </b> For sellers who are using a shipping (aka Fulfillment) business policy to create/revise/relist an item, the <b>ShipToLocations</b> field should not be used in the request. A fulfillment business policy can be set up and/or modified in My eBay, or via the <a href="https://developer.ebay.com/api-docs/sell/account/resources/fulfillment_policy/methods/createFulfillmentPolicy">Account API</a>. A fulfillment business policy is associated to a listing through the <b>Item.SellerProfiles.SellerShippingProfile</b> container.
      *  </span>
      *  <br>
      *  Use <b>GeteBayDetails</b> with a <b>DetailName</b> of <b>ShippingLocationDetails</b> to
@@ -4175,7 +3994,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  regardless of shipping service. The country of the listing site is added by eBay.
      *  <br>
      *  <br>
-     *  <span class="tablenote"><b>Note: </b> If you set up a fulfillment policy via the <a href="https://developer.ebay.com/api-docs/sell/account/resources/fulfillment_policy/methods/createFulfillmentPolicy">Account API</a> or the <a href="https://developer.ebay.com/Devzone/business-policies/CallRef/addSellerProfile.html">Business Polices Managment API</a>, then you should not populate the <b>ShipToLocations</b> field. Instead, indicate your fulfillment policy using the <b>SellerProfiles.SellerShippingProfile</b> container.
+     *  <span class="tablenote"><b>Note: </b> For sellers who are using a shipping (aka Fulfillment) business policy to create/revise/relist an item, the <b>ShipToLocations</b> field should not be used in the request. A fulfillment business policy can be set up and/or modified in My eBay, or via the <a href="https://developer.ebay.com/api-docs/sell/account/resources/fulfillment_policy/methods/createFulfillmentPolicy">Account API</a>. A fulfillment business policy is associated to a listing through the <b>Item.SellerProfiles.SellerShippingProfile</b> container.
      *  </span>
      *  <br>
      *  Use <b>GeteBayDetails</b> with a <b>DetailName</b> of <b>ShippingLocationDetails</b> to
@@ -4212,7 +4031,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  regardless of shipping service. The country of the listing site is added by eBay.
      *  <br>
      *  <br>
-     *  <span class="tablenote"><b>Note: </b> If you set up a fulfillment policy via the <a href="https://developer.ebay.com/api-docs/sell/account/resources/fulfillment_policy/methods/createFulfillmentPolicy">Account API</a> or the <a href="https://developer.ebay.com/Devzone/business-policies/CallRef/addSellerProfile.html">Business Polices Managment API</a>, then you should not populate the <b>ShipToLocations</b> field. Instead, indicate your fulfillment policy using the <b>SellerProfiles.SellerShippingProfile</b> container.
+     *  <span class="tablenote"><b>Note: </b> For sellers who are using a shipping (aka Fulfillment) business policy to create/revise/relist an item, the <b>ShipToLocations</b> field should not be used in the request. A fulfillment business policy can be set up and/or modified in My eBay, or via the <a href="https://developer.ebay.com/api-docs/sell/account/resources/fulfillment_policy/methods/createFulfillmentPolicy">Account API</a>. A fulfillment business policy is associated to a listing through the <b>Item.SellerProfiles.SellerShippingProfile</b> container.
      *  </span>
      *  <br>
      *  Use <b>GeteBayDetails</b> with a <b>DetailName</b> of <b>ShippingLocationDetails</b> to
@@ -4324,7 +4143,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <b>For Revise calls:</b>
      *  If the <b>StartPrice</b> value for a fixed-price item is changed with a Revise call, the <b>MinimumBestOfferPrice</b> and <b>BestOfferAutoAcceptPrice</b> fields in the <b>ListingDetails</b> container will be dropped (if set), basically turning off the Best Offer Auto Accept and/or Auto Decline features. If the seller wanted to reintroduce either of these Best Offer threshold values in the listing again, an additional Revise call would have to be made, passing in the desired threshold values.
      *  <br><br>
-     *  <span class="tablenote"><b>Note: </b> For the US site, new eBay sellers are subject to <a href="https://developer.ebay.com/DevZone/guides/features-guide/default.html#development/Listing-Policies.html#SellerLimits">Seller Limits</a>, which limit the quantity of items that may be listed and/or the total cumulative value of these listings. While subject to these selling limits, an eBay seller can use the <b>GetMyeBaySelling</b> call to retrieve both the remaining number of listings they can create and the remaining cumulative value of these listings. These values are shown in the <b>Summary.QuantityLimitRemaining</b> and <b>Summary.AmountLimitRemaining</b> fields in the <b>GetMyeBaySelling</b> response. If a call to add an item or revise an item would result in the exceeding of these limits, the add item or revise item call will fail. These fields will only be returned if the seller is subject to seller limits.
+     *  <span class="tablenote"><b>Note: </b> For the US site, new eBay sellers are subject to <a href="/DevZone/guides/features-guide/default.html#development/Listing-Policies.html#SellerLimits">Seller Limits</a>, which limit the quantity of items that may be listed and/or the total cumulative value of these listings. While subject to these selling limits, an eBay seller can use the <b>GetMyeBaySelling</b> call to retrieve both the remaining number of listings they can create and the remaining cumulative value of these listings. These values are shown in the <b>Summary.QuantityLimitRemaining</b> and <b>Summary.AmountLimitRemaining</b> fields in the <b>GetMyeBaySelling</b> response. If a call to add an item or revise an item would result in the exceeding of these limits, the add item or revise item call will fail. These fields will only be returned if the seller is subject to seller limits.
      *  </span>
      *
      * @return \Nogrod\eBaySDK\MerchantData\AmountType
@@ -4360,7 +4179,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <b>For Revise calls:</b>
      *  If the <b>StartPrice</b> value for a fixed-price item is changed with a Revise call, the <b>MinimumBestOfferPrice</b> and <b>BestOfferAutoAcceptPrice</b> fields in the <b>ListingDetails</b> container will be dropped (if set), basically turning off the Best Offer Auto Accept and/or Auto Decline features. If the seller wanted to reintroduce either of these Best Offer threshold values in the listing again, an additional Revise call would have to be made, passing in the desired threshold values.
      *  <br><br>
-     *  <span class="tablenote"><b>Note: </b> For the US site, new eBay sellers are subject to <a href="https://developer.ebay.com/DevZone/guides/features-guide/default.html#development/Listing-Policies.html#SellerLimits">Seller Limits</a>, which limit the quantity of items that may be listed and/or the total cumulative value of these listings. While subject to these selling limits, an eBay seller can use the <b>GetMyeBaySelling</b> call to retrieve both the remaining number of listings they can create and the remaining cumulative value of these listings. These values are shown in the <b>Summary.QuantityLimitRemaining</b> and <b>Summary.AmountLimitRemaining</b> fields in the <b>GetMyeBaySelling</b> response. If a call to add an item or revise an item would result in the exceeding of these limits, the add item or revise item call will fail. These fields will only be returned if the seller is subject to seller limits.
+     *  <span class="tablenote"><b>Note: </b> For the US site, new eBay sellers are subject to <a href="/DevZone/guides/features-guide/default.html#development/Listing-Policies.html#SellerLimits">Seller Limits</a>, which limit the quantity of items that may be listed and/or the total cumulative value of these listings. While subject to these selling limits, an eBay seller can use the <b>GetMyeBaySelling</b> call to retrieve both the remaining number of listings they can create and the remaining cumulative value of these listings. These values are shown in the <b>Summary.QuantityLimitRemaining</b> and <b>Summary.AmountLimitRemaining</b> fields in the <b>GetMyeBaySelling</b> response. If a call to add an item or revise an item would result in the exceeding of these limits, the add item or revise item call will fail. These fields will only be returned if the seller is subject to seller limits.
      *  </span>
      *
      * @param \Nogrod\eBaySDK\MerchantData\AmountType $startPrice
@@ -4663,8 +4482,11 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Gets as hitCount
      *
-     * This value indicates the number of page views for the listing. This number is calculated by eBay and is returned in 'Get' calls if the <b>HitCounter</b> value is set to <code>BasicStyle</code>,
-     *  <code>RetroStyle</code>, or <code>HiddenStyle</code>.
+     * <b>THIS FIELD IS DEPRECATED</b>. Hit counters are no longer displayed in View Item pages, so this field is no longer applicable and is scheduled for decommission.
+     *  <br/><br/>
+     *  For developers/sellers who are interested in seeing page views and listing performance, the <a href="https://developer.ebay.com/api-docs/sell/analytics/resources/traffic_report/methods/getTrafficReport">getTrafficReport</a> method of the <b>Sell Analytics API</b> can be used.
+     *  <br/><br/>
+     *  Until this field is decommissioned, it will still be returned in <b>GetItem</b>, <b>GetBidderList</b>, <b>GetSellerEvents</b>, and <b>GetSellerList</b>.
      *
      * @return int
      */
@@ -4676,8 +4498,11 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Sets a new hitCount
      *
-     * This value indicates the number of page views for the listing. This number is calculated by eBay and is returned in 'Get' calls if the <b>HitCounter</b> value is set to <code>BasicStyle</code>,
-     *  <code>RetroStyle</code>, or <code>HiddenStyle</code>.
+     * <b>THIS FIELD IS DEPRECATED</b>. Hit counters are no longer displayed in View Item pages, so this field is no longer applicable and is scheduled for decommission.
+     *  <br/><br/>
+     *  For developers/sellers who are interested in seeing page views and listing performance, the <a href="https://developer.ebay.com/api-docs/sell/analytics/resources/traffic_report/methods/getTrafficReport">getTrafficReport</a> method of the <b>Sell Analytics API</b> can be used.
+     *  <br/><br/>
+     *  Until this field is decommissioned, it will still be returned in <b>GetItem</b>, <b>GetBidderList</b>, <b>GetSellerEvents</b>, and <b>GetSellerList</b>.
      *
      * @param int $hitCount
      * @return self
@@ -4791,13 +4616,9 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Gets as useTaxTable
      *
-     * Indicates whether the seller's tax table is to be used when applying and
-     *  calculating sales tax for an order line item. A sales tax table can be
-     *  created programmatically using the <b>SetTaxTable</b> call, or it can be created
-     *  manually in My eBay's Payment Preferences. If <b>UseTaxTable</b> is set to <code>true</code>,
-     *  the values contained in the seller's sales tax table will supersede the values contained in the <b>Item.ShippingDetails.SalesTax</b> container (if included in the request).
+     * Indicates whether the seller's tax table is to be used when applying and calculating sales tax for an order line item. A sales tax table can be created programmatically using the <b>SetTaxTable</b> call of Trading API or the <a href="https://developer.ebay.com/api-docs/sell/account/resources/sales_tax/methods/createOrReplaceSalesTax">createOrReplaceSalesTax</a> method of Account API. If <b>UseTaxTable</b> is set to <code>true</code>, the values contained in the seller's sales tax table will supersede the values contained in the <b>Item.ShippingDetails.SalesTax</b> container (if included in the request).
      *  <br><br>
-     *  <span class="tablenote"><b>Note: </b> As of September 1, 2020, buyers in over 40 US states will automatically be charged sales tax for eBay purchases. eBay will collect and remit this sales tax to the proper taxing authority on the buyer's behalf. The Sales Tax Table page for eBay US is being updated as each US state starts requiring collection of sales tax. This means that the seller no longer has control over, nor can specify a sales tax rate for these states. For a list of the US states that are currently subject to 'eBay Collect and Remit', or will become subject to 'eBay Collect and Remit', see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section4">eBay sales tax collection</a> help topic.
+     *  <span class="tablenote"><b>Note: </b> As of November 2021, buyers in all US states except for Missouri (and several US territories), will automatically be charged sales tax for purchases, and the seller does not set this rate. eBay will collect and remit this sales tax to the proper taxing authority on the buyer's behalf. For more US state-level information on sales tax, see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section4" target="_blank">eBay sales tax collection</a> help topic.
      *  </span>
      *
      * @return bool
@@ -4810,13 +4631,9 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Sets a new useTaxTable
      *
-     * Indicates whether the seller's tax table is to be used when applying and
-     *  calculating sales tax for an order line item. A sales tax table can be
-     *  created programmatically using the <b>SetTaxTable</b> call, or it can be created
-     *  manually in My eBay's Payment Preferences. If <b>UseTaxTable</b> is set to <code>true</code>,
-     *  the values contained in the seller's sales tax table will supersede the values contained in the <b>Item.ShippingDetails.SalesTax</b> container (if included in the request).
+     * Indicates whether the seller's tax table is to be used when applying and calculating sales tax for an order line item. A sales tax table can be created programmatically using the <b>SetTaxTable</b> call of Trading API or the <a href="https://developer.ebay.com/api-docs/sell/account/resources/sales_tax/methods/createOrReplaceSalesTax">createOrReplaceSalesTax</a> method of Account API. If <b>UseTaxTable</b> is set to <code>true</code>, the values contained in the seller's sales tax table will supersede the values contained in the <b>Item.ShippingDetails.SalesTax</b> container (if included in the request).
      *  <br><br>
-     *  <span class="tablenote"><b>Note: </b> As of September 1, 2020, buyers in over 40 US states will automatically be charged sales tax for eBay purchases. eBay will collect and remit this sales tax to the proper taxing authority on the buyer's behalf. The Sales Tax Table page for eBay US is being updated as each US state starts requiring collection of sales tax. This means that the seller no longer has control over, nor can specify a sales tax rate for these states. For a list of the US states that are currently subject to 'eBay Collect and Remit', or will become subject to 'eBay Collect and Remit', see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section4">eBay sales tax collection</a> help topic.
+     *  <span class="tablenote"><b>Note: </b> As of November 2021, buyers in all US states except for Missouri (and several US territories), will automatically be charged sales tax for purchases, and the seller does not set this rate. eBay will collect and remit this sales tax to the proper taxing authority on the buyer's behalf. For more US state-level information on sales tax, see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section4" target="_blank">eBay sales tax collection</a> help topic.
      *  </span>
      *
      * @param bool $useTaxTable
@@ -5247,11 +5064,11 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Adds as videoID
      *
-     * This container is used if the seller wants to add a video to their listing. At this time, only one video can be added per listing, and the video must be uploaded to eBay via the <a href="/api-docs/commerce/media/overview.html" target="_blank">Media API</a>. See the <a href="/api-docs/commerce/media/overview.html" target="_blank">Media API</a> reference documentation for all of the necessary details to upload videos to eBay.
+     * This container is used if the seller wants to add a video to their listing. At this time, only one video can be added per listing. The video can be uploaded to eBay using the <a href="https://developer.ebay.com/api-docs/commerce/media/overview.html" target="_blank">Media API</a>. See the <a href="https://developer.ebay.com/api-docs/commerce/media/overview.html" target="_blank">Media API</a> reference documentation for all of the necessary details to upload videos to eBay.
      *  <br/><br/>
      *  This container will only be returned in <b>GetItem</b> if the listing contains a video, and the seller of the item is the one making the <b>GetItem</b> call.
      *  <br/><br/>
-     *  <span class="tablenote"><b>Note: </b> Videos can only be attached to listings on supported eBay marketplaces and can only be viewed through supported platforms. See <a href="/api-docs/sell/static/inventory/managing-video-media.html#AddingVideos" target="_blank">Managing videos</a> in the Selling Integration Guide for a full list of supported marketplaces and platforms.</span>
+     *  <span class="tablenote"><b>Note: </b> Videos can only be attached to listings on supported eBay marketplaces and can only be viewed through supported platforms. See <a href="https://developer.ebay.com/api-docs/sell/static/inventory/managing-video-media.html#AddingVideos" target="_blank">Managing videos</a> in the Selling Integration Guide for a full list of supported marketplaces and platforms.</span>
      *
      * @return self
      * @param string $videoID
@@ -5265,11 +5082,11 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * isset videoDetails
      *
-     * This container is used if the seller wants to add a video to their listing. At this time, only one video can be added per listing, and the video must be uploaded to eBay via the <a href="/api-docs/commerce/media/overview.html" target="_blank">Media API</a>. See the <a href="/api-docs/commerce/media/overview.html" target="_blank">Media API</a> reference documentation for all of the necessary details to upload videos to eBay.
+     * This container is used if the seller wants to add a video to their listing. At this time, only one video can be added per listing. The video can be uploaded to eBay using the <a href="https://developer.ebay.com/api-docs/commerce/media/overview.html" target="_blank">Media API</a>. See the <a href="https://developer.ebay.com/api-docs/commerce/media/overview.html" target="_blank">Media API</a> reference documentation for all of the necessary details to upload videos to eBay.
      *  <br/><br/>
      *  This container will only be returned in <b>GetItem</b> if the listing contains a video, and the seller of the item is the one making the <b>GetItem</b> call.
      *  <br/><br/>
-     *  <span class="tablenote"><b>Note: </b> Videos can only be attached to listings on supported eBay marketplaces and can only be viewed through supported platforms. See <a href="/api-docs/sell/static/inventory/managing-video-media.html#AddingVideos" target="_blank">Managing videos</a> in the Selling Integration Guide for a full list of supported marketplaces and platforms.</span>
+     *  <span class="tablenote"><b>Note: </b> Videos can only be attached to listings on supported eBay marketplaces and can only be viewed through supported platforms. See <a href="https://developer.ebay.com/api-docs/sell/static/inventory/managing-video-media.html#AddingVideos" target="_blank">Managing videos</a> in the Selling Integration Guide for a full list of supported marketplaces and platforms.</span>
      *
      * @param int|string $index
      * @return bool
@@ -5282,11 +5099,11 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * unset videoDetails
      *
-     * This container is used if the seller wants to add a video to their listing. At this time, only one video can be added per listing, and the video must be uploaded to eBay via the <a href="/api-docs/commerce/media/overview.html" target="_blank">Media API</a>. See the <a href="/api-docs/commerce/media/overview.html" target="_blank">Media API</a> reference documentation for all of the necessary details to upload videos to eBay.
+     * This container is used if the seller wants to add a video to their listing. At this time, only one video can be added per listing. The video can be uploaded to eBay using the <a href="https://developer.ebay.com/api-docs/commerce/media/overview.html" target="_blank">Media API</a>. See the <a href="https://developer.ebay.com/api-docs/commerce/media/overview.html" target="_blank">Media API</a> reference documentation for all of the necessary details to upload videos to eBay.
      *  <br/><br/>
      *  This container will only be returned in <b>GetItem</b> if the listing contains a video, and the seller of the item is the one making the <b>GetItem</b> call.
      *  <br/><br/>
-     *  <span class="tablenote"><b>Note: </b> Videos can only be attached to listings on supported eBay marketplaces and can only be viewed through supported platforms. See <a href="/api-docs/sell/static/inventory/managing-video-media.html#AddingVideos" target="_blank">Managing videos</a> in the Selling Integration Guide for a full list of supported marketplaces and platforms.</span>
+     *  <span class="tablenote"><b>Note: </b> Videos can only be attached to listings on supported eBay marketplaces and can only be viewed through supported platforms. See <a href="https://developer.ebay.com/api-docs/sell/static/inventory/managing-video-media.html#AddingVideos" target="_blank">Managing videos</a> in the Selling Integration Guide for a full list of supported marketplaces and platforms.</span>
      *
      * @param int|string $index
      * @return void
@@ -5299,11 +5116,11 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Gets as videoDetails
      *
-     * This container is used if the seller wants to add a video to their listing. At this time, only one video can be added per listing, and the video must be uploaded to eBay via the <a href="/api-docs/commerce/media/overview.html" target="_blank">Media API</a>. See the <a href="/api-docs/commerce/media/overview.html" target="_blank">Media API</a> reference documentation for all of the necessary details to upload videos to eBay.
+     * This container is used if the seller wants to add a video to their listing. At this time, only one video can be added per listing. The video can be uploaded to eBay using the <a href="https://developer.ebay.com/api-docs/commerce/media/overview.html" target="_blank">Media API</a>. See the <a href="https://developer.ebay.com/api-docs/commerce/media/overview.html" target="_blank">Media API</a> reference documentation for all of the necessary details to upload videos to eBay.
      *  <br/><br/>
      *  This container will only be returned in <b>GetItem</b> if the listing contains a video, and the seller of the item is the one making the <b>GetItem</b> call.
      *  <br/><br/>
-     *  <span class="tablenote"><b>Note: </b> Videos can only be attached to listings on supported eBay marketplaces and can only be viewed through supported platforms. See <a href="/api-docs/sell/static/inventory/managing-video-media.html#AddingVideos" target="_blank">Managing videos</a> in the Selling Integration Guide for a full list of supported marketplaces and platforms.</span>
+     *  <span class="tablenote"><b>Note: </b> Videos can only be attached to listings on supported eBay marketplaces and can only be viewed through supported platforms. See <a href="https://developer.ebay.com/api-docs/sell/static/inventory/managing-video-media.html#AddingVideos" target="_blank">Managing videos</a> in the Selling Integration Guide for a full list of supported marketplaces and platforms.</span>
      *
      * @return string[]
      */
@@ -5315,11 +5132,11 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Sets a new videoDetails
      *
-     * This container is used if the seller wants to add a video to their listing. At this time, only one video can be added per listing, and the video must be uploaded to eBay via the <a href="/api-docs/commerce/media/overview.html" target="_blank">Media API</a>. See the <a href="/api-docs/commerce/media/overview.html" target="_blank">Media API</a> reference documentation for all of the necessary details to upload videos to eBay.
+     * This container is used if the seller wants to add a video to their listing. At this time, only one video can be added per listing. The video can be uploaded to eBay using the <a href="https://developer.ebay.com/api-docs/commerce/media/overview.html" target="_blank">Media API</a>. See the <a href="https://developer.ebay.com/api-docs/commerce/media/overview.html" target="_blank">Media API</a> reference documentation for all of the necessary details to upload videos to eBay.
      *  <br/><br/>
      *  This container will only be returned in <b>GetItem</b> if the listing contains a video, and the seller of the item is the one making the <b>GetItem</b> call.
      *  <br/><br/>
-     *  <span class="tablenote"><b>Note: </b> Videos can only be attached to listings on supported eBay marketplaces and can only be viewed through supported platforms. See <a href="/api-docs/sell/static/inventory/managing-video-media.html#AddingVideos" target="_blank">Managing videos</a> in the Selling Integration Guide for a full list of supported marketplaces and platforms.</span>
+     *  <span class="tablenote"><b>Note: </b> Videos can only be attached to listings on supported eBay marketplaces and can only be viewed through supported platforms. See <a href="https://developer.ebay.com/api-docs/sell/static/inventory/managing-video-media.html#AddingVideos" target="_blank">Managing videos</a> in the Selling Integration Guide for a full list of supported marketplaces and platforms.</span>
      *
      * @param string[] $videoDetails
      * @return self
@@ -5327,6 +5144,58 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     public function setVideoDetails(array $videoDetails)
     {
         $this->videoDetails = $videoDetails;
+        return $this;
+    }
+
+    /**
+     * Gets as extendedProducerResponsibility
+     *
+     * This container provides IDs for the producer or importer related to the new item, packaging, added documentation, or an eco participation fee. In some markets, such as in France, this may be the importer of the item. For more information, see the <b>Extended Producer Responsibility for business sellers</b> page for your site (for example, <a href="https://www.ebay.com/help/selling/all-about-selling/selling-internationally/extended-producer-responsibility-for-business-sellers?id=5314" target="_blank">https://www.ebay.com/help/selling/all-about-selling/selling-internationally/extended-producer-responsibility-for-business-sellers?id=5314</a>). This field is supported by a limited number of sites and specific categories. Use the <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getExtendedProducerResponsibilityPolicies" target="_blank">getExtendedProducerResponsibilityPolicies</a> method of the <b>Sell Metadata API</b> to retrieve valid categories for a site.
+     *
+     * @return \Nogrod\eBaySDK\MerchantData\ExtendedProducerResponsibilityType
+     */
+    public function getExtendedProducerResponsibility()
+    {
+        return $this->extendedProducerResponsibility;
+    }
+
+    /**
+     * Sets a new extendedProducerResponsibility
+     *
+     * This container provides IDs for the producer or importer related to the new item, packaging, added documentation, or an eco participation fee. In some markets, such as in France, this may be the importer of the item. For more information, see the <b>Extended Producer Responsibility for business sellers</b> page for your site (for example, <a href="https://www.ebay.com/help/selling/all-about-selling/selling-internationally/extended-producer-responsibility-for-business-sellers?id=5314" target="_blank">https://www.ebay.com/help/selling/all-about-selling/selling-internationally/extended-producer-responsibility-for-business-sellers?id=5314</a>). This field is supported by a limited number of sites and specific categories. Use the <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getExtendedProducerResponsibilityPolicies" target="_blank">getExtendedProducerResponsibilityPolicies</a> method of the <b>Sell Metadata API</b> to retrieve valid categories for a site.
+     *
+     * @param \Nogrod\eBaySDK\MerchantData\ExtendedProducerResponsibilityType $extendedProducerResponsibility
+     * @return self
+     */
+    public function setExtendedProducerResponsibility(\Nogrod\eBaySDK\MerchantData\ExtendedProducerResponsibilityType $extendedProducerResponsibility)
+    {
+        $this->extendedProducerResponsibility = $extendedProducerResponsibility;
+        return $this;
+    }
+
+    /**
+     * Gets as customPolicies
+     *
+     * This container is used to apply one or more custom policies to the listing by specifying custom policy IDs. Custom policies include Product Compliance and Take-Back Policies. For more information, see the <b>Custom Policies</b> page for your site (for example, <a href="https://www.ebay.fr/help/selling/custom-policies/custom-policies?id=5311" target="_blank">https://www.ebay.fr/help/selling/custom-policies/custom-policies?id=5311</a>). This container is supported by a limited number of sites and specific categories. Use the <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getExtendedProducerResponsibilityPolicies" target="_blank">getExtendedProducerResponsibilityPolicies</a> method of the <b>Sell Metadata API</b> to retrieve valid categories for a site. To create and manage custom policies, use the <a href="https://developer.ebay.com/api-docs/sell/account/resources/methods#h2-custom_policy" target="_blank">custom_policy</a> resource of the <b>Account API</b>.
+     *
+     * @return \Nogrod\eBaySDK\MerchantData\CustomPoliciesType
+     */
+    public function getCustomPolicies()
+    {
+        return $this->customPolicies;
+    }
+
+    /**
+     * Sets a new customPolicies
+     *
+     * This container is used to apply one or more custom policies to the listing by specifying custom policy IDs. Custom policies include Product Compliance and Take-Back Policies. For more information, see the <b>Custom Policies</b> page for your site (for example, <a href="https://www.ebay.fr/help/selling/custom-policies/custom-policies?id=5311" target="_blank">https://www.ebay.fr/help/selling/custom-policies/custom-policies?id=5311</a>). This container is supported by a limited number of sites and specific categories. Use the <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getExtendedProducerResponsibilityPolicies" target="_blank">getExtendedProducerResponsibilityPolicies</a> method of the <b>Sell Metadata API</b> to retrieve valid categories for a site. To create and manage custom policies, use the <a href="https://developer.ebay.com/api-docs/sell/account/resources/methods#h2-custom_policy" target="_blank">custom_policy</a> resource of the <b>Account API</b>.
+     *
+     * @param \Nogrod\eBaySDK\MerchantData\CustomPoliciesType $customPolicies
+     * @return self
+     */
+    public function setCustomPolicies(\Nogrod\eBaySDK\MerchantData\CustomPoliciesType $customPolicies)
+    {
+        $this->customPolicies = $customPolicies;
         return $this;
     }
 
@@ -6273,7 +6142,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  eBay sites require the seller to clearly specify whether or not
      *  returns are accepted (see <b>ReturnsAcceptedOption</b>). <br>
      *  <br>
-     *  <span class="tablenote"><b>Note: </b> If you set up a return policy via the <a href="https://developer.ebay.com/api-docs/sell/account/resources/return_policy/methods/createReturnPolicy">Account API</a> or the <a href="https://developer.ebay.com/Devzone/business-policies/CallRef/addSellerProfile.html">Business Polices Managment API</a>, then you should not populate the fields in this <b>ReturnPolicy</b> container. Instead, indicate your return policy using the <b>SellerProfiles.SellerReturnProfile</b> container.
+     *  <span class="tablenote"><b>Note: </b> If you are using a return business policy set up through My eBay or via the <a href="https://developer.ebay.com/api-docs/sell/account/resources/return_policy/methods/createReturnPolicy">Account API</a>, then you should not populate the fields in this <b>ReturnPolicy</b> container. Instead, indicate your return policy using the <b>SellerProfiles.SellerReturnProfile</b> container.
      *  <br>
      *  <br>
      *  However, if you <i>do not</i> configure a return policy, all the fields in this <b>ReturnPolicy</b> container that are marked <b>conditional</b> must be populated in your request.
@@ -6325,7 +6194,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  eBay sites require the seller to clearly specify whether or not
      *  returns are accepted (see <b>ReturnsAcceptedOption</b>). <br>
      *  <br>
-     *  <span class="tablenote"><b>Note: </b> If you set up a return policy via the <a href="https://developer.ebay.com/api-docs/sell/account/resources/return_policy/methods/createReturnPolicy">Account API</a> or the <a href="https://developer.ebay.com/Devzone/business-policies/CallRef/addSellerProfile.html">Business Polices Managment API</a>, then you should not populate the fields in this <b>ReturnPolicy</b> container. Instead, indicate your return policy using the <b>SellerProfiles.SellerReturnProfile</b> container.
+     *  <span class="tablenote"><b>Note: </b> If you are using a return business policy set up through My eBay or via the <a href="https://developer.ebay.com/api-docs/sell/account/resources/return_policy/methods/createReturnPolicy">Account API</a>, then you should not populate the fields in this <b>ReturnPolicy</b> container. Instead, indicate your return policy using the <b>SellerProfiles.SellerReturnProfile</b> container.
      *  <br>
      *  <br>
      *  However, if you <i>do not</i> configure a return policy, all the fields in this <b>ReturnPolicy</b> container that are marked <b>conditional</b> must be populated in your request.
@@ -6780,14 +6649,10 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <br>
      *  <br>
      *  <span class="tablenote"><strong>Note:</strong>
-     *  In all eBay marketplaces, Condition ID 2000 now maps to an item condition of 'Certified - Refurbished', and not 'Manufacturer Refurbished'. To list an item as 'Certified - Refurbished', a seller must be pre-qualified by eBay for this feature. Any seller who is not eligible for this feature will be blocked if they try to create a new listing or revise an existing listing with this item condition.
+     *  As of February 2022, in the US, Canada, UK, Germany, France, Italy, and Australia marketplaces, condition ID 2500 ('Seller Refurbished') can no longer be used In the following categories: <b>Cell Phones & Smartphones</b> (category ID 9355); <b>Smart Watches</b> (category ID 178893); and <b>Tablets & eBook Readers</b> (category ID 171485). In these three categories, the 'Seller Refurbished' item condition has been replaced by one of three new refurbished values, which include condition ID 2010 ('Excellent - Refurbished'), condition ID 2020 ('Very Good - Refurbished'), and condition ID 2030 ('Good - Refurbished'). To use any of these new refurbished item conditions in category 9355, in category 178893, or in category 171485, sellers must go through an application and qualification process. Any seller who is not eligible to use these new refurbished item conditions in these three categories will be blocked if they try to create a new listing or revise an existing listing with any of these three new item conditions. Any active listings in these three categories that had condition ID 2500 ('Seller Refurbished') as the item condition should have been administratively ended by eBay. Sellers will have to relist these items, and until they are eligible to list with the new refurbished item conditions, they will need to use another item condition supported in these categories, such as condition ID 3000 ('Used').
      *  <br>
      *  <br>
-     *  Any seller that is interested in eligibility requirements to list with 'Certified - Refurbished' should see the <a href="https://pages.ebay.com/seller-center/listing-and-marketing/certified-refurbished-program.html" target="_blank">Certified refurbished program</a> page in Seller Center.
-     *  </span>
-     *  <br>
-     *  <span class="tablenote"><strong>Note:</strong>
-     *  As of September 1, 2021, condition ID 2500 ('Seller Refurbished') can no longer be used in the <strong>Cell Phones & Smartphones</strong> category (category ID 9355) for the following marketplaces: US, Canada, UK, Germany, and Australia. The 'Seller Refurbished' item condition will be replaced by one of three new refurbished values, which include condition ID 2010 ('Excellent - Refurbished'), condition ID 2020 ('Very Good - Refurbished'), and condition ID 2030 ('Good - Refurbished'). To use any of these new refurbished item conditions in category 9355, sellers must go through an application and qualification process. Any seller who is not eligible to use these new refurbished item conditions in category 9355 will be blocked if they try to create a new listing or revise an existing listing with any of these three new item conditions. Any active listings in category 9355 that had condition ID 2500 ('Seller Refurbished') as the item condition should have been administratively ended by eBay. Sellers will have to relist these items, and until they are eligible to list with the new refurbished item conditions, they will need to use another item condition supported in category 9355, like condition ID 3000 ('Used').
+     *  Any seller that is interested in eligibility requirements to list with any refurbished item condition, including condition ID 2000 ('Certified - Refurbished'), should see the <a href="https://pages.ebay.com/seller-center/listing-and-marketing/ebay-refurbished-program.html" target="_blank">eBay Refurbished Program</a> page in Seller Center.
      *  </span>
      *
      * @return int
@@ -6820,14 +6685,10 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <br>
      *  <br>
      *  <span class="tablenote"><strong>Note:</strong>
-     *  In all eBay marketplaces, Condition ID 2000 now maps to an item condition of 'Certified - Refurbished', and not 'Manufacturer Refurbished'. To list an item as 'Certified - Refurbished', a seller must be pre-qualified by eBay for this feature. Any seller who is not eligible for this feature will be blocked if they try to create a new listing or revise an existing listing with this item condition.
+     *  As of February 2022, in the US, Canada, UK, Germany, France, Italy, and Australia marketplaces, condition ID 2500 ('Seller Refurbished') can no longer be used In the following categories: <b>Cell Phones & Smartphones</b> (category ID 9355); <b>Smart Watches</b> (category ID 178893); and <b>Tablets & eBook Readers</b> (category ID 171485). In these three categories, the 'Seller Refurbished' item condition has been replaced by one of three new refurbished values, which include condition ID 2010 ('Excellent - Refurbished'), condition ID 2020 ('Very Good - Refurbished'), and condition ID 2030 ('Good - Refurbished'). To use any of these new refurbished item conditions in category 9355, in category 178893, or in category 171485, sellers must go through an application and qualification process. Any seller who is not eligible to use these new refurbished item conditions in these three categories will be blocked if they try to create a new listing or revise an existing listing with any of these three new item conditions. Any active listings in these three categories that had condition ID 2500 ('Seller Refurbished') as the item condition should have been administratively ended by eBay. Sellers will have to relist these items, and until they are eligible to list with the new refurbished item conditions, they will need to use another item condition supported in these categories, such as condition ID 3000 ('Used').
      *  <br>
      *  <br>
-     *  Any seller that is interested in eligibility requirements to list with 'Certified - Refurbished' should see the <a href="https://pages.ebay.com/seller-center/listing-and-marketing/certified-refurbished-program.html" target="_blank">Certified refurbished program</a> page in Seller Center.
-     *  </span>
-     *  <br>
-     *  <span class="tablenote"><strong>Note:</strong>
-     *  As of September 1, 2021, condition ID 2500 ('Seller Refurbished') can no longer be used in the <strong>Cell Phones & Smartphones</strong> category (category ID 9355) for the following marketplaces: US, Canada, UK, Germany, and Australia. The 'Seller Refurbished' item condition will be replaced by one of three new refurbished values, which include condition ID 2010 ('Excellent - Refurbished'), condition ID 2020 ('Very Good - Refurbished'), and condition ID 2030 ('Good - Refurbished'). To use any of these new refurbished item conditions in category 9355, sellers must go through an application and qualification process. Any seller who is not eligible to use these new refurbished item conditions in category 9355 will be blocked if they try to create a new listing or revise an existing listing with any of these three new item conditions. Any active listings in category 9355 that had condition ID 2500 ('Seller Refurbished') as the item condition should have been administratively ended by eBay. Sellers will have to relist these items, and until they are eligible to list with the new refurbished item conditions, they will need to use another item condition supported in category 9355, like condition ID 3000 ('Used').
+     *  Any seller that is interested in eligibility requirements to list with any refurbished item condition, including condition ID 2000 ('Certified - Refurbished'), should see the <a href="https://pages.ebay.com/seller-center/listing-and-marketing/ebay-refurbished-program.html" target="_blank">eBay Refurbished Program</a> page in Seller Center.
      *  </span>
      *
      * @param int $conditionID
@@ -6848,13 +6709,6 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  The <b>ConditionDescription</b> field is available for all categories, including categories where the condition type is not applicable (e.g., Antiques). This field is applicable for all item conditions except 'New', 'Brand New', 'New with tags', and 'New in box'. If <b>ConditionDescription</b> is used with these conditions (Condition IDs 1000-1499), eBay will simply ignore this field if included, and eBay will return a warning message to the user.
      *  <br>
      *  <br>
-     *  This field should only be used to further clarify the condition of the used item. For example, "The right leg of the chair has a small scratch, and on the seat back there is a light blue stain about the shape and size of a coin." It should not be used for branding, promotions, shipping, returns, payment or other information unrelated to the condition of the item. Make sure that the condition type (<b>Item.ConditionID</b>), condition description, item description (<b>Item.Description</b>), and the listing's pictures do not contradict one another.
-     *  <br><br>
-     *  <span class="tablenote"><strong>Note:</strong>
-     *  The <b>ConditionDescription</b> field is optional For <b>Add</b>/<b>Revise</b>/<b>Relist</b> API calls.
-     *  <b>ConditionDescription</b> is currently supported on the eBay US and US eBay Motors (0), UK (3), CA (2), CAFR (210), AU (15), AT (16), BEFR (23), BENL (123), FR (71), DE (77), IT (101), NL (146), ES (186), CH (193), IE (205) and PL (212) sites.
-     *  </span>
-     *  <br>
      *  The <b>ConditionDescription</b> field is returned by <b>GetItem</b> (and other related calls that return the Item object) if a condition description is specified in the listing.
      *  <br>
      *
@@ -6873,13 +6727,6 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <br>
      *  The <b>ConditionDescription</b> field is available for all categories, including categories where the condition type is not applicable (e.g., Antiques). This field is applicable for all item conditions except 'New', 'Brand New', 'New with tags', and 'New in box'. If <b>ConditionDescription</b> is used with these conditions (Condition IDs 1000-1499), eBay will simply ignore this field if included, and eBay will return a warning message to the user.
      *  <br>
-     *  <br>
-     *  This field should only be used to further clarify the condition of the used item. For example, "The right leg of the chair has a small scratch, and on the seat back there is a light blue stain about the shape and size of a coin." It should not be used for branding, promotions, shipping, returns, payment or other information unrelated to the condition of the item. Make sure that the condition type (<b>Item.ConditionID</b>), condition description, item description (<b>Item.Description</b>), and the listing's pictures do not contradict one another.
-     *  <br><br>
-     *  <span class="tablenote"><strong>Note:</strong>
-     *  The <b>ConditionDescription</b> field is optional For <b>Add</b>/<b>Revise</b>/<b>Relist</b> API calls.
-     *  <b>ConditionDescription</b> is currently supported on the eBay US and US eBay Motors (0), UK (3), CA (2), CAFR (210), AU (15), AT (16), BEFR (23), BENL (123), FR (71), DE (77), IT (101), NL (146), ES (186), CH (193), IE (205) and PL (212) sites.
-     *  </span>
      *  <br>
      *  The <b>ConditionDescription</b> field is returned by <b>GetItem</b> (and other related calls that return the Item object) if a condition description is specified in the listing.
      *  <br>
@@ -8401,6 +8248,14 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
                 return ["VideoID" => $v];
             }, $value));
         }
+        $value = $this->getExtendedProducerResponsibility();
+        if (null !== $value) {
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ExtendedProducerResponsibility", $value);
+        }
+        $value = $this->getCustomPolicies();
+        if (null !== $value) {
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CustomPolicies", $value);
+        }
         $value = $this->getDispatchTimeMax();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DispatchTimeMax", $value);
@@ -9005,6 +8860,14 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}VideoDetails', true);
         if (null !== $value && !empty($value)) {
             $this->setVideoDetails($value);
+        }
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExtendedProducerResponsibility');
+        if (null !== $value) {
+            $this->setExtendedProducerResponsibility(\Nogrod\eBaySDK\MerchantData\ExtendedProducerResponsibilityType::fromKeyValue($value));
+        }
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CustomPolicies');
+        if (null !== $value) {
+            $this->setCustomPolicies(\Nogrod\eBaySDK\MerchantData\CustomPoliciesType::fromKeyValue($value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DispatchTimeMax');
         if (null !== $value) {

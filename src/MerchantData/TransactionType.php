@@ -26,9 +26,6 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      *  and not for the individual order line item. In a <b>GetItemTransactions</b> or <b>GetSellerTransactions</b> call, you can determine which
      *  order line items belong to the same 'Combined Invoice' order by checking
      *  to see if the <b>ContainingOrder.OrderID</b> value is the same.
-     *  <br><br>
-     *  <span class="tablenote"><b>Note: </b> For non-managed payments orders subject to eBay 'Collect and Remit' taxes, keep in mind that PayPal distributes order funds to the seller's PayPal account with the tax included, but this amount will be backed out of the seller's PayPal account shortly after the buyer's payment clears and will be distributed to the appropriate taxing authority. eBay 'Collect and Remit' tax includes US sales tax for a majority of US states, and 'Good and Services' tax that is applicable to Australian and New Zealand sellers. This 'Collect and Remit' tax amount for the order will be included in the <b>AmountPaid</b> value. To determine if 'Collect and Remit' taxes were added into <b>AmountPaid</b> value, the user can check for the <b>Transaction.eBayCollectAndRemitTaxes.TaxDetails</b> and the <b>Transaction.Taxes.TaxDetails</b> containers in the response. If both of these containers appear in the response with a <b>TaxDetails.TaxDescription</b> value of <code>SalesTax</code> (in US) or <code>GST</code> (in Australia or New Zealand), the tax amount that the buyer paid is in this amount.
-     *  </span>
      *
      * @var \Nogrod\eBaySDK\MerchantData\AmountType $amountPaid
      */
@@ -76,9 +73,6 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      * This field shows the converted value of <b>AmountPaid</b> in the currency of the site that returned the response. Refresh this value every 24 hours to pick up the current conversion rates.
      *  <br><br>
      *  This field is always returned for paid orders. This value should be the same as the value in <b>AmountPaid</b> if the eBay listing site and the site that returned the response are the same, or use the same currency.
-     *  <br><br>
-     *  <span class="tablenote"><b>Note: </b> For non-managed payments orders subject to eBay 'Collect and Remit' taxes, keep in mind that PayPal distributes order funds to the seller's PayPal account with the tax included, but this amount will be backed out of the seller's PayPal account shortly after the buyer's payment clears and will be distributed to the appropriate taxing authority. eBay 'Collect and Remit' tax includes US sales tax for a majority of US states, and 'Good and Services' tax that is applicable to Australian and New Zealand sellers. This 'Collect and Remit' tax amount for the order will be included in the <b>ConvertedAmountPaid</b> value. To determine if 'Collect and Remit' taxes were added into <b>AmountPaid</b> value, the user can check for the <b>Transaction.eBayCollectAndRemitTaxes.TaxDetails</b> and the <b>Transaction.Taxes.TaxDetails</b> containers in the response. If both of these containers appear in the response with a <b>TaxDetails.TaxDescription</b> value of <code>SalesTax</code> (in US) or <code>GST</code> (in Australia or New Zealand), the tax amount that the buyer paid is in this amount.
-     *  </span>
      *
      * @var \Nogrod\eBaySDK\MerchantData\AmountType $convertedAmountPaid
      */
@@ -101,7 +95,7 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     private $createdDate = null;
 
     /**
-     * This value indicates whether or not the seller requires a deposit for the purchase of a motor vehicle. This field is only applicable to motor vehicle listings that require an initial deposit. For these listings, its value is returned as 'OtherMethod'. For any other type of listing, its value is returned as 'None'.
+     * This value indicates whether or not the seller requires a deposit for the purchase of a motor vehicle. This field is only applicable to motor vehicle listings that require an initial deposit. A value of 'OtherMethod' will be returned if the motor vehicle listing requires an initial deposit, or a value of 'None' if an initial deposit is not required.
      *
      * @var string $depositType
      */
@@ -145,7 +139,7 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      *  <br>
      *  The <b>TransactionID</b> value for auction listings is always <code>0</code> since there can be only one winning bidder/one sale for an auction listing.
      *  <br><br>
-     *  <b>For GetOrders, GetOrderTransactions, and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this field will only be returned to the buyer, seller, or PayPal (if payment method is PayPal), and no longer returned at all to third parties (except for PayPal). If using a Trading WSDL older than Version 1019, transaction ID is only returned to the buyer, seller or PayPal, and a dummy value of <code>10000000000000</code> will be returned to all third parties (except for PayPal).
+     *  <b>For GetOrders, GetOrderTransactions, and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this field will only be returned to the buyer and seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, transaction ID is only returned to the buyer and seller, and a dummy value of <code>10000000000000</code> will be returned to all third parties.
      *
      * @var string $transactionID
      */
@@ -305,13 +299,6 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      *  If a seller requests a Final Value Fee credit, the value of
      *  <b>Transaction.FinalValueFee</b> will not change if a credit is
      *  issued. The credit only appears in the seller's account data.
-     *  <br>
-     *  <br>
-     *  <span class="tablenote"><b>Note:</b>
-     *  The calculation of the Final Value Fee is changing for managed payments sellers, so the value returned in this field should only be considered as an estimated value. The <b>getTransactions</b> method of the <b>Finances API</b> can be used to get accurate Final Value Fee values.
-     *  <br><br>
-     *  See the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/selling-fees?id=4822" target="_blank">Selling fees for managed payments sellers</a> help page for more information about how Final Value Fees are changing for managed payments sellers.
-     *  </span>
      *
      * @var \Nogrod\eBaySDK\MerchantData\AmountType $finalValueFee
      */
@@ -364,29 +351,21 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     private $sellerContactBuyerByEmail = null;
 
     /**
-     * The seller's PayPal email address. This value is only revealed if it is the
-     *  seller making the call. For others, this field may still get returned but its value will be <code>Invalid Request</code>.
-     *  <br/><br/>
-     *  <span class="tablenote">
-     *  <strong>Note:</strong> This field is not applicable to managed payments sellers. However, it may still get returned in the response but with a value of <code>Invalid Request</code>.
-     *  </span>
+     * This field is no longer applicable, as eBay now controls all electronic payment methods and handles the payment from the buyer.
      *
      * @var string $payPalEmailAddress
      */
     private $payPalEmailAddress = null;
 
     /**
-     * Unique identifier for a <b>PaisaPay</b> transaction. Only applicable if <b>PaisaPay</b> was the payment method used.
+     * This field is deprecated.
      *
      * @var string $paisaPayID
      */
     private $paisaPayID = null;
 
     /**
-     * For the Australia site, <b>BuyerGuaranteePrice</b> is the PayPal Buyer Protection coverage,
-     *  offered for the item at the time of purchase. Details of coverage are in the
-     *  following sections of the View Item page: the Buy Safely section and the Payment
-     *  Details section.
+     * The Buyer Guarantee price. This field is only applicable to the Australian site.
      *
      * @var \Nogrod\eBaySDK\MerchantData\AmountType $buyerGuaranteePrice
      */
@@ -630,13 +609,9 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      *  <br><br>
      *  <span class="tablenote"><b>Note: </b> As of June 2019, eBay has changed the format of order identifier values, and this new format is relevant to both legacy and REST API-based order ID fields. The new format is a non-parsable string, globally unique across all eBay marketplaces, and consistent for both single line item and multiple line item orders. Unlike in the past, instead of just being known and exposed to the seller, these unique order identifiers will also be known and used/referenced by the buyer and eBay customer support.
      *  <br><br>
-     *  For developers and sellers who are already integrated with the Trading API's order management calls, this change shouldn't impact your integration unless you parse the existing order identifiers (e.g., <b>OrderID</b> or <b>OrderLineItemID</b>), or otherwise infer meaning from the format (e.g., differentiating between a single line item order versus a multiple line item order). Because we realize that some integrations may have logic that is dependent upon the old identifier format, eBay is rolling out this Trading API change with version control to support a transition period of approximately 9 months before applications must switch to the new format completely.
-     *  <br><br>
-     *  During the transition period, for developers/sellers using a Trading WSDL older than Version 1113, they can use the <b>X-EBAY-API-COMPATIBILITY-LEVEL</b> HTTP header in API calls to control whether the new or old <b>OrderID</b> format is returned in call response payloads. To get the new <b>OrderID</b> format, the value of the <b>X-EBAY-API-COMPATIBILITY-LEVEL</b> HTTP header must be set to <code>1113</code>. During the transition period and even after, the new and old <b>OrderID</b> formats will still be supported/accepted in all Trading API call request payloads. After the transition period (which will be announced), only the new <b>OrderID</b> format will be returned in all Trading API call response payloads, regardless of the Trading WSDL version used or specified compatibility level.
+     *  Please note that the identifier for an order (for <b>OrderID</b> and <b>ExtendedOrderID</b>) will change as it goes from unpaid to paid status. Sellers can check to see if an order has been paid by looking for a value of 'Complete' in the <b>CheckoutStatus.Status</b> field in the response of <b>GetOrders</b> or <b>GetOrderTransactions</b> call, or in the <b>Status.CompleteStatus</b> field in the response of <b>GetItemTransactions</b> or <b>GetSellerTransactions</b> call. Both the paid and unpaid Order IDs will be accepted in all Trading API call request payloads.
      *  </span>
      *  <br>
-     *  <span class="tablenote"><b>Note: </b> For sellers integrated with the new order ID format, please note that the identifier for an order (for <b>OrderID</b> and <b>ExtendedOrderID</b>) will change as it goes from unpaid to paid status. Sellers can check to see if an order has been paid by looking for a value of 'Complete' in the <b>CheckoutStatus.Status</b> field in the response of <b>GetOrders</b> or <b>GetOrderTransactions</b> call, or in the <b>Status.CompleteStatus</b> field in the response of <b>GetItemTransactions</b> or <b>GetSellerTransactions</b> call. Sellers should not fulfill orders until buyer has made payment.
-     *  </span>
      *
      * @var string $extendedOrderID
      */
@@ -702,7 +677,7 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      *  <br/><br/>
      *  Australian 'Goods and Services' tax (GST) is automatically charged to buyers outside of Australia when they purchase items on the eBay Australia site. Sellers on the Australia site do not have to take any extra steps to enable the collection of GST, as this tax is collected by eBay and remitted to the Australian government. For more information about Australian GST, see the <a href="https://www.ebay.com.au/help/selling/fees-credits-invoices/taxes-import-charges?id=4121">Taxes and import charges</a> help topic.
      *  <br/><br/>
-     *  As of April 1, 2020, buyers in 40 US states will automatically be charged sales tax for eBay purchases, and are subject to eBay Collect and Remit Tax. eBay will collect and remit this sales tax to the proper taxing authority on the buyer's behalf. Sellers do not have to take any extra steps to enable the collection of this sales tax. If the seller is employing a Sales Tax Table for the listing, and a sales tax rate is established for a state that is subject to 'eBay Collect and Remit', this sales tax rate will be ignored by eBay. For a list of the US states that are or will become subject to 'eBay Collect and Remit Tax' (and effective dates), see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section4">eBay sales tax collection</a> help topic.
+     *  As of November 2021, buyers in all US states except for Missouri (and several US territories), will automatically be charged sales tax for purchases, and the seller does not set this rate. eBay will collect and remit this sales tax to the proper taxing authority on the buyer's behalf. For more US state-level information on sales tax, see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section4">eBay sales tax collection</a> help topic.
      *
      * @var bool $eBayCollectAndRemitTax
      */
@@ -713,7 +688,7 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      *  <br/><br/>
      *  Australian 'Goods and Services' tax (GST) is automatically charged to buyers outside of Australia when they purchase items on the eBay Australia site. Sellers on the Australia site do not have to take any extra steps to enable the collection of GST, as this tax is collected by eBay and remitted to the Australian government. For more information about Australian GST, see the <a href="https://www.ebay.com.au/help/selling/fees-credits-invoices/taxes-import-charges?id=4121">Taxes and import charges</a> help topic.
      *  <br/><br/>
-     *  As of April 1, 2020, buyers in 41 US states will automatically be charged sales tax for eBay purchases. eBay will collect and remit this sales tax to the proper taxing authority on the buyer's behalf. Sellers do not have to take any extra steps to enable the collection of this sales tax. If the seller is employing a Sales Tax Table for the listing, and a sales tax rate is established for a state that is subject to 'eBay Collect and Remit', this sales tax rate will be ignored by eBay. For a list of the US states that will become subject to 'eBay Collect and Remit' (and effective dates), see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section4">eBay sales tax collection</a> help topic.
+     *  As of November 2021, buyers in all US states except for Missouri (and several US territories), will automatically be charged sales tax for purchases, and the seller does not set this rate. eBay will collect and remit this sales tax to the proper taxing authority on the buyer's behalf. For more US state-level information on sales tax, see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section4">eBay sales tax collection</a> help topic.
      *
      * @var \Nogrod\eBaySDK\MerchantData\TaxesType $eBayCollectAndRemitTaxes
      */
@@ -743,9 +718,6 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      *  and not for the individual order line item. In a <b>GetItemTransactions</b> or <b>GetSellerTransactions</b> call, you can determine which
      *  order line items belong to the same 'Combined Invoice' order by checking
      *  to see if the <b>ContainingOrder.OrderID</b> value is the same.
-     *  <br><br>
-     *  <span class="tablenote"><b>Note: </b> For non-managed payments orders subject to eBay 'Collect and Remit' taxes, keep in mind that PayPal distributes order funds to the seller's PayPal account with the tax included, but this amount will be backed out of the seller's PayPal account shortly after the buyer's payment clears and will be distributed to the appropriate taxing authority. eBay 'Collect and Remit' tax includes US sales tax for a majority of US states, and 'Good and Services' tax that is applicable to Australian and New Zealand sellers. This 'Collect and Remit' tax amount for the order will be included in the <b>AmountPaid</b> value. To determine if 'Collect and Remit' taxes were added into <b>AmountPaid</b> value, the user can check for the <b>Transaction.eBayCollectAndRemitTaxes.TaxDetails</b> and the <b>Transaction.Taxes.TaxDetails</b> containers in the response. If both of these containers appear in the response with a <b>TaxDetails.TaxDescription</b> value of <code>SalesTax</code> (in US) or <code>GST</code> (in Australia or New Zealand), the tax amount that the buyer paid is in this amount.
-     *  </span>
      *
      * @return \Nogrod\eBaySDK\MerchantData\AmountType
      */
@@ -769,9 +741,6 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      *  and not for the individual order line item. In a <b>GetItemTransactions</b> or <b>GetSellerTransactions</b> call, you can determine which
      *  order line items belong to the same 'Combined Invoice' order by checking
      *  to see if the <b>ContainingOrder.OrderID</b> value is the same.
-     *  <br><br>
-     *  <span class="tablenote"><b>Note: </b> For non-managed payments orders subject to eBay 'Collect and Remit' taxes, keep in mind that PayPal distributes order funds to the seller's PayPal account with the tax included, but this amount will be backed out of the seller's PayPal account shortly after the buyer's payment clears and will be distributed to the appropriate taxing authority. eBay 'Collect and Remit' tax includes US sales tax for a majority of US states, and 'Good and Services' tax that is applicable to Australian and New Zealand sellers. This 'Collect and Remit' tax amount for the order will be included in the <b>AmountPaid</b> value. To determine if 'Collect and Remit' taxes were added into <b>AmountPaid</b> value, the user can check for the <b>Transaction.eBayCollectAndRemitTaxes.TaxDetails</b> and the <b>Transaction.Taxes.TaxDetails</b> containers in the response. If both of these containers appear in the response with a <b>TaxDetails.TaxDescription</b> value of <code>SalesTax</code> (in US) or <code>GST</code> (in Australia or New Zealand), the tax amount that the buyer paid is in this amount.
-     *  </span>
      *
      * @param \Nogrod\eBaySDK\MerchantData\AmountType $amountPaid
      * @return self
@@ -912,9 +881,6 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      * This field shows the converted value of <b>AmountPaid</b> in the currency of the site that returned the response. Refresh this value every 24 hours to pick up the current conversion rates.
      *  <br><br>
      *  This field is always returned for paid orders. This value should be the same as the value in <b>AmountPaid</b> if the eBay listing site and the site that returned the response are the same, or use the same currency.
-     *  <br><br>
-     *  <span class="tablenote"><b>Note: </b> For non-managed payments orders subject to eBay 'Collect and Remit' taxes, keep in mind that PayPal distributes order funds to the seller's PayPal account with the tax included, but this amount will be backed out of the seller's PayPal account shortly after the buyer's payment clears and will be distributed to the appropriate taxing authority. eBay 'Collect and Remit' tax includes US sales tax for a majority of US states, and 'Good and Services' tax that is applicable to Australian and New Zealand sellers. This 'Collect and Remit' tax amount for the order will be included in the <b>ConvertedAmountPaid</b> value. To determine if 'Collect and Remit' taxes were added into <b>AmountPaid</b> value, the user can check for the <b>Transaction.eBayCollectAndRemitTaxes.TaxDetails</b> and the <b>Transaction.Taxes.TaxDetails</b> containers in the response. If both of these containers appear in the response with a <b>TaxDetails.TaxDescription</b> value of <code>SalesTax</code> (in US) or <code>GST</code> (in Australia or New Zealand), the tax amount that the buyer paid is in this amount.
-     *  </span>
      *
      * @return \Nogrod\eBaySDK\MerchantData\AmountType
      */
@@ -929,9 +895,6 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      * This field shows the converted value of <b>AmountPaid</b> in the currency of the site that returned the response. Refresh this value every 24 hours to pick up the current conversion rates.
      *  <br><br>
      *  This field is always returned for paid orders. This value should be the same as the value in <b>AmountPaid</b> if the eBay listing site and the site that returned the response are the same, or use the same currency.
-     *  <br><br>
-     *  <span class="tablenote"><b>Note: </b> For non-managed payments orders subject to eBay 'Collect and Remit' taxes, keep in mind that PayPal distributes order funds to the seller's PayPal account with the tax included, but this amount will be backed out of the seller's PayPal account shortly after the buyer's payment clears and will be distributed to the appropriate taxing authority. eBay 'Collect and Remit' tax includes US sales tax for a majority of US states, and 'Good and Services' tax that is applicable to Australian and New Zealand sellers. This 'Collect and Remit' tax amount for the order will be included in the <b>ConvertedAmountPaid</b> value. To determine if 'Collect and Remit' taxes were added into <b>AmountPaid</b> value, the user can check for the <b>Transaction.eBayCollectAndRemitTaxes.TaxDetails</b> and the <b>Transaction.Taxes.TaxDetails</b> containers in the response. If both of these containers appear in the response with a <b>TaxDetails.TaxDescription</b> value of <code>SalesTax</code> (in US) or <code>GST</code> (in Australia or New Zealand), the tax amount that the buyer paid is in this amount.
-     *  </span>
      *
      * @param \Nogrod\eBaySDK\MerchantData\AmountType $convertedAmountPaid
      * @return self
@@ -1001,7 +964,7 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     /**
      * Gets as depositType
      *
-     * This value indicates whether or not the seller requires a deposit for the purchase of a motor vehicle. This field is only applicable to motor vehicle listings that require an initial deposit. For these listings, its value is returned as 'OtherMethod'. For any other type of listing, its value is returned as 'None'.
+     * This value indicates whether or not the seller requires a deposit for the purchase of a motor vehicle. This field is only applicable to motor vehicle listings that require an initial deposit. A value of 'OtherMethod' will be returned if the motor vehicle listing requires an initial deposit, or a value of 'None' if an initial deposit is not required.
      *
      * @return string
      */
@@ -1013,7 +976,7 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     /**
      * Sets a new depositType
      *
-     * This value indicates whether or not the seller requires a deposit for the purchase of a motor vehicle. This field is only applicable to motor vehicle listings that require an initial deposit. For these listings, its value is returned as 'OtherMethod'. For any other type of listing, its value is returned as 'None'.
+     * This value indicates whether or not the seller requires a deposit for the purchase of a motor vehicle. This field is only applicable to motor vehicle listings that require an initial deposit. A value of 'OtherMethod' will be returned if the motor vehicle listing requires an initial deposit, or a value of 'None' if an initial deposit is not required.
      *
      * @param string $depositType
      * @return self
@@ -1130,7 +1093,7 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      *  <br>
      *  The <b>TransactionID</b> value for auction listings is always <code>0</code> since there can be only one winning bidder/one sale for an auction listing.
      *  <br><br>
-     *  <b>For GetOrders, GetOrderTransactions, and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this field will only be returned to the buyer, seller, or PayPal (if payment method is PayPal), and no longer returned at all to third parties (except for PayPal). If using a Trading WSDL older than Version 1019, transaction ID is only returned to the buyer, seller or PayPal, and a dummy value of <code>10000000000000</code> will be returned to all third parties (except for PayPal).
+     *  <b>For GetOrders, GetOrderTransactions, and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this field will only be returned to the buyer and seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, transaction ID is only returned to the buyer and seller, and a dummy value of <code>10000000000000</code> will be returned to all third parties.
      *
      * @return string
      */
@@ -1149,7 +1112,7 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      *  <br>
      *  The <b>TransactionID</b> value for auction listings is always <code>0</code> since there can be only one winning bidder/one sale for an auction listing.
      *  <br><br>
-     *  <b>For GetOrders, GetOrderTransactions, and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this field will only be returned to the buyer, seller, or PayPal (if payment method is PayPal), and no longer returned at all to third parties (except for PayPal). If using a Trading WSDL older than Version 1019, transaction ID is only returned to the buyer, seller or PayPal, and a dummy value of <code>10000000000000</code> will be returned to all third parties (except for PayPal).
+     *  <b>For GetOrders, GetOrderTransactions, and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this field will only be returned to the buyer and seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, transaction ID is only returned to the buyer and seller, and a dummy value of <code>10000000000000</code> will be returned to all third parties.
      *
      * @param string $transactionID
      * @return self
@@ -1707,13 +1670,6 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      *  If a seller requests a Final Value Fee credit, the value of
      *  <b>Transaction.FinalValueFee</b> will not change if a credit is
      *  issued. The credit only appears in the seller's account data.
-     *  <br>
-     *  <br>
-     *  <span class="tablenote"><b>Note:</b>
-     *  The calculation of the Final Value Fee is changing for managed payments sellers, so the value returned in this field should only be considered as an estimated value. The <b>getTransactions</b> method of the <b>Finances API</b> can be used to get accurate Final Value Fee values.
-     *  <br><br>
-     *  See the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/selling-fees?id=4822" target="_blank">Selling fees for managed payments sellers</a> help page for more information about how Final Value Fees are changing for managed payments sellers.
-     *  </span>
      *
      * @return \Nogrod\eBaySDK\MerchantData\AmountType
      */
@@ -1733,13 +1689,6 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      *  If a seller requests a Final Value Fee credit, the value of
      *  <b>Transaction.FinalValueFee</b> will not change if a credit is
      *  issued. The credit only appears in the seller's account data.
-     *  <br>
-     *  <br>
-     *  <span class="tablenote"><b>Note:</b>
-     *  The calculation of the Final Value Fee is changing for managed payments sellers, so the value returned in this field should only be considered as an estimated value. The <b>getTransactions</b> method of the <b>Finances API</b> can be used to get accurate Final Value Fee values.
-     *  <br><br>
-     *  See the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/selling-fees?id=4822" target="_blank">Selling fees for managed payments sellers</a> help page for more information about how Final Value Fees are changing for managed payments sellers.
-     *  </span>
      *
      * @param \Nogrod\eBaySDK\MerchantData\AmountType $finalValueFee
      * @return self
@@ -1960,12 +1909,7 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     /**
      * Gets as payPalEmailAddress
      *
-     * The seller's PayPal email address. This value is only revealed if it is the
-     *  seller making the call. For others, this field may still get returned but its value will be <code>Invalid Request</code>.
-     *  <br/><br/>
-     *  <span class="tablenote">
-     *  <strong>Note:</strong> This field is not applicable to managed payments sellers. However, it may still get returned in the response but with a value of <code>Invalid Request</code>.
-     *  </span>
+     * This field is no longer applicable, as eBay now controls all electronic payment methods and handles the payment from the buyer.
      *
      * @return string
      */
@@ -1977,12 +1921,7 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     /**
      * Sets a new payPalEmailAddress
      *
-     * The seller's PayPal email address. This value is only revealed if it is the
-     *  seller making the call. For others, this field may still get returned but its value will be <code>Invalid Request</code>.
-     *  <br/><br/>
-     *  <span class="tablenote">
-     *  <strong>Note:</strong> This field is not applicable to managed payments sellers. However, it may still get returned in the response but with a value of <code>Invalid Request</code>.
-     *  </span>
+     * This field is no longer applicable, as eBay now controls all electronic payment methods and handles the payment from the buyer.
      *
      * @param string $payPalEmailAddress
      * @return self
@@ -1996,7 +1935,7 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     /**
      * Gets as paisaPayID
      *
-     * Unique identifier for a <b>PaisaPay</b> transaction. Only applicable if <b>PaisaPay</b> was the payment method used.
+     * This field is deprecated.
      *
      * @return string
      */
@@ -2008,7 +1947,7 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     /**
      * Sets a new paisaPayID
      *
-     * Unique identifier for a <b>PaisaPay</b> transaction. Only applicable if <b>PaisaPay</b> was the payment method used.
+     * This field is deprecated.
      *
      * @param string $paisaPayID
      * @return self
@@ -2022,10 +1961,7 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     /**
      * Gets as buyerGuaranteePrice
      *
-     * For the Australia site, <b>BuyerGuaranteePrice</b> is the PayPal Buyer Protection coverage,
-     *  offered for the item at the time of purchase. Details of coverage are in the
-     *  following sections of the View Item page: the Buy Safely section and the Payment
-     *  Details section.
+     * The Buyer Guarantee price. This field is only applicable to the Australian site.
      *
      * @return \Nogrod\eBaySDK\MerchantData\AmountType
      */
@@ -2037,10 +1973,7 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     /**
      * Sets a new buyerGuaranteePrice
      *
-     * For the Australia site, <b>BuyerGuaranteePrice</b> is the PayPal Buyer Protection coverage,
-     *  offered for the item at the time of purchase. Details of coverage are in the
-     *  following sections of the View Item page: the Buy Safely section and the Payment
-     *  Details section.
+     * The Buyer Guarantee price. This field is only applicable to the Australian site.
      *
      * @param \Nogrod\eBaySDK\MerchantData\AmountType $buyerGuaranteePrice
      * @return self
@@ -2932,13 +2865,9 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      *  <br><br>
      *  <span class="tablenote"><b>Note: </b> As of June 2019, eBay has changed the format of order identifier values, and this new format is relevant to both legacy and REST API-based order ID fields. The new format is a non-parsable string, globally unique across all eBay marketplaces, and consistent for both single line item and multiple line item orders. Unlike in the past, instead of just being known and exposed to the seller, these unique order identifiers will also be known and used/referenced by the buyer and eBay customer support.
      *  <br><br>
-     *  For developers and sellers who are already integrated with the Trading API's order management calls, this change shouldn't impact your integration unless you parse the existing order identifiers (e.g., <b>OrderID</b> or <b>OrderLineItemID</b>), or otherwise infer meaning from the format (e.g., differentiating between a single line item order versus a multiple line item order). Because we realize that some integrations may have logic that is dependent upon the old identifier format, eBay is rolling out this Trading API change with version control to support a transition period of approximately 9 months before applications must switch to the new format completely.
-     *  <br><br>
-     *  During the transition period, for developers/sellers using a Trading WSDL older than Version 1113, they can use the <b>X-EBAY-API-COMPATIBILITY-LEVEL</b> HTTP header in API calls to control whether the new or old <b>OrderID</b> format is returned in call response payloads. To get the new <b>OrderID</b> format, the value of the <b>X-EBAY-API-COMPATIBILITY-LEVEL</b> HTTP header must be set to <code>1113</code>. During the transition period and even after, the new and old <b>OrderID</b> formats will still be supported/accepted in all Trading API call request payloads. After the transition period (which will be announced), only the new <b>OrderID</b> format will be returned in all Trading API call response payloads, regardless of the Trading WSDL version used or specified compatibility level.
+     *  Please note that the identifier for an order (for <b>OrderID</b> and <b>ExtendedOrderID</b>) will change as it goes from unpaid to paid status. Sellers can check to see if an order has been paid by looking for a value of 'Complete' in the <b>CheckoutStatus.Status</b> field in the response of <b>GetOrders</b> or <b>GetOrderTransactions</b> call, or in the <b>Status.CompleteStatus</b> field in the response of <b>GetItemTransactions</b> or <b>GetSellerTransactions</b> call. Both the paid and unpaid Order IDs will be accepted in all Trading API call request payloads.
      *  </span>
      *  <br>
-     *  <span class="tablenote"><b>Note: </b> For sellers integrated with the new order ID format, please note that the identifier for an order (for <b>OrderID</b> and <b>ExtendedOrderID</b>) will change as it goes from unpaid to paid status. Sellers can check to see if an order has been paid by looking for a value of 'Complete' in the <b>CheckoutStatus.Status</b> field in the response of <b>GetOrders</b> or <b>GetOrderTransactions</b> call, or in the <b>Status.CompleteStatus</b> field in the response of <b>GetItemTransactions</b> or <b>GetSellerTransactions</b> call. Sellers should not fulfill orders until buyer has made payment.
-     *  </span>
      *
      * @return string
      */
@@ -2956,13 +2885,9 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      *  <br><br>
      *  <span class="tablenote"><b>Note: </b> As of June 2019, eBay has changed the format of order identifier values, and this new format is relevant to both legacy and REST API-based order ID fields. The new format is a non-parsable string, globally unique across all eBay marketplaces, and consistent for both single line item and multiple line item orders. Unlike in the past, instead of just being known and exposed to the seller, these unique order identifiers will also be known and used/referenced by the buyer and eBay customer support.
      *  <br><br>
-     *  For developers and sellers who are already integrated with the Trading API's order management calls, this change shouldn't impact your integration unless you parse the existing order identifiers (e.g., <b>OrderID</b> or <b>OrderLineItemID</b>), or otherwise infer meaning from the format (e.g., differentiating between a single line item order versus a multiple line item order). Because we realize that some integrations may have logic that is dependent upon the old identifier format, eBay is rolling out this Trading API change with version control to support a transition period of approximately 9 months before applications must switch to the new format completely.
-     *  <br><br>
-     *  During the transition period, for developers/sellers using a Trading WSDL older than Version 1113, they can use the <b>X-EBAY-API-COMPATIBILITY-LEVEL</b> HTTP header in API calls to control whether the new or old <b>OrderID</b> format is returned in call response payloads. To get the new <b>OrderID</b> format, the value of the <b>X-EBAY-API-COMPATIBILITY-LEVEL</b> HTTP header must be set to <code>1113</code>. During the transition period and even after, the new and old <b>OrderID</b> formats will still be supported/accepted in all Trading API call request payloads. After the transition period (which will be announced), only the new <b>OrderID</b> format will be returned in all Trading API call response payloads, regardless of the Trading WSDL version used or specified compatibility level.
+     *  Please note that the identifier for an order (for <b>OrderID</b> and <b>ExtendedOrderID</b>) will change as it goes from unpaid to paid status. Sellers can check to see if an order has been paid by looking for a value of 'Complete' in the <b>CheckoutStatus.Status</b> field in the response of <b>GetOrders</b> or <b>GetOrderTransactions</b> call, or in the <b>Status.CompleteStatus</b> field in the response of <b>GetItemTransactions</b> or <b>GetSellerTransactions</b> call. Both the paid and unpaid Order IDs will be accepted in all Trading API call request payloads.
      *  </span>
      *  <br>
-     *  <span class="tablenote"><b>Note: </b> For sellers integrated with the new order ID format, please note that the identifier for an order (for <b>OrderID</b> and <b>ExtendedOrderID</b>) will change as it goes from unpaid to paid status. Sellers can check to see if an order has been paid by looking for a value of 'Complete' in the <b>CheckoutStatus.Status</b> field in the response of <b>GetOrders</b> or <b>GetOrderTransactions</b> call, or in the <b>Status.CompleteStatus</b> field in the response of <b>GetItemTransactions</b> or <b>GetSellerTransactions</b> call. Sellers should not fulfill orders until buyer has made payment.
-     *  </span>
      *
      * @param string $extendedOrderID
      * @return self
@@ -3162,7 +3087,7 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      *  <br/><br/>
      *  Australian 'Goods and Services' tax (GST) is automatically charged to buyers outside of Australia when they purchase items on the eBay Australia site. Sellers on the Australia site do not have to take any extra steps to enable the collection of GST, as this tax is collected by eBay and remitted to the Australian government. For more information about Australian GST, see the <a href="https://www.ebay.com.au/help/selling/fees-credits-invoices/taxes-import-charges?id=4121">Taxes and import charges</a> help topic.
      *  <br/><br/>
-     *  As of April 1, 2020, buyers in 40 US states will automatically be charged sales tax for eBay purchases, and are subject to eBay Collect and Remit Tax. eBay will collect and remit this sales tax to the proper taxing authority on the buyer's behalf. Sellers do not have to take any extra steps to enable the collection of this sales tax. If the seller is employing a Sales Tax Table for the listing, and a sales tax rate is established for a state that is subject to 'eBay Collect and Remit', this sales tax rate will be ignored by eBay. For a list of the US states that are or will become subject to 'eBay Collect and Remit Tax' (and effective dates), see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section4">eBay sales tax collection</a> help topic.
+     *  As of November 2021, buyers in all US states except for Missouri (and several US territories), will automatically be charged sales tax for purchases, and the seller does not set this rate. eBay will collect and remit this sales tax to the proper taxing authority on the buyer's behalf. For more US state-level information on sales tax, see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section4">eBay sales tax collection</a> help topic.
      *
      * @return bool
      */
@@ -3178,7 +3103,7 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      *  <br/><br/>
      *  Australian 'Goods and Services' tax (GST) is automatically charged to buyers outside of Australia when they purchase items on the eBay Australia site. Sellers on the Australia site do not have to take any extra steps to enable the collection of GST, as this tax is collected by eBay and remitted to the Australian government. For more information about Australian GST, see the <a href="https://www.ebay.com.au/help/selling/fees-credits-invoices/taxes-import-charges?id=4121">Taxes and import charges</a> help topic.
      *  <br/><br/>
-     *  As of April 1, 2020, buyers in 40 US states will automatically be charged sales tax for eBay purchases, and are subject to eBay Collect and Remit Tax. eBay will collect and remit this sales tax to the proper taxing authority on the buyer's behalf. Sellers do not have to take any extra steps to enable the collection of this sales tax. If the seller is employing a Sales Tax Table for the listing, and a sales tax rate is established for a state that is subject to 'eBay Collect and Remit', this sales tax rate will be ignored by eBay. For a list of the US states that are or will become subject to 'eBay Collect and Remit Tax' (and effective dates), see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section4">eBay sales tax collection</a> help topic.
+     *  As of November 2021, buyers in all US states except for Missouri (and several US territories), will automatically be charged sales tax for purchases, and the seller does not set this rate. eBay will collect and remit this sales tax to the proper taxing authority on the buyer's behalf. For more US state-level information on sales tax, see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section4">eBay sales tax collection</a> help topic.
      *
      * @param bool $eBayCollectAndRemitTax
      * @return self
@@ -3196,7 +3121,7 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      *  <br/><br/>
      *  Australian 'Goods and Services' tax (GST) is automatically charged to buyers outside of Australia when they purchase items on the eBay Australia site. Sellers on the Australia site do not have to take any extra steps to enable the collection of GST, as this tax is collected by eBay and remitted to the Australian government. For more information about Australian GST, see the <a href="https://www.ebay.com.au/help/selling/fees-credits-invoices/taxes-import-charges?id=4121">Taxes and import charges</a> help topic.
      *  <br/><br/>
-     *  As of April 1, 2020, buyers in 41 US states will automatically be charged sales tax for eBay purchases. eBay will collect and remit this sales tax to the proper taxing authority on the buyer's behalf. Sellers do not have to take any extra steps to enable the collection of this sales tax. If the seller is employing a Sales Tax Table for the listing, and a sales tax rate is established for a state that is subject to 'eBay Collect and Remit', this sales tax rate will be ignored by eBay. For a list of the US states that will become subject to 'eBay Collect and Remit' (and effective dates), see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section4">eBay sales tax collection</a> help topic.
+     *  As of November 2021, buyers in all US states except for Missouri (and several US territories), will automatically be charged sales tax for purchases, and the seller does not set this rate. eBay will collect and remit this sales tax to the proper taxing authority on the buyer's behalf. For more US state-level information on sales tax, see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section4">eBay sales tax collection</a> help topic.
      *
      * @return \Nogrod\eBaySDK\MerchantData\TaxesType
      */
@@ -3212,7 +3137,7 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      *  <br/><br/>
      *  Australian 'Goods and Services' tax (GST) is automatically charged to buyers outside of Australia when they purchase items on the eBay Australia site. Sellers on the Australia site do not have to take any extra steps to enable the collection of GST, as this tax is collected by eBay and remitted to the Australian government. For more information about Australian GST, see the <a href="https://www.ebay.com.au/help/selling/fees-credits-invoices/taxes-import-charges?id=4121">Taxes and import charges</a> help topic.
      *  <br/><br/>
-     *  As of April 1, 2020, buyers in 41 US states will automatically be charged sales tax for eBay purchases. eBay will collect and remit this sales tax to the proper taxing authority on the buyer's behalf. Sellers do not have to take any extra steps to enable the collection of this sales tax. If the seller is employing a Sales Tax Table for the listing, and a sales tax rate is established for a state that is subject to 'eBay Collect and Remit', this sales tax rate will be ignored by eBay. For a list of the US states that will become subject to 'eBay Collect and Remit' (and effective dates), see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section4">eBay sales tax collection</a> help topic.
+     *  As of November 2021, buyers in all US states except for Missouri (and several US territories), will automatically be charged sales tax for purchases, and the seller does not set this rate. eBay will collect and remit this sales tax to the proper taxing authority on the buyer's behalf. For more US state-level information on sales tax, see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section4">eBay sales tax collection</a> help topic.
      *
      * @param \Nogrod\eBaySDK\MerchantData\TaxesType $eBayCollectAndRemitTaxes
      * @return self

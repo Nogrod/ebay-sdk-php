@@ -244,8 +244,7 @@ class VariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
     private $variationProductListingDetails = null;
 
     /**
-     * <span class="tablenote"><b>Note:</b> Support for extended producer responsibility regulations and custom policies will become active mid-December 2021. Additional resources such as the custom policies resource (for the <b>Account API</b>), the <b>getExtendedProducerResponsibilityPolicies</b> method (for the <b>Sell Metadata API</b>), and the <a href="https://www.ebay.com/help/selling/custom-policies/custom-policies?id=5311" target="_blank">Custom Policies</a> help page will also become active.</span>
-     *  This container defines variation-specific Extended Producer Responsibility information, specifically the <strong>EcoParticipationFee</strong>.
+     * This container defines variation-specific Extended Producer Responsibility information, specifically the <strong>EcoParticipationFee</strong>. <br/><br/>For <b>GetItem</b> calls, this container is only returned to the listing owner, if the container is available.
      *
      * @var \Nogrod\eBaySDK\Trading\VariationExtendedProducerResponsibilityType $variationExtendedProducerResponsibility
      */
@@ -963,8 +962,7 @@ class VariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
     /**
      * Gets as variationExtendedProducerResponsibility
      *
-     * <span class="tablenote"><b>Note:</b> Support for extended producer responsibility regulations and custom policies will become active mid-December 2021. Additional resources such as the custom policies resource (for the <b>Account API</b>), the <b>getExtendedProducerResponsibilityPolicies</b> method (for the <b>Sell Metadata API</b>), and the <a href="https://www.ebay.com/help/selling/custom-policies/custom-policies?id=5311" target="_blank">Custom Policies</a> help page will also become active.</span>
-     *  This container defines variation-specific Extended Producer Responsibility information, specifically the <strong>EcoParticipationFee</strong>.
+     * This container defines variation-specific Extended Producer Responsibility information, specifically the <strong>EcoParticipationFee</strong>. <br/><br/>For <b>GetItem</b> calls, this container is only returned to the listing owner, if the container is available.
      *
      * @return \Nogrod\eBaySDK\Trading\VariationExtendedProducerResponsibilityType
      */
@@ -976,8 +974,7 @@ class VariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
     /**
      * Sets a new variationExtendedProducerResponsibility
      *
-     * <span class="tablenote"><b>Note:</b> Support for extended producer responsibility regulations and custom policies will become active mid-December 2021. Additional resources such as the custom policies resource (for the <b>Account API</b>), the <b>getExtendedProducerResponsibilityPolicies</b> method (for the <b>Sell Metadata API</b>), and the <a href="https://www.ebay.com/help/selling/custom-policies/custom-policies?id=5311" target="_blank">Custom Policies</a> help page will also become active.</span>
-     *  This container defines variation-specific Extended Producer Responsibility information, specifically the <strong>EcoParticipationFee</strong>.
+     * This container defines variation-specific Extended Producer Responsibility information, specifically the <strong>EcoParticipationFee</strong>. <br/><br/>For <b>GetItem</b> calls, this container is only returned to the listing owner, if the container is available.
      *
      * @param \Nogrod\eBaySDK\Trading\VariationExtendedProducerResponsibilityType $variationExtendedProducerResponsibility
      * @return self

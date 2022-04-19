@@ -11,7 +11,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  <br>
  *  <br>
  *  <span class="tablenote"><b>Note: </b>
- *  The discount amount will only be shown if the corresponding fee was deducted from a seller payout for a managed payments seller.
+ *  The discount amount will only be shown if the corresponding fee was deducted from a seller payout.
  *  </span>
  * XSD Type: DiscountType
  */
@@ -28,7 +28,7 @@ class DiscountType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
      * The amount of the discount in the currency indicated in the <b>currencyID</b> attribute.<br>
      *  <br>
      *  <span class="tablenote"><b>Note: </b>
-     *  The discount amount will only be shown if the corresponding fee was deducted from a seller payout for a managed payments seller.
+     *  The discount amount will only be shown if the corresponding fee was deducted from a seller payout.
      *  </span>
      *
      * @var \Nogrod\eBaySDK\MerchantData\AmountType $amount
@@ -67,7 +67,7 @@ class DiscountType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
      * The amount of the discount in the currency indicated in the <b>currencyID</b> attribute.<br>
      *  <br>
      *  <span class="tablenote"><b>Note: </b>
-     *  The discount amount will only be shown if the corresponding fee was deducted from a seller payout for a managed payments seller.
+     *  The discount amount will only be shown if the corresponding fee was deducted from a seller payout.
      *  </span>
      *
      * @return \Nogrod\eBaySDK\MerchantData\AmountType
@@ -83,7 +83,7 @@ class DiscountType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
      * The amount of the discount in the currency indicated in the <b>currencyID</b> attribute.<br>
      *  <br>
      *  <span class="tablenote"><b>Note: </b>
-     *  The discount amount will only be shown if the corresponding fee was deducted from a seller payout for a managed payments seller.
+     *  The discount amount will only be shown if the corresponding fee was deducted from a seller payout.
      *  </span>
      *
      * @param \Nogrod\eBaySDK\MerchantData\AmountType $amount

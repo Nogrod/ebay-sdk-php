@@ -7,21 +7,20 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing CustomPoliciesType
  *
- * <span class="tablenote"><b>Note:</b> Support for extended producer responsibility regulations and custom policies will become active mid-December 2021. Additional resources such as the custom policies resource (for the <b>Account API</b>), the <b>getExtendedProducerResponsibilityPolicies</b> method (for the <b>Sell Metadata API</b>), and the <a href="https://www.ebay.com/help/selling/custom-policies/custom-policies?id=5311" target="_blank">Custom Policies</a> help page will also become active.</span>
- *  This type is used by the <strong>CustomPolicies</strong> container, which specifies custom policy IDs. A custom policy ID refers to the relevant policy created for compliance and other purposes.
+ * This type is used by the <strong>CustomPolicies</strong> container, which specifies custom policy IDs. A custom policy ID refers to the relevant policy created for product compliance and other purposes. For more information, see the <b>Custom Policies</b> page for your site (for example, <a href="https://www.ebay.fr/help/selling/custom-policies/custom-policies?id=5311" target="_blank">https://www.ebay.fr/help/selling/custom-policies/custom-policies?id=5311</a>). To create and manage custom policies, use the <a href="https://developer.ebay.com/api-docs/sell/account/resources/methods#h2-custom_policy" target="_blank">custom_policy</a> resource of the <b>Account API</b>.
  * XSD Type: CustomPoliciesType
  */
 class CustomPoliciesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
     /**
-     * This field is used if the seller wants to apply a take-back policy to the listing. The seller will specify the identifier of the take-back policy in this field. The law in some countries may require sellers to take back a used product when the buyer buys a new product. Use this field to specify one take-back policy ID for the listing. To create and manage your takeback policies, see the <a href="../../../../../../api-docs/sell/account/overview.html" target="_blank">Account API</a>.
+     * This field is used if the seller wants to apply a take-back policy to the listing. The seller will specify the identifier of the take-back policy in this field. The law in some countries may require sellers to take back a used product when the buyer buys a new product. Use this field to specify one take-back policy ID for the listing.
      *
      * @var int $takeBackPolicyID
      */
     private $takeBackPolicyID = null;
 
     /**
-     * This field is used if the seller wants to apply one or more product compliance policies to the listing. A separate <b>ProductCompliancePolicyID</b> field is required for each policy to be applied, and the seller specifies the identifier of each policy in this field. To create and manage custom policies, see the <a href="../../../../../../api-docs/sell/account/overview.html" target="_blank">Account API</a>.
+     * This field is used if the seller wants to apply one or more product compliance policies to the listing. A separate <b>ProductCompliancePolicyID</b> field is required for each policy to be applied, and the seller specifies the identifier of each policy in this field.
      *
      * @var int[] $productCompliancePolicyID
      */
@@ -32,7 +31,7 @@ class CustomPoliciesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
     /**
      * Gets as takeBackPolicyID
      *
-     * This field is used if the seller wants to apply a take-back policy to the listing. The seller will specify the identifier of the take-back policy in this field. The law in some countries may require sellers to take back a used product when the buyer buys a new product. Use this field to specify one take-back policy ID for the listing. To create and manage your takeback policies, see the <a href="../../../../../../api-docs/sell/account/overview.html" target="_blank">Account API</a>.
+     * This field is used if the seller wants to apply a take-back policy to the listing. The seller will specify the identifier of the take-back policy in this field. The law in some countries may require sellers to take back a used product when the buyer buys a new product. Use this field to specify one take-back policy ID for the listing.
      *
      * @return int
      */
@@ -44,7 +43,7 @@ class CustomPoliciesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
     /**
      * Sets a new takeBackPolicyID
      *
-     * This field is used if the seller wants to apply a take-back policy to the listing. The seller will specify the identifier of the take-back policy in this field. The law in some countries may require sellers to take back a used product when the buyer buys a new product. Use this field to specify one take-back policy ID for the listing. To create and manage your takeback policies, see the <a href="../../../../../../api-docs/sell/account/overview.html" target="_blank">Account API</a>.
+     * This field is used if the seller wants to apply a take-back policy to the listing. The seller will specify the identifier of the take-back policy in this field. The law in some countries may require sellers to take back a used product when the buyer buys a new product. Use this field to specify one take-back policy ID for the listing.
      *
      * @param int $takeBackPolicyID
      * @return self
@@ -58,7 +57,7 @@ class CustomPoliciesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
     /**
      * Adds as productCompliancePolicyID
      *
-     * This field is used if the seller wants to apply one or more product compliance policies to the listing. A separate <b>ProductCompliancePolicyID</b> field is required for each policy to be applied, and the seller specifies the identifier of each policy in this field. To create and manage custom policies, see the <a href="../../../../../../api-docs/sell/account/overview.html" target="_blank">Account API</a>.
+     * This field is used if the seller wants to apply one or more product compliance policies to the listing. A separate <b>ProductCompliancePolicyID</b> field is required for each policy to be applied, and the seller specifies the identifier of each policy in this field.
      *
      * @return self
      * @param int $productCompliancePolicyID
@@ -72,7 +71,7 @@ class CustomPoliciesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
     /**
      * isset productCompliancePolicyID
      *
-     * This field is used if the seller wants to apply one or more product compliance policies to the listing. A separate <b>ProductCompliancePolicyID</b> field is required for each policy to be applied, and the seller specifies the identifier of each policy in this field. To create and manage custom policies, see the <a href="../../../../../../api-docs/sell/account/overview.html" target="_blank">Account API</a>.
+     * This field is used if the seller wants to apply one or more product compliance policies to the listing. A separate <b>ProductCompliancePolicyID</b> field is required for each policy to be applied, and the seller specifies the identifier of each policy in this field.
      *
      * @param int|string $index
      * @return bool
@@ -85,7 +84,7 @@ class CustomPoliciesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
     /**
      * unset productCompliancePolicyID
      *
-     * This field is used if the seller wants to apply one or more product compliance policies to the listing. A separate <b>ProductCompliancePolicyID</b> field is required for each policy to be applied, and the seller specifies the identifier of each policy in this field. To create and manage custom policies, see the <a href="../../../../../../api-docs/sell/account/overview.html" target="_blank">Account API</a>.
+     * This field is used if the seller wants to apply one or more product compliance policies to the listing. A separate <b>ProductCompliancePolicyID</b> field is required for each policy to be applied, and the seller specifies the identifier of each policy in this field.
      *
      * @param int|string $index
      * @return void
@@ -98,7 +97,7 @@ class CustomPoliciesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
     /**
      * Gets as productCompliancePolicyID
      *
-     * This field is used if the seller wants to apply one or more product compliance policies to the listing. A separate <b>ProductCompliancePolicyID</b> field is required for each policy to be applied, and the seller specifies the identifier of each policy in this field. To create and manage custom policies, see the <a href="../../../../../../api-docs/sell/account/overview.html" target="_blank">Account API</a>.
+     * This field is used if the seller wants to apply one or more product compliance policies to the listing. A separate <b>ProductCompliancePolicyID</b> field is required for each policy to be applied, and the seller specifies the identifier of each policy in this field.
      *
      * @return int[]
      */
@@ -110,7 +109,7 @@ class CustomPoliciesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
     /**
      * Sets a new productCompliancePolicyID
      *
-     * This field is used if the seller wants to apply one or more product compliance policies to the listing. A separate <b>ProductCompliancePolicyID</b> field is required for each policy to be applied, and the seller specifies the identifier of each policy in this field. To create and manage custom policies, see the <a href="../../../../../../api-docs/sell/account/overview.html" target="_blank">Account API</a>.
+     * This field is used if the seller wants to apply one or more product compliance policies to the listing. A separate <b>ProductCompliancePolicyID</b> field is required for each policy to be applied, and the seller specifies the identifier of each policy in this field.
      *
      * @param int[] $productCompliancePolicyID
      * @return self

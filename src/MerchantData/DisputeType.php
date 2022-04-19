@@ -7,17 +7,19 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing DisputeType
  *
- * Contains all information describing a dispute.
+ * Contains all information describing an Unpaid Item case.
  *  <br/><br/>
  *  <span class="tablenote"><strong>Note:</strong>
- *  'Item Not Received' or 'Significantly Not As Described' cases, initiated by buyers through the eBay Money Back Guarantee program, are not returned with <b>GetDispute</b> or <b>GetUserDisputes</b>. The <a href="https://developer.ebay.com/Devzone/post-order/post-order_v2_casemanagement-caseId__get.html#overview">getCase</a> method of the <a href="https://developer.ebay.com/Devzone/post-order/concepts/UsageGuide.html">Post-Order API</a> is used to retrieve Money Back Guarantee cases programmatically.
+ *  The <b>GetDispute</b> and <b>GetUserDisputes</b> calls now only retrieve Unpaid Item cases. They are no longer used to retrieve Item not Received (INR) disputes created through PayPal, since this is no longer an option for eBay buyers. eBay buyers must create an INR case through eBay's Resolution Center, and these calls do not support eBay Money Back Guarantee cases.
+ *  <br><br>
+ *  To respond to an eBay Money Back Guarantee case, the seller should use the <a href="https://developer.ebay.com/Devzone/post-order/index.html" target="_blank">Case Management calls</a> of the <b>Post-Order API</b> or manage/respond to cases manually through the eBay Resolution Center.
  *  </span>
  * XSD Type: DisputeType
  */
 class DisputeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
     /**
-     * The unique identifier of an eBay dispute.
+     * The unique identifier of an Unpaid Item case.
      *
      * @var string $disputeID
      */
@@ -25,47 +27,47 @@ class DisputeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
 
     /**
      * A value to indicate the type of dispute.
+     *  <br/><br/>
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  The <b>GetDispute</b> and <b>GetUserDisputes</b> calls now only retrieve Unpaid Item cases, so the enumeration value returned here should always be <code>UnpaidItem</code>.
+     *  </span>
      *
      * @var string $disputeRecordType
      */
     private $disputeRecordType = null;
 
     /**
-     * The internal state of the dispute. The value determines
+     * The state of the dispute. The value determines
      *  which values of <b>DisputeActivity</b> are valid when responding
-     *  to a dispute.
+     *  to an Unpaid Item case with an <b>AddDisputeResponse</b>.
      *
      * @var string $disputeState
      */
     private $disputeState = null;
 
     /**
-     * The status of the dispute, which provides additional
-     *  information about the dispute state.
+     * The status of the dispute, which provides additional information about the dispute state.
      *
      * @var string $disputeStatus
      */
     private $disputeStatus = null;
 
     /**
-     * The role of the person involved in the dispute who is
-     *  not taking action or requesting information. The role is
-     *  either <b>Buyer</b> or <b>Seller</b>.
+     * The role of the person involved in the Unpaid Item case who is not taking action or requesting information. The role is either <b>Buyer</b> or <b>Seller</b>.
      *
      * @var string $otherPartyRole
      */
     private $otherPartyRole = null;
 
     /**
-     * The user name of the person involved in the dispute who
-     *  is not taking action or requesting information.
+     * The user name of the person involved in the Unpaid Item case who is not taking action or requesting information.
      *
      * @var string $otherPartyName
      */
     private $otherPartyName = null;
 
     /**
-     * The role of the person involved in the dispute who is taking action or
+     * The role of the person involved in the Unpaid Item case who is taking action or
      *  requesting information. The role is either <b>Buyer</b> or <b>Seller</b>.
      *
      * @var string $userRole
@@ -73,25 +75,21 @@ class DisputeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
     private $userRole = null;
 
     /**
-     * The eBay user ID of the buyer involved in the dispute.
+     * The eBay user ID of the buyer involved in the Unpaid Item case.
      *
      * @var string $buyerUserID
      */
     private $buyerUserID = null;
 
     /**
-     * The eBay user ID of the seller involved in the dispute.
+     * The eBay user ID of the seller involved in the Unpaid Item case.
      *
      * @var string $sellerUserID
      */
     private $sellerUserID = null;
 
     /**
-     * The unique identifier of the order line item (transaction) under dispute. An
-     *  order line item is created once there is a commitment from a
-     *  buyer to purchase an item. In the case of <b>GetDispute</b> and <b>GetUserDisputes</b>
-     *  responses, this value identifies the order line item involved in the
-     *  dispute.
+     * The unique identifier of the sales transaction with an Unpaid Item case filed against it.
      *  <br>
      *  <br>
      *  The <b>TransactionID</b> value for auction listings is always <code>0</code> since there can be only one winning bidder/one sale for an auction listing.
@@ -102,25 +100,21 @@ class DisputeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
 
     /**
      * Container consisting of high-level details about the item involved in the
-     *  dispute.
+     *  Unpaid Item case.
      *
      * @var \Nogrod\eBaySDK\MerchantData\ItemType $item
      */
     private $item = null;
 
     /**
-     * The top-level reason for the dispute. The value of <b>DisputeReason</b>
-     *  determines which values of <b>DisputeExplanation</b> are valid.
-     *  See <b>DisputeExplanationCodeList</b> for details.
+     * The reason for the Unpaid Item case. Since <b>GetDispute</b> and <b>GetUserDisputes</b> calls now only retrieve Unpaid Item cases, this value should always be <code>BuyerHasNotPaid</code>.
      *
      * @var string $disputeReason
      */
     private $disputeReason = null;
 
     /**
-     * The detailed explanation for the dispute. Valid values
-     *  depend on the value of <b>DisputeReason</b>. See <b>DisputeExplanationCodeList</b>
-     *  for details.
+     * This enumeration value provides more details about why the Unpaid Item case was created. See <b>DisputeExplanationCodeList</b> type for explanation of values.
      *
      * @var string $disputeExplanation
      */
@@ -139,23 +133,21 @@ class DisputeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
     private $disputeCreditEligibility = null;
 
     /**
-     * The date and time the dispute was created, in GMT.
+     * The date and time the Unpaid Item case was created, in GMT.
      *
      * @var \DateTime $disputeCreatedTime
      */
     private $disputeCreatedTime = null;
 
     /**
-     * The date and time the dispute was modified, in GMT.
+     * The date and time the Unpaid Item case was last modified, in GMT.
      *
      * @var \DateTime $disputeModifiedTime
      */
     private $disputeModifiedTime = null;
 
     /**
-     * The action resulting from the dispute resolution. The
-     *  action might include a Final Value Fee credit to the seller, a strike
-     *  to the buyer, a reversal, or an appeal.
+     * This container provides more details about the results of an Unpaid Item case once it is resolved. Results could possibly include a Final Value Fee credit to the seller and an Unpaid Item strike to the buyer. This container will only be returned after the Unpaid Item case is resolved.
      *
      * @var \Nogrod\eBaySDK\MerchantData\DisputeResolutionType[] $disputeResolution
      */
@@ -164,8 +156,8 @@ class DisputeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
     ];
 
     /**
-     * A response or message posted to a dispute, either by
-     *  an application or by a user on the eBay site.
+     * This field will contain a response or message related to the Unpaid Item case, posted by either the
+     *  buyer or the seller.
      *
      * @var \Nogrod\eBaySDK\MerchantData\DisputeMessageType[] $disputeMessage
      */
@@ -174,21 +166,21 @@ class DisputeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
     ];
 
     /**
-     * This field is returned as <code>true</code> if the buyer is eligible to appeal a closed Item Not Received dispute.
+     * This field is returned as <code>true</code> if the buyer is eligible to appeal a closed Unpaid Item case.
      *
      * @var bool $escalation
      */
     private $escalation = null;
 
     /**
-     * This field is returned as <code>true</code> if the buyer used PayPal to pay for the item, and is eligible for PayPal's Standard Purchase Protection.
+     * This field is no longer applicable, and if it is returned, it can be ignored.
      *
      * @var bool $purchaseProtection
      */
     private $purchaseProtection = null;
 
     /**
-     * <b>OrderLineItemID</b> is a unique identifier for an eBay order line item. In the case of <b>GetDispute</b> and <b>GetUserDisputes</b> responses, this value identifies the order line item involved in the dispute.
+     * The unique identifier of the order line item with an Unpaid Item case filed against it.
      *  <br>
      *
      * @var string $orderLineItemID
@@ -198,7 +190,7 @@ class DisputeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
     /**
      * Gets as disputeID
      *
-     * The unique identifier of an eBay dispute.
+     * The unique identifier of an Unpaid Item case.
      *
      * @return string
      */
@@ -210,7 +202,7 @@ class DisputeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
     /**
      * Sets a new disputeID
      *
-     * The unique identifier of an eBay dispute.
+     * The unique identifier of an Unpaid Item case.
      *
      * @param string $disputeID
      * @return self
@@ -225,6 +217,10 @@ class DisputeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
      * Gets as disputeRecordType
      *
      * A value to indicate the type of dispute.
+     *  <br/><br/>
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  The <b>GetDispute</b> and <b>GetUserDisputes</b> calls now only retrieve Unpaid Item cases, so the enumeration value returned here should always be <code>UnpaidItem</code>.
+     *  </span>
      *
      * @return string
      */
@@ -237,6 +233,10 @@ class DisputeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
      * Sets a new disputeRecordType
      *
      * A value to indicate the type of dispute.
+     *  <br/><br/>
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  The <b>GetDispute</b> and <b>GetUserDisputes</b> calls now only retrieve Unpaid Item cases, so the enumeration value returned here should always be <code>UnpaidItem</code>.
+     *  </span>
      *
      * @param string $disputeRecordType
      * @return self
@@ -250,9 +250,9 @@ class DisputeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
     /**
      * Gets as disputeState
      *
-     * The internal state of the dispute. The value determines
+     * The state of the dispute. The value determines
      *  which values of <b>DisputeActivity</b> are valid when responding
-     *  to a dispute.
+     *  to an Unpaid Item case with an <b>AddDisputeResponse</b>.
      *
      * @return string
      */
@@ -264,9 +264,9 @@ class DisputeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
     /**
      * Sets a new disputeState
      *
-     * The internal state of the dispute. The value determines
+     * The state of the dispute. The value determines
      *  which values of <b>DisputeActivity</b> are valid when responding
-     *  to a dispute.
+     *  to an Unpaid Item case with an <b>AddDisputeResponse</b>.
      *
      * @param string $disputeState
      * @return self
@@ -280,8 +280,7 @@ class DisputeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
     /**
      * Gets as disputeStatus
      *
-     * The status of the dispute, which provides additional
-     *  information about the dispute state.
+     * The status of the dispute, which provides additional information about the dispute state.
      *
      * @return string
      */
@@ -293,8 +292,7 @@ class DisputeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
     /**
      * Sets a new disputeStatus
      *
-     * The status of the dispute, which provides additional
-     *  information about the dispute state.
+     * The status of the dispute, which provides additional information about the dispute state.
      *
      * @param string $disputeStatus
      * @return self
@@ -308,9 +306,7 @@ class DisputeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
     /**
      * Gets as otherPartyRole
      *
-     * The role of the person involved in the dispute who is
-     *  not taking action or requesting information. The role is
-     *  either <b>Buyer</b> or <b>Seller</b>.
+     * The role of the person involved in the Unpaid Item case who is not taking action or requesting information. The role is either <b>Buyer</b> or <b>Seller</b>.
      *
      * @return string
      */
@@ -322,9 +318,7 @@ class DisputeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
     /**
      * Sets a new otherPartyRole
      *
-     * The role of the person involved in the dispute who is
-     *  not taking action or requesting information. The role is
-     *  either <b>Buyer</b> or <b>Seller</b>.
+     * The role of the person involved in the Unpaid Item case who is not taking action or requesting information. The role is either <b>Buyer</b> or <b>Seller</b>.
      *
      * @param string $otherPartyRole
      * @return self
@@ -338,8 +332,7 @@ class DisputeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
     /**
      * Gets as otherPartyName
      *
-     * The user name of the person involved in the dispute who
-     *  is not taking action or requesting information.
+     * The user name of the person involved in the Unpaid Item case who is not taking action or requesting information.
      *
      * @return string
      */
@@ -351,8 +344,7 @@ class DisputeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
     /**
      * Sets a new otherPartyName
      *
-     * The user name of the person involved in the dispute who
-     *  is not taking action or requesting information.
+     * The user name of the person involved in the Unpaid Item case who is not taking action or requesting information.
      *
      * @param string $otherPartyName
      * @return self
@@ -366,7 +358,7 @@ class DisputeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
     /**
      * Gets as userRole
      *
-     * The role of the person involved in the dispute who is taking action or
+     * The role of the person involved in the Unpaid Item case who is taking action or
      *  requesting information. The role is either <b>Buyer</b> or <b>Seller</b>.
      *
      * @return string
@@ -379,7 +371,7 @@ class DisputeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
     /**
      * Sets a new userRole
      *
-     * The role of the person involved in the dispute who is taking action or
+     * The role of the person involved in the Unpaid Item case who is taking action or
      *  requesting information. The role is either <b>Buyer</b> or <b>Seller</b>.
      *
      * @param string $userRole
@@ -394,7 +386,7 @@ class DisputeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
     /**
      * Gets as buyerUserID
      *
-     * The eBay user ID of the buyer involved in the dispute.
+     * The eBay user ID of the buyer involved in the Unpaid Item case.
      *
      * @return string
      */
@@ -406,7 +398,7 @@ class DisputeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
     /**
      * Sets a new buyerUserID
      *
-     * The eBay user ID of the buyer involved in the dispute.
+     * The eBay user ID of the buyer involved in the Unpaid Item case.
      *
      * @param string $buyerUserID
      * @return self
@@ -420,7 +412,7 @@ class DisputeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
     /**
      * Gets as sellerUserID
      *
-     * The eBay user ID of the seller involved in the dispute.
+     * The eBay user ID of the seller involved in the Unpaid Item case.
      *
      * @return string
      */
@@ -432,7 +424,7 @@ class DisputeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
     /**
      * Sets a new sellerUserID
      *
-     * The eBay user ID of the seller involved in the dispute.
+     * The eBay user ID of the seller involved in the Unpaid Item case.
      *
      * @param string $sellerUserID
      * @return self
@@ -446,11 +438,7 @@ class DisputeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
     /**
      * Gets as transactionID
      *
-     * The unique identifier of the order line item (transaction) under dispute. An
-     *  order line item is created once there is a commitment from a
-     *  buyer to purchase an item. In the case of <b>GetDispute</b> and <b>GetUserDisputes</b>
-     *  responses, this value identifies the order line item involved in the
-     *  dispute.
+     * The unique identifier of the sales transaction with an Unpaid Item case filed against it.
      *  <br>
      *  <br>
      *  The <b>TransactionID</b> value for auction listings is always <code>0</code> since there can be only one winning bidder/one sale for an auction listing.
@@ -465,11 +453,7 @@ class DisputeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
     /**
      * Sets a new transactionID
      *
-     * The unique identifier of the order line item (transaction) under dispute. An
-     *  order line item is created once there is a commitment from a
-     *  buyer to purchase an item. In the case of <b>GetDispute</b> and <b>GetUserDisputes</b>
-     *  responses, this value identifies the order line item involved in the
-     *  dispute.
+     * The unique identifier of the sales transaction with an Unpaid Item case filed against it.
      *  <br>
      *  <br>
      *  The <b>TransactionID</b> value for auction listings is always <code>0</code> since there can be only one winning bidder/one sale for an auction listing.
@@ -487,7 +471,7 @@ class DisputeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
      * Gets as item
      *
      * Container consisting of high-level details about the item involved in the
-     *  dispute.
+     *  Unpaid Item case.
      *
      * @return \Nogrod\eBaySDK\MerchantData\ItemType
      */
@@ -500,7 +484,7 @@ class DisputeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
      * Sets a new item
      *
      * Container consisting of high-level details about the item involved in the
-     *  dispute.
+     *  Unpaid Item case.
      *
      * @param \Nogrod\eBaySDK\MerchantData\ItemType $item
      * @return self
@@ -514,9 +498,7 @@ class DisputeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
     /**
      * Gets as disputeReason
      *
-     * The top-level reason for the dispute. The value of <b>DisputeReason</b>
-     *  determines which values of <b>DisputeExplanation</b> are valid.
-     *  See <b>DisputeExplanationCodeList</b> for details.
+     * The reason for the Unpaid Item case. Since <b>GetDispute</b> and <b>GetUserDisputes</b> calls now only retrieve Unpaid Item cases, this value should always be <code>BuyerHasNotPaid</code>.
      *
      * @return string
      */
@@ -528,9 +510,7 @@ class DisputeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
     /**
      * Sets a new disputeReason
      *
-     * The top-level reason for the dispute. The value of <b>DisputeReason</b>
-     *  determines which values of <b>DisputeExplanation</b> are valid.
-     *  See <b>DisputeExplanationCodeList</b> for details.
+     * The reason for the Unpaid Item case. Since <b>GetDispute</b> and <b>GetUserDisputes</b> calls now only retrieve Unpaid Item cases, this value should always be <code>BuyerHasNotPaid</code>.
      *
      * @param string $disputeReason
      * @return self
@@ -544,9 +524,7 @@ class DisputeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
     /**
      * Gets as disputeExplanation
      *
-     * The detailed explanation for the dispute. Valid values
-     *  depend on the value of <b>DisputeReason</b>. See <b>DisputeExplanationCodeList</b>
-     *  for details.
+     * This enumeration value provides more details about why the Unpaid Item case was created. See <b>DisputeExplanationCodeList</b> type for explanation of values.
      *
      * @return string
      */
@@ -558,9 +536,7 @@ class DisputeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
     /**
      * Sets a new disputeExplanation
      *
-     * The detailed explanation for the dispute. Valid values
-     *  depend on the value of <b>DisputeReason</b>. See <b>DisputeExplanationCodeList</b>
-     *  for details.
+     * This enumeration value provides more details about why the Unpaid Item case was created. See <b>DisputeExplanationCodeList</b> type for explanation of values.
      *
      * @param string $disputeExplanation
      * @return self
@@ -610,7 +586,7 @@ class DisputeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
     /**
      * Gets as disputeCreatedTime
      *
-     * The date and time the dispute was created, in GMT.
+     * The date and time the Unpaid Item case was created, in GMT.
      *
      * @return \DateTime
      */
@@ -622,7 +598,7 @@ class DisputeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
     /**
      * Sets a new disputeCreatedTime
      *
-     * The date and time the dispute was created, in GMT.
+     * The date and time the Unpaid Item case was created, in GMT.
      *
      * @param \DateTime $disputeCreatedTime
      * @return self
@@ -636,7 +612,7 @@ class DisputeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
     /**
      * Gets as disputeModifiedTime
      *
-     * The date and time the dispute was modified, in GMT.
+     * The date and time the Unpaid Item case was last modified, in GMT.
      *
      * @return \DateTime
      */
@@ -648,7 +624,7 @@ class DisputeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
     /**
      * Sets a new disputeModifiedTime
      *
-     * The date and time the dispute was modified, in GMT.
+     * The date and time the Unpaid Item case was last modified, in GMT.
      *
      * @param \DateTime $disputeModifiedTime
      * @return self
@@ -662,9 +638,7 @@ class DisputeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
     /**
      * Adds as disputeResolution
      *
-     * The action resulting from the dispute resolution. The
-     *  action might include a Final Value Fee credit to the seller, a strike
-     *  to the buyer, a reversal, or an appeal.
+     * This container provides more details about the results of an Unpaid Item case once it is resolved. Results could possibly include a Final Value Fee credit to the seller and an Unpaid Item strike to the buyer. This container will only be returned after the Unpaid Item case is resolved.
      *
      * @return self
      * @param \Nogrod\eBaySDK\MerchantData\DisputeResolutionType $disputeResolution
@@ -678,9 +652,7 @@ class DisputeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
     /**
      * isset disputeResolution
      *
-     * The action resulting from the dispute resolution. The
-     *  action might include a Final Value Fee credit to the seller, a strike
-     *  to the buyer, a reversal, or an appeal.
+     * This container provides more details about the results of an Unpaid Item case once it is resolved. Results could possibly include a Final Value Fee credit to the seller and an Unpaid Item strike to the buyer. This container will only be returned after the Unpaid Item case is resolved.
      *
      * @param int|string $index
      * @return bool
@@ -693,9 +665,7 @@ class DisputeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
     /**
      * unset disputeResolution
      *
-     * The action resulting from the dispute resolution. The
-     *  action might include a Final Value Fee credit to the seller, a strike
-     *  to the buyer, a reversal, or an appeal.
+     * This container provides more details about the results of an Unpaid Item case once it is resolved. Results could possibly include a Final Value Fee credit to the seller and an Unpaid Item strike to the buyer. This container will only be returned after the Unpaid Item case is resolved.
      *
      * @param int|string $index
      * @return void
@@ -708,9 +678,7 @@ class DisputeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
     /**
      * Gets as disputeResolution
      *
-     * The action resulting from the dispute resolution. The
-     *  action might include a Final Value Fee credit to the seller, a strike
-     *  to the buyer, a reversal, or an appeal.
+     * This container provides more details about the results of an Unpaid Item case once it is resolved. Results could possibly include a Final Value Fee credit to the seller and an Unpaid Item strike to the buyer. This container will only be returned after the Unpaid Item case is resolved.
      *
      * @return \Nogrod\eBaySDK\MerchantData\DisputeResolutionType[]
      */
@@ -722,9 +690,7 @@ class DisputeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
     /**
      * Sets a new disputeResolution
      *
-     * The action resulting from the dispute resolution. The
-     *  action might include a Final Value Fee credit to the seller, a strike
-     *  to the buyer, a reversal, or an appeal.
+     * This container provides more details about the results of an Unpaid Item case once it is resolved. Results could possibly include a Final Value Fee credit to the seller and an Unpaid Item strike to the buyer. This container will only be returned after the Unpaid Item case is resolved.
      *
      * @param \Nogrod\eBaySDK\MerchantData\DisputeResolutionType[] $disputeResolution
      * @return self
@@ -738,8 +704,8 @@ class DisputeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
     /**
      * Adds as disputeMessage
      *
-     * A response or message posted to a dispute, either by
-     *  an application or by a user on the eBay site.
+     * This field will contain a response or message related to the Unpaid Item case, posted by either the
+     *  buyer or the seller.
      *
      * @return self
      * @param \Nogrod\eBaySDK\MerchantData\DisputeMessageType $disputeMessage
@@ -753,8 +719,8 @@ class DisputeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
     /**
      * isset disputeMessage
      *
-     * A response or message posted to a dispute, either by
-     *  an application or by a user on the eBay site.
+     * This field will contain a response or message related to the Unpaid Item case, posted by either the
+     *  buyer or the seller.
      *
      * @param int|string $index
      * @return bool
@@ -767,8 +733,8 @@ class DisputeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
     /**
      * unset disputeMessage
      *
-     * A response or message posted to a dispute, either by
-     *  an application or by a user on the eBay site.
+     * This field will contain a response or message related to the Unpaid Item case, posted by either the
+     *  buyer or the seller.
      *
      * @param int|string $index
      * @return void
@@ -781,8 +747,8 @@ class DisputeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
     /**
      * Gets as disputeMessage
      *
-     * A response or message posted to a dispute, either by
-     *  an application or by a user on the eBay site.
+     * This field will contain a response or message related to the Unpaid Item case, posted by either the
+     *  buyer or the seller.
      *
      * @return \Nogrod\eBaySDK\MerchantData\DisputeMessageType[]
      */
@@ -794,8 +760,8 @@ class DisputeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
     /**
      * Sets a new disputeMessage
      *
-     * A response or message posted to a dispute, either by
-     *  an application or by a user on the eBay site.
+     * This field will contain a response or message related to the Unpaid Item case, posted by either the
+     *  buyer or the seller.
      *
      * @param \Nogrod\eBaySDK\MerchantData\DisputeMessageType[] $disputeMessage
      * @return self
@@ -809,7 +775,7 @@ class DisputeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
     /**
      * Gets as escalation
      *
-     * This field is returned as <code>true</code> if the buyer is eligible to appeal a closed Item Not Received dispute.
+     * This field is returned as <code>true</code> if the buyer is eligible to appeal a closed Unpaid Item case.
      *
      * @return bool
      */
@@ -821,7 +787,7 @@ class DisputeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
     /**
      * Sets a new escalation
      *
-     * This field is returned as <code>true</code> if the buyer is eligible to appeal a closed Item Not Received dispute.
+     * This field is returned as <code>true</code> if the buyer is eligible to appeal a closed Unpaid Item case.
      *
      * @param bool $escalation
      * @return self
@@ -835,7 +801,7 @@ class DisputeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
     /**
      * Gets as purchaseProtection
      *
-     * This field is returned as <code>true</code> if the buyer used PayPal to pay for the item, and is eligible for PayPal's Standard Purchase Protection.
+     * This field is no longer applicable, and if it is returned, it can be ignored.
      *
      * @return bool
      */
@@ -847,7 +813,7 @@ class DisputeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
     /**
      * Sets a new purchaseProtection
      *
-     * This field is returned as <code>true</code> if the buyer used PayPal to pay for the item, and is eligible for PayPal's Standard Purchase Protection.
+     * This field is no longer applicable, and if it is returned, it can be ignored.
      *
      * @param bool $purchaseProtection
      * @return self
@@ -861,7 +827,7 @@ class DisputeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
     /**
      * Gets as orderLineItemID
      *
-     * <b>OrderLineItemID</b> is a unique identifier for an eBay order line item. In the case of <b>GetDispute</b> and <b>GetUserDisputes</b> responses, this value identifies the order line item involved in the dispute.
+     * The unique identifier of the order line item with an Unpaid Item case filed against it.
      *  <br>
      *
      * @return string
@@ -874,7 +840,7 @@ class DisputeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
     /**
      * Sets a new orderLineItemID
      *
-     * <b>OrderLineItemID</b> is a unique identifier for an eBay order line item. In the case of <b>GetDispute</b> and <b>GetUserDisputes</b> responses, this value identifies the order line item involved in the dispute.
+     * The unique identifier of the order line item with an Unpaid Item case filed against it.
      *  <br>
      *
      * @param string $orderLineItemID

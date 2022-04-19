@@ -5,13 +5,13 @@ namespace Nogrod\eBaySDK\MerchantData;
 /**
  * Class representing DisputeActivityCodeType
  *
- * Defines the action taken on a dispute with <b>AddDisputeResponse</b>. The value
- *  you can use at a given time depends on the current value of <b>DisputeState</b>
- *  (see the <a href="https://developer.ebay.com/DevZone/guides/features-guide/default.html#Development/UPI-Assistant.html">Unpaid Item Assistant</a> for more information). Some values are for
- *  <i>Unpaid Item</i> disputes and some are for <i>Item Not Received</i> disputes.
+ * Enumerated type that lists the different dispute activity enum value that can be used when the seller is creating an Unpaid Item case using the <b>AddDisputeResponse</b> call. The value
+ *  you can use at a given time depends on the current value of <b>DisputeState</b>.
  *  <br/><br/>
  *  <span class="tablenote"><strong>Note:</strong>
- *  The <b>AddDisputeResponse</b> call cannot be used to communicate about an 'Item Not Received' or 'Significantly Not As Described' case initiated by a buyer through the eBay Money Back Guarantee program. The <a href="https://developer.ebay.com/Devzone/post-order/concepts/UsageGuide.html">Post-Order API</a> is used to respond to eBay Money Back Guarantee cases programmatically.
+ *  The <b>AddDisputeResponse</b> call now only supports the seller updating or responding to an Unpaid Item case. This call is no longer used to respond to an Item not Received (INR) or Significantly not as Described (SNAD) dispute created through PayPal, since this is no longer an option for eBay buyers. eBay buyers must create an INR or SNAD case through eBay's Resolution Center, and Trading API dispute calls do not support eBay Money Back Guarantee cases.
+ *  <br><br>
+ *  To respond to an eBay Money Back Guarantee case, the seller should use the <a href="https://developer.ebay.com/Devzone/post-order/index.html" target="_blank">Case Management calls</a> of the <b>Post-Order API</b> or manage/respond to cases manually through the eBay Resolution Center.
  *  </span>
  * XSD Type: DisputeActivityCodeType
  */
@@ -20,103 +20,86 @@ class DisputeActivityCodeType
     /**
      * Constant for 'SellerAddInformation' value.
      *
-     * The seller wants to add a response to the dispute. For <i>Unpaid Item</i>
-     * disputes. The seller is limited to 25 responses.
+     * This value can be used if the seller wants to add information about the Unpaid
+     * Item case. If this enum value is used, the information that the seller wants to
+     * add to the case should be passed in as a text string into the corresponding
+     * <strong>MessageText</strong> field.
      */
     public const VAL_SELLER_ADD_INFORMATION = 'SellerAddInformation';
 
     /**
      * Constant for 'SellerCompletedTransaction' value.
      *
-     * The buyer has paid or the seller otherwise does not need to
-     *  pursue the dispute any longer. For <i>Unpaid Item</i> disputes.
+     * This value can be used if the buyer has paid for the item or the seller
+     * otherwise does not need to
+     *  pursue the Unpaid Item case any longer.
      */
     public const VAL_SELLER_COMPLETED_TRANSACTION = 'SellerCompletedTransaction';
 
     /**
      * Constant for 'CameToAgreementNeedFVFCredit' value.
      *
-     * The seller has made an agreement with the buyer and requires a
-     *  credit for a Final Value Fee already paid. For <i>Unpaid Item</i> disputes.
+     * This value can be used if the seller has made an agreement with the buyer, and
+     * is requesting that eBay reimburse him/her for the variable portion of the Final
+     * Value Fee charged for the order line item.
      */
     public const VAL_CAME_TO_AGREEMENT_NEED_FVFCREDIT = 'CameToAgreementNeedFVFCredit';
 
     /**
      * Constant for 'SellerEndCommunication' value.
      *
-     * The seller wants to end communication or stop waiting for the
-     *  buyer. For <i>Unpaid Item</i> disputes.
+     * This value can be used if the seller wants to end communication or stop waiting
+     * for the
+     *  buyer to pay.
      */
     public const VAL_SELLER_END_COMMUNICATION = 'SellerEndCommunication';
 
     /**
      * Constant for 'MutualAgreementOrNoBuyerResponse' value.
      *
-     * The seller wants to end communication or stop waiting for the
-     *  buyer. Mutual agreement has been reached or the buyer has not
-     *  responded within four days. For <i>Unpaid Item</i> disputes.
+     * This value can be used if the seller and buyer have agree to mutually cancel the
+     * order, or if the buyer has not responded to the Unpaid Item case after four
+     * days.
      */
     public const VAL_MUTUAL_AGREEMENT_OR_NO_BUYER_RESPONSE = 'MutualAgreementOrNoBuyerResponse';
 
     /**
      * Constant for 'SellerOffersRefund' value.
      *
-     * The seller offers a full refund if the buyer did not receive
-     *  the item or a partial refund if the item is significantly not as
-     *  described. For <i>Item Not Received</i> and <i>Significantly Not As
-     * Described</i>
-     *  disputes.
-     *  <br/><br/>
-     *  This can be used when <b>DisputeState</b> is:
-     *  <br>
-     *  <code>NotReceivedNoSellerResponse</code><br>
-     *  <code>NotAsDescribedNoSellerResponse</code><br>
-     *  <code>NotReceivedMutualCommunication</code><br>
-     *  <code>NotAsDescribedMutualCommunication</code>
+     * This value is no longer applicable and should not be used, as it only pertains
+     * to <i>Item Not Received</i> and <i>Significantly Not As Described</i>
+     *  disputes initiated through PayPal, and those disputes are no longer supported
+     * by the <b>AddDisputeResponse</b>.
      */
     public const VAL_SELLER_OFFERS_REFUND = 'SellerOffersRefund';
 
     /**
      * Constant for 'SellerShippedItem' value.
      *
-     * The seller has shipped the item or a replacement and provides
-     *  shipping information. For <i>Item Not Received</i> and <i>Significantly Not As
-     * Described</i> disputes.
-     *  <br/><br/>
-     *  This can be used when <b>DisputeState</b> is:
-     *  <br>
-     *  <code>NotReceivedNoSellerResponse</code><br>
-     *  <code>NotReceivedMutualCommunication</code>
+     * This value is no longer applicable and should not be used, as it only pertains
+     * to <i>Item Not Received</i> and <i>Significantly Not As Described</i>
+     *  disputes initiated through PayPal, and those disputes are no longer supported
+     * by the <b>AddDisputeResponse</b>.
      */
     public const VAL_SELLER_SHIPPED_ITEM = 'SellerShippedItem';
 
     /**
      * Constant for 'SellerComment' value.
      *
-     * The seller communicates with the buyer, offering a response or
-     *  comment. The seller is limited to 25 responses.
-     *  For <i>Item Not Received</i> and <i>Significantly Not As Described</i>
-     *  disputes.
-     *  <br/><br/>
-     *  This can be used when DisputeState is:<br>
-     *  <code>NotReceivedNoSellerResponse</code><br>
-     *  <code>NotAsDescribedNoSellerResponse</code><br>
-     *  <code>NotReceivedMutualCommunication</code><br>
-     *  <code>NotAsDescribedMutualCommunication</code>
+     * This value is no longer applicable and should not be used, as it only pertains
+     * to <i>Item Not Received</i> and <i>Significantly Not As Described</i>
+     *  disputes initiated through PayPal, and those disputes are no longer supported
+     * by the <b>AddDisputeResponse</b>.
      */
     public const VAL_SELLER_COMMENT = 'SellerComment';
 
     /**
      * Constant for 'SellerPaymentNotReceived' value.
      *
-     * The buyer has not received an expected full or partial refund from the
-     *  seller in an <i>Item Not Received</i> and <i>Significantly Not As Described</i>
-     * buyer
-     *  dispute.
-     *  <br/><br/>
-     *  This can be used when <b>DisputeState</b> is:<br>
-     *  <code>NotReceivedNoSellerResponse</code> <br>
-     *  <code>NotReceivedMutualCommunication</code> <br>
+     * This value is no longer applicable and should not be used, as it only pertains
+     * to <i>Item Not Received</i> and <i>Significantly Not As Described</i>
+     *  disputes initiated through PayPal, and those disputes are no longer supported
+     * by the <b>AddDisputeResponse</b>.
      */
     public const VAL_SELLER_PAYMENT_NOT_RECEIVED = 'SellerPaymentNotReceived';
 

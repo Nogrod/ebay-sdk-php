@@ -7,11 +7,10 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing DisputeMessageType
  *
- * Contains a message posted to a dispute. The message can be posted
- *  by the buyer, the seller, or an eBay representative.
+ * Type used by a <strong>DisputeMessage</strong> container, which provides details on a message left by the buyer, the seller, or eBay related to an Unpaid Item case.
  *  <br/><br/>
  *  <span class="tablenote"><strong>Note:</strong>
- *  'Item Not Received' or 'Significantly Not As Described' cases, initiated by buyers through the eBay Money Back Guarantee program, are not returned with <b>GetDispute</b> or <b>GetUserDisputes</b>. The <a href="https://developer.ebay.com/Devzone/post-order/post-order_v2_casemanagement-caseId__get.html#overview">getCase</a> method of the <a href="https://developer.ebay.com/Devzone/post-order/concepts/UsageGuide.html">Post-Order API</a> is used to retrieve Money Back Guarantee cases programmatically.
+ *  The <b>GetDispute</b> and <b>GetUserDisputes</b> calls now only retrieve Unpaid Item cases. They are no longer used to retrieve Item not Received (INR) disputes created through PayPal, since this is no longer an option for eBay buyers. eBay buyers must create an INR case through eBay's Resolution Center, and these calls also do not support eBay Money Back Guarantee cases.
  *  </span>
  * XSD Type: DisputeMessageType
  */

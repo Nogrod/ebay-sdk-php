@@ -5,7 +5,7 @@ namespace Nogrod\eBaySDK\MerchantData;
 /**
  * Class representing BuyerProtectionCodeType
  *
- * This enumeration type indicates the item's eligibility status for PayPal's buyer protection program or eBay's Money Back Guarantee program.
+ * This enumeration type indicates the item's eligibility status for eBay's Money Back Guarantee program.
  * XSD Type: BuyerProtectionCodeType
  */
 class BuyerProtectionCodeType

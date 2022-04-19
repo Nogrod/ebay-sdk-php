@@ -244,6 +244,13 @@ class VariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
     private $variationProductListingDetails = null;
 
     /**
+     * This container defines variation-specific Extended Producer Responsibility information, specifically the <strong>EcoParticipationFee</strong>.
+     *
+     * @var \Nogrod\eBaySDK\MerchantData\VariationExtendedProducerResponsibilityType $variationExtendedProducerResponsibility
+     */
+    private $variationExtendedProducerResponsibility = null;
+
+    /**
      * Gets as sKU
      *
      * A SKU (stock keeping unit) is a seller-defined identifier. It is only intended for the seller's use (not for buyers). A SKU value is not required, but many large sellers like to add SKU value to their listings. If defined on a listing, a SKU value can be used by sellers to reconcile their eBay inventory with your own inventory system, instead of using the <b>VariationSpecifics</b> identifying values.
@@ -952,6 +959,32 @@ class VariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
         return $this;
     }
 
+    /**
+     * Gets as variationExtendedProducerResponsibility
+     *
+     * This container defines variation-specific Extended Producer Responsibility information, specifically the <strong>EcoParticipationFee</strong>.
+     *
+     * @return \Nogrod\eBaySDK\MerchantData\VariationExtendedProducerResponsibilityType
+     */
+    public function getVariationExtendedProducerResponsibility()
+    {
+        return $this->variationExtendedProducerResponsibility;
+    }
+
+    /**
+     * Sets a new variationExtendedProducerResponsibility
+     *
+     * This container defines variation-specific Extended Producer Responsibility information, specifically the <strong>EcoParticipationFee</strong>.
+     *
+     * @param \Nogrod\eBaySDK\MerchantData\VariationExtendedProducerResponsibilityType $variationExtendedProducerResponsibility
+     * @return self
+     */
+    public function setVariationExtendedProducerResponsibility(\Nogrod\eBaySDK\MerchantData\VariationExtendedProducerResponsibilityType $variationExtendedProducerResponsibility)
+    {
+        $this->variationExtendedProducerResponsibility = $variationExtendedProducerResponsibility;
+        return $this;
+    }
+
     public function xmlSerialize(\Sabre\Xml\Writer $writer)
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
@@ -1009,6 +1042,10 @@ class VariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
         $value = $this->getVariationProductListingDetails();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}VariationProductListingDetails", $value);
+        }
+        $value = $this->getVariationExtendedProducerResponsibility();
+        if (null !== $value) {
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}VariationExtendedProducerResponsibility", $value);
         }
     }
 
@@ -1079,6 +1116,10 @@ class VariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}VariationProductListingDetails');
         if (null !== $value) {
             $this->setVariationProductListingDetails(\Nogrod\eBaySDK\MerchantData\VariationProductListingDetailsType::fromKeyValue($value));
+        }
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}VariationExtendedProducerResponsibility');
+        if (null !== $value) {
+            $this->setVariationExtendedProducerResponsibility(\Nogrod\eBaySDK\MerchantData\VariationExtendedProducerResponsibilityType::fromKeyValue($value));
         }
     }
 }

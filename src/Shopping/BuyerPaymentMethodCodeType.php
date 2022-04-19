@@ -6,10 +6,6 @@ namespace Nogrod\eBaySDK\Shopping;
  * Class representing BuyerPaymentMethodCodeType
  *
  * This enumerated type includes all forms of payment that buyers may use to pay for order line items.
- *  <br><br>
- *  <span class="tablenote"><b>Note: </b>
- *  At this time, if the seller is opted in to eBay managed payments, the available payment methods (which are controlled by eBay and not the seller) may not be returned in the response of a <b>GetSingleItem</b> or <b>GetMultipleItems</b> call, but those payment methods will be exposed on the listing's View Item page.
- *  </span>
  * XSD Type: BuyerPaymentMethodCodeType
  */
 class BuyerPaymentMethodCodeType

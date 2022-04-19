@@ -24,28 +24,16 @@ class ShipmentType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
     private $insuredValue = null;
 
     /**
-     * Depth dimension of the package needed to ship the item after it is sold.
-     *  <br>
-     *  For calculated shipping only.
-     *
      * @var \Nogrod\eBaySDK\MerchantData\MeasureType $packageDepth
      */
     private $packageDepth = null;
 
     /**
-     * Length dimension of the package needed to ship the item after it is sold.
-     *  <br>
-     *  For calculated shipping only.
-     *
      * @var \Nogrod\eBaySDK\MerchantData\MeasureType $packageLength
      */
     private $packageLength = null;
 
     /**
-     * Width dimension of the package needed to ship the item after it is sold.
-     *  <br>
-     *  For calculated shipping only.
-     *
      * @var \Nogrod\eBaySDK\MerchantData\MeasureType $packageWidth
      */
     private $packageWidth = null;
@@ -71,15 +59,11 @@ class ShipmentType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
     private $printedTime = null;
 
     /**
-     * The address from which the item is being shipped.
-     *
      * @var \Nogrod\eBaySDK\MerchantData\AddressType $shipFromAddress
      */
     private $shipFromAddress = null;
 
     /**
-     * The address to which the item is to be shipped.
-     *
      * @var \Nogrod\eBaySDK\MerchantData\AddressType $shippingAddress
      */
     private $shippingAddress = null;
@@ -99,17 +83,11 @@ class ShipmentType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
     ];
 
     /**
-     * The size of the package used to ship the item(s). See ShippingPackageCodeType
-     *  for its possible values. Input.
-     *
      * @var string $shippingPackage
      */
     private $shippingPackage = null;
 
     /**
-     * The size of the package used to ship the item(s). See ShippingPackageCodeType
-     *  for its possible values. Input.
-     *
      * @var string $shippingServiceUsed
      */
     private $shippingServiceUsed = null;
@@ -122,16 +100,11 @@ class ShipmentType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
     private $shipmentTrackingNumber = null;
 
     /**
-     * The 'unit' attribute can have a value of lbs.
-     *
      * @var \Nogrod\eBaySDK\MerchantData\MeasureType $weightMajor
      */
     private $weightMajor = null;
 
     /**
-     * The 'unit' attribute is optional and assumed to be the
-     *  minor compared to the value of 'unit' in WeightMajor.
-     *
      * @var \Nogrod\eBaySDK\MerchantData\MeasureType $weightMinor
      */
     private $weightMinor = null;
@@ -144,36 +117,26 @@ class ShipmentType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
     ];
 
     /**
-     * Revise only
-     *
      * @var \DateTime $deliveryDate
      */
     private $deliveryDate = null;
 
     /**
-     * Revise only
-     *
      * @var string $deliveryStatus
      */
     private $deliveryStatus = null;
 
     /**
-     * Revise only
-     *
      * @var \DateTime $refundGrantedTime
      */
     private $refundGrantedTime = null;
 
     /**
-     * Revise only
-     *
      * @var \DateTime $refundRequestedTime
      */
     private $refundRequestedTime = null;
 
     /**
-     * Status, for revise only
-     *
      * @var string $status
      */
     private $status = null;
@@ -189,9 +152,7 @@ class ShipmentType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
     private $shippedTime = null;
 
     /**
-     * <span class="tablenote"><b>Note: </b> This field is only applicable for Half.com listings, and since API support for Half.com listings is being deprecated, this field is no longer applicable.
-     *  </span>
-     *  This string field allows a seller to provide notes to the buyer regarding shipment of a Half.com item. Only alphanumeric characters can be used in this field. This is an optional field that is only applicable to Half.com items.
+     * This field is deprecated.
      *
      * @var string $notes
      */
@@ -258,10 +219,6 @@ class ShipmentType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
     /**
      * Gets as packageDepth
      *
-     * Depth dimension of the package needed to ship the item after it is sold.
-     *  <br>
-     *  For calculated shipping only.
-     *
      * @return \Nogrod\eBaySDK\MerchantData\MeasureType
      */
     public function getPackageDepth()
@@ -271,10 +228,6 @@ class ShipmentType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
 
     /**
      * Sets a new packageDepth
-     *
-     * Depth dimension of the package needed to ship the item after it is sold.
-     *  <br>
-     *  For calculated shipping only.
      *
      * @param \Nogrod\eBaySDK\MerchantData\MeasureType $packageDepth
      * @return self
@@ -288,10 +241,6 @@ class ShipmentType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
     /**
      * Gets as packageLength
      *
-     * Length dimension of the package needed to ship the item after it is sold.
-     *  <br>
-     *  For calculated shipping only.
-     *
      * @return \Nogrod\eBaySDK\MerchantData\MeasureType
      */
     public function getPackageLength()
@@ -301,10 +250,6 @@ class ShipmentType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
 
     /**
      * Sets a new packageLength
-     *
-     * Length dimension of the package needed to ship the item after it is sold.
-     *  <br>
-     *  For calculated shipping only.
      *
      * @param \Nogrod\eBaySDK\MerchantData\MeasureType $packageLength
      * @return self
@@ -318,10 +263,6 @@ class ShipmentType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
     /**
      * Gets as packageWidth
      *
-     * Width dimension of the package needed to ship the item after it is sold.
-     *  <br>
-     *  For calculated shipping only.
-     *
      * @return \Nogrod\eBaySDK\MerchantData\MeasureType
      */
     public function getPackageWidth()
@@ -331,10 +272,6 @@ class ShipmentType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
 
     /**
      * Sets a new packageWidth
-     *
-     * Width dimension of the package needed to ship the item after it is sold.
-     *  <br>
-     *  For calculated shipping only.
      *
      * @param \Nogrod\eBaySDK\MerchantData\MeasureType $packageWidth
      * @return self
@@ -436,8 +373,6 @@ class ShipmentType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
     /**
      * Gets as shipFromAddress
      *
-     * The address from which the item is being shipped.
-     *
      * @return \Nogrod\eBaySDK\MerchantData\AddressType
      */
     public function getShipFromAddress()
@@ -447,8 +382,6 @@ class ShipmentType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
 
     /**
      * Sets a new shipFromAddress
-     *
-     * The address from which the item is being shipped.
      *
      * @param \Nogrod\eBaySDK\MerchantData\AddressType $shipFromAddress
      * @return self
@@ -462,8 +395,6 @@ class ShipmentType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
     /**
      * Gets as shippingAddress
      *
-     * The address to which the item is to be shipped.
-     *
      * @return \Nogrod\eBaySDK\MerchantData\AddressType
      */
     public function getShippingAddress()
@@ -473,8 +404,6 @@ class ShipmentType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
 
     /**
      * Sets a new shippingAddress
-     *
-     * The address to which the item is to be shipped.
      *
      * @param \Nogrod\eBaySDK\MerchantData\AddressType $shippingAddress
      * @return self
@@ -570,9 +499,6 @@ class ShipmentType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
     /**
      * Gets as shippingPackage
      *
-     * The size of the package used to ship the item(s). See ShippingPackageCodeType
-     *  for its possible values. Input.
-     *
      * @return string
      */
     public function getShippingPackage()
@@ -582,9 +508,6 @@ class ShipmentType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
 
     /**
      * Sets a new shippingPackage
-     *
-     * The size of the package used to ship the item(s). See ShippingPackageCodeType
-     *  for its possible values. Input.
      *
      * @param string $shippingPackage
      * @return self
@@ -598,9 +521,6 @@ class ShipmentType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
     /**
      * Gets as shippingServiceUsed
      *
-     * The size of the package used to ship the item(s). See ShippingPackageCodeType
-     *  for its possible values. Input.
-     *
      * @return string
      */
     public function getShippingServiceUsed()
@@ -610,9 +530,6 @@ class ShipmentType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
 
     /**
      * Sets a new shippingServiceUsed
-     *
-     * The size of the package used to ship the item(s). See ShippingPackageCodeType
-     *  for its possible values. Input.
      *
      * @param string $shippingServiceUsed
      * @return self
@@ -652,8 +569,6 @@ class ShipmentType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
     /**
      * Gets as weightMajor
      *
-     * The 'unit' attribute can have a value of lbs.
-     *
      * @return \Nogrod\eBaySDK\MerchantData\MeasureType
      */
     public function getWeightMajor()
@@ -663,8 +578,6 @@ class ShipmentType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
 
     /**
      * Sets a new weightMajor
-     *
-     * The 'unit' attribute can have a value of lbs.
      *
      * @param \Nogrod\eBaySDK\MerchantData\MeasureType $weightMajor
      * @return self
@@ -678,9 +591,6 @@ class ShipmentType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
     /**
      * Gets as weightMinor
      *
-     * The 'unit' attribute is optional and assumed to be the
-     *  minor compared to the value of 'unit' in WeightMajor.
-     *
      * @return \Nogrod\eBaySDK\MerchantData\MeasureType
      */
     public function getWeightMinor()
@@ -690,9 +600,6 @@ class ShipmentType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
 
     /**
      * Sets a new weightMinor
-     *
-     * The 'unit' attribute is optional and assumed to be the
-     *  minor compared to the value of 'unit' in WeightMajor.
      *
      * @param \Nogrod\eBaySDK\MerchantData\MeasureType $weightMinor
      * @return self
@@ -762,8 +669,6 @@ class ShipmentType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
     /**
      * Gets as deliveryDate
      *
-     * Revise only
-     *
      * @return \DateTime
      */
     public function getDeliveryDate()
@@ -773,8 +678,6 @@ class ShipmentType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
 
     /**
      * Sets a new deliveryDate
-     *
-     * Revise only
      *
      * @param \DateTime $deliveryDate
      * @return self
@@ -788,8 +691,6 @@ class ShipmentType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
     /**
      * Gets as deliveryStatus
      *
-     * Revise only
-     *
      * @return string
      */
     public function getDeliveryStatus()
@@ -799,8 +700,6 @@ class ShipmentType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
 
     /**
      * Sets a new deliveryStatus
-     *
-     * Revise only
      *
      * @param string $deliveryStatus
      * @return self
@@ -814,8 +713,6 @@ class ShipmentType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
     /**
      * Gets as refundGrantedTime
      *
-     * Revise only
-     *
      * @return \DateTime
      */
     public function getRefundGrantedTime()
@@ -825,8 +722,6 @@ class ShipmentType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
 
     /**
      * Sets a new refundGrantedTime
-     *
-     * Revise only
      *
      * @param \DateTime $refundGrantedTime
      * @return self
@@ -840,8 +735,6 @@ class ShipmentType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
     /**
      * Gets as refundRequestedTime
      *
-     * Revise only
-     *
      * @return \DateTime
      */
     public function getRefundRequestedTime()
@@ -851,8 +744,6 @@ class ShipmentType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
 
     /**
      * Sets a new refundRequestedTime
-     *
-     * Revise only
      *
      * @param \DateTime $refundRequestedTime
      * @return self
@@ -866,8 +757,6 @@ class ShipmentType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
     /**
      * Gets as status
      *
-     * Status, for revise only
-     *
      * @return string
      */
     public function getStatus()
@@ -877,8 +766,6 @@ class ShipmentType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
 
     /**
      * Sets a new status
-     *
-     * Status, for revise only
      *
      * @param string $status
      * @return self
@@ -924,9 +811,7 @@ class ShipmentType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
     /**
      * Gets as notes
      *
-     * <span class="tablenote"><b>Note: </b> This field is only applicable for Half.com listings, and since API support for Half.com listings is being deprecated, this field is no longer applicable.
-     *  </span>
-     *  This string field allows a seller to provide notes to the buyer regarding shipment of a Half.com item. Only alphanumeric characters can be used in this field. This is an optional field that is only applicable to Half.com items.
+     * This field is deprecated.
      *
      * @return string
      */
@@ -938,9 +823,7 @@ class ShipmentType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
     /**
      * Sets a new notes
      *
-     * <span class="tablenote"><b>Note: </b> This field is only applicable for Half.com listings, and since API support for Half.com listings is being deprecated, this field is no longer applicable.
-     *  </span>
-     *  This string field allows a seller to provide notes to the buyer regarding shipment of a Half.com item. Only alphanumeric characters can be used in this field. This is an optional field that is only applicable to Half.com items.
+     * This field is deprecated.
      *
      * @param string $notes
      * @return self

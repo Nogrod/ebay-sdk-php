@@ -108,7 +108,7 @@ class GetOrdersRequestType extends AbstractRequestType
     private $modTimeTo = null;
 
     /**
-     * This filter specifies the number of days (24-hour periods) in the past to search for orders. All eBay orders that were either created or modified within this period are returned in the output. This field cannot be used in conjunction with the <b>CreateTimeFrom</b>/<b>CreateTimeTo</b> or <b>ModTimeFrom</b>/<b>ModTimeTo</b> date filters.
+     * This filter specifies the number of days (24-hour periods) in the past to search for orders. All eBay orders that were created within this period are returned in the output. This field cannot be used in conjunction with the <b>CreateTimeFrom</b>/<b>CreateTimeTo</b> or <b>ModTimeFrom</b>/<b>ModTimeTo</b> date filters.
      *  <br><br>
      *  <span class="tablenote"><strong>Note:</strong>
      *  This date filter only allows you to retrieve orders created/modified within the last 30 days. So, if you wish to retrieve orders created and/or modified more than 30 days in the past, the <b>CreateTimeFrom</b>/<b>CreateTimeTo</b> or <b>ModTimeFrom</b>/<b>ModTimeTo</b> date filters should be used instead.
@@ -511,7 +511,7 @@ class GetOrdersRequestType extends AbstractRequestType
     /**
      * Gets as numberOfDays
      *
-     * This filter specifies the number of days (24-hour periods) in the past to search for orders. All eBay orders that were either created or modified within this period are returned in the output. This field cannot be used in conjunction with the <b>CreateTimeFrom</b>/<b>CreateTimeTo</b> or <b>ModTimeFrom</b>/<b>ModTimeTo</b> date filters.
+     * This filter specifies the number of days (24-hour periods) in the past to search for orders. All eBay orders that were created within this period are returned in the output. This field cannot be used in conjunction with the <b>CreateTimeFrom</b>/<b>CreateTimeTo</b> or <b>ModTimeFrom</b>/<b>ModTimeTo</b> date filters.
      *  <br><br>
      *  <span class="tablenote"><strong>Note:</strong>
      *  This date filter only allows you to retrieve orders created/modified within the last 30 days. So, if you wish to retrieve orders created and/or modified more than 30 days in the past, the <b>CreateTimeFrom</b>/<b>CreateTimeTo</b> or <b>ModTimeFrom</b>/<b>ModTimeTo</b> date filters should be used instead.
@@ -531,7 +531,7 @@ class GetOrdersRequestType extends AbstractRequestType
     /**
      * Sets a new numberOfDays
      *
-     * This filter specifies the number of days (24-hour periods) in the past to search for orders. All eBay orders that were either created or modified within this period are returned in the output. This field cannot be used in conjunction with the <b>CreateTimeFrom</b>/<b>CreateTimeTo</b> or <b>ModTimeFrom</b>/<b>ModTimeTo</b> date filters.
+     * This filter specifies the number of days (24-hour periods) in the past to search for orders. All eBay orders that were created within this period are returned in the output. This field cannot be used in conjunction with the <b>CreateTimeFrom</b>/<b>CreateTimeTo</b> or <b>ModTimeFrom</b>/<b>ModTimeTo</b> date filters.
      *  <br><br>
      *  <span class="tablenote"><strong>Note:</strong>
      *  This date filter only allows you to retrieve orders created/modified within the last 30 days. So, if you wish to retrieve orders created and/or modified more than 30 days in the past, the <b>CreateTimeFrom</b>/<b>CreateTimeTo</b> or <b>ModTimeFrom</b>/<b>ModTimeTo</b> date filters should be used instead.

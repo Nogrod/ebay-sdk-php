@@ -28,14 +28,6 @@ class FeatureIDCodeType
      * <b>GetCategoryFeatures</b> response will indicate whether or not the specified
      * eBay site supports the Best Offer feature, and which categories allow the Best
      * Offer feature.
-     *  <br/><br/>
-     *  <span class="tablenote"><b>Note: </b>
-     *  The Best Offer feature can be set for auction listings on the US, Canada, UK,
-     * Germany, Australia, France, Italy, and Spain marketplaces, but keep in mind that
-     * Best Offer and Buy It Now cannot be used simultaneously in a listing. Also, once
-     * a qualifying bid is made on an auction listing, the Best Offer feature is
-     * disabled, and any pending offer or counteroffers are no longer valid.
-     *  </span>
      */
     public const VAL_BEST_OFFER_ENABLED = 'BestOfferEnabled';
 
@@ -61,10 +53,7 @@ class FeatureIDCodeType
     /**
      * Constant for 'UserConsentRequired' value.
      *
-     * If this value is specified, the <b>SiteDefaults.UserConsentRequired</b> boolean
-     * field in the <b>GetCategoryFeatures</b> response will indicate whether or not
-     * the specified eBay site requires a prospective bidder of an auction item to read
-     * and agree to the terms in eBay's privacy policy before bidding on the item.
+     * This value is deprecated and should not be used.
      */
     public const VAL_USER_CONSENT_REQUIRED = 'UserConsentRequired';
 
@@ -104,14 +93,6 @@ class FeatureIDCodeType
      * <b>GetCategoryFeatures</b> response will indicate whether or not the specified
      * eBay site supports the Best Offer counter offers, and which categories allow the
      * Best Offer counter offers.
-     *  <br/><br/>
-     *  <span class="tablenote"><b>Note: </b>
-     *  The Best Offer feature can be set for auction listings on the US, Canada, UK,
-     * Germany, Australia, France, Italy, and Spain marketplaces, but keep in mind that
-     * Best Offer and Buy It Now cannot be used simultaneously in a listing. Also, once
-     * a qualifying bid is made on an auction listing, the Best Offer feature is
-     * disabled, and any pending offer or counteroffers are no longer valid.
-     *  </span>
      */
     public const VAL_BEST_OFFER_COUNTER_ENABLED = 'BestOfferCounterEnabled';
 
@@ -125,14 +106,6 @@ class FeatureIDCodeType
      * With the Best Offer auto decline feature, the seller sets a price threshold, and
      * all Best Offers and counter offers below this price value are automatically
      * declined without any seller action.
-     *  <br/><br/>
-     *  <span class="tablenote"><b>Note: </b>
-     *  The Best Offer feature can be set for auction listings on the US, Canada, UK,
-     * Germany, Australia, France, Italy, and Spain marketplaces, but keep in mind that
-     * Best Offer and Buy It Now cannot be used simultaneously in a listing. Also, once
-     * a qualifying bid is made on an auction listing, the Best Offer feature is
-     * disabled, and any pending offer or counteroffers are no longer valid.
-     *  </span>
      */
     public const VAL_BEST_OFFER_AUTO_DECLINE_ENABLED = 'BestOfferAutoDeclineEnabled';
 
@@ -162,12 +135,6 @@ class FeatureIDCodeType
      * eBay site and individual categories support the Value Pack listing enhancement
      * bundle. The Value Pack bundle includes the Gallery Plus feature, a listing
      * subtitle, and use of a Listing Designer template.
-     *  <br>
-     *  <br>
-     *  <span class="tablenote"><b>Note:</b> As of May 31, 2020, sellers are no longer
-     * able to use Listing Designer templates when they create or revise listings, so
-     * use of a Listing Designer template will no longer be a part of this
-     * bundle.</span>
      */
     public const VAL_VALUE_PACK = 'ValuePack';
 
@@ -414,12 +381,7 @@ class FeatureIDCodeType
     /**
      * Constant for 'SafePaymentRequired' value.
      *
-     * If this value is specified, the <b>SiteDefaults.SafePaymentRequired</b> and
-     * <b>Category.SafePaymentRequired</b> boolean fields in the
-     * <b>GetCategoryFeatures</b> response will indicate whether or not the specified
-     * eBay site, and individual categories on that site, require that the seller set
-     * at least one accepted payment method in the listing that is certified by eBay to
-     * be a "safe payment method".
+     * This value is deprecated and should not be used.
      */
     public const VAL_SAFE_PAYMENT_REQUIRED = 'SafePaymentRequired';
 
@@ -466,15 +428,7 @@ class FeatureIDCodeType
     /**
      * Constant for 'PaisaPayFullEscrowEnabled' value.
      *
-     * <span class="tablenote"><b>Note:</b>
-     *  This value is deprecated since it is only applicable to the eBay India site,
-     * and this marketplace is no longer available.</span>
-     *  If this value is specified, the <b>SiteDefaults.PaisaPayFullEscrowEnabled</b>
-     * and <b>Category.PaisaPayFullEscrowEnabled</b> boolean fields in the
-     * <b>GetCategoryFeatures</b> response will indicate whether or not the specified
-     * eBay site and individual categories on that site support Paisa Pay Full Escrow
-     * as an accepted payment method. This field is only relevant to listings on the
-     * eBay India site, which is the only site where Paisa Pay is available.
+     * This value is deprecated and should not be used.
      */
     public const VAL_PAISA_PAY_FULL_ESCROW_ENABLED = 'PaisaPayFullEscrowEnabled';
 
@@ -538,14 +492,6 @@ class FeatureIDCodeType
      * With the Best Offer auto accept feature, the seller sets a price threshold, and
      * all Best Offers and counter offers at or above this price value are
      * automatically accepted without any seller action.
-     *  <br/><br/>
-     *  <span class="tablenote"><b>Note: </b>
-     *  The Best Offer feature can be set for auction listings on the US, Canada, UK,
-     * Germany, Australia, France, Italy, and Spain marketplaces, but keep in mind that
-     * Best Offer and Buy It Now cannot be used simultaneously in a listing. Also, once
-     * a qualifying bid is made on an auction listing, the Best Offer feature is
-     * disabled, and any pending offer or counteroffers are no longer valid.
-     *  </span>
      */
     public const VAL_BEST_OFFER_AUTO_ACCEPT_ENABLED = 'BestOfferAutoAcceptEnabled';
 
@@ -566,43 +512,22 @@ class FeatureIDCodeType
     /**
      * Constant for 'PayPalBuyerProtectionEnabled' value.
      *
-     * If this value is specified, the <b>SiteDefaults.PayPalBuyerProtectionEnabled</b>
-     * and <b>Category.PayPalBuyerProtectionEnabled</b> boolean fields in the
-     * <b>GetCategoryFeatures</b> response will indicate whether or not the specified
-     * eBay site and individual categories are enabled with PayPal Purchase Protection.
-     * Of course, an eligible item must be purchased with PayPal to be eligible for
-     * PayPal Purchase Protection.
-     *  <br><br>
-     *  <span class="tablenote"><b>Note: </b>
-     *  PayPal Buyer Protection is not applicable if the seller is onboarded for
-     * managed payments.
-     *  </span>
+     * This value is deprecated and should not be used.
      */
     public const VAL_PAY_PAL_BUYER_PROTECTION_ENABLED = 'PayPalBuyerProtectionEnabled';
 
     /**
      * Constant for 'BuyerGuaranteeEnabled' value.
      *
-     * If this value is specified, the <b>SiteDefaults.BuyerGuaranteeEnabled</b> and
-     * <b>Category.BuyerGuaranteeEnabled</b> boolean fields in the
-     * <b>GetCategoryFeatures</b> response will indicate whether or not the specified
-     * eBay site and individual categories are enabled with the Australian version of
-     * the Buyer Protection program. This enumeration value is only applicable to the
-     * eBay Australia site.
+     * This value is deprecated and should not be used.
      */
     public const VAL_BUYER_GUARANTEE_ENABLED = 'BuyerGuaranteeEnabled';
 
     /**
      * Constant for 'INEscrowWorkflowTimeline' value.
      *
-     * <span class="tablenote"><b>Note:</b>
-     *  This value is deprecated since it is only applicable to the eBay India site,
-     * and this marketplace is no longer available.</span>
-     *  If this value is specified, the <b>Category.INEscrowWorkflowTimeline</b> fields
-     * in the <b>GetCategoryFeatures</b> response will indicate the escrow workflows
-     * that will be used for individual categories on the eBay India site. This
-     * enumeration value is only applicable to the eBay India site, and only if Paisa
-     * Pay Full Escrow is an accepted payment method.
+     * This value is deprecated since it is only applicable to the eBay India site, and
+     * this marketplace is no longer available.
      */
     public const VAL_INESCROW_WORKFLOW_TIMELINE = 'INEscrowWorkflowTimeline';
 
@@ -625,16 +550,7 @@ class FeatureIDCodeType
     /**
      * Constant for 'PayPalRequired' value.
      *
-     * If this value is specified, the <b>SiteDefaults.PayPalRequired</b> and
-     * <b>Category.PayPalRequired</b> boolean fields in the <b>GetCategoryFeatures</b>
-     * response will indicate whether or not the specified eBay site and individual
-     * categories require PayPal as one of the accepted payment methods in a listing.
-     *  <br><br>
-     *  <span class="tablenote"><b>Note: </b>
-     *  PayPal or any electronic payment methods are never required for managed
-     * payments sellers, so this filter value is not applicable for sellers onboarded
-     * for managed payments.
-     *  </span>
+     * This value is deprecated and should not be used.
      */
     public const VAL_PAY_PAL_REQUIRED = 'PayPalRequired';
 
@@ -994,50 +910,35 @@ class FeatureIDCodeType
     /**
      * Constant for 'SpecialitySubscription' value.
      *
-     * If this value is specified, the <b>SiteDefaults.SpecialitySubscription</b>
-     * boolean field in the <b>GetCategoryFeatures</b> response will indicate whether
-     * or not the specified eBay site supports Motors National listings for sellers
-     * with a specialty dealer subscription for selling motor vehicles.
+     * This value is <b>deprecated</b> and should no longer be used.
      */
     public const VAL_SPECIALITY_SUBSCRIPTION = 'SpecialitySubscription';
 
     /**
      * Constant for 'RegularSubscription' value.
      *
-     * If this value is specified, the <b>SiteDefaults.RegularSubscription</b> boolean
-     * field in the <b>GetCategoryFeatures</b> response will indicate whether or not
-     * the specified eBay site supports Motors National listings for sellers with a
-     * regular dealer subscription for selling motor vehicles.
+     * This value is <b>deprecated</b> and should no longer be used.
      */
     public const VAL_REGULAR_SUBSCRIPTION = 'RegularSubscription';
 
     /**
      * Constant for 'PremiumSubscription' value.
      *
-     * If this value is specified, the <b>SiteDefaults.PremiumSubscription</b> boolean
-     * field in the <b>GetCategoryFeatures</b> response will indicate whether or not
-     * the specified eBay site supports Motors National listings for sellers with a
-     * premium dealer subscription for selling motor vehicles.
+     * This value is <b>deprecated</b> and should no longer be used.
      */
     public const VAL_PREMIUM_SUBSCRIPTION = 'PremiumSubscription';
 
     /**
      * Constant for 'NonSubscription' value.
      *
-     * If this value is specified, the <b>SiteDefaults.NonSubscription</b> boolean
-     * field in the <b>GetCategoryFeatures</b> response will indicate whether or not
-     * the specified eBay site supports Motors National listings for sellers without a
-     * dealer subscription for selling motor vehicles.
+     * This value is <b>deprecated</b> and should no longer be used.
      */
     public const VAL_NON_SUBSCRIPTION = 'NonSubscription';
 
     /**
      * Constant for 'IntangibleEnabled' value.
      *
-     * If this value is specified, the <b>SiteDefaults.IntangibleEnabled</b> and
-     * <b>Category.IntangibleEnabled</b> boolean fields in the
-     * <b>GetCategoryFeatures</b> response will indicate whether or not the specified
-     * eBay site and individual categories allow sellers to sell intangible items.
+     * This value is <b>deprecated</b> and should no longer be used.
      */
     public const VAL_INTANGIBLE_ENABLED = 'IntangibleEnabled';
 
@@ -1307,9 +1208,15 @@ class FeatureIDCodeType
     /**
      * Constant for 'ProductCreationEnabled' value.
      *
-     * This enumeration value is no longer applicable. Use the
-     * <code>ProductRequiredEnabled</code> enumeration value instead to see if a
-     * category supports listings that are associated with an eBay Catalog product.
+     * If this value is specified, the <b>Category.ProductCreationEnabled</b> field in
+     * the <b>GetCategoryFeatures</b> response will indicate which categories support
+     * the use of an eBay catalog product when creating/revising listings. When a
+     * seller associates an eBay catalog product when creating/revising a listing, the
+     * listing will automatically be created using the eBay catalog product's image(s),
+     * product aspects, description, and title. This field will not be returned if one
+     * or more <b>FeatureID</b> fields are included in the call request and
+     * <code>ProductCreationEnabled</code> is not one of the values passed into those
+     * <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      */
     public const VAL_PRODUCT_CREATION_ENABLED = 'ProductCreationEnabled';
 
@@ -1554,16 +1461,7 @@ class FeatureIDCodeType
     /**
      * Constant for 'ProductRequiredEnabled' value.
      *
-     * This value is used to see if the site supports Product-Based Shopping Experience
-     * listings (listings associated with an eBay catalog product).
-     *  <br><br>
-     *  The <b>Category.ProductRequiredEnabled</b> field will only be returned if the
-     * category requires association with an eBay Catalog product.
-     *  <br><br>
-     *  <span class="tablenote"><b>Note:</b>
-     *  Due to the rollback of the Product-Based Shopping Experience mandate for all
-     * eBay categories, the value for this field should never get returned as
-     * <code>Enabled</code> for <b>SiteDefaults</b> or for any categories.</span>
+     * This value is deprecated and should not be used.
      */
     public const VAL_PRODUCT_REQUIRED_ENABLED = 'ProductRequiredEnabled';
 

@@ -109,12 +109,7 @@ class SimpleItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
     private $location = null;
 
     /**
-     * Identifies the payment method (such as PayPal) that the seller will accept when the buyer pays for the order line item.
-     *  <br>
-     *  <br>
-     *  <span class="tablenote"><b>Note:</b>
-     *  At this time, if the seller is opted in to eBay managed payments, the available payment methods (which are controlled by eBay and not the seller) may not be returned, but those payment methods will be exposed on the listing's View Item page.
-     *  </span>
+     * Identifies the payment method(s) that are available to a buyer to purchase the order line item.
      *
      * @var string[] $paymentMethods
      */
@@ -348,11 +343,11 @@ class SimpleItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
     private $itemSpecifics = null;
 
     /**
-     * The number of times the listing's View Item page has been viewed (as determined by
-     *  eBay). Only returned if the seller has chosen to include a hit counter in the
-     *  listing, and if the seller has also chosen to make the listing's hit count publicly
-     *  visible. This field is retrieved asynchronously. If you believe the item has a
-     *  publicly visible hit count, but this field is not returned, retry the call.
+     * <b>THIS FIELD IS DEPRECATED</b>. Hit counters are no longer displayed in View Item pages, so this field is no longer applicable and is scheduled for decommission.
+     *  <br/><br/>
+     *  For developers/sellers who are interested in seeing page views and listing performance, the <a href="https://developer.ebay.com/api-docs/sell/analytics/resources/traffic_report/methods/getTrafficReport">getTrafficReport</a> method of the <b>Sell Analytics API</b> can be used.
+     *  <br/><br/>
+     *  Until this field is decommissioned, it will still be returned in <b>GetSingleItem</b> and <b>GetMultipleItems</b>.
      *
      * @var int $hitCount
      */
@@ -532,7 +527,6 @@ class SimpleItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      *  <li>Auction listings that end with a winning bidder</li>
      *  <li>A buyer's Best Offer (on Fixed-Price or Auction items) that is accepted by the seller</li>
      *  </ul>
-     *  The immediate payment feature is only applicable to listings on PayPal-enabled sites in categories that support immediate payment, or if the seller is opted into the new eBay Managed Payments program. For the former, the only returned <b>PaymentMethods</b> value should be <code>PayPal</code>. For sellers, opted into the new eBay Managed Payments program, the supported payment methods are managed by eBay, so no payment methods may get returned.
      *
      * @var bool $autoPay
      */
@@ -556,19 +550,7 @@ class SimpleItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
     ];
 
     /**
-     * Indicates whether the item can be paid for through a payment gateway
-     *  (Payflow) account. If <b>IntegratedMerchantCreditCardEnabled</b> is <code>true</code>, then
-     *  integrated merchant credit card (IMCC) is enabled for credit cards because
-     *  the seller has a payment gateway account. Therefore, if
-     *  <b>IntegratedMerchantCreditCardEnabled</b> is <code>true</code>, an AmEx, Discover, or VisaMC
-     *  is returned for an item, then on checkout, an online credit-card payment is
-     *  processed through a payment gateway account. A payment gateway account is
-     *  used by sellers to accept online credit cards (Visa, MasterCard, American
-     *  Express, and Discover).
-     *  <br><br>
-     *  <span class="tablenote"><b>Note: </b>
-     *  As of May 1, 2019, eBay no longer supports electronic payments through Integrated Merchant Credit Card accounts. To accept online credit card payments from buyers, a seller must specify PayPal as an accepted payment method, or opt in to eBay Managed Payments program (if the program is available to that seller).
-     *  </span>
+     * This field is no longer applicable as eBay sellers can no longer use iMCC gateway accounts to handle buyer payments.
      *
      * @var bool $integratedMerchantCreditCardEnabled
      */
@@ -604,37 +586,21 @@ class SimpleItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
     private $lotSize = null;
 
     /**
-     * <span class="tablenote"><strong>Note:</strong>
-     *  As of September 1, 2021, condition ID 2500 ('Seller Refurbished') is no longer a valid item condition in the Cell Phones & Smartphones category (category ID 9355) for the following marketplaces: US, Canada, UK, Germany, and Australia. This refurbished item condition has been replaced by three new refurbished values, which include 'Excellent - Refurbished' (condition ID 2010), 'Very Good - Refurbished' (condition ID 2020), and 'Good - Refurbished' (condition ID 2030).
-     *  </span>
-     *  A numeric identifier that represents the condition of an item. These numeric IDs can vary by eBay category, but many are the same across categories. For example, <code>1000</code> indicates an item in <em>New</em> condition, <code>3000</code> indicates an item in <em>Used</em> condition, and <code>5000</code> indicates an item in <em>Good</em> condition.
+     * A numeric identifier that represents the condition of an item. These numeric IDs can vary by eBay category, but many are the same across categories. For example, <code>1000</code> indicates an item in <em>New</em> condition, <code>3000</code> indicates an item in <em>Used</em> condition, and <code>5000</code> indicates an item in <em>Good</em> condition.
      *  <br/><br/>
      *  This field will get returned for most listings since most eBay listing categories require an item condition, but this field may not get returned for listings in eBay categories that don't require an item condition. A <b>ConditionID</b> value always maps to a text-based description of the condition, and this display text is shown in the <b>ConditionDisplayName</b> field.
-     *  <br>
-     *  <br>
-     *  <span class="tablenote"><strong>Note:</strong>
-     *  In all eBay marketplaces, Condition ID 2000 now maps to an item condition of 'Certified Refurbished', and not 'Manufacturer Refurbished'. To list an item as 'Certified Refurbished', a seller must be pre-qualified by eBay for this feature.
-     *  </span>
      *
      * @var int $conditionID
      */
     private $conditionID = null;
 
     /**
-     * <span class="tablenote"><strong>Note:</strong>
-     *  As of September 1, 2021, condition ID 2500 ('Seller Refurbished') is no longer a valid item condition in the Cell Phones & Smartphones category (category ID 9355) for the following marketplaces: US, Canada, UK, Germany, and Australia. This refurbished item condition has been replaced by three new refurbished values, which include 'Excellent - Refurbished' (condition ID 2010), 'Very Good - Refurbished' (condition ID 2020), and 'Good - Refurbished' (condition ID 2030).
-     *  </span>
-     *  The user-friendly display name for the item condition, such as <em>New</em>, <em>Like New</em> <em>Used</em>, or <em>Good</em>. Display names are localized for the site on which they're listed (not necessarily the site on which they're viewed).
+     * The user-friendly display name for the item condition, such as <em>New</em>, <em>Like New</em> <em>Used</em>, or <em>Good</em>. Display names are localized for the site on which they're listed (not necessarily the site on which they're viewed).
      *  <br>
      *  <br>
      *  <b>ConditionDisplayName</b> values all map to <b>ConditionID</b> values, but keep in mind that based on the eBay category, some item conditions can have the same <b>ConditionID</b>, but a slightly different <b>ConditionDisplayName</b>. For example, a <b>ConditionID</b> value of <code>1000</code> typically indicates an item in new condtion, but the text displayed in the <b>ConditionDisplayName</b> can be just <em>New</em>, or some categories will show <em>Brand New</em>, <em>New with tags</em>, or <em>New with box</em>.
      *  <br/><br/>
      *  This field will get returned for most listings since most eBay listing categories require an item condition, but this field may not get returned for listings in eBay categories that don't require an item condition. A <b>ConditionDisplayName</b> value always maps to a text-based description of the condition, and this Condition ID is shown in the <b>ConditionID</b> field.
-     *  <br>
-     *  <br>
-     *  <span class="tablenote"><strong>Note:</strong>
-     *  In all eBay marketplaces, Condition ID 2000 now maps to an item condition of 'Certified Refurbished', and not 'Manufacturer Refurbished'. To list an item as 'Certified Refurbished', a seller must be pre-qualified by eBay for this feature.
-     *  </span>
      *
      * @var string $conditionDisplayName
      */
@@ -1194,12 +1160,7 @@ class SimpleItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
     /**
      * Adds as paymentMethods
      *
-     * Identifies the payment method (such as PayPal) that the seller will accept when the buyer pays for the order line item.
-     *  <br>
-     *  <br>
-     *  <span class="tablenote"><b>Note:</b>
-     *  At this time, if the seller is opted in to eBay managed payments, the available payment methods (which are controlled by eBay and not the seller) may not be returned, but those payment methods will be exposed on the listing's View Item page.
-     *  </span>
+     * Identifies the payment method(s) that are available to a buyer to purchase the order line item.
      *
      * @return self
      * @param string $paymentMethods
@@ -1213,12 +1174,7 @@ class SimpleItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
     /**
      * isset paymentMethods
      *
-     * Identifies the payment method (such as PayPal) that the seller will accept when the buyer pays for the order line item.
-     *  <br>
-     *  <br>
-     *  <span class="tablenote"><b>Note:</b>
-     *  At this time, if the seller is opted in to eBay managed payments, the available payment methods (which are controlled by eBay and not the seller) may not be returned, but those payment methods will be exposed on the listing's View Item page.
-     *  </span>
+     * Identifies the payment method(s) that are available to a buyer to purchase the order line item.
      *
      * @param int|string $index
      * @return bool
@@ -1231,12 +1187,7 @@ class SimpleItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
     /**
      * unset paymentMethods
      *
-     * Identifies the payment method (such as PayPal) that the seller will accept when the buyer pays for the order line item.
-     *  <br>
-     *  <br>
-     *  <span class="tablenote"><b>Note:</b>
-     *  At this time, if the seller is opted in to eBay managed payments, the available payment methods (which are controlled by eBay and not the seller) may not be returned, but those payment methods will be exposed on the listing's View Item page.
-     *  </span>
+     * Identifies the payment method(s) that are available to a buyer to purchase the order line item.
      *
      * @param int|string $index
      * @return void
@@ -1249,12 +1200,7 @@ class SimpleItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
     /**
      * Gets as paymentMethods
      *
-     * Identifies the payment method (such as PayPal) that the seller will accept when the buyer pays for the order line item.
-     *  <br>
-     *  <br>
-     *  <span class="tablenote"><b>Note:</b>
-     *  At this time, if the seller is opted in to eBay managed payments, the available payment methods (which are controlled by eBay and not the seller) may not be returned, but those payment methods will be exposed on the listing's View Item page.
-     *  </span>
+     * Identifies the payment method(s) that are available to a buyer to purchase the order line item.
      *
      * @return string[]
      */
@@ -1266,12 +1212,7 @@ class SimpleItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
     /**
      * Sets a new paymentMethods
      *
-     * Identifies the payment method (such as PayPal) that the seller will accept when the buyer pays for the order line item.
-     *  <br>
-     *  <br>
-     *  <span class="tablenote"><b>Note:</b>
-     *  At this time, if the seller is opted in to eBay managed payments, the available payment methods (which are controlled by eBay and not the seller) may not be returned, but those payment methods will be exposed on the listing's View Item page.
-     *  </span>
+     * Identifies the payment method(s) that are available to a buyer to purchase the order line item.
      *
      * @param string $paymentMethods
      * @return self
@@ -2150,11 +2091,11 @@ class SimpleItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
     /**
      * Gets as hitCount
      *
-     * The number of times the listing's View Item page has been viewed (as determined by
-     *  eBay). Only returned if the seller has chosen to include a hit counter in the
-     *  listing, and if the seller has also chosen to make the listing's hit count publicly
-     *  visible. This field is retrieved asynchronously. If you believe the item has a
-     *  publicly visible hit count, but this field is not returned, retry the call.
+     * <b>THIS FIELD IS DEPRECATED</b>. Hit counters are no longer displayed in View Item pages, so this field is no longer applicable and is scheduled for decommission.
+     *  <br/><br/>
+     *  For developers/sellers who are interested in seeing page views and listing performance, the <a href="https://developer.ebay.com/api-docs/sell/analytics/resources/traffic_report/methods/getTrafficReport">getTrafficReport</a> method of the <b>Sell Analytics API</b> can be used.
+     *  <br/><br/>
+     *  Until this field is decommissioned, it will still be returned in <b>GetSingleItem</b> and <b>GetMultipleItems</b>.
      *
      * @return int
      */
@@ -2166,11 +2107,11 @@ class SimpleItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
     /**
      * Sets a new hitCount
      *
-     * The number of times the listing's View Item page has been viewed (as determined by
-     *  eBay). Only returned if the seller has chosen to include a hit counter in the
-     *  listing, and if the seller has also chosen to make the listing's hit count publicly
-     *  visible. This field is retrieved asynchronously. If you believe the item has a
-     *  publicly visible hit count, but this field is not returned, retry the call.
+     * <b>THIS FIELD IS DEPRECATED</b>. Hit counters are no longer displayed in View Item pages, so this field is no longer applicable and is scheduled for decommission.
+     *  <br/><br/>
+     *  For developers/sellers who are interested in seeing page views and listing performance, the <a href="https://developer.ebay.com/api-docs/sell/analytics/resources/traffic_report/methods/getTrafficReport">getTrafficReport</a> method of the <b>Sell Analytics API</b> can be used.
+     *  <br/><br/>
+     *  Until this field is decommissioned, it will still be returned in <b>GetSingleItem</b> and <b>GetMultipleItems</b>.
      *
      * @param int $hitCount
      * @return self
@@ -2762,7 +2703,6 @@ class SimpleItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      *  <li>Auction listings that end with a winning bidder</li>
      *  <li>A buyer's Best Offer (on Fixed-Price or Auction items) that is accepted by the seller</li>
      *  </ul>
-     *  The immediate payment feature is only applicable to listings on PayPal-enabled sites in categories that support immediate payment, or if the seller is opted into the new eBay Managed Payments program. For the former, the only returned <b>PaymentMethods</b> value should be <code>PayPal</code>. For sellers, opted into the new eBay Managed Payments program, the supported payment methods are managed by eBay, so no payment methods may get returned.
      *
      * @return bool
      */
@@ -2782,7 +2722,6 @@ class SimpleItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      *  <li>Auction listings that end with a winning bidder</li>
      *  <li>A buyer's Best Offer (on Fixed-Price or Auction items) that is accepted by the seller</li>
      *  </ul>
-     *  The immediate payment feature is only applicable to listings on PayPal-enabled sites in categories that support immediate payment, or if the seller is opted into the new eBay Managed Payments program. For the former, the only returned <b>PaymentMethods</b> value should be <code>PayPal</code>. For sellers, opted into the new eBay Managed Payments program, the supported payment methods are managed by eBay, so no payment methods may get returned.
      *
      * @param bool $autoPay
      * @return self
@@ -2893,19 +2832,7 @@ class SimpleItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
     /**
      * Gets as integratedMerchantCreditCardEnabled
      *
-     * Indicates whether the item can be paid for through a payment gateway
-     *  (Payflow) account. If <b>IntegratedMerchantCreditCardEnabled</b> is <code>true</code>, then
-     *  integrated merchant credit card (IMCC) is enabled for credit cards because
-     *  the seller has a payment gateway account. Therefore, if
-     *  <b>IntegratedMerchantCreditCardEnabled</b> is <code>true</code>, an AmEx, Discover, or VisaMC
-     *  is returned for an item, then on checkout, an online credit-card payment is
-     *  processed through a payment gateway account. A payment gateway account is
-     *  used by sellers to accept online credit cards (Visa, MasterCard, American
-     *  Express, and Discover).
-     *  <br><br>
-     *  <span class="tablenote"><b>Note: </b>
-     *  As of May 1, 2019, eBay no longer supports electronic payments through Integrated Merchant Credit Card accounts. To accept online credit card payments from buyers, a seller must specify PayPal as an accepted payment method, or opt in to eBay Managed Payments program (if the program is available to that seller).
-     *  </span>
+     * This field is no longer applicable as eBay sellers can no longer use iMCC gateway accounts to handle buyer payments.
      *
      * @return bool
      */
@@ -2917,19 +2844,7 @@ class SimpleItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
     /**
      * Sets a new integratedMerchantCreditCardEnabled
      *
-     * Indicates whether the item can be paid for through a payment gateway
-     *  (Payflow) account. If <b>IntegratedMerchantCreditCardEnabled</b> is <code>true</code>, then
-     *  integrated merchant credit card (IMCC) is enabled for credit cards because
-     *  the seller has a payment gateway account. Therefore, if
-     *  <b>IntegratedMerchantCreditCardEnabled</b> is <code>true</code>, an AmEx, Discover, or VisaMC
-     *  is returned for an item, then on checkout, an online credit-card payment is
-     *  processed through a payment gateway account. A payment gateway account is
-     *  used by sellers to accept online credit cards (Visa, MasterCard, American
-     *  Express, and Discover).
-     *  <br><br>
-     *  <span class="tablenote"><b>Note: </b>
-     *  As of May 1, 2019, eBay no longer supports electronic payments through Integrated Merchant Credit Card accounts. To accept online credit card payments from buyers, a seller must specify PayPal as an accepted payment method, or opt in to eBay Managed Payments program (if the program is available to that seller).
-     *  </span>
+     * This field is no longer applicable as eBay sellers can no longer use iMCC gateway accounts to handle buyer payments.
      *
      * @param bool $integratedMerchantCreditCardEnabled
      * @return self
@@ -3037,17 +2952,9 @@ class SimpleItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
     /**
      * Gets as conditionID
      *
-     * <span class="tablenote"><strong>Note:</strong>
-     *  As of September 1, 2021, condition ID 2500 ('Seller Refurbished') is no longer a valid item condition in the Cell Phones & Smartphones category (category ID 9355) for the following marketplaces: US, Canada, UK, Germany, and Australia. This refurbished item condition has been replaced by three new refurbished values, which include 'Excellent - Refurbished' (condition ID 2010), 'Very Good - Refurbished' (condition ID 2020), and 'Good - Refurbished' (condition ID 2030).
-     *  </span>
-     *  A numeric identifier that represents the condition of an item. These numeric IDs can vary by eBay category, but many are the same across categories. For example, <code>1000</code> indicates an item in <em>New</em> condition, <code>3000</code> indicates an item in <em>Used</em> condition, and <code>5000</code> indicates an item in <em>Good</em> condition.
+     * A numeric identifier that represents the condition of an item. These numeric IDs can vary by eBay category, but many are the same across categories. For example, <code>1000</code> indicates an item in <em>New</em> condition, <code>3000</code> indicates an item in <em>Used</em> condition, and <code>5000</code> indicates an item in <em>Good</em> condition.
      *  <br/><br/>
      *  This field will get returned for most listings since most eBay listing categories require an item condition, but this field may not get returned for listings in eBay categories that don't require an item condition. A <b>ConditionID</b> value always maps to a text-based description of the condition, and this display text is shown in the <b>ConditionDisplayName</b> field.
-     *  <br>
-     *  <br>
-     *  <span class="tablenote"><strong>Note:</strong>
-     *  In all eBay marketplaces, Condition ID 2000 now maps to an item condition of 'Certified Refurbished', and not 'Manufacturer Refurbished'. To list an item as 'Certified Refurbished', a seller must be pre-qualified by eBay for this feature.
-     *  </span>
      *
      * @return int
      */
@@ -3059,17 +2966,9 @@ class SimpleItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
     /**
      * Sets a new conditionID
      *
-     * <span class="tablenote"><strong>Note:</strong>
-     *  As of September 1, 2021, condition ID 2500 ('Seller Refurbished') is no longer a valid item condition in the Cell Phones & Smartphones category (category ID 9355) for the following marketplaces: US, Canada, UK, Germany, and Australia. This refurbished item condition has been replaced by three new refurbished values, which include 'Excellent - Refurbished' (condition ID 2010), 'Very Good - Refurbished' (condition ID 2020), and 'Good - Refurbished' (condition ID 2030).
-     *  </span>
-     *  A numeric identifier that represents the condition of an item. These numeric IDs can vary by eBay category, but many are the same across categories. For example, <code>1000</code> indicates an item in <em>New</em> condition, <code>3000</code> indicates an item in <em>Used</em> condition, and <code>5000</code> indicates an item in <em>Good</em> condition.
+     * A numeric identifier that represents the condition of an item. These numeric IDs can vary by eBay category, but many are the same across categories. For example, <code>1000</code> indicates an item in <em>New</em> condition, <code>3000</code> indicates an item in <em>Used</em> condition, and <code>5000</code> indicates an item in <em>Good</em> condition.
      *  <br/><br/>
      *  This field will get returned for most listings since most eBay listing categories require an item condition, but this field may not get returned for listings in eBay categories that don't require an item condition. A <b>ConditionID</b> value always maps to a text-based description of the condition, and this display text is shown in the <b>ConditionDisplayName</b> field.
-     *  <br>
-     *  <br>
-     *  <span class="tablenote"><strong>Note:</strong>
-     *  In all eBay marketplaces, Condition ID 2000 now maps to an item condition of 'Certified Refurbished', and not 'Manufacturer Refurbished'. To list an item as 'Certified Refurbished', a seller must be pre-qualified by eBay for this feature.
-     *  </span>
      *
      * @param int $conditionID
      * @return self
@@ -3083,20 +2982,12 @@ class SimpleItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
     /**
      * Gets as conditionDisplayName
      *
-     * <span class="tablenote"><strong>Note:</strong>
-     *  As of September 1, 2021, condition ID 2500 ('Seller Refurbished') is no longer a valid item condition in the Cell Phones & Smartphones category (category ID 9355) for the following marketplaces: US, Canada, UK, Germany, and Australia. This refurbished item condition has been replaced by three new refurbished values, which include 'Excellent - Refurbished' (condition ID 2010), 'Very Good - Refurbished' (condition ID 2020), and 'Good - Refurbished' (condition ID 2030).
-     *  </span>
-     *  The user-friendly display name for the item condition, such as <em>New</em>, <em>Like New</em> <em>Used</em>, or <em>Good</em>. Display names are localized for the site on which they're listed (not necessarily the site on which they're viewed).
+     * The user-friendly display name for the item condition, such as <em>New</em>, <em>Like New</em> <em>Used</em>, or <em>Good</em>. Display names are localized for the site on which they're listed (not necessarily the site on which they're viewed).
      *  <br>
      *  <br>
      *  <b>ConditionDisplayName</b> values all map to <b>ConditionID</b> values, but keep in mind that based on the eBay category, some item conditions can have the same <b>ConditionID</b>, but a slightly different <b>ConditionDisplayName</b>. For example, a <b>ConditionID</b> value of <code>1000</code> typically indicates an item in new condtion, but the text displayed in the <b>ConditionDisplayName</b> can be just <em>New</em>, or some categories will show <em>Brand New</em>, <em>New with tags</em>, or <em>New with box</em>.
      *  <br/><br/>
      *  This field will get returned for most listings since most eBay listing categories require an item condition, but this field may not get returned for listings in eBay categories that don't require an item condition. A <b>ConditionDisplayName</b> value always maps to a text-based description of the condition, and this Condition ID is shown in the <b>ConditionID</b> field.
-     *  <br>
-     *  <br>
-     *  <span class="tablenote"><strong>Note:</strong>
-     *  In all eBay marketplaces, Condition ID 2000 now maps to an item condition of 'Certified Refurbished', and not 'Manufacturer Refurbished'. To list an item as 'Certified Refurbished', a seller must be pre-qualified by eBay for this feature.
-     *  </span>
      *
      * @return string
      */
@@ -3108,20 +2999,12 @@ class SimpleItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
     /**
      * Sets a new conditionDisplayName
      *
-     * <span class="tablenote"><strong>Note:</strong>
-     *  As of September 1, 2021, condition ID 2500 ('Seller Refurbished') is no longer a valid item condition in the Cell Phones & Smartphones category (category ID 9355) for the following marketplaces: US, Canada, UK, Germany, and Australia. This refurbished item condition has been replaced by three new refurbished values, which include 'Excellent - Refurbished' (condition ID 2010), 'Very Good - Refurbished' (condition ID 2020), and 'Good - Refurbished' (condition ID 2030).
-     *  </span>
-     *  The user-friendly display name for the item condition, such as <em>New</em>, <em>Like New</em> <em>Used</em>, or <em>Good</em>. Display names are localized for the site on which they're listed (not necessarily the site on which they're viewed).
+     * The user-friendly display name for the item condition, such as <em>New</em>, <em>Like New</em> <em>Used</em>, or <em>Good</em>. Display names are localized for the site on which they're listed (not necessarily the site on which they're viewed).
      *  <br>
      *  <br>
      *  <b>ConditionDisplayName</b> values all map to <b>ConditionID</b> values, but keep in mind that based on the eBay category, some item conditions can have the same <b>ConditionID</b>, but a slightly different <b>ConditionDisplayName</b>. For example, a <b>ConditionID</b> value of <code>1000</code> typically indicates an item in new condtion, but the text displayed in the <b>ConditionDisplayName</b> can be just <em>New</em>, or some categories will show <em>Brand New</em>, <em>New with tags</em>, or <em>New with box</em>.
      *  <br/><br/>
      *  This field will get returned for most listings since most eBay listing categories require an item condition, but this field may not get returned for listings in eBay categories that don't require an item condition. A <b>ConditionDisplayName</b> value always maps to a text-based description of the condition, and this Condition ID is shown in the <b>ConditionID</b> field.
-     *  <br>
-     *  <br>
-     *  <span class="tablenote"><strong>Note:</strong>
-     *  In all eBay marketplaces, Condition ID 2000 now maps to an item condition of 'Certified Refurbished', and not 'Manufacturer Refurbished'. To list an item as 'Certified Refurbished', a seller must be pre-qualified by eBay for this feature.
-     *  </span>
      *
      * @param string $conditionDisplayName
      * @return self

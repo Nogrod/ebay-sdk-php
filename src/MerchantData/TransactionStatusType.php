@@ -7,23 +7,20 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing TransactionStatusType
  *
- * Contains the order status, e.g. the buyer's online
- *  payment and whether the checkout process for the order is complete.
+ * Contains the order status, e.g. the buyer's online payment and whether the checkout process for the order is complete.
  * XSD Type: TransactionStatusType
  */
 class TransactionStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
     /**
-     * Indicates the success or failure of the buyer's online payment for an order.
-     *  Applicable for the payment method that the buyer chose for the order. If the
-     *  payment failed, the value returned indicates the reason for the failure.
+     * Indicates the status of the buyer's payment for an order. If the payment was successfuly processed, a value of <code>NoPaymentFailure</code> will be returned.
      *
      * @var string $eBayPaymentStatus
      */
     private $eBayPaymentStatus = null;
 
     /**
-     * Indicates the current status of the checkout flow for the order.
+     * Indicates the current status of the checkout flow for the order. If the payment was successfuly processed, a value of <code>CheckoutComplete</code> will be returned.
      *
      * @var string $checkoutStatus
      */
@@ -37,11 +34,10 @@ class TransactionStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
     private $lastTimeModified = null;
 
     /**
-     * The payment method that the buyer selected to pay for the order. If checkout is not yet complete, <b>PaymentMethodUsed</b>, which is returned by the <b>GetItemTransactions</b> call, is set to whatever the buyer selected as his or her preference on the Review Your Purchase page.
-     *  <br>
-     *  <br>
-     *  <span class="tablenote"><b>Note:</b>
-     *  For sellers opted in to the eBay Managed Payments program, the enumeration value returned in this field will be <code>CreditCard</code>, regardless of the actual payment method used by the buyer to pay for the order.
+     * The payment method that the buyer selected to pay for the order.
+     *  <br><br>
+     *  <span class="tablenote"><b>Note: </b>
+     *  Sellers no longer have to specify any electronic payment methods at listing time, but this field is still returned. The value returned in this field will generally be <code>CreditCard</code>, unless an eBay gift card was used by the buyer to pay a partial or full balance of the order. If this is the case, the value returned in this field will be <code>CCAccepted</code>. Either of these two values will be returned, but neither accurately reflects the actual payment method that the buyer used. If the order was paid for off of eBay's platform using an 'offline' payment method such as 'CashOnPickup' or 'MOCC' (money order or cashier's check), and the seller marked the order as paid, either of those values may get returned here.
      *  </span>
      *
      * @var string $paymentMethodUsed
@@ -56,13 +52,7 @@ class TransactionStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
     private $completeStatus = null;
 
     /**
-     * Indicates whether the buyer has selected shipping details
-     *  during checkout. False indicates that the shipping service was
-     *  selected by eBay for the buyer. For example, if the buyer has
-     *  not yet completed the Review Your Purchase page, he has not
-     *  picked a shipping service. If it is false, the application
-     *  should ignore <strong>ShippingServiceCost</strong> and <strong>ShippingServiceSelected</strong>
-     *  (items whose values are defaulted by eBay).
+     * Indicates whether the buyer has selected shipping details during checkout. False indicates that the shipping service was selected by eBay for the buyer. For example, if the buyer has not yet completed the Review Your Purchase page, he has not picked a shipping service. If it is false, the application should ignore <strong>ShippingServiceCost</strong> and <strong>ShippingServiceSelected</strong> (items whose values are defaulted by eBay).
      *
      * @var bool $buyerSelectedShipping
      */
@@ -131,9 +121,7 @@ class TransactionStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
     /**
      * Gets as eBayPaymentStatus
      *
-     * Indicates the success or failure of the buyer's online payment for an order.
-     *  Applicable for the payment method that the buyer chose for the order. If the
-     *  payment failed, the value returned indicates the reason for the failure.
+     * Indicates the status of the buyer's payment for an order. If the payment was successfuly processed, a value of <code>NoPaymentFailure</code> will be returned.
      *
      * @return string
      */
@@ -145,9 +133,7 @@ class TransactionStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
     /**
      * Sets a new eBayPaymentStatus
      *
-     * Indicates the success or failure of the buyer's online payment for an order.
-     *  Applicable for the payment method that the buyer chose for the order. If the
-     *  payment failed, the value returned indicates the reason for the failure.
+     * Indicates the status of the buyer's payment for an order. If the payment was successfuly processed, a value of <code>NoPaymentFailure</code> will be returned.
      *
      * @param string $eBayPaymentStatus
      * @return self
@@ -161,7 +147,7 @@ class TransactionStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
     /**
      * Gets as checkoutStatus
      *
-     * Indicates the current status of the checkout flow for the order.
+     * Indicates the current status of the checkout flow for the order. If the payment was successfuly processed, a value of <code>CheckoutComplete</code> will be returned.
      *
      * @return string
      */
@@ -173,7 +159,7 @@ class TransactionStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
     /**
      * Sets a new checkoutStatus
      *
-     * Indicates the current status of the checkout flow for the order.
+     * Indicates the current status of the checkout flow for the order. If the payment was successfuly processed, a value of <code>CheckoutComplete</code> will be returned.
      *
      * @param string $checkoutStatus
      * @return self
@@ -213,11 +199,10 @@ class TransactionStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
     /**
      * Gets as paymentMethodUsed
      *
-     * The payment method that the buyer selected to pay for the order. If checkout is not yet complete, <b>PaymentMethodUsed</b>, which is returned by the <b>GetItemTransactions</b> call, is set to whatever the buyer selected as his or her preference on the Review Your Purchase page.
-     *  <br>
-     *  <br>
-     *  <span class="tablenote"><b>Note:</b>
-     *  For sellers opted in to the eBay Managed Payments program, the enumeration value returned in this field will be <code>CreditCard</code>, regardless of the actual payment method used by the buyer to pay for the order.
+     * The payment method that the buyer selected to pay for the order.
+     *  <br><br>
+     *  <span class="tablenote"><b>Note: </b>
+     *  Sellers no longer have to specify any electronic payment methods at listing time, but this field is still returned. The value returned in this field will generally be <code>CreditCard</code>, unless an eBay gift card was used by the buyer to pay a partial or full balance of the order. If this is the case, the value returned in this field will be <code>CCAccepted</code>. Either of these two values will be returned, but neither accurately reflects the actual payment method that the buyer used. If the order was paid for off of eBay's platform using an 'offline' payment method such as 'CashOnPickup' or 'MOCC' (money order or cashier's check), and the seller marked the order as paid, either of those values may get returned here.
      *  </span>
      *
      * @return string
@@ -230,11 +215,10 @@ class TransactionStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
     /**
      * Sets a new paymentMethodUsed
      *
-     * The payment method that the buyer selected to pay for the order. If checkout is not yet complete, <b>PaymentMethodUsed</b>, which is returned by the <b>GetItemTransactions</b> call, is set to whatever the buyer selected as his or her preference on the Review Your Purchase page.
-     *  <br>
-     *  <br>
-     *  <span class="tablenote"><b>Note:</b>
-     *  For sellers opted in to the eBay Managed Payments program, the enumeration value returned in this field will be <code>CreditCard</code>, regardless of the actual payment method used by the buyer to pay for the order.
+     * The payment method that the buyer selected to pay for the order.
+     *  <br><br>
+     *  <span class="tablenote"><b>Note: </b>
+     *  Sellers no longer have to specify any electronic payment methods at listing time, but this field is still returned. The value returned in this field will generally be <code>CreditCard</code>, unless an eBay gift card was used by the buyer to pay a partial or full balance of the order. If this is the case, the value returned in this field will be <code>CCAccepted</code>. Either of these two values will be returned, but neither accurately reflects the actual payment method that the buyer used. If the order was paid for off of eBay's platform using an 'offline' payment method such as 'CashOnPickup' or 'MOCC' (money order or cashier's check), and the seller marked the order as paid, either of those values may get returned here.
      *  </span>
      *
      * @param string $paymentMethodUsed
@@ -275,13 +259,7 @@ class TransactionStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
     /**
      * Gets as buyerSelectedShipping
      *
-     * Indicates whether the buyer has selected shipping details
-     *  during checkout. False indicates that the shipping service was
-     *  selected by eBay for the buyer. For example, if the buyer has
-     *  not yet completed the Review Your Purchase page, he has not
-     *  picked a shipping service. If it is false, the application
-     *  should ignore <strong>ShippingServiceCost</strong> and <strong>ShippingServiceSelected</strong>
-     *  (items whose values are defaulted by eBay).
+     * Indicates whether the buyer has selected shipping details during checkout. False indicates that the shipping service was selected by eBay for the buyer. For example, if the buyer has not yet completed the Review Your Purchase page, he has not picked a shipping service. If it is false, the application should ignore <strong>ShippingServiceCost</strong> and <strong>ShippingServiceSelected</strong> (items whose values are defaulted by eBay).
      *
      * @return bool
      */
@@ -293,13 +271,7 @@ class TransactionStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
     /**
      * Sets a new buyerSelectedShipping
      *
-     * Indicates whether the buyer has selected shipping details
-     *  during checkout. False indicates that the shipping service was
-     *  selected by eBay for the buyer. For example, if the buyer has
-     *  not yet completed the Review Your Purchase page, he has not
-     *  picked a shipping service. If it is false, the application
-     *  should ignore <strong>ShippingServiceCost</strong> and <strong>ShippingServiceSelected</strong>
-     *  (items whose values are defaulted by eBay).
+     * Indicates whether the buyer has selected shipping details during checkout. False indicates that the shipping service was selected by eBay for the buyer. For example, if the buyer has not yet completed the Review Your Purchase page, he has not picked a shipping service. If it is false, the application should ignore <strong>ShippingServiceCost</strong> and <strong>ShippingServiceSelected</strong> (items whose values are defaulted by eBay).
      *
      * @param bool $buyerSelectedShipping
      * @return self

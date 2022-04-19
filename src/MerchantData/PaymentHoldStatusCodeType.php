@@ -6,7 +6,7 @@ namespace Nogrod\eBaySDK\MerchantData;
  * Class representing PaymentHoldStatusCodeType
  *
  * Enumerated type that contains the list of possible values that can be returned
- *  in the PaymentHoldStatus container.
+ *  in the <b>PaymentHoldStatus</b> container.
  * XSD Type: PaymentHoldStatusCodeType
  */
 class PaymentHoldStatusCodeType
@@ -14,58 +14,45 @@ class PaymentHoldStatusCodeType
     /**
      * Constant for 'PaymentReview' value.
      *
-     * This value indicates a possible issue with a buyer. If this value is returned,
-     *  the TransactionArray.Transaction.SellerPaidStatus field is returned as NotPaid
-     *  in GetMyeBaySelling, and the TransactionArray.Transaction.BuyerPaidStatus field
-     *  is returned as PaidWithPayPal in GetMyeBayBuying.
+     * This value indicates a possible issue with the buyer that needs to be reviewed
+     * by eBay.
      */
     public const VAL_PAYMENT_REVIEW = 'PaymentReview';
 
     /**
      * Constant for 'MerchantHold' value.
      *
-     * This value indicates a possible issue with a seller. If this value is returned,
-     *  the TransactionArray.Transaction.SellerPaidStatus field is returned as
-     *  PaidWithPayPal in GetMyeBaySelling, and the
-     *  TransactionArray.Transaction.BuyerPaidStatus field is returned as
-     * PaidWithPayPal
-     *  in GetMyeBayBuying.
+     * This value indicates a possible issue with the seller that needs to be reviewed
+     * by eBay.
      */
     public const VAL_MERCHANT_HOLD = 'MerchantHold';
 
     /**
      * Constant for 'Released' value.
      *
-     * This value indicates that a payment hold on the item has been released.
+     * This value indicates that a payment hold on the order has been released.
      */
     public const VAL_RELEASED = 'Released';
 
     /**
      * Constant for 'None' value.
      *
-     * This value indicates that there is no payment hold on the item.
+     * This value indicates that there is no payment hold on the order.
      */
     public const VAL_NONE = 'None';
 
     /**
      * Constant for 'NewSellerHold' value.
      *
-     * This value indicates that there is a "new seller hold" on the item. eBay/PayPal
+     * This value indicates that there is a "new seller hold" on the order. eBay
      *  may hold payments to a new seller for up to 21 days.
-     *  Sellers are
-     *  considered "new" until they have met all three criteria below:
-     *  <ul>
-     *  <li>More than 90 days have passed since first successful sale</li>
-     *  <li>More than 25 domestic sales</li>
-     *  <li>More than $250.00 in total sales</li>
-     *  </ul>
      */
     public const VAL_NEW_SELLER_HOLD = 'NewSellerHold';
 
     /**
      * Constant for 'PaymentHold' value.
      *
-     * This value indicates that there is a payment hold on the item.
+     * This value indicates that there is a payment hold on the order.
      */
     public const VAL_PAYMENT_HOLD = 'PaymentHold';
 

@@ -8,7 +8,9 @@ namespace Nogrod\eBaySDK\MerchantData;
  * This enumerated type defines the possible reasons why an order dispute between a buyer and seller is resolved.
  *  <br/><br/>
  *  <span class="tablenote"><strong>Note:</strong>
- *  The dispute calls in the Trading API are not compatible with 'Item Not Received' or 'Significantly Not As Described' cases initiated by buyers through the eBay Money Back Guarantee program. The <a href="https://developer.ebay.com/Devzone/post-order/concepts/UsageGuide.html">Post-Order API</a> is used to retrieve and/or respond to eBay Money Back Guarantee cases programmatically.
+ *  The Dispute calls of the Trading API now only support Unpaid Item cases, and no longer support Item not Received (INR) or Significantly not as Described (SNAD) disputes created through PayPal, since this is no longer an option for eBay buyers. eBay buyers must create an INR or SNAD case through eBay's Resolution Center, and these calls do not support eBay Money Back Guarantee cases.
+ *  <br><br>
+ *  To respond to an eBay Money Back Guarantee case, the seller should use the <a href="https://developer.ebay.com/Devzone/post-order/index.html" target="_blank">Case Management calls</a> of the <b>Post-Order API</b> or manage/respond to cases manually through the eBay Resolution Center.
  *  </span>
  * XSD Type: DisputeResolutionReasonCodeType
  */
@@ -17,7 +19,8 @@ class DisputeResolutionReasonCodeType
     /**
      * Constant for 'Unresolved' value.
      *
-     * This enumeration value indicates that the dispute has not been resolved.
+     * This enumeration value indicates that the Unpaid Item case has yet to be
+     * resolved.
      */
     public const VAL_UNRESOLVED = 'Unresolved';
 
@@ -32,7 +35,7 @@ class DisputeResolutionReasonCodeType
     /**
      * Constant for 'ComputerTechnicalProblem' value.
      *
-     * This enumeration value indicates that the buyer or seller had a technical
+     * This enumeration value indicates that the buyer had not paid due to a technical
      * problem with a computer.
      */
     public const VAL_COMPUTER_TECHNICAL_PROBLEM = 'ComputerTechnicalProblem';
@@ -48,7 +51,7 @@ class DisputeResolutionReasonCodeType
     /**
      * Constant for 'FamilyEmergency' value.
      *
-     * This enumeration value indicates that the buyer or seller had a family
+     * This enumeration value indicates that the buyer had not paid due to a family
      * emergency.
      */
     public const VAL_FAMILY_EMERGENCY = 'FamilyEmergency';
@@ -64,7 +67,7 @@ class DisputeResolutionReasonCodeType
     /**
      * Constant for 'FirstInfraction' value.
      *
-     * This enumeration value indicates that the dispute was the buyer's first
+     * This enumeration value indicates that the Unpaid Item case was the buyer's first
      * infraction, and thus resolved.
      */
     public const VAL_FIRST_INFRACTION = 'FirstInfraction';
@@ -72,7 +75,8 @@ class DisputeResolutionReasonCodeType
     /**
      * Constant for 'CameToAgreement' value.
      *
-     * This enumeration value indicates that the buyer and seller came to an agreement.
+     * This enumeration value indicates that the buyer and seller came to an agreement
+     * regarding payment or mutual cancellation of the order.
      */
     public const VAL_CAME_TO_AGREEMENT = 'CameToAgreement';
 
@@ -96,7 +100,7 @@ class DisputeResolutionReasonCodeType
      * Constant for 'SellerReceivedPayment' value.
      *
      * This enumeration value indicates that the seller received payment for the item,
-     * and thus an Unpaid Item case was closed.
+     * and thus the Unpaid Item case was closed.
      */
     public const VAL_SELLER_RECEIVED_PAYMENT = 'SellerReceivedPayment';
 
@@ -110,7 +114,8 @@ class DisputeResolutionReasonCodeType
     /**
      * Constant for 'ClaimPaid' value.
      *
-     * This enumeration value indicates that the claim was paid.
+     * This enumeration value is no longer applicable since it is related to an INR or
+     * SNAD dispute, which are no longer supported.
      */
     public const VAL_CLAIM_PAID = 'ClaimPaid';
 

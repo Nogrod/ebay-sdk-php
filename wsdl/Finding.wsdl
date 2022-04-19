@@ -3696,10 +3696,6 @@
 					<xs:annotation>
 						<xs:documentation>
 							The name and unique ID of the item condition for which the count is being displayed.
-							&lt;br&gt;&lt;br&gt;
-								&lt;span class="tablenote"&gt;&lt;strong&gt;Note:&lt;/strong&gt;
-								In all eBay marketplaces, Condition ID 2000 now maps to an item condition of 'Certified Refurbished', and not 'Manufacturer Refurbished'. To list an item as 'Certified Refurbished', a seller must be pre-qualified by eBay for this feature.
-							&lt;/span&gt;
 						</xs:documentation>
 							<xs:appinfo>
 								<CallInfo>
@@ -4514,10 +4510,6 @@
 								This item condition filter allows a user to filter items based on item condition. Multiple item condition filters may be used. The &lt;code&gt;Condition&lt;/code&gt; enum value is specified in the &lt;b&gt;itemfilter.name&lt;/b&gt; field, and either the condition ID or the condition name can be specified in the &lt;b&gt;itemfilter.value&lt;/b&gt; field. The condition ID is actually recommended, because these identifiers are consistent across eBay categories, whereas condition names can vary slightly between eBay categories, such as 'New', 'New in Box', or 'New with Tags'.
 								&lt;br&gt;&lt;br&gt;
 								See the &lt;a href="https://developer.ebay.com/Devzone/finding/CallRef/Enums/conditionIdList.html"&gt;Item Condition IDs and Names&lt;/a&gt; page to view a table that maps condition IDs to condition names.
-								&lt;br&gt;&lt;br&gt;
-								&lt;span class="tablenote"&gt;&lt;strong&gt;Note:&lt;/strong&gt;
-									In all eBay marketplaces, Condition ID 2000 now maps to an item condition of 'Certified Refurbished', and not 'Manufacturer Refurbished'. To list an item as 'Certified Refurbished', a seller must be pre-qualified by eBay for this feature.
-								&lt;/span&gt;
 							</xs:documentation>
 						</xs:annotation>
 					</xs:enumeration>
@@ -4734,8 +4726,7 @@
 						<xs:annotation>
 							<xs:documentation>
 								&lt;a name="AvailableTo"&gt;&lt;/a&gt;
-								Limits items to those available to the specified country only. Item
-								filter LocatedIn cannot be used together with item filter AvailableTo.
+								Limits items to those available to the specified country only. 
 								&lt;br&gt;&lt;br&gt;
 								&lt;b&gt;Allowed values (&lt;a
 								class="defn_type"
@@ -4754,8 +4745,7 @@
 							<xs:documentation>
 								&lt;a name="LocatedIn"&gt;&lt;/a&gt;
 								Limits the result set to just those items located in the specified
-								country. Item filter AvailableTo cannot be used together with item filter
-								LocatedIn.
+								country. 
 								&lt;br&gt;&lt;br&gt;
 								&lt;b&gt;Allowed values (&lt;a
 								class="defn_type"
@@ -5682,10 +5672,6 @@
 							If you Condition as a &lt;strong&gt;itemFilter&lt;/strong&gt;, the response returns items
 							with the correctly matching condition(s), even if &lt;strong&gt;conditionId&lt;/strong&gt; is
 							not returned.
-							&lt;br&gt;&lt;br&gt;
-								&lt;span class="tablenote"&gt;&lt;strong&gt;Note:&lt;/strong&gt;
-								In all eBay marketplaces, Condition ID 2000 now maps to an item condition of 'Certified Refurbished', and not 'Manufacturer Refurbished'. To list an item as 'Certified Refurbished', a seller must be pre-qualified by eBay for this feature.
-							&lt;/span&gt;
 						</xs:documentation>
 						<xs:appinfo>
 							<CallInfo>
@@ -6889,10 +6875,6 @@
 						<xs:annotation>
 							<xs:documentation>
 								This container shows the name and unique ID of the item's condition. This container will generally get returned unless the item is in an eBay category that does not require an item condition. Supported item conditions vary by category.
-								&lt;br&gt;&lt;br&gt;
-								&lt;span class="tablenote"&gt;&lt;strong&gt;Note:&lt;/strong&gt;
-								In all eBay marketplaces, Condition ID 2000 now maps to an item condition of 'Certified Refurbished', and not 'Manufacturer Refurbished'. To list an item as 'Certified Refurbished', a seller must be pre-qualified by eBay for this feature.
-								&lt;/span&gt;
 							</xs:documentation>
 							<xs:appinfo>
 								<CallInfo>

@@ -23,7 +23,9 @@ namespace Nogrod\eBaySDK\MerchantData;
  *  If the <b>DisputeSortType</b> value is set to <code>DisputeStatusDescending</code> instead, retrieved disputes will be sorted in the opposite order of the ones listed above.
  *  <br/><br/>
  *  <span class="tablenote"><strong>Note:</strong>
- *  'Item Not Received' or 'Significantly Not As Described' cases, initiated by buyers through the eBay Money Back Guarantee program, are not returned with <b>GetDispute</b> or <b>GetUserDisputes</b>. The <a href="https://developer.ebay.com/Devzone/post-order/post-order_v2_casemanagement-caseId__get.html#overview">getCase</a> method of the <a href="https://developer.ebay.com/Devzone/post-order/concepts/UsageGuide.html">Post-Order API</a> is used to retrieve Money Back Guarantee cases programmatically.
+ *  The <b>GetDispute</b> and <b>GetUserDisputes</b> calls now only retrieve Unpaid Item cases. They are no longer used to retrieve Item not Received (INR) disputes created through PayPal, since this is no longer an option for eBay buyers. eBay buyers must create an INR case through eBay's Resolution Center, and these calls do not support eBay Money Back Guarantee cases.
+ *  <br><br>
+ *  To respond to an eBay Money Back Guarantee case, the seller should use the <a href="https://developer.ebay.com/Devzone/post-order/index.html" target="_blank">Case Management calls</a> of the <b>Post-Order API</b> or manage/respond to cases manually through the eBay Resolution Center.
  *  </span>
  * XSD Type: DisputeStatusCodeType
  */
@@ -32,57 +34,55 @@ class DisputeStatusCodeType
     /**
      * Constant for 'Closed' value.
      *
-     * This enumeration value indicates that the dispute is closed.
+     * This enumeration value indicates that the Unpaid Item case is closed.
      */
     public const VAL_CLOSED = 'Closed';
 
     /**
      * Constant for 'WaitingForSellerResponse' value.
      *
-     * This enumeration value indicates that the dispute is waiting for the seller's
-     * response.
+     * This enumeration value indicates that the Unpaid Item case is waiting for the
+     * seller's response.
      */
     public const VAL_WAITING_FOR_SELLER_RESPONSE = 'WaitingForSellerResponse';
 
     /**
      * Constant for 'WaitingForBuyerResponse' value.
      *
-     * This enumeration value indicates that the dispute is waiting for the buyer's
-     * response.
+     * This enumeration value indicates that the Unpaid Item case is waiting for the
+     * buyer's response.
      */
     public const VAL_WAITING_FOR_BUYER_RESPONSE = 'WaitingForBuyerResponse';
 
     /**
      * Constant for 'ClosedFVFCreditStrike' value.
      *
-     * This enumeration value indicates that the Unpaid Item dispute is closed, the
-     * seller received a Final Value Fee credit, and the buyer received a strike.
+     * This enumeration value indicates that the Unpaid Item case is closed, the seller
+     * received a Final Value Fee credit, and the buyer received a strike.
      */
     public const VAL_CLOSED_FVFCREDIT_STRIKE = 'ClosedFVFCreditStrike';
 
     /**
      * Constant for 'ClosedNoFVFCreditStrike' value.
      *
-     * This enumeration value indicates that the Unpaid Item dispute is closed, the
-     * seller did not receive a Final Value Fee credit, and the buyer received a
-     * strike.
+     * This enumeration value indicates that the Unpaid Item case is closed, the seller
+     * did not receive a Final Value Fee credit, and the buyer received a strike.
      */
     public const VAL_CLOSED_NO_FVFCREDIT_STRIKE = 'ClosedNoFVFCreditStrike';
 
     /**
      * Constant for 'ClosedFVFCreditNoStrike' value.
      *
-     * This enumeration value indicates that the Unpaid Item dispute is closed, the
-     * seller received a Final Value Fee credit, and the buyer did not receive a
-     * strike.
+     * This enumeration value indicates that the Unpaid Item case is closed, the seller
+     * received a Final Value Fee credit, and the buyer did not receive a strike.
      */
     public const VAL_CLOSED_FVFCREDIT_NO_STRIKE = 'ClosedFVFCreditNoStrike';
 
     /**
      * Constant for 'ClosedNoFVFCreditNoStrike' value.
      *
-     * This enumeration value indicates that the Unpaid Item dispute is closed, the
-     * seller did not receive a Final Value Fee credit, and the buyer did not receive a
+     * This enumeration value indicates that the Unpaid Item case is closed, the seller
+     * did not receive a Final Value Fee credit, and the buyer did not receive a
      * strike.
      */
     public const VAL_CLOSED_NO_FVFCREDIT_NO_STRIKE = 'ClosedNoFVFCreditNoStrike';
@@ -90,7 +90,7 @@ class DisputeStatusCodeType
     /**
      * Constant for 'StrikeAppealedAfterClosing' value.
      *
-     * This enumeration value indicates that the Unpaid Item dispute was closed with a
+     * This enumeration value indicates that the Unpaid Item case was closed with a
      * buyer's strike, but the buyer has appealed that strike.
      */
     public const VAL_STRIKE_APPEALED_AFTER_CLOSING = 'StrikeAppealedAfterClosing';
@@ -99,7 +99,7 @@ class DisputeStatusCodeType
      * Constant for 'FVFCreditReversedAfterClosing' value.
      *
      * This enumeration value indicates that the seller's Final Value Fee credit was
-     * reversed after the Unpaid Item dispute was closed.
+     * reversed after the Unpaid Item case was closed.
      */
     public const VAL_FVFCREDIT_REVERSED_AFTER_CLOSING = 'FVFCreditReversedAfterClosing';
 
@@ -107,7 +107,7 @@ class DisputeStatusCodeType
      * Constant for 'StrikeAppealedAndFVFCreditReversed' value.
      *
      * This enumeration value indicates that the seller's Final Value Fee credit was
-     * reversed and the buyer's strike was appealed after the Unpaid Item dispute was
+     * reversed and the buyer's strike was appealed after the Unpaid Item case was
      * closed.
      */
     public const VAL_STRIKE_APPEALED_AND_FVFCREDIT_REVERSED = 'StrikeAppealedAndFVFCreditReversed';
@@ -115,61 +115,64 @@ class DisputeStatusCodeType
     /**
      * Constant for 'ClaimOpened' value.
      *
-     * This enumeration value indicates that the claim was assigned to an adjuster.
+     * This enumeration value is no longer applicable since the <b>GetDispute</b> and
+     * <b>GetUserDisputes</b> calls will not return any INR disputes.
      */
     public const VAL_CLAIM_OPENED = 'ClaimOpened';
 
     /**
      * Constant for 'NoDocumentation' value.
      *
-     * This enumeration value indicates that the buyer was contacted by eBay and asked
-     * to submit paperwork.
+     * This enumeration value is no longer applicable since the <b>GetDispute</b> and
+     * <b>GetUserDisputes</b> calls will not return any INR disputes.
      */
     public const VAL_NO_DOCUMENTATION = 'NoDocumentation';
 
     /**
      * Constant for 'ClaimClosed' value.
      *
-     * This enumeration value indicates that the claim was closed due to the buyer not
-     * responding to verification or due to missing paperwork.
+     * This enumeration value is no longer applicable since the <b>GetDispute</b> and
+     * <b>GetUserDisputes</b> calls will not return any INR disputes.
      */
     public const VAL_CLAIM_CLOSED = 'ClaimClosed';
 
     /**
      * Constant for 'ClaimDenied' value.
      *
-     * This enumeration value indicates that the claim was denied.
+     * This enumeration value is no longer applicable since the <b>GetDispute</b> and
+     * <b>GetUserDisputes</b> calls will not return any INR disputes.
      */
     public const VAL_CLAIM_DENIED = 'ClaimDenied';
 
     /**
      * Constant for 'ClaimInProcess' value.
      *
-     * This enumeration value indicates that paperwork was received for the claim, and
-     * the claim is being investigated.
+     * This enumeration value is no longer applicable since the <b>GetDispute</b> and
+     * <b>GetUserDisputes</b> calls will not return any INR disputes.
      */
     public const VAL_CLAIM_IN_PROCESS = 'ClaimInProcess';
 
     /**
      * Constant for 'ClaimApproved' value.
      *
-     * This enumeration value indicates that the claim was approved for reimbursement,
-     * and sent to accounts payable for payment.
+     * This enumeration value is no longer applicable since the <b>GetDispute</b> and
+     * <b>GetUserDisputes</b> calls will not return any INR disputes.
      */
     public const VAL_CLAIM_APPROVED = 'ClaimApproved';
 
     /**
      * Constant for 'ClaimPaid' value.
      *
-     * This enumeration value indicates that the claim was paid.
+     * This enumeration value is no longer applicable since the <b>GetDispute</b> and
+     * <b>GetUserDisputes</b> calls will not return any INR disputes.
      */
     public const VAL_CLAIM_PAID = 'ClaimPaid';
 
     /**
      * Constant for 'ClaimResolved' value.
      *
-     * This enumeration value indicates that the buyer's dispute against the seller was
-     * resolved, due to the seller sending the item or refunding the buyer.
+     * This enumeration value is no longer applicable since the <b>GetDispute</b> and
+     * <b>GetUserDisputes</b> calls will not return any INR disputes.
      */
     public const VAL_CLAIM_RESOLVED = 'ClaimResolved';
 
@@ -183,7 +186,7 @@ class DisputeStatusCodeType
     /**
      * Constant for 'UnpaidItemOpened' value.
      *
-     * This enumeration value indicates that an Unpaid Item dispute was opened by the
+     * This enumeration value indicates that an Unpaid Item case was opened by the
      * seller against the buyer.
      */
     public const VAL_UNPAID_ITEM_OPENED = 'UnpaidItemOpened';

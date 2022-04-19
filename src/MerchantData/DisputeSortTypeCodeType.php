@@ -8,7 +8,9 @@ namespace Nogrod\eBaySDK\MerchantData;
  * Enumerated type that defines the values that can be used in the <b>DisputeSortType</b> filter of the <b>GetUserDisputes</b> request to control the order of disputes that are returned.
  *  <br/><br/>
  *  <span class="tablenote"><strong>Note:</strong>
- *  'Item Not Received' or 'Significantly Not As Described' cases, initiated by buyers through the eBay Money Back Guarantee program, are not returned with <b>GetUserDisputes</b>. The <a href="https://developer.ebay.com/Devzone/post-order/post-order_v2_casemanagement-caseId__get.html#overview">getCase</a> method of the <a href="https://developer.ebay.com/Devzone/post-order/concepts/UsageGuide.html">Post-Order API</a> is used to retrieve Money Back Guarantee cases programmatically.
+ *  The <strong>GetUserDisputes</strong> call of the Trading API now only supports Unpaid Item cases, and no longer supports Item not Received (INR) or Significantly not as Described (SNAD) disputes created through PayPal, since this is no longer an option for eBay buyers. eBay buyers must create an INR or SNAD case through eBay's Resolution Center, and this call also does not support eBay Money Back Guarantee cases.
+ *  <br><br>
+ *  To respond to an eBay Money Back Guarantee case, the seller should use the <a href="https://developer.ebay.com/Devzone/post-order/index.html" target="_blank">Case Management calls</a> of the <b>Post-Order API</b> or manage/respond to cases manually through the eBay Resolution Center.
  *  </span>
  * XSD Type: DisputeSortTypeCodeType
  */
@@ -19,60 +21,62 @@ class DisputeSortTypeCodeType
      *
      * This is the default value. If this value is used in the <b>DisputeSortType</b>
      * field, or if the <b>DisputeSortType</b> field is omitted from the
-     * <b>GetUserDisputes</b> request, retrieved disputes are sorted according to
-     * dispute creation time, in descending order.
+     * <b>GetUserDisputes</b> request, retrieved Unpaid Item cases are sorted according
+     * to dispute creation time, in descending order.
      */
     public const VAL_NONE = 'None';
 
     /**
      * Constant for 'DisputeCreatedTimeAscending' value.
      *
-     * If this value is used in the <b>DisputeSortType</b> field, retrieved disputes
-     * are sorted according to dispute creation time, in ascending order.
+     * If this value is used in the <b>DisputeSortType</b> field, retrieved Unpaid Item
+     * cases are sorted according to creation time, in ascending order.
      */
     public const VAL_DISPUTE_CREATED_TIME_ASCENDING = 'DisputeCreatedTimeAscending';
 
     /**
      * Constant for 'DisputeCreatedTimeDescending' value.
      *
-     * If this value is used in the <b>DisputeSortType</b> field, retrieved disputes
-     * are sorted according to dispute creation time, in descending order.
+     * If this value is used in the <b>DisputeSortType</b> field, retrieved Unpaid Item
+     * cases are sorted according to creation time, in descending order.
      */
     public const VAL_DISPUTE_CREATED_TIME_DESCENDING = 'DisputeCreatedTimeDescending';
 
     /**
      * Constant for 'DisputeStatusAscending' value.
      *
-     * If this value is used in the <b>DisputeSortType</b> field, retrieved disputes
-     * are sorted according to dispute status, in ascending order.
+     * If this value is used in the <b>DisputeSortType</b> field, retrieved Unpaid Item
+     * cases are sorted according to status, in ascending order.
      */
     public const VAL_DISPUTE_STATUS_ASCENDING = 'DisputeStatusAscending';
 
     /**
      * Constant for 'DisputeStatusDescending' value.
      *
-     * If this value is used in the <b>DisputeSortType</b> field, retrieved disputes
-     * are sorted according to dispute status, in descending order.
+     * If this value is used in the <b>DisputeSortType</b> field, retrieved Unpaid Item
+     * cases are sorted according to status, in descending order.
      */
     public const VAL_DISPUTE_STATUS_DESCENDING = 'DisputeStatusDescending';
 
     /**
      * Constant for 'DisputeCreditEligibilityAscending' value.
      *
-     * If this value is used in the <b>DisputeSortType</b> field, retrieved disputes
-     * are sorted according to whether the disputes are eligible for a Final Value Fee
-     * credit to the seller, in ascending order. In other words, disputes ineligible
-     * for a FVF credit are listed before disputes that are eligible for a FVF credit.
+     * If this value is used in the <b>DisputeSortType</b> field, retrieved Unpaid Item
+     * cases are sorted according to whether the cases are eligible for a Final Value
+     * Fee credit to the seller, in ascending order. In other words, Unpaid Item cases
+     * ineligible for a FVF credit are listed before Unpaid Item cases that are
+     * eligible for a FVF credit.
      */
     public const VAL_DISPUTE_CREDIT_ELIGIBILITY_ASCENDING = 'DisputeCreditEligibilityAscending';
 
     /**
      * Constant for 'DisputeCreditEligibilityDescending' value.
      *
-     * If this value is used in the <b>DisputeSortType</b> field, retrieved disputes
-     * are sorted according to whether the disputes are eligible for a Final Value Fee
-     * credit to the seller, in descending order. In other words, disputes eligible for
-     * a FVF credit are listed before disputes that are not eligible for a FVF credit.
+     * If this value is used in the <b>DisputeSortType</b> field, retrieved Unpaid Item
+     * cases are sorted according to whether the Unpaid Item cases are eligible for a
+     * Final Value Fee credit to the seller, in descending order. In other words,
+     * Unpaid Item cases eligible for a FVF credit are listed before Unpaid Item cases
+     * that are not eligible for a FVF credit.
      */
     public const VAL_DISPUTE_CREDIT_ELIGIBILITY_DESCENDING = 'DisputeCreditEligibilityDescending';
 

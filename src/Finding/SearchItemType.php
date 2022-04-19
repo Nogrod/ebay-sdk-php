@@ -320,10 +320,6 @@ class SearchItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
 
     /**
      * This container shows the name and unique ID of the item's condition. This container will generally get returned unless the item is in an eBay category that does not require an item condition. Supported item conditions vary by category.
-     *  <br><br>
-     *  <span class="tablenote"><strong>Note:</strong>
-     *  In all eBay marketplaces, Condition ID 2000 now maps to an item condition of 'Certified Refurbished', and not 'Manufacturer Refurbished'. To list an item as 'Certified Refurbished', a seller must be pre-qualified by eBay for this feature.
-     *  </span>
      *
      * @var \Nogrod\eBaySDK\Finding\ConditionType $condition
      */
@@ -1490,10 +1486,6 @@ class SearchItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      * Gets as condition
      *
      * This container shows the name and unique ID of the item's condition. This container will generally get returned unless the item is in an eBay category that does not require an item condition. Supported item conditions vary by category.
-     *  <br><br>
-     *  <span class="tablenote"><strong>Note:</strong>
-     *  In all eBay marketplaces, Condition ID 2000 now maps to an item condition of 'Certified Refurbished', and not 'Manufacturer Refurbished'. To list an item as 'Certified Refurbished', a seller must be pre-qualified by eBay for this feature.
-     *  </span>
      *
      * @return \Nogrod\eBaySDK\Finding\ConditionType
      */
@@ -1506,10 +1498,6 @@ class SearchItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      * Sets a new condition
      *
      * This container shows the name and unique ID of the item's condition. This container will generally get returned unless the item is in an eBay category that does not require an item condition. Supported item conditions vary by category.
-     *  <br><br>
-     *  <span class="tablenote"><strong>Note:</strong>
-     *  In all eBay marketplaces, Condition ID 2000 now maps to an item condition of 'Certified Refurbished', and not 'Manufacturer Refurbished'. To list an item as 'Certified Refurbished', a seller must be pre-qualified by eBay for this feature.
-     *  </span>
      *
      * @param \Nogrod\eBaySDK\Finding\ConditionType $condition
      * @return self

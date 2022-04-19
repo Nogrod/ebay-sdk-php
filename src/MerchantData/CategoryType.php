@@ -20,11 +20,7 @@ class CategoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
     private $bestOfferEnabled = null;
 
     /**
-     * If this field is returned as <code>true</code>, the corresponding category supports immediate payment for listings. The immediate payment feature is only applicable to fixed-price listings and to auction listings with the Buy It Now option enabled. If the immediate payment feature is enabled for a listing, the buyer must pay immediately after clicking the 'Buy it Now' button. This field is only returned when <code>true</code>.
-     *  <br><br>
-     *  <span class="tablenote"><b>Note: </b>
-     *  For sellers who are not opted in to eBay managed payments, PayPal must be set as the only accepted payment method for the listing in order to enable the immediate payment requirement. For managed payments sellers, no payment methods are required, as eBay controls which payment methods are available to the buyer.
-     *  </span>
+     * If this field is returned as <code>true</code>, the corresponding category supports immediate payment for listings. The immediate payment feature is applicable to fixed-price listings, to auction listings with the Buy It Now option enabled, and for a motor vehicle listing that requires an initial deposit. If the immediate payment feature is enabled for a listing, the buyer must pay immediately after clicking the 'Buy it Now' button. This field is only returned when <code>true</code>.
      *
      * @var bool $autoPayEnabled
      */
@@ -233,11 +229,7 @@ class CategoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
     /**
      * Gets as autoPayEnabled
      *
-     * If this field is returned as <code>true</code>, the corresponding category supports immediate payment for listings. The immediate payment feature is only applicable to fixed-price listings and to auction listings with the Buy It Now option enabled. If the immediate payment feature is enabled for a listing, the buyer must pay immediately after clicking the 'Buy it Now' button. This field is only returned when <code>true</code>.
-     *  <br><br>
-     *  <span class="tablenote"><b>Note: </b>
-     *  For sellers who are not opted in to eBay managed payments, PayPal must be set as the only accepted payment method for the listing in order to enable the immediate payment requirement. For managed payments sellers, no payment methods are required, as eBay controls which payment methods are available to the buyer.
-     *  </span>
+     * If this field is returned as <code>true</code>, the corresponding category supports immediate payment for listings. The immediate payment feature is applicable to fixed-price listings, to auction listings with the Buy It Now option enabled, and for a motor vehicle listing that requires an initial deposit. If the immediate payment feature is enabled for a listing, the buyer must pay immediately after clicking the 'Buy it Now' button. This field is only returned when <code>true</code>.
      *
      * @return bool
      */
@@ -249,11 +241,7 @@ class CategoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
     /**
      * Sets a new autoPayEnabled
      *
-     * If this field is returned as <code>true</code>, the corresponding category supports immediate payment for listings. The immediate payment feature is only applicable to fixed-price listings and to auction listings with the Buy It Now option enabled. If the immediate payment feature is enabled for a listing, the buyer must pay immediately after clicking the 'Buy it Now' button. This field is only returned when <code>true</code>.
-     *  <br><br>
-     *  <span class="tablenote"><b>Note: </b>
-     *  For sellers who are not opted in to eBay managed payments, PayPal must be set as the only accepted payment method for the listing in order to enable the immediate payment requirement. For managed payments sellers, no payment methods are required, as eBay controls which payment methods are available to the buyer.
-     *  </span>
+     * If this field is returned as <code>true</code>, the corresponding category supports immediate payment for listings. The immediate payment feature is applicable to fixed-price listings, to auction listings with the Buy It Now option enabled, and for a motor vehicle listing that requires an initial deposit. If the immediate payment feature is enabled for a listing, the buyer must pay immediately after clicking the 'Buy it Now' button. This field is only returned when <code>true</code>.
      *
      * @param bool $autoPayEnabled
      * @return self

@@ -7,7 +7,7 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing VideoDetailsType
  *
- * This type is used by the Add/Revise/Relist calls to add a video to a listing. All videos added to listings must be uploaded to eBay via the <a href="/api-docs/commerce/media/overview.html" target="_blank">Media API</a>. See the <a href="/api-docs/commerce/media/overview.html" target="_blank">Media API</a> reference documentation for all of the necessary details to upload videos to eBay.
+ * This type is used by the Add/Revise/Relist calls to add a video to a listing. Videos can be added to listings using the <a href="/api-docs/commerce/media/overview.html" target="_blank">Media API</a>. See the <a href="/api-docs/commerce/media/overview.html" target="_blank">Media API</a> reference documentation for all of the necessary details to upload videos to eBay.
  *  <br/><br/>
  *  The <b>GetItem</b> call will return the <b>VideoDetails</b> container if the listing contains a video, and the seller of the item is the one making the <b>GetItem</b> call.
  * XSD Type: VideoDetailsType
@@ -15,7 +15,7 @@ use Nogrod\XMLClientRuntime\Func;
 class VideoDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
     /**
-     * Unique identifier of a video. This identifier is automatically created by eBay once a seller successfully uploads a video to eBay via the <a href="/api-docs/commerce/media/resources/video/methods/uploadVideo" target="_blank">uploadVideo</a> method of the <a href="/api-docs/commerce/media/overview.html" target="_blank">Media API</a>.
+     * Unique identifier of a video. This identifier is automatically created by eBay once a seller successfully uploads a video to eBay. Videos can be added using the <a href="/api-docs/commerce/media/resources/video/methods/uploadVideo" target="_blank">uploadVideo</a> method of the <a href="/api-docs/commerce/media/overview.html" target="_blank">Media API</a>.
      *  <br/><br/>
      *  In an Add/Revise/Relist call, passing in the ID for the video will add the video to the listing. Although a video can be added to a listing before it is in the <code>LIVE</code> state, the video won't be available for viewing in the listing until it does reach this state. The status of an uploaded video can be retrieved with the <a href="/api-docs/commerce/media/resources/video/methods/getVideo" target="_blank">getVideo</a> method and seen in the <a href=" /api-docs/commerce/media/resources/video/methods/getVideo#response.status" target="_blank">status</a> field of the response.
      *  <br/><br/>
@@ -37,7 +37,7 @@ class VideoDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Adds as videoID
      *
-     * Unique identifier of a video. This identifier is automatically created by eBay once a seller successfully uploads a video to eBay via the <a href="/api-docs/commerce/media/resources/video/methods/uploadVideo" target="_blank">uploadVideo</a> method of the <a href="/api-docs/commerce/media/overview.html" target="_blank">Media API</a>.
+     * Unique identifier of a video. This identifier is automatically created by eBay once a seller successfully uploads a video to eBay. Videos can be added using the <a href="/api-docs/commerce/media/resources/video/methods/uploadVideo" target="_blank">uploadVideo</a> method of the <a href="/api-docs/commerce/media/overview.html" target="_blank">Media API</a>.
      *  <br/><br/>
      *  In an Add/Revise/Relist call, passing in the ID for the video will add the video to the listing. Although a video can be added to a listing before it is in the <code>LIVE</code> state, the video won't be available for viewing in the listing until it does reach this state. The status of an uploaded video can be retrieved with the <a href="/api-docs/commerce/media/resources/video/methods/getVideo" target="_blank">getVideo</a> method and seen in the <a href=" /api-docs/commerce/media/resources/video/methods/getVideo#response.status" target="_blank">status</a> field of the response.
      *  <br/><br/>
@@ -62,7 +62,7 @@ class VideoDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * isset videoID
      *
-     * Unique identifier of a video. This identifier is automatically created by eBay once a seller successfully uploads a video to eBay via the <a href="/api-docs/commerce/media/resources/video/methods/uploadVideo" target="_blank">uploadVideo</a> method of the <a href="/api-docs/commerce/media/overview.html" target="_blank">Media API</a>.
+     * Unique identifier of a video. This identifier is automatically created by eBay once a seller successfully uploads a video to eBay. Videos can be added using the <a href="/api-docs/commerce/media/resources/video/methods/uploadVideo" target="_blank">uploadVideo</a> method of the <a href="/api-docs/commerce/media/overview.html" target="_blank">Media API</a>.
      *  <br/><br/>
      *  In an Add/Revise/Relist call, passing in the ID for the video will add the video to the listing. Although a video can be added to a listing before it is in the <code>LIVE</code> state, the video won't be available for viewing in the listing until it does reach this state. The status of an uploaded video can be retrieved with the <a href="/api-docs/commerce/media/resources/video/methods/getVideo" target="_blank">getVideo</a> method and seen in the <a href=" /api-docs/commerce/media/resources/video/methods/getVideo#response.status" target="_blank">status</a> field of the response.
      *  <br/><br/>
@@ -86,7 +86,7 @@ class VideoDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * unset videoID
      *
-     * Unique identifier of a video. This identifier is automatically created by eBay once a seller successfully uploads a video to eBay via the <a href="/api-docs/commerce/media/resources/video/methods/uploadVideo" target="_blank">uploadVideo</a> method of the <a href="/api-docs/commerce/media/overview.html" target="_blank">Media API</a>.
+     * Unique identifier of a video. This identifier is automatically created by eBay once a seller successfully uploads a video to eBay. Videos can be added using the <a href="/api-docs/commerce/media/resources/video/methods/uploadVideo" target="_blank">uploadVideo</a> method of the <a href="/api-docs/commerce/media/overview.html" target="_blank">Media API</a>.
      *  <br/><br/>
      *  In an Add/Revise/Relist call, passing in the ID for the video will add the video to the listing. Although a video can be added to a listing before it is in the <code>LIVE</code> state, the video won't be available for viewing in the listing until it does reach this state. The status of an uploaded video can be retrieved with the <a href="/api-docs/commerce/media/resources/video/methods/getVideo" target="_blank">getVideo</a> method and seen in the <a href=" /api-docs/commerce/media/resources/video/methods/getVideo#response.status" target="_blank">status</a> field of the response.
      *  <br/><br/>
@@ -110,7 +110,7 @@ class VideoDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Gets as videoID
      *
-     * Unique identifier of a video. This identifier is automatically created by eBay once a seller successfully uploads a video to eBay via the <a href="/api-docs/commerce/media/resources/video/methods/uploadVideo" target="_blank">uploadVideo</a> method of the <a href="/api-docs/commerce/media/overview.html" target="_blank">Media API</a>.
+     * Unique identifier of a video. This identifier is automatically created by eBay once a seller successfully uploads a video to eBay. Videos can be added using the <a href="/api-docs/commerce/media/resources/video/methods/uploadVideo" target="_blank">uploadVideo</a> method of the <a href="/api-docs/commerce/media/overview.html" target="_blank">Media API</a>.
      *  <br/><br/>
      *  In an Add/Revise/Relist call, passing in the ID for the video will add the video to the listing. Although a video can be added to a listing before it is in the <code>LIVE</code> state, the video won't be available for viewing in the listing until it does reach this state. The status of an uploaded video can be retrieved with the <a href="/api-docs/commerce/media/resources/video/methods/getVideo" target="_blank">getVideo</a> method and seen in the <a href=" /api-docs/commerce/media/resources/video/methods/getVideo#response.status" target="_blank">status</a> field of the response.
      *  <br/><br/>
@@ -133,7 +133,7 @@ class VideoDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Sets a new videoID
      *
-     * Unique identifier of a video. This identifier is automatically created by eBay once a seller successfully uploads a video to eBay via the <a href="/api-docs/commerce/media/resources/video/methods/uploadVideo" target="_blank">uploadVideo</a> method of the <a href="/api-docs/commerce/media/overview.html" target="_blank">Media API</a>.
+     * Unique identifier of a video. This identifier is automatically created by eBay once a seller successfully uploads a video to eBay. Videos can be added using the <a href="/api-docs/commerce/media/resources/video/methods/uploadVideo" target="_blank">uploadVideo</a> method of the <a href="/api-docs/commerce/media/overview.html" target="_blank">Media API</a>.
      *  <br/><br/>
      *  In an Add/Revise/Relist call, passing in the ID for the video will add the video to the listing. Although a video can be added to a listing before it is in the <code>LIVE</code> state, the video won't be available for viewing in the listing until it does reach this state. The status of an uploaded video can be retrieved with the <a href="/api-docs/commerce/media/resources/video/methods/getVideo" target="_blank">getVideo</a> method and seen in the <a href=" /api-docs/commerce/media/resources/video/methods/getVideo#response.status" target="_blank">status</a> field of the response.
      *  <br/><br/>
