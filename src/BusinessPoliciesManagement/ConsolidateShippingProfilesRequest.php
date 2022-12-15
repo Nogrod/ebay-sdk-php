@@ -4,6 +4,8 @@ namespace Nogrod\eBaySDK\BusinessPoliciesManagement;
 
 /**
  * Class representing ConsolidateShippingProfilesRequest
+ *
+ * The root request container of the <b>consolidateShippingProfiles</b> call.
  */
 class ConsolidateShippingProfilesRequest extends ConsolidateShippingProfilesRequestType
 {

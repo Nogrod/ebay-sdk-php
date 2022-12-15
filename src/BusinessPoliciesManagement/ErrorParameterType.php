@@ -5,7 +5,7 @@ namespace Nogrod\eBaySDK\BusinessPoliciesManagement;
 /**
  * Class representing ErrorParameterType
  *
- * Documentation goes here
+ * Contextual data associated with an error.
  * XSD Type: ErrorParameter
  */
 class ErrorParameterType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
@@ -16,6 +16,8 @@ class ErrorParameterType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
     private $__value = null;
 
     /**
+     * The name of the input parameter returned with the error. Inspecting the parameter (or its input value) will often aid in understanding the cause of the error. Not all error messages contain this value.
+     *
      * @var string $name
      */
     private $name = null;
@@ -57,6 +59,8 @@ class ErrorParameterType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
     /**
      * Gets as name
      *
+     * The name of the input parameter returned with the error. Inspecting the parameter (or its input value) will often aid in understanding the cause of the error. Not all error messages contain this value.
+     *
      * @return string
      */
     public function getName()
@@ -66,6 +70,8 @@ class ErrorParameterType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
 
     /**
      * Sets a new name
+     *
+     * The name of the input parameter returned with the error. Inspecting the parameter (or its input value) will often aid in understanding the cause of the error. Not all error messages contain this value.
      *
      * @param string $name
      * @return self

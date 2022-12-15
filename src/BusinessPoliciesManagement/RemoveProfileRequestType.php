@@ -7,13 +7,13 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing RemoveProfileRequestType
  *
- * Use this call to delete an existing policy for a seller.
+ * This call is used to delete an existing business policy for a seller.
  * XSD Type: RemoveProfileRequest
  */
 class RemoveProfileRequestType extends BaseRequestType
 {
     /**
-     * Unique identifier for a seller profile. Pass this value into a removeProfile request to remove a specific seller profile.
+     * Unique identifier for a business policy. Each payment, shipping, and return business policy has its own unique <b>profileId</b> value. The seller passes in this <b>profileId</b> value to identify the business policy to delete. A <b>profileId</b> value can be obtained through the site or by making a <b>getSellerProfiles</b> call.
      *
      * @var int $profileId
      */
@@ -22,7 +22,7 @@ class RemoveProfileRequestType extends BaseRequestType
     /**
      * Gets as profileId
      *
-     * Unique identifier for a seller profile. Pass this value into a removeProfile request to remove a specific seller profile.
+     * Unique identifier for a business policy. Each payment, shipping, and return business policy has its own unique <b>profileId</b> value. The seller passes in this <b>profileId</b> value to identify the business policy to delete. A <b>profileId</b> value can be obtained through the site or by making a <b>getSellerProfiles</b> call.
      *
      * @return int
      */
@@ -34,7 +34,7 @@ class RemoveProfileRequestType extends BaseRequestType
     /**
      * Sets a new profileId
      *
-     * Unique identifier for a seller profile. Pass this value into a removeProfile request to remove a specific seller profile.
+     * Unique identifier for a business policy. Each payment, shipping, and return business policy has its own unique <b>profileId</b> value. The seller passes in this <b>profileId</b> value to identify the business policy to delete. A <b>profileId</b> value can be obtained through the site or by making a <b>getSellerProfiles</b> call.
      *
      * @param int $profileId
      * @return self

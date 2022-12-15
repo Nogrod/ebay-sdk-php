@@ -7,21 +7,18 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing AddDisputeRequestType
  *
- * Enables a seller to create an Unpaid Item case against a buyer.
- *  <br>
- *  <br>
- *  Although the seller is eligible to open up an Unpaid Item case as soon as four days after the buyer commits to buying the item, it is recommended that the seller contact the buyer first to try and make it right before opening a case. The <a href="https://www.ebay.com/help/selling/getting-paid/resolving-unpaid-items?id=4137" target="_blank">Unpaid Items</a> help page talks more about how a seller should handle an unpaid item.
+ * Enables a seller to create a cancellation request.
  *  <br>
  *  <br>
  *  <span class="tablenote"><strong>Note:</strong>
- *  To create a cancellation request programmatically, the seller would have to use the <b>POST /post-order/v2/cancellation</b> method of the Post-Order API.
+ *  This call is deprecated and is scheduled for decommission on January 31, 2023. The alternative API to create cancellation requests is the <a href="https://developer.ebay.com/devzone/post-order/post-order_v2_cancellation__post.html" target="_blank">Create Cancellation Request</a> method of the <a href="https://developer.ebay.com/devzone/post-order/index.html" target="_blank">Post-Order API </a>.
  *  </span>
  * XSD Type: AddDisputeRequestType
  */
 class AddDisputeRequestType extends AbstractRequestType
 {
     /**
-     * This enumerated value gives the explanation of why the seller opened a case. Not all values contained in <b>DisputeExplanationCodeType</b> are allowed in the <b>AddDispute</b> call, and the values that are allowed must match the <b>DisputeReason</b> value.
+     * This enumerated value gives the explanation of why an order is being cancelled. Not all values contained in <b>DisputeExplanationCodeType</b> are allowed in the <b>AddDispute</b> call, and the values that are allowed must match the <b>DisputeReason</b> value.
      *  <br>
      *
      * @var string $disputeExplanation
@@ -29,8 +26,7 @@ class AddDisputeRequestType extends AbstractRequestType
     private $disputeExplanation = null;
 
     /**
-     * The enumeration value passed into this required field will depend on the action being taken. The seller will pass in <code>BuyerHasNotPaid</code> if the seller is creating an Unpaid Item case against the buyer.
-     *  <br>
+     * This enumeration value indicates the reason why the order is being cancelled. The seller should pass in <code>TransactionMutuallyCanceled</code> into this field if both buyer and seller have mutually agreed to cancel the order. Alternatively, if the buyer has not paid for an order within four days after committing to purchase, and the seller has not been able to communicate with the buyer concerning payment and cancellation, the seller can pass in <code>BuyerHasNotPaid</code> into this field.
      *
      * @var string $disputeReason
      */
@@ -66,7 +62,7 @@ class AddDisputeRequestType extends AbstractRequestType
     /**
      * Gets as disputeExplanation
      *
-     * This enumerated value gives the explanation of why the seller opened a case. Not all values contained in <b>DisputeExplanationCodeType</b> are allowed in the <b>AddDispute</b> call, and the values that are allowed must match the <b>DisputeReason</b> value.
+     * This enumerated value gives the explanation of why an order is being cancelled. Not all values contained in <b>DisputeExplanationCodeType</b> are allowed in the <b>AddDispute</b> call, and the values that are allowed must match the <b>DisputeReason</b> value.
      *  <br>
      *
      * @return string
@@ -79,7 +75,7 @@ class AddDisputeRequestType extends AbstractRequestType
     /**
      * Sets a new disputeExplanation
      *
-     * This enumerated value gives the explanation of why the seller opened a case. Not all values contained in <b>DisputeExplanationCodeType</b> are allowed in the <b>AddDispute</b> call, and the values that are allowed must match the <b>DisputeReason</b> value.
+     * This enumerated value gives the explanation of why an order is being cancelled. Not all values contained in <b>DisputeExplanationCodeType</b> are allowed in the <b>AddDispute</b> call, and the values that are allowed must match the <b>DisputeReason</b> value.
      *  <br>
      *
      * @param string $disputeExplanation
@@ -94,8 +90,7 @@ class AddDisputeRequestType extends AbstractRequestType
     /**
      * Gets as disputeReason
      *
-     * The enumeration value passed into this required field will depend on the action being taken. The seller will pass in <code>BuyerHasNotPaid</code> if the seller is creating an Unpaid Item case against the buyer.
-     *  <br>
+     * This enumeration value indicates the reason why the order is being cancelled. The seller should pass in <code>TransactionMutuallyCanceled</code> into this field if both buyer and seller have mutually agreed to cancel the order. Alternatively, if the buyer has not paid for an order within four days after committing to purchase, and the seller has not been able to communicate with the buyer concerning payment and cancellation, the seller can pass in <code>BuyerHasNotPaid</code> into this field.
      *
      * @return string
      */
@@ -107,8 +102,7 @@ class AddDisputeRequestType extends AbstractRequestType
     /**
      * Sets a new disputeReason
      *
-     * The enumeration value passed into this required field will depend on the action being taken. The seller will pass in <code>BuyerHasNotPaid</code> if the seller is creating an Unpaid Item case against the buyer.
-     *  <br>
+     * This enumeration value indicates the reason why the order is being cancelled. The seller should pass in <code>TransactionMutuallyCanceled</code> into this field if both buyer and seller have mutually agreed to cancel the order. Alternatively, if the buyer has not paid for an order within four days after committing to purchase, and the seller has not been able to communicate with the buyer concerning payment and cancellation, the seller can pass in <code>BuyerHasNotPaid</code> into this field.
      *
      * @param string $disputeReason
      * @return self

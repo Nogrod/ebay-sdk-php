@@ -138,15 +138,7 @@ class SearchItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
     private $productId = null;
 
     /**
-     * Identifies the payment method (or methods) the seller will accept for the
-     *  item (such as PayPal).
-     *  <br><br>
-     *  <span class="tablenote"><strong>Note:</strong>
-     *  If the seller accepts only PayPal, the buyer can still pay with a
-     *  credit card. PayPal supports major credit cards.
-     *  </span>
-     *  Payment methods are not applicable to eBay Real Estate advertisement
-     *  listings or other Classified Ad listing formats.
+     * Identifies the payment method (or methods) available to the buyer to purchase the item.
      *
      * @var string[] $paymentMethod
      */
@@ -156,25 +148,18 @@ class SearchItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
 
     /**
      * If true, the seller requires immediate payment for the item. If false (or
-     *  not specified), immediate payment is not requested. Buyers must have a
-     *  PayPal account to purchase items that require immediate payment.
+     *  not specified), immediate payment is not requested.
      *  <br><br>
-     *  A seller can choose to require immediate payment for Fixed Price and Buy
-     *  It Now listings, including eBay Stores Inventory listings. If a Buy It
-     *  Now item ends as an auction (that is, if the Buy It Now option is removed
-     *  due to bids being placed on the listing), the immediate payment
-     *  requirement does not apply.
+     *  Immediate payment does not apply to classified listings nor to auction listings that end with a winning bidder.
      *  <br><br>
      *  <span class="tablenote"><strong>Note:</strong>
-     *  The value of the AutoPay flag indicates the seller's stated preference
+     *  The value of the autoPay flag indicates the seller's stated preference
      *  only. It does not indicate whether the listing is still a candidate for
      *  purchase via immediate payment. For example, if a listing receives bids
-     *  and no longer qualifies for immediate payment, the value of the AutoPay
+     *  and no longer qualifies for immediate payment, the value of the autoPay
      *  flag does not change.
      *  </span>
      *  <br>
-     *  Only applicable to items listed on PayPal-enabled sites and in categories
-     *  that support immediate payment.
      *
      * @var bool $autoPay
      */
@@ -844,15 +829,7 @@ class SearchItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
     /**
      * Adds as paymentMethod
      *
-     * Identifies the payment method (or methods) the seller will accept for the
-     *  item (such as PayPal).
-     *  <br><br>
-     *  <span class="tablenote"><strong>Note:</strong>
-     *  If the seller accepts only PayPal, the buyer can still pay with a
-     *  credit card. PayPal supports major credit cards.
-     *  </span>
-     *  Payment methods are not applicable to eBay Real Estate advertisement
-     *  listings or other Classified Ad listing formats.
+     * Identifies the payment method (or methods) available to the buyer to purchase the item.
      *
      * @return self
      * @param string $paymentMethod
@@ -866,15 +843,7 @@ class SearchItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
     /**
      * isset paymentMethod
      *
-     * Identifies the payment method (or methods) the seller will accept for the
-     *  item (such as PayPal).
-     *  <br><br>
-     *  <span class="tablenote"><strong>Note:</strong>
-     *  If the seller accepts only PayPal, the buyer can still pay with a
-     *  credit card. PayPal supports major credit cards.
-     *  </span>
-     *  Payment methods are not applicable to eBay Real Estate advertisement
-     *  listings or other Classified Ad listing formats.
+     * Identifies the payment method (or methods) available to the buyer to purchase the item.
      *
      * @param int|string $index
      * @return bool
@@ -887,15 +856,7 @@ class SearchItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
     /**
      * unset paymentMethod
      *
-     * Identifies the payment method (or methods) the seller will accept for the
-     *  item (such as PayPal).
-     *  <br><br>
-     *  <span class="tablenote"><strong>Note:</strong>
-     *  If the seller accepts only PayPal, the buyer can still pay with a
-     *  credit card. PayPal supports major credit cards.
-     *  </span>
-     *  Payment methods are not applicable to eBay Real Estate advertisement
-     *  listings or other Classified Ad listing formats.
+     * Identifies the payment method (or methods) available to the buyer to purchase the item.
      *
      * @param int|string $index
      * @return void
@@ -908,15 +869,7 @@ class SearchItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
     /**
      * Gets as paymentMethod
      *
-     * Identifies the payment method (or methods) the seller will accept for the
-     *  item (such as PayPal).
-     *  <br><br>
-     *  <span class="tablenote"><strong>Note:</strong>
-     *  If the seller accepts only PayPal, the buyer can still pay with a
-     *  credit card. PayPal supports major credit cards.
-     *  </span>
-     *  Payment methods are not applicable to eBay Real Estate advertisement
-     *  listings or other Classified Ad listing formats.
+     * Identifies the payment method (or methods) available to the buyer to purchase the item.
      *
      * @return string[]
      */
@@ -928,15 +881,7 @@ class SearchItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
     /**
      * Sets a new paymentMethod
      *
-     * Identifies the payment method (or methods) the seller will accept for the
-     *  item (such as PayPal).
-     *  <br><br>
-     *  <span class="tablenote"><strong>Note:</strong>
-     *  If the seller accepts only PayPal, the buyer can still pay with a
-     *  credit card. PayPal supports major credit cards.
-     *  </span>
-     *  Payment methods are not applicable to eBay Real Estate advertisement
-     *  listings or other Classified Ad listing formats.
+     * Identifies the payment method (or methods) available to the buyer to purchase the item.
      *
      * @param string[] $paymentMethod
      * @return self
@@ -951,25 +896,18 @@ class SearchItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      * Gets as autoPay
      *
      * If true, the seller requires immediate payment for the item. If false (or
-     *  not specified), immediate payment is not requested. Buyers must have a
-     *  PayPal account to purchase items that require immediate payment.
+     *  not specified), immediate payment is not requested.
      *  <br><br>
-     *  A seller can choose to require immediate payment for Fixed Price and Buy
-     *  It Now listings, including eBay Stores Inventory listings. If a Buy It
-     *  Now item ends as an auction (that is, if the Buy It Now option is removed
-     *  due to bids being placed on the listing), the immediate payment
-     *  requirement does not apply.
+     *  Immediate payment does not apply to classified listings nor to auction listings that end with a winning bidder.
      *  <br><br>
      *  <span class="tablenote"><strong>Note:</strong>
-     *  The value of the AutoPay flag indicates the seller's stated preference
+     *  The value of the autoPay flag indicates the seller's stated preference
      *  only. It does not indicate whether the listing is still a candidate for
      *  purchase via immediate payment. For example, if a listing receives bids
-     *  and no longer qualifies for immediate payment, the value of the AutoPay
+     *  and no longer qualifies for immediate payment, the value of the autoPay
      *  flag does not change.
      *  </span>
      *  <br>
-     *  Only applicable to items listed on PayPal-enabled sites and in categories
-     *  that support immediate payment.
      *
      * @return bool
      */
@@ -982,25 +920,18 @@ class SearchItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      * Sets a new autoPay
      *
      * If true, the seller requires immediate payment for the item. If false (or
-     *  not specified), immediate payment is not requested. Buyers must have a
-     *  PayPal account to purchase items that require immediate payment.
+     *  not specified), immediate payment is not requested.
      *  <br><br>
-     *  A seller can choose to require immediate payment for Fixed Price and Buy
-     *  It Now listings, including eBay Stores Inventory listings. If a Buy It
-     *  Now item ends as an auction (that is, if the Buy It Now option is removed
-     *  due to bids being placed on the listing), the immediate payment
-     *  requirement does not apply.
+     *  Immediate payment does not apply to classified listings nor to auction listings that end with a winning bidder.
      *  <br><br>
      *  <span class="tablenote"><strong>Note:</strong>
-     *  The value of the AutoPay flag indicates the seller's stated preference
+     *  The value of the autoPay flag indicates the seller's stated preference
      *  only. It does not indicate whether the listing is still a candidate for
      *  purchase via immediate payment. For example, if a listing receives bids
-     *  and no longer qualifies for immediate payment, the value of the AutoPay
+     *  and no longer qualifies for immediate payment, the value of the autoPay
      *  flag does not change.
      *  </span>
      *  <br>
-     *  Only applicable to items listed on PayPal-enabled sites and in categories
-     *  that support immediate payment.
      *
      * @param bool $autoPay
      * @return self

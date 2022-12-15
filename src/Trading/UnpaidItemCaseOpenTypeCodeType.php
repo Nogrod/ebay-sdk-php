@@ -5,7 +5,7 @@ namespace Nogrod\eBaySDK\Trading;
 /**
  * Class representing UnpaidItemCaseOpenTypeCodeType
  *
- * Enumeration type that indicates the method used to open an Unpaid Item case.
+ * <span class="tablenote"> <strong>Note:</strong> This type is deprecated since Unpaid Item cases are no longer supported. </span>
  * XSD Type: UnpaidItemCaseOpenTypeCodeType
  */
 class UnpaidItemCaseOpenTypeCodeType
@@ -13,17 +13,16 @@ class UnpaidItemCaseOpenTypeCodeType
     /**
      * Constant for 'Auto' value.
      *
-     * This value indicates that the Unpaid Item case was opened automatically
-     *  through eBay's Unpaid Item Assistant feature.
+     * <span class="tablenote"><strong>Note:</strong> This field is deprecated (Unpaid
+     * Item cases are no longer supported). </span>
      */
     public const VAL_AUTO = 'Auto';
 
     /**
      * Constant for 'Manual' value.
      *
-     * This value indicates that the seller opened an Unpaid Item case manually
-     *  through the Resolution Center or by using the Trading API's
-     *  <strong>AddDispute</strong> call.
+     * <span class="tablenote"><strong>Note:</strong> This field is deprecated (Unpaid
+     * Item cases are no longer supported). </span>
      */
     public const VAL_MANUAL = 'Manual';
 

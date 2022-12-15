@@ -7,18 +7,22 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing GetConsolidationJobStatusRequestType
  *
- *
+ * This call can be used to retrieve the status of a shipping policies consolidation job.
  * XSD Type: GetConsolidationJobStatusRequest
  */
 class GetConsolidationJobStatusRequestType extends BaseRequestType
 {
     /**
+     * Unique ID assigned to a shipping policies consolidation job. The <b>JobId</b> value passed into this field will retrieve the shipping policies consolidation job identified by this value. If no <b>JobId</b> is passed in, the status of the most recent consolidation job is returned.
+     *
      * @var int $jobId
      */
     private $jobId = null;
 
     /**
      * Gets as jobId
+     *
+     * Unique ID assigned to a shipping policies consolidation job. The <b>JobId</b> value passed into this field will retrieve the shipping policies consolidation job identified by this value. If no <b>JobId</b> is passed in, the status of the most recent consolidation job is returned.
      *
      * @return int
      */
@@ -29,6 +33,8 @@ class GetConsolidationJobStatusRequestType extends BaseRequestType
 
     /**
      * Sets a new jobId
+     *
+     * Unique ID assigned to a shipping policies consolidation job. The <b>JobId</b> value passed into this field will retrieve the shipping policies consolidation job identified by this value. If no <b>JobId</b> is passed in, the status of the most recent consolidation job is returned.
      *
      * @param int $jobId
      * @return self

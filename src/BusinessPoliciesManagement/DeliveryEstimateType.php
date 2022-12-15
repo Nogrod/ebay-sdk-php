@@ -7,64 +7,69 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing DeliveryEstimateType
  *
- * This carries Shipping information related to the order and would ideally present
- *  for orders whose payment is cleared.
+ * Type defining the <b>deliveryEstimate</b> container, which provides details on the estimated time of delivery of the item to the buyer.
  * XSD Type: DeliveryEstimate
  */
 class DeliveryEstimateType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
     /**
-     * Max business days that will be taken to deliver item.
+     * The maximum number of business days that a buyer may need to wait for delivery of an item after the buyer pays for the order. This value is based on the <b>dispatchTimeMax</b> value and the shipping service option being used to ship the item.
      *
      * @var int $maxDelivery
      */
     private $maxDelivery = null;
 
     /**
-     * Min business days that will be taken to deliver item.
+     * The minimum number of business days that a buyer may need to wait for delivery of an item after the buyer pays for the order. This value is based on the <b>dispatchTimeMax</b> value and the shipping service option being used to ship the item.
      *
      * @var int $minDelivery
      */
     private $minDelivery = null;
 
     /**
-     * Max estimated delivery date[considering site holidays/week ends].
+     * The latest date that an item may be delivered to the buyer after the buyer pays for the order. This value is based on the <b>dispatchTimeMax</b> value and the shipping service option being used to ship the item. Non-business days are disregarded when determining this date.
      *
      * @var \DateTime $maxDeliveryDate
      */
     private $maxDeliveryDate = null;
 
     /**
-     * Min estimated delivery date[considering site holidays/week ends].
+     * The earliest date that an item may be delivered to the buyer after the buyer pays for the order. This value is based on the <b>dispatchTimeMax</b> value and the shipping service option being used to ship the item. Non-business days are disregarded when determining this date.
      *
      * @var \DateTime $minDeliveryDate
      */
     private $minDeliveryDate = null;
 
     /**
+     * This integer value indicates the minimum level of confidence that the item delivery estimates will be met.
+     *
      * @var int $minConfidence
      */
     private $minConfidence = null;
 
     /**
+     * This integer value indicates the maximum level of confidence that the item delivery estimates will be met.
+     *
      * @var int $maxConfidence
      */
     private $maxConfidence = null;
 
     /**
+     * This value indicates how item delivery estimates will be treated.
+     *
      * @var string $estimateTreatment
      */
     private $estimateTreatment = null;
 
     /**
-     * Max Actual days that will be taken to deliver item including holidays.
+     * This value indicates the maximum number of days after payment, including weekends and any holidays, that a buyer may have to wait for the item to be delivered. This value is based on the <b>dispatchTimeMax</b> value, the shipping service option being used to ship the item, plus the number of weekend or holiday days between tha payment date and the <b>maxDeliveryDate</b>.
      *
      * @var int $maxActualDelivery
      */
     private $maxActualDelivery = null;
 
     /**
-     * Min actual days that will be taken to deliver item including holidays.
+     * This value indicates the minimum number of days after payment, including weekends and any holidays, that a buyer may have to wait for the item to be delivered. This value is based on the <b>dispatchTimeMax</b> value, the shipping service option being used to ship the item, plus the number of weekend or holiday days between tha payment date and the <b>minDeliveryDate</b>.
      *
      * @var int $minActualDelivery
      */
@@ -73,7 +78,7 @@ class DeliveryEstimateType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
     /**
      * Gets as maxDelivery
      *
-     * Max business days that will be taken to deliver item.
+     * The maximum number of business days that a buyer may need to wait for delivery of an item after the buyer pays for the order. This value is based on the <b>dispatchTimeMax</b> value and the shipping service option being used to ship the item.
      *
      * @return int
      */
@@ -85,7 +90,7 @@ class DeliveryEstimateType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
     /**
      * Sets a new maxDelivery
      *
-     * Max business days that will be taken to deliver item.
+     * The maximum number of business days that a buyer may need to wait for delivery of an item after the buyer pays for the order. This value is based on the <b>dispatchTimeMax</b> value and the shipping service option being used to ship the item.
      *
      * @param int $maxDelivery
      * @return self
@@ -99,7 +104,7 @@ class DeliveryEstimateType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
     /**
      * Gets as minDelivery
      *
-     * Min business days that will be taken to deliver item.
+     * The minimum number of business days that a buyer may need to wait for delivery of an item after the buyer pays for the order. This value is based on the <b>dispatchTimeMax</b> value and the shipping service option being used to ship the item.
      *
      * @return int
      */
@@ -111,7 +116,7 @@ class DeliveryEstimateType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
     /**
      * Sets a new minDelivery
      *
-     * Min business days that will be taken to deliver item.
+     * The minimum number of business days that a buyer may need to wait for delivery of an item after the buyer pays for the order. This value is based on the <b>dispatchTimeMax</b> value and the shipping service option being used to ship the item.
      *
      * @param int $minDelivery
      * @return self
@@ -125,7 +130,7 @@ class DeliveryEstimateType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
     /**
      * Gets as maxDeliveryDate
      *
-     * Max estimated delivery date[considering site holidays/week ends].
+     * The latest date that an item may be delivered to the buyer after the buyer pays for the order. This value is based on the <b>dispatchTimeMax</b> value and the shipping service option being used to ship the item. Non-business days are disregarded when determining this date.
      *
      * @return \DateTime
      */
@@ -137,7 +142,7 @@ class DeliveryEstimateType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
     /**
      * Sets a new maxDeliveryDate
      *
-     * Max estimated delivery date[considering site holidays/week ends].
+     * The latest date that an item may be delivered to the buyer after the buyer pays for the order. This value is based on the <b>dispatchTimeMax</b> value and the shipping service option being used to ship the item. Non-business days are disregarded when determining this date.
      *
      * @param \DateTime $maxDeliveryDate
      * @return self
@@ -151,7 +156,7 @@ class DeliveryEstimateType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
     /**
      * Gets as minDeliveryDate
      *
-     * Min estimated delivery date[considering site holidays/week ends].
+     * The earliest date that an item may be delivered to the buyer after the buyer pays for the order. This value is based on the <b>dispatchTimeMax</b> value and the shipping service option being used to ship the item. Non-business days are disregarded when determining this date.
      *
      * @return \DateTime
      */
@@ -163,7 +168,7 @@ class DeliveryEstimateType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
     /**
      * Sets a new minDeliveryDate
      *
-     * Min estimated delivery date[considering site holidays/week ends].
+     * The earliest date that an item may be delivered to the buyer after the buyer pays for the order. This value is based on the <b>dispatchTimeMax</b> value and the shipping service option being used to ship the item. Non-business days are disregarded when determining this date.
      *
      * @param \DateTime $minDeliveryDate
      * @return self
@@ -177,6 +182,8 @@ class DeliveryEstimateType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
     /**
      * Gets as minConfidence
      *
+     * This integer value indicates the minimum level of confidence that the item delivery estimates will be met.
+     *
      * @return int
      */
     public function getMinConfidence()
@@ -186,6 +193,8 @@ class DeliveryEstimateType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
 
     /**
      * Sets a new minConfidence
+     *
+     * This integer value indicates the minimum level of confidence that the item delivery estimates will be met.
      *
      * @param int $minConfidence
      * @return self
@@ -199,6 +208,8 @@ class DeliveryEstimateType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
     /**
      * Gets as maxConfidence
      *
+     * This integer value indicates the maximum level of confidence that the item delivery estimates will be met.
+     *
      * @return int
      */
     public function getMaxConfidence()
@@ -208,6 +219,8 @@ class DeliveryEstimateType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
 
     /**
      * Sets a new maxConfidence
+     *
+     * This integer value indicates the maximum level of confidence that the item delivery estimates will be met.
      *
      * @param int $maxConfidence
      * @return self
@@ -221,6 +234,8 @@ class DeliveryEstimateType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
     /**
      * Gets as estimateTreatment
      *
+     * This value indicates how item delivery estimates will be treated.
+     *
      * @return string
      */
     public function getEstimateTreatment()
@@ -230,6 +245,8 @@ class DeliveryEstimateType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
 
     /**
      * Sets a new estimateTreatment
+     *
+     * This value indicates how item delivery estimates will be treated.
      *
      * @param string $estimateTreatment
      * @return self
@@ -243,7 +260,7 @@ class DeliveryEstimateType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
     /**
      * Gets as maxActualDelivery
      *
-     * Max Actual days that will be taken to deliver item including holidays.
+     * This value indicates the maximum number of days after payment, including weekends and any holidays, that a buyer may have to wait for the item to be delivered. This value is based on the <b>dispatchTimeMax</b> value, the shipping service option being used to ship the item, plus the number of weekend or holiday days between tha payment date and the <b>maxDeliveryDate</b>.
      *
      * @return int
      */
@@ -255,7 +272,7 @@ class DeliveryEstimateType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
     /**
      * Sets a new maxActualDelivery
      *
-     * Max Actual days that will be taken to deliver item including holidays.
+     * This value indicates the maximum number of days after payment, including weekends and any holidays, that a buyer may have to wait for the item to be delivered. This value is based on the <b>dispatchTimeMax</b> value, the shipping service option being used to ship the item, plus the number of weekend or holiday days between tha payment date and the <b>maxDeliveryDate</b>.
      *
      * @param int $maxActualDelivery
      * @return self
@@ -269,7 +286,7 @@ class DeliveryEstimateType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
     /**
      * Gets as minActualDelivery
      *
-     * Min actual days that will be taken to deliver item including holidays.
+     * This value indicates the minimum number of days after payment, including weekends and any holidays, that a buyer may have to wait for the item to be delivered. This value is based on the <b>dispatchTimeMax</b> value, the shipping service option being used to ship the item, plus the number of weekend or holiday days between tha payment date and the <b>minDeliveryDate</b>.
      *
      * @return int
      */
@@ -281,7 +298,7 @@ class DeliveryEstimateType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
     /**
      * Sets a new minActualDelivery
      *
-     * Min actual days that will be taken to deliver item including holidays.
+     * This value indicates the minimum number of days after payment, including weekends and any holidays, that a buyer may have to wait for the item to be delivered. This value is based on the <b>dispatchTimeMax</b> value, the shipping service option being used to ship the item, plus the number of weekend or holiday days between tha payment date and the <b>minDeliveryDate</b>.
      *
      * @param int $minActualDelivery
      * @return self

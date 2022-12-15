@@ -7,12 +7,14 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing GetConsolidationJobStatusResponseType
  *
- *
+ * The response container for the <b>getConsolidationJobStatus</b> call.
  * XSD Type: GetConsolidationJobStatusResponse
  */
 class GetConsolidationJobStatusResponseType extends BaseResponseType
 {
     /**
+     * Container consisting of details related to the shipping policies consolidation job, including the status of the job and the eBay site ID.
+     *
      * @var \Nogrod\eBaySDK\BusinessPoliciesManagement\ConsolidationJobType[] $job
      */
     private $job = [
@@ -21,6 +23,8 @@ class GetConsolidationJobStatusResponseType extends BaseResponseType
 
     /**
      * Adds as job
+     *
+     * Container consisting of details related to the shipping policies consolidation job, including the status of the job and the eBay site ID.
      *
      * @return self
      * @param \Nogrod\eBaySDK\BusinessPoliciesManagement\ConsolidationJobType $job
@@ -34,6 +38,8 @@ class GetConsolidationJobStatusResponseType extends BaseResponseType
     /**
      * isset job
      *
+     * Container consisting of details related to the shipping policies consolidation job, including the status of the job and the eBay site ID.
+     *
      * @param int|string $index
      * @return bool
      */
@@ -44,6 +50,8 @@ class GetConsolidationJobStatusResponseType extends BaseResponseType
 
     /**
      * unset job
+     *
+     * Container consisting of details related to the shipping policies consolidation job, including the status of the job and the eBay site ID.
      *
      * @param int|string $index
      * @return void
@@ -56,6 +64,8 @@ class GetConsolidationJobStatusResponseType extends BaseResponseType
     /**
      * Gets as job
      *
+     * Container consisting of details related to the shipping policies consolidation job, including the status of the job and the eBay site ID.
+     *
      * @return \Nogrod\eBaySDK\BusinessPoliciesManagement\ConsolidationJobType[]
      */
     public function getJob()
@@ -65,6 +75,8 @@ class GetConsolidationJobStatusResponseType extends BaseResponseType
 
     /**
      * Sets a new job
+     *
+     * Container consisting of details related to the shipping policies consolidation job, including the status of the job and the eBay site ID.
      *
      * @param \Nogrod\eBaySDK\BusinessPoliciesManagement\ConsolidationJobType[] $job
      * @return self

@@ -4,6 +4,8 @@ namespace Nogrod\eBaySDK\BusinessPoliciesManagement;
 
 /**
  * Class representing RemoveProfileRequest
+ *
+ * The root request container of the <b>removeProfile</b> call.
  */
 class RemoveProfileRequest extends RemoveProfileRequestType
 {

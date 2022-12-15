@@ -8,17 +8,12 @@ use Nogrod\XMLClientRuntime\Func;
  * Class representing DisputeFilterCountType
  *
  * This type is used by the <strong>DisputeFilterCount</strong> containers of the <b>GetUserDisputes</b> response to show how many disputes of a certain type that the user is involved in.
- *  <br/><br/>
- *  <span class="tablenote"><strong>Note:</strong>
- *  The <b>GetUserDisputes</b> call now only retrieves Unpaid Item cases, and is no longer used to retrieve Item not Received (INR) disputes created through PayPal, since this is no longer an option for eBay buyers. However, the <b>GetUserDisputes</b> call is still currently returning counts for <b>ItemNotReceivedDisputes</b>, but the count is most likely to be 0.
- *  </span>
  * XSD Type: DisputeFilterCountType
  */
 class DisputeFilterCountType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
     /**
-     * The enumeration value returned here indicates the type/category of the dispute for which a count is being shown. For example, disputes awaiting a response, closed disputes, disputes eligible for Final Value Fee
-     *  credit, etc.
+     * The enumeration value returned here indicates the type/category of the dispute for which a count is being shown. For example, disputes awaiting a response, closed disputes, disputes eligible for Final Value Fee credit, etc.
      *
      * @var string $disputeFilterType
      */
@@ -36,8 +31,7 @@ class DisputeFilterCountType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as disputeFilterType
      *
-     * The enumeration value returned here indicates the type/category of the dispute for which a count is being shown. For example, disputes awaiting a response, closed disputes, disputes eligible for Final Value Fee
-     *  credit, etc.
+     * The enumeration value returned here indicates the type/category of the dispute for which a count is being shown. For example, disputes awaiting a response, closed disputes, disputes eligible for Final Value Fee credit, etc.
      *
      * @return string
      */
@@ -49,8 +43,7 @@ class DisputeFilterCountType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new disputeFilterType
      *
-     * The enumeration value returned here indicates the type/category of the dispute for which a count is being shown. For example, disputes awaiting a response, closed disputes, disputes eligible for Final Value Fee
-     *  credit, etc.
+     * The enumeration value returned here indicates the type/category of the dispute for which a count is being shown. For example, disputes awaiting a response, closed disputes, disputes eligible for Final Value Fee credit, etc.
      *
      * @param string $disputeFilterType
      * @return self

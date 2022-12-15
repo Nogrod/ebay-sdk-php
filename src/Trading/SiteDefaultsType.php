@@ -377,7 +377,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     private $crossBorderTradeAustraliaEnabled = null;
 
     /**
-     * This field is deprecated. eBay now manages the complete payment and checkout process, so PayPal Purchase Protection no longer applies to eBay orders.
+     * This field is deprecated.
      *
      * @var bool $payPalBuyerProtectionEnabled
      */
@@ -413,7 +413,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     private $galleryFeaturedDurations = null;
 
     /**
-     * This field is deprecated. eBay now controls the electronic payment methods avaialable to buyers, and the seller does not specify any electronic payment methods.
+     * This field is deprecated.
      *
      * @var bool $payPalRequired
      */
@@ -2585,7 +2585,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Gets as payPalBuyerProtectionEnabled
      *
-     * This field is deprecated. eBay now manages the complete payment and checkout process, so PayPal Purchase Protection no longer applies to eBay orders.
+     * This field is deprecated.
      *
      * @return bool
      */
@@ -2597,7 +2597,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Sets a new payPalBuyerProtectionEnabled
      *
-     * This field is deprecated. eBay now manages the complete payment and checkout process, so PayPal Purchase Protection no longer applies to eBay orders.
+     * This field is deprecated.
      *
      * @param bool $payPalBuyerProtectionEnabled
      * @return self
@@ -2757,7 +2757,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Gets as payPalRequired
      *
-     * This field is deprecated. eBay now controls the electronic payment methods avaialable to buyers, and the seller does not specify any electronic payment methods.
+     * This field is deprecated.
      *
      * @return bool
      */
@@ -2769,7 +2769,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Sets a new payPalRequired
      *
-     * This field is deprecated. eBay now controls the electronic payment methods avaialable to buyers, and the seller does not specify any electronic payment methods.
+     * This field is deprecated.
      *
      * @param bool $payPalRequired
      * @return self

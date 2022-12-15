@@ -4,6 +4,8 @@ namespace Nogrod\eBaySDK\BusinessPoliciesManagement;
 
 /**
  * Class representing ConsolidateShippingProfilesResponse
+ *
+ * The root response container of the <b>consolidateShippingProfiles</b> call.
  */
 class ConsolidateShippingProfilesResponse extends ConsolidateShippingProfilesResponseType
 {

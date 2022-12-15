@@ -33,14 +33,6 @@ class SellerExcludeShipToLocationPreferencesType implements \Sabre\Xml\XmlSerial
      *  <br><br>
      *  To see the valid exclude ship-to locations for a specified site, call
      *  <b>GeteBayDetails</b> with a <b>DetailName</b> field set to <b>ExcludeShippingLocationDetails</b>.
-     *  <br><br>
-     *  <span class="tablenote"><strong>Note:</strong>
-     *  To enable your default Exclude Ship-To List, you must enable Exclude
-     *  Shipping Locations and Buyer Requirements in your My eBay Site Preferences.
-     *  For details, see the KnowledgeBase Article <a href=
-     *  "https://ebaydts.com/eBayKBDetails?KBid=1495"
-     *  >HowTo: ExcludeShipToLocation</a>.
-     *  </span>
      *
      * @var string[] $excludeShipToLocation
      */
@@ -71,14 +63,6 @@ class SellerExcludeShipToLocationPreferencesType implements \Sabre\Xml\XmlSerial
      *  <br><br>
      *  To see the valid exclude ship-to locations for a specified site, call
      *  <b>GeteBayDetails</b> with a <b>DetailName</b> field set to <b>ExcludeShippingLocationDetails</b>.
-     *  <br><br>
-     *  <span class="tablenote"><strong>Note:</strong>
-     *  To enable your default Exclude Ship-To List, you must enable Exclude
-     *  Shipping Locations and Buyer Requirements in your My eBay Site Preferences.
-     *  For details, see the KnowledgeBase Article <a href=
-     *  "https://ebaydts.com/eBayKBDetails?KBid=1495"
-     *  >HowTo: ExcludeShipToLocation</a>.
-     *  </span>
      *
      * @return self
      * @param string $excludeShipToLocation
@@ -112,14 +96,6 @@ class SellerExcludeShipToLocationPreferencesType implements \Sabre\Xml\XmlSerial
      *  <br><br>
      *  To see the valid exclude ship-to locations for a specified site, call
      *  <b>GeteBayDetails</b> with a <b>DetailName</b> field set to <b>ExcludeShippingLocationDetails</b>.
-     *  <br><br>
-     *  <span class="tablenote"><strong>Note:</strong>
-     *  To enable your default Exclude Ship-To List, you must enable Exclude
-     *  Shipping Locations and Buyer Requirements in your My eBay Site Preferences.
-     *  For details, see the KnowledgeBase Article <a href=
-     *  "https://ebaydts.com/eBayKBDetails?KBid=1495"
-     *  >HowTo: ExcludeShipToLocation</a>.
-     *  </span>
      *
      * @param int|string $index
      * @return bool
@@ -152,14 +128,6 @@ class SellerExcludeShipToLocationPreferencesType implements \Sabre\Xml\XmlSerial
      *  <br><br>
      *  To see the valid exclude ship-to locations for a specified site, call
      *  <b>GeteBayDetails</b> with a <b>DetailName</b> field set to <b>ExcludeShippingLocationDetails</b>.
-     *  <br><br>
-     *  <span class="tablenote"><strong>Note:</strong>
-     *  To enable your default Exclude Ship-To List, you must enable Exclude
-     *  Shipping Locations and Buyer Requirements in your My eBay Site Preferences.
-     *  For details, see the KnowledgeBase Article <a href=
-     *  "https://ebaydts.com/eBayKBDetails?KBid=1495"
-     *  >HowTo: ExcludeShipToLocation</a>.
-     *  </span>
      *
      * @param int|string $index
      * @return void
@@ -192,14 +160,6 @@ class SellerExcludeShipToLocationPreferencesType implements \Sabre\Xml\XmlSerial
      *  <br><br>
      *  To see the valid exclude ship-to locations for a specified site, call
      *  <b>GeteBayDetails</b> with a <b>DetailName</b> field set to <b>ExcludeShippingLocationDetails</b>.
-     *  <br><br>
-     *  <span class="tablenote"><strong>Note:</strong>
-     *  To enable your default Exclude Ship-To List, you must enable Exclude
-     *  Shipping Locations and Buyer Requirements in your My eBay Site Preferences.
-     *  For details, see the KnowledgeBase Article <a href=
-     *  "https://ebaydts.com/eBayKBDetails?KBid=1495"
-     *  >HowTo: ExcludeShipToLocation</a>.
-     *  </span>
      *
      * @return string[]
      */
@@ -231,14 +191,6 @@ class SellerExcludeShipToLocationPreferencesType implements \Sabre\Xml\XmlSerial
      *  <br><br>
      *  To see the valid exclude ship-to locations for a specified site, call
      *  <b>GeteBayDetails</b> with a <b>DetailName</b> field set to <b>ExcludeShippingLocationDetails</b>.
-     *  <br><br>
-     *  <span class="tablenote"><strong>Note:</strong>
-     *  To enable your default Exclude Ship-To List, you must enable Exclude
-     *  Shipping Locations and Buyer Requirements in your My eBay Site Preferences.
-     *  For details, see the KnowledgeBase Article <a href=
-     *  "https://ebaydts.com/eBayKBDetails?KBid=1495"
-     *  >HowTo: ExcludeShipToLocation</a>.
-     *  </span>
      *
      * @param string[] $excludeShipToLocation
      * @return self

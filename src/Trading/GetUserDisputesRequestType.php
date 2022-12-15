@@ -7,12 +7,11 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing GetUserDisputesRequestType
  *
- * The base request type for the <b>GetUserDisputes</b> call. This call is used to retrieve a list of Unpaid Item cases that the user is involved in as a buyer or seller.
- *  <br/><br/>
+ * The base request type for the <b>GetUserDisputes</b> call.
+ *  <br>
+ *  <br>
  *  <span class="tablenote"><strong>Note:</strong>
- *  The <b>GetUserDisputes</b> call now only retrieves Unpaid Item cases, and is no longer used to retrieve Item not Received (INR) disputes created through PayPal, since this is no longer an option for eBay buyers. eBay buyers must create an INR case through eBay's Resolution Center, and this call also does not support eBay Money Back Guarantee cases.
- *  <br><br>
- *  To respond to an eBay Money Back Guarantee case, the seller should use the <a href="https://developer.ebay.com/Devzone/post-order/index.html" target="_blank">Case Management calls</a> of the <b>Post-Order API</b> or manage/respond to cases manually through the eBay Resolution Center.
+ *  This call is deprecated and is scheduled for decommission on January 31, 2023. The alternative API to search for cancellation requests is the <a href="https://developer.ebay.com/devzone/post-order/post-order_v2_cancellation_search__get.html" target="_blank">Search Cancellations</a> method of the <a href="https://developer.ebay.com/devzone/post-order/index.html" target="_blank">Post-Order API </a>.
  *  </span>
  * XSD Type: GetUserDisputesRequestType
  */

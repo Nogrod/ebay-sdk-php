@@ -7,13 +7,14 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing BaseRequestType
  *
- * This is the base class for request container for
- *  all service operations.
+ * This is the base class for the request container for all service operations.
  * XSD Type: BaseRequest
  */
 class BaseRequestType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
     /**
+     * Reserved for future use.
+     *
      * @var \Nogrod\eBaySDK\BusinessPoliciesManagement\ExtensionType[] $extension
      */
     private $extension = [
@@ -22,6 +23,8 @@ class BaseRequestType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
 
     /**
      * Adds as extension
+     *
+     * Reserved for future use.
      *
      * @return self
      * @param \Nogrod\eBaySDK\BusinessPoliciesManagement\ExtensionType $extension
@@ -35,6 +38,8 @@ class BaseRequestType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     /**
      * isset extension
      *
+     * Reserved for future use.
+     *
      * @param int|string $index
      * @return bool
      */
@@ -45,6 +50,8 @@ class BaseRequestType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
 
     /**
      * unset extension
+     *
+     * Reserved for future use.
      *
      * @param int|string $index
      * @return void
@@ -57,6 +64,8 @@ class BaseRequestType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     /**
      * Gets as extension
      *
+     * Reserved for future use.
+     *
      * @return \Nogrod\eBaySDK\BusinessPoliciesManagement\ExtensionType[]
      */
     public function getExtension()
@@ -66,6 +75,8 @@ class BaseRequestType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
 
     /**
      * Sets a new extension
+     *
+     * Reserved for future use.
      *
      * @param \Nogrod\eBaySDK\BusinessPoliciesManagement\ExtensionType[] $extension
      * @return self

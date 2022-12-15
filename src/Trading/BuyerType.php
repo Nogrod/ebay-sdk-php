@@ -18,6 +18,41 @@ class BuyerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      *  <br>
      *  <span class="tablenote"><b>Note:</b> For an Authenticity Guarantee program order returned in <b>GetItemTransactions</b> or <b>GetSellerTransactions</b>, this is the address of the authenticator's warehouse. The authenticator is responsible for delivery to the buyer's shipping address.
      *  </span>
+     *  <p><span class="tablenote"><b>Note:</b>
+     *  For eBay Vault scenarios: <strong>GetItemTransactions</strong> calls, and <strong>GetSellerTransactions</strong> calls (Seller View only), mock address details are returned for: <br/> - Vault to vault orders: Buyer and Seller View<br /> - Ship to vault orders: Mock addresses are returned for the Buyer View (only); the address returned for the Seller View will be the authenticator&apos;s address.<br>
+     *  The following address details are returned for mock addresses:</span></p>
+     *  <pre>
+     *  &lt;ShippingAddress&gt;
+     *  <br/>
+     *  <code> &nbsp;&lt;Name&gt;eBay Vault&lt;/Name&gt;</code>
+     *  <br/>
+     *  <code> &nbsp;&lt;AddressID&gt;Invalid Request&lt;/AddressID&gt;</code>
+     *  <br/>
+     *  <code> &nbsp;&lt;AddressOwner&gt;eBay&lt;/AddressOwner&gt;</code>
+     *  <br/>
+     *  <code> &nbsp;&lt;AddressUsage&gt;Invalid&lt;/AddressUsage&gt;</code>
+     *  <br/>
+     *  <code> &nbsp;&lt;CityName&gt;Invalid Request&lt;/CityName&gt;</code>
+     *  <br/>
+     *  <code> &nbsp;&lt;Country&gt;US&lt;/Country&gt;</code>
+     *  <br/>
+     *  <code> &nbsp;&lt;CountryName&gt;Invalid Request&lt;/CountryName&gt;</code>
+     *  <br/>
+     *  <code> &nbsp;&lt;ExternalAddressID&gt;Invalid Request&lt;/ExternalAddressID&gt;</code>
+     *  <br/>
+     *  <code> &nbsp;&lt;Phone&gt;Invalid Request&lt;/Phone&gt;</code>
+     *  <br/>
+     *  <code> &nbsp;&lt;PostalCode&gt;Invalid Request&lt;/PostalCode&gt;</code>
+     *  <br/>
+     *  <code> &nbsp;&lt;StateOrProvince&gt;Invalid Request&lt;/StateOrProvince&gt;</code>
+     *  <br/>
+     *  <code> &nbsp;&lt;Street1&gt;Invalid Request&lt;/Street1&gt;</code>
+     *  <br/>
+     *  <code> &nbsp;&lt;Street2&gt;&lt;/Street2&gt;</code>
+     *  <br/>
+     *  &lt;/ShippingAddress&gt;
+     *  </pre>
+     *  <br/>
      *
      * @var \Nogrod\eBaySDK\Trading\AddressType $shippingAddress
      */
@@ -46,6 +81,41 @@ class BuyerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      *  <br>
      *  <span class="tablenote"><b>Note:</b> For an Authenticity Guarantee program order returned in <b>GetItemTransactions</b> or <b>GetSellerTransactions</b>, this is the address of the authenticator's warehouse. The authenticator is responsible for delivery to the buyer's shipping address.
      *  </span>
+     *  <p><span class="tablenote"><b>Note:</b>
+     *  For eBay Vault scenarios: <strong>GetItemTransactions</strong> calls, and <strong>GetSellerTransactions</strong> calls (Seller View only), mock address details are returned for: <br/> - Vault to vault orders: Buyer and Seller View<br /> - Ship to vault orders: Mock addresses are returned for the Buyer View (only); the address returned for the Seller View will be the authenticator&apos;s address.<br>
+     *  The following address details are returned for mock addresses:</span></p>
+     *  <pre>
+     *  &lt;ShippingAddress&gt;
+     *  <br/>
+     *  <code> &nbsp;&lt;Name&gt;eBay Vault&lt;/Name&gt;</code>
+     *  <br/>
+     *  <code> &nbsp;&lt;AddressID&gt;Invalid Request&lt;/AddressID&gt;</code>
+     *  <br/>
+     *  <code> &nbsp;&lt;AddressOwner&gt;eBay&lt;/AddressOwner&gt;</code>
+     *  <br/>
+     *  <code> &nbsp;&lt;AddressUsage&gt;Invalid&lt;/AddressUsage&gt;</code>
+     *  <br/>
+     *  <code> &nbsp;&lt;CityName&gt;Invalid Request&lt;/CityName&gt;</code>
+     *  <br/>
+     *  <code> &nbsp;&lt;Country&gt;US&lt;/Country&gt;</code>
+     *  <br/>
+     *  <code> &nbsp;&lt;CountryName&gt;Invalid Request&lt;/CountryName&gt;</code>
+     *  <br/>
+     *  <code> &nbsp;&lt;ExternalAddressID&gt;Invalid Request&lt;/ExternalAddressID&gt;</code>
+     *  <br/>
+     *  <code> &nbsp;&lt;Phone&gt;Invalid Request&lt;/Phone&gt;</code>
+     *  <br/>
+     *  <code> &nbsp;&lt;PostalCode&gt;Invalid Request&lt;/PostalCode&gt;</code>
+     *  <br/>
+     *  <code> &nbsp;&lt;StateOrProvince&gt;Invalid Request&lt;/StateOrProvince&gt;</code>
+     *  <br/>
+     *  <code> &nbsp;&lt;Street1&gt;Invalid Request&lt;/Street1&gt;</code>
+     *  <br/>
+     *  <code> &nbsp;&lt;Street2&gt;&lt;/Street2&gt;</code>
+     *  <br/>
+     *  &lt;/ShippingAddress&gt;
+     *  </pre>
+     *  <br/>
      *
      * @return \Nogrod\eBaySDK\Trading\AddressType
      */
@@ -62,6 +132,41 @@ class BuyerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      *  <br>
      *  <span class="tablenote"><b>Note:</b> For an Authenticity Guarantee program order returned in <b>GetItemTransactions</b> or <b>GetSellerTransactions</b>, this is the address of the authenticator's warehouse. The authenticator is responsible for delivery to the buyer's shipping address.
      *  </span>
+     *  <p><span class="tablenote"><b>Note:</b>
+     *  For eBay Vault scenarios: <strong>GetItemTransactions</strong> calls, and <strong>GetSellerTransactions</strong> calls (Seller View only), mock address details are returned for: <br/> - Vault to vault orders: Buyer and Seller View<br /> - Ship to vault orders: Mock addresses are returned for the Buyer View (only); the address returned for the Seller View will be the authenticator&apos;s address.<br>
+     *  The following address details are returned for mock addresses:</span></p>
+     *  <pre>
+     *  &lt;ShippingAddress&gt;
+     *  <br/>
+     *  <code> &nbsp;&lt;Name&gt;eBay Vault&lt;/Name&gt;</code>
+     *  <br/>
+     *  <code> &nbsp;&lt;AddressID&gt;Invalid Request&lt;/AddressID&gt;</code>
+     *  <br/>
+     *  <code> &nbsp;&lt;AddressOwner&gt;eBay&lt;/AddressOwner&gt;</code>
+     *  <br/>
+     *  <code> &nbsp;&lt;AddressUsage&gt;Invalid&lt;/AddressUsage&gt;</code>
+     *  <br/>
+     *  <code> &nbsp;&lt;CityName&gt;Invalid Request&lt;/CityName&gt;</code>
+     *  <br/>
+     *  <code> &nbsp;&lt;Country&gt;US&lt;/Country&gt;</code>
+     *  <br/>
+     *  <code> &nbsp;&lt;CountryName&gt;Invalid Request&lt;/CountryName&gt;</code>
+     *  <br/>
+     *  <code> &nbsp;&lt;ExternalAddressID&gt;Invalid Request&lt;/ExternalAddressID&gt;</code>
+     *  <br/>
+     *  <code> &nbsp;&lt;Phone&gt;Invalid Request&lt;/Phone&gt;</code>
+     *  <br/>
+     *  <code> &nbsp;&lt;PostalCode&gt;Invalid Request&lt;/PostalCode&gt;</code>
+     *  <br/>
+     *  <code> &nbsp;&lt;StateOrProvince&gt;Invalid Request&lt;/StateOrProvince&gt;</code>
+     *  <br/>
+     *  <code> &nbsp;&lt;Street1&gt;Invalid Request&lt;/Street1&gt;</code>
+     *  <br/>
+     *  <code> &nbsp;&lt;Street2&gt;&lt;/Street2&gt;</code>
+     *  <br/>
+     *  &lt;/ShippingAddress&gt;
+     *  </pre>
+     *  <br/>
      *
      * @param \Nogrod\eBaySDK\Trading\AddressType $shippingAddress
      * @return self

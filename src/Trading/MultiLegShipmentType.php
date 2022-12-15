@@ -7,7 +7,7 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing MultiLegShipmentType
  *
- * This type provides information about the shipping service, cost, address, and delivery estimates for the domestic leg of a Global Shipping Program shipment. This type is only applicable for international shipments using the GSP program.
+ * This type provides information about the shipping service, cost, address, and delivery estimates for the domestic leg of international shipments. This type is only applicable for international shipments using either the Global Shipping Program or eBay International Shipping.
  * XSD Type: MultiLegShipmentType
  */
 class MultiLegShipmentType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
@@ -20,7 +20,7 @@ class MultiLegShipmentType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
     private $shippingServiceDetails = null;
 
     /**
-     * Contains shipping address information for the domestic leg of a Global Shipping Program shipment. This container includes the ReferenceID field, which can be printed on the package to give the international shipping provider a unique identifier for the order.
+     * Contains shipping address information for the domestic leg of a Global Shipping Program shipment or an eBay International Shipping shipment. For a Global Shipping Program shipment, this container includes the ReferenceID field, which can be printed on the package to give the international shipping provider a unique identifier for the order. For an eBay International Shipping shipment, the eBay Virtual Tracking Number is returned in the Street2 field.
      *
      * @var \Nogrod\eBaySDK\Trading\AddressType $shipToAddress
      */
@@ -73,7 +73,7 @@ class MultiLegShipmentType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
     /**
      * Gets as shipToAddress
      *
-     * Contains shipping address information for the domestic leg of a Global Shipping Program shipment. This container includes the ReferenceID field, which can be printed on the package to give the international shipping provider a unique identifier for the order.
+     * Contains shipping address information for the domestic leg of a Global Shipping Program shipment or an eBay International Shipping shipment. For a Global Shipping Program shipment, this container includes the ReferenceID field, which can be printed on the package to give the international shipping provider a unique identifier for the order. For an eBay International Shipping shipment, the eBay Virtual Tracking Number is returned in the Street2 field.
      *
      * @return \Nogrod\eBaySDK\Trading\AddressType
      */
@@ -85,7 +85,7 @@ class MultiLegShipmentType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
     /**
      * Sets a new shipToAddress
      *
-     * Contains shipping address information for the domestic leg of a Global Shipping Program shipment. This container includes the ReferenceID field, which can be printed on the package to give the international shipping provider a unique identifier for the order.
+     * Contains shipping address information for the domestic leg of a Global Shipping Program shipment or an eBay International Shipping shipment. For a Global Shipping Program shipment, this container includes the ReferenceID field, which can be printed on the package to give the international shipping provider a unique identifier for the order. For an eBay International Shipping shipment, the eBay Virtual Tracking Number is returned in the Street2 field.
      *
      * @param \Nogrod\eBaySDK\Trading\AddressType $shipToAddress
      * @return self

@@ -7,55 +7,74 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing FreightShippingType
  *
- *
+ * Type defining the <b>freightShipping</b> container, which consists of details related to freight shipping. This container is required to be set in a shipping policy if the seller offers freight shipping.
  * XSD Type: FreightShipping
  */
 class FreightShippingType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
     /**
-     * Location type can be residential or commercial
+     * String value indicating whether the freight item is being picked up from a residence or from a commercial location. Valid values are 'Residential' and 'Commercial'.
      *
      * @var string $originPickupLocationType
      */
     private $originPickupLocationType = null;
 
     /**
-     * Item is picked up inside or outside at the origin
+     * Flag indicating if the freight item will be picked up inside or outside of the pickup location. If this value is 'true', the item will be picked up inside of the pickup location, and if 'false', the item will be picked up outside of the pickup location.
      *
      * @var bool $originPickupInside
      */
     private $originPickupInside = null;
 
     /**
-     * Help needed in packaging or not
+     * Flag indicating if help is required to pick up the freight item. If this value is 'true', help picking up the item is required, and if 'false', help picking up the item is not required.
      *
      * @var bool $packagingHelpRequired
      */
     private $packagingHelpRequired = null;
 
     /**
-     * Type of the freight item
+     * A string value classifying the freight item to be shipped. Valid values for this
+     *  field include:
+     *  <ul>
+     *  <li>MACHINERY_USED</li>
+     *  <li>MACHINERY_NEW</li>
+     *  <li>FRAGILE_HOUSEHOLD_USED</li>
+     *  <li>FRAGILE_HOUSEHOLD_NEW</li>
+     *  <li>NON_FRAGILE_HOUSEHOLD_USED</li>
+     *  <li>NON_FRAGILE_HOUSEHOLD_NEW</li>
+     *  <li>RESTAURANT_EQUIPMENT_USED</li>
+     *  <li>RESTAURANT_EQUIPMENT_NEW</li>
+     *  <li>COMPUTER_ELECTRONICS_USED</li>
+     *  <li>COMPUTER_ELECTRONICS_NEW</li>
+     *  <li>VENDING_MACHINE_USED</li>
+     *  <li>VENDING_MACHINE_NEW</li>
+     *  <li>MOTORCYCLE_USED</li>
+     *  <li>MOTORCYCLE_NEW</li>
+     *  </ul>
+     *  This is a required field if freight shipping is included in the shipping policy.
      *
      * @var string $commodityType
      */
     private $commodityType = null;
 
     /**
-     * Class of the freight item
+     * Value indicating the shipping class of the freight item. The shipping class corresponds to the weight of the item (in pounds). Valid values include '50.0', '55.0', '60.0', '65.0', '70.0', '77.5', '85.0', '92.5', '100.0', '110.0', '125.0', '150.0', '175.0', '200.0', '225.0', '250.0', '300.0', '400.0', and '500.0'.
      *
      * @var float $freightShippingClass
      */
     private $freightShippingClass = null;
 
     /**
-     * Location type can be residential or commercial
+     * String value indicating whether the freight item is being delivered to a residence or to a commercial location. Valid values are 'Residential' and 'Commercial'.
      *
      * @var string $destPickupLocationType
      */
     private $destPickupLocationType = null;
 
     /**
-     * Item is picked up inside or outside at the destination
+     * Flag indicating if the freight item will be dropped off inside or outside of the delivery location. If this value is 'true', the item will be dropped off inside of the delivery location, and if 'false', the item will be dropped off outside of the
+     *  delivery location.
      *
      * @var bool $destPickupInside
      */
@@ -64,7 +83,7 @@ class FreightShippingType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     /**
      * Gets as originPickupLocationType
      *
-     * Location type can be residential or commercial
+     * String value indicating whether the freight item is being picked up from a residence or from a commercial location. Valid values are 'Residential' and 'Commercial'.
      *
      * @return string
      */
@@ -76,7 +95,7 @@ class FreightShippingType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     /**
      * Sets a new originPickupLocationType
      *
-     * Location type can be residential or commercial
+     * String value indicating whether the freight item is being picked up from a residence or from a commercial location. Valid values are 'Residential' and 'Commercial'.
      *
      * @param string $originPickupLocationType
      * @return self
@@ -90,7 +109,7 @@ class FreightShippingType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     /**
      * Gets as originPickupInside
      *
-     * Item is picked up inside or outside at the origin
+     * Flag indicating if the freight item will be picked up inside or outside of the pickup location. If this value is 'true', the item will be picked up inside of the pickup location, and if 'false', the item will be picked up outside of the pickup location.
      *
      * @return bool
      */
@@ -102,7 +121,7 @@ class FreightShippingType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     /**
      * Sets a new originPickupInside
      *
-     * Item is picked up inside or outside at the origin
+     * Flag indicating if the freight item will be picked up inside or outside of the pickup location. If this value is 'true', the item will be picked up inside of the pickup location, and if 'false', the item will be picked up outside of the pickup location.
      *
      * @param bool $originPickupInside
      * @return self
@@ -116,7 +135,7 @@ class FreightShippingType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     /**
      * Gets as packagingHelpRequired
      *
-     * Help needed in packaging or not
+     * Flag indicating if help is required to pick up the freight item. If this value is 'true', help picking up the item is required, and if 'false', help picking up the item is not required.
      *
      * @return bool
      */
@@ -128,7 +147,7 @@ class FreightShippingType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     /**
      * Sets a new packagingHelpRequired
      *
-     * Help needed in packaging or not
+     * Flag indicating if help is required to pick up the freight item. If this value is 'true', help picking up the item is required, and if 'false', help picking up the item is not required.
      *
      * @param bool $packagingHelpRequired
      * @return self
@@ -142,7 +161,25 @@ class FreightShippingType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     /**
      * Gets as commodityType
      *
-     * Type of the freight item
+     * A string value classifying the freight item to be shipped. Valid values for this
+     *  field include:
+     *  <ul>
+     *  <li>MACHINERY_USED</li>
+     *  <li>MACHINERY_NEW</li>
+     *  <li>FRAGILE_HOUSEHOLD_USED</li>
+     *  <li>FRAGILE_HOUSEHOLD_NEW</li>
+     *  <li>NON_FRAGILE_HOUSEHOLD_USED</li>
+     *  <li>NON_FRAGILE_HOUSEHOLD_NEW</li>
+     *  <li>RESTAURANT_EQUIPMENT_USED</li>
+     *  <li>RESTAURANT_EQUIPMENT_NEW</li>
+     *  <li>COMPUTER_ELECTRONICS_USED</li>
+     *  <li>COMPUTER_ELECTRONICS_NEW</li>
+     *  <li>VENDING_MACHINE_USED</li>
+     *  <li>VENDING_MACHINE_NEW</li>
+     *  <li>MOTORCYCLE_USED</li>
+     *  <li>MOTORCYCLE_NEW</li>
+     *  </ul>
+     *  This is a required field if freight shipping is included in the shipping policy.
      *
      * @return string
      */
@@ -154,7 +191,25 @@ class FreightShippingType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     /**
      * Sets a new commodityType
      *
-     * Type of the freight item
+     * A string value classifying the freight item to be shipped. Valid values for this
+     *  field include:
+     *  <ul>
+     *  <li>MACHINERY_USED</li>
+     *  <li>MACHINERY_NEW</li>
+     *  <li>FRAGILE_HOUSEHOLD_USED</li>
+     *  <li>FRAGILE_HOUSEHOLD_NEW</li>
+     *  <li>NON_FRAGILE_HOUSEHOLD_USED</li>
+     *  <li>NON_FRAGILE_HOUSEHOLD_NEW</li>
+     *  <li>RESTAURANT_EQUIPMENT_USED</li>
+     *  <li>RESTAURANT_EQUIPMENT_NEW</li>
+     *  <li>COMPUTER_ELECTRONICS_USED</li>
+     *  <li>COMPUTER_ELECTRONICS_NEW</li>
+     *  <li>VENDING_MACHINE_USED</li>
+     *  <li>VENDING_MACHINE_NEW</li>
+     *  <li>MOTORCYCLE_USED</li>
+     *  <li>MOTORCYCLE_NEW</li>
+     *  </ul>
+     *  This is a required field if freight shipping is included in the shipping policy.
      *
      * @param string $commodityType
      * @return self
@@ -168,7 +223,7 @@ class FreightShippingType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     /**
      * Gets as freightShippingClass
      *
-     * Class of the freight item
+     * Value indicating the shipping class of the freight item. The shipping class corresponds to the weight of the item (in pounds). Valid values include '50.0', '55.0', '60.0', '65.0', '70.0', '77.5', '85.0', '92.5', '100.0', '110.0', '125.0', '150.0', '175.0', '200.0', '225.0', '250.0', '300.0', '400.0', and '500.0'.
      *
      * @return float
      */
@@ -180,7 +235,7 @@ class FreightShippingType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     /**
      * Sets a new freightShippingClass
      *
-     * Class of the freight item
+     * Value indicating the shipping class of the freight item. The shipping class corresponds to the weight of the item (in pounds). Valid values include '50.0', '55.0', '60.0', '65.0', '70.0', '77.5', '85.0', '92.5', '100.0', '110.0', '125.0', '150.0', '175.0', '200.0', '225.0', '250.0', '300.0', '400.0', and '500.0'.
      *
      * @param float $freightShippingClass
      * @return self
@@ -194,7 +249,7 @@ class FreightShippingType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     /**
      * Gets as destPickupLocationType
      *
-     * Location type can be residential or commercial
+     * String value indicating whether the freight item is being delivered to a residence or to a commercial location. Valid values are 'Residential' and 'Commercial'.
      *
      * @return string
      */
@@ -206,7 +261,7 @@ class FreightShippingType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     /**
      * Sets a new destPickupLocationType
      *
-     * Location type can be residential or commercial
+     * String value indicating whether the freight item is being delivered to a residence or to a commercial location. Valid values are 'Residential' and 'Commercial'.
      *
      * @param string $destPickupLocationType
      * @return self
@@ -220,7 +275,8 @@ class FreightShippingType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     /**
      * Gets as destPickupInside
      *
-     * Item is picked up inside or outside at the destination
+     * Flag indicating if the freight item will be dropped off inside or outside of the delivery location. If this value is 'true', the item will be dropped off inside of the delivery location, and if 'false', the item will be dropped off outside of the
+     *  delivery location.
      *
      * @return bool
      */
@@ -232,7 +288,8 @@ class FreightShippingType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     /**
      * Sets a new destPickupInside
      *
-     * Item is picked up inside or outside at the destination
+     * Flag indicating if the freight item will be dropped off inside or outside of the delivery location. If this value is 'true', the item will be dropped off inside of the delivery location, and if 'false', the item will be dropped off outside of the
+     *  delivery location.
      *
      * @param bool $destPickupInside
      * @return self

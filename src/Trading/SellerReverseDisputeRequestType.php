@@ -7,9 +7,12 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing SellerReverseDisputeRequestType
  *
- * This call allows a seller to reverse the results of an Unpaid Item case in a situation where the buyer and seller are able to reach a mutual agreement. If this action is successful, the buyer might have an Unpaid Item strike removed (if applicable).
- *  <br><br>
- *  An Unpaid Item case can only be reversed if it was closed with <b>DisputeActivity</b> set to <b>SellerEndCommunication</b>, <b>CameToAgreementNeedFVFCredit</b>, or <b>MutualAgreementOrNoBuyerResponse</b>.
+ * This call allows a seller to reverse the results of an Unpaid Item case in a situation where the buyer and seller are able to reach a mutual agreement.
+ *  <br>
+ *  <br>
+ *  <span class="tablenote"><strong>Note:</strong>
+ *  This call is deprecated and is scheduled for decommission on January 31, 2023. There is no alternative to this call since eBay no longer supports Unpaid Item cases.
+ *  </span>
  * XSD Type: SellerReverseDisputeRequestType
  */
 class SellerReverseDisputeRequestType extends AbstractRequestType

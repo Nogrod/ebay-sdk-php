@@ -7,13 +7,14 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing PaymentProfileListType
  *
- * The root response container for the getSellerProfiles call that lists all payment policies that a seller accepts.
+ * Container consisting of one or more payment policies that match the input criteria in a <b>getSellerProfiles<
+ *  /b> call request.
  * XSD Type: PaymentProfileList
  */
 class PaymentProfileListType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
     /**
-     * Response container for a specific payment policy that a seller accepts. This container includes the category group, profile details, and the payment information that the policy applies to.
+     * Container consisting of details for a specific payment policy. A <b>PaymentProfile</b> container is returned in <b>getSellerProfiles</b> for each payment policy that matches the input criteria.
      *
      * @var \Nogrod\eBaySDK\BusinessPoliciesManagement\PaymentProfileType[] $paymentProfile
      */
@@ -24,7 +25,7 @@ class PaymentProfileListType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Adds as paymentProfile
      *
-     * Response container for a specific payment policy that a seller accepts. This container includes the category group, profile details, and the payment information that the policy applies to.
+     * Container consisting of details for a specific payment policy. A <b>PaymentProfile</b> container is returned in <b>getSellerProfiles</b> for each payment policy that matches the input criteria.
      *
      * @return self
      * @param \Nogrod\eBaySDK\BusinessPoliciesManagement\PaymentProfileType $paymentProfile
@@ -38,7 +39,7 @@ class PaymentProfileListType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * isset paymentProfile
      *
-     * Response container for a specific payment policy that a seller accepts. This container includes the category group, profile details, and the payment information that the policy applies to.
+     * Container consisting of details for a specific payment policy. A <b>PaymentProfile</b> container is returned in <b>getSellerProfiles</b> for each payment policy that matches the input criteria.
      *
      * @param int|string $index
      * @return bool
@@ -51,7 +52,7 @@ class PaymentProfileListType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * unset paymentProfile
      *
-     * Response container for a specific payment policy that a seller accepts. This container includes the category group, profile details, and the payment information that the policy applies to.
+     * Container consisting of details for a specific payment policy. A <b>PaymentProfile</b> container is returned in <b>getSellerProfiles</b> for each payment policy that matches the input criteria.
      *
      * @param int|string $index
      * @return void
@@ -64,7 +65,7 @@ class PaymentProfileListType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as paymentProfile
      *
-     * Response container for a specific payment policy that a seller accepts. This container includes the category group, profile details, and the payment information that the policy applies to.
+     * Container consisting of details for a specific payment policy. A <b>PaymentProfile</b> container is returned in <b>getSellerProfiles</b> for each payment policy that matches the input criteria.
      *
      * @return \Nogrod\eBaySDK\BusinessPoliciesManagement\PaymentProfileType[]
      */
@@ -76,7 +77,7 @@ class PaymentProfileListType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new paymentProfile
      *
-     * Response container for a specific payment policy that a seller accepts. This container includes the category group, profile details, and the payment information that the policy applies to.
+     * Container consisting of details for a specific payment policy. A <b>PaymentProfile</b> container is returned in <b>getSellerProfiles</b> for each payment policy that matches the input criteria.
      *
      * @param \Nogrod\eBaySDK\BusinessPoliciesManagement\PaymentProfileType[] $paymentProfile
      * @return self

@@ -5,14 +5,7 @@ namespace Nogrod\eBaySDK\Trading;
 /**
  * Class representing DisputeActivityCodeType
  *
- * Enumerated type that lists the different dispute activity enum value that can be used when the seller is creating an Unpaid Item case using the <b>AddDisputeResponse</b> call. The value
- *  you can use at a given time depends on the current value of <b>DisputeState</b>.
- *  <br/><br/>
- *  <span class="tablenote"><strong>Note:</strong>
- *  The <b>AddDisputeResponse</b> call now only supports the seller updating or responding to an Unpaid Item case. This call is no longer used to respond to an Item not Received (INR) or Significantly not as Described (SNAD) dispute created through PayPal, since this is no longer an option for eBay buyers. eBay buyers must create an INR or SNAD case through eBay's Resolution Center, and Trading API dispute calls do not support eBay Money Back Guarantee cases.
- *  <br><br>
- *  To respond to an eBay Money Back Guarantee case, the seller should use the <a href="https://developer.ebay.com/Devzone/post-order/index.html" target="_blank">Case Management calls</a> of the <b>Post-Order API</b> or manage/respond to cases manually through the eBay Resolution Center.
- *  </span>
+ * Enumerated type that lists the different dispute activity enum value that can be used when the seller is creating an Unpaid Item case using the <b>AddDisputeResponse</b> call. The value you can use at a given time depends on the current value of <b>DisputeState</b>.
  * XSD Type: DisputeActivityCodeType
  */
 class DisputeActivityCodeType
@@ -66,40 +59,28 @@ class DisputeActivityCodeType
     /**
      * Constant for 'SellerOffersRefund' value.
      *
-     * This value is no longer applicable and should not be used, as it only pertains
-     * to <i>Item Not Received</i> and <i>Significantly Not As Described</i>
-     *  disputes initiated through PayPal, and those disputes are no longer supported
-     * by the <b>AddDisputeResponse</b>.
+     * This value is no longer applicable and should not be used.
      */
     public const VAL_SELLER_OFFERS_REFUND = 'SellerOffersRefund';
 
     /**
      * Constant for 'SellerShippedItem' value.
      *
-     * This value is no longer applicable and should not be used, as it only pertains
-     * to <i>Item Not Received</i> and <i>Significantly Not As Described</i>
-     *  disputes initiated through PayPal, and those disputes are no longer supported
-     * by the <b>AddDisputeResponse</b>.
+     * This value is no longer applicable and should not be used.
      */
     public const VAL_SELLER_SHIPPED_ITEM = 'SellerShippedItem';
 
     /**
      * Constant for 'SellerComment' value.
      *
-     * This value is no longer applicable and should not be used, as it only pertains
-     * to <i>Item Not Received</i> and <i>Significantly Not As Described</i>
-     *  disputes initiated through PayPal, and those disputes are no longer supported
-     * by the <b>AddDisputeResponse</b>.
+     * This value is no longer applicable and should not be used.
      */
     public const VAL_SELLER_COMMENT = 'SellerComment';
 
     /**
      * Constant for 'SellerPaymentNotReceived' value.
      *
-     * This value is no longer applicable and should not be used, as it only pertains
-     * to <i>Item Not Received</i> and <i>Significantly Not As Described</i>
-     *  disputes initiated through PayPal, and those disputes are no longer supported
-     * by the <b>AddDisputeResponse</b>.
+     * This value is no longer applicable and should not be used.
      */
     public const VAL_SELLER_PAYMENT_NOT_RECEIVED = 'SellerPaymentNotReceived';
 

@@ -397,7 +397,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     private $crossBorderTradeAustraliaEnabled = null;
 
     /**
-     * This field is no longer applicable, as PayPal Purchase Protection no longer directly applies to eBay orders.
+     * This field is no longer applicable.
      *
      * @var bool $payPalBuyerProtectionEnabled
      */
@@ -405,8 +405,6 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * If this field is returned as <code>true</code>, the category supports the Best Price Guarantee feature on the Australia site. This field/feature is only applicable to Australia.
-     *  <br/><br/>
-     *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>PayPalBuyerProtectionEnabled</code>.
      *
      * @var bool $buyerGuaranteeEnabled
      */
@@ -429,7 +427,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     private $galleryFeaturedDurations = null;
 
     /**
-     * PayPal or any online payment methods are never required for sellers, so this field can be disregarded even if it is returned as 'true'.
+     * This field is no longer applicable.
      *
      * @var bool $payPalRequired
      */
@@ -2673,7 +2671,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     /**
      * Gets as payPalBuyerProtectionEnabled
      *
-     * This field is no longer applicable, as PayPal Purchase Protection no longer directly applies to eBay orders.
+     * This field is no longer applicable.
      *
      * @return bool
      */
@@ -2685,7 +2683,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     /**
      * Sets a new payPalBuyerProtectionEnabled
      *
-     * This field is no longer applicable, as PayPal Purchase Protection no longer directly applies to eBay orders.
+     * This field is no longer applicable.
      *
      * @param bool $payPalBuyerProtectionEnabled
      * @return self
@@ -2700,8 +2698,6 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as buyerGuaranteeEnabled
      *
      * If this field is returned as <code>true</code>, the category supports the Best Price Guarantee feature on the Australia site. This field/feature is only applicable to Australia.
-     *  <br/><br/>
-     *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>PayPalBuyerProtectionEnabled</code>.
      *
      * @return bool
      */
@@ -2714,8 +2710,6 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new buyerGuaranteeEnabled
      *
      * If this field is returned as <code>true</code>, the category supports the Best Price Guarantee feature on the Australia site. This field/feature is only applicable to Australia.
-     *  <br/><br/>
-     *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>PayPalBuyerProtectionEnabled</code>.
      *
      * @param bool $buyerGuaranteeEnabled
      * @return self
@@ -2831,7 +2825,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     /**
      * Gets as payPalRequired
      *
-     * PayPal or any online payment methods are never required for sellers, so this field can be disregarded even if it is returned as 'true'.
+     * This field is no longer applicable.
      *
      * @return bool
      */
@@ -2843,7 +2837,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     /**
      * Sets a new payPalRequired
      *
-     * PayPal or any online payment methods are never required for sellers, so this field can be disregarded even if it is returned as 'true'.
+     * This field is no longer applicable.
      *
      * @param bool $payPalRequired
      * @return self

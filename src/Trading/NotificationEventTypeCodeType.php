@@ -122,7 +122,7 @@ class NotificationEventTypeCodeType
      *
      * This notification is sent to a subscribed seller each time one of the subscribed
      * seller's items is listed or relisted. This notification is also triggered when
-     * the Unpaid Item Assistant mechanism relists an item for the seller.
+     * the Unpaid Item preferences relists an item for the seller.
      */
     public const VAL_ITEM_LISTED = 'ItemListed';
 

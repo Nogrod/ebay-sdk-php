@@ -7,27 +7,33 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing SetSellerProfileResponseType
  *
- * This is the root container that returns all business policies for a specific seller that can be updated.
+ * Response container for the <b>setSellerProfile</b> call.
  * XSD Type: SetSellerProfileResponse
  */
 class SetSellerProfileResponseType extends BaseResponseType
 {
     /**
-     * Container that has the details of the payment policy that a seller updated.
+     * Root container for a seller's payment policy. The <b>paymentProfile</b> container consists of payment information, the name and description of the policy, and the site and category group to which the payment policy will be applied.
+     *  <br><br>
+     *  The <b>paymentProfile</b> container is only returned if the seller modified a payment policy in the <b>setSellerProfile</b> request.
      *
      * @var \Nogrod\eBaySDK\BusinessPoliciesManagement\PaymentProfileType $paymentProfile
      */
     private $paymentProfile = null;
 
     /**
-     * Container that has the details of the returns policy that a seller updated.
+     * Root container for a seller's return policy. The <b>returnPolicyProfile</b> container consists of return policy information, the name and description of the policy, and the site and category group to which the return policy will be applied.
+     *  <br><br>
+     *  The <b>returnPolicyProfile</b> container is only returned if the seller modified a return policy in the <b>setSellerProfile</b> request.
      *
      * @var \Nogrod\eBaySDK\BusinessPoliciesManagement\ReturnPolicyProfileType $returnPolicyProfile
      */
     private $returnPolicyProfile = null;
 
     /**
-     * Container that has the details of the shipping policy that a seller updated.
+     * Root container for a seller's shipping policy. The <b>shippingPolicyProfile</b> container consists of shipping information, the name and description of the policy, and the site and category group to which the shipping policy will be applied.
+     *  <br><br>
+     *  The <b>shippingPolicyProfile</b> container is only returned if the seller modified a shipping policy in the <b>setSellerProfile</b> request.
      *
      * @var \Nogrod\eBaySDK\BusinessPoliciesManagement\ShippingPolicyProfileType $shippingPolicyProfile
      */
@@ -36,7 +42,9 @@ class SetSellerProfileResponseType extends BaseResponseType
     /**
      * Gets as paymentProfile
      *
-     * Container that has the details of the payment policy that a seller updated.
+     * Root container for a seller's payment policy. The <b>paymentProfile</b> container consists of payment information, the name and description of the policy, and the site and category group to which the payment policy will be applied.
+     *  <br><br>
+     *  The <b>paymentProfile</b> container is only returned if the seller modified a payment policy in the <b>setSellerProfile</b> request.
      *
      * @return \Nogrod\eBaySDK\BusinessPoliciesManagement\PaymentProfileType
      */
@@ -48,7 +56,9 @@ class SetSellerProfileResponseType extends BaseResponseType
     /**
      * Sets a new paymentProfile
      *
-     * Container that has the details of the payment policy that a seller updated.
+     * Root container for a seller's payment policy. The <b>paymentProfile</b> container consists of payment information, the name and description of the policy, and the site and category group to which the payment policy will be applied.
+     *  <br><br>
+     *  The <b>paymentProfile</b> container is only returned if the seller modified a payment policy in the <b>setSellerProfile</b> request.
      *
      * @param \Nogrod\eBaySDK\BusinessPoliciesManagement\PaymentProfileType $paymentProfile
      * @return self
@@ -62,7 +72,9 @@ class SetSellerProfileResponseType extends BaseResponseType
     /**
      * Gets as returnPolicyProfile
      *
-     * Container that has the details of the returns policy that a seller updated.
+     * Root container for a seller's return policy. The <b>returnPolicyProfile</b> container consists of return policy information, the name and description of the policy, and the site and category group to which the return policy will be applied.
+     *  <br><br>
+     *  The <b>returnPolicyProfile</b> container is only returned if the seller modified a return policy in the <b>setSellerProfile</b> request.
      *
      * @return \Nogrod\eBaySDK\BusinessPoliciesManagement\ReturnPolicyProfileType
      */
@@ -74,7 +86,9 @@ class SetSellerProfileResponseType extends BaseResponseType
     /**
      * Sets a new returnPolicyProfile
      *
-     * Container that has the details of the returns policy that a seller updated.
+     * Root container for a seller's return policy. The <b>returnPolicyProfile</b> container consists of return policy information, the name and description of the policy, and the site and category group to which the return policy will be applied.
+     *  <br><br>
+     *  The <b>returnPolicyProfile</b> container is only returned if the seller modified a return policy in the <b>setSellerProfile</b> request.
      *
      * @param \Nogrod\eBaySDK\BusinessPoliciesManagement\ReturnPolicyProfileType $returnPolicyProfile
      * @return self
@@ -88,7 +102,9 @@ class SetSellerProfileResponseType extends BaseResponseType
     /**
      * Gets as shippingPolicyProfile
      *
-     * Container that has the details of the shipping policy that a seller updated.
+     * Root container for a seller's shipping policy. The <b>shippingPolicyProfile</b> container consists of shipping information, the name and description of the policy, and the site and category group to which the shipping policy will be applied.
+     *  <br><br>
+     *  The <b>shippingPolicyProfile</b> container is only returned if the seller modified a shipping policy in the <b>setSellerProfile</b> request.
      *
      * @return \Nogrod\eBaySDK\BusinessPoliciesManagement\ShippingPolicyProfileType
      */
@@ -100,7 +116,9 @@ class SetSellerProfileResponseType extends BaseResponseType
     /**
      * Sets a new shippingPolicyProfile
      *
-     * Container that has the details of the shipping policy that a seller updated.
+     * Root container for a seller's shipping policy. The <b>shippingPolicyProfile</b> container consists of shipping information, the name and description of the policy, and the site and category group to which the shipping policy will be applied.
+     *  <br><br>
+     *  The <b>shippingPolicyProfile</b> container is only returned if the seller modified a shipping policy in the <b>setSellerProfile</b> request.
      *
      * @param \Nogrod\eBaySDK\BusinessPoliciesManagement\ShippingPolicyProfileType $shippingPolicyProfile
      * @return self

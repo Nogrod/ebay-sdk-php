@@ -7,13 +7,13 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing GetStoreRequestType
  *
- * This call is used to retrieve detailed information on a seller's eBay Store, including store theme information and eBay Store category hierarchy.
+ * This call is used to retrieve information on a seller's eBay Store, including detailed information on all customized Store categories that the seller has set up.
  * XSD Type: GetStoreRequestType
  */
 class GetStoreRequestType extends AbstractRequestType
 {
     /**
-     * Include this field and set its value to <code>true</code> if you wish to restrict the call response to only the store category hierarchy data. If this field is not included or set to <code>false</code>, store category hierarchy and all store configuration data is returned.
+     * Include this field and set its value to <code>true</code> if you wish to restrict the call response to only the store category hierarchy data.
      *
      * @var bool $categoryStructureOnly
      */
@@ -29,14 +29,14 @@ class GetStoreRequestType extends AbstractRequestType
     /**
      * This field allows the seller to limit the number of levels of eBay Store categories that are returned. To return only top-level eBay Store categories, the user can include this field and set its value to <code>1</code> (and not use a <b>RootCategoryID</b> value). To retrieve a specific eBay Store Category and that category's child categories, the user could specify the unique eBay Store Category ID in the <b>RootCategoryID</b> field and then set the <b>LevelLimit</b> value to <code>2</code>.
      *  <br/><br/>
-     *  If <b>LevelLimit</b> is omitted, the complete eBay Store Category hierarchy is returned, or all of specified store category's child categories. Currently, eBay Stores support only three levels of store categories.
+     *  If <b>LevelLimit</b> is omitted, the complete eBay Store Category hierarchy is returned, or all of specified store category's child categories. eBay Stores support only three levels of store categories.
      *
      * @var int $levelLimit
      */
     private $levelLimit = null;
 
     /**
-     * The unique identifier for an eBay Store owner. This field is only required if the user wants to view the eBay Store theme and category information for a different eBay Store owner. If this field is omitted, eBay Store theme and category information is returned for the eBay Store owner that is making the call.
+     * The eBay user ID of the eBay seller that owns the eBay Store to be retrieved. This field is only needed if the user wants to view the eBay Store information owned by a different seller (than the seller associated with the authenticated user token). If this field is omitted, the eBay Store information for the seller associated with the authenticated user token is returned.
      *
      * @var string $userID
      */
@@ -45,7 +45,7 @@ class GetStoreRequestType extends AbstractRequestType
     /**
      * Gets as categoryStructureOnly
      *
-     * Include this field and set its value to <code>true</code> if you wish to restrict the call response to only the store category hierarchy data. If this field is not included or set to <code>false</code>, store category hierarchy and all store configuration data is returned.
+     * Include this field and set its value to <code>true</code> if you wish to restrict the call response to only the store category hierarchy data.
      *
      * @return bool
      */
@@ -57,7 +57,7 @@ class GetStoreRequestType extends AbstractRequestType
     /**
      * Sets a new categoryStructureOnly
      *
-     * Include this field and set its value to <code>true</code> if you wish to restrict the call response to only the store category hierarchy data. If this field is not included or set to <code>false</code>, store category hierarchy and all store configuration data is returned.
+     * Include this field and set its value to <code>true</code> if you wish to restrict the call response to only the store category hierarchy data.
      *
      * @param bool $categoryStructureOnly
      * @return self
@@ -99,7 +99,7 @@ class GetStoreRequestType extends AbstractRequestType
      *
      * This field allows the seller to limit the number of levels of eBay Store categories that are returned. To return only top-level eBay Store categories, the user can include this field and set its value to <code>1</code> (and not use a <b>RootCategoryID</b> value). To retrieve a specific eBay Store Category and that category's child categories, the user could specify the unique eBay Store Category ID in the <b>RootCategoryID</b> field and then set the <b>LevelLimit</b> value to <code>2</code>.
      *  <br/><br/>
-     *  If <b>LevelLimit</b> is omitted, the complete eBay Store Category hierarchy is returned, or all of specified store category's child categories. Currently, eBay Stores support only three levels of store categories.
+     *  If <b>LevelLimit</b> is omitted, the complete eBay Store Category hierarchy is returned, or all of specified store category's child categories. eBay Stores support only three levels of store categories.
      *
      * @return int
      */
@@ -113,7 +113,7 @@ class GetStoreRequestType extends AbstractRequestType
      *
      * This field allows the seller to limit the number of levels of eBay Store categories that are returned. To return only top-level eBay Store categories, the user can include this field and set its value to <code>1</code> (and not use a <b>RootCategoryID</b> value). To retrieve a specific eBay Store Category and that category's child categories, the user could specify the unique eBay Store Category ID in the <b>RootCategoryID</b> field and then set the <b>LevelLimit</b> value to <code>2</code>.
      *  <br/><br/>
-     *  If <b>LevelLimit</b> is omitted, the complete eBay Store Category hierarchy is returned, or all of specified store category's child categories. Currently, eBay Stores support only three levels of store categories.
+     *  If <b>LevelLimit</b> is omitted, the complete eBay Store Category hierarchy is returned, or all of specified store category's child categories. eBay Stores support only three levels of store categories.
      *
      * @param int $levelLimit
      * @return self
@@ -127,7 +127,7 @@ class GetStoreRequestType extends AbstractRequestType
     /**
      * Gets as userID
      *
-     * The unique identifier for an eBay Store owner. This field is only required if the user wants to view the eBay Store theme and category information for a different eBay Store owner. If this field is omitted, eBay Store theme and category information is returned for the eBay Store owner that is making the call.
+     * The eBay user ID of the eBay seller that owns the eBay Store to be retrieved. This field is only needed if the user wants to view the eBay Store information owned by a different seller (than the seller associated with the authenticated user token). If this field is omitted, the eBay Store information for the seller associated with the authenticated user token is returned.
      *
      * @return string
      */
@@ -139,7 +139,7 @@ class GetStoreRequestType extends AbstractRequestType
     /**
      * Sets a new userID
      *
-     * The unique identifier for an eBay Store owner. This field is only required if the user wants to view the eBay Store theme and category information for a different eBay Store owner. If this field is omitted, eBay Store theme and category information is returned for the eBay Store owner that is making the call.
+     * The eBay user ID of the eBay seller that owns the eBay Store to be retrieved. This field is only needed if the user wants to view the eBay Store information owned by a different seller (than the seller associated with the authenticated user token). If this field is omitted, the eBay Store information for the seller associated with the authenticated user token is returned.
      *
      * @param string $userID
      * @return self

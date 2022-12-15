@@ -15,7 +15,7 @@ class ModifyNameArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     /**
      * A <b>ModifyName</b> container is needed for each Variation Specific name that the seller wishes to change in a multiple-variation listing.
      *  <br><br>
-     *  You cannot change the name of an Item Specific that is required for the listing category. Use the <b>GetCategoryFeatures</b> or <b>GetCategorySpecifics</b> calls to determine which Item Specifics names are required for a category.
+     *  You cannot change the name of an Item Specific that is required for the listing category. Use the <a href="/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API to determine which Item Specifics names are required for a category.
      *  <br><br>
      *  To get a current list of Variation Specifics defined for a multiple-variation listing, the seller can use <b>GetItem</b>, and then view all Variation Specific names in the <b>VariationSpecificsSet</b> container in the response.
      *
@@ -30,7 +30,7 @@ class ModifyNameArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *
      * A <b>ModifyName</b> container is needed for each Variation Specific name that the seller wishes to change in a multiple-variation listing.
      *  <br><br>
-     *  You cannot change the name of an Item Specific that is required for the listing category. Use the <b>GetCategoryFeatures</b> or <b>GetCategorySpecifics</b> calls to determine which Item Specifics names are required for a category.
+     *  You cannot change the name of an Item Specific that is required for the listing category. Use the <a href="/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API to determine which Item Specifics names are required for a category.
      *  <br><br>
      *  To get a current list of Variation Specifics defined for a multiple-variation listing, the seller can use <b>GetItem</b>, and then view all Variation Specific names in the <b>VariationSpecificsSet</b> container in the response.
      *
@@ -48,7 +48,7 @@ class ModifyNameArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *
      * A <b>ModifyName</b> container is needed for each Variation Specific name that the seller wishes to change in a multiple-variation listing.
      *  <br><br>
-     *  You cannot change the name of an Item Specific that is required for the listing category. Use the <b>GetCategoryFeatures</b> or <b>GetCategorySpecifics</b> calls to determine which Item Specifics names are required for a category.
+     *  You cannot change the name of an Item Specific that is required for the listing category. Use the <a href="/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API to determine which Item Specifics names are required for a category.
      *  <br><br>
      *  To get a current list of Variation Specifics defined for a multiple-variation listing, the seller can use <b>GetItem</b>, and then view all Variation Specific names in the <b>VariationSpecificsSet</b> container in the response.
      *
@@ -65,7 +65,7 @@ class ModifyNameArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *
      * A <b>ModifyName</b> container is needed for each Variation Specific name that the seller wishes to change in a multiple-variation listing.
      *  <br><br>
-     *  You cannot change the name of an Item Specific that is required for the listing category. Use the <b>GetCategoryFeatures</b> or <b>GetCategorySpecifics</b> calls to determine which Item Specifics names are required for a category.
+     *  You cannot change the name of an Item Specific that is required for the listing category. Use the <a href="/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API to determine which Item Specifics names are required for a category.
      *  <br><br>
      *  To get a current list of Variation Specifics defined for a multiple-variation listing, the seller can use <b>GetItem</b>, and then view all Variation Specific names in the <b>VariationSpecificsSet</b> container in the response.
      *
@@ -82,7 +82,7 @@ class ModifyNameArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *
      * A <b>ModifyName</b> container is needed for each Variation Specific name that the seller wishes to change in a multiple-variation listing.
      *  <br><br>
-     *  You cannot change the name of an Item Specific that is required for the listing category. Use the <b>GetCategoryFeatures</b> or <b>GetCategorySpecifics</b> calls to determine which Item Specifics names are required for a category.
+     *  You cannot change the name of an Item Specific that is required for the listing category. Use the <a href="/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API to determine which Item Specifics names are required for a category.
      *  <br><br>
      *  To get a current list of Variation Specifics defined for a multiple-variation listing, the seller can use <b>GetItem</b>, and then view all Variation Specific names in the <b>VariationSpecificsSet</b> container in the response.
      *
@@ -98,7 +98,7 @@ class ModifyNameArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *
      * A <b>ModifyName</b> container is needed for each Variation Specific name that the seller wishes to change in a multiple-variation listing.
      *  <br><br>
-     *  You cannot change the name of an Item Specific that is required for the listing category. Use the <b>GetCategoryFeatures</b> or <b>GetCategorySpecifics</b> calls to determine which Item Specifics names are required for a category.
+     *  You cannot change the name of an Item Specific that is required for the listing category. Use the <a href="/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API to determine which Item Specifics names are required for a category.
      *  <br><br>
      *  To get a current list of Variation Specifics defined for a multiple-variation listing, the seller can use <b>GetItem</b>, and then view all Variation Specific names in the <b>VariationSpecificsSet</b> container in the response.
      *

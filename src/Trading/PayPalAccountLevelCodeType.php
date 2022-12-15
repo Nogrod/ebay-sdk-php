@@ -5,10 +5,7 @@ namespace Nogrod\eBaySDK\Trading;
 /**
  * Class representing PayPalAccountLevelCodeType
  *
- * Enumerated type that defines PayPal account levels.
- *  <br><br>
- *  <span class="tablenote"><b>Note: </b> Although the <b>PayPalAccountLevel</b> field is still being returned for now, this field now has much less relevance since a seller's eBay account and PayPal account are no longer linked together, and a seller having a PayPal account is no longer a requirement.
- *  </span>
+ * This enumeration type is deprecated.
  * XSD Type: PayPalAccountLevelCodeType
  */
 class PayPalAccountLevelCodeType
@@ -16,53 +13,49 @@ class PayPalAccountLevelCodeType
     /**
      * Constant for 'Unverified' value.
      *
-     * This enumeration value indicates that the user's PayPal account is unverified.
+     * This enumeration value is deprecated.
      */
     public const VAL_UNVERIFIED = 'Unverified';
 
     /**
      * Constant for 'InternationalUnverified' value.
      *
-     * This enumeration value indicates that the user's international PayPal account is
-     * unverified.
+     * This enumeration value is deprecated.
      */
     public const VAL_INTERNATIONAL_UNVERIFIED = 'InternationalUnverified';
 
     /**
      * Constant for 'Verified' value.
      *
-     * This enumeration value indicates that the user's PayPal account is verified.
+     * This enumeration value is deprecated.
      */
     public const VAL_VERIFIED = 'Verified';
 
     /**
      * Constant for 'InternationalVerified' value.
      *
-     * This enumeration value indicates that the user's international PayPal account is
-     * verified.
+     * This enumeration value is deprecated.
      */
     public const VAL_INTERNATIONAL_VERIFIED = 'InternationalVerified';
 
     /**
      * Constant for 'Trusted' value.
      *
-     * This enumeration value indicates that the user's PayPal account is a trusted
-     * account.
+     * This enumeration value is deprecated.
      */
     public const VAL_TRUSTED = 'Trusted';
 
     /**
      * Constant for 'Unknown' value.
      *
-     * This enumeration value indicates that the user's PayPal account information is
-     * unknown.
+     * This enumeration value is deprecated.
      */
     public const VAL_UNKNOWN = 'Unknown';
 
     /**
      * Constant for 'Invalid' value.
      *
-     * This enumeration value indicates that the user's PayPal account is invalid.
+     * This enumeration value is deprecated.
      */
     public const VAL_INVALID = 'Invalid';
 

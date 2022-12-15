@@ -8,10 +8,6 @@ use Nogrod\XMLClientRuntime\Func;
  * Class representing DisputeMessageType
  *
  * Type used by a <strong>DisputeMessage</strong> container, which provides details on a message left by the buyer, the seller, or eBay related to an Unpaid Item case.
- *  <br/><br/>
- *  <span class="tablenote"><strong>Note:</strong>
- *  The <b>GetDispute</b> and <b>GetUserDisputes</b> calls now only retrieve Unpaid Item cases. They are no longer used to retrieve Item not Received (INR) disputes created through PayPal, since this is no longer an option for eBay buyers. eBay buyers must create an INR case through eBay's Resolution Center, and these calls also do not support eBay Money Back Guarantee cases.
- *  </span>
  * XSD Type: DisputeMessageType
  */
 class DisputeMessageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable

@@ -8,89 +8,29 @@ use Nogrod\XMLClientRuntime\Func;
  * Class representing StoreLogoType
  *
  * Store logo.
+ *  <br>
+ *  <br>
+ *  <span class="tablenote"><strong>Note:</strong>
+ *  The <b>Store.Logo</b> container can no longer be used in a <b>SetStore</b> call to upload a new logo to a store, and the <b>SetStore</b> call will be decommissioned on September 30, 2022.
+ *  <br>
+ *  <br>
+ *  The <b>GetStore</b> call now only returns the <b>Logo.URL</b> value, but not <b>Logo.LogoID</b> or <b>Logo.Name</b>.
+ *  </span>
  * XSD Type: StoreLogoType
  */
 class StoreLogoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
     /**
-     * Store logo ID (use GetStoreOptions to get the list of valid logo IDs).
-     *
-     * @var int $logoID
-     */
-    private $logoID = null;
-
-    /**
-     * Store logo name. Provides a user-friendly name for the logo.
-     *
-     * @var string $name
-     */
-    private $name = null;
-
-    /**
-     * URL of the logo. Must have a .gif or .jpg extention. Specified when
-     *  you are using a customized logo.
+     * The URL of the seller's store logo.
      *
      * @var string $uRL
      */
     private $uRL = null;
 
     /**
-     * Gets as logoID
-     *
-     * Store logo ID (use GetStoreOptions to get the list of valid logo IDs).
-     *
-     * @return int
-     */
-    public function getLogoID()
-    {
-        return $this->logoID;
-    }
-
-    /**
-     * Sets a new logoID
-     *
-     * Store logo ID (use GetStoreOptions to get the list of valid logo IDs).
-     *
-     * @param int $logoID
-     * @return self
-     */
-    public function setLogoID($logoID)
-    {
-        $this->logoID = $logoID;
-        return $this;
-    }
-
-    /**
-     * Gets as name
-     *
-     * Store logo name. Provides a user-friendly name for the logo.
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * Sets a new name
-     *
-     * Store logo name. Provides a user-friendly name for the logo.
-     *
-     * @param string $name
-     * @return self
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-        return $this;
-    }
-
-    /**
      * Gets as uRL
      *
-     * URL of the logo. Must have a .gif or .jpg extention. Specified when
-     *  you are using a customized logo.
+     * The URL of the seller's store logo.
      *
      * @return string
      */
@@ -102,8 +42,7 @@ class StoreLogoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
     /**
      * Sets a new uRL
      *
-     * URL of the logo. Must have a .gif or .jpg extention. Specified when
-     *  you are using a customized logo.
+     * The URL of the seller's store logo.
      *
      * @param string $uRL
      * @return self
@@ -117,14 +56,6 @@ class StoreLogoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
     public function xmlSerialize(\Sabre\Xml\Writer $writer)
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
-        $value = $this->getLogoID();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}LogoID", $value);
-        }
-        $value = $this->getName();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Name", $value);
-        }
         $value = $this->getURL();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}URL", $value);
@@ -145,14 +76,6 @@ class StoreLogoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LogoID');
-        if (null !== $value) {
-            $this->setLogoID($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Name');
-        if (null !== $value) {
-            $this->setName($value);
-        }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}URL');
         if (null !== $value) {
             $this->setURL($value);

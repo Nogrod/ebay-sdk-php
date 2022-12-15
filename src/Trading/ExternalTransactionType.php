@@ -44,7 +44,7 @@ class ExternalTransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
     private $paymentOrRefundAmount = null;
 
     /**
-     * The current processing status of a PayPal payment for an eBay order.
+     * The current processing status of an external payment for an eBay order.
      *
      * @var string $externalTransactionStatus
      */
@@ -163,7 +163,7 @@ class ExternalTransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
     /**
      * Gets as externalTransactionStatus
      *
-     * The current processing status of a PayPal payment for an eBay order.
+     * The current processing status of an external payment for an eBay order.
      *
      * @return string
      */
@@ -175,7 +175,7 @@ class ExternalTransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
     /**
      * Sets a new externalTransactionStatus
      *
-     * The current processing status of a PayPal payment for an eBay order.
+     * The current processing status of an external payment for an eBay order.
      *
      * @param string $externalTransactionStatus
      * @return self

@@ -7,13 +7,13 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing BuyerRequirementDetailsType
  *
- * Type defining the <b>BuyerRequirementDetails</b> container, which allows the seller to set buyer requirements at the listing level. For the corresponding listing, all buyer requirement values/settings will overwrite values/settings in Buyer Requirements preferences in My eBay.
+ * Type defining the <b>BuyerRequirementDetails</b> container, which indicates if the seller has set any buyer requirements that apply to a listing. Sellers use buyer requirements if they want to avoid working with 'risky' buyers, who may be brand new to eBay, have low/poor Feedback scores, or who have some unpaid item strikes or buyer-initiated cancellations.
  * XSD Type: BuyerRequirementDetailsType
  */
 class BuyerRequirementDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
     /**
-     * The seller includes and sets this field to <code>true</code> as a mechanism to block bidders who reside (according to their eBay primary shipping address) in countries that are on the ship-to exclusion list. Sellers add countries or regions to their ship-to exclusion list by adding those countries or regions using one or more <b>ExcludeShipToLocation</b> fields in an Add/Revise/Relist call.
+     * This field is returned as <code>true</code> if the seller has enabled the setting to block buyers/bidders who reside (according to their eBay primary shipping address) in countries that are on the seller's ship-to exclusion list.
      *  <br>
      *
      * @var bool $shipToRegistrationCountry
@@ -21,7 +21,7 @@ class BuyerRequirementDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\
     private $shipToRegistrationCountry = null;
 
     /**
-     * This Buyer Requirements feature is only available to sellers on the China site, and is only applicable to fixed-price or auction Buy It Now items. <br/><br/> The seller includes and sets this field to <code>true</code> as a mechanism to block prospective buyers with a feedback score of 0 from buying items with a price of 100 RMB or higher.
+     * This field is returned as <code>true</code> if the seller has enabled the setting to block buyers/bidders with a feedback score of 0 from buying items.
      *  <br/>
      *
      * @var bool $zeroFeedbackScore
@@ -29,14 +29,19 @@ class BuyerRequirementDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\
     private $zeroFeedbackScore = null;
 
     /**
-     * The seller uses this container as a mechanism to restrict the number of items (specifying a <b>MaximumItemCount</b> value) a prospective buyer can purchase from the seller during a 10-day period. The seller also has the option of setting a <b>MinimumFeedbackScore</b> requirement. If both fields of the <b>MaximumItemRequirements</b> container are set, the <b>MaximumItemCount</b> limit will only apply to those prospective buyers that don't equal or exceed the specified minimum Feedback Score.
+     * This container is returned if the seller has set a maximum quantity threshold buyer requirement. With this buyer requirement, a buyer is limited in regards to the quantity of a line item that may be purchased.
+     *  <br/><br/>
+     *  This buyer requirement is only applicable to fixed-price listings where multiple quantity is available for purchase.
+     *  <br/><br/>
+     *  In addition to setting a maximum quantity threshold buyer requirement, the seller can also choose to apply this threshold to only those prospective buyers who don't meet or exceed the minimum Feedback score threshold.
      *
      * @var \Nogrod\eBaySDK\Trading\MaximumItemRequirementsType $maximumItemRequirements
      */
     private $maximumItemRequirements = null;
 
     /**
-     * The seller uses this container as a mechanism to block prospective buyers who have one or more Unpaid Item strikes on their account during a specified time period. A buyer receives an Unpaid Item strike if a seller files an Unpaid Item case against the buyer, and eBay rules in favor of the seller.
+     * This container is returned if the seller has enabled a setting to
+     *  block prospective buyers who have one or more unpaid items and/or buyer-initiated cancellations on their account during a specified time period.
      *
      * @var \Nogrod\eBaySDK\Trading\MaximumUnpaidItemStrikesInfoType $maximumUnpaidItemStrikesInfo
      */
@@ -45,7 +50,7 @@ class BuyerRequirementDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\
     /**
      * Gets as shipToRegistrationCountry
      *
-     * The seller includes and sets this field to <code>true</code> as a mechanism to block bidders who reside (according to their eBay primary shipping address) in countries that are on the ship-to exclusion list. Sellers add countries or regions to their ship-to exclusion list by adding those countries or regions using one or more <b>ExcludeShipToLocation</b> fields in an Add/Revise/Relist call.
+     * This field is returned as <code>true</code> if the seller has enabled the setting to block buyers/bidders who reside (according to their eBay primary shipping address) in countries that are on the seller's ship-to exclusion list.
      *  <br>
      *
      * @return bool
@@ -58,7 +63,7 @@ class BuyerRequirementDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\
     /**
      * Sets a new shipToRegistrationCountry
      *
-     * The seller includes and sets this field to <code>true</code> as a mechanism to block bidders who reside (according to their eBay primary shipping address) in countries that are on the ship-to exclusion list. Sellers add countries or regions to their ship-to exclusion list by adding those countries or regions using one or more <b>ExcludeShipToLocation</b> fields in an Add/Revise/Relist call.
+     * This field is returned as <code>true</code> if the seller has enabled the setting to block buyers/bidders who reside (according to their eBay primary shipping address) in countries that are on the seller's ship-to exclusion list.
      *  <br>
      *
      * @param bool $shipToRegistrationCountry
@@ -73,7 +78,7 @@ class BuyerRequirementDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\
     /**
      * Gets as zeroFeedbackScore
      *
-     * This Buyer Requirements feature is only available to sellers on the China site, and is only applicable to fixed-price or auction Buy It Now items. <br/><br/> The seller includes and sets this field to <code>true</code> as a mechanism to block prospective buyers with a feedback score of 0 from buying items with a price of 100 RMB or higher.
+     * This field is returned as <code>true</code> if the seller has enabled the setting to block buyers/bidders with a feedback score of 0 from buying items.
      *  <br/>
      *
      * @return bool
@@ -86,7 +91,7 @@ class BuyerRequirementDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\
     /**
      * Sets a new zeroFeedbackScore
      *
-     * This Buyer Requirements feature is only available to sellers on the China site, and is only applicable to fixed-price or auction Buy It Now items. <br/><br/> The seller includes and sets this field to <code>true</code> as a mechanism to block prospective buyers with a feedback score of 0 from buying items with a price of 100 RMB or higher.
+     * This field is returned as <code>true</code> if the seller has enabled the setting to block buyers/bidders with a feedback score of 0 from buying items.
      *  <br/>
      *
      * @param bool $zeroFeedbackScore
@@ -101,7 +106,11 @@ class BuyerRequirementDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\
     /**
      * Gets as maximumItemRequirements
      *
-     * The seller uses this container as a mechanism to restrict the number of items (specifying a <b>MaximumItemCount</b> value) a prospective buyer can purchase from the seller during a 10-day period. The seller also has the option of setting a <b>MinimumFeedbackScore</b> requirement. If both fields of the <b>MaximumItemRequirements</b> container are set, the <b>MaximumItemCount</b> limit will only apply to those prospective buyers that don't equal or exceed the specified minimum Feedback Score.
+     * This container is returned if the seller has set a maximum quantity threshold buyer requirement. With this buyer requirement, a buyer is limited in regards to the quantity of a line item that may be purchased.
+     *  <br/><br/>
+     *  This buyer requirement is only applicable to fixed-price listings where multiple quantity is available for purchase.
+     *  <br/><br/>
+     *  In addition to setting a maximum quantity threshold buyer requirement, the seller can also choose to apply this threshold to only those prospective buyers who don't meet or exceed the minimum Feedback score threshold.
      *
      * @return \Nogrod\eBaySDK\Trading\MaximumItemRequirementsType
      */
@@ -113,7 +122,11 @@ class BuyerRequirementDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\
     /**
      * Sets a new maximumItemRequirements
      *
-     * The seller uses this container as a mechanism to restrict the number of items (specifying a <b>MaximumItemCount</b> value) a prospective buyer can purchase from the seller during a 10-day period. The seller also has the option of setting a <b>MinimumFeedbackScore</b> requirement. If both fields of the <b>MaximumItemRequirements</b> container are set, the <b>MaximumItemCount</b> limit will only apply to those prospective buyers that don't equal or exceed the specified minimum Feedback Score.
+     * This container is returned if the seller has set a maximum quantity threshold buyer requirement. With this buyer requirement, a buyer is limited in regards to the quantity of a line item that may be purchased.
+     *  <br/><br/>
+     *  This buyer requirement is only applicable to fixed-price listings where multiple quantity is available for purchase.
+     *  <br/><br/>
+     *  In addition to setting a maximum quantity threshold buyer requirement, the seller can also choose to apply this threshold to only those prospective buyers who don't meet or exceed the minimum Feedback score threshold.
      *
      * @param \Nogrod\eBaySDK\Trading\MaximumItemRequirementsType $maximumItemRequirements
      * @return self
@@ -127,7 +140,8 @@ class BuyerRequirementDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\
     /**
      * Gets as maximumUnpaidItemStrikesInfo
      *
-     * The seller uses this container as a mechanism to block prospective buyers who have one or more Unpaid Item strikes on their account during a specified time period. A buyer receives an Unpaid Item strike if a seller files an Unpaid Item case against the buyer, and eBay rules in favor of the seller.
+     * This container is returned if the seller has enabled a setting to
+     *  block prospective buyers who have one or more unpaid items and/or buyer-initiated cancellations on their account during a specified time period.
      *
      * @return \Nogrod\eBaySDK\Trading\MaximumUnpaidItemStrikesInfoType
      */
@@ -139,7 +153,8 @@ class BuyerRequirementDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\
     /**
      * Sets a new maximumUnpaidItemStrikesInfo
      *
-     * The seller uses this container as a mechanism to block prospective buyers who have one or more Unpaid Item strikes on their account during a specified time period. A buyer receives an Unpaid Item strike if a seller files an Unpaid Item case against the buyer, and eBay rules in favor of the seller.
+     * This container is returned if the seller has enabled a setting to
+     *  block prospective buyers who have one or more unpaid items and/or buyer-initiated cancellations on their account during a specified time period.
      *
      * @param \Nogrod\eBaySDK\Trading\MaximumUnpaidItemStrikesInfoType $maximumUnpaidItemStrikesInfo
      * @return self

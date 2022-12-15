@@ -7,27 +7,33 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing AddSellerProfileRequestType
  *
- * Use this call to create new payment, return, and shipping policies for a seller.
+ * Sellers use this call to create one or more business policies. With one call instance, the seller can create a payment policy, a return policy, a shipping policy, or any combination of the three policy types.</p><p class="tablenote"><b>Important!</b> This API is deprecated and will be decommissioned later in 2022, on a date TBD. We recommend that you migrate to the <b>fulfillment_policy</b>, <b>payment_policy</b>, and <b>return_policy</b> resources of the <a href="https://developer.ebay.com/api-docs/sell/account/resources/methods">Account API</a> to set up and manage all of your fulfillment, payment, and return business policies.</p>
  * XSD Type: AddSellerProfileRequest
  */
 class AddSellerProfileRequestType extends BaseRequestType
 {
     /**
-     * Root container for a seller's payment policy for a category group. Required.
+     * Root container for a seller's payment policy. The <b>paymentProfile</b> container consists of payment information, the name and description of the policy, and the site and category group(s) to which the payment policy will be applied.
+     *  <br><br>
+     *  The <b>paymentProfile</b> container is conditionally required if the seller wants to create a new payment policy.
      *
      * @var \Nogrod\eBaySDK\BusinessPoliciesManagement\PaymentProfileType $paymentProfile
      */
     private $paymentProfile = null;
 
     /**
-     * Root container consisting of a seller's return policy for a category group. Optional. Container returned if seller has specified a return policy.
+     * Root container for a seller's return policy. The <b>returnPolicyProfile</b> container consists of return policy information, the name and description of the policy, and the site and category group(s) to which the return policy will be applied.
+     *  <br><br>
+     *  The <b>returnPolicyProfile</b> container is conditionally required if the seller wants to create a new return policy.
      *
      * @var \Nogrod\eBaySDK\BusinessPoliciesManagement\ReturnPolicyProfileType $returnPolicyProfile
      */
     private $returnPolicyProfile = null;
 
     /**
-     * Root container consisting of a seller's shipping policy for a category group.. Optional. Container returned if seller has specified a shipping policy.
+     * Root container for a seller's shipping policy. The <b>shippingPolicyProfile</b> container consists of shipping information, the name and description of the policy, and the site and category group(s) to which the shipping policy will be applied.
+     *  <br><br>
+     *  The <b>shippingPolicyProfile</b> container is conditionally required if the seller wants to create a new shipping policy.
      *
      * @var \Nogrod\eBaySDK\BusinessPoliciesManagement\ShippingPolicyProfileType $shippingPolicyProfile
      */
@@ -36,7 +42,9 @@ class AddSellerProfileRequestType extends BaseRequestType
     /**
      * Gets as paymentProfile
      *
-     * Root container for a seller's payment policy for a category group. Required.
+     * Root container for a seller's payment policy. The <b>paymentProfile</b> container consists of payment information, the name and description of the policy, and the site and category group(s) to which the payment policy will be applied.
+     *  <br><br>
+     *  The <b>paymentProfile</b> container is conditionally required if the seller wants to create a new payment policy.
      *
      * @return \Nogrod\eBaySDK\BusinessPoliciesManagement\PaymentProfileType
      */
@@ -48,7 +56,9 @@ class AddSellerProfileRequestType extends BaseRequestType
     /**
      * Sets a new paymentProfile
      *
-     * Root container for a seller's payment policy for a category group. Required.
+     * Root container for a seller's payment policy. The <b>paymentProfile</b> container consists of payment information, the name and description of the policy, and the site and category group(s) to which the payment policy will be applied.
+     *  <br><br>
+     *  The <b>paymentProfile</b> container is conditionally required if the seller wants to create a new payment policy.
      *
      * @param \Nogrod\eBaySDK\BusinessPoliciesManagement\PaymentProfileType $paymentProfile
      * @return self
@@ -62,7 +72,9 @@ class AddSellerProfileRequestType extends BaseRequestType
     /**
      * Gets as returnPolicyProfile
      *
-     * Root container consisting of a seller's return policy for a category group. Optional. Container returned if seller has specified a return policy.
+     * Root container for a seller's return policy. The <b>returnPolicyProfile</b> container consists of return policy information, the name and description of the policy, and the site and category group(s) to which the return policy will be applied.
+     *  <br><br>
+     *  The <b>returnPolicyProfile</b> container is conditionally required if the seller wants to create a new return policy.
      *
      * @return \Nogrod\eBaySDK\BusinessPoliciesManagement\ReturnPolicyProfileType
      */
@@ -74,7 +86,9 @@ class AddSellerProfileRequestType extends BaseRequestType
     /**
      * Sets a new returnPolicyProfile
      *
-     * Root container consisting of a seller's return policy for a category group. Optional. Container returned if seller has specified a return policy.
+     * Root container for a seller's return policy. The <b>returnPolicyProfile</b> container consists of return policy information, the name and description of the policy, and the site and category group(s) to which the return policy will be applied.
+     *  <br><br>
+     *  The <b>returnPolicyProfile</b> container is conditionally required if the seller wants to create a new return policy.
      *
      * @param \Nogrod\eBaySDK\BusinessPoliciesManagement\ReturnPolicyProfileType $returnPolicyProfile
      * @return self
@@ -88,7 +102,9 @@ class AddSellerProfileRequestType extends BaseRequestType
     /**
      * Gets as shippingPolicyProfile
      *
-     * Root container consisting of a seller's shipping policy for a category group.. Optional. Container returned if seller has specified a shipping policy.
+     * Root container for a seller's shipping policy. The <b>shippingPolicyProfile</b> container consists of shipping information, the name and description of the policy, and the site and category group(s) to which the shipping policy will be applied.
+     *  <br><br>
+     *  The <b>shippingPolicyProfile</b> container is conditionally required if the seller wants to create a new shipping policy.
      *
      * @return \Nogrod\eBaySDK\BusinessPoliciesManagement\ShippingPolicyProfileType
      */
@@ -100,7 +116,9 @@ class AddSellerProfileRequestType extends BaseRequestType
     /**
      * Sets a new shippingPolicyProfile
      *
-     * Root container consisting of a seller's shipping policy for a category group.. Optional. Container returned if seller has specified a shipping policy.
+     * Root container for a seller's shipping policy. The <b>shippingPolicyProfile</b> container consists of shipping information, the name and description of the policy, and the site and category group(s) to which the shipping policy will be applied.
+     *  <br><br>
+     *  The <b>shippingPolicyProfile</b> container is conditionally required if the seller wants to create a new shipping policy.
      *
      * @param \Nogrod\eBaySDK\BusinessPoliciesManagement\ShippingPolicyProfileType $shippingPolicyProfile
      * @return self

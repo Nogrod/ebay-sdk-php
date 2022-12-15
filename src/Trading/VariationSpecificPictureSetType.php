@@ -37,7 +37,13 @@ class VariationSpecificPictureSetType implements \Sabre\Xml\XmlSerializable, \Sa
      *  The image specified in the first <b>PictureURL</b> field is also used as the thumbnail image for applicable variations. For example, if the picture set contains pictures of red
      *  shirts (i.e., VariationSpecificName=Color and VariationSpecificValue=Red), the
      *  first picture is used as the thumbnail image for all the red shirt variations.
+     *
      *  <br/><br/>
+     *  <span class="tablenote"><b>Note: </b>
+     *  Up to 12 pictures may be specified for one variation within a multiple-variation listing.
+     *  </span>
+     *
+     *  <br/>
      *  <span class="tablenote"><b>Note: </b>
      *  All images, whether they are hosted by EPS or self-hosted, must comply with eBay picture requirements, including the requirement that all images must be at least 500 pixels on its longest side. If the image does not satisfy the 500 pixels requirement, the listing may be blocked. For more information about other requirements and tips for adding pictures to listings, see the <a href="https://www.ebay.com/help/selling/listings/adding-pictures-listings?id=4148">Adding pictures to your listings</a> help page.
      *  </span>
@@ -137,7 +143,13 @@ class VariationSpecificPictureSetType implements \Sabre\Xml\XmlSerializable, \Sa
      *  The image specified in the first <b>PictureURL</b> field is also used as the thumbnail image for applicable variations. For example, if the picture set contains pictures of red
      *  shirts (i.e., VariationSpecificName=Color and VariationSpecificValue=Red), the
      *  first picture is used as the thumbnail image for all the red shirt variations.
+     *
      *  <br/><br/>
+     *  <span class="tablenote"><b>Note: </b>
+     *  Up to 12 pictures may be specified for one variation within a multiple-variation listing.
+     *  </span>
+     *
+     *  <br/>
      *  <span class="tablenote"><b>Note: </b>
      *  All images, whether they are hosted by EPS or self-hosted, must comply with eBay picture requirements, including the requirement that all images must be at least 500 pixels on its longest side. If the image does not satisfy the 500 pixels requirement, the listing may be blocked. For more information about other requirements and tips for adding pictures to listings, see the <a href="https://www.ebay.com/help/selling/listings/adding-pictures-listings?id=4148">Adding pictures to your listings</a> help page.
      *  </span>
@@ -178,7 +190,13 @@ class VariationSpecificPictureSetType implements \Sabre\Xml\XmlSerializable, \Sa
      *  The image specified in the first <b>PictureURL</b> field is also used as the thumbnail image for applicable variations. For example, if the picture set contains pictures of red
      *  shirts (i.e., VariationSpecificName=Color and VariationSpecificValue=Red), the
      *  first picture is used as the thumbnail image for all the red shirt variations.
+     *
      *  <br/><br/>
+     *  <span class="tablenote"><b>Note: </b>
+     *  Up to 12 pictures may be specified for one variation within a multiple-variation listing.
+     *  </span>
+     *
+     *  <br/>
      *  <span class="tablenote"><b>Note: </b>
      *  All images, whether they are hosted by EPS or self-hosted, must comply with eBay picture requirements, including the requirement that all images must be at least 500 pixels on its longest side. If the image does not satisfy the 500 pixels requirement, the listing may be blocked. For more information about other requirements and tips for adding pictures to listings, see the <a href="https://www.ebay.com/help/selling/listings/adding-pictures-listings?id=4148">Adding pictures to your listings</a> help page.
      *  </span>
@@ -218,7 +236,13 @@ class VariationSpecificPictureSetType implements \Sabre\Xml\XmlSerializable, \Sa
      *  The image specified in the first <b>PictureURL</b> field is also used as the thumbnail image for applicable variations. For example, if the picture set contains pictures of red
      *  shirts (i.e., VariationSpecificName=Color and VariationSpecificValue=Red), the
      *  first picture is used as the thumbnail image for all the red shirt variations.
+     *
      *  <br/><br/>
+     *  <span class="tablenote"><b>Note: </b>
+     *  Up to 12 pictures may be specified for one variation within a multiple-variation listing.
+     *  </span>
+     *
+     *  <br/>
      *  <span class="tablenote"><b>Note: </b>
      *  All images, whether they are hosted by EPS or self-hosted, must comply with eBay picture requirements, including the requirement that all images must be at least 500 pixels on its longest side. If the image does not satisfy the 500 pixels requirement, the listing may be blocked. For more information about other requirements and tips for adding pictures to listings, see the <a href="https://www.ebay.com/help/selling/listings/adding-pictures-listings?id=4148">Adding pictures to your listings</a> help page.
      *  </span>
@@ -258,7 +282,13 @@ class VariationSpecificPictureSetType implements \Sabre\Xml\XmlSerializable, \Sa
      *  The image specified in the first <b>PictureURL</b> field is also used as the thumbnail image for applicable variations. For example, if the picture set contains pictures of red
      *  shirts (i.e., VariationSpecificName=Color and VariationSpecificValue=Red), the
      *  first picture is used as the thumbnail image for all the red shirt variations.
+     *
      *  <br/><br/>
+     *  <span class="tablenote"><b>Note: </b>
+     *  Up to 12 pictures may be specified for one variation within a multiple-variation listing.
+     *  </span>
+     *
+     *  <br/>
      *  <span class="tablenote"><b>Note: </b>
      *  All images, whether they are hosted by EPS or self-hosted, must comply with eBay picture requirements, including the requirement that all images must be at least 500 pixels on its longest side. If the image does not satisfy the 500 pixels requirement, the listing may be blocked. For more information about other requirements and tips for adding pictures to listings, see the <a href="https://www.ebay.com/help/selling/listings/adding-pictures-listings?id=4148">Adding pictures to your listings</a> help page.
      *  </span>
@@ -297,7 +327,13 @@ class VariationSpecificPictureSetType implements \Sabre\Xml\XmlSerializable, \Sa
      *  The image specified in the first <b>PictureURL</b> field is also used as the thumbnail image for applicable variations. For example, if the picture set contains pictures of red
      *  shirts (i.e., VariationSpecificName=Color and VariationSpecificValue=Red), the
      *  first picture is used as the thumbnail image for all the red shirt variations.
+     *
      *  <br/><br/>
+     *  <span class="tablenote"><b>Note: </b>
+     *  Up to 12 pictures may be specified for one variation within a multiple-variation listing.
+     *  </span>
+     *
+     *  <br/>
      *  <span class="tablenote"><b>Note: </b>
      *  All images, whether they are hosted by EPS or self-hosted, must comply with eBay picture requirements, including the requirement that all images must be at least 500 pixels on its longest side. If the image does not satisfy the 500 pixels requirement, the listing may be blocked. For more information about other requirements and tips for adding pictures to listings, see the <a href="https://www.ebay.com/help/selling/listings/adding-pictures-listings?id=4148">Adding pictures to your listings</a> help page.
      *  </span>

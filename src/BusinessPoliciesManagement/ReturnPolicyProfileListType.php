@@ -7,13 +7,13 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing ReturnPolicyProfileListType
  *
- * The container for all returns policies that a seller provides.
+ * Type defining the <b>returnPolicyProfileList</b> container, which consists of one or more return policies that match the input criteria in the <b>getSellerProfiles</b> request.
  * XSD Type: ReturnPolicyProfileList
  */
 class ReturnPolicyProfileListType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
     /**
-     * Container for a specific returns policy that a seller provides.
+     * Container consisting of detailed information for a specific return policy that matches the input criteria.
      *
      * @var \Nogrod\eBaySDK\BusinessPoliciesManagement\ReturnPolicyProfileType[] $returnPolicyProfile
      */
@@ -24,7 +24,7 @@ class ReturnPolicyProfileListType implements \Sabre\Xml\XmlSerializable, \Sabre\
     /**
      * Adds as returnPolicyProfile
      *
-     * Container for a specific returns policy that a seller provides.
+     * Container consisting of detailed information for a specific return policy that matches the input criteria.
      *
      * @return self
      * @param \Nogrod\eBaySDK\BusinessPoliciesManagement\ReturnPolicyProfileType $returnPolicyProfile
@@ -38,7 +38,7 @@ class ReturnPolicyProfileListType implements \Sabre\Xml\XmlSerializable, \Sabre\
     /**
      * isset returnPolicyProfile
      *
-     * Container for a specific returns policy that a seller provides.
+     * Container consisting of detailed information for a specific return policy that matches the input criteria.
      *
      * @param int|string $index
      * @return bool
@@ -51,7 +51,7 @@ class ReturnPolicyProfileListType implements \Sabre\Xml\XmlSerializable, \Sabre\
     /**
      * unset returnPolicyProfile
      *
-     * Container for a specific returns policy that a seller provides.
+     * Container consisting of detailed information for a specific return policy that matches the input criteria.
      *
      * @param int|string $index
      * @return void
@@ -64,7 +64,7 @@ class ReturnPolicyProfileListType implements \Sabre\Xml\XmlSerializable, \Sabre\
     /**
      * Gets as returnPolicyProfile
      *
-     * Container for a specific returns policy that a seller provides.
+     * Container consisting of detailed information for a specific return policy that matches the input criteria.
      *
      * @return \Nogrod\eBaySDK\BusinessPoliciesManagement\ReturnPolicyProfileType[]
      */
@@ -76,7 +76,7 @@ class ReturnPolicyProfileListType implements \Sabre\Xml\XmlSerializable, \Sabre\
     /**
      * Sets a new returnPolicyProfile
      *
-     * Container for a specific returns policy that a seller provides.
+     * Container consisting of detailed information for a specific return policy that matches the input criteria.
      *
      * @param \Nogrod\eBaySDK\BusinessPoliciesManagement\ReturnPolicyProfileType[] $returnPolicyProfile
      * @return self

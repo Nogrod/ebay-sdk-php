@@ -7,27 +7,30 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing DeliveryEstimateMetaInfoType
  *
- * This info structure is populated with data specific
- *  to a particular algorithm that is used.
+ * Type that defines the <b>deliveryEstimateMetaInfo</b> container, which consists of the entity and its value on which the item delivery estimates are based.
  * XSD Type: DeliveryEstimateMetaInfo
  */
 class DeliveryEstimateMetaInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
     /**
-     * Possible values are:
-     *  ExternalId
-     *  ItemId
-     *  SellerId
-     *  BuyerId
-     *  SGuid
-     *  PGuid
-     *  TransactionId
+     * The entity that item delivery estimates are based on. Valid entities include:
+     *  <ul>
+     *  <li>ExternalID</li>
+     *  <li>ItemID</li>
+     *  <li>SellerID</li>
+     *  <li>BuyerID</li>
+     *  <li>SGuid</li>
+     *  <li>PGuid</li>
+     *  <li>TransactionID</li>
+     *  </ul>
      *
      * @var string $key
      */
     private $key = null;
 
     /**
+     * This value corresponds to the value in the <b>key</b> field and identifies the instance of that entity.
+     *
      * @var string $value
      */
     private $value = null;
@@ -35,14 +38,16 @@ class DeliveryEstimateMetaInfoType implements \Sabre\Xml\XmlSerializable, \Sabre
     /**
      * Gets as key
      *
-     * Possible values are:
-     *  ExternalId
-     *  ItemId
-     *  SellerId
-     *  BuyerId
-     *  SGuid
-     *  PGuid
-     *  TransactionId
+     * The entity that item delivery estimates are based on. Valid entities include:
+     *  <ul>
+     *  <li>ExternalID</li>
+     *  <li>ItemID</li>
+     *  <li>SellerID</li>
+     *  <li>BuyerID</li>
+     *  <li>SGuid</li>
+     *  <li>PGuid</li>
+     *  <li>TransactionID</li>
+     *  </ul>
      *
      * @return string
      */
@@ -54,14 +59,16 @@ class DeliveryEstimateMetaInfoType implements \Sabre\Xml\XmlSerializable, \Sabre
     /**
      * Sets a new key
      *
-     * Possible values are:
-     *  ExternalId
-     *  ItemId
-     *  SellerId
-     *  BuyerId
-     *  SGuid
-     *  PGuid
-     *  TransactionId
+     * The entity that item delivery estimates are based on. Valid entities include:
+     *  <ul>
+     *  <li>ExternalID</li>
+     *  <li>ItemID</li>
+     *  <li>SellerID</li>
+     *  <li>BuyerID</li>
+     *  <li>SGuid</li>
+     *  <li>PGuid</li>
+     *  <li>TransactionID</li>
+     *  </ul>
      *
      * @param string $key
      * @return self
@@ -75,6 +82,8 @@ class DeliveryEstimateMetaInfoType implements \Sabre\Xml\XmlSerializable, \Sabre
     /**
      * Gets as value
      *
+     * This value corresponds to the value in the <b>key</b> field and identifies the instance of that entity.
+     *
      * @return string
      */
     public function getValue()
@@ -84,6 +93,8 @@ class DeliveryEstimateMetaInfoType implements \Sabre\Xml\XmlSerializable, \Sabre
 
     /**
      * Sets a new value
+     *
+     * This value corresponds to the value in the <b>key</b> field and identifies the instance of that entity.
      *
      * @param string $value
      * @return self

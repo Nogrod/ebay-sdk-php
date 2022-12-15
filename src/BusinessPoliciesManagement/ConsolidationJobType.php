@@ -7,117 +7,55 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing ConsolidationJobType
  *
- *
- * XSD Type: ConsolidationJob
+ * Enumerated type defining the possible shipping policies consolidation job types.
+ * XSD Type: ConsolidationJobType
  */
 class ConsolidationJobType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
     /**
-     * @var int $jobId
-     */
-    private $jobId = null;
-
-    /**
-     * @var string $jobType
-     */
-    private $jobType = null;
-
-    /**
-     * @var string $jobStatus
-     */
-    private $jobStatus = null;
-
-    /**
-     * @var int $siteId
-     */
-    private $siteId = null;
-
-    /**
-     * Gets as jobId
+     * Constant for 'ShippingProfilesConsolidation' value.
      *
-     * @return int
+     * This value indicates that the job type is a shipping policies consolidation job.
      */
-    public function getJobId()
+    public const VAL_SHIPPING_PROFILES_CONSOLIDATION = 'ShippingProfilesConsolidation';
+
+    /**
+     * @var string $__value
+     */
+    private $__value = null;
+
+    /**
+     * Construct
+     *
+     * @param string $value
+     */
+    public function __construct($value)
     {
-        return $this->jobId;
+        $this->value($value);
     }
 
     /**
-     * Sets a new jobId
+     * Gets or sets the inner value
      *
-     * @param int $jobId
-     * @return self
+     * @param string $value
+     * @return string
      */
-    public function setJobId($jobId)
+    public function value()
     {
-        $this->jobId = $jobId;
-        return $this;
+        if ($args = func_get_args()) {
+            $this->__value = $args[0];
+        }
+        return $this->__value;
     }
 
     /**
-     * Gets as jobType
+     * Gets a string value
      *
      * @return string
      */
-    public function getJobType()
+    public function __toString()
     {
-        return $this->jobType;
-    }
-
-    /**
-     * Sets a new jobType
-     *
-     * @param string $jobType
-     * @return self
-     */
-    public function setJobType($jobType)
-    {
-        $this->jobType = $jobType;
-        return $this;
-    }
-
-    /**
-     * Gets as jobStatus
-     *
-     * @return string
-     */
-    public function getJobStatus()
-    {
-        return $this->jobStatus;
-    }
-
-    /**
-     * Sets a new jobStatus
-     *
-     * @param string $jobStatus
-     * @return self
-     */
-    public function setJobStatus($jobStatus)
-    {
-        $this->jobStatus = $jobStatus;
-        return $this;
-    }
-
-    /**
-     * Gets as siteId
-     *
-     * @return int
-     */
-    public function getSiteId()
-    {
-        return $this->siteId;
-    }
-
-    /**
-     * Sets a new siteId
-     *
-     * @param int $siteId
-     * @return self
-     */
-    public function setSiteId($siteId)
-    {
-        $this->siteId = $siteId;
-        return $this;
+        return strval($this->__value);
     }
 
     public function xmlSerialize(\Sabre\Xml\Writer $writer)

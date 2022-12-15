@@ -9,7 +9,7 @@ use Nogrod\XMLClientRuntime\Func;
  *
  * Type defining the <b>SellerPaymentPreferences</b> container, which
  *  consists of the seller's payment preferences. Payment preferences specified in a
- *  <b>SetUserPreferences</b> call override the settings in My eBay payment preferences.
+ *  <b>SetUserPreferences</b> call override the current corresponding settings in the seller's account.
  * XSD Type: SellerPaymentPreferencesType
  */
 class SellerPaymentPreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
@@ -22,31 +22,21 @@ class SellerPaymentPreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre
     private $alwaysUseThisPaymentAddress = null;
 
     /**
-     * If set, this field determines whether a Pay Now button is displayed for all of the user's listings.
-     *  <br><br>
-     *  <span class="tablenote"><b>Note:</b> Although the <b>DisplayPayNowButton</b> value can still be set in <b>SetUserPreferences</b> and returned in <b>GetUserPreferences</b>, the setting will not have any affect on any current or future listings for the seller.
-     *  </span>
-     *  <br>
+     * This field is deprecated. If it is used in a <b>SetUserPreferences</b> call, it is ignored.
      *
      * @var string $displayPayNowButton
      */
     private $displayPayNowButton = null;
 
     /**
-     * Specifies whether a seller wants to let buyers know that PayPal payments
-     *  are preferred.
-     *  <br><br>
-     *  <span class="tablenote"><b>Note:</b> Although the <b>PayPalPreferred</b> boolean value can still be set in <b>SetUserPreferences</b> and returned in <b>GetUserPreferences</b>, the setting will not have any affect on any current or future listings for the seller.
-     *  </span>
+     * This field is deprecated. If it is used in a <b>SetUserPreferences</b> call, it is ignored.
      *
      * @var bool $payPalPreferred
      */
     private $payPalPreferred = null;
 
     /**
-     * Specifies the default email address the seller uses for receiving PayPal payments.
-     *  <br><br>
-     *  <span class="tablenote"><b>Note:</b> Although the <b>DefaultPayPalEmailAddress</b> value can still be set in <b>SetUserPreferences</b> and returned in <b>GetUserPreferences</b>, the seller's PayPal email address is no longer required or applicable.
+     * This field is deprecated. If it is used in a <b>SetUserPreferences</b> call, it is ignored.
      *  </span>
      *
      * @var string $defaultPayPalEmailAddress
@@ -54,10 +44,7 @@ class SellerPaymentPreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre
     private $defaultPayPalEmailAddress = null;
 
     /**
-     * Indicates whether PayPal is always accepted for the seller's listings.
-     *  <br><br>
-     *  <span class="tablenote"><b>Note:</b> Although the <b>PayPalAlwaysOn</b> boolean value can still be set in <b>SetUserPreferences</b> and returned in <b>GetUserPreferences</b>, the setting will not have any affect on any current or future listings for the seller.
-     *  </span>
+     * This field is deprecated. If it is used in a <b>SetUserPreferences</b> call, it is ignored.
      *
      * @var bool $payPalAlwaysOn
      */
@@ -120,11 +107,7 @@ class SellerPaymentPreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre
     /**
      * Gets as displayPayNowButton
      *
-     * If set, this field determines whether a Pay Now button is displayed for all of the user's listings.
-     *  <br><br>
-     *  <span class="tablenote"><b>Note:</b> Although the <b>DisplayPayNowButton</b> value can still be set in <b>SetUserPreferences</b> and returned in <b>GetUserPreferences</b>, the setting will not have any affect on any current or future listings for the seller.
-     *  </span>
-     *  <br>
+     * This field is deprecated. If it is used in a <b>SetUserPreferences</b> call, it is ignored.
      *
      * @return string
      */
@@ -136,11 +119,7 @@ class SellerPaymentPreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre
     /**
      * Sets a new displayPayNowButton
      *
-     * If set, this field determines whether a Pay Now button is displayed for all of the user's listings.
-     *  <br><br>
-     *  <span class="tablenote"><b>Note:</b> Although the <b>DisplayPayNowButton</b> value can still be set in <b>SetUserPreferences</b> and returned in <b>GetUserPreferences</b>, the setting will not have any affect on any current or future listings for the seller.
-     *  </span>
-     *  <br>
+     * This field is deprecated. If it is used in a <b>SetUserPreferences</b> call, it is ignored.
      *
      * @param string $displayPayNowButton
      * @return self
@@ -154,11 +133,7 @@ class SellerPaymentPreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre
     /**
      * Gets as payPalPreferred
      *
-     * Specifies whether a seller wants to let buyers know that PayPal payments
-     *  are preferred.
-     *  <br><br>
-     *  <span class="tablenote"><b>Note:</b> Although the <b>PayPalPreferred</b> boolean value can still be set in <b>SetUserPreferences</b> and returned in <b>GetUserPreferences</b>, the setting will not have any affect on any current or future listings for the seller.
-     *  </span>
+     * This field is deprecated. If it is used in a <b>SetUserPreferences</b> call, it is ignored.
      *
      * @return bool
      */
@@ -170,11 +145,7 @@ class SellerPaymentPreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre
     /**
      * Sets a new payPalPreferred
      *
-     * Specifies whether a seller wants to let buyers know that PayPal payments
-     *  are preferred.
-     *  <br><br>
-     *  <span class="tablenote"><b>Note:</b> Although the <b>PayPalPreferred</b> boolean value can still be set in <b>SetUserPreferences</b> and returned in <b>GetUserPreferences</b>, the setting will not have any affect on any current or future listings for the seller.
-     *  </span>
+     * This field is deprecated. If it is used in a <b>SetUserPreferences</b> call, it is ignored.
      *
      * @param bool $payPalPreferred
      * @return self
@@ -188,9 +159,7 @@ class SellerPaymentPreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre
     /**
      * Gets as defaultPayPalEmailAddress
      *
-     * Specifies the default email address the seller uses for receiving PayPal payments.
-     *  <br><br>
-     *  <span class="tablenote"><b>Note:</b> Although the <b>DefaultPayPalEmailAddress</b> value can still be set in <b>SetUserPreferences</b> and returned in <b>GetUserPreferences</b>, the seller's PayPal email address is no longer required or applicable.
+     * This field is deprecated. If it is used in a <b>SetUserPreferences</b> call, it is ignored.
      *  </span>
      *
      * @return string
@@ -203,9 +172,7 @@ class SellerPaymentPreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre
     /**
      * Sets a new defaultPayPalEmailAddress
      *
-     * Specifies the default email address the seller uses for receiving PayPal payments.
-     *  <br><br>
-     *  <span class="tablenote"><b>Note:</b> Although the <b>DefaultPayPalEmailAddress</b> value can still be set in <b>SetUserPreferences</b> and returned in <b>GetUserPreferences</b>, the seller's PayPal email address is no longer required or applicable.
+     * This field is deprecated. If it is used in a <b>SetUserPreferences</b> call, it is ignored.
      *  </span>
      *
      * @param string $defaultPayPalEmailAddress
@@ -220,10 +187,7 @@ class SellerPaymentPreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre
     /**
      * Gets as payPalAlwaysOn
      *
-     * Indicates whether PayPal is always accepted for the seller's listings.
-     *  <br><br>
-     *  <span class="tablenote"><b>Note:</b> Although the <b>PayPalAlwaysOn</b> boolean value can still be set in <b>SetUserPreferences</b> and returned in <b>GetUserPreferences</b>, the setting will not have any affect on any current or future listings for the seller.
-     *  </span>
+     * This field is deprecated. If it is used in a <b>SetUserPreferences</b> call, it is ignored.
      *
      * @return bool
      */
@@ -235,10 +199,7 @@ class SellerPaymentPreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre
     /**
      * Sets a new payPalAlwaysOn
      *
-     * Indicates whether PayPal is always accepted for the seller's listings.
-     *  <br><br>
-     *  <span class="tablenote"><b>Note:</b> Although the <b>PayPalAlwaysOn</b> boolean value can still be set in <b>SetUserPreferences</b> and returned in <b>GetUserPreferences</b>, the setting will not have any affect on any current or future listings for the seller.
-     *  </span>
+     * This field is deprecated. If it is used in a <b>SetUserPreferences</b> call, it is ignored.
      *
      * @param bool $payPalAlwaysOn
      * @return self

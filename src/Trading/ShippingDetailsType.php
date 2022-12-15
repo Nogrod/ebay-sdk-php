@@ -32,11 +32,15 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     private $applyShippingDiscount = null;
 
     /**
-     * Indicates whether eBay's Global Shipping Program is offered for the listing. If the value of <strong>GlobalShipping</strong> is <code>True</code>, international shipping through the Global Shipping Program is available for the listing, and eBay automatically sets one of the available shipping service options to <code>International Priority Shipping</code>. If the value of <strong>GlobalShipping</strong> is <code>false</code>, the seller is responsible for specifying one or more international shipping service options if the seller is willing to ship internationally.
+     * <span class="tablenote"><strong>Note:</strong>
+     *  On the US marketplace, the <b>Global Shipping Program</b> is scheduled to be replaced by a new intermediated international shipping program called <b>eBay International Shipping</b>. US Sellers opted in to the <b>Global Shipping Program</b> will automatically get opted into <b>eBay International Shipping</b> once it becomes available to them. All US sellers will be migrated by March 31, 2023. <b>eBay International Shipping</b> is an account level setting, and no field will need to be set in a add/revise call to enable this setting. As long as the US seller's account is opted in to <b>eBay International Shipping</b>, this shipping option will be automatically enabled for all listings where international shipping is available. Even if the US seller is opted into <b>eBay International Shipping</b>, that same seller can still also specify individual international shipping service options through the ShippingDetails.InternationalShippingServiceOption container.
+     *  </span>
+     *  In an Add/Revise/Relist call, this boolean field can be included and set to <code>True</code> if the seller would like to use eBay's Global Shipping Program for orders that are shipped internationally.
+     *  <br/><br/>
+     *  In 'Get' calls, if this field is returned as <code>True</code>, it indicates that international shipping through the Global Shipping Program is available for the listing. If this field is returned as <code>Falsee</code>, the seller is responsible for shipping the item internationally using one of the specified international shipping service options set for the listing.
      *  <br/><br/>
      *  When calling <strong>RelistFixedPriceItem</strong>, <strong>RelistItem</strong>, <strong>ReviseFixedPriceItem</strong> or <strong>ReviseItem</strong>, you can omit this field if its value doesn't need to change.
      *  <br/><br/>
-     *  Before using this field for a listing, ensure that the seller and the item being listed are eligible for the Global Shipping Program.
      *
      * @var bool $globalShipping
      */
@@ -47,7 +51,7 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  offered by the seller, such as package dimension and weight and
      *  packaging/handling costs. If your call specifies a large-dimension item listed
      *  with UPS, see <a href=
-     *  "https://ebaydts.com/eBayKBDetails?KBid=1159"
+     *  "https://developer.ebay.com/support/kb-article?KBid=1159"
      *  >Dimensional Weight limit on UPS shipping services results in failure of
      *  shipping calculator</a>.
      *  <br><br>
@@ -152,7 +156,7 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  specify all <b>ShippingDetails</b> that you still want to include in the listing.
      *  <br><br>
      *  A seller can offer up to four domestic shipping services and up to five
-     *  international shipping services. However, if the seller is opted in to the Global Shipping Program, only four other international shipping services may be offered (regardless of whether or not Global Shipping is offered for the listing). All specified domestic and international
+     *  international shipping services. However, if the seller is opted in to the Global Shipping Program or eBay International Shipping, only four other international shipping services may be offered (regardless of whether or not Global Shipping shipment or eBay International Shipping is offered for the listing). All specified domestic and international
      *  shipping services must be the same shipping type (for example, Flat versus
      *  Calculated).
      *  <br/><br/>
@@ -177,9 +181,9 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  <br><br>
      *  All specified domestic and international shipping services must be the same shipping type (for example, Flat versus Calculated).
      *  <br><br>
-     *  A seller can offer up to four domestic shipping services and up to five international shipping services. However, if the seller is opted in to the Global Shipping Program, only four other international shipping services may be offered (regardless of whether or not Global Shipping is offered for the listing).
+     *  A seller can offer up to four domestic shipping services and up to five international shipping services. However, if the seller is opted in to the Global Shipping Program or eBay International Shipping, only four other international shipping services may be offered (regardless of whether or not Global Shipping or eBay International Shipping is offered for the listing).
      *  <br><br>
-     *  If you specify <b>ShippingDetails</b> when you revise or relist an item but you omit <b>InternationalShippingServiceOption</b>, eBay will drop the international shipping services (except the Global Shipping Program) from the listing. This may also have unintended side effects, as other fields that depend on this data may be dropped as well. To retain the shipping services and dependent fields when you modify other shipping details, it may be simplest to specify all <b>ShippingDetails</b> that you still want to include in the listing.
+     *  If you specify <b>ShippingDetails</b> when you revise or relist an item but you omit <b>InternationalShippingServiceOption</b>, eBay will drop the international shipping services (except the Global Shipping Program or eBay International Shipping) from the listing. This may also have unintended side effects, as other fields that depend on this data may be dropped as well. To retain the shipping services and dependent fields when you modify other shipping details, it may be simplest to specify all <b>ShippingDetails</b> that you still want to include in the listing.
      *  <br><br>
      *  For <b>GetItemShipping</b>, results are filtered: if any service is not available in the buyer's region, it is removed. If no services remain after this filtering, a warning is returned.
      *
@@ -416,15 +420,6 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  will not ship the associated item. Repeat this element in the call request for each
      *  location that you want to exclude as a shipping destination for your item.
      *  <br><br>
-     *  Set <b>ShipToRegistrationCountry</b> to <code>true</code> to have your <b>ExcludeShipToLocation</b>
-     *  settings applied to your listing. The locations you have excluded display in
-     *  the Shipping and Handling section of your item listing.
-     *  <br><br>
-     *  If a buyer's primary ship-to location is a location that you have listed as
-     *  an excluded ship-to location (or if the buyer does not have a primary ship-to
-     *  location), they will receive an error message if they attempt to buy or place
-     *  a bid on your item.
-     *  <br><br>
      *  The exclude ship-to location values are eBay regions and countries. To see
      *  the valid exclude ship-to locations for a specified site, call <b>GeteBayDetails</b>
      *  with <b>DetailName</b> set to <b>ExcludeShippingLocationDetails</b>,
@@ -439,7 +434,11 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  setting). In addition, if your <b>ShipToLocations</b> is <code>Worldwide</code>, you can use
      *  this field to specify both regions and countries that you want to exclude
      *  from your shipping destinations.
-     *  <br><br>
+     *  <br>
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>ShipToLocations</b> and <b>ShippingDetails.ExcludeShipToLocation</b> containers are not applicable for motor vehicle listings on the US, CA, or UK marketplaces. If these containers are sent in the request, they are ignored and a warning is returned.
+     *  </span>
+     *  <br>
      *  You can specify a default set of locations to where you will not ship in My
      *  eBay. If you create an Exclude Ship-To List, it is, by default, in effect
      *  when you list items. However, if you specify any value in this field on
@@ -451,20 +450,19 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  Specify <code>none</code> in this field to override the default Exclude Ship-To List you
      *  might have set up in My eBay and indicate that you do not want to exclude any
      *  shipping locations from the respective item listing.
-     *  <br><br>
-     *  <span class="tablenote"><strong>Note:</strong>
-     *  To enable your default Exclude Ship-To List, you must enable Exclude
-     *  Shipping Locations and Buyer Requirements in your My eBay Site Preferences.
-     *  For details, see the KnowledgeBase Article <a href=
-     *  "https://ebaydts.com/eBayKBDetails?KBid=1495"
-     *  >HowTo: ExcludeShipToLocation</a>.
-     *  </span>
      *
      * @var string[] $excludeShipToLocation
      */
     private $excludeShipToLocation = [
 
     ];
+
+    /**
+     * This dollar value indicates the cost to buy the shipping label from eBay. Presently, this field is only returned for orders that will go through eBay shipping and its value will be <code>0.0</code>. With eBay shipping, a free shipping label by eBay is downloadable by the seller via the eBay website.
+     *
+     * @var \Nogrod\eBaySDK\Trading\AmountType $eBayEstimatedLabelCost
+     */
+    private $eBayEstimatedLabelCost = null;
 
     /**
      * Sellers can set up a global Exclude Ship-To List through their My eBay account.
@@ -582,11 +580,15 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     /**
      * Gets as globalShipping
      *
-     * Indicates whether eBay's Global Shipping Program is offered for the listing. If the value of <strong>GlobalShipping</strong> is <code>True</code>, international shipping through the Global Shipping Program is available for the listing, and eBay automatically sets one of the available shipping service options to <code>International Priority Shipping</code>. If the value of <strong>GlobalShipping</strong> is <code>false</code>, the seller is responsible for specifying one or more international shipping service options if the seller is willing to ship internationally.
+     * <span class="tablenote"><strong>Note:</strong>
+     *  On the US marketplace, the <b>Global Shipping Program</b> is scheduled to be replaced by a new intermediated international shipping program called <b>eBay International Shipping</b>. US Sellers opted in to the <b>Global Shipping Program</b> will automatically get opted into <b>eBay International Shipping</b> once it becomes available to them. All US sellers will be migrated by March 31, 2023. <b>eBay International Shipping</b> is an account level setting, and no field will need to be set in a add/revise call to enable this setting. As long as the US seller's account is opted in to <b>eBay International Shipping</b>, this shipping option will be automatically enabled for all listings where international shipping is available. Even if the US seller is opted into <b>eBay International Shipping</b>, that same seller can still also specify individual international shipping service options through the ShippingDetails.InternationalShippingServiceOption container.
+     *  </span>
+     *  In an Add/Revise/Relist call, this boolean field can be included and set to <code>True</code> if the seller would like to use eBay's Global Shipping Program for orders that are shipped internationally.
+     *  <br/><br/>
+     *  In 'Get' calls, if this field is returned as <code>True</code>, it indicates that international shipping through the Global Shipping Program is available for the listing. If this field is returned as <code>Falsee</code>, the seller is responsible for shipping the item internationally using one of the specified international shipping service options set for the listing.
      *  <br/><br/>
      *  When calling <strong>RelistFixedPriceItem</strong>, <strong>RelistItem</strong>, <strong>ReviseFixedPriceItem</strong> or <strong>ReviseItem</strong>, you can omit this field if its value doesn't need to change.
      *  <br/><br/>
-     *  Before using this field for a listing, ensure that the seller and the item being listed are eligible for the Global Shipping Program.
      *
      * @return bool
      */
@@ -598,11 +600,15 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     /**
      * Sets a new globalShipping
      *
-     * Indicates whether eBay's Global Shipping Program is offered for the listing. If the value of <strong>GlobalShipping</strong> is <code>True</code>, international shipping through the Global Shipping Program is available for the listing, and eBay automatically sets one of the available shipping service options to <code>International Priority Shipping</code>. If the value of <strong>GlobalShipping</strong> is <code>false</code>, the seller is responsible for specifying one or more international shipping service options if the seller is willing to ship internationally.
+     * <span class="tablenote"><strong>Note:</strong>
+     *  On the US marketplace, the <b>Global Shipping Program</b> is scheduled to be replaced by a new intermediated international shipping program called <b>eBay International Shipping</b>. US Sellers opted in to the <b>Global Shipping Program</b> will automatically get opted into <b>eBay International Shipping</b> once it becomes available to them. All US sellers will be migrated by March 31, 2023. <b>eBay International Shipping</b> is an account level setting, and no field will need to be set in a add/revise call to enable this setting. As long as the US seller's account is opted in to <b>eBay International Shipping</b>, this shipping option will be automatically enabled for all listings where international shipping is available. Even if the US seller is opted into <b>eBay International Shipping</b>, that same seller can still also specify individual international shipping service options through the ShippingDetails.InternationalShippingServiceOption container.
+     *  </span>
+     *  In an Add/Revise/Relist call, this boolean field can be included and set to <code>True</code> if the seller would like to use eBay's Global Shipping Program for orders that are shipped internationally.
+     *  <br/><br/>
+     *  In 'Get' calls, if this field is returned as <code>True</code>, it indicates that international shipping through the Global Shipping Program is available for the listing. If this field is returned as <code>Falsee</code>, the seller is responsible for shipping the item internationally using one of the specified international shipping service options set for the listing.
      *  <br/><br/>
      *  When calling <strong>RelistFixedPriceItem</strong>, <strong>RelistItem</strong>, <strong>ReviseFixedPriceItem</strong> or <strong>ReviseItem</strong>, you can omit this field if its value doesn't need to change.
      *  <br/><br/>
-     *  Before using this field for a listing, ensure that the seller and the item being listed are eligible for the Global Shipping Program.
      *
      * @param bool $globalShipping
      * @return self
@@ -620,7 +626,7 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  offered by the seller, such as package dimension and weight and
      *  packaging/handling costs. If your call specifies a large-dimension item listed
      *  with UPS, see <a href=
-     *  "https://ebaydts.com/eBayKBDetails?KBid=1159"
+     *  "https://developer.ebay.com/support/kb-article?KBid=1159"
      *  >Dimensional Weight limit on UPS shipping services results in failure of
      *  shipping calculator</a>.
      *  <br><br>
@@ -642,7 +648,7 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  offered by the seller, such as package dimension and weight and
      *  packaging/handling costs. If your call specifies a large-dimension item listed
      *  with UPS, see <a href=
-     *  "https://ebaydts.com/eBayKBDetails?KBid=1159"
+     *  "https://developer.ebay.com/support/kb-article?KBid=1159"
      *  >Dimensional Weight limit on UPS shipping services results in failure of
      *  shipping calculator</a>.
      *  <br><br>
@@ -906,7 +912,7 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  specify all <b>ShippingDetails</b> that you still want to include in the listing.
      *  <br><br>
      *  A seller can offer up to four domestic shipping services and up to five
-     *  international shipping services. However, if the seller is opted in to the Global Shipping Program, only four other international shipping services may be offered (regardless of whether or not Global Shipping is offered for the listing). All specified domestic and international
+     *  international shipping services. However, if the seller is opted in to the Global Shipping Program or eBay International Shipping, only four other international shipping services may be offered (regardless of whether or not Global Shipping shipment or eBay International Shipping is offered for the listing). All specified domestic and international
      *  shipping services must be the same shipping type (for example, Flat versus
      *  Calculated).
      *  <br/><br/>
@@ -954,7 +960,7 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  specify all <b>ShippingDetails</b> that you still want to include in the listing.
      *  <br><br>
      *  A seller can offer up to four domestic shipping services and up to five
-     *  international shipping services. However, if the seller is opted in to the Global Shipping Program, only four other international shipping services may be offered (regardless of whether or not Global Shipping is offered for the listing). All specified domestic and international
+     *  international shipping services. However, if the seller is opted in to the Global Shipping Program or eBay International Shipping, only four other international shipping services may be offered (regardless of whether or not Global Shipping shipment or eBay International Shipping is offered for the listing). All specified domestic and international
      *  shipping services must be the same shipping type (for example, Flat versus
      *  Calculated).
      *  <br/><br/>
@@ -1001,7 +1007,7 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  specify all <b>ShippingDetails</b> that you still want to include in the listing.
      *  <br><br>
      *  A seller can offer up to four domestic shipping services and up to five
-     *  international shipping services. However, if the seller is opted in to the Global Shipping Program, only four other international shipping services may be offered (regardless of whether or not Global Shipping is offered for the listing). All specified domestic and international
+     *  international shipping services. However, if the seller is opted in to the Global Shipping Program or eBay International Shipping, only four other international shipping services may be offered (regardless of whether or not Global Shipping shipment or eBay International Shipping is offered for the listing). All specified domestic and international
      *  shipping services must be the same shipping type (for example, Flat versus
      *  Calculated).
      *  <br/><br/>
@@ -1048,7 +1054,7 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  specify all <b>ShippingDetails</b> that you still want to include in the listing.
      *  <br><br>
      *  A seller can offer up to four domestic shipping services and up to five
-     *  international shipping services. However, if the seller is opted in to the Global Shipping Program, only four other international shipping services may be offered (regardless of whether or not Global Shipping is offered for the listing). All specified domestic and international
+     *  international shipping services. However, if the seller is opted in to the Global Shipping Program or eBay International Shipping, only four other international shipping services may be offered (regardless of whether or not Global Shipping shipment or eBay International Shipping is offered for the listing). All specified domestic and international
      *  shipping services must be the same shipping type (for example, Flat versus
      *  Calculated).
      *  <br/><br/>
@@ -1094,7 +1100,7 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  specify all <b>ShippingDetails</b> that you still want to include in the listing.
      *  <br><br>
      *  A seller can offer up to four domestic shipping services and up to five
-     *  international shipping services. However, if the seller is opted in to the Global Shipping Program, only four other international shipping services may be offered (regardless of whether or not Global Shipping is offered for the listing). All specified domestic and international
+     *  international shipping services. However, if the seller is opted in to the Global Shipping Program or eBay International Shipping, only four other international shipping services may be offered (regardless of whether or not Global Shipping shipment or eBay International Shipping is offered for the listing). All specified domestic and international
      *  shipping services must be the same shipping type (for example, Flat versus
      *  Calculated).
      *  <br/><br/>
@@ -1124,9 +1130,9 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  <br><br>
      *  All specified domestic and international shipping services must be the same shipping type (for example, Flat versus Calculated).
      *  <br><br>
-     *  A seller can offer up to four domestic shipping services and up to five international shipping services. However, if the seller is opted in to the Global Shipping Program, only four other international shipping services may be offered (regardless of whether or not Global Shipping is offered for the listing).
+     *  A seller can offer up to four domestic shipping services and up to five international shipping services. However, if the seller is opted in to the Global Shipping Program or eBay International Shipping, only four other international shipping services may be offered (regardless of whether or not Global Shipping or eBay International Shipping is offered for the listing).
      *  <br><br>
-     *  If you specify <b>ShippingDetails</b> when you revise or relist an item but you omit <b>InternationalShippingServiceOption</b>, eBay will drop the international shipping services (except the Global Shipping Program) from the listing. This may also have unintended side effects, as other fields that depend on this data may be dropped as well. To retain the shipping services and dependent fields when you modify other shipping details, it may be simplest to specify all <b>ShippingDetails</b> that you still want to include in the listing.
+     *  If you specify <b>ShippingDetails</b> when you revise or relist an item but you omit <b>InternationalShippingServiceOption</b>, eBay will drop the international shipping services (except the Global Shipping Program or eBay International Shipping) from the listing. This may also have unintended side effects, as other fields that depend on this data may be dropped as well. To retain the shipping services and dependent fields when you modify other shipping details, it may be simplest to specify all <b>ShippingDetails</b> that you still want to include in the listing.
      *  <br><br>
      *  For <b>GetItemShipping</b>, results are filtered: if any service is not available in the buyer's region, it is removed. If no services remain after this filtering, a warning is returned.
      *
@@ -1148,9 +1154,9 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  <br><br>
      *  All specified domestic and international shipping services must be the same shipping type (for example, Flat versus Calculated).
      *  <br><br>
-     *  A seller can offer up to four domestic shipping services and up to five international shipping services. However, if the seller is opted in to the Global Shipping Program, only four other international shipping services may be offered (regardless of whether or not Global Shipping is offered for the listing).
+     *  A seller can offer up to four domestic shipping services and up to five international shipping services. However, if the seller is opted in to the Global Shipping Program or eBay International Shipping, only four other international shipping services may be offered (regardless of whether or not Global Shipping or eBay International Shipping is offered for the listing).
      *  <br><br>
-     *  If you specify <b>ShippingDetails</b> when you revise or relist an item but you omit <b>InternationalShippingServiceOption</b>, eBay will drop the international shipping services (except the Global Shipping Program) from the listing. This may also have unintended side effects, as other fields that depend on this data may be dropped as well. To retain the shipping services and dependent fields when you modify other shipping details, it may be simplest to specify all <b>ShippingDetails</b> that you still want to include in the listing.
+     *  If you specify <b>ShippingDetails</b> when you revise or relist an item but you omit <b>InternationalShippingServiceOption</b>, eBay will drop the international shipping services (except the Global Shipping Program or eBay International Shipping) from the listing. This may also have unintended side effects, as other fields that depend on this data may be dropped as well. To retain the shipping services and dependent fields when you modify other shipping details, it may be simplest to specify all <b>ShippingDetails</b> that you still want to include in the listing.
      *  <br><br>
      *  For <b>GetItemShipping</b>, results are filtered: if any service is not available in the buyer's region, it is removed. If no services remain after this filtering, a warning is returned.
      *
@@ -1171,9 +1177,9 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  <br><br>
      *  All specified domestic and international shipping services must be the same shipping type (for example, Flat versus Calculated).
      *  <br><br>
-     *  A seller can offer up to four domestic shipping services and up to five international shipping services. However, if the seller is opted in to the Global Shipping Program, only four other international shipping services may be offered (regardless of whether or not Global Shipping is offered for the listing).
+     *  A seller can offer up to four domestic shipping services and up to five international shipping services. However, if the seller is opted in to the Global Shipping Program or eBay International Shipping, only four other international shipping services may be offered (regardless of whether or not Global Shipping or eBay International Shipping is offered for the listing).
      *  <br><br>
-     *  If you specify <b>ShippingDetails</b> when you revise or relist an item but you omit <b>InternationalShippingServiceOption</b>, eBay will drop the international shipping services (except the Global Shipping Program) from the listing. This may also have unintended side effects, as other fields that depend on this data may be dropped as well. To retain the shipping services and dependent fields when you modify other shipping details, it may be simplest to specify all <b>ShippingDetails</b> that you still want to include in the listing.
+     *  If you specify <b>ShippingDetails</b> when you revise or relist an item but you omit <b>InternationalShippingServiceOption</b>, eBay will drop the international shipping services (except the Global Shipping Program or eBay International Shipping) from the listing. This may also have unintended side effects, as other fields that depend on this data may be dropped as well. To retain the shipping services and dependent fields when you modify other shipping details, it may be simplest to specify all <b>ShippingDetails</b> that you still want to include in the listing.
      *  <br><br>
      *  For <b>GetItemShipping</b>, results are filtered: if any service is not available in the buyer's region, it is removed. If no services remain after this filtering, a warning is returned.
      *
@@ -1194,9 +1200,9 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  <br><br>
      *  All specified domestic and international shipping services must be the same shipping type (for example, Flat versus Calculated).
      *  <br><br>
-     *  A seller can offer up to four domestic shipping services and up to five international shipping services. However, if the seller is opted in to the Global Shipping Program, only four other international shipping services may be offered (regardless of whether or not Global Shipping is offered for the listing).
+     *  A seller can offer up to four domestic shipping services and up to five international shipping services. However, if the seller is opted in to the Global Shipping Program or eBay International Shipping, only four other international shipping services may be offered (regardless of whether or not Global Shipping or eBay International Shipping is offered for the listing).
      *  <br><br>
-     *  If you specify <b>ShippingDetails</b> when you revise or relist an item but you omit <b>InternationalShippingServiceOption</b>, eBay will drop the international shipping services (except the Global Shipping Program) from the listing. This may also have unintended side effects, as other fields that depend on this data may be dropped as well. To retain the shipping services and dependent fields when you modify other shipping details, it may be simplest to specify all <b>ShippingDetails</b> that you still want to include in the listing.
+     *  If you specify <b>ShippingDetails</b> when you revise or relist an item but you omit <b>InternationalShippingServiceOption</b>, eBay will drop the international shipping services (except the Global Shipping Program or eBay International Shipping) from the listing. This may also have unintended side effects, as other fields that depend on this data may be dropped as well. To retain the shipping services and dependent fields when you modify other shipping details, it may be simplest to specify all <b>ShippingDetails</b> that you still want to include in the listing.
      *  <br><br>
      *  For <b>GetItemShipping</b>, results are filtered: if any service is not available in the buyer's region, it is removed. If no services remain after this filtering, a warning is returned.
      *
@@ -1216,9 +1222,9 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  <br><br>
      *  All specified domestic and international shipping services must be the same shipping type (for example, Flat versus Calculated).
      *  <br><br>
-     *  A seller can offer up to four domestic shipping services and up to five international shipping services. However, if the seller is opted in to the Global Shipping Program, only four other international shipping services may be offered (regardless of whether or not Global Shipping is offered for the listing).
+     *  A seller can offer up to four domestic shipping services and up to five international shipping services. However, if the seller is opted in to the Global Shipping Program or eBay International Shipping, only four other international shipping services may be offered (regardless of whether or not Global Shipping or eBay International Shipping is offered for the listing).
      *  <br><br>
-     *  If you specify <b>ShippingDetails</b> when you revise or relist an item but you omit <b>InternationalShippingServiceOption</b>, eBay will drop the international shipping services (except the Global Shipping Program) from the listing. This may also have unintended side effects, as other fields that depend on this data may be dropped as well. To retain the shipping services and dependent fields when you modify other shipping details, it may be simplest to specify all <b>ShippingDetails</b> that you still want to include in the listing.
+     *  If you specify <b>ShippingDetails</b> when you revise or relist an item but you omit <b>InternationalShippingServiceOption</b>, eBay will drop the international shipping services (except the Global Shipping Program or eBay International Shipping) from the listing. This may also have unintended side effects, as other fields that depend on this data may be dropped as well. To retain the shipping services and dependent fields when you modify other shipping details, it may be simplest to specify all <b>ShippingDetails</b> that you still want to include in the listing.
      *  <br><br>
      *  For <b>GetItemShipping</b>, results are filtered: if any service is not available in the buyer's region, it is removed. If no services remain after this filtering, a warning is returned.
      *
@@ -1952,15 +1958,6 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  will not ship the associated item. Repeat this element in the call request for each
      *  location that you want to exclude as a shipping destination for your item.
      *  <br><br>
-     *  Set <b>ShipToRegistrationCountry</b> to <code>true</code> to have your <b>ExcludeShipToLocation</b>
-     *  settings applied to your listing. The locations you have excluded display in
-     *  the Shipping and Handling section of your item listing.
-     *  <br><br>
-     *  If a buyer's primary ship-to location is a location that you have listed as
-     *  an excluded ship-to location (or if the buyer does not have a primary ship-to
-     *  location), they will receive an error message if they attempt to buy or place
-     *  a bid on your item.
-     *  <br><br>
      *  The exclude ship-to location values are eBay regions and countries. To see
      *  the valid exclude ship-to locations for a specified site, call <b>GeteBayDetails</b>
      *  with <b>DetailName</b> set to <b>ExcludeShippingLocationDetails</b>,
@@ -1975,7 +1972,11 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  setting). In addition, if your <b>ShipToLocations</b> is <code>Worldwide</code>, you can use
      *  this field to specify both regions and countries that you want to exclude
      *  from your shipping destinations.
-     *  <br><br>
+     *  <br>
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>ShipToLocations</b> and <b>ShippingDetails.ExcludeShipToLocation</b> containers are not applicable for motor vehicle listings on the US, CA, or UK marketplaces. If these containers are sent in the request, they are ignored and a warning is returned.
+     *  </span>
+     *  <br>
      *  You can specify a default set of locations to where you will not ship in My
      *  eBay. If you create an Exclude Ship-To List, it is, by default, in effect
      *  when you list items. However, if you specify any value in this field on
@@ -1987,14 +1988,6 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  Specify <code>none</code> in this field to override the default Exclude Ship-To List you
      *  might have set up in My eBay and indicate that you do not want to exclude any
      *  shipping locations from the respective item listing.
-     *  <br><br>
-     *  <span class="tablenote"><strong>Note:</strong>
-     *  To enable your default Exclude Ship-To List, you must enable Exclude
-     *  Shipping Locations and Buyer Requirements in your My eBay Site Preferences.
-     *  For details, see the KnowledgeBase Article <a href=
-     *  "https://ebaydts.com/eBayKBDetails?KBid=1495"
-     *  >HowTo: ExcludeShipToLocation</a>.
-     *  </span>
      *
      * @return self
      * @param string $excludeShipToLocation
@@ -2013,15 +2006,6 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  will not ship the associated item. Repeat this element in the call request for each
      *  location that you want to exclude as a shipping destination for your item.
      *  <br><br>
-     *  Set <b>ShipToRegistrationCountry</b> to <code>true</code> to have your <b>ExcludeShipToLocation</b>
-     *  settings applied to your listing. The locations you have excluded display in
-     *  the Shipping and Handling section of your item listing.
-     *  <br><br>
-     *  If a buyer's primary ship-to location is a location that you have listed as
-     *  an excluded ship-to location (or if the buyer does not have a primary ship-to
-     *  location), they will receive an error message if they attempt to buy or place
-     *  a bid on your item.
-     *  <br><br>
      *  The exclude ship-to location values are eBay regions and countries. To see
      *  the valid exclude ship-to locations for a specified site, call <b>GeteBayDetails</b>
      *  with <b>DetailName</b> set to <b>ExcludeShippingLocationDetails</b>,
@@ -2036,7 +2020,11 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  setting). In addition, if your <b>ShipToLocations</b> is <code>Worldwide</code>, you can use
      *  this field to specify both regions and countries that you want to exclude
      *  from your shipping destinations.
-     *  <br><br>
+     *  <br>
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>ShipToLocations</b> and <b>ShippingDetails.ExcludeShipToLocation</b> containers are not applicable for motor vehicle listings on the US, CA, or UK marketplaces. If these containers are sent in the request, they are ignored and a warning is returned.
+     *  </span>
+     *  <br>
      *  You can specify a default set of locations to where you will not ship in My
      *  eBay. If you create an Exclude Ship-To List, it is, by default, in effect
      *  when you list items. However, if you specify any value in this field on
@@ -2048,14 +2036,6 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  Specify <code>none</code> in this field to override the default Exclude Ship-To List you
      *  might have set up in My eBay and indicate that you do not want to exclude any
      *  shipping locations from the respective item listing.
-     *  <br><br>
-     *  <span class="tablenote"><strong>Note:</strong>
-     *  To enable your default Exclude Ship-To List, you must enable Exclude
-     *  Shipping Locations and Buyer Requirements in your My eBay Site Preferences.
-     *  For details, see the KnowledgeBase Article <a href=
-     *  "https://ebaydts.com/eBayKBDetails?KBid=1495"
-     *  >HowTo: ExcludeShipToLocation</a>.
-     *  </span>
      *
      * @param int|string $index
      * @return bool
@@ -2073,15 +2053,6 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  will not ship the associated item. Repeat this element in the call request for each
      *  location that you want to exclude as a shipping destination for your item.
      *  <br><br>
-     *  Set <b>ShipToRegistrationCountry</b> to <code>true</code> to have your <b>ExcludeShipToLocation</b>
-     *  settings applied to your listing. The locations you have excluded display in
-     *  the Shipping and Handling section of your item listing.
-     *  <br><br>
-     *  If a buyer's primary ship-to location is a location that you have listed as
-     *  an excluded ship-to location (or if the buyer does not have a primary ship-to
-     *  location), they will receive an error message if they attempt to buy or place
-     *  a bid on your item.
-     *  <br><br>
      *  The exclude ship-to location values are eBay regions and countries. To see
      *  the valid exclude ship-to locations for a specified site, call <b>GeteBayDetails</b>
      *  with <b>DetailName</b> set to <b>ExcludeShippingLocationDetails</b>,
@@ -2096,7 +2067,11 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  setting). In addition, if your <b>ShipToLocations</b> is <code>Worldwide</code>, you can use
      *  this field to specify both regions and countries that you want to exclude
      *  from your shipping destinations.
-     *  <br><br>
+     *  <br>
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>ShipToLocations</b> and <b>ShippingDetails.ExcludeShipToLocation</b> containers are not applicable for motor vehicle listings on the US, CA, or UK marketplaces. If these containers are sent in the request, they are ignored and a warning is returned.
+     *  </span>
+     *  <br>
      *  You can specify a default set of locations to where you will not ship in My
      *  eBay. If you create an Exclude Ship-To List, it is, by default, in effect
      *  when you list items. However, if you specify any value in this field on
@@ -2108,14 +2083,6 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  Specify <code>none</code> in this field to override the default Exclude Ship-To List you
      *  might have set up in My eBay and indicate that you do not want to exclude any
      *  shipping locations from the respective item listing.
-     *  <br><br>
-     *  <span class="tablenote"><strong>Note:</strong>
-     *  To enable your default Exclude Ship-To List, you must enable Exclude
-     *  Shipping Locations and Buyer Requirements in your My eBay Site Preferences.
-     *  For details, see the KnowledgeBase Article <a href=
-     *  "https://ebaydts.com/eBayKBDetails?KBid=1495"
-     *  >HowTo: ExcludeShipToLocation</a>.
-     *  </span>
      *
      * @param int|string $index
      * @return void
@@ -2133,15 +2100,6 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  will not ship the associated item. Repeat this element in the call request for each
      *  location that you want to exclude as a shipping destination for your item.
      *  <br><br>
-     *  Set <b>ShipToRegistrationCountry</b> to <code>true</code> to have your <b>ExcludeShipToLocation</b>
-     *  settings applied to your listing. The locations you have excluded display in
-     *  the Shipping and Handling section of your item listing.
-     *  <br><br>
-     *  If a buyer's primary ship-to location is a location that you have listed as
-     *  an excluded ship-to location (or if the buyer does not have a primary ship-to
-     *  location), they will receive an error message if they attempt to buy or place
-     *  a bid on your item.
-     *  <br><br>
      *  The exclude ship-to location values are eBay regions and countries. To see
      *  the valid exclude ship-to locations for a specified site, call <b>GeteBayDetails</b>
      *  with <b>DetailName</b> set to <b>ExcludeShippingLocationDetails</b>,
@@ -2156,7 +2114,11 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  setting). In addition, if your <b>ShipToLocations</b> is <code>Worldwide</code>, you can use
      *  this field to specify both regions and countries that you want to exclude
      *  from your shipping destinations.
-     *  <br><br>
+     *  <br>
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>ShipToLocations</b> and <b>ShippingDetails.ExcludeShipToLocation</b> containers are not applicable for motor vehicle listings on the US, CA, or UK marketplaces. If these containers are sent in the request, they are ignored and a warning is returned.
+     *  </span>
+     *  <br>
      *  You can specify a default set of locations to where you will not ship in My
      *  eBay. If you create an Exclude Ship-To List, it is, by default, in effect
      *  when you list items. However, if you specify any value in this field on
@@ -2168,14 +2130,6 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  Specify <code>none</code> in this field to override the default Exclude Ship-To List you
      *  might have set up in My eBay and indicate that you do not want to exclude any
      *  shipping locations from the respective item listing.
-     *  <br><br>
-     *  <span class="tablenote"><strong>Note:</strong>
-     *  To enable your default Exclude Ship-To List, you must enable Exclude
-     *  Shipping Locations and Buyer Requirements in your My eBay Site Preferences.
-     *  For details, see the KnowledgeBase Article <a href=
-     *  "https://ebaydts.com/eBayKBDetails?KBid=1495"
-     *  >HowTo: ExcludeShipToLocation</a>.
-     *  </span>
      *
      * @return string[]
      */
@@ -2192,15 +2146,6 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  will not ship the associated item. Repeat this element in the call request for each
      *  location that you want to exclude as a shipping destination for your item.
      *  <br><br>
-     *  Set <b>ShipToRegistrationCountry</b> to <code>true</code> to have your <b>ExcludeShipToLocation</b>
-     *  settings applied to your listing. The locations you have excluded display in
-     *  the Shipping and Handling section of your item listing.
-     *  <br><br>
-     *  If a buyer's primary ship-to location is a location that you have listed as
-     *  an excluded ship-to location (or if the buyer does not have a primary ship-to
-     *  location), they will receive an error message if they attempt to buy or place
-     *  a bid on your item.
-     *  <br><br>
      *  The exclude ship-to location values are eBay regions and countries. To see
      *  the valid exclude ship-to locations for a specified site, call <b>GeteBayDetails</b>
      *  with <b>DetailName</b> set to <b>ExcludeShippingLocationDetails</b>,
@@ -2215,7 +2160,11 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  setting). In addition, if your <b>ShipToLocations</b> is <code>Worldwide</code>, you can use
      *  this field to specify both regions and countries that you want to exclude
      *  from your shipping destinations.
-     *  <br><br>
+     *  <br>
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>ShipToLocations</b> and <b>ShippingDetails.ExcludeShipToLocation</b> containers are not applicable for motor vehicle listings on the US, CA, or UK marketplaces. If these containers are sent in the request, they are ignored and a warning is returned.
+     *  </span>
+     *  <br>
      *  You can specify a default set of locations to where you will not ship in My
      *  eBay. If you create an Exclude Ship-To List, it is, by default, in effect
      *  when you list items. However, if you specify any value in this field on
@@ -2227,14 +2176,6 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  Specify <code>none</code> in this field to override the default Exclude Ship-To List you
      *  might have set up in My eBay and indicate that you do not want to exclude any
      *  shipping locations from the respective item listing.
-     *  <br><br>
-     *  <span class="tablenote"><strong>Note:</strong>
-     *  To enable your default Exclude Ship-To List, you must enable Exclude
-     *  Shipping Locations and Buyer Requirements in your My eBay Site Preferences.
-     *  For details, see the KnowledgeBase Article <a href=
-     *  "https://ebaydts.com/eBayKBDetails?KBid=1495"
-     *  >HowTo: ExcludeShipToLocation</a>.
-     *  </span>
      *
      * @param string[] $excludeShipToLocation
      * @return self
@@ -2242,6 +2183,32 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     public function setExcludeShipToLocation(array $excludeShipToLocation)
     {
         $this->excludeShipToLocation = $excludeShipToLocation;
+        return $this;
+    }
+
+    /**
+     * Gets as eBayEstimatedLabelCost
+     *
+     * This dollar value indicates the cost to buy the shipping label from eBay. Presently, this field is only returned for orders that will go through eBay shipping and its value will be <code>0.0</code>. With eBay shipping, a free shipping label by eBay is downloadable by the seller via the eBay website.
+     *
+     * @return \Nogrod\eBaySDK\Trading\AmountType
+     */
+    public function getEBayEstimatedLabelCost()
+    {
+        return $this->eBayEstimatedLabelCost;
+    }
+
+    /**
+     * Sets a new eBayEstimatedLabelCost
+     *
+     * This dollar value indicates the cost to buy the shipping label from eBay. Presently, this field is only returned for orders that will go through eBay shipping and its value will be <code>0.0</code>. With eBay shipping, a free shipping label by eBay is downloadable by the seller via the eBay website.
+     *
+     * @param \Nogrod\eBaySDK\Trading\AmountType $eBayEstimatedLabelCost
+     * @return self
+     */
+    public function setEBayEstimatedLabelCost(\Nogrod\eBaySDK\Trading\AmountType $eBayEstimatedLabelCost)
+    {
+        $this->eBayEstimatedLabelCost = $eBayEstimatedLabelCost;
         return $this;
     }
 
@@ -2632,6 +2599,10 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
                 return ["ExcludeShipToLocation" => $v];
             }, $value));
         }
+        $value = $this->getEBayEstimatedLabelCost();
+        if (null !== $value) {
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}eBayEstimatedLabelCost", $value);
+        }
         $value = $this->getSellerExcludeShipToLocationsPreference();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;
         if (null !== $value) {
@@ -2792,6 +2763,10 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExcludeShipToLocation', true);
         if (null !== $value && !empty($value)) {
             $this->setExcludeShipToLocation($value);
+        }
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}eBayEstimatedLabelCost');
+        if (null !== $value) {
+            $this->setEBayEstimatedLabelCost(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerExcludeShipToLocationsPreference');
         if (null !== $value) {

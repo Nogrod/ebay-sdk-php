@@ -1,3 +1,0 @@
-Nogrod\eBaySDK\MerchantData\EndFixedPriceItemRequest:
-    xml_root_name: EndFixedPriceItemRequest
-    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

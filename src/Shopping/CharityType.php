@@ -32,7 +32,7 @@ class CharityType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
      *  <br>
      *  <br>
      *  <span class="tablenote"><strong>Note:</strong>
-     *  The <b>CharityNumber</b> field has been scheduled for deprecation. It is the <b>CharityID</b> value that should be used instead if the user wishes to retrieve more details on a nonprofit organization by using the Trading API's <b>GetCharities</b> call, or used by a seller in an Add/Revise/Relist call when they want to identify the nonprofit organization that will receive sale proceeds for a listing.
+     *  All registered, non-profit organizations on eBay's platform have a PayPal Giving Fund identifier (<b>CharityNumber</b>) and a unique eBay identifier (<b>CharityID</b>). However, the <b>CharityNumber</b> field is now deprecated in the Shopping API, and is scheduled to stop being returned in <b>GetSingleItem</b> and <b>GetMultipleItems</b> after January 16, 2023. At that time, it will be removed from the Shopping WSDL. The <b>CharityID</b> value should be referenced instead.
      *  </span>
      *
      * @var int $charityNumber
@@ -135,7 +135,7 @@ class CharityType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
      *  <br>
      *  <br>
      *  <span class="tablenote"><strong>Note:</strong>
-     *  The <b>CharityNumber</b> field has been scheduled for deprecation. It is the <b>CharityID</b> value that should be used instead if the user wishes to retrieve more details on a nonprofit organization by using the Trading API's <b>GetCharities</b> call, or used by a seller in an Add/Revise/Relist call when they want to identify the nonprofit organization that will receive sale proceeds for a listing.
+     *  All registered, non-profit organizations on eBay's platform have a PayPal Giving Fund identifier (<b>CharityNumber</b>) and a unique eBay identifier (<b>CharityID</b>). However, the <b>CharityNumber</b> field is now deprecated in the Shopping API, and is scheduled to stop being returned in <b>GetSingleItem</b> and <b>GetMultipleItems</b> after January 16, 2023. At that time, it will be removed from the Shopping WSDL. The <b>CharityID</b> value should be referenced instead.
      *  </span>
      *
      * @return int
@@ -152,7 +152,7 @@ class CharityType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
      *  <br>
      *  <br>
      *  <span class="tablenote"><strong>Note:</strong>
-     *  The <b>CharityNumber</b> field has been scheduled for deprecation. It is the <b>CharityID</b> value that should be used instead if the user wishes to retrieve more details on a nonprofit organization by using the Trading API's <b>GetCharities</b> call, or used by a seller in an Add/Revise/Relist call when they want to identify the nonprofit organization that will receive sale proceeds for a listing.
+     *  All registered, non-profit organizations on eBay's platform have a PayPal Giving Fund identifier (<b>CharityNumber</b>) and a unique eBay identifier (<b>CharityID</b>). However, the <b>CharityNumber</b> field is now deprecated in the Shopping API, and is scheduled to stop being returned in <b>GetSingleItem</b> and <b>GetMultipleItems</b> after January 16, 2023. At that time, it will be removed from the Shopping WSDL. The <b>CharityID</b> value should be referenced instead.
      *  </span>
      *
      * @param int $charityNumber

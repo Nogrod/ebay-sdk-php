@@ -7,12 +7,14 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing RemoveSellerProfilesResponseType
  *
- *
+ * The response container for the <b>removeSellerProfiles</b> call.
  * XSD Type: RemoveSellerProfilesResponse
  */
 class RemoveSellerProfilesResponseType extends BaseResponseType
 {
     /**
+     * Container consisting of the <b>profileId</b> values for business policies that were successfully deleted, as well as an <b>ack</b> value to indicate if the call was successful. An <b>errorMessage</b> container will be returned if the call generated any errors or warnings.
+     *
      * @var \Nogrod\eBaySDK\BusinessPoliciesManagement\SellerProfileResponseStatusType[] $sellerProfileResponseStatus
      */
     private $sellerProfileResponseStatus = [
@@ -21,6 +23,8 @@ class RemoveSellerProfilesResponseType extends BaseResponseType
 
     /**
      * Adds as sellerProfileResponseStatus
+     *
+     * Container consisting of the <b>profileId</b> values for business policies that were successfully deleted, as well as an <b>ack</b> value to indicate if the call was successful. An <b>errorMessage</b> container will be returned if the call generated any errors or warnings.
      *
      * @return self
      * @param \Nogrod\eBaySDK\BusinessPoliciesManagement\SellerProfileResponseStatusType $sellerProfileResponseStatus
@@ -34,6 +38,8 @@ class RemoveSellerProfilesResponseType extends BaseResponseType
     /**
      * isset sellerProfileResponseStatus
      *
+     * Container consisting of the <b>profileId</b> values for business policies that were successfully deleted, as well as an <b>ack</b> value to indicate if the call was successful. An <b>errorMessage</b> container will be returned if the call generated any errors or warnings.
+     *
      * @param int|string $index
      * @return bool
      */
@@ -44,6 +50,8 @@ class RemoveSellerProfilesResponseType extends BaseResponseType
 
     /**
      * unset sellerProfileResponseStatus
+     *
+     * Container consisting of the <b>profileId</b> values for business policies that were successfully deleted, as well as an <b>ack</b> value to indicate if the call was successful. An <b>errorMessage</b> container will be returned if the call generated any errors or warnings.
      *
      * @param int|string $index
      * @return void
@@ -56,6 +64,8 @@ class RemoveSellerProfilesResponseType extends BaseResponseType
     /**
      * Gets as sellerProfileResponseStatus
      *
+     * Container consisting of the <b>profileId</b> values for business policies that were successfully deleted, as well as an <b>ack</b> value to indicate if the call was successful. An <b>errorMessage</b> container will be returned if the call generated any errors or warnings.
+     *
      * @return \Nogrod\eBaySDK\BusinessPoliciesManagement\SellerProfileResponseStatusType[]
      */
     public function getSellerProfileResponseStatus()
@@ -65,6 +75,8 @@ class RemoveSellerProfilesResponseType extends BaseResponseType
 
     /**
      * Sets a new sellerProfileResponseStatus
+     *
+     * Container consisting of the <b>profileId</b> values for business policies that were successfully deleted, as well as an <b>ack</b> value to indicate if the call was successful. An <b>errorMessage</b> container will be returned if the call generated any errors or warnings.
      *
      * @param \Nogrod\eBaySDK\BusinessPoliciesManagement\SellerProfileResponseStatusType[] $sellerProfileResponseStatus
      * @return self

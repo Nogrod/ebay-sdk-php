@@ -7,33 +7,55 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing ShippingProfileDiscountInfoType
  *
- * Shipping Profile DiscountInfo :
+ * Type defining the <b>shippingProfileDiscountInfo</b> container, which consists of details related to flat-rate, calculated, and promotional shipping discounts that are offered to domestic and/or international buyers.
  * XSD Type: ShippingProfileDiscountInfo
  */
 class ShippingProfileDiscountInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
     /**
+     * Unique identifier for a flat-rate or calculated shipping rule defined by the seller. If the seller specifies a valid shipping discount profile ID for either of these shipping rules, a domestic buyer may receive a shipping discount from the seller when purchasing multiple items. The seller can create and manage shipping discount profiles on My eBay, or by using the <b>SetShippingDiscountProfiles</b> and <b>GetShippingDiscountProfiles</b> calls of the Trading API.
+     *  <br><br>
+     *  The type of shipping discount profile specified in this field (flat-rate or calculated) should correspond to the <b>domesticShippingType</b> ('Flat' or 'Calculated') value in the shipping policy.
+     *  <br><br>
+     *  Shipping discount profiles are not applicable when Freight shipping is used.
+     *
      * @var int $domesticFlatCalcDiscountProfileId
      */
     private $domesticFlatCalcDiscountProfileId = null;
 
     /**
+     * Unique identifier for a flat-rate or calculated shipping rule defined by the seller. If the seller specifies a valid shipping discount profile ID for either of these shipping rules, an international buyer may receive a shipping discount from the seller when purchasing multiple items. The seller can create and manage shipping discount profiles on My eBay, or by using the <b>SetShippingDiscountProfiles</b> and <b>GetShippingDiscountProfiles</b> calls of the Trading API.
+     *  <br><br>
+     *  The type of shipping discount profile specified in this field (flat-rate or calculated) should correspond to the <b>intlShippingType</b> ('Flat' or 'Calculated') value in the shipping policy.
+     *  <br><br>
+     *  Shipping discount profiles are not applicable when Freight shipping is used.
+     *
      * @var int $intlFlatCalcDiscountProfileId
      */
     private $intlFlatCalcDiscountProfileId = null;
 
     /**
+     * If this field is included and set to 'true', a domestic buyer will be the recipient of the seller's promotional shipping discount (if that buyer satisfies the buying requirements). The seller can create a promotional shipping rule on My eBay, or by using the <b>SetShippingDiscountProfiles</b> call of the Trading API.
+     *
      * @var bool $applyDomesticPromoShippingProfile
      */
     private $applyDomesticPromoShippingProfile = null;
 
     /**
+     * If this field is included and set to 'true', an international buyer will be the recipient of the seller's promotional shipping discount (if that buyer satisfies the buying requirements). The seller can create a promotional shipping rule on My eBay, or by using the <b>SetShippingDiscountProfiles</b> call of the Trading API.
+     *
      * @var bool $applyIntlPromoShippingProfile
      */
     private $applyIntlPromoShippingProfile = null;
 
     /**
      * Gets as domesticFlatCalcDiscountProfileId
+     *
+     * Unique identifier for a flat-rate or calculated shipping rule defined by the seller. If the seller specifies a valid shipping discount profile ID for either of these shipping rules, a domestic buyer may receive a shipping discount from the seller when purchasing multiple items. The seller can create and manage shipping discount profiles on My eBay, or by using the <b>SetShippingDiscountProfiles</b> and <b>GetShippingDiscountProfiles</b> calls of the Trading API.
+     *  <br><br>
+     *  The type of shipping discount profile specified in this field (flat-rate or calculated) should correspond to the <b>domesticShippingType</b> ('Flat' or 'Calculated') value in the shipping policy.
+     *  <br><br>
+     *  Shipping discount profiles are not applicable when Freight shipping is used.
      *
      * @return int
      */
@@ -44,6 +66,12 @@ class ShippingProfileDiscountInfoType implements \Sabre\Xml\XmlSerializable, \Sa
 
     /**
      * Sets a new domesticFlatCalcDiscountProfileId
+     *
+     * Unique identifier for a flat-rate or calculated shipping rule defined by the seller. If the seller specifies a valid shipping discount profile ID for either of these shipping rules, a domestic buyer may receive a shipping discount from the seller when purchasing multiple items. The seller can create and manage shipping discount profiles on My eBay, or by using the <b>SetShippingDiscountProfiles</b> and <b>GetShippingDiscountProfiles</b> calls of the Trading API.
+     *  <br><br>
+     *  The type of shipping discount profile specified in this field (flat-rate or calculated) should correspond to the <b>domesticShippingType</b> ('Flat' or 'Calculated') value in the shipping policy.
+     *  <br><br>
+     *  Shipping discount profiles are not applicable when Freight shipping is used.
      *
      * @param int $domesticFlatCalcDiscountProfileId
      * @return self
@@ -57,6 +85,12 @@ class ShippingProfileDiscountInfoType implements \Sabre\Xml\XmlSerializable, \Sa
     /**
      * Gets as intlFlatCalcDiscountProfileId
      *
+     * Unique identifier for a flat-rate or calculated shipping rule defined by the seller. If the seller specifies a valid shipping discount profile ID for either of these shipping rules, an international buyer may receive a shipping discount from the seller when purchasing multiple items. The seller can create and manage shipping discount profiles on My eBay, or by using the <b>SetShippingDiscountProfiles</b> and <b>GetShippingDiscountProfiles</b> calls of the Trading API.
+     *  <br><br>
+     *  The type of shipping discount profile specified in this field (flat-rate or calculated) should correspond to the <b>intlShippingType</b> ('Flat' or 'Calculated') value in the shipping policy.
+     *  <br><br>
+     *  Shipping discount profiles are not applicable when Freight shipping is used.
+     *
      * @return int
      */
     public function getIntlFlatCalcDiscountProfileId()
@@ -66,6 +100,12 @@ class ShippingProfileDiscountInfoType implements \Sabre\Xml\XmlSerializable, \Sa
 
     /**
      * Sets a new intlFlatCalcDiscountProfileId
+     *
+     * Unique identifier for a flat-rate or calculated shipping rule defined by the seller. If the seller specifies a valid shipping discount profile ID for either of these shipping rules, an international buyer may receive a shipping discount from the seller when purchasing multiple items. The seller can create and manage shipping discount profiles on My eBay, or by using the <b>SetShippingDiscountProfiles</b> and <b>GetShippingDiscountProfiles</b> calls of the Trading API.
+     *  <br><br>
+     *  The type of shipping discount profile specified in this field (flat-rate or calculated) should correspond to the <b>intlShippingType</b> ('Flat' or 'Calculated') value in the shipping policy.
+     *  <br><br>
+     *  Shipping discount profiles are not applicable when Freight shipping is used.
      *
      * @param int $intlFlatCalcDiscountProfileId
      * @return self
@@ -79,6 +119,8 @@ class ShippingProfileDiscountInfoType implements \Sabre\Xml\XmlSerializable, \Sa
     /**
      * Gets as applyDomesticPromoShippingProfile
      *
+     * If this field is included and set to 'true', a domestic buyer will be the recipient of the seller's promotional shipping discount (if that buyer satisfies the buying requirements). The seller can create a promotional shipping rule on My eBay, or by using the <b>SetShippingDiscountProfiles</b> call of the Trading API.
+     *
      * @return bool
      */
     public function getApplyDomesticPromoShippingProfile()
@@ -88,6 +130,8 @@ class ShippingProfileDiscountInfoType implements \Sabre\Xml\XmlSerializable, \Sa
 
     /**
      * Sets a new applyDomesticPromoShippingProfile
+     *
+     * If this field is included and set to 'true', a domestic buyer will be the recipient of the seller's promotional shipping discount (if that buyer satisfies the buying requirements). The seller can create a promotional shipping rule on My eBay, or by using the <b>SetShippingDiscountProfiles</b> call of the Trading API.
      *
      * @param bool $applyDomesticPromoShippingProfile
      * @return self
@@ -101,6 +145,8 @@ class ShippingProfileDiscountInfoType implements \Sabre\Xml\XmlSerializable, \Sa
     /**
      * Gets as applyIntlPromoShippingProfile
      *
+     * If this field is included and set to 'true', an international buyer will be the recipient of the seller's promotional shipping discount (if that buyer satisfies the buying requirements). The seller can create a promotional shipping rule on My eBay, or by using the <b>SetShippingDiscountProfiles</b> call of the Trading API.
+     *
      * @return bool
      */
     public function getApplyIntlPromoShippingProfile()
@@ -110,6 +156,8 @@ class ShippingProfileDiscountInfoType implements \Sabre\Xml\XmlSerializable, \Sa
 
     /**
      * Sets a new applyIntlPromoShippingProfile
+     *
+     * If this field is included and set to 'true', an international buyer will be the recipient of the seller's promotional shipping discount (if that buyer satisfies the buying requirements). The seller can create a promotional shipping rule on My eBay, or by using the <b>SetShippingDiscountProfiles</b> call of the Trading API.
      *
      * @param bool $applyIntlPromoShippingProfile
      * @return self

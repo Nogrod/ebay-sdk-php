@@ -5,7 +5,7 @@ namespace Nogrod\eBaySDK\Trading;
 /**
  * Class representing StoreSubscriptionLevelCodeType
  *
- * This enumerated type contains the different subscription levels that a seller may subscribe to for their eBay Store. There is also one enumeration value (<code>Close</code>) that allows a seller to cancel their current eBay Store subscription with a <b>SetStore</b> call.
+ * This enumerated type contains the different subscription levels that a seller may subscribe to for their eBay Store.
  * XSD Type: StoreSubscriptionLevelCodeType
  */
 class StoreSubscriptionLevelCodeType
@@ -13,11 +13,7 @@ class StoreSubscriptionLevelCodeType
     /**
      * Constant for 'Close' value.
      *
-     * This value is passed into the <b>Store.SubscriptionLevel</b> field of a
-     * <b>SetStore</b> call to cancel your current eBay Store subscription. Despite its
-     * name, this action does not close your store immediately. Any active listings
-     * will remain available through your eBay Store until those listings have ended
-     * (either through a sale or when listing end time has been reached).
+     * This enumeration value is deprecated.
      */
     public const VAL_CLOSE = 'Close';
 

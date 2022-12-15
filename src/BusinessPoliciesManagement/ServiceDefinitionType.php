@@ -7,33 +7,43 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing ServiceDefinitionType
  *
- * ServiceDefinition:
+ * This type is reserved for future use.
  * XSD Type: ServiceDefinition
  */
 class ServiceDefinitionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
     /**
+     * This field is reserved for future use.
+     *
      * @var string $superscript
      */
     private $superscript = null;
 
     /**
+     * This field is reserved for future use.
+     *
      * @var int $maxDeliveryServiceDefinition
      */
     private $maxDeliveryServiceDefinition = null;
 
     /**
+     * This field is reserved for future use.
+     *
      * @var int $minDeliveryServiceDefinition
      */
     private $minDeliveryServiceDefinition = null;
 
     /**
+     * This field is reserved for future use.
+     *
      * @var string $name
      */
     private $name = null;
 
     /**
      * Gets as superscript
+     *
+     * This field is reserved for future use.
      *
      * @return string
      */
@@ -44,6 +54,8 @@ class ServiceDefinitionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
 
     /**
      * Sets a new superscript
+     *
+     * This field is reserved for future use.
      *
      * @param string $superscript
      * @return self
@@ -57,6 +69,8 @@ class ServiceDefinitionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
     /**
      * Gets as maxDeliveryServiceDefinition
      *
+     * This field is reserved for future use.
+     *
      * @return int
      */
     public function getMaxDeliveryServiceDefinition()
@@ -66,6 +80,8 @@ class ServiceDefinitionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
 
     /**
      * Sets a new maxDeliveryServiceDefinition
+     *
+     * This field is reserved for future use.
      *
      * @param int $maxDeliveryServiceDefinition
      * @return self
@@ -79,6 +95,8 @@ class ServiceDefinitionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
     /**
      * Gets as minDeliveryServiceDefinition
      *
+     * This field is reserved for future use.
+     *
      * @return int
      */
     public function getMinDeliveryServiceDefinition()
@@ -88,6 +106,8 @@ class ServiceDefinitionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
 
     /**
      * Sets a new minDeliveryServiceDefinition
+     *
+     * This field is reserved for future use.
      *
      * @param int $minDeliveryServiceDefinition
      * @return self
@@ -101,6 +121,8 @@ class ServiceDefinitionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
     /**
      * Gets as name
      *
+     * This field is reserved for future use.
+     *
      * @return string
      */
     public function getName()
@@ -110,6 +132,8 @@ class ServiceDefinitionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
 
     /**
      * Sets a new name
+     *
+     * This field is reserved for future use.
      *
      * @param string $name
      * @return self

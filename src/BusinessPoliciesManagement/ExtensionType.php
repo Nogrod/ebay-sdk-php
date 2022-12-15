@@ -13,27 +13,37 @@ use Nogrod\XMLClientRuntime\Func;
 class ExtensionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
     /**
+     * Reserved for future use.
+     *
      * @var int $id
      */
     private $id = null;
 
     /**
+     * Reserved for future use.
+     *
      * @var string $version
      */
     private $version = null;
 
     /**
+     * Reserved for future use.
+     *
      * @var string $contentType
      */
     private $contentType = null;
 
     /**
+     * Reserved for future use.
+     *
      * @var string $value
      */
     private $value = null;
 
     /**
      * Gets as id
+     *
+     * Reserved for future use.
      *
      * @return int
      */
@@ -44,6 +54,8 @@ class ExtensionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
 
     /**
      * Sets a new id
+     *
+     * Reserved for future use.
      *
      * @param int $id
      * @return self
@@ -57,6 +69,8 @@ class ExtensionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
     /**
      * Gets as version
      *
+     * Reserved for future use.
+     *
      * @return string
      */
     public function getVersion()
@@ -66,6 +80,8 @@ class ExtensionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
 
     /**
      * Sets a new version
+     *
+     * Reserved for future use.
      *
      * @param string $version
      * @return self
@@ -79,6 +95,8 @@ class ExtensionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
     /**
      * Gets as contentType
      *
+     * Reserved for future use.
+     *
      * @return string
      */
     public function getContentType()
@@ -88,6 +106,8 @@ class ExtensionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
 
     /**
      * Sets a new contentType
+     *
+     * Reserved for future use.
      *
      * @param string $contentType
      * @return self
@@ -101,6 +121,8 @@ class ExtensionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
     /**
      * Gets as value
      *
+     * Reserved for future use.
+     *
      * @return string
      */
     public function getValue()
@@ -110,6 +132,8 @@ class ExtensionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
 
     /**
      * Sets a new value
+     *
+     * Reserved for future use.
      *
      * @param string $value
      * @return self

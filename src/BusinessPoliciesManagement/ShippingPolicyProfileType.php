@@ -7,18 +7,26 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing ShippingPolicyProfileType
  *
- *
+ * Type defining the <b>shippingPolicyProfile</b> container, which is the container used to define one shipping policy for a seller.
  * XSD Type: ShippingPolicyProfile
  */
 class ShippingPolicyProfileType extends SellerProfileType
 {
     /**
+     * This container consists of detailed shipping information for a seller's shipping policy. This container is conditionally required if the caller is creating a new shipping policy or modifying an existing shipping policy.
+     *  <br><br>
+     *  This container is returned by <b>getSellerProfiles</b> if one or more shipping policies match the input criteria in the call request.
+     *
      * @var \Nogrod\eBaySDK\BusinessPoliciesManagement\ShippingPolicyInfoType $shippingPolicyInfo
      */
     private $shippingPolicyInfo = null;
 
     /**
      * Gets as shippingPolicyInfo
+     *
+     * This container consists of detailed shipping information for a seller's shipping policy. This container is conditionally required if the caller is creating a new shipping policy or modifying an existing shipping policy.
+     *  <br><br>
+     *  This container is returned by <b>getSellerProfiles</b> if one or more shipping policies match the input criteria in the call request.
      *
      * @return \Nogrod\eBaySDK\BusinessPoliciesManagement\ShippingPolicyInfoType
      */
@@ -29,6 +37,10 @@ class ShippingPolicyProfileType extends SellerProfileType
 
     /**
      * Sets a new shippingPolicyInfo
+     *
+     * This container consists of detailed shipping information for a seller's shipping policy. This container is conditionally required if the caller is creating a new shipping policy or modifying an existing shipping policy.
+     *  <br><br>
+     *  This container is returned by <b>getSellerProfiles</b> if one or more shipping policies match the input criteria in the call request.
      *
      * @param \Nogrod\eBaySDK\BusinessPoliciesManagement\ShippingPolicyInfoType $shippingPolicyInfo
      * @return self

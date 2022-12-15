@@ -7,37 +7,40 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing StoreCustomCategoryType
  *
- * Configuration of a store custom category.
+ * This type is used to express details about a customized eBay Store category.
  * XSD Type: StoreCustomCategoryType
  */
 class StoreCustomCategoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
     /**
-     * Custom category ID. For SetStoreCategories, required only if
-     *  Action is set to Rename, Move or Delete.
+     * Unique identifier of an eBay Store's custom category. eBay auto-generates this identifier when a seller establishes a custom store category. This category ID should not be confused with an eBay category ID.
+     *  <br>
+     *  <br>
+     *  This field is conditionally required for <b>SetStoreCategories</b>, if the <b>Action</b> value is set to <code>Rename</code>, <code>Move</code> or <code>Delete</code>.
      *
      * @var int $categoryID
      */
     private $categoryID = null;
 
     /**
-     * Name of the custom category.
+     * The seller-specified name of the custom category.
+     *  <br>
+     *  This field is conditionally required for <b>SetStoreCategories</b>, if the <b>Action</b> value is set to <code>Add</code>.
      *
      * @var string $name
      */
     private $name = null;
 
     /**
-     * Order in which the custom category appears in the list of store
-     *  categories.
+     * The order in which the custom store category appears in the list of store
+     *  categories when the eBay store is visited.
      *
      * @var int $order
      */
     private $order = null;
 
     /**
-     * Contains the properties of a custom subcategory for an eBay Store. eBay Stores support
-     *  three category levels.
+     * This container is used if the seller wants to add child categories to a top-level eBay store category. eBay Stores support three category levels.
      *
      * @var \Nogrod\eBaySDK\Trading\StoreCustomCategoryType[] $childCategory
      */
@@ -48,8 +51,10 @@ class StoreCustomCategoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
     /**
      * Gets as categoryID
      *
-     * Custom category ID. For SetStoreCategories, required only if
-     *  Action is set to Rename, Move or Delete.
+     * Unique identifier of an eBay Store's custom category. eBay auto-generates this identifier when a seller establishes a custom store category. This category ID should not be confused with an eBay category ID.
+     *  <br>
+     *  <br>
+     *  This field is conditionally required for <b>SetStoreCategories</b>, if the <b>Action</b> value is set to <code>Rename</code>, <code>Move</code> or <code>Delete</code>.
      *
      * @return int
      */
@@ -61,8 +66,10 @@ class StoreCustomCategoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
     /**
      * Sets a new categoryID
      *
-     * Custom category ID. For SetStoreCategories, required only if
-     *  Action is set to Rename, Move or Delete.
+     * Unique identifier of an eBay Store's custom category. eBay auto-generates this identifier when a seller establishes a custom store category. This category ID should not be confused with an eBay category ID.
+     *  <br>
+     *  <br>
+     *  This field is conditionally required for <b>SetStoreCategories</b>, if the <b>Action</b> value is set to <code>Rename</code>, <code>Move</code> or <code>Delete</code>.
      *
      * @param int $categoryID
      * @return self
@@ -76,7 +83,9 @@ class StoreCustomCategoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
     /**
      * Gets as name
      *
-     * Name of the custom category.
+     * The seller-specified name of the custom category.
+     *  <br>
+     *  This field is conditionally required for <b>SetStoreCategories</b>, if the <b>Action</b> value is set to <code>Add</code>.
      *
      * @return string
      */
@@ -88,7 +97,9 @@ class StoreCustomCategoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
     /**
      * Sets a new name
      *
-     * Name of the custom category.
+     * The seller-specified name of the custom category.
+     *  <br>
+     *  This field is conditionally required for <b>SetStoreCategories</b>, if the <b>Action</b> value is set to <code>Add</code>.
      *
      * @param string $name
      * @return self
@@ -102,8 +113,8 @@ class StoreCustomCategoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
     /**
      * Gets as order
      *
-     * Order in which the custom category appears in the list of store
-     *  categories.
+     * The order in which the custom store category appears in the list of store
+     *  categories when the eBay store is visited.
      *
      * @return int
      */
@@ -115,8 +126,8 @@ class StoreCustomCategoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
     /**
      * Sets a new order
      *
-     * Order in which the custom category appears in the list of store
-     *  categories.
+     * The order in which the custom store category appears in the list of store
+     *  categories when the eBay store is visited.
      *
      * @param int $order
      * @return self
@@ -130,8 +141,7 @@ class StoreCustomCategoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
     /**
      * Adds as childCategory
      *
-     * Contains the properties of a custom subcategory for an eBay Store. eBay Stores support
-     *  three category levels.
+     * This container is used if the seller wants to add child categories to a top-level eBay store category. eBay Stores support three category levels.
      *
      * @return self
      * @param \Nogrod\eBaySDK\Trading\StoreCustomCategoryType $childCategory
@@ -145,8 +155,7 @@ class StoreCustomCategoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
     /**
      * isset childCategory
      *
-     * Contains the properties of a custom subcategory for an eBay Store. eBay Stores support
-     *  three category levels.
+     * This container is used if the seller wants to add child categories to a top-level eBay store category. eBay Stores support three category levels.
      *
      * @param int|string $index
      * @return bool
@@ -159,8 +168,7 @@ class StoreCustomCategoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
     /**
      * unset childCategory
      *
-     * Contains the properties of a custom subcategory for an eBay Store. eBay Stores support
-     *  three category levels.
+     * This container is used if the seller wants to add child categories to a top-level eBay store category. eBay Stores support three category levels.
      *
      * @param int|string $index
      * @return void
@@ -173,8 +181,7 @@ class StoreCustomCategoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
     /**
      * Gets as childCategory
      *
-     * Contains the properties of a custom subcategory for an eBay Store. eBay Stores support
-     *  three category levels.
+     * This container is used if the seller wants to add child categories to a top-level eBay store category. eBay Stores support three category levels.
      *
      * @return \Nogrod\eBaySDK\Trading\StoreCustomCategoryType[]
      */
@@ -186,8 +193,7 @@ class StoreCustomCategoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
     /**
      * Sets a new childCategory
      *
-     * Contains the properties of a custom subcategory for an eBay Store. eBay Stores support
-     *  three category levels.
+     * This container is used if the seller wants to add child categories to a top-level eBay store category. eBay Stores support three category levels.
      *
      * @param \Nogrod\eBaySDK\Trading\StoreCustomCategoryType[] $childCategory
      * @return self

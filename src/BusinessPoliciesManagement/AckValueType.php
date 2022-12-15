@@ -5,10 +5,7 @@ namespace Nogrod\eBaySDK\BusinessPoliciesManagement;
 /**
  * Class representing AckValueType
  *
- * Indicates whether the error is a severe error
- *  (causing the request to fail) or an
- *  informational error (a warning) that should be
- *  communicated to the user.
+ * Indicates whether the error is a severe error (causing the request to fail) or an informational error (a warning) that should be communicated to the user.
  * XSD Type: AckValue
  */
 class AckValueType
@@ -16,38 +13,35 @@ class AckValueType
     /**
      * Constant for 'Success' value.
      *
-     * The request was processed successfully,
-     *  but something occurred that may affect
-     *  your application or the user.
+     * eBay successfully processed the request and the business data is returned in the
+     * response. Note that it is possible for a response to return Success, but still
+     * not contain the expected data in the result.
      */
     public const VAL_SUCCESS = 'Success';
 
     /**
      * Constant for 'Failure' value.
      *
-     * The request that triggered the error was
-     *  not processed successfully. When a
-     *  serious application-level error occurs,
-     *  the error is returned instead of the
-     *  business data.
+     * eBay encountered a fatal error during the processing of the request, causing the
+     * request to fail. When a serious application-level error occurs, the error is
+     * returned instead of the business data.
      */
     public const VAL_FAILURE = 'Failure';
 
     /**
      * Constant for 'Warning' value.
      *
-     * The request that triggered the error was
-     *  processed successfully but with some
-     *  warnings.
+     * The request that triggered the error was processed successfully but with one or
+     * more warnings.
      */
     public const VAL_WARNING = 'Warning';
 
     /**
      * Constant for 'PartialFailure' value.
      *
-     * The request that triggered the error was
-     *  processed successfully but with some
-     *  warnings.
+     * eBay successfully processed the request, but one or more non-fatal errors
+     * occurred during the processing. Inspect the message details and resolve any
+     * problems before resubmitting the request.
      */
     public const VAL_PARTIAL_FAILURE = 'PartialFailure';
 

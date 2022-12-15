@@ -196,17 +196,6 @@ Nogrod\eBaySDK\Trading\ItemType:
                 getter: getDistance
                 setter: setDistance
             type: Nogrod\eBaySDK\Trading\DistanceType
-        hitCounter:
-            expose: true
-            access_type: public_method
-            serialized_name: HitCounter
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getHitCounter
-                setter: setHitCounter
-            type: string
         itemID:
             expose: true
             access_type: public_method
@@ -423,6 +412,17 @@ Nogrod\eBaySDK\Trading\ItemType:
             accessor:
                 getter: getRelistLink
                 setter: setRelistLink
+            type: bool
+        isItemEMSEligible:
+            expose: true
+            access_type: public_method
+            serialized_name: IsItemEMSEligible
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getIsItemEMSEligible
+                setter: setIsItemEMSEligible
             type: bool
         reservePrice:
             expose: true

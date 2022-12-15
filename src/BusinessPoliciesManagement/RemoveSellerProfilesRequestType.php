@@ -7,12 +7,14 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing RemoveSellerProfilesRequestType
  *
- *
+ * Sellers use this call to delete one or more existing business policies.
  * XSD Type: RemoveSellerProfilesRequest
  */
 class RemoveSellerProfilesRequestType extends BaseRequestType
 {
     /**
+     * Unique identifier for a business policy. Each payment policy, shipping policy, and return policy has its own unique <b>profileId</b>. The seller passes in one or more <b>profileIds</b> values to identify the business policies to delete. The <b>profileId</b> values can be obtained through the site or by making a <b>getSellerProfiles</b> call.
+     *
      * @var int[] $profileIds
      */
     private $profileIds = [
@@ -21,6 +23,8 @@ class RemoveSellerProfilesRequestType extends BaseRequestType
 
     /**
      * Adds as profileIds
+     *
+     * Unique identifier for a business policy. Each payment policy, shipping policy, and return policy has its own unique <b>profileId</b>. The seller passes in one or more <b>profileIds</b> values to identify the business policies to delete. The <b>profileId</b> values can be obtained through the site or by making a <b>getSellerProfiles</b> call.
      *
      * @return self
      * @param int $profileIds
@@ -34,6 +38,8 @@ class RemoveSellerProfilesRequestType extends BaseRequestType
     /**
      * isset profileIds
      *
+     * Unique identifier for a business policy. Each payment policy, shipping policy, and return policy has its own unique <b>profileId</b>. The seller passes in one or more <b>profileIds</b> values to identify the business policies to delete. The <b>profileId</b> values can be obtained through the site or by making a <b>getSellerProfiles</b> call.
+     *
      * @param int|string $index
      * @return bool
      */
@@ -44,6 +50,8 @@ class RemoveSellerProfilesRequestType extends BaseRequestType
 
     /**
      * unset profileIds
+     *
+     * Unique identifier for a business policy. Each payment policy, shipping policy, and return policy has its own unique <b>profileId</b>. The seller passes in one or more <b>profileIds</b> values to identify the business policies to delete. The <b>profileId</b> values can be obtained through the site or by making a <b>getSellerProfiles</b> call.
      *
      * @param int|string $index
      * @return void
@@ -56,6 +64,8 @@ class RemoveSellerProfilesRequestType extends BaseRequestType
     /**
      * Gets as profileIds
      *
+     * Unique identifier for a business policy. Each payment policy, shipping policy, and return policy has its own unique <b>profileId</b>. The seller passes in one or more <b>profileIds</b> values to identify the business policies to delete. The <b>profileId</b> values can be obtained through the site or by making a <b>getSellerProfiles</b> call.
+     *
      * @return int[]
      */
     public function getProfileIds()
@@ -65,6 +75,8 @@ class RemoveSellerProfilesRequestType extends BaseRequestType
 
     /**
      * Sets a new profileIds
+     *
+     * Unique identifier for a business policy. Each payment policy, shipping policy, and return policy has its own unique <b>profileId</b>. The seller passes in one or more <b>profileIds</b> values to identify the business policies to delete. The <b>profileId</b> values can be obtained through the site or by making a <b>getSellerProfiles</b> call.
      *
      * @param int[] $profileIds
      * @return self

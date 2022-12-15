@@ -43,7 +43,7 @@ class SendInvoiceRequestType extends AbstractRequestType
     private $orderID = null;
 
     /**
-     * If the buyer has an international shipping address, use this container to offer up to four international shipping service options (or five if one of them is Global Shipping Program). If one or more international shipping service options are offered through this container, the (domestic) <b>ShippingServiceOptions</b> container should not be included in the same request.
+     * If the buyer has an international shipping address, use this container to offer up to four international shipping service options (or five if one of the shipping service options is Global Shipping Program or eBay International Shipping). If one or more international shipping service options are offered through this container, the (domestic) <b>ShippingServiceOptions</b> container should not be included in the same request.
      *  <br>
      *
      * @var \Nogrod\eBaySDK\Trading\InternationalShippingServiceOptionsType[] $internationalShippingServiceOptions
@@ -100,7 +100,7 @@ class SendInvoiceRequestType extends AbstractRequestType
     ];
 
     /**
-     * <b>DO NOT USE</b>. This field is no longer applicable, as eBay now controls the available online payment options that are available to buyers, and not the seller.
+     * <b>DO NOT USE</b>. This field is no longer applicable.
      *
      * @var string $payPalEmailAddress
      */
@@ -264,7 +264,7 @@ class SendInvoiceRequestType extends AbstractRequestType
     /**
      * Adds as internationalShippingServiceOptions
      *
-     * If the buyer has an international shipping address, use this container to offer up to four international shipping service options (or five if one of them is Global Shipping Program). If one or more international shipping service options are offered through this container, the (domestic) <b>ShippingServiceOptions</b> container should not be included in the same request.
+     * If the buyer has an international shipping address, use this container to offer up to four international shipping service options (or five if one of the shipping service options is Global Shipping Program or eBay International Shipping). If one or more international shipping service options are offered through this container, the (domestic) <b>ShippingServiceOptions</b> container should not be included in the same request.
      *  <br>
      *
      * @return self
@@ -279,7 +279,7 @@ class SendInvoiceRequestType extends AbstractRequestType
     /**
      * isset internationalShippingServiceOptions
      *
-     * If the buyer has an international shipping address, use this container to offer up to four international shipping service options (or five if one of them is Global Shipping Program). If one or more international shipping service options are offered through this container, the (domestic) <b>ShippingServiceOptions</b> container should not be included in the same request.
+     * If the buyer has an international shipping address, use this container to offer up to four international shipping service options (or five if one of the shipping service options is Global Shipping Program or eBay International Shipping). If one or more international shipping service options are offered through this container, the (domestic) <b>ShippingServiceOptions</b> container should not be included in the same request.
      *  <br>
      *
      * @param int|string $index
@@ -293,7 +293,7 @@ class SendInvoiceRequestType extends AbstractRequestType
     /**
      * unset internationalShippingServiceOptions
      *
-     * If the buyer has an international shipping address, use this container to offer up to four international shipping service options (or five if one of them is Global Shipping Program). If one or more international shipping service options are offered through this container, the (domestic) <b>ShippingServiceOptions</b> container should not be included in the same request.
+     * If the buyer has an international shipping address, use this container to offer up to four international shipping service options (or five if one of the shipping service options is Global Shipping Program or eBay International Shipping). If one or more international shipping service options are offered through this container, the (domestic) <b>ShippingServiceOptions</b> container should not be included in the same request.
      *  <br>
      *
      * @param int|string $index
@@ -307,7 +307,7 @@ class SendInvoiceRequestType extends AbstractRequestType
     /**
      * Gets as internationalShippingServiceOptions
      *
-     * If the buyer has an international shipping address, use this container to offer up to four international shipping service options (or five if one of them is Global Shipping Program). If one or more international shipping service options are offered through this container, the (domestic) <b>ShippingServiceOptions</b> container should not be included in the same request.
+     * If the buyer has an international shipping address, use this container to offer up to four international shipping service options (or five if one of the shipping service options is Global Shipping Program or eBay International Shipping). If one or more international shipping service options are offered through this container, the (domestic) <b>ShippingServiceOptions</b> container should not be included in the same request.
      *  <br>
      *
      * @return \Nogrod\eBaySDK\Trading\InternationalShippingServiceOptionsType[]
@@ -320,7 +320,7 @@ class SendInvoiceRequestType extends AbstractRequestType
     /**
      * Sets a new internationalShippingServiceOptions
      *
-     * If the buyer has an international shipping address, use this container to offer up to four international shipping service options (or five if one of them is Global Shipping Program). If one or more international shipping service options are offered through this container, the (domestic) <b>ShippingServiceOptions</b> container should not be included in the same request.
+     * If the buyer has an international shipping address, use this container to offer up to four international shipping service options (or five if one of the shipping service options is Global Shipping Program or eBay International Shipping). If one or more international shipping service options are offered through this container, the (domestic) <b>ShippingServiceOptions</b> container should not be included in the same request.
      *  <br>
      *
      * @param \Nogrod\eBaySDK\Trading\InternationalShippingServiceOptionsType[] $internationalShippingServiceOptions
@@ -576,7 +576,7 @@ class SendInvoiceRequestType extends AbstractRequestType
     /**
      * Gets as payPalEmailAddress
      *
-     * <b>DO NOT USE</b>. This field is no longer applicable, as eBay now controls the available online payment options that are available to buyers, and not the seller.
+     * <b>DO NOT USE</b>. This field is no longer applicable.
      *
      * @return string
      */
@@ -588,7 +588,7 @@ class SendInvoiceRequestType extends AbstractRequestType
     /**
      * Sets a new payPalEmailAddress
      *
-     * <b>DO NOT USE</b>. This field is no longer applicable, as eBay now controls the available online payment options that are available to buyers, and not the seller.
+     * <b>DO NOT USE</b>. This field is no longer applicable.
      *
      * @param string $payPalEmailAddress
      * @return self

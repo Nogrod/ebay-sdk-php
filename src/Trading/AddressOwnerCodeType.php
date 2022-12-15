@@ -5,11 +5,7 @@ namespace Nogrod\eBaySDK\Trading;
 /**
  * Class representing AddressOwnerCodeType
  *
- * Enumerated type used by the <b>ShippingAddress.AddressOwner</b> field in order management calls to indicate whether a shipping address is on file with eBay or on file with PayPal.
- *  <br/><br/>
- *  <span class="tablenote"><strong>Note:</strong>
- *  eBay now fully manages the payment process for all orders, so the <code>eBay</code> value should always be returned in the <b>ShippingAddress.AddressOwner</b> field.
- *  </span>
+ * Enumerated type used by the <b>ShippingAddress.AddressOwner</b> field in order management calls to indicate the owner of the shipping address on file.
  * XSD Type: AddressOwnerCodeType
  */
 class AddressOwnerCodeType
@@ -17,8 +13,7 @@ class AddressOwnerCodeType
     /**
      * Constant for 'PayPal' value.
      *
-     * This value is deprecated, as the buyer's shipping address should no longer be
-     * gathered from PayPal's system.
+     * This value is deprecated.
      */
     public const VAL_PAY_PAL = 'PayPal';
 

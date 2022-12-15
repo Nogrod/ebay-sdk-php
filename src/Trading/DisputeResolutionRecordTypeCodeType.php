@@ -6,12 +6,6 @@ namespace Nogrod\eBaySDK\Trading;
  * Class representing DisputeResolutionRecordTypeCodeType
  *
  * Enumerated type that lists the actions that eBay may take once an Unpaid Item case is resolved.
- *  <br/><br/>
- *  <span class="tablenote"><strong>Note:</strong>
- *  The <strong>GetUserDisputes</strong> call of the Trading API now only supports Unpaid Item cases, and no longer supports Item not Received (INR) or Significantly not as Described (SNAD) disputes created through PayPal, since this is no longer an option for eBay buyers. eBay buyers must create an INR or SNAD case through eBay's Resolution Center, and this call also does not support eBay Money Back Guarantee cases.
- *  <br><br>
- *  To respond to an eBay Money Back Guarantee case, the seller should use the <a href="https://developer.ebay.com/Devzone/post-order/index.html" target="_blank">Case Management calls</a> of the <b>Post-Order API</b> or manage/respond to cases manually through the eBay Resolution Center.
- *  </span>
  * XSD Type: DisputeResolutionRecordTypeCodeType
  */
 class DisputeResolutionRecordTypeCodeType
@@ -123,7 +117,7 @@ class DisputeResolutionRecordTypeCodeType
      * Constant for 'UnpaidItemRelisted' value.
      *
      * This enumeration value indicates that an Unpaid Item was automatically relisted
-     * by the Unpaid Item Assistant mechanism.
+     * by the Unpaid Item preferences.
      */
     public const VAL_UNPAID_ITEM_RELISTED = 'UnpaidItemRelisted';
 
@@ -131,7 +125,7 @@ class DisputeResolutionRecordTypeCodeType
      * Constant for 'UnpaidItemRevised' value.
      *
      * This enumeration value indicates that an Unpaid Item was automatically revised
-     * by the Unpaid Item Assistant mechanism.
+     * by the Unpaid Item preferences.
      */
     public const VAL_UNPAID_ITEM_REVISED = 'UnpaidItemRevised';
 

@@ -45,12 +45,14 @@ class PictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
     /**
      * Contains the URL for a picture of the item.
      *  The URL can be from the eBay Picture Services (images previously uploaded) or from a server outside of eBay (self-hosted).
-     *  You can pass in up to 12 picture URLs (for most categories and marketplaces) for each listing, but you cannot mix self-hosted and EPS-hosted URLs in the same listing. The <b>UploadSiteHostedPictures</b> call can be used to upload pictures to EPS. Note that if pictures are externally-hosted, they must be hosted on a site that is using the 'https' protocol. URLs using the 'http' protocol will not be allowed.
+     *  You can pass in up to 24 picture URLs for each listing, but you cannot mix self-hosted and EPS-hosted URLs in the same listing. The <b>UploadSiteHostedPictures</b> call can be used to upload pictures to EPS. Note that if pictures are externally-hosted, they must be hosted on a site that is using the 'https' protocol. URLs using the 'http' protocol will not be allowed.
+     *  <br/><br/>
+     *  Sellers can have up to 24 pictures in almost any category at no cost. Motor vehicle listings are an exception. The number of included pictures in motor vehicle listings depend on the selected vehicle package (see <a href="https://www.ebay.com/help/selling/fees-credits-invoices/motors-fees?id=4127">Fees for selling vehicles on eBay Motors</a>).
      *  <br/><br/>
      *  <span class="tablenote"><b>Note: </b>
      *  If a URL contains spaces, those spaces can be replaced with <code>%20</code>. For example, <code>https://example.com/my image.jpg</code> must be submitted as <code>https://example.com/my%20image.jpg</code> to replace the space in the image file name. However, a semicolon character (;) cannot be replaced with <code>%20</code>, so a semicolon cannot be a part of the URL, as an error will occur.
      *  </span>
-     *  On the US and Canada eBay Motors sites (for all vehicle listings) a listing can contain up to 24 pictures. The Gallery image will be the first <b>PictureURL</b>
+     *  The Gallery image will be the first <b>PictureURL</b>
      *  in the array of <b>PictureURL</b> fields.
      *
      *  <br/><br/>
@@ -220,12 +222,14 @@ class PictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      *
      * Contains the URL for a picture of the item.
      *  The URL can be from the eBay Picture Services (images previously uploaded) or from a server outside of eBay (self-hosted).
-     *  You can pass in up to 12 picture URLs (for most categories and marketplaces) for each listing, but you cannot mix self-hosted and EPS-hosted URLs in the same listing. The <b>UploadSiteHostedPictures</b> call can be used to upload pictures to EPS. Note that if pictures are externally-hosted, they must be hosted on a site that is using the 'https' protocol. URLs using the 'http' protocol will not be allowed.
+     *  You can pass in up to 24 picture URLs for each listing, but you cannot mix self-hosted and EPS-hosted URLs in the same listing. The <b>UploadSiteHostedPictures</b> call can be used to upload pictures to EPS. Note that if pictures are externally-hosted, they must be hosted on a site that is using the 'https' protocol. URLs using the 'http' protocol will not be allowed.
+     *  <br/><br/>
+     *  Sellers can have up to 24 pictures in almost any category at no cost. Motor vehicle listings are an exception. The number of included pictures in motor vehicle listings depend on the selected vehicle package (see <a href="https://www.ebay.com/help/selling/fees-credits-invoices/motors-fees?id=4127">Fees for selling vehicles on eBay Motors</a>).
      *  <br/><br/>
      *  <span class="tablenote"><b>Note: </b>
      *  If a URL contains spaces, those spaces can be replaced with <code>%20</code>. For example, <code>https://example.com/my image.jpg</code> must be submitted as <code>https://example.com/my%20image.jpg</code> to replace the space in the image file name. However, a semicolon character (;) cannot be replaced with <code>%20</code>, so a semicolon cannot be a part of the URL, as an error will occur.
      *  </span>
-     *  On the US and Canada eBay Motors sites (for all vehicle listings) a listing can contain up to 24 pictures. The Gallery image will be the first <b>PictureURL</b>
+     *  The Gallery image will be the first <b>PictureURL</b>
      *  in the array of <b>PictureURL</b> fields.
      *
      *  <br/><br/>
@@ -267,12 +271,14 @@ class PictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      *
      * Contains the URL for a picture of the item.
      *  The URL can be from the eBay Picture Services (images previously uploaded) or from a server outside of eBay (self-hosted).
-     *  You can pass in up to 12 picture URLs (for most categories and marketplaces) for each listing, but you cannot mix self-hosted and EPS-hosted URLs in the same listing. The <b>UploadSiteHostedPictures</b> call can be used to upload pictures to EPS. Note that if pictures are externally-hosted, they must be hosted on a site that is using the 'https' protocol. URLs using the 'http' protocol will not be allowed.
+     *  You can pass in up to 24 picture URLs for each listing, but you cannot mix self-hosted and EPS-hosted URLs in the same listing. The <b>UploadSiteHostedPictures</b> call can be used to upload pictures to EPS. Note that if pictures are externally-hosted, they must be hosted on a site that is using the 'https' protocol. URLs using the 'http' protocol will not be allowed.
+     *  <br/><br/>
+     *  Sellers can have up to 24 pictures in almost any category at no cost. Motor vehicle listings are an exception. The number of included pictures in motor vehicle listings depend on the selected vehicle package (see <a href="https://www.ebay.com/help/selling/fees-credits-invoices/motors-fees?id=4127">Fees for selling vehicles on eBay Motors</a>).
      *  <br/><br/>
      *  <span class="tablenote"><b>Note: </b>
      *  If a URL contains spaces, those spaces can be replaced with <code>%20</code>. For example, <code>https://example.com/my image.jpg</code> must be submitted as <code>https://example.com/my%20image.jpg</code> to replace the space in the image file name. However, a semicolon character (;) cannot be replaced with <code>%20</code>, so a semicolon cannot be a part of the URL, as an error will occur.
      *  </span>
-     *  On the US and Canada eBay Motors sites (for all vehicle listings) a listing can contain up to 24 pictures. The Gallery image will be the first <b>PictureURL</b>
+     *  The Gallery image will be the first <b>PictureURL</b>
      *  in the array of <b>PictureURL</b> fields.
      *
      *  <br/><br/>
@@ -313,12 +319,14 @@ class PictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      *
      * Contains the URL for a picture of the item.
      *  The URL can be from the eBay Picture Services (images previously uploaded) or from a server outside of eBay (self-hosted).
-     *  You can pass in up to 12 picture URLs (for most categories and marketplaces) for each listing, but you cannot mix self-hosted and EPS-hosted URLs in the same listing. The <b>UploadSiteHostedPictures</b> call can be used to upload pictures to EPS. Note that if pictures are externally-hosted, they must be hosted on a site that is using the 'https' protocol. URLs using the 'http' protocol will not be allowed.
+     *  You can pass in up to 24 picture URLs for each listing, but you cannot mix self-hosted and EPS-hosted URLs in the same listing. The <b>UploadSiteHostedPictures</b> call can be used to upload pictures to EPS. Note that if pictures are externally-hosted, they must be hosted on a site that is using the 'https' protocol. URLs using the 'http' protocol will not be allowed.
+     *  <br/><br/>
+     *  Sellers can have up to 24 pictures in almost any category at no cost. Motor vehicle listings are an exception. The number of included pictures in motor vehicle listings depend on the selected vehicle package (see <a href="https://www.ebay.com/help/selling/fees-credits-invoices/motors-fees?id=4127">Fees for selling vehicles on eBay Motors</a>).
      *  <br/><br/>
      *  <span class="tablenote"><b>Note: </b>
      *  If a URL contains spaces, those spaces can be replaced with <code>%20</code>. For example, <code>https://example.com/my image.jpg</code> must be submitted as <code>https://example.com/my%20image.jpg</code> to replace the space in the image file name. However, a semicolon character (;) cannot be replaced with <code>%20</code>, so a semicolon cannot be a part of the URL, as an error will occur.
      *  </span>
-     *  On the US and Canada eBay Motors sites (for all vehicle listings) a listing can contain up to 24 pictures. The Gallery image will be the first <b>PictureURL</b>
+     *  The Gallery image will be the first <b>PictureURL</b>
      *  in the array of <b>PictureURL</b> fields.
      *
      *  <br/><br/>
@@ -359,12 +367,14 @@ class PictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      *
      * Contains the URL for a picture of the item.
      *  The URL can be from the eBay Picture Services (images previously uploaded) or from a server outside of eBay (self-hosted).
-     *  You can pass in up to 12 picture URLs (for most categories and marketplaces) for each listing, but you cannot mix self-hosted and EPS-hosted URLs in the same listing. The <b>UploadSiteHostedPictures</b> call can be used to upload pictures to EPS. Note that if pictures are externally-hosted, they must be hosted on a site that is using the 'https' protocol. URLs using the 'http' protocol will not be allowed.
+     *  You can pass in up to 24 picture URLs for each listing, but you cannot mix self-hosted and EPS-hosted URLs in the same listing. The <b>UploadSiteHostedPictures</b> call can be used to upload pictures to EPS. Note that if pictures are externally-hosted, they must be hosted on a site that is using the 'https' protocol. URLs using the 'http' protocol will not be allowed.
+     *  <br/><br/>
+     *  Sellers can have up to 24 pictures in almost any category at no cost. Motor vehicle listings are an exception. The number of included pictures in motor vehicle listings depend on the selected vehicle package (see <a href="https://www.ebay.com/help/selling/fees-credits-invoices/motors-fees?id=4127">Fees for selling vehicles on eBay Motors</a>).
      *  <br/><br/>
      *  <span class="tablenote"><b>Note: </b>
      *  If a URL contains spaces, those spaces can be replaced with <code>%20</code>. For example, <code>https://example.com/my image.jpg</code> must be submitted as <code>https://example.com/my%20image.jpg</code> to replace the space in the image file name. However, a semicolon character (;) cannot be replaced with <code>%20</code>, so a semicolon cannot be a part of the URL, as an error will occur.
      *  </span>
-     *  On the US and Canada eBay Motors sites (for all vehicle listings) a listing can contain up to 24 pictures. The Gallery image will be the first <b>PictureURL</b>
+     *  The Gallery image will be the first <b>PictureURL</b>
      *  in the array of <b>PictureURL</b> fields.
      *
      *  <br/><br/>
@@ -404,12 +414,14 @@ class PictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      *
      * Contains the URL for a picture of the item.
      *  The URL can be from the eBay Picture Services (images previously uploaded) or from a server outside of eBay (self-hosted).
-     *  You can pass in up to 12 picture URLs (for most categories and marketplaces) for each listing, but you cannot mix self-hosted and EPS-hosted URLs in the same listing. The <b>UploadSiteHostedPictures</b> call can be used to upload pictures to EPS. Note that if pictures are externally-hosted, they must be hosted on a site that is using the 'https' protocol. URLs using the 'http' protocol will not be allowed.
+     *  You can pass in up to 24 picture URLs for each listing, but you cannot mix self-hosted and EPS-hosted URLs in the same listing. The <b>UploadSiteHostedPictures</b> call can be used to upload pictures to EPS. Note that if pictures are externally-hosted, they must be hosted on a site that is using the 'https' protocol. URLs using the 'http' protocol will not be allowed.
+     *  <br/><br/>
+     *  Sellers can have up to 24 pictures in almost any category at no cost. Motor vehicle listings are an exception. The number of included pictures in motor vehicle listings depend on the selected vehicle package (see <a href="https://www.ebay.com/help/selling/fees-credits-invoices/motors-fees?id=4127">Fees for selling vehicles on eBay Motors</a>).
      *  <br/><br/>
      *  <span class="tablenote"><b>Note: </b>
      *  If a URL contains spaces, those spaces can be replaced with <code>%20</code>. For example, <code>https://example.com/my image.jpg</code> must be submitted as <code>https://example.com/my%20image.jpg</code> to replace the space in the image file name. However, a semicolon character (;) cannot be replaced with <code>%20</code>, so a semicolon cannot be a part of the URL, as an error will occur.
      *  </span>
-     *  On the US and Canada eBay Motors sites (for all vehicle listings) a listing can contain up to 24 pictures. The Gallery image will be the first <b>PictureURL</b>
+     *  The Gallery image will be the first <b>PictureURL</b>
      *  in the array of <b>PictureURL</b> fields.
      *
      *  <br/><br/>

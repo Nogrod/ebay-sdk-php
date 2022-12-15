@@ -7,18 +7,22 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing ConsolidateShippingProfilesResponseType
  *
- *
+ * The response container for the <b>consolidateShippingProfiles</b> call.
  * XSD Type: ConsolidateShippingProfilesResponse
  */
 class ConsolidateShippingProfilesResponseType extends BaseResponseType
 {
     /**
+     * Container consisting of details related to the shipping policies consolidation job, including a unique ID, the status of the job, and the eBay site ID.
+     *
      * @var \Nogrod\eBaySDK\BusinessPoliciesManagement\ConsolidationJobType $job
      */
     private $job = null;
 
     /**
      * Gets as job
+     *
+     * Container consisting of details related to the shipping policies consolidation job, including a unique ID, the status of the job, and the eBay site ID.
      *
      * @return \Nogrod\eBaySDK\BusinessPoliciesManagement\ConsolidationJobType
      */
@@ -29,6 +33,8 @@ class ConsolidateShippingProfilesResponseType extends BaseResponseType
 
     /**
      * Sets a new job
+     *
+     * Container consisting of details related to the shipping policies consolidation job, including a unique ID, the status of the job, and the eBay site ID.
      *
      * @param \Nogrod\eBaySDK\BusinessPoliciesManagement\ConsolidationJobType $job
      * @return self

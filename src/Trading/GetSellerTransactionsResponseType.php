@@ -68,7 +68,7 @@ class GetSellerTransactionsResponseType extends AbstractResponseType
     private $transactionArray = null;
 
     /**
-     * This field may still be returned for orders currently, but it can be ignored since eBay now manages all online payment methods available to buyers.
+     * This field is deprecated.
      *
      * @var bool $payPalPreferred
      */
@@ -323,7 +323,7 @@ class GetSellerTransactionsResponseType extends AbstractResponseType
     /**
      * Gets as payPalPreferred
      *
-     * This field may still be returned for orders currently, but it can be ignored since eBay now manages all online payment methods available to buyers.
+     * This field is deprecated.
      *
      * @return bool
      */
@@ -335,7 +335,7 @@ class GetSellerTransactionsResponseType extends AbstractResponseType
     /**
      * Sets a new payPalPreferred
      *
-     * This field may still be returned for orders currently, but it can be ignored since eBay now manages all online payment methods available to buyers.
+     * This field is deprecated.
      *
      * @param bool $payPalPreferred
      * @return self

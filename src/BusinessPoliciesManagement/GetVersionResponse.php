@@ -4,6 +4,8 @@ namespace Nogrod\eBaySDK\BusinessPoliciesManagement;
 
 /**
  * Class representing GetVersionResponse
+ *
+ * The root response container of the <b>getVersion</b> call.
  */
 class GetVersionResponse extends GetVersionResponseType
 {

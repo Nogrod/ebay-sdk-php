@@ -4942,25 +4942,14 @@
 					<xs:enumeration value="PaymentMethod">
 						<xs:annotation>
 							<xs:documentation>
-								&lt;a name="PaymentMethod"&gt;&lt;/a&gt;
+								&lt;a name=&quot;PaymentMethod&quot;&gt;&lt;/a&gt;
 								Limits results to items that accept the specified payment method.
 								&lt;br&gt;&lt;br&gt;
 								&lt;b&gt;Allowed values (&lt;a
-								class="defn_type"
-								href="../types/simpleTypes.html#string"&gt;string&lt;/a&gt;):
+								class=&quot;defn_type&quot;
+								href=&quot;../types/simpleTypes.html#string&quot;&gt;string&lt;/a&gt;):
 								&lt;/b&gt;&lt;br&gt;
-								&lt;blockquote&gt;
-								&lt;dl&gt;
-								&lt;dt&gt;PayPal&lt;/dt&gt;
-								&lt;dd&gt;PayPal payment method.&lt;/dd&gt;
-								&lt;dt&gt;PaisaPay&lt;/dt&gt;
-								&lt;dd&gt;PaisaPay payment method. The PaisaPay payment method is only
-								for the India site (global ID EBAY-IN).&lt;/dd&gt;
-								&lt;dt&gt;PaisaPayEMI&lt;/dt&gt;
-								&lt;dd&gt;PaisaPayEscrow EMI (Equal Monthly Installment) payment method.
-								The PaisaPayEscrowEMI payment method is only for the India site (global
-								ID EBAY-IN).&lt;/dd&gt;
-								&lt;/blockquote&gt;
+								Payment method
 								&lt;br&gt;
 							</xs:documentation>
 						</xs:annotation>
@@ -5261,27 +5250,14 @@
 					<xs:enumeration value="ExpeditedShippingType">
 						<xs:annotation>
 							<xs:documentation>
-								&lt;a name="ExpeditedShippingType"&gt;&lt;/a&gt;
+								&lt;a name=&quot;ExpeditedShippingType&quot;&gt;&lt;/a&gt;
 								Specifies the type of expedited shipping. You can specify
 								either Expedited or OneDayShipping. Only items that can be shipped
 								by the specified type are returned.
 								&lt;br&gt;&lt;br&gt;
-								ExpeditedShippingType is used together with the MaxHandlingTime and
-								ReturnsAcceptedOnly filters to filter items
-								for certain kinds of gifting events such as birthdays or holidays where
-								the items must be delivered by a certain date.
-								If you wish to mimic the behavior of the eBay holiday filters, you would
-								use ExpeditedShippingType set
-								to either Expedited or OneDayShipping, MaxHandlingTime to 1,
-								ReturnsAcceptedOnly set to true, and for the
-								Germany site, set PaymentMethod to PayPal. (The holiday filters may not
-								always be available in the
-								eBay UI, depending on the season; however, the equivalent filter behavior
-								continues to be available in the API.)
-								&lt;br&gt;&lt;br&gt;
 								&lt;b&gt;Allowed values (&lt;a
-								class="defn_type"
-								href="../types/simpleTypes.html#string"&gt;string&lt;/a&gt;):&lt;/b&gt;
+								class=&quot;defn_type&quot;
+								href=&quot;../types/simpleTypes.html#string&quot;&gt;string&lt;/a&gt;):&lt;/b&gt;
 								&lt;br&gt;
 								Expedited, OneDayShipping
 								&lt;br&gt;&lt;br&gt;
@@ -5291,26 +5267,16 @@
 					<xs:enumeration value="MaxHandlingTime">
 						<xs:annotation>
 							<xs:documentation>
-								&lt;a name="MaxHandlingTime"&gt;&lt;/a&gt;
+								&lt;a name=&quot;MaxHandlingTime&quot;&gt;&lt;/a&gt;
 								Specifies the maximum number of handling days the seller requires to ship
 								the item. Only items with a handling time less than or equal to this
 								number will be returned. (The handling time is the amount of time, in
 								days, required by the seller to get the item ready to ship and handed off
 								to the actual carrier who does the delivery. It does not include the time
-								required by the carrier to deliver the item. &lt;br&gt;&lt;br&gt;
-								ExpeditedShippingType is used together with the MaxHandlingTime and
-								ReturnsAcceptedOnly filters to filter items for certain kinds of gifting
-								events such as birthdays or holidays where the items must be delivered by
-								a certain date. If you wish to mimic the behavior of the eBay holiday
-								filters, you would use ExpeditedShippingType set to either Expedited or
-								OneDayShipping, MaxHandlingTime to 1, ReturnsAcceptedOnly set to true,
-								and for the Germany site, set PaymentMethod to PayPal. (The holiday
-								filters may not always be available in the eBay UI, depending on the
-								season; however, the equivalent filter behavior continues to be available
-								in the API.)
+								required by the carrier to deliver the item. 
 								&lt;br&gt;&lt;br&gt;
-								&lt;b&gt;Allowed values (&lt;a class="defn_type"
-								href="../types/simpleTypes.html#int"&gt;int&lt;/a&gt;):&lt;/b&gt;
+								&lt;b&gt;Allowed values (&lt;a class=&quot;defn_type&quot;
+								href=&quot;../types/simpleTypes.html#int&quot;&gt;int&lt;/a&gt;):&lt;/b&gt;
 								&lt;br&gt;
 								Integer greater than or equal to 1.
 								&lt;br&gt;&lt;br&gt;
@@ -5320,23 +5286,12 @@
 					<xs:enumeration value="ReturnsAcceptedOnly">
 						<xs:annotation>
 							<xs:documentation>
-								&lt;a name="ReturnsAcceptedOnly"&gt;&lt;/a&gt;
+								&lt;a name=&quot;ReturnsAcceptedOnly&quot;&gt;&lt;/a&gt;
 								If set to true, returns only items where the seller accepts returns.
 								&lt;br&gt;&lt;br&gt;
-								ExpeditedShippingType is used together with the MaxHandlingTime and
-								ReturnsAcceptedOnly filters to filter items for certain kinds of gifting
-								events such as birthdays or holidays where the items must be delivered by
-								a certain date. If you wish to mimic the behavior of the eBay holiday
-								filters, you would use ExpeditedShippingType set to either Expedited or
-								OneDayShipping, MaxHandlingTime to 1, ReturnsAcceptedOnly set to true,
-								and for the Germany site, set PaymentMethod to PayPal. (The holiday
-								filters may not always be available in the eBay UI, depending on the
-								season; however, the equivalent filter behavior continues to be available
-								in the API.)
-								&lt;br&gt;&lt;br&gt;
 								&lt;b&gt;Allowed values (&lt;a
-								class="defn_type"
-								href="../types/simpleTypes.html#boolean"&gt;boolean&lt;/a&gt;):&lt;/b&gt;
+								class=&quot;defn_type&quot;
+								href=&quot;../types/simpleTypes.html#boolean&quot;&gt;boolean&lt;/a&gt;):&lt;/b&gt;
 								&lt;br&gt;
 								true, false
 								&lt;br&gt;&lt;br&gt;
@@ -6504,15 +6459,7 @@
 					<xs:element minOccurs="0" maxOccurs="unbounded" name="paymentMethod" type="xs:token">
 						<xs:annotation>
 							<xs:documentation>
-								Identifies the payment method (or methods) the seller will accept for the
-								item (such as PayPal).
-								&lt;br&gt;&lt;br&gt;
-								&lt;span class="tablenote"&gt;&lt;strong&gt;Note:&lt;/strong&gt;
-								If the seller accepts only PayPal, the buyer can still pay with a
-								credit card. PayPal supports major credit cards.
-								&lt;/span&gt;
-								Payment methods are not applicable to eBay Real Estate advertisement
-								listings or other Classified Ad listing formats.
+								Identifies the payment method (or methods) available to the buyer to purchase the item.
 							</xs:documentation>
 							<xs:appinfo>
 								<ListBasedOn/>
@@ -6539,25 +6486,18 @@
 						<xs:annotation>
 							<xs:documentation>
 								If true, the seller requires immediate payment for the item. If false (or
-								not specified), immediate payment is not requested. Buyers must have a
-								PayPal account to purchase items that require immediate payment.
+								not specified), immediate payment is not requested.
 								&lt;br&gt;&lt;br&gt;
-								A seller can choose to require immediate payment for Fixed Price and Buy
-								It Now listings, including eBay Stores Inventory listings. If a Buy It
-								Now item ends as an auction (that is, if the Buy It Now option is removed
-								due to bids being placed on the listing), the immediate payment
-								requirement does not apply.
+								Immediate payment does not apply to classified listings nor to auction listings that end with a winning bidder.
 								&lt;br&gt;&lt;br&gt;
 								&lt;span class="tablenote"&gt;&lt;strong&gt;Note:&lt;/strong&gt;
-								The value of the AutoPay flag indicates the seller's stated preference
+								The value of the autoPay flag indicates the seller's stated preference
 								only. It does not indicate whether the listing is still a candidate for
 								purchase via immediate payment. For example, if a listing receives bids
-								and no longer qualifies for immediate payment, the value of the AutoPay
+								and no longer qualifies for immediate payment, the value of the autoPay
 								flag does not change.
 								&lt;/span&gt;
 								&lt;br&gt;
-								Only applicable to items listed on PayPal-enabled sites and in categories
-								that support immediate payment.
 							</xs:documentation>
 							<xs:appinfo>
 								<CallInfo>
@@ -7881,10 +7821,10 @@
 			<wsdl:input message="tns:findItemsIneBayStoresRequest"/>
 			<wsdl:output message="tns:findItemsIneBayStoresResponse"/>
 		</wsdl:operation>
-    <wsdl:operation name="findItemsByImage">
-      <wsdl:input message="tns:findItemsByImageRequest"/>
-      <wsdl:output message="tns:findItemsByImageResponse"/>
-    </wsdl:operation>
+		<wsdl:operation name="findItemsByImage">
+			<wsdl:input message="tns:findItemsByImageRequest"/>
+			<wsdl:output message="tns:findItemsByImageResponse"/>
+		</wsdl:operation>
 		<wsdl:operation name="getHistograms">
 			<wsdl:input message="tns:getHistogramsRequest"/>
 			<wsdl:output message="tns:getHistogramsResponse"/>
@@ -7893,10 +7833,10 @@
 			<wsdl:input message="tns:getVersionRequest"/>
 			<wsdl:output message="tns:getVersionResponse"/>
 		</wsdl:operation>
-    <wsdl:operation name="findItemsForFavoriteSearch">
-      <wsdl:input message="tns:findItemsForFavoriteSearchRequest"/>
-      <wsdl:output message="tns:findItemsForFavoriteSearchResponse"/>
-    </wsdl:operation>
+		<wsdl:operation name="findItemsForFavoriteSearch">
+			<wsdl:input message="tns:findItemsForFavoriteSearchRequest"/>
+			<wsdl:output message="tns:findItemsForFavoriteSearchResponse"/>
+		</wsdl:operation>
 		<wsdl:operation name="findCompletedItems">
 			<wsdl:input message="tns:findCompletedItemsRequest"/>
 			<wsdl:output message="tns:findCompletedItemsResponse"/>

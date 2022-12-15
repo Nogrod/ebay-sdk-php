@@ -7,17 +7,19 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing ShippingPolicyServiceType
  *
- * ShippingPolicyService:
+ * Type defining the <b>domesticShippingPolicyInfoService</b> and <b>internationalShippingPolicyInfoService</b> containers, which consists of detailed information on domestic and international shipping service options.
  * XSD Type: ShippingPolicyService
  */
 class ShippingPolicyServiceType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
     /**
-     * An international location or region to where the item seller will ship the item. These values are string equivalents of values found in ShippingRegionCodeType and CountryCodeType.
-     *  See ShipToLocation.
-     *
-     *
-     *  Applicable values: See CountryCodeType , ShippingRegionCodeType
+     * An international region (such as Asia or Europe) or a country (represented by two-letter country code) to where the seller will ship an item. To obtain valid 'Ship-To locations' for their site, the seller must call <b>GeteBayDetails</b>, using <b>ShipppingLocationDetails</b> as a <b>DetailName</b> value in the request, and then scanning the <b>ShippingLocationDetails.ShippingLocation</b> values that are returned in the response. The shipping regions and countries that may be specified as <b>shipToLocation</b> values will vary according to eBay site. The seller may include as many valid <b>shipToLocation</b> values as necessary based on where they are willing to ship an item.
+     *  <br><br>
+     *  If no <b>shipToLocation</b> field is included in the <b>domesticShippingPolicyInfoService</b> container when using the <b>addSellerProfile</b> or <b>setSellerProfile</b> calls, eBay will automatically add the seller's listing country as a 'Ship-To Location'.
+     *  <br><br>
+     *  If the seller does want to offer international shipping as part of the shipping policy, at least one <b>shipToLocation</b> field in the <b>internationalShippingPolicyInfoService</b> container is required when using the <b>addSellerProfile</b> and <b>setSellerProfile</b> calls. To offer shipping to every region and country (supported by eBay shipping services), the seller can pass in 'Worldwide' as a <b>shipToLocation</b> value. If the seller wants to ship to a specific region, but would like to exclude one or more countries in that region, the seller should include that region as a <b>shipToLocation</b> value, but then exclude one or more countries in that region by including one or more instances of the <b>shippingPolicyInfo.excludeShipToLocation</b> field.
+     *  <br><br>
+     *  All <b>shipToLocation</b> fields specified for the shipping policy are always returned in the <b>getSellerProfiles</b> call.
      *
      * @var string[] $shipToLocation
      */
@@ -26,150 +28,130 @@ class ShippingPolicyServiceType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     ];
 
     /**
-     * An international shipping service being offered by the seller to ship an item to a buyer. Valid values are?????
-     *
-     *  For flat and calculated shipping.
+     * A domestic or international shipping service being offered by the seller to ship an item to a buyer.
+     *  <br><br>
+     *  For a list of valid <b>shippingService</b> values, call <b>GeteBayDetails</b>, including <b>ShippingServiceDetails</b> as a <b>DetailName</b> value, and then look through the <b>ShippingServiceDetails</b> containers returned in the response. International shipping services are marked with an <b>InternationalService</b> flag. All shipping services without this flag are domestic shipping services. The <b>ShippingServiceDetails.ValidForSellingFlow</b> flag must be present for both domestic and international shipping services, otherwise, that specific shipping service option is no longer valid and cannot be offered to buyers through a listing.
+     *  <br><br>
+     *  The seller must specify one shipping service in each <b>domesticShippingPolicyInfoService</b> and <b>internationalShippingPolicyInfoService</b> container in an <b>addSellerProfile</b> or <b>setSellerProfile</b> request. Up to four domestic and five international shipping service may be offered to the buyer per listing.
+     *  <br><br>
+     *  If 'Get It Fast' shipping is being enabled for the shipping policy (<b>fastShipping=true</b>), the first specified domestic shipping service (specified in the first <b>domesticShippingPolicyInfoService.shippingService</b> field) must be a one-day shipping service. To verify that a domestic shipping service is a one-day shipping service (hence, it qualifies for 'Get It Fast' shipping), call <b>GeteBayDetails</b>, including 'ShippingServiceDetails' as a <b>DetailName</b> value, and then look for a <b>ShippingCategory</b> value of 'ONE_DAY' for the corresponding shipping service. 'Get It Fast' shipping is not available for international shipping.
      *
      * @var string $shippingService
      */
     private $shippingService = null;
 
     /**
-     * Defines the types of shipping.
-     *
-     *
-     *  The shipping cost model offered by the seller. This is not returned for various calls since shipping type can be deduced: if a CalculatedShippingRate structure is returned by the call, the shipping type is Calculated. Otherwise, it is one of the other non-Calculated shipping types.
-     *
-     *  GetItemShipping and GetItemTransactions: If the type was a mix of flat and calculated services, this is set simply to Flat or Calculated because it is the buyer's selection that results in one of these.
-     *
-     *
-     *  Applicable values:
-     *   Calculated
-     *
-     *  (in/out) Calculated shipping model: the cost of shipping is determined in large part by the seller-offered and buyer-selected shipping service. The seller might assess an additional fee via PackagingHandlingCosts.
-     *
-     *   CalculatedDomesticFlatInternational
-     *
-     *  (in/out) The seller specified one or more calculated domestic shipping services and one or more flat international shipping services.
-     *
-     *   CustomCode
-     *
-     *  (in/out) Reserved for future use.
-     *
-     *   Flat
-     *
-     *  (in/out) Flat shipping model: the seller establishes the cost of shipping and cost of shipping insurance, regardless of what any buyer-selected shipping service might charge the seller.
-     *
-     *   FlatDomesticCalculatedInternational
-     *
-     *  (in/out) The seller specified one or more flat domestic shipping services and one or more calculated international shipping services.
-     *
-     *   FreightFlat
-     *
-     *  (in/out) Freight shipping model: freight shipping may be used when flat or calculated shipping cannot be used due to the greater weight of the item. See "Specifying Freight Shipping" in the Shipping chapter for details on freight shipping.
-     *
-     *   NotSpecified
-     *
-     *  (in/out) The seller did not specify the shipping type.
-     *
-     *
-     *  (Not all values in ShippingTypeCodeType apply to this field.)
+     * This value indicates the shipping cost model used by the shipping service option. The two applicable values are 'Flat' and 'Calculated'. To verify that the shipping service supports calculated shipping, call <b>geteBayDetails</b>, using <b>ShipppingServiceDetails</b> as a <b>DetailName</b> value in the request, and then look at the <b>ShippingServiceDetails</b> container that corresponds to the specified shipping service option (see <b>ShippingServiceDetails.ShippingService</b>). One of the <b>ShippingServiceDetails.ServiceType</b> values in that same container should be 'Flat'.
+     *  <br><br>
+     *  This field is optional in an <b>addSellerProfile</b> or <b>setSellerProfile</b> request, and defaults to 'Flat'.
+     *  <br><br>
+     *  This field is always returned in each <b>domesticShippingPolicyInfoService</b> and <b>internationalShippingPolicyInfoService</b> container in an <b>addSellerProfile</b> <b>setSellerProfile</b>, or <b>getSellerProfiles</b> response.
      *
      * @var string $shippingType
      */
     private $shippingType = null;
 
     /**
-     * The order of the shipping service in a given set of shipping
-     *  services.
-     *
-     *
-     *  This integer value controls the order (relative to other shipping services) in which the corresponding ShippingService will appear in the View Item and Checkout page. The number of shipping services you can specify depends on whether they are domestic or international.
-     *
-     *  For domestic, sellers can specify up to four domestic shipping services (with four ShippingServiceOptions containers), so valid values are 1, 2, 3, and 4. A shipping service with a ShippingServicePriority value of 1 appears at the top. Conversely, a shipping service with a ShippingServicePriority value of 4 appears at the bottom of a list of four shipping service options.
-     *
-     *  For international, sellers can specify up to five international shipping services (with five InternationalShippingServiceOption containers), so valid values are 1, 2, 3, 4, and 5. A shipping service with a ShippingServicePriority value of 1 appears at the top. Conversely, a shipping service with a ShippingServicePriority value of 5 appears at the bottom of a list of five shipping service options.
-     *
-     *  This field is applicable to Flat and Calculated shipping.
+     * This integer value controls the order (relative to other shipping service options) in which the corresponding shipping service option will appear in the View Item and Checkout pages.
+     *  <br><br>
+     *  Sellers can specify up to four domestic shipping services (in four separate <b>domesticShippingPolicyInfoService</b> containers), so valid values are 1, 2, 3, and 4. A shipping service option with a <b>sortOrderId</b> value of '1' appears at the top of View Item and Checkout pages. Conversely, a shipping service option with a <b>sortOrderId</b> value of '4' appears at the bottom of a list of four shipping service options.
+     *  <br><br>
+     *  Sellers can specify up to five international shipping services (in five separate <b>internationalShippingPolicyInfoService</b> containers), so valid values are 1, 2, 3, 4, and 5. Similarly to domestic shipping service options, the <b>sortOrderId</b> value of a international shipping service option controls the placement of that shipping service option in the View Item and Checkout pages.
+     *  <br><br>
+     *  If the <b>sortOrderId</b> field is not used, the order of domestic and international shipping service options will be determined by the order they are listed in the API call.
      *
      * @var int $sortOrderId
      */
     private $sortOrderId = null;
 
     /**
-     * If set to true, this means the seller offers free shipping.
-     *
-     *  This free shipping applies only to the first specified domestic shipping service. (It is ignored if set for any other shipping service.) If the seller has required shipping insurance as part of shipping (the seller set InsuranceOption to Required) and then the seller specified FreeShipping, eBay sets the insurance cost to 0.00. However, if the seller made shipping insurance optional, eBay preserves the cost of shipping insurance; it is up to the buyer whether to buy shipping insurance, regardless of whether the seller specified FreeShipping.
-     *  See Specifying Free Shipping.
+     * This flag is used by the seller to offer free shipping to the buyer. This field can only be included and set to 'true' for the first specified domestic shipping service option (it is ignored if set for any other shipping service option). The first specified shipping service option either has a <b>sortOrderId</b> value of '1', or, if the <b>sortOrderId</b> field is not used, the shipping service option specified first in the API call. The <b>freeShipping</b> field is not applicable for <b>internationalShippingPolicyInfoService</b> containers.
      *
      * @var bool $freeShipping
      */
     private $freeShipping = null;
 
     /**
-     * Valid only for the Italy site (site ID 101). Contains the cash-on-delivery (COD) fee for COD shipping.
-     *
-     *  See Specifying the Cash on Delivery Option in Shipping Details.
+     * This value indicates the Cash-on-Delivery fee that is due from the buyer upon item delivery. This field is only applicable if the buyer selects the 'COD' payment method and if the selected shipping service option suppports the Cash-on-Delivery option.
+     *  <br><br>
+     *  To see if a domestic shipping service option supports the Cash-on-Delivery option, call <b>GeteBayDetails</b>, including 'ShippingServiceDetails' as a <b>DetailName</b> value, and then look for a <b>CODService</b>=true flag for the corresponding shipping service.
      *
      * @var \Nogrod\eBaySDK\BusinessPoliciesManagement\AmountType $codFee
      */
     private $codFee = null;
 
     /**
-     * If true, it indicates that the seller has committed to the GetItFast shipping rules for this listing. Therefore, the seller commits to delivering the item to the buyer-selected shipping service within one day. If false, the shipper does not offer fast shipping.
-     *
-     *  Not supported for UK Store Inventory format items.
-     *
-     *  See:
-     *  Enabling Multi-jurisdiction Sales Tax
-     *  Miscellaneous Item Field Differences
+     * This flag indicates whether or not a 'Get It Fast' shipping service option is available for the listing. 'Get It Fast' shipping is only available for fixed-price listings and auction listings with an active 'Buy It Now' option.
+     *  <br><br>
+     *  To enable 'Get It Fast' shippping for a listing, the seller must:
+     *  <ul>
+     *  <li>offer at least one domestic one-day shipping service option, such as USPS Express Mail, UPS Next Day Air, or FedEx Overnight;</li>
+     *  <li>set the <b>shippingPolicyInfo.dispatchTimeMax</b> value to '0' (same-day shipping) or '1', which means that the seller is committing to ship the item within one business day after receiving payment from the buyer. </li>
+     *  </ul>
+     *  Although it is not required, it is recommended that sellers also offer an immediate payment option to the buyer, so they can get their item even faster. In the payment business policy, this option is turned on with the <b>paymentInfo.immediatePay</b> flag.<br/>
+     *  The <b>fastShipping</b> field should only be included and set to 'true' in <b>domesticShippingPolicyInfoService</b> containers where the shipping service option is a one-day shipping service. The <b>fastShipping</b> field is not applicable for <b>internationalShippingPolicyInfoService</b> containers.
+     *  <br><br>
      *
      * @var bool $fastShipping
      */
     private $fastShipping = null;
 
     /**
-     * The cost of shipping each additional item beyond the first item. For input, this is required if the listing is for multiple items. For single-item listings, it should be zero (or is defaulted to zero if not provided). For flat shipping only.
+     * This value sets the cost of shipping each additional item if the buyer purchases multiple identical items in a multi-quantity, fixed-price listing. This field is required for all multi-quantity, fixed-price listings where flat-rate shipping is used.
+     *  <br><br>
+     *  This value is at the seller's discretion. Generally, it should be the same price or lower than the <b>shippingServiceCost</b> value. The seller may consider specifying a lower price to ship additional items as an incentive to the buyer to purchase multiple items. The seller may also consider a lower price if he/she is able to ship multiple items in the same box. In this scenario, the seller is able to save on shipping costs and passes these savings down to the buyer.
+     *  <br><br>
+     *  The total shipping costs for an order line item is calculated with the following formula:
+     *  <br><br>
+     *  Total shipping costs = <b>shippingServiceCost</b> + (<b>shippingServiceAdditionalCost</b> * quantity purchased) <br><br>
+     *  So, if a buyer purchases four identical items, and the seller has specified <b>shippingServiceCost</b> as $6.00 and <b>shippingServiceAdditionalCost</b> as $2.00, the total shipping cost for the order line item is $12.00 ($6.00 + ($2.00 * 3)).
+     *  <br><br>
+     *  This field is not applicable to calculated shipping.
      *
      * @var \Nogrod\eBaySDK\BusinessPoliciesManagement\AmountType $shippingServiceAdditionalCost
      */
     private $shippingServiceAdditionalCost = null;
 
     /**
-     * The meaning of this field depends on the call and on whether flat or calculated under ShippingPolicyService.shippingType has been selected. (For example, it could be the cost to ship a single item, the cost to ship all items, or the cost to ship just the first of many items, with ShippingServiceAdditionalCost accounting for the rest.) The shippingServiceCost includes the packaging and handling cost. For flat and calculated shipping.
-     *
-     *  See Shipping.
-     *
-     *
-     *  See Determining Shipping Costs for a Listing.
+     * This value sets the cost of shipping for the item if the buyer selects this shipping service option. This field is required in the input for all listings where flat-rate shipping is used, and is not applicable to calculated shipping. <br><br>
+     *  This value is at the seller's discretion but should reflect the approximate cost of the shipping service option plus handling. This value defaults to '0.0' if the <b>freeShipping</b> field is set to 'true'.
+     *  <br><br>
+     *  The total shipping costs for an order line item is calculated with the following formula:
+     *  <br><br>
+     *  Total shipping costs = <b>shippingServiceCost</b> + (<b>shippingServiceAdditionalCost</b> * quantity purchased)
+     *  <br><br>
+     *  So, if a buyer purchases four identical items, and the seller has specified <b>shippingServiceCost</b> as $6.00 and <b>shippingServiceAdditionalCost</b> as $2.00, the total shipping cost for the order line item is $12.00 ($6.00 + ($2.00 * 3)).
      *
      * @var \Nogrod\eBaySDK\BusinessPoliciesManagement\AmountType $shippingServiceCost
      */
     private $shippingServiceCost = null;
 
     /**
-     * An additional fee to charge US buyers who have the item shipped via UPS or FedEx to Alaska, Hawaii or Puerto Rico. For example, some services like UPS Ground, allows seller to provide a surcharge fee in a few selected regions.
-     *
-     *  Can only be assigned a value for the eBay US site and for items in the Parts and Accessories category of the eBay Motors site. Only returned if set. If some line items in an order have a surcharge, surcharge is added only for those line items. Flat rate shipping only.
+     * An additional charge that US sellers can add to the cost of an order line item if that order line item is an eBay Motors Parts and Accessories item that is being shipped to a buyer in Alaska, Hawaii, or Puerto Rico through a UPS or FedEx shipping service that charges a surcharge to ship to those areas.
+     *  <br><br>
+     *  In order for sellers to add a shipping surcharge at the shipping service level, the following must be true:
+     *  <ul>
+     *  <li>a surcharge is applicable for the shipping service (call <b>GeteBayDetails</b> with <b>DetailName</b> set to <b>ShippingServiceDetails</b>, and then look for <b>ShippingServiceDetails.SurchargeApplicable=true</b> in the response;</li>
+     *  <li>flat-rate shipping is used</li>
+     *  </ul>
      *
      * @var \Nogrod\eBaySDK\BusinessPoliciesManagement\AmountType $shippingSurcharge
      */
     private $shippingSurcharge = null;
 
     /**
-     * If this is set we reset shipping fee of this
-     *  service to zero.
+     * The dollar amount in this field represents the actual total price of shipping if the total shipping costs (<b>shippingServiceCost</b> + <b>shippingServiceAdditionalCost</b> + <b>shippingSurcharge</b>) set for the corresponding shipping service in the shipping policy are overridden through a <b>ShippingServiceCostOverride</b> container in an <b>AddItem</b> call (Trading).
      *
      * @var \Nogrod\eBaySDK\BusinessPoliciesManagement\AmountType $shippingOverrideFee
      */
     private $shippingOverrideFee = null;
 
     /**
-     * If true, buyer is responsible for contacting and setting up their local shipping service to transport the item. If false, buyer is not responsible for setting up the shipment of the item.
-     *
-     *  Applicable for listings in vehicle categories on the US eBay Motors site and eBay Canada site. (No business effect if specified for other categories or sites, as the Web site will not display the information to buyers.) If true, the buyer is responsible for vehicle pickup or shipping. If false, specify vehicle shipping arrangements in the item description. Default is true. (The description can also include vehicle shipping arrangements when this value is true.) If the item has bids or ends within 12 hours, you cannot modify this flag. Do not specify ShippingDetails.ShippingServiceOptions for vehicle listings.
-     *
-     *  If true and the listing is on the US eBay Motors site, and you want the listing to be visible on the eBay Canada site, set Item.ShipToLocations to CA. If true and the listing is on the eBay Canada site , and you want your listing to be visible on the US eBay Motors site, set Item.ShipToLocations to US.
+     * This field is only applicable to motor vehicle categories on eBay Motors (US and Canada).
+     *  <br><br>
+     *  If this field is included and set to 'true' (or omitted because the default value is 'true'), the buyer is responsible for the shipment/pickup of the motor vehicle. If this field is included and set to 'false', the seller should specify the vehicle shipping arrangements in the item description for the listing.
+     *  <br><br>
+     *  If the vehicle has bids or the listing ends within 12 hours, the seller cannot modify this flag.
      *
      * @var bool $buyerResponsibleForShipping
      */
@@ -178,11 +160,13 @@ class ShippingPolicyServiceType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     /**
      * Adds as shipToLocation
      *
-     * An international location or region to where the item seller will ship the item. These values are string equivalents of values found in ShippingRegionCodeType and CountryCodeType.
-     *  See ShipToLocation.
-     *
-     *
-     *  Applicable values: See CountryCodeType , ShippingRegionCodeType
+     * An international region (such as Asia or Europe) or a country (represented by two-letter country code) to where the seller will ship an item. To obtain valid 'Ship-To locations' for their site, the seller must call <b>GeteBayDetails</b>, using <b>ShipppingLocationDetails</b> as a <b>DetailName</b> value in the request, and then scanning the <b>ShippingLocationDetails.ShippingLocation</b> values that are returned in the response. The shipping regions and countries that may be specified as <b>shipToLocation</b> values will vary according to eBay site. The seller may include as many valid <b>shipToLocation</b> values as necessary based on where they are willing to ship an item.
+     *  <br><br>
+     *  If no <b>shipToLocation</b> field is included in the <b>domesticShippingPolicyInfoService</b> container when using the <b>addSellerProfile</b> or <b>setSellerProfile</b> calls, eBay will automatically add the seller's listing country as a 'Ship-To Location'.
+     *  <br><br>
+     *  If the seller does want to offer international shipping as part of the shipping policy, at least one <b>shipToLocation</b> field in the <b>internationalShippingPolicyInfoService</b> container is required when using the <b>addSellerProfile</b> and <b>setSellerProfile</b> calls. To offer shipping to every region and country (supported by eBay shipping services), the seller can pass in 'Worldwide' as a <b>shipToLocation</b> value. If the seller wants to ship to a specific region, but would like to exclude one or more countries in that region, the seller should include that region as a <b>shipToLocation</b> value, but then exclude one or more countries in that region by including one or more instances of the <b>shippingPolicyInfo.excludeShipToLocation</b> field.
+     *  <br><br>
+     *  All <b>shipToLocation</b> fields specified for the shipping policy are always returned in the <b>getSellerProfiles</b> call.
      *
      * @return self
      * @param string $shipToLocation
@@ -196,11 +180,13 @@ class ShippingPolicyServiceType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     /**
      * isset shipToLocation
      *
-     * An international location or region to where the item seller will ship the item. These values are string equivalents of values found in ShippingRegionCodeType and CountryCodeType.
-     *  See ShipToLocation.
-     *
-     *
-     *  Applicable values: See CountryCodeType , ShippingRegionCodeType
+     * An international region (such as Asia or Europe) or a country (represented by two-letter country code) to where the seller will ship an item. To obtain valid 'Ship-To locations' for their site, the seller must call <b>GeteBayDetails</b>, using <b>ShipppingLocationDetails</b> as a <b>DetailName</b> value in the request, and then scanning the <b>ShippingLocationDetails.ShippingLocation</b> values that are returned in the response. The shipping regions and countries that may be specified as <b>shipToLocation</b> values will vary according to eBay site. The seller may include as many valid <b>shipToLocation</b> values as necessary based on where they are willing to ship an item.
+     *  <br><br>
+     *  If no <b>shipToLocation</b> field is included in the <b>domesticShippingPolicyInfoService</b> container when using the <b>addSellerProfile</b> or <b>setSellerProfile</b> calls, eBay will automatically add the seller's listing country as a 'Ship-To Location'.
+     *  <br><br>
+     *  If the seller does want to offer international shipping as part of the shipping policy, at least one <b>shipToLocation</b> field in the <b>internationalShippingPolicyInfoService</b> container is required when using the <b>addSellerProfile</b> and <b>setSellerProfile</b> calls. To offer shipping to every region and country (supported by eBay shipping services), the seller can pass in 'Worldwide' as a <b>shipToLocation</b> value. If the seller wants to ship to a specific region, but would like to exclude one or more countries in that region, the seller should include that region as a <b>shipToLocation</b> value, but then exclude one or more countries in that region by including one or more instances of the <b>shippingPolicyInfo.excludeShipToLocation</b> field.
+     *  <br><br>
+     *  All <b>shipToLocation</b> fields specified for the shipping policy are always returned in the <b>getSellerProfiles</b> call.
      *
      * @param int|string $index
      * @return bool
@@ -213,11 +199,13 @@ class ShippingPolicyServiceType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     /**
      * unset shipToLocation
      *
-     * An international location or region to where the item seller will ship the item. These values are string equivalents of values found in ShippingRegionCodeType and CountryCodeType.
-     *  See ShipToLocation.
-     *
-     *
-     *  Applicable values: See CountryCodeType , ShippingRegionCodeType
+     * An international region (such as Asia or Europe) or a country (represented by two-letter country code) to where the seller will ship an item. To obtain valid 'Ship-To locations' for their site, the seller must call <b>GeteBayDetails</b>, using <b>ShipppingLocationDetails</b> as a <b>DetailName</b> value in the request, and then scanning the <b>ShippingLocationDetails.ShippingLocation</b> values that are returned in the response. The shipping regions and countries that may be specified as <b>shipToLocation</b> values will vary according to eBay site. The seller may include as many valid <b>shipToLocation</b> values as necessary based on where they are willing to ship an item.
+     *  <br><br>
+     *  If no <b>shipToLocation</b> field is included in the <b>domesticShippingPolicyInfoService</b> container when using the <b>addSellerProfile</b> or <b>setSellerProfile</b> calls, eBay will automatically add the seller's listing country as a 'Ship-To Location'.
+     *  <br><br>
+     *  If the seller does want to offer international shipping as part of the shipping policy, at least one <b>shipToLocation</b> field in the <b>internationalShippingPolicyInfoService</b> container is required when using the <b>addSellerProfile</b> and <b>setSellerProfile</b> calls. To offer shipping to every region and country (supported by eBay shipping services), the seller can pass in 'Worldwide' as a <b>shipToLocation</b> value. If the seller wants to ship to a specific region, but would like to exclude one or more countries in that region, the seller should include that region as a <b>shipToLocation</b> value, but then exclude one or more countries in that region by including one or more instances of the <b>shippingPolicyInfo.excludeShipToLocation</b> field.
+     *  <br><br>
+     *  All <b>shipToLocation</b> fields specified for the shipping policy are always returned in the <b>getSellerProfiles</b> call.
      *
      * @param int|string $index
      * @return void
@@ -230,11 +218,13 @@ class ShippingPolicyServiceType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     /**
      * Gets as shipToLocation
      *
-     * An international location or region to where the item seller will ship the item. These values are string equivalents of values found in ShippingRegionCodeType and CountryCodeType.
-     *  See ShipToLocation.
-     *
-     *
-     *  Applicable values: See CountryCodeType , ShippingRegionCodeType
+     * An international region (such as Asia or Europe) or a country (represented by two-letter country code) to where the seller will ship an item. To obtain valid 'Ship-To locations' for their site, the seller must call <b>GeteBayDetails</b>, using <b>ShipppingLocationDetails</b> as a <b>DetailName</b> value in the request, and then scanning the <b>ShippingLocationDetails.ShippingLocation</b> values that are returned in the response. The shipping regions and countries that may be specified as <b>shipToLocation</b> values will vary according to eBay site. The seller may include as many valid <b>shipToLocation</b> values as necessary based on where they are willing to ship an item.
+     *  <br><br>
+     *  If no <b>shipToLocation</b> field is included in the <b>domesticShippingPolicyInfoService</b> container when using the <b>addSellerProfile</b> or <b>setSellerProfile</b> calls, eBay will automatically add the seller's listing country as a 'Ship-To Location'.
+     *  <br><br>
+     *  If the seller does want to offer international shipping as part of the shipping policy, at least one <b>shipToLocation</b> field in the <b>internationalShippingPolicyInfoService</b> container is required when using the <b>addSellerProfile</b> and <b>setSellerProfile</b> calls. To offer shipping to every region and country (supported by eBay shipping services), the seller can pass in 'Worldwide' as a <b>shipToLocation</b> value. If the seller wants to ship to a specific region, but would like to exclude one or more countries in that region, the seller should include that region as a <b>shipToLocation</b> value, but then exclude one or more countries in that region by including one or more instances of the <b>shippingPolicyInfo.excludeShipToLocation</b> field.
+     *  <br><br>
+     *  All <b>shipToLocation</b> fields specified for the shipping policy are always returned in the <b>getSellerProfiles</b> call.
      *
      * @return string[]
      */
@@ -246,11 +236,13 @@ class ShippingPolicyServiceType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     /**
      * Sets a new shipToLocation
      *
-     * An international location or region to where the item seller will ship the item. These values are string equivalents of values found in ShippingRegionCodeType and CountryCodeType.
-     *  See ShipToLocation.
-     *
-     *
-     *  Applicable values: See CountryCodeType , ShippingRegionCodeType
+     * An international region (such as Asia or Europe) or a country (represented by two-letter country code) to where the seller will ship an item. To obtain valid 'Ship-To locations' for their site, the seller must call <b>GeteBayDetails</b>, using <b>ShipppingLocationDetails</b> as a <b>DetailName</b> value in the request, and then scanning the <b>ShippingLocationDetails.ShippingLocation</b> values that are returned in the response. The shipping regions and countries that may be specified as <b>shipToLocation</b> values will vary according to eBay site. The seller may include as many valid <b>shipToLocation</b> values as necessary based on where they are willing to ship an item.
+     *  <br><br>
+     *  If no <b>shipToLocation</b> field is included in the <b>domesticShippingPolicyInfoService</b> container when using the <b>addSellerProfile</b> or <b>setSellerProfile</b> calls, eBay will automatically add the seller's listing country as a 'Ship-To Location'.
+     *  <br><br>
+     *  If the seller does want to offer international shipping as part of the shipping policy, at least one <b>shipToLocation</b> field in the <b>internationalShippingPolicyInfoService</b> container is required when using the <b>addSellerProfile</b> and <b>setSellerProfile</b> calls. To offer shipping to every region and country (supported by eBay shipping services), the seller can pass in 'Worldwide' as a <b>shipToLocation</b> value. If the seller wants to ship to a specific region, but would like to exclude one or more countries in that region, the seller should include that region as a <b>shipToLocation</b> value, but then exclude one or more countries in that region by including one or more instances of the <b>shippingPolicyInfo.excludeShipToLocation</b> field.
+     *  <br><br>
+     *  All <b>shipToLocation</b> fields specified for the shipping policy are always returned in the <b>getSellerProfiles</b> call.
      *
      * @param string[] $shipToLocation
      * @return self
@@ -264,9 +256,13 @@ class ShippingPolicyServiceType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     /**
      * Gets as shippingService
      *
-     * An international shipping service being offered by the seller to ship an item to a buyer. Valid values are?????
-     *
-     *  For flat and calculated shipping.
+     * A domestic or international shipping service being offered by the seller to ship an item to a buyer.
+     *  <br><br>
+     *  For a list of valid <b>shippingService</b> values, call <b>GeteBayDetails</b>, including <b>ShippingServiceDetails</b> as a <b>DetailName</b> value, and then look through the <b>ShippingServiceDetails</b> containers returned in the response. International shipping services are marked with an <b>InternationalService</b> flag. All shipping services without this flag are domestic shipping services. The <b>ShippingServiceDetails.ValidForSellingFlow</b> flag must be present for both domestic and international shipping services, otherwise, that specific shipping service option is no longer valid and cannot be offered to buyers through a listing.
+     *  <br><br>
+     *  The seller must specify one shipping service in each <b>domesticShippingPolicyInfoService</b> and <b>internationalShippingPolicyInfoService</b> container in an <b>addSellerProfile</b> or <b>setSellerProfile</b> request. Up to four domestic and five international shipping service may be offered to the buyer per listing.
+     *  <br><br>
+     *  If 'Get It Fast' shipping is being enabled for the shipping policy (<b>fastShipping=true</b>), the first specified domestic shipping service (specified in the first <b>domesticShippingPolicyInfoService.shippingService</b> field) must be a one-day shipping service. To verify that a domestic shipping service is a one-day shipping service (hence, it qualifies for 'Get It Fast' shipping), call <b>GeteBayDetails</b>, including 'ShippingServiceDetails' as a <b>DetailName</b> value, and then look for a <b>ShippingCategory</b> value of 'ONE_DAY' for the corresponding shipping service. 'Get It Fast' shipping is not available for international shipping.
      *
      * @return string
      */
@@ -278,9 +274,13 @@ class ShippingPolicyServiceType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     /**
      * Sets a new shippingService
      *
-     * An international shipping service being offered by the seller to ship an item to a buyer. Valid values are?????
-     *
-     *  For flat and calculated shipping.
+     * A domestic or international shipping service being offered by the seller to ship an item to a buyer.
+     *  <br><br>
+     *  For a list of valid <b>shippingService</b> values, call <b>GeteBayDetails</b>, including <b>ShippingServiceDetails</b> as a <b>DetailName</b> value, and then look through the <b>ShippingServiceDetails</b> containers returned in the response. International shipping services are marked with an <b>InternationalService</b> flag. All shipping services without this flag are domestic shipping services. The <b>ShippingServiceDetails.ValidForSellingFlow</b> flag must be present for both domestic and international shipping services, otherwise, that specific shipping service option is no longer valid and cannot be offered to buyers through a listing.
+     *  <br><br>
+     *  The seller must specify one shipping service in each <b>domesticShippingPolicyInfoService</b> and <b>internationalShippingPolicyInfoService</b> container in an <b>addSellerProfile</b> or <b>setSellerProfile</b> request. Up to four domestic and five international shipping service may be offered to the buyer per listing.
+     *  <br><br>
+     *  If 'Get It Fast' shipping is being enabled for the shipping policy (<b>fastShipping=true</b>), the first specified domestic shipping service (specified in the first <b>domesticShippingPolicyInfoService.shippingService</b> field) must be a one-day shipping service. To verify that a domestic shipping service is a one-day shipping service (hence, it qualifies for 'Get It Fast' shipping), call <b>GeteBayDetails</b>, including 'ShippingServiceDetails' as a <b>DetailName</b> value, and then look for a <b>ShippingCategory</b> value of 'ONE_DAY' for the corresponding shipping service. 'Get It Fast' shipping is not available for international shipping.
      *
      * @param string $shippingService
      * @return self
@@ -294,45 +294,11 @@ class ShippingPolicyServiceType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     /**
      * Gets as shippingType
      *
-     * Defines the types of shipping.
-     *
-     *
-     *  The shipping cost model offered by the seller. This is not returned for various calls since shipping type can be deduced: if a CalculatedShippingRate structure is returned by the call, the shipping type is Calculated. Otherwise, it is one of the other non-Calculated shipping types.
-     *
-     *  GetItemShipping and GetItemTransactions: If the type was a mix of flat and calculated services, this is set simply to Flat or Calculated because it is the buyer's selection that results in one of these.
-     *
-     *
-     *  Applicable values:
-     *   Calculated
-     *
-     *  (in/out) Calculated shipping model: the cost of shipping is determined in large part by the seller-offered and buyer-selected shipping service. The seller might assess an additional fee via PackagingHandlingCosts.
-     *
-     *   CalculatedDomesticFlatInternational
-     *
-     *  (in/out) The seller specified one or more calculated domestic shipping services and one or more flat international shipping services.
-     *
-     *   CustomCode
-     *
-     *  (in/out) Reserved for future use.
-     *
-     *   Flat
-     *
-     *  (in/out) Flat shipping model: the seller establishes the cost of shipping and cost of shipping insurance, regardless of what any buyer-selected shipping service might charge the seller.
-     *
-     *   FlatDomesticCalculatedInternational
-     *
-     *  (in/out) The seller specified one or more flat domestic shipping services and one or more calculated international shipping services.
-     *
-     *   FreightFlat
-     *
-     *  (in/out) Freight shipping model: freight shipping may be used when flat or calculated shipping cannot be used due to the greater weight of the item. See "Specifying Freight Shipping" in the Shipping chapter for details on freight shipping.
-     *
-     *   NotSpecified
-     *
-     *  (in/out) The seller did not specify the shipping type.
-     *
-     *
-     *  (Not all values in ShippingTypeCodeType apply to this field.)
+     * This value indicates the shipping cost model used by the shipping service option. The two applicable values are 'Flat' and 'Calculated'. To verify that the shipping service supports calculated shipping, call <b>geteBayDetails</b>, using <b>ShipppingServiceDetails</b> as a <b>DetailName</b> value in the request, and then look at the <b>ShippingServiceDetails</b> container that corresponds to the specified shipping service option (see <b>ShippingServiceDetails.ShippingService</b>). One of the <b>ShippingServiceDetails.ServiceType</b> values in that same container should be 'Flat'.
+     *  <br><br>
+     *  This field is optional in an <b>addSellerProfile</b> or <b>setSellerProfile</b> request, and defaults to 'Flat'.
+     *  <br><br>
+     *  This field is always returned in each <b>domesticShippingPolicyInfoService</b> and <b>internationalShippingPolicyInfoService</b> container in an <b>addSellerProfile</b> <b>setSellerProfile</b>, or <b>getSellerProfiles</b> response.
      *
      * @return string
      */
@@ -344,45 +310,11 @@ class ShippingPolicyServiceType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     /**
      * Sets a new shippingType
      *
-     * Defines the types of shipping.
-     *
-     *
-     *  The shipping cost model offered by the seller. This is not returned for various calls since shipping type can be deduced: if a CalculatedShippingRate structure is returned by the call, the shipping type is Calculated. Otherwise, it is one of the other non-Calculated shipping types.
-     *
-     *  GetItemShipping and GetItemTransactions: If the type was a mix of flat and calculated services, this is set simply to Flat or Calculated because it is the buyer's selection that results in one of these.
-     *
-     *
-     *  Applicable values:
-     *   Calculated
-     *
-     *  (in/out) Calculated shipping model: the cost of shipping is determined in large part by the seller-offered and buyer-selected shipping service. The seller might assess an additional fee via PackagingHandlingCosts.
-     *
-     *   CalculatedDomesticFlatInternational
-     *
-     *  (in/out) The seller specified one or more calculated domestic shipping services and one or more flat international shipping services.
-     *
-     *   CustomCode
-     *
-     *  (in/out) Reserved for future use.
-     *
-     *   Flat
-     *
-     *  (in/out) Flat shipping model: the seller establishes the cost of shipping and cost of shipping insurance, regardless of what any buyer-selected shipping service might charge the seller.
-     *
-     *   FlatDomesticCalculatedInternational
-     *
-     *  (in/out) The seller specified one or more flat domestic shipping services and one or more calculated international shipping services.
-     *
-     *   FreightFlat
-     *
-     *  (in/out) Freight shipping model: freight shipping may be used when flat or calculated shipping cannot be used due to the greater weight of the item. See "Specifying Freight Shipping" in the Shipping chapter for details on freight shipping.
-     *
-     *   NotSpecified
-     *
-     *  (in/out) The seller did not specify the shipping type.
-     *
-     *
-     *  (Not all values in ShippingTypeCodeType apply to this field.)
+     * This value indicates the shipping cost model used by the shipping service option. The two applicable values are 'Flat' and 'Calculated'. To verify that the shipping service supports calculated shipping, call <b>geteBayDetails</b>, using <b>ShipppingServiceDetails</b> as a <b>DetailName</b> value in the request, and then look at the <b>ShippingServiceDetails</b> container that corresponds to the specified shipping service option (see <b>ShippingServiceDetails.ShippingService</b>). One of the <b>ShippingServiceDetails.ServiceType</b> values in that same container should be 'Flat'.
+     *  <br><br>
+     *  This field is optional in an <b>addSellerProfile</b> or <b>setSellerProfile</b> request, and defaults to 'Flat'.
+     *  <br><br>
+     *  This field is always returned in each <b>domesticShippingPolicyInfoService</b> and <b>internationalShippingPolicyInfoService</b> container in an <b>addSellerProfile</b> <b>setSellerProfile</b>, or <b>getSellerProfiles</b> response.
      *
      * @param string $shippingType
      * @return self
@@ -396,17 +328,13 @@ class ShippingPolicyServiceType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     /**
      * Gets as sortOrderId
      *
-     * The order of the shipping service in a given set of shipping
-     *  services.
-     *
-     *
-     *  This integer value controls the order (relative to other shipping services) in which the corresponding ShippingService will appear in the View Item and Checkout page. The number of shipping services you can specify depends on whether they are domestic or international.
-     *
-     *  For domestic, sellers can specify up to four domestic shipping services (with four ShippingServiceOptions containers), so valid values are 1, 2, 3, and 4. A shipping service with a ShippingServicePriority value of 1 appears at the top. Conversely, a shipping service with a ShippingServicePriority value of 4 appears at the bottom of a list of four shipping service options.
-     *
-     *  For international, sellers can specify up to five international shipping services (with five InternationalShippingServiceOption containers), so valid values are 1, 2, 3, 4, and 5. A shipping service with a ShippingServicePriority value of 1 appears at the top. Conversely, a shipping service with a ShippingServicePriority value of 5 appears at the bottom of a list of five shipping service options.
-     *
-     *  This field is applicable to Flat and Calculated shipping.
+     * This integer value controls the order (relative to other shipping service options) in which the corresponding shipping service option will appear in the View Item and Checkout pages.
+     *  <br><br>
+     *  Sellers can specify up to four domestic shipping services (in four separate <b>domesticShippingPolicyInfoService</b> containers), so valid values are 1, 2, 3, and 4. A shipping service option with a <b>sortOrderId</b> value of '1' appears at the top of View Item and Checkout pages. Conversely, a shipping service option with a <b>sortOrderId</b> value of '4' appears at the bottom of a list of four shipping service options.
+     *  <br><br>
+     *  Sellers can specify up to five international shipping services (in five separate <b>internationalShippingPolicyInfoService</b> containers), so valid values are 1, 2, 3, 4, and 5. Similarly to domestic shipping service options, the <b>sortOrderId</b> value of a international shipping service option controls the placement of that shipping service option in the View Item and Checkout pages.
+     *  <br><br>
+     *  If the <b>sortOrderId</b> field is not used, the order of domestic and international shipping service options will be determined by the order they are listed in the API call.
      *
      * @return int
      */
@@ -418,17 +346,13 @@ class ShippingPolicyServiceType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     /**
      * Sets a new sortOrderId
      *
-     * The order of the shipping service in a given set of shipping
-     *  services.
-     *
-     *
-     *  This integer value controls the order (relative to other shipping services) in which the corresponding ShippingService will appear in the View Item and Checkout page. The number of shipping services you can specify depends on whether they are domestic or international.
-     *
-     *  For domestic, sellers can specify up to four domestic shipping services (with four ShippingServiceOptions containers), so valid values are 1, 2, 3, and 4. A shipping service with a ShippingServicePriority value of 1 appears at the top. Conversely, a shipping service with a ShippingServicePriority value of 4 appears at the bottom of a list of four shipping service options.
-     *
-     *  For international, sellers can specify up to five international shipping services (with five InternationalShippingServiceOption containers), so valid values are 1, 2, 3, 4, and 5. A shipping service with a ShippingServicePriority value of 1 appears at the top. Conversely, a shipping service with a ShippingServicePriority value of 5 appears at the bottom of a list of five shipping service options.
-     *
-     *  This field is applicable to Flat and Calculated shipping.
+     * This integer value controls the order (relative to other shipping service options) in which the corresponding shipping service option will appear in the View Item and Checkout pages.
+     *  <br><br>
+     *  Sellers can specify up to four domestic shipping services (in four separate <b>domesticShippingPolicyInfoService</b> containers), so valid values are 1, 2, 3, and 4. A shipping service option with a <b>sortOrderId</b> value of '1' appears at the top of View Item and Checkout pages. Conversely, a shipping service option with a <b>sortOrderId</b> value of '4' appears at the bottom of a list of four shipping service options.
+     *  <br><br>
+     *  Sellers can specify up to five international shipping services (in five separate <b>internationalShippingPolicyInfoService</b> containers), so valid values are 1, 2, 3, 4, and 5. Similarly to domestic shipping service options, the <b>sortOrderId</b> value of a international shipping service option controls the placement of that shipping service option in the View Item and Checkout pages.
+     *  <br><br>
+     *  If the <b>sortOrderId</b> field is not used, the order of domestic and international shipping service options will be determined by the order they are listed in the API call.
      *
      * @param int $sortOrderId
      * @return self
@@ -442,10 +366,7 @@ class ShippingPolicyServiceType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     /**
      * Gets as freeShipping
      *
-     * If set to true, this means the seller offers free shipping.
-     *
-     *  This free shipping applies only to the first specified domestic shipping service. (It is ignored if set for any other shipping service.) If the seller has required shipping insurance as part of shipping (the seller set InsuranceOption to Required) and then the seller specified FreeShipping, eBay sets the insurance cost to 0.00. However, if the seller made shipping insurance optional, eBay preserves the cost of shipping insurance; it is up to the buyer whether to buy shipping insurance, regardless of whether the seller specified FreeShipping.
-     *  See Specifying Free Shipping.
+     * This flag is used by the seller to offer free shipping to the buyer. This field can only be included and set to 'true' for the first specified domestic shipping service option (it is ignored if set for any other shipping service option). The first specified shipping service option either has a <b>sortOrderId</b> value of '1', or, if the <b>sortOrderId</b> field is not used, the shipping service option specified first in the API call. The <b>freeShipping</b> field is not applicable for <b>internationalShippingPolicyInfoService</b> containers.
      *
      * @return bool
      */
@@ -457,10 +378,7 @@ class ShippingPolicyServiceType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     /**
      * Sets a new freeShipping
      *
-     * If set to true, this means the seller offers free shipping.
-     *
-     *  This free shipping applies only to the first specified domestic shipping service. (It is ignored if set for any other shipping service.) If the seller has required shipping insurance as part of shipping (the seller set InsuranceOption to Required) and then the seller specified FreeShipping, eBay sets the insurance cost to 0.00. However, if the seller made shipping insurance optional, eBay preserves the cost of shipping insurance; it is up to the buyer whether to buy shipping insurance, regardless of whether the seller specified FreeShipping.
-     *  See Specifying Free Shipping.
+     * This flag is used by the seller to offer free shipping to the buyer. This field can only be included and set to 'true' for the first specified domestic shipping service option (it is ignored if set for any other shipping service option). The first specified shipping service option either has a <b>sortOrderId</b> value of '1', or, if the <b>sortOrderId</b> field is not used, the shipping service option specified first in the API call. The <b>freeShipping</b> field is not applicable for <b>internationalShippingPolicyInfoService</b> containers.
      *
      * @param bool $freeShipping
      * @return self
@@ -474,9 +392,9 @@ class ShippingPolicyServiceType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     /**
      * Gets as codFee
      *
-     * Valid only for the Italy site (site ID 101). Contains the cash-on-delivery (COD) fee for COD shipping.
-     *
-     *  See Specifying the Cash on Delivery Option in Shipping Details.
+     * This value indicates the Cash-on-Delivery fee that is due from the buyer upon item delivery. This field is only applicable if the buyer selects the 'COD' payment method and if the selected shipping service option suppports the Cash-on-Delivery option.
+     *  <br><br>
+     *  To see if a domestic shipping service option supports the Cash-on-Delivery option, call <b>GeteBayDetails</b>, including 'ShippingServiceDetails' as a <b>DetailName</b> value, and then look for a <b>CODService</b>=true flag for the corresponding shipping service.
      *
      * @return \Nogrod\eBaySDK\BusinessPoliciesManagement\AmountType
      */
@@ -488,9 +406,9 @@ class ShippingPolicyServiceType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     /**
      * Sets a new codFee
      *
-     * Valid only for the Italy site (site ID 101). Contains the cash-on-delivery (COD) fee for COD shipping.
-     *
-     *  See Specifying the Cash on Delivery Option in Shipping Details.
+     * This value indicates the Cash-on-Delivery fee that is due from the buyer upon item delivery. This field is only applicable if the buyer selects the 'COD' payment method and if the selected shipping service option suppports the Cash-on-Delivery option.
+     *  <br><br>
+     *  To see if a domestic shipping service option supports the Cash-on-Delivery option, call <b>GeteBayDetails</b>, including 'ShippingServiceDetails' as a <b>DetailName</b> value, and then look for a <b>CODService</b>=true flag for the corresponding shipping service.
      *
      * @param \Nogrod\eBaySDK\BusinessPoliciesManagement\AmountType $codFee
      * @return self
@@ -504,13 +422,16 @@ class ShippingPolicyServiceType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     /**
      * Gets as fastShipping
      *
-     * If true, it indicates that the seller has committed to the GetItFast shipping rules for this listing. Therefore, the seller commits to delivering the item to the buyer-selected shipping service within one day. If false, the shipper does not offer fast shipping.
-     *
-     *  Not supported for UK Store Inventory format items.
-     *
-     *  See:
-     *  Enabling Multi-jurisdiction Sales Tax
-     *  Miscellaneous Item Field Differences
+     * This flag indicates whether or not a 'Get It Fast' shipping service option is available for the listing. 'Get It Fast' shipping is only available for fixed-price listings and auction listings with an active 'Buy It Now' option.
+     *  <br><br>
+     *  To enable 'Get It Fast' shippping for a listing, the seller must:
+     *  <ul>
+     *  <li>offer at least one domestic one-day shipping service option, such as USPS Express Mail, UPS Next Day Air, or FedEx Overnight;</li>
+     *  <li>set the <b>shippingPolicyInfo.dispatchTimeMax</b> value to '0' (same-day shipping) or '1', which means that the seller is committing to ship the item within one business day after receiving payment from the buyer. </li>
+     *  </ul>
+     *  Although it is not required, it is recommended that sellers also offer an immediate payment option to the buyer, so they can get their item even faster. In the payment business policy, this option is turned on with the <b>paymentInfo.immediatePay</b> flag.<br/>
+     *  The <b>fastShipping</b> field should only be included and set to 'true' in <b>domesticShippingPolicyInfoService</b> containers where the shipping service option is a one-day shipping service. The <b>fastShipping</b> field is not applicable for <b>internationalShippingPolicyInfoService</b> containers.
+     *  <br><br>
      *
      * @return bool
      */
@@ -522,13 +443,16 @@ class ShippingPolicyServiceType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     /**
      * Sets a new fastShipping
      *
-     * If true, it indicates that the seller has committed to the GetItFast shipping rules for this listing. Therefore, the seller commits to delivering the item to the buyer-selected shipping service within one day. If false, the shipper does not offer fast shipping.
-     *
-     *  Not supported for UK Store Inventory format items.
-     *
-     *  See:
-     *  Enabling Multi-jurisdiction Sales Tax
-     *  Miscellaneous Item Field Differences
+     * This flag indicates whether or not a 'Get It Fast' shipping service option is available for the listing. 'Get It Fast' shipping is only available for fixed-price listings and auction listings with an active 'Buy It Now' option.
+     *  <br><br>
+     *  To enable 'Get It Fast' shippping for a listing, the seller must:
+     *  <ul>
+     *  <li>offer at least one domestic one-day shipping service option, such as USPS Express Mail, UPS Next Day Air, or FedEx Overnight;</li>
+     *  <li>set the <b>shippingPolicyInfo.dispatchTimeMax</b> value to '0' (same-day shipping) or '1', which means that the seller is committing to ship the item within one business day after receiving payment from the buyer. </li>
+     *  </ul>
+     *  Although it is not required, it is recommended that sellers also offer an immediate payment option to the buyer, so they can get their item even faster. In the payment business policy, this option is turned on with the <b>paymentInfo.immediatePay</b> flag.<br/>
+     *  The <b>fastShipping</b> field should only be included and set to 'true' in <b>domesticShippingPolicyInfoService</b> containers where the shipping service option is a one-day shipping service. The <b>fastShipping</b> field is not applicable for <b>internationalShippingPolicyInfoService</b> containers.
+     *  <br><br>
      *
      * @param bool $fastShipping
      * @return self
@@ -542,7 +466,16 @@ class ShippingPolicyServiceType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     /**
      * Gets as shippingServiceAdditionalCost
      *
-     * The cost of shipping each additional item beyond the first item. For input, this is required if the listing is for multiple items. For single-item listings, it should be zero (or is defaulted to zero if not provided). For flat shipping only.
+     * This value sets the cost of shipping each additional item if the buyer purchases multiple identical items in a multi-quantity, fixed-price listing. This field is required for all multi-quantity, fixed-price listings where flat-rate shipping is used.
+     *  <br><br>
+     *  This value is at the seller's discretion. Generally, it should be the same price or lower than the <b>shippingServiceCost</b> value. The seller may consider specifying a lower price to ship additional items as an incentive to the buyer to purchase multiple items. The seller may also consider a lower price if he/she is able to ship multiple items in the same box. In this scenario, the seller is able to save on shipping costs and passes these savings down to the buyer.
+     *  <br><br>
+     *  The total shipping costs for an order line item is calculated with the following formula:
+     *  <br><br>
+     *  Total shipping costs = <b>shippingServiceCost</b> + (<b>shippingServiceAdditionalCost</b> * quantity purchased) <br><br>
+     *  So, if a buyer purchases four identical items, and the seller has specified <b>shippingServiceCost</b> as $6.00 and <b>shippingServiceAdditionalCost</b> as $2.00, the total shipping cost for the order line item is $12.00 ($6.00 + ($2.00 * 3)).
+     *  <br><br>
+     *  This field is not applicable to calculated shipping.
      *
      * @return \Nogrod\eBaySDK\BusinessPoliciesManagement\AmountType
      */
@@ -554,7 +487,16 @@ class ShippingPolicyServiceType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     /**
      * Sets a new shippingServiceAdditionalCost
      *
-     * The cost of shipping each additional item beyond the first item. For input, this is required if the listing is for multiple items. For single-item listings, it should be zero (or is defaulted to zero if not provided). For flat shipping only.
+     * This value sets the cost of shipping each additional item if the buyer purchases multiple identical items in a multi-quantity, fixed-price listing. This field is required for all multi-quantity, fixed-price listings where flat-rate shipping is used.
+     *  <br><br>
+     *  This value is at the seller's discretion. Generally, it should be the same price or lower than the <b>shippingServiceCost</b> value. The seller may consider specifying a lower price to ship additional items as an incentive to the buyer to purchase multiple items. The seller may also consider a lower price if he/she is able to ship multiple items in the same box. In this scenario, the seller is able to save on shipping costs and passes these savings down to the buyer.
+     *  <br><br>
+     *  The total shipping costs for an order line item is calculated with the following formula:
+     *  <br><br>
+     *  Total shipping costs = <b>shippingServiceCost</b> + (<b>shippingServiceAdditionalCost</b> * quantity purchased) <br><br>
+     *  So, if a buyer purchases four identical items, and the seller has specified <b>shippingServiceCost</b> as $6.00 and <b>shippingServiceAdditionalCost</b> as $2.00, the total shipping cost for the order line item is $12.00 ($6.00 + ($2.00 * 3)).
+     *  <br><br>
+     *  This field is not applicable to calculated shipping.
      *
      * @param \Nogrod\eBaySDK\BusinessPoliciesManagement\AmountType $shippingServiceAdditionalCost
      * @return self
@@ -568,12 +510,14 @@ class ShippingPolicyServiceType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     /**
      * Gets as shippingServiceCost
      *
-     * The meaning of this field depends on the call and on whether flat or calculated under ShippingPolicyService.shippingType has been selected. (For example, it could be the cost to ship a single item, the cost to ship all items, or the cost to ship just the first of many items, with ShippingServiceAdditionalCost accounting for the rest.) The shippingServiceCost includes the packaging and handling cost. For flat and calculated shipping.
-     *
-     *  See Shipping.
-     *
-     *
-     *  See Determining Shipping Costs for a Listing.
+     * This value sets the cost of shipping for the item if the buyer selects this shipping service option. This field is required in the input for all listings where flat-rate shipping is used, and is not applicable to calculated shipping. <br><br>
+     *  This value is at the seller's discretion but should reflect the approximate cost of the shipping service option plus handling. This value defaults to '0.0' if the <b>freeShipping</b> field is set to 'true'.
+     *  <br><br>
+     *  The total shipping costs for an order line item is calculated with the following formula:
+     *  <br><br>
+     *  Total shipping costs = <b>shippingServiceCost</b> + (<b>shippingServiceAdditionalCost</b> * quantity purchased)
+     *  <br><br>
+     *  So, if a buyer purchases four identical items, and the seller has specified <b>shippingServiceCost</b> as $6.00 and <b>shippingServiceAdditionalCost</b> as $2.00, the total shipping cost for the order line item is $12.00 ($6.00 + ($2.00 * 3)).
      *
      * @return \Nogrod\eBaySDK\BusinessPoliciesManagement\AmountType
      */
@@ -585,12 +529,14 @@ class ShippingPolicyServiceType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     /**
      * Sets a new shippingServiceCost
      *
-     * The meaning of this field depends on the call and on whether flat or calculated under ShippingPolicyService.shippingType has been selected. (For example, it could be the cost to ship a single item, the cost to ship all items, or the cost to ship just the first of many items, with ShippingServiceAdditionalCost accounting for the rest.) The shippingServiceCost includes the packaging and handling cost. For flat and calculated shipping.
-     *
-     *  See Shipping.
-     *
-     *
-     *  See Determining Shipping Costs for a Listing.
+     * This value sets the cost of shipping for the item if the buyer selects this shipping service option. This field is required in the input for all listings where flat-rate shipping is used, and is not applicable to calculated shipping. <br><br>
+     *  This value is at the seller's discretion but should reflect the approximate cost of the shipping service option plus handling. This value defaults to '0.0' if the <b>freeShipping</b> field is set to 'true'.
+     *  <br><br>
+     *  The total shipping costs for an order line item is calculated with the following formula:
+     *  <br><br>
+     *  Total shipping costs = <b>shippingServiceCost</b> + (<b>shippingServiceAdditionalCost</b> * quantity purchased)
+     *  <br><br>
+     *  So, if a buyer purchases four identical items, and the seller has specified <b>shippingServiceCost</b> as $6.00 and <b>shippingServiceAdditionalCost</b> as $2.00, the total shipping cost for the order line item is $12.00 ($6.00 + ($2.00 * 3)).
      *
      * @param \Nogrod\eBaySDK\BusinessPoliciesManagement\AmountType $shippingServiceCost
      * @return self
@@ -604,9 +550,13 @@ class ShippingPolicyServiceType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     /**
      * Gets as shippingSurcharge
      *
-     * An additional fee to charge US buyers who have the item shipped via UPS or FedEx to Alaska, Hawaii or Puerto Rico. For example, some services like UPS Ground, allows seller to provide a surcharge fee in a few selected regions.
-     *
-     *  Can only be assigned a value for the eBay US site and for items in the Parts and Accessories category of the eBay Motors site. Only returned if set. If some line items in an order have a surcharge, surcharge is added only for those line items. Flat rate shipping only.
+     * An additional charge that US sellers can add to the cost of an order line item if that order line item is an eBay Motors Parts and Accessories item that is being shipped to a buyer in Alaska, Hawaii, or Puerto Rico through a UPS or FedEx shipping service that charges a surcharge to ship to those areas.
+     *  <br><br>
+     *  In order for sellers to add a shipping surcharge at the shipping service level, the following must be true:
+     *  <ul>
+     *  <li>a surcharge is applicable for the shipping service (call <b>GeteBayDetails</b> with <b>DetailName</b> set to <b>ShippingServiceDetails</b>, and then look for <b>ShippingServiceDetails.SurchargeApplicable=true</b> in the response;</li>
+     *  <li>flat-rate shipping is used</li>
+     *  </ul>
      *
      * @return \Nogrod\eBaySDK\BusinessPoliciesManagement\AmountType
      */
@@ -618,9 +568,13 @@ class ShippingPolicyServiceType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     /**
      * Sets a new shippingSurcharge
      *
-     * An additional fee to charge US buyers who have the item shipped via UPS or FedEx to Alaska, Hawaii or Puerto Rico. For example, some services like UPS Ground, allows seller to provide a surcharge fee in a few selected regions.
-     *
-     *  Can only be assigned a value for the eBay US site and for items in the Parts and Accessories category of the eBay Motors site. Only returned if set. If some line items in an order have a surcharge, surcharge is added only for those line items. Flat rate shipping only.
+     * An additional charge that US sellers can add to the cost of an order line item if that order line item is an eBay Motors Parts and Accessories item that is being shipped to a buyer in Alaska, Hawaii, or Puerto Rico through a UPS or FedEx shipping service that charges a surcharge to ship to those areas.
+     *  <br><br>
+     *  In order for sellers to add a shipping surcharge at the shipping service level, the following must be true:
+     *  <ul>
+     *  <li>a surcharge is applicable for the shipping service (call <b>GeteBayDetails</b> with <b>DetailName</b> set to <b>ShippingServiceDetails</b>, and then look for <b>ShippingServiceDetails.SurchargeApplicable=true</b> in the response;</li>
+     *  <li>flat-rate shipping is used</li>
+     *  </ul>
      *
      * @param \Nogrod\eBaySDK\BusinessPoliciesManagement\AmountType $shippingSurcharge
      * @return self
@@ -634,8 +588,7 @@ class ShippingPolicyServiceType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     /**
      * Gets as shippingOverrideFee
      *
-     * If this is set we reset shipping fee of this
-     *  service to zero.
+     * The dollar amount in this field represents the actual total price of shipping if the total shipping costs (<b>shippingServiceCost</b> + <b>shippingServiceAdditionalCost</b> + <b>shippingSurcharge</b>) set for the corresponding shipping service in the shipping policy are overridden through a <b>ShippingServiceCostOverride</b> container in an <b>AddItem</b> call (Trading).
      *
      * @return \Nogrod\eBaySDK\BusinessPoliciesManagement\AmountType
      */
@@ -647,8 +600,7 @@ class ShippingPolicyServiceType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     /**
      * Sets a new shippingOverrideFee
      *
-     * If this is set we reset shipping fee of this
-     *  service to zero.
+     * The dollar amount in this field represents the actual total price of shipping if the total shipping costs (<b>shippingServiceCost</b> + <b>shippingServiceAdditionalCost</b> + <b>shippingSurcharge</b>) set for the corresponding shipping service in the shipping policy are overridden through a <b>ShippingServiceCostOverride</b> container in an <b>AddItem</b> call (Trading).
      *
      * @param \Nogrod\eBaySDK\BusinessPoliciesManagement\AmountType $shippingOverrideFee
      * @return self
@@ -662,11 +614,11 @@ class ShippingPolicyServiceType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     /**
      * Gets as buyerResponsibleForShipping
      *
-     * If true, buyer is responsible for contacting and setting up their local shipping service to transport the item. If false, buyer is not responsible for setting up the shipment of the item.
-     *
-     *  Applicable for listings in vehicle categories on the US eBay Motors site and eBay Canada site. (No business effect if specified for other categories or sites, as the Web site will not display the information to buyers.) If true, the buyer is responsible for vehicle pickup or shipping. If false, specify vehicle shipping arrangements in the item description. Default is true. (The description can also include vehicle shipping arrangements when this value is true.) If the item has bids or ends within 12 hours, you cannot modify this flag. Do not specify ShippingDetails.ShippingServiceOptions for vehicle listings.
-     *
-     *  If true and the listing is on the US eBay Motors site, and you want the listing to be visible on the eBay Canada site, set Item.ShipToLocations to CA. If true and the listing is on the eBay Canada site , and you want your listing to be visible on the US eBay Motors site, set Item.ShipToLocations to US.
+     * This field is only applicable to motor vehicle categories on eBay Motors (US and Canada).
+     *  <br><br>
+     *  If this field is included and set to 'true' (or omitted because the default value is 'true'), the buyer is responsible for the shipment/pickup of the motor vehicle. If this field is included and set to 'false', the seller should specify the vehicle shipping arrangements in the item description for the listing.
+     *  <br><br>
+     *  If the vehicle has bids or the listing ends within 12 hours, the seller cannot modify this flag.
      *
      * @return bool
      */
@@ -678,11 +630,11 @@ class ShippingPolicyServiceType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     /**
      * Sets a new buyerResponsibleForShipping
      *
-     * If true, buyer is responsible for contacting and setting up their local shipping service to transport the item. If false, buyer is not responsible for setting up the shipment of the item.
-     *
-     *  Applicable for listings in vehicle categories on the US eBay Motors site and eBay Canada site. (No business effect if specified for other categories or sites, as the Web site will not display the information to buyers.) If true, the buyer is responsible for vehicle pickup or shipping. If false, specify vehicle shipping arrangements in the item description. Default is true. (The description can also include vehicle shipping arrangements when this value is true.) If the item has bids or ends within 12 hours, you cannot modify this flag. Do not specify ShippingDetails.ShippingServiceOptions for vehicle listings.
-     *
-     *  If true and the listing is on the US eBay Motors site, and you want the listing to be visible on the eBay Canada site, set Item.ShipToLocations to CA. If true and the listing is on the eBay Canada site , and you want your listing to be visible on the US eBay Motors site, set Item.ShipToLocations to US.
+     * This field is only applicable to motor vehicle categories on eBay Motors (US and Canada).
+     *  <br><br>
+     *  If this field is included and set to 'true' (or omitted because the default value is 'true'), the buyer is responsible for the shipment/pickup of the motor vehicle. If this field is included and set to 'false', the seller should specify the vehicle shipping arrangements in the item description for the listing.
+     *  <br><br>
+     *  If the vehicle has bids or the listing ends within 12 hours, the seller cannot modify this flag.
      *
      * @param bool $buyerResponsibleForShipping
      * @return self

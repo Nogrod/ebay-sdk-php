@@ -357,7 +357,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     private $crossBorderTradeAustraliaEnabled = null;
 
     /**
-     * This field is deprecated. eBay now manages the complete payment and checkout process, so PayPal Purchase Protection no longer applies to eBay orders.
+     * This field is deprecated..
      *
      * @var \Nogrod\eBaySDK\Trading\PayPalBuyerProtectionEnabledDefinitionType $payPalBuyerProtectionEnabled
      */
@@ -392,7 +392,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     private $iNEscrowWorkflowTimeline = null;
 
     /**
-     * This field is deprecated. eBay now controls the electronic payment methods avaialable to buyers, and the seller does not specify any electronic payment methods.
+     * This field is deprecated.
      *
      * @var \Nogrod\eBaySDK\Trading\PayPalRequiredDefinitionType $payPalRequired
      */
@@ -2373,7 +2373,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as payPalBuyerProtectionEnabled
      *
-     * This field is deprecated. eBay now manages the complete payment and checkout process, so PayPal Purchase Protection no longer applies to eBay orders.
+     * This field is deprecated..
      *
      * @return \Nogrod\eBaySDK\Trading\PayPalBuyerProtectionEnabledDefinitionType
      */
@@ -2385,7 +2385,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new payPalBuyerProtectionEnabled
      *
-     * This field is deprecated. eBay now manages the complete payment and checkout process, so PayPal Purchase Protection no longer applies to eBay orders.
+     * This field is deprecated..
      *
      * @param \Nogrod\eBaySDK\Trading\PayPalBuyerProtectionEnabledDefinitionType $payPalBuyerProtectionEnabled
      * @return self
@@ -2503,7 +2503,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as payPalRequired
      *
-     * This field is deprecated. eBay now controls the electronic payment methods avaialable to buyers, and the seller does not specify any electronic payment methods.
+     * This field is deprecated.
      *
      * @return \Nogrod\eBaySDK\Trading\PayPalRequiredDefinitionType
      */
@@ -2515,7 +2515,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new payPalRequired
      *
-     * This field is deprecated. eBay now controls the electronic payment methods avaialable to buyers, and the seller does not specify any electronic payment methods.
+     * This field is deprecated.
      *
      * @param \Nogrod\eBaySDK\Trading\PayPalRequiredDefinitionType $payPalRequired
      * @return self

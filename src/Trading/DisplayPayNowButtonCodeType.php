@@ -25,8 +25,7 @@ class DisplayPayNowButtonCodeType
     /**
      * Constant for 'ShowPayNowButtonForPayPalOnly' value.
      *
-     * This enumeration value was formerly used to display the "Pay Now" button only if
-     * the buyer was using PayPal as a payment method.
+     * This enumeration value is deprecated.
      */
     public const VAL_SHOW_PAY_NOW_BUTTON_FOR_PAY_PAL_ONLY = 'ShowPayNowButtonForPayPalOnly';
 

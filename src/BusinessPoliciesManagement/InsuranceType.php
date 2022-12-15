@@ -7,33 +7,58 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing InsuranceType
  *
- * Insurance:
+ * Type defining the <b>insurance</b> container, which contains the type and cost of domestic and international shipping insurance. The <b>insurance</b> container is required in the shipping policy if the seller offers shipping insurance to domestic and/or international buyers. Only sellers listing on the AU, FR, and IT sites can offer shipping insurance directly to the buyer.
  * XSD Type: Insurance
  */
 class InsuranceType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
     /**
+     * This dollar value indicates the cost to the buyer to purchase domestic shipping insurance for the item. This field is only applicable to AU, FR, or IT sellers. This field is conditionally required if the seller is offering domestic shipping insurance to the buyer, and the <b>domesticInsuranceOption</b> is 'Optional' or 'Required'.
+     *
      * @var \Nogrod\eBaySDK\BusinessPoliciesManagement\AmountType $domesticInsuranceFee
      */
     private $domesticInsuranceFee = null;
 
     /**
+     * This string value indicates the seller's policy on offering domestic shipping insurance to the buyer. Valid values include:
+     *  <ul>
+     *  <li><b>IncludedInShippingHandling</b>: the seller is not charging the buyer separately for shipping insurance costs, as the cost of shipping insurance is already included in the base shipping cost for the item</li>
+     *  <li><b>NotOffered</b>: the seller does not offer shipping insurance to the buyer</li>
+     *  <li><b>Optional</b>: purchasing shipping insurance for the item is at the discretion of the buyer</li> <li><b>Required</b>: the seller requires that the buyer purchase shipping insurance for the item</li>
+     *  </ul>
+     *  This field is required if an AU, FR, or IT seller is offering domestic shipping insurance to the buyer.
+     *
      * @var string $domesticInsuranceOption
      */
     private $domesticInsuranceOption = null;
 
     /**
+     * This string value indicates the seller's policy on offering international shipping insurance to the buyer. Valid values
+     *  include:
+     *  <ul>
+     *  <li><b>IncludedInShippingHandling</b>: the seller is not charging the buyer separately for shipping
+     *  insurance costs, as the cost of shipping insurance is already included in the base shipping cost for the item</li>
+     *  <li><b>NotOffered</b>: the seller does not offer shipping insurance to the buyer</li>
+     *  <li><b>Optional</b>: purchasing shipping insurance for the item is at the discretion of the buyer</li>
+     *  <li><b>Required</b>: the seller requires that the buyer purchase shipping insurance for the item</li>
+     *  </ul>
+     *  This field is required if an AU, FR, or IT seller is offering international shipping insurance to the buyer.
+     *
      * @var string $intlInsuranceOption
      */
     private $intlInsuranceOption = null;
 
     /**
+     * This dollar value indicates the cost to the buyer to purchase international shipping insurance for the item. This field is only applicable to AU, FR, or IT sellers. This field is conditionally required if the seller is offering international shipping insurance to the buyer, and the <b>internationalInsuranceOption</b> is 'Optional' or 'Required'.
+     *
      * @var \Nogrod\eBaySDK\BusinessPoliciesManagement\AmountType $intlInsuranceFee
      */
     private $intlInsuranceFee = null;
 
     /**
      * Gets as domesticInsuranceFee
+     *
+     * This dollar value indicates the cost to the buyer to purchase domestic shipping insurance for the item. This field is only applicable to AU, FR, or IT sellers. This field is conditionally required if the seller is offering domestic shipping insurance to the buyer, and the <b>domesticInsuranceOption</b> is 'Optional' or 'Required'.
      *
      * @return \Nogrod\eBaySDK\BusinessPoliciesManagement\AmountType
      */
@@ -44,6 +69,8 @@ class InsuranceType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
 
     /**
      * Sets a new domesticInsuranceFee
+     *
+     * This dollar value indicates the cost to the buyer to purchase domestic shipping insurance for the item. This field is only applicable to AU, FR, or IT sellers. This field is conditionally required if the seller is offering domestic shipping insurance to the buyer, and the <b>domesticInsuranceOption</b> is 'Optional' or 'Required'.
      *
      * @param \Nogrod\eBaySDK\BusinessPoliciesManagement\AmountType $domesticInsuranceFee
      * @return self
@@ -57,6 +84,14 @@ class InsuranceType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
     /**
      * Gets as domesticInsuranceOption
      *
+     * This string value indicates the seller's policy on offering domestic shipping insurance to the buyer. Valid values include:
+     *  <ul>
+     *  <li><b>IncludedInShippingHandling</b>: the seller is not charging the buyer separately for shipping insurance costs, as the cost of shipping insurance is already included in the base shipping cost for the item</li>
+     *  <li><b>NotOffered</b>: the seller does not offer shipping insurance to the buyer</li>
+     *  <li><b>Optional</b>: purchasing shipping insurance for the item is at the discretion of the buyer</li> <li><b>Required</b>: the seller requires that the buyer purchase shipping insurance for the item</li>
+     *  </ul>
+     *  This field is required if an AU, FR, or IT seller is offering domestic shipping insurance to the buyer.
+     *
      * @return string
      */
     public function getDomesticInsuranceOption()
@@ -66,6 +101,14 @@ class InsuranceType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
 
     /**
      * Sets a new domesticInsuranceOption
+     *
+     * This string value indicates the seller's policy on offering domestic shipping insurance to the buyer. Valid values include:
+     *  <ul>
+     *  <li><b>IncludedInShippingHandling</b>: the seller is not charging the buyer separately for shipping insurance costs, as the cost of shipping insurance is already included in the base shipping cost for the item</li>
+     *  <li><b>NotOffered</b>: the seller does not offer shipping insurance to the buyer</li>
+     *  <li><b>Optional</b>: purchasing shipping insurance for the item is at the discretion of the buyer</li> <li><b>Required</b>: the seller requires that the buyer purchase shipping insurance for the item</li>
+     *  </ul>
+     *  This field is required if an AU, FR, or IT seller is offering domestic shipping insurance to the buyer.
      *
      * @param string $domesticInsuranceOption
      * @return self
@@ -79,6 +122,17 @@ class InsuranceType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
     /**
      * Gets as intlInsuranceOption
      *
+     * This string value indicates the seller's policy on offering international shipping insurance to the buyer. Valid values
+     *  include:
+     *  <ul>
+     *  <li><b>IncludedInShippingHandling</b>: the seller is not charging the buyer separately for shipping
+     *  insurance costs, as the cost of shipping insurance is already included in the base shipping cost for the item</li>
+     *  <li><b>NotOffered</b>: the seller does not offer shipping insurance to the buyer</li>
+     *  <li><b>Optional</b>: purchasing shipping insurance for the item is at the discretion of the buyer</li>
+     *  <li><b>Required</b>: the seller requires that the buyer purchase shipping insurance for the item</li>
+     *  </ul>
+     *  This field is required if an AU, FR, or IT seller is offering international shipping insurance to the buyer.
+     *
      * @return string
      */
     public function getIntlInsuranceOption()
@@ -88,6 +142,17 @@ class InsuranceType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
 
     /**
      * Sets a new intlInsuranceOption
+     *
+     * This string value indicates the seller's policy on offering international shipping insurance to the buyer. Valid values
+     *  include:
+     *  <ul>
+     *  <li><b>IncludedInShippingHandling</b>: the seller is not charging the buyer separately for shipping
+     *  insurance costs, as the cost of shipping insurance is already included in the base shipping cost for the item</li>
+     *  <li><b>NotOffered</b>: the seller does not offer shipping insurance to the buyer</li>
+     *  <li><b>Optional</b>: purchasing shipping insurance for the item is at the discretion of the buyer</li>
+     *  <li><b>Required</b>: the seller requires that the buyer purchase shipping insurance for the item</li>
+     *  </ul>
+     *  This field is required if an AU, FR, or IT seller is offering international shipping insurance to the buyer.
      *
      * @param string $intlInsuranceOption
      * @return self
@@ -101,6 +166,8 @@ class InsuranceType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
     /**
      * Gets as intlInsuranceFee
      *
+     * This dollar value indicates the cost to the buyer to purchase international shipping insurance for the item. This field is only applicable to AU, FR, or IT sellers. This field is conditionally required if the seller is offering international shipping insurance to the buyer, and the <b>internationalInsuranceOption</b> is 'Optional' or 'Required'.
+     *
      * @return \Nogrod\eBaySDK\BusinessPoliciesManagement\AmountType
      */
     public function getIntlInsuranceFee()
@@ -110,6 +177,8 @@ class InsuranceType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
 
     /**
      * Sets a new intlInsuranceFee
+     *
+     * This dollar value indicates the cost to the buyer to purchase international shipping insurance for the item. This field is only applicable to AU, FR, or IT sellers. This field is conditionally required if the seller is offering international shipping insurance to the buyer, and the <b>internationalInsuranceOption</b> is 'Optional' or 'Required'.
      *
      * @param \Nogrod\eBaySDK\BusinessPoliciesManagement\AmountType $intlInsuranceFee
      * @return self

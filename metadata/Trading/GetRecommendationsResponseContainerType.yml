@@ -86,7 +86,7 @@ Nogrod\eBaySDK\Trading\GetRecommendationsResponseContainerType:
             accessor:
                 getter: getRecommendations
                 setter: setRecommendations
-            type: Nogrod\eBaySDK\Trading\RecommendationsType
+            type: string
         productListingDetails:
             expose: true
             access_type: public_method

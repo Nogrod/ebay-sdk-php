@@ -37,7 +37,11 @@ class ListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
     private $bindingAuction = null;
 
     /**
-     * Indicates whether or not the seller's Checkout Enabled preference is turned on (at account level or at listing level). This preference is managed through Payment Preferences in My eBay. If this preference is enabled, a Pay Now button will appear in checkout flow pages and in the email notifications that are sent to buyers. This preferance is enabled by default if PayPal is one of the payment methods.
+     * Indicates whether or not the seller's Checkout Enabled preference is turned on.
+     *  <br>
+     *  <span class="tablenote"><b>Note:</b>
+     *  A 'Checkout Enabled' setting is no longer available to sellers, and this field is always returned as <code>true</code>.
+     *  </span>
      *
      * @var bool $checkoutEnabled
      */
@@ -339,7 +343,11 @@ class ListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
     /**
      * Gets as checkoutEnabled
      *
-     * Indicates whether or not the seller's Checkout Enabled preference is turned on (at account level or at listing level). This preference is managed through Payment Preferences in My eBay. If this preference is enabled, a Pay Now button will appear in checkout flow pages and in the email notifications that are sent to buyers. This preferance is enabled by default if PayPal is one of the payment methods.
+     * Indicates whether or not the seller's Checkout Enabled preference is turned on.
+     *  <br>
+     *  <span class="tablenote"><b>Note:</b>
+     *  A 'Checkout Enabled' setting is no longer available to sellers, and this field is always returned as <code>true</code>.
+     *  </span>
      *
      * @return bool
      */
@@ -351,7 +359,11 @@ class ListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
     /**
      * Sets a new checkoutEnabled
      *
-     * Indicates whether or not the seller's Checkout Enabled preference is turned on (at account level or at listing level). This preference is managed through Payment Preferences in My eBay. If this preference is enabled, a Pay Now button will appear in checkout flow pages and in the email notifications that are sent to buyers. This preferance is enabled by default if PayPal is one of the payment methods.
+     * Indicates whether or not the seller's Checkout Enabled preference is turned on.
+     *  <br>
+     *  <span class="tablenote"><b>Note:</b>
+     *  A 'Checkout Enabled' setting is no longer available to sellers, and this field is always returned as <code>true</code>.
+     *  </span>
      *
      * @param bool $checkoutEnabled
      * @return self

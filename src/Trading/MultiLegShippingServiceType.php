@@ -7,20 +7,20 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing MultiLegShippingServiceType
  *
- * This type specifies the shipping service and cost of the domestic leg of a Global Shipping Program shipment.
+ * This type specifies the shipping service and cost of the domestic leg of a Global Shipping Program shipment or an eBay International Shipping shipment.
  * XSD Type: MultiLegShippingServiceType
  */
 class MultiLegShippingServiceType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
     /**
-     * The shipping service specified for the domestic leg of a Global Shipping Program shipment. For the domestic leg, the value of this field can be any available shipping service that ships to the domestic address of the international shipping provider.
+     * The shipping service specified for the domestic leg of a Global Shipping Program shipment or an eBay International Shipping shipment. For the domestic leg, the value of this field can be any available shipping service that ships to the domestic address of the international shipping provider.
      *
      * @var string $shippingService
      */
     private $shippingService = null;
 
     /**
-     * The total shipping cost of the domestic leg of a Global Shipping Program shipment.
+     * The total shipping cost of the domestic leg of a Global Shipping Program shipment or an eBay International Shipping shipment.
      *
      * @var \Nogrod\eBaySDK\Trading\AmountType $totalShippingCost
      */
@@ -29,7 +29,7 @@ class MultiLegShippingServiceType implements \Sabre\Xml\XmlSerializable, \Sabre\
     /**
      * Gets as shippingService
      *
-     * The shipping service specified for the domestic leg of a Global Shipping Program shipment. For the domestic leg, the value of this field can be any available shipping service that ships to the domestic address of the international shipping provider.
+     * The shipping service specified for the domestic leg of a Global Shipping Program shipment or an eBay International Shipping shipment. For the domestic leg, the value of this field can be any available shipping service that ships to the domestic address of the international shipping provider.
      *
      * @return string
      */
@@ -41,7 +41,7 @@ class MultiLegShippingServiceType implements \Sabre\Xml\XmlSerializable, \Sabre\
     /**
      * Sets a new shippingService
      *
-     * The shipping service specified for the domestic leg of a Global Shipping Program shipment. For the domestic leg, the value of this field can be any available shipping service that ships to the domestic address of the international shipping provider.
+     * The shipping service specified for the domestic leg of a Global Shipping Program shipment or an eBay International Shipping shipment. For the domestic leg, the value of this field can be any available shipping service that ships to the domestic address of the international shipping provider.
      *
      * @param string $shippingService
      * @return self
@@ -55,7 +55,7 @@ class MultiLegShippingServiceType implements \Sabre\Xml\XmlSerializable, \Sabre\
     /**
      * Gets as totalShippingCost
      *
-     * The total shipping cost of the domestic leg of a Global Shipping Program shipment.
+     * The total shipping cost of the domestic leg of a Global Shipping Program shipment or an eBay International Shipping shipment.
      *
      * @return \Nogrod\eBaySDK\Trading\AmountType
      */
@@ -67,7 +67,7 @@ class MultiLegShippingServiceType implements \Sabre\Xml\XmlSerializable, \Sabre\
     /**
      * Sets a new totalShippingCost
      *
-     * The total shipping cost of the domestic leg of a Global Shipping Program shipment.
+     * The total shipping cost of the domestic leg of a Global Shipping Program shipment or an eBay International Shipping shipment.
      *
      * @param \Nogrod\eBaySDK\Trading\AmountType $totalShippingCost
      * @return self

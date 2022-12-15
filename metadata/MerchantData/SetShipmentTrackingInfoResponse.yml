@@ -1,3 +1,0 @@
-Nogrod\eBaySDK\MerchantData\SetShipmentTrackingInfoResponse:
-    xml_root_name: SetShipmentTrackingInfoResponse
-    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

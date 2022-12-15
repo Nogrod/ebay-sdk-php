@@ -7,58 +7,80 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing SellerProfileType
  *
- *
+ * This type defines the common elements used by all business policies.
  * XSD Type: SellerProfile
  */
 class SellerProfileType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
     /**
+     * This value is for future use.
+     *
      * @var bool $forceDuplicate
      */
     private $forceDuplicate = null;
 
     /**
+     * This string value indicates the name of the business policy. This policy name must be unique among all of seller's business policies. A <b>profileName</b> value is required when using the <b>addSellerProfile</b> and <b>setSellerProfile</b> calls.
+     *
      * @var string $profileName
      */
     private $profileName = null;
 
     /**
+     * The unique identifier of a business policy. This value is created by eBay when a business policy is created (on the site or through the API). A <b>profileId</b> value is required when using the <b>setSellerProfile</b> and <b>removeSellerProfile</b> calls. It can be used as a filter in a <b>getSellerProfiles</b> to identify a specific business policy to retrieve. This field is always returned with all Business Policies Management calls.
+     *  <br><br>
+     *  A <b>profileId</b> value returned in the response of an <b>addSellerProfile</b> call indicates that the business policy was successfully created.
+     *
      * @var int $profileId
      */
     private $profileId = null;
 
     /**
+     * This field indicates the type of the business policy. A <b>profileType</b> value is required when using the <b>addSellerProfile</b> and <b>setSellerProfile</b> calls. It can be used as a filter in a <b>getSellerProfiles</b> call to identify and retrieve business policies of a specific type.
+     *
      * @var string $profileType
      */
     private $profileType = null;
 
     /**
+     * This field is for internal use only.
+     *
      * @var int $profileVersion
      */
     private $profileVersion = null;
 
     /**
+     * This field is used by the seller to provide a description of the business policy. The <b>profileDesc</b> field is optional in the <b>addSellerProfile</b> and <b>setSellerProfile</b> calls. This field is only returned for a business policy if a description exists for that policy.
+     *
      * @var string $profileDesc
      */
     private $profileDesc = null;
 
     /**
+     * This timestamp indicates when a business policy was deleted. This field is only returned in <b>getSellerProfiles</b> for business policies that have been deleted. For business policies that have been deleted by the seller, <b>deletedDate</b> is the only field that will be returned for the matching policy (in addition to the identifying fields like <b>profileId</b> and <b>profileName</b>).
+     *
      * @var \DateTime $deletedDate
      */
     private $deletedDate = null;
 
     /**
+     * Unique identifier of the eBay site. This value is always returned in the <b>getSellerProfiles</b> call. It is optional in the <b>addSellerProfile</b> and <b>setSellerProfile</b> calls. If it is not used in an <b>addSellerProfile</b> or <b>setSellerProfile</b> call, the <b>siteId</b> value defaults to the seller's eBay registration site.
+     *
      * @var int $siteId
      */
     private $siteId = null;
 
     /**
+     * This container consists of one or more <b>categoryGroup</b> containers. One or more category groups are linked to each business policy.
+     *
      * @var \Nogrod\eBaySDK\BusinessPoliciesManagement\CategoryGroupType[] $categoryGroups
      */
     private $categoryGroups = null;
 
     /**
      * Gets as forceDuplicate
+     *
+     * This value is for future use.
      *
      * @return bool
      */
@@ -69,6 +91,8 @@ class SellerProfileType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
 
     /**
      * Sets a new forceDuplicate
+     *
+     * This value is for future use.
      *
      * @param bool $forceDuplicate
      * @return self
@@ -82,6 +106,8 @@ class SellerProfileType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
     /**
      * Gets as profileName
      *
+     * This string value indicates the name of the business policy. This policy name must be unique among all of seller's business policies. A <b>profileName</b> value is required when using the <b>addSellerProfile</b> and <b>setSellerProfile</b> calls.
+     *
      * @return string
      */
     public function getProfileName()
@@ -91,6 +117,8 @@ class SellerProfileType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
 
     /**
      * Sets a new profileName
+     *
+     * This string value indicates the name of the business policy. This policy name must be unique among all of seller's business policies. A <b>profileName</b> value is required when using the <b>addSellerProfile</b> and <b>setSellerProfile</b> calls.
      *
      * @param string $profileName
      * @return self
@@ -104,6 +132,10 @@ class SellerProfileType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
     /**
      * Gets as profileId
      *
+     * The unique identifier of a business policy. This value is created by eBay when a business policy is created (on the site or through the API). A <b>profileId</b> value is required when using the <b>setSellerProfile</b> and <b>removeSellerProfile</b> calls. It can be used as a filter in a <b>getSellerProfiles</b> to identify a specific business policy to retrieve. This field is always returned with all Business Policies Management calls.
+     *  <br><br>
+     *  A <b>profileId</b> value returned in the response of an <b>addSellerProfile</b> call indicates that the business policy was successfully created.
+     *
      * @return int
      */
     public function getProfileId()
@@ -113,6 +145,10 @@ class SellerProfileType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
 
     /**
      * Sets a new profileId
+     *
+     * The unique identifier of a business policy. This value is created by eBay when a business policy is created (on the site or through the API). A <b>profileId</b> value is required when using the <b>setSellerProfile</b> and <b>removeSellerProfile</b> calls. It can be used as a filter in a <b>getSellerProfiles</b> to identify a specific business policy to retrieve. This field is always returned with all Business Policies Management calls.
+     *  <br><br>
+     *  A <b>profileId</b> value returned in the response of an <b>addSellerProfile</b> call indicates that the business policy was successfully created.
      *
      * @param int $profileId
      * @return self
@@ -126,6 +162,8 @@ class SellerProfileType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
     /**
      * Gets as profileType
      *
+     * This field indicates the type of the business policy. A <b>profileType</b> value is required when using the <b>addSellerProfile</b> and <b>setSellerProfile</b> calls. It can be used as a filter in a <b>getSellerProfiles</b> call to identify and retrieve business policies of a specific type.
+     *
      * @return string
      */
     public function getProfileType()
@@ -135,6 +173,8 @@ class SellerProfileType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
 
     /**
      * Sets a new profileType
+     *
+     * This field indicates the type of the business policy. A <b>profileType</b> value is required when using the <b>addSellerProfile</b> and <b>setSellerProfile</b> calls. It can be used as a filter in a <b>getSellerProfiles</b> call to identify and retrieve business policies of a specific type.
      *
      * @param string $profileType
      * @return self
@@ -148,6 +188,8 @@ class SellerProfileType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
     /**
      * Gets as profileVersion
      *
+     * This field is for internal use only.
+     *
      * @return int
      */
     public function getProfileVersion()
@@ -157,6 +199,8 @@ class SellerProfileType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
 
     /**
      * Sets a new profileVersion
+     *
+     * This field is for internal use only.
      *
      * @param int $profileVersion
      * @return self
@@ -170,6 +214,8 @@ class SellerProfileType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
     /**
      * Gets as profileDesc
      *
+     * This field is used by the seller to provide a description of the business policy. The <b>profileDesc</b> field is optional in the <b>addSellerProfile</b> and <b>setSellerProfile</b> calls. This field is only returned for a business policy if a description exists for that policy.
+     *
      * @return string
      */
     public function getProfileDesc()
@@ -179,6 +225,8 @@ class SellerProfileType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
 
     /**
      * Sets a new profileDesc
+     *
+     * This field is used by the seller to provide a description of the business policy. The <b>profileDesc</b> field is optional in the <b>addSellerProfile</b> and <b>setSellerProfile</b> calls. This field is only returned for a business policy if a description exists for that policy.
      *
      * @param string $profileDesc
      * @return self
@@ -192,6 +240,8 @@ class SellerProfileType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
     /**
      * Gets as deletedDate
      *
+     * This timestamp indicates when a business policy was deleted. This field is only returned in <b>getSellerProfiles</b> for business policies that have been deleted. For business policies that have been deleted by the seller, <b>deletedDate</b> is the only field that will be returned for the matching policy (in addition to the identifying fields like <b>profileId</b> and <b>profileName</b>).
+     *
      * @return \DateTime
      */
     public function getDeletedDate()
@@ -201,6 +251,8 @@ class SellerProfileType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
 
     /**
      * Sets a new deletedDate
+     *
+     * This timestamp indicates when a business policy was deleted. This field is only returned in <b>getSellerProfiles</b> for business policies that have been deleted. For business policies that have been deleted by the seller, <b>deletedDate</b> is the only field that will be returned for the matching policy (in addition to the identifying fields like <b>profileId</b> and <b>profileName</b>).
      *
      * @param \DateTime $deletedDate
      * @return self
@@ -214,6 +266,8 @@ class SellerProfileType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
     /**
      * Gets as siteId
      *
+     * Unique identifier of the eBay site. This value is always returned in the <b>getSellerProfiles</b> call. It is optional in the <b>addSellerProfile</b> and <b>setSellerProfile</b> calls. If it is not used in an <b>addSellerProfile</b> or <b>setSellerProfile</b> call, the <b>siteId</b> value defaults to the seller's eBay registration site.
+     *
      * @return int
      */
     public function getSiteId()
@@ -223,6 +277,8 @@ class SellerProfileType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
 
     /**
      * Sets a new siteId
+     *
+     * Unique identifier of the eBay site. This value is always returned in the <b>getSellerProfiles</b> call. It is optional in the <b>addSellerProfile</b> and <b>setSellerProfile</b> calls. If it is not used in an <b>addSellerProfile</b> or <b>setSellerProfile</b> call, the <b>siteId</b> value defaults to the seller's eBay registration site.
      *
      * @param int $siteId
      * @return self
@@ -236,6 +292,8 @@ class SellerProfileType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
     /**
      * Adds as categoryGroup
      *
+     * This container consists of one or more <b>categoryGroup</b> containers. One or more category groups are linked to each business policy.
+     *
      * @return self
      * @param \Nogrod\eBaySDK\BusinessPoliciesManagement\CategoryGroupType $categoryGroup
      */
@@ -248,6 +306,8 @@ class SellerProfileType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
     /**
      * isset categoryGroups
      *
+     * This container consists of one or more <b>categoryGroup</b> containers. One or more category groups are linked to each business policy.
+     *
      * @param int|string $index
      * @return bool
      */
@@ -258,6 +318,8 @@ class SellerProfileType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
 
     /**
      * unset categoryGroups
+     *
+     * This container consists of one or more <b>categoryGroup</b> containers. One or more category groups are linked to each business policy.
      *
      * @param int|string $index
      * @return void
@@ -270,6 +332,8 @@ class SellerProfileType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
     /**
      * Gets as categoryGroups
      *
+     * This container consists of one or more <b>categoryGroup</b> containers. One or more category groups are linked to each business policy.
+     *
      * @return \Nogrod\eBaySDK\BusinessPoliciesManagement\CategoryGroupType[]
      */
     public function getCategoryGroups()
@@ -279,6 +343,8 @@ class SellerProfileType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
 
     /**
      * Sets a new categoryGroups
+     *
+     * This container consists of one or more <b>categoryGroup</b> containers. One or more category groups are linked to each business policy.
      *
      * @param \Nogrod\eBaySDK\BusinessPoliciesManagement\CategoryGroupType[] $categoryGroups
      * @return self

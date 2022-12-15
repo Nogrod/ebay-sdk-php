@@ -7,18 +7,22 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing RemoveOverridesRequestType
  *
- *
+ * This call is used to remove shipping cost overrides for a specific shipping policy. The only input parameter for this call is the unique identifier of the shipping policy, and the response contains only the standard output fields.
  * XSD Type: RemoveOverridesRequest
  */
 class RemoveOverridesRequestType extends BaseRequestType
 {
     /**
+     * The unique identifier of the shipping policy. The seller provides the <b>profileId</b> of the shipping policy for which he/she would like to remove shipping cost overrides.
+     *
      * @var int $profileId
      */
     private $profileId = null;
 
     /**
      * Gets as profileId
+     *
+     * The unique identifier of the shipping policy. The seller provides the <b>profileId</b> of the shipping policy for which he/she would like to remove shipping cost overrides.
      *
      * @return int
      */
@@ -29,6 +33,8 @@ class RemoveOverridesRequestType extends BaseRequestType
 
     /**
      * Sets a new profileId
+     *
+     * The unique identifier of the shipping policy. The seller provides the <b>profileId</b> of the shipping policy for which he/she would like to remove shipping cost overrides.
      *
      * @param int $profileId
      * @return self

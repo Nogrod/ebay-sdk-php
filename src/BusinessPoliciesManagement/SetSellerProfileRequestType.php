@@ -7,30 +7,39 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing SetSellerProfileRequestType
  *
- * Use this call to modify or update an existing business policy. Within a single setSellerProfile request, you can modify one of each type of policy (payment, return, and/or shipping).
+ * Sellers use this call to modify one or more business policies. With one call instance, the seller can modify a payment policy, a return policy, a shipping policy, or any combination of the three policy types.
  * XSD Type: SetSellerProfileRequest
  */
 class SetSellerProfileRequestType extends BaseRequestType
 {
     /**
-     * Root container consisting of a seller's payment policy for a category group that was created with the addSellerProfile call. Only pass in values for the fields you want to change. To delete
-     *  an optional field, pass the field with an empty value.
+     * Root container for a seller's payment policy. The <b>paymentProfile</b> container consists of payment information, the name and description of the policy, and the site and category group to which the payment policy will be applied.
+     *  <br><br>
+     *  The <b>paymentProfile</b> container is conditionally required if the seller wants to modify an existing payment policy.
+     *  <br><br>
+     *  Sellers only pass in values for the fields they want to change. To delete an optional field, sellers can pass an empty value into the field.
      *
      * @var \Nogrod\eBaySDK\BusinessPoliciesManagement\PaymentProfileType $paymentProfile
      */
     private $paymentProfile = null;
 
     /**
-     * Root container consisting of a seller's return policy for a category group that was created with the addSellerProfile call. Only pass in values for the fields you want to change. To delete
-     *  an optional field, pass the field with an empty value.
+     * Root container for a seller's return policy. The <b>returnPolicyProfile</b> container consists of return policy information, the name and description of the policy, and the site and category group to which the return policy will be applied.
+     *  <br><br>
+     *  The <b>returnPolicyProfile</b> container is conditionally required if the seller wants to modify an existing return policy.
+     *  <br><br>
+     *  Sellers only pass in values for the fields that they want to change. To delete an optional field, sellers can pass an empty value into the field.
      *
      * @var \Nogrod\eBaySDK\BusinessPoliciesManagement\ReturnPolicyProfileType $returnPolicyProfile
      */
     private $returnPolicyProfile = null;
 
     /**
-     * Root container consisting of a seller's shipping policy for a category group that was created with the addSellerProfile call. Only pass in values for the fields you want to change. To delete
-     *  an optional field, pass the field with an empty value.
+     * Root container for a seller's shipping policy. The <b>shippingPolicyProfile</b> container consists of shipping information, the name and description of the policy, and the site and category group to which the shipping policy will be applied.
+     *  <br><br>
+     *  The <b>shippingPolicyProfile</b> container is conditionally required if the seller wants to modify an existing shipping policy.
+     *  <br><br>
+     *  Sellers only pass in values for the fields they want to change. To delete an optional field, sellers can pass an empty value into the field.
      *
      * @var \Nogrod\eBaySDK\BusinessPoliciesManagement\ShippingPolicyProfileType $shippingPolicyProfile
      */
@@ -39,8 +48,11 @@ class SetSellerProfileRequestType extends BaseRequestType
     /**
      * Gets as paymentProfile
      *
-     * Root container consisting of a seller's payment policy for a category group that was created with the addSellerProfile call. Only pass in values for the fields you want to change. To delete
-     *  an optional field, pass the field with an empty value.
+     * Root container for a seller's payment policy. The <b>paymentProfile</b> container consists of payment information, the name and description of the policy, and the site and category group to which the payment policy will be applied.
+     *  <br><br>
+     *  The <b>paymentProfile</b> container is conditionally required if the seller wants to modify an existing payment policy.
+     *  <br><br>
+     *  Sellers only pass in values for the fields they want to change. To delete an optional field, sellers can pass an empty value into the field.
      *
      * @return \Nogrod\eBaySDK\BusinessPoliciesManagement\PaymentProfileType
      */
@@ -52,8 +64,11 @@ class SetSellerProfileRequestType extends BaseRequestType
     /**
      * Sets a new paymentProfile
      *
-     * Root container consisting of a seller's payment policy for a category group that was created with the addSellerProfile call. Only pass in values for the fields you want to change. To delete
-     *  an optional field, pass the field with an empty value.
+     * Root container for a seller's payment policy. The <b>paymentProfile</b> container consists of payment information, the name and description of the policy, and the site and category group to which the payment policy will be applied.
+     *  <br><br>
+     *  The <b>paymentProfile</b> container is conditionally required if the seller wants to modify an existing payment policy.
+     *  <br><br>
+     *  Sellers only pass in values for the fields they want to change. To delete an optional field, sellers can pass an empty value into the field.
      *
      * @param \Nogrod\eBaySDK\BusinessPoliciesManagement\PaymentProfileType $paymentProfile
      * @return self
@@ -67,8 +82,11 @@ class SetSellerProfileRequestType extends BaseRequestType
     /**
      * Gets as returnPolicyProfile
      *
-     * Root container consisting of a seller's return policy for a category group that was created with the addSellerProfile call. Only pass in values for the fields you want to change. To delete
-     *  an optional field, pass the field with an empty value.
+     * Root container for a seller's return policy. The <b>returnPolicyProfile</b> container consists of return policy information, the name and description of the policy, and the site and category group to which the return policy will be applied.
+     *  <br><br>
+     *  The <b>returnPolicyProfile</b> container is conditionally required if the seller wants to modify an existing return policy.
+     *  <br><br>
+     *  Sellers only pass in values for the fields that they want to change. To delete an optional field, sellers can pass an empty value into the field.
      *
      * @return \Nogrod\eBaySDK\BusinessPoliciesManagement\ReturnPolicyProfileType
      */
@@ -80,8 +98,11 @@ class SetSellerProfileRequestType extends BaseRequestType
     /**
      * Sets a new returnPolicyProfile
      *
-     * Root container consisting of a seller's return policy for a category group that was created with the addSellerProfile call. Only pass in values for the fields you want to change. To delete
-     *  an optional field, pass the field with an empty value.
+     * Root container for a seller's return policy. The <b>returnPolicyProfile</b> container consists of return policy information, the name and description of the policy, and the site and category group to which the return policy will be applied.
+     *  <br><br>
+     *  The <b>returnPolicyProfile</b> container is conditionally required if the seller wants to modify an existing return policy.
+     *  <br><br>
+     *  Sellers only pass in values for the fields that they want to change. To delete an optional field, sellers can pass an empty value into the field.
      *
      * @param \Nogrod\eBaySDK\BusinessPoliciesManagement\ReturnPolicyProfileType $returnPolicyProfile
      * @return self
@@ -95,8 +116,11 @@ class SetSellerProfileRequestType extends BaseRequestType
     /**
      * Gets as shippingPolicyProfile
      *
-     * Root container consisting of a seller's shipping policy for a category group that was created with the addSellerProfile call. Only pass in values for the fields you want to change. To delete
-     *  an optional field, pass the field with an empty value.
+     * Root container for a seller's shipping policy. The <b>shippingPolicyProfile</b> container consists of shipping information, the name and description of the policy, and the site and category group to which the shipping policy will be applied.
+     *  <br><br>
+     *  The <b>shippingPolicyProfile</b> container is conditionally required if the seller wants to modify an existing shipping policy.
+     *  <br><br>
+     *  Sellers only pass in values for the fields they want to change. To delete an optional field, sellers can pass an empty value into the field.
      *
      * @return \Nogrod\eBaySDK\BusinessPoliciesManagement\ShippingPolicyProfileType
      */
@@ -108,8 +132,11 @@ class SetSellerProfileRequestType extends BaseRequestType
     /**
      * Sets a new shippingPolicyProfile
      *
-     * Root container consisting of a seller's shipping policy for a category group that was created with the addSellerProfile call. Only pass in values for the fields you want to change. To delete
-     *  an optional field, pass the field with an empty value.
+     * Root container for a seller's shipping policy. The <b>shippingPolicyProfile</b> container consists of shipping information, the name and description of the policy, and the site and category group to which the shipping policy will be applied.
+     *  <br><br>
+     *  The <b>shippingPolicyProfile</b> container is conditionally required if the seller wants to modify an existing shipping policy.
+     *  <br><br>
+     *  Sellers only pass in values for the fields they want to change. To delete an optional field, sellers can pass an empty value into the field.
      *
      * @param \Nogrod\eBaySDK\BusinessPoliciesManagement\ShippingPolicyProfileType $shippingPolicyProfile
      * @return self

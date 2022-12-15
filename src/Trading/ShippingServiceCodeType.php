@@ -3381,6 +3381,43 @@ class ShippingServiceCodeType
      * Constant for 'Freight' value.
      *
      * Service associated with any freight service other than FreightQuote.com
+     *  <br/>
+     *  <span class="tablenote">
+     *  <strong>Note:</strong> Sellers offering freight shipping on the following
+     * marketplaces should use the <b>Shipping service code value</b> listed below and
+     * not use the <code>Freight</code> value that is used for freight shipping on
+     * other marketplaces. For example, sellers offering freight shipping on the
+     * Australia (AU) marketplace should use the <code>AU_Freight</code> value for
+     * <b>ShippingServiceCodeType</b> and not use the <code>Freight</code> value.
+     *  <br/><br/>
+     *  <table>
+     *  <tr>
+     *  <th>SiteID</th>
+     *  <th>Site name</th>
+     *  <th>Shipping service code value</th>
+     *  </tr>
+     *  <tr><td><code>0</code></td>
+     *  <td>US</td>
+     *  <td><code>Freight</code></code></td>
+     *  </tr>
+     *  <tr><td><code>3</code></td>
+     *  <td>UK</td>
+     *  <td><code>Courier</code></code></td>
+     *  </tr>
+     *  <tr><td><code>2</code></td>
+     *  <td>CA</td>
+     *  <td><code>CA_Freight</code></code></td>
+     *  </tr>
+     *  <tr><td><code>15</code></td>
+     *  <td>AU</td>
+     *  <td><code>AU_Freight</code></code></td>
+     *  </tr>
+     *  <tr><td><code>210</code></td>
+     *  <td>CA_FR</td>
+     *  <td><code>CA_Freight</code></code></td>
+     *  </tr>
+     *  </table>
+     *  </span>
      */
     public const VAL_FREIGHT = 'Freight';
 

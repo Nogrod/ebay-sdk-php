@@ -467,18 +467,7 @@ class ItemFilterTypeType
      *  class="defn_type"
      *  href="../types/simpleTypes.html#string">string</a>):
      *  </b><br>
-     *  <blockquote>
-     *  <dl>
-     *  <dt>PayPal</dt>
-     *  <dd>PayPal payment method.</dd>
-     *  <dt>PaisaPay</dt>
-     *  <dd>PaisaPay payment method. The PaisaPay payment method is only
-     *  for the India site (global ID EBAY-IN).</dd>
-     *  <dt>PaisaPayEMI</dt>
-     *  <dd>PaisaPayEscrow EMI (Equal Monthly Installment) payment method.
-     *  The PaisaPayEscrowEMI payment method is only for the India site (global
-     *  ID EBAY-IN).</dd>
-     *  </blockquote>
+     *  Payment method
      *  <br>
      */
     public const VAL_PAYMENT_METHOD = 'PaymentMethod';
@@ -784,19 +773,6 @@ class ItemFilterTypeType
      *  either Expedited or OneDayShipping. Only items that can be shipped
      *  by the specified type are returned.
      *  <br><br>
-     *  ExpeditedShippingType is used together with the MaxHandlingTime and
-     *  ReturnsAcceptedOnly filters to filter items
-     *  for certain kinds of gifting events such as birthdays or holidays where
-     *  the items must be delivered by a certain date.
-     *  If you wish to mimic the behavior of the eBay holiday filters, you would
-     *  use ExpeditedShippingType set
-     *  to either Expedited or OneDayShipping, MaxHandlingTime to 1,
-     *  ReturnsAcceptedOnly set to true, and for the
-     *  Germany site, set PaymentMethod to PayPal. (The holiday filters may not
-     *  always be available in the
-     *  eBay UI, depending on the season; however, the equivalent filter behavior
-     *  continues to be available in the API.)
-     *  <br><br>
      *  <b>Allowed values (<a
      *  class="defn_type"
      *  href="../types/simpleTypes.html#string">string</a>):</b>
@@ -815,17 +791,7 @@ class ItemFilterTypeType
      *  number will be returned. (The handling time is the amount of time, in
      *  days, required by the seller to get the item ready to ship and handed off
      *  to the actual carrier who does the delivery. It does not include the time
-     *  required by the carrier to deliver the item. <br><br>
-     *  ExpeditedShippingType is used together with the MaxHandlingTime and
-     *  ReturnsAcceptedOnly filters to filter items for certain kinds of gifting
-     *  events such as birthdays or holidays where the items must be delivered by
-     *  a certain date. If you wish to mimic the behavior of the eBay holiday
-     *  filters, you would use ExpeditedShippingType set to either Expedited or
-     *  OneDayShipping, MaxHandlingTime to 1, ReturnsAcceptedOnly set to true,
-     *  and for the Germany site, set PaymentMethod to PayPal. (The holiday
-     *  filters may not always be available in the eBay UI, depending on the
-     *  season; however, the equivalent filter behavior continues to be available
-     *  in the API.)
+     *  required by the carrier to deliver the item.
      *  <br><br>
      *  <b>Allowed values (<a class="defn_type"
      *  href="../types/simpleTypes.html#int">int</a>):</b>
@@ -840,17 +806,6 @@ class ItemFilterTypeType
      *
      * <a name="ReturnsAcceptedOnly"></a>
      *  If set to true, returns only items where the seller accepts returns.
-     *  <br><br>
-     *  ExpeditedShippingType is used together with the MaxHandlingTime and
-     *  ReturnsAcceptedOnly filters to filter items for certain kinds of gifting
-     *  events such as birthdays or holidays where the items must be delivered by
-     *  a certain date. If you wish to mimic the behavior of the eBay holiday
-     *  filters, you would use ExpeditedShippingType set to either Expedited or
-     *  OneDayShipping, MaxHandlingTime to 1, ReturnsAcceptedOnly set to true,
-     *  and for the Germany site, set PaymentMethod to PayPal. (The holiday
-     *  filters may not always be available in the eBay UI, depending on the
-     *  season; however, the equivalent filter behavior continues to be available
-     *  in the API.)
      *  <br><br>
      *  <b>Allowed values (<a
      *  class="defn_type"

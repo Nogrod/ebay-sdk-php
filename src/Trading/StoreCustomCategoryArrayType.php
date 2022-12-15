@@ -7,13 +7,13 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing StoreCustomCategoryArrayType
  *
- * Set of custom categories for the Store.
+ * This type holds an array of custom categories set up by a seller for their eBay Store.
  * XSD Type: StoreCustomCategoryArrayType
  */
 class StoreCustomCategoryArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
     /**
-     * A custom category for your eBay Store.
+     * This container is used to express details about a customized eBay Store category.
      *
      * @var \Nogrod\eBaySDK\Trading\StoreCustomCategoryType[] $customCategory
      */
@@ -24,7 +24,7 @@ class StoreCustomCategoryArrayType implements \Sabre\Xml\XmlSerializable, \Sabre
     /**
      * Adds as customCategory
      *
-     * A custom category for your eBay Store.
+     * This container is used to express details about a customized eBay Store category.
      *
      * @return self
      * @param \Nogrod\eBaySDK\Trading\StoreCustomCategoryType $customCategory
@@ -38,7 +38,7 @@ class StoreCustomCategoryArrayType implements \Sabre\Xml\XmlSerializable, \Sabre
     /**
      * isset customCategory
      *
-     * A custom category for your eBay Store.
+     * This container is used to express details about a customized eBay Store category.
      *
      * @param int|string $index
      * @return bool
@@ -51,7 +51,7 @@ class StoreCustomCategoryArrayType implements \Sabre\Xml\XmlSerializable, \Sabre
     /**
      * unset customCategory
      *
-     * A custom category for your eBay Store.
+     * This container is used to express details about a customized eBay Store category.
      *
      * @param int|string $index
      * @return void
@@ -64,7 +64,7 @@ class StoreCustomCategoryArrayType implements \Sabre\Xml\XmlSerializable, \Sabre
     /**
      * Gets as customCategory
      *
-     * A custom category for your eBay Store.
+     * This container is used to express details about a customized eBay Store category.
      *
      * @return \Nogrod\eBaySDK\Trading\StoreCustomCategoryType[]
      */
@@ -76,7 +76,7 @@ class StoreCustomCategoryArrayType implements \Sabre\Xml\XmlSerializable, \Sabre
     /**
      * Sets a new customCategory
      *
-     * A custom category for your eBay Store.
+     * This container is used to express details about a customized eBay Store category.
      *
      * @param \Nogrod\eBaySDK\Trading\StoreCustomCategoryType[] $customCategory
      * @return self

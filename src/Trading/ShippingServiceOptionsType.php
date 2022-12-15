@@ -121,9 +121,12 @@ class ShippingServiceOptionsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
      * This boolean field indicates whether or not the corresponding domestic shipping service option is free to the buyer. In an Add/Revise/Relist call, free shipping can only be offered for the first specified shipping service (so, the corresponding <b>ShippingServicePriority</b> value should be <code>1</code> or included first in the call request). If 'free shipping' is for any other shipping service, this field is ignored.
      *  <br/><br/>
      *  For 'Get' calls, including <b>GetItem</b>, this field is only returned if <code>1</code>.
-     *  <br/><br/>
+     *  <br/>
      *  <span class="tablenote"><strong>Note:</strong>
      *  If a seller is specifying a shipping service option as 'free shipping', in addition to this <b>FreeShipping</b> boolean field, the seller will also need to include the corresponding <b>ShippingServiceCost</b> field and set its value to <code>0.0</code>, as eBay will not do this automatically.
+     *  </span>
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  If the condition is certified refurbished (<b>ConditionID</b> set to <code>2000</code>, 'Certified - Refurbished'), you must offer a free shipping option. Set <b>FreeShipping</b> as <code>true</code> (or <code>1</code>) along with the <b>ShippingServiceCost</b> as <code>0.0</code> for the first domestic shipping service.
      *  </span>
      *
      * @var bool $freeShipping
@@ -482,9 +485,12 @@ class ShippingServiceOptionsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
      * This boolean field indicates whether or not the corresponding domestic shipping service option is free to the buyer. In an Add/Revise/Relist call, free shipping can only be offered for the first specified shipping service (so, the corresponding <b>ShippingServicePriority</b> value should be <code>1</code> or included first in the call request). If 'free shipping' is for any other shipping service, this field is ignored.
      *  <br/><br/>
      *  For 'Get' calls, including <b>GetItem</b>, this field is only returned if <code>1</code>.
-     *  <br/><br/>
+     *  <br/>
      *  <span class="tablenote"><strong>Note:</strong>
      *  If a seller is specifying a shipping service option as 'free shipping', in addition to this <b>FreeShipping</b> boolean field, the seller will also need to include the corresponding <b>ShippingServiceCost</b> field and set its value to <code>0.0</code>, as eBay will not do this automatically.
+     *  </span>
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  If the condition is certified refurbished (<b>ConditionID</b> set to <code>2000</code>, 'Certified - Refurbished'), you must offer a free shipping option. Set <b>FreeShipping</b> as <code>true</code> (or <code>1</code>) along with the <b>ShippingServiceCost</b> as <code>0.0</code> for the first domestic shipping service.
      *  </span>
      *
      * @return bool
@@ -500,9 +506,12 @@ class ShippingServiceOptionsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
      * This boolean field indicates whether or not the corresponding domestic shipping service option is free to the buyer. In an Add/Revise/Relist call, free shipping can only be offered for the first specified shipping service (so, the corresponding <b>ShippingServicePriority</b> value should be <code>1</code> or included first in the call request). If 'free shipping' is for any other shipping service, this field is ignored.
      *  <br/><br/>
      *  For 'Get' calls, including <b>GetItem</b>, this field is only returned if <code>1</code>.
-     *  <br/><br/>
+     *  <br/>
      *  <span class="tablenote"><strong>Note:</strong>
      *  If a seller is specifying a shipping service option as 'free shipping', in addition to this <b>FreeShipping</b> boolean field, the seller will also need to include the corresponding <b>ShippingServiceCost</b> field and set its value to <code>0.0</code>, as eBay will not do this automatically.
+     *  </span>
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  If the condition is certified refurbished (<b>ConditionID</b> set to <code>2000</code>, 'Certified - Refurbished'), you must offer a free shipping option. Set <b>FreeShipping</b> as <code>true</code> (or <code>1</code>) along with the <b>ShippingServiceCost</b> as <code>0.0</code> for the first domestic shipping service.
      *  </span>
      *
      * @param bool $freeShipping

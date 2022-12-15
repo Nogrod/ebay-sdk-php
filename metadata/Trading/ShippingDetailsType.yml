@@ -363,6 +363,17 @@ Nogrod\eBaySDK\Trading\ShippingDetailsType:
                 entry_name: ExcludeShipToLocation
                 namespace: 'urn:ebay:apis:eBLBaseComponents'
             type: array<string>
+        eBayEstimatedLabelCost:
+            expose: true
+            access_type: public_method
+            serialized_name: eBayEstimatedLabelCost
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getEBayEstimatedLabelCost
+                setter: setEBayEstimatedLabelCost
+            type: Nogrod\eBaySDK\Trading\AmountType
         sellerExcludeShipToLocationsPreference:
             expose: true
             access_type: public_method

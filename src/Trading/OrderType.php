@@ -138,10 +138,46 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      * This container shows the shipping address for the order.
      *  <br>
      *  <br>
-     *  <span class="tablenote"><b>Note:</b> For an Authenticity Guarantee program shipment, this is the address of the authenticator's warehouse. The authenticator is responsible for delivery to the buyer's shipping address.
+     *  <span class="tablenote">
+     *  <strong>Note:</strong> For an Authenticity Guarantee program shipment, this is the address of the authenticator&apos;s warehouse. The authenticator is responsible for delivery to the buyer&apos;s shipping address.
      *  </span>
-     *  <span class="tablenote"><b>Note:</b> For GetOrderTransactions, the buyer's shipping address may also be returned at the order line item level in the <b>Transaction.Buyer.BuyerInfo.ShippingAddress</b> container.
+     *  <span class="tablenote"><b>Note:</b> For GetOrderTransactions, the buyer&apos;s shipping address may also be returned at the order line item level in the <b>Transaction.Buyer.BuyerInfo.ShippingAddress</b> container.
      *  </span>
+     *  <p><span class="tablenote"><b>Note:</b>
+     *  For eBay Vault scenarios: <strong>GetOrders</strong>, <strong>GetOrderTransactions</strong>, and <strong>GetItemTransactions</strong> calls, mock address details are returned for: <br/> - Vault to vault orders: Buyer and Seller View<br /> - Ship to vault orders: Mock addresses are returned for the Buyer View (only); the address returned for the Seller View will be the authenticator&apos;s address.<br>
+     *  The following address details are returned for mock addresses:</span></p>
+     *  <pre>
+     *  &lt;ShippingAddress&gt;
+     *  <br/>
+     *  <code> &nbsp;&lt;Name&gt;eBay Vault&lt;/Name&gt;</code>
+     *  <br/>
+     *  <code> &nbsp;&lt;AddressID&gt;Invalid Request&lt;/AddressID&gt;</code>
+     *  <br/>
+     *  <code> &nbsp;&lt;AddressOwner&gt;eBay&lt;/AddressOwner&gt;</code>
+     *  <br/>
+     *  <code> &nbsp;&lt;AddressUsage&gt;Invalid&lt;/AddressUsage&gt;</code>
+     *  <br/>
+     *  <code> &nbsp;&lt;CityName&gt;Invalid Request&lt;/CityName&gt;</code>
+     *  <br/>
+     *  <code> &nbsp;&lt;Country&gt;US&lt;/Country&gt;</code>
+     *  <br/>
+     *  <code> &nbsp;&lt;CountryName&gt;Invalid Request&lt;/CountryName&gt;</code>
+     *  <br/>
+     *  <code> &nbsp;&lt;ExternalAddressID&gt;Invalid Request&lt;/ExternalAddressID&gt;</code>
+     *  <br/>
+     *  <code> &nbsp;&lt;Phone&gt;Invalid Request&lt;/Phone&gt;</code>
+     *  <br/>
+     *  <code> &nbsp;&lt;PostalCode&gt;Invalid Request&lt;/PostalCode&gt;</code>
+     *  <br/>
+     *  <code> &nbsp;&lt;StateOrProvince&gt;Invalid Request&lt;/StateOrProvince&gt;</code>
+     *  <br/>
+     *  <code> &nbsp;&lt;Street1&gt;Invalid Request&lt;/Street1&gt;</code>
+     *  <br/>
+     *  <code> &nbsp;&lt;Street2&gt;&lt;/Street2&gt;</code>
+     *  <br/>
+     *  &lt;/ShippingAddress&gt;
+     *  </pre>
+     *  <br/>
      *
      * @var \Nogrod\eBaySDK\Trading\AddressType $shippingAddress
      */
@@ -303,18 +339,18 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
     private $refundArray = null;
 
     /**
-     * If <strong>IsMultilegShipping</strong> is <code>true</code>, at least one order line item in the order will not be shipped directly to the buyer. Instead, the item(s) may be shipped to eBay's Global Shipping Program (GSP) partner who will handle the international leg of shipment, or the item may be shipped to eBay's Authenticity Guarantee service partner if the item is subject to the Authenticity Guarantee service program. In both cases, the partner's shipping address can be found in the <strong>MultiLegShippingDetails.SellerShipmentToLogisticsProvider.ShipToAddress</strong> container.
+     * If <strong>IsMultilegShipping</strong> is <code>true</code>, at least one order line item in the order will not be shipped directly to the buyer. Orders requiring multiple shipping legs include international orders being shipped through the Global Shipping Program or through eBay International Shipping, as well as orders subject to/eligible for the Authenticity Guarantee program. For both international shipping options, the address of the shipping logistics provider is shown in the <strong>MultiLegShippingDetails.SellerShipmentToLogisticsProvider.ShipToAddress</strong> container. Similarly, for Authenticity Guarantee orders, the authentication partner's shipping address is shown in the same container.
      *  <br><br>
-     *  If an order line item is subject to the Authenticity Guarantee service, the <b>Transaction.Program</b> container will be returned.
+     *  If an order line item is subject to the Authenticity Guarantee service, the &lt;b&gt;Transaction.Program&lt;/b&gt; container will be returned.
      *
      * @var bool $isMultiLegShipping
      */
     private $isMultiLegShipping = null;
 
     /**
-     * This container consists of details about the domestic leg of a Global Shipping Program (GSP) shipment or shipment to eBay's Authenticity Guarantee service partner. With GSP, the shipment has a domestic leg and an international leg. In the domestic leg, the seller ships the item to eBay's shipping partner. In the Authenticity Guarantee service, the seller ships the item to the authentication partner, and if the item passes an authentication inspection, the authentication partner ships it directly to the buyer.
+     * This container consists of details related to the first leg of an order requiring multiple shipping legs. Types of orders that require multiple shipping legs include international orders going through Global Shipping Program or eBay International Shipping, as well as orders subject to/eligible for the Authenticity Guarantee program. </br/></br/>If the item is subject to the Authenticity Guarantee service program, the seller ships the item to the authentication partner, and if the item passes an authentication inspection, the authentication partner ships it directly to the buyer.
      *  <br/><br/>
-     *  This container is only returned if the order has one or more order line items that require shipping through GSP or shipment to an Authenticity Guarantee service partner. It is not returned if <strong>IsMultilegShipping</strong> is <code>false</code>.
+     *  This container is only returned if the order has one or more order line items requiring multiple shipping legs.
      *
      * @var \Nogrod\eBaySDK\Trading\MultiLegShippingDetailsType $multiLegShippingDetails
      */
@@ -923,10 +959,46 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      * This container shows the shipping address for the order.
      *  <br>
      *  <br>
-     *  <span class="tablenote"><b>Note:</b> For an Authenticity Guarantee program shipment, this is the address of the authenticator's warehouse. The authenticator is responsible for delivery to the buyer's shipping address.
+     *  <span class="tablenote">
+     *  <strong>Note:</strong> For an Authenticity Guarantee program shipment, this is the address of the authenticator&apos;s warehouse. The authenticator is responsible for delivery to the buyer&apos;s shipping address.
      *  </span>
-     *  <span class="tablenote"><b>Note:</b> For GetOrderTransactions, the buyer's shipping address may also be returned at the order line item level in the <b>Transaction.Buyer.BuyerInfo.ShippingAddress</b> container.
+     *  <span class="tablenote"><b>Note:</b> For GetOrderTransactions, the buyer&apos;s shipping address may also be returned at the order line item level in the <b>Transaction.Buyer.BuyerInfo.ShippingAddress</b> container.
      *  </span>
+     *  <p><span class="tablenote"><b>Note:</b>
+     *  For eBay Vault scenarios: <strong>GetOrders</strong>, <strong>GetOrderTransactions</strong>, and <strong>GetItemTransactions</strong> calls, mock address details are returned for: <br/> - Vault to vault orders: Buyer and Seller View<br /> - Ship to vault orders: Mock addresses are returned for the Buyer View (only); the address returned for the Seller View will be the authenticator&apos;s address.<br>
+     *  The following address details are returned for mock addresses:</span></p>
+     *  <pre>
+     *  &lt;ShippingAddress&gt;
+     *  <br/>
+     *  <code> &nbsp;&lt;Name&gt;eBay Vault&lt;/Name&gt;</code>
+     *  <br/>
+     *  <code> &nbsp;&lt;AddressID&gt;Invalid Request&lt;/AddressID&gt;</code>
+     *  <br/>
+     *  <code> &nbsp;&lt;AddressOwner&gt;eBay&lt;/AddressOwner&gt;</code>
+     *  <br/>
+     *  <code> &nbsp;&lt;AddressUsage&gt;Invalid&lt;/AddressUsage&gt;</code>
+     *  <br/>
+     *  <code> &nbsp;&lt;CityName&gt;Invalid Request&lt;/CityName&gt;</code>
+     *  <br/>
+     *  <code> &nbsp;&lt;Country&gt;US&lt;/Country&gt;</code>
+     *  <br/>
+     *  <code> &nbsp;&lt;CountryName&gt;Invalid Request&lt;/CountryName&gt;</code>
+     *  <br/>
+     *  <code> &nbsp;&lt;ExternalAddressID&gt;Invalid Request&lt;/ExternalAddressID&gt;</code>
+     *  <br/>
+     *  <code> &nbsp;&lt;Phone&gt;Invalid Request&lt;/Phone&gt;</code>
+     *  <br/>
+     *  <code> &nbsp;&lt;PostalCode&gt;Invalid Request&lt;/PostalCode&gt;</code>
+     *  <br/>
+     *  <code> &nbsp;&lt;StateOrProvince&gt;Invalid Request&lt;/StateOrProvince&gt;</code>
+     *  <br/>
+     *  <code> &nbsp;&lt;Street1&gt;Invalid Request&lt;/Street1&gt;</code>
+     *  <br/>
+     *  <code> &nbsp;&lt;Street2&gt;&lt;/Street2&gt;</code>
+     *  <br/>
+     *  &lt;/ShippingAddress&gt;
+     *  </pre>
+     *  <br/>
      *
      * @return \Nogrod\eBaySDK\Trading\AddressType
      */
@@ -941,10 +1013,46 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      * This container shows the shipping address for the order.
      *  <br>
      *  <br>
-     *  <span class="tablenote"><b>Note:</b> For an Authenticity Guarantee program shipment, this is the address of the authenticator's warehouse. The authenticator is responsible for delivery to the buyer's shipping address.
+     *  <span class="tablenote">
+     *  <strong>Note:</strong> For an Authenticity Guarantee program shipment, this is the address of the authenticator&apos;s warehouse. The authenticator is responsible for delivery to the buyer&apos;s shipping address.
      *  </span>
-     *  <span class="tablenote"><b>Note:</b> For GetOrderTransactions, the buyer's shipping address may also be returned at the order line item level in the <b>Transaction.Buyer.BuyerInfo.ShippingAddress</b> container.
+     *  <span class="tablenote"><b>Note:</b> For GetOrderTransactions, the buyer&apos;s shipping address may also be returned at the order line item level in the <b>Transaction.Buyer.BuyerInfo.ShippingAddress</b> container.
      *  </span>
+     *  <p><span class="tablenote"><b>Note:</b>
+     *  For eBay Vault scenarios: <strong>GetOrders</strong>, <strong>GetOrderTransactions</strong>, and <strong>GetItemTransactions</strong> calls, mock address details are returned for: <br/> - Vault to vault orders: Buyer and Seller View<br /> - Ship to vault orders: Mock addresses are returned for the Buyer View (only); the address returned for the Seller View will be the authenticator&apos;s address.<br>
+     *  The following address details are returned for mock addresses:</span></p>
+     *  <pre>
+     *  &lt;ShippingAddress&gt;
+     *  <br/>
+     *  <code> &nbsp;&lt;Name&gt;eBay Vault&lt;/Name&gt;</code>
+     *  <br/>
+     *  <code> &nbsp;&lt;AddressID&gt;Invalid Request&lt;/AddressID&gt;</code>
+     *  <br/>
+     *  <code> &nbsp;&lt;AddressOwner&gt;eBay&lt;/AddressOwner&gt;</code>
+     *  <br/>
+     *  <code> &nbsp;&lt;AddressUsage&gt;Invalid&lt;/AddressUsage&gt;</code>
+     *  <br/>
+     *  <code> &nbsp;&lt;CityName&gt;Invalid Request&lt;/CityName&gt;</code>
+     *  <br/>
+     *  <code> &nbsp;&lt;Country&gt;US&lt;/Country&gt;</code>
+     *  <br/>
+     *  <code> &nbsp;&lt;CountryName&gt;Invalid Request&lt;/CountryName&gt;</code>
+     *  <br/>
+     *  <code> &nbsp;&lt;ExternalAddressID&gt;Invalid Request&lt;/ExternalAddressID&gt;</code>
+     *  <br/>
+     *  <code> &nbsp;&lt;Phone&gt;Invalid Request&lt;/Phone&gt;</code>
+     *  <br/>
+     *  <code> &nbsp;&lt;PostalCode&gt;Invalid Request&lt;/PostalCode&gt;</code>
+     *  <br/>
+     *  <code> &nbsp;&lt;StateOrProvince&gt;Invalid Request&lt;/StateOrProvince&gt;</code>
+     *  <br/>
+     *  <code> &nbsp;&lt;Street1&gt;Invalid Request&lt;/Street1&gt;</code>
+     *  <br/>
+     *  <code> &nbsp;&lt;Street2&gt;&lt;/Street2&gt;</code>
+     *  <br/>
+     *  &lt;/ShippingAddress&gt;
+     *  </pre>
+     *  <br/>
      *
      * @param \Nogrod\eBaySDK\Trading\AddressType $shippingAddress
      * @return self
@@ -1609,9 +1717,9 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
     /**
      * Gets as isMultiLegShipping
      *
-     * If <strong>IsMultilegShipping</strong> is <code>true</code>, at least one order line item in the order will not be shipped directly to the buyer. Instead, the item(s) may be shipped to eBay's Global Shipping Program (GSP) partner who will handle the international leg of shipment, or the item may be shipped to eBay's Authenticity Guarantee service partner if the item is subject to the Authenticity Guarantee service program. In both cases, the partner's shipping address can be found in the <strong>MultiLegShippingDetails.SellerShipmentToLogisticsProvider.ShipToAddress</strong> container.
+     * If <strong>IsMultilegShipping</strong> is <code>true</code>, at least one order line item in the order will not be shipped directly to the buyer. Orders requiring multiple shipping legs include international orders being shipped through the Global Shipping Program or through eBay International Shipping, as well as orders subject to/eligible for the Authenticity Guarantee program. For both international shipping options, the address of the shipping logistics provider is shown in the <strong>MultiLegShippingDetails.SellerShipmentToLogisticsProvider.ShipToAddress</strong> container. Similarly, for Authenticity Guarantee orders, the authentication partner's shipping address is shown in the same container.
      *  <br><br>
-     *  If an order line item is subject to the Authenticity Guarantee service, the <b>Transaction.Program</b> container will be returned.
+     *  If an order line item is subject to the Authenticity Guarantee service, the &lt;b&gt;Transaction.Program&lt;/b&gt; container will be returned.
      *
      * @return bool
      */
@@ -1623,9 +1731,9 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
     /**
      * Sets a new isMultiLegShipping
      *
-     * If <strong>IsMultilegShipping</strong> is <code>true</code>, at least one order line item in the order will not be shipped directly to the buyer. Instead, the item(s) may be shipped to eBay's Global Shipping Program (GSP) partner who will handle the international leg of shipment, or the item may be shipped to eBay's Authenticity Guarantee service partner if the item is subject to the Authenticity Guarantee service program. In both cases, the partner's shipping address can be found in the <strong>MultiLegShippingDetails.SellerShipmentToLogisticsProvider.ShipToAddress</strong> container.
+     * If <strong>IsMultilegShipping</strong> is <code>true</code>, at least one order line item in the order will not be shipped directly to the buyer. Orders requiring multiple shipping legs include international orders being shipped through the Global Shipping Program or through eBay International Shipping, as well as orders subject to/eligible for the Authenticity Guarantee program. For both international shipping options, the address of the shipping logistics provider is shown in the <strong>MultiLegShippingDetails.SellerShipmentToLogisticsProvider.ShipToAddress</strong> container. Similarly, for Authenticity Guarantee orders, the authentication partner's shipping address is shown in the same container.
      *  <br><br>
-     *  If an order line item is subject to the Authenticity Guarantee service, the <b>Transaction.Program</b> container will be returned.
+     *  If an order line item is subject to the Authenticity Guarantee service, the &lt;b&gt;Transaction.Program&lt;/b&gt; container will be returned.
      *
      * @param bool $isMultiLegShipping
      * @return self
@@ -1639,9 +1747,9 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
     /**
      * Gets as multiLegShippingDetails
      *
-     * This container consists of details about the domestic leg of a Global Shipping Program (GSP) shipment or shipment to eBay's Authenticity Guarantee service partner. With GSP, the shipment has a domestic leg and an international leg. In the domestic leg, the seller ships the item to eBay's shipping partner. In the Authenticity Guarantee service, the seller ships the item to the authentication partner, and if the item passes an authentication inspection, the authentication partner ships it directly to the buyer.
+     * This container consists of details related to the first leg of an order requiring multiple shipping legs. Types of orders that require multiple shipping legs include international orders going through Global Shipping Program or eBay International Shipping, as well as orders subject to/eligible for the Authenticity Guarantee program. </br/></br/>If the item is subject to the Authenticity Guarantee service program, the seller ships the item to the authentication partner, and if the item passes an authentication inspection, the authentication partner ships it directly to the buyer.
      *  <br/><br/>
-     *  This container is only returned if the order has one or more order line items that require shipping through GSP or shipment to an Authenticity Guarantee service partner. It is not returned if <strong>IsMultilegShipping</strong> is <code>false</code>.
+     *  This container is only returned if the order has one or more order line items requiring multiple shipping legs.
      *
      * @return \Nogrod\eBaySDK\Trading\MultiLegShippingDetailsType
      */
@@ -1653,9 +1761,9 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
     /**
      * Sets a new multiLegShippingDetails
      *
-     * This container consists of details about the domestic leg of a Global Shipping Program (GSP) shipment or shipment to eBay's Authenticity Guarantee service partner. With GSP, the shipment has a domestic leg and an international leg. In the domestic leg, the seller ships the item to eBay's shipping partner. In the Authenticity Guarantee service, the seller ships the item to the authentication partner, and if the item passes an authentication inspection, the authentication partner ships it directly to the buyer.
+     * This container consists of details related to the first leg of an order requiring multiple shipping legs. Types of orders that require multiple shipping legs include international orders going through Global Shipping Program or eBay International Shipping, as well as orders subject to/eligible for the Authenticity Guarantee program. </br/></br/>If the item is subject to the Authenticity Guarantee service program, the seller ships the item to the authentication partner, and if the item passes an authentication inspection, the authentication partner ships it directly to the buyer.
      *  <br/><br/>
-     *  This container is only returned if the order has one or more order line items that require shipping through GSP or shipment to an Authenticity Guarantee service partner. It is not returned if <strong>IsMultilegShipping</strong> is <code>false</code>.
+     *  This container is only returned if the order has one or more order line items requiring multiple shipping legs.
      *
      * @param \Nogrod\eBaySDK\Trading\MultiLegShippingDetailsType $multiLegShippingDetails
      * @return self

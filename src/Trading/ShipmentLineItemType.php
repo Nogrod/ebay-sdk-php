@@ -7,13 +7,13 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing ShipmentLineItemType
  *
- * This type provides information about one or more order line items in a Global Shipping Program package.
+ * This type provides information about one or more order line items in a package.
  * XSD Type: ShipmentLineItemType
  */
 class ShipmentLineItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
     /**
-     * Contains information about one order line item in a Global Shipping Program package. The package can contain multiple units of a given order line item, and multiple order line items.
+     * Contains information about one order line item in a package. The package can contain multiple units of a given order line item, and multiple order line items.
      *
      * @var \Nogrod\eBaySDK\Trading\LineItemType[] $lineItem
      */
@@ -24,7 +24,7 @@ class ShipmentLineItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
     /**
      * Adds as lineItem
      *
-     * Contains information about one order line item in a Global Shipping Program package. The package can contain multiple units of a given order line item, and multiple order line items.
+     * Contains information about one order line item in a package. The package can contain multiple units of a given order line item, and multiple order line items.
      *
      * @return self
      * @param \Nogrod\eBaySDK\Trading\LineItemType $lineItem
@@ -38,7 +38,7 @@ class ShipmentLineItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
     /**
      * isset lineItem
      *
-     * Contains information about one order line item in a Global Shipping Program package. The package can contain multiple units of a given order line item, and multiple order line items.
+     * Contains information about one order line item in a package. The package can contain multiple units of a given order line item, and multiple order line items.
      *
      * @param int|string $index
      * @return bool
@@ -51,7 +51,7 @@ class ShipmentLineItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
     /**
      * unset lineItem
      *
-     * Contains information about one order line item in a Global Shipping Program package. The package can contain multiple units of a given order line item, and multiple order line items.
+     * Contains information about one order line item in a package. The package can contain multiple units of a given order line item, and multiple order line items.
      *
      * @param int|string $index
      * @return void
@@ -64,7 +64,7 @@ class ShipmentLineItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
     /**
      * Gets as lineItem
      *
-     * Contains information about one order line item in a Global Shipping Program package. The package can contain multiple units of a given order line item, and multiple order line items.
+     * Contains information about one order line item in a package. The package can contain multiple units of a given order line item, and multiple order line items.
      *
      * @return \Nogrod\eBaySDK\Trading\LineItemType[]
      */
@@ -76,7 +76,7 @@ class ShipmentLineItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
     /**
      * Sets a new lineItem
      *
-     * Contains information about one order line item in a Global Shipping Program package. The package can contain multiple units of a given order line item, and multiple order line items.
+     * Contains information about one order line item in a package. The package can contain multiple units of a given order line item, and multiple order line items.
      *
      * @param \Nogrod\eBaySDK\Trading\LineItemType[] $lineItem
      * @return self

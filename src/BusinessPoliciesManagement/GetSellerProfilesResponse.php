@@ -4,6 +4,8 @@ namespace Nogrod\eBaySDK\BusinessPoliciesManagement;
 
 /**
  * Class representing GetSellerProfilesResponse
+ *
+ * The root response container of the <b>getSellerProfiles</b> call.
  */
 class GetSellerProfilesResponse extends GetSellerProfilesResponseType
 {

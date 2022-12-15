@@ -4494,11 +4494,15 @@
 						&lt;br&gt;
 						&lt;br&gt;
 						&lt;span class="tablenote"&gt;&lt;strong&gt;Note:&lt;/strong&gt;
-							The &lt;b&gt;CharityNumber&lt;/b&gt; field has been scheduled for deprecation. It is the &lt;b&gt;CharityID&lt;/b&gt; value that should be used instead if the user wishes to retrieve more details on a nonprofit organization by using the Trading API's &lt;b&gt;GetCharities&lt;/b&gt; call, or used by a seller in an Add/Revise/Relist call when they want to identify the nonprofit organization that will receive sale proceeds for a listing.
+							All registered, non-profit organizations on eBay's platform have a PayPal Giving Fund identifier (&lt;b&gt;CharityNumber&lt;/b&gt;) and a unique eBay identifier (&lt;b&gt;CharityID&lt;/b&gt;). However, the &lt;b&gt;CharityNumber&lt;/b&gt; field is now deprecated in the Shopping API, and is scheduled to stop being returned in &lt;b&gt;GetSingleItem&lt;/b&gt; and &lt;b&gt;GetMultipleItems&lt;/b&gt; after January 16, 2023. At that time, it will be removed from the Shopping WSDL. The &lt;b&gt;CharityID&lt;/b&gt; value should be referenced instead.
 						&lt;/span&gt;
 					</xs:documentation>
 					<xs:appinfo>
 						<CallInfo>
+							<DeprecationVersion>1247</DeprecationVersion>
+							<EndOfLifeVersion>1293</EndOfLifeVersion>
+							<DeprecationDetails>Avoid</DeprecationDetails>
+							<UseInstead>CharityID</UseInstead>
 							<CallName>GetSingleItem</CallName>
 							<CallName>GetMultipleItems</CallName>
 							<Returned>Conditionally</Returned>
@@ -12049,7 +12053,7 @@
    						<Returned>Conditionally</Returned>
    						<Details>IncludeSelector: Details</Details>
    					</CallInfo>
-   				</xs:appinfo>
+   				</xs:appinfo> 
    			</xs:annotation>
    		</xs:element>
 		<xs:element name="ConditionDescription" type="xs:string" minOccurs="0">

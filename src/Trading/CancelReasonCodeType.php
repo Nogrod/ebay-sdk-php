@@ -114,10 +114,11 @@ class CancelReasonCodeType
     /**
      * Constant for 'BuyerCancelOrAddressIssue' value.
      *
-     * This value indicates that the seller initiated the cancellation of the order but
-     * at the request of the buyer, or if the buyer supplied a bad/incorrect address at
-     * purchase time. This is a cancel reason that the seller can give to avoid a
-     * seller defect for the cancellation.
+     * THIS ENUMERATION VALUE IS DEPRECATED. This value indicates that the seller
+     * initiated the cancellation of the order but at the request of the buyer, or if
+     * the buyer supplied a bad/incorrect address at purchase time. This is a cancel
+     * reason that the seller can give to avoid a seller defect for the cancellation.
+     * Replacement values are AddressIssues and BuyerCancelOrder.
      */
     public const VAL_BUYER_CANCEL_OR_ADDRESS_ISSUE = 'BuyerCancelOrAddressIssue';
 
@@ -130,6 +131,17 @@ class CancelReasonCodeType
      * seller will result in a seller defect.
      */
     public const VAL_OUT_OF_STOCK_OR_CANNOT_FULFILL = 'OutOfStockOrCannotFulfill';
+
+    /**
+     * Constant for 'AddressIssues' value.
+     *
+     * This enumeration value indicates that the seller initiated the order
+     * cancellation request because there are issues with the destination address
+     * supplied by the buyer.
+     *  <br/><br/>
+     *  This cancellation reason can only be given by the seller and not the buyer.
+     */
+    public const VAL_ADDRESS_ISSUES = 'AddressIssues';
 
     /**
      * Constant for 'CustomCode' value.

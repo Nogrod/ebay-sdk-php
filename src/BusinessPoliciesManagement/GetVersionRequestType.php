@@ -5,7 +5,7 @@ namespace Nogrod\eBaySDK\BusinessPoliciesManagement;
 /**
  * Class representing GetVersionRequestType
  *
- * Use this call to obtain the current version of Business policies service that the seller is using.
+ * This call is used to return the current version of Business Policies Management API. This call can be used to monitor the service for availability. This call has no input parameters and the response contains only the standard output fields.
  * XSD Type: GetVersionRequest
  */
 class GetVersionRequestType extends BaseRequestType

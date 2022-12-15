@@ -5,7 +5,7 @@ namespace Nogrod\eBaySDK\BusinessPoliciesManagement;
 /**
  * Class representing AmountType
  *
- *
+ * Monetary amount. This type is used in several locations in payment policies and return policies.
  * XSD Type: Amount
  */
 class AmountType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
@@ -16,6 +16,8 @@ class AmountType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
     private $__value = null;
 
     /**
+     * This attribute identifies the currency in which the monetary amount is specified. For a full list of 3-digit ISO 4217 currency codes, see the Trading API's <a href="https://developer.ebay.com/Devzone/XML/docs/Reference/eBay/types/CurrencyCodeType.html" target="_blank">CurrencyCodeType</a>.
+     *
      * @var string $currencyId
      */
     private $currencyId = null;
@@ -57,6 +59,8 @@ class AmountType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
     /**
      * Gets as currencyId
      *
+     * This attribute identifies the currency in which the monetary amount is specified. For a full list of 3-digit ISO 4217 currency codes, see the Trading API's <a href="https://developer.ebay.com/Devzone/XML/docs/Reference/eBay/types/CurrencyCodeType.html" target="_blank">CurrencyCodeType</a>.
+     *
      * @return string
      */
     public function getCurrencyId()
@@ -66,6 +70,8 @@ class AmountType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
 
     /**
      * Sets a new currencyId
+     *
+     * This attribute identifies the currency in which the monetary amount is specified. For a full list of 3-digit ISO 4217 currency codes, see the Trading API's <a href="https://developer.ebay.com/Devzone/XML/docs/Reference/eBay/types/CurrencyCodeType.html" target="_blank">CurrencyCodeType</a>.
      *
      * @param string $currencyId
      * @return self

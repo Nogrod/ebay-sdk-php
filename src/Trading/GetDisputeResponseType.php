@@ -7,12 +7,11 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing GetDisputeResponseType
  *
- * This is the base response type for the <b>GetDispute</b> call. This call retrieves the details of an Unpaid Item case.
- *  <br/><br/>
+ * This is the base response type for the <b>GetDispute</b> call.
+ *  <br>
+ *  <br>
  *  <span class="tablenote"><strong>Note:</strong>
- *  The <b>GetDispute</b> call now only retrieves Unpaid Item cases, and is no longer used to retrieve Item not Received (INR) disputes created through PayPal, since this is no longer an option for eBay buyers. eBay buyers must create an INR case through eBay's Resolution Center, and this call also does not support eBay Money Back Guarantee cases.
- *  <br><br>
- *  To respond to an eBay Money Back Guarantee case, the seller should use the <a href="https://developer.ebay.com/Devzone/post-order/index.html" target="_blank">Case Management calls</a> of the <b>Post-Order API</b> or manage/respond to cases manually through the eBay Resolution Center.
+ *  The <b>GetDispute</b> call is deprecated and is scheduled for decommission on January 31, 2023. The alternative API to retrieve a specific cancellation request is the <a href="https://developer.ebay.com/devzone/post-order/post-order_v2_cancellation-cancelId__get.html" target="_blank">Get Cancellation</a> method of the <a href="https://developer.ebay.com/devzone/post-order/index.html" target="_blank">Post-Order API </a>.
  *  </span>
  * XSD Type: GetDisputeResponseType
  */

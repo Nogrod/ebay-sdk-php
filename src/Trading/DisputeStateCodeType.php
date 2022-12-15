@@ -6,12 +6,6 @@ namespace Nogrod\eBaySDK\Trading;
  * Class representing DisputeStateCodeType
  *
  * Enumerated type that defines the possible states of an Unpaid Item case between buyer and seller.
- *  <br/><br/>
- *  <span class="tablenote"><strong>Note:</strong>
- *  The <b>GetDispute</b> and <b>GetUserDisputes</b> calls now only retrieve Unpaid Item cases. They are no longer used to retrieve Item not Received (INR) disputes created through PayPal, since this is no longer an option for eBay buyers. eBay buyers must create an INR case through eBay's Resolution Center, and these calls do not support eBay Money Back Guarantee cases.
- *  <br><br>
- *  To respond to an eBay Money Back Guarantee case, the seller should use the <a href="https://developer.ebay.com/Devzone/post-order/index.html" target="_blank">Case Management calls</a> of the <b>Post-Order API</b> or manage/respond to cases manually through the eBay Resolution Center.
- *  </span>
  * XSD Type: DisputeStateCodeType
  */
 class DisputeStateCodeType
@@ -232,8 +226,8 @@ class DisputeStateCodeType
     /**
      * Constant for 'UPIAssistanceDisabledByeBay' value.
      *
-     * This enumeration value indicates that the Unpaid Item case filed by the Unpaid
-     * Item Assistance mechanism was disabled by eBay (for example, eBay detected that
+     * This enumeration value indicates that the Automatic Cancellation setting in
+     * Unpaid Item preferences was disabled by eBay (for example, eBay detected that
      * payment was initiated and the seller needs to manually handle this case).
      */
     public const VAL_UPIASSISTANCE_DISABLED_BYE_BAY = 'UPIAssistanceDisabledByeBay';
@@ -241,10 +235,10 @@ class DisputeStateCodeType
     /**
      * Constant for 'UPIAssistanceDisabledBySeller' value.
      *
-     * This enumeration value indicates that the Unpaid Item case filed by the Unpaid
-     * Item Assistance mechanism was disabled by the seller (e.g. the buyer and seller
+     * This enumeration value indicates that the Automatic Cancellation setting in
+     * Unpaid Item preferences was disabled by the seller (e.g. the buyer and seller
      * have communicated about payment and the seller wishes to extend the time for
-     * payment and not let the automatic process close the case automatically).
+     * payment and not let the automatic process cancel the order automatically).
      */
     public const VAL_UPIASSISTANCE_DISABLED_BY_SELLER = 'UPIAssistanceDisabledBySeller';
 

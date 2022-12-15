@@ -7,7 +7,7 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing StoreType
  *
- * The configuration of an eBay Store.
+ * This type is used to provide details about a seller's eBay Store.
  * XSD Type: StoreType
  */
 class StoreType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
@@ -42,86 +42,30 @@ class StoreType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
     private $uRL = null;
 
     /**
-     * For the <b>GetStore</b> call, the value returned in this field indicates the user's eBay Store subscription level.
-     *  <br>
-     *  <br>
-     *  For the <b>SetStore</b> call, the user can only cancel the current eBay Store subscription (using the <b>Close</b> enumeration value), and cannot change the subscription level. A seller will have to go to the Subscriptions area of My eBay to change their subscription level. Keep in mind that an early termination fee may apply if a user has a yearly subscription, and then either cancels their subscription, or downgrades their subscription level.
+     * The value returned in this field indicates the user's eBay Store subscription level.
+     *  <br><br>
+     *  <span class="tablenote"><b>Note:</b> This field is deprecated and will stop being returned beginning on March 31, 2023. The <a href="/api-docs/sell/account/resources/subscription/methods/getSubscription" target="_blank">getSubscription</a> method of the <a href="/api-docs/sell/account/overview.html" target="_blank">Account API</a> can be used to retrieve information on a seller's eBay store subscription.</span>
      *
      * @var string $subscriptionLevel
      */
     private $subscriptionLevel = null;
 
     /**
-     * Store description (300 characters maximum).
+     * The seller-provided description of the eBay Store.
      *
      * @var string $description
      */
     private $description = null;
 
     /**
-     * Store logo.
+     * This container provides information about a Store logo.
+     *  <br>
+     *  <br>
+     *  The <b>GetStore</b> call now only returns the <b>Logo.URL</b> value, but not <b>Logo.LogoID</b> or <b>Logo.Name</b>.
      *
      * @var \Nogrod\eBaySDK\Trading\StoreLogoType $logo
      */
     private $logo = null;
-
-    /**
-     * Store theme.
-     *
-     * @var \Nogrod\eBaySDK\Trading\StoreThemeType $theme
-     */
-    private $theme = null;
-
-    /**
-     * Style for the Store header.
-     *
-     * @var string $headerStyle
-     */
-    private $headerStyle = null;
-
-    /**
-     * Page to use as the Store's homepage (default is 0). To change the
-     *  homepage, specify the PageID of one of the Store's custom pages.
-     *
-     * @var int $homePage
-     */
-    private $homePage = null;
-
-    /**
-     * The default layout type to use for the Store items.
-     *
-     * @var string $itemListLayout
-     */
-    private $itemListLayout = null;
-
-    /**
-     * The default sort order to use for the items for sale in the Store.
-     *
-     * @var string $itemListSortOrder
-     */
-    private $itemListSortOrder = null;
-
-    /**
-     * Layout for the Store's custom header.
-     *
-     * @var string $customHeaderLayout
-     */
-    private $customHeaderLayout = null;
-
-    /**
-     * Custom header text for the Store.
-     *
-     * @var string $customHeader
-     */
-    private $customHeader = null;
-
-    /**
-     * Specifies whether to export the Store listings to comparison
-     *  shopping websites.
-     *
-     * @var bool $exportListings
-     */
-    private $exportListings = null;
 
     /**
      * Container consisting of an array of one or more <b>CustomCategory</b>
@@ -138,13 +82,6 @@ class StoreType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
     private $customCategories = null;
 
     /**
-     * Custom listing header for the Store.
-     *
-     * @var \Nogrod\eBaySDK\Trading\StoreCustomListingHeaderType $customListingHeader
-     */
-    private $customListingHeader = null;
-
-    /**
      * This field is deprecated.
      *
      * @var string $merchDisplay
@@ -157,16 +94,6 @@ class StoreType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      * @var \DateTime $lastOpenedTime
      */
     private $lastOpenedTime = null;
-
-    /**
-     * A flag indicating if a Compatibility tab exists for the Store item listing. This
-     *  field is only applicable to Parts & Accessories listings in eBay US Motors.
-     *  The Compatibility tab will contain vehicles that are compatible with the part
-     *  in the listing. The seller specifies this information at listing time.
-     *
-     * @var bool $titleWithCompatibility
-     */
-    private $titleWithCompatibility = null;
 
     /**
      * Gets as name
@@ -265,10 +192,9 @@ class StoreType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
     /**
      * Gets as subscriptionLevel
      *
-     * For the <b>GetStore</b> call, the value returned in this field indicates the user's eBay Store subscription level.
-     *  <br>
-     *  <br>
-     *  For the <b>SetStore</b> call, the user can only cancel the current eBay Store subscription (using the <b>Close</b> enumeration value), and cannot change the subscription level. A seller will have to go to the Subscriptions area of My eBay to change their subscription level. Keep in mind that an early termination fee may apply if a user has a yearly subscription, and then either cancels their subscription, or downgrades their subscription level.
+     * The value returned in this field indicates the user's eBay Store subscription level.
+     *  <br><br>
+     *  <span class="tablenote"><b>Note:</b> This field is deprecated and will stop being returned beginning on March 31, 2023. The <a href="/api-docs/sell/account/resources/subscription/methods/getSubscription" target="_blank">getSubscription</a> method of the <a href="/api-docs/sell/account/overview.html" target="_blank">Account API</a> can be used to retrieve information on a seller's eBay store subscription.</span>
      *
      * @return string
      */
@@ -280,10 +206,9 @@ class StoreType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
     /**
      * Sets a new subscriptionLevel
      *
-     * For the <b>GetStore</b> call, the value returned in this field indicates the user's eBay Store subscription level.
-     *  <br>
-     *  <br>
-     *  For the <b>SetStore</b> call, the user can only cancel the current eBay Store subscription (using the <b>Close</b> enumeration value), and cannot change the subscription level. A seller will have to go to the Subscriptions area of My eBay to change their subscription level. Keep in mind that an early termination fee may apply if a user has a yearly subscription, and then either cancels their subscription, or downgrades their subscription level.
+     * The value returned in this field indicates the user's eBay Store subscription level.
+     *  <br><br>
+     *  <span class="tablenote"><b>Note:</b> This field is deprecated and will stop being returned beginning on March 31, 2023. The <a href="/api-docs/sell/account/resources/subscription/methods/getSubscription" target="_blank">getSubscription</a> method of the <a href="/api-docs/sell/account/overview.html" target="_blank">Account API</a> can be used to retrieve information on a seller's eBay store subscription.</span>
      *
      * @param string $subscriptionLevel
      * @return self
@@ -297,7 +222,7 @@ class StoreType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
     /**
      * Gets as description
      *
-     * Store description (300 characters maximum).
+     * The seller-provided description of the eBay Store.
      *
      * @return string
      */
@@ -309,7 +234,7 @@ class StoreType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
     /**
      * Sets a new description
      *
-     * Store description (300 characters maximum).
+     * The seller-provided description of the eBay Store.
      *
      * @param string $description
      * @return self
@@ -323,7 +248,10 @@ class StoreType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
     /**
      * Gets as logo
      *
-     * Store logo.
+     * This container provides information about a Store logo.
+     *  <br>
+     *  <br>
+     *  The <b>GetStore</b> call now only returns the <b>Logo.URL</b> value, but not <b>Logo.LogoID</b> or <b>Logo.Name</b>.
      *
      * @return \Nogrod\eBaySDK\Trading\StoreLogoType
      */
@@ -335,7 +263,10 @@ class StoreType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
     /**
      * Sets a new logo
      *
-     * Store logo.
+     * This container provides information about a Store logo.
+     *  <br>
+     *  <br>
+     *  The <b>GetStore</b> call now only returns the <b>Logo.URL</b> value, but not <b>Logo.LogoID</b> or <b>Logo.Name</b>.
      *
      * @param \Nogrod\eBaySDK\Trading\StoreLogoType $logo
      * @return self
@@ -343,218 +274,6 @@ class StoreType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
     public function setLogo(\Nogrod\eBaySDK\Trading\StoreLogoType $logo)
     {
         $this->logo = $logo;
-        return $this;
-    }
-
-    /**
-     * Gets as theme
-     *
-     * Store theme.
-     *
-     * @return \Nogrod\eBaySDK\Trading\StoreThemeType
-     */
-    public function getTheme()
-    {
-        return $this->theme;
-    }
-
-    /**
-     * Sets a new theme
-     *
-     * Store theme.
-     *
-     * @param \Nogrod\eBaySDK\Trading\StoreThemeType $theme
-     * @return self
-     */
-    public function setTheme(\Nogrod\eBaySDK\Trading\StoreThemeType $theme)
-    {
-        $this->theme = $theme;
-        return $this;
-    }
-
-    /**
-     * Gets as headerStyle
-     *
-     * Style for the Store header.
-     *
-     * @return string
-     */
-    public function getHeaderStyle()
-    {
-        return $this->headerStyle;
-    }
-
-    /**
-     * Sets a new headerStyle
-     *
-     * Style for the Store header.
-     *
-     * @param string $headerStyle
-     * @return self
-     */
-    public function setHeaderStyle($headerStyle)
-    {
-        $this->headerStyle = $headerStyle;
-        return $this;
-    }
-
-    /**
-     * Gets as homePage
-     *
-     * Page to use as the Store's homepage (default is 0). To change the
-     *  homepage, specify the PageID of one of the Store's custom pages.
-     *
-     * @return int
-     */
-    public function getHomePage()
-    {
-        return $this->homePage;
-    }
-
-    /**
-     * Sets a new homePage
-     *
-     * Page to use as the Store's homepage (default is 0). To change the
-     *  homepage, specify the PageID of one of the Store's custom pages.
-     *
-     * @param int $homePage
-     * @return self
-     */
-    public function setHomePage($homePage)
-    {
-        $this->homePage = $homePage;
-        return $this;
-    }
-
-    /**
-     * Gets as itemListLayout
-     *
-     * The default layout type to use for the Store items.
-     *
-     * @return string
-     */
-    public function getItemListLayout()
-    {
-        return $this->itemListLayout;
-    }
-
-    /**
-     * Sets a new itemListLayout
-     *
-     * The default layout type to use for the Store items.
-     *
-     * @param string $itemListLayout
-     * @return self
-     */
-    public function setItemListLayout($itemListLayout)
-    {
-        $this->itemListLayout = $itemListLayout;
-        return $this;
-    }
-
-    /**
-     * Gets as itemListSortOrder
-     *
-     * The default sort order to use for the items for sale in the Store.
-     *
-     * @return string
-     */
-    public function getItemListSortOrder()
-    {
-        return $this->itemListSortOrder;
-    }
-
-    /**
-     * Sets a new itemListSortOrder
-     *
-     * The default sort order to use for the items for sale in the Store.
-     *
-     * @param string $itemListSortOrder
-     * @return self
-     */
-    public function setItemListSortOrder($itemListSortOrder)
-    {
-        $this->itemListSortOrder = $itemListSortOrder;
-        return $this;
-    }
-
-    /**
-     * Gets as customHeaderLayout
-     *
-     * Layout for the Store's custom header.
-     *
-     * @return string
-     */
-    public function getCustomHeaderLayout()
-    {
-        return $this->customHeaderLayout;
-    }
-
-    /**
-     * Sets a new customHeaderLayout
-     *
-     * Layout for the Store's custom header.
-     *
-     * @param string $customHeaderLayout
-     * @return self
-     */
-    public function setCustomHeaderLayout($customHeaderLayout)
-    {
-        $this->customHeaderLayout = $customHeaderLayout;
-        return $this;
-    }
-
-    /**
-     * Gets as customHeader
-     *
-     * Custom header text for the Store.
-     *
-     * @return string
-     */
-    public function getCustomHeader()
-    {
-        return $this->customHeader;
-    }
-
-    /**
-     * Sets a new customHeader
-     *
-     * Custom header text for the Store.
-     *
-     * @param string $customHeader
-     * @return self
-     */
-    public function setCustomHeader($customHeader)
-    {
-        $this->customHeader = $customHeader;
-        return $this;
-    }
-
-    /**
-     * Gets as exportListings
-     *
-     * Specifies whether to export the Store listings to comparison
-     *  shopping websites.
-     *
-     * @return bool
-     */
-    public function getExportListings()
-    {
-        return $this->exportListings;
-    }
-
-    /**
-     * Sets a new exportListings
-     *
-     * Specifies whether to export the Store listings to comparison
-     *  shopping websites.
-     *
-     * @param bool $exportListings
-     * @return self
-     */
-    public function setExportListings($exportListings)
-    {
-        $this->exportListings = $exportListings;
         return $this;
     }
 
@@ -660,32 +379,6 @@ class StoreType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
     }
 
     /**
-     * Gets as customListingHeader
-     *
-     * Custom listing header for the Store.
-     *
-     * @return \Nogrod\eBaySDK\Trading\StoreCustomListingHeaderType
-     */
-    public function getCustomListingHeader()
-    {
-        return $this->customListingHeader;
-    }
-
-    /**
-     * Sets a new customListingHeader
-     *
-     * Custom listing header for the Store.
-     *
-     * @param \Nogrod\eBaySDK\Trading\StoreCustomListingHeaderType $customListingHeader
-     * @return self
-     */
-    public function setCustomListingHeader(\Nogrod\eBaySDK\Trading\StoreCustomListingHeaderType $customListingHeader)
-    {
-        $this->customListingHeader = $customListingHeader;
-        return $this;
-    }
-
-    /**
      * Gets as merchDisplay
      *
      * This field is deprecated.
@@ -737,38 +430,6 @@ class StoreType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
         return $this;
     }
 
-    /**
-     * Gets as titleWithCompatibility
-     *
-     * A flag indicating if a Compatibility tab exists for the Store item listing. This
-     *  field is only applicable to Parts & Accessories listings in eBay US Motors.
-     *  The Compatibility tab will contain vehicles that are compatible with the part
-     *  in the listing. The seller specifies this information at listing time.
-     *
-     * @return bool
-     */
-    public function getTitleWithCompatibility()
-    {
-        return $this->titleWithCompatibility;
-    }
-
-    /**
-     * Sets a new titleWithCompatibility
-     *
-     * A flag indicating if a Compatibility tab exists for the Store item listing. This
-     *  field is only applicable to Parts & Accessories listings in eBay US Motors.
-     *  The Compatibility tab will contain vehicles that are compatible with the part
-     *  in the listing. The seller specifies this information at listing time.
-     *
-     * @param bool $titleWithCompatibility
-     * @return self
-     */
-    public function setTitleWithCompatibility($titleWithCompatibility)
-    {
-        $this->titleWithCompatibility = $titleWithCompatibility;
-        return $this;
-    }
-
     public function xmlSerialize(\Sabre\Xml\Writer $writer)
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
@@ -796,48 +457,11 @@ class StoreType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Logo", $value);
         }
-        $value = $this->getTheme();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Theme", $value);
-        }
-        $value = $this->getHeaderStyle();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}HeaderStyle", $value);
-        }
-        $value = $this->getHomePage();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}HomePage", $value);
-        }
-        $value = $this->getItemListLayout();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ItemListLayout", $value);
-        }
-        $value = $this->getItemListSortOrder();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ItemListSortOrder", $value);
-        }
-        $value = $this->getCustomHeaderLayout();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CustomHeaderLayout", $value);
-        }
-        $value = $this->getCustomHeader();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CustomHeader", $value);
-        }
-        $value = $this->getExportListings();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ExportListings", $value);
-        }
         $value = $this->getCustomCategories();
         if (null !== $value && !empty($this->getCustomCategories())) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CustomCategories", array_map(function ($v) {
                 return ["CustomCategory" => $v];
             }, $value));
-        }
-        $value = $this->getCustomListingHeader();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CustomListingHeader", $value);
         }
         $value = $this->getMerchDisplay();
         if (null !== $value) {
@@ -846,11 +470,6 @@ class StoreType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
         $value = $this->getLastOpenedTime();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}LastOpenedTime", $value);
-        }
-        $value = $this->getTitleWithCompatibility();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TitleWithCompatibility", $value);
         }
     }
 
@@ -892,47 +511,11 @@ class StoreType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
         if (null !== $value) {
             $this->setLogo(\Nogrod\eBaySDK\Trading\StoreLogoType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Theme');
-        if (null !== $value) {
-            $this->setTheme(\Nogrod\eBaySDK\Trading\StoreThemeType::fromKeyValue($value));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}HeaderStyle');
-        if (null !== $value) {
-            $this->setHeaderStyle($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}HomePage');
-        if (null !== $value) {
-            $this->setHomePage($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemListLayout');
-        if (null !== $value) {
-            $this->setItemListLayout($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemListSortOrder');
-        if (null !== $value) {
-            $this->setItemListSortOrder($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CustomHeaderLayout');
-        if (null !== $value) {
-            $this->setCustomHeaderLayout($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CustomHeader');
-        if (null !== $value) {
-            $this->setCustomHeader($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExportListings');
-        if (null !== $value) {
-            $this->setExportListings($value);
-        }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CustomCategories', true);
         if (null !== $value && !empty($value)) {
             $this->setCustomCategories(array_map(function ($v) {
                 return \Nogrod\eBaySDK\Trading\StoreCustomCategoryType::fromKeyValue($v);
             }, $value));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CustomListingHeader');
-        if (null !== $value) {
-            $this->setCustomListingHeader(\Nogrod\eBaySDK\Trading\StoreCustomListingHeaderType::fromKeyValue($value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MerchDisplay');
         if (null !== $value) {
@@ -941,10 +524,6 @@ class StoreType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LastOpenedTime');
         if (null !== $value) {
             $this->setLastOpenedTime(new \DateTime($value));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TitleWithCompatibility');
-        if (null !== $value) {
-            $this->setTitleWithCompatibility($value);
         }
     }
 }

@@ -5,28 +5,7 @@ namespace Nogrod\eBaySDK\Trading;
 /**
  * Class representing DisputeStatusCodeType
  *
- * Enumerated type that defines the possible statuses of an order dispute between buyer and seller. The <b>DisputeState</b> and <b>DisputeStatus</b> values returned for each dispute complement one another.
- *  <br/><br/>
- *  If the <b>DisputeSortType</b> filter is used in a <b>GetUserDisputes</b> call and set to <code>DisputeStatusAscending</code>, retrieved disputes will be sorted in the following order according to <b>DisputeStatus</b>:
- *  <ol>
- *  <li><code>WaitingForSellerResponse</code></li>
- *  <li><code>WaitingForBuyerResponse</code></li>
- *  <li><code>ClosedFVFCreditStrike</code></li>
- *  <li><code>ClosedNoFVFCreditStrike</code></li>
- *  <li><code>ClosedFVFCreditNoStrike</code></li>
- *  <li><code>ClosedNoFVFCreditNoStrike</code></li>
- *  <li><code>Closed</code></li>
- *  <li><code>StrikeAppealedAfterClosing</code></li>
- *  <li><code>FVFCreditReversedAfterClosing</code></li>
- *  <li><code>StrikeAppealedAndFVFCreditReversed</code></li>
- *  </ol><br/>
- *  If the <b>DisputeSortType</b> value is set to <code>DisputeStatusDescending</code> instead, retrieved disputes will be sorted in the opposite order of the ones listed above.
- *  <br/><br/>
- *  <span class="tablenote"><strong>Note:</strong>
- *  The <b>GetDispute</b> and <b>GetUserDisputes</b> calls now only retrieve Unpaid Item cases. They are no longer used to retrieve Item not Received (INR) disputes created through PayPal, since this is no longer an option for eBay buyers. eBay buyers must create an INR case through eBay's Resolution Center, and these calls do not support eBay Money Back Guarantee cases.
- *  <br><br>
- *  To respond to an eBay Money Back Guarantee case, the seller should use the <a href="https://developer.ebay.com/Devzone/post-order/index.html" target="_blank">Case Management calls</a> of the <b>Post-Order API</b> or manage/respond to cases manually through the eBay Resolution Center.
- *  </span>
+ * Enumerated type that defines the possible statuses of an order dispute between buyer and seller.
  * XSD Type: DisputeStatusCodeType
  */
 class DisputeStatusCodeType

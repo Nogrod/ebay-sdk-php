@@ -8,11 +8,10 @@ use Nogrod\XMLClientRuntime\Func;
  * Class representing AddDisputeResponseRequestType
  *
  * This call enables the seller to update an Unpaid Item case.
- *  <br/><br/>
+ *  <br>
+ *  <br>
  *  <span class="tablenote"><strong>Note:</strong>
- *  The <strong>AddDisputeResponse</strong> call now only supports the update of Unpaid Item cases, and no longer support Item not Received (INR) or Significantly not as Described (SNAD) disputes created through PayPal, since this is no longer an option for eBay buyers. eBay buyers must create an INR case through eBay's Resolution Center, and this call also does not support eBay Money Back Guarantee cases.
- *  <br><br>
- *  To respond to an eBay Money Back Guarantee case, the seller should use the <a href="https://developer.ebay.com/Devzone/post-order/index.html" target="_blank">Case Management calls</a> of the <b>Post-Order API</b> or manage/respond to cases manually through the eBay Resolution Center.
+ *  This call is deprecated and is scheduled for decommission on January 31, 2023. There is no alternative to this call since eBay no longer supports Unpaid Item cases. However, there is a page in Selling Preferences in My eBay that allows a seller to cancel and relist any items that have not been paid for after a specified amount of days.
  *  </span>
  * XSD Type: AddDisputeResponseRequestType
  */
@@ -26,35 +25,35 @@ class AddDisputeResponseRequestType extends AbstractRequestType
     private $disputeID = null;
 
     /**
-     * This field is used to provide a text-based comment regarding the Unpaid Item case. This field is conditionally required when <b>DisputeActivity</b> value is set to <code>SellerAddInformation</code>, <code>SellerComment</code>, or <code>SellerPaymentNotReceived</code>. Otherwise, this field is optional.
+     * This field is used to provide a text-based comment regarding the Unpaid Item case.
      *
      * @var string $messageText
      */
     private $messageText = null;
 
     /**
-     * This field is used to indicate the type of action or update that the seller is making with the <b>AddDisputeResponse</b> call. See <b>DisputeActivityCodeType</b> for more information on the supported enum values.
+     * This field is used to indicate the type of action or update that the seller is making with the <b>AddDisputeResponse</b> call.
      *
      * @var string $disputeActivity
      */
     private $disputeActivity = null;
 
     /**
-     * <b>DO NOT USE</b>. This field is no longer applicable. This field was only applicable for PayPal INR disputes, which this call no longer supports.
+     * <b>DO NOT USE</b>. This field is no longer applicable.
      *
      * @var string $shippingCarrierUsed
      */
     private $shippingCarrierUsed = null;
 
     /**
-     * <b>DO NOT USE</b>. This field is no longer applicable. This field was only applicable for PayPal INR disputes, which this call no longer supports.
+     * <b>DO NOT USE</b>. This field is no longer applicable.
      *
      * @var string $shipmentTrackNumber
      */
     private $shipmentTrackNumber = null;
 
     /**
-     * <b>DO NOT USE</b>. This field is no longer applicable. This field was only applicable for PayPal INR disputes, which this call no longer supports.
+     * <b>DO NOT USE</b>. This field is no longer applicable.
      *
      * @var \DateTime $shippingTime
      */
@@ -89,7 +88,7 @@ class AddDisputeResponseRequestType extends AbstractRequestType
     /**
      * Gets as messageText
      *
-     * This field is used to provide a text-based comment regarding the Unpaid Item case. This field is conditionally required when <b>DisputeActivity</b> value is set to <code>SellerAddInformation</code>, <code>SellerComment</code>, or <code>SellerPaymentNotReceived</code>. Otherwise, this field is optional.
+     * This field is used to provide a text-based comment regarding the Unpaid Item case.
      *
      * @return string
      */
@@ -101,7 +100,7 @@ class AddDisputeResponseRequestType extends AbstractRequestType
     /**
      * Sets a new messageText
      *
-     * This field is used to provide a text-based comment regarding the Unpaid Item case. This field is conditionally required when <b>DisputeActivity</b> value is set to <code>SellerAddInformation</code>, <code>SellerComment</code>, or <code>SellerPaymentNotReceived</code>. Otherwise, this field is optional.
+     * This field is used to provide a text-based comment regarding the Unpaid Item case.
      *
      * @param string $messageText
      * @return self
@@ -115,7 +114,7 @@ class AddDisputeResponseRequestType extends AbstractRequestType
     /**
      * Gets as disputeActivity
      *
-     * This field is used to indicate the type of action or update that the seller is making with the <b>AddDisputeResponse</b> call. See <b>DisputeActivityCodeType</b> for more information on the supported enum values.
+     * This field is used to indicate the type of action or update that the seller is making with the <b>AddDisputeResponse</b> call.
      *
      * @return string
      */
@@ -127,7 +126,7 @@ class AddDisputeResponseRequestType extends AbstractRequestType
     /**
      * Sets a new disputeActivity
      *
-     * This field is used to indicate the type of action or update that the seller is making with the <b>AddDisputeResponse</b> call. See <b>DisputeActivityCodeType</b> for more information on the supported enum values.
+     * This field is used to indicate the type of action or update that the seller is making with the <b>AddDisputeResponse</b> call.
      *
      * @param string $disputeActivity
      * @return self
@@ -141,7 +140,7 @@ class AddDisputeResponseRequestType extends AbstractRequestType
     /**
      * Gets as shippingCarrierUsed
      *
-     * <b>DO NOT USE</b>. This field is no longer applicable. This field was only applicable for PayPal INR disputes, which this call no longer supports.
+     * <b>DO NOT USE</b>. This field is no longer applicable.
      *
      * @return string
      */
@@ -153,7 +152,7 @@ class AddDisputeResponseRequestType extends AbstractRequestType
     /**
      * Sets a new shippingCarrierUsed
      *
-     * <b>DO NOT USE</b>. This field is no longer applicable. This field was only applicable for PayPal INR disputes, which this call no longer supports.
+     * <b>DO NOT USE</b>. This field is no longer applicable.
      *
      * @param string $shippingCarrierUsed
      * @return self
@@ -167,7 +166,7 @@ class AddDisputeResponseRequestType extends AbstractRequestType
     /**
      * Gets as shipmentTrackNumber
      *
-     * <b>DO NOT USE</b>. This field is no longer applicable. This field was only applicable for PayPal INR disputes, which this call no longer supports.
+     * <b>DO NOT USE</b>. This field is no longer applicable.
      *
      * @return string
      */
@@ -179,7 +178,7 @@ class AddDisputeResponseRequestType extends AbstractRequestType
     /**
      * Sets a new shipmentTrackNumber
      *
-     * <b>DO NOT USE</b>. This field is no longer applicable. This field was only applicable for PayPal INR disputes, which this call no longer supports.
+     * <b>DO NOT USE</b>. This field is no longer applicable.
      *
      * @param string $shipmentTrackNumber
      * @return self
@@ -193,7 +192,7 @@ class AddDisputeResponseRequestType extends AbstractRequestType
     /**
      * Gets as shippingTime
      *
-     * <b>DO NOT USE</b>. This field is no longer applicable. This field was only applicable for PayPal INR disputes, which this call no longer supports.
+     * <b>DO NOT USE</b>. This field is no longer applicable.
      *
      * @return \DateTime
      */
@@ -205,7 +204,7 @@ class AddDisputeResponseRequestType extends AbstractRequestType
     /**
      * Sets a new shippingTime
      *
-     * <b>DO NOT USE</b>. This field is no longer applicable. This field was only applicable for PayPal INR disputes, which this call no longer supports.
+     * <b>DO NOT USE</b>. This field is no longer applicable.
      *
      * @param \DateTime $shippingTime
      * @return self

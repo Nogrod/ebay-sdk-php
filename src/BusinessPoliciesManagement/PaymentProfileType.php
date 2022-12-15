@@ -7,13 +7,15 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing PaymentProfileType
  *
- * The root container for all payment policies.
+ * Type defining the <b>paymentProfile</b> container, which is the container used to define one payment policy for a seller.
  * XSD Type: PaymentProfile
  */
 class PaymentProfileType extends SellerProfileType
 {
     /**
-     * Defines the payment method that a seller accepts.
+     * This container consists of detailed payment information for a seller's payment policy. This container is conditionally required if the caller is creating a new payment policy or modifying an existing payment policy.
+     *  <br><br>
+     *  This container is returned by <b>getSellerProfiles</b> if one or more payment policies match the input criteria in the call request, and is returned in the response of <b>addSellerProfile</b> or <b>setSellerProfile</b> if a payment policy is being created or modified, respectively.
      *
      * @var \Nogrod\eBaySDK\BusinessPoliciesManagement\PaymentInfoType $paymentInfo
      */
@@ -22,7 +24,9 @@ class PaymentProfileType extends SellerProfileType
     /**
      * Gets as paymentInfo
      *
-     * Defines the payment method that a seller accepts.
+     * This container consists of detailed payment information for a seller's payment policy. This container is conditionally required if the caller is creating a new payment policy or modifying an existing payment policy.
+     *  <br><br>
+     *  This container is returned by <b>getSellerProfiles</b> if one or more payment policies match the input criteria in the call request, and is returned in the response of <b>addSellerProfile</b> or <b>setSellerProfile</b> if a payment policy is being created or modified, respectively.
      *
      * @return \Nogrod\eBaySDK\BusinessPoliciesManagement\PaymentInfoType
      */
@@ -34,7 +38,9 @@ class PaymentProfileType extends SellerProfileType
     /**
      * Sets a new paymentInfo
      *
-     * Defines the payment method that a seller accepts.
+     * This container consists of detailed payment information for a seller's payment policy. This container is conditionally required if the caller is creating a new payment policy or modifying an existing payment policy.
+     *  <br><br>
+     *  This container is returned by <b>getSellerProfiles</b> if one or more payment policies match the input criteria in the call request, and is returned in the response of <b>addSellerProfile</b> or <b>setSellerProfile</b> if a payment policy is being created or modified, respectively.
      *
      * @param \Nogrod\eBaySDK\BusinessPoliciesManagement\PaymentInfoType $paymentInfo
      * @return self

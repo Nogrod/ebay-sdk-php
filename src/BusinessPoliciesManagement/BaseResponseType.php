@@ -7,40 +7,42 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing BaseResponseType
  *
- * Base response container for all service
- *  operations. Contains error information
- *  associated with the request.
+ * Base response container for all service operations. Contains error information associated with the request.
  * XSD Type: BaseResponse
  */
 class BaseResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
     /**
+     * A token representing the application-level acknowledgment code that indicates the response status, such as success. The AckValue list specifies the possible values for ack.
+     *
      * @var string $ack
      */
     private $ack = null;
 
     /**
-     * Information for an error or warning that
-     *  occurred when eBay processed the
-     *  request.
+     * Information for an error or warning that occurred when eBay processed the request.
      *
      * @var \Nogrod\eBaySDK\BusinessPoliciesManagement\ErrorDataType[] $errorMessage
      */
     private $errorMessage = null;
 
     /**
+     * The version of the response payload schema. Indicates the version of the schema that eBay used to process the request.
+     *
      * @var string $version
      */
     private $version = null;
 
     /**
-     * This value represents the date and time when eBay processed the request. The time zone of this value is GMT and the format is the ISO 8601 date and time format (YYYY-MM-DDTHH:MM:SS.SSSZ). See Time Values in the eBay Web Services guide for information about this time format and converting to and from the GMT time zone.
+     * This value represents the date and time when eBay processed the request. The time zone of this value is GMT and the format is the ISO 8601 date and time format (YYYY-MM-DDTHH:MM:SS.SSSZ).
      *
      * @var \DateTime $timestamp
      */
     private $timestamp = null;
 
     /**
+     * Reserved for future use.
+     *
      * @var \Nogrod\eBaySDK\BusinessPoliciesManagement\ExtensionType[] $extension
      */
     private $extension = [
@@ -49,6 +51,8 @@ class BaseResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
 
     /**
      * Gets as ack
+     *
+     * A token representing the application-level acknowledgment code that indicates the response status, such as success. The AckValue list specifies the possible values for ack.
      *
      * @return string
      */
@@ -59,6 +63,8 @@ class BaseResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
 
     /**
      * Sets a new ack
+     *
+     * A token representing the application-level acknowledgment code that indicates the response status, such as success. The AckValue list specifies the possible values for ack.
      *
      * @param string $ack
      * @return self
@@ -72,9 +78,7 @@ class BaseResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Adds as error
      *
-     * Information for an error or warning that
-     *  occurred when eBay processed the
-     *  request.
+     * Information for an error or warning that occurred when eBay processed the request.
      *
      * @return self
      * @param \Nogrod\eBaySDK\BusinessPoliciesManagement\ErrorDataType $error
@@ -88,9 +92,7 @@ class BaseResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * isset errorMessage
      *
-     * Information for an error or warning that
-     *  occurred when eBay processed the
-     *  request.
+     * Information for an error or warning that occurred when eBay processed the request.
      *
      * @param int|string $index
      * @return bool
@@ -103,9 +105,7 @@ class BaseResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * unset errorMessage
      *
-     * Information for an error or warning that
-     *  occurred when eBay processed the
-     *  request.
+     * Information for an error or warning that occurred when eBay processed the request.
      *
      * @param int|string $index
      * @return void
@@ -118,9 +118,7 @@ class BaseResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Gets as errorMessage
      *
-     * Information for an error or warning that
-     *  occurred when eBay processed the
-     *  request.
+     * Information for an error or warning that occurred when eBay processed the request.
      *
      * @return \Nogrod\eBaySDK\BusinessPoliciesManagement\ErrorDataType[]
      */
@@ -132,9 +130,7 @@ class BaseResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Sets a new errorMessage
      *
-     * Information for an error or warning that
-     *  occurred when eBay processed the
-     *  request.
+     * Information for an error or warning that occurred when eBay processed the request.
      *
      * @param \Nogrod\eBaySDK\BusinessPoliciesManagement\ErrorDataType[] $errorMessage
      * @return self
@@ -148,6 +144,8 @@ class BaseResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Gets as version
      *
+     * The version of the response payload schema. Indicates the version of the schema that eBay used to process the request.
+     *
      * @return string
      */
     public function getVersion()
@@ -157,6 +155,8 @@ class BaseResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
 
     /**
      * Sets a new version
+     *
+     * The version of the response payload schema. Indicates the version of the schema that eBay used to process the request.
      *
      * @param string $version
      * @return self
@@ -170,7 +170,7 @@ class BaseResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Gets as timestamp
      *
-     * This value represents the date and time when eBay processed the request. The time zone of this value is GMT and the format is the ISO 8601 date and time format (YYYY-MM-DDTHH:MM:SS.SSSZ). See Time Values in the eBay Web Services guide for information about this time format and converting to and from the GMT time zone.
+     * This value represents the date and time when eBay processed the request. The time zone of this value is GMT and the format is the ISO 8601 date and time format (YYYY-MM-DDTHH:MM:SS.SSSZ).
      *
      * @return \DateTime
      */
@@ -182,7 +182,7 @@ class BaseResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Sets a new timestamp
      *
-     * This value represents the date and time when eBay processed the request. The time zone of this value is GMT and the format is the ISO 8601 date and time format (YYYY-MM-DDTHH:MM:SS.SSSZ). See Time Values in the eBay Web Services guide for information about this time format and converting to and from the GMT time zone.
+     * This value represents the date and time when eBay processed the request. The time zone of this value is GMT and the format is the ISO 8601 date and time format (YYYY-MM-DDTHH:MM:SS.SSSZ).
      *
      * @param \DateTime $timestamp
      * @return self
@@ -196,6 +196,8 @@ class BaseResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Adds as extension
      *
+     * Reserved for future use.
+     *
      * @return self
      * @param \Nogrod\eBaySDK\BusinessPoliciesManagement\ExtensionType $extension
      */
@@ -208,6 +210,8 @@ class BaseResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * isset extension
      *
+     * Reserved for future use.
+     *
      * @param int|string $index
      * @return bool
      */
@@ -218,6 +222,8 @@ class BaseResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
 
     /**
      * unset extension
+     *
+     * Reserved for future use.
      *
      * @param int|string $index
      * @return void
@@ -230,6 +236,8 @@ class BaseResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Gets as extension
      *
+     * Reserved for future use.
+     *
      * @return \Nogrod\eBaySDK\BusinessPoliciesManagement\ExtensionType[]
      */
     public function getExtension()
@@ -239,6 +247,8 @@ class BaseResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
 
     /**
      * Sets a new extension
+     *
+     * Reserved for future use.
      *
      * @param \Nogrod\eBaySDK\BusinessPoliciesManagement\ExtensionType[] $extension
      * @return self

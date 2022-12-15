@@ -5,11 +5,7 @@ namespace Nogrod\eBaySDK\Trading;
 /**
  * Class representing PayPalRequiredForStoreOwnerDefinitionType
  *
- * If the field is present, the corresponding feature applies to the category. The
- *  field is returned as an empty element (i.e., a boolean value is not returned).
- *  <br><br>
- *  <span class="tablenote"><b>Note: </b> Although the <b>PayPalRequiredForStoreOwner</b> field is still being returned for now, sellers never need to set the available electronic payments, and PayPal will never be required on any eBay marketplace.
- *  </span>
+ * This type is deprecated.
  * XSD Type: PayPalRequiredForStoreOwnerDefinitionType
  */
 class PayPalRequiredForStoreOwnerDefinitionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable

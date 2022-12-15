@@ -5,10 +5,7 @@ namespace Nogrod\eBaySDK\Trading;
 /**
  * Class representing PayPalAccountTypeCodeType
  *
- * Enumerated type that defines PayPal account types.
- *  <br><br>
- *  <span class="tablenote"><b>Note: </b> Although the <b>PayPalAccountType</b> field is still being returned for now, this field now has much less relevance since a seller's eBay account and PayPal account are no longer linked together, and a seller having a PayPal account is no longer a requirement.
- *  </span>
+ * This enumeration type is deprecated.
  * XSD Type: PayPalAccountTypeCodeType
  */
 class PayPalAccountTypeCodeType
@@ -16,45 +13,42 @@ class PayPalAccountTypeCodeType
     /**
      * Constant for 'Personal' value.
      *
-     * This enumeration value indicates that the user's PayPal account is a Personal
-     * account.
+     * This enumeration value is deprecated.
      */
     public const VAL_PERSONAL = 'Personal';
 
     /**
      * Constant for 'Premier' value.
      *
-     * This enumeration value indicates that the user's PayPal account is a Premier
-     * account.
+     * This enumeration value is deprecated.
      */
     public const VAL_PREMIER = 'Premier';
 
     /**
      * Constant for 'Business' value.
      *
-     * This enumeration value indicates that the user's PayPal account is a Business
-     * account.
+     * This enumeration value is deprecated.
      */
     public const VAL_BUSINESS = 'Business';
 
     /**
      * Constant for 'Unknown' value.
      *
-     * This enumeration value indicates that the user's PayPal account type is unknown.
+     * This enumeration value is deprecated.
      */
     public const VAL_UNKNOWN = 'Unknown';
 
     /**
      * Constant for 'Invalid' value.
      *
-     * This enumeration value indicates that the user's PayPal account is invalid.
+     * This enumeration value is deprecated.
      */
     public const VAL_INVALID = 'Invalid';
 
     /**
      * Constant for 'CustomCode' value.
      *
-     * Reserved for internal or future use
+     * Reserved for internal or future use.
      */
     public const VAL_CUSTOM_CODE = 'CustomCode';
 

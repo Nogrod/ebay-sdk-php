@@ -7,7 +7,12 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing AddDisputeResponseType
  *
- * Type defining the response of the <b>AddDispute</b> call. Upon a successful call, the response contains a newly created <b>DisputeID</b> value, which confirms that an Unpaid Item case was created.
+ * Type defining the response of the <b>AddDispute</b> call.
+ *  <br>
+ *  <br>
+ *  <span class="tablenote"><strong>Note:</strong>
+ *  The <b>AddDispute</b> call is deprecated and is scheduled for decommission on January 31, 2023. The alternative API to create cancellation requests is the <a href="https://developer.ebay.com/devzone/post-order/post-order_v2_cancellation__post.html" target="_blank">Create Cancellation Request</a> method of the <a href="https://developer.ebay.com/devzone/post-order/index.html" target="_blank">Post-Order API </a>.
+ *  </span>
  * XSD Type: AddDisputeResponseType
  */
 class AddDisputeResponseType extends AbstractResponseType

@@ -315,16 +315,10 @@ class GeteBayDetailsResponseType extends AbstractResponseType
     ];
 
     /**
-     * Site-level validation rules for multi-variation listings (for example, the
-     *  maximum number of variations per listing). Use <b>GetCategoryFeatures</b> to
-     *  determine which categories on a site support variations. Use
-     *  <b>GetCategorySpecifics</b> for rules related to recommended or required variation
-     *  specifics.
+     * Site-level validation rules for multiple-variation listings (for example, the maximum number of variations per listing). Use <b>GetCategoryFeatures</b> to determine which categories on a site support variations.
      *  <br/><br/>
      *  <span class="tablenote"><b>Note: </b>
-     *  This container is only returned if <b>VariationDetails</b> is included as a
-     *  <b>DetailName</b> filter in the request, or if no <b>DetailName</b>
-     *  filters are used in the request.
+     *  This container is only returned if <b>VariationDetails</b> is included as a <b>DetailName</b> filter in the request, or if no <b>DetailName</b> filters are used in the request.
      *  </span>
      *
      * @var \Nogrod\eBaySDK\Trading\VariationDetailsType $variationDetails
@@ -2276,16 +2270,10 @@ class GeteBayDetailsResponseType extends AbstractResponseType
     /**
      * Gets as variationDetails
      *
-     * Site-level validation rules for multi-variation listings (for example, the
-     *  maximum number of variations per listing). Use <b>GetCategoryFeatures</b> to
-     *  determine which categories on a site support variations. Use
-     *  <b>GetCategorySpecifics</b> for rules related to recommended or required variation
-     *  specifics.
+     * Site-level validation rules for multiple-variation listings (for example, the maximum number of variations per listing). Use <b>GetCategoryFeatures</b> to determine which categories on a site support variations.
      *  <br/><br/>
      *  <span class="tablenote"><b>Note: </b>
-     *  This container is only returned if <b>VariationDetails</b> is included as a
-     *  <b>DetailName</b> filter in the request, or if no <b>DetailName</b>
-     *  filters are used in the request.
+     *  This container is only returned if <b>VariationDetails</b> is included as a <b>DetailName</b> filter in the request, or if no <b>DetailName</b> filters are used in the request.
      *  </span>
      *
      * @return \Nogrod\eBaySDK\Trading\VariationDetailsType
@@ -2298,16 +2286,10 @@ class GeteBayDetailsResponseType extends AbstractResponseType
     /**
      * Sets a new variationDetails
      *
-     * Site-level validation rules for multi-variation listings (for example, the
-     *  maximum number of variations per listing). Use <b>GetCategoryFeatures</b> to
-     *  determine which categories on a site support variations. Use
-     *  <b>GetCategorySpecifics</b> for rules related to recommended or required variation
-     *  specifics.
+     * Site-level validation rules for multiple-variation listings (for example, the maximum number of variations per listing). Use <b>GetCategoryFeatures</b> to determine which categories on a site support variations.
      *  <br/><br/>
      *  <span class="tablenote"><b>Note: </b>
-     *  This container is only returned if <b>VariationDetails</b> is included as a
-     *  <b>DetailName</b> filter in the request, or if no <b>DetailName</b>
-     *  filters are used in the request.
+     *  This container is only returned if <b>VariationDetails</b> is included as a <b>DetailName</b> filter in the request, or if no <b>DetailName</b> filters are used in the request.
      *  </span>
      *
      * @param \Nogrod\eBaySDK\Trading\VariationDetailsType $variationDetails

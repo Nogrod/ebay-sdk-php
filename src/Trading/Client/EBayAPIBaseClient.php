@@ -349,17 +349,6 @@ class EBayAPIBaseClient extends \Nogrod\XMLClientRuntime\Client
     }
 
     /**
-     * Call GetCategorySpecifics
-     *
-     * @param \Nogrod\eBaySDK\Trading\GetCategorySpecificsRequest $getCategorySpecificsRequest
-     * @return \Nogrod\eBaySDK\Trading\GetCategorySpecificsResponse
-     */
-    public function getCategorySpecifics(\Nogrod\eBaySDK\Trading\GetCategorySpecificsRequest $getCategorySpecificsRequest): \Nogrod\eBaySDK\Trading\GetCategorySpecificsResponse
-    {
-        return $this->call('GetCategorySpecifics', 'Nogrod\eBaySDK\Trading\GetCategorySpecificsResponse', $getCategorySpecificsRequest);
-    }
-
-    /**
      * Call GetChallengeToken
      *
      * @param \Nogrod\eBaySDK\Trading\GetChallengeTokenRequest $getChallengeTokenRequest
@@ -676,39 +665,6 @@ class EBayAPIBaseClient extends \Nogrod\XMLClientRuntime\Client
     public function getStoreCategoryUpdateStatus(\Nogrod\eBaySDK\Trading\GetStoreCategoryUpdateStatusRequest $getStoreCategoryUpdateStatusRequest): \Nogrod\eBaySDK\Trading\GetStoreCategoryUpdateStatusResponse
     {
         return $this->call('GetStoreCategoryUpdateStatus', 'Nogrod\eBaySDK\Trading\GetStoreCategoryUpdateStatusResponse', $getStoreCategoryUpdateStatusRequest);
-    }
-
-    /**
-     * Call GetStoreCustomPage
-     *
-     * @param \Nogrod\eBaySDK\Trading\GetStoreCustomPageRequest $getStoreCustomPageRequest
-     * @return \Nogrod\eBaySDK\Trading\GetStoreCustomPageResponse
-     */
-    public function getStoreCustomPage(\Nogrod\eBaySDK\Trading\GetStoreCustomPageRequest $getStoreCustomPageRequest): \Nogrod\eBaySDK\Trading\GetStoreCustomPageResponse
-    {
-        return $this->call('GetStoreCustomPage', 'Nogrod\eBaySDK\Trading\GetStoreCustomPageResponse', $getStoreCustomPageRequest);
-    }
-
-    /**
-     * Call GetStoreOptions
-     *
-     * @param \Nogrod\eBaySDK\Trading\GetStoreOptionsRequest $getStoreOptionsRequest
-     * @return \Nogrod\eBaySDK\Trading\GetStoreOptionsResponse
-     */
-    public function getStoreOptions(\Nogrod\eBaySDK\Trading\GetStoreOptionsRequest $getStoreOptionsRequest): \Nogrod\eBaySDK\Trading\GetStoreOptionsResponse
-    {
-        return $this->call('GetStoreOptions', 'Nogrod\eBaySDK\Trading\GetStoreOptionsResponse', $getStoreOptionsRequest);
-    }
-
-    /**
-     * Call GetStorePreferences
-     *
-     * @param \Nogrod\eBaySDK\Trading\GetStorePreferencesRequest $getStorePreferencesRequest
-     * @return \Nogrod\eBaySDK\Trading\GetStorePreferencesResponse
-     */
-    public function getStorePreferences(\Nogrod\eBaySDK\Trading\GetStorePreferencesRequest $getStorePreferencesRequest): \Nogrod\eBaySDK\Trading\GetStorePreferencesResponse
-    {
-        return $this->call('GetStorePreferences', 'Nogrod\eBaySDK\Trading\GetStorePreferencesResponse', $getStorePreferencesRequest);
     }
 
     /**
@@ -1031,17 +987,6 @@ class EBayAPIBaseClient extends \Nogrod\XMLClientRuntime\Client
     }
 
     /**
-     * Call SetStore
-     *
-     * @param \Nogrod\eBaySDK\Trading\SetStoreRequest $setStoreRequest
-     * @return \Nogrod\eBaySDK\Trading\SetStoreResponse
-     */
-    public function setStore(\Nogrod\eBaySDK\Trading\SetStoreRequest $setStoreRequest): \Nogrod\eBaySDK\Trading\SetStoreResponse
-    {
-        return $this->call('SetStore', 'Nogrod\eBaySDK\Trading\SetStoreResponse', $setStoreRequest);
-    }
-
-    /**
      * Call SetStoreCategories
      *
      * @param \Nogrod\eBaySDK\Trading\SetStoreCategoriesRequest $setStoreCategoriesRequest
@@ -1050,28 +995,6 @@ class EBayAPIBaseClient extends \Nogrod\XMLClientRuntime\Client
     public function setStoreCategories(\Nogrod\eBaySDK\Trading\SetStoreCategoriesRequest $setStoreCategoriesRequest): \Nogrod\eBaySDK\Trading\SetStoreCategoriesResponse
     {
         return $this->call('SetStoreCategories', 'Nogrod\eBaySDK\Trading\SetStoreCategoriesResponse', $setStoreCategoriesRequest);
-    }
-
-    /**
-     * Call SetStoreCustomPage
-     *
-     * @param \Nogrod\eBaySDK\Trading\SetStoreCustomPageRequest $setStoreCustomPageRequest
-     * @return \Nogrod\eBaySDK\Trading\SetStoreCustomPageResponse
-     */
-    public function setStoreCustomPage(\Nogrod\eBaySDK\Trading\SetStoreCustomPageRequest $setStoreCustomPageRequest): \Nogrod\eBaySDK\Trading\SetStoreCustomPageResponse
-    {
-        return $this->call('SetStoreCustomPage', 'Nogrod\eBaySDK\Trading\SetStoreCustomPageResponse', $setStoreCustomPageRequest);
-    }
-
-    /**
-     * Call SetStorePreferences
-     *
-     * @param \Nogrod\eBaySDK\Trading\SetStorePreferencesRequest $setStorePreferencesRequest
-     * @return \Nogrod\eBaySDK\Trading\SetStorePreferencesResponse
-     */
-    public function setStorePreferences(\Nogrod\eBaySDK\Trading\SetStorePreferencesRequest $setStorePreferencesRequest): \Nogrod\eBaySDK\Trading\SetStorePreferencesResponse
-    {
-        return $this->call('SetStorePreferences', 'Nogrod\eBaySDK\Trading\SetStorePreferencesResponse', $setStorePreferencesRequest);
     }
 
     /**

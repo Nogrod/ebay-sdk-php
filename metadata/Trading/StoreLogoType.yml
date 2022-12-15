@@ -5,28 +5,6 @@ Nogrod\eBaySDK\Trading\StoreLogoType:
             serialized_name: xmlns
             xml_attribute: true
     properties:
-        logoID:
-            expose: true
-            access_type: public_method
-            serialized_name: LogoID
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getLogoID
-                setter: setLogoID
-            type: int
-        name:
-            expose: true
-            access_type: public_method
-            serialized_name: Name
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getName
-                setter: setName
-            type: string
         uRL:
             expose: true
             access_type: public_method

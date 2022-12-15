@@ -4,6 +4,8 @@ namespace Nogrod\eBaySDK\BusinessPoliciesManagement;
 
 /**
  * Class representing GetConsolidationJobStatusResponse
+ *
+ * The root response container of the <b>getConsolidationJobStatus</b> call.
  */
 class GetConsolidationJobStatusResponse extends GetConsolidationJobStatusResponseType
 {

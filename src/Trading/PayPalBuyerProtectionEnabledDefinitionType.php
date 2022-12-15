@@ -5,12 +5,7 @@ namespace Nogrod\eBaySDK\Trading;
 /**
  * Class representing PayPalBuyerProtectionEnabledDefinitionType
  *
- * Defines the PayPal Buyer Protection feature.
- *  If the field is present, the corresponding feature applies to the category.
- *  The field is returned as an empty element (i.e., a boolean value is not returned).
- *  <br><br>
- *  <span class="tablenote"><b>Note: </b> Although the <b>PayPalBuyerProtectionEnabled</b> field is still being returned for now, PayPal Purchase Protection is no longer a feature on any eBay marketplace.
- *  </span>
+ * This type is deprecated.
  * XSD Type: PayPalBuyerProtectionEnabledDefinitionType
  */
 class PayPalBuyerProtectionEnabledDefinitionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable

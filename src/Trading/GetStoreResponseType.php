@@ -7,13 +7,13 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing GetStoreResponseType
  *
- * The base response of the <b>GetStore</b> call. This response consists of the data describing a seller's eBay store, and includes the eBay Store name, the description of the store, the URL to the eBay Store, the subscription level, store theme information, and eBay Store Category hierarchy.
+ * The base response type of the <b>GetStore</b> call. This response consists of the data describing a seller's eBay store, and includes the eBay Store name, the description of the store, the URL to the eBay Store, and eBay Store Category hierarchy.
  * XSD Type: GetStoreResponseType
  */
 class GetStoreResponseType extends AbstractResponseType
 {
     /**
-     * This container consists of detailed information on the seller's eBay Store. The amount of information in this container will partially depend on the settings made in the call request.
+     * This container consists of detailed information on the seller's eBay Store.
      *
      * @var \Nogrod\eBaySDK\Trading\StoreType $store
      */
@@ -22,7 +22,7 @@ class GetStoreResponseType extends AbstractResponseType
     /**
      * Gets as store
      *
-     * This container consists of detailed information on the seller's eBay Store. The amount of information in this container will partially depend on the settings made in the call request.
+     * This container consists of detailed information on the seller's eBay Store.
      *
      * @return \Nogrod\eBaySDK\Trading\StoreType
      */
@@ -34,7 +34,7 @@ class GetStoreResponseType extends AbstractResponseType
     /**
      * Sets a new store
      *
-     * This container consists of detailed information on the seller's eBay Store. The amount of information in this container will partially depend on the settings made in the call request.
+     * This container consists of detailed information on the seller's eBay Store.
      *
      * @param \Nogrod\eBaySDK\Trading\StoreType $store
      * @return self

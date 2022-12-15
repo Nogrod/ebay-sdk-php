@@ -5,6 +5,17 @@ Nogrod\eBaySDK\BusinessPoliciesManagement\DepositDetailsType:
             serialized_name: xmlns
             xml_attribute: true
     properties:
+        daysToFullPayment:
+            expose: true
+            access_type: public_method
+            serialized_name: daysToFullPayment
+            xml_element:
+                cdata: false
+                namespace: 'http://www.ebay.com/marketplace/selling/v1/services'
+            accessor:
+                getter: getDaysToFullPayment
+                setter: setDaysToFullPayment
+            type: int
         hoursToDeposit:
             expose: true
             access_type: public_method

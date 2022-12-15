@@ -7,41 +7,21 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing MaximumUnpaidItemStrikesInfoType
  *
- * Type defining the <b>MaximumUnpaidItemStrikesInfo</b> container, which is
- *  used by the seller as a mechanism to block prospective buyers who have unpaid item
- *  strikes on their account exceeding the value set in the <b>Count</b>
+ * Type defining the <b>MaximumUnpaidItemStrikesInfo</b> container, which indicates if the seller has enabled a setting to block prospective buyers who have unpaid items and/or buyer-inititated cancellations on their account exceeding the value set in the <b>Count</b>
  *  field during a specified time period (set in the <b>Period</b> field).
  * XSD Type: MaximumUnpaidItemStrikesInfoType
  */
 class MaximumUnpaidItemStrikesInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
     /**
-     * This integer value sets the maximum number of unpaid item strikes that a prospective buyer
-     *  is allowed to have during a specified time period
-     *  (<b>MaximumUnpaidItemStrikesInfo.Period</b>) before being blocked from
-     *  buying/bidding on the item.
-     *  <br><br>
-     *  To retrieve a list of allowed values for this field, the seller should call
-     *  <b>GeteBayDetails</b>, including <b>BuyerRequirementDetails</b> in
-     *  the <b>DetailName</b> field of the request, and then look for the
-     *  <b>BuyerRequirementDetails.MaximumUnpaidItemStrikesInfo.MaximumUnpaidItemStrikesCount.Count</b>
-     *  fields in the response.
-     *  <br>
+     * This integer value indicates the maximum number of unpaid items and/or buyer-initiated cancellations that a prospective buyer is allowed to have during a specified time period (<b>MaximumUnpaidItemStrikesInfo.Period</b>) before being blocked from buying or bidding on the item.
      *
      * @var int $count
      */
     private $count = null;
 
     /**
-     * This enumerated value defines the length of time over which a prospective buyer's
-     *  unpaid item strikes will be counted. If the prospective buyer's number of unpaid item
-     *  strikes during this defined period exceeds the value set in the <b>Count</b>
-     *  field, that prospective buyer is blocked from buying/bidding on the item.
-     *  <br/><br/>
-     *  If the <b>Count</b> value is 2, and the specified <b>Period</b>
-     *  is 'Days_30' (counting back 30 days from the present day), any prospective buyer that has
-     *  had three or more unpaid item strikes is blocked from buying/bidding on the item.
-     *  <br>
+     * This enumerated value defines the length of time over which a prospective buyer's unpaid items and/or buyer-initiated cancellations will be counted. If the prospective buyer's number of unpaid items and/or buyer-initiated cancellations during this defined period exceeds the value set in the <b>MaximumUnpaidItemStrikesInfo.Count</b> field, that prospective buyer is blocked from buying/bidding on the item. <br/><br/> If the <b>Count</b> value is 2, and the specified <b>Period</b> is <code>Days_30</code> (counting back 30 days from the present day), any prospective buyer that has had three or more unpaid items and/or buyer-initiated cancellations is blocked from buying/bidding on the item.
      *
      * @var string $period
      */
@@ -50,17 +30,7 @@ class MaximumUnpaidItemStrikesInfoType implements \Sabre\Xml\XmlSerializable, \S
     /**
      * Gets as count
      *
-     * This integer value sets the maximum number of unpaid item strikes that a prospective buyer
-     *  is allowed to have during a specified time period
-     *  (<b>MaximumUnpaidItemStrikesInfo.Period</b>) before being blocked from
-     *  buying/bidding on the item.
-     *  <br><br>
-     *  To retrieve a list of allowed values for this field, the seller should call
-     *  <b>GeteBayDetails</b>, including <b>BuyerRequirementDetails</b> in
-     *  the <b>DetailName</b> field of the request, and then look for the
-     *  <b>BuyerRequirementDetails.MaximumUnpaidItemStrikesInfo.MaximumUnpaidItemStrikesCount.Count</b>
-     *  fields in the response.
-     *  <br>
+     * This integer value indicates the maximum number of unpaid items and/or buyer-initiated cancellations that a prospective buyer is allowed to have during a specified time period (<b>MaximumUnpaidItemStrikesInfo.Period</b>) before being blocked from buying or bidding on the item.
      *
      * @return int
      */
@@ -72,17 +42,7 @@ class MaximumUnpaidItemStrikesInfoType implements \Sabre\Xml\XmlSerializable, \S
     /**
      * Sets a new count
      *
-     * This integer value sets the maximum number of unpaid item strikes that a prospective buyer
-     *  is allowed to have during a specified time period
-     *  (<b>MaximumUnpaidItemStrikesInfo.Period</b>) before being blocked from
-     *  buying/bidding on the item.
-     *  <br><br>
-     *  To retrieve a list of allowed values for this field, the seller should call
-     *  <b>GeteBayDetails</b>, including <b>BuyerRequirementDetails</b> in
-     *  the <b>DetailName</b> field of the request, and then look for the
-     *  <b>BuyerRequirementDetails.MaximumUnpaidItemStrikesInfo.MaximumUnpaidItemStrikesCount.Count</b>
-     *  fields in the response.
-     *  <br>
+     * This integer value indicates the maximum number of unpaid items and/or buyer-initiated cancellations that a prospective buyer is allowed to have during a specified time period (<b>MaximumUnpaidItemStrikesInfo.Period</b>) before being blocked from buying or bidding on the item.
      *
      * @param int $count
      * @return self
@@ -96,15 +56,7 @@ class MaximumUnpaidItemStrikesInfoType implements \Sabre\Xml\XmlSerializable, \S
     /**
      * Gets as period
      *
-     * This enumerated value defines the length of time over which a prospective buyer's
-     *  unpaid item strikes will be counted. If the prospective buyer's number of unpaid item
-     *  strikes during this defined period exceeds the value set in the <b>Count</b>
-     *  field, that prospective buyer is blocked from buying/bidding on the item.
-     *  <br/><br/>
-     *  If the <b>Count</b> value is 2, and the specified <b>Period</b>
-     *  is 'Days_30' (counting back 30 days from the present day), any prospective buyer that has
-     *  had three or more unpaid item strikes is blocked from buying/bidding on the item.
-     *  <br>
+     * This enumerated value defines the length of time over which a prospective buyer's unpaid items and/or buyer-initiated cancellations will be counted. If the prospective buyer's number of unpaid items and/or buyer-initiated cancellations during this defined period exceeds the value set in the <b>MaximumUnpaidItemStrikesInfo.Count</b> field, that prospective buyer is blocked from buying/bidding on the item. <br/><br/> If the <b>Count</b> value is 2, and the specified <b>Period</b> is <code>Days_30</code> (counting back 30 days from the present day), any prospective buyer that has had three or more unpaid items and/or buyer-initiated cancellations is blocked from buying/bidding on the item.
      *
      * @return string
      */
@@ -116,15 +68,7 @@ class MaximumUnpaidItemStrikesInfoType implements \Sabre\Xml\XmlSerializable, \S
     /**
      * Sets a new period
      *
-     * This enumerated value defines the length of time over which a prospective buyer's
-     *  unpaid item strikes will be counted. If the prospective buyer's number of unpaid item
-     *  strikes during this defined period exceeds the value set in the <b>Count</b>
-     *  field, that prospective buyer is blocked from buying/bidding on the item.
-     *  <br/><br/>
-     *  If the <b>Count</b> value is 2, and the specified <b>Period</b>
-     *  is 'Days_30' (counting back 30 days from the present day), any prospective buyer that has
-     *  had three or more unpaid item strikes is blocked from buying/bidding on the item.
-     *  <br>
+     * This enumerated value defines the length of time over which a prospective buyer's unpaid items and/or buyer-initiated cancellations will be counted. If the prospective buyer's number of unpaid items and/or buyer-initiated cancellations during this defined period exceeds the value set in the <b>MaximumUnpaidItemStrikesInfo.Count</b> field, that prospective buyer is blocked from buying/bidding on the item. <br/><br/> If the <b>Count</b> value is 2, and the specified <b>Period</b> is <code>Days_30</code> (counting back 30 days from the present day), any prospective buyer that has had three or more unpaid items and/or buyer-initiated cancellations is blocked from buying/bidding on the item.
      *
      * @param string $period
      * @return self

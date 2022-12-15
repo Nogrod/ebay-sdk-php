@@ -29,8 +29,7 @@ class SellerPaymentMethodCodeType
     /**
      * Constant for 'PayPal' value.
      *
-     * This enumeration value indicates that eBay will use the user's PayPal account to
-     * process the monthly invoice.
+     * This enumeration value is deprecated.
      */
     public const VAL_PAY_PAL = 'PayPal';
 

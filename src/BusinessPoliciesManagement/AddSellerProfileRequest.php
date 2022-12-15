@@ -4,6 +4,8 @@ namespace Nogrod\eBaySDK\BusinessPoliciesManagement;
 
 /**
  * Class representing AddSellerProfileRequest
+ *
+ * The root request container of the <b>addSellerProfile</b> call.
  */
 class AddSellerProfileRequest extends AddSellerProfileRequestType
 {

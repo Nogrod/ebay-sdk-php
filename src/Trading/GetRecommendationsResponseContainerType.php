@@ -57,7 +57,7 @@ class GetRecommendationsResponseContainerType implements \Sabre\Xml\XmlSerializa
     /**
      * This field is deprecated.
      *
-     * @var \Nogrod\eBaySDK\Trading\RecommendationsType $recommendations
+     * @var string $recommendations
      */
     private $recommendations = null;
 
@@ -276,7 +276,7 @@ class GetRecommendationsResponseContainerType implements \Sabre\Xml\XmlSerializa
      *
      * This field is deprecated.
      *
-     * @return \Nogrod\eBaySDK\Trading\RecommendationsType
+     * @return string
      */
     public function getRecommendations()
     {
@@ -288,10 +288,10 @@ class GetRecommendationsResponseContainerType implements \Sabre\Xml\XmlSerializa
      *
      * This field is deprecated.
      *
-     * @param \Nogrod\eBaySDK\Trading\RecommendationsType $recommendations
+     * @param string $recommendations
      * @return self
      */
-    public function setRecommendations(\Nogrod\eBaySDK\Trading\RecommendationsType $recommendations)
+    public function setRecommendations($recommendations)
     {
         $this->recommendations = $recommendations;
         return $this;
@@ -434,7 +434,7 @@ class GetRecommendationsResponseContainerType implements \Sabre\Xml\XmlSerializa
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Recommendations');
         if (null !== $value) {
-            $this->setRecommendations(\Nogrod\eBaySDK\Trading\RecommendationsType::fromKeyValue($value));
+            $this->setRecommendations($value);
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ProductListingDetails');
         if (null !== $value) {

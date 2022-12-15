@@ -7,7 +7,7 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing MultiLegShippingDetailsType
  *
- * This type provides information about the domestic leg of a Global Shipping Program shipment.
+ * This type provides information about the domestic leg of a Global Shipping Program shipment or an eBay International Shipping shipment.
  *  <br/><br/>
  *  <span class="tablenote">
  *  <strong>Note:</strong> The <strong>LogisticsProviderShipmentToBuyer</strong> field is reserved for the exclusive use of the international shipping provider.
@@ -17,7 +17,7 @@ use Nogrod\XMLClientRuntime\Func;
 class MultiLegShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
     /**
-     * Contains information about the domestic leg of a Global Shipping Programn shipment, including the seller-selected shipping service, the domestic shipping cost, the domestic address of the international shipping provider, and the estimated shipping time range.
+     * Contains information about the domestic leg of a international order being shipped through the Global Shipping Program or eBay International Shipping, including the selected shipping service, the domestic shipping cost, the domestic address of the international shipping provider, and the estimated shipping time range.
      *
      * @var \Nogrod\eBaySDK\Trading\MultiLegShipmentType $sellerShipmentToLogisticsProvider
      */
@@ -33,7 +33,7 @@ class MultiLegShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\
     /**
      * Gets as sellerShipmentToLogisticsProvider
      *
-     * Contains information about the domestic leg of a Global Shipping Programn shipment, including the seller-selected shipping service, the domestic shipping cost, the domestic address of the international shipping provider, and the estimated shipping time range.
+     * Contains information about the domestic leg of a international order being shipped through the Global Shipping Program or eBay International Shipping, including the selected shipping service, the domestic shipping cost, the domestic address of the international shipping provider, and the estimated shipping time range.
      *
      * @return \Nogrod\eBaySDK\Trading\MultiLegShipmentType
      */
@@ -45,7 +45,7 @@ class MultiLegShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\
     /**
      * Sets a new sellerShipmentToLogisticsProvider
      *
-     * Contains information about the domestic leg of a Global Shipping Programn shipment, including the seller-selected shipping service, the domestic shipping cost, the domestic address of the international shipping provider, and the estimated shipping time range.
+     * Contains information about the domestic leg of a international order being shipped through the Global Shipping Program or eBay International Shipping, including the selected shipping service, the domestic shipping cost, the domestic address of the international shipping provider, and the estimated shipping time range.
      *
      * @param \Nogrod\eBaySDK\Trading\MultiLegShipmentType $sellerShipmentToLogisticsProvider
      * @return self

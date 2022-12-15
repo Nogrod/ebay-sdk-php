@@ -96,8 +96,7 @@ class VariationsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      *  "S", "M", and "L" as values, the View Item page
      *  shows the values in that order in the Size drop-down list.<br>
      *  <br>
-     *  Use GetCategorySpecifics to retrieve recommendations for names,
-     *  values, and order.<br>
+     *  Use the <a href="/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API to retrieve recommendations for names and values.<br>
      *  <br>
      *  Required when Variations are specified in a new listing
      *  (e.g., in AddFixedPriceItem). Also required when you change
@@ -460,8 +459,7 @@ class VariationsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      *  "S", "M", and "L" as values, the View Item page
      *  shows the values in that order in the Size drop-down list.<br>
      *  <br>
-     *  Use GetCategorySpecifics to retrieve recommendations for names,
-     *  values, and order.<br>
+     *  Use the <a href="/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API to retrieve recommendations for names and values.<br>
      *  <br>
      *  Required when Variations are specified in a new listing
      *  (e.g., in AddFixedPriceItem). Also required when you change
@@ -505,8 +503,7 @@ class VariationsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      *  "S", "M", and "L" as values, the View Item page
      *  shows the values in that order in the Size drop-down list.<br>
      *  <br>
-     *  Use GetCategorySpecifics to retrieve recommendations for names,
-     *  values, and order.<br>
+     *  Use the <a href="/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API to retrieve recommendations for names and values.<br>
      *  <br>
      *  Required when Variations are specified in a new listing
      *  (e.g., in AddFixedPriceItem). Also required when you change
@@ -549,8 +546,7 @@ class VariationsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      *  "S", "M", and "L" as values, the View Item page
      *  shows the values in that order in the Size drop-down list.<br>
      *  <br>
-     *  Use GetCategorySpecifics to retrieve recommendations for names,
-     *  values, and order.<br>
+     *  Use the <a href="/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API to retrieve recommendations for names and values.<br>
      *  <br>
      *  Required when Variations are specified in a new listing
      *  (e.g., in AddFixedPriceItem). Also required when you change
@@ -593,8 +589,7 @@ class VariationsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      *  "S", "M", and "L" as values, the View Item page
      *  shows the values in that order in the Size drop-down list.<br>
      *  <br>
-     *  Use GetCategorySpecifics to retrieve recommendations for names,
-     *  values, and order.<br>
+     *  Use the <a href="/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API to retrieve recommendations for names and values.<br>
      *  <br>
      *  Required when Variations are specified in a new listing
      *  (e.g., in AddFixedPriceItem). Also required when you change
@@ -636,8 +631,7 @@ class VariationsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      *  "S", "M", and "L" as values, the View Item page
      *  shows the values in that order in the Size drop-down list.<br>
      *  <br>
-     *  Use GetCategorySpecifics to retrieve recommendations for names,
-     *  values, and order.<br>
+     *  Use the <a href="/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API to retrieve recommendations for names and values.<br>
      *  <br>
      *  Required when Variations are specified in a new listing
      *  (e.g., in AddFixedPriceItem). Also required when you change

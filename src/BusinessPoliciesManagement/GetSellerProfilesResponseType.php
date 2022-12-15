@@ -7,27 +7,27 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing GetSellerProfilesResponseType
  *
- * This is the root container that returns all business policies for a specific seller.
+ * Response container for the <b>getSellerProfiles</b> call.
  * XSD Type: GetSellerProfilesResponse
  */
 class GetSellerProfilesResponseType extends BaseResponseType
 {
     /**
-     * Container for a list of payment policies that a seller provides. This container can list one or more payment policies that a seller offers.
+     * Container consisting of one or more payment policies that match the input criteria in the <b>getSellerProfiles</b> request. This container is not returned if no payment policies match the input criteria.
      *
      * @var \Nogrod\eBaySDK\BusinessPoliciesManagement\PaymentProfileType[] $paymentProfileList
      */
     private $paymentProfileList = null;
 
     /**
-     * The top-level container for a returns policy that a seller created.
+     * Container consisting of one or more return policies that match the input criteria in the <b>getSellerProfiles</b> request. This container is not returned if no return policies match the input criteria.
      *
      * @var \Nogrod\eBaySDK\BusinessPoliciesManagement\ReturnPolicyProfileType[] $returnPolicyProfileList
      */
     private $returnPolicyProfileList = null;
 
     /**
-     * The top-level container for a shipping policy that a seller created.
+     * Container consisting of one or more shipping policies that match the input criteria in the <b>getSellerProfiles</b> request. This container is not returned if no shipping policies match the input criteria.
      *
      * @var \Nogrod\eBaySDK\BusinessPoliciesManagement\ShippingPolicyProfileType[] $shippingPolicyProfile
      */
@@ -36,7 +36,7 @@ class GetSellerProfilesResponseType extends BaseResponseType
     /**
      * Adds as paymentProfile
      *
-     * Container for a list of payment policies that a seller provides. This container can list one or more payment policies that a seller offers.
+     * Container consisting of one or more payment policies that match the input criteria in the <b>getSellerProfiles</b> request. This container is not returned if no payment policies match the input criteria.
      *
      * @return self
      * @param \Nogrod\eBaySDK\BusinessPoliciesManagement\PaymentProfileType $paymentProfile
@@ -50,7 +50,7 @@ class GetSellerProfilesResponseType extends BaseResponseType
     /**
      * isset paymentProfileList
      *
-     * Container for a list of payment policies that a seller provides. This container can list one or more payment policies that a seller offers.
+     * Container consisting of one or more payment policies that match the input criteria in the <b>getSellerProfiles</b> request. This container is not returned if no payment policies match the input criteria.
      *
      * @param int|string $index
      * @return bool
@@ -63,7 +63,7 @@ class GetSellerProfilesResponseType extends BaseResponseType
     /**
      * unset paymentProfileList
      *
-     * Container for a list of payment policies that a seller provides. This container can list one or more payment policies that a seller offers.
+     * Container consisting of one or more payment policies that match the input criteria in the <b>getSellerProfiles</b> request. This container is not returned if no payment policies match the input criteria.
      *
      * @param int|string $index
      * @return void
@@ -76,7 +76,7 @@ class GetSellerProfilesResponseType extends BaseResponseType
     /**
      * Gets as paymentProfileList
      *
-     * Container for a list of payment policies that a seller provides. This container can list one or more payment policies that a seller offers.
+     * Container consisting of one or more payment policies that match the input criteria in the <b>getSellerProfiles</b> request. This container is not returned if no payment policies match the input criteria.
      *
      * @return \Nogrod\eBaySDK\BusinessPoliciesManagement\PaymentProfileType[]
      */
@@ -88,7 +88,7 @@ class GetSellerProfilesResponseType extends BaseResponseType
     /**
      * Sets a new paymentProfileList
      *
-     * Container for a list of payment policies that a seller provides. This container can list one or more payment policies that a seller offers.
+     * Container consisting of one or more payment policies that match the input criteria in the <b>getSellerProfiles</b> request. This container is not returned if no payment policies match the input criteria.
      *
      * @param \Nogrod\eBaySDK\BusinessPoliciesManagement\PaymentProfileType[] $paymentProfileList
      * @return self
@@ -102,7 +102,7 @@ class GetSellerProfilesResponseType extends BaseResponseType
     /**
      * Adds as returnPolicyProfile
      *
-     * The top-level container for a returns policy that a seller created.
+     * Container consisting of one or more return policies that match the input criteria in the <b>getSellerProfiles</b> request. This container is not returned if no return policies match the input criteria.
      *
      * @return self
      * @param \Nogrod\eBaySDK\BusinessPoliciesManagement\ReturnPolicyProfileType $returnPolicyProfile
@@ -116,7 +116,7 @@ class GetSellerProfilesResponseType extends BaseResponseType
     /**
      * isset returnPolicyProfileList
      *
-     * The top-level container for a returns policy that a seller created.
+     * Container consisting of one or more return policies that match the input criteria in the <b>getSellerProfiles</b> request. This container is not returned if no return policies match the input criteria.
      *
      * @param int|string $index
      * @return bool
@@ -129,7 +129,7 @@ class GetSellerProfilesResponseType extends BaseResponseType
     /**
      * unset returnPolicyProfileList
      *
-     * The top-level container for a returns policy that a seller created.
+     * Container consisting of one or more return policies that match the input criteria in the <b>getSellerProfiles</b> request. This container is not returned if no return policies match the input criteria.
      *
      * @param int|string $index
      * @return void
@@ -142,7 +142,7 @@ class GetSellerProfilesResponseType extends BaseResponseType
     /**
      * Gets as returnPolicyProfileList
      *
-     * The top-level container for a returns policy that a seller created.
+     * Container consisting of one or more return policies that match the input criteria in the <b>getSellerProfiles</b> request. This container is not returned if no return policies match the input criteria.
      *
      * @return \Nogrod\eBaySDK\BusinessPoliciesManagement\ReturnPolicyProfileType[]
      */
@@ -154,7 +154,7 @@ class GetSellerProfilesResponseType extends BaseResponseType
     /**
      * Sets a new returnPolicyProfileList
      *
-     * The top-level container for a returns policy that a seller created.
+     * Container consisting of one or more return policies that match the input criteria in the <b>getSellerProfiles</b> request. This container is not returned if no return policies match the input criteria.
      *
      * @param \Nogrod\eBaySDK\BusinessPoliciesManagement\ReturnPolicyProfileType[] $returnPolicyProfileList
      * @return self
@@ -168,7 +168,7 @@ class GetSellerProfilesResponseType extends BaseResponseType
     /**
      * Adds as shippingPolicyProfile
      *
-     * The top-level container for a shipping policy that a seller created.
+     * Container consisting of one or more shipping policies that match the input criteria in the <b>getSellerProfiles</b> request. This container is not returned if no shipping policies match the input criteria.
      *
      * @return self
      * @param \Nogrod\eBaySDK\BusinessPoliciesManagement\ShippingPolicyProfileType $shippingPolicyProfile
@@ -182,7 +182,7 @@ class GetSellerProfilesResponseType extends BaseResponseType
     /**
      * isset shippingPolicyProfile
      *
-     * The top-level container for a shipping policy that a seller created.
+     * Container consisting of one or more shipping policies that match the input criteria in the <b>getSellerProfiles</b> request. This container is not returned if no shipping policies match the input criteria.
      *
      * @param int|string $index
      * @return bool
@@ -195,7 +195,7 @@ class GetSellerProfilesResponseType extends BaseResponseType
     /**
      * unset shippingPolicyProfile
      *
-     * The top-level container for a shipping policy that a seller created.
+     * Container consisting of one or more shipping policies that match the input criteria in the <b>getSellerProfiles</b> request. This container is not returned if no shipping policies match the input criteria.
      *
      * @param int|string $index
      * @return void
@@ -208,7 +208,7 @@ class GetSellerProfilesResponseType extends BaseResponseType
     /**
      * Gets as shippingPolicyProfile
      *
-     * The top-level container for a shipping policy that a seller created.
+     * Container consisting of one or more shipping policies that match the input criteria in the <b>getSellerProfiles</b> request. This container is not returned if no shipping policies match the input criteria.
      *
      * @return \Nogrod\eBaySDK\BusinessPoliciesManagement\ShippingPolicyProfileType[]
      */
@@ -220,7 +220,7 @@ class GetSellerProfilesResponseType extends BaseResponseType
     /**
      * Sets a new shippingPolicyProfile
      *
-     * The top-level container for a shipping policy that a seller created.
+     * Container consisting of one or more shipping policies that match the input criteria in the <b>getSellerProfiles</b> request. This container is not returned if no shipping policies match the input criteria.
      *
      * @param \Nogrod\eBaySDK\BusinessPoliciesManagement\ShippingPolicyProfileType[] $shippingPolicyProfile
      * @return self

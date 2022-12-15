@@ -20,7 +20,7 @@ class RemoveFromWatchListResponseType extends AbstractResponseType
     private $watchListCount = null;
 
     /**
-     * The maximum number of items allowed in the user's Watch List. Currently this value is 300, and is the same for all sites and all users.
+     * This integer value indicates the maximum number of items allowed in a user's Watch List. The maximum number of items that can be added to a Watch List is 400, but this can vary by eBay marketplace.
      *
      * @var int $watchListMaximum
      */
@@ -55,7 +55,7 @@ class RemoveFromWatchListResponseType extends AbstractResponseType
     /**
      * Gets as watchListMaximum
      *
-     * The maximum number of items allowed in the user's Watch List. Currently this value is 300, and is the same for all sites and all users.
+     * This integer value indicates the maximum number of items allowed in a user's Watch List. The maximum number of items that can be added to a Watch List is 400, but this can vary by eBay marketplace.
      *
      * @return int
      */
@@ -67,7 +67,7 @@ class RemoveFromWatchListResponseType extends AbstractResponseType
     /**
      * Sets a new watchListMaximum
      *
-     * The maximum number of items allowed in the user's Watch List. Currently this value is 300, and is the same for all sites and all users.
+     * This integer value indicates the maximum number of items allowed in a user's Watch List. The maximum number of items that can be added to a Watch List is 400, but this can vary by eBay marketplace.
      *
      * @param int $watchListMaximum
      * @return self

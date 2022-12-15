@@ -7,7 +7,12 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing GetUserDisputesResponseType
  *
- * The base response type for the <b>GetUserDisputes</b>, a call that retrieves a list of Unpaid Item cases that the user is involved in as a buyer or seller.
+ * The base response type for the <b>GetUserDisputes</b>, a call that retrieves a list of cases that the user is involved in as a buyer or seller.
+ *  <br>
+ *  <br>
+ *  <span class="tablenote"><strong>Note:</strong>
+ *  The <b>GetUserDisputes</b> call is deprecated and is scheduled for decommission on January 31, 2023. The alternative API to search for cancellation requests is the <a href="https://developer.ebay.com/devzone/post-order/post-order_v2_cancellation_search__get.html" target="_blank">Search Cancellations</a> method of the <a href="https://developer.ebay.com/devzone/post-order/index.html" target="_blank">Post-Order API </a>.
+ *  </span>
  * XSD Type: GetUserDisputesResponseType
  */
 class GetUserDisputesResponseType extends AbstractResponseType

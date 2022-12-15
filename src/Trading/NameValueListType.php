@@ -13,41 +13,21 @@ use Nogrod\XMLClientRuntime\Func;
 class NameValueListType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
     /**
-     * Depending on the call and context, this value is either a name of an Item/Category/Variation Specific, or a Parts Compatibility name.
+     * Depending on the call and context, this value is either a name of an Item/Variation Specific, or a Parts Compatibility name.
      *  <br>
      *  <br>
-     *  <b>For the AddItem and AddFixedPriceItem families of
-     *  calls:</b> In the <b>Item.ItemSpecifics</b> context, this can be any
-     *  name that the seller wants to use. However, to help buyers find
-     *  items more easily, it is a good idea to try to use a recommended
-     *  name when possible (see <b>GetCategorySpecifics</b>).
-     *  You can't specify the same name twice within the same listing.
-     *  <br>
-     *  <br>
-     *  <b>For the <b>AddFixedPriceItem</b> family of calls:</b>
-     *  In the <b>VariationSpecifics</b> context, this can be any name that
-     *  the seller wants to use, unless the <b>VariationsEnabled</b> flag
-     *  is false for the name in the <b>GetCategorySpecifics</b> response.
-     *  For example, for some categories eBay may recommend that you only
-     *  use "Brand" as a shared name at the Item level, not in variations.
+     *  <b>For the AddItem and AddFixedPriceItem families of calls:</b> In the <b>Item.ItemSpecifics</b> context, the value in this field will either be the name of a required/recommended/optional item specific name for the category, or it may be a seller's customized item specific name.
      *  <br>
      *  <br>
      *  <b>For the <b>AddFixedPriceItem</b> family of calls:</b>
      *  In the <b>Compatibility.NameValueList</b> context, this value is a motor vehicle aspect such as <em>Year</em>, <em>Make</em>, and <em>Model</em>. A <b>Compatibility.NameValueList</b> container is applicable for motor vehicle parts and accessories listings.
      *  <br>
      *  <br>
-     *  <b>For GetCategorySpecifics:</b>
-     *  This is a recommended (popular) name to use for items in the
-     *  specified category (e.g., "Brand" might be recommended,
-     *  not "Manufacturer").
-     *  </span>
+     *  <b>For PlaceOffer:</b> Required if the line item being
+     *  purchased is an item variation within a multiple-variation listing.
      *  <br>
      *  <br>
-     *  <b>For PlaceOffer:</b> Required if the item being
-     *  purchased includes Item Variations.
-     *  <br>
-     *  <br>
-     *  <span class="tablenote"><b>Note:</b> For mandatory and recommended item specifics that are returned in the <b>GetCategorySpecifics</b> call, the seller should pass in the name of these item specifics just as they are shown in the <b>GetCategorySpecifics</b> response. Similarly, for catalog-enabled categories, the seller should pass in the name of instance aspects just as they are shown in the <b>GetCategorySpecifics</b> response. Instance aspects are additional details unique to a specific item or listing that a seller can include along with the product aspects that are already defined in the eBay catalog product associated with the listing. Instance aspects common to many catalog-enabled categories include 'Bundle Description' and 'Modification Description'. As of August 30, 2018, eBay US sellers who ship to California are required to pass in a 'California Prop 65 Warning' item specific if the item in the listing contains one or more chemicals known to be harmful to human health. This item specific is passed at the listing level for both single-variation and multiple-variation listings. The 'California Prop 65 Warning' is considered an instance specific because it will be retained on the listing even when the seller lists using an eBay catalog product. The 'California Prop 65 Warning' may be applicable in most eBay US categories, including eBay Motors, Motors Parts & Accessories, and catalog-enabled categories.
+     *  <span class="tablenote"><b>Note:</b> For required and recommended item specifics that are returned in the <a href="/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API, the seller should pass in the name of these item specifics just as they are shown in the <b>getItemAspectsForCategory</b> response. Similarly, for catalog-enabled categories, the seller should pass in the name of instance aspects just as they are shown in the <b>getItemAspectsForCategory</b> response. Instance aspects are additional details unique to a specific item or listing that a seller can include along with the product aspects that are already defined in the eBay catalog product associated with the listing. Instance aspects common to many catalog-enabled categories include 'Bundle Description' and 'Modification Description'. eBay US sellers who ship to California are required to pass in a 'California Prop 65 Warning' item specific if the item in the listing contains one or more chemicals known to be harmful to human health. This item specific is passed at the listing level for both single-variation and multiple-variation listings. The 'California Prop 65 Warning' is considered an instance specific because it will be retained on the listing even when the seller lists using an eBay catalog product. The 'California Prop 65 Warning' may be applicable in most eBay US categories, including eBay Motors, Motors Parts & Accessories, and catalog-enabled categories.
      *  </span>
      *
      *  <span class="tablenote"><b>Note:</b>
@@ -59,39 +39,20 @@ class NameValueListType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
     private $name = null;
 
     /**
-     * Depending on the call and context, this value is either the value of an Item/Category/Variation Specific, a Parts Compatibility value, or a product identifier.<br>
+     * Depending on the call and context, this value is either the value of an Item/Variation Specific, a Parts Compatibility value, or a product identifier.<br>
      *  <br>
      *  <b>For the <b>AddItem</b> family of calls:</b>
-     *  If you specify multiple values for Item Specifics,
-     *  eBay only stores the first one,
-     *  unless <b>GetCategorySpecifics</b> indicates
-     *  that the corresponding name supports multiple values.
-     *  <br>
-     *  <br>
-     *  <b>For the <b>AddFixedPriceItem</b> family of calls:</b>
-     *  If you specify multiple values for Item Specifics or
-     *  Variation Specifics,
-     *  eBay only stores the first one,
-     *  unless <b>GetCategorySpecifics</b> indicates
-     *  that the corresponding name supports multiple values.<br>
-     *  <br>
-     *  In <b>VariationSpecificSet</b>, you typically specify multiple
-     *  Value fields for each name. For example, if <b>Name</b> = <code>Size</code>,
-     *  you would specify all size values that you wan to offer in the
-     *  listing.
+     *  Multiple values can only be specified for an Item Specific if the <a href="/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory#response.aspects.aspectConstraint.itemToAspectCardinality" target="_blank">itemToAspectCardinality</a> field of the <b>getItemAspectsForCategory</b> method shows a value of <code>MULTI</code>. If an item specific only supports a single value, only the first item specific value specified in the request will be used.
      *  <br>
      *  <br>
      *  For the <b>Compatibility.NameValueList</b> context, this is the corresponding value of a motor vehicle aspect such as <em>Year</em>, <em>Make</em>, and <em>Model</em>. A <b>Compatibility.NameValueList</b> container is applicable for motor vehicle parts and accessories listings.
      *  <br>
      *  <br>
-     *  <b>For GetCategorySpecifics:</b> The most highly recommended values are returned first. For these calls,
-     *  Value is only returned when recommended values are available.<br>
-     *  <br>
-     *  <b>For PlaceOffer:</b> Required if the item being
-     *  purchased includes Item Variations.<br>
+     *  <b>For PlaceOffer:</b> Required if the line item being
+     *  purchased is an item variation within a multiple-variation listing.
      *  <br>
      *  <br>
-     *  <span class="tablenote"><b>Note:</b> The standard maximum length for the value of an item specific is 65, but the maximum allowed length increases for instance aspects such as 'Bundle Description' and 'Modification Description'. The maximum allowed length for these instance aspects are returned in the <b>GetCategorySpecifics</b> call. The maximum allowed length for the new 'California Prop 65 Warning' item specific is 800 characters. For more information about the 'California Prop 65 Warning' item specific, see the <b>ItemSpecifics.NameValueList</b> field description.
+     *  <span class="tablenote"><b>Note:</b> The standard maximum length for the value of an item specific is 65, but the maximum allowed length increases for instance aspects such as 'Bundle Description' and 'Modification Description'. For item specifics with max lengths greater than 65, the actual max length will be returned in a corresponding <a href="/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory#response.aspects.aspectConstraint.aspectMaxLength" target="_blank">aspectMaxLength</a> field. The maximum allowed length for the new 'California Prop 65 Warning' item specific is 800 characters. For more information about the 'California Prop 65 Warning' item specific, see the <b>ItemSpecifics.NameValueList</b> field description.
      *  </span>
      *
      * @var string[] $value
@@ -110,41 +71,21 @@ class NameValueListType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
     /**
      * Gets as name
      *
-     * Depending on the call and context, this value is either a name of an Item/Category/Variation Specific, or a Parts Compatibility name.
+     * Depending on the call and context, this value is either a name of an Item/Variation Specific, or a Parts Compatibility name.
      *  <br>
      *  <br>
-     *  <b>For the AddItem and AddFixedPriceItem families of
-     *  calls:</b> In the <b>Item.ItemSpecifics</b> context, this can be any
-     *  name that the seller wants to use. However, to help buyers find
-     *  items more easily, it is a good idea to try to use a recommended
-     *  name when possible (see <b>GetCategorySpecifics</b>).
-     *  You can't specify the same name twice within the same listing.
-     *  <br>
-     *  <br>
-     *  <b>For the <b>AddFixedPriceItem</b> family of calls:</b>
-     *  In the <b>VariationSpecifics</b> context, this can be any name that
-     *  the seller wants to use, unless the <b>VariationsEnabled</b> flag
-     *  is false for the name in the <b>GetCategorySpecifics</b> response.
-     *  For example, for some categories eBay may recommend that you only
-     *  use "Brand" as a shared name at the Item level, not in variations.
+     *  <b>For the AddItem and AddFixedPriceItem families of calls:</b> In the <b>Item.ItemSpecifics</b> context, the value in this field will either be the name of a required/recommended/optional item specific name for the category, or it may be a seller's customized item specific name.
      *  <br>
      *  <br>
      *  <b>For the <b>AddFixedPriceItem</b> family of calls:</b>
      *  In the <b>Compatibility.NameValueList</b> context, this value is a motor vehicle aspect such as <em>Year</em>, <em>Make</em>, and <em>Model</em>. A <b>Compatibility.NameValueList</b> container is applicable for motor vehicle parts and accessories listings.
      *  <br>
      *  <br>
-     *  <b>For GetCategorySpecifics:</b>
-     *  This is a recommended (popular) name to use for items in the
-     *  specified category (e.g., "Brand" might be recommended,
-     *  not "Manufacturer").
-     *  </span>
+     *  <b>For PlaceOffer:</b> Required if the line item being
+     *  purchased is an item variation within a multiple-variation listing.
      *  <br>
      *  <br>
-     *  <b>For PlaceOffer:</b> Required if the item being
-     *  purchased includes Item Variations.
-     *  <br>
-     *  <br>
-     *  <span class="tablenote"><b>Note:</b> For mandatory and recommended item specifics that are returned in the <b>GetCategorySpecifics</b> call, the seller should pass in the name of these item specifics just as they are shown in the <b>GetCategorySpecifics</b> response. Similarly, for catalog-enabled categories, the seller should pass in the name of instance aspects just as they are shown in the <b>GetCategorySpecifics</b> response. Instance aspects are additional details unique to a specific item or listing that a seller can include along with the product aspects that are already defined in the eBay catalog product associated with the listing. Instance aspects common to many catalog-enabled categories include 'Bundle Description' and 'Modification Description'. As of August 30, 2018, eBay US sellers who ship to California are required to pass in a 'California Prop 65 Warning' item specific if the item in the listing contains one or more chemicals known to be harmful to human health. This item specific is passed at the listing level for both single-variation and multiple-variation listings. The 'California Prop 65 Warning' is considered an instance specific because it will be retained on the listing even when the seller lists using an eBay catalog product. The 'California Prop 65 Warning' may be applicable in most eBay US categories, including eBay Motors, Motors Parts & Accessories, and catalog-enabled categories.
+     *  <span class="tablenote"><b>Note:</b> For required and recommended item specifics that are returned in the <a href="/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API, the seller should pass in the name of these item specifics just as they are shown in the <b>getItemAspectsForCategory</b> response. Similarly, for catalog-enabled categories, the seller should pass in the name of instance aspects just as they are shown in the <b>getItemAspectsForCategory</b> response. Instance aspects are additional details unique to a specific item or listing that a seller can include along with the product aspects that are already defined in the eBay catalog product associated with the listing. Instance aspects common to many catalog-enabled categories include 'Bundle Description' and 'Modification Description'. eBay US sellers who ship to California are required to pass in a 'California Prop 65 Warning' item specific if the item in the listing contains one or more chemicals known to be harmful to human health. This item specific is passed at the listing level for both single-variation and multiple-variation listings. The 'California Prop 65 Warning' is considered an instance specific because it will be retained on the listing even when the seller lists using an eBay catalog product. The 'California Prop 65 Warning' may be applicable in most eBay US categories, including eBay Motors, Motors Parts & Accessories, and catalog-enabled categories.
      *  </span>
      *
      *  <span class="tablenote"><b>Note:</b>
@@ -161,41 +102,21 @@ class NameValueListType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
     /**
      * Sets a new name
      *
-     * Depending on the call and context, this value is either a name of an Item/Category/Variation Specific, or a Parts Compatibility name.
+     * Depending on the call and context, this value is either a name of an Item/Variation Specific, or a Parts Compatibility name.
      *  <br>
      *  <br>
-     *  <b>For the AddItem and AddFixedPriceItem families of
-     *  calls:</b> In the <b>Item.ItemSpecifics</b> context, this can be any
-     *  name that the seller wants to use. However, to help buyers find
-     *  items more easily, it is a good idea to try to use a recommended
-     *  name when possible (see <b>GetCategorySpecifics</b>).
-     *  You can't specify the same name twice within the same listing.
-     *  <br>
-     *  <br>
-     *  <b>For the <b>AddFixedPriceItem</b> family of calls:</b>
-     *  In the <b>VariationSpecifics</b> context, this can be any name that
-     *  the seller wants to use, unless the <b>VariationsEnabled</b> flag
-     *  is false for the name in the <b>GetCategorySpecifics</b> response.
-     *  For example, for some categories eBay may recommend that you only
-     *  use "Brand" as a shared name at the Item level, not in variations.
+     *  <b>For the AddItem and AddFixedPriceItem families of calls:</b> In the <b>Item.ItemSpecifics</b> context, the value in this field will either be the name of a required/recommended/optional item specific name for the category, or it may be a seller's customized item specific name.
      *  <br>
      *  <br>
      *  <b>For the <b>AddFixedPriceItem</b> family of calls:</b>
      *  In the <b>Compatibility.NameValueList</b> context, this value is a motor vehicle aspect such as <em>Year</em>, <em>Make</em>, and <em>Model</em>. A <b>Compatibility.NameValueList</b> container is applicable for motor vehicle parts and accessories listings.
      *  <br>
      *  <br>
-     *  <b>For GetCategorySpecifics:</b>
-     *  This is a recommended (popular) name to use for items in the
-     *  specified category (e.g., "Brand" might be recommended,
-     *  not "Manufacturer").
-     *  </span>
+     *  <b>For PlaceOffer:</b> Required if the line item being
+     *  purchased is an item variation within a multiple-variation listing.
      *  <br>
      *  <br>
-     *  <b>For PlaceOffer:</b> Required if the item being
-     *  purchased includes Item Variations.
-     *  <br>
-     *  <br>
-     *  <span class="tablenote"><b>Note:</b> For mandatory and recommended item specifics that are returned in the <b>GetCategorySpecifics</b> call, the seller should pass in the name of these item specifics just as they are shown in the <b>GetCategorySpecifics</b> response. Similarly, for catalog-enabled categories, the seller should pass in the name of instance aspects just as they are shown in the <b>GetCategorySpecifics</b> response. Instance aspects are additional details unique to a specific item or listing that a seller can include along with the product aspects that are already defined in the eBay catalog product associated with the listing. Instance aspects common to many catalog-enabled categories include 'Bundle Description' and 'Modification Description'. As of August 30, 2018, eBay US sellers who ship to California are required to pass in a 'California Prop 65 Warning' item specific if the item in the listing contains one or more chemicals known to be harmful to human health. This item specific is passed at the listing level for both single-variation and multiple-variation listings. The 'California Prop 65 Warning' is considered an instance specific because it will be retained on the listing even when the seller lists using an eBay catalog product. The 'California Prop 65 Warning' may be applicable in most eBay US categories, including eBay Motors, Motors Parts & Accessories, and catalog-enabled categories.
+     *  <span class="tablenote"><b>Note:</b> For required and recommended item specifics that are returned in the <a href="/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API, the seller should pass in the name of these item specifics just as they are shown in the <b>getItemAspectsForCategory</b> response. Similarly, for catalog-enabled categories, the seller should pass in the name of instance aspects just as they are shown in the <b>getItemAspectsForCategory</b> response. Instance aspects are additional details unique to a specific item or listing that a seller can include along with the product aspects that are already defined in the eBay catalog product associated with the listing. Instance aspects common to many catalog-enabled categories include 'Bundle Description' and 'Modification Description'. eBay US sellers who ship to California are required to pass in a 'California Prop 65 Warning' item specific if the item in the listing contains one or more chemicals known to be harmful to human health. This item specific is passed at the listing level for both single-variation and multiple-variation listings. The 'California Prop 65 Warning' is considered an instance specific because it will be retained on the listing even when the seller lists using an eBay catalog product. The 'California Prop 65 Warning' may be applicable in most eBay US categories, including eBay Motors, Motors Parts & Accessories, and catalog-enabled categories.
      *  </span>
      *
      *  <span class="tablenote"><b>Note:</b>
@@ -214,39 +135,20 @@ class NameValueListType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
     /**
      * Adds as value
      *
-     * Depending on the call and context, this value is either the value of an Item/Category/Variation Specific, a Parts Compatibility value, or a product identifier.<br>
+     * Depending on the call and context, this value is either the value of an Item/Variation Specific, a Parts Compatibility value, or a product identifier.<br>
      *  <br>
      *  <b>For the <b>AddItem</b> family of calls:</b>
-     *  If you specify multiple values for Item Specifics,
-     *  eBay only stores the first one,
-     *  unless <b>GetCategorySpecifics</b> indicates
-     *  that the corresponding name supports multiple values.
-     *  <br>
-     *  <br>
-     *  <b>For the <b>AddFixedPriceItem</b> family of calls:</b>
-     *  If you specify multiple values for Item Specifics or
-     *  Variation Specifics,
-     *  eBay only stores the first one,
-     *  unless <b>GetCategorySpecifics</b> indicates
-     *  that the corresponding name supports multiple values.<br>
-     *  <br>
-     *  In <b>VariationSpecificSet</b>, you typically specify multiple
-     *  Value fields for each name. For example, if <b>Name</b> = <code>Size</code>,
-     *  you would specify all size values that you wan to offer in the
-     *  listing.
+     *  Multiple values can only be specified for an Item Specific if the <a href="/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory#response.aspects.aspectConstraint.itemToAspectCardinality" target="_blank">itemToAspectCardinality</a> field of the <b>getItemAspectsForCategory</b> method shows a value of <code>MULTI</code>. If an item specific only supports a single value, only the first item specific value specified in the request will be used.
      *  <br>
      *  <br>
      *  For the <b>Compatibility.NameValueList</b> context, this is the corresponding value of a motor vehicle aspect such as <em>Year</em>, <em>Make</em>, and <em>Model</em>. A <b>Compatibility.NameValueList</b> container is applicable for motor vehicle parts and accessories listings.
      *  <br>
      *  <br>
-     *  <b>For GetCategorySpecifics:</b> The most highly recommended values are returned first. For these calls,
-     *  Value is only returned when recommended values are available.<br>
-     *  <br>
-     *  <b>For PlaceOffer:</b> Required if the item being
-     *  purchased includes Item Variations.<br>
+     *  <b>For PlaceOffer:</b> Required if the line item being
+     *  purchased is an item variation within a multiple-variation listing.
      *  <br>
      *  <br>
-     *  <span class="tablenote"><b>Note:</b> The standard maximum length for the value of an item specific is 65, but the maximum allowed length increases for instance aspects such as 'Bundle Description' and 'Modification Description'. The maximum allowed length for these instance aspects are returned in the <b>GetCategorySpecifics</b> call. The maximum allowed length for the new 'California Prop 65 Warning' item specific is 800 characters. For more information about the 'California Prop 65 Warning' item specific, see the <b>ItemSpecifics.NameValueList</b> field description.
+     *  <span class="tablenote"><b>Note:</b> The standard maximum length for the value of an item specific is 65, but the maximum allowed length increases for instance aspects such as 'Bundle Description' and 'Modification Description'. For item specifics with max lengths greater than 65, the actual max length will be returned in a corresponding <a href="/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory#response.aspects.aspectConstraint.aspectMaxLength" target="_blank">aspectMaxLength</a> field. The maximum allowed length for the new 'California Prop 65 Warning' item specific is 800 characters. For more information about the 'California Prop 65 Warning' item specific, see the <b>ItemSpecifics.NameValueList</b> field description.
      *  </span>
      *
      * @return self
@@ -261,39 +163,20 @@ class NameValueListType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
     /**
      * isset value
      *
-     * Depending on the call and context, this value is either the value of an Item/Category/Variation Specific, a Parts Compatibility value, or a product identifier.<br>
+     * Depending on the call and context, this value is either the value of an Item/Variation Specific, a Parts Compatibility value, or a product identifier.<br>
      *  <br>
      *  <b>For the <b>AddItem</b> family of calls:</b>
-     *  If you specify multiple values for Item Specifics,
-     *  eBay only stores the first one,
-     *  unless <b>GetCategorySpecifics</b> indicates
-     *  that the corresponding name supports multiple values.
-     *  <br>
-     *  <br>
-     *  <b>For the <b>AddFixedPriceItem</b> family of calls:</b>
-     *  If you specify multiple values for Item Specifics or
-     *  Variation Specifics,
-     *  eBay only stores the first one,
-     *  unless <b>GetCategorySpecifics</b> indicates
-     *  that the corresponding name supports multiple values.<br>
-     *  <br>
-     *  In <b>VariationSpecificSet</b>, you typically specify multiple
-     *  Value fields for each name. For example, if <b>Name</b> = <code>Size</code>,
-     *  you would specify all size values that you wan to offer in the
-     *  listing.
+     *  Multiple values can only be specified for an Item Specific if the <a href="/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory#response.aspects.aspectConstraint.itemToAspectCardinality" target="_blank">itemToAspectCardinality</a> field of the <b>getItemAspectsForCategory</b> method shows a value of <code>MULTI</code>. If an item specific only supports a single value, only the first item specific value specified in the request will be used.
      *  <br>
      *  <br>
      *  For the <b>Compatibility.NameValueList</b> context, this is the corresponding value of a motor vehicle aspect such as <em>Year</em>, <em>Make</em>, and <em>Model</em>. A <b>Compatibility.NameValueList</b> container is applicable for motor vehicle parts and accessories listings.
      *  <br>
      *  <br>
-     *  <b>For GetCategorySpecifics:</b> The most highly recommended values are returned first. For these calls,
-     *  Value is only returned when recommended values are available.<br>
-     *  <br>
-     *  <b>For PlaceOffer:</b> Required if the item being
-     *  purchased includes Item Variations.<br>
+     *  <b>For PlaceOffer:</b> Required if the line item being
+     *  purchased is an item variation within a multiple-variation listing.
      *  <br>
      *  <br>
-     *  <span class="tablenote"><b>Note:</b> The standard maximum length for the value of an item specific is 65, but the maximum allowed length increases for instance aspects such as 'Bundle Description' and 'Modification Description'. The maximum allowed length for these instance aspects are returned in the <b>GetCategorySpecifics</b> call. The maximum allowed length for the new 'California Prop 65 Warning' item specific is 800 characters. For more information about the 'California Prop 65 Warning' item specific, see the <b>ItemSpecifics.NameValueList</b> field description.
+     *  <span class="tablenote"><b>Note:</b> The standard maximum length for the value of an item specific is 65, but the maximum allowed length increases for instance aspects such as 'Bundle Description' and 'Modification Description'. For item specifics with max lengths greater than 65, the actual max length will be returned in a corresponding <a href="/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory#response.aspects.aspectConstraint.aspectMaxLength" target="_blank">aspectMaxLength</a> field. The maximum allowed length for the new 'California Prop 65 Warning' item specific is 800 characters. For more information about the 'California Prop 65 Warning' item specific, see the <b>ItemSpecifics.NameValueList</b> field description.
      *  </span>
      *
      * @param int|string $index
@@ -307,39 +190,20 @@ class NameValueListType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
     /**
      * unset value
      *
-     * Depending on the call and context, this value is either the value of an Item/Category/Variation Specific, a Parts Compatibility value, or a product identifier.<br>
+     * Depending on the call and context, this value is either the value of an Item/Variation Specific, a Parts Compatibility value, or a product identifier.<br>
      *  <br>
      *  <b>For the <b>AddItem</b> family of calls:</b>
-     *  If you specify multiple values for Item Specifics,
-     *  eBay only stores the first one,
-     *  unless <b>GetCategorySpecifics</b> indicates
-     *  that the corresponding name supports multiple values.
-     *  <br>
-     *  <br>
-     *  <b>For the <b>AddFixedPriceItem</b> family of calls:</b>
-     *  If you specify multiple values for Item Specifics or
-     *  Variation Specifics,
-     *  eBay only stores the first one,
-     *  unless <b>GetCategorySpecifics</b> indicates
-     *  that the corresponding name supports multiple values.<br>
-     *  <br>
-     *  In <b>VariationSpecificSet</b>, you typically specify multiple
-     *  Value fields for each name. For example, if <b>Name</b> = <code>Size</code>,
-     *  you would specify all size values that you wan to offer in the
-     *  listing.
+     *  Multiple values can only be specified for an Item Specific if the <a href="/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory#response.aspects.aspectConstraint.itemToAspectCardinality" target="_blank">itemToAspectCardinality</a> field of the <b>getItemAspectsForCategory</b> method shows a value of <code>MULTI</code>. If an item specific only supports a single value, only the first item specific value specified in the request will be used.
      *  <br>
      *  <br>
      *  For the <b>Compatibility.NameValueList</b> context, this is the corresponding value of a motor vehicle aspect such as <em>Year</em>, <em>Make</em>, and <em>Model</em>. A <b>Compatibility.NameValueList</b> container is applicable for motor vehicle parts and accessories listings.
      *  <br>
      *  <br>
-     *  <b>For GetCategorySpecifics:</b> The most highly recommended values are returned first. For these calls,
-     *  Value is only returned when recommended values are available.<br>
-     *  <br>
-     *  <b>For PlaceOffer:</b> Required if the item being
-     *  purchased includes Item Variations.<br>
+     *  <b>For PlaceOffer:</b> Required if the line item being
+     *  purchased is an item variation within a multiple-variation listing.
      *  <br>
      *  <br>
-     *  <span class="tablenote"><b>Note:</b> The standard maximum length for the value of an item specific is 65, but the maximum allowed length increases for instance aspects such as 'Bundle Description' and 'Modification Description'. The maximum allowed length for these instance aspects are returned in the <b>GetCategorySpecifics</b> call. The maximum allowed length for the new 'California Prop 65 Warning' item specific is 800 characters. For more information about the 'California Prop 65 Warning' item specific, see the <b>ItemSpecifics.NameValueList</b> field description.
+     *  <span class="tablenote"><b>Note:</b> The standard maximum length for the value of an item specific is 65, but the maximum allowed length increases for instance aspects such as 'Bundle Description' and 'Modification Description'. For item specifics with max lengths greater than 65, the actual max length will be returned in a corresponding <a href="/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory#response.aspects.aspectConstraint.aspectMaxLength" target="_blank">aspectMaxLength</a> field. The maximum allowed length for the new 'California Prop 65 Warning' item specific is 800 characters. For more information about the 'California Prop 65 Warning' item specific, see the <b>ItemSpecifics.NameValueList</b> field description.
      *  </span>
      *
      * @param int|string $index
@@ -353,39 +217,20 @@ class NameValueListType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
     /**
      * Gets as value
      *
-     * Depending on the call and context, this value is either the value of an Item/Category/Variation Specific, a Parts Compatibility value, or a product identifier.<br>
+     * Depending on the call and context, this value is either the value of an Item/Variation Specific, a Parts Compatibility value, or a product identifier.<br>
      *  <br>
      *  <b>For the <b>AddItem</b> family of calls:</b>
-     *  If you specify multiple values for Item Specifics,
-     *  eBay only stores the first one,
-     *  unless <b>GetCategorySpecifics</b> indicates
-     *  that the corresponding name supports multiple values.
-     *  <br>
-     *  <br>
-     *  <b>For the <b>AddFixedPriceItem</b> family of calls:</b>
-     *  If you specify multiple values for Item Specifics or
-     *  Variation Specifics,
-     *  eBay only stores the first one,
-     *  unless <b>GetCategorySpecifics</b> indicates
-     *  that the corresponding name supports multiple values.<br>
-     *  <br>
-     *  In <b>VariationSpecificSet</b>, you typically specify multiple
-     *  Value fields for each name. For example, if <b>Name</b> = <code>Size</code>,
-     *  you would specify all size values that you wan to offer in the
-     *  listing.
+     *  Multiple values can only be specified for an Item Specific if the <a href="/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory#response.aspects.aspectConstraint.itemToAspectCardinality" target="_blank">itemToAspectCardinality</a> field of the <b>getItemAspectsForCategory</b> method shows a value of <code>MULTI</code>. If an item specific only supports a single value, only the first item specific value specified in the request will be used.
      *  <br>
      *  <br>
      *  For the <b>Compatibility.NameValueList</b> context, this is the corresponding value of a motor vehicle aspect such as <em>Year</em>, <em>Make</em>, and <em>Model</em>. A <b>Compatibility.NameValueList</b> container is applicable for motor vehicle parts and accessories listings.
      *  <br>
      *  <br>
-     *  <b>For GetCategorySpecifics:</b> The most highly recommended values are returned first. For these calls,
-     *  Value is only returned when recommended values are available.<br>
-     *  <br>
-     *  <b>For PlaceOffer:</b> Required if the item being
-     *  purchased includes Item Variations.<br>
+     *  <b>For PlaceOffer:</b> Required if the line item being
+     *  purchased is an item variation within a multiple-variation listing.
      *  <br>
      *  <br>
-     *  <span class="tablenote"><b>Note:</b> The standard maximum length for the value of an item specific is 65, but the maximum allowed length increases for instance aspects such as 'Bundle Description' and 'Modification Description'. The maximum allowed length for these instance aspects are returned in the <b>GetCategorySpecifics</b> call. The maximum allowed length for the new 'California Prop 65 Warning' item specific is 800 characters. For more information about the 'California Prop 65 Warning' item specific, see the <b>ItemSpecifics.NameValueList</b> field description.
+     *  <span class="tablenote"><b>Note:</b> The standard maximum length for the value of an item specific is 65, but the maximum allowed length increases for instance aspects such as 'Bundle Description' and 'Modification Description'. For item specifics with max lengths greater than 65, the actual max length will be returned in a corresponding <a href="/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory#response.aspects.aspectConstraint.aspectMaxLength" target="_blank">aspectMaxLength</a> field. The maximum allowed length for the new 'California Prop 65 Warning' item specific is 800 characters. For more information about the 'California Prop 65 Warning' item specific, see the <b>ItemSpecifics.NameValueList</b> field description.
      *  </span>
      *
      * @return string[]
@@ -398,39 +243,20 @@ class NameValueListType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
     /**
      * Sets a new value
      *
-     * Depending on the call and context, this value is either the value of an Item/Category/Variation Specific, a Parts Compatibility value, or a product identifier.<br>
+     * Depending on the call and context, this value is either the value of an Item/Variation Specific, a Parts Compatibility value, or a product identifier.<br>
      *  <br>
      *  <b>For the <b>AddItem</b> family of calls:</b>
-     *  If you specify multiple values for Item Specifics,
-     *  eBay only stores the first one,
-     *  unless <b>GetCategorySpecifics</b> indicates
-     *  that the corresponding name supports multiple values.
-     *  <br>
-     *  <br>
-     *  <b>For the <b>AddFixedPriceItem</b> family of calls:</b>
-     *  If you specify multiple values for Item Specifics or
-     *  Variation Specifics,
-     *  eBay only stores the first one,
-     *  unless <b>GetCategorySpecifics</b> indicates
-     *  that the corresponding name supports multiple values.<br>
-     *  <br>
-     *  In <b>VariationSpecificSet</b>, you typically specify multiple
-     *  Value fields for each name. For example, if <b>Name</b> = <code>Size</code>,
-     *  you would specify all size values that you wan to offer in the
-     *  listing.
+     *  Multiple values can only be specified for an Item Specific if the <a href="/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory#response.aspects.aspectConstraint.itemToAspectCardinality" target="_blank">itemToAspectCardinality</a> field of the <b>getItemAspectsForCategory</b> method shows a value of <code>MULTI</code>. If an item specific only supports a single value, only the first item specific value specified in the request will be used.
      *  <br>
      *  <br>
      *  For the <b>Compatibility.NameValueList</b> context, this is the corresponding value of a motor vehicle aspect such as <em>Year</em>, <em>Make</em>, and <em>Model</em>. A <b>Compatibility.NameValueList</b> container is applicable for motor vehicle parts and accessories listings.
      *  <br>
      *  <br>
-     *  <b>For GetCategorySpecifics:</b> The most highly recommended values are returned first. For these calls,
-     *  Value is only returned when recommended values are available.<br>
-     *  <br>
-     *  <b>For PlaceOffer:</b> Required if the item being
-     *  purchased includes Item Variations.<br>
+     *  <b>For PlaceOffer:</b> Required if the line item being
+     *  purchased is an item variation within a multiple-variation listing.
      *  <br>
      *  <br>
-     *  <span class="tablenote"><b>Note:</b> The standard maximum length for the value of an item specific is 65, but the maximum allowed length increases for instance aspects such as 'Bundle Description' and 'Modification Description'. The maximum allowed length for these instance aspects are returned in the <b>GetCategorySpecifics</b> call. The maximum allowed length for the new 'California Prop 65 Warning' item specific is 800 characters. For more information about the 'California Prop 65 Warning' item specific, see the <b>ItemSpecifics.NameValueList</b> field description.
+     *  <span class="tablenote"><b>Note:</b> The standard maximum length for the value of an item specific is 65, but the maximum allowed length increases for instance aspects such as 'Bundle Description' and 'Modification Description'. For item specifics with max lengths greater than 65, the actual max length will be returned in a corresponding <a href="/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory#response.aspects.aspectConstraint.aspectMaxLength" target="_blank">aspectMaxLength</a> field. The maximum allowed length for the new 'California Prop 65 Warning' item specific is 800 characters. For more information about the 'California Prop 65 Warning' item specific, see the <b>ItemSpecifics.NameValueList</b> field description.
      *  </span>
      *
      * @param string[] $value

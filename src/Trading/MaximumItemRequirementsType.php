@@ -13,41 +13,20 @@ use Nogrod\XMLClientRuntime\Func;
 class MaximumItemRequirementsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
     /**
-     * This field is conditionally required if the <b>MaximumItemRequirements</b>
-     *  container is used.
+     * This field indicates the maximum quantity of a line item that one prospective buyer may purchase from the listing.
      *  <br/><br/>
-     *  The value of this field specifies the maximum quantity of an order line item that a prospective buyer may
-     *  purchase from the seller during any given 10-day period. The prospective buyer will be blocked
-     *  from bidding/buying once this value is reached.
+     *  This buyer requirement is only applicable to fixed-price listings where multiple quantity is available for purchase.
      *  <br/><br/>
-     *  <b>Valid values
-     *  for the US site:</b> 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 25, 50, 75, and 100.
-     *  <br/>
-     *  To see the valid values for your site, call <b>GeteBayDetails</b>
-     *  with <b>DetailName</b> set to <b>BuyerRequirementDetails</b>,
-     *  and then look for the <b>BuyerRequirementDetails.MaximumItemRequirements.MaximumItemCount</b> fields.
+     *  If the <b>MinimumFeedbackScore</b> field is also set/returned, the maximum quantity threshold value will only apply to those prospective buyers who don't meet or exceed the minimum Feedback score threshold returned in that field. If the <b>MinimumFeedbackScore</b> field not set/returned, the maximum quantity threshold value will apply to all prospective buyers.
      *  <br/><br/>
-     *  If the <b>MaximumItemRequirements.MinimumFeedbackScore</b> field is also
-     *  specified, the <b>MaximumItemCount</b> limit will only apply to those
-     *  prospective buyers who don't meet the specified Minimum Feedback Score threshold.
+     *  This field is always returned along with the <b>MaximumItemRequirements</b> container.
      *
      * @var int $maximumItemCount
      */
     private $maximumItemCount = null;
 
     /**
-     * This is an optional field that is ignored if a <b>MaximumItemCount</b>
-     *  value has not been provided.
-     *  <br><br>
-     *  If this field is used, a prospective buyer is blocked from bidding/buying if they have
-     *  reached or exceeded the <b>MaximumItemCount</b> and their feedback score
-     *  is less than the value of this field.
-     *  <br/><br/>
-     *  <b>Valid values for the US site:</b> 0, 1, 2, 3, 4, and 5.
-     *  <br/>
-     *  To see the valid values for your site, call <b>GeteBayDetails</b>
-     *  with <b>DetailName</b> set to <b>BuyerRequirementDetails</b>,
-     *  and then look for the <b>BuyerRequirementDetails.MaximumItemRequirements.MinimumFeedbackScore</b> fields.
+     * If this field is returned, it indicates that the seller has set a maximum quantity threshold value, but this maximum quantity threshold value (returned in <b>MaximumItemCount</b> will only apply to those prospective buyers who don't meet or exceed the minimum Feedback score threshold returned in this field. If this field is not returned, the maximum quantity threshold value will apply to all prospective buyers.
      *
      * @var int $minimumFeedbackScore
      */
@@ -56,23 +35,13 @@ class MaximumItemRequirementsType implements \Sabre\Xml\XmlSerializable, \Sabre\
     /**
      * Gets as maximumItemCount
      *
-     * This field is conditionally required if the <b>MaximumItemRequirements</b>
-     *  container is used.
+     * This field indicates the maximum quantity of a line item that one prospective buyer may purchase from the listing.
      *  <br/><br/>
-     *  The value of this field specifies the maximum quantity of an order line item that a prospective buyer may
-     *  purchase from the seller during any given 10-day period. The prospective buyer will be blocked
-     *  from bidding/buying once this value is reached.
+     *  This buyer requirement is only applicable to fixed-price listings where multiple quantity is available for purchase.
      *  <br/><br/>
-     *  <b>Valid values
-     *  for the US site:</b> 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 25, 50, 75, and 100.
-     *  <br/>
-     *  To see the valid values for your site, call <b>GeteBayDetails</b>
-     *  with <b>DetailName</b> set to <b>BuyerRequirementDetails</b>,
-     *  and then look for the <b>BuyerRequirementDetails.MaximumItemRequirements.MaximumItemCount</b> fields.
+     *  If the <b>MinimumFeedbackScore</b> field is also set/returned, the maximum quantity threshold value will only apply to those prospective buyers who don't meet or exceed the minimum Feedback score threshold returned in that field. If the <b>MinimumFeedbackScore</b> field not set/returned, the maximum quantity threshold value will apply to all prospective buyers.
      *  <br/><br/>
-     *  If the <b>MaximumItemRequirements.MinimumFeedbackScore</b> field is also
-     *  specified, the <b>MaximumItemCount</b> limit will only apply to those
-     *  prospective buyers who don't meet the specified Minimum Feedback Score threshold.
+     *  This field is always returned along with the <b>MaximumItemRequirements</b> container.
      *
      * @return int
      */
@@ -84,23 +53,13 @@ class MaximumItemRequirementsType implements \Sabre\Xml\XmlSerializable, \Sabre\
     /**
      * Sets a new maximumItemCount
      *
-     * This field is conditionally required if the <b>MaximumItemRequirements</b>
-     *  container is used.
+     * This field indicates the maximum quantity of a line item that one prospective buyer may purchase from the listing.
      *  <br/><br/>
-     *  The value of this field specifies the maximum quantity of an order line item that a prospective buyer may
-     *  purchase from the seller during any given 10-day period. The prospective buyer will be blocked
-     *  from bidding/buying once this value is reached.
+     *  This buyer requirement is only applicable to fixed-price listings where multiple quantity is available for purchase.
      *  <br/><br/>
-     *  <b>Valid values
-     *  for the US site:</b> 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 25, 50, 75, and 100.
-     *  <br/>
-     *  To see the valid values for your site, call <b>GeteBayDetails</b>
-     *  with <b>DetailName</b> set to <b>BuyerRequirementDetails</b>,
-     *  and then look for the <b>BuyerRequirementDetails.MaximumItemRequirements.MaximumItemCount</b> fields.
+     *  If the <b>MinimumFeedbackScore</b> field is also set/returned, the maximum quantity threshold value will only apply to those prospective buyers who don't meet or exceed the minimum Feedback score threshold returned in that field. If the <b>MinimumFeedbackScore</b> field not set/returned, the maximum quantity threshold value will apply to all prospective buyers.
      *  <br/><br/>
-     *  If the <b>MaximumItemRequirements.MinimumFeedbackScore</b> field is also
-     *  specified, the <b>MaximumItemCount</b> limit will only apply to those
-     *  prospective buyers who don't meet the specified Minimum Feedback Score threshold.
+     *  This field is always returned along with the <b>MaximumItemRequirements</b> container.
      *
      * @param int $maximumItemCount
      * @return self
@@ -114,18 +73,7 @@ class MaximumItemRequirementsType implements \Sabre\Xml\XmlSerializable, \Sabre\
     /**
      * Gets as minimumFeedbackScore
      *
-     * This is an optional field that is ignored if a <b>MaximumItemCount</b>
-     *  value has not been provided.
-     *  <br><br>
-     *  If this field is used, a prospective buyer is blocked from bidding/buying if they have
-     *  reached or exceeded the <b>MaximumItemCount</b> and their feedback score
-     *  is less than the value of this field.
-     *  <br/><br/>
-     *  <b>Valid values for the US site:</b> 0, 1, 2, 3, 4, and 5.
-     *  <br/>
-     *  To see the valid values for your site, call <b>GeteBayDetails</b>
-     *  with <b>DetailName</b> set to <b>BuyerRequirementDetails</b>,
-     *  and then look for the <b>BuyerRequirementDetails.MaximumItemRequirements.MinimumFeedbackScore</b> fields.
+     * If this field is returned, it indicates that the seller has set a maximum quantity threshold value, but this maximum quantity threshold value (returned in <b>MaximumItemCount</b> will only apply to those prospective buyers who don't meet or exceed the minimum Feedback score threshold returned in this field. If this field is not returned, the maximum quantity threshold value will apply to all prospective buyers.
      *
      * @return int
      */
@@ -137,18 +85,7 @@ class MaximumItemRequirementsType implements \Sabre\Xml\XmlSerializable, \Sabre\
     /**
      * Sets a new minimumFeedbackScore
      *
-     * This is an optional field that is ignored if a <b>MaximumItemCount</b>
-     *  value has not been provided.
-     *  <br><br>
-     *  If this field is used, a prospective buyer is blocked from bidding/buying if they have
-     *  reached or exceeded the <b>MaximumItemCount</b> and their feedback score
-     *  is less than the value of this field.
-     *  <br/><br/>
-     *  <b>Valid values for the US site:</b> 0, 1, 2, 3, 4, and 5.
-     *  <br/>
-     *  To see the valid values for your site, call <b>GeteBayDetails</b>
-     *  with <b>DetailName</b> set to <b>BuyerRequirementDetails</b>,
-     *  and then look for the <b>BuyerRequirementDetails.MaximumItemRequirements.MinimumFeedbackScore</b> fields.
+     * If this field is returned, it indicates that the seller has set a maximum quantity threshold value, but this maximum quantity threshold value (returned in <b>MaximumItemCount</b> will only apply to those prospective buyers who don't meet or exceed the minimum Feedback score threshold returned in this field. If this field is not returned, the maximum quantity threshold value will apply to all prospective buyers.
      *
      * @param int $minimumFeedbackScore
      * @return self

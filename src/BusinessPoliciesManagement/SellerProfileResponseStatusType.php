@@ -7,28 +7,36 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing SellerProfileResponseStatusType
  *
- *
+ * Type defining the <b>sellerProfileResponseStatus</b> container, which is returned in the <b>removeSellerProfiles</b> response, and indicates whether or not the business policies specified in the call request were successfully deleted.
  * XSD Type: SellerProfileResponseStatus
  */
 class SellerProfileResponseStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
     /**
+     * Unique identifier for a business policy. Each payment policy, shipping policy, and return policy has its own unique <b>profileId</b>. A <b>profileId</b> value is returned for all business policies that were successfully deleted. For business policies that were not successfully deleted, the reason may be found in the <b>errorMessage</b> container.
+     *
      * @var int $profileId
      */
     private $profileId = null;
 
     /**
+     * A token representing the application-level acknowledgement code that indicates the success of the call.
+     *
      * @var string $ack
      */
     private $ack = null;
 
     /**
+     * Information for an error or warning that occurred when eBay processed the request.
+     *
      * @var \Nogrod\eBaySDK\BusinessPoliciesManagement\ErrorDataType[] $errorMessage
      */
     private $errorMessage = null;
 
     /**
      * Gets as profileId
+     *
+     * Unique identifier for a business policy. Each payment policy, shipping policy, and return policy has its own unique <b>profileId</b>. A <b>profileId</b> value is returned for all business policies that were successfully deleted. For business policies that were not successfully deleted, the reason may be found in the <b>errorMessage</b> container.
      *
      * @return int
      */
@@ -39,6 +47,8 @@ class SellerProfileResponseStatusType implements \Sabre\Xml\XmlSerializable, \Sa
 
     /**
      * Sets a new profileId
+     *
+     * Unique identifier for a business policy. Each payment policy, shipping policy, and return policy has its own unique <b>profileId</b>. A <b>profileId</b> value is returned for all business policies that were successfully deleted. For business policies that were not successfully deleted, the reason may be found in the <b>errorMessage</b> container.
      *
      * @param int $profileId
      * @return self
@@ -52,6 +62,8 @@ class SellerProfileResponseStatusType implements \Sabre\Xml\XmlSerializable, \Sa
     /**
      * Gets as ack
      *
+     * A token representing the application-level acknowledgement code that indicates the success of the call.
+     *
      * @return string
      */
     public function getAck()
@@ -61,6 +73,8 @@ class SellerProfileResponseStatusType implements \Sabre\Xml\XmlSerializable, \Sa
 
     /**
      * Sets a new ack
+     *
+     * A token representing the application-level acknowledgement code that indicates the success of the call.
      *
      * @param string $ack
      * @return self
@@ -74,6 +88,8 @@ class SellerProfileResponseStatusType implements \Sabre\Xml\XmlSerializable, \Sa
     /**
      * Adds as error
      *
+     * Information for an error or warning that occurred when eBay processed the request.
+     *
      * @return self
      * @param \Nogrod\eBaySDK\BusinessPoliciesManagement\ErrorDataType $error
      */
@@ -86,6 +102,8 @@ class SellerProfileResponseStatusType implements \Sabre\Xml\XmlSerializable, \Sa
     /**
      * isset errorMessage
      *
+     * Information for an error or warning that occurred when eBay processed the request.
+     *
      * @param int|string $index
      * @return bool
      */
@@ -96,6 +114,8 @@ class SellerProfileResponseStatusType implements \Sabre\Xml\XmlSerializable, \Sa
 
     /**
      * unset errorMessage
+     *
+     * Information for an error or warning that occurred when eBay processed the request.
      *
      * @param int|string $index
      * @return void
@@ -108,6 +128,8 @@ class SellerProfileResponseStatusType implements \Sabre\Xml\XmlSerializable, \Sa
     /**
      * Gets as errorMessage
      *
+     * Information for an error or warning that occurred when eBay processed the request.
+     *
      * @return \Nogrod\eBaySDK\BusinessPoliciesManagement\ErrorDataType[]
      */
     public function getErrorMessage()
@@ -117,6 +139,8 @@ class SellerProfileResponseStatusType implements \Sabre\Xml\XmlSerializable, \Sa
 
     /**
      * Sets a new errorMessage
+     *
+     * Information for an error or warning that occurred when eBay processed the request.
      *
      * @param \Nogrod\eBaySDK\BusinessPoliciesManagement\ErrorDataType[] $errorMessage
      * @return self

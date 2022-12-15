@@ -4,6 +4,8 @@ namespace Nogrod\eBaySDK\BusinessPoliciesManagement;
 
 /**
  * Class representing RemoveOverridesResponse
+ *
+ * The root response container of the <b>removeOverrides</b> call.
  */
 class RemoveOverridesResponse extends RemoveOverridesResponseType
 {

@@ -69,7 +69,7 @@ class SetUserPreferencesRequestType extends AbstractRequestType
     private $requiredShipPhoneNumberPreference = null;
 
     /**
-     * This container is included if the seller wishes to set Unpaid Item Assistant preferences. The Unpaid Item Assistant automatically opens an Unpaid Item case on the behalf of the seller if the buyer has not paid for the order after a specified number of days. One or more preferences may be set or modified under this container.
+     * This container is included if the seller wishes to set or modify Unpaid Item preferences. The Unpaid Item preferences automatically opens an Unpaid Item case on the behalf of the seller if the buyer has not paid for the order after a specified number of days. One or more preferences may be set or modified under this container.
      *
      * @var \Nogrod\eBaySDK\Trading\UnpaidItemAssistancePreferencesType $unpaidItemAssistancePreferences
      */
@@ -343,7 +343,7 @@ class SetUserPreferencesRequestType extends AbstractRequestType
     /**
      * Gets as unpaidItemAssistancePreferences
      *
-     * This container is included if the seller wishes to set Unpaid Item Assistant preferences. The Unpaid Item Assistant automatically opens an Unpaid Item case on the behalf of the seller if the buyer has not paid for the order after a specified number of days. One or more preferences may be set or modified under this container.
+     * This container is included if the seller wishes to set or modify Unpaid Item preferences. The Unpaid Item preferences automatically opens an Unpaid Item case on the behalf of the seller if the buyer has not paid for the order after a specified number of days. One or more preferences may be set or modified under this container.
      *
      * @return \Nogrod\eBaySDK\Trading\UnpaidItemAssistancePreferencesType
      */
@@ -355,7 +355,7 @@ class SetUserPreferencesRequestType extends AbstractRequestType
     /**
      * Sets a new unpaidItemAssistancePreferences
      *
-     * This container is included if the seller wishes to set Unpaid Item Assistant preferences. The Unpaid Item Assistant automatically opens an Unpaid Item case on the behalf of the seller if the buyer has not paid for the order after a specified number of days. One or more preferences may be set or modified under this container.
+     * This container is included if the seller wishes to set or modify Unpaid Item preferences. The Unpaid Item preferences automatically opens an Unpaid Item case on the behalf of the seller if the buyer has not paid for the order after a specified number of days. One or more preferences may be set or modified under this container.
      *
      * @param \Nogrod\eBaySDK\Trading\UnpaidItemAssistancePreferencesType $unpaidItemAssistancePreferences
      * @return self

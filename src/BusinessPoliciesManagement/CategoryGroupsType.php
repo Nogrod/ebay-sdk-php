@@ -7,12 +7,14 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing CategoryGroupsType
  *
- *
+ * Type defining the <b>categoryGroups</b> container, which contains one or more <b>categoryGroup</b> containers.
  * XSD Type: CategoryGroups
  */
 class CategoryGroupsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
     /**
+     * This container indicates the category group to which the payment policy, return policy, or shipping policy applies to. The only two valid category groups are 'MOTORS_VEHICLE' (for motor vehicle listings) and 'ALL' (for non-motor vehicle listings). The 'MOTORS_VEHICLE' category group is not valid for return policies, as return policies cannot be used with motor vehicle listings. These enumeration values are case-sensitive. Each business policy can be associated with more than one category group.
+     *
      * @var \Nogrod\eBaySDK\BusinessPoliciesManagement\CategoryGroupType[] $categoryGroup
      */
     private $categoryGroup = [
@@ -21,6 +23,8 @@ class CategoryGroupsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
 
     /**
      * Adds as categoryGroup
+     *
+     * This container indicates the category group to which the payment policy, return policy, or shipping policy applies to. The only two valid category groups are 'MOTORS_VEHICLE' (for motor vehicle listings) and 'ALL' (for non-motor vehicle listings). The 'MOTORS_VEHICLE' category group is not valid for return policies, as return policies cannot be used with motor vehicle listings. These enumeration values are case-sensitive. Each business policy can be associated with more than one category group.
      *
      * @return self
      * @param \Nogrod\eBaySDK\BusinessPoliciesManagement\CategoryGroupType $categoryGroup
@@ -34,6 +38,8 @@ class CategoryGroupsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
     /**
      * isset categoryGroup
      *
+     * This container indicates the category group to which the payment policy, return policy, or shipping policy applies to. The only two valid category groups are 'MOTORS_VEHICLE' (for motor vehicle listings) and 'ALL' (for non-motor vehicle listings). The 'MOTORS_VEHICLE' category group is not valid for return policies, as return policies cannot be used with motor vehicle listings. These enumeration values are case-sensitive. Each business policy can be associated with more than one category group.
+     *
      * @param int|string $index
      * @return bool
      */
@@ -44,6 +50,8 @@ class CategoryGroupsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
 
     /**
      * unset categoryGroup
+     *
+     * This container indicates the category group to which the payment policy, return policy, or shipping policy applies to. The only two valid category groups are 'MOTORS_VEHICLE' (for motor vehicle listings) and 'ALL' (for non-motor vehicle listings). The 'MOTORS_VEHICLE' category group is not valid for return policies, as return policies cannot be used with motor vehicle listings. These enumeration values are case-sensitive. Each business policy can be associated with more than one category group.
      *
      * @param int|string $index
      * @return void
@@ -56,6 +64,8 @@ class CategoryGroupsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
     /**
      * Gets as categoryGroup
      *
+     * This container indicates the category group to which the payment policy, return policy, or shipping policy applies to. The only two valid category groups are 'MOTORS_VEHICLE' (for motor vehicle listings) and 'ALL' (for non-motor vehicle listings). The 'MOTORS_VEHICLE' category group is not valid for return policies, as return policies cannot be used with motor vehicle listings. These enumeration values are case-sensitive. Each business policy can be associated with more than one category group.
+     *
      * @return \Nogrod\eBaySDK\BusinessPoliciesManagement\CategoryGroupType[]
      */
     public function getCategoryGroup()
@@ -65,6 +75,8 @@ class CategoryGroupsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
 
     /**
      * Sets a new categoryGroup
+     *
+     * This container indicates the category group to which the payment policy, return policy, or shipping policy applies to. The only two valid category groups are 'MOTORS_VEHICLE' (for motor vehicle listings) and 'ALL' (for non-motor vehicle listings). The 'MOTORS_VEHICLE' category group is not valid for return policies, as return policies cannot be used with motor vehicle listings. These enumeration values are case-sensitive. Each business policy can be associated with more than one category group.
      *
      * @param \Nogrod\eBaySDK\BusinessPoliciesManagement\CategoryGroupType[] $categoryGroup
      * @return self

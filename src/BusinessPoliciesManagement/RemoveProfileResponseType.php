@@ -5,7 +5,7 @@ namespace Nogrod\eBaySDK\BusinessPoliciesManagement;
 /**
  * Class representing RemoveProfileResponseType
  *
- * The response container for removeProfile call.
+ * The response container for the <b>removeProfile</b> call.
  * XSD Type: RemoveProfileResponse
  */
 class RemoveProfileResponseType extends BaseResponseType

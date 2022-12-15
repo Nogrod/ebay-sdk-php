@@ -7,15 +7,13 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing LineItemType
  *
- * This type provides information about one order line item in a Global Shipping package. The package can contain multiple units of a given order line item.
+ * This type provides information about one order line item in a package. The package can contain multiple units of a given order line item.
  * XSD Type: LineItemType
  */
 class LineItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
     /**
-     * The number of units of the order line item in this package; this is required for customs. The seller must ensure that this matches the quantity of the order line item enclosed in the package.
-     *  <br/><br/>
-     *  This value must be a positive integer, and it can't be greater than the quantity of this item specified in the original transaction.
+     * The number of units of the order line item in this package; this is required for customs. The seller must ensure that this matches the quantity of the order line item enclosed in the package.<br/><br/>This value must be a positive integer, and it can't be greater than the quantity of this item specified in the original transaction. This field is a required field in <b>CompleteSale</b> if the order type is a Global Shipping Program (GSP) order.
      *
      * @var int $quantity
      */
@@ -60,9 +58,7 @@ class LineItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
     /**
      * Gets as quantity
      *
-     * The number of units of the order line item in this package; this is required for customs. The seller must ensure that this matches the quantity of the order line item enclosed in the package.
-     *  <br/><br/>
-     *  This value must be a positive integer, and it can't be greater than the quantity of this item specified in the original transaction.
+     * The number of units of the order line item in this package; this is required for customs. The seller must ensure that this matches the quantity of the order line item enclosed in the package.<br/><br/>This value must be a positive integer, and it can't be greater than the quantity of this item specified in the original transaction. This field is a required field in <b>CompleteSale</b> if the order type is a Global Shipping Program (GSP) order.
      *
      * @return int
      */
@@ -74,9 +70,7 @@ class LineItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
     /**
      * Sets a new quantity
      *
-     * The number of units of the order line item in this package; this is required for customs. The seller must ensure that this matches the quantity of the order line item enclosed in the package.
-     *  <br/><br/>
-     *  This value must be a positive integer, and it can't be greater than the quantity of this item specified in the original transaction.
+     * The number of units of the order line item in this package; this is required for customs. The seller must ensure that this matches the quantity of the order line item enclosed in the package.<br/><br/>This value must be a positive integer, and it can't be greater than the quantity of this item specified in the original transaction. This field is a required field in <b>CompleteSale</b> if the order type is a Global Shipping Program (GSP) order.
      *
      * @param int $quantity
      * @return self

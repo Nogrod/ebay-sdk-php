@@ -359,21 +359,21 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     private $charityAffiliations = null;
 
     /**
-     * This field is currently still returned, but is no longer relevant since having a PayPal account linked to your eBay account is no longer required.
+     * This field is deprecated.
      *
      * @var string $payPalAccountLevel
      */
     private $payPalAccountLevel = null;
 
     /**
-     * This field is currently still returned, but is no longer relevant since having a PayPal account linked to your eBay account is no longer required.
+     * This field is deprecated.
      *
      * @var string $payPalAccountType
      */
     private $payPalAccountType = null;
 
     /**
-     * This field is currently still returned, but is no longer relevant since having a PayPal account linked to your eBay account is no longer required.
+     * This field is deprecated.
      *
      * @var string $payPalAccountStatus
      */
@@ -1552,7 +1552,7 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Gets as payPalAccountLevel
      *
-     * This field is currently still returned, but is no longer relevant since having a PayPal account linked to your eBay account is no longer required.
+     * This field is deprecated.
      *
      * @return string
      */
@@ -1564,7 +1564,7 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Sets a new payPalAccountLevel
      *
-     * This field is currently still returned, but is no longer relevant since having a PayPal account linked to your eBay account is no longer required.
+     * This field is deprecated.
      *
      * @param string $payPalAccountLevel
      * @return self
@@ -1578,7 +1578,7 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Gets as payPalAccountType
      *
-     * This field is currently still returned, but is no longer relevant since having a PayPal account linked to your eBay account is no longer required.
+     * This field is deprecated.
      *
      * @return string
      */
@@ -1590,7 +1590,7 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Sets a new payPalAccountType
      *
-     * This field is currently still returned, but is no longer relevant since having a PayPal account linked to your eBay account is no longer required.
+     * This field is deprecated.
      *
      * @param string $payPalAccountType
      * @return self
@@ -1604,7 +1604,7 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Gets as payPalAccountStatus
      *
-     * This field is currently still returned, but is no longer relevant since having a PayPal account linked to your eBay account is no longer required.
+     * This field is deprecated.
      *
      * @return string
      */
@@ -1616,7 +1616,7 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Sets a new payPalAccountStatus
      *
-     * This field is currently still returned, but is no longer relevant since having a PayPal account linked to your eBay account is no longer required.
+     * This field is deprecated.
      *
      * @param string $payPalAccountStatus
      * @return self

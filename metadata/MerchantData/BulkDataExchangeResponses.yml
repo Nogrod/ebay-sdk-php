@@ -1,3 +1,0 @@
-Nogrod\eBaySDK\MerchantData\BulkDataExchangeResponses:
-    xml_root_name: BulkDataExchangeResponses
-    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

@@ -5,7 +5,7 @@ namespace Nogrod\eBaySDK\BusinessPoliciesManagement;
 /**
  * Class representing GetVersionResponseType
  *
- * Response container for the current version of business services the seller is using.
+ * Response container for the <b>getVersion</b> API call.
  * XSD Type: GetVersionResponse
  */
 class GetVersionResponseType extends BaseResponseType

@@ -214,7 +214,7 @@ class VariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
     private $privateNotes = null;
 
     /**
-     * This container provides information for a single variation (within a multiple-variation listing) that has a Strikethrough Price (STP) or a Minimum Advertised Price (MAP) discount pricing treatment. For a multiple-variation listing, the discount pricing information should be set at the variation level and not at the item level (e.g. <b>Item.DiscountPriceInfo</b>). STP and MAP apply only to fixed-price listings. STP is available on the US, eBay Motors, UK, Germany, Canada (English and French), France, Italy, and Spain sites, while MAP is available only on the US site.
+     * This container provides information for a single variation (within a multiple-variation listing) that has a Strikethrough Price (STP) or a Minimum Advertised Price (MAP) discount pricing treatment. For a multiple-variation listing, the discount pricing information should be set at the variation level and not at the item level (e.g. <b>Item.DiscountPriceInfo</b>). STP and MAP apply only to fixed-price listings. STP is available on the US, eBay Motors, UK, Germany, Canada (English and French), France, Italy, Spain, and Ireland sites, while MAP is available only on the US site.
      *  <br><br>
      *  Discount pricing is available to qualified sellers (and their associated developers) who participate in the Discount Pricing Program. Once qualified, sellers receive a 'special account flag' (SAF) that allows them to apply Discount Pricing to both single-variation and multi-variation items. STP is intended for eBay partners and their sellers only.
      *  <br><br>
@@ -878,7 +878,7 @@ class VariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
     /**
      * Gets as discountPriceInfo
      *
-     * This container provides information for a single variation (within a multiple-variation listing) that has a Strikethrough Price (STP) or a Minimum Advertised Price (MAP) discount pricing treatment. For a multiple-variation listing, the discount pricing information should be set at the variation level and not at the item level (e.g. <b>Item.DiscountPriceInfo</b>). STP and MAP apply only to fixed-price listings. STP is available on the US, eBay Motors, UK, Germany, Canada (English and French), France, Italy, and Spain sites, while MAP is available only on the US site.
+     * This container provides information for a single variation (within a multiple-variation listing) that has a Strikethrough Price (STP) or a Minimum Advertised Price (MAP) discount pricing treatment. For a multiple-variation listing, the discount pricing information should be set at the variation level and not at the item level (e.g. <b>Item.DiscountPriceInfo</b>). STP and MAP apply only to fixed-price listings. STP is available on the US, eBay Motors, UK, Germany, Canada (English and French), France, Italy, Spain, and Ireland sites, while MAP is available only on the US site.
      *  <br><br>
      *  Discount pricing is available to qualified sellers (and their associated developers) who participate in the Discount Pricing Program. Once qualified, sellers receive a 'special account flag' (SAF) that allows them to apply Discount Pricing to both single-variation and multi-variation items. STP is intended for eBay partners and their sellers only.
      *  <br><br>
@@ -894,7 +894,7 @@ class VariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
     /**
      * Sets a new discountPriceInfo
      *
-     * This container provides information for a single variation (within a multiple-variation listing) that has a Strikethrough Price (STP) or a Minimum Advertised Price (MAP) discount pricing treatment. For a multiple-variation listing, the discount pricing information should be set at the variation level and not at the item level (e.g. <b>Item.DiscountPriceInfo</b>). STP and MAP apply only to fixed-price listings. STP is available on the US, eBay Motors, UK, Germany, Canada (English and French), France, Italy, and Spain sites, while MAP is available only on the US site.
+     * This container provides information for a single variation (within a multiple-variation listing) that has a Strikethrough Price (STP) or a Minimum Advertised Price (MAP) discount pricing treatment. For a multiple-variation listing, the discount pricing information should be set at the variation level and not at the item level (e.g. <b>Item.DiscountPriceInfo</b>). STP and MAP apply only to fixed-price listings. STP is available on the US, eBay Motors, UK, Germany, Canada (English and French), France, Italy, Spain, and Ireland sites, while MAP is available only on the US site.
      *  <br><br>
      *  Discount pricing is available to qualified sellers (and their associated developers) who participate in the Discount Pricing Program. Once qualified, sellers receive a 'special account flag' (SAF) that allows them to apply Discount Pricing to both single-variation and multi-variation items. STP is intended for eBay partners and their sellers only.
      *  <br><br>

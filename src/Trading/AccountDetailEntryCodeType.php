@@ -1701,24 +1701,21 @@ class AccountDetailEntryCodeType
     /**
      * Constant for 'PaypalOnFile' value.
      *
-     * This enumeration value is no longer applicable as having a PayPal linked to your
-     * eBay account is no longer required.
+     * This enumeration value is no longer applicable.
      */
     public const VAL_PAYPAL_ON_FILE = 'PaypalOnFile';
 
     /**
      * Constant for 'PaypalOnFileByCSR' value.
      *
-     * This enumeration value is no longer applicable as having a PayPal linked to your
-     * eBay account is no longer required.
+     * This enumeration value is no longer applicable.
      */
     public const VAL_PAYPAL_ON_FILE_BY_CSR = 'PaypalOnFileByCSR';
 
     /**
      * Constant for 'PaypalOffFile' value.
      *
-     * This enumeration value is no longer applicable as having a PayPal linked to your
-     * eBay account is no longer required.
+     * This enumeration value is no longer applicable.
      */
     public const VAL_PAYPAL_OFF_FILE = 'PaypalOffFile';
 
@@ -2741,116 +2738,42 @@ class AccountDetailEntryCodeType
     /**
      * Constant for 'USInternetSalesTax' value.
      *
-     * This enumeration value indicates that PayPal has pulled out the 'Collect and
-     * Remit' sales tax amount that was originally deposited to the seller's PayPal
-     * account. This enumeration value is only applicable if the buyer is based in the
-     * US, and their state of residence mandates the collection of sales tax. See the
-     * corresponding <b>OrderId</b> value to determine which eBay order this sales tax
-     * pertains to.
-     *  <br><br>
-     *  <span class="tablenote"><b>Note: </b>
-     *  As of November 2021, a very large majority of orders go through the eBay
-     * payments process, and PayPal is no longer involved in the checkout/payment flow.
-     * This enumeration value will soon become deprecated, but this value may still be
-     * relevant for older orders.
-     *  </span>
+     * This enumeration value is deprecated.
      */
     public const VAL_USINTERNET_SALES_TAX = 'USInternetSalesTax';
 
     /**
      * Constant for 'USInternetSalesTaxCredit' value.
      *
-     * This enumeration value indicates that PayPal has deposited the 'Collect and
-     * Remit' sales tax amount (for the order identified by the corresponding
-     * <b>OrderId</b> field) to the seller's PayPal account. This enumeration value is
-     * only applicable if the buyer is based in the US, and their state of residence
-     * mandates the collection of sales tax. This sales tax will actually get pulled
-     * from the seller's PayPal account shortly after the buyer's funds clear, and the
-     * seller should then see a <b>USInternetSalesTax</b> account entry with a matching
-     * amount.
-     *  <br><br>
-     *  <span class="tablenote"><b>Note: </b>
-     *  As of November 2021, a very large majority of orders go through the eBay
-     * payments process, and PayPal is no longer involved in the checkout/payment flow.
-     * This enumeration value will soon become deprecated, but this value may still be
-     * relevant for older orders.
-     *  </span>
+     * This enumeration value is deprecated.
      */
     public const VAL_USINTERNET_SALES_TAX_CREDIT = 'USInternetSalesTaxCredit';
 
     /**
      * Constant for 'NewZealandGST' value.
      *
-     * This enumeration value indicates that PayPal has pulled out the 'Goods and
-     * Services' tax amount that was originally deposited to the seller's PayPal
-     * account. This enumeration value is only applicable to New Zealand sellers for
-     * orders that are subject to 'Goods and Services' tax. See the corresponding
-     * <b>OrderId</b> value to determine which eBay order this tax pertains to.
-     *  <br><br>
-     *  <span class="tablenote"><b>Note: </b>
-     *  As of November 2021, a very large majority of orders go through the eBay
-     * payments process, and PayPal is no longer involved in the checkout/payment flow.
-     * This enumeration value will soon become deprecated, but this value may still be
-     * relevant for older orders.
-     *  </span>
+     * This enumeration value is deprecated.
      */
     public const VAL_NEW_ZEALAND_GST = 'NewZealandGST';
 
     /**
      * Constant for 'NewZealandGSTCredit' value.
      *
-     * This enumeration value indicates that PayPal has deposited the 'Goods and
-     * Services' tax amount (for the order identified by the corresponding
-     * <b>OrderId</b> field) to the seller's account. This enumeration value is only
-     * applicable to New Zealand sellers for orders that are subject to 'Goods and
-     * Services' tax. This tax will actually get pulled from the seller's account
-     * shortly after the order funds clear, and the seller should then see a
-     * <b>NewZealandGST</b> account entry with a matching amount.
-     *  <br><br>
-     *  <span class="tablenote"><b>Note: </b>
-     *  As of November 2021, a very large majority of orders go through the eBay
-     * payments process, and PayPal is no longer involved in the checkout/payment flow.
-     * This enumeration value will soon become deprecated, but this value may still be
-     * relevant for older orders.
-     *  </span>
+     * This enumeration value is deprecated.
      */
     public const VAL_NEW_ZEALAND_GSTCREDIT = 'NewZealandGSTCredit';
 
     /**
      * Constant for 'AustraliaGST' value.
      *
-     * This enumeration value indicates that PayPal has pulled out the 'Goods and
-     * Services' tax amount that was originally deposited to the seller's PayPal
-     * account. This enumeration value is only applicable to Australian sellers for
-     * orders that are subject to 'Goods and Services' tax. See the corresponding
-     * <b>OrderId</b> value to determine which eBay order this tax pertains to.
-     *  <br><br>
-     *  <span class="tablenote"><b>Note: </b>
-     *  As of November 2021, a very large majority of orders go through the eBay
-     * payments process, and PayPal is no longer involved in the checkout/payment flow.
-     * This enumeration value will soon become deprecated, but this value may still be
-     * relevant for older orders.
-     *  </span>
+     * This enumeration value is deprecated.
      */
     public const VAL_AUSTRALIA_GST = 'AustraliaGST';
 
     /**
      * Constant for 'AustraliaGSTCredit' value.
      *
-     * This enumeration value indicates that PayPal has deposited the 'Goods and
-     * Services' tax amount (for the order identified by the corresponding
-     * <b>OrderId</b> field) to the seller's account. This enumeration value is only
-     * applicable to Australian sellers for orders that are subject to 'Goods and
-     * Services' tax. This tax will actually get pulled from the seller's account
-     * shortly after the order funds clear, and the seller should then see a
-     * <b>AustraliaGST</b> account entry with a matching amount.
-     *  <br><br>
-     *  <span class="tablenote"><b>Note: </b>
-     *  As of November 2021, a very large majority of orders go through the eBay
-     * payments process, and PayPal is no longer involved in the checkout/payment flow.
-     * This enumeration value will soon become deprecated, but this value may still be
-     * relevant for older orders.
-     *  </span>
+     * This enumeration value is deprecated.
      */
     public const VAL_AUSTRALIA_GSTCREDIT = 'AustraliaGSTCredit';
 
@@ -3052,36 +2975,167 @@ class AccountDetailEntryCodeType
     public const VAL_AD_FEE_EXPRESS_CREDIT = 'AdFeeExpressCredit';
 
     /**
-     * Constant for 'DepositProcessingVariableFee' value.
+     * Constant for 'DepositProcessingFee' value.
      *
-     * This enumeration value indicates that the account entry is a Deposit Processing
-     * Variable fee.
+     * This enumeration value indicates that the account entry is a Motor Vehicles
+     * Deposit processing fee. eBay charges the seller a 2.8 percent processing fee
+     * (against the required deposit amount) when they sell their vehicle through a
+     * listing that required that the buyer make an initial deposit for the vehicle.
      */
-    public const VAL_DEPOSIT_PROCESSING_VARIABLE_FEE = 'DepositProcessingVariableFee';
+    public const VAL_DEPOSIT_PROCESSING_FEE = 'DepositProcessingFee';
 
     /**
-     * Constant for 'DepositProcessingVariableFeeCredit' value.
+     * Constant for 'DepositProcessingFeeCredit' value.
      *
      * This enumeration value indicates that the account entry is a credit applied
-     * against a Deposit Processing Variable fee.
+     * against a Motor Vehicles Deposit processing fee.
      */
-    public const VAL_DEPOSIT_PROCESSING_VARIABLE_FEE_CREDIT = 'DepositProcessingVariableFeeCredit';
+    public const VAL_DEPOSIT_PROCESSING_FEE_CREDIT = 'DepositProcessingFeeCredit';
 
     /**
      * Constant for 'DepositProcessingFixedFee' value.
      *
-     * This enumeration value indicates that the account entry is a Deposit Processing
-     * Fixed fee.
+     * This enumeration value is deprecated. All Motor Vehicles Deposit processing fees
+     * are indicated with the <code>DepositProcessingFee</code> value.
      */
     public const VAL_DEPOSIT_PROCESSING_FIXED_FEE = 'DepositProcessingFixedFee';
 
     /**
      * Constant for 'DepositProcessingFixedFeeCredit' value.
      *
-     * This enumeration value indicates that the account entry is a credit applied
-     * against a Deposit Processing Fixed fee.
+     * This enumeration value is deprecated. All credits against Motor Vehicles Deposit
+     * processing fees are indicated with the <code>DepositProcessingFeeCredit</code>
+     * value.
      */
     public const VAL_DEPOSIT_PROCESSING_FIXED_FEE_CREDIT = 'DepositProcessingFixedFeeCredit';
+
+    /**
+     * Constant for 'FedExReturnLabelFee' value.
+     *
+     * This enumeration value indicates that the seller was charged a fee for a FedEx
+     * return shipping label.
+     */
+    public const VAL_FED_EX_RETURN_LABEL_FEE = 'FedExReturnLabelFee';
+
+    /**
+     * Constant for 'FedExReturnLabelFeeCredit' value.
+     *
+     * This enumeration value indicates that the seller received a credit against a fee
+     * for a FedEx return shipping label.
+     */
+    public const VAL_FED_EX_RETURN_LABEL_FEE_CREDIT = 'FedExReturnLabelFeeCredit';
+
+    /**
+     * Constant for 'AUPostReturnLabelFee' value.
+     *
+     * This enumeration value indicates that the seller was charged a fee for an
+     * Australia Post return shipping label.
+     */
+    public const VAL_AUPOST_RETURN_LABEL_FEE = 'AUPostReturnLabelFee';
+
+    /**
+     * Constant for 'AUPostReturnLabelFeeCredit' value.
+     *
+     * This enumeration value indicates that the seller received a credit against a fee
+     * for an Australia Post return shipping label.
+     */
+    public const VAL_AUPOST_RETURN_LABEL_FEE_CREDIT = 'AUPostReturnLabelFeeCredit';
+
+    /**
+     * Constant for 'UpsCaLabelFee' value.
+     *
+     * This enumeration value indicates that the seller was charged a fee for a UPS
+     * Canada shipping label.
+     */
+    public const VAL_UPS_CA_LABEL_FEE = 'UpsCaLabelFee';
+
+    /**
+     * Constant for 'UpsCaLabelFeeCredit' value.
+     *
+     * This enumeration value indicates that the seller received a credit against a fee
+     * for a UPS Canada shipping label.
+     */
+    public const VAL_UPS_CA_LABEL_FEE_CREDIT = 'UpsCaLabelFeeCredit';
+
+    /**
+     * Constant for 'FedExCaLabelFee' value.
+     *
+     * This enumeration value indicates that the seller was charged a fee for a FedEx
+     * Canada shipping label.
+     */
+    public const VAL_FED_EX_CA_LABEL_FEE = 'FedExCaLabelFee';
+
+    /**
+     * Constant for 'FedExCaLabelFeeCredit' value.
+     *
+     * This enumeration value indicates that the seller received a credit against a fee
+     * for a FedEx Canada shipping label.
+     */
+    public const VAL_FED_EX_CA_LABEL_FEE_CREDIT = 'FedExCaLabelFeeCredit';
+
+    /**
+     * Constant for 'HubbedReturnLabelFee' value.
+     *
+     * This enumeration value indicates that the seller was charged a fee for a Hubbed
+     * return shipping label.
+     */
+    public const VAL_HUBBED_RETURN_LABEL_FEE = 'HubbedReturnLabelFee';
+
+    /**
+     * Constant for 'HubbedReturnLabelFeeCredit' value.
+     *
+     * This enumeration value indicates that the seller received a credit against a fee
+     * for a Hubbed return shipping label.
+     */
+    public const VAL_HUBBED_RETURN_LABEL_FEE_CREDIT = 'HubbedReturnLabelFeeCredit';
+
+    /**
+     * Constant for 'RoyalMailReturnLabelFee' value.
+     *
+     * This enumeration value indicates that the seller was charged a fee for a Royal
+     * Mail return shipping label.
+     */
+    public const VAL_ROYAL_MAIL_RETURN_LABEL_FEE = 'RoyalMailReturnLabelFee';
+
+    /**
+     * Constant for 'RoyalMailReturnLabelFeeCredit' value.
+     *
+     * This enumeration value indicates that the seller received a credit against a fee
+     * for a Royal Mail return shipping label.
+     */
+    public const VAL_ROYAL_MAIL_RETURN_LABEL_FEE_CREDIT = 'RoyalMailReturnLabelFeeCredit';
+
+    /**
+     * Constant for 'ParcelForcePostReturnLabelFee' value.
+     *
+     * This enumeration value indicates that the seller was charged a fee for a Parcel
+     * Force Post return shipping label.
+     */
+    public const VAL_PARCEL_FORCE_POST_RETURN_LABEL_FEE = 'ParcelForcePostReturnLabelFee';
+
+    /**
+     * Constant for 'ParcelForcePostReturnLabelFeeCredit' value.
+     *
+     * This enumeration value indicates that the seller received a credit against a fee
+     * for a Parcel Force Post return shipping label.
+     */
+    public const VAL_PARCEL_FORCE_POST_RETURN_LABEL_FEE_CREDIT = 'ParcelForcePostReturnLabelFeeCredit';
+
+    /**
+     * Constant for 'OffsiteAdsFee' value.
+     *
+     * This enumeration value indicates that the seller was charged a fee for offsite
+     * ad clicks for a Promoted Listing Advanced campaign.
+     */
+    public const VAL_OFFSITE_ADS_FEE = 'OffsiteAdsFee';
+
+    /**
+     * Constant for 'OffsiteAdsFeeCredit' value.
+     *
+     * This enumeration value indicates that the seller was issue a credit against a
+     * fee for offsite ad clicks for a Promoted Listing Advanced campaign.
+     */
+    public const VAL_OFFSITE_ADS_FEE_CREDIT = 'OffsiteAdsFeeCredit';
 
     /**
      * @var string $__value

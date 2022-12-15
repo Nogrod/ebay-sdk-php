@@ -175,18 +175,6 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     private $distance = null;
 
     /**
-     * <b>DO NOT USE THIS FIELD</b>. Hit counters are no longer displayed in View Item pages, so this field is no longer applicable and is scheduled for decommission. If this field is used in an add/revise/relist/verify call, it will be ignored and a warning message will be returned.
-     *  <br/><br/>
-     *  For developers/sellers who are interested in seeing page views and listing performance, the <a href="https://developer.ebay.com/api-docs/sell/analytics/resources/traffic_report/methods/getTrafficReport">getTrafficReport</a> method of the <b>Sell Analytics API</b> can be used.
-     *  <br/><br/>
-     *  Until this field is decommissioned, it will still be returned in <b>GetItem</b>, <b>GetBidderList</b>, <b>GetSellerEvents</b>, and <b>GetSellerList</b>. The default value for the marketplace will be returned, such as <code>NoHitCounter</code> or <code>HiddenStyle</code>.
-     *  <br/>
-     *
-     * @var string $hitCounter
-     */
-    private $hitCounter = null;
-
-    /**
      * The unique identifier of the eBay listing. This identifier is generated
      *  by eBay and returned in the response of an Add call if an item is successfully listed. Once an item is successfully created, the <b>ItemID</b> cannot be modified. <br>
      *  <br>
@@ -330,7 +318,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <span class="tablenote"><b>Note: </b> Sellers no longer have to specify any electronic payment methods for listings, so one or more <b>PaymentMethods</b> fields will only be needed for listings that require/support payments off of eBay's platform. If an electronic payment is supplied in a <b>PaymentMethods</b> field, a warning will be triggered and the payment method will be dropped.
      *  </span>
      *  <br>
-     *  <span class="tablenote"><b>Note: </b> If you are already referencing a payments business policy in an Add/Revise/Relist call with the <b>SellerProfiles.SellerPaymentProfile</b> container, no lt;b>PaymentMethods</b> fields will be needed, as these settings will already be set in the payments business policy.
+     *  <span class="tablenote"><b>Note: </b> If you are already referencing a payments business policy in an Add/Revise/Relist call with the <b>SellerProfiles.SellerPaymentProfile</b> container, no <b>PaymentMethods</b> fields will be needed, as these settings will already be set in the payments business policy.
      *  </span>
      *  <br>
      *  Payment methods are not applicable to any classified ad listings, as any agreement and payment is handled off of the eBay platform.
@@ -345,7 +333,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     ];
 
     /**
-     * This field is no longer applicable, as eBay now controls all electronic payment methods and handles the payment from the buyer.
+     * This field is no longer applicable, and should not be used.
      *
      * @var string $payPalEmailAddress
      */
@@ -355,7 +343,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      * This container is used in an Add/Revise/Relist call to set the primary listing category. This field is conditionally required in an Add call unless the seller successfully uses the <b>ProductListingDetails</b> container to find an eBay catalog product match. When the seller successfully uses an eBay catalog product to create a listing, the listing title, listing description, Item Specifics, listing category, and stock photo defined in the catalog product is used to create the listing.<br>
      *  <br>
      *  If you do not know the appropriate eBay category for your product, you can use the <b>GetSuggestedCategories</b> call. Once you know your category, and want to know which listing features it supports, you can use the
-     *  <b>GetCategoryFeatures</b> call. To discover if the category requires or recommends GTIN types and other Item Specifics, you can use the <b>GetCategorySpecifics</b> call.
+     *  <b>GetCategoryFeatures</b> call. To discover required, recommended, and optional Item Specifics for a category, use the <a href="/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API.
      *  <br>
      *  <br>
      *  If you do use an eBay catalog product, it is advised that you do not include this field, as any primary category ID you specify in this field may get dropped if this category is different than the primary category defined in the eBay catalog product.
@@ -376,6 +364,8 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
 
     /**
      * A <code>true</code> value in this field indicates that the listing is private. Sellers may want to use this option when they believe that a listing's potential bidders/buyers would not want their obfuscated user IDs (and feedback scores) exposed to other users.
+     *  <br><br>
+     *  <b>For ReviseItem/ReviseFixedPriceItem</b>: The seller will not be able change this setting if the listing has any pending bids, any pending best offers, previous sales (for multiple-quantity, fixed-price listing), or if the listing will end within 12 hours.
      *  <br>
      *
      * @var bool $privateListing
@@ -386,7 +376,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      * This container is used to provide one or more product identifiers for a product, and if desired by the seller, eBay will use the identifier(s) of the product to try to match it to a defined product in the eBay catalog. If a seller's product is matched to an eBay catalog product, the product details associated with that catalog product will be prefilled for the listing. Product details defined for a catalog product include the product title, product description, product aspects, and stock image(s) of the product (if available).
      *  <br>
      *  <br>
-     *  In some eBay categories, one or more product identifier types (e.g. UPC or ISBN) may be required, but the category may not have any eBay catalog products defined, or the category does not allow listings to be created using a catalog product. Note that the <b>GetCategorySpecifics</b> call or the <b>GetCategoryFeatures</b> call can be used to retrieve supported/required product identifier types.
+     *  In some eBay categories, one or more product identifier types (e.g. UPC or ISBN) may be required, but the category may not have any eBay catalog products defined, or the category does not allow listings to be created using a catalog product. Note that the <b>GetCategoryFeatures</b> call can be used to retrieve supported/required product identifier types.
      *  <br>
      *  <br>
      *  <span class="tablenote"><b>Note:</b>
@@ -490,6 +480,13 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     private $relistLink = null;
 
     /**
+     * If <code>true</code>, the item is eligible for shipping managed by eBay; <code>false</code>, the item is not eligible for shipping managed by eBay.
+     *
+     * @var bool $isItemEMSEligible
+     */
+    private $isItemEMSEligible = null;
+
+    /**
      * This field is used to set the lowest price at which the seller is willing to sell an auction item. The <b>StartPrice</b> value must be lower than the <b>ReservePrice</b> value. Note that setting a reserve price will incur a listing fee of $5 or 7.5% of the reserve price, whichever is greater, and this fee is charged regardless of whether or not the auction item has a qualifying, winning bidder.
      *  <br> <br>
      *  As long as no bidder has matched your reserve price, and the scheduled end time of the auction is 12 or more hours away, you can lower or remove the reserve price. However, even if you remove the reserve price from an active listing, you will still be charged the fee and not eligible for a credit.
@@ -520,7 +517,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <code>AT, BEFR, BENL, CH, DE, ES, FR, IE, IT, NL, PL, UK</code>
      *  <br><br>
      *  Also see the following article in the Knowledge Base: <a href=
-     *  "https://ebaydts.com/eBayKBDetails?KBid=1473" target="_blank"
+     *  "https://developer.ebay.com/support/kb-article?KBid=1473" target="_blank"
      *  >Why scheduled time is sometimes getting reset</a>.
      *
      * @var \DateTime $scheduleTime
@@ -642,7 +639,11 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <b>ReviseItem</b> can add a <b>ShipToLocations</b>. On output, <b>ShipToLocations</b> is the
      *  collection of all input item-level <b>ShipToLocations</b> plus international shipping
      *  service-level ShipToLocation values.
-     *  <br><br>
+     *  <br>
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>ShipToLocations</b> and <b>ShippingDetails.ExcludeShipToLocation</b> containers are not applicable for motor vehicle listings on the US, CA, or UK marketplaces. If these containers are sent in the request, they are ignored and a warning is returned.
+     *  </span>
+     *  <br>
      *  If you have specified a region to which you will ship (such as Asia), you can
      *  use <b>ExcludeShipToLocation</b> to exclude certain countries within that region to
      *  where you will not ship (such as Afghanistan).
@@ -790,11 +791,12 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     private $vATDetails = null;
 
     /**
-     * This field is returned if the seller of the item is currently on vacation and that seller has turned on the Store vacation setting, and has included a message to display to shoppers who visit the eBay store. If the seller turns on the Store vacation setting, the listing will be hidden from search result pages.
-     *  <br/><br/>
-     *  Store vacation settings, including this note, are set through the <b>Messages</b> tab in My eBay, or this message can also be set through the <b>SetStorePreferences</b> call.
-     *  <br/><br/>
-     *  The Store vacation setting is only applicable for sellers with eBay stores.
+     * This field is returned if the seller of the item is currently on vacation and has configured a custom message to display to potentioal buyers through <a href="https://www.ebay.com/help/selling/selling-tools/time-away?id=5137" target="_blank">Time Away</a> settings.
+     *  <br>
+     *  <br>
+     *  <span class="tablenote"><b>Note:</b>
+     *  There are two <b>Time Away</b> modes - <b>Pause Sales</b> and <b>Allow Sales</b>. If seller is in the <b>Pause Sales</b> mode, all fixed-price listings for that seller will be hidden from search results during the span of the seller's vacation.
+     *  </span>
      *
      * @var string $sellerVacationNote
      */
@@ -810,25 +812,18 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     private $watchCount = null;
 
     /**
-     * <b>THIS FIELD IS DEPRECATED</b>. Hit counters are no longer displayed in View Item pages, so this field is no longer applicable and is scheduled for decommission.
-     *  <br/><br/>
-     *  For developers/sellers who are interested in seeing page views and listing performance, the <a href="https://developer.ebay.com/api-docs/sell/analytics/resources/traffic_report/methods/getTrafficReport">getTrafficReport</a> method of the <b>Sell Analytics API</b> can be used.
-     *  <br/><br/>
-     *  Until this field is decommissioned, it will still be returned in <b>GetItem</b>, <b>GetBidderList</b>, <b>GetSellerEvents</b>, and <b>GetSellerList</b>.
+     * This value indicates the number of page views that a listing has received in the last 30 days.<br><br>We recommend that you use the <a href="https://developer.ebay.com/api-docs/sell/analytics/resources/traffic_report/methods/getTrafficReport" target="_blank">getTrafficReport</a> method of the <b>Analytics API</b> to return user traffic details received by a seller's listings. This RESTful method returns metrics such as click-through rate, listing impressions, listing views, sales conversion rate, and the number of completed transactions.<br><br><span class="tablenote"><b>Note: </b>This field is only returned to authorized applications.</span>
      *
      * @var int $hitCount
      */
     private $hitCount = null;
 
     /**
-     * If <code>true</code>, all buyer requirements (from <b>Item.BuyerRequirementDetails</b>
+     * This field can be included and set to <code>true</code> in an Add or Revise call if the seller wishes to disable all buyer requirements (that are set in the seller's account) for the listing. (from <b>Item.BuyerRequirementDetails</b>
      *  or Buyer requirements preferences in My eBay) are ignored.
      *  <br>
      *  <br>
-     *  If <code>false</code> (or omitted): <b>Item.BuyerRequirementDetails</b> or Buyer
-     *  requirements preferences are used, with <b>Item.BuyerRequirementDetails</b>
-     *  having the higher precedence.
-     *  <br>
+     *  This field will only be returned in 'Get' calls if <code>true</code>.
      *
      * @var bool $disableBuyerRequirements
      */
@@ -996,9 +991,9 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     private $postalCode = null;
 
     /**
-     * This container consists of the data associated with photos within the listing. With most eBay sites and categories, a seller can add up to 12 photos to their listings free of charge. These photos can be hosted by eBay Picture Services (EPS), or the seller can host pictures on a non-eBay server. If pictures are externally-hosted, they must be hosted on a site that is using the 'https' protocol.
+     * This container consists of the data associated with photos within the listing. Sellers can have up to 24 pictures in almost any category at no cost. Motor vehicle listings are an exception. The number of included pictures in motor vehicle listings depend on the selected vehicle package (see <a href="https://www.ebay.com/help/selling/fees-credits-invoices/motors-fees?id=4127">Fees for selling vehicles on eBay Motors</a>). These photos can be hosted by eBay Picture Services (EPS), or the seller can host pictures on a non-eBay server. If pictures are externally-hosted, they must be hosted on a site that is using the 'https' protocol.
      *  <br/><br/>
-     *  It is required that all listings have at least one picture. eBay Motors listings can have up to 24 pictures.
+     *  It is required that all listings have at least one picture.
      *
      * @var \Nogrod\eBaySDK\Trading\PictureDetailsType $pictureDetails
      */
@@ -1133,7 +1128,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      * This container is a list of Item Specific <b>Name</b>/<b>Value</b> pairs used by the seller to provide desciptive details of an item in a structured manner.
      *
      *  <br><br>
-     *  If creating, revising, or relisting an item with an <b>Add</b>, <b>Revise</b>, or <b>Relist</b> call, it is recommended that you use the <b>GetCategorySpecifics</b> call to retrieve mandatory and recommended Item Specifics for a listing category.
+     *  If creating, revising, or relisting an item with an <b>Add</b>, <b>Revise</b>, or <b>Relist</b> call, it is recommended that you use the <a href="/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API to retrieve mandatory and recommended Item Specifics for a category.
      *
      *  <br><br>
      *  <b>For ReviseItem only:</b> When you revise a listing, if an auction listing has one or more bids and ends within 12 hours, you cannot change or add Item Ppecifics. If the auction listing has bids but ends in more than 12 hours, you cannot change existing Item Specifics, but you can add Item Specifics that were not previously included.
@@ -1145,7 +1140,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  If the <b>ProductListingDetails</b> container in an Add/Revise/Relist call is successfully used to find and use an eBay catalog product to create/revise listing, the seller should not remove or change the value of any Item Specific name or value that is defined as part of the eBay catalog product definition.
      *
      *  <br><br>
-     *  <span class="tablenote"><b>Note:</b> If a listing is associated with an eBay catalog product, the seller does not need to pass in any Item Specifics that are already defined in the eBay catalog product. Sellers can make a <b>GetCategorySpecifics</b> call to see if the listing category supports any 'instance aspects', which can be thought of as Item Specifics that are unique to the specific item that is being listed. Instance aspects are identified in the <b>GetCategorySpecifics</b> response by looking for a value of <code>Instance</code> in one or more <b>NameRecommendation.ValidationRules.aspectUsage</b> fields. Many categories support the following instance aspects: <em>Custom Bundle</em>, <em>Bundle Description</em>, <em>Modified Item</em>, <em>Modification Description</em>, and <em>California Prop 65 Warning</em>. These instance aspects allow the seller to provide more information about product bundles or modified products in a structured way. Depending on the category, there are other instance aspects as well.
+     *  <span class="tablenote"><b>Note:</b> If a listing is associated with an eBay catalog product, the seller does not need to pass in any Item Specifics that are already defined in the eBay catalog product. Sellers can make a call to the <a href="/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API to see if the category supports any 'instance aspects', which can be thought of as Item Specifics that are unique to the specific item that is being listed. Instance aspects are indicated if the corresponding <a href="/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory#response.aspects.aspectConstraint.aspectApplicableTo" target="_blank">aspectApplicableTo</a> field of the <b>getItemAspectsForCategory</b> response shows a value of <code>ITEM</code> (and not <code>PRODUCT</code>). Many categories support the following instance aspects: <em>Custom Bundle</em>, <em>Bundle Description</em>, <em>Modified Item</em>, <em>Modification Description</em>, and <em>California Prop 65 Warning</em>. These instance aspects allow the seller to provide more information about product bundles or modified products in a structured way. Depending on the category, there are other instance aspects as well.
      *  </span>
      *
      *  <span class="tablenote"><b>Note:</b> To specify an item's condition, use the <b>ConditionID</b> field instead of a condition Item Specific. Use <b>GetCategoryFeatures</b> to see which categories support <b>ConditionID</b> and to get a list of valid condition IDs. (If you specify <b>ConditionID</b> and you also specify <b>Condition</b> as a Item Specific, eBay drops the condition Item Specific.)
@@ -1266,25 +1261,15 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     private $businessSellerDetails = null;
 
     /**
-     * For the Australia site, <b>BuyerGuaranteePrice</b> is the PayPal Buyer Protection
-     *  coverage, offered for the item at the time of purchase. Details of coverage
-     *  are in the following sections of the View Item page: the Buy Safely section
-     *  and the Payment Details section.
+     * The eBay Best Price Guarantee price. The <a href="
+     *  https://pages.ebay.com.au/buy/Best_Price_Guarantee/">Best Price Guarantee</a> program is only available on the eBay Australia marketplace.
      *
      * @var \Nogrod\eBaySDK\Trading\AmountType $buyerGuaranteePrice
      */
     private $buyerGuaranteePrice = null;
 
     /**
-     * When this container is present in an <b>AddItem</b> or <b>AddFixedPriceItem</b> call, all
-     *  buyer requirements for the resulting listing are set by this container.
-     *  Furthermore, individual buyer requirements cannot be modified or added when
-     *  including this container in a <b>ReviseItem</b> call.
-     *  The <b>ReviseItem</b> call needs to
-     *  provide the entire set of buyer requirements to modify or add any of the
-     *  requirements.
-     *  <br/><br/>
-     *  Unless otherwise specified, most buyer requirements are only returned if the caller is the seller. Any and all My eBay account-level Buyer Requirements are overridden by the contents of this container. This means that buyer requirements set in My eBay cannot be combined with buyer requirements included in this container.
+     * This container is returned if the seller has applied one or more buyer requirement criteria to the listing. Buyer requirement settings are managed in the Selling Preferences section of the seller's account in My eBay.
      *
      * @var \Nogrod\eBaySDK\Trading\BuyerRequirementDetailsType $buyerRequirementDetails
      */
@@ -1572,7 +1557,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     private $quantityThreshold = null;
 
     /**
-     * This container provides information for an item that has a Strikethrough Price (STP) or a Minimum Advertised Price (MAP) discount pricing treatment. STP and MAP apply only to fixed-price listings. STP is available on the US, eBay Motors, UK, Germany, Canada (English and French), France, Italy, and Spain sites, while MAP is available only on the US site.
+     * This container provides information for an item that has a Strikethrough Price (STP) or a Minimum Advertised Price (MAP) discount pricing treatment. STP and MAP apply only to fixed-price listings. STP is available on the US, eBay Motors, UK, Germany, Canada (English and French), France, Italy, Spain, and Ireland sites, while MAP is available only on the US site.
      *  <br><br>
      *  Discount pricing is available to qualified sellers (and their associated developers) who participate in the Discount Pricing Program. Once qualified, sellers receive a 'special account flag' (SAF) that allows them to apply Discount Pricing to both single-variation and multi-variation items. STP is intended for eBay partners and their sellers only.
      *  <br><br>
@@ -1599,9 +1584,9 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * This field displays the Vehicle Identification Number, which is a unique serial number for a motor vehicle.
      *  <br><br>
-     *  This field is applicable to listings in US eBay Motors Cars and Trucks (6001), Motorcycles (6024), Commercial Trucks (63732), RVs and Campers (50054), ATVs (6723), Snowmobiles (42595), and UTVs (173665); and to Cars and Trucks listings in CA, CAFR and AU eBay Motors. For vehicle categories that do not use VIN, call <b>GetCategorySpecifics</b> to determine applicable Item Specifics (such as 'Hull ID Number' for Boats).
+     *  This field is applicable to listings in US eBay Motors Cars and Trucks (6001), Motorcycles (6024), Commercial Trucks (63732), RVs and Campers (50054), ATVs (6723), Snowmobiles (42595), and UTVs (173665); and to Cars and Trucks listings in CA, CAFR and AU eBay Motors. For vehicle categories that do not use VIN, make a call to the <a href="/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API to determine applicable Item Specifics (such as 'Hull ID Number' for Boats).
      *  <br><br>
-     *  For the US, CA, and CAFR eBay Motors sites, required for cars and trucks from model year 1981 and later. (The US developed national standards for VIN values in 1981.)
+     *  For the US, CA, and CA-FR eBay Motors categories, required for cars and trucks from model year 1981 and later. (The US developed national standards for VIN values in 1981.)
      *  <br><br>
      *  For the eBay Australia site, required for vehicles from model year 1989 or later. For the eBay Australia site, only appears on the View Item page if you also specify the date of first registration in the listing's Item Specifics.
      *  <br><br>
@@ -1650,7 +1635,9 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      * This container is used if the seller would like to use/reference business policies to create, revise, relist, or verify their listing. The seller's account must be opted in to business policies to use this container. If this container is used, exactly one Payment Business Policy, one Shipping Business Policy, and one Return Business Policy must be specified and applied to the listing. If the seller's account is not opted in to business policies, that seller may not use this container. Sellers must opt-in to business policies through My eBay or by using the <b>optInToProgram</b> call of the <b>eBay Account API</b>.
      *  <br><br>
      *  If business policies are applied to a listing, all payment, shipping, and return policy settings in these policies will override any other payment, shipping, or return policy legacy fields that are included in the call request.
-     *  <br><br>
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> To make sure that the shipping cost override and policies are set correctly on an item (that is using business policies and has one or more shipping service cost overrides set up), the <b>Item.SellerProfiles.SellerShippingProfile</b> container and the <b>Item.ShippingServiceCostOverrideList.ShippingServiceCostOverride</b> container(s) must be included, even if no changes are being made.
+     *  </span>
      *  This container is only returned in 'Get' calls if business policies are set for the listing, and the person making the API call is the seller of the listing.
      *
      * @var \Nogrod\eBaySDK\Trading\SellerProfilesType $sellerProfiles
@@ -1661,7 +1648,9 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      * This container is used when the seller wants to override the flat shipping costs for all domestic and/or all international shipping services defined in the shipping business policy referenced in the <b>SellerProfiles.SellerShippingProfile.ShippingProfileID</b> field. Shipping costs include the cost to ship one item, the cost to ship each additional identical item, and any shipping surcharges applicable to domestic shipping services.
      *  <br><br>
      *  A <b>ShippingServiceCostOverrideList.ShippingServiceCostOverride</b> container is required for each domestic and/or international shipping service that is defined in the <b>domesticShippingPolicyInfoService</b> and <b>intlShippingPolicyInfoService</b> containers of the shipping business policy.
-     *  <br><br>
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> To make sure that the shipping cost override and policies are set correctly on an item (that is using business policies and has one or more shipping service cost overrides set up), the <b>Item.SellerProfiles.SellerShippingProfile</b> container and the <b>Item.ShippingServiceCostOverrideList.ShippingServiceCostOverride</b> container(s) must be included, even if no changes are being made.
+     *  </span>
      *  Shipping service cost overrides are a listing-level concept, and the shipping costs specified through each <b>ShippingServiceCostOverrideList.ShippingServiceCostOverride</b> container will not change the shipping costs defined for the same shipping services in the shipping business policy.
      *  <br><br>
      *  <b>For Revise and Relist calls</b>: To delete all shipping service cost overrides when you revise or relist, specify <b>Item.ShippingServiceCostOverrideList</b> in <b>DeletedField</b>, and don't pass <b>ShippingServiceCostOverrideList</b> in the request.
@@ -2514,42 +2503,6 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     }
 
     /**
-     * Gets as hitCounter
-     *
-     * <b>DO NOT USE THIS FIELD</b>. Hit counters are no longer displayed in View Item pages, so this field is no longer applicable and is scheduled for decommission. If this field is used in an add/revise/relist/verify call, it will be ignored and a warning message will be returned.
-     *  <br/><br/>
-     *  For developers/sellers who are interested in seeing page views and listing performance, the <a href="https://developer.ebay.com/api-docs/sell/analytics/resources/traffic_report/methods/getTrafficReport">getTrafficReport</a> method of the <b>Sell Analytics API</b> can be used.
-     *  <br/><br/>
-     *  Until this field is decommissioned, it will still be returned in <b>GetItem</b>, <b>GetBidderList</b>, <b>GetSellerEvents</b>, and <b>GetSellerList</b>. The default value for the marketplace will be returned, such as <code>NoHitCounter</code> or <code>HiddenStyle</code>.
-     *  <br/>
-     *
-     * @return string
-     */
-    public function getHitCounter()
-    {
-        return $this->hitCounter;
-    }
-
-    /**
-     * Sets a new hitCounter
-     *
-     * <b>DO NOT USE THIS FIELD</b>. Hit counters are no longer displayed in View Item pages, so this field is no longer applicable and is scheduled for decommission. If this field is used in an add/revise/relist/verify call, it will be ignored and a warning message will be returned.
-     *  <br/><br/>
-     *  For developers/sellers who are interested in seeing page views and listing performance, the <a href="https://developer.ebay.com/api-docs/sell/analytics/resources/traffic_report/methods/getTrafficReport">getTrafficReport</a> method of the <b>Sell Analytics API</b> can be used.
-     *  <br/><br/>
-     *  Until this field is decommissioned, it will still be returned in <b>GetItem</b>, <b>GetBidderList</b>, <b>GetSellerEvents</b>, and <b>GetSellerList</b>. The default value for the marketplace will be returned, such as <code>NoHitCounter</code> or <code>HiddenStyle</code>.
-     *  <br/>
-     *
-     * @param string $hitCounter
-     * @return self
-     */
-    public function setHitCounter($hitCounter)
-    {
-        $this->hitCounter = $hitCounter;
-        return $this;
-    }
-
-    /**
      * Gets as itemID
      *
      * The unique identifier of the eBay listing. This identifier is generated
@@ -3006,7 +2959,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <span class="tablenote"><b>Note: </b> Sellers no longer have to specify any electronic payment methods for listings, so one or more <b>PaymentMethods</b> fields will only be needed for listings that require/support payments off of eBay's platform. If an electronic payment is supplied in a <b>PaymentMethods</b> field, a warning will be triggered and the payment method will be dropped.
      *  </span>
      *  <br>
-     *  <span class="tablenote"><b>Note: </b> If you are already referencing a payments business policy in an Add/Revise/Relist call with the <b>SellerProfiles.SellerPaymentProfile</b> container, no lt;b>PaymentMethods</b> fields will be needed, as these settings will already be set in the payments business policy.
+     *  <span class="tablenote"><b>Note: </b> If you are already referencing a payments business policy in an Add/Revise/Relist call with the <b>SellerProfiles.SellerPaymentProfile</b> container, no <b>PaymentMethods</b> fields will be needed, as these settings will already be set in the payments business policy.
      *  </span>
      *  <br>
      *  Payment methods are not applicable to any classified ad listings, as any agreement and payment is handled off of the eBay platform.
@@ -3032,7 +2985,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <span class="tablenote"><b>Note: </b> Sellers no longer have to specify any electronic payment methods for listings, so one or more <b>PaymentMethods</b> fields will only be needed for listings that require/support payments off of eBay's platform. If an electronic payment is supplied in a <b>PaymentMethods</b> field, a warning will be triggered and the payment method will be dropped.
      *  </span>
      *  <br>
-     *  <span class="tablenote"><b>Note: </b> If you are already referencing a payments business policy in an Add/Revise/Relist call with the <b>SellerProfiles.SellerPaymentProfile</b> container, no lt;b>PaymentMethods</b> fields will be needed, as these settings will already be set in the payments business policy.
+     *  <span class="tablenote"><b>Note: </b> If you are already referencing a payments business policy in an Add/Revise/Relist call with the <b>SellerProfiles.SellerPaymentProfile</b> container, no <b>PaymentMethods</b> fields will be needed, as these settings will already be set in the payments business policy.
      *  </span>
      *  <br>
      *  Payment methods are not applicable to any classified ad listings, as any agreement and payment is handled off of the eBay platform.
@@ -3057,7 +3010,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <span class="tablenote"><b>Note: </b> Sellers no longer have to specify any electronic payment methods for listings, so one or more <b>PaymentMethods</b> fields will only be needed for listings that require/support payments off of eBay's platform. If an electronic payment is supplied in a <b>PaymentMethods</b> field, a warning will be triggered and the payment method will be dropped.
      *  </span>
      *  <br>
-     *  <span class="tablenote"><b>Note: </b> If you are already referencing a payments business policy in an Add/Revise/Relist call with the <b>SellerProfiles.SellerPaymentProfile</b> container, no lt;b>PaymentMethods</b> fields will be needed, as these settings will already be set in the payments business policy.
+     *  <span class="tablenote"><b>Note: </b> If you are already referencing a payments business policy in an Add/Revise/Relist call with the <b>SellerProfiles.SellerPaymentProfile</b> container, no <b>PaymentMethods</b> fields will be needed, as these settings will already be set in the payments business policy.
      *  </span>
      *  <br>
      *  Payment methods are not applicable to any classified ad listings, as any agreement and payment is handled off of the eBay platform.
@@ -3082,7 +3035,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <span class="tablenote"><b>Note: </b> Sellers no longer have to specify any electronic payment methods for listings, so one or more <b>PaymentMethods</b> fields will only be needed for listings that require/support payments off of eBay's platform. If an electronic payment is supplied in a <b>PaymentMethods</b> field, a warning will be triggered and the payment method will be dropped.
      *  </span>
      *  <br>
-     *  <span class="tablenote"><b>Note: </b> If you are already referencing a payments business policy in an Add/Revise/Relist call with the <b>SellerProfiles.SellerPaymentProfile</b> container, no lt;b>PaymentMethods</b> fields will be needed, as these settings will already be set in the payments business policy.
+     *  <span class="tablenote"><b>Note: </b> If you are already referencing a payments business policy in an Add/Revise/Relist call with the <b>SellerProfiles.SellerPaymentProfile</b> container, no <b>PaymentMethods</b> fields will be needed, as these settings will already be set in the payments business policy.
      *  </span>
      *  <br>
      *  Payment methods are not applicable to any classified ad listings, as any agreement and payment is handled off of the eBay platform.
@@ -3106,7 +3059,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <span class="tablenote"><b>Note: </b> Sellers no longer have to specify any electronic payment methods for listings, so one or more <b>PaymentMethods</b> fields will only be needed for listings that require/support payments off of eBay's platform. If an electronic payment is supplied in a <b>PaymentMethods</b> field, a warning will be triggered and the payment method will be dropped.
      *  </span>
      *  <br>
-     *  <span class="tablenote"><b>Note: </b> If you are already referencing a payments business policy in an Add/Revise/Relist call with the <b>SellerProfiles.SellerPaymentProfile</b> container, no lt;b>PaymentMethods</b> fields will be needed, as these settings will already be set in the payments business policy.
+     *  <span class="tablenote"><b>Note: </b> If you are already referencing a payments business policy in an Add/Revise/Relist call with the <b>SellerProfiles.SellerPaymentProfile</b> container, no <b>PaymentMethods</b> fields will be needed, as these settings will already be set in the payments business policy.
      *  </span>
      *  <br>
      *  Payment methods are not applicable to any classified ad listings, as any agreement and payment is handled off of the eBay platform.
@@ -3126,7 +3079,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Gets as payPalEmailAddress
      *
-     * This field is no longer applicable, as eBay now controls all electronic payment methods and handles the payment from the buyer.
+     * This field is no longer applicable, and should not be used.
      *
      * @return string
      */
@@ -3138,7 +3091,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Sets a new payPalEmailAddress
      *
-     * This field is no longer applicable, as eBay now controls all electronic payment methods and handles the payment from the buyer.
+     * This field is no longer applicable, and should not be used.
      *
      * @param string $payPalEmailAddress
      * @return self
@@ -3155,7 +3108,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      * This container is used in an Add/Revise/Relist call to set the primary listing category. This field is conditionally required in an Add call unless the seller successfully uses the <b>ProductListingDetails</b> container to find an eBay catalog product match. When the seller successfully uses an eBay catalog product to create a listing, the listing title, listing description, Item Specifics, listing category, and stock photo defined in the catalog product is used to create the listing.<br>
      *  <br>
      *  If you do not know the appropriate eBay category for your product, you can use the <b>GetSuggestedCategories</b> call. Once you know your category, and want to know which listing features it supports, you can use the
-     *  <b>GetCategoryFeatures</b> call. To discover if the category requires or recommends GTIN types and other Item Specifics, you can use the <b>GetCategorySpecifics</b> call.
+     *  <b>GetCategoryFeatures</b> call. To discover required, recommended, and optional Item Specifics for a category, use the <a href="/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API.
      *  <br>
      *  <br>
      *  If you do use an eBay catalog product, it is advised that you do not include this field, as any primary category ID you specify in this field may get dropped if this category is different than the primary category defined in the eBay catalog product.
@@ -3183,7 +3136,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      * This container is used in an Add/Revise/Relist call to set the primary listing category. This field is conditionally required in an Add call unless the seller successfully uses the <b>ProductListingDetails</b> container to find an eBay catalog product match. When the seller successfully uses an eBay catalog product to create a listing, the listing title, listing description, Item Specifics, listing category, and stock photo defined in the catalog product is used to create the listing.<br>
      *  <br>
      *  If you do not know the appropriate eBay category for your product, you can use the <b>GetSuggestedCategories</b> call. Once you know your category, and want to know which listing features it supports, you can use the
-     *  <b>GetCategoryFeatures</b> call. To discover if the category requires or recommends GTIN types and other Item Specifics, you can use the <b>GetCategorySpecifics</b> call.
+     *  <b>GetCategoryFeatures</b> call. To discover required, recommended, and optional Item Specifics for a category, use the <a href="/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API.
      *  <br>
      *  <br>
      *  If you do use an eBay catalog product, it is advised that you do not include this field, as any primary category ID you specify in this field may get dropped if this category is different than the primary category defined in the eBay catalog product.
@@ -3211,6 +3164,8 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      * Gets as privateListing
      *
      * A <code>true</code> value in this field indicates that the listing is private. Sellers may want to use this option when they believe that a listing's potential bidders/buyers would not want their obfuscated user IDs (and feedback scores) exposed to other users.
+     *  <br><br>
+     *  <b>For ReviseItem/ReviseFixedPriceItem</b>: The seller will not be able change this setting if the listing has any pending bids, any pending best offers, previous sales (for multiple-quantity, fixed-price listing), or if the listing will end within 12 hours.
      *  <br>
      *
      * @return bool
@@ -3224,6 +3179,8 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      * Sets a new privateListing
      *
      * A <code>true</code> value in this field indicates that the listing is private. Sellers may want to use this option when they believe that a listing's potential bidders/buyers would not want their obfuscated user IDs (and feedback scores) exposed to other users.
+     *  <br><br>
+     *  <b>For ReviseItem/ReviseFixedPriceItem</b>: The seller will not be able change this setting if the listing has any pending bids, any pending best offers, previous sales (for multiple-quantity, fixed-price listing), or if the listing will end within 12 hours.
      *  <br>
      *
      * @param bool $privateListing
@@ -3241,7 +3198,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      * This container is used to provide one or more product identifiers for a product, and if desired by the seller, eBay will use the identifier(s) of the product to try to match it to a defined product in the eBay catalog. If a seller's product is matched to an eBay catalog product, the product details associated with that catalog product will be prefilled for the listing. Product details defined for a catalog product include the product title, product description, product aspects, and stock image(s) of the product (if available).
      *  <br>
      *  <br>
-     *  In some eBay categories, one or more product identifier types (e.g. UPC or ISBN) may be required, but the category may not have any eBay catalog products defined, or the category does not allow listings to be created using a catalog product. Note that the <b>GetCategorySpecifics</b> call or the <b>GetCategoryFeatures</b> call can be used to retrieve supported/required product identifier types.
+     *  In some eBay categories, one or more product identifier types (e.g. UPC or ISBN) may be required, but the category may not have any eBay catalog products defined, or the category does not allow listings to be created using a catalog product. Note that the <b>GetCategoryFeatures</b> call can be used to retrieve supported/required product identifier types.
      *  <br>
      *  <br>
      *  <span class="tablenote"><b>Note:</b>
@@ -3273,7 +3230,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      * This container is used to provide one or more product identifiers for a product, and if desired by the seller, eBay will use the identifier(s) of the product to try to match it to a defined product in the eBay catalog. If a seller's product is matched to an eBay catalog product, the product details associated with that catalog product will be prefilled for the listing. Product details defined for a catalog product include the product title, product description, product aspects, and stock image(s) of the product (if available).
      *  <br>
      *  <br>
-     *  In some eBay categories, one or more product identifier types (e.g. UPC or ISBN) may be required, but the category may not have any eBay catalog products defined, or the category does not allow listings to be created using a catalog product. Note that the <b>GetCategorySpecifics</b> call or the <b>GetCategoryFeatures</b> call can be used to retrieve supported/required product identifier types.
+     *  In some eBay categories, one or more product identifier types (e.g. UPC or ISBN) may be required, but the category may not have any eBay catalog products defined, or the category does not allow listings to be created using a catalog product. Note that the <b>GetCategoryFeatures</b> call can be used to retrieve supported/required product identifier types.
      *  <br>
      *  <br>
      *  <span class="tablenote"><b>Note:</b>
@@ -3510,6 +3467,32 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     }
 
     /**
+     * Gets as isItemEMSEligible
+     *
+     * If <code>true</code>, the item is eligible for shipping managed by eBay; <code>false</code>, the item is not eligible for shipping managed by eBay.
+     *
+     * @return bool
+     */
+    public function getIsItemEMSEligible()
+    {
+        return $this->isItemEMSEligible;
+    }
+
+    /**
+     * Sets a new isItemEMSEligible
+     *
+     * If <code>true</code>, the item is eligible for shipping managed by eBay; <code>false</code>, the item is not eligible for shipping managed by eBay.
+     *
+     * @param bool $isItemEMSEligible
+     * @return self
+     */
+    public function setIsItemEMSEligible($isItemEMSEligible)
+    {
+        $this->isItemEMSEligible = $isItemEMSEligible;
+        return $this;
+    }
+
+    /**
      * Gets as reservePrice
      *
      * This field is used to set the lowest price at which the seller is willing to sell an auction item. The <b>StartPrice</b> value must be lower than the <b>ReservePrice</b> value. Note that setting a reserve price will incur a listing fee of $5 or 7.5% of the reserve price, whichever is greater, and this fee is charged regardless of whether or not the auction item has a qualifying, winning bidder.
@@ -3584,7 +3567,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <code>AT, BEFR, BENL, CH, DE, ES, FR, IE, IT, NL, PL, UK</code>
      *  <br><br>
      *  Also see the following article in the Knowledge Base: <a href=
-     *  "https://ebaydts.com/eBayKBDetails?KBid=1473" target="_blank"
+     *  "https://developer.ebay.com/support/kb-article?KBid=1473" target="_blank"
      *  >Why scheduled time is sometimes getting reset</a>.
      *
      * @return \DateTime
@@ -3609,7 +3592,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <code>AT, BEFR, BENL, CH, DE, ES, FR, IE, IT, NL, PL, UK</code>
      *  <br><br>
      *  Also see the following article in the Knowledge Base: <a href=
-     *  "https://ebaydts.com/eBayKBDetails?KBid=1473" target="_blank"
+     *  "https://developer.ebay.com/support/kb-article?KBid=1473" target="_blank"
      *  >Why scheduled time is sometimes getting reset</a>.
      *
      * @param \DateTime $scheduleTime
@@ -3898,7 +3881,11 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <b>ReviseItem</b> can add a <b>ShipToLocations</b>. On output, <b>ShipToLocations</b> is the
      *  collection of all input item-level <b>ShipToLocations</b> plus international shipping
      *  service-level ShipToLocation values.
-     *  <br><br>
+     *  <br>
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>ShipToLocations</b> and <b>ShippingDetails.ExcludeShipToLocation</b> containers are not applicable for motor vehicle listings on the US, CA, or UK marketplaces. If these containers are sent in the request, they are ignored and a warning is returned.
+     *  </span>
+     *  <br>
      *  If you have specified a region to which you will ship (such as Asia), you can
      *  use <b>ExcludeShipToLocation</b> to exclude certain countries within that region to
      *  where you will not ship (such as Afghanistan).
@@ -3937,7 +3924,11 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <b>ReviseItem</b> can add a <b>ShipToLocations</b>. On output, <b>ShipToLocations</b> is the
      *  collection of all input item-level <b>ShipToLocations</b> plus international shipping
      *  service-level ShipToLocation values.
-     *  <br><br>
+     *  <br>
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>ShipToLocations</b> and <b>ShippingDetails.ExcludeShipToLocation</b> containers are not applicable for motor vehicle listings on the US, CA, or UK marketplaces. If these containers are sent in the request, they are ignored and a warning is returned.
+     *  </span>
+     *  <br>
      *  If you have specified a region to which you will ship (such as Asia), you can
      *  use <b>ExcludeShipToLocation</b> to exclude certain countries within that region to
      *  where you will not ship (such as Afghanistan).
@@ -3975,7 +3966,11 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <b>ReviseItem</b> can add a <b>ShipToLocations</b>. On output, <b>ShipToLocations</b> is the
      *  collection of all input item-level <b>ShipToLocations</b> plus international shipping
      *  service-level ShipToLocation values.
-     *  <br><br>
+     *  <br>
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>ShipToLocations</b> and <b>ShippingDetails.ExcludeShipToLocation</b> containers are not applicable for motor vehicle listings on the US, CA, or UK marketplaces. If these containers are sent in the request, they are ignored and a warning is returned.
+     *  </span>
+     *  <br>
      *  If you have specified a region to which you will ship (such as Asia), you can
      *  use <b>ExcludeShipToLocation</b> to exclude certain countries within that region to
      *  where you will not ship (such as Afghanistan).
@@ -4013,7 +4008,11 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <b>ReviseItem</b> can add a <b>ShipToLocations</b>. On output, <b>ShipToLocations</b> is the
      *  collection of all input item-level <b>ShipToLocations</b> plus international shipping
      *  service-level ShipToLocation values.
-     *  <br><br>
+     *  <br>
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>ShipToLocations</b> and <b>ShippingDetails.ExcludeShipToLocation</b> containers are not applicable for motor vehicle listings on the US, CA, or UK marketplaces. If these containers are sent in the request, they are ignored and a warning is returned.
+     *  </span>
+     *  <br>
      *  If you have specified a region to which you will ship (such as Asia), you can
      *  use <b>ExcludeShipToLocation</b> to exclude certain countries within that region to
      *  where you will not ship (such as Afghanistan).
@@ -4050,7 +4049,11 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <b>ReviseItem</b> can add a <b>ShipToLocations</b>. On output, <b>ShipToLocations</b> is the
      *  collection of all input item-level <b>ShipToLocations</b> plus international shipping
      *  service-level ShipToLocation values.
-     *  <br><br>
+     *  <br>
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>ShipToLocations</b> and <b>ShippingDetails.ExcludeShipToLocation</b> containers are not applicable for motor vehicle listings on the US, CA, or UK marketplaces. If these containers are sent in the request, they are ignored and a warning is returned.
+     *  </span>
+     *  <br>
      *  If you have specified a region to which you will ship (such as Asia), you can
      *  use <b>ExcludeShipToLocation</b> to exclude certain countries within that region to
      *  where you will not ship (such as Afghanistan).
@@ -4427,11 +4430,12 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Gets as sellerVacationNote
      *
-     * This field is returned if the seller of the item is currently on vacation and that seller has turned on the Store vacation setting, and has included a message to display to shoppers who visit the eBay store. If the seller turns on the Store vacation setting, the listing will be hidden from search result pages.
-     *  <br/><br/>
-     *  Store vacation settings, including this note, are set through the <b>Messages</b> tab in My eBay, or this message can also be set through the <b>SetStorePreferences</b> call.
-     *  <br/><br/>
-     *  The Store vacation setting is only applicable for sellers with eBay stores.
+     * This field is returned if the seller of the item is currently on vacation and has configured a custom message to display to potentioal buyers through <a href="https://www.ebay.com/help/selling/selling-tools/time-away?id=5137" target="_blank">Time Away</a> settings.
+     *  <br>
+     *  <br>
+     *  <span class="tablenote"><b>Note:</b>
+     *  There are two <b>Time Away</b> modes - <b>Pause Sales</b> and <b>Allow Sales</b>. If seller is in the <b>Pause Sales</b> mode, all fixed-price listings for that seller will be hidden from search results during the span of the seller's vacation.
+     *  </span>
      *
      * @return string
      */
@@ -4443,11 +4447,12 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Sets a new sellerVacationNote
      *
-     * This field is returned if the seller of the item is currently on vacation and that seller has turned on the Store vacation setting, and has included a message to display to shoppers who visit the eBay store. If the seller turns on the Store vacation setting, the listing will be hidden from search result pages.
-     *  <br/><br/>
-     *  Store vacation settings, including this note, are set through the <b>Messages</b> tab in My eBay, or this message can also be set through the <b>SetStorePreferences</b> call.
-     *  <br/><br/>
-     *  The Store vacation setting is only applicable for sellers with eBay stores.
+     * This field is returned if the seller of the item is currently on vacation and has configured a custom message to display to potentioal buyers through <a href="https://www.ebay.com/help/selling/selling-tools/time-away?id=5137" target="_blank">Time Away</a> settings.
+     *  <br>
+     *  <br>
+     *  <span class="tablenote"><b>Note:</b>
+     *  There are two <b>Time Away</b> modes - <b>Pause Sales</b> and <b>Allow Sales</b>. If seller is in the <b>Pause Sales</b> mode, all fixed-price listings for that seller will be hidden from search results during the span of the seller's vacation.
+     *  </span>
      *
      * @param string $sellerVacationNote
      * @return self
@@ -4491,11 +4496,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Gets as hitCount
      *
-     * <b>THIS FIELD IS DEPRECATED</b>. Hit counters are no longer displayed in View Item pages, so this field is no longer applicable and is scheduled for decommission.
-     *  <br/><br/>
-     *  For developers/sellers who are interested in seeing page views and listing performance, the <a href="https://developer.ebay.com/api-docs/sell/analytics/resources/traffic_report/methods/getTrafficReport">getTrafficReport</a> method of the <b>Sell Analytics API</b> can be used.
-     *  <br/><br/>
-     *  Until this field is decommissioned, it will still be returned in <b>GetItem</b>, <b>GetBidderList</b>, <b>GetSellerEvents</b>, and <b>GetSellerList</b>.
+     * This value indicates the number of page views that a listing has received in the last 30 days.<br><br>We recommend that you use the <a href="https://developer.ebay.com/api-docs/sell/analytics/resources/traffic_report/methods/getTrafficReport" target="_blank">getTrafficReport</a> method of the <b>Analytics API</b> to return user traffic details received by a seller's listings. This RESTful method returns metrics such as click-through rate, listing impressions, listing views, sales conversion rate, and the number of completed transactions.<br><br><span class="tablenote"><b>Note: </b>This field is only returned to authorized applications.</span>
      *
      * @return int
      */
@@ -4507,11 +4508,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Sets a new hitCount
      *
-     * <b>THIS FIELD IS DEPRECATED</b>. Hit counters are no longer displayed in View Item pages, so this field is no longer applicable and is scheduled for decommission.
-     *  <br/><br/>
-     *  For developers/sellers who are interested in seeing page views and listing performance, the <a href="https://developer.ebay.com/api-docs/sell/analytics/resources/traffic_report/methods/getTrafficReport">getTrafficReport</a> method of the <b>Sell Analytics API</b> can be used.
-     *  <br/><br/>
-     *  Until this field is decommissioned, it will still be returned in <b>GetItem</b>, <b>GetBidderList</b>, <b>GetSellerEvents</b>, and <b>GetSellerList</b>.
+     * This value indicates the number of page views that a listing has received in the last 30 days.<br><br>We recommend that you use the <a href="https://developer.ebay.com/api-docs/sell/analytics/resources/traffic_report/methods/getTrafficReport" target="_blank">getTrafficReport</a> method of the <b>Analytics API</b> to return user traffic details received by a seller's listings. This RESTful method returns metrics such as click-through rate, listing impressions, listing views, sales conversion rate, and the number of completed transactions.<br><br><span class="tablenote"><b>Note: </b>This field is only returned to authorized applications.</span>
      *
      * @param int $hitCount
      * @return self
@@ -4525,14 +4522,11 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Gets as disableBuyerRequirements
      *
-     * If <code>true</code>, all buyer requirements (from <b>Item.BuyerRequirementDetails</b>
+     * This field can be included and set to <code>true</code> in an Add or Revise call if the seller wishes to disable all buyer requirements (that are set in the seller's account) for the listing. (from <b>Item.BuyerRequirementDetails</b>
      *  or Buyer requirements preferences in My eBay) are ignored.
      *  <br>
      *  <br>
-     *  If <code>false</code> (or omitted): <b>Item.BuyerRequirementDetails</b> or Buyer
-     *  requirements preferences are used, with <b>Item.BuyerRequirementDetails</b>
-     *  having the higher precedence.
-     *  <br>
+     *  This field will only be returned in 'Get' calls if <code>true</code>.
      *
      * @return bool
      */
@@ -4544,14 +4538,11 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Sets a new disableBuyerRequirements
      *
-     * If <code>true</code>, all buyer requirements (from <b>Item.BuyerRequirementDetails</b>
+     * This field can be included and set to <code>true</code> in an Add or Revise call if the seller wishes to disable all buyer requirements (that are set in the seller's account) for the listing. (from <b>Item.BuyerRequirementDetails</b>
      *  or Buyer requirements preferences in My eBay) are ignored.
      *  <br>
      *  <br>
-     *  If <code>false</code> (or omitted): <b>Item.BuyerRequirementDetails</b> or Buyer
-     *  requirements preferences are used, with <b>Item.BuyerRequirementDetails</b>
-     *  having the higher precedence.
-     *  <br>
+     *  This field will only be returned in 'Get' calls if <code>true</code>.
      *
      * @param bool $disableBuyerRequirements
      * @return self
@@ -5043,9 +5034,9 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Gets as pictureDetails
      *
-     * This container consists of the data associated with photos within the listing. With most eBay sites and categories, a seller can add up to 12 photos to their listings free of charge. These photos can be hosted by eBay Picture Services (EPS), or the seller can host pictures on a non-eBay server. If pictures are externally-hosted, they must be hosted on a site that is using the 'https' protocol.
+     * This container consists of the data associated with photos within the listing. Sellers can have up to 24 pictures in almost any category at no cost. Motor vehicle listings are an exception. The number of included pictures in motor vehicle listings depend on the selected vehicle package (see <a href="https://www.ebay.com/help/selling/fees-credits-invoices/motors-fees?id=4127">Fees for selling vehicles on eBay Motors</a>). These photos can be hosted by eBay Picture Services (EPS), or the seller can host pictures on a non-eBay server. If pictures are externally-hosted, they must be hosted on a site that is using the 'https' protocol.
      *  <br/><br/>
-     *  It is required that all listings have at least one picture. eBay Motors listings can have up to 24 pictures.
+     *  It is required that all listings have at least one picture.
      *
      * @return \Nogrod\eBaySDK\Trading\PictureDetailsType
      */
@@ -5057,9 +5048,9 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Sets a new pictureDetails
      *
-     * This container consists of the data associated with photos within the listing. With most eBay sites and categories, a seller can add up to 12 photos to their listings free of charge. These photos can be hosted by eBay Picture Services (EPS), or the seller can host pictures on a non-eBay server. If pictures are externally-hosted, they must be hosted on a site that is using the 'https' protocol.
+     * This container consists of the data associated with photos within the listing. Sellers can have up to 24 pictures in almost any category at no cost. Motor vehicle listings are an exception. The number of included pictures in motor vehicle listings depend on the selected vehicle package (see <a href="https://www.ebay.com/help/selling/fees-credits-invoices/motors-fees?id=4127">Fees for selling vehicles on eBay Motors</a>). These photos can be hosted by eBay Picture Services (EPS), or the seller can host pictures on a non-eBay server. If pictures are externally-hosted, they must be hosted on a site that is using the 'https' protocol.
      *  <br/><br/>
-     *  It is required that all listings have at least one picture. eBay Motors listings can have up to 24 pictures.
+     *  It is required that all listings have at least one picture.
      *
      * @param \Nogrod\eBaySDK\Trading\PictureDetailsType $pictureDetails
      * @return self
@@ -5522,7 +5513,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      * This container is a list of Item Specific <b>Name</b>/<b>Value</b> pairs used by the seller to provide desciptive details of an item in a structured manner.
      *
      *  <br><br>
-     *  If creating, revising, or relisting an item with an <b>Add</b>, <b>Revise</b>, or <b>Relist</b> call, it is recommended that you use the <b>GetCategorySpecifics</b> call to retrieve mandatory and recommended Item Specifics for a listing category.
+     *  If creating, revising, or relisting an item with an <b>Add</b>, <b>Revise</b>, or <b>Relist</b> call, it is recommended that you use the <a href="/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API to retrieve mandatory and recommended Item Specifics for a category.
      *
      *  <br><br>
      *  <b>For ReviseItem only:</b> When you revise a listing, if an auction listing has one or more bids and ends within 12 hours, you cannot change or add Item Ppecifics. If the auction listing has bids but ends in more than 12 hours, you cannot change existing Item Specifics, but you can add Item Specifics that were not previously included.
@@ -5534,7 +5525,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  If the <b>ProductListingDetails</b> container in an Add/Revise/Relist call is successfully used to find and use an eBay catalog product to create/revise listing, the seller should not remove or change the value of any Item Specific name or value that is defined as part of the eBay catalog product definition.
      *
      *  <br><br>
-     *  <span class="tablenote"><b>Note:</b> If a listing is associated with an eBay catalog product, the seller does not need to pass in any Item Specifics that are already defined in the eBay catalog product. Sellers can make a <b>GetCategorySpecifics</b> call to see if the listing category supports any 'instance aspects', which can be thought of as Item Specifics that are unique to the specific item that is being listed. Instance aspects are identified in the <b>GetCategorySpecifics</b> response by looking for a value of <code>Instance</code> in one or more <b>NameRecommendation.ValidationRules.aspectUsage</b> fields. Many categories support the following instance aspects: <em>Custom Bundle</em>, <em>Bundle Description</em>, <em>Modified Item</em>, <em>Modification Description</em>, and <em>California Prop 65 Warning</em>. These instance aspects allow the seller to provide more information about product bundles or modified products in a structured way. Depending on the category, there are other instance aspects as well.
+     *  <span class="tablenote"><b>Note:</b> If a listing is associated with an eBay catalog product, the seller does not need to pass in any Item Specifics that are already defined in the eBay catalog product. Sellers can make a call to the <a href="/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API to see if the category supports any 'instance aspects', which can be thought of as Item Specifics that are unique to the specific item that is being listed. Instance aspects are indicated if the corresponding <a href="/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory#response.aspects.aspectConstraint.aspectApplicableTo" target="_blank">aspectApplicableTo</a> field of the <b>getItemAspectsForCategory</b> response shows a value of <code>ITEM</code> (and not <code>PRODUCT</code>). Many categories support the following instance aspects: <em>Custom Bundle</em>, <em>Bundle Description</em>, <em>Modified Item</em>, <em>Modification Description</em>, and <em>California Prop 65 Warning</em>. These instance aspects allow the seller to provide more information about product bundles or modified products in a structured way. Depending on the category, there are other instance aspects as well.
      *  </span>
      *
      *  <span class="tablenote"><b>Note:</b> To specify an item's condition, use the <b>ConditionID</b> field instead of a condition Item Specific. Use <b>GetCategoryFeatures</b> to see which categories support <b>ConditionID</b> and to get a list of valid condition IDs. (If you specify <b>ConditionID</b> and you also specify <b>Condition</b> as a Item Specific, eBay drops the condition Item Specific.)
@@ -5560,7 +5551,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      * This container is a list of Item Specific <b>Name</b>/<b>Value</b> pairs used by the seller to provide desciptive details of an item in a structured manner.
      *
      *  <br><br>
-     *  If creating, revising, or relisting an item with an <b>Add</b>, <b>Revise</b>, or <b>Relist</b> call, it is recommended that you use the <b>GetCategorySpecifics</b> call to retrieve mandatory and recommended Item Specifics for a listing category.
+     *  If creating, revising, or relisting an item with an <b>Add</b>, <b>Revise</b>, or <b>Relist</b> call, it is recommended that you use the <a href="/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API to retrieve mandatory and recommended Item Specifics for a category.
      *
      *  <br><br>
      *  <b>For ReviseItem only:</b> When you revise a listing, if an auction listing has one or more bids and ends within 12 hours, you cannot change or add Item Ppecifics. If the auction listing has bids but ends in more than 12 hours, you cannot change existing Item Specifics, but you can add Item Specifics that were not previously included.
@@ -5572,7 +5563,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  If the <b>ProductListingDetails</b> container in an Add/Revise/Relist call is successfully used to find and use an eBay catalog product to create/revise listing, the seller should not remove or change the value of any Item Specific name or value that is defined as part of the eBay catalog product definition.
      *
      *  <br><br>
-     *  <span class="tablenote"><b>Note:</b> If a listing is associated with an eBay catalog product, the seller does not need to pass in any Item Specifics that are already defined in the eBay catalog product. Sellers can make a <b>GetCategorySpecifics</b> call to see if the listing category supports any 'instance aspects', which can be thought of as Item Specifics that are unique to the specific item that is being listed. Instance aspects are identified in the <b>GetCategorySpecifics</b> response by looking for a value of <code>Instance</code> in one or more <b>NameRecommendation.ValidationRules.aspectUsage</b> fields. Many categories support the following instance aspects: <em>Custom Bundle</em>, <em>Bundle Description</em>, <em>Modified Item</em>, <em>Modification Description</em>, and <em>California Prop 65 Warning</em>. These instance aspects allow the seller to provide more information about product bundles or modified products in a structured way. Depending on the category, there are other instance aspects as well.
+     *  <span class="tablenote"><b>Note:</b> If a listing is associated with an eBay catalog product, the seller does not need to pass in any Item Specifics that are already defined in the eBay catalog product. Sellers can make a call to the <a href="/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API to see if the category supports any 'instance aspects', which can be thought of as Item Specifics that are unique to the specific item that is being listed. Instance aspects are indicated if the corresponding <a href="/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory#response.aspects.aspectConstraint.aspectApplicableTo" target="_blank">aspectApplicableTo</a> field of the <b>getItemAspectsForCategory</b> response shows a value of <code>ITEM</code> (and not <code>PRODUCT</code>). Many categories support the following instance aspects: <em>Custom Bundle</em>, <em>Bundle Description</em>, <em>Modified Item</em>, <em>Modification Description</em>, and <em>California Prop 65 Warning</em>. These instance aspects allow the seller to provide more information about product bundles or modified products in a structured way. Depending on the category, there are other instance aspects as well.
      *  </span>
      *
      *  <span class="tablenote"><b>Note:</b> To specify an item's condition, use the <b>ConditionID</b> field instead of a condition Item Specific. Use <b>GetCategoryFeatures</b> to see which categories support <b>ConditionID</b> and to get a list of valid condition IDs. (If you specify <b>ConditionID</b> and you also specify <b>Condition</b> as a Item Specific, eBay drops the condition Item Specific.)
@@ -5597,7 +5588,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      * This container is a list of Item Specific <b>Name</b>/<b>Value</b> pairs used by the seller to provide desciptive details of an item in a structured manner.
      *
      *  <br><br>
-     *  If creating, revising, or relisting an item with an <b>Add</b>, <b>Revise</b>, or <b>Relist</b> call, it is recommended that you use the <b>GetCategorySpecifics</b> call to retrieve mandatory and recommended Item Specifics for a listing category.
+     *  If creating, revising, or relisting an item with an <b>Add</b>, <b>Revise</b>, or <b>Relist</b> call, it is recommended that you use the <a href="/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API to retrieve mandatory and recommended Item Specifics for a category.
      *
      *  <br><br>
      *  <b>For ReviseItem only:</b> When you revise a listing, if an auction listing has one or more bids and ends within 12 hours, you cannot change or add Item Ppecifics. If the auction listing has bids but ends in more than 12 hours, you cannot change existing Item Specifics, but you can add Item Specifics that were not previously included.
@@ -5609,7 +5600,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  If the <b>ProductListingDetails</b> container in an Add/Revise/Relist call is successfully used to find and use an eBay catalog product to create/revise listing, the seller should not remove or change the value of any Item Specific name or value that is defined as part of the eBay catalog product definition.
      *
      *  <br><br>
-     *  <span class="tablenote"><b>Note:</b> If a listing is associated with an eBay catalog product, the seller does not need to pass in any Item Specifics that are already defined in the eBay catalog product. Sellers can make a <b>GetCategorySpecifics</b> call to see if the listing category supports any 'instance aspects', which can be thought of as Item Specifics that are unique to the specific item that is being listed. Instance aspects are identified in the <b>GetCategorySpecifics</b> response by looking for a value of <code>Instance</code> in one or more <b>NameRecommendation.ValidationRules.aspectUsage</b> fields. Many categories support the following instance aspects: <em>Custom Bundle</em>, <em>Bundle Description</em>, <em>Modified Item</em>, <em>Modification Description</em>, and <em>California Prop 65 Warning</em>. These instance aspects allow the seller to provide more information about product bundles or modified products in a structured way. Depending on the category, there are other instance aspects as well.
+     *  <span class="tablenote"><b>Note:</b> If a listing is associated with an eBay catalog product, the seller does not need to pass in any Item Specifics that are already defined in the eBay catalog product. Sellers can make a call to the <a href="/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API to see if the category supports any 'instance aspects', which can be thought of as Item Specifics that are unique to the specific item that is being listed. Instance aspects are indicated if the corresponding <a href="/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory#response.aspects.aspectConstraint.aspectApplicableTo" target="_blank">aspectApplicableTo</a> field of the <b>getItemAspectsForCategory</b> response shows a value of <code>ITEM</code> (and not <code>PRODUCT</code>). Many categories support the following instance aspects: <em>Custom Bundle</em>, <em>Bundle Description</em>, <em>Modified Item</em>, <em>Modification Description</em>, and <em>California Prop 65 Warning</em>. These instance aspects allow the seller to provide more information about product bundles or modified products in a structured way. Depending on the category, there are other instance aspects as well.
      *  </span>
      *
      *  <span class="tablenote"><b>Note:</b> To specify an item's condition, use the <b>ConditionID</b> field instead of a condition Item Specific. Use <b>GetCategoryFeatures</b> to see which categories support <b>ConditionID</b> and to get a list of valid condition IDs. (If you specify <b>ConditionID</b> and you also specify <b>Condition</b> as a Item Specific, eBay drops the condition Item Specific.)
@@ -5634,7 +5625,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      * This container is a list of Item Specific <b>Name</b>/<b>Value</b> pairs used by the seller to provide desciptive details of an item in a structured manner.
      *
      *  <br><br>
-     *  If creating, revising, or relisting an item with an <b>Add</b>, <b>Revise</b>, or <b>Relist</b> call, it is recommended that you use the <b>GetCategorySpecifics</b> call to retrieve mandatory and recommended Item Specifics for a listing category.
+     *  If creating, revising, or relisting an item with an <b>Add</b>, <b>Revise</b>, or <b>Relist</b> call, it is recommended that you use the <a href="/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API to retrieve mandatory and recommended Item Specifics for a category.
      *
      *  <br><br>
      *  <b>For ReviseItem only:</b> When you revise a listing, if an auction listing has one or more bids and ends within 12 hours, you cannot change or add Item Ppecifics. If the auction listing has bids but ends in more than 12 hours, you cannot change existing Item Specifics, but you can add Item Specifics that were not previously included.
@@ -5646,7 +5637,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  If the <b>ProductListingDetails</b> container in an Add/Revise/Relist call is successfully used to find and use an eBay catalog product to create/revise listing, the seller should not remove or change the value of any Item Specific name or value that is defined as part of the eBay catalog product definition.
      *
      *  <br><br>
-     *  <span class="tablenote"><b>Note:</b> If a listing is associated with an eBay catalog product, the seller does not need to pass in any Item Specifics that are already defined in the eBay catalog product. Sellers can make a <b>GetCategorySpecifics</b> call to see if the listing category supports any 'instance aspects', which can be thought of as Item Specifics that are unique to the specific item that is being listed. Instance aspects are identified in the <b>GetCategorySpecifics</b> response by looking for a value of <code>Instance</code> in one or more <b>NameRecommendation.ValidationRules.aspectUsage</b> fields. Many categories support the following instance aspects: <em>Custom Bundle</em>, <em>Bundle Description</em>, <em>Modified Item</em>, <em>Modification Description</em>, and <em>California Prop 65 Warning</em>. These instance aspects allow the seller to provide more information about product bundles or modified products in a structured way. Depending on the category, there are other instance aspects as well.
+     *  <span class="tablenote"><b>Note:</b> If a listing is associated with an eBay catalog product, the seller does not need to pass in any Item Specifics that are already defined in the eBay catalog product. Sellers can make a call to the <a href="/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API to see if the category supports any 'instance aspects', which can be thought of as Item Specifics that are unique to the specific item that is being listed. Instance aspects are indicated if the corresponding <a href="/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory#response.aspects.aspectConstraint.aspectApplicableTo" target="_blank">aspectApplicableTo</a> field of the <b>getItemAspectsForCategory</b> response shows a value of <code>ITEM</code> (and not <code>PRODUCT</code>). Many categories support the following instance aspects: <em>Custom Bundle</em>, <em>Bundle Description</em>, <em>Modified Item</em>, <em>Modification Description</em>, and <em>California Prop 65 Warning</em>. These instance aspects allow the seller to provide more information about product bundles or modified products in a structured way. Depending on the category, there are other instance aspects as well.
      *  </span>
      *
      *  <span class="tablenote"><b>Note:</b> To specify an item's condition, use the <b>ConditionID</b> field instead of a condition Item Specific. Use <b>GetCategoryFeatures</b> to see which categories support <b>ConditionID</b> and to get a list of valid condition IDs. (If you specify <b>ConditionID</b> and you also specify <b>Condition</b> as a Item Specific, eBay drops the condition Item Specific.)
@@ -5670,7 +5661,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      * This container is a list of Item Specific <b>Name</b>/<b>Value</b> pairs used by the seller to provide desciptive details of an item in a structured manner.
      *
      *  <br><br>
-     *  If creating, revising, or relisting an item with an <b>Add</b>, <b>Revise</b>, or <b>Relist</b> call, it is recommended that you use the <b>GetCategorySpecifics</b> call to retrieve mandatory and recommended Item Specifics for a listing category.
+     *  If creating, revising, or relisting an item with an <b>Add</b>, <b>Revise</b>, or <b>Relist</b> call, it is recommended that you use the <a href="/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API to retrieve mandatory and recommended Item Specifics for a category.
      *
      *  <br><br>
      *  <b>For ReviseItem only:</b> When you revise a listing, if an auction listing has one or more bids and ends within 12 hours, you cannot change or add Item Ppecifics. If the auction listing has bids but ends in more than 12 hours, you cannot change existing Item Specifics, but you can add Item Specifics that were not previously included.
@@ -5682,7 +5673,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  If the <b>ProductListingDetails</b> container in an Add/Revise/Relist call is successfully used to find and use an eBay catalog product to create/revise listing, the seller should not remove or change the value of any Item Specific name or value that is defined as part of the eBay catalog product definition.
      *
      *  <br><br>
-     *  <span class="tablenote"><b>Note:</b> If a listing is associated with an eBay catalog product, the seller does not need to pass in any Item Specifics that are already defined in the eBay catalog product. Sellers can make a <b>GetCategorySpecifics</b> call to see if the listing category supports any 'instance aspects', which can be thought of as Item Specifics that are unique to the specific item that is being listed. Instance aspects are identified in the <b>GetCategorySpecifics</b> response by looking for a value of <code>Instance</code> in one or more <b>NameRecommendation.ValidationRules.aspectUsage</b> fields. Many categories support the following instance aspects: <em>Custom Bundle</em>, <em>Bundle Description</em>, <em>Modified Item</em>, <em>Modification Description</em>, and <em>California Prop 65 Warning</em>. These instance aspects allow the seller to provide more information about product bundles or modified products in a structured way. Depending on the category, there are other instance aspects as well.
+     *  <span class="tablenote"><b>Note:</b> If a listing is associated with an eBay catalog product, the seller does not need to pass in any Item Specifics that are already defined in the eBay catalog product. Sellers can make a call to the <a href="/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API to see if the category supports any 'instance aspects', which can be thought of as Item Specifics that are unique to the specific item that is being listed. Instance aspects are indicated if the corresponding <a href="/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory#response.aspects.aspectConstraint.aspectApplicableTo" target="_blank">aspectApplicableTo</a> field of the <b>getItemAspectsForCategory</b> response shows a value of <code>ITEM</code> (and not <code>PRODUCT</code>). Many categories support the following instance aspects: <em>Custom Bundle</em>, <em>Bundle Description</em>, <em>Modified Item</em>, <em>Modification Description</em>, and <em>California Prop 65 Warning</em>. These instance aspects allow the seller to provide more information about product bundles or modified products in a structured way. Depending on the category, there are other instance aspects as well.
      *  </span>
      *
      *  <span class="tablenote"><b>Note:</b> To specify an item's condition, use the <b>ConditionID</b> field instead of a condition Item Specific. Use <b>GetCategoryFeatures</b> to see which categories support <b>ConditionID</b> and to get a list of valid condition IDs. (If you specify <b>ConditionID</b> and you also specify <b>Condition</b> as a Item Specific, eBay drops the condition Item Specific.)
@@ -6113,10 +6104,8 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Gets as buyerGuaranteePrice
      *
-     * For the Australia site, <b>BuyerGuaranteePrice</b> is the PayPal Buyer Protection
-     *  coverage, offered for the item at the time of purchase. Details of coverage
-     *  are in the following sections of the View Item page: the Buy Safely section
-     *  and the Payment Details section.
+     * The eBay Best Price Guarantee price. The <a href="
+     *  https://pages.ebay.com.au/buy/Best_Price_Guarantee/">Best Price Guarantee</a> program is only available on the eBay Australia marketplace.
      *
      * @return \Nogrod\eBaySDK\Trading\AmountType
      */
@@ -6128,10 +6117,8 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Sets a new buyerGuaranteePrice
      *
-     * For the Australia site, <b>BuyerGuaranteePrice</b> is the PayPal Buyer Protection
-     *  coverage, offered for the item at the time of purchase. Details of coverage
-     *  are in the following sections of the View Item page: the Buy Safely section
-     *  and the Payment Details section.
+     * The eBay Best Price Guarantee price. The <a href="
+     *  https://pages.ebay.com.au/buy/Best_Price_Guarantee/">Best Price Guarantee</a> program is only available on the eBay Australia marketplace.
      *
      * @param \Nogrod\eBaySDK\Trading\AmountType $buyerGuaranteePrice
      * @return self
@@ -6145,15 +6132,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Gets as buyerRequirementDetails
      *
-     * When this container is present in an <b>AddItem</b> or <b>AddFixedPriceItem</b> call, all
-     *  buyer requirements for the resulting listing are set by this container.
-     *  Furthermore, individual buyer requirements cannot be modified or added when
-     *  including this container in a <b>ReviseItem</b> call.
-     *  The <b>ReviseItem</b> call needs to
-     *  provide the entire set of buyer requirements to modify or add any of the
-     *  requirements.
-     *  <br/><br/>
-     *  Unless otherwise specified, most buyer requirements are only returned if the caller is the seller. Any and all My eBay account-level Buyer Requirements are overridden by the contents of this container. This means that buyer requirements set in My eBay cannot be combined with buyer requirements included in this container.
+     * This container is returned if the seller has applied one or more buyer requirement criteria to the listing. Buyer requirement settings are managed in the Selling Preferences section of the seller's account in My eBay.
      *
      * @return \Nogrod\eBaySDK\Trading\BuyerRequirementDetailsType
      */
@@ -6165,15 +6144,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Sets a new buyerRequirementDetails
      *
-     * When this container is present in an <b>AddItem</b> or <b>AddFixedPriceItem</b> call, all
-     *  buyer requirements for the resulting listing are set by this container.
-     *  Furthermore, individual buyer requirements cannot be modified or added when
-     *  including this container in a <b>ReviseItem</b> call.
-     *  The <b>ReviseItem</b> call needs to
-     *  provide the entire set of buyer requirements to modify or add any of the
-     *  requirements.
-     *  <br/><br/>
-     *  Unless otherwise specified, most buyer requirements are only returned if the caller is the seller. Any and all My eBay account-level Buyer Requirements are overridden by the contents of this container. This means that buyer requirements set in My eBay cannot be combined with buyer requirements included in this container.
+     * This container is returned if the seller has applied one or more buyer requirement criteria to the listing. Buyer requirement settings are managed in the Selling Preferences section of the seller's account in My eBay.
      *
      * @param \Nogrod\eBaySDK\Trading\BuyerRequirementDetailsType $buyerRequirementDetails
      * @return self
@@ -6944,7 +6915,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Gets as discountPriceInfo
      *
-     * This container provides information for an item that has a Strikethrough Price (STP) or a Minimum Advertised Price (MAP) discount pricing treatment. STP and MAP apply only to fixed-price listings. STP is available on the US, eBay Motors, UK, Germany, Canada (English and French), France, Italy, and Spain sites, while MAP is available only on the US site.
+     * This container provides information for an item that has a Strikethrough Price (STP) or a Minimum Advertised Price (MAP) discount pricing treatment. STP and MAP apply only to fixed-price listings. STP is available on the US, eBay Motors, UK, Germany, Canada (English and French), France, Italy, Spain, and Ireland sites, while MAP is available only on the US site.
      *  <br><br>
      *  Discount pricing is available to qualified sellers (and their associated developers) who participate in the Discount Pricing Program. Once qualified, sellers receive a 'special account flag' (SAF) that allows them to apply Discount Pricing to both single-variation and multi-variation items. STP is intended for eBay partners and their sellers only.
      *  <br><br>
@@ -6962,7 +6933,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Sets a new discountPriceInfo
      *
-     * This container provides information for an item that has a Strikethrough Price (STP) or a Minimum Advertised Price (MAP) discount pricing treatment. STP and MAP apply only to fixed-price listings. STP is available on the US, eBay Motors, UK, Germany, Canada (English and French), France, Italy, and Spain sites, while MAP is available only on the US site.
+     * This container provides information for an item that has a Strikethrough Price (STP) or a Minimum Advertised Price (MAP) discount pricing treatment. STP and MAP apply only to fixed-price listings. STP is available on the US, eBay Motors, UK, Germany, Canada (English and French), France, Italy, Spain, and Ireland sites, while MAP is available only on the US site.
      *  <br><br>
      *  Discount pricing is available to qualified sellers (and their associated developers) who participate in the Discount Pricing Program. Once qualified, sellers receive a 'special account flag' (SAF) that allows them to apply Discount Pricing to both single-variation and multi-variation items. STP is intended for eBay partners and their sellers only.
      *  <br><br>
@@ -7020,9 +6991,9 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *
      * This field displays the Vehicle Identification Number, which is a unique serial number for a motor vehicle.
      *  <br><br>
-     *  This field is applicable to listings in US eBay Motors Cars and Trucks (6001), Motorcycles (6024), Commercial Trucks (63732), RVs and Campers (50054), ATVs (6723), Snowmobiles (42595), and UTVs (173665); and to Cars and Trucks listings in CA, CAFR and AU eBay Motors. For vehicle categories that do not use VIN, call <b>GetCategorySpecifics</b> to determine applicable Item Specifics (such as 'Hull ID Number' for Boats).
+     *  This field is applicable to listings in US eBay Motors Cars and Trucks (6001), Motorcycles (6024), Commercial Trucks (63732), RVs and Campers (50054), ATVs (6723), Snowmobiles (42595), and UTVs (173665); and to Cars and Trucks listings in CA, CAFR and AU eBay Motors. For vehicle categories that do not use VIN, make a call to the <a href="/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API to determine applicable Item Specifics (such as 'Hull ID Number' for Boats).
      *  <br><br>
-     *  For the US, CA, and CAFR eBay Motors sites, required for cars and trucks from model year 1981 and later. (The US developed national standards for VIN values in 1981.)
+     *  For the US, CA, and CA-FR eBay Motors categories, required for cars and trucks from model year 1981 and later. (The US developed national standards for VIN values in 1981.)
      *  <br><br>
      *  For the eBay Australia site, required for vehicles from model year 1989 or later. For the eBay Australia site, only appears on the View Item page if you also specify the date of first registration in the listing's Item Specifics.
      *  <br><br>
@@ -7041,9 +7012,9 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *
      * This field displays the Vehicle Identification Number, which is a unique serial number for a motor vehicle.
      *  <br><br>
-     *  This field is applicable to listings in US eBay Motors Cars and Trucks (6001), Motorcycles (6024), Commercial Trucks (63732), RVs and Campers (50054), ATVs (6723), Snowmobiles (42595), and UTVs (173665); and to Cars and Trucks listings in CA, CAFR and AU eBay Motors. For vehicle categories that do not use VIN, call <b>GetCategorySpecifics</b> to determine applicable Item Specifics (such as 'Hull ID Number' for Boats).
+     *  This field is applicable to listings in US eBay Motors Cars and Trucks (6001), Motorcycles (6024), Commercial Trucks (63732), RVs and Campers (50054), ATVs (6723), Snowmobiles (42595), and UTVs (173665); and to Cars and Trucks listings in CA, CAFR and AU eBay Motors. For vehicle categories that do not use VIN, make a call to the <a href="/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API to determine applicable Item Specifics (such as 'Hull ID Number' for Boats).
      *  <br><br>
-     *  For the US, CA, and CAFR eBay Motors sites, required for cars and trucks from model year 1981 and later. (The US developed national standards for VIN values in 1981.)
+     *  For the US, CA, and CA-FR eBay Motors categories, required for cars and trucks from model year 1981 and later. (The US developed national standards for VIN values in 1981.)
      *  <br><br>
      *  For the eBay Australia site, required for vehicles from model year 1989 or later. For the eBay Australia site, only appears on the View Item page if you also specify the date of first registration in the listing's Item Specifics.
      *  <br><br>
@@ -7181,7 +7152,9 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      * This container is used if the seller would like to use/reference business policies to create, revise, relist, or verify their listing. The seller's account must be opted in to business policies to use this container. If this container is used, exactly one Payment Business Policy, one Shipping Business Policy, and one Return Business Policy must be specified and applied to the listing. If the seller's account is not opted in to business policies, that seller may not use this container. Sellers must opt-in to business policies through My eBay or by using the <b>optInToProgram</b> call of the <b>eBay Account API</b>.
      *  <br><br>
      *  If business policies are applied to a listing, all payment, shipping, and return policy settings in these policies will override any other payment, shipping, or return policy legacy fields that are included in the call request.
-     *  <br><br>
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> To make sure that the shipping cost override and policies are set correctly on an item (that is using business policies and has one or more shipping service cost overrides set up), the <b>Item.SellerProfiles.SellerShippingProfile</b> container and the <b>Item.ShippingServiceCostOverrideList.ShippingServiceCostOverride</b> container(s) must be included, even if no changes are being made.
+     *  </span>
      *  This container is only returned in 'Get' calls if business policies are set for the listing, and the person making the API call is the seller of the listing.
      *
      * @return \Nogrod\eBaySDK\Trading\SellerProfilesType
@@ -7197,7 +7170,9 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      * This container is used if the seller would like to use/reference business policies to create, revise, relist, or verify their listing. The seller's account must be opted in to business policies to use this container. If this container is used, exactly one Payment Business Policy, one Shipping Business Policy, and one Return Business Policy must be specified and applied to the listing. If the seller's account is not opted in to business policies, that seller may not use this container. Sellers must opt-in to business policies through My eBay or by using the <b>optInToProgram</b> call of the <b>eBay Account API</b>.
      *  <br><br>
      *  If business policies are applied to a listing, all payment, shipping, and return policy settings in these policies will override any other payment, shipping, or return policy legacy fields that are included in the call request.
-     *  <br><br>
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> To make sure that the shipping cost override and policies are set correctly on an item (that is using business policies and has one or more shipping service cost overrides set up), the <b>Item.SellerProfiles.SellerShippingProfile</b> container and the <b>Item.ShippingServiceCostOverrideList.ShippingServiceCostOverride</b> container(s) must be included, even if no changes are being made.
+     *  </span>
      *  This container is only returned in 'Get' calls if business policies are set for the listing, and the person making the API call is the seller of the listing.
      *
      * @param \Nogrod\eBaySDK\Trading\SellerProfilesType $sellerProfiles
@@ -7215,7 +7190,9 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      * This container is used when the seller wants to override the flat shipping costs for all domestic and/or all international shipping services defined in the shipping business policy referenced in the <b>SellerProfiles.SellerShippingProfile.ShippingProfileID</b> field. Shipping costs include the cost to ship one item, the cost to ship each additional identical item, and any shipping surcharges applicable to domestic shipping services.
      *  <br><br>
      *  A <b>ShippingServiceCostOverrideList.ShippingServiceCostOverride</b> container is required for each domestic and/or international shipping service that is defined in the <b>domesticShippingPolicyInfoService</b> and <b>intlShippingPolicyInfoService</b> containers of the shipping business policy.
-     *  <br><br>
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> To make sure that the shipping cost override and policies are set correctly on an item (that is using business policies and has one or more shipping service cost overrides set up), the <b>Item.SellerProfiles.SellerShippingProfile</b> container and the <b>Item.ShippingServiceCostOverrideList.ShippingServiceCostOverride</b> container(s) must be included, even if no changes are being made.
+     *  </span>
      *  Shipping service cost overrides are a listing-level concept, and the shipping costs specified through each <b>ShippingServiceCostOverrideList.ShippingServiceCostOverride</b> container will not change the shipping costs defined for the same shipping services in the shipping business policy.
      *  <br><br>
      *  <b>For Revise and Relist calls</b>: To delete all shipping service cost overrides when you revise or relist, specify <b>Item.ShippingServiceCostOverrideList</b> in <b>DeletedField</b>, and don't pass <b>ShippingServiceCostOverrideList</b> in the request.
@@ -7235,7 +7212,9 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      * This container is used when the seller wants to override the flat shipping costs for all domestic and/or all international shipping services defined in the shipping business policy referenced in the <b>SellerProfiles.SellerShippingProfile.ShippingProfileID</b> field. Shipping costs include the cost to ship one item, the cost to ship each additional identical item, and any shipping surcharges applicable to domestic shipping services.
      *  <br><br>
      *  A <b>ShippingServiceCostOverrideList.ShippingServiceCostOverride</b> container is required for each domestic and/or international shipping service that is defined in the <b>domesticShippingPolicyInfoService</b> and <b>intlShippingPolicyInfoService</b> containers of the shipping business policy.
-     *  <br><br>
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> To make sure that the shipping cost override and policies are set correctly on an item (that is using business policies and has one or more shipping service cost overrides set up), the <b>Item.SellerProfiles.SellerShippingProfile</b> container and the <b>Item.ShippingServiceCostOverrideList.ShippingServiceCostOverride</b> container(s) must be included, even if no changes are being made.
+     *  </span>
      *  Shipping service cost overrides are a listing-level concept, and the shipping costs specified through each <b>ShippingServiceCostOverrideList.ShippingServiceCostOverride</b> container will not change the shipping costs defined for the same shipping services in the shipping business policy.
      *  <br><br>
      *  <b>For Revise and Relist calls</b>: To delete all shipping service cost overrides when you revise or relist, specify <b>Item.ShippingServiceCostOverrideList</b> in <b>DeletedField</b>, and don't pass <b>ShippingServiceCostOverrideList</b> in the request.
@@ -7254,7 +7233,9 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      * This container is used when the seller wants to override the flat shipping costs for all domestic and/or all international shipping services defined in the shipping business policy referenced in the <b>SellerProfiles.SellerShippingProfile.ShippingProfileID</b> field. Shipping costs include the cost to ship one item, the cost to ship each additional identical item, and any shipping surcharges applicable to domestic shipping services.
      *  <br><br>
      *  A <b>ShippingServiceCostOverrideList.ShippingServiceCostOverride</b> container is required for each domestic and/or international shipping service that is defined in the <b>domesticShippingPolicyInfoService</b> and <b>intlShippingPolicyInfoService</b> containers of the shipping business policy.
-     *  <br><br>
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> To make sure that the shipping cost override and policies are set correctly on an item (that is using business policies and has one or more shipping service cost overrides set up), the <b>Item.SellerProfiles.SellerShippingProfile</b> container and the <b>Item.ShippingServiceCostOverrideList.ShippingServiceCostOverride</b> container(s) must be included, even if no changes are being made.
+     *  </span>
      *  Shipping service cost overrides are a listing-level concept, and the shipping costs specified through each <b>ShippingServiceCostOverrideList.ShippingServiceCostOverride</b> container will not change the shipping costs defined for the same shipping services in the shipping business policy.
      *  <br><br>
      *  <b>For Revise and Relist calls</b>: To delete all shipping service cost overrides when you revise or relist, specify <b>Item.ShippingServiceCostOverrideList</b> in <b>DeletedField</b>, and don't pass <b>ShippingServiceCostOverrideList</b> in the request.
@@ -7273,7 +7254,9 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      * This container is used when the seller wants to override the flat shipping costs for all domestic and/or all international shipping services defined in the shipping business policy referenced in the <b>SellerProfiles.SellerShippingProfile.ShippingProfileID</b> field. Shipping costs include the cost to ship one item, the cost to ship each additional identical item, and any shipping surcharges applicable to domestic shipping services.
      *  <br><br>
      *  A <b>ShippingServiceCostOverrideList.ShippingServiceCostOverride</b> container is required for each domestic and/or international shipping service that is defined in the <b>domesticShippingPolicyInfoService</b> and <b>intlShippingPolicyInfoService</b> containers of the shipping business policy.
-     *  <br><br>
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> To make sure that the shipping cost override and policies are set correctly on an item (that is using business policies and has one or more shipping service cost overrides set up), the <b>Item.SellerProfiles.SellerShippingProfile</b> container and the <b>Item.ShippingServiceCostOverrideList.ShippingServiceCostOverride</b> container(s) must be included, even if no changes are being made.
+     *  </span>
      *  Shipping service cost overrides are a listing-level concept, and the shipping costs specified through each <b>ShippingServiceCostOverrideList.ShippingServiceCostOverride</b> container will not change the shipping costs defined for the same shipping services in the shipping business policy.
      *  <br><br>
      *  <b>For Revise and Relist calls</b>: To delete all shipping service cost overrides when you revise or relist, specify <b>Item.ShippingServiceCostOverrideList</b> in <b>DeletedField</b>, and don't pass <b>ShippingServiceCostOverrideList</b> in the request.
@@ -7291,7 +7274,9 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      * This container is used when the seller wants to override the flat shipping costs for all domestic and/or all international shipping services defined in the shipping business policy referenced in the <b>SellerProfiles.SellerShippingProfile.ShippingProfileID</b> field. Shipping costs include the cost to ship one item, the cost to ship each additional identical item, and any shipping surcharges applicable to domestic shipping services.
      *  <br><br>
      *  A <b>ShippingServiceCostOverrideList.ShippingServiceCostOverride</b> container is required for each domestic and/or international shipping service that is defined in the <b>domesticShippingPolicyInfoService</b> and <b>intlShippingPolicyInfoService</b> containers of the shipping business policy.
-     *  <br><br>
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> To make sure that the shipping cost override and policies are set correctly on an item (that is using business policies and has one or more shipping service cost overrides set up), the <b>Item.SellerProfiles.SellerShippingProfile</b> container and the <b>Item.ShippingServiceCostOverrideList.ShippingServiceCostOverride</b> container(s) must be included, even if no changes are being made.
+     *  </span>
      *  Shipping service cost overrides are a listing-level concept, and the shipping costs specified through each <b>ShippingServiceCostOverrideList.ShippingServiceCostOverride</b> container will not change the shipping costs defined for the same shipping services in the shipping business policy.
      *  <br><br>
      *  <b>For Revise and Relist calls</b>: To delete all shipping service cost overrides when you revise or relist, specify <b>Item.ShippingServiceCostOverrideList</b> in <b>DeletedField</b>, and don't pass <b>ShippingServiceCostOverrideList</b> in the request.
@@ -8058,10 +8043,6 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Distance", $value);
         }
-        $value = $this->getHitCounter();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}HitCounter", $value);
-        }
         $value = $this->getItemID();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ItemID", $value);
@@ -8143,6 +8124,11 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         $value = null !== $value ? ($value ? 'true' : 'false') : null;
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}RelistLink", $value);
+        }
+        $value = $this->getIsItemEMSEligible();
+        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        if (null !== $value) {
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}IsItemEMSEligible", $value);
         }
         $value = $this->getReservePrice();
         if (null !== $value) {
@@ -8688,10 +8674,6 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         if (null !== $value) {
             $this->setDistance(\Nogrod\eBaySDK\Trading\DistanceType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}HitCounter');
-        if (null !== $value) {
-            $this->setHitCounter($value);
-        }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemID');
         if (null !== $value) {
             $this->setItemID($value);
@@ -8767,6 +8749,10 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RelistLink');
         if (null !== $value) {
             $this->setRelistLink($value);
+        }
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}IsItemEMSEligible');
+        if (null !== $value) {
+            $this->setIsItemEMSEligible($value);
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReservePrice');
         if (null !== $value) {

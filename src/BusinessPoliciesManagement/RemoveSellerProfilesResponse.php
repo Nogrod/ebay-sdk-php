@@ -4,6 +4,8 @@ namespace Nogrod\eBaySDK\BusinessPoliciesManagement;
 
 /**
  * Class representing RemoveSellerProfilesResponse
+ *
+ * The root response container of the <b>removeSellerProfiles</b> call.
  */
 class RemoveSellerProfilesResponse extends RemoveSellerProfilesResponseType
 {

@@ -88,7 +88,7 @@ class ProductListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     private $returnSearchResultOnDuplicates = null;
 
     /**
-     * This field is used if the seller wants to, or is required to identify a product using an ISBN (International Standard Book Number) value. An ISBN is a unique identifer for books. Both 10 and 13-character ISBNs are supported. When specifying a 13-character ISBN, the value must begin with either '978' or '979'. The seller can use the <b>GetCategoryFeatures</b> or <b>GetCategorySpecifics</b> calls to see if an ISBN is supported/required for a category.
+     * This field is used if the seller wants to, or is required to identify a product using an ISBN (International Standard Book Number) value. An ISBN is a unique identifer for books. Both 10 and 13-character ISBNs are supported. When specifying a 13-character ISBN, the value must begin with either '978' or '979'. The seller can use the <b>GetCategoryFeatures</b> call to see if an ISBN is supported/required for a category.
      *  <br/><br/>
      *  If the <b>IncludeeBayProductDetails</b> field is omitted or included and set to <code>true</code>, eBay will use the ISBN value passed into this field to try and find a matching eBay catalog product. If a match is found, the listing will pick up the product details of the catalog product, including the product title, product description, item specifics, and stock photo. If the seller is passing in an ePID through the <b>ProductReferenceID</b> field, this field is not needed, as all product identifiers will get picked up automatically by the listing if a matching catalog product is found.
      *  <br/><br/>
@@ -103,7 +103,7 @@ class ProductListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     private $iSBN = null;
 
     /**
-     * This field is used if the seller wants to, or is required to identify a product using a UPC (Universal Product Code) value. A UPC is a commonly used identifer for many different products. The seller can use the <b>GetCategoryFeatures</b> or <b>GetCategorySpecifics</b> calls to see if a UPC is supported/required for a category.
+     * This field is used if the seller wants to, or is required to identify a product using a UPC (Universal Product Code) value. A UPC is a commonly used identifer for many different products. The seller can use the <b>GetCategoryFeatures</b> call to see if a UPC is supported/required for a category.
      *  <br/><br/>
      *  <span class="tablenote"><b>Note: </b>
      *  The <b>UPC</b> (and UPC values) are typically only applicable to US products listed on US eBay marketplace. If a European seller is selling a European-based product (with an EAN value) on the US site, instead of using the <b>EAN</b> field, the seller will use the <b>UPC</b> field to pass in the EAN value.
@@ -122,7 +122,7 @@ class ProductListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     private $uPC = null;
 
     /**
-     * This field is used if the seller wants to, or is required to identify a product using an EAN (European Article Number) value. An EAN is a unique 8 or 13-digit identifier that many industries (such as book publishers) use to identify products. The seller can use the <b>GetCategoryFeatures</b> or <b>GetCategorySpecifics</b> calls to see if an EAN is supported/required for a category.
+     * This field is used if the seller wants to, or is required to identify a product using an EAN (European Article Number) value. An EAN is a unique 8 or 13-digit identifier that many industries (such as book publishers) use to identify products. The seller can use the <b>GetCategoryFeatures</b> call to see if an EAN is supported/required for a category.
      *  <br/><br/>
      *  <span class="tablenote"><b>Note: </b>
      *  The <b>EAN</b> (and EAN values) are typically only applicable to European products listed on European eBay marketplaces. If a US seller is selling a US-based product (with a UPC value) on a European site (such as eBay UK), instead of using the <b>UPC</b> field, the seller will use the <b>EAN</b> field to pass in the UPC value.
@@ -141,7 +141,7 @@ class ProductListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     private $eAN = null;
 
     /**
-     * This container is used if the seller wants to, or is required to identify a product using an Brand/Manufacturer Part Number (MPN) pair. The seller can use the <b>GetCategoryFeatures</b> or <b>GetCategorySpecifics</b> calls to see if a Brand/MPN pair is supported/required for a category. Both the <b>Brand</b> and <b>MPN</b> fields are required if the category/product requires an MPN value.
+     * This container is used if the seller wants to, or is required to identify a product using an Brand/Manufacturer Part Number (MPN) pair. The seller can use the <b>GetCategoryFeatures</b> call to see if a Brand/MPN pair is supported/required for a category. Both the <b>Brand</b> and <b>MPN</b> fields are required if the category/product requires an MPN value.
      *  <br/><br/>
      *  If the <b>IncludeeBayProductDetails</b> field is omitted or included and set to <code>true</code>, eBay will use the Brand/MPN pair to try and find a matching eBay catalog product. If a match is found, the listing will pick up the product details of the catalog product, including the product title, product description, item specifics, and stock photo. If the seller is passing in an ePID through the <b>ProductReferenceID</b> field, this field is not needed, as all product identifiers associated with the catalog product will get picked up automatically by the listing if a matching catalog product is found.
      *  <br/><br/>
@@ -468,7 +468,7 @@ class ProductListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     /**
      * Gets as iSBN
      *
-     * This field is used if the seller wants to, or is required to identify a product using an ISBN (International Standard Book Number) value. An ISBN is a unique identifer for books. Both 10 and 13-character ISBNs are supported. When specifying a 13-character ISBN, the value must begin with either '978' or '979'. The seller can use the <b>GetCategoryFeatures</b> or <b>GetCategorySpecifics</b> calls to see if an ISBN is supported/required for a category.
+     * This field is used if the seller wants to, or is required to identify a product using an ISBN (International Standard Book Number) value. An ISBN is a unique identifer for books. Both 10 and 13-character ISBNs are supported. When specifying a 13-character ISBN, the value must begin with either '978' or '979'. The seller can use the <b>GetCategoryFeatures</b> call to see if an ISBN is supported/required for a category.
      *  <br/><br/>
      *  If the <b>IncludeeBayProductDetails</b> field is omitted or included and set to <code>true</code>, eBay will use the ISBN value passed into this field to try and find a matching eBay catalog product. If a match is found, the listing will pick up the product details of the catalog product, including the product title, product description, item specifics, and stock photo. If the seller is passing in an ePID through the <b>ProductReferenceID</b> field, this field is not needed, as all product identifiers will get picked up automatically by the listing if a matching catalog product is found.
      *  <br/><br/>
@@ -488,7 +488,7 @@ class ProductListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     /**
      * Sets a new iSBN
      *
-     * This field is used if the seller wants to, or is required to identify a product using an ISBN (International Standard Book Number) value. An ISBN is a unique identifer for books. Both 10 and 13-character ISBNs are supported. When specifying a 13-character ISBN, the value must begin with either '978' or '979'. The seller can use the <b>GetCategoryFeatures</b> or <b>GetCategorySpecifics</b> calls to see if an ISBN is supported/required for a category.
+     * This field is used if the seller wants to, or is required to identify a product using an ISBN (International Standard Book Number) value. An ISBN is a unique identifer for books. Both 10 and 13-character ISBNs are supported. When specifying a 13-character ISBN, the value must begin with either '978' or '979'. The seller can use the <b>GetCategoryFeatures</b> call to see if an ISBN is supported/required for a category.
      *  <br/><br/>
      *  If the <b>IncludeeBayProductDetails</b> field is omitted or included and set to <code>true</code>, eBay will use the ISBN value passed into this field to try and find a matching eBay catalog product. If a match is found, the listing will pick up the product details of the catalog product, including the product title, product description, item specifics, and stock photo. If the seller is passing in an ePID through the <b>ProductReferenceID</b> field, this field is not needed, as all product identifiers will get picked up automatically by the listing if a matching catalog product is found.
      *  <br/><br/>
@@ -510,7 +510,7 @@ class ProductListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     /**
      * Gets as uPC
      *
-     * This field is used if the seller wants to, or is required to identify a product using a UPC (Universal Product Code) value. A UPC is a commonly used identifer for many different products. The seller can use the <b>GetCategoryFeatures</b> or <b>GetCategorySpecifics</b> calls to see if a UPC is supported/required for a category.
+     * This field is used if the seller wants to, or is required to identify a product using a UPC (Universal Product Code) value. A UPC is a commonly used identifer for many different products. The seller can use the <b>GetCategoryFeatures</b> call to see if a UPC is supported/required for a category.
      *  <br/><br/>
      *  <span class="tablenote"><b>Note: </b>
      *  The <b>UPC</b> (and UPC values) are typically only applicable to US products listed on US eBay marketplace. If a European seller is selling a European-based product (with an EAN value) on the US site, instead of using the <b>EAN</b> field, the seller will use the <b>UPC</b> field to pass in the EAN value.
@@ -534,7 +534,7 @@ class ProductListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     /**
      * Sets a new uPC
      *
-     * This field is used if the seller wants to, or is required to identify a product using a UPC (Universal Product Code) value. A UPC is a commonly used identifer for many different products. The seller can use the <b>GetCategoryFeatures</b> or <b>GetCategorySpecifics</b> calls to see if a UPC is supported/required for a category.
+     * This field is used if the seller wants to, or is required to identify a product using a UPC (Universal Product Code) value. A UPC is a commonly used identifer for many different products. The seller can use the <b>GetCategoryFeatures</b> call to see if a UPC is supported/required for a category.
      *  <br/><br/>
      *  <span class="tablenote"><b>Note: </b>
      *  The <b>UPC</b> (and UPC values) are typically only applicable to US products listed on US eBay marketplace. If a European seller is selling a European-based product (with an EAN value) on the US site, instead of using the <b>EAN</b> field, the seller will use the <b>UPC</b> field to pass in the EAN value.
@@ -560,7 +560,7 @@ class ProductListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     /**
      * Gets as eAN
      *
-     * This field is used if the seller wants to, or is required to identify a product using an EAN (European Article Number) value. An EAN is a unique 8 or 13-digit identifier that many industries (such as book publishers) use to identify products. The seller can use the <b>GetCategoryFeatures</b> or <b>GetCategorySpecifics</b> calls to see if an EAN is supported/required for a category.
+     * This field is used if the seller wants to, or is required to identify a product using an EAN (European Article Number) value. An EAN is a unique 8 or 13-digit identifier that many industries (such as book publishers) use to identify products. The seller can use the <b>GetCategoryFeatures</b> call to see if an EAN is supported/required for a category.
      *  <br/><br/>
      *  <span class="tablenote"><b>Note: </b>
      *  The <b>EAN</b> (and EAN values) are typically only applicable to European products listed on European eBay marketplaces. If a US seller is selling a US-based product (with a UPC value) on a European site (such as eBay UK), instead of using the <b>UPC</b> field, the seller will use the <b>EAN</b> field to pass in the UPC value.
@@ -584,7 +584,7 @@ class ProductListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     /**
      * Sets a new eAN
      *
-     * This field is used if the seller wants to, or is required to identify a product using an EAN (European Article Number) value. An EAN is a unique 8 or 13-digit identifier that many industries (such as book publishers) use to identify products. The seller can use the <b>GetCategoryFeatures</b> or <b>GetCategorySpecifics</b> calls to see if an EAN is supported/required for a category.
+     * This field is used if the seller wants to, or is required to identify a product using an EAN (European Article Number) value. An EAN is a unique 8 or 13-digit identifier that many industries (such as book publishers) use to identify products. The seller can use the <b>GetCategoryFeatures</b> call to see if an EAN is supported/required for a category.
      *  <br/><br/>
      *  <span class="tablenote"><b>Note: </b>
      *  The <b>EAN</b> (and EAN values) are typically only applicable to European products listed on European eBay marketplaces. If a US seller is selling a US-based product (with a UPC value) on a European site (such as eBay UK), instead of using the <b>UPC</b> field, the seller will use the <b>EAN</b> field to pass in the UPC value.
@@ -610,7 +610,7 @@ class ProductListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     /**
      * Gets as brandMPN
      *
-     * This container is used if the seller wants to, or is required to identify a product using an Brand/Manufacturer Part Number (MPN) pair. The seller can use the <b>GetCategoryFeatures</b> or <b>GetCategorySpecifics</b> calls to see if a Brand/MPN pair is supported/required for a category. Both the <b>Brand</b> and <b>MPN</b> fields are required if the category/product requires an MPN value.
+     * This container is used if the seller wants to, or is required to identify a product using an Brand/Manufacturer Part Number (MPN) pair. The seller can use the <b>GetCategoryFeatures</b> call to see if a Brand/MPN pair is supported/required for a category. Both the <b>Brand</b> and <b>MPN</b> fields are required if the category/product requires an MPN value.
      *  <br/><br/>
      *  If the <b>IncludeeBayProductDetails</b> field is omitted or included and set to <code>true</code>, eBay will use the Brand/MPN pair to try and find a matching eBay catalog product. If a match is found, the listing will pick up the product details of the catalog product, including the product title, product description, item specifics, and stock photo. If the seller is passing in an ePID through the <b>ProductReferenceID</b> field, this field is not needed, as all product identifiers associated with the catalog product will get picked up automatically by the listing if a matching catalog product is found.
      *  <br/><br/>
@@ -631,7 +631,7 @@ class ProductListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     /**
      * Sets a new brandMPN
      *
-     * This container is used if the seller wants to, or is required to identify a product using an Brand/Manufacturer Part Number (MPN) pair. The seller can use the <b>GetCategoryFeatures</b> or <b>GetCategorySpecifics</b> calls to see if a Brand/MPN pair is supported/required for a category. Both the <b>Brand</b> and <b>MPN</b> fields are required if the category/product requires an MPN value.
+     * This container is used if the seller wants to, or is required to identify a product using an Brand/Manufacturer Part Number (MPN) pair. The seller can use the <b>GetCategoryFeatures</b> call to see if a Brand/MPN pair is supported/required for a category. Both the <b>Brand</b> and <b>MPN</b> fields are required if the category/product requires an MPN value.
      *  <br/><br/>
      *  If the <b>IncludeeBayProductDetails</b> field is omitted or included and set to <code>true</code>, eBay will use the Brand/MPN pair to try and find a matching eBay catalog product. If a match is found, the listing will pick up the product details of the catalog product, including the product title, product description, item specifics, and stock photo. If the seller is passing in an ePID through the <b>ProductReferenceID</b> field, this field is not needed, as all product identifiers associated with the catalog product will get picked up automatically by the listing if a matching catalog product is found.
      *  <br/><br/>

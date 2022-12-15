@@ -5,18 +5,7 @@ namespace Nogrod\eBaySDK\Trading;
 /**
  * Class representing DisputeExplanationCodeType
  *
- * Enumerated type that contains the explanations that a seller can give for opening up an Unpaid Item case
- *  against a buyer. These values are specified in the <b>DisputeExplanation</b>
- *  field of <b>AddDispute</b> call, and are returned in the
- *  <b>GetUserDisputes</b> and <b>GetDispute</b> calls. The
- *  <b>DisputeReason</b> value will dictate what
- *  <b>DisputeExplanation</b> values that can be used/returned.
- *  <br/><br/>
- *  <span class="tablenote"><strong>Note:</strong>
- *  Only Unpaid Item cases are now supported by the Dispute calls of the Trading API. These calls no longer support Item not Received (INR) or Significantly not as Described (SNAD) disputes created through PayPal, since this is no longer an option for eBay buyers. eBay buyers must create an INR case through eBay's Resolution Center, and these calls also do not support eBay Money Back Guarantee cases.
- *  <br><br>
- *  To respond to an eBay Money Back Guarantee case, the seller should use the <a href="https://developer.ebay.com/Devzone/post-order/index.html" target="_blank">Case Management calls</a> of the <b>Post-Order API</b> or manage/respond to cases manually through the eBay Resolution Center.
- *  </span>
+ * Enumerated type that contains the explanations why an order is being cancelled.
  * XSD Type: DisputeExplanationCodeType
  */
 class DisputeExplanationCodeType
@@ -55,10 +44,7 @@ class DisputeExplanationCodeType
     /**
      * Constant for 'BuyerReturnedItemForRefund' value.
      *
-     * This value is no longer applicable and should not be used in an
-     * <b>AddDispute</b> call, as it only pertains to <i>Significantly Not As
-     * Described</i> disputes initiated through PayPal, and those disputes are no
-     * longer supported by the <b>AddDispute</b>.
+     * This value is no longer applicable and should not be used.
      */
     public const VAL_BUYER_RETURNED_ITEM_FOR_REFUND = 'BuyerReturnedItemForRefund';
 
@@ -145,8 +131,9 @@ class DisputeExplanationCodeType
      * Constant for 'UPIAssistance' value.
      *
      * This value will be returned in <b>GetDispute</b> or <b>GetUserDisputes</b> calls
-     * if the Unpaid Item case was opened by eBay through the Unpaid Item Assistance
-     * mechanism. This value cannot be used in <b>AddDispute</b>.
+     * if the Unpaid Item preferences was used to automatically cancel an unpaid order
+     * and relist the item on the behalf of the seller. This value cannot be used in
+     * <b>AddDispute</b>.
      */
     public const VAL_UPIASSISTANCE = 'UPIAssistance';
 
@@ -185,10 +172,8 @@ class DisputeExplanationCodeType
     /**
      * Constant for 'UPIAssistanceDisabled' value.
      *
-     * This value indicates that the Unpaid Item case was opened by eBay through the
-     * Unpaid
-     *  Item Assistance mechanism, and then was subsequently converted to a manual
-     * dispute,
+     * This value indicates that the Unpaid Item case was opened by eBay through Unpaid
+     *  Item preferences, and then was subsequently converted to a manual dispute,
      *  either by the seller or by eBay. This value cannot be used in
      *  <b>AddDispute</b>.
      */

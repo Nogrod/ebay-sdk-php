@@ -7,47 +7,69 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing ErrorDataType
  *
- * Documentation goes here
+ * A container for error details.
  * XSD Type: ErrorData
  */
 class ErrorDataType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
     /**
+     * A unique code that identifies the particular error condition that occurred. Your application can use error codes as identifiers in your customized error-handling algorithms.
+     *
      * @var int $errorId
      */
     private $errorId = null;
 
     /**
+     * Name of the domain in which the error occurred.
+     *
      * @var string $domain
      */
     private $domain = null;
 
     /**
+     * Name of the subdomain in which the error occurred.
+     *
      * @var string $subdomain
      */
     private $subdomain = null;
 
     /**
+     * Indicates whether the reported problem is fatal (an error) or is less severe (a warning). Review the error message details for information on the cause.
+     *  <br><br>
+     *  If the request fails and the application is the source of the error (for example, a required element is missing), update the application before you retry the request. If the problem is due to incorrect user data, alert the end user to the problem and provide the means for them to correct the data. Once the problem in the application or data is resolved, resend the request to eBay.
+     *  <br><br>
+     *  If the source of the problem is on eBay's side, you can retry the request a reasonable number of times (eBay recommends you try the request twice). If the error persists, contact Developer Technical Support. Once the problem has been resolved, you can resend the request in its original form.
+     *  <br><br>
+     *  If a warning occurs, warning information is returned in addition to the business data. Normally, you do not need to resend the request (as the original request was successful). However, depending on the cause of the warning, you might need to contact the end user, or eBay, to effect a long term solution to the problem.
+     *
      * @var string $severity
      */
     private $severity = null;
 
     /**
+     * There are three categories of errors: request errors, application errors, and system errors.
+     *
      * @var string $category
      */
     private $category = null;
 
     /**
+     * A detailed description of the condition that caused the error.
+     *
      * @var string $message
      */
     private $message = null;
 
     /**
+     * Unique identifier for an exception associated with an error.
+     *
      * @var string $exceptionId
      */
     private $exceptionId = null;
 
     /**
+     * Various warning and error messages return one or more variables that contain contextual information about the error. This is often the field or value that triggered the error.
+     *
      * @var \Nogrod\eBaySDK\BusinessPoliciesManagement\ErrorParameterType[] $parameter
      */
     private $parameter = [
@@ -56,6 +78,8 @@ class ErrorDataType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
 
     /**
      * Gets as errorId
+     *
+     * A unique code that identifies the particular error condition that occurred. Your application can use error codes as identifiers in your customized error-handling algorithms.
      *
      * @return int
      */
@@ -66,6 +90,8 @@ class ErrorDataType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
 
     /**
      * Sets a new errorId
+     *
+     * A unique code that identifies the particular error condition that occurred. Your application can use error codes as identifiers in your customized error-handling algorithms.
      *
      * @param int $errorId
      * @return self
@@ -79,6 +105,8 @@ class ErrorDataType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
     /**
      * Gets as domain
      *
+     * Name of the domain in which the error occurred.
+     *
      * @return string
      */
     public function getDomain()
@@ -88,6 +116,8 @@ class ErrorDataType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
 
     /**
      * Sets a new domain
+     *
+     * Name of the domain in which the error occurred.
      *
      * @param string $domain
      * @return self
@@ -101,6 +131,8 @@ class ErrorDataType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
     /**
      * Gets as subdomain
      *
+     * Name of the subdomain in which the error occurred.
+     *
      * @return string
      */
     public function getSubdomain()
@@ -110,6 +142,8 @@ class ErrorDataType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
 
     /**
      * Sets a new subdomain
+     *
+     * Name of the subdomain in which the error occurred.
      *
      * @param string $subdomain
      * @return self
@@ -123,6 +157,14 @@ class ErrorDataType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
     /**
      * Gets as severity
      *
+     * Indicates whether the reported problem is fatal (an error) or is less severe (a warning). Review the error message details for information on the cause.
+     *  <br><br>
+     *  If the request fails and the application is the source of the error (for example, a required element is missing), update the application before you retry the request. If the problem is due to incorrect user data, alert the end user to the problem and provide the means for them to correct the data. Once the problem in the application or data is resolved, resend the request to eBay.
+     *  <br><br>
+     *  If the source of the problem is on eBay's side, you can retry the request a reasonable number of times (eBay recommends you try the request twice). If the error persists, contact Developer Technical Support. Once the problem has been resolved, you can resend the request in its original form.
+     *  <br><br>
+     *  If a warning occurs, warning information is returned in addition to the business data. Normally, you do not need to resend the request (as the original request was successful). However, depending on the cause of the warning, you might need to contact the end user, or eBay, to effect a long term solution to the problem.
+     *
      * @return string
      */
     public function getSeverity()
@@ -132,6 +174,14 @@ class ErrorDataType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
 
     /**
      * Sets a new severity
+     *
+     * Indicates whether the reported problem is fatal (an error) or is less severe (a warning). Review the error message details for information on the cause.
+     *  <br><br>
+     *  If the request fails and the application is the source of the error (for example, a required element is missing), update the application before you retry the request. If the problem is due to incorrect user data, alert the end user to the problem and provide the means for them to correct the data. Once the problem in the application or data is resolved, resend the request to eBay.
+     *  <br><br>
+     *  If the source of the problem is on eBay's side, you can retry the request a reasonable number of times (eBay recommends you try the request twice). If the error persists, contact Developer Technical Support. Once the problem has been resolved, you can resend the request in its original form.
+     *  <br><br>
+     *  If a warning occurs, warning information is returned in addition to the business data. Normally, you do not need to resend the request (as the original request was successful). However, depending on the cause of the warning, you might need to contact the end user, or eBay, to effect a long term solution to the problem.
      *
      * @param string $severity
      * @return self
@@ -145,6 +195,8 @@ class ErrorDataType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
     /**
      * Gets as category
      *
+     * There are three categories of errors: request errors, application errors, and system errors.
+     *
      * @return string
      */
     public function getCategory()
@@ -154,6 +206,8 @@ class ErrorDataType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
 
     /**
      * Sets a new category
+     *
+     * There are three categories of errors: request errors, application errors, and system errors.
      *
      * @param string $category
      * @return self
@@ -167,6 +221,8 @@ class ErrorDataType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
     /**
      * Gets as message
      *
+     * A detailed description of the condition that caused the error.
+     *
      * @return string
      */
     public function getMessage()
@@ -176,6 +232,8 @@ class ErrorDataType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
 
     /**
      * Sets a new message
+     *
+     * A detailed description of the condition that caused the error.
      *
      * @param string $message
      * @return self
@@ -189,6 +247,8 @@ class ErrorDataType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
     /**
      * Gets as exceptionId
      *
+     * Unique identifier for an exception associated with an error.
+     *
      * @return string
      */
     public function getExceptionId()
@@ -198,6 +258,8 @@ class ErrorDataType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
 
     /**
      * Sets a new exceptionId
+     *
+     * Unique identifier for an exception associated with an error.
      *
      * @param string $exceptionId
      * @return self
@@ -211,6 +273,8 @@ class ErrorDataType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
     /**
      * Adds as parameter
      *
+     * Various warning and error messages return one or more variables that contain contextual information about the error. This is often the field or value that triggered the error.
+     *
      * @return self
      * @param \Nogrod\eBaySDK\BusinessPoliciesManagement\ErrorParameterType $parameter
      */
@@ -223,6 +287,8 @@ class ErrorDataType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
     /**
      * isset parameter
      *
+     * Various warning and error messages return one or more variables that contain contextual information about the error. This is often the field or value that triggered the error.
+     *
      * @param int|string $index
      * @return bool
      */
@@ -233,6 +299,8 @@ class ErrorDataType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
 
     /**
      * unset parameter
+     *
+     * Various warning and error messages return one or more variables that contain contextual information about the error. This is often the field or value that triggered the error.
      *
      * @param int|string $index
      * @return void
@@ -245,6 +313,8 @@ class ErrorDataType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
     /**
      * Gets as parameter
      *
+     * Various warning and error messages return one or more variables that contain contextual information about the error. This is often the field or value that triggered the error.
+     *
      * @return \Nogrod\eBaySDK\BusinessPoliciesManagement\ErrorParameterType[]
      */
     public function getParameter()
@@ -254,6 +324,8 @@ class ErrorDataType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
 
     /**
      * Sets a new parameter
+     *
+     * Various warning and error messages return one or more variables that contain contextual information about the error. This is often the field or value that triggered the error.
      *
      * @param \Nogrod\eBaySDK\BusinessPoliciesManagement\ErrorParameterType[] $parameter
      * @return self

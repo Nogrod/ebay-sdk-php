@@ -7,12 +7,14 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing ErrorMessageType
  *
- * Documentation goes here
+ * Information regarding an error or warning that occurred when eBay processed the request. Not returned when the <b>ack</b> value is <b>Success</b>.
  * XSD Type: ErrorMessage
  */
 class ErrorMessageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
     /**
+     * Details about a single error.
+     *
      * @var \Nogrod\eBaySDK\BusinessPoliciesManagement\ErrorDataType[] $error
      */
     private $error = [
@@ -21,6 +23,8 @@ class ErrorMessageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
 
     /**
      * Adds as error
+     *
+     * Details about a single error.
      *
      * @return self
      * @param \Nogrod\eBaySDK\BusinessPoliciesManagement\ErrorDataType $error
@@ -34,6 +38,8 @@ class ErrorMessageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * isset error
      *
+     * Details about a single error.
+     *
      * @param int|string $index
      * @return bool
      */
@@ -44,6 +50,8 @@ class ErrorMessageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
 
     /**
      * unset error
+     *
+     * Details about a single error.
      *
      * @param int|string $index
      * @return void
@@ -56,6 +64,8 @@ class ErrorMessageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Gets as error
      *
+     * Details about a single error.
+     *
      * @return \Nogrod\eBaySDK\BusinessPoliciesManagement\ErrorDataType[]
      */
     public function getError()
@@ -65,6 +75,8 @@ class ErrorMessageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
 
     /**
      * Sets a new error
+     *
+     * Details about a single error.
      *
      * @param \Nogrod\eBaySDK\BusinessPoliciesManagement\ErrorDataType[] $error
      * @return self

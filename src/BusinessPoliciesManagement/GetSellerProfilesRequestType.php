@@ -7,13 +7,15 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing GetSellerProfilesRequestType
  *
- * Use this call to obtain all the business policies that a seller has created.
+ * This call is used to retrieve one or more business policies for a seller. Specific business policies can be retrieved by passing in <b>profileId</b> or <b>profileName</b> values, or all policies of a certain type (payment, return, or shipping) can be retrieved.
  * XSD Type: GetSellerProfilesRequest
  */
 class GetSellerProfilesRequestType extends BaseRequestType
 {
     /**
-     * The types of business policies that a seller can create. Valid values are PAYMENT, RETURN_POLICY, and SHIPPING. A seller can have multiple policies for each type of business policy. Pass any one of the valid values into a getSellerProfiles request.
+     * The seller passes in one or more <b>profileType</b> enumeration values to retrieve all business policies of that type. Valid values for this field are PAYMENT, RETURN_POLICY, and SHIPPING.
+     *  <br><br>
+     *  Boolean OR logic is applied when using any combination of the <b>profileType</b>, <b>profileID</b>, and <b>profileName</b> filters in a <b>getSellerProfiles</b> request, so all policies that match any of the supplied filters are retrieved in the response.
      *
      * @var string[] $profileType
      */
@@ -22,7 +24,9 @@ class GetSellerProfilesRequestType extends BaseRequestType
     ];
 
     /**
-     * Unique identifier for a seller's profile. Pass this value into a getSellerProfiles request for displaying a specific seller's profile. This field is optional if you have passed a profileName in a getSellerProfiles request.
+     * Unique identifier for a seller's business policy. Pass a valid value into this field to retrieve a specific business policy. This field can be repeated multiple times to retrieve multiple policies.
+     *  <br><br>
+     *  Boolean OR logic is applied when using any combination of the <b>profileType</b>, <b>profileID</b>, and <b>profileName</b> filters in a <b>getSellerProfiles</b> request, so all business policies that match any of the supplied filters are retrieved in the response.
      *
      * @var int[] $profileId
      */
@@ -31,9 +35,9 @@ class GetSellerProfilesRequestType extends BaseRequestType
     ];
 
     /**
-     * Unique name for a seller's profile. Pass this value into a getSellerProfiles request
-     *  for displaying a specific seller's profile. This field is optional if you have passed profileId in a getSellerProfiles request.
-     *  Max length: 50 characters.
+     * Unique name for a seller's business policy. Pass a valid value into this field to retrieve a specific business policy. This field can be repeated multiple times to retrieve multiple policies.
+     *  <br><br>
+     *  Boolean OR logic is applied when using any combination of the <b>profileType</b>, <b>profileID</b>, and <b>profileName</b> filters in a <b>getSellerProfiles</b> request, so all business policies that match any of the supplied filters are retrieved in the response.
      *
      * @var string[] $profileName
      */
@@ -42,10 +46,12 @@ class GetSellerProfilesRequestType extends BaseRequestType
     ];
 
     /**
-     * This optional flag determines whether to return more detailed information about a seller's profile. If set to true
-     *  (which is the default), the call returns details from the paymentinfo, returnPolicyInfo, and
-     *  shippingPolicyInfo containers. If set to false, the call does not return any details from the paymentinfo, returnPolicyInfo, and
-     *  shippingPolicyInfo containers.
+     * This optional flag determines whether or not detailed information is retrieved for each business policy in the response. If included and set to 'true' or not included (since 'true' is the default), all applicable containers and fields for each business policy are returned in the response. If included and set to 'false', the following containers are not returned in the response:
+     *  <ul>
+     *  <li><b>paymentInfo</b> (for all retrieved payment policies)</li>
+     *  <li><b>returnPolicyInfo</b> (for all retrieved return policies)</li>
+     *  <li><b>shippingPolicyInfo</b> (for all retrieved shipping policies)</li>
+     *  lt;/ul>
      *
      * @var bool $includeDetails
      */
@@ -54,7 +60,9 @@ class GetSellerProfilesRequestType extends BaseRequestType
     /**
      * Adds as profileType
      *
-     * The types of business policies that a seller can create. Valid values are PAYMENT, RETURN_POLICY, and SHIPPING. A seller can have multiple policies for each type of business policy. Pass any one of the valid values into a getSellerProfiles request.
+     * The seller passes in one or more <b>profileType</b> enumeration values to retrieve all business policies of that type. Valid values for this field are PAYMENT, RETURN_POLICY, and SHIPPING.
+     *  <br><br>
+     *  Boolean OR logic is applied when using any combination of the <b>profileType</b>, <b>profileID</b>, and <b>profileName</b> filters in a <b>getSellerProfiles</b> request, so all policies that match any of the supplied filters are retrieved in the response.
      *
      * @return self
      * @param string $profileType
@@ -68,7 +76,9 @@ class GetSellerProfilesRequestType extends BaseRequestType
     /**
      * isset profileType
      *
-     * The types of business policies that a seller can create. Valid values are PAYMENT, RETURN_POLICY, and SHIPPING. A seller can have multiple policies for each type of business policy. Pass any one of the valid values into a getSellerProfiles request.
+     * The seller passes in one or more <b>profileType</b> enumeration values to retrieve all business policies of that type. Valid values for this field are PAYMENT, RETURN_POLICY, and SHIPPING.
+     *  <br><br>
+     *  Boolean OR logic is applied when using any combination of the <b>profileType</b>, <b>profileID</b>, and <b>profileName</b> filters in a <b>getSellerProfiles</b> request, so all policies that match any of the supplied filters are retrieved in the response.
      *
      * @param int|string $index
      * @return bool
@@ -81,7 +91,9 @@ class GetSellerProfilesRequestType extends BaseRequestType
     /**
      * unset profileType
      *
-     * The types of business policies that a seller can create. Valid values are PAYMENT, RETURN_POLICY, and SHIPPING. A seller can have multiple policies for each type of business policy. Pass any one of the valid values into a getSellerProfiles request.
+     * The seller passes in one or more <b>profileType</b> enumeration values to retrieve all business policies of that type. Valid values for this field are PAYMENT, RETURN_POLICY, and SHIPPING.
+     *  <br><br>
+     *  Boolean OR logic is applied when using any combination of the <b>profileType</b>, <b>profileID</b>, and <b>profileName</b> filters in a <b>getSellerProfiles</b> request, so all policies that match any of the supplied filters are retrieved in the response.
      *
      * @param int|string $index
      * @return void
@@ -94,7 +106,9 @@ class GetSellerProfilesRequestType extends BaseRequestType
     /**
      * Gets as profileType
      *
-     * The types of business policies that a seller can create. Valid values are PAYMENT, RETURN_POLICY, and SHIPPING. A seller can have multiple policies for each type of business policy. Pass any one of the valid values into a getSellerProfiles request.
+     * The seller passes in one or more <b>profileType</b> enumeration values to retrieve all business policies of that type. Valid values for this field are PAYMENT, RETURN_POLICY, and SHIPPING.
+     *  <br><br>
+     *  Boolean OR logic is applied when using any combination of the <b>profileType</b>, <b>profileID</b>, and <b>profileName</b> filters in a <b>getSellerProfiles</b> request, so all policies that match any of the supplied filters are retrieved in the response.
      *
      * @return string[]
      */
@@ -106,7 +120,9 @@ class GetSellerProfilesRequestType extends BaseRequestType
     /**
      * Sets a new profileType
      *
-     * The types of business policies that a seller can create. Valid values are PAYMENT, RETURN_POLICY, and SHIPPING. A seller can have multiple policies for each type of business policy. Pass any one of the valid values into a getSellerProfiles request.
+     * The seller passes in one or more <b>profileType</b> enumeration values to retrieve all business policies of that type. Valid values for this field are PAYMENT, RETURN_POLICY, and SHIPPING.
+     *  <br><br>
+     *  Boolean OR logic is applied when using any combination of the <b>profileType</b>, <b>profileID</b>, and <b>profileName</b> filters in a <b>getSellerProfiles</b> request, so all policies that match any of the supplied filters are retrieved in the response.
      *
      * @param string $profileType
      * @return self
@@ -120,7 +136,9 @@ class GetSellerProfilesRequestType extends BaseRequestType
     /**
      * Adds as profileId
      *
-     * Unique identifier for a seller's profile. Pass this value into a getSellerProfiles request for displaying a specific seller's profile. This field is optional if you have passed a profileName in a getSellerProfiles request.
+     * Unique identifier for a seller's business policy. Pass a valid value into this field to retrieve a specific business policy. This field can be repeated multiple times to retrieve multiple policies.
+     *  <br><br>
+     *  Boolean OR logic is applied when using any combination of the <b>profileType</b>, <b>profileID</b>, and <b>profileName</b> filters in a <b>getSellerProfiles</b> request, so all business policies that match any of the supplied filters are retrieved in the response.
      *
      * @return self
      * @param int $profileId
@@ -134,7 +152,9 @@ class GetSellerProfilesRequestType extends BaseRequestType
     /**
      * isset profileId
      *
-     * Unique identifier for a seller's profile. Pass this value into a getSellerProfiles request for displaying a specific seller's profile. This field is optional if you have passed a profileName in a getSellerProfiles request.
+     * Unique identifier for a seller's business policy. Pass a valid value into this field to retrieve a specific business policy. This field can be repeated multiple times to retrieve multiple policies.
+     *  <br><br>
+     *  Boolean OR logic is applied when using any combination of the <b>profileType</b>, <b>profileID</b>, and <b>profileName</b> filters in a <b>getSellerProfiles</b> request, so all business policies that match any of the supplied filters are retrieved in the response.
      *
      * @param int|string $index
      * @return bool
@@ -147,7 +167,9 @@ class GetSellerProfilesRequestType extends BaseRequestType
     /**
      * unset profileId
      *
-     * Unique identifier for a seller's profile. Pass this value into a getSellerProfiles request for displaying a specific seller's profile. This field is optional if you have passed a profileName in a getSellerProfiles request.
+     * Unique identifier for a seller's business policy. Pass a valid value into this field to retrieve a specific business policy. This field can be repeated multiple times to retrieve multiple policies.
+     *  <br><br>
+     *  Boolean OR logic is applied when using any combination of the <b>profileType</b>, <b>profileID</b>, and <b>profileName</b> filters in a <b>getSellerProfiles</b> request, so all business policies that match any of the supplied filters are retrieved in the response.
      *
      * @param int|string $index
      * @return void
@@ -160,7 +182,9 @@ class GetSellerProfilesRequestType extends BaseRequestType
     /**
      * Gets as profileId
      *
-     * Unique identifier for a seller's profile. Pass this value into a getSellerProfiles request for displaying a specific seller's profile. This field is optional if you have passed a profileName in a getSellerProfiles request.
+     * Unique identifier for a seller's business policy. Pass a valid value into this field to retrieve a specific business policy. This field can be repeated multiple times to retrieve multiple policies.
+     *  <br><br>
+     *  Boolean OR logic is applied when using any combination of the <b>profileType</b>, <b>profileID</b>, and <b>profileName</b> filters in a <b>getSellerProfiles</b> request, so all business policies that match any of the supplied filters are retrieved in the response.
      *
      * @return int[]
      */
@@ -172,7 +196,9 @@ class GetSellerProfilesRequestType extends BaseRequestType
     /**
      * Sets a new profileId
      *
-     * Unique identifier for a seller's profile. Pass this value into a getSellerProfiles request for displaying a specific seller's profile. This field is optional if you have passed a profileName in a getSellerProfiles request.
+     * Unique identifier for a seller's business policy. Pass a valid value into this field to retrieve a specific business policy. This field can be repeated multiple times to retrieve multiple policies.
+     *  <br><br>
+     *  Boolean OR logic is applied when using any combination of the <b>profileType</b>, <b>profileID</b>, and <b>profileName</b> filters in a <b>getSellerProfiles</b> request, so all business policies that match any of the supplied filters are retrieved in the response.
      *
      * @param int[] $profileId
      * @return self
@@ -186,9 +212,9 @@ class GetSellerProfilesRequestType extends BaseRequestType
     /**
      * Adds as profileName
      *
-     * Unique name for a seller's profile. Pass this value into a getSellerProfiles request
-     *  for displaying a specific seller's profile. This field is optional if you have passed profileId in a getSellerProfiles request.
-     *  Max length: 50 characters.
+     * Unique name for a seller's business policy. Pass a valid value into this field to retrieve a specific business policy. This field can be repeated multiple times to retrieve multiple policies.
+     *  <br><br>
+     *  Boolean OR logic is applied when using any combination of the <b>profileType</b>, <b>profileID</b>, and <b>profileName</b> filters in a <b>getSellerProfiles</b> request, so all business policies that match any of the supplied filters are retrieved in the response.
      *
      * @return self
      * @param string $profileName
@@ -202,9 +228,9 @@ class GetSellerProfilesRequestType extends BaseRequestType
     /**
      * isset profileName
      *
-     * Unique name for a seller's profile. Pass this value into a getSellerProfiles request
-     *  for displaying a specific seller's profile. This field is optional if you have passed profileId in a getSellerProfiles request.
-     *  Max length: 50 characters.
+     * Unique name for a seller's business policy. Pass a valid value into this field to retrieve a specific business policy. This field can be repeated multiple times to retrieve multiple policies.
+     *  <br><br>
+     *  Boolean OR logic is applied when using any combination of the <b>profileType</b>, <b>profileID</b>, and <b>profileName</b> filters in a <b>getSellerProfiles</b> request, so all business policies that match any of the supplied filters are retrieved in the response.
      *
      * @param int|string $index
      * @return bool
@@ -217,9 +243,9 @@ class GetSellerProfilesRequestType extends BaseRequestType
     /**
      * unset profileName
      *
-     * Unique name for a seller's profile. Pass this value into a getSellerProfiles request
-     *  for displaying a specific seller's profile. This field is optional if you have passed profileId in a getSellerProfiles request.
-     *  Max length: 50 characters.
+     * Unique name for a seller's business policy. Pass a valid value into this field to retrieve a specific business policy. This field can be repeated multiple times to retrieve multiple policies.
+     *  <br><br>
+     *  Boolean OR logic is applied when using any combination of the <b>profileType</b>, <b>profileID</b>, and <b>profileName</b> filters in a <b>getSellerProfiles</b> request, so all business policies that match any of the supplied filters are retrieved in the response.
      *
      * @param int|string $index
      * @return void
@@ -232,9 +258,9 @@ class GetSellerProfilesRequestType extends BaseRequestType
     /**
      * Gets as profileName
      *
-     * Unique name for a seller's profile. Pass this value into a getSellerProfiles request
-     *  for displaying a specific seller's profile. This field is optional if you have passed profileId in a getSellerProfiles request.
-     *  Max length: 50 characters.
+     * Unique name for a seller's business policy. Pass a valid value into this field to retrieve a specific business policy. This field can be repeated multiple times to retrieve multiple policies.
+     *  <br><br>
+     *  Boolean OR logic is applied when using any combination of the <b>profileType</b>, <b>profileID</b>, and <b>profileName</b> filters in a <b>getSellerProfiles</b> request, so all business policies that match any of the supplied filters are retrieved in the response.
      *
      * @return string[]
      */
@@ -246,9 +272,9 @@ class GetSellerProfilesRequestType extends BaseRequestType
     /**
      * Sets a new profileName
      *
-     * Unique name for a seller's profile. Pass this value into a getSellerProfiles request
-     *  for displaying a specific seller's profile. This field is optional if you have passed profileId in a getSellerProfiles request.
-     *  Max length: 50 characters.
+     * Unique name for a seller's business policy. Pass a valid value into this field to retrieve a specific business policy. This field can be repeated multiple times to retrieve multiple policies.
+     *  <br><br>
+     *  Boolean OR logic is applied when using any combination of the <b>profileType</b>, <b>profileID</b>, and <b>profileName</b> filters in a <b>getSellerProfiles</b> request, so all business policies that match any of the supplied filters are retrieved in the response.
      *
      * @param string[] $profileName
      * @return self
@@ -262,10 +288,12 @@ class GetSellerProfilesRequestType extends BaseRequestType
     /**
      * Gets as includeDetails
      *
-     * This optional flag determines whether to return more detailed information about a seller's profile. If set to true
-     *  (which is the default), the call returns details from the paymentinfo, returnPolicyInfo, and
-     *  shippingPolicyInfo containers. If set to false, the call does not return any details from the paymentinfo, returnPolicyInfo, and
-     *  shippingPolicyInfo containers.
+     * This optional flag determines whether or not detailed information is retrieved for each business policy in the response. If included and set to 'true' or not included (since 'true' is the default), all applicable containers and fields for each business policy are returned in the response. If included and set to 'false', the following containers are not returned in the response:
+     *  <ul>
+     *  <li><b>paymentInfo</b> (for all retrieved payment policies)</li>
+     *  <li><b>returnPolicyInfo</b> (for all retrieved return policies)</li>
+     *  <li><b>shippingPolicyInfo</b> (for all retrieved shipping policies)</li>
+     *  lt;/ul>
      *
      * @return bool
      */
@@ -277,10 +305,12 @@ class GetSellerProfilesRequestType extends BaseRequestType
     /**
      * Sets a new includeDetails
      *
-     * This optional flag determines whether to return more detailed information about a seller's profile. If set to true
-     *  (which is the default), the call returns details from the paymentinfo, returnPolicyInfo, and
-     *  shippingPolicyInfo containers. If set to false, the call does not return any details from the paymentinfo, returnPolicyInfo, and
-     *  shippingPolicyInfo containers.
+     * This optional flag determines whether or not detailed information is retrieved for each business policy in the response. If included and set to 'true' or not included (since 'true' is the default), all applicable containers and fields for each business policy are returned in the response. If included and set to 'false', the following containers are not returned in the response:
+     *  <ul>
+     *  <li><b>paymentInfo</b> (for all retrieved payment policies)</li>
+     *  <li><b>returnPolicyInfo</b> (for all retrieved return policies)</li>
+     *  <li><b>shippingPolicyInfo</b> (for all retrieved shipping policies)</li>
+     *  lt;/ul>
      *
      * @param bool $includeDetails
      * @return self

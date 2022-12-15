@@ -15,7 +15,7 @@ class Version
 
     public const SHOPPING = '1247';
 
-    public const TRADING = '1249';
+    public const TRADING = '1285';
 
-    public const BUSINESSPOLICIESMANAGEMENT = '1.1.0';
+    public const BUSINESSPOLICIESMANAGEMENT = '1.0.0';
 }

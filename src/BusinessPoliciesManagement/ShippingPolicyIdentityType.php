@@ -7,23 +7,29 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing ShippingPolicyIdentityType
  *
- * Identity for shipping policy.
+ * This type is for internal use.
  * XSD Type: ShippingPolicyIdentity
  */
 class ShippingPolicyIdentityType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
     /**
+     * This field is for future use.
+     *
      * @var int $shippingPolicyId
      */
     private $shippingPolicyId = null;
 
     /**
+     * This field is for internal use.
+     *
      * @var int $shippingPolicyVersionId
      */
     private $shippingPolicyVersionId = null;
 
     /**
      * Gets as shippingPolicyId
+     *
+     * This field is for future use.
      *
      * @return int
      */
@@ -34,6 +40,8 @@ class ShippingPolicyIdentityType implements \Sabre\Xml\XmlSerializable, \Sabre\X
 
     /**
      * Sets a new shippingPolicyId
+     *
+     * This field is for future use.
      *
      * @param int $shippingPolicyId
      * @return self
@@ -47,6 +55,8 @@ class ShippingPolicyIdentityType implements \Sabre\Xml\XmlSerializable, \Sabre\X
     /**
      * Gets as shippingPolicyVersionId
      *
+     * This field is for internal use.
+     *
      * @return int
      */
     public function getShippingPolicyVersionId()
@@ -56,6 +66,8 @@ class ShippingPolicyIdentityType implements \Sabre\Xml\XmlSerializable, \Sabre\X
 
     /**
      * Sets a new shippingPolicyVersionId
+     *
+     * This field is for internal use.
      *
      * @param int $shippingPolicyVersionId
      * @return self

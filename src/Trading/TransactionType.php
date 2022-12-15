@@ -351,7 +351,7 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     private $sellerContactBuyerByEmail = null;
 
     /**
-     * This field is no longer applicable, as eBay now controls all electronic payment methods and handles the payment from the buyer.
+     * This field is deprecated.
      *
      * @var string $payPalEmailAddress
      */
@@ -501,7 +501,7 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     private $codiceFiscale = null;
 
     /**
-     * If <strong>IsMultilegShipping</strong> is <code>true</code>, the order line item will not be shipped directly to the buyer. Instead, the item may be shipped to eBay's Global Shipping Program (GSP) partner who will handle the international leg of shipment, or the item may be shipped to eBay's Authenticity Guarantee service partner if the item is subject to the Authenticity Guarantee service program. In both cases, the partner's shipping address can be found in the <strong>MultiLegShippingDetails.SellerShipmentToLogisticsProvider.ShipToAddress</strong> container.
+     * Order line items requiring multiple shipping legs include items being shipped through the Global Shipping Program or through eBay International Shipping, as well as order line items subject to/eligible for the Authenticity Guarantee program. For both international shipping options, the address of the shipping logistics provider is shown in the <b>MultiLegShippingDetails.SellerShipmentToLogisticsProvider.ShipToAddress</b> container. Similarly, for Authenticity Guarantee orders, the authentication partner's shipping address is shown in the same container.
      *  <br><br>
      *  If an order line item is subject to the Authenticity Guarantee service, the <b>Transaction.Program</b> container will be returned.
      *
@@ -510,9 +510,8 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     private $isMultiLegShipping = null;
 
     /**
-     * This container consists of details about the domestic leg of a Global Shipping Program (GSP) shipment or shipment to eBay's Authenticity Guarantee service partner. With GSP, the shipment has a domestic leg and an international leg. In the domestic leg, the seller ships the item to eBay's shipping partner. In the Authenticity Guarantee service, the seller ships the item to the authentication partner, and if the item passes an authentication inspection, the authentication partner ships it directly to the buyer.
-     *  <br/><br/>
-     *  This container is only returned if the order has one or more order line items that require shipping through GSP or shipment to an Authenticity Guarantee service partner. It is not returned if <strong>IsMultilegShipping</strong> is <code>false</code>.
+     * This container consists of details related to the first leg of an order requiring multiple shipping legs. Types of orders that require multiple shipping legs include international orders going through the Global Shipping Program or through eBay International Shipping, as well as orders subject to/eligible for the Authenticity Guarantee program.</br/></br/>If the item is subject to the Authenticity Guarantee service program, the seller ships the item to the authentication partner, and if the item passes an authentication inspection, the authentication partner ships it directly to the buyer.<br/><br/>
+     *  This container is only returned if the order has one or more order line items requiring multiple shipping legs.
      *
      * @var \Nogrod\eBaySDK\Trading\MultiLegShippingDetailsType $multiLegShippingDetails
      */
@@ -526,14 +525,15 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     private $invoiceSentTime = null;
 
     /**
-     * Container consisting of details related to the type and status of an Unpaid Item case. This container is only returned if there is an open (or recently closed) Unpaid Item case associated with the order line item.
+     * <span class="tablenote"><strong>Note:</strong> This container is deprecated (Unpaid Item cases are no longer supported). </span><br>
+     *  Container consisting of details related to the type and status of an Unpaid Item case. This container is only returned if there is an open (or recently closed) Unpaid Item case associated with the order line item.
      *
      * @var \Nogrod\eBaySDK\Trading\UnpaidItemType $unpaidItem
      */
     private $unpaidItem = null;
 
     /**
-     * This flag indicates whether or not the order line item is an intangible good, such as an MP3 track or a mobile phone ringtone. Intangible items are not eligible for PayPal's Seller Protection program, so the seller will not be able to open an Unpaid Item case against the buyer.
+     * This flag indicates whether or not the order line item is an intangible good, such as an MP3 track or a mobile phone ringtone.
      *
      * @var bool $intangibleItem
      */
@@ -1909,7 +1909,7 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     /**
      * Gets as payPalEmailAddress
      *
-     * This field is no longer applicable, as eBay now controls all electronic payment methods and handles the payment from the buyer.
+     * This field is deprecated.
      *
      * @return string
      */
@@ -1921,7 +1921,7 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     /**
      * Sets a new payPalEmailAddress
      *
-     * This field is no longer applicable, as eBay now controls all electronic payment methods and handles the payment from the buyer.
+     * This field is deprecated.
      *
      * @param string $payPalEmailAddress
      * @return self
@@ -2413,7 +2413,7 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     /**
      * Gets as isMultiLegShipping
      *
-     * If <strong>IsMultilegShipping</strong> is <code>true</code>, the order line item will not be shipped directly to the buyer. Instead, the item may be shipped to eBay's Global Shipping Program (GSP) partner who will handle the international leg of shipment, or the item may be shipped to eBay's Authenticity Guarantee service partner if the item is subject to the Authenticity Guarantee service program. In both cases, the partner's shipping address can be found in the <strong>MultiLegShippingDetails.SellerShipmentToLogisticsProvider.ShipToAddress</strong> container.
+     * Order line items requiring multiple shipping legs include items being shipped through the Global Shipping Program or through eBay International Shipping, as well as order line items subject to/eligible for the Authenticity Guarantee program. For both international shipping options, the address of the shipping logistics provider is shown in the <b>MultiLegShippingDetails.SellerShipmentToLogisticsProvider.ShipToAddress</b> container. Similarly, for Authenticity Guarantee orders, the authentication partner's shipping address is shown in the same container.
      *  <br><br>
      *  If an order line item is subject to the Authenticity Guarantee service, the <b>Transaction.Program</b> container will be returned.
      *
@@ -2427,7 +2427,7 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     /**
      * Sets a new isMultiLegShipping
      *
-     * If <strong>IsMultilegShipping</strong> is <code>true</code>, the order line item will not be shipped directly to the buyer. Instead, the item may be shipped to eBay's Global Shipping Program (GSP) partner who will handle the international leg of shipment, or the item may be shipped to eBay's Authenticity Guarantee service partner if the item is subject to the Authenticity Guarantee service program. In both cases, the partner's shipping address can be found in the <strong>MultiLegShippingDetails.SellerShipmentToLogisticsProvider.ShipToAddress</strong> container.
+     * Order line items requiring multiple shipping legs include items being shipped through the Global Shipping Program or through eBay International Shipping, as well as order line items subject to/eligible for the Authenticity Guarantee program. For both international shipping options, the address of the shipping logistics provider is shown in the <b>MultiLegShippingDetails.SellerShipmentToLogisticsProvider.ShipToAddress</b> container. Similarly, for Authenticity Guarantee orders, the authentication partner's shipping address is shown in the same container.
      *  <br><br>
      *  If an order line item is subject to the Authenticity Guarantee service, the <b>Transaction.Program</b> container will be returned.
      *
@@ -2443,9 +2443,8 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     /**
      * Gets as multiLegShippingDetails
      *
-     * This container consists of details about the domestic leg of a Global Shipping Program (GSP) shipment or shipment to eBay's Authenticity Guarantee service partner. With GSP, the shipment has a domestic leg and an international leg. In the domestic leg, the seller ships the item to eBay's shipping partner. In the Authenticity Guarantee service, the seller ships the item to the authentication partner, and if the item passes an authentication inspection, the authentication partner ships it directly to the buyer.
-     *  <br/><br/>
-     *  This container is only returned if the order has one or more order line items that require shipping through GSP or shipment to an Authenticity Guarantee service partner. It is not returned if <strong>IsMultilegShipping</strong> is <code>false</code>.
+     * This container consists of details related to the first leg of an order requiring multiple shipping legs. Types of orders that require multiple shipping legs include international orders going through the Global Shipping Program or through eBay International Shipping, as well as orders subject to/eligible for the Authenticity Guarantee program.</br/></br/>If the item is subject to the Authenticity Guarantee service program, the seller ships the item to the authentication partner, and if the item passes an authentication inspection, the authentication partner ships it directly to the buyer.<br/><br/>
+     *  This container is only returned if the order has one or more order line items requiring multiple shipping legs.
      *
      * @return \Nogrod\eBaySDK\Trading\MultiLegShippingDetailsType
      */
@@ -2457,9 +2456,8 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     /**
      * Sets a new multiLegShippingDetails
      *
-     * This container consists of details about the domestic leg of a Global Shipping Program (GSP) shipment or shipment to eBay's Authenticity Guarantee service partner. With GSP, the shipment has a domestic leg and an international leg. In the domestic leg, the seller ships the item to eBay's shipping partner. In the Authenticity Guarantee service, the seller ships the item to the authentication partner, and if the item passes an authentication inspection, the authentication partner ships it directly to the buyer.
-     *  <br/><br/>
-     *  This container is only returned if the order has one or more order line items that require shipping through GSP or shipment to an Authenticity Guarantee service partner. It is not returned if <strong>IsMultilegShipping</strong> is <code>false</code>.
+     * This container consists of details related to the first leg of an order requiring multiple shipping legs. Types of orders that require multiple shipping legs include international orders going through the Global Shipping Program or through eBay International Shipping, as well as orders subject to/eligible for the Authenticity Guarantee program.</br/></br/>If the item is subject to the Authenticity Guarantee service program, the seller ships the item to the authentication partner, and if the item passes an authentication inspection, the authentication partner ships it directly to the buyer.<br/><br/>
+     *  This container is only returned if the order has one or more order line items requiring multiple shipping legs.
      *
      * @param \Nogrod\eBaySDK\Trading\MultiLegShippingDetailsType $multiLegShippingDetails
      * @return self
@@ -2499,7 +2497,8 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     /**
      * Gets as unpaidItem
      *
-     * Container consisting of details related to the type and status of an Unpaid Item case. This container is only returned if there is an open (or recently closed) Unpaid Item case associated with the order line item.
+     * <span class="tablenote"><strong>Note:</strong> This container is deprecated (Unpaid Item cases are no longer supported). </span><br>
+     *  Container consisting of details related to the type and status of an Unpaid Item case. This container is only returned if there is an open (or recently closed) Unpaid Item case associated with the order line item.
      *
      * @return \Nogrod\eBaySDK\Trading\UnpaidItemType
      */
@@ -2511,7 +2510,8 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     /**
      * Sets a new unpaidItem
      *
-     * Container consisting of details related to the type and status of an Unpaid Item case. This container is only returned if there is an open (or recently closed) Unpaid Item case associated with the order line item.
+     * <span class="tablenote"><strong>Note:</strong> This container is deprecated (Unpaid Item cases are no longer supported). </span><br>
+     *  Container consisting of details related to the type and status of an Unpaid Item case. This container is only returned if there is an open (or recently closed) Unpaid Item case associated with the order line item.
      *
      * @param \Nogrod\eBaySDK\Trading\UnpaidItemType $unpaidItem
      * @return self
@@ -2525,7 +2525,7 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     /**
      * Gets as intangibleItem
      *
-     * This flag indicates whether or not the order line item is an intangible good, such as an MP3 track or a mobile phone ringtone. Intangible items are not eligible for PayPal's Seller Protection program, so the seller will not be able to open an Unpaid Item case against the buyer.
+     * This flag indicates whether or not the order line item is an intangible good, such as an MP3 track or a mobile phone ringtone.
      *
      * @return bool
      */
@@ -2537,7 +2537,7 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     /**
      * Sets a new intangibleItem
      *
-     * This flag indicates whether or not the order line item is an intangible good, such as an MP3 track or a mobile phone ringtone. Intangible items are not eligible for PayPal's Seller Protection program, so the seller will not be able to open an Unpaid Item case against the buyer.
+     * This flag indicates whether or not the order line item is an intangible good, such as an MP3 track or a mobile phone ringtone.
      *
      * @param bool $intangibleItem
      * @return self

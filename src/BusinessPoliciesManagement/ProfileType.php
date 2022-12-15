@@ -5,43 +5,57 @@ namespace Nogrod\eBaySDK\BusinessPoliciesManagement;
 /**
  * Class representing ProfileType
  *
- *
+ * Enumerated type that defines the business policy types.
  * XSD Type: ProfileType
  */
 class ProfileType
 {
     /**
      * Constant for 'PAYMENT' value.
+     *
+     * This value indicates the business policy is a payment policy.
      */
     public const VAL_PAYMENT = 'PAYMENT';
 
     /**
      * Constant for 'RETURN_POLICY' value.
+     *
+     * This value indicates the business policy is a return policy.
      */
     public const VAL_RETURN__POLICY = 'RETURN_POLICY';
 
     /**
      * Constant for 'SHIPPING' value.
+     *
+     * This value indicates the business policy is a shipping policy.
      */
     public const VAL_SHIPPING = 'SHIPPING';
 
     /**
      * Constant for 'SHIPPING_RATE' value.
+     *
+     * This value is for future use.
      */
     public const VAL_SHIPPING__RATE = 'SHIPPING_RATE';
 
     /**
      * Constant for 'SHIPPING_EXCLUSION' value.
+     *
+     * This value is for future use.
      */
     public const VAL_SHIPPING__EXCLUSION = 'SHIPPING_EXCLUSION';
 
     /**
      * Constant for 'SHIPPING_DISCOUNT' value.
+     *
+     * This value is for future use.
      */
     public const VAL_SHIPPING__DISCOUNT = 'SHIPPING_DISCOUNT';
 
     /**
      * Constant for 'BUYER_REQUIREMENTS' value.
+     *
+     * This value is for future use.
      */
     public const VAL_BUYER__REQUIREMENTS = 'BUYER_REQUIREMENTS';
 

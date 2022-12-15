@@ -5,11 +5,7 @@ namespace Nogrod\eBaySDK\Trading;
 /**
  * Class representing ValueTypeCodeType
  *
- * This enumeration type is used by multiple Trading API calls, including <b>GetCategorySpecifics</b> call and order management calls (like <b>GetOrders</b>).
- *  <br/><br/>
- *  The values used by <b>GetCategorySpecifics</b> is the data type of the recommended Item Specific called out in the <b>NameRecommendation.Name</b> field.
- *  <br/><br/>
- *  The values used by <b>GetOrders</b> (and other order management calls) is the type of tax ID used in the <strong>BuyerTaxIdentifier</strong> container.
+ * This enumeration type is used by the order management calls (like <b>GetOrders</b>), and indicates the type of tax ID used in the <strong>BuyerTaxIdentifier</strong> container..
  * XSD Type: ValueTypeCodeType
  */
 class ValueTypeCodeType
@@ -17,61 +13,49 @@ class ValueTypeCodeType
     /**
      * Constant for 'Decimal' value.
      *
-     * This value indicates that the recommended Item Specific should have numeric
-     * values with a decimal point, like 3.14159. Item Specific values cannot be
-     * expressed as float or double types.
+     * This value is deprecated.
      */
     public const VAL_DECIMAL = 'Decimal';
 
     /**
      * Constant for 'Numeric' value.
      *
-     * This value indicates that the recommended Item Specific should have integer
-     * values (no decimal point), like 3. Item Specific values cannot be expressed as
-     * float or double types.
+     * This value is deprecated.
      */
     public const VAL_NUMERIC = 'Numeric';
 
     /**
      * Constant for 'Text' value.
      *
-     * This value indicates that the value(s) of the recommended Item Specific should
-     * be free-form text. This is the default value. The maximum length of a text-based
-     * Item Specific is general 65 characters, but instance aspects (like 'Bundle
-     * Description' or 'California Prop 65 Warning') are allowed longer lengths.
+     * This value is deprecated.
      */
     public const VAL_TEXT = 'Text';
 
     /**
      * Constant for 'ISBN' value.
      *
-     * This value indicates that the recommended Item Specific is an International
-     * Standard Book Number (ISBN) value. ISBNs can contain either 10 or 13 characters.
+     * This value is deprecated.
      */
     public const VAL_ISBN = 'ISBN';
 
     /**
      * Constant for 'UPC' value.
      *
-     * This value indicates that the recommended Item Specific is a Universal Product
-     * Code (UPC) value. UPCs contain 12 characters.
+     * This value is deprecated.
      */
     public const VAL_UPC = 'UPC';
 
     /**
      * Constant for 'EAN' value.
      *
-     * This value indicates that the recommended Item Specific is a European Article
-     * Number (EAN). EANs contain 13 characters.
+     * This value is deprecated.
      */
     public const VAL_EAN = 'EAN';
 
     /**
      * Constant for 'Date' value.
      *
-     * This value indicates that the value(s) of the recommended Item Specific is a
-     * date value, which will should use the date format specified in the
-     * <b>ValueFormat</b> field.
+     * This value is deprecated.
      */
     public const VAL_DATE = 'Date';
 

@@ -13,17 +13,16 @@ use Nogrod\XMLClientRuntime\Func;
  *  <b>GetUserPreferences</b> (if the <b>ShowUnpaidItemAssistancePreference</b> flag is included and
  *  set to true in the request).
  *  <br/><br/>
- *  See the <a href="http://pages.ebay.com/help/sell/unpaid-item-assistant.html">Using Unpaid Item Assistant</a> Help topic for more information about setting up and using the Unpaid Item Assistant feature.
+ *  See the <a href="https://www.ebay.com/help/selling/getting-paid/resolving-unpaid-items?id=4137">Resolving unpaid items with buyers</a> Help topic for more information about setting up and using the Unpaid Item preferences feature.
  * XSD Type: UnpaidItemAssistancePreferencesType
  */
 class UnpaidItemAssistancePreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
     /**
-     * This value indicates the number of days that should elapse before the Unpaid
-     *  Item Assistant mechanism opens an Unpaid Item case on behalf of the seller.
-     *  <b>Valid values are</b>: 4, 8, 16, 24, and 32 (days).
+     * This value indicates the number of days that should elapse before an unpaid order is cancelled on behalf of the seller.
+     *  <b>Valid values are</b>: 4, 7, 11, 19, 27, and 30 (days).
      *  <br/><br/>
-     *  This field is ignored if the <b>OptInStatus</b> flag is included and set to <code>false</code> in the request, or if the seller is not currently opted into the Unpaid Item Assistant feature in Unpaid Item Assistant Preferences on My eBay.
+     *  This field is ignored if the <b>OptInStatus</b> flag is included and set to <code>false</code> in the request, or if the seller is not currently opted into the Unpaid Item preferences feature on My eBay.
      *  <br/>
      *
      * @var int $delayBeforeOpeningDispute
@@ -31,50 +30,44 @@ class UnpaidItemAssistancePreferencesType implements \Sabre\Xml\XmlSerializable,
     private $delayBeforeOpeningDispute = null;
 
     /**
-     * Flag to indicate whether or not the Unpaid Item Assistant mechanism is turned on for the seller. Through the Unpaid Item Assistant mechanism, eBay can automatically file Unpaid Item cases on behalf of the seller.
-     *  <br/><br/>
-     *  The Unpaid Item Assistant feature also has options to automatically relist disputed items, to automatically request a PayPal Giving Fund donation refund (for eBay for Charity listings only), or to create an 'Exclusion list' of buyers who are not subject to the automatic filing of an Unpaid Item case.
+     * Flag to indicate whether or not the seller has enabled Unpaid Item preferences. Unpaid Item preferences must be enabled for any of the Unpaid Item preferences to have an effect.
      *
      * @var bool $optInStatus
      */
     private $optInStatus = null;
 
     /**
-     * Flag to indicate whether or not the seller wants eBay to automatically relist
-     *  items after corresponding Unpaid Item cases are opened and closed through the
-     *  Unpaid Item Assistant mechanism without payment. For a multiple-quantity listing,
+     * Flag to indicate whether or not the seller wants eBay to automatically relist items after an unpaid order is cancelled. For a multiple-quantity listing,
      *  the quantity is adjusted if <b>AutoRelist</b> is set to <code>true</code>.
      *  <br/><br/>
-     *  This field is ignored if the <b>OptInStatus</b> flag is included and set to <code>false</code> in the request, or if the seller is not currently opted into the Unpaid Item Assistant feature in Unpaid Item Assistant Preferences on My eBay.
+     *  This field is ignored if the <b>OptInStatus</b> flag is included and set to <code>false</code> in the request, or if the seller is not currently opted into the Unpaid Item preferences feature on My eBay.
      *
      * @var bool $autoRelist
      */
     private $autoRelist = null;
 
     /**
-     * This field should be included and set to <code>true</code> if the seller wants to clear all users from the Unpaid Item Assistant Exclusion list. The Exclusion list can be viewed from the Unpaid Item Assistant Preferences in My eBay. Excluded users are not subject to the automatic filing of Unpaid Item cases. The seller can still open Unpaid Item cases against excluded users, but these cases must be opened manually.
+     * This field should be included and set to <code>true</code> if the seller wants to clear all excluded users set in Unpaid Item preferences. A seller may want to create an excluded user list if that seller prefers to work directly with those buyers to work out the unpaid order situation.
      *  <br/><br/>
      *  Users can be added to Exclusion list through the <b>ExcludedUser</b>
      *  field. The <b>RemoveAllExcludedUsers</b> field is ignored if the
      *  <b>OptInStatus</b> flag is included and set to false in the request,
-     *  or if the seller is not currently opted into the Unpaid Item Assistant feature
-     *  in Unpaid Item Assistant Preferences on My eBay.
+     *  or if the seller is not currently opted into the Unpaid Item preferences feature
+     *  in Unpaid Item preferences on My eBay.
      *
      * @var bool $removeAllExcludedUsers
      */
     private $removeAllExcludedUsers = null;
 
     /**
-     * An eBay User ID for which the Unpaid Item Assistant mechanism is disabled. This
-     *  field is typically used by a seller who would prefer to file an Unpaid Item
-     *  dispute manually for the specified user.
+     * An eBay User ID to which the seller's Unpaid Item preferences do not apply. A seller may want to create an excluded user list if that seller prefers to work directly with those buyers to work out the unpaid order situation.
      *  <br/><br/>
      *  One or more <b>ExcludedUser</b> fields are used in
-     *  <b>SetUserPreferences</b> to add users to Unpaid Item Assistant Exclusion
+     *  <b>SetUserPreferences</b> to add users to Unpaid Item preferences Exclusion
      *  list. Any and all <b>ExcludedUser</b> fields are ignored if the
      *  <b>OptInStatus</b> flag is included and set to <code>false</code> in the request,
-     *  or if the seller is not currently opted into the Unpaid Item Assistant feature
-     *  in Unpaid Item Assistant Preferences on My eBay.
+     *  or if the seller is not currently opted into the Unpaid Item preferences feature
+     *  in Unpaid Item preferences on My eBay.
      *  <br/><br/>
      *  In <b>GetUserPreferences</b>, one or more <b>ExcludedUser</b> fields
      *  represent the current Excluded user list.
@@ -86,15 +79,8 @@ class UnpaidItemAssistancePreferencesType implements \Sabre\Xml\XmlSerializable,
     ];
 
     /**
-     * Flag to indicate whether or not the seller wants eBay to automatically request
-     *  PayPal Giving Fund donation refunds after Unpaid Item cases are opened and closed
-     *  through the Unpaid Item Assistant mechanism without payment. This setting is
-     *  only applicable to eBay for Charity listings.
-     *  <br/><br/>
-     *  This field is ignored if the
-     *  <b>OptInStatus</b> flag is included and set to <code>false</code> in the request, or if
-     *  the seller is not currently opted into the Unpaid Item Assistant feature in
-     *  Unpaid Item Assistant Preferences on My eBay.
+     * <span class="tablenote"><b>Note: </b> Do not use this flag with the <b>SetUserPreferences</b> call; this flag is no longer applicable or returned for the <b>GetUserPreferences</b> call.
+     *  </span>
      *
      * @var bool $autoOptDonationRefund
      */
@@ -103,11 +89,10 @@ class UnpaidItemAssistancePreferencesType implements \Sabre\Xml\XmlSerializable,
     /**
      * Gets as delayBeforeOpeningDispute
      *
-     * This value indicates the number of days that should elapse before the Unpaid
-     *  Item Assistant mechanism opens an Unpaid Item case on behalf of the seller.
-     *  <b>Valid values are</b>: 4, 8, 16, 24, and 32 (days).
+     * This value indicates the number of days that should elapse before an unpaid order is cancelled on behalf of the seller.
+     *  <b>Valid values are</b>: 4, 7, 11, 19, 27, and 30 (days).
      *  <br/><br/>
-     *  This field is ignored if the <b>OptInStatus</b> flag is included and set to <code>false</code> in the request, or if the seller is not currently opted into the Unpaid Item Assistant feature in Unpaid Item Assistant Preferences on My eBay.
+     *  This field is ignored if the <b>OptInStatus</b> flag is included and set to <code>false</code> in the request, or if the seller is not currently opted into the Unpaid Item preferences feature on My eBay.
      *  <br/>
      *
      * @return int
@@ -120,11 +105,10 @@ class UnpaidItemAssistancePreferencesType implements \Sabre\Xml\XmlSerializable,
     /**
      * Sets a new delayBeforeOpeningDispute
      *
-     * This value indicates the number of days that should elapse before the Unpaid
-     *  Item Assistant mechanism opens an Unpaid Item case on behalf of the seller.
-     *  <b>Valid values are</b>: 4, 8, 16, 24, and 32 (days).
+     * This value indicates the number of days that should elapse before an unpaid order is cancelled on behalf of the seller.
+     *  <b>Valid values are</b>: 4, 7, 11, 19, 27, and 30 (days).
      *  <br/><br/>
-     *  This field is ignored if the <b>OptInStatus</b> flag is included and set to <code>false</code> in the request, or if the seller is not currently opted into the Unpaid Item Assistant feature in Unpaid Item Assistant Preferences on My eBay.
+     *  This field is ignored if the <b>OptInStatus</b> flag is included and set to <code>false</code> in the request, or if the seller is not currently opted into the Unpaid Item preferences feature on My eBay.
      *  <br/>
      *
      * @param int $delayBeforeOpeningDispute
@@ -139,9 +123,7 @@ class UnpaidItemAssistancePreferencesType implements \Sabre\Xml\XmlSerializable,
     /**
      * Gets as optInStatus
      *
-     * Flag to indicate whether or not the Unpaid Item Assistant mechanism is turned on for the seller. Through the Unpaid Item Assistant mechanism, eBay can automatically file Unpaid Item cases on behalf of the seller.
-     *  <br/><br/>
-     *  The Unpaid Item Assistant feature also has options to automatically relist disputed items, to automatically request a PayPal Giving Fund donation refund (for eBay for Charity listings only), or to create an 'Exclusion list' of buyers who are not subject to the automatic filing of an Unpaid Item case.
+     * Flag to indicate whether or not the seller has enabled Unpaid Item preferences. Unpaid Item preferences must be enabled for any of the Unpaid Item preferences to have an effect.
      *
      * @return bool
      */
@@ -153,9 +135,7 @@ class UnpaidItemAssistancePreferencesType implements \Sabre\Xml\XmlSerializable,
     /**
      * Sets a new optInStatus
      *
-     * Flag to indicate whether or not the Unpaid Item Assistant mechanism is turned on for the seller. Through the Unpaid Item Assistant mechanism, eBay can automatically file Unpaid Item cases on behalf of the seller.
-     *  <br/><br/>
-     *  The Unpaid Item Assistant feature also has options to automatically relist disputed items, to automatically request a PayPal Giving Fund donation refund (for eBay for Charity listings only), or to create an 'Exclusion list' of buyers who are not subject to the automatic filing of an Unpaid Item case.
+     * Flag to indicate whether or not the seller has enabled Unpaid Item preferences. Unpaid Item preferences must be enabled for any of the Unpaid Item preferences to have an effect.
      *
      * @param bool $optInStatus
      * @return self
@@ -169,12 +149,10 @@ class UnpaidItemAssistancePreferencesType implements \Sabre\Xml\XmlSerializable,
     /**
      * Gets as autoRelist
      *
-     * Flag to indicate whether or not the seller wants eBay to automatically relist
-     *  items after corresponding Unpaid Item cases are opened and closed through the
-     *  Unpaid Item Assistant mechanism without payment. For a multiple-quantity listing,
+     * Flag to indicate whether or not the seller wants eBay to automatically relist items after an unpaid order is cancelled. For a multiple-quantity listing,
      *  the quantity is adjusted if <b>AutoRelist</b> is set to <code>true</code>.
      *  <br/><br/>
-     *  This field is ignored if the <b>OptInStatus</b> flag is included and set to <code>false</code> in the request, or if the seller is not currently opted into the Unpaid Item Assistant feature in Unpaid Item Assistant Preferences on My eBay.
+     *  This field is ignored if the <b>OptInStatus</b> flag is included and set to <code>false</code> in the request, or if the seller is not currently opted into the Unpaid Item preferences feature on My eBay.
      *
      * @return bool
      */
@@ -186,12 +164,10 @@ class UnpaidItemAssistancePreferencesType implements \Sabre\Xml\XmlSerializable,
     /**
      * Sets a new autoRelist
      *
-     * Flag to indicate whether or not the seller wants eBay to automatically relist
-     *  items after corresponding Unpaid Item cases are opened and closed through the
-     *  Unpaid Item Assistant mechanism without payment. For a multiple-quantity listing,
+     * Flag to indicate whether or not the seller wants eBay to automatically relist items after an unpaid order is cancelled. For a multiple-quantity listing,
      *  the quantity is adjusted if <b>AutoRelist</b> is set to <code>true</code>.
      *  <br/><br/>
-     *  This field is ignored if the <b>OptInStatus</b> flag is included and set to <code>false</code> in the request, or if the seller is not currently opted into the Unpaid Item Assistant feature in Unpaid Item Assistant Preferences on My eBay.
+     *  This field is ignored if the <b>OptInStatus</b> flag is included and set to <code>false</code> in the request, or if the seller is not currently opted into the Unpaid Item preferences feature on My eBay.
      *
      * @param bool $autoRelist
      * @return self
@@ -205,13 +181,13 @@ class UnpaidItemAssistancePreferencesType implements \Sabre\Xml\XmlSerializable,
     /**
      * Gets as removeAllExcludedUsers
      *
-     * This field should be included and set to <code>true</code> if the seller wants to clear all users from the Unpaid Item Assistant Exclusion list. The Exclusion list can be viewed from the Unpaid Item Assistant Preferences in My eBay. Excluded users are not subject to the automatic filing of Unpaid Item cases. The seller can still open Unpaid Item cases against excluded users, but these cases must be opened manually.
+     * This field should be included and set to <code>true</code> if the seller wants to clear all excluded users set in Unpaid Item preferences. A seller may want to create an excluded user list if that seller prefers to work directly with those buyers to work out the unpaid order situation.
      *  <br/><br/>
      *  Users can be added to Exclusion list through the <b>ExcludedUser</b>
      *  field. The <b>RemoveAllExcludedUsers</b> field is ignored if the
      *  <b>OptInStatus</b> flag is included and set to false in the request,
-     *  or if the seller is not currently opted into the Unpaid Item Assistant feature
-     *  in Unpaid Item Assistant Preferences on My eBay.
+     *  or if the seller is not currently opted into the Unpaid Item preferences feature
+     *  in Unpaid Item preferences on My eBay.
      *
      * @return bool
      */
@@ -223,13 +199,13 @@ class UnpaidItemAssistancePreferencesType implements \Sabre\Xml\XmlSerializable,
     /**
      * Sets a new removeAllExcludedUsers
      *
-     * This field should be included and set to <code>true</code> if the seller wants to clear all users from the Unpaid Item Assistant Exclusion list. The Exclusion list can be viewed from the Unpaid Item Assistant Preferences in My eBay. Excluded users are not subject to the automatic filing of Unpaid Item cases. The seller can still open Unpaid Item cases against excluded users, but these cases must be opened manually.
+     * This field should be included and set to <code>true</code> if the seller wants to clear all excluded users set in Unpaid Item preferences. A seller may want to create an excluded user list if that seller prefers to work directly with those buyers to work out the unpaid order situation.
      *  <br/><br/>
      *  Users can be added to Exclusion list through the <b>ExcludedUser</b>
      *  field. The <b>RemoveAllExcludedUsers</b> field is ignored if the
      *  <b>OptInStatus</b> flag is included and set to false in the request,
-     *  or if the seller is not currently opted into the Unpaid Item Assistant feature
-     *  in Unpaid Item Assistant Preferences on My eBay.
+     *  or if the seller is not currently opted into the Unpaid Item preferences feature
+     *  in Unpaid Item preferences on My eBay.
      *
      * @param bool $removeAllExcludedUsers
      * @return self
@@ -243,16 +219,14 @@ class UnpaidItemAssistancePreferencesType implements \Sabre\Xml\XmlSerializable,
     /**
      * Adds as excludedUser
      *
-     * An eBay User ID for which the Unpaid Item Assistant mechanism is disabled. This
-     *  field is typically used by a seller who would prefer to file an Unpaid Item
-     *  dispute manually for the specified user.
+     * An eBay User ID to which the seller's Unpaid Item preferences do not apply. A seller may want to create an excluded user list if that seller prefers to work directly with those buyers to work out the unpaid order situation.
      *  <br/><br/>
      *  One or more <b>ExcludedUser</b> fields are used in
-     *  <b>SetUserPreferences</b> to add users to Unpaid Item Assistant Exclusion
+     *  <b>SetUserPreferences</b> to add users to Unpaid Item preferences Exclusion
      *  list. Any and all <b>ExcludedUser</b> fields are ignored if the
      *  <b>OptInStatus</b> flag is included and set to <code>false</code> in the request,
-     *  or if the seller is not currently opted into the Unpaid Item Assistant feature
-     *  in Unpaid Item Assistant Preferences on My eBay.
+     *  or if the seller is not currently opted into the Unpaid Item preferences feature
+     *  in Unpaid Item preferences on My eBay.
      *  <br/><br/>
      *  In <b>GetUserPreferences</b>, one or more <b>ExcludedUser</b> fields
      *  represent the current Excluded user list.
@@ -269,16 +243,14 @@ class UnpaidItemAssistancePreferencesType implements \Sabre\Xml\XmlSerializable,
     /**
      * isset excludedUser
      *
-     * An eBay User ID for which the Unpaid Item Assistant mechanism is disabled. This
-     *  field is typically used by a seller who would prefer to file an Unpaid Item
-     *  dispute manually for the specified user.
+     * An eBay User ID to which the seller's Unpaid Item preferences do not apply. A seller may want to create an excluded user list if that seller prefers to work directly with those buyers to work out the unpaid order situation.
      *  <br/><br/>
      *  One or more <b>ExcludedUser</b> fields are used in
-     *  <b>SetUserPreferences</b> to add users to Unpaid Item Assistant Exclusion
+     *  <b>SetUserPreferences</b> to add users to Unpaid Item preferences Exclusion
      *  list. Any and all <b>ExcludedUser</b> fields are ignored if the
      *  <b>OptInStatus</b> flag is included and set to <code>false</code> in the request,
-     *  or if the seller is not currently opted into the Unpaid Item Assistant feature
-     *  in Unpaid Item Assistant Preferences on My eBay.
+     *  or if the seller is not currently opted into the Unpaid Item preferences feature
+     *  in Unpaid Item preferences on My eBay.
      *  <br/><br/>
      *  In <b>GetUserPreferences</b>, one or more <b>ExcludedUser</b> fields
      *  represent the current Excluded user list.
@@ -294,16 +266,14 @@ class UnpaidItemAssistancePreferencesType implements \Sabre\Xml\XmlSerializable,
     /**
      * unset excludedUser
      *
-     * An eBay User ID for which the Unpaid Item Assistant mechanism is disabled. This
-     *  field is typically used by a seller who would prefer to file an Unpaid Item
-     *  dispute manually for the specified user.
+     * An eBay User ID to which the seller's Unpaid Item preferences do not apply. A seller may want to create an excluded user list if that seller prefers to work directly with those buyers to work out the unpaid order situation.
      *  <br/><br/>
      *  One or more <b>ExcludedUser</b> fields are used in
-     *  <b>SetUserPreferences</b> to add users to Unpaid Item Assistant Exclusion
+     *  <b>SetUserPreferences</b> to add users to Unpaid Item preferences Exclusion
      *  list. Any and all <b>ExcludedUser</b> fields are ignored if the
      *  <b>OptInStatus</b> flag is included and set to <code>false</code> in the request,
-     *  or if the seller is not currently opted into the Unpaid Item Assistant feature
-     *  in Unpaid Item Assistant Preferences on My eBay.
+     *  or if the seller is not currently opted into the Unpaid Item preferences feature
+     *  in Unpaid Item preferences on My eBay.
      *  <br/><br/>
      *  In <b>GetUserPreferences</b>, one or more <b>ExcludedUser</b> fields
      *  represent the current Excluded user list.
@@ -319,16 +289,14 @@ class UnpaidItemAssistancePreferencesType implements \Sabre\Xml\XmlSerializable,
     /**
      * Gets as excludedUser
      *
-     * An eBay User ID for which the Unpaid Item Assistant mechanism is disabled. This
-     *  field is typically used by a seller who would prefer to file an Unpaid Item
-     *  dispute manually for the specified user.
+     * An eBay User ID to which the seller's Unpaid Item preferences do not apply. A seller may want to create an excluded user list if that seller prefers to work directly with those buyers to work out the unpaid order situation.
      *  <br/><br/>
      *  One or more <b>ExcludedUser</b> fields are used in
-     *  <b>SetUserPreferences</b> to add users to Unpaid Item Assistant Exclusion
+     *  <b>SetUserPreferences</b> to add users to Unpaid Item preferences Exclusion
      *  list. Any and all <b>ExcludedUser</b> fields are ignored if the
      *  <b>OptInStatus</b> flag is included and set to <code>false</code> in the request,
-     *  or if the seller is not currently opted into the Unpaid Item Assistant feature
-     *  in Unpaid Item Assistant Preferences on My eBay.
+     *  or if the seller is not currently opted into the Unpaid Item preferences feature
+     *  in Unpaid Item preferences on My eBay.
      *  <br/><br/>
      *  In <b>GetUserPreferences</b>, one or more <b>ExcludedUser</b> fields
      *  represent the current Excluded user list.
@@ -343,16 +311,14 @@ class UnpaidItemAssistancePreferencesType implements \Sabre\Xml\XmlSerializable,
     /**
      * Sets a new excludedUser
      *
-     * An eBay User ID for which the Unpaid Item Assistant mechanism is disabled. This
-     *  field is typically used by a seller who would prefer to file an Unpaid Item
-     *  dispute manually for the specified user.
+     * An eBay User ID to which the seller's Unpaid Item preferences do not apply. A seller may want to create an excluded user list if that seller prefers to work directly with those buyers to work out the unpaid order situation.
      *  <br/><br/>
      *  One or more <b>ExcludedUser</b> fields are used in
-     *  <b>SetUserPreferences</b> to add users to Unpaid Item Assistant Exclusion
+     *  <b>SetUserPreferences</b> to add users to Unpaid Item preferences Exclusion
      *  list. Any and all <b>ExcludedUser</b> fields are ignored if the
      *  <b>OptInStatus</b> flag is included and set to <code>false</code> in the request,
-     *  or if the seller is not currently opted into the Unpaid Item Assistant feature
-     *  in Unpaid Item Assistant Preferences on My eBay.
+     *  or if the seller is not currently opted into the Unpaid Item preferences feature
+     *  in Unpaid Item preferences on My eBay.
      *  <br/><br/>
      *  In <b>GetUserPreferences</b>, one or more <b>ExcludedUser</b> fields
      *  represent the current Excluded user list.
@@ -369,15 +335,8 @@ class UnpaidItemAssistancePreferencesType implements \Sabre\Xml\XmlSerializable,
     /**
      * Gets as autoOptDonationRefund
      *
-     * Flag to indicate whether or not the seller wants eBay to automatically request
-     *  PayPal Giving Fund donation refunds after Unpaid Item cases are opened and closed
-     *  through the Unpaid Item Assistant mechanism without payment. This setting is
-     *  only applicable to eBay for Charity listings.
-     *  <br/><br/>
-     *  This field is ignored if the
-     *  <b>OptInStatus</b> flag is included and set to <code>false</code> in the request, or if
-     *  the seller is not currently opted into the Unpaid Item Assistant feature in
-     *  Unpaid Item Assistant Preferences on My eBay.
+     * <span class="tablenote"><b>Note: </b> Do not use this flag with the <b>SetUserPreferences</b> call; this flag is no longer applicable or returned for the <b>GetUserPreferences</b> call.
+     *  </span>
      *
      * @return bool
      */
@@ -389,15 +348,8 @@ class UnpaidItemAssistancePreferencesType implements \Sabre\Xml\XmlSerializable,
     /**
      * Sets a new autoOptDonationRefund
      *
-     * Flag to indicate whether or not the seller wants eBay to automatically request
-     *  PayPal Giving Fund donation refunds after Unpaid Item cases are opened and closed
-     *  through the Unpaid Item Assistant mechanism without payment. This setting is
-     *  only applicable to eBay for Charity listings.
-     *  <br/><br/>
-     *  This field is ignored if the
-     *  <b>OptInStatus</b> flag is included and set to <code>false</code> in the request, or if
-     *  the seller is not currently opted into the Unpaid Item Assistant feature in
-     *  Unpaid Item Assistant Preferences on My eBay.
+     * <span class="tablenote"><b>Note: </b> Do not use this flag with the <b>SetUserPreferences</b> call; this flag is no longer applicable or returned for the <b>GetUserPreferences</b> call.
+     *  </span>
      *
      * @param bool $autoOptDonationRefund
      * @return self

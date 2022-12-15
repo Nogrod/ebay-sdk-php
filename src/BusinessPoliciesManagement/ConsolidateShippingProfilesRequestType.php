@@ -5,7 +5,7 @@ namespace Nogrod\eBaySDK\BusinessPoliciesManagement;
 /**
  * Class representing ConsolidateShippingProfilesRequestType
  *
- *
+ * This call can be used to consolidate shipping policies that have identical data with the exception of shipping costs.
  * XSD Type: ConsolidateShippingProfilesRequest
  */
 class ConsolidateShippingProfilesRequestType extends BaseRequestType

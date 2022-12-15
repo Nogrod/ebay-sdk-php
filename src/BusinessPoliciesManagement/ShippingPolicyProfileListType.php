@@ -7,12 +7,14 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing ShippingPolicyProfileListType
  *
- *
+ * Type defining the <b>shipingPolicyProfile</b> container, which consists of one or more shipping policies that match the input criteria in the <b>getSellerProfiles</b> request.
  * XSD Type: ShippingPolicyProfileList
  */
 class ShippingPolicyProfileListType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
     /**
+     * Container consisting of one or more shipping policies that match the input criteria in the <b>getSellerProfiles</b> request. This container is not returned if no shipping policies match the input criteria.
+     *
      * @var \Nogrod\eBaySDK\BusinessPoliciesManagement\ShippingPolicyProfileType[] $shippingPolicyProfile
      */
     private $shippingPolicyProfile = [
@@ -21,6 +23,8 @@ class ShippingPolicyProfileListType implements \Sabre\Xml\XmlSerializable, \Sabr
 
     /**
      * Adds as shippingPolicyProfile
+     *
+     * Container consisting of one or more shipping policies that match the input criteria in the <b>getSellerProfiles</b> request. This container is not returned if no shipping policies match the input criteria.
      *
      * @return self
      * @param \Nogrod\eBaySDK\BusinessPoliciesManagement\ShippingPolicyProfileType $shippingPolicyProfile
@@ -34,6 +38,8 @@ class ShippingPolicyProfileListType implements \Sabre\Xml\XmlSerializable, \Sabr
     /**
      * isset shippingPolicyProfile
      *
+     * Container consisting of one or more shipping policies that match the input criteria in the <b>getSellerProfiles</b> request. This container is not returned if no shipping policies match the input criteria.
+     *
      * @param int|string $index
      * @return bool
      */
@@ -44,6 +50,8 @@ class ShippingPolicyProfileListType implements \Sabre\Xml\XmlSerializable, \Sabr
 
     /**
      * unset shippingPolicyProfile
+     *
+     * Container consisting of one or more shipping policies that match the input criteria in the <b>getSellerProfiles</b> request. This container is not returned if no shipping policies match the input criteria.
      *
      * @param int|string $index
      * @return void
@@ -56,6 +64,8 @@ class ShippingPolicyProfileListType implements \Sabre\Xml\XmlSerializable, \Sabr
     /**
      * Gets as shippingPolicyProfile
      *
+     * Container consisting of one or more shipping policies that match the input criteria in the <b>getSellerProfiles</b> request. This container is not returned if no shipping policies match the input criteria.
+     *
      * @return \Nogrod\eBaySDK\BusinessPoliciesManagement\ShippingPolicyProfileType[]
      */
     public function getShippingPolicyProfile()
@@ -65,6 +75,8 @@ class ShippingPolicyProfileListType implements \Sabre\Xml\XmlSerializable, \Sabr
 
     /**
      * Sets a new shippingPolicyProfile
+     *
+     * Container consisting of one or more shipping policies that match the input criteria in the <b>getSellerProfiles</b> request. This container is not returned if no shipping policies match the input criteria.
      *
      * @param \Nogrod\eBaySDK\BusinessPoliciesManagement\ShippingPolicyProfileType[] $shippingPolicyProfile
      * @return self
