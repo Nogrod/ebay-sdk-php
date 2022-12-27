@@ -72,7 +72,7 @@ class OAuthClient
             'redirect_uri'  => $this->getConfig('ruName'),
             'response_type' => 'code',
             'state'         => $state,
-            'scope'         => implode($scope, ' '),
+            'scope'         => implode(' ', $scope),
         ];
 
         return $url.http_build_query($urlParams, null, '&', PHP_QUERY_RFC3986);

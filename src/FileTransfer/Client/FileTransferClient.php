@@ -3,7 +3,6 @@
 namespace Nogrod\eBaySDK\FileTransfer\Client;
 
 use Http\Client\HttpClient;
-use Http\Discovery\StreamFactoryDiscovery;
 use Http\Message\MessageFactory;
 use Http\Message\MultipartStream\MultipartStreamBuilder;
 use JMS\Serializer\Serializer;
@@ -41,8 +40,7 @@ class FileTransferClient extends FileTransferBaseClient
     protected function buildRequest($operation, $message)
     {
         if ($message instanceof UploadFileRequestType && ($fileAttachment = $message->getFileAttachment()) !== null) {
-            $streamFactory = StreamFactoryDiscovery::find();
-            $builder = new MultipartStreamBuilder($streamFactory);
+            $builder = new MultipartStreamBuilder();
             $data = $fileAttachment->getData();
             $xopInclude = new XopInclude();
             $xopInclude->setHref('cid:attachment.bin@nogrod');
