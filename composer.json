@@ -9,18 +9,17 @@
   ],
   "repositories": [
     { "type": "vcs", "url": "https://github.com/Nogrod/xsd2php.git" },
-    { "type": "vcs", "url": "https://github.com/Nogrod/xml-client.git" },
     { "type": "vcs", "url": "https://github.com/Nogrod/wsdl-reader.git" },
     { "type": "vcs", "url": "https://github.com/Nogrod/soap-reader.git" }
   ],
   "require": {
-    "php": "^7.2",
+    "php": "^7.4",
     "php-http/multipart-stream-builder": "^1.1",
     "nogrod/xml-client-runtime": "^0.1"
   },
   "require-dev": {
     "friendsofphp/php-cs-fixer": "^3.0",
-    "nogrod/xml-client": "dev-master",
+    "nogrod/xml-client": "^0.1",
     "goetas-webservices/soap-reader": "dev-master",
     "goetas-webservices/wsdl-reader": "dev-master",
     "goetas-webservices/xsd2php": "dev-master",
