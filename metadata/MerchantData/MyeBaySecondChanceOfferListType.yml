@@ -1,0 +1,33 @@
+Nogrod\eBaySDK\MerchantData\MyeBaySecondChanceOfferListType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        totalAvailable:
+            expose: true
+            access_type: public_method
+            serialized_name: TotalAvailable
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getTotalAvailable
+                setter: setTotalAvailable
+            type: int
+        secondChanceOffer:
+            expose: true
+            access_type: public_method
+            serialized_name: SecondChanceOffer
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSecondChanceOffer
+                setter: setSecondChanceOffer
+            xml_list:
+                inline: true
+                entry_name: SecondChanceOffer
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<Nogrod\eBaySDK\MerchantData\ItemType>

@@ -1,0 +1,18 @@
+Nogrod\eBaySDK\MerchantData\OrderAckResponseType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        orderLineItemID:
+            expose: true
+            access_type: public_method
+            serialized_name: OrderLineItemID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getOrderLineItemID
+                setter: setOrderLineItemID
+            type: string

@@ -1,0 +1,40 @@
+Nogrod\eBaySDK\MerchantData\MembershipDetailType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        programName:
+            expose: true
+            access_type: public_method
+            serialized_name: ProgramName
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getProgramName
+                setter: setProgramName
+            type: string
+        site:
+            expose: true
+            access_type: public_method
+            serialized_name: Site
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSite
+                setter: setSite
+            type: string
+        expiryDate:
+            expose: true
+            access_type: public_method
+            serialized_name: ExpiryDate
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getExpiryDate
+                setter: setExpiryDate
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime

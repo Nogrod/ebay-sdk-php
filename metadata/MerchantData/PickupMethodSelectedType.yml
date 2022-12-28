@@ -1,0 +1,73 @@
+Nogrod\eBaySDK\MerchantData\PickupMethodSelectedType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        pickupMethod:
+            expose: true
+            access_type: public_method
+            serialized_name: PickupMethod
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPickupMethod
+                setter: setPickupMethod
+            type: string
+        pickupStoreID:
+            expose: true
+            access_type: public_method
+            serialized_name: PickupStoreID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPickupStoreID
+                setter: setPickupStoreID
+            type: string
+        pickupStatus:
+            expose: true
+            access_type: public_method
+            serialized_name: PickupStatus
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPickupStatus
+                setter: setPickupStatus
+            type: string
+        merchantPickupCode:
+            expose: true
+            access_type: public_method
+            serialized_name: MerchantPickupCode
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getMerchantPickupCode
+                setter: setMerchantPickupCode
+            type: string
+        pickupFulfillmentTime:
+            expose: true
+            access_type: public_method
+            serialized_name: PickupFulfillmentTime
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPickupFulfillmentTime
+                setter: setPickupFulfillmentTime
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime
+        pickupLocationUUID:
+            expose: true
+            access_type: public_method
+            serialized_name: PickupLocationUUID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPickupLocationUUID
+                setter: setPickupLocationUUID
+            type: string

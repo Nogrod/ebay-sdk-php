@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\MerchantData\RelistFixedPriceItemRequest:
+    xml_root_name: RelistFixedPriceItemRequest
+    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

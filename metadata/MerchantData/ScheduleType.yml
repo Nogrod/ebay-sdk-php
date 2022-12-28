@@ -1,0 +1,29 @@
+Nogrod\eBaySDK\MerchantData\ScheduleType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        scheduleID:
+            expose: true
+            access_type: public_method
+            serialized_name: ScheduleID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getScheduleID
+                setter: setScheduleID
+            type: int
+        scheduleTime:
+            expose: true
+            access_type: public_method
+            serialized_name: ScheduleTime
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getScheduleTime
+                setter: setScheduleTime
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime

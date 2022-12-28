@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\MerchantData\ReviseInventoryStatusRequest:
+    xml_root_name: ReviseInventoryStatusRequest
+    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

@@ -1,0 +1,22 @@
+Nogrod\eBaySDK\MerchantData\LookupAttributeArrayType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        lookupAttribute:
+            expose: true
+            access_type: public_method
+            serialized_name: LookupAttribute
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getLookupAttribute
+                setter: setLookupAttribute
+            xml_list:
+                inline: true
+                entry_name: LookupAttribute
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<Nogrod\eBaySDK\MerchantData\LookupAttributeType>

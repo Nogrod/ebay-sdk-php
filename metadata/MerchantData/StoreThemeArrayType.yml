@@ -1,0 +1,38 @@
+Nogrod\eBaySDK\MerchantData\StoreThemeArrayType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        theme:
+            expose: true
+            access_type: public_method
+            serialized_name: Theme
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getTheme
+                setter: setTheme
+            xml_list:
+                inline: true
+                entry_name: Theme
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<Nogrod\eBaySDK\MerchantData\StoreThemeType>
+        genericColorSchemeArray:
+            expose: true
+            access_type: public_method
+            serialized_name: GenericColorSchemeArray
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getGenericColorSchemeArray
+                setter: setGenericColorSchemeArray
+            type: array<Nogrod\eBaySDK\MerchantData\StoreColorSchemeType>
+            xml_list:
+                inline: false
+                entry_name: ColorScheme
+                skip_when_empty: true
+                namespace: 'urn:ebay:apis:eBLBaseComponents'

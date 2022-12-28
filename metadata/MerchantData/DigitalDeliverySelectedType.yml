@@ -1,0 +1,40 @@
+Nogrod\eBaySDK\MerchantData\DigitalDeliverySelectedType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        deliveryMethod:
+            expose: true
+            access_type: public_method
+            serialized_name: DeliveryMethod
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getDeliveryMethod
+                setter: setDeliveryMethod
+            type: string
+        deliveryStatus:
+            expose: true
+            access_type: public_method
+            serialized_name: DeliveryStatus
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getDeliveryStatus
+                setter: setDeliveryStatus
+            type: Nogrod\eBaySDK\MerchantData\DeliveryStatusType
+        deliveryDetails:
+            expose: true
+            access_type: public_method
+            serialized_name: DeliveryDetails
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getDeliveryDetails
+                setter: setDeliveryDetails
+            type: Nogrod\eBaySDK\MerchantData\DeliveryDetailsType

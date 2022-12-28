@@ -1,0 +1,25 @@
+Nogrod\eBaySDK\MerchantData\CategoryMappingType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        oldID:
+            expose: true
+            access_type: public_method
+            serialized_name: oldID
+            accessor:
+                getter: getOldID
+                setter: setOldID
+            xml_attribute: true
+            type: string
+        id:
+            expose: true
+            access_type: public_method
+            serialized_name: id
+            accessor:
+                getter: getId
+                setter: setId
+            xml_attribute: true
+            type: string

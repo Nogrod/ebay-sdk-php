@@ -1,0 +1,95 @@
+Nogrod\eBaySDK\MerchantData\BusinessSellerDetailsType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        address:
+            expose: true
+            access_type: public_method
+            serialized_name: Address
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getAddress
+                setter: setAddress
+            type: Nogrod\eBaySDK\MerchantData\AddressType
+        fax:
+            expose: true
+            access_type: public_method
+            serialized_name: Fax
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getFax
+                setter: setFax
+            type: string
+        email:
+            expose: true
+            access_type: public_method
+            serialized_name: Email
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getEmail
+                setter: setEmail
+            type: string
+        additionalContactInformation:
+            expose: true
+            access_type: public_method
+            serialized_name: AdditionalContactInformation
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getAdditionalContactInformation
+                setter: setAdditionalContactInformation
+            type: string
+        tradeRegistrationNumber:
+            expose: true
+            access_type: public_method
+            serialized_name: TradeRegistrationNumber
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getTradeRegistrationNumber
+                setter: setTradeRegistrationNumber
+            type: string
+        legalInvoice:
+            expose: true
+            access_type: public_method
+            serialized_name: LegalInvoice
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getLegalInvoice
+                setter: setLegalInvoice
+            type: bool
+        termsAndConditions:
+            expose: true
+            access_type: public_method
+            serialized_name: TermsAndConditions
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getTermsAndConditions
+                setter: setTermsAndConditions
+            type: string
+        vATDetails:
+            expose: true
+            access_type: public_method
+            serialized_name: VATDetails
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getVATDetails
+                setter: setVATDetails
+            type: Nogrod\eBaySDK\MerchantData\VATDetailsType

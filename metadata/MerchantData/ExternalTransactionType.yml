@@ -1,0 +1,62 @@
+Nogrod\eBaySDK\MerchantData\ExternalTransactionType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        externalTransactionID:
+            expose: true
+            access_type: public_method
+            serialized_name: ExternalTransactionID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getExternalTransactionID
+                setter: setExternalTransactionID
+            type: string
+        externalTransactionTime:
+            expose: true
+            access_type: public_method
+            serialized_name: ExternalTransactionTime
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getExternalTransactionTime
+                setter: setExternalTransactionTime
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime
+        feeOrCreditAmount:
+            expose: true
+            access_type: public_method
+            serialized_name: FeeOrCreditAmount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getFeeOrCreditAmount
+                setter: setFeeOrCreditAmount
+            type: Nogrod\eBaySDK\MerchantData\AmountType
+        paymentOrRefundAmount:
+            expose: true
+            access_type: public_method
+            serialized_name: PaymentOrRefundAmount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPaymentOrRefundAmount
+                setter: setPaymentOrRefundAmount
+            type: Nogrod\eBaySDK\MerchantData\AmountType
+        externalTransactionStatus:
+            expose: true
+            access_type: public_method
+            serialized_name: ExternalTransactionStatus
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getExternalTransactionStatus
+                setter: setExternalTransactionStatus
+            type: string

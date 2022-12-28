@@ -1,0 +1,29 @@
+Nogrod\eBaySDK\MerchantData\ShippingCostPaidByDetailsType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        shippingCostPaidByOption:
+            expose: true
+            access_type: public_method
+            serialized_name: ShippingCostPaidByOption
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getShippingCostPaidByOption
+                setter: setShippingCostPaidByOption
+            type: string
+        description:
+            expose: true
+            access_type: public_method
+            serialized_name: Description
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getDescription
+                setter: setDescription
+            type: string

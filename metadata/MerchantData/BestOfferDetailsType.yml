@@ -1,0 +1,73 @@
+Nogrod\eBaySDK\MerchantData\BestOfferDetailsType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        bestOfferCount:
+            expose: true
+            access_type: public_method
+            serialized_name: BestOfferCount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getBestOfferCount
+                setter: setBestOfferCount
+            type: int
+        bestOfferEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: BestOfferEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getBestOfferEnabled
+                setter: setBestOfferEnabled
+            type: bool
+        bestOffer:
+            expose: true
+            access_type: public_method
+            serialized_name: BestOffer
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getBestOffer
+                setter: setBestOffer
+            type: Nogrod\eBaySDK\MerchantData\AmountType
+        bestOfferStatus:
+            expose: true
+            access_type: public_method
+            serialized_name: BestOfferStatus
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getBestOfferStatus
+                setter: setBestOfferStatus
+            type: string
+        bestOfferType:
+            expose: true
+            access_type: public_method
+            serialized_name: BestOfferType
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getBestOfferType
+                setter: setBestOfferType
+            type: string
+        newBestOffer:
+            expose: true
+            access_type: public_method
+            serialized_name: NewBestOffer
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getNewBestOffer
+                setter: setNewBestOffer
+            type: bool

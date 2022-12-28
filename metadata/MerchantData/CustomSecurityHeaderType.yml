@@ -1,0 +1,51 @@
+Nogrod\eBaySDK\MerchantData\CustomSecurityHeaderType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        eBayAuthToken:
+            expose: true
+            access_type: public_method
+            serialized_name: eBayAuthToken
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getEBayAuthToken
+                setter: setEBayAuthToken
+            type: string
+        hardExpirationWarning:
+            expose: true
+            access_type: public_method
+            serialized_name: HardExpirationWarning
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getHardExpirationWarning
+                setter: setHardExpirationWarning
+            type: string
+        credentials:
+            expose: true
+            access_type: public_method
+            serialized_name: Credentials
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCredentials
+                setter: setCredentials
+            type: Nogrod\eBaySDK\MerchantData\UserIdPasswordType
+        notificationSignature:
+            expose: true
+            access_type: public_method
+            serialized_name: NotificationSignature
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getNotificationSignature
+                setter: setNotificationSignature
+            type: string

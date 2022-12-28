@@ -1,0 +1,62 @@
+Nogrod\eBaySDK\MerchantData\ItemBidDetailsType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        itemID:
+            expose: true
+            access_type: public_method
+            serialized_name: ItemID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getItemID
+                setter: setItemID
+            type: string
+        categoryID:
+            expose: true
+            access_type: public_method
+            serialized_name: CategoryID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCategoryID
+                setter: setCategoryID
+            type: string
+        bidCount:
+            expose: true
+            access_type: public_method
+            serialized_name: BidCount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getBidCount
+                setter: setBidCount
+            type: int
+        sellerID:
+            expose: true
+            access_type: public_method
+            serialized_name: SellerID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSellerID
+                setter: setSellerID
+            type: string
+        lastBidTime:
+            expose: true
+            access_type: public_method
+            serialized_name: LastBidTime
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getLastBidTime
+                setter: setLastBidTime
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime

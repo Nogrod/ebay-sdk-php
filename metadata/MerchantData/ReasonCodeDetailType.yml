@@ -1,0 +1,38 @@
+Nogrod\eBaySDK\MerchantData\ReasonCodeDetailType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        codeID:
+            expose: true
+            access_type: public_method
+            serialized_name: codeID
+            accessor:
+                getter: getCodeID
+                setter: setCodeID
+            xml_attribute: true
+            type: int
+        briefText:
+            expose: true
+            access_type: public_method
+            serialized_name: BriefText
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getBriefText
+                setter: setBriefText
+            type: string
+        detailedText:
+            expose: true
+            access_type: public_method
+            serialized_name: DetailedText
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getDetailedText
+                setter: setDetailedText
+            type: string

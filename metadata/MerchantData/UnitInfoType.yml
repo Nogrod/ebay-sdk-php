@@ -1,0 +1,29 @@
+Nogrod\eBaySDK\MerchantData\UnitInfoType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        unitType:
+            expose: true
+            access_type: public_method
+            serialized_name: UnitType
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getUnitType
+                setter: setUnitType
+            type: string
+        unitQuantity:
+            expose: true
+            access_type: public_method
+            serialized_name: UnitQuantity
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getUnitQuantity
+                setter: setUnitQuantity
+            type: float

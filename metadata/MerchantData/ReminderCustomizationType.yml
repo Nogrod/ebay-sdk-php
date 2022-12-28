@@ -1,0 +1,29 @@
+Nogrod\eBaySDK\MerchantData\ReminderCustomizationType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        durationInDays:
+            expose: true
+            access_type: public_method
+            serialized_name: DurationInDays
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getDurationInDays
+                setter: setDurationInDays
+            type: int
+        include:
+            expose: true
+            access_type: public_method
+            serialized_name: Include
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getInclude
+                setter: setInclude
+            type: bool

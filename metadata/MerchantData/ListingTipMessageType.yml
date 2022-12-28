@@ -1,0 +1,51 @@
+Nogrod\eBaySDK\MerchantData\ListingTipMessageType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        listingTipMessageID:
+            expose: true
+            access_type: public_method
+            serialized_name: ListingTipMessageID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getListingTipMessageID
+                setter: setListingTipMessageID
+            type: string
+        shortMessage:
+            expose: true
+            access_type: public_method
+            serialized_name: ShortMessage
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getShortMessage
+                setter: setShortMessage
+            type: string
+        longMessage:
+            expose: true
+            access_type: public_method
+            serialized_name: LongMessage
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getLongMessage
+                setter: setLongMessage
+            type: string
+        helpURLPath:
+            expose: true
+            access_type: public_method
+            serialized_name: HelpURLPath
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getHelpURLPath
+                setter: setHelpURLPath
+            type: string

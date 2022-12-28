@@ -1,0 +1,18 @@
+Nogrod\eBaySDK\MerchantData\GiftSummaryType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        message:
+            expose: true
+            access_type: public_method
+            serialized_name: Message
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getMessage
+                setter: setMessage
+            type: string

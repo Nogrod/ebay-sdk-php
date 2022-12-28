@@ -1,0 +1,34 @@
+Nogrod\eBaySDK\MerchantData\PaginatedOrderTransactionArrayType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        orderTransactionArray:
+            expose: true
+            access_type: public_method
+            serialized_name: OrderTransactionArray
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getOrderTransactionArray
+                setter: setOrderTransactionArray
+            type: array<Nogrod\eBaySDK\MerchantData\OrderTransactionType>
+            xml_list:
+                inline: false
+                entry_name: OrderTransaction
+                skip_when_empty: true
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+        paginationResult:
+            expose: true
+            access_type: public_method
+            serialized_name: PaginationResult
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPaginationResult
+                setter: setPaginationResult
+            type: Nogrod\eBaySDK\MerchantData\PaginationResultType

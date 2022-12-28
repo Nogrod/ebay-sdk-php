@@ -1,0 +1,40 @@
+Nogrod\eBaySDK\MerchantData\VeROReportedItemType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        itemID:
+            expose: true
+            access_type: public_method
+            serialized_name: ItemID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getItemID
+                setter: setItemID
+            type: string
+        itemStatus:
+            expose: true
+            access_type: public_method
+            serialized_name: ItemStatus
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getItemStatus
+                setter: setItemStatus
+            type: string
+        itemReasonForFailure:
+            expose: true
+            access_type: public_method
+            serialized_name: ItemReasonForFailure
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getItemReasonForFailure
+                setter: setItemReasonForFailure
+            type: string

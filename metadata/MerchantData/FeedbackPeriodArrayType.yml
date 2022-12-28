@@ -1,0 +1,22 @@
+Nogrod\eBaySDK\MerchantData\FeedbackPeriodArrayType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        feedbackPeriod:
+            expose: true
+            access_type: public_method
+            serialized_name: FeedbackPeriod
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getFeedbackPeriod
+                setter: setFeedbackPeriod
+            xml_list:
+                inline: true
+                entry_name: FeedbackPeriod
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<Nogrod\eBaySDK\MerchantData\FeedbackPeriodType>

@@ -1,0 +1,106 @@
+Nogrod\eBaySDK\MerchantData\StoreCustomPageType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        name:
+            expose: true
+            access_type: public_method
+            serialized_name: Name
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getName
+                setter: setName
+            type: string
+        pageID:
+            expose: true
+            access_type: public_method
+            serialized_name: PageID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPageID
+                setter: setPageID
+            type: int
+        uRLPath:
+            expose: true
+            access_type: public_method
+            serialized_name: URLPath
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getURLPath
+                setter: setURLPath
+            type: string
+        uRL:
+            expose: true
+            access_type: public_method
+            serialized_name: URL
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getURL
+                setter: setURL
+            type: string
+        status:
+            expose: true
+            access_type: public_method
+            serialized_name: Status
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getStatus
+                setter: setStatus
+            type: string
+        content:
+            expose: true
+            access_type: public_method
+            serialized_name: Content
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getContent
+                setter: setContent
+            type: string
+        leftNav:
+            expose: true
+            access_type: public_method
+            serialized_name: LeftNav
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getLeftNav
+                setter: setLeftNav
+            type: bool
+        previewEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: PreviewEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPreviewEnabled
+                setter: setPreviewEnabled
+            type: bool
+        order:
+            expose: true
+            access_type: public_method
+            serialized_name: Order
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getOrder
+                setter: setOrder
+            type: int

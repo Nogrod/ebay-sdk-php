@@ -1,0 +1,99 @@
+Nogrod\eBaySDK\MerchantData\SiteHostedPictureDetailsType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        pictureName:
+            expose: true
+            access_type: public_method
+            serialized_name: PictureName
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPictureName
+                setter: setPictureName
+            type: string
+        pictureSet:
+            expose: true
+            access_type: public_method
+            serialized_name: PictureSet
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPictureSet
+                setter: setPictureSet
+            type: string
+        pictureFormat:
+            expose: true
+            access_type: public_method
+            serialized_name: PictureFormat
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPictureFormat
+                setter: setPictureFormat
+            type: string
+        fullURL:
+            expose: true
+            access_type: public_method
+            serialized_name: FullURL
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getFullURL
+                setter: setFullURL
+            type: string
+        baseURL:
+            expose: true
+            access_type: public_method
+            serialized_name: BaseURL
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getBaseURL
+                setter: setBaseURL
+            type: string
+        pictureSetMember:
+            expose: true
+            access_type: public_method
+            serialized_name: PictureSetMember
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPictureSetMember
+                setter: setPictureSetMember
+            xml_list:
+                inline: true
+                entry_name: PictureSetMember
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<Nogrod\eBaySDK\MerchantData\PictureSetMemberType>
+        externalPictureURL:
+            expose: true
+            access_type: public_method
+            serialized_name: ExternalPictureURL
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getExternalPictureURL
+                setter: setExternalPictureURL
+            type: string
+        useByDate:
+            expose: true
+            access_type: public_method
+            serialized_name: UseByDate
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getUseByDate
+                setter: setUseByDate
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime

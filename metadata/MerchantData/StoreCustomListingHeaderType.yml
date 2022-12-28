@@ -1,0 +1,77 @@
+Nogrod\eBaySDK\MerchantData\StoreCustomListingHeaderType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        displayType:
+            expose: true
+            access_type: public_method
+            serialized_name: DisplayType
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getDisplayType
+                setter: setDisplayType
+            type: string
+        logo:
+            expose: true
+            access_type: public_method
+            serialized_name: Logo
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getLogo
+                setter: setLogo
+            type: bool
+        searchBox:
+            expose: true
+            access_type: public_method
+            serialized_name: SearchBox
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSearchBox
+                setter: setSearchBox
+            type: bool
+        linkToInclude:
+            expose: true
+            access_type: public_method
+            serialized_name: LinkToInclude
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getLinkToInclude
+                setter: setLinkToInclude
+            xml_list:
+                inline: true
+                entry_name: LinkToInclude
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<Nogrod\eBaySDK\MerchantData\StoreCustomListingHeaderLinkType>
+        addToFavoriteStores:
+            expose: true
+            access_type: public_method
+            serialized_name: AddToFavoriteStores
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getAddToFavoriteStores
+                setter: setAddToFavoriteStores
+            type: bool
+        signUpForStoreNewsletter:
+            expose: true
+            access_type: public_method
+            serialized_name: SignUpForStoreNewsletter
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSignUpForStoreNewsletter
+                setter: setSignUpForStoreNewsletter
+            type: bool

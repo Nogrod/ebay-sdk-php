@@ -1,0 +1,1660 @@
+Nogrod\eBaySDK\MerchantData\SiteDefaultsType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        listingDuration:
+            expose: true
+            access_type: public_method
+            serialized_name: ListingDuration
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getListingDuration
+                setter: setListingDuration
+            xml_list:
+                inline: true
+                entry_name: ListingDuration
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<Nogrod\eBaySDK\MerchantData\ListingDurationReferenceType>
+        shippingTermsRequired:
+            expose: true
+            access_type: public_method
+            serialized_name: ShippingTermsRequired
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getShippingTermsRequired
+                setter: setShippingTermsRequired
+            type: bool
+        bestOfferEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: BestOfferEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getBestOfferEnabled
+                setter: setBestOfferEnabled
+            type: bool
+        dutchBINEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: DutchBINEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getDutchBINEnabled
+                setter: setDutchBINEnabled
+            type: bool
+        userConsentRequired:
+            expose: true
+            access_type: public_method
+            serialized_name: UserConsentRequired
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getUserConsentRequired
+                setter: setUserConsentRequired
+            type: bool
+        homePageFeaturedEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: HomePageFeaturedEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getHomePageFeaturedEnabled
+                setter: setHomePageFeaturedEnabled
+            type: bool
+        proPackEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: ProPackEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getProPackEnabled
+                setter: setProPackEnabled
+            type: bool
+        basicUpgradePackEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: BasicUpgradePackEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getBasicUpgradePackEnabled
+                setter: setBasicUpgradePackEnabled
+            type: bool
+        valuePackEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: ValuePackEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getValuePackEnabled
+                setter: setValuePackEnabled
+            type: bool
+        proPackPlusEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: ProPackPlusEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getProPackPlusEnabled
+                setter: setProPackPlusEnabled
+            type: bool
+        adFormatEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: AdFormatEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getAdFormatEnabled
+                setter: setAdFormatEnabled
+            type: string
+        bestOfferCounterEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: BestOfferCounterEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getBestOfferCounterEnabled
+                setter: setBestOfferCounterEnabled
+            type: bool
+        bestOfferAutoDeclineEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: BestOfferAutoDeclineEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getBestOfferAutoDeclineEnabled
+                setter: setBestOfferAutoDeclineEnabled
+            type: bool
+        localMarketSpecialitySubscription:
+            expose: true
+            access_type: public_method
+            serialized_name: LocalMarketSpecialitySubscription
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getLocalMarketSpecialitySubscription
+                setter: setLocalMarketSpecialitySubscription
+            type: bool
+        localMarketRegularSubscription:
+            expose: true
+            access_type: public_method
+            serialized_name: LocalMarketRegularSubscription
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getLocalMarketRegularSubscription
+                setter: setLocalMarketRegularSubscription
+            type: bool
+        localMarketPremiumSubscription:
+            expose: true
+            access_type: public_method
+            serialized_name: LocalMarketPremiumSubscription
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getLocalMarketPremiumSubscription
+                setter: setLocalMarketPremiumSubscription
+            type: bool
+        localMarketNonSubscription:
+            expose: true
+            access_type: public_method
+            serialized_name: LocalMarketNonSubscription
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getLocalMarketNonSubscription
+                setter: setLocalMarketNonSubscription
+            type: bool
+        expressEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: ExpressEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getExpressEnabled
+                setter: setExpressEnabled
+            type: bool
+        expressPicturesRequired:
+            expose: true
+            access_type: public_method
+            serialized_name: ExpressPicturesRequired
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getExpressPicturesRequired
+                setter: setExpressPicturesRequired
+            type: bool
+        expressConditionRequired:
+            expose: true
+            access_type: public_method
+            serialized_name: ExpressConditionRequired
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getExpressConditionRequired
+                setter: setExpressConditionRequired
+            type: bool
+        minimumReservePrice:
+            expose: true
+            access_type: public_method
+            serialized_name: MinimumReservePrice
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getMinimumReservePrice
+                setter: setMinimumReservePrice
+            type: float
+        sellerContactDetailsEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: SellerContactDetailsEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSellerContactDetailsEnabled
+                setter: setSellerContactDetailsEnabled
+            type: bool
+        transactionConfirmationRequestEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: TransactionConfirmationRequestEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getTransactionConfirmationRequestEnabled
+                setter: setTransactionConfirmationRequestEnabled
+            type: bool
+        storeInventoryEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: StoreInventoryEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getStoreInventoryEnabled
+                setter: setStoreInventoryEnabled
+            type: bool
+        skypeMeTransactionalEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: SkypeMeTransactionalEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSkypeMeTransactionalEnabled
+                setter: setSkypeMeTransactionalEnabled
+            type: bool
+        skypeMeNonTransactionalEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: SkypeMeNonTransactionalEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSkypeMeNonTransactionalEnabled
+                setter: setSkypeMeNonTransactionalEnabled
+            type: bool
+        localListingDistancesRegular:
+            expose: true
+            access_type: public_method
+            serialized_name: LocalListingDistancesRegular
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getLocalListingDistancesRegular
+                setter: setLocalListingDistancesRegular
+            type: string
+        localListingDistancesSpecialty:
+            expose: true
+            access_type: public_method
+            serialized_name: LocalListingDistancesSpecialty
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getLocalListingDistancesSpecialty
+                setter: setLocalListingDistancesSpecialty
+            type: string
+        localListingDistancesNonSubscription:
+            expose: true
+            access_type: public_method
+            serialized_name: LocalListingDistancesNonSubscription
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getLocalListingDistancesNonSubscription
+                setter: setLocalListingDistancesNonSubscription
+            type: string
+        classifiedAdPaymentMethodEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: ClassifiedAdPaymentMethodEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getClassifiedAdPaymentMethodEnabled
+                setter: setClassifiedAdPaymentMethodEnabled
+            type: string
+        classifiedAdShippingMethodEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: ClassifiedAdShippingMethodEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getClassifiedAdShippingMethodEnabled
+                setter: setClassifiedAdShippingMethodEnabled
+            type: bool
+        classifiedAdBestOfferEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: ClassifiedAdBestOfferEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getClassifiedAdBestOfferEnabled
+                setter: setClassifiedAdBestOfferEnabled
+            type: string
+        classifiedAdCounterOfferEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: ClassifiedAdCounterOfferEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getClassifiedAdCounterOfferEnabled
+                setter: setClassifiedAdCounterOfferEnabled
+            type: bool
+        classifiedAdAutoDeclineEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: ClassifiedAdAutoDeclineEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getClassifiedAdAutoDeclineEnabled
+                setter: setClassifiedAdAutoDeclineEnabled
+            type: bool
+        classifiedAdContactByPhoneEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: ClassifiedAdContactByPhoneEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getClassifiedAdContactByPhoneEnabled
+                setter: setClassifiedAdContactByPhoneEnabled
+            type: bool
+        classifiedAdContactByEmailEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: ClassifiedAdContactByEmailEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getClassifiedAdContactByEmailEnabled
+                setter: setClassifiedAdContactByEmailEnabled
+            type: bool
+        safePaymentRequired:
+            expose: true
+            access_type: public_method
+            serialized_name: SafePaymentRequired
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSafePaymentRequired
+                setter: setSafePaymentRequired
+            type: bool
+        classifiedAdPayPerLeadEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: ClassifiedAdPayPerLeadEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getClassifiedAdPayPerLeadEnabled
+                setter: setClassifiedAdPayPerLeadEnabled
+            type: bool
+        itemSpecificsEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: ItemSpecificsEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getItemSpecificsEnabled
+                setter: setItemSpecificsEnabled
+            type: string
+        paisaPayFullEscrowEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: PaisaPayFullEscrowEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPaisaPayFullEscrowEnabled
+                setter: setPaisaPayFullEscrowEnabled
+            type: bool
+        iSBNIdentifierEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: ISBNIdentifierEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getISBNIdentifierEnabled
+                setter: setISBNIdentifierEnabled
+            type: bool
+        uPCIdentifierEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: UPCIdentifierEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getUPCIdentifierEnabled
+                setter: setUPCIdentifierEnabled
+            type: bool
+        eANIdentifierEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: EANIdentifierEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getEANIdentifierEnabled
+                setter: setEANIdentifierEnabled
+            type: bool
+        brandMPNIdentifierEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: BrandMPNIdentifierEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getBrandMPNIdentifierEnabled
+                setter: setBrandMPNIdentifierEnabled
+            type: bool
+        classifiedAdAutoAcceptEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: ClassifiedAdAutoAcceptEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getClassifiedAdAutoAcceptEnabled
+                setter: setClassifiedAdAutoAcceptEnabled
+            type: bool
+        bestOfferAutoAcceptEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: BestOfferAutoAcceptEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getBestOfferAutoAcceptEnabled
+                setter: setBestOfferAutoAcceptEnabled
+            type: bool
+        crossBorderTradeNorthAmericaEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: CrossBorderTradeNorthAmericaEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCrossBorderTradeNorthAmericaEnabled
+                setter: setCrossBorderTradeNorthAmericaEnabled
+            type: bool
+        crossBorderTradeGBEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: CrossBorderTradeGBEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCrossBorderTradeGBEnabled
+                setter: setCrossBorderTradeGBEnabled
+            type: bool
+        crossBorderTradeAustraliaEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: CrossBorderTradeAustraliaEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCrossBorderTradeAustraliaEnabled
+                setter: setCrossBorderTradeAustraliaEnabled
+            type: bool
+        payPalBuyerProtectionEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: PayPalBuyerProtectionEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPayPalBuyerProtectionEnabled
+                setter: setPayPalBuyerProtectionEnabled
+            type: bool
+        buyerGuaranteeEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: BuyerGuaranteeEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getBuyerGuaranteeEnabled
+                setter: setBuyerGuaranteeEnabled
+            type: bool
+        iNEscrowWorkflowTimeline:
+            expose: true
+            access_type: public_method
+            serialized_name: INEscrowWorkflowTimeline
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getINEscrowWorkflowTimeline
+                setter: setINEscrowWorkflowTimeline
+            type: string
+        combinedFixedPriceTreatmentEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: CombinedFixedPriceTreatmentEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCombinedFixedPriceTreatmentEnabled
+                setter: setCombinedFixedPriceTreatmentEnabled
+            type: bool
+        galleryFeaturedDurations:
+            expose: true
+            access_type: public_method
+            serialized_name: GalleryFeaturedDurations
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getGalleryFeaturedDurations
+                setter: setGalleryFeaturedDurations
+            type: array<string>
+            xml_list:
+                inline: false
+                entry_name: Duration
+                skip_when_empty: true
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+        payPalRequired:
+            expose: true
+            access_type: public_method
+            serialized_name: PayPalRequired
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPayPalRequired
+                setter: setPayPalRequired
+            type: bool
+        eBayMotorsProAdFormatEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: eBayMotorsProAdFormatEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getEBayMotorsProAdFormatEnabled
+                setter: setEBayMotorsProAdFormatEnabled
+            type: string
+        eBayMotorsProContactByPhoneEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: eBayMotorsProContactByPhoneEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getEBayMotorsProContactByPhoneEnabled
+                setter: setEBayMotorsProContactByPhoneEnabled
+            type: bool
+        eBayMotorsProPhoneCount:
+            expose: true
+            access_type: public_method
+            serialized_name: eBayMotorsProPhoneCount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getEBayMotorsProPhoneCount
+                setter: setEBayMotorsProPhoneCount
+            type: int
+        eBayMotorsProContactByAddressEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: eBayMotorsProContactByAddressEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getEBayMotorsProContactByAddressEnabled
+                setter: setEBayMotorsProContactByAddressEnabled
+            type: bool
+        eBayMotorsProStreetCount:
+            expose: true
+            access_type: public_method
+            serialized_name: eBayMotorsProStreetCount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getEBayMotorsProStreetCount
+                setter: setEBayMotorsProStreetCount
+            type: int
+        eBayMotorsProCompanyNameEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: eBayMotorsProCompanyNameEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getEBayMotorsProCompanyNameEnabled
+                setter: setEBayMotorsProCompanyNameEnabled
+            type: bool
+        eBayMotorsProContactByEmailEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: eBayMotorsProContactByEmailEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getEBayMotorsProContactByEmailEnabled
+                setter: setEBayMotorsProContactByEmailEnabled
+            type: bool
+        eBayMotorsProBestOfferEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: eBayMotorsProBestOfferEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getEBayMotorsProBestOfferEnabled
+                setter: setEBayMotorsProBestOfferEnabled
+            type: string
+        eBayMotorsProAutoAcceptEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: eBayMotorsProAutoAcceptEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getEBayMotorsProAutoAcceptEnabled
+                setter: setEBayMotorsProAutoAcceptEnabled
+            type: bool
+        eBayMotorsProAutoDeclineEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: eBayMotorsProAutoDeclineEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getEBayMotorsProAutoDeclineEnabled
+                setter: setEBayMotorsProAutoDeclineEnabled
+            type: bool
+        eBayMotorsProPaymentMethodCheckOutEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: eBayMotorsProPaymentMethodCheckOutEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getEBayMotorsProPaymentMethodCheckOutEnabled
+                setter: setEBayMotorsProPaymentMethodCheckOutEnabled
+            type: string
+        eBayMotorsProShippingMethodEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: eBayMotorsProShippingMethodEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getEBayMotorsProShippingMethodEnabled
+                setter: setEBayMotorsProShippingMethodEnabled
+            type: bool
+        eBayMotorsProCounterOfferEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: eBayMotorsProCounterOfferEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getEBayMotorsProCounterOfferEnabled
+                setter: setEBayMotorsProCounterOfferEnabled
+            type: bool
+        eBayMotorsProSellerContactDetailsEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: eBayMotorsProSellerContactDetailsEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getEBayMotorsProSellerContactDetailsEnabled
+                setter: setEBayMotorsProSellerContactDetailsEnabled
+            type: bool
+        localMarketAdFormatEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: LocalMarketAdFormatEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getLocalMarketAdFormatEnabled
+                setter: setLocalMarketAdFormatEnabled
+            type: string
+        localMarketContactByPhoneEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: LocalMarketContactByPhoneEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getLocalMarketContactByPhoneEnabled
+                setter: setLocalMarketContactByPhoneEnabled
+            type: bool
+        localMarketPhoneCount:
+            expose: true
+            access_type: public_method
+            serialized_name: LocalMarketPhoneCount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getLocalMarketPhoneCount
+                setter: setLocalMarketPhoneCount
+            type: int
+        localMarketContactByAddressEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: LocalMarketContactByAddressEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getLocalMarketContactByAddressEnabled
+                setter: setLocalMarketContactByAddressEnabled
+            type: bool
+        localMarketStreetCount:
+            expose: true
+            access_type: public_method
+            serialized_name: LocalMarketStreetCount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getLocalMarketStreetCount
+                setter: setLocalMarketStreetCount
+            type: int
+        localMarketCompanyNameEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: LocalMarketCompanyNameEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getLocalMarketCompanyNameEnabled
+                setter: setLocalMarketCompanyNameEnabled
+            type: bool
+        localMarketContactByEmailEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: LocalMarketContactByEmailEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getLocalMarketContactByEmailEnabled
+                setter: setLocalMarketContactByEmailEnabled
+            type: bool
+        localMarketBestOfferEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: LocalMarketBestOfferEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getLocalMarketBestOfferEnabled
+                setter: setLocalMarketBestOfferEnabled
+            type: string
+        localMarketAutoAcceptEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: LocalMarketAutoAcceptEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getLocalMarketAutoAcceptEnabled
+                setter: setLocalMarketAutoAcceptEnabled
+            type: bool
+        localMarketAutoDeclineEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: LocalMarketAutoDeclineEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getLocalMarketAutoDeclineEnabled
+                setter: setLocalMarketAutoDeclineEnabled
+            type: bool
+        localMarketPaymentMethodCheckOutEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: LocalMarketPaymentMethodCheckOutEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getLocalMarketPaymentMethodCheckOutEnabled
+                setter: setLocalMarketPaymentMethodCheckOutEnabled
+            type: string
+        localMarketShippingMethodEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: LocalMarketShippingMethodEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getLocalMarketShippingMethodEnabled
+                setter: setLocalMarketShippingMethodEnabled
+            type: bool
+        localMarketCounterOfferEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: LocalMarketCounterOfferEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getLocalMarketCounterOfferEnabled
+                setter: setLocalMarketCounterOfferEnabled
+            type: bool
+        localMarketSellerContactDetailsEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: LocalMarketSellerContactDetailsEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getLocalMarketSellerContactDetailsEnabled
+                setter: setLocalMarketSellerContactDetailsEnabled
+            type: bool
+        classifiedAdPhoneCount:
+            expose: true
+            access_type: public_method
+            serialized_name: ClassifiedAdPhoneCount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getClassifiedAdPhoneCount
+                setter: setClassifiedAdPhoneCount
+            type: int
+        classifiedAdContactByAddressEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: ClassifiedAdContactByAddressEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getClassifiedAdContactByAddressEnabled
+                setter: setClassifiedAdContactByAddressEnabled
+            type: bool
+        classifiedAdStreetCount:
+            expose: true
+            access_type: public_method
+            serialized_name: ClassifiedAdStreetCount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getClassifiedAdStreetCount
+                setter: setClassifiedAdStreetCount
+            type: int
+        classifiedAdCompanyNameEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: ClassifiedAdCompanyNameEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getClassifiedAdCompanyNameEnabled
+                setter: setClassifiedAdCompanyNameEnabled
+            type: bool
+        specialitySubscription:
+            expose: true
+            access_type: public_method
+            serialized_name: SpecialitySubscription
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSpecialitySubscription
+                setter: setSpecialitySubscription
+            type: string
+        regularSubscription:
+            expose: true
+            access_type: public_method
+            serialized_name: RegularSubscription
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getRegularSubscription
+                setter: setRegularSubscription
+            type: string
+        premiumSubscription:
+            expose: true
+            access_type: public_method
+            serialized_name: PremiumSubscription
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPremiumSubscription
+                setter: setPremiumSubscription
+            type: string
+        nonSubscription:
+            expose: true
+            access_type: public_method
+            serialized_name: NonSubscription
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getNonSubscription
+                setter: setNonSubscription
+            type: string
+        payPalRequiredForStoreOwner:
+            expose: true
+            access_type: public_method
+            serialized_name: PayPalRequiredForStoreOwner
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPayPalRequiredForStoreOwner
+                setter: setPayPalRequiredForStoreOwner
+            type: bool
+        reviseQuantityAllowed:
+            expose: true
+            access_type: public_method
+            serialized_name: ReviseQuantityAllowed
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getReviseQuantityAllowed
+                setter: setReviseQuantityAllowed
+            type: bool
+        revisePriceAllowed:
+            expose: true
+            access_type: public_method
+            serialized_name: RevisePriceAllowed
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getRevisePriceAllowed
+                setter: setRevisePriceAllowed
+            type: bool
+        storeOwnerExtendedListingDurationsEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: StoreOwnerExtendedListingDurationsEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getStoreOwnerExtendedListingDurationsEnabled
+                setter: setStoreOwnerExtendedListingDurationsEnabled
+            type: bool
+        storeOwnerExtendedListingDurations:
+            expose: true
+            access_type: public_method
+            serialized_name: StoreOwnerExtendedListingDurations
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getStoreOwnerExtendedListingDurations
+                setter: setStoreOwnerExtendedListingDurations
+            type: array<string>
+            xml_list:
+                inline: false
+                entry_name: Duration
+                skip_when_empty: true
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+        returnPolicyEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: ReturnPolicyEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getReturnPolicyEnabled
+                setter: setReturnPolicyEnabled
+            type: bool
+        handlingTimeEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: HandlingTimeEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getHandlingTimeEnabled
+                setter: setHandlingTimeEnabled
+            type: bool
+        maxFlatShippingCost:
+            expose: true
+            access_type: public_method
+            serialized_name: MaxFlatShippingCost
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getMaxFlatShippingCost
+                setter: setMaxFlatShippingCost
+            type: Nogrod\eBaySDK\MerchantData\AmountType
+        maxFlatShippingCostCBTExempt:
+            expose: true
+            access_type: public_method
+            serialized_name: MaxFlatShippingCostCBTExempt
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getMaxFlatShippingCostCBTExempt
+                setter: setMaxFlatShippingCostCBTExempt
+            type: bool
+        group1MaxFlatShippingCost:
+            expose: true
+            access_type: public_method
+            serialized_name: Group1MaxFlatShippingCost
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getGroup1MaxFlatShippingCost
+                setter: setGroup1MaxFlatShippingCost
+            type: Nogrod\eBaySDK\MerchantData\AmountType
+        group2MaxFlatShippingCost:
+            expose: true
+            access_type: public_method
+            serialized_name: Group2MaxFlatShippingCost
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getGroup2MaxFlatShippingCost
+                setter: setGroup2MaxFlatShippingCost
+            type: Nogrod\eBaySDK\MerchantData\AmountType
+        group3MaxFlatShippingCost:
+            expose: true
+            access_type: public_method
+            serialized_name: Group3MaxFlatShippingCost
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getGroup3MaxFlatShippingCost
+                setter: setGroup3MaxFlatShippingCost
+            type: Nogrod\eBaySDK\MerchantData\AmountType
+        paymentMethod:
+            expose: true
+            access_type: public_method
+            serialized_name: PaymentMethod
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPaymentMethod
+                setter: setPaymentMethod
+            xml_list:
+                inline: true
+                entry_name: PaymentMethod
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<string>
+        variationsEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: VariationsEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getVariationsEnabled
+                setter: setVariationsEnabled
+            type: bool
+        attributeConversionEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: AttributeConversionEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getAttributeConversionEnabled
+                setter: setAttributeConversionEnabled
+            type: string
+        freeGalleryPlusEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: FreeGalleryPlusEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getFreeGalleryPlusEnabled
+                setter: setFreeGalleryPlusEnabled
+            type: bool
+        freePicturePackEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: FreePicturePackEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getFreePicturePackEnabled
+                setter: setFreePicturePackEnabled
+            type: bool
+        itemCompatibilityEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: ItemCompatibilityEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getItemCompatibilityEnabled
+                setter: setItemCompatibilityEnabled
+            type: string
+        minItemCompatibility:
+            expose: true
+            access_type: public_method
+            serialized_name: MinItemCompatibility
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getMinItemCompatibility
+                setter: setMinItemCompatibility
+            type: int
+        maxItemCompatibility:
+            expose: true
+            access_type: public_method
+            serialized_name: MaxItemCompatibility
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getMaxItemCompatibility
+                setter: setMaxItemCompatibility
+            type: int
+        conditionEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: ConditionEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getConditionEnabled
+                setter: setConditionEnabled
+            type: string
+        conditionValues:
+            expose: true
+            access_type: public_method
+            serialized_name: ConditionValues
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getConditionValues
+                setter: setConditionValues
+            type: Nogrod\eBaySDK\MerchantData\ConditionValuesType
+        specialFeatures:
+            expose: true
+            access_type: public_method
+            serialized_name: SpecialFeatures
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSpecialFeatures
+                setter: setSpecialFeatures
+            type: Nogrod\eBaySDK\MerchantData\ConditionValuesType
+        valueCategory:
+            expose: true
+            access_type: public_method
+            serialized_name: ValueCategory
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getValueCategory
+                setter: setValueCategory
+            type: bool
+        productCreationEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: ProductCreationEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getProductCreationEnabled
+                setter: setProductCreationEnabled
+            type: string
+        eANEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: EANEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getEANEnabled
+                setter: setEANEnabled
+            type: string
+        iSBNEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: ISBNEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getISBNEnabled
+                setter: setISBNEnabled
+            type: string
+        uPCEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: UPCEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getUPCEnabled
+                setter: setUPCEnabled
+            type: string
+        maxGranularFitmentCount:
+            expose: true
+            access_type: public_method
+            serialized_name: MaxGranularFitmentCount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getMaxGranularFitmentCount
+                setter: setMaxGranularFitmentCount
+            type: int
+        compatibleVehicleType:
+            expose: true
+            access_type: public_method
+            serialized_name: CompatibleVehicleType
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCompatibleVehicleType
+                setter: setCompatibleVehicleType
+            type: string
+        paymentOptionsGroup:
+            expose: true
+            access_type: public_method
+            serialized_name: PaymentOptionsGroup
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPaymentOptionsGroup
+                setter: setPaymentOptionsGroup
+            type: string
+        shippingProfileCategoryGroup:
+            expose: true
+            access_type: public_method
+            serialized_name: ShippingProfileCategoryGroup
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getShippingProfileCategoryGroup
+                setter: setShippingProfileCategoryGroup
+            type: string
+        paymentProfileCategoryGroup:
+            expose: true
+            access_type: public_method
+            serialized_name: PaymentProfileCategoryGroup
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPaymentProfileCategoryGroup
+                setter: setPaymentProfileCategoryGroup
+            type: string
+        returnPolicyProfileCategoryGroup:
+            expose: true
+            access_type: public_method
+            serialized_name: ReturnPolicyProfileCategoryGroup
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getReturnPolicyProfileCategoryGroup
+                setter: setReturnPolicyProfileCategoryGroup
+            type: string
+        vINSupported:
+            expose: true
+            access_type: public_method
+            serialized_name: VINSupported
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getVINSupported
+                setter: setVINSupported
+            type: bool
+        vRMSupported:
+            expose: true
+            access_type: public_method
+            serialized_name: VRMSupported
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getVRMSupported
+                setter: setVRMSupported
+            type: bool
+        sellerProvidedTitleSupported:
+            expose: true
+            access_type: public_method
+            serialized_name: SellerProvidedTitleSupported
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSellerProvidedTitleSupported
+                setter: setSellerProvidedTitleSupported
+            type: bool
+        depositSupported:
+            expose: true
+            access_type: public_method
+            serialized_name: DepositSupported
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getDepositSupported
+                setter: setDepositSupported
+            type: bool
+        globalShippingEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: GlobalShippingEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getGlobalShippingEnabled
+                setter: setGlobalShippingEnabled
+            type: bool
+        additionalCompatibilityEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: AdditionalCompatibilityEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getAdditionalCompatibilityEnabled
+                setter: setAdditionalCompatibilityEnabled
+            type: bool
+        pickupDropOffEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: PickupDropOffEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPickupDropOffEnabled
+                setter: setPickupDropOffEnabled
+            type: bool
+        digitalGoodDeliveryEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: DigitalGoodDeliveryEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getDigitalGoodDeliveryEnabled
+                setter: setDigitalGoodDeliveryEnabled
+            type: bool
+        epidSupported:
+            expose: true
+            access_type: public_method
+            serialized_name: EpidSupported
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getEpidSupported
+                setter: setEpidSupported
+            type: bool
+        kTypeSupported:
+            expose: true
+            access_type: public_method
+            serialized_name: KTypeSupported
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getKTypeSupported
+                setter: setKTypeSupported
+            type: bool
+        productRequiredEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: ProductRequiredEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getProductRequiredEnabled
+                setter: setProductRequiredEnabled
+            type: string
+        domesticReturnsAcceptedValues:
+            expose: true
+            access_type: public_method
+            serialized_name: DomesticReturnsAcceptedValues
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getDomesticReturnsAcceptedValues
+                setter: setDomesticReturnsAcceptedValues
+            type: array<string>
+            xml_list:
+                inline: false
+                entry_name: DomesticReturnsAccepted
+                skip_when_empty: true
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+        internationalReturnsAcceptedValues:
+            expose: true
+            access_type: public_method
+            serialized_name: InternationalReturnsAcceptedValues
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getInternationalReturnsAcceptedValues
+                setter: setInternationalReturnsAcceptedValues
+            type: array<string>
+            xml_list:
+                inline: false
+                entry_name: InternationalReturnsAccepted
+                skip_when_empty: true
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+        domesticReturnsDurationValues:
+            expose: true
+            access_type: public_method
+            serialized_name: DomesticReturnsDurationValues
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getDomesticReturnsDurationValues
+                setter: setDomesticReturnsDurationValues
+            type: array<string>
+            xml_list:
+                inline: false
+                entry_name: DomesticReturnsDuration
+                skip_when_empty: true
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+        internationalReturnsDurationValues:
+            expose: true
+            access_type: public_method
+            serialized_name: InternationalReturnsDurationValues
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getInternationalReturnsDurationValues
+                setter: setInternationalReturnsDurationValues
+            type: array<string>
+            xml_list:
+                inline: false
+                entry_name: InternationalReturnsDuration
+                skip_when_empty: true
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+        domesticReturnsShipmentPayeeValues:
+            expose: true
+            access_type: public_method
+            serialized_name: DomesticReturnsShipmentPayeeValues
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getDomesticReturnsShipmentPayeeValues
+                setter: setDomesticReturnsShipmentPayeeValues
+            type: array<string>
+            xml_list:
+                inline: false
+                entry_name: DomesticReturnsShipmentPayee
+                skip_when_empty: true
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+        internationalReturnsShipmentPayeeValues:
+            expose: true
+            access_type: public_method
+            serialized_name: InternationalReturnsShipmentPayeeValues
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getInternationalReturnsShipmentPayeeValues
+                setter: setInternationalReturnsShipmentPayeeValues
+            type: array<string>
+            xml_list:
+                inline: false
+                entry_name: InternationalReturnsShipmentPayee
+                skip_when_empty: true
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+        domesticRefundMethodValues:
+            expose: true
+            access_type: public_method
+            serialized_name: DomesticRefundMethodValues
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getDomesticRefundMethodValues
+                setter: setDomesticRefundMethodValues
+            type: array<string>
+            xml_list:
+                inline: false
+                entry_name: DomesticRefundMethod
+                skip_when_empty: true
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+        internationalRefundMethodValues:
+            expose: true
+            access_type: public_method
+            serialized_name: InternationalRefundMethodValues
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getInternationalRefundMethodValues
+                setter: setInternationalRefundMethodValues
+            type: array<string>
+            xml_list:
+                inline: false
+                entry_name: InternationalRefundMethod
+                skip_when_empty: true
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+        returnPolicyDescriptionEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: ReturnPolicyDescriptionEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getReturnPolicyDescriptionEnabled
+                setter: setReturnPolicyDescriptionEnabled
+            type: bool

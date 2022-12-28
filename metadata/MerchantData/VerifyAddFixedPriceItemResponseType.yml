@@ -1,0 +1,104 @@
+Nogrod\eBaySDK\MerchantData\VerifyAddFixedPriceItemResponseType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        itemID:
+            expose: true
+            access_type: public_method
+            serialized_name: ItemID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getItemID
+                setter: setItemID
+            type: string
+        sKU:
+            expose: true
+            access_type: public_method
+            serialized_name: SKU
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSKU
+                setter: setSKU
+            type: string
+        fees:
+            expose: true
+            access_type: public_method
+            serialized_name: Fees
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getFees
+                setter: setFees
+            type: array<Nogrod\eBaySDK\MerchantData\FeeType>
+            xml_list:
+                inline: false
+                entry_name: Fee
+                skip_when_empty: true
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+        expressListing:
+            expose: true
+            access_type: public_method
+            serialized_name: ExpressListing
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getExpressListing
+                setter: setExpressListing
+            type: bool
+        expressItemRequirements:
+            expose: true
+            access_type: public_method
+            serialized_name: ExpressItemRequirements
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getExpressItemRequirements
+                setter: setExpressItemRequirements
+            type: Nogrod\eBaySDK\MerchantData\ExpressItemRequirementsType
+        categoryID:
+            expose: true
+            access_type: public_method
+            serialized_name: CategoryID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCategoryID
+                setter: setCategoryID
+            type: string
+        category2ID:
+            expose: true
+            access_type: public_method
+            serialized_name: Category2ID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCategory2ID
+                setter: setCategory2ID
+            type: string
+        discountReason:
+            expose: true
+            access_type: public_method
+            serialized_name: DiscountReason
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getDiscountReason
+                setter: setDiscountReason
+            xml_list:
+                inline: true
+                entry_name: DiscountReason
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<string>

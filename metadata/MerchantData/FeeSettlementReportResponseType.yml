@@ -1,0 +1,128 @@
+Nogrod\eBaySDK\MerchantData\FeeSettlementReportResponseType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        invoiceID:
+            expose: true
+            access_type: public_method
+            serialized_name: InvoiceID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getInvoiceID
+                setter: setInvoiceID
+            type: string
+        sellerID:
+            expose: true
+            access_type: public_method
+            serialized_name: SellerID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSellerID
+                setter: setSellerID
+            type: string
+        accountID:
+            expose: true
+            access_type: public_method
+            serialized_name: AccountID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getAccountID
+                setter: setAccountID
+            type: string
+        reportStartTime:
+            expose: true
+            access_type: public_method
+            serialized_name: ReportStartTime
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getReportStartTime
+                setter: setReportStartTime
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime
+        reportEndTime:
+            expose: true
+            access_type: public_method
+            serialized_name: ReportEndTime
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getReportEndTime
+                setter: setReportEndTime
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime
+        invoiceProcessingTime:
+            expose: true
+            access_type: public_method
+            serialized_name: InvoiceProcessingTime
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getInvoiceProcessingTime
+                setter: setInvoiceProcessingTime
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime
+        reportProcessingTime:
+            expose: true
+            access_type: public_method
+            serialized_name: ReportProcessingTime
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getReportProcessingTime
+                setter: setReportProcessingTime
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime
+        feeSettlementAmount:
+            expose: true
+            access_type: public_method
+            serialized_name: FeeSettlementAmount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getFeeSettlementAmount
+                setter: setFeeSettlementAmount
+            type: Nogrod\eBaySDK\MerchantData\AmountType
+        lastInvoiceAmount:
+            expose: true
+            access_type: public_method
+            serialized_name: LastInvoiceAmount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getLastInvoiceAmount
+                setter: setLastInvoiceAmount
+            type: Nogrod\eBaySDK\MerchantData\AmountType
+        feeRoundingAdjustmentAmount:
+            expose: true
+            access_type: public_method
+            serialized_name: FeeRoundingAdjustmentAmount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getFeeRoundingAdjustmentAmount
+                setter: setFeeRoundingAdjustmentAmount
+            type: Nogrod\eBaySDK\MerchantData\AmountType
+        feeTotalUsageAdjustmentAmount:
+            expose: true
+            access_type: public_method
+            serialized_name: FeeTotalUsageAdjustmentAmount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getFeeTotalUsageAdjustmentAmount
+                setter: setFeeTotalUsageAdjustmentAmount
+            type: Nogrod\eBaySDK\MerchantData\AmountType

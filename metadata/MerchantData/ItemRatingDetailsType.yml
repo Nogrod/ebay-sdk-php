@@ -1,0 +1,29 @@
+Nogrod\eBaySDK\MerchantData\ItemRatingDetailsType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        ratingDetail:
+            expose: true
+            access_type: public_method
+            serialized_name: RatingDetail
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getRatingDetail
+                setter: setRatingDetail
+            type: string
+        rating:
+            expose: true
+            access_type: public_method
+            serialized_name: Rating
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getRating
+                setter: setRating
+            type: int

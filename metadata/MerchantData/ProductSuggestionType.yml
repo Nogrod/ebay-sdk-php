@@ -1,0 +1,51 @@
+Nogrod\eBaySDK\MerchantData\ProductSuggestionType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        title:
+            expose: true
+            access_type: public_method
+            serialized_name: Title
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getTitle
+                setter: setTitle
+            type: string
+        ePID:
+            expose: true
+            access_type: public_method
+            serialized_name: EPID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getEPID
+                setter: setEPID
+            type: string
+        stockPhoto:
+            expose: true
+            access_type: public_method
+            serialized_name: StockPhoto
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getStockPhoto
+                setter: setStockPhoto
+            type: string
+        recommended:
+            expose: true
+            access_type: public_method
+            serialized_name: Recommended
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getRecommended
+                setter: setRecommended
+            type: bool

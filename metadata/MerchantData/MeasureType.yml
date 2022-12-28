@@ -1,0 +1,35 @@
+Nogrod\eBaySDK\MerchantData\MeasureType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        __value:
+            expose: true
+            xml_value: true
+            access_type: public_method
+            accessor:
+                getter: value
+                setter: value
+            type: float
+            xml_element:
+                cdata: false
+        unit:
+            expose: true
+            access_type: public_method
+            serialized_name: unit
+            accessor:
+                getter: getUnit
+                setter: setUnit
+            xml_attribute: true
+            type: string
+        measurementSystem:
+            expose: true
+            access_type: public_method
+            serialized_name: measurementSystem
+            accessor:
+                getter: getMeasurementSystem
+                setter: setMeasurementSystem
+            xml_attribute: true
+            type: string

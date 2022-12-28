@@ -1,0 +1,40 @@
+Nogrod\eBaySDK\MerchantData\MyMessagesResponseDetailsType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        responseEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: ResponseEnabled
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getResponseEnabled
+                setter: setResponseEnabled
+            type: bool
+        responseURL:
+            expose: true
+            access_type: public_method
+            serialized_name: ResponseURL
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getResponseURL
+                setter: setResponseURL
+            type: string
+        userResponseDate:
+            expose: true
+            access_type: public_method
+            serialized_name: UserResponseDate
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getUserResponseDate
+                setter: setUserResponseDate
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime

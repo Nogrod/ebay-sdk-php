@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\MerchantData\EndItemRequest:
+    xml_root_name: EndItemRequest
+    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

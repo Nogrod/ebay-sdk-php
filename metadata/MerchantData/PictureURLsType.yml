@@ -1,0 +1,29 @@
+Nogrod\eBaySDK\MerchantData\PictureURLsType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        eBayPictureURL:
+            expose: true
+            access_type: public_method
+            serialized_name: eBayPictureURL
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getEBayPictureURL
+                setter: setEBayPictureURL
+            type: string
+        externalPictureURL:
+            expose: true
+            access_type: public_method
+            serialized_name: ExternalPictureURL
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getExternalPictureURL
+                setter: setExternalPictureURL
+            type: string

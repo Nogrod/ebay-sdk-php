@@ -1,0 +1,73 @@
+Nogrod\eBaySDK\MerchantData\TaxJurisdictionType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        jurisdictionID:
+            expose: true
+            access_type: public_method
+            serialized_name: JurisdictionID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getJurisdictionID
+                setter: setJurisdictionID
+            type: string
+        salesTaxPercent:
+            expose: true
+            access_type: public_method
+            serialized_name: SalesTaxPercent
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSalesTaxPercent
+                setter: setSalesTaxPercent
+            type: float
+        shippingIncludedInTax:
+            expose: true
+            access_type: public_method
+            serialized_name: ShippingIncludedInTax
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getShippingIncludedInTax
+                setter: setShippingIncludedInTax
+            type: bool
+        jurisdictionName:
+            expose: true
+            access_type: public_method
+            serialized_name: JurisdictionName
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getJurisdictionName
+                setter: setJurisdictionName
+            type: string
+        detailVersion:
+            expose: true
+            access_type: public_method
+            serialized_name: DetailVersion
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getDetailVersion
+                setter: setDetailVersion
+            type: string
+        updateTime:
+            expose: true
+            access_type: public_method
+            serialized_name: UpdateTime
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getUpdateTime
+                setter: setUpdateTime
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime

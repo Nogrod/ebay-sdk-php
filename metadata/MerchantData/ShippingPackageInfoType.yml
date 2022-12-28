@@ -1,0 +1,117 @@
+Nogrod\eBaySDK\MerchantData\ShippingPackageInfoType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        storeID:
+            expose: true
+            access_type: public_method
+            serialized_name: StoreID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getStoreID
+                setter: setStoreID
+            type: string
+        shippingTrackingEvent:
+            expose: true
+            access_type: public_method
+            serialized_name: ShippingTrackingEvent
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getShippingTrackingEvent
+                setter: setShippingTrackingEvent
+            type: string
+        scheduledDeliveryTimeMin:
+            expose: true
+            access_type: public_method
+            serialized_name: ScheduledDeliveryTimeMin
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getScheduledDeliveryTimeMin
+                setter: setScheduledDeliveryTimeMin
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime
+        scheduledDeliveryTimeMax:
+            expose: true
+            access_type: public_method
+            serialized_name: ScheduledDeliveryTimeMax
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getScheduledDeliveryTimeMax
+                setter: setScheduledDeliveryTimeMax
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime
+        actualDeliveryTime:
+            expose: true
+            access_type: public_method
+            serialized_name: ActualDeliveryTime
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getActualDeliveryTime
+                setter: setActualDeliveryTime
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime
+        estimatedDeliveryTimeMin:
+            expose: true
+            access_type: public_method
+            serialized_name: EstimatedDeliveryTimeMin
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getEstimatedDeliveryTimeMin
+                setter: setEstimatedDeliveryTimeMin
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime
+        estimatedDeliveryTimeMax:
+            expose: true
+            access_type: public_method
+            serialized_name: EstimatedDeliveryTimeMax
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getEstimatedDeliveryTimeMax
+                setter: setEstimatedDeliveryTimeMax
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime
+        handleByTime:
+            expose: true
+            access_type: public_method
+            serialized_name: HandleByTime
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getHandleByTime
+                setter: setHandleByTime
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime
+        minNativeEstimatedDeliveryTime:
+            expose: true
+            access_type: public_method
+            serialized_name: MinNativeEstimatedDeliveryTime
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getMinNativeEstimatedDeliveryTime
+                setter: setMinNativeEstimatedDeliveryTime
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime
+        maxNativeEstimatedDeliveryTime:
+            expose: true
+            access_type: public_method
+            serialized_name: MaxNativeEstimatedDeliveryTime
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getMaxNativeEstimatedDeliveryTime
+                setter: setMaxNativeEstimatedDeliveryTime
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime

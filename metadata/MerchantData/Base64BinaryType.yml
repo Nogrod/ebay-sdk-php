@@ -1,0 +1,26 @@
+Nogrod\eBaySDK\MerchantData\Base64BinaryType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        __value:
+            expose: true
+            xml_value: true
+            access_type: public_method
+            accessor:
+                getter: value
+                setter: value
+            xml_element:
+                cdata: false
+            type: \AnySimpleType
+        contentType:
+            expose: true
+            access_type: public_method
+            serialized_name: contentType
+            accessor:
+                getter: getContentType
+                setter: setContentType
+            xml_attribute: true
+            type: string

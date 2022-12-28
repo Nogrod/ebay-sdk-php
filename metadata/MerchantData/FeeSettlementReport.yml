@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\MerchantData\FeeSettlementReport:
+    xml_root_name: FeeSettlementReport
+    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

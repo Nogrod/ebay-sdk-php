@@ -1,0 +1,59 @@
+Nogrod\eBaySDK\MerchantData\ProductSearchPageType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        searchCharacteristicsSet:
+            expose: true
+            access_type: public_method
+            serialized_name: SearchCharacteristicsSet
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSearchCharacteristicsSet
+                setter: setSearchCharacteristicsSet
+            type: Nogrod\eBaySDK\MerchantData\CharacteristicsSetType
+        searchType:
+            expose: true
+            access_type: public_method
+            serialized_name: SearchType
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSearchType
+                setter: setSearchType
+            type: string
+        sortCharacteristics:
+            expose: true
+            access_type: public_method
+            serialized_name: SortCharacteristics
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSortCharacteristics
+                setter: setSortCharacteristics
+            xml_list:
+                inline: true
+                entry_name: SortCharacteristics
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<Nogrod\eBaySDK\MerchantData\CharacteristicType>
+        dataElementSet:
+            expose: true
+            access_type: public_method
+            serialized_name: DataElementSet
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getDataElementSet
+                setter: setDataElementSet
+            xml_list:
+                inline: true
+                entry_name: DataElementSet
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<Nogrod\eBaySDK\MerchantData\DataElementSetType>

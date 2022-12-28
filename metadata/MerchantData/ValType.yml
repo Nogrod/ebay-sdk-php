@@ -1,0 +1,44 @@
+Nogrod\eBaySDK\MerchantData\ValType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        valueLiteral:
+            expose: true
+            access_type: public_method
+            serialized_name: ValueLiteral
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getValueLiteral
+                setter: setValueLiteral
+            type: string
+        suggestedValueLiteral:
+            expose: true
+            access_type: public_method
+            serialized_name: SuggestedValueLiteral
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSuggestedValueLiteral
+                setter: setSuggestedValueLiteral
+            xml_list:
+                inline: true
+                entry_name: SuggestedValueLiteral
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<string>
+        valueID:
+            expose: true
+            access_type: public_method
+            serialized_name: ValueID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getValueID
+                setter: setValueID
+            type: int

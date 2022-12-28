@@ -1,0 +1,95 @@
+Nogrod\eBaySDK\MerchantData\ShipPackageDetailsType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        measurementUnit:
+            expose: true
+            access_type: public_method
+            serialized_name: MeasurementUnit
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getMeasurementUnit
+                setter: setMeasurementUnit
+            type: string
+        packageDepth:
+            expose: true
+            access_type: public_method
+            serialized_name: PackageDepth
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPackageDepth
+                setter: setPackageDepth
+            type: Nogrod\eBaySDK\MerchantData\MeasureType
+        packageLength:
+            expose: true
+            access_type: public_method
+            serialized_name: PackageLength
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPackageLength
+                setter: setPackageLength
+            type: Nogrod\eBaySDK\MerchantData\MeasureType
+        packageWidth:
+            expose: true
+            access_type: public_method
+            serialized_name: PackageWidth
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPackageWidth
+                setter: setPackageWidth
+            type: Nogrod\eBaySDK\MerchantData\MeasureType
+        shippingIrregular:
+            expose: true
+            access_type: public_method
+            serialized_name: ShippingIrregular
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getShippingIrregular
+                setter: setShippingIrregular
+            type: bool
+        shippingPackage:
+            expose: true
+            access_type: public_method
+            serialized_name: ShippingPackage
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getShippingPackage
+                setter: setShippingPackage
+            type: string
+        weightMajor:
+            expose: true
+            access_type: public_method
+            serialized_name: WeightMajor
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getWeightMajor
+                setter: setWeightMajor
+            type: Nogrod\eBaySDK\MerchantData\MeasureType
+        weightMinor:
+            expose: true
+            access_type: public_method
+            serialized_name: WeightMinor
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getWeightMinor
+                setter: setWeightMinor
+            type: Nogrod\eBaySDK\MerchantData\MeasureType

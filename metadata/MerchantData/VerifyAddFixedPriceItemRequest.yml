@@ -1,0 +1,3 @@
+Nogrod\eBaySDK\MerchantData\VerifyAddFixedPriceItemRequest:
+    xml_root_name: VerifyAddFixedPriceItemRequest
+    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

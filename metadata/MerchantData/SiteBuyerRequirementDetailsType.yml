@@ -1,0 +1,111 @@
+Nogrod\eBaySDK\MerchantData\SiteBuyerRequirementDetailsType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        linkedPayPalAccount:
+            expose: true
+            access_type: public_method
+            serialized_name: LinkedPayPalAccount
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getLinkedPayPalAccount
+                setter: setLinkedPayPalAccount
+            type: bool
+        maximumBuyerPolicyViolations:
+            expose: true
+            access_type: public_method
+            serialized_name: MaximumBuyerPolicyViolations
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getMaximumBuyerPolicyViolations
+                setter: setMaximumBuyerPolicyViolations
+            type: Nogrod\eBaySDK\MerchantData\MaximumBuyerPolicyViolationsDetailsType
+        maximumItemRequirements:
+            expose: true
+            access_type: public_method
+            serialized_name: MaximumItemRequirements
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getMaximumItemRequirements
+                setter: setMaximumItemRequirements
+            type: Nogrod\eBaySDK\MerchantData\MaximumItemRequirementsDetailsType
+        maximumUnpaidItemStrikesInfo:
+            expose: true
+            access_type: public_method
+            serialized_name: MaximumUnpaidItemStrikesInfo
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getMaximumUnpaidItemStrikesInfo
+                setter: setMaximumUnpaidItemStrikesInfo
+            type: Nogrod\eBaySDK\MerchantData\MaximumUnpaidItemStrikesInfoDetailsType
+        minimumFeedbackScore:
+            expose: true
+            access_type: public_method
+            serialized_name: MinimumFeedbackScore
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getMinimumFeedbackScore
+                setter: setMinimumFeedbackScore
+            type: array<int>
+            xml_list:
+                inline: false
+                entry_name: FeedbackScore
+                skip_when_empty: true
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+        shipToRegistrationCountry:
+            expose: true
+            access_type: public_method
+            serialized_name: ShipToRegistrationCountry
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getShipToRegistrationCountry
+                setter: setShipToRegistrationCountry
+            type: bool
+        verifiedUserRequirements:
+            expose: true
+            access_type: public_method
+            serialized_name: VerifiedUserRequirements
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getVerifiedUserRequirements
+                setter: setVerifiedUserRequirements
+            type: Nogrod\eBaySDK\MerchantData\VerifiedUserRequirementsDetailsType
+        detailVersion:
+            expose: true
+            access_type: public_method
+            serialized_name: DetailVersion
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getDetailVersion
+                setter: setDetailVersion
+            type: string
+        updateTime:
+            expose: true
+            access_type: public_method
+            serialized_name: UpdateTime
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getUpdateTime
+                setter: setUpdateTime
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime

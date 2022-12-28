@@ -1,0 +1,84 @@
+Nogrod\eBaySDK\MerchantData\ShippingPackageDetailsType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        packageID:
+            expose: true
+            access_type: public_method
+            serialized_name: PackageID
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPackageID
+                setter: setPackageID
+            type: int
+        description:
+            expose: true
+            access_type: public_method
+            serialized_name: Description
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getDescription
+                setter: setDescription
+            type: string
+        shippingPackage:
+            expose: true
+            access_type: public_method
+            serialized_name: ShippingPackage
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getShippingPackage
+                setter: setShippingPackage
+            type: string
+        defaultValue:
+            expose: true
+            access_type: public_method
+            serialized_name: DefaultValue
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getDefaultValue
+                setter: setDefaultValue
+            type: bool
+        dimensionsSupported:
+            expose: true
+            access_type: public_method
+            serialized_name: DimensionsSupported
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getDimensionsSupported
+                setter: setDimensionsSupported
+            type: bool
+        detailVersion:
+            expose: true
+            access_type: public_method
+            serialized_name: DetailVersion
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getDetailVersion
+                setter: setDetailVersion
+            type: string
+        updateTime:
+            expose: true
+            access_type: public_method
+            serialized_name: UpdateTime
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getUpdateTime
+                setter: setUpdateTime
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime

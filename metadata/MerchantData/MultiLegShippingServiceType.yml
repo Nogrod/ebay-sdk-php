@@ -1,0 +1,29 @@
+Nogrod\eBaySDK\MerchantData\MultiLegShippingServiceType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        shippingService:
+            expose: true
+            access_type: public_method
+            serialized_name: ShippingService
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getShippingService
+                setter: setShippingService
+            type: string
+        totalShippingCost:
+            expose: true
+            access_type: public_method
+            serialized_name: TotalShippingCost
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getTotalShippingCost
+                setter: setTotalShippingCost
+            type: Nogrod\eBaySDK\MerchantData\AmountType

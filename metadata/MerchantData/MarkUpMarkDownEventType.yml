@@ -1,0 +1,40 @@
+Nogrod\eBaySDK\MerchantData\MarkUpMarkDownEventType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        type:
+            expose: true
+            access_type: public_method
+            serialized_name: Type
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getType
+                setter: setType
+            type: string
+        time:
+            expose: true
+            access_type: public_method
+            serialized_name: Time
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getTime
+                setter: setTime
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime
+        reason:
+            expose: true
+            access_type: public_method
+            serialized_name: Reason
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getReason
+                setter: setReason
+            type: string

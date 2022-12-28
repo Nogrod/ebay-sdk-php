@@ -1,0 +1,88 @@
+Nogrod\eBaySDK\MerchantData\BiddingSummaryType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        summaryDays:
+            expose: true
+            access_type: public_method
+            serialized_name: SummaryDays
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSummaryDays
+                setter: setSummaryDays
+            type: int
+        totalBids:
+            expose: true
+            access_type: public_method
+            serialized_name: TotalBids
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getTotalBids
+                setter: setTotalBids
+            type: int
+        bidActivityWithSeller:
+            expose: true
+            access_type: public_method
+            serialized_name: BidActivityWithSeller
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getBidActivityWithSeller
+                setter: setBidActivityWithSeller
+            type: int
+        bidsToUniqueSellers:
+            expose: true
+            access_type: public_method
+            serialized_name: BidsToUniqueSellers
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getBidsToUniqueSellers
+                setter: setBidsToUniqueSellers
+            type: int
+        bidsToUniqueCategories:
+            expose: true
+            access_type: public_method
+            serialized_name: BidsToUniqueCategories
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getBidsToUniqueCategories
+                setter: setBidsToUniqueCategories
+            type: int
+        bidRetractions:
+            expose: true
+            access_type: public_method
+            serialized_name: BidRetractions
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getBidRetractions
+                setter: setBidRetractions
+            type: int
+        itemBidDetails:
+            expose: true
+            access_type: public_method
+            serialized_name: ItemBidDetails
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getItemBidDetails
+                setter: setItemBidDetails
+            xml_list:
+                inline: true
+                entry_name: ItemBidDetails
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            type: array<Nogrod\eBaySDK\MerchantData\ItemBidDetailsType>

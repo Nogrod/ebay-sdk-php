@@ -1,0 +1,29 @@
+Nogrod\eBaySDK\MerchantData\MessageMediaType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        mediaURL:
+            expose: true
+            access_type: public_method
+            serialized_name: MediaURL
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getMediaURL
+                setter: setMediaURL
+            type: string
+        mediaName:
+            expose: true
+            access_type: public_method
+            serialized_name: MediaName
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getMediaName
+                setter: setMediaName
+            type: string
