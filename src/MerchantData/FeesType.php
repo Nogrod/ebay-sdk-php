@@ -87,7 +87,7 @@ class FeesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         return $this;
     }
 
-    public function xmlSerialize(\Sabre\Xml\Writer $writer)
+    public function xmlSerialize(\Sabre\Xml\Writer $writer): void
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getFee();

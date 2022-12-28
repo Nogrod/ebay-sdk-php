@@ -9,7 +9,7 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class GetMyeBayRemindersResponse extends GetMyeBayRemindersResponseType
 {
-    public function xmlSerialize(\Sabre\Xml\Writer $writer)
+    public function xmlSerialize(\Sabre\Xml\Writer $writer): void
     {
         parent::xmlSerialize($writer);
     }

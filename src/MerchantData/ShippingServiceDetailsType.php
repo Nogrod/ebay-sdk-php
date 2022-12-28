@@ -1109,7 +1109,7 @@ class ShippingServiceDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
         return $this;
     }
 
-    public function xmlSerialize(\Sabre\Xml\Writer $writer)
+    public function xmlSerialize(\Sabre\Xml\Writer $writer): void
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getDescription();

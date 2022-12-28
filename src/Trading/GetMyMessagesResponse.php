@@ -7,7 +7,7 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class GetMyMessagesResponse extends GetMyMessagesResponseType
 {
-    public function xmlSerialize(\Sabre\Xml\Writer $writer)
+    public function xmlSerialize(\Sabre\Xml\Writer $writer): void
     {
         parent::xmlSerialize($writer);
     }

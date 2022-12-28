@@ -7,7 +7,7 @@ namespace Nogrod\eBaySDK\Shopping;
  */
 class GetShippingCostsRequest extends GetShippingCostsRequestType
 {
-    public function xmlSerialize(\Sabre\Xml\Writer $writer)
+    public function xmlSerialize(\Sabre\Xml\Writer $writer): void
     {
         parent::xmlSerialize($writer);
     }

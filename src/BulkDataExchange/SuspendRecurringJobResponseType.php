@@ -10,7 +10,7 @@ namespace Nogrod\eBaySDK\BulkDataExchange;
  */
 class SuspendRecurringJobResponseType extends BaseServiceResponseType
 {
-    public function xmlSerialize(\Sabre\Xml\Writer $writer)
+    public function xmlSerialize(\Sabre\Xml\Writer $writer): void
     {
         parent::xmlSerialize($writer);
     }

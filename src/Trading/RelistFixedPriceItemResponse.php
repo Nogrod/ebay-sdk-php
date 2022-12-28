@@ -7,7 +7,7 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class RelistFixedPriceItemResponse extends RelistFixedPriceItemResponseType
 {
-    public function xmlSerialize(\Sabre\Xml\Writer $writer)
+    public function xmlSerialize(\Sabre\Xml\Writer $writer): void
     {
         parent::xmlSerialize($writer);
     }

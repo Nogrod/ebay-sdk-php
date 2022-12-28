@@ -9,7 +9,7 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class GeteBayDetailsResponse extends GeteBayDetailsResponseType
 {
-    public function xmlSerialize(\Sabre\Xml\Writer $writer)
+    public function xmlSerialize(\Sabre\Xml\Writer $writer): void
     {
         parent::xmlSerialize($writer);
     }

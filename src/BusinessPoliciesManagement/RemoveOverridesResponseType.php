@@ -10,7 +10,7 @@ namespace Nogrod\eBaySDK\BusinessPoliciesManagement;
  */
 class RemoveOverridesResponseType extends BaseResponseType
 {
-    public function xmlSerialize(\Sabre\Xml\Writer $writer)
+    public function xmlSerialize(\Sabre\Xml\Writer $writer): void
     {
         parent::xmlSerialize($writer);
     }

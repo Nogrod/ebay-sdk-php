@@ -11,7 +11,7 @@ class TradingClassMap
         return ['Time' => function (Writer $writer, $elem) {
             $value = $elem->format('H:i:s');
             if ($elem->getTimezone()->getOffset($elem) !== (new \DateTimeZone('UTC'))->getOffset($elem)) {
-                $value .= $date->format('P');
+                $value .= $elem->format('P');
             }$writer->write($value);
         },
         'DateTime' => function (Writer $writer, $elem) {

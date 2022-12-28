@@ -7,7 +7,7 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class GetStoreRequest extends GetStoreRequestType
 {
-    public function xmlSerialize(\Sabre\Xml\Writer $writer)
+    public function xmlSerialize(\Sabre\Xml\Writer $writer): void
     {
         parent::xmlSerialize($writer);
     }

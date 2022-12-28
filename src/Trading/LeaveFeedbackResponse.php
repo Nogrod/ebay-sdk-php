@@ -7,7 +7,7 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class LeaveFeedbackResponse extends LeaveFeedbackResponseType
 {
-    public function xmlSerialize(\Sabre\Xml\Writer $writer)
+    public function xmlSerialize(\Sabre\Xml\Writer $writer): void
     {
         parent::xmlSerialize($writer);
     }

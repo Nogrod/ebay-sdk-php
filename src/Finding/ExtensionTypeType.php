@@ -144,7 +144,7 @@ class ExtensionTypeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
         return $this;
     }
 
-    public function xmlSerialize(\Sabre\Xml\Writer $writer)
+    public function xmlSerialize(\Sabre\Xml\Writer $writer): void
     {
         $writer->writeAttribute("xmlns", "http://www.ebay.com/marketplace/search/v1/services");
         $value = $this->getId();

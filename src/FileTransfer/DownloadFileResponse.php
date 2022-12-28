@@ -7,7 +7,7 @@ namespace Nogrod\eBaySDK\FileTransfer;
  */
 class DownloadFileResponse extends DownloadFileResponseType
 {
-    public function xmlSerialize(\Sabre\Xml\Writer $writer)
+    public function xmlSerialize(\Sabre\Xml\Writer $writer): void
     {
         parent::xmlSerialize($writer);
     }

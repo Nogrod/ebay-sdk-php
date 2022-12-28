@@ -11,7 +11,7 @@ namespace Nogrod\eBaySDK\BulkDataExchange;
  */
 class GetRecurringJobsRequestType extends BaseServiceRequestType
 {
-    public function xmlSerialize(\Sabre\Xml\Writer $writer)
+    public function xmlSerialize(\Sabre\Xml\Writer $writer): void
     {
         parent::xmlSerialize($writer);
     }

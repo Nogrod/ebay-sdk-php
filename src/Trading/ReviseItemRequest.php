@@ -7,7 +7,7 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class ReviseItemRequest extends ReviseItemRequestType
 {
-    public function xmlSerialize(\Sabre\Xml\Writer $writer)
+    public function xmlSerialize(\Sabre\Xml\Writer $writer): void
     {
         parent::xmlSerialize($writer);
     }

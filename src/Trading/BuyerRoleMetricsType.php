@@ -144,7 +144,7 @@ class BuyerRoleMetricsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
         return $this;
     }
 
-    public function xmlSerialize(\Sabre\Xml\Writer $writer)
+    public function xmlSerialize(\Sabre\Xml\Writer $writer): void
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getPositiveFeedbackLeftCount();

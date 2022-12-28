@@ -7,7 +7,7 @@ namespace Nogrod\eBaySDK\BulkDataExchange;
  */
 class GetRecurringJobExecutionHistoryResponse extends GetRecurringJobExecutionHistoryResponseType
 {
-    public function xmlSerialize(\Sabre\Xml\Writer $writer)
+    public function xmlSerialize(\Sabre\Xml\Writer $writer): void
     {
         parent::xmlSerialize($writer);
     }

@@ -7,7 +7,7 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class ExtendSiteHostedPicturesRequest extends ExtendSiteHostedPicturesRequestType
 {
-    public function xmlSerialize(\Sabre\Xml\Writer $writer)
+    public function xmlSerialize(\Sabre\Xml\Writer $writer): void
     {
         parent::xmlSerialize($writer);
     }

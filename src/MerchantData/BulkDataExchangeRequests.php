@@ -7,7 +7,7 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class BulkDataExchangeRequests extends BulkDataExchangeRequestsType
 {
-    public function xmlSerialize(\Sabre\Xml\Writer $writer)
+    public function xmlSerialize(\Sabre\Xml\Writer $writer): void
     {
         parent::xmlSerialize($writer);
     }

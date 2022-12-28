@@ -7,7 +7,7 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class SetShippingDiscountProfilesResponse extends SetShippingDiscountProfilesResponseType
 {
-    public function xmlSerialize(\Sabre\Xml\Writer $writer)
+    public function xmlSerialize(\Sabre\Xml\Writer $writer): void
     {
         parent::xmlSerialize($writer);
     }

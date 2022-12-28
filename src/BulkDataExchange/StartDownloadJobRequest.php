@@ -7,7 +7,7 @@ namespace Nogrod\eBaySDK\BulkDataExchange;
  */
 class StartDownloadJobRequest extends StartDownloadJobRequestType
 {
-    public function xmlSerialize(\Sabre\Xml\Writer $writer)
+    public function xmlSerialize(\Sabre\Xml\Writer $writer): void
     {
         parent::xmlSerialize($writer);
     }

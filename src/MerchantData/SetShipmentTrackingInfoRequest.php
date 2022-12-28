@@ -7,7 +7,7 @@ namespace Nogrod\eBaySDK\MerchantData;
  */
 class SetShipmentTrackingInfoRequest extends SetShipmentTrackingInfoRequestType
 {
-    public function xmlSerialize(\Sabre\Xml\Writer $writer)
+    public function xmlSerialize(\Sabre\Xml\Writer $writer): void
     {
         parent::xmlSerialize($writer);
     }

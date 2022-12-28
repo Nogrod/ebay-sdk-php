@@ -55,7 +55,7 @@ class SetShipmentTrackingInfoResponseType extends AbstractResponseType
         return $this;
     }
 
-    public function xmlSerialize(\Sabre\Xml\Writer $writer)
+    public function xmlSerialize(\Sabre\Xml\Writer $writer): void
     {
         parent::xmlSerialize($writer);
         $value = $this->getOrderLineItemID();

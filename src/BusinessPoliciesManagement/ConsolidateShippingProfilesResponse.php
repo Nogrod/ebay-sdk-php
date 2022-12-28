@@ -9,7 +9,7 @@ namespace Nogrod\eBaySDK\BusinessPoliciesManagement;
  */
 class ConsolidateShippingProfilesResponse extends ConsolidateShippingProfilesResponseType
 {
-    public function xmlSerialize(\Sabre\Xml\Writer $writer)
+    public function xmlSerialize(\Sabre\Xml\Writer $writer): void
     {
         parent::xmlSerialize($writer);
     }
