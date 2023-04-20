@@ -13,7 +13,7 @@
     { "type": "vcs", "url": "https://github.com/Nogrod/soap-reader.git" }
   ],
   "require": {
-    "php": "^7.4",
+    "php": "^7.4|^8.0",
     "php-http/multipart-stream-builder": "^1.1",
     "nogrod/xml-client-runtime": "^0.1"
   },
