@@ -15,21 +15,24 @@ class PaymentMethodSearchCodeType
     /**
      * Constant for 'PayPal' value.
      *
-     * This enumeration value is deprecated.
+     * This enumeration value indicates that the item may be purchased using PayPal as
+     * the payment method.
      */
     public const VAL_PAY_PAL = 'PayPal';
 
     /**
      * Constant for 'PaisaPay' value.
      *
-     * This enumeration value is deprecated.
+     * PaisaPay is no longer a supported payment method, so this value is no longer
+     * applicable.
      */
     public const VAL_PAISA_PAY = 'PaisaPay';
 
     /**
      * Constant for 'PayPalOrPaisaPay' value.
      *
-     * This enumeration value is deprecated.
+     * PaisaPay is no longer a supported payment method, so this value is no longer
+     * applicable.
      */
     public const VAL_PAY_PAL_OR_PAISA_PAY = 'PayPalOrPaisaPay';
 
@@ -43,7 +46,8 @@ class PaymentMethodSearchCodeType
     /**
      * Constant for 'PaisaPayEscrowEMI' value.
      *
-     * This enumeration value is deprecated.
+     * PaisaPay is no longer a supported payment method, so this value is no longer
+     * applicable.
      */
     public const VAL_PAISA_PAY_ESCROW_EMI = 'PaisaPayEscrowEMI';
 

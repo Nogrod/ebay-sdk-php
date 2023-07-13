@@ -172,9 +172,8 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      * Container consisting of payment details for an eBay sales transaction, including an identifier for the monetary transaction and a field to express any fees or credits applied to the monetary transaction. This field is only returned after payment for the order has occurred.
      *  <br><br>
      *  <b>For GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this field will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, the real transaction identifier is only returned to the buyer or seller, and a string value of <code>Unavailable</code> will be returned to all third parties.
-     *  <br><br>
-     *  <span class="tablenote">
-     *  <strong>Note:</strong> The <strong>MonetaryDetails</strong> container also shows payment information for the order. In the future, it is possible that the <strong>ExternalTransaction</strong> container will be deprecated, so you are encouraged to start using <strong>MonetaryDetails</strong> as soon as possible.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> This container will stop being returned on January 31, 2024. The <strong>MonetaryDetails</strong> container should be used instead.
      *  </span>
      *
      * @var \Nogrod\eBaySDK\Trading\ExternalTransactionType[] $externalTransaction
@@ -186,6 +185,9 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     /**
      * This container consists of Selling Manager product details and is only
      *  returned if the item was listed through Selling Manager Pro.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> This container will stop being returned on January 31, 2024.
+     *  </span>
      *
      * @var \Nogrod\eBaySDK\Trading\SellingManagerProductDetailsType $sellingManagerProductDetails
      */
@@ -365,7 +367,11 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     private $paisaPayID = null;
 
     /**
-     * The Buyer Guarantee price. This field is only applicable to the Australian site.
+     * <br>
+     *  The Buyer Guarantee price. This field is only applicable to the Australian site.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> This field will stop being returned on January 31, 2024.
+     *  </span>
      *
      * @var \Nogrod\eBaySDK\Trading\AmountType $buyerGuaranteePrice
      */
@@ -525,8 +531,8 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     private $invoiceSentTime = null;
 
     /**
-     * <span class="tablenote"><strong>Note:</strong> This container is deprecated (Unpaid Item cases are no longer supported). </span><br>
-     *  Container consisting of details related to the type and status of an Unpaid Item case. This container is only returned if there is an open (or recently closed) Unpaid Item case associated with the order line item.
+     * <br>
+     *  <span class="tablenote"><strong>Note:</strong> This container is deprecated (Unpaid Item cases are no longer supported). This container will stop being returned on January 31, 2024.</span>
      *
      * @var \Nogrod\eBaySDK\Trading\UnpaidItemType $unpaidItem
      */
@@ -603,14 +609,11 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     private $inventoryReservationID = null;
 
     /**
-     * A unique identifier for an eBay order in the new eBay REST API model. <b>ExtendedOrderID</b> values will be used to identify orders in REST-based APIs, including the Post-Order API and the Fulfillment API.
-     *  <br><br>
+     * A unique identifier for an eBay order. This field is only returned for paid orders, and not unpaid orders.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> <b>ExtendedOrderID</b> was first created when eBay changed the format of Order IDs back in June 2019. For a short period, the <b>OrderID</b> field showed the old Order ID format and the <b>ExtendedOrderID</b> field showed the new Order ID format. For paid orders, both <b>OrderID</b> and <b>ExtendedOrderID</b> now show the same Order ID value.
+     *  <br>
      *  <b>For GetOrders, GetOrderTransactions, and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this field will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, the correct Order ID is returned to the buyer or seller, but a dummy Order ID value of <code>1000000000000</code> will be returned to all third parties.
-     *  <br><br>
-     *  <span class="tablenote"><b>Note: </b> As of June 2019, eBay has changed the format of order identifier values, and this new format is relevant to both legacy and REST API-based order ID fields. The new format is a non-parsable string, globally unique across all eBay marketplaces, and consistent for both single line item and multiple line item orders. Unlike in the past, instead of just being known and exposed to the seller, these unique order identifiers will also be known and used/referenced by the buyer and eBay customer support.
-     *  <br><br>
-     *  Please note that the identifier for an order (for <b>OrderID</b> and <b>ExtendedOrderID</b>) will change as it goes from unpaid to paid status. Sellers can check to see if an order has been paid by looking for a value of 'Complete' in the <b>CheckoutStatus.Status</b> field in the response of <b>GetOrders</b> or <b>GetOrderTransactions</b> call, or in the <b>Status.CompleteStatus</b> field in the response of <b>GetItemTransactions</b> or <b>GetSellerTransactions</b> call. Both the paid and unpaid Order IDs will be accepted in all Trading API call request payloads.
-     *  </span>
      *  <br>
      *
      * @var string $extendedOrderID
@@ -658,15 +661,7 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     private $guaranteedShipping = null;
 
     /**
-     * This field is returned as <code>true</code> if the order line item is qualified for eBay Guaranteed Delivery, or <code>false</code> if it is not eligible. At this time, eBay Guaranteed Delivery is only available to a select number of sellers on the US and Australia sites, but this feature will be enabled on more eBay sites in 2019. <br/><br/>Only domestic shipments are available for eBay Guaranteed Delivery. For an order line item to be qualified for eBay Guaranteed Delivery, the following must be true:
-     *  <ul>
-     *  <li>The eBay Guaranteed Delivery feature must be available to the seller</li>
-     *  <li>That seller must be opted in to one of the two eBay Guaranteed Delivery programs</li>
-     *  <li>If the seller is opted into the "Door-to-Door" program, a domestic shipping rate table must be applied to the listing, and that shipping rate table must include the buyer's location with a transit time (handling + shipping time) of 3 business days or less; </li>
-     *  <li>If the seller is opted into the "Handling Time" program, the handling time plus the max shipping time must equal 3 business days or less, and that shipping rate table must include the buyer's location with a transit time (handling + shipping time) of 3 business days or less</li>
-     *  <li>The listing must have a return policy</li>
-     *  </ul>
-     *  With eBay Guaranteed Delivery, the sellers are committed to getting the order line item to the buyer within 3 business days. The seller's defined "Order Cutoff" time will control what is considered 3 business days. If a buyer wanted to get an order by Friday, that buyer would have to purchase that item on Monday before the seller's "Order Cutoff" time. The seller's "Order Cutoff" time is generally set in their timezone, so the buyer should take this into account before the purchase.
+     * This field is deprecated, and can be ignored if returned. The Guaranteed Delivery program is no longer supported on any eBay marketplace.
      *
      * @var bool $guaranteedDelivery
      */
@@ -677,7 +672,7 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      *  <br/><br/>
      *  Australian 'Goods and Services' tax (GST) is automatically charged to buyers outside of Australia when they purchase items on the eBay Australia site. Sellers on the Australia site do not have to take any extra steps to enable the collection of GST, as this tax is collected by eBay and remitted to the Australian government. For more information about Australian GST, see the <a href="https://www.ebay.com.au/help/selling/fees-credits-invoices/taxes-import-charges?id=4121">Taxes and import charges</a> help topic.
      *  <br/><br/>
-     *  As of November 2021, buyers in all US states except for Missouri (and several US territories), will automatically be charged sales tax for purchases, and the seller does not set this rate. eBay will collect and remit this sales tax to the proper taxing authority on the buyer's behalf. For more US state-level information on sales tax, see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section4">eBay sales tax collection</a> help topic.
+     *  As of January 2023, buyers in all US states will automatically be charged sales tax for purchases, and the seller does not set this rate. eBay will collect and remit this sales tax to the proper taxing authority on the buyer's behalf. For more US state-level information on sales tax, see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section4">eBay sales tax collection</a> help topic.
      *
      * @var bool $eBayCollectAndRemitTax
      */
@@ -688,7 +683,7 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      *  <br/><br/>
      *  Australian 'Goods and Services' tax (GST) is automatically charged to buyers outside of Australia when they purchase items on the eBay Australia site. Sellers on the Australia site do not have to take any extra steps to enable the collection of GST, as this tax is collected by eBay and remitted to the Australian government. For more information about Australian GST, see the <a href="https://www.ebay.com.au/help/selling/fees-credits-invoices/taxes-import-charges?id=4121">Taxes and import charges</a> help topic.
      *  <br/><br/>
-     *  As of November 2021, buyers in all US states except for Missouri (and several US territories), will automatically be charged sales tax for purchases, and the seller does not set this rate. eBay will collect and remit this sales tax to the proper taxing authority on the buyer's behalf. For more US state-level information on sales tax, see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section4">eBay sales tax collection</a> help topic.
+     *  As of January 2023, buyers in all US states will automatically be charged sales tax for purchases, and the seller does not set this rate. eBay will collect and remit this sales tax to the proper taxing authority on the buyer's behalf. For more US state-level information on sales tax, see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section4">eBay sales tax collection</a> help topic.
      *
      * @var \Nogrod\eBaySDK\Trading\TaxesType $eBayCollectAndRemitTaxes
      */
@@ -702,6 +697,14 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      * @var \Nogrod\eBaySDK\Trading\TransactionProgramType $program
      */
     private $program = null;
+
+    /**
+     * <span class="tablenote"><b>Note: </b> This array is only returned if the order has associated linked line items.</span>
+     *  Container consisting of an array of linked line item objects.
+     *
+     * @var \Nogrod\eBaySDK\Trading\LinkedLineItemType[] $linkedLineItemArray
+     */
+    private $linkedLineItemArray = null;
 
     /**
      * Gets as amountPaid
@@ -1211,9 +1214,8 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      * Container consisting of payment details for an eBay sales transaction, including an identifier for the monetary transaction and a field to express any fees or credits applied to the monetary transaction. This field is only returned after payment for the order has occurred.
      *  <br><br>
      *  <b>For GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this field will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, the real transaction identifier is only returned to the buyer or seller, and a string value of <code>Unavailable</code> will be returned to all third parties.
-     *  <br><br>
-     *  <span class="tablenote">
-     *  <strong>Note:</strong> The <strong>MonetaryDetails</strong> container also shows payment information for the order. In the future, it is possible that the <strong>ExternalTransaction</strong> container will be deprecated, so you are encouraged to start using <strong>MonetaryDetails</strong> as soon as possible.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> This container will stop being returned on January 31, 2024. The <strong>MonetaryDetails</strong> container should be used instead.
      *  </span>
      *
      * @return self
@@ -1231,9 +1233,8 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      * Container consisting of payment details for an eBay sales transaction, including an identifier for the monetary transaction and a field to express any fees or credits applied to the monetary transaction. This field is only returned after payment for the order has occurred.
      *  <br><br>
      *  <b>For GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this field will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, the real transaction identifier is only returned to the buyer or seller, and a string value of <code>Unavailable</code> will be returned to all third parties.
-     *  <br><br>
-     *  <span class="tablenote">
-     *  <strong>Note:</strong> The <strong>MonetaryDetails</strong> container also shows payment information for the order. In the future, it is possible that the <strong>ExternalTransaction</strong> container will be deprecated, so you are encouraged to start using <strong>MonetaryDetails</strong> as soon as possible.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> This container will stop being returned on January 31, 2024. The <strong>MonetaryDetails</strong> container should be used instead.
      *  </span>
      *
      * @param int|string $index
@@ -1250,9 +1251,8 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      * Container consisting of payment details for an eBay sales transaction, including an identifier for the monetary transaction and a field to express any fees or credits applied to the monetary transaction. This field is only returned after payment for the order has occurred.
      *  <br><br>
      *  <b>For GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this field will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, the real transaction identifier is only returned to the buyer or seller, and a string value of <code>Unavailable</code> will be returned to all third parties.
-     *  <br><br>
-     *  <span class="tablenote">
-     *  <strong>Note:</strong> The <strong>MonetaryDetails</strong> container also shows payment information for the order. In the future, it is possible that the <strong>ExternalTransaction</strong> container will be deprecated, so you are encouraged to start using <strong>MonetaryDetails</strong> as soon as possible.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> This container will stop being returned on January 31, 2024. The <strong>MonetaryDetails</strong> container should be used instead.
      *  </span>
      *
      * @param int|string $index
@@ -1269,9 +1269,8 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      * Container consisting of payment details for an eBay sales transaction, including an identifier for the monetary transaction and a field to express any fees or credits applied to the monetary transaction. This field is only returned after payment for the order has occurred.
      *  <br><br>
      *  <b>For GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this field will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, the real transaction identifier is only returned to the buyer or seller, and a string value of <code>Unavailable</code> will be returned to all third parties.
-     *  <br><br>
-     *  <span class="tablenote">
-     *  <strong>Note:</strong> The <strong>MonetaryDetails</strong> container also shows payment information for the order. In the future, it is possible that the <strong>ExternalTransaction</strong> container will be deprecated, so you are encouraged to start using <strong>MonetaryDetails</strong> as soon as possible.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> This container will stop being returned on January 31, 2024. The <strong>MonetaryDetails</strong> container should be used instead.
      *  </span>
      *
      * @return \Nogrod\eBaySDK\Trading\ExternalTransactionType[]
@@ -1287,9 +1286,8 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      * Container consisting of payment details for an eBay sales transaction, including an identifier for the monetary transaction and a field to express any fees or credits applied to the monetary transaction. This field is only returned after payment for the order has occurred.
      *  <br><br>
      *  <b>For GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this field will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, the real transaction identifier is only returned to the buyer or seller, and a string value of <code>Unavailable</code> will be returned to all third parties.
-     *  <br><br>
-     *  <span class="tablenote">
-     *  <strong>Note:</strong> The <strong>MonetaryDetails</strong> container also shows payment information for the order. In the future, it is possible that the <strong>ExternalTransaction</strong> container will be deprecated, so you are encouraged to start using <strong>MonetaryDetails</strong> as soon as possible.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> This container will stop being returned on January 31, 2024. The <strong>MonetaryDetails</strong> container should be used instead.
      *  </span>
      *
      * @param \Nogrod\eBaySDK\Trading\ExternalTransactionType[] $externalTransaction
@@ -1306,6 +1304,9 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      *
      * This container consists of Selling Manager product details and is only
      *  returned if the item was listed through Selling Manager Pro.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> This container will stop being returned on January 31, 2024.
+     *  </span>
      *
      * @return \Nogrod\eBaySDK\Trading\SellingManagerProductDetailsType
      */
@@ -1319,6 +1320,9 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      *
      * This container consists of Selling Manager product details and is only
      *  returned if the item was listed through Selling Manager Pro.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> This container will stop being returned on January 31, 2024.
+     *  </span>
      *
      * @param \Nogrod\eBaySDK\Trading\SellingManagerProductDetailsType $sellingManagerProductDetails
      * @return self
@@ -1961,7 +1965,11 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     /**
      * Gets as buyerGuaranteePrice
      *
-     * The Buyer Guarantee price. This field is only applicable to the Australian site.
+     * <br>
+     *  The Buyer Guarantee price. This field is only applicable to the Australian site.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> This field will stop being returned on January 31, 2024.
+     *  </span>
      *
      * @return \Nogrod\eBaySDK\Trading\AmountType
      */
@@ -1973,7 +1981,11 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     /**
      * Sets a new buyerGuaranteePrice
      *
-     * The Buyer Guarantee price. This field is only applicable to the Australian site.
+     * <br>
+     *  The Buyer Guarantee price. This field is only applicable to the Australian site.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> This field will stop being returned on January 31, 2024.
+     *  </span>
      *
      * @param \Nogrod\eBaySDK\Trading\AmountType $buyerGuaranteePrice
      * @return self
@@ -2497,8 +2509,8 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     /**
      * Gets as unpaidItem
      *
-     * <span class="tablenote"><strong>Note:</strong> This container is deprecated (Unpaid Item cases are no longer supported). </span><br>
-     *  Container consisting of details related to the type and status of an Unpaid Item case. This container is only returned if there is an open (or recently closed) Unpaid Item case associated with the order line item.
+     * <br>
+     *  <span class="tablenote"><strong>Note:</strong> This container is deprecated (Unpaid Item cases are no longer supported). This container will stop being returned on January 31, 2024.</span>
      *
      * @return \Nogrod\eBaySDK\Trading\UnpaidItemType
      */
@@ -2510,8 +2522,8 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     /**
      * Sets a new unpaidItem
      *
-     * <span class="tablenote"><strong>Note:</strong> This container is deprecated (Unpaid Item cases are no longer supported). </span><br>
-     *  Container consisting of details related to the type and status of an Unpaid Item case. This container is only returned if there is an open (or recently closed) Unpaid Item case associated with the order line item.
+     * <br>
+     *  <span class="tablenote"><strong>Note:</strong> This container is deprecated (Unpaid Item cases are no longer supported). This container will stop being returned on January 31, 2024.</span>
      *
      * @param \Nogrod\eBaySDK\Trading\UnpaidItemType $unpaidItem
      * @return self
@@ -2859,14 +2871,11 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     /**
      * Gets as extendedOrderID
      *
-     * A unique identifier for an eBay order in the new eBay REST API model. <b>ExtendedOrderID</b> values will be used to identify orders in REST-based APIs, including the Post-Order API and the Fulfillment API.
-     *  <br><br>
+     * A unique identifier for an eBay order. This field is only returned for paid orders, and not unpaid orders.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> <b>ExtendedOrderID</b> was first created when eBay changed the format of Order IDs back in June 2019. For a short period, the <b>OrderID</b> field showed the old Order ID format and the <b>ExtendedOrderID</b> field showed the new Order ID format. For paid orders, both <b>OrderID</b> and <b>ExtendedOrderID</b> now show the same Order ID value.
+     *  <br>
      *  <b>For GetOrders, GetOrderTransactions, and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this field will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, the correct Order ID is returned to the buyer or seller, but a dummy Order ID value of <code>1000000000000</code> will be returned to all third parties.
-     *  <br><br>
-     *  <span class="tablenote"><b>Note: </b> As of June 2019, eBay has changed the format of order identifier values, and this new format is relevant to both legacy and REST API-based order ID fields. The new format is a non-parsable string, globally unique across all eBay marketplaces, and consistent for both single line item and multiple line item orders. Unlike in the past, instead of just being known and exposed to the seller, these unique order identifiers will also be known and used/referenced by the buyer and eBay customer support.
-     *  <br><br>
-     *  Please note that the identifier for an order (for <b>OrderID</b> and <b>ExtendedOrderID</b>) will change as it goes from unpaid to paid status. Sellers can check to see if an order has been paid by looking for a value of 'Complete' in the <b>CheckoutStatus.Status</b> field in the response of <b>GetOrders</b> or <b>GetOrderTransactions</b> call, or in the <b>Status.CompleteStatus</b> field in the response of <b>GetItemTransactions</b> or <b>GetSellerTransactions</b> call. Both the paid and unpaid Order IDs will be accepted in all Trading API call request payloads.
-     *  </span>
      *  <br>
      *
      * @return string
@@ -2879,14 +2888,11 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     /**
      * Sets a new extendedOrderID
      *
-     * A unique identifier for an eBay order in the new eBay REST API model. <b>ExtendedOrderID</b> values will be used to identify orders in REST-based APIs, including the Post-Order API and the Fulfillment API.
-     *  <br><br>
+     * A unique identifier for an eBay order. This field is only returned for paid orders, and not unpaid orders.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> <b>ExtendedOrderID</b> was first created when eBay changed the format of Order IDs back in June 2019. For a short period, the <b>OrderID</b> field showed the old Order ID format and the <b>ExtendedOrderID</b> field showed the new Order ID format. For paid orders, both <b>OrderID</b> and <b>ExtendedOrderID</b> now show the same Order ID value.
+     *  <br>
      *  <b>For GetOrders, GetOrderTransactions, and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this field will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, the correct Order ID is returned to the buyer or seller, but a dummy Order ID value of <code>1000000000000</code> will be returned to all third parties.
-     *  <br><br>
-     *  <span class="tablenote"><b>Note: </b> As of June 2019, eBay has changed the format of order identifier values, and this new format is relevant to both legacy and REST API-based order ID fields. The new format is a non-parsable string, globally unique across all eBay marketplaces, and consistent for both single line item and multiple line item orders. Unlike in the past, instead of just being known and exposed to the seller, these unique order identifiers will also be known and used/referenced by the buyer and eBay customer support.
-     *  <br><br>
-     *  Please note that the identifier for an order (for <b>OrderID</b> and <b>ExtendedOrderID</b>) will change as it goes from unpaid to paid status. Sellers can check to see if an order has been paid by looking for a value of 'Complete' in the <b>CheckoutStatus.Status</b> field in the response of <b>GetOrders</b> or <b>GetOrderTransactions</b> call, or in the <b>Status.CompleteStatus</b> field in the response of <b>GetItemTransactions</b> or <b>GetSellerTransactions</b> call. Both the paid and unpaid Order IDs will be accepted in all Trading API call request payloads.
-     *  </span>
      *  <br>
      *
      * @param string $extendedOrderID
@@ -3041,15 +3047,7 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     /**
      * Gets as guaranteedDelivery
      *
-     * This field is returned as <code>true</code> if the order line item is qualified for eBay Guaranteed Delivery, or <code>false</code> if it is not eligible. At this time, eBay Guaranteed Delivery is only available to a select number of sellers on the US and Australia sites, but this feature will be enabled on more eBay sites in 2019. <br/><br/>Only domestic shipments are available for eBay Guaranteed Delivery. For an order line item to be qualified for eBay Guaranteed Delivery, the following must be true:
-     *  <ul>
-     *  <li>The eBay Guaranteed Delivery feature must be available to the seller</li>
-     *  <li>That seller must be opted in to one of the two eBay Guaranteed Delivery programs</li>
-     *  <li>If the seller is opted into the "Door-to-Door" program, a domestic shipping rate table must be applied to the listing, and that shipping rate table must include the buyer's location with a transit time (handling + shipping time) of 3 business days or less; </li>
-     *  <li>If the seller is opted into the "Handling Time" program, the handling time plus the max shipping time must equal 3 business days or less, and that shipping rate table must include the buyer's location with a transit time (handling + shipping time) of 3 business days or less</li>
-     *  <li>The listing must have a return policy</li>
-     *  </ul>
-     *  With eBay Guaranteed Delivery, the sellers are committed to getting the order line item to the buyer within 3 business days. The seller's defined "Order Cutoff" time will control what is considered 3 business days. If a buyer wanted to get an order by Friday, that buyer would have to purchase that item on Monday before the seller's "Order Cutoff" time. The seller's "Order Cutoff" time is generally set in their timezone, so the buyer should take this into account before the purchase.
+     * This field is deprecated, and can be ignored if returned. The Guaranteed Delivery program is no longer supported on any eBay marketplace.
      *
      * @return bool
      */
@@ -3061,15 +3059,7 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     /**
      * Sets a new guaranteedDelivery
      *
-     * This field is returned as <code>true</code> if the order line item is qualified for eBay Guaranteed Delivery, or <code>false</code> if it is not eligible. At this time, eBay Guaranteed Delivery is only available to a select number of sellers on the US and Australia sites, but this feature will be enabled on more eBay sites in 2019. <br/><br/>Only domestic shipments are available for eBay Guaranteed Delivery. For an order line item to be qualified for eBay Guaranteed Delivery, the following must be true:
-     *  <ul>
-     *  <li>The eBay Guaranteed Delivery feature must be available to the seller</li>
-     *  <li>That seller must be opted in to one of the two eBay Guaranteed Delivery programs</li>
-     *  <li>If the seller is opted into the "Door-to-Door" program, a domestic shipping rate table must be applied to the listing, and that shipping rate table must include the buyer's location with a transit time (handling + shipping time) of 3 business days or less; </li>
-     *  <li>If the seller is opted into the "Handling Time" program, the handling time plus the max shipping time must equal 3 business days or less, and that shipping rate table must include the buyer's location with a transit time (handling + shipping time) of 3 business days or less</li>
-     *  <li>The listing must have a return policy</li>
-     *  </ul>
-     *  With eBay Guaranteed Delivery, the sellers are committed to getting the order line item to the buyer within 3 business days. The seller's defined "Order Cutoff" time will control what is considered 3 business days. If a buyer wanted to get an order by Friday, that buyer would have to purchase that item on Monday before the seller's "Order Cutoff" time. The seller's "Order Cutoff" time is generally set in their timezone, so the buyer should take this into account before the purchase.
+     * This field is deprecated, and can be ignored if returned. The Guaranteed Delivery program is no longer supported on any eBay marketplace.
      *
      * @param bool $guaranteedDelivery
      * @return self
@@ -3087,7 +3077,7 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      *  <br/><br/>
      *  Australian 'Goods and Services' tax (GST) is automatically charged to buyers outside of Australia when they purchase items on the eBay Australia site. Sellers on the Australia site do not have to take any extra steps to enable the collection of GST, as this tax is collected by eBay and remitted to the Australian government. For more information about Australian GST, see the <a href="https://www.ebay.com.au/help/selling/fees-credits-invoices/taxes-import-charges?id=4121">Taxes and import charges</a> help topic.
      *  <br/><br/>
-     *  As of November 2021, buyers in all US states except for Missouri (and several US territories), will automatically be charged sales tax for purchases, and the seller does not set this rate. eBay will collect and remit this sales tax to the proper taxing authority on the buyer's behalf. For more US state-level information on sales tax, see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section4">eBay sales tax collection</a> help topic.
+     *  As of January 2023, buyers in all US states will automatically be charged sales tax for purchases, and the seller does not set this rate. eBay will collect and remit this sales tax to the proper taxing authority on the buyer's behalf. For more US state-level information on sales tax, see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section4">eBay sales tax collection</a> help topic.
      *
      * @return bool
      */
@@ -3103,7 +3093,7 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      *  <br/><br/>
      *  Australian 'Goods and Services' tax (GST) is automatically charged to buyers outside of Australia when they purchase items on the eBay Australia site. Sellers on the Australia site do not have to take any extra steps to enable the collection of GST, as this tax is collected by eBay and remitted to the Australian government. For more information about Australian GST, see the <a href="https://www.ebay.com.au/help/selling/fees-credits-invoices/taxes-import-charges?id=4121">Taxes and import charges</a> help topic.
      *  <br/><br/>
-     *  As of November 2021, buyers in all US states except for Missouri (and several US territories), will automatically be charged sales tax for purchases, and the seller does not set this rate. eBay will collect and remit this sales tax to the proper taxing authority on the buyer's behalf. For more US state-level information on sales tax, see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section4">eBay sales tax collection</a> help topic.
+     *  As of January 2023, buyers in all US states will automatically be charged sales tax for purchases, and the seller does not set this rate. eBay will collect and remit this sales tax to the proper taxing authority on the buyer's behalf. For more US state-level information on sales tax, see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section4">eBay sales tax collection</a> help topic.
      *
      * @param bool $eBayCollectAndRemitTax
      * @return self
@@ -3121,7 +3111,7 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      *  <br/><br/>
      *  Australian 'Goods and Services' tax (GST) is automatically charged to buyers outside of Australia when they purchase items on the eBay Australia site. Sellers on the Australia site do not have to take any extra steps to enable the collection of GST, as this tax is collected by eBay and remitted to the Australian government. For more information about Australian GST, see the <a href="https://www.ebay.com.au/help/selling/fees-credits-invoices/taxes-import-charges?id=4121">Taxes and import charges</a> help topic.
      *  <br/><br/>
-     *  As of November 2021, buyers in all US states except for Missouri (and several US territories), will automatically be charged sales tax for purchases, and the seller does not set this rate. eBay will collect and remit this sales tax to the proper taxing authority on the buyer's behalf. For more US state-level information on sales tax, see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section4">eBay sales tax collection</a> help topic.
+     *  As of January 2023, buyers in all US states will automatically be charged sales tax for purchases, and the seller does not set this rate. eBay will collect and remit this sales tax to the proper taxing authority on the buyer's behalf. For more US state-level information on sales tax, see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section4">eBay sales tax collection</a> help topic.
      *
      * @return \Nogrod\eBaySDK\Trading\TaxesType
      */
@@ -3137,7 +3127,7 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      *  <br/><br/>
      *  Australian 'Goods and Services' tax (GST) is automatically charged to buyers outside of Australia when they purchase items on the eBay Australia site. Sellers on the Australia site do not have to take any extra steps to enable the collection of GST, as this tax is collected by eBay and remitted to the Australian government. For more information about Australian GST, see the <a href="https://www.ebay.com.au/help/selling/fees-credits-invoices/taxes-import-charges?id=4121">Taxes and import charges</a> help topic.
      *  <br/><br/>
-     *  As of November 2021, buyers in all US states except for Missouri (and several US territories), will automatically be charged sales tax for purchases, and the seller does not set this rate. eBay will collect and remit this sales tax to the proper taxing authority on the buyer's behalf. For more US state-level information on sales tax, see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section4">eBay sales tax collection</a> help topic.
+     *  As of January 2023, buyers in all US states will automatically be charged sales tax for purchases, and the seller does not set this rate. eBay will collect and remit this sales tax to the proper taxing authority on the buyer's behalf. For more US state-level information on sales tax, see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section4">eBay sales tax collection</a> help topic.
      *
      * @param \Nogrod\eBaySDK\Trading\TaxesType $eBayCollectAndRemitTaxes
      * @return self
@@ -3175,6 +3165,77 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     public function setProgram(\Nogrod\eBaySDK\Trading\TransactionProgramType $program)
     {
         $this->program = $program;
+        return $this;
+    }
+
+    /**
+     * Adds as linkedLineItem
+     *
+     * <span class="tablenote"><b>Note: </b> This array is only returned if the order has associated linked line items.</span>
+     *  Container consisting of an array of linked line item objects.
+     *
+     * @return self
+     * @param \Nogrod\eBaySDK\Trading\LinkedLineItemType $linkedLineItem
+     */
+    public function addToLinkedLineItemArray(\Nogrod\eBaySDK\Trading\LinkedLineItemType $linkedLineItem)
+    {
+        $this->linkedLineItemArray[] = $linkedLineItem;
+        return $this;
+    }
+
+    /**
+     * isset linkedLineItemArray
+     *
+     * <span class="tablenote"><b>Note: </b> This array is only returned if the order has associated linked line items.</span>
+     *  Container consisting of an array of linked line item objects.
+     *
+     * @param int|string $index
+     * @return bool
+     */
+    public function issetLinkedLineItemArray($index)
+    {
+        return isset($this->linkedLineItemArray[$index]);
+    }
+
+    /**
+     * unset linkedLineItemArray
+     *
+     * <span class="tablenote"><b>Note: </b> This array is only returned if the order has associated linked line items.</span>
+     *  Container consisting of an array of linked line item objects.
+     *
+     * @param int|string $index
+     * @return void
+     */
+    public function unsetLinkedLineItemArray($index)
+    {
+        unset($this->linkedLineItemArray[$index]);
+    }
+
+    /**
+     * Gets as linkedLineItemArray
+     *
+     * <span class="tablenote"><b>Note: </b> This array is only returned if the order has associated linked line items.</span>
+     *  Container consisting of an array of linked line item objects.
+     *
+     * @return \Nogrod\eBaySDK\Trading\LinkedLineItemType[]
+     */
+    public function getLinkedLineItemArray()
+    {
+        return $this->linkedLineItemArray;
+    }
+
+    /**
+     * Sets a new linkedLineItemArray
+     *
+     * <span class="tablenote"><b>Note: </b> This array is only returned if the order has associated linked line items.</span>
+     *  Container consisting of an array of linked line item objects.
+     *
+     * @param \Nogrod\eBaySDK\Trading\LinkedLineItemType[] $linkedLineItemArray
+     * @return self
+     */
+    public function setLinkedLineItemArray(array $linkedLineItemArray)
+    {
+        $this->linkedLineItemArray = $linkedLineItemArray;
         return $this;
     }
 
@@ -3499,6 +3560,12 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Program", $value);
         }
+        $value = $this->getLinkedLineItemArray();
+        if (null !== $value && !empty($this->getLinkedLineItemArray())) {
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}LinkedLineItemArray", array_map(function ($v) {
+                return ["LinkedLineItem" => $v];
+            }, $value));
+        }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader)
@@ -3822,6 +3889,12 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Program');
         if (null !== $value) {
             $this->setProgram(\Nogrod\eBaySDK\Trading\TransactionProgramType::fromKeyValue($value));
+        }
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LinkedLineItemArray', true);
+        if (null !== $value && !empty($value)) {
+            $this->setLinkedLineItemArray(array_map(function ($v) {
+                return \Nogrod\eBaySDK\Trading\LinkedLineItemType::fromKeyValue($v);
+            }, $value));
         }
     }
 }

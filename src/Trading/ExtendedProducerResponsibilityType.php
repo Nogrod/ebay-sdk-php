@@ -7,34 +7,51 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing ExtendedProducerResponsibilityType
  *
- * This type is used by the <b>ExtendedProducerResponsibility</b> container, which provides IDs for the producer or importer related to the new item, packaging, added documentation, or an eco-participation fee. In some markets, such as in France, this may be the importer of the item. For more information, see the <b>Extended Producer Responsibility for business sellers</b> page for your site (for example, <a href="https://www.ebay.com/help/selling/all-about-selling/selling-internationally/extended-producer-responsibility-for-business-sellers?id=5314" target="_blank">https://www.ebay.com/help/selling/all-about-selling/selling-internationally/extended-producer-responsibility-for-business-sellers?id=5314</a>). This field is supported by a limited number of sites and specific categories. Use the <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getExtendedProducerResponsibilityPolicies" target="_blank">getExtendedProducerResponsibilityPolicies</a> method of the <b>Sell Metadata API</b> to retrieve valid categories for a site. <br/><br/>For <b>GetItem</b> calls, this container is only returned to the listing owner, if the container is available.
+ * This type is used by the <b>ExtendedProducerResponsibility</b> container, which provides IDs for the producer or importer related to the new item, packaging, added documentation, or an eco-participation fee. In some markets, such as in France, this may be the importer of the item. For more information, see the <b>Extended Producer Responsibility for business sellers</b> page for your site (for example, <a href="https://www.ebay.com/help/selling/all-about-selling/selling-internationally/extended-producer-responsibility-for-business-sellers?id=5314" target="_blank">https://www.ebay.com/help/selling/all-about-selling/selling-internationally/extended-producer-responsibility-for-business-sellers?id=5314</a>).
+ *  <br/><br/>For <b>GetItem</b> calls, this container is only returned to the listing owner, if the container is available.
  * XSD Type: ExtendedProducerResponsibilityType
  */
 class ExtendedProducerResponsibilityType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
     /**
-     * This ID is the Unique Identifier of the producer related to the item. For instance, if the seller is selling a cell phone, it is the ID related to the cell phone.
+     * <span class="tablenote"><strong>Note:</strong>
+     *  Extended Producer Responsibility IDs are no longer set at the listing level and will be ignored/dropped if used. Instead, sellers will provide/manage these IDs at the account level by going to <a href="https://accountsettings.ebay.fr/epr-fr/" target="_blank">account settings</a>.
+     *  </span>
+     *  <br>
+     *  This ID is the Unique Identifier of the producer related to the item. For instance, if the seller is selling a cell phone, it is the ID related to the cell phone.
      *
      * @var string $producerProductID
      */
     private $producerProductID = null;
 
     /**
-     * This ID is the Unique Identifier of the producer of any packaging related to the product added by the seller. This does not include packaging in which the product is shipped (see <b>ShipmentPackageID</b>). For instance, if the seller adds bubble wrap, it is the ID related to the bubble wrap.
+     * <span class="tablenote"><strong>Note:</strong>
+     *  Extended Producer Responsibility IDs are no longer set at the listing level and will be ignored/dropped if used. Instead, sellers will provide/manage these IDs at the account level by going to <a href="https://accountsettings.ebay.fr/epr-fr/" target="_blank">account settings</a>.
+     *  </span>
+     *  <br>
+     *  This ID is the Unique Identifier of the producer of any packaging related to the product added by the seller. This does not include packaging in which the product is shipped (see <b>ShipmentPackageID</b>). For instance, if the seller adds bubble wrap, it is the ID related to the bubble wrap.
      *
      * @var string $productPackageID
      */
     private $productPackageID = null;
 
     /**
-     * This ID is the Unique Identifier of the producer of any packaging used by the seller to ship the item. This does not include non-shipping packaging added to the product (see <b>ProductPackageID</b>). This ID is required when the seller uses packaging to ship the item. For instance, if the seller uses a different box to ship the item, it is the ID related to the box.
+     * <span class="tablenote"><strong>Note:</strong>
+     *  Extended Producer Responsibility IDs are no longer set at the listing level and will be ignored/dropped if used. Instead, sellers will provide/manage these IDs at the account level by going to <a href="https://accountsettings.ebay.fr/epr-fr/" target="_blank">account settings</a>.
+     *  </span>
+     *  <br>
+     *  This ID is the Unique Identifier of the producer of any packaging used by the seller to ship the item. This does not include non-shipping packaging added to the product (see <b>ProductPackageID</b>). This ID is required when the seller uses packaging to ship the item. For instance, if the seller uses a different box to ship the item, it is the ID related to the box.
      *
      * @var string $shipmentPackageID
      */
     private $shipmentPackageID = null;
 
     /**
-     * This ID is the Unique Identifier of the producer of any paper added to the parcel of the item by the seller. For example, this ID concerns any notice, leaflet, or paper that the seller adds to a cell phone parcel.
+     * <span class="tablenote"><strong>Note:</strong>
+     *  Extended Producer Responsibility IDs are no longer set at the listing level and will be ignored/dropped if used. Instead, sellers will provide/manage these IDs at the account level by going to <a href="https://accountsettings.ebay.fr/epr-fr/" target="_blank">account settings</a>.
+     *  </span>
+     *  <br>
+     *  This ID is the Unique Identifier of the producer of any paper added to the parcel of the item by the seller. For example, this ID concerns any notice, leaflet, or paper that the seller adds to a cell phone parcel.
      *
      * @var string $productDocumentationID
      */
@@ -50,7 +67,11 @@ class ExtendedProducerResponsibilityType implements \Sabre\Xml\XmlSerializable, 
     /**
      * Gets as producerProductID
      *
-     * This ID is the Unique Identifier of the producer related to the item. For instance, if the seller is selling a cell phone, it is the ID related to the cell phone.
+     * <span class="tablenote"><strong>Note:</strong>
+     *  Extended Producer Responsibility IDs are no longer set at the listing level and will be ignored/dropped if used. Instead, sellers will provide/manage these IDs at the account level by going to <a href="https://accountsettings.ebay.fr/epr-fr/" target="_blank">account settings</a>.
+     *  </span>
+     *  <br>
+     *  This ID is the Unique Identifier of the producer related to the item. For instance, if the seller is selling a cell phone, it is the ID related to the cell phone.
      *
      * @return string
      */
@@ -62,7 +83,11 @@ class ExtendedProducerResponsibilityType implements \Sabre\Xml\XmlSerializable, 
     /**
      * Sets a new producerProductID
      *
-     * This ID is the Unique Identifier of the producer related to the item. For instance, if the seller is selling a cell phone, it is the ID related to the cell phone.
+     * <span class="tablenote"><strong>Note:</strong>
+     *  Extended Producer Responsibility IDs are no longer set at the listing level and will be ignored/dropped if used. Instead, sellers will provide/manage these IDs at the account level by going to <a href="https://accountsettings.ebay.fr/epr-fr/" target="_blank">account settings</a>.
+     *  </span>
+     *  <br>
+     *  This ID is the Unique Identifier of the producer related to the item. For instance, if the seller is selling a cell phone, it is the ID related to the cell phone.
      *
      * @param string $producerProductID
      * @return self
@@ -76,7 +101,11 @@ class ExtendedProducerResponsibilityType implements \Sabre\Xml\XmlSerializable, 
     /**
      * Gets as productPackageID
      *
-     * This ID is the Unique Identifier of the producer of any packaging related to the product added by the seller. This does not include packaging in which the product is shipped (see <b>ShipmentPackageID</b>). For instance, if the seller adds bubble wrap, it is the ID related to the bubble wrap.
+     * <span class="tablenote"><strong>Note:</strong>
+     *  Extended Producer Responsibility IDs are no longer set at the listing level and will be ignored/dropped if used. Instead, sellers will provide/manage these IDs at the account level by going to <a href="https://accountsettings.ebay.fr/epr-fr/" target="_blank">account settings</a>.
+     *  </span>
+     *  <br>
+     *  This ID is the Unique Identifier of the producer of any packaging related to the product added by the seller. This does not include packaging in which the product is shipped (see <b>ShipmentPackageID</b>). For instance, if the seller adds bubble wrap, it is the ID related to the bubble wrap.
      *
      * @return string
      */
@@ -88,7 +117,11 @@ class ExtendedProducerResponsibilityType implements \Sabre\Xml\XmlSerializable, 
     /**
      * Sets a new productPackageID
      *
-     * This ID is the Unique Identifier of the producer of any packaging related to the product added by the seller. This does not include packaging in which the product is shipped (see <b>ShipmentPackageID</b>). For instance, if the seller adds bubble wrap, it is the ID related to the bubble wrap.
+     * <span class="tablenote"><strong>Note:</strong>
+     *  Extended Producer Responsibility IDs are no longer set at the listing level and will be ignored/dropped if used. Instead, sellers will provide/manage these IDs at the account level by going to <a href="https://accountsettings.ebay.fr/epr-fr/" target="_blank">account settings</a>.
+     *  </span>
+     *  <br>
+     *  This ID is the Unique Identifier of the producer of any packaging related to the product added by the seller. This does not include packaging in which the product is shipped (see <b>ShipmentPackageID</b>). For instance, if the seller adds bubble wrap, it is the ID related to the bubble wrap.
      *
      * @param string $productPackageID
      * @return self
@@ -102,7 +135,11 @@ class ExtendedProducerResponsibilityType implements \Sabre\Xml\XmlSerializable, 
     /**
      * Gets as shipmentPackageID
      *
-     * This ID is the Unique Identifier of the producer of any packaging used by the seller to ship the item. This does not include non-shipping packaging added to the product (see <b>ProductPackageID</b>). This ID is required when the seller uses packaging to ship the item. For instance, if the seller uses a different box to ship the item, it is the ID related to the box.
+     * <span class="tablenote"><strong>Note:</strong>
+     *  Extended Producer Responsibility IDs are no longer set at the listing level and will be ignored/dropped if used. Instead, sellers will provide/manage these IDs at the account level by going to <a href="https://accountsettings.ebay.fr/epr-fr/" target="_blank">account settings</a>.
+     *  </span>
+     *  <br>
+     *  This ID is the Unique Identifier of the producer of any packaging used by the seller to ship the item. This does not include non-shipping packaging added to the product (see <b>ProductPackageID</b>). This ID is required when the seller uses packaging to ship the item. For instance, if the seller uses a different box to ship the item, it is the ID related to the box.
      *
      * @return string
      */
@@ -114,7 +151,11 @@ class ExtendedProducerResponsibilityType implements \Sabre\Xml\XmlSerializable, 
     /**
      * Sets a new shipmentPackageID
      *
-     * This ID is the Unique Identifier of the producer of any packaging used by the seller to ship the item. This does not include non-shipping packaging added to the product (see <b>ProductPackageID</b>). This ID is required when the seller uses packaging to ship the item. For instance, if the seller uses a different box to ship the item, it is the ID related to the box.
+     * <span class="tablenote"><strong>Note:</strong>
+     *  Extended Producer Responsibility IDs are no longer set at the listing level and will be ignored/dropped if used. Instead, sellers will provide/manage these IDs at the account level by going to <a href="https://accountsettings.ebay.fr/epr-fr/" target="_blank">account settings</a>.
+     *  </span>
+     *  <br>
+     *  This ID is the Unique Identifier of the producer of any packaging used by the seller to ship the item. This does not include non-shipping packaging added to the product (see <b>ProductPackageID</b>). This ID is required when the seller uses packaging to ship the item. For instance, if the seller uses a different box to ship the item, it is the ID related to the box.
      *
      * @param string $shipmentPackageID
      * @return self
@@ -128,7 +169,11 @@ class ExtendedProducerResponsibilityType implements \Sabre\Xml\XmlSerializable, 
     /**
      * Gets as productDocumentationID
      *
-     * This ID is the Unique Identifier of the producer of any paper added to the parcel of the item by the seller. For example, this ID concerns any notice, leaflet, or paper that the seller adds to a cell phone parcel.
+     * <span class="tablenote"><strong>Note:</strong>
+     *  Extended Producer Responsibility IDs are no longer set at the listing level and will be ignored/dropped if used. Instead, sellers will provide/manage these IDs at the account level by going to <a href="https://accountsettings.ebay.fr/epr-fr/" target="_blank">account settings</a>.
+     *  </span>
+     *  <br>
+     *  This ID is the Unique Identifier of the producer of any paper added to the parcel of the item by the seller. For example, this ID concerns any notice, leaflet, or paper that the seller adds to a cell phone parcel.
      *
      * @return string
      */
@@ -140,7 +185,11 @@ class ExtendedProducerResponsibilityType implements \Sabre\Xml\XmlSerializable, 
     /**
      * Sets a new productDocumentationID
      *
-     * This ID is the Unique Identifier of the producer of any paper added to the parcel of the item by the seller. For example, this ID concerns any notice, leaflet, or paper that the seller adds to a cell phone parcel.
+     * <span class="tablenote"><strong>Note:</strong>
+     *  Extended Producer Responsibility IDs are no longer set at the listing level and will be ignored/dropped if used. Instead, sellers will provide/manage these IDs at the account level by going to <a href="https://accountsettings.ebay.fr/epr-fr/" target="_blank">account settings</a>.
+     *  </span>
+     *  <br>
+     *  This ID is the Unique Identifier of the producer of any paper added to the parcel of the item by the seller. For example, this ID concerns any notice, leaflet, or paper that the seller adds to a cell phone parcel.
      *
      * @param string $productDocumentationID
      * @return self

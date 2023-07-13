@@ -22,15 +22,19 @@ class ListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      *  the Mature Category agreement on the eBay site to retrieve
      *  items listed in Mature categories. (Users do not need to sign
      *  this agreement to be able to list items in Mature Categories.)
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> This field will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @var bool $adult
      */
     private $adult = null;
 
     /**
-     * Applicable for Real Estate auctions only. If <code>true</code>, buyers and sellers
-     *  are expected to follow through on the sale. If false, bids for the
-     *  Real Estate auction are only expressions of interest.
+     * Applicable for Real Estate auctions only. If <code>true</code>, buyers and sellers are expected to follow through on the sale. If false, bids for the Real Estate auction are only expressions of interest.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> This field will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @var bool $bindingAuction
      */
@@ -42,41 +46,50 @@ class ListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      *  <span class="tablenote"><b>Note:</b>
      *  A 'Checkout Enabled' setting is no longer available to sellers, and this field is always returned as <code>true</code>.
      *  </span>
+     *  <span class="tablenote"><b>Note: </b> This field will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @var bool $checkoutEnabled
      */
     private $checkoutEnabled = null;
 
     /**
-     * Converted value of the <b>BuyItNowPrice</b> in the currency of
+     * <br>
+     *  Converted value of the <b>BuyItNowPrice</b> in the currency of
      *  the site that returned this response.
      *  For active items, refresh this value every 24 hours to
      *  pick up the current conversion rates.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>ListingDetails.ConvertedBuyItNowPrice</b> field will stop being returned in <b>GetItemTransactions</b>, <b>GetSellerTransactions</b>, and <b>GetMyeBaySelling</b> (SoldList and DeletedFromSoldList) on January 31, 2024.
+     *  </span>
      *
      * @var \Nogrod\eBaySDK\Trading\AmountType $convertedBuyItNowPrice
      */
     private $convertedBuyItNowPrice = null;
 
     /**
-     * Converted value of the <b>StartPrice</b> in the currency of
+     * <br>
+     *  Converted value of the <b>StartPrice</b> in the currency of
      *  the site that returned this response.
      *  For active items, refresh this value every 24 hours to
      *  pick up the current conversion rates.<br>
      *  <br>
      *  In multi-variation listings, this value matches the lowest-priced
      *  variation that is still available for sale.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>ListingDetails.ConvertedStartPrice</b> field will stop being returned in <b>GetItemTransactions</b>, <b>GetSellerTransactions</b>, and <b>GetMyeBaySelling</b> (SoldList and DeletedFromSoldList) on January 31, 2024.
+     *  </span>
      *
      * @var \Nogrod\eBaySDK\Trading\AmountType $convertedStartPrice
      */
     private $convertedStartPrice = null;
 
     /**
-     * Converted value of the <b>ReservePrice</b> in the currency of the
-     *  site that returned this response. Only returned for listings with
-     *  a reserve price when the requesting user is the listing's seller.
-     *  For active items, refresh this value every 24 hours to
-     *  pick up the current conversion rates.
-     *  Not applicable to Fixed Price listings.
+     * <br>
+     *  Converted value of the <b>ReservePrice</b> in the currency of the site that returned this response. Only returned for listings with a reserve price when the requesting user is the listing's seller. For active items, refresh this value every 24 hours to pick up the current conversion rates. Not applicable to fixed-price listings.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>ListingDetails.ConvertedReservePrice</b> field will stop being returned in <b>GetItemTransactions</b>, <b>GetSellerTransactions</b>, and <b>GetMyeBaySelling</b> (SoldList and DeletedFromSoldList) on January 31, 2024.
+     *  </span>
      *
      * @var \Nogrod\eBaySDK\Trading\AmountType $convertedReservePrice
      */
@@ -84,6 +97,9 @@ class ListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
 
     /**
      * If <code>true</code>, the seller specified a value in <b>ReservePrice</b>.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> This field will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @var bool $hasReservePrice
      */
@@ -95,6 +111,9 @@ class ListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      *  old listing, so buyers can navigate to
      *  the new listing. This value only appears when the old listing is
      *  retrieved. The <b>RelistedItemID</b> of the original item will reflect the last relist.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> This field will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @var string $relistedItemID
      */
@@ -137,6 +156,9 @@ class ListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      *  a string that includes affiliate tracking information
      *  (see the <a href=
      *  "https://www.ebaypartnernetwork.com" target="_blank">eBay Partner Network</a>).
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> This field will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @var string $viewItemURL
      */
@@ -152,9 +174,10 @@ class ListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
     private $hasUnansweredQuestions = null;
 
     /**
-     * Indicates whether the item has any publicly displayed messages. Use
-     *  <b>GetMemberMessages</b> to retrieve public messages for the item if this flag
-     *  indicates that there are any.
+     * Indicates whether the item has any publicly displayed messages. Use <b>GetMemberMessages</b> to retrieve public messages for the item if this flag indicates that there are any.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>HasPublicMessages</b> field will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b>, on January 31, 2024.
+     *  </span>
      *
      * @var bool $hasPublicMessages
      */
@@ -194,6 +217,8 @@ class ListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      *  <span class="tablenote"><b>Note:</b>
      *  The Best Offer feature is now available for auction listings on the following sites: US, Canada, UK, Germany, Australia, France, Italy, and Spain. However, sellers must choose between offering Best Offer or Buy It Now on an auction listing, as both features cannot be enabled on the same auction listing. As of January 2019, the value set in this field for an auction listing can be more than the auction start price.
      *  </span>
+     *  <span class="tablenote"><b>Note: </b> This field will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @var \Nogrod\eBaySDK\Trading\AmountType $minimumBestOfferPrice
      */
@@ -220,6 +245,9 @@ class ListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      * Indicates the item ID of the original item listing from which a
      *  Transaction Confirmation Request (TCR) was created. This value is only
      *  returned when the data for a TCR is retrieved.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> This field will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @var string $tCROriginalItemID
      */
@@ -240,6 +268,8 @@ class ListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      *  This URL may include additional query parameters that don't appear in <b>ViewItemURL</b>
      *  and vice versa. You should not modify the query syntax. For example, eBay won't
      *  recognize the URL if you change QQ to ?.
+     *  </span>
+     *  <span class="tablenote"><b>Note: </b> This field will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
      *  </span>
      *
      * @var string $viewItemURLForNaturalSearch
@@ -285,6 +315,9 @@ class ListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      *  the Mature Category agreement on the eBay site to retrieve
      *  items listed in Mature categories. (Users do not need to sign
      *  this agreement to be able to list items in Mature Categories.)
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> This field will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @return bool
      */
@@ -300,6 +333,9 @@ class ListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      *  the Mature Category agreement on the eBay site to retrieve
      *  items listed in Mature categories. (Users do not need to sign
      *  this agreement to be able to list items in Mature Categories.)
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> This field will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @param bool $adult
      * @return self
@@ -313,9 +349,10 @@ class ListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
     /**
      * Gets as bindingAuction
      *
-     * Applicable for Real Estate auctions only. If <code>true</code>, buyers and sellers
-     *  are expected to follow through on the sale. If false, bids for the
-     *  Real Estate auction are only expressions of interest.
+     * Applicable for Real Estate auctions only. If <code>true</code>, buyers and sellers are expected to follow through on the sale. If false, bids for the Real Estate auction are only expressions of interest.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> This field will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @return bool
      */
@@ -327,9 +364,10 @@ class ListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
     /**
      * Sets a new bindingAuction
      *
-     * Applicable for Real Estate auctions only. If <code>true</code>, buyers and sellers
-     *  are expected to follow through on the sale. If false, bids for the
-     *  Real Estate auction are only expressions of interest.
+     * Applicable for Real Estate auctions only. If <code>true</code>, buyers and sellers are expected to follow through on the sale. If false, bids for the Real Estate auction are only expressions of interest.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> This field will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @param bool $bindingAuction
      * @return self
@@ -348,6 +386,8 @@ class ListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      *  <span class="tablenote"><b>Note:</b>
      *  A 'Checkout Enabled' setting is no longer available to sellers, and this field is always returned as <code>true</code>.
      *  </span>
+     *  <span class="tablenote"><b>Note: </b> This field will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @return bool
      */
@@ -364,6 +404,8 @@ class ListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      *  <span class="tablenote"><b>Note:</b>
      *  A 'Checkout Enabled' setting is no longer available to sellers, and this field is always returned as <code>true</code>.
      *  </span>
+     *  <span class="tablenote"><b>Note: </b> This field will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @param bool $checkoutEnabled
      * @return self
@@ -377,10 +419,14 @@ class ListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
     /**
      * Gets as convertedBuyItNowPrice
      *
-     * Converted value of the <b>BuyItNowPrice</b> in the currency of
+     * <br>
+     *  Converted value of the <b>BuyItNowPrice</b> in the currency of
      *  the site that returned this response.
      *  For active items, refresh this value every 24 hours to
      *  pick up the current conversion rates.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>ListingDetails.ConvertedBuyItNowPrice</b> field will stop being returned in <b>GetItemTransactions</b>, <b>GetSellerTransactions</b>, and <b>GetMyeBaySelling</b> (SoldList and DeletedFromSoldList) on January 31, 2024.
+     *  </span>
      *
      * @return \Nogrod\eBaySDK\Trading\AmountType
      */
@@ -392,10 +438,14 @@ class ListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
     /**
      * Sets a new convertedBuyItNowPrice
      *
-     * Converted value of the <b>BuyItNowPrice</b> in the currency of
+     * <br>
+     *  Converted value of the <b>BuyItNowPrice</b> in the currency of
      *  the site that returned this response.
      *  For active items, refresh this value every 24 hours to
      *  pick up the current conversion rates.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>ListingDetails.ConvertedBuyItNowPrice</b> field will stop being returned in <b>GetItemTransactions</b>, <b>GetSellerTransactions</b>, and <b>GetMyeBaySelling</b> (SoldList and DeletedFromSoldList) on January 31, 2024.
+     *  </span>
      *
      * @param \Nogrod\eBaySDK\Trading\AmountType $convertedBuyItNowPrice
      * @return self
@@ -409,13 +459,17 @@ class ListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
     /**
      * Gets as convertedStartPrice
      *
-     * Converted value of the <b>StartPrice</b> in the currency of
+     * <br>
+     *  Converted value of the <b>StartPrice</b> in the currency of
      *  the site that returned this response.
      *  For active items, refresh this value every 24 hours to
      *  pick up the current conversion rates.<br>
      *  <br>
      *  In multi-variation listings, this value matches the lowest-priced
      *  variation that is still available for sale.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>ListingDetails.ConvertedStartPrice</b> field will stop being returned in <b>GetItemTransactions</b>, <b>GetSellerTransactions</b>, and <b>GetMyeBaySelling</b> (SoldList and DeletedFromSoldList) on January 31, 2024.
+     *  </span>
      *
      * @return \Nogrod\eBaySDK\Trading\AmountType
      */
@@ -427,13 +481,17 @@ class ListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
     /**
      * Sets a new convertedStartPrice
      *
-     * Converted value of the <b>StartPrice</b> in the currency of
+     * <br>
+     *  Converted value of the <b>StartPrice</b> in the currency of
      *  the site that returned this response.
      *  For active items, refresh this value every 24 hours to
      *  pick up the current conversion rates.<br>
      *  <br>
      *  In multi-variation listings, this value matches the lowest-priced
      *  variation that is still available for sale.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>ListingDetails.ConvertedStartPrice</b> field will stop being returned in <b>GetItemTransactions</b>, <b>GetSellerTransactions</b>, and <b>GetMyeBaySelling</b> (SoldList and DeletedFromSoldList) on January 31, 2024.
+     *  </span>
      *
      * @param \Nogrod\eBaySDK\Trading\AmountType $convertedStartPrice
      * @return self
@@ -447,12 +505,11 @@ class ListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
     /**
      * Gets as convertedReservePrice
      *
-     * Converted value of the <b>ReservePrice</b> in the currency of the
-     *  site that returned this response. Only returned for listings with
-     *  a reserve price when the requesting user is the listing's seller.
-     *  For active items, refresh this value every 24 hours to
-     *  pick up the current conversion rates.
-     *  Not applicable to Fixed Price listings.
+     * <br>
+     *  Converted value of the <b>ReservePrice</b> in the currency of the site that returned this response. Only returned for listings with a reserve price when the requesting user is the listing's seller. For active items, refresh this value every 24 hours to pick up the current conversion rates. Not applicable to fixed-price listings.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>ListingDetails.ConvertedReservePrice</b> field will stop being returned in <b>GetItemTransactions</b>, <b>GetSellerTransactions</b>, and <b>GetMyeBaySelling</b> (SoldList and DeletedFromSoldList) on January 31, 2024.
+     *  </span>
      *
      * @return \Nogrod\eBaySDK\Trading\AmountType
      */
@@ -464,12 +521,11 @@ class ListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
     /**
      * Sets a new convertedReservePrice
      *
-     * Converted value of the <b>ReservePrice</b> in the currency of the
-     *  site that returned this response. Only returned for listings with
-     *  a reserve price when the requesting user is the listing's seller.
-     *  For active items, refresh this value every 24 hours to
-     *  pick up the current conversion rates.
-     *  Not applicable to Fixed Price listings.
+     * <br>
+     *  Converted value of the <b>ReservePrice</b> in the currency of the site that returned this response. Only returned for listings with a reserve price when the requesting user is the listing's seller. For active items, refresh this value every 24 hours to pick up the current conversion rates. Not applicable to fixed-price listings.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>ListingDetails.ConvertedReservePrice</b> field will stop being returned in <b>GetItemTransactions</b>, <b>GetSellerTransactions</b>, and <b>GetMyeBaySelling</b> (SoldList and DeletedFromSoldList) on January 31, 2024.
+     *  </span>
      *
      * @param \Nogrod\eBaySDK\Trading\AmountType $convertedReservePrice
      * @return self
@@ -484,6 +540,9 @@ class ListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      * Gets as hasReservePrice
      *
      * If <code>true</code>, the seller specified a value in <b>ReservePrice</b>.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> This field will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @return bool
      */
@@ -496,6 +555,9 @@ class ListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      * Sets a new hasReservePrice
      *
      * If <code>true</code>, the seller specified a value in <b>ReservePrice</b>.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> This field will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @param bool $hasReservePrice
      * @return self
@@ -514,6 +576,9 @@ class ListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      *  old listing, so buyers can navigate to
      *  the new listing. This value only appears when the old listing is
      *  retrieved. The <b>RelistedItemID</b> of the original item will reflect the last relist.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> This field will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @return string
      */
@@ -530,6 +595,9 @@ class ListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      *  old listing, so buyers can navigate to
      *  the new listing. This value only appears when the old listing is
      *  retrieved. The <b>RelistedItemID</b> of the original item will reflect the last relist.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> This field will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @param string $relistedItemID
      * @return self
@@ -643,6 +711,9 @@ class ListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      *  a string that includes affiliate tracking information
      *  (see the <a href=
      *  "https://www.ebaypartnernetwork.com" target="_blank">eBay Partner Network</a>).
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> This field will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @return string
      */
@@ -662,6 +733,9 @@ class ListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      *  a string that includes affiliate tracking information
      *  (see the <a href=
      *  "https://www.ebaypartnernetwork.com" target="_blank">eBay Partner Network</a>).
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> This field will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @param string $viewItemURL
      * @return self
@@ -705,9 +779,10 @@ class ListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
     /**
      * Gets as hasPublicMessages
      *
-     * Indicates whether the item has any publicly displayed messages. Use
-     *  <b>GetMemberMessages</b> to retrieve public messages for the item if this flag
-     *  indicates that there are any.
+     * Indicates whether the item has any publicly displayed messages. Use <b>GetMemberMessages</b> to retrieve public messages for the item if this flag indicates that there are any.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>HasPublicMessages</b> field will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b>, on January 31, 2024.
+     *  </span>
      *
      * @return bool
      */
@@ -719,9 +794,10 @@ class ListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
     /**
      * Sets a new hasPublicMessages
      *
-     * Indicates whether the item has any publicly displayed messages. Use
-     *  <b>GetMemberMessages</b> to retrieve public messages for the item if this flag
-     *  indicates that there are any.
+     * Indicates whether the item has any publicly displayed messages. Use <b>GetMemberMessages</b> to retrieve public messages for the item if this flag indicates that there are any.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>HasPublicMessages</b> field will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b>, on January 31, 2024.
+     *  </span>
      *
      * @param bool $hasPublicMessages
      * @return self
@@ -808,6 +884,8 @@ class ListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      *  <span class="tablenote"><b>Note:</b>
      *  The Best Offer feature is now available for auction listings on the following sites: US, Canada, UK, Germany, Australia, France, Italy, and Spain. However, sellers must choose between offering Best Offer or Buy It Now on an auction listing, as both features cannot be enabled on the same auction listing. As of January 2019, the value set in this field for an auction listing can be more than the auction start price.
      *  </span>
+     *  <span class="tablenote"><b>Note: </b> This field will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @return \Nogrod\eBaySDK\Trading\AmountType
      */
@@ -835,6 +913,8 @@ class ListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      *  <br>
      *  <span class="tablenote"><b>Note:</b>
      *  The Best Offer feature is now available for auction listings on the following sites: US, Canada, UK, Germany, Australia, France, Italy, and Spain. However, sellers must choose between offering Best Offer or Buy It Now on an auction listing, as both features cannot be enabled on the same auction listing. As of January 2019, the value set in this field for an auction listing can be more than the auction start price.
+     *  </span>
+     *  <span class="tablenote"><b>Note: </b> This field will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
      *  </span>
      *
      * @param \Nogrod\eBaySDK\Trading\AmountType $minimumBestOfferPrice
@@ -910,6 +990,9 @@ class ListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      * Indicates the item ID of the original item listing from which a
      *  Transaction Confirmation Request (TCR) was created. This value is only
      *  returned when the data for a TCR is retrieved.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> This field will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @return string
      */
@@ -924,6 +1007,9 @@ class ListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      * Indicates the item ID of the original item listing from which a
      *  Transaction Confirmation Request (TCR) was created. This value is only
      *  returned when the data for a TCR is retrieved.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> This field will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @param string $tCROriginalItemID
      * @return self
@@ -952,6 +1038,8 @@ class ListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      *  and vice versa. You should not modify the query syntax. For example, eBay won't
      *  recognize the URL if you change QQ to ?.
      *  </span>
+     *  <span class="tablenote"><b>Note: </b> This field will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @return string
      */
@@ -977,6 +1065,8 @@ class ListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      *  This URL may include additional query parameters that don't appear in <b>ViewItemURL</b>
      *  and vice versa. You should not modify the query syntax. For example, eBay won't
      *  recognize the URL if you change QQ to ?.
+     *  </span>
+     *  <span class="tablenote"><b>Note: </b> This field will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
      *  </span>
      *
      * @param string $viewItemURLForNaturalSearch

@@ -194,17 +194,6 @@ Nogrod\eBaySDK\Trading\CharityInfoType:
                 getter: getShowMultipleDonationAmountInCheckout
                 setter: setShowMultipleDonationAmountInCheckout
             type: bool
-        externalID:
-            expose: true
-            access_type: public_method
-            serialized_name: ExternalID
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getExternalID
-                setter: setExternalID
-            type: string
         popularityIndex:
             expose: true
             access_type: public_method

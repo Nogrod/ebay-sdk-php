@@ -42,15 +42,6 @@ class StoreType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
     private $uRL = null;
 
     /**
-     * The value returned in this field indicates the user's eBay Store subscription level.
-     *  <br><br>
-     *  <span class="tablenote"><b>Note:</b> This field is deprecated and will stop being returned beginning on March 31, 2023. The <a href="/api-docs/sell/account/resources/subscription/methods/getSubscription" target="_blank">getSubscription</a> method of the <a href="/api-docs/sell/account/overview.html" target="_blank">Account API</a> can be used to retrieve information on a seller's eBay store subscription.</span>
-     *
-     * @var string $subscriptionLevel
-     */
-    private $subscriptionLevel = null;
-
-    /**
      * The seller-provided description of the eBay Store.
      *
      * @var string $description
@@ -186,36 +177,6 @@ class StoreType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
     public function setURL($uRL)
     {
         $this->uRL = $uRL;
-        return $this;
-    }
-
-    /**
-     * Gets as subscriptionLevel
-     *
-     * The value returned in this field indicates the user's eBay Store subscription level.
-     *  <br><br>
-     *  <span class="tablenote"><b>Note:</b> This field is deprecated and will stop being returned beginning on March 31, 2023. The <a href="/api-docs/sell/account/resources/subscription/methods/getSubscription" target="_blank">getSubscription</a> method of the <a href="/api-docs/sell/account/overview.html" target="_blank">Account API</a> can be used to retrieve information on a seller's eBay store subscription.</span>
-     *
-     * @return string
-     */
-    public function getSubscriptionLevel()
-    {
-        return $this->subscriptionLevel;
-    }
-
-    /**
-     * Sets a new subscriptionLevel
-     *
-     * The value returned in this field indicates the user's eBay Store subscription level.
-     *  <br><br>
-     *  <span class="tablenote"><b>Note:</b> This field is deprecated and will stop being returned beginning on March 31, 2023. The <a href="/api-docs/sell/account/resources/subscription/methods/getSubscription" target="_blank">getSubscription</a> method of the <a href="/api-docs/sell/account/overview.html" target="_blank">Account API</a> can be used to retrieve information on a seller's eBay store subscription.</span>
-     *
-     * @param string $subscriptionLevel
-     * @return self
-     */
-    public function setSubscriptionLevel($subscriptionLevel)
-    {
-        $this->subscriptionLevel = $subscriptionLevel;
         return $this;
     }
 
@@ -445,10 +406,6 @@ class StoreType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}URL", $value);
         }
-        $value = $this->getSubscriptionLevel();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SubscriptionLevel", $value);
-        }
         $value = $this->getDescription();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Description", $value);
@@ -498,10 +455,6 @@ class StoreType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}URL');
         if (null !== $value) {
             $this->setURL($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SubscriptionLevel');
-        if (null !== $value) {
-            $this->setSubscriptionLevel($value);
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Description');
         if (null !== $value) {

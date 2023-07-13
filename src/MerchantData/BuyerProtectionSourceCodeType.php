@@ -6,6 +6,10 @@ namespace Nogrod\eBaySDK\MerchantData;
  * Class representing BuyerProtectionSourceCodeType
  *
  * This enumeration type indicates the applicable buyer protection program that the item is eligible to be covered under.
+ *  <br/><br/>
+ *  <span class="tablenote"><strong>Note:</strong>
+ *  eBay now fully manages the payment/checkout process for all orders, so the <code>eBay</code> value should always be returned in the <b>BuyerProtectionSource</b> field.
+ *  </span>
  * XSD Type: BuyerProtectionSourceCodeType
  */
 class BuyerProtectionSourceCodeType

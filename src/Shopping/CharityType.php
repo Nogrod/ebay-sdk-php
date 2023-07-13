@@ -7,40 +7,27 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing CharityType
  *
- * This type is used to provide details about a nonprofit organization registered with eBay for Charity. This type is used by the <b>Charity</b> container that is returned in <b>GetSingleItem</b> and <b>GetMultipleItems</b> if the sale proceeds of an eBay listing go towards benefiting a nonprofit organization.
+ * This type is used to provide details about a charitable organization registered with eBay for Charity. This type is used by the <b>Charity</b> container that is returned in <b>GetSingleItem</b> and <b>GetMultipleItems</b> if the sales proceeds of an eBay listing go towards benefiting a charitable organization.
  * XSD Type: CharityType
  */
 class CharityType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
     /**
-     * The unique identifier that eBay creates and assigns to each nonprofit organization that is registered with eBay for Charity. This is the unique identifier that should be used if the user wishes to retrieve more details on a nonprofit organization by using the Trading API's lt;b>GetCharities</b> call, or used by a seller in an Add/Revise/Relist call when they want to identify the nonprofit organization that will receive sale proceeds for a listing.
+     * The unique identifier that eBay creates and assigns to each charitable organization that is registered with eBay for Charity. This is the unique identifier that should be used if the user wishes to retrieve more details on a charitable organization by using the <a href="/api-docs/commerce/charity/resources/charity_org/methods/getCharityOrg" target="_blank">getCharityOrg</a> method of the <b>Charity API</b> or the <a href="/Devzone/XML/docs/Reference/eBay/GetCharities.html" target="_blank">GetCharities</a> call of the <b>Trading API</b>.<br><br>This identifier is also used by a seller in an Add/Revise/Relist call when they want to identify the charitable organization that will receive sales proceeds for a listing.
      *
      * @var string $charityID
      */
     private $charityID = null;
 
     /**
-     * The name of the benefiting nonprofit organization selected by the
-     *  charity seller to receive sale proceeds for the listing.
+     * The name of the charitable organization selected by the seller to receive sales proceeds for the listing.
      *
      * @var string $charityName
      */
     private $charityName = null;
 
     /**
-     * The unique identifier that the PayPal Giving Fund assigns to each nonprofit organization that registers with eBay for Charity.
-     *  <br>
-     *  <br>
-     *  <span class="tablenote"><strong>Note:</strong>
-     *  All registered, non-profit organizations on eBay's platform have a PayPal Giving Fund identifier (<b>CharityNumber</b>) and a unique eBay identifier (<b>CharityID</b>). However, the <b>CharityNumber</b> field is now deprecated in the Shopping API, and is scheduled to stop being returned in <b>GetSingleItem</b> and <b>GetMultipleItems</b> after January 16, 2023. At that time, it will be removed from the Shopping WSDL. The <b>CharityID</b> value should be referenced instead.
-     *  </span>
-     *
-     * @var int $charityNumber
-     */
-    private $charityNumber = null;
-
-    /**
-     * The percentage of the purchase price that the seller chooses to donate to the selected nonprofit organization. This percentage is also displayed in the eBay View Item page for the listing. Possible values range from 10.0 to 100.0 (percent), in 5 percent increments. A seller is required to set a donation percentage at listing time, so this field should always be returned for charity listings.
+     * The percentage of the purchase price that the seller chooses to donate to the selected charitable organization. This percentage is also displayed in the View Item page for the listing. Possible values range from 10.0 to 100.0 (percent), in 5 percent increments. A seller is required to set a donation percentage at listing time, so this field should always be returned for charity listings.
      *
      * @var float $donationPercent
      */
@@ -77,7 +64,7 @@ class CharityType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
     /**
      * Gets as charityID
      *
-     * The unique identifier that eBay creates and assigns to each nonprofit organization that is registered with eBay for Charity. This is the unique identifier that should be used if the user wishes to retrieve more details on a nonprofit organization by using the Trading API's lt;b>GetCharities</b> call, or used by a seller in an Add/Revise/Relist call when they want to identify the nonprofit organization that will receive sale proceeds for a listing.
+     * The unique identifier that eBay creates and assigns to each charitable organization that is registered with eBay for Charity. This is the unique identifier that should be used if the user wishes to retrieve more details on a charitable organization by using the <a href="/api-docs/commerce/charity/resources/charity_org/methods/getCharityOrg" target="_blank">getCharityOrg</a> method of the <b>Charity API</b> or the <a href="/Devzone/XML/docs/Reference/eBay/GetCharities.html" target="_blank">GetCharities</a> call of the <b>Trading API</b>.<br><br>This identifier is also used by a seller in an Add/Revise/Relist call when they want to identify the charitable organization that will receive sales proceeds for a listing.
      *
      * @return string
      */
@@ -89,7 +76,7 @@ class CharityType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
     /**
      * Sets a new charityID
      *
-     * The unique identifier that eBay creates and assigns to each nonprofit organization that is registered with eBay for Charity. This is the unique identifier that should be used if the user wishes to retrieve more details on a nonprofit organization by using the Trading API's lt;b>GetCharities</b> call, or used by a seller in an Add/Revise/Relist call when they want to identify the nonprofit organization that will receive sale proceeds for a listing.
+     * The unique identifier that eBay creates and assigns to each charitable organization that is registered with eBay for Charity. This is the unique identifier that should be used if the user wishes to retrieve more details on a charitable organization by using the <a href="/api-docs/commerce/charity/resources/charity_org/methods/getCharityOrg" target="_blank">getCharityOrg</a> method of the <b>Charity API</b> or the <a href="/Devzone/XML/docs/Reference/eBay/GetCharities.html" target="_blank">GetCharities</a> call of the <b>Trading API</b>.<br><br>This identifier is also used by a seller in an Add/Revise/Relist call when they want to identify the charitable organization that will receive sales proceeds for a listing.
      *
      * @param string $charityID
      * @return self
@@ -103,8 +90,7 @@ class CharityType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
     /**
      * Gets as charityName
      *
-     * The name of the benefiting nonprofit organization selected by the
-     *  charity seller to receive sale proceeds for the listing.
+     * The name of the charitable organization selected by the seller to receive sales proceeds for the listing.
      *
      * @return string
      */
@@ -116,8 +102,7 @@ class CharityType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
     /**
      * Sets a new charityName
      *
-     * The name of the benefiting nonprofit organization selected by the
-     *  charity seller to receive sale proceeds for the listing.
+     * The name of the charitable organization selected by the seller to receive sales proceeds for the listing.
      *
      * @param string $charityName
      * @return self
@@ -129,45 +114,9 @@ class CharityType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
     }
 
     /**
-     * Gets as charityNumber
-     *
-     * The unique identifier that the PayPal Giving Fund assigns to each nonprofit organization that registers with eBay for Charity.
-     *  <br>
-     *  <br>
-     *  <span class="tablenote"><strong>Note:</strong>
-     *  All registered, non-profit organizations on eBay's platform have a PayPal Giving Fund identifier (<b>CharityNumber</b>) and a unique eBay identifier (<b>CharityID</b>). However, the <b>CharityNumber</b> field is now deprecated in the Shopping API, and is scheduled to stop being returned in <b>GetSingleItem</b> and <b>GetMultipleItems</b> after January 16, 2023. At that time, it will be removed from the Shopping WSDL. The <b>CharityID</b> value should be referenced instead.
-     *  </span>
-     *
-     * @return int
-     */
-    public function getCharityNumber()
-    {
-        return $this->charityNumber;
-    }
-
-    /**
-     * Sets a new charityNumber
-     *
-     * The unique identifier that the PayPal Giving Fund assigns to each nonprofit organization that registers with eBay for Charity.
-     *  <br>
-     *  <br>
-     *  <span class="tablenote"><strong>Note:</strong>
-     *  All registered, non-profit organizations on eBay's platform have a PayPal Giving Fund identifier (<b>CharityNumber</b>) and a unique eBay identifier (<b>CharityID</b>). However, the <b>CharityNumber</b> field is now deprecated in the Shopping API, and is scheduled to stop being returned in <b>GetSingleItem</b> and <b>GetMultipleItems</b> after January 16, 2023. At that time, it will be removed from the Shopping WSDL. The <b>CharityID</b> value should be referenced instead.
-     *  </span>
-     *
-     * @param int $charityNumber
-     * @return self
-     */
-    public function setCharityNumber($charityNumber)
-    {
-        $this->charityNumber = $charityNumber;
-        return $this;
-    }
-
-    /**
      * Gets as donationPercent
      *
-     * The percentage of the purchase price that the seller chooses to donate to the selected nonprofit organization. This percentage is also displayed in the eBay View Item page for the listing. Possible values range from 10.0 to 100.0 (percent), in 5 percent increments. A seller is required to set a donation percentage at listing time, so this field should always be returned for charity listings.
+     * The percentage of the purchase price that the seller chooses to donate to the selected charitable organization. This percentage is also displayed in the View Item page for the listing. Possible values range from 10.0 to 100.0 (percent), in 5 percent increments. A seller is required to set a donation percentage at listing time, so this field should always be returned for charity listings.
      *
      * @return float
      */
@@ -179,7 +128,7 @@ class CharityType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
     /**
      * Sets a new donationPercent
      *
-     * The percentage of the purchase price that the seller chooses to donate to the selected nonprofit organization. This percentage is also displayed in the eBay View Item page for the listing. Possible values range from 10.0 to 100.0 (percent), in 5 percent increments. A seller is required to set a donation percentage at listing time, so this field should always be returned for charity listings.
+     * The percentage of the purchase price that the seller chooses to donate to the selected charitable organization. This percentage is also displayed in the View Item page for the listing. Possible values range from 10.0 to 100.0 (percent), in 5 percent increments. A seller is required to set a donation percentage at listing time, so this field should always be returned for charity listings.
      *
      * @param float $donationPercent
      * @return self
@@ -305,10 +254,6 @@ class CharityType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CharityName", $value);
         }
-        $value = $this->getCharityNumber();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CharityNumber", $value);
-        }
         $value = $this->getDonationPercent();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DonationPercent", $value);
@@ -353,10 +298,6 @@ class CharityType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CharityName');
         if (null !== $value) {
             $this->setCharityName($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CharityNumber');
-        if (null !== $value) {
-            $this->setCharityNumber($value);
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DonationPercent');
         if (null !== $value) {

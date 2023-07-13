@@ -90,6 +90,17 @@ Nogrod\eBaySDK\Trading\VeROReportItemType:
                 getter: getPatent
                 setter: setPatent
             type: string
+        brand:
+            expose: true
+            access_type: public_method
+            serialized_name: Brand
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getBrand
+                setter: setBrand
+            type: string
         detailedMessage:
             expose: true
             access_type: public_method

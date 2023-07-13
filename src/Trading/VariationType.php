@@ -13,7 +13,8 @@ use Nogrod\XMLClientRuntime\Func;
 class VariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
     /**
-     * A SKU (stock keeping unit) is a seller-defined identifier. It is only intended for the seller's use (not for buyers). A SKU value is not required, but many large sellers like to add SKU value to their listings. If defined on a listing, a SKU value can be used by sellers to reconcile their eBay inventory with your own inventory system, instead of using the <b>VariationSpecifics</b> identifying values.
+     * <br>
+     *  A SKU (stock keeping unit) is a seller-defined identifier. It is only intended for the seller's use (not for buyers). A SKU value is not required, but many large sellers like to add SKU value to their listings. If defined on a listing, a SKU value can be used by sellers to reconcile their eBay inventory with your own inventory system, instead of using the <b>VariationSpecifics</b> identifying values.
      *  <br>
      *  <br>
      *  If specified, all SKU values must be unique within the <b>Variations</b>
@@ -25,13 +26,17 @@ class VariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
      *  <br>
      *  <b>For GetItem, GetOrders and other 'Get' calls:</b> Only returned if the
      *  seller specified a SKU for the variation.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>Item.Variations</b> container and its child fields will stop being returned in <b>GetItemTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @var string $sKU
      */
     private $sKU = null;
 
     /**
-     * The fixed price for this item variation.
+     * <br>
+     *  The fixed price for this item variation.
      *  For example, a "Blue, Large" variation price could be USD 10.00,
      *  and a "Black, Medium" variation price could be USD 5.00.<br>
      *  <br>
@@ -44,13 +49,17 @@ class VariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
      *  You can revise a variation's price at any time (even if it
      *  has purchases). When you modify a variation during revise or
      *  relist, you need to include both its <b>StartPrice</b> and <b>Quantity</b>.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>Item.Variations</b> container and its child fields will stop being returned in <b>GetItemTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @var \Nogrod\eBaySDK\Trading\AmountType $startPrice
      */
     private $startPrice = null;
 
     /**
-     * This value indicates the quantity of the specific variation that are
+     * <br/>
+     *  This value indicates the quantity of the specific variation that are
      *  available for purchase. If you set <b>Variation.Quantity</b> to <code>0</code> when
      *  you create, revise, or relist an item listing, the variation is dropped from
      *  the listing. To prevent this, you can set
@@ -90,13 +99,16 @@ class VariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
      *  The number in the <b>Variation.Quantity</b> field represents the current quantity of the item variation that is available using the "Ship to home" fulfillment method. This number does not take into account any quantity of the item variation that is available through "local" fulfillment methods such as In-Store Pickup or Click and Collect. This is due to the fact that there is no current implementation (or API field) where the seller informs eBay about the quantity of item variations available through each local fulfillment method. In the case where a listing is only offering the item variations through a local fulfillment method, this value should default to <code>0</code>, and the <b>Item.IgnoreQuantity</b> will also be returned as <code>True</code>.
      *  </span>
      *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>Item.Variations</b> container and its child fields will stop being returned in <b>GetItemTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @var int $quantity
      */
     private $quantity = null;
 
     /**
-     * A list of name/value pairs that uniquely identify the variation within
+     * <br>
+     *  A list of name/value pairs that uniquely identify the variation within
      *  the listing. All variations must specify the same set of Item Specific names, but
      *  each variation must provide a unique combination of values for those
      *  Item Specific names. For example, if the items vary by color and size, then every
@@ -114,6 +126,9 @@ class VariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
      *  <b>Variationpecifics</b> are returned instead. Optionally, you can pass
      *  <b>IncludeVariationSpecifics</b> as <code>true</code> in the request to force
      *  <b>Variationpecifics</b> to be returned, even when the SKU is returned.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>Item.Variations</b> container and its child fields will stop being returned in <b>GetItemTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @var \Nogrod\eBaySDK\Trading\NameValueListType[] $variationSpecifics
      */
@@ -130,8 +145,10 @@ class VariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
     private $unitsAvailable = null;
 
     /**
-     * Contains the variation's quantity sold.
-     *  Always returned when variations are present.
+     * Contains the variation's quantity sold. Always returned when variations are present.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>Item.Variations</b> container and its child fields will stop being returned in <b>GetItemTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @var \Nogrod\eBaySDK\Trading\SellingStatusType $sellingStatus
      */
@@ -143,7 +160,9 @@ class VariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
      *  For example, if the Title is "Polo Shirt" and the variation is
      *  for a medium pink shirt, the variation title could be
      *  "Polo Shirt[Pink,M].
-     *  <br/>
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>Item.Variations</b> container and its child fields will stop being returned in <b>GetItemTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @var string $variationTitle
      */
@@ -253,7 +272,8 @@ class VariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
     /**
      * Gets as sKU
      *
-     * A SKU (stock keeping unit) is a seller-defined identifier. It is only intended for the seller's use (not for buyers). A SKU value is not required, but many large sellers like to add SKU value to their listings. If defined on a listing, a SKU value can be used by sellers to reconcile their eBay inventory with your own inventory system, instead of using the <b>VariationSpecifics</b> identifying values.
+     * <br>
+     *  A SKU (stock keeping unit) is a seller-defined identifier. It is only intended for the seller's use (not for buyers). A SKU value is not required, but many large sellers like to add SKU value to their listings. If defined on a listing, a SKU value can be used by sellers to reconcile their eBay inventory with your own inventory system, instead of using the <b>VariationSpecifics</b> identifying values.
      *  <br>
      *  <br>
      *  If specified, all SKU values must be unique within the <b>Variations</b>
@@ -265,6 +285,9 @@ class VariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
      *  <br>
      *  <b>For GetItem, GetOrders and other 'Get' calls:</b> Only returned if the
      *  seller specified a SKU for the variation.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>Item.Variations</b> container and its child fields will stop being returned in <b>GetItemTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @return string
      */
@@ -276,7 +299,8 @@ class VariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
     /**
      * Sets a new sKU
      *
-     * A SKU (stock keeping unit) is a seller-defined identifier. It is only intended for the seller's use (not for buyers). A SKU value is not required, but many large sellers like to add SKU value to their listings. If defined on a listing, a SKU value can be used by sellers to reconcile their eBay inventory with your own inventory system, instead of using the <b>VariationSpecifics</b> identifying values.
+     * <br>
+     *  A SKU (stock keeping unit) is a seller-defined identifier. It is only intended for the seller's use (not for buyers). A SKU value is not required, but many large sellers like to add SKU value to their listings. If defined on a listing, a SKU value can be used by sellers to reconcile their eBay inventory with your own inventory system, instead of using the <b>VariationSpecifics</b> identifying values.
      *  <br>
      *  <br>
      *  If specified, all SKU values must be unique within the <b>Variations</b>
@@ -288,6 +312,9 @@ class VariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
      *  <br>
      *  <b>For GetItem, GetOrders and other 'Get' calls:</b> Only returned if the
      *  seller specified a SKU for the variation.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>Item.Variations</b> container and its child fields will stop being returned in <b>GetItemTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @param string $sKU
      * @return self
@@ -301,7 +328,8 @@ class VariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
     /**
      * Gets as startPrice
      *
-     * The fixed price for this item variation.
+     * <br>
+     *  The fixed price for this item variation.
      *  For example, a "Blue, Large" variation price could be USD 10.00,
      *  and a "Black, Medium" variation price could be USD 5.00.<br>
      *  <br>
@@ -314,6 +342,9 @@ class VariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
      *  You can revise a variation's price at any time (even if it
      *  has purchases). When you modify a variation during revise or
      *  relist, you need to include both its <b>StartPrice</b> and <b>Quantity</b>.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>Item.Variations</b> container and its child fields will stop being returned in <b>GetItemTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @return \Nogrod\eBaySDK\Trading\AmountType
      */
@@ -325,7 +356,8 @@ class VariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
     /**
      * Sets a new startPrice
      *
-     * The fixed price for this item variation.
+     * <br>
+     *  The fixed price for this item variation.
      *  For example, a "Blue, Large" variation price could be USD 10.00,
      *  and a "Black, Medium" variation price could be USD 5.00.<br>
      *  <br>
@@ -338,6 +370,9 @@ class VariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
      *  You can revise a variation's price at any time (even if it
      *  has purchases). When you modify a variation during revise or
      *  relist, you need to include both its <b>StartPrice</b> and <b>Quantity</b>.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>Item.Variations</b> container and its child fields will stop being returned in <b>GetItemTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @param \Nogrod\eBaySDK\Trading\AmountType $startPrice
      * @return self
@@ -351,7 +386,8 @@ class VariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
     /**
      * Gets as quantity
      *
-     * This value indicates the quantity of the specific variation that are
+     * <br/>
+     *  This value indicates the quantity of the specific variation that are
      *  available for purchase. If you set <b>Variation.Quantity</b> to <code>0</code> when
      *  you create, revise, or relist an item listing, the variation is dropped from
      *  the listing. To prevent this, you can set
@@ -391,6 +427,8 @@ class VariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
      *  The number in the <b>Variation.Quantity</b> field represents the current quantity of the item variation that is available using the "Ship to home" fulfillment method. This number does not take into account any quantity of the item variation that is available through "local" fulfillment methods such as In-Store Pickup or Click and Collect. This is due to the fact that there is no current implementation (or API field) where the seller informs eBay about the quantity of item variations available through each local fulfillment method. In the case where a listing is only offering the item variations through a local fulfillment method, this value should default to <code>0</code>, and the <b>Item.IgnoreQuantity</b> will also be returned as <code>True</code>.
      *  </span>
      *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>Item.Variations</b> container and its child fields will stop being returned in <b>GetItemTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @return int
      */
@@ -402,7 +440,8 @@ class VariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
     /**
      * Sets a new quantity
      *
-     * This value indicates the quantity of the specific variation that are
+     * <br/>
+     *  This value indicates the quantity of the specific variation that are
      *  available for purchase. If you set <b>Variation.Quantity</b> to <code>0</code> when
      *  you create, revise, or relist an item listing, the variation is dropped from
      *  the listing. To prevent this, you can set
@@ -442,6 +481,8 @@ class VariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
      *  The number in the <b>Variation.Quantity</b> field represents the current quantity of the item variation that is available using the "Ship to home" fulfillment method. This number does not take into account any quantity of the item variation that is available through "local" fulfillment methods such as In-Store Pickup or Click and Collect. This is due to the fact that there is no current implementation (or API field) where the seller informs eBay about the quantity of item variations available through each local fulfillment method. In the case where a listing is only offering the item variations through a local fulfillment method, this value should default to <code>0</code>, and the <b>Item.IgnoreQuantity</b> will also be returned as <code>True</code>.
      *  </span>
      *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>Item.Variations</b> container and its child fields will stop being returned in <b>GetItemTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @param int $quantity
      * @return self
@@ -455,7 +496,8 @@ class VariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
     /**
      * Adds as nameValueList
      *
-     * A list of name/value pairs that uniquely identify the variation within
+     * <br>
+     *  A list of name/value pairs that uniquely identify the variation within
      *  the listing. All variations must specify the same set of Item Specific names, but
      *  each variation must provide a unique combination of values for those
      *  Item Specific names. For example, if the items vary by color and size, then every
@@ -473,6 +515,9 @@ class VariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
      *  <b>Variationpecifics</b> are returned instead. Optionally, you can pass
      *  <b>IncludeVariationSpecifics</b> as <code>true</code> in the request to force
      *  <b>Variationpecifics</b> to be returned, even when the SKU is returned.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>Item.Variations</b> container and its child fields will stop being returned in <b>GetItemTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @return self
      * @param \Nogrod\eBaySDK\Trading\NameValueListType $nameValueList
@@ -486,7 +531,8 @@ class VariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
     /**
      * isset variationSpecifics
      *
-     * A list of name/value pairs that uniquely identify the variation within
+     * <br>
+     *  A list of name/value pairs that uniquely identify the variation within
      *  the listing. All variations must specify the same set of Item Specific names, but
      *  each variation must provide a unique combination of values for those
      *  Item Specific names. For example, if the items vary by color and size, then every
@@ -504,6 +550,9 @@ class VariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
      *  <b>Variationpecifics</b> are returned instead. Optionally, you can pass
      *  <b>IncludeVariationSpecifics</b> as <code>true</code> in the request to force
      *  <b>Variationpecifics</b> to be returned, even when the SKU is returned.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>Item.Variations</b> container and its child fields will stop being returned in <b>GetItemTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @param int|string $index
      * @return bool
@@ -516,7 +565,8 @@ class VariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
     /**
      * unset variationSpecifics
      *
-     * A list of name/value pairs that uniquely identify the variation within
+     * <br>
+     *  A list of name/value pairs that uniquely identify the variation within
      *  the listing. All variations must specify the same set of Item Specific names, but
      *  each variation must provide a unique combination of values for those
      *  Item Specific names. For example, if the items vary by color and size, then every
@@ -534,6 +584,9 @@ class VariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
      *  <b>Variationpecifics</b> are returned instead. Optionally, you can pass
      *  <b>IncludeVariationSpecifics</b> as <code>true</code> in the request to force
      *  <b>Variationpecifics</b> to be returned, even when the SKU is returned.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>Item.Variations</b> container and its child fields will stop being returned in <b>GetItemTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @param int|string $index
      * @return void
@@ -546,7 +599,8 @@ class VariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
     /**
      * Gets as variationSpecifics
      *
-     * A list of name/value pairs that uniquely identify the variation within
+     * <br>
+     *  A list of name/value pairs that uniquely identify the variation within
      *  the listing. All variations must specify the same set of Item Specific names, but
      *  each variation must provide a unique combination of values for those
      *  Item Specific names. For example, if the items vary by color and size, then every
@@ -564,6 +618,9 @@ class VariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
      *  <b>Variationpecifics</b> are returned instead. Optionally, you can pass
      *  <b>IncludeVariationSpecifics</b> as <code>true</code> in the request to force
      *  <b>Variationpecifics</b> to be returned, even when the SKU is returned.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>Item.Variations</b> container and its child fields will stop being returned in <b>GetItemTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @return \Nogrod\eBaySDK\Trading\NameValueListType[]
      */
@@ -575,7 +632,8 @@ class VariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
     /**
      * Sets a new variationSpecifics
      *
-     * A list of name/value pairs that uniquely identify the variation within
+     * <br>
+     *  A list of name/value pairs that uniquely identify the variation within
      *  the listing. All variations must specify the same set of Item Specific names, but
      *  each variation must provide a unique combination of values for those
      *  Item Specific names. For example, if the items vary by color and size, then every
@@ -593,6 +651,9 @@ class VariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
      *  <b>Variationpecifics</b> are returned instead. Optionally, you can pass
      *  <b>IncludeVariationSpecifics</b> as <code>true</code> in the request to force
      *  <b>Variationpecifics</b> to be returned, even when the SKU is returned.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>Item.Variations</b> container and its child fields will stop being returned in <b>GetItemTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @param \Nogrod\eBaySDK\Trading\NameValueListType[] $variationSpecifics
      * @return self
@@ -638,8 +699,10 @@ class VariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
     /**
      * Gets as sellingStatus
      *
-     * Contains the variation's quantity sold.
-     *  Always returned when variations are present.
+     * Contains the variation's quantity sold. Always returned when variations are present.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>Item.Variations</b> container and its child fields will stop being returned in <b>GetItemTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @return \Nogrod\eBaySDK\Trading\SellingStatusType
      */
@@ -651,8 +714,10 @@ class VariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
     /**
      * Sets a new sellingStatus
      *
-     * Contains the variation's quantity sold.
-     *  Always returned when variations are present.
+     * Contains the variation's quantity sold. Always returned when variations are present.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>Item.Variations</b> container and its child fields will stop being returned in <b>GetItemTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @param \Nogrod\eBaySDK\Trading\SellingStatusType $sellingStatus
      * @return self
@@ -671,7 +736,9 @@ class VariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
      *  For example, if the Title is "Polo Shirt" and the variation is
      *  for a medium pink shirt, the variation title could be
      *  "Polo Shirt[Pink,M].
-     *  <br/>
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>Item.Variations</b> container and its child fields will stop being returned in <b>GetItemTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @return string
      */
@@ -688,7 +755,9 @@ class VariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
      *  For example, if the Title is "Polo Shirt" and the variation is
      *  for a medium pink shirt, the variation title could be
      *  "Polo Shirt[Pink,M].
-     *  <br/>
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>Item.Variations</b> container and its child fields will stop being returned in <b>GetItemTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @param string $variationTitle
      * @return self

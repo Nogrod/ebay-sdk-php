@@ -175,6 +175,18 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     private $distance = null;
 
     /**
+     * <b>DO NOT USE THIS FIELD</b>. Hit counters are no longer displayed in View Item pages, so this field is no longer applicable and is scheduled for decommission. If this field is used in an add/revise/relist/verify call, it will be ignored and a warning message will be returned.
+     *  <br/><br/>
+     *  For developers/sellers who are interested in seeing page views and listing performance, the <a href="https://developer.ebay.com/api-docs/sell/analytics/resources/traffic_report/methods/getTrafficReport">getTrafficReport</a> method of the <b>Sell Analytics API</b> can be used.
+     *  <br/><br/>
+     *  Until this field is decommissioned, it will still be returned in <b>GetItem</b>, <b>GetBidderList</b>, <b>GetSellerEvents</b>, and <b>GetSellerList</b>. The default value for the marketplace will be returned, such as <code>NoHitCounter</code> or <code>HiddenStyle</code>.
+     *  <br/>
+     *
+     * @var string $hitCounter
+     */
+    private $hitCounter = null;
+
+    /**
      * The unique identifier of the eBay listing. This identifier is generated
      *  by eBay and returned in the response of an Add call if an item is successfully listed. Once an item is successfully created, the <b>ItemID</b> cannot be modified. <br>
      *  <br>
@@ -800,7 +812,14 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     private $watchCount = null;
 
     /**
-     * This value indicates the number of page views that a listing has received in the last 30 days.
+     * This value indicates the number of page views that a listing has received since creation of the listing.
+     *  <br/>
+     *  <span class="tablenote"><b>Note:</b>
+     *  This field is deprecated for the <b>GetItem</b> and <b>GetBidderList</b> calls, and will stop being returned on April 30, 2022. Developers/sellers using these calls to see page views can integrate with the the <a href="https://developer.ebay.com/api-docs/sell/analytics/resources/traffic_report/methods/getTrafficReport">getTrafficReport</a> method of the <b>Sell Analytics API</b> as an alternative.
+     *  </span>
+     *  <span class="tablenote"><b>Note:</b>
+     *  Starting in mid-May 2022, the <b>HitCount</b> value returned in <b>GetSellerEvents</b> and <b>GetSellerList</b> responses will indicate the number of page views in the last 30 days (and not page views since creation of the listing). When this logic change is officially implemented, it will be announced through Release Notes, and this description will also be updated.
+     *  </span>
      *
      * @var int $hitCount
      */
@@ -1548,7 +1567,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     private $quantityThreshold = null;
 
     /**
-     * This container provides information for an item that has a Strikethrough Price (STP) or a Minimum Advertised Price (MAP) discount pricing treatment. STP and MAP apply only to fixed-price listings. STP is available on the US, eBay Motors, UK, Germany, Canada (English and French), France, Italy, Spain, and Ireland sites, while MAP is available only on the US site.
+     * This container provides information for an item that has a Strikethrough Price (STP) or a Minimum Advertised Price (MAP) discount pricing treatment. STP and MAP apply only to fixed-price listings. STP is available on the US, eBay Motors, UK, Germany, Canada (English and French), France, Italy, and Spain sites, while MAP is available only on the US site.
      *  <br><br>
      *  Discount pricing is available to qualified sellers (and their associated developers) who participate in the Discount Pricing Program. Once qualified, sellers receive a 'special account flag' (SAF) that allows them to apply Discount Pricing to both single-variation and multi-variation items. STP is intended for eBay partners and their sellers only.
      *  <br><br>
@@ -2485,6 +2504,42 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     public function setDistance(\Nogrod\eBaySDK\MerchantData\DistanceType $distance)
     {
         $this->distance = $distance;
+        return $this;
+    }
+
+    /**
+     * Gets as hitCounter
+     *
+     * <b>DO NOT USE THIS FIELD</b>. Hit counters are no longer displayed in View Item pages, so this field is no longer applicable and is scheduled for decommission. If this field is used in an add/revise/relist/verify call, it will be ignored and a warning message will be returned.
+     *  <br/><br/>
+     *  For developers/sellers who are interested in seeing page views and listing performance, the <a href="https://developer.ebay.com/api-docs/sell/analytics/resources/traffic_report/methods/getTrafficReport">getTrafficReport</a> method of the <b>Sell Analytics API</b> can be used.
+     *  <br/><br/>
+     *  Until this field is decommissioned, it will still be returned in <b>GetItem</b>, <b>GetBidderList</b>, <b>GetSellerEvents</b>, and <b>GetSellerList</b>. The default value for the marketplace will be returned, such as <code>NoHitCounter</code> or <code>HiddenStyle</code>.
+     *  <br/>
+     *
+     * @return string
+     */
+    public function getHitCounter()
+    {
+        return $this->hitCounter;
+    }
+
+    /**
+     * Sets a new hitCounter
+     *
+     * <b>DO NOT USE THIS FIELD</b>. Hit counters are no longer displayed in View Item pages, so this field is no longer applicable and is scheduled for decommission. If this field is used in an add/revise/relist/verify call, it will be ignored and a warning message will be returned.
+     *  <br/><br/>
+     *  For developers/sellers who are interested in seeing page views and listing performance, the <a href="https://developer.ebay.com/api-docs/sell/analytics/resources/traffic_report/methods/getTrafficReport">getTrafficReport</a> method of the <b>Sell Analytics API</b> can be used.
+     *  <br/><br/>
+     *  Until this field is decommissioned, it will still be returned in <b>GetItem</b>, <b>GetBidderList</b>, <b>GetSellerEvents</b>, and <b>GetSellerList</b>. The default value for the marketplace will be returned, such as <code>NoHitCounter</code> or <code>HiddenStyle</code>.
+     *  <br/>
+     *
+     * @param string $hitCounter
+     * @return self
+     */
+    public function setHitCounter($hitCounter)
+    {
+        $this->hitCounter = $hitCounter;
         return $this;
     }
 
@@ -4434,7 +4489,14 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Gets as hitCount
      *
-     * This value indicates the number of page views that a listing has received in the last 30 days.
+     * This value indicates the number of page views that a listing has received since creation of the listing.
+     *  <br/>
+     *  <span class="tablenote"><b>Note:</b>
+     *  This field is deprecated for the <b>GetItem</b> and <b>GetBidderList</b> calls, and will stop being returned on April 30, 2022. Developers/sellers using these calls to see page views can integrate with the the <a href="https://developer.ebay.com/api-docs/sell/analytics/resources/traffic_report/methods/getTrafficReport">getTrafficReport</a> method of the <b>Sell Analytics API</b> as an alternative.
+     *  </span>
+     *  <span class="tablenote"><b>Note:</b>
+     *  Starting in mid-May 2022, the <b>HitCount</b> value returned in <b>GetSellerEvents</b> and <b>GetSellerList</b> responses will indicate the number of page views in the last 30 days (and not page views since creation of the listing). When this logic change is officially implemented, it will be announced through Release Notes, and this description will also be updated.
+     *  </span>
      *
      * @return int
      */
@@ -4446,7 +4508,14 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Sets a new hitCount
      *
-     * This value indicates the number of page views that a listing has received in the last 30 days.
+     * This value indicates the number of page views that a listing has received since creation of the listing.
+     *  <br/>
+     *  <span class="tablenote"><b>Note:</b>
+     *  This field is deprecated for the <b>GetItem</b> and <b>GetBidderList</b> calls, and will stop being returned on April 30, 2022. Developers/sellers using these calls to see page views can integrate with the the <a href="https://developer.ebay.com/api-docs/sell/analytics/resources/traffic_report/methods/getTrafficReport">getTrafficReport</a> method of the <b>Sell Analytics API</b> as an alternative.
+     *  </span>
+     *  <span class="tablenote"><b>Note:</b>
+     *  Starting in mid-May 2022, the <b>HitCount</b> value returned in <b>GetSellerEvents</b> and <b>GetSellerList</b> responses will indicate the number of page views in the last 30 days (and not page views since creation of the listing). When this logic change is officially implemented, it will be announced through Release Notes, and this description will also be updated.
+     *  </span>
      *
      * @param int $hitCount
      * @return self
@@ -6835,7 +6904,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Gets as discountPriceInfo
      *
-     * This container provides information for an item that has a Strikethrough Price (STP) or a Minimum Advertised Price (MAP) discount pricing treatment. STP and MAP apply only to fixed-price listings. STP is available on the US, eBay Motors, UK, Germany, Canada (English and French), France, Italy, Spain, and Ireland sites, while MAP is available only on the US site.
+     * This container provides information for an item that has a Strikethrough Price (STP) or a Minimum Advertised Price (MAP) discount pricing treatment. STP and MAP apply only to fixed-price listings. STP is available on the US, eBay Motors, UK, Germany, Canada (English and French), France, Italy, and Spain sites, while MAP is available only on the US site.
      *  <br><br>
      *  Discount pricing is available to qualified sellers (and their associated developers) who participate in the Discount Pricing Program. Once qualified, sellers receive a 'special account flag' (SAF) that allows them to apply Discount Pricing to both single-variation and multi-variation items. STP is intended for eBay partners and their sellers only.
      *  <br><br>
@@ -6853,7 +6922,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Sets a new discountPriceInfo
      *
-     * This container provides information for an item that has a Strikethrough Price (STP) or a Minimum Advertised Price (MAP) discount pricing treatment. STP and MAP apply only to fixed-price listings. STP is available on the US, eBay Motors, UK, Germany, Canada (English and French), France, Italy, Spain, and Ireland sites, while MAP is available only on the US site.
+     * This container provides information for an item that has a Strikethrough Price (STP) or a Minimum Advertised Price (MAP) discount pricing treatment. STP and MAP apply only to fixed-price listings. STP is available on the US, eBay Motors, UK, Germany, Canada (English and French), France, Italy, and Spain sites, while MAP is available only on the US site.
      *  <br><br>
      *  Discount pricing is available to qualified sellers (and their associated developers) who participate in the Discount Pricing Program. Once qualified, sellers receive a 'special account flag' (SAF) that allows them to apply Discount Pricing to both single-variation and multi-variation items. STP is intended for eBay partners and their sellers only.
      *  <br><br>
@@ -7937,7 +8006,9 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         }
         $value = $this->getDescription();
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Description", $value);
+            $writer->startElement("{urn:ebay:apis:eBLBaseComponents}Description");
+            $writer->writeCdata($value);
+            $writer->endElement();
         }
         $value = $this->getDescriptionReviseMode();
         if (null !== $value) {
@@ -7946,6 +8017,10 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         $value = $this->getDistance();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Distance", $value);
+        }
+        $value = $this->getHitCounter();
+        if (null !== $value) {
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}HitCounter", $value);
         }
         $value = $this->getItemID();
         if (null !== $value) {
@@ -8572,6 +8647,10 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Distance');
         if (null !== $value) {
             $this->setDistance(\Nogrod\eBaySDK\MerchantData\DistanceType::fromKeyValue($value));
+        }
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}HitCounter');
+        if (null !== $value) {
+            $this->setHitCounter($value);
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemID');
         if (null !== $value) {

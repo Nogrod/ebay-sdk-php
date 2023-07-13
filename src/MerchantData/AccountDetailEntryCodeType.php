@@ -1701,21 +1701,24 @@ class AccountDetailEntryCodeType
     /**
      * Constant for 'PaypalOnFile' value.
      *
-     * This enumeration value is no longer applicable.
+     * This enumeration value is no longer applicable as having a PayPal linked to your
+     * eBay account is no longer required.
      */
     public const VAL_PAYPAL_ON_FILE = 'PaypalOnFile';
 
     /**
      * Constant for 'PaypalOnFileByCSR' value.
      *
-     * This enumeration value is no longer applicable.
+     * This enumeration value is no longer applicable as having a PayPal linked to your
+     * eBay account is no longer required.
      */
     public const VAL_PAYPAL_ON_FILE_BY_CSR = 'PaypalOnFileByCSR';
 
     /**
      * Constant for 'PaypalOffFile' value.
      *
-     * This enumeration value is no longer applicable.
+     * This enumeration value is no longer applicable as having a PayPal linked to your
+     * eBay account is no longer required.
      */
     public const VAL_PAYPAL_OFF_FILE = 'PaypalOffFile';
 
@@ -2738,42 +2741,116 @@ class AccountDetailEntryCodeType
     /**
      * Constant for 'USInternetSalesTax' value.
      *
-     * This enumeration value is deprecated.
+     * This enumeration value indicates that PayPal has pulled out the 'Collect and
+     * Remit' sales tax amount that was originally deposited to the seller's PayPal
+     * account. This enumeration value is only applicable if the buyer is based in the
+     * US, and their state of residence mandates the collection of sales tax. See the
+     * corresponding <b>OrderId</b> value to determine which eBay order this sales tax
+     * pertains to.
+     *  <br><br>
+     *  <span class="tablenote"><b>Note: </b>
+     *  As of November 2021, a very large majority of orders go through the eBay
+     * payments process, and PayPal is no longer involved in the checkout/payment flow.
+     * This enumeration value will soon become deprecated, but this value may still be
+     * relevant for older orders.
+     *  </span>
      */
     public const VAL_USINTERNET_SALES_TAX = 'USInternetSalesTax';
 
     /**
      * Constant for 'USInternetSalesTaxCredit' value.
      *
-     * This enumeration value is deprecated.
+     * This enumeration value indicates that PayPal has deposited the 'Collect and
+     * Remit' sales tax amount (for the order identified by the corresponding
+     * <b>OrderId</b> field) to the seller's PayPal account. This enumeration value is
+     * only applicable if the buyer is based in the US, and their state of residence
+     * mandates the collection of sales tax. This sales tax will actually get pulled
+     * from the seller's PayPal account shortly after the buyer's funds clear, and the
+     * seller should then see a <b>USInternetSalesTax</b> account entry with a matching
+     * amount.
+     *  <br><br>
+     *  <span class="tablenote"><b>Note: </b>
+     *  As of November 2021, a very large majority of orders go through the eBay
+     * payments process, and PayPal is no longer involved in the checkout/payment flow.
+     * This enumeration value will soon become deprecated, but this value may still be
+     * relevant for older orders.
+     *  </span>
      */
     public const VAL_USINTERNET_SALES_TAX_CREDIT = 'USInternetSalesTaxCredit';
 
     /**
      * Constant for 'NewZealandGST' value.
      *
-     * This enumeration value is deprecated.
+     * This enumeration value indicates that PayPal has pulled out the 'Goods and
+     * Services' tax amount that was originally deposited to the seller's PayPal
+     * account. This enumeration value is only applicable to New Zealand sellers for
+     * orders that are subject to 'Goods and Services' tax. See the corresponding
+     * <b>OrderId</b> value to determine which eBay order this tax pertains to.
+     *  <br><br>
+     *  <span class="tablenote"><b>Note: </b>
+     *  As of November 2021, a very large majority of orders go through the eBay
+     * payments process, and PayPal is no longer involved in the checkout/payment flow.
+     * This enumeration value will soon become deprecated, but this value may still be
+     * relevant for older orders.
+     *  </span>
      */
     public const VAL_NEW_ZEALAND_GST = 'NewZealandGST';
 
     /**
      * Constant for 'NewZealandGSTCredit' value.
      *
-     * This enumeration value is deprecated.
+     * This enumeration value indicates that PayPal has deposited the 'Goods and
+     * Services' tax amount (for the order identified by the corresponding
+     * <b>OrderId</b> field) to the seller's account. This enumeration value is only
+     * applicable to New Zealand sellers for orders that are subject to 'Goods and
+     * Services' tax. This tax will actually get pulled from the seller's account
+     * shortly after the order funds clear, and the seller should then see a
+     * <b>NewZealandGST</b> account entry with a matching amount.
+     *  <br><br>
+     *  <span class="tablenote"><b>Note: </b>
+     *  As of November 2021, a very large majority of orders go through the eBay
+     * payments process, and PayPal is no longer involved in the checkout/payment flow.
+     * This enumeration value will soon become deprecated, but this value may still be
+     * relevant for older orders.
+     *  </span>
      */
     public const VAL_NEW_ZEALAND_GSTCREDIT = 'NewZealandGSTCredit';
 
     /**
      * Constant for 'AustraliaGST' value.
      *
-     * This enumeration value is deprecated.
+     * This enumeration value indicates that PayPal has pulled out the 'Goods and
+     * Services' tax amount that was originally deposited to the seller's PayPal
+     * account. This enumeration value is only applicable to Australian sellers for
+     * orders that are subject to 'Goods and Services' tax. See the corresponding
+     * <b>OrderId</b> value to determine which eBay order this tax pertains to.
+     *  <br><br>
+     *  <span class="tablenote"><b>Note: </b>
+     *  As of November 2021, a very large majority of orders go through the eBay
+     * payments process, and PayPal is no longer involved in the checkout/payment flow.
+     * This enumeration value will soon become deprecated, but this value may still be
+     * relevant for older orders.
+     *  </span>
      */
     public const VAL_AUSTRALIA_GST = 'AustraliaGST';
 
     /**
      * Constant for 'AustraliaGSTCredit' value.
      *
-     * This enumeration value is deprecated.
+     * This enumeration value indicates that PayPal has deposited the 'Goods and
+     * Services' tax amount (for the order identified by the corresponding
+     * <b>OrderId</b> field) to the seller's account. This enumeration value is only
+     * applicable to Australian sellers for orders that are subject to 'Goods and
+     * Services' tax. This tax will actually get pulled from the seller's account
+     * shortly after the order funds clear, and the seller should then see a
+     * <b>AustraliaGST</b> account entry with a matching amount.
+     *  <br><br>
+     *  <span class="tablenote"><b>Note: </b>
+     *  As of November 2021, a very large majority of orders go through the eBay
+     * payments process, and PayPal is no longer involved in the checkout/payment flow.
+     * This enumeration value will soon become deprecated, but this value may still be
+     * relevant for older orders.
+     *  </span>
      */
     public const VAL_AUSTRALIA_GSTCREDIT = 'AustraliaGSTCredit';
 

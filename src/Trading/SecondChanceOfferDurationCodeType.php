@@ -5,7 +5,7 @@ namespace Nogrod\eBaySDK\Trading;
 /**
  * Class representing SecondChanceOfferDurationCodeType
  *
- * This enumerated type contains the list of values that can be used by the seller to set the length of time that a Second Chance Offer or a Transaction Confirmation Request will be available to a specific recipient to whom the Second Chance Offer or Transaction Confirmation Request was presented. The recipient must purchase the Second Chance or Transaction Confirmation Request item within this time or the offer will expire. Second Chance Offers are only applicable for closed auction listings and Transaction Confirmation Requests are only applicable for an eBay Motors listing that were closed and converted to a Transaction Confirmation Request.
+ * This enumerated type contains the list of values that can be used by the seller to set the length of time that a Second Chance Offer will be available to a specific recipient to whom the Second Chance Offer was presented. The recipient must purchase the Second Chance item within this time or the offer will expire. Second Chance Offers are only applicable for closed auction listings.
  * XSD Type: SecondChanceOfferDurationCodeType
  */
 class SecondChanceOfferDurationCodeType
@@ -15,8 +15,7 @@ class SecondChanceOfferDurationCodeType
      *
      * The seller specifies this value to make the Second Chance offer available to the
      * bidder for one day. This value will affect the <b>EndTime</b> value returned in
-     * the <b>AddSecondChanceItem</b> or <b>AddTransactionConfirmationItem</b>
-     * responses.
+     * the <b>AddSecondChanceItem</b> response.
      */
     public const VAL_DAYS__1 = 'Days_1';
 
@@ -25,8 +24,7 @@ class SecondChanceOfferDurationCodeType
      *
      * The seller specifies this value to make the Second Chance offer available to the
      * bidder for three days. This value will affect the <b>EndTime</b> value returned
-     * in the <b>AddSecondChanceItem</b> or <b>AddTransactionConfirmationItem</b>
-     * responses.
+     * in the <b>AddSecondChanceItem</b> response.
      */
     public const VAL_DAYS__3 = 'Days_3';
 
@@ -34,8 +32,8 @@ class SecondChanceOfferDurationCodeType
      * Constant for 'Days_5' value.
      *
      * The seller specifies this value to make the Second Chance offer available to the
-     * bidder for five days. This value will affect the <b>AddSecondChanceItem</b> or
-     * <b>AddTransactionConfirmationItem</b> responses.
+     * bidder for five days. This value will affect the <b>AddSecondChanceItem</b>
+     * response.
      */
     public const VAL_DAYS__5 = 'Days_5';
 
@@ -44,8 +42,7 @@ class SecondChanceOfferDurationCodeType
      *
      * The seller specifies this value to make the Second Chance offer available to the
      * bidder for seven days. This value will affect the <b>EndTime</b> value returned
-     * in the <b>AddSecondChanceItem</b> or <b>AddTransactionConfirmationItem</b>
-     * responses.
+     * in the <b>AddSecondChanceItem</b> response.
      */
     public const VAL_DAYS__7 = 'Days_7';
 

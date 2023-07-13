@@ -16,6 +16,22 @@ Nogrod\eBaySDK\Trading\CustomPoliciesType:
                 getter: getTakeBackPolicyID
                 setter: setTakeBackPolicyID
             type: int
+        regionalTakeBackPolicies:
+            expose: true
+            access_type: public_method
+            serialized_name: RegionalTakeBackPolicies
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getRegionalTakeBackPolicies
+                setter: setRegionalTakeBackPolicies
+            type: array<Nogrod\eBaySDK\Trading\CountryPoliciesType>
+            xml_list:
+                inline: false
+                entry_name: CountryPolicies
+                skip_when_empty: true
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
         productCompliancePolicyID:
             expose: true
             access_type: public_method
@@ -31,3 +47,19 @@ Nogrod\eBaySDK\Trading\CustomPoliciesType:
                 entry_name: ProductCompliancePolicyID
                 namespace: 'urn:ebay:apis:eBLBaseComponents'
             type: array<int>
+        regionalProductCompliancePolicies:
+            expose: true
+            access_type: public_method
+            serialized_name: RegionalProductCompliancePolicies
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getRegionalProductCompliancePolicies
+                setter: setRegionalProductCompliancePolicies
+            type: array<Nogrod\eBaySDK\Trading\CountryPoliciesType>
+            xml_list:
+                inline: false
+                entry_name: CountryPolicies
+                skip_when_empty: true
+                namespace: 'urn:ebay:apis:eBLBaseComponents'

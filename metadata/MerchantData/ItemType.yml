@@ -196,6 +196,17 @@ Nogrod\eBaySDK\MerchantData\ItemType:
                 getter: getDistance
                 setter: setDistance
             type: Nogrod\eBaySDK\MerchantData\DistanceType
+        hitCounter:
+            expose: true
+            access_type: public_method
+            serialized_name: HitCounter
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getHitCounter
+                setter: setHitCounter
+            type: string
         itemID:
             expose: true
             access_type: public_method

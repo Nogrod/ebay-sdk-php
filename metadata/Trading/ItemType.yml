@@ -1205,6 +1205,22 @@ Nogrod\eBaySDK\Trading\ItemType:
                 getter: getConditionID
                 setter: setConditionID
             type: int
+        conditionDescriptors:
+            expose: true
+            access_type: public_method
+            serialized_name: ConditionDescriptors
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getConditionDescriptors
+                setter: setConditionDescriptors
+            type: array<Nogrod\eBaySDK\Trading\ConditionDescriptorType>
+            xml_list:
+                inline: false
+                entry_name: ConditionDescriptor
+                skip_when_empty: true
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
         conditionDescription:
             expose: true
             access_type: public_method
@@ -1227,6 +1243,17 @@ Nogrod\eBaySDK\Trading\ItemType:
                 getter: getConditionDisplayName
                 setter: setConditionDisplayName
             type: string
+        regulatory:
+            expose: true
+            access_type: public_method
+            serialized_name: Regulatory
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getRegulatory
+                setter: setRegulatory
+            type: Nogrod\eBaySDK\Trading\RegulatoryType
         taxCategory:
             expose: true
             access_type: public_method

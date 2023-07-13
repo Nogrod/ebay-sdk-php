@@ -72,6 +72,13 @@ class VeROReportItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
     private $patent = null;
 
     /**
+     * The brand name of the item being reported for VeRO violation.
+     *
+     * @var string $brand
+     */
+    private $brand = null;
+
+    /**
      * Explanatory text from the VeRO Program member. This field is conditionally required when the
      *  <b>VeROReasonCodeID</b> is <code>Others</code>. Note that there is a 1000-character restriction on this text field when the items are being reported with the <code>Others</code> reason code.
      *
@@ -363,6 +370,32 @@ class VeROReportItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
     }
 
     /**
+     * Gets as brand
+     *
+     * The brand name of the item being reported for VeRO violation.
+     *
+     * @return string
+     */
+    public function getBrand()
+    {
+        return $this->brand;
+    }
+
+    /**
+     * Sets a new brand
+     *
+     * The brand name of the item being reported for VeRO violation.
+     *
+     * @param string $brand
+     * @return self
+     */
+    public function setBrand($brand)
+    {
+        $this->brand = $brand;
+        return $this;
+    }
+
+    /**
      * Gets as detailedMessage
      *
      * Explanatory text from the VeRO Program member. This field is conditionally required when the
@@ -426,6 +459,10 @@ class VeROReportItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Patent", $value);
         }
+        $value = $this->getBrand();
+        if (null !== $value) {
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Brand", $value);
+        }
         $value = $this->getDetailedMessage();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DetailedMessage", $value);
@@ -473,6 +510,10 @@ class VeROReportItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Patent');
         if (null !== $value) {
             $this->setPatent($value);
+        }
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Brand');
+        if (null !== $value) {
+            $this->setBrand($value);
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DetailedMessage');
         if (null !== $value) {

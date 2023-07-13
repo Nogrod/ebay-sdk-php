@@ -296,10 +296,12 @@ class BuyerPaymentMethodCodeType
      * This buyer payment method is only applicable for the Germany site and is
      * associated with the rollout of Progressive Checkout and the Pay Upon Invoice
      * feature. 'PayUponInvoice' is not a payment method that is offered to the buyer,
-     * but instead, eBay makes the determination (based on several factors) during
-     * checkout whether the buyer is eligible for 'Pay Upon Invoice'. If the buyer is
-     * offered the 'Pay Upon Invoice' option, that buyer is not required to pay for the
-     * order until an order invoice is sent by the seller.
+     * but instead, eBay/PayPal makes the determination (based on several factors)
+     * during checkout whether the buyer is eligible for 'Pay Upon Invoice'. If the
+     * buyer is offered the 'Pay Upon Invoice' option, that buyer is not required to
+     * pay for the order until an order invoice is sent by the seller. The seller must
+     * offer PayPal as a payment option or the 'Pay Upon Invoice' option will not be
+     * made available to the buyer under any circumstance.
      *  <br><br>
      *  Only select categories on the Germany site will support the 'Pay Upon Invoice'
      * option, and orders going above the two-thousand dollar EURO mark will not be

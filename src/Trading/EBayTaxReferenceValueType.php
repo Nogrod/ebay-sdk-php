@@ -16,7 +16,19 @@ class EBayTaxReferenceValueType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     private $__value = null;
 
     /**
-     * This attribute value is returned to indicate the VAT tax type, which will vary by country/region. This string value will be one of the following:<br/><ul><li><code>ABN</code>: if this string is returned, the ID in the field is an eBay Australia tax number </li><li><code>IOSS</code>: if this string is returned, the ID in the field is an eBay EU or UK IOSS number</li><li><code>IRD</code>: if this string is returned, the ID in the field is an eBay New Zealand tax number</li><li><code>OSS</code>: if this string is returned, the ID in the field is an eBay Germany VAT ID</li><li><code>VOEC</code>: if this string is returned, the ID in the field is an eBay Norway tax number</li><li><code>VAT_ID</code>: if this string is returned, the ID in the field is an eBay France VAT ID</li></ul>
+     * This attribute value is returned to indicate the VAT tax type or tax number, which will vary by country/region. This string value will be one of the following:<br/>
+     *  <ul>
+     *  <li><code>ABN</code>: if this string is returned, the ID in the field is an eBay Australia tax number</li>
+     *  <li><code>GST</code>: if this string is returned, the ID in the field is an eBay Jersey tax number</li>
+     *  <li><code>IOSS</code>: if this string is returned, the ID in the field is an eBay EU or UK IOSS number, or if the country is Kazakhstan it is an eBay Kazakhstan VAT (reference value of '<code>-</code>',no VAT Number or taxNum) </li>
+     *  <li><code>IRD</code>: if this string is returned, the ID in the field is an eBay New Zealand tax number</li>
+     *  <li><code>OSS</code>: if this string is returned, the ID in the field is an eBay Germany VAT ID, or if the country is Kazakhstan it is an eBay Kazakhstan VAT (reference value of '<code>-</code>', no VAT Number or taxNum) </li>
+     *  <li><code>SST</code>: if this string is returned, the ID in the field is an eBay Malaysia tax number, or if the country is Kazakhstan it is an eBay Kazakhstan VAT (reference value of '<code>-</code>', no VAT Number or taxNum) </li>
+     *  <li><code>DDG</code>: if this string is returned, the ID in the field is an eBay Malaysia tax number, or if the country is Belarus, the ID in the field is an eBay Belarus tax number, or if the country is Kazakhstan it is an eBay Kazakhstan VAT (reference value of '<code>-</code>', no VAT Number or taxNum) </li>
+     *  <li><code>VOEC</code>: if this string is returned, the ID in the field is an eBay Norway tax number</li>
+     *  <li><code>VAT</code>: if this string is returned, the ID in the field is an eBay Belarus tax number</li>
+     *  <li><code>VAT_ID</code>: if this string is returned, the ID in the field is an eBay France VAT ID</li>
+     *  </ul>
      *
      * @var string $name
      */
@@ -59,7 +71,19 @@ class EBayTaxReferenceValueType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     /**
      * Gets as name
      *
-     * This attribute value is returned to indicate the VAT tax type, which will vary by country/region. This string value will be one of the following:<br/><ul><li><code>ABN</code>: if this string is returned, the ID in the field is an eBay Australia tax number </li><li><code>IOSS</code>: if this string is returned, the ID in the field is an eBay EU or UK IOSS number</li><li><code>IRD</code>: if this string is returned, the ID in the field is an eBay New Zealand tax number</li><li><code>OSS</code>: if this string is returned, the ID in the field is an eBay Germany VAT ID</li><li><code>VOEC</code>: if this string is returned, the ID in the field is an eBay Norway tax number</li><li><code>VAT_ID</code>: if this string is returned, the ID in the field is an eBay France VAT ID</li></ul>
+     * This attribute value is returned to indicate the VAT tax type or tax number, which will vary by country/region. This string value will be one of the following:<br/>
+     *  <ul>
+     *  <li><code>ABN</code>: if this string is returned, the ID in the field is an eBay Australia tax number</li>
+     *  <li><code>GST</code>: if this string is returned, the ID in the field is an eBay Jersey tax number</li>
+     *  <li><code>IOSS</code>: if this string is returned, the ID in the field is an eBay EU or UK IOSS number, or if the country is Kazakhstan it is an eBay Kazakhstan VAT (reference value of '<code>-</code>',no VAT Number or taxNum) </li>
+     *  <li><code>IRD</code>: if this string is returned, the ID in the field is an eBay New Zealand tax number</li>
+     *  <li><code>OSS</code>: if this string is returned, the ID in the field is an eBay Germany VAT ID, or if the country is Kazakhstan it is an eBay Kazakhstan VAT (reference value of '<code>-</code>', no VAT Number or taxNum) </li>
+     *  <li><code>SST</code>: if this string is returned, the ID in the field is an eBay Malaysia tax number, or if the country is Kazakhstan it is an eBay Kazakhstan VAT (reference value of '<code>-</code>', no VAT Number or taxNum) </li>
+     *  <li><code>DDG</code>: if this string is returned, the ID in the field is an eBay Malaysia tax number, or if the country is Belarus, the ID in the field is an eBay Belarus tax number, or if the country is Kazakhstan it is an eBay Kazakhstan VAT (reference value of '<code>-</code>', no VAT Number or taxNum) </li>
+     *  <li><code>VOEC</code>: if this string is returned, the ID in the field is an eBay Norway tax number</li>
+     *  <li><code>VAT</code>: if this string is returned, the ID in the field is an eBay Belarus tax number</li>
+     *  <li><code>VAT_ID</code>: if this string is returned, the ID in the field is an eBay France VAT ID</li>
+     *  </ul>
      *
      * @return string
      */
@@ -71,7 +95,19 @@ class EBayTaxReferenceValueType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     /**
      * Sets a new name
      *
-     * This attribute value is returned to indicate the VAT tax type, which will vary by country/region. This string value will be one of the following:<br/><ul><li><code>ABN</code>: if this string is returned, the ID in the field is an eBay Australia tax number </li><li><code>IOSS</code>: if this string is returned, the ID in the field is an eBay EU or UK IOSS number</li><li><code>IRD</code>: if this string is returned, the ID in the field is an eBay New Zealand tax number</li><li><code>OSS</code>: if this string is returned, the ID in the field is an eBay Germany VAT ID</li><li><code>VOEC</code>: if this string is returned, the ID in the field is an eBay Norway tax number</li><li><code>VAT_ID</code>: if this string is returned, the ID in the field is an eBay France VAT ID</li></ul>
+     * This attribute value is returned to indicate the VAT tax type or tax number, which will vary by country/region. This string value will be one of the following:<br/>
+     *  <ul>
+     *  <li><code>ABN</code>: if this string is returned, the ID in the field is an eBay Australia tax number</li>
+     *  <li><code>GST</code>: if this string is returned, the ID in the field is an eBay Jersey tax number</li>
+     *  <li><code>IOSS</code>: if this string is returned, the ID in the field is an eBay EU or UK IOSS number, or if the country is Kazakhstan it is an eBay Kazakhstan VAT (reference value of '<code>-</code>',no VAT Number or taxNum) </li>
+     *  <li><code>IRD</code>: if this string is returned, the ID in the field is an eBay New Zealand tax number</li>
+     *  <li><code>OSS</code>: if this string is returned, the ID in the field is an eBay Germany VAT ID, or if the country is Kazakhstan it is an eBay Kazakhstan VAT (reference value of '<code>-</code>', no VAT Number or taxNum) </li>
+     *  <li><code>SST</code>: if this string is returned, the ID in the field is an eBay Malaysia tax number, or if the country is Kazakhstan it is an eBay Kazakhstan VAT (reference value of '<code>-</code>', no VAT Number or taxNum) </li>
+     *  <li><code>DDG</code>: if this string is returned, the ID in the field is an eBay Malaysia tax number, or if the country is Belarus, the ID in the field is an eBay Belarus tax number, or if the country is Kazakhstan it is an eBay Kazakhstan VAT (reference value of '<code>-</code>', no VAT Number or taxNum) </li>
+     *  <li><code>VOEC</code>: if this string is returned, the ID in the field is an eBay Norway tax number</li>
+     *  <li><code>VAT</code>: if this string is returned, the ID in the field is an eBay Belarus tax number</li>
+     *  <li><code>VAT_ID</code>: if this string is returned, the ID in the field is an eBay France VAT ID</li>
+     *  </ul>
      *
      * @param string $name
      * @return self

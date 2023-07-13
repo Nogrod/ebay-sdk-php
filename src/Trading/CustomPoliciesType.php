@@ -13,14 +13,41 @@ use Nogrod\XMLClientRuntime\Func;
 class CustomPoliciesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
     /**
-     * This field is used if the seller wants to apply a take-back policy to the listing. The seller will specify the identifier of the take-back policy in this field. The law in some countries may require sellers to take back a used product when the buyer buys a new product. Use this field to specify one take-back policy ID for the listing.
+     * <span class="tablenote"><strong>Note: </strong>
+     *  Global take-back policies are currently available only on the German (DE) marketplace.
+     *  </span>
+     *  This field is used if the seller wants to apply a <i>global</i> take-back policy to the listing. The law in some countries may require sellers to take back a used product when the buyer buys a new product.<br /><br />Use this field to specify one <i>global</i> take-back policy ID for the listing.
+     *  <span class="tablenote"><strong>Note: </strong>
+     *  For countries that support country-specific policies, use <b>RegionalTakeBackPolicies</b> to apply them to a listing.
+     *  </span>
      *
      * @var int $takeBackPolicyID
      */
     private $takeBackPolicyID = null;
 
     /**
-     * This field is used if the seller wants to apply one or more product compliance policies to the listing. A separate <b>ProductCompliancePolicyID</b> field is required for each policy to be applied, and the seller specifies the identifier of each policy in this field.
+     * <span class="tablenote"><strong>Note: </strong>
+     *  Global take-back policies are currently available only on the German (DE) marketplace.
+     *  </span>
+     *  The list of unique identifiers indicating the seller-created country-specific take-back policies that will be used for a listing. The law in some countries may require sellers to take back a used product when the buyer buys a new product.<br /><br />
+     *  Each listing may include one (1) country-specific take-back policy for <i>each</i> of the following countries:<ul><li>United Kingdom [GB]</li><li>Germany [DE]</li><li>France [FR]</li><li>Italy [IT]</li><li>Spain [ES]</li></ul>
+     *  <span class="tablenote"><strong>Note: </strong>
+     *  Take-back policies that apply to <i>all</i> countries to which a seller ships are specified using <b>TakeBackPolicyID</b>.
+     *  </span>
+     *
+     * @var \Nogrod\eBaySDK\Trading\CountryPoliciesType[] $regionalTakeBackPolicies
+     */
+    private $regionalTakeBackPolicies = null;
+
+    /**
+     * <span class="tablenote"><strong>Note: </strong>
+     *  Global product compliance policies are currently available only on the German (DE) marketplace.
+     *  </span>
+     *  This field is used if the seller wants to apply one or more seller-created <i>global</i> product compliance policies that will be used in a listing. A separate <b>ProductCompliancePolicyID</b> field is required for each policy to be applied, and the seller specifies the identifier of each policy in this field.<br />
+     *  Product compliance policies provide buyers with important information and disclosures about products. For example, if you sell batteries and specific disclosures are required to be shared with all potential buyers, your global product compliance policy could contain the required disclosures.<br /><br />A maximum of six (6) global product compliance policies may be applied to each listing.
+     *  <span class="tablenote"><strong>Note: </strong>
+     *  For countries that support country-specific policies, use <b>RegionalProductCompliancePolicies</b> to apply them to a listing.
+     *  </span>
      *
      * @var int[] $productCompliancePolicyID
      */
@@ -29,9 +56,31 @@ class CustomPoliciesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
     ];
 
     /**
+     * <span class="tablenote"><strong>Note: </strong>
+     *  Regional product compliance policies are currently available only on the German (DE) marketplace.
+     *  </span>
+     *  The set of compliance policies for indicating the seller-created country-specific product compliance policies that that will be used for a listing.<br /><br />
+     *  Product compliance policies provide buyers with important information and disclosures about products. For example, if you sell batteries in a country requiring disclosures that apply <i>only</i> to that country, a country-specific product compliance policy could contain this information.<br /><br />
+     *  Each listing may include up to six (6) product compliance policies for <i>each</i> of the following countries:<ul><li>United Kingdom [GB]</li><li>Germany [DE]</li><li>France [FR]</li><li>Italy [IT]</li><li>Spain [ES]</li></ul>
+     *  For example, if a seller offers products in the UK, Germany, and Italy, each of which requires custom product compliance information, up to 18 policies (in other words, 6 policies x 3 countries) may be included for each listing.
+     *  <span class="tablenote"><strong>Note: </strong>
+     *  Product compliance policies that apply to <i>all</i> countries to which a seller ships are specified using <b>ProductCompliancePolicyID</b>.
+     *  </span>
+     *
+     * @var \Nogrod\eBaySDK\Trading\CountryPoliciesType[] $regionalProductCompliancePolicies
+     */
+    private $regionalProductCompliancePolicies = null;
+
+    /**
      * Gets as takeBackPolicyID
      *
-     * This field is used if the seller wants to apply a take-back policy to the listing. The seller will specify the identifier of the take-back policy in this field. The law in some countries may require sellers to take back a used product when the buyer buys a new product. Use this field to specify one take-back policy ID for the listing.
+     * <span class="tablenote"><strong>Note: </strong>
+     *  Global take-back policies are currently available only on the German (DE) marketplace.
+     *  </span>
+     *  This field is used if the seller wants to apply a <i>global</i> take-back policy to the listing. The law in some countries may require sellers to take back a used product when the buyer buys a new product.<br /><br />Use this field to specify one <i>global</i> take-back policy ID for the listing.
+     *  <span class="tablenote"><strong>Note: </strong>
+     *  For countries that support country-specific policies, use <b>RegionalTakeBackPolicies</b> to apply them to a listing.
+     *  </span>
      *
      * @return int
      */
@@ -43,7 +92,13 @@ class CustomPoliciesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
     /**
      * Sets a new takeBackPolicyID
      *
-     * This field is used if the seller wants to apply a take-back policy to the listing. The seller will specify the identifier of the take-back policy in this field. The law in some countries may require sellers to take back a used product when the buyer buys a new product. Use this field to specify one take-back policy ID for the listing.
+     * <span class="tablenote"><strong>Note: </strong>
+     *  Global take-back policies are currently available only on the German (DE) marketplace.
+     *  </span>
+     *  This field is used if the seller wants to apply a <i>global</i> take-back policy to the listing. The law in some countries may require sellers to take back a used product when the buyer buys a new product.<br /><br />Use this field to specify one <i>global</i> take-back policy ID for the listing.
+     *  <span class="tablenote"><strong>Note: </strong>
+     *  For countries that support country-specific policies, use <b>RegionalTakeBackPolicies</b> to apply them to a listing.
+     *  </span>
      *
      * @param int $takeBackPolicyID
      * @return self
@@ -55,9 +110,117 @@ class CustomPoliciesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
     }
 
     /**
+     * Adds as countryPolicies
+     *
+     * <span class="tablenote"><strong>Note: </strong>
+     *  Global take-back policies are currently available only on the German (DE) marketplace.
+     *  </span>
+     *  The list of unique identifiers indicating the seller-created country-specific take-back policies that will be used for a listing. The law in some countries may require sellers to take back a used product when the buyer buys a new product.<br /><br />
+     *  Each listing may include one (1) country-specific take-back policy for <i>each</i> of the following countries:<ul><li>United Kingdom [GB]</li><li>Germany [DE]</li><li>France [FR]</li><li>Italy [IT]</li><li>Spain [ES]</li></ul>
+     *  <span class="tablenote"><strong>Note: </strong>
+     *  Take-back policies that apply to <i>all</i> countries to which a seller ships are specified using <b>TakeBackPolicyID</b>.
+     *  </span>
+     *
+     * @return self
+     * @param \Nogrod\eBaySDK\Trading\CountryPoliciesType $countryPolicies
+     */
+    public function addToRegionalTakeBackPolicies(\Nogrod\eBaySDK\Trading\CountryPoliciesType $countryPolicies)
+    {
+        $this->regionalTakeBackPolicies[] = $countryPolicies;
+        return $this;
+    }
+
+    /**
+     * isset regionalTakeBackPolicies
+     *
+     * <span class="tablenote"><strong>Note: </strong>
+     *  Global take-back policies are currently available only on the German (DE) marketplace.
+     *  </span>
+     *  The list of unique identifiers indicating the seller-created country-specific take-back policies that will be used for a listing. The law in some countries may require sellers to take back a used product when the buyer buys a new product.<br /><br />
+     *  Each listing may include one (1) country-specific take-back policy for <i>each</i> of the following countries:<ul><li>United Kingdom [GB]</li><li>Germany [DE]</li><li>France [FR]</li><li>Italy [IT]</li><li>Spain [ES]</li></ul>
+     *  <span class="tablenote"><strong>Note: </strong>
+     *  Take-back policies that apply to <i>all</i> countries to which a seller ships are specified using <b>TakeBackPolicyID</b>.
+     *  </span>
+     *
+     * @param int|string $index
+     * @return bool
+     */
+    public function issetRegionalTakeBackPolicies($index)
+    {
+        return isset($this->regionalTakeBackPolicies[$index]);
+    }
+
+    /**
+     * unset regionalTakeBackPolicies
+     *
+     * <span class="tablenote"><strong>Note: </strong>
+     *  Global take-back policies are currently available only on the German (DE) marketplace.
+     *  </span>
+     *  The list of unique identifiers indicating the seller-created country-specific take-back policies that will be used for a listing. The law in some countries may require sellers to take back a used product when the buyer buys a new product.<br /><br />
+     *  Each listing may include one (1) country-specific take-back policy for <i>each</i> of the following countries:<ul><li>United Kingdom [GB]</li><li>Germany [DE]</li><li>France [FR]</li><li>Italy [IT]</li><li>Spain [ES]</li></ul>
+     *  <span class="tablenote"><strong>Note: </strong>
+     *  Take-back policies that apply to <i>all</i> countries to which a seller ships are specified using <b>TakeBackPolicyID</b>.
+     *  </span>
+     *
+     * @param int|string $index
+     * @return void
+     */
+    public function unsetRegionalTakeBackPolicies($index)
+    {
+        unset($this->regionalTakeBackPolicies[$index]);
+    }
+
+    /**
+     * Gets as regionalTakeBackPolicies
+     *
+     * <span class="tablenote"><strong>Note: </strong>
+     *  Global take-back policies are currently available only on the German (DE) marketplace.
+     *  </span>
+     *  The list of unique identifiers indicating the seller-created country-specific take-back policies that will be used for a listing. The law in some countries may require sellers to take back a used product when the buyer buys a new product.<br /><br />
+     *  Each listing may include one (1) country-specific take-back policy for <i>each</i> of the following countries:<ul><li>United Kingdom [GB]</li><li>Germany [DE]</li><li>France [FR]</li><li>Italy [IT]</li><li>Spain [ES]</li></ul>
+     *  <span class="tablenote"><strong>Note: </strong>
+     *  Take-back policies that apply to <i>all</i> countries to which a seller ships are specified using <b>TakeBackPolicyID</b>.
+     *  </span>
+     *
+     * @return \Nogrod\eBaySDK\Trading\CountryPoliciesType[]
+     */
+    public function getRegionalTakeBackPolicies()
+    {
+        return $this->regionalTakeBackPolicies;
+    }
+
+    /**
+     * Sets a new regionalTakeBackPolicies
+     *
+     * <span class="tablenote"><strong>Note: </strong>
+     *  Global take-back policies are currently available only on the German (DE) marketplace.
+     *  </span>
+     *  The list of unique identifiers indicating the seller-created country-specific take-back policies that will be used for a listing. The law in some countries may require sellers to take back a used product when the buyer buys a new product.<br /><br />
+     *  Each listing may include one (1) country-specific take-back policy for <i>each</i> of the following countries:<ul><li>United Kingdom [GB]</li><li>Germany [DE]</li><li>France [FR]</li><li>Italy [IT]</li><li>Spain [ES]</li></ul>
+     *  <span class="tablenote"><strong>Note: </strong>
+     *  Take-back policies that apply to <i>all</i> countries to which a seller ships are specified using <b>TakeBackPolicyID</b>.
+     *  </span>
+     *
+     * @param \Nogrod\eBaySDK\Trading\CountryPoliciesType[] $regionalTakeBackPolicies
+     * @return self
+     */
+    public function setRegionalTakeBackPolicies(array $regionalTakeBackPolicies)
+    {
+        $this->regionalTakeBackPolicies = $regionalTakeBackPolicies;
+        return $this;
+    }
+
+    /**
      * Adds as productCompliancePolicyID
      *
-     * This field is used if the seller wants to apply one or more product compliance policies to the listing. A separate <b>ProductCompliancePolicyID</b> field is required for each policy to be applied, and the seller specifies the identifier of each policy in this field.
+     * <span class="tablenote"><strong>Note: </strong>
+     *  Global product compliance policies are currently available only on the German (DE) marketplace.
+     *  </span>
+     *  This field is used if the seller wants to apply one or more seller-created <i>global</i> product compliance policies that will be used in a listing. A separate <b>ProductCompliancePolicyID</b> field is required for each policy to be applied, and the seller specifies the identifier of each policy in this field.<br />
+     *  Product compliance policies provide buyers with important information and disclosures about products. For example, if you sell batteries and specific disclosures are required to be shared with all potential buyers, your global product compliance policy could contain the required disclosures.<br /><br />A maximum of six (6) global product compliance policies may be applied to each listing.
+     *  <span class="tablenote"><strong>Note: </strong>
+     *  For countries that support country-specific policies, use <b>RegionalProductCompliancePolicies</b> to apply them to a listing.
+     *  </span>
      *
      * @return self
      * @param int $productCompliancePolicyID
@@ -71,7 +234,14 @@ class CustomPoliciesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
     /**
      * isset productCompliancePolicyID
      *
-     * This field is used if the seller wants to apply one or more product compliance policies to the listing. A separate <b>ProductCompliancePolicyID</b> field is required for each policy to be applied, and the seller specifies the identifier of each policy in this field.
+     * <span class="tablenote"><strong>Note: </strong>
+     *  Global product compliance policies are currently available only on the German (DE) marketplace.
+     *  </span>
+     *  This field is used if the seller wants to apply one or more seller-created <i>global</i> product compliance policies that will be used in a listing. A separate <b>ProductCompliancePolicyID</b> field is required for each policy to be applied, and the seller specifies the identifier of each policy in this field.<br />
+     *  Product compliance policies provide buyers with important information and disclosures about products. For example, if you sell batteries and specific disclosures are required to be shared with all potential buyers, your global product compliance policy could contain the required disclosures.<br /><br />A maximum of six (6) global product compliance policies may be applied to each listing.
+     *  <span class="tablenote"><strong>Note: </strong>
+     *  For countries that support country-specific policies, use <b>RegionalProductCompliancePolicies</b> to apply them to a listing.
+     *  </span>
      *
      * @param int|string $index
      * @return bool
@@ -84,7 +254,14 @@ class CustomPoliciesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
     /**
      * unset productCompliancePolicyID
      *
-     * This field is used if the seller wants to apply one or more product compliance policies to the listing. A separate <b>ProductCompliancePolicyID</b> field is required for each policy to be applied, and the seller specifies the identifier of each policy in this field.
+     * <span class="tablenote"><strong>Note: </strong>
+     *  Global product compliance policies are currently available only on the German (DE) marketplace.
+     *  </span>
+     *  This field is used if the seller wants to apply one or more seller-created <i>global</i> product compliance policies that will be used in a listing. A separate <b>ProductCompliancePolicyID</b> field is required for each policy to be applied, and the seller specifies the identifier of each policy in this field.<br />
+     *  Product compliance policies provide buyers with important information and disclosures about products. For example, if you sell batteries and specific disclosures are required to be shared with all potential buyers, your global product compliance policy could contain the required disclosures.<br /><br />A maximum of six (6) global product compliance policies may be applied to each listing.
+     *  <span class="tablenote"><strong>Note: </strong>
+     *  For countries that support country-specific policies, use <b>RegionalProductCompliancePolicies</b> to apply them to a listing.
+     *  </span>
      *
      * @param int|string $index
      * @return void
@@ -97,7 +274,14 @@ class CustomPoliciesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
     /**
      * Gets as productCompliancePolicyID
      *
-     * This field is used if the seller wants to apply one or more product compliance policies to the listing. A separate <b>ProductCompliancePolicyID</b> field is required for each policy to be applied, and the seller specifies the identifier of each policy in this field.
+     * <span class="tablenote"><strong>Note: </strong>
+     *  Global product compliance policies are currently available only on the German (DE) marketplace.
+     *  </span>
+     *  This field is used if the seller wants to apply one or more seller-created <i>global</i> product compliance policies that will be used in a listing. A separate <b>ProductCompliancePolicyID</b> field is required for each policy to be applied, and the seller specifies the identifier of each policy in this field.<br />
+     *  Product compliance policies provide buyers with important information and disclosures about products. For example, if you sell batteries and specific disclosures are required to be shared with all potential buyers, your global product compliance policy could contain the required disclosures.<br /><br />A maximum of six (6) global product compliance policies may be applied to each listing.
+     *  <span class="tablenote"><strong>Note: </strong>
+     *  For countries that support country-specific policies, use <b>RegionalProductCompliancePolicies</b> to apply them to a listing.
+     *  </span>
      *
      * @return int[]
      */
@@ -109,7 +293,14 @@ class CustomPoliciesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
     /**
      * Sets a new productCompliancePolicyID
      *
-     * This field is used if the seller wants to apply one or more product compliance policies to the listing. A separate <b>ProductCompliancePolicyID</b> field is required for each policy to be applied, and the seller specifies the identifier of each policy in this field.
+     * <span class="tablenote"><strong>Note: </strong>
+     *  Global product compliance policies are currently available only on the German (DE) marketplace.
+     *  </span>
+     *  This field is used if the seller wants to apply one or more seller-created <i>global</i> product compliance policies that will be used in a listing. A separate <b>ProductCompliancePolicyID</b> field is required for each policy to be applied, and the seller specifies the identifier of each policy in this field.<br />
+     *  Product compliance policies provide buyers with important information and disclosures about products. For example, if you sell batteries and specific disclosures are required to be shared with all potential buyers, your global product compliance policy could contain the required disclosures.<br /><br />A maximum of six (6) global product compliance policies may be applied to each listing.
+     *  <span class="tablenote"><strong>Note: </strong>
+     *  For countries that support country-specific policies, use <b>RegionalProductCompliancePolicies</b> to apply them to a listing.
+     *  </span>
      *
      * @param int[] $productCompliancePolicyID
      * @return self
@@ -120,6 +311,117 @@ class CustomPoliciesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
         return $this;
     }
 
+    /**
+     * Adds as countryPolicies
+     *
+     * <span class="tablenote"><strong>Note: </strong>
+     *  Regional product compliance policies are currently available only on the German (DE) marketplace.
+     *  </span>
+     *  The set of compliance policies for indicating the seller-created country-specific product compliance policies that that will be used for a listing.<br /><br />
+     *  Product compliance policies provide buyers with important information and disclosures about products. For example, if you sell batteries in a country requiring disclosures that apply <i>only</i> to that country, a country-specific product compliance policy could contain this information.<br /><br />
+     *  Each listing may include up to six (6) product compliance policies for <i>each</i> of the following countries:<ul><li>United Kingdom [GB]</li><li>Germany [DE]</li><li>France [FR]</li><li>Italy [IT]</li><li>Spain [ES]</li></ul>
+     *  For example, if a seller offers products in the UK, Germany, and Italy, each of which requires custom product compliance information, up to 18 policies (in other words, 6 policies x 3 countries) may be included for each listing.
+     *  <span class="tablenote"><strong>Note: </strong>
+     *  Product compliance policies that apply to <i>all</i> countries to which a seller ships are specified using <b>ProductCompliancePolicyID</b>.
+     *  </span>
+     *
+     * @return self
+     * @param \Nogrod\eBaySDK\Trading\CountryPoliciesType $countryPolicies
+     */
+    public function addToRegionalProductCompliancePolicies(\Nogrod\eBaySDK\Trading\CountryPoliciesType $countryPolicies)
+    {
+        $this->regionalProductCompliancePolicies[] = $countryPolicies;
+        return $this;
+    }
+
+    /**
+     * isset regionalProductCompliancePolicies
+     *
+     * <span class="tablenote"><strong>Note: </strong>
+     *  Regional product compliance policies are currently available only on the German (DE) marketplace.
+     *  </span>
+     *  The set of compliance policies for indicating the seller-created country-specific product compliance policies that that will be used for a listing.<br /><br />
+     *  Product compliance policies provide buyers with important information and disclosures about products. For example, if you sell batteries in a country requiring disclosures that apply <i>only</i> to that country, a country-specific product compliance policy could contain this information.<br /><br />
+     *  Each listing may include up to six (6) product compliance policies for <i>each</i> of the following countries:<ul><li>United Kingdom [GB]</li><li>Germany [DE]</li><li>France [FR]</li><li>Italy [IT]</li><li>Spain [ES]</li></ul>
+     *  For example, if a seller offers products in the UK, Germany, and Italy, each of which requires custom product compliance information, up to 18 policies (in other words, 6 policies x 3 countries) may be included for each listing.
+     *  <span class="tablenote"><strong>Note: </strong>
+     *  Product compliance policies that apply to <i>all</i> countries to which a seller ships are specified using <b>ProductCompliancePolicyID</b>.
+     *  </span>
+     *
+     * @param int|string $index
+     * @return bool
+     */
+    public function issetRegionalProductCompliancePolicies($index)
+    {
+        return isset($this->regionalProductCompliancePolicies[$index]);
+    }
+
+    /**
+     * unset regionalProductCompliancePolicies
+     *
+     * <span class="tablenote"><strong>Note: </strong>
+     *  Regional product compliance policies are currently available only on the German (DE) marketplace.
+     *  </span>
+     *  The set of compliance policies for indicating the seller-created country-specific product compliance policies that that will be used for a listing.<br /><br />
+     *  Product compliance policies provide buyers with important information and disclosures about products. For example, if you sell batteries in a country requiring disclosures that apply <i>only</i> to that country, a country-specific product compliance policy could contain this information.<br /><br />
+     *  Each listing may include up to six (6) product compliance policies for <i>each</i> of the following countries:<ul><li>United Kingdom [GB]</li><li>Germany [DE]</li><li>France [FR]</li><li>Italy [IT]</li><li>Spain [ES]</li></ul>
+     *  For example, if a seller offers products in the UK, Germany, and Italy, each of which requires custom product compliance information, up to 18 policies (in other words, 6 policies x 3 countries) may be included for each listing.
+     *  <span class="tablenote"><strong>Note: </strong>
+     *  Product compliance policies that apply to <i>all</i> countries to which a seller ships are specified using <b>ProductCompliancePolicyID</b>.
+     *  </span>
+     *
+     * @param int|string $index
+     * @return void
+     */
+    public function unsetRegionalProductCompliancePolicies($index)
+    {
+        unset($this->regionalProductCompliancePolicies[$index]);
+    }
+
+    /**
+     * Gets as regionalProductCompliancePolicies
+     *
+     * <span class="tablenote"><strong>Note: </strong>
+     *  Regional product compliance policies are currently available only on the German (DE) marketplace.
+     *  </span>
+     *  The set of compliance policies for indicating the seller-created country-specific product compliance policies that that will be used for a listing.<br /><br />
+     *  Product compliance policies provide buyers with important information and disclosures about products. For example, if you sell batteries in a country requiring disclosures that apply <i>only</i> to that country, a country-specific product compliance policy could contain this information.<br /><br />
+     *  Each listing may include up to six (6) product compliance policies for <i>each</i> of the following countries:<ul><li>United Kingdom [GB]</li><li>Germany [DE]</li><li>France [FR]</li><li>Italy [IT]</li><li>Spain [ES]</li></ul>
+     *  For example, if a seller offers products in the UK, Germany, and Italy, each of which requires custom product compliance information, up to 18 policies (in other words, 6 policies x 3 countries) may be included for each listing.
+     *  <span class="tablenote"><strong>Note: </strong>
+     *  Product compliance policies that apply to <i>all</i> countries to which a seller ships are specified using <b>ProductCompliancePolicyID</b>.
+     *  </span>
+     *
+     * @return \Nogrod\eBaySDK\Trading\CountryPoliciesType[]
+     */
+    public function getRegionalProductCompliancePolicies()
+    {
+        return $this->regionalProductCompliancePolicies;
+    }
+
+    /**
+     * Sets a new regionalProductCompliancePolicies
+     *
+     * <span class="tablenote"><strong>Note: </strong>
+     *  Regional product compliance policies are currently available only on the German (DE) marketplace.
+     *  </span>
+     *  The set of compliance policies for indicating the seller-created country-specific product compliance policies that that will be used for a listing.<br /><br />
+     *  Product compliance policies provide buyers with important information and disclosures about products. For example, if you sell batteries in a country requiring disclosures that apply <i>only</i> to that country, a country-specific product compliance policy could contain this information.<br /><br />
+     *  Each listing may include up to six (6) product compliance policies for <i>each</i> of the following countries:<ul><li>United Kingdom [GB]</li><li>Germany [DE]</li><li>France [FR]</li><li>Italy [IT]</li><li>Spain [ES]</li></ul>
+     *  For example, if a seller offers products in the UK, Germany, and Italy, each of which requires custom product compliance information, up to 18 policies (in other words, 6 policies x 3 countries) may be included for each listing.
+     *  <span class="tablenote"><strong>Note: </strong>
+     *  Product compliance policies that apply to <i>all</i> countries to which a seller ships are specified using <b>ProductCompliancePolicyID</b>.
+     *  </span>
+     *
+     * @param \Nogrod\eBaySDK\Trading\CountryPoliciesType[] $regionalProductCompliancePolicies
+     * @return self
+     */
+    public function setRegionalProductCompliancePolicies(array $regionalProductCompliancePolicies)
+    {
+        $this->regionalProductCompliancePolicies = $regionalProductCompliancePolicies;
+        return $this;
+    }
+
     public function xmlSerialize(\Sabre\Xml\Writer $writer): void
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
@@ -127,10 +429,22 @@ class CustomPoliciesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TakeBackPolicyID", $value);
         }
+        $value = $this->getRegionalTakeBackPolicies();
+        if (null !== $value && !empty($this->getRegionalTakeBackPolicies())) {
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}RegionalTakeBackPolicies", array_map(function ($v) {
+                return ["CountryPolicies" => $v];
+            }, $value));
+        }
         $value = $this->getProductCompliancePolicyID();
         if (null !== $value && !empty($this->getProductCompliancePolicyID())) {
             $writer->write(array_map(function ($v) {
                 return ["ProductCompliancePolicyID" => $v];
+            }, $value));
+        }
+        $value = $this->getRegionalProductCompliancePolicies();
+        if (null !== $value && !empty($this->getRegionalProductCompliancePolicies())) {
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}RegionalProductCompliancePolicies", array_map(function ($v) {
+                return ["CountryPolicies" => $v];
             }, $value));
         }
     }
@@ -153,9 +467,21 @@ class CustomPoliciesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
         if (null !== $value) {
             $this->setTakeBackPolicyID($value);
         }
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RegionalTakeBackPolicies', true);
+        if (null !== $value && !empty($value)) {
+            $this->setRegionalTakeBackPolicies(array_map(function ($v) {
+                return \Nogrod\eBaySDK\Trading\CountryPoliciesType::fromKeyValue($v);
+            }, $value));
+        }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ProductCompliancePolicyID', true);
         if (null !== $value && !empty($value)) {
             $this->setProductCompliancePolicyID($value);
+        }
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RegionalProductCompliancePolicies', true);
+        if (null !== $value && !empty($value)) {
+            $this->setRegionalProductCompliancePolicies(array_map(function ($v) {
+                return \Nogrod\eBaySDK\Trading\CountryPoliciesType::fromKeyValue($v);
+            }, $value));
         }
     }
 }

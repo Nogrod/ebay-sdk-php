@@ -68,7 +68,8 @@ class GetSellerTransactionsResponseType extends AbstractResponseType
     private $transactionArray = null;
 
     /**
-     * This field is deprecated.
+     * <span class="tablenote"><b>Note: </b> This field is deprecated and will be removed from WSDL and docs on January 31, 2024.
+     *  </span>
      *
      * @var bool $payPalPreferred
      */
@@ -323,7 +324,8 @@ class GetSellerTransactionsResponseType extends AbstractResponseType
     /**
      * Gets as payPalPreferred
      *
-     * This field is deprecated.
+     * <span class="tablenote"><b>Note: </b> This field is deprecated and will be removed from WSDL and docs on January 31, 2024.
+     *  </span>
      *
      * @return bool
      */
@@ -335,7 +337,8 @@ class GetSellerTransactionsResponseType extends AbstractResponseType
     /**
      * Sets a new payPalPreferred
      *
-     * This field is deprecated.
+     * <span class="tablenote"><b>Note: </b> This field is deprecated and will be removed from WSDL and docs on January 31, 2024.
+     *  </span>
      *
      * @param bool $payPalPreferred
      * @return self

@@ -22,8 +22,7 @@ class CheckoutStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
     private $eBayPaymentStatus = null;
 
     /**
-     * Indicates the last time that there was a change in value of the
-     *  <b>CheckoutStatus.Status</b> field, such as 'Pending' to 'Complete'.
+     * This timestamp indicates when the order was last modified.
      *
      * @var \DateTime $lastModifiedTime
      */
@@ -104,8 +103,7 @@ class CheckoutStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
     /**
      * Gets as lastModifiedTime
      *
-     * Indicates the last time that there was a change in value of the
-     *  <b>CheckoutStatus.Status</b> field, such as 'Pending' to 'Complete'.
+     * This timestamp indicates when the order was last modified.
      *
      * @return \DateTime
      */
@@ -117,8 +115,7 @@ class CheckoutStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
     /**
      * Sets a new lastModifiedTime
      *
-     * Indicates the last time that there was a change in value of the
-     *  <b>CheckoutStatus.Status</b> field, such as 'Pending' to 'Complete'.
+     * This timestamp indicates when the order was last modified.
      *
      * @param \DateTime $lastModifiedTime
      * @return self

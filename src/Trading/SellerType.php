@@ -20,9 +20,12 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
     private $paisaPayStatus = null;
 
     /**
-     * Indicates whether the user as a seller by default allows buyers to edit the
-     *  total cost of an item (while in checkout). (Sellers enable this property in
-     *  their My eBay user preferences on the eBay site.)
+     * <br>
+     *  Indicates whether the seller allows buyers to edit the
+     *  total cost of an item during checkout.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>SellerInfo</b> container and its child fields will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @var bool $allowPaymentEdit
      */
@@ -36,25 +39,33 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
     private $billingCurrency = null;
 
     /**
-     * This flag indicates whether or not the seller's Checkout Enabled preference is turned on (at account level or at listing level). This preference is managed through Payment Preferences in My eBay. If this preference is enabled, a Pay Now button will appear in checkout flow pages and in the email notifications that are sent to buyers.
+     * <br>
+     *  This flag indicates whether or not the seller's Checkout Enabled preference is turned on.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>SellerInfo</b> container and its child fields will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @var bool $checkoutEnabled
      */
     private $checkoutEnabled = null;
 
     /**
-     * If true, this flag indicates that the seller has stored bank account information on file
-     *  with eBay. A seller must have stored bank account information on file with eBay in order
-     *  to use 'CashOnPickup' as a payment method (known as 'Pay upon Pickup' on the site). This
-     *  field is applicable to all eBay sites that support 'CashOnPickup' as a payment method.
+     * <br>
+     *  This boolean field indicates whether or not the seller has stored bank account information on file with eBay.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>SellerInfo</b> container and its child fields will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @var bool $cIPBankAccountStored
      */
     private $cIPBankAccountStored = null;
 
     /**
-     * If true, indicates that the user is in good standing with eBay. (One of the
-     *  requirements for listing a new item with immediate payment.)
+     * <br>
+     *  This boolean field indicates whether or not the seller is in good standing with eBay.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>SellerInfo</b> container and its child fields will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @var bool $goodStanding
      */
@@ -68,8 +79,12 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
     private $merchandizingPref = null;
 
     /**
-     * Indicates whether the user is subject to VAT. Users who have registered with
+     * <br>
+     *  Indicates whether the user is subject to VAT. Users who have registered with
      *  eBay as VAT-exempt are not subject to VAT.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>SellerInfo</b> container and its child fields will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @var bool $qualifiesForB2BVAT
      */
@@ -83,11 +98,11 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
     private $sellerGuaranteeLevel = null;
 
     /**
-     * The user's eBay PowerSeller tier. Possible values are enumerated in the SellerLevelCodeType code list.
-     *  SellerInfo.SellerLevel is no longer returned in the GetUser, GetBidderList, GetSellerList, GetItem, and
-     *  GetItemTransactions responses for the US, DE/AT/CH, and UK/IE sites, for version 629 and later. If you are using
-     *  a version older than 629, SellerInfo.SellerLevel will still be returned. Developers should note that
-     *  SellerInfo.SellerLevel could potentially be removed from other sites as well.
+     * <br>
+     *  This enumeration value indicates the user's eBay PowerSeller tier.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>SellerInfo</b> container and its child fields will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @var string $sellerLevel
      */
@@ -108,14 +123,22 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
     private $schedulingInfo = null;
 
     /**
-     * Boolean value indicates whether or not the seller is an eBay Store owner.
+     * <br>
+     *  Boolean value indicates whether or not the seller is an eBay Store owner.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>SellerInfo</b> container and its child fields will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @var bool $storeOwner
      */
     private $storeOwner = null;
 
     /**
-     * The URL for the seller's eBay Store. This field is only returned if the seller is a store owner (look for a value of <code>true</code> in the <b>SellerInfo.StoreOwner</b> field).
+     * <br>
+     *  The URL for the seller's eBay Store. This field is only returned if the seller is a store owner (look for a value of <code>true</code> in the <b>SellerInfo.StoreOwner</b> field).
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>SellerInfo</b> container and its child fields will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @var string $storeURL
      */
@@ -166,7 +189,11 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
     private $charityRegistered = null;
 
     /**
-     * If this field is <code>true</code>, the user is exempt from the requirement to offer at least one safe payment method when listing items.
+     * <br>
+     *  If this field is <code>true</code>, the user is exempt from the requirement to offer at least one safe payment method when listing items.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>SellerInfo</b> container and its child fields will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @var bool $safePaymentExempt
      */
@@ -210,21 +237,23 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
     private $featureEligibility = null;
 
     /**
-     * This boolean field indicates if the seller is certified as a
-     *  <em>Top Rated Seller</em>. Only Top Rated Sellers can qualify for Top Rated Plus listings, which receive the Top Rated Plus seal, and will help those listings stand out. Top Rated Plus listings also receive a 20 percent discount on the Final Value Fee.
-     *  <br/><br/>
-     *  This field is only returned for the following sites: US (EBAY-US), Motors (EBAY-MOTOR), AT (EBAY-AT), CH (EBAY-CH), DE (EBAY-DE), IE (EBAY-IE), UK (EBAY-GB), and AU (EBAY-AU). The Top Rated Seller and Top Rated Plus listing requirements will differ by site. Below are some links to Help pages that discusss these requirements:
+     * <br/>
+     *  This boolean field indicates if the seller is certified as a
+     *  <em>Top Rated Seller</em>. Only Top Rated Sellers can qualify for Top Rated Plus listings, which receive the Top Rated Plus seal and other benefits.
+     *  <br/>
+     *  This field is only returned for the following sites: US, Germany, Austria, Switzerland, UK, Ireland, and Australia. The Top Rated Seller and Top Rated Plus listing requirements will differ by site. Below are some links to Help pages that discusss these requirements:
      *  <ul>
-     *  <li>eBay US: <a href="http://pages.ebay.com/help/sell/top-rated.html">Becoming a Top Rated Seller and qualifying for Top Rated Plus</a></li>
-     *  <li>eBay US Motors: <a href="http://pages.ebay.com/help/sell/top-rated.html#becoming">Becoming a Top Rated Seller in Motors vehicles categories</a></li>
-     *  <li>eBay UK/IE: <a href="http://pages.ebay.co.uk/help/sell/top-rated.html">eBay Top-rated Seller status and the eBay Premium Service</a></li>
-     *  <li>eBay DE/AT/CH: <a href="http://pages.ebay.de/help/sell/top-rated/2.html">
+     *  <li>eBay US: <a href="https://www.ebay.com/help/policies/selling-policies/seller-standards-policy?id=4347&#section3">Requirements to become Top Rated</a></li>
+     *  <li>eBay UK/IE: <a href="https://www.ebay.co.uk/help/policies/selling-policies/seller-standards-policy?id=4347&#section3">Requirements to become Top Rated and the eBay Premium Service</a></li>
+     *  <li>eBay DE/AT/CH: <a href="https://pages.ebay.de/help/sell/top-rated/2.html">
      * Anforderungen fur den Verkaufer mit Top-Bewertung</a></li>
-     *  <li>eBay AU: <a href="http://pages.ebay.com.au/help/sell/top-rated.html">
-     * Becoming a Top Rated Seller and qualifying for eBay Premium Service</a></li>
+     *  <li>eBay AU: <a href="https://www.ebay.com.au/help/policies/selling-policies/seller-standards-policy?id=4347&#section3">
+     * Requirements to become Top Rated</a></li>
      *  </ul>
-     *  Top Rated Sellers, registered in the US, can qualify for Top Rated Seller programs in other countries as long as they meet the selling requirements in those countries. However, even if US sellers qualify for programs in other countries, they will not receive the Final Value Fee discount on sales in those countries. For more information, see the <a href="http://pages.ebay.com/help/sell/top-rated.html#qualifying">
-     * Qualifying for Top Rated Seller status on other eBay sites</a> help topic.
+     *  Top Rated Sellers, registered in the US, can qualify for Top Rated Seller programs in other countries as long as they meet the selling requirements in those countries. However, even if US sellers qualify for programs in other countries, they will not receive the Final Value Fee discount on sales in those countries.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>SellerInfo</b> container and its child fields will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @var bool $topRatedSeller
      */
@@ -263,14 +292,14 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
     private $internationalRateTable = null;
 
     /**
-     * This field is no longer used.
+     * This field is no longer used/supported.
      *
      * @var string $sellereBayPaymentProcessStatus
      */
     private $sellereBayPaymentProcessStatus = null;
 
     /**
-     * This field is no longer used.
+     * This field is no longer used/supported.
      *
      * @var \Nogrod\eBaySDK\Trading\SellereBayPaymentProcessConsentCodeType $sellereBayPaymentProcessConsent
      */
@@ -305,9 +334,12 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
     /**
      * Gets as allowPaymentEdit
      *
-     * Indicates whether the user as a seller by default allows buyers to edit the
-     *  total cost of an item (while in checkout). (Sellers enable this property in
-     *  their My eBay user preferences on the eBay site.)
+     * <br>
+     *  Indicates whether the seller allows buyers to edit the
+     *  total cost of an item during checkout.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>SellerInfo</b> container and its child fields will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @return bool
      */
@@ -319,9 +351,12 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
     /**
      * Sets a new allowPaymentEdit
      *
-     * Indicates whether the user as a seller by default allows buyers to edit the
-     *  total cost of an item (while in checkout). (Sellers enable this property in
-     *  their My eBay user preferences on the eBay site.)
+     * <br>
+     *  Indicates whether the seller allows buyers to edit the
+     *  total cost of an item during checkout.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>SellerInfo</b> container and its child fields will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @param bool $allowPaymentEdit
      * @return self
@@ -361,7 +396,11 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
     /**
      * Gets as checkoutEnabled
      *
-     * This flag indicates whether or not the seller's Checkout Enabled preference is turned on (at account level or at listing level). This preference is managed through Payment Preferences in My eBay. If this preference is enabled, a Pay Now button will appear in checkout flow pages and in the email notifications that are sent to buyers.
+     * <br>
+     *  This flag indicates whether or not the seller's Checkout Enabled preference is turned on.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>SellerInfo</b> container and its child fields will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @return bool
      */
@@ -373,7 +412,11 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
     /**
      * Sets a new checkoutEnabled
      *
-     * This flag indicates whether or not the seller's Checkout Enabled preference is turned on (at account level or at listing level). This preference is managed through Payment Preferences in My eBay. If this preference is enabled, a Pay Now button will appear in checkout flow pages and in the email notifications that are sent to buyers.
+     * <br>
+     *  This flag indicates whether or not the seller's Checkout Enabled preference is turned on.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>SellerInfo</b> container and its child fields will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @param bool $checkoutEnabled
      * @return self
@@ -387,10 +430,11 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
     /**
      * Gets as cIPBankAccountStored
      *
-     * If true, this flag indicates that the seller has stored bank account information on file
-     *  with eBay. A seller must have stored bank account information on file with eBay in order
-     *  to use 'CashOnPickup' as a payment method (known as 'Pay upon Pickup' on the site). This
-     *  field is applicable to all eBay sites that support 'CashOnPickup' as a payment method.
+     * <br>
+     *  This boolean field indicates whether or not the seller has stored bank account information on file with eBay.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>SellerInfo</b> container and its child fields will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @return bool
      */
@@ -402,10 +446,11 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
     /**
      * Sets a new cIPBankAccountStored
      *
-     * If true, this flag indicates that the seller has stored bank account information on file
-     *  with eBay. A seller must have stored bank account information on file with eBay in order
-     *  to use 'CashOnPickup' as a payment method (known as 'Pay upon Pickup' on the site). This
-     *  field is applicable to all eBay sites that support 'CashOnPickup' as a payment method.
+     * <br>
+     *  This boolean field indicates whether or not the seller has stored bank account information on file with eBay.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>SellerInfo</b> container and its child fields will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @param bool $cIPBankAccountStored
      * @return self
@@ -419,8 +464,11 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
     /**
      * Gets as goodStanding
      *
-     * If true, indicates that the user is in good standing with eBay. (One of the
-     *  requirements for listing a new item with immediate payment.)
+     * <br>
+     *  This boolean field indicates whether or not the seller is in good standing with eBay.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>SellerInfo</b> container and its child fields will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @return bool
      */
@@ -432,8 +480,11 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
     /**
      * Sets a new goodStanding
      *
-     * If true, indicates that the user is in good standing with eBay. (One of the
-     *  requirements for listing a new item with immediate payment.)
+     * <br>
+     *  This boolean field indicates whether or not the seller is in good standing with eBay.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>SellerInfo</b> container and its child fields will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @param bool $goodStanding
      * @return self
@@ -473,8 +524,12 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
     /**
      * Gets as qualifiesForB2BVAT
      *
-     * Indicates whether the user is subject to VAT. Users who have registered with
+     * <br>
+     *  Indicates whether the user is subject to VAT. Users who have registered with
      *  eBay as VAT-exempt are not subject to VAT.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>SellerInfo</b> container and its child fields will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @return bool
      */
@@ -486,8 +541,12 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
     /**
      * Sets a new qualifiesForB2BVAT
      *
-     * Indicates whether the user is subject to VAT. Users who have registered with
+     * <br>
+     *  Indicates whether the user is subject to VAT. Users who have registered with
      *  eBay as VAT-exempt are not subject to VAT.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>SellerInfo</b> container and its child fields will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @param bool $qualifiesForB2BVAT
      * @return self
@@ -527,11 +586,11 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
     /**
      * Gets as sellerLevel
      *
-     * The user's eBay PowerSeller tier. Possible values are enumerated in the SellerLevelCodeType code list.
-     *  SellerInfo.SellerLevel is no longer returned in the GetUser, GetBidderList, GetSellerList, GetItem, and
-     *  GetItemTransactions responses for the US, DE/AT/CH, and UK/IE sites, for version 629 and later. If you are using
-     *  a version older than 629, SellerInfo.SellerLevel will still be returned. Developers should note that
-     *  SellerInfo.SellerLevel could potentially be removed from other sites as well.
+     * <br>
+     *  This enumeration value indicates the user's eBay PowerSeller tier.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>SellerInfo</b> container and its child fields will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @return string
      */
@@ -543,11 +602,11 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
     /**
      * Sets a new sellerLevel
      *
-     * The user's eBay PowerSeller tier. Possible values are enumerated in the SellerLevelCodeType code list.
-     *  SellerInfo.SellerLevel is no longer returned in the GetUser, GetBidderList, GetSellerList, GetItem, and
-     *  GetItemTransactions responses for the US, DE/AT/CH, and UK/IE sites, for version 629 and later. If you are using
-     *  a version older than 629, SellerInfo.SellerLevel will still be returned. Developers should note that
-     *  SellerInfo.SellerLevel could potentially be removed from other sites as well.
+     * <br>
+     *  This enumeration value indicates the user's eBay PowerSeller tier.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>SellerInfo</b> container and its child fields will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @param string $sellerLevel
      * @return self
@@ -613,7 +672,11 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
     /**
      * Gets as storeOwner
      *
-     * Boolean value indicates whether or not the seller is an eBay Store owner.
+     * <br>
+     *  Boolean value indicates whether or not the seller is an eBay Store owner.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>SellerInfo</b> container and its child fields will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @return bool
      */
@@ -625,7 +688,11 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
     /**
      * Sets a new storeOwner
      *
-     * Boolean value indicates whether or not the seller is an eBay Store owner.
+     * <br>
+     *  Boolean value indicates whether or not the seller is an eBay Store owner.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>SellerInfo</b> container and its child fields will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @param bool $storeOwner
      * @return self
@@ -639,7 +706,11 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
     /**
      * Gets as storeURL
      *
-     * The URL for the seller's eBay Store. This field is only returned if the seller is a store owner (look for a value of <code>true</code> in the <b>SellerInfo.StoreOwner</b> field).
+     * <br>
+     *  The URL for the seller's eBay Store. This field is only returned if the seller is a store owner (look for a value of <code>true</code> in the <b>SellerInfo.StoreOwner</b> field).
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>SellerInfo</b> container and its child fields will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @return string
      */
@@ -651,7 +722,11 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
     /**
      * Sets a new storeURL
      *
-     * The URL for the seller's eBay Store. This field is only returned if the seller is a store owner (look for a value of <code>true</code> in the <b>SellerInfo.StoreOwner</b> field).
+     * <br>
+     *  The URL for the seller's eBay Store. This field is only returned if the seller is a store owner (look for a value of <code>true</code> in the <b>SellerInfo.StoreOwner</b> field).
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>SellerInfo</b> container and its child fields will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @param string $storeURL
      * @return self
@@ -825,7 +900,11 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
     /**
      * Gets as safePaymentExempt
      *
-     * If this field is <code>true</code>, the user is exempt from the requirement to offer at least one safe payment method when listing items.
+     * <br>
+     *  If this field is <code>true</code>, the user is exempt from the requirement to offer at least one safe payment method when listing items.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>SellerInfo</b> container and its child fields will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @return bool
      */
@@ -837,7 +916,11 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
     /**
      * Sets a new safePaymentExempt
      *
-     * If this field is <code>true</code>, the user is exempt from the requirement to offer at least one safe payment method when listing items.
+     * <br>
+     *  If this field is <code>true</code>, the user is exempt from the requirement to offer at least one safe payment method when listing items.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>SellerInfo</b> container and its child fields will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @param bool $safePaymentExempt
      * @return self
@@ -1065,21 +1148,23 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
     /**
      * Gets as topRatedSeller
      *
-     * This boolean field indicates if the seller is certified as a
-     *  <em>Top Rated Seller</em>. Only Top Rated Sellers can qualify for Top Rated Plus listings, which receive the Top Rated Plus seal, and will help those listings stand out. Top Rated Plus listings also receive a 20 percent discount on the Final Value Fee.
-     *  <br/><br/>
-     *  This field is only returned for the following sites: US (EBAY-US), Motors (EBAY-MOTOR), AT (EBAY-AT), CH (EBAY-CH), DE (EBAY-DE), IE (EBAY-IE), UK (EBAY-GB), and AU (EBAY-AU). The Top Rated Seller and Top Rated Plus listing requirements will differ by site. Below are some links to Help pages that discusss these requirements:
+     * <br/>
+     *  This boolean field indicates if the seller is certified as a
+     *  <em>Top Rated Seller</em>. Only Top Rated Sellers can qualify for Top Rated Plus listings, which receive the Top Rated Plus seal and other benefits.
+     *  <br/>
+     *  This field is only returned for the following sites: US, Germany, Austria, Switzerland, UK, Ireland, and Australia. The Top Rated Seller and Top Rated Plus listing requirements will differ by site. Below are some links to Help pages that discusss these requirements:
      *  <ul>
-     *  <li>eBay US: <a href="http://pages.ebay.com/help/sell/top-rated.html">Becoming a Top Rated Seller and qualifying for Top Rated Plus</a></li>
-     *  <li>eBay US Motors: <a href="http://pages.ebay.com/help/sell/top-rated.html#becoming">Becoming a Top Rated Seller in Motors vehicles categories</a></li>
-     *  <li>eBay UK/IE: <a href="http://pages.ebay.co.uk/help/sell/top-rated.html">eBay Top-rated Seller status and the eBay Premium Service</a></li>
-     *  <li>eBay DE/AT/CH: <a href="http://pages.ebay.de/help/sell/top-rated/2.html">
+     *  <li>eBay US: <a href="https://www.ebay.com/help/policies/selling-policies/seller-standards-policy?id=4347&#section3">Requirements to become Top Rated</a></li>
+     *  <li>eBay UK/IE: <a href="https://www.ebay.co.uk/help/policies/selling-policies/seller-standards-policy?id=4347&#section3">Requirements to become Top Rated and the eBay Premium Service</a></li>
+     *  <li>eBay DE/AT/CH: <a href="https://pages.ebay.de/help/sell/top-rated/2.html">
      * Anforderungen fur den Verkaufer mit Top-Bewertung</a></li>
-     *  <li>eBay AU: <a href="http://pages.ebay.com.au/help/sell/top-rated.html">
-     * Becoming a Top Rated Seller and qualifying for eBay Premium Service</a></li>
+     *  <li>eBay AU: <a href="https://www.ebay.com.au/help/policies/selling-policies/seller-standards-policy?id=4347&#section3">
+     * Requirements to become Top Rated</a></li>
      *  </ul>
-     *  Top Rated Sellers, registered in the US, can qualify for Top Rated Seller programs in other countries as long as they meet the selling requirements in those countries. However, even if US sellers qualify for programs in other countries, they will not receive the Final Value Fee discount on sales in those countries. For more information, see the <a href="http://pages.ebay.com/help/sell/top-rated.html#qualifying">
-     * Qualifying for Top Rated Seller status on other eBay sites</a> help topic.
+     *  Top Rated Sellers, registered in the US, can qualify for Top Rated Seller programs in other countries as long as they meet the selling requirements in those countries. However, even if US sellers qualify for programs in other countries, they will not receive the Final Value Fee discount on sales in those countries.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>SellerInfo</b> container and its child fields will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @return bool
      */
@@ -1091,21 +1176,23 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
     /**
      * Sets a new topRatedSeller
      *
-     * This boolean field indicates if the seller is certified as a
-     *  <em>Top Rated Seller</em>. Only Top Rated Sellers can qualify for Top Rated Plus listings, which receive the Top Rated Plus seal, and will help those listings stand out. Top Rated Plus listings also receive a 20 percent discount on the Final Value Fee.
-     *  <br/><br/>
-     *  This field is only returned for the following sites: US (EBAY-US), Motors (EBAY-MOTOR), AT (EBAY-AT), CH (EBAY-CH), DE (EBAY-DE), IE (EBAY-IE), UK (EBAY-GB), and AU (EBAY-AU). The Top Rated Seller and Top Rated Plus listing requirements will differ by site. Below are some links to Help pages that discusss these requirements:
+     * <br/>
+     *  This boolean field indicates if the seller is certified as a
+     *  <em>Top Rated Seller</em>. Only Top Rated Sellers can qualify for Top Rated Plus listings, which receive the Top Rated Plus seal and other benefits.
+     *  <br/>
+     *  This field is only returned for the following sites: US, Germany, Austria, Switzerland, UK, Ireland, and Australia. The Top Rated Seller and Top Rated Plus listing requirements will differ by site. Below are some links to Help pages that discusss these requirements:
      *  <ul>
-     *  <li>eBay US: <a href="http://pages.ebay.com/help/sell/top-rated.html">Becoming a Top Rated Seller and qualifying for Top Rated Plus</a></li>
-     *  <li>eBay US Motors: <a href="http://pages.ebay.com/help/sell/top-rated.html#becoming">Becoming a Top Rated Seller in Motors vehicles categories</a></li>
-     *  <li>eBay UK/IE: <a href="http://pages.ebay.co.uk/help/sell/top-rated.html">eBay Top-rated Seller status and the eBay Premium Service</a></li>
-     *  <li>eBay DE/AT/CH: <a href="http://pages.ebay.de/help/sell/top-rated/2.html">
+     *  <li>eBay US: <a href="https://www.ebay.com/help/policies/selling-policies/seller-standards-policy?id=4347&#section3">Requirements to become Top Rated</a></li>
+     *  <li>eBay UK/IE: <a href="https://www.ebay.co.uk/help/policies/selling-policies/seller-standards-policy?id=4347&#section3">Requirements to become Top Rated and the eBay Premium Service</a></li>
+     *  <li>eBay DE/AT/CH: <a href="https://pages.ebay.de/help/sell/top-rated/2.html">
      * Anforderungen fur den Verkaufer mit Top-Bewertung</a></li>
-     *  <li>eBay AU: <a href="http://pages.ebay.com.au/help/sell/top-rated.html">
-     * Becoming a Top Rated Seller and qualifying for eBay Premium Service</a></li>
+     *  <li>eBay AU: <a href="https://www.ebay.com.au/help/policies/selling-policies/seller-standards-policy?id=4347&#section3">
+     * Requirements to become Top Rated</a></li>
      *  </ul>
-     *  Top Rated Sellers, registered in the US, can qualify for Top Rated Seller programs in other countries as long as they meet the selling requirements in those countries. However, even if US sellers qualify for programs in other countries, they will not receive the Final Value Fee discount on sales in those countries. For more information, see the <a href="http://pages.ebay.com/help/sell/top-rated.html#qualifying">
-     * Qualifying for Top Rated Seller status on other eBay sites</a> help topic.
+     *  Top Rated Sellers, registered in the US, can qualify for Top Rated Seller programs in other countries as long as they meet the selling requirements in those countries. However, even if US sellers qualify for programs in other countries, they will not receive the Final Value Fee discount on sales in those countries.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>SellerInfo</b> container and its child fields will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @param bool $topRatedSeller
      * @return self
@@ -1323,7 +1410,7 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
     /**
      * Gets as sellereBayPaymentProcessStatus
      *
-     * This field is no longer used.
+     * This field is no longer used/supported.
      *
      * @return string
      */
@@ -1335,7 +1422,7 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
     /**
      * Sets a new sellereBayPaymentProcessStatus
      *
-     * This field is no longer used.
+     * This field is no longer used/supported.
      *
      * @param string $sellereBayPaymentProcessStatus
      * @return self
@@ -1349,7 +1436,7 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
     /**
      * Gets as sellereBayPaymentProcessConsent
      *
-     * This field is no longer used.
+     * This field is no longer used/supported.
      *
      * @return \Nogrod\eBaySDK\Trading\SellereBayPaymentProcessConsentCodeType
      */
@@ -1361,7 +1448,7 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
     /**
      * Sets a new sellereBayPaymentProcessConsent
      *
-     * This field is no longer used.
+     * This field is no longer used/supported.
      *
      * @param \Nogrod\eBaySDK\Trading\SellereBayPaymentProcessConsentCodeType $sellereBayPaymentProcessConsent
      * @return self

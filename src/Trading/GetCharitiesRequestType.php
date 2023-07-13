@@ -7,7 +7,10 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing GetCharitiesRequestType
  *
- * The <b>GetCharities</b> call is used to search for nonprofit organizations that are registered with the eBay for Charity program. This call allows users to search for a specific nonprofit organization, or to search for multiple nonprofit organizations from a particular charitable domain, and/or geographical region, or by using a search string.
+ * <span class="tablenote"><b>Note: </b> This call is deprecated, and will be decommisioned on September 18, 2023. The alternative for this API is <a href="/api-docs/commerce/charity/resources/methods" target="_blank" rel="noopener">Charity API</a>, which has a <a href="/api-docs/commerce/charity/resources/charity_org/methods/getCharityOrg" target="_blank" rel="noopener">getCharityOrg</a> method to retrieve details on a specific Charity, and a <a href="/api-docs/commerce/charity/resources/charity_org/methods/getCharityOrgs" target="_blank" rel="noopener">getCharityOrgs</a> method to retrieve multiple charities based on search filters.
+ *  </span>
+ *  <br>
+ *  The <b>GetCharities</b> call is used to search for nonprofit organizations that are registered with the eBay for Charity program. This call allows users to search for a specific nonprofit organization, or to search for multiple nonprofit organizations from a particular charitable domain, and/or geographical region, or by using a search string.
  * XSD Type: GetCharitiesRequestType
  */
 class GetCharitiesRequestType extends AbstractRequestType

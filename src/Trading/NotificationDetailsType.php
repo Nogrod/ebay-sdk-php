@@ -39,11 +39,7 @@ class NotificationDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
     private $expirationTime = null;
 
     /**
-     * Returns the notification type. Possible values include: AskSellerQuestion,
-     *  AuctionCheckoutComplete, BestOffer, CheckoutBuyerRequestTotal, EndOfAuction,
-     *  Feedback, FixedPriceEndOfTransaction, FixedPriceTransaction, ItemNotReceived,
-     *  MyMessages, OutBid, SecondChanceOffer, UPIBuyerResponseDispute, UPISellerClosedDispute,
-     *  UPISellerOpenedDispute, and UPISellerRespondedToDispute.
+     * The returned enumeration value indicates the type of platform notification,
      *
      * @var string $type
      */
@@ -179,11 +175,7 @@ class NotificationDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
     /**
      * Gets as type
      *
-     * Returns the notification type. Possible values include: AskSellerQuestion,
-     *  AuctionCheckoutComplete, BestOffer, CheckoutBuyerRequestTotal, EndOfAuction,
-     *  Feedback, FixedPriceEndOfTransaction, FixedPriceTransaction, ItemNotReceived,
-     *  MyMessages, OutBid, SecondChanceOffer, UPIBuyerResponseDispute, UPISellerClosedDispute,
-     *  UPISellerOpenedDispute, and UPISellerRespondedToDispute.
+     * The returned enumeration value indicates the type of platform notification,
      *
      * @return string
      */
@@ -195,11 +187,7 @@ class NotificationDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
     /**
      * Sets a new type
      *
-     * Returns the notification type. Possible values include: AskSellerQuestion,
-     *  AuctionCheckoutComplete, BestOffer, CheckoutBuyerRequestTotal, EndOfAuction,
-     *  Feedback, FixedPriceEndOfTransaction, FixedPriceTransaction, ItemNotReceived,
-     *  MyMessages, OutBid, SecondChanceOffer, UPIBuyerResponseDispute, UPISellerClosedDispute,
-     *  UPISellerOpenedDispute, and UPISellerRespondedToDispute.
+     * The returned enumeration value indicates the type of platform notification,
      *
      * @param string $type
      * @return self

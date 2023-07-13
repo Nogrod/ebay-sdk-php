@@ -1,0 +1,61 @@
+Nogrod\eBaySDK\Trading\HazmatType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        pictograms:
+            expose: true
+            access_type: public_method
+            serialized_name: Pictograms
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPictograms
+                setter: setPictograms
+            type: array<string>
+            xml_list:
+                inline: false
+                entry_name: Pictogram
+                skip_when_empty: true
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+        signalWord:
+            expose: true
+            access_type: public_method
+            serialized_name: SignalWord
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSignalWord
+                setter: setSignalWord
+            type: string
+        statements:
+            expose: true
+            access_type: public_method
+            serialized_name: Statements
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getStatements
+                setter: setStatements
+            type: array<string>
+            xml_list:
+                inline: false
+                entry_name: Statement
+                skip_when_empty: true
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+        component:
+            expose: true
+            access_type: public_method
+            serialized_name: Component
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getComponent
+                setter: setComponent
+            type: string

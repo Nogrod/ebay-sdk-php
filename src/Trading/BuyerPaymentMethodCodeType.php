@@ -73,14 +73,6 @@ class BuyerPaymentMethodCodeType
     public const VAL_PERSONAL_CHECK = 'PersonalCheck';
 
     /**
-     * Constant for 'COD' value.
-     *
-     * This enumeration value indicates that cash on delivery of item is accepted for
-     * payment. This value is only applicable for offline payments.
-     */
-    public const VAL_COD = 'COD';
-
-    /**
      * Constant for 'VisaMC' value.
      *
      * This enumeration value indicates that Visa or MasterCard are accepted for

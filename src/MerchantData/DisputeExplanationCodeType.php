@@ -11,6 +11,12 @@ namespace Nogrod\eBaySDK\MerchantData;
  *  <b>GetUserDisputes</b> and <b>GetDispute</b> calls. The
  *  <b>DisputeReason</b> value will dictate what
  *  <b>DisputeExplanation</b> values that can be used/returned.
+ *  <br/><br/>
+ *  <span class="tablenote"><strong>Note:</strong>
+ *  Only Unpaid Item cases are now supported by the Dispute calls of the Trading API. These calls no longer support Item not Received (INR) or Significantly not as Described (SNAD) disputes created through PayPal, since this is no longer an option for eBay buyers. eBay buyers must create an INR case through eBay's Resolution Center, and these calls also do not support eBay Money Back Guarantee cases.
+ *  <br><br>
+ *  To respond to an eBay Money Back Guarantee case, the seller should use the <a href="https://developer.ebay.com/Devzone/post-order/index.html" target="_blank">Case Management calls</a> of the <b>Post-Order API</b> or manage/respond to cases manually through the eBay Resolution Center.
+ *  </span>
  * XSD Type: DisputeExplanationCodeType
  */
 class DisputeExplanationCodeType
@@ -49,7 +55,10 @@ class DisputeExplanationCodeType
     /**
      * Constant for 'BuyerReturnedItemForRefund' value.
      *
-     * This value is no longer applicable and should not be used.
+     * This value is no longer applicable and should not be used in an
+     * <b>AddDispute</b> call, as it only pertains to <i>Significantly Not As
+     * Described</i> disputes initiated through PayPal, and those disputes are no
+     * longer supported by the <b>AddDispute</b>.
      */
     public const VAL_BUYER_RETURNED_ITEM_FOR_REFUND = 'BuyerReturnedItemForRefund';
 

@@ -22,19 +22,6 @@ class CharityType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
     private $charityName = null;
 
     /**
-     * This numeric value is the unique identifier assigned to a non-profit
-     *  organization when that organization registers with the PayPal Giving Fund.
-     *  <br>
-     *  <br>
-     *  <span class="tablenote"><strong>Note:</strong>
-     *  All registered, non-profit organizations on eBay's platform have a PayPal Giving Fund identifier (<b>CharityNumber</b>) and a unique eBay identifier (<b>CharityID</b>). However, the <b>CharityNumber</b> field is now deprecated in the Trading API, and is scheduled to stop being returned in <b>GetBidderList</b>, <b>GetItem</b>, <b>GetOrderTransactions</b>, and <b>GetSellerList</b> after January 16, 2023. At that time, it will be removed from the Trading WSDL. The <b>CharityID</b> value must be used instead in add/revise/relist calls.
-     *  </span>
-     *
-     * @var int $charityNumber
-     */
-    private $charityNumber = null;
-
-    /**
      * The percentage of the purchase price that the
      *  seller chooses to donate to the selected nonprofit
      *  organization. This percentage is displayed in the eBay for Charity listing.
@@ -121,44 +108,6 @@ class CharityType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
     public function setCharityName($charityName)
     {
         $this->charityName = $charityName;
-        return $this;
-    }
-
-    /**
-     * Gets as charityNumber
-     *
-     * This numeric value is the unique identifier assigned to a non-profit
-     *  organization when that organization registers with the PayPal Giving Fund.
-     *  <br>
-     *  <br>
-     *  <span class="tablenote"><strong>Note:</strong>
-     *  All registered, non-profit organizations on eBay's platform have a PayPal Giving Fund identifier (<b>CharityNumber</b>) and a unique eBay identifier (<b>CharityID</b>). However, the <b>CharityNumber</b> field is now deprecated in the Trading API, and is scheduled to stop being returned in <b>GetBidderList</b>, <b>GetItem</b>, <b>GetOrderTransactions</b>, and <b>GetSellerList</b> after January 16, 2023. At that time, it will be removed from the Trading WSDL. The <b>CharityID</b> value must be used instead in add/revise/relist calls.
-     *  </span>
-     *
-     * @return int
-     */
-    public function getCharityNumber()
-    {
-        return $this->charityNumber;
-    }
-
-    /**
-     * Sets a new charityNumber
-     *
-     * This numeric value is the unique identifier assigned to a non-profit
-     *  organization when that organization registers with the PayPal Giving Fund.
-     *  <br>
-     *  <br>
-     *  <span class="tablenote"><strong>Note:</strong>
-     *  All registered, non-profit organizations on eBay's platform have a PayPal Giving Fund identifier (<b>CharityNumber</b>) and a unique eBay identifier (<b>CharityID</b>). However, the <b>CharityNumber</b> field is now deprecated in the Trading API, and is scheduled to stop being returned in <b>GetBidderList</b>, <b>GetItem</b>, <b>GetOrderTransactions</b>, and <b>GetSellerList</b> after January 16, 2023. At that time, it will be removed from the Trading WSDL. The <b>CharityID</b> value must be used instead in add/revise/relist calls.
-     *  </span>
-     *
-     * @param int $charityNumber
-     * @return self
-     */
-    public function setCharityNumber($charityNumber)
-    {
-        $this->charityNumber = $charityNumber;
         return $this;
     }
 
@@ -361,10 +310,6 @@ class CharityType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CharityName", $value);
         }
-        $value = $this->getCharityNumber();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CharityNumber", $value);
-        }
         $value = $this->getDonationPercent();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DonationPercent", $value);
@@ -409,10 +354,6 @@ class CharityType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CharityName');
         if (null !== $value) {
             $this->setCharityName($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CharityNumber');
-        if (null !== $value) {
-            $this->setCharityNumber($value);
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DonationPercent');
         if (null !== $value) {

@@ -13,21 +13,24 @@ use Nogrod\XMLClientRuntime\Func;
 class TaxIdentifierType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
     /**
-     * This enumeration value identifies the type of tax ID that was supplied by the buyer during the checkout process.
+     * <br>
+     *  This enumeration value identifies the type of tax ID that was supplied by the buyer during the checkout process.
      *
      * @var string $type
      */
     private $type = null;
 
     /**
-     * This value is the actual tax ID for the buyer. The type of tax ID is shown in the <b>Type</b> field.
+     * <br>
+     *  This value is the actual tax ID for the buyer. The type of tax ID is shown in the <b>Type</b> field.
      *
      * @var string $iD
      */
     private $iD = null;
 
     /**
-     * This field shows an attribute, and its corresponding value for the buyer's tax identification card. Currently, this field is only used to indicate which country issued the buyer's tax ID, but in the future, other attributes related to the tax ID may be returned in this field. This field's value will be an <a href="http://en.wikipedia.org/wiki/ISO_3166-1" target="_blank">ISO 3166-1 two-digit code</a> that represents the issuing country.
+     * <br>
+     *  This field shows an attribute, and its corresponding value for the buyer's tax identification card. Currently, this field is only used to indicate which country issued the buyer's tax ID, but in the future, other attributes related to the tax ID may be returned in this field. This field's value will be an <a href="http://en.wikipedia.org/wiki/ISO_3166-1" target="_blank">ISO 3166-1 two-digit code</a> that represents the issuing country.
      *
      * @var \Nogrod\eBaySDK\Trading\TaxIdentifierAttributeType[] $attribute
      */
@@ -38,7 +41,8 @@ class TaxIdentifierType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
     /**
      * Gets as type
      *
-     * This enumeration value identifies the type of tax ID that was supplied by the buyer during the checkout process.
+     * <br>
+     *  This enumeration value identifies the type of tax ID that was supplied by the buyer during the checkout process.
      *
      * @return string
      */
@@ -50,7 +54,8 @@ class TaxIdentifierType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
     /**
      * Sets a new type
      *
-     * This enumeration value identifies the type of tax ID that was supplied by the buyer during the checkout process.
+     * <br>
+     *  This enumeration value identifies the type of tax ID that was supplied by the buyer during the checkout process.
      *
      * @param string $type
      * @return self
@@ -64,7 +69,8 @@ class TaxIdentifierType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
     /**
      * Gets as iD
      *
-     * This value is the actual tax ID for the buyer. The type of tax ID is shown in the <b>Type</b> field.
+     * <br>
+     *  This value is the actual tax ID for the buyer. The type of tax ID is shown in the <b>Type</b> field.
      *
      * @return string
      */
@@ -76,7 +82,8 @@ class TaxIdentifierType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
     /**
      * Sets a new iD
      *
-     * This value is the actual tax ID for the buyer. The type of tax ID is shown in the <b>Type</b> field.
+     * <br>
+     *  This value is the actual tax ID for the buyer. The type of tax ID is shown in the <b>Type</b> field.
      *
      * @param string $iD
      * @return self
@@ -90,7 +97,8 @@ class TaxIdentifierType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
     /**
      * Adds as attribute
      *
-     * This field shows an attribute, and its corresponding value for the buyer's tax identification card. Currently, this field is only used to indicate which country issued the buyer's tax ID, but in the future, other attributes related to the tax ID may be returned in this field. This field's value will be an <a href="http://en.wikipedia.org/wiki/ISO_3166-1" target="_blank">ISO 3166-1 two-digit code</a> that represents the issuing country.
+     * <br>
+     *  This field shows an attribute, and its corresponding value for the buyer's tax identification card. Currently, this field is only used to indicate which country issued the buyer's tax ID, but in the future, other attributes related to the tax ID may be returned in this field. This field's value will be an <a href="http://en.wikipedia.org/wiki/ISO_3166-1" target="_blank">ISO 3166-1 two-digit code</a> that represents the issuing country.
      *
      * @return self
      * @param \Nogrod\eBaySDK\Trading\TaxIdentifierAttributeType $attribute
@@ -104,7 +112,8 @@ class TaxIdentifierType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
     /**
      * isset attribute
      *
-     * This field shows an attribute, and its corresponding value for the buyer's tax identification card. Currently, this field is only used to indicate which country issued the buyer's tax ID, but in the future, other attributes related to the tax ID may be returned in this field. This field's value will be an <a href="http://en.wikipedia.org/wiki/ISO_3166-1" target="_blank">ISO 3166-1 two-digit code</a> that represents the issuing country.
+     * <br>
+     *  This field shows an attribute, and its corresponding value for the buyer's tax identification card. Currently, this field is only used to indicate which country issued the buyer's tax ID, but in the future, other attributes related to the tax ID may be returned in this field. This field's value will be an <a href="http://en.wikipedia.org/wiki/ISO_3166-1" target="_blank">ISO 3166-1 two-digit code</a> that represents the issuing country.
      *
      * @param int|string $index
      * @return bool
@@ -117,7 +126,8 @@ class TaxIdentifierType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
     /**
      * unset attribute
      *
-     * This field shows an attribute, and its corresponding value for the buyer's tax identification card. Currently, this field is only used to indicate which country issued the buyer's tax ID, but in the future, other attributes related to the tax ID may be returned in this field. This field's value will be an <a href="http://en.wikipedia.org/wiki/ISO_3166-1" target="_blank">ISO 3166-1 two-digit code</a> that represents the issuing country.
+     * <br>
+     *  This field shows an attribute, and its corresponding value for the buyer's tax identification card. Currently, this field is only used to indicate which country issued the buyer's tax ID, but in the future, other attributes related to the tax ID may be returned in this field. This field's value will be an <a href="http://en.wikipedia.org/wiki/ISO_3166-1" target="_blank">ISO 3166-1 two-digit code</a> that represents the issuing country.
      *
      * @param int|string $index
      * @return void
@@ -130,7 +140,8 @@ class TaxIdentifierType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
     /**
      * Gets as attribute
      *
-     * This field shows an attribute, and its corresponding value for the buyer's tax identification card. Currently, this field is only used to indicate which country issued the buyer's tax ID, but in the future, other attributes related to the tax ID may be returned in this field. This field's value will be an <a href="http://en.wikipedia.org/wiki/ISO_3166-1" target="_blank">ISO 3166-1 two-digit code</a> that represents the issuing country.
+     * <br>
+     *  This field shows an attribute, and its corresponding value for the buyer's tax identification card. Currently, this field is only used to indicate which country issued the buyer's tax ID, but in the future, other attributes related to the tax ID may be returned in this field. This field's value will be an <a href="http://en.wikipedia.org/wiki/ISO_3166-1" target="_blank">ISO 3166-1 two-digit code</a> that represents the issuing country.
      *
      * @return \Nogrod\eBaySDK\Trading\TaxIdentifierAttributeType[]
      */
@@ -142,7 +153,8 @@ class TaxIdentifierType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
     /**
      * Sets a new attribute
      *
-     * This field shows an attribute, and its corresponding value for the buyer's tax identification card. Currently, this field is only used to indicate which country issued the buyer's tax ID, but in the future, other attributes related to the tax ID may be returned in this field. This field's value will be an <a href="http://en.wikipedia.org/wiki/ISO_3166-1" target="_blank">ISO 3166-1 two-digit code</a> that represents the issuing country.
+     * <br>
+     *  This field shows an attribute, and its corresponding value for the buyer's tax identification card. Currently, this field is only used to indicate which country issued the buyer's tax ID, but in the future, other attributes related to the tax ID may be returned in this field. This field's value will be an <a href="http://en.wikipedia.org/wiki/ISO_3166-1" target="_blank">ISO 3166-1 two-digit code</a> that represents the issuing country.
      *
      * @param \Nogrod\eBaySDK\Trading\TaxIdentifierAttributeType[] $attribute
      * @return self

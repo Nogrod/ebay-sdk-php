@@ -149,18 +149,6 @@ class CharityInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     private $showMultipleDonationAmountInCheckout = null;
 
     /**
-     * A unique identifier created and used by PayPal Giving Fund to identify a registered nonprofit charity organization. This field is only returned for charities that are registered with PayPal Giving Fund.
-     *  <br>
-     *  <br>
-     *  <span class="tablenote"><strong>Note:</strong>
-     *  All registered, non-profit organizations on eBay's platform have a PayPal Giving Fund identifier (<b>ExternalID</b>) and a unique eBay identifier is displayed through the <b>id</b> attribute of the root <b>Charity</b> field of the response. However, the <b>ExternalID</b> field is now deprecated in the Trading API, and is scheduled to stop being returned after January 16, 2023. At that time, it will be removed from the Trading WSDL. The unique eBay identifier (in the <b>id</b> attribute of the root <b>Charity</b> field) should be referenced/used instead.
-     *  </span>
-     *
-     * @var string $externalID
-     */
-    private $externalID = null;
-
-    /**
      * An integer value that indicates a nonprofit charity organization's popularity rank in comparison with other registered eBay for Charity organizations. This value is determined and managed by PayPal Giving Fund and is based on various factors. This value is always returned for nonprofit organizations registered with PayPal Giving Fund.
      *
      * @var int $popularityIndex
@@ -712,42 +700,6 @@ class CharityInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     }
 
     /**
-     * Gets as externalID
-     *
-     * A unique identifier created and used by PayPal Giving Fund to identify a registered nonprofit charity organization. This field is only returned for charities that are registered with PayPal Giving Fund.
-     *  <br>
-     *  <br>
-     *  <span class="tablenote"><strong>Note:</strong>
-     *  All registered, non-profit organizations on eBay's platform have a PayPal Giving Fund identifier (<b>ExternalID</b>) and a unique eBay identifier is displayed through the <b>id</b> attribute of the root <b>Charity</b> field of the response. However, the <b>ExternalID</b> field is now deprecated in the Trading API, and is scheduled to stop being returned after January 16, 2023. At that time, it will be removed from the Trading WSDL. The unique eBay identifier (in the <b>id</b> attribute of the root <b>Charity</b> field) should be referenced/used instead.
-     *  </span>
-     *
-     * @return string
-     */
-    public function getExternalID()
-    {
-        return $this->externalID;
-    }
-
-    /**
-     * Sets a new externalID
-     *
-     * A unique identifier created and used by PayPal Giving Fund to identify a registered nonprofit charity organization. This field is only returned for charities that are registered with PayPal Giving Fund.
-     *  <br>
-     *  <br>
-     *  <span class="tablenote"><strong>Note:</strong>
-     *  All registered, non-profit organizations on eBay's platform have a PayPal Giving Fund identifier (<b>ExternalID</b>) and a unique eBay identifier is displayed through the <b>id</b> attribute of the root <b>Charity</b> field of the response. However, the <b>ExternalID</b> field is now deprecated in the Trading API, and is scheduled to stop being returned after January 16, 2023. At that time, it will be removed from the Trading WSDL. The unique eBay identifier (in the <b>id</b> attribute of the root <b>Charity</b> field) should be referenced/used instead.
-     *  </span>
-     *
-     * @param string $externalID
-     * @return self
-     */
-    public function setExternalID($externalID)
-    {
-        $this->externalID = $externalID;
-        return $this;
-    }
-
-    /**
      * Gets as popularityIndex
      *
      * An integer value that indicates a nonprofit charity organization's popularity rank in comparison with other registered eBay for Charity organizations. This value is determined and managed by PayPal Giving Fund and is based on various factors. This value is always returned for nonprofit organizations registered with PayPal Giving Fund.
@@ -1041,10 +993,6 @@ class CharityInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShowMultipleDonationAmountInCheckout", $value);
         }
-        $value = $this->getExternalID();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ExternalID", $value);
-        }
         $value = $this->getPopularityIndex();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PopularityIndex", $value);
@@ -1148,10 +1096,6 @@ class CharityInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShowMultipleDonationAmountInCheckout');
         if (null !== $value) {
             $this->setShowMultipleDonationAmountInCheckout($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExternalID');
-        if (null !== $value) {
-            $this->setExternalID($value);
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PopularityIndex');
         if (null !== $value) {

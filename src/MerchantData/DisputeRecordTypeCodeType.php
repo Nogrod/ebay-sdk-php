@@ -6,6 +6,12 @@ namespace Nogrod\eBaySDK\MerchantData;
  * Class representing DisputeRecordTypeCodeType
  *
  * Enumerated type that lists the different types of order disputes/cases that can occur between buyer and seller.
+ *  <br/><br/>
+ *  <span class="tablenote"><strong>Note:</strong>
+ *  The <b>GetDispute</b> and <b>GetUserDisputes</b> calls now only retrieve Unpaid Item cases. They are no longer used to retrieve Item not Received (INR) disputes created through PayPal, since this is no longer an option for eBay buyers. eBay buyers must create an INR case through eBay's Resolution Center, and these calls do not support eBay Money Back Guarantee cases.
+ *  <br><br>
+ *  To respond to an eBay Money Back Guarantee case, the seller should use the <a href="https://developer.ebay.com/Devzone/post-order/index.html" target="_blank">Case Management calls</a> of the <b>Post-Order API</b> or manage/respond to cases manually through the eBay Resolution Center.
+ *  </span>
  * XSD Type: DisputeRecordTypeCodeType
  */
 class DisputeRecordTypeCodeType

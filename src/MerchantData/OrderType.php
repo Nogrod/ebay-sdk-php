@@ -137,14 +137,10 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      * This container shows the shipping address for the order.
      *  <br>
      *  <br>
-     *  <span class="tablenote">
-     *  <strong>Note:</strong> For an Authenticity Guarantee program shipment, this is the address of the authenticator's warehouse. The authenticator is responsible for delivery to the buyer's shipping address.
+     *  <span class="tablenote"><b>Note:</b> For an Authenticity Guarantee program shipment, this is the address of the authenticator's warehouse. The authenticator is responsible for delivery to the buyer's shipping address.
      *  </span>
      *  <span class="tablenote"><b>Note:</b> For GetOrderTransactions, the buyer's shipping address may also be returned at the order line item level in the <b>Transaction.Buyer.BuyerInfo.ShippingAddress</b> container.
      *  </span>
-     *  <p><span class="tablenote"><b>Note:</b>
-     *  For eBay Vault scenarios: <strong>GetOrders</strong>, <strong>GetOrderTransactions</strong>, and <strong>GetItemTransactions</strong> calls, mock addresses are returned for: <br/> - Vault to vault orders: Buyer and Seller View<br /> - Ship to vault orders: Mock addresses are returned for the Buyer View (only); address returned for the Seller View will be the authenticator's address
-     *  </span></p><br/>
      *
      * @var \Nogrod\eBaySDK\MerchantData\AddressType $shippingAddress
      */
@@ -924,14 +920,10 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      * This container shows the shipping address for the order.
      *  <br>
      *  <br>
-     *  <span class="tablenote">
-     *  <strong>Note:</strong> For an Authenticity Guarantee program shipment, this is the address of the authenticator's warehouse. The authenticator is responsible for delivery to the buyer's shipping address.
+     *  <span class="tablenote"><b>Note:</b> For an Authenticity Guarantee program shipment, this is the address of the authenticator's warehouse. The authenticator is responsible for delivery to the buyer's shipping address.
      *  </span>
      *  <span class="tablenote"><b>Note:</b> For GetOrderTransactions, the buyer's shipping address may also be returned at the order line item level in the <b>Transaction.Buyer.BuyerInfo.ShippingAddress</b> container.
      *  </span>
-     *  <p><span class="tablenote"><b>Note:</b>
-     *  For eBay Vault scenarios: <strong>GetOrders</strong>, <strong>GetOrderTransactions</strong>, and <strong>GetItemTransactions</strong> calls, mock addresses are returned for: <br/> - Vault to vault orders: Buyer and Seller View<br /> - Ship to vault orders: Mock addresses are returned for the Buyer View (only); address returned for the Seller View will be the authenticator's address
-     *  </span></p><br/>
      *
      * @return \Nogrod\eBaySDK\MerchantData\AddressType
      */
@@ -946,14 +938,10 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      * This container shows the shipping address for the order.
      *  <br>
      *  <br>
-     *  <span class="tablenote">
-     *  <strong>Note:</strong> For an Authenticity Guarantee program shipment, this is the address of the authenticator's warehouse. The authenticator is responsible for delivery to the buyer's shipping address.
+     *  <span class="tablenote"><b>Note:</b> For an Authenticity Guarantee program shipment, this is the address of the authenticator's warehouse. The authenticator is responsible for delivery to the buyer's shipping address.
      *  </span>
      *  <span class="tablenote"><b>Note:</b> For GetOrderTransactions, the buyer's shipping address may also be returned at the order line item level in the <b>Transaction.Buyer.BuyerInfo.ShippingAddress</b> container.
      *  </span>
-     *  <p><span class="tablenote"><b>Note:</b>
-     *  For eBay Vault scenarios: <strong>GetOrders</strong>, <strong>GetOrderTransactions</strong>, and <strong>GetItemTransactions</strong> calls, mock addresses are returned for: <br/> - Vault to vault orders: Buyer and Seller View<br /> - Ship to vault orders: Mock addresses are returned for the Buyer View (only); address returned for the Seller View will be the authenticator's address
-     *  </span></p><br/>
      *
      * @param \Nogrod\eBaySDK\MerchantData\AddressType $shippingAddress
      * @return self

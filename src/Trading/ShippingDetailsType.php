@@ -64,9 +64,10 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     private $calculatedShippingRate = null;
 
     /**
-     * Whether the seller specified payment and shipping instructions during checkout
-     *  (for example, to update the details of an order). Valid for flat and calculated
-     *  shipping.
+     * Indicates whether the seller specified payment and shipping instructions during checkout.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> This field is deprecated and will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @var bool $changePaymentInstructions
      */
@@ -114,11 +115,9 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     private $salesTax = null;
 
     /**
-     * For most applicable calls, returns the words No Error or returns an error message
-     *  related to an attempt to calculate shipping rates. For calculated shipping only.
-     *  <br><br>
-     *  The message text explains that a postal code is needed to calculate
-     *  shipping. Only returned when <b>ItemDetails</b> is set to <code>Fine</code>.
+     * <br>
+     *  <span class="tablenote"><b>Note: </b> This field is deprecated and will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @var string $shippingRateErrorMessage
      */
@@ -235,7 +234,9 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     private $sellingManagerSalesRecordNumber = null;
 
     /**
-     * This field is deprecated.
+     * <br>
+     *  <span class="tablenote"><b>Note: </b> This field is deprecated and will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @var bool $thirdPartyCheckout
      */
@@ -258,7 +259,9 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     private $taxTable = null;
 
     /**
-     * This field is deprecated.
+     * <br>
+     *  <span class="tablenote"><b>Note: </b> This field is deprecated and will stop being returned in order management calls on January 31, 2024.
+     *  </span>
      *
      * @var bool $getItFast
      */
@@ -398,7 +401,11 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     private $promotionalShippingDiscountDetails = null;
 
     /**
-     * This dollar value indicates the money due from the buyer upon delivery of the item.
+     * <span class="tablenote"><strong>Note:</strong>
+     *  This field was deprecated since COD is no longer a supported payment method on any marketplace. This field will be removed from the Trading WSDL and docs on July 17, 2023.
+     *  </span>
+     *  <br>
+     *  This dollar value indicates the money due from the buyer upon delivery of the item.
      *  <br><br>
      *  This field should only be specified in the request if 'COD' (cash-on-delivery) is a
      *  valid payment method for the site and listing category, and it is included as a <b>PaymentMethods</b>
@@ -415,10 +422,8 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     private $cODCost = null;
 
     /**
-     * Use this field to specify an international country or region, or a special domestic
-     *  location, such as 'PO Box' (in US) or 'Packstation' (in DE), to where you
-     *  will not ship the associated item. Repeat this element in the call request for each
-     *  location that you want to exclude as a shipping destination for your item.
+     * <br>
+     *  Use this field in an Add/Revise/Relist call to specify an international country or region, or a special domestic location, such as 'PO Box' (in US) or 'Packstation' (in DE), to where you will not ship the associated item. Repeat this element in the call request for each location that you want to exclude as a shipping destination for your item.
      *  <br><br>
      *  The exclude ship-to location values are eBay regions and countries. To see
      *  the valid exclude ship-to locations for a specified site, call <b>GeteBayDetails</b>
@@ -450,6 +455,9 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  Specify <code>none</code> in this field to override the default Exclude Ship-To List you
      *  might have set up in My eBay and indicate that you do not want to exclude any
      *  shipping locations from the respective item listing.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> This field will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> responses on January 31, 2024.
+     *  </span>
      *
      * @var string[] $excludeShipToLocation
      */
@@ -668,9 +676,10 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     /**
      * Gets as changePaymentInstructions
      *
-     * Whether the seller specified payment and shipping instructions during checkout
-     *  (for example, to update the details of an order). Valid for flat and calculated
-     *  shipping.
+     * Indicates whether the seller specified payment and shipping instructions during checkout.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> This field is deprecated and will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @return bool
      */
@@ -682,9 +691,10 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     /**
      * Sets a new changePaymentInstructions
      *
-     * Whether the seller specified payment and shipping instructions during checkout
-     *  (for example, to update the details of an order). Valid for flat and calculated
-     *  shipping.
+     * Indicates whether the seller specified payment and shipping instructions during checkout.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> This field is deprecated and will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @param bool $changePaymentInstructions
      * @return self
@@ -828,11 +838,9 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     /**
      * Gets as shippingRateErrorMessage
      *
-     * For most applicable calls, returns the words No Error or returns an error message
-     *  related to an attempt to calculate shipping rates. For calculated shipping only.
-     *  <br><br>
-     *  The message text explains that a postal code is needed to calculate
-     *  shipping. Only returned when <b>ItemDetails</b> is set to <code>Fine</code>.
+     * <br>
+     *  <span class="tablenote"><b>Note: </b> This field is deprecated and will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @return string
      */
@@ -844,11 +852,9 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     /**
      * Sets a new shippingRateErrorMessage
      *
-     * For most applicable calls, returns the words No Error or returns an error message
-     *  related to an attempt to calculate shipping rates. For calculated shipping only.
-     *  <br><br>
-     *  The message text explains that a postal code is needed to calculate
-     *  shipping. Only returned when <b>ItemDetails</b> is set to <code>Fine</code>.
+     * <br>
+     *  <span class="tablenote"><b>Note: </b> This field is deprecated and will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @param string $shippingRateErrorMessage
      * @return self
@@ -1346,7 +1352,9 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     /**
      * Gets as thirdPartyCheckout
      *
-     * This field is deprecated.
+     * <br>
+     *  <span class="tablenote"><b>Note: </b> This field is deprecated and will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @return bool
      */
@@ -1358,7 +1366,9 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     /**
      * Sets a new thirdPartyCheckout
      *
-     * This field is deprecated.
+     * <br>
+     *  <span class="tablenote"><b>Note: </b> This field is deprecated and will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @param bool $thirdPartyCheckout
      * @return self
@@ -1483,7 +1493,9 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     /**
      * Gets as getItFast
      *
-     * This field is deprecated.
+     * <br>
+     *  <span class="tablenote"><b>Note: </b> This field is deprecated and will stop being returned in order management calls on January 31, 2024.
+     *  </span>
      *
      * @return bool
      */
@@ -1495,7 +1507,9 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     /**
      * Sets a new getItFast
      *
-     * This field is deprecated.
+     * <br>
+     *  <span class="tablenote"><b>Note: </b> This field is deprecated and will stop being returned in order management calls on January 31, 2024.
+     *  </span>
      *
      * @param bool $getItFast
      * @return self
@@ -1907,7 +1921,11 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     /**
      * Gets as cODCost
      *
-     * This dollar value indicates the money due from the buyer upon delivery of the item.
+     * <span class="tablenote"><strong>Note:</strong>
+     *  This field was deprecated since COD is no longer a supported payment method on any marketplace. This field will be removed from the Trading WSDL and docs on July 17, 2023.
+     *  </span>
+     *  <br>
+     *  This dollar value indicates the money due from the buyer upon delivery of the item.
      *  <br><br>
      *  This field should only be specified in the request if 'COD' (cash-on-delivery) is a
      *  valid payment method for the site and listing category, and it is included as a <b>PaymentMethods</b>
@@ -1929,7 +1947,11 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     /**
      * Sets a new cODCost
      *
-     * This dollar value indicates the money due from the buyer upon delivery of the item.
+     * <span class="tablenote"><strong>Note:</strong>
+     *  This field was deprecated since COD is no longer a supported payment method on any marketplace. This field will be removed from the Trading WSDL and docs on July 17, 2023.
+     *  </span>
+     *  <br>
+     *  This dollar value indicates the money due from the buyer upon delivery of the item.
      *  <br><br>
      *  This field should only be specified in the request if 'COD' (cash-on-delivery) is a
      *  valid payment method for the site and listing category, and it is included as a <b>PaymentMethods</b>
@@ -1953,10 +1975,8 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     /**
      * Adds as excludeShipToLocation
      *
-     * Use this field to specify an international country or region, or a special domestic
-     *  location, such as 'PO Box' (in US) or 'Packstation' (in DE), to where you
-     *  will not ship the associated item. Repeat this element in the call request for each
-     *  location that you want to exclude as a shipping destination for your item.
+     * <br>
+     *  Use this field in an Add/Revise/Relist call to specify an international country or region, or a special domestic location, such as 'PO Box' (in US) or 'Packstation' (in DE), to where you will not ship the associated item. Repeat this element in the call request for each location that you want to exclude as a shipping destination for your item.
      *  <br><br>
      *  The exclude ship-to location values are eBay regions and countries. To see
      *  the valid exclude ship-to locations for a specified site, call <b>GeteBayDetails</b>
@@ -1988,6 +2008,9 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  Specify <code>none</code> in this field to override the default Exclude Ship-To List you
      *  might have set up in My eBay and indicate that you do not want to exclude any
      *  shipping locations from the respective item listing.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> This field will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> responses on January 31, 2024.
+     *  </span>
      *
      * @return self
      * @param string $excludeShipToLocation
@@ -2001,10 +2024,8 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     /**
      * isset excludeShipToLocation
      *
-     * Use this field to specify an international country or region, or a special domestic
-     *  location, such as 'PO Box' (in US) or 'Packstation' (in DE), to where you
-     *  will not ship the associated item. Repeat this element in the call request for each
-     *  location that you want to exclude as a shipping destination for your item.
+     * <br>
+     *  Use this field in an Add/Revise/Relist call to specify an international country or region, or a special domestic location, such as 'PO Box' (in US) or 'Packstation' (in DE), to where you will not ship the associated item. Repeat this element in the call request for each location that you want to exclude as a shipping destination for your item.
      *  <br><br>
      *  The exclude ship-to location values are eBay regions and countries. To see
      *  the valid exclude ship-to locations for a specified site, call <b>GeteBayDetails</b>
@@ -2036,6 +2057,9 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  Specify <code>none</code> in this field to override the default Exclude Ship-To List you
      *  might have set up in My eBay and indicate that you do not want to exclude any
      *  shipping locations from the respective item listing.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> This field will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> responses on January 31, 2024.
+     *  </span>
      *
      * @param int|string $index
      * @return bool
@@ -2048,10 +2072,8 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     /**
      * unset excludeShipToLocation
      *
-     * Use this field to specify an international country or region, or a special domestic
-     *  location, such as 'PO Box' (in US) or 'Packstation' (in DE), to where you
-     *  will not ship the associated item. Repeat this element in the call request for each
-     *  location that you want to exclude as a shipping destination for your item.
+     * <br>
+     *  Use this field in an Add/Revise/Relist call to specify an international country or region, or a special domestic location, such as 'PO Box' (in US) or 'Packstation' (in DE), to where you will not ship the associated item. Repeat this element in the call request for each location that you want to exclude as a shipping destination for your item.
      *  <br><br>
      *  The exclude ship-to location values are eBay regions and countries. To see
      *  the valid exclude ship-to locations for a specified site, call <b>GeteBayDetails</b>
@@ -2083,6 +2105,9 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  Specify <code>none</code> in this field to override the default Exclude Ship-To List you
      *  might have set up in My eBay and indicate that you do not want to exclude any
      *  shipping locations from the respective item listing.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> This field will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> responses on January 31, 2024.
+     *  </span>
      *
      * @param int|string $index
      * @return void
@@ -2095,10 +2120,8 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     /**
      * Gets as excludeShipToLocation
      *
-     * Use this field to specify an international country or region, or a special domestic
-     *  location, such as 'PO Box' (in US) or 'Packstation' (in DE), to where you
-     *  will not ship the associated item. Repeat this element in the call request for each
-     *  location that you want to exclude as a shipping destination for your item.
+     * <br>
+     *  Use this field in an Add/Revise/Relist call to specify an international country or region, or a special domestic location, such as 'PO Box' (in US) or 'Packstation' (in DE), to where you will not ship the associated item. Repeat this element in the call request for each location that you want to exclude as a shipping destination for your item.
      *  <br><br>
      *  The exclude ship-to location values are eBay regions and countries. To see
      *  the valid exclude ship-to locations for a specified site, call <b>GeteBayDetails</b>
@@ -2130,6 +2153,9 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  Specify <code>none</code> in this field to override the default Exclude Ship-To List you
      *  might have set up in My eBay and indicate that you do not want to exclude any
      *  shipping locations from the respective item listing.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> This field will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> responses on January 31, 2024.
+     *  </span>
      *
      * @return string[]
      */
@@ -2141,10 +2167,8 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     /**
      * Sets a new excludeShipToLocation
      *
-     * Use this field to specify an international country or region, or a special domestic
-     *  location, such as 'PO Box' (in US) or 'Packstation' (in DE), to where you
-     *  will not ship the associated item. Repeat this element in the call request for each
-     *  location that you want to exclude as a shipping destination for your item.
+     * <br>
+     *  Use this field in an Add/Revise/Relist call to specify an international country or region, or a special domestic location, such as 'PO Box' (in US) or 'Packstation' (in DE), to where you will not ship the associated item. Repeat this element in the call request for each location that you want to exclude as a shipping destination for your item.
      *  <br><br>
      *  The exclude ship-to location values are eBay regions and countries. To see
      *  the valid exclude ship-to locations for a specified site, call <b>GeteBayDetails</b>
@@ -2176,6 +2200,9 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  Specify <code>none</code> in this field to override the default Exclude Ship-To List you
      *  might have set up in My eBay and indicate that you do not want to exclude any
      *  shipping locations from the respective item listing.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> This field will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> responses on January 31, 2024.
+     *  </span>
      *
      * @param string[] $excludeShipToLocation
      * @return self

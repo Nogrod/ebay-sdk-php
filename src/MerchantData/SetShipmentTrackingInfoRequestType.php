@@ -7,7 +7,9 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing SetShipmentTrackingInfoRequestType
  *
- * <span class="tablenote"> <strong>Note:</strong> Large Merchant Services (LMS) functionality as a SOAP service has been decommissioned. It is fully migrated into the REST-based <a href="/api-docs/sell/feed/resources/methods" target=\"_blank\" >Sell Feed API</a> The <strong>Sell Feed API</strong> supports the same XML data files that LMS supported but through REST methods. For more information, see the <a href="/api-docs/sell/static/feed/lms-feeds.html" target="_blank" >LMS Feed Guide</a>. </span>
+ * <span class="tablenote">
+ *  <strong>Note:</strong> Large Merchant Services (LMS) functionality as a SOAP service has been decommissioned. It is fully migrated into the REST-based <a href="https://developer.ebay.com/api-docs/sell/feed/resources/methods" target=\"_blank\" >Sell Feed API</a> The <strong>Sell Feed API</strong> supports the same XML data files that LMS supported but through REST methods. For more information, see the <a href="https://developer.ebay.com/api-docs/sell/static/lms-migration-landing.html" target="_blank" >LMS Migration Guide</a>.
+ *  </span>
  *  Specifies the shipment tracking information associated with one package of an
  *  order. If multiple packages are required for the order, this call must be made
  *  separately for each package.

@@ -31,7 +31,7 @@ class ErrorType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
     /**
      * A unique code that identifies the particular error condition that occurred.
      *  Your application can use error codes as identifiers
-     *  in your customized error-handling algorithms. See the "Errors by Number" document.
+     *  in your customized error-handling algorithms.
      *
      * @var string $errorCode
      */
@@ -131,7 +131,7 @@ class ErrorType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      *
      * A unique code that identifies the particular error condition that occurred.
      *  Your application can use error codes as identifiers
-     *  in your customized error-handling algorithms. See the "Errors by Number" document.
+     *  in your customized error-handling algorithms.
      *
      * @return string
      */
@@ -145,7 +145,7 @@ class ErrorType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      *
      * A unique code that identifies the particular error condition that occurred.
      *  Your application can use error codes as identifiers
-     *  in your customized error-handling algorithms. See the "Errors by Number" document.
+     *  in your customized error-handling algorithms.
      *
      * @param string $errorCode
      * @return self

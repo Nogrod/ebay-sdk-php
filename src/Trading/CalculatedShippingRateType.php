@@ -12,10 +12,6 @@ use Nogrod\XMLClientRuntime\Func;
  *  weight surcharges) has been offered by the seller, such as package
  *  dimension and weight and packaging/handling costs. Also returned
  *  with the data for an item's transaction.
- *  <br><br>
- *  <span class="tablenote"><strong>Note:</strong>
- *  The <strong>CalculatedShippingRate</strong> container should only be used to specify values for the <strong>InternationalPackagingHandlingCosts</strong>, <strong>OriginatingPostalCode</strong>, and/or <strong>PackagingHandlingCosts</strong> fields. The rest of the fields in the <strong>CalculatedShippingRate</strong> container should now be specified in the <strong>ShippingPackageDetails</strong> container instead.
- *  </span>
  * XSD Type: CalculatedShippingRateType
  */
 class CalculatedShippingRateType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
@@ -50,6 +46,9 @@ class CalculatedShippingRateType implements \Sabre\Xml\XmlSerializable, \Sabre\X
      *  shipping services offered by the seller, package dimensions are required on
      *  list/relist/revise.
      *  For calculated shipping only.
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  If the listing only has one domestic shipping service and it is free shipping, the domestic package handling cost will be ignored and will not be applied to the listing.
+     *  </span>
      *
      * @var \Nogrod\eBaySDK\Trading\AmountType $packagingHandlingCosts
      */
@@ -65,16 +64,8 @@ class CalculatedShippingRateType implements \Sabre\Xml\XmlSerializable, \Sabre\X
     private $shippingIrregular = null;
 
     /**
-     * Fees a seller might assess for the shipping of the item (in addition to
-     *  whatever the shipping service might charge).
-     *  Any packaging/handling cost specified on input is added to each shipping
-     *  service on output.
+     * This field shows any package handling cost applied to international shipping. This cost will be in addition to any shipping cost applicable to each international shipping service option.
      *  <br/><br/>
-     *  If domestic and international calculated shipping is offered for an item and
-     *  if packaging/handling cost is specified only for domestic shipping, that cost
-     *  will be applied by eBay as the international packaging/handling cost. (To
-     *  specify a international packaging/handling cost, you must always specify a
-     *  domestic packaging/handling cost, even if it is 0.)
      *  For international calculated shipping only.
      *
      * @var \Nogrod\eBaySDK\Trading\AmountType $internationalPackagingHandlingCosts
@@ -153,6 +144,9 @@ class CalculatedShippingRateType implements \Sabre\Xml\XmlSerializable, \Sabre\X
      *  shipping services offered by the seller, package dimensions are required on
      *  list/relist/revise.
      *  For calculated shipping only.
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  If the listing only has one domestic shipping service and it is free shipping, the domestic package handling cost will be ignored and will not be applied to the listing.
+     *  </span>
      *
      * @return \Nogrod\eBaySDK\Trading\AmountType
      */
@@ -177,6 +171,9 @@ class CalculatedShippingRateType implements \Sabre\Xml\XmlSerializable, \Sabre\X
      *  shipping services offered by the seller, package dimensions are required on
      *  list/relist/revise.
      *  For calculated shipping only.
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  If the listing only has one domestic shipping service and it is free shipping, the domestic package handling cost will be ignored and will not be applied to the listing.
+     *  </span>
      *
      * @param \Nogrod\eBaySDK\Trading\AmountType $packagingHandlingCosts
      * @return self
@@ -220,16 +217,8 @@ class CalculatedShippingRateType implements \Sabre\Xml\XmlSerializable, \Sabre\X
     /**
      * Gets as internationalPackagingHandlingCosts
      *
-     * Fees a seller might assess for the shipping of the item (in addition to
-     *  whatever the shipping service might charge).
-     *  Any packaging/handling cost specified on input is added to each shipping
-     *  service on output.
+     * This field shows any package handling cost applied to international shipping. This cost will be in addition to any shipping cost applicable to each international shipping service option.
      *  <br/><br/>
-     *  If domestic and international calculated shipping is offered for an item and
-     *  if packaging/handling cost is specified only for domestic shipping, that cost
-     *  will be applied by eBay as the international packaging/handling cost. (To
-     *  specify a international packaging/handling cost, you must always specify a
-     *  domestic packaging/handling cost, even if it is 0.)
      *  For international calculated shipping only.
      *
      * @return \Nogrod\eBaySDK\Trading\AmountType
@@ -242,16 +231,8 @@ class CalculatedShippingRateType implements \Sabre\Xml\XmlSerializable, \Sabre\X
     /**
      * Sets a new internationalPackagingHandlingCosts
      *
-     * Fees a seller might assess for the shipping of the item (in addition to
-     *  whatever the shipping service might charge).
-     *  Any packaging/handling cost specified on input is added to each shipping
-     *  service on output.
+     * This field shows any package handling cost applied to international shipping. This cost will be in addition to any shipping cost applicable to each international shipping service option.
      *  <br/><br/>
-     *  If domestic and international calculated shipping is offered for an item and
-     *  if packaging/handling cost is specified only for domestic shipping, that cost
-     *  will be applied by eBay as the international packaging/handling cost. (To
-     *  specify a international packaging/handling cost, you must always specify a
-     *  domestic packaging/handling cost, even if it is 0.)
      *  For international calculated shipping only.
      *
      * @param \Nogrod\eBaySDK\Trading\AmountType $internationalPackagingHandlingCosts

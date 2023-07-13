@@ -1453,6 +1453,14 @@ class CurrencyCodeType
     public const VAL_ATS = 'ATS';
 
     /**
+     * Constant for 'RON' value.
+     *
+     * This value is a 3-digit code for the new Romanian leu, a currency used in
+     * Romania.
+     */
+    public const VAL_RON = 'RON';
+
+    /**
      * Constant for 'CustomCode' value.
      *
      * Reserved for internal or future use.

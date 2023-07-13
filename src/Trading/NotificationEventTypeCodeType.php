@@ -5,9 +5,7 @@ namespace Nogrod\eBaySDK\Trading;
 /**
  * Class representing NotificationEventTypeCodeType
  *
- * Enumerated type that contains the complete list of platform notifications that
- *  can be sent out to subscribed users, servers, or applications. Some notifications are
- *  only sent to buyers or sellers, and some are sent to both buyers and sellers.
+ * Enumerated type that contains the complete list of platform notifications that can be sent out to subscribed users, servers, or applications. Some notifications are only sent to buyers or sellers, and some are sent to both buyers and sellers.
  * XSD Type: NotificationEventTypeCodeType
  */
 class NotificationEventTypeCodeType
@@ -140,43 +138,45 @@ class NotificationEventTypeCodeType
     /**
      * Constant for 'BuyerResponseDispute' value.
      *
-     * This notification is sent to a subscribed seller each time a buyer responds to
-     * an Unpaid Item or Cancel Transaction case that the subscribed seller has opened
-     * up against the buyer.
+     * <span class="tablenote"><b>Note: </b> This notification is no longer supported
+     * since the Trading API no longer supports seller-initiated cancellation requests.
+     *  </span>
+     *  This notification is sent to a subscribed seller each time a buyer responds to
+     * a Cancel Transaction request.
      */
     public const VAL_BUYER_RESPONSE_DISPUTE = 'BuyerResponseDispute';
 
     /**
      * Constant for 'SellerOpenedDispute' value.
      *
-     * This notification is sent to a subscribed buyer if a seller opens up an Unpaid
-     * Item or Cancel Transaction case against the subscribed buyer.
-     *  <br><br>
-     *  If subscribed to by a buyer and when applicable, this notification will appear
-     * through the <b>GetDispute</b> call response.
+     * <span class="tablenote"><b>Note: </b> This notification is no longer supported
+     * since the Trading API no longer supports seller-initiated cancellation requests.
+     *  </span>
+     *  This notification is sent to a subscribed buyer if a seller initiates a Cancel
+     * Transaction request.
      */
     public const VAL_SELLER_OPENED_DISPUTE = 'SellerOpenedDispute';
 
     /**
      * Constant for 'SellerRespondedToDispute' value.
      *
-     * This notification is sent to a subscribed buyer each time a seller responds to
-     * an Item Not Received or (Item) Significantly Not As Described case that the
-     * subscribed buyer has opened up against the seller.
-     *  <br><br>
-     *  If subscribed to by a buyer and when applicable, this notification will appear
-     * in the <b>GetDispute</b> call response.
+     * <span class="tablenote"><b>Note: </b> This notification is no longer supported
+     * since dispute calls in the Trading API are deprecated.
+     *  </span>
+     *  This notification is sent to a subscribed buyer each time a seller responds to
+     * an Item Not Received or Return case that the subscribed buyer has opened up
+     * against the seller.
      */
     public const VAL_SELLER_RESPONDED_TO_DISPUTE = 'SellerRespondedToDispute';
 
     /**
      * Constant for 'SellerClosedDispute' value.
      *
-     * This notification is sent to the subscribed buyer and seller if the seller
-     * closes an Unpaid Item or Cancel Transaction case against the buyer.
-     *  <br><br>
-     *  If subscribed to by a buyer or seller, and when applicable, this notification
-     * will appear in the <b>GetDispute</b> call response.
+     * <span class="tablenote"><b>Note: </b> This notification is no longer supported
+     * since dispute calls in the Trading API are deprecated.
+     *  </span>
+     *  This notification is sent to the subscribed buyer and seller if the seller
+     * closes a Cancel Transaction request.
      */
     public const VAL_SELLER_CLOSED_DISPUTE = 'SellerClosedDispute';
 
@@ -284,10 +284,7 @@ class NotificationEventTypeCodeType
      * Constant for 'INRBuyerOpenedDispute' value.
      *
      * This notification is sent to a subscribed seller when a buyer opens an Item Not
-     * Received dispute against that seller.
-     *  <br><br>
-     *  If subscribed to by the seller and when applicable, this notification will
-     * appear in the <b>GetDispute</b> call response.
+     * Received case against that seller.
      */
     public const VAL_INRBUYER_OPENED_DISPUTE = 'INRBuyerOpenedDispute';
 
@@ -295,10 +292,7 @@ class NotificationEventTypeCodeType
      * Constant for 'INRBuyerRespondedToDispute' value.
      *
      * This notification is sent to a subscribed seller when a buyer responds to an
-     * Item Not Received dispute opened by that buyer.
-     *  <br><br>
-     *  If subscribed to by the seller and when applicable, this notification will
-     * appear in the <b>GetDispute</b> call response.
+     * Item Not Received case opened by that buyer.
      */
     public const VAL_INRBUYER_RESPONDED_TO_DISPUTE = 'INRBuyerRespondedToDispute';
 
@@ -306,10 +300,7 @@ class NotificationEventTypeCodeType
      * Constant for 'INRBuyerClosedDispute' value.
      *
      * This notification is sent to a subscribed seller when a buyer closes an Item Not
-     * Received dispute opened by that buyer.
-     *  <br><br>
-     *  If subscribed to by the seller and when applicable, this notification will
-     * appear in the <b>GetDispute</b> call response.
+     * Received case opened by that buyer.
      */
     public const VAL_INRBUYER_CLOSED_DISPUTE = 'INRBuyerClosedDispute';
 
@@ -317,10 +308,7 @@ class NotificationEventTypeCodeType
      * Constant for 'INRSellerRespondedToDispute' value.
      *
      * This notification is sent to a subscribed buyer when a seller responds to an
-     * Item Not Received dispute opened by the buyer.
-     *  <br><br>
-     *  If subscribed to by the buyer and when applicable, this notification will
-     * appear in the <b>GetDispute</b> call response.
+     * Item Not Received case opened by the buyer.
      */
     public const VAL_INRSELLER_RESPONDED_TO_DISPUTE = 'INRSellerRespondedToDispute';
 

@@ -44,7 +44,9 @@ class RequiredSellerActionCodeType
     /**
      * Constant for 'ResolvePPPIcase' value.
      *
-     * This value is deprecated.
+     * This value should no longer get returned as eBay buyers no longer have the
+     * option of creating Item not Received (INR) or Significantly not as Described
+     * (SNAD) disputes through PayPal's system.
      */
     public const VAL_RESOLVE_PPPICASE = 'ResolvePPPIcase';
 

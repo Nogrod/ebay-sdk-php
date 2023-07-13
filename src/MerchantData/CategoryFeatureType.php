@@ -405,6 +405,8 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * If this field is returned as <code>true</code>, the category supports the Best Price Guarantee feature on the Australia site. This field/feature is only applicable to Australia.
+     *  <br/><br/>
+     *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>PayPalBuyerProtectionEnabled</code>.
      *
      * @var bool $buyerGuaranteeEnabled
      */
@@ -2698,6 +2700,8 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as buyerGuaranteeEnabled
      *
      * If this field is returned as <code>true</code>, the category supports the Best Price Guarantee feature on the Australia site. This field/feature is only applicable to Australia.
+     *  <br/><br/>
+     *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>PayPalBuyerProtectionEnabled</code>.
      *
      * @return bool
      */
@@ -2710,6 +2714,8 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new buyerGuaranteeEnabled
      *
      * If this field is returned as <code>true</code>, the category supports the Best Price Guarantee feature on the Australia site. This field/feature is only applicable to Australia.
+     *  <br/><br/>
+     *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>PayPalBuyerProtectionEnabled</code>.
      *
      * @param bool $buyerGuaranteeEnabled
      * @return self

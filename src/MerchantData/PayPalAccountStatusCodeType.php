@@ -5,7 +5,10 @@ namespace Nogrod\eBaySDK\MerchantData;
 /**
  * Class representing PayPalAccountStatusCodeType
  *
- * This enumeration type is deprecated.
+ * Enumerated type that defines PayPal account states.
+ *  <br><br>
+ *  <span class="tablenote"><b>Note: </b> Although the <b>PayPalAccountStatus</b> field is still being returned for now, this field now has much less relevance since a seller's eBay account and PayPal account are no longer linked together, and a seller having a PayPal account is no longer a requirement.
+ *  </span>
  * XSD Type: PayPalAccountStatusCodeType
  */
 class PayPalAccountStatusCodeType
@@ -13,35 +16,37 @@ class PayPalAccountStatusCodeType
     /**
      * Constant for 'Active' value.
      *
-     * This enumeration value is deprecated.
+     * This enumeration value indicates that the user's PayPal account is active.
      */
     public const VAL_ACTIVE = 'Active';
 
     /**
      * Constant for 'Closed' value.
      *
-     * This enumeration value is deprecated.
+     * This enumeration value indicates that the user's PayPal account is closed.
      */
     public const VAL_CLOSED = 'Closed';
 
     /**
      * Constant for 'HighRestricted' value.
      *
-     * This enumeration value is deprecated.
+     * This enumeration value indicates that the user's PayPal account is in a highly
+     * restricted state.
      */
     public const VAL_HIGH_RESTRICTED = 'HighRestricted';
 
     /**
      * Constant for 'LowRestricted' value.
      *
-     * This enumeration value is deprecated.
+     * This enumeration value indicates that the user's PayPal account is in a low
+     * restricted state.
      */
     public const VAL_LOW_RESTRICTED = 'LowRestricted';
 
     /**
      * Constant for 'Locked' value.
      *
-     * This enumeration value is deprecated.
+     * This enumeration value indicates that the user's PayPal account is locked.
      */
     public const VAL_LOCKED = 'Locked';
 
@@ -55,21 +60,22 @@ class PayPalAccountStatusCodeType
     /**
      * Constant for 'WireOff' value.
      *
-     * This enumeration value is deprecated.
+     * This enumeration value indicates that the user's PayPal account is wired off.
      */
     public const VAL_WIRE_OFF = 'WireOff';
 
     /**
      * Constant for 'Unknown' value.
      *
-     * This enumeration value is deprecated.
+     * This enumeration value indicates that the state of the user's PayPal account is
+     * unknown.
      */
     public const VAL_UNKNOWN = 'Unknown';
 
     /**
      * Constant for 'Invalid' value.
      *
-     * This enumeration value is deprecated.
+     * This enumeration value indicates that the user's PayPal account is invalid.
      */
     public const VAL_INVALID = 'Invalid';
 

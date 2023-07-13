@@ -8,6 +8,12 @@ use Nogrod\XMLClientRuntime\Func;
  * Class representing DisputeArrayType
  *
  * Type used by the <b>DisputeArray</b> container that is returned in the response of the <b>GetUserDisputes</b> call. The <b>DisputeArray</b> container holds an array of one or more Unpaid Item cases that match the filter criteria in the call request.
+ *  <br/><br/>
+ *  <span class="tablenote"><strong>Note:</strong>
+ *  The <b>GetUserDisputes</b> call now only retrieves Unpaid Item cases, and is no longer used to retrieve Item not Received (INR) disputes created through PayPal, since this is no longer an option for eBay buyers. eBay buyers must create an INR case through eBay's Resolution Center, and these calls do not support eBay Money Back Guarantee cases.
+ *  <br><br>
+ *  To respond to an eBay Money Back Guarantee case, the seller should use the <a href="https://developer.ebay.com/Devzone/post-order/index.html" target="_blank">Case Management calls</a> of the <b>Post-Order API</b> or manage/respond to cases manually through the eBay Resolution Center.
+ *  </span>
  * XSD Type: DisputeArrayType
  */
 class DisputeArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable

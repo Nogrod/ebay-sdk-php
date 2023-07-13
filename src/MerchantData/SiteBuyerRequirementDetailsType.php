@@ -18,7 +18,9 @@ use Nogrod\XMLClientRuntime\Func;
 class SiteBuyerRequirementDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
     /**
-     * This field is deprecated.
+     * <span class="tablenote"><b>Note: </b>
+     *  Although this field is currently still returned (always as <code>false</code>), it is no longer applicable since having an eBay account linked to a PayPal account is no longer a requirement of any eBay user.
+     *  </span>
      *
      * @var bool $linkedPayPalAccount
      */
@@ -90,7 +92,9 @@ class SiteBuyerRequirementDetailsType implements \Sabre\Xml\XmlSerializable, \Sa
     /**
      * Gets as linkedPayPalAccount
      *
-     * This field is deprecated.
+     * <span class="tablenote"><b>Note: </b>
+     *  Although this field is currently still returned (always as <code>false</code>), it is no longer applicable since having an eBay account linked to a PayPal account is no longer a requirement of any eBay user.
+     *  </span>
      *
      * @return bool
      */
@@ -102,7 +106,9 @@ class SiteBuyerRequirementDetailsType implements \Sabre\Xml\XmlSerializable, \Sa
     /**
      * Sets a new linkedPayPalAccount
      *
-     * This field is deprecated.
+     * <span class="tablenote"><b>Note: </b>
+     *  Although this field is currently still returned (always as <code>false</code>), it is no longer applicable since having an eBay account linked to a PayPal account is no longer a requirement of any eBay user.
+     *  </span>
      *
      * @param bool $linkedPayPalAccount
      * @return self

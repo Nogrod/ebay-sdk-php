@@ -13,17 +13,14 @@ use Nogrod\XMLClientRuntime\Func;
 class FulfillmentType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
     /**
-     * The value returned in this field indicates the party that is handling fulfillment of the order line item. <br> <br>
-     *  For eBay Vault scenarios, for the <strong>GetOrders</strong>, <strong>GetOrderTransactions</strong>, and <strong>GetItemTransactions</strong> calls, this value is returned as <code>EBAY</code> for either of the following fulfillment options:<ul><li>Vault to Vault</li><li>Vault to Buyer</li></ul></span>
+     * The value returned in this field indicates the party that is handling fulfillment of the order line item.
      *
      * @var string $fulfillmentBy
      */
     private $fulfillmentBy = null;
 
     /**
-     * The value in this field identifies the warehouse where the order line item is located. <br> <br>
-     *  For eBay Vault scenarios: <strong>GetOrders</strong>, <strong>GetOrderTransactions</strong>, and <strong>GetItemTransactions</strong> calls, if <b>FulfillmentBy</b> is returned as <code>EBAY</code>, <strong>FulfillmentRefId</strong> is not returned.
-     *  </span>
+     * The value in this field identifies the warehouse where the order line item is located.
      *
      * @var string $fulfillmentRefId
      */
@@ -32,8 +29,7 @@ class FulfillmentType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     /**
      * Gets as fulfillmentBy
      *
-     * The value returned in this field indicates the party that is handling fulfillment of the order line item. <br> <br>
-     *  For eBay Vault scenarios, for the <strong>GetOrders</strong>, <strong>GetOrderTransactions</strong>, and <strong>GetItemTransactions</strong> calls, this value is returned as <code>EBAY</code> for either of the following fulfillment options:<ul><li>Vault to Vault</li><li>Vault to Buyer</li></ul></span>
+     * The value returned in this field indicates the party that is handling fulfillment of the order line item.
      *
      * @return string
      */
@@ -45,8 +41,7 @@ class FulfillmentType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     /**
      * Sets a new fulfillmentBy
      *
-     * The value returned in this field indicates the party that is handling fulfillment of the order line item. <br> <br>
-     *  For eBay Vault scenarios, for the <strong>GetOrders</strong>, <strong>GetOrderTransactions</strong>, and <strong>GetItemTransactions</strong> calls, this value is returned as <code>EBAY</code> for either of the following fulfillment options:<ul><li>Vault to Vault</li><li>Vault to Buyer</li></ul></span>
+     * The value returned in this field indicates the party that is handling fulfillment of the order line item.
      *
      * @param string $fulfillmentBy
      * @return self
@@ -60,9 +55,7 @@ class FulfillmentType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     /**
      * Gets as fulfillmentRefId
      *
-     * The value in this field identifies the warehouse where the order line item is located. <br> <br>
-     *  For eBay Vault scenarios: <strong>GetOrders</strong>, <strong>GetOrderTransactions</strong>, and <strong>GetItemTransactions</strong> calls, if <b>FulfillmentBy</b> is returned as <code>EBAY</code>, <strong>FulfillmentRefId</strong> is not returned.
-     *  </span>
+     * The value in this field identifies the warehouse where the order line item is located.
      *
      * @return string
      */
@@ -74,9 +67,7 @@ class FulfillmentType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     /**
      * Sets a new fulfillmentRefId
      *
-     * The value in this field identifies the warehouse where the order line item is located. <br> <br>
-     *  For eBay Vault scenarios: <strong>GetOrders</strong>, <strong>GetOrderTransactions</strong>, and <strong>GetItemTransactions</strong> calls, if <b>FulfillmentBy</b> is returned as <code>EBAY</code>, <strong>FulfillmentRefId</strong> is not returned.
-     *  </span>
+     * The value in this field identifies the warehouse where the order line item is located.
      *
      * @param string $fulfillmentRefId
      * @return self

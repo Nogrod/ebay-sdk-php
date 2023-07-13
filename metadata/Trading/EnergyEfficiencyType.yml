@@ -1,0 +1,40 @@
+Nogrod\eBaySDK\Trading\EnergyEfficiencyType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        imageURL:
+            expose: true
+            access_type: public_method
+            serialized_name: ImageURL
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getImageURL
+                setter: setImageURL
+            type: string
+        imageDescription:
+            expose: true
+            access_type: public_method
+            serialized_name: ImageDescription
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getImageDescription
+                setter: setImageDescription
+            type: string
+        productInformationsheet:
+            expose: true
+            access_type: public_method
+            serialized_name: ProductInformationsheet
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getProductInformationsheet
+                setter: setProductInformationsheet
+            type: string

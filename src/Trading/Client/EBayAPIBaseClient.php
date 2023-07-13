@@ -8,28 +8,6 @@ namespace Nogrod\eBaySDK\Trading\Client;
 class EBayAPIBaseClient extends \Nogrod\XMLClientRuntime\Client
 {
     /**
-     * Call AddDispute
-     *
-     * @param \Nogrod\eBaySDK\Trading\AddDisputeRequest $addDisputeRequest
-     * @return \Nogrod\eBaySDK\Trading\AddDisputeResponse
-     */
-    public function addDispute(\Nogrod\eBaySDK\Trading\AddDisputeRequest $addDisputeRequest): \Nogrod\eBaySDK\Trading\AddDisputeResponse
-    {
-        return $this->call('AddDispute', 'Nogrod\eBaySDK\Trading\AddDisputeResponse', $addDisputeRequest);
-    }
-
-    /**
-     * Call AddDisputeResponse
-     *
-     * @param \Nogrod\eBaySDK\Trading\AddDisputeResponseRequest $addDisputeResponseRequest
-     * @return \Nogrod\eBaySDK\Trading\AddDisputeResponseResponse
-     */
-    public function addDisputeResponse(\Nogrod\eBaySDK\Trading\AddDisputeResponseRequest $addDisputeResponseRequest): \Nogrod\eBaySDK\Trading\AddDisputeResponseResponse
-    {
-        return $this->call('AddDisputeResponse', 'Nogrod\eBaySDK\Trading\AddDisputeResponseResponse', $addDisputeResponseRequest);
-    }
-
-    /**
      * Call AddFixedPriceItem
      *
      * @param \Nogrod\eBaySDK\Trading\AddFixedPriceItemRequest $addFixedPriceItemRequest
@@ -140,17 +118,6 @@ class EBayAPIBaseClient extends \Nogrod\XMLClientRuntime\Client
     }
 
     /**
-     * Call AddTransactionConfirmationItem
-     *
-     * @param \Nogrod\eBaySDK\Trading\AddTransactionConfirmationItemRequest $addTransactionConfirmationItemRequest
-     * @return \Nogrod\eBaySDK\Trading\AddTransactionConfirmationItemResponse
-     */
-    public function addTransactionConfirmationItem(\Nogrod\eBaySDK\Trading\AddTransactionConfirmationItemRequest $addTransactionConfirmationItemRequest): \Nogrod\eBaySDK\Trading\AddTransactionConfirmationItemResponse
-    {
-        return $this->call('AddTransactionConfirmationItem', 'Nogrod\eBaySDK\Trading\AddTransactionConfirmationItemResponse', $addTransactionConfirmationItemRequest);
-    }
-
-    /**
      * Call CompleteSale
      *
      * @param \Nogrod\eBaySDK\Trading\CompleteSaleRequest $completeSaleRequest
@@ -181,17 +148,6 @@ class EBayAPIBaseClient extends \Nogrod\XMLClientRuntime\Client
     public function deleteMyMessages(\Nogrod\eBaySDK\Trading\DeleteMyMessagesRequest $deleteMyMessagesRequest): \Nogrod\eBaySDK\Trading\DeleteMyMessagesResponse
     {
         return $this->call('DeleteMyMessages', 'Nogrod\eBaySDK\Trading\DeleteMyMessagesResponse', $deleteMyMessagesRequest);
-    }
-
-    /**
-     * Call DisableUnpaidItemAssistance
-     *
-     * @param \Nogrod\eBaySDK\Trading\DisableUnpaidItemAssistanceRequest $disableUnpaidItemAssistanceRequest
-     * @return \Nogrod\eBaySDK\Trading\DisableUnpaidItemAssistanceResponse
-     */
-    public function disableUnpaidItemAssistance(\Nogrod\eBaySDK\Trading\DisableUnpaidItemAssistanceRequest $disableUnpaidItemAssistanceRequest): \Nogrod\eBaySDK\Trading\DisableUnpaidItemAssistanceResponse
-    {
-        return $this->call('DisableUnpaidItemAssistance', 'Nogrod\eBaySDK\Trading\DisableUnpaidItemAssistanceResponse', $disableUnpaidItemAssistanceRequest);
     }
 
     /**
@@ -283,17 +239,6 @@ class EBayAPIBaseClient extends \Nogrod\XMLClientRuntime\Client
     }
 
     /**
-     * Call GetApiAccessRules
-     *
-     * @param \Nogrod\eBaySDK\Trading\GetApiAccessRulesRequest $getApiAccessRulesRequest
-     * @return \Nogrod\eBaySDK\Trading\GetApiAccessRulesResponse
-     */
-    public function getApiAccessRules(\Nogrod\eBaySDK\Trading\GetApiAccessRulesRequest $getApiAccessRulesRequest): \Nogrod\eBaySDK\Trading\GetApiAccessRulesResponse
-    {
-        return $this->call('GetApiAccessRules', 'Nogrod\eBaySDK\Trading\GetApiAccessRulesResponse', $getApiAccessRulesRequest);
-    }
-
-    /**
      * Call GetBestOffers
      *
      * @param \Nogrod\eBaySDK\Trading\GetBestOffersRequest $getBestOffersRequest
@@ -382,17 +327,6 @@ class EBayAPIBaseClient extends \Nogrod\XMLClientRuntime\Client
     }
 
     /**
-     * Call GetContextualKeywords
-     *
-     * @param \Nogrod\eBaySDK\Trading\GetContextualKeywordsRequest $getContextualKeywordsRequest
-     * @return \Nogrod\eBaySDK\Trading\GetContextualKeywordsResponse
-     */
-    public function getContextualKeywords(\Nogrod\eBaySDK\Trading\GetContextualKeywordsRequest $getContextualKeywordsRequest): \Nogrod\eBaySDK\Trading\GetContextualKeywordsResponse
-    {
-        return $this->call('GetContextualKeywords', 'Nogrod\eBaySDK\Trading\GetContextualKeywordsResponse', $getContextualKeywordsRequest);
-    }
-
-    /**
      * Call GetDescriptionTemplates
      *
      * @param \Nogrod\eBaySDK\Trading\GetDescriptionTemplatesRequest $getDescriptionTemplatesRequest
@@ -401,17 +335,6 @@ class EBayAPIBaseClient extends \Nogrod\XMLClientRuntime\Client
     public function getDescriptionTemplates(\Nogrod\eBaySDK\Trading\GetDescriptionTemplatesRequest $getDescriptionTemplatesRequest): \Nogrod\eBaySDK\Trading\GetDescriptionTemplatesResponse
     {
         return $this->call('GetDescriptionTemplates', 'Nogrod\eBaySDK\Trading\GetDescriptionTemplatesResponse', $getDescriptionTemplatesRequest);
-    }
-
-    /**
-     * Call GetDispute
-     *
-     * @param \Nogrod\eBaySDK\Trading\GetDisputeRequest $getDisputeRequest
-     * @return \Nogrod\eBaySDK\Trading\GetDisputeResponse
-     */
-    public function getDispute(\Nogrod\eBaySDK\Trading\GetDisputeRequest $getDisputeRequest): \Nogrod\eBaySDK\Trading\GetDisputeResponse
-    {
-        return $this->call('GetDispute', 'Nogrod\eBaySDK\Trading\GetDisputeResponse', $getDisputeRequest);
     }
 
     /**
@@ -723,17 +646,6 @@ class EBayAPIBaseClient extends \Nogrod\XMLClientRuntime\Client
     }
 
     /**
-     * Call GetUserDisputes
-     *
-     * @param \Nogrod\eBaySDK\Trading\GetUserDisputesRequest $getUserDisputesRequest
-     * @return \Nogrod\eBaySDK\Trading\GetUserDisputesResponse
-     */
-    public function getUserDisputes(\Nogrod\eBaySDK\Trading\GetUserDisputesRequest $getUserDisputesRequest): \Nogrod\eBaySDK\Trading\GetUserDisputesResponse
-    {
-        return $this->call('GetUserDisputes', 'Nogrod\eBaySDK\Trading\GetUserDisputesResponse', $getUserDisputesRequest);
-    }
-
-    /**
      * Call GetUserPreferences
      *
      * @param \Nogrod\eBaySDK\Trading\GetUserPreferencesRequest $getUserPreferencesRequest
@@ -929,17 +841,6 @@ class EBayAPIBaseClient extends \Nogrod\XMLClientRuntime\Client
     public function revokeToken(\Nogrod\eBaySDK\Trading\RevokeTokenRequest $revokeTokenRequest): \Nogrod\eBaySDK\Trading\RevokeTokenResponse
     {
         return $this->call('RevokeToken', 'Nogrod\eBaySDK\Trading\RevokeTokenResponse', $revokeTokenRequest);
-    }
-
-    /**
-     * Call SellerReverseDispute
-     *
-     * @param \Nogrod\eBaySDK\Trading\SellerReverseDisputeRequest $sellerReverseDisputeRequest
-     * @return \Nogrod\eBaySDK\Trading\SellerReverseDisputeResponse
-     */
-    public function sellerReverseDispute(\Nogrod\eBaySDK\Trading\SellerReverseDisputeRequest $sellerReverseDisputeRequest): \Nogrod\eBaySDK\Trading\SellerReverseDisputeResponse
-    {
-        return $this->call('SellerReverseDispute', 'Nogrod\eBaySDK\Trading\SellerReverseDisputeResponse', $sellerReverseDisputeRequest);
     }
 
     /**

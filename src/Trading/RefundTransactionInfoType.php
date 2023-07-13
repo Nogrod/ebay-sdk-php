@@ -63,10 +63,12 @@ class RefundTransactionInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     private $refundTime = null;
 
     /**
-     * This dollar value is the amount of the refund to the buyer for this specific refund transaction. This field is not returned if the merchant issued the buyer a store credit instead of a refund (RefundType=STORE_CREDIT).
-     *  <br/><br/>
+     * This dollar value is the amount of the refund to the buyer for this specific refund transaction. This field is not returned for In-Store Pick or Click and Collect orders where the merchant issued the buyer a store credit instead of a refund (RefundType=STORE_CREDIT).
+     *  <br/>
      *  <span class="tablenote">
-     *  <strong>Note:</strong> A seller must be eligible for the In-Store Pickup feature to list an item that is eligible for In-Store Pickup. At this time, the In-Store Pickup feature is generally only available to large retail merchants in US, and can only be applied to multi-quantity, fixed-price listings. Merchants/developers can test In-Store Pickup functionality in the Sandbox environment, including listing items enabled with the In-Store Pickup feature, creating store locations and adding inventory to these stores using the Inventory Management API, and informing eBay of In-Store Pickup status changes using the Inbound Notifications API.
+     *  <strong>Note:</strong> For <strong>GetItemTransactions</strong>, <strong>GetSellerTransactions</strong>, and <strong>GetOrderTransactions</strong>, the final value fee amount deducted from the seller's payout funds for the sale is not included in this field, which means that the amount in this field may not reflect the buyer's actual refund amount.
+     *  <br/><br/>
+     *  The logic will remain the same for <strong>GetItemTransactions</strong>, <strong>GetSellerTransactions</strong>, and <strong>GetOrderTransactions</strong>, but the <strong>GetOrders</strong> call will be updated to include the the seller's final value fee amount in this field, so the amount in this field should match the buyer's actual refund amount. To pick up this new logic in <strong>GetOrders</strong> responses, a Trading WSDL version of 1311 or above must be used, or the user can use an older Trading WSDL version but include and set the <strong>X-EBAY-API-COMPATIBILITY-LEVEL</strong> header value to 1311 or above.
      *  </span>
      *
      * @var \Nogrod\eBaySDK\Trading\AmountType $refundAmount
@@ -240,10 +242,12 @@ class RefundTransactionInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     /**
      * Gets as refundAmount
      *
-     * This dollar value is the amount of the refund to the buyer for this specific refund transaction. This field is not returned if the merchant issued the buyer a store credit instead of a refund (RefundType=STORE_CREDIT).
-     *  <br/><br/>
+     * This dollar value is the amount of the refund to the buyer for this specific refund transaction. This field is not returned for In-Store Pick or Click and Collect orders where the merchant issued the buyer a store credit instead of a refund (RefundType=STORE_CREDIT).
+     *  <br/>
      *  <span class="tablenote">
-     *  <strong>Note:</strong> A seller must be eligible for the In-Store Pickup feature to list an item that is eligible for In-Store Pickup. At this time, the In-Store Pickup feature is generally only available to large retail merchants in US, and can only be applied to multi-quantity, fixed-price listings. Merchants/developers can test In-Store Pickup functionality in the Sandbox environment, including listing items enabled with the In-Store Pickup feature, creating store locations and adding inventory to these stores using the Inventory Management API, and informing eBay of In-Store Pickup status changes using the Inbound Notifications API.
+     *  <strong>Note:</strong> For <strong>GetItemTransactions</strong>, <strong>GetSellerTransactions</strong>, and <strong>GetOrderTransactions</strong>, the final value fee amount deducted from the seller's payout funds for the sale is not included in this field, which means that the amount in this field may not reflect the buyer's actual refund amount.
+     *  <br/><br/>
+     *  The logic will remain the same for <strong>GetItemTransactions</strong>, <strong>GetSellerTransactions</strong>, and <strong>GetOrderTransactions</strong>, but the <strong>GetOrders</strong> call will be updated to include the the seller's final value fee amount in this field, so the amount in this field should match the buyer's actual refund amount. To pick up this new logic in <strong>GetOrders</strong> responses, a Trading WSDL version of 1311 or above must be used, or the user can use an older Trading WSDL version but include and set the <strong>X-EBAY-API-COMPATIBILITY-LEVEL</strong> header value to 1311 or above.
      *  </span>
      *
      * @return \Nogrod\eBaySDK\Trading\AmountType
@@ -256,10 +260,12 @@ class RefundTransactionInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     /**
      * Sets a new refundAmount
      *
-     * This dollar value is the amount of the refund to the buyer for this specific refund transaction. This field is not returned if the merchant issued the buyer a store credit instead of a refund (RefundType=STORE_CREDIT).
-     *  <br/><br/>
+     * This dollar value is the amount of the refund to the buyer for this specific refund transaction. This field is not returned for In-Store Pick or Click and Collect orders where the merchant issued the buyer a store credit instead of a refund (RefundType=STORE_CREDIT).
+     *  <br/>
      *  <span class="tablenote">
-     *  <strong>Note:</strong> A seller must be eligible for the In-Store Pickup feature to list an item that is eligible for In-Store Pickup. At this time, the In-Store Pickup feature is generally only available to large retail merchants in US, and can only be applied to multi-quantity, fixed-price listings. Merchants/developers can test In-Store Pickup functionality in the Sandbox environment, including listing items enabled with the In-Store Pickup feature, creating store locations and adding inventory to these stores using the Inventory Management API, and informing eBay of In-Store Pickup status changes using the Inbound Notifications API.
+     *  <strong>Note:</strong> For <strong>GetItemTransactions</strong>, <strong>GetSellerTransactions</strong>, and <strong>GetOrderTransactions</strong>, the final value fee amount deducted from the seller's payout funds for the sale is not included in this field, which means that the amount in this field may not reflect the buyer's actual refund amount.
+     *  <br/><br/>
+     *  The logic will remain the same for <strong>GetItemTransactions</strong>, <strong>GetSellerTransactions</strong>, and <strong>GetOrderTransactions</strong>, but the <strong>GetOrders</strong> call will be updated to include the the seller's final value fee amount in this field, so the amount in this field should match the buyer's actual refund amount. To pick up this new logic in <strong>GetOrders</strong> responses, a Trading WSDL version of 1311 or above must be used, or the user can use an older Trading WSDL version but include and set the <strong>X-EBAY-API-COMPATIBILITY-LEVEL</strong> header value to 1311 or above.
      *  </span>
      *
      * @param \Nogrod\eBaySDK\Trading\AmountType $refundAmount

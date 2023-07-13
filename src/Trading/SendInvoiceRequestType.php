@@ -122,7 +122,11 @@ class SendInvoiceRequestType extends AbstractRequestType
     private $emailCopyToSeller = null;
 
     /**
-     * This dollar value indicates the money due from the buyer upon delivery of the item.
+     * <span class="tablenote"><strong>Note:</strong>
+     *  This field was deprecated since COD is no longer a supported payment method on any marketplace. This field will be removed from the Trading WSDL and docs on July 17, 2023.
+     *  </span>
+     *  <br>
+     *  This dollar value indicates the money due from the buyer upon delivery of the item.
      *  <br><br>
      *  This field should only be specified in the <b>SendInvoice</b> request if 'COD'
      *  (cash-on-delivery) was the payment method selected by the buyer and it is included
@@ -656,7 +660,11 @@ class SendInvoiceRequestType extends AbstractRequestType
     /**
      * Gets as cODCost
      *
-     * This dollar value indicates the money due from the buyer upon delivery of the item.
+     * <span class="tablenote"><strong>Note:</strong>
+     *  This field was deprecated since COD is no longer a supported payment method on any marketplace. This field will be removed from the Trading WSDL and docs on July 17, 2023.
+     *  </span>
+     *  <br>
+     *  This dollar value indicates the money due from the buyer upon delivery of the item.
      *  <br><br>
      *  This field should only be specified in the <b>SendInvoice</b> request if 'COD'
      *  (cash-on-delivery) was the payment method selected by the buyer and it is included
@@ -672,7 +680,11 @@ class SendInvoiceRequestType extends AbstractRequestType
     /**
      * Sets a new cODCost
      *
-     * This dollar value indicates the money due from the buyer upon delivery of the item.
+     * <span class="tablenote"><strong>Note:</strong>
+     *  This field was deprecated since COD is no longer a supported payment method on any marketplace. This field will be removed from the Trading WSDL and docs on July 17, 2023.
+     *  </span>
+     *  <br>
+     *  This dollar value indicates the money due from the buyer upon delivery of the item.
      *  <br><br>
      *  This field should only be specified in the <b>SendInvoice</b> request if 'COD'
      *  (cash-on-delivery) was the payment method selected by the buyer and it is included

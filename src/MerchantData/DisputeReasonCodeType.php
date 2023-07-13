@@ -11,6 +11,12 @@ namespace Nogrod\eBaySDK\MerchantData;
  *  in the <b>GetUserDisputes</b> and <b>GetDispute</b> calls.
  *  The <b>DisputeReason</b> value will dictate which
  *  <b>DisputeExplanation</b> values that can be used/returned.
+ *  <br/><br/>
+ *  <span class="tablenote"><strong>Note:</strong>
+ *  The Dispute calls of the Trading API now only support Unpaid Item cases, and no longer support Item not Received (INR) or Significantly not as Described (SNAD) disputes created through PayPal, since this is no longer an option for eBay buyers. eBay buyers must create an INR case through eBay's Resolution Center, and these calls do not support eBay Money Back Guarantee cases.
+ *  <br><br>
+ *  To respond to an eBay Money Back Guarantee case, the seller should use the <a href="https://developer.ebay.com/Devzone/post-order/index.html" target="_blank">Case Management calls</a> of the <b>Post-Order API</b> or manage/respond to cases manually through the eBay Resolution Center.
+ *  </span>
  * XSD Type: DisputeReasonCodeType
  */
 class DisputeReasonCodeType

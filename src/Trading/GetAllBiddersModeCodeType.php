@@ -35,7 +35,8 @@ class GetAllBiddersModeCodeType
      * This enumeration value is used if the user wants to retrieve all non-winning
      * bidders, for a recently-ended auction listing, who are eligible for, and who
      * accept Second Chance Offers. This value can be only be used by the seller of the
-     * item. See <"http://pages.ebay.com/help/sell/second_chance_offer.html#when"
+     * item. See <a
+     * href="http://pages.ebay.com/help/sell/second_chance_offer.html#when"
      * target="_blank">When to use a Second Chance Offer</a> for more information on
      * Second Chance Offers.
      */

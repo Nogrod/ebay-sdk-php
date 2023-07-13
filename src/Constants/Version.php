@@ -7,15 +7,11 @@ namespace Nogrod\eBaySDK\Constants;
 
 class Version
 {
-    public const BULKDATAEXCHANGE = '1.5.0';
-
-    public const FILETRANSFER = '1.1.0';
-
     public const FINDING = '1.13.0';
 
-    public const SHOPPING = '1247';
+    public const SHOPPING = '1293';
 
-    public const TRADING = '1285';
+    public const TRADING = '1319';
 
     public const BUSINESSPOLICIESMANAGEMENT = '1.0.0';
 }

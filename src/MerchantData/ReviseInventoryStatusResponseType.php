@@ -16,7 +16,7 @@ class ReviseInventoryStatusResponseType extends AbstractResponseType
      * One <b>InventoryStatus</b> container is returned for each item or item variation that was revised. Whether updating the price and/or quantity of a single-variation listing or a specific variation within a multiple-variation listing, the limit of items or item variations that can be modified with one call is four.
      *  <br>
      *  <br>
-     *  Note that the <b>SKU</b> field is returned as an empty tag if it is not defined for a single-variation listing.
+     *  Note that all four elements of this container are returned even if these fields would not supplied in the call request. The <b>SKU</b> field is returned as an empty tag if it is not defined for a single-variation listing.
      *
      * @var \Nogrod\eBaySDK\MerchantData\InventoryStatusType[] $inventoryStatus
      */
@@ -42,7 +42,7 @@ class ReviseInventoryStatusResponseType extends AbstractResponseType
      * One <b>InventoryStatus</b> container is returned for each item or item variation that was revised. Whether updating the price and/or quantity of a single-variation listing or a specific variation within a multiple-variation listing, the limit of items or item variations that can be modified with one call is four.
      *  <br>
      *  <br>
-     *  Note that the <b>SKU</b> field is returned as an empty tag if it is not defined for a single-variation listing.
+     *  Note that all four elements of this container are returned even if these fields would not supplied in the call request. The <b>SKU</b> field is returned as an empty tag if it is not defined for a single-variation listing.
      *
      * @return self
      * @param \Nogrod\eBaySDK\MerchantData\InventoryStatusType $inventoryStatus
@@ -59,7 +59,7 @@ class ReviseInventoryStatusResponseType extends AbstractResponseType
      * One <b>InventoryStatus</b> container is returned for each item or item variation that was revised. Whether updating the price and/or quantity of a single-variation listing or a specific variation within a multiple-variation listing, the limit of items or item variations that can be modified with one call is four.
      *  <br>
      *  <br>
-     *  Note that the <b>SKU</b> field is returned as an empty tag if it is not defined for a single-variation listing.
+     *  Note that all four elements of this container are returned even if these fields would not supplied in the call request. The <b>SKU</b> field is returned as an empty tag if it is not defined for a single-variation listing.
      *
      * @param int|string $index
      * @return bool
@@ -75,7 +75,7 @@ class ReviseInventoryStatusResponseType extends AbstractResponseType
      * One <b>InventoryStatus</b> container is returned for each item or item variation that was revised. Whether updating the price and/or quantity of a single-variation listing or a specific variation within a multiple-variation listing, the limit of items or item variations that can be modified with one call is four.
      *  <br>
      *  <br>
-     *  Note that the <b>SKU</b> field is returned as an empty tag if it is not defined for a single-variation listing.
+     *  Note that all four elements of this container are returned even if these fields would not supplied in the call request. The <b>SKU</b> field is returned as an empty tag if it is not defined for a single-variation listing.
      *
      * @param int|string $index
      * @return void
@@ -91,7 +91,7 @@ class ReviseInventoryStatusResponseType extends AbstractResponseType
      * One <b>InventoryStatus</b> container is returned for each item or item variation that was revised. Whether updating the price and/or quantity of a single-variation listing or a specific variation within a multiple-variation listing, the limit of items or item variations that can be modified with one call is four.
      *  <br>
      *  <br>
-     *  Note that the <b>SKU</b> field is returned as an empty tag if it is not defined for a single-variation listing.
+     *  Note that all four elements of this container are returned even if these fields would not supplied in the call request. The <b>SKU</b> field is returned as an empty tag if it is not defined for a single-variation listing.
      *
      * @return \Nogrod\eBaySDK\MerchantData\InventoryStatusType[]
      */
@@ -106,7 +106,7 @@ class ReviseInventoryStatusResponseType extends AbstractResponseType
      * One <b>InventoryStatus</b> container is returned for each item or item variation that was revised. Whether updating the price and/or quantity of a single-variation listing or a specific variation within a multiple-variation listing, the limit of items or item variations that can be modified with one call is four.
      *  <br>
      *  <br>
-     *  Note that the <b>SKU</b> field is returned as an empty tag if it is not defined for a single-variation listing.
+     *  Note that all four elements of this container are returned even if these fields would not supplied in the call request. The <b>SKU</b> field is returned as an empty tag if it is not defined for a single-variation listing.
      *
      * @param \Nogrod\eBaySDK\MerchantData\InventoryStatusType[] $inventoryStatus
      * @return self

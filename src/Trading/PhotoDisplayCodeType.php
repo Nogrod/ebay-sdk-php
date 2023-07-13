@@ -5,7 +5,10 @@ namespace Nogrod\eBaySDK\Trading;
 /**
  * Class representing PhotoDisplayCodeType
  *
- * Specifies the type of image display used in a listing. Some options are
+ * <span class="tablenote"><b>Note: </b> This type is deprecated and will be removed from WSDL and docs on July 31, 2023. All sellers on all eBay marketplaces now get all picture features and functionality (like Super Size/Zoom) at no extra cost, so the <b>PictureDetails.PhotoDisplay</b> field in Add/Revise/Relist/Verify calls is no longer required to be included in request payload.
+ *  </span>
+ *  <br>
+ *  Specifies the type of image display used in a listing. Some options are
  *  only available if images are hosted through eBay Picture Services (EPS).
  * XSD Type: PhotoDisplayCodeType
  */

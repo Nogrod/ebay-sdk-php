@@ -221,9 +221,7 @@ class AccountDetailEntryCodeType
      * Constant for 'CreditInsertion' value.
      *
      * This enumeration value indicates that the account entry is an insertion fee
-     * credit issued by eBay to the seller. If a listed item does not sell or results
-     * in an Unpaid Item case/dispute, the seller can relist the item with no
-     * additional charge.
+     * credit issued by eBay to the seller.
      */
     public const VAL_CREDIT_INSERTION = 'CreditInsertion';
 
@@ -682,10 +680,7 @@ class AccountDetailEntryCodeType
      * Constant for 'FVFCreditReversal' value.
      *
      * This enumeration value indicates that the account entry is a reversal of a Final
-     * Value Fee credit, resulting in the fee again being charged to the seller. The
-     * Final Value Fee can be credited as a result of an Unpaid Item Dispute, but if
-     * the buyer ultimately pays for the line item, the Final Value Fee will apply once
-     * again.
+     * Value Fee credit, resulting in the fee again being charged to the seller.
      */
     public const VAL_FVFCREDIT_REVERSAL = 'FVFCreditReversal';
 
@@ -1187,9 +1182,7 @@ class AccountDetailEntryCodeType
      * Constant for 'CreditInsertionFixedPrice' value.
      *
      * This enumeration value indicates that the account entry is an insertion
-     *  fee credit for a fixed-price listing. If a listed item does not sell or results
-     * in an Unpaid Item case/dispute, the seller can relist the item with no
-     * additional charge.
+     *  fee credit for a fixed-price listing.
      */
     public const VAL_CREDIT_INSERTION_FIXED_PRICE = 'CreditInsertionFixedPrice';
 
@@ -2570,7 +2563,7 @@ class AccountDetailEntryCodeType
      * This enumeration value indicates the invoice credit is for a Final Value Fee
      * (for item cost) that was charged to the seller's account after a buyer created a
      * 'significantly not as described' (SNAD) case against the seller, but the seller
-     * won the dispute.
+     * won the case.
      */
     public const VAL_SNAD_OUTLIER_FINAL_VALUE_FEE_CREDIT = 'SnadOutlierFinalValueFeeCredit';
 
@@ -2580,7 +2573,7 @@ class AccountDetailEntryCodeType
      * This enumeration value indicates the invoice credit is for a Final Value Fee
      * (for shipping cost) that was charged to the seller's account after a buyer
      * created a 'significantly not as described' (SNAD) case against the seller, but
-     * the seller won the dispute.
+     * the seller won the case.
      */
     public const VAL_SNAD_OUTLIER_FINAL_VALUE_FEE_ON_SHIPPING_CREDIT = 'SnadOutlierFinalValueFeeOnShippingCredit';
 
@@ -3132,10 +3125,143 @@ class AccountDetailEntryCodeType
     /**
      * Constant for 'OffsiteAdsFeeCredit' value.
      *
-     * This enumeration value indicates that the seller was issue a credit against a
+     * This enumeration value indicates that the seller was issued a credit against a
      * fee for offsite ad clicks for a Promoted Listing Advanced campaign.
      */
     public const VAL_OFFSITE_ADS_FEE_CREDIT = 'OffsiteAdsFeeCredit';
+
+    /**
+     * Constant for 'PromotedDisplayFee' value.
+     *
+     * This enumeration value indicates that the seller was charged a fee for Promoted
+     * Display.
+     */
+    public const VAL_PROMOTED_DISPLAY_FEE = 'PromotedDisplayFee';
+
+    /**
+     * Constant for 'PromotedDisplayFeeCredit' value.
+     *
+     * This enumeration value indicates that the seller was issued a credit against a
+     * fee for Promoted Display.
+     */
+    public const VAL_PROMOTED_DISPLAY_FEE_CREDIT = 'PromotedDisplayFeeCredit';
+
+    /**
+     * Constant for 'USWHTFederal' value.
+     *
+     * This enumeration value indicates that US Federal tax was witheld and deducted
+     * from the seller's payout funds.
+     */
+    public const VAL_USWHTFEDERAL = 'USWHTFederal';
+
+    /**
+     * Constant for 'USWHTFederalCredit' value.
+     *
+     * This enumeration value indicates that the seller was issued a credit against US
+     * Federal tax that was witheld and deducted from the seller's payout funds.
+     */
+    public const VAL_USWHTFEDERAL_CREDIT = 'USWHTFederalCredit';
+
+    /**
+     * Constant for 'USWHTState' value.
+     *
+     * This enumeration value indicates that US State tax was witheld and deducted from
+     * the seller's payout funds.
+     */
+    public const VAL_USWHTSTATE = 'USWHTState';
+
+    /**
+     * Constant for 'USWHTStateCredit' value.
+     *
+     * This enumeration value indicates that the seller was issued a credit against US
+     * State tax that was witheld and deducted from the seller's payout funds.
+     */
+    public const VAL_USWHTSTATE_CREDIT = 'USWHTStateCredit';
+
+    /**
+     * Constant for 'EPRFee' value.
+     *
+     * This enumeration value indicates that the seller was charged an Eco
+     * Participation fee.
+     */
+    public const VAL_EPRFEE = 'EPRFee';
+
+    /**
+     * Constant for 'EPRFeeCredit' value.
+     *
+     * This enumeration value indicates that the seller was issued a credit against an
+     * Eco Participation fee.
+     */
+    public const VAL_EPRFEE_CREDIT = 'EPRFeeCredit';
+
+    /**
+     * Constant for 'CAPostReturnLabelFee' value.
+     *
+     * This enumeration value indicates that the seller was charged a fee for a
+     * Canadian Post return shipping label.
+     */
+    public const VAL_CAPOST_RETURN_LABEL_FEE = 'CAPostReturnLabelFee';
+
+    /**
+     * Constant for 'CAPostReturnLabelFeeCredit' value.
+     *
+     * This enumeration value indicates that the seller was issued a credit against a
+     * fee for a Canadian Post return shipping label.
+     */
+    public const VAL_CAPOST_RETURN_LABEL_FEE_CREDIT = 'CAPostReturnLabelFeeCredit';
+
+    /**
+     * Constant for 'HermesReturnLabelFee' value.
+     *
+     * This enumeration value indicates that the seller was charged a fee for a Hermes
+     * return shipping label.
+     */
+    public const VAL_HERMES_RETURN_LABEL_FEE = 'HermesReturnLabelFee';
+
+    /**
+     * Constant for 'HermesReturnLabelFeeCredit' value.
+     *
+     * This enumeration value indicates that the seller was issued a credit against a
+     * fee for a Hermes return shipping label.
+     */
+    public const VAL_HERMES_RETURN_LABEL_FEE_CREDIT = 'HermesReturnLabelFeeCredit';
+
+    /**
+     * Constant for 'BankPayoutFee' value.
+     *
+     * This enumeration value indicates that the seller was charged a fee for a payout
+     * to their bank account.
+     *  <br>
+     *  <span class="tablenote"><b>Note:</b> This fee is for future use, and will
+     * initially only apply to sellers based in mainland China if they choose to
+     * receive payout funds through a bank account instead of through their Payoneer
+     * account. </span>
+     */
+    public const VAL_BANK_PAYOUT_FEE = 'BankPayoutFee';
+
+    /**
+     * Constant for 'BankPayoutFeeCredit' value.
+     *
+     * This enumeration value indicates that the seller was issued a credit against a
+     * fee for a payout to their bank account.
+     */
+    public const VAL_BANK_PAYOUT_FEE_CREDIT = 'BankPayoutFeeCredit';
+
+    /**
+     * Constant for 'CharityDonation' value.
+     *
+     * This enumeration value indicates that the seller donated a portion of their sale
+     * proceeds to a charitable organization.
+     */
+    public const VAL_CHARITY_DONATION = 'CharityDonation';
+
+    /**
+     * Constant for 'CharityDonationCredit' value.
+     *
+     * This enumeration value indicates that the seller was issued a credit against a
+     * donation to a charitable organization.
+     */
+    public const VAL_CHARITY_DONATION_CREDIT = 'CharityDonationCredit';
 
     /**
      * @var string $__value

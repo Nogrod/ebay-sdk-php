@@ -66,7 +66,8 @@ class PaymentHoldReasonCodeType
     /**
      * Constant for 'NewPaypalAccountAdded' value.
      *
-     * This value is deprecated.
+     * This value should no longer get returned as a seller is no longer required to
+     * link their PayPal account to their eBay account.
      */
     public const VAL_NEW_PAYPAL_ACCOUNT_ADDED = 'NewPaypalAccountAdded';
 

@@ -38,17 +38,6 @@ Nogrod\eBaySDK\Trading\StoreType:
                 getter: getURL
                 setter: setURL
             type: string
-        subscriptionLevel:
-            expose: true
-            access_type: public_method
-            serialized_name: SubscriptionLevel
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getSubscriptionLevel
-                setter: setSubscriptionLevel
-            type: string
         description:
             expose: true
             access_type: public_method

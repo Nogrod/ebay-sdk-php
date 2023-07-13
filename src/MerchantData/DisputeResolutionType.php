@@ -8,6 +8,12 @@ use Nogrod\XMLClientRuntime\Func;
  * Class representing DisputeResolutionType
  *
  * Type used by the <strong>DisputeResolution</strong> container of <strong>GetUserDisputes</strong>, which provides details about the resolution of an Unpaid Item case. An Unpaid Item case can have a resolution even if the seller does not receive payment. A separate <strong>DisputeResolution</strong> container is returned for each different outcome. For example, if the resolution including the seller getting a Final Value Fee credit and the buyer getting an Unpaid Item strike, a separate <strong>DisputeResolution</strong> container is returned for each of these outcomes.
+ *  <br/><br/>
+ *  <span class="tablenote"><strong>Note:</strong>
+ *  The <strong>GetUserDisputes</strong> call of the Trading API now only supports Unpaid Item cases, and no longer supports Item not Received (INR) or Significantly not as Described (SNAD) disputes created through PayPal, since this is no longer an option for eBay buyers. eBay buyers must create an INR or SNAD case through eBay's Resolution Center, and this call also does not support eBay Money Back Guarantee cases.
+ *  <br><br>
+ *  To respond to an eBay Money Back Guarantee case, the seller should use the <a href="https://developer.ebay.com/Devzone/post-order/index.html" target="_blank">Case Management calls</a> of the <b>Post-Order API</b> or manage/respond to cases manually through the eBay Resolution Center.
+ *  </span>
  * XSD Type: DisputeResolutionType
  */
 class DisputeResolutionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable

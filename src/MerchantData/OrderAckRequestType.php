@@ -7,7 +7,10 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing OrderAckRequestType
  *
- * <span class="tablenote"> <strong>Note:</strong> Large Merchant Services (LMS) functionality as a SOAP service has been decommissioned. It is fully migrated into the REST-based <a href="/api-docs/sell/feed/resources/methods" target=\"_blank\" >Sell Feed API</a> The <strong>Sell Feed API</strong> supports the same XML data files that LMS supported but through REST methods. For more information, see the <a href="/api-docs/sell/static/feed/lms-feeds.html" target="_blank" >LMS Feed Guide</a>. </span> OrderAck is used to acknowledge that a single line item order, or an individual line item within a multiple line item order has been received. Once an order or order line item is successfully acknowledged with an <b>OrderAck</b> call, that order or order line item will not appear in the <b>OrderReport</b> response when you run either of those calls again.
+ * <span class="tablenote">
+ *  <strong>Note:</strong> Large Merchant Services (LMS) functionality as a SOAP service has been decommissioned. It is fully migrated into the REST-based <a href="https://developer.ebay.com/api-docs/sell/feed/resources/methods" target=\"_blank\" >Sell Feed API</a> The <strong>Sell Feed API</strong> supports the same XML data files that LMS supported but through REST methods. For more information, see the <a href="https://developer.ebay.com/api-docs/sell/static/lms-migration-landing.html" target="_blank" >LMS Migration Guide</a>.
+ *  </span>
+ *  This call is used to acknowledge that a single line item order, or an individual line item within a multiple line item order has been received. Once an order or order line item is successfully acknowledged with an <b>OrderAck</b> call, that order or order line item will not appear in the <b>OrderReport</b> response when you run either of those calls again.
  * XSD Type: OrderAckRequestType
  */
 class OrderAckRequestType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable

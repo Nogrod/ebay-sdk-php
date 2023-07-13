@@ -15,8 +15,11 @@ use Nogrod\XMLClientRuntime\Func;
 class AddressType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
     /**
-     * The eBay user's name associated with an address on file with eBay.
+     * <br>
+     *  The eBay user's name associated with an address on file with eBay.
      *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>Seller.RegistrationAddress</b> container and its child fields will stop being returned in <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @var string $name
      */
@@ -157,7 +160,8 @@ class AddressType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
     private $postalCode = null;
 
     /**
-     * Unique ID for a user's address in the eBay database.
+     * <br>
+     *  Unique ID for a user's address in the eBay database.
      *  This value can help prevent the need to
      *  store an address multiple times across multiple orders.
      *  The ID changes if a user changes their address.
@@ -165,6 +169,8 @@ class AddressType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
      *  <br>
      *  <span class="tablenote"><b>Note:</b>
      *  For orders subject to Australian 'Goods and Services' tax (GST), in addition to the unique identifier for the address, the last two digits of the user's Australian Business Number (ABN) will also appear in this field. Australian 'Goods and Services' tax (GST) is automatically charged to buyers outside of Australia when they purchase items on the eBay Australia site.
+     *  </span>
+     *  <span class="tablenote"><b>Note: </b> The <b>Seller.RegistrationAddress</b> container and its child fields will stop being returned in <b>GetSellerTransactions</b> on January 31, 2024.
      *  </span>
      *
      * @var string $addressID
@@ -184,8 +190,11 @@ class AddressType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
     private $addressStatus = null;
 
     /**
-     * This field is no longer applicable, and should not returned.
+     * <br>
+     *  This field is no longer applicable, and should no longer be returned.
      *  <br>
+     *  <span class="tablenote"><b>Note: </b> This field will stop being returned and removed from the WSDL on January 31, 2024.
+     *  </span>
      *
      * @var string $externalAddressID
      */
@@ -251,7 +260,11 @@ class AddressType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
     private $phone2 = null;
 
     /**
-     * This tag tells whether current address is a default shipping address or one of the shipping addresses in address book.
+     * <br>
+     *  This tag tells whether current address is a default shipping address or one of the shipping addresses in address book.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> This field will stop being returned and removed from the WSDL on January 31, 2024.
+     *  </span>
      *
      * @var string $addressUsage
      */
@@ -270,7 +283,11 @@ class AddressType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
     private $referenceID = null;
 
     /**
-     * This field shows an attribute for the address, and its corresponding value. Currently, this field is only used to display the reference ID for a "Click and Collect" order, but in the future, other address attributes may be returned in this field.
+     * <br>
+     *  This field shows an attribute for the address, and its corresponding value. Currently, this field is only used to display the reference ID for a "Click and Collect" order, but in the future, other address attributes may be returned in this field.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>Seller.RegistrationAddress</b> container and its child fields will stop being returned in <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @var \Nogrod\eBaySDK\Trading\AddressAttributeType[] $addressAttribute
      */
@@ -281,8 +298,11 @@ class AddressType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
     /**
      * Gets as name
      *
-     * The eBay user's name associated with an address on file with eBay.
+     * <br>
+     *  The eBay user's name associated with an address on file with eBay.
      *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>Seller.RegistrationAddress</b> container and its child fields will stop being returned in <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @return string
      */
@@ -294,8 +314,11 @@ class AddressType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
     /**
      * Sets a new name
      *
-     * The eBay user's name associated with an address on file with eBay.
+     * <br>
+     *  The eBay user's name associated with an address on file with eBay.
      *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>Seller.RegistrationAddress</b> container and its child fields will stop being returned in <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @param string $name
      * @return self
@@ -745,7 +768,8 @@ class AddressType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
     /**
      * Gets as addressID
      *
-     * Unique ID for a user's address in the eBay database.
+     * <br>
+     *  Unique ID for a user's address in the eBay database.
      *  This value can help prevent the need to
      *  store an address multiple times across multiple orders.
      *  The ID changes if a user changes their address.
@@ -753,6 +777,8 @@ class AddressType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
      *  <br>
      *  <span class="tablenote"><b>Note:</b>
      *  For orders subject to Australian 'Goods and Services' tax (GST), in addition to the unique identifier for the address, the last two digits of the user's Australian Business Number (ABN) will also appear in this field. Australian 'Goods and Services' tax (GST) is automatically charged to buyers outside of Australia when they purchase items on the eBay Australia site.
+     *  </span>
+     *  <span class="tablenote"><b>Note: </b> The <b>Seller.RegistrationAddress</b> container and its child fields will stop being returned in <b>GetSellerTransactions</b> on January 31, 2024.
      *  </span>
      *
      * @return string
@@ -765,7 +791,8 @@ class AddressType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
     /**
      * Sets a new addressID
      *
-     * Unique ID for a user's address in the eBay database.
+     * <br>
+     *  Unique ID for a user's address in the eBay database.
      *  This value can help prevent the need to
      *  store an address multiple times across multiple orders.
      *  The ID changes if a user changes their address.
@@ -773,6 +800,8 @@ class AddressType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
      *  <br>
      *  <span class="tablenote"><b>Note:</b>
      *  For orders subject to Australian 'Goods and Services' tax (GST), in addition to the unique identifier for the address, the last two digits of the user's Australian Business Number (ABN) will also appear in this field. Australian 'Goods and Services' tax (GST) is automatically charged to buyers outside of Australia when they purchase items on the eBay Australia site.
+     *  </span>
+     *  <span class="tablenote"><b>Note: </b> The <b>Seller.RegistrationAddress</b> container and its child fields will stop being returned in <b>GetSellerTransactions</b> on January 31, 2024.
      *  </span>
      *
      * @param string $addressID
@@ -835,8 +864,11 @@ class AddressType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
     /**
      * Gets as externalAddressID
      *
-     * This field is no longer applicable, and should not returned.
+     * <br>
+     *  This field is no longer applicable, and should no longer be returned.
      *  <br>
+     *  <span class="tablenote"><b>Note: </b> This field will stop being returned and removed from the WSDL on January 31, 2024.
+     *  </span>
      *
      * @return string
      */
@@ -848,8 +880,11 @@ class AddressType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
     /**
      * Sets a new externalAddressID
      *
-     * This field is no longer applicable, and should not returned.
+     * <br>
+     *  This field is no longer applicable, and should no longer be returned.
      *  <br>
+     *  <span class="tablenote"><b>Note: </b> This field will stop being returned and removed from the WSDL on January 31, 2024.
+     *  </span>
      *
      * @param string $externalAddressID
      * @return self
@@ -1077,7 +1112,11 @@ class AddressType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
     /**
      * Gets as addressUsage
      *
-     * This tag tells whether current address is a default shipping address or one of the shipping addresses in address book.
+     * <br>
+     *  This tag tells whether current address is a default shipping address or one of the shipping addresses in address book.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> This field will stop being returned and removed from the WSDL on January 31, 2024.
+     *  </span>
      *
      * @return string
      */
@@ -1089,7 +1128,11 @@ class AddressType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
     /**
      * Sets a new addressUsage
      *
-     * This tag tells whether current address is a default shipping address or one of the shipping addresses in address book.
+     * <br>
+     *  This tag tells whether current address is a default shipping address or one of the shipping addresses in address book.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> This field will stop being returned and removed from the WSDL on January 31, 2024.
+     *  </span>
      *
      * @param string $addressUsage
      * @return self
@@ -1139,7 +1182,11 @@ class AddressType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
     /**
      * Adds as addressAttribute
      *
-     * This field shows an attribute for the address, and its corresponding value. Currently, this field is only used to display the reference ID for a "Click and Collect" order, but in the future, other address attributes may be returned in this field.
+     * <br>
+     *  This field shows an attribute for the address, and its corresponding value. Currently, this field is only used to display the reference ID for a "Click and Collect" order, but in the future, other address attributes may be returned in this field.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>Seller.RegistrationAddress</b> container and its child fields will stop being returned in <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @return self
      * @param \Nogrod\eBaySDK\Trading\AddressAttributeType $addressAttribute
@@ -1153,7 +1200,11 @@ class AddressType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
     /**
      * isset addressAttribute
      *
-     * This field shows an attribute for the address, and its corresponding value. Currently, this field is only used to display the reference ID for a "Click and Collect" order, but in the future, other address attributes may be returned in this field.
+     * <br>
+     *  This field shows an attribute for the address, and its corresponding value. Currently, this field is only used to display the reference ID for a "Click and Collect" order, but in the future, other address attributes may be returned in this field.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>Seller.RegistrationAddress</b> container and its child fields will stop being returned in <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @param int|string $index
      * @return bool
@@ -1166,7 +1217,11 @@ class AddressType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
     /**
      * unset addressAttribute
      *
-     * This field shows an attribute for the address, and its corresponding value. Currently, this field is only used to display the reference ID for a "Click and Collect" order, but in the future, other address attributes may be returned in this field.
+     * <br>
+     *  This field shows an attribute for the address, and its corresponding value. Currently, this field is only used to display the reference ID for a "Click and Collect" order, but in the future, other address attributes may be returned in this field.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>Seller.RegistrationAddress</b> container and its child fields will stop being returned in <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @param int|string $index
      * @return void
@@ -1179,7 +1234,11 @@ class AddressType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
     /**
      * Gets as addressAttribute
      *
-     * This field shows an attribute for the address, and its corresponding value. Currently, this field is only used to display the reference ID for a "Click and Collect" order, but in the future, other address attributes may be returned in this field.
+     * <br>
+     *  This field shows an attribute for the address, and its corresponding value. Currently, this field is only used to display the reference ID for a "Click and Collect" order, but in the future, other address attributes may be returned in this field.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>Seller.RegistrationAddress</b> container and its child fields will stop being returned in <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @return \Nogrod\eBaySDK\Trading\AddressAttributeType[]
      */
@@ -1191,7 +1250,11 @@ class AddressType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
     /**
      * Sets a new addressAttribute
      *
-     * This field shows an attribute for the address, and its corresponding value. Currently, this field is only used to display the reference ID for a "Click and Collect" order, but in the future, other address attributes may be returned in this field.
+     * <br>
+     *  This field shows an attribute for the address, and its corresponding value. Currently, this field is only used to display the reference ID for a "Click and Collect" order, but in the future, other address attributes may be returned in this field.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>Seller.RegistrationAddress</b> container and its child fields will stop being returned in <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @param \Nogrod\eBaySDK\Trading\AddressAttributeType[] $addressAttribute
      * @return self

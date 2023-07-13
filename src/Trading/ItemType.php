@@ -65,6 +65,9 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
 
     /**
      * The enumeration value returned in this field indicates whether an item is eligible for the buyer protection.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> This field will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @var string $buyerProtection
      */
@@ -227,12 +230,10 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
 
     /**
      * Describes listing upgrades that sellers can select for a fee, such as the
-     *  <b>BoldTitle</b> upgrade. Also includes feature packs for saving on listing upgrades.
-     *  See <a href="https://pages.ebay.com/help/sell/ia/promoting_your_item.html" target="_blank">Listing Upgrades</a>
-     *  in the eBay site help.
+     *  <b>BoldTitle</b> upgrade.
      *  <br><br>
-     *  You cannot remove listing upgrades when you revise a listing. When you
-     *  relist an item, use <b>DeletedField</b> to remove a listing upgrades.
+     *  You can add a listing upgrade when you revise a listing, but you cannot remove a listing upgrade. When you
+     *  relist an item, use <b>DeletedField</b> to remove a listing upgrade.
      *
      * @var string[] $listingEnhancement
      */
@@ -312,19 +313,20 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     private $paymentDetails = null;
 
     /**
-     * <b>For Add/Revise/Relist calls</b>: A <b>PaymentMethods</b> field is required for each offline payment method supported by the seller for the listing.
-     *  <br>
+     * <br>
+     *  <b>For Add/Revise/Relist calls</b>: A <b>PaymentMethods</b> field is required for each offline payment method supported by the seller for the listing.
      *  <br>
      *  <span class="tablenote"><b>Note: </b> Sellers no longer have to specify any electronic payment methods for listings, so one or more <b>PaymentMethods</b> fields will only be needed for listings that require/support payments off of eBay's platform. If an electronic payment is supplied in a <b>PaymentMethods</b> field, a warning will be triggered and the payment method will be dropped.
      *  </span>
-     *  <br>
      *  <span class="tablenote"><b>Note: </b> If you are already referencing a payments business policy in an Add/Revise/Relist call with the <b>SellerProfiles.SellerPaymentProfile</b> container, no <b>PaymentMethods</b> fields will be needed, as these settings will already be set in the payments business policy.
      *  </span>
-     *  <br>
      *  Payment methods are not applicable to any classified ad listings, as any agreement and payment is handled off of the eBay platform.
      *  <br>
      *  <br>
      *  <b>For Get calls that return <b>PaymentMethods</b> fields </b>: One or more <b>PaymentMethods</b> fields will only be returned if the seller set one or more offline payment methods for the listing.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> This field will stop being returned in order management calls on January 31, 2024.
+     *  </span>
      *
      * @var string[] $paymentMethods
      */
@@ -1278,7 +1280,9 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Describes the seller's return policy. Most categories on most
      *  eBay sites require the seller to clearly specify whether or not
-     *  returns are accepted (see <b>ReturnsAcceptedOption</b>). <br>
+     *  returns are accepted (see <b>ReturnsAcceptedOption</b>).
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> As a part of Digital Services Act (DSA) requirements, as of April 3, 2023, buyers in the EU must be allowed to return an item within 14 days or more, unless the item is exempt. Where applicable, sellers should update their return policies to reflect this requirement of accepting returns from EU buyers. This update can be made through the <b>ReturnPolicy</b> container or through a return business policy that is referenced through the <b>SellerProfiles.SellerReturnProfile</b> container.</span>
      *  <br>
      *  <span class="tablenote"><b>Note: </b> If you are using a return business policy set up through My eBay or via the <a href="https://developer.ebay.com/api-docs/sell/account/resources/return_policy/methods/createReturnPolicy">Account API</a>, then you should not populate the fields in this <b>ReturnPolicy</b> container. Instead, indicate your return policy using the <b>SellerProfiles.SellerReturnProfile</b> container.
      *  <br>
@@ -1347,14 +1351,18 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
 
     /**
      * This field is no longer applicable as eBay sellers can no longer use iMCC gateway accounts to handle buyer payments.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> This field will stop being returned in order management calls on January 31, 2024.
+     *  </span>
      *
      * @var bool $integratedMerchantCreditCardEnabled
      */
     private $integratedMerchantCreditCardEnabled = null;
 
     /**
-     * Variations are multiple similar (but not identical) items in a
-     *  single fixed-price listing. For example, a T-shirt listing
+     * <br>
+     *  Variations are similar (but not identical) items in a
+     *  multiple-variation, fixed-price listing. For example, a T-shirt listing
      *  could contain multiple items of the same brand
      *  that vary by color and size (like "Blue, Large" and
      *  "Black, Medium"). Each variation specifies a combination of one of
@@ -1403,6 +1411,9 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <b>For GetSellerEvents, GetMyeBayBuying, and GetMyeBaySelling:</b> Only returned
      *  when a listing has variations and <b>HideVariations</b> was set to <code>false</code>
      *  or not specified in the request.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> This container will stop being returned in <b>GetItemTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @var \Nogrod\eBaySDK\Trading\VariationsType $variations
      */
@@ -1461,7 +1472,8 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
 
     /**
      * This is a numeric identifier for an item's condition. All numeric Condition ID values map to an item condition string value. For example, numeric identifer <code>1000</code> maps to <code>New</code> condition.
-     *  <br><br>
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> For trading cards, the numeric identifier <code>2750</code> indicates that the trading card is graded, and <code>4000</code> indicates it is ungraded.</span>
      *  Most eBay listing categories require an item condition, but a few eBay categories do not (such as Digital Gift Cards or Antiques categories). To verify if the listing category requires an item condition, and if so, what are the supported item condition and <b>ConditionID</b> values, you can call <b>GetCategoryFeatures</b>. In this <b>GetCategoryFeatures</b> call, you'd pass in the listing <b>CategoryID</b> value and two <b>FeatureID</b> fields - one of these fields set to <code>ConditionEnabled</code>, and the other field set to <code>ConditionValues</code>.
      *  <br><br>
      *  In the <b>GetCategoryFeatures</b> response, look at the Category.<b>ConditionEnabled</b> to see if item condition is required for the category. Then look at the Category.<b>ConditionValues</b> container in the response for the full list of Condition IDs that you can pass in through the <b>ConditionID</b> field of an Add/Revise/Relist/Verify call. Note that the Condition.<b>DisplayName</b> value in the response is the actual condition value that will appear in the actual eBay listing.
@@ -1480,15 +1492,27 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <br>
      *  <br>
      *  <span class="tablenote"><strong>Note:</strong>
-     *  As of February 2022, in the US, Canada, UK, Germany, France, Italy, and Australia marketplaces, condition ID 2500 ('Seller Refurbished') can no longer be used In the following categories: <b>Cell Phones & Smartphones</b> (category ID 9355); <b>Smart Watches</b> (category ID 178893); and <b>Tablets & eBook Readers</b> (category ID 171485). In these three categories, the 'Seller Refurbished' item condition has been replaced by one of three new refurbished values, which include condition ID 2010 ('Excellent - Refurbished'), condition ID 2020 ('Very Good - Refurbished'), and condition ID 2030 ('Good - Refurbished'). To use any of these new refurbished item conditions in category 9355, in category 178893, or in category 171485, sellers must go through an application and qualification process. Any seller who is not eligible to use these new refurbished item conditions in these three categories will be blocked if they try to create a new listing or revise an existing listing with any of these three new item conditions. Any active listings in these three categories that had condition ID 2500 ('Seller Refurbished') as the item condition should have been administratively ended by eBay. Sellers will have to relist these items, and until they are eligible to list with the new refurbished item conditions, they will need to use another item condition supported in these categories, such as condition ID 3000 ('Used').
+     *  On the US, Canada, UK, Germany, France, Italy, and Australia marketplaces, condition ID 2500 ('Seller Refurbished') can no longer be used in numerous categories. See <a href="/api-docs/sell/static/metadata/condition-id-values.html#Category" target="_blank">Category and marketplace support for the eBay Refurbished Program</a> for the full list. In these categories, the 'Seller Refurbished' item condition has been replaced by one of three new refurbished values, which include condition ID 2010 ('Excellent - Refurbished'), condition ID 2020 ('Very Good - Refurbished'), and condition ID 2030 ('Good - Refurbished'). To use any of these new refurbished item conditions, sellers must go through an application and qualification process. Any seller who is not eligible to use these new refurbished item conditions in these three categories will be blocked if they try to create a new listing or revise an existing listing with any of these three new item conditions. Sellers who are not eligible to list with the new refurbished item conditions, will need to use another item condition supported in these categories, such as condition ID 3000 ('Used').
      *  <br>
      *  <br>
      *  Any seller that is interested in eligibility requirements to list with any refurbished item condition, including condition ID 2000 ('Certified - Refurbished'), should see the <a href="https://pages.ebay.com/seller-center/listing-and-marketing/ebay-refurbished-program.html" target="_blank">eBay Refurbished Program</a> page in Seller Center.
+     *  </span>
+     *  <span class="tablenote"><b>Note: </b> This field will stop being returned in order management calls on January 31, 2024.
      *  </span>
      *
      * @var int $conditionID
      */
     private $conditionID = null;
+
+    /**
+     * <span class="tablenote"><b>Note: </b> This container is currently available only in the United Kingdom (GB), with rollout to all other marketplaces in early July 2023.</span>
+     *  This container is used in <b>Add/Revise/Relist/Verify</b> listing calls to designate the condition descriptors for the listing. It is also returned in <b>GetItem</b> to indicate the condition descriptors applied to the listing.
+     *  <span class="tablenote"><b>Note: </b> In the case of trading cards, also specify the <b>ConditionID</b>. For graded trading cards, use the numeric identifier <code>2750</code>; for ungraded, use <code>4000</code>.
+     *  </span>
+     *
+     * @var \Nogrod\eBaySDK\Trading\ConditionDescriptorType[] $conditionDescriptors
+     */
+    private $conditionDescriptors = null;
 
     /**
      * This string field is used by the seller to more clearly describe the condition of items that are not brand new.
@@ -1499,13 +1523,15 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <br>
      *  The <b>ConditionDescription</b> field is returned by <b>GetItem</b> (and other related calls that return the Item object) if a condition description is specified in the listing.
      *  <br>
+     *  <span class="tablenote"><b>Note: </b> This field may be dropped if also using <b>ConditionDescriptors</b>.</span>
      *
      * @var string $conditionDescription
      */
     private $conditionDescription = null;
 
     /**
-     * The human-readable label for the item condition.
+     * <br>
+     *  The human-readable label for the item condition.
      *  Display names are localized for the site on
      *  which they're listed (not necessarily the site on which
      *  they're viewed).<br>
@@ -1522,10 +1548,21 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <br>
      *  Only returned when the seller specified <b>ConditionID</b> in their
      *  listing.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> This field will stop being returned in order management calls on January 31, 2024.
+     *  </span>
      *
      * @var string $conditionDisplayName
      */
     private $conditionDisplayName = null;
+
+    /**
+     * <span class="tablenote"><b>Note: </b> The <b>EnergyEfficiencyLabel</b> and the <b>Hazmat</b> containers are currently available only on the German (DE) marketplace. The <b>RepairScore</b> field is provided for future use (not presently available). </span>
+     *  <br />This container is used by the seller to provide Energy Efficiency Label information, hazardous material related information, and the repair score for the listing.
+     *
+     * @var \Nogrod\eBaySDK\Trading\RegulatoryType $regulatory
+     */
+    private $regulatory = null;
 
     /**
      * Tax exception category code. This is to be used only
@@ -2164,6 +2201,9 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      * Gets as buyerProtection
      *
      * The enumeration value returned in this field indicates whether an item is eligible for the buyer protection.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> This field will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @return string
      */
@@ -2176,6 +2216,9 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      * Sets a new buyerProtection
      *
      * The enumeration value returned in this field indicates whether an item is eligible for the buyer protection.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> This field will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @param string $buyerProtection
      * @return self
@@ -2644,12 +2687,10 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      * Adds as listingEnhancement
      *
      * Describes listing upgrades that sellers can select for a fee, such as the
-     *  <b>BoldTitle</b> upgrade. Also includes feature packs for saving on listing upgrades.
-     *  See <a href="https://pages.ebay.com/help/sell/ia/promoting_your_item.html" target="_blank">Listing Upgrades</a>
-     *  in the eBay site help.
+     *  <b>BoldTitle</b> upgrade.
      *  <br><br>
-     *  You cannot remove listing upgrades when you revise a listing. When you
-     *  relist an item, use <b>DeletedField</b> to remove a listing upgrades.
+     *  You can add a listing upgrade when you revise a listing, but you cannot remove a listing upgrade. When you
+     *  relist an item, use <b>DeletedField</b> to remove a listing upgrade.
      *
      * @return self
      * @param string $listingEnhancement
@@ -2664,12 +2705,10 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      * isset listingEnhancement
      *
      * Describes listing upgrades that sellers can select for a fee, such as the
-     *  <b>BoldTitle</b> upgrade. Also includes feature packs for saving on listing upgrades.
-     *  See <a href="https://pages.ebay.com/help/sell/ia/promoting_your_item.html" target="_blank">Listing Upgrades</a>
-     *  in the eBay site help.
+     *  <b>BoldTitle</b> upgrade.
      *  <br><br>
-     *  You cannot remove listing upgrades when you revise a listing. When you
-     *  relist an item, use <b>DeletedField</b> to remove a listing upgrades.
+     *  You can add a listing upgrade when you revise a listing, but you cannot remove a listing upgrade. When you
+     *  relist an item, use <b>DeletedField</b> to remove a listing upgrade.
      *
      * @param int|string $index
      * @return bool
@@ -2683,12 +2722,10 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      * unset listingEnhancement
      *
      * Describes listing upgrades that sellers can select for a fee, such as the
-     *  <b>BoldTitle</b> upgrade. Also includes feature packs for saving on listing upgrades.
-     *  See <a href="https://pages.ebay.com/help/sell/ia/promoting_your_item.html" target="_blank">Listing Upgrades</a>
-     *  in the eBay site help.
+     *  <b>BoldTitle</b> upgrade.
      *  <br><br>
-     *  You cannot remove listing upgrades when you revise a listing. When you
-     *  relist an item, use <b>DeletedField</b> to remove a listing upgrades.
+     *  You can add a listing upgrade when you revise a listing, but you cannot remove a listing upgrade. When you
+     *  relist an item, use <b>DeletedField</b> to remove a listing upgrade.
      *
      * @param int|string $index
      * @return void
@@ -2702,12 +2739,10 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      * Gets as listingEnhancement
      *
      * Describes listing upgrades that sellers can select for a fee, such as the
-     *  <b>BoldTitle</b> upgrade. Also includes feature packs for saving on listing upgrades.
-     *  See <a href="https://pages.ebay.com/help/sell/ia/promoting_your_item.html" target="_blank">Listing Upgrades</a>
-     *  in the eBay site help.
+     *  <b>BoldTitle</b> upgrade.
      *  <br><br>
-     *  You cannot remove listing upgrades when you revise a listing. When you
-     *  relist an item, use <b>DeletedField</b> to remove a listing upgrades.
+     *  You can add a listing upgrade when you revise a listing, but you cannot remove a listing upgrade. When you
+     *  relist an item, use <b>DeletedField</b> to remove a listing upgrade.
      *
      * @return string[]
      */
@@ -2720,12 +2755,10 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      * Sets a new listingEnhancement
      *
      * Describes listing upgrades that sellers can select for a fee, such as the
-     *  <b>BoldTitle</b> upgrade. Also includes feature packs for saving on listing upgrades.
-     *  See <a href="https://pages.ebay.com/help/sell/ia/promoting_your_item.html" target="_blank">Listing Upgrades</a>
-     *  in the eBay site help.
+     *  <b>BoldTitle</b> upgrade.
      *  <br><br>
-     *  You cannot remove listing upgrades when you revise a listing. When you
-     *  relist an item, use <b>DeletedField</b> to remove a listing upgrades.
+     *  You can add a listing upgrade when you revise a listing, but you cannot remove a listing upgrade. When you
+     *  relist an item, use <b>DeletedField</b> to remove a listing upgrade.
      *
      * @param string $listingEnhancement
      * @return self
@@ -2953,19 +2986,20 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Adds as paymentMethods
      *
-     * <b>For Add/Revise/Relist calls</b>: A <b>PaymentMethods</b> field is required for each offline payment method supported by the seller for the listing.
-     *  <br>
+     * <br>
+     *  <b>For Add/Revise/Relist calls</b>: A <b>PaymentMethods</b> field is required for each offline payment method supported by the seller for the listing.
      *  <br>
      *  <span class="tablenote"><b>Note: </b> Sellers no longer have to specify any electronic payment methods for listings, so one or more <b>PaymentMethods</b> fields will only be needed for listings that require/support payments off of eBay's platform. If an electronic payment is supplied in a <b>PaymentMethods</b> field, a warning will be triggered and the payment method will be dropped.
      *  </span>
-     *  <br>
      *  <span class="tablenote"><b>Note: </b> If you are already referencing a payments business policy in an Add/Revise/Relist call with the <b>SellerProfiles.SellerPaymentProfile</b> container, no <b>PaymentMethods</b> fields will be needed, as these settings will already be set in the payments business policy.
      *  </span>
-     *  <br>
      *  Payment methods are not applicable to any classified ad listings, as any agreement and payment is handled off of the eBay platform.
      *  <br>
      *  <br>
      *  <b>For Get calls that return <b>PaymentMethods</b> fields </b>: One or more <b>PaymentMethods</b> fields will only be returned if the seller set one or more offline payment methods for the listing.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> This field will stop being returned in order management calls on January 31, 2024.
+     *  </span>
      *
      * @return self
      * @param string $paymentMethods
@@ -2979,19 +3013,20 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * isset paymentMethods
      *
-     * <b>For Add/Revise/Relist calls</b>: A <b>PaymentMethods</b> field is required for each offline payment method supported by the seller for the listing.
-     *  <br>
+     * <br>
+     *  <b>For Add/Revise/Relist calls</b>: A <b>PaymentMethods</b> field is required for each offline payment method supported by the seller for the listing.
      *  <br>
      *  <span class="tablenote"><b>Note: </b> Sellers no longer have to specify any electronic payment methods for listings, so one or more <b>PaymentMethods</b> fields will only be needed for listings that require/support payments off of eBay's platform. If an electronic payment is supplied in a <b>PaymentMethods</b> field, a warning will be triggered and the payment method will be dropped.
      *  </span>
-     *  <br>
      *  <span class="tablenote"><b>Note: </b> If you are already referencing a payments business policy in an Add/Revise/Relist call with the <b>SellerProfiles.SellerPaymentProfile</b> container, no <b>PaymentMethods</b> fields will be needed, as these settings will already be set in the payments business policy.
      *  </span>
-     *  <br>
      *  Payment methods are not applicable to any classified ad listings, as any agreement and payment is handled off of the eBay platform.
      *  <br>
      *  <br>
      *  <b>For Get calls that return <b>PaymentMethods</b> fields </b>: One or more <b>PaymentMethods</b> fields will only be returned if the seller set one or more offline payment methods for the listing.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> This field will stop being returned in order management calls on January 31, 2024.
+     *  </span>
      *
      * @param int|string $index
      * @return bool
@@ -3004,19 +3039,20 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * unset paymentMethods
      *
-     * <b>For Add/Revise/Relist calls</b>: A <b>PaymentMethods</b> field is required for each offline payment method supported by the seller for the listing.
-     *  <br>
+     * <br>
+     *  <b>For Add/Revise/Relist calls</b>: A <b>PaymentMethods</b> field is required for each offline payment method supported by the seller for the listing.
      *  <br>
      *  <span class="tablenote"><b>Note: </b> Sellers no longer have to specify any electronic payment methods for listings, so one or more <b>PaymentMethods</b> fields will only be needed for listings that require/support payments off of eBay's platform. If an electronic payment is supplied in a <b>PaymentMethods</b> field, a warning will be triggered and the payment method will be dropped.
      *  </span>
-     *  <br>
      *  <span class="tablenote"><b>Note: </b> If you are already referencing a payments business policy in an Add/Revise/Relist call with the <b>SellerProfiles.SellerPaymentProfile</b> container, no <b>PaymentMethods</b> fields will be needed, as these settings will already be set in the payments business policy.
      *  </span>
-     *  <br>
      *  Payment methods are not applicable to any classified ad listings, as any agreement and payment is handled off of the eBay platform.
      *  <br>
      *  <br>
      *  <b>For Get calls that return <b>PaymentMethods</b> fields </b>: One or more <b>PaymentMethods</b> fields will only be returned if the seller set one or more offline payment methods for the listing.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> This field will stop being returned in order management calls on January 31, 2024.
+     *  </span>
      *
      * @param int|string $index
      * @return void
@@ -3029,19 +3065,20 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Gets as paymentMethods
      *
-     * <b>For Add/Revise/Relist calls</b>: A <b>PaymentMethods</b> field is required for each offline payment method supported by the seller for the listing.
-     *  <br>
+     * <br>
+     *  <b>For Add/Revise/Relist calls</b>: A <b>PaymentMethods</b> field is required for each offline payment method supported by the seller for the listing.
      *  <br>
      *  <span class="tablenote"><b>Note: </b> Sellers no longer have to specify any electronic payment methods for listings, so one or more <b>PaymentMethods</b> fields will only be needed for listings that require/support payments off of eBay's platform. If an electronic payment is supplied in a <b>PaymentMethods</b> field, a warning will be triggered and the payment method will be dropped.
      *  </span>
-     *  <br>
      *  <span class="tablenote"><b>Note: </b> If you are already referencing a payments business policy in an Add/Revise/Relist call with the <b>SellerProfiles.SellerPaymentProfile</b> container, no <b>PaymentMethods</b> fields will be needed, as these settings will already be set in the payments business policy.
      *  </span>
-     *  <br>
      *  Payment methods are not applicable to any classified ad listings, as any agreement and payment is handled off of the eBay platform.
      *  <br>
      *  <br>
      *  <b>For Get calls that return <b>PaymentMethods</b> fields </b>: One or more <b>PaymentMethods</b> fields will only be returned if the seller set one or more offline payment methods for the listing.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> This field will stop being returned in order management calls on January 31, 2024.
+     *  </span>
      *
      * @return string[]
      */
@@ -3053,19 +3090,20 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Sets a new paymentMethods
      *
-     * <b>For Add/Revise/Relist calls</b>: A <b>PaymentMethods</b> field is required for each offline payment method supported by the seller for the listing.
-     *  <br>
+     * <br>
+     *  <b>For Add/Revise/Relist calls</b>: A <b>PaymentMethods</b> field is required for each offline payment method supported by the seller for the listing.
      *  <br>
      *  <span class="tablenote"><b>Note: </b> Sellers no longer have to specify any electronic payment methods for listings, so one or more <b>PaymentMethods</b> fields will only be needed for listings that require/support payments off of eBay's platform. If an electronic payment is supplied in a <b>PaymentMethods</b> field, a warning will be triggered and the payment method will be dropped.
      *  </span>
-     *  <br>
      *  <span class="tablenote"><b>Note: </b> If you are already referencing a payments business policy in an Add/Revise/Relist call with the <b>SellerProfiles.SellerPaymentProfile</b> container, no <b>PaymentMethods</b> fields will be needed, as these settings will already be set in the payments business policy.
      *  </span>
-     *  <br>
      *  Payment methods are not applicable to any classified ad listings, as any agreement and payment is handled off of the eBay platform.
      *  <br>
      *  <br>
      *  <b>For Get calls that return <b>PaymentMethods</b> fields </b>: One or more <b>PaymentMethods</b> fields will only be returned if the seller set one or more offline payment methods for the listing.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> This field will stop being returned in order management calls on January 31, 2024.
+     *  </span>
      *
      * @param string $paymentMethods
      * @return self
@@ -6160,7 +6198,9 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *
      * Describes the seller's return policy. Most categories on most
      *  eBay sites require the seller to clearly specify whether or not
-     *  returns are accepted (see <b>ReturnsAcceptedOption</b>). <br>
+     *  returns are accepted (see <b>ReturnsAcceptedOption</b>).
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> As a part of Digital Services Act (DSA) requirements, as of April 3, 2023, buyers in the EU must be allowed to return an item within 14 days or more, unless the item is exempt. Where applicable, sellers should update their return policies to reflect this requirement of accepting returns from EU buyers. This update can be made through the <b>ReturnPolicy</b> container or through a return business policy that is referenced through the <b>SellerProfiles.SellerReturnProfile</b> container.</span>
      *  <br>
      *  <span class="tablenote"><b>Note: </b> If you are using a return business policy set up through My eBay or via the <a href="https://developer.ebay.com/api-docs/sell/account/resources/return_policy/methods/createReturnPolicy">Account API</a>, then you should not populate the fields in this <b>ReturnPolicy</b> container. Instead, indicate your return policy using the <b>SellerProfiles.SellerReturnProfile</b> container.
      *  <br>
@@ -6212,7 +6252,9 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *
      * Describes the seller's return policy. Most categories on most
      *  eBay sites require the seller to clearly specify whether or not
-     *  returns are accepted (see <b>ReturnsAcceptedOption</b>). <br>
+     *  returns are accepted (see <b>ReturnsAcceptedOption</b>).
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> As a part of Digital Services Act (DSA) requirements, as of April 3, 2023, buyers in the EU must be allowed to return an item within 14 days or more, unless the item is exempt. Where applicable, sellers should update their return policies to reflect this requirement of accepting returns from EU buyers. This update can be made through the <b>ReturnPolicy</b> container or through a return business policy that is referenced through the <b>SellerProfiles.SellerReturnProfile</b> container.</span>
      *  <br>
      *  <span class="tablenote"><b>Note: </b> If you are using a return business policy set up through My eBay or via the <a href="https://developer.ebay.com/api-docs/sell/account/resources/return_policy/methods/createReturnPolicy">Account API</a>, then you should not populate the fields in this <b>ReturnPolicy</b> container. Instead, indicate your return policy using the <b>SellerProfiles.SellerReturnProfile</b> container.
      *  <br>
@@ -6374,6 +6416,9 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      * Gets as integratedMerchantCreditCardEnabled
      *
      * This field is no longer applicable as eBay sellers can no longer use iMCC gateway accounts to handle buyer payments.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> This field will stop being returned in order management calls on January 31, 2024.
+     *  </span>
      *
      * @return bool
      */
@@ -6386,6 +6431,9 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      * Sets a new integratedMerchantCreditCardEnabled
      *
      * This field is no longer applicable as eBay sellers can no longer use iMCC gateway accounts to handle buyer payments.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> This field will stop being returned in order management calls on January 31, 2024.
+     *  </span>
      *
      * @param bool $integratedMerchantCreditCardEnabled
      * @return self
@@ -6399,8 +6447,9 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Gets as variations
      *
-     * Variations are multiple similar (but not identical) items in a
-     *  single fixed-price listing. For example, a T-shirt listing
+     * <br>
+     *  Variations are similar (but not identical) items in a
+     *  multiple-variation, fixed-price listing. For example, a T-shirt listing
      *  could contain multiple items of the same brand
      *  that vary by color and size (like "Blue, Large" and
      *  "Black, Medium"). Each variation specifies a combination of one of
@@ -6449,6 +6498,9 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <b>For GetSellerEvents, GetMyeBayBuying, and GetMyeBaySelling:</b> Only returned
      *  when a listing has variations and <b>HideVariations</b> was set to <code>false</code>
      *  or not specified in the request.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> This container will stop being returned in <b>GetItemTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @return \Nogrod\eBaySDK\Trading\VariationsType
      */
@@ -6460,8 +6512,9 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Sets a new variations
      *
-     * Variations are multiple similar (but not identical) items in a
-     *  single fixed-price listing. For example, a T-shirt listing
+     * <br>
+     *  Variations are similar (but not identical) items in a
+     *  multiple-variation, fixed-price listing. For example, a T-shirt listing
      *  could contain multiple items of the same brand
      *  that vary by color and size (like "Blue, Large" and
      *  "Black, Medium"). Each variation specifies a combination of one of
@@ -6510,6 +6563,9 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <b>For GetSellerEvents, GetMyeBayBuying, and GetMyeBaySelling:</b> Only returned
      *  when a listing has variations and <b>HideVariations</b> was set to <code>false</code>
      *  or not specified in the request.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> This container will stop being returned in <b>GetItemTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @param \Nogrod\eBaySDK\Trading\VariationsType $variations
      * @return self
@@ -6650,7 +6706,8 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      * Gets as conditionID
      *
      * This is a numeric identifier for an item's condition. All numeric Condition ID values map to an item condition string value. For example, numeric identifer <code>1000</code> maps to <code>New</code> condition.
-     *  <br><br>
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> For trading cards, the numeric identifier <code>2750</code> indicates that the trading card is graded, and <code>4000</code> indicates it is ungraded.</span>
      *  Most eBay listing categories require an item condition, but a few eBay categories do not (such as Digital Gift Cards or Antiques categories). To verify if the listing category requires an item condition, and if so, what are the supported item condition and <b>ConditionID</b> values, you can call <b>GetCategoryFeatures</b>. In this <b>GetCategoryFeatures</b> call, you'd pass in the listing <b>CategoryID</b> value and two <b>FeatureID</b> fields - one of these fields set to <code>ConditionEnabled</code>, and the other field set to <code>ConditionValues</code>.
      *  <br><br>
      *  In the <b>GetCategoryFeatures</b> response, look at the Category.<b>ConditionEnabled</b> to see if item condition is required for the category. Then look at the Category.<b>ConditionValues</b> container in the response for the full list of Condition IDs that you can pass in through the <b>ConditionID</b> field of an Add/Revise/Relist/Verify call. Note that the Condition.<b>DisplayName</b> value in the response is the actual condition value that will appear in the actual eBay listing.
@@ -6669,10 +6726,12 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <br>
      *  <br>
      *  <span class="tablenote"><strong>Note:</strong>
-     *  As of February 2022, in the US, Canada, UK, Germany, France, Italy, and Australia marketplaces, condition ID 2500 ('Seller Refurbished') can no longer be used In the following categories: <b>Cell Phones & Smartphones</b> (category ID 9355); <b>Smart Watches</b> (category ID 178893); and <b>Tablets & eBook Readers</b> (category ID 171485). In these three categories, the 'Seller Refurbished' item condition has been replaced by one of three new refurbished values, which include condition ID 2010 ('Excellent - Refurbished'), condition ID 2020 ('Very Good - Refurbished'), and condition ID 2030 ('Good - Refurbished'). To use any of these new refurbished item conditions in category 9355, in category 178893, or in category 171485, sellers must go through an application and qualification process. Any seller who is not eligible to use these new refurbished item conditions in these three categories will be blocked if they try to create a new listing or revise an existing listing with any of these three new item conditions. Any active listings in these three categories that had condition ID 2500 ('Seller Refurbished') as the item condition should have been administratively ended by eBay. Sellers will have to relist these items, and until they are eligible to list with the new refurbished item conditions, they will need to use another item condition supported in these categories, such as condition ID 3000 ('Used').
+     *  On the US, Canada, UK, Germany, France, Italy, and Australia marketplaces, condition ID 2500 ('Seller Refurbished') can no longer be used in numerous categories. See <a href="/api-docs/sell/static/metadata/condition-id-values.html#Category" target="_blank">Category and marketplace support for the eBay Refurbished Program</a> for the full list. In these categories, the 'Seller Refurbished' item condition has been replaced by one of three new refurbished values, which include condition ID 2010 ('Excellent - Refurbished'), condition ID 2020 ('Very Good - Refurbished'), and condition ID 2030 ('Good - Refurbished'). To use any of these new refurbished item conditions, sellers must go through an application and qualification process. Any seller who is not eligible to use these new refurbished item conditions in these three categories will be blocked if they try to create a new listing or revise an existing listing with any of these three new item conditions. Sellers who are not eligible to list with the new refurbished item conditions, will need to use another item condition supported in these categories, such as condition ID 3000 ('Used').
      *  <br>
      *  <br>
      *  Any seller that is interested in eligibility requirements to list with any refurbished item condition, including condition ID 2000 ('Certified - Refurbished'), should see the <a href="https://pages.ebay.com/seller-center/listing-and-marketing/ebay-refurbished-program.html" target="_blank">eBay Refurbished Program</a> page in Seller Center.
+     *  </span>
+     *  <span class="tablenote"><b>Note: </b> This field will stop being returned in order management calls on January 31, 2024.
      *  </span>
      *
      * @return int
@@ -6686,7 +6745,8 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      * Sets a new conditionID
      *
      * This is a numeric identifier for an item's condition. All numeric Condition ID values map to an item condition string value. For example, numeric identifer <code>1000</code> maps to <code>New</code> condition.
-     *  <br><br>
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> For trading cards, the numeric identifier <code>2750</code> indicates that the trading card is graded, and <code>4000</code> indicates it is ungraded.</span>
      *  Most eBay listing categories require an item condition, but a few eBay categories do not (such as Digital Gift Cards or Antiques categories). To verify if the listing category requires an item condition, and if so, what are the supported item condition and <b>ConditionID</b> values, you can call <b>GetCategoryFeatures</b>. In this <b>GetCategoryFeatures</b> call, you'd pass in the listing <b>CategoryID</b> value and two <b>FeatureID</b> fields - one of these fields set to <code>ConditionEnabled</code>, and the other field set to <code>ConditionValues</code>.
      *  <br><br>
      *  In the <b>GetCategoryFeatures</b> response, look at the Category.<b>ConditionEnabled</b> to see if item condition is required for the category. Then look at the Category.<b>ConditionValues</b> container in the response for the full list of Condition IDs that you can pass in through the <b>ConditionID</b> field of an Add/Revise/Relist/Verify call. Note that the Condition.<b>DisplayName</b> value in the response is the actual condition value that will appear in the actual eBay listing.
@@ -6705,10 +6765,12 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <br>
      *  <br>
      *  <span class="tablenote"><strong>Note:</strong>
-     *  As of February 2022, in the US, Canada, UK, Germany, France, Italy, and Australia marketplaces, condition ID 2500 ('Seller Refurbished') can no longer be used In the following categories: <b>Cell Phones & Smartphones</b> (category ID 9355); <b>Smart Watches</b> (category ID 178893); and <b>Tablets & eBook Readers</b> (category ID 171485). In these three categories, the 'Seller Refurbished' item condition has been replaced by one of three new refurbished values, which include condition ID 2010 ('Excellent - Refurbished'), condition ID 2020 ('Very Good - Refurbished'), and condition ID 2030 ('Good - Refurbished'). To use any of these new refurbished item conditions in category 9355, in category 178893, or in category 171485, sellers must go through an application and qualification process. Any seller who is not eligible to use these new refurbished item conditions in these three categories will be blocked if they try to create a new listing or revise an existing listing with any of these three new item conditions. Any active listings in these three categories that had condition ID 2500 ('Seller Refurbished') as the item condition should have been administratively ended by eBay. Sellers will have to relist these items, and until they are eligible to list with the new refurbished item conditions, they will need to use another item condition supported in these categories, such as condition ID 3000 ('Used').
+     *  On the US, Canada, UK, Germany, France, Italy, and Australia marketplaces, condition ID 2500 ('Seller Refurbished') can no longer be used in numerous categories. See <a href="/api-docs/sell/static/metadata/condition-id-values.html#Category" target="_blank">Category and marketplace support for the eBay Refurbished Program</a> for the full list. In these categories, the 'Seller Refurbished' item condition has been replaced by one of three new refurbished values, which include condition ID 2010 ('Excellent - Refurbished'), condition ID 2020 ('Very Good - Refurbished'), and condition ID 2030 ('Good - Refurbished'). To use any of these new refurbished item conditions, sellers must go through an application and qualification process. Any seller who is not eligible to use these new refurbished item conditions in these three categories will be blocked if they try to create a new listing or revise an existing listing with any of these three new item conditions. Sellers who are not eligible to list with the new refurbished item conditions, will need to use another item condition supported in these categories, such as condition ID 3000 ('Used').
      *  <br>
      *  <br>
      *  Any seller that is interested in eligibility requirements to list with any refurbished item condition, including condition ID 2000 ('Certified - Refurbished'), should see the <a href="https://pages.ebay.com/seller-center/listing-and-marketing/ebay-refurbished-program.html" target="_blank">eBay Refurbished Program</a> page in Seller Center.
+     *  </span>
+     *  <span class="tablenote"><b>Note: </b> This field will stop being returned in order management calls on January 31, 2024.
      *  </span>
      *
      * @param int $conditionID
@@ -6717,6 +6779,87 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     public function setConditionID($conditionID)
     {
         $this->conditionID = $conditionID;
+        return $this;
+    }
+
+    /**
+     * Adds as conditionDescriptor
+     *
+     * <span class="tablenote"><b>Note: </b> This container is currently available only in the United Kingdom (GB), with rollout to all other marketplaces in early July 2023.</span>
+     *  This container is used in <b>Add/Revise/Relist/Verify</b> listing calls to designate the condition descriptors for the listing. It is also returned in <b>GetItem</b> to indicate the condition descriptors applied to the listing.
+     *  <span class="tablenote"><b>Note: </b> In the case of trading cards, also specify the <b>ConditionID</b>. For graded trading cards, use the numeric identifier <code>2750</code>; for ungraded, use <code>4000</code>.
+     *  </span>
+     *
+     * @return self
+     * @param \Nogrod\eBaySDK\Trading\ConditionDescriptorType $conditionDescriptor
+     */
+    public function addToConditionDescriptors(\Nogrod\eBaySDK\Trading\ConditionDescriptorType $conditionDescriptor)
+    {
+        $this->conditionDescriptors[] = $conditionDescriptor;
+        return $this;
+    }
+
+    /**
+     * isset conditionDescriptors
+     *
+     * <span class="tablenote"><b>Note: </b> This container is currently available only in the United Kingdom (GB), with rollout to all other marketplaces in early July 2023.</span>
+     *  This container is used in <b>Add/Revise/Relist/Verify</b> listing calls to designate the condition descriptors for the listing. It is also returned in <b>GetItem</b> to indicate the condition descriptors applied to the listing.
+     *  <span class="tablenote"><b>Note: </b> In the case of trading cards, also specify the <b>ConditionID</b>. For graded trading cards, use the numeric identifier <code>2750</code>; for ungraded, use <code>4000</code>.
+     *  </span>
+     *
+     * @param int|string $index
+     * @return bool
+     */
+    public function issetConditionDescriptors($index)
+    {
+        return isset($this->conditionDescriptors[$index]);
+    }
+
+    /**
+     * unset conditionDescriptors
+     *
+     * <span class="tablenote"><b>Note: </b> This container is currently available only in the United Kingdom (GB), with rollout to all other marketplaces in early July 2023.</span>
+     *  This container is used in <b>Add/Revise/Relist/Verify</b> listing calls to designate the condition descriptors for the listing. It is also returned in <b>GetItem</b> to indicate the condition descriptors applied to the listing.
+     *  <span class="tablenote"><b>Note: </b> In the case of trading cards, also specify the <b>ConditionID</b>. For graded trading cards, use the numeric identifier <code>2750</code>; for ungraded, use <code>4000</code>.
+     *  </span>
+     *
+     * @param int|string $index
+     * @return void
+     */
+    public function unsetConditionDescriptors($index)
+    {
+        unset($this->conditionDescriptors[$index]);
+    }
+
+    /**
+     * Gets as conditionDescriptors
+     *
+     * <span class="tablenote"><b>Note: </b> This container is currently available only in the United Kingdom (GB), with rollout to all other marketplaces in early July 2023.</span>
+     *  This container is used in <b>Add/Revise/Relist/Verify</b> listing calls to designate the condition descriptors for the listing. It is also returned in <b>GetItem</b> to indicate the condition descriptors applied to the listing.
+     *  <span class="tablenote"><b>Note: </b> In the case of trading cards, also specify the <b>ConditionID</b>. For graded trading cards, use the numeric identifier <code>2750</code>; for ungraded, use <code>4000</code>.
+     *  </span>
+     *
+     * @return \Nogrod\eBaySDK\Trading\ConditionDescriptorType[]
+     */
+    public function getConditionDescriptors()
+    {
+        return $this->conditionDescriptors;
+    }
+
+    /**
+     * Sets a new conditionDescriptors
+     *
+     * <span class="tablenote"><b>Note: </b> This container is currently available only in the United Kingdom (GB), with rollout to all other marketplaces in early July 2023.</span>
+     *  This container is used in <b>Add/Revise/Relist/Verify</b> listing calls to designate the condition descriptors for the listing. It is also returned in <b>GetItem</b> to indicate the condition descriptors applied to the listing.
+     *  <span class="tablenote"><b>Note: </b> In the case of trading cards, also specify the <b>ConditionID</b>. For graded trading cards, use the numeric identifier <code>2750</code>; for ungraded, use <code>4000</code>.
+     *  </span>
+     *
+     * @param \Nogrod\eBaySDK\Trading\ConditionDescriptorType[] $conditionDescriptors
+     * @return self
+     */
+    public function setConditionDescriptors(array $conditionDescriptors)
+    {
+        $this->conditionDescriptors = $conditionDescriptors;
         return $this;
     }
 
@@ -6731,6 +6874,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <br>
      *  The <b>ConditionDescription</b> field is returned by <b>GetItem</b> (and other related calls that return the Item object) if a condition description is specified in the listing.
      *  <br>
+     *  <span class="tablenote"><b>Note: </b> This field may be dropped if also using <b>ConditionDescriptors</b>.</span>
      *
      * @return string
      */
@@ -6750,6 +6894,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <br>
      *  The <b>ConditionDescription</b> field is returned by <b>GetItem</b> (and other related calls that return the Item object) if a condition description is specified in the listing.
      *  <br>
+     *  <span class="tablenote"><b>Note: </b> This field may be dropped if also using <b>ConditionDescriptors</b>.</span>
      *
      * @param string $conditionDescription
      * @return self
@@ -6763,7 +6908,8 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Gets as conditionDisplayName
      *
-     * The human-readable label for the item condition.
+     * <br>
+     *  The human-readable label for the item condition.
      *  Display names are localized for the site on
      *  which they're listed (not necessarily the site on which
      *  they're viewed).<br>
@@ -6780,6 +6926,9 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <br>
      *  Only returned when the seller specified <b>ConditionID</b> in their
      *  listing.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> This field will stop being returned in order management calls on January 31, 2024.
+     *  </span>
      *
      * @return string
      */
@@ -6791,7 +6940,8 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Sets a new conditionDisplayName
      *
-     * The human-readable label for the item condition.
+     * <br>
+     *  The human-readable label for the item condition.
      *  Display names are localized for the site on
      *  which they're listed (not necessarily the site on which
      *  they're viewed).<br>
@@ -6808,6 +6958,9 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <br>
      *  Only returned when the seller specified <b>ConditionID</b> in their
      *  listing.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> This field will stop being returned in order management calls on January 31, 2024.
+     *  </span>
      *
      * @param string $conditionDisplayName
      * @return self
@@ -6815,6 +6968,34 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     public function setConditionDisplayName($conditionDisplayName)
     {
         $this->conditionDisplayName = $conditionDisplayName;
+        return $this;
+    }
+
+    /**
+     * Gets as regulatory
+     *
+     * <span class="tablenote"><b>Note: </b> The <b>EnergyEfficiencyLabel</b> and the <b>Hazmat</b> containers are currently available only on the German (DE) marketplace. The <b>RepairScore</b> field is provided for future use (not presently available). </span>
+     *  <br />This container is used by the seller to provide Energy Efficiency Label information, hazardous material related information, and the repair score for the listing.
+     *
+     * @return \Nogrod\eBaySDK\Trading\RegulatoryType
+     */
+    public function getRegulatory()
+    {
+        return $this->regulatory;
+    }
+
+    /**
+     * Sets a new regulatory
+     *
+     * <span class="tablenote"><b>Note: </b> The <b>EnergyEfficiencyLabel</b> and the <b>Hazmat</b> containers are currently available only on the German (DE) marketplace. The <b>RepairScore</b> field is provided for future use (not presently available). </span>
+     *  <br />This container is used by the seller to provide Energy Efficiency Label information, hazardous material related information, and the repair score for the listing.
+     *
+     * @param \Nogrod\eBaySDK\Trading\RegulatoryType $regulatory
+     * @return self
+     */
+    public function setRegulatory(\Nogrod\eBaySDK\Trading\RegulatoryType $regulatory)
+    {
+        $this->regulatory = $regulatory;
         return $this;
     }
 
@@ -8431,6 +8612,12 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ConditionID", $value);
         }
+        $value = $this->getConditionDescriptors();
+        if (null !== $value && !empty($this->getConditionDescriptors())) {
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ConditionDescriptors", array_map(function ($v) {
+                return ["ConditionDescriptor" => $v];
+            }, $value));
+        }
         $value = $this->getConditionDescription();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ConditionDescription", $value);
@@ -8438,6 +8625,10 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         $value = $this->getConditionDisplayName();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ConditionDisplayName", $value);
+        }
+        $value = $this->getRegulatory();
+        if (null !== $value) {
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Regulatory", $value);
         }
         $value = $this->getTaxCategory();
         if (null !== $value) {
@@ -9032,6 +9223,12 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         if (null !== $value) {
             $this->setConditionID($value);
         }
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ConditionDescriptors', true);
+        if (null !== $value && !empty($value)) {
+            $this->setConditionDescriptors(array_map(function ($v) {
+                return \Nogrod\eBaySDK\Trading\ConditionDescriptorType::fromKeyValue($v);
+            }, $value));
+        }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ConditionDescription');
         if (null !== $value) {
             $this->setConditionDescription($value);
@@ -9039,6 +9236,10 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ConditionDisplayName');
         if (null !== $value) {
             $this->setConditionDisplayName($value);
+        }
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Regulatory');
+        if (null !== $value) {
+            $this->setRegulatory(\Nogrod\eBaySDK\Trading\RegulatoryType::fromKeyValue($value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TaxCategory');
         if (null !== $value) {

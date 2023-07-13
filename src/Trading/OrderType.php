@@ -55,7 +55,11 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
     private $adjustmentAmount = null;
 
     /**
-     * This value indicates the total amount paid by the buyer for the order. This amount includes the sale price of each line item, shipping and handling charges, additional services, and any sales tax that the seller has applied towards the order. This value is only returned after the buyer has paid for the order.
+     * This value indicates the total amount paid by the buyer for the order. This amount includes the sale price of each line item, shipping and handling charges, additional services, and any sales tax applied towards the order. This value is only returned after the buyer has paid for the order.
+     *  <br>
+     *  <span class="tablenote"><b>Note:</b>
+     *  <b>For GetOrders only</b>: If using Trading WSDL Version 1307 or above, the amount in this field will include sales tax. If using a Trading WSDL older than Version 1307, the amount in this field will not include sales tax. To incorporate the new logic while using a Trading WSDL that is older than 1307, developers can also use the X-EBAY-API-COMPATIBILITY-LEVEL header and set its value to 1307 or higher.
+     *  </span>
      *
      * @var \Nogrod\eBaySDK\Trading\AmountType $amountPaid
      */
@@ -138,14 +142,14 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      * This container shows the shipping address for the order.
      *  <br>
      *  <br>
-     *  <span class="tablenote">
-     *  <strong>Note:</strong> For an Authenticity Guarantee program shipment, this is the address of the authenticator&apos;s warehouse. The authenticator is responsible for delivery to the buyer&apos;s shipping address.
-     *  </span>
-     *  <span class="tablenote"><b>Note:</b> For GetOrderTransactions, the buyer&apos;s shipping address may also be returned at the order line item level in the <b>Transaction.Buyer.BuyerInfo.ShippingAddress</b> container.
-     *  </span>
+     *  <p><span class="tablenote">
+     *  <strong>Note:</strong> For an Authenticity Guarantee program shipment, this is the address of the authenticator's warehouse. The authenticator is responsible for delivery to the buyer's shipping address.
+     *  </span></p>
+     *  <p><span class="tablenote"><b>Note:</b> For GetOrderTransactions, the buyer's shipping address may also be returned at the order line item level in the <b>Transaction.Buyer.BuyerInfo.ShippingAddress</b> container.
+     *  </span></p>
      *  <p><span class="tablenote"><b>Note:</b>
-     *  For eBay Vault scenarios: <strong>GetOrders</strong>, <strong>GetOrderTransactions</strong>, and <strong>GetItemTransactions</strong> calls, mock address details are returned for: <br/> - Vault to vault orders: Buyer and Seller View<br /> - Ship to vault orders: Mock addresses are returned for the Buyer View (only); the address returned for the Seller View will be the authenticator&apos;s address.<br>
-     *  The following address details are returned for mock addresses:</span></p>
+     *  For eBay Vault scenarios: <strong>GetOrders</strong>, <strong>GetOrderTransactions</strong>, and <strong>GetItemTransactions</strong> calls, mock address details are returned for: <br><br>-<em> Vault to vault orders</em>: Buyer and Seller View<br><br>-<em> Ship to vault orders</em>: Mock addresses are returned for the Buyer View (only); the address returned for the Seller View will be the authenticator's address.<br><br>-<em> Vault in-hand submission orders</em>: the address returned for the Buyer View will be the authenticator's address.<br><br>
+     *  The following address details are returned for mock addresses:
      *  <pre>
      *  &lt;ShippingAddress&gt;
      *  <br/>
@@ -177,7 +181,7 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      *  <br/>
      *  &lt;/ShippingAddress&gt;
      *  </pre>
-     *  <br/>
+     *  <br/></span></p>
      *
      * @var \Nogrod\eBaySDK\Trading\AddressType $shippingAddress
      */
@@ -199,8 +203,12 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
     private $subtotal = null;
 
     /**
-     * The <b>Total</b> amount shows the total cost for the order, including total item cost (shown in <b>Subtotal</b> field), shipping charges (shown in <b>ShippingServiceSelected.ShippingServiceCost</b> field), and seller-applied sales tax (shown in <b>SalesTax.SalesTaxAmount</b> field).
-     *  <br><br>
+     * The <b>Total</b> amount shows the total cost for the order, including total item cost (shown in <b>Subtotal</b> field), shipping charges (shown in <b>ShippingServiceSelected.ShippingServiceCost</b> field), and sales tax (shown in <b>SalesTax.SalesTaxAmount</b> field).
+     *  <br>
+     *  <span class="tablenote"><b>Note:</b>
+     *  <b>For GetOrders only</b>: If using Trading WSDL Version 1307 or above, the amount in this field will include sales tax. If using a Trading WSDL older than Version 1307, the amount in this field will not include sales tax. To incorporate the new logic while using a Trading WSDL that is older than 1307, developers can also use the X-EBAY-API-COMPATIBILITY-LEVEL header and set its value to 1307 or higher.
+     *  </span>
+     *  <br>
      *  In an <b>AddOrder</b> call, the seller can pass in the <b>Total</b> amount for the 'Combined Invoice' order, and this is what the buyer will be expected to pay for the order.
      *
      * @var \Nogrod\eBaySDK\Trading\AmountType $total
@@ -209,9 +217,8 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
 
     /**
      * Container consisting of payment details for an eBay order, including an identifier for the monetary transaction and a field to express any fees or credits applied to the monetary transaction. This field is only returned after payment for the order has occurred.
-     *  <br><br>
-     *  <span class="tablenote">
-     *  <strong>Note:</strong> The <strong>MonetaryDetails</strong> container also shows payment information for the order. In the future, it is possible that the <strong>ExternalTransaction</strong> container will be deprecated, so you are encouraged to start using <strong>MonetaryDetails</strong> as soon as possible.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> This container will stop being returned on January 31, 2024. The <strong>MonetaryDetails</strong> container should be used instead.
      *  </span>
      *
      * @var \Nogrod\eBaySDK\Trading\ExternalTransactionType[] $externalTransaction
@@ -260,7 +267,11 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
     private $shippedTime = null;
 
     /**
-     * This field is no longer applicable as eBay sellers can no longer use iMCC gateway accounts to handle buyer payments.
+     * <br>
+     *  This field is no longer applicable as eBay sellers can no longer use iMCC gateway accounts to handle buyer payments.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> This field will stop being returned on January 31, 2024 and will be removed from the Trading WSDL.
+     *  </span>
      *
      * @var bool $integratedMerchantCreditCardEnabled
      */
@@ -294,9 +305,11 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
 
     /**
      * This field indicates the type and/or status of a payment hold on the item. It is always returned for <b>GetOrders</b> and <b>GetOrderTransactions</b>, even if there are no payment holds (in which case, an enumeration value of <code>None</code> is shown).
-     *  <br> <br>
+     *  <br>
      *  <span class="tablenote"><b>Note:</b>
      *  For the <strong>GetItemTransactions</strong>, <strong>GetOrders</strong>, and <strong>GetOrderTransactions</strong> calls, this field is only returned to the seller of the order; this field is not returned for the buyer or third party.
+     *  </span>
+     *  <span class="tablenote"><b>Note: </b> This field will stop being returned by <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
      *  </span>
      *
      * @var string $paymentHoldStatus
@@ -304,13 +317,17 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
     private $paymentHoldStatus = null;
 
     /**
-     * This container consists of information related to the payment hold
+     * <br>
+     *  This container consists of information related to the payment hold
      *  on the order, including the reason why the buyer's payment for the order is
      *  being held, the expected release date of the funds into the seller's
      *  account, and possible action(s) the seller can take to expedite the payout
      *  of funds into their account. This container is only returned if a payment hold has placed on the order.
      *  <br><br>
      *  See <b>PaymentHoldReasonCodeType</b> for some details on why/when a seller's funds may be held, or visit the <a href="https://www.ebay.com/help/selling/getting-paid/getting-paid-items-youve-sold/pending-payments?id=4816">Pending payments</a> help topic for more information on eBay's payment hold policies.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>Order.PaymentHoldDetails</b> and <b>ContainingOrder.PaymentHoldDetails</b> containers and child fields will stop being returned on January 31, 2024 and will be removed from the Trading WSDL. Payment hold details can be viewed at the transaction level instead.
+     *  </span>
      *
      * @var \Nogrod\eBaySDK\Trading\PaymentHoldDetailType $paymentHoldDetails
      */
@@ -339,25 +356,37 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
     private $refundArray = null;
 
     /**
-     * If <strong>IsMultilegShipping</strong> is <code>true</code>, at least one order line item in the order will not be shipped directly to the buyer. Orders requiring multiple shipping legs include international orders being shipped through the Global Shipping Program or through eBay International Shipping, as well as orders subject to/eligible for the Authenticity Guarantee program. For both international shipping options, the address of the shipping logistics provider is shown in the <strong>MultiLegShippingDetails.SellerShipmentToLogisticsProvider.ShipToAddress</strong> container. Similarly, for Authenticity Guarantee orders, the authentication partner's shipping address is shown in the same container.
+     * <br>
+     *  If <strong>IsMultilegShipping</strong> is <code>true</code>, at least one order line item in the order will not be shipped directly to the buyer. Orders requiring multiple shipping legs include international orders being shipped through the Global Shipping Program or through eBay International Shipping, as well as orders subject to/eligible for the Authenticity Guarantee program. For both international shipping options, the address of the shipping logistics provider is shown in the <strong>MultiLegShippingDetails.SellerShipmentToLogisticsProvider.ShipToAddress</strong> container. Similarly, for Authenticity Guarantee orders, the authentication partner's shipping address is shown in the same container.
      *  <br><br>
      *  If an order line item is subject to the Authenticity Guarantee service, the &lt;b&gt;Transaction.Program&lt;/b&gt; container will be returned.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>ContainingOrder.IsMultiLegShipping</b> field will stop being returned by <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @var bool $isMultiLegShipping
      */
     private $isMultiLegShipping = null;
 
     /**
-     * This container consists of details related to the first leg of an order requiring multiple shipping legs. Types of orders that require multiple shipping legs include international orders going through Global Shipping Program or eBay International Shipping, as well as orders subject to/eligible for the Authenticity Guarantee program. </br/></br/>If the item is subject to the Authenticity Guarantee service program, the seller ships the item to the authentication partner, and if the item passes an authentication inspection, the authentication partner ships it directly to the buyer.
+     * <br>
+     *  This container consists of details related to the first leg of an order requiring multiple shipping legs. Types of orders that require multiple shipping legs include international orders going through Global Shipping Program or eBay International Shipping, as well as orders subject to/eligible for the Authenticity Guarantee program. </br/></br/>If the item is subject to the Authenticity Guarantee service program, the seller ships the item to the authentication partner, and if the item passes an authentication inspection, the authentication partner ships it directly to the buyer.
      *  <br/><br/>
      *  This container is only returned if the order has one or more order line items requiring multiple shipping legs.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>ContainingOrder.MultiLegShippingDetails</b> container will stop being returned by <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @var \Nogrod\eBaySDK\Trading\MultiLegShippingDetailsType $multiLegShippingDetails
      */
     private $multiLegShippingDetails = null;
 
     /**
-     * Contains information about each monetary transaction that occurs for the order, including order payment, any refund, a credit, etc. Both the payer and payee are shown in this container.
+     * <br>
+     *  Contains information about each monetary transaction that occurs for the order, including order payment, any refund, a credit, etc. Both the payer and payee are shown in this container.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>ContainingOrder.MonetaryDetails</b> container will stop being returned by <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @var \Nogrod\eBaySDK\Trading\PaymentsInformationType $monetaryDetails
      */
@@ -463,22 +492,30 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
     ];
 
     /**
-     * This field will be returned at the order level only if the buyer purchased a digital gift card, which is delivered by email, or if the buyer purchased an item that is enabled with the 'Click and Collect' feature.
+     * <br/>
+     *  This field will be returned at the order level only if the buyer purchased a digital gift card, which is delivered by email, or if the buyer purchased an item that is enabled with the 'Click and Collect' feature.
      *  <br/><br/>
      *  Currently, <strong>LogisticsPlanType</strong> has two applicable values: <code>PickUpDropOff</code>, which indicates that the buyer selected the 'Click and Collect' option. With Click and Collect, buyers are able to purchase from thousands of sellers on the eBay UK and Australia sites, and then pick up their order from the nearest 'eBay Collection Point', including over 750 Argos stores in the UK. The Click and Collect feature is only available on the eBay UK and Australia sites; or, <code>DigitalDelivery</code>, which indicates that the order is a digital gift card that will be delivered to the buyer or recipient of the gift card by email.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>ContainingOrder.LogisticsPlanType</b> field will stop being returned by <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @var string $logisticsPlanType
      */
     private $logisticsPlanType = null;
 
     /**
-     * This container will either consist of VAT or Codice Fiscale taxpayer identification information for the buyer.
+     * <br>
+     *  This container will either consist of VAT or Codice Fiscale taxpayer identification information for the buyer.
      *  <br/><br/>
-     *  It is now required that buyers registered on the Italy site provide their Codice Fiscale ID (similar to the Social Security Number for US citizens) before buying an item on the Italy site.
+     *  It is required that buyers registered on the Italy site provide their Codice Fiscale ID (similar to the Social Security Number for US citizens) before buying an item on the Italy site.
      *  <br/><br/>
      *  On the Spain site, a Spanish seller has the option to require that Spanish buyers (registered on Spain site) provide a tax ID before checkout. This option is set by the seller at the account level. Once a Spanish buyer provides a tax ID, this tax ID is associated with his/her account, and once a tax ID is associated with the account, Spanish buyer will be asked to provide the tax ID during checkout on all eBay sites. Buyers with a registered address outside of Spain will not be asked to provide a tax ID during checkout.
      *  <br/><br/>
      *  This container is only returned for Spanish or Italian sellers when the buyer was asked to provide tax identifier information during checkout. A <strong>BuyerTaxIdentifier</strong> container will be returned for each tax ID that is associated with the buyer's account.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>ContainingOrder.BuyerTaxIdentifier</b> container will stop being returned by <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @var \Nogrod\eBaySDK\Trading\TaxIdentifierType[] $buyerTaxIdentifier
      */
@@ -487,7 +524,11 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
     ];
 
     /**
-     * This container is returned in <b>GetOrders</b> (and other order management calls) if the 'Pay Upon Invoice' option is being offered to the buyer, and the seller is including payment instructions in the shipping package(s) for the order. The 'Pay Upon Invoice' option is only available on the Germany site.
+     * <br>
+     *  This container is returned in <b>GetOrders</b> (and other order management calls) if the 'Pay Upon Invoice' option is being offered to the buyer, and the seller is including payment instructions in the shipping package(s) for the order. The 'Pay Upon Invoice' option is only available on the Germany site.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>ContainingOrder.BuyerPackageEnclosures</b> container will stop being returned by <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @var \Nogrod\eBaySDK\Trading\BuyerPackageEnclosureType[] $buyerPackageEnclosures
      */
@@ -516,20 +557,27 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
     private $containseBayPlusTransaction = null;
 
     /**
-     * This boolean field is returned as <code>true</code> if one or more line items in the order are subject to a tax (US sales tax or Australian Goods and Services tax) that eBay will collect and remit to the proper taxing authority on the buyer's behalf. This field is also returned if <code>false</code> (not subject to eBay Collect and Remit). A <b>Transaction.eBayCollectAndRemitTaxes</b> container is returned for any order line items subject to such a tax, and the type and amount of this tax is displayed in the <b>Transaction.eBayCollectAndRemitTaxes.TaxDetails</b> container.
+     * <br/>
+     *  This boolean field is returned as <code>true</code> if one or more line items in the order are subject to a tax (US sales tax or Australian Goods and Services tax) that eBay will collect and remit to the proper taxing authority on the buyer's behalf. This field is also returned if <code>false</code> (not subject to eBay Collect and Remit). A <b>Transaction.eBayCollectAndRemitTaxes</b> container is returned for any order line items subject to such a tax, and the type and amount of this tax is displayed in the <b>Transaction.eBayCollectAndRemitTaxes.TaxDetails</b> container.
      *  <br/><br/>
      *  Australian 'Goods and Services' tax (GST) is automatically charged to buyers outside of Australia when they purchase items on the eBay Australia site. Sellers on the Australia site do not have to take any extra steps to enable the collection of GST, as this tax is collected by eBay and remitted to the Australian government. For more information about Australian GST, see the <a href="https://www.ebay.com.au/help/selling/fees-credits-invoices/taxes-import-charges?id=4121">Taxes and import charges</a> help topic.
      *  <br/><br/>
-     *  As of November 2021, buyers in all US states except for Missouri (and several US territories), will automatically be charged sales tax for purchases, and the seller does not set this rate. eBay will collect and remit this sales tax to the proper taxing authority on the buyer's behalf. For more US state-level information on sales tax, see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section4">eBay sales tax collection</a> help topic.
+     *  As of January 2023, buyers in all US states will automatically be charged sales tax for purchases, and the seller does not set this rate. eBay will collect and remit this sales tax to the proper taxing authority on the buyer's behalf. For more US state-level information on sales tax, see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section3">eBay sales tax collection</a> help topic.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>ContainingOrder.eBayCollectAndRemitTax</b> field will stop being returned by <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @var bool $eBayCollectAndRemitTax
      */
     private $eBayCollectAndRemitTax = null;
 
     /**
-     * This field indicates the total number of line items in the order. This field is returned under the <b>ContainingOrder</b> container of a <b>GetItemTransactions</b> or <b>GetSellerTransactions</b> call. In order for the <b>ContainingOrder</b> container to be returned, a user must include the <b>IncludeContainingOrder</b> field in the call request and set its value to <b>true</b>.
+     * <br/>
+     *  This field indicates the total number of line items in the order. This field is returned under the <b>ContainingOrder</b> container of a <b>GetItemTransactions</b> or <b>GetSellerTransactions</b> call. In order for the <b>ContainingOrder</b> container to be returned, a user must include the <b>IncludeContainingOrder</b> field in the call request and set its value to <b>true</b>.
      *  <br/><br/>
      *  <span class="tablenote"><b>Note:</b> This field is automatically returned if the user is using Version 1113 of the Trading WSDL (or newer), or if the user includes the <b>X-EBAY-API-COMPATIBILITY-LEVEL</b> HTTP header and sets its value to <code>1113</code> (or newer). If a user is using a Trading WSDL older than 1113 (or is not setting the <b>X-EBAY-API-COMPATIBILITY-LEVEL</b> HTTP header value to 1113 or newer), this field will not be returned.
+     *  </span>
+     *  <span class="tablenote"><b>Note: </b> This field will stop being returned by <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
      *  </span>
      *
      * @var int $orderLineItemCount
@@ -643,7 +691,11 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
     /**
      * Gets as amountPaid
      *
-     * This value indicates the total amount paid by the buyer for the order. This amount includes the sale price of each line item, shipping and handling charges, additional services, and any sales tax that the seller has applied towards the order. This value is only returned after the buyer has paid for the order.
+     * This value indicates the total amount paid by the buyer for the order. This amount includes the sale price of each line item, shipping and handling charges, additional services, and any sales tax applied towards the order. This value is only returned after the buyer has paid for the order.
+     *  <br>
+     *  <span class="tablenote"><b>Note:</b>
+     *  <b>For GetOrders only</b>: If using Trading WSDL Version 1307 or above, the amount in this field will include sales tax. If using a Trading WSDL older than Version 1307, the amount in this field will not include sales tax. To incorporate the new logic while using a Trading WSDL that is older than 1307, developers can also use the X-EBAY-API-COMPATIBILITY-LEVEL header and set its value to 1307 or higher.
+     *  </span>
      *
      * @return \Nogrod\eBaySDK\Trading\AmountType
      */
@@ -655,7 +707,11 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
     /**
      * Sets a new amountPaid
      *
-     * This value indicates the total amount paid by the buyer for the order. This amount includes the sale price of each line item, shipping and handling charges, additional services, and any sales tax that the seller has applied towards the order. This value is only returned after the buyer has paid for the order.
+     * This value indicates the total amount paid by the buyer for the order. This amount includes the sale price of each line item, shipping and handling charges, additional services, and any sales tax applied towards the order. This value is only returned after the buyer has paid for the order.
+     *  <br>
+     *  <span class="tablenote"><b>Note:</b>
+     *  <b>For GetOrders only</b>: If using Trading WSDL Version 1307 or above, the amount in this field will include sales tax. If using a Trading WSDL older than Version 1307, the amount in this field will not include sales tax. To incorporate the new logic while using a Trading WSDL that is older than 1307, developers can also use the X-EBAY-API-COMPATIBILITY-LEVEL header and set its value to 1307 or higher.
+     *  </span>
      *
      * @param \Nogrod\eBaySDK\Trading\AmountType $amountPaid
      * @return self
@@ -959,14 +1015,14 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      * This container shows the shipping address for the order.
      *  <br>
      *  <br>
-     *  <span class="tablenote">
-     *  <strong>Note:</strong> For an Authenticity Guarantee program shipment, this is the address of the authenticator&apos;s warehouse. The authenticator is responsible for delivery to the buyer&apos;s shipping address.
-     *  </span>
-     *  <span class="tablenote"><b>Note:</b> For GetOrderTransactions, the buyer&apos;s shipping address may also be returned at the order line item level in the <b>Transaction.Buyer.BuyerInfo.ShippingAddress</b> container.
-     *  </span>
+     *  <p><span class="tablenote">
+     *  <strong>Note:</strong> For an Authenticity Guarantee program shipment, this is the address of the authenticator's warehouse. The authenticator is responsible for delivery to the buyer's shipping address.
+     *  </span></p>
+     *  <p><span class="tablenote"><b>Note:</b> For GetOrderTransactions, the buyer's shipping address may also be returned at the order line item level in the <b>Transaction.Buyer.BuyerInfo.ShippingAddress</b> container.
+     *  </span></p>
      *  <p><span class="tablenote"><b>Note:</b>
-     *  For eBay Vault scenarios: <strong>GetOrders</strong>, <strong>GetOrderTransactions</strong>, and <strong>GetItemTransactions</strong> calls, mock address details are returned for: <br/> - Vault to vault orders: Buyer and Seller View<br /> - Ship to vault orders: Mock addresses are returned for the Buyer View (only); the address returned for the Seller View will be the authenticator&apos;s address.<br>
-     *  The following address details are returned for mock addresses:</span></p>
+     *  For eBay Vault scenarios: <strong>GetOrders</strong>, <strong>GetOrderTransactions</strong>, and <strong>GetItemTransactions</strong> calls, mock address details are returned for: <br><br>-<em> Vault to vault orders</em>: Buyer and Seller View<br><br>-<em> Ship to vault orders</em>: Mock addresses are returned for the Buyer View (only); the address returned for the Seller View will be the authenticator's address.<br><br>-<em> Vault in-hand submission orders</em>: the address returned for the Buyer View will be the authenticator's address.<br><br>
+     *  The following address details are returned for mock addresses:
      *  <pre>
      *  &lt;ShippingAddress&gt;
      *  <br/>
@@ -998,7 +1054,7 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      *  <br/>
      *  &lt;/ShippingAddress&gt;
      *  </pre>
-     *  <br/>
+     *  <br/></span></p>
      *
      * @return \Nogrod\eBaySDK\Trading\AddressType
      */
@@ -1013,14 +1069,14 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      * This container shows the shipping address for the order.
      *  <br>
      *  <br>
-     *  <span class="tablenote">
-     *  <strong>Note:</strong> For an Authenticity Guarantee program shipment, this is the address of the authenticator&apos;s warehouse. The authenticator is responsible for delivery to the buyer&apos;s shipping address.
-     *  </span>
-     *  <span class="tablenote"><b>Note:</b> For GetOrderTransactions, the buyer&apos;s shipping address may also be returned at the order line item level in the <b>Transaction.Buyer.BuyerInfo.ShippingAddress</b> container.
-     *  </span>
+     *  <p><span class="tablenote">
+     *  <strong>Note:</strong> For an Authenticity Guarantee program shipment, this is the address of the authenticator's warehouse. The authenticator is responsible for delivery to the buyer's shipping address.
+     *  </span></p>
+     *  <p><span class="tablenote"><b>Note:</b> For GetOrderTransactions, the buyer's shipping address may also be returned at the order line item level in the <b>Transaction.Buyer.BuyerInfo.ShippingAddress</b> container.
+     *  </span></p>
      *  <p><span class="tablenote"><b>Note:</b>
-     *  For eBay Vault scenarios: <strong>GetOrders</strong>, <strong>GetOrderTransactions</strong>, and <strong>GetItemTransactions</strong> calls, mock address details are returned for: <br/> - Vault to vault orders: Buyer and Seller View<br /> - Ship to vault orders: Mock addresses are returned for the Buyer View (only); the address returned for the Seller View will be the authenticator&apos;s address.<br>
-     *  The following address details are returned for mock addresses:</span></p>
+     *  For eBay Vault scenarios: <strong>GetOrders</strong>, <strong>GetOrderTransactions</strong>, and <strong>GetItemTransactions</strong> calls, mock address details are returned for: <br><br>-<em> Vault to vault orders</em>: Buyer and Seller View<br><br>-<em> Ship to vault orders</em>: Mock addresses are returned for the Buyer View (only); the address returned for the Seller View will be the authenticator's address.<br><br>-<em> Vault in-hand submission orders</em>: the address returned for the Buyer View will be the authenticator's address.<br><br>
+     *  The following address details are returned for mock addresses:
      *  <pre>
      *  &lt;ShippingAddress&gt;
      *  <br/>
@@ -1052,7 +1108,7 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      *  <br/>
      *  &lt;/ShippingAddress&gt;
      *  </pre>
-     *  <br/>
+     *  <br/></span></p>
      *
      * @param \Nogrod\eBaySDK\Trading\AddressType $shippingAddress
      * @return self
@@ -1120,8 +1176,12 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
     /**
      * Gets as total
      *
-     * The <b>Total</b> amount shows the total cost for the order, including total item cost (shown in <b>Subtotal</b> field), shipping charges (shown in <b>ShippingServiceSelected.ShippingServiceCost</b> field), and seller-applied sales tax (shown in <b>SalesTax.SalesTaxAmount</b> field).
-     *  <br><br>
+     * The <b>Total</b> amount shows the total cost for the order, including total item cost (shown in <b>Subtotal</b> field), shipping charges (shown in <b>ShippingServiceSelected.ShippingServiceCost</b> field), and sales tax (shown in <b>SalesTax.SalesTaxAmount</b> field).
+     *  <br>
+     *  <span class="tablenote"><b>Note:</b>
+     *  <b>For GetOrders only</b>: If using Trading WSDL Version 1307 or above, the amount in this field will include sales tax. If using a Trading WSDL older than Version 1307, the amount in this field will not include sales tax. To incorporate the new logic while using a Trading WSDL that is older than 1307, developers can also use the X-EBAY-API-COMPATIBILITY-LEVEL header and set its value to 1307 or higher.
+     *  </span>
+     *  <br>
      *  In an <b>AddOrder</b> call, the seller can pass in the <b>Total</b> amount for the 'Combined Invoice' order, and this is what the buyer will be expected to pay for the order.
      *
      * @return \Nogrod\eBaySDK\Trading\AmountType
@@ -1134,8 +1194,12 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
     /**
      * Sets a new total
      *
-     * The <b>Total</b> amount shows the total cost for the order, including total item cost (shown in <b>Subtotal</b> field), shipping charges (shown in <b>ShippingServiceSelected.ShippingServiceCost</b> field), and seller-applied sales tax (shown in <b>SalesTax.SalesTaxAmount</b> field).
-     *  <br><br>
+     * The <b>Total</b> amount shows the total cost for the order, including total item cost (shown in <b>Subtotal</b> field), shipping charges (shown in <b>ShippingServiceSelected.ShippingServiceCost</b> field), and sales tax (shown in <b>SalesTax.SalesTaxAmount</b> field).
+     *  <br>
+     *  <span class="tablenote"><b>Note:</b>
+     *  <b>For GetOrders only</b>: If using Trading WSDL Version 1307 or above, the amount in this field will include sales tax. If using a Trading WSDL older than Version 1307, the amount in this field will not include sales tax. To incorporate the new logic while using a Trading WSDL that is older than 1307, developers can also use the X-EBAY-API-COMPATIBILITY-LEVEL header and set its value to 1307 or higher.
+     *  </span>
+     *  <br>
      *  In an <b>AddOrder</b> call, the seller can pass in the <b>Total</b> amount for the 'Combined Invoice' order, and this is what the buyer will be expected to pay for the order.
      *
      * @param \Nogrod\eBaySDK\Trading\AmountType $total
@@ -1151,9 +1215,8 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      * Adds as externalTransaction
      *
      * Container consisting of payment details for an eBay order, including an identifier for the monetary transaction and a field to express any fees or credits applied to the monetary transaction. This field is only returned after payment for the order has occurred.
-     *  <br><br>
-     *  <span class="tablenote">
-     *  <strong>Note:</strong> The <strong>MonetaryDetails</strong> container also shows payment information for the order. In the future, it is possible that the <strong>ExternalTransaction</strong> container will be deprecated, so you are encouraged to start using <strong>MonetaryDetails</strong> as soon as possible.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> This container will stop being returned on January 31, 2024. The <strong>MonetaryDetails</strong> container should be used instead.
      *  </span>
      *
      * @return self
@@ -1169,9 +1232,8 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      * isset externalTransaction
      *
      * Container consisting of payment details for an eBay order, including an identifier for the monetary transaction and a field to express any fees or credits applied to the monetary transaction. This field is only returned after payment for the order has occurred.
-     *  <br><br>
-     *  <span class="tablenote">
-     *  <strong>Note:</strong> The <strong>MonetaryDetails</strong> container also shows payment information for the order. In the future, it is possible that the <strong>ExternalTransaction</strong> container will be deprecated, so you are encouraged to start using <strong>MonetaryDetails</strong> as soon as possible.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> This container will stop being returned on January 31, 2024. The <strong>MonetaryDetails</strong> container should be used instead.
      *  </span>
      *
      * @param int|string $index
@@ -1186,9 +1248,8 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      * unset externalTransaction
      *
      * Container consisting of payment details for an eBay order, including an identifier for the monetary transaction and a field to express any fees or credits applied to the monetary transaction. This field is only returned after payment for the order has occurred.
-     *  <br><br>
-     *  <span class="tablenote">
-     *  <strong>Note:</strong> The <strong>MonetaryDetails</strong> container also shows payment information for the order. In the future, it is possible that the <strong>ExternalTransaction</strong> container will be deprecated, so you are encouraged to start using <strong>MonetaryDetails</strong> as soon as possible.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> This container will stop being returned on January 31, 2024. The <strong>MonetaryDetails</strong> container should be used instead.
      *  </span>
      *
      * @param int|string $index
@@ -1203,9 +1264,8 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      * Gets as externalTransaction
      *
      * Container consisting of payment details for an eBay order, including an identifier for the monetary transaction and a field to express any fees or credits applied to the monetary transaction. This field is only returned after payment for the order has occurred.
-     *  <br><br>
-     *  <span class="tablenote">
-     *  <strong>Note:</strong> The <strong>MonetaryDetails</strong> container also shows payment information for the order. In the future, it is possible that the <strong>ExternalTransaction</strong> container will be deprecated, so you are encouraged to start using <strong>MonetaryDetails</strong> as soon as possible.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> This container will stop being returned on January 31, 2024. The <strong>MonetaryDetails</strong> container should be used instead.
      *  </span>
      *
      * @return \Nogrod\eBaySDK\Trading\ExternalTransactionType[]
@@ -1219,9 +1279,8 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      * Sets a new externalTransaction
      *
      * Container consisting of payment details for an eBay order, including an identifier for the monetary transaction and a field to express any fees or credits applied to the monetary transaction. This field is only returned after payment for the order has occurred.
-     *  <br><br>
-     *  <span class="tablenote">
-     *  <strong>Note:</strong> The <strong>MonetaryDetails</strong> container also shows payment information for the order. In the future, it is possible that the <strong>ExternalTransaction</strong> container will be deprecated, so you are encouraged to start using <strong>MonetaryDetails</strong> as soon as possible.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> This container will stop being returned on January 31, 2024. The <strong>MonetaryDetails</strong> container should be used instead.
      *  </span>
      *
      * @param \Nogrod\eBaySDK\Trading\ExternalTransactionType[] $externalTransaction
@@ -1408,7 +1467,11 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
     /**
      * Gets as integratedMerchantCreditCardEnabled
      *
-     * This field is no longer applicable as eBay sellers can no longer use iMCC gateway accounts to handle buyer payments.
+     * <br>
+     *  This field is no longer applicable as eBay sellers can no longer use iMCC gateway accounts to handle buyer payments.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> This field will stop being returned on January 31, 2024 and will be removed from the Trading WSDL.
+     *  </span>
      *
      * @return bool
      */
@@ -1420,7 +1483,11 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
     /**
      * Sets a new integratedMerchantCreditCardEnabled
      *
-     * This field is no longer applicable as eBay sellers can no longer use iMCC gateway accounts to handle buyer payments.
+     * <br>
+     *  This field is no longer applicable as eBay sellers can no longer use iMCC gateway accounts to handle buyer payments.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> This field will stop being returned on January 31, 2024 and will be removed from the Trading WSDL.
+     *  </span>
      *
      * @param bool $integratedMerchantCreditCardEnabled
      * @return self
@@ -1523,9 +1590,11 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      * Gets as paymentHoldStatus
      *
      * This field indicates the type and/or status of a payment hold on the item. It is always returned for <b>GetOrders</b> and <b>GetOrderTransactions</b>, even if there are no payment holds (in which case, an enumeration value of <code>None</code> is shown).
-     *  <br> <br>
+     *  <br>
      *  <span class="tablenote"><b>Note:</b>
      *  For the <strong>GetItemTransactions</strong>, <strong>GetOrders</strong>, and <strong>GetOrderTransactions</strong> calls, this field is only returned to the seller of the order; this field is not returned for the buyer or third party.
+     *  </span>
+     *  <span class="tablenote"><b>Note: </b> This field will stop being returned by <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
      *  </span>
      *
      * @return string
@@ -1539,9 +1608,11 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      * Sets a new paymentHoldStatus
      *
      * This field indicates the type and/or status of a payment hold on the item. It is always returned for <b>GetOrders</b> and <b>GetOrderTransactions</b>, even if there are no payment holds (in which case, an enumeration value of <code>None</code> is shown).
-     *  <br> <br>
+     *  <br>
      *  <span class="tablenote"><b>Note:</b>
      *  For the <strong>GetItemTransactions</strong>, <strong>GetOrders</strong>, and <strong>GetOrderTransactions</strong> calls, this field is only returned to the seller of the order; this field is not returned for the buyer or third party.
+     *  </span>
+     *  <span class="tablenote"><b>Note: </b> This field will stop being returned by <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
      *  </span>
      *
      * @param string $paymentHoldStatus
@@ -1556,13 +1627,17 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
     /**
      * Gets as paymentHoldDetails
      *
-     * This container consists of information related to the payment hold
+     * <br>
+     *  This container consists of information related to the payment hold
      *  on the order, including the reason why the buyer's payment for the order is
      *  being held, the expected release date of the funds into the seller's
      *  account, and possible action(s) the seller can take to expedite the payout
      *  of funds into their account. This container is only returned if a payment hold has placed on the order.
      *  <br><br>
      *  See <b>PaymentHoldReasonCodeType</b> for some details on why/when a seller's funds may be held, or visit the <a href="https://www.ebay.com/help/selling/getting-paid/getting-paid-items-youve-sold/pending-payments?id=4816">Pending payments</a> help topic for more information on eBay's payment hold policies.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>Order.PaymentHoldDetails</b> and <b>ContainingOrder.PaymentHoldDetails</b> containers and child fields will stop being returned on January 31, 2024 and will be removed from the Trading WSDL. Payment hold details can be viewed at the transaction level instead.
+     *  </span>
      *
      * @return \Nogrod\eBaySDK\Trading\PaymentHoldDetailType
      */
@@ -1574,13 +1649,17 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
     /**
      * Sets a new paymentHoldDetails
      *
-     * This container consists of information related to the payment hold
+     * <br>
+     *  This container consists of information related to the payment hold
      *  on the order, including the reason why the buyer's payment for the order is
      *  being held, the expected release date of the funds into the seller's
      *  account, and possible action(s) the seller can take to expedite the payout
      *  of funds into their account. This container is only returned if a payment hold has placed on the order.
      *  <br><br>
      *  See <b>PaymentHoldReasonCodeType</b> for some details on why/when a seller's funds may be held, or visit the <a href="https://www.ebay.com/help/selling/getting-paid/getting-paid-items-youve-sold/pending-payments?id=4816">Pending payments</a> help topic for more information on eBay's payment hold policies.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>Order.PaymentHoldDetails</b> and <b>ContainingOrder.PaymentHoldDetails</b> containers and child fields will stop being returned on January 31, 2024 and will be removed from the Trading WSDL. Payment hold details can be viewed at the transaction level instead.
+     *  </span>
      *
      * @param \Nogrod\eBaySDK\Trading\PaymentHoldDetailType $paymentHoldDetails
      * @return self
@@ -1717,9 +1796,13 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
     /**
      * Gets as isMultiLegShipping
      *
-     * If <strong>IsMultilegShipping</strong> is <code>true</code>, at least one order line item in the order will not be shipped directly to the buyer. Orders requiring multiple shipping legs include international orders being shipped through the Global Shipping Program or through eBay International Shipping, as well as orders subject to/eligible for the Authenticity Guarantee program. For both international shipping options, the address of the shipping logistics provider is shown in the <strong>MultiLegShippingDetails.SellerShipmentToLogisticsProvider.ShipToAddress</strong> container. Similarly, for Authenticity Guarantee orders, the authentication partner's shipping address is shown in the same container.
+     * <br>
+     *  If <strong>IsMultilegShipping</strong> is <code>true</code>, at least one order line item in the order will not be shipped directly to the buyer. Orders requiring multiple shipping legs include international orders being shipped through the Global Shipping Program or through eBay International Shipping, as well as orders subject to/eligible for the Authenticity Guarantee program. For both international shipping options, the address of the shipping logistics provider is shown in the <strong>MultiLegShippingDetails.SellerShipmentToLogisticsProvider.ShipToAddress</strong> container. Similarly, for Authenticity Guarantee orders, the authentication partner's shipping address is shown in the same container.
      *  <br><br>
      *  If an order line item is subject to the Authenticity Guarantee service, the &lt;b&gt;Transaction.Program&lt;/b&gt; container will be returned.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>ContainingOrder.IsMultiLegShipping</b> field will stop being returned by <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @return bool
      */
@@ -1731,9 +1814,13 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
     /**
      * Sets a new isMultiLegShipping
      *
-     * If <strong>IsMultilegShipping</strong> is <code>true</code>, at least one order line item in the order will not be shipped directly to the buyer. Orders requiring multiple shipping legs include international orders being shipped through the Global Shipping Program or through eBay International Shipping, as well as orders subject to/eligible for the Authenticity Guarantee program. For both international shipping options, the address of the shipping logistics provider is shown in the <strong>MultiLegShippingDetails.SellerShipmentToLogisticsProvider.ShipToAddress</strong> container. Similarly, for Authenticity Guarantee orders, the authentication partner's shipping address is shown in the same container.
+     * <br>
+     *  If <strong>IsMultilegShipping</strong> is <code>true</code>, at least one order line item in the order will not be shipped directly to the buyer. Orders requiring multiple shipping legs include international orders being shipped through the Global Shipping Program or through eBay International Shipping, as well as orders subject to/eligible for the Authenticity Guarantee program. For both international shipping options, the address of the shipping logistics provider is shown in the <strong>MultiLegShippingDetails.SellerShipmentToLogisticsProvider.ShipToAddress</strong> container. Similarly, for Authenticity Guarantee orders, the authentication partner's shipping address is shown in the same container.
      *  <br><br>
      *  If an order line item is subject to the Authenticity Guarantee service, the &lt;b&gt;Transaction.Program&lt;/b&gt; container will be returned.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>ContainingOrder.IsMultiLegShipping</b> field will stop being returned by <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @param bool $isMultiLegShipping
      * @return self
@@ -1747,9 +1834,13 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
     /**
      * Gets as multiLegShippingDetails
      *
-     * This container consists of details related to the first leg of an order requiring multiple shipping legs. Types of orders that require multiple shipping legs include international orders going through Global Shipping Program or eBay International Shipping, as well as orders subject to/eligible for the Authenticity Guarantee program. </br/></br/>If the item is subject to the Authenticity Guarantee service program, the seller ships the item to the authentication partner, and if the item passes an authentication inspection, the authentication partner ships it directly to the buyer.
+     * <br>
+     *  This container consists of details related to the first leg of an order requiring multiple shipping legs. Types of orders that require multiple shipping legs include international orders going through Global Shipping Program or eBay International Shipping, as well as orders subject to/eligible for the Authenticity Guarantee program. </br/></br/>If the item is subject to the Authenticity Guarantee service program, the seller ships the item to the authentication partner, and if the item passes an authentication inspection, the authentication partner ships it directly to the buyer.
      *  <br/><br/>
      *  This container is only returned if the order has one or more order line items requiring multiple shipping legs.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>ContainingOrder.MultiLegShippingDetails</b> container will stop being returned by <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @return \Nogrod\eBaySDK\Trading\MultiLegShippingDetailsType
      */
@@ -1761,9 +1852,13 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
     /**
      * Sets a new multiLegShippingDetails
      *
-     * This container consists of details related to the first leg of an order requiring multiple shipping legs. Types of orders that require multiple shipping legs include international orders going through Global Shipping Program or eBay International Shipping, as well as orders subject to/eligible for the Authenticity Guarantee program. </br/></br/>If the item is subject to the Authenticity Guarantee service program, the seller ships the item to the authentication partner, and if the item passes an authentication inspection, the authentication partner ships it directly to the buyer.
+     * <br>
+     *  This container consists of details related to the first leg of an order requiring multiple shipping legs. Types of orders that require multiple shipping legs include international orders going through Global Shipping Program or eBay International Shipping, as well as orders subject to/eligible for the Authenticity Guarantee program. </br/></br/>If the item is subject to the Authenticity Guarantee service program, the seller ships the item to the authentication partner, and if the item passes an authentication inspection, the authentication partner ships it directly to the buyer.
      *  <br/><br/>
      *  This container is only returned if the order has one or more order line items requiring multiple shipping legs.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>ContainingOrder.MultiLegShippingDetails</b> container will stop being returned by <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @param \Nogrod\eBaySDK\Trading\MultiLegShippingDetailsType $multiLegShippingDetails
      * @return self
@@ -1777,7 +1872,11 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
     /**
      * Gets as monetaryDetails
      *
-     * Contains information about each monetary transaction that occurs for the order, including order payment, any refund, a credit, etc. Both the payer and payee are shown in this container.
+     * <br>
+     *  Contains information about each monetary transaction that occurs for the order, including order payment, any refund, a credit, etc. Both the payer and payee are shown in this container.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>ContainingOrder.MonetaryDetails</b> container will stop being returned by <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @return \Nogrod\eBaySDK\Trading\PaymentsInformationType
      */
@@ -1789,7 +1888,11 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
     /**
      * Sets a new monetaryDetails
      *
-     * Contains information about each monetary transaction that occurs for the order, including order payment, any refund, a credit, etc. Both the payer and payee are shown in this container.
+     * <br>
+     *  Contains information about each monetary transaction that occurs for the order, including order payment, any refund, a credit, etc. Both the payer and payee are shown in this container.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>ContainingOrder.MonetaryDetails</b> container will stop being returned by <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @param \Nogrod\eBaySDK\Trading\PaymentsInformationType $monetaryDetails
      * @return self
@@ -2215,9 +2318,13 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
     /**
      * Gets as logisticsPlanType
      *
-     * This field will be returned at the order level only if the buyer purchased a digital gift card, which is delivered by email, or if the buyer purchased an item that is enabled with the 'Click and Collect' feature.
+     * <br/>
+     *  This field will be returned at the order level only if the buyer purchased a digital gift card, which is delivered by email, or if the buyer purchased an item that is enabled with the 'Click and Collect' feature.
      *  <br/><br/>
      *  Currently, <strong>LogisticsPlanType</strong> has two applicable values: <code>PickUpDropOff</code>, which indicates that the buyer selected the 'Click and Collect' option. With Click and Collect, buyers are able to purchase from thousands of sellers on the eBay UK and Australia sites, and then pick up their order from the nearest 'eBay Collection Point', including over 750 Argos stores in the UK. The Click and Collect feature is only available on the eBay UK and Australia sites; or, <code>DigitalDelivery</code>, which indicates that the order is a digital gift card that will be delivered to the buyer or recipient of the gift card by email.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>ContainingOrder.LogisticsPlanType</b> field will stop being returned by <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @return string
      */
@@ -2229,9 +2336,13 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
     /**
      * Sets a new logisticsPlanType
      *
-     * This field will be returned at the order level only if the buyer purchased a digital gift card, which is delivered by email, or if the buyer purchased an item that is enabled with the 'Click and Collect' feature.
+     * <br/>
+     *  This field will be returned at the order level only if the buyer purchased a digital gift card, which is delivered by email, or if the buyer purchased an item that is enabled with the 'Click and Collect' feature.
      *  <br/><br/>
      *  Currently, <strong>LogisticsPlanType</strong> has two applicable values: <code>PickUpDropOff</code>, which indicates that the buyer selected the 'Click and Collect' option. With Click and Collect, buyers are able to purchase from thousands of sellers on the eBay UK and Australia sites, and then pick up their order from the nearest 'eBay Collection Point', including over 750 Argos stores in the UK. The Click and Collect feature is only available on the eBay UK and Australia sites; or, <code>DigitalDelivery</code>, which indicates that the order is a digital gift card that will be delivered to the buyer or recipient of the gift card by email.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>ContainingOrder.LogisticsPlanType</b> field will stop being returned by <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @param string $logisticsPlanType
      * @return self
@@ -2245,13 +2356,17 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
     /**
      * Adds as buyerTaxIdentifier
      *
-     * This container will either consist of VAT or Codice Fiscale taxpayer identification information for the buyer.
+     * <br>
+     *  This container will either consist of VAT or Codice Fiscale taxpayer identification information for the buyer.
      *  <br/><br/>
-     *  It is now required that buyers registered on the Italy site provide their Codice Fiscale ID (similar to the Social Security Number for US citizens) before buying an item on the Italy site.
+     *  It is required that buyers registered on the Italy site provide their Codice Fiscale ID (similar to the Social Security Number for US citizens) before buying an item on the Italy site.
      *  <br/><br/>
      *  On the Spain site, a Spanish seller has the option to require that Spanish buyers (registered on Spain site) provide a tax ID before checkout. This option is set by the seller at the account level. Once a Spanish buyer provides a tax ID, this tax ID is associated with his/her account, and once a tax ID is associated with the account, Spanish buyer will be asked to provide the tax ID during checkout on all eBay sites. Buyers with a registered address outside of Spain will not be asked to provide a tax ID during checkout.
      *  <br/><br/>
      *  This container is only returned for Spanish or Italian sellers when the buyer was asked to provide tax identifier information during checkout. A <strong>BuyerTaxIdentifier</strong> container will be returned for each tax ID that is associated with the buyer's account.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>ContainingOrder.BuyerTaxIdentifier</b> container will stop being returned by <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @return self
      * @param \Nogrod\eBaySDK\Trading\TaxIdentifierType $buyerTaxIdentifier
@@ -2265,13 +2380,17 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
     /**
      * isset buyerTaxIdentifier
      *
-     * This container will either consist of VAT or Codice Fiscale taxpayer identification information for the buyer.
+     * <br>
+     *  This container will either consist of VAT or Codice Fiscale taxpayer identification information for the buyer.
      *  <br/><br/>
-     *  It is now required that buyers registered on the Italy site provide their Codice Fiscale ID (similar to the Social Security Number for US citizens) before buying an item on the Italy site.
+     *  It is required that buyers registered on the Italy site provide their Codice Fiscale ID (similar to the Social Security Number for US citizens) before buying an item on the Italy site.
      *  <br/><br/>
      *  On the Spain site, a Spanish seller has the option to require that Spanish buyers (registered on Spain site) provide a tax ID before checkout. This option is set by the seller at the account level. Once a Spanish buyer provides a tax ID, this tax ID is associated with his/her account, and once a tax ID is associated with the account, Spanish buyer will be asked to provide the tax ID during checkout on all eBay sites. Buyers with a registered address outside of Spain will not be asked to provide a tax ID during checkout.
      *  <br/><br/>
      *  This container is only returned for Spanish or Italian sellers when the buyer was asked to provide tax identifier information during checkout. A <strong>BuyerTaxIdentifier</strong> container will be returned for each tax ID that is associated with the buyer's account.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>ContainingOrder.BuyerTaxIdentifier</b> container will stop being returned by <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @param int|string $index
      * @return bool
@@ -2284,13 +2403,17 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
     /**
      * unset buyerTaxIdentifier
      *
-     * This container will either consist of VAT or Codice Fiscale taxpayer identification information for the buyer.
+     * <br>
+     *  This container will either consist of VAT or Codice Fiscale taxpayer identification information for the buyer.
      *  <br/><br/>
-     *  It is now required that buyers registered on the Italy site provide their Codice Fiscale ID (similar to the Social Security Number for US citizens) before buying an item on the Italy site.
+     *  It is required that buyers registered on the Italy site provide their Codice Fiscale ID (similar to the Social Security Number for US citizens) before buying an item on the Italy site.
      *  <br/><br/>
      *  On the Spain site, a Spanish seller has the option to require that Spanish buyers (registered on Spain site) provide a tax ID before checkout. This option is set by the seller at the account level. Once a Spanish buyer provides a tax ID, this tax ID is associated with his/her account, and once a tax ID is associated with the account, Spanish buyer will be asked to provide the tax ID during checkout on all eBay sites. Buyers with a registered address outside of Spain will not be asked to provide a tax ID during checkout.
      *  <br/><br/>
      *  This container is only returned for Spanish or Italian sellers when the buyer was asked to provide tax identifier information during checkout. A <strong>BuyerTaxIdentifier</strong> container will be returned for each tax ID that is associated with the buyer's account.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>ContainingOrder.BuyerTaxIdentifier</b> container will stop being returned by <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @param int|string $index
      * @return void
@@ -2303,13 +2426,17 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
     /**
      * Gets as buyerTaxIdentifier
      *
-     * This container will either consist of VAT or Codice Fiscale taxpayer identification information for the buyer.
+     * <br>
+     *  This container will either consist of VAT or Codice Fiscale taxpayer identification information for the buyer.
      *  <br/><br/>
-     *  It is now required that buyers registered on the Italy site provide their Codice Fiscale ID (similar to the Social Security Number for US citizens) before buying an item on the Italy site.
+     *  It is required that buyers registered on the Italy site provide their Codice Fiscale ID (similar to the Social Security Number for US citizens) before buying an item on the Italy site.
      *  <br/><br/>
      *  On the Spain site, a Spanish seller has the option to require that Spanish buyers (registered on Spain site) provide a tax ID before checkout. This option is set by the seller at the account level. Once a Spanish buyer provides a tax ID, this tax ID is associated with his/her account, and once a tax ID is associated with the account, Spanish buyer will be asked to provide the tax ID during checkout on all eBay sites. Buyers with a registered address outside of Spain will not be asked to provide a tax ID during checkout.
      *  <br/><br/>
      *  This container is only returned for Spanish or Italian sellers when the buyer was asked to provide tax identifier information during checkout. A <strong>BuyerTaxIdentifier</strong> container will be returned for each tax ID that is associated with the buyer's account.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>ContainingOrder.BuyerTaxIdentifier</b> container will stop being returned by <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @return \Nogrod\eBaySDK\Trading\TaxIdentifierType[]
      */
@@ -2321,13 +2448,17 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
     /**
      * Sets a new buyerTaxIdentifier
      *
-     * This container will either consist of VAT or Codice Fiscale taxpayer identification information for the buyer.
+     * <br>
+     *  This container will either consist of VAT or Codice Fiscale taxpayer identification information for the buyer.
      *  <br/><br/>
-     *  It is now required that buyers registered on the Italy site provide their Codice Fiscale ID (similar to the Social Security Number for US citizens) before buying an item on the Italy site.
+     *  It is required that buyers registered on the Italy site provide their Codice Fiscale ID (similar to the Social Security Number for US citizens) before buying an item on the Italy site.
      *  <br/><br/>
      *  On the Spain site, a Spanish seller has the option to require that Spanish buyers (registered on Spain site) provide a tax ID before checkout. This option is set by the seller at the account level. Once a Spanish buyer provides a tax ID, this tax ID is associated with his/her account, and once a tax ID is associated with the account, Spanish buyer will be asked to provide the tax ID during checkout on all eBay sites. Buyers with a registered address outside of Spain will not be asked to provide a tax ID during checkout.
      *  <br/><br/>
      *  This container is only returned for Spanish or Italian sellers when the buyer was asked to provide tax identifier information during checkout. A <strong>BuyerTaxIdentifier</strong> container will be returned for each tax ID that is associated with the buyer's account.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>ContainingOrder.BuyerTaxIdentifier</b> container will stop being returned by <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @param \Nogrod\eBaySDK\Trading\TaxIdentifierType[] $buyerTaxIdentifier
      * @return self
@@ -2341,7 +2472,11 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
     /**
      * Adds as buyerPackageEnclosure
      *
-     * This container is returned in <b>GetOrders</b> (and other order management calls) if the 'Pay Upon Invoice' option is being offered to the buyer, and the seller is including payment instructions in the shipping package(s) for the order. The 'Pay Upon Invoice' option is only available on the Germany site.
+     * <br>
+     *  This container is returned in <b>GetOrders</b> (and other order management calls) if the 'Pay Upon Invoice' option is being offered to the buyer, and the seller is including payment instructions in the shipping package(s) for the order. The 'Pay Upon Invoice' option is only available on the Germany site.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>ContainingOrder.BuyerPackageEnclosures</b> container will stop being returned by <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @return self
      * @param \Nogrod\eBaySDK\Trading\BuyerPackageEnclosureType $buyerPackageEnclosure
@@ -2355,7 +2490,11 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
     /**
      * isset buyerPackageEnclosures
      *
-     * This container is returned in <b>GetOrders</b> (and other order management calls) if the 'Pay Upon Invoice' option is being offered to the buyer, and the seller is including payment instructions in the shipping package(s) for the order. The 'Pay Upon Invoice' option is only available on the Germany site.
+     * <br>
+     *  This container is returned in <b>GetOrders</b> (and other order management calls) if the 'Pay Upon Invoice' option is being offered to the buyer, and the seller is including payment instructions in the shipping package(s) for the order. The 'Pay Upon Invoice' option is only available on the Germany site.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>ContainingOrder.BuyerPackageEnclosures</b> container will stop being returned by <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @param int|string $index
      * @return bool
@@ -2368,7 +2507,11 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
     /**
      * unset buyerPackageEnclosures
      *
-     * This container is returned in <b>GetOrders</b> (and other order management calls) if the 'Pay Upon Invoice' option is being offered to the buyer, and the seller is including payment instructions in the shipping package(s) for the order. The 'Pay Upon Invoice' option is only available on the Germany site.
+     * <br>
+     *  This container is returned in <b>GetOrders</b> (and other order management calls) if the 'Pay Upon Invoice' option is being offered to the buyer, and the seller is including payment instructions in the shipping package(s) for the order. The 'Pay Upon Invoice' option is only available on the Germany site.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>ContainingOrder.BuyerPackageEnclosures</b> container will stop being returned by <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @param int|string $index
      * @return void
@@ -2381,7 +2524,11 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
     /**
      * Gets as buyerPackageEnclosures
      *
-     * This container is returned in <b>GetOrders</b> (and other order management calls) if the 'Pay Upon Invoice' option is being offered to the buyer, and the seller is including payment instructions in the shipping package(s) for the order. The 'Pay Upon Invoice' option is only available on the Germany site.
+     * <br>
+     *  This container is returned in <b>GetOrders</b> (and other order management calls) if the 'Pay Upon Invoice' option is being offered to the buyer, and the seller is including payment instructions in the shipping package(s) for the order. The 'Pay Upon Invoice' option is only available on the Germany site.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>ContainingOrder.BuyerPackageEnclosures</b> container will stop being returned by <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @return \Nogrod\eBaySDK\Trading\BuyerPackageEnclosureType[]
      */
@@ -2393,7 +2540,11 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
     /**
      * Sets a new buyerPackageEnclosures
      *
-     * This container is returned in <b>GetOrders</b> (and other order management calls) if the 'Pay Upon Invoice' option is being offered to the buyer, and the seller is including payment instructions in the shipping package(s) for the order. The 'Pay Upon Invoice' option is only available on the Germany site.
+     * <br>
+     *  This container is returned in <b>GetOrders</b> (and other order management calls) if the 'Pay Upon Invoice' option is being offered to the buyer, and the seller is including payment instructions in the shipping package(s) for the order. The 'Pay Upon Invoice' option is only available on the Germany site.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>ContainingOrder.BuyerPackageEnclosures</b> container will stop being returned by <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @param \Nogrod\eBaySDK\Trading\BuyerPackageEnclosureType[] $buyerPackageEnclosures
      * @return self
@@ -2475,11 +2626,15 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
     /**
      * Gets as eBayCollectAndRemitTax
      *
-     * This boolean field is returned as <code>true</code> if one or more line items in the order are subject to a tax (US sales tax or Australian Goods and Services tax) that eBay will collect and remit to the proper taxing authority on the buyer's behalf. This field is also returned if <code>false</code> (not subject to eBay Collect and Remit). A <b>Transaction.eBayCollectAndRemitTaxes</b> container is returned for any order line items subject to such a tax, and the type and amount of this tax is displayed in the <b>Transaction.eBayCollectAndRemitTaxes.TaxDetails</b> container.
+     * <br/>
+     *  This boolean field is returned as <code>true</code> if one or more line items in the order are subject to a tax (US sales tax or Australian Goods and Services tax) that eBay will collect and remit to the proper taxing authority on the buyer's behalf. This field is also returned if <code>false</code> (not subject to eBay Collect and Remit). A <b>Transaction.eBayCollectAndRemitTaxes</b> container is returned for any order line items subject to such a tax, and the type and amount of this tax is displayed in the <b>Transaction.eBayCollectAndRemitTaxes.TaxDetails</b> container.
      *  <br/><br/>
      *  Australian 'Goods and Services' tax (GST) is automatically charged to buyers outside of Australia when they purchase items on the eBay Australia site. Sellers on the Australia site do not have to take any extra steps to enable the collection of GST, as this tax is collected by eBay and remitted to the Australian government. For more information about Australian GST, see the <a href="https://www.ebay.com.au/help/selling/fees-credits-invoices/taxes-import-charges?id=4121">Taxes and import charges</a> help topic.
      *  <br/><br/>
-     *  As of November 2021, buyers in all US states except for Missouri (and several US territories), will automatically be charged sales tax for purchases, and the seller does not set this rate. eBay will collect and remit this sales tax to the proper taxing authority on the buyer's behalf. For more US state-level information on sales tax, see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section4">eBay sales tax collection</a> help topic.
+     *  As of January 2023, buyers in all US states will automatically be charged sales tax for purchases, and the seller does not set this rate. eBay will collect and remit this sales tax to the proper taxing authority on the buyer's behalf. For more US state-level information on sales tax, see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section3">eBay sales tax collection</a> help topic.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>ContainingOrder.eBayCollectAndRemitTax</b> field will stop being returned by <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @return bool
      */
@@ -2491,11 +2646,15 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
     /**
      * Sets a new eBayCollectAndRemitTax
      *
-     * This boolean field is returned as <code>true</code> if one or more line items in the order are subject to a tax (US sales tax or Australian Goods and Services tax) that eBay will collect and remit to the proper taxing authority on the buyer's behalf. This field is also returned if <code>false</code> (not subject to eBay Collect and Remit). A <b>Transaction.eBayCollectAndRemitTaxes</b> container is returned for any order line items subject to such a tax, and the type and amount of this tax is displayed in the <b>Transaction.eBayCollectAndRemitTaxes.TaxDetails</b> container.
+     * <br/>
+     *  This boolean field is returned as <code>true</code> if one or more line items in the order are subject to a tax (US sales tax or Australian Goods and Services tax) that eBay will collect and remit to the proper taxing authority on the buyer's behalf. This field is also returned if <code>false</code> (not subject to eBay Collect and Remit). A <b>Transaction.eBayCollectAndRemitTaxes</b> container is returned for any order line items subject to such a tax, and the type and amount of this tax is displayed in the <b>Transaction.eBayCollectAndRemitTaxes.TaxDetails</b> container.
      *  <br/><br/>
      *  Australian 'Goods and Services' tax (GST) is automatically charged to buyers outside of Australia when they purchase items on the eBay Australia site. Sellers on the Australia site do not have to take any extra steps to enable the collection of GST, as this tax is collected by eBay and remitted to the Australian government. For more information about Australian GST, see the <a href="https://www.ebay.com.au/help/selling/fees-credits-invoices/taxes-import-charges?id=4121">Taxes and import charges</a> help topic.
      *  <br/><br/>
-     *  As of November 2021, buyers in all US states except for Missouri (and several US territories), will automatically be charged sales tax for purchases, and the seller does not set this rate. eBay will collect and remit this sales tax to the proper taxing authority on the buyer's behalf. For more US state-level information on sales tax, see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section4">eBay sales tax collection</a> help topic.
+     *  As of January 2023, buyers in all US states will automatically be charged sales tax for purchases, and the seller does not set this rate. eBay will collect and remit this sales tax to the proper taxing authority on the buyer's behalf. For more US state-level information on sales tax, see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section3">eBay sales tax collection</a> help topic.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>ContainingOrder.eBayCollectAndRemitTax</b> field will stop being returned by <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @param bool $eBayCollectAndRemitTax
      * @return self
@@ -2509,9 +2668,12 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
     /**
      * Gets as orderLineItemCount
      *
-     * This field indicates the total number of line items in the order. This field is returned under the <b>ContainingOrder</b> container of a <b>GetItemTransactions</b> or <b>GetSellerTransactions</b> call. In order for the <b>ContainingOrder</b> container to be returned, a user must include the <b>IncludeContainingOrder</b> field in the call request and set its value to <b>true</b>.
+     * <br/>
+     *  This field indicates the total number of line items in the order. This field is returned under the <b>ContainingOrder</b> container of a <b>GetItemTransactions</b> or <b>GetSellerTransactions</b> call. In order for the <b>ContainingOrder</b> container to be returned, a user must include the <b>IncludeContainingOrder</b> field in the call request and set its value to <b>true</b>.
      *  <br/><br/>
      *  <span class="tablenote"><b>Note:</b> This field is automatically returned if the user is using Version 1113 of the Trading WSDL (or newer), or if the user includes the <b>X-EBAY-API-COMPATIBILITY-LEVEL</b> HTTP header and sets its value to <code>1113</code> (or newer). If a user is using a Trading WSDL older than 1113 (or is not setting the <b>X-EBAY-API-COMPATIBILITY-LEVEL</b> HTTP header value to 1113 or newer), this field will not be returned.
+     *  </span>
+     *  <span class="tablenote"><b>Note: </b> This field will stop being returned by <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
      *  </span>
      *
      * @return int
@@ -2524,9 +2686,12 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
     /**
      * Sets a new orderLineItemCount
      *
-     * This field indicates the total number of line items in the order. This field is returned under the <b>ContainingOrder</b> container of a <b>GetItemTransactions</b> or <b>GetSellerTransactions</b> call. In order for the <b>ContainingOrder</b> container to be returned, a user must include the <b>IncludeContainingOrder</b> field in the call request and set its value to <b>true</b>.
+     * <br/>
+     *  This field indicates the total number of line items in the order. This field is returned under the <b>ContainingOrder</b> container of a <b>GetItemTransactions</b> or <b>GetSellerTransactions</b> call. In order for the <b>ContainingOrder</b> container to be returned, a user must include the <b>IncludeContainingOrder</b> field in the call request and set its value to <b>true</b>.
      *  <br/><br/>
      *  <span class="tablenote"><b>Note:</b> This field is automatically returned if the user is using Version 1113 of the Trading WSDL (or newer), or if the user includes the <b>X-EBAY-API-COMPATIBILITY-LEVEL</b> HTTP header and sets its value to <code>1113</code> (or newer). If a user is using a Trading WSDL older than 1113 (or is not setting the <b>X-EBAY-API-COMPATIBILITY-LEVEL</b> HTTP header value to 1113 or newer), this field will not be returned.
+     *  </span>
+     *  <span class="tablenote"><b>Note: </b> This field will stop being returned by <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
      *  </span>
      *
      * @param int $orderLineItemCount

@@ -16,7 +16,11 @@ use Nogrod\XMLClientRuntime\Func;
 class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
     /**
-     * If <code>true</code>, indicates that the user has set up an About Me page.
+     * <br>
+     *  A value of <code>true</code> indicates that the user has set up an About Me page.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> This field will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @var bool $aboutMePage
      */
@@ -157,55 +161,62 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     private $feedbackPrivate = null;
 
     /**
-     * Visual indicator of user's feedback score. See <b>FeedbackRatingStarCodeType</b> for
-     *  specific values.
-     *  <br><br>
-     *  <b>For GetOrders, GetOrderTransactions, and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this field will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, the accurate Feedback Rating Star value for the user is returned to the buyer or seller, but a dummy value of <code>None</code> will be returned to all third parties.
+     * <br>
+     *  A visual indicator of an eBay user's Feedback score. A different colored star is used for each range of Feedback scores. See <b>FeedbackRatingStarCodeType</b> for specific values.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> This field will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @var string $feedbackRatingStar
      */
     private $feedbackRatingStar = null;
 
     /**
-     * Indicates whether the user has been verified. For more information
+     * <br>
+     *  Indicates whether the user has been verified. For more information
      *  about the ID Verify program, see:
-     *  <a href="http://pages.ebay.com/help/policies/identity-idverify.html">Protecting your account</a>
+     *  <a href="https://pages.ebay.com/help/policies/identity-idverify.html">Protecting your account</a>
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> This field will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @var bool $iDVerified
      */
     private $iDVerified = null;
 
     /**
-     * If <code>true</code>, indicates that the user is in good standing with eBay.
+     * <br>
+     *  This boolean field is returned as <code>true</code> if the eBay user is in good standing with eBay.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> This field will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @var bool $eBayGoodStanding
      */
     private $eBayGoodStanding = null;
 
     /**
-     * If <code>true</code>, identifies a new user who has been a registered eBay user for 30 days
-     *  or less. This is always <code>false</code> after the user has been registered for more than 30
-     *  days. Does not indicate an ID change (see <b>UserIdChanged</b>).
+     * This boolean is returned as <code>true</code> if the eBay user has been registered on eBay for 30 days or less.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>Buyer.NewUser</b> field will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @var bool $newUser
      */
     private $newUser = null;
 
     /**
-     * This container consists of the Registration address for the eBay user making the call.<br>
+     * <br>
+     *  This container consists of the Registration address for the eBay user.<br>
      *  <br>
      *  <b>GetUser:</b> eBay returns complete
      *  <b>RegistrationAddress</b> details (including Phone), as applicable to the
      *  registration site for the eBay user making the call.
      *  <br><br>
-     *  <b>GetItem and GetSellerTransactions:</b> <b>RegistrationAddress</b> for another user
-     *  (except for Phone) is only returned if you have an order relationship
-     *  with that user AND that user is registered on DE/AT/CH, regardless of your
-     *  registration site and the site to which you send the request. For example,
-     *  the seller can see the buyer's registration address if the buyer is
-     *  registered on DE/AT/CH, or the buyer can see the seller's registration
-     *  address if the seller is registered on DE/AT/CH. (The buyer and seller won't
-     *  see their own registration addresses in <b>GetItem</b>.)
+     *  <b>GetItem and GetSellerTransactions:</b> <b>RegistrationAddress</b> for another user (except for Phone) is only returned if you have an order relationship with that user AND that user is registered on DE/AT/CH, regardless of your registration site and the site to which you send the request. For example, the seller can see the buyer's registration address if the buyer is registered on DE/AT/CH, or the buyer can see the seller's registration address if the seller is registered on DE/AT/CH. (The buyer and seller won't see their own registration addresses in <b>GetItem</b>.)
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> This container and its child fields will stop being returned in <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @var \Nogrod\eBaySDK\Trading\AddressType $registrationAddress
      */
@@ -294,13 +305,10 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     private $userIDChanged = null;
 
     /**
-     * Date and time the user's data was last changed (in GMT).
-     *  <br><br>
-     *  Since a bidder's user info is anonymous, this tag will be returned only to that bidder,
-     *  and to the seller of an item that the user is bidding on.
-     *  <br> <br>
-     *  <span class="tablenote"><b>Note:</b>
-     *  For the <strong>GetItemTransactions</strong> call, this field is only returned to the seller of the order; this field is not returned for the buyer or third party.
+     * <br>
+     *  Date and time when the user last changed their eBay user ID (in GMT).
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>Buyer.UserIDLastChanged</b> field will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
      *  </span>
      *
      * @var \DateTime $userIDLastChanged
@@ -328,14 +336,12 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     private $buyerInfo = null;
 
     /**
-     * Contains information about a seller, including listing settings, listing
+     * <br>
+     *  Contains information about a seller, including listing settings, listing
      *  preferences, seller rankings, and seller type.
-     *  <br><br>
-     *  This field is replaced by the <b>SellerBusinessType</b>
-     *  field if the user is a business seller with a site
-     *  ID of 77 (Germany), ID of 3 (UK), ID of 205 (Ireland) or ID of 0 (US Motors).
-     *  <br><br>
-     *  See <b>SellerType</b> or <b>SellerBusinessCodeType</b> for the child elements.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> This container will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @var \Nogrod\eBaySDK\Trading\SellerType $sellerInfo
      */
@@ -494,10 +500,11 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     private $qualifiesForSelling = null;
 
     /**
-     * Contains the static email address of an eBay member, used within the "reply to"
-     *  email address when the eBay member sends a message.
-     *  (Each eBay member is assigned a static alias. The alias is
-     *  used within a static email address.)
+     * <br>
+     *  Contains the static email address of an eBay member, used within the "reply to" email address when the eBay member sends a message. (Each eBay member is assigned a static alias. The alias is used within a static email address.)
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> This field will stop being returned on January 31, 2024.
+     *  </span>
      *
      * @var string $staticAlias
      */
@@ -522,14 +529,22 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     private $membership = null;
 
     /**
-     * The first name of the buyer who purchased the order.
+     * <br>
+     *  The first name of the buyer or seller involved in the order.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>Seller.UserFirstName</b> field will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @var string $userFirstName
      */
     private $userFirstName = null;
 
     /**
-     * The last name of the buyer who purchased the order.
+     * <br>
+     *  The last name of the buyer or seller involved in the order.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>Seller.UserLastName</b> field will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @var string $userLastName
      */
@@ -538,7 +553,11 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Gets as aboutMePage
      *
-     * If <code>true</code>, indicates that the user has set up an About Me page.
+     * <br>
+     *  A value of <code>true</code> indicates that the user has set up an About Me page.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> This field will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @return bool
      */
@@ -550,7 +569,11 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Sets a new aboutMePage
      *
-     * If <code>true</code>, indicates that the user has set up an About Me page.
+     * <br>
+     *  A value of <code>true</code> indicates that the user has set up an About Me page.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> This field will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @param bool $aboutMePage
      * @return self
@@ -916,10 +939,11 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Gets as feedbackRatingStar
      *
-     * Visual indicator of user's feedback score. See <b>FeedbackRatingStarCodeType</b> for
-     *  specific values.
-     *  <br><br>
-     *  <b>For GetOrders, GetOrderTransactions, and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this field will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, the accurate Feedback Rating Star value for the user is returned to the buyer or seller, but a dummy value of <code>None</code> will be returned to all third parties.
+     * <br>
+     *  A visual indicator of an eBay user's Feedback score. A different colored star is used for each range of Feedback scores. See <b>FeedbackRatingStarCodeType</b> for specific values.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> This field will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @return string
      */
@@ -931,10 +955,11 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Sets a new feedbackRatingStar
      *
-     * Visual indicator of user's feedback score. See <b>FeedbackRatingStarCodeType</b> for
-     *  specific values.
-     *  <br><br>
-     *  <b>For GetOrders, GetOrderTransactions, and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this field will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, the accurate Feedback Rating Star value for the user is returned to the buyer or seller, but a dummy value of <code>None</code> will be returned to all third parties.
+     * <br>
+     *  A visual indicator of an eBay user's Feedback score. A different colored star is used for each range of Feedback scores. See <b>FeedbackRatingStarCodeType</b> for specific values.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> This field will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @param string $feedbackRatingStar
      * @return self
@@ -948,9 +973,13 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Gets as iDVerified
      *
-     * Indicates whether the user has been verified. For more information
+     * <br>
+     *  Indicates whether the user has been verified. For more information
      *  about the ID Verify program, see:
-     *  <a href="http://pages.ebay.com/help/policies/identity-idverify.html">Protecting your account</a>
+     *  <a href="https://pages.ebay.com/help/policies/identity-idverify.html">Protecting your account</a>
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> This field will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @return bool
      */
@@ -962,9 +991,13 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Sets a new iDVerified
      *
-     * Indicates whether the user has been verified. For more information
+     * <br>
+     *  Indicates whether the user has been verified. For more information
      *  about the ID Verify program, see:
-     *  <a href="http://pages.ebay.com/help/policies/identity-idverify.html">Protecting your account</a>
+     *  <a href="https://pages.ebay.com/help/policies/identity-idverify.html">Protecting your account</a>
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> This field will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @param bool $iDVerified
      * @return self
@@ -978,7 +1011,11 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Gets as eBayGoodStanding
      *
-     * If <code>true</code>, indicates that the user is in good standing with eBay.
+     * <br>
+     *  This boolean field is returned as <code>true</code> if the eBay user is in good standing with eBay.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> This field will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @return bool
      */
@@ -990,7 +1027,11 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Sets a new eBayGoodStanding
      *
-     * If <code>true</code>, indicates that the user is in good standing with eBay.
+     * <br>
+     *  This boolean field is returned as <code>true</code> if the eBay user is in good standing with eBay.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> This field will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @param bool $eBayGoodStanding
      * @return self
@@ -1004,9 +1045,10 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Gets as newUser
      *
-     * If <code>true</code>, identifies a new user who has been a registered eBay user for 30 days
-     *  or less. This is always <code>false</code> after the user has been registered for more than 30
-     *  days. Does not indicate an ID change (see <b>UserIdChanged</b>).
+     * This boolean is returned as <code>true</code> if the eBay user has been registered on eBay for 30 days or less.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>Buyer.NewUser</b> field will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @return bool
      */
@@ -1018,9 +1060,10 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Sets a new newUser
      *
-     * If <code>true</code>, identifies a new user who has been a registered eBay user for 30 days
-     *  or less. This is always <code>false</code> after the user has been registered for more than 30
-     *  days. Does not indicate an ID change (see <b>UserIdChanged</b>).
+     * This boolean is returned as <code>true</code> if the eBay user has been registered on eBay for 30 days or less.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>Buyer.NewUser</b> field will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @param bool $newUser
      * @return self
@@ -1034,20 +1077,17 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Gets as registrationAddress
      *
-     * This container consists of the Registration address for the eBay user making the call.<br>
+     * <br>
+     *  This container consists of the Registration address for the eBay user.<br>
      *  <br>
      *  <b>GetUser:</b> eBay returns complete
      *  <b>RegistrationAddress</b> details (including Phone), as applicable to the
      *  registration site for the eBay user making the call.
      *  <br><br>
-     *  <b>GetItem and GetSellerTransactions:</b> <b>RegistrationAddress</b> for another user
-     *  (except for Phone) is only returned if you have an order relationship
-     *  with that user AND that user is registered on DE/AT/CH, regardless of your
-     *  registration site and the site to which you send the request. For example,
-     *  the seller can see the buyer's registration address if the buyer is
-     *  registered on DE/AT/CH, or the buyer can see the seller's registration
-     *  address if the seller is registered on DE/AT/CH. (The buyer and seller won't
-     *  see their own registration addresses in <b>GetItem</b>.)
+     *  <b>GetItem and GetSellerTransactions:</b> <b>RegistrationAddress</b> for another user (except for Phone) is only returned if you have an order relationship with that user AND that user is registered on DE/AT/CH, regardless of your registration site and the site to which you send the request. For example, the seller can see the buyer's registration address if the buyer is registered on DE/AT/CH, or the buyer can see the seller's registration address if the seller is registered on DE/AT/CH. (The buyer and seller won't see their own registration addresses in <b>GetItem</b>.)
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> This container and its child fields will stop being returned in <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @return \Nogrod\eBaySDK\Trading\AddressType
      */
@@ -1059,20 +1099,17 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Sets a new registrationAddress
      *
-     * This container consists of the Registration address for the eBay user making the call.<br>
+     * <br>
+     *  This container consists of the Registration address for the eBay user.<br>
      *  <br>
      *  <b>GetUser:</b> eBay returns complete
      *  <b>RegistrationAddress</b> details (including Phone), as applicable to the
      *  registration site for the eBay user making the call.
      *  <br><br>
-     *  <b>GetItem and GetSellerTransactions:</b> <b>RegistrationAddress</b> for another user
-     *  (except for Phone) is only returned if you have an order relationship
-     *  with that user AND that user is registered on DE/AT/CH, regardless of your
-     *  registration site and the site to which you send the request. For example,
-     *  the seller can see the buyer's registration address if the buyer is
-     *  registered on DE/AT/CH, or the buyer can see the seller's registration
-     *  address if the seller is registered on DE/AT/CH. (The buyer and seller won't
-     *  see their own registration addresses in <b>GetItem</b>.)
+     *  <b>GetItem and GetSellerTransactions:</b> <b>RegistrationAddress</b> for another user (except for Phone) is only returned if you have an order relationship with that user AND that user is registered on DE/AT/CH, regardless of your registration site and the site to which you send the request. For example, the seller can see the buyer's registration address if the buyer is registered on DE/AT/CH, or the buyer can see the seller's registration address if the seller is registered on DE/AT/CH. (The buyer and seller won't see their own registration addresses in <b>GetItem</b>.)
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> This container and its child fields will stop being returned in <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @param \Nogrod\eBaySDK\Trading\AddressType $registrationAddress
      * @return self
@@ -1310,13 +1347,10 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Gets as userIDLastChanged
      *
-     * Date and time the user's data was last changed (in GMT).
-     *  <br><br>
-     *  Since a bidder's user info is anonymous, this tag will be returned only to that bidder,
-     *  and to the seller of an item that the user is bidding on.
-     *  <br> <br>
-     *  <span class="tablenote"><b>Note:</b>
-     *  For the <strong>GetItemTransactions</strong> call, this field is only returned to the seller of the order; this field is not returned for the buyer or third party.
+     * <br>
+     *  Date and time when the user last changed their eBay user ID (in GMT).
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>Buyer.UserIDLastChanged</b> field will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
      *  </span>
      *
      * @return \DateTime
@@ -1329,13 +1363,10 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Sets a new userIDLastChanged
      *
-     * Date and time the user's data was last changed (in GMT).
-     *  <br><br>
-     *  Since a bidder's user info is anonymous, this tag will be returned only to that bidder,
-     *  and to the seller of an item that the user is bidding on.
-     *  <br> <br>
-     *  <span class="tablenote"><b>Note:</b>
-     *  For the <strong>GetItemTransactions</strong> call, this field is only returned to the seller of the order; this field is not returned for the buyer or third party.
+     * <br>
+     *  Date and time when the user last changed their eBay user ID (in GMT).
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>Buyer.UserIDLastChanged</b> field will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
      *  </span>
      *
      * @param \DateTime $userIDLastChanged
@@ -1414,14 +1445,12 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Gets as sellerInfo
      *
-     * Contains information about a seller, including listing settings, listing
+     * <br>
+     *  Contains information about a seller, including listing settings, listing
      *  preferences, seller rankings, and seller type.
-     *  <br><br>
-     *  This field is replaced by the <b>SellerBusinessType</b>
-     *  field if the user is a business seller with a site
-     *  ID of 77 (Germany), ID of 3 (UK), ID of 205 (Ireland) or ID of 0 (US Motors).
-     *  <br><br>
-     *  See <b>SellerType</b> or <b>SellerBusinessCodeType</b> for the child elements.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> This container will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @return \Nogrod\eBaySDK\Trading\SellerType
      */
@@ -1433,14 +1462,12 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Sets a new sellerInfo
      *
-     * Contains information about a seller, including listing settings, listing
+     * <br>
+     *  Contains information about a seller, including listing settings, listing
      *  preferences, seller rankings, and seller type.
-     *  <br><br>
-     *  This field is replaced by the <b>SellerBusinessType</b>
-     *  field if the user is a business seller with a site
-     *  ID of 77 (Germany), ID of 3 (UK), ID of 205 (Ireland) or ID of 0 (US Motors).
-     *  <br><br>
-     *  See <b>SellerType</b> or <b>SellerBusinessCodeType</b> for the child elements.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> This container will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @param \Nogrod\eBaySDK\Trading\SellerType $sellerInfo
      * @return self
@@ -2086,10 +2113,11 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Gets as staticAlias
      *
-     * Contains the static email address of an eBay member, used within the "reply to"
-     *  email address when the eBay member sends a message.
-     *  (Each eBay member is assigned a static alias. The alias is
-     *  used within a static email address.)
+     * <br>
+     *  Contains the static email address of an eBay member, used within the "reply to" email address when the eBay member sends a message. (Each eBay member is assigned a static alias. The alias is used within a static email address.)
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> This field will stop being returned on January 31, 2024.
+     *  </span>
      *
      * @return string
      */
@@ -2101,10 +2129,11 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Sets a new staticAlias
      *
-     * Contains the static email address of an eBay member, used within the "reply to"
-     *  email address when the eBay member sends a message.
-     *  (Each eBay member is assigned a static alias. The alias is
-     *  used within a static email address.)
+     * <br>
+     *  Contains the static email address of an eBay member, used within the "reply to" email address when the eBay member sends a message. (Each eBay member is assigned a static alias. The alias is used within a static email address.)
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> This field will stop being returned on January 31, 2024.
+     *  </span>
      *
      * @param string $staticAlias
      * @return self
@@ -2218,7 +2247,11 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Gets as userFirstName
      *
-     * The first name of the buyer who purchased the order.
+     * <br>
+     *  The first name of the buyer or seller involved in the order.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>Seller.UserFirstName</b> field will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @return string
      */
@@ -2230,7 +2263,11 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Sets a new userFirstName
      *
-     * The first name of the buyer who purchased the order.
+     * <br>
+     *  The first name of the buyer or seller involved in the order.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>Seller.UserFirstName</b> field will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @param string $userFirstName
      * @return self
@@ -2244,7 +2281,11 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Gets as userLastName
      *
-     * The last name of the buyer who purchased the order.
+     * <br>
+     *  The last name of the buyer or seller involved in the order.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>Seller.UserLastName</b> field will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @return string
      */
@@ -2256,7 +2297,11 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Sets a new userLastName
      *
-     * The last name of the buyer who purchased the order.
+     * <br>
+     *  The last name of the buyer or seller involved in the order.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> The <b>Seller.UserLastName</b> field will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
+     *  </span>
      *
      * @param string $userLastName
      * @return self
