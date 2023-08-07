@@ -75,7 +75,7 @@ class OAuthClient
             'scope'         => implode(' ', $scope),
         ];
 
-        return $url.http_build_query($urlParams, null, '&', PHP_QUERY_RFC3986);
+        return $url.http_build_query($urlParams, '', '&', PHP_QUERY_RFC3986);
     }
 
     public function getConfig($option = null)
@@ -184,6 +184,6 @@ class OAuthClient
             return $carry;
         }, []);
 
-        return empty($request) ? '' : http_build_query($params, null, '&', PHP_QUERY_RFC3986);
+        return empty($request) ? '' : http_build_query($params, '', '&', PHP_QUERY_RFC3986);
     }
 }
