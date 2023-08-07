@@ -1,4 +1,4 @@
-# nogrod/eBaySDK
+# nogrod/ebay-sdk-php
 =======
 
 eBaySDK PHP
@@ -10,7 +10,7 @@ eBaySDK PHP
 Require the bundle in your `composer.json` file:
 
 ``` bash
-$ composer require nogrod/eBaySDK
+$ composer require nogrod/ebay-sdk-php
 ```
 
 ## Download latest WSDL/XSD
