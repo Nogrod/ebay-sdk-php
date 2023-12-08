@@ -2,10 +2,10 @@
 
 namespace Nogrod\eBaySDK\Finding\Client;
 
-use Http\Client\HttpClient;
-use Http\Message\MessageFactory;
+use Http\Discovery\Psr17Factory;
 use JMS\Serializer\Serializer;
 use Nogrod\eBaySDK\Constants\Version;
+use Psr\Http\Client\ClientInterface;
 
 class FindingClient extends FindingBaseClient
 {
@@ -21,7 +21,7 @@ class FindingClient extends FindingBaseClient
 
     public const SANDBOX_URL = 'https://svcs.sandbox.ebay.com/services/search/FindingService/v1';
 
-    public function __construct(array $config = [], Serializer $serializer = null, MessageFactory $messageFactory = null, HttpClient $client = null)
+    public function __construct(array $config = [], Serializer $serializer = null, Psr17Factory $messageFactory = null, ClientInterface $client = null)
     {
         $config = array_merge([
             'sandbox' => false,

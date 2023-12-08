@@ -2,9 +2,8 @@
 
 namespace Nogrod\eBaySDK\OAuth\Client;
 
-use Http\Client\HttpClient;
-use Http\Discovery\HttpClientDiscovery;
-use Http\Discovery\MessageFactoryDiscovery;
+use Http\Discovery\Psr17Factory;
+use Http\Discovery\Psr18ClientDiscovery;
 use Http\Message\MessageFactory;
 use Nogrod\eBaySDK\OAuth\BaseType;
 use Nogrod\eBaySDK\OAuth\GetAppTokenRestRequest;
@@ -13,6 +12,7 @@ use Nogrod\eBaySDK\OAuth\GetUserTokenRestRequest;
 use Nogrod\eBaySDK\OAuth\GetUserTokenRestResponse;
 use Nogrod\eBaySDK\OAuth\RefreshUserTokenRestRequest;
 use Nogrod\eBaySDK\OAuth\RefreshUserTokenRestResponse;
+use Psr\Http\Client\ClientInterface;
 
 class OAuthClient
 {
@@ -23,12 +23,12 @@ class OAuthClient
     public const SANDBOX_URL = 'https://api.sandbox.ebay.com/identity/v1/oauth2/token';
 
     /**
-     * @var HttpClient
+     * @var ClientInterface
      */
     protected $client;
 
     /**
-     * @var MessageFactory
+     * @var Psr17Factory
      */
     protected $messageFactory;
 
@@ -37,10 +37,10 @@ class OAuthClient
     /**
      * OAuthClient constructor.
      * @param array $config
-     * @param MessageFactory|null $messageFactory
-     * @param HttpClient|null $client
+     * @param Psr17Factory|null $messageFactory
+     * @param ClientInterface|null $client
      */
-    public function __construct(array $config = [], MessageFactory $messageFactory = null, HttpClient $client = null)
+    public function __construct(array $config = [], Psr17Factory $messageFactory = null, ClientInterface $client = null)
     {
         $config = array_merge([
             'sandbox' => false,
@@ -51,8 +51,8 @@ class OAuthClient
             'ruName' => null,
         ], $config);
         $this->config = $config;
-        $this->client = $client ?: HttpClientDiscovery::find();
-        $this->messageFactory = $messageFactory ?: MessageFactoryDiscovery::find();
+        $this->client = $client ?: Psr18ClientDiscovery::find();
+        $this->messageFactory = $messageFactory ?: new Psr17Factory();
     }
 
     /**

@@ -2,12 +2,12 @@
 
 namespace Nogrod\eBaySDK\Trading\Client;
 
-use Http\Client\HttpClient;
-use Http\Message\MessageFactory;
+use Http\Discovery\Psr17Factory;
 use JMS\Serializer\Serializer;
 use Nogrod\eBaySDK\Constants\Version;
 use Nogrod\eBaySDK\Trading\AbstractRequestType;
 use Nogrod\eBaySDK\Trading\XMLRequesterCredentialsType;
+use Psr\Http\Client\ClientInterface;
 
 class TradingClient extends EBayAPIBaseClient
 {
@@ -29,7 +29,7 @@ class TradingClient extends EBayAPIBaseClient
 
     public const SANDBOX_URL = 'https://api.sandbox.ebay.com/ws/api.dll';
 
-    public function __construct(array $config = [], Serializer $serializer = null, MessageFactory $messageFactory = null, HttpClient $client = null)
+    public function __construct(array $config = [], Serializer $serializer = null, Psr17Factory $messageFactory = null, ClientInterface $client = null)
     {
         $config = array_merge([
             'sandbox' => false,
