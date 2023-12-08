@@ -112,9 +112,7 @@ class VerifiedUserRequirementsDetailsType implements \Sabre\Xml\XmlSerializable,
         }
         $value = $this->getFeedbackScore();
         if (null !== $value && !empty($this->getFeedbackScore())) {
-            $writer->write(array_map(function ($v) {
-                return ["FeedbackScore" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["FeedbackScore" => $v];}, $value));
         }
     }
 

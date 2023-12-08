@@ -199,9 +199,7 @@ class ProductSearchResultType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
         }
         $value = $this->getAttributeSet();
         if (null !== $value && !empty($this->getAttributeSet())) {
-            $writer->write(array_map(function ($v) {
-                return ["AttributeSet" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["AttributeSet" => $v];}, $value));
         }
         $value = $this->getDisplayStockPhotos();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;
@@ -234,9 +232,7 @@ class ProductSearchResultType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AttributeSet', true);
         if (null !== $value && !empty($value)) {
-            $this->setAttributeSet(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\ResponseAttributeSetType::fromKeyValue($v);
-            }, $value));
+            $this->setAttributeSet(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\ResponseAttributeSetType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DisplayStockPhotos');
         if (null !== $value) {

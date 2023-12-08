@@ -92,9 +92,7 @@ class RefundTransactionArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\X
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getRefundTransaction();
         if (null !== $value && !empty($this->getRefundTransaction())) {
-            $writer->write(array_map(function ($v) {
-                return ["RefundTransaction" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["RefundTransaction" => $v];}, $value));
         }
     }
 
@@ -114,9 +112,7 @@ class RefundTransactionArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\X
     {
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RefundTransaction', true);
         if (null !== $value && !empty($value)) {
-            $this->setRefundTransaction(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\RefundTransactionType::fromKeyValue($v);
-            }, $value));
+            $this->setRefundTransaction(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\RefundTransactionType::fromKeyValue($v);}, $value));
         }
     }
 }

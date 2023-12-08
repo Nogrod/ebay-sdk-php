@@ -958,9 +958,7 @@ class GetUserPreferencesResponseType extends AbstractResponseType
         }
         $value = $this->getSellerExcludeShipToLocationPreferences();
         if (null !== $value && !empty($this->getSellerExcludeShipToLocationPreferences())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SellerExcludeShipToLocationPreferences", array_map(function ($v) {
-                return ["ExcludeShipToLocation" => $v];
-            }, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SellerExcludeShipToLocationPreferences", array_map(function ($v) {return ["ExcludeShipToLocation" => $v];}, $value));
         }
         $value = $this->getPurchaseReminderEmailPreferences();
         if (null !== $value) {
@@ -1010,9 +1008,7 @@ class GetUserPreferencesResponseType extends AbstractResponseType
         }
         $value = $this->getEBayPLUSPreference();
         if (null !== $value && !empty($this->getEBayPLUSPreference())) {
-            $writer->write(array_map(function ($v) {
-                return ["eBayPLUSPreference" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["eBayPLUSPreference" => $v];}, $value));
         }
     }
 
@@ -1117,9 +1113,7 @@ class GetUserPreferencesResponseType extends AbstractResponseType
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}eBayPLUSPreference', true);
         if (null !== $value && !empty($value)) {
-            $this->setEBayPLUSPreference(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\EBayPLUSPreferenceType::fromKeyValue($v);
-            }, $value));
+            $this->setEBayPLUSPreference(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\EBayPLUSPreferenceType::fromKeyValue($v);}, $value));
         }
     }
 }

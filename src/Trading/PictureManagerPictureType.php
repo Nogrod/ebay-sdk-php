@@ -203,9 +203,7 @@ class PictureManagerPictureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
         }
         $value = $this->getDisplayFormat();
         if (null !== $value && !empty($this->getDisplayFormat())) {
-            $writer->write(array_map(function ($v) {
-                return ["DisplayFormat" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["DisplayFormat" => $v];}, $value));
         }
     }
 
@@ -237,9 +235,7 @@ class PictureManagerPictureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DisplayFormat', true);
         if (null !== $value && !empty($value)) {
-            $this->setDisplayFormat(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\PictureManagerPictureDisplayType::fromKeyValue($v);
-            }, $value));
+            $this->setDisplayFormat(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\PictureManagerPictureDisplayType::fromKeyValue($v);}, $value));
         }
     }
 }

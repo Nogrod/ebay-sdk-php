@@ -132,9 +132,7 @@ class PaginatedTransactionArrayType implements \Sabre\Xml\XmlSerializable, \Sabr
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getTransactionArray();
         if (null !== $value && !empty($this->getTransactionArray())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TransactionArray", array_map(function ($v) {
-                return ["Transaction" => $v];
-            }, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TransactionArray", array_map(function ($v) {return ["Transaction" => $v];}, $value));
         }
         $value = $this->getPaginationResult();
         if (null !== $value) {
@@ -158,9 +156,7 @@ class PaginatedTransactionArrayType implements \Sabre\Xml\XmlSerializable, \Sabr
     {
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TransactionArray', true);
         if (null !== $value && !empty($value)) {
-            $this->setTransactionArray(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\TransactionType::fromKeyValue($v);
-            }, $value));
+            $this->setTransactionArray(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\TransactionType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaginationResult');
         if (null !== $value) {

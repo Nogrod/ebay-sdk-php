@@ -3526,11 +3526,9 @@
 								&lt;li&gt;ExcludeCategory&lt;/li&gt;
 								&lt;li&gt;ExcludeSeller&lt;/li&gt;
 								&lt;li&gt;ExpeditedShippingType&lt;/li&gt;
-								&lt;li&gt;FeaturedOnly&lt;/li&gt;
 								&lt;li&gt;FeedbackScoreMax&lt;/li&gt;
 								&lt;li&gt;FeedbackScoreMin&lt;/li&gt;
 								&lt;li&gt;FreeShippingOnly&lt;/li&gt;
-								&lt;li&gt;GetItFastOnly&lt;/li&gt;
 								&lt;li&gt;HideDuplicateItems&lt;/li&gt;
 								&lt;li&gt;ListedIn&lt;/li&gt;
 								&lt;li&gt;ListingType&lt;/li&gt;
@@ -3547,13 +3545,11 @@
 								&lt;li&gt;MinPrice&lt;/li&gt;
 								&lt;li&gt;MinQuantity&lt;/li&gt;
 								&lt;li&gt;ModTimeFrom&lt;/li&gt;
-								&lt;li&gt;PaymentMethod&lt;/li&gt;
 								&lt;li&gt;ReturnsAcceptedOnly&lt;/li&gt;
 								&lt;li&gt;Seller&lt;/li&gt;
 								&lt;li&gt;SellerBusinessType&lt;/li&gt;
 								&lt;li&gt;TopRatedSellerOnly&lt;/li&gt;
 								&lt;li&gt;ValueBoxInventory&lt;/li&gt;
-								&lt;li&gt;WorldOfGoodOnly&lt;/li&gt;
 								&lt;/ul&gt;
 
 							</xs:documentation>
@@ -4499,9 +4495,13 @@
 
 
 		<xs:simpleType name="ItemFilterType">
-        		<xs:annotation><xs:documentation>
+        		<xs:annotation>
+					<xs:documentation>
 						Values that can be used for the itemFilter.name field.
 					</xs:documentation>
+					<xs:appinfo>
+						<AllValuesExcept>FeaturedOnly, GetItFastOnly, OutletSellerOnly, PaymentMethod, WorldOfGoodOnly</AllValuesExcept>
+					</xs:appinfo>					
         		<xs:appinfo><typeLibrarySource library="SearchTypeLibrary" namespace="http://www.ebay.com/marketplace/search/v1/services"></typeLibrarySource></xs:appinfo></xs:annotation>
        <xs:restriction base="xs:string">
 			<xs:enumeration value="Condition">
@@ -5325,6 +5325,7 @@
 							</xs:documentation>
 						</xs:annotation>
 					</xs:enumeration>
+				
 					<xs:enumeration value="OutletSellerOnly">
 						<xs:annotation>
 							<xs:documentation>
@@ -6086,17 +6087,6 @@
 										also be listed in a seller's eBay Store if the seller is a Store
 										owner.
 									&lt;/dd&gt;
-									&lt;dt&gt;
-										StoreInventory
-									&lt;/dt&gt;
-									&lt;dd&gt;
-										A fixed-price format for eBay Store sellers. Store Inventory listings
-										appear after other listings in regular browse and search item
-										listings on eBay. Store items have a lower Insertion Fee and longer
-										listing durations. This selling type can only be specified by sellers
-										who have an eBay Store. Store Inventory listings are listed on
-										eBay.com as well as in the seller's eBay Store.
-									&lt;/dd&gt;
 								&lt;/dl&gt;
 							</xs:documentation>
 							<xs:appinfo>
@@ -6481,7 +6471,7 @@
 								</CallInfo>
 							</xs:appinfo>
 						</xs:annotation>
-					</xs:element>
+					</xs:element>	
 					<xs:element minOccurs="0" name="autoPay" type="xs:boolean">
 						<xs:annotation>
 							<xs:documentation>
@@ -6989,11 +6979,8 @@
 					<xs:element minOccurs="0" name="eBayPlusEnabled" type="xs:boolean">
 						<xs:annotation>
 							<xs:documentation>
-								Indicates whether the item is ebayPlus item. A eBayPlus
-								item:
-								&lt;ul&gt;
-								&lt;li&gt; Cassini returns the ebayPlus flag;/li&gt;
-								This field is returned for the following sites only: DE (EBAY-DE)								</xs:documentation>
+								Indicates whether the item is ebayPlus item. This field is returned for the following sites only: DE (EBAY-DE), AU (EBAY-AU)
+							</xs:documentation>
 							<xs:appinfo>
 								<CallInfo>
 									<CallName>findItemsByCategory</CallName>

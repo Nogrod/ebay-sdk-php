@@ -183,9 +183,7 @@ class ItemArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getItem();
         if (null !== $value && !empty($this->getItem())) {
-            $writer->write(array_map(function ($v) {
-                return ["Item" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["Item" => $v];}, $value));
         }
     }
 
@@ -205,9 +203,7 @@ class ItemArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
     {
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Item', true);
         if (null !== $value && !empty($value)) {
-            $this->setItem(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\ItemType::fromKeyValue($v);
-            }, $value));
+            $this->setItem(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\ItemType::fromKeyValue($v);}, $value));
         }
     }
 }

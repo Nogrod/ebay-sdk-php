@@ -92,9 +92,7 @@ class DomesticRefundMethodCodeType implements \Sabre\Xml\XmlSerializable, \Sabre
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getDomesticRefundMethod();
         if (null !== $value && !empty($this->getDomesticRefundMethod())) {
-            $writer->write(array_map(function ($v) {
-                return ["DomesticRefundMethod" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["DomesticRefundMethod" => $v];}, $value));
         }
     }
 

@@ -129,9 +129,7 @@ class SiteWideCharacteristicsType implements \Sabre\Xml\XmlSerializable, \Sabre\
         }
         $value = $this->getExcludeCategoryID();
         if (null !== $value && !empty($this->getExcludeCategoryID())) {
-            $writer->write(array_map(function ($v) {
-                return ["ExcludeCategoryID" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["ExcludeCategoryID" => $v];}, $value));
         }
     }
 

@@ -92,9 +92,7 @@ class RemoveSellerProfilesResponseType extends BaseResponseType
         parent::xmlSerialize($writer);
         $value = $this->getSellerProfileResponseStatus();
         if (null !== $value && !empty($this->getSellerProfileResponseStatus())) {
-            $writer->write(array_map(function ($v) {
-                return ["sellerProfileResponseStatus" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["sellerProfileResponseStatus" => $v];}, $value));
         }
     }
 
@@ -115,9 +113,7 @@ class RemoveSellerProfilesResponseType extends BaseResponseType
         parent::setKeyValue($keyValue);
         $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}sellerProfileResponseStatus', true);
         if (null !== $value && !empty($value)) {
-            $this->setSellerProfileResponseStatus(array_map(function ($v) {
-                return \Nogrod\eBaySDK\BusinessPoliciesManagement\SellerProfileResponseStatusType::fromKeyValue($v);
-            }, $value));
+            $this->setSellerProfileResponseStatus(array_map(function ($v) {return \Nogrod\eBaySDK\BusinessPoliciesManagement\SellerProfileResponseStatusType::fromKeyValue($v);}, $value));
         }
     }
 }

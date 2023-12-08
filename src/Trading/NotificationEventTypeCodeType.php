@@ -283,8 +283,8 @@ class NotificationEventTypeCodeType
     /**
      * Constant for 'INRBuyerOpenedDispute' value.
      *
-     * This notification is sent to a subscribed seller when a buyer opens an Item Not
-     * Received case against that seller.
+     * This event type has been deprecated along with legacy user disputes. As an
+     * alternative, subscribe to <b>EBPMyResponseDue</b> event type.
      */
     public const VAL_INRBUYER_OPENED_DISPUTE = 'INRBuyerOpenedDispute';
 
@@ -299,16 +299,15 @@ class NotificationEventTypeCodeType
     /**
      * Constant for 'INRBuyerClosedDispute' value.
      *
-     * This notification is sent to a subscribed seller when a buyer closes an Item Not
-     * Received case opened by that buyer.
+     * This event type has been deprecated along with legacy user disputes. As an
+     * alternative, subscribe to <b>EBPClosedCase</b> event type.
      */
     public const VAL_INRBUYER_CLOSED_DISPUTE = 'INRBuyerClosedDispute';
 
     /**
      * Constant for 'INRSellerRespondedToDispute' value.
      *
-     * This notification is sent to a subscribed buyer when a seller responds to an
-     * Item Not Received case opened by the buyer.
+     * This event type has been deprecated along with legacy user disputes.
      */
     public const VAL_INRSELLER_RESPONDED_TO_DISPUTE = 'INRSellerRespondedToDispute';
 
@@ -690,7 +689,10 @@ class NotificationEventTypeCodeType
      * This notification is sent to a subscribing buyer or seller when a response to
      * the eBay Money Back Guarantee case is due from that user. When an eBay Money
      * Back Guarantee case is opened, this notification is only sent to the seller
-     * involved in the case and not the buyer.
+     * involved in the case and not the buyer.<br><br>This notification is also sent to
+     * a subscribed seller when the buyer has opened up either of the
+     * following:<ul><li>an Item Not Received inquiry against an order line
+     * item</li><li>an Item Not Received case against that seller.</li></ul>
      */
     public const VAL_EBPMY_RESPONSE_DUE = 'EBPMyResponseDue';
 
@@ -706,7 +708,9 @@ class NotificationEventTypeCodeType
      * Constant for 'EBPEscalatedCase' value.
      *
      * This notification is sent to the subscribed buyer or seller when an eBay Money
-     * Back Guarantee case is escalated to eBay customer support.
+     * Back Guarantee case is escalated to eBay customer support.<br>This notification
+     * is also sent to a subscribed seller when an Item Not Received inquiry against an
+     * order line item has been escalated to an eBay Money Back Guarantee case.
      */
     public const VAL_EBPESCALATED_CASE = 'EBPEscalatedCase';
 
@@ -746,7 +750,10 @@ class NotificationEventTypeCodeType
      * Constant for 'EBPClosedCase' value.
      *
      * This notification is sent to the subscribed buyer or seller when an eBay Money
-     * Back Guarantee case has been closed.
+     * Back Guarantee case has been closed.<br><br>This notification can also be sent
+     * to the subscribed seller when the buyer has closed either of the
+     * following:<ul><li>an Item Not Received inquiry against an order line
+     * item</li><li>an Item Not Received case opened by that buyer</li></ul>
      */
     public const VAL_EBPCLOSED_CASE = 'EBPClosedCase';
 
@@ -927,8 +934,8 @@ class NotificationEventTypeCodeType
     /**
      * Constant for 'OrderInquiryOpened' value.
      *
-     * This notification is sent to a subscribed seller when the buyer has opened up an
-     * Item Not Received inquiry against an order line item.
+     * This event type has been deprecated along with legacy user disputes. As an
+     * alternative, subscribe to <b>EBPMyResponseDue</b> event type.
      */
     public const VAL_ORDER_INQUIRY_OPENED = 'OrderInquiryOpened';
 
@@ -944,27 +951,23 @@ class NotificationEventTypeCodeType
     /**
      * Constant for 'OrderInquiryProvideShipmentInformation' value.
      *
-     * This notification is sent to a subscribed seller alerting the seller that he/she
-     * should provide shipment tracking information to the buyer in order to expedite
-     * the closure of an Item Not Received inquiry, and to avoid the possibility that
-     * the buyer will escalate the inquiry into an eBay Money Back Guarantee case.
+     * This event type has been deprecated along with legacy user disputes.
      */
     public const VAL_ORDER_INQUIRY_PROVIDE_SHIPMENT_INFORMATION = 'OrderInquiryProvideShipmentInformation';
 
     /**
      * Constant for 'OrderInquiryClosed' value.
      *
-     * This notification is sent to a subscribed seller when an Item Not Received
-     * inquiry against an order line item has closed.
+     * This event type has been deprecated along with legacy user disputes. As an
+     * alternative, subscribe to <b>EBPClosedCase</b> event type.
      */
     public const VAL_ORDER_INQUIRY_CLOSED = 'OrderInquiryClosed';
 
     /**
      * Constant for 'OrderInquiryEscalatedToCase' value.
      *
-     * This notification is sent to a subscribed seller when an Item Not Received
-     * inquiry against an order line item has been escalated to an eBay Money Back
-     * Guarantee case.
+     * This event type has been deprecated along with legacy user disputes. As an
+     * alternative, subscribe to <b>EBPEscalatedCase</b> event type.
      */
     public const VAL_ORDER_INQUIRY_ESCALATED_TO_CASE = 'OrderInquiryEscalatedToCase';
 

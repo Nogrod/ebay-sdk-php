@@ -432,9 +432,7 @@ class FindProductsResponseType extends AbstractResponseType
         }
         $value = $this->getDomainHistogram();
         if (null !== $value && !empty($this->getDomainHistogram())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DomainHistogram", array_map(function ($v) {
-                return ["Domain" => $v];
-            }, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DomainHistogram", array_map(function ($v) {return ["Domain" => $v];}, $value));
         }
         $value = $this->getPageNumber();
         if (null !== $value) {
@@ -442,9 +440,7 @@ class FindProductsResponseType extends AbstractResponseType
         }
         $value = $this->getProduct();
         if (null !== $value && !empty($this->getProduct())) {
-            $writer->write(array_map(function ($v) {
-                return ["Product" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["Product" => $v];}, $value));
         }
         $value = $this->getTotalProducts();
         if (null !== $value) {
@@ -482,9 +478,7 @@ class FindProductsResponseType extends AbstractResponseType
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DomainHistogram', true);
         if (null !== $value && !empty($value)) {
-            $this->setDomainHistogram(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Shopping\HistogramEntryType::fromKeyValue($v);
-            }, $value));
+            $this->setDomainHistogram(array_map(function ($v) {return \Nogrod\eBaySDK\Shopping\HistogramEntryType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PageNumber');
         if (null !== $value) {
@@ -492,9 +486,7 @@ class FindProductsResponseType extends AbstractResponseType
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Product', true);
         if (null !== $value && !empty($value)) {
-            $this->setProduct(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Shopping\CatalogProductType::fromKeyValue($v);
-            }, $value));
+            $this->setProduct(array_map(function ($v) {return \Nogrod\eBaySDK\Shopping\CatalogProductType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TotalProducts');
         if (null !== $value) {

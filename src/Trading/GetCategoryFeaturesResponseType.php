@@ -337,9 +337,7 @@ class GetCategoryFeaturesResponseType extends AbstractResponseType
         }
         $value = $this->getCategory();
         if (null !== $value && !empty($this->getCategory())) {
-            $writer->write(array_map(function ($v) {
-                return ["Category" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["Category" => $v];}, $value));
         }
         $value = $this->getSiteDefaults();
         if (null !== $value) {
@@ -376,9 +374,7 @@ class GetCategoryFeaturesResponseType extends AbstractResponseType
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Category', true);
         if (null !== $value && !empty($value)) {
-            $this->setCategory(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\CategoryFeatureType::fromKeyValue($v);
-            }, $value));
+            $this->setCategory(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\CategoryFeatureType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SiteDefaults');
         if (null !== $value) {

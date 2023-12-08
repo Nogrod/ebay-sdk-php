@@ -92,9 +92,7 @@ class FeedbackDetailArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getFeedbackDetail();
         if (null !== $value && !empty($this->getFeedbackDetail())) {
-            $writer->write(array_map(function ($v) {
-                return ["FeedbackDetail" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["FeedbackDetail" => $v];}, $value));
         }
     }
 
@@ -114,9 +112,7 @@ class FeedbackDetailArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
     {
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeedbackDetail', true);
         if (null !== $value && !empty($value)) {
-            $this->setFeedbackDetail(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\FeedbackDetailType::fromKeyValue($v);
-            }, $value));
+            $this->setFeedbackDetail(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\FeedbackDetailType::fromKeyValue($v);}, $value));
         }
     }
 }

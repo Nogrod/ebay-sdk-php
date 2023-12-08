@@ -21,9 +21,8 @@ class BuyerPaymentMethodCodeType
     /**
      * Constant for 'None' value.
      *
-     * This enumeration value indicates that no payment method has been specified for
-     * the listing. This may be the case for a classified ad listing, since payment
-     * happens outside of the eBay platform.
+     * This enumeration value is deprecated, and should no longer be used in listing
+     * flows.
      */
     public const VAL_NONE = 'None';
 
@@ -31,36 +30,32 @@ class BuyerPaymentMethodCodeType
      * Constant for 'MOCC' value.
      *
      * This enumeration value indicates that a money order or cashiers check is
-     * accepted for payment. This value is only applicable for offline payments.
+     * accepted for payment. This value is only applicable for offline payments and is
+     * not supported on all marketplaces.
      */
     public const VAL_MOCC = 'MOCC';
 
     /**
      * Constant for 'AmEx' value.
      *
-     * This enumeration value indicates that American Express is accepted for payment.
+     * This enumeration value is deprecated, and should no longer be used in listing
+     * flows.
      */
     public const VAL_AM_EX = 'AmEx';
 
     /**
      * Constant for 'PaymentSeeDescription' value.
      *
-     * This enumeration value indicates that buyers should check the listing
-     * description for more details on payment. This may be the case for a classified
-     * ad listing, since payment happens outside of the eBay platform.
+     * This enumeration value is deprecated, and should no longer be used in listing
+     * flows.
      */
     public const VAL_PAYMENT_SEE_DESCRIPTION = 'PaymentSeeDescription';
 
     /**
      * Constant for 'CCAccepted' value.
      *
-     * This enumeration value indicates that credit cards are accepted for payment.
-     *  <br/><br/>
-     *  <span class="tablenote"><b>Note: </b>
-     *  This enumeration value is returned in the response of order management calls if
-     * the buyer used an eBay gift card to pay the full or partial balance of the
-     * order.
-     *  </span>
+     * This enumeration value is deprecated, and should no longer be used in listing
+     * flows.
      */
     public const VAL_CCACCEPTED = 'CCAccepted';
 
@@ -68,15 +63,16 @@ class BuyerPaymentMethodCodeType
      * Constant for 'PersonalCheck' value.
      *
      * This enumeration value indicates that a personal check is accepted for payment.
-     * This value is only applicable for offline payments.
+     * This value is only applicable for offline payments and is not supported on all
+     * marketplaces.
      */
     public const VAL_PERSONAL_CHECK = 'PersonalCheck';
 
     /**
      * Constant for 'VisaMC' value.
      *
-     * This enumeration value indicates that Visa or MasterCard are accepted for
-     * payment.
+     * This enumeration value is deprecated, and should no longer be used in listing
+     * flows.
      */
     public const VAL_VISA_MC = 'VisaMC';
 
@@ -90,21 +86,24 @@ class BuyerPaymentMethodCodeType
     /**
      * Constant for 'Other' value.
      *
-     * This enumeration value may be returned if the payment method is unknown.
+     * This enumeration value is deprecated, and should no longer be used in listing
+     * flows.
      */
     public const VAL_OTHER = 'Other';
 
     /**
      * Constant for 'PayPal' value.
      *
-     * This enumeration value indicates that PayPal is accepted as a payment method.
+     * This enumeration value is deprecated, and should no longer be used in listing
+     * flows.
      */
     public const VAL_PAY_PAL = 'PayPal';
 
     /**
      * Constant for 'Discover' value.
      *
-     * This enumeration value indicates that Discover Card is accepted for payment.
+     * This enumeration value is deprecated, and should no longer be used in listing
+     * flows.
      */
     public const VAL_DISCOVER = 'Discover';
 
@@ -119,51 +118,56 @@ class BuyerPaymentMethodCodeType
     /**
      * Constant for 'MoneyXferAccepted' value.
      *
-     * This enumeration value indicates that a direct transfer of money is accepted for
-     * payment.
+     * This enumeration value is deprecated, and should no longer be used in listing
+     * flows.
      */
     public const VAL_MONEY_XFER_ACCEPTED = 'MoneyXferAccepted';
 
     /**
      * Constant for 'MoneyXferAcceptedInCheckout' value.
      *
-     * This enumeration value indicates that a direct transfer of money during checkout
-     * is accepted for payment.
+     * This enumeration value is deprecated, and should no longer be used in listing
+     * flows.
      */
     public const VAL_MONEY_XFER_ACCEPTED_IN_CHECKOUT = 'MoneyXferAcceptedInCheckout';
 
     /**
      * Constant for 'OtherOnlinePayments' value.
      *
-     * This enumeration value may be returned if the payment method is unknown.
+     * This enumeration value is deprecated, and should no longer be used in listing
+     * flows.
      */
     public const VAL_OTHER_ONLINE_PAYMENTS = 'OtherOnlinePayments';
 
     /**
      * Constant for 'Escrow' value.
      *
-     * Reserved for future use.
+     * This enumeration value is deprecated, and should no longer be used in listing
+     * flows.
      */
     public const VAL_ESCROW = 'Escrow';
 
     /**
      * Constant for 'PrePayDelivery' value.
      *
-     * Reserved for future use.
+     * This enumeration value is deprecated, and should no longer be used in listing
+     * flows.
      */
     public const VAL_PRE_PAY_DELIVERY = 'PrePayDelivery';
 
     /**
      * Constant for 'CODPrePayDelivery' value.
      *
-     * Reserved for future use.
+     * This enumeration value is deprecated, and should no longer be used in listing
+     * flows.
      */
     public const VAL_CODPRE_PAY_DELIVERY = 'CODPrePayDelivery';
 
     /**
      * Constant for 'PostalTransfer' value.
      *
-     * Reserved for future use.
+     * This enumeration value is deprecated, and should no longer be used in listing
+     * flows.
      */
     public const VAL_POSTAL_TRANSFER = 'PostalTransfer';
 
@@ -177,23 +181,24 @@ class BuyerPaymentMethodCodeType
     /**
      * Constant for 'LoanCheck' value.
      *
-     * This payment method is deprecated.
+     * This enumeration value is deprecated, and should no longer be used in listing
+     * flows.
      */
     public const VAL_LOAN_CHECK = 'LoanCheck';
 
     /**
      * Constant for 'CashInPerson' value.
      *
-     * This payment method is deprecated. 'CashOnPickup' is now the only available
-     * offline cash option.
+     * This enumeration value is deprecated, and should no longer be used in listing
+     * flows.
      */
     public const VAL_CASH_IN_PERSON = 'CashInPerson';
 
     /**
      * Constant for 'ELV' value.
      *
-     * Elektronisches Lastschriftverfahren (direct debit).
-     *  Only applicable to the Express Germany site, which has been shut down.
+     * This enumeration value is deprecated, and should no longer be used in listing
+     * flows.
      */
     public const VAL_ELV = 'ELV';
 
@@ -244,23 +249,24 @@ class BuyerPaymentMethodCodeType
     /**
      * Constant for 'PayOnPickup' value.
      *
-     * This payment method is deprecated. 'CashOnPickup' is now the only available
-     * offline cash option.
+     * This enumeration value is deprecated, and should no longer be used in listing
+     * flows.
      */
     public const VAL_PAY_ON_PICKUP = 'PayOnPickup';
 
     /**
      * Constant for 'Diners' value.
      *
-     * This enumeration value indicates that the Diners Club credit card is accepted
-     * for payment.
+     * This enumeration value is deprecated, and should no longer be used in listing
+     * flows.
      */
     public const VAL_DINERS = 'Diners';
 
     /**
      * Constant for 'StandardPayment' value.
      *
-     * This value is no longer used.
+     * This enumeration value is deprecated, and should no longer be used in listing
+     * flows.
      */
     public const VAL_STANDARD_PAYMENT = 'StandardPayment';
 
@@ -274,32 +280,16 @@ class BuyerPaymentMethodCodeType
     /**
      * Constant for 'CreditCard' value.
      *
-     * This enumeration value is returned in the response of order management calls if
-     * eBay collects the online payment from the buyer, and the buyer has paid for the
-     * order with any accepted payment method except for an eBay gift card. If the
-     * buyer used an eBay gift card to pay the full or partial balance of the order,
-     * the <code>CCAccepted</code> value will be returned instead.
+     * This enumeration value is deprecated, and should no longer be used in listing
+     * flows.
      */
     public const VAL_CREDIT_CARD = 'CreditCard';
 
     /**
      * Constant for 'PayUponInvoice' value.
      *
-     * This buyer payment method is only applicable for the Germany site and is
-     * associated with the rollout of Progressive Checkout and the Pay Upon Invoice
-     * feature. 'PayUponInvoice' is not a payment method that is offered to the buyer,
-     * but instead, eBay makes the determination (based on several factors) during
-     * checkout whether the buyer is eligible for 'Pay Upon Invoice'. If the buyer is
-     * offered the 'Pay Upon Invoice' option, that buyer is not required to pay for the
-     * order until an order invoice is sent by the seller.
-     *  <br><br>
-     *  Only select categories on the Germany site will support the 'Pay Upon Invoice'
-     * option, and orders going above the two-thousand dollar EURO mark will not be
-     * eligible for 'Pay Upon Invoice'.
-     *  <br><br>
-     *  Since the seller can not specify 'Pay Upon Invoice' as a payment method, this
-     * enumeration value cannot be passed into a <b>Item.PaymentMethods</b> field in an
-     * Add/Revise/Relist call.
+     * This enumeration value is deprecated, and should no longer be used in listing
+     * flows.
      */
     public const VAL_PAY_UPON_INVOICE = 'PayUponInvoice';
 

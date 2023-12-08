@@ -104,9 +104,7 @@ class ItemRatingDetailArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getItemRatingDetails();
         if (null !== $value && !empty($this->getItemRatingDetails())) {
-            $writer->write(array_map(function ($v) {
-                return ["ItemRatingDetails" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["ItemRatingDetails" => $v];}, $value));
         }
     }
 
@@ -126,9 +124,7 @@ class ItemRatingDetailArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     {
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemRatingDetails', true);
         if (null !== $value && !empty($value)) {
-            $this->setItemRatingDetails(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\ItemRatingDetailsType::fromKeyValue($v);
-            }, $value));
+            $this->setItemRatingDetails(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\ItemRatingDetailsType::fromKeyValue($v);}, $value));
         }
     }
 }

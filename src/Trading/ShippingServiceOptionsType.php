@@ -755,9 +755,7 @@ class ShippingServiceOptionsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
         }
         $value = $this->getShippingPackageInfo();
         if (null !== $value && !empty($this->getShippingPackageInfo())) {
-            $writer->write(array_map(function ($v) {
-                return ["ShippingPackageInfo" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["ShippingPackageInfo" => $v];}, $value));
         }
         $value = $this->getShippingServiceCutOffTime();
         if (null !== $value) {
@@ -829,9 +827,7 @@ class ShippingServiceOptionsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingPackageInfo', true);
         if (null !== $value && !empty($value)) {
-            $this->setShippingPackageInfo(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\ShippingPackageInfoType::fromKeyValue($v);
-            }, $value));
+            $this->setShippingPackageInfo(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\ShippingPackageInfoType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingServiceCutOffTime');
         if (null !== $value) {

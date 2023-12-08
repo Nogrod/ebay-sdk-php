@@ -129,9 +129,7 @@ class CustomPoliciesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
         }
         $value = $this->getProductCompliancePolicyID();
         if (null !== $value && !empty($this->getProductCompliancePolicyID())) {
-            $writer->write(array_map(function ($v) {
-                return ["ProductCompliancePolicyID" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["ProductCompliancePolicyID" => $v];}, $value));
         }
     }
 

@@ -14,191 +14,11 @@ use Nogrod\XMLClientRuntime\Func;
 class ExtendedProducerResponsibilityType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
     /**
-     * <span class="tablenote"><strong>Note:</strong>
-     *  Extended Producer Responsibility IDs are no longer set at the listing level and will be ignored/dropped if used. Instead, sellers will provide/manage these IDs at the account level by going to <a href="https://accountsettings.ebay.fr/epr-fr/" target="_blank">account settings</a>.
-     *  </span>
-     *  <br>
-     *  This ID is the Unique Identifier of the producer related to the item. For instance, if the seller is selling a cell phone, it is the ID related to the cell phone.
-     *
-     * @var string $producerProductID
-     */
-    private $producerProductID = null;
-
-    /**
-     * <span class="tablenote"><strong>Note:</strong>
-     *  Extended Producer Responsibility IDs are no longer set at the listing level and will be ignored/dropped if used. Instead, sellers will provide/manage these IDs at the account level by going to <a href="https://accountsettings.ebay.fr/epr-fr/" target="_blank">account settings</a>.
-     *  </span>
-     *  <br>
-     *  This ID is the Unique Identifier of the producer of any packaging related to the product added by the seller. This does not include packaging in which the product is shipped (see <b>ShipmentPackageID</b>). For instance, if the seller adds bubble wrap, it is the ID related to the bubble wrap.
-     *
-     * @var string $productPackageID
-     */
-    private $productPackageID = null;
-
-    /**
-     * <span class="tablenote"><strong>Note:</strong>
-     *  Extended Producer Responsibility IDs are no longer set at the listing level and will be ignored/dropped if used. Instead, sellers will provide/manage these IDs at the account level by going to <a href="https://accountsettings.ebay.fr/epr-fr/" target="_blank">account settings</a>.
-     *  </span>
-     *  <br>
-     *  This ID is the Unique Identifier of the producer of any packaging used by the seller to ship the item. This does not include non-shipping packaging added to the product (see <b>ProductPackageID</b>). This ID is required when the seller uses packaging to ship the item. For instance, if the seller uses a different box to ship the item, it is the ID related to the box.
-     *
-     * @var string $shipmentPackageID
-     */
-    private $shipmentPackageID = null;
-
-    /**
-     * <span class="tablenote"><strong>Note:</strong>
-     *  Extended Producer Responsibility IDs are no longer set at the listing level and will be ignored/dropped if used. Instead, sellers will provide/manage these IDs at the account level by going to <a href="https://accountsettings.ebay.fr/epr-fr/" target="_blank">account settings</a>.
-     *  </span>
-     *  <br>
-     *  This ID is the Unique Identifier of the producer of any paper added to the parcel of the item by the seller. For example, this ID concerns any notice, leaflet, or paper that the seller adds to a cell phone parcel.
-     *
-     * @var string $productDocumentationID
-     */
-    private $productDocumentationID = null;
-
-    /**
      * This is the fee paid for new items to the eco-organization (for example, "eco-organisme" in France). It is a contribution to the financing of the elimination of the item responsibly. For multiple-variation listings, the <b>EcoParticipationFee</b> in the <b>VariationExtendedProducerResponsibility</b> container is used for each variation in the listing, and not the <b>EcoParticipationFee</b> in the <b>ExtendedProducerResponsibility</b> container.
      *
      * @var \Nogrod\eBaySDK\Trading\AmountType $ecoParticipationFee
      */
     private $ecoParticipationFee = null;
-
-    /**
-     * Gets as producerProductID
-     *
-     * <span class="tablenote"><strong>Note:</strong>
-     *  Extended Producer Responsibility IDs are no longer set at the listing level and will be ignored/dropped if used. Instead, sellers will provide/manage these IDs at the account level by going to <a href="https://accountsettings.ebay.fr/epr-fr/" target="_blank">account settings</a>.
-     *  </span>
-     *  <br>
-     *  This ID is the Unique Identifier of the producer related to the item. For instance, if the seller is selling a cell phone, it is the ID related to the cell phone.
-     *
-     * @return string
-     */
-    public function getProducerProductID()
-    {
-        return $this->producerProductID;
-    }
-
-    /**
-     * Sets a new producerProductID
-     *
-     * <span class="tablenote"><strong>Note:</strong>
-     *  Extended Producer Responsibility IDs are no longer set at the listing level and will be ignored/dropped if used. Instead, sellers will provide/manage these IDs at the account level by going to <a href="https://accountsettings.ebay.fr/epr-fr/" target="_blank">account settings</a>.
-     *  </span>
-     *  <br>
-     *  This ID is the Unique Identifier of the producer related to the item. For instance, if the seller is selling a cell phone, it is the ID related to the cell phone.
-     *
-     * @param string $producerProductID
-     * @return self
-     */
-    public function setProducerProductID($producerProductID)
-    {
-        $this->producerProductID = $producerProductID;
-        return $this;
-    }
-
-    /**
-     * Gets as productPackageID
-     *
-     * <span class="tablenote"><strong>Note:</strong>
-     *  Extended Producer Responsibility IDs are no longer set at the listing level and will be ignored/dropped if used. Instead, sellers will provide/manage these IDs at the account level by going to <a href="https://accountsettings.ebay.fr/epr-fr/" target="_blank">account settings</a>.
-     *  </span>
-     *  <br>
-     *  This ID is the Unique Identifier of the producer of any packaging related to the product added by the seller. This does not include packaging in which the product is shipped (see <b>ShipmentPackageID</b>). For instance, if the seller adds bubble wrap, it is the ID related to the bubble wrap.
-     *
-     * @return string
-     */
-    public function getProductPackageID()
-    {
-        return $this->productPackageID;
-    }
-
-    /**
-     * Sets a new productPackageID
-     *
-     * <span class="tablenote"><strong>Note:</strong>
-     *  Extended Producer Responsibility IDs are no longer set at the listing level and will be ignored/dropped if used. Instead, sellers will provide/manage these IDs at the account level by going to <a href="https://accountsettings.ebay.fr/epr-fr/" target="_blank">account settings</a>.
-     *  </span>
-     *  <br>
-     *  This ID is the Unique Identifier of the producer of any packaging related to the product added by the seller. This does not include packaging in which the product is shipped (see <b>ShipmentPackageID</b>). For instance, if the seller adds bubble wrap, it is the ID related to the bubble wrap.
-     *
-     * @param string $productPackageID
-     * @return self
-     */
-    public function setProductPackageID($productPackageID)
-    {
-        $this->productPackageID = $productPackageID;
-        return $this;
-    }
-
-    /**
-     * Gets as shipmentPackageID
-     *
-     * <span class="tablenote"><strong>Note:</strong>
-     *  Extended Producer Responsibility IDs are no longer set at the listing level and will be ignored/dropped if used. Instead, sellers will provide/manage these IDs at the account level by going to <a href="https://accountsettings.ebay.fr/epr-fr/" target="_blank">account settings</a>.
-     *  </span>
-     *  <br>
-     *  This ID is the Unique Identifier of the producer of any packaging used by the seller to ship the item. This does not include non-shipping packaging added to the product (see <b>ProductPackageID</b>). This ID is required when the seller uses packaging to ship the item. For instance, if the seller uses a different box to ship the item, it is the ID related to the box.
-     *
-     * @return string
-     */
-    public function getShipmentPackageID()
-    {
-        return $this->shipmentPackageID;
-    }
-
-    /**
-     * Sets a new shipmentPackageID
-     *
-     * <span class="tablenote"><strong>Note:</strong>
-     *  Extended Producer Responsibility IDs are no longer set at the listing level and will be ignored/dropped if used. Instead, sellers will provide/manage these IDs at the account level by going to <a href="https://accountsettings.ebay.fr/epr-fr/" target="_blank">account settings</a>.
-     *  </span>
-     *  <br>
-     *  This ID is the Unique Identifier of the producer of any packaging used by the seller to ship the item. This does not include non-shipping packaging added to the product (see <b>ProductPackageID</b>). This ID is required when the seller uses packaging to ship the item. For instance, if the seller uses a different box to ship the item, it is the ID related to the box.
-     *
-     * @param string $shipmentPackageID
-     * @return self
-     */
-    public function setShipmentPackageID($shipmentPackageID)
-    {
-        $this->shipmentPackageID = $shipmentPackageID;
-        return $this;
-    }
-
-    /**
-     * Gets as productDocumentationID
-     *
-     * <span class="tablenote"><strong>Note:</strong>
-     *  Extended Producer Responsibility IDs are no longer set at the listing level and will be ignored/dropped if used. Instead, sellers will provide/manage these IDs at the account level by going to <a href="https://accountsettings.ebay.fr/epr-fr/" target="_blank">account settings</a>.
-     *  </span>
-     *  <br>
-     *  This ID is the Unique Identifier of the producer of any paper added to the parcel of the item by the seller. For example, this ID concerns any notice, leaflet, or paper that the seller adds to a cell phone parcel.
-     *
-     * @return string
-     */
-    public function getProductDocumentationID()
-    {
-        return $this->productDocumentationID;
-    }
-
-    /**
-     * Sets a new productDocumentationID
-     *
-     * <span class="tablenote"><strong>Note:</strong>
-     *  Extended Producer Responsibility IDs are no longer set at the listing level and will be ignored/dropped if used. Instead, sellers will provide/manage these IDs at the account level by going to <a href="https://accountsettings.ebay.fr/epr-fr/" target="_blank">account settings</a>.
-     *  </span>
-     *  <br>
-     *  This ID is the Unique Identifier of the producer of any paper added to the parcel of the item by the seller. For example, this ID concerns any notice, leaflet, or paper that the seller adds to a cell phone parcel.
-     *
-     * @param string $productDocumentationID
-     * @return self
-     */
-    public function setProductDocumentationID($productDocumentationID)
-    {
-        $this->productDocumentationID = $productDocumentationID;
-        return $this;
-    }
 
     /**
      * Gets as ecoParticipationFee
@@ -229,22 +49,6 @@ class ExtendedProducerResponsibilityType implements \Sabre\Xml\XmlSerializable, 
     public function xmlSerialize(\Sabre\Xml\Writer $writer): void
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
-        $value = $this->getProducerProductID();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ProducerProductID", $value);
-        }
-        $value = $this->getProductPackageID();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ProductPackageID", $value);
-        }
-        $value = $this->getShipmentPackageID();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShipmentPackageID", $value);
-        }
-        $value = $this->getProductDocumentationID();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ProductDocumentationID", $value);
-        }
         $value = $this->getEcoParticipationFee();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}EcoParticipationFee", $value);
@@ -265,22 +69,6 @@ class ExtendedProducerResponsibilityType implements \Sabre\Xml\XmlSerializable, 
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ProducerProductID');
-        if (null !== $value) {
-            $this->setProducerProductID($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ProductPackageID');
-        if (null !== $value) {
-            $this->setProductPackageID($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShipmentPackageID');
-        if (null !== $value) {
-            $this->setShipmentPackageID($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ProductDocumentationID');
-        if (null !== $value) {
-            $this->setProductDocumentationID($value);
-        }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EcoParticipationFee');
         if (null !== $value) {
             $this->setEcoParticipationFee(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));

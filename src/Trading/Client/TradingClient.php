@@ -86,7 +86,7 @@ class TradingClient extends EBayAPIBaseClient
             case 'GetTokenStatus':
             case 'GetSessionID':
                 $headers[self::X_EBAY_API_APP_NAME] = $this->getConfig('appId');
-                $headers[self::X_EBAY_API_DEV_NAME]= $this->getConfig('devId');
+                $headers[self::X_EBAY_API_DEV_NAME] = $this->getConfig('devId');
                 $headers[self::X_EBAY_API_CERT_NAME] = $this->getConfig('certId');
                 break;
             default:

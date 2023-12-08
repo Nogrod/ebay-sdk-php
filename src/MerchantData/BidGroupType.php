@@ -191,9 +191,7 @@ class BidGroupType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getBidGroupItem();
         if (null !== $value && !empty($this->getBidGroupItem())) {
-            $writer->write(array_map(function ($v) {
-                return ["BidGroupItem" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["BidGroupItem" => $v];}, $value));
         }
         $value = $this->getBidGroupID();
         if (null !== $value) {
@@ -225,9 +223,7 @@ class BidGroupType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
     {
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BidGroupItem', true);
         if (null !== $value && !empty($value)) {
-            $this->setBidGroupItem(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\BidGroupItemType::fromKeyValue($v);
-            }, $value));
+            $this->setBidGroupItem(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\BidGroupItemType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BidGroupID');
         if (null !== $value) {

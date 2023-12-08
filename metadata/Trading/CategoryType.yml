@@ -138,21 +138,6 @@ Nogrod\eBaySDK\Trading\CategoryType:
                 entry_name: ProductFinderIDs
                 namespace: 'urn:ebay:apis:eBLBaseComponents'
             type: array<Nogrod\eBaySDK\Trading\ExtendedProductFinderIDType>
-        characteristicsSets:
-            expose: true
-            access_type: public_method
-            serialized_name: CharacteristicsSets
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getCharacteristicsSets
-                setter: setCharacteristicsSets
-            xml_list:
-                inline: true
-                entry_name: CharacteristicsSets
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            type: array<Nogrod\eBaySDK\Trading\CharacteristicsSetType>
         expired:
             expose: true
             access_type: public_method

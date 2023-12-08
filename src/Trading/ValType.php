@@ -195,9 +195,7 @@ class ValType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializabl
         }
         $value = $this->getSuggestedValueLiteral();
         if (null !== $value && !empty($this->getSuggestedValueLiteral())) {
-            $writer->write(array_map(function ($v) {
-                return ["SuggestedValueLiteral" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["SuggestedValueLiteral" => $v];}, $value));
         }
         $value = $this->getValueID();
         if (null !== $value) {

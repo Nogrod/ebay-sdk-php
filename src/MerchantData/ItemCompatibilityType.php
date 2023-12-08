@@ -325,9 +325,7 @@ class ItemCompatibilityType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
         }
         $value = $this->getNameValueList();
         if (null !== $value && !empty($this->getNameValueList())) {
-            $writer->write(array_map(function ($v) {
-                return ["NameValueList" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["NameValueList" => $v];}, $value));
         }
         $value = $this->getCompatibilityNotes();
         if (null !== $value) {
@@ -355,9 +353,7 @@ class ItemCompatibilityType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}NameValueList', true);
         if (null !== $value && !empty($value)) {
-            $this->setNameValueList(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\NameValueListType::fromKeyValue($v);
-            }, $value));
+            $this->setNameValueList(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\NameValueListType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CompatibilityNotes');
         if (null !== $value) {

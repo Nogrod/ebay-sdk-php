@@ -147,9 +147,7 @@ class GetAdFormatLeadsResponseType extends AbstractResponseType
         parent::xmlSerialize($writer);
         $value = $this->getAdFormatLead();
         if (null !== $value && !empty($this->getAdFormatLead())) {
-            $writer->write(array_map(function ($v) {
-                return ["AdFormatLead" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["AdFormatLead" => $v];}, $value));
         }
         $value = $this->getAdFormatLeadCount();
         if (null !== $value) {
@@ -174,9 +172,7 @@ class GetAdFormatLeadsResponseType extends AbstractResponseType
         parent::setKeyValue($keyValue);
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AdFormatLead', true);
         if (null !== $value && !empty($value)) {
-            $this->setAdFormatLead(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\AdFormatLeadType::fromKeyValue($v);
-            }, $value));
+            $this->setAdFormatLead(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\AdFormatLeadType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AdFormatLeadCount');
         if (null !== $value) {

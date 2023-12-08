@@ -90,9 +90,7 @@ class ListingAnalyzerRecommendationsType implements \Sabre\Xml\XmlSerializable, 
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getListingTipArray();
         if (null !== $value && !empty($this->getListingTipArray())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ListingTipArray", array_map(function ($v) {
-                return ["ListingTip" => $v];
-            }, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ListingTipArray", array_map(function ($v) {return ["ListingTip" => $v];}, $value));
         }
     }
 
@@ -112,9 +110,7 @@ class ListingAnalyzerRecommendationsType implements \Sabre\Xml\XmlSerializable, 
     {
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ListingTipArray', true);
         if (null !== $value && !empty($value)) {
-            $this->setListingTipArray(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\ListingTipType::fromKeyValue($v);
-            }, $value));
+            $this->setListingTipArray(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\ListingTipType::fromKeyValue($v);}, $value));
         }
     }
 }

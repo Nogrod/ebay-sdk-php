@@ -125,9 +125,7 @@ class GetSuggestedCategoriesResponseType extends AbstractResponseType
         parent::xmlSerialize($writer);
         $value = $this->getSuggestedCategoryArray();
         if (null !== $value && !empty($this->getSuggestedCategoryArray())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SuggestedCategoryArray", array_map(function ($v) {
-                return ["SuggestedCategory" => $v];
-            }, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SuggestedCategoryArray", array_map(function ($v) {return ["SuggestedCategory" => $v];}, $value));
         }
         $value = $this->getCategoryCount();
         if (null !== $value) {
@@ -152,9 +150,7 @@ class GetSuggestedCategoriesResponseType extends AbstractResponseType
         parent::setKeyValue($keyValue);
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SuggestedCategoryArray', true);
         if (null !== $value && !empty($value)) {
-            $this->setSuggestedCategoryArray(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\SuggestedCategoryType::fromKeyValue($v);
-            }, $value));
+            $this->setSuggestedCategoryArray(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\SuggestedCategoryType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CategoryCount');
         if (null !== $value) {

@@ -180,9 +180,7 @@ class CategoryHistogramType extends CategoryType
         }
         $value = $this->getChildCategoryHistogram();
         if (null !== $value && !empty($this->getChildCategoryHistogram())) {
-            $writer->write(array_map(function ($v) {
-                return ["childCategoryHistogram" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["childCategoryHistogram" => $v];}, $value));
         }
         $value = $this->getDelimiter();
         if (null !== $value) {
@@ -211,9 +209,7 @@ class CategoryHistogramType extends CategoryType
         }
         $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}childCategoryHistogram', true);
         if (null !== $value && !empty($value)) {
-            $this->setChildCategoryHistogram(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Finding\CategoryHistogramType::fromKeyValue($v);
-            }, $value));
+            $this->setChildCategoryHistogram(array_map(function ($v) {return \Nogrod\eBaySDK\Finding\CategoryHistogramType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}delimiter');
         if (null !== $value) {

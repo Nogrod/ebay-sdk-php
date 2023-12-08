@@ -90,9 +90,7 @@ class PaymentsInformationCodeType implements \Sabre\Xml\XmlSerializable, \Sabre\
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getPayments();
         if (null !== $value && !empty($this->getPayments())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Payments", array_map(function ($v) {
-                return ["Payment" => $v];
-            }, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Payments", array_map(function ($v) {return ["Payment" => $v];}, $value));
         }
     }
 
@@ -112,9 +110,7 @@ class PaymentsInformationCodeType implements \Sabre\Xml\XmlSerializable, \Sabre\
     {
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Payments', true);
         if (null !== $value && !empty($value)) {
-            $this->setPayments(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\PaymentTransactionCodeType::fromKeyValue($v);
-            }, $value));
+            $this->setPayments(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\PaymentTransactionCodeType::fromKeyValue($v);}, $value));
         }
     }
 }

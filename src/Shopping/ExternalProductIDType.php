@@ -176,9 +176,7 @@ class ExternalProductIDType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
         }
         $value = $this->getAlternateValue();
         if (null !== $value && !empty($this->getAlternateValue())) {
-            $writer->write(array_map(function ($v) {
-                return ["AlternateValue" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["AlternateValue" => $v];}, $value));
         }
     }
 

@@ -189,9 +189,7 @@ class GetAllBiddersResponseType extends AbstractResponseType
         parent::xmlSerialize($writer);
         $value = $this->getBidArray();
         if (null !== $value && !empty($this->getBidArray())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BidArray", array_map(function ($v) {
-                return ["Offer" => $v];
-            }, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BidArray", array_map(function ($v) {return ["Offer" => $v];}, $value));
         }
         $value = $this->getHighBidder();
         if (null !== $value) {
@@ -224,9 +222,7 @@ class GetAllBiddersResponseType extends AbstractResponseType
         parent::setKeyValue($keyValue);
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BidArray', true);
         if (null !== $value && !empty($value)) {
-            $this->setBidArray(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\OfferType::fromKeyValue($v);
-            }, $value));
+            $this->setBidArray(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\OfferType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}HighBidder');
         if (null !== $value) {

@@ -92,9 +92,7 @@ class AddItemsResponseType extends AbstractResponseType
         parent::xmlSerialize($writer);
         $value = $this->getAddItemResponseContainer();
         if (null !== $value && !empty($this->getAddItemResponseContainer())) {
-            $writer->write(array_map(function ($v) {
-                return ["AddItemResponseContainer" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["AddItemResponseContainer" => $v];}, $value));
         }
     }
 
@@ -115,9 +113,7 @@ class AddItemsResponseType extends AbstractResponseType
         parent::setKeyValue($keyValue);
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AddItemResponseContainer', true);
         if (null !== $value && !empty($value)) {
-            $this->setAddItemResponseContainer(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\AddItemResponseContainerType::fromKeyValue($v);
-            }, $value));
+            $this->setAddItemResponseContainer(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\AddItemResponseContainerType::fromKeyValue($v);}, $value));
         }
     }
 }

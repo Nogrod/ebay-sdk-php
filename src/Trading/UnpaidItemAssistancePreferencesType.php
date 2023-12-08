@@ -384,9 +384,7 @@ class UnpaidItemAssistancePreferencesType implements \Sabre\Xml\XmlSerializable,
         }
         $value = $this->getExcludedUser();
         if (null !== $value && !empty($this->getExcludedUser())) {
-            $writer->write(array_map(function ($v) {
-                return ["ExcludedUser" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["ExcludedUser" => $v];}, $value));
         }
         $value = $this->getAutoOptDonationRefund();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;

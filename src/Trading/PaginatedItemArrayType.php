@@ -123,9 +123,7 @@ class PaginatedItemArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getItemArray();
         if (null !== $value && !empty($this->getItemArray())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ItemArray", array_map(function ($v) {
-                return ["Item" => $v];
-            }, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ItemArray", array_map(function ($v) {return ["Item" => $v];}, $value));
         }
         $value = $this->getPaginationResult();
         if (null !== $value) {
@@ -149,9 +147,7 @@ class PaginatedItemArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     {
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemArray', true);
         if (null !== $value && !empty($value)) {
-            $this->setItemArray(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\ItemType::fromKeyValue($v);
-            }, $value));
+            $this->setItemArray(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\ItemType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaginationResult');
         if (null !== $value) {

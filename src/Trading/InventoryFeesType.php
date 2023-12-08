@@ -141,9 +141,7 @@ class InventoryFeesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
         }
         $value = $this->getFee();
         if (null !== $value && !empty($this->getFee())) {
-            $writer->write(array_map(function ($v) {
-                return ["Fee" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["Fee" => $v];}, $value));
         }
     }
 
@@ -167,9 +165,7 @@ class InventoryFeesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Fee', true);
         if (null !== $value && !empty($value)) {
-            $this->setFee(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\FeeType::fromKeyValue($v);
-            }, $value));
+            $this->setFee(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\FeeType::fromKeyValue($v);}, $value));
         }
     }
 }

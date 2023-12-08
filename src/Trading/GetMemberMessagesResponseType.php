@@ -156,9 +156,7 @@ class GetMemberMessagesResponseType extends AbstractResponseType
         parent::xmlSerialize($writer);
         $value = $this->getMemberMessage();
         if (null !== $value && !empty($this->getMemberMessage())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MemberMessage", array_map(function ($v) {
-                return ["MemberMessageExchange" => $v];
-            }, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MemberMessage", array_map(function ($v) {return ["MemberMessageExchange" => $v];}, $value));
         }
         $value = $this->getPaginationResult();
         if (null !== $value) {
@@ -188,9 +186,7 @@ class GetMemberMessagesResponseType extends AbstractResponseType
         parent::setKeyValue($keyValue);
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MemberMessage', true);
         if (null !== $value && !empty($value)) {
-            $this->setMemberMessage(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\MemberMessageExchangeType::fromKeyValue($v);
-            }, $value));
+            $this->setMemberMessage(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\MemberMessageExchangeType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaginationResult');
         if (null !== $value) {

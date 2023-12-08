@@ -845,9 +845,7 @@ class AdFormatLeadType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
         }
         $value = $this->getMemberMessage();
         if (null !== $value && !empty($this->getMemberMessage())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MemberMessage", array_map(function ($v) {
-                return ["MemberMessageExchange" => $v];
-            }, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MemberMessage", array_map(function ($v) {return ["MemberMessageExchange" => $v];}, $value));
         }
         $value = $this->getStatus();
         if (null !== $value) {
@@ -942,9 +940,7 @@ class AdFormatLeadType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MemberMessage', true);
         if (null !== $value && !empty($value)) {
-            $this->setMemberMessage(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\MemberMessageExchangeType::fromKeyValue($v);
-            }, $value));
+            $this->setMemberMessage(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\MemberMessageExchangeType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Status');
         if (null !== $value) {

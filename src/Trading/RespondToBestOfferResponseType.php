@@ -90,9 +90,7 @@ class RespondToBestOfferResponseType extends AbstractResponseType
         parent::xmlSerialize($writer);
         $value = $this->getRespondToBestOffer();
         if (null !== $value && !empty($this->getRespondToBestOffer())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}RespondToBestOffer", array_map(function ($v) {
-                return ["BestOffer" => $v];
-            }, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}RespondToBestOffer", array_map(function ($v) {return ["BestOffer" => $v];}, $value));
         }
     }
 
@@ -113,9 +111,7 @@ class RespondToBestOfferResponseType extends AbstractResponseType
         parent::setKeyValue($keyValue);
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RespondToBestOffer', true);
         if (null !== $value && !empty($value)) {
-            $this->setRespondToBestOffer(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\BestOfferType::fromKeyValue($v);
-            }, $value));
+            $this->setRespondToBestOffer(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\BestOfferType::fromKeyValue($v);}, $value));
         }
     }
 }

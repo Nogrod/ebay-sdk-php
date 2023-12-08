@@ -222,9 +222,7 @@ class SetStoreCategoriesRequestType extends AbstractRequestType
         }
         $value = $this->getStoreCategories();
         if (null !== $value && !empty($this->getStoreCategories())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}StoreCategories", array_map(function ($v) {
-                return ["CustomCategory" => $v];
-            }, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}StoreCategories", array_map(function ($v) {return ["CustomCategory" => $v];}, $value));
         }
     }
 
@@ -257,9 +255,7 @@ class SetStoreCategoriesRequestType extends AbstractRequestType
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}StoreCategories', true);
         if (null !== $value && !empty($value)) {
-            $this->setStoreCategories(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\StoreCustomCategoryType::fromKeyValue($v);
-            }, $value));
+            $this->setStoreCategories(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\StoreCustomCategoryType::fromKeyValue($v);}, $value));
         }
     }
 }

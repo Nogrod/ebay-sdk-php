@@ -92,9 +92,7 @@ class SuggestedBidValueType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getBidValue();
         if (null !== $value && !empty($this->getBidValue())) {
-            $writer->write(array_map(function ($v) {
-                return ["BidValue" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["BidValue" => $v];}, $value));
         }
     }
 
@@ -114,9 +112,7 @@ class SuggestedBidValueType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
     {
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BidValue', true);
         if (null !== $value && !empty($value)) {
-            $this->setBidValue(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\AmountType::fromKeyValue($v);
-            }, $value));
+            $this->setBidValue(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\AmountType::fromKeyValue($v);}, $value));
         }
     }
 }

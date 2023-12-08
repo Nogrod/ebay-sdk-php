@@ -113,9 +113,7 @@ class MaximumUnpaidItemStrikesCountDetailsType implements \Sabre\Xml\XmlSerializ
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getCount();
         if (null !== $value && !empty($this->getCount())) {
-            $writer->write(array_map(function ($v) {
-                return ["Count" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["Count" => $v];}, $value));
         }
     }
 

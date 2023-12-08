@@ -92,9 +92,7 @@ class ErrorMessageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
         $writer->writeAttribute("xmlns", "http://www.ebay.com/marketplace/selling/v1/services");
         $value = $this->getError();
         if (null !== $value && !empty($this->getError())) {
-            $writer->write(array_map(function ($v) {
-                return ["error" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["error" => $v];}, $value));
         }
     }
 
@@ -114,9 +112,7 @@ class ErrorMessageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     {
         $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}error', true);
         if (null !== $value && !empty($value)) {
-            $this->setError(array_map(function ($v) {
-                return \Nogrod\eBaySDK\BusinessPoliciesManagement\ErrorDataType::fromKeyValue($v);
-            }, $value));
+            $this->setError(array_map(function ($v) {return \Nogrod\eBaySDK\BusinessPoliciesManagement\ErrorDataType::fromKeyValue($v);}, $value));
         }
     }
 }

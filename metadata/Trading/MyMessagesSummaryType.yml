@@ -20,17 +20,6 @@ Nogrod\eBaySDK\Trading\MyMessagesSummaryType:
                 entry_name: FolderSummary
                 namespace: 'urn:ebay:apis:eBLBaseComponents'
             type: array<Nogrod\eBaySDK\Trading\MyMessagesFolderSummaryType>
-        newAlertCount:
-            expose: true
-            access_type: public_method
-            serialized_name: NewAlertCount
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getNewAlertCount
-                setter: setNewAlertCount
-            type: int
         newMessageCount:
             expose: true
             access_type: public_method
@@ -42,17 +31,6 @@ Nogrod\eBaySDK\Trading\MyMessagesSummaryType:
                 getter: getNewMessageCount
                 setter: setNewMessageCount
             type: int
-        unresolvedAlertCount:
-            expose: true
-            access_type: public_method
-            serialized_name: UnresolvedAlertCount
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getUnresolvedAlertCount
-                setter: setUnresolvedAlertCount
-            type: int
         flaggedMessageCount:
             expose: true
             access_type: public_method
@@ -63,17 +41,6 @@ Nogrod\eBaySDK\Trading\MyMessagesSummaryType:
             accessor:
                 getter: getFlaggedMessageCount
                 setter: setFlaggedMessageCount
-            type: int
-        totalAlertCount:
-            expose: true
-            access_type: public_method
-            serialized_name: TotalAlertCount
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getTotalAlertCount
-                setter: setTotalAlertCount
             type: int
         totalMessageCount:
             expose: true

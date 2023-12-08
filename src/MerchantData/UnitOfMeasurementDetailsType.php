@@ -158,9 +158,7 @@ class UnitOfMeasurementDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getUnitOfMeasurement();
         if (null !== $value && !empty($this->getUnitOfMeasurement())) {
-            $writer->write(array_map(function ($v) {
-                return ["UnitOfMeasurement" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["UnitOfMeasurement" => $v];}, $value));
         }
         $value = $this->getDetailVersion();
         if (null !== $value) {
@@ -188,9 +186,7 @@ class UnitOfMeasurementDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre
     {
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UnitOfMeasurement', true);
         if (null !== $value && !empty($value)) {
-            $this->setUnitOfMeasurement(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\UnitOfMeasurementType::fromKeyValue($v);
-            }, $value));
+            $this->setUnitOfMeasurement(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\UnitOfMeasurementType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DetailVersion');
         if (null !== $value) {

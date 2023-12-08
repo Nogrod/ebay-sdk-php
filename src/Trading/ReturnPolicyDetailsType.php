@@ -838,21 +838,15 @@ class ReturnPolicyDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getRefund();
         if (null !== $value && !empty($this->getRefund())) {
-            $writer->write(array_map(function ($v) {
-                return ["Refund" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["Refund" => $v];}, $value));
         }
         $value = $this->getReturnsWithin();
         if (null !== $value && !empty($this->getReturnsWithin())) {
-            $writer->write(array_map(function ($v) {
-                return ["ReturnsWithin" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["ReturnsWithin" => $v];}, $value));
         }
         $value = $this->getReturnsAccepted();
         if (null !== $value && !empty($this->getReturnsAccepted())) {
-            $writer->write(array_map(function ($v) {
-                return ["ReturnsAccepted" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["ReturnsAccepted" => $v];}, $value));
         }
         $value = $this->getDescription();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;
@@ -861,21 +855,15 @@ class ReturnPolicyDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
         }
         $value = $this->getWarrantyOffered();
         if (null !== $value && !empty($this->getWarrantyOffered())) {
-            $writer->write(array_map(function ($v) {
-                return ["WarrantyOffered" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["WarrantyOffered" => $v];}, $value));
         }
         $value = $this->getWarrantyType();
         if (null !== $value && !empty($this->getWarrantyType())) {
-            $writer->write(array_map(function ($v) {
-                return ["WarrantyType" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["WarrantyType" => $v];}, $value));
         }
         $value = $this->getWarrantyDuration();
         if (null !== $value && !empty($this->getWarrantyDuration())) {
-            $writer->write(array_map(function ($v) {
-                return ["WarrantyDuration" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["WarrantyDuration" => $v];}, $value));
         }
         $value = $this->getEAN();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;
@@ -884,15 +872,11 @@ class ReturnPolicyDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
         }
         $value = $this->getShippingCostPaidBy();
         if (null !== $value && !empty($this->getShippingCostPaidBy())) {
-            $writer->write(array_map(function ($v) {
-                return ["ShippingCostPaidBy" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["ShippingCostPaidBy" => $v];}, $value));
         }
         $value = $this->getRestockingFeeValue();
         if (null !== $value && !empty($this->getRestockingFeeValue())) {
-            $writer->write(array_map(function ($v) {
-                return ["RestockingFeeValue" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["RestockingFeeValue" => $v];}, $value));
         }
         $value = $this->getDetailVersion();
         if (null !== $value) {
@@ -920,21 +904,15 @@ class ReturnPolicyDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
     {
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Refund', true);
         if (null !== $value && !empty($value)) {
-            $this->setRefund(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\RefundDetailsType::fromKeyValue($v);
-            }, $value));
+            $this->setRefund(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\RefundDetailsType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReturnsWithin', true);
         if (null !== $value && !empty($value)) {
-            $this->setReturnsWithin(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\ReturnsWithinDetailsType::fromKeyValue($v);
-            }, $value));
+            $this->setReturnsWithin(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\ReturnsWithinDetailsType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReturnsAccepted', true);
         if (null !== $value && !empty($value)) {
-            $this->setReturnsAccepted(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\ReturnsAcceptedDetailsType::fromKeyValue($v);
-            }, $value));
+            $this->setReturnsAccepted(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\ReturnsAcceptedDetailsType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Description');
         if (null !== $value) {
@@ -942,21 +920,15 @@ class ReturnPolicyDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}WarrantyOffered', true);
         if (null !== $value && !empty($value)) {
-            $this->setWarrantyOffered(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\WarrantyOfferedDetailsType::fromKeyValue($v);
-            }, $value));
+            $this->setWarrantyOffered(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\WarrantyOfferedDetailsType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}WarrantyType', true);
         if (null !== $value && !empty($value)) {
-            $this->setWarrantyType(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\WarrantyTypeDetailsType::fromKeyValue($v);
-            }, $value));
+            $this->setWarrantyType(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\WarrantyTypeDetailsType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}WarrantyDuration', true);
         if (null !== $value && !empty($value)) {
-            $this->setWarrantyDuration(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\WarrantyDurationDetailsType::fromKeyValue($v);
-            }, $value));
+            $this->setWarrantyDuration(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\WarrantyDurationDetailsType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EAN');
         if (null !== $value) {
@@ -964,15 +936,11 @@ class ReturnPolicyDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingCostPaidBy', true);
         if (null !== $value && !empty($value)) {
-            $this->setShippingCostPaidBy(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\ShippingCostPaidByDetailsType::fromKeyValue($v);
-            }, $value));
+            $this->setShippingCostPaidBy(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\ShippingCostPaidByDetailsType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RestockingFeeValue', true);
         if (null !== $value && !empty($value)) {
-            $this->setRestockingFeeValue(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\RestockingFeeValueDetailsType::fromKeyValue($v);
-            }, $value));
+            $this->setRestockingFeeValue(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\RestockingFeeValueDetailsType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DetailVersion');
         if (null !== $value) {

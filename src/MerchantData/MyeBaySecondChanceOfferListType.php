@@ -129,9 +129,7 @@ class MyeBaySecondChanceOfferListType implements \Sabre\Xml\XmlSerializable, \Sa
         }
         $value = $this->getSecondChanceOffer();
         if (null !== $value && !empty($this->getSecondChanceOffer())) {
-            $writer->write(array_map(function ($v) {
-                return ["SecondChanceOffer" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["SecondChanceOffer" => $v];}, $value));
         }
     }
 
@@ -155,9 +153,7 @@ class MyeBaySecondChanceOfferListType implements \Sabre\Xml\XmlSerializable, \Sa
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SecondChanceOffer', true);
         if (null !== $value && !empty($value)) {
-            $this->setSecondChanceOffer(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\ItemType::fromKeyValue($v);
-            }, $value));
+            $this->setSecondChanceOffer(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\ItemType::fromKeyValue($v);}, $value));
         }
     }
 }

@@ -92,9 +92,7 @@ class EndItemsRequestType extends AbstractRequestType
         parent::xmlSerialize($writer);
         $value = $this->getEndItemRequestContainer();
         if (null !== $value && !empty($this->getEndItemRequestContainer())) {
-            $writer->write(array_map(function ($v) {
-                return ["EndItemRequestContainer" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["EndItemRequestContainer" => $v];}, $value));
         }
     }
 
@@ -115,9 +113,7 @@ class EndItemsRequestType extends AbstractRequestType
         parent::setKeyValue($keyValue);
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EndItemRequestContainer', true);
         if (null !== $value && !empty($value)) {
-            $this->setEndItemRequestContainer(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\EndItemRequestContainerType::fromKeyValue($v);
-            }, $value));
+            $this->setEndItemRequestContainer(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\EndItemRequestContainerType::fromKeyValue($v);}, $value));
         }
     }
 }

@@ -21,22 +21,6 @@ Nogrod\eBaySDK\Trading\ReviseMyMessagesRequestType:
                 entry_name: MessageID
                 skip_when_empty: true
                 namespace: 'urn:ebay:apis:eBLBaseComponents'
-        alertIDs:
-            expose: true
-            access_type: public_method
-            serialized_name: AlertIDs
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getAlertIDs
-                setter: setAlertIDs
-            type: array<string>
-            xml_list:
-                inline: false
-                entry_name: AlertID
-                skip_when_empty: true
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
         read:
             expose: true
             access_type: public_method

@@ -32,6 +32,11 @@ class SellingSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
 
     /**
      * The total number of bids made on the seller's active auction listings.
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  This field is deprecated and scheduled for decommission on
+     *  02-06-2024 because the data is no longer being actively
+     *  maintained by eBay.
+     *  </span>
      *
      * @var int $auctionBidCount
      */
@@ -129,6 +134,11 @@ class SellingSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      * Gets as auctionBidCount
      *
      * The total number of bids made on the seller's active auction listings.
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  This field is deprecated and scheduled for decommission on
+     *  02-06-2024 because the data is no longer being actively
+     *  maintained by eBay.
+     *  </span>
      *
      * @return int
      */
@@ -141,6 +151,11 @@ class SellingSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      * Sets a new auctionBidCount
      *
      * The total number of bids made on the seller's active auction listings.
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  This field is deprecated and scheduled for decommission on
+     *  02-06-2024 because the data is no longer being actively
+     *  maintained by eBay.
+     *  </span>
      *
      * @param int $auctionBidCount
      * @return self

@@ -788,9 +788,7 @@ class AbstractResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
         }
         $value = $this->getErrors();
         if (null !== $value && !empty($this->getErrors())) {
-            $writer->write(array_map(function ($v) {
-                return ["Errors" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["Errors" => $v];}, $value));
         }
         $value = $this->getMessage();
         if (null !== $value) {
@@ -866,9 +864,7 @@ class AbstractResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Errors', true);
         if (null !== $value && !empty($value)) {
-            $this->setErrors(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\ErrorType::fromKeyValue($v);
-            }, $value));
+            $this->setErrors(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\ErrorType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Message');
         if (null !== $value) {

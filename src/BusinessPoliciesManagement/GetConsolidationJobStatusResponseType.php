@@ -92,9 +92,7 @@ class GetConsolidationJobStatusResponseType extends BaseResponseType
         parent::xmlSerialize($writer);
         $value = $this->getJob();
         if (null !== $value && !empty($this->getJob())) {
-            $writer->write(array_map(function ($v) {
-                return ["Job" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["Job" => $v];}, $value));
         }
     }
 
@@ -115,9 +113,7 @@ class GetConsolidationJobStatusResponseType extends BaseResponseType
         parent::setKeyValue($keyValue);
         $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}Job', true);
         if (null !== $value && !empty($value)) {
-            $this->setJob(array_map(function ($v) {
-                return \Nogrod\eBaySDK\BusinessPoliciesManagement\ConsolidationJobType::fromKeyValue($v);
-            }, $value));
+            $this->setJob(array_map(function ($v) {return \Nogrod\eBaySDK\BusinessPoliciesManagement\ConsolidationJobType::fromKeyValue($v);}, $value));
         }
     }
 }

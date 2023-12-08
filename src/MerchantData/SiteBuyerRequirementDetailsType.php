@@ -409,9 +409,7 @@ class SiteBuyerRequirementDetailsType implements \Sabre\Xml\XmlSerializable, \Sa
         }
         $value = $this->getMinimumFeedbackScore();
         if (null !== $value && !empty($this->getMinimumFeedbackScore())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MinimumFeedbackScore", array_map(function ($v) {
-                return ["FeedbackScore" => $v];
-            }, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MinimumFeedbackScore", array_map(function ($v) {return ["FeedbackScore" => $v];}, $value));
         }
         $value = $this->getShipToRegistrationCountry();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;

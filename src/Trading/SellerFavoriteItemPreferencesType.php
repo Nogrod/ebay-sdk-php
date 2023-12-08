@@ -314,9 +314,7 @@ class SellerFavoriteItemPreferencesType implements \Sabre\Xml\XmlSerializable, \
         }
         $value = $this->getFavoriteItemID();
         if (null !== $value && !empty($this->getFavoriteItemID())) {
-            $writer->write(array_map(function ($v) {
-                return ["FavoriteItemID" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["FavoriteItemID" => $v];}, $value));
         }
     }
 

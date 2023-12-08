@@ -449,9 +449,7 @@ class CatalogProductType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
         }
         $value = $this->getItemSpecifics();
         if (null !== $value && !empty($this->getItemSpecifics())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ItemSpecifics", array_map(function ($v) {
-                return ["NameValueList" => $v];
-            }, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ItemSpecifics", array_map(function ($v) {return ["NameValueList" => $v];}, $value));
         }
         $value = $this->getReviewCount();
         if (null !== $value) {
@@ -511,9 +509,7 @@ class CatalogProductType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemSpecifics', true);
         if (null !== $value && !empty($value)) {
-            $this->setItemSpecifics(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\NameValueListType::fromKeyValue($v);
-            }, $value));
+            $this->setItemSpecifics(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\NameValueListType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReviewCount');
         if (null !== $value) {

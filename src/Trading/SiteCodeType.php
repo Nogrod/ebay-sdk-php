@@ -228,6 +228,26 @@ class SiteCodeType
     public const VAL_RUSSIA = 'Russia';
 
     /**
+     * Constant for 'Czechia' value.
+     *
+     * Czechia, site ID 197, abbreviation CZ, currency CZK. This site cannot be set in
+     * the <b>X-EBAY-API-SITEID header</b>, nor in the <b>Site</b> field of a request
+     * payload. This enumeration value will only be returned in output fields if
+     * applicable.
+     */
+    public const VAL_CZECHIA = 'Czechia';
+
+    /**
+     * Constant for 'Cyprus' value.
+     *
+     * Cyprus, abbreviation CY, currency CYP. This site cannot be set in the
+     * <b>X-EBAY-API-SITEID header</b>, nor in the <b>Site</b> field of a request
+     * payload. This enumeration value will only be returned in output fields if
+     * applicable.
+     */
+    public const VAL_CYPRUS = 'Cyprus';
+
+    /**
      * @var string $__value
      */
     private $__value = null;

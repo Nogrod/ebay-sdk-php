@@ -137,9 +137,7 @@ class DomainFilterType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
         $writer->writeAttribute("xmlns", "http://www.ebay.com/marketplace/search/v1/services");
         $value = $this->getDomainName();
         if (null !== $value && !empty($this->getDomainName())) {
-            $writer->write(array_map(function ($v) {
-                return ["domainName" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["domainName" => $v];}, $value));
         }
         $value = $this->getDelimiter();
         if (null !== $value) {

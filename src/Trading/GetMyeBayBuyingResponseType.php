@@ -695,15 +695,11 @@ class GetMyeBayBuyingResponseType extends AbstractResponseType
         }
         $value = $this->getSecondChanceOffer();
         if (null !== $value && !empty($this->getSecondChanceOffer())) {
-            $writer->write(array_map(function ($v) {
-                return ["SecondChanceOffer" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["SecondChanceOffer" => $v];}, $value));
         }
         $value = $this->getBidAssistantList();
         if (null !== $value && !empty($this->getBidAssistantList())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BidAssistantList", array_map(function ($v) {
-                return ["BidGroup" => $v];
-            }, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BidAssistantList", array_map(function ($v) {return ["BidGroup" => $v];}, $value));
         }
         $value = $this->getDeletedFromWonList();
         if (null !== $value) {
@@ -715,9 +711,7 @@ class GetMyeBayBuyingResponseType extends AbstractResponseType
         }
         $value = $this->getUserDefinedList();
         if (null !== $value && !empty($this->getUserDefinedList())) {
-            $writer->write(array_map(function ($v) {
-                return ["UserDefinedList" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["UserDefinedList" => $v];}, $value));
         }
     }
 
@@ -770,15 +764,11 @@ class GetMyeBayBuyingResponseType extends AbstractResponseType
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SecondChanceOffer', true);
         if (null !== $value && !empty($value)) {
-            $this->setSecondChanceOffer(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\ItemType::fromKeyValue($v);
-            }, $value));
+            $this->setSecondChanceOffer(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\ItemType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BidAssistantList', true);
         if (null !== $value && !empty($value)) {
-            $this->setBidAssistantList(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\BidGroupType::fromKeyValue($v);
-            }, $value));
+            $this->setBidAssistantList(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\BidGroupType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DeletedFromWonList');
         if (null !== $value) {
@@ -790,9 +780,7 @@ class GetMyeBayBuyingResponseType extends AbstractResponseType
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UserDefinedList', true);
         if (null !== $value && !empty($value)) {
-            $this->setUserDefinedList(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\UserDefinedListType::fromKeyValue($v);
-            }, $value));
+            $this->setUserDefinedList(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\UserDefinedListType::fromKeyValue($v);}, $value));
         }
     }
 }

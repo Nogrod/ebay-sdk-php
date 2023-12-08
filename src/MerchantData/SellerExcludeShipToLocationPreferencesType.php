@@ -254,9 +254,7 @@ class SellerExcludeShipToLocationPreferencesType implements \Sabre\Xml\XmlSerial
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getExcludeShipToLocation();
         if (null !== $value && !empty($this->getExcludeShipToLocation())) {
-            $writer->write(array_map(function ($v) {
-                return ["ExcludeShipToLocation" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["ExcludeShipToLocation" => $v];}, $value));
         }
     }
 

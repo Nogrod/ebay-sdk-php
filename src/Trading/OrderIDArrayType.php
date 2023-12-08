@@ -134,9 +134,7 @@ class OrderIDArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getOrderID();
         if (null !== $value && !empty($this->getOrderID())) {
-            $writer->write(array_map(function ($v) {
-                return ["OrderID" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["OrderID" => $v];}, $value));
         }
     }
 

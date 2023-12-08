@@ -921,15 +921,11 @@ class DisputeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
         }
         $value = $this->getDisputeResolution();
         if (null !== $value && !empty($this->getDisputeResolution())) {
-            $writer->write(array_map(function ($v) {
-                return ["DisputeResolution" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["DisputeResolution" => $v];}, $value));
         }
         $value = $this->getDisputeMessage();
         if (null !== $value && !empty($this->getDisputeMessage())) {
-            $writer->write(array_map(function ($v) {
-                return ["DisputeMessage" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["DisputeMessage" => $v];}, $value));
         }
         $value = $this->getEscalation();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;
@@ -1027,15 +1023,11 @@ class DisputeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DisputeResolution', true);
         if (null !== $value && !empty($value)) {
-            $this->setDisputeResolution(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\DisputeResolutionType::fromKeyValue($v);
-            }, $value));
+            $this->setDisputeResolution(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\DisputeResolutionType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DisputeMessage', true);
         if (null !== $value && !empty($value)) {
-            $this->setDisputeMessage(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\DisputeMessageType::fromKeyValue($v);
-            }, $value));
+            $this->setDisputeMessage(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\DisputeMessageType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Escalation');
         if (null !== $value) {

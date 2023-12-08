@@ -92,9 +92,7 @@ class CancelOfferArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getCancelOffer();
         if (null !== $value && !empty($this->getCancelOffer())) {
-            $writer->write(array_map(function ($v) {
-                return ["CancelOffer" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["CancelOffer" => $v];}, $value));
         }
     }
 
@@ -114,9 +112,7 @@ class CancelOfferArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
     {
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CancelOffer', true);
         if (null !== $value && !empty($value)) {
-            $this->setCancelOffer(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\CancelOfferType::fromKeyValue($v);
-            }, $value));
+            $this->setCancelOffer(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\CancelOfferType::fromKeyValue($v);}, $value));
         }
     }
 }

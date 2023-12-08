@@ -743,33 +743,23 @@ class FeedbackSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getBidRetractionFeedbackPeriodArray();
         if (null !== $value && !empty($this->getBidRetractionFeedbackPeriodArray())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BidRetractionFeedbackPeriodArray", array_map(function ($v) {
-                return ["FeedbackPeriod" => $v];
-            }, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BidRetractionFeedbackPeriodArray", array_map(function ($v) {return ["FeedbackPeriod" => $v];}, $value));
         }
         $value = $this->getNegativeFeedbackPeriodArray();
         if (null !== $value && !empty($this->getNegativeFeedbackPeriodArray())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}NegativeFeedbackPeriodArray", array_map(function ($v) {
-                return ["FeedbackPeriod" => $v];
-            }, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}NegativeFeedbackPeriodArray", array_map(function ($v) {return ["FeedbackPeriod" => $v];}, $value));
         }
         $value = $this->getNeutralFeedbackPeriodArray();
         if (null !== $value && !empty($this->getNeutralFeedbackPeriodArray())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}NeutralFeedbackPeriodArray", array_map(function ($v) {
-                return ["FeedbackPeriod" => $v];
-            }, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}NeutralFeedbackPeriodArray", array_map(function ($v) {return ["FeedbackPeriod" => $v];}, $value));
         }
         $value = $this->getPositiveFeedbackPeriodArray();
         if (null !== $value && !empty($this->getPositiveFeedbackPeriodArray())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PositiveFeedbackPeriodArray", array_map(function ($v) {
-                return ["FeedbackPeriod" => $v];
-            }, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PositiveFeedbackPeriodArray", array_map(function ($v) {return ["FeedbackPeriod" => $v];}, $value));
         }
         $value = $this->getTotalFeedbackPeriodArray();
         if (null !== $value && !empty($this->getTotalFeedbackPeriodArray())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TotalFeedbackPeriodArray", array_map(function ($v) {
-                return ["FeedbackPeriod" => $v];
-            }, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TotalFeedbackPeriodArray", array_map(function ($v) {return ["FeedbackPeriod" => $v];}, $value));
         }
         $value = $this->getNeutralCommentCountFromSuspendedUsers();
         if (null !== $value) {
@@ -789,9 +779,7 @@ class FeedbackSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
         }
         $value = $this->getSellerRatingSummaryArray();
         if (null !== $value && !empty($this->getSellerRatingSummaryArray())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SellerRatingSummaryArray", array_map(function ($v) {
-                return ["AverageRatingSummary" => $v];
-            }, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SellerRatingSummaryArray", array_map(function ($v) {return ["AverageRatingSummary" => $v];}, $value));
         }
         $value = $this->getSellerRoleMetrics();
         if (null !== $value) {
@@ -819,33 +807,23 @@ class FeedbackSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     {
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BidRetractionFeedbackPeriodArray', true);
         if (null !== $value && !empty($value)) {
-            $this->setBidRetractionFeedbackPeriodArray(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\FeedbackPeriodType::fromKeyValue($v);
-            }, $value));
+            $this->setBidRetractionFeedbackPeriodArray(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\FeedbackPeriodType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}NegativeFeedbackPeriodArray', true);
         if (null !== $value && !empty($value)) {
-            $this->setNegativeFeedbackPeriodArray(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\FeedbackPeriodType::fromKeyValue($v);
-            }, $value));
+            $this->setNegativeFeedbackPeriodArray(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\FeedbackPeriodType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}NeutralFeedbackPeriodArray', true);
         if (null !== $value && !empty($value)) {
-            $this->setNeutralFeedbackPeriodArray(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\FeedbackPeriodType::fromKeyValue($v);
-            }, $value));
+            $this->setNeutralFeedbackPeriodArray(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\FeedbackPeriodType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PositiveFeedbackPeriodArray', true);
         if (null !== $value && !empty($value)) {
-            $this->setPositiveFeedbackPeriodArray(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\FeedbackPeriodType::fromKeyValue($v);
-            }, $value));
+            $this->setPositiveFeedbackPeriodArray(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\FeedbackPeriodType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TotalFeedbackPeriodArray', true);
         if (null !== $value && !empty($value)) {
-            $this->setTotalFeedbackPeriodArray(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\FeedbackPeriodType::fromKeyValue($v);
-            }, $value));
+            $this->setTotalFeedbackPeriodArray(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\FeedbackPeriodType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}NeutralCommentCountFromSuspendedUsers');
         if (null !== $value) {
@@ -865,9 +843,7 @@ class FeedbackSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerRatingSummaryArray', true);
         if (null !== $value && !empty($value)) {
-            $this->setSellerRatingSummaryArray(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\AverageRatingSummaryType::fromKeyValue($v);
-            }, $value));
+            $this->setSellerRatingSummaryArray(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\AverageRatingSummaryType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerRoleMetrics');
         if (null !== $value) {

@@ -277,9 +277,7 @@ class StoreCustomListingHeaderType implements \Sabre\Xml\XmlSerializable, \Sabre
         }
         $value = $this->getLinkToInclude();
         if (null !== $value && !empty($this->getLinkToInclude())) {
-            $writer->write(array_map(function ($v) {
-                return ["LinkToInclude" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["LinkToInclude" => $v];}, $value));
         }
         $value = $this->getAddToFavoriteStores();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;
@@ -321,9 +319,7 @@ class StoreCustomListingHeaderType implements \Sabre\Xml\XmlSerializable, \Sabre
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LinkToInclude', true);
         if (null !== $value && !empty($value)) {
-            $this->setLinkToInclude(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\StoreCustomListingHeaderLinkType::fromKeyValue($v);
-            }, $value));
+            $this->setLinkToInclude(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\StoreCustomListingHeaderLinkType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AddToFavoriteStores');
         if (null !== $value) {

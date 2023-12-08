@@ -17,7 +17,10 @@ use Nogrod\XMLClientRuntime\Func;
 class CalculatedShippingRateType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
     /**
-     * The postal code for the location from which the package will be shipped. A postal code is required for calculated shipping. This field is not necessary if a postal code is already specified through the <strong>Item.PostalCode</strong> field. If a postal code is included in both fields, the value in <strong>Item.PostalCode</strong> field is used, and the value in <strong>OriginatingPostalCode</strong> is ignored.
+     * <span class="tablenote"><strong>Note:</strong>
+     *  This field is not usable and will be ignored if sent. See <a href="https://developer.ebay.com/develop/apis/api-deprecation-status">API Deprecation Status</a> for the decommission date (when this field will be removed from the WSDL and stop being returned). The <b>Item.PostalCode</b> field should be used to set the postal code for the item's location.
+     *  </span>
+     *  The postal code for the location from which the package will be shipped. A postal code is required for calculated shipping. This field is not necessary if a postal code is already specified through the <strong>Item.PostalCode</strong> field. If a postal code is included in both fields, the value in <strong>Item.PostalCode</strong> field is used, and the value in <strong>OriginatingPostalCode</strong> is ignored.
      *
      * @var string $originatingPostalCode
      */
@@ -75,7 +78,10 @@ class CalculatedShippingRateType implements \Sabre\Xml\XmlSerializable, \Sabre\X
     /**
      * Gets as originatingPostalCode
      *
-     * The postal code for the location from which the package will be shipped. A postal code is required for calculated shipping. This field is not necessary if a postal code is already specified through the <strong>Item.PostalCode</strong> field. If a postal code is included in both fields, the value in <strong>Item.PostalCode</strong> field is used, and the value in <strong>OriginatingPostalCode</strong> is ignored.
+     * <span class="tablenote"><strong>Note:</strong>
+     *  This field is not usable and will be ignored if sent. See <a href="https://developer.ebay.com/develop/apis/api-deprecation-status">API Deprecation Status</a> for the decommission date (when this field will be removed from the WSDL and stop being returned). The <b>Item.PostalCode</b> field should be used to set the postal code for the item's location.
+     *  </span>
+     *  The postal code for the location from which the package will be shipped. A postal code is required for calculated shipping. This field is not necessary if a postal code is already specified through the <strong>Item.PostalCode</strong> field. If a postal code is included in both fields, the value in <strong>Item.PostalCode</strong> field is used, and the value in <strong>OriginatingPostalCode</strong> is ignored.
      *
      * @return string
      */
@@ -87,7 +93,10 @@ class CalculatedShippingRateType implements \Sabre\Xml\XmlSerializable, \Sabre\X
     /**
      * Sets a new originatingPostalCode
      *
-     * The postal code for the location from which the package will be shipped. A postal code is required for calculated shipping. This field is not necessary if a postal code is already specified through the <strong>Item.PostalCode</strong> field. If a postal code is included in both fields, the value in <strong>Item.PostalCode</strong> field is used, and the value in <strong>OriginatingPostalCode</strong> is ignored.
+     * <span class="tablenote"><strong>Note:</strong>
+     *  This field is not usable and will be ignored if sent. See <a href="https://developer.ebay.com/develop/apis/api-deprecation-status">API Deprecation Status</a> for the decommission date (when this field will be removed from the WSDL and stop being returned). The <b>Item.PostalCode</b> field should be used to set the postal code for the item's location.
+     *  </span>
+     *  The postal code for the location from which the package will be shipped. A postal code is required for calculated shipping. This field is not necessary if a postal code is already specified through the <strong>Item.PostalCode</strong> field. If a postal code is included in both fields, the value in <strong>Item.PostalCode</strong> field is used, and the value in <strong>OriginatingPostalCode</strong> is ignored.
      *
      * @param string $originatingPostalCode
      * @return self

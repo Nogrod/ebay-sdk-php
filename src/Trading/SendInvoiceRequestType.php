@@ -122,21 +122,6 @@ class SendInvoiceRequestType extends AbstractRequestType
     private $emailCopyToSeller = null;
 
     /**
-     * <span class="tablenote"><strong>Note:</strong>
-     *  This field was deprecated since COD is no longer a supported payment method on any marketplace. This field will be removed from the Trading WSDL and docs on July 17, 2023.
-     *  </span>
-     *  <br>
-     *  This dollar value indicates the money due from the buyer upon delivery of the item.
-     *  <br><br>
-     *  This field should only be specified in the <b>SendInvoice</b> request if 'COD'
-     *  (cash-on-delivery) was the payment method selected by the buyer and it is included
-     *  as the <b>PaymentMethods</b> value in the same request.
-     *
-     * @var \Nogrod\eBaySDK\Trading\AmountType $cODCost
-     */
-    private $cODCost = null;
-
-    /**
      * The seller's unique identifier for an item that is being tracked by this SKU. If <b>OrderID</b> or <b>OrderLineItemID</b> are not provided, both <b>SKU</b> (or <b>ItemID</b>) and corresponding <b>TransactionID</b> must be provided to uniquely identify a single line item order. For a multiple line item order, <b>OrderID</b> must be used.
      *  <br>
      *  <br>
@@ -658,48 +643,6 @@ class SendInvoiceRequestType extends AbstractRequestType
     }
 
     /**
-     * Gets as cODCost
-     *
-     * <span class="tablenote"><strong>Note:</strong>
-     *  This field was deprecated since COD is no longer a supported payment method on any marketplace. This field will be removed from the Trading WSDL and docs on July 17, 2023.
-     *  </span>
-     *  <br>
-     *  This dollar value indicates the money due from the buyer upon delivery of the item.
-     *  <br><br>
-     *  This field should only be specified in the <b>SendInvoice</b> request if 'COD'
-     *  (cash-on-delivery) was the payment method selected by the buyer and it is included
-     *  as the <b>PaymentMethods</b> value in the same request.
-     *
-     * @return \Nogrod\eBaySDK\Trading\AmountType
-     */
-    public function getCODCost()
-    {
-        return $this->cODCost;
-    }
-
-    /**
-     * Sets a new cODCost
-     *
-     * <span class="tablenote"><strong>Note:</strong>
-     *  This field was deprecated since COD is no longer a supported payment method on any marketplace. This field will be removed from the Trading WSDL and docs on July 17, 2023.
-     *  </span>
-     *  <br>
-     *  This dollar value indicates the money due from the buyer upon delivery of the item.
-     *  <br><br>
-     *  This field should only be specified in the <b>SendInvoice</b> request if 'COD'
-     *  (cash-on-delivery) was the payment method selected by the buyer and it is included
-     *  as the <b>PaymentMethods</b> value in the same request.
-     *
-     * @param \Nogrod\eBaySDK\Trading\AmountType $cODCost
-     * @return self
-     */
-    public function setCODCost(\Nogrod\eBaySDK\Trading\AmountType $cODCost)
-    {
-        $this->cODCost = $cODCost;
-        return $this;
-    }
-
-    /**
      * Gets as sKU
      *
      * The seller's unique identifier for an item that is being tracked by this SKU. If <b>OrderID</b> or <b>OrderLineItemID</b> are not provided, both <b>SKU</b> (or <b>ItemID</b>) and corresponding <b>TransactionID</b> must be provided to uniquely identify a single line item order. For a multiple line item order, <b>OrderID</b> must be used.
@@ -818,15 +761,11 @@ class SendInvoiceRequestType extends AbstractRequestType
         }
         $value = $this->getInternationalShippingServiceOptions();
         if (null !== $value && !empty($this->getInternationalShippingServiceOptions())) {
-            $writer->write(array_map(function ($v) {
-                return ["InternationalShippingServiceOptions" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["InternationalShippingServiceOptions" => $v];}, $value));
         }
         $value = $this->getShippingServiceOptions();
         if (null !== $value && !empty($this->getShippingServiceOptions())) {
-            $writer->write(array_map(function ($v) {
-                return ["ShippingServiceOptions" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["ShippingServiceOptions" => $v];}, $value));
         }
         $value = $this->getSalesTax();
         if (null !== $value) {
@@ -842,9 +781,7 @@ class SendInvoiceRequestType extends AbstractRequestType
         }
         $value = $this->getPaymentMethods();
         if (null !== $value && !empty($this->getPaymentMethods())) {
-            $writer->write(array_map(function ($v) {
-                return ["PaymentMethods" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["PaymentMethods" => $v];}, $value));
         }
         $value = $this->getPayPalEmailAddress();
         if (null !== $value) {
@@ -858,10 +795,6 @@ class SendInvoiceRequestType extends AbstractRequestType
         $value = null !== $value ? ($value ? 'true' : 'false') : null;
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}EmailCopyToSeller", $value);
-        }
-        $value = $this->getCODCost();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CODCost", $value);
         }
         $value = $this->getSKU();
         if (null !== $value) {
@@ -906,15 +839,11 @@ class SendInvoiceRequestType extends AbstractRequestType
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}InternationalShippingServiceOptions', true);
         if (null !== $value && !empty($value)) {
-            $this->setInternationalShippingServiceOptions(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\InternationalShippingServiceOptionsType::fromKeyValue($v);
-            }, $value));
+            $this->setInternationalShippingServiceOptions(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\InternationalShippingServiceOptionsType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingServiceOptions', true);
         if (null !== $value && !empty($value)) {
-            $this->setShippingServiceOptions(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\ShippingServiceOptionsType::fromKeyValue($v);
-            }, $value));
+            $this->setShippingServiceOptions(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\ShippingServiceOptionsType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SalesTax');
         if (null !== $value) {
@@ -943,10 +872,6 @@ class SendInvoiceRequestType extends AbstractRequestType
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EmailCopyToSeller');
         if (null !== $value) {
             $this->setEmailCopyToSeller($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CODCost');
-        if (null !== $value) {
-            $this->setCODCost(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SKU');
         if (null !== $value) {

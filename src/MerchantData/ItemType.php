@@ -7950,21 +7950,15 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         }
         $value = $this->getAttributeSetArray();
         if (null !== $value && !empty($this->getAttributeSetArray())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}AttributeSetArray", array_map(function ($v) {
-                return ["AttributeSet" => $v];
-            }, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}AttributeSetArray", array_map(function ($v) {return ["AttributeSet" => $v];}, $value));
         }
         $value = $this->getAttributeArray();
         if (null !== $value && !empty($this->getAttributeArray())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}AttributeArray", array_map(function ($v) {
-                return ["Attribute" => $v];
-            }, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}AttributeArray", array_map(function ($v) {return ["Attribute" => $v];}, $value));
         }
         $value = $this->getLookupAttributeArray();
         if (null !== $value && !empty($this->getLookupAttributeArray())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}LookupAttributeArray", array_map(function ($v) {
-                return ["LookupAttribute" => $v];
-            }, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}LookupAttributeArray", array_map(function ($v) {return ["LookupAttribute" => $v];}, $value));
         }
         $value = $this->getAutoPay();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;
@@ -8006,9 +8000,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         }
         $value = $this->getDescription();
         if (null !== $value) {
-            $writer->startElement("{urn:ebay:apis:eBLBaseComponents}Description");
-            $writer->writeCdata($value);
-            $writer->endElement();
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Description", $value);
         }
         $value = $this->getDescriptionReviseMode();
         if (null !== $value) {
@@ -8036,9 +8028,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         }
         $value = $this->getListingEnhancement();
         if (null !== $value && !empty($this->getListingEnhancement())) {
-            $writer->write(array_map(function ($v) {
-                return ["ListingEnhancement" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["ListingEnhancement" => $v];}, $value));
         }
         $value = $this->getListingType();
         if (null !== $value) {
@@ -8066,9 +8056,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         }
         $value = $this->getPaymentMethods();
         if (null !== $value && !empty($this->getPaymentMethods())) {
-            $writer->write(array_map(function ($v) {
-                return ["PaymentMethods" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["PaymentMethods" => $v];}, $value));
         }
         $value = $this->getPayPalEmailAddress();
         if (null !== $value) {
@@ -8138,9 +8126,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         }
         $value = $this->getShipToLocations();
         if (null !== $value && !empty($this->getShipToLocations())) {
-            $writer->write(array_map(function ($v) {
-                return ["ShipToLocations" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["ShipToLocations" => $v];}, $value));
         }
         $value = $this->getSite();
         if (null !== $value) {
@@ -8255,9 +8241,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         }
         $value = $this->getVideoDetails();
         if (null !== $value && !empty($this->getVideoDetails())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}VideoDetails", array_map(function ($v) {
-                return ["VideoID" => $v];
-            }, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}VideoDetails", array_map(function ($v) {return ["VideoID" => $v];}, $value));
         }
         $value = $this->getExtendedProducerResponsibility();
         if (null !== $value) {
@@ -8308,9 +8292,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         }
         $value = $this->getItemSpecifics();
         if (null !== $value && !empty($this->getItemSpecifics())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ItemSpecifics", array_map(function ($v) {
-                return ["NameValueList" => $v];
-            }, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ItemSpecifics", array_map(function ($v) {return ["NameValueList" => $v];}, $value));
         }
         $value = $this->getGroupCategoryID();
         if (null !== $value) {
@@ -8354,9 +8336,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         }
         $value = $this->getCrossBorderTrade();
         if (null !== $value && !empty($this->getCrossBorderTrade())) {
-            $writer->write(array_map(function ($v) {
-                return ["CrossBorderTrade" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["CrossBorderTrade" => $v];}, $value));
         }
         $value = $this->getBusinessSellerDetails();
         if (null !== $value) {
@@ -8376,9 +8356,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         }
         $value = $this->getPaymentAllowedSite();
         if (null !== $value && !empty($this->getPaymentAllowedSite())) {
-            $writer->write(array_map(function ($v) {
-                return ["PaymentAllowedSite" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["PaymentAllowedSite" => $v];}, $value));
         }
         $value = $this->getInventoryTrackingMethod();
         if (null !== $value) {
@@ -8459,9 +8437,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         }
         $value = $this->getShippingServiceCostOverrideList();
         if (null !== $value && !empty($this->getShippingServiceCostOverrideList())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippingServiceCostOverrideList", array_map(function ($v) {
-                return ["ShippingServiceCostOverride" => $v];
-            }, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippingServiceCostOverrideList", array_map(function ($v) {return ["ShippingServiceCostOverride" => $v];}, $value));
         }
         $value = $this->getShippingOverride();
         if (null !== $value) {
@@ -8584,21 +8560,15 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AttributeSetArray', true);
         if (null !== $value && !empty($value)) {
-            $this->setAttributeSetArray(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\AttributeSetType::fromKeyValue($v);
-            }, $value));
+            $this->setAttributeSetArray(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\AttributeSetType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AttributeArray', true);
         if (null !== $value && !empty($value)) {
-            $this->setAttributeArray(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\AttributeType::fromKeyValue($v);
-            }, $value));
+            $this->setAttributeArray(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\AttributeType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LookupAttributeArray', true);
         if (null !== $value && !empty($value)) {
-            $this->setLookupAttributeArray(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\LookupAttributeType::fromKeyValue($v);
-            }, $value));
+            $this->setLookupAttributeArray(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\LookupAttributeType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AutoPay');
         if (null !== $value) {
@@ -8918,9 +8888,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemSpecifics', true);
         if (null !== $value && !empty($value)) {
-            $this->setItemSpecifics(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\NameValueListType::fromKeyValue($v);
-            }, $value));
+            $this->setItemSpecifics(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\NameValueListType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}GroupCategoryID');
         if (null !== $value) {
@@ -9060,9 +9028,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingServiceCostOverrideList', true);
         if (null !== $value && !empty($value)) {
-            $this->setShippingServiceCostOverrideList(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\ShippingServiceCostOverrideType::fromKeyValue($v);
-            }, $value));
+            $this->setShippingServiceCostOverrideList(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\ShippingServiceCostOverrideType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingOverride');
         if (null !== $value) {

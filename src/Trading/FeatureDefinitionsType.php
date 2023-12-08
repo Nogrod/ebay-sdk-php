@@ -5635,15 +5635,11 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
         }
         $value = $this->getDomesticRefundMethodValues();
         if (null !== $value && !empty($this->getDomesticRefundMethodValues())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DomesticRefundMethodValues", array_map(function ($v) {
-                return ["DomesticRefundMethod" => $v];
-            }, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DomesticRefundMethodValues", array_map(function ($v) {return ["DomesticRefundMethod" => $v];}, $value));
         }
         $value = $this->getInternationalRefundMethodValues();
         if (null !== $value && !empty($this->getInternationalRefundMethodValues())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}InternationalRefundMethodValues", array_map(function ($v) {
-                return ["InternationalRefundMethod" => $v];
-            }, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}InternationalRefundMethodValues", array_map(function ($v) {return ["InternationalRefundMethod" => $v];}, $value));
         }
         $value = $this->getReturnPolicyDescriptionEnabled();
         if (null !== $value) {

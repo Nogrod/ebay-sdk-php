@@ -30,6 +30,9 @@ class ItemArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
      *  For example, <b>GranularityLevel</b> controls the fields to return for each item in
      *  the <b>GetSellerList</b>
      *  response.
+     *  <br>
+     *  <span class="tablenote"><b>Note:</b> When making a <b>GetSellerList</b> call, items that are on-hold due to an eBay policy violation will not be returned in the response.
+     *  </span>
      *
      * @var \Nogrod\eBaySDK\Trading\ItemType[] $item
      */
@@ -56,6 +59,9 @@ class ItemArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
      *  For example, <b>GranularityLevel</b> controls the fields to return for each item in
      *  the <b>GetSellerList</b>
      *  response.
+     *  <br>
+     *  <span class="tablenote"><b>Note:</b> When making a <b>GetSellerList</b> call, items that are on-hold due to an eBay policy violation will not be returned in the response.
+     *  </span>
      *
      * @return self
      * @param \Nogrod\eBaySDK\Trading\ItemType $item
@@ -85,6 +91,9 @@ class ItemArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
      *  For example, <b>GranularityLevel</b> controls the fields to return for each item in
      *  the <b>GetSellerList</b>
      *  response.
+     *  <br>
+     *  <span class="tablenote"><b>Note:</b> When making a <b>GetSellerList</b> call, items that are on-hold due to an eBay policy violation will not be returned in the response.
+     *  </span>
      *
      * @param int|string $index
      * @return bool
@@ -113,6 +122,9 @@ class ItemArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
      *  For example, <b>GranularityLevel</b> controls the fields to return for each item in
      *  the <b>GetSellerList</b>
      *  response.
+     *  <br>
+     *  <span class="tablenote"><b>Note:</b> When making a <b>GetSellerList</b> call, items that are on-hold due to an eBay policy violation will not be returned in the response.
+     *  </span>
      *
      * @param int|string $index
      * @return void
@@ -141,6 +153,9 @@ class ItemArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
      *  For example, <b>GranularityLevel</b> controls the fields to return for each item in
      *  the <b>GetSellerList</b>
      *  response.
+     *  <br>
+     *  <span class="tablenote"><b>Note:</b> When making a <b>GetSellerList</b> call, items that are on-hold due to an eBay policy violation will not be returned in the response.
+     *  </span>
      *
      * @return \Nogrod\eBaySDK\Trading\ItemType[]
      */
@@ -168,6 +183,9 @@ class ItemArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
      *  For example, <b>GranularityLevel</b> controls the fields to return for each item in
      *  the <b>GetSellerList</b>
      *  response.
+     *  <br>
+     *  <span class="tablenote"><b>Note:</b> When making a <b>GetSellerList</b> call, items that are on-hold due to an eBay policy violation will not be returned in the response.
+     *  </span>
      *
      * @param \Nogrod\eBaySDK\Trading\ItemType[] $item
      * @return self
@@ -183,9 +201,7 @@ class ItemArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getItem();
         if (null !== $value && !empty($this->getItem())) {
-            $writer->write(array_map(function ($v) {
-                return ["Item" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["Item" => $v];}, $value));
         }
     }
 
@@ -205,9 +221,7 @@ class ItemArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
     {
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Item', true);
         if (null !== $value && !empty($value)) {
-            $this->setItem(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\ItemType::fromKeyValue($v);
-            }, $value));
+            $this->setItem(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\ItemType::fromKeyValue($v);}, $value));
         }
     }
 }

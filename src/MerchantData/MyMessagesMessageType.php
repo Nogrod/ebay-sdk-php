@@ -1149,9 +1149,7 @@ class MyMessagesMessageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
         }
         $value = $this->getMessageMedia();
         if (null !== $value && !empty($this->getMessageMedia())) {
-            $writer->write(array_map(function ($v) {
-                return ["MessageMedia" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["MessageMedia" => $v];}, $value));
         }
     }
 
@@ -1271,9 +1269,7 @@ class MyMessagesMessageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MessageMedia', true);
         if (null !== $value && !empty($value)) {
-            $this->setMessageMedia(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\MessageMediaType::fromKeyValue($v);
-            }, $value));
+            $this->setMessageMedia(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\MessageMediaType::fromKeyValue($v);}, $value));
         }
     }
 }

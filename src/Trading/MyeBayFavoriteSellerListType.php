@@ -129,9 +129,7 @@ class MyeBayFavoriteSellerListType implements \Sabre\Xml\XmlSerializable, \Sabre
         }
         $value = $this->getFavoriteSeller();
         if (null !== $value && !empty($this->getFavoriteSeller())) {
-            $writer->write(array_map(function ($v) {
-                return ["FavoriteSeller" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["FavoriteSeller" => $v];}, $value));
         }
     }
 
@@ -155,9 +153,7 @@ class MyeBayFavoriteSellerListType implements \Sabre\Xml\XmlSerializable, \Sabre
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FavoriteSeller', true);
         if (null !== $value && !empty($value)) {
-            $this->setFavoriteSeller(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\MyeBayFavoriteSellerType::fromKeyValue($v);
-            }, $value));
+            $this->setFavoriteSeller(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\MyeBayFavoriteSellerType::fromKeyValue($v);}, $value));
         }
     }
 }

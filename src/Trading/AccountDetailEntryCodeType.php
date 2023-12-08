@@ -3264,6 +3264,56 @@ class AccountDetailEntryCodeType
     public const VAL_CHARITY_DONATION_CREDIT = 'CharityDonationCredit';
 
     /**
+     * Constant for 'ExpressPayoutFee' value.
+     *
+     * This enumeration value indicates the fee charged by eBay when a seller requests
+     * a payout through a debit card.
+     */
+    public const VAL_EXPRESS_PAYOUT_FEE = 'ExpressPayoutFee';
+
+    /**
+     * Constant for 'ExpressPayoutFeeCredit' value.
+     *
+     * This enumeration value indicates that the fee charged to the seller for a direct
+     * payout failed and the fee will be credited back to the seller's debit card.
+     */
+    public const VAL_EXPRESS_PAYOUT_FEE_CREDIT = 'ExpressPayoutFeeCredit';
+
+    /**
+     * Constant for 'HermesReturnLblSellerPaidShpFee' value.
+     *
+     * This enumeration value indicates the seller was charged a fee for a Hermes
+     * return shipping label and any applicable tax. Return shipping labels are subject
+     * to tax, which is payable by the seller.
+     */
+    public const VAL_HERMES_RETURN_LBL_SELLER_PAID_SHP_FEE = 'HermesReturnLblSellerPaidShpFee';
+
+    /**
+     * Constant for 'HermesReturnLblSellerPaidShpFeeCr' value.
+     *
+     * This enumeration value indicates that the seller was issued a credit against a
+     * fee for a Hermes return shipping label.
+     */
+    public const VAL_HERMES_RETURN_LBL_SELLER_PAID_SHP_FEE_CR = 'HermesReturnLblSellerPaidShpFeeCr';
+
+    /**
+     * Constant for 'DHLReturnLblShippingFee' value.
+     *
+     * This enumeration value indicates the seller was charged a fee for a DHL return
+     * shipping label and any applicable tax. Return shipping labels are subject to
+     * tax, which is payable by the seller.
+     */
+    public const VAL_DHLRETURN_LBL_SHIPPING_FEE = 'DHLReturnLblShippingFee';
+
+    /**
+     * Constant for 'DHLReturnLblShippingFeeCredit' value.
+     *
+     * This enumeration value indicates that the seller was issued a credit against a
+     * fee for a DHL return shipping label.
+     */
+    public const VAL_DHLRETURN_LBL_SHIPPING_FEE_CREDIT = 'DHLReturnLblShippingFeeCredit';
+
+    /**
      * @var string $__value
      */
     private $__value = null;

@@ -71,17 +71,6 @@ Nogrod\eBaySDK\Trading\MyMessagesMessageType:
                 getter: getExternalMessageID
                 setter: setExternalMessageID
             type: string
-        contentType:
-            expose: true
-            access_type: public_method
-            serialized_name: ContentType
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getContentType
-                setter: setContentType
-            type: string
         text:
             expose: true
             access_type: public_method
@@ -170,17 +159,6 @@ Nogrod\eBaySDK\Trading\MyMessagesMessageType:
                 getter: getResponseDetails
                 setter: setResponseDetails
             type: Nogrod\eBaySDK\Trading\MyMessagesResponseDetailsType
-        forwardDetails:
-            expose: true
-            access_type: public_method
-            serialized_name: ForwardDetails
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getForwardDetails
-                setter: setForwardDetails
-            type: Nogrod\eBaySDK\Trading\MyMessagesForwardDetailsType
         folder:
             expose: true
             access_type: public_method

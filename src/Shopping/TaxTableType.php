@@ -110,9 +110,7 @@ class TaxTableType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getTaxJurisdiction();
         if (null !== $value && !empty($this->getTaxJurisdiction())) {
-            $writer->write(array_map(function ($v) {
-                return ["TaxJurisdiction" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["TaxJurisdiction" => $v];}, $value));
         }
     }
 
@@ -132,9 +130,7 @@ class TaxTableType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
     {
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TaxJurisdiction', true);
         if (null !== $value && !empty($value)) {
-            $this->setTaxJurisdiction(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Shopping\TaxJurisdictionType::fromKeyValue($v);
-            }, $value));
+            $this->setTaxJurisdiction(array_map(function ($v) {return \Nogrod\eBaySDK\Shopping\TaxJurisdictionType::fromKeyValue($v);}, $value));
         }
     }
 }

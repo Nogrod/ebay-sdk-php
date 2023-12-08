@@ -92,9 +92,7 @@ class CharacteristicSetIDsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getID();
         if (null !== $value && !empty($this->getID())) {
-            $writer->write(array_map(function ($v) {
-                return ["ID" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["ID" => $v];}, $value));
         }
     }
 

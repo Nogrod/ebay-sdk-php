@@ -16,16 +16,16 @@ Nogrod\eBaySDK\Trading\PictureDetailsType:
                 getter: getGalleryType
                 setter: setGalleryType
             type: string
-        photoDisplay:
+        galleryURL:
             expose: true
             access_type: public_method
-            serialized_name: PhotoDisplay
+            serialized_name: GalleryURL
             xml_element:
                 cdata: false
                 namespace: 'urn:ebay:apis:eBLBaseComponents'
             accessor:
-                getter: getPhotoDisplay
-                setter: setPhotoDisplay
+                getter: getGalleryURL
+                setter: setGalleryURL
             type: string
         pictureURL:
             expose: true

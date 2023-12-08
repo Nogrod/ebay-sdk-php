@@ -149,17 +149,6 @@ Nogrod\eBaySDK\Trading\SendInvoiceRequestType:
                 getter: getEmailCopyToSeller
                 setter: setEmailCopyToSeller
             type: bool
-        cODCost:
-            expose: true
-            access_type: public_method
-            serialized_name: CODCost
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getCODCost
-                setter: setCODCost
-            type: Nogrod\eBaySDK\Trading\AmountType
         sKU:
             expose: true
             access_type: public_method

@@ -480,9 +480,7 @@ class LeaveFeedbackRequestType extends AbstractRequestType
         }
         $value = $this->getSellerItemRatingDetailArray();
         if (null !== $value && !empty($this->getSellerItemRatingDetailArray())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SellerItemRatingDetailArray", array_map(function ($v) {
-                return ["ItemRatingDetails" => $v];
-            }, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SellerItemRatingDetailArray", array_map(function ($v) {return ["ItemRatingDetails" => $v];}, $value));
         }
         $value = $this->getOrderLineItemID();
         if (null !== $value) {
@@ -536,9 +534,7 @@ class LeaveFeedbackRequestType extends AbstractRequestType
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerItemRatingDetailArray', true);
         if (null !== $value && !empty($value)) {
-            $this->setSellerItemRatingDetailArray(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\ItemRatingDetailsType::fromKeyValue($v);
-            }, $value));
+            $this->setSellerItemRatingDetailArray(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\ItemRatingDetailsType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}OrderLineItemID');
         if (null !== $value) {

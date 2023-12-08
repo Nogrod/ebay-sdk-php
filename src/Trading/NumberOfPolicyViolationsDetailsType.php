@@ -92,9 +92,7 @@ class NumberOfPolicyViolationsDetailsType implements \Sabre\Xml\XmlSerializable,
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getCount();
         if (null !== $value && !empty($this->getCount())) {
-            $writer->write(array_map(function ($v) {
-                return ["Count" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["Count" => $v];}, $value));
         }
     }
 

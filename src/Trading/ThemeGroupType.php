@@ -209,9 +209,7 @@ class ThemeGroupType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
         }
         $value = $this->getThemeID();
         if (null !== $value && !empty($this->getThemeID())) {
-            $writer->write(array_map(function ($v) {
-                return ["ThemeID" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["ThemeID" => $v];}, $value));
         }
         $value = $this->getThemeTotal();
         if (null !== $value) {

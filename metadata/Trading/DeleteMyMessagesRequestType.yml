@@ -5,22 +5,6 @@ Nogrod\eBaySDK\Trading\DeleteMyMessagesRequestType:
             serialized_name: xmlns
             xml_attribute: true
     properties:
-        alertIDs:
-            expose: true
-            access_type: public_method
-            serialized_name: AlertIDs
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getAlertIDs
-                setter: setAlertIDs
-            type: array<string>
-            xml_list:
-                inline: false
-                entry_name: AlertID
-                skip_when_empty: true
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
         messageIDs:
             expose: true
             access_type: public_method

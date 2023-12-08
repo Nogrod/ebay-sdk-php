@@ -111,9 +111,7 @@ class ProductSuggestionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getProductSuggestion();
         if (null !== $value && !empty($this->getProductSuggestion())) {
-            $writer->write(array_map(function ($v) {
-                return ["ProductSuggestion" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["ProductSuggestion" => $v];}, $value));
         }
     }
 
@@ -133,9 +131,7 @@ class ProductSuggestionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     {
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ProductSuggestion', true);
         if (null !== $value && !empty($value)) {
-            $this->setProductSuggestion(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\ProductSuggestionType::fromKeyValue($v);
-            }, $value));
+            $this->setProductSuggestion(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\ProductSuggestionType::fromKeyValue($v);}, $value));
         }
     }
 }

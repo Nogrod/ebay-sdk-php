@@ -82,25 +82,3 @@ Nogrod\eBaySDK\Trading\SetShippingDiscountProfilesRequestType:
                 getter: getPromotionalShippingDiscountDetails
                 setter: setPromotionalShippingDiscountDetails
             type: Nogrod\eBaySDK\Trading\PromotionalShippingDiscountDetailsType
-        shippingInsurance:
-            expose: true
-            access_type: public_method
-            serialized_name: ShippingInsurance
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getShippingInsurance
-                setter: setShippingInsurance
-            type: Nogrod\eBaySDK\Trading\ShippingInsuranceType
-        internationalShippingInsurance:
-            expose: true
-            access_type: public_method
-            serialized_name: InternationalShippingInsurance
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getInternationalShippingInsurance
-                setter: setInternationalShippingInsurance
-            type: Nogrod\eBaySDK\Trading\ShippingInsuranceType

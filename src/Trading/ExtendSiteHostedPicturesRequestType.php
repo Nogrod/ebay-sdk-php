@@ -128,9 +128,7 @@ class ExtendSiteHostedPicturesRequestType extends AbstractRequestType
         parent::xmlSerialize($writer);
         $value = $this->getPictureURL();
         if (null !== $value && !empty($this->getPictureURL())) {
-            $writer->write(array_map(function ($v) {
-                return ["PictureURL" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["PictureURL" => $v];}, $value));
         }
         $value = $this->getExtensionInDays();
         if (null !== $value) {

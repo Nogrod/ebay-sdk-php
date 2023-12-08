@@ -92,9 +92,7 @@ class StoreSubscriptionArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\X
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getSubscription();
         if (null !== $value && !empty($this->getSubscription())) {
-            $writer->write(array_map(function ($v) {
-                return ["Subscription" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["Subscription" => $v];}, $value));
         }
     }
 
@@ -114,9 +112,7 @@ class StoreSubscriptionArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\X
     {
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Subscription', true);
         if (null !== $value && !empty($value)) {
-            $this->setSubscription(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\StoreSubscriptionType::fromKeyValue($v);
-            }, $value));
+            $this->setSubscription(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\StoreSubscriptionType::fromKeyValue($v);}, $value));
         }
     }
 }

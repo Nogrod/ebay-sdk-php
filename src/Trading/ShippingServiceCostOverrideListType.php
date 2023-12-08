@@ -130,9 +130,7 @@ class ShippingServiceCostOverrideListType implements \Sabre\Xml\XmlSerializable,
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getShippingServiceCostOverride();
         if (null !== $value && !empty($this->getShippingServiceCostOverride())) {
-            $writer->write(array_map(function ($v) {
-                return ["ShippingServiceCostOverride" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["ShippingServiceCostOverride" => $v];}, $value));
         }
     }
 
@@ -152,9 +150,7 @@ class ShippingServiceCostOverrideListType implements \Sabre\Xml\XmlSerializable,
     {
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingServiceCostOverride', true);
         if (null !== $value && !empty($value)) {
-            $this->setShippingServiceCostOverride(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\ShippingServiceCostOverrideType::fromKeyValue($v);
-            }, $value));
+            $this->setShippingServiceCostOverride(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\ShippingServiceCostOverrideType::fromKeyValue($v);}, $value));
         }
     }
 }

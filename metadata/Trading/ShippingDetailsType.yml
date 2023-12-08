@@ -60,17 +60,6 @@ Nogrod\eBaySDK\Trading\ShippingDetailsType:
                 getter: getChangePaymentInstructions
                 setter: setChangePaymentInstructions
             type: bool
-        insuranceWanted:
-            expose: true
-            access_type: public_method
-            serialized_name: InsuranceWanted
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getInsuranceWanted
-                setter: setInsuranceWanted
-            type: bool
         paymentEdited:
             expose: true
             access_type: public_method
@@ -337,17 +326,6 @@ Nogrod\eBaySDK\Trading\ShippingDetailsType:
                 getter: getPromotionalShippingDiscountDetails
                 setter: setPromotionalShippingDiscountDetails
             type: Nogrod\eBaySDK\Trading\PromotionalShippingDiscountDetailsType
-        cODCost:
-            expose: true
-            access_type: public_method
-            serialized_name: CODCost
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getCODCost
-                setter: setCODCost
-            type: Nogrod\eBaySDK\Trading\AmountType
         excludeShipToLocation:
             expose: true
             access_type: public_method

@@ -580,9 +580,7 @@ class CatalogProductType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
         }
         $value = $this->getProductID();
         if (null !== $value && !empty($this->getProductID())) {
-            $writer->write(array_map(function ($v) {
-                return ["ProductID" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["ProductID" => $v];}, $value));
         }
         $value = $this->getItemCount();
         if (null !== $value) {
@@ -590,9 +588,7 @@ class CatalogProductType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
         }
         $value = $this->getItemSpecifics();
         if (null !== $value && !empty($this->getItemSpecifics())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ItemSpecifics", array_map(function ($v) {
-                return ["NameValueList" => $v];
-            }, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ItemSpecifics", array_map(function ($v) {return ["NameValueList" => $v];}, $value));
         }
         $value = $this->getReviewCount();
         if (null !== $value) {
@@ -640,9 +636,7 @@ class CatalogProductType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ProductID', true);
         if (null !== $value && !empty($value)) {
-            $this->setProductID(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Shopping\ProductIDType::fromKeyValue($v);
-            }, $value));
+            $this->setProductID(array_map(function ($v) {return \Nogrod\eBaySDK\Shopping\ProductIDType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemCount');
         if (null !== $value) {
@@ -650,9 +644,7 @@ class CatalogProductType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemSpecifics', true);
         if (null !== $value && !empty($value)) {
-            $this->setItemSpecifics(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Shopping\NameValueListType::fromKeyValue($v);
-            }, $value));
+            $this->setItemSpecifics(array_map(function ($v) {return \Nogrod\eBaySDK\Shopping\NameValueListType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReviewCount');
         if (null !== $value) {

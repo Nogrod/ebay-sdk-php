@@ -190,9 +190,7 @@ class TaxesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
         }
         $value = $this->getTaxDetails();
         if (null !== $value && !empty($this->getTaxDetails())) {
-            $writer->write(array_map(function ($v) {
-                return ["TaxDetails" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["TaxDetails" => $v];}, $value));
         }
     }
 
@@ -220,9 +218,7 @@ class TaxesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TaxDetails', true);
         if (null !== $value && !empty($value)) {
-            $this->setTaxDetails(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\TaxDetailsType::fromKeyValue($v);
-            }, $value));
+            $this->setTaxDetails(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\TaxDetailsType::fromKeyValue($v);}, $value));
         }
     }
 }

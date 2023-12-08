@@ -33,9 +33,9 @@ class RelistFixedPriceItemRequestType extends AbstractRequestType
      *  descriptions for how to delete such data.
      *  <br>
      *  <br>
-     *  Case-sensitivity must be taken into account when using a <b>DeletedField</b> tag to delete a field. The value passed into a <b>DeletedField</b> tag must either match the case of the schema element names in the full field path (Item.PictureDetails.GalleryURL), or the initial letter of each schema element name in the full field path must be lowercase (item.pictureDetails.galleryURL).
+     *  Case-sensitivity must be taken into account when using a <b>DeletedField</b> tag to delete a field. The value passed into a <b>DeletedField</b> tag must either match the case of the schema element names in the full field path (Item.PictureDetails.PictureURL), or the initial letter of each schema element name in the full field path must be lowercase (item.pictureDetails.pictureURL).
      *  Do not change the case of letters in the middle of a field name.
-     *  For example, item.picturedetails.galleryUrl is not allowed.<br><br>
+     *  For example, item.picturedetails.pictureURL is not allowed.<br><br>
      *  To delete a listing enhancement like 'BoldTitle', specify the value you are deleting;
      *  for example, Item.ListingEnhancement[BoldTitle].
      *
@@ -89,9 +89,9 @@ class RelistFixedPriceItemRequestType extends AbstractRequestType
      *  descriptions for how to delete such data.
      *  <br>
      *  <br>
-     *  Case-sensitivity must be taken into account when using a <b>DeletedField</b> tag to delete a field. The value passed into a <b>DeletedField</b> tag must either match the case of the schema element names in the full field path (Item.PictureDetails.GalleryURL), or the initial letter of each schema element name in the full field path must be lowercase (item.pictureDetails.galleryURL).
+     *  Case-sensitivity must be taken into account when using a <b>DeletedField</b> tag to delete a field. The value passed into a <b>DeletedField</b> tag must either match the case of the schema element names in the full field path (Item.PictureDetails.PictureURL), or the initial letter of each schema element name in the full field path must be lowercase (item.pictureDetails.pictureURL).
      *  Do not change the case of letters in the middle of a field name.
-     *  For example, item.picturedetails.galleryUrl is not allowed.<br><br>
+     *  For example, item.picturedetails.pictureURL is not allowed.<br><br>
      *  To delete a listing enhancement like 'BoldTitle', specify the value you are deleting;
      *  for example, Item.ListingEnhancement[BoldTitle].
      *
@@ -118,9 +118,9 @@ class RelistFixedPriceItemRequestType extends AbstractRequestType
      *  descriptions for how to delete such data.
      *  <br>
      *  <br>
-     *  Case-sensitivity must be taken into account when using a <b>DeletedField</b> tag to delete a field. The value passed into a <b>DeletedField</b> tag must either match the case of the schema element names in the full field path (Item.PictureDetails.GalleryURL), or the initial letter of each schema element name in the full field path must be lowercase (item.pictureDetails.galleryURL).
+     *  Case-sensitivity must be taken into account when using a <b>DeletedField</b> tag to delete a field. The value passed into a <b>DeletedField</b> tag must either match the case of the schema element names in the full field path (Item.PictureDetails.PictureURL), or the initial letter of each schema element name in the full field path must be lowercase (item.pictureDetails.pictureURL).
      *  Do not change the case of letters in the middle of a field name.
-     *  For example, item.picturedetails.galleryUrl is not allowed.<br><br>
+     *  For example, item.picturedetails.pictureURL is not allowed.<br><br>
      *  To delete a listing enhancement like 'BoldTitle', specify the value you are deleting;
      *  for example, Item.ListingEnhancement[BoldTitle].
      *
@@ -146,9 +146,9 @@ class RelistFixedPriceItemRequestType extends AbstractRequestType
      *  descriptions for how to delete such data.
      *  <br>
      *  <br>
-     *  Case-sensitivity must be taken into account when using a <b>DeletedField</b> tag to delete a field. The value passed into a <b>DeletedField</b> tag must either match the case of the schema element names in the full field path (Item.PictureDetails.GalleryURL), or the initial letter of each schema element name in the full field path must be lowercase (item.pictureDetails.galleryURL).
+     *  Case-sensitivity must be taken into account when using a <b>DeletedField</b> tag to delete a field. The value passed into a <b>DeletedField</b> tag must either match the case of the schema element names in the full field path (Item.PictureDetails.PictureURL), or the initial letter of each schema element name in the full field path must be lowercase (item.pictureDetails.pictureURL).
      *  Do not change the case of letters in the middle of a field name.
-     *  For example, item.picturedetails.galleryUrl is not allowed.<br><br>
+     *  For example, item.picturedetails.pictureURL is not allowed.<br><br>
      *  To delete a listing enhancement like 'BoldTitle', specify the value you are deleting;
      *  for example, Item.ListingEnhancement[BoldTitle].
      *
@@ -174,9 +174,9 @@ class RelistFixedPriceItemRequestType extends AbstractRequestType
      *  descriptions for how to delete such data.
      *  <br>
      *  <br>
-     *  Case-sensitivity must be taken into account when using a <b>DeletedField</b> tag to delete a field. The value passed into a <b>DeletedField</b> tag must either match the case of the schema element names in the full field path (Item.PictureDetails.GalleryURL), or the initial letter of each schema element name in the full field path must be lowercase (item.pictureDetails.galleryURL).
+     *  Case-sensitivity must be taken into account when using a <b>DeletedField</b> tag to delete a field. The value passed into a <b>DeletedField</b> tag must either match the case of the schema element names in the full field path (Item.PictureDetails.PictureURL), or the initial letter of each schema element name in the full field path must be lowercase (item.pictureDetails.pictureURL).
      *  Do not change the case of letters in the middle of a field name.
-     *  For example, item.picturedetails.galleryUrl is not allowed.<br><br>
+     *  For example, item.picturedetails.pictureURL is not allowed.<br><br>
      *  To delete a listing enhancement like 'BoldTitle', specify the value you are deleting;
      *  for example, Item.ListingEnhancement[BoldTitle].
      *
@@ -201,9 +201,9 @@ class RelistFixedPriceItemRequestType extends AbstractRequestType
      *  descriptions for how to delete such data.
      *  <br>
      *  <br>
-     *  Case-sensitivity must be taken into account when using a <b>DeletedField</b> tag to delete a field. The value passed into a <b>DeletedField</b> tag must either match the case of the schema element names in the full field path (Item.PictureDetails.GalleryURL), or the initial letter of each schema element name in the full field path must be lowercase (item.pictureDetails.galleryURL).
+     *  Case-sensitivity must be taken into account when using a <b>DeletedField</b> tag to delete a field. The value passed into a <b>DeletedField</b> tag must either match the case of the schema element names in the full field path (Item.PictureDetails.PictureURL), or the initial letter of each schema element name in the full field path must be lowercase (item.pictureDetails.pictureURL).
      *  Do not change the case of letters in the middle of a field name.
-     *  For example, item.picturedetails.galleryUrl is not allowed.<br><br>
+     *  For example, item.picturedetails.pictureURL is not allowed.<br><br>
      *  To delete a listing enhancement like 'BoldTitle', specify the value you are deleting;
      *  for example, Item.ListingEnhancement[BoldTitle].
      *
@@ -225,9 +225,7 @@ class RelistFixedPriceItemRequestType extends AbstractRequestType
         }
         $value = $this->getDeletedField();
         if (null !== $value && !empty($this->getDeletedField())) {
-            $writer->write(array_map(function ($v) {
-                return ["DeletedField" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["DeletedField" => $v];}, $value));
         }
     }
 

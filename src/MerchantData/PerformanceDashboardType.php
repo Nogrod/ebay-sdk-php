@@ -194,9 +194,7 @@ class PerformanceDashboardType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getSite();
         if (null !== $value && !empty($this->getSite())) {
-            $writer->write(array_map(function ($v) {
-                return ["Site" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["Site" => $v];}, $value));
         }
         $value = $this->getStatus();
         if (null !== $value) {

@@ -149,9 +149,7 @@ class PowerSellerDashboardType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
         }
         $value = $this->getAlert();
         if (null !== $value && !empty($this->getAlert())) {
-            $writer->write(array_map(function ($v) {
-                return ["Alert" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["Alert" => $v];}, $value));
         }
     }
 
@@ -175,9 +173,7 @@ class PowerSellerDashboardType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Alert', true);
         if (null !== $value && !empty($value)) {
-            $this->setAlert(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\SellerDashboardAlertType::fromKeyValue($v);
-            }, $value));
+            $this->setAlert(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\SellerDashboardAlertType::fromKeyValue($v);}, $value));
         }
     }
 }

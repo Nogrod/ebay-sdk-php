@@ -305,17 +305,6 @@ class EBayAPIBaseClient extends \Nogrod\XMLClientRuntime\Client
     }
 
     /**
-     * Call GetCharities
-     *
-     * @param \Nogrod\eBaySDK\Trading\GetCharitiesRequest $getCharitiesRequest
-     * @return \Nogrod\eBaySDK\Trading\GetCharitiesResponse
-     */
-    public function getCharities(\Nogrod\eBaySDK\Trading\GetCharitiesRequest $getCharitiesRequest): \Nogrod\eBaySDK\Trading\GetCharitiesResponse
-    {
-        return $this->call('GetCharities', 'Nogrod\eBaySDK\Trading\GetCharitiesResponse', $getCharitiesRequest);
-    }
-
-    /**
      * Call GetClientAlertsAuthToken
      *
      * @param \Nogrod\eBaySDK\Trading\GetClientAlertsAuthTokenRequest $getClientAlertsAuthTokenRequest
@@ -434,17 +423,6 @@ class EBayAPIBaseClient extends \Nogrod\XMLClientRuntime\Client
     public function getMyeBayBuying(\Nogrod\eBaySDK\Trading\GetMyeBayBuyingRequest $getMyeBayBuyingRequest): \Nogrod\eBaySDK\Trading\GetMyeBayBuyingResponse
     {
         return $this->call('GetMyeBayBuying', 'Nogrod\eBaySDK\Trading\GetMyeBayBuyingResponse', $getMyeBayBuyingRequest);
-    }
-
-    /**
-     * Call GetMyeBayReminders
-     *
-     * @param \Nogrod\eBaySDK\Trading\GetMyeBayRemindersRequest $getMyeBayRemindersRequest
-     * @return \Nogrod\eBaySDK\Trading\GetMyeBayRemindersResponse
-     */
-    public function getMyeBayReminders(\Nogrod\eBaySDK\Trading\GetMyeBayRemindersRequest $getMyeBayRemindersRequest): \Nogrod\eBaySDK\Trading\GetMyeBayRemindersResponse
-    {
-        return $this->call('GetMyeBayReminders', 'Nogrod\eBaySDK\Trading\GetMyeBayRemindersResponse', $getMyeBayRemindersRequest);
     }
 
     /**

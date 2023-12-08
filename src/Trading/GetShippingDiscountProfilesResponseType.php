@@ -55,20 +55,6 @@ class GetShippingDiscountProfilesResponseType extends AbstractResponseType
     private $promotionalShippingDiscountDetails = null;
 
     /**
-     * This container is deprecated.
-     *
-     * @var \Nogrod\eBaySDK\Trading\ShippingInsuranceType $shippingInsurance
-     */
-    private $shippingInsurance = null;
-
-    /**
-     * This container is deprecated.
-     *
-     * @var \Nogrod\eBaySDK\Trading\ShippingInsuranceType $internationalShippingInsurance
-     */
-    private $internationalShippingInsurance = null;
-
-    /**
      * This field indicates the number of days after the sale of an item in which the buyer or seller can combine multiple and mutual order line items into one Combined Invoice order. In a Combined Invoice order, the buyer makes one payment for all order line items, hence only unpaid order line items can be combined into a Combined Invoice order.
      *
      * @var string $combinedDuration
@@ -232,58 +218,6 @@ class GetShippingDiscountProfilesResponseType extends AbstractResponseType
     }
 
     /**
-     * Gets as shippingInsurance
-     *
-     * This container is deprecated.
-     *
-     * @return \Nogrod\eBaySDK\Trading\ShippingInsuranceType
-     */
-    public function getShippingInsurance()
-    {
-        return $this->shippingInsurance;
-    }
-
-    /**
-     * Sets a new shippingInsurance
-     *
-     * This container is deprecated.
-     *
-     * @param \Nogrod\eBaySDK\Trading\ShippingInsuranceType $shippingInsurance
-     * @return self
-     */
-    public function setShippingInsurance(\Nogrod\eBaySDK\Trading\ShippingInsuranceType $shippingInsurance)
-    {
-        $this->shippingInsurance = $shippingInsurance;
-        return $this;
-    }
-
-    /**
-     * Gets as internationalShippingInsurance
-     *
-     * This container is deprecated.
-     *
-     * @return \Nogrod\eBaySDK\Trading\ShippingInsuranceType
-     */
-    public function getInternationalShippingInsurance()
-    {
-        return $this->internationalShippingInsurance;
-    }
-
-    /**
-     * Sets a new internationalShippingInsurance
-     *
-     * This container is deprecated.
-     *
-     * @param \Nogrod\eBaySDK\Trading\ShippingInsuranceType $internationalShippingInsurance
-     * @return self
-     */
-    public function setInternationalShippingInsurance(\Nogrod\eBaySDK\Trading\ShippingInsuranceType $internationalShippingInsurance)
-    {
-        $this->internationalShippingInsurance = $internationalShippingInsurance;
-        return $this;
-    }
-
-    /**
      * Gets as combinedDuration
      *
      * This field indicates the number of days after the sale of an item in which the buyer or seller can combine multiple and mutual order line items into one Combined Invoice order. In a Combined Invoice order, the buyer makes one payment for all order line items, hence only unpaid order line items can be combined into a Combined Invoice order.
@@ -337,14 +271,6 @@ class GetShippingDiscountProfilesResponseType extends AbstractResponseType
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PromotionalShippingDiscountDetails", $value);
         }
-        $value = $this->getShippingInsurance();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippingInsurance", $value);
-        }
-        $value = $this->getInternationalShippingInsurance();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}InternationalShippingInsurance", $value);
-        }
         $value = $this->getCombinedDuration();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CombinedDuration", $value);
@@ -389,14 +315,6 @@ class GetShippingDiscountProfilesResponseType extends AbstractResponseType
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PromotionalShippingDiscountDetails');
         if (null !== $value) {
             $this->setPromotionalShippingDiscountDetails(\Nogrod\eBaySDK\Trading\PromotionalShippingDiscountDetailsType::fromKeyValue($value));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingInsurance');
-        if (null !== $value) {
-            $this->setShippingInsurance(\Nogrod\eBaySDK\Trading\ShippingInsuranceType::fromKeyValue($value));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}InternationalShippingInsurance');
-        if (null !== $value) {
-            $this->setInternationalShippingInsurance(\Nogrod\eBaySDK\Trading\ShippingInsuranceType::fromKeyValue($value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CombinedDuration');
         if (null !== $value) {

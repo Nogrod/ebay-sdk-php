@@ -136,9 +136,7 @@ class FlatShippingDiscountType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
         }
         $value = $this->getDiscountProfile();
         if (null !== $value && !empty($this->getDiscountProfile())) {
-            $writer->write(array_map(function ($v) {
-                return ["DiscountProfile" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["DiscountProfile" => $v];}, $value));
         }
     }
 
@@ -162,9 +160,7 @@ class FlatShippingDiscountType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DiscountProfile', true);
         if (null !== $value && !empty($value)) {
-            $this->setDiscountProfile(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\DiscountProfileType::fromKeyValue($v);
-            }, $value));
+            $this->setDiscountProfile(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\DiscountProfileType::fromKeyValue($v);}, $value));
         }
     }
 }

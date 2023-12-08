@@ -2415,9 +2415,7 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         }
         $value = $this->getCharityAffiliations();
         if (null !== $value && !empty($this->getCharityAffiliations())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CharityAffiliations", array_map(function ($v) {
-                return ["CharityID" => $v];
-            }, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CharityAffiliations", array_map(function ($v) {return ["CharityID" => $v];}, $value));
         }
         $value = $this->getPayPalAccountLevel();
         if (null !== $value) {
@@ -2433,9 +2431,7 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         }
         $value = $this->getUserSubscription();
         if (null !== $value && !empty($this->getUserSubscription())) {
-            $writer->write(array_map(function ($v) {
-                return ["UserSubscription" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["UserSubscription" => $v];}, $value));
         }
         $value = $this->getSiteVerified();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;
@@ -2444,9 +2440,7 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         }
         $value = $this->getSkypeID();
         if (null !== $value && !empty($this->getSkypeID())) {
-            $writer->write(array_map(function ($v) {
-                return ["SkypeID" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["SkypeID" => $v];}, $value));
         }
         $value = $this->getEBayWikiReadOnly();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;
@@ -2502,9 +2496,7 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         }
         $value = $this->getMembership();
         if (null !== $value && !empty($this->getMembership())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Membership", array_map(function ($v) {
-                return ["Program" => $v];
-            }, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Membership", array_map(function ($v) {return ["Program" => $v];}, $value));
         }
         $value = $this->getUserFirstName();
         if (null !== $value) {
@@ -2624,9 +2616,7 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CharityAffiliations', true);
         if (null !== $value && !empty($value)) {
-            $this->setCharityAffiliations(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\CharityIDType::fromKeyValue($v);
-            }, $value));
+            $this->setCharityAffiliations(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\CharityIDType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PayPalAccountLevel');
         if (null !== $value) {
@@ -2702,9 +2692,7 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Membership', true);
         if (null !== $value && !empty($value)) {
-            $this->setMembership(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\MembershipDetailType::fromKeyValue($v);
-            }, $value));
+            $this->setMembership(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\MembershipDetailType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UserFirstName');
         if (null !== $value) {

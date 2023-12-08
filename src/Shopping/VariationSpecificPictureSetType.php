@@ -189,9 +189,7 @@ class VariationSpecificPictureSetType implements \Sabre\Xml\XmlSerializable, \Sa
         }
         $value = $this->getPictureURL();
         if (null !== $value && !empty($this->getPictureURL())) {
-            $writer->write(array_map(function ($v) {
-                return ["PictureURL" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["PictureURL" => $v];}, $value));
         }
         $value = $this->getGalleryURL();
         if (null !== $value) {

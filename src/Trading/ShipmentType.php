@@ -978,9 +978,7 @@ class ShipmentType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
         }
         $value = $this->getShippingFeature();
         if (null !== $value && !empty($this->getShippingFeature())) {
-            $writer->write(array_map(function ($v) {
-                return ["ShippingFeature" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["ShippingFeature" => $v];}, $value));
         }
         $value = $this->getShippingPackage();
         if (null !== $value) {
@@ -1004,9 +1002,7 @@ class ShipmentType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
         }
         $value = $this->getItemTransactionID();
         if (null !== $value && !empty($this->getItemTransactionID())) {
-            $writer->write(array_map(function ($v) {
-                return ["ItemTransactionID" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["ItemTransactionID" => $v];}, $value));
         }
         $value = $this->getDeliveryDate();
         if (null !== $value) {
@@ -1038,9 +1034,7 @@ class ShipmentType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
         }
         $value = $this->getShipmentTrackingDetails();
         if (null !== $value && !empty($this->getShipmentTrackingDetails())) {
-            $writer->write(array_map(function ($v) {
-                return ["ShipmentTrackingDetails" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["ShipmentTrackingDetails" => $v];}, $value));
         }
     }
 
@@ -1132,9 +1126,7 @@ class ShipmentType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemTransactionID', true);
         if (null !== $value && !empty($value)) {
-            $this->setItemTransactionID(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\ItemTransactionIDType::fromKeyValue($v);
-            }, $value));
+            $this->setItemTransactionID(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\ItemTransactionIDType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DeliveryDate');
         if (null !== $value) {
@@ -1166,9 +1158,7 @@ class ShipmentType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShipmentTrackingDetails', true);
         if (null !== $value && !empty($value)) {
-            $this->setShipmentTrackingDetails(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\ShipmentTrackingDetailsType::fromKeyValue($v);
-            }, $value));
+            $this->setShipmentTrackingDetails(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\ShipmentTrackingDetailsType::fromKeyValue($v);}, $value));
         }
     }
 }

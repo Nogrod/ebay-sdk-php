@@ -92,9 +92,7 @@ class MyMessagesAlertArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getAlert();
         if (null !== $value && !empty($this->getAlert())) {
-            $writer->write(array_map(function ($v) {
-                return ["Alert" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["Alert" => $v];}, $value));
         }
     }
 
@@ -114,9 +112,7 @@ class MyMessagesAlertArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
     {
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Alert', true);
         if (null !== $value && !empty($value)) {
-            $this->setAlert(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\MyMessagesAlertType::fromKeyValue($v);
-            }, $value));
+            $this->setAlert(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\MyMessagesAlertType::fromKeyValue($v);}, $value));
         }
     }
 }

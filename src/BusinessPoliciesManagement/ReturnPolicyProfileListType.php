@@ -92,9 +92,7 @@ class ReturnPolicyProfileListType implements \Sabre\Xml\XmlSerializable, \Sabre\
         $writer->writeAttribute("xmlns", "http://www.ebay.com/marketplace/selling/v1/services");
         $value = $this->getReturnPolicyProfile();
         if (null !== $value && !empty($this->getReturnPolicyProfile())) {
-            $writer->write(array_map(function ($v) {
-                return ["ReturnPolicyProfile" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["ReturnPolicyProfile" => $v];}, $value));
         }
     }
 
@@ -114,9 +112,7 @@ class ReturnPolicyProfileListType implements \Sabre\Xml\XmlSerializable, \Sabre\
     {
         $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}ReturnPolicyProfile', true);
         if (null !== $value && !empty($value)) {
-            $this->setReturnPolicyProfile(array_map(function ($v) {
-                return \Nogrod\eBaySDK\BusinessPoliciesManagement\ReturnPolicyProfileType::fromKeyValue($v);
-            }, $value));
+            $this->setReturnPolicyProfile(array_map(function ($v) {return \Nogrod\eBaySDK\BusinessPoliciesManagement\ReturnPolicyProfileType::fromKeyValue($v);}, $value));
         }
     }
 }

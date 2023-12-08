@@ -519,9 +519,7 @@ class ProductSearchType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
         }
         $value = $this->getSearchAttributes();
         if (null !== $value && !empty($this->getSearchAttributes())) {
-            $writer->write(array_map(function ($v) {
-                return ["SearchAttributes" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["SearchAttributes" => $v];}, $value));
         }
         $value = $this->getPagination();
         if (null !== $value) {
@@ -538,9 +536,7 @@ class ProductSearchType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
         }
         $value = $this->getCharacteristicSetIDs();
         if (null !== $value && !empty($this->getCharacteristicSetIDs())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CharacteristicSetIDs", array_map(function ($v) {
-                return ["ID" => $v];
-            }, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CharacteristicSetIDs", array_map(function ($v) {return ["ID" => $v];}, $value));
         }
         $value = $this->getProductReferenceID();
         if (null !== $value) {
@@ -588,9 +584,7 @@ class ProductSearchType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SearchAttributes', true);
         if (null !== $value && !empty($value)) {
-            $this->setSearchAttributes(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\SearchAttributesType::fromKeyValue($v);
-            }, $value));
+            $this->setSearchAttributes(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\SearchAttributesType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Pagination');
         if (null !== $value) {

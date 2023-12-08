@@ -401,9 +401,7 @@ class GetSellerDashboardResponseType extends AbstractResponseType
         }
         $value = $this->getPerformance();
         if (null !== $value && !empty($this->getPerformance())) {
-            $writer->write(array_map(function ($v) {
-                return ["Performance" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["Performance" => $v];}, $value));
         }
     }
 
@@ -448,9 +446,7 @@ class GetSellerDashboardResponseType extends AbstractResponseType
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Performance', true);
         if (null !== $value && !empty($value)) {
-            $this->setPerformance(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\PerformanceDashboardType::fromKeyValue($v);
-            }, $value));
+            $this->setPerformance(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\PerformanceDashboardType::fromKeyValue($v);}, $value));
         }
     }
 }

@@ -104,9 +104,7 @@ class ItemTransactionIDArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\X
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getItemTransactionID();
         if (null !== $value && !empty($this->getItemTransactionID())) {
-            $writer->write(array_map(function ($v) {
-                return ["ItemTransactionID" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["ItemTransactionID" => $v];}, $value));
         }
     }
 
@@ -126,9 +124,7 @@ class ItemTransactionIDArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\X
     {
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemTransactionID', true);
         if (null !== $value && !empty($value)) {
-            $this->setItemTransactionID(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\ItemTransactionIDType::fromKeyValue($v);
-            }, $value));
+            $this->setItemTransactionID(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\ItemTransactionIDType::fromKeyValue($v);}, $value));
         }
     }
 }

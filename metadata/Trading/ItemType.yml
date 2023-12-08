@@ -16,54 +16,6 @@ Nogrod\eBaySDK\Trading\ItemType:
                 getter: getApplicationData
                 setter: setApplicationData
             type: string
-        attributeSetArray:
-            expose: true
-            access_type: public_method
-            serialized_name: AttributeSetArray
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getAttributeSetArray
-                setter: setAttributeSetArray
-            type: array<Nogrod\eBaySDK\Trading\AttributeSetType>
-            xml_list:
-                inline: false
-                entry_name: AttributeSet
-                skip_when_empty: true
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-        attributeArray:
-            expose: true
-            access_type: public_method
-            serialized_name: AttributeArray
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getAttributeArray
-                setter: setAttributeArray
-            type: array<Nogrod\eBaySDK\Trading\AttributeType>
-            xml_list:
-                inline: false
-                entry_name: Attribute
-                skip_when_empty: true
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-        lookupAttributeArray:
-            expose: true
-            access_type: public_method
-            serialized_name: LookupAttributeArray
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getLookupAttributeArray
-                setter: setLookupAttributeArray
-            type: array<Nogrod\eBaySDK\Trading\LookupAttributeType>
-            xml_list:
-                inline: false
-                entry_name: LookupAttribute
-                skip_when_empty: true
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
         autoPay:
             expose: true
             access_type: public_method

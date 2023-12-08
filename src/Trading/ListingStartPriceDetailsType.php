@@ -15,7 +15,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  <br><br>
  *  The <b>ListingStartPriceDetails</b> container is returned if
  *  <b>ListingStartPriceDetails</b> is included as a <b>DetailName</b>
- *  filter in the request, or if no lt;b>DetailName</b> filters are used in the request.
+ *  filter in the request, or if no <b>DetailName</b> filters are used in the request.
  * XSD Type: ListingStartPriceDetailsType
  */
 class ListingStartPriceDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable

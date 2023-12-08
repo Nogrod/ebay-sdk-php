@@ -60,13 +60,9 @@ class CompleteSaleRequestType extends AbstractRequestType
     private $shipped = null;
 
     /**
-     * The seller includes and sets this field to true if the order has been
-     *  paid for by the buyer. If the call is successful, the order line item(s)
-     *  are marked as 'Paid' in eBay's system.
-     *  <br><br>
-     *  If the seller includes and sets this field to <code>false</code>, the order line item(s) are marked (or remain) as 'Not Paid' in eBay's system.
-     *  <br><br>
-     *  If this field is not included, the paid status of the order line item(s) remain unchanged in eBay's system.
+     * The seller includes and sets this field to <code>true</code> to mark an unpaid order as paid. If the call is successful, the order line item(s) are marked as 'Paid' in eBay's system.
+     *  <br>
+     *  <span class="tablenote"><b>Note:</b> The seller is not allowed to set this field to <code>false</code>.</span>
      *
      * @var bool $paid
      */
@@ -267,13 +263,9 @@ class CompleteSaleRequestType extends AbstractRequestType
     /**
      * Gets as paid
      *
-     * The seller includes and sets this field to true if the order has been
-     *  paid for by the buyer. If the call is successful, the order line item(s)
-     *  are marked as 'Paid' in eBay's system.
-     *  <br><br>
-     *  If the seller includes and sets this field to <code>false</code>, the order line item(s) are marked (or remain) as 'Not Paid' in eBay's system.
-     *  <br><br>
-     *  If this field is not included, the paid status of the order line item(s) remain unchanged in eBay's system.
+     * The seller includes and sets this field to <code>true</code> to mark an unpaid order as paid. If the call is successful, the order line item(s) are marked as 'Paid' in eBay's system.
+     *  <br>
+     *  <span class="tablenote"><b>Note:</b> The seller is not allowed to set this field to <code>false</code>.</span>
      *
      * @return bool
      */
@@ -285,13 +277,9 @@ class CompleteSaleRequestType extends AbstractRequestType
     /**
      * Sets a new paid
      *
-     * The seller includes and sets this field to true if the order has been
-     *  paid for by the buyer. If the call is successful, the order line item(s)
-     *  are marked as 'Paid' in eBay's system.
-     *  <br><br>
-     *  If the seller includes and sets this field to <code>false</code>, the order line item(s) are marked (or remain) as 'Not Paid' in eBay's system.
-     *  <br><br>
-     *  If this field is not included, the paid status of the order line item(s) remain unchanged in eBay's system.
+     * The seller includes and sets this field to <code>true</code> to mark an unpaid order as paid. If the call is successful, the order line item(s) are marked as 'Paid' in eBay's system.
+     *  <br>
+     *  <span class="tablenote"><b>Note:</b> The seller is not allowed to set this field to <code>false</code>.</span>
      *
      * @param bool $paid
      * @return self

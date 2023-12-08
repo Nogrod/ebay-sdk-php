@@ -203,15 +203,11 @@ class ReviseInventoryStatusResponseType extends AbstractResponseType
         parent::xmlSerialize($writer);
         $value = $this->getInventoryStatus();
         if (null !== $value && !empty($this->getInventoryStatus())) {
-            $writer->write(array_map(function ($v) {
-                return ["InventoryStatus" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["InventoryStatus" => $v];}, $value));
         }
         $value = $this->getFees();
         if (null !== $value && !empty($this->getFees())) {
-            $writer->write(array_map(function ($v) {
-                return ["Fees" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["Fees" => $v];}, $value));
         }
     }
 
@@ -232,15 +228,11 @@ class ReviseInventoryStatusResponseType extends AbstractResponseType
         parent::setKeyValue($keyValue);
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}InventoryStatus', true);
         if (null !== $value && !empty($value)) {
-            $this->setInventoryStatus(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\InventoryStatusType::fromKeyValue($v);
-            }, $value));
+            $this->setInventoryStatus(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\InventoryStatusType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Fees', true);
         if (null !== $value && !empty($value)) {
-            $this->setFees(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\InventoryFeesType::fromKeyValue($v);
-            }, $value));
+            $this->setFees(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\InventoryFeesType::fromKeyValue($v);}, $value));
         }
     }
 }

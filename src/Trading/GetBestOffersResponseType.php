@@ -265,9 +265,7 @@ class GetBestOffersResponseType extends AbstractResponseType
         parent::xmlSerialize($writer);
         $value = $this->getBestOfferArray();
         if (null !== $value && !empty($this->getBestOfferArray())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BestOfferArray", array_map(function ($v) {
-                return ["BestOffer" => $v];
-            }, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BestOfferArray", array_map(function ($v) {return ["BestOffer" => $v];}, $value));
         }
         $value = $this->getItem();
         if (null !== $value) {
@@ -275,9 +273,7 @@ class GetBestOffersResponseType extends AbstractResponseType
         }
         $value = $this->getItemBestOffersArray();
         if (null !== $value && !empty($this->getItemBestOffersArray())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ItemBestOffersArray", array_map(function ($v) {
-                return ["ItemBestOffers" => $v];
-            }, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ItemBestOffersArray", array_map(function ($v) {return ["ItemBestOffers" => $v];}, $value));
         }
         $value = $this->getPageNumber();
         if (null !== $value) {
@@ -306,9 +302,7 @@ class GetBestOffersResponseType extends AbstractResponseType
         parent::setKeyValue($keyValue);
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BestOfferArray', true);
         if (null !== $value && !empty($value)) {
-            $this->setBestOfferArray(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\BestOfferType::fromKeyValue($v);
-            }, $value));
+            $this->setBestOfferArray(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\BestOfferType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Item');
         if (null !== $value) {
@@ -316,9 +310,7 @@ class GetBestOffersResponseType extends AbstractResponseType
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemBestOffersArray', true);
         if (null !== $value && !empty($value)) {
-            $this->setItemBestOffersArray(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\ItemBestOffersType::fromKeyValue($v);
-            }, $value));
+            $this->setItemBestOffersArray(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\ItemBestOffersType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PageNumber');
         if (null !== $value) {

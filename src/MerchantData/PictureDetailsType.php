@@ -662,9 +662,7 @@ class PictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
         }
         $value = $this->getPictureURL();
         if (null !== $value && !empty($this->getPictureURL())) {
-            $writer->write(array_map(function ($v) {
-                return ["PictureURL" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["PictureURL" => $v];}, $value));
         }
         $value = $this->getPictureSource();
         if (null !== $value) {
@@ -680,15 +678,11 @@ class PictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
         }
         $value = $this->getExternalPictureURL();
         if (null !== $value && !empty($this->getExternalPictureURL())) {
-            $writer->write(array_map(function ($v) {
-                return ["ExternalPictureURL" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["ExternalPictureURL" => $v];}, $value));
         }
         $value = $this->getExtendedPictureDetails();
         if (null !== $value && !empty($this->getExtendedPictureDetails())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ExtendedPictureDetails", array_map(function ($v) {
-                return ["PictureURLs" => $v];
-            }, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ExtendedPictureDetails", array_map(function ($v) {return ["PictureURLs" => $v];}, $value));
         }
     }
 
@@ -736,9 +730,7 @@ class PictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExtendedPictureDetails', true);
         if (null !== $value && !empty($value)) {
-            $this->setExtendedPictureDetails(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\PictureURLsType::fromKeyValue($v);
-            }, $value));
+            $this->setExtendedPictureDetails(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\PictureURLsType::fromKeyValue($v);}, $value));
         }
     }
 }

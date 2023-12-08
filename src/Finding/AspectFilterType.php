@@ -182,9 +182,7 @@ class AspectFilterType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
         }
         $value = $this->getAspectValueName();
         if (null !== $value && !empty($this->getAspectValueName())) {
-            $writer->write(array_map(function ($v) {
-                return ["aspectValueName" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["aspectValueName" => $v];}, $value));
         }
         $value = $this->getDelimiter();
         if (null !== $value) {

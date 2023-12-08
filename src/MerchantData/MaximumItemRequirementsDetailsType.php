@@ -167,15 +167,11 @@ class MaximumItemRequirementsDetailsType implements \Sabre\Xml\XmlSerializable, 
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getMaximumItemCount();
         if (null !== $value && !empty($this->getMaximumItemCount())) {
-            $writer->write(array_map(function ($v) {
-                return ["MaximumItemCount" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["MaximumItemCount" => $v];}, $value));
         }
         $value = $this->getMinimumFeedbackScore();
         if (null !== $value && !empty($this->getMinimumFeedbackScore())) {
-            $writer->write(array_map(function ($v) {
-                return ["MinimumFeedbackScore" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["MinimumFeedbackScore" => $v];}, $value));
         }
     }
 

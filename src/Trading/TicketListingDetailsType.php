@@ -7,7 +7,10 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing TicketListingDetailsType
  *
- * Type defining the <b>TicketListingDetails</b> container, which is used in
+ * <span class="tablenote"><strong>Note:</strong>
+ *  This type and its fields are not usable and will be ignored if sent. See <a href="https://developer.ebay.com/develop/apis/api-deprecation-status">API Deprecation Status</a> for the decommission date (when this type will stop being returned).
+ *  </span>
+ *  Type defining the <b>TicketListingDetails</b> container, which is used in
  *  an <b>Add</b>/<b>Revise</b>/<b>Relist</b> call to provide more details about event tickets.
  * XSD Type: TicketListingDetailsType
  */

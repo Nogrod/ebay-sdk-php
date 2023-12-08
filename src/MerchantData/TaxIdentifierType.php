@@ -166,9 +166,7 @@ class TaxIdentifierType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
         }
         $value = $this->getAttribute();
         if (null !== $value && !empty($this->getAttribute())) {
-            $writer->write(array_map(function ($v) {
-                return ["Attribute" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["Attribute" => $v];}, $value));
         }
     }
 
@@ -196,9 +194,7 @@ class TaxIdentifierType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Attribute', true);
         if (null !== $value && !empty($value)) {
-            $this->setAttribute(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\TaxIdentifierAttributeType::fromKeyValue($v);
-            }, $value));
+            $this->setAttribute(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\TaxIdentifierAttributeType::fromKeyValue($v);}, $value));
         }
     }
 }

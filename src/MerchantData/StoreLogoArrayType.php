@@ -92,9 +92,7 @@ class StoreLogoArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getLogo();
         if (null !== $value && !empty($this->getLogo())) {
-            $writer->write(array_map(function ($v) {
-                return ["Logo" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["Logo" => $v];}, $value));
         }
     }
 
@@ -114,9 +112,7 @@ class StoreLogoArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
     {
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Logo', true);
         if (null !== $value && !empty($value)) {
-            $this->setLogo(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\StoreLogoType::fromKeyValue($v);
-            }, $value));
+            $this->setLogo(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\StoreLogoType::fromKeyValue($v);}, $value));
         }
     }
 }

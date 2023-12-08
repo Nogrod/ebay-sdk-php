@@ -106,9 +106,7 @@ class TransactionArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getTransaction();
         if (null !== $value && !empty($this->getTransaction())) {
-            $writer->write(array_map(function ($v) {
-                return ["Transaction" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["Transaction" => $v];}, $value));
         }
     }
 
@@ -128,9 +126,7 @@ class TransactionArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
     {
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Transaction', true);
         if (null !== $value && !empty($value)) {
-            $this->setTransaction(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\TransactionType::fromKeyValue($v);
-            }, $value));
+            $this->setTransaction(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\TransactionType::fromKeyValue($v);}, $value));
         }
     }
 }

@@ -284,9 +284,7 @@ class GetMultipleItemsRequestType extends AbstractRequestType
         parent::xmlSerialize($writer);
         $value = $this->getItemID();
         if (null !== $value && !empty($this->getItemID())) {
-            $writer->write(array_map(function ($v) {
-                return ["ItemID" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["ItemID" => $v];}, $value));
         }
         $value = $this->getIncludeSelector();
         if (null !== $value) {

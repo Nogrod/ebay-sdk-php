@@ -156,9 +156,7 @@ class CountryPoliciesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
         }
         $value = $this->getPolicyID();
         if (null !== $value && !empty($this->getPolicyID())) {
-            $writer->write(array_map(function ($v) {
-                return ["PolicyID" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["PolicyID" => $v];}, $value));
         }
     }
 

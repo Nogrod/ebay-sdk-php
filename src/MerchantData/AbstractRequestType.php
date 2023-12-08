@@ -1285,9 +1285,7 @@ class AbstractRequestType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getDetailLevel();
         if (null !== $value && !empty($this->getDetailLevel())) {
-            $writer->write(array_map(function ($v) {
-                return ["DetailLevel" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["DetailLevel" => $v];}, $value));
         }
         $value = $this->getErrorLanguage();
         if (null !== $value) {
@@ -1319,9 +1317,7 @@ class AbstractRequestType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
         }
         $value = $this->getOutputSelector();
         if (null !== $value && !empty($this->getOutputSelector())) {
-            $writer->write(array_map(function ($v) {
-                return ["OutputSelector" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["OutputSelector" => $v];}, $value));
         }
         $value = $this->getWarningLevel();
         if (null !== $value) {

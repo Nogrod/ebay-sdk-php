@@ -33,6 +33,11 @@ class MyeBaySellingSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
 
     /**
      * The total number of bids made on the seller's active listings.
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  This field is deprecated and scheduled for decommission on
+     *  02-06-2024 because the data is no longer being actively
+     *  maintained by eBay.
+     *  </span>
      *
      * @var int $auctionBidCount
      */
@@ -80,7 +85,12 @@ class MyeBaySellingSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
     /**
      * The total number of leads from the seller's classified
      *  ad listings. Number indicates the total number of emails
-     *  received for the listings
+     *  received for the listings.
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  This field is deprecated and scheduled for decommission on
+     *  02-06-2024 because the data is no longer being actively
+     *  maintained by eBay.
+     *  </span>
      *
      * @var int $totalLeadCount
      */
@@ -89,6 +99,11 @@ class MyeBaySellingSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
     /**
      * The total number of offers received on active Classified
      *  Ad listings.
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  This field is deprecated and scheduled for decommission on
+     *  02-06-2024 because the data is no longer being actively
+     *  maintained by eBay.
+     *  </span>
      *
      * @var int $classifiedAdOfferCount
      */
@@ -195,6 +210,11 @@ class MyeBaySellingSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
      * Gets as auctionBidCount
      *
      * The total number of bids made on the seller's active listings.
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  This field is deprecated and scheduled for decommission on
+     *  02-06-2024 because the data is no longer being actively
+     *  maintained by eBay.
+     *  </span>
      *
      * @return int
      */
@@ -207,6 +227,11 @@ class MyeBaySellingSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
      * Sets a new auctionBidCount
      *
      * The total number of bids made on the seller's active listings.
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  This field is deprecated and scheduled for decommission on
+     *  02-06-2024 because the data is no longer being actively
+     *  maintained by eBay.
+     *  </span>
      *
      * @param int $auctionBidCount
      * @return self
@@ -360,7 +385,12 @@ class MyeBaySellingSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
      *
      * The total number of leads from the seller's classified
      *  ad listings. Number indicates the total number of emails
-     *  received for the listings
+     *  received for the listings.
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  This field is deprecated and scheduled for decommission on
+     *  02-06-2024 because the data is no longer being actively
+     *  maintained by eBay.
+     *  </span>
      *
      * @return int
      */
@@ -374,7 +404,12 @@ class MyeBaySellingSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
      *
      * The total number of leads from the seller's classified
      *  ad listings. Number indicates the total number of emails
-     *  received for the listings
+     *  received for the listings.
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  This field is deprecated and scheduled for decommission on
+     *  02-06-2024 because the data is no longer being actively
+     *  maintained by eBay.
+     *  </span>
      *
      * @param int $totalLeadCount
      * @return self
@@ -390,6 +425,11 @@ class MyeBaySellingSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
      *
      * The total number of offers received on active Classified
      *  Ad listings.
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  This field is deprecated and scheduled for decommission on
+     *  02-06-2024 because the data is no longer being actively
+     *  maintained by eBay.
+     *  </span>
      *
      * @return int
      */
@@ -403,6 +443,11 @@ class MyeBaySellingSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
      *
      * The total number of offers received on active Classified
      *  Ad listings.
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  This field is deprecated and scheduled for decommission on
+     *  02-06-2024 because the data is no longer being actively
+     *  maintained by eBay.
+     *  </span>
      *
      * @param int $classifiedAdOfferCount
      * @return self

@@ -254,15 +254,11 @@ class ReviseMyMessagesFoldersRequestType extends AbstractRequestType
         }
         $value = $this->getFolderID();
         if (null !== $value && !empty($this->getFolderID())) {
-            $writer->write(array_map(function ($v) {
-                return ["FolderID" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["FolderID" => $v];}, $value));
         }
         $value = $this->getFolderName();
         if (null !== $value && !empty($this->getFolderName())) {
-            $writer->write(array_map(function ($v) {
-                return ["FolderName" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["FolderName" => $v];}, $value));
         }
     }
 

@@ -92,9 +92,7 @@ class IntegratedMerchantCreditCardInfoType implements \Sabre\Xml\XmlSerializable
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getSupportedSite();
         if (null !== $value && !empty($this->getSupportedSite())) {
-            $writer->write(array_map(function ($v) {
-                return ["SupportedSite" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["SupportedSite" => $v];}, $value));
         }
     }
 

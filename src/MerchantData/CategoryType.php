@@ -1042,15 +1042,11 @@ class CategoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
         }
         $value = $this->getCategoryParentID();
         if (null !== $value && !empty($this->getCategoryParentID())) {
-            $writer->write(array_map(function ($v) {
-                return ["CategoryParentID" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["CategoryParentID" => $v];}, $value));
         }
         $value = $this->getCategoryParentName();
         if (null !== $value && !empty($this->getCategoryParentName())) {
-            $writer->write(array_map(function ($v) {
-                return ["CategoryParentName" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["CategoryParentName" => $v];}, $value));
         }
         $value = $this->getProductSearchPageAvailable();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;
@@ -1059,15 +1055,11 @@ class CategoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
         }
         $value = $this->getProductFinderIDs();
         if (null !== $value && !empty($this->getProductFinderIDs())) {
-            $writer->write(array_map(function ($v) {
-                return ["ProductFinderIDs" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["ProductFinderIDs" => $v];}, $value));
         }
         $value = $this->getCharacteristicsSets();
         if (null !== $value && !empty($this->getCharacteristicsSets())) {
-            $writer->write(array_map(function ($v) {
-                return ["CharacteristicsSets" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["CharacteristicsSets" => $v];}, $value));
         }
         $value = $this->getExpired();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;
@@ -1175,15 +1167,11 @@ class CategoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ProductFinderIDs', true);
         if (null !== $value && !empty($value)) {
-            $this->setProductFinderIDs(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\ExtendedProductFinderIDType::fromKeyValue($v);
-            }, $value));
+            $this->setProductFinderIDs(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\ExtendedProductFinderIDType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CharacteristicsSets', true);
         if (null !== $value && !empty($value)) {
-            $this->setCharacteristicsSets(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\CharacteristicsSetType::fromKeyValue($v);
-            }, $value));
+            $this->setCharacteristicsSets(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\CharacteristicsSetType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Expired');
         if (null !== $value) {

@@ -550,17 +550,6 @@ Nogrod\eBaySDK\Shopping\SimpleItemType:
                 getter: getWatchCount
                 setter: setWatchCount
             type: int
-        halfItemCondition:
-            expose: true
-            access_type: public_method
-            serialized_name: HalfItemCondition
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getHalfItemCondition
-                setter: setHalfItemCondition
-            type: string
         sellerComments:
             expose: true
             access_type: public_method

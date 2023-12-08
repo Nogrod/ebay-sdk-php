@@ -51,8 +51,7 @@ class NonProfitAddressType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
     /**
      * The latitude value of a nonprofit charity organization. Latitude and longitude
      *  coordinates pinpoint the location of the organization relative to the earth, and are
-     *  useful for search purposes. The <b>Latitude</b> and <b>Longitude</b>
-     *  fields are only returned in <b>GetCharities</b> if set by the organization.
+     *  useful for search purposes.
      *
      * @var float $latitude
      */
@@ -61,8 +60,7 @@ class NonProfitAddressType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
     /**
      * The longitude value of a nonprofit charity organization. Latitude and longitude
      *  coordinates pinpoint the location of the organization relative to the earth, and are
-     *  useful for search purposes. The <b>Latitude</b> and <b>Longitude</b>
-     *  fields are only returned in <b>GetCharities</b> if set by the organization.
+     *  useful for search purposes.
      *
      * @var float $longitude
      */
@@ -214,8 +212,7 @@ class NonProfitAddressType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
      *
      * The latitude value of a nonprofit charity organization. Latitude and longitude
      *  coordinates pinpoint the location of the organization relative to the earth, and are
-     *  useful for search purposes. The <b>Latitude</b> and <b>Longitude</b>
-     *  fields are only returned in <b>GetCharities</b> if set by the organization.
+     *  useful for search purposes.
      *
      * @return float
      */
@@ -229,8 +226,7 @@ class NonProfitAddressType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
      *
      * The latitude value of a nonprofit charity organization. Latitude and longitude
      *  coordinates pinpoint the location of the organization relative to the earth, and are
-     *  useful for search purposes. The <b>Latitude</b> and <b>Longitude</b>
-     *  fields are only returned in <b>GetCharities</b> if set by the organization.
+     *  useful for search purposes.
      *
      * @param float $latitude
      * @return self
@@ -246,8 +242,7 @@ class NonProfitAddressType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
      *
      * The longitude value of a nonprofit charity organization. Latitude and longitude
      *  coordinates pinpoint the location of the organization relative to the earth, and are
-     *  useful for search purposes. The <b>Latitude</b> and <b>Longitude</b>
-     *  fields are only returned in <b>GetCharities</b> if set by the organization.
+     *  useful for search purposes.
      *
      * @return float
      */
@@ -261,8 +256,7 @@ class NonProfitAddressType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
      *
      * The longitude value of a nonprofit charity organization. Latitude and longitude
      *  coordinates pinpoint the location of the organization relative to the earth, and are
-     *  useful for search purposes. The <b>Latitude</b> and <b>Longitude</b>
-     *  fields are only returned in <b>GetCharities</b> if set by the organization.
+     *  useful for search purposes.
      *
      * @param float $longitude
      * @return self

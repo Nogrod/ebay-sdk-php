@@ -149,9 +149,7 @@ class SellerProfilePreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre
         }
         $value = $this->getSupportedSellerProfiles();
         if (null !== $value && !empty($this->getSupportedSellerProfiles())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SupportedSellerProfiles", array_map(function ($v) {
-                return ["SupportedSellerProfile" => $v];
-            }, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SupportedSellerProfiles", array_map(function ($v) {return ["SupportedSellerProfile" => $v];}, $value));
         }
     }
 
@@ -175,9 +173,7 @@ class SellerProfilePreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SupportedSellerProfiles', true);
         if (null !== $value && !empty($value)) {
-            $this->setSupportedSellerProfiles(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\SupportedSellerProfileType::fromKeyValue($v);
-            }, $value));
+            $this->setSupportedSellerProfiles(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\SupportedSellerProfileType::fromKeyValue($v);}, $value));
         }
     }
 }

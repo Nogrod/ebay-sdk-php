@@ -74,17 +74,6 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     private $changePaymentInstructions = null;
 
     /**
-     * Whether or not the buyer selected to pay for insurance as an option offered by
-     *  the seller. This only has a value after the buyer has gone through checkout and
-     *  selected the insurance preference.
-     *  <br><br>
-     *  Valid only on the following sites: FR and IT
-     *
-     * @var bool $insuranceWanted
-     */
-    private $insuranceWanted = null;
-
-    /**
      * Whether the seller allows the buyer to edit the payment amount for the order.
      *  (Sellers enable this property in their My eBay user preferences on the eBay site.)
      *
@@ -401,27 +390,6 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     private $promotionalShippingDiscountDetails = null;
 
     /**
-     * <span class="tablenote"><strong>Note:</strong>
-     *  This field was deprecated since COD is no longer a supported payment method on any marketplace. This field will be removed from the Trading WSDL and docs on July 17, 2023.
-     *  </span>
-     *  <br>
-     *  This dollar value indicates the money due from the buyer upon delivery of the item.
-     *  <br><br>
-     *  This field should only be specified in the request if 'COD' (cash-on-delivery) is a
-     *  valid payment method for the site and listing category, and it is included as a <b>PaymentMethods</b>
-     *  value in the same request.
-     *  <br><br>
-     *  This field is only returned if set for the listing.
-     *  <br><br>
-     *  To see if 'COD' is a supported payment method for a site and category, call <b>GetCategoryFeatures</b>, specifying the listing category ID, and including the <b>FeatureID</b> field set to <b>PaymentMethods</b>. Look for
-     *  a value of 'CashOnPickup' in one of the <b>Category.PaymentMethod</b>
-     *  fields in the response. For some eBay sites, the 'COD' enum may also get returned.
-     *
-     * @var \Nogrod\eBaySDK\Trading\AmountType $cODCost
-     */
-    private $cODCost = null;
-
-    /**
      * <br>
      *  Use this field in an Add/Revise/Relist call to specify an international country or region, or a special domestic location, such as 'PO Box' (in US) or 'Packstation' (in DE), to where you will not ship the associated item. Repeat this element in the call request for each location that you want to exclude as a shipping destination for your item.
      *  <br><br>
@@ -702,40 +670,6 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     public function setChangePaymentInstructions($changePaymentInstructions)
     {
         $this->changePaymentInstructions = $changePaymentInstructions;
-        return $this;
-    }
-
-    /**
-     * Gets as insuranceWanted
-     *
-     * Whether or not the buyer selected to pay for insurance as an option offered by
-     *  the seller. This only has a value after the buyer has gone through checkout and
-     *  selected the insurance preference.
-     *  <br><br>
-     *  Valid only on the following sites: FR and IT
-     *
-     * @return bool
-     */
-    public function getInsuranceWanted()
-    {
-        return $this->insuranceWanted;
-    }
-
-    /**
-     * Sets a new insuranceWanted
-     *
-     * Whether or not the buyer selected to pay for insurance as an option offered by
-     *  the seller. This only has a value after the buyer has gone through checkout and
-     *  selected the insurance preference.
-     *  <br><br>
-     *  Valid only on the following sites: FR and IT
-     *
-     * @param bool $insuranceWanted
-     * @return self
-     */
-    public function setInsuranceWanted($insuranceWanted)
-    {
-        $this->insuranceWanted = $insuranceWanted;
         return $this;
     }
 
@@ -1919,60 +1853,6 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     }
 
     /**
-     * Gets as cODCost
-     *
-     * <span class="tablenote"><strong>Note:</strong>
-     *  This field was deprecated since COD is no longer a supported payment method on any marketplace. This field will be removed from the Trading WSDL and docs on July 17, 2023.
-     *  </span>
-     *  <br>
-     *  This dollar value indicates the money due from the buyer upon delivery of the item.
-     *  <br><br>
-     *  This field should only be specified in the request if 'COD' (cash-on-delivery) is a
-     *  valid payment method for the site and listing category, and it is included as a <b>PaymentMethods</b>
-     *  value in the same request.
-     *  <br><br>
-     *  This field is only returned if set for the listing.
-     *  <br><br>
-     *  To see if 'COD' is a supported payment method for a site and category, call <b>GetCategoryFeatures</b>, specifying the listing category ID, and including the <b>FeatureID</b> field set to <b>PaymentMethods</b>. Look for
-     *  a value of 'CashOnPickup' in one of the <b>Category.PaymentMethod</b>
-     *  fields in the response. For some eBay sites, the 'COD' enum may also get returned.
-     *
-     * @return \Nogrod\eBaySDK\Trading\AmountType
-     */
-    public function getCODCost()
-    {
-        return $this->cODCost;
-    }
-
-    /**
-     * Sets a new cODCost
-     *
-     * <span class="tablenote"><strong>Note:</strong>
-     *  This field was deprecated since COD is no longer a supported payment method on any marketplace. This field will be removed from the Trading WSDL and docs on July 17, 2023.
-     *  </span>
-     *  <br>
-     *  This dollar value indicates the money due from the buyer upon delivery of the item.
-     *  <br><br>
-     *  This field should only be specified in the request if 'COD' (cash-on-delivery) is a
-     *  valid payment method for the site and listing category, and it is included as a <b>PaymentMethods</b>
-     *  value in the same request.
-     *  <br><br>
-     *  This field is only returned if set for the listing.
-     *  <br><br>
-     *  To see if 'COD' is a supported payment method for a site and category, call <b>GetCategoryFeatures</b>, specifying the listing category ID, and including the <b>FeatureID</b> field set to <b>PaymentMethods</b>. Look for
-     *  a value of 'CashOnPickup' in one of the <b>Category.PaymentMethod</b>
-     *  fields in the response. For some eBay sites, the 'COD' enum may also get returned.
-     *
-     * @param \Nogrod\eBaySDK\Trading\AmountType $cODCost
-     * @return self
-     */
-    public function setCODCost(\Nogrod\eBaySDK\Trading\AmountType $cODCost)
-    {
-        $this->cODCost = $cODCost;
-        return $this;
-    }
-
-    /**
      * Adds as excludeShipToLocation
      *
      * <br>
@@ -2508,11 +2388,6 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ChangePaymentInstructions", $value);
         }
-        $value = $this->getInsuranceWanted();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}InsuranceWanted", $value);
-        }
         $value = $this->getPaymentEdited();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;
         if (null !== $value) {
@@ -2536,15 +2411,11 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
         }
         $value = $this->getShippingServiceOptions();
         if (null !== $value && !empty($this->getShippingServiceOptions())) {
-            $writer->write(array_map(function ($v) {
-                return ["ShippingServiceOptions" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["ShippingServiceOptions" => $v];}, $value));
         }
         $value = $this->getInternationalShippingServiceOption();
         if (null !== $value && !empty($this->getInternationalShippingServiceOption())) {
-            $writer->write(array_map(function ($v) {
-                return ["InternationalShippingServiceOption" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["InternationalShippingServiceOption" => $v];}, $value));
         }
         $value = $this->getShippingType();
         if (null !== $value) {
@@ -2561,9 +2432,7 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
         }
         $value = $this->getTaxTable();
         if (null !== $value && !empty($this->getTaxTable())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TaxTable", array_map(function ($v) {
-                return ["TaxJurisdiction" => $v];
-            }, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TaxTable", array_map(function ($v) {return ["TaxJurisdiction" => $v];}, $value));
         }
         $value = $this->getGetItFast();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;
@@ -2616,15 +2485,9 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PromotionalShippingDiscountDetails", $value);
         }
-        $value = $this->getCODCost();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CODCost", $value);
-        }
         $value = $this->getExcludeShipToLocation();
         if (null !== $value && !empty($this->getExcludeShipToLocation())) {
-            $writer->write(array_map(function ($v) {
-                return ["ExcludeShipToLocation" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["ExcludeShipToLocation" => $v];}, $value));
         }
         $value = $this->getEBayEstimatedLabelCost();
         if (null !== $value) {
@@ -2637,9 +2500,7 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
         }
         $value = $this->getShipmentTrackingDetails();
         if (null !== $value && !empty($this->getShipmentTrackingDetails())) {
-            $writer->write(array_map(function ($v) {
-                return ["ShipmentTrackingDetails" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["ShipmentTrackingDetails" => $v];}, $value));
         }
         $value = $this->getRateTableDetails();
         if (null !== $value) {
@@ -2681,10 +2542,6 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
         if (null !== $value) {
             $this->setChangePaymentInstructions($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}InsuranceWanted');
-        if (null !== $value) {
-            $this->setInsuranceWanted($value);
-        }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaymentEdited');
         if (null !== $value) {
             $this->setPaymentEdited($value);
@@ -2707,15 +2564,11 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingServiceOptions', true);
         if (null !== $value && !empty($value)) {
-            $this->setShippingServiceOptions(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\ShippingServiceOptionsType::fromKeyValue($v);
-            }, $value));
+            $this->setShippingServiceOptions(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\ShippingServiceOptionsType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}InternationalShippingServiceOption', true);
         if (null !== $value && !empty($value)) {
-            $this->setInternationalShippingServiceOption(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\InternationalShippingServiceOptionsType::fromKeyValue($v);
-            }, $value));
+            $this->setInternationalShippingServiceOption(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\InternationalShippingServiceOptionsType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingType');
         if (null !== $value) {
@@ -2731,9 +2584,7 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TaxTable', true);
         if (null !== $value && !empty($value)) {
-            $this->setTaxTable(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\TaxJurisdictionType::fromKeyValue($v);
-            }, $value));
+            $this->setTaxTable(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\TaxJurisdictionType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}GetItFast');
         if (null !== $value) {
@@ -2783,10 +2634,6 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
         if (null !== $value) {
             $this->setPromotionalShippingDiscountDetails(\Nogrod\eBaySDK\Trading\PromotionalShippingDiscountDetailsType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CODCost');
-        if (null !== $value) {
-            $this->setCODCost(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
-        }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExcludeShipToLocation', true);
         if (null !== $value && !empty($value)) {
             $this->setExcludeShipToLocation($value);
@@ -2801,9 +2648,7 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShipmentTrackingDetails', true);
         if (null !== $value && !empty($value)) {
-            $this->setShipmentTrackingDetails(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\ShipmentTrackingDetailsType::fromKeyValue($v);
-            }, $value));
+            $this->setShipmentTrackingDetails(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\ShipmentTrackingDetailsType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RateTableDetails');
         if (null !== $value) {

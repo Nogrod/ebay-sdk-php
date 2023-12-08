@@ -224,9 +224,7 @@ class SKUArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getSKU();
         if (null !== $value && !empty($this->getSKU())) {
-            $writer->write(array_map(function ($v) {
-                return ["SKU" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["SKU" => $v];}, $value));
         }
     }
 

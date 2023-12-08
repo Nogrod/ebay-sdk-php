@@ -58,7 +58,7 @@ class DetailLevelCodeType
      *
      * Returns the summary data.
      *  For <b>GetMyMessages</b>, this detail level returns the same data
-     *  whether or not you include <b>MessageIDs</b> or <b>AlertIDs</b> in the
+     *  whether or not you include <b>MessageIDs</b> in the
      *  request. Returns up to 10 <b>FolderID</b> and <b>FolderName</b> values.
      *  Currently, this detail level is the only way to retrieve
      *  <b>FolderID</b> and <b>FolderName</b> values. See <b>GetMyMessages</b>
@@ -71,14 +71,13 @@ class DetailLevelCodeType
      * Constant for 'ReturnHeaders' value.
      *
      * Returns message headers.
-     *  For <b>GetMyMessages</b>, if you include <b>MessageIDs</b> or <b>AlertIDs</b>
-     * in
+     *  For <b>GetMyMessages</b>, if you include <b>MessageIDs</b> in
      *  the request, this detail level returns header information,
      *  without body text, for the specified message ID or alert ID
      *  values. If you include a <b>FolderID</b>, header information is
      *  returned only for the messages and alerts in the specified
      *  folder.<br/><br/>
-     *  If you do not include <b>MessageIDs</b> or <b>AlertIDs</b>, this detail
+     *  If you do not include <b>MessageIDs</b>, this detail
      *  level returns header information for Alerts and Messages as follows:
      *  <ul>
      *  <li>If all the Alerts have been read, they are sorted in date order,
@@ -100,8 +99,7 @@ class DetailLevelCodeType
      * Constant for 'ReturnMessages' value.
      *
      * Returns full message information.
-     *  For <b>GetMyMessages</b>, if you include <b>MessageIDs</b> or <b>AlertIDs</b>
-     * in
+     *  For <b>GetMyMessages</b>, if you include <b>MessageIDs</b> in
      *  the request, this detail level returns message information
      *  for the specified message ID or alert ID values. If you
      *  include a <b>FolderID</b>, message information is returned only for

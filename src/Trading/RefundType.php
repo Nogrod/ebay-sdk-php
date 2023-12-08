@@ -646,9 +646,7 @@ class RefundType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
         }
         $value = $this->getRefundTransactionArray();
         if (null !== $value && !empty($this->getRefundTransactionArray())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}RefundTransactionArray", array_map(function ($v) {
-                return ["RefundTransaction" => $v];
-            }, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}RefundTransactionArray", array_map(function ($v) {return ["RefundTransaction" => $v];}, $value));
         }
         $value = $this->getRefundAmount();
         if (null !== $value) {
@@ -664,9 +662,7 @@ class RefundType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
         }
         $value = $this->getRefundFundingSourceArray();
         if (null !== $value && !empty($this->getRefundFundingSourceArray())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}RefundFundingSourceArray", array_map(function ($v) {
-                return ["RefundFundingSource" => $v];
-            }, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}RefundFundingSourceArray", array_map(function ($v) {return ["RefundFundingSource" => $v];}, $value));
         }
         $value = $this->getExternalReferenceID();
         if (null !== $value) {
@@ -722,9 +718,7 @@ class RefundType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RefundTransactionArray', true);
         if (null !== $value && !empty($value)) {
-            $this->setRefundTransactionArray(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\RefundTransactionType::fromKeyValue($v);
-            }, $value));
+            $this->setRefundTransactionArray(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\RefundTransactionType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RefundAmount');
         if (null !== $value) {
@@ -740,9 +734,7 @@ class RefundType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RefundFundingSourceArray', true);
         if (null !== $value && !empty($value)) {
-            $this->setRefundFundingSourceArray(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\RefundFundingSourceType::fromKeyValue($v);
-            }, $value));
+            $this->setRefundFundingSourceArray(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\RefundFundingSourceType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExternalReferenceID');
         if (null !== $value) {

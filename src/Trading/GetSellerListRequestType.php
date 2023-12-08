@@ -54,7 +54,7 @@ class GetSellerListRequestType extends AbstractRequestType
      * This field can be used to control the order in which returned listings are sorted (based on the listings' actual/scheduled end dates). Valid values are as follows:
      *  <ul>
      *  <li><code>1</code> (descending order)</li>
-     *  <li>code>2</code> (ascending order)</li>
+     *  <li><code>2</code> (ascending order)</li>
      *  </ul>
      *
      * @var int $sort
@@ -305,7 +305,7 @@ class GetSellerListRequestType extends AbstractRequestType
      * This field can be used to control the order in which returned listings are sorted (based on the listings' actual/scheduled end dates). Valid values are as follows:
      *  <ul>
      *  <li><code>1</code> (descending order)</li>
-     *  <li>code>2</code> (ascending order)</li>
+     *  <li><code>2</code> (ascending order)</li>
      *  </ul>
      *
      * @return int
@@ -321,7 +321,7 @@ class GetSellerListRequestType extends AbstractRequestType
      * This field can be used to control the order in which returned listings are sorted (based on the listings' actual/scheduled end dates). Valid values are as follows:
      *  <ul>
      *  <li><code>1</code> (descending order)</li>
-     *  <li>code>2</code> (ascending order)</li>
+     *  <li><code>2</code> (ascending order)</li>
      *  </ul>
      *
      * @param int $sort
@@ -666,9 +666,7 @@ class GetSellerListRequestType extends AbstractRequestType
         }
         $value = $this->getMotorsDealerUsers();
         if (null !== $value && !empty($this->getMotorsDealerUsers())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MotorsDealerUsers", array_map(function ($v) {
-                return ["UserID" => $v];
-            }, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MotorsDealerUsers", array_map(function ($v) {return ["UserID" => $v];}, $value));
         }
         $value = $this->getEndTimeFrom();
         if (null !== $value) {
@@ -700,9 +698,7 @@ class GetSellerListRequestType extends AbstractRequestType
         }
         $value = $this->getSKUArray();
         if (null !== $value && !empty($this->getSKUArray())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SKUArray", array_map(function ($v) {
-                return ["SKU" => $v];
-            }, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SKUArray", array_map(function ($v) {return ["SKU" => $v];}, $value));
         }
         $value = $this->getIncludeWatchCount();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;

@@ -6,6 +6,9 @@ namespace Nogrod\eBaySDK\Shopping;
  * Class representing BuyerPaymentMethodCodeType
  *
  * This enumerated type includes all forms of payment that buyers may use to pay for order line items.
+ *  <span class="tablenote"><b>Note: </b>
+ *  As eBay now controls all of the online payment methods available to buyers, sellers will only specify offline payment methods for listings that require/support offline payment.
+ *  </span>
  * XSD Type: BuyerPaymentMethodCodeType
  */
 class BuyerPaymentMethodCodeType
@@ -13,8 +16,8 @@ class BuyerPaymentMethodCodeType
     /**
      * Constant for 'None' value.
      *
-     * This enumeration value is returned in a <b>PaymentMethods</b> field if no
-     * payment method is specified for a listing.
+     * This enumeration value is deprecated, and should no longer be used in listing
+     * flows.
      */
     public const VAL_NONE = 'None';
 
@@ -31,24 +34,24 @@ class BuyerPaymentMethodCodeType
     /**
      * Constant for 'AmEx' value.
      *
-     * This enumeration value is returned in a <b>PaymentMethods</b> field if American
-     * Express is accepted as a form of payment for the order line item.
+     * This enumeration value is deprecated, and should no longer be used in listing
+     * flows.
      */
     public const VAL_AM_EX = 'AmEx';
 
     /**
      * Constant for 'PaymentSeeDescription' value.
      *
-     * This enumeration value is returned in a <b>PaymentMethods</b> field if payment
-     * instructions for the order line item are contained in the listing description.
+     * This enumeration value is deprecated, and should no longer be used in listing
+     * flows.
      */
     public const VAL_PAYMENT_SEE_DESCRIPTION = 'PaymentSeeDescription';
 
     /**
      * Constant for 'CCAccepted' value.
      *
-     * This enumeration value is returned in a <b>PaymentMethods</b> field if credit
-     * cards are accepted as a form of payment for the order line item.
+     * This enumeration value is deprecated, and should no longer be used in listing
+     * flows.
      */
     public const VAL_CCACCEPTED = 'CCAccepted';
 
@@ -65,54 +68,48 @@ class BuyerPaymentMethodCodeType
     /**
      * Constant for 'COD' value.
      *
-     * This enumeration value is returned in a <b>PaymentMethods</b> field if 'Cash on
-     * delivery' is accepted as a form of payment for the order line item. This payment
-     * method is only applicable if the buyer and seller will be handling payment
-     * offline, and is only applicable to the following eBay sites: AT (16), BEFR (24),
-     * BENL (123), CH (193), DE (77), ES (186), FR (71), HK (201), IN (203), IT (101),
-     * PL (212), and SG (216).
+     * This enumeration value is deprecated, and should no longer be used in listing
+     * flows.
      */
     public const VAL_COD = 'COD';
 
     /**
      * Constant for 'VisaMC' value.
      *
-     * This enumeration value is returned in a <b>PaymentMethods</b> field if Visa or
-     * Mastercard are accepted as forms of payment for the order line item.
+     * This enumeration value is deprecated, and should no longer be used in listing
+     * flows.
      */
     public const VAL_VISA_MC = 'VisaMC';
 
     /**
      * Constant for 'PaisaPayAccepted' value.
      *
-     * This payment method is no longer applicable, as this form of payment was only
-     * accepted on the eBay India site, and this site is no longer a functioning eBay
-     * marketplace.
+     * This enumeration value is deprecated, and should no longer be used in listing
+     * flows.
      */
     public const VAL_PAISA_PAY_ACCEPTED = 'PaisaPayAccepted';
 
     /**
      * Constant for 'Other' value.
      *
-     * This enumeration value is returned in a <b>PaymentMethods</b> field if the
-     * seller is offering the buyer another form of payment not defined in this type.
+     * This enumeration value is deprecated, and should no longer be used in listing
+     * flows.
      */
     public const VAL_OTHER = 'Other';
 
     /**
      * Constant for 'PayPal' value.
      *
-     * This enumeration value is returned in a <b>PaymentMethods</b> field if PayPal is
-     * accepted as a form of payment for the order line item. This is a valid value for
-     * all countries that accept PayPal.
+     * This enumeration value is deprecated, and should no longer be used in listing
+     * flows.
      */
     public const VAL_PAY_PAL = 'PayPal';
 
     /**
      * Constant for 'Discover' value.
      *
-     * This enumeration value is returned in a <b>PaymentMethods</b> field if Discover
-     * is accepted as a form of payment for the order line item.
+     * This enumeration value is deprecated, and should no longer be used in listing
+     * flows.
      */
     public const VAL_DISCOVER = 'Discover';
 
@@ -129,27 +126,24 @@ class BuyerPaymentMethodCodeType
     /**
      * Constant for 'MoneyXferAccepted' value.
      *
-     * This enumeration value is returned in a <b>PaymentMethods</b> field if the
-     * seller is willing to accept a money transfer as a form of payment for the order
-     * line item.
+     * This enumeration value is deprecated, and should no longer be used in listing
+     * flows.
      */
     public const VAL_MONEY_XFER_ACCEPTED = 'MoneyXferAccepted';
 
     /**
      * Constant for 'MoneyXferAcceptedInCheckout' value.
      *
-     * If the seller has bank account information on file, and
-     *  <b>MoneyXferAcceptedInCheckout</b> is <code>true</code>, then the bank account
-     *  information will be displayed at checkout.
+     * This enumeration value is deprecated, and should no longer be used in listing
+     * flows.
      */
     public const VAL_MONEY_XFER_ACCEPTED_IN_CHECKOUT = 'MoneyXferAcceptedInCheckout';
 
     /**
      * Constant for 'OtherOnlinePayments' value.
      *
-     * This enumeration value is returned in a <b>PaymentMethods</b> field if the
-     * seller is offering the buyer another form of online payment not defined in this
-     * type.
+     * This enumeration value is deprecated, and should no longer be used in listing
+     * flows.
      */
     public const VAL_OTHER_ONLINE_PAYMENTS = 'OtherOnlinePayments';
 
@@ -176,18 +170,15 @@ class BuyerPaymentMethodCodeType
     /**
      * Constant for 'CustomCode' value.
      *
-     * Placeholder value. See
-     *  <a
-     * href="https://developer.ebay.com/DevZone/shopping/docs/CallRef/types/simpleTypes.html#token">token</a>.
+     * Reserved for internal or future use.
      */
     public const VAL_CUSTOM_CODE = 'CustomCode';
 
     /**
      * Constant for 'LoanCheck' value.
      *
-     * This enumeration value is returned in a <b>PaymentMethods</b> field if a loan
-     * check is accepted as a form of payment for the order line item.
-     *  This option is only applicable to motor vehicle listings.
+     * This enumeration value is deprecated, and should no longer be used in listing
+     * flows.
      */
     public const VAL_LOAN_CHECK = 'LoanCheck';
 
@@ -199,17 +190,16 @@ class BuyerPaymentMethodCodeType
     /**
      * Constant for 'ELV' value.
      *
-     * Elektronisches Lastschriftverfahren (direct debit).
-     *  Only applicable to Express Germany.
+     * This enumeration value is deprecated, and should no longer be used in listing
+     * flows.
      */
     public const VAL_ELV = 'ELV';
 
     /**
      * Constant for 'PaisaPayEscrowEMI' value.
      *
-     * This payment method is no longer applicable, as this form of payment was only
-     * accepted on the eBay India site, and this site is no longer a functioning eBay
-     * marketplace.
+     * This enumeration value is deprecated, and should no longer be used in listing
+     * flows.
      */
     public const VAL_PAISA_PAY_ESCROW_EMI = 'PaisaPayEscrowEMI';
 
@@ -236,17 +226,16 @@ class BuyerPaymentMethodCodeType
     /**
      * Constant for 'DirectDebit' value.
      *
-     * This enumeration value is returned in a <b>PaymentMethods</b> field if a debit
-     * card is accepted as a form of payment for the order line item. This value is
-     * only applicable to eBay Scheduled Delivery orders in the UK.
+     * This enumeration value is deprecated, and should no longer be used in listing
+     * flows.
      */
     public const VAL_DIRECT_DEBIT = 'DirectDebit';
 
     /**
      * Constant for 'CreditCard' value.
      *
-     * This enumeration value is returned in a <b>PaymentMethods</b> field if a credit
-     * card is accepted as a form of payment for the order line item.
+     * This enumeration value is deprecated, and should no longer be used in listing
+     * flows.
      */
     public const VAL_CREDIT_CARD = 'CreditCard';
 

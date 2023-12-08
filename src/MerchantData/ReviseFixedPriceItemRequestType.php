@@ -285,9 +285,7 @@ class ReviseFixedPriceItemRequestType extends AbstractRequestType
         }
         $value = $this->getDeletedField();
         if (null !== $value && !empty($this->getDeletedField())) {
-            $writer->write(array_map(function ($v) {
-                return ["DeletedField" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["DeletedField" => $v];}, $value));
         }
     }
 

@@ -98,9 +98,7 @@ class DisputeArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getDispute();
         if (null !== $value && !empty($this->getDispute())) {
-            $writer->write(array_map(function ($v) {
-                return ["Dispute" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["Dispute" => $v];}, $value));
         }
     }
 
@@ -120,9 +118,7 @@ class DisputeArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     {
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Dispute', true);
         if (null !== $value && !empty($value)) {
-            $this->setDispute(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\DisputeType::fromKeyValue($v);
-            }, $value));
+            $this->setDispute(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\DisputeType::fromKeyValue($v);}, $value));
         }
     }
 }

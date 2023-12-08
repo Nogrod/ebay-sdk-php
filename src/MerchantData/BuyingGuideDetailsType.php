@@ -164,9 +164,7 @@ class BuyingGuideDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getBuyingGuide();
         if (null !== $value && !empty($this->getBuyingGuide())) {
-            $writer->write(array_map(function ($v) {
-                return ["BuyingGuide" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["BuyingGuide" => $v];}, $value));
         }
         $value = $this->getBuyingGuideHub();
         if (null !== $value) {
@@ -190,9 +188,7 @@ class BuyingGuideDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     {
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BuyingGuide', true);
         if (null !== $value && !empty($value)) {
-            $this->setBuyingGuide(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\BuyingGuideType::fromKeyValue($v);
-            }, $value));
+            $this->setBuyingGuide(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\BuyingGuideType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BuyingGuideHub');
         if (null !== $value) {

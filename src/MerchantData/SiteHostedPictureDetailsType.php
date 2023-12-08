@@ -356,9 +356,7 @@ class SiteHostedPictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre
         }
         $value = $this->getPictureSetMember();
         if (null !== $value && !empty($this->getPictureSetMember())) {
-            $writer->write(array_map(function ($v) {
-                return ["PictureSetMember" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["PictureSetMember" => $v];}, $value));
         }
         $value = $this->getExternalPictureURL();
         if (null !== $value) {
@@ -406,9 +404,7 @@ class SiteHostedPictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PictureSetMember', true);
         if (null !== $value && !empty($value)) {
-            $this->setPictureSetMember(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\PictureSetMemberType::fromKeyValue($v);
-            }, $value));
+            $this->setPictureSetMember(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\PictureSetMemberType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExternalPictureURL');
         if (null !== $value) {

@@ -28,14 +28,14 @@ class GetItemShippingRequestType extends AbstractRequestType
     private $quantitySold = null;
 
     /**
-     * The destination postal code (or zip code for US) is supplied in this field. <b>GetItemShipping</b> requires the destination of the shipment. Some countries will require both the <b>DestinationPostalCode</b> and the lt;b>DestinationCountryCode</b>, and some countries will accept either one or the other.
+     * The destination postal code (or zip code for US) is supplied in this field. <b>GetItemShipping</b> requires the destination of the shipment. Some countries will require both the <b>DestinationPostalCode</b> and the <b>DestinationCountryCode</b>, and some countries will accept either one or the other.
      *
      * @var string $destinationPostalCode
      */
     private $destinationPostalCode = null;
 
     /**
-     * The destination country code is supplied in this field. <b>GetItemShipping</b> requires the destination of the shipment. Some countries will require both the <b>DestinationPostalCode</b> and the lt;b>DestinationCountryCode</b>, and some countries will accept either one or the other.
+     * The destination country code is supplied in this field. <b>GetItemShipping</b> requires the destination of the shipment. Some countries will require both the <b>DestinationPostalCode</b> and the <b>DestinationCountryCode</b>, and some countries will accept either one or the other.
      *  <br><br>
      *  Two-digit country codes can be found in <a href="types/CountryCodeType.html">CountryCodeType</a>.
      *  <br>
@@ -101,7 +101,7 @@ class GetItemShippingRequestType extends AbstractRequestType
     /**
      * Gets as destinationPostalCode
      *
-     * The destination postal code (or zip code for US) is supplied in this field. <b>GetItemShipping</b> requires the destination of the shipment. Some countries will require both the <b>DestinationPostalCode</b> and the lt;b>DestinationCountryCode</b>, and some countries will accept either one or the other.
+     * The destination postal code (or zip code for US) is supplied in this field. <b>GetItemShipping</b> requires the destination of the shipment. Some countries will require both the <b>DestinationPostalCode</b> and the <b>DestinationCountryCode</b>, and some countries will accept either one or the other.
      *
      * @return string
      */
@@ -113,7 +113,7 @@ class GetItemShippingRequestType extends AbstractRequestType
     /**
      * Sets a new destinationPostalCode
      *
-     * The destination postal code (or zip code for US) is supplied in this field. <b>GetItemShipping</b> requires the destination of the shipment. Some countries will require both the <b>DestinationPostalCode</b> and the lt;b>DestinationCountryCode</b>, and some countries will accept either one or the other.
+     * The destination postal code (or zip code for US) is supplied in this field. <b>GetItemShipping</b> requires the destination of the shipment. Some countries will require both the <b>DestinationPostalCode</b> and the <b>DestinationCountryCode</b>, and some countries will accept either one or the other.
      *
      * @param string $destinationPostalCode
      * @return self
@@ -127,7 +127,7 @@ class GetItemShippingRequestType extends AbstractRequestType
     /**
      * Gets as destinationCountryCode
      *
-     * The destination country code is supplied in this field. <b>GetItemShipping</b> requires the destination of the shipment. Some countries will require both the <b>DestinationPostalCode</b> and the lt;b>DestinationCountryCode</b>, and some countries will accept either one or the other.
+     * The destination country code is supplied in this field. <b>GetItemShipping</b> requires the destination of the shipment. Some countries will require both the <b>DestinationPostalCode</b> and the <b>DestinationCountryCode</b>, and some countries will accept either one or the other.
      *  <br><br>
      *  Two-digit country codes can be found in <a href="types/CountryCodeType.html">CountryCodeType</a>.
      *  <br>
@@ -142,7 +142,7 @@ class GetItemShippingRequestType extends AbstractRequestType
     /**
      * Sets a new destinationCountryCode
      *
-     * The destination country code is supplied in this field. <b>GetItemShipping</b> requires the destination of the shipment. Some countries will require both the <b>DestinationPostalCode</b> and the lt;b>DestinationCountryCode</b>, and some countries will accept either one or the other.
+     * The destination country code is supplied in this field. <b>GetItemShipping</b> requires the destination of the shipment. Some countries will require both the <b>DestinationPostalCode</b> and the <b>DestinationCountryCode</b>, and some countries will accept either one or the other.
      *  <br><br>
      *  Two-digit country codes can be found in <a href="types/CountryCodeType.html">CountryCodeType</a>.
      *  <br>

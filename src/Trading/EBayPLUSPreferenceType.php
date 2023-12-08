@@ -15,7 +15,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  <strong>Note:</strong> Currently, eBay Plus is available only to buyers in Germany and Australia. In Australia, the seller has no control/responsibility over setting the eBay Plus feature for a listing. Instead, eBay will evaluate/determine whether a listing is eligible for eBay Plus.
  *  </span>
  *  For more details about eBay Plus, see <a href="../../../../guides/features-guide/default.html#development/Feature-eBayPlus.html">Offering eBay Plus</a>.
- * XSD Type: eBayPLUSPreferenceType
+ * XSD Type: EBayPLUSPreferenceType
  */
 class EBayPLUSPreferenceType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {

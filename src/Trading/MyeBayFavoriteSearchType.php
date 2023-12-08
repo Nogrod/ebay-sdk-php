@@ -1340,9 +1340,7 @@ class MyeBayFavoriteSearchType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
         }
         $value = $this->getSearchFlag();
         if (null !== $value && !empty($this->getSearchFlag())) {
-            $writer->write(array_map(function ($v) {
-                return ["SearchFlag" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["SearchFlag" => $v];}, $value));
         }
         $value = $this->getPaymentMethod();
         if (null !== $value) {
@@ -1354,15 +1352,11 @@ class MyeBayFavoriteSearchType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
         }
         $value = $this->getSellerID();
         if (null !== $value && !empty($this->getSellerID())) {
-            $writer->write(array_map(function ($v) {
-                return ["SellerID" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["SellerID" => $v];}, $value));
         }
         $value = $this->getSellerIDExclude();
         if (null !== $value && !empty($this->getSellerIDExclude())) {
-            $writer->write(array_map(function ($v) {
-                return ["SellerIDExclude" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["SellerIDExclude" => $v];}, $value));
         }
         $value = $this->getItemsAvailableTo();
         if (null !== $value) {

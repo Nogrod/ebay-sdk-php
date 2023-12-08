@@ -165,15 +165,11 @@ class MaximumBuyerPolicyViolationsDetailsType implements \Sabre\Xml\XmlSerializa
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getNumberOfPolicyViolations();
         if (null !== $value && !empty($this->getNumberOfPolicyViolations())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}NumberOfPolicyViolations", array_map(function ($v) {
-                return ["Count" => $v];
-            }, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}NumberOfPolicyViolations", array_map(function ($v) {return ["Count" => $v];}, $value));
         }
         $value = $this->getPolicyViolationDuration();
         if (null !== $value && !empty($this->getPolicyViolationDuration())) {
-            $writer->write(array_map(function ($v) {
-                return ["PolicyViolationDuration" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["PolicyViolationDuration" => $v];}, $value));
         }
     }
 
@@ -197,9 +193,7 @@ class MaximumBuyerPolicyViolationsDetailsType implements \Sabre\Xml\XmlSerializa
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PolicyViolationDuration', true);
         if (null !== $value && !empty($value)) {
-            $this->setPolicyViolationDuration(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\PolicyViolationDurationDetailsType::fromKeyValue($v);
-            }, $value));
+            $this->setPolicyViolationDuration(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\PolicyViolationDurationDetailsType::fromKeyValue($v);}, $value));
         }
     }
 }

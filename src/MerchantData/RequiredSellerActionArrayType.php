@@ -105,9 +105,7 @@ class RequiredSellerActionArrayType implements \Sabre\Xml\XmlSerializable, \Sabr
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getRequiredSellerAction();
         if (null !== $value && !empty($this->getRequiredSellerAction())) {
-            $writer->write(array_map(function ($v) {
-                return ["RequiredSellerAction" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["RequiredSellerAction" => $v];}, $value));
         }
     }
 

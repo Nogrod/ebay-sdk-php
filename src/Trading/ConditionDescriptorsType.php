@@ -13,9 +13,8 @@ use Nogrod\XMLClientRuntime\Func;
 class ConditionDescriptorsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
     /**
-     * <span class="tablenote"><b>Note: </b> This container is currently available only in the United Kingdom (GB), with rollout to all other marketplaces in early July 2023.</span>
-     *  This container is used by the seller to provide additional information about the condition of an item in a structured format. Condition descriptors are name-value attributes that can be either close set or open text inputs.<br /><br />To retrieve all condition descriptor numeric IDs for a category, use the <a href = "/api-docs/sell/metadata/resources/marketplace/methods/getItemConditionPolicies">getItemConditionPolicies</a> method of the <b>Metadata API</b>.<br>
-     *  <span class="tablenote"><b>Note: </b> This container is currently only available for the following trading card categories (<b>CategoryID</b>):<br />
+     * This container is used by the seller to provide additional information about the condition of an item in a structured format. Condition descriptors are name-value attributes that can be either closed set or open text inputs.<br /><br />To retrieve all condition descriptor numeric IDs for a category, use the <a href = "/api-docs/sell/metadata/resources/marketplace/methods/getItemConditionPolicies">getItemConditionPolicies</a> method of the <b>Metadata API</b>.<br>
+     *  <span class="tablenote"><b>Note: </b> The use of Condition Descriptors is currently only available for the following trading card categories (<b>CategoryID</b>):<br />
      *  <ul><li>Non-Sport Trading Card Singles (<code>183050</code>)</li>
      *  <li>CCG Individual Cards (<code>183454</code>)</li>
      *  <li>Sports Trading Card Singles (<code>261328</code>)</li></ul>
@@ -30,9 +29,8 @@ class ConditionDescriptorsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
     /**
      * Adds as conditionDescriptor
      *
-     * <span class="tablenote"><b>Note: </b> This container is currently available only in the United Kingdom (GB), with rollout to all other marketplaces in early July 2023.</span>
-     *  This container is used by the seller to provide additional information about the condition of an item in a structured format. Condition descriptors are name-value attributes that can be either close set or open text inputs.<br /><br />To retrieve all condition descriptor numeric IDs for a category, use the <a href = "/api-docs/sell/metadata/resources/marketplace/methods/getItemConditionPolicies">getItemConditionPolicies</a> method of the <b>Metadata API</b>.<br>
-     *  <span class="tablenote"><b>Note: </b> This container is currently only available for the following trading card categories (<b>CategoryID</b>):<br />
+     * This container is used by the seller to provide additional information about the condition of an item in a structured format. Condition descriptors are name-value attributes that can be either closed set or open text inputs.<br /><br />To retrieve all condition descriptor numeric IDs for a category, use the <a href = "/api-docs/sell/metadata/resources/marketplace/methods/getItemConditionPolicies">getItemConditionPolicies</a> method of the <b>Metadata API</b>.<br>
+     *  <span class="tablenote"><b>Note: </b> The use of Condition Descriptors is currently only available for the following trading card categories (<b>CategoryID</b>):<br />
      *  <ul><li>Non-Sport Trading Card Singles (<code>183050</code>)</li>
      *  <li>CCG Individual Cards (<code>183454</code>)</li>
      *  <li>Sports Trading Card Singles (<code>261328</code>)</li></ul>
@@ -50,9 +48,8 @@ class ConditionDescriptorsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
     /**
      * isset conditionDescriptor
      *
-     * <span class="tablenote"><b>Note: </b> This container is currently available only in the United Kingdom (GB), with rollout to all other marketplaces in early July 2023.</span>
-     *  This container is used by the seller to provide additional information about the condition of an item in a structured format. Condition descriptors are name-value attributes that can be either close set or open text inputs.<br /><br />To retrieve all condition descriptor numeric IDs for a category, use the <a href = "/api-docs/sell/metadata/resources/marketplace/methods/getItemConditionPolicies">getItemConditionPolicies</a> method of the <b>Metadata API</b>.<br>
-     *  <span class="tablenote"><b>Note: </b> This container is currently only available for the following trading card categories (<b>CategoryID</b>):<br />
+     * This container is used by the seller to provide additional information about the condition of an item in a structured format. Condition descriptors are name-value attributes that can be either closed set or open text inputs.<br /><br />To retrieve all condition descriptor numeric IDs for a category, use the <a href = "/api-docs/sell/metadata/resources/marketplace/methods/getItemConditionPolicies">getItemConditionPolicies</a> method of the <b>Metadata API</b>.<br>
+     *  <span class="tablenote"><b>Note: </b> The use of Condition Descriptors is currently only available for the following trading card categories (<b>CategoryID</b>):<br />
      *  <ul><li>Non-Sport Trading Card Singles (<code>183050</code>)</li>
      *  <li>CCG Individual Cards (<code>183454</code>)</li>
      *  <li>Sports Trading Card Singles (<code>261328</code>)</li></ul>
@@ -69,9 +66,8 @@ class ConditionDescriptorsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
     /**
      * unset conditionDescriptor
      *
-     * <span class="tablenote"><b>Note: </b> This container is currently available only in the United Kingdom (GB), with rollout to all other marketplaces in early July 2023.</span>
-     *  This container is used by the seller to provide additional information about the condition of an item in a structured format. Condition descriptors are name-value attributes that can be either close set or open text inputs.<br /><br />To retrieve all condition descriptor numeric IDs for a category, use the <a href = "/api-docs/sell/metadata/resources/marketplace/methods/getItemConditionPolicies">getItemConditionPolicies</a> method of the <b>Metadata API</b>.<br>
-     *  <span class="tablenote"><b>Note: </b> This container is currently only available for the following trading card categories (<b>CategoryID</b>):<br />
+     * This container is used by the seller to provide additional information about the condition of an item in a structured format. Condition descriptors are name-value attributes that can be either closed set or open text inputs.<br /><br />To retrieve all condition descriptor numeric IDs for a category, use the <a href = "/api-docs/sell/metadata/resources/marketplace/methods/getItemConditionPolicies">getItemConditionPolicies</a> method of the <b>Metadata API</b>.<br>
+     *  <span class="tablenote"><b>Note: </b> The use of Condition Descriptors is currently only available for the following trading card categories (<b>CategoryID</b>):<br />
      *  <ul><li>Non-Sport Trading Card Singles (<code>183050</code>)</li>
      *  <li>CCG Individual Cards (<code>183454</code>)</li>
      *  <li>Sports Trading Card Singles (<code>261328</code>)</li></ul>
@@ -88,9 +84,8 @@ class ConditionDescriptorsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
     /**
      * Gets as conditionDescriptor
      *
-     * <span class="tablenote"><b>Note: </b> This container is currently available only in the United Kingdom (GB), with rollout to all other marketplaces in early July 2023.</span>
-     *  This container is used by the seller to provide additional information about the condition of an item in a structured format. Condition descriptors are name-value attributes that can be either close set or open text inputs.<br /><br />To retrieve all condition descriptor numeric IDs for a category, use the <a href = "/api-docs/sell/metadata/resources/marketplace/methods/getItemConditionPolicies">getItemConditionPolicies</a> method of the <b>Metadata API</b>.<br>
-     *  <span class="tablenote"><b>Note: </b> This container is currently only available for the following trading card categories (<b>CategoryID</b>):<br />
+     * This container is used by the seller to provide additional information about the condition of an item in a structured format. Condition descriptors are name-value attributes that can be either closed set or open text inputs.<br /><br />To retrieve all condition descriptor numeric IDs for a category, use the <a href = "/api-docs/sell/metadata/resources/marketplace/methods/getItemConditionPolicies">getItemConditionPolicies</a> method of the <b>Metadata API</b>.<br>
+     *  <span class="tablenote"><b>Note: </b> The use of Condition Descriptors is currently only available for the following trading card categories (<b>CategoryID</b>):<br />
      *  <ul><li>Non-Sport Trading Card Singles (<code>183050</code>)</li>
      *  <li>CCG Individual Cards (<code>183454</code>)</li>
      *  <li>Sports Trading Card Singles (<code>261328</code>)</li></ul>
@@ -106,9 +101,8 @@ class ConditionDescriptorsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
     /**
      * Sets a new conditionDescriptor
      *
-     * <span class="tablenote"><b>Note: </b> This container is currently available only in the United Kingdom (GB), with rollout to all other marketplaces in early July 2023.</span>
-     *  This container is used by the seller to provide additional information about the condition of an item in a structured format. Condition descriptors are name-value attributes that can be either close set or open text inputs.<br /><br />To retrieve all condition descriptor numeric IDs for a category, use the <a href = "/api-docs/sell/metadata/resources/marketplace/methods/getItemConditionPolicies">getItemConditionPolicies</a> method of the <b>Metadata API</b>.<br>
-     *  <span class="tablenote"><b>Note: </b> This container is currently only available for the following trading card categories (<b>CategoryID</b>):<br />
+     * This container is used by the seller to provide additional information about the condition of an item in a structured format. Condition descriptors are name-value attributes that can be either closed set or open text inputs.<br /><br />To retrieve all condition descriptor numeric IDs for a category, use the <a href = "/api-docs/sell/metadata/resources/marketplace/methods/getItemConditionPolicies">getItemConditionPolicies</a> method of the <b>Metadata API</b>.<br>
+     *  <span class="tablenote"><b>Note: </b> The use of Condition Descriptors is currently only available for the following trading card categories (<b>CategoryID</b>):<br />
      *  <ul><li>Non-Sport Trading Card Singles (<code>183050</code>)</li>
      *  <li>CCG Individual Cards (<code>183454</code>)</li>
      *  <li>Sports Trading Card Singles (<code>261328</code>)</li></ul>
@@ -128,9 +122,7 @@ class ConditionDescriptorsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getConditionDescriptor();
         if (null !== $value && !empty($this->getConditionDescriptor())) {
-            $writer->write(array_map(function ($v) {
-                return ["ConditionDescriptor" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["ConditionDescriptor" => $v];}, $value));
         }
     }
 
@@ -150,9 +142,7 @@ class ConditionDescriptorsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
     {
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ConditionDescriptor', true);
         if (null !== $value && !empty($value)) {
-            $this->setConditionDescriptor(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\ConditionDescriptorType::fromKeyValue($v);
-            }, $value));
+            $this->setConditionDescriptor(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\ConditionDescriptorType::fromKeyValue($v);}, $value));
         }
     }
 }

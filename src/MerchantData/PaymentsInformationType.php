@@ -203,15 +203,11 @@ class PaymentsInformationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getPayments();
         if (null !== $value && !empty($this->getPayments())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Payments", array_map(function ($v) {
-                return ["Payment" => $v];
-            }, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Payments", array_map(function ($v) {return ["Payment" => $v];}, $value));
         }
         $value = $this->getRefunds();
         if (null !== $value && !empty($this->getRefunds())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Refunds", array_map(function ($v) {
-                return ["Refund" => $v];
-            }, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Refunds", array_map(function ($v) {return ["Refund" => $v];}, $value));
         }
     }
 
@@ -231,15 +227,11 @@ class PaymentsInformationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
     {
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Payments', true);
         if (null !== $value && !empty($value)) {
-            $this->setPayments(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\PaymentTransactionType::fromKeyValue($v);
-            }, $value));
+            $this->setPayments(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\PaymentTransactionType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Refunds', true);
         if (null !== $value && !empty($value)) {
-            $this->setRefunds(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\RefundTransactionInfoType::fromKeyValue($v);
-            }, $value));
+            $this->setRefunds(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\RefundTransactionInfoType::fromKeyValue($v);}, $value));
         }
     }
 }

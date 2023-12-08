@@ -345,15 +345,11 @@ class ResponseAttributeSetType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
         }
         $value = $this->getProductFamilies();
         if (null !== $value && !empty($this->getProductFamilies())) {
-            $writer->write(array_map(function ($v) {
-                return ["ProductFamilies" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["ProductFamilies" => $v];}, $value));
         }
         $value = $this->getProductFinderConstraints();
         if (null !== $value && !empty($this->getProductFinderConstraints())) {
-            $writer->write(array_map(function ($v) {
-                return ["ProductFinderConstraints" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["ProductFinderConstraints" => $v];}, $value));
         }
         $value = $this->getTooManyMatchesFound();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;
@@ -394,15 +390,11 @@ class ResponseAttributeSetType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ProductFamilies', true);
         if (null !== $value && !empty($value)) {
-            $this->setProductFamilies(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\ProductFamilyType::fromKeyValue($v);
-            }, $value));
+            $this->setProductFamilies(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\ProductFamilyType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ProductFinderConstraints', true);
         if (null !== $value && !empty($value)) {
-            $this->setProductFinderConstraints(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\ProductFinderConstraintType::fromKeyValue($v);
-            }, $value));
+            $this->setProductFinderConstraints(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\ProductFinderConstraintType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TooManyMatchesFound');
         if (null !== $value) {

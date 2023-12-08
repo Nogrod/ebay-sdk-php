@@ -92,9 +92,7 @@ class ListingTipArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getListingTip();
         if (null !== $value && !empty($this->getListingTip())) {
-            $writer->write(array_map(function ($v) {
-                return ["ListingTip" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["ListingTip" => $v];}, $value));
         }
     }
 
@@ -114,9 +112,7 @@ class ListingTipArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     {
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ListingTip', true);
         if (null !== $value && !empty($value)) {
-            $this->setListingTip(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\ListingTipType::fromKeyValue($v);
-            }, $value));
+            $this->setListingTip(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\ListingTipType::fromKeyValue($v);}, $value));
         }
     }
 }

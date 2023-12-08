@@ -162,9 +162,7 @@ class CharitySellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
         }
         $value = $this->getCharityAffiliation();
         if (null !== $value && !empty($this->getCharityAffiliation())) {
-            $writer->write(array_map(function ($v) {
-                return ["CharityAffiliation" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["CharityAffiliation" => $v];}, $value));
         }
         $value = $this->getTermsAndConditionsAccepted();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;
@@ -193,9 +191,7 @@ class CharitySellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CharityAffiliation', true);
         if (null !== $value && !empty($value)) {
-            $this->setCharityAffiliation(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\CharityAffiliationType::fromKeyValue($v);
-            }, $value));
+            $this->setCharityAffiliation(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\CharityAffiliationType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TermsAndConditionsAccepted');
         if (null !== $value) {

@@ -92,9 +92,7 @@ class GetCharitiesResponseType extends AbstractResponseType
         parent::xmlSerialize($writer);
         $value = $this->getCharity();
         if (null !== $value && !empty($this->getCharity())) {
-            $writer->write(array_map(function ($v) {
-                return ["Charity" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["Charity" => $v];}, $value));
         }
     }
 
@@ -115,9 +113,7 @@ class GetCharitiesResponseType extends AbstractResponseType
         parent::setKeyValue($keyValue);
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Charity', true);
         if (null !== $value && !empty($value)) {
-            $this->setCharity(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\CharityInfoType::fromKeyValue($v);
-            }, $value));
+            $this->setCharity(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\CharityInfoType::fromKeyValue($v);}, $value));
         }
     }
 }

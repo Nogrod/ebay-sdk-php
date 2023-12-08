@@ -92,9 +92,7 @@ class LookupAttributeArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getLookupAttribute();
         if (null !== $value && !empty($this->getLookupAttribute())) {
-            $writer->write(array_map(function ($v) {
-                return ["LookupAttribute" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["LookupAttribute" => $v];}, $value));
         }
     }
 
@@ -114,9 +112,7 @@ class LookupAttributeArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
     {
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LookupAttribute', true);
         if (null !== $value && !empty($value)) {
-            $this->setLookupAttribute(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\LookupAttributeType::fromKeyValue($v);
-            }, $value));
+            $this->setLookupAttribute(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\LookupAttributeType::fromKeyValue($v);}, $value));
         }
     }
 }

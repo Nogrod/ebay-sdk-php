@@ -42,10 +42,10 @@ class ReviseItemRequestType extends AbstractRequestType
      *  if other fields depend on them.
      *  <br><br>
      *  Use values that match the case of the
-     *  schema element names (<b>Item.PictureDetails.GalleryURL</b>) or make the initial
-     *  letter of each field name lowercase (<b>item.pictureDetails.galleryURL</b>).
+     *  schema element names (<b>Item.PictureDetails.PictureURL</b>) or make the initial
+     *  letter of each field name lowercase (<b>item.pictureDetails.pictureURL</b>).
      *  However, do not change the case of letters in the middle of a field name.
-     *  For example, <b>item.picturedetails.galleryUrl</b> is not allowed.
+     *  For example, <b>item.picturedetails.pictureURL</b> is not allowed.
      *  <br><br>
      *  To delete a listing enhancement like <b>BoldTitle</b>, specify the value you are
      *  deleting in square brackets ("[ ]"); for example,
@@ -111,10 +111,10 @@ class ReviseItemRequestType extends AbstractRequestType
      *  if other fields depend on them.
      *  <br><br>
      *  Use values that match the case of the
-     *  schema element names (<b>Item.PictureDetails.GalleryURL</b>) or make the initial
-     *  letter of each field name lowercase (<b>item.pictureDetails.galleryURL</b>).
+     *  schema element names (<b>Item.PictureDetails.PictureURL</b>) or make the initial
+     *  letter of each field name lowercase (<b>item.pictureDetails.pictureURL</b>).
      *  However, do not change the case of letters in the middle of a field name.
-     *  For example, <b>item.picturedetails.galleryUrl</b> is not allowed.
+     *  For example, <b>item.picturedetails.pictureURL</b> is not allowed.
      *  <br><br>
      *  To delete a listing enhancement like <b>BoldTitle</b>, specify the value you are
      *  deleting in square brackets ("[ ]"); for example,
@@ -146,10 +146,10 @@ class ReviseItemRequestType extends AbstractRequestType
      *  if other fields depend on them.
      *  <br><br>
      *  Use values that match the case of the
-     *  schema element names (<b>Item.PictureDetails.GalleryURL</b>) or make the initial
-     *  letter of each field name lowercase (<b>item.pictureDetails.galleryURL</b>).
+     *  schema element names (<b>Item.PictureDetails.PictureURL</b>) or make the initial
+     *  letter of each field name lowercase (<b>item.pictureDetails.pictureURL</b>).
      *  However, do not change the case of letters in the middle of a field name.
-     *  For example, <b>item.picturedetails.galleryUrl</b> is not allowed.
+     *  For example, <b>item.picturedetails.pictureURL</b> is not allowed.
      *  <br><br>
      *  To delete a listing enhancement like <b>BoldTitle</b>, specify the value you are
      *  deleting in square brackets ("[ ]"); for example,
@@ -180,10 +180,10 @@ class ReviseItemRequestType extends AbstractRequestType
      *  if other fields depend on them.
      *  <br><br>
      *  Use values that match the case of the
-     *  schema element names (<b>Item.PictureDetails.GalleryURL</b>) or make the initial
-     *  letter of each field name lowercase (<b>item.pictureDetails.galleryURL</b>).
+     *  schema element names (<b>Item.PictureDetails.PictureURL</b>) or make the initial
+     *  letter of each field name lowercase (<b>item.pictureDetails.pictureURL</b>).
      *  However, do not change the case of letters in the middle of a field name.
-     *  For example, <b>item.picturedetails.galleryUrl</b> is not allowed.
+     *  For example, <b>item.picturedetails.pictureURL</b> is not allowed.
      *  <br><br>
      *  To delete a listing enhancement like <b>BoldTitle</b>, specify the value you are
      *  deleting in square brackets ("[ ]"); for example,
@@ -214,10 +214,10 @@ class ReviseItemRequestType extends AbstractRequestType
      *  if other fields depend on them.
      *  <br><br>
      *  Use values that match the case of the
-     *  schema element names (<b>Item.PictureDetails.GalleryURL</b>) or make the initial
-     *  letter of each field name lowercase (<b>item.pictureDetails.galleryURL</b>).
+     *  schema element names (<b>Item.PictureDetails.PictureURL</b>) or make the initial
+     *  letter of each field name lowercase (<b>item.pictureDetails.pictureURL</b>).
      *  However, do not change the case of letters in the middle of a field name.
-     *  For example, <b>item.picturedetails.galleryUrl</b> is not allowed.
+     *  For example, <b>item.picturedetails.pictureURL</b> is not allowed.
      *  <br><br>
      *  To delete a listing enhancement like <b>BoldTitle</b>, specify the value you are
      *  deleting in square brackets ("[ ]"); for example,
@@ -247,10 +247,10 @@ class ReviseItemRequestType extends AbstractRequestType
      *  if other fields depend on them.
      *  <br><br>
      *  Use values that match the case of the
-     *  schema element names (<b>Item.PictureDetails.GalleryURL</b>) or make the initial
-     *  letter of each field name lowercase (<b>item.pictureDetails.galleryURL</b>).
+     *  schema element names (<b>Item.PictureDetails.PictureURL</b>) or make the initial
+     *  letter of each field name lowercase (<b>item.pictureDetails.pictureURL</b>).
      *  However, do not change the case of letters in the middle of a field name.
-     *  For example, <b>item.picturedetails.galleryUrl</b> is not allowed.
+     *  For example, <b>item.picturedetails.pictureURL</b> is not allowed.
      *  <br><br>
      *  To delete a listing enhancement like <b>BoldTitle</b>, specify the value you are
      *  deleting in square brackets ("[ ]"); for example,
@@ -300,9 +300,7 @@ class ReviseItemRequestType extends AbstractRequestType
         }
         $value = $this->getDeletedField();
         if (null !== $value && !empty($this->getDeletedField())) {
-            $writer->write(array_map(function ($v) {
-                return ["DeletedField" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["DeletedField" => $v];}, $value));
         }
         $value = $this->getVerifyOnly();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;

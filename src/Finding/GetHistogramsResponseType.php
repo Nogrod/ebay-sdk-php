@@ -245,9 +245,7 @@ class GetHistogramsResponseType extends BaseServiceResponseType
         }
         $value = $this->getExtension();
         if (null !== $value && !empty($this->getExtension())) {
-            $writer->write(array_map(function ($v) {
-                return ["extension" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["extension" => $v];}, $value));
         }
     }
 
@@ -280,9 +278,7 @@ class GetHistogramsResponseType extends BaseServiceResponseType
         }
         $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}extension', true);
         if (null !== $value && !empty($value)) {
-            $this->setExtension(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Finding\ExtensionTypeType::fromKeyValue($v);
-            }, $value));
+            $this->setExtension(array_map(function ($v) {return \Nogrod\eBaySDK\Finding\ExtensionTypeType::fromKeyValue($v);}, $value));
         }
     }
 }

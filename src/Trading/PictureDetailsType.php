@@ -29,18 +29,11 @@ class PictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
     private $galleryType = null;
 
     /**
-     * <span class="tablenote"><b>Note: </b> This field is deprecated and will be removed from WSDL and docs on July 31, 2023. All sellers on all eBay marketplaces now get all picture features and functionality (like Super Size/Zoom) at no extra cost, so this field is no longer required to be included in Add/Revise/Relist request payloads.
-     *  <br><br>
-     *  If this field is passed in now, it does not have an effect. If this field is passed in after the decommission date, a generic warning message will be returned that indicates that the element is not recognized.
-     *  <br><br>
-     *  After decommission date, this field will stop being displayed in <b>GetBidderList</b> and <b>GetItem</b> responses.
-     *  </span>
-     *  <br>
-     *  Specifies the type of image display to use in a listing.
+     * This field shows the URL for the gallery image of an item returned in <b>GetMyeBayBuying</b><br/> and <b>GetMyeBaySelling</b>.<br/>
      *
-     * @var string $photoDisplay
+     * @var string $galleryURL
      */
-    private $photoDisplay = null;
+    private $galleryURL = null;
 
     /**
      * Contains the URL for a picture of the item.
@@ -178,42 +171,28 @@ class PictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
     }
 
     /**
-     * Gets as photoDisplay
+     * Gets as galleryURL
      *
-     * <span class="tablenote"><b>Note: </b> This field is deprecated and will be removed from WSDL and docs on July 31, 2023. All sellers on all eBay marketplaces now get all picture features and functionality (like Super Size/Zoom) at no extra cost, so this field is no longer required to be included in Add/Revise/Relist request payloads.
-     *  <br><br>
-     *  If this field is passed in now, it does not have an effect. If this field is passed in after the decommission date, a generic warning message will be returned that indicates that the element is not recognized.
-     *  <br><br>
-     *  After decommission date, this field will stop being displayed in <b>GetBidderList</b> and <b>GetItem</b> responses.
-     *  </span>
-     *  <br>
-     *  Specifies the type of image display to use in a listing.
+     * This field shows the URL for the gallery image of an item returned in <b>GetMyeBayBuying</b><br/> and <b>GetMyeBaySelling</b>.<br/>
      *
      * @return string
      */
-    public function getPhotoDisplay()
+    public function getGalleryURL()
     {
-        return $this->photoDisplay;
+        return $this->galleryURL;
     }
 
     /**
-     * Sets a new photoDisplay
+     * Sets a new galleryURL
      *
-     * <span class="tablenote"><b>Note: </b> This field is deprecated and will be removed from WSDL and docs on July 31, 2023. All sellers on all eBay marketplaces now get all picture features and functionality (like Super Size/Zoom) at no extra cost, so this field is no longer required to be included in Add/Revise/Relist request payloads.
-     *  <br><br>
-     *  If this field is passed in now, it does not have an effect. If this field is passed in after the decommission date, a generic warning message will be returned that indicates that the element is not recognized.
-     *  <br><br>
-     *  After decommission date, this field will stop being displayed in <b>GetBidderList</b> and <b>GetItem</b> responses.
-     *  </span>
-     *  <br>
-     *  Specifies the type of image display to use in a listing.
+     * This field shows the URL for the gallery image of an item returned in <b>GetMyeBayBuying</b><br/> and <b>GetMyeBaySelling</b>.<br/>
      *
-     * @param string $photoDisplay
+     * @param string $galleryURL
      * @return self
      */
-    public function setPhotoDisplay($photoDisplay)
+    public function setGalleryURL($galleryURL)
     {
-        $this->photoDisplay = $photoDisplay;
+        $this->galleryURL = $galleryURL;
         return $this;
     }
 
@@ -698,15 +677,13 @@ class PictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}GalleryType", $value);
         }
-        $value = $this->getPhotoDisplay();
+        $value = $this->getGalleryURL();
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PhotoDisplay", $value);
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}GalleryURL", $value);
         }
         $value = $this->getPictureURL();
         if (null !== $value && !empty($this->getPictureURL())) {
-            $writer->write(array_map(function ($v) {
-                return ["PictureURL" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["PictureURL" => $v];}, $value));
         }
         $value = $this->getPictureSource();
         if (null !== $value) {
@@ -722,15 +699,11 @@ class PictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
         }
         $value = $this->getExternalPictureURL();
         if (null !== $value && !empty($this->getExternalPictureURL())) {
-            $writer->write(array_map(function ($v) {
-                return ["ExternalPictureURL" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["ExternalPictureURL" => $v];}, $value));
         }
         $value = $this->getExtendedPictureDetails();
         if (null !== $value && !empty($this->getExtendedPictureDetails())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ExtendedPictureDetails", array_map(function ($v) {
-                return ["PictureURLs" => $v];
-            }, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ExtendedPictureDetails", array_map(function ($v) {return ["PictureURLs" => $v];}, $value));
         }
     }
 
@@ -752,9 +725,9 @@ class PictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
         if (null !== $value) {
             $this->setGalleryType($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PhotoDisplay');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}GalleryURL');
         if (null !== $value) {
-            $this->setPhotoDisplay($value);
+            $this->setGalleryURL($value);
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PictureURL', true);
         if (null !== $value && !empty($value)) {
@@ -778,9 +751,7 @@ class PictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExtendedPictureDetails', true);
         if (null !== $value && !empty($value)) {
-            $this->setExtendedPictureDetails(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\PictureURLsType::fromKeyValue($v);
-            }, $value));
+            $this->setExtendedPictureDetails(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\PictureURLsType::fromKeyValue($v);}, $value));
         }
     }
 }

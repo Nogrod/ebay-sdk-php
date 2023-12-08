@@ -92,9 +92,7 @@ class RefundFundingSourceArrayType implements \Sabre\Xml\XmlSerializable, \Sabre
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getRefundFundingSource();
         if (null !== $value && !empty($this->getRefundFundingSource())) {
-            $writer->write(array_map(function ($v) {
-                return ["RefundFundingSource" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["RefundFundingSource" => $v];}, $value));
         }
     }
 
@@ -114,9 +112,7 @@ class RefundFundingSourceArrayType implements \Sabre\Xml\XmlSerializable, \Sabre
     {
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RefundFundingSource', true);
         if (null !== $value && !empty($value)) {
-            $this->setRefundFundingSource(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\RefundFundingSourceType::fromKeyValue($v);
-            }, $value));
+            $this->setRefundFundingSource(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\RefundFundingSourceType::fromKeyValue($v);}, $value));
         }
     }
 }

@@ -166,9 +166,7 @@ class PictureManagerFolderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
         }
         $value = $this->getPicture();
         if (null !== $value && !empty($this->getPicture())) {
-            $writer->write(array_map(function ($v) {
-                return ["Picture" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["Picture" => $v];}, $value));
         }
     }
 
@@ -196,9 +194,7 @@ class PictureManagerFolderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Picture', true);
         if (null !== $value && !empty($value)) {
-            $this->setPicture(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\PictureManagerPictureType::fromKeyValue($v);
-            }, $value));
+            $this->setPicture(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\PictureManagerPictureType::fromKeyValue($v);}, $value));
         }
     }
 }

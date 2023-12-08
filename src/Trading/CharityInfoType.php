@@ -962,9 +962,7 @@ class CharityInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
         }
         $value = $this->getCharityDomain();
         if (null !== $value && !empty($this->getCharityDomain())) {
-            $writer->write(array_map(function ($v) {
-                return ["CharityDomain" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["CharityDomain" => $v];}, $value));
         }
         $value = $this->getCharityID();
         if (null !== $value) {
@@ -1007,15 +1005,11 @@ class CharityInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
         }
         $value = $this->getNonProfitAddress();
         if (null !== $value && !empty($this->getNonProfitAddress())) {
-            $writer->write(array_map(function ($v) {
-                return ["NonProfitAddress" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["NonProfitAddress" => $v];}, $value));
         }
         $value = $this->getNonProfitSocialAddress();
         if (null !== $value && !empty($this->getNonProfitSocialAddress())) {
-            $writer->write(array_map(function ($v) {
-                return ["NonProfitSocialAddress" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["NonProfitSocialAddress" => $v];}, $value));
         }
     }
 
@@ -1111,15 +1105,11 @@ class CharityInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}NonProfitAddress', true);
         if (null !== $value && !empty($value)) {
-            $this->setNonProfitAddress(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\NonProfitAddressType::fromKeyValue($v);
-            }, $value));
+            $this->setNonProfitAddress(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\NonProfitAddressType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}NonProfitSocialAddress', true);
         if (null !== $value && !empty($value)) {
-            $this->setNonProfitSocialAddress(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\NonProfitSocialAddressType::fromKeyValue($v);
-            }, $value));
+            $this->setNonProfitSocialAddress(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\NonProfitSocialAddressType::fromKeyValue($v);}, $value));
         }
     }
 }

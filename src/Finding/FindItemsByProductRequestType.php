@@ -319,15 +319,11 @@ class FindItemsByProductRequestType extends BaseFindingServiceRequestType
         }
         $value = $this->getItemFilter();
         if (null !== $value && !empty($this->getItemFilter())) {
-            $writer->write(array_map(function ($v) {
-                return ["itemFilter" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["itemFilter" => $v];}, $value));
         }
         $value = $this->getOutputSelector();
         if (null !== $value && !empty($this->getOutputSelector())) {
-            $writer->write(array_map(function ($v) {
-                return ["outputSelector" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["outputSelector" => $v];}, $value));
         }
     }
 
@@ -352,9 +348,7 @@ class FindItemsByProductRequestType extends BaseFindingServiceRequestType
         }
         $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}itemFilter', true);
         if (null !== $value && !empty($value)) {
-            $this->setItemFilter(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Finding\ItemFilterType::fromKeyValue($v);
-            }, $value));
+            $this->setItemFilter(array_map(function ($v) {return \Nogrod\eBaySDK\Finding\ItemFilterType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}outputSelector', true);
         if (null !== $value && !empty($value)) {

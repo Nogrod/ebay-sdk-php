@@ -167,9 +167,7 @@ class ProductFamilyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
         }
         $value = $this->getFamilyMembers();
         if (null !== $value && !empty($this->getFamilyMembers())) {
-            $writer->write(array_map(function ($v) {
-                return ["FamilyMembers" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["FamilyMembers" => $v];}, $value));
         }
     }
 
@@ -193,9 +191,7 @@ class ProductFamilyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FamilyMembers', true);
         if (null !== $value && !empty($value)) {
-            $this->setFamilyMembers(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\ProductType::fromKeyValue($v);
-            }, $value));
+            $this->setFamilyMembers(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\ProductType::fromKeyValue($v);}, $value));
         }
     }
 }

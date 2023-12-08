@@ -69,14 +69,6 @@ class MyMessagesMessageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
     private $externalMessageID = null;
 
     /**
-     * Content type of the body text. The three acceptable values
-     *  are "TEXT", "HTML", and "XML" (Note: This is case sensitive).
-     *
-     * @var string $contentType
-     */
-    private $contentType = null;
-
-    /**
      * Contains the message content, and
      *  can contain a threaded message.
      *  This field can contain plain text or HTML,
@@ -141,14 +133,6 @@ class MyMessagesMessageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
      * @var \Nogrod\eBaySDK\Trading\MyMessagesResponseDetailsType $responseDetails
      */
     private $responseDetails = null;
-
-    /**
-     * Details relating to the forwarding of a
-     *  message. Only returned if the message is forwarded.
-     *
-     * @var \Nogrod\eBaySDK\Trading\MyMessagesForwardDetailsType $forwardDetails
-     */
-    private $forwardDetails = null;
 
     /**
      * Details relating to a My Messages folder.
@@ -421,34 +405,6 @@ class MyMessagesMessageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
     }
 
     /**
-     * Gets as contentType
-     *
-     * Content type of the body text. The three acceptable values
-     *  are "TEXT", "HTML", and "XML" (Note: This is case sensitive).
-     *
-     * @return string
-     */
-    public function getContentType()
-    {
-        return $this->contentType;
-    }
-
-    /**
-     * Sets a new contentType
-     *
-     * Content type of the body text. The three acceptable values
-     *  are "TEXT", "HTML", and "XML" (Note: This is case sensitive).
-     *
-     * @param string $contentType
-     * @return self
-     */
-    public function setContentType($contentType)
-    {
-        $this->contentType = $contentType;
-        return $this;
-    }
-
-    /**
      * Gets as text
      *
      * Contains the message content, and
@@ -673,34 +629,6 @@ class MyMessagesMessageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
     public function setResponseDetails(\Nogrod\eBaySDK\Trading\MyMessagesResponseDetailsType $responseDetails)
     {
         $this->responseDetails = $responseDetails;
-        return $this;
-    }
-
-    /**
-     * Gets as forwardDetails
-     *
-     * Details relating to the forwarding of a
-     *  message. Only returned if the message is forwarded.
-     *
-     * @return \Nogrod\eBaySDK\Trading\MyMessagesForwardDetailsType
-     */
-    public function getForwardDetails()
-    {
-        return $this->forwardDetails;
-    }
-
-    /**
-     * Sets a new forwardDetails
-     *
-     * Details relating to the forwarding of a
-     *  message. Only returned if the message is forwarded.
-     *
-     * @param \Nogrod\eBaySDK\Trading\MyMessagesForwardDetailsType $forwardDetails
-     * @return self
-     */
-    public function setForwardDetails(\Nogrod\eBaySDK\Trading\MyMessagesForwardDetailsType $forwardDetails)
-    {
-        $this->forwardDetails = $forwardDetails;
         return $this;
     }
 
@@ -1067,10 +995,6 @@ class MyMessagesMessageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ExternalMessageID", $value);
         }
-        $value = $this->getContentType();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ContentType", $value);
-        }
         $value = $this->getText();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Text", $value);
@@ -1104,10 +1028,6 @@ class MyMessagesMessageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
         $value = $this->getResponseDetails();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ResponseDetails", $value);
-        }
-        $value = $this->getForwardDetails();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ForwardDetails", $value);
         }
         $value = $this->getFolder();
         if (null !== $value) {
@@ -1149,9 +1069,7 @@ class MyMessagesMessageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
         }
         $value = $this->getMessageMedia();
         if (null !== $value && !empty($this->getMessageMedia())) {
-            $writer->write(array_map(function ($v) {
-                return ["MessageMedia" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["MessageMedia" => $v];}, $value));
         }
     }
 
@@ -1193,10 +1111,6 @@ class MyMessagesMessageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
         if (null !== $value) {
             $this->setExternalMessageID($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ContentType');
-        if (null !== $value) {
-            $this->setContentType($value);
-        }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Text');
         if (null !== $value) {
             $this->setText($value);
@@ -1228,10 +1142,6 @@ class MyMessagesMessageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ResponseDetails');
         if (null !== $value) {
             $this->setResponseDetails(\Nogrod\eBaySDK\Trading\MyMessagesResponseDetailsType::fromKeyValue($value));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ForwardDetails');
-        if (null !== $value) {
-            $this->setForwardDetails(\Nogrod\eBaySDK\Trading\MyMessagesForwardDetailsType::fromKeyValue($value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Folder');
         if (null !== $value) {
@@ -1271,9 +1181,7 @@ class MyMessagesMessageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MessageMedia', true);
         if (null !== $value && !empty($value)) {
-            $this->setMessageMedia(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\MessageMediaType::fromKeyValue($v);
-            }, $value));
+            $this->setMessageMedia(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\MessageMediaType::fromKeyValue($v);}, $value));
         }
     }
 }

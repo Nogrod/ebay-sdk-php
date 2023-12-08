@@ -484,13 +484,6 @@ class SimpleItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
     /**
      * This field is deprecated.
      *
-     * @var string $halfItemCondition
-     */
-    private $halfItemCondition = null;
-
-    /**
-     * This field is deprecated.
-     *
      * @var string $sellerComments
      */
     private $sellerComments = null;
@@ -2559,32 +2552,6 @@ class SimpleItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
     }
 
     /**
-     * Gets as halfItemCondition
-     *
-     * This field is deprecated.
-     *
-     * @return string
-     */
-    public function getHalfItemCondition()
-    {
-        return $this->halfItemCondition;
-    }
-
-    /**
-     * Sets a new halfItemCondition
-     *
-     * This field is deprecated.
-     *
-     * @param string $halfItemCondition
-     * @return self
-     */
-    public function setHalfItemCondition($halfItemCondition)
-    {
-        $this->halfItemCondition = $halfItemCondition;
-        return $this;
-    }
-
-    /**
      * Gets as sellerComments
      *
      * This field is deprecated.
@@ -3872,9 +3839,7 @@ class SimpleItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
         }
         $value = $this->getPaymentMethods();
         if (null !== $value && !empty($this->getPaymentMethods())) {
-            $writer->write(array_map(function ($v) {
-                return ["PaymentMethods" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["PaymentMethods" => $v];}, $value));
         }
         $value = $this->getGalleryURL();
         if (null !== $value) {
@@ -3882,9 +3847,7 @@ class SimpleItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
         }
         $value = $this->getPictureURL();
         if (null !== $value && !empty($this->getPictureURL())) {
-            $writer->write(array_map(function ($v) {
-                return ["PictureURL" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["PictureURL" => $v];}, $value));
         }
         $value = $this->getPostalCode();
         if (null !== $value) {
@@ -3937,9 +3900,7 @@ class SimpleItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
         }
         $value = $this->getShipToLocations();
         if (null !== $value && !empty($this->getShipToLocations())) {
-            $writer->write(array_map(function ($v) {
-                return ["ShipToLocations" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["ShipToLocations" => $v];}, $value));
         }
         $value = $this->getSite();
         if (null !== $value) {
@@ -3959,9 +3920,7 @@ class SimpleItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
         }
         $value = $this->getItemSpecifics();
         if (null !== $value && !empty($this->getItemSpecifics())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ItemSpecifics", array_map(function ($v) {
-                return ["NameValueList" => $v];
-            }, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ItemSpecifics", array_map(function ($v) {return ["NameValueList" => $v];}, $value));
         }
         $value = $this->getHitCount();
         if (null !== $value) {
@@ -4032,10 +3991,6 @@ class SimpleItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}WatchCount", $value);
         }
-        $value = $this->getHalfItemCondition();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}HalfItemCondition", $value);
-        }
         $value = $this->getSellerComments();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SellerComments", $value);
@@ -4063,9 +4018,7 @@ class SimpleItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
         }
         $value = $this->getPaymentAllowedSite();
         if (null !== $value && !empty($this->getPaymentAllowedSite())) {
-            $writer->write(array_map(function ($v) {
-                return ["PaymentAllowedSite" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["PaymentAllowedSite" => $v];}, $value));
         }
         $value = $this->getIntegratedMerchantCreditCardEnabled();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;
@@ -4106,9 +4059,7 @@ class SimpleItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
         }
         $value = $this->getExcludeShipToLocation();
         if (null !== $value && !empty($this->getExcludeShipToLocation())) {
-            $writer->write(array_map(function ($v) {
-                return ["ExcludeShipToLocation" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["ExcludeShipToLocation" => $v];}, $value));
         }
         $value = $this->getTopRatedListing();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;
@@ -4147,9 +4098,7 @@ class SimpleItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
         }
         $value = $this->getItemCompatibilityList();
         if (null !== $value && !empty($this->getItemCompatibilityList())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ItemCompatibilityList", array_map(function ($v) {
-                return ["Compatibility" => $v];
-            }, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ItemCompatibilityList", array_map(function ($v) {return ["Compatibility" => $v];}, $value));
         }
         $value = $this->getQuantitySoldByPickupInStore();
         if (null !== $value) {
@@ -4331,9 +4280,7 @@ class SimpleItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemSpecifics', true);
         if (null !== $value && !empty($value)) {
-            $this->setItemSpecifics(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Shopping\NameValueListType::fromKeyValue($v);
-            }, $value));
+            $this->setItemSpecifics(array_map(function ($v) {return \Nogrod\eBaySDK\Shopping\NameValueListType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}HitCount');
         if (null !== $value) {
@@ -4398,10 +4345,6 @@ class SimpleItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}WatchCount');
         if (null !== $value) {
             $this->setWatchCount($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}HalfItemCondition');
-        if (null !== $value) {
-            $this->setHalfItemCondition($value);
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerComments');
         if (null !== $value) {
@@ -4505,9 +4448,7 @@ class SimpleItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemCompatibilityList', true);
         if (null !== $value && !empty($value)) {
-            $this->setItemCompatibilityList(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Shopping\ItemCompatibilityType::fromKeyValue($v);
-            }, $value));
+            $this->setItemCompatibilityList(array_map(function ($v) {return \Nogrod\eBaySDK\Shopping\ItemCompatibilityType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}QuantitySoldByPickupInStore');
         if (null !== $value) {

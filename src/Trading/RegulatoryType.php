@@ -14,8 +14,7 @@ use Nogrod\XMLClientRuntime\Func;
 class RegulatoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
     /**
-     * <span class="tablenote"><b>Note: </b> This container is currently available only on the German (DE) marketplace.</span>
-     *  This container provides information about the energy efficiency for certain durable goods.<br />
+     * This container provides information about the energy efficiency for certain durable goods.<br />
      *  <span class="tablenote"><b>Note: </b> As a part of Digital Services Act (DSA) requirements, all sellers who list products in Germany (DE) must provide Energy Efficiency Label information and Product Information Sheets for listings for certain durable goods.</span>
      *
      * @var \Nogrod\eBaySDK\Trading\EnergyEfficiencyType $energyEfficiencyLabel
@@ -23,16 +22,14 @@ class RegulatoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
     private $energyEfficiencyLabel = null;
 
     /**
-     * <span class="tablenote"><b>Note: </b> This container is currently available only on the German (DE) marketplace.</span>
-     *  This container is used by the seller to provide hazardous material information for the listing. Three elements are required to complete the Hazmat section of a listing: <b>Pictograms</b>, <b>SignalWord</b>, and <b>Statements</b>. The fourth element, <b>Component</b>, is optional. For more information, see <a href=" /api-docs/sell/static/metadata/feature-regulatorhazmatcontainer.html" target="_blank">Specifying hazardous material related information</a>.
+     * This container is used by the seller to provide hazardous material information for the listing. Three elements are required to complete the Hazmat section of a listing: <b>Pictograms</b>, <b>SignalWord</b>, and <b>Statements</b>. The fourth element, <b>Component</b>, is optional. For more information, see <a href=" /api-docs/sell/static/metadata/feature-regulatorhazmatcontainer.html" target="_blank">Specifying hazardous material related information</a>.
      *
      * @var \Nogrod\eBaySDK\Trading\HazmatType $hazmat
      */
     private $hazmat = null;
 
     /**
-     * <span class="tablenote"><b>Note: </b> For future use.</span>
-     *  This field represents the repair index for the listing.<br>The repair index identifies the manufacturer's repair score for a product (how easy is it to repair the product). This field is a floating point value between 0 and 10 but may only have one digit beyond the decimal point, for example: <code>7.9</code><br>
+     * This field represents the repair index for the listing.<br>The repair index identifies the manufacturer's repair score for a product (how easy is it to repair the product). This field is a floating point value between 0 and 10 but may only have one digit beyond the decimal point, for example: <code>7.9</code><br>
      *
      * @var float $repairScore
      */
@@ -41,8 +38,7 @@ class RegulatoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
     /**
      * Gets as energyEfficiencyLabel
      *
-     * <span class="tablenote"><b>Note: </b> This container is currently available only on the German (DE) marketplace.</span>
-     *  This container provides information about the energy efficiency for certain durable goods.<br />
+     * This container provides information about the energy efficiency for certain durable goods.<br />
      *  <span class="tablenote"><b>Note: </b> As a part of Digital Services Act (DSA) requirements, all sellers who list products in Germany (DE) must provide Energy Efficiency Label information and Product Information Sheets for listings for certain durable goods.</span>
      *
      * @return \Nogrod\eBaySDK\Trading\EnergyEfficiencyType
@@ -55,8 +51,7 @@ class RegulatoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
     /**
      * Sets a new energyEfficiencyLabel
      *
-     * <span class="tablenote"><b>Note: </b> This container is currently available only on the German (DE) marketplace.</span>
-     *  This container provides information about the energy efficiency for certain durable goods.<br />
+     * This container provides information about the energy efficiency for certain durable goods.<br />
      *  <span class="tablenote"><b>Note: </b> As a part of Digital Services Act (DSA) requirements, all sellers who list products in Germany (DE) must provide Energy Efficiency Label information and Product Information Sheets for listings for certain durable goods.</span>
      *
      * @param \Nogrod\eBaySDK\Trading\EnergyEfficiencyType $energyEfficiencyLabel
@@ -71,8 +66,7 @@ class RegulatoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
     /**
      * Gets as hazmat
      *
-     * <span class="tablenote"><b>Note: </b> This container is currently available only on the German (DE) marketplace.</span>
-     *  This container is used by the seller to provide hazardous material information for the listing. Three elements are required to complete the Hazmat section of a listing: <b>Pictograms</b>, <b>SignalWord</b>, and <b>Statements</b>. The fourth element, <b>Component</b>, is optional. For more information, see <a href=" /api-docs/sell/static/metadata/feature-regulatorhazmatcontainer.html" target="_blank">Specifying hazardous material related information</a>.
+     * This container is used by the seller to provide hazardous material information for the listing. Three elements are required to complete the Hazmat section of a listing: <b>Pictograms</b>, <b>SignalWord</b>, and <b>Statements</b>. The fourth element, <b>Component</b>, is optional. For more information, see <a href=" /api-docs/sell/static/metadata/feature-regulatorhazmatcontainer.html" target="_blank">Specifying hazardous material related information</a>.
      *
      * @return \Nogrod\eBaySDK\Trading\HazmatType
      */
@@ -84,8 +78,7 @@ class RegulatoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
     /**
      * Sets a new hazmat
      *
-     * <span class="tablenote"><b>Note: </b> This container is currently available only on the German (DE) marketplace.</span>
-     *  This container is used by the seller to provide hazardous material information for the listing. Three elements are required to complete the Hazmat section of a listing: <b>Pictograms</b>, <b>SignalWord</b>, and <b>Statements</b>. The fourth element, <b>Component</b>, is optional. For more information, see <a href=" /api-docs/sell/static/metadata/feature-regulatorhazmatcontainer.html" target="_blank">Specifying hazardous material related information</a>.
+     * This container is used by the seller to provide hazardous material information for the listing. Three elements are required to complete the Hazmat section of a listing: <b>Pictograms</b>, <b>SignalWord</b>, and <b>Statements</b>. The fourth element, <b>Component</b>, is optional. For more information, see <a href=" /api-docs/sell/static/metadata/feature-regulatorhazmatcontainer.html" target="_blank">Specifying hazardous material related information</a>.
      *
      * @param \Nogrod\eBaySDK\Trading\HazmatType $hazmat
      * @return self
@@ -99,8 +92,7 @@ class RegulatoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
     /**
      * Gets as repairScore
      *
-     * <span class="tablenote"><b>Note: </b> For future use.</span>
-     *  This field represents the repair index for the listing.<br>The repair index identifies the manufacturer's repair score for a product (how easy is it to repair the product). This field is a floating point value between 0 and 10 but may only have one digit beyond the decimal point, for example: <code>7.9</code><br>
+     * This field represents the repair index for the listing.<br>The repair index identifies the manufacturer's repair score for a product (how easy is it to repair the product). This field is a floating point value between 0 and 10 but may only have one digit beyond the decimal point, for example: <code>7.9</code><br>
      *
      * @return float
      */
@@ -112,8 +104,7 @@ class RegulatoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
     /**
      * Sets a new repairScore
      *
-     * <span class="tablenote"><b>Note: </b> For future use.</span>
-     *  This field represents the repair index for the listing.<br>The repair index identifies the manufacturer's repair score for a product (how easy is it to repair the product). This field is a floating point value between 0 and 10 but may only have one digit beyond the decimal point, for example: <code>7.9</code><br>
+     * This field represents the repair index for the listing.<br>The repair index identifies the manufacturer's repair score for a product (how easy is it to repair the product). This field is a floating point value between 0 and 10 but may only have one digit beyond the decimal point, for example: <code>7.9</code><br>
      *
      * @param float $repairScore
      * @return self

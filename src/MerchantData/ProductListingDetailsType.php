@@ -822,9 +822,7 @@ class ProductListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
         }
         $value = $this->getCopyright();
         if (null !== $value && !empty($this->getCopyright())) {
-            $writer->write(array_map(function ($v) {
-                return ["Copyright" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["Copyright" => $v];}, $value));
         }
         $value = $this->getProductReferenceID();
         if (null !== $value) {
@@ -875,9 +873,7 @@ class ProductListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
         }
         $value = $this->getNameValueList();
         if (null !== $value && !empty($this->getNameValueList())) {
-            $writer->write(array_map(function ($v) {
-                return ["NameValueList" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["NameValueList" => $v];}, $value));
         }
     }
 
@@ -957,9 +953,7 @@ class ProductListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}NameValueList', true);
         if (null !== $value && !empty($value)) {
-            $this->setNameValueList(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\NameValueListType::fromKeyValue($v);
-            }, $value));
+            $this->setNameValueList(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\NameValueListType::fromKeyValue($v);}, $value));
         }
     }
 }

@@ -181,9 +181,7 @@ class GetUserProfileResponseType extends AbstractResponseType
         }
         $value = $this->getFeedbackDetails();
         if (null !== $value && !empty($this->getFeedbackDetails())) {
-            $writer->write(array_map(function ($v) {
-                return ["FeedbackDetails" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["FeedbackDetails" => $v];}, $value));
         }
     }
 
@@ -212,9 +210,7 @@ class GetUserProfileResponseType extends AbstractResponseType
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeedbackDetails', true);
         if (null !== $value && !empty($value)) {
-            $this->setFeedbackDetails(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Shopping\FeedbackDetailType::fromKeyValue($v);
-            }, $value));
+            $this->setFeedbackDetails(array_map(function ($v) {return \Nogrod\eBaySDK\Shopping\FeedbackDetailType::fromKeyValue($v);}, $value));
         }
     }
 }

@@ -457,9 +457,7 @@ class SetUserNotesRequestType extends AbstractRequestType
         }
         $value = $this->getVariationSpecifics();
         if (null !== $value && !empty($this->getVariationSpecifics())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}VariationSpecifics", array_map(function ($v) {
-                return ["NameValueList" => $v];
-            }, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}VariationSpecifics", array_map(function ($v) {return ["NameValueList" => $v];}, $value));
         }
         $value = $this->getSKU();
         if (null !== $value) {
@@ -504,9 +502,7 @@ class SetUserNotesRequestType extends AbstractRequestType
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}VariationSpecifics', true);
         if (null !== $value && !empty($value)) {
-            $this->setVariationSpecifics(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\NameValueListType::fromKeyValue($v);
-            }, $value));
+            $this->setVariationSpecifics(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\NameValueListType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SKU');
         if (null !== $value) {

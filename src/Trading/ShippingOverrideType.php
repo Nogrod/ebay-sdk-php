@@ -123,9 +123,7 @@ class ShippingOverrideType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getShippingServiceCostOverrideList();
         if (null !== $value && !empty($this->getShippingServiceCostOverrideList())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippingServiceCostOverrideList", array_map(function ($v) {
-                return ["ShippingServiceCostOverride" => $v];
-            }, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippingServiceCostOverrideList", array_map(function ($v) {return ["ShippingServiceCostOverride" => $v];}, $value));
         }
         $value = $this->getDispatchTimeMaxOverride();
         if (null !== $value) {
@@ -149,9 +147,7 @@ class ShippingOverrideType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
     {
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingServiceCostOverrideList', true);
         if (null !== $value && !empty($value)) {
-            $this->setShippingServiceCostOverrideList(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\ShippingServiceCostOverrideType::fromKeyValue($v);
-            }, $value));
+            $this->setShippingServiceCostOverrideList(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\ShippingServiceCostOverrideType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DispatchTimeMaxOverride');
         if (null !== $value) {

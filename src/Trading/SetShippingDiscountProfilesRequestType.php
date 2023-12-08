@@ -72,20 +72,6 @@ class SetShippingDiscountProfilesRequestType extends AbstractRequestType
     private $promotionalShippingDiscountDetails = null;
 
     /**
-     * This field is no longer applicable as it is not longer possible for a seller to offer a buyer shipping insurance.
-     *
-     * @var \Nogrod\eBaySDK\Trading\ShippingInsuranceType $shippingInsurance
-     */
-    private $shippingInsurance = null;
-
-    /**
-     * This field is no longer applicable as it is not longer possible for a seller to offer a buyer shipping insurance.
-     *
-     * @var \Nogrod\eBaySDK\Trading\ShippingInsuranceType $internationalShippingInsurance
-     */
-    private $internationalShippingInsurance = null;
-
-    /**
      * Gets as currencyID
      *
      * The three-digit code of the currency to be used for shipping discounts on Combined Invoice orders. A discount profile can only be associated with a listing if the <b>CurrencyID</b> value of the profile matches the <b>Item.Currency</b> value specified in a listing. This field is required if the user is adding or updating one or more shipping discount profiles.
@@ -279,58 +265,6 @@ class SetShippingDiscountProfilesRequestType extends AbstractRequestType
         return $this;
     }
 
-    /**
-     * Gets as shippingInsurance
-     *
-     * This field is no longer applicable as it is not longer possible for a seller to offer a buyer shipping insurance.
-     *
-     * @return \Nogrod\eBaySDK\Trading\ShippingInsuranceType
-     */
-    public function getShippingInsurance()
-    {
-        return $this->shippingInsurance;
-    }
-
-    /**
-     * Sets a new shippingInsurance
-     *
-     * This field is no longer applicable as it is not longer possible for a seller to offer a buyer shipping insurance.
-     *
-     * @param \Nogrod\eBaySDK\Trading\ShippingInsuranceType $shippingInsurance
-     * @return self
-     */
-    public function setShippingInsurance(\Nogrod\eBaySDK\Trading\ShippingInsuranceType $shippingInsurance)
-    {
-        $this->shippingInsurance = $shippingInsurance;
-        return $this;
-    }
-
-    /**
-     * Gets as internationalShippingInsurance
-     *
-     * This field is no longer applicable as it is not longer possible for a seller to offer a buyer shipping insurance.
-     *
-     * @return \Nogrod\eBaySDK\Trading\ShippingInsuranceType
-     */
-    public function getInternationalShippingInsurance()
-    {
-        return $this->internationalShippingInsurance;
-    }
-
-    /**
-     * Sets a new internationalShippingInsurance
-     *
-     * This field is no longer applicable as it is not longer possible for a seller to offer a buyer shipping insurance.
-     *
-     * @param \Nogrod\eBaySDK\Trading\ShippingInsuranceType $internationalShippingInsurance
-     * @return self
-     */
-    public function setInternationalShippingInsurance(\Nogrod\eBaySDK\Trading\ShippingInsuranceType $internationalShippingInsurance)
-    {
-        $this->internationalShippingInsurance = $internationalShippingInsurance;
-        return $this;
-    }
-
     public function xmlSerialize(\Sabre\Xml\Writer $writer): void
     {
         parent::xmlSerialize($writer);
@@ -361,14 +295,6 @@ class SetShippingDiscountProfilesRequestType extends AbstractRequestType
         $value = $this->getPromotionalShippingDiscountDetails();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PromotionalShippingDiscountDetails", $value);
-        }
-        $value = $this->getShippingInsurance();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippingInsurance", $value);
-        }
-        $value = $this->getInternationalShippingInsurance();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}InternationalShippingInsurance", $value);
         }
     }
 
@@ -414,14 +340,6 @@ class SetShippingDiscountProfilesRequestType extends AbstractRequestType
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PromotionalShippingDiscountDetails');
         if (null !== $value) {
             $this->setPromotionalShippingDiscountDetails(\Nogrod\eBaySDK\Trading\PromotionalShippingDiscountDetailsType::fromKeyValue($value));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingInsurance');
-        if (null !== $value) {
-            $this->setShippingInsurance(\Nogrod\eBaySDK\Trading\ShippingInsuranceType::fromKeyValue($value));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}InternationalShippingInsurance');
-        if (null !== $value) {
-            $this->setInternationalShippingInsurance(\Nogrod\eBaySDK\Trading\ShippingInsuranceType::fromKeyValue($value));
         }
     }
 }

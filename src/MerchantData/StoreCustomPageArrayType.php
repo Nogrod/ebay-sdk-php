@@ -92,9 +92,7 @@ class StoreCustomPageArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getCustomPage();
         if (null !== $value && !empty($this->getCustomPage())) {
-            $writer->write(array_map(function ($v) {
-                return ["CustomPage" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["CustomPage" => $v];}, $value));
         }
     }
 
@@ -114,9 +112,7 @@ class StoreCustomPageArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
     {
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CustomPage', true);
         if (null !== $value && !empty($value)) {
-            $this->setCustomPage(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\StoreCustomPageType::fromKeyValue($v);
-            }, $value));
+            $this->setCustomPage(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\StoreCustomPageType::fromKeyValue($v);}, $value));
         }
     }
 }

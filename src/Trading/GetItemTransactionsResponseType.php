@@ -414,9 +414,7 @@ class GetItemTransactionsResponseType extends AbstractResponseType
         }
         $value = $this->getTransactionArray();
         if (null !== $value && !empty($this->getTransactionArray())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TransactionArray", array_map(function ($v) {
-                return ["Transaction" => $v];
-            }, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TransactionArray", array_map(function ($v) {return ["Transaction" => $v];}, $value));
         }
         $value = $this->getPayPalPreferred();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;
@@ -466,9 +464,7 @@ class GetItemTransactionsResponseType extends AbstractResponseType
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TransactionArray', true);
         if (null !== $value && !empty($value)) {
-            $this->setTransactionArray(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\TransactionType::fromKeyValue($v);
-            }, $value));
+            $this->setTransactionArray(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\TransactionType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PayPalPreferred');
         if (null !== $value) {

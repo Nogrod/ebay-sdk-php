@@ -23,13 +23,6 @@ class ReviseMyMessagesRequestType extends AbstractRequestType
     private $messageIDs = null;
 
     /**
-     * This field is deprecated.
-     *
-     * @var string[] $alertIDs
-     */
-    private $alertIDs = null;
-
-    /**
      * This boolean field is used to change the 'Read' status of the message(s) in the <b>MessageIDs</b> container. Including this field and setting its value to <code>true</code> will mark all messages in the <b>MessageIDs</b> container as 'Read'. Conversely, including this field and setting its value to <code>false</code> will mark all messages in the <b>MessageIDs</b> container as 'Unread'. The 'Read' status of a message can be retrieved by looking at the <b>Message.Read</b> boolean field of the <b>GetMyMessages</b> call response.
      *  <br>
      *  <br>
@@ -145,72 +138,6 @@ class ReviseMyMessagesRequestType extends AbstractRequestType
     public function setMessageIDs(array $messageIDs)
     {
         $this->messageIDs = $messageIDs;
-        return $this;
-    }
-
-    /**
-     * Adds as alertID
-     *
-     * This field is deprecated.
-     *
-     * @return self
-     * @param string $alertID
-     */
-    public function addToAlertIDs($alertID)
-    {
-        $this->alertIDs[] = $alertID;
-        return $this;
-    }
-
-    /**
-     * isset alertIDs
-     *
-     * This field is deprecated.
-     *
-     * @param int|string $index
-     * @return bool
-     */
-    public function issetAlertIDs($index)
-    {
-        return isset($this->alertIDs[$index]);
-    }
-
-    /**
-     * unset alertIDs
-     *
-     * This field is deprecated.
-     *
-     * @param int|string $index
-     * @return void
-     */
-    public function unsetAlertIDs($index)
-    {
-        unset($this->alertIDs[$index]);
-    }
-
-    /**
-     * Gets as alertIDs
-     *
-     * This field is deprecated.
-     *
-     * @return string[]
-     */
-    public function getAlertIDs()
-    {
-        return $this->alertIDs;
-    }
-
-    /**
-     * Sets a new alertIDs
-     *
-     * This field is deprecated.
-     *
-     * @param string $alertIDs
-     * @return self
-     */
-    public function setAlertIDs(array $alertIDs)
-    {
-        $this->alertIDs = $alertIDs;
         return $this;
     }
 
@@ -331,15 +258,7 @@ class ReviseMyMessagesRequestType extends AbstractRequestType
         parent::xmlSerialize($writer);
         $value = $this->getMessageIDs();
         if (null !== $value && !empty($this->getMessageIDs())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MessageIDs", array_map(function ($v) {
-                return ["MessageID" => $v];
-            }, $value));
-        }
-        $value = $this->getAlertIDs();
-        if (null !== $value && !empty($this->getAlertIDs())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}AlertIDs", array_map(function ($v) {
-                return ["AlertID" => $v];
-            }, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MessageIDs", array_map(function ($v) {return ["MessageID" => $v];}, $value));
         }
         $value = $this->getRead();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;
@@ -375,10 +294,6 @@ class ReviseMyMessagesRequestType extends AbstractRequestType
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MessageIDs', true);
         if (null !== $value && !empty($value)) {
             $this->setMessageIDs($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AlertIDs', true);
-        if (null !== $value && !empty($value)) {
-            $this->setAlertIDs($value);
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Read');
         if (null !== $value) {

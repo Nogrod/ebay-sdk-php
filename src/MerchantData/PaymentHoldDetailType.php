@@ -205,9 +205,7 @@ class PaymentHoldDetailType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
         }
         $value = $this->getRequiredSellerActionArray();
         if (null !== $value && !empty($this->getRequiredSellerActionArray())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}RequiredSellerActionArray", array_map(function ($v) {
-                return ["RequiredSellerAction" => $v];
-            }, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}RequiredSellerActionArray", array_map(function ($v) {return ["RequiredSellerAction" => $v];}, $value));
         }
         $value = $this->getNumOfReqSellerActions();
         if (null !== $value) {

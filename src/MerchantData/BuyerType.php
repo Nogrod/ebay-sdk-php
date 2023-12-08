@@ -177,9 +177,7 @@ class BuyerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
         }
         $value = $this->getBuyerTaxIdentifier();
         if (null !== $value && !empty($this->getBuyerTaxIdentifier())) {
-            $writer->write(array_map(function ($v) {
-                return ["BuyerTaxIdentifier" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["BuyerTaxIdentifier" => $v];}, $value));
         }
     }
 
@@ -203,9 +201,7 @@ class BuyerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BuyerTaxIdentifier', true);
         if (null !== $value && !empty($value)) {
-            $this->setBuyerTaxIdentifier(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\TaxIdentifierType::fromKeyValue($v);
-            }, $value));
+            $this->setBuyerTaxIdentifier(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\TaxIdentifierType::fromKeyValue($v);}, $value));
         }
     }
 }

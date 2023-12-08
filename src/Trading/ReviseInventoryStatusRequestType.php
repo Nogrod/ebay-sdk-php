@@ -95,9 +95,7 @@ class ReviseInventoryStatusRequestType extends AbstractRequestType
         parent::xmlSerialize($writer);
         $value = $this->getInventoryStatus();
         if (null !== $value && !empty($this->getInventoryStatus())) {
-            $writer->write(array_map(function ($v) {
-                return ["InventoryStatus" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["InventoryStatus" => $v];}, $value));
         }
     }
 
@@ -118,9 +116,7 @@ class ReviseInventoryStatusRequestType extends AbstractRequestType
         parent::setKeyValue($keyValue);
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}InventoryStatus', true);
         if (null !== $value && !empty($value)) {
-            $this->setInventoryStatus(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\InventoryStatusType::fromKeyValue($v);
-            }, $value));
+            $this->setInventoryStatus(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\InventoryStatusType::fromKeyValue($v);}, $value));
         }
     }
 }

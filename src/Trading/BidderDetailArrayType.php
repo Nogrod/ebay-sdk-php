@@ -92,9 +92,7 @@ class BidderDetailArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getBidderDetail();
         if (null !== $value && !empty($this->getBidderDetail())) {
-            $writer->write(array_map(function ($v) {
-                return ["BidderDetail" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["BidderDetail" => $v];}, $value));
         }
     }
 
@@ -114,9 +112,7 @@ class BidderDetailArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
     {
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BidderDetail', true);
         if (null !== $value && !empty($value)) {
-            $this->setBidderDetail(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\BidderDetailType::fromKeyValue($v);
-            }, $value));
+            $this->setBidderDetail(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\BidderDetailType::fromKeyValue($v);}, $value));
         }
     }
 }

@@ -200,9 +200,7 @@ class RecommendationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
         }
         $value = $this->getRecommendedValue();
         if (null !== $value && !empty($this->getRecommendedValue())) {
-            $writer->write(array_map(function ($v) {
-                return ["RecommendedValue" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["RecommendedValue" => $v];}, $value));
         }
         $value = $this->getMessage();
         if (null !== $value) {

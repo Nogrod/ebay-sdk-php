@@ -537,9 +537,7 @@ class GetSellerTransactionsRequestType extends AbstractRequestType
         }
         $value = $this->getSKUArray();
         if (null !== $value && !empty($this->getSKUArray())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SKUArray", array_map(function ($v) {
-                return ["SKU" => $v];
-            }, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SKUArray", array_map(function ($v) {return ["SKU" => $v];}, $value));
         }
         $value = $this->getPlatform();
         if (null !== $value) {

@@ -198,9 +198,7 @@ class NotificationUserDataType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
         }
         $value = $this->getSummarySchedule();
         if (null !== $value && !empty($this->getSummarySchedule())) {
-            $writer->write(array_map(function ($v) {
-                return ["SummarySchedule" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["SummarySchedule" => $v];}, $value));
         }
         $value = $this->getExternalUserData();
         if (null !== $value) {
@@ -228,9 +226,7 @@ class NotificationUserDataType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SummarySchedule', true);
         if (null !== $value && !empty($value)) {
-            $this->setSummarySchedule(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\SummaryEventScheduleType::fromKeyValue($v);
-            }, $value));
+            $this->setSummarySchedule(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\SummaryEventScheduleType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExternalUserData');
         if (null !== $value) {

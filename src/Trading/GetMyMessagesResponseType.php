@@ -26,13 +26,6 @@ class GetMyMessagesResponseType extends AbstractResponseType
     private $summary = null;
 
     /**
-     * This container is deprecated.
-     *
-     * @var \Nogrod\eBaySDK\Trading\MyMessagesAlertType[] $alerts
-     */
-    private $alerts = null;
-
-    /**
      * This container consists of an array of one or more messages that match the search criteria in the call request.
      *
      * @var \Nogrod\eBaySDK\Trading\MyMessagesMessageType[] $messages
@@ -70,72 +63,6 @@ class GetMyMessagesResponseType extends AbstractResponseType
     public function setSummary(\Nogrod\eBaySDK\Trading\MyMessagesSummaryType $summary)
     {
         $this->summary = $summary;
-        return $this;
-    }
-
-    /**
-     * Adds as alert
-     *
-     * This container is deprecated.
-     *
-     * @return self
-     * @param \Nogrod\eBaySDK\Trading\MyMessagesAlertType $alert
-     */
-    public function addToAlerts(\Nogrod\eBaySDK\Trading\MyMessagesAlertType $alert)
-    {
-        $this->alerts[] = $alert;
-        return $this;
-    }
-
-    /**
-     * isset alerts
-     *
-     * This container is deprecated.
-     *
-     * @param int|string $index
-     * @return bool
-     */
-    public function issetAlerts($index)
-    {
-        return isset($this->alerts[$index]);
-    }
-
-    /**
-     * unset alerts
-     *
-     * This container is deprecated.
-     *
-     * @param int|string $index
-     * @return void
-     */
-    public function unsetAlerts($index)
-    {
-        unset($this->alerts[$index]);
-    }
-
-    /**
-     * Gets as alerts
-     *
-     * This container is deprecated.
-     *
-     * @return \Nogrod\eBaySDK\Trading\MyMessagesAlertType[]
-     */
-    public function getAlerts()
-    {
-        return $this->alerts;
-    }
-
-    /**
-     * Sets a new alerts
-     *
-     * This container is deprecated.
-     *
-     * @param \Nogrod\eBaySDK\Trading\MyMessagesAlertType[] $alerts
-     * @return self
-     */
-    public function setAlerts(array $alerts)
-    {
-        $this->alerts = $alerts;
         return $this;
     }
 
@@ -212,17 +139,9 @@ class GetMyMessagesResponseType extends AbstractResponseType
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Summary", $value);
         }
-        $value = $this->getAlerts();
-        if (null !== $value && !empty($this->getAlerts())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Alerts", array_map(function ($v) {
-                return ["Alert" => $v];
-            }, $value));
-        }
         $value = $this->getMessages();
         if (null !== $value && !empty($this->getMessages())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Messages", array_map(function ($v) {
-                return ["Message" => $v];
-            }, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Messages", array_map(function ($v) {return ["Message" => $v];}, $value));
         }
     }
 
@@ -245,17 +164,9 @@ class GetMyMessagesResponseType extends AbstractResponseType
         if (null !== $value) {
             $this->setSummary(\Nogrod\eBaySDK\Trading\MyMessagesSummaryType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Alerts', true);
-        if (null !== $value && !empty($value)) {
-            $this->setAlerts(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\MyMessagesAlertType::fromKeyValue($v);
-            }, $value));
-        }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Messages', true);
         if (null !== $value && !empty($value)) {
-            $this->setMessages(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\MyMessagesMessageType::fromKeyValue($v);
-            }, $value));
+            $this->setMessages(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\MyMessagesMessageType::fromKeyValue($v);}, $value));
         }
     }
 }

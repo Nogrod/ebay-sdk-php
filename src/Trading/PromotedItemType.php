@@ -335,9 +335,7 @@ class PromotedItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
         }
         $value = $this->getPromotionDetails();
         if (null !== $value && !empty($this->getPromotionDetails())) {
-            $writer->write(array_map(function ($v) {
-                return ["PromotionDetails" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["PromotionDetails" => $v];}, $value));
         }
         $value = $this->getTimeLeft();
         if (null !== $value) {
@@ -385,9 +383,7 @@ class PromotedItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PromotionDetails', true);
         if (null !== $value && !empty($value)) {
-            $this->setPromotionDetails(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\PromotionDetailsType::fromKeyValue($v);
-            }, $value));
+            $this->setPromotionDetails(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\PromotionDetailsType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TimeLeft');
         if (null !== $value) {

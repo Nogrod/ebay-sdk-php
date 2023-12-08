@@ -177,15 +177,11 @@ class StoreThemeArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getTheme();
         if (null !== $value && !empty($this->getTheme())) {
-            $writer->write(array_map(function ($v) {
-                return ["Theme" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["Theme" => $v];}, $value));
         }
         $value = $this->getGenericColorSchemeArray();
         if (null !== $value && !empty($this->getGenericColorSchemeArray())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}GenericColorSchemeArray", array_map(function ($v) {
-                return ["ColorScheme" => $v];
-            }, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}GenericColorSchemeArray", array_map(function ($v) {return ["ColorScheme" => $v];}, $value));
         }
     }
 
@@ -205,15 +201,11 @@ class StoreThemeArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     {
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Theme', true);
         if (null !== $value && !empty($value)) {
-            $this->setTheme(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\StoreThemeType::fromKeyValue($v);
-            }, $value));
+            $this->setTheme(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\StoreThemeType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}GenericColorSchemeArray', true);
         if (null !== $value && !empty($value)) {
-            $this->setGenericColorSchemeArray(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\StoreColorSchemeType::fromKeyValue($v);
-            }, $value));
+            $this->setGenericColorSchemeArray(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\StoreColorSchemeType::fromKeyValue($v);}, $value));
         }
     }
 }

@@ -615,9 +615,7 @@ class GetOrdersRequestType extends AbstractRequestType
         parent::xmlSerialize($writer);
         $value = $this->getOrderIDArray();
         if (null !== $value && !empty($this->getOrderIDArray())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}OrderIDArray", array_map(function ($v) {
-                return ["OrderID" => $v];
-            }, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}OrderIDArray", array_map(function ($v) {return ["OrderID" => $v];}, $value));
         }
         $value = $this->getCreateTimeFrom();
         if (null !== $value) {

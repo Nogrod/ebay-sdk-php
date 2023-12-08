@@ -29,15 +29,6 @@ class FlatShippingPreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre\
     /**
      * This field is deprecated.
      *
-     * @var \Nogrod\eBaySDK\Trading\FlatRateInsuranceRangeCostType[] $flatRateInsuranceRangeCost
-     */
-    private $flatRateInsuranceRangeCost = [
-
-    ];
-
-    /**
-     * This field is deprecated.
-     *
      * @var string $flatShippingRateOption
      */
     private $flatShippingRateOption = null;
@@ -98,72 +89,6 @@ class FlatShippingPreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre\
     public function setDeductionAmountPerAdditionalItem(\Nogrod\eBaySDK\Trading\AmountType $deductionAmountPerAdditionalItem)
     {
         $this->deductionAmountPerAdditionalItem = $deductionAmountPerAdditionalItem;
-        return $this;
-    }
-
-    /**
-     * Adds as flatRateInsuranceRangeCost
-     *
-     * This field is deprecated.
-     *
-     * @return self
-     * @param \Nogrod\eBaySDK\Trading\FlatRateInsuranceRangeCostType $flatRateInsuranceRangeCost
-     */
-    public function addToFlatRateInsuranceRangeCost(\Nogrod\eBaySDK\Trading\FlatRateInsuranceRangeCostType $flatRateInsuranceRangeCost)
-    {
-        $this->flatRateInsuranceRangeCost[] = $flatRateInsuranceRangeCost;
-        return $this;
-    }
-
-    /**
-     * isset flatRateInsuranceRangeCost
-     *
-     * This field is deprecated.
-     *
-     * @param int|string $index
-     * @return bool
-     */
-    public function issetFlatRateInsuranceRangeCost($index)
-    {
-        return isset($this->flatRateInsuranceRangeCost[$index]);
-    }
-
-    /**
-     * unset flatRateInsuranceRangeCost
-     *
-     * This field is deprecated.
-     *
-     * @param int|string $index
-     * @return void
-     */
-    public function unsetFlatRateInsuranceRangeCost($index)
-    {
-        unset($this->flatRateInsuranceRangeCost[$index]);
-    }
-
-    /**
-     * Gets as flatRateInsuranceRangeCost
-     *
-     * This field is deprecated.
-     *
-     * @return \Nogrod\eBaySDK\Trading\FlatRateInsuranceRangeCostType[]
-     */
-    public function getFlatRateInsuranceRangeCost()
-    {
-        return $this->flatRateInsuranceRangeCost;
-    }
-
-    /**
-     * Sets a new flatRateInsuranceRangeCost
-     *
-     * This field is deprecated.
-     *
-     * @param \Nogrod\eBaySDK\Trading\FlatRateInsuranceRangeCostType[] $flatRateInsuranceRangeCost
-     * @return self
-     */
-    public function setFlatRateInsuranceRangeCost(array $flatRateInsuranceRangeCost)
-    {
-        $this->flatRateInsuranceRangeCost = $flatRateInsuranceRangeCost;
         return $this;
     }
 
@@ -230,12 +155,6 @@ class FlatShippingPreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre\
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DeductionAmountPerAdditionalItem", $value);
         }
-        $value = $this->getFlatRateInsuranceRangeCost();
-        if (null !== $value && !empty($this->getFlatRateInsuranceRangeCost())) {
-            $writer->write(array_map(function ($v) {
-                return ["FlatRateInsuranceRangeCost" => $v];
-            }, $value));
-        }
         $value = $this->getFlatShippingRateOption();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}FlatShippingRateOption", $value);
@@ -267,12 +186,6 @@ class FlatShippingPreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre\
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DeductionAmountPerAdditionalItem');
         if (null !== $value) {
             $this->setDeductionAmountPerAdditionalItem(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FlatRateInsuranceRangeCost', true);
-        if (null !== $value && !empty($value)) {
-            $this->setFlatRateInsuranceRangeCost(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\FlatRateInsuranceRangeCostType::fromKeyValue($v);
-            }, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FlatShippingRateOption');
         if (null !== $value) {

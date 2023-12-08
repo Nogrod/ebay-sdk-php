@@ -92,9 +92,7 @@ class PromotionRuleArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getPromotionRule();
         if (null !== $value && !empty($this->getPromotionRule())) {
-            $writer->write(array_map(function ($v) {
-                return ["PromotionRule" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["PromotionRule" => $v];}, $value));
         }
     }
 
@@ -114,9 +112,7 @@ class PromotionRuleArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     {
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PromotionRule', true);
         if (null !== $value && !empty($value)) {
-            $this->setPromotionRule(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\PromotionRuleType::fromKeyValue($v);
-            }, $value));
+            $this->setPromotionRule(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\PromotionRuleType::fromKeyValue($v);}, $value));
         }
     }
 }

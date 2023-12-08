@@ -92,9 +92,7 @@ class CharacteristicsSetProductHistogramType implements \Sabre\Xml\XmlSerializab
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getHistogramEntry();
         if (null !== $value && !empty($this->getHistogramEntry())) {
-            $writer->write(array_map(function ($v) {
-                return ["HistogramEntry" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["HistogramEntry" => $v];}, $value));
         }
     }
 
@@ -114,9 +112,7 @@ class CharacteristicsSetProductHistogramType implements \Sabre\Xml\XmlSerializab
     {
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}HistogramEntry', true);
         if (null !== $value && !empty($value)) {
-            $this->setHistogramEntry(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\HistogramEntryType::fromKeyValue($v);
-            }, $value));
+            $this->setHistogramEntry(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\HistogramEntryType::fromKeyValue($v);}, $value));
         }
     }
 }

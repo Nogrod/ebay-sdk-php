@@ -125,9 +125,7 @@ class UnitOfMeasurementType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getAlternateText();
         if (null !== $value && !empty($this->getAlternateText())) {
-            $writer->write(array_map(function ($v) {
-                return ["AlternateText" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["AlternateText" => $v];}, $value));
         }
         $value = $this->getSuggestedText();
         if (null !== $value) {

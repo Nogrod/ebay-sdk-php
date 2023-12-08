@@ -92,9 +92,7 @@ class ExternalAlertIDArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getExternalAlertID();
         if (null !== $value && !empty($this->getExternalAlertID())) {
-            $writer->write(array_map(function ($v) {
-                return ["ExternalAlertID" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["ExternalAlertID" => $v];}, $value));
         }
     }
 

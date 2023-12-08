@@ -92,9 +92,7 @@ class AttributeArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getAttribute();
         if (null !== $value && !empty($this->getAttribute())) {
-            $writer->write(array_map(function ($v) {
-                return ["Attribute" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["Attribute" => $v];}, $value));
         }
     }
 
@@ -114,9 +112,7 @@ class AttributeArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
     {
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Attribute', true);
         if (null !== $value && !empty($value)) {
-            $this->setAttribute(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\AttributeType::fromKeyValue($v);
-            }, $value));
+            $this->setAttribute(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\AttributeType::fromKeyValue($v);}, $value));
         }
     }
 }

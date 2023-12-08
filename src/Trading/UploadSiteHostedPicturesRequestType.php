@@ -485,15 +485,11 @@ class UploadSiteHostedPicturesRequestType extends AbstractRequestType
         }
         $value = $this->getExternalPictureURL();
         if (null !== $value && !empty($this->getExternalPictureURL())) {
-            $writer->write(array_map(function ($v) {
-                return ["ExternalPictureURL" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["ExternalPictureURL" => $v];}, $value));
         }
         $value = $this->getPictureWatermark();
         if (null !== $value && !empty($this->getPictureWatermark())) {
-            $writer->write(array_map(function ($v) {
-                return ["PictureWatermark" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["PictureWatermark" => $v];}, $value));
         }
         $value = $this->getExtensionInDays();
         if (null !== $value) {

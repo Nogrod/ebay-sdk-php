@@ -2468,9 +2468,7 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
         }
         $value = $this->getPaymentMethods();
         if (null !== $value && !empty($this->getPaymentMethods())) {
-            $writer->write(array_map(function ($v) {
-                return ["PaymentMethods" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["PaymentMethods" => $v];}, $value));
         }
         $value = $this->getSellerEmail();
         if (null !== $value) {
@@ -2494,15 +2492,11 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
         }
         $value = $this->getExternalTransaction();
         if (null !== $value && !empty($this->getExternalTransaction())) {
-            $writer->write(array_map(function ($v) {
-                return ["ExternalTransaction" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["ExternalTransaction" => $v];}, $value));
         }
         $value = $this->getTransactionArray();
         if (null !== $value && !empty($this->getTransactionArray())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TransactionArray", array_map(function ($v) {
-                return ["Transaction" => $v];
-            }, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TransactionArray", array_map(function ($v) {return ["Transaction" => $v];}, $value));
         }
         $value = $this->getBuyerUserID();
         if (null !== $value) {
@@ -2552,9 +2546,7 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
         }
         $value = $this->getRefundArray();
         if (null !== $value && !empty($this->getRefundArray())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}RefundArray", array_map(function ($v) {
-                return ["Refund" => $v];
-            }, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}RefundArray", array_map(function ($v) {return ["Refund" => $v];}, $value));
         }
         $value = $this->getIsMultiLegShipping();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;
@@ -2571,9 +2563,7 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
         }
         $value = $this->getPickupDetails();
         if (null !== $value && !empty($this->getPickupDetails())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PickupDetails", array_map(function ($v) {
-                return ["PickupOptions" => $v];
-            }, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PickupDetails", array_map(function ($v) {return ["PickupOptions" => $v];}, $value));
         }
         $value = $this->getPickupMethodSelected();
         if (null !== $value) {
@@ -2605,9 +2595,7 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
         }
         $value = $this->getCancelDetail();
         if (null !== $value && !empty($this->getCancelDetail())) {
-            $writer->write(array_map(function ($v) {
-                return ["CancelDetail" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["CancelDetail" => $v];}, $value));
         }
         $value = $this->getLogisticsPlanType();
         if (null !== $value) {
@@ -2615,15 +2603,11 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
         }
         $value = $this->getBuyerTaxIdentifier();
         if (null !== $value && !empty($this->getBuyerTaxIdentifier())) {
-            $writer->write(array_map(function ($v) {
-                return ["BuyerTaxIdentifier" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["BuyerTaxIdentifier" => $v];}, $value));
         }
         $value = $this->getBuyerPackageEnclosures();
         if (null !== $value && !empty($this->getBuyerPackageEnclosures())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BuyerPackageEnclosures", array_map(function ($v) {
-                return ["BuyerPackageEnclosure" => $v];
-            }, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BuyerPackageEnclosures", array_map(function ($v) {return ["BuyerPackageEnclosure" => $v];}, $value));
         }
         $value = $this->getExtendedOrderID();
         if (null !== $value) {
@@ -2721,15 +2705,11 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExternalTransaction', true);
         if (null !== $value && !empty($value)) {
-            $this->setExternalTransaction(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\ExternalTransactionType::fromKeyValue($v);
-            }, $value));
+            $this->setExternalTransaction(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\ExternalTransactionType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TransactionArray', true);
         if (null !== $value && !empty($value)) {
-            $this->setTransactionArray(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\TransactionType::fromKeyValue($v);
-            }, $value));
+            $this->setTransactionArray(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\TransactionType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BuyerUserID');
         if (null !== $value) {
@@ -2777,9 +2757,7 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RefundArray', true);
         if (null !== $value && !empty($value)) {
-            $this->setRefundArray(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\RefundType::fromKeyValue($v);
-            }, $value));
+            $this->setRefundArray(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\RefundType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}IsMultiLegShipping');
         if (null !== $value) {
@@ -2795,9 +2773,7 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PickupDetails', true);
         if (null !== $value && !empty($value)) {
-            $this->setPickupDetails(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\PickupOptionsType::fromKeyValue($v);
-            }, $value));
+            $this->setPickupDetails(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\PickupOptionsType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PickupMethodSelected');
         if (null !== $value) {
@@ -2829,9 +2805,7 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CancelDetail', true);
         if (null !== $value && !empty($value)) {
-            $this->setCancelDetail(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\CancelDetailType::fromKeyValue($v);
-            }, $value));
+            $this->setCancelDetail(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\CancelDetailType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LogisticsPlanType');
         if (null !== $value) {
@@ -2839,15 +2813,11 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BuyerTaxIdentifier', true);
         if (null !== $value && !empty($value)) {
-            $this->setBuyerTaxIdentifier(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\TaxIdentifierType::fromKeyValue($v);
-            }, $value));
+            $this->setBuyerTaxIdentifier(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\TaxIdentifierType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BuyerPackageEnclosures', true);
         if (null !== $value && !empty($value)) {
-            $this->setBuyerPackageEnclosures(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\BuyerPackageEnclosureType::fromKeyValue($v);
-            }, $value));
+            $this->setBuyerPackageEnclosures(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\BuyerPackageEnclosureType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExtendedOrderID');
         if (null !== $value) {

@@ -582,27 +582,19 @@ class FindItemsByKeywordsRequestType extends BaseFindingServiceRequestType
         }
         $value = $this->getItemFilter();
         if (null !== $value && !empty($this->getItemFilter())) {
-            $writer->write(array_map(function ($v) {
-                return ["itemFilter" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["itemFilter" => $v];}, $value));
         }
         $value = $this->getAspectFilter();
         if (null !== $value && !empty($this->getAspectFilter())) {
-            $writer->write(array_map(function ($v) {
-                return ["aspectFilter" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["aspectFilter" => $v];}, $value));
         }
         $value = $this->getOutputSelector();
         if (null !== $value && !empty($this->getOutputSelector())) {
-            $writer->write(array_map(function ($v) {
-                return ["outputSelector" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["outputSelector" => $v];}, $value));
         }
         $value = $this->getDomainFilter();
         if (null !== $value && !empty($this->getDomainFilter())) {
-            $writer->write(array_map(function ($v) {
-                return ["domainFilter" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["domainFilter" => $v];}, $value));
         }
     }
 
@@ -627,15 +619,11 @@ class FindItemsByKeywordsRequestType extends BaseFindingServiceRequestType
         }
         $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}itemFilter', true);
         if (null !== $value && !empty($value)) {
-            $this->setItemFilter(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Finding\ItemFilterType::fromKeyValue($v);
-            }, $value));
+            $this->setItemFilter(array_map(function ($v) {return \Nogrod\eBaySDK\Finding\ItemFilterType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}aspectFilter', true);
         if (null !== $value && !empty($value)) {
-            $this->setAspectFilter(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Finding\AspectFilterType::fromKeyValue($v);
-            }, $value));
+            $this->setAspectFilter(array_map(function ($v) {return \Nogrod\eBaySDK\Finding\AspectFilterType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}outputSelector', true);
         if (null !== $value && !empty($value)) {
@@ -643,9 +631,7 @@ class FindItemsByKeywordsRequestType extends BaseFindingServiceRequestType
         }
         $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}domainFilter', true);
         if (null !== $value && !empty($value)) {
-            $this->setDomainFilter(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Finding\DomainFilterType::fromKeyValue($v);
-            }, $value));
+            $this->setDomainFilter(array_map(function ($v) {return \Nogrod\eBaySDK\Finding\DomainFilterType::fromKeyValue($v);}, $value));
         }
     }
 }

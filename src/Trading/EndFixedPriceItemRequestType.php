@@ -36,7 +36,7 @@ class EndFixedPriceItemRequestType extends AbstractRequestType
      *  <br><br>
      *  In the <b>EndFixedPriceItem</b> request, either <b>ItemID</b> or <b>SKU</b> is required.
      *  If both are passed in and they don't refer to the same listing, eBay
-     *  ignores <b>SKU</b> and considers only the lt;b>ItemID</b>.
+     *  ignores <b>SKU</b> and considers only the <b>ItemID</b>.
      *
      * @var string $sKU
      */
@@ -109,7 +109,7 @@ class EndFixedPriceItemRequestType extends AbstractRequestType
      *  <br><br>
      *  In the <b>EndFixedPriceItem</b> request, either <b>ItemID</b> or <b>SKU</b> is required.
      *  If both are passed in and they don't refer to the same listing, eBay
-     *  ignores <b>SKU</b> and considers only the lt;b>ItemID</b>.
+     *  ignores <b>SKU</b> and considers only the <b>ItemID</b>.
      *
      * @return string
      */
@@ -125,7 +125,7 @@ class EndFixedPriceItemRequestType extends AbstractRequestType
      *  <br><br>
      *  In the <b>EndFixedPriceItem</b> request, either <b>ItemID</b> or <b>SKU</b> is required.
      *  If both are passed in and they don't refer to the same listing, eBay
-     *  ignores <b>SKU</b> and considers only the lt;b>ItemID</b>.
+     *  ignores <b>SKU</b> and considers only the <b>ItemID</b>.
      *
      * @param string $sKU
      * @return self

@@ -157,7 +157,10 @@ class ProductListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     private $brandMPN = null;
 
     /**
-     * This container is only applicable when a seller is creating/revising an event tickets listing.
+     * <span class="tablenote"><strong>Note:</strong>
+     *  This container and its fields are not usable and will be ignored if sent. See <a href="https://developer.ebay.com/develop/apis/api-deprecation-status">API Deprecation Status</a> for the decommission date (when this container will stop being returned and removed from the WSDL). For event ticket listings, logistical information must be passed into Item Specifics instead. You can use the <a href="https://developer.ebay.com/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory">getItemAspectsForCategory</a> method of the <b>Taxonomy API</b> to get the required and recommended Item Specifics for your listing category.
+     *  </span>
+     *  This container is only applicable when a seller is creating/revising an event tickets listing.
      *
      * @var \Nogrod\eBaySDK\Trading\TicketListingDetailsType $ticketListingDetails
      */
@@ -654,7 +657,10 @@ class ProductListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     /**
      * Gets as ticketListingDetails
      *
-     * This container is only applicable when a seller is creating/revising an event tickets listing.
+     * <span class="tablenote"><strong>Note:</strong>
+     *  This container and its fields are not usable and will be ignored if sent. See <a href="https://developer.ebay.com/develop/apis/api-deprecation-status">API Deprecation Status</a> for the decommission date (when this container will stop being returned and removed from the WSDL). For event ticket listings, logistical information must be passed into Item Specifics instead. You can use the <a href="https://developer.ebay.com/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory">getItemAspectsForCategory</a> method of the <b>Taxonomy API</b> to get the required and recommended Item Specifics for your listing category.
+     *  </span>
+     *  This container is only applicable when a seller is creating/revising an event tickets listing.
      *
      * @return \Nogrod\eBaySDK\Trading\TicketListingDetailsType
      */
@@ -666,7 +672,10 @@ class ProductListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     /**
      * Sets a new ticketListingDetails
      *
-     * This container is only applicable when a seller is creating/revising an event tickets listing.
+     * <span class="tablenote"><strong>Note:</strong>
+     *  This container and its fields are not usable and will be ignored if sent. See <a href="https://developer.ebay.com/develop/apis/api-deprecation-status">API Deprecation Status</a> for the decommission date (when this container will stop being returned and removed from the WSDL). For event ticket listings, logistical information must be passed into Item Specifics instead. You can use the <a href="https://developer.ebay.com/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory">getItemAspectsForCategory</a> method of the <b>Taxonomy API</b> to get the required and recommended Item Specifics for your listing category.
+     *  </span>
+     *  This container is only applicable when a seller is creating/revising an event tickets listing.
      *
      * @param \Nogrod\eBaySDK\Trading\TicketListingDetailsType $ticketListingDetails
      * @return self
@@ -822,9 +831,7 @@ class ProductListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
         }
         $value = $this->getCopyright();
         if (null !== $value && !empty($this->getCopyright())) {
-            $writer->write(array_map(function ($v) {
-                return ["Copyright" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["Copyright" => $v];}, $value));
         }
         $value = $this->getProductReferenceID();
         if (null !== $value) {
@@ -875,9 +882,7 @@ class ProductListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
         }
         $value = $this->getNameValueList();
         if (null !== $value && !empty($this->getNameValueList())) {
-            $writer->write(array_map(function ($v) {
-                return ["NameValueList" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["NameValueList" => $v];}, $value));
         }
     }
 
@@ -957,9 +962,7 @@ class ProductListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}NameValueList', true);
         if (null !== $value && !empty($value)) {
-            $this->setNameValueList(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\NameValueListType::fromKeyValue($v);
-            }, $value));
+            $this->setNameValueList(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\NameValueListType::fromKeyValue($v);}, $value));
         }
     }
 }

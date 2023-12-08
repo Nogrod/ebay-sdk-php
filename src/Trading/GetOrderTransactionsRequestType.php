@@ -307,15 +307,11 @@ class GetOrderTransactionsRequestType extends AbstractRequestType
         parent::xmlSerialize($writer);
         $value = $this->getItemTransactionIDArray();
         if (null !== $value && !empty($this->getItemTransactionIDArray())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ItemTransactionIDArray", array_map(function ($v) {
-                return ["ItemTransactionID" => $v];
-            }, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ItemTransactionIDArray", array_map(function ($v) {return ["ItemTransactionID" => $v];}, $value));
         }
         $value = $this->getOrderIDArray();
         if (null !== $value && !empty($this->getOrderIDArray())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}OrderIDArray", array_map(function ($v) {
-                return ["OrderID" => $v];
-            }, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}OrderIDArray", array_map(function ($v) {return ["OrderID" => $v];}, $value));
         }
         $value = $this->getPlatform();
         if (null !== $value) {
@@ -345,9 +341,7 @@ class GetOrderTransactionsRequestType extends AbstractRequestType
         parent::setKeyValue($keyValue);
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemTransactionIDArray', true);
         if (null !== $value && !empty($value)) {
-            $this->setItemTransactionIDArray(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\ItemTransactionIDType::fromKeyValue($v);
-            }, $value));
+            $this->setItemTransactionIDArray(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\ItemTransactionIDType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}OrderIDArray', true);
         if (null !== $value && !empty($value)) {

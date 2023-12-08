@@ -101,7 +101,7 @@ class ReturnPolicyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      *  <li>Spain (ES)</li>
      *  </ul>
      *  Where valid, sellers can use this field to add details about their return policies. eBay uses this text string as-is in the additional details section of the View Item page. Avoid HTML and avoid character entity references (such as &amp;pound; or &amp;#163;). If you include special characters in the return policy description, use the literal UTF-8 or ISO-8559-1 character (e.g. &#163;).
-     *
+     *  <!-- Do NOT attempt to "fix" the above character entity references. They are INTENTIONALLY showing markup this way in the resulting docs. Do NOT change them. [LT] -->
      *  <br><br>
      *  <b>For AddItem, VerifyAddItem, and RelistItem:</b> If the seller accepts returns (<b>ReturnsAcceptedOption</b> = <code>ReturnsAccepted</code>) but does not specify this field when listing the item, <b>GetItem</b> returns this as an empty node.
      *  <br><br>
@@ -486,7 +486,7 @@ class ReturnPolicyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      *  <li>Spain (ES)</li>
      *  </ul>
      *  Where valid, sellers can use this field to add details about their return policies. eBay uses this text string as-is in the additional details section of the View Item page. Avoid HTML and avoid character entity references (such as &amp;pound; or &amp;#163;). If you include special characters in the return policy description, use the literal UTF-8 or ISO-8559-1 character (e.g. &#163;).
-     *
+     *  <!-- Do NOT attempt to "fix" the above character entity references. They are INTENTIONALLY showing markup this way in the resulting docs. Do NOT change them. [LT] -->
      *  <br><br>
      *  <b>For AddItem, VerifyAddItem, and RelistItem:</b> If the seller accepts returns (<b>ReturnsAcceptedOption</b> = <code>ReturnsAccepted</code>) but does not specify this field when listing the item, <b>GetItem</b> returns this as an empty node.
      *  <br><br>
@@ -512,7 +512,7 @@ class ReturnPolicyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      *  <li>Spain (ES)</li>
      *  </ul>
      *  Where valid, sellers can use this field to add details about their return policies. eBay uses this text string as-is in the additional details section of the View Item page. Avoid HTML and avoid character entity references (such as &amp;pound; or &amp;#163;). If you include special characters in the return policy description, use the literal UTF-8 or ISO-8559-1 character (e.g. &#163;).
-     *
+     *  <!-- Do NOT attempt to "fix" the above character entity references. They are INTENTIONALLY showing markup this way in the resulting docs. Do NOT change them. [LT] -->
      *  <br><br>
      *  <b>For AddItem, VerifyAddItem, and RelistItem:</b> If the seller accepts returns (<b>ReturnsAcceptedOption</b> = <code>ReturnsAccepted</code>) but does not specify this field when listing the item, <b>GetItem</b> returns this as an empty node.
      *  <br><br>

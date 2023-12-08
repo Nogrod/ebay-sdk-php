@@ -157,17 +157,6 @@ class ListingInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      *  also be listed in a seller's eBay Store if the seller is a Store
      *  owner.
      *  </dd>
-     *  <dt>
-     *  StoreInventory
-     *  </dt>
-     *  <dd>
-     *  A fixed-price format for eBay Store sellers. Store Inventory listings
-     *  appear after other listings in regular browse and search item
-     *  listings on eBay. Store items have a lower Insertion Fee and longer
-     *  listing durations. This selling type can only be specified by sellers
-     *  who have an eBay Store. Store Inventory listings are listed on
-     *  eBay.com as well as in the seller's eBay Store.
-     *  </dd>
      *  </dl>
      *
      * @var string $listingType
@@ -501,17 +490,6 @@ class ListingInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      *  also be listed in a seller's eBay Store if the seller is a Store
      *  owner.
      *  </dd>
-     *  <dt>
-     *  StoreInventory
-     *  </dt>
-     *  <dd>
-     *  A fixed-price format for eBay Store sellers. Store Inventory listings
-     *  appear after other listings in regular browse and search item
-     *  listings on eBay. Store items have a lower Insertion Fee and longer
-     *  listing durations. This selling type can only be specified by sellers
-     *  who have an eBay Store. Store Inventory listings are listed on
-     *  eBay.com as well as in the seller's eBay Store.
-     *  </dd>
      *  </dl>
      *
      * @return string
@@ -579,17 +557,6 @@ class ListingInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      *  bidding auctions). Fixed-price listings appear on eBay.com; they can
      *  also be listed in a seller's eBay Store if the seller is a Store
      *  owner.
-     *  </dd>
-     *  <dt>
-     *  StoreInventory
-     *  </dt>
-     *  <dd>
-     *  A fixed-price format for eBay Store sellers. Store Inventory listings
-     *  appear after other listings in regular browse and search item
-     *  listings on eBay. Store items have a lower Insertion Fee and longer
-     *  listing durations. This selling type can only be specified by sellers
-     *  who have an eBay Store. Store Inventory listings are listed on
-     *  eBay.com as well as in the seller's eBay Store.
      *  </dd>
      *  </dl>
      *

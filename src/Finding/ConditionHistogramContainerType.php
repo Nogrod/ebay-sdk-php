@@ -227,9 +227,7 @@ class ConditionHistogramContainerType implements \Sabre\Xml\XmlSerializable, \Sa
         $writer->writeAttribute("xmlns", "http://www.ebay.com/marketplace/search/v1/services");
         $value = $this->getConditionHistogram();
         if (null !== $value && !empty($this->getConditionHistogram())) {
-            $writer->write(array_map(function ($v) {
-                return ["conditionHistogram" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["conditionHistogram" => $v];}, $value));
         }
         $value = $this->getDelimiter();
         if (null !== $value) {
@@ -253,9 +251,7 @@ class ConditionHistogramContainerType implements \Sabre\Xml\XmlSerializable, \Sa
     {
         $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}conditionHistogram', true);
         if (null !== $value && !empty($value)) {
-            $this->setConditionHistogram(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Finding\ConditionHistogramType::fromKeyValue($v);
-            }, $value));
+            $this->setConditionHistogram(array_map(function ($v) {return \Nogrod\eBaySDK\Finding\ConditionHistogramType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}delimiter');
         if (null !== $value) {

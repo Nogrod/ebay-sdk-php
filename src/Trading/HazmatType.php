@@ -230,9 +230,7 @@ class HazmatType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getPictograms();
         if (null !== $value && !empty($this->getPictograms())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Pictograms", array_map(function ($v) {
-                return ["Pictogram" => $v];
-            }, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Pictograms", array_map(function ($v) {return ["Pictogram" => $v];}, $value));
         }
         $value = $this->getSignalWord();
         if (null !== $value) {
@@ -240,9 +238,7 @@ class HazmatType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
         }
         $value = $this->getStatements();
         if (null !== $value && !empty($this->getStatements())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Statements", array_map(function ($v) {
-                return ["Statement" => $v];
-            }, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Statements", array_map(function ($v) {return ["Statement" => $v];}, $value));
         }
         $value = $this->getComponent();
         if (null !== $value) {

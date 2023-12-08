@@ -92,9 +92,7 @@ class StoreColorSchemeArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getColorScheme();
         if (null !== $value && !empty($this->getColorScheme())) {
-            $writer->write(array_map(function ($v) {
-                return ["ColorScheme" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["ColorScheme" => $v];}, $value));
         }
     }
 
@@ -114,9 +112,7 @@ class StoreColorSchemeArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     {
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ColorScheme', true);
         if (null !== $value && !empty($value)) {
-            $this->setColorScheme(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\StoreColorSchemeType::fromKeyValue($v);
-            }, $value));
+            $this->setColorScheme(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\StoreColorSchemeType::fromKeyValue($v);}, $value));
         }
     }
 }

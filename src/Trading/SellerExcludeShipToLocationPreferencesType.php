@@ -16,7 +16,7 @@ class SellerExcludeShipToLocationPreferencesType implements \Sabre\Xml\XmlSerial
      * One <b>ExcludeShipToLocation</b> field is returned for each geographical region or country excluded
      *  as a possible shipping location in the seller's My eBay Shipping Preferences.
      *  Sellers can also exclude Alaska/Hawaii and Army Post Office/Fleet Post Office as
-     *  possible shipping locations. For excluded countries, "http://www.iso.org/iso/country_codes/iso_3166_code_lists/english_country_names_and_code_elements.htm">ISO 3166</a>
+     *  possible shipping locations. For excluded countries, <a href="http://www.iso.org/iso/country_codes/iso_3166_code_lists/english_country_names_and_code_elements.htm">ISO 3166</a>
      *  country codes are returned.
      *  <br><br>
      *  Domestically, the seller can specify Alaska/Hawaii, US Protectorates (including
@@ -46,7 +46,7 @@ class SellerExcludeShipToLocationPreferencesType implements \Sabre\Xml\XmlSerial
      * One <b>ExcludeShipToLocation</b> field is returned for each geographical region or country excluded
      *  as a possible shipping location in the seller's My eBay Shipping Preferences.
      *  Sellers can also exclude Alaska/Hawaii and Army Post Office/Fleet Post Office as
-     *  possible shipping locations. For excluded countries, "http://www.iso.org/iso/country_codes/iso_3166_code_lists/english_country_names_and_code_elements.htm">ISO 3166</a>
+     *  possible shipping locations. For excluded countries, <a href="http://www.iso.org/iso/country_codes/iso_3166_code_lists/english_country_names_and_code_elements.htm">ISO 3166</a>
      *  country codes are returned.
      *  <br><br>
      *  Domestically, the seller can specify Alaska/Hawaii, US Protectorates (including
@@ -79,7 +79,7 @@ class SellerExcludeShipToLocationPreferencesType implements \Sabre\Xml\XmlSerial
      * One <b>ExcludeShipToLocation</b> field is returned for each geographical region or country excluded
      *  as a possible shipping location in the seller's My eBay Shipping Preferences.
      *  Sellers can also exclude Alaska/Hawaii and Army Post Office/Fleet Post Office as
-     *  possible shipping locations. For excluded countries, "http://www.iso.org/iso/country_codes/iso_3166_code_lists/english_country_names_and_code_elements.htm">ISO 3166</a>
+     *  possible shipping locations. For excluded countries, <a href="http://www.iso.org/iso/country_codes/iso_3166_code_lists/english_country_names_and_code_elements.htm">ISO 3166</a>
      *  country codes are returned.
      *  <br><br>
      *  Domestically, the seller can specify Alaska/Hawaii, US Protectorates (including
@@ -111,7 +111,7 @@ class SellerExcludeShipToLocationPreferencesType implements \Sabre\Xml\XmlSerial
      * One <b>ExcludeShipToLocation</b> field is returned for each geographical region or country excluded
      *  as a possible shipping location in the seller's My eBay Shipping Preferences.
      *  Sellers can also exclude Alaska/Hawaii and Army Post Office/Fleet Post Office as
-     *  possible shipping locations. For excluded countries, "http://www.iso.org/iso/country_codes/iso_3166_code_lists/english_country_names_and_code_elements.htm">ISO 3166</a>
+     *  possible shipping locations. For excluded countries, <a href="http://www.iso.org/iso/country_codes/iso_3166_code_lists/english_country_names_and_code_elements.htm">ISO 3166</a>
      *  country codes are returned.
      *  <br><br>
      *  Domestically, the seller can specify Alaska/Hawaii, US Protectorates (including
@@ -143,7 +143,7 @@ class SellerExcludeShipToLocationPreferencesType implements \Sabre\Xml\XmlSerial
      * One <b>ExcludeShipToLocation</b> field is returned for each geographical region or country excluded
      *  as a possible shipping location in the seller's My eBay Shipping Preferences.
      *  Sellers can also exclude Alaska/Hawaii and Army Post Office/Fleet Post Office as
-     *  possible shipping locations. For excluded countries, "http://www.iso.org/iso/country_codes/iso_3166_code_lists/english_country_names_and_code_elements.htm">ISO 3166</a>
+     *  possible shipping locations. For excluded countries, <a href="http://www.iso.org/iso/country_codes/iso_3166_code_lists/english_country_names_and_code_elements.htm">ISO 3166</a>
      *  country codes are returned.
      *  <br><br>
      *  Domestically, the seller can specify Alaska/Hawaii, US Protectorates (including
@@ -174,7 +174,7 @@ class SellerExcludeShipToLocationPreferencesType implements \Sabre\Xml\XmlSerial
      * One <b>ExcludeShipToLocation</b> field is returned for each geographical region or country excluded
      *  as a possible shipping location in the seller's My eBay Shipping Preferences.
      *  Sellers can also exclude Alaska/Hawaii and Army Post Office/Fleet Post Office as
-     *  possible shipping locations. For excluded countries, "http://www.iso.org/iso/country_codes/iso_3166_code_lists/english_country_names_and_code_elements.htm">ISO 3166</a>
+     *  possible shipping locations. For excluded countries, <a href="http://www.iso.org/iso/country_codes/iso_3166_code_lists/english_country_names_and_code_elements.htm">ISO 3166</a>
      *  country codes are returned.
      *  <br><br>
      *  Domestically, the seller can specify Alaska/Hawaii, US Protectorates (including
@@ -206,9 +206,7 @@ class SellerExcludeShipToLocationPreferencesType implements \Sabre\Xml\XmlSerial
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getExcludeShipToLocation();
         if (null !== $value && !empty($this->getExcludeShipToLocation())) {
-            $writer->write(array_map(function ($v) {
-                return ["ExcludeShipToLocation" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["ExcludeShipToLocation" => $v];}, $value));
         }
     }
 

@@ -221,9 +221,7 @@ class CategoryHistogramContainerType implements \Sabre\Xml\XmlSerializable, \Sab
         $writer->writeAttribute("xmlns", "http://www.ebay.com/marketplace/search/v1/services");
         $value = $this->getCategoryHistogram();
         if (null !== $value && !empty($this->getCategoryHistogram())) {
-            $writer->write(array_map(function ($v) {
-                return ["categoryHistogram" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["categoryHistogram" => $v];}, $value));
         }
         $value = $this->getDelimiter();
         if (null !== $value) {
@@ -247,9 +245,7 @@ class CategoryHistogramContainerType implements \Sabre\Xml\XmlSerializable, \Sab
     {
         $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}categoryHistogram', true);
         if (null !== $value && !empty($value)) {
-            $this->setCategoryHistogram(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Finding\CategoryHistogramType::fromKeyValue($v);
-            }, $value));
+            $this->setCategoryHistogram(array_map(function ($v) {return \Nogrod\eBaySDK\Finding\CategoryHistogramType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}delimiter');
         if (null !== $value) {

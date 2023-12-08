@@ -1232,9 +1232,7 @@ class ShippingPolicyInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
         }
         $value = $this->getExcludeShipToLocation();
         if (null !== $value && !empty($this->getExcludeShipToLocation())) {
-            $writer->write(array_map(function ($v) {
-                return ["excludeShipToLocation" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["excludeShipToLocation" => $v];}, $value));
         }
         $value = $this->getShippingProfileDiscountInfo();
         if (null !== $value) {
@@ -1246,21 +1244,15 @@ class ShippingPolicyInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
         }
         $value = $this->getShipToLocations();
         if (null !== $value && !empty($this->getShipToLocations())) {
-            $writer->write(array_map(function ($v) {
-                return ["shipToLocations" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["shipToLocations" => $v];}, $value));
         }
         $value = $this->getDomesticShippingPolicyInfoService();
         if (null !== $value && !empty($this->getDomesticShippingPolicyInfoService())) {
-            $writer->write(array_map(function ($v) {
-                return ["domesticShippingPolicyInfoService" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["domesticShippingPolicyInfoService" => $v];}, $value));
         }
         $value = $this->getIntlShippingPolicyInfoService();
         if (null !== $value && !empty($this->getIntlShippingPolicyInfoService())) {
-            $writer->write(array_map(function ($v) {
-                return ["intlShippingPolicyInfoService" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["intlShippingPolicyInfoService" => $v];}, $value));
         }
         $value = $this->getInsurance();
         if (null !== $value) {
@@ -1358,15 +1350,11 @@ class ShippingPolicyInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
         }
         $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}domesticShippingPolicyInfoService', true);
         if (null !== $value && !empty($value)) {
-            $this->setDomesticShippingPolicyInfoService(array_map(function ($v) {
-                return \Nogrod\eBaySDK\BusinessPoliciesManagement\ShippingPolicyInfoServiceType::fromKeyValue($v);
-            }, $value));
+            $this->setDomesticShippingPolicyInfoService(array_map(function ($v) {return \Nogrod\eBaySDK\BusinessPoliciesManagement\ShippingPolicyInfoServiceType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}intlShippingPolicyInfoService', true);
         if (null !== $value && !empty($value)) {
-            $this->setIntlShippingPolicyInfoService(array_map(function ($v) {
-                return \Nogrod\eBaySDK\BusinessPoliciesManagement\ShippingPolicyInfoServiceType::fromKeyValue($v);
-            }, $value));
+            $this->setIntlShippingPolicyInfoService(array_map(function ($v) {return \Nogrod\eBaySDK\BusinessPoliciesManagement\ShippingPolicyInfoServiceType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}insurance');
         if (null !== $value) {

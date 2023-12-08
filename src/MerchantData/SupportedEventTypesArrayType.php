@@ -80,9 +80,7 @@ class SupportedEventTypesArrayType implements \Sabre\Xml\XmlSerializable, \Sabre
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getEventType();
         if (null !== $value && !empty($this->getEventType())) {
-            $writer->write(array_map(function ($v) {
-                return ["EventType" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["EventType" => $v];}, $value));
         }
     }
 

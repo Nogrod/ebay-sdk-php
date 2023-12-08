@@ -871,9 +871,7 @@ class AccountEntryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DiscountDetail', true);
         if (null !== $value && !empty($value)) {
-            $this->setDiscountDetail(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\DiscountType::fromKeyValue($v);
-            }, $value));
+            $this->setDiscountDetail(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\DiscountType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Netted');
         if (null !== $value) {

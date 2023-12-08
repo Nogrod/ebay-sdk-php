@@ -166,9 +166,7 @@ class AttributeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
         }
         $value = $this->getValue();
         if (null !== $value && !empty($this->getValue())) {
-            $writer->write(array_map(function ($v) {
-                return ["Value" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["Value" => $v];}, $value));
         }
     }
 
@@ -188,9 +186,7 @@ class AttributeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
     {
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Value', true);
         if (null !== $value && !empty($value)) {
-            $this->setValue(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\ValType::fromKeyValue($v);
-            }, $value));
+            $this->setValue(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\ValType::fromKeyValue($v);}, $value));
         }
     }
 }

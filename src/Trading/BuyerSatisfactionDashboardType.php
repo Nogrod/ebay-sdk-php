@@ -156,9 +156,7 @@ class BuyerSatisfactionDashboardType implements \Sabre\Xml\XmlSerializable, \Sab
         }
         $value = $this->getAlert();
         if (null !== $value && !empty($this->getAlert())) {
-            $writer->write(array_map(function ($v) {
-                return ["Alert" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["Alert" => $v];}, $value));
         }
     }
 
@@ -182,9 +180,7 @@ class BuyerSatisfactionDashboardType implements \Sabre\Xml\XmlSerializable, \Sab
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Alert', true);
         if (null !== $value && !empty($value)) {
-            $this->setAlert(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\SellerDashboardAlertType::fromKeyValue($v);
-            }, $value));
+            $this->setAlert(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\SellerDashboardAlertType::fromKeyValue($v);}, $value));
         }
     }
 }

@@ -367,9 +367,7 @@ class MemberMessageExchangeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
         }
         $value = $this->getResponse();
         if (null !== $value && !empty($this->getResponse())) {
-            $writer->write(array_map(function ($v) {
-                return ["Response" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["Response" => $v];}, $value));
         }
         $value = $this->getMessageStatus();
         if (null !== $value) {
@@ -385,9 +383,7 @@ class MemberMessageExchangeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
         }
         $value = $this->getMessageMedia();
         if (null !== $value && !empty($this->getMessageMedia())) {
-            $writer->write(array_map(function ($v) {
-                return ["MessageMedia" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["MessageMedia" => $v];}, $value));
         }
     }
 
@@ -431,9 +427,7 @@ class MemberMessageExchangeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MessageMedia', true);
         if (null !== $value && !empty($value)) {
-            $this->setMessageMedia(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\MessageMediaType::fromKeyValue($v);
-            }, $value));
+            $this->setMessageMedia(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\MessageMediaType::fromKeyValue($v);}, $value));
         }
     }
 }

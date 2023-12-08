@@ -321,9 +321,7 @@ class MerchantDataVariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
         }
         $value = $this->getVariationSpecifics();
         if (null !== $value && !empty($this->getVariationSpecifics())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}VariationSpecifics", array_map(function ($v) {
-                return ["NameValueList" => $v];
-            }, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}VariationSpecifics", array_map(function ($v) {return ["NameValueList" => $v];}, $value));
         }
     }
 
@@ -355,9 +353,7 @@ class MerchantDataVariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}VariationSpecifics', true);
         if (null !== $value && !empty($value)) {
-            $this->setVariationSpecifics(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\NameValueListType::fromKeyValue($v);
-            }, $value));
+            $this->setVariationSpecifics(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\NameValueListType::fromKeyValue($v);}, $value));
         }
     }
 }

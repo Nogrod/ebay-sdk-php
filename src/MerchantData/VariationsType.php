@@ -768,27 +768,19 @@ class VariationsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getVariation();
         if (null !== $value && !empty($this->getVariation())) {
-            $writer->write(array_map(function ($v) {
-                return ["Variation" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["Variation" => $v];}, $value));
         }
         $value = $this->getPictures();
         if (null !== $value && !empty($this->getPictures())) {
-            $writer->write(array_map(function ($v) {
-                return ["Pictures" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["Pictures" => $v];}, $value));
         }
         $value = $this->getVariationSpecificsSet();
         if (null !== $value && !empty($this->getVariationSpecificsSet())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}VariationSpecificsSet", array_map(function ($v) {
-                return ["NameValueList" => $v];
-            }, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}VariationSpecificsSet", array_map(function ($v) {return ["NameValueList" => $v];}, $value));
         }
         $value = $this->getModifyNameList();
         if (null !== $value && !empty($this->getModifyNameList())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ModifyNameList", array_map(function ($v) {
-                return ["ModifyName" => $v];
-            }, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ModifyNameList", array_map(function ($v) {return ["ModifyName" => $v];}, $value));
         }
     }
 
@@ -808,27 +800,19 @@ class VariationsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
     {
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Variation', true);
         if (null !== $value && !empty($value)) {
-            $this->setVariation(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\VariationType::fromKeyValue($v);
-            }, $value));
+            $this->setVariation(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\VariationType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Pictures', true);
         if (null !== $value && !empty($value)) {
-            $this->setPictures(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\PicturesType::fromKeyValue($v);
-            }, $value));
+            $this->setPictures(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\PicturesType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}VariationSpecificsSet', true);
         if (null !== $value && !empty($value)) {
-            $this->setVariationSpecificsSet(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\NameValueListType::fromKeyValue($v);
-            }, $value));
+            $this->setVariationSpecificsSet(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\NameValueListType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ModifyNameList', true);
         if (null !== $value && !empty($value)) {
-            $this->setModifyNameList(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\ModifyNameType::fromKeyValue($v);
-            }, $value));
+            $this->setModifyNameList(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\ModifyNameType::fromKeyValue($v);}, $value));
         }
     }
 }

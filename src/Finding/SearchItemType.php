@@ -382,11 +382,7 @@ class SearchItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
     ];
 
     /**
-     * Indicates whether the item is ebayPlus item. A eBayPlus
-     *  item:
-     *  <ul>
-     *  <li> Cassini returns the ebayPlus flag;/li>
-     *  This field is returned for the following sites only: DE (EBAY-DE)
+     * Indicates whether the item is ebayPlus item. This field is returned for the following sites only: DE (EBAY-DE), AU (EBAY-AU)
      *
      * @var bool $eBayPlusEnabled
      */
@@ -1764,11 +1760,7 @@ class SearchItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
     /**
      * Gets as eBayPlusEnabled
      *
-     * Indicates whether the item is ebayPlus item. A eBayPlus
-     *  item:
-     *  <ul>
-     *  <li> Cassini returns the ebayPlus flag;/li>
-     *  This field is returned for the following sites only: DE (EBAY-DE)
+     * Indicates whether the item is ebayPlus item. This field is returned for the following sites only: DE (EBAY-DE), AU (EBAY-AU)
      *
      * @return bool
      */
@@ -1780,11 +1772,7 @@ class SearchItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
     /**
      * Sets a new eBayPlusEnabled
      *
-     * Indicates whether the item is ebayPlus item. A eBayPlus
-     *  item:
-     *  <ul>
-     *  <li> Cassini returns the ebayPlus flag;/li>
-     *  This field is returned for the following sites only: DE (EBAY-DE)
+     * Indicates whether the item is ebayPlus item. This field is returned for the following sites only: DE (EBAY-DE), AU (EBAY-AU)
      *
      * @param bool $eBayPlusEnabled
      * @return self
@@ -1828,9 +1816,7 @@ class SearchItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
         }
         $value = $this->getGalleryInfoContainer();
         if (null !== $value && !empty($this->getGalleryInfoContainer())) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/search/v1/services}galleryInfoContainer", array_map(function ($v) {
-                return ["galleryURL" => $v];
-            }, $value));
+            $writer->writeElement("{http://www.ebay.com/marketplace/search/v1/services}galleryInfoContainer", array_map(function ($v) {return ["galleryURL" => $v];}, $value));
         }
         $value = $this->getViewItemURL();
         if (null !== $value) {
@@ -1846,9 +1832,7 @@ class SearchItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
         }
         $value = $this->getPaymentMethod();
         if (null !== $value && !empty($this->getPaymentMethod())) {
-            $writer->write(array_map(function ($v) {
-                return ["paymentMethod" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["paymentMethod" => $v];}, $value));
         }
         $value = $this->getAutoPay();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;
@@ -1894,9 +1878,7 @@ class SearchItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
         }
         $value = $this->getGalleryPlusPictureURL();
         if (null !== $value && !empty($this->getGalleryPlusPictureURL())) {
-            $writer->write(array_map(function ($v) {
-                return ["galleryPlusPictureURL" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["galleryPlusPictureURL" => $v];}, $value));
         }
         $value = $this->getCompatibility();
         if (null !== $value) {
@@ -1933,9 +1915,7 @@ class SearchItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
         }
         $value = $this->getAttribute();
         if (null !== $value && !empty($this->getAttribute())) {
-            $writer->write(array_map(function ($v) {
-                return ["attribute" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["attribute" => $v];}, $value));
         }
         $value = $this->getTopRatedListing();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;
@@ -1948,9 +1928,7 @@ class SearchItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
         }
         $value = $this->getEekStatus();
         if (null !== $value && !empty($this->getEekStatus())) {
-            $writer->write(array_map(function ($v) {
-                return ["eekStatus" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["eekStatus" => $v];}, $value));
         }
         $value = $this->getEBayPlusEnabled();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;
@@ -2003,9 +1981,7 @@ class SearchItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
         }
         $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}galleryInfoContainer', true);
         if (null !== $value && !empty($value)) {
-            $this->setGalleryInfoContainer(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Finding\GalleryURLType::fromKeyValue($v);
-            }, $value));
+            $this->setGalleryInfoContainer(array_map(function ($v) {return \Nogrod\eBaySDK\Finding\GalleryURLType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}viewItemURL');
         if (null !== $value) {
@@ -2101,9 +2077,7 @@ class SearchItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
         }
         $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}attribute', true);
         if (null !== $value && !empty($value)) {
-            $this->setAttribute(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Finding\ItemAttributeType::fromKeyValue($v);
-            }, $value));
+            $this->setAttribute(array_map(function ($v) {return \Nogrod\eBaySDK\Finding\ItemAttributeType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}topRatedListing');
         if (null !== $value) {

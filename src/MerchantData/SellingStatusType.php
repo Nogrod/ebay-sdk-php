@@ -1045,9 +1045,7 @@ class SellingStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
         }
         $value = $this->getSuggestedBidValues();
         if (null !== $value && !empty($this->getSuggestedBidValues())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SuggestedBidValues", array_map(function ($v) {
-                return ["BidValue" => $v];
-            }, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SuggestedBidValues", array_map(function ($v) {return ["BidValue" => $v];}, $value));
         }
     }
 
@@ -1135,9 +1133,7 @@ class SellingStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SuggestedBidValues', true);
         if (null !== $value && !empty($value)) {
-            $this->setSuggestedBidValues(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\AmountType::fromKeyValue($v);
-            }, $value));
+            $this->setSuggestedBidValues(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\AmountType::fromKeyValue($v);}, $value));
         }
     }
 }

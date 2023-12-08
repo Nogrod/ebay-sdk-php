@@ -26,25 +26,11 @@ class MyMessagesSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
     ];
 
     /**
-     * This field has been deprecated.
-     *
-     * @var int $newAlertCount
-     */
-    private $newAlertCount = null;
-
-    /**
      * The number of new messages that a given user has. Always returned for detail level ReturnSummary.
      *
      * @var int $newMessageCount
      */
     private $newMessageCount = null;
-
-    /**
-     * This field is deprecated.
-     *
-     * @var int $unresolvedAlertCount
-     */
-    private $unresolvedAlertCount = null;
 
     /**
      * The number of messages that have been flagged.
@@ -53,13 +39,6 @@ class MyMessagesSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
      * @var int $flaggedMessageCount
      */
     private $flaggedMessageCount = null;
-
-    /**
-     * This field has been deprecated.
-     *
-     * @var int $totalAlertCount
-     */
-    private $totalAlertCount = null;
 
     /**
      * The total number of messages for a given user.
@@ -155,32 +134,6 @@ class MyMessagesSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
     }
 
     /**
-     * Gets as newAlertCount
-     *
-     * This field has been deprecated.
-     *
-     * @return int
-     */
-    public function getNewAlertCount()
-    {
-        return $this->newAlertCount;
-    }
-
-    /**
-     * Sets a new newAlertCount
-     *
-     * This field has been deprecated.
-     *
-     * @param int $newAlertCount
-     * @return self
-     */
-    public function setNewAlertCount($newAlertCount)
-    {
-        $this->newAlertCount = $newAlertCount;
-        return $this;
-    }
-
-    /**
      * Gets as newMessageCount
      *
      * The number of new messages that a given user has. Always returned for detail level ReturnSummary.
@@ -203,32 +156,6 @@ class MyMessagesSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
     public function setNewMessageCount($newMessageCount)
     {
         $this->newMessageCount = $newMessageCount;
-        return $this;
-    }
-
-    /**
-     * Gets as unresolvedAlertCount
-     *
-     * This field is deprecated.
-     *
-     * @return int
-     */
-    public function getUnresolvedAlertCount()
-    {
-        return $this->unresolvedAlertCount;
-    }
-
-    /**
-     * Sets a new unresolvedAlertCount
-     *
-     * This field is deprecated.
-     *
-     * @param int $unresolvedAlertCount
-     * @return self
-     */
-    public function setUnresolvedAlertCount($unresolvedAlertCount)
-    {
-        $this->unresolvedAlertCount = $unresolvedAlertCount;
         return $this;
     }
 
@@ -257,32 +184,6 @@ class MyMessagesSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
     public function setFlaggedMessageCount($flaggedMessageCount)
     {
         $this->flaggedMessageCount = $flaggedMessageCount;
-        return $this;
-    }
-
-    /**
-     * Gets as totalAlertCount
-     *
-     * This field has been deprecated.
-     *
-     * @return int
-     */
-    public function getTotalAlertCount()
-    {
-        return $this->totalAlertCount;
-    }
-
-    /**
-     * Sets a new totalAlertCount
-     *
-     * This field has been deprecated.
-     *
-     * @param int $totalAlertCount
-     * @return self
-     */
-    public function setTotalAlertCount($totalAlertCount)
-    {
-        $this->totalAlertCount = $totalAlertCount;
         return $this;
     }
 
@@ -371,29 +272,15 @@ class MyMessagesSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getFolderSummary();
         if (null !== $value && !empty($this->getFolderSummary())) {
-            $writer->write(array_map(function ($v) {
-                return ["FolderSummary" => $v];
-            }, $value));
-        }
-        $value = $this->getNewAlertCount();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}NewAlertCount", $value);
+            $writer->write(array_map(function ($v) {return ["FolderSummary" => $v];}, $value));
         }
         $value = $this->getNewMessageCount();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}NewMessageCount", $value);
         }
-        $value = $this->getUnresolvedAlertCount();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}UnresolvedAlertCount", $value);
-        }
         $value = $this->getFlaggedMessageCount();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}FlaggedMessageCount", $value);
-        }
-        $value = $this->getTotalAlertCount();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TotalAlertCount", $value);
         }
         $value = $this->getTotalMessageCount();
         if (null !== $value) {
@@ -425,29 +312,15 @@ class MyMessagesSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
     {
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FolderSummary', true);
         if (null !== $value && !empty($value)) {
-            $this->setFolderSummary(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\MyMessagesFolderSummaryType::fromKeyValue($v);
-            }, $value));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}NewAlertCount');
-        if (null !== $value) {
-            $this->setNewAlertCount($value);
+            $this->setFolderSummary(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\MyMessagesFolderSummaryType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}NewMessageCount');
         if (null !== $value) {
             $this->setNewMessageCount($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UnresolvedAlertCount');
-        if (null !== $value) {
-            $this->setUnresolvedAlertCount($value);
-        }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FlaggedMessageCount');
         if (null !== $value) {
             $this->setFlaggedMessageCount($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TotalAlertCount');
-        if (null !== $value) {
-            $this->setTotalAlertCount($value);
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TotalMessageCount');
         if (null !== $value) {

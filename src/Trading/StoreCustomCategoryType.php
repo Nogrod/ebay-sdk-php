@@ -221,9 +221,7 @@ class StoreCustomCategoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
         }
         $value = $this->getChildCategory();
         if (null !== $value && !empty($this->getChildCategory())) {
-            $writer->write(array_map(function ($v) {
-                return ["ChildCategory" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["ChildCategory" => $v];}, $value));
         }
     }
 
@@ -255,9 +253,7 @@ class StoreCustomCategoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ChildCategory', true);
         if (null !== $value && !empty($value)) {
-            $this->setChildCategory(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\StoreCustomCategoryType::fromKeyValue($v);
-            }, $value));
+            $this->setChildCategory(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\StoreCustomCategoryType::fromKeyValue($v);}, $value));
         }
     }
 }

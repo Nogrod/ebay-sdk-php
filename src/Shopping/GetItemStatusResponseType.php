@@ -92,9 +92,7 @@ class GetItemStatusResponseType extends AbstractResponseType
         parent::xmlSerialize($writer);
         $value = $this->getItem();
         if (null !== $value && !empty($this->getItem())) {
-            $writer->write(array_map(function ($v) {
-                return ["Item" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["Item" => $v];}, $value));
         }
     }
 
@@ -115,9 +113,7 @@ class GetItemStatusResponseType extends AbstractResponseType
         parent::setKeyValue($keyValue);
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Item', true);
         if (null !== $value && !empty($value)) {
-            $this->setItem(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Shopping\SimpleItemType::fromKeyValue($v);
-            }, $value));
+            $this->setItem(array_map(function ($v) {return \Nogrod\eBaySDK\Shopping\SimpleItemType::fromKeyValue($v);}, $value));
         }
     }
 }

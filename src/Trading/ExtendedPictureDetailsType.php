@@ -99,9 +99,7 @@ class ExtendedPictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getPictureURLs();
         if (null !== $value && !empty($this->getPictureURLs())) {
-            $writer->write(array_map(function ($v) {
-                return ["PictureURLs" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["PictureURLs" => $v];}, $value));
         }
     }
 
@@ -121,9 +119,7 @@ class ExtendedPictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
     {
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PictureURLs', true);
         if (null !== $value && !empty($value)) {
-            $this->setPictureURLs(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\PictureURLsType::fromKeyValue($v);
-            }, $value));
+            $this->setPictureURLs(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\PictureURLsType::fromKeyValue($v);}, $value));
         }
     }
 }

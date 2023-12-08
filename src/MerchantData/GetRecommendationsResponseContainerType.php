@@ -337,9 +337,7 @@ class GetRecommendationsResponseContainerType implements \Sabre\Xml\XmlSerializa
         }
         $value = $this->getProductRecommendations();
         if (null !== $value && !empty($this->getProductRecommendations())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ProductRecommendations", array_map(function ($v) {
-                return ["Product" => $v];
-            }, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ProductRecommendations", array_map(function ($v) {return ["Product" => $v];}, $value));
         }
         $value = $this->getCorrelationID();
         if (null !== $value) {
@@ -387,9 +385,7 @@ class GetRecommendationsResponseContainerType implements \Sabre\Xml\XmlSerializa
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ProductRecommendations', true);
         if (null !== $value && !empty($value)) {
-            $this->setProductRecommendations(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\ProductInfoType::fromKeyValue($v);
-            }, $value));
+            $this->setProductRecommendations(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\ProductInfoType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CorrelationID');
         if (null !== $value) {

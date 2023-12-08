@@ -92,9 +92,7 @@ class VeROReportItemsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getReportItem();
         if (null !== $value && !empty($this->getReportItem())) {
-            $writer->write(array_map(function ($v) {
-                return ["ReportItem" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["ReportItem" => $v];}, $value));
         }
     }
 
@@ -114,9 +112,7 @@ class VeROReportItemsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     {
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReportItem', true);
         if (null !== $value && !empty($value)) {
-            $this->setReportItem(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\VeROReportItemType::fromKeyValue($v);
-            }, $value));
+            $this->setReportItem(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\VeROReportItemType::fromKeyValue($v);}, $value));
         }
     }
 }

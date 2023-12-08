@@ -92,9 +92,7 @@ class AverageRatingDetailArrayType implements \Sabre\Xml\XmlSerializable, \Sabre
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getAverageRatingDetails();
         if (null !== $value && !empty($this->getAverageRatingDetails())) {
-            $writer->write(array_map(function ($v) {
-                return ["AverageRatingDetails" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["AverageRatingDetails" => $v];}, $value));
         }
     }
 
@@ -114,9 +112,7 @@ class AverageRatingDetailArrayType implements \Sabre\Xml\XmlSerializable, \Sabre
     {
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AverageRatingDetails', true);
         if (null !== $value && !empty($value)) {
-            $this->setAverageRatingDetails(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\AverageRatingDetailsType::fromKeyValue($v);
-            }, $value));
+            $this->setAverageRatingDetails(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\AverageRatingDetailsType::fromKeyValue($v);}, $value));
         }
     }
 }

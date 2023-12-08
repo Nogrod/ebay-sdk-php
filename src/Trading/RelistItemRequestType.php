@@ -27,9 +27,9 @@ class RelistItemRequestType extends AbstractRequestType
      *  Also see the relevant field descriptions to determine when to use <b>DeletedField</b> (and potential consequences).
      *  The request can contain zero, one, or many instances of <b>DeletedField</b> (one for each field to be deleted).
      *  <br><br>
-     *  Case-sensitivity must be taken into account when using a <b>DeletedField</b> tag to delete a field. The value passed into a <b>DeletedField</b> tag must either match the case of the schema element names in the full field path (Item.PictureDetails.GalleryURL), or the initial letter of each schema element name in the full field path must be lowercase (item.pictureDetails.galleryURL).
+     *  Case-sensitivity must be taken into account when using a <b>DeletedField</b> tag to delete a field. The value passed into a <b>DeletedField</b> tag must either match the case of the schema element names in the full field path (Item.PictureDetails.PictureURL), or the initial letter of each schema element name in the full field path must be lowercase (item.pictureDetails.pictureURL).
      *  Do not change the case of letters in the middle of a field name.
-     *  For example, item.picturedetails.galleryUrl is not allowed.<br><br>
+     *  For example, item.picturedetails.pictureURL is not allowed.<br><br>
      *  To delete a listing enhancement like 'BoldTitle', specify the value you are deleting;
      *  for example, Item.ListingEnhancement[BoldTitle].
      *
@@ -77,9 +77,9 @@ class RelistItemRequestType extends AbstractRequestType
      *  Also see the relevant field descriptions to determine when to use <b>DeletedField</b> (and potential consequences).
      *  The request can contain zero, one, or many instances of <b>DeletedField</b> (one for each field to be deleted).
      *  <br><br>
-     *  Case-sensitivity must be taken into account when using a <b>DeletedField</b> tag to delete a field. The value passed into a <b>DeletedField</b> tag must either match the case of the schema element names in the full field path (Item.PictureDetails.GalleryURL), or the initial letter of each schema element name in the full field path must be lowercase (item.pictureDetails.galleryURL).
+     *  Case-sensitivity must be taken into account when using a <b>DeletedField</b> tag to delete a field. The value passed into a <b>DeletedField</b> tag must either match the case of the schema element names in the full field path (Item.PictureDetails.PictureURL), or the initial letter of each schema element name in the full field path must be lowercase (item.pictureDetails.pictureURL).
      *  Do not change the case of letters in the middle of a field name.
-     *  For example, item.picturedetails.galleryUrl is not allowed.<br><br>
+     *  For example, item.picturedetails.pictureURL is not allowed.<br><br>
      *  To delete a listing enhancement like 'BoldTitle', specify the value you are deleting;
      *  for example, Item.ListingEnhancement[BoldTitle].
      *
@@ -100,9 +100,9 @@ class RelistItemRequestType extends AbstractRequestType
      *  Also see the relevant field descriptions to determine when to use <b>DeletedField</b> (and potential consequences).
      *  The request can contain zero, one, or many instances of <b>DeletedField</b> (one for each field to be deleted).
      *  <br><br>
-     *  Case-sensitivity must be taken into account when using a <b>DeletedField</b> tag to delete a field. The value passed into a <b>DeletedField</b> tag must either match the case of the schema element names in the full field path (Item.PictureDetails.GalleryURL), or the initial letter of each schema element name in the full field path must be lowercase (item.pictureDetails.galleryURL).
+     *  Case-sensitivity must be taken into account when using a <b>DeletedField</b> tag to delete a field. The value passed into a <b>DeletedField</b> tag must either match the case of the schema element names in the full field path (Item.PictureDetails.PictureURL), or the initial letter of each schema element name in the full field path must be lowercase (item.pictureDetails.pictureURL).
      *  Do not change the case of letters in the middle of a field name.
-     *  For example, item.picturedetails.galleryUrl is not allowed.<br><br>
+     *  For example, item.picturedetails.pictureURL is not allowed.<br><br>
      *  To delete a listing enhancement like 'BoldTitle', specify the value you are deleting;
      *  for example, Item.ListingEnhancement[BoldTitle].
      *
@@ -122,9 +122,9 @@ class RelistItemRequestType extends AbstractRequestType
      *  Also see the relevant field descriptions to determine when to use <b>DeletedField</b> (and potential consequences).
      *  The request can contain zero, one, or many instances of <b>DeletedField</b> (one for each field to be deleted).
      *  <br><br>
-     *  Case-sensitivity must be taken into account when using a <b>DeletedField</b> tag to delete a field. The value passed into a <b>DeletedField</b> tag must either match the case of the schema element names in the full field path (Item.PictureDetails.GalleryURL), or the initial letter of each schema element name in the full field path must be lowercase (item.pictureDetails.galleryURL).
+     *  Case-sensitivity must be taken into account when using a <b>DeletedField</b> tag to delete a field. The value passed into a <b>DeletedField</b> tag must either match the case of the schema element names in the full field path (Item.PictureDetails.PictureURL), or the initial letter of each schema element name in the full field path must be lowercase (item.pictureDetails.pictureURL).
      *  Do not change the case of letters in the middle of a field name.
-     *  For example, item.picturedetails.galleryUrl is not allowed.<br><br>
+     *  For example, item.picturedetails.pictureURL is not allowed.<br><br>
      *  To delete a listing enhancement like 'BoldTitle', specify the value you are deleting;
      *  for example, Item.ListingEnhancement[BoldTitle].
      *
@@ -144,9 +144,9 @@ class RelistItemRequestType extends AbstractRequestType
      *  Also see the relevant field descriptions to determine when to use <b>DeletedField</b> (and potential consequences).
      *  The request can contain zero, one, or many instances of <b>DeletedField</b> (one for each field to be deleted).
      *  <br><br>
-     *  Case-sensitivity must be taken into account when using a <b>DeletedField</b> tag to delete a field. The value passed into a <b>DeletedField</b> tag must either match the case of the schema element names in the full field path (Item.PictureDetails.GalleryURL), or the initial letter of each schema element name in the full field path must be lowercase (item.pictureDetails.galleryURL).
+     *  Case-sensitivity must be taken into account when using a <b>DeletedField</b> tag to delete a field. The value passed into a <b>DeletedField</b> tag must either match the case of the schema element names in the full field path (Item.PictureDetails.PictureURL), or the initial letter of each schema element name in the full field path must be lowercase (item.pictureDetails.pictureURL).
      *  Do not change the case of letters in the middle of a field name.
-     *  For example, item.picturedetails.galleryUrl is not allowed.<br><br>
+     *  For example, item.picturedetails.pictureURL is not allowed.<br><br>
      *  To delete a listing enhancement like 'BoldTitle', specify the value you are deleting;
      *  for example, Item.ListingEnhancement[BoldTitle].
      *
@@ -165,9 +165,9 @@ class RelistItemRequestType extends AbstractRequestType
      *  Also see the relevant field descriptions to determine when to use <b>DeletedField</b> (and potential consequences).
      *  The request can contain zero, one, or many instances of <b>DeletedField</b> (one for each field to be deleted).
      *  <br><br>
-     *  Case-sensitivity must be taken into account when using a <b>DeletedField</b> tag to delete a field. The value passed into a <b>DeletedField</b> tag must either match the case of the schema element names in the full field path (Item.PictureDetails.GalleryURL), or the initial letter of each schema element name in the full field path must be lowercase (item.pictureDetails.galleryURL).
+     *  Case-sensitivity must be taken into account when using a <b>DeletedField</b> tag to delete a field. The value passed into a <b>DeletedField</b> tag must either match the case of the schema element names in the full field path (Item.PictureDetails.PictureURL), or the initial letter of each schema element name in the full field path must be lowercase (item.pictureDetails.pictureURL).
      *  Do not change the case of letters in the middle of a field name.
-     *  For example, item.picturedetails.galleryUrl is not allowed.<br><br>
+     *  For example, item.picturedetails.pictureURL is not allowed.<br><br>
      *  To delete a listing enhancement like 'BoldTitle', specify the value you are deleting;
      *  for example, Item.ListingEnhancement[BoldTitle].
      *
@@ -189,9 +189,7 @@ class RelistItemRequestType extends AbstractRequestType
         }
         $value = $this->getDeletedField();
         if (null !== $value && !empty($this->getDeletedField())) {
-            $writer->write(array_map(function ($v) {
-                return ["DeletedField" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["DeletedField" => $v];}, $value));
         }
     }
 

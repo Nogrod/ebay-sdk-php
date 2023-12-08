@@ -337,9 +337,7 @@ class GetVeROReportStatusResponseType extends AbstractResponseType
         }
         $value = $this->getReportedItemDetails();
         if (null !== $value && !empty($this->getReportedItemDetails())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ReportedItemDetails", array_map(function ($v) {
-                return ["ReportedItem" => $v];
-            }, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ReportedItemDetails", array_map(function ($v) {return ["ReportedItem" => $v];}, $value));
         }
     }
 
@@ -384,9 +382,7 @@ class GetVeROReportStatusResponseType extends AbstractResponseType
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReportedItemDetails', true);
         if (null !== $value && !empty($value)) {
-            $this->setReportedItemDetails(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\VeROReportedItemType::fromKeyValue($v);
-            }, $value));
+            $this->setReportedItemDetails(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\VeROReportedItemType::fromKeyValue($v);}, $value));
         }
     }
 }

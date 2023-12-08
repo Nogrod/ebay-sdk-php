@@ -169,9 +169,7 @@ class SearchResultType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
         }
         $value = $this->getItem();
         if (null !== $value && !empty($this->getItem())) {
-            $writer->write(array_map(function ($v) {
-                return ["item" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["item" => $v];}, $value));
         }
         $value = $this->getDelimiter();
         if (null !== $value) {
@@ -195,9 +193,7 @@ class SearchResultType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     {
         $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}item', true);
         if (null !== $value && !empty($value)) {
-            $this->setItem(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Finding\SearchItemType::fromKeyValue($v);
-            }, $value));
+            $this->setItem(array_map(function ($v) {return \Nogrod\eBaySDK\Finding\SearchItemType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}delimiter');
         if (null !== $value) {

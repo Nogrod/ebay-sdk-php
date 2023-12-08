@@ -120,9 +120,7 @@ class RefundInformationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getRefund();
         if (null !== $value && !empty($this->getRefund())) {
-            $writer->write(array_map(function ($v) {
-                return ["Refund" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["Refund" => $v];}, $value));
         }
     }
 
@@ -142,9 +140,7 @@ class RefundInformationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
     {
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Refund', true);
         if (null !== $value && !empty($value)) {
-            $this->setRefund(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\RefundTransactionInfoType::fromKeyValue($v);
-            }, $value));
+            $this->setRefund(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\RefundTransactionInfoType::fromKeyValue($v);}, $value));
         }
     }
 }

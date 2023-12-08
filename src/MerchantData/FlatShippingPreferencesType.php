@@ -232,9 +232,7 @@ class FlatShippingPreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre\
         }
         $value = $this->getFlatRateInsuranceRangeCost();
         if (null !== $value && !empty($this->getFlatRateInsuranceRangeCost())) {
-            $writer->write(array_map(function ($v) {
-                return ["FlatRateInsuranceRangeCost" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["FlatRateInsuranceRangeCost" => $v];}, $value));
         }
         $value = $this->getFlatShippingRateOption();
         if (null !== $value) {
@@ -270,9 +268,7 @@ class FlatShippingPreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre\
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FlatRateInsuranceRangeCost', true);
         if (null !== $value && !empty($value)) {
-            $this->setFlatRateInsuranceRangeCost(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\FlatRateInsuranceRangeCostType::fromKeyValue($v);
-            }, $value));
+            $this->setFlatRateInsuranceRangeCost(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\FlatRateInsuranceRangeCostType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FlatShippingRateOption');
         if (null !== $value) {

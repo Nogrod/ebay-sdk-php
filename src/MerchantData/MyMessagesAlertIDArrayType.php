@@ -92,9 +92,7 @@ class MyMessagesAlertIDArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\X
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getAlertID();
         if (null !== $value && !empty($this->getAlertID())) {
-            $writer->write(array_map(function ($v) {
-                return ["AlertID" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["AlertID" => $v];}, $value));
         }
     }
 

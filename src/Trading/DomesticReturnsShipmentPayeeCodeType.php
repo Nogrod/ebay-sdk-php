@@ -92,9 +92,7 @@ class DomesticReturnsShipmentPayeeCodeType implements \Sabre\Xml\XmlSerializable
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getDomesticReturnsShipmentPayee();
         if (null !== $value && !empty($this->getDomesticReturnsShipmentPayee())) {
-            $writer->write(array_map(function ($v) {
-                return ["DomesticReturnsShipmentPayee" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["DomesticReturnsShipmentPayee" => $v];}, $value));
         }
     }
 

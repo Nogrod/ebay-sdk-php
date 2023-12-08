@@ -94,9 +94,7 @@ class GeteBayDetailsRequestType extends AbstractRequestType
         parent::xmlSerialize($writer);
         $value = $this->getDetailName();
         if (null !== $value && !empty($this->getDetailName())) {
-            $writer->write(array_map(function ($v) {
-                return ["DetailName" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["DetailName" => $v];}, $value));
         }
     }
 

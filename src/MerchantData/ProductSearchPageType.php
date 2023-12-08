@@ -241,15 +241,11 @@ class ProductSearchPageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
         }
         $value = $this->getSortCharacteristics();
         if (null !== $value && !empty($this->getSortCharacteristics())) {
-            $writer->write(array_map(function ($v) {
-                return ["SortCharacteristics" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["SortCharacteristics" => $v];}, $value));
         }
         $value = $this->getDataElementSet();
         if (null !== $value && !empty($this->getDataElementSet())) {
-            $writer->write(array_map(function ($v) {
-                return ["DataElementSet" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["DataElementSet" => $v];}, $value));
         }
     }
 
@@ -277,15 +273,11 @@ class ProductSearchPageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SortCharacteristics', true);
         if (null !== $value && !empty($value)) {
-            $this->setSortCharacteristics(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\CharacteristicType::fromKeyValue($v);
-            }, $value));
+            $this->setSortCharacteristics(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\CharacteristicType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DataElementSet', true);
         if (null !== $value && !empty($value)) {
-            $this->setDataElementSet(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\DataElementSetType::fromKeyValue($v);
-            }, $value));
+            $this->setDataElementSet(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\DataElementSetType::fromKeyValue($v);}, $value));
         }
     }
 }

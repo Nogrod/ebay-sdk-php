@@ -245,6 +245,19 @@ class SellingStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
     private $suggestedBidValues = null;
 
     /**
+     * Indicates if a listing is on hold due to an eBay policy violation.
+     *  <br><br>
+     *  If a listing is put on hold, users are unable to view the listing details, the listing is hidden from search, and all attempted purchases, offers, and bids for the listing are blocked. eBay, however, gives sellers the opportunity to address violations and get listings fully reinstated. A listing will be ended if a seller does not address a violation, or if the violation can not be rectified.
+     *  <br><br>
+     *  If a listing is fixable, the seller should be able to view the listing details and this boolean will be returned as <code>true</code>.
+     *  <br><br>
+     *  Once a listing is fixed, this boolean will no longer be returned.
+     *
+     * @var bool $listingOnHold
+     */
+    private $listingOnHold = null;
+
+    /**
      * Gets as bidCount
      *
      * Number of bids placed so far against the auction item.
@@ -968,6 +981,44 @@ class SellingStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
         return $this;
     }
 
+    /**
+     * Gets as listingOnHold
+     *
+     * Indicates if a listing is on hold due to an eBay policy violation.
+     *  <br><br>
+     *  If a listing is put on hold, users are unable to view the listing details, the listing is hidden from search, and all attempted purchases, offers, and bids for the listing are blocked. eBay, however, gives sellers the opportunity to address violations and get listings fully reinstated. A listing will be ended if a seller does not address a violation, or if the violation can not be rectified.
+     *  <br><br>
+     *  If a listing is fixable, the seller should be able to view the listing details and this boolean will be returned as <code>true</code>.
+     *  <br><br>
+     *  Once a listing is fixed, this boolean will no longer be returned.
+     *
+     * @return bool
+     */
+    public function getListingOnHold()
+    {
+        return $this->listingOnHold;
+    }
+
+    /**
+     * Sets a new listingOnHold
+     *
+     * Indicates if a listing is on hold due to an eBay policy violation.
+     *  <br><br>
+     *  If a listing is put on hold, users are unable to view the listing details, the listing is hidden from search, and all attempted purchases, offers, and bids for the listing are blocked. eBay, however, gives sellers the opportunity to address violations and get listings fully reinstated. A listing will be ended if a seller does not address a violation, or if the violation can not be rectified.
+     *  <br><br>
+     *  If a listing is fixable, the seller should be able to view the listing details and this boolean will be returned as <code>true</code>.
+     *  <br><br>
+     *  Once a listing is fixed, this boolean will no longer be returned.
+     *
+     * @param bool $listingOnHold
+     * @return self
+     */
+    public function setListingOnHold($listingOnHold)
+    {
+        $this->listingOnHold = $listingOnHold;
+        return $this;
+    }
+
     public function xmlSerialize(\Sabre\Xml\Writer $writer): void
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
@@ -1045,9 +1096,12 @@ class SellingStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
         }
         $value = $this->getSuggestedBidValues();
         if (null !== $value && !empty($this->getSuggestedBidValues())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SuggestedBidValues", array_map(function ($v) {
-                return ["BidValue" => $v];
-            }, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SuggestedBidValues", array_map(function ($v) {return ["BidValue" => $v];}, $value));
+        }
+        $value = $this->getListingOnHold();
+        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        if (null !== $value) {
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ListingOnHold", $value);
         }
     }
 
@@ -1135,9 +1189,11 @@ class SellingStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SuggestedBidValues', true);
         if (null !== $value && !empty($value)) {
-            $this->setSuggestedBidValues(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($v);
-            }, $value));
+            $this->setSuggestedBidValues(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($v);}, $value));
+        }
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ListingOnHold');
+        if (null !== $value) {
+            $this->setListingOnHold($value);
         }
     }
 }

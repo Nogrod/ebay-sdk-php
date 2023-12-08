@@ -327,9 +327,7 @@ class NameValueListArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getNameValueList();
         if (null !== $value && !empty($this->getNameValueList())) {
-            $writer->write(array_map(function ($v) {
-                return ["NameValueList" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["NameValueList" => $v];}, $value));
         }
     }
 
@@ -349,9 +347,7 @@ class NameValueListArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     {
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}NameValueList', true);
         if (null !== $value && !empty($value)) {
-            $this->setNameValueList(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\NameValueListType::fromKeyValue($v);
-            }, $value));
+            $this->setNameValueList(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\NameValueListType::fromKeyValue($v);}, $value));
         }
     }
 }

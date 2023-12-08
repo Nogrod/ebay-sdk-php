@@ -364,9 +364,7 @@ class AspectHistogramContainerType implements \Sabre\Xml\XmlSerializable, \Sabre
         }
         $value = $this->getAspect();
         if (null !== $value && !empty($this->getAspect())) {
-            $writer->write(array_map(function ($v) {
-                return ["aspect" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["aspect" => $v];}, $value));
         }
         $value = $this->getDelimiter();
         if (null !== $value) {
@@ -398,9 +396,7 @@ class AspectHistogramContainerType implements \Sabre\Xml\XmlSerializable, \Sabre
         }
         $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}aspect', true);
         if (null !== $value && !empty($value)) {
-            $this->setAspect(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Finding\AspectType::fromKeyValue($v);
-            }, $value));
+            $this->setAspect(array_map(function ($v) {return \Nogrod\eBaySDK\Finding\AspectType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}delimiter');
         if (null !== $value) {

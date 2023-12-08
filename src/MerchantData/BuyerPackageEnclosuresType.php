@@ -92,9 +92,7 @@ class BuyerPackageEnclosuresType implements \Sabre\Xml\XmlSerializable, \Sabre\X
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getBuyerPackageEnclosure();
         if (null !== $value && !empty($this->getBuyerPackageEnclosure())) {
-            $writer->write(array_map(function ($v) {
-                return ["BuyerPackageEnclosure" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["BuyerPackageEnclosure" => $v];}, $value));
         }
     }
 
@@ -114,9 +112,7 @@ class BuyerPackageEnclosuresType implements \Sabre\Xml\XmlSerializable, \Sabre\X
     {
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BuyerPackageEnclosure', true);
         if (null !== $value && !empty($value)) {
-            $this->setBuyerPackageEnclosure(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\BuyerPackageEnclosureType::fromKeyValue($v);
-            }, $value));
+            $this->setBuyerPackageEnclosure(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\BuyerPackageEnclosureType::fromKeyValue($v);}, $value));
         }
     }
 }

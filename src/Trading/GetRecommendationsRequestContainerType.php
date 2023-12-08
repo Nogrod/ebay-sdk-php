@@ -373,9 +373,7 @@ class GetRecommendationsRequestContainerType implements \Sabre\Xml\XmlSerializab
         }
         $value = $this->getRecommendationEngine();
         if (null !== $value && !empty($this->getRecommendationEngine())) {
-            $writer->write(array_map(function ($v) {
-                return ["RecommendationEngine" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["RecommendationEngine" => $v];}, $value));
         }
         $value = $this->getQuery();
         if (null !== $value) {
@@ -387,9 +385,7 @@ class GetRecommendationsRequestContainerType implements \Sabre\Xml\XmlSerializab
         }
         $value = $this->getDeletedField();
         if (null !== $value && !empty($this->getDeletedField())) {
-            $writer->write(array_map(function ($v) {
-                return ["DeletedField" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["DeletedField" => $v];}, $value));
         }
         $value = $this->getExcludeRelationships();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;

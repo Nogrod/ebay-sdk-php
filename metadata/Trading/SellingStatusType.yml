@@ -208,3 +208,14 @@ Nogrod\eBaySDK\Trading\SellingStatusType:
                 entry_name: BidValue
                 skip_when_empty: true
                 namespace: 'urn:ebay:apis:eBLBaseComponents'
+        listingOnHold:
+            expose: true
+            access_type: public_method
+            serialized_name: ListingOnHold
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getListingOnHold
+                setter: setListingOnHold
+            type: bool

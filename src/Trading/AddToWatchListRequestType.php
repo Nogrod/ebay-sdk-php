@@ -191,15 +191,11 @@ class AddToWatchListRequestType extends AbstractRequestType
         parent::xmlSerialize($writer);
         $value = $this->getItemID();
         if (null !== $value && !empty($this->getItemID())) {
-            $writer->write(array_map(function ($v) {
-                return ["ItemID" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["ItemID" => $v];}, $value));
         }
         $value = $this->getVariationKey();
         if (null !== $value && !empty($this->getVariationKey())) {
-            $writer->write(array_map(function ($v) {
-                return ["VariationKey" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["VariationKey" => $v];}, $value));
         }
     }
 
@@ -224,9 +220,7 @@ class AddToWatchListRequestType extends AbstractRequestType
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}VariationKey', true);
         if (null !== $value && !empty($value)) {
-            $this->setVariationKey(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\VariationKeyType::fromKeyValue($v);
-            }, $value));
+            $this->setVariationKey(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\VariationKeyType::fromKeyValue($v);}, $value));
         }
     }
 }

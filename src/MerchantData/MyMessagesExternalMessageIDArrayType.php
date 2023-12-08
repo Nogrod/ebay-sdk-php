@@ -110,9 +110,7 @@ class MyMessagesExternalMessageIDArrayType implements \Sabre\Xml\XmlSerializable
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getExternalMessageID();
         if (null !== $value && !empty($this->getExternalMessageID())) {
-            $writer->write(array_map(function ($v) {
-                return ["ExternalMessageID" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["ExternalMessageID" => $v];}, $value));
         }
     }
 

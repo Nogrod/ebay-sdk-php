@@ -657,9 +657,7 @@ class MemberMessageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
         }
         $value = $this->getRecipientID();
         if (null !== $value && !empty($this->getRecipientID())) {
-            $writer->write(array_map(function ($v) {
-                return ["RecipientID" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["RecipientID" => $v];}, $value));
         }
         $value = $this->getSubject();
         if (null !== $value) {
@@ -679,9 +677,7 @@ class MemberMessageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
         }
         $value = $this->getMessageMedia();
         if (null !== $value && !empty($this->getMessageMedia())) {
-            $writer->write(array_map(function ($v) {
-                return ["MessageMedia" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["MessageMedia" => $v];}, $value));
         }
     }
 
@@ -749,9 +745,7 @@ class MemberMessageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MessageMedia', true);
         if (null !== $value && !empty($value)) {
-            $this->setMessageMedia(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\MessageMediaType::fromKeyValue($v);
-            }, $value));
+            $this->setMessageMedia(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\MessageMediaType::fromKeyValue($v);}, $value));
         }
     }
 }

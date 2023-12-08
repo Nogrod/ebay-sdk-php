@@ -574,9 +574,7 @@ class ShippingInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
         }
         $value = $this->getShipToLocations();
         if (null !== $value && !empty($this->getShipToLocations())) {
-            $writer->write(array_map(function ($v) {
-                return ["shipToLocations" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["shipToLocations" => $v];}, $value));
         }
         $value = $this->getExpeditedShipping();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;

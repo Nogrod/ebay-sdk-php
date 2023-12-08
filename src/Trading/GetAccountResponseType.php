@@ -382,9 +382,7 @@ class GetAccountResponseType extends AbstractResponseType
         }
         $value = $this->getAccountEntries();
         if (null !== $value && !empty($this->getAccountEntries())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}AccountEntries", array_map(function ($v) {
-                return ["AccountEntry" => $v];
-            }, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}AccountEntries", array_map(function ($v) {return ["AccountEntry" => $v];}, $value));
         }
         $value = $this->getPaginationResult();
         if (null !== $value) {
@@ -438,9 +436,7 @@ class GetAccountResponseType extends AbstractResponseType
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AccountEntries', true);
         if (null !== $value && !empty($value)) {
-            $this->setAccountEntries(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\AccountEntryType::fromKeyValue($v);
-            }, $value));
+            $this->setAccountEntries(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\AccountEntryType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaginationResult');
         if (null !== $value) {

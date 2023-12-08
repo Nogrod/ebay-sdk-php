@@ -386,9 +386,7 @@ class GetDescriptionTemplatesResponseType extends AbstractResponseType
         parent::xmlSerialize($writer);
         $value = $this->getDescriptionTemplate();
         if (null !== $value && !empty($this->getDescriptionTemplate())) {
-            $writer->write(array_map(function ($v) {
-                return ["DescriptionTemplate" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["DescriptionTemplate" => $v];}, $value));
         }
         $value = $this->getLayoutTotal();
         if (null !== $value) {
@@ -396,21 +394,15 @@ class GetDescriptionTemplatesResponseType extends AbstractResponseType
         }
         $value = $this->getObsoleteLayoutID();
         if (null !== $value && !empty($this->getObsoleteLayoutID())) {
-            $writer->write(array_map(function ($v) {
-                return ["ObsoleteLayoutID" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["ObsoleteLayoutID" => $v];}, $value));
         }
         $value = $this->getObsoleteThemeID();
         if (null !== $value && !empty($this->getObsoleteThemeID())) {
-            $writer->write(array_map(function ($v) {
-                return ["ObsoleteThemeID" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["ObsoleteThemeID" => $v];}, $value));
         }
         $value = $this->getThemeGroup();
         if (null !== $value && !empty($this->getThemeGroup())) {
-            $writer->write(array_map(function ($v) {
-                return ["ThemeGroup" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["ThemeGroup" => $v];}, $value));
         }
         $value = $this->getThemeTotal();
         if (null !== $value) {
@@ -435,9 +427,7 @@ class GetDescriptionTemplatesResponseType extends AbstractResponseType
         parent::setKeyValue($keyValue);
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DescriptionTemplate', true);
         if (null !== $value && !empty($value)) {
-            $this->setDescriptionTemplate(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\DescriptionTemplateType::fromKeyValue($v);
-            }, $value));
+            $this->setDescriptionTemplate(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\DescriptionTemplateType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LayoutTotal');
         if (null !== $value) {
@@ -453,9 +443,7 @@ class GetDescriptionTemplatesResponseType extends AbstractResponseType
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ThemeGroup', true);
         if (null !== $value && !empty($value)) {
-            $this->setThemeGroup(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\ThemeGroupType::fromKeyValue($v);
-            }, $value));
+            $this->setThemeGroup(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\ThemeGroupType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ThemeTotal');
         if (null !== $value) {

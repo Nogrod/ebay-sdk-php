@@ -831,9 +831,7 @@ class StoreType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
         }
         $value = $this->getCustomCategories();
         if (null !== $value && !empty($this->getCustomCategories())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CustomCategories", array_map(function ($v) {
-                return ["CustomCategory" => $v];
-            }, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CustomCategories", array_map(function ($v) {return ["CustomCategory" => $v];}, $value));
         }
         $value = $this->getCustomListingHeader();
         if (null !== $value) {
@@ -926,9 +924,7 @@ class StoreType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CustomCategories', true);
         if (null !== $value && !empty($value)) {
-            $this->setCustomCategories(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\StoreCustomCategoryType::fromKeyValue($v);
-            }, $value));
+            $this->setCustomCategories(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\StoreCustomCategoryType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CustomListingHeader');
         if (null !== $value) {

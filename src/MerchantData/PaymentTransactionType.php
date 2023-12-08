@@ -387,9 +387,7 @@ class PaymentTransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
         }
         $value = $this->getPaymentReferenceID();
         if (null !== $value && !empty($this->getPaymentReferenceID())) {
-            $writer->write(array_map(function ($v) {
-                return ["PaymentReferenceID" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["PaymentReferenceID" => $v];}, $value));
         }
     }
 
@@ -437,9 +435,7 @@ class PaymentTransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaymentReferenceID', true);
         if (null !== $value && !empty($value)) {
-            $this->setPaymentReferenceID(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\TransactionReferenceType::fromKeyValue($v);
-            }, $value));
+            $this->setPaymentReferenceID(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\TransactionReferenceType::fromKeyValue($v);}, $value));
         }
     }
 }

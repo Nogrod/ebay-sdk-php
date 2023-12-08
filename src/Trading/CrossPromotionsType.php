@@ -315,9 +315,7 @@ class CrossPromotionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
         }
         $value = $this->getPromotedItem();
         if (null !== $value && !empty($this->getPromotedItem())) {
-            $writer->write(array_map(function ($v) {
-                return ["PromotedItem" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["PromotedItem" => $v];}, $value));
         }
     }
 
@@ -361,9 +359,7 @@ class CrossPromotionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PromotedItem', true);
         if (null !== $value && !empty($value)) {
-            $this->setPromotedItem(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\PromotedItemType::fromKeyValue($v);
-            }, $value));
+            $this->setPromotedItem(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\PromotedItemType::fromKeyValue($v);}, $value));
         }
     }
 }

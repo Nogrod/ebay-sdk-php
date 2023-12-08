@@ -2542,15 +2542,11 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
         }
         $value = $this->getShippingServiceOptions();
         if (null !== $value && !empty($this->getShippingServiceOptions())) {
-            $writer->write(array_map(function ($v) {
-                return ["ShippingServiceOptions" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["ShippingServiceOptions" => $v];}, $value));
         }
         $value = $this->getInternationalShippingServiceOption();
         if (null !== $value && !empty($this->getInternationalShippingServiceOption())) {
-            $writer->write(array_map(function ($v) {
-                return ["InternationalShippingServiceOption" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["InternationalShippingServiceOption" => $v];}, $value));
         }
         $value = $this->getShippingType();
         if (null !== $value) {
@@ -2567,9 +2563,7 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
         }
         $value = $this->getTaxTable();
         if (null !== $value && !empty($this->getTaxTable())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TaxTable", array_map(function ($v) {
-                return ["TaxJurisdiction" => $v];
-            }, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TaxTable", array_map(function ($v) {return ["TaxJurisdiction" => $v];}, $value));
         }
         $value = $this->getGetItFast();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;
@@ -2628,9 +2622,7 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
         }
         $value = $this->getExcludeShipToLocation();
         if (null !== $value && !empty($this->getExcludeShipToLocation())) {
-            $writer->write(array_map(function ($v) {
-                return ["ExcludeShipToLocation" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["ExcludeShipToLocation" => $v];}, $value));
         }
         $value = $this->getSellerExcludeShipToLocationsPreference();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;
@@ -2639,9 +2631,7 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
         }
         $value = $this->getShipmentTrackingDetails();
         if (null !== $value && !empty($this->getShipmentTrackingDetails())) {
-            $writer->write(array_map(function ($v) {
-                return ["ShipmentTrackingDetails" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["ShipmentTrackingDetails" => $v];}, $value));
         }
         $value = $this->getRateTableDetails();
         if (null !== $value) {
@@ -2709,15 +2699,11 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingServiceOptions', true);
         if (null !== $value && !empty($value)) {
-            $this->setShippingServiceOptions(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\ShippingServiceOptionsType::fromKeyValue($v);
-            }, $value));
+            $this->setShippingServiceOptions(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\ShippingServiceOptionsType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}InternationalShippingServiceOption', true);
         if (null !== $value && !empty($value)) {
-            $this->setInternationalShippingServiceOption(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\InternationalShippingServiceOptionsType::fromKeyValue($v);
-            }, $value));
+            $this->setInternationalShippingServiceOption(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\InternationalShippingServiceOptionsType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingType');
         if (null !== $value) {
@@ -2733,9 +2719,7 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TaxTable', true);
         if (null !== $value && !empty($value)) {
-            $this->setTaxTable(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\TaxJurisdictionType::fromKeyValue($v);
-            }, $value));
+            $this->setTaxTable(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\TaxJurisdictionType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}GetItFast');
         if (null !== $value) {
@@ -2799,9 +2783,7 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShipmentTrackingDetails', true);
         if (null !== $value && !empty($value)) {
-            $this->setShipmentTrackingDetails(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\ShipmentTrackingDetailsType::fromKeyValue($v);
-            }, $value));
+            $this->setShipmentTrackingDetails(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\ShipmentTrackingDetailsType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RateTableDetails');
         if (null !== $value) {

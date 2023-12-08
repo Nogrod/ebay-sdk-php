@@ -408,9 +408,7 @@ class GetFeedbackRequestType extends AbstractRequestType
         }
         $value = $this->getCommentType();
         if (null !== $value && !empty($this->getCommentType())) {
-            $writer->write(array_map(function ($v) {
-                return ["CommentType" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["CommentType" => $v];}, $value));
         }
         $value = $this->getFeedbackType();
         if (null !== $value) {

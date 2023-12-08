@@ -655,9 +655,7 @@ class ShippingServiceOptionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
         }
         $value = $this->getShipsTo();
         if (null !== $value && !empty($this->getShipsTo())) {
-            $writer->write(array_map(function ($v) {
-                return ["ShipsTo" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["ShipsTo" => $v];}, $value));
         }
         $value = $this->getEstimatedDeliveryMinTime();
         if (null !== $value) {

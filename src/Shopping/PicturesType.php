@@ -135,9 +135,7 @@ class PicturesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
         }
         $value = $this->getVariationSpecificPictureSet();
         if (null !== $value && !empty($this->getVariationSpecificPictureSet())) {
-            $writer->write(array_map(function ($v) {
-                return ["VariationSpecificPictureSet" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["VariationSpecificPictureSet" => $v];}, $value));
         }
     }
 
@@ -161,9 +159,7 @@ class PicturesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}VariationSpecificPictureSet', true);
         if (null !== $value && !empty($value)) {
-            $this->setVariationSpecificPictureSet(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Shopping\VariationSpecificPictureSetType::fromKeyValue($v);
-            }, $value));
+            $this->setVariationSpecificPictureSet(array_map(function ($v) {return \Nogrod\eBaySDK\Shopping\VariationSpecificPictureSetType::fromKeyValue($v);}, $value));
         }
     }
 }

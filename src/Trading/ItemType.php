@@ -27,28 +27,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     private $applicationData = null;
 
     /**
-     * This field has been deprecated, and should no longer be used.
-     *
-     * @var \Nogrod\eBaySDK\Trading\AttributeSetType[] $attributeSetArray
-     */
-    private $attributeSetArray = null;
-
-    /**
-     * This field has been deprecated, and should no longer be used.
-     *
-     * @var \Nogrod\eBaySDK\Trading\AttributeType[] $attributeArray
-     */
-    private $attributeArray = null;
-
-    /**
-     * This field is deprecated, and should no longer be used.
-     *
-     * @var \Nogrod\eBaySDK\Trading\LookupAttributeType[] $lookupAttributeArray
-     */
-    private $lookupAttributeArray = null;
-
-    /**
-     * This field is included and set to if <code>true</code> in an Add/Revise/Relist call if the seller wants to require immediate payment from the buyer. If this field is set to <code>false</code> or not included, the seller is not requestinng immediate payment.
+     * This field is included and set to if <code>true</code> in an Add/Revise/Relist call if the seller wants to require immediate payment from the buyer. If this field is set to <code>false</code> or not included, the seller is not requesting immediate payment.
      *  <br/><br/>
      *  Note that this field may be set to <code>true</code>, but that does not necessarily mean that the buyer will be required to pay right away. For example, immediate payment is not currently applicable to auctions items won in a competitive bidding process or to items where the buyer and seller negotiated the price through the Best Offer feature. Immediate payment is also not applicable to listings where the payment happens offline between the buyer and seller.
      *
@@ -103,7 +82,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     private $categoryMappingAllowed = null;
 
     /**
-     * This container identifies the nonprofit organization that will benefit with a percentage of the proceeds from each sale of an item through an auction or fixed-price listing. Charity names and IDs can be found by going to <a href="https://charity.ebay.com/charity-auctions/my-causes" target="_blank">eBay for Charity</a> page and doing a search, or by doing a search with the <b>GetCharities</b> call. The donation percentage can be set in 5 percent increments from 10 percent to 100 percent.
+     * This container identifies the nonprofit organization that will benefit with a percentage of the proceeds from each sale of an item through an auction or fixed-price listing. Charity names and IDs can be found by going to <a href="https://charity.ebay.com/charity-auctions/my-causes" target="_blank">eBay for Charity</a> page and doing a search. The donation percentage can be set in 5 percent increments from 10 percent to 100 percent.
      *  <br><br>
      *  When it comes to revising an auction or fixed-price listing, you can add a benefitting charity (as long as there is at least 12 hours left before end of listing/close of auction), but you cannot remove or change a nonprofit company once one is already established in the original listing.
      *  <br><br>
@@ -759,6 +738,10 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <br>
      *  The listing title can only be changed if the active listing has yet to have any bids or sales, and the listing does not end within 12 hours.
      *  <br>
+     *  <span class="tablenote"><b>Note:</b> When making a <b>GetSellerEvents</b> call, this field will be returned masked as <code>*****************</code> for on-hold listings.
+     *  </span>
+     *  <span class="tablenote"><b>Note:</b> When making a <b>GetSellerTransactions</b> or <b>GetMyeBaySelling</b> call, the item ID value of the listing will be returned in this field to indicate that the listing is on hold.
+     *  </span>
      *
      * @var string $title
      */
@@ -1013,7 +996,8 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     private $videoDetails = null;
 
     /**
-     * This container provides IDs for the producer or importer related to the new item, packaging, added documentation, or an eco participation fee. In some markets, such as in France, this may be the importer of the item. For more information, see the <b>Extended Producer Responsibility for business sellers</b> page for your site (for example, <a href="https://www.ebay.com/help/selling/all-about-selling/selling-internationally/extended-producer-responsibility-for-business-sellers?id=5314" target="_blank">https://www.ebay.com/help/selling/all-about-selling/selling-internationally/extended-producer-responsibility-for-business-sellers?id=5314</a>). This field is supported by a limited number of sites and specific categories. Use the <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getExtendedProducerResponsibilityPolicies" target="_blank">getExtendedProducerResponsibilityPolicies</a> method of the <b>Sell Metadata API</b> to retrieve valid categories for a site. <br/><br/>For <b>GetItem</b> calls, this container is only returned to the listing owner, if the container is available.
+     * This container is used to provide the eco-participation fee for a product. Use the <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getExtendedProducerResponsibilityPolicies" target="_blank">getExtendedProducerResponsibilityPolicies</a> method of the <b>Sell Metadata API</b> to retrieve categories that support eco-participation fee for a specified marketplace."
+     *  <br>For <b>GetItem</b> calls, this container is only returned to the listing owner, if the container is available.
      *
      * @var \Nogrod\eBaySDK\Trading\ExtendedProducerResponsibilityType $extendedProducerResponsibility
      */
@@ -1208,7 +1192,10 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     private $mechanicalCheckAccepted = null;
 
     /**
-     * Specifies whether the following Business Seller fields have been updated for
+     * <span class="tablenote"><strong>Note:</strong>
+     *  This field is not usable and will be ignored if sent. See <a href="https://developer.ebay.com/develop/apis/api-deprecation-status">API Deprecation Status</a> for the decommission date (when this field will be removed from the WSDL).
+     *  </span>
+     *  Specifies whether the following Business Seller fields have been updated for
      *  the item specified in the request: First Name, Last Name, Fax, Email
      *  Address, Additional Contact Information, Trade Registration Number, VAT
      *  Identification Number.
@@ -1218,7 +1205,10 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     private $updateSellerInfo = null;
 
     /**
-     * Specifies whether the Return Policy Details have been updated
+     * <span class="tablenote"><strong>Note:</strong>
+     *  This field is not usable and will be ignored if sent. See <a href="https://developer.ebay.com/develop/apis/api-deprecation-status">API Deprecation Status</a> for the decommission date (when this field will be removed from the WSDL).
+     *  </span>
+     *  Specifies whether the Return Policy Details have been updated
      *  for the item specified in the request.
      *
      * @var bool $updateReturnPolicy
@@ -1471,9 +1461,17 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     private $itemCompatibilityCount = null;
 
     /**
-     * This is a numeric identifier for an item's condition. All numeric Condition ID values map to an item condition string value. For example, numeric identifer <code>1000</code> maps to <code>New</code> condition.
+     * This is a numeric identifier for an item's condition. All numeric Condition ID values map to an item condition string value. For example, numeric identifier <code>1000</code> maps to <code>New</code> condition.
      *  <br>
-     *  <span class="tablenote"><b>Note: </b> For trading cards, the numeric identifier <code>2750</code> indicates that the trading card is graded, and <code>4000</code> indicates it is ungraded.</span>
+     *  <span class="tablenote"><b>Important: </b>
+     *  For trading card listings in <b>Non-Sport Trading Card Singles (<code>183050</code>)</b>, <b>CCG Individual Cards (<code>183454</code>)</b>, and <b>Sports Trading Card Singles (<code>261328</code>)</b> categories, Condition ID 2750 can be used to specify the card as a <b>Graded</b> card and Condition ID 4000 can be used to specify the card as an <b>Ungraded</b> card. If either of these condition IDs are used, the seller is required to use the <b>ConditionDescriptors</b> container to provide one or more applicable Condition Descriptor name-value pairs. See the <a href="/Devzone/XML/docs/Reference/eBay/AddItem.html#Request.Item.ConditionDescriptors">ConditionDescriptors</a> field description for more information.
+     *  <br>
+     *  <br>
+     *  Beginning on October 23rd, 2023, trading card listings in the affected categories must either use Condition ID 2750 or Condition ID 4000, and no other item conditions will be accepted. These Condition IDs and the <b>ConditionDescriptors</b> container will be required for all new listings. If not provided after this date, the following calls will fail: <b>AddItem</b>, <b>AddFixedPriceItem</b>, <b>AddItems</b>, <b>VerifyAddItem</b>, and <b>VerifyAddFixedPriceItem</b>.
+     *  <br>
+     *  <br>
+     *  By January 22, 2024, all existing listings must be modified with either Condition ID 2750 or Condition ID 4000 and applicable <b>ConditionDescriptors</b> name-value pairs. This adds <b>ReviseItem</b>, <b>ReviseFixedPriceItem</b>, <b>RelistItem</b>, <b>RelistFixedPriceItem</b>, and <b>VerifyRelistItem</b> calls to the requirement.
+     *  </span>
      *  Most eBay listing categories require an item condition, but a few eBay categories do not (such as Digital Gift Cards or Antiques categories). To verify if the listing category requires an item condition, and if so, what are the supported item condition and <b>ConditionID</b> values, you can call <b>GetCategoryFeatures</b>. In this <b>GetCategoryFeatures</b> call, you'd pass in the listing <b>CategoryID</b> value and two <b>FeatureID</b> fields - one of these fields set to <code>ConditionEnabled</code>, and the other field set to <code>ConditionValues</code>.
      *  <br><br>
      *  In the <b>GetCategoryFeatures</b> response, look at the Category.<b>ConditionEnabled</b> to see if item condition is required for the category. Then look at the Category.<b>ConditionValues</b> container in the response for the full list of Condition IDs that you can pass in through the <b>ConditionID</b> field of an Add/Revise/Relist/Verify call. Note that the Condition.<b>DisplayName</b> value in the response is the actual condition value that will appear in the actual eBay listing.
@@ -1505,9 +1503,16 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     private $conditionID = null;
 
     /**
-     * <span class="tablenote"><b>Note: </b> This container is currently available only in the United Kingdom (GB), with rollout to all other marketplaces in early July 2023.</span>
-     *  This container is used in <b>Add/Revise/Relist/Verify</b> listing calls to designate the condition descriptors for the listing. It is also returned in <b>GetItem</b> to indicate the condition descriptors applied to the listing.
-     *  <span class="tablenote"><b>Note: </b> In the case of trading cards, also specify the <b>ConditionID</b>. For graded trading cards, use the numeric identifier <code>2750</code>; for ungraded, use <code>4000</code>.
+     * This container is used in <b>Add/Revise/Relist/Verify</b> listing calls to designate the condition descriptors for the listing. It is also returned in <b>GetItem</b> to indicate the condition descriptors applied to the listing.
+     *  <br>
+     *  <span class="tablenote"><b>Important: </b>
+     *  For trading card listings in <b>Non-Sport Trading Card Singles (<code>183050</code>)</b>, <b>CCG Individual Cards (<code>183454</code>)</b>, and <b>Sports Trading Card Singles (<code>261328</code>)</b> categories, Condition ID 2750 can be used to specify the card as a <b>Graded</b> card and Condition ID 4000 can be used to specify the card as an <b>Ungraded</b> card. If either of these condition IDs are used, the seller is required to use the <b>ConditionDescriptors</b> container to provide one or more applicable Condition Descriptor name-value pairs.
+     *  <br>
+     *  <br>
+     *  Beginning on October 23rd, 2023, trading card listings in the affected categories must either use Condition ID 2750 or Condition ID 4000, and no other item conditions will be accepted. These Condition IDs and the <b>ConditionDescriptors</b> container will be required for all new listings. If not provided after this date, the following calls will fail: <b>AddItem</b>, <b>AddFixedPriceItem</b>, <b>AddItems</b>, <b>VerifyAddItem</b>, and <b>VerifyAddFixedPriceItem</b>.
+     *  <br>
+     *  <br>
+     *  By January 22, 2024, all existing listings must be modified with either Condition ID 2750 or Condition ID 4000 and applicable <b>ConditionDescriptors</b> name-value pairs. This adds <b>ReviseItem</b>, <b>ReviseFixedPriceItem</b>, <b>RelistItem</b>, <b>RelistFixedPriceItem</b>, and <b>VerifyRelistItem</b> calls to the requirement.
      *  </span>
      *
      * @var \Nogrod\eBaySDK\Trading\ConditionDescriptorType[] $conditionDescriptors
@@ -1523,7 +1528,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <br>
      *  The <b>ConditionDescription</b> field is returned by <b>GetItem</b> (and other related calls that return the Item object) if a condition description is specified in the listing.
      *  <br>
-     *  <span class="tablenote"><b>Note: </b> This field may be dropped if also using <b>ConditionDescriptors</b>.</span>
+     *  <span class="tablenote"><b>Note: </b> This field should not be included if <b>ConditionDescriptors</b> are being used. If it is used, a warning will be triggered and the field will be dropped from the listing.</span>
      *
      * @var string $conditionDescription
      */
@@ -1557,8 +1562,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     private $conditionDisplayName = null;
 
     /**
-     * <span class="tablenote"><b>Note: </b> The <b>EnergyEfficiencyLabel</b> and the <b>Hazmat</b> containers are currently available only on the German (DE) marketplace. The <b>RepairScore</b> field is provided for future use (not presently available). </span>
-     *  <br />This container is used by the seller to provide Energy Efficiency Label information, hazardous material related information, and the repair score for the listing.
+     * This container is used by the seller to provide Energy Efficiency Label information, hazardous material related information, and the repair score for the listing.
      *
      * @var \Nogrod\eBaySDK\Trading\RegulatoryType $regulatory
      */
@@ -1628,14 +1632,15 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  For the eBay Australia site, required for vehicles from model year 1989 or later. For the eBay Australia site, only appears on the View Item page if you also specify the date of first registration in the listing's Item Specifics.
      *  <br><br>
      *  Appears in the VIN field in the Item Specifics section of eBay's View Item page.
-     *  <br>
+     *  <br><br>
+     *  <b>GetItem</b> will return this field for motor vehicle listings where the VIN is defined.<br>
      *
      * @var string $vIN
      */
     private $vIN = null;
 
     /**
-     * This field is deprecated.
+     * <b>GetItem</b> will return this field for motor vehicle listings where the VIN is defined.
      *
      * @var string $vINLink
      */
@@ -1646,21 +1651,24 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <br><br>
      *  Applicable to listings in UK eBay Motors Cars and Trucks, Motorcycle, and some Powersport categories.
      *  <br><br>
-     *  Appears as a VRM field in the Item Specifics section of eBay's View Item page. On the View Item page, the VRM value is masked (i.e., only a portion of the value is shown to users). In the <b>GetItem</b> response, the VRM is only returned if the call is made by the seller (i.e., the AuthToken is associated with the vehicle's seller).
+     *  Appears as a VRM field in the Item Specifics section of eBay's View Item page. On the View Item page, the VRM value is masked (i.e., only a portion of the value is shown to users). In the <b>GetItem</b> response, the VRM is only returned if the call is made by the seller (i.e., the AuthToken is associated with the vehicle's seller).<br><br><b>GetItem</b> will return this field for motor vehicle listings where the VRM is defined.
      *
      * @var string $vRM
      */
     private $vRM = null;
 
     /**
-     * This field is deprecated.
+     * <b>GetItem</b> will return this field for motor vehicle listings where the VRM is defined.
      *
      * @var string $vRMLink
      */
     private $vRMLink = null;
 
     /**
-     * This container is used to set the minimum number of event tickets that should remain available after a buyer makes a purchase. This functionality allows the seller to avoid the possibility of being left with just one event ticket after a sale.
+     * <span class="tablenote"><strong>Note:</strong>
+     *  This container and its field are not usable and will be ignored if sent. See <a href="https://developer.ebay.com/develop/apis/api-deprecation-status">API Deprecation Status</a> for the decommission date (when this container and fields will stop being returned).
+     *  </span>
+     *  This container is used to set the minimum number of event tickets that should remain available after a buyer makes a purchase. This functionality allows the seller to avoid the possibility of being left with just one event ticket after a sale.
      *  <br><br>
      *  This container can be used when adding, revising, or relisting event tickets, and it will only be returned in <b>GetItem</b> if set for the listing.
      *
@@ -1944,207 +1952,9 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     }
 
     /**
-     * Adds as attributeSet
-     *
-     * This field has been deprecated, and should no longer be used.
-     *
-     * @return self
-     * @param \Nogrod\eBaySDK\Trading\AttributeSetType $attributeSet
-     */
-    public function addToAttributeSetArray(\Nogrod\eBaySDK\Trading\AttributeSetType $attributeSet)
-    {
-        $this->attributeSetArray[] = $attributeSet;
-        return $this;
-    }
-
-    /**
-     * isset attributeSetArray
-     *
-     * This field has been deprecated, and should no longer be used.
-     *
-     * @param int|string $index
-     * @return bool
-     */
-    public function issetAttributeSetArray($index)
-    {
-        return isset($this->attributeSetArray[$index]);
-    }
-
-    /**
-     * unset attributeSetArray
-     *
-     * This field has been deprecated, and should no longer be used.
-     *
-     * @param int|string $index
-     * @return void
-     */
-    public function unsetAttributeSetArray($index)
-    {
-        unset($this->attributeSetArray[$index]);
-    }
-
-    /**
-     * Gets as attributeSetArray
-     *
-     * This field has been deprecated, and should no longer be used.
-     *
-     * @return \Nogrod\eBaySDK\Trading\AttributeSetType[]
-     */
-    public function getAttributeSetArray()
-    {
-        return $this->attributeSetArray;
-    }
-
-    /**
-     * Sets a new attributeSetArray
-     *
-     * This field has been deprecated, and should no longer be used.
-     *
-     * @param \Nogrod\eBaySDK\Trading\AttributeSetType[] $attributeSetArray
-     * @return self
-     */
-    public function setAttributeSetArray(array $attributeSetArray)
-    {
-        $this->attributeSetArray = $attributeSetArray;
-        return $this;
-    }
-
-    /**
-     * Adds as attribute
-     *
-     * This field has been deprecated, and should no longer be used.
-     *
-     * @return self
-     * @param \Nogrod\eBaySDK\Trading\AttributeType $attribute
-     */
-    public function addToAttributeArray(\Nogrod\eBaySDK\Trading\AttributeType $attribute)
-    {
-        $this->attributeArray[] = $attribute;
-        return $this;
-    }
-
-    /**
-     * isset attributeArray
-     *
-     * This field has been deprecated, and should no longer be used.
-     *
-     * @param int|string $index
-     * @return bool
-     */
-    public function issetAttributeArray($index)
-    {
-        return isset($this->attributeArray[$index]);
-    }
-
-    /**
-     * unset attributeArray
-     *
-     * This field has been deprecated, and should no longer be used.
-     *
-     * @param int|string $index
-     * @return void
-     */
-    public function unsetAttributeArray($index)
-    {
-        unset($this->attributeArray[$index]);
-    }
-
-    /**
-     * Gets as attributeArray
-     *
-     * This field has been deprecated, and should no longer be used.
-     *
-     * @return \Nogrod\eBaySDK\Trading\AttributeType[]
-     */
-    public function getAttributeArray()
-    {
-        return $this->attributeArray;
-    }
-
-    /**
-     * Sets a new attributeArray
-     *
-     * This field has been deprecated, and should no longer be used.
-     *
-     * @param \Nogrod\eBaySDK\Trading\AttributeType[] $attributeArray
-     * @return self
-     */
-    public function setAttributeArray(array $attributeArray)
-    {
-        $this->attributeArray = $attributeArray;
-        return $this;
-    }
-
-    /**
-     * Adds as lookupAttribute
-     *
-     * This field is deprecated, and should no longer be used.
-     *
-     * @return self
-     * @param \Nogrod\eBaySDK\Trading\LookupAttributeType $lookupAttribute
-     */
-    public function addToLookupAttributeArray(\Nogrod\eBaySDK\Trading\LookupAttributeType $lookupAttribute)
-    {
-        $this->lookupAttributeArray[] = $lookupAttribute;
-        return $this;
-    }
-
-    /**
-     * isset lookupAttributeArray
-     *
-     * This field is deprecated, and should no longer be used.
-     *
-     * @param int|string $index
-     * @return bool
-     */
-    public function issetLookupAttributeArray($index)
-    {
-        return isset($this->lookupAttributeArray[$index]);
-    }
-
-    /**
-     * unset lookupAttributeArray
-     *
-     * This field is deprecated, and should no longer be used.
-     *
-     * @param int|string $index
-     * @return void
-     */
-    public function unsetLookupAttributeArray($index)
-    {
-        unset($this->lookupAttributeArray[$index]);
-    }
-
-    /**
-     * Gets as lookupAttributeArray
-     *
-     * This field is deprecated, and should no longer be used.
-     *
-     * @return \Nogrod\eBaySDK\Trading\LookupAttributeType[]
-     */
-    public function getLookupAttributeArray()
-    {
-        return $this->lookupAttributeArray;
-    }
-
-    /**
-     * Sets a new lookupAttributeArray
-     *
-     * This field is deprecated, and should no longer be used.
-     *
-     * @param \Nogrod\eBaySDK\Trading\LookupAttributeType[] $lookupAttributeArray
-     * @return self
-     */
-    public function setLookupAttributeArray(array $lookupAttributeArray)
-    {
-        $this->lookupAttributeArray = $lookupAttributeArray;
-        return $this;
-    }
-
-    /**
      * Gets as autoPay
      *
-     * This field is included and set to if <code>true</code> in an Add/Revise/Relist call if the seller wants to require immediate payment from the buyer. If this field is set to <code>false</code> or not included, the seller is not requestinng immediate payment.
+     * This field is included and set to if <code>true</code> in an Add/Revise/Relist call if the seller wants to require immediate payment from the buyer. If this field is set to <code>false</code> or not included, the seller is not requesting immediate payment.
      *  <br/><br/>
      *  Note that this field may be set to <code>true</code>, but that does not necessarily mean that the buyer will be required to pay right away. For example, immediate payment is not currently applicable to auctions items won in a competitive bidding process or to items where the buyer and seller negotiated the price through the Best Offer feature. Immediate payment is also not applicable to listings where the payment happens offline between the buyer and seller.
      *
@@ -2158,7 +1968,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Sets a new autoPay
      *
-     * This field is included and set to if <code>true</code> in an Add/Revise/Relist call if the seller wants to require immediate payment from the buyer. If this field is set to <code>false</code> or not included, the seller is not requestinng immediate payment.
+     * This field is included and set to if <code>true</code> in an Add/Revise/Relist call if the seller wants to require immediate payment from the buyer. If this field is set to <code>false</code> or not included, the seller is not requesting immediate payment.
      *  <br/><br/>
      *  Note that this field may be set to <code>true</code>, but that does not necessarily mean that the buyer will be required to pay right away. For example, immediate payment is not currently applicable to auctions items won in a competitive bidding process or to items where the buyer and seller negotiated the price through the Best Offer feature. Immediate payment is also not applicable to listings where the payment happens offline between the buyer and seller.
      *
@@ -2314,7 +2124,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Gets as charity
      *
-     * This container identifies the nonprofit organization that will benefit with a percentage of the proceeds from each sale of an item through an auction or fixed-price listing. Charity names and IDs can be found by going to <a href="https://charity.ebay.com/charity-auctions/my-causes" target="_blank">eBay for Charity</a> page and doing a search, or by doing a search with the <b>GetCharities</b> call. The donation percentage can be set in 5 percent increments from 10 percent to 100 percent.
+     * This container identifies the nonprofit organization that will benefit with a percentage of the proceeds from each sale of an item through an auction or fixed-price listing. Charity names and IDs can be found by going to <a href="https://charity.ebay.com/charity-auctions/my-causes" target="_blank">eBay for Charity</a> page and doing a search. The donation percentage can be set in 5 percent increments from 10 percent to 100 percent.
      *  <br><br>
      *  When it comes to revising an auction or fixed-price listing, you can add a benefitting charity (as long as there is at least 12 hours left before end of listing/close of auction), but you cannot remove or change a nonprofit company once one is already established in the original listing.
      *  <br><br>
@@ -2332,7 +2142,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Sets a new charity
      *
-     * This container identifies the nonprofit organization that will benefit with a percentage of the proceeds from each sale of an item through an auction or fixed-price listing. Charity names and IDs can be found by going to <a href="https://charity.ebay.com/charity-auctions/my-causes" target="_blank">eBay for Charity</a> page and doing a search, or by doing a search with the <b>GetCharities</b> call. The donation percentage can be set in 5 percent increments from 10 percent to 100 percent.
+     * This container identifies the nonprofit organization that will benefit with a percentage of the proceeds from each sale of an item through an auction or fixed-price listing. Charity names and IDs can be found by going to <a href="https://charity.ebay.com/charity-auctions/my-causes" target="_blank">eBay for Charity</a> page and doing a search. The donation percentage can be set in 5 percent increments from 10 percent to 100 percent.
      *  <br><br>
      *  When it comes to revising an auction or fixed-price listing, you can add a benefitting charity (as long as there is at least 12 hours left before end of listing/close of auction), but you cannot remove or change a nonprofit company once one is already established in the original listing.
      *  <br><br>
@@ -4357,6 +4167,10 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <br>
      *  The listing title can only be changed if the active listing has yet to have any bids or sales, and the listing does not end within 12 hours.
      *  <br>
+     *  <span class="tablenote"><b>Note:</b> When making a <b>GetSellerEvents</b> call, this field will be returned masked as <code>*****************</code> for on-hold listings.
+     *  </span>
+     *  <span class="tablenote"><b>Note:</b> When making a <b>GetSellerTransactions</b> or <b>GetMyeBaySelling</b> call, the item ID value of the listing will be returned in this field to indicate that the listing is on hold.
+     *  </span>
      *
      * @return string
      */
@@ -4375,6 +4189,10 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <br>
      *  The listing title can only be changed if the active listing has yet to have any bids or sales, and the listing does not end within 12 hours.
      *  <br>
+     *  <span class="tablenote"><b>Note:</b> When making a <b>GetSellerEvents</b> call, this field will be returned masked as <code>*****************</code> for on-hold listings.
+     *  </span>
+     *  <span class="tablenote"><b>Note:</b> When making a <b>GetSellerTransactions</b> or <b>GetMyeBaySelling</b> call, the item ID value of the listing will be returned in this field to indicate that the listing is on hold.
+     *  </span>
      *
      * @param string $title
      * @return self
@@ -5188,7 +5006,8 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Gets as extendedProducerResponsibility
      *
-     * This container provides IDs for the producer or importer related to the new item, packaging, added documentation, or an eco participation fee. In some markets, such as in France, this may be the importer of the item. For more information, see the <b>Extended Producer Responsibility for business sellers</b> page for your site (for example, <a href="https://www.ebay.com/help/selling/all-about-selling/selling-internationally/extended-producer-responsibility-for-business-sellers?id=5314" target="_blank">https://www.ebay.com/help/selling/all-about-selling/selling-internationally/extended-producer-responsibility-for-business-sellers?id=5314</a>). This field is supported by a limited number of sites and specific categories. Use the <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getExtendedProducerResponsibilityPolicies" target="_blank">getExtendedProducerResponsibilityPolicies</a> method of the <b>Sell Metadata API</b> to retrieve valid categories for a site. <br/><br/>For <b>GetItem</b> calls, this container is only returned to the listing owner, if the container is available.
+     * This container is used to provide the eco-participation fee for a product. Use the <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getExtendedProducerResponsibilityPolicies" target="_blank">getExtendedProducerResponsibilityPolicies</a> method of the <b>Sell Metadata API</b> to retrieve categories that support eco-participation fee for a specified marketplace."
+     *  <br>For <b>GetItem</b> calls, this container is only returned to the listing owner, if the container is available.
      *
      * @return \Nogrod\eBaySDK\Trading\ExtendedProducerResponsibilityType
      */
@@ -5200,7 +5019,8 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Sets a new extendedProducerResponsibility
      *
-     * This container provides IDs for the producer or importer related to the new item, packaging, added documentation, or an eco participation fee. In some markets, such as in France, this may be the importer of the item. For more information, see the <b>Extended Producer Responsibility for business sellers</b> page for your site (for example, <a href="https://www.ebay.com/help/selling/all-about-selling/selling-internationally/extended-producer-responsibility-for-business-sellers?id=5314" target="_blank">https://www.ebay.com/help/selling/all-about-selling/selling-internationally/extended-producer-responsibility-for-business-sellers?id=5314</a>). This field is supported by a limited number of sites and specific categories. Use the <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getExtendedProducerResponsibilityPolicies" target="_blank">getExtendedProducerResponsibilityPolicies</a> method of the <b>Sell Metadata API</b> to retrieve valid categories for a site. <br/><br/>For <b>GetItem</b> calls, this container is only returned to the listing owner, if the container is available.
+     * This container is used to provide the eco-participation fee for a product. Use the <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getExtendedProducerResponsibilityPolicies" target="_blank">getExtendedProducerResponsibilityPolicies</a> method of the <b>Sell Metadata API</b> to retrieve categories that support eco-participation fee for a specified marketplace."
+     *  <br>For <b>GetItem</b> calls, this container is only returned to the listing owner, if the container is available.
      *
      * @param \Nogrod\eBaySDK\Trading\ExtendedProducerResponsibilityType $extendedProducerResponsibility
      * @return self
@@ -5906,7 +5726,10 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Gets as updateSellerInfo
      *
-     * Specifies whether the following Business Seller fields have been updated for
+     * <span class="tablenote"><strong>Note:</strong>
+     *  This field is not usable and will be ignored if sent. See <a href="https://developer.ebay.com/develop/apis/api-deprecation-status">API Deprecation Status</a> for the decommission date (when this field will be removed from the WSDL).
+     *  </span>
+     *  Specifies whether the following Business Seller fields have been updated for
      *  the item specified in the request: First Name, Last Name, Fax, Email
      *  Address, Additional Contact Information, Trade Registration Number, VAT
      *  Identification Number.
@@ -5921,7 +5744,10 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Sets a new updateSellerInfo
      *
-     * Specifies whether the following Business Seller fields have been updated for
+     * <span class="tablenote"><strong>Note:</strong>
+     *  This field is not usable and will be ignored if sent. See <a href="https://developer.ebay.com/develop/apis/api-deprecation-status">API Deprecation Status</a> for the decommission date (when this field will be removed from the WSDL).
+     *  </span>
+     *  Specifies whether the following Business Seller fields have been updated for
      *  the item specified in the request: First Name, Last Name, Fax, Email
      *  Address, Additional Contact Information, Trade Registration Number, VAT
      *  Identification Number.
@@ -5938,7 +5764,10 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Gets as updateReturnPolicy
      *
-     * Specifies whether the Return Policy Details have been updated
+     * <span class="tablenote"><strong>Note:</strong>
+     *  This field is not usable and will be ignored if sent. See <a href="https://developer.ebay.com/develop/apis/api-deprecation-status">API Deprecation Status</a> for the decommission date (when this field will be removed from the WSDL).
+     *  </span>
+     *  Specifies whether the Return Policy Details have been updated
      *  for the item specified in the request.
      *
      * @return bool
@@ -5951,7 +5780,10 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Sets a new updateReturnPolicy
      *
-     * Specifies whether the Return Policy Details have been updated
+     * <span class="tablenote"><strong>Note:</strong>
+     *  This field is not usable and will be ignored if sent. See <a href="https://developer.ebay.com/develop/apis/api-deprecation-status">API Deprecation Status</a> for the decommission date (when this field will be removed from the WSDL).
+     *  </span>
+     *  Specifies whether the Return Policy Details have been updated
      *  for the item specified in the request.
      *
      * @param bool $updateReturnPolicy
@@ -6705,9 +6537,17 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Gets as conditionID
      *
-     * This is a numeric identifier for an item's condition. All numeric Condition ID values map to an item condition string value. For example, numeric identifer <code>1000</code> maps to <code>New</code> condition.
+     * This is a numeric identifier for an item's condition. All numeric Condition ID values map to an item condition string value. For example, numeric identifier <code>1000</code> maps to <code>New</code> condition.
      *  <br>
-     *  <span class="tablenote"><b>Note: </b> For trading cards, the numeric identifier <code>2750</code> indicates that the trading card is graded, and <code>4000</code> indicates it is ungraded.</span>
+     *  <span class="tablenote"><b>Important: </b>
+     *  For trading card listings in <b>Non-Sport Trading Card Singles (<code>183050</code>)</b>, <b>CCG Individual Cards (<code>183454</code>)</b>, and <b>Sports Trading Card Singles (<code>261328</code>)</b> categories, Condition ID 2750 can be used to specify the card as a <b>Graded</b> card and Condition ID 4000 can be used to specify the card as an <b>Ungraded</b> card. If either of these condition IDs are used, the seller is required to use the <b>ConditionDescriptors</b> container to provide one or more applicable Condition Descriptor name-value pairs. See the <a href="/Devzone/XML/docs/Reference/eBay/AddItem.html#Request.Item.ConditionDescriptors">ConditionDescriptors</a> field description for more information.
+     *  <br>
+     *  <br>
+     *  Beginning on October 23rd, 2023, trading card listings in the affected categories must either use Condition ID 2750 or Condition ID 4000, and no other item conditions will be accepted. These Condition IDs and the <b>ConditionDescriptors</b> container will be required for all new listings. If not provided after this date, the following calls will fail: <b>AddItem</b>, <b>AddFixedPriceItem</b>, <b>AddItems</b>, <b>VerifyAddItem</b>, and <b>VerifyAddFixedPriceItem</b>.
+     *  <br>
+     *  <br>
+     *  By January 22, 2024, all existing listings must be modified with either Condition ID 2750 or Condition ID 4000 and applicable <b>ConditionDescriptors</b> name-value pairs. This adds <b>ReviseItem</b>, <b>ReviseFixedPriceItem</b>, <b>RelistItem</b>, <b>RelistFixedPriceItem</b>, and <b>VerifyRelistItem</b> calls to the requirement.
+     *  </span>
      *  Most eBay listing categories require an item condition, but a few eBay categories do not (such as Digital Gift Cards or Antiques categories). To verify if the listing category requires an item condition, and if so, what are the supported item condition and <b>ConditionID</b> values, you can call <b>GetCategoryFeatures</b>. In this <b>GetCategoryFeatures</b> call, you'd pass in the listing <b>CategoryID</b> value and two <b>FeatureID</b> fields - one of these fields set to <code>ConditionEnabled</code>, and the other field set to <code>ConditionValues</code>.
      *  <br><br>
      *  In the <b>GetCategoryFeatures</b> response, look at the Category.<b>ConditionEnabled</b> to see if item condition is required for the category. Then look at the Category.<b>ConditionValues</b> container in the response for the full list of Condition IDs that you can pass in through the <b>ConditionID</b> field of an Add/Revise/Relist/Verify call. Note that the Condition.<b>DisplayName</b> value in the response is the actual condition value that will appear in the actual eBay listing.
@@ -6744,9 +6584,17 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Sets a new conditionID
      *
-     * This is a numeric identifier for an item's condition. All numeric Condition ID values map to an item condition string value. For example, numeric identifer <code>1000</code> maps to <code>New</code> condition.
+     * This is a numeric identifier for an item's condition. All numeric Condition ID values map to an item condition string value. For example, numeric identifier <code>1000</code> maps to <code>New</code> condition.
      *  <br>
-     *  <span class="tablenote"><b>Note: </b> For trading cards, the numeric identifier <code>2750</code> indicates that the trading card is graded, and <code>4000</code> indicates it is ungraded.</span>
+     *  <span class="tablenote"><b>Important: </b>
+     *  For trading card listings in <b>Non-Sport Trading Card Singles (<code>183050</code>)</b>, <b>CCG Individual Cards (<code>183454</code>)</b>, and <b>Sports Trading Card Singles (<code>261328</code>)</b> categories, Condition ID 2750 can be used to specify the card as a <b>Graded</b> card and Condition ID 4000 can be used to specify the card as an <b>Ungraded</b> card. If either of these condition IDs are used, the seller is required to use the <b>ConditionDescriptors</b> container to provide one or more applicable Condition Descriptor name-value pairs. See the <a href="/Devzone/XML/docs/Reference/eBay/AddItem.html#Request.Item.ConditionDescriptors">ConditionDescriptors</a> field description for more information.
+     *  <br>
+     *  <br>
+     *  Beginning on October 23rd, 2023, trading card listings in the affected categories must either use Condition ID 2750 or Condition ID 4000, and no other item conditions will be accepted. These Condition IDs and the <b>ConditionDescriptors</b> container will be required for all new listings. If not provided after this date, the following calls will fail: <b>AddItem</b>, <b>AddFixedPriceItem</b>, <b>AddItems</b>, <b>VerifyAddItem</b>, and <b>VerifyAddFixedPriceItem</b>.
+     *  <br>
+     *  <br>
+     *  By January 22, 2024, all existing listings must be modified with either Condition ID 2750 or Condition ID 4000 and applicable <b>ConditionDescriptors</b> name-value pairs. This adds <b>ReviseItem</b>, <b>ReviseFixedPriceItem</b>, <b>RelistItem</b>, <b>RelistFixedPriceItem</b>, and <b>VerifyRelistItem</b> calls to the requirement.
+     *  </span>
      *  Most eBay listing categories require an item condition, but a few eBay categories do not (such as Digital Gift Cards or Antiques categories). To verify if the listing category requires an item condition, and if so, what are the supported item condition and <b>ConditionID</b> values, you can call <b>GetCategoryFeatures</b>. In this <b>GetCategoryFeatures</b> call, you'd pass in the listing <b>CategoryID</b> value and two <b>FeatureID</b> fields - one of these fields set to <code>ConditionEnabled</code>, and the other field set to <code>ConditionValues</code>.
      *  <br><br>
      *  In the <b>GetCategoryFeatures</b> response, look at the Category.<b>ConditionEnabled</b> to see if item condition is required for the category. Then look at the Category.<b>ConditionValues</b> container in the response for the full list of Condition IDs that you can pass in through the <b>ConditionID</b> field of an Add/Revise/Relist/Verify call. Note that the Condition.<b>DisplayName</b> value in the response is the actual condition value that will appear in the actual eBay listing.
@@ -6785,9 +6633,16 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Adds as conditionDescriptor
      *
-     * <span class="tablenote"><b>Note: </b> This container is currently available only in the United Kingdom (GB), with rollout to all other marketplaces in early July 2023.</span>
-     *  This container is used in <b>Add/Revise/Relist/Verify</b> listing calls to designate the condition descriptors for the listing. It is also returned in <b>GetItem</b> to indicate the condition descriptors applied to the listing.
-     *  <span class="tablenote"><b>Note: </b> In the case of trading cards, also specify the <b>ConditionID</b>. For graded trading cards, use the numeric identifier <code>2750</code>; for ungraded, use <code>4000</code>.
+     * This container is used in <b>Add/Revise/Relist/Verify</b> listing calls to designate the condition descriptors for the listing. It is also returned in <b>GetItem</b> to indicate the condition descriptors applied to the listing.
+     *  <br>
+     *  <span class="tablenote"><b>Important: </b>
+     *  For trading card listings in <b>Non-Sport Trading Card Singles (<code>183050</code>)</b>, <b>CCG Individual Cards (<code>183454</code>)</b>, and <b>Sports Trading Card Singles (<code>261328</code>)</b> categories, Condition ID 2750 can be used to specify the card as a <b>Graded</b> card and Condition ID 4000 can be used to specify the card as an <b>Ungraded</b> card. If either of these condition IDs are used, the seller is required to use the <b>ConditionDescriptors</b> container to provide one or more applicable Condition Descriptor name-value pairs.
+     *  <br>
+     *  <br>
+     *  Beginning on October 23rd, 2023, trading card listings in the affected categories must either use Condition ID 2750 or Condition ID 4000, and no other item conditions will be accepted. These Condition IDs and the <b>ConditionDescriptors</b> container will be required for all new listings. If not provided after this date, the following calls will fail: <b>AddItem</b>, <b>AddFixedPriceItem</b>, <b>AddItems</b>, <b>VerifyAddItem</b>, and <b>VerifyAddFixedPriceItem</b>.
+     *  <br>
+     *  <br>
+     *  By January 22, 2024, all existing listings must be modified with either Condition ID 2750 or Condition ID 4000 and applicable <b>ConditionDescriptors</b> name-value pairs. This adds <b>ReviseItem</b>, <b>ReviseFixedPriceItem</b>, <b>RelistItem</b>, <b>RelistFixedPriceItem</b>, and <b>VerifyRelistItem</b> calls to the requirement.
      *  </span>
      *
      * @return self
@@ -6802,9 +6657,16 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * isset conditionDescriptors
      *
-     * <span class="tablenote"><b>Note: </b> This container is currently available only in the United Kingdom (GB), with rollout to all other marketplaces in early July 2023.</span>
-     *  This container is used in <b>Add/Revise/Relist/Verify</b> listing calls to designate the condition descriptors for the listing. It is also returned in <b>GetItem</b> to indicate the condition descriptors applied to the listing.
-     *  <span class="tablenote"><b>Note: </b> In the case of trading cards, also specify the <b>ConditionID</b>. For graded trading cards, use the numeric identifier <code>2750</code>; for ungraded, use <code>4000</code>.
+     * This container is used in <b>Add/Revise/Relist/Verify</b> listing calls to designate the condition descriptors for the listing. It is also returned in <b>GetItem</b> to indicate the condition descriptors applied to the listing.
+     *  <br>
+     *  <span class="tablenote"><b>Important: </b>
+     *  For trading card listings in <b>Non-Sport Trading Card Singles (<code>183050</code>)</b>, <b>CCG Individual Cards (<code>183454</code>)</b>, and <b>Sports Trading Card Singles (<code>261328</code>)</b> categories, Condition ID 2750 can be used to specify the card as a <b>Graded</b> card and Condition ID 4000 can be used to specify the card as an <b>Ungraded</b> card. If either of these condition IDs are used, the seller is required to use the <b>ConditionDescriptors</b> container to provide one or more applicable Condition Descriptor name-value pairs.
+     *  <br>
+     *  <br>
+     *  Beginning on October 23rd, 2023, trading card listings in the affected categories must either use Condition ID 2750 or Condition ID 4000, and no other item conditions will be accepted. These Condition IDs and the <b>ConditionDescriptors</b> container will be required for all new listings. If not provided after this date, the following calls will fail: <b>AddItem</b>, <b>AddFixedPriceItem</b>, <b>AddItems</b>, <b>VerifyAddItem</b>, and <b>VerifyAddFixedPriceItem</b>.
+     *  <br>
+     *  <br>
+     *  By January 22, 2024, all existing listings must be modified with either Condition ID 2750 or Condition ID 4000 and applicable <b>ConditionDescriptors</b> name-value pairs. This adds <b>ReviseItem</b>, <b>ReviseFixedPriceItem</b>, <b>RelistItem</b>, <b>RelistFixedPriceItem</b>, and <b>VerifyRelistItem</b> calls to the requirement.
      *  </span>
      *
      * @param int|string $index
@@ -6818,9 +6680,16 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * unset conditionDescriptors
      *
-     * <span class="tablenote"><b>Note: </b> This container is currently available only in the United Kingdom (GB), with rollout to all other marketplaces in early July 2023.</span>
-     *  This container is used in <b>Add/Revise/Relist/Verify</b> listing calls to designate the condition descriptors for the listing. It is also returned in <b>GetItem</b> to indicate the condition descriptors applied to the listing.
-     *  <span class="tablenote"><b>Note: </b> In the case of trading cards, also specify the <b>ConditionID</b>. For graded trading cards, use the numeric identifier <code>2750</code>; for ungraded, use <code>4000</code>.
+     * This container is used in <b>Add/Revise/Relist/Verify</b> listing calls to designate the condition descriptors for the listing. It is also returned in <b>GetItem</b> to indicate the condition descriptors applied to the listing.
+     *  <br>
+     *  <span class="tablenote"><b>Important: </b>
+     *  For trading card listings in <b>Non-Sport Trading Card Singles (<code>183050</code>)</b>, <b>CCG Individual Cards (<code>183454</code>)</b>, and <b>Sports Trading Card Singles (<code>261328</code>)</b> categories, Condition ID 2750 can be used to specify the card as a <b>Graded</b> card and Condition ID 4000 can be used to specify the card as an <b>Ungraded</b> card. If either of these condition IDs are used, the seller is required to use the <b>ConditionDescriptors</b> container to provide one or more applicable Condition Descriptor name-value pairs.
+     *  <br>
+     *  <br>
+     *  Beginning on October 23rd, 2023, trading card listings in the affected categories must either use Condition ID 2750 or Condition ID 4000, and no other item conditions will be accepted. These Condition IDs and the <b>ConditionDescriptors</b> container will be required for all new listings. If not provided after this date, the following calls will fail: <b>AddItem</b>, <b>AddFixedPriceItem</b>, <b>AddItems</b>, <b>VerifyAddItem</b>, and <b>VerifyAddFixedPriceItem</b>.
+     *  <br>
+     *  <br>
+     *  By January 22, 2024, all existing listings must be modified with either Condition ID 2750 or Condition ID 4000 and applicable <b>ConditionDescriptors</b> name-value pairs. This adds <b>ReviseItem</b>, <b>ReviseFixedPriceItem</b>, <b>RelistItem</b>, <b>RelistFixedPriceItem</b>, and <b>VerifyRelistItem</b> calls to the requirement.
      *  </span>
      *
      * @param int|string $index
@@ -6834,9 +6703,16 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Gets as conditionDescriptors
      *
-     * <span class="tablenote"><b>Note: </b> This container is currently available only in the United Kingdom (GB), with rollout to all other marketplaces in early July 2023.</span>
-     *  This container is used in <b>Add/Revise/Relist/Verify</b> listing calls to designate the condition descriptors for the listing. It is also returned in <b>GetItem</b> to indicate the condition descriptors applied to the listing.
-     *  <span class="tablenote"><b>Note: </b> In the case of trading cards, also specify the <b>ConditionID</b>. For graded trading cards, use the numeric identifier <code>2750</code>; for ungraded, use <code>4000</code>.
+     * This container is used in <b>Add/Revise/Relist/Verify</b> listing calls to designate the condition descriptors for the listing. It is also returned in <b>GetItem</b> to indicate the condition descriptors applied to the listing.
+     *  <br>
+     *  <span class="tablenote"><b>Important: </b>
+     *  For trading card listings in <b>Non-Sport Trading Card Singles (<code>183050</code>)</b>, <b>CCG Individual Cards (<code>183454</code>)</b>, and <b>Sports Trading Card Singles (<code>261328</code>)</b> categories, Condition ID 2750 can be used to specify the card as a <b>Graded</b> card and Condition ID 4000 can be used to specify the card as an <b>Ungraded</b> card. If either of these condition IDs are used, the seller is required to use the <b>ConditionDescriptors</b> container to provide one or more applicable Condition Descriptor name-value pairs.
+     *  <br>
+     *  <br>
+     *  Beginning on October 23rd, 2023, trading card listings in the affected categories must either use Condition ID 2750 or Condition ID 4000, and no other item conditions will be accepted. These Condition IDs and the <b>ConditionDescriptors</b> container will be required for all new listings. If not provided after this date, the following calls will fail: <b>AddItem</b>, <b>AddFixedPriceItem</b>, <b>AddItems</b>, <b>VerifyAddItem</b>, and <b>VerifyAddFixedPriceItem</b>.
+     *  <br>
+     *  <br>
+     *  By January 22, 2024, all existing listings must be modified with either Condition ID 2750 or Condition ID 4000 and applicable <b>ConditionDescriptors</b> name-value pairs. This adds <b>ReviseItem</b>, <b>ReviseFixedPriceItem</b>, <b>RelistItem</b>, <b>RelistFixedPriceItem</b>, and <b>VerifyRelistItem</b> calls to the requirement.
      *  </span>
      *
      * @return \Nogrod\eBaySDK\Trading\ConditionDescriptorType[]
@@ -6849,9 +6725,16 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Sets a new conditionDescriptors
      *
-     * <span class="tablenote"><b>Note: </b> This container is currently available only in the United Kingdom (GB), with rollout to all other marketplaces in early July 2023.</span>
-     *  This container is used in <b>Add/Revise/Relist/Verify</b> listing calls to designate the condition descriptors for the listing. It is also returned in <b>GetItem</b> to indicate the condition descriptors applied to the listing.
-     *  <span class="tablenote"><b>Note: </b> In the case of trading cards, also specify the <b>ConditionID</b>. For graded trading cards, use the numeric identifier <code>2750</code>; for ungraded, use <code>4000</code>.
+     * This container is used in <b>Add/Revise/Relist/Verify</b> listing calls to designate the condition descriptors for the listing. It is also returned in <b>GetItem</b> to indicate the condition descriptors applied to the listing.
+     *  <br>
+     *  <span class="tablenote"><b>Important: </b>
+     *  For trading card listings in <b>Non-Sport Trading Card Singles (<code>183050</code>)</b>, <b>CCG Individual Cards (<code>183454</code>)</b>, and <b>Sports Trading Card Singles (<code>261328</code>)</b> categories, Condition ID 2750 can be used to specify the card as a <b>Graded</b> card and Condition ID 4000 can be used to specify the card as an <b>Ungraded</b> card. If either of these condition IDs are used, the seller is required to use the <b>ConditionDescriptors</b> container to provide one or more applicable Condition Descriptor name-value pairs.
+     *  <br>
+     *  <br>
+     *  Beginning on October 23rd, 2023, trading card listings in the affected categories must either use Condition ID 2750 or Condition ID 4000, and no other item conditions will be accepted. These Condition IDs and the <b>ConditionDescriptors</b> container will be required for all new listings. If not provided after this date, the following calls will fail: <b>AddItem</b>, <b>AddFixedPriceItem</b>, <b>AddItems</b>, <b>VerifyAddItem</b>, and <b>VerifyAddFixedPriceItem</b>.
+     *  <br>
+     *  <br>
+     *  By January 22, 2024, all existing listings must be modified with either Condition ID 2750 or Condition ID 4000 and applicable <b>ConditionDescriptors</b> name-value pairs. This adds <b>ReviseItem</b>, <b>ReviseFixedPriceItem</b>, <b>RelistItem</b>, <b>RelistFixedPriceItem</b>, and <b>VerifyRelistItem</b> calls to the requirement.
      *  </span>
      *
      * @param \Nogrod\eBaySDK\Trading\ConditionDescriptorType[] $conditionDescriptors
@@ -6874,7 +6757,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <br>
      *  The <b>ConditionDescription</b> field is returned by <b>GetItem</b> (and other related calls that return the Item object) if a condition description is specified in the listing.
      *  <br>
-     *  <span class="tablenote"><b>Note: </b> This field may be dropped if also using <b>ConditionDescriptors</b>.</span>
+     *  <span class="tablenote"><b>Note: </b> This field should not be included if <b>ConditionDescriptors</b> are being used. If it is used, a warning will be triggered and the field will be dropped from the listing.</span>
      *
      * @return string
      */
@@ -6894,7 +6777,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <br>
      *  The <b>ConditionDescription</b> field is returned by <b>GetItem</b> (and other related calls that return the Item object) if a condition description is specified in the listing.
      *  <br>
-     *  <span class="tablenote"><b>Note: </b> This field may be dropped if also using <b>ConditionDescriptors</b>.</span>
+     *  <span class="tablenote"><b>Note: </b> This field should not be included if <b>ConditionDescriptors</b> are being used. If it is used, a warning will be triggered and the field will be dropped from the listing.</span>
      *
      * @param string $conditionDescription
      * @return self
@@ -6974,8 +6857,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Gets as regulatory
      *
-     * <span class="tablenote"><b>Note: </b> The <b>EnergyEfficiencyLabel</b> and the <b>Hazmat</b> containers are currently available only on the German (DE) marketplace. The <b>RepairScore</b> field is provided for future use (not presently available). </span>
-     *  <br />This container is used by the seller to provide Energy Efficiency Label information, hazardous material related information, and the repair score for the listing.
+     * This container is used by the seller to provide Energy Efficiency Label information, hazardous material related information, and the repair score for the listing.
      *
      * @return \Nogrod\eBaySDK\Trading\RegulatoryType
      */
@@ -6987,8 +6869,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Sets a new regulatory
      *
-     * <span class="tablenote"><b>Note: </b> The <b>EnergyEfficiencyLabel</b> and the <b>Hazmat</b> containers are currently available only on the German (DE) marketplace. The <b>RepairScore</b> field is provided for future use (not presently available). </span>
-     *  <br />This container is used by the seller to provide Energy Efficiency Label information, hazardous material related information, and the repair score for the listing.
+     * This container is used by the seller to provide Energy Efficiency Label information, hazardous material related information, and the repair score for the listing.
      *
      * @param \Nogrod\eBaySDK\Trading\RegulatoryType $regulatory
      * @return self
@@ -7179,7 +7060,8 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  For the eBay Australia site, required for vehicles from model year 1989 or later. For the eBay Australia site, only appears on the View Item page if you also specify the date of first registration in the listing's Item Specifics.
      *  <br><br>
      *  Appears in the VIN field in the Item Specifics section of eBay's View Item page.
-     *  <br>
+     *  <br><br>
+     *  <b>GetItem</b> will return this field for motor vehicle listings where the VIN is defined.<br>
      *
      * @return string
      */
@@ -7200,7 +7082,8 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  For the eBay Australia site, required for vehicles from model year 1989 or later. For the eBay Australia site, only appears on the View Item page if you also specify the date of first registration in the listing's Item Specifics.
      *  <br><br>
      *  Appears in the VIN field in the Item Specifics section of eBay's View Item page.
-     *  <br>
+     *  <br><br>
+     *  <b>GetItem</b> will return this field for motor vehicle listings where the VIN is defined.<br>
      *
      * @param string $vIN
      * @return self
@@ -7214,7 +7097,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Gets as vINLink
      *
-     * This field is deprecated.
+     * <b>GetItem</b> will return this field for motor vehicle listings where the VIN is defined.
      *
      * @return string
      */
@@ -7226,7 +7109,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Sets a new vINLink
      *
-     * This field is deprecated.
+     * <b>GetItem</b> will return this field for motor vehicle listings where the VIN is defined.
      *
      * @param string $vINLink
      * @return self
@@ -7244,7 +7127,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <br><br>
      *  Applicable to listings in UK eBay Motors Cars and Trucks, Motorcycle, and some Powersport categories.
      *  <br><br>
-     *  Appears as a VRM field in the Item Specifics section of eBay's View Item page. On the View Item page, the VRM value is masked (i.e., only a portion of the value is shown to users). In the <b>GetItem</b> response, the VRM is only returned if the call is made by the seller (i.e., the AuthToken is associated with the vehicle's seller).
+     *  Appears as a VRM field in the Item Specifics section of eBay's View Item page. On the View Item page, the VRM value is masked (i.e., only a portion of the value is shown to users). In the <b>GetItem</b> response, the VRM is only returned if the call is made by the seller (i.e., the AuthToken is associated with the vehicle's seller).<br><br><b>GetItem</b> will return this field for motor vehicle listings where the VRM is defined.
      *
      * @return string
      */
@@ -7260,7 +7143,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <br><br>
      *  Applicable to listings in UK eBay Motors Cars and Trucks, Motorcycle, and some Powersport categories.
      *  <br><br>
-     *  Appears as a VRM field in the Item Specifics section of eBay's View Item page. On the View Item page, the VRM value is masked (i.e., only a portion of the value is shown to users). In the <b>GetItem</b> response, the VRM is only returned if the call is made by the seller (i.e., the AuthToken is associated with the vehicle's seller).
+     *  Appears as a VRM field in the Item Specifics section of eBay's View Item page. On the View Item page, the VRM value is masked (i.e., only a portion of the value is shown to users). In the <b>GetItem</b> response, the VRM is only returned if the call is made by the seller (i.e., the AuthToken is associated with the vehicle's seller).<br><br><b>GetItem</b> will return this field for motor vehicle listings where the VRM is defined.
      *
      * @param string $vRM
      * @return self
@@ -7274,7 +7157,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Gets as vRMLink
      *
-     * This field is deprecated.
+     * <b>GetItem</b> will return this field for motor vehicle listings where the VRM is defined.
      *
      * @return string
      */
@@ -7286,7 +7169,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Sets a new vRMLink
      *
-     * This field is deprecated.
+     * <b>GetItem</b> will return this field for motor vehicle listings where the VRM is defined.
      *
      * @param string $vRMLink
      * @return self
@@ -7300,7 +7183,10 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Gets as quantityInfo
      *
-     * This container is used to set the minimum number of event tickets that should remain available after a buyer makes a purchase. This functionality allows the seller to avoid the possibility of being left with just one event ticket after a sale.
+     * <span class="tablenote"><strong>Note:</strong>
+     *  This container and its field are not usable and will be ignored if sent. See <a href="https://developer.ebay.com/develop/apis/api-deprecation-status">API Deprecation Status</a> for the decommission date (when this container and fields will stop being returned).
+     *  </span>
+     *  This container is used to set the minimum number of event tickets that should remain available after a buyer makes a purchase. This functionality allows the seller to avoid the possibility of being left with just one event ticket after a sale.
      *  <br><br>
      *  This container can be used when adding, revising, or relisting event tickets, and it will only be returned in <b>GetItem</b> if set for the listing.
      *
@@ -7314,7 +7200,10 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Sets a new quantityInfo
      *
-     * This container is used to set the minimum number of event tickets that should remain available after a buyer makes a purchase. This functionality allows the seller to avoid the possibility of being left with just one event ticket after a sale.
+     * <span class="tablenote"><strong>Note:</strong>
+     *  This container and its field are not usable and will be ignored if sent. See <a href="https://developer.ebay.com/develop/apis/api-deprecation-status">API Deprecation Status</a> for the decommission date (when this container and fields will stop being returned).
+     *  </span>
+     *  This container is used to set the minimum number of event tickets that should remain available after a buyer makes a purchase. This functionality allows the seller to avoid the possibility of being left with just one event ticket after a sale.
      *  <br><br>
      *  This container can be used when adding, revising, or relisting event tickets, and it will only be returned in <b>GetItem</b> if set for the listing.
      *
@@ -8156,24 +8045,6 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ApplicationData", $value);
         }
-        $value = $this->getAttributeSetArray();
-        if (null !== $value && !empty($this->getAttributeSetArray())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}AttributeSetArray", array_map(function ($v) {
-                return ["AttributeSet" => $v];
-            }, $value));
-        }
-        $value = $this->getAttributeArray();
-        if (null !== $value && !empty($this->getAttributeArray())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}AttributeArray", array_map(function ($v) {
-                return ["Attribute" => $v];
-            }, $value));
-        }
-        $value = $this->getLookupAttributeArray();
-        if (null !== $value && !empty($this->getLookupAttributeArray())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}LookupAttributeArray", array_map(function ($v) {
-                return ["LookupAttribute" => $v];
-            }, $value));
-        }
         $value = $this->getAutoPay();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;
         if (null !== $value) {
@@ -8238,9 +8109,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         }
         $value = $this->getListingEnhancement();
         if (null !== $value && !empty($this->getListingEnhancement())) {
-            $writer->write(array_map(function ($v) {
-                return ["ListingEnhancement" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["ListingEnhancement" => $v];}, $value));
         }
         $value = $this->getListingType();
         if (null !== $value) {
@@ -8268,9 +8137,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         }
         $value = $this->getPaymentMethods();
         if (null !== $value && !empty($this->getPaymentMethods())) {
-            $writer->write(array_map(function ($v) {
-                return ["PaymentMethods" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["PaymentMethods" => $v];}, $value));
         }
         $value = $this->getPayPalEmailAddress();
         if (null !== $value) {
@@ -8345,9 +8212,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         }
         $value = $this->getShipToLocations();
         if (null !== $value && !empty($this->getShipToLocations())) {
-            $writer->write(array_map(function ($v) {
-                return ["ShipToLocations" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["ShipToLocations" => $v];}, $value));
         }
         $value = $this->getSite();
         if (null !== $value) {
@@ -8462,9 +8327,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         }
         $value = $this->getVideoDetails();
         if (null !== $value && !empty($this->getVideoDetails())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}VideoDetails", array_map(function ($v) {
-                return ["VideoID" => $v];
-            }, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}VideoDetails", array_map(function ($v) {return ["VideoID" => $v];}, $value));
         }
         $value = $this->getExtendedProducerResponsibility();
         if (null !== $value) {
@@ -8515,9 +8378,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         }
         $value = $this->getItemSpecifics();
         if (null !== $value && !empty($this->getItemSpecifics())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ItemSpecifics", array_map(function ($v) {
-                return ["NameValueList" => $v];
-            }, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ItemSpecifics", array_map(function ($v) {return ["NameValueList" => $v];}, $value));
         }
         $value = $this->getGroupCategoryID();
         if (null !== $value) {
@@ -8561,9 +8422,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         }
         $value = $this->getCrossBorderTrade();
         if (null !== $value && !empty($this->getCrossBorderTrade())) {
-            $writer->write(array_map(function ($v) {
-                return ["CrossBorderTrade" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["CrossBorderTrade" => $v];}, $value));
         }
         $value = $this->getBusinessSellerDetails();
         if (null !== $value) {
@@ -8583,9 +8442,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         }
         $value = $this->getPaymentAllowedSite();
         if (null !== $value && !empty($this->getPaymentAllowedSite())) {
-            $writer->write(array_map(function ($v) {
-                return ["PaymentAllowedSite" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["PaymentAllowedSite" => $v];}, $value));
         }
         $value = $this->getInventoryTrackingMethod();
         if (null !== $value) {
@@ -8614,9 +8471,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         }
         $value = $this->getConditionDescriptors();
         if (null !== $value && !empty($this->getConditionDescriptors())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ConditionDescriptors", array_map(function ($v) {
-                return ["ConditionDescriptor" => $v];
-            }, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ConditionDescriptors", array_map(function ($v) {return ["ConditionDescriptor" => $v];}, $value));
         }
         $value = $this->getConditionDescription();
         if (null !== $value) {
@@ -8676,9 +8531,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         }
         $value = $this->getShippingServiceCostOverrideList();
         if (null !== $value && !empty($this->getShippingServiceCostOverrideList())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippingServiceCostOverrideList", array_map(function ($v) {
-                return ["ShippingServiceCostOverride" => $v];
-            }, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippingServiceCostOverrideList", array_map(function ($v) {return ["ShippingServiceCostOverride" => $v];}, $value));
         }
         $value = $this->getShippingOverride();
         if (null !== $value) {
@@ -8798,24 +8651,6 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ApplicationData');
         if (null !== $value) {
             $this->setApplicationData($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AttributeSetArray', true);
-        if (null !== $value && !empty($value)) {
-            $this->setAttributeSetArray(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\AttributeSetType::fromKeyValue($v);
-            }, $value));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AttributeArray', true);
-        if (null !== $value && !empty($value)) {
-            $this->setAttributeArray(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\AttributeType::fromKeyValue($v);
-            }, $value));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LookupAttributeArray', true);
-        if (null !== $value && !empty($value)) {
-            $this->setLookupAttributeArray(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\LookupAttributeType::fromKeyValue($v);
-            }, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AutoPay');
         if (null !== $value) {
@@ -9135,9 +8970,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemSpecifics', true);
         if (null !== $value && !empty($value)) {
-            $this->setItemSpecifics(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\NameValueListType::fromKeyValue($v);
-            }, $value));
+            $this->setItemSpecifics(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\NameValueListType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}GroupCategoryID');
         if (null !== $value) {
@@ -9225,9 +9058,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ConditionDescriptors', true);
         if (null !== $value && !empty($value)) {
-            $this->setConditionDescriptors(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\ConditionDescriptorType::fromKeyValue($v);
-            }, $value));
+            $this->setConditionDescriptors(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\ConditionDescriptorType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ConditionDescription');
         if (null !== $value) {
@@ -9287,9 +9118,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingServiceCostOverrideList', true);
         if (null !== $value && !empty($value)) {
-            $this->setShippingServiceCostOverrideList(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\ShippingServiceCostOverrideType::fromKeyValue($v);
-            }, $value));
+            $this->setShippingServiceCostOverrideList(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\ShippingServiceCostOverrideType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingOverride');
         if (null !== $value) {

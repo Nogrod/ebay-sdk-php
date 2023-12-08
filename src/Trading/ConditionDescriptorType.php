@@ -20,7 +20,7 @@ class ConditionDescriptorType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
     private $name = null;
 
     /**
-     * One or more numeric IDs are passed in this field. Commas are used as delimiters between successive name/value pairs. These numeric IDs map to the values associated with a condition descriptor name. Condition descriptor name-value pairs provide more information about an item's condition in a structured way.<br /><br />To retrieve all condition descriptor numeric IDs for a category, use the <a href = "/api-docs/sell/metadata/resources/marketplace/methods/getItemConditionPolicies">getItemConditionPolicies</a> method of the <b>Metadata API</b>.<br /><br />In the case of trading cards, this field houses the information on the <b>Grader</b> and <b>Grade</b> descriptors of graded cards and the <b>Card Condition</b> descriptor for ungraded cards.
+     * A numeric ID is passed in this field. This numeric ID maps to the value associated with a condition descriptor name. Condition descriptor name-value pairs provide more information about an item's condition in a structured way.<br /><br />To retrieve all condition descriptor numeric IDs for a category, use the <a href = "/api-docs/sell/metadata/resources/marketplace/methods/getItemConditionPolicies">getItemConditionPolicies</a> method of the <b>Metadata API</b>.<br /><br />In the case of trading cards, this field houses the information on the <b>Grader</b> and <b>Grade</b> descriptors of graded cards and the <b>Card Condition</b> descriptor for ungraded cards.
      *
      * @var string[] $value
      */
@@ -30,6 +30,7 @@ class ConditionDescriptorType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
 
     /**
      * Open text is passed in this field. This text provides additional information about a condition descriptor.<br><br>In the case of trading cards, this field houses the optional <b>Certification Number</b> condition descriptor for graded cards.
+     *  <br />
      *
      * @var string $additionalInfo
      */
@@ -64,7 +65,7 @@ class ConditionDescriptorType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
     /**
      * Adds as value
      *
-     * One or more numeric IDs are passed in this field. Commas are used as delimiters between successive name/value pairs. These numeric IDs map to the values associated with a condition descriptor name. Condition descriptor name-value pairs provide more information about an item's condition in a structured way.<br /><br />To retrieve all condition descriptor numeric IDs for a category, use the <a href = "/api-docs/sell/metadata/resources/marketplace/methods/getItemConditionPolicies">getItemConditionPolicies</a> method of the <b>Metadata API</b>.<br /><br />In the case of trading cards, this field houses the information on the <b>Grader</b> and <b>Grade</b> descriptors of graded cards and the <b>Card Condition</b> descriptor for ungraded cards.
+     * A numeric ID is passed in this field. This numeric ID maps to the value associated with a condition descriptor name. Condition descriptor name-value pairs provide more information about an item's condition in a structured way.<br /><br />To retrieve all condition descriptor numeric IDs for a category, use the <a href = "/api-docs/sell/metadata/resources/marketplace/methods/getItemConditionPolicies">getItemConditionPolicies</a> method of the <b>Metadata API</b>.<br /><br />In the case of trading cards, this field houses the information on the <b>Grader</b> and <b>Grade</b> descriptors of graded cards and the <b>Card Condition</b> descriptor for ungraded cards.
      *
      * @return self
      * @param string $value
@@ -78,7 +79,7 @@ class ConditionDescriptorType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
     /**
      * isset value
      *
-     * One or more numeric IDs are passed in this field. Commas are used as delimiters between successive name/value pairs. These numeric IDs map to the values associated with a condition descriptor name. Condition descriptor name-value pairs provide more information about an item's condition in a structured way.<br /><br />To retrieve all condition descriptor numeric IDs for a category, use the <a href = "/api-docs/sell/metadata/resources/marketplace/methods/getItemConditionPolicies">getItemConditionPolicies</a> method of the <b>Metadata API</b>.<br /><br />In the case of trading cards, this field houses the information on the <b>Grader</b> and <b>Grade</b> descriptors of graded cards and the <b>Card Condition</b> descriptor for ungraded cards.
+     * A numeric ID is passed in this field. This numeric ID maps to the value associated with a condition descriptor name. Condition descriptor name-value pairs provide more information about an item's condition in a structured way.<br /><br />To retrieve all condition descriptor numeric IDs for a category, use the <a href = "/api-docs/sell/metadata/resources/marketplace/methods/getItemConditionPolicies">getItemConditionPolicies</a> method of the <b>Metadata API</b>.<br /><br />In the case of trading cards, this field houses the information on the <b>Grader</b> and <b>Grade</b> descriptors of graded cards and the <b>Card Condition</b> descriptor for ungraded cards.
      *
      * @param int|string $index
      * @return bool
@@ -91,7 +92,7 @@ class ConditionDescriptorType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
     /**
      * unset value
      *
-     * One or more numeric IDs are passed in this field. Commas are used as delimiters between successive name/value pairs. These numeric IDs map to the values associated with a condition descriptor name. Condition descriptor name-value pairs provide more information about an item's condition in a structured way.<br /><br />To retrieve all condition descriptor numeric IDs for a category, use the <a href = "/api-docs/sell/metadata/resources/marketplace/methods/getItemConditionPolicies">getItemConditionPolicies</a> method of the <b>Metadata API</b>.<br /><br />In the case of trading cards, this field houses the information on the <b>Grader</b> and <b>Grade</b> descriptors of graded cards and the <b>Card Condition</b> descriptor for ungraded cards.
+     * A numeric ID is passed in this field. This numeric ID maps to the value associated with a condition descriptor name. Condition descriptor name-value pairs provide more information about an item's condition in a structured way.<br /><br />To retrieve all condition descriptor numeric IDs for a category, use the <a href = "/api-docs/sell/metadata/resources/marketplace/methods/getItemConditionPolicies">getItemConditionPolicies</a> method of the <b>Metadata API</b>.<br /><br />In the case of trading cards, this field houses the information on the <b>Grader</b> and <b>Grade</b> descriptors of graded cards and the <b>Card Condition</b> descriptor for ungraded cards.
      *
      * @param int|string $index
      * @return void
@@ -104,7 +105,7 @@ class ConditionDescriptorType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
     /**
      * Gets as value
      *
-     * One or more numeric IDs are passed in this field. Commas are used as delimiters between successive name/value pairs. These numeric IDs map to the values associated with a condition descriptor name. Condition descriptor name-value pairs provide more information about an item's condition in a structured way.<br /><br />To retrieve all condition descriptor numeric IDs for a category, use the <a href = "/api-docs/sell/metadata/resources/marketplace/methods/getItemConditionPolicies">getItemConditionPolicies</a> method of the <b>Metadata API</b>.<br /><br />In the case of trading cards, this field houses the information on the <b>Grader</b> and <b>Grade</b> descriptors of graded cards and the <b>Card Condition</b> descriptor for ungraded cards.
+     * A numeric ID is passed in this field. This numeric ID maps to the value associated with a condition descriptor name. Condition descriptor name-value pairs provide more information about an item's condition in a structured way.<br /><br />To retrieve all condition descriptor numeric IDs for a category, use the <a href = "/api-docs/sell/metadata/resources/marketplace/methods/getItemConditionPolicies">getItemConditionPolicies</a> method of the <b>Metadata API</b>.<br /><br />In the case of trading cards, this field houses the information on the <b>Grader</b> and <b>Grade</b> descriptors of graded cards and the <b>Card Condition</b> descriptor for ungraded cards.
      *
      * @return string[]
      */
@@ -116,7 +117,7 @@ class ConditionDescriptorType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
     /**
      * Sets a new value
      *
-     * One or more numeric IDs are passed in this field. Commas are used as delimiters between successive name/value pairs. These numeric IDs map to the values associated with a condition descriptor name. Condition descriptor name-value pairs provide more information about an item's condition in a structured way.<br /><br />To retrieve all condition descriptor numeric IDs for a category, use the <a href = "/api-docs/sell/metadata/resources/marketplace/methods/getItemConditionPolicies">getItemConditionPolicies</a> method of the <b>Metadata API</b>.<br /><br />In the case of trading cards, this field houses the information on the <b>Grader</b> and <b>Grade</b> descriptors of graded cards and the <b>Card Condition</b> descriptor for ungraded cards.
+     * A numeric ID is passed in this field. This numeric ID maps to the value associated with a condition descriptor name. Condition descriptor name-value pairs provide more information about an item's condition in a structured way.<br /><br />To retrieve all condition descriptor numeric IDs for a category, use the <a href = "/api-docs/sell/metadata/resources/marketplace/methods/getItemConditionPolicies">getItemConditionPolicies</a> method of the <b>Metadata API</b>.<br /><br />In the case of trading cards, this field houses the information on the <b>Grader</b> and <b>Grade</b> descriptors of graded cards and the <b>Card Condition</b> descriptor for ungraded cards.
      *
      * @param string[] $value
      * @return self
@@ -131,6 +132,7 @@ class ConditionDescriptorType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
      * Gets as additionalInfo
      *
      * Open text is passed in this field. This text provides additional information about a condition descriptor.<br><br>In the case of trading cards, this field houses the optional <b>Certification Number</b> condition descriptor for graded cards.
+     *  <br />
      *
      * @return string
      */
@@ -143,6 +145,7 @@ class ConditionDescriptorType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
      * Sets a new additionalInfo
      *
      * Open text is passed in this field. This text provides additional information about a condition descriptor.<br><br>In the case of trading cards, this field houses the optional <b>Certification Number</b> condition descriptor for graded cards.
+     *  <br />
      *
      * @param string $additionalInfo
      * @return self
@@ -162,9 +165,7 @@ class ConditionDescriptorType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
         }
         $value = $this->getValue();
         if (null !== $value && !empty($this->getValue())) {
-            $writer->write(array_map(function ($v) {
-                return ["Value" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["Value" => $v];}, $value));
         }
         $value = $this->getAdditionalInfo();
         if (null !== $value) {

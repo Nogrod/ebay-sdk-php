@@ -92,9 +92,7 @@ class LinkedLineItemArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getLinkedLineItem();
         if (null !== $value && !empty($this->getLinkedLineItem())) {
-            $writer->write(array_map(function ($v) {
-                return ["LinkedLineItem" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["LinkedLineItem" => $v];}, $value));
         }
     }
 
@@ -114,9 +112,7 @@ class LinkedLineItemArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
     {
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LinkedLineItem', true);
         if (null !== $value && !empty($value)) {
-            $this->setLinkedLineItem(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\LinkedLineItemType::fromKeyValue($v);
-            }, $value));
+            $this->setLinkedLineItem(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\LinkedLineItemType::fromKeyValue($v);}, $value));
         }
     }
 }

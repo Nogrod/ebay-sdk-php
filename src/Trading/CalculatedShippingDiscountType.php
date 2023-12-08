@@ -183,9 +183,7 @@ class CalculatedShippingDiscountType implements \Sabre\Xml\XmlSerializable, \Sab
         }
         $value = $this->getDiscountProfile();
         if (null !== $value && !empty($this->getDiscountProfile())) {
-            $writer->write(array_map(function ($v) {
-                return ["DiscountProfile" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["DiscountProfile" => $v];}, $value));
         }
     }
 
@@ -209,9 +207,7 @@ class CalculatedShippingDiscountType implements \Sabre\Xml\XmlSerializable, \Sab
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DiscountProfile', true);
         if (null !== $value && !empty($value)) {
-            $this->setDiscountProfile(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\DiscountProfileType::fromKeyValue($v);
-            }, $value));
+            $this->setDiscountProfile(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\DiscountProfileType::fromKeyValue($v);}, $value));
         }
     }
 }

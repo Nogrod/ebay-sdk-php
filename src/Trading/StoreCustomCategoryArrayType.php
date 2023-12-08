@@ -92,9 +92,7 @@ class StoreCustomCategoryArrayType implements \Sabre\Xml\XmlSerializable, \Sabre
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getCustomCategory();
         if (null !== $value && !empty($this->getCustomCategory())) {
-            $writer->write(array_map(function ($v) {
-                return ["CustomCategory" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["CustomCategory" => $v];}, $value));
         }
     }
 
@@ -114,9 +112,7 @@ class StoreCustomCategoryArrayType implements \Sabre\Xml\XmlSerializable, \Sabre
     {
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CustomCategory', true);
         if (null !== $value && !empty($value)) {
-            $this->setCustomCategory(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\StoreCustomCategoryType::fromKeyValue($v);
-            }, $value));
+            $this->setCustomCategory(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\StoreCustomCategoryType::fromKeyValue($v);}, $value));
         }
     }
 }

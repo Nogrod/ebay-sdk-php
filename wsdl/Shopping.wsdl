@@ -3593,16 +3593,19 @@
 		<xs:annotation>
 			<xs:documentation>
 				This enumerated type includes all forms of payment that buyers may use to pay for order line items.
+				&lt;span class="tablenote"&gt;&lt;b&gt;Note: &lt;/b&gt;
+					As eBay now controls all of the online payment methods available to buyers, sellers will only specify offline payment methods for listings that require/support offline payment. 
+				&lt;/span&gt;				
 			</xs:documentation>
 			<xs:appinfo>
-			 	<allValuesExcept>Escrow, PrePayDelivery, CODPrePayDelivery, PostalTransfer, StandardPayment, Moneybookers, ProPay, Paymate, StandardPayment, CashInPerson, PaisaPayAccepted, PaisaPayEscrowEMI</allValuesExcept>
+				<onlyTheseValues>CashOnPickup, MOCC, PersonalCheck, CustomCode</onlyTheseValues>
 			</xs:appinfo>
 		</xs:annotation>
 		<xs:restriction base="xs:token">
 			<xs:enumeration value="None">
 				<xs:annotation>
 					<xs:documentation>
-						This enumeration value is returned in a &lt;b&gt;PaymentMethods&lt;/b&gt; field if no payment method is specified for a listing.
+						This enumeration value is deprecated, and should no longer be used in listing flows.
 					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
@@ -3616,21 +3619,21 @@
 			<xs:enumeration value="AmEx">
 				<xs:annotation>
 					<xs:documentation>
-						This enumeration value is returned in a &lt;b&gt;PaymentMethods&lt;/b&gt; field if American Express is accepted as a form of payment for the order line item.
+						This enumeration value is deprecated, and should no longer be used in listing flows.
 					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="PaymentSeeDescription">
 				<xs:annotation>
 					<xs:documentation>
-						This enumeration value is returned in a &lt;b&gt;PaymentMethods&lt;/b&gt; field if payment instructions for the order line item are contained in the listing description.
+						This enumeration value is deprecated, and should no longer be used in listing flows.
 					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="CCAccepted">
 				<xs:annotation>
 					<xs:documentation>
-						This enumeration value is returned in a &lt;b&gt;PaymentMethods&lt;/b&gt; field if credit cards are accepted as a form of payment for the order line item.
+						This enumeration value is deprecated, and should no longer be used in listing flows.
 					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
@@ -3644,21 +3647,21 @@
 			<xs:enumeration value="COD">
 				<xs:annotation>
 					<xs:documentation>
-						This enumeration value is returned in a &lt;b&gt;PaymentMethods&lt;/b&gt; field if 'Cash on delivery' is accepted as a form of payment for the order line item. This payment method is only applicable if the buyer and seller will be handling payment offline, and is only applicable to the following eBay sites: AT (16), BEFR (24), BENL (123), CH (193), DE (77), ES (186), FR (71), HK (201), IN (203), IT (101), PL (212), and SG (216).
+						This enumeration value is deprecated, and should no longer be used in listing flows.
 					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="VisaMC">
 				<xs:annotation>
 					<xs:documentation>
-						This enumeration value is returned in a &lt;b&gt;PaymentMethods&lt;/b&gt; field if Visa or Mastercard are accepted as forms of payment for the order line item.
+						This enumeration value is deprecated, and should no longer be used in listing flows.
 					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="PaisaPayAccepted">
 				<xs:annotation>
 					<xs:documentation>
-						This payment method is no longer applicable, as this form of payment was only accepted on the eBay India site, and this site is no longer a functioning eBay marketplace.
+						This enumeration value is deprecated, and should no longer be used in listing flows.
 						<!-- This enumeration value is returned in a &lt;b&gt;PaymentMethods&lt;b&gt; field if PaisaPay is accepted as a form of payment for the order line item. This payment method is only applicable to the India site (Site ID 203). -->
 					</xs:documentation>
 				</xs:annotation>
@@ -3666,21 +3669,21 @@
 			<xs:enumeration value="Other">
 				<xs:annotation>
 					<xs:documentation>
-						This enumeration value is returned in a &lt;b&gt;PaymentMethods&lt;/b&gt; field if the seller is offering the buyer another form of payment not defined in this type.
+						This enumeration value is deprecated, and should no longer be used in listing flows.
 					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="PayPal">
 				<xs:annotation>
 					<xs:documentation>
-						This enumeration value is returned in a &lt;b&gt;PaymentMethods&lt;/b&gt; field if PayPal is accepted as a form of payment for the order line item. This is a valid value for all countries that accept PayPal.
+						This enumeration value is deprecated, and should no longer be used in listing flows.
 					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="Discover">
 				<xs:annotation>
 					<xs:documentation>
-						This enumeration value is returned in a &lt;b&gt;PaymentMethods&lt;/b&gt; field if Discover is accepted as a form of payment for the order line item.
+						This enumeration value is deprecated, and should no longer be used in listing flows.
 					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
@@ -3694,23 +3697,21 @@
 			<xs:enumeration value="MoneyXferAccepted">
 				<xs:annotation>
 					<xs:documentation>
-						This enumeration value is returned in a &lt;b&gt;PaymentMethods&lt;/b&gt; field if the seller is willing to accept a money transfer as a form of payment for the order line item.
+						This enumeration value is deprecated, and should no longer be used in listing flows.
 					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="MoneyXferAcceptedInCheckout">
 				<xs:annotation>
 					<xs:documentation>
-						If the seller has bank account information on file, and
-						&lt;b&gt;MoneyXferAcceptedInCheckout&lt;/b&gt; is &lt;code&gt;true&lt;/code&gt;, then the bank account
-						information will be displayed at checkout.
+						This enumeration value is deprecated, and should no longer be used in listing flows.
 					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="OtherOnlinePayments">
 				<xs:annotation>
 					<xs:documentation>
-						This enumeration value is returned in a &lt;b&gt;PaymentMethods&lt;/b&gt; field if the seller is offering the buyer another form of online payment not defined in this type.
+						This enumeration value is deprecated, and should no longer be used in listing flows.
 					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
@@ -3753,16 +3754,14 @@
 			<xs:enumeration value="CustomCode">
 				<xs:annotation>
 					<xs:documentation>
-						Placeholder value. See
-						&lt;a href="https://developer.ebay.com/DevZone/shopping/docs/CallRef/types/simpleTypes.html#token"&gt;token&lt;/a&gt;.
+						Reserved for internal or future use.
 					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="LoanCheck">
 				<xs:annotation>
 					<xs:documentation>
-						This enumeration value is returned in a &lt;b&gt;PaymentMethods&lt;/b&gt; field if a loan check is accepted as a form of payment for the order line item.
-						This option is only applicable to motor vehicle listings.
+						This enumeration value is deprecated, and should no longer be used in listing flows.
 					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
@@ -3778,16 +3777,14 @@
 			<xs:enumeration value="ELV">
 				<xs:annotation>
 					<xs:documentation>
-						Elektronisches Lastschriftverfahren (direct debit).
-						Only applicable to Express Germany.
+						This enumeration value is deprecated, and should no longer be used in listing flows.
 					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="PaisaPayEscrowEMI">
 				<xs:annotation>
 					<xs:documentation>
-							This payment method is no longer applicable, as this form of payment was only accepted on the eBay India site, and this site is no longer a functioning eBay marketplace.
-							<!-- This enumeration value is returned in a &lt;b&gt;PaymentMethods&lt;b&gt; field if PaisaPay Escrow is accepted as a form of payment for the order line item. This payment method is only applicable to the India site (Site ID 203). -->
+							This enumeration value is deprecated, and should no longer be used in listing flows.
 						</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
@@ -3830,14 +3827,14 @@
 			<xs:enumeration value="DirectDebit">
 				<xs:annotation>
 					<xs:documentation>
-						This enumeration value is returned in a &lt;b&gt;PaymentMethods&lt;/b&gt; field if a debit card is accepted as a form of payment for the order line item. This value is only applicable to eBay Scheduled Delivery orders in the UK.
+						This enumeration value is deprecated, and should no longer be used in listing flows.
 					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="CreditCard">
 				<xs:annotation>
 					<xs:documentation>
-						This enumeration value is returned in a &lt;b&gt;PaymentMethods&lt;/b&gt; field if a credit card is accepted as a form of payment for the order line item.
+						This enumeration value is deprecated, and should no longer be used in listing flows.
 					</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
@@ -11621,16 +11618,8 @@
 					</xs:appinfo>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="HalfItemCondition" type="xs:string" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation>
-						This field is deprecated.
-					</xs:documentation>
-					<xs:appinfo>
-						<NoCalls/>
-					</xs:appinfo>
-				</xs:annotation>
-			</xs:element>
+
+			
 			<xs:element name="SellerComments" type="xs:string" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>

@@ -90,9 +90,7 @@ class AttributeRecommendationsType implements \Sabre\Xml\XmlSerializable, \Sabre
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getAttributeSetArray();
         if (null !== $value && !empty($this->getAttributeSetArray())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}AttributeSetArray", array_map(function ($v) {
-                return ["AttributeSet" => $v];
-            }, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}AttributeSetArray", array_map(function ($v) {return ["AttributeSet" => $v];}, $value));
         }
     }
 
@@ -112,9 +110,7 @@ class AttributeRecommendationsType implements \Sabre\Xml\XmlSerializable, \Sabre
     {
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AttributeSetArray', true);
         if (null !== $value && !empty($value)) {
-            $this->setAttributeSetArray(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\AttributeSetType::fromKeyValue($v);
-            }, $value));
+            $this->setAttributeSetArray(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\AttributeSetType::fromKeyValue($v);}, $value));
         }
     }
 }

@@ -92,9 +92,7 @@ class WantItNowPostArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getWantItNowPost();
         if (null !== $value && !empty($this->getWantItNowPost())) {
-            $writer->write(array_map(function ($v) {
-                return ["WantItNowPost" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["WantItNowPost" => $v];}, $value));
         }
     }
 
@@ -114,9 +112,7 @@ class WantItNowPostArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     {
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}WantItNowPost', true);
         if (null !== $value && !empty($value)) {
-            $this->setWantItNowPost(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\WantItNowPostType::fromKeyValue($v);
-            }, $value));
+            $this->setWantItNowPost(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\WantItNowPostType::fromKeyValue($v);}, $value));
         }
     }
 }

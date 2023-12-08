@@ -160,9 +160,7 @@ class VideoDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getVideoID();
         if (null !== $value && !empty($this->getVideoID())) {
-            $writer->write(array_map(function ($v) {
-                return ["VideoID" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["VideoID" => $v];}, $value));
         }
     }
 

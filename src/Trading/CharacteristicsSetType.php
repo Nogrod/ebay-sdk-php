@@ -203,9 +203,7 @@ class CharacteristicsSetType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
         }
         $value = $this->getCharacteristics();
         if (null !== $value && !empty($this->getCharacteristics())) {
-            $writer->write(array_map(function ($v) {
-                return ["Characteristics" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["Characteristics" => $v];}, $value));
         }
     }
 
@@ -237,9 +235,7 @@ class CharacteristicsSetType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Characteristics', true);
         if (null !== $value && !empty($value)) {
-            $this->setCharacteristics(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\CharacteristicType::fromKeyValue($v);
-            }, $value));
+            $this->setCharacteristics(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\CharacteristicType::fromKeyValue($v);}, $value));
         }
     }
 }

@@ -65,11 +65,9 @@ class ItemFilterType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      *  <li>ExcludeCategory</li>
      *  <li>ExcludeSeller</li>
      *  <li>ExpeditedShippingType</li>
-     *  <li>FeaturedOnly</li>
      *  <li>FeedbackScoreMax</li>
      *  <li>FeedbackScoreMin</li>
      *  <li>FreeShippingOnly</li>
-     *  <li>GetItFastOnly</li>
      *  <li>HideDuplicateItems</li>
      *  <li>ListedIn</li>
      *  <li>ListingType</li>
@@ -86,13 +84,11 @@ class ItemFilterType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      *  <li>MinPrice</li>
      *  <li>MinQuantity</li>
      *  <li>ModTimeFrom</li>
-     *  <li>PaymentMethod</li>
      *  <li>ReturnsAcceptedOnly</li>
      *  <li>Seller</li>
      *  <li>SellerBusinessType</li>
      *  <li>TopRatedSellerOnly</li>
      *  <li>ValueBoxInventory</li>
-     *  <li>WorldOfGoodOnly</li>
      *  </ul>
      *
      * @var string $name
@@ -223,11 +219,9 @@ class ItemFilterType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      *  <li>ExcludeCategory</li>
      *  <li>ExcludeSeller</li>
      *  <li>ExpeditedShippingType</li>
-     *  <li>FeaturedOnly</li>
      *  <li>FeedbackScoreMax</li>
      *  <li>FeedbackScoreMin</li>
      *  <li>FreeShippingOnly</li>
-     *  <li>GetItFastOnly</li>
      *  <li>HideDuplicateItems</li>
      *  <li>ListedIn</li>
      *  <li>ListingType</li>
@@ -244,13 +238,11 @@ class ItemFilterType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      *  <li>MinPrice</li>
      *  <li>MinQuantity</li>
      *  <li>ModTimeFrom</li>
-     *  <li>PaymentMethod</li>
      *  <li>ReturnsAcceptedOnly</li>
      *  <li>Seller</li>
      *  <li>SellerBusinessType</li>
      *  <li>TopRatedSellerOnly</li>
      *  <li>ValueBoxInventory</li>
-     *  <li>WorldOfGoodOnly</li>
      *  </ul>
      *
      * @return string
@@ -281,11 +273,9 @@ class ItemFilterType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      *  <li>ExcludeCategory</li>
      *  <li>ExcludeSeller</li>
      *  <li>ExpeditedShippingType</li>
-     *  <li>FeaturedOnly</li>
      *  <li>FeedbackScoreMax</li>
      *  <li>FeedbackScoreMin</li>
      *  <li>FreeShippingOnly</li>
-     *  <li>GetItFastOnly</li>
      *  <li>HideDuplicateItems</li>
      *  <li>ListedIn</li>
      *  <li>ListingType</li>
@@ -302,13 +292,11 @@ class ItemFilterType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      *  <li>MinPrice</li>
      *  <li>MinQuantity</li>
      *  <li>ModTimeFrom</li>
-     *  <li>PaymentMethod</li>
      *  <li>ReturnsAcceptedOnly</li>
      *  <li>Seller</li>
      *  <li>SellerBusinessType</li>
      *  <li>TopRatedSellerOnly</li>
      *  <li>ValueBoxInventory</li>
-     *  <li>WorldOfGoodOnly</li>
      *  </ul>
      *
      * @param string $name
@@ -430,9 +418,7 @@ class ItemFilterType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
         }
         $value = $this->getValue();
         if (null !== $value && !empty($this->getValue())) {
-            $writer->write(array_map(function ($v) {
-                return ["value" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["value" => $v];}, $value));
         }
         $value = $this->getDelimiter();
         if (null !== $value) {

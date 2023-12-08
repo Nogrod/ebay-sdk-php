@@ -1474,9 +1474,7 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
         }
         $value = $this->getCharityAffiliationDetails();
         if (null !== $value && !empty($this->getCharityAffiliationDetails())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CharityAffiliationDetails", array_map(function ($v) {
-                return ["CharityAffiliationDetail" => $v];
-            }, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CharityAffiliationDetails", array_map(function ($v) {return ["CharityAffiliationDetail" => $v];}, $value));
         }
         $value = $this->getTransactionPercent();
         if (null !== $value) {
@@ -1484,9 +1482,7 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
         }
         $value = $this->getIntegratedMerchantCreditCardInfo();
         if (null !== $value && !empty($this->getIntegratedMerchantCreditCardInfo())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}IntegratedMerchantCreditCardInfo", array_map(function ($v) {
-                return ["SupportedSite" => $v];
-            }, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}IntegratedMerchantCreditCardInfo", array_map(function ($v) {return ["SupportedSite" => $v];}, $value));
         }
         $value = $this->getFeatureEligibility();
         if (null !== $value) {
@@ -1499,15 +1495,11 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
         }
         $value = $this->getTopRatedSellerDetails();
         if (null !== $value && !empty($this->getTopRatedSellerDetails())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TopRatedSellerDetails", array_map(function ($v) {
-                return ["TopRatedProgram" => $v];
-            }, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TopRatedSellerDetails", array_map(function ($v) {return ["TopRatedProgram" => $v];}, $value));
         }
         $value = $this->getRecoupmentPolicyConsent();
         if (null !== $value && !empty($this->getRecoupmentPolicyConsent())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}RecoupmentPolicyConsent", array_map(function ($v) {
-                return ["Site" => $v];
-            }, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}RecoupmentPolicyConsent", array_map(function ($v) {return ["Site" => $v];}, $value));
         }
         $value = $this->getDomesticRateTable();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;
@@ -1633,9 +1625,7 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CharityAffiliationDetails', true);
         if (null !== $value && !empty($value)) {
-            $this->setCharityAffiliationDetails(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\CharityAffiliationDetailType::fromKeyValue($v);
-            }, $value));
+            $this->setCharityAffiliationDetails(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\CharityAffiliationDetailType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TransactionPercent');
         if (null !== $value) {

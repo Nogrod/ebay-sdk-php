@@ -98,9 +98,7 @@ class UserIDArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getUserID();
         if (null !== $value && !empty($this->getUserID())) {
-            $writer->write(array_map(function ($v) {
-                return ["UserID" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["UserID" => $v];}, $value));
         }
     }
 

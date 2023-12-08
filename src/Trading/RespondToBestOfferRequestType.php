@@ -268,9 +268,7 @@ class RespondToBestOfferRequestType extends AbstractRequestType
         }
         $value = $this->getBestOfferID();
         if (null !== $value && !empty($this->getBestOfferID())) {
-            $writer->write(array_map(function ($v) {
-                return ["BestOfferID" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["BestOfferID" => $v];}, $value));
         }
         $value = $this->getAction();
         if (null !== $value) {

@@ -129,9 +129,7 @@ class ReviewDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
         }
         $value = $this->getReview();
         if (null !== $value && !empty($this->getReview())) {
-            $writer->write(array_map(function ($v) {
-                return ["Review" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["Review" => $v];}, $value));
         }
     }
 
@@ -155,9 +153,7 @@ class ReviewDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Review', true);
         if (null !== $value && !empty($value)) {
-            $this->setReview(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\ReviewType::fromKeyValue($v);
-            }, $value));
+            $this->setReview(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\ReviewType::fromKeyValue($v);}, $value));
         }
     }
 }

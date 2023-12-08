@@ -167,9 +167,7 @@ class SellereBayPaymentProcessConsentCodeType implements \Sabre\Xml\XmlSerializa
         }
         $value = $this->getUserAgreementInfo();
         if (null !== $value && !empty($this->getUserAgreementInfo())) {
-            $writer->write(array_map(function ($v) {
-                return ["UserAgreementInfo" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["UserAgreementInfo" => $v];}, $value));
         }
     }
 
@@ -197,9 +195,7 @@ class SellereBayPaymentProcessConsentCodeType implements \Sabre\Xml\XmlSerializa
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UserAgreementInfo', true);
         if (null !== $value && !empty($value)) {
-            $this->setUserAgreementInfo(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\UserAgreementInfoType::fromKeyValue($v);
-            }, $value));
+            $this->setUserAgreementInfo(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\UserAgreementInfoType::fromKeyValue($v);}, $value));
         }
     }
 }

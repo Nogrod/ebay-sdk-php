@@ -92,9 +92,7 @@ class CategoryGroupsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
         $writer->writeAttribute("xmlns", "http://www.ebay.com/marketplace/selling/v1/services");
         $value = $this->getCategoryGroup();
         if (null !== $value && !empty($this->getCategoryGroup())) {
-            $writer->write(array_map(function ($v) {
-                return ["categoryGroup" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["categoryGroup" => $v];}, $value));
         }
     }
 
@@ -114,9 +112,7 @@ class CategoryGroupsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
     {
         $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}categoryGroup', true);
         if (null !== $value && !empty($value)) {
-            $this->setCategoryGroup(array_map(function ($v) {
-                return \Nogrod\eBaySDK\BusinessPoliciesManagement\CategoryGroupType::fromKeyValue($v);
-            }, $value));
+            $this->setCategoryGroup(array_map(function ($v) {return \Nogrod\eBaySDK\BusinessPoliciesManagement\CategoryGroupType::fromKeyValue($v);}, $value));
         }
     }
 }

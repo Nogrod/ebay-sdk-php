@@ -129,9 +129,7 @@ class ListingDurationDefinitionType implements \Sabre\Xml\XmlSerializable, \Sabr
         }
         $value = $this->getDuration();
         if (null !== $value && !empty($this->getDuration())) {
-            $writer->write(array_map(function ($v) {
-                return ["Duration" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["Duration" => $v];}, $value));
         }
     }
 

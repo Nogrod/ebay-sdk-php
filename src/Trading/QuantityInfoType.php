@@ -7,7 +7,10 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing QuantityInfoType
  *
- * Type defining the <b>QuantityInfo</b> container, which consists of the <b>MinimumRemnantSet</b> field, which sets the minimum amount of event tickets that can remain in the fixed-price listing's inventory after a buyer purchases one or more tickets (but not all) from the listing.
+ * <span class="tablenote"><strong>Note:</strong>
+ *  This type and its fields are not usable and will be ignored if sent. See <a href="https://developer.ebay.com/develop/apis/api-deprecation-status">API Deprecation Status</a> for the decommission date (when this type and field will stop being returned).
+ *  </span>
+ *  Type defining the <b>QuantityInfo</b> container, which consists of the <b>MinimumRemnantSet</b> field, which sets the minimum amount of event tickets that can remain in the fixed-price listing's inventory after a buyer purchases one or more tickets (but not all) from the listing.
  * XSD Type: QuantityInfoType
  */
 class QuantityInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable

@@ -31,30 +31,12 @@ class MyMessagesFolderSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\
     private $folderName = null;
 
     /**
-     * This field has been deprecated, starting with the 685 release. Alerts are now
-     *  synonymous with Flagged messages, and are added to the
-     *  Summary.FlaggedMessageCount value.
-     *
-     * @var int $newAlertCount
-     */
-    private $newAlertCount = null;
-
-    /**
      * The number of new messages in a given folder.
      *  Always returned for detail level ReturnSummary.
      *
      * @var int $newMessageCount
      */
     private $newMessageCount = null;
-
-    /**
-     * This field has been deprecated, starting with the 685 release. Alerts are now
-     *  synonymous with Flagged messages, and are added to the
-     *  Summary.FlaggedMessageCount value.
-     *
-     * @var int $totalAlertCount
-     */
-    private $totalAlertCount = null;
 
     /**
      * The total number of messages in a given
@@ -140,36 +122,6 @@ class MyMessagesFolderSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\
     }
 
     /**
-     * Gets as newAlertCount
-     *
-     * This field has been deprecated, starting with the 685 release. Alerts are now
-     *  synonymous with Flagged messages, and are added to the
-     *  Summary.FlaggedMessageCount value.
-     *
-     * @return int
-     */
-    public function getNewAlertCount()
-    {
-        return $this->newAlertCount;
-    }
-
-    /**
-     * Sets a new newAlertCount
-     *
-     * This field has been deprecated, starting with the 685 release. Alerts are now
-     *  synonymous with Flagged messages, and are added to the
-     *  Summary.FlaggedMessageCount value.
-     *
-     * @param int $newAlertCount
-     * @return self
-     */
-    public function setNewAlertCount($newAlertCount)
-    {
-        $this->newAlertCount = $newAlertCount;
-        return $this;
-    }
-
-    /**
      * Gets as newMessageCount
      *
      * The number of new messages in a given folder.
@@ -194,36 +146,6 @@ class MyMessagesFolderSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\
     public function setNewMessageCount($newMessageCount)
     {
         $this->newMessageCount = $newMessageCount;
-        return $this;
-    }
-
-    /**
-     * Gets as totalAlertCount
-     *
-     * This field has been deprecated, starting with the 685 release. Alerts are now
-     *  synonymous with Flagged messages, and are added to the
-     *  Summary.FlaggedMessageCount value.
-     *
-     * @return int
-     */
-    public function getTotalAlertCount()
-    {
-        return $this->totalAlertCount;
-    }
-
-    /**
-     * Sets a new totalAlertCount
-     *
-     * This field has been deprecated, starting with the 685 release. Alerts are now
-     *  synonymous with Flagged messages, and are added to the
-     *  Summary.FlaggedMessageCount value.
-     *
-     * @param int $totalAlertCount
-     * @return self
-     */
-    public function setTotalAlertCount($totalAlertCount)
-    {
-        $this->totalAlertCount = $totalAlertCount;
         return $this;
     }
 
@@ -320,17 +242,9 @@ class MyMessagesFolderSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}FolderName", $value);
         }
-        $value = $this->getNewAlertCount();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}NewAlertCount", $value);
-        }
         $value = $this->getNewMessageCount();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}NewMessageCount", $value);
-        }
-        $value = $this->getTotalAlertCount();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TotalAlertCount", $value);
         }
         $value = $this->getTotalMessageCount();
         if (null !== $value) {
@@ -368,17 +282,9 @@ class MyMessagesFolderSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\
         if (null !== $value) {
             $this->setFolderName($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}NewAlertCount');
-        if (null !== $value) {
-            $this->setNewAlertCount($value);
-        }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}NewMessageCount');
         if (null !== $value) {
             $this->setNewMessageCount($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TotalAlertCount');
-        if (null !== $value) {
-            $this->setTotalAlertCount($value);
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TotalMessageCount');
         if (null !== $value) {

@@ -921,27 +921,19 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
         }
         $value = $this->getAddFixedPriceItemResponse();
         if (null !== $value && !empty($this->getAddFixedPriceItemResponse())) {
-            $writer->write(array_map(function ($v) {
-                return ["AddFixedPriceItemResponse" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["AddFixedPriceItemResponse" => $v];}, $value));
         }
         $value = $this->getAddItemResponse();
         if (null !== $value && !empty($this->getAddItemResponse())) {
-            $writer->write(array_map(function ($v) {
-                return ["AddItemResponse" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["AddItemResponse" => $v];}, $value));
         }
         $value = $this->getEndFixedPriceItemResponse();
         if (null !== $value && !empty($this->getEndFixedPriceItemResponse())) {
-            $writer->write(array_map(function ($v) {
-                return ["EndFixedPriceItemResponse" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["EndFixedPriceItemResponse" => $v];}, $value));
         }
         $value = $this->getEndItemResponse();
         if (null !== $value && !empty($this->getEndItemResponse())) {
-            $writer->write(array_map(function ($v) {
-                return ["EndItemResponse" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["EndItemResponse" => $v];}, $value));
         }
         $value = $this->getFeeSettlementReport();
         if (null !== $value) {
@@ -949,9 +941,7 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
         }
         $value = $this->getOrderAckResponse();
         if (null !== $value && !empty($this->getOrderAckResponse())) {
-            $writer->write(array_map(function ($v) {
-                return ["OrderAckResponse" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["OrderAckResponse" => $v];}, $value));
         }
         $value = $this->getOrderReport();
         if (null !== $value) {
@@ -959,51 +949,35 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
         }
         $value = $this->getRelistFixedPriceItemResponse();
         if (null !== $value && !empty($this->getRelistFixedPriceItemResponse())) {
-            $writer->write(array_map(function ($v) {
-                return ["RelistFixedPriceItemResponse" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["RelistFixedPriceItemResponse" => $v];}, $value));
         }
         $value = $this->getRelistItemResponse();
         if (null !== $value && !empty($this->getRelistItemResponse())) {
-            $writer->write(array_map(function ($v) {
-                return ["RelistItemResponse" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["RelistItemResponse" => $v];}, $value));
         }
         $value = $this->getReviseFixedPriceItemResponse();
         if (null !== $value && !empty($this->getReviseFixedPriceItemResponse())) {
-            $writer->write(array_map(function ($v) {
-                return ["ReviseFixedPriceItemResponse" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["ReviseFixedPriceItemResponse" => $v];}, $value));
         }
         $value = $this->getReviseInventoryStatusResponse();
         if (null !== $value && !empty($this->getReviseInventoryStatusResponse())) {
-            $writer->write(array_map(function ($v) {
-                return ["ReviseInventoryStatusResponse" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["ReviseInventoryStatusResponse" => $v];}, $value));
         }
         $value = $this->getReviseItemResponse();
         if (null !== $value && !empty($this->getReviseItemResponse())) {
-            $writer->write(array_map(function ($v) {
-                return ["ReviseItemResponse" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["ReviseItemResponse" => $v];}, $value));
         }
         $value = $this->getSetShipmentTrackingInfoResponse();
         if (null !== $value && !empty($this->getSetShipmentTrackingInfoResponse())) {
-            $writer->write(array_map(function ($v) {
-                return ["SetShipmentTrackingInfoResponse" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["SetShipmentTrackingInfoResponse" => $v];}, $value));
         }
         $value = $this->getVerifyAddFixedPriceItemResponse();
         if (null !== $value && !empty($this->getVerifyAddFixedPriceItemResponse())) {
-            $writer->write(array_map(function ($v) {
-                return ["VerifyAddFixedPriceItemResponse" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["VerifyAddFixedPriceItemResponse" => $v];}, $value));
         }
         $value = $this->getVerifyAddItemResponse();
         if (null !== $value && !empty($this->getVerifyAddItemResponse())) {
-            $writer->write(array_map(function ($v) {
-                return ["VerifyAddItemResponse" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["VerifyAddItemResponse" => $v];}, $value));
         }
     }
 
@@ -1027,27 +1001,19 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AddFixedPriceItemResponse', true);
         if (null !== $value && !empty($value)) {
-            $this->setAddFixedPriceItemResponse(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\AddFixedPriceItemResponseType::fromKeyValue($v);
-            }, $value));
+            $this->setAddFixedPriceItemResponse(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\AddFixedPriceItemResponseType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AddItemResponse', true);
         if (null !== $value && !empty($value)) {
-            $this->setAddItemResponse(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\AddItemResponseType::fromKeyValue($v);
-            }, $value));
+            $this->setAddItemResponse(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\AddItemResponseType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EndFixedPriceItemResponse', true);
         if (null !== $value && !empty($value)) {
-            $this->setEndFixedPriceItemResponse(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\EndFixedPriceItemResponseType::fromKeyValue($v);
-            }, $value));
+            $this->setEndFixedPriceItemResponse(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\EndFixedPriceItemResponseType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EndItemResponse', true);
         if (null !== $value && !empty($value)) {
-            $this->setEndItemResponse(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\EndItemResponseType::fromKeyValue($v);
-            }, $value));
+            $this->setEndItemResponse(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\EndItemResponseType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeeSettlementReport');
         if (null !== $value) {
@@ -1055,9 +1021,7 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}OrderAckResponse', true);
         if (null !== $value && !empty($value)) {
-            $this->setOrderAckResponse(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\OrderAckResponseType::fromKeyValue($v);
-            }, $value));
+            $this->setOrderAckResponse(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\OrderAckResponseType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}OrderReport');
         if (null !== $value) {
@@ -1065,51 +1029,35 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RelistFixedPriceItemResponse', true);
         if (null !== $value && !empty($value)) {
-            $this->setRelistFixedPriceItemResponse(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\RelistFixedPriceItemResponseType::fromKeyValue($v);
-            }, $value));
+            $this->setRelistFixedPriceItemResponse(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\RelistFixedPriceItemResponseType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RelistItemResponse', true);
         if (null !== $value && !empty($value)) {
-            $this->setRelistItemResponse(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\RelistItemResponseType::fromKeyValue($v);
-            }, $value));
+            $this->setRelistItemResponse(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\RelistItemResponseType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReviseFixedPriceItemResponse', true);
         if (null !== $value && !empty($value)) {
-            $this->setReviseFixedPriceItemResponse(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\ReviseFixedPriceItemResponseType::fromKeyValue($v);
-            }, $value));
+            $this->setReviseFixedPriceItemResponse(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\ReviseFixedPriceItemResponseType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReviseInventoryStatusResponse', true);
         if (null !== $value && !empty($value)) {
-            $this->setReviseInventoryStatusResponse(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\ReviseInventoryStatusResponseType::fromKeyValue($v);
-            }, $value));
+            $this->setReviseInventoryStatusResponse(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\ReviseInventoryStatusResponseType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReviseItemResponse', true);
         if (null !== $value && !empty($value)) {
-            $this->setReviseItemResponse(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\ReviseItemResponseType::fromKeyValue($v);
-            }, $value));
+            $this->setReviseItemResponse(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\ReviseItemResponseType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SetShipmentTrackingInfoResponse', true);
         if (null !== $value && !empty($value)) {
-            $this->setSetShipmentTrackingInfoResponse(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\SetShipmentTrackingInfoResponseType::fromKeyValue($v);
-            }, $value));
+            $this->setSetShipmentTrackingInfoResponse(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\SetShipmentTrackingInfoResponseType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}VerifyAddFixedPriceItemResponse', true);
         if (null !== $value && !empty($value)) {
-            $this->setVerifyAddFixedPriceItemResponse(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\VerifyAddFixedPriceItemResponseType::fromKeyValue($v);
-            }, $value));
+            $this->setVerifyAddFixedPriceItemResponse(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\VerifyAddFixedPriceItemResponseType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}VerifyAddItemResponse', true);
         if (null !== $value && !empty($value)) {
-            $this->setVerifyAddItemResponse(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\VerifyAddItemResponseType::fromKeyValue($v);
-            }, $value));
+            $this->setVerifyAddItemResponse(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\VerifyAddItemResponseType::fromKeyValue($v);}, $value));
         }
     }
 }

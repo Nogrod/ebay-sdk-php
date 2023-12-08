@@ -630,9 +630,7 @@ class FindProductsRequestType extends AbstractRequestType
         }
         $value = $this->getDomainName();
         if (null !== $value && !empty($this->getDomainName())) {
-            $writer->write(array_map(function ($v) {
-                return ["DomainName" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["DomainName" => $v];}, $value));
         }
         $value = $this->getProductID();
         if (null !== $value) {

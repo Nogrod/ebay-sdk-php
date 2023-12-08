@@ -116,9 +116,7 @@ class ModifyNameArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getModifyName();
         if (null !== $value && !empty($this->getModifyName())) {
-            $writer->write(array_map(function ($v) {
-                return ["ModifyName" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["ModifyName" => $v];}, $value));
         }
     }
 
@@ -138,9 +136,7 @@ class ModifyNameArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     {
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ModifyName', true);
         if (null !== $value && !empty($value)) {
-            $this->setModifyName(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\ModifyNameType::fromKeyValue($v);
-            }, $value));
+            $this->setModifyName(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\ModifyNameType::fromKeyValue($v);}, $value));
         }
     }
 }

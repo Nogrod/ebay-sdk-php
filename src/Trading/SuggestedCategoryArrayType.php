@@ -100,9 +100,7 @@ class SuggestedCategoryArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\X
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getSuggestedCategory();
         if (null !== $value && !empty($this->getSuggestedCategory())) {
-            $writer->write(array_map(function ($v) {
-                return ["SuggestedCategory" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["SuggestedCategory" => $v];}, $value));
         }
     }
 
@@ -122,9 +120,7 @@ class SuggestedCategoryArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\X
     {
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SuggestedCategory', true);
         if (null !== $value && !empty($value)) {
-            $this->setSuggestedCategory(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\SuggestedCategoryType::fromKeyValue($v);
-            }, $value));
+            $this->setSuggestedCategory(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\SuggestedCategoryType::fromKeyValue($v);}, $value));
         }
     }
 }

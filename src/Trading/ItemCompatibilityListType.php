@@ -165,9 +165,7 @@ class ItemCompatibilityListType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getCompatibility();
         if (null !== $value && !empty($this->getCompatibility())) {
-            $writer->write(array_map(function ($v) {
-                return ["Compatibility" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["Compatibility" => $v];}, $value));
         }
         $value = $this->getReplaceAll();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;
@@ -192,9 +190,7 @@ class ItemCompatibilityListType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     {
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Compatibility', true);
         if (null !== $value && !empty($value)) {
-            $this->setCompatibility(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\ItemCompatibilityType::fromKeyValue($v);
-            }, $value));
+            $this->setCompatibility(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\ItemCompatibilityType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReplaceAll');
         if (null !== $value) {

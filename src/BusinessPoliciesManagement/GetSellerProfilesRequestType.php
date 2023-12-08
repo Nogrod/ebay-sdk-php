@@ -326,21 +326,15 @@ class GetSellerProfilesRequestType extends BaseRequestType
         parent::xmlSerialize($writer);
         $value = $this->getProfileType();
         if (null !== $value && !empty($this->getProfileType())) {
-            $writer->write(array_map(function ($v) {
-                return ["profileType" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["profileType" => $v];}, $value));
         }
         $value = $this->getProfileId();
         if (null !== $value && !empty($this->getProfileId())) {
-            $writer->write(array_map(function ($v) {
-                return ["profileId" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["profileId" => $v];}, $value));
         }
         $value = $this->getProfileName();
         if (null !== $value && !empty($this->getProfileName())) {
-            $writer->write(array_map(function ($v) {
-                return ["profileName" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["profileName" => $v];}, $value));
         }
         $value = $this->getIncludeDetails();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;

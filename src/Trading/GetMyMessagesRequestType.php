@@ -13,13 +13,6 @@ use Nogrod\XMLClientRuntime\Func;
 class GetMyMessagesRequestType extends AbstractRequestType
 {
     /**
-     * This container is deprecated.
-     *
-     * @var string[] $alertIDs
-     */
-    private $alertIDs = null;
-
-    /**
      * This container can be used to retrieve one or more specific messages identified with their unique <b>MessageID</b> values. Up to 10 <b>MessageID</b> values can be specified with one call.
      *
      * @var string[] $messageIDs
@@ -76,72 +69,6 @@ class GetMyMessagesRequestType extends AbstractRequestType
      * @var bool $includeHighPriorityMessageOnly
      */
     private $includeHighPriorityMessageOnly = null;
-
-    /**
-     * Adds as alertID
-     *
-     * This container is deprecated.
-     *
-     * @return self
-     * @param string $alertID
-     */
-    public function addToAlertIDs($alertID)
-    {
-        $this->alertIDs[] = $alertID;
-        return $this;
-    }
-
-    /**
-     * isset alertIDs
-     *
-     * This container is deprecated.
-     *
-     * @param int|string $index
-     * @return bool
-     */
-    public function issetAlertIDs($index)
-    {
-        return isset($this->alertIDs[$index]);
-    }
-
-    /**
-     * unset alertIDs
-     *
-     * This container is deprecated.
-     *
-     * @param int|string $index
-     * @return void
-     */
-    public function unsetAlertIDs($index)
-    {
-        unset($this->alertIDs[$index]);
-    }
-
-    /**
-     * Gets as alertIDs
-     *
-     * This container is deprecated.
-     *
-     * @return string[]
-     */
-    public function getAlertIDs()
-    {
-        return $this->alertIDs;
-    }
-
-    /**
-     * Sets a new alertIDs
-     *
-     * This container is deprecated.
-     *
-     * @param string $alertIDs
-     * @return self
-     */
-    public function setAlertIDs(array $alertIDs)
-    {
-        $this->alertIDs = $alertIDs;
-        return $this;
-    }
 
     /**
      * Adds as messageID
@@ -435,17 +362,9 @@ class GetMyMessagesRequestType extends AbstractRequestType
     public function xmlSerialize(\Sabre\Xml\Writer $writer): void
     {
         parent::xmlSerialize($writer);
-        $value = $this->getAlertIDs();
-        if (null !== $value && !empty($this->getAlertIDs())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}AlertIDs", array_map(function ($v) {
-                return ["AlertID" => $v];
-            }, $value));
-        }
         $value = $this->getMessageIDs();
         if (null !== $value && !empty($this->getMessageIDs())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MessageIDs", array_map(function ($v) {
-                return ["MessageID" => $v];
-            }, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MessageIDs", array_map(function ($v) {return ["MessageID" => $v];}, $value));
         }
         $value = $this->getFolderID();
         if (null !== $value) {
@@ -461,9 +380,7 @@ class GetMyMessagesRequestType extends AbstractRequestType
         }
         $value = $this->getExternalMessageIDs();
         if (null !== $value && !empty($this->getExternalMessageIDs())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ExternalMessageIDs", array_map(function ($v) {
-                return ["ExternalMessageID" => $v];
-            }, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ExternalMessageIDs", array_map(function ($v) {return ["ExternalMessageID" => $v];}, $value));
         }
         $value = $this->getPagination();
         if (null !== $value) {
@@ -491,10 +408,6 @@ class GetMyMessagesRequestType extends AbstractRequestType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AlertIDs', true);
-        if (null !== $value && !empty($value)) {
-            $this->setAlertIDs($value);
-        }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MessageIDs', true);
         if (null !== $value && !empty($value)) {
             $this->setMessageIDs($value);

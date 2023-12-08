@@ -548,9 +548,7 @@ class InternationalShippingServiceOptionsType implements \Sabre\Xml\XmlSerializa
         }
         $value = $this->getShipToLocation();
         if (null !== $value && !empty($this->getShipToLocation())) {
-            $writer->write(array_map(function ($v) {
-                return ["ShipToLocation" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["ShipToLocation" => $v];}, $value));
         }
         $value = $this->getShippingInsuranceCost();
         if (null !== $value) {

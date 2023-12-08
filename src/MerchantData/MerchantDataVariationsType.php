@@ -127,9 +127,7 @@ class MerchantDataVariationsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getVariation();
         if (null !== $value && !empty($this->getVariation())) {
-            $writer->write(array_map(function ($v) {
-                return ["Variation" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["Variation" => $v];}, $value));
         }
     }
 
@@ -149,9 +147,7 @@ class MerchantDataVariationsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
     {
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Variation', true);
         if (null !== $value && !empty($value)) {
-            $this->setVariation(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\MerchantDataVariationType::fromKeyValue($v);
-            }, $value));
+            $this->setVariation(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\MerchantDataVariationType::fromKeyValue($v);}, $value));
         }
     }
 }

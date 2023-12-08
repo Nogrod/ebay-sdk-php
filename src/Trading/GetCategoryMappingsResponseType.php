@@ -148,9 +148,7 @@ class GetCategoryMappingsResponseType extends AbstractResponseType
         parent::xmlSerialize($writer);
         $value = $this->getCategoryMapping();
         if (null !== $value && !empty($this->getCategoryMapping())) {
-            $writer->write(array_map(function ($v) {
-                return ["CategoryMapping" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["CategoryMapping" => $v];}, $value));
         }
         $value = $this->getCategoryVersion();
         if (null !== $value) {
@@ -175,9 +173,7 @@ class GetCategoryMappingsResponseType extends AbstractResponseType
         parent::setKeyValue($keyValue);
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CategoryMapping', true);
         if (null !== $value && !empty($value)) {
-            $this->setCategoryMapping(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\CategoryMappingType::fromKeyValue($v);
-            }, $value));
+            $this->setCategoryMapping(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\CategoryMappingType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CategoryVersion');
         if (null !== $value) {

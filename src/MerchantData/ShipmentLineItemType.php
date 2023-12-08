@@ -92,9 +92,7 @@ class ShipmentLineItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getLineItem();
         if (null !== $value && !empty($this->getLineItem())) {
-            $writer->write(array_map(function ($v) {
-                return ["LineItem" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["LineItem" => $v];}, $value));
         }
     }
 
@@ -114,9 +112,7 @@ class ShipmentLineItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
     {
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LineItem', true);
         if (null !== $value && !empty($value)) {
-            $this->setLineItem(array_map(function ($v) {
-                return \Nogrod\eBaySDK\MerchantData\LineItemType::fromKeyValue($v);
-            }, $value));
+            $this->setLineItem(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\LineItemType::fromKeyValue($v);}, $value));
         }
     }
 }

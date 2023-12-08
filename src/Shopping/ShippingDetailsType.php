@@ -628,9 +628,7 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
         }
         $value = $this->getInternationalShippingServiceOption();
         if (null !== $value && !empty($this->getInternationalShippingServiceOption())) {
-            $writer->write(array_map(function ($v) {
-                return ["InternationalShippingServiceOption" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["InternationalShippingServiceOption" => $v];}, $value));
         }
         $value = $this->getSalesTax();
         if (null !== $value) {
@@ -642,15 +640,11 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
         }
         $value = $this->getShippingServiceOption();
         if (null !== $value && !empty($this->getShippingServiceOption())) {
-            $writer->write(array_map(function ($v) {
-                return ["ShippingServiceOption" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["ShippingServiceOption" => $v];}, $value));
         }
         $value = $this->getTaxTable();
         if (null !== $value && !empty($this->getTaxTable())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TaxTable", array_map(function ($v) {
-                return ["TaxJurisdiction" => $v];
-            }, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TaxTable", array_map(function ($v) {return ["TaxJurisdiction" => $v];}, $value));
         }
         $value = $this->getInternationalInsuranceCost();
         if (null !== $value) {
@@ -666,9 +660,7 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
         }
         $value = $this->getExcludeShipToLocation();
         if (null !== $value && !empty($this->getExcludeShipToLocation())) {
-            $writer->write(array_map(function ($v) {
-                return ["ExcludeShipToLocation" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["ExcludeShipToLocation" => $v];}, $value));
         }
     }
 
@@ -700,9 +692,7 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}InternationalShippingServiceOption', true);
         if (null !== $value && !empty($value)) {
-            $this->setInternationalShippingServiceOption(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Shopping\InternationalShippingServiceOptionType::fromKeyValue($v);
-            }, $value));
+            $this->setInternationalShippingServiceOption(array_map(function ($v) {return \Nogrod\eBaySDK\Shopping\InternationalShippingServiceOptionType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SalesTax');
         if (null !== $value) {
@@ -714,15 +704,11 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingServiceOption', true);
         if (null !== $value && !empty($value)) {
-            $this->setShippingServiceOption(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Shopping\ShippingServiceOptionType::fromKeyValue($v);
-            }, $value));
+            $this->setShippingServiceOption(array_map(function ($v) {return \Nogrod\eBaySDK\Shopping\ShippingServiceOptionType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TaxTable', true);
         if (null !== $value && !empty($value)) {
-            $this->setTaxTable(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Shopping\TaxJurisdictionType::fromKeyValue($v);
-            }, $value));
+            $this->setTaxTable(array_map(function ($v) {return \Nogrod\eBaySDK\Shopping\TaxJurisdictionType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}InternationalInsuranceCost');
         if (null !== $value) {

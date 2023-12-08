@@ -92,9 +92,7 @@ class EndItemsResponseType extends AbstractResponseType
         parent::xmlSerialize($writer);
         $value = $this->getEndItemResponseContainer();
         if (null !== $value && !empty($this->getEndItemResponseContainer())) {
-            $writer->write(array_map(function ($v) {
-                return ["EndItemResponseContainer" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["EndItemResponseContainer" => $v];}, $value));
         }
     }
 
@@ -115,9 +113,7 @@ class EndItemsResponseType extends AbstractResponseType
         parent::setKeyValue($keyValue);
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EndItemResponseContainer', true);
         if (null !== $value && !empty($value)) {
-            $this->setEndItemResponseContainer(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\EndItemResponseContainerType::fromKeyValue($v);
-            }, $value));
+            $this->setEndItemResponseContainer(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\EndItemResponseContainerType::fromKeyValue($v);}, $value));
         }
     }
 }

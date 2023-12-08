@@ -300,9 +300,7 @@ class ReviseItemRequestType extends AbstractRequestType
         }
         $value = $this->getDeletedField();
         if (null !== $value && !empty($this->getDeletedField())) {
-            $writer->write(array_map(function ($v) {
-                return ["DeletedField" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["DeletedField" => $v];}, $value));
         }
         $value = $this->getVerifyOnly();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;

@@ -149,9 +149,7 @@ class ShippingInsuranceType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
         }
         $value = $this->getFlatRateInsuranceRangeCost();
         if (null !== $value && !empty($this->getFlatRateInsuranceRangeCost())) {
-            $writer->write(array_map(function ($v) {
-                return ["FlatRateInsuranceRangeCost" => $v];
-            }, $value));
+            $writer->write(array_map(function ($v) {return ["FlatRateInsuranceRangeCost" => $v];}, $value));
         }
     }
 
@@ -175,9 +173,7 @@ class ShippingInsuranceType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FlatRateInsuranceRangeCost', true);
         if (null !== $value && !empty($value)) {
-            $this->setFlatRateInsuranceRangeCost(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\FlatRateInsuranceRangeCostType::fromKeyValue($v);
-            }, $value));
+            $this->setFlatRateInsuranceRangeCost(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\FlatRateInsuranceRangeCostType::fromKeyValue($v);}, $value));
         }
     }
 }
