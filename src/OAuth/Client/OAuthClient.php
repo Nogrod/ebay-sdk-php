@@ -2,9 +2,9 @@
 
 namespace Nogrod\eBaySDK\OAuth\Client;
 
+use GuzzleHttp\Psr7\Utils;
 use Http\Discovery\Psr17Factory;
 use Http\Discovery\Psr18ClientDiscovery;
-use Http\Message\MessageFactory;
 use Nogrod\eBaySDK\OAuth\BaseType;
 use Nogrod\eBaySDK\OAuth\GetAppTokenRestRequest;
 use Nogrod\eBaySDK\OAuth\GetAppTokenRestResponse;
@@ -13,6 +13,7 @@ use Nogrod\eBaySDK\OAuth\GetUserTokenRestResponse;
 use Nogrod\eBaySDK\OAuth\RefreshUserTokenRestRequest;
 use Nogrod\eBaySDK\OAuth\RefreshUserTokenRestResponse;
 use Psr\Http\Client\ClientInterface;
+use Psr\Http\Message\RequestInterface;
 
 class OAuthClient
 {
@@ -156,7 +157,11 @@ class OAuthClient
 
     private function buildRequest(BaseType $request)
     {
-        return $this->messageFactory->createRequest('POST', $this->getUrl(), $this->buildHeaders(), $this->buildBody($request->toArray()));
+        $psrRequest = $this->messageFactory->createRequest(
+            'POST',
+            $this->getUrl()
+        );
+        return $this->buildHeaders($psrRequest)->withBody(Utils::streamFor($this->buildBody($request->toArray())));
     }
 
     private function getUrl()
@@ -164,16 +169,15 @@ class OAuthClient
         return $this->getConfig('sandbox') ? self::SANDBOX_URL : self::PRODUCTION_URL;
     }
 
-    private function buildHeaders()
+    private function buildHeaders(RequestInterface $request)
     {
         $appId = $this->getConfig('appId');
         $certId = $this->getConfig('certId');
 
-        return [
-            'Accept' => 'application/json',
-            'Authorization' => 'Basic '.base64_encode($appId.':'.$certId),
-            'Content-Type' => 'application/x-www-form-urlencoded',
-        ];
+        return $request
+            ->withHeader('Accept', 'application/json')
+            ->withHeader('Authorization', 'Basic '.base64_encode($appId.':'.$certId))
+            ->withHeader('Content-Type', 'application/x-www-form-urlencoded');
     }
 
     private function buildBody(array $request)
