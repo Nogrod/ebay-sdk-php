@@ -82,17 +82,6 @@ Nogrod\eBaySDK\Trading\ShippingServiceDetailsType:
                 getter: getShippingTimeMin
                 setter: setShippingTimeMin
             type: int
-        shippingServiceCode:
-            expose: true
-            access_type: public_method
-            serialized_name: ShippingServiceCode
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getShippingServiceCode
-                setter: setShippingServiceCode
-            type: string
         serviceType:
             expose: true
             access_type: public_method

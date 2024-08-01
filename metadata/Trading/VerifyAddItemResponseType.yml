@@ -32,28 +32,6 @@ Nogrod\eBaySDK\Trading\VerifyAddItemResponseType:
                 entry_name: Fee
                 skip_when_empty: true
                 namespace: 'urn:ebay:apis:eBLBaseComponents'
-        expressListing:
-            expose: true
-            access_type: public_method
-            serialized_name: ExpressListing
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getExpressListing
-                setter: setExpressListing
-            type: bool
-        expressItemRequirements:
-            expose: true
-            access_type: public_method
-            serialized_name: ExpressItemRequirements
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getExpressItemRequirements
-                setter: setExpressItemRequirements
-            type: Nogrod\eBaySDK\Trading\ExpressItemRequirementsType
         categoryID:
             expose: true
             access_type: public_method

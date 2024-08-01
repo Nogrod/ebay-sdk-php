@@ -2853,7 +2853,7 @@ class AccountDetailEntryCodeType
      * fee is always deducted directly from the seller payout associated with the
      * order.
      *  <br><br>
-     *  For more information about how final value fees are handled, see the <a
+     *  For more information about how transaction fees are handled, see the <a
      * href="https://www.ebay.com/help/selling/fees-credits-invoices/selling-fees?id=4822#section2"
      * target="_blank">Selling fees</a> help page.
      *  </span>
@@ -2905,7 +2905,7 @@ class AccountDetailEntryCodeType
      * deducted directly from the seller payout associated with the order.
      *  <br><br>
      *  <span class="tablenote"><b>Note: </b>
-     *  For more information about how final value fees are handled, see the <a
+     *  For more information about how transaction fees are handled, see the <a
      * href="https://www.ebay.com/help/selling/fees-credits-invoices/selling-fees?id=4822#section2"
      * target="_blank">Selling fees</a> help page.
      *  </span>
@@ -3312,6 +3312,53 @@ class AccountDetailEntryCodeType
      * fee for a DHL return shipping label.
      */
     public const VAL_DHLRETURN_LBL_SHIPPING_FEE_CREDIT = 'DHLReturnLblShippingFeeCredit';
+
+    /**
+     * Constant for 'RegulatoryOperatingFee' value.
+     *
+     * This enumeration value indicates that a fee is charged by eBay to cover the
+     * costs associated with complying with regulatory requirements in specific
+     * marketplaces.
+     *  <br>
+     *  <span class="tablenote"><b>Note:</b> Currently, this fee is only applicable in
+     * the following marketplaces: United Kingdom, Italy, France, Spain, Austria,
+     * Belgium (Dutch), Belgium (French), Poland, Ireland, and Switzerland. </span>
+     */
+    public const VAL_REGULATORY_OPERATING_FEE = 'RegulatoryOperatingFee';
+
+    /**
+     * Constant for 'RegulatoryOperatingFeeCredit' value.
+     *
+     * This enumeration value indicates that a credit against a fee to cover the costs
+     * associated with complying with regulatory requirements in specific marketplaces
+     * was issued.
+     *  <br>
+     *  <span class="tablenote"><b>Note:</b> Currently, this fee is only applicable in
+     * the following marketplaces: United Kingdom, Italy, France, Spain, Austria,
+     * Belgium (Dutch), Belgium (French), Poland, Ireland, and Switzerland. </span>
+     */
+    public const VAL_REGULATORY_OPERATING_FEE_CREDIT = 'RegulatoryOperatingFeeCredit';
+
+    /**
+     * Constant for 'DHLPaymentProcessingFee' value.
+     *
+     * This enumeration value indicates that the seller was charged a fee for DHL
+     * processing.
+     *  <br>
+     *  <span class="tablenote"><b>Note:</b> Currently, this fee is only applicable in
+     * the German marketplace. </span>
+     */
+    public const VAL_DHLPAYMENT_PROCESSING_FEE = 'DHLPaymentProcessingFee';
+
+    /**
+     * Constant for 'DHLPaymentProcessingFeeCredit' value.
+     *
+     * This enumeration value indicates that the seller was issued a credit against a
+     * fee charged a fee for DHL processing.
+     *  <span class="tablenote"><b>Note:</b> Currently, this fee is only applicable in
+     * the German marketplace. </span>
+     */
+    public const VAL_DHLPAYMENT_PROCESSING_FEE_CREDIT = 'DHLPaymentProcessingFeeCredit';
 
     /**
      * @var string $__value

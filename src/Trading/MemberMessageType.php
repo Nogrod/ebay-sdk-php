@@ -37,13 +37,6 @@ class MemberMessageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
     private $emailCopyToSender = null;
 
     /**
-     * This field is deprecated.
-     *
-     * @var bool $hideSendersEmailAddress
-     */
-    private $hideSendersEmailAddress = null;
-
-    /**
      * Indicates if the member message is viewable in the item listing.
      *
      * @var bool $displayToPublic
@@ -214,32 +207,6 @@ class MemberMessageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
     public function setEmailCopyToSender($emailCopyToSender)
     {
         $this->emailCopyToSender = $emailCopyToSender;
-        return $this;
-    }
-
-    /**
-     * Gets as hideSendersEmailAddress
-     *
-     * This field is deprecated.
-     *
-     * @return bool
-     */
-    public function getHideSendersEmailAddress()
-    {
-        return $this->hideSendersEmailAddress;
-    }
-
-    /**
-     * Sets a new hideSendersEmailAddress
-     *
-     * This field is deprecated.
-     *
-     * @param bool $hideSendersEmailAddress
-     * @return self
-     */
-    public function setHideSendersEmailAddress($hideSendersEmailAddress)
-    {
-        $this->hideSendersEmailAddress = $hideSendersEmailAddress;
         return $this;
     }
 
@@ -637,11 +604,6 @@ class MemberMessageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}EmailCopyToSender", $value);
         }
-        $value = $this->getHideSendersEmailAddress();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}HideSendersEmailAddress", $value);
-        }
         $value = $this->getDisplayToPublic();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;
         if (null !== $value) {
@@ -706,10 +668,6 @@ class MemberMessageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EmailCopyToSender');
         if (null !== $value) {
             $this->setEmailCopyToSender($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}HideSendersEmailAddress');
-        if (null !== $value) {
-            $this->setHideSendersEmailAddress($value);
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DisplayToPublic');
         if (null !== $value) {

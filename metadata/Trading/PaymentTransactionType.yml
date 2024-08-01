@@ -5,17 +5,6 @@ Nogrod\eBaySDK\Trading\PaymentTransactionType:
             serialized_name: xmlns
             xml_attribute: true
     properties:
-        paymentStatus:
-            expose: true
-            access_type: public_method
-            serialized_name: PaymentStatus
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getPaymentStatus
-                setter: setPaymentStatus
-            type: string
         payer:
             expose: true
             access_type: public_method

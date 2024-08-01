@@ -27,14 +27,3 @@ Nogrod\eBaySDK\Trading\ExtendedContactDetailsType:
                 getter: getClassifiedAdContactByEmailEnabled
                 setter: setClassifiedAdContactByEmailEnabled
             type: bool
-        payPerLeadPhoneNumber:
-            expose: true
-            access_type: public_method
-            serialized_name: PayPerLeadPhoneNumber
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getPayPerLeadPhoneNumber
-                setter: setPayPerLeadPhoneNumber
-            type: string

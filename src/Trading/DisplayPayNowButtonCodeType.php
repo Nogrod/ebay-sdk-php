@@ -5,11 +5,7 @@ namespace Nogrod\eBaySDK\Trading;
 /**
  * Class representing DisplayPayNowButtonCodeType
  *
- * This enumerated type is used to control how the "Buy It Now" button is displayed on a listing.
- *  <br><br>
- *  <span class="tablenote"><b>Note:</b> Although the <b>DisplayPayNowButton</b> value can still be set in <b>SetUserPreferences</b> and is returned in <b>GetUserPreferences</b>, this setting will not have any affect on any current or future listings.
- *  </span>
- *  <br>
+ * This enumerated type is deprecated, as the seller no longer has control over the 'Buy It Now' button displayed on a listing.
  * XSD Type: DisplayPayNowButtonCodeType
  */
 class DisplayPayNowButtonCodeType

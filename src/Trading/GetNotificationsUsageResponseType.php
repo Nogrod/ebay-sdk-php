@@ -30,8 +30,7 @@ class GetNotificationsUsageResponseType extends AbstractResponseType
 
     /**
      * List of notification objects representing the notifications sent to an
-     *  application for the given time period. It will only be returned if ItemID
-     *  was specified in the input request.
+     *  application for the given time period.
      *
      * @var \Nogrod\eBaySDK\Trading\NotificationDetailsType[] $notificationDetailsArray
      */
@@ -116,8 +115,7 @@ class GetNotificationsUsageResponseType extends AbstractResponseType
      * Adds as notificationDetails
      *
      * List of notification objects representing the notifications sent to an
-     *  application for the given time period. It will only be returned if ItemID
-     *  was specified in the input request.
+     *  application for the given time period.
      *
      * @return self
      * @param \Nogrod\eBaySDK\Trading\NotificationDetailsType $notificationDetails
@@ -132,8 +130,7 @@ class GetNotificationsUsageResponseType extends AbstractResponseType
      * isset notificationDetailsArray
      *
      * List of notification objects representing the notifications sent to an
-     *  application for the given time period. It will only be returned if ItemID
-     *  was specified in the input request.
+     *  application for the given time period.
      *
      * @param int|string $index
      * @return bool
@@ -147,8 +144,7 @@ class GetNotificationsUsageResponseType extends AbstractResponseType
      * unset notificationDetailsArray
      *
      * List of notification objects representing the notifications sent to an
-     *  application for the given time period. It will only be returned if ItemID
-     *  was specified in the input request.
+     *  application for the given time period.
      *
      * @param int|string $index
      * @return void
@@ -162,8 +158,7 @@ class GetNotificationsUsageResponseType extends AbstractResponseType
      * Gets as notificationDetailsArray
      *
      * List of notification objects representing the notifications sent to an
-     *  application for the given time period. It will only be returned if ItemID
-     *  was specified in the input request.
+     *  application for the given time period.
      *
      * @return \Nogrod\eBaySDK\Trading\NotificationDetailsType[]
      */
@@ -176,8 +171,7 @@ class GetNotificationsUsageResponseType extends AbstractResponseType
      * Sets a new notificationDetailsArray
      *
      * List of notification objects representing the notifications sent to an
-     *  application for the given time period. It will only be returned if ItemID
-     *  was specified in the input request.
+     *  application for the given time period.
      *
      * @param \Nogrod\eBaySDK\Trading\NotificationDetailsType[] $notificationDetailsArray
      * @return self

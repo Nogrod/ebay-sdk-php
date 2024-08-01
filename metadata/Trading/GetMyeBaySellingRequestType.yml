@@ -49,17 +49,6 @@ Nogrod\eBaySDK\Trading\GetMyeBaySellingRequestType:
                 getter: getUnsoldList
                 setter: setUnsoldList
             type: Nogrod\eBaySDK\Trading\ItemListCustomizationType
-        bidList:
-            expose: true
-            access_type: public_method
-            serialized_name: BidList
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getBidList
-                setter: setBidList
-            type: Nogrod\eBaySDK\Trading\ItemListCustomizationType
         deletedFromSoldList:
             expose: true
             access_type: public_method

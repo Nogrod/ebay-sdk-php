@@ -36,18 +36,13 @@ class CategoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
     private $b2BVATEnabled = null;
 
     /**
-     * If this field is deprecated..
-     *
-     * @var bool $catalogEnabled
-     */
-    private $catalogEnabled = null;
-
-    /**
      * This string value is the unique identifier of an eBay category.
      *  In <b>GetItem</b> and related calls, see the <b>CategoryName</b> field for the text name of
      *  the category. The parent category of this eBay category is only shown in <b>GetCategories</b>.
      *  <br>
-     *  <br>
+     *  <span class="tablenote"><b>Note: </b>
+     *  When listing in categoryID 173651 (Auto Performance Tuning Devices & Software), use of catalog products is required. For more information, see <a href="../../../../../api-docs/user-guides/static/trading-user-guide/tuning-devices-and-software.html" target="_blank">Tuning devices and software</a>.
+     *  </span>
      *  In an Add call, the <b>PrimaryCategory.CategoryID</b> is conditionally required unless the seller successfully uses the <b>ProductListingDetails</b> container to find an eBay catalog product match. When the seller successfully uses an eBay catalog product to create a listing, the listing title, listing description, item specifics, listing category, and stock photo defined in the catalog product is used to create the listing.
      *  <br>
      *  <br>
@@ -87,47 +82,11 @@ class CategoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
     ];
 
     /**
-     * This string value is the display name of the category indicated in the corresponding <b>CategoryParentID</b> field. If multiple parent categories are retrieved in the <b>GetSuggestedCategories</b> call, the matching <b>CategoryParentID</b> and <b>CategoryParentName</b> can be found by following the sequence in which these fields are returned. The primary category's ancestors are returned in sequence beginning with the root category all the way down to the primary category's direct parent category.
-     *  <br><br>
-     *  The <b>CategoryParentName</b> fields and the <b>CategoryName</b> field can be used to build
-     *  the fully-qualified category name and/or "breadcrumbs" browse path.
-     *  (e.g., Computers & Networking > Technology Books > Certification).
-     *
-     * @var string[] $categoryParentName
-     */
-    private $categoryParentName = [
-
-    ];
-
-    /**
-     * This field is deprecated.
-     *
-     * @var bool $productSearchPageAvailable
-     */
-    private $productSearchPageAvailable = null;
-
-    /**
-     * This field is deprecated.
-     *
-     * @var \Nogrod\eBaySDK\Trading\ExtendedProductFinderIDType[] $productFinderIDs
-     */
-    private $productFinderIDs = [
-
-    ];
-
-    /**
      * If this field is returned as <code>true</code>, the corresponding category is no longer a valid eBay category on the site, and items may not be listed in this category. This field is not returned when <code>false</code>.
      *
      * @var bool $expired
      */
     private $expired = null;
-
-    /**
-     * This field is deprecated.
-     *
-     * @var bool $intlAutosFixedCat
-     */
-    private $intlAutosFixedCat = null;
 
     /**
      * If this field is returned as <code>true</code>, the corresponding category is an eBay leaf category, a category in which items may be listed. This field is not returned when <code>false</code>.
@@ -149,13 +108,6 @@ class CategoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
      * @var int $numOfItems
      */
     private $numOfItems = null;
-
-    /**
-     * This field is deprecated.
-     *
-     * @var bool $sellerGuaranteeEligible
-     */
-    private $sellerGuaranteeEligible = null;
 
     /**
      * If this field is returned as <code>true</code>, the corresponding category is an exception to the eBay site's standard Reserve Price policy on auction listings. For example, if the site's default setting is to allow setting a Reserve Price, but <b>ORPA</b> is returned as <code>true</code>, this particular category does not support setting a Reserve Price. Or, if the site's default setting is not to allow setting a Reserve Price, but <b>ORPA</b> is returned as <code>true</code>, this particular category is the exception to that rule and does support setting a Reserve Price. If <b>ORPA</b> is <code>true</code> for the corresponding category, you can generally assume that the category's subcategories inherit the same setting. 'ORPA' is an acronym for 'Override Reserve Price Allowed'.
@@ -274,39 +226,15 @@ class CategoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
     }
 
     /**
-     * Gets as catalogEnabled
-     *
-     * If this field is deprecated..
-     *
-     * @return bool
-     */
-    public function getCatalogEnabled()
-    {
-        return $this->catalogEnabled;
-    }
-
-    /**
-     * Sets a new catalogEnabled
-     *
-     * If this field is deprecated..
-     *
-     * @param bool $catalogEnabled
-     * @return self
-     */
-    public function setCatalogEnabled($catalogEnabled)
-    {
-        $this->catalogEnabled = $catalogEnabled;
-        return $this;
-    }
-
-    /**
      * Gets as categoryID
      *
      * This string value is the unique identifier of an eBay category.
      *  In <b>GetItem</b> and related calls, see the <b>CategoryName</b> field for the text name of
      *  the category. The parent category of this eBay category is only shown in <b>GetCategories</b>.
      *  <br>
-     *  <br>
+     *  <span class="tablenote"><b>Note: </b>
+     *  When listing in categoryID 173651 (Auto Performance Tuning Devices & Software), use of catalog products is required. For more information, see <a href="../../../../../api-docs/user-guides/static/trading-user-guide/tuning-devices-and-software.html" target="_blank">Tuning devices and software</a>.
+     *  </span>
      *  In an Add call, the <b>PrimaryCategory.CategoryID</b> is conditionally required unless the seller successfully uses the <b>ProductListingDetails</b> container to find an eBay catalog product match. When the seller successfully uses an eBay catalog product to create a listing, the listing title, listing description, item specifics, listing category, and stock photo defined in the catalog product is used to create the listing.
      *  <br>
      *  <br>
@@ -329,7 +257,9 @@ class CategoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
      *  In <b>GetItem</b> and related calls, see the <b>CategoryName</b> field for the text name of
      *  the category. The parent category of this eBay category is only shown in <b>GetCategories</b>.
      *  <br>
-     *  <br>
+     *  <span class="tablenote"><b>Note: </b>
+     *  When listing in categoryID 173651 (Auto Performance Tuning Devices & Software), use of catalog products is required. For more information, see <a href="../../../../../api-docs/user-guides/static/trading-user-guide/tuning-devices-and-software.html" target="_blank">Tuning devices and software</a>.
+     *  </span>
      *  In an Add call, the <b>PrimaryCategory.CategoryID</b> is conditionally required unless the seller successfully uses the <b>ProductListingDetails</b> container to find an eBay catalog product match. When the seller successfully uses an eBay catalog product to create a listing, the listing title, listing description, item specifics, listing category, and stock photo defined in the catalog product is used to create the listing.
      *  <br>
      *  <br>
@@ -481,184 +411,6 @@ class CategoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
     }
 
     /**
-     * Adds as categoryParentName
-     *
-     * This string value is the display name of the category indicated in the corresponding <b>CategoryParentID</b> field. If multiple parent categories are retrieved in the <b>GetSuggestedCategories</b> call, the matching <b>CategoryParentID</b> and <b>CategoryParentName</b> can be found by following the sequence in which these fields are returned. The primary category's ancestors are returned in sequence beginning with the root category all the way down to the primary category's direct parent category.
-     *  <br><br>
-     *  The <b>CategoryParentName</b> fields and the <b>CategoryName</b> field can be used to build
-     *  the fully-qualified category name and/or "breadcrumbs" browse path.
-     *  (e.g., Computers & Networking > Technology Books > Certification).
-     *
-     * @return self
-     * @param string $categoryParentName
-     */
-    public function addToCategoryParentName($categoryParentName)
-    {
-        $this->categoryParentName[] = $categoryParentName;
-        return $this;
-    }
-
-    /**
-     * isset categoryParentName
-     *
-     * This string value is the display name of the category indicated in the corresponding <b>CategoryParentID</b> field. If multiple parent categories are retrieved in the <b>GetSuggestedCategories</b> call, the matching <b>CategoryParentID</b> and <b>CategoryParentName</b> can be found by following the sequence in which these fields are returned. The primary category's ancestors are returned in sequence beginning with the root category all the way down to the primary category's direct parent category.
-     *  <br><br>
-     *  The <b>CategoryParentName</b> fields and the <b>CategoryName</b> field can be used to build
-     *  the fully-qualified category name and/or "breadcrumbs" browse path.
-     *  (e.g., Computers & Networking > Technology Books > Certification).
-     *
-     * @param int|string $index
-     * @return bool
-     */
-    public function issetCategoryParentName($index)
-    {
-        return isset($this->categoryParentName[$index]);
-    }
-
-    /**
-     * unset categoryParentName
-     *
-     * This string value is the display name of the category indicated in the corresponding <b>CategoryParentID</b> field. If multiple parent categories are retrieved in the <b>GetSuggestedCategories</b> call, the matching <b>CategoryParentID</b> and <b>CategoryParentName</b> can be found by following the sequence in which these fields are returned. The primary category's ancestors are returned in sequence beginning with the root category all the way down to the primary category's direct parent category.
-     *  <br><br>
-     *  The <b>CategoryParentName</b> fields and the <b>CategoryName</b> field can be used to build
-     *  the fully-qualified category name and/or "breadcrumbs" browse path.
-     *  (e.g., Computers & Networking > Technology Books > Certification).
-     *
-     * @param int|string $index
-     * @return void
-     */
-    public function unsetCategoryParentName($index)
-    {
-        unset($this->categoryParentName[$index]);
-    }
-
-    /**
-     * Gets as categoryParentName
-     *
-     * This string value is the display name of the category indicated in the corresponding <b>CategoryParentID</b> field. If multiple parent categories are retrieved in the <b>GetSuggestedCategories</b> call, the matching <b>CategoryParentID</b> and <b>CategoryParentName</b> can be found by following the sequence in which these fields are returned. The primary category's ancestors are returned in sequence beginning with the root category all the way down to the primary category's direct parent category.
-     *  <br><br>
-     *  The <b>CategoryParentName</b> fields and the <b>CategoryName</b> field can be used to build
-     *  the fully-qualified category name and/or "breadcrumbs" browse path.
-     *  (e.g., Computers & Networking > Technology Books > Certification).
-     *
-     * @return string[]
-     */
-    public function getCategoryParentName()
-    {
-        return $this->categoryParentName;
-    }
-
-    /**
-     * Sets a new categoryParentName
-     *
-     * This string value is the display name of the category indicated in the corresponding <b>CategoryParentID</b> field. If multiple parent categories are retrieved in the <b>GetSuggestedCategories</b> call, the matching <b>CategoryParentID</b> and <b>CategoryParentName</b> can be found by following the sequence in which these fields are returned. The primary category's ancestors are returned in sequence beginning with the root category all the way down to the primary category's direct parent category.
-     *  <br><br>
-     *  The <b>CategoryParentName</b> fields and the <b>CategoryName</b> field can be used to build
-     *  the fully-qualified category name and/or "breadcrumbs" browse path.
-     *  (e.g., Computers & Networking > Technology Books > Certification).
-     *
-     * @param string[] $categoryParentName
-     * @return self
-     */
-    public function setCategoryParentName(array $categoryParentName)
-    {
-        $this->categoryParentName = $categoryParentName;
-        return $this;
-    }
-
-    /**
-     * Gets as productSearchPageAvailable
-     *
-     * This field is deprecated.
-     *
-     * @return bool
-     */
-    public function getProductSearchPageAvailable()
-    {
-        return $this->productSearchPageAvailable;
-    }
-
-    /**
-     * Sets a new productSearchPageAvailable
-     *
-     * This field is deprecated.
-     *
-     * @param bool $productSearchPageAvailable
-     * @return self
-     */
-    public function setProductSearchPageAvailable($productSearchPageAvailable)
-    {
-        $this->productSearchPageAvailable = $productSearchPageAvailable;
-        return $this;
-    }
-
-    /**
-     * Adds as productFinderIDs
-     *
-     * This field is deprecated.
-     *
-     * @return self
-     * @param \Nogrod\eBaySDK\Trading\ExtendedProductFinderIDType $productFinderIDs
-     */
-    public function addToProductFinderIDs(\Nogrod\eBaySDK\Trading\ExtendedProductFinderIDType $productFinderIDs)
-    {
-        $this->productFinderIDs[] = $productFinderIDs;
-        return $this;
-    }
-
-    /**
-     * isset productFinderIDs
-     *
-     * This field is deprecated.
-     *
-     * @param int|string $index
-     * @return bool
-     */
-    public function issetProductFinderIDs($index)
-    {
-        return isset($this->productFinderIDs[$index]);
-    }
-
-    /**
-     * unset productFinderIDs
-     *
-     * This field is deprecated.
-     *
-     * @param int|string $index
-     * @return void
-     */
-    public function unsetProductFinderIDs($index)
-    {
-        unset($this->productFinderIDs[$index]);
-    }
-
-    /**
-     * Gets as productFinderIDs
-     *
-     * This field is deprecated.
-     *
-     * @return \Nogrod\eBaySDK\Trading\ExtendedProductFinderIDType[]
-     */
-    public function getProductFinderIDs()
-    {
-        return $this->productFinderIDs;
-    }
-
-    /**
-     * Sets a new productFinderIDs
-     *
-     * This field is deprecated.
-     *
-     * @param \Nogrod\eBaySDK\Trading\ExtendedProductFinderIDType[] $productFinderIDs
-     * @return self
-     */
-    public function setProductFinderIDs(array $productFinderIDs)
-    {
-        $this->productFinderIDs = $productFinderIDs;
-        return $this;
-    }
-
-    /**
      * Gets as expired
      *
      * If this field is returned as <code>true</code>, the corresponding category is no longer a valid eBay category on the site, and items may not be listed in this category. This field is not returned when <code>false</code>.
@@ -681,32 +433,6 @@ class CategoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
     public function setExpired($expired)
     {
         $this->expired = $expired;
-        return $this;
-    }
-
-    /**
-     * Gets as intlAutosFixedCat
-     *
-     * This field is deprecated.
-     *
-     * @return bool
-     */
-    public function getIntlAutosFixedCat()
-    {
-        return $this->intlAutosFixedCat;
-    }
-
-    /**
-     * Sets a new intlAutosFixedCat
-     *
-     * This field is deprecated.
-     *
-     * @param bool $intlAutosFixedCat
-     * @return self
-     */
-    public function setIntlAutosFixedCat($intlAutosFixedCat)
-    {
-        $this->intlAutosFixedCat = $intlAutosFixedCat;
         return $this;
     }
 
@@ -785,32 +511,6 @@ class CategoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
     public function setNumOfItems($numOfItems)
     {
         $this->numOfItems = $numOfItems;
-        return $this;
-    }
-
-    /**
-     * Gets as sellerGuaranteeEligible
-     *
-     * This field is deprecated.
-     *
-     * @return bool
-     */
-    public function getSellerGuaranteeEligible()
-    {
-        return $this->sellerGuaranteeEligible;
-    }
-
-    /**
-     * Sets a new sellerGuaranteeEligible
-     *
-     * This field is deprecated.
-     *
-     * @param bool $sellerGuaranteeEligible
-     * @return self
-     */
-    public function setSellerGuaranteeEligible($sellerGuaranteeEligible)
-    {
-        $this->sellerGuaranteeEligible = $sellerGuaranteeEligible;
         return $this;
     }
 
@@ -948,11 +648,6 @@ class CategoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}B2BVATEnabled", $value);
         }
-        $value = $this->getCatalogEnabled();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CatalogEnabled", $value);
-        }
         $value = $this->getCategoryID();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CategoryID", $value);
@@ -969,28 +664,10 @@ class CategoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
         if (null !== $value && !empty($this->getCategoryParentID())) {
             $writer->write(array_map(function ($v) {return ["CategoryParentID" => $v];}, $value));
         }
-        $value = $this->getCategoryParentName();
-        if (null !== $value && !empty($this->getCategoryParentName())) {
-            $writer->write(array_map(function ($v) {return ["CategoryParentName" => $v];}, $value));
-        }
-        $value = $this->getProductSearchPageAvailable();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ProductSearchPageAvailable", $value);
-        }
-        $value = $this->getProductFinderIDs();
-        if (null !== $value && !empty($this->getProductFinderIDs())) {
-            $writer->write(array_map(function ($v) {return ["ProductFinderIDs" => $v];}, $value));
-        }
         $value = $this->getExpired();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Expired", $value);
-        }
-        $value = $this->getIntlAutosFixedCat();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}IntlAutosFixedCat", $value);
         }
         $value = $this->getLeafCategory();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;
@@ -1005,11 +682,6 @@ class CategoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
         $value = $this->getNumOfItems();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}NumOfItems", $value);
-        }
-        $value = $this->getSellerGuaranteeEligible();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SellerGuaranteeEligible", $value);
         }
         $value = $this->getORPA();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;
@@ -1058,10 +730,6 @@ class CategoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
         if (null !== $value) {
             $this->setB2BVATEnabled($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CatalogEnabled');
-        if (null !== $value) {
-            $this->setCatalogEnabled($value);
-        }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CategoryID');
         if (null !== $value) {
             $this->setCategoryID($value);
@@ -1078,25 +746,9 @@ class CategoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
         if (null !== $value && !empty($value)) {
             $this->setCategoryParentID($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CategoryParentName', true);
-        if (null !== $value && !empty($value)) {
-            $this->setCategoryParentName($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ProductSearchPageAvailable');
-        if (null !== $value) {
-            $this->setProductSearchPageAvailable($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ProductFinderIDs', true);
-        if (null !== $value && !empty($value)) {
-            $this->setProductFinderIDs(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\ExtendedProductFinderIDType::fromKeyValue($v);}, $value));
-        }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Expired');
         if (null !== $value) {
             $this->setExpired($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}IntlAutosFixedCat');
-        if (null !== $value) {
-            $this->setIntlAutosFixedCat($value);
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LeafCategory');
         if (null !== $value) {
@@ -1109,10 +761,6 @@ class CategoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}NumOfItems');
         if (null !== $value) {
             $this->setNumOfItems($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerGuaranteeEligible');
-        if (null !== $value) {
-            $this->setSellerGuaranteeEligible($value);
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ORPA');
         if (null !== $value) {

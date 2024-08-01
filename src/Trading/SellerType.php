@@ -13,13 +13,6 @@ use Nogrod\XMLClientRuntime\Func;
 class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
     /**
-     * PaisaPay is no longer a supported payment method, so this field is no longer applicable.
-     *
-     * @var int $paisaPayStatus
-     */
-    private $paisaPayStatus = null;
-
-    /**
      * <br>
      *  Indicates whether the seller allows buyers to edit the
      *  total cost of an item during checkout.
@@ -173,13 +166,6 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
     private $paymentMethod = null;
 
     /**
-     * This field is deprecated.
-     *
-     * @var \Nogrod\eBaySDK\Trading\ProStoresCheckoutPreferenceType $proStoresPreference
-     */
-    private $proStoresPreference = null;
-
-    /**
      * Indicates whether or not the seller is a registered charity
      *  seller. If <b>CharityRegistered</b> is <code>false</code>, the user must
      *  register their nonprofit organization with the PayPal Giving Fund to list eBay for Charity items.
@@ -200,13 +186,6 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
     private $safePaymentExempt = null;
 
     /**
-     * This field is deprecated since eBay India is no longer a functioning marketplace.
-     *
-     * @var int $paisaPayEscrowEMIStatus
-     */
-    private $paisaPayEscrowEMIStatus = null;
-
-    /**
      * This container consists of one or more of nonprofit organizations associated with the seller's account. This container will not be returned if the user is not affiliated with any nonprofit organizations. A seller must be registered with the PayPal Giving Fund to be affiliated with an eBay for Charity nonprofit organization.
      *
      * @var \Nogrod\eBaySDK\Trading\CharityAffiliationDetailType[] $charityAffiliationDetails
@@ -222,13 +201,6 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
     private $transactionPercent = null;
 
     /**
-     * The container is no longer returned in <b>GetUser</b> response, as eBay sellers can no longer use iMCC gateway accounts to handle buyer payments.
-     *
-     * @var string[] $integratedMerchantCreditCardInfo
-     */
-    private $integratedMerchantCreditCardInfo = null;
-
-    /**
      * Contains eligibility details about seller- or platform-based features. This is returned only
      *  if the <b>IncludeFeatureEligibility</b> field is included and set to <code>true</code> in the request.
      *
@@ -237,11 +209,10 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
     private $featureEligibility = null;
 
     /**
-     * <br/>
-     *  This boolean field indicates if the seller is certified as a
+     * This boolean field indicates if the seller is certified as a
      *  <em>Top Rated Seller</em>. Only Top Rated Sellers can qualify for Top Rated Plus listings, which receive the Top Rated Plus seal and other benefits.
      *  <br/>
-     *  This field is only returned for the following sites: US, Germany, Austria, Switzerland, UK, Ireland, and Australia. The Top Rated Seller and Top Rated Plus listing requirements will differ by site. Below are some links to Help pages that discusss these requirements:
+     *  This field is only returned for the following sites: US, Germany, Austria, Switzerland, UK, Ireland, and Australia. The Top Rated Seller and Top Rated Plus listing requirements will differ by site. Below are some links to Help pages that discuss these requirements:
      *  <ul>
      *  <li>eBay US: <a href="https://www.ebay.com/help/policies/selling-policies/seller-standards-policy?id=4347&#section3">Requirements to become Top Rated</a></li>
      *  <li>eBay UK/IE: <a href="https://www.ebay.co.uk/help/policies/selling-policies/seller-standards-policy?id=4347&#section3">Requirements to become Top Rated and the eBay Premium Service</a></li>
@@ -290,46 +261,6 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
      * @var bool $internationalRateTable
      */
     private $internationalRateTable = null;
-
-    /**
-     * This field is no longer used/supported.
-     *
-     * @var string $sellereBayPaymentProcessStatus
-     */
-    private $sellereBayPaymentProcessStatus = null;
-
-    /**
-     * This field is no longer used/supported.
-     *
-     * @var \Nogrod\eBaySDK\Trading\SellereBayPaymentProcessConsentCodeType $sellereBayPaymentProcessConsent
-     */
-    private $sellereBayPaymentProcessConsent = null;
-
-    /**
-     * Gets as paisaPayStatus
-     *
-     * PaisaPay is no longer a supported payment method, so this field is no longer applicable.
-     *
-     * @return int
-     */
-    public function getPaisaPayStatus()
-    {
-        return $this->paisaPayStatus;
-    }
-
-    /**
-     * Sets a new paisaPayStatus
-     *
-     * PaisaPay is no longer a supported payment method, so this field is no longer applicable.
-     *
-     * @param int $paisaPayStatus
-     * @return self
-     */
-    public function setPaisaPayStatus($paisaPayStatus)
-    {
-        $this->paisaPayStatus = $paisaPayStatus;
-        return $this;
-    }
 
     /**
      * Gets as allowPaymentEdit
@@ -842,32 +773,6 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
     }
 
     /**
-     * Gets as proStoresPreference
-     *
-     * This field is deprecated.
-     *
-     * @return \Nogrod\eBaySDK\Trading\ProStoresCheckoutPreferenceType
-     */
-    public function getProStoresPreference()
-    {
-        return $this->proStoresPreference;
-    }
-
-    /**
-     * Sets a new proStoresPreference
-     *
-     * This field is deprecated.
-     *
-     * @param \Nogrod\eBaySDK\Trading\ProStoresCheckoutPreferenceType $proStoresPreference
-     * @return self
-     */
-    public function setProStoresPreference(\Nogrod\eBaySDK\Trading\ProStoresCheckoutPreferenceType $proStoresPreference)
-    {
-        $this->proStoresPreference = $proStoresPreference;
-        return $this;
-    }
-
-    /**
      * Gets as charityRegistered
      *
      * Indicates whether or not the seller is a registered charity
@@ -928,32 +833,6 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
     public function setSafePaymentExempt($safePaymentExempt)
     {
         $this->safePaymentExempt = $safePaymentExempt;
-        return $this;
-    }
-
-    /**
-     * Gets as paisaPayEscrowEMIStatus
-     *
-     * This field is deprecated since eBay India is no longer a functioning marketplace.
-     *
-     * @return int
-     */
-    public function getPaisaPayEscrowEMIStatus()
-    {
-        return $this->paisaPayEscrowEMIStatus;
-    }
-
-    /**
-     * Sets a new paisaPayEscrowEMIStatus
-     *
-     * This field is deprecated since eBay India is no longer a functioning marketplace.
-     *
-     * @param int $paisaPayEscrowEMIStatus
-     * @return self
-     */
-    public function setPaisaPayEscrowEMIStatus($paisaPayEscrowEMIStatus)
-    {
-        $this->paisaPayEscrowEMIStatus = $paisaPayEscrowEMIStatus;
         return $this;
     }
 
@@ -1052,72 +931,6 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
     }
 
     /**
-     * Adds as supportedSite
-     *
-     * The container is no longer returned in <b>GetUser</b> response, as eBay sellers can no longer use iMCC gateway accounts to handle buyer payments.
-     *
-     * @return self
-     * @param string $supportedSite
-     */
-    public function addToIntegratedMerchantCreditCardInfo($supportedSite)
-    {
-        $this->integratedMerchantCreditCardInfo[] = $supportedSite;
-        return $this;
-    }
-
-    /**
-     * isset integratedMerchantCreditCardInfo
-     *
-     * The container is no longer returned in <b>GetUser</b> response, as eBay sellers can no longer use iMCC gateway accounts to handle buyer payments.
-     *
-     * @param int|string $index
-     * @return bool
-     */
-    public function issetIntegratedMerchantCreditCardInfo($index)
-    {
-        return isset($this->integratedMerchantCreditCardInfo[$index]);
-    }
-
-    /**
-     * unset integratedMerchantCreditCardInfo
-     *
-     * The container is no longer returned in <b>GetUser</b> response, as eBay sellers can no longer use iMCC gateway accounts to handle buyer payments.
-     *
-     * @param int|string $index
-     * @return void
-     */
-    public function unsetIntegratedMerchantCreditCardInfo($index)
-    {
-        unset($this->integratedMerchantCreditCardInfo[$index]);
-    }
-
-    /**
-     * Gets as integratedMerchantCreditCardInfo
-     *
-     * The container is no longer returned in <b>GetUser</b> response, as eBay sellers can no longer use iMCC gateway accounts to handle buyer payments.
-     *
-     * @return string[]
-     */
-    public function getIntegratedMerchantCreditCardInfo()
-    {
-        return $this->integratedMerchantCreditCardInfo;
-    }
-
-    /**
-     * Sets a new integratedMerchantCreditCardInfo
-     *
-     * The container is no longer returned in <b>GetUser</b> response, as eBay sellers can no longer use iMCC gateway accounts to handle buyer payments.
-     *
-     * @param string $integratedMerchantCreditCardInfo
-     * @return self
-     */
-    public function setIntegratedMerchantCreditCardInfo(array $integratedMerchantCreditCardInfo)
-    {
-        $this->integratedMerchantCreditCardInfo = $integratedMerchantCreditCardInfo;
-        return $this;
-    }
-
-    /**
      * Gets as featureEligibility
      *
      * Contains eligibility details about seller- or platform-based features. This is returned only
@@ -1148,11 +961,10 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
     /**
      * Gets as topRatedSeller
      *
-     * <br/>
-     *  This boolean field indicates if the seller is certified as a
+     * This boolean field indicates if the seller is certified as a
      *  <em>Top Rated Seller</em>. Only Top Rated Sellers can qualify for Top Rated Plus listings, which receive the Top Rated Plus seal and other benefits.
      *  <br/>
-     *  This field is only returned for the following sites: US, Germany, Austria, Switzerland, UK, Ireland, and Australia. The Top Rated Seller and Top Rated Plus listing requirements will differ by site. Below are some links to Help pages that discusss these requirements:
+     *  This field is only returned for the following sites: US, Germany, Austria, Switzerland, UK, Ireland, and Australia. The Top Rated Seller and Top Rated Plus listing requirements will differ by site. Below are some links to Help pages that discuss these requirements:
      *  <ul>
      *  <li>eBay US: <a href="https://www.ebay.com/help/policies/selling-policies/seller-standards-policy?id=4347&#section3">Requirements to become Top Rated</a></li>
      *  <li>eBay UK/IE: <a href="https://www.ebay.co.uk/help/policies/selling-policies/seller-standards-policy?id=4347&#section3">Requirements to become Top Rated and the eBay Premium Service</a></li>
@@ -1176,11 +988,10 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
     /**
      * Sets a new topRatedSeller
      *
-     * <br/>
-     *  This boolean field indicates if the seller is certified as a
+     * This boolean field indicates if the seller is certified as a
      *  <em>Top Rated Seller</em>. Only Top Rated Sellers can qualify for Top Rated Plus listings, which receive the Top Rated Plus seal and other benefits.
      *  <br/>
-     *  This field is only returned for the following sites: US, Germany, Austria, Switzerland, UK, Ireland, and Australia. The Top Rated Seller and Top Rated Plus listing requirements will differ by site. Below are some links to Help pages that discusss these requirements:
+     *  This field is only returned for the following sites: US, Germany, Austria, Switzerland, UK, Ireland, and Australia. The Top Rated Seller and Top Rated Plus listing requirements will differ by site. Below are some links to Help pages that discuss these requirements:
      *  <ul>
      *  <li>eBay US: <a href="https://www.ebay.com/help/policies/selling-policies/seller-standards-policy?id=4347&#section3">Requirements to become Top Rated</a></li>
      *  <li>eBay UK/IE: <a href="https://www.ebay.co.uk/help/policies/selling-policies/seller-standards-policy?id=4347&#section3">Requirements to become Top Rated and the eBay Premium Service</a></li>
@@ -1407,65 +1218,9 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
         return $this;
     }
 
-    /**
-     * Gets as sellereBayPaymentProcessStatus
-     *
-     * This field is no longer used/supported.
-     *
-     * @return string
-     */
-    public function getSellereBayPaymentProcessStatus()
-    {
-        return $this->sellereBayPaymentProcessStatus;
-    }
-
-    /**
-     * Sets a new sellereBayPaymentProcessStatus
-     *
-     * This field is no longer used/supported.
-     *
-     * @param string $sellereBayPaymentProcessStatus
-     * @return self
-     */
-    public function setSellereBayPaymentProcessStatus($sellereBayPaymentProcessStatus)
-    {
-        $this->sellereBayPaymentProcessStatus = $sellereBayPaymentProcessStatus;
-        return $this;
-    }
-
-    /**
-     * Gets as sellereBayPaymentProcessConsent
-     *
-     * This field is no longer used/supported.
-     *
-     * @return \Nogrod\eBaySDK\Trading\SellereBayPaymentProcessConsentCodeType
-     */
-    public function getSellereBayPaymentProcessConsent()
-    {
-        return $this->sellereBayPaymentProcessConsent;
-    }
-
-    /**
-     * Sets a new sellereBayPaymentProcessConsent
-     *
-     * This field is no longer used/supported.
-     *
-     * @param \Nogrod\eBaySDK\Trading\SellereBayPaymentProcessConsentCodeType $sellereBayPaymentProcessConsent
-     * @return self
-     */
-    public function setSellereBayPaymentProcessConsent(\Nogrod\eBaySDK\Trading\SellereBayPaymentProcessConsentCodeType $sellereBayPaymentProcessConsent)
-    {
-        $this->sellereBayPaymentProcessConsent = $sellereBayPaymentProcessConsent;
-        return $this;
-    }
-
     public function xmlSerialize(\Sabre\Xml\Writer $writer): void
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
-        $value = $this->getPaisaPayStatus();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PaisaPayStatus", $value);
-        }
         $value = $this->getAllowPaymentEdit();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;
         if (null !== $value) {
@@ -1541,10 +1296,6 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PaymentMethod", $value);
         }
-        $value = $this->getProStoresPreference();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ProStoresPreference", $value);
-        }
         $value = $this->getCharityRegistered();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;
         if (null !== $value) {
@@ -1555,10 +1306,6 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SafePaymentExempt", $value);
         }
-        $value = $this->getPaisaPayEscrowEMIStatus();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PaisaPayEscrowEMIStatus", $value);
-        }
         $value = $this->getCharityAffiliationDetails();
         if (null !== $value && !empty($this->getCharityAffiliationDetails())) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CharityAffiliationDetails", array_map(function ($v) {return ["CharityAffiliationDetail" => $v];}, $value));
@@ -1566,10 +1313,6 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
         $value = $this->getTransactionPercent();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TransactionPercent", $value);
-        }
-        $value = $this->getIntegratedMerchantCreditCardInfo();
-        if (null !== $value && !empty($this->getIntegratedMerchantCreditCardInfo())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}IntegratedMerchantCreditCardInfo", array_map(function ($v) {return ["SupportedSite" => $v];}, $value));
         }
         $value = $this->getFeatureEligibility();
         if (null !== $value) {
@@ -1598,14 +1341,6 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}InternationalRateTable", $value);
         }
-        $value = $this->getSellereBayPaymentProcessStatus();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SellereBayPaymentProcessStatus", $value);
-        }
-        $value = $this->getSellereBayPaymentProcessConsent();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SellereBayPaymentProcessConsent", $value);
-        }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader)
@@ -1622,10 +1357,6 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaisaPayStatus');
-        if (null !== $value) {
-            $this->setPaisaPayStatus($value);
-        }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AllowPaymentEdit');
         if (null !== $value) {
             $this->setAllowPaymentEdit($value);
@@ -1694,10 +1425,6 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
         if (null !== $value) {
             $this->setPaymentMethod($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ProStoresPreference');
-        if (null !== $value) {
-            $this->setProStoresPreference(\Nogrod\eBaySDK\Trading\ProStoresCheckoutPreferenceType::fromKeyValue($value));
-        }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CharityRegistered');
         if (null !== $value) {
             $this->setCharityRegistered($value);
@@ -1706,10 +1433,6 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
         if (null !== $value) {
             $this->setSafePaymentExempt($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaisaPayEscrowEMIStatus');
-        if (null !== $value) {
-            $this->setPaisaPayEscrowEMIStatus($value);
-        }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CharityAffiliationDetails', true);
         if (null !== $value && !empty($value)) {
             $this->setCharityAffiliationDetails(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\CharityAffiliationDetailType::fromKeyValue($v);}, $value));
@@ -1717,10 +1440,6 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TransactionPercent');
         if (null !== $value) {
             $this->setTransactionPercent($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}IntegratedMerchantCreditCardInfo', true);
-        if (null !== $value && !empty($value)) {
-            $this->setIntegratedMerchantCreditCardInfo($value);
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeatureEligibility');
         if (null !== $value) {
@@ -1745,14 +1464,6 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}InternationalRateTable');
         if (null !== $value) {
             $this->setInternationalRateTable($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellereBayPaymentProcessStatus');
-        if (null !== $value) {
-            $this->setSellereBayPaymentProcessStatus($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellereBayPaymentProcessConsent');
-        if (null !== $value) {
-            $this->setSellereBayPaymentProcessConsent(\Nogrod\eBaySDK\Trading\SellereBayPaymentProcessConsentCodeType::fromKeyValue($value));
         }
     }
 }

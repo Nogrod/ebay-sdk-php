@@ -46,13 +46,6 @@ class EndItemRequestContainerType implements \Sabre\Xml\XmlSerializable, \Sabre\
     private $messageID = null;
 
     /**
-     * This field was previously only used to identify and end Half.com listings, and since the Half.com site has been shut down, this element is no longer applicable.
-     *
-     * @var string $sellerInventoryID
-     */
-    private $sellerInventoryID = null;
-
-    /**
      * Gets as itemID
      *
      * The unique identifier of the eBay listing to end.
@@ -154,32 +147,6 @@ class EndItemRequestContainerType implements \Sabre\Xml\XmlSerializable, \Sabre\
         return $this;
     }
 
-    /**
-     * Gets as sellerInventoryID
-     *
-     * This field was previously only used to identify and end Half.com listings, and since the Half.com site has been shut down, this element is no longer applicable.
-     *
-     * @return string
-     */
-    public function getSellerInventoryID()
-    {
-        return $this->sellerInventoryID;
-    }
-
-    /**
-     * Sets a new sellerInventoryID
-     *
-     * This field was previously only used to identify and end Half.com listings, and since the Half.com site has been shut down, this element is no longer applicable.
-     *
-     * @param string $sellerInventoryID
-     * @return self
-     */
-    public function setSellerInventoryID($sellerInventoryID)
-    {
-        $this->sellerInventoryID = $sellerInventoryID;
-        return $this;
-    }
-
     public function xmlSerialize(\Sabre\Xml\Writer $writer): void
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
@@ -194,10 +161,6 @@ class EndItemRequestContainerType implements \Sabre\Xml\XmlSerializable, \Sabre\
         $value = $this->getMessageID();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MessageID", $value);
-        }
-        $value = $this->getSellerInventoryID();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SellerInventoryID", $value);
         }
     }
 
@@ -226,10 +189,6 @@ class EndItemRequestContainerType implements \Sabre\Xml\XmlSerializable, \Sabre\
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MessageID');
         if (null !== $value) {
             $this->setMessageID($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerInventoryID');
-        if (null !== $value) {
-            $this->setSellerInventoryID($value);
         }
     }
 }

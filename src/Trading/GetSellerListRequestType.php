@@ -17,15 +17,6 @@ use Nogrod\XMLClientRuntime\Func;
 class GetSellerListRequestType extends AbstractRequestType
 {
     /**
-     * <span class="tablenote"><strong>Note:</strong>
-     *  This field should no longer be used, and will be ignored if it is included in a <b>GetSellerList</b> request. There are plans to remove this field from the public WSDL. The only eBay user ID that can be used is the one associated with the authentication token.
-     *  </span>
-     *
-     * @var string $userID
-     */
-    private $userID = null;
-
-    /**
      * Specifies the list of Motors Dealer sellers for which a special set of
      *  metrics can be requested. Applies to eBay Motors Pro applications only.
      *
@@ -139,36 +130,6 @@ class GetSellerListRequestType extends AbstractRequestType
      * @var bool $includeVariations
      */
     private $includeVariations = null;
-
-    /**
-     * Gets as userID
-     *
-     * <span class="tablenote"><strong>Note:</strong>
-     *  This field should no longer be used, and will be ignored if it is included in a <b>GetSellerList</b> request. There are plans to remove this field from the public WSDL. The only eBay user ID that can be used is the one associated with the authentication token.
-     *  </span>
-     *
-     * @return string
-     */
-    public function getUserID()
-    {
-        return $this->userID;
-    }
-
-    /**
-     * Sets a new userID
-     *
-     * <span class="tablenote"><strong>Note:</strong>
-     *  This field should no longer be used, and will be ignored if it is included in a <b>GetSellerList</b> request. There are plans to remove this field from the public WSDL. The only eBay user ID that can be used is the one associated with the authentication token.
-     *  </span>
-     *
-     * @param string $userID
-     * @return self
-     */
-    public function setUserID($userID)
-    {
-        $this->userID = $userID;
-        return $this;
-    }
 
     /**
      * Adds as userID
@@ -660,10 +621,6 @@ class GetSellerListRequestType extends AbstractRequestType
     public function xmlSerialize(\Sabre\Xml\Writer $writer): void
     {
         parent::xmlSerialize($writer);
-        $value = $this->getUserID();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}UserID", $value);
-        }
         $value = $this->getMotorsDealerUsers();
         if (null !== $value && !empty($this->getMotorsDealerUsers())) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MotorsDealerUsers", array_map(function ($v) {return ["UserID" => $v];}, $value));
@@ -736,10 +693,6 @@ class GetSellerListRequestType extends AbstractRequestType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UserID');
-        if (null !== $value) {
-            $this->setUserID($value);
-        }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MotorsDealerUsers', true);
         if (null !== $value && !empty($value)) {
             $this->setMotorsDealerUsers($value);

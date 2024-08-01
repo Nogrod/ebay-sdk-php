@@ -51,13 +51,6 @@ class BiddingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
     private $winning = null;
 
     /**
-     * This field is deprecated.
-     *
-     * @var bool $bidAssistant
-     */
-    private $bidAssistant = null;
-
-    /**
      * Gets as convertedMaxBid
      *
      * Converted value (from seller's currency to buyer's currency) of the amount in the <b>MaxBid</b> field. This field is only applicable and returned if the buyer purchased an item from an eBay site in another country. For active items, it is recommended to refresh the listing's data every 24 hours to pick up the current conversion rates.
@@ -191,32 +184,6 @@ class BiddingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
         return $this;
     }
 
-    /**
-     * Gets as bidAssistant
-     *
-     * This field is deprecated.
-     *
-     * @return bool
-     */
-    public function getBidAssistant()
-    {
-        return $this->bidAssistant;
-    }
-
-    /**
-     * Sets a new bidAssistant
-     *
-     * This field is deprecated.
-     *
-     * @param bool $bidAssistant
-     * @return self
-     */
-    public function setBidAssistant($bidAssistant)
-    {
-        $this->bidAssistant = $bidAssistant;
-        return $this;
-    }
-
     public function xmlSerialize(\Sabre\Xml\Writer $writer): void
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
@@ -240,11 +207,6 @@ class BiddingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
         $value = null !== $value ? ($value ? 'true' : 'false') : null;
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Winning", $value);
-        }
-        $value = $this->getBidAssistant();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BidAssistant", $value);
         }
     }
 
@@ -281,10 +243,6 @@ class BiddingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Winning');
         if (null !== $value) {
             $this->setWinning($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BidAssistant');
-        if (null !== $value) {
-            $this->setBidAssistant($value);
         }
     }
 }

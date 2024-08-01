@@ -71,17 +71,6 @@ Nogrod\eBaySDK\Trading\ShippingDetailsType:
                 getter: getPaymentEdited
                 setter: setPaymentEdited
             type: bool
-        paymentInstructions:
-            expose: true
-            access_type: public_method
-            serialized_name: PaymentInstructions
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getPaymentInstructions
-                setter: setPaymentInstructions
-            type: string
         salesTax:
             expose: true
             access_type: public_method

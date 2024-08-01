@@ -27,17 +27,6 @@ Nogrod\eBaySDK\Trading\GetUserRequestType:
                 getter: getUserID
                 setter: setUserID
             type: string
-        includeExpressRequirements:
-            expose: true
-            access_type: public_method
-            serialized_name: IncludeExpressRequirements
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getIncludeExpressRequirements
-                setter: setIncludeExpressRequirements
-            type: bool
         includeFeatureEligibility:
             expose: true
             access_type: public_method

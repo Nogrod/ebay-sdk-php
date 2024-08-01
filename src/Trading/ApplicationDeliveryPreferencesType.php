@@ -49,7 +49,7 @@ class ApplicationDeliveryPreferencesType implements \Sabre\Xml\XmlSerializable, 
     private $alertEnable = null;
 
     /**
-     * This field is deprecated and should no longer be used.
+     * The value in this field indicates the type of schema to use for notification payloads. The only supported value is <code>eBLSchemaSOAP</code>, so this field no longer has to be included in a <strong>SetNotificationPreferences</strong> call, since it defaults to<code>eBLSchemaSOAP</code>.
      *
      * @var string $notificationPayloadType
      */
@@ -214,7 +214,7 @@ class ApplicationDeliveryPreferencesType implements \Sabre\Xml\XmlSerializable, 
     /**
      * Gets as notificationPayloadType
      *
-     * This field is deprecated and should no longer be used.
+     * The value in this field indicates the type of schema to use for notification payloads. The only supported value is <code>eBLSchemaSOAP</code>, so this field no longer has to be included in a <strong>SetNotificationPreferences</strong> call, since it defaults to<code>eBLSchemaSOAP</code>.
      *
      * @return string
      */
@@ -226,7 +226,7 @@ class ApplicationDeliveryPreferencesType implements \Sabre\Xml\XmlSerializable, 
     /**
      * Sets a new notificationPayloadType
      *
-     * This field is deprecated and should no longer be used.
+     * The value in this field indicates the type of schema to use for notification payloads. The only supported value is <code>eBLSchemaSOAP</code>, so this field no longer has to be included in a <strong>SetNotificationPreferences</strong> call, since it defaults to<code>eBLSchemaSOAP</code>.
      *
      * @param string $notificationPayloadType
      * @return self

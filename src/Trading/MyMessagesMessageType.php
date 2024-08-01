@@ -99,13 +99,6 @@ class MyMessagesMessageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
     private $read = null;
 
     /**
-     * Date and time that a message was created by the sender.
-     *
-     * @var \DateTime $creationDate
-     */
-    private $creationDate = null;
-
-    /**
      * Date and time that a message was received by My Messages and stored in a
      *  database for the recipient.
      *
@@ -162,9 +155,9 @@ class MyMessagesMessageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
     /**
      * Specifies an active or ended listing's status in eBay's processing workflow.
      *  If a listing ends with a sale (or sales), eBay needs to update the sale
-     *  details (e.g., total price and buyer/high bidder) and the final value fee.
+     *  details (e.g., total price and buyer/high bidder) and the transaction fees.
      *  This processing can take several minutes. If you retrieve a sold item and no
-     *  details about the buyer/high bidder are returned or no final value fee is
+     *  details about the buyer/high bidder are returned or no transaction fees are
      *  available, use this listing status information to determine whether eBay has
      *  finished processing the listing.
      *  <br><br> <span class="tablenote"><b>Note:</b>
@@ -501,32 +494,6 @@ class MyMessagesMessageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
     }
 
     /**
-     * Gets as creationDate
-     *
-     * Date and time that a message was created by the sender.
-     *
-     * @return \DateTime
-     */
-    public function getCreationDate()
-    {
-        return $this->creationDate;
-    }
-
-    /**
-     * Sets a new creationDate
-     *
-     * Date and time that a message was created by the sender.
-     *
-     * @param \DateTime $creationDate
-     * @return self
-     */
-    public function setCreationDate(\DateTime $creationDate)
-    {
-        $this->creationDate = $creationDate;
-        return $this;
-    }
-
-    /**
      * Gets as receiveDate
      *
      * Date and time that a message was received by My Messages and stored in a
@@ -723,9 +690,9 @@ class MyMessagesMessageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
      *
      * Specifies an active or ended listing's status in eBay's processing workflow.
      *  If a listing ends with a sale (or sales), eBay needs to update the sale
-     *  details (e.g., total price and buyer/high bidder) and the final value fee.
+     *  details (e.g., total price and buyer/high bidder) and the transaction fees.
      *  This processing can take several minutes. If you retrieve a sold item and no
-     *  details about the buyer/high bidder are returned or no final value fee is
+     *  details about the buyer/high bidder are returned or no transaction fees are
      *  available, use this listing status information to determine whether eBay has
      *  finished processing the listing.
      *  <br><br> <span class="tablenote"><b>Note:</b>
@@ -748,9 +715,9 @@ class MyMessagesMessageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
      *
      * Specifies an active or ended listing's status in eBay's processing workflow.
      *  If a listing ends with a sale (or sales), eBay needs to update the sale
-     *  details (e.g., total price and buyer/high bidder) and the final value fee.
+     *  details (e.g., total price and buyer/high bidder) and the transaction fees.
      *  This processing can take several minutes. If you retrieve a sold item and no
-     *  details about the buyer/high bidder are returned or no final value fee is
+     *  details about the buyer/high bidder are returned or no transaction fees are
      *  available, use this listing status information to determine whether eBay has
      *  finished processing the listing.
      *  <br><br> <span class="tablenote"><b>Note:</b>
@@ -1009,10 +976,6 @@ class MyMessagesMessageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Read", $value);
         }
-        $value = $this->getCreationDate();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CreationDate", $value);
-        }
         $value = $this->getReceiveDate();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ReceiveDate", $value);
@@ -1122,10 +1085,6 @@ class MyMessagesMessageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Read');
         if (null !== $value) {
             $this->setRead($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CreationDate');
-        if (null !== $value) {
-            $this->setCreationDate(new \DateTime($value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReceiveDate');
         if (null !== $value) {

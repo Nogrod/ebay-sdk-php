@@ -31,16 +31,14 @@ class AddItemResponseType extends AbstractResponseType
     /**
      * Date and time when the new listing is scheduled to end based on the start time and the listing duration value that was set in the <b>ListingDuration</b> field at listing time. If the value of <b>ListingDuration</b> was set to <code>GTC</code> (Good 'Til Cancelled) this value will be set one month ahead of the start time, and this value will continue to be updated one month ahead each time the GTC listing needs to be renewed. Fixed-price listings get renewed automatically as long as there is still a quantity of <code>1</code> or above, or even if the quantity is <code>0</code>, but the 'out-of-stock control' feature is enabled.
      *  <br><br>
-     *  Note that <code>GTC</code> is not a supported listing duration for auction listings, but is the only supported listing duration for fixed-price listings except for a few motor vehicle categories on eBay Motors US, eBay UK, and eBay Italy.
-     *  <br><br>
-     *  <span class="tablenote"><b>Note: </b> As of July 1, 2019, the Good 'Til Cancelled renewal schedule has been modified from every 30 days to once per calendar month. For example, if a GTC listing is created July 5, the next monthly renewal date will be August 5. If a GTC listing is created on the 31st of the month, but the following month only has 30 days, the renewal will happen on the 30th in the following month. Finally, if a GTC listing is created on January 29-31, the renewal will happen on February 28th (or 29th during a 'Leap Year'). See the <a href="https://pages.ebay.com/seller-center/seller-updates/2019-spring/marketplace-updates.html#good-til-cancelled" target="_blank">Good 'Til Cancelled listings update</a> in the <b>Spring 2019 Seller Updates</b> for more information about this change. </span>
+     *  Note that <code>GTC</code> is not a supported listing duration for auction listings, but is the only supported listing duration for fixed-price listings except for a few motor vehicle categories on eBay Motors US, eBay UK, and eBay Italy
      *
      * @var \DateTime $endTime
      */
     private $endTime = null;
 
     /**
-     * This container is an array of fees associated with the creation of the listing. The fees in this container will not include any fees that are based on the purchase price (such as Final Value Fee) and only come into play when the listing has a sale.
+     * This container is an array of fees associated with the creation of the listing. The fees in this container will not include any fees that are based on the purchase price (such as transaction fees) and only come into play when the listing has a sale.
      *  <br>
      *  <br>
      *  All listing fee types are returned, even if those fees are not applicable for the new listing and are '0.0'.
@@ -55,9 +53,6 @@ class AddItemResponseType extends AbstractResponseType
 
     /**
      * The unique identifier of the primary category in which the item was listed. This field is only returned if the <b>Item.CategoryMappingAllowed</b> boolean field is set to <code>true</code> in the request (or omitted) and the Category ID passed in as the primary listing category was automatically mapped to a new Category ID by eBay. If the primary category ID passed in the request is still active/valid, this field is not returned.
-     *  <br/><br/>
-     *  <span class="tablenote"><b>Note: </b> The <b>Item.CategoryMappingAllowed</b> field value in the request now defaults to <code>true</code> if omitted. Previously, the default value was <code>false</code>, so a user had to include this field and set it to <code>true</code> in order for eBay to map an outdated Primary or Secondary Category ID to the updated Category ID.
-     *  </span>
      *
      * @var string $categoryID
      */
@@ -65,9 +60,6 @@ class AddItemResponseType extends AbstractResponseType
 
     /**
      * Unique identifier of the secondary category in which the item was listed. This field is only returned if the <b>Item.CategoryMappingAllowed</b> boolean field is set to <code>true</code> in the request (or omitted) and the Category ID passed in as the secondary listing category was automatically mapped to a new Category ID by eBay. If the secondary category ID passed in the request is still active/valid, this field is not returned.
-     *  <br/><br/>
-     *  <span class="tablenote"><b>Note: </b> The <b>Item.CategoryMappingAllowed</b> field value in the request now defaults to <code>true</code> if omitted. Previously, the default value was <code>false</code>, so a user had to include this field and set it to <code>true</code> in order for eBay to map an outdated Primary or Secondary Category ID to the updated Category ID.
-     *  </span>
      *
      * @var string $category2ID
      */
@@ -146,9 +138,7 @@ class AddItemResponseType extends AbstractResponseType
      *
      * Date and time when the new listing is scheduled to end based on the start time and the listing duration value that was set in the <b>ListingDuration</b> field at listing time. If the value of <b>ListingDuration</b> was set to <code>GTC</code> (Good 'Til Cancelled) this value will be set one month ahead of the start time, and this value will continue to be updated one month ahead each time the GTC listing needs to be renewed. Fixed-price listings get renewed automatically as long as there is still a quantity of <code>1</code> or above, or even if the quantity is <code>0</code>, but the 'out-of-stock control' feature is enabled.
      *  <br><br>
-     *  Note that <code>GTC</code> is not a supported listing duration for auction listings, but is the only supported listing duration for fixed-price listings except for a few motor vehicle categories on eBay Motors US, eBay UK, and eBay Italy.
-     *  <br><br>
-     *  <span class="tablenote"><b>Note: </b> As of July 1, 2019, the Good 'Til Cancelled renewal schedule has been modified from every 30 days to once per calendar month. For example, if a GTC listing is created July 5, the next monthly renewal date will be August 5. If a GTC listing is created on the 31st of the month, but the following month only has 30 days, the renewal will happen on the 30th in the following month. Finally, if a GTC listing is created on January 29-31, the renewal will happen on February 28th (or 29th during a 'Leap Year'). See the <a href="https://pages.ebay.com/seller-center/seller-updates/2019-spring/marketplace-updates.html#good-til-cancelled" target="_blank">Good 'Til Cancelled listings update</a> in the <b>Spring 2019 Seller Updates</b> for more information about this change. </span>
+     *  Note that <code>GTC</code> is not a supported listing duration for auction listings, but is the only supported listing duration for fixed-price listings except for a few motor vehicle categories on eBay Motors US, eBay UK, and eBay Italy
      *
      * @return \DateTime
      */
@@ -162,9 +152,7 @@ class AddItemResponseType extends AbstractResponseType
      *
      * Date and time when the new listing is scheduled to end based on the start time and the listing duration value that was set in the <b>ListingDuration</b> field at listing time. If the value of <b>ListingDuration</b> was set to <code>GTC</code> (Good 'Til Cancelled) this value will be set one month ahead of the start time, and this value will continue to be updated one month ahead each time the GTC listing needs to be renewed. Fixed-price listings get renewed automatically as long as there is still a quantity of <code>1</code> or above, or even if the quantity is <code>0</code>, but the 'out-of-stock control' feature is enabled.
      *  <br><br>
-     *  Note that <code>GTC</code> is not a supported listing duration for auction listings, but is the only supported listing duration for fixed-price listings except for a few motor vehicle categories on eBay Motors US, eBay UK, and eBay Italy.
-     *  <br><br>
-     *  <span class="tablenote"><b>Note: </b> As of July 1, 2019, the Good 'Til Cancelled renewal schedule has been modified from every 30 days to once per calendar month. For example, if a GTC listing is created July 5, the next monthly renewal date will be August 5. If a GTC listing is created on the 31st of the month, but the following month only has 30 days, the renewal will happen on the 30th in the following month. Finally, if a GTC listing is created on January 29-31, the renewal will happen on February 28th (or 29th during a 'Leap Year'). See the <a href="https://pages.ebay.com/seller-center/seller-updates/2019-spring/marketplace-updates.html#good-til-cancelled" target="_blank">Good 'Til Cancelled listings update</a> in the <b>Spring 2019 Seller Updates</b> for more information about this change. </span>
+     *  Note that <code>GTC</code> is not a supported listing duration for auction listings, but is the only supported listing duration for fixed-price listings except for a few motor vehicle categories on eBay Motors US, eBay UK, and eBay Italy
      *
      * @param \DateTime $endTime
      * @return self
@@ -178,7 +166,7 @@ class AddItemResponseType extends AbstractResponseType
     /**
      * Adds as fee
      *
-     * This container is an array of fees associated with the creation of the listing. The fees in this container will not include any fees that are based on the purchase price (such as Final Value Fee) and only come into play when the listing has a sale.
+     * This container is an array of fees associated with the creation of the listing. The fees in this container will not include any fees that are based on the purchase price (such as transaction fees) and only come into play when the listing has a sale.
      *  <br>
      *  <br>
      *  All listing fee types are returned, even if those fees are not applicable for the new listing and are '0.0'.
@@ -199,7 +187,7 @@ class AddItemResponseType extends AbstractResponseType
     /**
      * isset fees
      *
-     * This container is an array of fees associated with the creation of the listing. The fees in this container will not include any fees that are based on the purchase price (such as Final Value Fee) and only come into play when the listing has a sale.
+     * This container is an array of fees associated with the creation of the listing. The fees in this container will not include any fees that are based on the purchase price (such as transaction fees) and only come into play when the listing has a sale.
      *  <br>
      *  <br>
      *  All listing fee types are returned, even if those fees are not applicable for the new listing and are '0.0'.
@@ -219,7 +207,7 @@ class AddItemResponseType extends AbstractResponseType
     /**
      * unset fees
      *
-     * This container is an array of fees associated with the creation of the listing. The fees in this container will not include any fees that are based on the purchase price (such as Final Value Fee) and only come into play when the listing has a sale.
+     * This container is an array of fees associated with the creation of the listing. The fees in this container will not include any fees that are based on the purchase price (such as transaction fees) and only come into play when the listing has a sale.
      *  <br>
      *  <br>
      *  All listing fee types are returned, even if those fees are not applicable for the new listing and are '0.0'.
@@ -239,7 +227,7 @@ class AddItemResponseType extends AbstractResponseType
     /**
      * Gets as fees
      *
-     * This container is an array of fees associated with the creation of the listing. The fees in this container will not include any fees that are based on the purchase price (such as Final Value Fee) and only come into play when the listing has a sale.
+     * This container is an array of fees associated with the creation of the listing. The fees in this container will not include any fees that are based on the purchase price (such as transaction fees) and only come into play when the listing has a sale.
      *  <br>
      *  <br>
      *  All listing fee types are returned, even if those fees are not applicable for the new listing and are '0.0'.
@@ -258,7 +246,7 @@ class AddItemResponseType extends AbstractResponseType
     /**
      * Sets a new fees
      *
-     * This container is an array of fees associated with the creation of the listing. The fees in this container will not include any fees that are based on the purchase price (such as Final Value Fee) and only come into play when the listing has a sale.
+     * This container is an array of fees associated with the creation of the listing. The fees in this container will not include any fees that are based on the purchase price (such as transaction fees) and only come into play when the listing has a sale.
      *  <br>
      *  <br>
      *  All listing fee types are returned, even if those fees are not applicable for the new listing and are '0.0'.
@@ -280,9 +268,6 @@ class AddItemResponseType extends AbstractResponseType
      * Gets as categoryID
      *
      * The unique identifier of the primary category in which the item was listed. This field is only returned if the <b>Item.CategoryMappingAllowed</b> boolean field is set to <code>true</code> in the request (or omitted) and the Category ID passed in as the primary listing category was automatically mapped to a new Category ID by eBay. If the primary category ID passed in the request is still active/valid, this field is not returned.
-     *  <br/><br/>
-     *  <span class="tablenote"><b>Note: </b> The <b>Item.CategoryMappingAllowed</b> field value in the request now defaults to <code>true</code> if omitted. Previously, the default value was <code>false</code>, so a user had to include this field and set it to <code>true</code> in order for eBay to map an outdated Primary or Secondary Category ID to the updated Category ID.
-     *  </span>
      *
      * @return string
      */
@@ -295,9 +280,6 @@ class AddItemResponseType extends AbstractResponseType
      * Sets a new categoryID
      *
      * The unique identifier of the primary category in which the item was listed. This field is only returned if the <b>Item.CategoryMappingAllowed</b> boolean field is set to <code>true</code> in the request (or omitted) and the Category ID passed in as the primary listing category was automatically mapped to a new Category ID by eBay. If the primary category ID passed in the request is still active/valid, this field is not returned.
-     *  <br/><br/>
-     *  <span class="tablenote"><b>Note: </b> The <b>Item.CategoryMappingAllowed</b> field value in the request now defaults to <code>true</code> if omitted. Previously, the default value was <code>false</code>, so a user had to include this field and set it to <code>true</code> in order for eBay to map an outdated Primary or Secondary Category ID to the updated Category ID.
-     *  </span>
      *
      * @param string $categoryID
      * @return self
@@ -312,9 +294,6 @@ class AddItemResponseType extends AbstractResponseType
      * Gets as category2ID
      *
      * Unique identifier of the secondary category in which the item was listed. This field is only returned if the <b>Item.CategoryMappingAllowed</b> boolean field is set to <code>true</code> in the request (or omitted) and the Category ID passed in as the secondary listing category was automatically mapped to a new Category ID by eBay. If the secondary category ID passed in the request is still active/valid, this field is not returned.
-     *  <br/><br/>
-     *  <span class="tablenote"><b>Note: </b> The <b>Item.CategoryMappingAllowed</b> field value in the request now defaults to <code>true</code> if omitted. Previously, the default value was <code>false</code>, so a user had to include this field and set it to <code>true</code> in order for eBay to map an outdated Primary or Secondary Category ID to the updated Category ID.
-     *  </span>
      *
      * @return string
      */
@@ -327,9 +306,6 @@ class AddItemResponseType extends AbstractResponseType
      * Sets a new category2ID
      *
      * Unique identifier of the secondary category in which the item was listed. This field is only returned if the <b>Item.CategoryMappingAllowed</b> boolean field is set to <code>true</code> in the request (or omitted) and the Category ID passed in as the secondary listing category was automatically mapped to a new Category ID by eBay. If the secondary category ID passed in the request is still active/valid, this field is not returned.
-     *  <br/><br/>
-     *  <span class="tablenote"><b>Note: </b> The <b>Item.CategoryMappingAllowed</b> field value in the request now defaults to <code>true</code> if omitted. Previously, the default value was <code>false</code>, so a user had to include this field and set it to <code>true</code> in order for eBay to map an outdated Primary or Secondary Category ID to the updated Category ID.
-     *  </span>
      *
      * @param string $category2ID
      * @return self

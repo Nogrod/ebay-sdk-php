@@ -15,7 +15,7 @@ class DeliveryDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     /**
      * This container consists of the name and email of the person who is receiving the digital gift card. If the buyer has purchased the gift card for themselves, the buyer's name and email will appear in this container. If the buyer is giving the gift card to another individual, that individual's name and email will appear in this container. This container is always returned for a digital gift card line item.
      *  <br><br>
-     *  <b>For GetOrders, GetOrderTransactions, and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this container will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, real data is only returned to the buyer or seller, and dummy/masked data will be returned to all third parties.
+     *  <b>For GetOrders and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this container will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, real data is only returned to the buyer or seller, and dummy/masked data will be returned to all third parties.
      *
      * @var \Nogrod\eBaySDK\Trading\DigitalDeliveryUserType $recipient
      */
@@ -24,7 +24,7 @@ class DeliveryDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     /**
      * This container consists of the name and email of the person who purchased the digital gift card. This container is only returned if the purchaser of the digital gift card is giving the gift card to someone else, and that individual's name and email will appear in the <strong>Recipient</strong> container.
      *  <br><br>
-     *  <b>For GetOrders, GetOrderTransactions, and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this container will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, real data is only returned to the buyer or seller, and dummy/masked data will be returned to all third parties.
+     *  <b>For GetOrders and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this container will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, real data is only returned to the buyer or seller, and dummy/masked data will be returned to all third parties.
      *
      * @var \Nogrod\eBaySDK\Trading\DigitalDeliveryUserType $sender
      */
@@ -35,7 +35,7 @@ class DeliveryDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *
      * This container consists of the name and email of the person who is receiving the digital gift card. If the buyer has purchased the gift card for themselves, the buyer's name and email will appear in this container. If the buyer is giving the gift card to another individual, that individual's name and email will appear in this container. This container is always returned for a digital gift card line item.
      *  <br><br>
-     *  <b>For GetOrders, GetOrderTransactions, and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this container will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, real data is only returned to the buyer or seller, and dummy/masked data will be returned to all third parties.
+     *  <b>For GetOrders and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this container will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, real data is only returned to the buyer or seller, and dummy/masked data will be returned to all third parties.
      *
      * @return \Nogrod\eBaySDK\Trading\DigitalDeliveryUserType
      */
@@ -49,7 +49,7 @@ class DeliveryDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *
      * This container consists of the name and email of the person who is receiving the digital gift card. If the buyer has purchased the gift card for themselves, the buyer's name and email will appear in this container. If the buyer is giving the gift card to another individual, that individual's name and email will appear in this container. This container is always returned for a digital gift card line item.
      *  <br><br>
-     *  <b>For GetOrders, GetOrderTransactions, and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this container will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, real data is only returned to the buyer or seller, and dummy/masked data will be returned to all third parties.
+     *  <b>For GetOrders and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this container will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, real data is only returned to the buyer or seller, and dummy/masked data will be returned to all third parties.
      *
      * @param \Nogrod\eBaySDK\Trading\DigitalDeliveryUserType $recipient
      * @return self
@@ -65,7 +65,7 @@ class DeliveryDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *
      * This container consists of the name and email of the person who purchased the digital gift card. This container is only returned if the purchaser of the digital gift card is giving the gift card to someone else, and that individual's name and email will appear in the <strong>Recipient</strong> container.
      *  <br><br>
-     *  <b>For GetOrders, GetOrderTransactions, and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this container will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, real data is only returned to the buyer or seller, and dummy/masked data will be returned to all third parties.
+     *  <b>For GetOrders and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this container will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, real data is only returned to the buyer or seller, and dummy/masked data will be returned to all third parties.
      *
      * @return \Nogrod\eBaySDK\Trading\DigitalDeliveryUserType
      */
@@ -79,7 +79,7 @@ class DeliveryDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *
      * This container consists of the name and email of the person who purchased the digital gift card. This container is only returned if the purchaser of the digital gift card is giving the gift card to someone else, and that individual's name and email will appear in the <strong>Recipient</strong> container.
      *  <br><br>
-     *  <b>For GetOrders, GetOrderTransactions, and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this container will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, real data is only returned to the buyer or seller, and dummy/masked data will be returned to all third parties.
+     *  <b>For GetOrders and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this container will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, real data is only returned to the buyer or seller, and dummy/masked data will be returned to all third parties.
      *
      * @param \Nogrod\eBaySDK\Trading\DigitalDeliveryUserType $sender
      * @return self

@@ -32,14 +32,6 @@ class MyMessagesResponseDetailsType implements \Sabre\Xml\XmlSerializable, \Sabr
     private $responseURL = null;
 
     /**
-     * The date and time the user responded to a
-     *  message
-     *
-     * @var \DateTime $userResponseDate
-     */
-    private $userResponseDate = null;
-
-    /**
      * Gets as responseEnabled
      *
      * Whether a message can be responded
@@ -101,34 +93,6 @@ class MyMessagesResponseDetailsType implements \Sabre\Xml\XmlSerializable, \Sabr
         return $this;
     }
 
-    /**
-     * Gets as userResponseDate
-     *
-     * The date and time the user responded to a
-     *  message
-     *
-     * @return \DateTime
-     */
-    public function getUserResponseDate()
-    {
-        return $this->userResponseDate;
-    }
-
-    /**
-     * Sets a new userResponseDate
-     *
-     * The date and time the user responded to a
-     *  message
-     *
-     * @param \DateTime $userResponseDate
-     * @return self
-     */
-    public function setUserResponseDate(\DateTime $userResponseDate)
-    {
-        $this->userResponseDate = $userResponseDate;
-        return $this;
-    }
-
     public function xmlSerialize(\Sabre\Xml\Writer $writer): void
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
@@ -140,10 +104,6 @@ class MyMessagesResponseDetailsType implements \Sabre\Xml\XmlSerializable, \Sabr
         $value = $this->getResponseURL();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ResponseURL", $value);
-        }
-        $value = $this->getUserResponseDate();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}UserResponseDate", $value);
         }
     }
 
@@ -168,10 +128,6 @@ class MyMessagesResponseDetailsType implements \Sabre\Xml\XmlSerializable, \Sabr
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ResponseURL');
         if (null !== $value) {
             $this->setResponseURL($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UserResponseDate');
-        if (null !== $value) {
-            $this->setUserResponseDate(new \DateTime($value));
         }
     }
 }

@@ -53,7 +53,7 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      * Container consisting of user and shipping details for the order's buyer. To be returned by <b>GetItemsAwaitingFeedback</b> the seller
      *  must be the one making the request.
      *  <br><br>
-     *  <b>For GetOrders, GetOrderTransactions, and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this container will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, real data is only returned to the buyer or seller, and dummy/masked data will be returned to all third parties.
+     *  <b>For GetOrders and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this container will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, real data is only returned to the buyer or seller, and dummy/masked data will be returned to all third parties.
      *
      * @var \Nogrod\eBaySDK\Trading\UserType $buyer
      */
@@ -62,7 +62,7 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     /**
      * Container consisting of shipping-related details for a sales transaction. Shipping details may include shipping rates, package dimensions, handling costs, excluded shipping locations (if specified), shipping service options, sales tax information (if applicable), and shipment tracking details (if shipped).
      *  <br><br>
-     *  <span class="tablenote"><b>Note: </b> For <b>GetOrders</b> and <b>GetOrderTransactions</b>, a <b>ShippingDetails</b> container is returned at the order at line item level.
+     *  <span class="tablenote"><b>Note: </b> For <b>GetOrders</b>, a <b>ShippingDetails</b> container is returned at the order at line item level.
      *  </span>
      *
      * @var \Nogrod\eBaySDK\Trading\ShippingDetailsType $shippingDetails
@@ -138,8 +138,11 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      *  <br>
      *  <br>
      *  The <b>TransactionID</b> value for auction listings is always <code>0</code> since there can be only one winning bidder/one sale for an auction listing.
-     *  <br><br>
-     *  <b>For GetOrders, GetOrderTransactions, and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this field will only be returned to the buyer and seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, transaction ID is only returned to the buyer and seller, and a dummy value of <code>10000000000000</code> will be returned to all third parties.
+     *  <br/><br/>
+     *  <span class="tablenote"><b>Note: </b> Beginning in July 2024, non-zero transaction IDs will start being returned for auction listings. If necessary, update code to handle non-zero transaction IDs for auction transactions before this time.
+     *  </span>
+     *  <br>
+     *  <b>For GetOrders and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this field will only be returned to the buyer and seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, transaction ID is only returned to the buyer and seller, and a dummy value of <code>10000000000000</code> will be returned to all third parties.
      *
      * @var string $transactionID
      */
@@ -169,31 +172,6 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     private $vATPercent = null;
 
     /**
-     * Container consisting of payment details for an eBay sales transaction, including an identifier for the monetary transaction and a field to express any fees or credits applied to the monetary transaction. This field is only returned after payment for the order has occurred.
-     *  <br><br>
-     *  <b>For GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this field will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, the real transaction identifier is only returned to the buyer or seller, and a string value of <code>Unavailable</code> will be returned to all third parties.
-     *  <br>
-     *  <span class="tablenote"><b>Note: </b> This container will stop being returned on January 31, 2024. The <strong>MonetaryDetails</strong> container should be used instead.
-     *  </span>
-     *
-     * @var \Nogrod\eBaySDK\Trading\ExternalTransactionType[] $externalTransaction
-     */
-    private $externalTransaction = [
-
-    ];
-
-    /**
-     * This container consists of Selling Manager product details and is only
-     *  returned if the item was listed through Selling Manager Pro.
-     *  <br>
-     *  <span class="tablenote"><b>Note: </b> This container will stop being returned on January 31, 2024.
-     *  </span>
-     *
-     * @var \Nogrod\eBaySDK\Trading\SellingManagerProductDetailsType $sellingManagerProductDetails
-     */
-    private $sellingManagerProductDetails = null;
-
-    /**
      * The shipping service actually selected by the buyer from the shipping services
      *  offered by the seller. The buyer typically selects the shipping service at checkout/payment time.
      *
@@ -208,13 +186,6 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      * @var string $buyerMessage
      */
     private $buyerMessage = null;
-
-    /**
-     * This field is deprecated.
-     *
-     * @var \Nogrod\eBaySDK\Trading\AmountType $dutchAuctionBid
-     */
-    private $dutchAuctionBid = null;
 
     /**
      * Specifies the paid status of the order.
@@ -248,7 +219,7 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      * Indicates the time when the line item was marked as 'Shipped'. This value will only be visible to the user on either side of the order. An order can be marked as 'Shipped' by purchasing an eBay shipping label, providing shipment tracking in My eBay or through Selling Manager Pro, or programmatically by the seller through the <b>CompleteSale</b> call.
      *  <br><br>
      *  <span class="tablenote"><b>Note:</b>
-     *  This field does not appear in Merchant Data API's <b>OrderReport</b> responses, because once shipment tracking information is provided to the buyer (or marked as shipped), the order/order line item is considered acknowledged, and acknowledged orders do not show up in <b>OrderReport</b> responses.
+     *  This field does not appear in the Sell Feed API's <code>LMS_ORDER_REPORT</code> responses, because once shipment tracking information is provided to the buyer, the order/order line item is considered acknowledged, and acknowledged orders do not show up in the <code>LMS_ORDER_REPORT</code> responses.
      *  </span>
      *
      * @var \DateTime $shippedTime
@@ -307,21 +278,6 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     private $finalValueFee = null;
 
     /**
-     * This field is no longer applicable
-     *
-     * @var \Nogrod\eBaySDK\Trading\ListingCheckoutRedirectPreferenceType $listingCheckoutRedirectPreference
-     */
-    private $listingCheckoutRedirectPreference = null;
-
-    /**
-     * <span class="tablenote"><b>Note: </b> This container is only applicable for Half.com order refunds, and since the Half.com site has been shut down, this field is no longer applicable.
-     *  </span>
-     *
-     * @var \Nogrod\eBaySDK\Trading\RefundType[] $refundArray
-     */
-    private $refundArray = null;
-
-    /**
      * The site upon which the line item was purchased.
      *
      * @var string $transactionSiteID
@@ -337,45 +293,6 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      * @var string $platform
      */
     private $platform = null;
-
-    /**
-     * This field is no longer applicable as Shopping.com listings are no longer created or managed with eBay APIs.
-     *
-     * @var string $cartID
-     */
-    private $cartID = null;
-
-    /**
-     * This field is no longer applicable as Shopping.com listings are no longer created or managed with eBay APIs.
-     *
-     * @var bool $sellerContactBuyerByEmail
-     */
-    private $sellerContactBuyerByEmail = null;
-
-    /**
-     * This field is deprecated.
-     *
-     * @var string $payPalEmailAddress
-     */
-    private $payPalEmailAddress = null;
-
-    /**
-     * This field is deprecated.
-     *
-     * @var string $paisaPayID
-     */
-    private $paisaPayID = null;
-
-    /**
-     * <br>
-     *  The Buyer Guarantee price. This field is only applicable to the Australian site.
-     *  <br>
-     *  <span class="tablenote"><b>Note: </b> This field will stop being returned on January 31, 2024.
-     *  </span>
-     *
-     * @var \Nogrod\eBaySDK\Trading\AmountType $buyerGuaranteePrice
-     */
-    private $buyerGuaranteePrice = null;
 
     /**
      * In a fixed-priced listing, a seller can offer variations of the same item.
@@ -452,7 +369,7 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      * A unique identifier for an eBay order line item. This identifier is created as
      *  soon as there is a commitment to buy from the seller, or the buyer actually purchases the item using a 'Buy it Now' option.
      *  <br><br>
-     *  <b>For GetOrders, GetOrderTransactions, and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this field will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, order line item ID is only returned to the buyer or seller, and a dummy value of <code>10000000000000</code> will be returned to all third parties.
+     *  <b>For GetOrders and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this field will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, order line item ID is only returned to the buyer or seller, and a dummy value of <code>10000000000000</code> will be returned to all third parties.
      *  <br>
      *
      * @var string $orderLineItemID
@@ -468,34 +385,11 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     private $eBayPaymentID = null;
 
     /**
-     * This container consists of information related to the payment hold on the order line item, including the reason why the buyer's payment for the order line item is being held, the expected release date of the funds into the seller's account, and possible action(s) the seller can take to expedite the payout of funds into their account. This container is only returned if a payment hold has been placed on the order line item.
-     *  <br><br>
-     *  See <b>PaymentHoldReasonCodeType</b> for some details on why/when a seller's funds may be held, or visit the <a href="https://www.ebay.com/help/selling/getting-paid/getting-paid-items-youve-sold/pending-payments?id=4816">Pending payments</a> help topic for more information on eBay's payment hold policies.
-     *
-     * @var \Nogrod\eBaySDK\Trading\PaymentHoldDetailType $paymentHoldDetails
-     */
-    private $paymentHoldDetails = null;
-
-    /**
      * A container consisting of name and ID of the seller's discount campaign, as well as the discount amount that is being applied to the order line item. This container is only returned if the order line item is eligible for seller discounts.
      *
      * @var \Nogrod\eBaySDK\Trading\SellerDiscountsType $sellerDiscounts
      */
     private $sellerDiscounts = null;
-
-    /**
-     * This field is deprecated.
-     *
-     * @var \Nogrod\eBaySDK\Trading\AmountType $refundAmount
-     */
-    private $refundAmount = null;
-
-    /**
-     * This field is deprecated.
-     *
-     * @var string $refundStatus
-     */
-    private $refundStatus = null;
 
     /**
      * This field is returned if the <b>IncludeCodiceFiscale</b> flag is included in the request and set to <code>true</code>, and if the buyer has provided this value at checkout time.
@@ -531,14 +425,6 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     private $invoiceSentTime = null;
 
     /**
-     * <br>
-     *  <span class="tablenote"><strong>Note:</strong> This container is deprecated (Unpaid Item cases are no longer supported). This container will stop being returned on January 31, 2024.</span>
-     *
-     * @var \Nogrod\eBaySDK\Trading\UnpaidItemType $unpaidItem
-     */
-    private $unpaidItem = null;
-
-    /**
      * This flag indicates whether or not the order line item is an intangible good, such as an MP3 track or a mobile phone ringtone.
      *
      * @var bool $intangibleItem
@@ -547,10 +433,6 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
 
     /**
      * Contains information about each monetary transaction that occurs for the order line item, including order payment, any refund, a credit, etc. Both the payer and payee are shown in this container.
-     *  <br/><br/>
-     *  <span class="tablenote">
-     *  <strong>Note:</strong> <strong>MonetaryDetails</strong> can already be used instead of the older <strong>ExternalTransaction</strong> container, and the <strong>ExternalTransaction</strong> container may eventually get deprecated. Due to this possibility, you are encouraged to start using <strong>MonetaryDetails</strong> as soon as it is convenient.
-     *  </span>
      *
      * @var \Nogrod\eBaySDK\Trading\PaymentsInformationType $monetaryDetails
      */
@@ -575,15 +457,6 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      * @var \Nogrod\eBaySDK\Trading\PickupMethodSelectedType $pickupMethodSelected
      */
     private $pickupMethodSelected = null;
-
-    /**
-     * <span class="tablenote"><strong>Note:</strong>
-     *  This field is no longer applicable/used. It was previously used for eBay Now and 'eBay On Demand Delivery' orders - two features that have been deprecated.
-     *  </span>
-     *
-     * @var \Nogrod\eBaySDK\Trading\AmountType $shippingConvenienceCharge
-     */
-    private $shippingConvenienceCharge = null;
 
     /**
      * This field will be returned at the order line item level only if the buyer purchased a digital gift card, which is delivered by email, or if the buyer purchased an item that is enabled with the 'Click and Collect' feature.
@@ -613,7 +486,7 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      *  <br>
      *  <span class="tablenote"><b>Note: </b> <b>ExtendedOrderID</b> was first created when eBay changed the format of Order IDs back in June 2019. For a short period, the <b>OrderID</b> field showed the old Order ID format and the <b>ExtendedOrderID</b> field showed the new Order ID format. For paid orders, both <b>OrderID</b> and <b>ExtendedOrderID</b> now show the same Order ID value.
      *  <br>
-     *  <b>For GetOrders, GetOrderTransactions, and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this field will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, the correct Order ID is returned to the buyer or seller, but a dummy Order ID value of <code>1000000000000</code> will be returned to all third parties.
+     *  <b>For GetOrders and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this field will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, the correct Order ID is returned to the buyer or seller, but a dummy Order ID value of <code>1000000000000</code> will be returned to all third parties.
      *  <br>
      *
      * @var string $extendedOrderID
@@ -820,7 +693,7 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      * Container consisting of user and shipping details for the order's buyer. To be returned by <b>GetItemsAwaitingFeedback</b> the seller
      *  must be the one making the request.
      *  <br><br>
-     *  <b>For GetOrders, GetOrderTransactions, and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this container will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, real data is only returned to the buyer or seller, and dummy/masked data will be returned to all third parties.
+     *  <b>For GetOrders and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this container will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, real data is only returned to the buyer or seller, and dummy/masked data will be returned to all third parties.
      *
      * @return \Nogrod\eBaySDK\Trading\UserType
      */
@@ -835,7 +708,7 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      * Container consisting of user and shipping details for the order's buyer. To be returned by <b>GetItemsAwaitingFeedback</b> the seller
      *  must be the one making the request.
      *  <br><br>
-     *  <b>For GetOrders, GetOrderTransactions, and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this container will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, real data is only returned to the buyer or seller, and dummy/masked data will be returned to all third parties.
+     *  <b>For GetOrders and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this container will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, real data is only returned to the buyer or seller, and dummy/masked data will be returned to all third parties.
      *
      * @param \Nogrod\eBaySDK\Trading\UserType $buyer
      * @return self
@@ -851,7 +724,7 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      *
      * Container consisting of shipping-related details for a sales transaction. Shipping details may include shipping rates, package dimensions, handling costs, excluded shipping locations (if specified), shipping service options, sales tax information (if applicable), and shipment tracking details (if shipped).
      *  <br><br>
-     *  <span class="tablenote"><b>Note: </b> For <b>GetOrders</b> and <b>GetOrderTransactions</b>, a <b>ShippingDetails</b> container is returned at the order at line item level.
+     *  <span class="tablenote"><b>Note: </b> For <b>GetOrders</b>, a <b>ShippingDetails</b> container is returned at the order at line item level.
      *  </span>
      *
      * @return \Nogrod\eBaySDK\Trading\ShippingDetailsType
@@ -866,7 +739,7 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      *
      * Container consisting of shipping-related details for a sales transaction. Shipping details may include shipping rates, package dimensions, handling costs, excluded shipping locations (if specified), shipping service options, sales tax information (if applicable), and shipment tracking details (if shipped).
      *  <br><br>
-     *  <span class="tablenote"><b>Note: </b> For <b>GetOrders</b> and <b>GetOrderTransactions</b>, a <b>ShippingDetails</b> container is returned at the order at line item level.
+     *  <span class="tablenote"><b>Note: </b> For <b>GetOrders</b>, a <b>ShippingDetails</b> container is returned at the order at line item level.
      *  </span>
      *
      * @param \Nogrod\eBaySDK\Trading\ShippingDetailsType $shippingDetails
@@ -1095,8 +968,11 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      *  <br>
      *  <br>
      *  The <b>TransactionID</b> value for auction listings is always <code>0</code> since there can be only one winning bidder/one sale for an auction listing.
-     *  <br><br>
-     *  <b>For GetOrders, GetOrderTransactions, and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this field will only be returned to the buyer and seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, transaction ID is only returned to the buyer and seller, and a dummy value of <code>10000000000000</code> will be returned to all third parties.
+     *  <br/><br/>
+     *  <span class="tablenote"><b>Note: </b> Beginning in July 2024, non-zero transaction IDs will start being returned for auction listings. If necessary, update code to handle non-zero transaction IDs for auction transactions before this time.
+     *  </span>
+     *  <br>
+     *  <b>For GetOrders and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this field will only be returned to the buyer and seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, transaction ID is only returned to the buyer and seller, and a dummy value of <code>10000000000000</code> will be returned to all third parties.
      *
      * @return string
      */
@@ -1114,8 +990,11 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      *  <br>
      *  <br>
      *  The <b>TransactionID</b> value for auction listings is always <code>0</code> since there can be only one winning bidder/one sale for an auction listing.
-     *  <br><br>
-     *  <b>For GetOrders, GetOrderTransactions, and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this field will only be returned to the buyer and seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, transaction ID is only returned to the buyer and seller, and a dummy value of <code>10000000000000</code> will be returned to all third parties.
+     *  <br/><br/>
+     *  <span class="tablenote"><b>Note: </b> Beginning in July 2024, non-zero transaction IDs will start being returned for auction listings. If necessary, update code to handle non-zero transaction IDs for auction transactions before this time.
+     *  </span>
+     *  <br>
+     *  <b>For GetOrders and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this field will only be returned to the buyer and seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, transaction ID is only returned to the buyer and seller, and a dummy value of <code>10000000000000</code> will be returned to all third parties.
      *
      * @param string $transactionID
      * @return self
@@ -1209,131 +1088,6 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     }
 
     /**
-     * Adds as externalTransaction
-     *
-     * Container consisting of payment details for an eBay sales transaction, including an identifier for the monetary transaction and a field to express any fees or credits applied to the monetary transaction. This field is only returned after payment for the order has occurred.
-     *  <br><br>
-     *  <b>For GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this field will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, the real transaction identifier is only returned to the buyer or seller, and a string value of <code>Unavailable</code> will be returned to all third parties.
-     *  <br>
-     *  <span class="tablenote"><b>Note: </b> This container will stop being returned on January 31, 2024. The <strong>MonetaryDetails</strong> container should be used instead.
-     *  </span>
-     *
-     * @return self
-     * @param \Nogrod\eBaySDK\Trading\ExternalTransactionType $externalTransaction
-     */
-    public function addToExternalTransaction(\Nogrod\eBaySDK\Trading\ExternalTransactionType $externalTransaction)
-    {
-        $this->externalTransaction[] = $externalTransaction;
-        return $this;
-    }
-
-    /**
-     * isset externalTransaction
-     *
-     * Container consisting of payment details for an eBay sales transaction, including an identifier for the monetary transaction and a field to express any fees or credits applied to the monetary transaction. This field is only returned after payment for the order has occurred.
-     *  <br><br>
-     *  <b>For GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this field will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, the real transaction identifier is only returned to the buyer or seller, and a string value of <code>Unavailable</code> will be returned to all third parties.
-     *  <br>
-     *  <span class="tablenote"><b>Note: </b> This container will stop being returned on January 31, 2024. The <strong>MonetaryDetails</strong> container should be used instead.
-     *  </span>
-     *
-     * @param int|string $index
-     * @return bool
-     */
-    public function issetExternalTransaction($index)
-    {
-        return isset($this->externalTransaction[$index]);
-    }
-
-    /**
-     * unset externalTransaction
-     *
-     * Container consisting of payment details for an eBay sales transaction, including an identifier for the monetary transaction and a field to express any fees or credits applied to the monetary transaction. This field is only returned after payment for the order has occurred.
-     *  <br><br>
-     *  <b>For GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this field will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, the real transaction identifier is only returned to the buyer or seller, and a string value of <code>Unavailable</code> will be returned to all third parties.
-     *  <br>
-     *  <span class="tablenote"><b>Note: </b> This container will stop being returned on January 31, 2024. The <strong>MonetaryDetails</strong> container should be used instead.
-     *  </span>
-     *
-     * @param int|string $index
-     * @return void
-     */
-    public function unsetExternalTransaction($index)
-    {
-        unset($this->externalTransaction[$index]);
-    }
-
-    /**
-     * Gets as externalTransaction
-     *
-     * Container consisting of payment details for an eBay sales transaction, including an identifier for the monetary transaction and a field to express any fees or credits applied to the monetary transaction. This field is only returned after payment for the order has occurred.
-     *  <br><br>
-     *  <b>For GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this field will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, the real transaction identifier is only returned to the buyer or seller, and a string value of <code>Unavailable</code> will be returned to all third parties.
-     *  <br>
-     *  <span class="tablenote"><b>Note: </b> This container will stop being returned on January 31, 2024. The <strong>MonetaryDetails</strong> container should be used instead.
-     *  </span>
-     *
-     * @return \Nogrod\eBaySDK\Trading\ExternalTransactionType[]
-     */
-    public function getExternalTransaction()
-    {
-        return $this->externalTransaction;
-    }
-
-    /**
-     * Sets a new externalTransaction
-     *
-     * Container consisting of payment details for an eBay sales transaction, including an identifier for the monetary transaction and a field to express any fees or credits applied to the monetary transaction. This field is only returned after payment for the order has occurred.
-     *  <br><br>
-     *  <b>For GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this field will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, the real transaction identifier is only returned to the buyer or seller, and a string value of <code>Unavailable</code> will be returned to all third parties.
-     *  <br>
-     *  <span class="tablenote"><b>Note: </b> This container will stop being returned on January 31, 2024. The <strong>MonetaryDetails</strong> container should be used instead.
-     *  </span>
-     *
-     * @param \Nogrod\eBaySDK\Trading\ExternalTransactionType[] $externalTransaction
-     * @return self
-     */
-    public function setExternalTransaction(array $externalTransaction)
-    {
-        $this->externalTransaction = $externalTransaction;
-        return $this;
-    }
-
-    /**
-     * Gets as sellingManagerProductDetails
-     *
-     * This container consists of Selling Manager product details and is only
-     *  returned if the item was listed through Selling Manager Pro.
-     *  <br>
-     *  <span class="tablenote"><b>Note: </b> This container will stop being returned on January 31, 2024.
-     *  </span>
-     *
-     * @return \Nogrod\eBaySDK\Trading\SellingManagerProductDetailsType
-     */
-    public function getSellingManagerProductDetails()
-    {
-        return $this->sellingManagerProductDetails;
-    }
-
-    /**
-     * Sets a new sellingManagerProductDetails
-     *
-     * This container consists of Selling Manager product details and is only
-     *  returned if the item was listed through Selling Manager Pro.
-     *  <br>
-     *  <span class="tablenote"><b>Note: </b> This container will stop being returned on January 31, 2024.
-     *  </span>
-     *
-     * @param \Nogrod\eBaySDK\Trading\SellingManagerProductDetailsType $sellingManagerProductDetails
-     * @return self
-     */
-    public function setSellingManagerProductDetails(\Nogrod\eBaySDK\Trading\SellingManagerProductDetailsType $sellingManagerProductDetails)
-    {
-        $this->sellingManagerProductDetails = $sellingManagerProductDetails;
-        return $this;
-    }
-
-    /**
      * Gets as shippingServiceSelected
      *
      * The shipping service actually selected by the buyer from the shipping services
@@ -1386,32 +1140,6 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     public function setBuyerMessage($buyerMessage)
     {
         $this->buyerMessage = $buyerMessage;
-        return $this;
-    }
-
-    /**
-     * Gets as dutchAuctionBid
-     *
-     * This field is deprecated.
-     *
-     * @return \Nogrod\eBaySDK\Trading\AmountType
-     */
-    public function getDutchAuctionBid()
-    {
-        return $this->dutchAuctionBid;
-    }
-
-    /**
-     * Sets a new dutchAuctionBid
-     *
-     * This field is deprecated.
-     *
-     * @param \Nogrod\eBaySDK\Trading\AmountType $dutchAuctionBid
-     * @return self
-     */
-    public function setDutchAuctionBid(\Nogrod\eBaySDK\Trading\AmountType $dutchAuctionBid)
-    {
-        $this->dutchAuctionBid = $dutchAuctionBid;
         return $this;
     }
 
@@ -1513,7 +1241,7 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      * Indicates the time when the line item was marked as 'Shipped'. This value will only be visible to the user on either side of the order. An order can be marked as 'Shipped' by purchasing an eBay shipping label, providing shipment tracking in My eBay or through Selling Manager Pro, or programmatically by the seller through the <b>CompleteSale</b> call.
      *  <br><br>
      *  <span class="tablenote"><b>Note:</b>
-     *  This field does not appear in Merchant Data API's <b>OrderReport</b> responses, because once shipment tracking information is provided to the buyer (or marked as shipped), the order/order line item is considered acknowledged, and acknowledged orders do not show up in <b>OrderReport</b> responses.
+     *  This field does not appear in the Sell Feed API's <code>LMS_ORDER_REPORT</code> responses, because once shipment tracking information is provided to the buyer, the order/order line item is considered acknowledged, and acknowledged orders do not show up in the <code>LMS_ORDER_REPORT</code> responses.
      *  </span>
      *
      * @return \DateTime
@@ -1529,7 +1257,7 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      * Indicates the time when the line item was marked as 'Shipped'. This value will only be visible to the user on either side of the order. An order can be marked as 'Shipped' by purchasing an eBay shipping label, providing shipment tracking in My eBay or through Selling Manager Pro, or programmatically by the seller through the <b>CompleteSale</b> call.
      *  <br><br>
      *  <span class="tablenote"><b>Note:</b>
-     *  This field does not appear in Merchant Data API's <b>OrderReport</b> responses, because once shipment tracking information is provided to the buyer (or marked as shipped), the order/order line item is considered acknowledged, and acknowledged orders do not show up in <b>OrderReport</b> responses.
+     *  This field does not appear in the Sell Feed API's <code>LMS_ORDER_REPORT</code> responses, because once shipment tracking information is provided to the buyer, the order/order line item is considered acknowledged, and acknowledged orders do not show up in the <code>LMS_ORDER_REPORT</code> responses.
      *  </span>
      *
      * @param \DateTime $shippedTime
@@ -1704,103 +1432,6 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     }
 
     /**
-     * Gets as listingCheckoutRedirectPreference
-     *
-     * This field is no longer applicable
-     *
-     * @return \Nogrod\eBaySDK\Trading\ListingCheckoutRedirectPreferenceType
-     */
-    public function getListingCheckoutRedirectPreference()
-    {
-        return $this->listingCheckoutRedirectPreference;
-    }
-
-    /**
-     * Sets a new listingCheckoutRedirectPreference
-     *
-     * This field is no longer applicable
-     *
-     * @param \Nogrod\eBaySDK\Trading\ListingCheckoutRedirectPreferenceType $listingCheckoutRedirectPreference
-     * @return self
-     */
-    public function setListingCheckoutRedirectPreference(\Nogrod\eBaySDK\Trading\ListingCheckoutRedirectPreferenceType $listingCheckoutRedirectPreference)
-    {
-        $this->listingCheckoutRedirectPreference = $listingCheckoutRedirectPreference;
-        return $this;
-    }
-
-    /**
-     * Adds as refund
-     *
-     * <span class="tablenote"><b>Note: </b> This container is only applicable for Half.com order refunds, and since the Half.com site has been shut down, this field is no longer applicable.
-     *  </span>
-     *
-     * @return self
-     * @param \Nogrod\eBaySDK\Trading\RefundType $refund
-     */
-    public function addToRefundArray(\Nogrod\eBaySDK\Trading\RefundType $refund)
-    {
-        $this->refundArray[] = $refund;
-        return $this;
-    }
-
-    /**
-     * isset refundArray
-     *
-     * <span class="tablenote"><b>Note: </b> This container is only applicable for Half.com order refunds, and since the Half.com site has been shut down, this field is no longer applicable.
-     *  </span>
-     *
-     * @param int|string $index
-     * @return bool
-     */
-    public function issetRefundArray($index)
-    {
-        return isset($this->refundArray[$index]);
-    }
-
-    /**
-     * unset refundArray
-     *
-     * <span class="tablenote"><b>Note: </b> This container is only applicable for Half.com order refunds, and since the Half.com site has been shut down, this field is no longer applicable.
-     *  </span>
-     *
-     * @param int|string $index
-     * @return void
-     */
-    public function unsetRefundArray($index)
-    {
-        unset($this->refundArray[$index]);
-    }
-
-    /**
-     * Gets as refundArray
-     *
-     * <span class="tablenote"><b>Note: </b> This container is only applicable for Half.com order refunds, and since the Half.com site has been shut down, this field is no longer applicable.
-     *  </span>
-     *
-     * @return \Nogrod\eBaySDK\Trading\RefundType[]
-     */
-    public function getRefundArray()
-    {
-        return $this->refundArray;
-    }
-
-    /**
-     * Sets a new refundArray
-     *
-     * <span class="tablenote"><b>Note: </b> This container is only applicable for Half.com order refunds, and since the Half.com site has been shut down, this field is no longer applicable.
-     *  </span>
-     *
-     * @param \Nogrod\eBaySDK\Trading\RefundType[] $refundArray
-     * @return self
-     */
-    public function setRefundArray(array $refundArray)
-    {
-        $this->refundArray = $refundArray;
-        return $this;
-    }
-
-    /**
      * Gets as transactionSiteID
      *
      * The site upon which the line item was purchased.
@@ -1855,144 +1486,6 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     public function setPlatform($platform)
     {
         $this->platform = $platform;
-        return $this;
-    }
-
-    /**
-     * Gets as cartID
-     *
-     * This field is no longer applicable as Shopping.com listings are no longer created or managed with eBay APIs.
-     *
-     * @return string
-     */
-    public function getCartID()
-    {
-        return $this->cartID;
-    }
-
-    /**
-     * Sets a new cartID
-     *
-     * This field is no longer applicable as Shopping.com listings are no longer created or managed with eBay APIs.
-     *
-     * @param string $cartID
-     * @return self
-     */
-    public function setCartID($cartID)
-    {
-        $this->cartID = $cartID;
-        return $this;
-    }
-
-    /**
-     * Gets as sellerContactBuyerByEmail
-     *
-     * This field is no longer applicable as Shopping.com listings are no longer created or managed with eBay APIs.
-     *
-     * @return bool
-     */
-    public function getSellerContactBuyerByEmail()
-    {
-        return $this->sellerContactBuyerByEmail;
-    }
-
-    /**
-     * Sets a new sellerContactBuyerByEmail
-     *
-     * This field is no longer applicable as Shopping.com listings are no longer created or managed with eBay APIs.
-     *
-     * @param bool $sellerContactBuyerByEmail
-     * @return self
-     */
-    public function setSellerContactBuyerByEmail($sellerContactBuyerByEmail)
-    {
-        $this->sellerContactBuyerByEmail = $sellerContactBuyerByEmail;
-        return $this;
-    }
-
-    /**
-     * Gets as payPalEmailAddress
-     *
-     * This field is deprecated.
-     *
-     * @return string
-     */
-    public function getPayPalEmailAddress()
-    {
-        return $this->payPalEmailAddress;
-    }
-
-    /**
-     * Sets a new payPalEmailAddress
-     *
-     * This field is deprecated.
-     *
-     * @param string $payPalEmailAddress
-     * @return self
-     */
-    public function setPayPalEmailAddress($payPalEmailAddress)
-    {
-        $this->payPalEmailAddress = $payPalEmailAddress;
-        return $this;
-    }
-
-    /**
-     * Gets as paisaPayID
-     *
-     * This field is deprecated.
-     *
-     * @return string
-     */
-    public function getPaisaPayID()
-    {
-        return $this->paisaPayID;
-    }
-
-    /**
-     * Sets a new paisaPayID
-     *
-     * This field is deprecated.
-     *
-     * @param string $paisaPayID
-     * @return self
-     */
-    public function setPaisaPayID($paisaPayID)
-    {
-        $this->paisaPayID = $paisaPayID;
-        return $this;
-    }
-
-    /**
-     * Gets as buyerGuaranteePrice
-     *
-     * <br>
-     *  The Buyer Guarantee price. This field is only applicable to the Australian site.
-     *  <br>
-     *  <span class="tablenote"><b>Note: </b> This field will stop being returned on January 31, 2024.
-     *  </span>
-     *
-     * @return \Nogrod\eBaySDK\Trading\AmountType
-     */
-    public function getBuyerGuaranteePrice()
-    {
-        return $this->buyerGuaranteePrice;
-    }
-
-    /**
-     * Sets a new buyerGuaranteePrice
-     *
-     * <br>
-     *  The Buyer Guarantee price. This field is only applicable to the Australian site.
-     *  <br>
-     *  <span class="tablenote"><b>Note: </b> This field will stop being returned on January 31, 2024.
-     *  </span>
-     *
-     * @param \Nogrod\eBaySDK\Trading\AmountType $buyerGuaranteePrice
-     * @return self
-     */
-    public function setBuyerGuaranteePrice(\Nogrod\eBaySDK\Trading\AmountType $buyerGuaranteePrice)
-    {
-        $this->buyerGuaranteePrice = $buyerGuaranteePrice;
         return $this;
     }
 
@@ -2228,7 +1721,7 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      * A unique identifier for an eBay order line item. This identifier is created as
      *  soon as there is a commitment to buy from the seller, or the buyer actually purchases the item using a 'Buy it Now' option.
      *  <br><br>
-     *  <b>For GetOrders, GetOrderTransactions, and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this field will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, order line item ID is only returned to the buyer or seller, and a dummy value of <code>10000000000000</code> will be returned to all third parties.
+     *  <b>For GetOrders and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this field will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, order line item ID is only returned to the buyer or seller, and a dummy value of <code>10000000000000</code> will be returned to all third parties.
      *  <br>
      *
      * @return string
@@ -2244,7 +1737,7 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      * A unique identifier for an eBay order line item. This identifier is created as
      *  soon as there is a commitment to buy from the seller, or the buyer actually purchases the item using a 'Buy it Now' option.
      *  <br><br>
-     *  <b>For GetOrders, GetOrderTransactions, and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this field will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, order line item ID is only returned to the buyer or seller, and a dummy value of <code>10000000000000</code> will be returned to all third parties.
+     *  <b>For GetOrders and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this field will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, order line item ID is only returned to the buyer or seller, and a dummy value of <code>10000000000000</code> will be returned to all third parties.
      *  <br>
      *
      * @param string $orderLineItemID
@@ -2285,36 +1778,6 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     }
 
     /**
-     * Gets as paymentHoldDetails
-     *
-     * This container consists of information related to the payment hold on the order line item, including the reason why the buyer's payment for the order line item is being held, the expected release date of the funds into the seller's account, and possible action(s) the seller can take to expedite the payout of funds into their account. This container is only returned if a payment hold has been placed on the order line item.
-     *  <br><br>
-     *  See <b>PaymentHoldReasonCodeType</b> for some details on why/when a seller's funds may be held, or visit the <a href="https://www.ebay.com/help/selling/getting-paid/getting-paid-items-youve-sold/pending-payments?id=4816">Pending payments</a> help topic for more information on eBay's payment hold policies.
-     *
-     * @return \Nogrod\eBaySDK\Trading\PaymentHoldDetailType
-     */
-    public function getPaymentHoldDetails()
-    {
-        return $this->paymentHoldDetails;
-    }
-
-    /**
-     * Sets a new paymentHoldDetails
-     *
-     * This container consists of information related to the payment hold on the order line item, including the reason why the buyer's payment for the order line item is being held, the expected release date of the funds into the seller's account, and possible action(s) the seller can take to expedite the payout of funds into their account. This container is only returned if a payment hold has been placed on the order line item.
-     *  <br><br>
-     *  See <b>PaymentHoldReasonCodeType</b> for some details on why/when a seller's funds may be held, or visit the <a href="https://www.ebay.com/help/selling/getting-paid/getting-paid-items-youve-sold/pending-payments?id=4816">Pending payments</a> help topic for more information on eBay's payment hold policies.
-     *
-     * @param \Nogrod\eBaySDK\Trading\PaymentHoldDetailType $paymentHoldDetails
-     * @return self
-     */
-    public function setPaymentHoldDetails(\Nogrod\eBaySDK\Trading\PaymentHoldDetailType $paymentHoldDetails)
-    {
-        $this->paymentHoldDetails = $paymentHoldDetails;
-        return $this;
-    }
-
-    /**
      * Gets as sellerDiscounts
      *
      * A container consisting of name and ID of the seller's discount campaign, as well as the discount amount that is being applied to the order line item. This container is only returned if the order line item is eligible for seller discounts.
@@ -2337,58 +1800,6 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     public function setSellerDiscounts(\Nogrod\eBaySDK\Trading\SellerDiscountsType $sellerDiscounts)
     {
         $this->sellerDiscounts = $sellerDiscounts;
-        return $this;
-    }
-
-    /**
-     * Gets as refundAmount
-     *
-     * This field is deprecated.
-     *
-     * @return \Nogrod\eBaySDK\Trading\AmountType
-     */
-    public function getRefundAmount()
-    {
-        return $this->refundAmount;
-    }
-
-    /**
-     * Sets a new refundAmount
-     *
-     * This field is deprecated.
-     *
-     * @param \Nogrod\eBaySDK\Trading\AmountType $refundAmount
-     * @return self
-     */
-    public function setRefundAmount(\Nogrod\eBaySDK\Trading\AmountType $refundAmount)
-    {
-        $this->refundAmount = $refundAmount;
-        return $this;
-    }
-
-    /**
-     * Gets as refundStatus
-     *
-     * This field is deprecated.
-     *
-     * @return string
-     */
-    public function getRefundStatus()
-    {
-        return $this->refundStatus;
-    }
-
-    /**
-     * Sets a new refundStatus
-     *
-     * This field is deprecated.
-     *
-     * @param string $refundStatus
-     * @return self
-     */
-    public function setRefundStatus($refundStatus)
-    {
-        $this->refundStatus = $refundStatus;
         return $this;
     }
 
@@ -2507,34 +1918,6 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     }
 
     /**
-     * Gets as unpaidItem
-     *
-     * <br>
-     *  <span class="tablenote"><strong>Note:</strong> This container is deprecated (Unpaid Item cases are no longer supported). This container will stop being returned on January 31, 2024.</span>
-     *
-     * @return \Nogrod\eBaySDK\Trading\UnpaidItemType
-     */
-    public function getUnpaidItem()
-    {
-        return $this->unpaidItem;
-    }
-
-    /**
-     * Sets a new unpaidItem
-     *
-     * <br>
-     *  <span class="tablenote"><strong>Note:</strong> This container is deprecated (Unpaid Item cases are no longer supported). This container will stop being returned on January 31, 2024.</span>
-     *
-     * @param \Nogrod\eBaySDK\Trading\UnpaidItemType $unpaidItem
-     * @return self
-     */
-    public function setUnpaidItem(\Nogrod\eBaySDK\Trading\UnpaidItemType $unpaidItem)
-    {
-        $this->unpaidItem = $unpaidItem;
-        return $this;
-    }
-
-    /**
      * Gets as intangibleItem
      *
      * This flag indicates whether or not the order line item is an intangible good, such as an MP3 track or a mobile phone ringtone.
@@ -2564,10 +1947,6 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      * Gets as monetaryDetails
      *
      * Contains information about each monetary transaction that occurs for the order line item, including order payment, any refund, a credit, etc. Both the payer and payee are shown in this container.
-     *  <br/><br/>
-     *  <span class="tablenote">
-     *  <strong>Note:</strong> <strong>MonetaryDetails</strong> can already be used instead of the older <strong>ExternalTransaction</strong> container, and the <strong>ExternalTransaction</strong> container may eventually get deprecated. Due to this possibility, you are encouraged to start using <strong>MonetaryDetails</strong> as soon as it is convenient.
-     *  </span>
      *
      * @return \Nogrod\eBaySDK\Trading\PaymentsInformationType
      */
@@ -2580,10 +1959,6 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      * Sets a new monetaryDetails
      *
      * Contains information about each monetary transaction that occurs for the order line item, including order payment, any refund, a credit, etc. Both the payer and payee are shown in this container.
-     *  <br/><br/>
-     *  <span class="tablenote">
-     *  <strong>Note:</strong> <strong>MonetaryDetails</strong> can already be used instead of the older <strong>ExternalTransaction</strong> container, and the <strong>ExternalTransaction</strong> container may eventually get deprecated. Due to this possibility, you are encouraged to start using <strong>MonetaryDetails</strong> as soon as it is convenient.
-     *  </span>
      *
      * @param \Nogrod\eBaySDK\Trading\PaymentsInformationType $monetaryDetails
      * @return self
@@ -2717,36 +2092,6 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     }
 
     /**
-     * Gets as shippingConvenienceCharge
-     *
-     * <span class="tablenote"><strong>Note:</strong>
-     *  This field is no longer applicable/used. It was previously used for eBay Now and 'eBay On Demand Delivery' orders - two features that have been deprecated.
-     *  </span>
-     *
-     * @return \Nogrod\eBaySDK\Trading\AmountType
-     */
-    public function getShippingConvenienceCharge()
-    {
-        return $this->shippingConvenienceCharge;
-    }
-
-    /**
-     * Sets a new shippingConvenienceCharge
-     *
-     * <span class="tablenote"><strong>Note:</strong>
-     *  This field is no longer applicable/used. It was previously used for eBay Now and 'eBay On Demand Delivery' orders - two features that have been deprecated.
-     *  </span>
-     *
-     * @param \Nogrod\eBaySDK\Trading\AmountType $shippingConvenienceCharge
-     * @return self
-     */
-    public function setShippingConvenienceCharge(\Nogrod\eBaySDK\Trading\AmountType $shippingConvenienceCharge)
-    {
-        $this->shippingConvenienceCharge = $shippingConvenienceCharge;
-        return $this;
-    }
-
-    /**
      * Gets as logisticsPlanType
      *
      * This field will be returned at the order line item level only if the buyer purchased a digital gift card, which is delivered by email, or if the buyer purchased an item that is enabled with the 'Click and Collect' feature.
@@ -2875,7 +2220,7 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      *  <br>
      *  <span class="tablenote"><b>Note: </b> <b>ExtendedOrderID</b> was first created when eBay changed the format of Order IDs back in June 2019. For a short period, the <b>OrderID</b> field showed the old Order ID format and the <b>ExtendedOrderID</b> field showed the new Order ID format. For paid orders, both <b>OrderID</b> and <b>ExtendedOrderID</b> now show the same Order ID value.
      *  <br>
-     *  <b>For GetOrders, GetOrderTransactions, and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this field will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, the correct Order ID is returned to the buyer or seller, but a dummy Order ID value of <code>1000000000000</code> will be returned to all third parties.
+     *  <b>For GetOrders and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this field will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, the correct Order ID is returned to the buyer or seller, but a dummy Order ID value of <code>1000000000000</code> will be returned to all third parties.
      *  <br>
      *
      * @return string
@@ -2892,7 +2237,7 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      *  <br>
      *  <span class="tablenote"><b>Note: </b> <b>ExtendedOrderID</b> was first created when eBay changed the format of Order IDs back in June 2019. For a short period, the <b>OrderID</b> field showed the old Order ID format and the <b>ExtendedOrderID</b> field showed the new Order ID format. For paid orders, both <b>OrderID</b> and <b>ExtendedOrderID</b> now show the same Order ID value.
      *  <br>
-     *  <b>For GetOrders, GetOrderTransactions, and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this field will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, the correct Order ID is returned to the buyer or seller, but a dummy Order ID value of <code>1000000000000</code> will be returned to all third parties.
+     *  <b>For GetOrders and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this field will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, the correct Order ID is returned to the buyer or seller, but a dummy Order ID value of <code>1000000000000</code> will be returned to all third parties.
      *  <br>
      *
      * @param string $extendedOrderID
@@ -3307,14 +2652,6 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}VATPercent", $value);
         }
-        $value = $this->getExternalTransaction();
-        if (null !== $value && !empty($this->getExternalTransaction())) {
-            $writer->write(array_map(function ($v) {return ["ExternalTransaction" => $v];}, $value));
-        }
-        $value = $this->getSellingManagerProductDetails();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SellingManagerProductDetails", $value);
-        }
         $value = $this->getShippingServiceSelected();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippingServiceSelected", $value);
@@ -3322,10 +2659,6 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
         $value = $this->getBuyerMessage();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BuyerMessage", $value);
-        }
-        $value = $this->getDutchAuctionBid();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DutchAuctionBid", $value);
         }
         $value = $this->getBuyerPaidStatus();
         if (null !== $value) {
@@ -3363,14 +2696,6 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}FinalValueFee", $value);
         }
-        $value = $this->getListingCheckoutRedirectPreference();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ListingCheckoutRedirectPreference", $value);
-        }
-        $value = $this->getRefundArray();
-        if (null !== $value && !empty($this->getRefundArray())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}RefundArray", array_map(function ($v) {return ["Refund" => $v];}, $value));
-        }
         $value = $this->getTransactionSiteID();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TransactionSiteID", $value);
@@ -3378,27 +2703,6 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
         $value = $this->getPlatform();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Platform", $value);
-        }
-        $value = $this->getCartID();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CartID", $value);
-        }
-        $value = $this->getSellerContactBuyerByEmail();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SellerContactBuyerByEmail", $value);
-        }
-        $value = $this->getPayPalEmailAddress();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PayPalEmailAddress", $value);
-        }
-        $value = $this->getPaisaPayID();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PaisaPayID", $value);
-        }
-        $value = $this->getBuyerGuaranteePrice();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BuyerGuaranteePrice", $value);
         }
         $value = $this->getVariation();
         if (null !== $value) {
@@ -3437,21 +2741,9 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}eBayPaymentID", $value);
         }
-        $value = $this->getPaymentHoldDetails();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PaymentHoldDetails", $value);
-        }
         $value = $this->getSellerDiscounts();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SellerDiscounts", $value);
-        }
-        $value = $this->getRefundAmount();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}RefundAmount", $value);
-        }
-        $value = $this->getRefundStatus();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}RefundStatus", $value);
         }
         $value = $this->getCodiceFiscale();
         if (null !== $value) {
@@ -3470,10 +2762,6 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}InvoiceSentTime", $value);
         }
-        $value = $this->getUnpaidItem();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}UnpaidItem", $value);
-        }
         $value = $this->getIntangibleItem();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;
         if (null !== $value) {
@@ -3490,10 +2778,6 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
         $value = $this->getPickupMethodSelected();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PickupMethodSelected", $value);
-        }
-        $value = $this->getShippingConvenienceCharge();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippingConvenienceCharge", $value);
         }
         $value = $this->getLogisticsPlanType();
         if (null !== $value) {
@@ -3636,14 +2920,6 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
         if (null !== $value) {
             $this->setVATPercent($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExternalTransaction', true);
-        if (null !== $value && !empty($value)) {
-            $this->setExternalTransaction(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\ExternalTransactionType::fromKeyValue($v);}, $value));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellingManagerProductDetails');
-        if (null !== $value) {
-            $this->setSellingManagerProductDetails(\Nogrod\eBaySDK\Trading\SellingManagerProductDetailsType::fromKeyValue($value));
-        }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingServiceSelected');
         if (null !== $value) {
             $this->setShippingServiceSelected(\Nogrod\eBaySDK\Trading\ShippingServiceOptionsType::fromKeyValue($value));
@@ -3651,10 +2927,6 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BuyerMessage');
         if (null !== $value) {
             $this->setBuyerMessage($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DutchAuctionBid');
-        if (null !== $value) {
-            $this->setDutchAuctionBid(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BuyerPaidStatus');
         if (null !== $value) {
@@ -3692,14 +2964,6 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
         if (null !== $value) {
             $this->setFinalValueFee(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ListingCheckoutRedirectPreference');
-        if (null !== $value) {
-            $this->setListingCheckoutRedirectPreference(\Nogrod\eBaySDK\Trading\ListingCheckoutRedirectPreferenceType::fromKeyValue($value));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RefundArray', true);
-        if (null !== $value && !empty($value)) {
-            $this->setRefundArray(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\RefundType::fromKeyValue($v);}, $value));
-        }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TransactionSiteID');
         if (null !== $value) {
             $this->setTransactionSiteID($value);
@@ -3707,26 +2971,6 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Platform');
         if (null !== $value) {
             $this->setPlatform($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CartID');
-        if (null !== $value) {
-            $this->setCartID($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerContactBuyerByEmail');
-        if (null !== $value) {
-            $this->setSellerContactBuyerByEmail($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PayPalEmailAddress');
-        if (null !== $value) {
-            $this->setPayPalEmailAddress($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaisaPayID');
-        if (null !== $value) {
-            $this->setPaisaPayID($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BuyerGuaranteePrice');
-        if (null !== $value) {
-            $this->setBuyerGuaranteePrice(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Variation');
         if (null !== $value) {
@@ -3764,21 +3008,9 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
         if (null !== $value) {
             $this->setEBayPaymentID($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaymentHoldDetails');
-        if (null !== $value) {
-            $this->setPaymentHoldDetails(\Nogrod\eBaySDK\Trading\PaymentHoldDetailType::fromKeyValue($value));
-        }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerDiscounts');
         if (null !== $value) {
             $this->setSellerDiscounts(\Nogrod\eBaySDK\Trading\SellerDiscountsType::fromKeyValue($value));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RefundAmount');
-        if (null !== $value) {
-            $this->setRefundAmount(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RefundStatus');
-        if (null !== $value) {
-            $this->setRefundStatus($value);
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CodiceFiscale');
         if (null !== $value) {
@@ -3796,10 +3028,6 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
         if (null !== $value) {
             $this->setInvoiceSentTime(new \DateTime($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UnpaidItem');
-        if (null !== $value) {
-            $this->setUnpaidItem(\Nogrod\eBaySDK\Trading\UnpaidItemType::fromKeyValue($value));
-        }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}IntangibleItem');
         if (null !== $value) {
             $this->setIntangibleItem($value);
@@ -3815,10 +3043,6 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PickupMethodSelected');
         if (null !== $value) {
             $this->setPickupMethodSelected(\Nogrod\eBaySDK\Trading\PickupMethodSelectedType::fromKeyValue($value));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingConvenienceCharge');
-        if (null !== $value) {
-            $this->setShippingConvenienceCharge(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LogisticsPlanType');
         if (null !== $value) {

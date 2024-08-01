@@ -92,7 +92,7 @@ class VariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
      *  <br> <br>
      *  <b>For GetSellerTransactions:</b> See <b>Item.Quantity</b> instead.<br>
      *  <br>
-     *  See the <a href="https://developer.ebay.com/Devzone/guides/features-guide/default.html#development/Variations-Updating.html">eBay Features Guide</a>
+     *  See the <a href="https://developer.ebay.com/api-docs/user-guides/static/trading-user-guide/update-variations.html" target="_blank">Trading API User Guide</a>
      *  for more details about setting and modifying a variation's quantity.
      *  <br><br>
      *  <span class="tablenote"><b>Note:</b>
@@ -133,16 +133,6 @@ class VariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
      * @var \Nogrod\eBaySDK\Trading\NameValueListType[] $variationSpecifics
      */
     private $variationSpecifics = null;
-
-    /**
-     * Quantity of items in the seller's inventory for this
-     *  Selling Manager product.
-     *  This is not the same as the quantity available in a listed item.
-     *  Required when a Selling Manager product defines variations.
-     *
-     * @var int $unitsAvailable
-     */
-    private $unitsAvailable = null;
 
     /**
      * Contains the variation's quantity sold. Always returned when variations are present.
@@ -246,10 +236,6 @@ class VariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
     /**
      * This container is used to provide one or more product identifiers for a product variation within a multiple-variation, fixed-price listing. The same product identifier type(s) must be used for all product variations within the listing. For instance, if one product variation uses ISBNs, all product variations must use ISBN values.
      *  <br>
-     *  <br>
-     *  <span class="tablenote"><b>Note:</b>
-     *  Currently, the <b>EAN</b>, <b>ISBN</b>, or <b>UPC</b> fields are used to specify a Global Trade Item Number (GTIN), and the <b>GetCategoryFeatures</b> call is used to see if particular product identifier types are supported/required. The <b>ProductReferenceID</b> field can only be used to specify an ePID for an eBay Catalog product that is part of the Product-Based Shopping Experience mandate. For more information about PBSE, see the <a href="https://developer.ebay.com/pbse/" target="_blank">Product-Based Shopping Experience</a> page.
-     *  </span>
      *  <br>
      *  When you include the <b>VariationProductListingDetails</b> container in a call, you must specify at least one GTIN or ePID. If an ePID is provided, a matching eBay catalog product must exist for the value that is passed in.
      *  <br>
@@ -420,7 +406,7 @@ class VariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
      *  <br> <br>
      *  <b>For GetSellerTransactions:</b> See <b>Item.Quantity</b> instead.<br>
      *  <br>
-     *  See the <a href="https://developer.ebay.com/Devzone/guides/features-guide/default.html#development/Variations-Updating.html">eBay Features Guide</a>
+     *  See the <a href="https://developer.ebay.com/api-docs/user-guides/static/trading-user-guide/update-variations.html" target="_blank">Trading API User Guide</a>
      *  for more details about setting and modifying a variation's quantity.
      *  <br><br>
      *  <span class="tablenote"><b>Note:</b>
@@ -474,7 +460,7 @@ class VariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
      *  <br> <br>
      *  <b>For GetSellerTransactions:</b> See <b>Item.Quantity</b> instead.<br>
      *  <br>
-     *  See the <a href="https://developer.ebay.com/Devzone/guides/features-guide/default.html#development/Variations-Updating.html">eBay Features Guide</a>
+     *  See the <a href="https://developer.ebay.com/api-docs/user-guides/static/trading-user-guide/update-variations.html" target="_blank">Trading API User Guide</a>
      *  for more details about setting and modifying a variation's quantity.
      *  <br><br>
      *  <span class="tablenote"><b>Note:</b>
@@ -661,38 +647,6 @@ class VariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
     public function setVariationSpecifics(array $variationSpecifics)
     {
         $this->variationSpecifics = $variationSpecifics;
-        return $this;
-    }
-
-    /**
-     * Gets as unitsAvailable
-     *
-     * Quantity of items in the seller's inventory for this
-     *  Selling Manager product.
-     *  This is not the same as the quantity available in a listed item.
-     *  Required when a Selling Manager product defines variations.
-     *
-     * @return int
-     */
-    public function getUnitsAvailable()
-    {
-        return $this->unitsAvailable;
-    }
-
-    /**
-     * Sets a new unitsAvailable
-     *
-     * Quantity of items in the seller's inventory for this
-     *  Selling Manager product.
-     *  This is not the same as the quantity available in a listed item.
-     *  Required when a Selling Manager product defines variations.
-     *
-     * @param int $unitsAvailable
-     * @return self
-     */
-    public function setUnitsAvailable($unitsAvailable)
-    {
-        $this->unitsAvailable = $unitsAvailable;
         return $this;
     }
 
@@ -984,10 +938,6 @@ class VariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
      * This container is used to provide one or more product identifiers for a product variation within a multiple-variation, fixed-price listing. The same product identifier type(s) must be used for all product variations within the listing. For instance, if one product variation uses ISBNs, all product variations must use ISBN values.
      *  <br>
      *  <br>
-     *  <span class="tablenote"><b>Note:</b>
-     *  Currently, the <b>EAN</b>, <b>ISBN</b>, or <b>UPC</b> fields are used to specify a Global Trade Item Number (GTIN), and the <b>GetCategoryFeatures</b> call is used to see if particular product identifier types are supported/required. The <b>ProductReferenceID</b> field can only be used to specify an ePID for an eBay Catalog product that is part of the Product-Based Shopping Experience mandate. For more information about PBSE, see the <a href="https://developer.ebay.com/pbse/" target="_blank">Product-Based Shopping Experience</a> page.
-     *  </span>
-     *  <br>
      *  When you include the <b>VariationProductListingDetails</b> container in a call, you must specify at least one GTIN or ePID. If an ePID is provided, a matching eBay catalog product must exist for the value that is passed in.
      *  <br>
      *  <br>
@@ -1007,10 +957,6 @@ class VariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
      *
      * This container is used to provide one or more product identifiers for a product variation within a multiple-variation, fixed-price listing. The same product identifier type(s) must be used for all product variations within the listing. For instance, if one product variation uses ISBNs, all product variations must use ISBN values.
      *  <br>
-     *  <br>
-     *  <span class="tablenote"><b>Note:</b>
-     *  Currently, the <b>EAN</b>, <b>ISBN</b>, or <b>UPC</b> fields are used to specify a Global Trade Item Number (GTIN), and the <b>GetCategoryFeatures</b> call is used to see if particular product identifier types are supported/required. The <b>ProductReferenceID</b> field can only be used to specify an ePID for an eBay Catalog product that is part of the Product-Based Shopping Experience mandate. For more information about PBSE, see the <a href="https://developer.ebay.com/pbse/" target="_blank">Product-Based Shopping Experience</a> page.
-     *  </span>
      *  <br>
      *  When you include the <b>VariationProductListingDetails</b> container in a call, you must specify at least one GTIN or ePID. If an ePID is provided, a matching eBay catalog product must exist for the value that is passed in.
      *  <br>
@@ -1072,10 +1018,6 @@ class VariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
         $value = $this->getVariationSpecifics();
         if (null !== $value && !empty($this->getVariationSpecifics())) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}VariationSpecifics", array_map(function ($v) {return ["NameValueList" => $v];}, $value));
-        }
-        $value = $this->getUnitsAvailable();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}UnitsAvailable", $value);
         }
         $value = $this->getSellingStatus();
         if (null !== $value) {
@@ -1145,10 +1087,6 @@ class VariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}VariationSpecifics', true);
         if (null !== $value && !empty($value)) {
             $this->setVariationSpecifics(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\NameValueListType::fromKeyValue($v);}, $value));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UnitsAvailable');
-        if (null !== $value) {
-            $this->setUnitsAvailable($value);
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellingStatus');
         if (null !== $value) {

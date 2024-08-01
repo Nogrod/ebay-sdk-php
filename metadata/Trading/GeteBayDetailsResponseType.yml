@@ -185,21 +185,6 @@ Nogrod\eBaySDK\Trading\GeteBayDetailsResponseType:
                 entry_name: ItemSpecificDetails
                 namespace: 'urn:ebay:apis:eBLBaseComponents'
             type: array<Nogrod\eBaySDK\Trading\ItemSpecificDetailsType>
-        unitOfMeasurementDetails:
-            expose: true
-            access_type: public_method
-            serialized_name: UnitOfMeasurementDetails
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getUnitOfMeasurementDetails
-                setter: setUnitOfMeasurementDetails
-            xml_list:
-                inline: true
-                entry_name: UnitOfMeasurementDetails
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            type: array<Nogrod\eBaySDK\Trading\UnitOfMeasurementDetailsType>
         regionOfOriginDetails:
             expose: true
             access_type: public_method
@@ -255,17 +240,6 @@ Nogrod\eBaySDK\Trading\GeteBayDetailsResponseType:
             accessor:
                 getter: getReturnPolicyDetails
                 setter: setReturnPolicyDetails
-            type: Nogrod\eBaySDK\Trading\ReturnPolicyDetailsType
-        internationalReturnPolicyDetails:
-            expose: true
-            access_type: public_method
-            serialized_name: InternationalReturnPolicyDetails
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getInternationalReturnPolicyDetails
-                setter: setInternationalReturnPolicyDetails
             type: Nogrod\eBaySDK\Trading\ReturnPolicyDetailsType
         listingStartPriceDetails:
             expose: true

@@ -64,13 +64,6 @@ class SiteBuyerRequirementDetailsType implements \Sabre\Xml\XmlSerializable, \Sa
     private $shipToRegistrationCountry = null;
 
     /**
-     * The Verified User Buyer Requirement has been deprecated, so this field is no longer applicable.
-     *
-     * @var \Nogrod\eBaySDK\Trading\VerifiedUserRequirementsDetailsType $verifiedUserRequirements
-     */
-    private $verifiedUserRequirements = null;
-
-    /**
      * Returns the latest version number for this field. The version can be
      *  used to determine if and when to refresh cached client data.
      *
@@ -298,32 +291,6 @@ class SiteBuyerRequirementDetailsType implements \Sabre\Xml\XmlSerializable, \Sa
     }
 
     /**
-     * Gets as verifiedUserRequirements
-     *
-     * The Verified User Buyer Requirement has been deprecated, so this field is no longer applicable.
-     *
-     * @return \Nogrod\eBaySDK\Trading\VerifiedUserRequirementsDetailsType
-     */
-    public function getVerifiedUserRequirements()
-    {
-        return $this->verifiedUserRequirements;
-    }
-
-    /**
-     * Sets a new verifiedUserRequirements
-     *
-     * The Verified User Buyer Requirement has been deprecated, so this field is no longer applicable.
-     *
-     * @param \Nogrod\eBaySDK\Trading\VerifiedUserRequirementsDetailsType $verifiedUserRequirements
-     * @return self
-     */
-    public function setVerifiedUserRequirements(\Nogrod\eBaySDK\Trading\VerifiedUserRequirementsDetailsType $verifiedUserRequirements)
-    {
-        $this->verifiedUserRequirements = $verifiedUserRequirements;
-        return $this;
-    }
-
-    /**
      * Gets as detailVersion
      *
      * Returns the latest version number for this field. The version can be
@@ -410,10 +377,6 @@ class SiteBuyerRequirementDetailsType implements \Sabre\Xml\XmlSerializable, \Sa
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShipToRegistrationCountry", $value);
         }
-        $value = $this->getVerifiedUserRequirements();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}VerifiedUserRequirements", $value);
-        }
         $value = $this->getDetailVersion();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DetailVersion", $value);
@@ -461,10 +424,6 @@ class SiteBuyerRequirementDetailsType implements \Sabre\Xml\XmlSerializable, \Sa
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShipToRegistrationCountry');
         if (null !== $value) {
             $this->setShipToRegistrationCountry($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}VerifiedUserRequirements');
-        if (null !== $value) {
-            $this->setVerifiedUserRequirements(\Nogrod\eBaySDK\Trading\VerifiedUserRequirementsDetailsType::fromKeyValue($value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DetailVersion');
         if (null !== $value) {

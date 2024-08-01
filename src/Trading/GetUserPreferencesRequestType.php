@@ -28,13 +28,6 @@ class GetUserPreferencesRequestType extends AbstractRequestType
     private $showCombinedPaymentPreferences = null;
 
     /**
-     * This field is deprecated.
-     *
-     * @var bool $showCrossPromotionPreferences
-     */
-    private $showCrossPromotionPreferences = null;
-
-    /**
      * If included and set to <code>true</code>, the seller's payment preferences are returned in the response.
      *
      * @var bool $showSellerPaymentPreferences
@@ -54,13 +47,6 @@ class GetUserPreferencesRequestType extends AbstractRequestType
      * @var bool $showSellerFavoriteItemPreferences
      */
     private $showSellerFavoriteItemPreferences = null;
-
-    /**
-     * This field is deprecated.
-     *
-     * @var bool $showProStoresPreferences
-     */
-    private $showProStoresPreferences = null;
 
     /**
      * If included and set to <code>true</code>, the seller's preference for sending an email to the buyer with the shipping tracking number is returned in the response.
@@ -243,32 +229,6 @@ class GetUserPreferencesRequestType extends AbstractRequestType
     }
 
     /**
-     * Gets as showCrossPromotionPreferences
-     *
-     * This field is deprecated.
-     *
-     * @return bool
-     */
-    public function getShowCrossPromotionPreferences()
-    {
-        return $this->showCrossPromotionPreferences;
-    }
-
-    /**
-     * Sets a new showCrossPromotionPreferences
-     *
-     * This field is deprecated.
-     *
-     * @param bool $showCrossPromotionPreferences
-     * @return self
-     */
-    public function setShowCrossPromotionPreferences($showCrossPromotionPreferences)
-    {
-        $this->showCrossPromotionPreferences = $showCrossPromotionPreferences;
-        return $this;
-    }
-
-    /**
      * Gets as showSellerPaymentPreferences
      *
      * If included and set to <code>true</code>, the seller's payment preferences are returned in the response.
@@ -343,32 +303,6 @@ class GetUserPreferencesRequestType extends AbstractRequestType
     public function setShowSellerFavoriteItemPreferences($showSellerFavoriteItemPreferences)
     {
         $this->showSellerFavoriteItemPreferences = $showSellerFavoriteItemPreferences;
-        return $this;
-    }
-
-    /**
-     * Gets as showProStoresPreferences
-     *
-     * This field is deprecated.
-     *
-     * @return bool
-     */
-    public function getShowProStoresPreferences()
-    {
-        return $this->showProStoresPreferences;
-    }
-
-    /**
-     * Sets a new showProStoresPreferences
-     *
-     * This field is deprecated.
-     *
-     * @param bool $showProStoresPreferences
-     * @return self
-     */
-    public function setShowProStoresPreferences($showProStoresPreferences)
-    {
-        $this->showProStoresPreferences = $showProStoresPreferences;
         return $this;
     }
 
@@ -817,11 +751,6 @@ class GetUserPreferencesRequestType extends AbstractRequestType
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShowCombinedPaymentPreferences", $value);
         }
-        $value = $this->getShowCrossPromotionPreferences();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShowCrossPromotionPreferences", $value);
-        }
         $value = $this->getShowSellerPaymentPreferences();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;
         if (null !== $value) {
@@ -836,11 +765,6 @@ class GetUserPreferencesRequestType extends AbstractRequestType
         $value = null !== $value ? ($value ? 'true' : 'false') : null;
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShowSellerFavoriteItemPreferences", $value);
-        }
-        $value = $this->getShowProStoresPreferences();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShowProStoresPreferences", $value);
         }
         $value = $this->getShowEmailShipmentTrackingNumberPreference();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;
@@ -942,10 +866,6 @@ class GetUserPreferencesRequestType extends AbstractRequestType
         if (null !== $value) {
             $this->setShowCombinedPaymentPreferences($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShowCrossPromotionPreferences');
-        if (null !== $value) {
-            $this->setShowCrossPromotionPreferences($value);
-        }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShowSellerPaymentPreferences');
         if (null !== $value) {
             $this->setShowSellerPaymentPreferences($value);
@@ -957,10 +877,6 @@ class GetUserPreferencesRequestType extends AbstractRequestType
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShowSellerFavoriteItemPreferences');
         if (null !== $value) {
             $this->setShowSellerFavoriteItemPreferences($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShowProStoresPreferences');
-        if (null !== $value) {
-            $this->setShowProStoresPreferences($value);
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShowEmailShipmentTrackingNumberPreference');
         if (null !== $value) {

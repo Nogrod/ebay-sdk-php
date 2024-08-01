@@ -27,17 +27,6 @@ Nogrod\eBaySDK\Trading\SellingSummaryType:
                 getter: getAuctionSellingCount
                 setter: setAuctionSellingCount
             type: int
-        auctionBidCount:
-            expose: true
-            access_type: public_method
-            serialized_name: AuctionBidCount
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getAuctionBidCount
-                setter: setAuctionBidCount
-            type: int
         totalAuctionSellingValue:
             expose: true
             access_type: public_method

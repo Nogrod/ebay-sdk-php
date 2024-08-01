@@ -152,17 +152,6 @@ Nogrod\eBaySDK\Trading\AccountSummaryType:
                 getter: getCurrentBalance
                 setter: setCurrentBalance
             type: Nogrod\eBaySDK\Trading\AmountType
-        email:
-            expose: true
-            access_type: public_method
-            serialized_name: Email
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getEmail
-                setter: setEmail
-            type: string
         invoiceBalance:
             expose: true
             access_type: public_method

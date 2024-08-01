@@ -141,17 +141,6 @@ Nogrod\eBaySDK\Trading\ProductListingDetailsType:
                 getter: getBrandMPN
                 setter: setBrandMPN
             type: Nogrod\eBaySDK\Trading\BrandMPNType
-        ticketListingDetails:
-            expose: true
-            access_type: public_method
-            serialized_name: TicketListingDetails
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getTicketListingDetails
-                setter: setTicketListingDetails
-            type: Nogrod\eBaySDK\Trading\TicketListingDetailsType
         useFirstProduct:
             expose: true
             access_type: public_method

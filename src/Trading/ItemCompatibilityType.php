@@ -32,9 +32,9 @@ class ItemCompatibilityType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
      *  item is listed. For example, when listing in a Parts & Accessories
      *  category, where the applications are vehicles, the allowed names might include
      *  Year, Make, and Model, and the values would correspond to specific vehicles in
-     *  eBay's catalog. For details and examples, see the
-     *  <a href="https://developer.ebay.com/DevZone/guides/features-guide/default.html#development/CompatibleParts-Listing.html#SpecifyingPartsCompatibilityManually"
-     *  target="_blank">Features Guide</a>.
+     *  eBay's catalog. For details and examples, see
+     *  <a href="https://developer.ebay.com/api-docs/user-guides/static/trading-user-guide/manually-specify-compatibility.html"
+     *  target="_blank">Specify parts compatibility manually</a>.
      *  <br><br>
      *  The eBay Germany, UK, France, Italy, Spain, and Australia sites support the use of <em>K type</em> vehicle numbers to specify vehicle
      *  parts compatibility. To use a K type number, set the <b>Name</b> field to "<code>KType</code>"
@@ -114,9 +114,9 @@ class ItemCompatibilityType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
      *  item is listed. For example, when listing in a Parts & Accessories
      *  category, where the applications are vehicles, the allowed names might include
      *  Year, Make, and Model, and the values would correspond to specific vehicles in
-     *  eBay's catalog. For details and examples, see the
-     *  <a href="https://developer.ebay.com/DevZone/guides/features-guide/default.html#development/CompatibleParts-Listing.html#SpecifyingPartsCompatibilityManually"
-     *  target="_blank">Features Guide</a>.
+     *  eBay's catalog. For details and examples, see
+     *  <a href="https://developer.ebay.com/api-docs/user-guides/static/trading-user-guide/manually-specify-compatibility.html"
+     *  target="_blank">Specify parts compatibility manually</a>.
      *  <br><br>
      *  The eBay Germany, UK, France, Italy, Spain, and Australia sites support the use of <em>K type</em> vehicle numbers to specify vehicle
      *  parts compatibility. To use a K type number, set the <b>Name</b> field to "<code>KType</code>"
@@ -151,9 +151,9 @@ class ItemCompatibilityType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
      *  item is listed. For example, when listing in a Parts & Accessories
      *  category, where the applications are vehicles, the allowed names might include
      *  Year, Make, and Model, and the values would correspond to specific vehicles in
-     *  eBay's catalog. For details and examples, see the
-     *  <a href="https://developer.ebay.com/DevZone/guides/features-guide/default.html#development/CompatibleParts-Listing.html#SpecifyingPartsCompatibilityManually"
-     *  target="_blank">Features Guide</a>.
+     *  eBay's catalog. For details and examples, see
+     *  <a href="https://developer.ebay.com/api-docs/user-guides/static/trading-user-guide/manually-specify-compatibility.html"
+     *  target="_blank">Specify parts compatibility manually</a>.
      *  <br><br>
      *  The eBay Germany, UK, France, Italy, Spain, and Australia sites support the use of <em>K type</em> vehicle numbers to specify vehicle
      *  parts compatibility. To use a K type number, set the <b>Name</b> field to "<code>KType</code>"
@@ -187,9 +187,9 @@ class ItemCompatibilityType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
      *  item is listed. For example, when listing in a Parts & Accessories
      *  category, where the applications are vehicles, the allowed names might include
      *  Year, Make, and Model, and the values would correspond to specific vehicles in
-     *  eBay's catalog. For details and examples, see the
-     *  <a href="https://developer.ebay.com/DevZone/guides/features-guide/default.html#development/CompatibleParts-Listing.html#SpecifyingPartsCompatibilityManually"
-     *  target="_blank">Features Guide</a>.
+     *  eBay's catalog. For details and examples, see
+     *  <a href="https://developer.ebay.com/api-docs/user-guides/static/trading-user-guide/manually-specify-compatibility.html"
+     *  target="_blank">Specify parts compatibility manually</a>.
      *  <br><br>
      *  The eBay Germany, UK, France, Italy, Spain, and Australia sites support the use of <em>K type</em> vehicle numbers to specify vehicle
      *  parts compatibility. To use a K type number, set the <b>Name</b> field to "<code>KType</code>"
@@ -223,9 +223,9 @@ class ItemCompatibilityType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
      *  item is listed. For example, when listing in a Parts & Accessories
      *  category, where the applications are vehicles, the allowed names might include
      *  Year, Make, and Model, and the values would correspond to specific vehicles in
-     *  eBay's catalog. For details and examples, see the
-     *  <a href="https://developer.ebay.com/DevZone/guides/features-guide/default.html#development/CompatibleParts-Listing.html#SpecifyingPartsCompatibilityManually"
-     *  target="_blank">Features Guide</a>.
+     *  eBay's catalog. For details and examples, see
+     *  <a href="https://developer.ebay.com/api-docs/user-guides/static/trading-user-guide/manually-specify-compatibility.html"
+     *  target="_blank">Specify parts compatibility manually</a>.
      *  <br><br>
      *  The eBay Germany, UK, France, Italy, Spain, and Australia sites support the use of <em>K type</em> vehicle numbers to specify vehicle
      *  parts compatibility. To use a K type number, set the <b>Name</b> field to "<code>KType</code>"
@@ -258,9 +258,9 @@ class ItemCompatibilityType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
      *  item is listed. For example, when listing in a Parts & Accessories
      *  category, where the applications are vehicles, the allowed names might include
      *  Year, Make, and Model, and the values would correspond to specific vehicles in
-     *  eBay's catalog. For details and examples, see the
-     *  <a href="https://developer.ebay.com/DevZone/guides/features-guide/default.html#development/CompatibleParts-Listing.html#SpecifyingPartsCompatibilityManually"
-     *  target="_blank">Features Guide</a>.
+     *  eBay's catalog. For details and examples, see
+     *  <a href="https://developer.ebay.com/api-docs/user-guides/static/trading-user-guide/manually-specify-compatibility.html"
+     *  target="_blank">Specify parts compatibility manually</a>.
      *  <br><br>
      *  The eBay Germany, UK, France, Italy, Spain, and Australia sites support the use of <em>K type</em> vehicle numbers to specify vehicle
      *  parts compatibility. To use a K type number, set the <b>Name</b> field to "<code>KType</code>"

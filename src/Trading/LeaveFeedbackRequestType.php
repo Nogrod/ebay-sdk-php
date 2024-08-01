@@ -61,6 +61,9 @@ class LeaveFeedbackRequestType extends AbstractRequestType
      *  <br>
      *  <br>
      *  The <b>TransactionID</b> value for auction listings is always <code>0</code> since there can be only one winning bidder/one sale for an auction listing.
+     *  <br/><br/>
+     *  <span class="tablenote"><b>Note: </b> Beginning in July 2024, non-zero transaction IDs will start being returned for auction listings. If necessary, update code to handle non-zero transaction IDs for auction transactions before this time.
+     *  </span>
      *
      * @var string $transactionID
      */
@@ -93,9 +96,6 @@ class LeaveFeedbackRequestType extends AbstractRequestType
 
     /**
      * This field or the <b>ItemDeliveredWithinEDD</b> field should be included if it is the buyer leaving feedback for the seller. This field will inform eBay about whether or not the buyer received the order line item within the estimated delivery date, which is established once a buyer purchases or commits to buy an item.
-     *  <br>
-     *  <br>
-     *  <span class="tablenote"><b>Note:</b> A new "Late shipment rate" metric became a new component of Seller Standards beginning in February 2016. On-time shipping means that the seller shipped the item before the "handling time" expired and/or the item was received by the buyer within the estimated delivery date window, which is established once the buyer pays for the order line item. Previously, a seller's account could be dinged just for getting a low rating for the "shippping time" Detailed Seller Rating. </span>
      *
      * @var string $itemArrivedWithinEDDType
      */
@@ -103,9 +103,6 @@ class LeaveFeedbackRequestType extends AbstractRequestType
 
     /**
      * This field or the <b>ItemArrivedWithinEDDType</b> field should be included if it is the buyer leaving feedback for the seller. This field will inform eBay about whether or not the buyer received the order line item within the estimated delivery date window, which is established once a buyer purchases or commits to buy an item. The value of this field is set to <code>true</code> if the item did arrive within the estimated delivery date, or <code>false</code> if the item arrived past the estimated delivery date.
-     *  <br>
-     *  <br>
-     *  <span class="tablenote"><b>Note:</b> A new "Late shipment rate" metric became a new component of Seller Standards beginning in February 2016. On-time shipping means that the seller shipped the item before the "handling time" expired and/or the item was received by the buyer within the estimated delivery date window, which is established once the buyer pays for the order line item. Previously, a seller's account could be dinged just for getting a low rating for the "shippping time" Detailed Seller Rating. </span>
      *
      * @var bool $itemDeliveredWithinEDD
      */
@@ -233,6 +230,9 @@ class LeaveFeedbackRequestType extends AbstractRequestType
      *  <br>
      *  <br>
      *  The <b>TransactionID</b> value for auction listings is always <code>0</code> since there can be only one winning bidder/one sale for an auction listing.
+     *  <br/><br/>
+     *  <span class="tablenote"><b>Note: </b> Beginning in July 2024, non-zero transaction IDs will start being returned for auction listings. If necessary, update code to handle non-zero transaction IDs for auction transactions before this time.
+     *  </span>
      *
      * @return string
      */
@@ -255,6 +255,9 @@ class LeaveFeedbackRequestType extends AbstractRequestType
      *  <br>
      *  <br>
      *  The <b>TransactionID</b> value for auction listings is always <code>0</code> since there can be only one winning bidder/one sale for an auction listing.
+     *  <br/><br/>
+     *  <span class="tablenote"><b>Note: </b> Beginning in July 2024, non-zero transaction IDs will start being returned for auction listings. If necessary, update code to handle non-zero transaction IDs for auction transactions before this time.
+     *  </span>
      *
      * @param string $transactionID
      * @return self
@@ -395,9 +398,6 @@ class LeaveFeedbackRequestType extends AbstractRequestType
      * Gets as itemArrivedWithinEDDType
      *
      * This field or the <b>ItemDeliveredWithinEDD</b> field should be included if it is the buyer leaving feedback for the seller. This field will inform eBay about whether or not the buyer received the order line item within the estimated delivery date, which is established once a buyer purchases or commits to buy an item.
-     *  <br>
-     *  <br>
-     *  <span class="tablenote"><b>Note:</b> A new "Late shipment rate" metric became a new component of Seller Standards beginning in February 2016. On-time shipping means that the seller shipped the item before the "handling time" expired and/or the item was received by the buyer within the estimated delivery date window, which is established once the buyer pays for the order line item. Previously, a seller's account could be dinged just for getting a low rating for the "shippping time" Detailed Seller Rating. </span>
      *
      * @return string
      */
@@ -410,9 +410,6 @@ class LeaveFeedbackRequestType extends AbstractRequestType
      * Sets a new itemArrivedWithinEDDType
      *
      * This field or the <b>ItemDeliveredWithinEDD</b> field should be included if it is the buyer leaving feedback for the seller. This field will inform eBay about whether or not the buyer received the order line item within the estimated delivery date, which is established once a buyer purchases or commits to buy an item.
-     *  <br>
-     *  <br>
-     *  <span class="tablenote"><b>Note:</b> A new "Late shipment rate" metric became a new component of Seller Standards beginning in February 2016. On-time shipping means that the seller shipped the item before the "handling time" expired and/or the item was received by the buyer within the estimated delivery date window, which is established once the buyer pays for the order line item. Previously, a seller's account could be dinged just for getting a low rating for the "shippping time" Detailed Seller Rating. </span>
      *
      * @param string $itemArrivedWithinEDDType
      * @return self
@@ -427,9 +424,6 @@ class LeaveFeedbackRequestType extends AbstractRequestType
      * Gets as itemDeliveredWithinEDD
      *
      * This field or the <b>ItemArrivedWithinEDDType</b> field should be included if it is the buyer leaving feedback for the seller. This field will inform eBay about whether or not the buyer received the order line item within the estimated delivery date window, which is established once a buyer purchases or commits to buy an item. The value of this field is set to <code>true</code> if the item did arrive within the estimated delivery date, or <code>false</code> if the item arrived past the estimated delivery date.
-     *  <br>
-     *  <br>
-     *  <span class="tablenote"><b>Note:</b> A new "Late shipment rate" metric became a new component of Seller Standards beginning in February 2016. On-time shipping means that the seller shipped the item before the "handling time" expired and/or the item was received by the buyer within the estimated delivery date window, which is established once the buyer pays for the order line item. Previously, a seller's account could be dinged just for getting a low rating for the "shippping time" Detailed Seller Rating. </span>
      *
      * @return bool
      */
@@ -442,9 +436,6 @@ class LeaveFeedbackRequestType extends AbstractRequestType
      * Sets a new itemDeliveredWithinEDD
      *
      * This field or the <b>ItemArrivedWithinEDDType</b> field should be included if it is the buyer leaving feedback for the seller. This field will inform eBay about whether or not the buyer received the order line item within the estimated delivery date window, which is established once a buyer purchases or commits to buy an item. The value of this field is set to <code>true</code> if the item did arrive within the estimated delivery date, or <code>false</code> if the item arrived past the estimated delivery date.
-     *  <br>
-     *  <br>
-     *  <span class="tablenote"><b>Note:</b> A new "Late shipment rate" metric became a new component of Seller Standards beginning in February 2016. On-time shipping means that the seller shipped the item before the "handling time" expired and/or the item was received by the buyer within the estimated delivery date window, which is established once the buyer pays for the order line item. Previously, a seller's account could be dinged just for getting a low rating for the "shippping time" Detailed Seller Rating. </span>
      *
      * @param bool $itemDeliveredWithinEDD
      * @return self

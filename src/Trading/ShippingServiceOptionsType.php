@@ -14,13 +14,6 @@ use Nogrod\XMLClientRuntime\Func;
 class ShippingServiceOptionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
     /**
-     * This field is no longer applicable as it is not longer possible for a seller to offer a buyer shipping insurance.
-     *
-     * @var \Nogrod\eBaySDK\Trading\AmountType $shippingInsuranceCost
-     */
-    private $shippingInsuranceCost = null;
-
-    /**
      * This enumeration value indicates a specific domestic shipping service option being offered by the seller to ship an item to a buyer who is located within the same country as the item. This field is required to identify each domestic shipping service option that is specified with a <b>ShippingServiceOptions</b> container.
      *  <br><br>
      *  For a list of valid <b>ShippingService</b> values, call <b>GeteBayDetails</b>
@@ -33,7 +26,7 @@ class ShippingServiceOptionsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
      *  not have a <b>InternationalService</b> = <code>true</code> field, as this indicates that the <b>ShippingService</b>
      *  value is an International shipping service option.<br><br>
      *  <span class="tablenote"><strong>Note:</strong>
-     *  The eBay standard envelope (eSE) is a domestic envelope service with tracking through eBay. This service applies to specific sub-categories of Trading Cards categories, and to Coins & Paper Money, Postcards, and Stamps. To use this service, send envelopes using the USPS mail and set the <b>ShippingService</b> field to <code>US_eBayStandardEnvelope</code>. See <a href="https://pages.ebay.com/seller-center/shipping/ebay-standard-envelope.html#lower-cost-way">eBay standard envelope</a> for details and restrictions. For the REST equivalent, see <a href="https://developer.ebay.com/api-docs/sell/static/seller-accounts/using-the-ebay-standard-envelope-service.html" target=/"_blank/">Using the eBay standard envelope (eSE) service</a>.
+     *  The eBay standard envelope (eSE) is a domestic envelope service with tracking through eBay. This service applies to specific sub-categories of <b>Trading Cards</b>, and to coins & paper money, postcards, stamps, patches, and similar <a href="https://www.ebay.com/sellercenter/shipping/choosing-a-carrier-and-service/ebay-standard-envelope#eligible-categories" target="_blank">eligible categories</a>, and is only available on the US marketplace. See <a href="https://pages.ebay.com/seller-center/shipping/ebay-standard-envelope.html#lower-cost-way" target="_blank">eBay standard envelope</a> for details, restrictions, and an <a href="https://ir.ebaystatic.com/pictures/sc/Shipping/ebay_standard_envelope_template.pdf" target="_blank">envelope size template</a>. To use this service, send envelopes using the USPS mail and set the <b>ShippingService</b> field to <code>US_eBayStandardEnvelope</code>. <br><br> For the REST equivalent, see <a href="https://developer.ebay.com/api-docs/sell/static/seller-accounts/using-the-ebay-standard-envelope-service.html" target=/"_blank/">Using the eBay standard envelope (eSE) service</a>.
      *  </span>
      *
      * @var string $shippingService
@@ -144,7 +137,7 @@ class ShippingServiceOptionsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
     private $localPickup = null;
 
     /**
-     * For orders using eBay International Shipping, when using the <b>GetOrders</b> and <b>GetOrderTransactions</b> calls, the <b>OrderArray.Order.ShippingServiceSelected.ImportCharge</b> field contains only customs charges.<br /><br />For the Global Shipping Program, which is only supported in the UK, this field contains the total cost of customs and taxes for the international leg of an order shipped using the Global Shipping Program. This amount is calculated and supplied for each item by the international shipping provider when a buyer views the item properties.
+     * For orders using eBay International Shipping, when using the <b>GetOrders</b> call, the <b>OrderArray.Order.ShippingServiceSelected.ImportCharge</b> field contains only customs charges.<br /><br />For the Global Shipping Program, which is only supported in the UK, this field contains the total cost of customs and taxes for the international leg of an order shipped using the Global Shipping Program. This amount is calculated and supplied for each item by the international shipping provider when a buyer views the item properties.
      *
      * @var \Nogrod\eBaySDK\Trading\AmountType $importCharge
      */
@@ -176,32 +169,6 @@ class ShippingServiceOptionsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
     private $logisticPlanType = null;
 
     /**
-     * Gets as shippingInsuranceCost
-     *
-     * This field is no longer applicable as it is not longer possible for a seller to offer a buyer shipping insurance.
-     *
-     * @return \Nogrod\eBaySDK\Trading\AmountType
-     */
-    public function getShippingInsuranceCost()
-    {
-        return $this->shippingInsuranceCost;
-    }
-
-    /**
-     * Sets a new shippingInsuranceCost
-     *
-     * This field is no longer applicable as it is not longer possible for a seller to offer a buyer shipping insurance.
-     *
-     * @param \Nogrod\eBaySDK\Trading\AmountType $shippingInsuranceCost
-     * @return self
-     */
-    public function setShippingInsuranceCost(\Nogrod\eBaySDK\Trading\AmountType $shippingInsuranceCost)
-    {
-        $this->shippingInsuranceCost = $shippingInsuranceCost;
-        return $this;
-    }
-
-    /**
      * Gets as shippingService
      *
      * This enumeration value indicates a specific domestic shipping service option being offered by the seller to ship an item to a buyer who is located within the same country as the item. This field is required to identify each domestic shipping service option that is specified with a <b>ShippingServiceOptions</b> container.
@@ -216,7 +183,7 @@ class ShippingServiceOptionsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
      *  not have a <b>InternationalService</b> = <code>true</code> field, as this indicates that the <b>ShippingService</b>
      *  value is an International shipping service option.<br><br>
      *  <span class="tablenote"><strong>Note:</strong>
-     *  The eBay standard envelope (eSE) is a domestic envelope service with tracking through eBay. This service applies to specific sub-categories of Trading Cards categories, and to Coins & Paper Money, Postcards, and Stamps. To use this service, send envelopes using the USPS mail and set the <b>ShippingService</b> field to <code>US_eBayStandardEnvelope</code>. See <a href="https://pages.ebay.com/seller-center/shipping/ebay-standard-envelope.html#lower-cost-way">eBay standard envelope</a> for details and restrictions. For the REST equivalent, see <a href="https://developer.ebay.com/api-docs/sell/static/seller-accounts/using-the-ebay-standard-envelope-service.html" target=/"_blank/">Using the eBay standard envelope (eSE) service</a>.
+     *  The eBay standard envelope (eSE) is a domestic envelope service with tracking through eBay. This service applies to specific sub-categories of <b>Trading Cards</b>, and to coins & paper money, postcards, stamps, patches, and similar <a href="https://www.ebay.com/sellercenter/shipping/choosing-a-carrier-and-service/ebay-standard-envelope#eligible-categories" target="_blank">eligible categories</a>, and is only available on the US marketplace. See <a href="https://pages.ebay.com/seller-center/shipping/ebay-standard-envelope.html#lower-cost-way" target="_blank">eBay standard envelope</a> for details, restrictions, and an <a href="https://ir.ebaystatic.com/pictures/sc/Shipping/ebay_standard_envelope_template.pdf" target="_blank">envelope size template</a>. To use this service, send envelopes using the USPS mail and set the <b>ShippingService</b> field to <code>US_eBayStandardEnvelope</code>. <br><br> For the REST equivalent, see <a href="https://developer.ebay.com/api-docs/sell/static/seller-accounts/using-the-ebay-standard-envelope-service.html" target=/"_blank/">Using the eBay standard envelope (eSE) service</a>.
      *  </span>
      *
      * @return string
@@ -241,7 +208,7 @@ class ShippingServiceOptionsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
      *  not have a <b>InternationalService</b> = <code>true</code> field, as this indicates that the <b>ShippingService</b>
      *  value is an International shipping service option.<br><br>
      *  <span class="tablenote"><strong>Note:</strong>
-     *  The eBay standard envelope (eSE) is a domestic envelope service with tracking through eBay. This service applies to specific sub-categories of Trading Cards categories, and to Coins & Paper Money, Postcards, and Stamps. To use this service, send envelopes using the USPS mail and set the <b>ShippingService</b> field to <code>US_eBayStandardEnvelope</code>. See <a href="https://pages.ebay.com/seller-center/shipping/ebay-standard-envelope.html#lower-cost-way">eBay standard envelope</a> for details and restrictions. For the REST equivalent, see <a href="https://developer.ebay.com/api-docs/sell/static/seller-accounts/using-the-ebay-standard-envelope-service.html" target=/"_blank/">Using the eBay standard envelope (eSE) service</a>.
+     *  The eBay standard envelope (eSE) is a domestic envelope service with tracking through eBay. This service applies to specific sub-categories of <b>Trading Cards</b>, and to coins & paper money, postcards, stamps, patches, and similar <a href="https://www.ebay.com/sellercenter/shipping/choosing-a-carrier-and-service/ebay-standard-envelope#eligible-categories" target="_blank">eligible categories</a>, and is only available on the US marketplace. See <a href="https://pages.ebay.com/seller-center/shipping/ebay-standard-envelope.html#lower-cost-way" target="_blank">eBay standard envelope</a> for details, restrictions, and an <a href="https://ir.ebaystatic.com/pictures/sc/Shipping/ebay_standard_envelope_template.pdf" target="_blank">envelope size template</a>. To use this service, send envelopes using the USPS mail and set the <b>ShippingService</b> field to <code>US_eBayStandardEnvelope</code>. <br><br> For the REST equivalent, see <a href="https://developer.ebay.com/api-docs/sell/static/seller-accounts/using-the-ebay-standard-envelope-service.html" target=/"_blank/">Using the eBay standard envelope (eSE) service</a>.
      *  </span>
      *
      * @param string $shippingService
@@ -558,7 +525,7 @@ class ShippingServiceOptionsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
     /**
      * Gets as importCharge
      *
-     * For orders using eBay International Shipping, when using the <b>GetOrders</b> and <b>GetOrderTransactions</b> calls, the <b>OrderArray.Order.ShippingServiceSelected.ImportCharge</b> field contains only customs charges.<br /><br />For the Global Shipping Program, which is only supported in the UK, this field contains the total cost of customs and taxes for the international leg of an order shipped using the Global Shipping Program. This amount is calculated and supplied for each item by the international shipping provider when a buyer views the item properties.
+     * For orders using eBay International Shipping, when using the <b>GetOrders</b> call, the <b>OrderArray.Order.ShippingServiceSelected.ImportCharge</b> field contains only customs charges.<br /><br />For the Global Shipping Program, which is only supported in the UK, this field contains the total cost of customs and taxes for the international leg of an order shipped using the Global Shipping Program. This amount is calculated and supplied for each item by the international shipping provider when a buyer views the item properties.
      *
      * @return \Nogrod\eBaySDK\Trading\AmountType
      */
@@ -570,7 +537,7 @@ class ShippingServiceOptionsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
     /**
      * Sets a new importCharge
      *
-     * For orders using eBay International Shipping, when using the <b>GetOrders</b> and <b>GetOrderTransactions</b> calls, the <b>OrderArray.Order.ShippingServiceSelected.ImportCharge</b> field contains only customs charges.<br /><br />For the Global Shipping Program, which is only supported in the UK, this field contains the total cost of customs and taxes for the international leg of an order shipped using the Global Shipping Program. This amount is calculated and supplied for each item by the international shipping provider when a buyer views the item properties.
+     * For orders using eBay International Shipping, when using the <b>GetOrders</b> call, the <b>OrderArray.Order.ShippingServiceSelected.ImportCharge</b> field contains only customs charges.<br /><br />For the Global Shipping Program, which is only supported in the UK, this field contains the total cost of customs and taxes for the international leg of an order shipped using the Global Shipping Program. This amount is calculated and supplied for each item by the international shipping provider when a buyer views the item properties.
      *
      * @param \Nogrod\eBaySDK\Trading\AmountType $importCharge
      * @return self
@@ -706,10 +673,6 @@ class ShippingServiceOptionsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
     public function xmlSerialize(\Sabre\Xml\Writer $writer): void
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
-        $value = $this->getShippingInsuranceCost();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippingInsuranceCost", $value);
-        }
         $value = $this->getShippingService();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippingService", $value);
@@ -781,10 +744,6 @@ class ShippingServiceOptionsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingInsuranceCost');
-        if (null !== $value) {
-            $this->setShippingInsuranceCost(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
-        }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingService');
         if (null !== $value) {
             $this->setShippingService($value);

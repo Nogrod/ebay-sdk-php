@@ -34,13 +34,6 @@ class GetItemRequestType extends AbstractRequestType
     private $includeWatchCount = null;
 
     /**
-     * This field is deprecated.
-     *
-     * @var bool $includeCrossPromotion
-     */
-    private $includeCrossPromotion = null;
-
-    /**
      * If this field is included and set to <code>true</code>, the call response includes the <b>ItemSpecifics</b> container
      *  if Item Specifics are defined for the listing.<br>
      *  <br>
@@ -143,6 +136,9 @@ class GetItemRequestType extends AbstractRequestType
      *  <br>
      *  <br>
      *  The <b>TransactionID</b> value for auction listings is always <code>0</code> since there can be only one winning bidder/one sale for an auction listing.
+     *  <br/><br/>
+     *  <span class="tablenote"><b>Note: </b> Beginning in July 2024, non-zero transaction IDs will start being returned for auction listings. If necessary, update code to handle non-zero transaction IDs for auction transactions before this time.
+     *  </span>
      *
      * @var string $transactionID
      */
@@ -223,32 +219,6 @@ class GetItemRequestType extends AbstractRequestType
     public function setIncludeWatchCount($includeWatchCount)
     {
         $this->includeWatchCount = $includeWatchCount;
-        return $this;
-    }
-
-    /**
-     * Gets as includeCrossPromotion
-     *
-     * This field is deprecated.
-     *
-     * @return bool
-     */
-    public function getIncludeCrossPromotion()
-    {
-        return $this->includeCrossPromotion;
-    }
-
-    /**
-     * Sets a new includeCrossPromotion
-     *
-     * This field is deprecated.
-     *
-     * @param bool $includeCrossPromotion
-     * @return self
-     */
-    public function setIncludeCrossPromotion($includeCrossPromotion)
-    {
-        $this->includeCrossPromotion = $includeCrossPromotion;
         return $this;
     }
 
@@ -590,6 +560,9 @@ class GetItemRequestType extends AbstractRequestType
      *  <br>
      *  <br>
      *  The <b>TransactionID</b> value for auction listings is always <code>0</code> since there can be only one winning bidder/one sale for an auction listing.
+     *  <br/><br/>
+     *  <span class="tablenote"><b>Note: </b> Beginning in July 2024, non-zero transaction IDs will start being returned for auction listings. If necessary, update code to handle non-zero transaction IDs for auction transactions before this time.
+     *  </span>
      *
      * @return string
      */
@@ -618,6 +591,9 @@ class GetItemRequestType extends AbstractRequestType
      *  <br>
      *  <br>
      *  The <b>TransactionID</b> value for auction listings is always <code>0</code> since there can be only one winning bidder/one sale for an auction listing.
+     *  <br/><br/>
+     *  <span class="tablenote"><b>Note: </b> Beginning in July 2024, non-zero transaction IDs will start being returned for auction listings. If necessary, update code to handle non-zero transaction IDs for auction transactions before this time.
+     *  </span>
      *
      * @param string $transactionID
      * @return self
@@ -676,11 +652,6 @@ class GetItemRequestType extends AbstractRequestType
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}IncludeWatchCount", $value);
         }
-        $value = $this->getIncludeCrossPromotion();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}IncludeCrossPromotion", $value);
-        }
         $value = $this->getIncludeItemSpecifics();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;
         if (null !== $value) {
@@ -736,10 +707,6 @@ class GetItemRequestType extends AbstractRequestType
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}IncludeWatchCount');
         if (null !== $value) {
             $this->setIncludeWatchCount($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}IncludeCrossPromotion');
-        if (null !== $value) {
-            $this->setIncludeCrossPromotion($value);
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}IncludeItemSpecifics');
         if (null !== $value) {

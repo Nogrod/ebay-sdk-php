@@ -102,20 +102,13 @@ class InternationalShippingServiceOptionsType implements \Sabre\Xml\XmlSerializa
      *  <br/><br/>
      *  For the <b>AddItem</b> family of calls, this field is required if any international shipping service is specified.
      *  <br><br>
-     *  <b>For GetOrders, GetOrderTransactions, and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, <b>ShipToLocation</b> fields will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, <b>ShipToLocation</b> fields are only returned to the buyer or seller, and a string value of <code>Unavailable</code> will be returned to all third parties.
+     *  <b>For GetOrders and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, <b>ShipToLocation</b> fields will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, <b>ShipToLocation</b> fields are only returned to the buyer or seller, and a string value of <code>Unavailable</code> will be returned to all third parties.
      *
      * @var string[] $shipToLocation
      */
     private $shipToLocation = [
 
     ];
-
-    /**
-     * This field is no longer applicable as it is not longer possible for a seller to offer a buyer shipping insurance.
-     *
-     * @var \Nogrod\eBaySDK\Trading\AmountType $shippingInsuranceCost
-     */
-    private $shippingInsuranceCost = null;
 
     /**
      * The total cost of customs and taxes for the international leg of an order shipped using the Global Shipping Program. This amount is calculated and supplied for each item by the international shipping provider when a buyer views the item properties.
@@ -350,7 +343,7 @@ class InternationalShippingServiceOptionsType implements \Sabre\Xml\XmlSerializa
      *  <br/><br/>
      *  For the <b>AddItem</b> family of calls, this field is required if any international shipping service is specified.
      *  <br><br>
-     *  <b>For GetOrders, GetOrderTransactions, and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, <b>ShipToLocation</b> fields will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, <b>ShipToLocation</b> fields are only returned to the buyer or seller, and a string value of <code>Unavailable</code> will be returned to all third parties.
+     *  <b>For GetOrders and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, <b>ShipToLocation</b> fields will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, <b>ShipToLocation</b> fields are only returned to the buyer or seller, and a string value of <code>Unavailable</code> will be returned to all third parties.
      *
      * @return self
      * @param string $shipToLocation
@@ -372,7 +365,7 @@ class InternationalShippingServiceOptionsType implements \Sabre\Xml\XmlSerializa
      *  <br/><br/>
      *  For the <b>AddItem</b> family of calls, this field is required if any international shipping service is specified.
      *  <br><br>
-     *  <b>For GetOrders, GetOrderTransactions, and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, <b>ShipToLocation</b> fields will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, <b>ShipToLocation</b> fields are only returned to the buyer or seller, and a string value of <code>Unavailable</code> will be returned to all third parties.
+     *  <b>For GetOrders and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, <b>ShipToLocation</b> fields will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, <b>ShipToLocation</b> fields are only returned to the buyer or seller, and a string value of <code>Unavailable</code> will be returned to all third parties.
      *
      * @param int|string $index
      * @return bool
@@ -393,7 +386,7 @@ class InternationalShippingServiceOptionsType implements \Sabre\Xml\XmlSerializa
      *  <br/><br/>
      *  For the <b>AddItem</b> family of calls, this field is required if any international shipping service is specified.
      *  <br><br>
-     *  <b>For GetOrders, GetOrderTransactions, and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, <b>ShipToLocation</b> fields will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, <b>ShipToLocation</b> fields are only returned to the buyer or seller, and a string value of <code>Unavailable</code> will be returned to all third parties.
+     *  <b>For GetOrders and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, <b>ShipToLocation</b> fields will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, <b>ShipToLocation</b> fields are only returned to the buyer or seller, and a string value of <code>Unavailable</code> will be returned to all third parties.
      *
      * @param int|string $index
      * @return void
@@ -414,7 +407,7 @@ class InternationalShippingServiceOptionsType implements \Sabre\Xml\XmlSerializa
      *  <br/><br/>
      *  For the <b>AddItem</b> family of calls, this field is required if any international shipping service is specified.
      *  <br><br>
-     *  <b>For GetOrders, GetOrderTransactions, and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, <b>ShipToLocation</b> fields will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, <b>ShipToLocation</b> fields are only returned to the buyer or seller, and a string value of <code>Unavailable</code> will be returned to all third parties.
+     *  <b>For GetOrders and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, <b>ShipToLocation</b> fields will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, <b>ShipToLocation</b> fields are only returned to the buyer or seller, and a string value of <code>Unavailable</code> will be returned to all third parties.
      *
      * @return string[]
      */
@@ -434,7 +427,7 @@ class InternationalShippingServiceOptionsType implements \Sabre\Xml\XmlSerializa
      *  <br/><br/>
      *  For the <b>AddItem</b> family of calls, this field is required if any international shipping service is specified.
      *  <br><br>
-     *  <b>For GetOrders, GetOrderTransactions, and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, <b>ShipToLocation</b> fields will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, <b>ShipToLocation</b> fields are only returned to the buyer or seller, and a string value of <code>Unavailable</code> will be returned to all third parties.
+     *  <b>For GetOrders and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, <b>ShipToLocation</b> fields will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, <b>ShipToLocation</b> fields are only returned to the buyer or seller, and a string value of <code>Unavailable</code> will be returned to all third parties.
      *
      * @param string[] $shipToLocation
      * @return self
@@ -442,32 +435,6 @@ class InternationalShippingServiceOptionsType implements \Sabre\Xml\XmlSerializa
     public function setShipToLocation(array $shipToLocation)
     {
         $this->shipToLocation = $shipToLocation;
-        return $this;
-    }
-
-    /**
-     * Gets as shippingInsuranceCost
-     *
-     * This field is no longer applicable as it is not longer possible for a seller to offer a buyer shipping insurance.
-     *
-     * @return \Nogrod\eBaySDK\Trading\AmountType
-     */
-    public function getShippingInsuranceCost()
-    {
-        return $this->shippingInsuranceCost;
-    }
-
-    /**
-     * Sets a new shippingInsuranceCost
-     *
-     * This field is no longer applicable as it is not longer possible for a seller to offer a buyer shipping insurance.
-     *
-     * @param \Nogrod\eBaySDK\Trading\AmountType $shippingInsuranceCost
-     * @return self
-     */
-    public function setShippingInsuranceCost(\Nogrod\eBaySDK\Trading\AmountType $shippingInsuranceCost)
-    {
-        $this->shippingInsuranceCost = $shippingInsuranceCost;
         return $this;
     }
 
@@ -550,10 +517,6 @@ class InternationalShippingServiceOptionsType implements \Sabre\Xml\XmlSerializa
         if (null !== $value && !empty($this->getShipToLocation())) {
             $writer->write(array_map(function ($v) {return ["ShipToLocation" => $v];}, $value));
         }
-        $value = $this->getShippingInsuranceCost();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippingInsuranceCost", $value);
-        }
         $value = $this->getImportCharge();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ImportCharge", $value);
@@ -597,10 +560,6 @@ class InternationalShippingServiceOptionsType implements \Sabre\Xml\XmlSerializa
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShipToLocation', true);
         if (null !== $value && !empty($value)) {
             $this->setShipToLocation($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingInsuranceCost');
-        if (null !== $value) {
-            $this->setShippingInsuranceCost(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ImportCharge');
         if (null !== $value) {

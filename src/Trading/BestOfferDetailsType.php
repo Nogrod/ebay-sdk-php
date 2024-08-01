@@ -23,11 +23,13 @@ class BestOfferDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
 
     /**
      * This field indicates whether or not the Best Offer feature is enabled for the listing. A seller can enable the Best Offer feature for a listing as long as the category supports the Best Offer feature. To see if an eBay category supports the Best Offer feature, run a <b>GetCategoryFeatures</b> call, including <code>BestOfferEnabled</code> as a <b>FeatureID</b> value in the call request payload.
-     *  <br/><br/>
+     *  <br/><br>
      *  A listing enabled with the Best Offer feature allows a buyer to bargain with the seller and make a lower-priced offer than the fixed price or the starting bid price for an auction listing. The seller can then decide whether to accept the buyer's Best Offer price or propose a counter offer higher than the Best Offer price, but lower than the fixed price or starting bid price.
      *  <br/><br/>
      *  <span class="tablenote"><b>Note: </b>
      *  The Best Offer feature is now available for auction listings on the following sites: US, Canada, UK, Germany, Australia, France, Italy, and Spain. However, sellers must choose between offering Best Offer or Buy It Now on an auction listing, as both features cannot be enabled on the same auction listing. If an auction listing is enabled with Best Offer, this feature will no longer be applicable once the listing receives its first qualifying bid.
+     *  </span>
+     *  <span class="tablenote"><b>Note: </b> Best Offer is not available for multi-variation listings.
      *  </span>
      *
      * @var bool $bestOfferEnabled
@@ -94,11 +96,13 @@ class BestOfferDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
      * Gets as bestOfferEnabled
      *
      * This field indicates whether or not the Best Offer feature is enabled for the listing. A seller can enable the Best Offer feature for a listing as long as the category supports the Best Offer feature. To see if an eBay category supports the Best Offer feature, run a <b>GetCategoryFeatures</b> call, including <code>BestOfferEnabled</code> as a <b>FeatureID</b> value in the call request payload.
-     *  <br/><br/>
+     *  <br/><br>
      *  A listing enabled with the Best Offer feature allows a buyer to bargain with the seller and make a lower-priced offer than the fixed price or the starting bid price for an auction listing. The seller can then decide whether to accept the buyer's Best Offer price or propose a counter offer higher than the Best Offer price, but lower than the fixed price or starting bid price.
      *  <br/><br/>
      *  <span class="tablenote"><b>Note: </b>
      *  The Best Offer feature is now available for auction listings on the following sites: US, Canada, UK, Germany, Australia, France, Italy, and Spain. However, sellers must choose between offering Best Offer or Buy It Now on an auction listing, as both features cannot be enabled on the same auction listing. If an auction listing is enabled with Best Offer, this feature will no longer be applicable once the listing receives its first qualifying bid.
+     *  </span>
+     *  <span class="tablenote"><b>Note: </b> Best Offer is not available for multi-variation listings.
      *  </span>
      *
      * @return bool
@@ -112,11 +116,13 @@ class BestOfferDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
      * Sets a new bestOfferEnabled
      *
      * This field indicates whether or not the Best Offer feature is enabled for the listing. A seller can enable the Best Offer feature for a listing as long as the category supports the Best Offer feature. To see if an eBay category supports the Best Offer feature, run a <b>GetCategoryFeatures</b> call, including <code>BestOfferEnabled</code> as a <b>FeatureID</b> value in the call request payload.
-     *  <br/><br/>
+     *  <br/><br>
      *  A listing enabled with the Best Offer feature allows a buyer to bargain with the seller and make a lower-priced offer than the fixed price or the starting bid price for an auction listing. The seller can then decide whether to accept the buyer's Best Offer price or propose a counter offer higher than the Best Offer price, but lower than the fixed price or starting bid price.
      *  <br/><br/>
      *  <span class="tablenote"><b>Note: </b>
      *  The Best Offer feature is now available for auction listings on the following sites: US, Canada, UK, Germany, Australia, France, Italy, and Spain. However, sellers must choose between offering Best Offer or Buy It Now on an auction listing, as both features cannot be enabled on the same auction listing. If an auction listing is enabled with Best Offer, this feature will no longer be applicable once the listing receives its first qualifying bid.
+     *  </span>
+     *  <span class="tablenote"><b>Note: </b> Best Offer is not available for multi-variation listings.
      *  </span>
      *
      * @param bool $bestOfferEnabled

@@ -71,17 +71,6 @@ Nogrod\eBaySDK\Trading\GetMyeBaySellingResponseType:
                 getter: getSummary
                 setter: setSummary
             type: Nogrod\eBaySDK\Trading\MyeBaySellingSummaryType
-        bidList:
-            expose: true
-            access_type: public_method
-            serialized_name: BidList
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getBidList
-                setter: setBidList
-            type: Nogrod\eBaySDK\Trading\PaginatedItemArrayType
         deletedFromSoldList:
             expose: true
             access_type: public_method

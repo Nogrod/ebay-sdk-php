@@ -15,15 +15,6 @@ use Nogrod\XMLClientRuntime\Func;
 class GetSellerEventsRequestType extends AbstractRequestType
 {
     /**
-     * <span class="tablenote"><strong>Note:</strong>
-     *  This field should no longer be used, and will be ignored if it is included in a <b>GetSellerEvents</b> request. There are plans to remove this field from the public WSDL. The only eBay user ID that can be used is the one associated with the authentication token.
-     *  </span>
-     *
-     * @var string $userID
-     */
-    private $userID = null;
-
-    /**
      * Describes the earliest (oldest) time to use in a time range filter based
      *  on item start time. Must be specified if <b>StartTimeTo</b> is specified.
      *  <br/><br/>
@@ -177,36 +168,6 @@ class GetSellerEventsRequestType extends AbstractRequestType
      * @var bool $hideVariations
      */
     private $hideVariations = null;
-
-    /**
-     * Gets as userID
-     *
-     * <span class="tablenote"><strong>Note:</strong>
-     *  This field should no longer be used, and will be ignored if it is included in a <b>GetSellerEvents</b> request. There are plans to remove this field from the public WSDL. The only eBay user ID that can be used is the one associated with the authentication token.
-     *  </span>
-     *
-     * @return string
-     */
-    public function getUserID()
-    {
-        return $this->userID;
-    }
-
-    /**
-     * Sets a new userID
-     *
-     * <span class="tablenote"><strong>Note:</strong>
-     *  This field should no longer be used, and will be ignored if it is included in a <b>GetSellerEvents</b> request. There are plans to remove this field from the public WSDL. The only eBay user ID that can be used is the one associated with the authentication token.
-     *  </span>
-     *
-     * @param string $userID
-     * @return self
-     */
-    public function setUserID($userID)
-    {
-        $this->userID = $userID;
-        return $this;
-    }
 
     /**
      * Gets as startTimeFrom
@@ -641,10 +602,6 @@ class GetSellerEventsRequestType extends AbstractRequestType
     public function xmlSerialize(\Sabre\Xml\Writer $writer): void
     {
         parent::xmlSerialize($writer);
-        $value = $this->getUserID();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}UserID", $value);
-        }
         $value = $this->getStartTimeFrom();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}StartTimeFrom", $value);
@@ -706,10 +663,6 @@ class GetSellerEventsRequestType extends AbstractRequestType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UserID');
-        if (null !== $value) {
-            $this->setUserID($value);
-        }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}StartTimeFrom');
         if (null !== $value) {
             $this->setStartTimeFrom(new \DateTime($value));

@@ -459,17 +459,6 @@ class EBayAPIBaseClient extends \Nogrod\XMLClientRuntime\Client
     }
 
     /**
-     * Call GetOrderTransactions
-     *
-     * @param \Nogrod\eBaySDK\Trading\GetOrderTransactionsRequest $getOrderTransactionsRequest
-     * @return \Nogrod\eBaySDK\Trading\GetOrderTransactionsResponse
-     */
-    public function getOrderTransactions(\Nogrod\eBaySDK\Trading\GetOrderTransactionsRequest $getOrderTransactionsRequest): \Nogrod\eBaySDK\Trading\GetOrderTransactionsResponse
-    {
-        return $this->call('GetOrderTransactions', 'Nogrod\eBaySDK\Trading\GetOrderTransactionsResponse', $getOrderTransactionsRequest);
-    }
-
-    /**
      * Call GetOrders
      *
      * @param \Nogrod\eBaySDK\Trading\GetOrdersRequest $getOrdersRequest
@@ -478,17 +467,6 @@ class EBayAPIBaseClient extends \Nogrod\XMLClientRuntime\Client
     public function getOrders(\Nogrod\eBaySDK\Trading\GetOrdersRequest $getOrdersRequest): \Nogrod\eBaySDK\Trading\GetOrdersResponse
     {
         return $this->call('GetOrders', 'Nogrod\eBaySDK\Trading\GetOrdersResponse', $getOrdersRequest);
-    }
-
-    /**
-     * Call GetSellerDashboard
-     *
-     * @param \Nogrod\eBaySDK\Trading\GetSellerDashboardRequest $getSellerDashboardRequest
-     * @return \Nogrod\eBaySDK\Trading\GetSellerDashboardResponse
-     */
-    public function getSellerDashboard(\Nogrod\eBaySDK\Trading\GetSellerDashboardRequest $getSellerDashboardRequest): \Nogrod\eBaySDK\Trading\GetSellerDashboardResponse
-    {
-        return $this->call('GetSellerDashboard', 'Nogrod\eBaySDK\Trading\GetSellerDashboardResponse', $getSellerDashboardRequest);
     }
 
     /**
@@ -566,17 +544,6 @@ class EBayAPIBaseClient extends \Nogrod\XMLClientRuntime\Client
     public function getStoreCategoryUpdateStatus(\Nogrod\eBaySDK\Trading\GetStoreCategoryUpdateStatusRequest $getStoreCategoryUpdateStatusRequest): \Nogrod\eBaySDK\Trading\GetStoreCategoryUpdateStatusResponse
     {
         return $this->call('GetStoreCategoryUpdateStatus', 'Nogrod\eBaySDK\Trading\GetStoreCategoryUpdateStatusResponse', $getStoreCategoryUpdateStatusRequest);
-    }
-
-    /**
-     * Call GetSuggestedCategories
-     *
-     * @param \Nogrod\eBaySDK\Trading\GetSuggestedCategoriesRequest $getSuggestedCategoriesRequest
-     * @return \Nogrod\eBaySDK\Trading\GetSuggestedCategoriesResponse
-     */
-    public function getSuggestedCategories(\Nogrod\eBaySDK\Trading\GetSuggestedCategoriesRequest $getSuggestedCategoriesRequest): \Nogrod\eBaySDK\Trading\GetSuggestedCategoriesResponse
-    {
-        return $this->call('GetSuggestedCategories', 'Nogrod\eBaySDK\Trading\GetSuggestedCategoriesResponse', $getSuggestedCategoriesRequest);
     }
 
     /**

@@ -5,7 +5,7 @@ namespace Nogrod\eBaySDK\Trading;
 /**
  * Class representing ProductCreationEnabledCodeType
  *
- * Values indicate whether product creation is enabled, disabled or required for a category.
+ * This type is deprecated.
  * XSD Type: ProductCreationEnabledCodeType
  */
 class ProductCreationEnabledCodeType

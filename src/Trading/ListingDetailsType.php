@@ -191,15 +191,6 @@ class ListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
     private $buyItNowAvailable = null;
 
     /**
-     * Type of seller account. This value is not returned for most sites.
-     *  This value is not returned for the German site
-     *  (site ID 77) or US eBay Motors site (site ID 0).
-     *
-     * @var string $sellerBusinessType
-     */
-    private $sellerBusinessType = null;
-
-    /**
      * Specifies the minimum acceptable Best Offer price. If a buyer
      *  submits a Best Offer that is below this value, the offer is automatically
      *  declined. This applies only to items listed in categories that
@@ -214,22 +205,12 @@ class ListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      *  <DeletedField>Item.ListingDetails.MinimumBestOfferPrice</DeletedField>
      *  </code></pre>
      *  <br>
-     *  <span class="tablenote"><b>Note:</b>
-     *  The Best Offer feature is now available for auction listings on the following sites: US, Canada, UK, Germany, Australia, France, Italy, and Spain. However, sellers must choose between offering Best Offer or Buy It Now on an auction listing, as both features cannot be enabled on the same auction listing. As of January 2019, the value set in this field for an auction listing can be more than the auction start price.
-     *  </span>
      *  <span class="tablenote"><b>Note: </b> This field will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
      *  </span>
      *
      * @var \Nogrod\eBaySDK\Trading\AmountType $minimumBestOfferPrice
      */
     private $minimumBestOfferPrice = null;
-
-    /**
-     * This field is deprecated.
-     *
-     * @var string $minimumBestOfferMessage
-     */
-    private $minimumBestOfferMessage = null;
 
     /**
      * This field is needed if the seller is selling a motor vehicle through a Motors Local Listing. The string value supplied in this field actually sets the radius of the area (in miles) in which the vehicle will be available and exposed to interested local buyers. The seller's supplied <b>PostalCode</b> or <b>Location</b> field value will be used as the center point for this radius.
@@ -240,18 +221,6 @@ class ListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      * @var string $localListingDistance
      */
     private $localListingDistance = null;
-
-    /**
-     * Indicates the item ID of the original item listing from which a
-     *  Transaction Confirmation Request (TCR) was created. This value is only
-     *  returned when the data for a TCR is retrieved.
-     *  <br>
-     *  <span class="tablenote"><b>Note: </b> This field will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
-     *  </span>
-     *
-     * @var string $tCROriginalItemID
-     */
-    private $tCROriginalItemID = null;
 
     /**
      * This URL takes you to the same View Item page as ViewItemURL,
@@ -275,13 +244,6 @@ class ListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      * @var string $viewItemURLForNaturalSearch
      */
     private $viewItemURLForNaturalSearch = null;
-
-    /**
-     * This field is deprecated.
-     *
-     * @var bool $payPerLeadEnabled
-     */
-    private $payPerLeadEnabled = null;
 
     /**
      * The price at which Best Offers are automatically accepted. Similar in use to <b>MinimumBestOfferPrice</b>. If a buyer submits a Best Offer that is at or above this value, the offer is automatically accepted by the seller. This applies only to items listed in categories that support the <b>BestOfferAutoAcceptPrice</b> feature.
@@ -835,36 +797,6 @@ class ListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
     }
 
     /**
-     * Gets as sellerBusinessType
-     *
-     * Type of seller account. This value is not returned for most sites.
-     *  This value is not returned for the German site
-     *  (site ID 77) or US eBay Motors site (site ID 0).
-     *
-     * @return string
-     */
-    public function getSellerBusinessType()
-    {
-        return $this->sellerBusinessType;
-    }
-
-    /**
-     * Sets a new sellerBusinessType
-     *
-     * Type of seller account. This value is not returned for most sites.
-     *  This value is not returned for the German site
-     *  (site ID 77) or US eBay Motors site (site ID 0).
-     *
-     * @param string $sellerBusinessType
-     * @return self
-     */
-    public function setSellerBusinessType($sellerBusinessType)
-    {
-        $this->sellerBusinessType = $sellerBusinessType;
-        return $this;
-    }
-
-    /**
      * Gets as minimumBestOfferPrice
      *
      * Specifies the minimum acceptable Best Offer price. If a buyer
@@ -881,9 +813,6 @@ class ListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      *  <DeletedField>Item.ListingDetails.MinimumBestOfferPrice</DeletedField>
      *  </code></pre>
      *  <br>
-     *  <span class="tablenote"><b>Note:</b>
-     *  The Best Offer feature is now available for auction listings on the following sites: US, Canada, UK, Germany, Australia, France, Italy, and Spain. However, sellers must choose between offering Best Offer or Buy It Now on an auction listing, as both features cannot be enabled on the same auction listing. As of January 2019, the value set in this field for an auction listing can be more than the auction start price.
-     *  </span>
      *  <span class="tablenote"><b>Note: </b> This field will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
      *  </span>
      *
@@ -911,9 +840,6 @@ class ListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      *  <DeletedField>Item.ListingDetails.MinimumBestOfferPrice</DeletedField>
      *  </code></pre>
      *  <br>
-     *  <span class="tablenote"><b>Note:</b>
-     *  The Best Offer feature is now available for auction listings on the following sites: US, Canada, UK, Germany, Australia, France, Italy, and Spain. However, sellers must choose between offering Best Offer or Buy It Now on an auction listing, as both features cannot be enabled on the same auction listing. As of January 2019, the value set in this field for an auction listing can be more than the auction start price.
-     *  </span>
      *  <span class="tablenote"><b>Note: </b> This field will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
      *  </span>
      *
@@ -923,32 +849,6 @@ class ListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
     public function setMinimumBestOfferPrice(\Nogrod\eBaySDK\Trading\AmountType $minimumBestOfferPrice)
     {
         $this->minimumBestOfferPrice = $minimumBestOfferPrice;
-        return $this;
-    }
-
-    /**
-     * Gets as minimumBestOfferMessage
-     *
-     * This field is deprecated.
-     *
-     * @return string
-     */
-    public function getMinimumBestOfferMessage()
-    {
-        return $this->minimumBestOfferMessage;
-    }
-
-    /**
-     * Sets a new minimumBestOfferMessage
-     *
-     * This field is deprecated.
-     *
-     * @param string $minimumBestOfferMessage
-     * @return self
-     */
-    public function setMinimumBestOfferMessage($minimumBestOfferMessage)
-    {
-        $this->minimumBestOfferMessage = $minimumBestOfferMessage;
         return $this;
     }
 
@@ -981,42 +881,6 @@ class ListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
     public function setLocalListingDistance($localListingDistance)
     {
         $this->localListingDistance = $localListingDistance;
-        return $this;
-    }
-
-    /**
-     * Gets as tCROriginalItemID
-     *
-     * Indicates the item ID of the original item listing from which a
-     *  Transaction Confirmation Request (TCR) was created. This value is only
-     *  returned when the data for a TCR is retrieved.
-     *  <br>
-     *  <span class="tablenote"><b>Note: </b> This field will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
-     *  </span>
-     *
-     * @return string
-     */
-    public function getTCROriginalItemID()
-    {
-        return $this->tCROriginalItemID;
-    }
-
-    /**
-     * Sets a new tCROriginalItemID
-     *
-     * Indicates the item ID of the original item listing from which a
-     *  Transaction Confirmation Request (TCR) was created. This value is only
-     *  returned when the data for a TCR is retrieved.
-     *  <br>
-     *  <span class="tablenote"><b>Note: </b> This field will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
-     *  </span>
-     *
-     * @param string $tCROriginalItemID
-     * @return self
-     */
-    public function setTCROriginalItemID($tCROriginalItemID)
-    {
-        $this->tCROriginalItemID = $tCROriginalItemID;
         return $this;
     }
 
@@ -1075,32 +939,6 @@ class ListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
     public function setViewItemURLForNaturalSearch($viewItemURLForNaturalSearch)
     {
         $this->viewItemURLForNaturalSearch = $viewItemURLForNaturalSearch;
-        return $this;
-    }
-
-    /**
-     * Gets as payPerLeadEnabled
-     *
-     * This field is deprecated.
-     *
-     * @return bool
-     */
-    public function getPayPerLeadEnabled()
-    {
-        return $this->payPerLeadEnabled;
-    }
-
-    /**
-     * Sets a new payPerLeadEnabled
-     *
-     * This field is deprecated.
-     *
-     * @param bool $payPerLeadEnabled
-     * @return self
-     */
-    public function setPayPerLeadEnabled($payPerLeadEnabled)
-    {
-        $this->payPerLeadEnabled = $payPerLeadEnabled;
         return $this;
     }
 
@@ -1248,34 +1086,17 @@ class ListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BuyItNowAvailable", $value);
         }
-        $value = $this->getSellerBusinessType();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SellerBusinessType", $value);
-        }
         $value = $this->getMinimumBestOfferPrice();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MinimumBestOfferPrice", $value);
-        }
-        $value = $this->getMinimumBestOfferMessage();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MinimumBestOfferMessage", $value);
         }
         $value = $this->getLocalListingDistance();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}LocalListingDistance", $value);
         }
-        $value = $this->getTCROriginalItemID();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TCROriginalItemID", $value);
-        }
         $value = $this->getViewItemURLForNaturalSearch();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ViewItemURLForNaturalSearch", $value);
-        }
-        $value = $this->getPayPerLeadEnabled();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PayPerLeadEnabled", $value);
         }
         $value = $this->getBestOfferAutoAcceptPrice();
         if (null !== $value) {
@@ -1361,33 +1182,17 @@ class ListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
         if (null !== $value) {
             $this->setBuyItNowAvailable($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerBusinessType');
-        if (null !== $value) {
-            $this->setSellerBusinessType($value);
-        }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MinimumBestOfferPrice');
         if (null !== $value) {
             $this->setMinimumBestOfferPrice(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MinimumBestOfferMessage');
-        if (null !== $value) {
-            $this->setMinimumBestOfferMessage($value);
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LocalListingDistance');
         if (null !== $value) {
             $this->setLocalListingDistance($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TCROriginalItemID');
-        if (null !== $value) {
-            $this->setTCROriginalItemID($value);
-        }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ViewItemURLForNaturalSearch');
         if (null !== $value) {
             $this->setViewItemURLForNaturalSearch($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PayPerLeadEnabled');
-        if (null !== $value) {
-            $this->setPayPerLeadEnabled($value);
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BestOfferAutoAcceptPrice');
         if (null !== $value) {

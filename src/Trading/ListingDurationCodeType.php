@@ -8,10 +8,6 @@ namespace Nogrod\eBaySDK\Trading;
  * This enumerated type contains the list of values that can be used by the seller to set the duration (number of days or Good 'Til Cancelled) of a listing.
  *  <br><br>
  *  Listing durations available to the seller vary based on the site, category, listing type, and the seller's selling profile, so it is a best practice for the seller to call <b>GetCategoryFeatures</b> with <b>ListingDurations</b> included as a <b>FeatureID</b> value in the call request. The <b>GetCategoryFeatures</b> response will include the complete list of listing duration values that can be used for the various listing types.
- *  <br>
- *  <br>
- *  <span class="tablenote"><b>Note: </b> As of April 1, 2019, <code>GTC</code> (Good 'Til Cancelled) is the only supported listing duration for fixed-price listings on all eBay marketplaces and categories except for motor vehicle listings on eBay Motors US, and on the eBay UK and eBay Italy sites. Sellers do not have to take any action on existing listings with listing durations other than GTC, but if/when these items need to be relisted, only GTC will be supported. If any other listing duration value besides <code>GTC</code> is specified in this field, it will be ignored, and GTC will be used instead.
- *  </span>
  * XSD Type: ListingDurationCodeType
  */
 class ListingDurationCodeType
@@ -130,28 +126,17 @@ class ListingDurationCodeType
      * listing), or the seller ends the fixed-price listing.
      *  <br>
      *  <br>
-     *  <span class="tablenote"><b>Note: </b> As of April 1, 2019, <code>GTC</code>
-     * (Good 'Til Cancelled) is the only supported listing duration for fixed-price
-     * listings on all eBay marketplaces and categories except for motor vehicle
-     * listings on eBay Motors US, and on the eBay UK and eBay Italy sites. Sellers do
-     * not have to take any action on existing listings with listing durations other
-     * than GTC, but if/when these items need to be relisted, only GTC will be
-     * supported. If any other listing duration value besides <code>GTC</code> is
-     * specified in this field, it will be ignored, and GTC will be used instead.
+     *  <span class="tablenote"><b>Note: </b>
+     *  The <code>GTC</code> (Good 'Til Cancelled) value is the only supported listing
+     * duration for fixed-price listings on all eBay marketplaces and categories except
+     * for motor vehicle listings on eBay Motors US, and on the eBay UK and eBay Italy
+     * sites.
      *  </span>
      *  <br>
      *  <span class="tablenote"><b>Note: </b>
-     *  On July 1, 2019, the Good 'Til Cancelled renewal schedule was modified from
-     * every 30 days to once per calendar month. For example, if a GTC listing is
-     * created July 5, the next monthly renewal date will be August 5. If a GTC listing
-     * is created on the 31st of the month, but the following month only has 30 days,
-     * the renewal will happen on the 30th in the following month. Finally, if a GTC
-     * listing is created on January 29-31, the renewal will happen on February 28th
-     * (or 29th during a 'Leap Year'). See the
-     *  <a
-     * href="https://pages.ebay.com/seller-center/seller-updates/2019-spring/marketplace-updates.html#good-til-cancelled"
-     * target="_blank">Good 'Til Cancelled listings update</a> in the <b>Spring 2019
-     * Seller Updates</b> for more information about this change.
+     *  As long as a fixed-price listing has inventory available, or if the
+     * out-of-stock control feature is being used, GTC listings are automatically
+     * renewed each month according to the calendar day.
      *  </span>
      */
     public const VAL_GTC = 'GTC';

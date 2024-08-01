@@ -31,13 +31,6 @@ class GetUserRequestType extends AbstractRequestType
     private $userID = null;
 
     /**
-     * This field is deprecated.
-     *
-     * @var bool $includeExpressRequirements
-     */
-    private $includeExpressRequirements = null;
-
-    /**
      * If the <b>IncludeFeatureEligibility</b> flag is included and set to 'true', the call response will include a <b>QualifiesForSelling</b> flag which indicates if the eBay user is eligible to sell on eBay, and a <b>IncludeFeatureEligibility</b> container which indicates which selling features are available to the user.
      *
      * @var bool $includeFeatureEligibility
@@ -105,32 +98,6 @@ class GetUserRequestType extends AbstractRequestType
     }
 
     /**
-     * Gets as includeExpressRequirements
-     *
-     * This field is deprecated.
-     *
-     * @return bool
-     */
-    public function getIncludeExpressRequirements()
-    {
-        return $this->includeExpressRequirements;
-    }
-
-    /**
-     * Sets a new includeExpressRequirements
-     *
-     * This field is deprecated.
-     *
-     * @param bool $includeExpressRequirements
-     * @return self
-     */
-    public function setIncludeExpressRequirements($includeExpressRequirements)
-    {
-        $this->includeExpressRequirements = $includeExpressRequirements;
-        return $this;
-    }
-
-    /**
      * Gets as includeFeatureEligibility
      *
      * If the <b>IncludeFeatureEligibility</b> flag is included and set to 'true', the call response will include a <b>QualifiesForSelling</b> flag which indicates if the eBay user is eligible to sell on eBay, and a <b>IncludeFeatureEligibility</b> container which indicates which selling features are available to the user.
@@ -167,11 +134,6 @@ class GetUserRequestType extends AbstractRequestType
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}UserID", $value);
         }
-        $value = $this->getIncludeExpressRequirements();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}IncludeExpressRequirements", $value);
-        }
         $value = $this->getIncludeFeatureEligibility();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;
         if (null !== $value) {
@@ -201,10 +163,6 @@ class GetUserRequestType extends AbstractRequestType
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UserID');
         if (null !== $value) {
             $this->setUserID($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}IncludeExpressRequirements');
-        if (null !== $value) {
-            $this->setIncludeExpressRequirements($value);
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}IncludeFeatureEligibility');
         if (null !== $value) {

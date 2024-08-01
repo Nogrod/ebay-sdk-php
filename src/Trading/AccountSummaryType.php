@@ -112,13 +112,6 @@ class AccountSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
     private $currentBalance = null;
 
     /**
-     * Email address on file for the user account. You cannot retrieve an email address for any user with whom you do not have a transactional relationship, regardless of site. Email is only returned for applicable calls when you are retrieving your own user data OR when you and the other user are in a transactional relationship and the call is being executed within a certain amount of time after the transaction is created.
-     *
-     * @var string $email
-     */
-    private $email = null;
-
-    /**
      * This field specifies the balance for the invoice. This field is only returned if the <b>AccountHistorySelection</b> input field's value was set to <code>LastInvoice</code>. This field is not returned if the <b>AccountHistorySelection</b> input field's value was set to <code>BetweenSpecifiedDates</code> and a custom time period (overlapping multiple billing cycles) was specified. The value is positive for debits and negative for credits.
      *
      * @var \Nogrod\eBaySDK\Trading\AmountType $invoiceBalance
@@ -552,32 +545,6 @@ class AccountSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
     }
 
     /**
-     * Gets as email
-     *
-     * Email address on file for the user account. You cannot retrieve an email address for any user with whom you do not have a transactional relationship, regardless of site. Email is only returned for applicable calls when you are retrieving your own user data OR when you and the other user are in a transactional relationship and the call is being executed within a certain amount of time after the transaction is created.
-     *
-     * @return string
-     */
-    public function getEmail()
-    {
-        return $this->email;
-    }
-
-    /**
-     * Sets a new email
-     *
-     * Email address on file for the user account. You cannot retrieve an email address for any user with whom you do not have a transactional relationship, regardless of site. Email is only returned for applicable calls when you are retrieving your own user data OR when you and the other user are in a transactional relationship and the call is being executed within a certain amount of time after the transaction is created.
-     *
-     * @param string $email
-     * @return self
-     */
-    public function setEmail($email)
-    {
-        $this->email = $email;
-        return $this;
-    }
-
-    /**
      * Gets as invoiceBalance
      *
      * This field specifies the balance for the invoice. This field is only returned if the <b>AccountHistorySelection</b> input field's value was set to <code>LastInvoice</code>. This field is not returned if the <b>AccountHistorySelection</b> input field's value was set to <code>BetweenSpecifiedDates</code> and a custom time period (overlapping multiple billing cycles) was specified. The value is positive for debits and negative for credits.
@@ -814,10 +781,6 @@ class AccountSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CurrentBalance", $value);
         }
-        $value = $this->getEmail();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Email", $value);
-        }
         $value = $this->getInvoiceBalance();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}InvoiceBalance", $value);
@@ -914,10 +877,6 @@ class AccountSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CurrentBalance');
         if (null !== $value) {
             $this->setCurrentBalance(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Email');
-        if (null !== $value) {
-            $this->setEmail($value);
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}InvoiceBalance');
         if (null !== $value) {

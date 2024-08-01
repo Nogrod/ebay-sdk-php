@@ -143,17 +143,9 @@ class ListingTypeCodeType
      *  <br>
      *  <br>
      *  <span class="tablenote"><b>Note: </b>
-     *  As of July 1, 2019, the Good 'Til Cancelled renewal schedule has been modified
-     * from every 30 days to once per calendar month. For example, if a GTC listing is
-     * created July 5, the next monthly renewal date will be August 5. If a GTC listing
-     * is created on the 31st of the month, but the following month only has 30 days,
-     * the renewal will happen on the 30th in the following month. Finally, if a GTC
-     * listing is created on January 29-31, the renewal will happen on February 28th
-     * (or 29th during a 'Leap Year'). See the
-     *  <a
-     * href="https://pages.ebay.com/seller-center/seller-updates/2019-spring/marketplace-updates.html#good-til-cancelled"
-     * target="_blank">Good 'Til Cancelled listings update</a> in the <b>Spring 2019
-     * Seller Updates</b> for more information about this change.
+     *  As long as a fixed-price listing has inventory available, or if the
+     * out-of-stock control feature is being used, GTC listings are automatically
+     * renewed each month according to the calendar day.
      *  </span>
      */
     public const VAL_FIXED_PRICE_ITEM = 'FixedPriceItem';

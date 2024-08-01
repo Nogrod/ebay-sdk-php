@@ -38,14 +38,3 @@ Nogrod\eBaySDK\Trading\EndItemRequestContainerType:
                 getter: getMessageID
                 setter: setMessageID
             type: string
-        sellerInventoryID:
-            expose: true
-            access_type: public_method
-            serialized_name: SellerInventoryID
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getSellerInventoryID
-                setter: setSellerInventoryID
-            type: string

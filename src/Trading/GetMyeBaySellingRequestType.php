@@ -49,14 +49,9 @@ class GetMyeBaySellingRequestType extends AbstractRequestType
     private $unsoldList = null;
 
     /**
-     * This container is deprecated as a Bid List is no longer returned in <b>GetMyeBaySelling</b>.
-     *
-     * @var \Nogrod\eBaySDK\Trading\ItemListCustomizationType $bidList
-     */
-    private $bidList = null;
-
-    /**
-     * Include this container and set the <b>DeletedFromSoldList.Include</b> field to <code>true</code> to return the list of sold order line items that have since been deleted from the seller's My eBay page.
+     * <span class="tablenote"><b>Note: </b> This container is deprecated and will stop being supported in <b>GetMyeBaySelling</b> starting August 19, 2024. If this container is included in the request after this date, a warning is triggered and the containers are ignored.
+     *  </span>
+     *  Include this container and set the <b>DeletedFromSoldList.Include</b> field to <code>true</code> to return the list of sold order line items that have since been deleted from the seller's My eBay page.
      *  <br><br>
      *  The user also has the option of using pagination and sorting for the list of deleted, sold items that will be returned.
      *
@@ -65,7 +60,9 @@ class GetMyeBaySellingRequestType extends AbstractRequestType
     private $deletedFromSoldList = null;
 
     /**
-     * Include this container and set the <b>DeletedFromUnsoldList.Include</b> field to <code>true</code> to return the list of unsold order line items that have since been deleted from the seller's My eBay page.
+     * <span class="tablenote"><b>Note: </b> This container is deprecated and will stop being supported in <b>GetMyeBaySelling</b> starting August 19, 2024. If this container is included in the request after this date, a warning is triggered and the containers are ignored.
+     *  </span>
+     *  Include this container and set the <b>DeletedFromUnsoldList.Include</b> field to <code>true</code> to return the list of unsold order line items that have since been deleted from the seller's My eBay page.
      *  <br><br>
      *  The user also has the option of using pagination and sorting for the list of deleted, unsold items that will be returned.
      *
@@ -209,35 +206,11 @@ class GetMyeBaySellingRequestType extends AbstractRequestType
     }
 
     /**
-     * Gets as bidList
-     *
-     * This container is deprecated as a Bid List is no longer returned in <b>GetMyeBaySelling</b>.
-     *
-     * @return \Nogrod\eBaySDK\Trading\ItemListCustomizationType
-     */
-    public function getBidList()
-    {
-        return $this->bidList;
-    }
-
-    /**
-     * Sets a new bidList
-     *
-     * This container is deprecated as a Bid List is no longer returned in <b>GetMyeBaySelling</b>.
-     *
-     * @param \Nogrod\eBaySDK\Trading\ItemListCustomizationType $bidList
-     * @return self
-     */
-    public function setBidList(\Nogrod\eBaySDK\Trading\ItemListCustomizationType $bidList)
-    {
-        $this->bidList = $bidList;
-        return $this;
-    }
-
-    /**
      * Gets as deletedFromSoldList
      *
-     * Include this container and set the <b>DeletedFromSoldList.Include</b> field to <code>true</code> to return the list of sold order line items that have since been deleted from the seller's My eBay page.
+     * <span class="tablenote"><b>Note: </b> This container is deprecated and will stop being supported in <b>GetMyeBaySelling</b> starting August 19, 2024. If this container is included in the request after this date, a warning is triggered and the containers are ignored.
+     *  </span>
+     *  Include this container and set the <b>DeletedFromSoldList.Include</b> field to <code>true</code> to return the list of sold order line items that have since been deleted from the seller's My eBay page.
      *  <br><br>
      *  The user also has the option of using pagination and sorting for the list of deleted, sold items that will be returned.
      *
@@ -251,7 +224,9 @@ class GetMyeBaySellingRequestType extends AbstractRequestType
     /**
      * Sets a new deletedFromSoldList
      *
-     * Include this container and set the <b>DeletedFromSoldList.Include</b> field to <code>true</code> to return the list of sold order line items that have since been deleted from the seller's My eBay page.
+     * <span class="tablenote"><b>Note: </b> This container is deprecated and will stop being supported in <b>GetMyeBaySelling</b> starting August 19, 2024. If this container is included in the request after this date, a warning is triggered and the containers are ignored.
+     *  </span>
+     *  Include this container and set the <b>DeletedFromSoldList.Include</b> field to <code>true</code> to return the list of sold order line items that have since been deleted from the seller's My eBay page.
      *  <br><br>
      *  The user also has the option of using pagination and sorting for the list of deleted, sold items that will be returned.
      *
@@ -267,7 +242,9 @@ class GetMyeBaySellingRequestType extends AbstractRequestType
     /**
      * Gets as deletedFromUnsoldList
      *
-     * Include this container and set the <b>DeletedFromUnsoldList.Include</b> field to <code>true</code> to return the list of unsold order line items that have since been deleted from the seller's My eBay page.
+     * <span class="tablenote"><b>Note: </b> This container is deprecated and will stop being supported in <b>GetMyeBaySelling</b> starting August 19, 2024. If this container is included in the request after this date, a warning is triggered and the containers are ignored.
+     *  </span>
+     *  Include this container and set the <b>DeletedFromUnsoldList.Include</b> field to <code>true</code> to return the list of unsold order line items that have since been deleted from the seller's My eBay page.
      *  <br><br>
      *  The user also has the option of using pagination and sorting for the list of deleted, unsold items that will be returned.
      *
@@ -281,7 +258,9 @@ class GetMyeBaySellingRequestType extends AbstractRequestType
     /**
      * Sets a new deletedFromUnsoldList
      *
-     * Include this container and set the <b>DeletedFromUnsoldList.Include</b> field to <code>true</code> to return the list of unsold order line items that have since been deleted from the seller's My eBay page.
+     * <span class="tablenote"><b>Note: </b> This container is deprecated and will stop being supported in <b>GetMyeBaySelling</b> starting August 19, 2024. If this container is included in the request after this date, a warning is triggered and the containers are ignored.
+     *  </span>
+     *  Include this container and set the <b>DeletedFromUnsoldList.Include</b> field to <code>true</code> to return the list of unsold order line items that have since been deleted from the seller's My eBay page.
      *  <br><br>
      *  The user also has the option of using pagination and sorting for the list of deleted, unsold items that will be returned.
      *
@@ -367,10 +346,6 @@ class GetMyeBaySellingRequestType extends AbstractRequestType
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}UnsoldList", $value);
         }
-        $value = $this->getBidList();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BidList", $value);
-        }
         $value = $this->getDeletedFromSoldList();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DeletedFromSoldList", $value);
@@ -420,10 +395,6 @@ class GetMyeBaySellingRequestType extends AbstractRequestType
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UnsoldList');
         if (null !== $value) {
             $this->setUnsoldList(\Nogrod\eBaySDK\Trading\ItemListCustomizationType::fromKeyValue($value));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BidList');
-        if (null !== $value) {
-            $this->setBidList(\Nogrod\eBaySDK\Trading\ItemListCustomizationType::fromKeyValue($value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DeletedFromSoldList');
         if (null !== $value) {

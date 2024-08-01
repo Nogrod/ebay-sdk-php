@@ -82,28 +82,6 @@ Nogrod\eBaySDK\Trading\TransactionStatusType:
                 getter: getPaymentHoldStatus
                 setter: setPaymentHoldStatus
             type: string
-        integratedMerchantCreditCardEnabled:
-            expose: true
-            access_type: public_method
-            serialized_name: IntegratedMerchantCreditCardEnabled
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getIntegratedMerchantCreditCardEnabled
-                setter: setIntegratedMerchantCreditCardEnabled
-            type: bool
-        eBayPaymentMismatchDetails:
-            expose: true
-            access_type: public_method
-            serialized_name: eBayPaymentMismatchDetails
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getEBayPaymentMismatchDetails
-                setter: setEBayPaymentMismatchDetails
-            type: Nogrod\eBaySDK\Trading\EBayPaymentMismatchDetailsType
         inquiryStatus:
             expose: true
             access_type: public_method

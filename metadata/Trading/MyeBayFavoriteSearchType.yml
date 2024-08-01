@@ -196,17 +196,6 @@ Nogrod\eBaySDK\Trading\MyeBayFavoriteSearchType:
                 entry_name: SearchFlag
                 namespace: 'urn:ebay:apis:eBLBaseComponents'
             type: array<string>
-        paymentMethod:
-            expose: true
-            access_type: public_method
-            serialized_name: PaymentMethod
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getPaymentMethod
-                setter: setPaymentMethod
-            type: string
         preferredLocation:
             expose: true
             access_type: public_method

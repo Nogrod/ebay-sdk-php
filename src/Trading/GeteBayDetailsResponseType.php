@@ -191,15 +191,6 @@ class GeteBayDetailsResponseType extends AbstractResponseType
     ];
 
     /**
-     * Units of measurement are no longer returned in GeteBayDetails, so this container is no longer applicable.
-     *
-     * @var \Nogrod\eBaySDK\Trading\UnitOfMeasurementDetailsType[] $unitOfMeasurementDetails
-     */
-    private $unitOfMeasurementDetails = [
-
-    ];
-
-    /**
      * Lists the worldwide regions and individual countries that can be set as shipping locations from the specified eBay site.
      *  <br/><br/>
      *  <span class="tablenote"><b>Note: </b>
@@ -259,15 +250,6 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      * @var \Nogrod\eBaySDK\Trading\ReturnPolicyDetailsType $returnPolicyDetails
      */
     private $returnPolicyDetails = null;
-
-    /**
-     * <span class="tablenote"><b>Note: </b>
-     *  This container has been deprecated. The <b>GetCategoryFeatures</b> call must be used instead to retrieve category-level, international return policy metadata.
-     *  </span>
-     *
-     * @var \Nogrod\eBaySDK\Trading\ReturnPolicyDetailsType $internationalReturnPolicyDetails
-     */
-    private $internationalReturnPolicyDetails = null;
 
     /**
      * Lists the minimum starting prices for the supported types of eBay listings.
@@ -1552,72 +1534,6 @@ class GeteBayDetailsResponseType extends AbstractResponseType
     }
 
     /**
-     * Adds as unitOfMeasurementDetails
-     *
-     * Units of measurement are no longer returned in GeteBayDetails, so this container is no longer applicable.
-     *
-     * @return self
-     * @param \Nogrod\eBaySDK\Trading\UnitOfMeasurementDetailsType $unitOfMeasurementDetails
-     */
-    public function addToUnitOfMeasurementDetails(\Nogrod\eBaySDK\Trading\UnitOfMeasurementDetailsType $unitOfMeasurementDetails)
-    {
-        $this->unitOfMeasurementDetails[] = $unitOfMeasurementDetails;
-        return $this;
-    }
-
-    /**
-     * isset unitOfMeasurementDetails
-     *
-     * Units of measurement are no longer returned in GeteBayDetails, so this container is no longer applicable.
-     *
-     * @param int|string $index
-     * @return bool
-     */
-    public function issetUnitOfMeasurementDetails($index)
-    {
-        return isset($this->unitOfMeasurementDetails[$index]);
-    }
-
-    /**
-     * unset unitOfMeasurementDetails
-     *
-     * Units of measurement are no longer returned in GeteBayDetails, so this container is no longer applicable.
-     *
-     * @param int|string $index
-     * @return void
-     */
-    public function unsetUnitOfMeasurementDetails($index)
-    {
-        unset($this->unitOfMeasurementDetails[$index]);
-    }
-
-    /**
-     * Gets as unitOfMeasurementDetails
-     *
-     * Units of measurement are no longer returned in GeteBayDetails, so this container is no longer applicable.
-     *
-     * @return \Nogrod\eBaySDK\Trading\UnitOfMeasurementDetailsType[]
-     */
-    public function getUnitOfMeasurementDetails()
-    {
-        return $this->unitOfMeasurementDetails;
-    }
-
-    /**
-     * Sets a new unitOfMeasurementDetails
-     *
-     * Units of measurement are no longer returned in GeteBayDetails, so this container is no longer applicable.
-     *
-     * @param \Nogrod\eBaySDK\Trading\UnitOfMeasurementDetailsType[] $unitOfMeasurementDetails
-     * @return self
-     */
-    public function setUnitOfMeasurementDetails(array $unitOfMeasurementDetails)
-    {
-        $this->unitOfMeasurementDetails = $unitOfMeasurementDetails;
-        return $this;
-    }
-
-    /**
      * Adds as regionOfOriginDetails
      *
      * Lists the worldwide regions and individual countries that can be set as shipping locations from the specified eBay site.
@@ -1946,36 +1862,6 @@ class GeteBayDetailsResponseType extends AbstractResponseType
     public function setReturnPolicyDetails(\Nogrod\eBaySDK\Trading\ReturnPolicyDetailsType $returnPolicyDetails)
     {
         $this->returnPolicyDetails = $returnPolicyDetails;
-        return $this;
-    }
-
-    /**
-     * Gets as internationalReturnPolicyDetails
-     *
-     * <span class="tablenote"><b>Note: </b>
-     *  This container has been deprecated. The <b>GetCategoryFeatures</b> call must be used instead to retrieve category-level, international return policy metadata.
-     *  </span>
-     *
-     * @return \Nogrod\eBaySDK\Trading\ReturnPolicyDetailsType
-     */
-    public function getInternationalReturnPolicyDetails()
-    {
-        return $this->internationalReturnPolicyDetails;
-    }
-
-    /**
-     * Sets a new internationalReturnPolicyDetails
-     *
-     * <span class="tablenote"><b>Note: </b>
-     *  This container has been deprecated. The <b>GetCategoryFeatures</b> call must be used instead to retrieve category-level, international return policy metadata.
-     *  </span>
-     *
-     * @param \Nogrod\eBaySDK\Trading\ReturnPolicyDetailsType $internationalReturnPolicyDetails
-     * @return self
-     */
-    public function setInternationalReturnPolicyDetails(\Nogrod\eBaySDK\Trading\ReturnPolicyDetailsType $internationalReturnPolicyDetails)
-    {
-        $this->internationalReturnPolicyDetails = $internationalReturnPolicyDetails;
         return $this;
     }
 
@@ -2784,10 +2670,6 @@ class GeteBayDetailsResponseType extends AbstractResponseType
         if (null !== $value && !empty($this->getItemSpecificDetails())) {
             $writer->write(array_map(function ($v) {return ["ItemSpecificDetails" => $v];}, $value));
         }
-        $value = $this->getUnitOfMeasurementDetails();
-        if (null !== $value && !empty($this->getUnitOfMeasurementDetails())) {
-            $writer->write(array_map(function ($v) {return ["UnitOfMeasurementDetails" => $v];}, $value));
-        }
         $value = $this->getRegionOfOriginDetails();
         if (null !== $value && !empty($this->getRegionOfOriginDetails())) {
             $writer->write(array_map(function ($v) {return ["RegionOfOriginDetails" => $v];}, $value));
@@ -2803,10 +2685,6 @@ class GeteBayDetailsResponseType extends AbstractResponseType
         $value = $this->getReturnPolicyDetails();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ReturnPolicyDetails", $value);
-        }
-        $value = $this->getInternationalReturnPolicyDetails();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}InternationalReturnPolicyDetails", $value);
         }
         $value = $this->getListingStartPriceDetails();
         if (null !== $value && !empty($this->getListingStartPriceDetails())) {
@@ -2909,10 +2787,6 @@ class GeteBayDetailsResponseType extends AbstractResponseType
         if (null !== $value && !empty($value)) {
             $this->setItemSpecificDetails(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\ItemSpecificDetailsType::fromKeyValue($v);}, $value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UnitOfMeasurementDetails', true);
-        if (null !== $value && !empty($value)) {
-            $this->setUnitOfMeasurementDetails(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\UnitOfMeasurementDetailsType::fromKeyValue($v);}, $value));
-        }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RegionOfOriginDetails', true);
         if (null !== $value && !empty($value)) {
             $this->setRegionOfOriginDetails(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\RegionOfOriginDetailsType::fromKeyValue($v);}, $value));
@@ -2928,10 +2802,6 @@ class GeteBayDetailsResponseType extends AbstractResponseType
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReturnPolicyDetails');
         if (null !== $value) {
             $this->setReturnPolicyDetails(\Nogrod\eBaySDK\Trading\ReturnPolicyDetailsType::fromKeyValue($value));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}InternationalReturnPolicyDetails');
-        if (null !== $value) {
-            $this->setInternationalReturnPolicyDetails(\Nogrod\eBaySDK\Trading\ReturnPolicyDetailsType::fromKeyValue($value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ListingStartPriceDetails', true);
         if (null !== $value && !empty($value)) {

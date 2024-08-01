@@ -27,13 +27,6 @@ class ExtendedContactDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
     private $classifiedAdContactByEmailEnabled = null;
 
     /**
-     * This field is deprecated.
-     *
-     * @var string $payPerLeadPhoneNumber
-     */
-    private $payPerLeadPhoneNumber = null;
-
-    /**
      * Gets as contactHoursDetails
      *
      * This containers consists of fields that allows the seller of a Classified Ad listing to tell potential buyers what days and times they may be contacted to inquire about the listing.
@@ -85,32 +78,6 @@ class ExtendedContactDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
         return $this;
     }
 
-    /**
-     * Gets as payPerLeadPhoneNumber
-     *
-     * This field is deprecated.
-     *
-     * @return string
-     */
-    public function getPayPerLeadPhoneNumber()
-    {
-        return $this->payPerLeadPhoneNumber;
-    }
-
-    /**
-     * Sets a new payPerLeadPhoneNumber
-     *
-     * This field is deprecated.
-     *
-     * @param string $payPerLeadPhoneNumber
-     * @return self
-     */
-    public function setPayPerLeadPhoneNumber($payPerLeadPhoneNumber)
-    {
-        $this->payPerLeadPhoneNumber = $payPerLeadPhoneNumber;
-        return $this;
-    }
-
     public function xmlSerialize(\Sabre\Xml\Writer $writer): void
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
@@ -122,10 +89,6 @@ class ExtendedContactDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
         $value = null !== $value ? ($value ? 'true' : 'false') : null;
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ClassifiedAdContactByEmailEnabled", $value);
-        }
-        $value = $this->getPayPerLeadPhoneNumber();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PayPerLeadPhoneNumber", $value);
         }
     }
 
@@ -150,10 +113,6 @@ class ExtendedContactDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ClassifiedAdContactByEmailEnabled');
         if (null !== $value) {
             $this->setClassifiedAdContactByEmailEnabled($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PayPerLeadPhoneNumber');
-        if (null !== $value) {
-            $this->setPayPerLeadPhoneNumber($value);
         }
     }
 }

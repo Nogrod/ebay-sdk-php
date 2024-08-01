@@ -104,17 +104,6 @@ Nogrod\eBaySDK\Trading\MyMessagesMessageType:
                 getter: getRead
                 setter: setRead
             type: bool
-        creationDate:
-            expose: true
-            access_type: public_method
-            serialized_name: CreationDate
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getCreationDate
-                setter: setCreationDate
-            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime
         receiveDate:
             expose: true
             access_type: public_method

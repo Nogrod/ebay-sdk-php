@@ -63,10 +63,10 @@ class TransactionStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
     private $buyerSelectedShipping = null;
 
     /**
-     * This field indicates the type and/or status of a payment hold on the item.
+     * This field indicates the type and/or status of a payment hold on the item. If there is no hold against the item, this field is returned with a value of <code>NotApplicable</code>.
      *  <br>
      *  <span class="tablenote"><b>Note:</b>
-     *  For the <strong>GetItemTransactions</strong>, <strong>GetOrders</strong>, and <strong>GetOrderTransactions</strong> calls, this field is only returned to the seller of the order; this field is not returned for the buyer or third party.
+     *  For the <strong>GetItemTransactions</strong> and <strong>GetOrders</strong>, calls, this field is only returned to the seller of the order; this field is not returned for the buyer or third party.
      *  </span>
      *
      * @var string $paymentHoldStatus
@@ -74,31 +74,14 @@ class TransactionStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
     private $paymentHoldStatus = null;
 
     /**
-     * This field is no longer applicable as eBay sellers can no longer use iMCC gateway accounts to handle buyer payments.
-     *  <br>
-     *  <span class="tablenote"><b>Note: </b> This field is deprecated and will stop being returned in order management calls on January 31, 2024.
-     *  </span>
-     *
-     * @var bool $integratedMerchantCreditCardEnabled
-     */
-    private $integratedMerchantCreditCardEnabled = null;
-
-    /**
-     * This container is no longer used.
-     *
-     * @var \Nogrod\eBaySDK\Trading\EBayPaymentMismatchDetailsType $eBayPaymentMismatchDetails
-     */
-    private $eBayPaymentMismatchDetails = null;
-
-    /**
-     * This field gives the status of a buyer's Item Not Received (INR) Inquiry. This field is only returned if the buyer has created an INR Inquiry through the site or through the Post-Order API.
+     * This field gives the status of a buyer's Item Not Received (INR) Inquiry if the buyer has created an INR Inquiry through the site or through the Post-Order API. If there is no INR inquiry or return request filed against the order, this field is returned with a value of <code>NotApplicable</code>.
      *
      * @var string $inquiryStatus
      */
     private $inquiryStatus = null;
 
     /**
-     * This field gives the status of a buyer's return request. This field is only returned if the buyer has initiated a return request, or has escalated an existing return request into a return case.
+     * This field gives the status of a buyer's return request if the buyer has initiated a return request or has escalated an existing return request into a return case. If there is no return request filed against the order or no escalation, this field is returned with a value of <code>NotApplicable</code>.
      *
      * @var string $returnStatus
      */
@@ -300,10 +283,10 @@ class TransactionStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
     /**
      * Gets as paymentHoldStatus
      *
-     * This field indicates the type and/or status of a payment hold on the item.
+     * This field indicates the type and/or status of a payment hold on the item. If there is no hold against the item, this field is returned with a value of <code>NotApplicable</code>.
      *  <br>
      *  <span class="tablenote"><b>Note:</b>
-     *  For the <strong>GetItemTransactions</strong>, <strong>GetOrders</strong>, and <strong>GetOrderTransactions</strong> calls, this field is only returned to the seller of the order; this field is not returned for the buyer or third party.
+     *  For the <strong>GetItemTransactions</strong> and <strong>GetOrders</strong>, calls, this field is only returned to the seller of the order; this field is not returned for the buyer or third party.
      *  </span>
      *
      * @return string
@@ -316,10 +299,10 @@ class TransactionStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
     /**
      * Sets a new paymentHoldStatus
      *
-     * This field indicates the type and/or status of a payment hold on the item.
+     * This field indicates the type and/or status of a payment hold on the item. If there is no hold against the item, this field is returned with a value of <code>NotApplicable</code>.
      *  <br>
      *  <span class="tablenote"><b>Note:</b>
-     *  For the <strong>GetItemTransactions</strong>, <strong>GetOrders</strong>, and <strong>GetOrderTransactions</strong> calls, this field is only returned to the seller of the order; this field is not returned for the buyer or third party.
+     *  For the <strong>GetItemTransactions</strong> and <strong>GetOrders</strong>, calls, this field is only returned to the seller of the order; this field is not returned for the buyer or third party.
      *  </span>
      *
      * @param string $paymentHoldStatus
@@ -332,67 +315,9 @@ class TransactionStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
     }
 
     /**
-     * Gets as integratedMerchantCreditCardEnabled
-     *
-     * This field is no longer applicable as eBay sellers can no longer use iMCC gateway accounts to handle buyer payments.
-     *  <br>
-     *  <span class="tablenote"><b>Note: </b> This field is deprecated and will stop being returned in order management calls on January 31, 2024.
-     *  </span>
-     *
-     * @return bool
-     */
-    public function getIntegratedMerchantCreditCardEnabled()
-    {
-        return $this->integratedMerchantCreditCardEnabled;
-    }
-
-    /**
-     * Sets a new integratedMerchantCreditCardEnabled
-     *
-     * This field is no longer applicable as eBay sellers can no longer use iMCC gateway accounts to handle buyer payments.
-     *  <br>
-     *  <span class="tablenote"><b>Note: </b> This field is deprecated and will stop being returned in order management calls on January 31, 2024.
-     *  </span>
-     *
-     * @param bool $integratedMerchantCreditCardEnabled
-     * @return self
-     */
-    public function setIntegratedMerchantCreditCardEnabled($integratedMerchantCreditCardEnabled)
-    {
-        $this->integratedMerchantCreditCardEnabled = $integratedMerchantCreditCardEnabled;
-        return $this;
-    }
-
-    /**
-     * Gets as eBayPaymentMismatchDetails
-     *
-     * This container is no longer used.
-     *
-     * @return \Nogrod\eBaySDK\Trading\EBayPaymentMismatchDetailsType
-     */
-    public function getEBayPaymentMismatchDetails()
-    {
-        return $this->eBayPaymentMismatchDetails;
-    }
-
-    /**
-     * Sets a new eBayPaymentMismatchDetails
-     *
-     * This container is no longer used.
-     *
-     * @param \Nogrod\eBaySDK\Trading\EBayPaymentMismatchDetailsType $eBayPaymentMismatchDetails
-     * @return self
-     */
-    public function setEBayPaymentMismatchDetails(\Nogrod\eBaySDK\Trading\EBayPaymentMismatchDetailsType $eBayPaymentMismatchDetails)
-    {
-        $this->eBayPaymentMismatchDetails = $eBayPaymentMismatchDetails;
-        return $this;
-    }
-
-    /**
      * Gets as inquiryStatus
      *
-     * This field gives the status of a buyer's Item Not Received (INR) Inquiry. This field is only returned if the buyer has created an INR Inquiry through the site or through the Post-Order API.
+     * This field gives the status of a buyer's Item Not Received (INR) Inquiry if the buyer has created an INR Inquiry through the site or through the Post-Order API. If there is no INR inquiry or return request filed against the order, this field is returned with a value of <code>NotApplicable</code>.
      *
      * @return string
      */
@@ -404,7 +329,7 @@ class TransactionStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
     /**
      * Sets a new inquiryStatus
      *
-     * This field gives the status of a buyer's Item Not Received (INR) Inquiry. This field is only returned if the buyer has created an INR Inquiry through the site or through the Post-Order API.
+     * This field gives the status of a buyer's Item Not Received (INR) Inquiry if the buyer has created an INR Inquiry through the site or through the Post-Order API. If there is no INR inquiry or return request filed against the order, this field is returned with a value of <code>NotApplicable</code>.
      *
      * @param string $inquiryStatus
      * @return self
@@ -418,7 +343,7 @@ class TransactionStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
     /**
      * Gets as returnStatus
      *
-     * This field gives the status of a buyer's return request. This field is only returned if the buyer has initiated a return request, or has escalated an existing return request into a return case.
+     * This field gives the status of a buyer's return request if the buyer has initiated a return request or has escalated an existing return request into a return case. If there is no return request filed against the order or no escalation, this field is returned with a value of <code>NotApplicable</code>.
      *
      * @return string
      */
@@ -430,7 +355,7 @@ class TransactionStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
     /**
      * Sets a new returnStatus
      *
-     * This field gives the status of a buyer's return request. This field is only returned if the buyer has initiated a return request, or has escalated an existing return request into a return case.
+     * This field gives the status of a buyer's return request if the buyer has initiated a return request or has escalated an existing return request into a return case. If there is no return request filed against the order or no escalation, this field is returned with a value of <code>NotApplicable</code>.
      *
      * @param string $returnStatus
      * @return self
@@ -551,15 +476,6 @@ class TransactionStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PaymentHoldStatus", $value);
         }
-        $value = $this->getIntegratedMerchantCreditCardEnabled();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}IntegratedMerchantCreditCardEnabled", $value);
-        }
-        $value = $this->getEBayPaymentMismatchDetails();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}eBayPaymentMismatchDetails", $value);
-        }
         $value = $this->getInquiryStatus();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}InquiryStatus", $value);
@@ -623,14 +539,6 @@ class TransactionStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaymentHoldStatus');
         if (null !== $value) {
             $this->setPaymentHoldStatus($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}IntegratedMerchantCreditCardEnabled');
-        if (null !== $value) {
-            $this->setIntegratedMerchantCreditCardEnabled($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}eBayPaymentMismatchDetails');
-        if (null !== $value) {
-            $this->setEBayPaymentMismatchDetails(\Nogrod\eBaySDK\Trading\EBayPaymentMismatchDetailsType::fromKeyValue($value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}InquiryStatus');
         if (null !== $value) {

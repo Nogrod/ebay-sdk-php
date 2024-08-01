@@ -58,7 +58,7 @@ class VATDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
     /**
      * This string value is the Site ID value of the eBay Marketplace where the VAT is applicable and where the seller is registered as a Business Seller.
      *  <br/><br/>
-     *  The eBay sites that support VAT (and their corresponding Site IDs) can be found in the <a href="https://developer.ebay.com/DevZone/guides/features-guide/default.html#development/IntlDiffs-B2BFields.html" target="_blank">Business Feature Field Differences</a> topic.
+     *  The eBay sites that support VAT (and their corresponding Site IDs) can be found in the <a href="https://developer.ebay.com/api-docs/user-guides/static/trading-user-guide/taxes-vat.html" target="_blank">Value-added tax (VAT)</a> topic.
      *
      * @var string $vATSite
      */
@@ -190,7 +190,7 @@ class VATDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      *
      * This string value is the Site ID value of the eBay Marketplace where the VAT is applicable and where the seller is registered as a Business Seller.
      *  <br/><br/>
-     *  The eBay sites that support VAT (and their corresponding Site IDs) can be found in the <a href="https://developer.ebay.com/DevZone/guides/features-guide/default.html#development/IntlDiffs-B2BFields.html" target="_blank">Business Feature Field Differences</a> topic.
+     *  The eBay sites that support VAT (and their corresponding Site IDs) can be found in the <a href="https://developer.ebay.com/api-docs/user-guides/static/trading-user-guide/taxes-vat.html" target="_blank">Value-added tax (VAT)</a> topic.
      *
      * @return string
      */
@@ -204,7 +204,7 @@ class VATDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      *
      * This string value is the Site ID value of the eBay Marketplace where the VAT is applicable and where the seller is registered as a Business Seller.
      *  <br/><br/>
-     *  The eBay sites that support VAT (and their corresponding Site IDs) can be found in the <a href="https://developer.ebay.com/DevZone/guides/features-guide/default.html#development/IntlDiffs-B2BFields.html" target="_blank">Business Feature Field Differences</a> topic.
+     *  The eBay sites that support VAT (and their corresponding Site IDs) can be found in the <a href="https://developer.ebay.com/api-docs/user-guides/static/trading-user-guide/taxes-vat.html" target="_blank">Value-added tax (VAT)</a> topic.
      *
      * @param string $vATSite
      * @return self

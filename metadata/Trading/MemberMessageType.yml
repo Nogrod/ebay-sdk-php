@@ -38,17 +38,6 @@ Nogrod\eBaySDK\Trading\MemberMessageType:
                 getter: getEmailCopyToSender
                 setter: setEmailCopyToSender
             type: bool
-        hideSendersEmailAddress:
-            expose: true
-            access_type: public_method
-            serialized_name: HideSendersEmailAddress
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getHideSendersEmailAddress
-                setter: setHideSendersEmailAddress
-            type: bool
         displayToPublic:
             expose: true
             access_type: public_method

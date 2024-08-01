@@ -79,13 +79,6 @@ class GetMyeBayBuyingRequestType extends AbstractRequestType
     private $secondChanceOffer = null;
 
     /**
-     * This field is deprecated.
-     *
-     * @var \Nogrod\eBaySDK\Trading\BidAssistantListType $bidAssistantList
-     */
-    private $bidAssistantList = null;
-
-    /**
      * Include this container and set the <b>DeletedFromWonList.Include</b> field to <code>true</code> to return the list of auction items on which the eBay user has bid on and won, but has deleted from their My eBay page.
      *  <br><br>
      *  The user also has the option of using pagination and sorting for the list of auction items that will be returned.
@@ -354,32 +347,6 @@ class GetMyeBayBuyingRequestType extends AbstractRequestType
     }
 
     /**
-     * Gets as bidAssistantList
-     *
-     * This field is deprecated.
-     *
-     * @return \Nogrod\eBaySDK\Trading\BidAssistantListType
-     */
-    public function getBidAssistantList()
-    {
-        return $this->bidAssistantList;
-    }
-
-    /**
-     * Sets a new bidAssistantList
-     *
-     * This field is deprecated.
-     *
-     * @param \Nogrod\eBaySDK\Trading\BidAssistantListType $bidAssistantList
-     * @return self
-     */
-    public function setBidAssistantList(\Nogrod\eBaySDK\Trading\BidAssistantListType $bidAssistantList)
-    {
-        $this->bidAssistantList = $bidAssistantList;
-        return $this;
-    }
-
-    /**
      * Gets as deletedFromWonList
      *
      * Include this container and set the <b>DeletedFromWonList.Include</b> field to <code>true</code> to return the list of auction items on which the eBay user has bid on and won, but has deleted from their My eBay page.
@@ -554,10 +521,6 @@ class GetMyeBayBuyingRequestType extends AbstractRequestType
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SecondChanceOffer", $value);
         }
-        $value = $this->getBidAssistantList();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BidAssistantList", $value);
-        }
         $value = $this->getDeletedFromWonList();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DeletedFromWonList", $value);
@@ -627,10 +590,6 @@ class GetMyeBayBuyingRequestType extends AbstractRequestType
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SecondChanceOffer');
         if (null !== $value) {
             $this->setSecondChanceOffer(\Nogrod\eBaySDK\Trading\MyeBaySelectionType::fromKeyValue($value));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BidAssistantList');
-        if (null !== $value) {
-            $this->setBidAssistantList(\Nogrod\eBaySDK\Trading\BidAssistantListType::fromKeyValue($value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DeletedFromWonList');
         if (null !== $value) {

@@ -7,7 +7,9 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing ValidateChallengeInputRequestType
  *
- * Validates the user response to a <b class="con">GetChallengeToken</b>
+ * <p><span class=\"tablenote\"><b>Note:</b> This call is deprecated, and will be decommissioned on January 30th, 2025.</span></p>
+ *
+ *  Validates the user response to a <b class="con">GetChallengeToken</b>
  *  botblock challenge.
  * XSD Type: ValidateChallengeInputRequestType
  */

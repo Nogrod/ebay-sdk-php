@@ -31,17 +31,6 @@ Nogrod\eBaySDK\Trading\VariationSpecificPictureSetType:
                 entry_name: PictureURL
                 namespace: 'urn:ebay:apis:eBLBaseComponents'
             type: array<string>
-        galleryURL:
-            expose: true
-            access_type: public_method
-            serialized_name: GalleryURL
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getGalleryURL
-                setter: setGalleryURL
-            type: string
         externalPictureURL:
             expose: true
             access_type: public_method

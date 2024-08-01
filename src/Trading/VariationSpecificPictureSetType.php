@@ -68,19 +68,12 @@ class VariationSpecificPictureSetType implements \Sabre\Xml\XmlSerializable, \Sa
     ];
 
     /**
-     * No longer used.
-     *
-     * @var string $galleryURL
-     */
-    private $galleryURL = null;
-
-    /**
      * Returns the URL of a variation-specific picture that is hosted outside of eBay.<br>
      *  <br>
      *  When you list, revise, or relist a variation, use VariationSpecificPictureSet.PictureURL (not ExternalPictureURL) to specify your self-hosted picture or EPS picture.<br>
      *  <br/>
      *  <span class="tablenote"><b>Note: </b>
-     *  All images must comply to the <a href="https://developer.ebay.com/DevZone/guides/features-guide/default.html#development/Pictures-Intro.html">Picture Requirements</a>.
+     *  All images must comply to the <a href="https://developer.ebay.com/api-docs/user-guides/static/trading-user-guide/pictures.html">Picture Requirements</a>.
      *  </span>
      *  This is returned only when the seller used a self-hosted picture for the variation.
      *
@@ -361,32 +354,6 @@ class VariationSpecificPictureSetType implements \Sabre\Xml\XmlSerializable, \Sa
     }
 
     /**
-     * Gets as galleryURL
-     *
-     * No longer used.
-     *
-     * @return string
-     */
-    public function getGalleryURL()
-    {
-        return $this->galleryURL;
-    }
-
-    /**
-     * Sets a new galleryURL
-     *
-     * No longer used.
-     *
-     * @param string $galleryURL
-     * @return self
-     */
-    public function setGalleryURL($galleryURL)
-    {
-        $this->galleryURL = $galleryURL;
-        return $this;
-    }
-
-    /**
      * Adds as externalPictureURL
      *
      * Returns the URL of a variation-specific picture that is hosted outside of eBay.<br>
@@ -394,7 +361,7 @@ class VariationSpecificPictureSetType implements \Sabre\Xml\XmlSerializable, \Sa
      *  When you list, revise, or relist a variation, use VariationSpecificPictureSet.PictureURL (not ExternalPictureURL) to specify your self-hosted picture or EPS picture.<br>
      *  <br/>
      *  <span class="tablenote"><b>Note: </b>
-     *  All images must comply to the <a href="https://developer.ebay.com/DevZone/guides/features-guide/default.html#development/Pictures-Intro.html">Picture Requirements</a>.
+     *  All images must comply to the <a href="https://developer.ebay.com/api-docs/user-guides/static/trading-user-guide/pictures.html">Picture Requirements</a>.
      *  </span>
      *  This is returned only when the seller used a self-hosted picture for the variation.
      *
@@ -415,7 +382,7 @@ class VariationSpecificPictureSetType implements \Sabre\Xml\XmlSerializable, \Sa
      *  When you list, revise, or relist a variation, use VariationSpecificPictureSet.PictureURL (not ExternalPictureURL) to specify your self-hosted picture or EPS picture.<br>
      *  <br/>
      *  <span class="tablenote"><b>Note: </b>
-     *  All images must comply to the <a href="https://developer.ebay.com/DevZone/guides/features-guide/default.html#development/Pictures-Intro.html">Picture Requirements</a>.
+     *  All images must comply to the <a href="https://developer.ebay.com/api-docs/user-guides/static/trading-user-guide/pictures.html">Picture Requirements</a>.
      *  </span>
      *  This is returned only when the seller used a self-hosted picture for the variation.
      *
@@ -435,7 +402,7 @@ class VariationSpecificPictureSetType implements \Sabre\Xml\XmlSerializable, \Sa
      *  When you list, revise, or relist a variation, use VariationSpecificPictureSet.PictureURL (not ExternalPictureURL) to specify your self-hosted picture or EPS picture.<br>
      *  <br/>
      *  <span class="tablenote"><b>Note: </b>
-     *  All images must comply to the <a href="https://developer.ebay.com/DevZone/guides/features-guide/default.html#development/Pictures-Intro.html">Picture Requirements</a>.
+     *  All images must comply to the <a href="https://developer.ebay.com/api-docs/user-guides/static/trading-user-guide/pictures.html">Picture Requirements</a>.
      *  </span>
      *  This is returned only when the seller used a self-hosted picture for the variation.
      *
@@ -455,7 +422,7 @@ class VariationSpecificPictureSetType implements \Sabre\Xml\XmlSerializable, \Sa
      *  When you list, revise, or relist a variation, use VariationSpecificPictureSet.PictureURL (not ExternalPictureURL) to specify your self-hosted picture or EPS picture.<br>
      *  <br/>
      *  <span class="tablenote"><b>Note: </b>
-     *  All images must comply to the <a href="https://developer.ebay.com/DevZone/guides/features-guide/default.html#development/Pictures-Intro.html">Picture Requirements</a>.
+     *  All images must comply to the <a href="https://developer.ebay.com/api-docs/user-guides/static/trading-user-guide/pictures.html">Picture Requirements</a>.
      *  </span>
      *  This is returned only when the seller used a self-hosted picture for the variation.
      *
@@ -474,7 +441,7 @@ class VariationSpecificPictureSetType implements \Sabre\Xml\XmlSerializable, \Sa
      *  When you list, revise, or relist a variation, use VariationSpecificPictureSet.PictureURL (not ExternalPictureURL) to specify your self-hosted picture or EPS picture.<br>
      *  <br/>
      *  <span class="tablenote"><b>Note: </b>
-     *  All images must comply to the <a href="https://developer.ebay.com/DevZone/guides/features-guide/default.html#development/Pictures-Intro.html">Picture Requirements</a>.
+     *  All images must comply to the <a href="https://developer.ebay.com/api-docs/user-guides/static/trading-user-guide/pictures.html">Picture Requirements</a>.
      *  </span>
      *  This is returned only when the seller used a self-hosted picture for the variation.
      *
@@ -564,10 +531,6 @@ class VariationSpecificPictureSetType implements \Sabre\Xml\XmlSerializable, \Sa
         if (null !== $value && !empty($this->getPictureURL())) {
             $writer->write(array_map(function ($v) {return ["PictureURL" => $v];}, $value));
         }
-        $value = $this->getGalleryURL();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}GalleryURL", $value);
-        }
         $value = $this->getExternalPictureURL();
         if (null !== $value && !empty($this->getExternalPictureURL())) {
             $writer->write(array_map(function ($v) {return ["ExternalPictureURL" => $v];}, $value));
@@ -599,10 +562,6 @@ class VariationSpecificPictureSetType implements \Sabre\Xml\XmlSerializable, \Sa
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PictureURL', true);
         if (null !== $value && !empty($value)) {
             $this->setPictureURL($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}GalleryURL');
-        if (null !== $value) {
-            $this->setGalleryURL($value);
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExternalPictureURL', true);
         if (null !== $value && !empty($value)) {

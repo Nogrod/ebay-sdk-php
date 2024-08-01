@@ -13,16 +13,9 @@ use Nogrod\XMLClientRuntime\Func;
 class PaymentTransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
     /**
-     * The current status of a buyer payment that is allocated to a specified payee.
-     *
-     * @var string $paymentStatus
-     */
-    private $paymentStatus = null;
-
-    /**
      * This field indicates the eBay user or eBay partner who submitted the payment.
      *  <br><br>
-     *  <b>For GetOrders, GetOrderTransactions, and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this field will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, the correct payer is returned to the buyer or seller, but the identity of the payer will be masked to all third parties.
+     *  <b>For GetOrders and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this field will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, the correct payer is returned to the buyer or seller, but the identity of the payer will be masked to all third parties.
      *
      * @var \Nogrod\eBaySDK\Trading\UserIdentityType $payer
      */
@@ -54,7 +47,7 @@ class PaymentTransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      *  <br/><br/>
      *  This field is not returned if the <strong>Payee</strong> field's <strong>type</strong> attribute is <code>eBayPartner</code>.
      *  <br><br>
-     *  <b>For GetOrders, GetOrderTransactions, and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this field will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, the correct payment identifier is returned to the buyer or seller, but the payment identifier will be masked to all third parties.
+     *  <b>For GetOrders and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this field will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, the correct payment identifier is returned to the buyer or seller, but the payment identifier will be masked to all third parties.
      *
      * @var \Nogrod\eBaySDK\Trading\TransactionReferenceType $referenceID
      */
@@ -72,7 +65,7 @@ class PaymentTransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * The payment transaction ID.
      *  <br/><br/>
-     *  <b>For GetOrders, GetOrderTransactions, and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this field will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, the correct payment identifier is returned to the buyer or seller, but the payment identifier will be masked to all third parties.
+     *  <b>For GetOrders and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this field will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, the correct payment identifier is returned to the buyer or seller, but the payment identifier will be masked to all third parties.
      *
      * @var \Nogrod\eBaySDK\Trading\TransactionReferenceType[] $paymentReferenceID
      */
@@ -81,37 +74,11 @@ class PaymentTransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     ];
 
     /**
-     * Gets as paymentStatus
-     *
-     * The current status of a buyer payment that is allocated to a specified payee.
-     *
-     * @return string
-     */
-    public function getPaymentStatus()
-    {
-        return $this->paymentStatus;
-    }
-
-    /**
-     * Sets a new paymentStatus
-     *
-     * The current status of a buyer payment that is allocated to a specified payee.
-     *
-     * @param string $paymentStatus
-     * @return self
-     */
-    public function setPaymentStatus($paymentStatus)
-    {
-        $this->paymentStatus = $paymentStatus;
-        return $this;
-    }
-
-    /**
      * Gets as payer
      *
      * This field indicates the eBay user or eBay partner who submitted the payment.
      *  <br><br>
-     *  <b>For GetOrders, GetOrderTransactions, and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this field will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, the correct payer is returned to the buyer or seller, but the identity of the payer will be masked to all third parties.
+     *  <b>For GetOrders and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this field will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, the correct payer is returned to the buyer or seller, but the identity of the payer will be masked to all third parties.
      *
      * @return \Nogrod\eBaySDK\Trading\UserIdentityType
      */
@@ -125,7 +92,7 @@ class PaymentTransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      *
      * This field indicates the eBay user or eBay partner who submitted the payment.
      *  <br><br>
-     *  <b>For GetOrders, GetOrderTransactions, and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this field will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, the correct payer is returned to the buyer or seller, but the identity of the payer will be masked to all third parties.
+     *  <b>For GetOrders and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this field will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, the correct payer is returned to the buyer or seller, but the identity of the payer will be masked to all third parties.
      *
      * @param \Nogrod\eBaySDK\Trading\UserIdentityType $payer
      * @return self
@@ -221,7 +188,7 @@ class PaymentTransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      *  <br/><br/>
      *  This field is not returned if the <strong>Payee</strong> field's <strong>type</strong> attribute is <code>eBayPartner</code>.
      *  <br><br>
-     *  <b>For GetOrders, GetOrderTransactions, and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this field will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, the correct payment identifier is returned to the buyer or seller, but the payment identifier will be masked to all third parties.
+     *  <b>For GetOrders and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this field will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, the correct payment identifier is returned to the buyer or seller, but the payment identifier will be masked to all third parties.
      *
      * @return \Nogrod\eBaySDK\Trading\TransactionReferenceType
      */
@@ -237,7 +204,7 @@ class PaymentTransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      *  <br/><br/>
      *  This field is not returned if the <strong>Payee</strong> field's <strong>type</strong> attribute is <code>eBayPartner</code>.
      *  <br><br>
-     *  <b>For GetOrders, GetOrderTransactions, and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this field will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, the correct payment identifier is returned to the buyer or seller, but the payment identifier will be masked to all third parties.
+     *  <b>For GetOrders and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this field will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, the correct payment identifier is returned to the buyer or seller, but the payment identifier will be masked to all third parties.
      *
      * @param \Nogrod\eBaySDK\Trading\TransactionReferenceType $referenceID
      * @return self
@@ -283,7 +250,7 @@ class PaymentTransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      *
      * The payment transaction ID.
      *  <br/><br/>
-     *  <b>For GetOrders, GetOrderTransactions, and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this field will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, the correct payment identifier is returned to the buyer or seller, but the payment identifier will be masked to all third parties.
+     *  <b>For GetOrders and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this field will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, the correct payment identifier is returned to the buyer or seller, but the payment identifier will be masked to all third parties.
      *
      * @return self
      * @param \Nogrod\eBaySDK\Trading\TransactionReferenceType $paymentReferenceID
@@ -299,7 +266,7 @@ class PaymentTransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      *
      * The payment transaction ID.
      *  <br/><br/>
-     *  <b>For GetOrders, GetOrderTransactions, and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this field will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, the correct payment identifier is returned to the buyer or seller, but the payment identifier will be masked to all third parties.
+     *  <b>For GetOrders and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this field will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, the correct payment identifier is returned to the buyer or seller, but the payment identifier will be masked to all third parties.
      *
      * @param int|string $index
      * @return bool
@@ -314,7 +281,7 @@ class PaymentTransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      *
      * The payment transaction ID.
      *  <br/><br/>
-     *  <b>For GetOrders, GetOrderTransactions, and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this field will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, the correct payment identifier is returned to the buyer or seller, but the payment identifier will be masked to all third parties.
+     *  <b>For GetOrders and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this field will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, the correct payment identifier is returned to the buyer or seller, but the payment identifier will be masked to all third parties.
      *
      * @param int|string $index
      * @return void
@@ -329,7 +296,7 @@ class PaymentTransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      *
      * The payment transaction ID.
      *  <br/><br/>
-     *  <b>For GetOrders, GetOrderTransactions, and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this field will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, the correct payment identifier is returned to the buyer or seller, but the payment identifier will be masked to all third parties.
+     *  <b>For GetOrders and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this field will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, the correct payment identifier is returned to the buyer or seller, but the payment identifier will be masked to all third parties.
      *
      * @return \Nogrod\eBaySDK\Trading\TransactionReferenceType[]
      */
@@ -343,7 +310,7 @@ class PaymentTransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      *
      * The payment transaction ID.
      *  <br/><br/>
-     *  <b>For GetOrders, GetOrderTransactions, and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this field will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, the correct payment identifier is returned to the buyer or seller, but the payment identifier will be masked to all third parties.
+     *  <b>For GetOrders and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this field will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, the correct payment identifier is returned to the buyer or seller, but the payment identifier will be masked to all third parties.
      *
      * @param \Nogrod\eBaySDK\Trading\TransactionReferenceType[] $paymentReferenceID
      * @return self
@@ -357,10 +324,6 @@ class PaymentTransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     public function xmlSerialize(\Sabre\Xml\Writer $writer): void
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
-        $value = $this->getPaymentStatus();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PaymentStatus", $value);
-        }
         $value = $this->getPayer();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Payer", $value);
@@ -405,10 +368,6 @@ class PaymentTransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaymentStatus');
-        if (null !== $value) {
-            $this->setPaymentStatus($value);
-        }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Payer');
         if (null !== $value) {
             $this->setPayer(\Nogrod\eBaySDK\Trading\UserIdentityType::fromKeyValue($value));

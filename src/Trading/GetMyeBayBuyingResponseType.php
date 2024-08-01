@@ -99,13 +99,6 @@ class GetMyeBayBuyingResponseType extends AbstractResponseType
     ];
 
     /**
-     * This field is deprecated.
-     *
-     * @var \Nogrod\eBaySDK\Trading\BidGroupType[] $bidAssistantList
-     */
-    private $bidAssistantList = null;
-
-    /**
      * This container consists of the auction items on which the eBay user has won but deleted from their My eBay page. This container will be returned if the eBay user has won one or more auction items but have deleted these items from My eBay.
      *  <br><br>
      *  This container will not be returned in the response (even if they have won and then deleted one or more items) if the <b>DetailLevel</b> value is set to <code>ReturnSummary</code> and the <b>DeletedFromWonList.Include</b> field is omitted or set to <code>false</code>.
@@ -457,72 +450,6 @@ class GetMyeBayBuyingResponseType extends AbstractResponseType
     }
 
     /**
-     * Adds as bidGroup
-     *
-     * This field is deprecated.
-     *
-     * @return self
-     * @param \Nogrod\eBaySDK\Trading\BidGroupType $bidGroup
-     */
-    public function addToBidAssistantList(\Nogrod\eBaySDK\Trading\BidGroupType $bidGroup)
-    {
-        $this->bidAssistantList[] = $bidGroup;
-        return $this;
-    }
-
-    /**
-     * isset bidAssistantList
-     *
-     * This field is deprecated.
-     *
-     * @param int|string $index
-     * @return bool
-     */
-    public function issetBidAssistantList($index)
-    {
-        return isset($this->bidAssistantList[$index]);
-    }
-
-    /**
-     * unset bidAssistantList
-     *
-     * This field is deprecated.
-     *
-     * @param int|string $index
-     * @return void
-     */
-    public function unsetBidAssistantList($index)
-    {
-        unset($this->bidAssistantList[$index]);
-    }
-
-    /**
-     * Gets as bidAssistantList
-     *
-     * This field is deprecated.
-     *
-     * @return \Nogrod\eBaySDK\Trading\BidGroupType[]
-     */
-    public function getBidAssistantList()
-    {
-        return $this->bidAssistantList;
-    }
-
-    /**
-     * Sets a new bidAssistantList
-     *
-     * This field is deprecated.
-     *
-     * @param \Nogrod\eBaySDK\Trading\BidGroupType[] $bidAssistantList
-     * @return self
-     */
-    public function setBidAssistantList(array $bidAssistantList)
-    {
-        $this->bidAssistantList = $bidAssistantList;
-        return $this;
-    }
-
-    /**
      * Gets as deletedFromWonList
      *
      * This container consists of the auction items on which the eBay user has won but deleted from their My eBay page. This container will be returned if the eBay user has won one or more auction items but have deleted these items from My eBay.
@@ -697,10 +624,6 @@ class GetMyeBayBuyingResponseType extends AbstractResponseType
         if (null !== $value && !empty($this->getSecondChanceOffer())) {
             $writer->write(array_map(function ($v) {return ["SecondChanceOffer" => $v];}, $value));
         }
-        $value = $this->getBidAssistantList();
-        if (null !== $value && !empty($this->getBidAssistantList())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BidAssistantList", array_map(function ($v) {return ["BidGroup" => $v];}, $value));
-        }
         $value = $this->getDeletedFromWonList();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DeletedFromWonList", $value);
@@ -765,10 +688,6 @@ class GetMyeBayBuyingResponseType extends AbstractResponseType
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SecondChanceOffer', true);
         if (null !== $value && !empty($value)) {
             $this->setSecondChanceOffer(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\ItemType::fromKeyValue($v);}, $value));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BidAssistantList', true);
-        if (null !== $value && !empty($value)) {
-            $this->setBidAssistantList(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\BidGroupType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DeletedFromWonList');
         if (null !== $value) {

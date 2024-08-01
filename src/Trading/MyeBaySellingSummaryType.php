@@ -32,18 +32,6 @@ class MyeBaySellingSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
     private $auctionSellingCount = null;
 
     /**
-     * The total number of bids made on the seller's active listings.
-     *  <span class="tablenote"><strong>Note:</strong>
-     *  This field is deprecated and scheduled for decommission on
-     *  02-06-2024 because the data is no longer being actively
-     *  maintained by eBay.
-     *  </span>
-     *
-     * @var int $auctionBidCount
-     */
-    private $auctionBidCount = null;
-
-    /**
      * For all items that the seller has for sale, the total
      *  selling values of those items having bids and where the
      *  Reserve price is met (if a Reserve price is specified).
@@ -81,33 +69,6 @@ class MyeBaySellingSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
      * @var int $classifiedAdCount
      */
     private $classifiedAdCount = null;
-
-    /**
-     * The total number of leads from the seller's classified
-     *  ad listings. Number indicates the total number of emails
-     *  received for the listings.
-     *  <span class="tablenote"><strong>Note:</strong>
-     *  This field is deprecated and scheduled for decommission on
-     *  02-06-2024 because the data is no longer being actively
-     *  maintained by eBay.
-     *  </span>
-     *
-     * @var int $totalLeadCount
-     */
-    private $totalLeadCount = null;
-
-    /**
-     * The total number of offers received on active Classified
-     *  Ad listings.
-     *  <span class="tablenote"><strong>Note:</strong>
-     *  This field is deprecated and scheduled for decommission on
-     *  02-06-2024 because the data is no longer being actively
-     *  maintained by eBay.
-     *  </span>
-     *
-     * @var int $classifiedAdOfferCount
-     */
-    private $classifiedAdOfferCount = null;
 
     /**
      * The total number of Classified Ad listings that have an
@@ -203,42 +164,6 @@ class MyeBaySellingSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
     public function setAuctionSellingCount($auctionSellingCount)
     {
         $this->auctionSellingCount = $auctionSellingCount;
-        return $this;
-    }
-
-    /**
-     * Gets as auctionBidCount
-     *
-     * The total number of bids made on the seller's active listings.
-     *  <span class="tablenote"><strong>Note:</strong>
-     *  This field is deprecated and scheduled for decommission on
-     *  02-06-2024 because the data is no longer being actively
-     *  maintained by eBay.
-     *  </span>
-     *
-     * @return int
-     */
-    public function getAuctionBidCount()
-    {
-        return $this->auctionBidCount;
-    }
-
-    /**
-     * Sets a new auctionBidCount
-     *
-     * The total number of bids made on the seller's active listings.
-     *  <span class="tablenote"><strong>Note:</strong>
-     *  This field is deprecated and scheduled for decommission on
-     *  02-06-2024 because the data is no longer being actively
-     *  maintained by eBay.
-     *  </span>
-     *
-     * @param int $auctionBidCount
-     * @return self
-     */
-    public function setAuctionBidCount($auctionBidCount)
-    {
-        $this->auctionBidCount = $auctionBidCount;
         return $this;
     }
 
@@ -381,84 +306,6 @@ class MyeBaySellingSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
     }
 
     /**
-     * Gets as totalLeadCount
-     *
-     * The total number of leads from the seller's classified
-     *  ad listings. Number indicates the total number of emails
-     *  received for the listings.
-     *  <span class="tablenote"><strong>Note:</strong>
-     *  This field is deprecated and scheduled for decommission on
-     *  02-06-2024 because the data is no longer being actively
-     *  maintained by eBay.
-     *  </span>
-     *
-     * @return int
-     */
-    public function getTotalLeadCount()
-    {
-        return $this->totalLeadCount;
-    }
-
-    /**
-     * Sets a new totalLeadCount
-     *
-     * The total number of leads from the seller's classified
-     *  ad listings. Number indicates the total number of emails
-     *  received for the listings.
-     *  <span class="tablenote"><strong>Note:</strong>
-     *  This field is deprecated and scheduled for decommission on
-     *  02-06-2024 because the data is no longer being actively
-     *  maintained by eBay.
-     *  </span>
-     *
-     * @param int $totalLeadCount
-     * @return self
-     */
-    public function setTotalLeadCount($totalLeadCount)
-    {
-        $this->totalLeadCount = $totalLeadCount;
-        return $this;
-    }
-
-    /**
-     * Gets as classifiedAdOfferCount
-     *
-     * The total number of offers received on active Classified
-     *  Ad listings.
-     *  <span class="tablenote"><strong>Note:</strong>
-     *  This field is deprecated and scheduled for decommission on
-     *  02-06-2024 because the data is no longer being actively
-     *  maintained by eBay.
-     *  </span>
-     *
-     * @return int
-     */
-    public function getClassifiedAdOfferCount()
-    {
-        return $this->classifiedAdOfferCount;
-    }
-
-    /**
-     * Sets a new classifiedAdOfferCount
-     *
-     * The total number of offers received on active Classified
-     *  Ad listings.
-     *  <span class="tablenote"><strong>Note:</strong>
-     *  This field is deprecated and scheduled for decommission on
-     *  02-06-2024 because the data is no longer being actively
-     *  maintained by eBay.
-     *  </span>
-     *
-     * @param int $classifiedAdOfferCount
-     * @return self
-     */
-    public function setClassifiedAdOfferCount($classifiedAdOfferCount)
-    {
-        $this->classifiedAdOfferCount = $classifiedAdOfferCount;
-        return $this;
-    }
-
-    /**
      * Gets as totalListingsWithLeads
      *
      * The total number of Classified Ad listings that have an
@@ -575,10 +422,6 @@ class MyeBaySellingSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}AuctionSellingCount", $value);
         }
-        $value = $this->getAuctionBidCount();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}AuctionBidCount", $value);
-        }
         $value = $this->getTotalAuctionSellingValue();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TotalAuctionSellingValue", $value);
@@ -598,14 +441,6 @@ class MyeBaySellingSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
         $value = $this->getClassifiedAdCount();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ClassifiedAdCount", $value);
-        }
-        $value = $this->getTotalLeadCount();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TotalLeadCount", $value);
-        }
-        $value = $this->getClassifiedAdOfferCount();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ClassifiedAdOfferCount", $value);
         }
         $value = $this->getTotalListingsWithLeads();
         if (null !== $value) {
@@ -643,10 +478,6 @@ class MyeBaySellingSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
         if (null !== $value) {
             $this->setAuctionSellingCount($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AuctionBidCount');
-        if (null !== $value) {
-            $this->setAuctionBidCount($value);
-        }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TotalAuctionSellingValue');
         if (null !== $value) {
             $this->setTotalAuctionSellingValue(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
@@ -666,14 +497,6 @@ class MyeBaySellingSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ClassifiedAdCount');
         if (null !== $value) {
             $this->setClassifiedAdCount($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TotalLeadCount');
-        if (null !== $value) {
-            $this->setTotalLeadCount($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ClassifiedAdOfferCount');
-        if (null !== $value) {
-            $this->setClassifiedAdOfferCount($value);
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TotalListingsWithLeads');
         if (null !== $value) {

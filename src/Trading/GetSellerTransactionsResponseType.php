@@ -68,14 +68,6 @@ class GetSellerTransactionsResponseType extends AbstractResponseType
     private $transactionArray = null;
 
     /**
-     * <span class="tablenote"><b>Note: </b> This field is deprecated and will be removed from WSDL and docs on January 31, 2024.
-     *  </span>
-     *
-     * @var bool $payPalPreferred
-     */
-    private $payPalPreferred = null;
-
-    /**
      * Gets as paginationResult
      *
      * Container consisting of the total number of order line items that match the input criteria and the total number of pages that must be scrolled through to view all order line items. To scroll through each page of order line item data, make subsequent <b>GetSellerTransactions</b> calls, incrementing the <b>Pagination.PageNumber</b> field by a value of '1' each time.
@@ -321,34 +313,6 @@ class GetSellerTransactionsResponseType extends AbstractResponseType
         return $this;
     }
 
-    /**
-     * Gets as payPalPreferred
-     *
-     * <span class="tablenote"><b>Note: </b> This field is deprecated and will be removed from WSDL and docs on January 31, 2024.
-     *  </span>
-     *
-     * @return bool
-     */
-    public function getPayPalPreferred()
-    {
-        return $this->payPalPreferred;
-    }
-
-    /**
-     * Sets a new payPalPreferred
-     *
-     * <span class="tablenote"><b>Note: </b> This field is deprecated and will be removed from WSDL and docs on January 31, 2024.
-     *  </span>
-     *
-     * @param bool $payPalPreferred
-     * @return self
-     */
-    public function setPayPalPreferred($payPalPreferred)
-    {
-        $this->payPalPreferred = $payPalPreferred;
-        return $this;
-    }
-
     public function xmlSerialize(\Sabre\Xml\Writer $writer): void
     {
         parent::xmlSerialize($writer);
@@ -380,11 +344,6 @@ class GetSellerTransactionsResponseType extends AbstractResponseType
         $value = $this->getTransactionArray();
         if (null !== $value && !empty($this->getTransactionArray())) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TransactionArray", array_map(function ($v) {return ["Transaction" => $v];}, $value));
-        }
-        $value = $this->getPayPalPreferred();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PayPalPreferred", $value);
         }
     }
 
@@ -430,10 +389,6 @@ class GetSellerTransactionsResponseType extends AbstractResponseType
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TransactionArray', true);
         if (null !== $value && !empty($value)) {
             $this->setTransactionArray(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\TransactionType::fromKeyValue($v);}, $value));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PayPalPreferred');
-        if (null !== $value) {
-            $this->setPayPalPreferred($value);
         }
     }
 }

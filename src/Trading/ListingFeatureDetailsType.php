@@ -21,7 +21,7 @@ class ListingFeatureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
 
     /**
      * <span class="tablenote"><b>Note:</b>
-     *  The Picture Border feature is no longer available on any eBay Marketplace sites, so this value should not be used in Add/Revise/Relist calls, and will not be returned in 'Get' calls.
+     *  The Picture Border feature is no longer available on any eBay marketplace site, so this value should not be used in Add/Revise/Relist calls, and will not be returned in 'Get' calls.
      *  </span>
      *  <br>
      *  Defines the availability of the Picture Border feature for the site.
@@ -32,7 +32,7 @@ class ListingFeatureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
 
     /**
      * <span class="tablenote"><b>Note:</b>
-     *  The Highlight feature is no longer available on any eBay Marketplace sites, so this value should not be used in Add/Revise/Relist calls, and will not be returned in 'Get' calls.
+     *  The Highlight feature is no longer available on any eBay marketplace, so this value should not be used in Add/Revise/Relist calls, and will not be returned in 'Get' calls.
      *  </span>
      *  <br>
      *  Defines the availability of the Highlight feature for the site.
@@ -43,7 +43,7 @@ class ListingFeatureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
 
     /**
      * <span class="tablenote"><b>Note:</b>
-     *  The Gift Icon feature is no longer available on any eBay Marketplace sites.
+     *  The Gift Icon feature is no longer available on any eBay marketplace.
      *  </span>
      *  <br>
      *  Defines the availability of the Gift Icon feature for the site.
@@ -53,21 +53,33 @@ class ListingFeatureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     private $giftIcon = null;
 
     /**
-     * The enumeration value returned in this field indicates whether or not the Home Page Featured feature is enabled for the eBay site. If this feature is available for an eBay site, the seller can pass in <code>HomePageFeatured</code> as an enumeration value in the <b>ListingEnhancement</b> field of an Add/Revise/Relist call.
+     * <span class="tablenote"><b>Note:</b>
+     *  Home Page Featured is no longer available on any eBay marketplace.
+     *  </span>
+     *  <br>
+     *  The enumeration value returned in this field indicates whether or not the Home Page Featured feature is enabled for the eBay site. If this feature is available for an eBay site, the seller can pass in <code>HomePageFeatured</code> as an enumeration value in the <b>ListingEnhancement</b> field of an Add/Revise/Relist call.
      *
      * @var string $homePageFeatured
      */
     private $homePageFeatured = null;
 
     /**
-     * The enumeration value returned in this field indicates whether or not the Featured First feature is enabled for the eBay site. As of October 2017, this listing feature is only available to Top-Rated Sellers on the Germany site.
+     * <span class="tablenote"><b>Note:</b>
+     *  Featured First is no longer available on any eBay marketplace.
+     *  </span>
+     *  <br>
+     *  The enumeration value returned in this field indicates whether or not the Featured First feature is enabled for the eBay site. As of October 2017, this listing feature is only available to Top-Rated Sellers on the Germany site.
      *
      * @var string $featuredFirst
      */
     private $featuredFirst = null;
 
     /**
-     * The enumeration value returned in this field indicates whether or not the Featured Plus feature is enabled for the eBay site.
+     * <span class="tablenote"><b>Note:</b>
+     *  Featured Plus is no longer available on any eBay marketplace.
+     *  </span>
+     *  <br>
+     *  The enumeration value returned in this field indicates whether or not the Featured Plus feature is enabled for the eBay site.
      *
      * @var string $featuredPlus
      */
@@ -75,7 +87,7 @@ class ListingFeatureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
 
     /**
      * <span class="tablenote"><b>Note:</b>
-     *  The Pro Pack Bundle feature is no longer available on any eBay Marketplace sites.
+     *  The Pro Pack Bundle feature is no longer available on any eBay marketplace.
      *  </span>
      *  <br>
      *  Defines the availability of the Pro Pack Bundle for the site.
@@ -129,7 +141,7 @@ class ListingFeatureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
      * Gets as border
      *
      * <span class="tablenote"><b>Note:</b>
-     *  The Picture Border feature is no longer available on any eBay Marketplace sites, so this value should not be used in Add/Revise/Relist calls, and will not be returned in 'Get' calls.
+     *  The Picture Border feature is no longer available on any eBay marketplace site, so this value should not be used in Add/Revise/Relist calls, and will not be returned in 'Get' calls.
      *  </span>
      *  <br>
      *  Defines the availability of the Picture Border feature for the site.
@@ -145,7 +157,7 @@ class ListingFeatureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
      * Sets a new border
      *
      * <span class="tablenote"><b>Note:</b>
-     *  The Picture Border feature is no longer available on any eBay Marketplace sites, so this value should not be used in Add/Revise/Relist calls, and will not be returned in 'Get' calls.
+     *  The Picture Border feature is no longer available on any eBay marketplace site, so this value should not be used in Add/Revise/Relist calls, and will not be returned in 'Get' calls.
      *  </span>
      *  <br>
      *  Defines the availability of the Picture Border feature for the site.
@@ -163,7 +175,7 @@ class ListingFeatureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
      * Gets as highlight
      *
      * <span class="tablenote"><b>Note:</b>
-     *  The Highlight feature is no longer available on any eBay Marketplace sites, so this value should not be used in Add/Revise/Relist calls, and will not be returned in 'Get' calls.
+     *  The Highlight feature is no longer available on any eBay marketplace, so this value should not be used in Add/Revise/Relist calls, and will not be returned in 'Get' calls.
      *  </span>
      *  <br>
      *  Defines the availability of the Highlight feature for the site.
@@ -179,7 +191,7 @@ class ListingFeatureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
      * Sets a new highlight
      *
      * <span class="tablenote"><b>Note:</b>
-     *  The Highlight feature is no longer available on any eBay Marketplace sites, so this value should not be used in Add/Revise/Relist calls, and will not be returned in 'Get' calls.
+     *  The Highlight feature is no longer available on any eBay marketplace, so this value should not be used in Add/Revise/Relist calls, and will not be returned in 'Get' calls.
      *  </span>
      *  <br>
      *  Defines the availability of the Highlight feature for the site.
@@ -197,7 +209,7 @@ class ListingFeatureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
      * Gets as giftIcon
      *
      * <span class="tablenote"><b>Note:</b>
-     *  The Gift Icon feature is no longer available on any eBay Marketplace sites.
+     *  The Gift Icon feature is no longer available on any eBay marketplace.
      *  </span>
      *  <br>
      *  Defines the availability of the Gift Icon feature for the site.
@@ -213,7 +225,7 @@ class ListingFeatureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
      * Sets a new giftIcon
      *
      * <span class="tablenote"><b>Note:</b>
-     *  The Gift Icon feature is no longer available on any eBay Marketplace sites.
+     *  The Gift Icon feature is no longer available on any eBay marketplace.
      *  </span>
      *  <br>
      *  Defines the availability of the Gift Icon feature for the site.
@@ -230,7 +242,11 @@ class ListingFeatureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     /**
      * Gets as homePageFeatured
      *
-     * The enumeration value returned in this field indicates whether or not the Home Page Featured feature is enabled for the eBay site. If this feature is available for an eBay site, the seller can pass in <code>HomePageFeatured</code> as an enumeration value in the <b>ListingEnhancement</b> field of an Add/Revise/Relist call.
+     * <span class="tablenote"><b>Note:</b>
+     *  Home Page Featured is no longer available on any eBay marketplace.
+     *  </span>
+     *  <br>
+     *  The enumeration value returned in this field indicates whether or not the Home Page Featured feature is enabled for the eBay site. If this feature is available for an eBay site, the seller can pass in <code>HomePageFeatured</code> as an enumeration value in the <b>ListingEnhancement</b> field of an Add/Revise/Relist call.
      *
      * @return string
      */
@@ -242,7 +258,11 @@ class ListingFeatureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     /**
      * Sets a new homePageFeatured
      *
-     * The enumeration value returned in this field indicates whether or not the Home Page Featured feature is enabled for the eBay site. If this feature is available for an eBay site, the seller can pass in <code>HomePageFeatured</code> as an enumeration value in the <b>ListingEnhancement</b> field of an Add/Revise/Relist call.
+     * <span class="tablenote"><b>Note:</b>
+     *  Home Page Featured is no longer available on any eBay marketplace.
+     *  </span>
+     *  <br>
+     *  The enumeration value returned in this field indicates whether or not the Home Page Featured feature is enabled for the eBay site. If this feature is available for an eBay site, the seller can pass in <code>HomePageFeatured</code> as an enumeration value in the <b>ListingEnhancement</b> field of an Add/Revise/Relist call.
      *
      * @param string $homePageFeatured
      * @return self
@@ -256,7 +276,11 @@ class ListingFeatureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     /**
      * Gets as featuredFirst
      *
-     * The enumeration value returned in this field indicates whether or not the Featured First feature is enabled for the eBay site. As of October 2017, this listing feature is only available to Top-Rated Sellers on the Germany site.
+     * <span class="tablenote"><b>Note:</b>
+     *  Featured First is no longer available on any eBay marketplace.
+     *  </span>
+     *  <br>
+     *  The enumeration value returned in this field indicates whether or not the Featured First feature is enabled for the eBay site. As of October 2017, this listing feature is only available to Top-Rated Sellers on the Germany site.
      *
      * @return string
      */
@@ -268,7 +292,11 @@ class ListingFeatureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     /**
      * Sets a new featuredFirst
      *
-     * The enumeration value returned in this field indicates whether or not the Featured First feature is enabled for the eBay site. As of October 2017, this listing feature is only available to Top-Rated Sellers on the Germany site.
+     * <span class="tablenote"><b>Note:</b>
+     *  Featured First is no longer available on any eBay marketplace.
+     *  </span>
+     *  <br>
+     *  The enumeration value returned in this field indicates whether or not the Featured First feature is enabled for the eBay site. As of October 2017, this listing feature is only available to Top-Rated Sellers on the Germany site.
      *
      * @param string $featuredFirst
      * @return self
@@ -282,7 +310,11 @@ class ListingFeatureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     /**
      * Gets as featuredPlus
      *
-     * The enumeration value returned in this field indicates whether or not the Featured Plus feature is enabled for the eBay site.
+     * <span class="tablenote"><b>Note:</b>
+     *  Featured Plus is no longer available on any eBay marketplace.
+     *  </span>
+     *  <br>
+     *  The enumeration value returned in this field indicates whether or not the Featured Plus feature is enabled for the eBay site.
      *
      * @return string
      */
@@ -294,7 +326,11 @@ class ListingFeatureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     /**
      * Sets a new featuredPlus
      *
-     * The enumeration value returned in this field indicates whether or not the Featured Plus feature is enabled for the eBay site.
+     * <span class="tablenote"><b>Note:</b>
+     *  Featured Plus is no longer available on any eBay marketplace.
+     *  </span>
+     *  <br>
+     *  The enumeration value returned in this field indicates whether or not the Featured Plus feature is enabled for the eBay site.
      *
      * @param string $featuredPlus
      * @return self
@@ -309,7 +345,7 @@ class ListingFeatureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
      * Gets as proPack
      *
      * <span class="tablenote"><b>Note:</b>
-     *  The Pro Pack Bundle feature is no longer available on any eBay Marketplace sites.
+     *  The Pro Pack Bundle feature is no longer available on any eBay marketplace.
      *  </span>
      *  <br>
      *  Defines the availability of the Pro Pack Bundle for the site.
@@ -325,7 +361,7 @@ class ListingFeatureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
      * Sets a new proPack
      *
      * <span class="tablenote"><b>Note:</b>
-     *  The Pro Pack Bundle feature is no longer available on any eBay Marketplace sites.
+     *  The Pro Pack Bundle feature is no longer available on any eBay marketplace.
      *  </span>
      *  <br>
      *  Defines the availability of the Pro Pack Bundle for the site.

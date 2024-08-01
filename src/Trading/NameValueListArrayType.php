@@ -18,9 +18,6 @@ class NameValueListArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      *  Contains the name and value(s) for an Item Specific.
      *  Only required when the <b>ItemSpecifics</b> container is
      *  specified.<br>
-     *  <br>
-     *  <span class="tablenote"><b>Note: </b> The maximum number of item specifics that may be defined for a listing has increased from 30 to 45.
-     *  </span><br>
      *  <b>For the AddFixedPriceItem family of calls:</b>
      *  The same NameValueList schema is used for the
      *  <b>ItemSpecifics</b> node, the <b>VariationSpecifics</b> node, and the
@@ -68,9 +65,6 @@ class NameValueListArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      *  Contains the name and value(s) for an Item Specific.
      *  Only required when the <b>ItemSpecifics</b> container is
      *  specified.<br>
-     *  <br>
-     *  <span class="tablenote"><b>Note: </b> The maximum number of item specifics that may be defined for a listing has increased from 30 to 45.
-     *  </span><br>
      *  <b>For the AddFixedPriceItem family of calls:</b>
      *  The same NameValueList schema is used for the
      *  <b>ItemSpecifics</b> node, the <b>VariationSpecifics</b> node, and the
@@ -121,9 +115,6 @@ class NameValueListArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      *  Contains the name and value(s) for an Item Specific.
      *  Only required when the <b>ItemSpecifics</b> container is
      *  specified.<br>
-     *  <br>
-     *  <span class="tablenote"><b>Note: </b> The maximum number of item specifics that may be defined for a listing has increased from 30 to 45.
-     *  </span><br>
      *  <b>For the AddFixedPriceItem family of calls:</b>
      *  The same NameValueList schema is used for the
      *  <b>ItemSpecifics</b> node, the <b>VariationSpecifics</b> node, and the
@@ -173,9 +164,6 @@ class NameValueListArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      *  Contains the name and value(s) for an Item Specific.
      *  Only required when the <b>ItemSpecifics</b> container is
      *  specified.<br>
-     *  <br>
-     *  <span class="tablenote"><b>Note: </b> The maximum number of item specifics that may be defined for a listing has increased from 30 to 45.
-     *  </span><br>
      *  <b>For the AddFixedPriceItem family of calls:</b>
      *  The same NameValueList schema is used for the
      *  <b>ItemSpecifics</b> node, the <b>VariationSpecifics</b> node, and the
@@ -225,9 +213,6 @@ class NameValueListArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      *  Contains the name and value(s) for an Item Specific.
      *  Only required when the <b>ItemSpecifics</b> container is
      *  specified.<br>
-     *  <br>
-     *  <span class="tablenote"><b>Note: </b> The maximum number of item specifics that may be defined for a listing has increased from 30 to 45.
-     *  </span><br>
      *  <b>For the AddFixedPriceItem family of calls:</b>
      *  The same NameValueList schema is used for the
      *  <b>ItemSpecifics</b> node, the <b>VariationSpecifics</b> node, and the
@@ -276,9 +261,6 @@ class NameValueListArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      *  Contains the name and value(s) for an Item Specific.
      *  Only required when the <b>ItemSpecifics</b> container is
      *  specified.<br>
-     *  <br>
-     *  <span class="tablenote"><b>Note: </b> The maximum number of item specifics that may be defined for a listing has increased from 30 to 45.
-     *  </span><br>
      *  <b>For the AddFixedPriceItem family of calls:</b>
      *  The same NameValueList schema is used for the
      *  <b>ItemSpecifics</b> node, the <b>VariationSpecifics</b> node, and the

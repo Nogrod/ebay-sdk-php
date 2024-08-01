@@ -27,17 +27,6 @@ Nogrod\eBaySDK\Trading\MyeBaySellingSummaryType:
                 getter: getAuctionSellingCount
                 setter: setAuctionSellingCount
             type: int
-        auctionBidCount:
-            expose: true
-            access_type: public_method
-            serialized_name: AuctionBidCount
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getAuctionBidCount
-                setter: setAuctionBidCount
-            type: int
         totalAuctionSellingValue:
             expose: true
             access_type: public_method
@@ -92,28 +81,6 @@ Nogrod\eBaySDK\Trading\MyeBaySellingSummaryType:
             accessor:
                 getter: getClassifiedAdCount
                 setter: setClassifiedAdCount
-            type: int
-        totalLeadCount:
-            expose: true
-            access_type: public_method
-            serialized_name: TotalLeadCount
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getTotalLeadCount
-                setter: setTotalLeadCount
-            type: int
-        classifiedAdOfferCount:
-            expose: true
-            access_type: public_method
-            serialized_name: ClassifiedAdOfferCount
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getClassifiedAdOfferCount
-                setter: setClassifiedAdOfferCount
             type: int
         totalListingsWithLeads:
             expose: true

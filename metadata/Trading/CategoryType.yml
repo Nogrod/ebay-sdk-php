@@ -38,17 +38,6 @@ Nogrod\eBaySDK\Trading\CategoryType:
                 getter: getB2BVATEnabled
                 setter: setB2BVATEnabled
             type: bool
-        catalogEnabled:
-            expose: true
-            access_type: public_method
-            serialized_name: CatalogEnabled
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getCatalogEnabled
-                setter: setCatalogEnabled
-            type: bool
         categoryID:
             expose: true
             access_type: public_method
@@ -97,47 +86,6 @@ Nogrod\eBaySDK\Trading\CategoryType:
                 entry_name: CategoryParentID
                 namespace: 'urn:ebay:apis:eBLBaseComponents'
             type: array<string>
-        categoryParentName:
-            expose: true
-            access_type: public_method
-            serialized_name: CategoryParentName
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getCategoryParentName
-                setter: setCategoryParentName
-            xml_list:
-                inline: true
-                entry_name: CategoryParentName
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            type: array<string>
-        productSearchPageAvailable:
-            expose: true
-            access_type: public_method
-            serialized_name: ProductSearchPageAvailable
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getProductSearchPageAvailable
-                setter: setProductSearchPageAvailable
-            type: bool
-        productFinderIDs:
-            expose: true
-            access_type: public_method
-            serialized_name: ProductFinderIDs
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getProductFinderIDs
-                setter: setProductFinderIDs
-            xml_list:
-                inline: true
-                entry_name: ProductFinderIDs
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            type: array<Nogrod\eBaySDK\Trading\ExtendedProductFinderIDType>
         expired:
             expose: true
             access_type: public_method
@@ -148,17 +96,6 @@ Nogrod\eBaySDK\Trading\CategoryType:
             accessor:
                 getter: getExpired
                 setter: setExpired
-            type: bool
-        intlAutosFixedCat:
-            expose: true
-            access_type: public_method
-            serialized_name: IntlAutosFixedCat
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getIntlAutosFixedCat
-                setter: setIntlAutosFixedCat
             type: bool
         leafCategory:
             expose: true
@@ -193,17 +130,6 @@ Nogrod\eBaySDK\Trading\CategoryType:
                 getter: getNumOfItems
                 setter: setNumOfItems
             type: int
-        sellerGuaranteeEligible:
-            expose: true
-            access_type: public_method
-            serialized_name: SellerGuaranteeEligible
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getSellerGuaranteeEligible
-                setter: setSellerGuaranteeEligible
-            type: bool
         oRPA:
             expose: true
             access_type: public_method

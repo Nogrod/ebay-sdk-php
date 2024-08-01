@@ -28,13 +28,6 @@ class GetUserPreferencesResponseType extends AbstractResponseType
     private $combinedPaymentPreferences = null;
 
     /**
-     * This container is deprecated.
-     *
-     * @var \Nogrod\eBaySDK\Trading\CrossPromotionPreferencesType $crossPromotionPreferences
-     */
-    private $crossPromotionPreferences = null;
-
-    /**
      * Container consisting of the seller's payment preferences. This container is returned when <b>ShowSellerPaymentPreferences</b> is included and set to <code>true</code> in the request.
      *
      * @var \Nogrod\eBaySDK\Trading\SellerPaymentPreferencesType $sellerPaymentPreferences
@@ -70,13 +63,6 @@ class GetUserPreferencesResponseType extends AbstractResponseType
     private $requiredShipPhoneNumberPreference = null;
 
     /**
-     * This field is deprecated.
-     *
-     * @var \Nogrod\eBaySDK\Trading\ProStoresCheckoutPreferenceType $proStoresPreference
-     */
-    private $proStoresPreference = null;
-
-    /**
      * Container consisting of a seller's Unpaid Item preferences. The Unpaid Item preferences can be used to automatically cancel an unpaid order and relist the item on the behalf of the seller. This container is returned if <b>ShowUnpaidItemAssistancePreference</b> is included and set to <code>true</code> in the request.
      *  <br><br>
      *  <span class="tablenote"><b>Note:</b>
@@ -102,13 +88,6 @@ class GetUserPreferencesResponseType extends AbstractResponseType
      * @var \Nogrod\eBaySDK\Trading\PurchaseReminderEmailPreferencesType $purchaseReminderEmailPreferences
      */
     private $purchaseReminderEmailPreferences = null;
-
-    /**
-     * This field is deprecated along with third-party checkout.
-     *
-     * @var bool $sellerThirdPartyCheckoutDisabled
-     */
-    private $sellerThirdPartyCheckoutDisabled = null;
 
     /**
      * Parent response container consisting of high-level information for all Business Policies defined for the user's account. This container is returned if <b>ShowSellerProfilePreferences</b> is included and set to <code>true</code> in the <b>GetUserPreferences</b> request (and one or more Business Policies are defined for the user's account).
@@ -244,32 +223,6 @@ class GetUserPreferencesResponseType extends AbstractResponseType
     }
 
     /**
-     * Gets as crossPromotionPreferences
-     *
-     * This container is deprecated.
-     *
-     * @return \Nogrod\eBaySDK\Trading\CrossPromotionPreferencesType
-     */
-    public function getCrossPromotionPreferences()
-    {
-        return $this->crossPromotionPreferences;
-    }
-
-    /**
-     * Sets a new crossPromotionPreferences
-     *
-     * This container is deprecated.
-     *
-     * @param \Nogrod\eBaySDK\Trading\CrossPromotionPreferencesType $crossPromotionPreferences
-     * @return self
-     */
-    public function setCrossPromotionPreferences(\Nogrod\eBaySDK\Trading\CrossPromotionPreferencesType $crossPromotionPreferences)
-    {
-        $this->crossPromotionPreferences = $crossPromotionPreferences;
-        return $this;
-    }
-
-    /**
      * Gets as sellerPaymentPreferences
      *
      * Container consisting of the seller's payment preferences. This container is returned when <b>ShowSellerPaymentPreferences</b> is included and set to <code>true</code> in the request.
@@ -396,32 +349,6 @@ class GetUserPreferencesResponseType extends AbstractResponseType
     public function setRequiredShipPhoneNumberPreference($requiredShipPhoneNumberPreference)
     {
         $this->requiredShipPhoneNumberPreference = $requiredShipPhoneNumberPreference;
-        return $this;
-    }
-
-    /**
-     * Gets as proStoresPreference
-     *
-     * This field is deprecated.
-     *
-     * @return \Nogrod\eBaySDK\Trading\ProStoresCheckoutPreferenceType
-     */
-    public function getProStoresPreference()
-    {
-        return $this->proStoresPreference;
-    }
-
-    /**
-     * Sets a new proStoresPreference
-     *
-     * This field is deprecated.
-     *
-     * @param \Nogrod\eBaySDK\Trading\ProStoresCheckoutPreferenceType $proStoresPreference
-     * @return self
-     */
-    public function setProStoresPreference(\Nogrod\eBaySDK\Trading\ProStoresCheckoutPreferenceType $proStoresPreference)
-    {
-        $this->proStoresPreference = $proStoresPreference;
         return $this;
     }
 
@@ -558,32 +485,6 @@ class GetUserPreferencesResponseType extends AbstractResponseType
     public function setPurchaseReminderEmailPreferences(\Nogrod\eBaySDK\Trading\PurchaseReminderEmailPreferencesType $purchaseReminderEmailPreferences)
     {
         $this->purchaseReminderEmailPreferences = $purchaseReminderEmailPreferences;
-        return $this;
-    }
-
-    /**
-     * Gets as sellerThirdPartyCheckoutDisabled
-     *
-     * This field is deprecated along with third-party checkout.
-     *
-     * @return bool
-     */
-    public function getSellerThirdPartyCheckoutDisabled()
-    {
-        return $this->sellerThirdPartyCheckoutDisabled;
-    }
-
-    /**
-     * Sets a new sellerThirdPartyCheckoutDisabled
-     *
-     * This field is deprecated along with third-party checkout.
-     *
-     * @param bool $sellerThirdPartyCheckoutDisabled
-     * @return self
-     */
-    public function setSellerThirdPartyCheckoutDisabled($sellerThirdPartyCheckoutDisabled)
-    {
-        $this->sellerThirdPartyCheckoutDisabled = $sellerThirdPartyCheckoutDisabled;
         return $this;
     }
 
@@ -922,10 +823,6 @@ class GetUserPreferencesResponseType extends AbstractResponseType
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CombinedPaymentPreferences", $value);
         }
-        $value = $this->getCrossPromotionPreferences();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CrossPromotionPreferences", $value);
-        }
         $value = $this->getSellerPaymentPreferences();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SellerPaymentPreferences", $value);
@@ -948,10 +845,6 @@ class GetUserPreferencesResponseType extends AbstractResponseType
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}RequiredShipPhoneNumberPreference", $value);
         }
-        $value = $this->getProStoresPreference();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ProStoresPreference", $value);
-        }
         $value = $this->getUnpaidItemAssistancePreferences();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}UnpaidItemAssistancePreferences", $value);
@@ -963,11 +856,6 @@ class GetUserPreferencesResponseType extends AbstractResponseType
         $value = $this->getPurchaseReminderEmailPreferences();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PurchaseReminderEmailPreferences", $value);
-        }
-        $value = $this->getSellerThirdPartyCheckoutDisabled();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SellerThirdPartyCheckoutDisabled", $value);
         }
         $value = $this->getSellerProfilePreferences();
         if (null !== $value) {
@@ -1035,10 +923,6 @@ class GetUserPreferencesResponseType extends AbstractResponseType
         if (null !== $value) {
             $this->setCombinedPaymentPreferences(\Nogrod\eBaySDK\Trading\CombinedPaymentPreferencesType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CrossPromotionPreferences');
-        if (null !== $value) {
-            $this->setCrossPromotionPreferences(\Nogrod\eBaySDK\Trading\CrossPromotionPreferencesType::fromKeyValue($value));
-        }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerPaymentPreferences');
         if (null !== $value) {
             $this->setSellerPaymentPreferences(\Nogrod\eBaySDK\Trading\SellerPaymentPreferencesType::fromKeyValue($value));
@@ -1059,10 +943,6 @@ class GetUserPreferencesResponseType extends AbstractResponseType
         if (null !== $value) {
             $this->setRequiredShipPhoneNumberPreference($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ProStoresPreference');
-        if (null !== $value) {
-            $this->setProStoresPreference(\Nogrod\eBaySDK\Trading\ProStoresCheckoutPreferenceType::fromKeyValue($value));
-        }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UnpaidItemAssistancePreferences');
         if (null !== $value) {
             $this->setUnpaidItemAssistancePreferences(\Nogrod\eBaySDK\Trading\UnpaidItemAssistancePreferencesType::fromKeyValue($value));
@@ -1074,10 +954,6 @@ class GetUserPreferencesResponseType extends AbstractResponseType
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PurchaseReminderEmailPreferences');
         if (null !== $value) {
             $this->setPurchaseReminderEmailPreferences(\Nogrod\eBaySDK\Trading\PurchaseReminderEmailPreferencesType::fromKeyValue($value));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerThirdPartyCheckoutDisabled');
-        if (null !== $value) {
-            $this->setSellerThirdPartyCheckoutDisabled($value);
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerProfilePreferences');
         if (null !== $value) {

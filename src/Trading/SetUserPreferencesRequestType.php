@@ -27,13 +27,6 @@ class SetUserPreferencesRequestType extends AbstractRequestType
     private $combinedPaymentPreferences = null;
 
     /**
-     * This container is deprecated.
-     *
-     * @var \Nogrod\eBaySDK\Trading\CrossPromotionPreferencesType $crossPromotionPreferences
-     */
-    private $crossPromotionPreferences = null;
-
-    /**
      * This container is included if the seller wishes to set various payment preferences. One or more preferences may be set or modified under this container. Payment preferences specified in a <b>SetUserPreferences</b> call override the settings in My eBay payment preferences.
      *
      * @var \Nogrod\eBaySDK\Trading\SellerPaymentPreferencesType $sellerPaymentPreferences
@@ -83,13 +76,6 @@ class SetUserPreferencesRequestType extends AbstractRequestType
     private $purchaseReminderEmailPreferences = null;
 
     /**
-     * This field is no longer applicable, as third-party checkout on eBay is no longer possible.
-     *
-     * @var bool $sellerThirdPartyCheckoutDisabled
-     */
-    private $sellerThirdPartyCheckoutDisabled = null;
-
-    /**
      * This container is included if the seller wishes to set/modify the order cut off time for same-day shipping. If the seller specifies a value of <code>0</code> in <strong>Item.DispatchTimeMax</strong> to offer same day handling when listing an item, the seller's shipping time commitment depends on the order cut off time set for the listing site, as indicated by the <strong>DispatchCutoffTimePreference.CutoffTime</strong> field.
      *  <br>
      *  <br>
@@ -126,7 +112,7 @@ class SetUserPreferencesRequestType extends AbstractRequestType
      *  When stock is available, the seller can use the <b>Revise</b> calls to update the inventory of the item (through the <b>Item.Quantity</b> or <b>Item.Variations.Variation.Quantity</b> fields) and the listing would appear again.
      *  <br/><br/>
      *  You can return the value of this flag using the <a href="GetUserPreferences.html#Request.ShowOutOfStockControlPreference">GetUserPreferences</a> call and setting the <b>ShowOutOfStockControlPreference</b> field to 'true'. <br/><br/>
-     *  <span class="tablenote"><b>IMPORTANT: </b> When a listing using the Out-of-Stock feature has zero quantity, the seller has 90 days to add inventory without incurring a listing fee. Fees are changed at the end of each the billing cycle but are then refunded if the item is out-of-stock for an entire billing period. See <a href="../../../../guides/features-guide/default.html#development/Listings-UseOutOfStock.html#FeesForaListingWithZeroQuantity">Fees For a Listing With Zero Quantity</a> for details. </span>
+     *  <span class="tablenote"><b>IMPORTANT: </b> When a listing using the Out-of-Stock feature has zero quantity, the seller has 90 days to add inventory without incurring a listing fee. Fees are changed at the end of each the billing cycle but are then refunded if the item is out-of-stock for an entire billing period. See <a href="/api-docs/user-guides/static/trading-user-guide/out-of-stock-fees.html">Fees For a Listing With Zero Quantity</a> for details. </span>
      *
      * @var bool $outOfStockControlPreference
      */
@@ -181,32 +167,6 @@ class SetUserPreferencesRequestType extends AbstractRequestType
     public function setCombinedPaymentPreferences(\Nogrod\eBaySDK\Trading\CombinedPaymentPreferencesType $combinedPaymentPreferences)
     {
         $this->combinedPaymentPreferences = $combinedPaymentPreferences;
-        return $this;
-    }
-
-    /**
-     * Gets as crossPromotionPreferences
-     *
-     * This container is deprecated.
-     *
-     * @return \Nogrod\eBaySDK\Trading\CrossPromotionPreferencesType
-     */
-    public function getCrossPromotionPreferences()
-    {
-        return $this->crossPromotionPreferences;
-    }
-
-    /**
-     * Sets a new crossPromotionPreferences
-     *
-     * This container is deprecated.
-     *
-     * @param \Nogrod\eBaySDK\Trading\CrossPromotionPreferencesType $crossPromotionPreferences
-     * @return self
-     */
-    public function setCrossPromotionPreferences(\Nogrod\eBaySDK\Trading\CrossPromotionPreferencesType $crossPromotionPreferences)
-    {
-        $this->crossPromotionPreferences = $crossPromotionPreferences;
         return $this;
     }
 
@@ -393,32 +353,6 @@ class SetUserPreferencesRequestType extends AbstractRequestType
     }
 
     /**
-     * Gets as sellerThirdPartyCheckoutDisabled
-     *
-     * This field is no longer applicable, as third-party checkout on eBay is no longer possible.
-     *
-     * @return bool
-     */
-    public function getSellerThirdPartyCheckoutDisabled()
-    {
-        return $this->sellerThirdPartyCheckoutDisabled;
-    }
-
-    /**
-     * Sets a new sellerThirdPartyCheckoutDisabled
-     *
-     * This field is no longer applicable, as third-party checkout on eBay is no longer possible.
-     *
-     * @param bool $sellerThirdPartyCheckoutDisabled
-     * @return self
-     */
-    public function setSellerThirdPartyCheckoutDisabled($sellerThirdPartyCheckoutDisabled)
-    {
-        $this->sellerThirdPartyCheckoutDisabled = $sellerThirdPartyCheckoutDisabled;
-        return $this;
-    }
-
-    /**
      * Gets as dispatchCutoffTimePreference
      *
      * This container is included if the seller wishes to set/modify the order cut off time for same-day shipping. If the seller specifies a value of <code>0</code> in <strong>Item.DispatchTimeMax</strong> to offer same day handling when listing an item, the seller's shipping time commitment depends on the order cut off time set for the listing site, as indicated by the <strong>DispatchCutoffTimePreference.CutoffTime</strong> field.
@@ -523,7 +457,7 @@ class SetUserPreferencesRequestType extends AbstractRequestType
      *  When stock is available, the seller can use the <b>Revise</b> calls to update the inventory of the item (through the <b>Item.Quantity</b> or <b>Item.Variations.Variation.Quantity</b> fields) and the listing would appear again.
      *  <br/><br/>
      *  You can return the value of this flag using the <a href="GetUserPreferences.html#Request.ShowOutOfStockControlPreference">GetUserPreferences</a> call and setting the <b>ShowOutOfStockControlPreference</b> field to 'true'. <br/><br/>
-     *  <span class="tablenote"><b>IMPORTANT: </b> When a listing using the Out-of-Stock feature has zero quantity, the seller has 90 days to add inventory without incurring a listing fee. Fees are changed at the end of each the billing cycle but are then refunded if the item is out-of-stock for an entire billing period. See <a href="../../../../guides/features-guide/default.html#development/Listings-UseOutOfStock.html#FeesForaListingWithZeroQuantity">Fees For a Listing With Zero Quantity</a> for details. </span>
+     *  <span class="tablenote"><b>IMPORTANT: </b> When a listing using the Out-of-Stock feature has zero quantity, the seller has 90 days to add inventory without incurring a listing fee. Fees are changed at the end of each the billing cycle but are then refunded if the item is out-of-stock for an entire billing period. See <a href="/api-docs/user-guides/static/trading-user-guide/out-of-stock-fees.html">Fees For a Listing With Zero Quantity</a> for details. </span>
      *
      * @return bool
      */
@@ -541,7 +475,7 @@ class SetUserPreferencesRequestType extends AbstractRequestType
      *  When stock is available, the seller can use the <b>Revise</b> calls to update the inventory of the item (through the <b>Item.Quantity</b> or <b>Item.Variations.Variation.Quantity</b> fields) and the listing would appear again.
      *  <br/><br/>
      *  You can return the value of this flag using the <a href="GetUserPreferences.html#Request.ShowOutOfStockControlPreference">GetUserPreferences</a> call and setting the <b>ShowOutOfStockControlPreference</b> field to 'true'. <br/><br/>
-     *  <span class="tablenote"><b>IMPORTANT: </b> When a listing using the Out-of-Stock feature has zero quantity, the seller has 90 days to add inventory without incurring a listing fee. Fees are changed at the end of each the billing cycle but are then refunded if the item is out-of-stock for an entire billing period. See <a href="../../../../guides/features-guide/default.html#development/Listings-UseOutOfStock.html#FeesForaListingWithZeroQuantity">Fees For a Listing With Zero Quantity</a> for details. </span>
+     *  <span class="tablenote"><b>IMPORTANT: </b> When a listing using the Out-of-Stock feature has zero quantity, the seller has 90 days to add inventory without incurring a listing fee. Fees are changed at the end of each the billing cycle but are then refunded if the item is out-of-stock for an entire billing period. See <a href="/api-docs/user-guides/static/trading-user-guide/out-of-stock-fees.html">Fees For a Listing With Zero Quantity</a> for details. </span>
      *
      * @param bool $outOfStockControlPreference
      * @return self
@@ -562,10 +496,6 @@ class SetUserPreferencesRequestType extends AbstractRequestType
         $value = $this->getCombinedPaymentPreferences();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CombinedPaymentPreferences", $value);
-        }
-        $value = $this->getCrossPromotionPreferences();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CrossPromotionPreferences", $value);
         }
         $value = $this->getSellerPaymentPreferences();
         if (null !== $value) {
@@ -596,11 +526,6 @@ class SetUserPreferencesRequestType extends AbstractRequestType
         $value = $this->getPurchaseReminderEmailPreferences();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PurchaseReminderEmailPreferences", $value);
-        }
-        $value = $this->getSellerThirdPartyCheckoutDisabled();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SellerThirdPartyCheckoutDisabled", $value);
         }
         $value = $this->getDispatchCutoffTimePreference();
         if (null !== $value) {
@@ -646,10 +571,6 @@ class SetUserPreferencesRequestType extends AbstractRequestType
         if (null !== $value) {
             $this->setCombinedPaymentPreferences(\Nogrod\eBaySDK\Trading\CombinedPaymentPreferencesType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CrossPromotionPreferences');
-        if (null !== $value) {
-            $this->setCrossPromotionPreferences(\Nogrod\eBaySDK\Trading\CrossPromotionPreferencesType::fromKeyValue($value));
-        }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerPaymentPreferences');
         if (null !== $value) {
             $this->setSellerPaymentPreferences(\Nogrod\eBaySDK\Trading\SellerPaymentPreferencesType::fromKeyValue($value));
@@ -677,10 +598,6 @@ class SetUserPreferencesRequestType extends AbstractRequestType
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PurchaseReminderEmailPreferences');
         if (null !== $value) {
             $this->setPurchaseReminderEmailPreferences(\Nogrod\eBaySDK\Trading\PurchaseReminderEmailPreferencesType::fromKeyValue($value));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerThirdPartyCheckoutDisabled');
-        if (null !== $value) {
-            $this->setSellerThirdPartyCheckoutDisabled($value);
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DispatchCutoffTimePreference');
         if (null !== $value) {

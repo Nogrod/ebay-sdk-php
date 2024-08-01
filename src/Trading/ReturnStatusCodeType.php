@@ -35,7 +35,8 @@ class ReturnStatusCodeType
     /**
      * Constant for 'ReturnRequestRejected' value.
      *
-     * This value indicates that the buyer's return request was rejected by the seller.
+     * This value indicates that the buyer's return request was rejected by the seller
+     * or other authorized party.
      */
     public const VAL_RETURN_REQUEST_REJECTED = 'ReturnRequestRejected';
 

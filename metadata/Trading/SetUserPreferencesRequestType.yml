@@ -27,17 +27,6 @@ Nogrod\eBaySDK\Trading\SetUserPreferencesRequestType:
                 getter: getCombinedPaymentPreferences
                 setter: setCombinedPaymentPreferences
             type: Nogrod\eBaySDK\Trading\CombinedPaymentPreferencesType
-        crossPromotionPreferences:
-            expose: true
-            access_type: public_method
-            serialized_name: CrossPromotionPreferences
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getCrossPromotionPreferences
-                setter: setCrossPromotionPreferences
-            type: Nogrod\eBaySDK\Trading\CrossPromotionPreferencesType
         sellerPaymentPreferences:
             expose: true
             access_type: public_method
@@ -115,17 +104,6 @@ Nogrod\eBaySDK\Trading\SetUserPreferencesRequestType:
                 getter: getPurchaseReminderEmailPreferences
                 setter: setPurchaseReminderEmailPreferences
             type: Nogrod\eBaySDK\Trading\PurchaseReminderEmailPreferencesType
-        sellerThirdPartyCheckoutDisabled:
-            expose: true
-            access_type: public_method
-            serialized_name: SellerThirdPartyCheckoutDisabled
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getSellerThirdPartyCheckoutDisabled
-                setter: setSellerThirdPartyCheckoutDisabled
-            type: bool
         dispatchCutoffTimePreference:
             expose: true
             access_type: public_method

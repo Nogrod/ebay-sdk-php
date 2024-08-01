@@ -32,7 +32,7 @@ class ShippingPackageInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
      *  The <b>ScheduledDeliveryTimeMin</b> and <b>ScheduledDeliveryTimeMax</b> fields will start being returned once the seller marks the order as shipped/provides tracking information. Until then, the <b>EstimatedDeliveryTimeMin</b> and <b>EstimatedDeliveryTimeMax</b> dates are returned instead.
      *  <br><br>
      *  <span class="tablenote"><b>Note:</b>
-     *  This field does not appear in Merchant Data API's <b>OrderReport</b> responses, because once shipment tracking information is provided to the buyer, the order/order line item is considered acknowledged, and acknowledged orders do not show up in <b>OrderReport</b> responses.
+     *  This field does not appear in the Sell Feed API's <code>LMS_ORDER_REPORT</code> responses, because once shipment tracking information is provided to the buyer, the order/order line item is considered acknowledged, and acknowledged orders do not show up in the <code>LMS_ORDER_REPORT</code> responses.
      *  </span>
      *
      * @var \DateTime $scheduledDeliveryTimeMin
@@ -45,7 +45,7 @@ class ShippingPackageInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
      *  The <b>ScheduledDeliveryTimeMin</b> and <b>ScheduledDeliveryTimeMax</b> fields will start being returned once the seller marks the order as shipped/provides tracking information. Until then, the <b>EstimatedDeliveryTimeMin</b> and <b>EstimatedDeliveryTimeMax</b> dates are returned instead.
      *  <br><br>
      *  <span class="tablenote"><b>Note:</b>
-     *  This field does not appear in Merchant Data API's <b>OrderReport</b> responses, because once shipment tracking information is provided to the buyer, the order/order line item is considered acknowledged, and acknowledged orders do not show up in <b>OrderReport</b> responses.
+     *  This field does not appear in the Sell Feed API's <code>LMS_ORDER_REPORT</code> responses, because once shipment tracking information is provided to the buyer, the order/order line item is considered acknowledged, and acknowledged orders do not show up in the <code>LMS_ORDER_REPORT</code> responses.
      *  </span>
      *
      * @var \DateTime $scheduledDeliveryTimeMax
@@ -56,7 +56,7 @@ class ShippingPackageInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
      * This timestamp indicates when the order was actually delivered to the buyer. This field is only returned after the order has been delivered to the buyer.
      *  <br><br>
      *  <span class="tablenote"><b>Note:</b>
-     *  This field does not appear in Merchant Data API's <b>OrderReport</b> responses, because once shipment tracking information is provided to the buyer (or marked as shipped), the order/order line item is considered acknowledged, and acknowledged orders do not show up in <b>OrderReport</b> responses.
+     *  This field does not appear in the Sell Feed API's <code>LMS_ORDER_REPORT</code> responses, because once shipment tracking information is provided to the buyer (or marked as shipped), the order/order line item is considered acknowledged, and acknowledged orders do not show up in the <code>LMS_ORDER_REPORT</code> responses.
      *  </span>
      *
      * @var \DateTime $actualDeliveryTime
@@ -168,7 +168,7 @@ class ShippingPackageInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
      *  The <b>ScheduledDeliveryTimeMin</b> and <b>ScheduledDeliveryTimeMax</b> fields will start being returned once the seller marks the order as shipped/provides tracking information. Until then, the <b>EstimatedDeliveryTimeMin</b> and <b>EstimatedDeliveryTimeMax</b> dates are returned instead.
      *  <br><br>
      *  <span class="tablenote"><b>Note:</b>
-     *  This field does not appear in Merchant Data API's <b>OrderReport</b> responses, because once shipment tracking information is provided to the buyer, the order/order line item is considered acknowledged, and acknowledged orders do not show up in <b>OrderReport</b> responses.
+     *  This field does not appear in the Sell Feed API's <code>LMS_ORDER_REPORT</code> responses, because once shipment tracking information is provided to the buyer, the order/order line item is considered acknowledged, and acknowledged orders do not show up in the <code>LMS_ORDER_REPORT</code> responses.
      *  </span>
      *
      * @return \DateTime
@@ -186,7 +186,7 @@ class ShippingPackageInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
      *  The <b>ScheduledDeliveryTimeMin</b> and <b>ScheduledDeliveryTimeMax</b> fields will start being returned once the seller marks the order as shipped/provides tracking information. Until then, the <b>EstimatedDeliveryTimeMin</b> and <b>EstimatedDeliveryTimeMax</b> dates are returned instead.
      *  <br><br>
      *  <span class="tablenote"><b>Note:</b>
-     *  This field does not appear in Merchant Data API's <b>OrderReport</b> responses, because once shipment tracking information is provided to the buyer, the order/order line item is considered acknowledged, and acknowledged orders do not show up in <b>OrderReport</b> responses.
+     *  This field does not appear in the Sell Feed API's <code>LMS_ORDER_REPORT</code> responses, because once shipment tracking information is provided to the buyer, the order/order line item is considered acknowledged, and acknowledged orders do not show up in the <code>LMS_ORDER_REPORT</code> responses.
      *  </span>
      *
      * @param \DateTime $scheduledDeliveryTimeMin
@@ -206,7 +206,7 @@ class ShippingPackageInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
      *  The <b>ScheduledDeliveryTimeMin</b> and <b>ScheduledDeliveryTimeMax</b> fields will start being returned once the seller marks the order as shipped/provides tracking information. Until then, the <b>EstimatedDeliveryTimeMin</b> and <b>EstimatedDeliveryTimeMax</b> dates are returned instead.
      *  <br><br>
      *  <span class="tablenote"><b>Note:</b>
-     *  This field does not appear in Merchant Data API's <b>OrderReport</b> responses, because once shipment tracking information is provided to the buyer, the order/order line item is considered acknowledged, and acknowledged orders do not show up in <b>OrderReport</b> responses.
+     *  This field does not appear in the Sell Feed API's <code>LMS_ORDER_REPORT</code> responses, because once shipment tracking information is provided to the buyer, the order/order line item is considered acknowledged, and acknowledged orders do not show up in the <code>LMS_ORDER_REPORT</code> responses.
      *  </span>
      *
      * @return \DateTime
@@ -224,7 +224,7 @@ class ShippingPackageInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
      *  The <b>ScheduledDeliveryTimeMin</b> and <b>ScheduledDeliveryTimeMax</b> fields will start being returned once the seller marks the order as shipped/provides tracking information. Until then, the <b>EstimatedDeliveryTimeMin</b> and <b>EstimatedDeliveryTimeMax</b> dates are returned instead.
      *  <br><br>
      *  <span class="tablenote"><b>Note:</b>
-     *  This field does not appear in Merchant Data API's <b>OrderReport</b> responses, because once shipment tracking information is provided to the buyer, the order/order line item is considered acknowledged, and acknowledged orders do not show up in <b>OrderReport</b> responses.
+     *  This field does not appear in the Sell Feed API's <code>LMS_ORDER_REPORT</code> responses, because once shipment tracking information is provided to the buyer, the order/order line item is considered acknowledged, and acknowledged orders do not show up in the <code>LMS_ORDER_REPORT</code> responses.
      *  </span>
      *
      * @param \DateTime $scheduledDeliveryTimeMax
@@ -242,7 +242,7 @@ class ShippingPackageInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
      * This timestamp indicates when the order was actually delivered to the buyer. This field is only returned after the order has been delivered to the buyer.
      *  <br><br>
      *  <span class="tablenote"><b>Note:</b>
-     *  This field does not appear in Merchant Data API's <b>OrderReport</b> responses, because once shipment tracking information is provided to the buyer (or marked as shipped), the order/order line item is considered acknowledged, and acknowledged orders do not show up in <b>OrderReport</b> responses.
+     *  This field does not appear in the Sell Feed API's <code>LMS_ORDER_REPORT</code> responses, because once shipment tracking information is provided to the buyer (or marked as shipped), the order/order line item is considered acknowledged, and acknowledged orders do not show up in the <code>LMS_ORDER_REPORT</code> responses.
      *  </span>
      *
      * @return \DateTime
@@ -258,7 +258,7 @@ class ShippingPackageInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
      * This timestamp indicates when the order was actually delivered to the buyer. This field is only returned after the order has been delivered to the buyer.
      *  <br><br>
      *  <span class="tablenote"><b>Note:</b>
-     *  This field does not appear in Merchant Data API's <b>OrderReport</b> responses, because once shipment tracking information is provided to the buyer (or marked as shipped), the order/order line item is considered acknowledged, and acknowledged orders do not show up in <b>OrderReport</b> responses.
+     *  This field does not appear in the Sell Feed API's <code>LMS_ORDER_REPORT</code> responses, because once shipment tracking information is provided to the buyer (or marked as shipped), the order/order line item is considered acknowledged, and acknowledged orders do not show up in the <code>LMS_ORDER_REPORT</code> responses.
      *  </span>
      *
      * @param \DateTime $actualDeliveryTime

@@ -49,6 +49,8 @@ class SetUserNotesRequestType extends AbstractRequestType
      *  <br>
      *  <br>
      *  The <b>TransactionID</b> value for auction listings is always <code>0</code> since there can be only one winning bidder/one sale for an auction listing.
+     *  <br/><br/>
+     *  <span class="tablenote"><b>Note: </b> Beginning in July 2024, non-zero transaction IDs will start being returned for auction listings. If necessary, update code to handle non-zero transaction IDs for auction transactions before this time.
      *
      * @var string $transactionID
      */
@@ -206,6 +208,8 @@ class SetUserNotesRequestType extends AbstractRequestType
      *  <br>
      *  <br>
      *  The <b>TransactionID</b> value for auction listings is always <code>0</code> since there can be only one winning bidder/one sale for an auction listing.
+     *  <br/><br/>
+     *  <span class="tablenote"><b>Note: </b> Beginning in July 2024, non-zero transaction IDs will start being returned for auction listings. If necessary, update code to handle non-zero transaction IDs for auction transactions before this time.
      *
      * @return string
      */
@@ -228,6 +232,8 @@ class SetUserNotesRequestType extends AbstractRequestType
      *  <br>
      *  <br>
      *  The <b>TransactionID</b> value for auction listings is always <code>0</code> since there can be only one winning bidder/one sale for an auction listing.
+     *  <br/><br/>
+     *  <span class="tablenote"><b>Note: </b> Beginning in July 2024, non-zero transaction IDs will start being returned for auction listings. If necessary, update code to handle non-zero transaction IDs for auction transactions before this time.
      *
      * @param string $transactionID
      * @return self

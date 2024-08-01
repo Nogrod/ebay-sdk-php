@@ -78,13 +78,6 @@ class ShippingServiceDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
     private $shippingTimeMin = null;
 
     /**
-     * For future use.
-     *
-     * @var string $shippingServiceCode
-     */
-    private $shippingServiceCode = null;
-
-    /**
      * The shipping cost types that this shipping service option supports, such as flat-rate or calculated. A <strong>ServiceType</strong> field is returned for each shipping cost type supported by the shipping service option.
      *
      * @var string[] $serviceType
@@ -137,9 +130,7 @@ class ShippingServiceDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
     ];
 
     /**
-     * This field is only returned if'true', and indicates that the corresponding <b>ShippingServiceDetails.ShippingService</b> value is a COD (Cash-On-Delivery) service.
-     *  <br/><br/>
-     *  COD shipping services are not supported by all sites.
+     * This field is deprecated, as there are longer any shipping services that support cash on delivery.
      *
      * @var bool $cODService
      */
@@ -425,32 +416,6 @@ class ShippingServiceDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
     public function setShippingTimeMin($shippingTimeMin)
     {
         $this->shippingTimeMin = $shippingTimeMin;
-        return $this;
-    }
-
-    /**
-     * Gets as shippingServiceCode
-     *
-     * For future use.
-     *
-     * @return string
-     */
-    public function getShippingServiceCode()
-    {
-        return $this->shippingServiceCode;
-    }
-
-    /**
-     * Sets a new shippingServiceCode
-     *
-     * For future use.
-     *
-     * @param string $shippingServiceCode
-     * @return self
-     */
-    public function setShippingServiceCode($shippingServiceCode)
-    {
-        $this->shippingServiceCode = $shippingServiceCode;
         return $this;
     }
 
@@ -753,9 +718,7 @@ class ShippingServiceDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
     /**
      * Gets as cODService
      *
-     * This field is only returned if'true', and indicates that the corresponding <b>ShippingServiceDetails.ShippingService</b> value is a COD (Cash-On-Delivery) service.
-     *  <br/><br/>
-     *  COD shipping services are not supported by all sites.
+     * This field is deprecated, as there are longer any shipping services that support cash on delivery.
      *
      * @return bool
      */
@@ -767,9 +730,7 @@ class ShippingServiceDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
     /**
      * Sets a new cODService
      *
-     * This field is only returned if'true', and indicates that the corresponding <b>ShippingServiceDetails.ShippingService</b> value is a COD (Cash-On-Delivery) service.
-     *  <br/><br/>
-     *  COD shipping services are not supported by all sites.
+     * This field is deprecated, as there are longer any shipping services that support cash on delivery.
      *
      * @param bool $cODService
      * @return self
@@ -1142,10 +1103,6 @@ class ShippingServiceDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippingTimeMin", $value);
         }
-        $value = $this->getShippingServiceCode();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippingServiceCode", $value);
-        }
         $value = $this->getServiceType();
         if (null !== $value && !empty($this->getServiceType())) {
             $writer->write(array_map(function ($v) {return ["ServiceType" => $v];}, $value));
@@ -1254,10 +1211,6 @@ class ShippingServiceDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingTimeMin');
         if (null !== $value) {
             $this->setShippingTimeMin($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingServiceCode');
-        if (null !== $value) {
-            $this->setShippingServiceCode($value);
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ServiceType', true);
         if (null !== $value && !empty($value)) {

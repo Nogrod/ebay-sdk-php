@@ -5,17 +5,6 @@ Nogrod\eBaySDK\Trading\SellerType:
             serialized_name: xmlns
             xml_attribute: true
     properties:
-        paisaPayStatus:
-            expose: true
-            access_type: public_method
-            serialized_name: PaisaPayStatus
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getPaisaPayStatus
-                setter: setPaisaPayStatus
-            type: int
         allowPaymentEdit:
             expose: true
             access_type: public_method
@@ -203,17 +192,6 @@ Nogrod\eBaySDK\Trading\SellerType:
                 getter: getPaymentMethod
                 setter: setPaymentMethod
             type: string
-        proStoresPreference:
-            expose: true
-            access_type: public_method
-            serialized_name: ProStoresPreference
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getProStoresPreference
-                setter: setProStoresPreference
-            type: Nogrod\eBaySDK\Trading\ProStoresCheckoutPreferenceType
         charityRegistered:
             expose: true
             access_type: public_method
@@ -236,17 +214,6 @@ Nogrod\eBaySDK\Trading\SellerType:
                 getter: getSafePaymentExempt
                 setter: setSafePaymentExempt
             type: bool
-        paisaPayEscrowEMIStatus:
-            expose: true
-            access_type: public_method
-            serialized_name: PaisaPayEscrowEMIStatus
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getPaisaPayEscrowEMIStatus
-                setter: setPaisaPayEscrowEMIStatus
-            type: int
         charityAffiliationDetails:
             expose: true
             access_type: public_method
@@ -274,22 +241,6 @@ Nogrod\eBaySDK\Trading\SellerType:
                 getter: getTransactionPercent
                 setter: setTransactionPercent
             type: float
-        integratedMerchantCreditCardInfo:
-            expose: true
-            access_type: public_method
-            serialized_name: IntegratedMerchantCreditCardInfo
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getIntegratedMerchantCreditCardInfo
-                setter: setIntegratedMerchantCreditCardInfo
-            type: array<string>
-            xml_list:
-                inline: false
-                entry_name: SupportedSite
-                skip_when_empty: true
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
         featureEligibility:
             expose: true
             access_type: public_method
@@ -366,25 +317,3 @@ Nogrod\eBaySDK\Trading\SellerType:
                 getter: getInternationalRateTable
                 setter: setInternationalRateTable
             type: bool
-        sellereBayPaymentProcessStatus:
-            expose: true
-            access_type: public_method
-            serialized_name: SellereBayPaymentProcessStatus
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getSellereBayPaymentProcessStatus
-                setter: setSellereBayPaymentProcessStatus
-            type: string
-        sellereBayPaymentProcessConsent:
-            expose: true
-            access_type: public_method
-            serialized_name: SellereBayPaymentProcessConsent
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getSellereBayPaymentProcessConsent
-                setter: setSellereBayPaymentProcessConsent
-            type: Nogrod\eBaySDK\Trading\SellereBayPaymentProcessConsentCodeType

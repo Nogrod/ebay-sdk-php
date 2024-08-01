@@ -82,72 +82,6 @@ Nogrod\eBaySDK\Trading\ReturnPolicyType:
                 getter: getDescription
                 setter: setDescription
             type: string
-        warrantyOfferedOption:
-            expose: true
-            access_type: public_method
-            serialized_name: WarrantyOfferedOption
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getWarrantyOfferedOption
-                setter: setWarrantyOfferedOption
-            type: string
-        warrantyOffered:
-            expose: true
-            access_type: public_method
-            serialized_name: WarrantyOffered
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getWarrantyOffered
-                setter: setWarrantyOffered
-            type: string
-        warrantyTypeOption:
-            expose: true
-            access_type: public_method
-            serialized_name: WarrantyTypeOption
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getWarrantyTypeOption
-                setter: setWarrantyTypeOption
-            type: string
-        warrantyType:
-            expose: true
-            access_type: public_method
-            serialized_name: WarrantyType
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getWarrantyType
-                setter: setWarrantyType
-            type: string
-        warrantyDurationOption:
-            expose: true
-            access_type: public_method
-            serialized_name: WarrantyDurationOption
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getWarrantyDurationOption
-                setter: setWarrantyDurationOption
-            type: string
-        warrantyDuration:
-            expose: true
-            access_type: public_method
-            serialized_name: WarrantyDuration
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getWarrantyDuration
-                setter: setWarrantyDuration
-            type: string
         shippingCostPaidByOption:
             expose: true
             access_type: public_method
@@ -170,39 +104,6 @@ Nogrod\eBaySDK\Trading\ReturnPolicyType:
                 getter: getShippingCostPaidBy
                 setter: setShippingCostPaidBy
             type: string
-        restockingFeeValue:
-            expose: true
-            access_type: public_method
-            serialized_name: RestockingFeeValue
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getRestockingFeeValue
-                setter: setRestockingFeeValue
-            type: string
-        restockingFeeValueOption:
-            expose: true
-            access_type: public_method
-            serialized_name: RestockingFeeValueOption
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getRestockingFeeValueOption
-                setter: setRestockingFeeValueOption
-            type: string
-        extendedHolidayReturns:
-            expose: true
-            access_type: public_method
-            serialized_name: ExtendedHolidayReturns
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getExtendedHolidayReturns
-                setter: setExtendedHolidayReturns
-            type: bool
         internationalRefundOption:
             expose: true
             access_type: public_method

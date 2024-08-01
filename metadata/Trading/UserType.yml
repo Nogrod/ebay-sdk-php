@@ -258,55 +258,6 @@ Nogrod\eBaySDK\Trading\UserType:
                 getter: getBusinessRole
                 setter: setBusinessRole
             type: string
-        charityAffiliations:
-            expose: true
-            access_type: public_method
-            serialized_name: CharityAffiliations
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getCharityAffiliations
-                setter: setCharityAffiliations
-            type: array<Nogrod\eBaySDK\Trading\CharityIDType>
-            xml_list:
-                inline: false
-                entry_name: CharityID
-                skip_when_empty: true
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-        payPalAccountLevel:
-            expose: true
-            access_type: public_method
-            serialized_name: PayPalAccountLevel
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getPayPalAccountLevel
-                setter: setPayPalAccountLevel
-            type: string
-        payPalAccountType:
-            expose: true
-            access_type: public_method
-            serialized_name: PayPalAccountType
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getPayPalAccountType
-                setter: setPayPalAccountType
-            type: string
-        payPalAccountStatus:
-            expose: true
-            access_type: public_method
-            serialized_name: PayPalAccountStatus
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getPayPalAccountStatus
-                setter: setPayPalAccountStatus
-            type: string
         userSubscription:
             expose: true
             access_type: public_method
@@ -320,32 +271,6 @@ Nogrod\eBaySDK\Trading\UserType:
             xml_list:
                 inline: true
                 entry_name: UserSubscription
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            type: array<string>
-        siteVerified:
-            expose: true
-            access_type: public_method
-            serialized_name: SiteVerified
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getSiteVerified
-                setter: setSiteVerified
-            type: bool
-        skypeID:
-            expose: true
-            access_type: public_method
-            serialized_name: SkypeID
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getSkypeID
-                setter: setSkypeID
-            xml_list:
-                inline: true
-                entry_name: SkypeID
                 namespace: 'urn:ebay:apis:eBLBaseComponents'
             type: array<string>
         eBayWikiReadOnly:
@@ -380,17 +305,6 @@ Nogrod\eBaySDK\Trading\UserType:
             accessor:
                 getter: getVATID
                 setter: setVATID
-            type: string
-        sellerPaymentMethod:
-            expose: true
-            access_type: public_method
-            serialized_name: SellerPaymentMethod
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getSellerPaymentMethod
-                setter: setSellerPaymentMethod
             type: string
         biddingSummary:
             expose: true
@@ -436,17 +350,6 @@ Nogrod\eBaySDK\Trading\UserType:
                 getter: getEnterpriseSeller
                 setter: setEnterpriseSeller
             type: bool
-        billingEmail:
-            expose: true
-            access_type: public_method
-            serialized_name: BillingEmail
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getBillingEmail
-                setter: setBillingEmail
-            type: string
         qualifiesForSelling:
             expose: true
             access_type: public_method
@@ -458,17 +361,6 @@ Nogrod\eBaySDK\Trading\UserType:
                 getter: getQualifiesForSelling
                 setter: setQualifiesForSelling
             type: bool
-        staticAlias:
-            expose: true
-            access_type: public_method
-            serialized_name: StaticAlias
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getStaticAlias
-                setter: setStaticAlias
-            type: string
         shippingAddress:
             expose: true
             access_type: public_method

@@ -294,27 +294,6 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     private $paisaPayFullEscrowEnabled = null;
 
     /**
-     * This field is deprecated.
-     *
-     * @var \Nogrod\eBaySDK\Trading\ISBNIdentifierEnabledDefinitionType $iSBNIdentifierEnabled
-     */
-    private $iSBNIdentifierEnabled = null;
-
-    /**
-     * This field is deprecated.
-     *
-     * @var \Nogrod\eBaySDK\Trading\UPCIdentifierEnabledDefinitionType $uPCIdentifierEnabled
-     */
-    private $uPCIdentifierEnabled = null;
-
-    /**
-     * This field is deprecated.
-     *
-     * @var \Nogrod\eBaySDK\Trading\EANIdentifierEnabledDefinitionType $eANIdentifierEnabled
-     */
-    private $eANIdentifierEnabled = null;
-
-    /**
      * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the use of Brand and MPN (Manufacturer Part Number) to identify a product. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>BrandMPNIdentifierEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
      *
      * @var \Nogrod\eBaySDK\Trading\BrandMPNIdentifierEnabledDefinitionType $brandMPNIdentifierEnabled
@@ -357,13 +336,6 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     private $crossBorderTradeAustraliaEnabled = null;
 
     /**
-     * This field is deprecated..
-     *
-     * @var \Nogrod\eBaySDK\Trading\PayPalBuyerProtectionEnabledDefinitionType $payPalBuyerProtectionEnabled
-     */
-    private $payPalBuyerProtectionEnabled = null;
-
-    /**
      * This field is deprecated.
      *
      * @var \Nogrod\eBaySDK\Trading\BuyerGuaranteeEnabledDefinitionType $buyerGuaranteeEnabled
@@ -390,13 +362,6 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      * @var \Nogrod\eBaySDK\Trading\INEscrowWorkflowTimelineDefinitionType $iNEscrowWorkflowTimeline
      */
     private $iNEscrowWorkflowTimeline = null;
-
-    /**
-     * This field is deprecated.
-     *
-     * @var \Nogrod\eBaySDK\Trading\PayPalRequiredDefinitionType $payPalRequired
-     */
-    private $payPalRequired = null;
 
     /**
      * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support motor vehicle classified ad listings. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>eBayMotorsProAdFormatEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
@@ -826,7 +791,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     private $valueCategory = null;
 
     /**
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the creation of listings through the specification of Global Trade Identification Numbers (GTINs) like UPC, ISBN, EAN, or Brand/MPN combination. If a GTIN is matched to a product in eBay product catalog, a listing will automatically be created using the eBay catalog product's images, product aspects, description, and title. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ProductCreationEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is no longer applicable.
      *
      * @var \Nogrod\eBaySDK\Trading\ProductCreationEnabledDefinitionType $productCreationEnabled
      */
@@ -884,13 +849,6 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      * @var \Nogrod\eBaySDK\Trading\MaxGranularFitmentCountDefinitionType $maxGranularFitmentCount
      */
     private $maxGranularFitmentCount = null;
-
-    /**
-     * This field is deprecated.
-     *
-     * @var \Nogrod\eBaySDK\Trading\PaymentOptionsGroupEnabledDefinitionType $paymentOptionsGroup
-     */
-    private $paymentOptionsGroup = null;
 
     /**
      * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the use of category groups in shipping business policies. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ShippingProfileCategoryGroup</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
@@ -2137,84 +2095,6 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     }
 
     /**
-     * Gets as iSBNIdentifierEnabled
-     *
-     * This field is deprecated.
-     *
-     * @return \Nogrod\eBaySDK\Trading\ISBNIdentifierEnabledDefinitionType
-     */
-    public function getISBNIdentifierEnabled()
-    {
-        return $this->iSBNIdentifierEnabled;
-    }
-
-    /**
-     * Sets a new iSBNIdentifierEnabled
-     *
-     * This field is deprecated.
-     *
-     * @param \Nogrod\eBaySDK\Trading\ISBNIdentifierEnabledDefinitionType $iSBNIdentifierEnabled
-     * @return self
-     */
-    public function setISBNIdentifierEnabled(\Nogrod\eBaySDK\Trading\ISBNIdentifierEnabledDefinitionType $iSBNIdentifierEnabled)
-    {
-        $this->iSBNIdentifierEnabled = $iSBNIdentifierEnabled;
-        return $this;
-    }
-
-    /**
-     * Gets as uPCIdentifierEnabled
-     *
-     * This field is deprecated.
-     *
-     * @return \Nogrod\eBaySDK\Trading\UPCIdentifierEnabledDefinitionType
-     */
-    public function getUPCIdentifierEnabled()
-    {
-        return $this->uPCIdentifierEnabled;
-    }
-
-    /**
-     * Sets a new uPCIdentifierEnabled
-     *
-     * This field is deprecated.
-     *
-     * @param \Nogrod\eBaySDK\Trading\UPCIdentifierEnabledDefinitionType $uPCIdentifierEnabled
-     * @return self
-     */
-    public function setUPCIdentifierEnabled(\Nogrod\eBaySDK\Trading\UPCIdentifierEnabledDefinitionType $uPCIdentifierEnabled)
-    {
-        $this->uPCIdentifierEnabled = $uPCIdentifierEnabled;
-        return $this;
-    }
-
-    /**
-     * Gets as eANIdentifierEnabled
-     *
-     * This field is deprecated.
-     *
-     * @return \Nogrod\eBaySDK\Trading\EANIdentifierEnabledDefinitionType
-     */
-    public function getEANIdentifierEnabled()
-    {
-        return $this->eANIdentifierEnabled;
-    }
-
-    /**
-     * Sets a new eANIdentifierEnabled
-     *
-     * This field is deprecated.
-     *
-     * @param \Nogrod\eBaySDK\Trading\EANIdentifierEnabledDefinitionType $eANIdentifierEnabled
-     * @return self
-     */
-    public function setEANIdentifierEnabled(\Nogrod\eBaySDK\Trading\EANIdentifierEnabledDefinitionType $eANIdentifierEnabled)
-    {
-        $this->eANIdentifierEnabled = $eANIdentifierEnabled;
-        return $this;
-    }
-
-    /**
      * Gets as brandMPNIdentifierEnabled
      *
      * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the use of Brand and MPN (Manufacturer Part Number) to identify a product. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>BrandMPNIdentifierEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
@@ -2371,32 +2251,6 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     }
 
     /**
-     * Gets as payPalBuyerProtectionEnabled
-     *
-     * This field is deprecated..
-     *
-     * @return \Nogrod\eBaySDK\Trading\PayPalBuyerProtectionEnabledDefinitionType
-     */
-    public function getPayPalBuyerProtectionEnabled()
-    {
-        return $this->payPalBuyerProtectionEnabled;
-    }
-
-    /**
-     * Sets a new payPalBuyerProtectionEnabled
-     *
-     * This field is deprecated..
-     *
-     * @param \Nogrod\eBaySDK\Trading\PayPalBuyerProtectionEnabledDefinitionType $payPalBuyerProtectionEnabled
-     * @return self
-     */
-    public function setPayPalBuyerProtectionEnabled(\Nogrod\eBaySDK\Trading\PayPalBuyerProtectionEnabledDefinitionType $payPalBuyerProtectionEnabled)
-    {
-        $this->payPalBuyerProtectionEnabled = $payPalBuyerProtectionEnabled;
-        return $this;
-    }
-
-    /**
      * Gets as buyerGuaranteeEnabled
      *
      * This field is deprecated.
@@ -2497,32 +2351,6 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     public function setINEscrowWorkflowTimeline(\Nogrod\eBaySDK\Trading\INEscrowWorkflowTimelineDefinitionType $iNEscrowWorkflowTimeline)
     {
         $this->iNEscrowWorkflowTimeline = $iNEscrowWorkflowTimeline;
-        return $this;
-    }
-
-    /**
-     * Gets as payPalRequired
-     *
-     * This field is deprecated.
-     *
-     * @return \Nogrod\eBaySDK\Trading\PayPalRequiredDefinitionType
-     */
-    public function getPayPalRequired()
-    {
-        return $this->payPalRequired;
-    }
-
-    /**
-     * Sets a new payPalRequired
-     *
-     * This field is deprecated.
-     *
-     * @param \Nogrod\eBaySDK\Trading\PayPalRequiredDefinitionType $payPalRequired
-     * @return self
-     */
-    public function setPayPalRequired(\Nogrod\eBaySDK\Trading\PayPalRequiredDefinitionType $payPalRequired)
-    {
-        $this->payPalRequired = $payPalRequired;
         return $this;
     }
 
@@ -4091,7 +3919,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as productCreationEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the creation of listings through the specification of Global Trade Identification Numbers (GTINs) like UPC, ISBN, EAN, or Brand/MPN combination. If a GTIN is matched to a product in eBay product catalog, a listing will automatically be created using the eBay catalog product's images, product aspects, description, and title. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ProductCreationEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is no longer applicable.
      *
      * @return \Nogrod\eBaySDK\Trading\ProductCreationEnabledDefinitionType
      */
@@ -4103,7 +3931,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new productCreationEnabled
      *
-     * This field is returned as an empty element (a boolean value is not returned) if one or more eBay marketplaces support the creation of listings through the specification of Global Trade Identification Numbers (GTINs) like UPC, ISBN, EAN, or Brand/MPN combination. If a GTIN is matched to a product in eBay product catalog, a listing will automatically be created using the eBay catalog product's images, product aspects, description, and title. This field will not be returned if one or more <b>FeatureID</b> fields are included in the call request and <code>ProductCreationEnabled</code> is not one of the values passed into those <a href="types/FeatureIDCodeType.html">FeatureID</a> fields.
+     * This field is no longer applicable.
      *
      * @param \Nogrod\eBaySDK\Trading\ProductCreationEnabledDefinitionType $productCreationEnabled
      * @return self
@@ -4277,32 +4105,6 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     public function setMaxGranularFitmentCount(\Nogrod\eBaySDK\Trading\MaxGranularFitmentCountDefinitionType $maxGranularFitmentCount)
     {
         $this->maxGranularFitmentCount = $maxGranularFitmentCount;
-        return $this;
-    }
-
-    /**
-     * Gets as paymentOptionsGroup
-     *
-     * This field is deprecated.
-     *
-     * @return \Nogrod\eBaySDK\Trading\PaymentOptionsGroupEnabledDefinitionType
-     */
-    public function getPaymentOptionsGroup()
-    {
-        return $this->paymentOptionsGroup;
-    }
-
-    /**
-     * Sets a new paymentOptionsGroup
-     *
-     * This field is deprecated.
-     *
-     * @param \Nogrod\eBaySDK\Trading\PaymentOptionsGroupEnabledDefinitionType $paymentOptionsGroup
-     * @return self
-     */
-    public function setPaymentOptionsGroup(\Nogrod\eBaySDK\Trading\PaymentOptionsGroupEnabledDefinitionType $paymentOptionsGroup)
-    {
-        $this->paymentOptionsGroup = $paymentOptionsGroup;
         return $this;
     }
 
@@ -5229,18 +5031,6 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PaisaPayFullEscrowEnabled", $value);
         }
-        $value = $this->getISBNIdentifierEnabled();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ISBNIdentifierEnabled", $value);
-        }
-        $value = $this->getUPCIdentifierEnabled();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}UPCIdentifierEnabled", $value);
-        }
-        $value = $this->getEANIdentifierEnabled();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}EANIdentifierEnabled", $value);
-        }
         $value = $this->getBrandMPNIdentifierEnabled();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BrandMPNIdentifierEnabled", $value);
@@ -5265,10 +5055,6 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CrossBorderTradeAustraliaEnabled", $value);
         }
-        $value = $this->getPayPalBuyerProtectionEnabled();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PayPalBuyerProtectionEnabled", $value);
-        }
         $value = $this->getBuyerGuaranteeEnabled();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BuyerGuaranteeEnabled", $value);
@@ -5284,10 +5070,6 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
         $value = $this->getINEscrowWorkflowTimeline();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}INEscrowWorkflowTimeline", $value);
-        }
-        $value = $this->getPayPalRequired();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PayPalRequired", $value);
         }
         $value = $this->getEBayMotorsProAdFormatEnabled();
         if (null !== $value) {
@@ -5548,10 +5330,6 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
         $value = $this->getMaxGranularFitmentCount();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MaxGranularFitmentCount", $value);
-        }
-        $value = $this->getPaymentOptionsGroup();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PaymentOptionsGroup", $value);
         }
         $value = $this->getShippingProfileCategoryGroup();
         if (null !== $value) {
@@ -5821,18 +5599,6 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
         if (null !== $value) {
             $this->setPaisaPayFullEscrowEnabled(\Nogrod\eBaySDK\Trading\PaisaPayFullEscrowEnabledDefinitionType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ISBNIdentifierEnabled');
-        if (null !== $value) {
-            $this->setISBNIdentifierEnabled(\Nogrod\eBaySDK\Trading\ISBNIdentifierEnabledDefinitionType::fromKeyValue($value));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UPCIdentifierEnabled');
-        if (null !== $value) {
-            $this->setUPCIdentifierEnabled(\Nogrod\eBaySDK\Trading\UPCIdentifierEnabledDefinitionType::fromKeyValue($value));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EANIdentifierEnabled');
-        if (null !== $value) {
-            $this->setEANIdentifierEnabled(\Nogrod\eBaySDK\Trading\EANIdentifierEnabledDefinitionType::fromKeyValue($value));
-        }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BrandMPNIdentifierEnabled');
         if (null !== $value) {
             $this->setBrandMPNIdentifierEnabled(\Nogrod\eBaySDK\Trading\BrandMPNIdentifierEnabledDefinitionType::fromKeyValue($value));
@@ -5857,10 +5623,6 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
         if (null !== $value) {
             $this->setCrossBorderTradeAustraliaEnabled(\Nogrod\eBaySDK\Trading\CrossBorderTradeAustraliaEnabledDefinitionType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PayPalBuyerProtectionEnabled');
-        if (null !== $value) {
-            $this->setPayPalBuyerProtectionEnabled(\Nogrod\eBaySDK\Trading\PayPalBuyerProtectionEnabledDefinitionType::fromKeyValue($value));
-        }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BuyerGuaranteeEnabled');
         if (null !== $value) {
             $this->setBuyerGuaranteeEnabled(\Nogrod\eBaySDK\Trading\BuyerGuaranteeEnabledDefinitionType::fromKeyValue($value));
@@ -5876,10 +5638,6 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}INEscrowWorkflowTimeline');
         if (null !== $value) {
             $this->setINEscrowWorkflowTimeline(\Nogrod\eBaySDK\Trading\INEscrowWorkflowTimelineDefinitionType::fromKeyValue($value));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PayPalRequired');
-        if (null !== $value) {
-            $this->setPayPalRequired(\Nogrod\eBaySDK\Trading\PayPalRequiredDefinitionType::fromKeyValue($value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}eBayMotorsProAdFormatEnabled');
         if (null !== $value) {
@@ -6140,10 +5898,6 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MaxGranularFitmentCount');
         if (null !== $value) {
             $this->setMaxGranularFitmentCount(\Nogrod\eBaySDK\Trading\MaxGranularFitmentCountDefinitionType::fromKeyValue($value));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaymentOptionsGroup');
-        if (null !== $value) {
-            $this->setPaymentOptionsGroup(\Nogrod\eBaySDK\Trading\PaymentOptionsGroupEnabledDefinitionType::fromKeyValue($value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingProfileCategoryGroup');
         if (null !== $value) {

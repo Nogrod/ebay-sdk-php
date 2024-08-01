@@ -93,17 +93,6 @@ Nogrod\eBaySDK\Trading\GetMyeBayBuyingRequestType:
                 getter: getSecondChanceOffer
                 setter: setSecondChanceOffer
             type: Nogrod\eBaySDK\Trading\MyeBaySelectionType
-        bidAssistantList:
-            expose: true
-            access_type: public_method
-            serialized_name: BidAssistantList
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getBidAssistantList
-                setter: setBidAssistantList
-            type: Nogrod\eBaySDK\Trading\BidAssistantListType
         deletedFromWonList:
             expose: true
             access_type: public_method

@@ -17,9 +17,6 @@ class TaxesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      *  <br>
      *  <br>
      *  <span class="tablenote"><b>Note: </b> For all VAT ID/VATIN values to be returned (except for France), developers will need to use a Trading WSDL with a version number of 1211 (or newer). For French VAT ID/VATIN values to be returned, developers will need to use a Trading WSDL with a version number of 1225 (or newer). Otherwise, the VAT information will be returned in the <b>Order.ShippingAddress.Street2</b> field. Developers will also have the option of using older version, but setting the <b>X-EBAY-API-COMPATIBILITY-LEVEL</b> header value to 1211 or 1225 or higher.
-     *  <br>
-     *  <br>
-     *  On January 31, 2022, the <b>Order.ShippingAddress.Street2</b> will stop being used to return VAT information regardless of WSDL version or compatibility level.
      *  </span>
      *  <br>
      *
@@ -50,9 +47,6 @@ class TaxesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      *  <br>
      *  <br>
      *  <span class="tablenote"><b>Note: </b> For all VAT ID/VATIN values to be returned (except for France), developers will need to use a Trading WSDL with a version number of 1211 (or newer). For French VAT ID/VATIN values to be returned, developers will need to use a Trading WSDL with a version number of 1225 (or newer). Otherwise, the VAT information will be returned in the <b>Order.ShippingAddress.Street2</b> field. Developers will also have the option of using older version, but setting the <b>X-EBAY-API-COMPATIBILITY-LEVEL</b> header value to 1211 or 1225 or higher.
-     *  <br>
-     *  <br>
-     *  On January 31, 2022, the <b>Order.ShippingAddress.Street2</b> will stop being used to return VAT information regardless of WSDL version or compatibility level.
      *  </span>
      *  <br>
      *
@@ -70,9 +64,6 @@ class TaxesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      *  <br>
      *  <br>
      *  <span class="tablenote"><b>Note: </b> For all VAT ID/VATIN values to be returned (except for France), developers will need to use a Trading WSDL with a version number of 1211 (or newer). For French VAT ID/VATIN values to be returned, developers will need to use a Trading WSDL with a version number of 1225 (or newer). Otherwise, the VAT information will be returned in the <b>Order.ShippingAddress.Street2</b> field. Developers will also have the option of using older version, but setting the <b>X-EBAY-API-COMPATIBILITY-LEVEL</b> header value to 1211 or 1225 or higher.
-     *  <br>
-     *  <br>
-     *  On January 31, 2022, the <b>Order.ShippingAddress.Street2</b> will stop being used to return VAT information regardless of WSDL version or compatibility level.
      *  </span>
      *  <br>
      *

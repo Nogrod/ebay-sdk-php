@@ -7,7 +7,7 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing VerifyRelistItemResponseType
  *
- * The base response type for the <b>VerifyRelistItem</b> call. The response includes the Item ID for the relisted item, the SKU value for the item (if any), listing recommendations (if applicable), the estimated fees for the relisted item (except the Final Value Fee, which isn't calculated until the item has sold), the start and end times of the listing, and other details.
+ * The base response type for the <b>VerifyRelistItem</b> call. The response includes the Item ID for the relisted item, the SKU value for the item (if any), listing recommendations (if applicable), the estimated fees for the relisted item (except the transaction fees, which aren't calculated until the item has sold), the start and end times of the listing, and other details.
  * XSD Type: VerifyRelistItemResponseType
  */
 class VerifyRelistItemResponseType extends AbstractResponseType
@@ -20,7 +20,7 @@ class VerifyRelistItemResponseType extends AbstractResponseType
     private $itemID = null;
 
     /**
-     * This container is an array of fees that would incur if the listing defined in request payload of the <b>VerifyRelistItem<b> call was used to relist an item. The fees in this container will not include any fees that are based on the purchase price (such as Final Value Fee) and only come into play when the listing has a sale.
+     * This container is an array of fees that would incur if the listing defined in request payload of the <b>VerifyRelistItem</b> call was used to relist an item. The fees in this container will not include any fees that are based on the purchase price (such as transaction fees) and only come into play when the listing has a sale.
      *  <br>
      *  <br>
      *  All listing fee types are returned, even if those fees are not applicable for the listing and are '0.0'.
@@ -42,11 +42,6 @@ class VerifyRelistItemResponseType extends AbstractResponseType
 
     /**
      * This timestamp indicates the date and time when the item to be relisted is scheduled to end on the eBay site. This date/time is calculated by using the <b>StartTime</b> and the the listing duration.
-     *  <br><br>
-     *  <span class="tablenote"><b>Note: </b>
-     *  Starting July 1, 2019, the Good 'Til Cancelled renewal schedule will be modified from every 30 days to once per calendar month. For example, if a GTC listing is created July 5, the next monthly renewal date will be August 5. If a GTC listing is created on the 31st of the month, but the following month only has 30 days, the renewal will happen on the 30th in the following month. Finally, if a GTC listing is created on January 29-31, the renewal will happen on February 28th (or 29th during a 'Leap Year'). See the
-     *  <a href="https://pages.ebay.com/seller-center/seller-updates/2019-spring/marketplace-updates.html#good-til-cancelled" target="_blank">Good 'Til Cancelled listings update</a> in the <b>Spring 2019 Seller Updates</b> for more information about this change.
-     *  </span>
      *
      * @var \DateTime $endTime
      */
@@ -97,7 +92,7 @@ class VerifyRelistItemResponseType extends AbstractResponseType
     /**
      * Adds as fee
      *
-     * This container is an array of fees that would incur if the listing defined in request payload of the <b>VerifyRelistItem<b> call was used to relist an item. The fees in this container will not include any fees that are based on the purchase price (such as Final Value Fee) and only come into play when the listing has a sale.
+     * This container is an array of fees that would incur if the listing defined in request payload of the <b>VerifyRelistItem</b> call was used to relist an item. The fees in this container will not include any fees that are based on the purchase price (such as transaction fees) and only come into play when the listing has a sale.
      *  <br>
      *  <br>
      *  All listing fee types are returned, even if those fees are not applicable for the listing and are '0.0'.
@@ -118,7 +113,7 @@ class VerifyRelistItemResponseType extends AbstractResponseType
     /**
      * isset fees
      *
-     * This container is an array of fees that would incur if the listing defined in request payload of the <b>VerifyRelistItem<b> call was used to relist an item. The fees in this container will not include any fees that are based on the purchase price (such as Final Value Fee) and only come into play when the listing has a sale.
+     * This container is an array of fees that would incur if the listing defined in request payload of the <b>VerifyRelistItem</b> call was used to relist an item. The fees in this container will not include any fees that are based on the purchase price (such as transaction fees) and only come into play when the listing has a sale.
      *  <br>
      *  <br>
      *  All listing fee types are returned, even if those fees are not applicable for the listing and are '0.0'.
@@ -138,7 +133,7 @@ class VerifyRelistItemResponseType extends AbstractResponseType
     /**
      * unset fees
      *
-     * This container is an array of fees that would incur if the listing defined in request payload of the <b>VerifyRelistItem<b> call was used to relist an item. The fees in this container will not include any fees that are based on the purchase price (such as Final Value Fee) and only come into play when the listing has a sale.
+     * This container is an array of fees that would incur if the listing defined in request payload of the <b>VerifyRelistItem</b> call was used to relist an item. The fees in this container will not include any fees that are based on the purchase price (such as transaction fees) and only come into play when the listing has a sale.
      *  <br>
      *  <br>
      *  All listing fee types are returned, even if those fees are not applicable for the listing and are '0.0'.
@@ -158,7 +153,7 @@ class VerifyRelistItemResponseType extends AbstractResponseType
     /**
      * Gets as fees
      *
-     * This container is an array of fees that would incur if the listing defined in request payload of the <b>VerifyRelistItem<b> call was used to relist an item. The fees in this container will not include any fees that are based on the purchase price (such as Final Value Fee) and only come into play when the listing has a sale.
+     * This container is an array of fees that would incur if the listing defined in request payload of the <b>VerifyRelistItem</b> call was used to relist an item. The fees in this container will not include any fees that are based on the purchase price (such as transaction fees) and only come into play when the listing has a sale.
      *  <br>
      *  <br>
      *  All listing fee types are returned, even if those fees are not applicable for the listing and are '0.0'.
@@ -177,7 +172,7 @@ class VerifyRelistItemResponseType extends AbstractResponseType
     /**
      * Sets a new fees
      *
-     * This container is an array of fees that would incur if the listing defined in request payload of the <b>VerifyRelistItem<b> call was used to relist an item. The fees in this container will not include any fees that are based on the purchase price (such as Final Value Fee) and only come into play when the listing has a sale.
+     * This container is an array of fees that would incur if the listing defined in request payload of the <b>VerifyRelistItem</b> call was used to relist an item. The fees in this container will not include any fees that are based on the purchase price (such as transaction fees) and only come into play when the listing has a sale.
      *  <br>
      *  <br>
      *  All listing fee types are returned, even if those fees are not applicable for the listing and are '0.0'.
@@ -225,11 +220,6 @@ class VerifyRelistItemResponseType extends AbstractResponseType
      * Gets as endTime
      *
      * This timestamp indicates the date and time when the item to be relisted is scheduled to end on the eBay site. This date/time is calculated by using the <b>StartTime</b> and the the listing duration.
-     *  <br><br>
-     *  <span class="tablenote"><b>Note: </b>
-     *  Starting July 1, 2019, the Good 'Til Cancelled renewal schedule will be modified from every 30 days to once per calendar month. For example, if a GTC listing is created July 5, the next monthly renewal date will be August 5. If a GTC listing is created on the 31st of the month, but the following month only has 30 days, the renewal will happen on the 30th in the following month. Finally, if a GTC listing is created on January 29-31, the renewal will happen on February 28th (or 29th during a 'Leap Year'). See the
-     *  <a href="https://pages.ebay.com/seller-center/seller-updates/2019-spring/marketplace-updates.html#good-til-cancelled" target="_blank">Good 'Til Cancelled listings update</a> in the <b>Spring 2019 Seller Updates</b> for more information about this change.
-     *  </span>
      *
      * @return \DateTime
      */
@@ -242,11 +232,6 @@ class VerifyRelistItemResponseType extends AbstractResponseType
      * Sets a new endTime
      *
      * This timestamp indicates the date and time when the item to be relisted is scheduled to end on the eBay site. This date/time is calculated by using the <b>StartTime</b> and the the listing duration.
-     *  <br><br>
-     *  <span class="tablenote"><b>Note: </b>
-     *  Starting July 1, 2019, the Good 'Til Cancelled renewal schedule will be modified from every 30 days to once per calendar month. For example, if a GTC listing is created July 5, the next monthly renewal date will be August 5. If a GTC listing is created on the 31st of the month, but the following month only has 30 days, the renewal will happen on the 30th in the following month. Finally, if a GTC listing is created on January 29-31, the renewal will happen on February 28th (or 29th during a 'Leap Year'). See the
-     *  <a href="https://pages.ebay.com/seller-center/seller-updates/2019-spring/marketplace-updates.html#good-til-cancelled" target="_blank">Good 'Til Cancelled listings update</a> in the <b>Spring 2019 Seller Updates</b> for more information about this change.
-     *  </span>
      *
      * @param \DateTime $endTime
      * @return self

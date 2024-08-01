@@ -445,39 +445,6 @@ Nogrod\eBaySDK\Trading\FeatureDefinitionsType:
                 getter: getPaisaPayFullEscrowEnabled
                 setter: setPaisaPayFullEscrowEnabled
             type: Nogrod\eBaySDK\Trading\PaisaPayFullEscrowEnabledDefinitionType
-        iSBNIdentifierEnabled:
-            expose: true
-            access_type: public_method
-            serialized_name: ISBNIdentifierEnabled
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getISBNIdentifierEnabled
-                setter: setISBNIdentifierEnabled
-            type: Nogrod\eBaySDK\Trading\ISBNIdentifierEnabledDefinitionType
-        uPCIdentifierEnabled:
-            expose: true
-            access_type: public_method
-            serialized_name: UPCIdentifierEnabled
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getUPCIdentifierEnabled
-                setter: setUPCIdentifierEnabled
-            type: Nogrod\eBaySDK\Trading\UPCIdentifierEnabledDefinitionType
-        eANIdentifierEnabled:
-            expose: true
-            access_type: public_method
-            serialized_name: EANIdentifierEnabled
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getEANIdentifierEnabled
-                setter: setEANIdentifierEnabled
-            type: Nogrod\eBaySDK\Trading\EANIdentifierEnabledDefinitionType
         brandMPNIdentifierEnabled:
             expose: true
             access_type: public_method
@@ -544,17 +511,6 @@ Nogrod\eBaySDK\Trading\FeatureDefinitionsType:
                 getter: getCrossBorderTradeAustraliaEnabled
                 setter: setCrossBorderTradeAustraliaEnabled
             type: Nogrod\eBaySDK\Trading\CrossBorderTradeAustraliaEnabledDefinitionType
-        payPalBuyerProtectionEnabled:
-            expose: true
-            access_type: public_method
-            serialized_name: PayPalBuyerProtectionEnabled
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getPayPalBuyerProtectionEnabled
-                setter: setPayPalBuyerProtectionEnabled
-            type: Nogrod\eBaySDK\Trading\PayPalBuyerProtectionEnabledDefinitionType
         buyerGuaranteeEnabled:
             expose: true
             access_type: public_method
@@ -599,17 +555,6 @@ Nogrod\eBaySDK\Trading\FeatureDefinitionsType:
                 getter: getINEscrowWorkflowTimeline
                 setter: setINEscrowWorkflowTimeline
             type: Nogrod\eBaySDK\Trading\INEscrowWorkflowTimelineDefinitionType
-        payPalRequired:
-            expose: true
-            access_type: public_method
-            serialized_name: PayPalRequired
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getPayPalRequired
-                setter: setPayPalRequired
-            type: Nogrod\eBaySDK\Trading\PayPalRequiredDefinitionType
         eBayMotorsProAdFormatEnabled:
             expose: true
             access_type: public_method
@@ -1325,17 +1270,6 @@ Nogrod\eBaySDK\Trading\FeatureDefinitionsType:
                 getter: getMaxGranularFitmentCount
                 setter: setMaxGranularFitmentCount
             type: Nogrod\eBaySDK\Trading\MaxGranularFitmentCountDefinitionType
-        paymentOptionsGroup:
-            expose: true
-            access_type: public_method
-            serialized_name: PaymentOptionsGroup
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getPaymentOptionsGroup
-                setter: setPaymentOptionsGroup
-            type: Nogrod\eBaySDK\Trading\PaymentOptionsGroupEnabledDefinitionType
         shippingProfileCategoryGroup:
             expose: true
             access_type: public_method

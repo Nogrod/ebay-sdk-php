@@ -7,7 +7,7 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing VerifyAddFixedPriceItemResponseType
  *
- * Returns the listing recommendations (if applicable), the estimated fees for the proposed new listing (except the Final Value Fee, which isn't calculated until the item has sold), and other details.
+ * Returns the listing recommendations (if applicable), the estimated fees for the proposed new listing (except the transaction fees, which aren't calculated until the item has sold), and other details.
  * XSD Type: VerifyAddFixedPriceItemResponseType
  */
 class VerifyAddFixedPriceItemResponseType extends AbstractResponseType
@@ -29,7 +29,7 @@ class VerifyAddFixedPriceItemResponseType extends AbstractResponseType
     private $sKU = null;
 
     /**
-     * This container is an array of fees that would incur if the listing defined in request payload of the <b>VerifyAddFixedPriceItem<b> call was published. The fees in this container will not include any fees that are based on the purchase price (such as Final Value Fee) and only come into play when the listing has a sale.
+     * This container is an array of fees that would incur if the listing defined in request payload of the <b>VerifyAddFixedPriceItem</b> call was published. The fees in this container will not include any fees that are based on the purchase price (such as transaction fees) and only come into play when the listing has a sale.
      *  <br>
      *  <br>
      *  All listing fee types are returned, even if those fees are not applicable for the listing and are '0.0'.
@@ -41,20 +41,6 @@ class VerifyAddFixedPriceItemResponseType extends AbstractResponseType
      * @var \Nogrod\eBaySDK\Trading\FeeType[] $fees
      */
     private $fees = null;
-
-    /**
-     * This field is deprecated.
-     *
-     * @var bool $expressListing
-     */
-    private $expressListing = null;
-
-    /**
-     * This field is deprecated.
-     *
-     * @var \Nogrod\eBaySDK\Trading\ExpressItemRequirementsType $expressItemRequirements
-     */
-    private $expressItemRequirements = null;
 
     /**
      * ID of the primary category in which the item would be listed.
@@ -147,7 +133,7 @@ class VerifyAddFixedPriceItemResponseType extends AbstractResponseType
     /**
      * Adds as fee
      *
-     * This container is an array of fees that would incur if the listing defined in request payload of the <b>VerifyAddFixedPriceItem<b> call was published. The fees in this container will not include any fees that are based on the purchase price (such as Final Value Fee) and only come into play when the listing has a sale.
+     * This container is an array of fees that would incur if the listing defined in request payload of the <b>VerifyAddFixedPriceItem</b> call was published. The fees in this container will not include any fees that are based on the purchase price (such as transaction fees) and only come into play when the listing has a sale.
      *  <br>
      *  <br>
      *  All listing fee types are returned, even if those fees are not applicable for the listing and are '0.0'.
@@ -168,7 +154,7 @@ class VerifyAddFixedPriceItemResponseType extends AbstractResponseType
     /**
      * isset fees
      *
-     * This container is an array of fees that would incur if the listing defined in request payload of the <b>VerifyAddFixedPriceItem<b> call was published. The fees in this container will not include any fees that are based on the purchase price (such as Final Value Fee) and only come into play when the listing has a sale.
+     * This container is an array of fees that would incur if the listing defined in request payload of the <b>VerifyAddFixedPriceItem</b> call was published. The fees in this container will not include any fees that are based on the purchase price (such as transaction fees) and only come into play when the listing has a sale.
      *  <br>
      *  <br>
      *  All listing fee types are returned, even if those fees are not applicable for the listing and are '0.0'.
@@ -188,7 +174,7 @@ class VerifyAddFixedPriceItemResponseType extends AbstractResponseType
     /**
      * unset fees
      *
-     * This container is an array of fees that would incur if the listing defined in request payload of the <b>VerifyAddFixedPriceItem<b> call was published. The fees in this container will not include any fees that are based on the purchase price (such as Final Value Fee) and only come into play when the listing has a sale.
+     * This container is an array of fees that would incur if the listing defined in request payload of the <b>VerifyAddFixedPriceItem</b> call was published. The fees in this container will not include any fees that are based on the purchase price (such as transaction fees) and only come into play when the listing has a sale.
      *  <br>
      *  <br>
      *  All listing fee types are returned, even if those fees are not applicable for the listing and are '0.0'.
@@ -208,7 +194,7 @@ class VerifyAddFixedPriceItemResponseType extends AbstractResponseType
     /**
      * Gets as fees
      *
-     * This container is an array of fees that would incur if the listing defined in request payload of the <b>VerifyAddFixedPriceItem<b> call was published. The fees in this container will not include any fees that are based on the purchase price (such as Final Value Fee) and only come into play when the listing has a sale.
+     * This container is an array of fees that would incur if the listing defined in request payload of the <b>VerifyAddFixedPriceItem</b> call was published. The fees in this container will not include any fees that are based on the purchase price (such as transaction fees) and only come into play when the listing has a sale.
      *  <br>
      *  <br>
      *  All listing fee types are returned, even if those fees are not applicable for the listing and are '0.0'.
@@ -227,7 +213,7 @@ class VerifyAddFixedPriceItemResponseType extends AbstractResponseType
     /**
      * Sets a new fees
      *
-     * This container is an array of fees that would incur if the listing defined in request payload of the <b>VerifyAddFixedPriceItem<b> call was published. The fees in this container will not include any fees that are based on the purchase price (such as Final Value Fee) and only come into play when the listing has a sale.
+     * This container is an array of fees that would incur if the listing defined in request payload of the <b>VerifyAddFixedPriceItem</b> call was published. The fees in this container will not include any fees that are based on the purchase price (such as transaction fees) and only come into play when the listing has a sale.
      *  <br>
      *  <br>
      *  All listing fee types are returned, even if those fees are not applicable for the listing and are '0.0'.
@@ -242,58 +228,6 @@ class VerifyAddFixedPriceItemResponseType extends AbstractResponseType
     public function setFees(array $fees)
     {
         $this->fees = $fees;
-        return $this;
-    }
-
-    /**
-     * Gets as expressListing
-     *
-     * This field is deprecated.
-     *
-     * @return bool
-     */
-    public function getExpressListing()
-    {
-        return $this->expressListing;
-    }
-
-    /**
-     * Sets a new expressListing
-     *
-     * This field is deprecated.
-     *
-     * @param bool $expressListing
-     * @return self
-     */
-    public function setExpressListing($expressListing)
-    {
-        $this->expressListing = $expressListing;
-        return $this;
-    }
-
-    /**
-     * Gets as expressItemRequirements
-     *
-     * This field is deprecated.
-     *
-     * @return \Nogrod\eBaySDK\Trading\ExpressItemRequirementsType
-     */
-    public function getExpressItemRequirements()
-    {
-        return $this->expressItemRequirements;
-    }
-
-    /**
-     * Sets a new expressItemRequirements
-     *
-     * This field is deprecated.
-     *
-     * @param \Nogrod\eBaySDK\Trading\ExpressItemRequirementsType $expressItemRequirements
-     * @return self
-     */
-    public function setExpressItemRequirements(\Nogrod\eBaySDK\Trading\ExpressItemRequirementsType $expressItemRequirements)
-    {
-        $this->expressItemRequirements = $expressItemRequirements;
         return $this;
     }
 
@@ -451,15 +385,6 @@ class VerifyAddFixedPriceItemResponseType extends AbstractResponseType
         if (null !== $value && !empty($this->getFees())) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Fees", array_map(function ($v) {return ["Fee" => $v];}, $value));
         }
-        $value = $this->getExpressListing();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ExpressListing", $value);
-        }
-        $value = $this->getExpressItemRequirements();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ExpressItemRequirements", $value);
-        }
         $value = $this->getCategoryID();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CategoryID", $value);
@@ -500,14 +425,6 @@ class VerifyAddFixedPriceItemResponseType extends AbstractResponseType
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Fees', true);
         if (null !== $value && !empty($value)) {
             $this->setFees(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\FeeType::fromKeyValue($v);}, $value));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExpressListing');
-        if (null !== $value) {
-            $this->setExpressListing($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExpressItemRequirements');
-        if (null !== $value) {
-            $this->setExpressItemRequirements(\Nogrod\eBaySDK\Trading\ExpressItemRequirementsType::fromKeyValue($value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CategoryID');
         if (null !== $value) {

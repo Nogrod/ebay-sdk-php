@@ -15,7 +15,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  Also returned with the data for an item's transaction.
  *  <br/><br/>
  *  <span class="tablenote"><strong>Note:</strong>
- *  The <strong>ShippingPackageDetails</strong> container should now be used instead of the <strong>CalculatedShippingRate</strong> container to specify values for the <strong>MeasurementUnit</strong>, <strong>PackageDepth</strong>, <strong>PackageWidth</strong>, <strong>PackageLength</strong>, <strong>ShippingIrregular</strong>, <strong>ShippingPackage</strong>, <strong>WeightMajor</strong>, and/or <strong>WeightMinor</strong> fields. The <strong>CalculatedShippingRate</strong> container should only be used to specify values for the <strong>InternationalPackagingHandlingCosts</strong>, <strong>OriginatingPostalCode</strong>, and/or <strong>PackagingHandlingCosts</strong> fields.
+ *  The <strong>ShippingPackageDetails</strong> container should now be used instead of the <strong>CalculatedShippingRate</strong> container to specify values for the <strong>MeasurementUnit</strong>, <strong>PackageDepth</strong>, <strong>PackageWidth</strong>, <strong>PackageLength</strong>, <strong>ShippingIrregular</strong>, <strong>ShippingPackage</strong>, <strong>WeightMajor</strong>, and/or <strong>WeightMinor</strong> fields. The <strong>CalculatedShippingRate</strong> container should only be used to specify values for the <strong>InternationalPackagingHandlingCosts</strong>, and/or <strong>PackagingHandlingCosts</strong> fields.
  *  </span>
  * XSD Type: ShipPackageDetailsType
  */

@@ -44,9 +44,6 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
 
     /**
      * The enumeration value returned in this field indicates whether an item is eligible for the buyer protection.
-     *  <br>
-     *  <span class="tablenote"><b>Note: </b> This field will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
-     *  </span>
      *
      * @var string $buyerProtection
      */
@@ -61,7 +58,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <br><br>
      *  Keep in mind that <b>GetItem</b> (and other 'Get' calls that retrieve the Item details) may still return the <b>BuyItNowPrice</b> field for an auction item even if the 'Buy It Now' option is no longer available. Instead, a user should look for the <b>ListingDetails.BuyItNowAvailable</b> boolean field in the <b>GetItem</b> response to determine if the 'Buy It Now' option is still available for the auction item.
      *  <br/><br/>
-     *  <span class="tablenote"><b>Note: </b> For the US site, new eBay sellers are subject to <a href="https://developer.ebay.com/DevZone/guides/features-guide/default.html#development/Listing-Policies.html#SellerLimits">Seller Limits</a>, which limit the quantity of items that may be listed and/or the total cumulative value of these listings. While subject to these selling limits, an eBay seller can use the <b>GetMyeBaySelling</b> call to retrieve both the remaining number of listings they can create and the remaining cumulative value of these listings. These values are shown in the <b>Summary.QuantityLimitRemaining</b> and <b>Summary.AmountLimitRemaining</b> fields in the <b>GetMyeBaySelling</b> response. If a call to add an item or revise an item would result in the exceeding of these limits, the add item or revise item call will fail. These fields will only be returned if the seller is subject to seller limits.
+     *  <span class="tablenote"><b>Note: </b> For the US site, new eBay sellers are subject to <a href="https://developer.ebay.com/api-docs/user-guides/static/make-a-call/fg-replaced.html">Seller Limits</a>, which limit the quantity of items that may be listed and/or the total cumulative value of these listings. While subject to these selling limits, an eBay seller can use the <b>GetMyeBaySelling</b> call to retrieve both the remaining number of listings they can create and the remaining cumulative value of these listings. These values are shown in the <b>Summary.QuantityLimitRemaining</b> and <b>Summary.AmountLimitRemaining</b> fields in the <b>GetMyeBaySelling</b> response. If a call to add an item or revise an item would result in the exceeding of these limits, the add item or revise item call will fail. These fields will only be returned if the seller is subject to seller limits.
      *  </span>
      *
      * @var \Nogrod\eBaySDK\Trading\AmountType $buyItNowPrice
@@ -104,13 +101,6 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     private $country = null;
 
     /**
-     * This field is deprecated, and should not longer be used.
-     *
-     * @var \Nogrod\eBaySDK\Trading\CrossPromotionsType $crossPromotion
-     */
-    private $crossPromotion = null;
-
-    /**
      * In an Add/Revise/Relist/Verify call, this required three-digit enumeration value defines the currency associated with the listing site. The item price and all costs passed in the call request will be using this currency. Similarly, the listing fees and other cost-related data will be using this currency. Since the Trading API can only be used for a select number of eBay sites, only a subset of values are supporting when adding/revising/relisting an item. These supported values are discussed in the top section of <b>CurrencyCodeType</b>.
      *  <br><br>
      *  In 'Get' calls, it is possible that any of the values in <b>CurrencyCodeType</b> may appear, as some cost-related fields will show the buyer's currency type.
@@ -133,7 +123,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  If you embed pictures in the description (by using IMG tags) instead of using
      *  <b>PictureURL</b>, but you want a camera icon to appear in search and listing pages,
      *  specify the following null-image URL in the <b>PictureURL</b> field:
-     *  https://pics.ebay.com/aw/pics/dot_clear.gif. See <a href="https://developer.ebay.com/DevZone/guides/features-guide/default.html#development/Pictures-InListing.html">Working with Pictures in an Item Listing</a> in the eBay Features Guide.
+     *  https://pics.ebay.com/aw/pics/dot_clear.gif. See <a href="https://developer.ebay.com/api-docs/user-guides/static/trading-user-guide/pictures.html" target="_blank">Add pictures</a> in the Trading API User Guide.
      *  <br><br>
      *  This field is conditionally required for all listings. The exception is when the seller specifies a product identifier, such as a GTIN or ePID, through the <b>ProductListingDetails</b> container and a product match is found in the eBay product catalog. If a matching product is found in the eBay product catalog, the item description will be created automatically (as long as the <b>ProductListingDetails.IncludeeBayProductDetails</b> value is <code>true</code>).
      *  <br>
@@ -148,13 +138,6 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      * @var string $descriptionReviseMode
      */
     private $descriptionReviseMode = null;
-
-    /**
-     * This field is deprecated, and should no longer be used.
-     *
-     * @var \Nogrod\eBaySDK\Trading\DistanceType $distance
-     */
-    private $distance = null;
 
     /**
      * The unique identifier of the eBay listing. This identifier is generated
@@ -265,20 +248,6 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     private $lotSize = null;
 
     /**
-     * This field is deprecated.
-     *
-     * @var string $partnerCode
-     */
-    private $partnerCode = null;
-
-    /**
-     * This field is deprecated.
-     *
-     * @var string $partnerName
-     */
-    private $partnerName = null;
-
-    /**
      * This container is used in an <b>Add/Revise/Relist/Verify</b> call if the seller is selling a motor vehicle. It is used by the seller to specify the amount of the initial deposit, and the due dates for the deposit and the full payment for a motor vehicle listing.
      *  <br>
      *  <br>
@@ -323,7 +292,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * This container is used in an Add/Revise/Relist call to set the primary listing category. This field is conditionally required in an Add call unless the seller successfully uses the <b>ProductListingDetails</b> container to find an eBay catalog product match. When the seller successfully uses an eBay catalog product to create a listing, the listing title, listing description, Item Specifics, listing category, and stock photo defined in the catalog product is used to create the listing.<br>
      *  <br>
-     *  If you do not know the appropriate eBay category for your product, you can use the <b>GetSuggestedCategories</b> call. Once you know your category, and want to know which listing features it supports, you can use the
+     *  Once you determine the appropriate eBay category for your product, and want to know which listing features it supports, you can use the
      *  <b>GetCategoryFeatures</b> call. To discover required, recommended, and optional Item Specifics for a category, use the <a href="/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API.
      *  <br>
      *  <br>
@@ -364,7 +333,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  If a product identifier type is required, the corresponding field must be used, even if the seller is not interested in finding an eBay catalog product match. A large percentage of eBay US categories require one or more product identifier types when listing an item. See the <a href="http://pages.ebay.com/sell/item_specifics/product_identifiers.html" target="_blank">Structured Data - Product Identifiers</a> help page for more information on which eBay US categories require which product identifier types. If known, an ePID (specified through the <b>ProductReferenceID</b> field) is always the best bet to find an eBay catalog product match, although an <b>EAN</b>, <b>ISBN</b>, <b>UPC</b>, or Brand/MPN pair can also be used in an attempt to find a catalog product match. If a Brand/MPN pair is required for the product, these values must be input through the <b>BrandMPN</b> container.
      *  </span>
      *  <br>
-     *  When you use <b>ProductListingDetails</b>, in an Add/Revise/Relist call, you must specify at least one GTIN, a <b>ProductReferenceID</b> (also known as an ePID), a Brand/MPN pair, or <b>TicketListingDetails</b>. If you specify more than one GTIN value, eBay uses the first one that matches a product in eBay's catalog.
+     *  When you use <b>ProductListingDetails</b>, in an Add/Revise/Relist call, you must specify at least one GTIN, a <b>ProductReferenceID</b> (also known as an ePID), or a Brand/MPN pair. If you specify more than one GTIN value, eBay uses the first one that matches a product in eBay's catalog.
      *  <br>
      *  <br>
      *  <b>For ReviseItem and RelistItem only:</b> When you revise a
@@ -418,7 +387,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  variation (quantity available plus quantity sold).
      *  <br>
      *  <br>
-     *  <span class="tablenote"><b>Note: </b> For the US site, new eBay sellers are subject to <a href="/DevZone/guides/features-guide/default.html#development/Listing-Policies.html#SellerLimits">Seller Limits</a>, which limit the quantity of items that may be listed and/or the total cumulative value of these listings. While subject to these selling limits, an eBay seller can use the <b>GetMyeBaySelling</b> call to retrieve both the remaining number of listings they can create and the remaining cumulative value of these listings. These values are shown in the <b>Summary.QuantityLimitRemaining</b> and <b>Summary.AmountLimitRemaining</b> fields in the <b>GetMyeBaySelling</b> response. If a call to add an item or revise an item would result in the exceeding of these limits, the add item or revise item call will fail. These fields will only be returned if the seller is subject to seller limits.
+     *  <span class="tablenote"><b>Note: </b> For the US site, new eBay sellers are subject to <a href="/api-docs/user-guides/static/make-a-call/fg-replaced.html">Seller Limits</a>, which limit the quantity of items that may be listed and/or the total cumulative value of these listings. While subject to these selling limits, an eBay seller can use the <b>GetMyeBaySelling</b> call to retrieve both the remaining number of listings they can create and the remaining cumulative value of these listings. These values are shown in the <b>Summary.QuantityLimitRemaining</b> and <b>Summary.AmountLimitRemaining</b> fields in the <b>GetMyeBaySelling</b> response. If a call to add an item or revise an item would result in the exceeding of these limits, the add item or revise item call will fail. These fields will only be returned if the seller is subject to seller limits.
      *  </span>
      *
      * @var int $quantity
@@ -443,13 +412,6 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      * @var string $privateNotes
      */
     private $privateNotes = null;
-
-    /**
-     * This field is deprecated.
-     *
-     * @var string $regionID
-     */
-    private $regionID = null;
 
     /**
      * Applicable only to relisting an item. If true, creates a link in the item's
@@ -506,11 +468,11 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     private $scheduleTime = null;
 
     /**
-     * The unique identifer for a secondary category. This field is only applicable if the seller decides to list the item under two categories.
+     * The unique identifier for a secondary category. This field is only applicable if the seller decides to list the item under two categories.
      *  <br>
      *  <br>
      *  You cannot list US eBay Motors vehicles in two categories. However, you can
-     *  list Parts & Accessories in two categories. The Final Value Fee is based
+     *  list Parts & Accessories in two categories. The final value fee is based
      *  on the primary category in which the item is listed. Furthermore, you can
      *  list the same item in an eBay Motors Parts & Accessories category and in
      *  an eligible eBay category, as long as the primary category is associated
@@ -688,7 +650,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <b>For Revise calls:</b>
      *  If the <b>StartPrice</b> value for a fixed-price item is changed with a Revise call, the <b>MinimumBestOfferPrice</b> and <b>BestOfferAutoAcceptPrice</b> fields in the <b>ListingDetails</b> container will be dropped (if set), basically turning off the Best Offer Auto Accept and/or Auto Decline features. If the seller wanted to reintroduce either of these Best Offer threshold values in the listing again, an additional Revise call would have to be made, passing in the desired threshold values.
      *  <br><br>
-     *  <span class="tablenote"><b>Note: </b> For the US site, new eBay sellers are subject to <a href="/DevZone/guides/features-guide/default.html#development/Listing-Policies.html#SellerLimits">Seller Limits</a>, which limit the quantity of items that may be listed and/or the total cumulative value of these listings. While subject to these selling limits, an eBay seller can use the <b>GetMyeBaySelling</b> call to retrieve both the remaining number of listings they can create and the remaining cumulative value of these listings. These values are shown in the <b>Summary.QuantityLimitRemaining</b> and <b>Summary.AmountLimitRemaining</b> fields in the <b>GetMyeBaySelling</b> response. If a call to add an item or revise an item would result in the exceeding of these limits, the add item or revise item call will fail. These fields will only be returned if the seller is subject to seller limits.
+     *  <span class="tablenote"><b>Note: </b> For the US site, new eBay sellers are subject to <a href="/api-docs/user-guides/static/make-a-call/fg-replaced.html">Seller Limits</a>, which limit the quantity of items that may be listed and/or the total cumulative value of these listings. While subject to these selling limits, an eBay seller can use the <b>GetMyeBaySelling</b> call to retrieve both the remaining number of listings they can create and the remaining cumulative value of these listings. These values are shown in the <b>Summary.QuantityLimitRemaining</b> and <b>Summary.AmountLimitRemaining</b> fields in the <b>GetMyeBaySelling</b> response. If a call to add an item or revise an item would result in the exceeding of these limits, the add item or revise item call will fail. These fields will only be returned if the seller is subject to seller limits.
      *  </span>
      *
      * @var \Nogrod\eBaySDK\Trading\AmountType $startPrice
@@ -816,8 +778,11 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
 
     /**
      * <b>For Add/Revise/Relist/Verify calls</b>: This container is used to enable the Best Offer feature on a listing. Note that the Best Offer feature can be set for auction listings on the US, Canada, UK, Germany, Australia, France, Italy, and Spain marketplaces, but a seller can only use Best Offer or Buy It Now, but not both. Once an auction listing receives a qualifying bid, the Best Offer feature will be turned off and any pending Best Offers or Counteroffers will no longer be valid.
-     *  <br><br>
+     *  <br/><br>
      *  For <b>GetItem</b> and other calls that retrieve item data, this container will include the status (<b>GetMyeBayBuying</b> only) and dollar amount of the latest Best Offer on a fixed-price listing, and the number of Best Offers received for the fixed-price listing.
+     *  <br><br>
+     *  <span class="tablenote"><b>Note: </b> Best Offer is not available for multi-variation listings.
+     *  </span>
      *
      * @var \Nogrod\eBaySDK\Trading\BestOfferDetailsType $bestOfferDetails
      */
@@ -877,13 +842,6 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      * @var bool $buyerResponsibleForShipping
      */
     private $buyerResponsibleForShipping = null;
-
-    /**
-     * This field is deprecated.
-     *
-     * @var bool $limitedWarrantyEligible
-     */
-    private $limitedWarrantyEligible = null;
 
     /**
      * Returns a note from eBay displayed below items in the user's My
@@ -953,13 +911,6 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      * @var string $sKU
      */
     private $sKU = null;
-
-    /**
-     * This field is deprecated.
-     *
-     * @var \Nogrod\eBaySDK\Trading\SearchDetailsType $searchDetails
-     */
-    private $searchDetails = null;
 
     /**
      * Postal code of the place where the item is located. This value is used for
@@ -1044,20 +995,6 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     private $dispatchTimeMax = null;
 
     /**
-     * This field is deprecated. This information is returned in <b>BestOfferDetails</b>.
-     *
-     * @var bool $bestOfferEnabled
-     */
-    private $bestOfferEnabled = null;
-
-    /**
-     * This field is deprecated.
-     *
-     * @var bool $localListing
-     */
-    private $localListing = null;
-
-    /**
      * This container is used by sellers of Classified Ad listings to provide contact information.
      *
      * @var \Nogrod\eBaySDK\Trading\AddressType $sellerContactDetails
@@ -1120,7 +1057,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <b>For ReviseItem only:</b> When you revise a listing, if an auction listing has one or more bids and ends within 12 hours, you cannot change or add Item Ppecifics. If the auction listing has bids but ends in more than 12 hours, you cannot change existing Item Specifics, but you can add Item Specifics that were not previously included.
      *
      *  <br><br>
-     *  If your listing is in a eBay product catalog-enabled category, certain <b>Name</b>/<b>Value</b> pairs will be accepted as product identifying information. The <b>Name</b> can be <code>Brand</code>, <code>MPN</code>, or a Global Trade Item Number (GTIN). GTINs are a set of globally recognized identifiers, including <code>EAN</code>, <code>ISBN</code>, and <code>UPC</code>. However, the <b>Values</b> provided for these <b>Name</b>s must comply with eBay's constraints or they will not be recognized as product identifiers. The <b>Value</b> for Brand must be an actual brand name (except that if the item is not branded, <b>Value</b> can be <code>Unbranded</code>.) The <b>Value</b> for Brand or MPN cannot contain only special characters (e.g. <code>%$*#@</code>). All GTINs must comply with international formatting standards. For more details, see <a href="https://developer.ebay.com/devzone/guides/features-guide/default.html#development/ItemSpecifics-Listing.html" target="_blank">Listing with Item Specifics</a>.
+     *  If your listing is in a eBay product catalog-enabled category, certain <b>Name</b>/<b>Value</b> pairs will be accepted as product identifying information. The <b>Name</b> can be <code>Brand</code>, <code>MPN</code>, or a Global Trade Item Number (GTIN). GTINs are a set of globally recognized identifiers, including <code>EAN</code>, <code>ISBN</code>, and <code>UPC</code>. However, the <b>Values</b> provided for these <b>Name</b>s must comply with eBay's constraints or they will not be recognized as product identifiers. The <b>Value</b> for Brand must be an actual brand name (except that if the item is not branded, <b>Value</b> can be <code>Unbranded</code>.) The <b>Value</b> for Brand or MPN cannot contain only special characters (e.g. <code>%$*#@</code>). All GTINs must comply with international formatting standards. For more details, see <a href="https://developer.ebay.com/api-docs/user-guides/static/trading-user-guide/item-specifics.html" target="_blank">Item Specifics</a>.
      *
      *  <br><br>
      *  If the <b>ProductListingDetails</b> container in an Add/Revise/Relist call is successfully used to find and use an eBay catalog product to create/revise listing, the seller should not remove or change the value of any Item Specific name or value that is defined as part of the eBay catalog product definition.
@@ -1142,25 +1079,11 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     private $itemSpecifics = null;
 
     /**
-     * This field is deprecated.
-     *
-     * @var string $groupCategoryID
-     */
-    private $groupCategoryID = null;
-
-    /**
      * The email and phone lead fee for a pay-per-lead item.
      *
      * @var \Nogrod\eBaySDK\Trading\AmountType $classifiedAdPayPerLeadFee
      */
     private $classifiedAdPayPerLeadFee = null;
-
-    /**
-     * This field is deprecated.
-     *
-     * @var bool $bidGroupItem
-     */
-    private $bidGroupItem = null;
 
     /**
      * Different Buyer protection schemes and the various status associated with each one of them.
@@ -1190,30 +1113,6 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      * @var bool $mechanicalCheckAccepted
      */
     private $mechanicalCheckAccepted = null;
-
-    /**
-     * <span class="tablenote"><strong>Note:</strong>
-     *  This field is not usable and will be ignored if sent. See <a href="https://developer.ebay.com/develop/apis/api-deprecation-status">API Deprecation Status</a> for the decommission date (when this field will be removed from the WSDL).
-     *  </span>
-     *  Specifies whether the following Business Seller fields have been updated for
-     *  the item specified in the request: First Name, Last Name, Fax, Email
-     *  Address, Additional Contact Information, Trade Registration Number, VAT
-     *  Identification Number.
-     *
-     * @var bool $updateSellerInfo
-     */
-    private $updateSellerInfo = null;
-
-    /**
-     * <span class="tablenote"><strong>Note:</strong>
-     *  This field is not usable and will be ignored if sent. See <a href="https://developer.ebay.com/develop/apis/api-deprecation-status">API Deprecation Status</a> for the decommission date (when this field will be removed from the WSDL).
-     *  </span>
-     *  Specifies whether the Return Policy Details have been updated
-     *  for the item specified in the request.
-     *
-     * @var bool $updateReturnPolicy
-     */
-    private $updateReturnPolicy = null;
 
     /**
      * Specifies the details of policy violations if the item was administratively
@@ -1562,7 +1461,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     private $conditionDisplayName = null;
 
     /**
-     * This container is used by the seller to provide Energy Efficiency Label information, hazardous material related information, and the repair score for the listing.
+     * This container is used by the seller to provide Energy Efficiency Label information, hazardous material related information, product safety related information, manufacturer information, and the repair score for the listing.
      *
      * @var \Nogrod\eBaySDK\Trading\RegulatoryType $regulatory
      */
@@ -1665,18 +1564,6 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     private $vRMLink = null;
 
     /**
-     * <span class="tablenote"><strong>Note:</strong>
-     *  This container and its field are not usable and will be ignored if sent. See <a href="https://developer.ebay.com/develop/apis/api-deprecation-status">API Deprecation Status</a> for the decommission date (when this container and fields will stop being returned).
-     *  </span>
-     *  This container is used to set the minimum number of event tickets that should remain available after a buyer makes a purchase. This functionality allows the seller to avoid the possibility of being left with just one event ticket after a sale.
-     *  <br><br>
-     *  This container can be used when adding, revising, or relisting event tickets, and it will only be returned in <b>GetItem</b> if set for the listing.
-     *
-     * @var \Nogrod\eBaySDK\Trading\QuantityInfoType $quantityInfo
-     */
-    private $quantityInfo = null;
-
-    /**
      * This container is used if the seller would like to use/reference business policies to create, revise, relist, or verify their listing. The seller's account must be opted in to business policies to use this container. If this container is used, exactly one Payment Business Policy, one Shipping Business Policy, and one Return Business Policy must be specified and applied to the listing. If the seller's account is not opted in to business policies, that seller may not use this container. Sellers must opt-in to business policies through My eBay or by using the <b>optInToProgram</b> call of the <b>eBay Account API</b>.
      *  <br><br>
      *  If business policies are applied to a listing, all payment, shipping, and return policy settings in these policies will override any other payment, shipping, or return policy legacy fields that are included in the call request.
@@ -1703,13 +1590,6 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      * @var \Nogrod\eBaySDK\Trading\ShippingServiceCostOverrideType[] $shippingServiceCostOverrideList
      */
     private $shippingServiceCostOverrideList = null;
-
-    /**
-     * This field is reserved for internal or future use.
-     *
-     * @var \Nogrod\eBaySDK\Trading\ShippingOverrideType $shippingOverride
-     */
-    private $shippingOverride = null;
 
     /**
      * Container consisting of dimension and size details related to a shipping package in which an item will be sent. The information in this container is applicable if the seller is using calculated shipping or flat rate shipping using shipping rate tables with weight surcharges. This container is only returned in the <b>Get</b> calls if specified for the item.
@@ -1843,14 +1723,6 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      * @var bool $eligibleForPickupDropOff
      */
     private $eligibleForPickupDropOff = null;
-
-    /**
-     * <span class="tablenote"><b>Note:</b> This field is no longer applicable as eBay Live Auctions are no longer being held as of September 1, 2018. If this field is used in an Add/Revise/Relist call, it will be ignored and dropped.
-     *  </span>
-     *
-     * @var bool $liveAuction
-     */
-    private $liveAuction = null;
 
     /**
      * This container is used in <b>Add</b>/<b>Revise</b>/<b>Relist</b>/<b>Verify</b> listing calls to designate the listing as a digital gift card listing. It is also returned in <strong>GetItem</strong> to indicate that the listing contains a digital gift card.
@@ -2011,9 +1883,6 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      * Gets as buyerProtection
      *
      * The enumeration value returned in this field indicates whether an item is eligible for the buyer protection.
-     *  <br>
-     *  <span class="tablenote"><b>Note: </b> This field will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
-     *  </span>
      *
      * @return string
      */
@@ -2026,9 +1895,6 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      * Sets a new buyerProtection
      *
      * The enumeration value returned in this field indicates whether an item is eligible for the buyer protection.
-     *  <br>
-     *  <span class="tablenote"><b>Note: </b> This field will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
-     *  </span>
      *
      * @param string $buyerProtection
      * @return self
@@ -2050,7 +1916,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <br><br>
      *  Keep in mind that <b>GetItem</b> (and other 'Get' calls that retrieve the Item details) may still return the <b>BuyItNowPrice</b> field for an auction item even if the 'Buy It Now' option is no longer available. Instead, a user should look for the <b>ListingDetails.BuyItNowAvailable</b> boolean field in the <b>GetItem</b> response to determine if the 'Buy It Now' option is still available for the auction item.
      *  <br/><br/>
-     *  <span class="tablenote"><b>Note: </b> For the US site, new eBay sellers are subject to <a href="https://developer.ebay.com/DevZone/guides/features-guide/default.html#development/Listing-Policies.html#SellerLimits">Seller Limits</a>, which limit the quantity of items that may be listed and/or the total cumulative value of these listings. While subject to these selling limits, an eBay seller can use the <b>GetMyeBaySelling</b> call to retrieve both the remaining number of listings they can create and the remaining cumulative value of these listings. These values are shown in the <b>Summary.QuantityLimitRemaining</b> and <b>Summary.AmountLimitRemaining</b> fields in the <b>GetMyeBaySelling</b> response. If a call to add an item or revise an item would result in the exceeding of these limits, the add item or revise item call will fail. These fields will only be returned if the seller is subject to seller limits.
+     *  <span class="tablenote"><b>Note: </b> For the US site, new eBay sellers are subject to <a href="https://developer.ebay.com/api-docs/user-guides/static/make-a-call/fg-replaced.html">Seller Limits</a>, which limit the quantity of items that may be listed and/or the total cumulative value of these listings. While subject to these selling limits, an eBay seller can use the <b>GetMyeBaySelling</b> call to retrieve both the remaining number of listings they can create and the remaining cumulative value of these listings. These values are shown in the <b>Summary.QuantityLimitRemaining</b> and <b>Summary.AmountLimitRemaining</b> fields in the <b>GetMyeBaySelling</b> response. If a call to add an item or revise an item would result in the exceeding of these limits, the add item or revise item call will fail. These fields will only be returned if the seller is subject to seller limits.
      *  </span>
      *
      * @return \Nogrod\eBaySDK\Trading\AmountType
@@ -2071,7 +1937,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <br><br>
      *  Keep in mind that <b>GetItem</b> (and other 'Get' calls that retrieve the Item details) may still return the <b>BuyItNowPrice</b> field for an auction item even if the 'Buy It Now' option is no longer available. Instead, a user should look for the <b>ListingDetails.BuyItNowAvailable</b> boolean field in the <b>GetItem</b> response to determine if the 'Buy It Now' option is still available for the auction item.
      *  <br/><br/>
-     *  <span class="tablenote"><b>Note: </b> For the US site, new eBay sellers are subject to <a href="https://developer.ebay.com/DevZone/guides/features-guide/default.html#development/Listing-Policies.html#SellerLimits">Seller Limits</a>, which limit the quantity of items that may be listed and/or the total cumulative value of these listings. While subject to these selling limits, an eBay seller can use the <b>GetMyeBaySelling</b> call to retrieve both the remaining number of listings they can create and the remaining cumulative value of these listings. These values are shown in the <b>Summary.QuantityLimitRemaining</b> and <b>Summary.AmountLimitRemaining</b> fields in the <b>GetMyeBaySelling</b> response. If a call to add an item or revise an item would result in the exceeding of these limits, the add item or revise item call will fail. These fields will only be returned if the seller is subject to seller limits.
+     *  <span class="tablenote"><b>Note: </b> For the US site, new eBay sellers are subject to <a href="https://developer.ebay.com/api-docs/user-guides/static/make-a-call/fg-replaced.html">Seller Limits</a>, which limit the quantity of items that may be listed and/or the total cumulative value of these listings. While subject to these selling limits, an eBay seller can use the <b>GetMyeBaySelling</b> call to retrieve both the remaining number of listings they can create and the remaining cumulative value of these listings. These values are shown in the <b>Summary.QuantityLimitRemaining</b> and <b>Summary.AmountLimitRemaining</b> fields in the <b>GetMyeBaySelling</b> response. If a call to add an item or revise an item would result in the exceeding of these limits, the add item or revise item call will fail. These fields will only be returned if the seller is subject to seller limits.
      *  </span>
      *
      * @param \Nogrod\eBaySDK\Trading\AmountType $buyItNowPrice
@@ -2190,32 +2056,6 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     }
 
     /**
-     * Gets as crossPromotion
-     *
-     * This field is deprecated, and should not longer be used.
-     *
-     * @return \Nogrod\eBaySDK\Trading\CrossPromotionsType
-     */
-    public function getCrossPromotion()
-    {
-        return $this->crossPromotion;
-    }
-
-    /**
-     * Sets a new crossPromotion
-     *
-     * This field is deprecated, and should not longer be used.
-     *
-     * @param \Nogrod\eBaySDK\Trading\CrossPromotionsType $crossPromotion
-     * @return self
-     */
-    public function setCrossPromotion(\Nogrod\eBaySDK\Trading\CrossPromotionsType $crossPromotion)
-    {
-        $this->crossPromotion = $crossPromotion;
-        return $this;
-    }
-
-    /**
      * Gets as currency
      *
      * In an Add/Revise/Relist/Verify call, this required three-digit enumeration value defines the currency associated with the listing site. The item price and all costs passed in the call request will be using this currency. Similarly, the listing fees and other cost-related data will be using this currency. Since the Trading API can only be used for a select number of eBay sites, only a subset of values are supporting when adding/revising/relisting an item. These supported values are discussed in the top section of <b>CurrencyCodeType</b>.
@@ -2261,7 +2101,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  If you embed pictures in the description (by using IMG tags) instead of using
      *  <b>PictureURL</b>, but you want a camera icon to appear in search and listing pages,
      *  specify the following null-image URL in the <b>PictureURL</b> field:
-     *  https://pics.ebay.com/aw/pics/dot_clear.gif. See <a href="https://developer.ebay.com/DevZone/guides/features-guide/default.html#development/Pictures-InListing.html">Working with Pictures in an Item Listing</a> in the eBay Features Guide.
+     *  https://pics.ebay.com/aw/pics/dot_clear.gif. See <a href="https://developer.ebay.com/api-docs/user-guides/static/trading-user-guide/pictures.html" target="_blank">Add pictures</a> in the Trading API User Guide.
      *  <br><br>
      *  This field is conditionally required for all listings. The exception is when the seller specifies a product identifier, such as a GTIN or ePID, through the <b>ProductListingDetails</b> container and a product match is found in the eBay product catalog. If a matching product is found in the eBay product catalog, the item description will be created automatically (as long as the <b>ProductListingDetails.IncludeeBayProductDetails</b> value is <code>true</code>).
      *  <br>
@@ -2289,7 +2129,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  If you embed pictures in the description (by using IMG tags) instead of using
      *  <b>PictureURL</b>, but you want a camera icon to appear in search and listing pages,
      *  specify the following null-image URL in the <b>PictureURL</b> field:
-     *  https://pics.ebay.com/aw/pics/dot_clear.gif. See <a href="https://developer.ebay.com/DevZone/guides/features-guide/default.html#development/Pictures-InListing.html">Working with Pictures in an Item Listing</a> in the eBay Features Guide.
+     *  https://pics.ebay.com/aw/pics/dot_clear.gif. See <a href="https://developer.ebay.com/api-docs/user-guides/static/trading-user-guide/pictures.html" target="_blank">Add pictures</a> in the Trading API User Guide.
      *  <br><br>
      *  This field is conditionally required for all listings. The exception is when the seller specifies a product identifier, such as a GTIN or ePID, through the <b>ProductListingDetails</b> container and a product match is found in the eBay product catalog. If a matching product is found in the eBay product catalog, the item description will be created automatically (as long as the <b>ProductListingDetails.IncludeeBayProductDetails</b> value is <code>true</code>).
      *  <br>
@@ -2326,32 +2166,6 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     public function setDescriptionReviseMode($descriptionReviseMode)
     {
         $this->descriptionReviseMode = $descriptionReviseMode;
-        return $this;
-    }
-
-    /**
-     * Gets as distance
-     *
-     * This field is deprecated, and should no longer be used.
-     *
-     * @return \Nogrod\eBaySDK\Trading\DistanceType
-     */
-    public function getDistance()
-    {
-        return $this->distance;
-    }
-
-    /**
-     * Sets a new distance
-     *
-     * This field is deprecated, and should no longer be used.
-     *
-     * @param \Nogrod\eBaySDK\Trading\DistanceType $distance
-     * @return self
-     */
-    public function setDistance(\Nogrod\eBaySDK\Trading\DistanceType $distance)
-    {
-        $this->distance = $distance;
         return $this;
     }
 
@@ -2704,58 +2518,6 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     }
 
     /**
-     * Gets as partnerCode
-     *
-     * This field is deprecated.
-     *
-     * @return string
-     */
-    public function getPartnerCode()
-    {
-        return $this->partnerCode;
-    }
-
-    /**
-     * Sets a new partnerCode
-     *
-     * This field is deprecated.
-     *
-     * @param string $partnerCode
-     * @return self
-     */
-    public function setPartnerCode($partnerCode)
-    {
-        $this->partnerCode = $partnerCode;
-        return $this;
-    }
-
-    /**
-     * Gets as partnerName
-     *
-     * This field is deprecated.
-     *
-     * @return string
-     */
-    public function getPartnerName()
-    {
-        return $this->partnerName;
-    }
-
-    /**
-     * Sets a new partnerName
-     *
-     * This field is deprecated.
-     *
-     * @param string $partnerName
-     * @return self
-     */
-    public function setPartnerName($partnerName)
-    {
-        $this->partnerName = $partnerName;
-        return $this;
-    }
-
-    /**
      * Gets as paymentDetails
      *
      * This container is used in an <b>Add/Revise/Relist/Verify</b> call if the seller is selling a motor vehicle. It is used by the seller to specify the amount of the initial deposit, and the due dates for the deposit and the full payment for a motor vehicle listing.
@@ -2955,7 +2717,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *
      * This container is used in an Add/Revise/Relist call to set the primary listing category. This field is conditionally required in an Add call unless the seller successfully uses the <b>ProductListingDetails</b> container to find an eBay catalog product match. When the seller successfully uses an eBay catalog product to create a listing, the listing title, listing description, Item Specifics, listing category, and stock photo defined in the catalog product is used to create the listing.<br>
      *  <br>
-     *  If you do not know the appropriate eBay category for your product, you can use the <b>GetSuggestedCategories</b> call. Once you know your category, and want to know which listing features it supports, you can use the
+     *  Once you determine the appropriate eBay category for your product, and want to know which listing features it supports, you can use the
      *  <b>GetCategoryFeatures</b> call. To discover required, recommended, and optional Item Specifics for a category, use the <a href="/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API.
      *  <br>
      *  <br>
@@ -2983,7 +2745,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *
      * This container is used in an Add/Revise/Relist call to set the primary listing category. This field is conditionally required in an Add call unless the seller successfully uses the <b>ProductListingDetails</b> container to find an eBay catalog product match. When the seller successfully uses an eBay catalog product to create a listing, the listing title, listing description, Item Specifics, listing category, and stock photo defined in the catalog product is used to create the listing.<br>
      *  <br>
-     *  If you do not know the appropriate eBay category for your product, you can use the <b>GetSuggestedCategories</b> call. Once you know your category, and want to know which listing features it supports, you can use the
+     *  Once you determine the appropriate eBay category for your product, and want to know which listing features it supports, you can use the
      *  <b>GetCategoryFeatures</b> call. To discover required, recommended, and optional Item Specifics for a category, use the <a href="/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API.
      *  <br>
      *  <br>
@@ -3053,7 +2815,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  If a product identifier type is required, the corresponding field must be used, even if the seller is not interested in finding an eBay catalog product match. A large percentage of eBay US categories require one or more product identifier types when listing an item. See the <a href="http://pages.ebay.com/sell/item_specifics/product_identifiers.html" target="_blank">Structured Data - Product Identifiers</a> help page for more information on which eBay US categories require which product identifier types. If known, an ePID (specified through the <b>ProductReferenceID</b> field) is always the best bet to find an eBay catalog product match, although an <b>EAN</b>, <b>ISBN</b>, <b>UPC</b>, or Brand/MPN pair can also be used in an attempt to find a catalog product match. If a Brand/MPN pair is required for the product, these values must be input through the <b>BrandMPN</b> container.
      *  </span>
      *  <br>
-     *  When you use <b>ProductListingDetails</b>, in an Add/Revise/Relist call, you must specify at least one GTIN, a <b>ProductReferenceID</b> (also known as an ePID), a Brand/MPN pair, or <b>TicketListingDetails</b>. If you specify more than one GTIN value, eBay uses the first one that matches a product in eBay's catalog.
+     *  When you use <b>ProductListingDetails</b>, in an Add/Revise/Relist call, you must specify at least one GTIN, a <b>ProductReferenceID</b> (also known as an ePID), or a Brand/MPN pair. If you specify more than one GTIN value, eBay uses the first one that matches a product in eBay's catalog.
      *  <br>
      *  <br>
      *  <b>For ReviseItem and RelistItem only:</b> When you revise a
@@ -3085,7 +2847,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  If a product identifier type is required, the corresponding field must be used, even if the seller is not interested in finding an eBay catalog product match. A large percentage of eBay US categories require one or more product identifier types when listing an item. See the <a href="http://pages.ebay.com/sell/item_specifics/product_identifiers.html" target="_blank">Structured Data - Product Identifiers</a> help page for more information on which eBay US categories require which product identifier types. If known, an ePID (specified through the <b>ProductReferenceID</b> field) is always the best bet to find an eBay catalog product match, although an <b>EAN</b>, <b>ISBN</b>, <b>UPC</b>, or Brand/MPN pair can also be used in an attempt to find a catalog product match. If a Brand/MPN pair is required for the product, these values must be input through the <b>BrandMPN</b> container.
      *  </span>
      *  <br>
-     *  When you use <b>ProductListingDetails</b>, in an Add/Revise/Relist call, you must specify at least one GTIN, a <b>ProductReferenceID</b> (also known as an ePID), a Brand/MPN pair, or <b>TicketListingDetails</b>. If you specify more than one GTIN value, eBay uses the first one that matches a product in eBay's catalog.
+     *  When you use <b>ProductListingDetails</b>, in an Add/Revise/Relist call, you must specify at least one GTIN, a <b>ProductReferenceID</b> (also known as an ePID), or a Brand/MPN pair. If you specify more than one GTIN value, eBay uses the first one that matches a product in eBay's catalog.
      *  <br>
      *  <br>
      *  <b>For ReviseItem and RelistItem only:</b> When you revise a
@@ -3146,7 +2908,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  variation (quantity available plus quantity sold).
      *  <br>
      *  <br>
-     *  <span class="tablenote"><b>Note: </b> For the US site, new eBay sellers are subject to <a href="/DevZone/guides/features-guide/default.html#development/Listing-Policies.html#SellerLimits">Seller Limits</a>, which limit the quantity of items that may be listed and/or the total cumulative value of these listings. While subject to these selling limits, an eBay seller can use the <b>GetMyeBaySelling</b> call to retrieve both the remaining number of listings they can create and the remaining cumulative value of these listings. These values are shown in the <b>Summary.QuantityLimitRemaining</b> and <b>Summary.AmountLimitRemaining</b> fields in the <b>GetMyeBaySelling</b> response. If a call to add an item or revise an item would result in the exceeding of these limits, the add item or revise item call will fail. These fields will only be returned if the seller is subject to seller limits.
+     *  <span class="tablenote"><b>Note: </b> For the US site, new eBay sellers are subject to <a href="/api-docs/user-guides/static/make-a-call/fg-replaced.html">Seller Limits</a>, which limit the quantity of items that may be listed and/or the total cumulative value of these listings. While subject to these selling limits, an eBay seller can use the <b>GetMyeBaySelling</b> call to retrieve both the remaining number of listings they can create and the remaining cumulative value of these listings. These values are shown in the <b>Summary.QuantityLimitRemaining</b> and <b>Summary.AmountLimitRemaining</b> fields in the <b>GetMyeBaySelling</b> response. If a call to add an item or revise an item would result in the exceeding of these limits, the add item or revise item call will fail. These fields will only be returned if the seller is subject to seller limits.
      *  </span>
      *
      * @return int
@@ -3196,7 +2958,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  variation (quantity available plus quantity sold).
      *  <br>
      *  <br>
-     *  <span class="tablenote"><b>Note: </b> For the US site, new eBay sellers are subject to <a href="/DevZone/guides/features-guide/default.html#development/Listing-Policies.html#SellerLimits">Seller Limits</a>, which limit the quantity of items that may be listed and/or the total cumulative value of these listings. While subject to these selling limits, an eBay seller can use the <b>GetMyeBaySelling</b> call to retrieve both the remaining number of listings they can create and the remaining cumulative value of these listings. These values are shown in the <b>Summary.QuantityLimitRemaining</b> and <b>Summary.AmountLimitRemaining</b> fields in the <b>GetMyeBaySelling</b> response. If a call to add an item or revise an item would result in the exceeding of these limits, the add item or revise item call will fail. These fields will only be returned if the seller is subject to seller limits.
+     *  <span class="tablenote"><b>Note: </b> For the US site, new eBay sellers are subject to <a href="/api-docs/user-guides/static/make-a-call/fg-replaced.html">Seller Limits</a>, which limit the quantity of items that may be listed and/or the total cumulative value of these listings. While subject to these selling limits, an eBay seller can use the <b>GetMyeBaySelling</b> call to retrieve both the remaining number of listings they can create and the remaining cumulative value of these listings. These values are shown in the <b>Summary.QuantityLimitRemaining</b> and <b>Summary.AmountLimitRemaining</b> fields in the <b>GetMyeBaySelling</b> response. If a call to add an item or revise an item would result in the exceeding of these limits, the add item or revise item call will fail. These fields will only be returned if the seller is subject to seller limits.
      *  </span>
      *
      * @param int $quantity
@@ -3255,32 +3017,6 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     public function setPrivateNotes($privateNotes)
     {
         $this->privateNotes = $privateNotes;
-        return $this;
-    }
-
-    /**
-     * Gets as regionID
-     *
-     * This field is deprecated.
-     *
-     * @return string
-     */
-    public function getRegionID()
-    {
-        return $this->regionID;
-    }
-
-    /**
-     * Sets a new regionID
-     *
-     * This field is deprecated.
-     *
-     * @param string $regionID
-     * @return self
-     */
-    public function setRegionID($regionID)
-    {
-        $this->regionID = $regionID;
         return $this;
     }
 
@@ -3455,11 +3191,11 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Gets as secondaryCategory
      *
-     * The unique identifer for a secondary category. This field is only applicable if the seller decides to list the item under two categories.
+     * The unique identifier for a secondary category. This field is only applicable if the seller decides to list the item under two categories.
      *  <br>
      *  <br>
      *  You cannot list US eBay Motors vehicles in two categories. However, you can
-     *  list Parts & Accessories in two categories. The Final Value Fee is based
+     *  list Parts & Accessories in two categories. The final value fee is based
      *  on the primary category in which the item is listed. Furthermore, you can
      *  list the same item in an eBay Motors Parts & Accessories category and in
      *  an eligible eBay category, as long as the primary category is associated
@@ -3494,11 +3230,11 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Sets a new secondaryCategory
      *
-     * The unique identifer for a secondary category. This field is only applicable if the seller decides to list the item under two categories.
+     * The unique identifier for a secondary category. This field is only applicable if the seller decides to list the item under two categories.
      *  <br>
      *  <br>
      *  You cannot list US eBay Motors vehicles in two categories. However, you can
-     *  list Parts & Accessories in two categories. The Final Value Fee is based
+     *  list Parts & Accessories in two categories. The final value fee is based
      *  on the primary category in which the item is listed. Furthermore, you can
      *  list the same item in an eBay Motors Parts & Accessories category and in
      *  an eligible eBay category, as long as the primary category is associated
@@ -4003,7 +3739,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <b>For Revise calls:</b>
      *  If the <b>StartPrice</b> value for a fixed-price item is changed with a Revise call, the <b>MinimumBestOfferPrice</b> and <b>BestOfferAutoAcceptPrice</b> fields in the <b>ListingDetails</b> container will be dropped (if set), basically turning off the Best Offer Auto Accept and/or Auto Decline features. If the seller wanted to reintroduce either of these Best Offer threshold values in the listing again, an additional Revise call would have to be made, passing in the desired threshold values.
      *  <br><br>
-     *  <span class="tablenote"><b>Note: </b> For the US site, new eBay sellers are subject to <a href="/DevZone/guides/features-guide/default.html#development/Listing-Policies.html#SellerLimits">Seller Limits</a>, which limit the quantity of items that may be listed and/or the total cumulative value of these listings. While subject to these selling limits, an eBay seller can use the <b>GetMyeBaySelling</b> call to retrieve both the remaining number of listings they can create and the remaining cumulative value of these listings. These values are shown in the <b>Summary.QuantityLimitRemaining</b> and <b>Summary.AmountLimitRemaining</b> fields in the <b>GetMyeBaySelling</b> response. If a call to add an item or revise an item would result in the exceeding of these limits, the add item or revise item call will fail. These fields will only be returned if the seller is subject to seller limits.
+     *  <span class="tablenote"><b>Note: </b> For the US site, new eBay sellers are subject to <a href="/api-docs/user-guides/static/make-a-call/fg-replaced.html">Seller Limits</a>, which limit the quantity of items that may be listed and/or the total cumulative value of these listings. While subject to these selling limits, an eBay seller can use the <b>GetMyeBaySelling</b> call to retrieve both the remaining number of listings they can create and the remaining cumulative value of these listings. These values are shown in the <b>Summary.QuantityLimitRemaining</b> and <b>Summary.AmountLimitRemaining</b> fields in the <b>GetMyeBaySelling</b> response. If a call to add an item or revise an item would result in the exceeding of these limits, the add item or revise item call will fail. These fields will only be returned if the seller is subject to seller limits.
      *  </span>
      *
      * @return \Nogrod\eBaySDK\Trading\AmountType
@@ -4039,7 +3775,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <b>For Revise calls:</b>
      *  If the <b>StartPrice</b> value for a fixed-price item is changed with a Revise call, the <b>MinimumBestOfferPrice</b> and <b>BestOfferAutoAcceptPrice</b> fields in the <b>ListingDetails</b> container will be dropped (if set), basically turning off the Best Offer Auto Accept and/or Auto Decline features. If the seller wanted to reintroduce either of these Best Offer threshold values in the listing again, an additional Revise call would have to be made, passing in the desired threshold values.
      *  <br><br>
-     *  <span class="tablenote"><b>Note: </b> For the US site, new eBay sellers are subject to <a href="/DevZone/guides/features-guide/default.html#development/Listing-Policies.html#SellerLimits">Seller Limits</a>, which limit the quantity of items that may be listed and/or the total cumulative value of these listings. While subject to these selling limits, an eBay seller can use the <b>GetMyeBaySelling</b> call to retrieve both the remaining number of listings they can create and the remaining cumulative value of these listings. These values are shown in the <b>Summary.QuantityLimitRemaining</b> and <b>Summary.AmountLimitRemaining</b> fields in the <b>GetMyeBaySelling</b> response. If a call to add an item or revise an item would result in the exceeding of these limits, the add item or revise item call will fail. These fields will only be returned if the seller is subject to seller limits.
+     *  <span class="tablenote"><b>Note: </b> For the US site, new eBay sellers are subject to <a href="/api-docs/user-guides/static/make-a-call/fg-replaced.html">Seller Limits</a>, which limit the quantity of items that may be listed and/or the total cumulative value of these listings. While subject to these selling limits, an eBay seller can use the <b>GetMyeBaySelling</b> call to retrieve both the remaining number of listings they can create and the remaining cumulative value of these listings. These values are shown in the <b>Summary.QuantityLimitRemaining</b> and <b>Summary.AmountLimitRemaining</b> fields in the <b>GetMyeBaySelling</b> response. If a call to add an item or revise an item would result in the exceeding of these limits, the add item or revise item call will fail. These fields will only be returned if the seller is subject to seller limits.
      *  </span>
      *
      * @param \Nogrod\eBaySDK\Trading\AmountType $startPrice
@@ -4413,8 +4149,11 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      * Gets as bestOfferDetails
      *
      * <b>For Add/Revise/Relist/Verify calls</b>: This container is used to enable the Best Offer feature on a listing. Note that the Best Offer feature can be set for auction listings on the US, Canada, UK, Germany, Australia, France, Italy, and Spain marketplaces, but a seller can only use Best Offer or Buy It Now, but not both. Once an auction listing receives a qualifying bid, the Best Offer feature will be turned off and any pending Best Offers or Counteroffers will no longer be valid.
-     *  <br><br>
+     *  <br/><br>
      *  For <b>GetItem</b> and other calls that retrieve item data, this container will include the status (<b>GetMyeBayBuying</b> only) and dollar amount of the latest Best Offer on a fixed-price listing, and the number of Best Offers received for the fixed-price listing.
+     *  <br><br>
+     *  <span class="tablenote"><b>Note: </b> Best Offer is not available for multi-variation listings.
+     *  </span>
      *
      * @return \Nogrod\eBaySDK\Trading\BestOfferDetailsType
      */
@@ -4427,8 +4166,11 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      * Sets a new bestOfferDetails
      *
      * <b>For Add/Revise/Relist/Verify calls</b>: This container is used to enable the Best Offer feature on a listing. Note that the Best Offer feature can be set for auction listings on the US, Canada, UK, Germany, Australia, France, Italy, and Spain marketplaces, but a seller can only use Best Offer or Buy It Now, but not both. Once an auction listing receives a qualifying bid, the Best Offer feature will be turned off and any pending Best Offers or Counteroffers will no longer be valid.
-     *  <br><br>
+     *  <br/><br>
      *  For <b>GetItem</b> and other calls that retrieve item data, this container will include the status (<b>GetMyeBayBuying</b> only) and dollar amount of the latest Best Offer on a fixed-price listing, and the number of Best Offers received for the fixed-price listing.
+     *  <br><br>
+     *  <span class="tablenote"><b>Note: </b> Best Offer is not available for multi-variation listings.
+     *  </span>
      *
      * @param \Nogrod\eBaySDK\Trading\BestOfferDetailsType $bestOfferDetails
      * @return self
@@ -4594,32 +4336,6 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     public function setBuyerResponsibleForShipping($buyerResponsibleForShipping)
     {
         $this->buyerResponsibleForShipping = $buyerResponsibleForShipping;
-        return $this;
-    }
-
-    /**
-     * Gets as limitedWarrantyEligible
-     *
-     * This field is deprecated.
-     *
-     * @return bool
-     */
-    public function getLimitedWarrantyEligible()
-    {
-        return $this->limitedWarrantyEligible;
-    }
-
-    /**
-     * Sets a new limitedWarrantyEligible
-     *
-     * This field is deprecated.
-     *
-     * @param bool $limitedWarrantyEligible
-     * @return self
-     */
-    public function setLimitedWarrantyEligible($limitedWarrantyEligible)
-    {
-        $this->limitedWarrantyEligible = $limitedWarrantyEligible;
         return $this;
     }
 
@@ -4818,32 +4534,6 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     public function setSKU($sKU)
     {
         $this->sKU = $sKU;
-        return $this;
-    }
-
-    /**
-     * Gets as searchDetails
-     *
-     * This field is deprecated.
-     *
-     * @return \Nogrod\eBaySDK\Trading\SearchDetailsType
-     */
-    public function getSearchDetails()
-    {
-        return $this->searchDetails;
-    }
-
-    /**
-     * Sets a new searchDetails
-     *
-     * This field is deprecated.
-     *
-     * @param \Nogrod\eBaySDK\Trading\SearchDetailsType $searchDetails
-     * @return self
-     */
-    public function setSearchDetails(\Nogrod\eBaySDK\Trading\SearchDetailsType $searchDetails)
-    {
-        $this->searchDetails = $searchDetails;
         return $this;
     }
 
@@ -5136,58 +4826,6 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     }
 
     /**
-     * Gets as bestOfferEnabled
-     *
-     * This field is deprecated. This information is returned in <b>BestOfferDetails</b>.
-     *
-     * @return bool
-     */
-    public function getBestOfferEnabled()
-    {
-        return $this->bestOfferEnabled;
-    }
-
-    /**
-     * Sets a new bestOfferEnabled
-     *
-     * This field is deprecated. This information is returned in <b>BestOfferDetails</b>.
-     *
-     * @param bool $bestOfferEnabled
-     * @return self
-     */
-    public function setBestOfferEnabled($bestOfferEnabled)
-    {
-        $this->bestOfferEnabled = $bestOfferEnabled;
-        return $this;
-    }
-
-    /**
-     * Gets as localListing
-     *
-     * This field is deprecated.
-     *
-     * @return bool
-     */
-    public function getLocalListing()
-    {
-        return $this->localListing;
-    }
-
-    /**
-     * Sets a new localListing
-     *
-     * This field is deprecated.
-     *
-     * @param bool $localListing
-     * @return self
-     */
-    public function setLocalListing($localListing)
-    {
-        $this->localListing = $localListing;
-        return $this;
-    }
-
-    /**
      * Gets as sellerContactDetails
      *
      * This container is used by sellers of Classified Ad listings to provide contact information.
@@ -5377,7 +5015,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <b>For ReviseItem only:</b> When you revise a listing, if an auction listing has one or more bids and ends within 12 hours, you cannot change or add Item Ppecifics. If the auction listing has bids but ends in more than 12 hours, you cannot change existing Item Specifics, but you can add Item Specifics that were not previously included.
      *
      *  <br><br>
-     *  If your listing is in a eBay product catalog-enabled category, certain <b>Name</b>/<b>Value</b> pairs will be accepted as product identifying information. The <b>Name</b> can be <code>Brand</code>, <code>MPN</code>, or a Global Trade Item Number (GTIN). GTINs are a set of globally recognized identifiers, including <code>EAN</code>, <code>ISBN</code>, and <code>UPC</code>. However, the <b>Values</b> provided for these <b>Name</b>s must comply with eBay's constraints or they will not be recognized as product identifiers. The <b>Value</b> for Brand must be an actual brand name (except that if the item is not branded, <b>Value</b> can be <code>Unbranded</code>.) The <b>Value</b> for Brand or MPN cannot contain only special characters (e.g. <code>%$*#@</code>). All GTINs must comply with international formatting standards. For more details, see <a href="https://developer.ebay.com/devzone/guides/features-guide/default.html#development/ItemSpecifics-Listing.html" target="_blank">Listing with Item Specifics</a>.
+     *  If your listing is in a eBay product catalog-enabled category, certain <b>Name</b>/<b>Value</b> pairs will be accepted as product identifying information. The <b>Name</b> can be <code>Brand</code>, <code>MPN</code>, or a Global Trade Item Number (GTIN). GTINs are a set of globally recognized identifiers, including <code>EAN</code>, <code>ISBN</code>, and <code>UPC</code>. However, the <b>Values</b> provided for these <b>Name</b>s must comply with eBay's constraints or they will not be recognized as product identifiers. The <b>Value</b> for Brand must be an actual brand name (except that if the item is not branded, <b>Value</b> can be <code>Unbranded</code>.) The <b>Value</b> for Brand or MPN cannot contain only special characters (e.g. <code>%$*#@</code>). All GTINs must comply with international formatting standards. For more details, see <a href="https://developer.ebay.com/api-docs/user-guides/static/trading-user-guide/item-specifics.html" target="_blank">Item Specifics</a>.
      *
      *  <br><br>
      *  If the <b>ProductListingDetails</b> container in an Add/Revise/Relist call is successfully used to find and use an eBay catalog product to create/revise listing, the seller should not remove or change the value of any Item Specific name or value that is defined as part of the eBay catalog product definition.
@@ -5415,7 +5053,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <b>For ReviseItem only:</b> When you revise a listing, if an auction listing has one or more bids and ends within 12 hours, you cannot change or add Item Ppecifics. If the auction listing has bids but ends in more than 12 hours, you cannot change existing Item Specifics, but you can add Item Specifics that were not previously included.
      *
      *  <br><br>
-     *  If your listing is in a eBay product catalog-enabled category, certain <b>Name</b>/<b>Value</b> pairs will be accepted as product identifying information. The <b>Name</b> can be <code>Brand</code>, <code>MPN</code>, or a Global Trade Item Number (GTIN). GTINs are a set of globally recognized identifiers, including <code>EAN</code>, <code>ISBN</code>, and <code>UPC</code>. However, the <b>Values</b> provided for these <b>Name</b>s must comply with eBay's constraints or they will not be recognized as product identifiers. The <b>Value</b> for Brand must be an actual brand name (except that if the item is not branded, <b>Value</b> can be <code>Unbranded</code>.) The <b>Value</b> for Brand or MPN cannot contain only special characters (e.g. <code>%$*#@</code>). All GTINs must comply with international formatting standards. For more details, see <a href="https://developer.ebay.com/devzone/guides/features-guide/default.html#development/ItemSpecifics-Listing.html" target="_blank">Listing with Item Specifics</a>.
+     *  If your listing is in a eBay product catalog-enabled category, certain <b>Name</b>/<b>Value</b> pairs will be accepted as product identifying information. The <b>Name</b> can be <code>Brand</code>, <code>MPN</code>, or a Global Trade Item Number (GTIN). GTINs are a set of globally recognized identifiers, including <code>EAN</code>, <code>ISBN</code>, and <code>UPC</code>. However, the <b>Values</b> provided for these <b>Name</b>s must comply with eBay's constraints or they will not be recognized as product identifiers. The <b>Value</b> for Brand must be an actual brand name (except that if the item is not branded, <b>Value</b> can be <code>Unbranded</code>.) The <b>Value</b> for Brand or MPN cannot contain only special characters (e.g. <code>%$*#@</code>). All GTINs must comply with international formatting standards. For more details, see <a href="https://developer.ebay.com/api-docs/user-guides/static/trading-user-guide/item-specifics.html" target="_blank">Item Specifics</a>.
      *
      *  <br><br>
      *  If the <b>ProductListingDetails</b> container in an Add/Revise/Relist call is successfully used to find and use an eBay catalog product to create/revise listing, the seller should not remove or change the value of any Item Specific name or value that is defined as part of the eBay catalog product definition.
@@ -5452,7 +5090,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <b>For ReviseItem only:</b> When you revise a listing, if an auction listing has one or more bids and ends within 12 hours, you cannot change or add Item Ppecifics. If the auction listing has bids but ends in more than 12 hours, you cannot change existing Item Specifics, but you can add Item Specifics that were not previously included.
      *
      *  <br><br>
-     *  If your listing is in a eBay product catalog-enabled category, certain <b>Name</b>/<b>Value</b> pairs will be accepted as product identifying information. The <b>Name</b> can be <code>Brand</code>, <code>MPN</code>, or a Global Trade Item Number (GTIN). GTINs are a set of globally recognized identifiers, including <code>EAN</code>, <code>ISBN</code>, and <code>UPC</code>. However, the <b>Values</b> provided for these <b>Name</b>s must comply with eBay's constraints or they will not be recognized as product identifiers. The <b>Value</b> for Brand must be an actual brand name (except that if the item is not branded, <b>Value</b> can be <code>Unbranded</code>.) The <b>Value</b> for Brand or MPN cannot contain only special characters (e.g. <code>%$*#@</code>). All GTINs must comply with international formatting standards. For more details, see <a href="https://developer.ebay.com/devzone/guides/features-guide/default.html#development/ItemSpecifics-Listing.html" target="_blank">Listing with Item Specifics</a>.
+     *  If your listing is in a eBay product catalog-enabled category, certain <b>Name</b>/<b>Value</b> pairs will be accepted as product identifying information. The <b>Name</b> can be <code>Brand</code>, <code>MPN</code>, or a Global Trade Item Number (GTIN). GTINs are a set of globally recognized identifiers, including <code>EAN</code>, <code>ISBN</code>, and <code>UPC</code>. However, the <b>Values</b> provided for these <b>Name</b>s must comply with eBay's constraints or they will not be recognized as product identifiers. The <b>Value</b> for Brand must be an actual brand name (except that if the item is not branded, <b>Value</b> can be <code>Unbranded</code>.) The <b>Value</b> for Brand or MPN cannot contain only special characters (e.g. <code>%$*#@</code>). All GTINs must comply with international formatting standards. For more details, see <a href="https://developer.ebay.com/api-docs/user-guides/static/trading-user-guide/item-specifics.html" target="_blank">Item Specifics</a>.
      *
      *  <br><br>
      *  If the <b>ProductListingDetails</b> container in an Add/Revise/Relist call is successfully used to find and use an eBay catalog product to create/revise listing, the seller should not remove or change the value of any Item Specific name or value that is defined as part of the eBay catalog product definition.
@@ -5489,7 +5127,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <b>For ReviseItem only:</b> When you revise a listing, if an auction listing has one or more bids and ends within 12 hours, you cannot change or add Item Ppecifics. If the auction listing has bids but ends in more than 12 hours, you cannot change existing Item Specifics, but you can add Item Specifics that were not previously included.
      *
      *  <br><br>
-     *  If your listing is in a eBay product catalog-enabled category, certain <b>Name</b>/<b>Value</b> pairs will be accepted as product identifying information. The <b>Name</b> can be <code>Brand</code>, <code>MPN</code>, or a Global Trade Item Number (GTIN). GTINs are a set of globally recognized identifiers, including <code>EAN</code>, <code>ISBN</code>, and <code>UPC</code>. However, the <b>Values</b> provided for these <b>Name</b>s must comply with eBay's constraints or they will not be recognized as product identifiers. The <b>Value</b> for Brand must be an actual brand name (except that if the item is not branded, <b>Value</b> can be <code>Unbranded</code>.) The <b>Value</b> for Brand or MPN cannot contain only special characters (e.g. <code>%$*#@</code>). All GTINs must comply with international formatting standards. For more details, see <a href="https://developer.ebay.com/devzone/guides/features-guide/default.html#development/ItemSpecifics-Listing.html" target="_blank">Listing with Item Specifics</a>.
+     *  If your listing is in a eBay product catalog-enabled category, certain <b>Name</b>/<b>Value</b> pairs will be accepted as product identifying information. The <b>Name</b> can be <code>Brand</code>, <code>MPN</code>, or a Global Trade Item Number (GTIN). GTINs are a set of globally recognized identifiers, including <code>EAN</code>, <code>ISBN</code>, and <code>UPC</code>. However, the <b>Values</b> provided for these <b>Name</b>s must comply with eBay's constraints or they will not be recognized as product identifiers. The <b>Value</b> for Brand must be an actual brand name (except that if the item is not branded, <b>Value</b> can be <code>Unbranded</code>.) The <b>Value</b> for Brand or MPN cannot contain only special characters (e.g. <code>%$*#@</code>). All GTINs must comply with international formatting standards. For more details, see <a href="https://developer.ebay.com/api-docs/user-guides/static/trading-user-guide/item-specifics.html" target="_blank">Item Specifics</a>.
      *
      *  <br><br>
      *  If the <b>ProductListingDetails</b> container in an Add/Revise/Relist call is successfully used to find and use an eBay catalog product to create/revise listing, the seller should not remove or change the value of any Item Specific name or value that is defined as part of the eBay catalog product definition.
@@ -5525,7 +5163,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <b>For ReviseItem only:</b> When you revise a listing, if an auction listing has one or more bids and ends within 12 hours, you cannot change or add Item Ppecifics. If the auction listing has bids but ends in more than 12 hours, you cannot change existing Item Specifics, but you can add Item Specifics that were not previously included.
      *
      *  <br><br>
-     *  If your listing is in a eBay product catalog-enabled category, certain <b>Name</b>/<b>Value</b> pairs will be accepted as product identifying information. The <b>Name</b> can be <code>Brand</code>, <code>MPN</code>, or a Global Trade Item Number (GTIN). GTINs are a set of globally recognized identifiers, including <code>EAN</code>, <code>ISBN</code>, and <code>UPC</code>. However, the <b>Values</b> provided for these <b>Name</b>s must comply with eBay's constraints or they will not be recognized as product identifiers. The <b>Value</b> for Brand must be an actual brand name (except that if the item is not branded, <b>Value</b> can be <code>Unbranded</code>.) The <b>Value</b> for Brand or MPN cannot contain only special characters (e.g. <code>%$*#@</code>). All GTINs must comply with international formatting standards. For more details, see <a href="https://developer.ebay.com/devzone/guides/features-guide/default.html#development/ItemSpecifics-Listing.html" target="_blank">Listing with Item Specifics</a>.
+     *  If your listing is in a eBay product catalog-enabled category, certain <b>Name</b>/<b>Value</b> pairs will be accepted as product identifying information. The <b>Name</b> can be <code>Brand</code>, <code>MPN</code>, or a Global Trade Item Number (GTIN). GTINs are a set of globally recognized identifiers, including <code>EAN</code>, <code>ISBN</code>, and <code>UPC</code>. However, the <b>Values</b> provided for these <b>Name</b>s must comply with eBay's constraints or they will not be recognized as product identifiers. The <b>Value</b> for Brand must be an actual brand name (except that if the item is not branded, <b>Value</b> can be <code>Unbranded</code>.) The <b>Value</b> for Brand or MPN cannot contain only special characters (e.g. <code>%$*#@</code>). All GTINs must comply with international formatting standards. For more details, see <a href="https://developer.ebay.com/api-docs/user-guides/static/trading-user-guide/item-specifics.html" target="_blank">Item Specifics</a>.
      *
      *  <br><br>
      *  If the <b>ProductListingDetails</b> container in an Add/Revise/Relist call is successfully used to find and use an eBay catalog product to create/revise listing, the seller should not remove or change the value of any Item Specific name or value that is defined as part of the eBay catalog product definition.
@@ -5552,32 +5190,6 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     }
 
     /**
-     * Gets as groupCategoryID
-     *
-     * This field is deprecated.
-     *
-     * @return string
-     */
-    public function getGroupCategoryID()
-    {
-        return $this->groupCategoryID;
-    }
-
-    /**
-     * Sets a new groupCategoryID
-     *
-     * This field is deprecated.
-     *
-     * @param string $groupCategoryID
-     * @return self
-     */
-    public function setGroupCategoryID($groupCategoryID)
-    {
-        $this->groupCategoryID = $groupCategoryID;
-        return $this;
-    }
-
-    /**
      * Gets as classifiedAdPayPerLeadFee
      *
      * The email and phone lead fee for a pay-per-lead item.
@@ -5600,32 +5212,6 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     public function setClassifiedAdPayPerLeadFee(\Nogrod\eBaySDK\Trading\AmountType $classifiedAdPayPerLeadFee)
     {
         $this->classifiedAdPayPerLeadFee = $classifiedAdPayPerLeadFee;
-        return $this;
-    }
-
-    /**
-     * Gets as bidGroupItem
-     *
-     * This field is deprecated.
-     *
-     * @return bool
-     */
-    public function getBidGroupItem()
-    {
-        return $this->bidGroupItem;
-    }
-
-    /**
-     * Sets a new bidGroupItem
-     *
-     * This field is deprecated.
-     *
-     * @param bool $bidGroupItem
-     * @return self
-     */
-    public function setBidGroupItem($bidGroupItem)
-    {
-        $this->bidGroupItem = $bidGroupItem;
         return $this;
     }
 
@@ -5720,78 +5306,6 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     public function setMechanicalCheckAccepted($mechanicalCheckAccepted)
     {
         $this->mechanicalCheckAccepted = $mechanicalCheckAccepted;
-        return $this;
-    }
-
-    /**
-     * Gets as updateSellerInfo
-     *
-     * <span class="tablenote"><strong>Note:</strong>
-     *  This field is not usable and will be ignored if sent. See <a href="https://developer.ebay.com/develop/apis/api-deprecation-status">API Deprecation Status</a> for the decommission date (when this field will be removed from the WSDL).
-     *  </span>
-     *  Specifies whether the following Business Seller fields have been updated for
-     *  the item specified in the request: First Name, Last Name, Fax, Email
-     *  Address, Additional Contact Information, Trade Registration Number, VAT
-     *  Identification Number.
-     *
-     * @return bool
-     */
-    public function getUpdateSellerInfo()
-    {
-        return $this->updateSellerInfo;
-    }
-
-    /**
-     * Sets a new updateSellerInfo
-     *
-     * <span class="tablenote"><strong>Note:</strong>
-     *  This field is not usable and will be ignored if sent. See <a href="https://developer.ebay.com/develop/apis/api-deprecation-status">API Deprecation Status</a> for the decommission date (when this field will be removed from the WSDL).
-     *  </span>
-     *  Specifies whether the following Business Seller fields have been updated for
-     *  the item specified in the request: First Name, Last Name, Fax, Email
-     *  Address, Additional Contact Information, Trade Registration Number, VAT
-     *  Identification Number.
-     *
-     * @param bool $updateSellerInfo
-     * @return self
-     */
-    public function setUpdateSellerInfo($updateSellerInfo)
-    {
-        $this->updateSellerInfo = $updateSellerInfo;
-        return $this;
-    }
-
-    /**
-     * Gets as updateReturnPolicy
-     *
-     * <span class="tablenote"><strong>Note:</strong>
-     *  This field is not usable and will be ignored if sent. See <a href="https://developer.ebay.com/develop/apis/api-deprecation-status">API Deprecation Status</a> for the decommission date (when this field will be removed from the WSDL).
-     *  </span>
-     *  Specifies whether the Return Policy Details have been updated
-     *  for the item specified in the request.
-     *
-     * @return bool
-     */
-    public function getUpdateReturnPolicy()
-    {
-        return $this->updateReturnPolicy;
-    }
-
-    /**
-     * Sets a new updateReturnPolicy
-     *
-     * <span class="tablenote"><strong>Note:</strong>
-     *  This field is not usable and will be ignored if sent. See <a href="https://developer.ebay.com/develop/apis/api-deprecation-status">API Deprecation Status</a> for the decommission date (when this field will be removed from the WSDL).
-     *  </span>
-     *  Specifies whether the Return Policy Details have been updated
-     *  for the item specified in the request.
-     *
-     * @param bool $updateReturnPolicy
-     * @return self
-     */
-    public function setUpdateReturnPolicy($updateReturnPolicy)
-    {
-        $this->updateReturnPolicy = $updateReturnPolicy;
         return $this;
     }
 
@@ -6857,7 +6371,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Gets as regulatory
      *
-     * This container is used by the seller to provide Energy Efficiency Label information, hazardous material related information, and the repair score for the listing.
+     * This container is used by the seller to provide Energy Efficiency Label information, hazardous material related information, product safety related information, manufacturer information, and the repair score for the listing.
      *
      * @return \Nogrod\eBaySDK\Trading\RegulatoryType
      */
@@ -6869,7 +6383,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Sets a new regulatory
      *
-     * This container is used by the seller to provide Energy Efficiency Label information, hazardous material related information, and the repair score for the listing.
+     * This container is used by the seller to provide Energy Efficiency Label information, hazardous material related information, product safety related information, manufacturer information, and the repair score for the listing.
      *
      * @param \Nogrod\eBaySDK\Trading\RegulatoryType $regulatory
      * @return self
@@ -7181,42 +6695,6 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     }
 
     /**
-     * Gets as quantityInfo
-     *
-     * <span class="tablenote"><strong>Note:</strong>
-     *  This container and its field are not usable and will be ignored if sent. See <a href="https://developer.ebay.com/develop/apis/api-deprecation-status">API Deprecation Status</a> for the decommission date (when this container and fields will stop being returned).
-     *  </span>
-     *  This container is used to set the minimum number of event tickets that should remain available after a buyer makes a purchase. This functionality allows the seller to avoid the possibility of being left with just one event ticket after a sale.
-     *  <br><br>
-     *  This container can be used when adding, revising, or relisting event tickets, and it will only be returned in <b>GetItem</b> if set for the listing.
-     *
-     * @return \Nogrod\eBaySDK\Trading\QuantityInfoType
-     */
-    public function getQuantityInfo()
-    {
-        return $this->quantityInfo;
-    }
-
-    /**
-     * Sets a new quantityInfo
-     *
-     * <span class="tablenote"><strong>Note:</strong>
-     *  This container and its field are not usable and will be ignored if sent. See <a href="https://developer.ebay.com/develop/apis/api-deprecation-status">API Deprecation Status</a> for the decommission date (when this container and fields will stop being returned).
-     *  </span>
-     *  This container is used to set the minimum number of event tickets that should remain available after a buyer makes a purchase. This functionality allows the seller to avoid the possibility of being left with just one event ticket after a sale.
-     *  <br><br>
-     *  This container can be used when adding, revising, or relisting event tickets, and it will only be returned in <b>GetItem</b> if set for the listing.
-     *
-     * @param \Nogrod\eBaySDK\Trading\QuantityInfoType $quantityInfo
-     * @return self
-     */
-    public function setQuantityInfo(\Nogrod\eBaySDK\Trading\QuantityInfoType $quantityInfo)
-    {
-        $this->quantityInfo = $quantityInfo;
-        return $this;
-    }
-
-    /**
      * Gets as sellerProfiles
      *
      * This container is used if the seller would like to use/reference business policies to create, revise, relist, or verify their listing. The seller's account must be opted in to business policies to use this container. If this container is used, exactly one Payment Business Policy, one Shipping Business Policy, and one Return Business Policy must be specified and applied to the listing. If the seller's account is not opted in to business policies, that seller may not use this container. Sellers must opt-in to business policies through My eBay or by using the <b>optInToProgram</b> call of the <b>eBay Account API</b>.
@@ -7357,32 +6835,6 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     public function setShippingServiceCostOverrideList(array $shippingServiceCostOverrideList)
     {
         $this->shippingServiceCostOverrideList = $shippingServiceCostOverrideList;
-        return $this;
-    }
-
-    /**
-     * Gets as shippingOverride
-     *
-     * This field is reserved for internal or future use.
-     *
-     * @return \Nogrod\eBaySDK\Trading\ShippingOverrideType
-     */
-    public function getShippingOverride()
-    {
-        return $this->shippingOverride;
-    }
-
-    /**
-     * Sets a new shippingOverride
-     *
-     * This field is reserved for internal or future use.
-     *
-     * @param \Nogrod\eBaySDK\Trading\ShippingOverrideType $shippingOverride
-     * @return self
-     */
-    public function setShippingOverride(\Nogrod\eBaySDK\Trading\ShippingOverrideType $shippingOverride)
-    {
-        $this->shippingOverride = $shippingOverride;
         return $this;
     }
 
@@ -7833,34 +7285,6 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     }
 
     /**
-     * Gets as liveAuction
-     *
-     * <span class="tablenote"><b>Note:</b> This field is no longer applicable as eBay Live Auctions are no longer being held as of September 1, 2018. If this field is used in an Add/Revise/Relist call, it will be ignored and dropped.
-     *  </span>
-     *
-     * @return bool
-     */
-    public function getLiveAuction()
-    {
-        return $this->liveAuction;
-    }
-
-    /**
-     * Sets a new liveAuction
-     *
-     * <span class="tablenote"><b>Note:</b> This field is no longer applicable as eBay Live Auctions are no longer being held as of September 1, 2018. If this field is used in an Add/Revise/Relist call, it will be ignored and dropped.
-     *  </span>
-     *
-     * @param bool $liveAuction
-     * @return self
-     */
-    public function setLiveAuction($liveAuction)
-    {
-        $this->liveAuction = $liveAuction;
-        return $this;
-    }
-
-    /**
      * Gets as digitalGoodInfo
      *
      * This container is used in <b>Add</b>/<b>Revise</b>/<b>Relist</b>/<b>Verify</b> listing calls to designate the listing as a digital gift card listing. It is also returned in <strong>GetItem</strong> to indicate that the listing contains a digital gift card.
@@ -8075,10 +7499,6 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Country", $value);
         }
-        $value = $this->getCrossPromotion();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CrossPromotion", $value);
-        }
         $value = $this->getCurrency();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Currency", $value);
@@ -8090,10 +7510,6 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         $value = $this->getDescriptionReviseMode();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DescriptionReviseMode", $value);
-        }
-        $value = $this->getDistance();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Distance", $value);
         }
         $value = $this->getItemID();
         if (null !== $value) {
@@ -8122,14 +7538,6 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         $value = $this->getLotSize();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}LotSize", $value);
-        }
-        $value = $this->getPartnerCode();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PartnerCode", $value);
-        }
-        $value = $this->getPartnerName();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PartnerName", $value);
         }
         $value = $this->getPaymentDetails();
         if (null !== $value) {
@@ -8163,10 +7571,6 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         $value = $this->getPrivateNotes();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PrivateNotes", $value);
-        }
-        $value = $this->getRegionID();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}RegionID", $value);
         }
         $value = $this->getRelistLink();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;
@@ -8287,11 +7691,6 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BuyerResponsibleForShipping", $value);
         }
-        $value = $this->getLimitedWarrantyEligible();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}LimitedWarrantyEligible", $value);
-        }
         $value = $this->getEBayNotes();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}eBayNotes", $value);
@@ -8312,10 +7711,6 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         $value = $this->getSKU();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SKU", $value);
-        }
-        $value = $this->getSearchDetails();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SearchDetails", $value);
         }
         $value = $this->getPostalCode();
         if (null !== $value) {
@@ -8340,16 +7735,6 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         $value = $this->getDispatchTimeMax();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DispatchTimeMax", $value);
-        }
-        $value = $this->getBestOfferEnabled();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BestOfferEnabled", $value);
-        }
-        $value = $this->getLocalListing();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}LocalListing", $value);
         }
         $value = $this->getSellerContactDetails();
         if (null !== $value) {
@@ -8380,18 +7765,9 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         if (null !== $value && !empty($this->getItemSpecifics())) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ItemSpecifics", array_map(function ($v) {return ["NameValueList" => $v];}, $value));
         }
-        $value = $this->getGroupCategoryID();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}GroupCategoryID", $value);
-        }
         $value = $this->getClassifiedAdPayPerLeadFee();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ClassifiedAdPayPerLeadFee", $value);
-        }
-        $value = $this->getBidGroupItem();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BidGroupItem", $value);
         }
         $value = $this->getApplyBuyerProtection();
         if (null !== $value) {
@@ -8405,16 +7781,6 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         $value = null !== $value ? ($value ? 'true' : 'false') : null;
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MechanicalCheckAccepted", $value);
-        }
-        $value = $this->getUpdateSellerInfo();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}UpdateSellerInfo", $value);
-        }
-        $value = $this->getUpdateReturnPolicy();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}UpdateReturnPolicy", $value);
         }
         $value = $this->getItemPolicyViolation();
         if (null !== $value) {
@@ -8521,10 +7887,6 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}VRMLink", $value);
         }
-        $value = $this->getQuantityInfo();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}QuantityInfo", $value);
-        }
         $value = $this->getSellerProfiles();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SellerProfiles", $value);
@@ -8532,10 +7894,6 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         $value = $this->getShippingServiceCostOverrideList();
         if (null !== $value && !empty($this->getShippingServiceCostOverrideList())) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippingServiceCostOverrideList", array_map(function ($v) {return ["ShippingServiceCostOverride" => $v];}, $value));
-        }
-        $value = $this->getShippingOverride();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippingOverride", $value);
         }
         $value = $this->getShippingPackageDetails();
         if (null !== $value) {
@@ -8602,11 +7960,6 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         $value = null !== $value ? ($value ? 'true' : 'false') : null;
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}EligibleForPickupDropOff", $value);
-        }
-        $value = $this->getLiveAuction();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}LiveAuction", $value);
         }
         $value = $this->getDigitalGoodInfo();
         if (null !== $value) {
@@ -8680,10 +8033,6 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         if (null !== $value) {
             $this->setCountry($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CrossPromotion');
-        if (null !== $value) {
-            $this->setCrossPromotion(\Nogrod\eBaySDK\Trading\CrossPromotionsType::fromKeyValue($value));
-        }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Currency');
         if (null !== $value) {
             $this->setCurrency($value);
@@ -8695,10 +8044,6 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DescriptionReviseMode');
         if (null !== $value) {
             $this->setDescriptionReviseMode($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Distance');
-        if (null !== $value) {
-            $this->setDistance(\Nogrod\eBaySDK\Trading\DistanceType::fromKeyValue($value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemID');
         if (null !== $value) {
@@ -8727,14 +8072,6 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LotSize');
         if (null !== $value) {
             $this->setLotSize($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PartnerCode');
-        if (null !== $value) {
-            $this->setPartnerCode($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PartnerName');
-        if (null !== $value) {
-            $this->setPartnerName($value);
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaymentDetails');
         if (null !== $value) {
@@ -8767,10 +8104,6 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PrivateNotes');
         if (null !== $value) {
             $this->setPrivateNotes($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RegionID');
-        if (null !== $value) {
-            $this->setRegionID($value);
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RelistLink');
         if (null !== $value) {
@@ -8884,10 +8217,6 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         if (null !== $value) {
             $this->setBuyerResponsibleForShipping($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LimitedWarrantyEligible');
-        if (null !== $value) {
-            $this->setLimitedWarrantyEligible($value);
-        }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}eBayNotes');
         if (null !== $value) {
             $this->setEBayNotes($value);
@@ -8907,10 +8236,6 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SKU');
         if (null !== $value) {
             $this->setSKU($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SearchDetails');
-        if (null !== $value) {
-            $this->setSearchDetails(\Nogrod\eBaySDK\Trading\SearchDetailsType::fromKeyValue($value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PostalCode');
         if (null !== $value) {
@@ -8935,14 +8260,6 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DispatchTimeMax');
         if (null !== $value) {
             $this->setDispatchTimeMax($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BestOfferEnabled');
-        if (null !== $value) {
-            $this->setBestOfferEnabled($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LocalListing');
-        if (null !== $value) {
-            $this->setLocalListing($value);
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerContactDetails');
         if (null !== $value) {
@@ -8972,17 +8289,9 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         if (null !== $value && !empty($value)) {
             $this->setItemSpecifics(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\NameValueListType::fromKeyValue($v);}, $value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}GroupCategoryID');
-        if (null !== $value) {
-            $this->setGroupCategoryID($value);
-        }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ClassifiedAdPayPerLeadFee');
         if (null !== $value) {
             $this->setClassifiedAdPayPerLeadFee(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BidGroupItem');
-        if (null !== $value) {
-            $this->setBidGroupItem($value);
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ApplyBuyerProtection');
         if (null !== $value) {
@@ -8995,14 +8304,6 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MechanicalCheckAccepted');
         if (null !== $value) {
             $this->setMechanicalCheckAccepted($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UpdateSellerInfo');
-        if (null !== $value) {
-            $this->setUpdateSellerInfo($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UpdateReturnPolicy');
-        if (null !== $value) {
-            $this->setUpdateReturnPolicy($value);
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemPolicyViolation');
         if (null !== $value) {
@@ -9108,10 +8409,6 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         if (null !== $value) {
             $this->setVRMLink($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}QuantityInfo');
-        if (null !== $value) {
-            $this->setQuantityInfo(\Nogrod\eBaySDK\Trading\QuantityInfoType::fromKeyValue($value));
-        }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerProfiles');
         if (null !== $value) {
             $this->setSellerProfiles(\Nogrod\eBaySDK\Trading\SellerProfilesType::fromKeyValue($value));
@@ -9119,10 +8416,6 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingServiceCostOverrideList', true);
         if (null !== $value && !empty($value)) {
             $this->setShippingServiceCostOverrideList(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\ShippingServiceCostOverrideType::fromKeyValue($v);}, $value));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingOverride');
-        if (null !== $value) {
-            $this->setShippingOverride(\Nogrod\eBaySDK\Trading\ShippingOverrideType::fromKeyValue($value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingPackageDetails');
         if (null !== $value) {
@@ -9183,10 +8476,6 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EligibleForPickupDropOff');
         if (null !== $value) {
             $this->setEligibleForPickupDropOff($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LiveAuction');
-        if (null !== $value) {
-            $this->setLiveAuction($value);
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DigitalGoodInfo');
         if (null !== $value) {

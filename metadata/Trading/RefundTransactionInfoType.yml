@@ -5,17 +5,6 @@ Nogrod\eBaySDK\Trading\RefundTransactionInfoType:
             serialized_name: xmlns
             xml_attribute: true
     properties:
-        refundStatus:
-            expose: true
-            access_type: public_method
-            serialized_name: RefundStatus
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getRefundStatus
-                setter: setRefundStatus
-            type: string
         refundType:
             expose: true
             access_type: public_method

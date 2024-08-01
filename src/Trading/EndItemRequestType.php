@@ -27,13 +27,6 @@ class EndItemRequestType extends AbstractRequestType
     private $endingReason = null;
 
     /**
-     * This field was previously only used to identify and end Half.com listings, and since the Half.com site has been shut down, this element is no longer applicable.
-     *
-     * @var string $sellerInventoryID
-     */
-    private $sellerInventoryID = null;
-
-    /**
      * Gets as itemID
      *
      * Unique item ID that identifies the listing that you want to end.
@@ -85,32 +78,6 @@ class EndItemRequestType extends AbstractRequestType
         return $this;
     }
 
-    /**
-     * Gets as sellerInventoryID
-     *
-     * This field was previously only used to identify and end Half.com listings, and since the Half.com site has been shut down, this element is no longer applicable.
-     *
-     * @return string
-     */
-    public function getSellerInventoryID()
-    {
-        return $this->sellerInventoryID;
-    }
-
-    /**
-     * Sets a new sellerInventoryID
-     *
-     * This field was previously only used to identify and end Half.com listings, and since the Half.com site has been shut down, this element is no longer applicable.
-     *
-     * @param string $sellerInventoryID
-     * @return self
-     */
-    public function setSellerInventoryID($sellerInventoryID)
-    {
-        $this->sellerInventoryID = $sellerInventoryID;
-        return $this;
-    }
-
     public function xmlSerialize(\Sabre\Xml\Writer $writer): void
     {
         parent::xmlSerialize($writer);
@@ -121,10 +88,6 @@ class EndItemRequestType extends AbstractRequestType
         $value = $this->getEndingReason();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}EndingReason", $value);
-        }
-        $value = $this->getSellerInventoryID();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SellerInventoryID", $value);
         }
     }
 
@@ -150,10 +113,6 @@ class EndItemRequestType extends AbstractRequestType
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EndingReason');
         if (null !== $value) {
             $this->setEndingReason($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerInventoryID');
-        if (null !== $value) {
-            $this->setSellerInventoryID($value);
         }
     }
 }

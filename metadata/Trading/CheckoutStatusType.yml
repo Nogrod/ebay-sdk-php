@@ -60,17 +60,6 @@ Nogrod\eBaySDK\Trading\CheckoutStatusType:
                 getter: getIntegratedMerchantCreditCardEnabled
                 setter: setIntegratedMerchantCreditCardEnabled
             type: bool
-        eBayPaymentMismatchDetails:
-            expose: true
-            access_type: public_method
-            serialized_name: eBayPaymentMismatchDetails
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getEBayPaymentMismatchDetails
-                setter: setEBayPaymentMismatchDetails
-            type: Nogrod\eBaySDK\Trading\EBayPaymentMismatchDetailsType
         paymentInstrument:
             expose: true
             access_type: public_method

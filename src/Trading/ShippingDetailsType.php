@@ -33,11 +33,13 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     /**
      * <span class="tablenote"><strong>Note:</strong>
-     *  On the US marketplace, the <b>Global Shipping Program</b> is scheduled to be replaced by a new intermediated international shipping program called <b>eBay International Shipping</b>. US Sellers opted in to the <b>Global Shipping Program</b> will automatically get opted into <b>eBay International Shipping</b> once it becomes available to them. All US sellers will be migrated by March 31, 2023. <b>eBay International Shipping</b> is an account level setting, and no field will need to be set in a add/revise call to enable this setting. As long as the US seller's account is opted in to <b>eBay International Shipping</b>, this shipping option will be automatically enabled for all listings where international shipping is available. Even if the US seller is opted into <b>eBay International Shipping</b>, that same seller can still also specify individual international shipping service options through the ShippingDetails.InternationalShippingServiceOption container.
+     *  The <b>Global Shipping Program</b> (GSP) is only available on the UK marketplace. On the US marketplace, the <b>Global Shipping Program</b> was replaced by the intermediated international shipping program called <b>eBay International Shipping</b>.
+     *  <br><br>
+     *  <b>eBay International Shipping</b> is an account level setting, and no field will need to be set in a add/revise call to enable this setting. As long as the US seller's account is opted in to <b>eBay International Shipping</b>, this shipping option will be automatically enabled for all listings where international shipping is available. Even if the US seller is opted into <b>eBay International Shipping</b>, that same seller can still also specify individual international shipping service options through the ShippingDetails.InternationalShippingServiceOption container.
      *  </span>
      *  In an Add/Revise/Relist call, this boolean field can be included and set to <code>True</code> if the seller would like to use eBay's Global Shipping Program for orders that are shipped internationally.
      *  <br/><br/>
-     *  In 'Get' calls, if this field is returned as <code>True</code>, it indicates that international shipping through the Global Shipping Program is available for the listing. If this field is returned as <code>Falsee</code>, the seller is responsible for shipping the item internationally using one of the specified international shipping service options set for the listing.
+     *  In 'Get' calls, if this field is returned as <code>True</code>, it indicates that international shipping through the Global Shipping Program is available for the listing. If this field is returned as <code>False</code>, the seller is responsible for shipping the item internationally using one of the specified international shipping service options set for the listing.
      *  <br/><br/>
      *  When calling <strong>RelistFixedPriceItem</strong>, <strong>RelistItem</strong>, <strong>ReviseFixedPriceItem</strong> or <strong>ReviseItem</strong>, you can omit this field if its value doesn't need to change.
      *  <br/><br/>
@@ -56,7 +58,7 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  shipping calculator</a>.
      *  <br><br>
      *  <span class="tablenote"><strong>Note:</strong>
-     *  The <strong>CalculatedShippingRate</strong> container should only be used to specify values for the <strong>InternationalPackagingHandlingCosts</strong>, <strong>OriginatingPostalCode</strong>, and/or <strong>PackagingHandlingCosts</strong> fields. The rest of the fields in the <strong>CalculatedShippingRate</strong> container are used to specify package dimensions and package weight, and these values should now be specified in the <strong>ShippingPackageDetails</strong> container instead.
+     *  The <strong>CalculatedShippingRate</strong> container should only be used to specify values for the <strong>InternationalPackagingHandlingCosts</strong> and/or <strong>PackagingHandlingCosts</strong> fields. The rest of the fields in the <strong>CalculatedShippingRate</strong> container are used to specify package dimensions and package weight, and these values should now be specified in the <strong>ShippingPackageDetails</strong> container instead.
      *  </span>
      *
      * @var \Nogrod\eBaySDK\Trading\CalculatedShippingRateType $calculatedShippingRate
@@ -82,21 +84,15 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     private $paymentEdited = null;
 
     /**
-     * This free-form string field gives sellers the ability to add detailed payment instructions to their listings.
-     *  <br>
-     *
-     * @var string $paymentInstructions
-     */
-    private $paymentInstructions = null;
-
-    /**
      * This container shows sales tax information for an item in a specific tax jurisdiction. The concept of 'sales tax' is only applicable to eBay US and Canada (English and French) sites.
      *  <br><br>
      *  This container can be used in an Add/Revise/Relist/Verify call to set sales tax settings for a specific tax jurisdiction, but it is actually a better practice if a user sets up sales tax rates through the Sales Tax Table tool in My eBay (or by using the <b>SetTaxTable</b> call). A seller's Sales Tax Table is applied to the listing by including the <b>UseTaxTable</b> field in the request and setting its value to <code>true</code>. The <b>GetTaxTable</b> call can be used to retrieve the current sales tax rates for different tax jurisdictions.
      *  <br><br>
      *  This container is only returned in order management 'Get' calls if sales tax is applicable to the order line item. For eBay Collect and Remit states, the sales tax information is displayed in the <b>Transaction.Taxes</b> container instead.
      *  <br><br>
-     *  <span class="tablenote"><b>Note: </b> As of November 2021, buyers in all US states except for Missouri (and several US territories), will automatically be charged sales tax for purchases, and the seller does not set this rate. eBay will collect and remit this sales tax to the proper taxing authority on the buyer's behalf. For more US state-level information on sales tax, see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section4">eBay sales tax collection</a> help topic.
+     *  <span class="tablenote"><b>Note: </b> Buyers in all 50 US states and DC are automatically charged sales tax for eBay purchases, and eBay collects and remits this sales tax to the proper taxing authority on the buyer's behalf. Because of this, if a sales tax percentage rate is applied to a listing by a seller in one of these states, this field will be ignored during the checkout process.
+     *  <br><br>
+     *  Currently, sales tax percentage rates can only be specified by sellers in Canada and 5 US territories, including American Samoa (AS), Guam (GU), Northern Mariana Islands (MP), Palau (PW), and Virgin Islands (VI).
      *  </span>
      *
      * @var \Nogrod\eBaySDK\Trading\SalesTaxType $salesTax
@@ -104,9 +100,11 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     private $salesTax = null;
 
     /**
-     * <br>
-     *  <span class="tablenote"><b>Note: </b> This field is deprecated and will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
-     *  </span>
+     * For most applicable calls, returns the words No Error or returns an error message
+     *  related to an attempt to calculate shipping rates. For calculated shipping only.
+     *  <br><br>
+     *  The message text explains that a postal code is needed to calculate
+     *  shipping. Only returned when <b>ItemDetails</b> is set to <code>Fine</code>.
      *
      * @var string $shippingRateErrorMessage
      */
@@ -208,14 +206,14 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  <br/><br/>
      *  In the following calls,
      *  the value for the sale record ID is in the <b>SellingManagerSalesRecordNumber</b> field:
-     *  <b>GetItemTransactions</b>, <b>GetSellerTransactions</b>, <b>GetOrders</b>, <b>GetOrderTransactions</b>.
+     *  <b>GetItemTransactions</b>, <b>GetSellerTransactions</b>, and <b>GetOrders</b>.
      *  <br><br>
-     *  <b>For GetOrders, GetOrderTransactions, and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this field will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, the real record number is only returned to the buyer or seller, and a dummy value of <code>0</code> will be returned to all third parties.
+     *  <b>For GetOrders and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this field will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, the real record number is only returned to the buyer or seller, and a dummy value of <code>0</code> will be returned to all third parties.
      *  <br/><br/>
      *  The sale record ID can be for a single or a multiple line item order.
      *  <br> <br>
      *  <span class="tablenote"><b>Note:</b>
-     *  For the <strong>GetItemTransactions</strong>, <strong>GetOrders</strong>, and <strong>GetOrderTransactions</strong> calls, this field is only returned to the seller of the order; this field is not returned for the buyer or third party.
+     *  For the <strong>GetItemTransactions</strong> and <strong>GetOrders</strong>calls, this field is only returned to the seller of the order; this field is not returned for the buyer or third party.
      *  </span>
      *
      * @var int $sellingManagerSalesRecordNumber
@@ -390,8 +388,7 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     private $promotionalShippingDiscountDetails = null;
 
     /**
-     * <br>
-     *  Use this field in an Add/Revise/Relist call to specify an international country or region, or a special domestic location, such as 'PO Box' (in US) or 'Packstation' (in DE), to where you will not ship the associated item. Repeat this element in the call request for each location that you want to exclude as a shipping destination for your item.
+     * Use this field in an Add/Revise/Relist call to specify an international country or region, or a special domestic location, such as 'PO Box' (in US) or 'Packstation' (in DE), to where you will not ship the associated item. Repeat this element in the call request for each location that you want to exclude as a shipping destination for your item.
      *  <br><br>
      *  The exclude ship-to location values are eBay regions and countries. To see
      *  the valid exclude ship-to locations for a specified site, call <b>GeteBayDetails</b>
@@ -410,6 +407,8 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  <br>
      *  <br>
      *  <span class="tablenote"><b>Note: </b> The <b>ShipToLocations</b> and <b>ShippingDetails.ExcludeShipToLocation</b> containers are not applicable for motor vehicle listings on the US, CA, or UK marketplaces. If these containers are sent in the request, they are ignored and a warning is returned.
+     *  </span>
+     *  <span class="tablenote"><b>Note: </b> Any shipping exclusions specified by this field can be overridden by the eBay International Shipping exclusions toggle located under <b>Shipping Preferences</b> in <b>My eBay</b>. For more information on eBay International Shipping, see <a href="https://www.ebay.com/help/selling/shipping-items/setting-shipping-options/ebay-international-shipping-program?id=5348">eBay International Shipping program</a>.
      *  </span>
      *  <br>
      *  You can specify a default set of locations to where you will not ship in My
@@ -557,11 +556,13 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Gets as globalShipping
      *
      * <span class="tablenote"><strong>Note:</strong>
-     *  On the US marketplace, the <b>Global Shipping Program</b> is scheduled to be replaced by a new intermediated international shipping program called <b>eBay International Shipping</b>. US Sellers opted in to the <b>Global Shipping Program</b> will automatically get opted into <b>eBay International Shipping</b> once it becomes available to them. All US sellers will be migrated by March 31, 2023. <b>eBay International Shipping</b> is an account level setting, and no field will need to be set in a add/revise call to enable this setting. As long as the US seller's account is opted in to <b>eBay International Shipping</b>, this shipping option will be automatically enabled for all listings where international shipping is available. Even if the US seller is opted into <b>eBay International Shipping</b>, that same seller can still also specify individual international shipping service options through the ShippingDetails.InternationalShippingServiceOption container.
+     *  The <b>Global Shipping Program</b> (GSP) is only available on the UK marketplace. On the US marketplace, the <b>Global Shipping Program</b> was replaced by the intermediated international shipping program called <b>eBay International Shipping</b>.
+     *  <br><br>
+     *  <b>eBay International Shipping</b> is an account level setting, and no field will need to be set in a add/revise call to enable this setting. As long as the US seller's account is opted in to <b>eBay International Shipping</b>, this shipping option will be automatically enabled for all listings where international shipping is available. Even if the US seller is opted into <b>eBay International Shipping</b>, that same seller can still also specify individual international shipping service options through the ShippingDetails.InternationalShippingServiceOption container.
      *  </span>
      *  In an Add/Revise/Relist call, this boolean field can be included and set to <code>True</code> if the seller would like to use eBay's Global Shipping Program for orders that are shipped internationally.
      *  <br/><br/>
-     *  In 'Get' calls, if this field is returned as <code>True</code>, it indicates that international shipping through the Global Shipping Program is available for the listing. If this field is returned as <code>Falsee</code>, the seller is responsible for shipping the item internationally using one of the specified international shipping service options set for the listing.
+     *  In 'Get' calls, if this field is returned as <code>True</code>, it indicates that international shipping through the Global Shipping Program is available for the listing. If this field is returned as <code>False</code>, the seller is responsible for shipping the item internationally using one of the specified international shipping service options set for the listing.
      *  <br/><br/>
      *  When calling <strong>RelistFixedPriceItem</strong>, <strong>RelistItem</strong>, <strong>ReviseFixedPriceItem</strong> or <strong>ReviseItem</strong>, you can omit this field if its value doesn't need to change.
      *  <br/><br/>
@@ -577,11 +578,13 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Sets a new globalShipping
      *
      * <span class="tablenote"><strong>Note:</strong>
-     *  On the US marketplace, the <b>Global Shipping Program</b> is scheduled to be replaced by a new intermediated international shipping program called <b>eBay International Shipping</b>. US Sellers opted in to the <b>Global Shipping Program</b> will automatically get opted into <b>eBay International Shipping</b> once it becomes available to them. All US sellers will be migrated by March 31, 2023. <b>eBay International Shipping</b> is an account level setting, and no field will need to be set in a add/revise call to enable this setting. As long as the US seller's account is opted in to <b>eBay International Shipping</b>, this shipping option will be automatically enabled for all listings where international shipping is available. Even if the US seller is opted into <b>eBay International Shipping</b>, that same seller can still also specify individual international shipping service options through the ShippingDetails.InternationalShippingServiceOption container.
+     *  The <b>Global Shipping Program</b> (GSP) is only available on the UK marketplace. On the US marketplace, the <b>Global Shipping Program</b> was replaced by the intermediated international shipping program called <b>eBay International Shipping</b>.
+     *  <br><br>
+     *  <b>eBay International Shipping</b> is an account level setting, and no field will need to be set in a add/revise call to enable this setting. As long as the US seller's account is opted in to <b>eBay International Shipping</b>, this shipping option will be automatically enabled for all listings where international shipping is available. Even if the US seller is opted into <b>eBay International Shipping</b>, that same seller can still also specify individual international shipping service options through the ShippingDetails.InternationalShippingServiceOption container.
      *  </span>
      *  In an Add/Revise/Relist call, this boolean field can be included and set to <code>True</code> if the seller would like to use eBay's Global Shipping Program for orders that are shipped internationally.
      *  <br/><br/>
-     *  In 'Get' calls, if this field is returned as <code>True</code>, it indicates that international shipping through the Global Shipping Program is available for the listing. If this field is returned as <code>Falsee</code>, the seller is responsible for shipping the item internationally using one of the specified international shipping service options set for the listing.
+     *  In 'Get' calls, if this field is returned as <code>True</code>, it indicates that international shipping through the Global Shipping Program is available for the listing. If this field is returned as <code>False</code>, the seller is responsible for shipping the item internationally using one of the specified international shipping service options set for the listing.
      *  <br/><br/>
      *  When calling <strong>RelistFixedPriceItem</strong>, <strong>RelistItem</strong>, <strong>ReviseFixedPriceItem</strong> or <strong>ReviseItem</strong>, you can omit this field if its value doesn't need to change.
      *  <br/><br/>
@@ -607,7 +610,7 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  shipping calculator</a>.
      *  <br><br>
      *  <span class="tablenote"><strong>Note:</strong>
-     *  The <strong>CalculatedShippingRate</strong> container should only be used to specify values for the <strong>InternationalPackagingHandlingCosts</strong>, <strong>OriginatingPostalCode</strong>, and/or <strong>PackagingHandlingCosts</strong> fields. The rest of the fields in the <strong>CalculatedShippingRate</strong> container are used to specify package dimensions and package weight, and these values should now be specified in the <strong>ShippingPackageDetails</strong> container instead.
+     *  The <strong>CalculatedShippingRate</strong> container should only be used to specify values for the <strong>InternationalPackagingHandlingCosts</strong> and/or <strong>PackagingHandlingCosts</strong> fields. The rest of the fields in the <strong>CalculatedShippingRate</strong> container are used to specify package dimensions and package weight, and these values should now be specified in the <strong>ShippingPackageDetails</strong> container instead.
      *  </span>
      *
      * @return \Nogrod\eBaySDK\Trading\CalculatedShippingRateType
@@ -629,7 +632,7 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  shipping calculator</a>.
      *  <br><br>
      *  <span class="tablenote"><strong>Note:</strong>
-     *  The <strong>CalculatedShippingRate</strong> container should only be used to specify values for the <strong>InternationalPackagingHandlingCosts</strong>, <strong>OriginatingPostalCode</strong>, and/or <strong>PackagingHandlingCosts</strong> fields. The rest of the fields in the <strong>CalculatedShippingRate</strong> container are used to specify package dimensions and package weight, and these values should now be specified in the <strong>ShippingPackageDetails</strong> container instead.
+     *  The <strong>CalculatedShippingRate</strong> container should only be used to specify values for the <strong>InternationalPackagingHandlingCosts</strong> and/or <strong>PackagingHandlingCosts</strong> fields. The rest of the fields in the <strong>CalculatedShippingRate</strong> container are used to specify package dimensions and package weight, and these values should now be specified in the <strong>ShippingPackageDetails</strong> container instead.
      *  </span>
      *
      * @param \Nogrod\eBaySDK\Trading\CalculatedShippingRateType $calculatedShippingRate
@@ -702,34 +705,6 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     }
 
     /**
-     * Gets as paymentInstructions
-     *
-     * This free-form string field gives sellers the ability to add detailed payment instructions to their listings.
-     *  <br>
-     *
-     * @return string
-     */
-    public function getPaymentInstructions()
-    {
-        return $this->paymentInstructions;
-    }
-
-    /**
-     * Sets a new paymentInstructions
-     *
-     * This free-form string field gives sellers the ability to add detailed payment instructions to their listings.
-     *  <br>
-     *
-     * @param string $paymentInstructions
-     * @return self
-     */
-    public function setPaymentInstructions($paymentInstructions)
-    {
-        $this->paymentInstructions = $paymentInstructions;
-        return $this;
-    }
-
-    /**
      * Gets as salesTax
      *
      * This container shows sales tax information for an item in a specific tax jurisdiction. The concept of 'sales tax' is only applicable to eBay US and Canada (English and French) sites.
@@ -738,7 +713,9 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  <br><br>
      *  This container is only returned in order management 'Get' calls if sales tax is applicable to the order line item. For eBay Collect and Remit states, the sales tax information is displayed in the <b>Transaction.Taxes</b> container instead.
      *  <br><br>
-     *  <span class="tablenote"><b>Note: </b> As of November 2021, buyers in all US states except for Missouri (and several US territories), will automatically be charged sales tax for purchases, and the seller does not set this rate. eBay will collect and remit this sales tax to the proper taxing authority on the buyer's behalf. For more US state-level information on sales tax, see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section4">eBay sales tax collection</a> help topic.
+     *  <span class="tablenote"><b>Note: </b> Buyers in all 50 US states and DC are automatically charged sales tax for eBay purchases, and eBay collects and remits this sales tax to the proper taxing authority on the buyer's behalf. Because of this, if a sales tax percentage rate is applied to a listing by a seller in one of these states, this field will be ignored during the checkout process.
+     *  <br><br>
+     *  Currently, sales tax percentage rates can only be specified by sellers in Canada and 5 US territories, including American Samoa (AS), Guam (GU), Northern Mariana Islands (MP), Palau (PW), and Virgin Islands (VI).
      *  </span>
      *
      * @return \Nogrod\eBaySDK\Trading\SalesTaxType
@@ -757,7 +734,9 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  <br><br>
      *  This container is only returned in order management 'Get' calls if sales tax is applicable to the order line item. For eBay Collect and Remit states, the sales tax information is displayed in the <b>Transaction.Taxes</b> container instead.
      *  <br><br>
-     *  <span class="tablenote"><b>Note: </b> As of November 2021, buyers in all US states except for Missouri (and several US territories), will automatically be charged sales tax for purchases, and the seller does not set this rate. eBay will collect and remit this sales tax to the proper taxing authority on the buyer's behalf. For more US state-level information on sales tax, see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section4">eBay sales tax collection</a> help topic.
+     *  <span class="tablenote"><b>Note: </b> Buyers in all 50 US states and DC are automatically charged sales tax for eBay purchases, and eBay collects and remits this sales tax to the proper taxing authority on the buyer's behalf. Because of this, if a sales tax percentage rate is applied to a listing by a seller in one of these states, this field will be ignored during the checkout process.
+     *  <br><br>
+     *  Currently, sales tax percentage rates can only be specified by sellers in Canada and 5 US territories, including American Samoa (AS), Guam (GU), Northern Mariana Islands (MP), Palau (PW), and Virgin Islands (VI).
      *  </span>
      *
      * @param \Nogrod\eBaySDK\Trading\SalesTaxType $salesTax
@@ -772,9 +751,11 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     /**
      * Gets as shippingRateErrorMessage
      *
-     * <br>
-     *  <span class="tablenote"><b>Note: </b> This field is deprecated and will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
-     *  </span>
+     * For most applicable calls, returns the words No Error or returns an error message
+     *  related to an attempt to calculate shipping rates. For calculated shipping only.
+     *  <br><br>
+     *  The message text explains that a postal code is needed to calculate
+     *  shipping. Only returned when <b>ItemDetails</b> is set to <code>Fine</code>.
      *
      * @return string
      */
@@ -786,9 +767,11 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     /**
      * Sets a new shippingRateErrorMessage
      *
-     * <br>
-     *  <span class="tablenote"><b>Note: </b> This field is deprecated and will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
-     *  </span>
+     * For most applicable calls, returns the words No Error or returns an error message
+     *  related to an attempt to calculate shipping rates. For calculated shipping only.
+     *  <br><br>
+     *  The message text explains that a postal code is needed to calculate
+     *  shipping. Only returned when <b>ItemDetails</b> is set to <code>Fine</code>.
      *
      * @param string $shippingRateErrorMessage
      * @return self
@@ -1236,14 +1219,14 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  <br/><br/>
      *  In the following calls,
      *  the value for the sale record ID is in the <b>SellingManagerSalesRecordNumber</b> field:
-     *  <b>GetItemTransactions</b>, <b>GetSellerTransactions</b>, <b>GetOrders</b>, <b>GetOrderTransactions</b>.
+     *  <b>GetItemTransactions</b>, <b>GetSellerTransactions</b>, and <b>GetOrders</b>.
      *  <br><br>
-     *  <b>For GetOrders, GetOrderTransactions, and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this field will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, the real record number is only returned to the buyer or seller, and a dummy value of <code>0</code> will be returned to all third parties.
+     *  <b>For GetOrders and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this field will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, the real record number is only returned to the buyer or seller, and a dummy value of <code>0</code> will be returned to all third parties.
      *  <br/><br/>
      *  The sale record ID can be for a single or a multiple line item order.
      *  <br> <br>
      *  <span class="tablenote"><b>Note:</b>
-     *  For the <strong>GetItemTransactions</strong>, <strong>GetOrders</strong>, and <strong>GetOrderTransactions</strong> calls, this field is only returned to the seller of the order; this field is not returned for the buyer or third party.
+     *  For the <strong>GetItemTransactions</strong> and <strong>GetOrders</strong>calls, this field is only returned to the seller of the order; this field is not returned for the buyer or third party.
      *  </span>
      *
      * @return int
@@ -1264,14 +1247,14 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  <br/><br/>
      *  In the following calls,
      *  the value for the sale record ID is in the <b>SellingManagerSalesRecordNumber</b> field:
-     *  <b>GetItemTransactions</b>, <b>GetSellerTransactions</b>, <b>GetOrders</b>, <b>GetOrderTransactions</b>.
+     *  <b>GetItemTransactions</b>, <b>GetSellerTransactions</b>, and <b>GetOrders</b>.
      *  <br><br>
-     *  <b>For GetOrders, GetOrderTransactions, and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this field will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, the real record number is only returned to the buyer or seller, and a dummy value of <code>0</code> will be returned to all third parties.
+     *  <b>For GetOrders and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this field will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, the real record number is only returned to the buyer or seller, and a dummy value of <code>0</code> will be returned to all third parties.
      *  <br/><br/>
      *  The sale record ID can be for a single or a multiple line item order.
      *  <br> <br>
      *  <span class="tablenote"><b>Note:</b>
-     *  For the <strong>GetItemTransactions</strong>, <strong>GetOrders</strong>, and <strong>GetOrderTransactions</strong> calls, this field is only returned to the seller of the order; this field is not returned for the buyer or third party.
+     *  For the <strong>GetItemTransactions</strong> and <strong>GetOrders</strong>calls, this field is only returned to the seller of the order; this field is not returned for the buyer or third party.
      *  </span>
      *
      * @param int $sellingManagerSalesRecordNumber
@@ -1855,8 +1838,7 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     /**
      * Adds as excludeShipToLocation
      *
-     * <br>
-     *  Use this field in an Add/Revise/Relist call to specify an international country or region, or a special domestic location, such as 'PO Box' (in US) or 'Packstation' (in DE), to where you will not ship the associated item. Repeat this element in the call request for each location that you want to exclude as a shipping destination for your item.
+     * Use this field in an Add/Revise/Relist call to specify an international country or region, or a special domestic location, such as 'PO Box' (in US) or 'Packstation' (in DE), to where you will not ship the associated item. Repeat this element in the call request for each location that you want to exclude as a shipping destination for your item.
      *  <br><br>
      *  The exclude ship-to location values are eBay regions and countries. To see
      *  the valid exclude ship-to locations for a specified site, call <b>GeteBayDetails</b>
@@ -1875,6 +1857,8 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  <br>
      *  <br>
      *  <span class="tablenote"><b>Note: </b> The <b>ShipToLocations</b> and <b>ShippingDetails.ExcludeShipToLocation</b> containers are not applicable for motor vehicle listings on the US, CA, or UK marketplaces. If these containers are sent in the request, they are ignored and a warning is returned.
+     *  </span>
+     *  <span class="tablenote"><b>Note: </b> Any shipping exclusions specified by this field can be overridden by the eBay International Shipping exclusions toggle located under <b>Shipping Preferences</b> in <b>My eBay</b>. For more information on eBay International Shipping, see <a href="https://www.ebay.com/help/selling/shipping-items/setting-shipping-options/ebay-international-shipping-program?id=5348">eBay International Shipping program</a>.
      *  </span>
      *  <br>
      *  You can specify a default set of locations to where you will not ship in My
@@ -1904,8 +1888,7 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     /**
      * isset excludeShipToLocation
      *
-     * <br>
-     *  Use this field in an Add/Revise/Relist call to specify an international country or region, or a special domestic location, such as 'PO Box' (in US) or 'Packstation' (in DE), to where you will not ship the associated item. Repeat this element in the call request for each location that you want to exclude as a shipping destination for your item.
+     * Use this field in an Add/Revise/Relist call to specify an international country or region, or a special domestic location, such as 'PO Box' (in US) or 'Packstation' (in DE), to where you will not ship the associated item. Repeat this element in the call request for each location that you want to exclude as a shipping destination for your item.
      *  <br><br>
      *  The exclude ship-to location values are eBay regions and countries. To see
      *  the valid exclude ship-to locations for a specified site, call <b>GeteBayDetails</b>
@@ -1924,6 +1907,8 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  <br>
      *  <br>
      *  <span class="tablenote"><b>Note: </b> The <b>ShipToLocations</b> and <b>ShippingDetails.ExcludeShipToLocation</b> containers are not applicable for motor vehicle listings on the US, CA, or UK marketplaces. If these containers are sent in the request, they are ignored and a warning is returned.
+     *  </span>
+     *  <span class="tablenote"><b>Note: </b> Any shipping exclusions specified by this field can be overridden by the eBay International Shipping exclusions toggle located under <b>Shipping Preferences</b> in <b>My eBay</b>. For more information on eBay International Shipping, see <a href="https://www.ebay.com/help/selling/shipping-items/setting-shipping-options/ebay-international-shipping-program?id=5348">eBay International Shipping program</a>.
      *  </span>
      *  <br>
      *  You can specify a default set of locations to where you will not ship in My
@@ -1952,8 +1937,7 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     /**
      * unset excludeShipToLocation
      *
-     * <br>
-     *  Use this field in an Add/Revise/Relist call to specify an international country or region, or a special domestic location, such as 'PO Box' (in US) or 'Packstation' (in DE), to where you will not ship the associated item. Repeat this element in the call request for each location that you want to exclude as a shipping destination for your item.
+     * Use this field in an Add/Revise/Relist call to specify an international country or region, or a special domestic location, such as 'PO Box' (in US) or 'Packstation' (in DE), to where you will not ship the associated item. Repeat this element in the call request for each location that you want to exclude as a shipping destination for your item.
      *  <br><br>
      *  The exclude ship-to location values are eBay regions and countries. To see
      *  the valid exclude ship-to locations for a specified site, call <b>GeteBayDetails</b>
@@ -1972,6 +1956,8 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  <br>
      *  <br>
      *  <span class="tablenote"><b>Note: </b> The <b>ShipToLocations</b> and <b>ShippingDetails.ExcludeShipToLocation</b> containers are not applicable for motor vehicle listings on the US, CA, or UK marketplaces. If these containers are sent in the request, they are ignored and a warning is returned.
+     *  </span>
+     *  <span class="tablenote"><b>Note: </b> Any shipping exclusions specified by this field can be overridden by the eBay International Shipping exclusions toggle located under <b>Shipping Preferences</b> in <b>My eBay</b>. For more information on eBay International Shipping, see <a href="https://www.ebay.com/help/selling/shipping-items/setting-shipping-options/ebay-international-shipping-program?id=5348">eBay International Shipping program</a>.
      *  </span>
      *  <br>
      *  You can specify a default set of locations to where you will not ship in My
@@ -2000,8 +1986,7 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     /**
      * Gets as excludeShipToLocation
      *
-     * <br>
-     *  Use this field in an Add/Revise/Relist call to specify an international country or region, or a special domestic location, such as 'PO Box' (in US) or 'Packstation' (in DE), to where you will not ship the associated item. Repeat this element in the call request for each location that you want to exclude as a shipping destination for your item.
+     * Use this field in an Add/Revise/Relist call to specify an international country or region, or a special domestic location, such as 'PO Box' (in US) or 'Packstation' (in DE), to where you will not ship the associated item. Repeat this element in the call request for each location that you want to exclude as a shipping destination for your item.
      *  <br><br>
      *  The exclude ship-to location values are eBay regions and countries. To see
      *  the valid exclude ship-to locations for a specified site, call <b>GeteBayDetails</b>
@@ -2020,6 +2005,8 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  <br>
      *  <br>
      *  <span class="tablenote"><b>Note: </b> The <b>ShipToLocations</b> and <b>ShippingDetails.ExcludeShipToLocation</b> containers are not applicable for motor vehicle listings on the US, CA, or UK marketplaces. If these containers are sent in the request, they are ignored and a warning is returned.
+     *  </span>
+     *  <span class="tablenote"><b>Note: </b> Any shipping exclusions specified by this field can be overridden by the eBay International Shipping exclusions toggle located under <b>Shipping Preferences</b> in <b>My eBay</b>. For more information on eBay International Shipping, see <a href="https://www.ebay.com/help/selling/shipping-items/setting-shipping-options/ebay-international-shipping-program?id=5348">eBay International Shipping program</a>.
      *  </span>
      *  <br>
      *  You can specify a default set of locations to where you will not ship in My
@@ -2047,8 +2034,7 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     /**
      * Sets a new excludeShipToLocation
      *
-     * <br>
-     *  Use this field in an Add/Revise/Relist call to specify an international country or region, or a special domestic location, such as 'PO Box' (in US) or 'Packstation' (in DE), to where you will not ship the associated item. Repeat this element in the call request for each location that you want to exclude as a shipping destination for your item.
+     * Use this field in an Add/Revise/Relist call to specify an international country or region, or a special domestic location, such as 'PO Box' (in US) or 'Packstation' (in DE), to where you will not ship the associated item. Repeat this element in the call request for each location that you want to exclude as a shipping destination for your item.
      *  <br><br>
      *  The exclude ship-to location values are eBay regions and countries. To see
      *  the valid exclude ship-to locations for a specified site, call <b>GeteBayDetails</b>
@@ -2067,6 +2053,8 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  <br>
      *  <br>
      *  <span class="tablenote"><b>Note: </b> The <b>ShipToLocations</b> and <b>ShippingDetails.ExcludeShipToLocation</b> containers are not applicable for motor vehicle listings on the US, CA, or UK marketplaces. If these containers are sent in the request, they are ignored and a warning is returned.
+     *  </span>
+     *  <span class="tablenote"><b>Note: </b> Any shipping exclusions specified by this field can be overridden by the eBay International Shipping exclusions toggle located under <b>Shipping Preferences</b> in <b>My eBay</b>. For more information on eBay International Shipping, see <a href="https://www.ebay.com/help/selling/shipping-items/setting-shipping-options/ebay-international-shipping-program?id=5348">eBay International Shipping program</a>.
      *  </span>
      *  <br>
      *  You can specify a default set of locations to where you will not ship in My
@@ -2393,10 +2381,6 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PaymentEdited", $value);
         }
-        $value = $this->getPaymentInstructions();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PaymentInstructions", $value);
-        }
         $value = $this->getSalesTax();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SalesTax", $value);
@@ -2545,10 +2529,6 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaymentEdited');
         if (null !== $value) {
             $this->setPaymentEdited($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaymentInstructions');
-        if (null !== $value) {
-            $this->setPaymentInstructions($value);
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SalesTax');
         if (null !== $value) {

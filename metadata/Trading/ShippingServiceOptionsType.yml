@@ -5,17 +5,6 @@ Nogrod\eBaySDK\Trading\ShippingServiceOptionsType:
             serialized_name: xmlns
             xml_attribute: true
     properties:
-        shippingInsuranceCost:
-            expose: true
-            access_type: public_method
-            serialized_name: ShippingInsuranceCost
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getShippingInsuranceCost
-                setter: setShippingInsuranceCost
-            type: Nogrod\eBaySDK\Trading\AmountType
         shippingService:
             expose: true
             access_type: public_method

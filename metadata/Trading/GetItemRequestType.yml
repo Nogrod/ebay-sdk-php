@@ -27,17 +27,6 @@ Nogrod\eBaySDK\Trading\GetItemRequestType:
                 getter: getIncludeWatchCount
                 setter: setIncludeWatchCount
             type: bool
-        includeCrossPromotion:
-            expose: true
-            access_type: public_method
-            serialized_name: IncludeCrossPromotion
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getIncludeCrossPromotion
-                setter: setIncludeCrossPromotion
-            type: bool
         includeItemSpecifics:
             expose: true
             access_type: public_method

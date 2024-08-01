@@ -29,7 +29,7 @@ class GetNotificationsUsageRequestType extends AbstractRequestType
     private $endTime = null;
 
     /**
-     * Specifies an item ID for which detailed notification information will be retrieved. <b>ItemID</b> is optional. If no <b>ItemID</b> is specified, the response will not include any individual notification details.
+     * Specifies an item ID for which detailed notification information will be retrieved.
      *
      * @var string $itemID
      */
@@ -90,7 +90,7 @@ class GetNotificationsUsageRequestType extends AbstractRequestType
     /**
      * Gets as itemID
      *
-     * Specifies an item ID for which detailed notification information will be retrieved. <b>ItemID</b> is optional. If no <b>ItemID</b> is specified, the response will not include any individual notification details.
+     * Specifies an item ID for which detailed notification information will be retrieved.
      *
      * @return string
      */
@@ -102,7 +102,7 @@ class GetNotificationsUsageRequestType extends AbstractRequestType
     /**
      * Sets a new itemID
      *
-     * Specifies an item ID for which detailed notification information will be retrieved. <b>ItemID</b> is optional. If no <b>ItemID</b> is specified, the response will not include any individual notification details.
+     * Specifies an item ID for which detailed notification information will be retrieved.
      *
      * @param string $itemID
      * @return self

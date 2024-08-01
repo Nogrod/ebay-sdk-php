@@ -49,13 +49,6 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     private $bestOfferEnabled = null;
 
     /**
-     * This field is deprecated.
-     *
-     * @var bool $dutchBINEnabled
-     */
-    private $dutchBINEnabled = null;
-
-    /**
      * Indicates whether a bidder must consent to the bid by confirming that
      *  he or she read and agrees to the terms in eBay's privacy policy.
      *  <br/><br/>
@@ -77,38 +70,11 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     private $homePageFeaturedEnabled = null;
 
     /**
-     * Indicates whether the category supports the Pro Pack Bundle listing upgrade.
-     *  <br/><br/>
-     *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ProPack</code>.
+     * This field is deprecated.
      *
      * @var bool $proPackEnabled
      */
     private $proPackEnabled = null;
-
-    /**
-     * This field is deprecated.
-     *
-     * @var bool $basicUpgradePackEnabled
-     */
-    private $basicUpgradePackEnabled = null;
-
-    /**
-     * Indicates whether the category supports the Value Pack bundle listing upgrade.
-     *  <br/><br/>
-     *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ValuePack</code>.
-     *
-     * @var bool $valuePackEnabled
-     */
-    private $valuePackEnabled = null;
-
-    /**
-     * Indicates whether the category supports the Pro Pack Plus bundle listing upgrade.
-     *  <br/><br/>
-     *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ProPackPlus</code>.
-     *
-     * @var bool $proPackPlusEnabled
-     */
-    private $proPackPlusEnabled = null;
 
     /**
      * Indicates whether the category supports Classified Ad listings.
@@ -174,27 +140,6 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     private $localMarketNonSubscription = null;
 
     /**
-     * This field is deprecated.
-     *
-     * @var bool $expressEnabled
-     */
-    private $expressEnabled = null;
-
-    /**
-     * This field is deprecated.
-     *
-     * @var bool $expressPicturesRequired
-     */
-    private $expressPicturesRequired = null;
-
-    /**
-     * This field is deprecated.
-     *
-     * @var bool $expressConditionRequired
-     */
-    private $expressConditionRequired = null;
-
-    /**
      * Indicates the Minimum Reserve Price for an auction listing in this category. If there is no Minimum Reserve Price, a value of <code>0.0</code> is returned in this field.
      *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>MinimumReservePrice</code>.
@@ -220,27 +165,6 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * @var bool $transactionConfirmationRequestEnabled
      */
     private $transactionConfirmationRequestEnabled = null;
-
-    /**
-     * This field is deprecated.
-     *
-     * @var bool $storeInventoryEnabled
-     */
-    private $storeInventoryEnabled = null;
-
-    /**
-     * This field is deprecated.
-     *
-     * @var bool $skypeMeTransactionalEnabled
-     */
-    private $skypeMeTransactionalEnabled = null;
-
-    /**
-     * This field is deprecated.
-     *
-     * @var bool $skypeMeNonTransactionalEnabled
-     */
-    private $skypeMeNonTransactionalEnabled = null;
 
     /**
      * Indicates whether the payment method should be displayed to the user for
@@ -397,25 +321,11 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     private $crossBorderTradeAustraliaEnabled = null;
 
     /**
-     * This field is no longer applicable.
-     *
-     * @var bool $payPalBuyerProtectionEnabled
-     */
-    private $payPalBuyerProtectionEnabled = null;
-
-    /**
      * If this field is returned as <code>true</code>, the category supports the Best Price Guarantee feature on the Australia site. This field/feature is only applicable to Australia.
      *
      * @var bool $buyerGuaranteeEnabled
      */
     private $buyerGuaranteeEnabled = null;
-
-    /**
-     * This field is deprecated.
-     *
-     * @var bool $combinedFixedPriceTreatmentEnabled
-     */
-    private $combinedFixedPriceTreatmentEnabled = null;
 
     /**
      * This field is returned if the Featured Gallery feature is supported for the category. The time unit that is returned in this field indicates how long a gallery will be featured on eBay.
@@ -425,13 +335,6 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * @var string[] $galleryFeaturedDurations
      */
     private $galleryFeaturedDurations = null;
-
-    /**
-     * This field is no longer applicable.
-     *
-     * @var bool $payPalRequired
-     */
-    private $payPalRequired = null;
 
     /**
      * Specifies whether this category allows Classified Ad listings on eBay Motors. This element is applicable for eBay Motors Pro users.
@@ -766,13 +669,6 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     private $iNEscrowWorkflowTimeline = null;
 
     /**
-     * This field is deprecated.
-     *
-     * @var bool $payPalRequiredForStoreOwner
-     */
-    private $payPalRequiredForStoreOwner = null;
-
-    /**
      * Indicates if the category allows the seller to revise the quantity of a multi-quantity, active listing.
      *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ReviseQuantityAllowed</code>.
@@ -911,13 +807,6 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     private $variationsEnabled = null;
 
     /**
-     * This field is deprecated.
-     *
-     * @var string $attributeConversionEnabled
-     */
-    private $attributeConversionEnabled = null;
-
-    /**
      * Indicates whether the category supports free, automatic upgrades for Gallery Plus, which enhances pictures in search results.
      *  <br/><br/>
      *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>FreeGalleryPlusEnabled</code>.
@@ -1042,9 +931,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     private $valueCategory = null;
 
     /**
-     * Indicates whether a category supports the creation of a listing using an eBay Catalog product. To create a listing based on an eBay Catalog product, the seller passed in Global Trade Item Number (GTIN) or eBay Product ID (ePID) value in an Add/Revise/Relist call and then eBay tries to match the product identifier to a product in the eBay Catalog. If a match is found, the listing picks up the details of the eBay Catalog product, including product title, product description, product aspects, primary eBay listing category ID, and links to any product stock photos.
-     *  <br/><br/>
-     *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ProductCreationEnabled</code>.
+     * This value is <b>deprecated</b>.
      *
      * @var string $productCreationEnabled
      */
@@ -1106,13 +993,6 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * @var string $compatibleVehicleType
      */
     private $compatibleVehicleType = null;
-
-    /**
-     * This field is deprecated.
-     *
-     * @var string $paymentOptionsGroup
-     */
-    private $paymentOptionsGroup = null;
 
     /**
      * Indicates the Business Policies category group that may be used for Shipping profiles.
@@ -1243,13 +1123,6 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * @var bool $kTypeSupported
      */
     private $kTypeSupported = null;
-
-    /**
-     * This field is no longer applicable, and if it is returned for a category, it can be ignored.
-     *
-     * @var string $productRequiredEnabled
-     */
-    private $productRequiredEnabled = null;
 
     /**
      * The values returned in this field indicate whether or not the seller accepts domestic returns for items listed in the associated marketplace and category. <br><br>While most categories return the <b>ReturnsAccepted</b> flag (indicating the category supports returns), some categories will also return the <b>ReturnsNotAccepted</b> flag to indicate the seller can choose to not accept returns for an item listed in that category. <br><br>The values returned in this field are pertinent only if <b>ReturnPolicyEnabled</b> in GetCategoryFeatures is set to <code>true</code> for the associated category, which indicates that items listed in the category must include a return policy. Here, it's worth noting that not accepting returns is a return policy. The values returned in this field are valid in AddItem and its related family of calls, and in the return policies you configure for use with the Account API.
@@ -1493,32 +1366,6 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     }
 
     /**
-     * Gets as dutchBINEnabled
-     *
-     * This field is deprecated.
-     *
-     * @return bool
-     */
-    public function getDutchBINEnabled()
-    {
-        return $this->dutchBINEnabled;
-    }
-
-    /**
-     * Sets a new dutchBINEnabled
-     *
-     * This field is deprecated.
-     *
-     * @param bool $dutchBINEnabled
-     * @return self
-     */
-    public function setDutchBINEnabled($dutchBINEnabled)
-    {
-        $this->dutchBINEnabled = $dutchBINEnabled;
-        return $this;
-    }
-
-    /**
      * Gets as userConsentRequired
      *
      * Indicates whether a bidder must consent to the bid by confirming that
@@ -1587,9 +1434,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     /**
      * Gets as proPackEnabled
      *
-     * Indicates whether the category supports the Pro Pack Bundle listing upgrade.
-     *  <br/><br/>
-     *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ProPack</code>.
+     * This field is deprecated.
      *
      * @return bool
      */
@@ -1601,9 +1446,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     /**
      * Sets a new proPackEnabled
      *
-     * Indicates whether the category supports the Pro Pack Bundle listing upgrade.
-     *  <br/><br/>
-     *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ProPack</code>.
+     * This field is deprecated.
      *
      * @param bool $proPackEnabled
      * @return self
@@ -1611,92 +1454,6 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     public function setProPackEnabled($proPackEnabled)
     {
         $this->proPackEnabled = $proPackEnabled;
-        return $this;
-    }
-
-    /**
-     * Gets as basicUpgradePackEnabled
-     *
-     * This field is deprecated.
-     *
-     * @return bool
-     */
-    public function getBasicUpgradePackEnabled()
-    {
-        return $this->basicUpgradePackEnabled;
-    }
-
-    /**
-     * Sets a new basicUpgradePackEnabled
-     *
-     * This field is deprecated.
-     *
-     * @param bool $basicUpgradePackEnabled
-     * @return self
-     */
-    public function setBasicUpgradePackEnabled($basicUpgradePackEnabled)
-    {
-        $this->basicUpgradePackEnabled = $basicUpgradePackEnabled;
-        return $this;
-    }
-
-    /**
-     * Gets as valuePackEnabled
-     *
-     * Indicates whether the category supports the Value Pack bundle listing upgrade.
-     *  <br/><br/>
-     *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ValuePack</code>.
-     *
-     * @return bool
-     */
-    public function getValuePackEnabled()
-    {
-        return $this->valuePackEnabled;
-    }
-
-    /**
-     * Sets a new valuePackEnabled
-     *
-     * Indicates whether the category supports the Value Pack bundle listing upgrade.
-     *  <br/><br/>
-     *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ValuePack</code>.
-     *
-     * @param bool $valuePackEnabled
-     * @return self
-     */
-    public function setValuePackEnabled($valuePackEnabled)
-    {
-        $this->valuePackEnabled = $valuePackEnabled;
-        return $this;
-    }
-
-    /**
-     * Gets as proPackPlusEnabled
-     *
-     * Indicates whether the category supports the Pro Pack Plus bundle listing upgrade.
-     *  <br/><br/>
-     *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ProPackPlus</code>.
-     *
-     * @return bool
-     */
-    public function getProPackPlusEnabled()
-    {
-        return $this->proPackPlusEnabled;
-    }
-
-    /**
-     * Sets a new proPackPlusEnabled
-     *
-     * Indicates whether the category supports the Pro Pack Plus bundle listing upgrade.
-     *  <br/><br/>
-     *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ProPackPlus</code>.
-     *
-     * @param bool $proPackPlusEnabled
-     * @return self
-     */
-    public function setProPackPlusEnabled($proPackPlusEnabled)
-    {
-        $this->proPackPlusEnabled = $proPackPlusEnabled;
         return $this;
     }
 
@@ -1911,84 +1668,6 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     }
 
     /**
-     * Gets as expressEnabled
-     *
-     * This field is deprecated.
-     *
-     * @return bool
-     */
-    public function getExpressEnabled()
-    {
-        return $this->expressEnabled;
-    }
-
-    /**
-     * Sets a new expressEnabled
-     *
-     * This field is deprecated.
-     *
-     * @param bool $expressEnabled
-     * @return self
-     */
-    public function setExpressEnabled($expressEnabled)
-    {
-        $this->expressEnabled = $expressEnabled;
-        return $this;
-    }
-
-    /**
-     * Gets as expressPicturesRequired
-     *
-     * This field is deprecated.
-     *
-     * @return bool
-     */
-    public function getExpressPicturesRequired()
-    {
-        return $this->expressPicturesRequired;
-    }
-
-    /**
-     * Sets a new expressPicturesRequired
-     *
-     * This field is deprecated.
-     *
-     * @param bool $expressPicturesRequired
-     * @return self
-     */
-    public function setExpressPicturesRequired($expressPicturesRequired)
-    {
-        $this->expressPicturesRequired = $expressPicturesRequired;
-        return $this;
-    }
-
-    /**
-     * Gets as expressConditionRequired
-     *
-     * This field is deprecated.
-     *
-     * @return bool
-     */
-    public function getExpressConditionRequired()
-    {
-        return $this->expressConditionRequired;
-    }
-
-    /**
-     * Sets a new expressConditionRequired
-     *
-     * This field is deprecated.
-     *
-     * @param bool $expressConditionRequired
-     * @return self
-     */
-    public function setExpressConditionRequired($expressConditionRequired)
-    {
-        $this->expressConditionRequired = $expressConditionRequired;
-        return $this;
-    }
-
-    /**
      * Gets as minimumReservePrice
      *
      * Indicates the Minimum Reserve Price for an auction listing in this category. If there is no Minimum Reserve Price, a value of <code>0.0</code> is returned in this field.
@@ -2075,84 +1754,6 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     public function setTransactionConfirmationRequestEnabled($transactionConfirmationRequestEnabled)
     {
         $this->transactionConfirmationRequestEnabled = $transactionConfirmationRequestEnabled;
-        return $this;
-    }
-
-    /**
-     * Gets as storeInventoryEnabled
-     *
-     * This field is deprecated.
-     *
-     * @return bool
-     */
-    public function getStoreInventoryEnabled()
-    {
-        return $this->storeInventoryEnabled;
-    }
-
-    /**
-     * Sets a new storeInventoryEnabled
-     *
-     * This field is deprecated.
-     *
-     * @param bool $storeInventoryEnabled
-     * @return self
-     */
-    public function setStoreInventoryEnabled($storeInventoryEnabled)
-    {
-        $this->storeInventoryEnabled = $storeInventoryEnabled;
-        return $this;
-    }
-
-    /**
-     * Gets as skypeMeTransactionalEnabled
-     *
-     * This field is deprecated.
-     *
-     * @return bool
-     */
-    public function getSkypeMeTransactionalEnabled()
-    {
-        return $this->skypeMeTransactionalEnabled;
-    }
-
-    /**
-     * Sets a new skypeMeTransactionalEnabled
-     *
-     * This field is deprecated.
-     *
-     * @param bool $skypeMeTransactionalEnabled
-     * @return self
-     */
-    public function setSkypeMeTransactionalEnabled($skypeMeTransactionalEnabled)
-    {
-        $this->skypeMeTransactionalEnabled = $skypeMeTransactionalEnabled;
-        return $this;
-    }
-
-    /**
-     * Gets as skypeMeNonTransactionalEnabled
-     *
-     * This field is deprecated.
-     *
-     * @return bool
-     */
-    public function getSkypeMeNonTransactionalEnabled()
-    {
-        return $this->skypeMeNonTransactionalEnabled;
-    }
-
-    /**
-     * Sets a new skypeMeNonTransactionalEnabled
-     *
-     * This field is deprecated.
-     *
-     * @param bool $skypeMeNonTransactionalEnabled
-     * @return self
-     */
-    public function setSkypeMeNonTransactionalEnabled($skypeMeNonTransactionalEnabled)
-    {
-        $this->skypeMeNonTransactionalEnabled = $skypeMeNonTransactionalEnabled;
         return $this;
     }
 
@@ -2669,32 +2270,6 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     }
 
     /**
-     * Gets as payPalBuyerProtectionEnabled
-     *
-     * This field is no longer applicable.
-     *
-     * @return bool
-     */
-    public function getPayPalBuyerProtectionEnabled()
-    {
-        return $this->payPalBuyerProtectionEnabled;
-    }
-
-    /**
-     * Sets a new payPalBuyerProtectionEnabled
-     *
-     * This field is no longer applicable.
-     *
-     * @param bool $payPalBuyerProtectionEnabled
-     * @return self
-     */
-    public function setPayPalBuyerProtectionEnabled($payPalBuyerProtectionEnabled)
-    {
-        $this->payPalBuyerProtectionEnabled = $payPalBuyerProtectionEnabled;
-        return $this;
-    }
-
-    /**
      * Gets as buyerGuaranteeEnabled
      *
      * If this field is returned as <code>true</code>, the category supports the Best Price Guarantee feature on the Australia site. This field/feature is only applicable to Australia.
@@ -2717,32 +2292,6 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     public function setBuyerGuaranteeEnabled($buyerGuaranteeEnabled)
     {
         $this->buyerGuaranteeEnabled = $buyerGuaranteeEnabled;
-        return $this;
-    }
-
-    /**
-     * Gets as combinedFixedPriceTreatmentEnabled
-     *
-     * This field is deprecated.
-     *
-     * @return bool
-     */
-    public function getCombinedFixedPriceTreatmentEnabled()
-    {
-        return $this->combinedFixedPriceTreatmentEnabled;
-    }
-
-    /**
-     * Sets a new combinedFixedPriceTreatmentEnabled
-     *
-     * This field is deprecated.
-     *
-     * @param bool $combinedFixedPriceTreatmentEnabled
-     * @return self
-     */
-    public function setCombinedFixedPriceTreatmentEnabled($combinedFixedPriceTreatmentEnabled)
-    {
-        $this->combinedFixedPriceTreatmentEnabled = $combinedFixedPriceTreatmentEnabled;
         return $this;
     }
 
@@ -2819,32 +2368,6 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     public function setGalleryFeaturedDurations(array $galleryFeaturedDurations)
     {
         $this->galleryFeaturedDurations = $galleryFeaturedDurations;
-        return $this;
-    }
-
-    /**
-     * Gets as payPalRequired
-     *
-     * This field is no longer applicable.
-     *
-     * @return bool
-     */
-    public function getPayPalRequired()
-    {
-        return $this->payPalRequired;
-    }
-
-    /**
-     * Sets a new payPalRequired
-     *
-     * This field is no longer applicable.
-     *
-     * @param bool $payPalRequired
-     * @return self
-     */
-    public function setPayPalRequired($payPalRequired)
-    {
-        $this->payPalRequired = $payPalRequired;
         return $this;
     }
 
@@ -3957,32 +3480,6 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     }
 
     /**
-     * Gets as payPalRequiredForStoreOwner
-     *
-     * This field is deprecated.
-     *
-     * @return bool
-     */
-    public function getPayPalRequiredForStoreOwner()
-    {
-        return $this->payPalRequiredForStoreOwner;
-    }
-
-    /**
-     * Sets a new payPalRequiredForStoreOwner
-     *
-     * This field is deprecated.
-     *
-     * @param bool $payPalRequiredForStoreOwner
-     * @return self
-     */
-    public function setPayPalRequiredForStoreOwner($payPalRequiredForStoreOwner)
-    {
-        $this->payPalRequiredForStoreOwner = $payPalRequiredForStoreOwner;
-        return $this;
-    }
-
-    /**
      * Gets as reviseQuantityAllowed
      *
      * Indicates if the category allows the seller to revise the quantity of a multi-quantity, active listing.
@@ -4491,32 +3988,6 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     }
 
     /**
-     * Gets as attributeConversionEnabled
-     *
-     * This field is deprecated.
-     *
-     * @return string
-     */
-    public function getAttributeConversionEnabled()
-    {
-        return $this->attributeConversionEnabled;
-    }
-
-    /**
-     * Sets a new attributeConversionEnabled
-     *
-     * This field is deprecated.
-     *
-     * @param string $attributeConversionEnabled
-     * @return self
-     */
-    public function setAttributeConversionEnabled($attributeConversionEnabled)
-    {
-        $this->attributeConversionEnabled = $attributeConversionEnabled;
-        return $this;
-    }
-
-    /**
      * Gets as freeGalleryPlusEnabled
      *
      * Indicates whether the category supports free, automatic upgrades for Gallery Plus, which enhances pictures in search results.
@@ -4875,9 +4346,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     /**
      * Gets as productCreationEnabled
      *
-     * Indicates whether a category supports the creation of a listing using an eBay Catalog product. To create a listing based on an eBay Catalog product, the seller passed in Global Trade Item Number (GTIN) or eBay Product ID (ePID) value in an Add/Revise/Relist call and then eBay tries to match the product identifier to a product in the eBay Catalog. If a match is found, the listing picks up the details of the eBay Catalog product, including product title, product description, product aspects, primary eBay listing category ID, and links to any product stock photos.
-     *  <br/><br/>
-     *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ProductCreationEnabled</code>.
+     * This value is <b>deprecated</b>.
      *
      * @return string
      */
@@ -4889,9 +4358,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     /**
      * Sets a new productCreationEnabled
      *
-     * Indicates whether a category supports the creation of a listing using an eBay Catalog product. To create a listing based on an eBay Catalog product, the seller passed in Global Trade Item Number (GTIN) or eBay Product ID (ePID) value in an Add/Revise/Relist call and then eBay tries to match the product identifier to a product in the eBay Catalog. If a match is found, the listing picks up the details of the eBay Catalog product, including product title, product description, product aspects, primary eBay listing category ID, and links to any product stock photos.
-     *  <br/><br/>
-     *  Only returned when this value (or this category's setting) overrides the value inherited from the category's parent or the site default. Will not be returned if one or more <a href="types/FeatureIDCodeType.html">FeatureID</a> values are used in the call request, and one of those values does not include <code>ProductCreationEnabled</code>.
+     * This value is <b>deprecated</b>.
      *
      * @param string $productCreationEnabled
      * @return self
@@ -5073,32 +4540,6 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     public function setCompatibleVehicleType($compatibleVehicleType)
     {
         $this->compatibleVehicleType = $compatibleVehicleType;
-        return $this;
-    }
-
-    /**
-     * Gets as paymentOptionsGroup
-     *
-     * This field is deprecated.
-     *
-     * @return string
-     */
-    public function getPaymentOptionsGroup()
-    {
-        return $this->paymentOptionsGroup;
-    }
-
-    /**
-     * Sets a new paymentOptionsGroup
-     *
-     * This field is deprecated.
-     *
-     * @param string $paymentOptionsGroup
-     * @return self
-     */
-    public function setPaymentOptionsGroup($paymentOptionsGroup)
-    {
-        $this->paymentOptionsGroup = $paymentOptionsGroup;
         return $this;
     }
 
@@ -5515,32 +4956,6 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     public function setKTypeSupported($kTypeSupported)
     {
         $this->kTypeSupported = $kTypeSupported;
-        return $this;
-    }
-
-    /**
-     * Gets as productRequiredEnabled
-     *
-     * This field is no longer applicable, and if it is returned for a category, it can be ignored.
-     *
-     * @return string
-     */
-    public function getProductRequiredEnabled()
-    {
-        return $this->productRequiredEnabled;
-    }
-
-    /**
-     * Sets a new productRequiredEnabled
-     *
-     * This field is no longer applicable, and if it is returned for a category, it can be ignored.
-     *
-     * @param string $productRequiredEnabled
-     * @return self
-     */
-    public function setProductRequiredEnabled($productRequiredEnabled)
-    {
-        $this->productRequiredEnabled = $productRequiredEnabled;
         return $this;
     }
 
@@ -6199,11 +5614,6 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BestOfferEnabled", $value);
         }
-        $value = $this->getDutchBINEnabled();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DutchBINEnabled", $value);
-        }
         $value = $this->getUserConsentRequired();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;
         if (null !== $value) {
@@ -6218,21 +5628,6 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
         $value = null !== $value ? ($value ? 'true' : 'false') : null;
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ProPackEnabled", $value);
-        }
-        $value = $this->getBasicUpgradePackEnabled();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BasicUpgradePackEnabled", $value);
-        }
-        $value = $this->getValuePackEnabled();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ValuePackEnabled", $value);
-        }
-        $value = $this->getProPackPlusEnabled();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ProPackPlusEnabled", $value);
         }
         $value = $this->getAdFormatEnabled();
         if (null !== $value) {
@@ -6268,21 +5663,6 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}LocalMarketNonSubscription", $value);
         }
-        $value = $this->getExpressEnabled();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ExpressEnabled", $value);
-        }
-        $value = $this->getExpressPicturesRequired();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ExpressPicturesRequired", $value);
-        }
-        $value = $this->getExpressConditionRequired();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ExpressConditionRequired", $value);
-        }
         $value = $this->getMinimumReservePrice();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MinimumReservePrice", $value);
@@ -6296,21 +5676,6 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
         $value = null !== $value ? ($value ? 'true' : 'false') : null;
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TransactionConfirmationRequestEnabled", $value);
-        }
-        $value = $this->getStoreInventoryEnabled();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}StoreInventoryEnabled", $value);
-        }
-        $value = $this->getSkypeMeTransactionalEnabled();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SkypeMeTransactionalEnabled", $value);
-        }
-        $value = $this->getSkypeMeNonTransactionalEnabled();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SkypeMeNonTransactionalEnabled", $value);
         }
         $value = $this->getClassifiedAdPaymentMethodEnabled();
         if (null !== $value) {
@@ -6394,29 +5759,14 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CrossBorderTradeAustraliaEnabled", $value);
         }
-        $value = $this->getPayPalBuyerProtectionEnabled();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PayPalBuyerProtectionEnabled", $value);
-        }
         $value = $this->getBuyerGuaranteeEnabled();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BuyerGuaranteeEnabled", $value);
         }
-        $value = $this->getCombinedFixedPriceTreatmentEnabled();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CombinedFixedPriceTreatmentEnabled", $value);
-        }
         $value = $this->getGalleryFeaturedDurations();
         if (null !== $value && !empty($this->getGalleryFeaturedDurations())) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}GalleryFeaturedDurations", array_map(function ($v) {return ["Duration" => $v];}, $value));
-        }
-        $value = $this->getPayPalRequired();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PayPalRequired", $value);
         }
         $value = $this->getEBayMotorsProAdFormatEnabled();
         if (null !== $value) {
@@ -6586,11 +5936,6 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}INEscrowWorkflowTimeline", $value);
         }
-        $value = $this->getPayPalRequiredForStoreOwner();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PayPalRequiredForStoreOwner", $value);
-        }
         $value = $this->getReviseQuantityAllowed();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;
         if (null !== $value) {
@@ -6644,10 +5989,6 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
         $value = null !== $value ? ($value ? 'true' : 'false') : null;
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}VariationsEnabled", $value);
-        }
-        $value = $this->getAttributeConversionEnabled();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}AttributeConversionEnabled", $value);
         }
         $value = $this->getFreeGalleryPlusEnabled();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;
@@ -6712,10 +6053,6 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CompatibleVehicleType", $value);
         }
-        $value = $this->getPaymentOptionsGroup();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PaymentOptionsGroup", $value);
-        }
         $value = $this->getShippingProfileCategoryGroup();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippingProfileCategoryGroup", $value);
@@ -6777,10 +6114,6 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
         $value = null !== $value ? ($value ? 'true' : 'false') : null;
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}KTypeSupported", $value);
-        }
-        $value = $this->getProductRequiredEnabled();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ProductRequiredEnabled", $value);
         }
         $value = $this->getDomesticReturnsAcceptedValues();
         if (null !== $value && !empty($this->getDomesticReturnsAcceptedValues())) {
@@ -6851,10 +6184,6 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
         if (null !== $value) {
             $this->setBestOfferEnabled($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DutchBINEnabled');
-        if (null !== $value) {
-            $this->setDutchBINEnabled($value);
-        }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UserConsentRequired');
         if (null !== $value) {
             $this->setUserConsentRequired($value);
@@ -6866,18 +6195,6 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ProPackEnabled');
         if (null !== $value) {
             $this->setProPackEnabled($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BasicUpgradePackEnabled');
-        if (null !== $value) {
-            $this->setBasicUpgradePackEnabled($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ValuePackEnabled');
-        if (null !== $value) {
-            $this->setValuePackEnabled($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ProPackPlusEnabled');
-        if (null !== $value) {
-            $this->setProPackPlusEnabled($value);
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AdFormatEnabled');
         if (null !== $value) {
@@ -6907,18 +6224,6 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
         if (null !== $value) {
             $this->setLocalMarketNonSubscription($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExpressEnabled');
-        if (null !== $value) {
-            $this->setExpressEnabled($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExpressPicturesRequired');
-        if (null !== $value) {
-            $this->setExpressPicturesRequired($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExpressConditionRequired');
-        if (null !== $value) {
-            $this->setExpressConditionRequired($value);
-        }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MinimumReservePrice');
         if (null !== $value) {
             $this->setMinimumReservePrice($value);
@@ -6930,18 +6235,6 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TransactionConfirmationRequestEnabled');
         if (null !== $value) {
             $this->setTransactionConfirmationRequestEnabled($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}StoreInventoryEnabled');
-        if (null !== $value) {
-            $this->setStoreInventoryEnabled($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SkypeMeTransactionalEnabled');
-        if (null !== $value) {
-            $this->setSkypeMeTransactionalEnabled($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SkypeMeNonTransactionalEnabled');
-        if (null !== $value) {
-            $this->setSkypeMeNonTransactionalEnabled($value);
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ClassifiedAdPaymentMethodEnabled');
         if (null !== $value) {
@@ -7011,25 +6304,13 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
         if (null !== $value) {
             $this->setCrossBorderTradeAustraliaEnabled($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PayPalBuyerProtectionEnabled');
-        if (null !== $value) {
-            $this->setPayPalBuyerProtectionEnabled($value);
-        }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BuyerGuaranteeEnabled');
         if (null !== $value) {
             $this->setBuyerGuaranteeEnabled($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CombinedFixedPriceTreatmentEnabled');
-        if (null !== $value) {
-            $this->setCombinedFixedPriceTreatmentEnabled($value);
-        }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}GalleryFeaturedDurations', true);
         if (null !== $value && !empty($value)) {
             $this->setGalleryFeaturedDurations($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PayPalRequired');
-        if (null !== $value) {
-            $this->setPayPalRequired($value);
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}eBayMotorsProAdFormatEnabled');
         if (null !== $value) {
@@ -7179,10 +6460,6 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
         if (null !== $value) {
             $this->setINEscrowWorkflowTimeline($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PayPalRequiredForStoreOwner');
-        if (null !== $value) {
-            $this->setPayPalRequiredForStoreOwner($value);
-        }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReviseQuantityAllowed');
         if (null !== $value) {
             $this->setReviseQuantityAllowed($value);
@@ -7230,10 +6507,6 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}VariationsEnabled');
         if (null !== $value) {
             $this->setVariationsEnabled($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AttributeConversionEnabled');
-        if (null !== $value) {
-            $this->setAttributeConversionEnabled($value);
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FreeGalleryPlusEnabled');
         if (null !== $value) {
@@ -7295,10 +6568,6 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
         if (null !== $value) {
             $this->setCompatibleVehicleType($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaymentOptionsGroup');
-        if (null !== $value) {
-            $this->setPaymentOptionsGroup($value);
-        }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingProfileCategoryGroup');
         if (null !== $value) {
             $this->setShippingProfileCategoryGroup($value);
@@ -7350,10 +6619,6 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}KTypeSupported');
         if (null !== $value) {
             $this->setKTypeSupported($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ProductRequiredEnabled');
-        if (null !== $value) {
-            $this->setProductRequiredEnabled($value);
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DomesticReturnsAcceptedValues', true);
         if (null !== $value && !empty($value)) {

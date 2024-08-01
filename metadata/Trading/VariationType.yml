@@ -54,17 +54,6 @@ Nogrod\eBaySDK\Trading\VariationType:
                 entry_name: NameValueList
                 skip_when_empty: true
                 namespace: 'urn:ebay:apis:eBLBaseComponents'
-        unitsAvailable:
-            expose: true
-            access_type: public_method
-            serialized_name: UnitsAvailable
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getUnitsAvailable
-                setter: setUnitsAvailable
-            type: int
         sellingStatus:
             expose: true
             access_type: public_method

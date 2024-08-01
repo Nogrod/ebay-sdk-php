@@ -61,62 +61,6 @@ Nogrod\eBaySDK\Trading\ReturnPolicyDetailsType:
                 getter: getDescription
                 setter: setDescription
             type: bool
-        warrantyOffered:
-            expose: true
-            access_type: public_method
-            serialized_name: WarrantyOffered
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getWarrantyOffered
-                setter: setWarrantyOffered
-            xml_list:
-                inline: true
-                entry_name: WarrantyOffered
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            type: array<Nogrod\eBaySDK\Trading\WarrantyOfferedDetailsType>
-        warrantyType:
-            expose: true
-            access_type: public_method
-            serialized_name: WarrantyType
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getWarrantyType
-                setter: setWarrantyType
-            xml_list:
-                inline: true
-                entry_name: WarrantyType
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            type: array<Nogrod\eBaySDK\Trading\WarrantyTypeDetailsType>
-        warrantyDuration:
-            expose: true
-            access_type: public_method
-            serialized_name: WarrantyDuration
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getWarrantyDuration
-                setter: setWarrantyDuration
-            xml_list:
-                inline: true
-                entry_name: WarrantyDuration
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            type: array<Nogrod\eBaySDK\Trading\WarrantyDurationDetailsType>
-        eAN:
-            expose: true
-            access_type: public_method
-            serialized_name: EAN
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getEAN
-                setter: setEAN
-            type: bool
         shippingCostPaidBy:
             expose: true
             access_type: public_method

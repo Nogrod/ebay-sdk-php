@@ -60,14 +60,3 @@ Nogrod\eBaySDK\Trading\BiddingDetailsType:
                 getter: getWinning
                 setter: setWinning
             type: bool
-        bidAssistant:
-            expose: true
-            access_type: public_method
-            serialized_name: BidAssistant
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getBidAssistant
-                setter: setBidAssistant
-            type: bool

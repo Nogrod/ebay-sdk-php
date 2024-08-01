@@ -79,28 +79,6 @@ Nogrod\eBaySDK\Trading\SendInvoiceRequestType:
                 getter: getSalesTax
                 setter: setSalesTax
             type: Nogrod\eBaySDK\Trading\SalesTaxType
-        insuranceOption:
-            expose: true
-            access_type: public_method
-            serialized_name: InsuranceOption
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getInsuranceOption
-                setter: setInsuranceOption
-            type: string
-        insuranceFee:
-            expose: true
-            access_type: public_method
-            serialized_name: InsuranceFee
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getInsuranceFee
-                setter: setInsuranceFee
-            type: Nogrod\eBaySDK\Trading\AmountType
         paymentMethods:
             expose: true
             access_type: public_method
@@ -116,17 +94,6 @@ Nogrod\eBaySDK\Trading\SendInvoiceRequestType:
                 entry_name: PaymentMethods
                 namespace: 'urn:ebay:apis:eBLBaseComponents'
             type: array<string>
-        payPalEmailAddress:
-            expose: true
-            access_type: public_method
-            serialized_name: PayPalEmailAddress
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getPayPalEmailAddress
-                setter: setPayPalEmailAddress
-            type: string
         checkoutInstructions:
             expose: true
             access_type: public_method

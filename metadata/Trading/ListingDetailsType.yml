@@ -170,17 +170,6 @@ Nogrod\eBaySDK\Trading\ListingDetailsType:
                 getter: getBuyItNowAvailable
                 setter: setBuyItNowAvailable
             type: bool
-        sellerBusinessType:
-            expose: true
-            access_type: public_method
-            serialized_name: SellerBusinessType
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getSellerBusinessType
-                setter: setSellerBusinessType
-            type: string
         minimumBestOfferPrice:
             expose: true
             access_type: public_method
@@ -192,17 +181,6 @@ Nogrod\eBaySDK\Trading\ListingDetailsType:
                 getter: getMinimumBestOfferPrice
                 setter: setMinimumBestOfferPrice
             type: Nogrod\eBaySDK\Trading\AmountType
-        minimumBestOfferMessage:
-            expose: true
-            access_type: public_method
-            serialized_name: MinimumBestOfferMessage
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getMinimumBestOfferMessage
-                setter: setMinimumBestOfferMessage
-            type: string
         localListingDistance:
             expose: true
             access_type: public_method
@@ -213,17 +191,6 @@ Nogrod\eBaySDK\Trading\ListingDetailsType:
             accessor:
                 getter: getLocalListingDistance
                 setter: setLocalListingDistance
-            type: string
-        tCROriginalItemID:
-            expose: true
-            access_type: public_method
-            serialized_name: TCROriginalItemID
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getTCROriginalItemID
-                setter: setTCROriginalItemID
             type: string
         viewItemURLForNaturalSearch:
             expose: true
@@ -236,17 +203,6 @@ Nogrod\eBaySDK\Trading\ListingDetailsType:
                 getter: getViewItemURLForNaturalSearch
                 setter: setViewItemURLForNaturalSearch
             type: string
-        payPerLeadEnabled:
-            expose: true
-            access_type: public_method
-            serialized_name: PayPerLeadEnabled
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getPayPerLeadEnabled
-                setter: setPayPerLeadEnabled
-            type: bool
         bestOfferAutoAcceptPrice:
             expose: true
             access_type: public_method

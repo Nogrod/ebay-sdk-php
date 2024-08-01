@@ -9,7 +9,7 @@ use Nogrod\XMLClientRuntime\Func;
  *
  * This type is used to express the details of an order. An order may contain one or more line items (purchases) from the same buyer. Regardless of how many line items an order has, only one payment is made for the order.
  *  <br><br>
- *  The <b>GetOrders</b> and <b>GetOrderTransactions</b> calls return many of the fields of this type.
+ *  The <b>GetOrders</b> call returns many of the fields of this type.
  *  <br><br>
  *  The <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> calls will only return order-level details if the <b>IncludeContainingOrder</b> boolean field is included in the call request and set to <code>true</code>.
  *  <br><br>
@@ -21,19 +21,10 @@ use Nogrod\XMLClientRuntime\Func;
 class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
     /**
-     * A unique identifier for a single or multiple line item eBay order. In the <b>ContainingOrder</b> container of a <b>GetItemTransactions</b> or <b>GetSellerTransactions</b> response, this identifier identifies the parent order of the order line item. A single buyer payment is made for each order.
-     *  <br/><br/>
-     *  <b>For order management calls only:</b> This field is returned with the correct order ID only to the buyer and the seller. For third parties:
-     *  <ul>
-     *  <li>If using Trading WSDL version 1019 or newer (or Compatibility Level is set to '1019' or newer), the Order ID will be returned to third parties as an empty field (<code>&lt;OrderID/&gt;</code>).</li>
-     *  <li>If using a Trading WSDL older than version 1019, the Order ID will be returned to third parties as dummy data in the form of <code>1000000000000</code> or <code>1000000000000-1000000000000</code>.</li>
-     *
-     *  </ul>
-     *  <br>
-     *  <span class="tablenote"><b>Note: </b>
-     *  The unique identifier of a 'non-immediate payment' order will change as it goes from an unpaid order to a paid order. Due to this scenario, all calls that accept Order ID values as filters in the request payload, including the <b>GetOrders</b> and <b>GetOrderTransactions</b> calls, will support the identifiers for both unpaid and paid orders. The revised order ID format (introduced in June 2019) is a non-parsable string, globally unique across all eBay marketplaces, and consistent for both single line item and multiple line item orders. Unlike in the past, instead of just being known and exposed to the seller, these unique order identifiers will also be known and used/referenced by the buyer and eBay customer support.
+     * A unique identifier for an eBay order. This identifier is globally unique across all eBay marketplaces, and consistent for both single line item and multiple line item orders. Note that the order ID will change for a 'non-immediate payment' order as it goes from an unpaid order to a paid order.
      *  <br><br>
-     *  Sellers can check to see if an order has been paid by looking for a value of 'Complete' in the <b>CheckoutStatus.Status</b> field in the response of <b>GetOrders</b> or <b>GetOrderTransactions</b> call, or in the <b>Status.CompleteStatus</b> field in the response of <b>GetItemTransactions</b> or <b>GetSellerTransactions</b> call. Sellers should not fulfill orders until buyer has made payment.
+     *  <span class="tablenote"><b>Note: </b>
+     *  The value in the <b>OrderID</b> and <b>ExtendedOrderID</b> fields should always be the same. The <b>ExtendedOrderID</b> field was added back in 2019 during a transition period where the Trading API was supporting both old and new order ID formats, and which order ID format that was returned was dependent on the compatibility level version used.
      *  </span>
      *
      * @var string $orderID
@@ -113,7 +104,7 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
     private $createdTime = null;
 
     /**
-     * In <b>GetOrders</b>, <b>GetOrderTransactions</b>, and <b>OrderReport</b>, a <b>PaymentMethods</b> field will appear for each payment method available to the buyer for the order's purchase. However, once the buyer pays for the order, any and all of these <b>PaymentMethods</b> fields will stop being returned, and instead, the actual payment method used will be returned in the <b>PaymentMethod</b> field of the <b>CheckoutStatus</b> container.
+     * In <b>GetOrders</b> and <b>OrderReport</b>, a <b>PaymentMethods</b> field will appear for each payment method available to the buyer for the order's purchase. However, once the buyer pays for the order, any and all of these <b>PaymentMethods</b> fields will stop being returned, and instead, the actual payment method used will be returned in the <b>PaymentMethod</b> field of the <b>CheckoutStatus</b> container.
      *  <br>
      *  <br>
      *  In an <b>AddOrder</b> call, the seller can use one or more <b>PaymentMethods</b> fields to override whatever available payment methods were already defined for each individual line item.
@@ -131,7 +122,7 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
     /**
      * The email address of the seller involved in the order. The email address of the seller is only returned if it is the same seller making the call.<br> <br>
      *  <span class="tablenote"><b>Note:</b>
-     *  For the <strong>GetOrders</strong> and <strong>GetOrderTransactions</strong> calls, this field is only returned to the seller of the order; this field is not returned to the buyer or to a third party.
+     *  For the <strong>GetOrders</strong> calls, this field is only returned to the seller of the order; this field is not returned to the buyer or to a third party.
      *  </span>
      *
      * @var string $sellerEmail
@@ -146,12 +137,12 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      *  <strong>Note:</strong> For an Authenticity Guarantee program shipment, this is the address of the authenticator's warehouse. The authenticator is responsible for delivery to the buyer's shipping address.
      *  </span></p>
      *  <p><span class="tablenote">
-     *  <strong>Note:</strong> For In-Store Pickup and Click and Collect orders, this is the address of the merchant's store where the buyer will pick up the order.
+     *  <strong>Note:</strong> For transactions completed offline, the shipping address detail may be empty.
      *  </span></p>
-     *  <p><span class="tablenote"><b>Note:</b> For GetOrderTransactions, the buyer's shipping address may also be returned at the order line item level in the <b>Transaction.Buyer.BuyerInfo.ShippingAddress</b> container.
-     *  </span></p>
+     *  <p><span class="tablenote">
+     *  <strong>Note:</strong> For In-Store Pickup and Click and Collect orders, this is the address of the merchant's store where the buyer will pick up the order.</span></p>
      *  <p><span class="tablenote"><b>Note:</b>
-     *  For eBay Vault scenarios: <strong>GetOrders</strong>, <strong>GetOrderTransactions</strong>, and <strong>GetItemTransactions</strong> calls, mock address details are returned for: <br><br>-<em> Vault to vault orders</em>: Buyer and Seller View<br><br>-<em> Ship to vault orders</em>: Mock addresses are returned for the Buyer View (only); the address returned for the Seller View will be the authenticator's address.<br><br>-<em> Vault in-hand submission orders</em>: the address returned for the Buyer View will be the authenticator's address.<br><br>
+     *  For eBay Vault scenarios: <strong>GetOrders</strong> and <strong>GetItemTransactions</strong> calls, mock address details are returned for: <br><br>-<em> Vault to vault orders</em>: Buyer and Seller View<br><br>-<em> Ship to vault orders</em>: Mock addresses are returned for the Buyer View (only); the address returned for the Seller View will be the authenticator's address.<br><br>-<em> Vault in-hand submission orders</em>: the address returned for the Buyer View will be the authenticator's address.<br><br>
      *  The following address details are returned for mock addresses:
      *  <pre>
      *  &lt;ShippingAddress&gt;
@@ -219,18 +210,6 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
     private $total = null;
 
     /**
-     * Container consisting of payment details for an eBay order, including an identifier for the monetary transaction and a field to express any fees or credits applied to the monetary transaction. This field is only returned after payment for the order has occurred.
-     *  <br>
-     *  <span class="tablenote"><b>Note: </b> This container will stop being returned on January 31, 2024. The <strong>MonetaryDetails</strong> container should be used instead.
-     *  </span>
-     *
-     * @var \Nogrod\eBaySDK\Trading\ExternalTransactionType[] $externalTransaction
-     */
-    private $externalTransaction = [
-
-    ];
-
-    /**
      * Container consisting of one or more line items that comprise an order. The data for each order line item in the order is stored in a separate <b>Transaction</b> container.
      *  <br><br>
      *  Under the <b>TransactionArray</b> container in an <b>AddOrder</b> call, a seller or buyer specifies two or more (up to 40) order line items into a 'Combined Invoice' order.
@@ -251,8 +230,7 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      *  returned until payment has been made by the buyer.
      *  <br><br>
      *  This time is specified in GMT (not Pacific time).
-     *  See <a href="https://developer.ebay.com/DevZone/guides/features-guide/default.html#basics/DataTypes.html#ConvertingBetweenUTCGMTandLocalTime"> eBay Features Guide</a>
-     *  for information about converting between GMT and other time zones.
+     *  See <a href="https://developer.ebay.com/api-docs/user-guides/static/make-a-call/tapi-data-types.html#utc-local"> API data types</a> section of the Making a Trading API call guide for information about converting between GMT and other time zones.
      *
      * @var \DateTime $paidTime
      */
@@ -262,23 +240,11 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      * Timestamp indicating the date and time of order shipment. This field is not returned until shipment tracking is provided for all line items in the order, or if the order has been marked as 'shipped' by the seller.
      *  <br><br>
      *  This time is specified in GMT (not Pacific time).
-     *  See <a href="https://developer.ebay.com/DevZone/guides/features-guide/default.html#basics/DataTypes.html"> eBay Features Guide</a>
-     *  for information about converting between GMT and other time zones.
+     *  See <a href="https://developer.ebay.com/api-docs/user-guides/static/make-a-call/tapi-data-types.html"> API data types</a> section of the Making a Trading API call guide for information about converting between GMT and other time zones.
      *
      * @var \DateTime $shippedTime
      */
     private $shippedTime = null;
-
-    /**
-     * <br>
-     *  This field is no longer applicable as eBay sellers can no longer use iMCC gateway accounts to handle buyer payments.
-     *  <br>
-     *  <span class="tablenote"><b>Note: </b> This field will stop being returned on January 31, 2024 and will be removed from the Trading WSDL.
-     *  </span>
-     *
-     * @var bool $integratedMerchantCreditCardEnabled
-     */
-    private $integratedMerchantCreditCardEnabled = null;
 
     /**
      * Reserved for future use.
@@ -307,10 +273,10 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
     private $eIASToken = null;
 
     /**
-     * This field indicates the type and/or status of a payment hold on the item. It is always returned for <b>GetOrders</b> and <b>GetOrderTransactions</b>, even if there are no payment holds (in which case, an enumeration value of <code>None</code> is shown).
+     * This field indicates the type and/or status of a payment hold on the item. It is always returned for <b>GetOrders</b>, even if there are no payment holds (in which case, an enumeration value of <code>None</code> is shown).
      *  <br>
      *  <span class="tablenote"><b>Note:</b>
-     *  For the <strong>GetItemTransactions</strong>, <strong>GetOrders</strong>, and <strong>GetOrderTransactions</strong> calls, this field is only returned to the seller of the order; this field is not returned for the buyer or third party.
+     *  For the <strong>GetItemTransactions</strong> and <strong>GetOrders</strong> calls, this field is only returned to the seller of the order; this field is not returned for the buyer or third party.
      *  </span>
      *  <span class="tablenote"><b>Note: </b> This field will stop being returned by <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
      *  </span>
@@ -318,23 +284,6 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      * @var string $paymentHoldStatus
      */
     private $paymentHoldStatus = null;
-
-    /**
-     * <br>
-     *  This container consists of information related to the payment hold
-     *  on the order, including the reason why the buyer's payment for the order is
-     *  being held, the expected release date of the funds into the seller's
-     *  account, and possible action(s) the seller can take to expedite the payout
-     *  of funds into their account. This container is only returned if a payment hold has placed on the order.
-     *  <br><br>
-     *  See <b>PaymentHoldReasonCodeType</b> for some details on why/when a seller's funds may be held, or visit the <a href="https://www.ebay.com/help/selling/getting-paid/getting-paid-items-youve-sold/pending-payments?id=4816">Pending payments</a> help topic for more information on eBay's payment hold policies.
-     *  <br>
-     *  <span class="tablenote"><b>Note: </b> The <b>Order.PaymentHoldDetails</b> and <b>ContainingOrder.PaymentHoldDetails</b> containers and child fields will stop being returned on January 31, 2024 and will be removed from the Trading WSDL. Payment hold details can be viewed at the transaction level instead.
-     *  </span>
-     *
-     * @var \Nogrod\eBaySDK\Trading\PaymentHoldDetailType $paymentHoldDetails
-     */
-    private $paymentHoldDetails = null;
 
     /**
      * The amount of the refund due to, or already issued to the buyer for the order. This field is only returned in <b>GetMyeBaySelling</b> if a buyer refund is due, or was issued for the order.
@@ -349,14 +298,6 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      * @var string $refundStatus
      */
     private $refundStatus = null;
-
-    /**
-     * <span class="tablenote"><b>Note: </b> This container was only used for Half.com orders, and since the Half.com site was taken down, this container is no longer applicable.
-     *  </span>
-     *
-     * @var \Nogrod\eBaySDK\Trading\RefundType[] $refundArray
-     */
-    private $refundArray = null;
 
     /**
      * <br>
@@ -398,7 +339,7 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
     /**
      * Container consisting of an array of <strong>PickupOptions</strong> containers. Each <strong>PickupOptions</strong> container consists of the pickup method and its priority. The priority of each pickup method controls the order (relative to other pickup methods) in which the corresponding pickup method will appear in the View Item and Checkout page.
      *  <br/><br/>
-     *  For <strong>GetOrders</strong> and <strong>GetOrderTransactions</strong>, this container is always returned prior to order payment if the seller created/revised/relisted the item with the <strong>EligibleForPickupInStore</strong> and/or <strong>EligibleForPickupDropOff</strong> flag in the call request set to 'true'. If and when the In-Store pickup method (US only) or 'Click and Collect' pickup method (UK and Australia only) is selected by the buyer and payment for the order is made, this container will no longer be returned in the response, and will essentially be replaced by the <strong>PickupMethodSelected</strong> container.
+     *  For <strong>GetOrders</strong>, this container is always returned prior to order payment if the seller created/revised/relisted the item with the <strong>EligibleForPickupInStore</strong> and/or <strong>EligibleForPickupDropOff</strong> flag in the call request set to 'true'. If and when the In-Store pickup method (US only) or 'Click and Collect' pickup method (UK and Australia only) is selected by the buyer and payment for the order is made, this container will no longer be returned in the response, and will essentially be replaced by the <strong>PickupMethodSelected</strong> container.
      *  <br/><br/>
      *  <span class="tablenote">
      *  <strong>Note:</strong> A seller must be eligible for the In-Store Pickup feature or Click and Collect feature to list an item that is eligible for In-Store Pickup or Click and Collect. At this time, the In-Store Pickup and Click and Collect features are generally only available to large retail merchants, and can only be applied to multiple-quantity, fixed-price listings.
@@ -441,10 +382,6 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
 
     /**
      * This value indicates the reason why the order cancellation was initiated. This field is only returned if an order cancellation has been initiated by the buyer or seller. Typical buyer-initiated cancellation reasons include 'OrderPlacedByMistake', 'WontArriveInTime', or 'FoundCheaperPrice'. Sellers may initiate an order cancellation on behalf of the buyer. In this scenario, the seller should state the cancellation reason as 'BuyerCancelOrder'. If the seller is cancelling an order because he/she is out of stock on an item, the seller should state the cancellation reason as 'OutOfStock'. Unfortunately, in this scenario, the seller will receive a seller defect for this cancellation reason. See <a href="types/CancelReasonCodeType.html">CancelReasonCodeType</a> for the complete list of enumeration values that can be returned in this field.
-     *  <br><br>
-     *  <span class="tablenote"><strong>Note:</strong>
-     *  Only the <b>CancelReason</b> and <b>CancelStatus</b> fields are returned. The <b>CancelDetail</b> container and the <b>CancelReasonDetails</b> field are no longer returned. A seller can use the <a href="https://developer.ebay.com/Devzone/post-order/post-order_v2_cancellation_search__get.html">Search Cancellations</a> method of the Post-Order API to retrieve more details on a cancelled order. If the seller does use this method, they can use the Order ID or Item ID as a filter in the request to retrieve the correct cancellation request.
-     *  </span>
      *
      * @var string $cancelReason
      */
@@ -452,47 +389,10 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
 
     /**
      * The current status for the order cancellation request (if it exists for the order). This field is only returned if a cancellation request has been made on the order, or if the order is currently going through the cancellation process, or if the order has already been cancelled.
-     *  <br><br>
-     *  <span class="tablenote"><strong>Note:</strong>
-     *  Only the <b>CancelReason</b> and <b>CancelStatus</b> fields are returned. The <b>CancelDetail</b> container and the <b>CancelReasonDetails</b> field are no longer returned. A seller can use the <a href="https://developer.ebay.com/Devzone/post-order/post-order_v2_cancellation_search__get.html">Search Cancellations</a> method of the Post-Order API to retrieve more details on a cancelled order. If the seller does use this method, they can use the Order ID or Item ID as a filter in the request to retrieve the correct cancellation request.
-     *  </span>
      *
      * @var string $cancelStatus
      */
     private $cancelStatus = null;
-
-    /**
-     * The detailed reason for the cancellation of an eBay order. This field is only returned if it is available when a cancellation request has been made on the order, or if the order is currently going through the cancellation process, or if the order has already been cancelled.
-     *  <br><br>
-     *  <span class="tablenote"><strong>Note:</strong>
-     *  Only the <b>CancelReason</b> and <b>CancelStatus</b> fields are returned. The <b>CancelDetail</b> container and the <b>CancelReasonDetails</b> field are no longer returned. A seller can use the <a href="https://developer.ebay.com/Devzone/post-order/post-order_v2_cancellation_search__get.html">Search Cancellations</a> method of the Post-Order API to retrieve more details on a cancelled order. If the seller does use this method, they can use the Order ID or Item ID as a filter in the request to retrieve the correct cancellation request.
-     *  </span>
-     *
-     * @var string $cancelReasonDetails
-     */
-    private $cancelReasonDetails = null;
-
-    /**
-     * <span class="tablenote"><strong>Note:</strong>
-     *  This field is no longer applicable/used. It was previously used for eBay Now and 'eBay On Demand Delivery' orders - two features that have been deprecated.
-     *  </span>
-     *
-     * @var \Nogrod\eBaySDK\Trading\AmountType $shippingConvenienceCharge
-     */
-    private $shippingConvenienceCharge = null;
-
-    /**
-     * This container consists of details related to an eBay order that has been cancelled or is in the process of possibly being cancelled. Order cancellation requests can be viewed and managed with the cancellation API calls that are available in the <a href="https://developer.ebay.com/Devzone/post-order/index.html#CallIndex">Post Order API</a>.
-     *  <br><br>
-     *  <span class="tablenote"><strong>Note:</strong>
-     *  Only the <b>CancelReason</b> and <b>CancelStatus</b> fields are returned. The <b>CancelDetail</b> container and the <b>CancelReasonDetails</b> field are no longer returned. A seller can use the <a href="https://developer.ebay.com/Devzone/post-order/post-order_v2_cancellation_search__get.html">Search Cancellations</a> method of the Post-Order API to retrieve more details on a cancelled order. If the seller does use this method, they can use the Order ID or Item ID as a filter in the request to retrieve the correct cancellation request.
-     *  </span>
-     *
-     * @var \Nogrod\eBaySDK\Trading\CancelDetailType[] $cancelDetail
-     */
-    private $cancelDetail = [
-
-    ];
 
     /**
      * <br/>
@@ -538,11 +438,10 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
     private $buyerPackageEnclosures = null;
 
     /**
-     * A unique identifier for an eBay order in the eBay REST API model. <b>ExtendedOrderID</b> values will be used to identify orders in REST-based APIs, including the Post-Order API and the Fulfillment API.
+     * A unique identifier for an eBay order. This identifier is globally unique across all eBay marketplaces, and consistent for both single line item and multiple line item orders. Note that the order ID will change for a 'non-immediate payment' order as it goes from an unpaid order to a paid order.
      *  <br><br>
-     *  <b>For GetOrders, GetOrderTransactions, and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this field will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, the correct Order ID is returned to the buyer or seller, but a dummy Order ID value of <code>1000000000000</code> will be returned to all third parties.
-     *  <br><br>
-     *  <span class="tablenote"><b>Note: </b> As of June 2019, eBay has changed the format of order identifier values, and this new format is relevant to both legacy and REST API-based order ID fields. The new format is a non-parsable string, globally unique across all eBay marketplaces, and consistent for both single line item and multiple line item orders. Unlike in the past, instead of just being known and exposed to the seller, these unique order identifiers will also be known and used/referenced by the buyer and eBay customer support.
+     *  <span class="tablenote"><b>Note: </b>
+     *  The value in the <b>OrderID</b> and <b>ExtendedOrderID</b> fields should always be the same. The <b>ExtendedOrderID</b> field was added back in 2019 during a transition period where the Trading API was supporting both old and new order ID formats, and which order ID format that was returned was dependent on the compatibility level version used.
      *  </span>
      *
      * @var string $extendedOrderID
@@ -587,19 +486,10 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
     /**
      * Gets as orderID
      *
-     * A unique identifier for a single or multiple line item eBay order. In the <b>ContainingOrder</b> container of a <b>GetItemTransactions</b> or <b>GetSellerTransactions</b> response, this identifier identifies the parent order of the order line item. A single buyer payment is made for each order.
-     *  <br/><br/>
-     *  <b>For order management calls only:</b> This field is returned with the correct order ID only to the buyer and the seller. For third parties:
-     *  <ul>
-     *  <li>If using Trading WSDL version 1019 or newer (or Compatibility Level is set to '1019' or newer), the Order ID will be returned to third parties as an empty field (<code>&lt;OrderID/&gt;</code>).</li>
-     *  <li>If using a Trading WSDL older than version 1019, the Order ID will be returned to third parties as dummy data in the form of <code>1000000000000</code> or <code>1000000000000-1000000000000</code>.</li>
-     *
-     *  </ul>
-     *  <br>
-     *  <span class="tablenote"><b>Note: </b>
-     *  The unique identifier of a 'non-immediate payment' order will change as it goes from an unpaid order to a paid order. Due to this scenario, all calls that accept Order ID values as filters in the request payload, including the <b>GetOrders</b> and <b>GetOrderTransactions</b> calls, will support the identifiers for both unpaid and paid orders. The revised order ID format (introduced in June 2019) is a non-parsable string, globally unique across all eBay marketplaces, and consistent for both single line item and multiple line item orders. Unlike in the past, instead of just being known and exposed to the seller, these unique order identifiers will also be known and used/referenced by the buyer and eBay customer support.
+     * A unique identifier for an eBay order. This identifier is globally unique across all eBay marketplaces, and consistent for both single line item and multiple line item orders. Note that the order ID will change for a 'non-immediate payment' order as it goes from an unpaid order to a paid order.
      *  <br><br>
-     *  Sellers can check to see if an order has been paid by looking for a value of 'Complete' in the <b>CheckoutStatus.Status</b> field in the response of <b>GetOrders</b> or <b>GetOrderTransactions</b> call, or in the <b>Status.CompleteStatus</b> field in the response of <b>GetItemTransactions</b> or <b>GetSellerTransactions</b> call. Sellers should not fulfill orders until buyer has made payment.
+     *  <span class="tablenote"><b>Note: </b>
+     *  The value in the <b>OrderID</b> and <b>ExtendedOrderID</b> fields should always be the same. The <b>ExtendedOrderID</b> field was added back in 2019 during a transition period where the Trading API was supporting both old and new order ID formats, and which order ID format that was returned was dependent on the compatibility level version used.
      *  </span>
      *
      * @return string
@@ -612,19 +502,10 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
     /**
      * Sets a new orderID
      *
-     * A unique identifier for a single or multiple line item eBay order. In the <b>ContainingOrder</b> container of a <b>GetItemTransactions</b> or <b>GetSellerTransactions</b> response, this identifier identifies the parent order of the order line item. A single buyer payment is made for each order.
-     *  <br/><br/>
-     *  <b>For order management calls only:</b> This field is returned with the correct order ID only to the buyer and the seller. For third parties:
-     *  <ul>
-     *  <li>If using Trading WSDL version 1019 or newer (or Compatibility Level is set to '1019' or newer), the Order ID will be returned to third parties as an empty field (<code>&lt;OrderID/&gt;</code>).</li>
-     *  <li>If using a Trading WSDL older than version 1019, the Order ID will be returned to third parties as dummy data in the form of <code>1000000000000</code> or <code>1000000000000-1000000000000</code>.</li>
-     *
-     *  </ul>
-     *  <br>
-     *  <span class="tablenote"><b>Note: </b>
-     *  The unique identifier of a 'non-immediate payment' order will change as it goes from an unpaid order to a paid order. Due to this scenario, all calls that accept Order ID values as filters in the request payload, including the <b>GetOrders</b> and <b>GetOrderTransactions</b> calls, will support the identifiers for both unpaid and paid orders. The revised order ID format (introduced in June 2019) is a non-parsable string, globally unique across all eBay marketplaces, and consistent for both single line item and multiple line item orders. Unlike in the past, instead of just being known and exposed to the seller, these unique order identifiers will also be known and used/referenced by the buyer and eBay customer support.
+     * A unique identifier for an eBay order. This identifier is globally unique across all eBay marketplaces, and consistent for both single line item and multiple line item orders. Note that the order ID will change for a 'non-immediate payment' order as it goes from an unpaid order to a paid order.
      *  <br><br>
-     *  Sellers can check to see if an order has been paid by looking for a value of 'Complete' in the <b>CheckoutStatus.Status</b> field in the response of <b>GetOrders</b> or <b>GetOrderTransactions</b> call, or in the <b>Status.CompleteStatus</b> field in the response of <b>GetItemTransactions</b> or <b>GetSellerTransactions</b> call. Sellers should not fulfill orders until buyer has made payment.
+     *  <span class="tablenote"><b>Note: </b>
+     *  The value in the <b>OrderID</b> and <b>ExtendedOrderID</b> fields should always be the same. The <b>ExtendedOrderID</b> field was added back in 2019 during a transition period where the Trading API was supporting both old and new order ID formats, and which order ID format that was returned was dependent on the compatibility level version used.
      *  </span>
      *
      * @param string $orderID
@@ -879,7 +760,7 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
     /**
      * Adds as paymentMethods
      *
-     * In <b>GetOrders</b>, <b>GetOrderTransactions</b>, and <b>OrderReport</b>, a <b>PaymentMethods</b> field will appear for each payment method available to the buyer for the order's purchase. However, once the buyer pays for the order, any and all of these <b>PaymentMethods</b> fields will stop being returned, and instead, the actual payment method used will be returned in the <b>PaymentMethod</b> field of the <b>CheckoutStatus</b> container.
+     * In <b>GetOrders</b> and <b>OrderReport</b>, a <b>PaymentMethods</b> field will appear for each payment method available to the buyer for the order's purchase. However, once the buyer pays for the order, any and all of these <b>PaymentMethods</b> fields will stop being returned, and instead, the actual payment method used will be returned in the <b>PaymentMethod</b> field of the <b>CheckoutStatus</b> container.
      *  <br>
      *  <br>
      *  In an <b>AddOrder</b> call, the seller can use one or more <b>PaymentMethods</b> fields to override whatever available payment methods were already defined for each individual line item.
@@ -900,7 +781,7 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
     /**
      * isset paymentMethods
      *
-     * In <b>GetOrders</b>, <b>GetOrderTransactions</b>, and <b>OrderReport</b>, a <b>PaymentMethods</b> field will appear for each payment method available to the buyer for the order's purchase. However, once the buyer pays for the order, any and all of these <b>PaymentMethods</b> fields will stop being returned, and instead, the actual payment method used will be returned in the <b>PaymentMethod</b> field of the <b>CheckoutStatus</b> container.
+     * In <b>GetOrders</b> and <b>OrderReport</b>, a <b>PaymentMethods</b> field will appear for each payment method available to the buyer for the order's purchase. However, once the buyer pays for the order, any and all of these <b>PaymentMethods</b> fields will stop being returned, and instead, the actual payment method used will be returned in the <b>PaymentMethod</b> field of the <b>CheckoutStatus</b> container.
      *  <br>
      *  <br>
      *  In an <b>AddOrder</b> call, the seller can use one or more <b>PaymentMethods</b> fields to override whatever available payment methods were already defined for each individual line item.
@@ -920,7 +801,7 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
     /**
      * unset paymentMethods
      *
-     * In <b>GetOrders</b>, <b>GetOrderTransactions</b>, and <b>OrderReport</b>, a <b>PaymentMethods</b> field will appear for each payment method available to the buyer for the order's purchase. However, once the buyer pays for the order, any and all of these <b>PaymentMethods</b> fields will stop being returned, and instead, the actual payment method used will be returned in the <b>PaymentMethod</b> field of the <b>CheckoutStatus</b> container.
+     * In <b>GetOrders</b> and <b>OrderReport</b>, a <b>PaymentMethods</b> field will appear for each payment method available to the buyer for the order's purchase. However, once the buyer pays for the order, any and all of these <b>PaymentMethods</b> fields will stop being returned, and instead, the actual payment method used will be returned in the <b>PaymentMethod</b> field of the <b>CheckoutStatus</b> container.
      *  <br>
      *  <br>
      *  In an <b>AddOrder</b> call, the seller can use one or more <b>PaymentMethods</b> fields to override whatever available payment methods were already defined for each individual line item.
@@ -940,7 +821,7 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
     /**
      * Gets as paymentMethods
      *
-     * In <b>GetOrders</b>, <b>GetOrderTransactions</b>, and <b>OrderReport</b>, a <b>PaymentMethods</b> field will appear for each payment method available to the buyer for the order's purchase. However, once the buyer pays for the order, any and all of these <b>PaymentMethods</b> fields will stop being returned, and instead, the actual payment method used will be returned in the <b>PaymentMethod</b> field of the <b>CheckoutStatus</b> container.
+     * In <b>GetOrders</b> and <b>OrderReport</b>, a <b>PaymentMethods</b> field will appear for each payment method available to the buyer for the order's purchase. However, once the buyer pays for the order, any and all of these <b>PaymentMethods</b> fields will stop being returned, and instead, the actual payment method used will be returned in the <b>PaymentMethod</b> field of the <b>CheckoutStatus</b> container.
      *  <br>
      *  <br>
      *  In an <b>AddOrder</b> call, the seller can use one or more <b>PaymentMethods</b> fields to override whatever available payment methods were already defined for each individual line item.
@@ -959,7 +840,7 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
     /**
      * Sets a new paymentMethods
      *
-     * In <b>GetOrders</b>, <b>GetOrderTransactions</b>, and <b>OrderReport</b>, a <b>PaymentMethods</b> field will appear for each payment method available to the buyer for the order's purchase. However, once the buyer pays for the order, any and all of these <b>PaymentMethods</b> fields will stop being returned, and instead, the actual payment method used will be returned in the <b>PaymentMethod</b> field of the <b>CheckoutStatus</b> container.
+     * In <b>GetOrders</b> and <b>OrderReport</b>, a <b>PaymentMethods</b> field will appear for each payment method available to the buyer for the order's purchase. However, once the buyer pays for the order, any and all of these <b>PaymentMethods</b> fields will stop being returned, and instead, the actual payment method used will be returned in the <b>PaymentMethod</b> field of the <b>CheckoutStatus</b> container.
      *  <br>
      *  <br>
      *  In an <b>AddOrder</b> call, the seller can use one or more <b>PaymentMethods</b> fields to override whatever available payment methods were already defined for each individual line item.
@@ -982,7 +863,7 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      *
      * The email address of the seller involved in the order. The email address of the seller is only returned if it is the same seller making the call.<br> <br>
      *  <span class="tablenote"><b>Note:</b>
-     *  For the <strong>GetOrders</strong> and <strong>GetOrderTransactions</strong> calls, this field is only returned to the seller of the order; this field is not returned to the buyer or to a third party.
+     *  For the <strong>GetOrders</strong> calls, this field is only returned to the seller of the order; this field is not returned to the buyer or to a third party.
      *  </span>
      *
      * @return string
@@ -997,7 +878,7 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      *
      * The email address of the seller involved in the order. The email address of the seller is only returned if it is the same seller making the call.<br> <br>
      *  <span class="tablenote"><b>Note:</b>
-     *  For the <strong>GetOrders</strong> and <strong>GetOrderTransactions</strong> calls, this field is only returned to the seller of the order; this field is not returned to the buyer or to a third party.
+     *  For the <strong>GetOrders</strong> calls, this field is only returned to the seller of the order; this field is not returned to the buyer or to a third party.
      *  </span>
      *
      * @param string $sellerEmail
@@ -1019,12 +900,12 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      *  <strong>Note:</strong> For an Authenticity Guarantee program shipment, this is the address of the authenticator's warehouse. The authenticator is responsible for delivery to the buyer's shipping address.
      *  </span></p>
      *  <p><span class="tablenote">
-     *  <strong>Note:</strong> For In-Store Pickup and Click and Collect orders, this is the address of the merchant's store where the buyer will pick up the order.
+     *  <strong>Note:</strong> For transactions completed offline, the shipping address detail may be empty.
      *  </span></p>
-     *  <p><span class="tablenote"><b>Note:</b> For GetOrderTransactions, the buyer's shipping address may also be returned at the order line item level in the <b>Transaction.Buyer.BuyerInfo.ShippingAddress</b> container.
-     *  </span></p>
+     *  <p><span class="tablenote">
+     *  <strong>Note:</strong> For In-Store Pickup and Click and Collect orders, this is the address of the merchant's store where the buyer will pick up the order.</span></p>
      *  <p><span class="tablenote"><b>Note:</b>
-     *  For eBay Vault scenarios: <strong>GetOrders</strong>, <strong>GetOrderTransactions</strong>, and <strong>GetItemTransactions</strong> calls, mock address details are returned for: <br><br>-<em> Vault to vault orders</em>: Buyer and Seller View<br><br>-<em> Ship to vault orders</em>: Mock addresses are returned for the Buyer View (only); the address returned for the Seller View will be the authenticator's address.<br><br>-<em> Vault in-hand submission orders</em>: the address returned for the Buyer View will be the authenticator's address.<br><br>
+     *  For eBay Vault scenarios: <strong>GetOrders</strong> and <strong>GetItemTransactions</strong> calls, mock address details are returned for: <br><br>-<em> Vault to vault orders</em>: Buyer and Seller View<br><br>-<em> Ship to vault orders</em>: Mock addresses are returned for the Buyer View (only); the address returned for the Seller View will be the authenticator's address.<br><br>-<em> Vault in-hand submission orders</em>: the address returned for the Buyer View will be the authenticator's address.<br><br>
      *  The following address details are returned for mock addresses:
      *  <pre>
      *  &lt;ShippingAddress&gt;
@@ -1076,12 +957,12 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      *  <strong>Note:</strong> For an Authenticity Guarantee program shipment, this is the address of the authenticator's warehouse. The authenticator is responsible for delivery to the buyer's shipping address.
      *  </span></p>
      *  <p><span class="tablenote">
-     *  <strong>Note:</strong> For In-Store Pickup and Click and Collect orders, this is the address of the merchant's store where the buyer will pick up the order.
+     *  <strong>Note:</strong> For transactions completed offline, the shipping address detail may be empty.
      *  </span></p>
-     *  <p><span class="tablenote"><b>Note:</b> For GetOrderTransactions, the buyer's shipping address may also be returned at the order line item level in the <b>Transaction.Buyer.BuyerInfo.ShippingAddress</b> container.
-     *  </span></p>
+     *  <p><span class="tablenote">
+     *  <strong>Note:</strong> For In-Store Pickup and Click and Collect orders, this is the address of the merchant's store where the buyer will pick up the order.</span></p>
      *  <p><span class="tablenote"><b>Note:</b>
-     *  For eBay Vault scenarios: <strong>GetOrders</strong>, <strong>GetOrderTransactions</strong>, and <strong>GetItemTransactions</strong> calls, mock address details are returned for: <br><br>-<em> Vault to vault orders</em>: Buyer and Seller View<br><br>-<em> Ship to vault orders</em>: Mock addresses are returned for the Buyer View (only); the address returned for the Seller View will be the authenticator's address.<br><br>-<em> Vault in-hand submission orders</em>: the address returned for the Buyer View will be the authenticator's address.<br><br>
+     *  For eBay Vault scenarios: <strong>GetOrders</strong> and <strong>GetItemTransactions</strong> calls, mock address details are returned for: <br><br>-<em> Vault to vault orders</em>: Buyer and Seller View<br><br>-<em> Ship to vault orders</em>: Mock addresses are returned for the Buyer View (only); the address returned for the Seller View will be the authenticator's address.<br><br>-<em> Vault in-hand submission orders</em>: the address returned for the Buyer View will be the authenticator's address.<br><br>
      *  The following address details are returned for mock addresses:
      *  <pre>
      *  &lt;ShippingAddress&gt;
@@ -1218,87 +1099,6 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
     }
 
     /**
-     * Adds as externalTransaction
-     *
-     * Container consisting of payment details for an eBay order, including an identifier for the monetary transaction and a field to express any fees or credits applied to the monetary transaction. This field is only returned after payment for the order has occurred.
-     *  <br>
-     *  <span class="tablenote"><b>Note: </b> This container will stop being returned on January 31, 2024. The <strong>MonetaryDetails</strong> container should be used instead.
-     *  </span>
-     *
-     * @return self
-     * @param \Nogrod\eBaySDK\Trading\ExternalTransactionType $externalTransaction
-     */
-    public function addToExternalTransaction(\Nogrod\eBaySDK\Trading\ExternalTransactionType $externalTransaction)
-    {
-        $this->externalTransaction[] = $externalTransaction;
-        return $this;
-    }
-
-    /**
-     * isset externalTransaction
-     *
-     * Container consisting of payment details for an eBay order, including an identifier for the monetary transaction and a field to express any fees or credits applied to the monetary transaction. This field is only returned after payment for the order has occurred.
-     *  <br>
-     *  <span class="tablenote"><b>Note: </b> This container will stop being returned on January 31, 2024. The <strong>MonetaryDetails</strong> container should be used instead.
-     *  </span>
-     *
-     * @param int|string $index
-     * @return bool
-     */
-    public function issetExternalTransaction($index)
-    {
-        return isset($this->externalTransaction[$index]);
-    }
-
-    /**
-     * unset externalTransaction
-     *
-     * Container consisting of payment details for an eBay order, including an identifier for the monetary transaction and a field to express any fees or credits applied to the monetary transaction. This field is only returned after payment for the order has occurred.
-     *  <br>
-     *  <span class="tablenote"><b>Note: </b> This container will stop being returned on January 31, 2024. The <strong>MonetaryDetails</strong> container should be used instead.
-     *  </span>
-     *
-     * @param int|string $index
-     * @return void
-     */
-    public function unsetExternalTransaction($index)
-    {
-        unset($this->externalTransaction[$index]);
-    }
-
-    /**
-     * Gets as externalTransaction
-     *
-     * Container consisting of payment details for an eBay order, including an identifier for the monetary transaction and a field to express any fees or credits applied to the monetary transaction. This field is only returned after payment for the order has occurred.
-     *  <br>
-     *  <span class="tablenote"><b>Note: </b> This container will stop being returned on January 31, 2024. The <strong>MonetaryDetails</strong> container should be used instead.
-     *  </span>
-     *
-     * @return \Nogrod\eBaySDK\Trading\ExternalTransactionType[]
-     */
-    public function getExternalTransaction()
-    {
-        return $this->externalTransaction;
-    }
-
-    /**
-     * Sets a new externalTransaction
-     *
-     * Container consisting of payment details for an eBay order, including an identifier for the monetary transaction and a field to express any fees or credits applied to the monetary transaction. This field is only returned after payment for the order has occurred.
-     *  <br>
-     *  <span class="tablenote"><b>Note: </b> This container will stop being returned on January 31, 2024. The <strong>MonetaryDetails</strong> container should be used instead.
-     *  </span>
-     *
-     * @param \Nogrod\eBaySDK\Trading\ExternalTransactionType[] $externalTransaction
-     * @return self
-     */
-    public function setExternalTransaction(array $externalTransaction)
-    {
-        $this->externalTransaction = $externalTransaction;
-        return $this;
-    }
-
-    /**
      * Adds as transaction
      *
      * Container consisting of one or more line items that comprise an order. The data for each order line item in the order is stored in a separate <b>Transaction</b> container.
@@ -1407,8 +1207,7 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      *  returned until payment has been made by the buyer.
      *  <br><br>
      *  This time is specified in GMT (not Pacific time).
-     *  See <a href="https://developer.ebay.com/DevZone/guides/features-guide/default.html#basics/DataTypes.html#ConvertingBetweenUTCGMTandLocalTime"> eBay Features Guide</a>
-     *  for information about converting between GMT and other time zones.
+     *  See <a href="https://developer.ebay.com/api-docs/user-guides/static/make-a-call/tapi-data-types.html#utc-local"> API data types</a> section of the Making a Trading API call guide for information about converting between GMT and other time zones.
      *
      * @return \DateTime
      */
@@ -1424,8 +1223,7 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      *  returned until payment has been made by the buyer.
      *  <br><br>
      *  This time is specified in GMT (not Pacific time).
-     *  See <a href="https://developer.ebay.com/DevZone/guides/features-guide/default.html#basics/DataTypes.html#ConvertingBetweenUTCGMTandLocalTime"> eBay Features Guide</a>
-     *  for information about converting between GMT and other time zones.
+     *  See <a href="https://developer.ebay.com/api-docs/user-guides/static/make-a-call/tapi-data-types.html#utc-local"> API data types</a> section of the Making a Trading API call guide for information about converting between GMT and other time zones.
      *
      * @param \DateTime $paidTime
      * @return self
@@ -1442,8 +1240,7 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      * Timestamp indicating the date and time of order shipment. This field is not returned until shipment tracking is provided for all line items in the order, or if the order has been marked as 'shipped' by the seller.
      *  <br><br>
      *  This time is specified in GMT (not Pacific time).
-     *  See <a href="https://developer.ebay.com/DevZone/guides/features-guide/default.html#basics/DataTypes.html"> eBay Features Guide</a>
-     *  for information about converting between GMT and other time zones.
+     *  See <a href="https://developer.ebay.com/api-docs/user-guides/static/make-a-call/tapi-data-types.html"> API data types</a> section of the Making a Trading API call guide for information about converting between GMT and other time zones.
      *
      * @return \DateTime
      */
@@ -1458,8 +1255,7 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      * Timestamp indicating the date and time of order shipment. This field is not returned until shipment tracking is provided for all line items in the order, or if the order has been marked as 'shipped' by the seller.
      *  <br><br>
      *  This time is specified in GMT (not Pacific time).
-     *  See <a href="https://developer.ebay.com/DevZone/guides/features-guide/default.html#basics/DataTypes.html"> eBay Features Guide</a>
-     *  for information about converting between GMT and other time zones.
+     *  See <a href="https://developer.ebay.com/api-docs/user-guides/static/make-a-call/tapi-data-types.html"> API data types</a> section of the Making a Trading API call guide for information about converting between GMT and other time zones.
      *
      * @param \DateTime $shippedTime
      * @return self
@@ -1467,40 +1263,6 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
     public function setShippedTime(\DateTime $shippedTime)
     {
         $this->shippedTime = $shippedTime;
-        return $this;
-    }
-
-    /**
-     * Gets as integratedMerchantCreditCardEnabled
-     *
-     * <br>
-     *  This field is no longer applicable as eBay sellers can no longer use iMCC gateway accounts to handle buyer payments.
-     *  <br>
-     *  <span class="tablenote"><b>Note: </b> This field will stop being returned on January 31, 2024 and will be removed from the Trading WSDL.
-     *  </span>
-     *
-     * @return bool
-     */
-    public function getIntegratedMerchantCreditCardEnabled()
-    {
-        return $this->integratedMerchantCreditCardEnabled;
-    }
-
-    /**
-     * Sets a new integratedMerchantCreditCardEnabled
-     *
-     * <br>
-     *  This field is no longer applicable as eBay sellers can no longer use iMCC gateway accounts to handle buyer payments.
-     *  <br>
-     *  <span class="tablenote"><b>Note: </b> This field will stop being returned on January 31, 2024 and will be removed from the Trading WSDL.
-     *  </span>
-     *
-     * @param bool $integratedMerchantCreditCardEnabled
-     * @return self
-     */
-    public function setIntegratedMerchantCreditCardEnabled($integratedMerchantCreditCardEnabled)
-    {
-        $this->integratedMerchantCreditCardEnabled = $integratedMerchantCreditCardEnabled;
         return $this;
     }
 
@@ -1595,10 +1357,10 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
     /**
      * Gets as paymentHoldStatus
      *
-     * This field indicates the type and/or status of a payment hold on the item. It is always returned for <b>GetOrders</b> and <b>GetOrderTransactions</b>, even if there are no payment holds (in which case, an enumeration value of <code>None</code> is shown).
+     * This field indicates the type and/or status of a payment hold on the item. It is always returned for <b>GetOrders</b>, even if there are no payment holds (in which case, an enumeration value of <code>None</code> is shown).
      *  <br>
      *  <span class="tablenote"><b>Note:</b>
-     *  For the <strong>GetItemTransactions</strong>, <strong>GetOrders</strong>, and <strong>GetOrderTransactions</strong> calls, this field is only returned to the seller of the order; this field is not returned for the buyer or third party.
+     *  For the <strong>GetItemTransactions</strong> and <strong>GetOrders</strong> calls, this field is only returned to the seller of the order; this field is not returned for the buyer or third party.
      *  </span>
      *  <span class="tablenote"><b>Note: </b> This field will stop being returned by <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
      *  </span>
@@ -1613,10 +1375,10 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
     /**
      * Sets a new paymentHoldStatus
      *
-     * This field indicates the type and/or status of a payment hold on the item. It is always returned for <b>GetOrders</b> and <b>GetOrderTransactions</b>, even if there are no payment holds (in which case, an enumeration value of <code>None</code> is shown).
+     * This field indicates the type and/or status of a payment hold on the item. It is always returned for <b>GetOrders</b>, even if there are no payment holds (in which case, an enumeration value of <code>None</code> is shown).
      *  <br>
      *  <span class="tablenote"><b>Note:</b>
-     *  For the <strong>GetItemTransactions</strong>, <strong>GetOrders</strong>, and <strong>GetOrderTransactions</strong> calls, this field is only returned to the seller of the order; this field is not returned for the buyer or third party.
+     *  For the <strong>GetItemTransactions</strong> and <strong>GetOrders</strong> calls, this field is only returned to the seller of the order; this field is not returned for the buyer or third party.
      *  </span>
      *  <span class="tablenote"><b>Note: </b> This field will stop being returned by <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
      *  </span>
@@ -1627,52 +1389,6 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
     public function setPaymentHoldStatus($paymentHoldStatus)
     {
         $this->paymentHoldStatus = $paymentHoldStatus;
-        return $this;
-    }
-
-    /**
-     * Gets as paymentHoldDetails
-     *
-     * <br>
-     *  This container consists of information related to the payment hold
-     *  on the order, including the reason why the buyer's payment for the order is
-     *  being held, the expected release date of the funds into the seller's
-     *  account, and possible action(s) the seller can take to expedite the payout
-     *  of funds into their account. This container is only returned if a payment hold has placed on the order.
-     *  <br><br>
-     *  See <b>PaymentHoldReasonCodeType</b> for some details on why/when a seller's funds may be held, or visit the <a href="https://www.ebay.com/help/selling/getting-paid/getting-paid-items-youve-sold/pending-payments?id=4816">Pending payments</a> help topic for more information on eBay's payment hold policies.
-     *  <br>
-     *  <span class="tablenote"><b>Note: </b> The <b>Order.PaymentHoldDetails</b> and <b>ContainingOrder.PaymentHoldDetails</b> containers and child fields will stop being returned on January 31, 2024 and will be removed from the Trading WSDL. Payment hold details can be viewed at the transaction level instead.
-     *  </span>
-     *
-     * @return \Nogrod\eBaySDK\Trading\PaymentHoldDetailType
-     */
-    public function getPaymentHoldDetails()
-    {
-        return $this->paymentHoldDetails;
-    }
-
-    /**
-     * Sets a new paymentHoldDetails
-     *
-     * <br>
-     *  This container consists of information related to the payment hold
-     *  on the order, including the reason why the buyer's payment for the order is
-     *  being held, the expected release date of the funds into the seller's
-     *  account, and possible action(s) the seller can take to expedite the payout
-     *  of funds into their account. This container is only returned if a payment hold has placed on the order.
-     *  <br><br>
-     *  See <b>PaymentHoldReasonCodeType</b> for some details on why/when a seller's funds may be held, or visit the <a href="https://www.ebay.com/help/selling/getting-paid/getting-paid-items-youve-sold/pending-payments?id=4816">Pending payments</a> help topic for more information on eBay's payment hold policies.
-     *  <br>
-     *  <span class="tablenote"><b>Note: </b> The <b>Order.PaymentHoldDetails</b> and <b>ContainingOrder.PaymentHoldDetails</b> containers and child fields will stop being returned on January 31, 2024 and will be removed from the Trading WSDL. Payment hold details can be viewed at the transaction level instead.
-     *  </span>
-     *
-     * @param \Nogrod\eBaySDK\Trading\PaymentHoldDetailType $paymentHoldDetails
-     * @return self
-     */
-    public function setPaymentHoldDetails(\Nogrod\eBaySDK\Trading\PaymentHoldDetailType $paymentHoldDetails)
-    {
-        $this->paymentHoldDetails = $paymentHoldDetails;
         return $this;
     }
 
@@ -1725,77 +1441,6 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
     public function setRefundStatus($refundStatus)
     {
         $this->refundStatus = $refundStatus;
-        return $this;
-    }
-
-    /**
-     * Adds as refund
-     *
-     * <span class="tablenote"><b>Note: </b> This container was only used for Half.com orders, and since the Half.com site was taken down, this container is no longer applicable.
-     *  </span>
-     *
-     * @return self
-     * @param \Nogrod\eBaySDK\Trading\RefundType $refund
-     */
-    public function addToRefundArray(\Nogrod\eBaySDK\Trading\RefundType $refund)
-    {
-        $this->refundArray[] = $refund;
-        return $this;
-    }
-
-    /**
-     * isset refundArray
-     *
-     * <span class="tablenote"><b>Note: </b> This container was only used for Half.com orders, and since the Half.com site was taken down, this container is no longer applicable.
-     *  </span>
-     *
-     * @param int|string $index
-     * @return bool
-     */
-    public function issetRefundArray($index)
-    {
-        return isset($this->refundArray[$index]);
-    }
-
-    /**
-     * unset refundArray
-     *
-     * <span class="tablenote"><b>Note: </b> This container was only used for Half.com orders, and since the Half.com site was taken down, this container is no longer applicable.
-     *  </span>
-     *
-     * @param int|string $index
-     * @return void
-     */
-    public function unsetRefundArray($index)
-    {
-        unset($this->refundArray[$index]);
-    }
-
-    /**
-     * Gets as refundArray
-     *
-     * <span class="tablenote"><b>Note: </b> This container was only used for Half.com orders, and since the Half.com site was taken down, this container is no longer applicable.
-     *  </span>
-     *
-     * @return \Nogrod\eBaySDK\Trading\RefundType[]
-     */
-    public function getRefundArray()
-    {
-        return $this->refundArray;
-    }
-
-    /**
-     * Sets a new refundArray
-     *
-     * <span class="tablenote"><b>Note: </b> This container was only used for Half.com orders, and since the Half.com site was taken down, this container is no longer applicable.
-     *  </span>
-     *
-     * @param \Nogrod\eBaySDK\Trading\RefundType[] $refundArray
-     * @return self
-     */
-    public function setRefundArray(array $refundArray)
-    {
-        $this->refundArray = $refundArray;
         return $this;
     }
 
@@ -1914,7 +1559,7 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      *
      * Container consisting of an array of <strong>PickupOptions</strong> containers. Each <strong>PickupOptions</strong> container consists of the pickup method and its priority. The priority of each pickup method controls the order (relative to other pickup methods) in which the corresponding pickup method will appear in the View Item and Checkout page.
      *  <br/><br/>
-     *  For <strong>GetOrders</strong> and <strong>GetOrderTransactions</strong>, this container is always returned prior to order payment if the seller created/revised/relisted the item with the <strong>EligibleForPickupInStore</strong> and/or <strong>EligibleForPickupDropOff</strong> flag in the call request set to 'true'. If and when the In-Store pickup method (US only) or 'Click and Collect' pickup method (UK and Australia only) is selected by the buyer and payment for the order is made, this container will no longer be returned in the response, and will essentially be replaced by the <strong>PickupMethodSelected</strong> container.
+     *  For <strong>GetOrders</strong>, this container is always returned prior to order payment if the seller created/revised/relisted the item with the <strong>EligibleForPickupInStore</strong> and/or <strong>EligibleForPickupDropOff</strong> flag in the call request set to 'true'. If and when the In-Store pickup method (US only) or 'Click and Collect' pickup method (UK and Australia only) is selected by the buyer and payment for the order is made, this container will no longer be returned in the response, and will essentially be replaced by the <strong>PickupMethodSelected</strong> container.
      *  <br/><br/>
      *  <span class="tablenote">
      *  <strong>Note:</strong> A seller must be eligible for the In-Store Pickup feature or Click and Collect feature to list an item that is eligible for In-Store Pickup or Click and Collect. At this time, the In-Store Pickup and Click and Collect features are generally only available to large retail merchants, and can only be applied to multiple-quantity, fixed-price listings.
@@ -1934,7 +1579,7 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      *
      * Container consisting of an array of <strong>PickupOptions</strong> containers. Each <strong>PickupOptions</strong> container consists of the pickup method and its priority. The priority of each pickup method controls the order (relative to other pickup methods) in which the corresponding pickup method will appear in the View Item and Checkout page.
      *  <br/><br/>
-     *  For <strong>GetOrders</strong> and <strong>GetOrderTransactions</strong>, this container is always returned prior to order payment if the seller created/revised/relisted the item with the <strong>EligibleForPickupInStore</strong> and/or <strong>EligibleForPickupDropOff</strong> flag in the call request set to 'true'. If and when the In-Store pickup method (US only) or 'Click and Collect' pickup method (UK and Australia only) is selected by the buyer and payment for the order is made, this container will no longer be returned in the response, and will essentially be replaced by the <strong>PickupMethodSelected</strong> container.
+     *  For <strong>GetOrders</strong>, this container is always returned prior to order payment if the seller created/revised/relisted the item with the <strong>EligibleForPickupInStore</strong> and/or <strong>EligibleForPickupDropOff</strong> flag in the call request set to 'true'. If and when the In-Store pickup method (US only) or 'Click and Collect' pickup method (UK and Australia only) is selected by the buyer and payment for the order is made, this container will no longer be returned in the response, and will essentially be replaced by the <strong>PickupMethodSelected</strong> container.
      *  <br/><br/>
      *  <span class="tablenote">
      *  <strong>Note:</strong> A seller must be eligible for the In-Store Pickup feature or Click and Collect feature to list an item that is eligible for In-Store Pickup or Click and Collect. At this time, the In-Store Pickup and Click and Collect features are generally only available to large retail merchants, and can only be applied to multiple-quantity, fixed-price listings.
@@ -1953,7 +1598,7 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      *
      * Container consisting of an array of <strong>PickupOptions</strong> containers. Each <strong>PickupOptions</strong> container consists of the pickup method and its priority. The priority of each pickup method controls the order (relative to other pickup methods) in which the corresponding pickup method will appear in the View Item and Checkout page.
      *  <br/><br/>
-     *  For <strong>GetOrders</strong> and <strong>GetOrderTransactions</strong>, this container is always returned prior to order payment if the seller created/revised/relisted the item with the <strong>EligibleForPickupInStore</strong> and/or <strong>EligibleForPickupDropOff</strong> flag in the call request set to 'true'. If and when the In-Store pickup method (US only) or 'Click and Collect' pickup method (UK and Australia only) is selected by the buyer and payment for the order is made, this container will no longer be returned in the response, and will essentially be replaced by the <strong>PickupMethodSelected</strong> container.
+     *  For <strong>GetOrders</strong>, this container is always returned prior to order payment if the seller created/revised/relisted the item with the <strong>EligibleForPickupInStore</strong> and/or <strong>EligibleForPickupDropOff</strong> flag in the call request set to 'true'. If and when the In-Store pickup method (US only) or 'Click and Collect' pickup method (UK and Australia only) is selected by the buyer and payment for the order is made, this container will no longer be returned in the response, and will essentially be replaced by the <strong>PickupMethodSelected</strong> container.
      *  <br/><br/>
      *  <span class="tablenote">
      *  <strong>Note:</strong> A seller must be eligible for the In-Store Pickup feature or Click and Collect feature to list an item that is eligible for In-Store Pickup or Click and Collect. At this time, the In-Store Pickup and Click and Collect features are generally only available to large retail merchants, and can only be applied to multiple-quantity, fixed-price listings.
@@ -1972,7 +1617,7 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      *
      * Container consisting of an array of <strong>PickupOptions</strong> containers. Each <strong>PickupOptions</strong> container consists of the pickup method and its priority. The priority of each pickup method controls the order (relative to other pickup methods) in which the corresponding pickup method will appear in the View Item and Checkout page.
      *  <br/><br/>
-     *  For <strong>GetOrders</strong> and <strong>GetOrderTransactions</strong>, this container is always returned prior to order payment if the seller created/revised/relisted the item with the <strong>EligibleForPickupInStore</strong> and/or <strong>EligibleForPickupDropOff</strong> flag in the call request set to 'true'. If and when the In-Store pickup method (US only) or 'Click and Collect' pickup method (UK and Australia only) is selected by the buyer and payment for the order is made, this container will no longer be returned in the response, and will essentially be replaced by the <strong>PickupMethodSelected</strong> container.
+     *  For <strong>GetOrders</strong>, this container is always returned prior to order payment if the seller created/revised/relisted the item with the <strong>EligibleForPickupInStore</strong> and/or <strong>EligibleForPickupDropOff</strong> flag in the call request set to 'true'. If and when the In-Store pickup method (US only) or 'Click and Collect' pickup method (UK and Australia only) is selected by the buyer and payment for the order is made, this container will no longer be returned in the response, and will essentially be replaced by the <strong>PickupMethodSelected</strong> container.
      *  <br/><br/>
      *  <span class="tablenote">
      *  <strong>Note:</strong> A seller must be eligible for the In-Store Pickup feature or Click and Collect feature to list an item that is eligible for In-Store Pickup or Click and Collect. At this time, the In-Store Pickup and Click and Collect features are generally only available to large retail merchants, and can only be applied to multiple-quantity, fixed-price listings.
@@ -1990,7 +1635,7 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      *
      * Container consisting of an array of <strong>PickupOptions</strong> containers. Each <strong>PickupOptions</strong> container consists of the pickup method and its priority. The priority of each pickup method controls the order (relative to other pickup methods) in which the corresponding pickup method will appear in the View Item and Checkout page.
      *  <br/><br/>
-     *  For <strong>GetOrders</strong> and <strong>GetOrderTransactions</strong>, this container is always returned prior to order payment if the seller created/revised/relisted the item with the <strong>EligibleForPickupInStore</strong> and/or <strong>EligibleForPickupDropOff</strong> flag in the call request set to 'true'. If and when the In-Store pickup method (US only) or 'Click and Collect' pickup method (UK and Australia only) is selected by the buyer and payment for the order is made, this container will no longer be returned in the response, and will essentially be replaced by the <strong>PickupMethodSelected</strong> container.
+     *  For <strong>GetOrders</strong>, this container is always returned prior to order payment if the seller created/revised/relisted the item with the <strong>EligibleForPickupInStore</strong> and/or <strong>EligibleForPickupDropOff</strong> flag in the call request set to 'true'. If and when the In-Store pickup method (US only) or 'Click and Collect' pickup method (UK and Australia only) is selected by the buyer and payment for the order is made, this container will no longer be returned in the response, and will essentially be replaced by the <strong>PickupMethodSelected</strong> container.
      *  <br/><br/>
      *  <span class="tablenote">
      *  <strong>Note:</strong> A seller must be eligible for the In-Store Pickup feature or Click and Collect feature to list an item that is eligible for In-Store Pickup or Click and Collect. At this time, the In-Store Pickup and Click and Collect features are generally only available to large retail merchants, and can only be applied to multiple-quantity, fixed-price listings.
@@ -2107,10 +1752,6 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      * Gets as cancelReason
      *
      * This value indicates the reason why the order cancellation was initiated. This field is only returned if an order cancellation has been initiated by the buyer or seller. Typical buyer-initiated cancellation reasons include 'OrderPlacedByMistake', 'WontArriveInTime', or 'FoundCheaperPrice'. Sellers may initiate an order cancellation on behalf of the buyer. In this scenario, the seller should state the cancellation reason as 'BuyerCancelOrder'. If the seller is cancelling an order because he/she is out of stock on an item, the seller should state the cancellation reason as 'OutOfStock'. Unfortunately, in this scenario, the seller will receive a seller defect for this cancellation reason. See <a href="types/CancelReasonCodeType.html">CancelReasonCodeType</a> for the complete list of enumeration values that can be returned in this field.
-     *  <br><br>
-     *  <span class="tablenote"><strong>Note:</strong>
-     *  Only the <b>CancelReason</b> and <b>CancelStatus</b> fields are returned. The <b>CancelDetail</b> container and the <b>CancelReasonDetails</b> field are no longer returned. A seller can use the <a href="https://developer.ebay.com/Devzone/post-order/post-order_v2_cancellation_search__get.html">Search Cancellations</a> method of the Post-Order API to retrieve more details on a cancelled order. If the seller does use this method, they can use the Order ID or Item ID as a filter in the request to retrieve the correct cancellation request.
-     *  </span>
      *
      * @return string
      */
@@ -2123,10 +1764,6 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      * Sets a new cancelReason
      *
      * This value indicates the reason why the order cancellation was initiated. This field is only returned if an order cancellation has been initiated by the buyer or seller. Typical buyer-initiated cancellation reasons include 'OrderPlacedByMistake', 'WontArriveInTime', or 'FoundCheaperPrice'. Sellers may initiate an order cancellation on behalf of the buyer. In this scenario, the seller should state the cancellation reason as 'BuyerCancelOrder'. If the seller is cancelling an order because he/she is out of stock on an item, the seller should state the cancellation reason as 'OutOfStock'. Unfortunately, in this scenario, the seller will receive a seller defect for this cancellation reason. See <a href="types/CancelReasonCodeType.html">CancelReasonCodeType</a> for the complete list of enumeration values that can be returned in this field.
-     *  <br><br>
-     *  <span class="tablenote"><strong>Note:</strong>
-     *  Only the <b>CancelReason</b> and <b>CancelStatus</b> fields are returned. The <b>CancelDetail</b> container and the <b>CancelReasonDetails</b> field are no longer returned. A seller can use the <a href="https://developer.ebay.com/Devzone/post-order/post-order_v2_cancellation_search__get.html">Search Cancellations</a> method of the Post-Order API to retrieve more details on a cancelled order. If the seller does use this method, they can use the Order ID or Item ID as a filter in the request to retrieve the correct cancellation request.
-     *  </span>
      *
      * @param string $cancelReason
      * @return self
@@ -2141,10 +1778,6 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      * Gets as cancelStatus
      *
      * The current status for the order cancellation request (if it exists for the order). This field is only returned if a cancellation request has been made on the order, or if the order is currently going through the cancellation process, or if the order has already been cancelled.
-     *  <br><br>
-     *  <span class="tablenote"><strong>Note:</strong>
-     *  Only the <b>CancelReason</b> and <b>CancelStatus</b> fields are returned. The <b>CancelDetail</b> container and the <b>CancelReasonDetails</b> field are no longer returned. A seller can use the <a href="https://developer.ebay.com/Devzone/post-order/post-order_v2_cancellation_search__get.html">Search Cancellations</a> method of the Post-Order API to retrieve more details on a cancelled order. If the seller does use this method, they can use the Order ID or Item ID as a filter in the request to retrieve the correct cancellation request.
-     *  </span>
      *
      * @return string
      */
@@ -2157,10 +1790,6 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      * Sets a new cancelStatus
      *
      * The current status for the order cancellation request (if it exists for the order). This field is only returned if a cancellation request has been made on the order, or if the order is currently going through the cancellation process, or if the order has already been cancelled.
-     *  <br><br>
-     *  <span class="tablenote"><strong>Note:</strong>
-     *  Only the <b>CancelReason</b> and <b>CancelStatus</b> fields are returned. The <b>CancelDetail</b> container and the <b>CancelReasonDetails</b> field are no longer returned. A seller can use the <a href="https://developer.ebay.com/Devzone/post-order/post-order_v2_cancellation_search__get.html">Search Cancellations</a> method of the Post-Order API to retrieve more details on a cancelled order. If the seller does use this method, they can use the Order ID or Item ID as a filter in the request to retrieve the correct cancellation request.
-     *  </span>
      *
      * @param string $cancelStatus
      * @return self
@@ -2168,156 +1797,6 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
     public function setCancelStatus($cancelStatus)
     {
         $this->cancelStatus = $cancelStatus;
-        return $this;
-    }
-
-    /**
-     * Gets as cancelReasonDetails
-     *
-     * The detailed reason for the cancellation of an eBay order. This field is only returned if it is available when a cancellation request has been made on the order, or if the order is currently going through the cancellation process, or if the order has already been cancelled.
-     *  <br><br>
-     *  <span class="tablenote"><strong>Note:</strong>
-     *  Only the <b>CancelReason</b> and <b>CancelStatus</b> fields are returned. The <b>CancelDetail</b> container and the <b>CancelReasonDetails</b> field are no longer returned. A seller can use the <a href="https://developer.ebay.com/Devzone/post-order/post-order_v2_cancellation_search__get.html">Search Cancellations</a> method of the Post-Order API to retrieve more details on a cancelled order. If the seller does use this method, they can use the Order ID or Item ID as a filter in the request to retrieve the correct cancellation request.
-     *  </span>
-     *
-     * @return string
-     */
-    public function getCancelReasonDetails()
-    {
-        return $this->cancelReasonDetails;
-    }
-
-    /**
-     * Sets a new cancelReasonDetails
-     *
-     * The detailed reason for the cancellation of an eBay order. This field is only returned if it is available when a cancellation request has been made on the order, or if the order is currently going through the cancellation process, or if the order has already been cancelled.
-     *  <br><br>
-     *  <span class="tablenote"><strong>Note:</strong>
-     *  Only the <b>CancelReason</b> and <b>CancelStatus</b> fields are returned. The <b>CancelDetail</b> container and the <b>CancelReasonDetails</b> field are no longer returned. A seller can use the <a href="https://developer.ebay.com/Devzone/post-order/post-order_v2_cancellation_search__get.html">Search Cancellations</a> method of the Post-Order API to retrieve more details on a cancelled order. If the seller does use this method, they can use the Order ID or Item ID as a filter in the request to retrieve the correct cancellation request.
-     *  </span>
-     *
-     * @param string $cancelReasonDetails
-     * @return self
-     */
-    public function setCancelReasonDetails($cancelReasonDetails)
-    {
-        $this->cancelReasonDetails = $cancelReasonDetails;
-        return $this;
-    }
-
-    /**
-     * Gets as shippingConvenienceCharge
-     *
-     * <span class="tablenote"><strong>Note:</strong>
-     *  This field is no longer applicable/used. It was previously used for eBay Now and 'eBay On Demand Delivery' orders - two features that have been deprecated.
-     *  </span>
-     *
-     * @return \Nogrod\eBaySDK\Trading\AmountType
-     */
-    public function getShippingConvenienceCharge()
-    {
-        return $this->shippingConvenienceCharge;
-    }
-
-    /**
-     * Sets a new shippingConvenienceCharge
-     *
-     * <span class="tablenote"><strong>Note:</strong>
-     *  This field is no longer applicable/used. It was previously used for eBay Now and 'eBay On Demand Delivery' orders - two features that have been deprecated.
-     *  </span>
-     *
-     * @param \Nogrod\eBaySDK\Trading\AmountType $shippingConvenienceCharge
-     * @return self
-     */
-    public function setShippingConvenienceCharge(\Nogrod\eBaySDK\Trading\AmountType $shippingConvenienceCharge)
-    {
-        $this->shippingConvenienceCharge = $shippingConvenienceCharge;
-        return $this;
-    }
-
-    /**
-     * Adds as cancelDetail
-     *
-     * This container consists of details related to an eBay order that has been cancelled or is in the process of possibly being cancelled. Order cancellation requests can be viewed and managed with the cancellation API calls that are available in the <a href="https://developer.ebay.com/Devzone/post-order/index.html#CallIndex">Post Order API</a>.
-     *  <br><br>
-     *  <span class="tablenote"><strong>Note:</strong>
-     *  Only the <b>CancelReason</b> and <b>CancelStatus</b> fields are returned. The <b>CancelDetail</b> container and the <b>CancelReasonDetails</b> field are no longer returned. A seller can use the <a href="https://developer.ebay.com/Devzone/post-order/post-order_v2_cancellation_search__get.html">Search Cancellations</a> method of the Post-Order API to retrieve more details on a cancelled order. If the seller does use this method, they can use the Order ID or Item ID as a filter in the request to retrieve the correct cancellation request.
-     *  </span>
-     *
-     * @return self
-     * @param \Nogrod\eBaySDK\Trading\CancelDetailType $cancelDetail
-     */
-    public function addToCancelDetail(\Nogrod\eBaySDK\Trading\CancelDetailType $cancelDetail)
-    {
-        $this->cancelDetail[] = $cancelDetail;
-        return $this;
-    }
-
-    /**
-     * isset cancelDetail
-     *
-     * This container consists of details related to an eBay order that has been cancelled or is in the process of possibly being cancelled. Order cancellation requests can be viewed and managed with the cancellation API calls that are available in the <a href="https://developer.ebay.com/Devzone/post-order/index.html#CallIndex">Post Order API</a>.
-     *  <br><br>
-     *  <span class="tablenote"><strong>Note:</strong>
-     *  Only the <b>CancelReason</b> and <b>CancelStatus</b> fields are returned. The <b>CancelDetail</b> container and the <b>CancelReasonDetails</b> field are no longer returned. A seller can use the <a href="https://developer.ebay.com/Devzone/post-order/post-order_v2_cancellation_search__get.html">Search Cancellations</a> method of the Post-Order API to retrieve more details on a cancelled order. If the seller does use this method, they can use the Order ID or Item ID as a filter in the request to retrieve the correct cancellation request.
-     *  </span>
-     *
-     * @param int|string $index
-     * @return bool
-     */
-    public function issetCancelDetail($index)
-    {
-        return isset($this->cancelDetail[$index]);
-    }
-
-    /**
-     * unset cancelDetail
-     *
-     * This container consists of details related to an eBay order that has been cancelled or is in the process of possibly being cancelled. Order cancellation requests can be viewed and managed with the cancellation API calls that are available in the <a href="https://developer.ebay.com/Devzone/post-order/index.html#CallIndex">Post Order API</a>.
-     *  <br><br>
-     *  <span class="tablenote"><strong>Note:</strong>
-     *  Only the <b>CancelReason</b> and <b>CancelStatus</b> fields are returned. The <b>CancelDetail</b> container and the <b>CancelReasonDetails</b> field are no longer returned. A seller can use the <a href="https://developer.ebay.com/Devzone/post-order/post-order_v2_cancellation_search__get.html">Search Cancellations</a> method of the Post-Order API to retrieve more details on a cancelled order. If the seller does use this method, they can use the Order ID or Item ID as a filter in the request to retrieve the correct cancellation request.
-     *  </span>
-     *
-     * @param int|string $index
-     * @return void
-     */
-    public function unsetCancelDetail($index)
-    {
-        unset($this->cancelDetail[$index]);
-    }
-
-    /**
-     * Gets as cancelDetail
-     *
-     * This container consists of details related to an eBay order that has been cancelled or is in the process of possibly being cancelled. Order cancellation requests can be viewed and managed with the cancellation API calls that are available in the <a href="https://developer.ebay.com/Devzone/post-order/index.html#CallIndex">Post Order API</a>.
-     *  <br><br>
-     *  <span class="tablenote"><strong>Note:</strong>
-     *  Only the <b>CancelReason</b> and <b>CancelStatus</b> fields are returned. The <b>CancelDetail</b> container and the <b>CancelReasonDetails</b> field are no longer returned. A seller can use the <a href="https://developer.ebay.com/Devzone/post-order/post-order_v2_cancellation_search__get.html">Search Cancellations</a> method of the Post-Order API to retrieve more details on a cancelled order. If the seller does use this method, they can use the Order ID or Item ID as a filter in the request to retrieve the correct cancellation request.
-     *  </span>
-     *
-     * @return \Nogrod\eBaySDK\Trading\CancelDetailType[]
-     */
-    public function getCancelDetail()
-    {
-        return $this->cancelDetail;
-    }
-
-    /**
-     * Sets a new cancelDetail
-     *
-     * This container consists of details related to an eBay order that has been cancelled or is in the process of possibly being cancelled. Order cancellation requests can be viewed and managed with the cancellation API calls that are available in the <a href="https://developer.ebay.com/Devzone/post-order/index.html#CallIndex">Post Order API</a>.
-     *  <br><br>
-     *  <span class="tablenote"><strong>Note:</strong>
-     *  Only the <b>CancelReason</b> and <b>CancelStatus</b> fields are returned. The <b>CancelDetail</b> container and the <b>CancelReasonDetails</b> field are no longer returned. A seller can use the <a href="https://developer.ebay.com/Devzone/post-order/post-order_v2_cancellation_search__get.html">Search Cancellations</a> method of the Post-Order API to retrieve more details on a cancelled order. If the seller does use this method, they can use the Order ID or Item ID as a filter in the request to retrieve the correct cancellation request.
-     *  </span>
-     *
-     * @param \Nogrod\eBaySDK\Trading\CancelDetailType[] $cancelDetail
-     * @return self
-     */
-    public function setCancelDetail(array $cancelDetail)
-    {
-        $this->cancelDetail = $cancelDetail;
         return $this;
     }
 
@@ -2564,11 +2043,10 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
     /**
      * Gets as extendedOrderID
      *
-     * A unique identifier for an eBay order in the eBay REST API model. <b>ExtendedOrderID</b> values will be used to identify orders in REST-based APIs, including the Post-Order API and the Fulfillment API.
+     * A unique identifier for an eBay order. This identifier is globally unique across all eBay marketplaces, and consistent for both single line item and multiple line item orders. Note that the order ID will change for a 'non-immediate payment' order as it goes from an unpaid order to a paid order.
      *  <br><br>
-     *  <b>For GetOrders, GetOrderTransactions, and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this field will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, the correct Order ID is returned to the buyer or seller, but a dummy Order ID value of <code>1000000000000</code> will be returned to all third parties.
-     *  <br><br>
-     *  <span class="tablenote"><b>Note: </b> As of June 2019, eBay has changed the format of order identifier values, and this new format is relevant to both legacy and REST API-based order ID fields. The new format is a non-parsable string, globally unique across all eBay marketplaces, and consistent for both single line item and multiple line item orders. Unlike in the past, instead of just being known and exposed to the seller, these unique order identifiers will also be known and used/referenced by the buyer and eBay customer support.
+     *  <span class="tablenote"><b>Note: </b>
+     *  The value in the <b>OrderID</b> and <b>ExtendedOrderID</b> fields should always be the same. The <b>ExtendedOrderID</b> field was added back in 2019 during a transition period where the Trading API was supporting both old and new order ID formats, and which order ID format that was returned was dependent on the compatibility level version used.
      *  </span>
      *
      * @return string
@@ -2581,11 +2059,10 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
     /**
      * Sets a new extendedOrderID
      *
-     * A unique identifier for an eBay order in the eBay REST API model. <b>ExtendedOrderID</b> values will be used to identify orders in REST-based APIs, including the Post-Order API and the Fulfillment API.
+     * A unique identifier for an eBay order. This identifier is globally unique across all eBay marketplaces, and consistent for both single line item and multiple line item orders. Note that the order ID will change for a 'non-immediate payment' order as it goes from an unpaid order to a paid order.
      *  <br><br>
-     *  <b>For GetOrders, GetOrderTransactions, and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this field will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, the correct Order ID is returned to the buyer or seller, but a dummy Order ID value of <code>1000000000000</code> will be returned to all third parties.
-     *  <br><br>
-     *  <span class="tablenote"><b>Note: </b> As of June 2019, eBay has changed the format of order identifier values, and this new format is relevant to both legacy and REST API-based order ID fields. The new format is a non-parsable string, globally unique across all eBay marketplaces, and consistent for both single line item and multiple line item orders. Unlike in the past, instead of just being known and exposed to the seller, these unique order identifiers will also be known and used/referenced by the buyer and eBay customer support.
+     *  <span class="tablenote"><b>Note: </b>
+     *  The value in the <b>OrderID</b> and <b>ExtendedOrderID</b> fields should always be the same. The <b>ExtendedOrderID</b> field was added back in 2019 during a transition period where the Trading API was supporting both old and new order ID formats, and which order ID format that was returned was dependent on the compatibility level version used.
      *  </span>
      *
      * @param string $extendedOrderID
@@ -2766,10 +2243,6 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Total", $value);
         }
-        $value = $this->getExternalTransaction();
-        if (null !== $value && !empty($this->getExternalTransaction())) {
-            $writer->write(array_map(function ($v) {return ["ExternalTransaction" => $v];}, $value));
-        }
         $value = $this->getTransactionArray();
         if (null !== $value && !empty($this->getTransactionArray())) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TransactionArray", array_map(function ($v) {return ["Transaction" => $v];}, $value));
@@ -2785,11 +2258,6 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
         $value = $this->getShippedTime();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippedTime", $value);
-        }
-        $value = $this->getIntegratedMerchantCreditCardEnabled();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}IntegratedMerchantCreditCardEnabled", $value);
         }
         $value = $this->getBundlePurchase();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;
@@ -2808,10 +2276,6 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PaymentHoldStatus", $value);
         }
-        $value = $this->getPaymentHoldDetails();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PaymentHoldDetails", $value);
-        }
         $value = $this->getRefundAmount();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}RefundAmount", $value);
@@ -2819,10 +2283,6 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
         $value = $this->getRefundStatus();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}RefundStatus", $value);
-        }
-        $value = $this->getRefundArray();
-        if (null !== $value && !empty($this->getRefundArray())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}RefundArray", array_map(function ($v) {return ["Refund" => $v];}, $value));
         }
         $value = $this->getIsMultiLegShipping();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;
@@ -2860,18 +2320,6 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
         $value = $this->getCancelStatus();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CancelStatus", $value);
-        }
-        $value = $this->getCancelReasonDetails();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CancelReasonDetails", $value);
-        }
-        $value = $this->getShippingConvenienceCharge();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippingConvenienceCharge", $value);
-        }
-        $value = $this->getCancelDetail();
-        if (null !== $value && !empty($this->getCancelDetail())) {
-            $writer->write(array_map(function ($v) {return ["CancelDetail" => $v];}, $value));
         }
         $value = $this->getLogisticsPlanType();
         if (null !== $value) {
@@ -2979,10 +2427,6 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
         if (null !== $value) {
             $this->setTotal(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExternalTransaction', true);
-        if (null !== $value && !empty($value)) {
-            $this->setExternalTransaction(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\ExternalTransactionType::fromKeyValue($v);}, $value));
-        }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TransactionArray', true);
         if (null !== $value && !empty($value)) {
             $this->setTransactionArray(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\TransactionType::fromKeyValue($v);}, $value));
@@ -2998,10 +2442,6 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippedTime');
         if (null !== $value) {
             $this->setShippedTime(new \DateTime($value));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}IntegratedMerchantCreditCardEnabled');
-        if (null !== $value) {
-            $this->setIntegratedMerchantCreditCardEnabled($value);
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BundlePurchase');
         if (null !== $value) {
@@ -3019,10 +2459,6 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
         if (null !== $value) {
             $this->setPaymentHoldStatus($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaymentHoldDetails');
-        if (null !== $value) {
-            $this->setPaymentHoldDetails(\Nogrod\eBaySDK\Trading\PaymentHoldDetailType::fromKeyValue($value));
-        }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RefundAmount');
         if (null !== $value) {
             $this->setRefundAmount(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
@@ -3030,10 +2466,6 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RefundStatus');
         if (null !== $value) {
             $this->setRefundStatus($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RefundArray', true);
-        if (null !== $value && !empty($value)) {
-            $this->setRefundArray(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\RefundType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}IsMultiLegShipping');
         if (null !== $value) {
@@ -3070,18 +2502,6 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CancelStatus');
         if (null !== $value) {
             $this->setCancelStatus($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CancelReasonDetails');
-        if (null !== $value) {
-            $this->setCancelReasonDetails($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingConvenienceCharge');
-        if (null !== $value) {
-            $this->setShippingConvenienceCharge(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CancelDetail', true);
-        if (null !== $value && !empty($value)) {
-            $this->setCancelDetail(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\CancelDetailType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LogisticsPlanType');
         if (null !== $value) {

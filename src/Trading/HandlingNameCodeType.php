@@ -5,7 +5,7 @@ namespace Nogrod\eBaySDK\Trading;
 /**
  * Class representing HandlingNameCodeType
  *
- * How packaging/handling cost is to be determined for <a href="https://developer.ebay.com/DevZone/guides/features-guide/default.html#development/Listing-AnItem.html#CombinedInvoice">Combined Invoice</a>
+ * How packaging/handling cost is to be determined for <a href="https://developer.ebay.com/api-docs/user-guides/static/trading-user-guide/manage-fulfill-combine-invoices.html">Combined Invoice</a>
  *  orders.
  * XSD Type: HandlingNameCodeType
  */

@@ -31,18 +31,6 @@ class SellingSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
     private $auctionSellingCount = null;
 
     /**
-     * The total number of bids made on the seller's active auction listings.
-     *  <span class="tablenote"><strong>Note:</strong>
-     *  This field is deprecated and scheduled for decommission on
-     *  02-06-2024 because the data is no longer being actively
-     *  maintained by eBay.
-     *  </span>
-     *
-     * @var int $auctionBidCount
-     */
-    private $auctionBidCount = null;
-
-    /**
      * The total value of all items the seller has for sale in all listings.
      *
      * @var \Nogrod\eBaySDK\Trading\AmountType $totalAuctionSellingValue
@@ -127,42 +115,6 @@ class SellingSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
     public function setAuctionSellingCount($auctionSellingCount)
     {
         $this->auctionSellingCount = $auctionSellingCount;
-        return $this;
-    }
-
-    /**
-     * Gets as auctionBidCount
-     *
-     * The total number of bids made on the seller's active auction listings.
-     *  <span class="tablenote"><strong>Note:</strong>
-     *  This field is deprecated and scheduled for decommission on
-     *  02-06-2024 because the data is no longer being actively
-     *  maintained by eBay.
-     *  </span>
-     *
-     * @return int
-     */
-    public function getAuctionBidCount()
-    {
-        return $this->auctionBidCount;
-    }
-
-    /**
-     * Sets a new auctionBidCount
-     *
-     * The total number of bids made on the seller's active auction listings.
-     *  <span class="tablenote"><strong>Note:</strong>
-     *  This field is deprecated and scheduled for decommission on
-     *  02-06-2024 because the data is no longer being actively
-     *  maintained by eBay.
-     *  </span>
-     *
-     * @param int $auctionBidCount
-     * @return self
-     */
-    public function setAuctionBidCount($auctionBidCount)
-    {
-        $this->auctionBidCount = $auctionBidCount;
         return $this;
     }
 
@@ -281,10 +233,6 @@ class SellingSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}AuctionSellingCount", $value);
         }
-        $value = $this->getAuctionBidCount();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}AuctionBidCount", $value);
-        }
         $value = $this->getTotalAuctionSellingValue();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TotalAuctionSellingValue", $value);
@@ -324,10 +272,6 @@ class SellingSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AuctionSellingCount');
         if (null !== $value) {
             $this->setAuctionSellingCount($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AuctionBidCount');
-        if (null !== $value) {
-            $this->setAuctionBidCount($value);
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TotalAuctionSellingValue');
         if (null !== $value) {

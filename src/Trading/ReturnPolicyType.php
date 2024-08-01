@@ -70,8 +70,6 @@ class ReturnPolicyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      *  <br> <br>
      *  <span class="tablenote"><b>Note:</b> In order for Top-Rated sellers to receive a Top-Rated Plus seal for their listings, returns must be accepted for their items (<b>ReturnsAcceptedOption</b> = <code>ReturnsAccepted</code>) and handling time should be set to zero-day (same-day shipping) or one-day shipping. Set the handling time (in days) using the <b>Item.DispatchTimeMax</b> field.</span>
      *  <br>
-     *  Top-Rated listings qualify for the greatest average boost in Best Match and for the 20 percent Final Value Fee discount. For more information on eBay's Top-Rated seller program, see the <a href="https://pages.ebay.com/help/sell/top-rated.html">Seller levels and performance standards</a> page.</p>
-     *  <br>
      *  <b>For ReviseItem only:</b> You cannot change the value of this field if the listing has bids or sales, or if the listing ends within 12 hours. For more details, see the <b>ReturnPolicy</b> description.
      *  <br><br>
      *  <span class="tablenote"><b>Note:</b> If a seller ships internationally, and wants to define and use a separate international returns policy, the international equivalent of this field is the <b>InternationalReturnsAcceptedOption</b> field.</span>
@@ -113,48 +111,6 @@ class ReturnPolicyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     private $description = null;
 
     /**
-     * This field is deprecated as of release 1061 and any values supplied in this field are ignored. eBay no longer supports warranty policies for returns.
-     *
-     * @var string $warrantyOfferedOption
-     */
-    private $warrantyOfferedOption = null;
-
-    /**
-     * This field is deprecated as of release 1061 and any values supplied in this field are ignored. eBay no longer supports warranty policies for returns.
-     *
-     * @var string $warrantyOffered
-     */
-    private $warrantyOffered = null;
-
-    /**
-     * This field is deprecated as of release 1061 and any values supplied in this field are ignored. eBay no longer supports warranty policies for returns.
-     *
-     * @var string $warrantyTypeOption
-     */
-    private $warrantyTypeOption = null;
-
-    /**
-     * This field is deprecated as of release 1061 and any values supplied in this field are ignored. eBay no longer supports warranty policies for returns.
-     *
-     * @var string $warrantyType
-     */
-    private $warrantyType = null;
-
-    /**
-     * This field is deprecated as of release 1061 and any values supplied in this field are ignored. eBay no longer supports warranty policies for returns.
-     *
-     * @var string $warrantyDurationOption
-     */
-    private $warrantyDurationOption = null;
-
-    /**
-     * This field is deprecated as of release 1061 and any values supplied in this field are ignored. eBay no longer supports warranty policies for returns.
-     *
-     * @var string $warrantyDuration
-     */
-    private $warrantyDuration = null;
-
-    /**
      * This option specifies whether the buyer or the seller pays for return shipping charges. Accepted values are <code>Buyer</code> or <code>Seller</code>. eBay sites often set <code>Seller</code> as the default value for this field, and sellers are obligated to honor the values that are set for a listing. This value is required if <b>ReturnsAcceptedOption=ReturnsAccepted</b>.
      *  <br><br>
      *  Depending on the seller's return policy and the specifics of a return, either the buyer or the seller can be responsible for the return shipping costs. Note that the seller is always responsible for return shipping costs for SNAD-related issues or for late shipments.
@@ -177,27 +133,6 @@ class ReturnPolicyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      * @var string $shippingCostPaidBy
      */
     private $shippingCostPaidBy = null;
-
-    /**
-     * This field is deprecated as of release 1061 and any values supplied in this field are ignored. eBay no longer allows sellers to charge a restocking fee when returning items.
-     *
-     * @var string $restockingFeeValue
-     */
-    private $restockingFeeValue = null;
-
-    /**
-     * This field is deprecated as of release 1061 and any values supplied in this field are ignored. eBay no longer allows sellers to charge a restocking fee when returning items.
-     *
-     * @var string $restockingFeeValueOption
-     */
-    private $restockingFeeValueOption = null;
-
-    /**
-     * This field is deprecated as of release 1061 and any values supplied in this field are ignored. eBay no longer supports extended holiday returns.
-     *
-     * @var bool $extendedHolidayReturns
-     */
-    private $extendedHolidayReturns = null;
 
     /**
      * This field indicates how the seller compensates international buyers for returns</a>. <code>MoneyBack</code> is the only supported value for all marketplaces except for the US. On the US marketplace, you can set this value to either <code>MoneyBack</code> or <code>MoneyBackOrReplacement</code>. <code>MoneyBackOrReplacement</code> can be used by sellers that have the depth of inventory to support an exchange for an identical item. However, ultimately, it is up to the buyer on whether they want money back or a replacement item.
@@ -401,8 +336,6 @@ class ReturnPolicyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      *  <br> <br>
      *  <span class="tablenote"><b>Note:</b> In order for Top-Rated sellers to receive a Top-Rated Plus seal for their listings, returns must be accepted for their items (<b>ReturnsAcceptedOption</b> = <code>ReturnsAccepted</code>) and handling time should be set to zero-day (same-day shipping) or one-day shipping. Set the handling time (in days) using the <b>Item.DispatchTimeMax</b> field.</span>
      *  <br>
-     *  Top-Rated listings qualify for the greatest average boost in Best Match and for the 20 percent Final Value Fee discount. For more information on eBay's Top-Rated seller program, see the <a href="https://pages.ebay.com/help/sell/top-rated.html">Seller levels and performance standards</a> page.</p>
-     *  <br>
      *  <b>For ReviseItem only:</b> You cannot change the value of this field if the listing has bids or sales, or if the listing ends within 12 hours. For more details, see the <b>ReturnPolicy</b> description.
      *  <br><br>
      *  <span class="tablenote"><b>Note:</b> If a seller ships internationally, and wants to define and use a separate international returns policy, the international equivalent of this field is the <b>InternationalReturnsAcceptedOption</b> field.</span>
@@ -424,8 +357,6 @@ class ReturnPolicyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      *  On the eBay DE, IE, and UK marketplaces, registered business sellers must accept returns for fixed-price items (including auction items with Buy It Now and any other fixed price formats) when the category requires a return policy. On some European sites, such as eBay Germany (DE), registered business sellers are required to accept returns. Use the Trading call <b>GetUser</b> to determine the status of an eBay business seller in DE, IE, and UK. Review the <b>User.SellerInfo.SellerBusinessType</b> field in the response.
      *  <br> <br>
      *  <span class="tablenote"><b>Note:</b> In order for Top-Rated sellers to receive a Top-Rated Plus seal for their listings, returns must be accepted for their items (<b>ReturnsAcceptedOption</b> = <code>ReturnsAccepted</code>) and handling time should be set to zero-day (same-day shipping) or one-day shipping. Set the handling time (in days) using the <b>Item.DispatchTimeMax</b> field.</span>
-     *  <br>
-     *  Top-Rated listings qualify for the greatest average boost in Best Match and for the 20 percent Final Value Fee discount. For more information on eBay's Top-Rated seller program, see the <a href="https://pages.ebay.com/help/sell/top-rated.html">Seller levels and performance standards</a> page.</p>
      *  <br>
      *  <b>For ReviseItem only:</b> You cannot change the value of this field if the listing has bids or sales, or if the listing ends within 12 hours. For more details, see the <b>ReturnPolicy</b> description.
      *  <br><br>
@@ -529,162 +460,6 @@ class ReturnPolicyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     }
 
     /**
-     * Gets as warrantyOfferedOption
-     *
-     * This field is deprecated as of release 1061 and any values supplied in this field are ignored. eBay no longer supports warranty policies for returns.
-     *
-     * @return string
-     */
-    public function getWarrantyOfferedOption()
-    {
-        return $this->warrantyOfferedOption;
-    }
-
-    /**
-     * Sets a new warrantyOfferedOption
-     *
-     * This field is deprecated as of release 1061 and any values supplied in this field are ignored. eBay no longer supports warranty policies for returns.
-     *
-     * @param string $warrantyOfferedOption
-     * @return self
-     */
-    public function setWarrantyOfferedOption($warrantyOfferedOption)
-    {
-        $this->warrantyOfferedOption = $warrantyOfferedOption;
-        return $this;
-    }
-
-    /**
-     * Gets as warrantyOffered
-     *
-     * This field is deprecated as of release 1061 and any values supplied in this field are ignored. eBay no longer supports warranty policies for returns.
-     *
-     * @return string
-     */
-    public function getWarrantyOffered()
-    {
-        return $this->warrantyOffered;
-    }
-
-    /**
-     * Sets a new warrantyOffered
-     *
-     * This field is deprecated as of release 1061 and any values supplied in this field are ignored. eBay no longer supports warranty policies for returns.
-     *
-     * @param string $warrantyOffered
-     * @return self
-     */
-    public function setWarrantyOffered($warrantyOffered)
-    {
-        $this->warrantyOffered = $warrantyOffered;
-        return $this;
-    }
-
-    /**
-     * Gets as warrantyTypeOption
-     *
-     * This field is deprecated as of release 1061 and any values supplied in this field are ignored. eBay no longer supports warranty policies for returns.
-     *
-     * @return string
-     */
-    public function getWarrantyTypeOption()
-    {
-        return $this->warrantyTypeOption;
-    }
-
-    /**
-     * Sets a new warrantyTypeOption
-     *
-     * This field is deprecated as of release 1061 and any values supplied in this field are ignored. eBay no longer supports warranty policies for returns.
-     *
-     * @param string $warrantyTypeOption
-     * @return self
-     */
-    public function setWarrantyTypeOption($warrantyTypeOption)
-    {
-        $this->warrantyTypeOption = $warrantyTypeOption;
-        return $this;
-    }
-
-    /**
-     * Gets as warrantyType
-     *
-     * This field is deprecated as of release 1061 and any values supplied in this field are ignored. eBay no longer supports warranty policies for returns.
-     *
-     * @return string
-     */
-    public function getWarrantyType()
-    {
-        return $this->warrantyType;
-    }
-
-    /**
-     * Sets a new warrantyType
-     *
-     * This field is deprecated as of release 1061 and any values supplied in this field are ignored. eBay no longer supports warranty policies for returns.
-     *
-     * @param string $warrantyType
-     * @return self
-     */
-    public function setWarrantyType($warrantyType)
-    {
-        $this->warrantyType = $warrantyType;
-        return $this;
-    }
-
-    /**
-     * Gets as warrantyDurationOption
-     *
-     * This field is deprecated as of release 1061 and any values supplied in this field are ignored. eBay no longer supports warranty policies for returns.
-     *
-     * @return string
-     */
-    public function getWarrantyDurationOption()
-    {
-        return $this->warrantyDurationOption;
-    }
-
-    /**
-     * Sets a new warrantyDurationOption
-     *
-     * This field is deprecated as of release 1061 and any values supplied in this field are ignored. eBay no longer supports warranty policies for returns.
-     *
-     * @param string $warrantyDurationOption
-     * @return self
-     */
-    public function setWarrantyDurationOption($warrantyDurationOption)
-    {
-        $this->warrantyDurationOption = $warrantyDurationOption;
-        return $this;
-    }
-
-    /**
-     * Gets as warrantyDuration
-     *
-     * This field is deprecated as of release 1061 and any values supplied in this field are ignored. eBay no longer supports warranty policies for returns.
-     *
-     * @return string
-     */
-    public function getWarrantyDuration()
-    {
-        return $this->warrantyDuration;
-    }
-
-    /**
-     * Sets a new warrantyDuration
-     *
-     * This field is deprecated as of release 1061 and any values supplied in this field are ignored. eBay no longer supports warranty policies for returns.
-     *
-     * @param string $warrantyDuration
-     * @return self
-     */
-    public function setWarrantyDuration($warrantyDuration)
-    {
-        $this->warrantyDuration = $warrantyDuration;
-        return $this;
-    }
-
-    /**
      * Gets as shippingCostPaidByOption
      *
      * This option specifies whether the buyer or the seller pays for return shipping charges. Accepted values are <code>Buyer</code> or <code>Seller</code>. eBay sites often set <code>Seller</code> as the default value for this field, and sellers are obligated to honor the values that are set for a listing. This value is required if <b>ReturnsAcceptedOption=ReturnsAccepted</b>.
@@ -753,84 +528,6 @@ class ReturnPolicyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     public function setShippingCostPaidBy($shippingCostPaidBy)
     {
         $this->shippingCostPaidBy = $shippingCostPaidBy;
-        return $this;
-    }
-
-    /**
-     * Gets as restockingFeeValue
-     *
-     * This field is deprecated as of release 1061 and any values supplied in this field are ignored. eBay no longer allows sellers to charge a restocking fee when returning items.
-     *
-     * @return string
-     */
-    public function getRestockingFeeValue()
-    {
-        return $this->restockingFeeValue;
-    }
-
-    /**
-     * Sets a new restockingFeeValue
-     *
-     * This field is deprecated as of release 1061 and any values supplied in this field are ignored. eBay no longer allows sellers to charge a restocking fee when returning items.
-     *
-     * @param string $restockingFeeValue
-     * @return self
-     */
-    public function setRestockingFeeValue($restockingFeeValue)
-    {
-        $this->restockingFeeValue = $restockingFeeValue;
-        return $this;
-    }
-
-    /**
-     * Gets as restockingFeeValueOption
-     *
-     * This field is deprecated as of release 1061 and any values supplied in this field are ignored. eBay no longer allows sellers to charge a restocking fee when returning items.
-     *
-     * @return string
-     */
-    public function getRestockingFeeValueOption()
-    {
-        return $this->restockingFeeValueOption;
-    }
-
-    /**
-     * Sets a new restockingFeeValueOption
-     *
-     * This field is deprecated as of release 1061 and any values supplied in this field are ignored. eBay no longer allows sellers to charge a restocking fee when returning items.
-     *
-     * @param string $restockingFeeValueOption
-     * @return self
-     */
-    public function setRestockingFeeValueOption($restockingFeeValueOption)
-    {
-        $this->restockingFeeValueOption = $restockingFeeValueOption;
-        return $this;
-    }
-
-    /**
-     * Gets as extendedHolidayReturns
-     *
-     * This field is deprecated as of release 1061 and any values supplied in this field are ignored. eBay no longer supports extended holiday returns.
-     *
-     * @return bool
-     */
-    public function getExtendedHolidayReturns()
-    {
-        return $this->extendedHolidayReturns;
-    }
-
-    /**
-     * Sets a new extendedHolidayReturns
-     *
-     * This field is deprecated as of release 1061 and any values supplied in this field are ignored. eBay no longer supports extended holiday returns.
-     *
-     * @param bool $extendedHolidayReturns
-     * @return self
-     */
-    public function setExtendedHolidayReturns($extendedHolidayReturns)
-    {
-        $this->extendedHolidayReturns = $extendedHolidayReturns;
         return $this;
     }
 
@@ -1023,30 +720,6 @@ class ReturnPolicyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Description", $value);
         }
-        $value = $this->getWarrantyOfferedOption();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}WarrantyOfferedOption", $value);
-        }
-        $value = $this->getWarrantyOffered();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}WarrantyOffered", $value);
-        }
-        $value = $this->getWarrantyTypeOption();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}WarrantyTypeOption", $value);
-        }
-        $value = $this->getWarrantyType();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}WarrantyType", $value);
-        }
-        $value = $this->getWarrantyDurationOption();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}WarrantyDurationOption", $value);
-        }
-        $value = $this->getWarrantyDuration();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}WarrantyDuration", $value);
-        }
         $value = $this->getShippingCostPaidByOption();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippingCostPaidByOption", $value);
@@ -1054,19 +727,6 @@ class ReturnPolicyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
         $value = $this->getShippingCostPaidBy();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippingCostPaidBy", $value);
-        }
-        $value = $this->getRestockingFeeValue();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}RestockingFeeValue", $value);
-        }
-        $value = $this->getRestockingFeeValueOption();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}RestockingFeeValueOption", $value);
-        }
-        $value = $this->getExtendedHolidayReturns();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ExtendedHolidayReturns", $value);
         }
         $value = $this->getInternationalRefundOption();
         if (null !== $value) {
@@ -1128,30 +788,6 @@ class ReturnPolicyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
         if (null !== $value) {
             $this->setDescription($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}WarrantyOfferedOption');
-        if (null !== $value) {
-            $this->setWarrantyOfferedOption($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}WarrantyOffered');
-        if (null !== $value) {
-            $this->setWarrantyOffered($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}WarrantyTypeOption');
-        if (null !== $value) {
-            $this->setWarrantyTypeOption($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}WarrantyType');
-        if (null !== $value) {
-            $this->setWarrantyType($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}WarrantyDurationOption');
-        if (null !== $value) {
-            $this->setWarrantyDurationOption($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}WarrantyDuration');
-        if (null !== $value) {
-            $this->setWarrantyDuration($value);
-        }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingCostPaidByOption');
         if (null !== $value) {
             $this->setShippingCostPaidByOption($value);
@@ -1159,18 +795,6 @@ class ReturnPolicyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingCostPaidBy');
         if (null !== $value) {
             $this->setShippingCostPaidBy($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RestockingFeeValue');
-        if (null !== $value) {
-            $this->setRestockingFeeValue($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RestockingFeeValueOption');
-        if (null !== $value) {
-            $this->setRestockingFeeValueOption($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExtendedHolidayReturns');
-        if (null !== $value) {
-            $this->setExtendedHolidayReturns($value);
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}InternationalRefundOption');
         if (null !== $value) {

@@ -27,17 +27,6 @@ Nogrod\eBaySDK\Trading\GetUserPreferencesRequestType:
                 getter: getShowCombinedPaymentPreferences
                 setter: setShowCombinedPaymentPreferences
             type: bool
-        showCrossPromotionPreferences:
-            expose: true
-            access_type: public_method
-            serialized_name: ShowCrossPromotionPreferences
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getShowCrossPromotionPreferences
-                setter: setShowCrossPromotionPreferences
-            type: bool
         showSellerPaymentPreferences:
             expose: true
             access_type: public_method
@@ -70,17 +59,6 @@ Nogrod\eBaySDK\Trading\GetUserPreferencesRequestType:
             accessor:
                 getter: getShowSellerFavoriteItemPreferences
                 setter: setShowSellerFavoriteItemPreferences
-            type: bool
-        showProStoresPreferences:
-            expose: true
-            access_type: public_method
-            serialized_name: ShowProStoresPreferences
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getShowProStoresPreferences
-                setter: setShowProStoresPreferences
             type: bool
         showEmailShipmentTrackingNumberPreference:
             expose: true

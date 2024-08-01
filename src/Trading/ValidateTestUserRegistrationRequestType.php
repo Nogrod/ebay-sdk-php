@@ -29,20 +29,6 @@ class ValidateTestUserRegistrationRequestType extends AbstractRequestType
     private $registrationDate = null;
 
     /**
-     * This field is no longer applicable since the Seller Assistant feature is no longer available.
-     *
-     * @var bool $subscribeSA
-     */
-    private $subscribeSA = null;
-
-    /**
-     * This field is no longer applicable since the Seller Assistant Pro feature is no longer available.
-     *
-     * @var bool $subscribeSAPro
-     */
-    private $subscribeSAPro = null;
-
-    /**
      * Indicates if a user subscribes to Selling Manager. You cannot
      *  request to subscribe a user to both Selling Manager and
      *  Selling Manager Pro. You cannot request to unsubscribe a user.
@@ -117,58 +103,6 @@ class ValidateTestUserRegistrationRequestType extends AbstractRequestType
     }
 
     /**
-     * Gets as subscribeSA
-     *
-     * This field is no longer applicable since the Seller Assistant feature is no longer available.
-     *
-     * @return bool
-     */
-    public function getSubscribeSA()
-    {
-        return $this->subscribeSA;
-    }
-
-    /**
-     * Sets a new subscribeSA
-     *
-     * This field is no longer applicable since the Seller Assistant feature is no longer available.
-     *
-     * @param bool $subscribeSA
-     * @return self
-     */
-    public function setSubscribeSA($subscribeSA)
-    {
-        $this->subscribeSA = $subscribeSA;
-        return $this;
-    }
-
-    /**
-     * Gets as subscribeSAPro
-     *
-     * This field is no longer applicable since the Seller Assistant Pro feature is no longer available.
-     *
-     * @return bool
-     */
-    public function getSubscribeSAPro()
-    {
-        return $this->subscribeSAPro;
-    }
-
-    /**
-     * Sets a new subscribeSAPro
-     *
-     * This field is no longer applicable since the Seller Assistant Pro feature is no longer available.
-     *
-     * @param bool $subscribeSAPro
-     * @return self
-     */
-    public function setSubscribeSAPro($subscribeSAPro)
-    {
-        $this->subscribeSAPro = $subscribeSAPro;
-        return $this;
-    }
-
-    /**
      * Gets as subscribeSM
      *
      * Indicates if a user subscribes to Selling Manager. You cannot
@@ -239,16 +173,6 @@ class ValidateTestUserRegistrationRequestType extends AbstractRequestType
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}RegistrationDate", $value);
         }
-        $value = $this->getSubscribeSA();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SubscribeSA", $value);
-        }
-        $value = $this->getSubscribeSAPro();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SubscribeSAPro", $value);
-        }
         $value = $this->getSubscribeSM();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;
         if (null !== $value) {
@@ -283,14 +207,6 @@ class ValidateTestUserRegistrationRequestType extends AbstractRequestType
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RegistrationDate');
         if (null !== $value) {
             $this->setRegistrationDate(new \DateTime($value));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SubscribeSA');
-        if (null !== $value) {
-            $this->setSubscribeSA($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SubscribeSAPro');
-        if (null !== $value) {
-            $this->setSubscribeSAPro($value);
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SubscribeSM');
         if (null !== $value) {

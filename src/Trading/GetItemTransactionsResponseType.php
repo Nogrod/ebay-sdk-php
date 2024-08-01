@@ -81,18 +81,13 @@ class GetItemTransactionsResponseType extends AbstractResponseType
      *  (of one or more items in the same listing). The <b>Transaction.Item</b> field is not
      *  returned because the <b>Item</b> object is returned at the root level of the response.
      *  See the reference guide for more information about the fields that are returned.
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  The <b>GetItemTransactions</b> call does not support <a href ="https://www.ebay.com/sellercenter/ebay-for-business/multi-user-account-access" target="_blank" >Multi-user account access</a>. Transactions are only returned for the user that makes the call. You cannot use <b>GetItemTransactions</b> to return transactions for another user. The call succeeds but returns an empty <code>&lt;TransactionArray/&gt;</code>.
+     *  </span>
      *
      * @var \Nogrod\eBaySDK\Trading\TransactionType[] $transactionArray
      */
     private $transactionArray = null;
-
-    /**
-     * <span class="tablenote"><b>Note: </b> This field is deprecated and will be removed from WSDL and docs on January 31, 2024.
-     *  </span>
-     *
-     * @var bool $payPalPreferred
-     */
-    private $payPalPreferred = null;
 
     /**
      * Gets as paginationResult
@@ -278,6 +273,9 @@ class GetItemTransactionsResponseType extends AbstractResponseType
      *  (of one or more items in the same listing). The <b>Transaction.Item</b> field is not
      *  returned because the <b>Item</b> object is returned at the root level of the response.
      *  See the reference guide for more information about the fields that are returned.
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  The <b>GetItemTransactions</b> call does not support <a href ="https://www.ebay.com/sellercenter/ebay-for-business/multi-user-account-access" target="_blank" >Multi-user account access</a>. Transactions are only returned for the user that makes the call. You cannot use <b>GetItemTransactions</b> to return transactions for another user. The call succeeds but returns an empty <code>&lt;TransactionArray/&gt;</code>.
+     *  </span>
      *
      * @return self
      * @param \Nogrod\eBaySDK\Trading\TransactionType $transaction
@@ -296,6 +294,9 @@ class GetItemTransactionsResponseType extends AbstractResponseType
      *  (of one or more items in the same listing). The <b>Transaction.Item</b> field is not
      *  returned because the <b>Item</b> object is returned at the root level of the response.
      *  See the reference guide for more information about the fields that are returned.
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  The <b>GetItemTransactions</b> call does not support <a href ="https://www.ebay.com/sellercenter/ebay-for-business/multi-user-account-access" target="_blank" >Multi-user account access</a>. Transactions are only returned for the user that makes the call. You cannot use <b>GetItemTransactions</b> to return transactions for another user. The call succeeds but returns an empty <code>&lt;TransactionArray/&gt;</code>.
+     *  </span>
      *
      * @param int|string $index
      * @return bool
@@ -313,6 +314,9 @@ class GetItemTransactionsResponseType extends AbstractResponseType
      *  (of one or more items in the same listing). The <b>Transaction.Item</b> field is not
      *  returned because the <b>Item</b> object is returned at the root level of the response.
      *  See the reference guide for more information about the fields that are returned.
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  The <b>GetItemTransactions</b> call does not support <a href ="https://www.ebay.com/sellercenter/ebay-for-business/multi-user-account-access" target="_blank" >Multi-user account access</a>. Transactions are only returned for the user that makes the call. You cannot use <b>GetItemTransactions</b> to return transactions for another user. The call succeeds but returns an empty <code>&lt;TransactionArray/&gt;</code>.
+     *  </span>
      *
      * @param int|string $index
      * @return void
@@ -330,6 +334,9 @@ class GetItemTransactionsResponseType extends AbstractResponseType
      *  (of one or more items in the same listing). The <b>Transaction.Item</b> field is not
      *  returned because the <b>Item</b> object is returned at the root level of the response.
      *  See the reference guide for more information about the fields that are returned.
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  The <b>GetItemTransactions</b> call does not support <a href ="https://www.ebay.com/sellercenter/ebay-for-business/multi-user-account-access" target="_blank" >Multi-user account access</a>. Transactions are only returned for the user that makes the call. You cannot use <b>GetItemTransactions</b> to return transactions for another user. The call succeeds but returns an empty <code>&lt;TransactionArray/&gt;</code>.
+     *  </span>
      *
      * @return \Nogrod\eBaySDK\Trading\TransactionType[]
      */
@@ -346,6 +353,9 @@ class GetItemTransactionsResponseType extends AbstractResponseType
      *  (of one or more items in the same listing). The <b>Transaction.Item</b> field is not
      *  returned because the <b>Item</b> object is returned at the root level of the response.
      *  See the reference guide for more information about the fields that are returned.
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  The <b>GetItemTransactions</b> call does not support <a href ="https://www.ebay.com/sellercenter/ebay-for-business/multi-user-account-access" target="_blank" >Multi-user account access</a>. Transactions are only returned for the user that makes the call. You cannot use <b>GetItemTransactions</b> to return transactions for another user. The call succeeds but returns an empty <code>&lt;TransactionArray/&gt;</code>.
+     *  </span>
      *
      * @param \Nogrod\eBaySDK\Trading\TransactionType[] $transactionArray
      * @return self
@@ -353,34 +363,6 @@ class GetItemTransactionsResponseType extends AbstractResponseType
     public function setTransactionArray(array $transactionArray)
     {
         $this->transactionArray = $transactionArray;
-        return $this;
-    }
-
-    /**
-     * Gets as payPalPreferred
-     *
-     * <span class="tablenote"><b>Note: </b> This field is deprecated and will be removed from WSDL and docs on January 31, 2024.
-     *  </span>
-     *
-     * @return bool
-     */
-    public function getPayPalPreferred()
-    {
-        return $this->payPalPreferred;
-    }
-
-    /**
-     * Sets a new payPalPreferred
-     *
-     * <span class="tablenote"><b>Note: </b> This field is deprecated and will be removed from WSDL and docs on January 31, 2024.
-     *  </span>
-     *
-     * @param bool $payPalPreferred
-     * @return self
-     */
-    public function setPayPalPreferred($payPalPreferred)
-    {
-        $this->payPalPreferred = $payPalPreferred;
         return $this;
     }
 
@@ -415,11 +397,6 @@ class GetItemTransactionsResponseType extends AbstractResponseType
         $value = $this->getTransactionArray();
         if (null !== $value && !empty($this->getTransactionArray())) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TransactionArray", array_map(function ($v) {return ["Transaction" => $v];}, $value));
-        }
-        $value = $this->getPayPalPreferred();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PayPalPreferred", $value);
         }
     }
 
@@ -465,10 +442,6 @@ class GetItemTransactionsResponseType extends AbstractResponseType
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TransactionArray', true);
         if (null !== $value && !empty($value)) {
             $this->setTransactionArray(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\TransactionType::fromKeyValue($v);}, $value));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PayPalPreferred');
-        if (null !== $value) {
-            $this->setPayPalPreferred($value);
         }
     }
 }

@@ -20,8 +20,8 @@ class OfferType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      *  the <b>PlaceOffer</b> call,
      *  the buyer can get the status of the Best Offer
      *  (and a seller-counter-offer, etc.)
-     *  using the <b>GetBestOffers</b> call. See the
-     *  <a href="https://developer.ebay.com/DevZone/guides/features-guide/default.html#development/Feature-BestOffer.html">eBay Features Guide</a>
+     *  using the <b>GetBestOffers</b> call. See
+     *  <a href="https://developer.ebay.com/api-docs/user-guides/static/trading-user-guide/best-offers.html" target="_blank">Best Offer</a>
      *  for information about Best Offer-enabled listings and about <b>GetBestOffers</b>.
      *
      * @var string $action
@@ -59,13 +59,6 @@ class OfferType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      * @var \Nogrod\eBaySDK\Trading\AmountType $maxBid
      */
     private $maxBid = null;
-
-    /**
-     * <b>DO NOT USE THIS FIELD</b>. This field is only for internal or future use.
-     *
-     * @var \Nogrod\eBaySDK\Trading\OfferDiscountsType $discounts
-     */
-    private $discounts = null;
 
     /**
      * Specifies the quantity of items from the specified listing that the user tendering the offer intends to purchase, bid on, or make a Best Offer on. For auctions, the value is always <b>1 </b>. For multiple-quantity listings, this value must be greater than zero but not exceeding the quantity available for sale in the listing.
@@ -118,6 +111,9 @@ class OfferType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      *  <br>
      *  <br>
      *  The <b>TransactionID</b> value for auction listings is always <code>0</code> since there can be only one winning bidder/one sale for an auction listing.
+     *  <br/><br/>
+     *  <span class="tablenote"><b>Note: </b> Beginning in July 2024, non-zero transaction IDs will start being returned for auction listings. If necessary, update code to handle non-zero transaction IDs for auction transactions before this time.
+     *  </span>
      *
      * @var string $transactionID
      */
@@ -182,8 +178,8 @@ class OfferType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      *  the <b>PlaceOffer</b> call,
      *  the buyer can get the status of the Best Offer
      *  (and a seller-counter-offer, etc.)
-     *  using the <b>GetBestOffers</b> call. See the
-     *  <a href="https://developer.ebay.com/DevZone/guides/features-guide/default.html#development/Feature-BestOffer.html">eBay Features Guide</a>
+     *  using the <b>GetBestOffers</b> call. See
+     *  <a href="https://developer.ebay.com/api-docs/user-guides/static/trading-user-guide/best-offers.html" target="_blank">Best Offer</a>
      *  for information about Best Offer-enabled listings and about <b>GetBestOffers</b>.
      *
      * @return string
@@ -202,8 +198,8 @@ class OfferType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      *  the <b>PlaceOffer</b> call,
      *  the buyer can get the status of the Best Offer
      *  (and a seller-counter-offer, etc.)
-     *  using the <b>GetBestOffers</b> call. See the
-     *  <a href="https://developer.ebay.com/DevZone/guides/features-guide/default.html#development/Feature-BestOffer.html">eBay Features Guide</a>
+     *  using the <b>GetBestOffers</b> call. See
+     *  <a href="https://developer.ebay.com/api-docs/user-guides/static/trading-user-guide/best-offers.html" target="_blank">Best Offer</a>
      *  for information about Best Offer-enabled listings and about <b>GetBestOffers</b>.
      *
      * @param string $action
@@ -312,32 +308,6 @@ class OfferType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
     public function setMaxBid(\Nogrod\eBaySDK\Trading\AmountType $maxBid)
     {
         $this->maxBid = $maxBid;
-        return $this;
-    }
-
-    /**
-     * Gets as discounts
-     *
-     * <b>DO NOT USE THIS FIELD</b>. This field is only for internal or future use.
-     *
-     * @return \Nogrod\eBaySDK\Trading\OfferDiscountsType
-     */
-    public function getDiscounts()
-    {
-        return $this->discounts;
-    }
-
-    /**
-     * Sets a new discounts
-     *
-     * <b>DO NOT USE THIS FIELD</b>. This field is only for internal or future use.
-     *
-     * @param \Nogrod\eBaySDK\Trading\OfferDiscountsType $discounts
-     * @return self
-     */
-    public function setDiscounts(\Nogrod\eBaySDK\Trading\OfferDiscountsType $discounts)
-    {
-        $this->discounts = $discounts;
         return $this;
     }
 
@@ -510,6 +480,9 @@ class OfferType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      *  <br>
      *  <br>
      *  The <b>TransactionID</b> value for auction listings is always <code>0</code> since there can be only one winning bidder/one sale for an auction listing.
+     *  <br/><br/>
+     *  <span class="tablenote"><b>Note: </b> Beginning in July 2024, non-zero transaction IDs will start being returned for auction listings. If necessary, update code to handle non-zero transaction IDs for auction transactions before this time.
+     *  </span>
      *
      * @return string
      */
@@ -527,6 +500,9 @@ class OfferType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      *  <br>
      *  <br>
      *  The <b>TransactionID</b> value for auction listings is always <code>0</code> since there can be only one winning bidder/one sale for an auction listing.
+     *  <br/><br/>
+     *  <span class="tablenote"><b>Note: </b> Beginning in July 2024, non-zero transaction IDs will start being returned for auction listings. If necessary, update code to handle non-zero transaction IDs for auction transactions before this time.
+     *  </span>
      *
      * @param string $transactionID
      * @return self
@@ -728,10 +704,6 @@ class OfferType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MaxBid", $value);
         }
-        $value = $this->getDiscounts();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Discounts", $value);
-        }
         $value = $this->getQuantity();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Quantity", $value);
@@ -817,10 +789,6 @@ class OfferType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MaxBid');
         if (null !== $value) {
             $this->setMaxBid(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Discounts');
-        if (null !== $value) {
-            $this->setDiscounts(\Nogrod\eBaySDK\Trading\OfferDiscountsType::fromKeyValue($value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Quantity');
         if (null !== $value) {

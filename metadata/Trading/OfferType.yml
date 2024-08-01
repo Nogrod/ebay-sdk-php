@@ -49,17 +49,6 @@ Nogrod\eBaySDK\Trading\OfferType:
                 getter: getMaxBid
                 setter: setMaxBid
             type: Nogrod\eBaySDK\Trading\AmountType
-        discounts:
-            expose: true
-            access_type: public_method
-            serialized_name: Discounts
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getDiscounts
-                setter: setDiscounts
-            type: Nogrod\eBaySDK\Trading\OfferDiscountsType
         quantity:
             expose: true
             access_type: public_method

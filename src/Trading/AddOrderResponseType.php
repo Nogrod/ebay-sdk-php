@@ -15,13 +15,9 @@ class AddOrderResponseType extends AbstractResponseType
     /**
      * The unique identifier of the successfully-created 'Combined Invoice' order. This value is only created and returned if the <b>AddOrder</b> call is successful in creating the new order.
      *  <br/><br/>
-     *  This value can be used as an input filter in <b>GetOrders</b> and <b>GetOrderTransactions</b> calls to retrieve the 'Combined Invoice' order.
+     *  This value can be used as an input filter in <b>GetOrders</b> calls to retrieve the 'Combined Invoice' order.
      *  <br><br>
-     *  <span class="tablenote"><b>Note: </b> In June 2019, eBay introduced a new order ID format, but allowed developers/sellers to decide whether to immediately adopt the new format, or to continue working with the old format. Users who wanted to adopt the new format, could either use a Trading WSDL Version 1113 (or newer), or they could even use an older Trading WSDL but set the <b>X-EBAY-API-COMPATIBILITY-LEVEL</b> HTTP header value to <code>1113</code> in API calls. <b>Beginning in June 2020, only the new order ID format will be returned in response payloads for paid orders, regardless of the WSDL version number or compatibility level.</b>
-     *  <br><br>
-     *  Note that the unique identifier of a 'non-immediate payment' order will change as it goes from an unpaid order to a paid order. Due to this scenario, all order retrieval calls that accept Order ID values as filters in the request payload, including the <b>GetOrders</b> call, will support the identifiers for both unpaid and paid orders. The new order ID format is a non-parsable string, globally unique across all eBay marketplaces, and consistent for both single line item and multiple line item orders. Unlike in the past, instead of just being known and exposed to the seller, these unique order identifiers will also be known and used/referenced by the buyer and eBay customer support.
-     *  <br><br>
-     *  Sellers can check to see if an order has been paid by looking for a value of 'Complete' in the <b>CheckoutStatus.Status</b> field in the response of <b>GetOrders</b> or <b>GetOrderTransactions</b> call, or in the <b>Status.CompleteStatus</b> field in the response of <b>GetItemTransactions</b> or <b>GetSellerTransactions</b> call. Sellers should not fulfill orders until buyer has made payment.
+     *  <span class="tablenote"><b>Note: </b> This unique identifier is not the same as the <b>OrderID</b> that is generated after payment.
      *  </span>
      *
      * @var string $orderID
@@ -40,13 +36,9 @@ class AddOrderResponseType extends AbstractResponseType
      *
      * The unique identifier of the successfully-created 'Combined Invoice' order. This value is only created and returned if the <b>AddOrder</b> call is successful in creating the new order.
      *  <br/><br/>
-     *  This value can be used as an input filter in <b>GetOrders</b> and <b>GetOrderTransactions</b> calls to retrieve the 'Combined Invoice' order.
+     *  This value can be used as an input filter in <b>GetOrders</b> calls to retrieve the 'Combined Invoice' order.
      *  <br><br>
-     *  <span class="tablenote"><b>Note: </b> In June 2019, eBay introduced a new order ID format, but allowed developers/sellers to decide whether to immediately adopt the new format, or to continue working with the old format. Users who wanted to adopt the new format, could either use a Trading WSDL Version 1113 (or newer), or they could even use an older Trading WSDL but set the <b>X-EBAY-API-COMPATIBILITY-LEVEL</b> HTTP header value to <code>1113</code> in API calls. <b>Beginning in June 2020, only the new order ID format will be returned in response payloads for paid orders, regardless of the WSDL version number or compatibility level.</b>
-     *  <br><br>
-     *  Note that the unique identifier of a 'non-immediate payment' order will change as it goes from an unpaid order to a paid order. Due to this scenario, all order retrieval calls that accept Order ID values as filters in the request payload, including the <b>GetOrders</b> call, will support the identifiers for both unpaid and paid orders. The new order ID format is a non-parsable string, globally unique across all eBay marketplaces, and consistent for both single line item and multiple line item orders. Unlike in the past, instead of just being known and exposed to the seller, these unique order identifiers will also be known and used/referenced by the buyer and eBay customer support.
-     *  <br><br>
-     *  Sellers can check to see if an order has been paid by looking for a value of 'Complete' in the <b>CheckoutStatus.Status</b> field in the response of <b>GetOrders</b> or <b>GetOrderTransactions</b> call, or in the <b>Status.CompleteStatus</b> field in the response of <b>GetItemTransactions</b> or <b>GetSellerTransactions</b> call. Sellers should not fulfill orders until buyer has made payment.
+     *  <span class="tablenote"><b>Note: </b> This unique identifier is not the same as the <b>OrderID</b> that is generated after payment.
      *  </span>
      *
      * @return string
@@ -61,13 +53,9 @@ class AddOrderResponseType extends AbstractResponseType
      *
      * The unique identifier of the successfully-created 'Combined Invoice' order. This value is only created and returned if the <b>AddOrder</b> call is successful in creating the new order.
      *  <br/><br/>
-     *  This value can be used as an input filter in <b>GetOrders</b> and <b>GetOrderTransactions</b> calls to retrieve the 'Combined Invoice' order.
+     *  This value can be used as an input filter in <b>GetOrders</b> calls to retrieve the 'Combined Invoice' order.
      *  <br><br>
-     *  <span class="tablenote"><b>Note: </b> In June 2019, eBay introduced a new order ID format, but allowed developers/sellers to decide whether to immediately adopt the new format, or to continue working with the old format. Users who wanted to adopt the new format, could either use a Trading WSDL Version 1113 (or newer), or they could even use an older Trading WSDL but set the <b>X-EBAY-API-COMPATIBILITY-LEVEL</b> HTTP header value to <code>1113</code> in API calls. <b>Beginning in June 2020, only the new order ID format will be returned in response payloads for paid orders, regardless of the WSDL version number or compatibility level.</b>
-     *  <br><br>
-     *  Note that the unique identifier of a 'non-immediate payment' order will change as it goes from an unpaid order to a paid order. Due to this scenario, all order retrieval calls that accept Order ID values as filters in the request payload, including the <b>GetOrders</b> call, will support the identifiers for both unpaid and paid orders. The new order ID format is a non-parsable string, globally unique across all eBay marketplaces, and consistent for both single line item and multiple line item orders. Unlike in the past, instead of just being known and exposed to the seller, these unique order identifiers will also be known and used/referenced by the buyer and eBay customer support.
-     *  <br><br>
-     *  Sellers can check to see if an order has been paid by looking for a value of 'Complete' in the <b>CheckoutStatus.Status</b> field in the response of <b>GetOrders</b> or <b>GetOrderTransactions</b> call, or in the <b>Status.CompleteStatus</b> field in the response of <b>GetItemTransactions</b> or <b>GetSellerTransactions</b> call. Sellers should not fulfill orders until buyer has made payment.
+     *  <span class="tablenote"><b>Note: </b> This unique identifier is not the same as the <b>OrderID</b> that is generated after payment.
      *  </span>
      *
      * @param string $orderID

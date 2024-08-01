@@ -43,11 +43,6 @@ class UploadSiteHostedPicturesRequestType extends AbstractRequestType
      * An optional reference ID to the binary attachment.
      *  <br/><br/>
      *  The <b>PictureData</b> field does not contain the binary attachment. The binary attachment is image data, including the headers, from a JPG, GIF, PNG, BMP, or TIF format image file. The binary attachment must be sent as a MIME attachment, in your POST request, after the XML input.
-     *  <br/><br/>
-     *  <span class="tablenote"><b>Note: </b>
-     *  This field is not applicable for eBay Large Merchant Services. Use the
-     *  <b>ExternalPictureURL</b> field instead.
-     *  </span>
      *
      * @var \Nogrod\eBaySDK\Trading\Base64BinaryType $pictureData
      */
@@ -65,14 +60,10 @@ class UploadSiteHostedPicturesRequestType extends AbstractRequestType
     private $pictureUploadPolicy = null;
 
     /**
-     * This field is used if the seller wishes to upload a picture to the EPS server that is currently on another external site. The URL of the picture you want to upload is passed in this field. Both http:// and https:// servers are supported.
+     * This field is used if the seller wishes to upload a picture to the EPS server that is currently on another external site. The URL of the picture you want to upload is passed in this field. Only https:// servers are supported.
      *  You can include only one <b>ExternalPictureURL</b> field per call.
      *  <br><br>
      *  The eBay server uses the information in this field to retrieve a picture from an external web server. Once retrieved, the picture will be copied to eBay Picture Services and retained for 30 days if not associated with a listing. When associated with a listing, the duration is the length of the listing plus 90 days.
-     *  <br/><br/>
-     *  <span class="tablenote"><b>Note: </b>
-     *  Although both the HTTP and HTTPS protocols are currently supported, in the near future, eBay will no longer allow the hosting or transfer of images on a server using the the HTTP protocol.
-     *  </span>
      *
      * @var string[] $externalPictureURL
      */
@@ -81,18 +72,10 @@ class UploadSiteHostedPicturesRequestType extends AbstractRequestType
     ];
 
     /**
-     * This field is deprecated.
-     *
-     * @var string[] $pictureWatermark
-     */
-    private $pictureWatermark = [
-
-    ];
-
-    /**
      * By default, an unpublished picture will be hosted on the EPS server for five days before being purged. However, the seller has the option of using this field to set an expiration date further into the future (up to 30 days). Similarly, when a listing ends or expires, the images associated with the listing remain on the EPS server for an additional 90 days. The value in this field will add on to those 90 days.
      *  <br/><br/>
-     *  <span class="tablenote"><b>Note: </b>This call is restricted to applications that have been granted permission. Contact the eBay Developers Program to request permission.
+     *  <span class="tablenote"><b>Note: </b>
+     *  This field is restricted to applications that have been granted permission. Contact the eBay Developers Program to request permission.
      *  </span>
      *
      * @var int $extensionInDays
@@ -193,11 +176,6 @@ class UploadSiteHostedPicturesRequestType extends AbstractRequestType
      * An optional reference ID to the binary attachment.
      *  <br/><br/>
      *  The <b>PictureData</b> field does not contain the binary attachment. The binary attachment is image data, including the headers, from a JPG, GIF, PNG, BMP, or TIF format image file. The binary attachment must be sent as a MIME attachment, in your POST request, after the XML input.
-     *  <br/><br/>
-     *  <span class="tablenote"><b>Note: </b>
-     *  This field is not applicable for eBay Large Merchant Services. Use the
-     *  <b>ExternalPictureURL</b> field instead.
-     *  </span>
      *
      * @return \Nogrod\eBaySDK\Trading\Base64BinaryType
      */
@@ -212,11 +190,6 @@ class UploadSiteHostedPicturesRequestType extends AbstractRequestType
      * An optional reference ID to the binary attachment.
      *  <br/><br/>
      *  The <b>PictureData</b> field does not contain the binary attachment. The binary attachment is image data, including the headers, from a JPG, GIF, PNG, BMP, or TIF format image file. The binary attachment must be sent as a MIME attachment, in your POST request, after the XML input.
-     *  <br/><br/>
-     *  <span class="tablenote"><b>Note: </b>
-     *  This field is not applicable for eBay Large Merchant Services. Use the
-     *  <b>ExternalPictureURL</b> field instead.
-     *  </span>
      *
      * @param \Nogrod\eBaySDK\Trading\Base64BinaryType $pictureData
      * @return self
@@ -264,14 +237,10 @@ class UploadSiteHostedPicturesRequestType extends AbstractRequestType
     /**
      * Adds as externalPictureURL
      *
-     * This field is used if the seller wishes to upload a picture to the EPS server that is currently on another external site. The URL of the picture you want to upload is passed in this field. Both http:// and https:// servers are supported.
+     * This field is used if the seller wishes to upload a picture to the EPS server that is currently on another external site. The URL of the picture you want to upload is passed in this field. Only https:// servers are supported.
      *  You can include only one <b>ExternalPictureURL</b> field per call.
      *  <br><br>
      *  The eBay server uses the information in this field to retrieve a picture from an external web server. Once retrieved, the picture will be copied to eBay Picture Services and retained for 30 days if not associated with a listing. When associated with a listing, the duration is the length of the listing plus 90 days.
-     *  <br/><br/>
-     *  <span class="tablenote"><b>Note: </b>
-     *  Although both the HTTP and HTTPS protocols are currently supported, in the near future, eBay will no longer allow the hosting or transfer of images on a server using the the HTTP protocol.
-     *  </span>
      *
      * @return self
      * @param string $externalPictureURL
@@ -285,14 +254,10 @@ class UploadSiteHostedPicturesRequestType extends AbstractRequestType
     /**
      * isset externalPictureURL
      *
-     * This field is used if the seller wishes to upload a picture to the EPS server that is currently on another external site. The URL of the picture you want to upload is passed in this field. Both http:// and https:// servers are supported.
+     * This field is used if the seller wishes to upload a picture to the EPS server that is currently on another external site. The URL of the picture you want to upload is passed in this field. Only https:// servers are supported.
      *  You can include only one <b>ExternalPictureURL</b> field per call.
      *  <br><br>
      *  The eBay server uses the information in this field to retrieve a picture from an external web server. Once retrieved, the picture will be copied to eBay Picture Services and retained for 30 days if not associated with a listing. When associated with a listing, the duration is the length of the listing plus 90 days.
-     *  <br/><br/>
-     *  <span class="tablenote"><b>Note: </b>
-     *  Although both the HTTP and HTTPS protocols are currently supported, in the near future, eBay will no longer allow the hosting or transfer of images on a server using the the HTTP protocol.
-     *  </span>
      *
      * @param int|string $index
      * @return bool
@@ -305,14 +270,10 @@ class UploadSiteHostedPicturesRequestType extends AbstractRequestType
     /**
      * unset externalPictureURL
      *
-     * This field is used if the seller wishes to upload a picture to the EPS server that is currently on another external site. The URL of the picture you want to upload is passed in this field. Both http:// and https:// servers are supported.
+     * This field is used if the seller wishes to upload a picture to the EPS server that is currently on another external site. The URL of the picture you want to upload is passed in this field. Only https:// servers are supported.
      *  You can include only one <b>ExternalPictureURL</b> field per call.
      *  <br><br>
      *  The eBay server uses the information in this field to retrieve a picture from an external web server. Once retrieved, the picture will be copied to eBay Picture Services and retained for 30 days if not associated with a listing. When associated with a listing, the duration is the length of the listing plus 90 days.
-     *  <br/><br/>
-     *  <span class="tablenote"><b>Note: </b>
-     *  Although both the HTTP and HTTPS protocols are currently supported, in the near future, eBay will no longer allow the hosting or transfer of images on a server using the the HTTP protocol.
-     *  </span>
      *
      * @param int|string $index
      * @return void
@@ -325,14 +286,10 @@ class UploadSiteHostedPicturesRequestType extends AbstractRequestType
     /**
      * Gets as externalPictureURL
      *
-     * This field is used if the seller wishes to upload a picture to the EPS server that is currently on another external site. The URL of the picture you want to upload is passed in this field. Both http:// and https:// servers are supported.
+     * This field is used if the seller wishes to upload a picture to the EPS server that is currently on another external site. The URL of the picture you want to upload is passed in this field. Only https:// servers are supported.
      *  You can include only one <b>ExternalPictureURL</b> field per call.
      *  <br><br>
      *  The eBay server uses the information in this field to retrieve a picture from an external web server. Once retrieved, the picture will be copied to eBay Picture Services and retained for 30 days if not associated with a listing. When associated with a listing, the duration is the length of the listing plus 90 days.
-     *  <br/><br/>
-     *  <span class="tablenote"><b>Note: </b>
-     *  Although both the HTTP and HTTPS protocols are currently supported, in the near future, eBay will no longer allow the hosting or transfer of images on a server using the the HTTP protocol.
-     *  </span>
      *
      * @return string[]
      */
@@ -344,14 +301,10 @@ class UploadSiteHostedPicturesRequestType extends AbstractRequestType
     /**
      * Sets a new externalPictureURL
      *
-     * This field is used if the seller wishes to upload a picture to the EPS server that is currently on another external site. The URL of the picture you want to upload is passed in this field. Both http:// and https:// servers are supported.
+     * This field is used if the seller wishes to upload a picture to the EPS server that is currently on another external site. The URL of the picture you want to upload is passed in this field. Only https:// servers are supported.
      *  You can include only one <b>ExternalPictureURL</b> field per call.
      *  <br><br>
      *  The eBay server uses the information in this field to retrieve a picture from an external web server. Once retrieved, the picture will be copied to eBay Picture Services and retained for 30 days if not associated with a listing. When associated with a listing, the duration is the length of the listing plus 90 days.
-     *  <br/><br/>
-     *  <span class="tablenote"><b>Note: </b>
-     *  Although both the HTTP and HTTPS protocols are currently supported, in the near future, eBay will no longer allow the hosting or transfer of images on a server using the the HTTP protocol.
-     *  </span>
      *
      * @param string[] $externalPictureURL
      * @return self
@@ -363,77 +316,12 @@ class UploadSiteHostedPicturesRequestType extends AbstractRequestType
     }
 
     /**
-     * Adds as pictureWatermark
-     *
-     * This field is deprecated.
-     *
-     * @return self
-     * @param string $pictureWatermark
-     */
-    public function addToPictureWatermark($pictureWatermark)
-    {
-        $this->pictureWatermark[] = $pictureWatermark;
-        return $this;
-    }
-
-    /**
-     * isset pictureWatermark
-     *
-     * This field is deprecated.
-     *
-     * @param int|string $index
-     * @return bool
-     */
-    public function issetPictureWatermark($index)
-    {
-        return isset($this->pictureWatermark[$index]);
-    }
-
-    /**
-     * unset pictureWatermark
-     *
-     * This field is deprecated.
-     *
-     * @param int|string $index
-     * @return void
-     */
-    public function unsetPictureWatermark($index)
-    {
-        unset($this->pictureWatermark[$index]);
-    }
-
-    /**
-     * Gets as pictureWatermark
-     *
-     * This field is deprecated.
-     *
-     * @return string[]
-     */
-    public function getPictureWatermark()
-    {
-        return $this->pictureWatermark;
-    }
-
-    /**
-     * Sets a new pictureWatermark
-     *
-     * This field is deprecated.
-     *
-     * @param string $pictureWatermark
-     * @return self
-     */
-    public function setPictureWatermark(array $pictureWatermark)
-    {
-        $this->pictureWatermark = $pictureWatermark;
-        return $this;
-    }
-
-    /**
      * Gets as extensionInDays
      *
      * By default, an unpublished picture will be hosted on the EPS server for five days before being purged. However, the seller has the option of using this field to set an expiration date further into the future (up to 30 days). Similarly, when a listing ends or expires, the images associated with the listing remain on the EPS server for an additional 90 days. The value in this field will add on to those 90 days.
      *  <br/><br/>
-     *  <span class="tablenote"><b>Note: </b>This call is restricted to applications that have been granted permission. Contact the eBay Developers Program to request permission.
+     *  <span class="tablenote"><b>Note: </b>
+     *  This field is restricted to applications that have been granted permission. Contact the eBay Developers Program to request permission.
      *  </span>
      *
      * @return int
@@ -448,7 +336,8 @@ class UploadSiteHostedPicturesRequestType extends AbstractRequestType
      *
      * By default, an unpublished picture will be hosted on the EPS server for five days before being purged. However, the seller has the option of using this field to set an expiration date further into the future (up to 30 days). Similarly, when a listing ends or expires, the images associated with the listing remain on the EPS server for an additional 90 days. The value in this field will add on to those 90 days.
      *  <br/><br/>
-     *  <span class="tablenote"><b>Note: </b>This call is restricted to applications that have been granted permission. Contact the eBay Developers Program to request permission.
+     *  <span class="tablenote"><b>Note: </b>
+     *  This field is restricted to applications that have been granted permission. Contact the eBay Developers Program to request permission.
      *  </span>
      *
      * @param int $extensionInDays
@@ -486,10 +375,6 @@ class UploadSiteHostedPicturesRequestType extends AbstractRequestType
         $value = $this->getExternalPictureURL();
         if (null !== $value && !empty($this->getExternalPictureURL())) {
             $writer->write(array_map(function ($v) {return ["ExternalPictureURL" => $v];}, $value));
-        }
-        $value = $this->getPictureWatermark();
-        if (null !== $value && !empty($this->getPictureWatermark())) {
-            $writer->write(array_map(function ($v) {return ["PictureWatermark" => $v];}, $value));
         }
         $value = $this->getExtensionInDays();
         if (null !== $value) {
@@ -535,10 +420,6 @@ class UploadSiteHostedPicturesRequestType extends AbstractRequestType
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExternalPictureURL', true);
         if (null !== $value && !empty($value)) {
             $this->setExternalPictureURL($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PictureWatermark', true);
-        if (null !== $value && !empty($value)) {
-            $this->setPictureWatermark($value);
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExtensionInDays');
         if (null !== $value) {

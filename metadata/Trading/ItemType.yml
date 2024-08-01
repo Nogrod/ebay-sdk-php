@@ -93,17 +93,6 @@ Nogrod\eBaySDK\Trading\ItemType:
                 getter: getCountry
                 setter: setCountry
             type: string
-        crossPromotion:
-            expose: true
-            access_type: public_method
-            serialized_name: CrossPromotion
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getCrossPromotion
-                setter: setCrossPromotion
-            type: Nogrod\eBaySDK\Trading\CrossPromotionsType
         currency:
             expose: true
             access_type: public_method
@@ -137,17 +126,6 @@ Nogrod\eBaySDK\Trading\ItemType:
                 getter: getDescriptionReviseMode
                 setter: setDescriptionReviseMode
             type: string
-        distance:
-            expose: true
-            access_type: public_method
-            serialized_name: Distance
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getDistance
-                setter: setDistance
-            type: Nogrod\eBaySDK\Trading\DistanceType
         itemID:
             expose: true
             access_type: public_method
@@ -229,28 +207,6 @@ Nogrod\eBaySDK\Trading\ItemType:
                 getter: getLotSize
                 setter: setLotSize
             type: int
-        partnerCode:
-            expose: true
-            access_type: public_method
-            serialized_name: PartnerCode
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getPartnerCode
-                setter: setPartnerCode
-            type: string
-        partnerName:
-            expose: true
-            access_type: public_method
-            serialized_name: PartnerName
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getPartnerName
-                setter: setPartnerName
-            type: string
         paymentDetails:
             expose: true
             access_type: public_method
@@ -342,17 +298,6 @@ Nogrod\eBaySDK\Trading\ItemType:
             accessor:
                 getter: getPrivateNotes
                 setter: setPrivateNotes
-            type: string
-        regionID:
-            expose: true
-            access_type: public_method
-            serialized_name: RegionID
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getRegionID
-                setter: setRegionID
             type: string
         relistLink:
             expose: true
@@ -666,17 +611,6 @@ Nogrod\eBaySDK\Trading\ItemType:
                 getter: getBuyerResponsibleForShipping
                 setter: setBuyerResponsibleForShipping
             type: bool
-        limitedWarrantyEligible:
-            expose: true
-            access_type: public_method
-            serialized_name: LimitedWarrantyEligible
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getLimitedWarrantyEligible
-                setter: setLimitedWarrantyEligible
-            type: bool
         eBayNotes:
             expose: true
             access_type: public_method
@@ -732,17 +666,6 @@ Nogrod\eBaySDK\Trading\ItemType:
                 getter: getSKU
                 setter: setSKU
             type: string
-        searchDetails:
-            expose: true
-            access_type: public_method
-            serialized_name: SearchDetails
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getSearchDetails
-                setter: setSearchDetails
-            type: Nogrod\eBaySDK\Trading\SearchDetailsType
         postalCode:
             expose: true
             access_type: public_method
@@ -814,28 +737,6 @@ Nogrod\eBaySDK\Trading\ItemType:
                 getter: getDispatchTimeMax
                 setter: setDispatchTimeMax
             type: int
-        bestOfferEnabled:
-            expose: true
-            access_type: public_method
-            serialized_name: BestOfferEnabled
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getBestOfferEnabled
-                setter: setBestOfferEnabled
-            type: bool
-        localListing:
-            expose: true
-            access_type: public_method
-            serialized_name: LocalListing
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getLocalListing
-                setter: setLocalListing
-            type: bool
         sellerContactDetails:
             expose: true
             access_type: public_method
@@ -918,17 +819,6 @@ Nogrod\eBaySDK\Trading\ItemType:
                 entry_name: NameValueList
                 skip_when_empty: true
                 namespace: 'urn:ebay:apis:eBLBaseComponents'
-        groupCategoryID:
-            expose: true
-            access_type: public_method
-            serialized_name: GroupCategoryID
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getGroupCategoryID
-                setter: setGroupCategoryID
-            type: string
         classifiedAdPayPerLeadFee:
             expose: true
             access_type: public_method
@@ -940,17 +830,6 @@ Nogrod\eBaySDK\Trading\ItemType:
                 getter: getClassifiedAdPayPerLeadFee
                 setter: setClassifiedAdPayPerLeadFee
             type: Nogrod\eBaySDK\Trading\AmountType
-        bidGroupItem:
-            expose: true
-            access_type: public_method
-            serialized_name: BidGroupItem
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getBidGroupItem
-                setter: setBidGroupItem
-            type: bool
         applyBuyerProtection:
             expose: true
             access_type: public_method
@@ -983,28 +862,6 @@ Nogrod\eBaySDK\Trading\ItemType:
             accessor:
                 getter: getMechanicalCheckAccepted
                 setter: setMechanicalCheckAccepted
-            type: bool
-        updateSellerInfo:
-            expose: true
-            access_type: public_method
-            serialized_name: UpdateSellerInfo
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getUpdateSellerInfo
-                setter: setUpdateSellerInfo
-            type: bool
-        updateReturnPolicy:
-            expose: true
-            access_type: public_method
-            serialized_name: UpdateReturnPolicy
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getUpdateReturnPolicy
-                setter: setUpdateReturnPolicy
             type: bool
         itemPolicyViolation:
             expose: true
@@ -1305,17 +1162,6 @@ Nogrod\eBaySDK\Trading\ItemType:
                 getter: getVRMLink
                 setter: setVRMLink
             type: string
-        quantityInfo:
-            expose: true
-            access_type: public_method
-            serialized_name: QuantityInfo
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getQuantityInfo
-                setter: setQuantityInfo
-            type: Nogrod\eBaySDK\Trading\QuantityInfoType
         sellerProfiles:
             expose: true
             access_type: public_method
@@ -1343,17 +1189,6 @@ Nogrod\eBaySDK\Trading\ItemType:
                 entry_name: ShippingServiceCostOverride
                 skip_when_empty: true
                 namespace: 'urn:ebay:apis:eBLBaseComponents'
-        shippingOverride:
-            expose: true
-            access_type: public_method
-            serialized_name: ShippingOverride
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getShippingOverride
-                setter: setShippingOverride
-            type: Nogrod\eBaySDK\Trading\ShippingOverrideType
         shippingPackageDetails:
             expose: true
             access_type: public_method
@@ -1518,17 +1353,6 @@ Nogrod\eBaySDK\Trading\ItemType:
             accessor:
                 getter: getEligibleForPickupDropOff
                 setter: setEligibleForPickupDropOff
-            type: bool
-        liveAuction:
-            expose: true
-            access_type: public_method
-            serialized_name: LiveAuction
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getLiveAuction
-                setter: setLiveAuction
             type: bool
         digitalGoodInfo:
             expose: true

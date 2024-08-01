@@ -87,14 +87,3 @@ Nogrod\eBaySDK\Trading\GetSellerTransactionsResponseType:
                 entry_name: Transaction
                 skip_when_empty: true
                 namespace: 'urn:ebay:apis:eBLBaseComponents'
-        payPalPreferred:
-            expose: true
-            access_type: public_method
-            serialized_name: PayPalPreferred
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getPayPalPreferred
-                setter: setPayPalPreferred
-            type: bool

@@ -174,21 +174,6 @@ Nogrod\eBaySDK\Trading\OrderType:
                 getter: getTotal
                 setter: setTotal
             type: Nogrod\eBaySDK\Trading\AmountType
-        externalTransaction:
-            expose: true
-            access_type: public_method
-            serialized_name: ExternalTransaction
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getExternalTransaction
-                setter: setExternalTransaction
-            xml_list:
-                inline: true
-                entry_name: ExternalTransaction
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            type: array<Nogrod\eBaySDK\Trading\ExternalTransactionType>
         transactionArray:
             expose: true
             access_type: public_method
@@ -238,17 +223,6 @@ Nogrod\eBaySDK\Trading\OrderType:
                 getter: getShippedTime
                 setter: setShippedTime
             type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime
-        integratedMerchantCreditCardEnabled:
-            expose: true
-            access_type: public_method
-            serialized_name: IntegratedMerchantCreditCardEnabled
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getIntegratedMerchantCreditCardEnabled
-                setter: setIntegratedMerchantCreditCardEnabled
-            type: bool
         bundlePurchase:
             expose: true
             access_type: public_method
@@ -293,17 +267,6 @@ Nogrod\eBaySDK\Trading\OrderType:
                 getter: getPaymentHoldStatus
                 setter: setPaymentHoldStatus
             type: string
-        paymentHoldDetails:
-            expose: true
-            access_type: public_method
-            serialized_name: PaymentHoldDetails
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getPaymentHoldDetails
-                setter: setPaymentHoldDetails
-            type: Nogrod\eBaySDK\Trading\PaymentHoldDetailType
         refundAmount:
             expose: true
             access_type: public_method
@@ -326,22 +289,6 @@ Nogrod\eBaySDK\Trading\OrderType:
                 getter: getRefundStatus
                 setter: setRefundStatus
             type: string
-        refundArray:
-            expose: true
-            access_type: public_method
-            serialized_name: RefundArray
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getRefundArray
-                setter: setRefundArray
-            type: array<Nogrod\eBaySDK\Trading\RefundType>
-            xml_list:
-                inline: false
-                entry_name: Refund
-                skip_when_empty: true
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
         isMultiLegShipping:
             expose: true
             access_type: public_method
@@ -446,43 +393,6 @@ Nogrod\eBaySDK\Trading\OrderType:
                 getter: getCancelStatus
                 setter: setCancelStatus
             type: string
-        cancelReasonDetails:
-            expose: true
-            access_type: public_method
-            serialized_name: CancelReasonDetails
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getCancelReasonDetails
-                setter: setCancelReasonDetails
-            type: string
-        shippingConvenienceCharge:
-            expose: true
-            access_type: public_method
-            serialized_name: ShippingConvenienceCharge
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getShippingConvenienceCharge
-                setter: setShippingConvenienceCharge
-            type: Nogrod\eBaySDK\Trading\AmountType
-        cancelDetail:
-            expose: true
-            access_type: public_method
-            serialized_name: CancelDetail
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getCancelDetail
-                setter: setCancelDetail
-            xml_list:
-                inline: true
-                entry_name: CancelDetail
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            type: array<Nogrod\eBaySDK\Trading\CancelDetailType>
         logisticsPlanType:
             expose: true
             access_type: public_method

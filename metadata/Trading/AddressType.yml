@@ -203,17 +203,6 @@ Nogrod\eBaySDK\Trading\AddressType:
                 getter: getAddressStatus
                 setter: setAddressStatus
             type: string
-        externalAddressID:
-            expose: true
-            access_type: public_method
-            serialized_name: ExternalAddressID
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getExternalAddressID
-                setter: setExternalAddressID
-            type: string
         internationalName:
             expose: true
             access_type: public_method
@@ -301,17 +290,6 @@ Nogrod\eBaySDK\Trading\AddressType:
             accessor:
                 getter: getPhone2
                 setter: setPhone2
-            type: string
-        addressUsage:
-            expose: true
-            access_type: public_method
-            serialized_name: AddressUsage
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getAddressUsage
-                setter: setAddressUsage
             type: string
         referenceID:
             expose: true

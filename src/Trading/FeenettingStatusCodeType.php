@@ -5,7 +5,7 @@ namespace Nogrod\eBaySDK\Trading;
 /**
  * Class representing FeenettingStatusCodeType
  *
- * This enumerated type contains values that indicate the current status of the seller's account for the fee netting mechanism. With fee netting, some selling fees like final value fee and payment processing fee will be deducted from seller payouts insted of eBay invoicing the seller for the fees.
+ * This enumerated type contains values that indicate the current status of the seller's account for the fee netting mechanism. With fee netting, some selling fees like final value fee and payment processing fee will be deducted from seller payouts instead of eBay invoicing the seller for the fees.
  * XSD Type: FeenettingStatusCodeType
  */
 class FeenettingStatusCodeType

@@ -305,35 +305,6 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     private $itemSpecificsEnabled = null;
 
     /**
-     * <span class="tablenote"><b>Note: </b> eBay India is no longer a functioning eBay marketplace, so the <code>PaisaPayEscrow</code> payment method is no longer applicable since this payment method was only supported on the eBay India site.
-     *  </span>
-     *
-     * @var bool $paisaPayFullEscrowEnabled
-     */
-    private $paisaPayFullEscrowEnabled = null;
-
-    /**
-     * This field is no longer applicable.
-     *
-     * @var bool $iSBNIdentifierEnabled
-     */
-    private $iSBNIdentifierEnabled = null;
-
-    /**
-     * This field is no longer applicable.
-     *
-     * @var bool $uPCIdentifierEnabled
-     */
-    private $uPCIdentifierEnabled = null;
-
-    /**
-     * This field is no longer applicable.
-     *
-     * @var bool $eANIdentifierEnabled
-     */
-    private $eANIdentifierEnabled = null;
-
-    /**
      * Indicates whether the category is enabled for the <b>BrandMPN</b> field for a specific item. If <code>true</code>, sellers can add <b>BrandMPN</b> for that item.
      *
      * @var bool $brandMPNIdentifierEnabled
@@ -377,26 +348,11 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     private $crossBorderTradeAustraliaEnabled = null;
 
     /**
-     * This field is deprecated.
-     *
-     * @var bool $payPalBuyerProtectionEnabled
-     */
-    private $payPalBuyerProtectionEnabled = null;
-
-    /**
      * For the Australia site, if the <b>BuyerGuaranteeEnabled</b> is returned, then the default site setting is that categories allow buyer protection.
      *
      * @var bool $buyerGuaranteeEnabled
      */
     private $buyerGuaranteeEnabled = null;
-
-    /**
-     * <span class="tablenote"><b>Note: </b> eBay India is no longer a functioning eBay marketplace, so this feature is no longer applicable since it was only supported on the eBay India site.
-     *  </span>
-     *
-     * @var string $iNEscrowWorkflowTimeline
-     */
-    private $iNEscrowWorkflowTimeline = null;
 
     /**
      * This field is deprecated.
@@ -939,7 +895,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     private $valueCategory = null;
 
     /**
-     * Specifies the default site setting for whether most categories support creating/revising listings based off an eBay catalog product.
+     * This field is no longer applicable.
      *
      * @var string $productCreationEnabled
      */
@@ -997,13 +953,6 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      * @var string $compatibleVehicleType
      */
     private $compatibleVehicleType = null;
-
-    /**
-     * This field is deprecated
-     *
-     * @var string $paymentOptionsGroup
-     */
-    private $paymentOptionsGroup = null;
 
     /**
      * Specifies what categories the Shipping profile is applicable to.
@@ -2319,112 +2268,6 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     }
 
     /**
-     * Gets as paisaPayFullEscrowEnabled
-     *
-     * <span class="tablenote"><b>Note: </b> eBay India is no longer a functioning eBay marketplace, so the <code>PaisaPayEscrow</code> payment method is no longer applicable since this payment method was only supported on the eBay India site.
-     *  </span>
-     *
-     * @return bool
-     */
-    public function getPaisaPayFullEscrowEnabled()
-    {
-        return $this->paisaPayFullEscrowEnabled;
-    }
-
-    /**
-     * Sets a new paisaPayFullEscrowEnabled
-     *
-     * <span class="tablenote"><b>Note: </b> eBay India is no longer a functioning eBay marketplace, so the <code>PaisaPayEscrow</code> payment method is no longer applicable since this payment method was only supported on the eBay India site.
-     *  </span>
-     *
-     * @param bool $paisaPayFullEscrowEnabled
-     * @return self
-     */
-    public function setPaisaPayFullEscrowEnabled($paisaPayFullEscrowEnabled)
-    {
-        $this->paisaPayFullEscrowEnabled = $paisaPayFullEscrowEnabled;
-        return $this;
-    }
-
-    /**
-     * Gets as iSBNIdentifierEnabled
-     *
-     * This field is no longer applicable.
-     *
-     * @return bool
-     */
-    public function getISBNIdentifierEnabled()
-    {
-        return $this->iSBNIdentifierEnabled;
-    }
-
-    /**
-     * Sets a new iSBNIdentifierEnabled
-     *
-     * This field is no longer applicable.
-     *
-     * @param bool $iSBNIdentifierEnabled
-     * @return self
-     */
-    public function setISBNIdentifierEnabled($iSBNIdentifierEnabled)
-    {
-        $this->iSBNIdentifierEnabled = $iSBNIdentifierEnabled;
-        return $this;
-    }
-
-    /**
-     * Gets as uPCIdentifierEnabled
-     *
-     * This field is no longer applicable.
-     *
-     * @return bool
-     */
-    public function getUPCIdentifierEnabled()
-    {
-        return $this->uPCIdentifierEnabled;
-    }
-
-    /**
-     * Sets a new uPCIdentifierEnabled
-     *
-     * This field is no longer applicable.
-     *
-     * @param bool $uPCIdentifierEnabled
-     * @return self
-     */
-    public function setUPCIdentifierEnabled($uPCIdentifierEnabled)
-    {
-        $this->uPCIdentifierEnabled = $uPCIdentifierEnabled;
-        return $this;
-    }
-
-    /**
-     * Gets as eANIdentifierEnabled
-     *
-     * This field is no longer applicable.
-     *
-     * @return bool
-     */
-    public function getEANIdentifierEnabled()
-    {
-        return $this->eANIdentifierEnabled;
-    }
-
-    /**
-     * Sets a new eANIdentifierEnabled
-     *
-     * This field is no longer applicable.
-     *
-     * @param bool $eANIdentifierEnabled
-     * @return self
-     */
-    public function setEANIdentifierEnabled($eANIdentifierEnabled)
-    {
-        $this->eANIdentifierEnabled = $eANIdentifierEnabled;
-        return $this;
-    }
-
-    /**
      * Gets as brandMPNIdentifierEnabled
      *
      * Indicates whether the category is enabled for the <b>BrandMPN</b> field for a specific item. If <code>true</code>, sellers can add <b>BrandMPN</b> for that item.
@@ -2583,32 +2426,6 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     }
 
     /**
-     * Gets as payPalBuyerProtectionEnabled
-     *
-     * This field is deprecated.
-     *
-     * @return bool
-     */
-    public function getPayPalBuyerProtectionEnabled()
-    {
-        return $this->payPalBuyerProtectionEnabled;
-    }
-
-    /**
-     * Sets a new payPalBuyerProtectionEnabled
-     *
-     * This field is deprecated.
-     *
-     * @param bool $payPalBuyerProtectionEnabled
-     * @return self
-     */
-    public function setPayPalBuyerProtectionEnabled($payPalBuyerProtectionEnabled)
-    {
-        $this->payPalBuyerProtectionEnabled = $payPalBuyerProtectionEnabled;
-        return $this;
-    }
-
-    /**
      * Gets as buyerGuaranteeEnabled
      *
      * For the Australia site, if the <b>BuyerGuaranteeEnabled</b> is returned, then the default site setting is that categories allow buyer protection.
@@ -2631,34 +2448,6 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     public function setBuyerGuaranteeEnabled($buyerGuaranteeEnabled)
     {
         $this->buyerGuaranteeEnabled = $buyerGuaranteeEnabled;
-        return $this;
-    }
-
-    /**
-     * Gets as iNEscrowWorkflowTimeline
-     *
-     * <span class="tablenote"><b>Note: </b> eBay India is no longer a functioning eBay marketplace, so this feature is no longer applicable since it was only supported on the eBay India site.
-     *  </span>
-     *
-     * @return string
-     */
-    public function getINEscrowWorkflowTimeline()
-    {
-        return $this->iNEscrowWorkflowTimeline;
-    }
-
-    /**
-     * Sets a new iNEscrowWorkflowTimeline
-     *
-     * <span class="tablenote"><b>Note: </b> eBay India is no longer a functioning eBay marketplace, so this feature is no longer applicable since it was only supported on the eBay India site.
-     *  </span>
-     *
-     * @param string $iNEscrowWorkflowTimeline
-     * @return self
-     */
-    public function setINEscrowWorkflowTimeline($iNEscrowWorkflowTimeline)
-    {
-        $this->iNEscrowWorkflowTimeline = $iNEscrowWorkflowTimeline;
         return $this;
     }
 
@@ -4632,7 +4421,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Gets as productCreationEnabled
      *
-     * Specifies the default site setting for whether most categories support creating/revising listings based off an eBay catalog product.
+     * This field is no longer applicable.
      *
      * @return string
      */
@@ -4644,7 +4433,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Sets a new productCreationEnabled
      *
-     * Specifies the default site setting for whether most categories support creating/revising listings based off an eBay catalog product.
+     * This field is no longer applicable.
      *
      * @param string $productCreationEnabled
      * @return self
@@ -4818,32 +4607,6 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     public function setCompatibleVehicleType($compatibleVehicleType)
     {
         $this->compatibleVehicleType = $compatibleVehicleType;
-        return $this;
-    }
-
-    /**
-     * Gets as paymentOptionsGroup
-     *
-     * This field is deprecated
-     *
-     * @return string
-     */
-    public function getPaymentOptionsGroup()
-    {
-        return $this->paymentOptionsGroup;
-    }
-
-    /**
-     * Sets a new paymentOptionsGroup
-     *
-     * This field is deprecated
-     *
-     * @param string $paymentOptionsGroup
-     * @return self
-     */
-    public function setPaymentOptionsGroup($paymentOptionsGroup)
-    {
-        $this->paymentOptionsGroup = $paymentOptionsGroup;
         return $this;
     }
 
@@ -6130,26 +5893,6 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ItemSpecificsEnabled", $value);
         }
-        $value = $this->getPaisaPayFullEscrowEnabled();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PaisaPayFullEscrowEnabled", $value);
-        }
-        $value = $this->getISBNIdentifierEnabled();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ISBNIdentifierEnabled", $value);
-        }
-        $value = $this->getUPCIdentifierEnabled();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}UPCIdentifierEnabled", $value);
-        }
-        $value = $this->getEANIdentifierEnabled();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}EANIdentifierEnabled", $value);
-        }
         $value = $this->getBrandMPNIdentifierEnabled();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;
         if (null !== $value) {
@@ -6180,19 +5923,10 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CrossBorderTradeAustraliaEnabled", $value);
         }
-        $value = $this->getPayPalBuyerProtectionEnabled();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PayPalBuyerProtectionEnabled", $value);
-        }
         $value = $this->getBuyerGuaranteeEnabled();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BuyerGuaranteeEnabled", $value);
-        }
-        $value = $this->getINEscrowWorkflowTimeline();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}INEscrowWorkflowTimeline", $value);
         }
         $value = $this->getCombinedFixedPriceTreatmentEnabled();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;
@@ -6503,10 +6237,6 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CompatibleVehicleType", $value);
         }
-        $value = $this->getPaymentOptionsGroup();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PaymentOptionsGroup", $value);
-        }
         $value = $this->getShippingProfileCategoryGroup();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippingProfileCategoryGroup", $value);
@@ -6782,22 +6512,6 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
         if (null !== $value) {
             $this->setItemSpecificsEnabled($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaisaPayFullEscrowEnabled');
-        if (null !== $value) {
-            $this->setPaisaPayFullEscrowEnabled($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ISBNIdentifierEnabled');
-        if (null !== $value) {
-            $this->setISBNIdentifierEnabled($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UPCIdentifierEnabled');
-        if (null !== $value) {
-            $this->setUPCIdentifierEnabled($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EANIdentifierEnabled');
-        if (null !== $value) {
-            $this->setEANIdentifierEnabled($value);
-        }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BrandMPNIdentifierEnabled');
         if (null !== $value) {
             $this->setBrandMPNIdentifierEnabled($value);
@@ -6822,17 +6536,9 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
         if (null !== $value) {
             $this->setCrossBorderTradeAustraliaEnabled($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PayPalBuyerProtectionEnabled');
-        if (null !== $value) {
-            $this->setPayPalBuyerProtectionEnabled($value);
-        }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BuyerGuaranteeEnabled');
         if (null !== $value) {
             $this->setBuyerGuaranteeEnabled($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}INEscrowWorkflowTimeline');
-        if (null !== $value) {
-            $this->setINEscrowWorkflowTimeline($value);
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CombinedFixedPriceTreatmentEnabled');
         if (null !== $value) {
@@ -7109,10 +6815,6 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CompatibleVehicleType');
         if (null !== $value) {
             $this->setCompatibleVehicleType($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaymentOptionsGroup');
-        if (null !== $value) {
-            $this->setPaymentOptionsGroup($value);
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingProfileCategoryGroup');
         if (null !== $value) {

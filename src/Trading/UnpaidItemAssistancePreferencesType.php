@@ -79,14 +79,6 @@ class UnpaidItemAssistancePreferencesType implements \Sabre\Xml\XmlSerializable,
     ];
 
     /**
-     * <span class="tablenote"><b>Note: </b> Do not use this flag with the <b>SetUserPreferences</b> call; this flag is no longer applicable or returned for the <b>GetUserPreferences</b> call.
-     *  </span>
-     *
-     * @var bool $autoOptDonationRefund
-     */
-    private $autoOptDonationRefund = null;
-
-    /**
      * Gets as delayBeforeOpeningDispute
      *
      * This value indicates the number of days that should elapse before an unpaid order is cancelled on behalf of the seller.
@@ -332,34 +324,6 @@ class UnpaidItemAssistancePreferencesType implements \Sabre\Xml\XmlSerializable,
         return $this;
     }
 
-    /**
-     * Gets as autoOptDonationRefund
-     *
-     * <span class="tablenote"><b>Note: </b> Do not use this flag with the <b>SetUserPreferences</b> call; this flag is no longer applicable or returned for the <b>GetUserPreferences</b> call.
-     *  </span>
-     *
-     * @return bool
-     */
-    public function getAutoOptDonationRefund()
-    {
-        return $this->autoOptDonationRefund;
-    }
-
-    /**
-     * Sets a new autoOptDonationRefund
-     *
-     * <span class="tablenote"><b>Note: </b> Do not use this flag with the <b>SetUserPreferences</b> call; this flag is no longer applicable or returned for the <b>GetUserPreferences</b> call.
-     *  </span>
-     *
-     * @param bool $autoOptDonationRefund
-     * @return self
-     */
-    public function setAutoOptDonationRefund($autoOptDonationRefund)
-    {
-        $this->autoOptDonationRefund = $autoOptDonationRefund;
-        return $this;
-    }
-
     public function xmlSerialize(\Sabre\Xml\Writer $writer): void
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
@@ -385,11 +349,6 @@ class UnpaidItemAssistancePreferencesType implements \Sabre\Xml\XmlSerializable,
         $value = $this->getExcludedUser();
         if (null !== $value && !empty($this->getExcludedUser())) {
             $writer->write(array_map(function ($v) {return ["ExcludedUser" => $v];}, $value));
-        }
-        $value = $this->getAutoOptDonationRefund();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}AutoOptDonationRefund", $value);
         }
     }
 
@@ -426,10 +385,6 @@ class UnpaidItemAssistancePreferencesType implements \Sabre\Xml\XmlSerializable,
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExcludedUser', true);
         if (null !== $value && !empty($value)) {
             $this->setExcludedUser($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AutoOptDonationRefund');
-        if (null !== $value) {
-            $this->setAutoOptDonationRefund($value);
         }
     }
 }

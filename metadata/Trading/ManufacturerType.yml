@@ -1,0 +1,106 @@
+Nogrod\eBaySDK\Trading\ManufacturerType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        companyName:
+            expose: true
+            access_type: public_method
+            serialized_name: CompanyName
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCompanyName
+                setter: setCompanyName
+            type: string
+        street1:
+            expose: true
+            access_type: public_method
+            serialized_name: Street1
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getStreet1
+                setter: setStreet1
+            type: string
+        street2:
+            expose: true
+            access_type: public_method
+            serialized_name: Street2
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getStreet2
+                setter: setStreet2
+            type: string
+        cityName:
+            expose: true
+            access_type: public_method
+            serialized_name: CityName
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCityName
+                setter: setCityName
+            type: string
+        stateOrProvince:
+            expose: true
+            access_type: public_method
+            serialized_name: StateOrProvince
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getStateOrProvince
+                setter: setStateOrProvince
+            type: string
+        postalCode:
+            expose: true
+            access_type: public_method
+            serialized_name: PostalCode
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPostalCode
+                setter: setPostalCode
+            type: string
+        country:
+            expose: true
+            access_type: public_method
+            serialized_name: Country
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getCountry
+                setter: setCountry
+            type: string
+        phone:
+            expose: true
+            access_type: public_method
+            serialized_name: Phone
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getPhone
+                setter: setPhone
+            type: string
+        email:
+            expose: true
+            access_type: public_method
+            serialized_name: Email
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getEmail
+                setter: setEmail
+            type: string

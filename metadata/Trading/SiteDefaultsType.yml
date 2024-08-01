@@ -438,50 +438,6 @@ Nogrod\eBaySDK\Trading\SiteDefaultsType:
                 getter: getItemSpecificsEnabled
                 setter: setItemSpecificsEnabled
             type: string
-        paisaPayFullEscrowEnabled:
-            expose: true
-            access_type: public_method
-            serialized_name: PaisaPayFullEscrowEnabled
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getPaisaPayFullEscrowEnabled
-                setter: setPaisaPayFullEscrowEnabled
-            type: bool
-        iSBNIdentifierEnabled:
-            expose: true
-            access_type: public_method
-            serialized_name: ISBNIdentifierEnabled
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getISBNIdentifierEnabled
-                setter: setISBNIdentifierEnabled
-            type: bool
-        uPCIdentifierEnabled:
-            expose: true
-            access_type: public_method
-            serialized_name: UPCIdentifierEnabled
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getUPCIdentifierEnabled
-                setter: setUPCIdentifierEnabled
-            type: bool
-        eANIdentifierEnabled:
-            expose: true
-            access_type: public_method
-            serialized_name: EANIdentifierEnabled
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getEANIdentifierEnabled
-                setter: setEANIdentifierEnabled
-            type: bool
         brandMPNIdentifierEnabled:
             expose: true
             access_type: public_method
@@ -548,17 +504,6 @@ Nogrod\eBaySDK\Trading\SiteDefaultsType:
                 getter: getCrossBorderTradeAustraliaEnabled
                 setter: setCrossBorderTradeAustraliaEnabled
             type: bool
-        payPalBuyerProtectionEnabled:
-            expose: true
-            access_type: public_method
-            serialized_name: PayPalBuyerProtectionEnabled
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getPayPalBuyerProtectionEnabled
-                setter: setPayPalBuyerProtectionEnabled
-            type: bool
         buyerGuaranteeEnabled:
             expose: true
             access_type: public_method
@@ -570,17 +515,6 @@ Nogrod\eBaySDK\Trading\SiteDefaultsType:
                 getter: getBuyerGuaranteeEnabled
                 setter: setBuyerGuaranteeEnabled
             type: bool
-        iNEscrowWorkflowTimeline:
-            expose: true
-            access_type: public_method
-            serialized_name: INEscrowWorkflowTimeline
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getINEscrowWorkflowTimeline
-                setter: setINEscrowWorkflowTimeline
-            type: string
         combinedFixedPriceTreatmentEnabled:
             expose: true
             access_type: public_method
@@ -1353,17 +1287,6 @@ Nogrod\eBaySDK\Trading\SiteDefaultsType:
             accessor:
                 getter: getCompatibleVehicleType
                 setter: setCompatibleVehicleType
-            type: string
-        paymentOptionsGroup:
-            expose: true
-            access_type: public_method
-            serialized_name: PaymentOptionsGroup
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getPaymentOptionsGroup
-                setter: setPaymentOptionsGroup
             type: string
         shippingProfileCategoryGroup:
             expose: true

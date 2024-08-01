@@ -7,11 +7,7 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing PaymentsInformationType
  *
- * This type defines the <strong>MonetaryDetails</strong> container, which consists of detailed information about one or more exchanges of funds that occur between the buyer, seller, eBay, and eBay partners during the lifecycle of an order, as well as detailed information about a merchant's refund (or store credit) to a buyer who has returned an In-Store Pickup item.
- *  <br/><br/>
- *  <span class="tablenote">
- *  <strong>Note:</strong> At this time, the In-Store Pickup feature is generally only available to large retail merchants, and can only be applied to multi-quantity, fixed-price listings.
- *  </span>
+ * This type defines the <strong>MonetaryDetails</strong> container, which consists of detailed information about one or more exchanges of funds that occur between the buyer, seller, eBay, and eBay partners during the lifecycle of an order, as well as detailed information about a seller's refund (or store credit) to a buyer who has returned an item.
  * XSD Type: PaymentsInformationType
  */
 class PaymentsInformationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
@@ -24,9 +20,9 @@ class PaymentsInformationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
     private $payments = null;
 
     /**
-     * This container consists of an array of one or more <strong>Refund</strong> containers, and each <strong>Refund</strong> container consists of detailed information about a merchant's refund (or store credit) to a buyer who has returned an In-Store Pickup item.
+     * This container consists of an array of one or more <strong>Refund</strong> containers, and each <strong>Refund</strong> container consists of detailed information about a seller's refund (or store credit) to a buyer who has returned an item.
      *  <br/><br/>
-     *  This container is only returned if the buyer has returned an In-Store Pickup item to the merchant at a physical store, and the merchant has notified eBay through the <strong>ORDER.RETURNED</strong> notification of the Inbound Notifications API.
+     *  This container is also returned if the buyer has returned an In-Store Pickup item to the merchant at a physical store, and the merchant has notified eBay through the <strong>ORDER.RETURNED</strong> notification of the Inbound Notifications API.
      *  <br/><br/>
      *  <span class="tablenote">
      *  <strong>Note:</strong> At this time, the In-Store Pickup feature is generally only available to large retail merchants, and can only be applied to multi-quantity, fixed-price listings.
@@ -105,9 +101,9 @@ class PaymentsInformationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
     /**
      * Adds as refund
      *
-     * This container consists of an array of one or more <strong>Refund</strong> containers, and each <strong>Refund</strong> container consists of detailed information about a merchant's refund (or store credit) to a buyer who has returned an In-Store Pickup item.
+     * This container consists of an array of one or more <strong>Refund</strong> containers, and each <strong>Refund</strong> container consists of detailed information about a seller's refund (or store credit) to a buyer who has returned an item.
      *  <br/><br/>
-     *  This container is only returned if the buyer has returned an In-Store Pickup item to the merchant at a physical store, and the merchant has notified eBay through the <strong>ORDER.RETURNED</strong> notification of the Inbound Notifications API.
+     *  This container is also returned if the buyer has returned an In-Store Pickup item to the merchant at a physical store, and the merchant has notified eBay through the <strong>ORDER.RETURNED</strong> notification of the Inbound Notifications API.
      *  <br/><br/>
      *  <span class="tablenote">
      *  <strong>Note:</strong> At this time, the In-Store Pickup feature is generally only available to large retail merchants, and can only be applied to multi-quantity, fixed-price listings.
@@ -125,9 +121,9 @@ class PaymentsInformationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
     /**
      * isset refunds
      *
-     * This container consists of an array of one or more <strong>Refund</strong> containers, and each <strong>Refund</strong> container consists of detailed information about a merchant's refund (or store credit) to a buyer who has returned an In-Store Pickup item.
+     * This container consists of an array of one or more <strong>Refund</strong> containers, and each <strong>Refund</strong> container consists of detailed information about a seller's refund (or store credit) to a buyer who has returned an item.
      *  <br/><br/>
-     *  This container is only returned if the buyer has returned an In-Store Pickup item to the merchant at a physical store, and the merchant has notified eBay through the <strong>ORDER.RETURNED</strong> notification of the Inbound Notifications API.
+     *  This container is also returned if the buyer has returned an In-Store Pickup item to the merchant at a physical store, and the merchant has notified eBay through the <strong>ORDER.RETURNED</strong> notification of the Inbound Notifications API.
      *  <br/><br/>
      *  <span class="tablenote">
      *  <strong>Note:</strong> At this time, the In-Store Pickup feature is generally only available to large retail merchants, and can only be applied to multi-quantity, fixed-price listings.
@@ -144,9 +140,9 @@ class PaymentsInformationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
     /**
      * unset refunds
      *
-     * This container consists of an array of one or more <strong>Refund</strong> containers, and each <strong>Refund</strong> container consists of detailed information about a merchant's refund (or store credit) to a buyer who has returned an In-Store Pickup item.
+     * This container consists of an array of one or more <strong>Refund</strong> containers, and each <strong>Refund</strong> container consists of detailed information about a seller's refund (or store credit) to a buyer who has returned an item.
      *  <br/><br/>
-     *  This container is only returned if the buyer has returned an In-Store Pickup item to the merchant at a physical store, and the merchant has notified eBay through the <strong>ORDER.RETURNED</strong> notification of the Inbound Notifications API.
+     *  This container is also returned if the buyer has returned an In-Store Pickup item to the merchant at a physical store, and the merchant has notified eBay through the <strong>ORDER.RETURNED</strong> notification of the Inbound Notifications API.
      *  <br/><br/>
      *  <span class="tablenote">
      *  <strong>Note:</strong> At this time, the In-Store Pickup feature is generally only available to large retail merchants, and can only be applied to multi-quantity, fixed-price listings.
@@ -163,9 +159,9 @@ class PaymentsInformationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
     /**
      * Gets as refunds
      *
-     * This container consists of an array of one or more <strong>Refund</strong> containers, and each <strong>Refund</strong> container consists of detailed information about a merchant's refund (or store credit) to a buyer who has returned an In-Store Pickup item.
+     * This container consists of an array of one or more <strong>Refund</strong> containers, and each <strong>Refund</strong> container consists of detailed information about a seller's refund (or store credit) to a buyer who has returned an item.
      *  <br/><br/>
-     *  This container is only returned if the buyer has returned an In-Store Pickup item to the merchant at a physical store, and the merchant has notified eBay through the <strong>ORDER.RETURNED</strong> notification of the Inbound Notifications API.
+     *  This container is also returned if the buyer has returned an In-Store Pickup item to the merchant at a physical store, and the merchant has notified eBay through the <strong>ORDER.RETURNED</strong> notification of the Inbound Notifications API.
      *  <br/><br/>
      *  <span class="tablenote">
      *  <strong>Note:</strong> At this time, the In-Store Pickup feature is generally only available to large retail merchants, and can only be applied to multi-quantity, fixed-price listings.
@@ -181,9 +177,9 @@ class PaymentsInformationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
     /**
      * Sets a new refunds
      *
-     * This container consists of an array of one or more <strong>Refund</strong> containers, and each <strong>Refund</strong> container consists of detailed information about a merchant's refund (or store credit) to a buyer who has returned an In-Store Pickup item.
+     * This container consists of an array of one or more <strong>Refund</strong> containers, and each <strong>Refund</strong> container consists of detailed information about a seller's refund (or store credit) to a buyer who has returned an item.
      *  <br/><br/>
-     *  This container is only returned if the buyer has returned an In-Store Pickup item to the merchant at a physical store, and the merchant has notified eBay through the <strong>ORDER.RETURNED</strong> notification of the Inbound Notifications API.
+     *  This container is also returned if the buyer has returned an In-Store Pickup item to the merchant at a physical store, and the merchant has notified eBay through the <strong>ORDER.RETURNED</strong> notification of the Inbound Notifications API.
      *  <br/><br/>
      *  <span class="tablenote">
      *  <strong>Note:</strong> At this time, the In-Store Pickup feature is generally only available to large retail merchants, and can only be applied to multi-quantity, fixed-price listings.

@@ -13,14 +13,20 @@ use Nogrod\XMLClientRuntime\Func;
 class NotificationUserDataType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
     /**
-     * User data related to SMS notifications. SMS is currently reserved for future use.
+     * <span class="tablenote"><b>Note: </b>
+     *  This container has been deprecated. It is not usable and ignored if sent, and will be decommissioned on August 26, 2024.
+     *  </span>
+     *  User data related to SMS notifications. SMS is currently reserved for future use.
      *
      * @var \Nogrod\eBaySDK\Trading\SMSSubscriptionType $sMSSubscription
      */
     private $sMSSubscription = null;
 
     /**
-     * User account activity summary alert delivery schedule.
+     * <span class="tablenote"><b>Note: </b>
+     *  This container has been deprecated. It is not usable and ignored if sent, and will be decommissioned on August 26, 2024.
+     *  </span>
+     *  User account activity summary alert delivery schedule.
      *  Returned if PreferenceLevel is set to UserData in
      *  GetNotificationPreferences.
      *  See "Working with Platform Notifications" for instructions on
@@ -46,7 +52,10 @@ class NotificationUserDataType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
     /**
      * Gets as sMSSubscription
      *
-     * User data related to SMS notifications. SMS is currently reserved for future use.
+     * <span class="tablenote"><b>Note: </b>
+     *  This container has been deprecated. It is not usable and ignored if sent, and will be decommissioned on August 26, 2024.
+     *  </span>
+     *  User data related to SMS notifications. SMS is currently reserved for future use.
      *
      * @return \Nogrod\eBaySDK\Trading\SMSSubscriptionType
      */
@@ -58,7 +67,10 @@ class NotificationUserDataType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
     /**
      * Sets a new sMSSubscription
      *
-     * User data related to SMS notifications. SMS is currently reserved for future use.
+     * <span class="tablenote"><b>Note: </b>
+     *  This container has been deprecated. It is not usable and ignored if sent, and will be decommissioned on August 26, 2024.
+     *  </span>
+     *  User data related to SMS notifications. SMS is currently reserved for future use.
      *
      * @param \Nogrod\eBaySDK\Trading\SMSSubscriptionType $sMSSubscription
      * @return self
@@ -72,7 +84,10 @@ class NotificationUserDataType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
     /**
      * Adds as summarySchedule
      *
-     * User account activity summary alert delivery schedule.
+     * <span class="tablenote"><b>Note: </b>
+     *  This container has been deprecated. It is not usable and ignored if sent, and will be decommissioned on August 26, 2024.
+     *  </span>
+     *  User account activity summary alert delivery schedule.
      *  Returned if PreferenceLevel is set to UserData in
      *  GetNotificationPreferences.
      *  See "Working with Platform Notifications" for instructions on
@@ -90,7 +105,10 @@ class NotificationUserDataType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
     /**
      * isset summarySchedule
      *
-     * User account activity summary alert delivery schedule.
+     * <span class="tablenote"><b>Note: </b>
+     *  This container has been deprecated. It is not usable and ignored if sent, and will be decommissioned on August 26, 2024.
+     *  </span>
+     *  User account activity summary alert delivery schedule.
      *  Returned if PreferenceLevel is set to UserData in
      *  GetNotificationPreferences.
      *  See "Working with Platform Notifications" for instructions on
@@ -107,7 +125,10 @@ class NotificationUserDataType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
     /**
      * unset summarySchedule
      *
-     * User account activity summary alert delivery schedule.
+     * <span class="tablenote"><b>Note: </b>
+     *  This container has been deprecated. It is not usable and ignored if sent, and will be decommissioned on August 26, 2024.
+     *  </span>
+     *  User account activity summary alert delivery schedule.
      *  Returned if PreferenceLevel is set to UserData in
      *  GetNotificationPreferences.
      *  See "Working with Platform Notifications" for instructions on
@@ -124,7 +145,10 @@ class NotificationUserDataType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
     /**
      * Gets as summarySchedule
      *
-     * User account activity summary alert delivery schedule.
+     * <span class="tablenote"><b>Note: </b>
+     *  This container has been deprecated. It is not usable and ignored if sent, and will be decommissioned on August 26, 2024.
+     *  </span>
+     *  User account activity summary alert delivery schedule.
      *  Returned if PreferenceLevel is set to UserData in
      *  GetNotificationPreferences.
      *  See "Working with Platform Notifications" for instructions on
@@ -140,7 +164,10 @@ class NotificationUserDataType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
     /**
      * Sets a new summarySchedule
      *
-     * User account activity summary alert delivery schedule.
+     * <span class="tablenote"><b>Note: </b>
+     *  This container has been deprecated. It is not usable and ignored if sent, and will be decommissioned on August 26, 2024.
+     *  </span>
+     *  User account activity summary alert delivery schedule.
      *  Returned if PreferenceLevel is set to UserData in
      *  GetNotificationPreferences.
      *  See "Working with Platform Notifications" for instructions on

@@ -53,17 +53,6 @@ Nogrod\eBaySDK\Trading\CategoryFeatureType:
                 getter: getBestOfferEnabled
                 setter: setBestOfferEnabled
             type: bool
-        dutchBINEnabled:
-            expose: true
-            access_type: public_method
-            serialized_name: DutchBINEnabled
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getDutchBINEnabled
-                setter: setDutchBINEnabled
-            type: bool
         userConsentRequired:
             expose: true
             access_type: public_method
@@ -96,39 +85,6 @@ Nogrod\eBaySDK\Trading\CategoryFeatureType:
             accessor:
                 getter: getProPackEnabled
                 setter: setProPackEnabled
-            type: bool
-        basicUpgradePackEnabled:
-            expose: true
-            access_type: public_method
-            serialized_name: BasicUpgradePackEnabled
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getBasicUpgradePackEnabled
-                setter: setBasicUpgradePackEnabled
-            type: bool
-        valuePackEnabled:
-            expose: true
-            access_type: public_method
-            serialized_name: ValuePackEnabled
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getValuePackEnabled
-                setter: setValuePackEnabled
-            type: bool
-        proPackPlusEnabled:
-            expose: true
-            access_type: public_method
-            serialized_name: ProPackPlusEnabled
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getProPackPlusEnabled
-                setter: setProPackPlusEnabled
             type: bool
         adFormatEnabled:
             expose: true
@@ -207,39 +163,6 @@ Nogrod\eBaySDK\Trading\CategoryFeatureType:
                 getter: getLocalMarketNonSubscription
                 setter: setLocalMarketNonSubscription
             type: bool
-        expressEnabled:
-            expose: true
-            access_type: public_method
-            serialized_name: ExpressEnabled
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getExpressEnabled
-                setter: setExpressEnabled
-            type: bool
-        expressPicturesRequired:
-            expose: true
-            access_type: public_method
-            serialized_name: ExpressPicturesRequired
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getExpressPicturesRequired
-                setter: setExpressPicturesRequired
-            type: bool
-        expressConditionRequired:
-            expose: true
-            access_type: public_method
-            serialized_name: ExpressConditionRequired
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getExpressConditionRequired
-                setter: setExpressConditionRequired
-            type: bool
         minimumReservePrice:
             expose: true
             access_type: public_method
@@ -272,39 +195,6 @@ Nogrod\eBaySDK\Trading\CategoryFeatureType:
             accessor:
                 getter: getTransactionConfirmationRequestEnabled
                 setter: setTransactionConfirmationRequestEnabled
-            type: bool
-        storeInventoryEnabled:
-            expose: true
-            access_type: public_method
-            serialized_name: StoreInventoryEnabled
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getStoreInventoryEnabled
-                setter: setStoreInventoryEnabled
-            type: bool
-        skypeMeTransactionalEnabled:
-            expose: true
-            access_type: public_method
-            serialized_name: SkypeMeTransactionalEnabled
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getSkypeMeTransactionalEnabled
-                setter: setSkypeMeTransactionalEnabled
-            type: bool
-        skypeMeNonTransactionalEnabled:
-            expose: true
-            access_type: public_method
-            serialized_name: SkypeMeNonTransactionalEnabled
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getSkypeMeNonTransactionalEnabled
-                setter: setSkypeMeNonTransactionalEnabled
             type: bool
         classifiedAdPaymentMethodEnabled:
             expose: true
@@ -493,17 +383,6 @@ Nogrod\eBaySDK\Trading\CategoryFeatureType:
                 getter: getCrossBorderTradeAustraliaEnabled
                 setter: setCrossBorderTradeAustraliaEnabled
             type: bool
-        payPalBuyerProtectionEnabled:
-            expose: true
-            access_type: public_method
-            serialized_name: PayPalBuyerProtectionEnabled
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getPayPalBuyerProtectionEnabled
-                setter: setPayPalBuyerProtectionEnabled
-            type: bool
         buyerGuaranteeEnabled:
             expose: true
             access_type: public_method
@@ -514,17 +393,6 @@ Nogrod\eBaySDK\Trading\CategoryFeatureType:
             accessor:
                 getter: getBuyerGuaranteeEnabled
                 setter: setBuyerGuaranteeEnabled
-            type: bool
-        combinedFixedPriceTreatmentEnabled:
-            expose: true
-            access_type: public_method
-            serialized_name: CombinedFixedPriceTreatmentEnabled
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getCombinedFixedPriceTreatmentEnabled
-                setter: setCombinedFixedPriceTreatmentEnabled
             type: bool
         galleryFeaturedDurations:
             expose: true
@@ -542,17 +410,6 @@ Nogrod\eBaySDK\Trading\CategoryFeatureType:
                 entry_name: Duration
                 skip_when_empty: true
                 namespace: 'urn:ebay:apis:eBLBaseComponents'
-        payPalRequired:
-            expose: true
-            access_type: public_method
-            serialized_name: PayPalRequired
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getPayPalRequired
-                setter: setPayPalRequired
-            type: bool
         eBayMotorsProAdFormatEnabled:
             expose: true
             access_type: public_method
@@ -960,17 +817,6 @@ Nogrod\eBaySDK\Trading\CategoryFeatureType:
                 getter: getINEscrowWorkflowTimeline
                 setter: setINEscrowWorkflowTimeline
             type: string
-        payPalRequiredForStoreOwner:
-            expose: true
-            access_type: public_method
-            serialized_name: PayPalRequiredForStoreOwner
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getPayPalRequiredForStoreOwner
-                setter: setPayPalRequiredForStoreOwner
-            type: bool
         reviseQuantityAllowed:
             expose: true
             access_type: public_method
@@ -1112,17 +958,6 @@ Nogrod\eBaySDK\Trading\CategoryFeatureType:
                 getter: getVariationsEnabled
                 setter: setVariationsEnabled
             type: bool
-        attributeConversionEnabled:
-            expose: true
-            access_type: public_method
-            serialized_name: AttributeConversionEnabled
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getAttributeConversionEnabled
-                setter: setAttributeConversionEnabled
-            type: string
         freeGalleryPlusEnabled:
             expose: true
             access_type: public_method
@@ -1288,17 +1123,6 @@ Nogrod\eBaySDK\Trading\CategoryFeatureType:
                 getter: getCompatibleVehicleType
                 setter: setCompatibleVehicleType
             type: string
-        paymentOptionsGroup:
-            expose: true
-            access_type: public_method
-            serialized_name: PaymentOptionsGroup
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getPaymentOptionsGroup
-                setter: setPaymentOptionsGroup
-            type: string
         shippingProfileCategoryGroup:
             expose: true
             access_type: public_method
@@ -1442,17 +1266,6 @@ Nogrod\eBaySDK\Trading\CategoryFeatureType:
                 getter: getKTypeSupported
                 setter: setKTypeSupported
             type: bool
-        productRequiredEnabled:
-            expose: true
-            access_type: public_method
-            serialized_name: ProductRequiredEnabled
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getProductRequiredEnabled
-                setter: setProductRequiredEnabled
-            type: string
         domesticReturnsAcceptedValues:
             expose: true
             access_type: public_method

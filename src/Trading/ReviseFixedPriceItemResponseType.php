@@ -7,7 +7,7 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing ReviseFixedPriceItemResponseType
  *
- * The base response type for the <b>ReviseFixedPriceItem</b> call. The response includes the Item ID for the revised item, the SKU value for the item (if any), listing recommendations (if applicable), the estimated fees for the revised item (except the Final Value Fee, which isn't calculated until the item has sold), the start and end times of the listing, and other details.
+ * The base response type for the <b>ReviseFixedPriceItem</b> call. The response includes the Item ID for the revised item, the SKU value for the item (if any), listing recommendations (if applicable), the estimated fees for the revised item (except the transaction fees, which aren't calculated until the item has sold), the start and end times of the listing, and other details.
  * XSD Type: ReviseFixedPriceItemResponseType
  */
 class ReviseFixedPriceItemResponseType extends AbstractResponseType
@@ -37,19 +37,14 @@ class ReviseFixedPriceItemResponseType extends AbstractResponseType
     private $startTime = null;
 
     /**
-     * Date and time when the revised listing is scheduled to end based on the listing's start time and the listing duration value that was set for the listing. If the listing duration is 'GTC' (Good 'Til Cancelled), this value will be updated to 30 days in the future if the listing is automatically renewed after 30 days. GTC listings are automatically renewed if quantity still exists for the item.
-     *  <br><br>
-     *  <span class="tablenote"><b>Note: </b>
-     *  Starting July 1, 2019, the Good 'Til Cancelled renewal schedule will be modified from every 30 days to once per calendar month. For example, if a GTC listing is created July 5, the next monthly renewal date will be August 5. If a GTC listing is created on the 31st of the month, but the following month only has 30 days, the renewal will happen on the 30th in the following month. Finally, if a GTC listing is created on January 29-31, the renewal will happen on February 28th (or 29th during a 'Leap Year'). See the
-     *  <a href="https://pages.ebay.com/seller-center/seller-updates/2019-spring/marketplace-updates.html#good-til-cancelled" target="_blank">Good 'Til Cancelled listings update</a> in the <b>Spring 2019 Seller Updates</b> for more information about this change.
-     *  </span>
+     * Date and time when the revised listing is scheduled to end based on the listing's start time and the listing duration value that was set for the listing. If the listing duration is 'GTC' (Good 'Til Cancelled), this value will be updated to one month in the future if the listing is automatically renewed after one month. GTC listings are automatically renewed each month according to the calendar day if quantity still exists for the item.
      *
      * @var \DateTime $endTime
      */
     private $endTime = null;
 
     /**
-     * This container is an array of fees associated with the revised listing. The fees in this container will not include any fees that are based on the purchase price (such as Final Value Fee) and only come into play when the listing has a sale.
+     * This container is an array of fees associated with the revised listing. The fees in this container will not include any fees that are based on the purchase price (such as transaction fees) and only come into play when the listing has a sale.
      *  <br>
      *  <br>
      *  All listing fee types are returned, even if those fees are not applicable for the revised listing and are '0.0'.
@@ -185,12 +180,7 @@ class ReviseFixedPriceItemResponseType extends AbstractResponseType
     /**
      * Gets as endTime
      *
-     * Date and time when the revised listing is scheduled to end based on the listing's start time and the listing duration value that was set for the listing. If the listing duration is 'GTC' (Good 'Til Cancelled), this value will be updated to 30 days in the future if the listing is automatically renewed after 30 days. GTC listings are automatically renewed if quantity still exists for the item.
-     *  <br><br>
-     *  <span class="tablenote"><b>Note: </b>
-     *  Starting July 1, 2019, the Good 'Til Cancelled renewal schedule will be modified from every 30 days to once per calendar month. For example, if a GTC listing is created July 5, the next monthly renewal date will be August 5. If a GTC listing is created on the 31st of the month, but the following month only has 30 days, the renewal will happen on the 30th in the following month. Finally, if a GTC listing is created on January 29-31, the renewal will happen on February 28th (or 29th during a 'Leap Year'). See the
-     *  <a href="https://pages.ebay.com/seller-center/seller-updates/2019-spring/marketplace-updates.html#good-til-cancelled" target="_blank">Good 'Til Cancelled listings update</a> in the <b>Spring 2019 Seller Updates</b> for more information about this change.
-     *  </span>
+     * Date and time when the revised listing is scheduled to end based on the listing's start time and the listing duration value that was set for the listing. If the listing duration is 'GTC' (Good 'Til Cancelled), this value will be updated to one month in the future if the listing is automatically renewed after one month. GTC listings are automatically renewed each month according to the calendar day if quantity still exists for the item.
      *
      * @return \DateTime
      */
@@ -202,12 +192,7 @@ class ReviseFixedPriceItemResponseType extends AbstractResponseType
     /**
      * Sets a new endTime
      *
-     * Date and time when the revised listing is scheduled to end based on the listing's start time and the listing duration value that was set for the listing. If the listing duration is 'GTC' (Good 'Til Cancelled), this value will be updated to 30 days in the future if the listing is automatically renewed after 30 days. GTC listings are automatically renewed if quantity still exists for the item.
-     *  <br><br>
-     *  <span class="tablenote"><b>Note: </b>
-     *  Starting July 1, 2019, the Good 'Til Cancelled renewal schedule will be modified from every 30 days to once per calendar month. For example, if a GTC listing is created July 5, the next monthly renewal date will be August 5. If a GTC listing is created on the 31st of the month, but the following month only has 30 days, the renewal will happen on the 30th in the following month. Finally, if a GTC listing is created on January 29-31, the renewal will happen on February 28th (or 29th during a 'Leap Year'). See the
-     *  <a href="https://pages.ebay.com/seller-center/seller-updates/2019-spring/marketplace-updates.html#good-til-cancelled" target="_blank">Good 'Til Cancelled listings update</a> in the <b>Spring 2019 Seller Updates</b> for more information about this change.
-     *  </span>
+     * Date and time when the revised listing is scheduled to end based on the listing's start time and the listing duration value that was set for the listing. If the listing duration is 'GTC' (Good 'Til Cancelled), this value will be updated to one month in the future if the listing is automatically renewed after one month. GTC listings are automatically renewed each month according to the calendar day if quantity still exists for the item.
      *
      * @param \DateTime $endTime
      * @return self
@@ -221,7 +206,7 @@ class ReviseFixedPriceItemResponseType extends AbstractResponseType
     /**
      * Adds as fee
      *
-     * This container is an array of fees associated with the revised listing. The fees in this container will not include any fees that are based on the purchase price (such as Final Value Fee) and only come into play when the listing has a sale.
+     * This container is an array of fees associated with the revised listing. The fees in this container will not include any fees that are based on the purchase price (such as transaction fees) and only come into play when the listing has a sale.
      *  <br>
      *  <br>
      *  All listing fee types are returned, even if those fees are not applicable for the revised listing and are '0.0'.
@@ -242,7 +227,7 @@ class ReviseFixedPriceItemResponseType extends AbstractResponseType
     /**
      * isset fees
      *
-     * This container is an array of fees associated with the revised listing. The fees in this container will not include any fees that are based on the purchase price (such as Final Value Fee) and only come into play when the listing has a sale.
+     * This container is an array of fees associated with the revised listing. The fees in this container will not include any fees that are based on the purchase price (such as transaction fees) and only come into play when the listing has a sale.
      *  <br>
      *  <br>
      *  All listing fee types are returned, even if those fees are not applicable for the revised listing and are '0.0'.
@@ -262,7 +247,7 @@ class ReviseFixedPriceItemResponseType extends AbstractResponseType
     /**
      * unset fees
      *
-     * This container is an array of fees associated with the revised listing. The fees in this container will not include any fees that are based on the purchase price (such as Final Value Fee) and only come into play when the listing has a sale.
+     * This container is an array of fees associated with the revised listing. The fees in this container will not include any fees that are based on the purchase price (such as transaction fees) and only come into play when the listing has a sale.
      *  <br>
      *  <br>
      *  All listing fee types are returned, even if those fees are not applicable for the revised listing and are '0.0'.
@@ -282,7 +267,7 @@ class ReviseFixedPriceItemResponseType extends AbstractResponseType
     /**
      * Gets as fees
      *
-     * This container is an array of fees associated with the revised listing. The fees in this container will not include any fees that are based on the purchase price (such as Final Value Fee) and only come into play when the listing has a sale.
+     * This container is an array of fees associated with the revised listing. The fees in this container will not include any fees that are based on the purchase price (such as transaction fees) and only come into play when the listing has a sale.
      *  <br>
      *  <br>
      *  All listing fee types are returned, even if those fees are not applicable for the revised listing and are '0.0'.
@@ -301,7 +286,7 @@ class ReviseFixedPriceItemResponseType extends AbstractResponseType
     /**
      * Sets a new fees
      *
-     * This container is an array of fees associated with the revised listing. The fees in this container will not include any fees that are based on the purchase price (such as Final Value Fee) and only come into play when the listing has a sale.
+     * This container is an array of fees associated with the revised listing. The fees in this container will not include any fees that are based on the purchase price (such as transaction fees) and only come into play when the listing has a sale.
      *  <br>
      *  <br>
      *  All listing fee types are returned, even if those fees are not applicable for the revised listing and are '0.0'.

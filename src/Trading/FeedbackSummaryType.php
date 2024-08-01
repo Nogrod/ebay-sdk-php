@@ -90,11 +90,8 @@ class FeedbackSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  Sellers have access to the number of ratings they've received, as well as
      *  to the averages of DSRs they've received in each
      *  DSR area (i.e., to the average of ratings in the item-description area, etc.).
-     *  The DSR feature is available on the United Kingdom site
-     *  and on the following other sites: AU (site ID 15), BEFR (site ID 23),
-     *  BENL (site ID 123), FR (site ID 71), IE (site ID 205), IN (site ID 203),
-     *  IT (site ID 101), and PL (site ID 212). The DSR feature is available on the other
-     *  API-enabled country sites, including the US site (site ID 0).
+     *  The DSR feature is available everywhere on API-enabled country sites,
+     *  including the US site (site ID 0).
      *
      * @var \Nogrod\eBaySDK\Trading\AverageRatingSummaryType[] $sellerRatingSummaryArray
      */
@@ -583,11 +580,8 @@ class FeedbackSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  Sellers have access to the number of ratings they've received, as well as
      *  to the averages of DSRs they've received in each
      *  DSR area (i.e., to the average of ratings in the item-description area, etc.).
-     *  The DSR feature is available on the United Kingdom site
-     *  and on the following other sites: AU (site ID 15), BEFR (site ID 23),
-     *  BENL (site ID 123), FR (site ID 71), IE (site ID 205), IN (site ID 203),
-     *  IT (site ID 101), and PL (site ID 212). The DSR feature is available on the other
-     *  API-enabled country sites, including the US site (site ID 0).
+     *  The DSR feature is available everywhere on API-enabled country sites,
+     *  including the US site (site ID 0).
      *
      * @return self
      * @param \Nogrod\eBaySDK\Trading\AverageRatingSummaryType $averageRatingSummary
@@ -606,11 +600,8 @@ class FeedbackSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  Sellers have access to the number of ratings they've received, as well as
      *  to the averages of DSRs they've received in each
      *  DSR area (i.e., to the average of ratings in the item-description area, etc.).
-     *  The DSR feature is available on the United Kingdom site
-     *  and on the following other sites: AU (site ID 15), BEFR (site ID 23),
-     *  BENL (site ID 123), FR (site ID 71), IE (site ID 205), IN (site ID 203),
-     *  IT (site ID 101), and PL (site ID 212). The DSR feature is available on the other
-     *  API-enabled country sites, including the US site (site ID 0).
+     *  The DSR feature is available everywhere on API-enabled country sites,
+     *  including the US site (site ID 0).
      *
      * @param int|string $index
      * @return bool
@@ -628,11 +619,8 @@ class FeedbackSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  Sellers have access to the number of ratings they've received, as well as
      *  to the averages of DSRs they've received in each
      *  DSR area (i.e., to the average of ratings in the item-description area, etc.).
-     *  The DSR feature is available on the United Kingdom site
-     *  and on the following other sites: AU (site ID 15), BEFR (site ID 23),
-     *  BENL (site ID 123), FR (site ID 71), IE (site ID 205), IN (site ID 203),
-     *  IT (site ID 101), and PL (site ID 212). The DSR feature is available on the other
-     *  API-enabled country sites, including the US site (site ID 0).
+     *  The DSR feature is available everywhere on API-enabled country sites,
+     *  including the US site (site ID 0).
      *
      * @param int|string $index
      * @return void
@@ -650,11 +638,8 @@ class FeedbackSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  Sellers have access to the number of ratings they've received, as well as
      *  to the averages of DSRs they've received in each
      *  DSR area (i.e., to the average of ratings in the item-description area, etc.).
-     *  The DSR feature is available on the United Kingdom site
-     *  and on the following other sites: AU (site ID 15), BEFR (site ID 23),
-     *  BENL (site ID 123), FR (site ID 71), IE (site ID 205), IN (site ID 203),
-     *  IT (site ID 101), and PL (site ID 212). The DSR feature is available on the other
-     *  API-enabled country sites, including the US site (site ID 0).
+     *  The DSR feature is available everywhere on API-enabled country sites,
+     *  including the US site (site ID 0).
      *
      * @return \Nogrod\eBaySDK\Trading\AverageRatingSummaryType[]
      */
@@ -671,11 +656,8 @@ class FeedbackSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  Sellers have access to the number of ratings they've received, as well as
      *  to the averages of DSRs they've received in each
      *  DSR area (i.e., to the average of ratings in the item-description area, etc.).
-     *  The DSR feature is available on the United Kingdom site
-     *  and on the following other sites: AU (site ID 15), BEFR (site ID 23),
-     *  BENL (site ID 123), FR (site ID 71), IE (site ID 205), IN (site ID 203),
-     *  IT (site ID 101), and PL (site ID 212). The DSR feature is available on the other
-     *  API-enabled country sites, including the US site (site ID 0).
+     *  The DSR feature is available everywhere on API-enabled country sites,
+     *  including the US site (site ID 0).
      *
      * @param \Nogrod\eBaySDK\Trading\AverageRatingSummaryType[] $sellerRatingSummaryArray
      * @return self

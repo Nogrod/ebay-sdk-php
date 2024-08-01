@@ -125,6 +125,8 @@ class FeedbackDetailType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
     /**
      * Unique identifier for an eBay order line item for which the Feedback entry was left. This field is not returned if the Feedback entry was left for an auction listing, since all auction listings have a <b>TransactionID</b> value of 0.
      *  <br/><br/>
+     *  <span class="tablenote"><b>Note: </b> Beginning in July 2024, non-zero transaction IDs will start being returned for auction listings. If necessary, update code to handle non-zero transaction IDs for auction transactions before this time.
+     *  </span>
      *  <span class="tablenote"><b>Note: </b> For Feedback entries that were submitted less than five years ago, this field is returned to users who are not the buyer or seller of the order line item, but a dummy value such as '111111111' will be displayed. For Feedback entries that were submitted more than five years ago, this field will not be returned at all to users who do not have a relationship (as a buyer or seller) to the Feedback entry.
      *  </span>
      *
@@ -551,6 +553,8 @@ class FeedbackDetailType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      *
      * Unique identifier for an eBay order line item for which the Feedback entry was left. This field is not returned if the Feedback entry was left for an auction listing, since all auction listings have a <b>TransactionID</b> value of 0.
      *  <br/><br/>
+     *  <span class="tablenote"><b>Note: </b> Beginning in July 2024, non-zero transaction IDs will start being returned for auction listings. If necessary, update code to handle non-zero transaction IDs for auction transactions before this time.
+     *  </span>
      *  <span class="tablenote"><b>Note: </b> For Feedback entries that were submitted less than five years ago, this field is returned to users who are not the buyer or seller of the order line item, but a dummy value such as '111111111' will be displayed. For Feedback entries that were submitted more than five years ago, this field will not be returned at all to users who do not have a relationship (as a buyer or seller) to the Feedback entry.
      *  </span>
      *
@@ -566,6 +570,8 @@ class FeedbackDetailType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      *
      * Unique identifier for an eBay order line item for which the Feedback entry was left. This field is not returned if the Feedback entry was left for an auction listing, since all auction listings have a <b>TransactionID</b> value of 0.
      *  <br/><br/>
+     *  <span class="tablenote"><b>Note: </b> Beginning in July 2024, non-zero transaction IDs will start being returned for auction listings. If necessary, update code to handle non-zero transaction IDs for auction transactions before this time.
+     *  </span>
      *  <span class="tablenote"><b>Note: </b> For Feedback entries that were submitted less than five years ago, this field is returned to users who are not the buyer or seller of the order line item, but a dummy value such as '111111111' will be displayed. For Feedback entries that were submitted more than five years ago, this field will not be returned at all to users who do not have a relationship (as a buyer or seller) to the Feedback entry.
      *  </span>
      *

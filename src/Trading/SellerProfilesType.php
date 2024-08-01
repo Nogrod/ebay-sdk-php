@@ -13,8 +13,10 @@ use Nogrod\XMLClientRuntime\Func;
 class SellerProfilesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
     /**
-     * The <b>SellerShippingProfile</b> container is used in an Add/Revise/Relist/Verify Trading API call to reference and use the settings/values of a specific shipping business policy. Shipping business policies contain detailed information on domestic and international shipping, including shipping service options and costs, handling time, shipping discount inormation, and excluded ship-to locations. Multiple shipping business policies can be created and saved at the account level by sellers.
-     *  <br/><br/>
+     * The <b>SellerShippingProfile</b> container is used in an Add/Revise/Relist/Verify Trading API call to reference and use the settings/values of a specific shipping business policy. Shipping business policies contain detailed information on domestic and international shipping, including shipping service options and costs, handling time, shipping discount information, and excluded ship-to locations. Multiple shipping business policies can be created and saved at the account level by sellers.
+     *  <br/>
+     *  <span class="tablenote"><b>Note: </b> Any shipping inclusions specified through this container can be overridden by the eBay International Shipping exclusions toggle located under <b>Shipping Preferences</b> in <b>My eBay</b>. For more information on eBay International Shipping, see <a href="https://www.ebay.com/help/selling/shipping-items/setting-shipping-options/ebay-international-shipping-program?id=5348">eBay International Shipping program</a>.
+     *  </span>
      *  This container is only returned in 'Get' calls if Business Policies are set for the listing, and the person making the API call is the seller of the listing.
      *
      * @var \Nogrod\eBaySDK\Trading\SellerShippingProfileType $sellerShippingProfile
@@ -48,8 +50,10 @@ class SellerProfilesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
     /**
      * Gets as sellerShippingProfile
      *
-     * The <b>SellerShippingProfile</b> container is used in an Add/Revise/Relist/Verify Trading API call to reference and use the settings/values of a specific shipping business policy. Shipping business policies contain detailed information on domestic and international shipping, including shipping service options and costs, handling time, shipping discount inormation, and excluded ship-to locations. Multiple shipping business policies can be created and saved at the account level by sellers.
-     *  <br/><br/>
+     * The <b>SellerShippingProfile</b> container is used in an Add/Revise/Relist/Verify Trading API call to reference and use the settings/values of a specific shipping business policy. Shipping business policies contain detailed information on domestic and international shipping, including shipping service options and costs, handling time, shipping discount information, and excluded ship-to locations. Multiple shipping business policies can be created and saved at the account level by sellers.
+     *  <br/>
+     *  <span class="tablenote"><b>Note: </b> Any shipping inclusions specified through this container can be overridden by the eBay International Shipping exclusions toggle located under <b>Shipping Preferences</b> in <b>My eBay</b>. For more information on eBay International Shipping, see <a href="https://www.ebay.com/help/selling/shipping-items/setting-shipping-options/ebay-international-shipping-program?id=5348">eBay International Shipping program</a>.
+     *  </span>
      *  This container is only returned in 'Get' calls if Business Policies are set for the listing, and the person making the API call is the seller of the listing.
      *
      * @return \Nogrod\eBaySDK\Trading\SellerShippingProfileType
@@ -62,8 +66,10 @@ class SellerProfilesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
     /**
      * Sets a new sellerShippingProfile
      *
-     * The <b>SellerShippingProfile</b> container is used in an Add/Revise/Relist/Verify Trading API call to reference and use the settings/values of a specific shipping business policy. Shipping business policies contain detailed information on domestic and international shipping, including shipping service options and costs, handling time, shipping discount inormation, and excluded ship-to locations. Multiple shipping business policies can be created and saved at the account level by sellers.
-     *  <br/><br/>
+     * The <b>SellerShippingProfile</b> container is used in an Add/Revise/Relist/Verify Trading API call to reference and use the settings/values of a specific shipping business policy. Shipping business policies contain detailed information on domestic and international shipping, including shipping service options and costs, handling time, shipping discount information, and excluded ship-to locations. Multiple shipping business policies can be created and saved at the account level by sellers.
+     *  <br/>
+     *  <span class="tablenote"><b>Note: </b> Any shipping inclusions specified through this container can be overridden by the eBay International Shipping exclusions toggle located under <b>Shipping Preferences</b> in <b>My eBay</b>. For more information on eBay International Shipping, see <a href="https://www.ebay.com/help/selling/shipping-items/setting-shipping-options/ebay-international-shipping-program?id=5348">eBay International Shipping program</a>.
+     *  </span>
      *  This container is only returned in 'Get' calls if Business Policies are set for the listing, and the person making the API call is the seller of the listing.
      *
      * @param \Nogrod\eBaySDK\Trading\SellerShippingProfileType $sellerShippingProfile

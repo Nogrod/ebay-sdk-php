@@ -19,7 +19,9 @@ class SalesTaxType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
      *  <br><br>
      *  Although this field will be returned at the order level in order management calls for a single line item order, sales tax is applied at the line item level and not order level. For multiple line item orders, this field will not be returned at all at the order level.
      *  <br><br>
-     *  <span class="tablenote"><b>Note: </b> As of September 1, 2020, buyers in over 40 US states will automatically be charged sales tax for eBay purchases. eBay will collect and remit this sales tax to the proper taxing authority on the buyer's behalf. So, if a sales tax rate is applied to the listing by the seller for a state that is subject to eBay 'Collect and Remit', the sales tax rate in this field is ignored by eBay during the checkout process. For a list of the US states that are currently subject to 'eBay Collect and Remit', see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section4">eBay sales tax collection</a> help topic.
+     *  <span class="tablenote"><b>Note: </b> Buyers in all 50 US states and DC are automatically charged sales tax for eBay purchases, and eBay collects and remits this sales tax to the proper taxing authority on the buyer's behalf. Because of this, if a sales tax percentage rate is applied to a listing by a seller in one of these states, this field will be ignored during the checkout process.
+     *  <br><br>
+     *  Currently, sales tax percentage rates can only be specified by sellers in Canada and 5 US territories, including American Samoa (AS), Guam (GU), Northern Mariana Islands (MP), Palau (PW), and Virgin Islands (VI).
      *  </span>
      *
      * @var float $salesTaxPercent
@@ -29,7 +31,7 @@ class SalesTaxType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
     /**
      * This is the unique, two-digit identifier of the tax jurisdiction (such as 'CA' for California). To retrieve all two-digit identifiers for all states/territories/provinces for a site, a seller can either use a <b>GetTaxTable</b> call with <b>DetailLevel</b> set to <code>ReturnAll</code>, or they can use the <b>GeteBayDetails</b> call with <b>DetailLevel</b> name set to <code>TaxJurisdiction</code>. Please note that both <b>GetTaxTable</b> and <b>GeteBayDetails</b> calls use a <b>JurisdictionID</b> field to express these tax jurisdiction identifiers instead of <b>SalesTaxState</b>, but the values used in these fields are the same.
      *  <br/><br/>
-     *  The <b>SalesTaxState</b> field is conditionallly required in an Add/Revise/Relist/Verify call if the seller is applying sales tax to a listing for a particular jurisdiction, and is returned with each <b>SalesTax</b> container to identify the tax jurisdiction.
+     *  The <b>SalesTaxState</b> field is conditionally required in an Add/Revise/Relist/Verify call if the seller is applying sales tax to a listing for a particular jurisdiction, and is returned with each <b>SalesTax</b> container to identify the tax jurisdiction.
      *
      * @var string $salesTaxState
      */
@@ -40,7 +42,9 @@ class SalesTaxType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
      *  <br><br>
      *  This field is always returned with the <b>SalesTax</b> container (whether <code>true</code> or <code>false</code>).
      *  <br><br>
-     *  <span class="tablenote"><b>Note: </b> As of September 1, 2020, buyers in over 40 US states will automatically be charged sales tax for eBay purchases. eBay will collect and remit this sales tax to the proper taxing authority on the buyer's behalf. With 'eBay Collect and Remit' sales tax, the sales tax is applied against the full cost of the order, including any shipping and handling charges. So, if this field is included for a state that is subject to 'eBay Collect and Remit', this setting is ignored by eBay during checkout process. For a list of the US states that are currently subject to 'eBay Collect and Remit', see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section4">eBay sales tax collection</a> help topic.
+     *  <span class="tablenote"><b>Note: </b> Buyers in all 50 US states and DC are automatically charged sales tax for eBay purchases, and eBay collects and remits this sales tax to the proper taxing authority on the buyer's behalf. Because of this, if a sales tax percentage rate is applied to a listing by a seller in one of these states, this field will be ignored during the checkout process.
+     *  <br><br>
+     *  Currently, sales tax percentage rates can only be specified by sellers in Canada and 5 US territories, including American Samoa (AS), Guam (GU), Northern Mariana Islands (MP), Palau (PW), and Virgin Islands (VI).
      *  </span>
      *
      * @var bool $shippingIncludedInTax
@@ -52,9 +56,7 @@ class SalesTaxType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
      *  <br><br>
      *  GetItemTransactions can return incorrect sales tax if the name of a state is not
      *  abbreviated (e.g. if the value is "Illinois" rather than "IL") in
-     *  <b>TransactionArray.Transaction.Buyer.BuyerInfo.ShippingAddress.StateOrProvince</b>. If
-     *  the name of a state is not abbreviated, sales tax should be obtained by using
-     *  the <b>OrderLineItemID</b> to call <b>GetOrderTransactions</b>.
+     *  <b>TransactionArray.Transaction.Buyer.BuyerInfo.ShippingAddress.StateOrProvince</b>.
      *
      * @var \Nogrod\eBaySDK\Trading\AmountType $salesTaxAmount
      */
@@ -69,7 +71,9 @@ class SalesTaxType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
      *  <br><br>
      *  Although this field will be returned at the order level in order management calls for a single line item order, sales tax is applied at the line item level and not order level. For multiple line item orders, this field will not be returned at all at the order level.
      *  <br><br>
-     *  <span class="tablenote"><b>Note: </b> As of September 1, 2020, buyers in over 40 US states will automatically be charged sales tax for eBay purchases. eBay will collect and remit this sales tax to the proper taxing authority on the buyer's behalf. So, if a sales tax rate is applied to the listing by the seller for a state that is subject to eBay 'Collect and Remit', the sales tax rate in this field is ignored by eBay during the checkout process. For a list of the US states that are currently subject to 'eBay Collect and Remit', see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section4">eBay sales tax collection</a> help topic.
+     *  <span class="tablenote"><b>Note: </b> Buyers in all 50 US states and DC are automatically charged sales tax for eBay purchases, and eBay collects and remits this sales tax to the proper taxing authority on the buyer's behalf. Because of this, if a sales tax percentage rate is applied to a listing by a seller in one of these states, this field will be ignored during the checkout process.
+     *  <br><br>
+     *  Currently, sales tax percentage rates can only be specified by sellers in Canada and 5 US territories, including American Samoa (AS), Guam (GU), Northern Mariana Islands (MP), Palau (PW), and Virgin Islands (VI).
      *  </span>
      *
      * @return float
@@ -88,7 +92,9 @@ class SalesTaxType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
      *  <br><br>
      *  Although this field will be returned at the order level in order management calls for a single line item order, sales tax is applied at the line item level and not order level. For multiple line item orders, this field will not be returned at all at the order level.
      *  <br><br>
-     *  <span class="tablenote"><b>Note: </b> As of September 1, 2020, buyers in over 40 US states will automatically be charged sales tax for eBay purchases. eBay will collect and remit this sales tax to the proper taxing authority on the buyer's behalf. So, if a sales tax rate is applied to the listing by the seller for a state that is subject to eBay 'Collect and Remit', the sales tax rate in this field is ignored by eBay during the checkout process. For a list of the US states that are currently subject to 'eBay Collect and Remit', see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section4">eBay sales tax collection</a> help topic.
+     *  <span class="tablenote"><b>Note: </b> Buyers in all 50 US states and DC are automatically charged sales tax for eBay purchases, and eBay collects and remits this sales tax to the proper taxing authority on the buyer's behalf. Because of this, if a sales tax percentage rate is applied to a listing by a seller in one of these states, this field will be ignored during the checkout process.
+     *  <br><br>
+     *  Currently, sales tax percentage rates can only be specified by sellers in Canada and 5 US territories, including American Samoa (AS), Guam (GU), Northern Mariana Islands (MP), Palau (PW), and Virgin Islands (VI).
      *  </span>
      *
      * @param float $salesTaxPercent
@@ -105,7 +111,7 @@ class SalesTaxType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
      *
      * This is the unique, two-digit identifier of the tax jurisdiction (such as 'CA' for California). To retrieve all two-digit identifiers for all states/territories/provinces for a site, a seller can either use a <b>GetTaxTable</b> call with <b>DetailLevel</b> set to <code>ReturnAll</code>, or they can use the <b>GeteBayDetails</b> call with <b>DetailLevel</b> name set to <code>TaxJurisdiction</code>. Please note that both <b>GetTaxTable</b> and <b>GeteBayDetails</b> calls use a <b>JurisdictionID</b> field to express these tax jurisdiction identifiers instead of <b>SalesTaxState</b>, but the values used in these fields are the same.
      *  <br/><br/>
-     *  The <b>SalesTaxState</b> field is conditionallly required in an Add/Revise/Relist/Verify call if the seller is applying sales tax to a listing for a particular jurisdiction, and is returned with each <b>SalesTax</b> container to identify the tax jurisdiction.
+     *  The <b>SalesTaxState</b> field is conditionally required in an Add/Revise/Relist/Verify call if the seller is applying sales tax to a listing for a particular jurisdiction, and is returned with each <b>SalesTax</b> container to identify the tax jurisdiction.
      *
      * @return string
      */
@@ -119,7 +125,7 @@ class SalesTaxType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
      *
      * This is the unique, two-digit identifier of the tax jurisdiction (such as 'CA' for California). To retrieve all two-digit identifiers for all states/territories/provinces for a site, a seller can either use a <b>GetTaxTable</b> call with <b>DetailLevel</b> set to <code>ReturnAll</code>, or they can use the <b>GeteBayDetails</b> call with <b>DetailLevel</b> name set to <code>TaxJurisdiction</code>. Please note that both <b>GetTaxTable</b> and <b>GeteBayDetails</b> calls use a <b>JurisdictionID</b> field to express these tax jurisdiction identifiers instead of <b>SalesTaxState</b>, but the values used in these fields are the same.
      *  <br/><br/>
-     *  The <b>SalesTaxState</b> field is conditionallly required in an Add/Revise/Relist/Verify call if the seller is applying sales tax to a listing for a particular jurisdiction, and is returned with each <b>SalesTax</b> container to identify the tax jurisdiction.
+     *  The <b>SalesTaxState</b> field is conditionally required in an Add/Revise/Relist/Verify call if the seller is applying sales tax to a listing for a particular jurisdiction, and is returned with each <b>SalesTax</b> container to identify the tax jurisdiction.
      *
      * @param string $salesTaxState
      * @return self
@@ -137,7 +143,9 @@ class SalesTaxType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
      *  <br><br>
      *  This field is always returned with the <b>SalesTax</b> container (whether <code>true</code> or <code>false</code>).
      *  <br><br>
-     *  <span class="tablenote"><b>Note: </b> As of September 1, 2020, buyers in over 40 US states will automatically be charged sales tax for eBay purchases. eBay will collect and remit this sales tax to the proper taxing authority on the buyer's behalf. With 'eBay Collect and Remit' sales tax, the sales tax is applied against the full cost of the order, including any shipping and handling charges. So, if this field is included for a state that is subject to 'eBay Collect and Remit', this setting is ignored by eBay during checkout process. For a list of the US states that are currently subject to 'eBay Collect and Remit', see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section4">eBay sales tax collection</a> help topic.
+     *  <span class="tablenote"><b>Note: </b> Buyers in all 50 US states and DC are automatically charged sales tax for eBay purchases, and eBay collects and remits this sales tax to the proper taxing authority on the buyer's behalf. Because of this, if a sales tax percentage rate is applied to a listing by a seller in one of these states, this field will be ignored during the checkout process.
+     *  <br><br>
+     *  Currently, sales tax percentage rates can only be specified by sellers in Canada and 5 US territories, including American Samoa (AS), Guam (GU), Northern Mariana Islands (MP), Palau (PW), and Virgin Islands (VI).
      *  </span>
      *
      * @return bool
@@ -154,7 +162,9 @@ class SalesTaxType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
      *  <br><br>
      *  This field is always returned with the <b>SalesTax</b> container (whether <code>true</code> or <code>false</code>).
      *  <br><br>
-     *  <span class="tablenote"><b>Note: </b> As of September 1, 2020, buyers in over 40 US states will automatically be charged sales tax for eBay purchases. eBay will collect and remit this sales tax to the proper taxing authority on the buyer's behalf. With 'eBay Collect and Remit' sales tax, the sales tax is applied against the full cost of the order, including any shipping and handling charges. So, if this field is included for a state that is subject to 'eBay Collect and Remit', this setting is ignored by eBay during checkout process. For a list of the US states that are currently subject to 'eBay Collect and Remit', see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section4">eBay sales tax collection</a> help topic.
+     *  <span class="tablenote"><b>Note: </b> Buyers in all 50 US states and DC are automatically charged sales tax for eBay purchases, and eBay collects and remits this sales tax to the proper taxing authority on the buyer's behalf. Because of this, if a sales tax percentage rate is applied to a listing by a seller in one of these states, this field will be ignored during the checkout process.
+     *  <br><br>
+     *  Currently, sales tax percentage rates can only be specified by sellers in Canada and 5 US territories, including American Samoa (AS), Guam (GU), Northern Mariana Islands (MP), Palau (PW), and Virgin Islands (VI).
      *  </span>
      *
      * @param bool $shippingIncludedInTax
@@ -173,9 +183,7 @@ class SalesTaxType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
      *  <br><br>
      *  GetItemTransactions can return incorrect sales tax if the name of a state is not
      *  abbreviated (e.g. if the value is "Illinois" rather than "IL") in
-     *  <b>TransactionArray.Transaction.Buyer.BuyerInfo.ShippingAddress.StateOrProvince</b>. If
-     *  the name of a state is not abbreviated, sales tax should be obtained by using
-     *  the <b>OrderLineItemID</b> to call <b>GetOrderTransactions</b>.
+     *  <b>TransactionArray.Transaction.Buyer.BuyerInfo.ShippingAddress.StateOrProvince</b>.
      *
      * @return \Nogrod\eBaySDK\Trading\AmountType
      */
@@ -191,9 +199,7 @@ class SalesTaxType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
      *  <br><br>
      *  GetItemTransactions can return incorrect sales tax if the name of a state is not
      *  abbreviated (e.g. if the value is "Illinois" rather than "IL") in
-     *  <b>TransactionArray.Transaction.Buyer.BuyerInfo.ShippingAddress.StateOrProvince</b>. If
-     *  the name of a state is not abbreviated, sales tax should be obtained by using
-     *  the <b>OrderLineItemID</b> to call <b>GetOrderTransactions</b>.
+     *  <b>TransactionArray.Transaction.Buyer.BuyerInfo.ShippingAddress.StateOrProvince</b>.
      *
      * @param \Nogrod\eBaySDK\Trading\AmountType $salesTaxAmount
      * @return self

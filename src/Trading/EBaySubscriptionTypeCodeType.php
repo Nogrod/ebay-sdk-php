@@ -28,7 +28,7 @@ class EBaySubscriptionTypeCodeType
      * Constant for 'EBayStoreBasic' value.
      *
      * This value indicates that the user has a Basic eBay Store membership. See the <a
-     * href="http://pages.ebay.com/sellerinformation/stores/Subscriptions.html
+     * href="http://pages.ebay.com/sellerinformation/stores/Subscriptions.html"
      * target="_blank">Welcome to eBay Stores</a> help page for more information on
      * eBay Store subscriptions.
      */
@@ -38,7 +38,7 @@ class EBaySubscriptionTypeCodeType
      * Constant for 'EBayStoreFeatured' value.
      *
      * This value indicates that the user has a Premium eBay Store membership. See the
-     * <a href="http://pages.ebay.com/sellerinformation/stores/Subscriptions.html
+     * <a href="http://pages.ebay.com/sellerinformation/stores/Subscriptions.html"
      * target="_blank">Welcome to eBay Stores</a> help page for more information on
      * eBay Store subscriptions.
      */
@@ -48,7 +48,7 @@ class EBaySubscriptionTypeCodeType
      * Constant for 'EBayStoreAnchor' value.
      *
      * This value indicates that the user has a Anchor eBay Store membership. See the
-     * <a href="http://pages.ebay.com/sellerinformation/stores/Subscriptions.html
+     * <a href="http://pages.ebay.com/sellerinformation/stores/Subscriptions.html"
      * target="_blank">Welcome to eBay Stores</a> help page for more information on
      * eBay Store subscriptions.
      */
@@ -57,26 +57,14 @@ class EBaySubscriptionTypeCodeType
     /**
      * Constant for 'SellingManager' value.
      *
-     * This value indicates that the user has a Selling Manager subscription. Selling
-     * Manager is free to all sellers and can be subscribed to through the
-     * <b>Subscriptions</b> section of My eBay. See the <a
-     * href="http://pages.ebay.com/help/sell/selling-manager-subscription.html
-     * target="_blank">Selling Manager and Selling Manager Pro</a> help page for more
-     * information on Selling Manager.
+     * This enumeration value is deprecated.
      */
     public const VAL_SELLING_MANAGER = 'SellingManager';
 
     /**
      * Constant for 'SellingManagerPro' value.
      *
-     * This value indicates that the user has a Selling Manager Pro subscription.
-     * Selling Manager Pro is free to all sellers for the first 30 days, and a Selling
-     * Manager Pro subscription is included at no charge for eBay Store Premium and
-     * Anchor subscriptions. Selling Manager Pro can be subscribed to through the
-     * <b>Subscriptions</b> section of My eBay. See the <a
-     * href="http://pages.ebay.com/help/sell/selling-manager-subscription.html
-     * target="_blank">Selling Manager and Selling Manager Pro</a> help page for more
-     * information on Selling Manager Pro.
+     * This enumeration value is deprecated.
      */
     public const VAL_SELLING_MANAGER_PRO = 'SellingManagerPro';
 
@@ -132,7 +120,7 @@ class EBaySubscriptionTypeCodeType
     /**
      * Constant for 'SellerReportsBasic' value.
      *
-     * Basic Sales Reports are no longer available. Sellers should subsribe to Sales
+     * Basic Sales Reports are no longer available. Sellers should subscribe to Sales
      * Reports Plus instead.
      */
     public const VAL_SELLER_REPORTS_BASIC = 'SellerReportsBasic';
@@ -142,20 +130,18 @@ class EBaySubscriptionTypeCodeType
      *
      * This value indicates that the user has a Sales Reports Plus subscription. A user
      * can subscribe to Sales Report Plus through the <b>Subscriptions</b> section of
-     * My eBay. See the <a
-     * href="http://pages.ebay.com/help/sell/viewing-sales-reports.html
-     * target="_blank">Sales Report Plus</a> help page for more information.
+     * My eBay.
      */
     public const VAL_SELLER_REPORTS_PLUS = 'SellerReportsPlus';
 
     /**
      * Constant for 'FileExchange' value.
      *
-     * This value indicates that the user has a File Exchange subscription. A user can
-     * subscribe to File Exchange through the <b>Subscriptions</b> section of My eBay.
-     * See the <a
-     * href="http://pages.ebay.com/sellerinformation/sellingresources/fileexchange.html
-     * target="_blank">File Exchange</a> help page for more information.
+     * This value indicates that the user has opted in to Seller Hub Reports (formerly
+     * known as File Exchange). Users can opt in to Seller Hub Reports through the
+     * <b>Reports</b> section on Seller Hub. See the <a
+     * href="https://www.ebay.com/help/selling/selling-tools/file-exchange?id=4096"
+     * target="_blank">Seller Hub Reports</a> help page for more information.
      */
     public const VAL_FILE_EXCHANGE = 'FileExchange';
 

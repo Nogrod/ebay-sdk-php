@@ -16,10 +16,10 @@ class OrderStatusCodeType
      * This value indicates that the order is not yet complete. An order in the
      * <code>Active</code> state means that the buyer has not initiated payment for the
      * order. While an order is in this state, it can be combined into a <a
-     * href="https://developer.ebay.com/DevZone/guides/features-guide/default.html#development/Listing-AnItem.html#CombinedInvoice">Combined
-     * Invoice</a>, a buyer can request a cancellation, and/or a seller can update
-     * payment details (including a change in order price) or shipping details
-     * (including shipping cost and shipping service).
+     * href="https://developer.ebay.com/api-docs/user-guides/static/trading-user-guide/manage-fulfill-combine-invoices.html"
+     * target="_blank">Combined Invoice</a>, a buyer can request a cancellation, and/or
+     * a seller can update payment details (including a change in order price) or
+     * shipping details (including shipping cost and shipping service).
      *  <br><br>
      *  This value can be used a filter value in the <b>OrderStatus</b> field of the
      * <b>GetOrders</b> request payload, and it can also be returned in any of the

@@ -64,14 +64,3 @@ Nogrod\eBaySDK\Trading\UnpaidItemAssistancePreferencesType:
                 entry_name: ExcludedUser
                 namespace: 'urn:ebay:apis:eBLBaseComponents'
             type: array<string>
-        autoOptDonationRefund:
-            expose: true
-            access_type: public_method
-            serialized_name: AutoOptDonationRefund
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getAutoOptDonationRefund
-                setter: setAutoOptDonationRefund
-            type: bool

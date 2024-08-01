@@ -198,13 +198,6 @@ class MyeBayFavoriteSearchType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
     ];
 
     /**
-     * This field is no longer applicable, as filtering by a payment method in an advanced item search is no longer supported/applicable.
-     *
-     * @var string $paymentMethod
-     */
-    private $paymentMethod = null;
-
-    /**
      * The PreferredLocation value of a My eBay Favorite Search. The PreferredLocation
      *  specifies the criteria for filtering search results by site, where site is determined
      *  by the site ID in the request.
@@ -894,32 +887,6 @@ class MyeBayFavoriteSearchType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
     }
 
     /**
-     * Gets as paymentMethod
-     *
-     * This field is no longer applicable, as filtering by a payment method in an advanced item search is no longer supported/applicable.
-     *
-     * @return string
-     */
-    public function getPaymentMethod()
-    {
-        return $this->paymentMethod;
-    }
-
-    /**
-     * Sets a new paymentMethod
-     *
-     * This field is no longer applicable, as filtering by a payment method in an advanced item search is no longer supported/applicable.
-     *
-     * @param string $paymentMethod
-     * @return self
-     */
-    public function setPaymentMethod($paymentMethod)
-    {
-        $this->paymentMethod = $paymentMethod;
-        return $this;
-    }
-
-    /**
      * Gets as preferredLocation
      *
      * The PreferredLocation value of a My eBay Favorite Search. The PreferredLocation
@@ -1342,10 +1309,6 @@ class MyeBayFavoriteSearchType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
         if (null !== $value && !empty($this->getSearchFlag())) {
             $writer->write(array_map(function ($v) {return ["SearchFlag" => $v];}, $value));
         }
-        $value = $this->getPaymentMethod();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PaymentMethod", $value);
-        }
         $value = $this->getPreferredLocation();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PreferredLocation", $value);
@@ -1465,10 +1428,6 @@ class MyeBayFavoriteSearchType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SearchFlag', true);
         if (null !== $value && !empty($value)) {
             $this->setSearchFlag($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaymentMethod');
-        if (null !== $value) {
-            $this->setPaymentMethod($value);
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PreferredLocation');
         if (null !== $value) {

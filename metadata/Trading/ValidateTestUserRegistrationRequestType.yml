@@ -27,28 +27,6 @@ Nogrod\eBaySDK\Trading\ValidateTestUserRegistrationRequestType:
                 getter: getRegistrationDate
                 setter: setRegistrationDate
             type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime
-        subscribeSA:
-            expose: true
-            access_type: public_method
-            serialized_name: SubscribeSA
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getSubscribeSA
-                setter: setSubscribeSA
-            type: bool
-        subscribeSAPro:
-            expose: true
-            access_type: public_method
-            serialized_name: SubscribeSAPro
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getSubscribeSAPro
-                setter: setSubscribeSAPro
-            type: bool
         subscribeSM:
             expose: true
             access_type: public_method

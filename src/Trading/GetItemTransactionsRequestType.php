@@ -28,7 +28,7 @@ class GetItemTransactionsRequestType extends AbstractRequestType
      *  and ended listings. Even when <b>InventoryTrackingMethod</b> is set to
      *  <b>SKU</b> in a listing, the SKU is only unique across your active
      *  listings (not your ended listings). To retrieve order line items
-     *  by SKU, use <b>GetSellerTransactions</b> or <b>GetOrderTransactions</b> instead.
+     *  by SKU, use <b>GetSellerTransactions</b> instead.
      *  </span>
      *
      * @var string $itemID
@@ -62,6 +62,9 @@ class GetItemTransactionsRequestType extends AbstractRequestType
      *  <br>
      *  <br>
      *  The <b>TransactionID</b> value for auction listings is always <code>0</code> since there can be only one winning bidder/one sale for an auction listing.
+     *  <br/><br/>
+     *  <span class="tablenote"><b>Note: </b> Beginning in July 2024, non-zero transaction IDs will start being returned for auction listings. If necessary, update code to handle non-zero transaction IDs for auction transactions before this time.
+     *  </span>
      *
      * @var string $transactionID
      */
@@ -136,7 +139,7 @@ class GetItemTransactionsRequestType extends AbstractRequestType
      *  and ended listings. Even when <b>InventoryTrackingMethod</b> is set to
      *  <b>SKU</b> in a listing, the SKU is only unique across your active
      *  listings (not your ended listings). To retrieve order line items
-     *  by SKU, use <b>GetSellerTransactions</b> or <b>GetOrderTransactions</b> instead.
+     *  by SKU, use <b>GetSellerTransactions</b> instead.
      *  </span>
      *
      * @return string
@@ -158,7 +161,7 @@ class GetItemTransactionsRequestType extends AbstractRequestType
      *  and ended listings. Even when <b>InventoryTrackingMethod</b> is set to
      *  <b>SKU</b> in a listing, the SKU is only unique across your active
      *  listings (not your ended listings). To retrieve order line items
-     *  by SKU, use <b>GetSellerTransactions</b> or <b>GetOrderTransactions</b> instead.
+     *  by SKU, use <b>GetSellerTransactions</b> instead.
      *  </span>
      *
      * @param string $itemID
@@ -243,6 +246,9 @@ class GetItemTransactionsRequestType extends AbstractRequestType
      *  <br>
      *  <br>
      *  The <b>TransactionID</b> value for auction listings is always <code>0</code> since there can be only one winning bidder/one sale for an auction listing.
+     *  <br/><br/>
+     *  <span class="tablenote"><b>Note: </b> Beginning in July 2024, non-zero transaction IDs will start being returned for auction listings. If necessary, update code to handle non-zero transaction IDs for auction transactions before this time.
+     *  </span>
      *
      * @return string
      */
@@ -260,6 +266,9 @@ class GetItemTransactionsRequestType extends AbstractRequestType
      *  <br>
      *  <br>
      *  The <b>TransactionID</b> value for auction listings is always <code>0</code> since there can be only one winning bidder/one sale for an auction listing.
+     *  <br/><br/>
+     *  <span class="tablenote"><b>Note: </b> Beginning in July 2024, non-zero transaction IDs will start being returned for auction listings. If necessary, update code to handle non-zero transaction IDs for auction transactions before this time.
+     *  </span>
      *
      * @param string $transactionID
      * @return self

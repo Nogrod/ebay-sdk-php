@@ -20,7 +20,12 @@ class SendInvoiceRequestType extends AbstractRequestType
     private $itemID = null;
 
     /**
-     * Unique identifier for an eBay sales transaction. This identifier is created once there is a commitment from a buyer to purchase an item. Since an auction listing can only have one sales transaction during the duration of the listing, the <b>TransactionID</b> value for auction listings is always <code>0</code>. Unless <b>OrderID</b> or <b>OrderLineItemID</b> is provided in the request, the <b>TransactionID</b> value is required and must be paired with the corresponding <b>ItemID</b> value to identify an order line item. For a multiple line item order, <b>OrderID</b> should be used.
+     * Unique identifier for an eBay sales transaction. This identifier is created once there is a commitment from a buyer to purchase an item. Since an auction listing can only have one sales transaction during the duration of the listing, the <b>TransactionID</b> value for auction listings is always <code>0</code>.
+     *  <br/><br/>
+     *  <span class="tablenote"><b>Note: </b> Beginning in July 2024, non-zero transaction IDs will start being returned for auction listings. If necessary, update code to handle non-zero transaction IDs for auction transactions before this time.
+     *  </span>
+     *  <br>
+     *  Unless <b>OrderID</b> or <b>OrderLineItemID</b> is provided in the request, the <b>TransactionID</b> value is required and must be paired with the corresponding <b>ItemID</b> value to identify an order line item. For a multiple line item order, <b>OrderID</b> should be used.
      *
      * @var string $transactionID
      */
@@ -35,7 +40,7 @@ class SendInvoiceRequestType extends AbstractRequestType
      *  <span class="tablenote"><b>Note: </b>
      *  Note that the unique identifier of a 'non-immediate payment' order will change as it goes from an unpaid order to a paid order. Due to this scenario, all Trading API calls that accept Order ID values as filters in the request payload will support the identifiers for both unpaid and paid orders.
      *  <br><br>
-     *  Sellers can check to see if an order has been paid by looking for a value of <code>Complete</code> in the <b>CheckoutStatus.Status</b> field in the response of <b>GetOrders</b> or <b>GetOrderTransactions</b> call, or in the <b>Status.CompleteStatus</b> field in the response of <b>GetItemTransactions</b> or <b>GetSellerTransactions</b> call. Sellers should not fulfill orders until buyer has made payment.
+     *  Sellers can check to see if an order has been paid by looking for a value of <code>Complete</code> in the <b>CheckoutStatus.Status</b> field in the response of <b>GetOrders</b> call, or in the <b>Status.CompleteStatus</b> field in the response of <b>GetItemTransactions</b> or <b>GetSellerTransactions</b> call. Sellers should not fulfill orders until buyer has made payment.
      *  </span>
      *
      * @var string $orderID
@@ -68,26 +73,14 @@ class SendInvoiceRequestType extends AbstractRequestType
     /**
      * This container is used if the seller wishes to apply sales tax to the order if the buyer lives in a state/jurisdiction where sales tax is not already collected automatically by eBay and remitted to the tax authority. The amount of sales tax applied to the order is dependent on the sales tax rate in the buyer's state and whether sales tax is being applied to the cost of the order only or the cost of the order plus shipping and handling.
      *  <br><br>
-     *  <span class="tablenote"><b>Note: </b> As of November 4, 2021, eBay now collects and remits sales tax to the tax authorities for all but one US state (Missouri) and five US territories. So, in most cases, this container will not be applicable and should not be used in a request. For more information, see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section4">eBay sales tax collection</a> help topic.
+     *  <span class="tablenote"><b>Note: </b> Buyers in all 50 US states and DC are automatically charged sales tax for eBay purchases, and eBay collects and remits this sales tax to the proper taxing authority on the buyer's behalf. Because of this, if a sales tax percentage rate is applied to a listing by a seller in one of these states, this field will be ignored during the checkout process.
+     *  <br><br>
+     *  Currently, sales tax percentage rates can only be specified by sellers in Canada and 5 US territories, including American Samoa (AS), Guam (GU), Northern Mariana Islands (MP), Palau (PW), and Virgin Islands (VI).
      *  </span>
      *
      * @var \Nogrod\eBaySDK\Trading\SalesTaxType $salesTax
      */
     private $salesTax = null;
-
-    /**
-     * This field is no longer applicable as it is no longer possible for a seller to offer a buyer shipping insurance.
-     *
-     * @var string $insuranceOption
-     */
-    private $insuranceOption = null;
-
-    /**
-     * This field is no longer applicable as it is no longer possible for a seller to offer a buyer shipping insurance.
-     *
-     * @var \Nogrod\eBaySDK\Trading\AmountType $insuranceFee
-     */
-    private $insuranceFee = null;
 
     /**
      * This field should only be used if the seller needs to add one or more offline payment options for an order that requires/supports offline payment. A seller should not submit any online payment methods here since eBay now controls the available online payment options that are available to buyers, and not the seller.
@@ -98,13 +91,6 @@ class SendInvoiceRequestType extends AbstractRequestType
     private $paymentMethods = [
 
     ];
-
-    /**
-     * <b>DO NOT USE</b>. This field is no longer applicable.
-     *
-     * @var string $payPalEmailAddress
-     */
-    private $payPalEmailAddress = null;
 
     /**
      * This field allows the seller to provide a message or instructions
@@ -183,7 +169,12 @@ class SendInvoiceRequestType extends AbstractRequestType
     /**
      * Gets as transactionID
      *
-     * Unique identifier for an eBay sales transaction. This identifier is created once there is a commitment from a buyer to purchase an item. Since an auction listing can only have one sales transaction during the duration of the listing, the <b>TransactionID</b> value for auction listings is always <code>0</code>. Unless <b>OrderID</b> or <b>OrderLineItemID</b> is provided in the request, the <b>TransactionID</b> value is required and must be paired with the corresponding <b>ItemID</b> value to identify an order line item. For a multiple line item order, <b>OrderID</b> should be used.
+     * Unique identifier for an eBay sales transaction. This identifier is created once there is a commitment from a buyer to purchase an item. Since an auction listing can only have one sales transaction during the duration of the listing, the <b>TransactionID</b> value for auction listings is always <code>0</code>.
+     *  <br/><br/>
+     *  <span class="tablenote"><b>Note: </b> Beginning in July 2024, non-zero transaction IDs will start being returned for auction listings. If necessary, update code to handle non-zero transaction IDs for auction transactions before this time.
+     *  </span>
+     *  <br>
+     *  Unless <b>OrderID</b> or <b>OrderLineItemID</b> is provided in the request, the <b>TransactionID</b> value is required and must be paired with the corresponding <b>ItemID</b> value to identify an order line item. For a multiple line item order, <b>OrderID</b> should be used.
      *
      * @return string
      */
@@ -195,7 +186,12 @@ class SendInvoiceRequestType extends AbstractRequestType
     /**
      * Sets a new transactionID
      *
-     * Unique identifier for an eBay sales transaction. This identifier is created once there is a commitment from a buyer to purchase an item. Since an auction listing can only have one sales transaction during the duration of the listing, the <b>TransactionID</b> value for auction listings is always <code>0</code>. Unless <b>OrderID</b> or <b>OrderLineItemID</b> is provided in the request, the <b>TransactionID</b> value is required and must be paired with the corresponding <b>ItemID</b> value to identify an order line item. For a multiple line item order, <b>OrderID</b> should be used.
+     * Unique identifier for an eBay sales transaction. This identifier is created once there is a commitment from a buyer to purchase an item. Since an auction listing can only have one sales transaction during the duration of the listing, the <b>TransactionID</b> value for auction listings is always <code>0</code>.
+     *  <br/><br/>
+     *  <span class="tablenote"><b>Note: </b> Beginning in July 2024, non-zero transaction IDs will start being returned for auction listings. If necessary, update code to handle non-zero transaction IDs for auction transactions before this time.
+     *  </span>
+     *  <br>
+     *  Unless <b>OrderID</b> or <b>OrderLineItemID</b> is provided in the request, the <b>TransactionID</b> value is required and must be paired with the corresponding <b>ItemID</b> value to identify an order line item. For a multiple line item order, <b>OrderID</b> should be used.
      *
      * @param string $transactionID
      * @return self
@@ -217,7 +213,7 @@ class SendInvoiceRequestType extends AbstractRequestType
      *  <span class="tablenote"><b>Note: </b>
      *  Note that the unique identifier of a 'non-immediate payment' order will change as it goes from an unpaid order to a paid order. Due to this scenario, all Trading API calls that accept Order ID values as filters in the request payload will support the identifiers for both unpaid and paid orders.
      *  <br><br>
-     *  Sellers can check to see if an order has been paid by looking for a value of <code>Complete</code> in the <b>CheckoutStatus.Status</b> field in the response of <b>GetOrders</b> or <b>GetOrderTransactions</b> call, or in the <b>Status.CompleteStatus</b> field in the response of <b>GetItemTransactions</b> or <b>GetSellerTransactions</b> call. Sellers should not fulfill orders until buyer has made payment.
+     *  Sellers can check to see if an order has been paid by looking for a value of <code>Complete</code> in the <b>CheckoutStatus.Status</b> field in the response of <b>GetOrders</b> call, or in the <b>Status.CompleteStatus</b> field in the response of <b>GetItemTransactions</b> or <b>GetSellerTransactions</b> call. Sellers should not fulfill orders until buyer has made payment.
      *  </span>
      *
      * @return string
@@ -238,7 +234,7 @@ class SendInvoiceRequestType extends AbstractRequestType
      *  <span class="tablenote"><b>Note: </b>
      *  Note that the unique identifier of a 'non-immediate payment' order will change as it goes from an unpaid order to a paid order. Due to this scenario, all Trading API calls that accept Order ID values as filters in the request payload will support the identifiers for both unpaid and paid orders.
      *  <br><br>
-     *  Sellers can check to see if an order has been paid by looking for a value of <code>Complete</code> in the <b>CheckoutStatus.Status</b> field in the response of <b>GetOrders</b> or <b>GetOrderTransactions</b> call, or in the <b>Status.CompleteStatus</b> field in the response of <b>GetItemTransactions</b> or <b>GetSellerTransactions</b> call. Sellers should not fulfill orders until buyer has made payment.
+     *  Sellers can check to see if an order has been paid by looking for a value of <code>Complete</code> in the <b>CheckoutStatus.Status</b> field in the response of <b>GetOrders</b> call, or in the <b>Status.CompleteStatus</b> field in the response of <b>GetItemTransactions</b> or <b>GetSellerTransactions</b> call. Sellers should not fulfill orders until buyer has made payment.
      *  </span>
      *
      * @param string $orderID
@@ -412,7 +408,9 @@ class SendInvoiceRequestType extends AbstractRequestType
      *
      * This container is used if the seller wishes to apply sales tax to the order if the buyer lives in a state/jurisdiction where sales tax is not already collected automatically by eBay and remitted to the tax authority. The amount of sales tax applied to the order is dependent on the sales tax rate in the buyer's state and whether sales tax is being applied to the cost of the order only or the cost of the order plus shipping and handling.
      *  <br><br>
-     *  <span class="tablenote"><b>Note: </b> As of November 4, 2021, eBay now collects and remits sales tax to the tax authorities for all but one US state (Missouri) and five US territories. So, in most cases, this container will not be applicable and should not be used in a request. For more information, see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section4">eBay sales tax collection</a> help topic.
+     *  <span class="tablenote"><b>Note: </b> Buyers in all 50 US states and DC are automatically charged sales tax for eBay purchases, and eBay collects and remits this sales tax to the proper taxing authority on the buyer's behalf. Because of this, if a sales tax percentage rate is applied to a listing by a seller in one of these states, this field will be ignored during the checkout process.
+     *  <br><br>
+     *  Currently, sales tax percentage rates can only be specified by sellers in Canada and 5 US territories, including American Samoa (AS), Guam (GU), Northern Mariana Islands (MP), Palau (PW), and Virgin Islands (VI).
      *  </span>
      *
      * @return \Nogrod\eBaySDK\Trading\SalesTaxType
@@ -427,7 +425,9 @@ class SendInvoiceRequestType extends AbstractRequestType
      *
      * This container is used if the seller wishes to apply sales tax to the order if the buyer lives in a state/jurisdiction where sales tax is not already collected automatically by eBay and remitted to the tax authority. The amount of sales tax applied to the order is dependent on the sales tax rate in the buyer's state and whether sales tax is being applied to the cost of the order only or the cost of the order plus shipping and handling.
      *  <br><br>
-     *  <span class="tablenote"><b>Note: </b> As of November 4, 2021, eBay now collects and remits sales tax to the tax authorities for all but one US state (Missouri) and five US territories. So, in most cases, this container will not be applicable and should not be used in a request. For more information, see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section4">eBay sales tax collection</a> help topic.
+     *  <span class="tablenote"><b>Note: </b> Buyers in all 50 US states and DC are automatically charged sales tax for eBay purchases, and eBay collects and remits this sales tax to the proper taxing authority on the buyer's behalf. Because of this, if a sales tax percentage rate is applied to a listing by a seller in one of these states, this field will be ignored during the checkout process.
+     *  <br><br>
+     *  Currently, sales tax percentage rates can only be specified by sellers in Canada and 5 US territories, including American Samoa (AS), Guam (GU), Northern Mariana Islands (MP), Palau (PW), and Virgin Islands (VI).
      *  </span>
      *
      * @param \Nogrod\eBaySDK\Trading\SalesTaxType $salesTax
@@ -436,58 +436,6 @@ class SendInvoiceRequestType extends AbstractRequestType
     public function setSalesTax(\Nogrod\eBaySDK\Trading\SalesTaxType $salesTax)
     {
         $this->salesTax = $salesTax;
-        return $this;
-    }
-
-    /**
-     * Gets as insuranceOption
-     *
-     * This field is no longer applicable as it is no longer possible for a seller to offer a buyer shipping insurance.
-     *
-     * @return string
-     */
-    public function getInsuranceOption()
-    {
-        return $this->insuranceOption;
-    }
-
-    /**
-     * Sets a new insuranceOption
-     *
-     * This field is no longer applicable as it is no longer possible for a seller to offer a buyer shipping insurance.
-     *
-     * @param string $insuranceOption
-     * @return self
-     */
-    public function setInsuranceOption($insuranceOption)
-    {
-        $this->insuranceOption = $insuranceOption;
-        return $this;
-    }
-
-    /**
-     * Gets as insuranceFee
-     *
-     * This field is no longer applicable as it is no longer possible for a seller to offer a buyer shipping insurance.
-     *
-     * @return \Nogrod\eBaySDK\Trading\AmountType
-     */
-    public function getInsuranceFee()
-    {
-        return $this->insuranceFee;
-    }
-
-    /**
-     * Sets a new insuranceFee
-     *
-     * This field is no longer applicable as it is no longer possible for a seller to offer a buyer shipping insurance.
-     *
-     * @param \Nogrod\eBaySDK\Trading\AmountType $insuranceFee
-     * @return self
-     */
-    public function setInsuranceFee(\Nogrod\eBaySDK\Trading\AmountType $insuranceFee)
-    {
-        $this->insuranceFee = $insuranceFee;
         return $this;
     }
 
@@ -559,32 +507,6 @@ class SendInvoiceRequestType extends AbstractRequestType
     public function setPaymentMethods(array $paymentMethods)
     {
         $this->paymentMethods = $paymentMethods;
-        return $this;
-    }
-
-    /**
-     * Gets as payPalEmailAddress
-     *
-     * <b>DO NOT USE</b>. This field is no longer applicable.
-     *
-     * @return string
-     */
-    public function getPayPalEmailAddress()
-    {
-        return $this->payPalEmailAddress;
-    }
-
-    /**
-     * Sets a new payPalEmailAddress
-     *
-     * <b>DO NOT USE</b>. This field is no longer applicable.
-     *
-     * @param string $payPalEmailAddress
-     * @return self
-     */
-    public function setPayPalEmailAddress($payPalEmailAddress)
-    {
-        $this->payPalEmailAddress = $payPalEmailAddress;
         return $this;
     }
 
@@ -771,21 +693,9 @@ class SendInvoiceRequestType extends AbstractRequestType
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SalesTax", $value);
         }
-        $value = $this->getInsuranceOption();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}InsuranceOption", $value);
-        }
-        $value = $this->getInsuranceFee();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}InsuranceFee", $value);
-        }
         $value = $this->getPaymentMethods();
         if (null !== $value && !empty($this->getPaymentMethods())) {
             $writer->write(array_map(function ($v) {return ["PaymentMethods" => $v];}, $value));
-        }
-        $value = $this->getPayPalEmailAddress();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PayPalEmailAddress", $value);
         }
         $value = $this->getCheckoutInstructions();
         if (null !== $value) {
@@ -849,21 +759,9 @@ class SendInvoiceRequestType extends AbstractRequestType
         if (null !== $value) {
             $this->setSalesTax(\Nogrod\eBaySDK\Trading\SalesTaxType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}InsuranceOption');
-        if (null !== $value) {
-            $this->setInsuranceOption($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}InsuranceFee');
-        if (null !== $value) {
-            $this->setInsuranceFee(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
-        }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaymentMethods', true);
         if (null !== $value && !empty($value)) {
             $this->setPaymentMethods($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PayPalEmailAddress');
-        if (null !== $value) {
-            $this->setPayPalEmailAddress($value);
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CheckoutInstructions');
         if (null !== $value) {

@@ -9,13 +9,13 @@ use Nogrod\XMLClientRuntime\Func;
  *
  * Type used by the <b>NotificationDetailsArray</b> container that is returned by the <b>GetNotificationsUsage</b> call. The <b>NotificationDetailsArray</b> container consists of one or more notifications that match the input criteria in the call request.
  *  <br><br>
- *  This container is only returned if an <b>ItemID</b> value was specified in the request, and there were notifications related to this listing during the specified time range.
+ *  This container is only returned if there were notifications related to this listing during the specified time range.
  * XSD Type: NotificationDetailsArrayType
  */
 class NotificationDetailsArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
     /**
-     * Each <b>NotificationDetails</b> container consists of detailed information about one notification. <b>NotificationDetails</b> container(s) are only returned if an <b>ItemID</b> value was specified in the request, and there were one or more notifications related to this listing during the specified time range.
+     * Each <b>NotificationDetails</b> container consists of detailed information about one notification. <b>NotificationDetails</b> container(s) are only returned if there were one or more notifications related to this listing during the specified time range.
      *
      * @var \Nogrod\eBaySDK\Trading\NotificationDetailsType[] $notificationDetails
      */
@@ -26,7 +26,7 @@ class NotificationDetailsArrayType implements \Sabre\Xml\XmlSerializable, \Sabre
     /**
      * Adds as notificationDetails
      *
-     * Each <b>NotificationDetails</b> container consists of detailed information about one notification. <b>NotificationDetails</b> container(s) are only returned if an <b>ItemID</b> value was specified in the request, and there were one or more notifications related to this listing during the specified time range.
+     * Each <b>NotificationDetails</b> container consists of detailed information about one notification. <b>NotificationDetails</b> container(s) are only returned if there were one or more notifications related to this listing during the specified time range.
      *
      * @return self
      * @param \Nogrod\eBaySDK\Trading\NotificationDetailsType $notificationDetails
@@ -40,7 +40,7 @@ class NotificationDetailsArrayType implements \Sabre\Xml\XmlSerializable, \Sabre
     /**
      * isset notificationDetails
      *
-     * Each <b>NotificationDetails</b> container consists of detailed information about one notification. <b>NotificationDetails</b> container(s) are only returned if an <b>ItemID</b> value was specified in the request, and there were one or more notifications related to this listing during the specified time range.
+     * Each <b>NotificationDetails</b> container consists of detailed information about one notification. <b>NotificationDetails</b> container(s) are only returned if there were one or more notifications related to this listing during the specified time range.
      *
      * @param int|string $index
      * @return bool
@@ -53,7 +53,7 @@ class NotificationDetailsArrayType implements \Sabre\Xml\XmlSerializable, \Sabre
     /**
      * unset notificationDetails
      *
-     * Each <b>NotificationDetails</b> container consists of detailed information about one notification. <b>NotificationDetails</b> container(s) are only returned if an <b>ItemID</b> value was specified in the request, and there were one or more notifications related to this listing during the specified time range.
+     * Each <b>NotificationDetails</b> container consists of detailed information about one notification. <b>NotificationDetails</b> container(s) are only returned if there were one or more notifications related to this listing during the specified time range.
      *
      * @param int|string $index
      * @return void
@@ -66,7 +66,7 @@ class NotificationDetailsArrayType implements \Sabre\Xml\XmlSerializable, \Sabre
     /**
      * Gets as notificationDetails
      *
-     * Each <b>NotificationDetails</b> container consists of detailed information about one notification. <b>NotificationDetails</b> container(s) are only returned if an <b>ItemID</b> value was specified in the request, and there were one or more notifications related to this listing during the specified time range.
+     * Each <b>NotificationDetails</b> container consists of detailed information about one notification. <b>NotificationDetails</b> container(s) are only returned if there were one or more notifications related to this listing during the specified time range.
      *
      * @return \Nogrod\eBaySDK\Trading\NotificationDetailsType[]
      */
@@ -78,7 +78,7 @@ class NotificationDetailsArrayType implements \Sabre\Xml\XmlSerializable, \Sabre
     /**
      * Sets a new notificationDetails
      *
-     * Each <b>NotificationDetails</b> container consists of detailed information about one notification. <b>NotificationDetails</b> container(s) are only returned if an <b>ItemID</b> value was specified in the request, and there were one or more notifications related to this listing during the specified time range.
+     * Each <b>NotificationDetails</b> container consists of detailed information about one notification. <b>NotificationDetails</b> container(s) are only returned if there were one or more notifications related to this listing during the specified time range.
      *
      * @param \Nogrod\eBaySDK\Trading\NotificationDetailsType[] $notificationDetails
      * @return self

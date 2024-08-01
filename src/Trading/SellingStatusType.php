@@ -150,10 +150,10 @@ class SellingStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
      *  <b></b>
      *  <ul>
      *  <li>If a listing ends with a sale (or sales), eBay needs to update the sale details
-     *  (e.g., total price and buyer/high bidder) and the final value fee. This processing
+     *  (e.g., total price and buyer/high bidder) and the transaction fees. This processing
      *  can take several minutes.</li>
      *  <li>If you retrieve a sold item and no details about the buyer/high bidder
-     *  are returned or no final value fee is available, use this listing status information
+     *  are returned or no transaction fees are available, use this listing status information
      *  to determine whether eBay has finished processing the listing.</li>
      *  </ul>
      *
@@ -172,8 +172,8 @@ class SellingStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
      *  <a href="http://www.feectr.ebay.com/feecenter/home">Fee Center Home Page</a>.
      *  <br/><br/>
      *  The Final Value Fee for each order line
-     *  item is returned by <b>GetSellerTransactions</b>, <b>GetItemTransactions</b>, <b>GetOrders</b>,
-     *  and <b>GetOrderTransactions</b>, regardless of the checkout status.
+     *  item is returned by <b>GetSellerTransactions</b>, <b>GetItemTransactions</b>, and <b>GetOrders</b>,
+     *  regardless of the checkout status.
      *  <br><br>
      *  If a seller requests a Final Value Fee credit, the value of
      *  <b>Transaction.FinalValueFee</b> will not change if a credit is
@@ -660,10 +660,10 @@ class SellingStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
      *  <b></b>
      *  <ul>
      *  <li>If a listing ends with a sale (or sales), eBay needs to update the sale details
-     *  (e.g., total price and buyer/high bidder) and the final value fee. This processing
+     *  (e.g., total price and buyer/high bidder) and the transaction fees. This processing
      *  can take several minutes.</li>
      *  <li>If you retrieve a sold item and no details about the buyer/high bidder
-     *  are returned or no final value fee is available, use this listing status information
+     *  are returned or no transaction fees are available, use this listing status information
      *  to determine whether eBay has finished processing the listing.</li>
      *  </ul>
      *
@@ -681,10 +681,10 @@ class SellingStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
      *  <b></b>
      *  <ul>
      *  <li>If a listing ends with a sale (or sales), eBay needs to update the sale details
-     *  (e.g., total price and buyer/high bidder) and the final value fee. This processing
+     *  (e.g., total price and buyer/high bidder) and the transaction fees. This processing
      *  can take several minutes.</li>
      *  <li>If you retrieve a sold item and no details about the buyer/high bidder
-     *  are returned or no final value fee is available, use this listing status information
+     *  are returned or no transaction fees are available, use this listing status information
      *  to determine whether eBay has finished processing the listing.</li>
      *  </ul>
      *
@@ -710,8 +710,8 @@ class SellingStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
      *  <a href="http://www.feectr.ebay.com/feecenter/home">Fee Center Home Page</a>.
      *  <br/><br/>
      *  The Final Value Fee for each order line
-     *  item is returned by <b>GetSellerTransactions</b>, <b>GetItemTransactions</b>, <b>GetOrders</b>,
-     *  and <b>GetOrderTransactions</b>, regardless of the checkout status.
+     *  item is returned by <b>GetSellerTransactions</b>, <b>GetItemTransactions</b>, and <b>GetOrders</b>,
+     *  regardless of the checkout status.
      *  <br><br>
      *  If a seller requests a Final Value Fee credit, the value of
      *  <b>Transaction.FinalValueFee</b> will not change if a credit is
@@ -740,8 +740,8 @@ class SellingStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
      *  <a href="http://www.feectr.ebay.com/feecenter/home">Fee Center Home Page</a>.
      *  <br/><br/>
      *  The Final Value Fee for each order line
-     *  item is returned by <b>GetSellerTransactions</b>, <b>GetItemTransactions</b>, <b>GetOrders</b>,
-     *  and <b>GetOrderTransactions</b>, regardless of the checkout status.
+     *  item is returned by <b>GetSellerTransactions</b>, <b>GetItemTransactions</b>, and <b>GetOrders</b>,
+     *  regardless of the checkout status.
      *  <br><br>
      *  If a seller requests a Final Value Fee credit, the value of
      *  <b>Transaction.FinalValueFee</b> will not change if a credit is

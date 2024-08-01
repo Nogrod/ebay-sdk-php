@@ -157,16 +157,6 @@ class ProductListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     private $brandMPN = null;
 
     /**
-     * <span class="tablenote"><strong>Note:</strong>
-     *  This container and its fields are not usable and will be ignored if sent. See <a href="https://developer.ebay.com/develop/apis/api-deprecation-status">API Deprecation Status</a> for the decommission date (when this container will stop being returned and removed from the WSDL). For event ticket listings, logistical information must be passed into Item Specifics instead. You can use the <a href="https://developer.ebay.com/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory">getItemAspectsForCategory</a> method of the <b>Taxonomy API</b> to get the required and recommended Item Specifics for your listing category.
-     *  </span>
-     *  This container is only applicable when a seller is creating/revising an event tickets listing.
-     *
-     * @var \Nogrod\eBaySDK\Trading\TicketListingDetailsType $ticketListingDetails
-     */
-    private $ticketListingDetails = null;
-
-    /**
      * This field can be included and set to <code>true</code> if the seller wants to use the first eBay catalog product that is found to create/revise the listing. eBay will search for an eBay catalog product match if the seller provides an ePID or one or more GTIN values. If this field is omitted, or included and set to <code>false</code>, the call will fail if more than one eBay catalog product is found.
      *  <br>
      *
@@ -655,38 +645,6 @@ class ProductListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     }
 
     /**
-     * Gets as ticketListingDetails
-     *
-     * <span class="tablenote"><strong>Note:</strong>
-     *  This container and its fields are not usable and will be ignored if sent. See <a href="https://developer.ebay.com/develop/apis/api-deprecation-status">API Deprecation Status</a> for the decommission date (when this container will stop being returned and removed from the WSDL). For event ticket listings, logistical information must be passed into Item Specifics instead. You can use the <a href="https://developer.ebay.com/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory">getItemAspectsForCategory</a> method of the <b>Taxonomy API</b> to get the required and recommended Item Specifics for your listing category.
-     *  </span>
-     *  This container is only applicable when a seller is creating/revising an event tickets listing.
-     *
-     * @return \Nogrod\eBaySDK\Trading\TicketListingDetailsType
-     */
-    public function getTicketListingDetails()
-    {
-        return $this->ticketListingDetails;
-    }
-
-    /**
-     * Sets a new ticketListingDetails
-     *
-     * <span class="tablenote"><strong>Note:</strong>
-     *  This container and its fields are not usable and will be ignored if sent. See <a href="https://developer.ebay.com/develop/apis/api-deprecation-status">API Deprecation Status</a> for the decommission date (when this container will stop being returned and removed from the WSDL). For event ticket listings, logistical information must be passed into Item Specifics instead. You can use the <a href="https://developer.ebay.com/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory">getItemAspectsForCategory</a> method of the <b>Taxonomy API</b> to get the required and recommended Item Specifics for your listing category.
-     *  </span>
-     *  This container is only applicable when a seller is creating/revising an event tickets listing.
-     *
-     * @param \Nogrod\eBaySDK\Trading\TicketListingDetailsType $ticketListingDetails
-     * @return self
-     */
-    public function setTicketListingDetails(\Nogrod\eBaySDK\Trading\TicketListingDetailsType $ticketListingDetails)
-    {
-        $this->ticketListingDetails = $ticketListingDetails;
-        return $this;
-    }
-
-    /**
      * Gets as useFirstProduct
      *
      * This field can be included and set to <code>true</code> if the seller wants to use the first eBay catalog product that is found to create/revise the listing. eBay will search for an eBay catalog product match if the seller provides an ePID or one or more GTIN values. If this field is omitted, or included and set to <code>false</code>, the call will fail if more than one eBay catalog product is found.
@@ -866,10 +824,6 @@ class ProductListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BrandMPN", $value);
         }
-        $value = $this->getTicketListingDetails();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TicketListingDetails", $value);
-        }
         $value = $this->getUseFirstProduct();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;
         if (null !== $value) {
@@ -947,10 +901,6 @@ class ProductListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BrandMPN');
         if (null !== $value) {
             $this->setBrandMPN(\Nogrod\eBaySDK\Trading\BrandMPNType::fromKeyValue($value));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TicketListingDetails');
-        if (null !== $value) {
-            $this->setTicketListingDetails(\Nogrod\eBaySDK\Trading\TicketListingDetailsType::fromKeyValue($value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UseFirstProduct');
         if (null !== $value) {

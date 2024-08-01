@@ -99,7 +99,7 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  be returned only to that bidder, and to the seller of an item that the
      *  user is bidding on. For all other users, the value -99 is returned.
      *  <br><br>
-     *  <b>For GetOrders, GetOrderTransactions, and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this field will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, the accurate Feedback Score for the user is returned to the buyer or seller, but a dummy value of <code>0</code> will be returned to all third parties.
+     *  <b>For GetOrders and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this field will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, the accurate Feedback Score for the user is returned to the buyer or seller, but a dummy value of <code>0</code> will be returned to all third parties.
      *
      * @var int $feedbackScore
      */
@@ -141,7 +141,7 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  regardless of whether the member has chosen to make their feedback private.
      *  Not returned if the user has no feedback.
      *  <br><br>
-     *  <b>For GetOrders, GetOrderTransactions, and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this field will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, the accurate Positive Feedback Percentage value for the user is returned to the buyer or seller, but a dummy value of <code>0.0</code> will be returned to all third parties.
+     *  <b>For GetOrders and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this field will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, the accurate Positive Feedback Percentage value for the user is returned to the buyer or seller, but a dummy value of <code>0.0</code> will be returned to all third parties.
      *
      * @var float $positiveFeedbackPercent
      */
@@ -358,55 +358,11 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     private $businessRole = null;
 
     /**
-     * This field is deprecated.
-     *
-     * @var \Nogrod\eBaySDK\Trading\CharityIDType[] $charityAffiliations
-     */
-    private $charityAffiliations = null;
-
-    /**
-     * This field is deprecated.
-     *
-     * @var string $payPalAccountLevel
-     */
-    private $payPalAccountLevel = null;
-
-    /**
-     * This field is deprecated.
-     *
-     * @var string $payPalAccountType
-     */
-    private $payPalAccountType = null;
-
-    /**
-     * This field is deprecated.
-     *
-     * @var string $payPalAccountStatus
-     */
-    private $payPalAccountStatus = null;
-
-    /**
      * Specifies the subscription level for a user.
      *
      * @var string[] $userSubscription
      */
     private $userSubscription = [
-
-    ];
-
-    /**
-     * This field is deprecated.
-     *
-     * @var bool $siteVerified
-     */
-    private $siteVerified = null;
-
-    /**
-     * This field is deprecated.
-     *
-     * @var string[] $skypeID
-     */
-    private $skypeID = [
 
     ];
 
@@ -438,13 +394,6 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      * @var string $vATID
      */
     private $vATID = null;
-
-    /**
-     * This field is deprecated.
-     *
-     * @var string $sellerPaymentMethod
-     */
-    private $sellerPaymentMethod = null;
 
     /**
      * Contains information about the user as a bidder on a certain
@@ -485,30 +434,11 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     private $enterpriseSeller = null;
 
     /**
-     * When a user has their billing option set to <code>email</code>, they can include
-     *  this element in a <b>GetUser</b> request to retrieve their own email bills.
-     *
-     * @var string $billingEmail
-     */
-    private $billingEmail = null;
-
-    /**
      * This flag indicates whether or not the user is eligible to sell items on eBay. This field is only returned if the <b>IncludeFeatureEligibility</b> flag is included in the call request and set to <code>true</code>.
      *
      * @var bool $qualifiesForSelling
      */
     private $qualifiesForSelling = null;
-
-    /**
-     * <br>
-     *  Contains the static email address of an eBay member, used within the "reply to" email address when the eBay member sends a message. (Each eBay member is assigned a static alias. The alias is used within a static email address.)
-     *  <br>
-     *  <span class="tablenote"><b>Note: </b> This field will stop being returned on January 31, 2024.
-     *  </span>
-     *
-     * @var string $staticAlias
-     */
-    private $staticAlias = null;
 
     /**
      * Contains the shipping address of a bidder who has made a Best Offer for an item.
@@ -721,7 +651,7 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  be returned only to that bidder, and to the seller of an item that the
      *  user is bidding on. For all other users, the value -99 is returned.
      *  <br><br>
-     *  <b>For GetOrders, GetOrderTransactions, and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this field will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, the accurate Feedback Score for the user is returned to the buyer or seller, but a dummy value of <code>0</code> will be returned to all third parties.
+     *  <b>For GetOrders and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this field will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, the accurate Feedback Score for the user is returned to the buyer or seller, but a dummy value of <code>0</code> will be returned to all third parties.
      *
      * @return int
      */
@@ -767,7 +697,7 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  be returned only to that bidder, and to the seller of an item that the
      *  user is bidding on. For all other users, the value -99 is returned.
      *  <br><br>
-     *  <b>For GetOrders, GetOrderTransactions, and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this field will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, the accurate Feedback Score for the user is returned to the buyer or seller, but a dummy value of <code>0</code> will be returned to all third parties.
+     *  <b>For GetOrders and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this field will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, the accurate Feedback Score for the user is returned to the buyer or seller, but a dummy value of <code>0</code> will be returned to all third parties.
      *
      * @param int $feedbackScore
      * @return self
@@ -868,7 +798,7 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  regardless of whether the member has chosen to make their feedback private.
      *  Not returned if the user has no feedback.
      *  <br><br>
-     *  <b>For GetOrders, GetOrderTransactions, and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this field will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, the accurate Positive Feedback Percentage value for the user is returned to the buyer or seller, but a dummy value of <code>0.0</code> will be returned to all third parties.
+     *  <b>For GetOrders and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this field will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, the accurate Positive Feedback Percentage value for the user is returned to the buyer or seller, but a dummy value of <code>0.0</code> will be returned to all third parties.
      *
      * @return float
      */
@@ -887,7 +817,7 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  regardless of whether the member has chosen to make their feedback private.
      *  Not returned if the user has no feedback.
      *  <br><br>
-     *  <b>For GetOrders, GetOrderTransactions, and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this field will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, the accurate Positive Feedback Percentage value for the user is returned to the buyer or seller, but a dummy value of <code>0.0</code> will be returned to all third parties.
+     *  <b>For GetOrders and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this field will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, the accurate Positive Feedback Percentage value for the user is returned to the buyer or seller, but a dummy value of <code>0.0</code> will be returned to all third parties.
      *
      * @param float $positiveFeedbackPercent
      * @return self
@@ -1511,150 +1441,6 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     }
 
     /**
-     * Adds as charityID
-     *
-     * This field is deprecated.
-     *
-     * @return self
-     * @param \Nogrod\eBaySDK\Trading\CharityIDType $charityID
-     */
-    public function addToCharityAffiliations(\Nogrod\eBaySDK\Trading\CharityIDType $charityID)
-    {
-        $this->charityAffiliations[] = $charityID;
-        return $this;
-    }
-
-    /**
-     * isset charityAffiliations
-     *
-     * This field is deprecated.
-     *
-     * @param int|string $index
-     * @return bool
-     */
-    public function issetCharityAffiliations($index)
-    {
-        return isset($this->charityAffiliations[$index]);
-    }
-
-    /**
-     * unset charityAffiliations
-     *
-     * This field is deprecated.
-     *
-     * @param int|string $index
-     * @return void
-     */
-    public function unsetCharityAffiliations($index)
-    {
-        unset($this->charityAffiliations[$index]);
-    }
-
-    /**
-     * Gets as charityAffiliations
-     *
-     * This field is deprecated.
-     *
-     * @return \Nogrod\eBaySDK\Trading\CharityIDType[]
-     */
-    public function getCharityAffiliations()
-    {
-        return $this->charityAffiliations;
-    }
-
-    /**
-     * Sets a new charityAffiliations
-     *
-     * This field is deprecated.
-     *
-     * @param \Nogrod\eBaySDK\Trading\CharityIDType[] $charityAffiliations
-     * @return self
-     */
-    public function setCharityAffiliations(array $charityAffiliations)
-    {
-        $this->charityAffiliations = $charityAffiliations;
-        return $this;
-    }
-
-    /**
-     * Gets as payPalAccountLevel
-     *
-     * This field is deprecated.
-     *
-     * @return string
-     */
-    public function getPayPalAccountLevel()
-    {
-        return $this->payPalAccountLevel;
-    }
-
-    /**
-     * Sets a new payPalAccountLevel
-     *
-     * This field is deprecated.
-     *
-     * @param string $payPalAccountLevel
-     * @return self
-     */
-    public function setPayPalAccountLevel($payPalAccountLevel)
-    {
-        $this->payPalAccountLevel = $payPalAccountLevel;
-        return $this;
-    }
-
-    /**
-     * Gets as payPalAccountType
-     *
-     * This field is deprecated.
-     *
-     * @return string
-     */
-    public function getPayPalAccountType()
-    {
-        return $this->payPalAccountType;
-    }
-
-    /**
-     * Sets a new payPalAccountType
-     *
-     * This field is deprecated.
-     *
-     * @param string $payPalAccountType
-     * @return self
-     */
-    public function setPayPalAccountType($payPalAccountType)
-    {
-        $this->payPalAccountType = $payPalAccountType;
-        return $this;
-    }
-
-    /**
-     * Gets as payPalAccountStatus
-     *
-     * This field is deprecated.
-     *
-     * @return string
-     */
-    public function getPayPalAccountStatus()
-    {
-        return $this->payPalAccountStatus;
-    }
-
-    /**
-     * Sets a new payPalAccountStatus
-     *
-     * This field is deprecated.
-     *
-     * @param string $payPalAccountStatus
-     * @return self
-     */
-    public function setPayPalAccountStatus($payPalAccountStatus)
-    {
-        $this->payPalAccountStatus = $payPalAccountStatus;
-        return $this;
-    }
-
-    /**
      * Adds as userSubscription
      *
      * Specifies the subscription level for a user.
@@ -1717,98 +1503,6 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     public function setUserSubscription(array $userSubscription)
     {
         $this->userSubscription = $userSubscription;
-        return $this;
-    }
-
-    /**
-     * Gets as siteVerified
-     *
-     * This field is deprecated.
-     *
-     * @return bool
-     */
-    public function getSiteVerified()
-    {
-        return $this->siteVerified;
-    }
-
-    /**
-     * Sets a new siteVerified
-     *
-     * This field is deprecated.
-     *
-     * @param bool $siteVerified
-     * @return self
-     */
-    public function setSiteVerified($siteVerified)
-    {
-        $this->siteVerified = $siteVerified;
-        return $this;
-    }
-
-    /**
-     * Adds as skypeID
-     *
-     * This field is deprecated.
-     *
-     * @return self
-     * @param string $skypeID
-     */
-    public function addToSkypeID($skypeID)
-    {
-        $this->skypeID[] = $skypeID;
-        return $this;
-    }
-
-    /**
-     * isset skypeID
-     *
-     * This field is deprecated.
-     *
-     * @param int|string $index
-     * @return bool
-     */
-    public function issetSkypeID($index)
-    {
-        return isset($this->skypeID[$index]);
-    }
-
-    /**
-     * unset skypeID
-     *
-     * This field is deprecated.
-     *
-     * @param int|string $index
-     * @return void
-     */
-    public function unsetSkypeID($index)
-    {
-        unset($this->skypeID[$index]);
-    }
-
-    /**
-     * Gets as skypeID
-     *
-     * This field is deprecated.
-     *
-     * @return string[]
-     */
-    public function getSkypeID()
-    {
-        return $this->skypeID;
-    }
-
-    /**
-     * Sets a new skypeID
-     *
-     * This field is deprecated.
-     *
-     * @param string[] $skypeID
-     * @return self
-     */
-    public function setSkypeID(array $skypeID)
-    {
-        $this->skypeID = $skypeID;
         return $this;
     }
 
@@ -1903,32 +1597,6 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     public function setVATID($vATID)
     {
         $this->vATID = $vATID;
-        return $this;
-    }
-
-    /**
-     * Gets as sellerPaymentMethod
-     *
-     * This field is deprecated.
-     *
-     * @return string
-     */
-    public function getSellerPaymentMethod()
-    {
-        return $this->sellerPaymentMethod;
-    }
-
-    /**
-     * Sets a new sellerPaymentMethod
-     *
-     * This field is deprecated.
-     *
-     * @param string $sellerPaymentMethod
-     * @return self
-     */
-    public function setSellerPaymentMethod($sellerPaymentMethod)
-    {
-        $this->sellerPaymentMethod = $sellerPaymentMethod;
         return $this;
     }
 
@@ -2057,34 +1725,6 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     }
 
     /**
-     * Gets as billingEmail
-     *
-     * When a user has their billing option set to <code>email</code>, they can include
-     *  this element in a <b>GetUser</b> request to retrieve their own email bills.
-     *
-     * @return string
-     */
-    public function getBillingEmail()
-    {
-        return $this->billingEmail;
-    }
-
-    /**
-     * Sets a new billingEmail
-     *
-     * When a user has their billing option set to <code>email</code>, they can include
-     *  this element in a <b>GetUser</b> request to retrieve their own email bills.
-     *
-     * @param string $billingEmail
-     * @return self
-     */
-    public function setBillingEmail($billingEmail)
-    {
-        $this->billingEmail = $billingEmail;
-        return $this;
-    }
-
-    /**
      * Gets as qualifiesForSelling
      *
      * This flag indicates whether or not the user is eligible to sell items on eBay. This field is only returned if the <b>IncludeFeatureEligibility</b> flag is included in the call request and set to <code>true</code>.
@@ -2107,40 +1747,6 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     public function setQualifiesForSelling($qualifiesForSelling)
     {
         $this->qualifiesForSelling = $qualifiesForSelling;
-        return $this;
-    }
-
-    /**
-     * Gets as staticAlias
-     *
-     * <br>
-     *  Contains the static email address of an eBay member, used within the "reply to" email address when the eBay member sends a message. (Each eBay member is assigned a static alias. The alias is used within a static email address.)
-     *  <br>
-     *  <span class="tablenote"><b>Note: </b> This field will stop being returned on January 31, 2024.
-     *  </span>
-     *
-     * @return string
-     */
-    public function getStaticAlias()
-    {
-        return $this->staticAlias;
-    }
-
-    /**
-     * Sets a new staticAlias
-     *
-     * <br>
-     *  Contains the static email address of an eBay member, used within the "reply to" email address when the eBay member sends a message. (Each eBay member is assigned a static alias. The alias is used within a static email address.)
-     *  <br>
-     *  <span class="tablenote"><b>Note: </b> This field will stop being returned on January 31, 2024.
-     *  </span>
-     *
-     * @param string $staticAlias
-     * @return self
-     */
-    public function setStaticAlias($staticAlias)
-    {
-        $this->staticAlias = $staticAlias;
         return $this;
     }
 
@@ -2413,34 +2019,9 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BusinessRole", $value);
         }
-        $value = $this->getCharityAffiliations();
-        if (null !== $value && !empty($this->getCharityAffiliations())) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CharityAffiliations", array_map(function ($v) {return ["CharityID" => $v];}, $value));
-        }
-        $value = $this->getPayPalAccountLevel();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PayPalAccountLevel", $value);
-        }
-        $value = $this->getPayPalAccountType();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PayPalAccountType", $value);
-        }
-        $value = $this->getPayPalAccountStatus();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PayPalAccountStatus", $value);
-        }
         $value = $this->getUserSubscription();
         if (null !== $value && !empty($this->getUserSubscription())) {
             $writer->write(array_map(function ($v) {return ["UserSubscription" => $v];}, $value));
-        }
-        $value = $this->getSiteVerified();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SiteVerified", $value);
-        }
-        $value = $this->getSkypeID();
-        if (null !== $value && !empty($this->getSkypeID())) {
-            $writer->write(array_map(function ($v) {return ["SkypeID" => $v];}, $value));
         }
         $value = $this->getEBayWikiReadOnly();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;
@@ -2454,10 +2035,6 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         $value = $this->getVATID();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}VATID", $value);
-        }
-        $value = $this->getSellerPaymentMethod();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SellerPaymentMethod", $value);
         }
         $value = $this->getBiddingSummary();
         if (null !== $value) {
@@ -2477,18 +2054,10 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}EnterpriseSeller", $value);
         }
-        $value = $this->getBillingEmail();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BillingEmail", $value);
-        }
         $value = $this->getQualifiesForSelling();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}QualifiesForSelling", $value);
-        }
-        $value = $this->getStaticAlias();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}StaticAlias", $value);
         }
         $value = $this->getShippingAddress();
         if (null !== $value) {
@@ -2614,33 +2183,9 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         if (null !== $value) {
             $this->setBusinessRole($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CharityAffiliations', true);
-        if (null !== $value && !empty($value)) {
-            $this->setCharityAffiliations(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\CharityIDType::fromKeyValue($v);}, $value));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PayPalAccountLevel');
-        if (null !== $value) {
-            $this->setPayPalAccountLevel($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PayPalAccountType');
-        if (null !== $value) {
-            $this->setPayPalAccountType($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PayPalAccountStatus');
-        if (null !== $value) {
-            $this->setPayPalAccountStatus($value);
-        }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UserSubscription', true);
         if (null !== $value && !empty($value)) {
             $this->setUserSubscription($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SiteVerified');
-        if (null !== $value) {
-            $this->setSiteVerified($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SkypeID', true);
-        if (null !== $value && !empty($value)) {
-            $this->setSkypeID($value);
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}eBayWikiReadOnly');
         if (null !== $value) {
@@ -2653,10 +2198,6 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}VATID');
         if (null !== $value) {
             $this->setVATID($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerPaymentMethod');
-        if (null !== $value) {
-            $this->setSellerPaymentMethod($value);
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BiddingSummary');
         if (null !== $value) {
@@ -2674,17 +2215,9 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         if (null !== $value) {
             $this->setEnterpriseSeller($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BillingEmail');
-        if (null !== $value) {
-            $this->setBillingEmail($value);
-        }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}QualifiesForSelling');
         if (null !== $value) {
             $this->setQualifiesForSelling($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}StaticAlias');
-        if (null !== $value) {
-            $this->setStaticAlias($value);
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingAddress');
         if (null !== $value) {

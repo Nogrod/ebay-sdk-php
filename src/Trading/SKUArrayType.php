@@ -30,12 +30,7 @@ class SKUArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
      *  or RelistFixedPriceItem, the seller can also set
      *  Item.InventoryTrackingMethod to SKU. This allows the seller to use
      *  SKU instead of ItemID as a unique identifier in subsequent calls,
-     *  such as GetItem and ReviseInventoryStatus.<br>
-     *  <br>
-     *  <span class="tablenote"><b>Note:</b>
-     *  AddFixedPriceItem and RelistFixedPriceItem are defined in
-     *  the Merchant Data API (part of Large Merchant Services).
-     *  </span>
+     *  such as GetItem and ReviseInventoryStatus.
      *
      * @var string[] $sKU
      */
@@ -63,12 +58,7 @@ class SKUArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
      *  or RelistFixedPriceItem, the seller can also set
      *  Item.InventoryTrackingMethod to SKU. This allows the seller to use
      *  SKU instead of ItemID as a unique identifier in subsequent calls,
-     *  such as GetItem and ReviseInventoryStatus.<br>
-     *  <br>
-     *  <span class="tablenote"><b>Note:</b>
-     *  AddFixedPriceItem and RelistFixedPriceItem are defined in
-     *  the Merchant Data API (part of Large Merchant Services).
-     *  </span>
+     *  such as GetItem and ReviseInventoryStatus.
      *
      * @return self
      * @param string $sKU
@@ -99,12 +89,7 @@ class SKUArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
      *  or RelistFixedPriceItem, the seller can also set
      *  Item.InventoryTrackingMethod to SKU. This allows the seller to use
      *  SKU instead of ItemID as a unique identifier in subsequent calls,
-     *  such as GetItem and ReviseInventoryStatus.<br>
-     *  <br>
-     *  <span class="tablenote"><b>Note:</b>
-     *  AddFixedPriceItem and RelistFixedPriceItem are defined in
-     *  the Merchant Data API (part of Large Merchant Services).
-     *  </span>
+     *  such as GetItem and ReviseInventoryStatus.
      *
      * @param int|string $index
      * @return bool
@@ -134,12 +119,7 @@ class SKUArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
      *  or RelistFixedPriceItem, the seller can also set
      *  Item.InventoryTrackingMethod to SKU. This allows the seller to use
      *  SKU instead of ItemID as a unique identifier in subsequent calls,
-     *  such as GetItem and ReviseInventoryStatus.<br>
-     *  <br>
-     *  <span class="tablenote"><b>Note:</b>
-     *  AddFixedPriceItem and RelistFixedPriceItem are defined in
-     *  the Merchant Data API (part of Large Merchant Services).
-     *  </span>
+     *  such as GetItem and ReviseInventoryStatus.
      *
      * @param int|string $index
      * @return void
@@ -169,12 +149,7 @@ class SKUArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
      *  or RelistFixedPriceItem, the seller can also set
      *  Item.InventoryTrackingMethod to SKU. This allows the seller to use
      *  SKU instead of ItemID as a unique identifier in subsequent calls,
-     *  such as GetItem and ReviseInventoryStatus.<br>
-     *  <br>
-     *  <span class="tablenote"><b>Note:</b>
-     *  AddFixedPriceItem and RelistFixedPriceItem are defined in
-     *  the Merchant Data API (part of Large Merchant Services).
-     *  </span>
+     *  such as GetItem and ReviseInventoryStatus.
      *
      * @return string[]
      */
@@ -203,12 +178,7 @@ class SKUArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
      *  or RelistFixedPriceItem, the seller can also set
      *  Item.InventoryTrackingMethod to SKU. This allows the seller to use
      *  SKU instead of ItemID as a unique identifier in subsequent calls,
-     *  such as GetItem and ReviseInventoryStatus.<br>
-     *  <br>
-     *  <span class="tablenote"><b>Note:</b>
-     *  AddFixedPriceItem and RelistFixedPriceItem are defined in
-     *  the Merchant Data API (part of Large Merchant Services).
-     *  </span>
+     *  such as GetItem and ReviseInventoryStatus.
      *
      * @param string $sKU
      * @return self

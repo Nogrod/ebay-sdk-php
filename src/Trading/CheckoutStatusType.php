@@ -8,8 +8,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Class representing CheckoutStatusType
  *
  * Type defining the <b>CheckoutStatus</b> container that is returned in
- *  <b>GetOrders</b> and <b>GetOrderTransactions</b> to indicate
- *  the current checkout status of the order.
+ *  <b>GetOrders</b> to indicate the current checkout status of the order.
  * XSD Type: CheckoutStatusType
  */
 class CheckoutStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
@@ -59,13 +58,6 @@ class CheckoutStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      * @var bool $integratedMerchantCreditCardEnabled
      */
     private $integratedMerchantCreditCardEnabled = null;
-
-    /**
-     * This container is no longer used.
-     *
-     * @var \Nogrod\eBaySDK\Trading\EBayPaymentMismatchDetailsType $eBayPaymentMismatchDetails
-     */
-    private $eBayPaymentMismatchDetails = null;
 
     /**
      * The enumeration value in this field indicates which payment method was used by the German buyer who was offered the 'Pay Upon Invoice' option. This field will only be returned if a German buyer was offered the 'Pay Upon Invoice' option. Otherwise, the buyer's selected payment method is returned in the <b>PaymentMethod</b> field.
@@ -227,32 +219,6 @@ class CheckoutStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
     }
 
     /**
-     * Gets as eBayPaymentMismatchDetails
-     *
-     * This container is no longer used.
-     *
-     * @return \Nogrod\eBaySDK\Trading\EBayPaymentMismatchDetailsType
-     */
-    public function getEBayPaymentMismatchDetails()
-    {
-        return $this->eBayPaymentMismatchDetails;
-    }
-
-    /**
-     * Sets a new eBayPaymentMismatchDetails
-     *
-     * This container is no longer used.
-     *
-     * @param \Nogrod\eBaySDK\Trading\EBayPaymentMismatchDetailsType $eBayPaymentMismatchDetails
-     * @return self
-     */
-    public function setEBayPaymentMismatchDetails(\Nogrod\eBaySDK\Trading\EBayPaymentMismatchDetailsType $eBayPaymentMismatchDetails)
-    {
-        $this->eBayPaymentMismatchDetails = $eBayPaymentMismatchDetails;
-        return $this;
-    }
-
-    /**
      * Gets as paymentInstrument
      *
      * The enumeration value in this field indicates which payment method was used by the German buyer who was offered the 'Pay Upon Invoice' option. This field will only be returned if a German buyer was offered the 'Pay Upon Invoice' option. Otherwise, the buyer's selected payment method is returned in the <b>PaymentMethod</b> field.
@@ -302,10 +268,6 @@ class CheckoutStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}IntegratedMerchantCreditCardEnabled", $value);
         }
-        $value = $this->getEBayPaymentMismatchDetails();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}eBayPaymentMismatchDetails", $value);
-        }
         $value = $this->getPaymentInstrument();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PaymentInstrument", $value);
@@ -345,10 +307,6 @@ class CheckoutStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}IntegratedMerchantCreditCardEnabled');
         if (null !== $value) {
             $this->setIntegratedMerchantCreditCardEnabled($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}eBayPaymentMismatchDetails');
-        if (null !== $value) {
-            $this->setEBayPaymentMismatchDetails(\Nogrod\eBaySDK\Trading\EBayPaymentMismatchDetailsType::fromKeyValue($value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaymentInstrument');
         if (null !== $value) {

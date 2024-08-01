@@ -52,9 +52,9 @@ class SeverityCodeType
      *  </ul>
      *  <br/><br/>
      *  See the <a
-     * href="https://developer.ebay.com/DevZone/guides/features-guide/default.html#Basics/Call-UsingLiveData.html#CompatibleApplicationCheck">Compatible
-     * Application Check</a> section of the
-     *  eBay Features Guide for more information.
+     * href="https://developer.ebay.com/api-docs/user-guides/static/make-a-call/error-handling.html">Error
+     * handling</a> section of the
+     *  Making a Trading API call guide for more information.
      */
     public const VAL_ERROR = 'Error';
 

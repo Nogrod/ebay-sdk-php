@@ -10,7 +10,7 @@ namespace Nogrod\eBaySDK\Trading;
  *  over whether eBay returns warnings or errors in response to invalid data and how
  *  eBay handles listing requests when such data is passed in. For example, these
  *  preferences are applicable to <b>AddItem</b> and related calls when Item Specifics are
- *  specified, and to <b>CompleteSale</b>. See <a href="https://developer.ebay.com/devzone/guides/features-guide/default.html#Basics/Call-ErrorHandling.html">Error Handling</a>
+ *  specified, and to <b>CompleteSale</b>. See <a href="https://developer.ebay.com/api-docs/user-guides/static/make-a-call/error-handling.html">Error handling</a>
  *  for details about these preferences and their effects.
  * XSD Type: ErrorHandlingCodeType
  */

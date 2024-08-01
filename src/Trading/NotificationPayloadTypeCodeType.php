@@ -5,7 +5,12 @@ namespace Nogrod\eBaySDK\Trading;
 /**
  * Class representing NotificationPayloadTypeCodeType
  *
- * This type is deprecated.
+ * This enumeration type contains the payloads to use for delivering platform notifications.
+ *  <br>
+ *  <br>
+ *  <span class="tablenote"><strong>Note:</strong>
+ *  The notification payload type defaults to <code>eBLSchemaSOAP</code>, so the <strong>NotificationPayloadType</strong> field no longer has to be included in a <strong>SetNotificationPreferences</strong> call.
+ *  </span>
  * XSD Type: NotificationPayloadTypeCodeType
  */
 class NotificationPayloadTypeCodeType
@@ -13,7 +18,7 @@ class NotificationPayloadTypeCodeType
     /**
      * Constant for 'eBLSchemaSOAP' value.
      *
-     * New Schema format (used by the new schema XML API and SOAP API).
+     * The only schema format supported for both standard XML and SOAP API payloads.
      */
     public const VAL_E_BLSCHEMA_SOAP = 'eBLSchemaSOAP';
 
