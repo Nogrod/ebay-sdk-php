@@ -363,8 +363,7 @@ class NotificationEventTypeCodeType
     /**
      * Constant for 'UserIDChanged' value.
      *
-     * This notification is sent to a subscribed buyer or seller when that user has
-     * modified their eBay user ID.
+     * This notification is no longer applicable.
      */
     public const VAL_USER_IDCHANGED = 'UserIDChanged';
 

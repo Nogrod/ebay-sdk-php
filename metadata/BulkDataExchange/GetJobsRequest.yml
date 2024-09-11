@@ -1,3 +1,0 @@
-Nogrod\eBaySDK\BulkDataExchange\GetJobsRequest:
-    xml_root_name: getJobsRequest
-    xml_root_namespace: 'http://www.ebay.com/marketplace/services'

@@ -1,7 +1,0 @@
-Nogrod\eBaySDK\BulkDataExchange\SuspendRecurringJobResponseType:
-    virtual_properties:
-        ns_prop:
-            exp: '"http://www.ebay.com/marketplace/services"'
-            serialized_name: xmlns
-            xml_attribute: true
-    properties: {  }

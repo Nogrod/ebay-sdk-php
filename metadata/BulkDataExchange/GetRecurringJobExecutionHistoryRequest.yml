@@ -1,3 +1,0 @@
-Nogrod\eBaySDK\BulkDataExchange\GetRecurringJobExecutionHistoryRequest:
-    xml_root_name: getRecurringJobExecutionHistoryRequest
-    xml_root_namespace: 'http://www.ebay.com/marketplace/services'

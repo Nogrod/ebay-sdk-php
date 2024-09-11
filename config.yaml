@@ -7,9 +7,6 @@ Shopping:
 Trading:
   url: https://developer.ebay.com/webservices/latest/ebaysvc.wsdl
   xsd: https://developer.ebay.com/webservices/latest/ebaysvc.xsd
-MerchantData:
-  url: ~
-  xsd: https://developer.ebay.com/webservices/1255/merchantdataservice.xsd
 BusinessPoliciesManagement:
   url: https://developer.ebay.com/webservices/business-policies/latest/SellerProfilesManagementService.wsdl
   xsd: ~

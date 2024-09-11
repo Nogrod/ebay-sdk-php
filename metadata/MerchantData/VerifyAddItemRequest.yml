@@ -1,3 +1,0 @@
-Nogrod\eBaySDK\MerchantData\VerifyAddItemRequest:
-    xml_root_name: VerifyAddItemRequest
-    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

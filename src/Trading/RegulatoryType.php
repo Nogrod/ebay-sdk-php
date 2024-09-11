@@ -22,7 +22,7 @@ class RegulatoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
     private $energyEfficiencyLabel = null;
 
     /**
-     * <span class="tablenote"><b>Note: </b> Economic Operator is being decommissioned and being replaced by the <b>Manufacturer</b> and <b>ResponsiblePersons</b> containers. Economic Operator related fields should no longer be used for the Add/Revise/Relist and VerifyItem family of calls. As it is currently still supported, Economic Operator-related fields will be returned if applicable for the GetItem call.
+     * <span class="tablenote"><b>Note: </b> Economic Operator and its associated fields have been deprecated for the Add/Revise/Relist/Verify and GetItem family of calls and will be decommissioned on October 21, 2024. It has been replaced by the <b>Manufacturer</b> and <b>ResponsiblePersons</b> containers. Economic Operator related fields should no longer be used for the Add/Revise/Relist and VerifyItem family of calls. As it is currently still supported, Economic Operator-related fields will be returned if applicable for the GetItem call.
      *  </span>
      *  This container provides Economic Operator (EO) information about the manufacturer and/or supplier of the item. The EO is a corporate entity that is related to, has some responsibility for, the product being listed for sale. For additional information, see <a href = "https://www.ebay.com/help/selling/selling/CE-mark-EU?id=5225#operator" target="_blank">What is an economic operator?</a>.
      *
@@ -123,7 +123,7 @@ class RegulatoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
     /**
      * Gets as economicOperator
      *
-     * <span class="tablenote"><b>Note: </b> Economic Operator is being decommissioned and being replaced by the <b>Manufacturer</b> and <b>ResponsiblePersons</b> containers. Economic Operator related fields should no longer be used for the Add/Revise/Relist and VerifyItem family of calls. As it is currently still supported, Economic Operator-related fields will be returned if applicable for the GetItem call.
+     * <span class="tablenote"><b>Note: </b> Economic Operator and its associated fields have been deprecated for the Add/Revise/Relist/Verify and GetItem family of calls and will be decommissioned on October 21, 2024. It has been replaced by the <b>Manufacturer</b> and <b>ResponsiblePersons</b> containers. Economic Operator related fields should no longer be used for the Add/Revise/Relist and VerifyItem family of calls. As it is currently still supported, Economic Operator-related fields will be returned if applicable for the GetItem call.
      *  </span>
      *  This container provides Economic Operator (EO) information about the manufacturer and/or supplier of the item. The EO is a corporate entity that is related to, has some responsibility for, the product being listed for sale. For additional information, see <a href = "https://www.ebay.com/help/selling/selling/CE-mark-EU?id=5225#operator" target="_blank">What is an economic operator?</a>.
      *
@@ -137,7 +137,7 @@ class RegulatoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
     /**
      * Sets a new economicOperator
      *
-     * <span class="tablenote"><b>Note: </b> Economic Operator is being decommissioned and being replaced by the <b>Manufacturer</b> and <b>ResponsiblePersons</b> containers. Economic Operator related fields should no longer be used for the Add/Revise/Relist and VerifyItem family of calls. As it is currently still supported, Economic Operator-related fields will be returned if applicable for the GetItem call.
+     * <span class="tablenote"><b>Note: </b> Economic Operator and its associated fields have been deprecated for the Add/Revise/Relist/Verify and GetItem family of calls and will be decommissioned on October 21, 2024. It has been replaced by the <b>Manufacturer</b> and <b>ResponsiblePersons</b> containers. Economic Operator related fields should no longer be used for the Add/Revise/Relist and VerifyItem family of calls. As it is currently still supported, Economic Operator-related fields will be returned if applicable for the GetItem call.
      *  </span>
      *  This container provides Economic Operator (EO) information about the manufacturer and/or supplier of the item. The EO is a corporate entity that is related to, has some responsibility for, the product being listed for sale. For additional information, see <a href = "https://www.ebay.com/help/selling/selling/CE-mark-EU?id=5225#operator" target="_blank">What is an economic operator?</a>.
      *

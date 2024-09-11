@@ -66,6 +66,10 @@ class ShipPackageDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      *  standard dimensions for the defined package type. eBay enforces a dimensions
      *  requirement on listings so that buyers receive accurate calculated shipping
      *  costs.
+     *  <br>
+     *  <span class="tablenote"><b>Note:</b>
+     *  The <b>unit</b> and <b>measurementSystem</b> attributes associated with this field will be returned by the <b>GetItem</b> call and are automatically derived based on the <b>MeasurementUnit</b> value specified during listing creation or revision. These attributes will be ignored if passed into the request of the AddItem family of calls.
+     *  </span>
      *
      * @var \Nogrod\eBaySDK\Trading\MeasureType $packageDepth
      */
@@ -79,6 +83,10 @@ class ShipPackageDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      *  For calculated shipping only. Only returned if the seller
      *  specified the value for the item. (In many cases, the seller
      *  only specifies the weight fields.)
+     *  <br>
+     *  <span class="tablenote"><b>Note:</b>
+     *  The <b>unit</b> and <b>measurementSystem</b> attributes associated with this field will be returned by the <b>GetItem</b> call and are automatically derived based on the <b>MeasurementUnit</b> value specified during listing creation or revision. These attributes will be ignored if passed into the request of the AddItem family of calls.
+     *  </span>
      *
      * @var \Nogrod\eBaySDK\Trading\MeasureType $packageLength
      */
@@ -92,6 +100,10 @@ class ShipPackageDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      *  For calculated shipping only. Only returned if the seller
      *  specified the value for the item. (In many cases, the seller
      *  only specifies the weight fields.)
+     *  <br>
+     *  <span class="tablenote"><b>Note:</b>
+     *  The <b>unit</b> and <b>measurementSystem</b> attributes associated with this field will be returned by the <b>GetItem</b> call and are automatically derived based on the <b>MeasurementUnit</b> value specified during listing creation or revision. These attributes will be ignored if passed into the request of the AddItem family of calls.
+     *  </span>
      *
      * @var \Nogrod\eBaySDK\Trading\MeasureType $packageWidth
      */
@@ -149,6 +161,10 @@ class ShipPackageDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      *  In all cases, both the <b>WeightMajor</b> and <b>WeightMinor</b> should be specified in an Add/Revise/Relist/Verify call, even if either's value is '0'.
      *  <br><br>
      *  The <b>WeightMajor</b> and <b>WeightMinor</b> are applicable for calculated shipping or for flat-rate shipping if shipping rate tables are specified and the shipping rate table uses weight surcharges.
+     *  <br>
+     *  <span class="tablenote"><b>Note:</b>
+     *  The <b>unit</b> and <b>measurementSystem</b> attributes associated with this field will be returned by the <b>GetItem</b> call and are automatically derived based on the <b>MeasurementUnit</b> value specified during listing creation or revision. These attributes will be ignored if passed into the request of the AddItem family of calls.
+     *  </span>
      *
      * @var \Nogrod\eBaySDK\Trading\MeasureType $weightMajor
      */
@@ -188,7 +204,10 @@ class ShipPackageDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      *  In all cases, both the <b>WeightMajor</b> and <b>WeightMinor</b> should be specified in an Add/Revise/Relist/Verify call, even if either's value is '0'.
      *  <br><br>
      *  The <b>WeightMajor</b> and <b>WeightMinor</b> are applicable for calculated shipping or for flat-rate shipping if shipping rate tables are specified and the shipping rate table uses weight surcharges.
-     *  <br/><br/>
+     *  <br>
+     *  <span class="tablenote"><b>Note:</b>
+     *  The <b>unit</b> and <b>measurementSystem</b> attributes associated with this field will be returned by the <b>GetItem</b> call and are automatically derived based on the <b>MeasurementUnit</b> value specified during listing creation or revision. These attributes will be ignored if passed into the request of the AddItem family of calls.
+     *  </span>
      *
      * @var \Nogrod\eBaySDK\Trading\MeasureType $weightMinor
      */
@@ -281,6 +300,10 @@ class ShipPackageDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      *  standard dimensions for the defined package type. eBay enforces a dimensions
      *  requirement on listings so that buyers receive accurate calculated shipping
      *  costs.
+     *  <br>
+     *  <span class="tablenote"><b>Note:</b>
+     *  The <b>unit</b> and <b>measurementSystem</b> attributes associated with this field will be returned by the <b>GetItem</b> call and are automatically derived based on the <b>MeasurementUnit</b> value specified during listing creation or revision. These attributes will be ignored if passed into the request of the AddItem family of calls.
+     *  </span>
      *
      * @return \Nogrod\eBaySDK\Trading\MeasureType
      */
@@ -308,6 +331,10 @@ class ShipPackageDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      *  standard dimensions for the defined package type. eBay enforces a dimensions
      *  requirement on listings so that buyers receive accurate calculated shipping
      *  costs.
+     *  <br>
+     *  <span class="tablenote"><b>Note:</b>
+     *  The <b>unit</b> and <b>measurementSystem</b> attributes associated with this field will be returned by the <b>GetItem</b> call and are automatically derived based on the <b>MeasurementUnit</b> value specified during listing creation or revision. These attributes will be ignored if passed into the request of the AddItem family of calls.
+     *  </span>
      *
      * @param \Nogrod\eBaySDK\Trading\MeasureType $packageDepth
      * @return self
@@ -328,6 +355,10 @@ class ShipPackageDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      *  For calculated shipping only. Only returned if the seller
      *  specified the value for the item. (In many cases, the seller
      *  only specifies the weight fields.)
+     *  <br>
+     *  <span class="tablenote"><b>Note:</b>
+     *  The <b>unit</b> and <b>measurementSystem</b> attributes associated with this field will be returned by the <b>GetItem</b> call and are automatically derived based on the <b>MeasurementUnit</b> value specified during listing creation or revision. These attributes will be ignored if passed into the request of the AddItem family of calls.
+     *  </span>
      *
      * @return \Nogrod\eBaySDK\Trading\MeasureType
      */
@@ -346,6 +377,10 @@ class ShipPackageDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      *  For calculated shipping only. Only returned if the seller
      *  specified the value for the item. (In many cases, the seller
      *  only specifies the weight fields.)
+     *  <br>
+     *  <span class="tablenote"><b>Note:</b>
+     *  The <b>unit</b> and <b>measurementSystem</b> attributes associated with this field will be returned by the <b>GetItem</b> call and are automatically derived based on the <b>MeasurementUnit</b> value specified during listing creation or revision. These attributes will be ignored if passed into the request of the AddItem family of calls.
+     *  </span>
      *
      * @param \Nogrod\eBaySDK\Trading\MeasureType $packageLength
      * @return self
@@ -366,6 +401,10 @@ class ShipPackageDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      *  For calculated shipping only. Only returned if the seller
      *  specified the value for the item. (In many cases, the seller
      *  only specifies the weight fields.)
+     *  <br>
+     *  <span class="tablenote"><b>Note:</b>
+     *  The <b>unit</b> and <b>measurementSystem</b> attributes associated with this field will be returned by the <b>GetItem</b> call and are automatically derived based on the <b>MeasurementUnit</b> value specified during listing creation or revision. These attributes will be ignored if passed into the request of the AddItem family of calls.
+     *  </span>
      *
      * @return \Nogrod\eBaySDK\Trading\MeasureType
      */
@@ -384,6 +423,10 @@ class ShipPackageDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      *  For calculated shipping only. Only returned if the seller
      *  specified the value for the item. (In many cases, the seller
      *  only specifies the weight fields.)
+     *  <br>
+     *  <span class="tablenote"><b>Note:</b>
+     *  The <b>unit</b> and <b>measurementSystem</b> attributes associated with this field will be returned by the <b>GetItem</b> call and are automatically derived based on the <b>MeasurementUnit</b> value specified during listing creation or revision. These attributes will be ignored if passed into the request of the AddItem family of calls.
+     *  </span>
      *
      * @param \Nogrod\eBaySDK\Trading\MeasureType $packageWidth
      * @return self
@@ -490,6 +533,10 @@ class ShipPackageDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      *  In all cases, both the <b>WeightMajor</b> and <b>WeightMinor</b> should be specified in an Add/Revise/Relist/Verify call, even if either's value is '0'.
      *  <br><br>
      *  The <b>WeightMajor</b> and <b>WeightMinor</b> are applicable for calculated shipping or for flat-rate shipping if shipping rate tables are specified and the shipping rate table uses weight surcharges.
+     *  <br>
+     *  <span class="tablenote"><b>Note:</b>
+     *  The <b>unit</b> and <b>measurementSystem</b> attributes associated with this field will be returned by the <b>GetItem</b> call and are automatically derived based on the <b>MeasurementUnit</b> value specified during listing creation or revision. These attributes will be ignored if passed into the request of the AddItem family of calls.
+     *  </span>
      *
      * @return \Nogrod\eBaySDK\Trading\MeasureType
      */
@@ -534,6 +581,10 @@ class ShipPackageDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      *  In all cases, both the <b>WeightMajor</b> and <b>WeightMinor</b> should be specified in an Add/Revise/Relist/Verify call, even if either's value is '0'.
      *  <br><br>
      *  The <b>WeightMajor</b> and <b>WeightMinor</b> are applicable for calculated shipping or for flat-rate shipping if shipping rate tables are specified and the shipping rate table uses weight surcharges.
+     *  <br>
+     *  <span class="tablenote"><b>Note:</b>
+     *  The <b>unit</b> and <b>measurementSystem</b> attributes associated with this field will be returned by the <b>GetItem</b> call and are automatically derived based on the <b>MeasurementUnit</b> value specified during listing creation or revision. These attributes will be ignored if passed into the request of the AddItem family of calls.
+     *  </span>
      *
      * @param \Nogrod\eBaySDK\Trading\MeasureType $weightMajor
      * @return self
@@ -580,7 +631,10 @@ class ShipPackageDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      *  In all cases, both the <b>WeightMajor</b> and <b>WeightMinor</b> should be specified in an Add/Revise/Relist/Verify call, even if either's value is '0'.
      *  <br><br>
      *  The <b>WeightMajor</b> and <b>WeightMinor</b> are applicable for calculated shipping or for flat-rate shipping if shipping rate tables are specified and the shipping rate table uses weight surcharges.
-     *  <br/><br/>
+     *  <br>
+     *  <span class="tablenote"><b>Note:</b>
+     *  The <b>unit</b> and <b>measurementSystem</b> attributes associated with this field will be returned by the <b>GetItem</b> call and are automatically derived based on the <b>MeasurementUnit</b> value specified during listing creation or revision. These attributes will be ignored if passed into the request of the AddItem family of calls.
+     *  </span>
      *
      * @return \Nogrod\eBaySDK\Trading\MeasureType
      */
@@ -625,7 +679,10 @@ class ShipPackageDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      *  In all cases, both the <b>WeightMajor</b> and <b>WeightMinor</b> should be specified in an Add/Revise/Relist/Verify call, even if either's value is '0'.
      *  <br><br>
      *  The <b>WeightMajor</b> and <b>WeightMinor</b> are applicable for calculated shipping or for flat-rate shipping if shipping rate tables are specified and the shipping rate table uses weight surcharges.
-     *  <br/><br/>
+     *  <br>
+     *  <span class="tablenote"><b>Note:</b>
+     *  The <b>unit</b> and <b>measurementSystem</b> attributes associated with this field will be returned by the <b>GetItem</b> call and are automatically derived based on the <b>MeasurementUnit</b> value specified during listing creation or revision. These attributes will be ignored if passed into the request of the AddItem family of calls.
+     *  </span>
      *
      * @param \Nogrod\eBaySDK\Trading\MeasureType $weightMinor
      * @return self

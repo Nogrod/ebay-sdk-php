@@ -1,3 +1,0 @@
-Nogrod\eBaySDK\MerchantData\OrderReport:
-    xml_root_name: OrderReport
-    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

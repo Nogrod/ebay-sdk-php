@@ -70,7 +70,7 @@ class ManufacturerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     private $country = null;
 
     /**
-     * The product manufacture's business phone number.
+     * The product manufacturer's business phone number.
      *  <br />
      *
      * @var string $phone
@@ -78,7 +78,7 @@ class ManufacturerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     private $phone = null;
 
     /**
-     * The product manufacture's business email address.
+     * The product manufacturer's business email address.
      *  <br />
      *
      * @var string $email
@@ -282,7 +282,7 @@ class ManufacturerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Gets as phone
      *
-     * The product manufacture's business phone number.
+     * The product manufacturer's business phone number.
      *  <br />
      *
      * @return string
@@ -295,7 +295,7 @@ class ManufacturerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Sets a new phone
      *
-     * The product manufacture's business phone number.
+     * The product manufacturer's business phone number.
      *  <br />
      *
      * @param string $phone
@@ -310,7 +310,7 @@ class ManufacturerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Gets as email
      *
-     * The product manufacture's business email address.
+     * The product manufacturer's business email address.
      *  <br />
      *
      * @return string
@@ -323,7 +323,7 @@ class ManufacturerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Sets a new email
      *
-     * The product manufacture's business email address.
+     * The product manufacturer's business email address.
      *  <br />
      *
      * @param string $email

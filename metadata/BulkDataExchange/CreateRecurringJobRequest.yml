@@ -1,3 +1,0 @@
-Nogrod\eBaySDK\BulkDataExchange\CreateRecurringJobRequest:
-    xml_root_name: createRecurringJobRequest
-    xml_root_namespace: 'http://www.ebay.com/marketplace/services'

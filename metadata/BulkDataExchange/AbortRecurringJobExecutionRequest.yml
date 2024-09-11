@@ -1,3 +1,0 @@
-Nogrod\eBaySDK\BulkDataExchange\AbortRecurringJobExecutionRequest:
-    xml_root_name: abortRecurringJobExecutionRequest
-    xml_root_namespace: 'http://www.ebay.com/marketplace/services'

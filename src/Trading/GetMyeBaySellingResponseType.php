@@ -64,28 +64,6 @@ class GetMyeBaySellingResponseType extends AbstractResponseType
     private $summary = null;
 
     /**
-     * <span class="tablenote"><b>Note: </b> This container is deprecated and will stop being returned starting August 19, 2024.
-     *  </span>
-     *  This container consists of listings that have had sales but have been deleted from My eBay. This container will be returned if the eBay user has one or more listings with sales that have been deleted from My eBay.
-     *  <br><br>
-     *  This container will not be returned in the response (even if there are one or more listings that have sales but have been deleted) if the <b>DetailLevel</b> value is set to <code>ReturnSummary</code> and the <b>DeletedFromSoldList.Include</b> field is omitted or set to <code>false</code>.
-     *
-     * @var \Nogrod\eBaySDK\Trading\PaginatedOrderTransactionArrayType $deletedFromSoldList
-     */
-    private $deletedFromSoldList = null;
-
-    /**
-     * <span class="tablenote"><b>Note: </b> This container is deprecated and will stop being returned starting August 19, 2024.
-     *  </span>
-     *  This container consists of listings that have ended without sales and have been deleted from My eBay. This container will be returned if the eBay user has one or more listings with sales that have been deleted from My eBay.
-     *  <br><br>
-     *  This container will not be returned in the response (even if there are one or more listings that have sales but have been deleted) if the <b>DetailLevel</b> value is set to <code>ReturnSummary</code> and the <b>DeletedFromSoldList.Include</b> field is omitted or set to <code>false</code>.
-     *
-     * @var \Nogrod\eBaySDK\Trading\PaginatedItemArrayType $deletedFromUnsoldList
-     */
-    private $deletedFromUnsoldList = null;
-
-    /**
      * Gets as sellingSummary
      *
      * This container consists of seller activity counts and values. For this container to be returned, the user must include the <b>SellingSummary.Include</b> field in the request and set its value to <code>true</code>.
@@ -257,74 +235,6 @@ class GetMyeBaySellingResponseType extends AbstractResponseType
         return $this;
     }
 
-    /**
-     * Gets as deletedFromSoldList
-     *
-     * <span class="tablenote"><b>Note: </b> This container is deprecated and will stop being returned starting August 19, 2024.
-     *  </span>
-     *  This container consists of listings that have had sales but have been deleted from My eBay. This container will be returned if the eBay user has one or more listings with sales that have been deleted from My eBay.
-     *  <br><br>
-     *  This container will not be returned in the response (even if there are one or more listings that have sales but have been deleted) if the <b>DetailLevel</b> value is set to <code>ReturnSummary</code> and the <b>DeletedFromSoldList.Include</b> field is omitted or set to <code>false</code>.
-     *
-     * @return \Nogrod\eBaySDK\Trading\PaginatedOrderTransactionArrayType
-     */
-    public function getDeletedFromSoldList()
-    {
-        return $this->deletedFromSoldList;
-    }
-
-    /**
-     * Sets a new deletedFromSoldList
-     *
-     * <span class="tablenote"><b>Note: </b> This container is deprecated and will stop being returned starting August 19, 2024.
-     *  </span>
-     *  This container consists of listings that have had sales but have been deleted from My eBay. This container will be returned if the eBay user has one or more listings with sales that have been deleted from My eBay.
-     *  <br><br>
-     *  This container will not be returned in the response (even if there are one or more listings that have sales but have been deleted) if the <b>DetailLevel</b> value is set to <code>ReturnSummary</code> and the <b>DeletedFromSoldList.Include</b> field is omitted or set to <code>false</code>.
-     *
-     * @param \Nogrod\eBaySDK\Trading\PaginatedOrderTransactionArrayType $deletedFromSoldList
-     * @return self
-     */
-    public function setDeletedFromSoldList(\Nogrod\eBaySDK\Trading\PaginatedOrderTransactionArrayType $deletedFromSoldList)
-    {
-        $this->deletedFromSoldList = $deletedFromSoldList;
-        return $this;
-    }
-
-    /**
-     * Gets as deletedFromUnsoldList
-     *
-     * <span class="tablenote"><b>Note: </b> This container is deprecated and will stop being returned starting August 19, 2024.
-     *  </span>
-     *  This container consists of listings that have ended without sales and have been deleted from My eBay. This container will be returned if the eBay user has one or more listings with sales that have been deleted from My eBay.
-     *  <br><br>
-     *  This container will not be returned in the response (even if there are one or more listings that have sales but have been deleted) if the <b>DetailLevel</b> value is set to <code>ReturnSummary</code> and the <b>DeletedFromSoldList.Include</b> field is omitted or set to <code>false</code>.
-     *
-     * @return \Nogrod\eBaySDK\Trading\PaginatedItemArrayType
-     */
-    public function getDeletedFromUnsoldList()
-    {
-        return $this->deletedFromUnsoldList;
-    }
-
-    /**
-     * Sets a new deletedFromUnsoldList
-     *
-     * <span class="tablenote"><b>Note: </b> This container is deprecated and will stop being returned starting August 19, 2024.
-     *  </span>
-     *  This container consists of listings that have ended without sales and have been deleted from My eBay. This container will be returned if the eBay user has one or more listings with sales that have been deleted from My eBay.
-     *  <br><br>
-     *  This container will not be returned in the response (even if there are one or more listings that have sales but have been deleted) if the <b>DetailLevel</b> value is set to <code>ReturnSummary</code> and the <b>DeletedFromSoldList.Include</b> field is omitted or set to <code>false</code>.
-     *
-     * @param \Nogrod\eBaySDK\Trading\PaginatedItemArrayType $deletedFromUnsoldList
-     * @return self
-     */
-    public function setDeletedFromUnsoldList(\Nogrod\eBaySDK\Trading\PaginatedItemArrayType $deletedFromUnsoldList)
-    {
-        $this->deletedFromUnsoldList = $deletedFromUnsoldList;
-        return $this;
-    }
-
     public function xmlSerialize(\Sabre\Xml\Writer $writer): void
     {
         parent::xmlSerialize($writer);
@@ -351,14 +261,6 @@ class GetMyeBaySellingResponseType extends AbstractResponseType
         $value = $this->getSummary();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Summary", $value);
-        }
-        $value = $this->getDeletedFromSoldList();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DeletedFromSoldList", $value);
-        }
-        $value = $this->getDeletedFromUnsoldList();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DeletedFromUnsoldList", $value);
         }
     }
 
@@ -400,14 +302,6 @@ class GetMyeBaySellingResponseType extends AbstractResponseType
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Summary');
         if (null !== $value) {
             $this->setSummary(\Nogrod\eBaySDK\Trading\MyeBaySellingSummaryType::fromKeyValue($value));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DeletedFromSoldList');
-        if (null !== $value) {
-            $this->setDeletedFromSoldList(\Nogrod\eBaySDK\Trading\PaginatedOrderTransactionArrayType::fromKeyValue($value));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DeletedFromUnsoldList');
-        if (null !== $value) {
-            $this->setDeletedFromUnsoldList(\Nogrod\eBaySDK\Trading\PaginatedItemArrayType::fromKeyValue($value));
         }
     }
 }

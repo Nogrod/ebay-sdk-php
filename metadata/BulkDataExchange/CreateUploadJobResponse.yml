@@ -1,3 +1,0 @@
-Nogrod\eBaySDK\BulkDataExchange\CreateUploadJobResponse:
-    xml_root_name: createUploadJobResponse
-    xml_root_namespace: 'http://www.ebay.com/marketplace/services'

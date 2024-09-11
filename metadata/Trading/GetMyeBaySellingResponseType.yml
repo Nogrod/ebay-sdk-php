@@ -71,25 +71,3 @@ Nogrod\eBaySDK\Trading\GetMyeBaySellingResponseType:
                 getter: getSummary
                 setter: setSummary
             type: Nogrod\eBaySDK\Trading\MyeBaySellingSummaryType
-        deletedFromSoldList:
-            expose: true
-            access_type: public_method
-            serialized_name: DeletedFromSoldList
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getDeletedFromSoldList
-                setter: setDeletedFromSoldList
-            type: Nogrod\eBaySDK\Trading\PaginatedOrderTransactionArrayType
-        deletedFromUnsoldList:
-            expose: true
-            access_type: public_method
-            serialized_name: DeletedFromUnsoldList
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getDeletedFromUnsoldList
-                setter: setDeletedFromUnsoldList
-            type: Nogrod\eBaySDK\Trading\PaginatedItemArrayType

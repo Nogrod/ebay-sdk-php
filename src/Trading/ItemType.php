@@ -92,7 +92,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     private $charity = null;
 
     /**
-     * This two-digit enumeration value indicates the country of the seller's registration address. <b>CountryCodeType</b> defines the supported values. The <a href="https://developer.ebay.com/DevZone/XML/docs/Reference/eBay/GeteBayDetails.html">GeteBayDetails</a> call can also be used (include the <b>DetailName</b> field and set its value to <b>CountryDetails</b>) to see the full list of supported country codes.
+     * This two-digit enumeration value indicates the country where the item is located. <b>CountryCodeType</b> defines the supported values. The <a href="https://developer.ebay.com/DevZone/XML/docs/Reference/eBay/GeteBayDetails.html">GeteBayDetails</a> call can also be used (include the <b>DetailName</b> field and set its value to <b>CountryDetails</b>) to see the full list of supported country codes.
      *  <br><br>
      *  In an Add/Revise/Relist/Verify call, this field is required.
      *
@@ -1593,6 +1593,9 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
 
     /**
      * Container consisting of dimension and size details related to a shipping package in which an item will be sent. The information in this container is applicable if the seller is using calculated shipping or flat rate shipping using shipping rate tables with weight surcharges. This container is only returned in the <b>Get</b> calls if specified for the item.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> Package weight and dimensions are only supported for the following marketplaces: AU, CA, DE, IT, UK, US, and Motors. If this information is provided on other marketplaces, it will be ignored.
+     *  </span>
      *
      * @var \Nogrod\eBaySDK\Trading\ShipPackageDetailsType $shippingPackageDetails
      */
@@ -2028,7 +2031,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Gets as country
      *
-     * This two-digit enumeration value indicates the country of the seller's registration address. <b>CountryCodeType</b> defines the supported values. The <a href="https://developer.ebay.com/DevZone/XML/docs/Reference/eBay/GeteBayDetails.html">GeteBayDetails</a> call can also be used (include the <b>DetailName</b> field and set its value to <b>CountryDetails</b>) to see the full list of supported country codes.
+     * This two-digit enumeration value indicates the country where the item is located. <b>CountryCodeType</b> defines the supported values. The <a href="https://developer.ebay.com/DevZone/XML/docs/Reference/eBay/GeteBayDetails.html">GeteBayDetails</a> call can also be used (include the <b>DetailName</b> field and set its value to <b>CountryDetails</b>) to see the full list of supported country codes.
      *  <br><br>
      *  In an Add/Revise/Relist/Verify call, this field is required.
      *
@@ -2042,7 +2045,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Sets a new country
      *
-     * This two-digit enumeration value indicates the country of the seller's registration address. <b>CountryCodeType</b> defines the supported values. The <a href="https://developer.ebay.com/DevZone/XML/docs/Reference/eBay/GeteBayDetails.html">GeteBayDetails</a> call can also be used (include the <b>DetailName</b> field and set its value to <b>CountryDetails</b>) to see the full list of supported country codes.
+     * This two-digit enumeration value indicates the country where the item is located. <b>CountryCodeType</b> defines the supported values. The <a href="https://developer.ebay.com/DevZone/XML/docs/Reference/eBay/GeteBayDetails.html">GeteBayDetails</a> call can also be used (include the <b>DetailName</b> field and set its value to <b>CountryDetails</b>) to see the full list of supported country codes.
      *  <br><br>
      *  In an Add/Revise/Relist/Verify call, this field is required.
      *
@@ -6842,6 +6845,9 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      * Gets as shippingPackageDetails
      *
      * Container consisting of dimension and size details related to a shipping package in which an item will be sent. The information in this container is applicable if the seller is using calculated shipping or flat rate shipping using shipping rate tables with weight surcharges. This container is only returned in the <b>Get</b> calls if specified for the item.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> Package weight and dimensions are only supported for the following marketplaces: AU, CA, DE, IT, UK, US, and Motors. If this information is provided on other marketplaces, it will be ignored.
+     *  </span>
      *
      * @return \Nogrod\eBaySDK\Trading\ShipPackageDetailsType
      */
@@ -6854,6 +6860,9 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      * Sets a new shippingPackageDetails
      *
      * Container consisting of dimension and size details related to a shipping package in which an item will be sent. The information in this container is applicable if the seller is using calculated shipping or flat rate shipping using shipping rate tables with weight surcharges. This container is only returned in the <b>Get</b> calls if specified for the item.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b> Package weight and dimensions are only supported for the following marketplaces: AU, CA, DE, IT, UK, US, and Motors. If this information is provided on other marketplaces, it will be ignored.
+     *  </span>
      *
      * @param \Nogrod\eBaySDK\Trading\ShipPackageDetailsType $shippingPackageDetails
      * @return self

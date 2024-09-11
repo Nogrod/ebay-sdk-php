@@ -1,7 +1,0 @@
-Nogrod\eBaySDK\MerchantData\LocalListingDistancesNonSubscriptionDefinitionType:
-    virtual_properties:
-        ns_prop:
-            exp: '"urn:ebay:apis:eBLBaseComponents"'
-            serialized_name: xmlns
-            xml_attribute: true
-    properties: {  }
