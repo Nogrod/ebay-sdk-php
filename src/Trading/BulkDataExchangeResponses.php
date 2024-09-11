@@ -1,6 +1,6 @@
 <?php
 
-namespace Nogrod\eBaySDK\MerchantData;
+namespace Nogrod\eBaySDK\Trading;
 
 /**
  * Class representing BulkDataExchangeResponses

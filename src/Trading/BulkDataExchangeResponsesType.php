@@ -1,6 +1,6 @@
 <?php
 
-namespace Nogrod\eBaySDK\MerchantData;
+namespace Nogrod\eBaySDK\Trading;
 
 use Nogrod\XMLClientRuntime\Func;
 
@@ -13,106 +13,106 @@ use Nogrod\XMLClientRuntime\Func;
 class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
     /**
-     * @var \Nogrod\eBaySDK\MerchantData\ActiveInventoryReportResponseType $activeInventoryReport
+     * @var \Nogrod\eBaySDK\Trading\ActiveInventoryReportResponseType $activeInventoryReport
      */
     private $activeInventoryReport = null;
 
     /**
-     * @var \Nogrod\eBaySDK\MerchantData\AddFixedPriceItemResponseType[] $addFixedPriceItemResponse
+     * @var \Nogrod\eBaySDK\Trading\AddFixedPriceItemResponseType[] $addFixedPriceItemResponse
      */
     private $addFixedPriceItemResponse = [
 
     ];
 
     /**
-     * @var \Nogrod\eBaySDK\MerchantData\AddItemResponseType[] $addItemResponse
+     * @var \Nogrod\eBaySDK\Trading\AddItemResponseType[] $addItemResponse
      */
     private $addItemResponse = [
 
     ];
 
     /**
-     * @var \Nogrod\eBaySDK\MerchantData\EndFixedPriceItemResponseType[] $endFixedPriceItemResponse
+     * @var \Nogrod\eBaySDK\Trading\EndFixedPriceItemResponseType[] $endFixedPriceItemResponse
      */
     private $endFixedPriceItemResponse = [
 
     ];
 
     /**
-     * @var \Nogrod\eBaySDK\MerchantData\EndItemResponseType[] $endItemResponse
+     * @var \Nogrod\eBaySDK\Trading\EndItemResponseType[] $endItemResponse
      */
     private $endItemResponse = [
 
     ];
 
     /**
-     * @var \Nogrod\eBaySDK\MerchantData\FeeSettlementReportResponseType $feeSettlementReport
+     * @var \Nogrod\eBaySDK\Trading\FeeSettlementReportResponseType $feeSettlementReport
      */
     private $feeSettlementReport = null;
 
     /**
-     * @var \Nogrod\eBaySDK\MerchantData\OrderAckResponseType[] $orderAckResponse
+     * @var \Nogrod\eBaySDK\Trading\OrderAckResponseType[] $orderAckResponse
      */
     private $orderAckResponse = [
 
     ];
 
     /**
-     * @var \Nogrod\eBaySDK\MerchantData\OrderReportResponseType $orderReport
+     * @var \Nogrod\eBaySDK\Trading\OrderReportResponseType $orderReport
      */
     private $orderReport = null;
 
     /**
-     * @var \Nogrod\eBaySDK\MerchantData\RelistFixedPriceItemResponseType[] $relistFixedPriceItemResponse
+     * @var \Nogrod\eBaySDK\Trading\RelistFixedPriceItemResponseType[] $relistFixedPriceItemResponse
      */
     private $relistFixedPriceItemResponse = [
 
     ];
 
     /**
-     * @var \Nogrod\eBaySDK\MerchantData\RelistItemResponseType[] $relistItemResponse
+     * @var \Nogrod\eBaySDK\Trading\RelistItemResponseType[] $relistItemResponse
      */
     private $relistItemResponse = [
 
     ];
 
     /**
-     * @var \Nogrod\eBaySDK\MerchantData\ReviseFixedPriceItemResponseType[] $reviseFixedPriceItemResponse
+     * @var \Nogrod\eBaySDK\Trading\ReviseFixedPriceItemResponseType[] $reviseFixedPriceItemResponse
      */
     private $reviseFixedPriceItemResponse = [
 
     ];
 
     /**
-     * @var \Nogrod\eBaySDK\MerchantData\ReviseInventoryStatusResponseType[] $reviseInventoryStatusResponse
+     * @var \Nogrod\eBaySDK\Trading\ReviseInventoryStatusResponseType[] $reviseInventoryStatusResponse
      */
     private $reviseInventoryStatusResponse = [
 
     ];
 
     /**
-     * @var \Nogrod\eBaySDK\MerchantData\ReviseItemResponseType[] $reviseItemResponse
+     * @var \Nogrod\eBaySDK\Trading\ReviseItemResponseType[] $reviseItemResponse
      */
     private $reviseItemResponse = [
 
     ];
 
     /**
-     * @var \Nogrod\eBaySDK\MerchantData\SetShipmentTrackingInfoResponseType[] $setShipmentTrackingInfoResponse
+     * @var \Nogrod\eBaySDK\Trading\SetShipmentTrackingInfoResponseType[] $setShipmentTrackingInfoResponse
      */
     private $setShipmentTrackingInfoResponse = [
 
     ];
 
     /**
-     * @var \Nogrod\eBaySDK\MerchantData\VerifyAddFixedPriceItemResponseType[] $verifyAddFixedPriceItemResponse
+     * @var \Nogrod\eBaySDK\Trading\VerifyAddFixedPriceItemResponseType[] $verifyAddFixedPriceItemResponse
      */
     private $verifyAddFixedPriceItemResponse = [
 
     ];
 
     /**
-     * @var \Nogrod\eBaySDK\MerchantData\VerifyAddItemResponseType[] $verifyAddItemResponse
+     * @var \Nogrod\eBaySDK\Trading\VerifyAddItemResponseType[] $verifyAddItemResponse
      */
     private $verifyAddItemResponse = [
 
@@ -121,7 +121,7 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
     /**
      * Gets as activeInventoryReport
      *
-     * @return \Nogrod\eBaySDK\MerchantData\ActiveInventoryReportResponseType
+     * @return \Nogrod\eBaySDK\Trading\ActiveInventoryReportResponseType
      */
     public function getActiveInventoryReport()
     {
@@ -131,10 +131,10 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
     /**
      * Sets a new activeInventoryReport
      *
-     * @param \Nogrod\eBaySDK\MerchantData\ActiveInventoryReportResponseType $activeInventoryReport
+     * @param \Nogrod\eBaySDK\Trading\ActiveInventoryReportResponseType $activeInventoryReport
      * @return self
      */
-    public function setActiveInventoryReport(\Nogrod\eBaySDK\MerchantData\ActiveInventoryReportResponseType $activeInventoryReport)
+    public function setActiveInventoryReport(\Nogrod\eBaySDK\Trading\ActiveInventoryReportResponseType $activeInventoryReport)
     {
         $this->activeInventoryReport = $activeInventoryReport;
         return $this;
@@ -144,9 +144,9 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
      * Adds as addFixedPriceItemResponse
      *
      * @return self
-     * @param \Nogrod\eBaySDK\MerchantData\AddFixedPriceItemResponseType $addFixedPriceItemResponse
+     * @param \Nogrod\eBaySDK\Trading\AddFixedPriceItemResponseType $addFixedPriceItemResponse
      */
-    public function addToAddFixedPriceItemResponse(\Nogrod\eBaySDK\MerchantData\AddFixedPriceItemResponseType $addFixedPriceItemResponse)
+    public function addToAddFixedPriceItemResponse(\Nogrod\eBaySDK\Trading\AddFixedPriceItemResponseType $addFixedPriceItemResponse)
     {
         $this->addFixedPriceItemResponse[] = $addFixedPriceItemResponse;
         return $this;
@@ -177,7 +177,7 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
     /**
      * Gets as addFixedPriceItemResponse
      *
-     * @return \Nogrod\eBaySDK\MerchantData\AddFixedPriceItemResponseType[]
+     * @return \Nogrod\eBaySDK\Trading\AddFixedPriceItemResponseType[]
      */
     public function getAddFixedPriceItemResponse()
     {
@@ -187,7 +187,7 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
     /**
      * Sets a new addFixedPriceItemResponse
      *
-     * @param \Nogrod\eBaySDK\MerchantData\AddFixedPriceItemResponseType[] $addFixedPriceItemResponse
+     * @param \Nogrod\eBaySDK\Trading\AddFixedPriceItemResponseType[] $addFixedPriceItemResponse
      * @return self
      */
     public function setAddFixedPriceItemResponse(array $addFixedPriceItemResponse)
@@ -200,9 +200,9 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
      * Adds as addItemResponse
      *
      * @return self
-     * @param \Nogrod\eBaySDK\MerchantData\AddItemResponseType $addItemResponse
+     * @param \Nogrod\eBaySDK\Trading\AddItemResponseType $addItemResponse
      */
-    public function addToAddItemResponse(\Nogrod\eBaySDK\MerchantData\AddItemResponseType $addItemResponse)
+    public function addToAddItemResponse(\Nogrod\eBaySDK\Trading\AddItemResponseType $addItemResponse)
     {
         $this->addItemResponse[] = $addItemResponse;
         return $this;
@@ -233,7 +233,7 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
     /**
      * Gets as addItemResponse
      *
-     * @return \Nogrod\eBaySDK\MerchantData\AddItemResponseType[]
+     * @return \Nogrod\eBaySDK\Trading\AddItemResponseType[]
      */
     public function getAddItemResponse()
     {
@@ -243,7 +243,7 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
     /**
      * Sets a new addItemResponse
      *
-     * @param \Nogrod\eBaySDK\MerchantData\AddItemResponseType[] $addItemResponse
+     * @param \Nogrod\eBaySDK\Trading\AddItemResponseType[] $addItemResponse
      * @return self
      */
     public function setAddItemResponse(array $addItemResponse)
@@ -256,9 +256,9 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
      * Adds as endFixedPriceItemResponse
      *
      * @return self
-     * @param \Nogrod\eBaySDK\MerchantData\EndFixedPriceItemResponseType $endFixedPriceItemResponse
+     * @param \Nogrod\eBaySDK\Trading\EndFixedPriceItemResponseType $endFixedPriceItemResponse
      */
-    public function addToEndFixedPriceItemResponse(\Nogrod\eBaySDK\MerchantData\EndFixedPriceItemResponseType $endFixedPriceItemResponse)
+    public function addToEndFixedPriceItemResponse(\Nogrod\eBaySDK\Trading\EndFixedPriceItemResponseType $endFixedPriceItemResponse)
     {
         $this->endFixedPriceItemResponse[] = $endFixedPriceItemResponse;
         return $this;
@@ -289,7 +289,7 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
     /**
      * Gets as endFixedPriceItemResponse
      *
-     * @return \Nogrod\eBaySDK\MerchantData\EndFixedPriceItemResponseType[]
+     * @return \Nogrod\eBaySDK\Trading\EndFixedPriceItemResponseType[]
      */
     public function getEndFixedPriceItemResponse()
     {
@@ -299,7 +299,7 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
     /**
      * Sets a new endFixedPriceItemResponse
      *
-     * @param \Nogrod\eBaySDK\MerchantData\EndFixedPriceItemResponseType[] $endFixedPriceItemResponse
+     * @param \Nogrod\eBaySDK\Trading\EndFixedPriceItemResponseType[] $endFixedPriceItemResponse
      * @return self
      */
     public function setEndFixedPriceItemResponse(array $endFixedPriceItemResponse)
@@ -312,9 +312,9 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
      * Adds as endItemResponse
      *
      * @return self
-     * @param \Nogrod\eBaySDK\MerchantData\EndItemResponseType $endItemResponse
+     * @param \Nogrod\eBaySDK\Trading\EndItemResponseType $endItemResponse
      */
-    public function addToEndItemResponse(\Nogrod\eBaySDK\MerchantData\EndItemResponseType $endItemResponse)
+    public function addToEndItemResponse(\Nogrod\eBaySDK\Trading\EndItemResponseType $endItemResponse)
     {
         $this->endItemResponse[] = $endItemResponse;
         return $this;
@@ -345,7 +345,7 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
     /**
      * Gets as endItemResponse
      *
-     * @return \Nogrod\eBaySDK\MerchantData\EndItemResponseType[]
+     * @return \Nogrod\eBaySDK\Trading\EndItemResponseType[]
      */
     public function getEndItemResponse()
     {
@@ -355,7 +355,7 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
     /**
      * Sets a new endItemResponse
      *
-     * @param \Nogrod\eBaySDK\MerchantData\EndItemResponseType[] $endItemResponse
+     * @param \Nogrod\eBaySDK\Trading\EndItemResponseType[] $endItemResponse
      * @return self
      */
     public function setEndItemResponse(array $endItemResponse)
@@ -367,7 +367,7 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
     /**
      * Gets as feeSettlementReport
      *
-     * @return \Nogrod\eBaySDK\MerchantData\FeeSettlementReportResponseType
+     * @return \Nogrod\eBaySDK\Trading\FeeSettlementReportResponseType
      */
     public function getFeeSettlementReport()
     {
@@ -377,10 +377,10 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
     /**
      * Sets a new feeSettlementReport
      *
-     * @param \Nogrod\eBaySDK\MerchantData\FeeSettlementReportResponseType $feeSettlementReport
+     * @param \Nogrod\eBaySDK\Trading\FeeSettlementReportResponseType $feeSettlementReport
      * @return self
      */
-    public function setFeeSettlementReport(\Nogrod\eBaySDK\MerchantData\FeeSettlementReportResponseType $feeSettlementReport)
+    public function setFeeSettlementReport(\Nogrod\eBaySDK\Trading\FeeSettlementReportResponseType $feeSettlementReport)
     {
         $this->feeSettlementReport = $feeSettlementReport;
         return $this;
@@ -390,9 +390,9 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
      * Adds as orderAckResponse
      *
      * @return self
-     * @param \Nogrod\eBaySDK\MerchantData\OrderAckResponseType $orderAckResponse
+     * @param \Nogrod\eBaySDK\Trading\OrderAckResponseType $orderAckResponse
      */
-    public function addToOrderAckResponse(\Nogrod\eBaySDK\MerchantData\OrderAckResponseType $orderAckResponse)
+    public function addToOrderAckResponse(\Nogrod\eBaySDK\Trading\OrderAckResponseType $orderAckResponse)
     {
         $this->orderAckResponse[] = $orderAckResponse;
         return $this;
@@ -423,7 +423,7 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
     /**
      * Gets as orderAckResponse
      *
-     * @return \Nogrod\eBaySDK\MerchantData\OrderAckResponseType[]
+     * @return \Nogrod\eBaySDK\Trading\OrderAckResponseType[]
      */
     public function getOrderAckResponse()
     {
@@ -433,7 +433,7 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
     /**
      * Sets a new orderAckResponse
      *
-     * @param \Nogrod\eBaySDK\MerchantData\OrderAckResponseType[] $orderAckResponse
+     * @param \Nogrod\eBaySDK\Trading\OrderAckResponseType[] $orderAckResponse
      * @return self
      */
     public function setOrderAckResponse(array $orderAckResponse)
@@ -445,7 +445,7 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
     /**
      * Gets as orderReport
      *
-     * @return \Nogrod\eBaySDK\MerchantData\OrderReportResponseType
+     * @return \Nogrod\eBaySDK\Trading\OrderReportResponseType
      */
     public function getOrderReport()
     {
@@ -455,10 +455,10 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
     /**
      * Sets a new orderReport
      *
-     * @param \Nogrod\eBaySDK\MerchantData\OrderReportResponseType $orderReport
+     * @param \Nogrod\eBaySDK\Trading\OrderReportResponseType $orderReport
      * @return self
      */
-    public function setOrderReport(\Nogrod\eBaySDK\MerchantData\OrderReportResponseType $orderReport)
+    public function setOrderReport(\Nogrod\eBaySDK\Trading\OrderReportResponseType $orderReport)
     {
         $this->orderReport = $orderReport;
         return $this;
@@ -468,9 +468,9 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
      * Adds as relistFixedPriceItemResponse
      *
      * @return self
-     * @param \Nogrod\eBaySDK\MerchantData\RelistFixedPriceItemResponseType $relistFixedPriceItemResponse
+     * @param \Nogrod\eBaySDK\Trading\RelistFixedPriceItemResponseType $relistFixedPriceItemResponse
      */
-    public function addToRelistFixedPriceItemResponse(\Nogrod\eBaySDK\MerchantData\RelistFixedPriceItemResponseType $relistFixedPriceItemResponse)
+    public function addToRelistFixedPriceItemResponse(\Nogrod\eBaySDK\Trading\RelistFixedPriceItemResponseType $relistFixedPriceItemResponse)
     {
         $this->relistFixedPriceItemResponse[] = $relistFixedPriceItemResponse;
         return $this;
@@ -501,7 +501,7 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
     /**
      * Gets as relistFixedPriceItemResponse
      *
-     * @return \Nogrod\eBaySDK\MerchantData\RelistFixedPriceItemResponseType[]
+     * @return \Nogrod\eBaySDK\Trading\RelistFixedPriceItemResponseType[]
      */
     public function getRelistFixedPriceItemResponse()
     {
@@ -511,7 +511,7 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
     /**
      * Sets a new relistFixedPriceItemResponse
      *
-     * @param \Nogrod\eBaySDK\MerchantData\RelistFixedPriceItemResponseType[] $relistFixedPriceItemResponse
+     * @param \Nogrod\eBaySDK\Trading\RelistFixedPriceItemResponseType[] $relistFixedPriceItemResponse
      * @return self
      */
     public function setRelistFixedPriceItemResponse(array $relistFixedPriceItemResponse)
@@ -524,9 +524,9 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
      * Adds as relistItemResponse
      *
      * @return self
-     * @param \Nogrod\eBaySDK\MerchantData\RelistItemResponseType $relistItemResponse
+     * @param \Nogrod\eBaySDK\Trading\RelistItemResponseType $relistItemResponse
      */
-    public function addToRelistItemResponse(\Nogrod\eBaySDK\MerchantData\RelistItemResponseType $relistItemResponse)
+    public function addToRelistItemResponse(\Nogrod\eBaySDK\Trading\RelistItemResponseType $relistItemResponse)
     {
         $this->relistItemResponse[] = $relistItemResponse;
         return $this;
@@ -557,7 +557,7 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
     /**
      * Gets as relistItemResponse
      *
-     * @return \Nogrod\eBaySDK\MerchantData\RelistItemResponseType[]
+     * @return \Nogrod\eBaySDK\Trading\RelistItemResponseType[]
      */
     public function getRelistItemResponse()
     {
@@ -567,7 +567,7 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
     /**
      * Sets a new relistItemResponse
      *
-     * @param \Nogrod\eBaySDK\MerchantData\RelistItemResponseType[] $relistItemResponse
+     * @param \Nogrod\eBaySDK\Trading\RelistItemResponseType[] $relistItemResponse
      * @return self
      */
     public function setRelistItemResponse(array $relistItemResponse)
@@ -580,9 +580,9 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
      * Adds as reviseFixedPriceItemResponse
      *
      * @return self
-     * @param \Nogrod\eBaySDK\MerchantData\ReviseFixedPriceItemResponseType $reviseFixedPriceItemResponse
+     * @param \Nogrod\eBaySDK\Trading\ReviseFixedPriceItemResponseType $reviseFixedPriceItemResponse
      */
-    public function addToReviseFixedPriceItemResponse(\Nogrod\eBaySDK\MerchantData\ReviseFixedPriceItemResponseType $reviseFixedPriceItemResponse)
+    public function addToReviseFixedPriceItemResponse(\Nogrod\eBaySDK\Trading\ReviseFixedPriceItemResponseType $reviseFixedPriceItemResponse)
     {
         $this->reviseFixedPriceItemResponse[] = $reviseFixedPriceItemResponse;
         return $this;
@@ -613,7 +613,7 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
     /**
      * Gets as reviseFixedPriceItemResponse
      *
-     * @return \Nogrod\eBaySDK\MerchantData\ReviseFixedPriceItemResponseType[]
+     * @return \Nogrod\eBaySDK\Trading\ReviseFixedPriceItemResponseType[]
      */
     public function getReviseFixedPriceItemResponse()
     {
@@ -623,7 +623,7 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
     /**
      * Sets a new reviseFixedPriceItemResponse
      *
-     * @param \Nogrod\eBaySDK\MerchantData\ReviseFixedPriceItemResponseType[] $reviseFixedPriceItemResponse
+     * @param \Nogrod\eBaySDK\Trading\ReviseFixedPriceItemResponseType[] $reviseFixedPriceItemResponse
      * @return self
      */
     public function setReviseFixedPriceItemResponse(array $reviseFixedPriceItemResponse)
@@ -636,9 +636,9 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
      * Adds as reviseInventoryStatusResponse
      *
      * @return self
-     * @param \Nogrod\eBaySDK\MerchantData\ReviseInventoryStatusResponseType $reviseInventoryStatusResponse
+     * @param \Nogrod\eBaySDK\Trading\ReviseInventoryStatusResponseType $reviseInventoryStatusResponse
      */
-    public function addToReviseInventoryStatusResponse(\Nogrod\eBaySDK\MerchantData\ReviseInventoryStatusResponseType $reviseInventoryStatusResponse)
+    public function addToReviseInventoryStatusResponse(\Nogrod\eBaySDK\Trading\ReviseInventoryStatusResponseType $reviseInventoryStatusResponse)
     {
         $this->reviseInventoryStatusResponse[] = $reviseInventoryStatusResponse;
         return $this;
@@ -669,7 +669,7 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
     /**
      * Gets as reviseInventoryStatusResponse
      *
-     * @return \Nogrod\eBaySDK\MerchantData\ReviseInventoryStatusResponseType[]
+     * @return \Nogrod\eBaySDK\Trading\ReviseInventoryStatusResponseType[]
      */
     public function getReviseInventoryStatusResponse()
     {
@@ -679,7 +679,7 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
     /**
      * Sets a new reviseInventoryStatusResponse
      *
-     * @param \Nogrod\eBaySDK\MerchantData\ReviseInventoryStatusResponseType[] $reviseInventoryStatusResponse
+     * @param \Nogrod\eBaySDK\Trading\ReviseInventoryStatusResponseType[] $reviseInventoryStatusResponse
      * @return self
      */
     public function setReviseInventoryStatusResponse(array $reviseInventoryStatusResponse)
@@ -692,9 +692,9 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
      * Adds as reviseItemResponse
      *
      * @return self
-     * @param \Nogrod\eBaySDK\MerchantData\ReviseItemResponseType $reviseItemResponse
+     * @param \Nogrod\eBaySDK\Trading\ReviseItemResponseType $reviseItemResponse
      */
-    public function addToReviseItemResponse(\Nogrod\eBaySDK\MerchantData\ReviseItemResponseType $reviseItemResponse)
+    public function addToReviseItemResponse(\Nogrod\eBaySDK\Trading\ReviseItemResponseType $reviseItemResponse)
     {
         $this->reviseItemResponse[] = $reviseItemResponse;
         return $this;
@@ -725,7 +725,7 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
     /**
      * Gets as reviseItemResponse
      *
-     * @return \Nogrod\eBaySDK\MerchantData\ReviseItemResponseType[]
+     * @return \Nogrod\eBaySDK\Trading\ReviseItemResponseType[]
      */
     public function getReviseItemResponse()
     {
@@ -735,7 +735,7 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
     /**
      * Sets a new reviseItemResponse
      *
-     * @param \Nogrod\eBaySDK\MerchantData\ReviseItemResponseType[] $reviseItemResponse
+     * @param \Nogrod\eBaySDK\Trading\ReviseItemResponseType[] $reviseItemResponse
      * @return self
      */
     public function setReviseItemResponse(array $reviseItemResponse)
@@ -748,9 +748,9 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
      * Adds as setShipmentTrackingInfoResponse
      *
      * @return self
-     * @param \Nogrod\eBaySDK\MerchantData\SetShipmentTrackingInfoResponseType $setShipmentTrackingInfoResponse
+     * @param \Nogrod\eBaySDK\Trading\SetShipmentTrackingInfoResponseType $setShipmentTrackingInfoResponse
      */
-    public function addToSetShipmentTrackingInfoResponse(\Nogrod\eBaySDK\MerchantData\SetShipmentTrackingInfoResponseType $setShipmentTrackingInfoResponse)
+    public function addToSetShipmentTrackingInfoResponse(\Nogrod\eBaySDK\Trading\SetShipmentTrackingInfoResponseType $setShipmentTrackingInfoResponse)
     {
         $this->setShipmentTrackingInfoResponse[] = $setShipmentTrackingInfoResponse;
         return $this;
@@ -781,7 +781,7 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
     /**
      * Gets as setShipmentTrackingInfoResponse
      *
-     * @return \Nogrod\eBaySDK\MerchantData\SetShipmentTrackingInfoResponseType[]
+     * @return \Nogrod\eBaySDK\Trading\SetShipmentTrackingInfoResponseType[]
      */
     public function getSetShipmentTrackingInfoResponse()
     {
@@ -791,7 +791,7 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
     /**
      * Sets a new setShipmentTrackingInfoResponse
      *
-     * @param \Nogrod\eBaySDK\MerchantData\SetShipmentTrackingInfoResponseType[] $setShipmentTrackingInfoResponse
+     * @param \Nogrod\eBaySDK\Trading\SetShipmentTrackingInfoResponseType[] $setShipmentTrackingInfoResponse
      * @return self
      */
     public function setSetShipmentTrackingInfoResponse(array $setShipmentTrackingInfoResponse)
@@ -804,9 +804,9 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
      * Adds as verifyAddFixedPriceItemResponse
      *
      * @return self
-     * @param \Nogrod\eBaySDK\MerchantData\VerifyAddFixedPriceItemResponseType $verifyAddFixedPriceItemResponse
+     * @param \Nogrod\eBaySDK\Trading\VerifyAddFixedPriceItemResponseType $verifyAddFixedPriceItemResponse
      */
-    public function addToVerifyAddFixedPriceItemResponse(\Nogrod\eBaySDK\MerchantData\VerifyAddFixedPriceItemResponseType $verifyAddFixedPriceItemResponse)
+    public function addToVerifyAddFixedPriceItemResponse(\Nogrod\eBaySDK\Trading\VerifyAddFixedPriceItemResponseType $verifyAddFixedPriceItemResponse)
     {
         $this->verifyAddFixedPriceItemResponse[] = $verifyAddFixedPriceItemResponse;
         return $this;
@@ -837,7 +837,7 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
     /**
      * Gets as verifyAddFixedPriceItemResponse
      *
-     * @return \Nogrod\eBaySDK\MerchantData\VerifyAddFixedPriceItemResponseType[]
+     * @return \Nogrod\eBaySDK\Trading\VerifyAddFixedPriceItemResponseType[]
      */
     public function getVerifyAddFixedPriceItemResponse()
     {
@@ -847,7 +847,7 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
     /**
      * Sets a new verifyAddFixedPriceItemResponse
      *
-     * @param \Nogrod\eBaySDK\MerchantData\VerifyAddFixedPriceItemResponseType[] $verifyAddFixedPriceItemResponse
+     * @param \Nogrod\eBaySDK\Trading\VerifyAddFixedPriceItemResponseType[] $verifyAddFixedPriceItemResponse
      * @return self
      */
     public function setVerifyAddFixedPriceItemResponse(array $verifyAddFixedPriceItemResponse)
@@ -860,9 +860,9 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
      * Adds as verifyAddItemResponse
      *
      * @return self
-     * @param \Nogrod\eBaySDK\MerchantData\VerifyAddItemResponseType $verifyAddItemResponse
+     * @param \Nogrod\eBaySDK\Trading\VerifyAddItemResponseType $verifyAddItemResponse
      */
-    public function addToVerifyAddItemResponse(\Nogrod\eBaySDK\MerchantData\VerifyAddItemResponseType $verifyAddItemResponse)
+    public function addToVerifyAddItemResponse(\Nogrod\eBaySDK\Trading\VerifyAddItemResponseType $verifyAddItemResponse)
     {
         $this->verifyAddItemResponse[] = $verifyAddItemResponse;
         return $this;
@@ -893,7 +893,7 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
     /**
      * Gets as verifyAddItemResponse
      *
-     * @return \Nogrod\eBaySDK\MerchantData\VerifyAddItemResponseType[]
+     * @return \Nogrod\eBaySDK\Trading\VerifyAddItemResponseType[]
      */
     public function getVerifyAddItemResponse()
     {
@@ -903,7 +903,7 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
     /**
      * Sets a new verifyAddItemResponse
      *
-     * @param \Nogrod\eBaySDK\MerchantData\VerifyAddItemResponseType[] $verifyAddItemResponse
+     * @param \Nogrod\eBaySDK\Trading\VerifyAddItemResponseType[] $verifyAddItemResponse
      * @return self
      */
     public function setVerifyAddItemResponse(array $verifyAddItemResponse)
@@ -997,67 +997,67 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
     {
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ActiveInventoryReport');
         if (null !== $value) {
-            $this->setActiveInventoryReport(\Nogrod\eBaySDK\MerchantData\ActiveInventoryReportResponseType::fromKeyValue($value));
+            $this->setActiveInventoryReport(\Nogrod\eBaySDK\Trading\ActiveInventoryReportResponseType::fromKeyValue($value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AddFixedPriceItemResponse', true);
         if (null !== $value && !empty($value)) {
-            $this->setAddFixedPriceItemResponse(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\AddFixedPriceItemResponseType::fromKeyValue($v);}, $value));
+            $this->setAddFixedPriceItemResponse(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\AddFixedPriceItemResponseType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AddItemResponse', true);
         if (null !== $value && !empty($value)) {
-            $this->setAddItemResponse(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\AddItemResponseType::fromKeyValue($v);}, $value));
+            $this->setAddItemResponse(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\AddItemResponseType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EndFixedPriceItemResponse', true);
         if (null !== $value && !empty($value)) {
-            $this->setEndFixedPriceItemResponse(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\EndFixedPriceItemResponseType::fromKeyValue($v);}, $value));
+            $this->setEndFixedPriceItemResponse(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\EndFixedPriceItemResponseType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EndItemResponse', true);
         if (null !== $value && !empty($value)) {
-            $this->setEndItemResponse(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\EndItemResponseType::fromKeyValue($v);}, $value));
+            $this->setEndItemResponse(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\EndItemResponseType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeeSettlementReport');
         if (null !== $value) {
-            $this->setFeeSettlementReport(\Nogrod\eBaySDK\MerchantData\FeeSettlementReportResponseType::fromKeyValue($value));
+            $this->setFeeSettlementReport(\Nogrod\eBaySDK\Trading\FeeSettlementReportResponseType::fromKeyValue($value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}OrderAckResponse', true);
         if (null !== $value && !empty($value)) {
-            $this->setOrderAckResponse(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\OrderAckResponseType::fromKeyValue($v);}, $value));
+            $this->setOrderAckResponse(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\OrderAckResponseType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}OrderReport');
         if (null !== $value) {
-            $this->setOrderReport(\Nogrod\eBaySDK\MerchantData\OrderReportResponseType::fromKeyValue($value));
+            $this->setOrderReport(\Nogrod\eBaySDK\Trading\OrderReportResponseType::fromKeyValue($value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RelistFixedPriceItemResponse', true);
         if (null !== $value && !empty($value)) {
-            $this->setRelistFixedPriceItemResponse(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\RelistFixedPriceItemResponseType::fromKeyValue($v);}, $value));
+            $this->setRelistFixedPriceItemResponse(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\RelistFixedPriceItemResponseType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RelistItemResponse', true);
         if (null !== $value && !empty($value)) {
-            $this->setRelistItemResponse(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\RelistItemResponseType::fromKeyValue($v);}, $value));
+            $this->setRelistItemResponse(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\RelistItemResponseType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReviseFixedPriceItemResponse', true);
         if (null !== $value && !empty($value)) {
-            $this->setReviseFixedPriceItemResponse(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\ReviseFixedPriceItemResponseType::fromKeyValue($v);}, $value));
+            $this->setReviseFixedPriceItemResponse(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\ReviseFixedPriceItemResponseType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReviseInventoryStatusResponse', true);
         if (null !== $value && !empty($value)) {
-            $this->setReviseInventoryStatusResponse(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\ReviseInventoryStatusResponseType::fromKeyValue($v);}, $value));
+            $this->setReviseInventoryStatusResponse(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\ReviseInventoryStatusResponseType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReviseItemResponse', true);
         if (null !== $value && !empty($value)) {
-            $this->setReviseItemResponse(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\ReviseItemResponseType::fromKeyValue($v);}, $value));
+            $this->setReviseItemResponse(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\ReviseItemResponseType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SetShipmentTrackingInfoResponse', true);
         if (null !== $value && !empty($value)) {
-            $this->setSetShipmentTrackingInfoResponse(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\SetShipmentTrackingInfoResponseType::fromKeyValue($v);}, $value));
+            $this->setSetShipmentTrackingInfoResponse(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\SetShipmentTrackingInfoResponseType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}VerifyAddFixedPriceItemResponse', true);
         if (null !== $value && !empty($value)) {
-            $this->setVerifyAddFixedPriceItemResponse(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\VerifyAddFixedPriceItemResponseType::fromKeyValue($v);}, $value));
+            $this->setVerifyAddFixedPriceItemResponse(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\VerifyAddFixedPriceItemResponseType::fromKeyValue($v);}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}VerifyAddItemResponse', true);
         if (null !== $value && !empty($value)) {
-            $this->setVerifyAddItemResponse(array_map(function ($v) {return \Nogrod\eBaySDK\MerchantData\VerifyAddItemResponseType::fromKeyValue($v);}, $value));
+            $this->setVerifyAddItemResponse(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\VerifyAddItemResponseType::fromKeyValue($v);}, $value));
         }
     }
 }
