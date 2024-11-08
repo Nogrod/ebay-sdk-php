@@ -156,7 +156,7 @@ class PaginatedTransactionArrayType implements \Sabre\Xml\XmlSerializable, \Sabr
     {
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TransactionArray', true);
         if (null !== $value && !empty($value)) {
-            $this->setTransactionArray(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\TransactionType::fromKeyValue(Func::mapArray($v, '{urn:ebay:apis:eBLBaseComponents}Transaction', true));}, $value));
+            $this->setTransactionArray(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\TransactionType::fromKeyValue(Func::mapArray($v, '{urn:ebay:apis:eBLBaseComponents}Transaction'));}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaginationResult');
         if (null !== $value) {

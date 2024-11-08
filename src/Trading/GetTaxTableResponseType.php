@@ -152,7 +152,7 @@ class GetTaxTableResponseType extends AbstractResponseType
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TaxTable', true);
         if (null !== $value && !empty($value)) {
-            $this->setTaxTable(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\TaxJurisdictionType::fromKeyValue(Func::mapArray($v, '{urn:ebay:apis:eBLBaseComponents}TaxJurisdiction', true));}, $value));
+            $this->setTaxTable(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\TaxJurisdictionType::fromKeyValue(Func::mapArray($v, '{urn:ebay:apis:eBLBaseComponents}TaxJurisdiction'));}, $value));
         }
     }
 }

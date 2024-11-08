@@ -2225,7 +2225,7 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Membership', true);
         if (null !== $value && !empty($value)) {
-            $this->setMembership(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\MembershipDetailType::fromKeyValue(Func::mapArray($v, '{urn:ebay:apis:eBLBaseComponents}Program', true));}, $value));
+            $this->setMembership(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\MembershipDetailType::fromKeyValue(Func::mapArray($v, '{urn:ebay:apis:eBLBaseComponents}Program'));}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UserFirstName');
         if (null !== $value) {

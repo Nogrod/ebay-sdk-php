@@ -1435,7 +1435,7 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CharityAffiliationDetails', true);
         if (null !== $value && !empty($value)) {
-            $this->setCharityAffiliationDetails(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\CharityAffiliationDetailType::fromKeyValue(Func::mapArray($v, '{urn:ebay:apis:eBLBaseComponents}CharityAffiliationDetail', true));}, $value));
+            $this->setCharityAffiliationDetails(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\CharityAffiliationDetailType::fromKeyValue(Func::mapArray($v, '{urn:ebay:apis:eBLBaseComponents}CharityAffiliationDetail'));}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TransactionPercent');
         if (null !== $value) {

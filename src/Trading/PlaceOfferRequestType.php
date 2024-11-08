@@ -309,7 +309,7 @@ class PlaceOfferRequestType extends AbstractRequestType
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}VariationSpecifics', true);
         if (null !== $value && !empty($value)) {
-            $this->setVariationSpecifics(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\NameValueListType::fromKeyValue(Func::mapArray($v, '{urn:ebay:apis:eBLBaseComponents}NameValueList', true));}, $value));
+            $this->setVariationSpecifics(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\NameValueListType::fromKeyValue(Func::mapArray($v, '{urn:ebay:apis:eBLBaseComponents}NameValueList'));}, $value));
         }
     }
 }

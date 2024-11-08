@@ -523,11 +523,11 @@ class RegulatoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ResponsiblePersons', true);
         if (null !== $value && !empty($value)) {
-            $this->setResponsiblePersons(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\ResponsiblePersonType::fromKeyValue(Func::mapArray($v, '{urn:ebay:apis:eBLBaseComponents}ResponsiblePerson', true));}, $value));
+            $this->setResponsiblePersons(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\ResponsiblePersonType::fromKeyValue(Func::mapArray($v, '{urn:ebay:apis:eBLBaseComponents}ResponsiblePerson'));}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Documents', true);
         if (null !== $value && !empty($value)) {
-            $this->setDocuments(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\DocumentType::fromKeyValue(Func::mapArray($v, '{urn:ebay:apis:eBLBaseComponents}Document', true));}, $value));
+            $this->setDocuments(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\DocumentType::fromKeyValue(Func::mapArray($v, '{urn:ebay:apis:eBLBaseComponents}Document'));}, $value));
         }
     }
 }

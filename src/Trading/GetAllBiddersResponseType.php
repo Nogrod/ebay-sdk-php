@@ -222,7 +222,7 @@ class GetAllBiddersResponseType extends AbstractResponseType
         parent::setKeyValue($keyValue);
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BidArray', true);
         if (null !== $value && !empty($value)) {
-            $this->setBidArray(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\OfferType::fromKeyValue(Func::mapArray($v, '{urn:ebay:apis:eBLBaseComponents}Offer', true));}, $value));
+            $this->setBidArray(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\OfferType::fromKeyValue(Func::mapArray($v, '{urn:ebay:apis:eBLBaseComponents}Offer'));}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}HighBidder');
         if (null !== $value) {

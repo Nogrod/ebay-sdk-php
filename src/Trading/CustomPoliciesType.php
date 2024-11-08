@@ -400,7 +400,7 @@ class CustomPoliciesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RegionalTakeBackPolicies', true);
         if (null !== $value && !empty($value)) {
-            $this->setRegionalTakeBackPolicies(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\CountryPoliciesType::fromKeyValue(Func::mapArray($v, '{urn:ebay:apis:eBLBaseComponents}CountryPolicies', true));}, $value));
+            $this->setRegionalTakeBackPolicies(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\CountryPoliciesType::fromKeyValue(Func::mapArray($v, '{urn:ebay:apis:eBLBaseComponents}CountryPolicies'));}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ProductCompliancePolicyID', true);
         if (null !== $value && !empty($value)) {
@@ -408,7 +408,7 @@ class CustomPoliciesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RegionalProductCompliancePolicies', true);
         if (null !== $value && !empty($value)) {
-            $this->setRegionalProductCompliancePolicies(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\CountryPoliciesType::fromKeyValue(Func::mapArray($v, '{urn:ebay:apis:eBLBaseComponents}CountryPolicies', true));}, $value));
+            $this->setRegionalProductCompliancePolicies(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\CountryPoliciesType::fromKeyValue(Func::mapArray($v, '{urn:ebay:apis:eBLBaseComponents}CountryPolicies'));}, $value));
         }
     }
 }

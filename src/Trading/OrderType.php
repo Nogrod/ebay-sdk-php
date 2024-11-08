@@ -2429,7 +2429,7 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TransactionArray', true);
         if (null !== $value && !empty($value)) {
-            $this->setTransactionArray(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\TransactionType::fromKeyValue(Func::mapArray($v, '{urn:ebay:apis:eBLBaseComponents}Transaction', true));}, $value));
+            $this->setTransactionArray(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\TransactionType::fromKeyValue(Func::mapArray($v, '{urn:ebay:apis:eBLBaseComponents}Transaction'));}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BuyerUserID');
         if (null !== $value) {
@@ -2481,7 +2481,7 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PickupDetails', true);
         if (null !== $value && !empty($value)) {
-            $this->setPickupDetails(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\PickupOptionsType::fromKeyValue(Func::mapArray($v, '{urn:ebay:apis:eBLBaseComponents}PickupOptions', true));}, $value));
+            $this->setPickupDetails(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\PickupOptionsType::fromKeyValue(Func::mapArray($v, '{urn:ebay:apis:eBLBaseComponents}PickupOptions'));}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PickupMethodSelected');
         if (null !== $value) {
@@ -2513,7 +2513,7 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BuyerPackageEnclosures', true);
         if (null !== $value && !empty($value)) {
-            $this->setBuyerPackageEnclosures(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\BuyerPackageEnclosureType::fromKeyValue(Func::mapArray($v, '{urn:ebay:apis:eBLBaseComponents}BuyerPackageEnclosure', true));}, $value));
+            $this->setBuyerPackageEnclosures(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\BuyerPackageEnclosureType::fromKeyValue(Func::mapArray($v, '{urn:ebay:apis:eBLBaseComponents}BuyerPackageEnclosure'));}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExtendedOrderID');
         if (null !== $value) {

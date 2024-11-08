@@ -259,7 +259,7 @@ class ShipmentTrackingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShipmentLineItem', true);
         if (null !== $value && !empty($value)) {
-            $this->setShipmentLineItem(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\LineItemType::fromKeyValue(Func::mapArray($v, '{urn:ebay:apis:eBLBaseComponents}LineItem', true));}, $value));
+            $this->setShipmentLineItem(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\LineItemType::fromKeyValue(Func::mapArray($v, '{urn:ebay:apis:eBLBaseComponents}LineItem'));}, $value));
         }
     }
 }

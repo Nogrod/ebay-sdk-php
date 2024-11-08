@@ -525,7 +525,7 @@ class LeaveFeedbackRequestType extends AbstractRequestType
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerItemRatingDetailArray', true);
         if (null !== $value && !empty($value)) {
-            $this->setSellerItemRatingDetailArray(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\ItemRatingDetailsType::fromKeyValue(Func::mapArray($v, '{urn:ebay:apis:eBLBaseComponents}ItemRatingDetails', true));}, $value));
+            $this->setSellerItemRatingDetailArray(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\ItemRatingDetailsType::fromKeyValue(Func::mapArray($v, '{urn:ebay:apis:eBLBaseComponents}ItemRatingDetails'));}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}OrderLineItemID');
         if (null !== $value) {

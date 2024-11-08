@@ -265,15 +265,15 @@ class GetSellerProfilesResponseType extends BaseResponseType
         parent::setKeyValue($keyValue);
         $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}paymentProfileList', true);
         if (null !== $value && !empty($value)) {
-            $this->setPaymentProfileList(array_map(function ($v) {return \Nogrod\eBaySDK\BusinessPoliciesManagement\PaymentProfileType::fromKeyValue(Func::mapArray($v, '{http://www.ebay.com/marketplace/selling/v1/services}PaymentProfile', true));}, $value));
+            $this->setPaymentProfileList(array_map(function ($v) {return \Nogrod\eBaySDK\BusinessPoliciesManagement\PaymentProfileType::fromKeyValue(Func::mapArray($v, '{http://www.ebay.com/marketplace/selling/v1/services}PaymentProfile'));}, $value));
         }
         $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}returnPolicyProfileList', true);
         if (null !== $value && !empty($value)) {
-            $this->setReturnPolicyProfileList(array_map(function ($v) {return \Nogrod\eBaySDK\BusinessPoliciesManagement\ReturnPolicyProfileType::fromKeyValue(Func::mapArray($v, '{http://www.ebay.com/marketplace/selling/v1/services}ReturnPolicyProfile', true));}, $value));
+            $this->setReturnPolicyProfileList(array_map(function ($v) {return \Nogrod\eBaySDK\BusinessPoliciesManagement\ReturnPolicyProfileType::fromKeyValue(Func::mapArray($v, '{http://www.ebay.com/marketplace/selling/v1/services}ReturnPolicyProfile'));}, $value));
         }
         $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}shippingPolicyProfile', true);
         if (null !== $value && !empty($value)) {
-            $this->setShippingPolicyProfile(array_map(function ($v) {return \Nogrod\eBaySDK\BusinessPoliciesManagement\ShippingPolicyProfileType::fromKeyValue(Func::mapArray($v, '{http://www.ebay.com/marketplace/selling/v1/services}ShippingPolicyProfile', true));}, $value));
+            $this->setShippingPolicyProfile(array_map(function ($v) {return \Nogrod\eBaySDK\BusinessPoliciesManagement\ShippingPolicyProfileType::fromKeyValue(Func::mapArray($v, '{http://www.ebay.com/marketplace/selling/v1/services}ShippingPolicyProfile'));}, $value));
         }
     }
 }

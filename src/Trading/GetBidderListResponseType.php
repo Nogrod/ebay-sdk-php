@@ -153,7 +153,7 @@ class GetBidderListResponseType extends AbstractResponseType
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BidItemArray', true);
         if (null !== $value && !empty($value)) {
-            $this->setBidItemArray(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\ItemType::fromKeyValue(Func::mapArray($v, '{urn:ebay:apis:eBLBaseComponents}Item', true));}, $value));
+            $this->setBidItemArray(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\ItemType::fromKeyValue(Func::mapArray($v, '{urn:ebay:apis:eBLBaseComponents}Item'));}, $value));
         }
     }
 }

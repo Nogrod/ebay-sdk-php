@@ -940,7 +940,7 @@ class AdFormatLeadType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MemberMessage', true);
         if (null !== $value && !empty($value)) {
-            $this->setMemberMessage(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\MemberMessageExchangeType::fromKeyValue(Func::mapArray($v, '{urn:ebay:apis:eBLBaseComponents}MemberMessageExchange', true));}, $value));
+            $this->setMemberMessage(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\MemberMessageExchangeType::fromKeyValue(Func::mapArray($v, '{urn:ebay:apis:eBLBaseComponents}MemberMessageExchange'));}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Status');
         if (null !== $value) {

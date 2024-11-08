@@ -4280,7 +4280,7 @@ class SimpleItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemSpecifics', true);
         if (null !== $value && !empty($value)) {
-            $this->setItemSpecifics(array_map(function ($v) {return \Nogrod\eBaySDK\Shopping\NameValueListType::fromKeyValue(Func::mapArray($v, '{urn:ebay:apis:eBLBaseComponents}NameValueList', true));}, $value));
+            $this->setItemSpecifics(array_map(function ($v) {return \Nogrod\eBaySDK\Shopping\NameValueListType::fromKeyValue(Func::mapArray($v, '{urn:ebay:apis:eBLBaseComponents}NameValueList'));}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}HitCount');
         if (null !== $value) {
@@ -4448,7 +4448,7 @@ class SimpleItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemCompatibilityList', true);
         if (null !== $value && !empty($value)) {
-            $this->setItemCompatibilityList(array_map(function ($v) {return \Nogrod\eBaySDK\Shopping\ItemCompatibilityType::fromKeyValue(Func::mapArray($v, '{urn:ebay:apis:eBLBaseComponents}Compatibility', true));}, $value));
+            $this->setItemCompatibilityList(array_map(function ($v) {return \Nogrod\eBaySDK\Shopping\ItemCompatibilityType::fromKeyValue(Func::mapArray($v, '{urn:ebay:apis:eBLBaseComponents}Compatibility'));}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}QuantitySoldByPickupInStore');
         if (null !== $value) {

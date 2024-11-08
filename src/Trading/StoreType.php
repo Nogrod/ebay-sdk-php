@@ -464,7 +464,7 @@ class StoreType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CustomCategories', true);
         if (null !== $value && !empty($value)) {
-            $this->setCustomCategories(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\StoreCustomCategoryType::fromKeyValue(Func::mapArray($v, '{urn:ebay:apis:eBLBaseComponents}CustomCategory', true));}, $value));
+            $this->setCustomCategories(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\StoreCustomCategoryType::fromKeyValue(Func::mapArray($v, '{urn:ebay:apis:eBLBaseComponents}CustomCategory'));}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MerchDisplay');
         if (null !== $value) {

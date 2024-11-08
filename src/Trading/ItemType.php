@@ -8296,7 +8296,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemSpecifics', true);
         if (null !== $value && !empty($value)) {
-            $this->setItemSpecifics(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\NameValueListType::fromKeyValue(Func::mapArray($v, '{urn:ebay:apis:eBLBaseComponents}NameValueList', true));}, $value));
+            $this->setItemSpecifics(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\NameValueListType::fromKeyValue(Func::mapArray($v, '{urn:ebay:apis:eBLBaseComponents}NameValueList'));}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ClassifiedAdPayPerLeadFee');
         if (null !== $value) {
@@ -8368,7 +8368,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ConditionDescriptors', true);
         if (null !== $value && !empty($value)) {
-            $this->setConditionDescriptors(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\ConditionDescriptorType::fromKeyValue(Func::mapArray($v, '{urn:ebay:apis:eBLBaseComponents}ConditionDescriptor', true));}, $value));
+            $this->setConditionDescriptors(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\ConditionDescriptorType::fromKeyValue(Func::mapArray($v, '{urn:ebay:apis:eBLBaseComponents}ConditionDescriptor'));}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ConditionDescription');
         if (null !== $value) {
@@ -8424,7 +8424,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingServiceCostOverrideList', true);
         if (null !== $value && !empty($value)) {
-            $this->setShippingServiceCostOverrideList(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\ShippingServiceCostOverrideType::fromKeyValue(Func::mapArray($v, '{urn:ebay:apis:eBLBaseComponents}ShippingServiceCostOverride', true));}, $value));
+            $this->setShippingServiceCostOverrideList(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\ShippingServiceCostOverrideType::fromKeyValue(Func::mapArray($v, '{urn:ebay:apis:eBLBaseComponents}ShippingServiceCostOverride'));}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingPackageDetails');
         if (null !== $value) {

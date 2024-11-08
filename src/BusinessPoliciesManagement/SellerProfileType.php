@@ -445,7 +445,7 @@ class SellerProfileType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
         }
         $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}categoryGroups', true);
         if (null !== $value && !empty($value)) {
-            $this->setCategoryGroups(array_map(function ($v) {return \Nogrod\eBaySDK\BusinessPoliciesManagement\CategoryGroupType::fromKeyValue(Func::mapArray($v, '{http://www.ebay.com/marketplace/selling/v1/services}categoryGroup', true));}, $value));
+            $this->setCategoryGroups(array_map(function ($v) {return \Nogrod\eBaySDK\BusinessPoliciesManagement\CategoryGroupType::fromKeyValue(Func::mapArray($v, '{http://www.ebay.com/marketplace/selling/v1/services}categoryGroup'));}, $value));
         }
     }
 }

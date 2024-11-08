@@ -268,7 +268,7 @@ class BaseServiceResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
         }
         $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}errorMessage', true);
         if (null !== $value && !empty($value)) {
-            $this->setErrorMessage(array_map(function ($v) {return \Nogrod\eBaySDK\Finding\ErrorDataType::fromKeyValue(Func::mapArray($v, '{http://www.ebay.com/marketplace/search/v1/services}error', true));}, $value));
+            $this->setErrorMessage(array_map(function ($v) {return \Nogrod\eBaySDK\Finding\ErrorDataType::fromKeyValue(Func::mapArray($v, '{http://www.ebay.com/marketplace/search/v1/services}error'));}, $value));
         }
         $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}version');
         if (null !== $value) {

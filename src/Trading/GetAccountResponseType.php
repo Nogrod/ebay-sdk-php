@@ -436,7 +436,7 @@ class GetAccountResponseType extends AbstractResponseType
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AccountEntries', true);
         if (null !== $value && !empty($value)) {
-            $this->setAccountEntries(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\AccountEntryType::fromKeyValue(Func::mapArray($v, '{urn:ebay:apis:eBLBaseComponents}AccountEntry', true));}, $value));
+            $this->setAccountEntries(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\AccountEntryType::fromKeyValue(Func::mapArray($v, '{urn:ebay:apis:eBLBaseComponents}AccountEntry'));}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaginationResult');
         if (null !== $value) {

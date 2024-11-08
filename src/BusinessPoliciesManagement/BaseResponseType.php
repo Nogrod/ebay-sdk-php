@@ -304,7 +304,7 @@ class BaseResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
         }
         $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}errorMessage', true);
         if (null !== $value && !empty($value)) {
-            $this->setErrorMessage(array_map(function ($v) {return \Nogrod\eBaySDK\BusinessPoliciesManagement\ErrorDataType::fromKeyValue(Func::mapArray($v, '{http://www.ebay.com/marketplace/selling/v1/services}error', true));}, $value));
+            $this->setErrorMessage(array_map(function ($v) {return \Nogrod\eBaySDK\BusinessPoliciesManagement\ErrorDataType::fromKeyValue(Func::mapArray($v, '{http://www.ebay.com/marketplace/selling/v1/services}error'));}, $value));
         }
         $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}version');
         if (null !== $value) {
