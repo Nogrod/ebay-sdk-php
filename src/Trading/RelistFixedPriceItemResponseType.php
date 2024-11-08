@@ -560,7 +560,7 @@ class RelistFixedPriceItemResponseType extends AbstractResponseType
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Fees', true);
         if (null !== $value && !empty($value)) {
-            $this->setFees(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\FeeType::fromKeyValue($v);}, $value));
+            $this->setFees(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\FeeType::fromKeyValue(Func::mapArray($v, '{urn:ebay:apis:eBLBaseComponents}Fee', true));}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}StartTime');
         if (null !== $value) {
@@ -584,7 +584,7 @@ class RelistFixedPriceItemResponseType extends AbstractResponseType
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ProductSuggestions', true);
         if (null !== $value && !empty($value)) {
-            $this->setProductSuggestions(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\ProductSuggestionType::fromKeyValue($v);}, $value));
+            $this->setProductSuggestions(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\ProductSuggestionType::fromKeyValue(Func::mapArray($v, '{urn:ebay:apis:eBLBaseComponents}ProductSuggestion', true));}, $value));
         }
     }
 }

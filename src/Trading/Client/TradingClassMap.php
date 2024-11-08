@@ -195,19 +195,7 @@ class TradingClassMap
         '{urn:ebay:apis:eBLBaseComponents}GeteBayOfficialTimeResponse' => 'Nogrod\eBaySDK\Trading\GeteBayOfficialTimeResponse',
         '{urn:ebay:apis:eBLBaseComponents}LeaveFeedbackRequest' => 'Nogrod\eBaySDK\Trading\LeaveFeedbackRequest',
         '{urn:ebay:apis:eBLBaseComponents}LeaveFeedbackResponse' => 'Nogrod\eBaySDK\Trading\LeaveFeedbackResponse',
-        '{urn:ebay:apis:eBLBaseComponents}PlaceOfferRequest' => 'Nogrod\eBaySDK\Trading\PlaceOfferRequest',
-        '{urn:ebay:apis:eBLBaseComponents}OrderAckRequest' => 'Nogrod\eBaySDK\Trading\OrderAckRequest',
-        '{urn:ebay:apis:eBLBaseComponents}FeeSettlementReport' => 'Nogrod\eBaySDK\Trading\FeeSettlementReport',
-        '{urn:ebay:apis:eBLBaseComponents}FeeSettlementReportRequest' => 'Nogrod\eBaySDK\Trading\FeeSettlementReportRequest',
-        '{urn:ebay:apis:eBLBaseComponents}OrderReportRequest' => 'Nogrod\eBaySDK\Trading\OrderReportRequest',
-        '{urn:ebay:apis:eBLBaseComponents}ActiveInventoryReportRequest' => 'Nogrod\eBaySDK\Trading\ActiveInventoryReportRequest',
-        '{urn:ebay:apis:eBLBaseComponents}BulkDataExchangeResponses' => 'Nogrod\eBaySDK\Trading\BulkDataExchangeResponses',
-        '{urn:ebay:apis:eBLBaseComponents}BulkDataExchangeRequests' => 'Nogrod\eBaySDK\Trading\BulkDataExchangeRequests',
-        '{urn:ebay:apis:eBLBaseComponents}OrderAckResponse' => 'Nogrod\eBaySDK\Trading\OrderAckResponse',
-        '{urn:ebay:apis:eBLBaseComponents}ActiveInventoryReport' => 'Nogrod\eBaySDK\Trading\ActiveInventoryReport',
-        '{urn:ebay:apis:eBLBaseComponents}OrderReport' => 'Nogrod\eBaySDK\Trading\OrderReport',
-        '{urn:ebay:apis:eBLBaseComponents}SetShipmentTrackingInfoResponse' => 'Nogrod\eBaySDK\Trading\SetShipmentTrackingInfoResponse',
-        '{urn:ebay:apis:eBLBaseComponents}SetShipmentTrackingInfoRequest' => 'Nogrod\eBaySDK\Trading\SetShipmentTrackingInfoRequest',];
+        '{urn:ebay:apis:eBLBaseComponents}PlaceOfferRequest' => 'Nogrod\eBaySDK\Trading\PlaceOfferRequest',];
     }
 
     public static function GetNamespaces()

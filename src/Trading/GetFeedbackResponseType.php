@@ -359,7 +359,7 @@ class GetFeedbackResponseType extends AbstractResponseType
         parent::setKeyValue($keyValue);
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeedbackDetailArray', true);
         if (null !== $value && !empty($value)) {
-            $this->setFeedbackDetailArray(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\FeedbackDetailType::fromKeyValue($v);}, $value));
+            $this->setFeedbackDetailArray(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\FeedbackDetailType::fromKeyValue(Func::mapArray($v, '{urn:ebay:apis:eBLBaseComponents}FeedbackDetail', true));}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeedbackDetailItemTotal');
         if (null !== $value) {

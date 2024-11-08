@@ -832,11 +832,11 @@ class VariationsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}VariationSpecificsSet', true);
         if (null !== $value && !empty($value)) {
-            $this->setVariationSpecificsSet(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\NameValueListType::fromKeyValue($v);}, $value));
+            $this->setVariationSpecificsSet(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\NameValueListType::fromKeyValue(Func::mapArray($v, '{urn:ebay:apis:eBLBaseComponents}NameValueList', true));}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ModifyNameList', true);
         if (null !== $value && !empty($value)) {
-            $this->setModifyNameList(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\ModifyNameType::fromKeyValue($v);}, $value));
+            $this->setModifyNameList(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\ModifyNameType::fromKeyValue(Func::mapArray($v, '{urn:ebay:apis:eBLBaseComponents}ModifyName', true));}, $value));
         }
     }
 }

@@ -1981,7 +1981,7 @@ class SearchItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
         }
         $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}galleryInfoContainer', true);
         if (null !== $value && !empty($value)) {
-            $this->setGalleryInfoContainer(array_map(function ($v) {return \Nogrod\eBaySDK\Finding\GalleryURLType::fromKeyValue($v);}, $value));
+            $this->setGalleryInfoContainer(array_map(function ($v) {return \Nogrod\eBaySDK\Finding\GalleryURLType::fromKeyValue(Func::mapArray($v, '{http://www.ebay.com/marketplace/search/v1/services}galleryURL', true));}, $value));
         }
         $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}viewItemURL');
         if (null !== $value) {

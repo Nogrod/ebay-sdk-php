@@ -173,7 +173,7 @@ class SellerProfilePreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SupportedSellerProfiles', true);
         if (null !== $value && !empty($value)) {
-            $this->setSupportedSellerProfiles(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\SupportedSellerProfileType::fromKeyValue($v);}, $value));
+            $this->setSupportedSellerProfiles(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\SupportedSellerProfileType::fromKeyValue(Func::mapArray($v, '{urn:ebay:apis:eBLBaseComponents}SupportedSellerProfile', true));}, $value));
         }
     }
 }

@@ -409,7 +409,7 @@ class GetCategoriesResponseType extends AbstractResponseType
         parent::setKeyValue($keyValue);
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CategoryArray', true);
         if (null !== $value && !empty($value)) {
-            $this->setCategoryArray(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\CategoryType::fromKeyValue($v);}, $value));
+            $this->setCategoryArray(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\CategoryType::fromKeyValue(Func::mapArray($v, '{urn:ebay:apis:eBLBaseComponents}Category', true));}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CategoryCount');
         if (null !== $value) {

@@ -1189,7 +1189,7 @@ class SellingStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SuggestedBidValues', true);
         if (null !== $value && !empty($value)) {
-            $this->setSuggestedBidValues(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($v);}, $value));
+            $this->setSuggestedBidValues(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\AmountType::fromKeyValue(Func::mapArray($v, '{urn:ebay:apis:eBLBaseComponents}BidValue', true));}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ListingOnHold');
         if (null !== $value) {

@@ -166,7 +166,7 @@ class GetMyMessagesResponseType extends AbstractResponseType
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Messages', true);
         if (null !== $value && !empty($value)) {
-            $this->setMessages(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\MyMessagesMessageType::fromKeyValue($v);}, $value));
+            $this->setMessages(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\MyMessagesMessageType::fromKeyValue(Func::mapArray($v, '{urn:ebay:apis:eBLBaseComponents}Message', true));}, $value));
         }
     }
 }

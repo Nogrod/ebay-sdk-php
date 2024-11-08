@@ -302,7 +302,7 @@ class GetBestOffersResponseType extends AbstractResponseType
         parent::setKeyValue($keyValue);
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BestOfferArray', true);
         if (null !== $value && !empty($value)) {
-            $this->setBestOfferArray(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\BestOfferType::fromKeyValue($v);}, $value));
+            $this->setBestOfferArray(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\BestOfferType::fromKeyValue(Func::mapArray($v, '{urn:ebay:apis:eBLBaseComponents}BestOffer', true));}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Item');
         if (null !== $value) {
@@ -310,7 +310,7 @@ class GetBestOffersResponseType extends AbstractResponseType
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemBestOffersArray', true);
         if (null !== $value && !empty($value)) {
-            $this->setItemBestOffersArray(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\ItemBestOffersType::fromKeyValue($v);}, $value));
+            $this->setItemBestOffersArray(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\ItemBestOffersType::fromKeyValue(Func::mapArray($v, '{urn:ebay:apis:eBLBaseComponents}ItemBestOffers', true));}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PageNumber');
         if (null !== $value) {

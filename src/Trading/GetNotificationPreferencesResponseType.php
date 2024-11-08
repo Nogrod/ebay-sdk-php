@@ -315,7 +315,7 @@ class GetNotificationPreferencesResponseType extends AbstractResponseType
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UserDeliveryPreferenceArray', true);
         if (null !== $value && !empty($value)) {
-            $this->setUserDeliveryPreferenceArray(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\NotificationEnableType::fromKeyValue($v);}, $value));
+            $this->setUserDeliveryPreferenceArray(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\NotificationEnableType::fromKeyValue(Func::mapArray($v, '{urn:ebay:apis:eBLBaseComponents}NotificationEnable', true));}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UserData');
         if (null !== $value) {

@@ -478,7 +478,7 @@ class FindProductsResponseType extends AbstractResponseType
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DomainHistogram', true);
         if (null !== $value && !empty($value)) {
-            $this->setDomainHistogram(array_map(function ($v) {return \Nogrod\eBaySDK\Shopping\HistogramEntryType::fromKeyValue($v);}, $value));
+            $this->setDomainHistogram(array_map(function ($v) {return \Nogrod\eBaySDK\Shopping\HistogramEntryType::fromKeyValue(Func::mapArray($v, '{urn:ebay:apis:eBLBaseComponents}Domain', true));}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PageNumber');
         if (null !== $value) {

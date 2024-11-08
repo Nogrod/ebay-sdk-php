@@ -223,11 +223,11 @@ class PaymentsInformationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
     {
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Payments', true);
         if (null !== $value && !empty($value)) {
-            $this->setPayments(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\PaymentTransactionType::fromKeyValue($v);}, $value));
+            $this->setPayments(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\PaymentTransactionType::fromKeyValue(Func::mapArray($v, '{urn:ebay:apis:eBLBaseComponents}Payment', true));}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Refunds', true);
         if (null !== $value && !empty($value)) {
-            $this->setRefunds(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\RefundTransactionInfoType::fromKeyValue($v);}, $value));
+            $this->setRefunds(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\RefundTransactionInfoType::fromKeyValue(Func::mapArray($v, '{urn:ebay:apis:eBLBaseComponents}Refund', true));}, $value));
         }
     }
 }
