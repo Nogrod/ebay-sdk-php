@@ -492,7 +492,7 @@ class SKUDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Variations', true);
         if (null !== $value && !empty($value)) {
-            $this->setVariations(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\MerchantDataVariationType::fromKeyValue($v);}, $value));
+            $this->setVariations(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\MerchantDataVariationType::fromKeyValue(Func::mapArray($v, '{urn:ebay:apis:eBLBaseComponents}Variation'));}, $value));
         }
     }
 }
