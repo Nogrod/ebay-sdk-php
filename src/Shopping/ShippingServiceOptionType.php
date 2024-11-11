@@ -716,7 +716,7 @@ class ShippingServiceOptionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExpeditedService');
         if (null !== $value) {
-            $this->setExpeditedService($value);
+            $this->setExpeditedService(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingTimeMin');
         if (null !== $value) {
@@ -744,7 +744,7 @@ class ShippingServiceOptionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FastAndFree');
         if (null !== $value) {
-            $this->setFastAndFree($value);
+            $this->setFastAndFree(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingServiceCutOffTime');
         if (null !== $value) {

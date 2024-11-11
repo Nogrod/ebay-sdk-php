@@ -796,7 +796,7 @@ class OfferType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SecondChanceEnabled');
         if (null !== $value) {
-            $this->setSecondChanceEnabled($value);
+            $this->setSecondChanceEnabled(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SiteCurrency');
         if (null !== $value) {
@@ -824,7 +824,7 @@ class OfferType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UserConsent');
         if (null !== $value) {
-            $this->setUserConsent($value);
+            $this->setUserConsent(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BidCount');
         if (null !== $value) {

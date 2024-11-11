@@ -706,15 +706,15 @@ class GetItemRequestType extends AbstractRequestType
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}IncludeWatchCount');
         if (null !== $value) {
-            $this->setIncludeWatchCount($value);
+            $this->setIncludeWatchCount(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}IncludeItemSpecifics');
         if (null !== $value) {
-            $this->setIncludeItemSpecifics($value);
+            $this->setIncludeItemSpecifics(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}IncludeTaxTable');
         if (null !== $value) {
-            $this->setIncludeTaxTable($value);
+            $this->setIncludeTaxTable(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SKU');
         if (null !== $value) {
@@ -734,7 +734,7 @@ class GetItemRequestType extends AbstractRequestType
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}IncludeItemCompatibilityList');
         if (null !== $value) {
-            $this->setIncludeItemCompatibilityList($value);
+            $this->setIncludeItemCompatibilityList(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
     }
 }

@@ -689,19 +689,19 @@ class GetSellerEventsRequestType extends AbstractRequestType
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}NewItemFilter');
         if (null !== $value) {
-            $this->setNewItemFilter($value);
+            $this->setNewItemFilter(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}IncludeWatchCount');
         if (null !== $value) {
-            $this->setIncludeWatchCount($value);
+            $this->setIncludeWatchCount(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}IncludeVariationSpecifics');
         if (null !== $value) {
-            $this->setIncludeVariationSpecifics($value);
+            $this->setIncludeVariationSpecifics(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}HideVariations');
         if (null !== $value) {
-            $this->setHideVariations($value);
+            $this->setHideVariations(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
     }
 }

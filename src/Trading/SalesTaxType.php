@@ -256,7 +256,7 @@ class SalesTaxType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingIncludedInTax');
         if (null !== $value) {
-            $this->setShippingIncludedInTax($value);
+            $this->setShippingIncludedInTax(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SalesTaxAmount');
         if (null !== $value) {

@@ -293,7 +293,7 @@ class BestOfferDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BestOfferEnabled');
         if (null !== $value) {
-            $this->setBestOfferEnabled($value);
+            $this->setBestOfferEnabled(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BestOffer');
         if (null !== $value) {
@@ -309,7 +309,7 @@ class BestOfferDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}NewBestOffer');
         if (null !== $value) {
-            $this->setNewBestOffer($value);
+            $this->setNewBestOffer(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
     }
 }

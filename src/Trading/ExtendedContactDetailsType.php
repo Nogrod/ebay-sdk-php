@@ -112,7 +112,7 @@ class ExtendedContactDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ClassifiedAdContactByEmailEnabled');
         if (null !== $value) {
-            $this->setClassifiedAdContactByEmailEnabled($value);
+            $this->setClassifiedAdContactByEmailEnabled(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
     }
 }

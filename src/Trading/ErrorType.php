@@ -382,7 +382,7 @@ class ErrorType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UserDisplayHint');
         if (null !== $value) {
-            $this->setUserDisplayHint($value);
+            $this->setUserDisplayHint(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SeverityCode');
         if (null !== $value) {

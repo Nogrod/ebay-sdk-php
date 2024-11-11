@@ -189,7 +189,7 @@ class GetStoreRequestType extends AbstractRequestType
         parent::setKeyValue($keyValue);
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CategoryStructureOnly');
         if (null !== $value) {
-            $this->setCategoryStructureOnly($value);
+            $this->setCategoryStructureOnly(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RootCategoryID');
         if (null !== $value) {

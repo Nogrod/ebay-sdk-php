@@ -4156,7 +4156,7 @@ class SimpleItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
     {
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BestOfferEnabled');
         if (null !== $value) {
-            $this->setBestOfferEnabled($value);
+            $this->setBestOfferEnabled(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BuyItNowPrice');
         if (null !== $value) {
@@ -4172,7 +4172,7 @@ class SimpleItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BuyItNowAvailable');
         if (null !== $value) {
-            $this->setBuyItNowAvailable($value);
+            $this->setBuyItNowAvailable(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ConvertedBuyItNowPrice');
         if (null !== $value) {
@@ -4256,7 +4256,7 @@ class SimpleItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReserveMet');
         if (null !== $value) {
-            $this->setReserveMet($value);
+            $this->setReserveMet(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShipToLocations', true);
         if (null !== $value && !empty($value)) {
@@ -4312,23 +4312,23 @@ class SimpleItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}GermanMotorsSearchable');
         if (null !== $value) {
-            $this->setGermanMotorsSearchable($value);
+            $this->setGermanMotorsSearchable(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}GetItFast');
         if (null !== $value) {
-            $this->setGetItFast($value);
+            $this->setGetItFast(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Gift');
         if (null !== $value) {
-            $this->setGift($value);
+            $this->setGift(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PictureExists');
         if (null !== $value) {
-            $this->setPictureExists($value);
+            $this->setPictureExists(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RecentListing');
         if (null !== $value) {
-            $this->setRecentListing($value);
+            $this->setRecentListing(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Storefront');
         if (null !== $value) {
@@ -4364,7 +4364,7 @@ class SimpleItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AutoPay');
         if (null !== $value) {
-            $this->setAutoPay($value);
+            $this->setAutoPay(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BusinessSellerDetails');
         if (null !== $value) {
@@ -4376,7 +4376,7 @@ class SimpleItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}IntegratedMerchantCreditCardEnabled');
         if (null !== $value) {
-            $this->setIntegratedMerchantCreditCardEnabled($value);
+            $this->setIntegratedMerchantCreditCardEnabled(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Variations');
         if (null !== $value) {
@@ -4416,7 +4416,7 @@ class SimpleItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TopRatedListing');
         if (null !== $value) {
-            $this->setTopRatedListing($value);
+            $this->setTopRatedListing(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}VhrUrl');
         if (null !== $value) {
@@ -4424,7 +4424,7 @@ class SimpleItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}VhrAvailable');
         if (null !== $value) {
-            $this->setVhrAvailable($value);
+            $this->setVhrAvailable(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}QuantityInfo');
         if (null !== $value) {
@@ -4436,7 +4436,7 @@ class SimpleItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}GlobalShipping');
         if (null !== $value) {
-            $this->setGlobalShipping($value);
+            $this->setGlobalShipping(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ConditionDescription');
         if (null !== $value) {
@@ -4460,27 +4460,27 @@ class SimpleItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}NewBestOffer');
         if (null !== $value) {
-            $this->setNewBestOffer($value);
+            $this->setNewBestOffer(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}eBayNowEligible');
         if (null !== $value) {
-            $this->setEBayNowEligible($value);
+            $this->setEBayNowEligible(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}eBayNowAvailable');
         if (null !== $value) {
-            $this->setEBayNowAvailable($value);
+            $this->setEBayNowAvailable(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}IgnoreQuantity');
         if (null !== $value) {
-            $this->setIgnoreQuantity($value);
+            $this->setIgnoreQuantity(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AvailableForPickupDropOff');
         if (null !== $value) {
-            $this->setAvailableForPickupDropOff($value);
+            $this->setAvailableForPickupDropOff(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EligibleForPickupDropOff');
         if (null !== $value) {
-            $this->setEligibleForPickupDropOff($value);
+            $this->setEligibleForPickupDropOff(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
     }
 }

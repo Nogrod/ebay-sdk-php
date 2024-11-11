@@ -72,7 +72,7 @@ class RevokeTokenRequestType extends AbstractRequestType
         parent::setKeyValue($keyValue);
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UnsubscribeNotification');
         if (null !== $value) {
-            $this->setUnsubscribeNotification($value);
+            $this->setUnsubscribeNotification(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
     }
 }

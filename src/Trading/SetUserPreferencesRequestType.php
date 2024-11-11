@@ -585,11 +585,11 @@ class SetUserPreferencesRequestType extends AbstractRequestType
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EmailShipmentTrackingNumberPreference');
         if (null !== $value) {
-            $this->setEmailShipmentTrackingNumberPreference($value);
+            $this->setEmailShipmentTrackingNumberPreference(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RequiredShipPhoneNumberPreference');
         if (null !== $value) {
-            $this->setRequiredShipPhoneNumberPreference($value);
+            $this->setRequiredShipPhoneNumberPreference(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UnpaidItemAssistancePreferences');
         if (null !== $value) {
@@ -605,15 +605,15 @@ class SetUserPreferencesRequestType extends AbstractRequestType
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}GlobalShippingProgramListingPreference');
         if (null !== $value) {
-            $this->setGlobalShippingProgramListingPreference($value);
+            $this->setGlobalShippingProgramListingPreference(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}OverrideGSPserviceWithIntlService');
         if (null !== $value) {
-            $this->setOverrideGSPserviceWithIntlService($value);
+            $this->setOverrideGSPserviceWithIntlService(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}OutOfStockControlPreference');
         if (null !== $value) {
-            $this->setOutOfStockControlPreference($value);
+            $this->setOutOfStockControlPreference(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
     }
 }

@@ -629,11 +629,11 @@ class ShippingInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
         }
         $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}expeditedShipping');
         if (null !== $value) {
-            $this->setExpeditedShipping($value);
+            $this->setExpeditedShipping(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}oneDayShippingAvailable');
         if (null !== $value) {
-            $this->setOneDayShippingAvailable($value);
+            $this->setOneDayShippingAvailable(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}handlingTime');
         if (null !== $value) {
@@ -641,7 +641,7 @@ class ShippingInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
         }
         $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}intermediatedShipping');
         if (null !== $value) {
-            $this->setIntermediatedShipping($value);
+            $this->setIntermediatedShipping(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}delimiter');
         if (null !== $value) {

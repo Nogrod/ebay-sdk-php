@@ -1153,11 +1153,11 @@ class SellingStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReserveMet');
         if (null !== $value) {
-            $this->setReserveMet($value);
+            $this->setReserveMet(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SecondChanceEligible');
         if (null !== $value) {
-            $this->setSecondChanceEligible($value);
+            $this->setSecondChanceEligible(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BidderCount');
         if (null !== $value) {
@@ -1177,11 +1177,11 @@ class SellingStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AdminEnded');
         if (null !== $value) {
-            $this->setAdminEnded($value);
+            $this->setAdminEnded(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SoldAsBin');
         if (null !== $value) {
-            $this->setSoldAsBin($value);
+            $this->setSoldAsBin(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}QuantitySoldByPickupInStore');
         if (null !== $value) {
@@ -1193,7 +1193,7 @@ class SellingStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ListingOnHold');
         if (null !== $value) {
-            $this->setListingOnHold($value);
+            $this->setListingOnHold(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
     }
 }

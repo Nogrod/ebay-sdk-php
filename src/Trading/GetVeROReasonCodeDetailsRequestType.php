@@ -117,7 +117,7 @@ class GetVeROReasonCodeDetailsRequestType extends AbstractRequestType
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReturnAllSites');
         if (null !== $value) {
-            $this->setReturnAllSites($value);
+            $this->setReturnAllSites(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
     }
 }

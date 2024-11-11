@@ -2445,7 +2445,7 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BundlePurchase');
         if (null !== $value) {
-            $this->setBundlePurchase($value);
+            $this->setBundlePurchase(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BuyerCheckoutMessage');
         if (null !== $value) {
@@ -2469,7 +2469,7 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}IsMultiLegShipping');
         if (null !== $value) {
-            $this->setIsMultiLegShipping($value);
+            $this->setIsMultiLegShipping(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MultiLegShippingDetails');
         if (null !== $value) {
@@ -2521,11 +2521,11 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ContainseBayPlusTransaction');
         if (null !== $value) {
-            $this->setContainseBayPlusTransaction($value);
+            $this->setContainseBayPlusTransaction(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}eBayCollectAndRemitTax');
         if (null !== $value) {
-            $this->setEBayCollectAndRemitTax($value);
+            $this->setEBayCollectAndRemitTax(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}OrderLineItemCount');
         if (null !== $value) {

@@ -1124,15 +1124,15 @@ class ListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
     {
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Adult');
         if (null !== $value) {
-            $this->setAdult($value);
+            $this->setAdult(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BindingAuction');
         if (null !== $value) {
-            $this->setBindingAuction($value);
+            $this->setBindingAuction(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CheckoutEnabled');
         if (null !== $value) {
-            $this->setCheckoutEnabled($value);
+            $this->setCheckoutEnabled(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ConvertedBuyItNowPrice');
         if (null !== $value) {
@@ -1148,7 +1148,7 @@ class ListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}HasReservePrice');
         if (null !== $value) {
-            $this->setHasReservePrice($value);
+            $this->setHasReservePrice(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RelistedItemID');
         if (null !== $value) {
@@ -1172,15 +1172,15 @@ class ListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}HasUnansweredQuestions');
         if (null !== $value) {
-            $this->setHasUnansweredQuestions($value);
+            $this->setHasUnansweredQuestions(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}HasPublicMessages');
         if (null !== $value) {
-            $this->setHasPublicMessages($value);
+            $this->setHasPublicMessages(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BuyItNowAvailable');
         if (null !== $value) {
-            $this->setBuyItNowAvailable($value);
+            $this->setBuyItNowAvailable(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MinimumBestOfferPrice');
         if (null !== $value) {

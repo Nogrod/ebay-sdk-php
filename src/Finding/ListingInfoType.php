@@ -709,11 +709,11 @@ class ListingInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     {
         $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}bestOfferEnabled');
         if (null !== $value) {
-            $this->setBestOfferEnabled($value);
+            $this->setBestOfferEnabled(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}buyItNowAvailable');
         if (null !== $value) {
-            $this->setBuyItNowAvailable($value);
+            $this->setBuyItNowAvailable(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}buyItNowPrice');
         if (null !== $value) {
@@ -737,7 +737,7 @@ class ListingInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
         }
         $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}gift');
         if (null !== $value) {
-            $this->setGift($value);
+            $this->setGift(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}watchCount');
         if (null !== $value) {

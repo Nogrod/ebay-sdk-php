@@ -213,7 +213,7 @@ class ProductSuggestionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Recommended');
         if (null !== $value) {
-            $this->setRecommended($value);
+            $this->setRecommended(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
     }
 }

@@ -114,7 +114,7 @@ class GetMessagePreferencesRequestType extends AbstractRequestType
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}IncludeASQPreferences');
         if (null !== $value) {
-            $this->setIncludeASQPreferences($value);
+            $this->setIncludeASQPreferences(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
     }
 }

@@ -720,15 +720,15 @@ class CategoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
     {
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BestOfferEnabled');
         if (null !== $value) {
-            $this->setBestOfferEnabled($value);
+            $this->setBestOfferEnabled(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AutoPayEnabled');
         if (null !== $value) {
-            $this->setAutoPayEnabled($value);
+            $this->setAutoPayEnabled(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}B2BVATEnabled');
         if (null !== $value) {
-            $this->setB2BVATEnabled($value);
+            $this->setB2BVATEnabled(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CategoryID');
         if (null !== $value) {
@@ -748,15 +748,15 @@ class CategoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Expired');
         if (null !== $value) {
-            $this->setExpired($value);
+            $this->setExpired(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LeafCategory');
         if (null !== $value) {
-            $this->setLeafCategory($value);
+            $this->setLeafCategory(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Virtual');
         if (null !== $value) {
-            $this->setVirtual($value);
+            $this->setVirtual(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}NumOfItems');
         if (null !== $value) {
@@ -764,15 +764,15 @@ class CategoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ORPA');
         if (null !== $value) {
-            $this->setORPA($value);
+            $this->setORPA(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ORRA');
         if (null !== $value) {
-            $this->setORRA($value);
+            $this->setORRA(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LSD');
         if (null !== $value) {
-            $this->setLSD($value);
+            $this->setLSD(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Keywords');
         if (null !== $value) {

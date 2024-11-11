@@ -432,7 +432,7 @@ class GetMemberMessagesRequestType extends AbstractRequestType
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DisplayToPublic');
         if (null !== $value) {
-            $this->setDisplayToPublic($value);
+            $this->setDisplayToPublic(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}StartCreationTime');
         if (null !== $value) {

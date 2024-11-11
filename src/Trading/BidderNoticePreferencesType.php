@@ -77,7 +77,7 @@ class BidderNoticePreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre\
     {
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UnsuccessfulBidderNoticeIncludeMyItems');
         if (null !== $value) {
-            $this->setUnsuccessfulBidderNoticeIncludeMyItems($value);
+            $this->setUnsuccessfulBidderNoticeIncludeMyItems(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
     }
 }

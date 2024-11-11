@@ -344,7 +344,7 @@ class GetSellerListResponseType extends AbstractResponseType
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}HasMoreItems');
         if (null !== $value) {
-            $this->setHasMoreItems($value);
+            $this->setHasMoreItems(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemArray', true);
         if (null !== $value && !empty($value)) {

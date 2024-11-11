@@ -972,15 +972,15 @@ class AdFormatLeadType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FinancingAnswer');
         if (null !== $value) {
-            $this->setFinancingAnswer($value);
+            $this->setFinancingAnswer(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Answer1');
         if (null !== $value) {
-            $this->setAnswer1($value);
+            $this->setAnswer1(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Answer2');
         if (null !== $value) {
-            $this->setAnswer2($value);
+            $this->setAnswer2(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
     }
 }

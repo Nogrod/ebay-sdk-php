@@ -899,7 +899,7 @@ class FindItemsAdvancedRequestType extends BaseFindingServiceRequestType
         }
         $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}descriptionSearch');
         if (null !== $value) {
-            $this->setDescriptionSearch($value);
+            $this->setDescriptionSearch(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}domainFilter', true);
         if (null !== $value && !empty($value)) {

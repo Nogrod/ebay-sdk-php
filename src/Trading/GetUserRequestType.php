@@ -166,7 +166,7 @@ class GetUserRequestType extends AbstractRequestType
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}IncludeFeatureEligibility');
         if (null !== $value) {
-            $this->setIncludeFeatureEligibility($value);
+            $this->setIncludeFeatureEligibility(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
     }
 }

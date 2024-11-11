@@ -306,7 +306,7 @@ class CheckoutStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}IntegratedMerchantCreditCardEnabled');
         if (null !== $value) {
-            $this->setIntegratedMerchantCreditCardEnabled($value);
+            $this->setIntegratedMerchantCreditCardEnabled(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaymentInstrument');
         if (null !== $value) {

@@ -560,7 +560,7 @@ class SellerInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
         }
         $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}topRatedSeller');
         if (null !== $value) {
-            $this->setTopRatedSeller($value);
+            $this->setTopRatedSeller(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}delimiter');
         if (null !== $value) {

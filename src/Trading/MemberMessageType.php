@@ -667,11 +667,11 @@ class MemberMessageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EmailCopyToSender');
         if (null !== $value) {
-            $this->setEmailCopyToSender($value);
+            $this->setEmailCopyToSender(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DisplayToPublic');
         if (null !== $value) {
-            $this->setDisplayToPublic($value);
+            $this->setDisplayToPublic(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SenderID');
         if (null !== $value) {

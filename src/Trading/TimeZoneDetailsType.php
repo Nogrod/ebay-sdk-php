@@ -414,7 +414,7 @@ class TimeZoneDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DaylightSavingsInEffect');
         if (null !== $value) {
-            $this->setDaylightSavingsInEffect($value);
+            $this->setDaylightSavingsInEffect(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DetailVersion');
         if (null !== $value) {

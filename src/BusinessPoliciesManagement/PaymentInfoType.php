@@ -401,7 +401,7 @@ class PaymentInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
         }
         $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}immediatePay');
         if (null !== $value) {
-            $this->setImmediatePay($value);
+            $this->setImmediatePay(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}paymentInstructions');
         if (null !== $value) {

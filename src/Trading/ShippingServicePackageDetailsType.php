@@ -121,7 +121,7 @@ class ShippingServicePackageDetailsType implements \Sabre\Xml\XmlSerializable, \
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DimensionsRequired');
         if (null !== $value) {
-            $this->setDimensionsRequired($value);
+            $this->setDimensionsRequired(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
     }
 }

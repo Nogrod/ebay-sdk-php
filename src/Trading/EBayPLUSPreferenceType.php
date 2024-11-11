@@ -169,11 +169,11 @@ class EBayPLUSPreferenceType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}OptInStatus');
         if (null !== $value) {
-            $this->setOptInStatus($value);
+            $this->setOptInStatus(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ListingPreference');
         if (null !== $value) {
-            $this->setListingPreference($value);
+            $this->setListingPreference(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
     }
 }

@@ -372,7 +372,7 @@ class GetSellerProfilesRequestType extends BaseRequestType
         }
         $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}includeDetails');
         if (null !== $value) {
-            $this->setIncludeDetails($value);
+            $this->setIncludeDetails(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
     }
 }

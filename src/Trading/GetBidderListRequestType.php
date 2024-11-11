@@ -281,7 +281,7 @@ class GetBidderListRequestType extends AbstractRequestType
         parent::setKeyValue($keyValue);
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ActiveItemsOnly');
         if (null !== $value) {
-            $this->setActiveItemsOnly($value);
+            $this->setActiveItemsOnly(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EndTimeFrom');
         if (null !== $value) {

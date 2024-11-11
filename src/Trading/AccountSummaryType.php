@@ -896,7 +896,7 @@ class AccountSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PastDue');
         if (null !== $value) {
-            $this->setPastDue($value);
+            $this->setPastDue(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaymentMethod');
         if (null !== $value) {

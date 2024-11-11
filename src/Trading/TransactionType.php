@@ -2914,7 +2914,7 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BestOfferSale');
         if (null !== $value) {
-            $this->setBestOfferSale($value);
+            $this->setBestOfferSale(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}VATPercent');
         if (null !== $value) {
@@ -2990,7 +2990,7 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BundlePurchase');
         if (null !== $value) {
-            $this->setBundlePurchase($value);
+            $this->setBundlePurchase(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ActualShippingCost');
         if (null !== $value) {
@@ -3018,7 +3018,7 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}IsMultiLegShipping');
         if (null !== $value) {
-            $this->setIsMultiLegShipping($value);
+            $this->setIsMultiLegShipping(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MultiLegShippingDetails');
         if (null !== $value) {
@@ -3030,7 +3030,7 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}IntangibleItem');
         if (null !== $value) {
-            $this->setIntangibleItem($value);
+            $this->setIntangibleItem(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MonetaryDetails');
         if (null !== $value) {
@@ -3062,7 +3062,7 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}eBayPlusTransaction');
         if (null !== $value) {
-            $this->setEBayPlusTransaction($value);
+            $this->setEBayPlusTransaction(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}GiftSummary');
         if (null !== $value) {
@@ -3074,19 +3074,19 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Gift');
         if (null !== $value) {
-            $this->setGift($value);
+            $this->setGift(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}GuaranteedShipping');
         if (null !== $value) {
-            $this->setGuaranteedShipping($value);
+            $this->setGuaranteedShipping(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}GuaranteedDelivery');
         if (null !== $value) {
-            $this->setGuaranteedDelivery($value);
+            $this->setGuaranteedDelivery(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}eBayCollectAndRemitTax');
         if (null !== $value) {
-            $this->setEBayCollectAndRemitTax($value);
+            $this->setEBayCollectAndRemitTax(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}eBayCollectAndRemitTaxes');
         if (null !== $value) {

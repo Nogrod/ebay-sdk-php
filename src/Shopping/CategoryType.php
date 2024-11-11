@@ -495,7 +495,7 @@ class CategoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LeafCategory');
         if (null !== $value) {
-            $this->setLeafCategory($value);
+            $this->setLeafCategory(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
     }
 }

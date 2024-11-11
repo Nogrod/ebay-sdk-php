@@ -295,7 +295,7 @@ class AffiliateType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
         }
         $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}geoTargeting');
         if (null !== $value) {
-            $this->setGeoTargeting($value);
+            $this->setGeoTargeting(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}delimiter');
         if (null !== $value) {

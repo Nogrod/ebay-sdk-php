@@ -474,7 +474,7 @@ class FindProductsResponseType extends AbstractResponseType
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MoreResults');
         if (null !== $value) {
-            $this->setMoreResults($value);
+            $this->setMoreResults(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DomainHistogram', true);
         if (null !== $value && !empty($value)) {
@@ -494,7 +494,7 @@ class FindProductsResponseType extends AbstractResponseType
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DuplicateItems');
         if (null !== $value) {
-            $this->setDuplicateItems($value);
+            $this->setDuplicateItems(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
     }
 }

@@ -356,11 +356,11 @@ class FreightShippingType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
         }
         $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}originPickupInside');
         if (null !== $value) {
-            $this->setOriginPickupInside($value);
+            $this->setOriginPickupInside(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}packagingHelpRequired');
         if (null !== $value) {
-            $this->setPackagingHelpRequired($value);
+            $this->setPackagingHelpRequired(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}commodityType');
         if (null !== $value) {
@@ -376,7 +376,7 @@ class FreightShippingType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
         }
         $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}destPickupInside');
         if (null !== $value) {
-            $this->setDestPickupInside($value);
+            $this->setDestPickupInside(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
     }
 }

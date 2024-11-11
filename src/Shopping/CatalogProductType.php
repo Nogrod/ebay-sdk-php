@@ -632,7 +632,7 @@ class CatalogProductType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DisplayStockPhotos');
         if (null !== $value) {
-            $this->setDisplayStockPhotos($value);
+            $this->setDisplayStockPhotos(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ProductID', true);
         if (null !== $value && !empty($value)) {

@@ -391,11 +391,11 @@ class DiscountPriceInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SoldOneBay');
         if (null !== $value) {
-            $this->setSoldOneBay($value);
+            $this->setSoldOneBay(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SoldOffeBay');
         if (null !== $value) {
-            $this->setSoldOffeBay($value);
+            $this->setSoldOffeBay(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
     }
 }

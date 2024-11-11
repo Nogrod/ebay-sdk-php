@@ -372,15 +372,15 @@ class UnpaidItemAssistancePreferencesType implements \Sabre\Xml\XmlSerializable,
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}OptInStatus');
         if (null !== $value) {
-            $this->setOptInStatus($value);
+            $this->setOptInStatus(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AutoRelist');
         if (null !== $value) {
-            $this->setAutoRelist($value);
+            $this->setAutoRelist(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RemoveAllExcludedUsers');
         if (null !== $value) {
-            $this->setRemoveAllExcludedUsers($value);
+            $this->setRemoveAllExcludedUsers(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExcludedUser', true);
         if (null !== $value && !empty($value)) {

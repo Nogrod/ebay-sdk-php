@@ -2093,7 +2093,7 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     {
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AboutMePage');
         if (null !== $value) {
-            $this->setAboutMePage($value);
+            $this->setAboutMePage(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EIASToken');
         if (null !== $value) {
@@ -2121,7 +2121,7 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeedbackPrivate');
         if (null !== $value) {
-            $this->setFeedbackPrivate($value);
+            $this->setFeedbackPrivate(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeedbackRatingStar');
         if (null !== $value) {
@@ -2129,15 +2129,15 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}IDVerified');
         if (null !== $value) {
-            $this->setIDVerified($value);
+            $this->setIDVerified(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}eBayGoodStanding');
         if (null !== $value) {
-            $this->setEBayGoodStanding($value);
+            $this->setEBayGoodStanding(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}NewUser');
         if (null !== $value) {
-            $this->setNewUser($value);
+            $this->setNewUser(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RegistrationAddress');
         if (null !== $value) {
@@ -2161,7 +2161,7 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UserIDChanged');
         if (null !== $value) {
-            $this->setUserIDChanged($value);
+            $this->setUserIDChanged(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UserIDLastChanged');
         if (null !== $value) {
@@ -2189,7 +2189,7 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}eBayWikiReadOnly');
         if (null !== $value) {
-            $this->setEBayWikiReadOnly($value);
+            $this->setEBayWikiReadOnly(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TUVLevel');
         if (null !== $value) {
@@ -2205,7 +2205,7 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UserAnonymized');
         if (null !== $value) {
-            $this->setUserAnonymized($value);
+            $this->setUserAnonymized(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UniqueNeutralFeedbackCount');
         if (null !== $value) {
@@ -2213,11 +2213,11 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EnterpriseSeller');
         if (null !== $value) {
-            $this->setEnterpriseSeller($value);
+            $this->setEnterpriseSeller(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}QualifiesForSelling');
         if (null !== $value) {
-            $this->setQualifiesForSelling($value);
+            $this->setQualifiesForSelling(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingAddress');
         if (null !== $value) {

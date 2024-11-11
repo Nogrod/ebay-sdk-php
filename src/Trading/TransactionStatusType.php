@@ -534,7 +534,7 @@ class TransactionStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BuyerSelectedShipping');
         if (null !== $value) {
-            $this->setBuyerSelectedShipping($value);
+            $this->setBuyerSelectedShipping(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaymentHoldStatus');
         if (null !== $value) {

@@ -202,11 +202,11 @@ class DiscountPriceInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
         }
         $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}soldOnEbay');
         if (null !== $value) {
-            $this->setSoldOnEbay($value);
+            $this->setSoldOnEbay(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}soldOffEbay');
         if (null !== $value) {
-            $this->setSoldOffEbay($value);
+            $this->setSoldOffEbay(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
     }
 }

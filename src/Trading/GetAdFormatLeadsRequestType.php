@@ -246,7 +246,7 @@ class GetAdFormatLeadsRequestType extends AbstractRequestType
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}IncludeMemberMessages');
         if (null !== $value) {
-            $this->setIncludeMemberMessages($value);
+            $this->setIncludeMemberMessages(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}StartCreationTime');
         if (null !== $value) {

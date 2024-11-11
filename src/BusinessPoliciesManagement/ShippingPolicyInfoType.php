@@ -1386,11 +1386,11 @@ class ShippingPolicyInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
         }
         $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}GlobalShipping');
         if (null !== $value) {
-            $this->setGlobalShipping($value);
+            $this->setGlobalShipping(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}EligibleForPickupDropOff');
         if (null !== $value) {
-            $this->setEligibleForPickupDropOff($value);
+            $this->setEligibleForPickupDropOff(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
     }
 }

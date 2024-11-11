@@ -136,7 +136,7 @@ class CategoryGroupType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}IsDefault');
         if (null !== $value) {
-            $this->setIsDefault($value);
+            $this->setIsDefault(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
     }
 }

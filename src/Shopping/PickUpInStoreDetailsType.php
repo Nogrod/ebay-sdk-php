@@ -125,11 +125,11 @@ class PickUpInStoreDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
     {
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EligibleForPickupInStore');
         if (null !== $value) {
-            $this->setEligibleForPickupInStore($value);
+            $this->setEligibleForPickupInStore(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AvailableForPickupInStore');
         if (null !== $value) {
-            $this->setAvailableForPickupInStore($value);
+            $this->setAvailableForPickupInStore(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
     }
 }

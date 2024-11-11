@@ -422,7 +422,7 @@ class ShippingCostSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LocalPickup');
         if (null !== $value) {
-            $this->setLocalPickup($value);
+            $this->setLocalPickup(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}InsuranceOption');
         if (null !== $value) {

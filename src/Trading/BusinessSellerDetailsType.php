@@ -350,7 +350,7 @@ class BusinessSellerDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LegalInvoice');
         if (null !== $value) {
-            $this->setLegalInvoice($value);
+            $this->setLegalInvoice(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TermsAndConditions');
         if (null !== $value) {

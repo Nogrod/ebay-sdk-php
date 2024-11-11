@@ -763,7 +763,7 @@ class ShipPackageDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingIrregular');
         if (null !== $value) {
-            $this->setShippingIrregular($value);
+            $this->setShippingIrregular(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingPackage');
         if (null !== $value) {

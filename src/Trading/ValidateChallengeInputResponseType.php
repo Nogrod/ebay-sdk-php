@@ -72,7 +72,7 @@ class ValidateChallengeInputResponseType extends AbstractResponseType
         parent::setKeyValue($keyValue);
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ValidToken');
         if (null !== $value) {
-            $this->setValidToken($value);
+            $this->setValidToken(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
     }
 }

@@ -318,7 +318,7 @@ class TaxJurisdictionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingIncludedInTax');
         if (null !== $value) {
-            $this->setShippingIncludedInTax($value);
+            $this->setShippingIncludedInTax(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}JurisdictionName');
         if (null !== $value) {

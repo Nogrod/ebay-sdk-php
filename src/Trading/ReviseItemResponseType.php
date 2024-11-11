@@ -604,7 +604,7 @@ class ReviseItemResponseType extends AbstractResponseType
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}VerifyOnly');
         if (null !== $value) {
-            $this->setVerifyOnly($value);
+            $this->setVerifyOnly(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DiscountReason', true);
         if (null !== $value && !empty($value)) {

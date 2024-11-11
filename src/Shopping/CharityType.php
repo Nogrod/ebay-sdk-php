@@ -313,7 +313,7 @@ class CharityType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CharityListing');
         if (null !== $value) {
-            $this->setCharityListing($value);
+            $this->setCharityListing(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Status');
         if (null !== $value) {

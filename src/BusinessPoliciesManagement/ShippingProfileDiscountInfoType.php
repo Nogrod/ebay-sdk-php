@@ -215,11 +215,11 @@ class ShippingProfileDiscountInfoType implements \Sabre\Xml\XmlSerializable, \Sa
         }
         $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}applyDomesticPromoShippingProfile');
         if (null !== $value) {
-            $this->setApplyDomesticPromoShippingProfile($value);
+            $this->setApplyDomesticPromoShippingProfile(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}applyIntlPromoShippingProfile');
         if (null !== $value) {
-            $this->setApplyIntlPromoShippingProfile($value);
+            $this->setApplyIntlPromoShippingProfile(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
     }
 }

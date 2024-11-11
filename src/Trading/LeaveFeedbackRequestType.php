@@ -537,7 +537,7 @@ class LeaveFeedbackRequestType extends AbstractRequestType
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemDeliveredWithinEDD');
         if (null !== $value) {
-            $this->setItemDeliveredWithinEDD($value);
+            $this->setItemDeliveredWithinEDD(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
     }
 }

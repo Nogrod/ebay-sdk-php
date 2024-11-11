@@ -609,7 +609,7 @@ class GetMyeBayBuyingRequestType extends AbstractRequestType
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}HideVariations');
         if (null !== $value) {
-            $this->setHideVariations($value);
+            $this->setHideVariations(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
     }
 }

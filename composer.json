@@ -33,7 +33,8 @@
   "scripts": {
     "build": [
       "xml-client -vvv generate config",
-      "php-cs-fixer fix src"
+      "php-cs-fixer fix src",
+      "copy.bat"
     ],
     "download": "@php wsdldl.php"
   },

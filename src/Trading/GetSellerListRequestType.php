@@ -731,11 +731,11 @@ class GetSellerListRequestType extends AbstractRequestType
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}IncludeWatchCount');
         if (null !== $value) {
-            $this->setIncludeWatchCount($value);
+            $this->setIncludeWatchCount(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AdminEndedItemsOnly');
         if (null !== $value) {
-            $this->setAdminEndedItemsOnly($value);
+            $this->setAdminEndedItemsOnly(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CategoryID');
         if (null !== $value) {
@@ -743,7 +743,7 @@ class GetSellerListRequestType extends AbstractRequestType
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}IncludeVariations');
         if (null !== $value) {
-            $this->setIncludeVariations($value);
+            $this->setIncludeVariations(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
     }
 }

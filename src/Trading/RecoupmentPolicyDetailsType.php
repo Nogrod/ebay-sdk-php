@@ -193,11 +193,11 @@ class RecoupmentPolicyDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\
     {
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EnforcedOnListingSite');
         if (null !== $value) {
-            $this->setEnforcedOnListingSite($value);
+            $this->setEnforcedOnListingSite(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EnforcedOnRegistrationSite');
         if (null !== $value) {
-            $this->setEnforcedOnRegistrationSite($value);
+            $this->setEnforcedOnRegistrationSite(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DetailVersion');
         if (null !== $value) {

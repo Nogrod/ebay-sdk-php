@@ -333,11 +333,11 @@ class ShippingPackageDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DefaultValue');
         if (null !== $value) {
-            $this->setDefaultValue($value);
+            $this->setDefaultValue(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DimensionsSupported');
         if (null !== $value) {
-            $this->setDimensionsSupported($value);
+            $this->setDimensionsSupported(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DetailVersion');
         if (null !== $value) {

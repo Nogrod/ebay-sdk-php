@@ -587,11 +587,11 @@ class GetSellerTransactionsRequestType extends AbstractRequestType
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}IncludeFinalValueFee');
         if (null !== $value) {
-            $this->setIncludeFinalValueFee($value);
+            $this->setIncludeFinalValueFee(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}IncludeContainingOrder');
         if (null !== $value) {
-            $this->setIncludeContainingOrder($value);
+            $this->setIncludeContainingOrder(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SKUArray', true);
         if (null !== $value && !empty($value)) {
@@ -611,7 +611,7 @@ class GetSellerTransactionsRequestType extends AbstractRequestType
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}IncludeCodiceFiscale');
         if (null !== $value) {
-            $this->setIncludeCodiceFiscale($value);
+            $this->setIncludeCodiceFiscale(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
     }
 }

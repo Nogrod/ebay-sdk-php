@@ -368,7 +368,7 @@ class GetSellerTransactionsResponseType extends AbstractResponseType
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}HasMoreTransactions');
         if (null !== $value) {
-            $this->setHasMoreTransactions($value);
+            $this->setHasMoreTransactions(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TransactionsPerPage');
         if (null !== $value) {

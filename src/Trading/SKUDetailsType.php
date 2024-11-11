@@ -488,7 +488,7 @@ class SKUDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReserveMet');
         if (null !== $value) {
-            $this->setReserveMet($value);
+            $this->setReserveMet(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Variations', true);
         if (null !== $value && !empty($value)) {

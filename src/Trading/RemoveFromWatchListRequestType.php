@@ -251,7 +251,7 @@ class RemoveFromWatchListRequestType extends AbstractRequestType
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RemoveAllItems');
         if (null !== $value) {
-            $this->setRemoveAllItems($value);
+            $this->setRemoveAllItems(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}VariationKey', true);
         if (null !== $value && !empty($value)) {

@@ -522,11 +522,11 @@ class BestOfferType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}NewBestOffer');
         if (null !== $value) {
-            $this->setNewBestOffer($value);
+            $this->setNewBestOffer(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ImmediatePayEligible');
         if (null !== $value) {
-            $this->setImmediatePayEligible($value);
+            $this->setImmediatePayEligible(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
     }
 }

@@ -851,7 +851,7 @@ class AccountEntryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReceivedTopRatedDiscount');
         if (null !== $value) {
-            $this->setReceivedTopRatedDiscount($value);
+            $this->setReceivedTopRatedDiscount(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}OrderId');
         if (null !== $value) {
@@ -863,7 +863,7 @@ class AccountEntryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Netted');
         if (null !== $value) {
-            $this->setNetted($value);
+            $this->setNetted(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
     }
 }

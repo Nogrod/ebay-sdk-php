@@ -434,7 +434,7 @@ class GetMyMessagesRequestType extends AbstractRequestType
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}IncludeHighPriorityMessageOnly');
         if (null !== $value) {
-            $this->setIncludeHighPriorityMessageOnly($value);
+            $this->setIncludeHighPriorityMessageOnly(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
     }
 }

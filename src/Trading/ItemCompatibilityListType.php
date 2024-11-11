@@ -194,7 +194,7 @@ class ItemCompatibilityListType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReplaceAll');
         if (null !== $value) {
-            $this->setReplaceAll($value);
+            $this->setReplaceAll(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
     }
 }

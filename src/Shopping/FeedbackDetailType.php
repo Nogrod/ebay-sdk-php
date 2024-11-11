@@ -780,19 +780,19 @@ class FeedbackDetailType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CommentReplaced');
         if (null !== $value) {
-            $this->setCommentReplaced($value);
+            $this->setCommentReplaced(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ResponseReplaced');
         if (null !== $value) {
-            $this->setResponseReplaced($value);
+            $this->setResponseReplaced(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FollowUpReplaced');
         if (null !== $value) {
-            $this->setFollowUpReplaced($value);
+            $this->setFollowUpReplaced(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Countable');
         if (null !== $value) {
-            $this->setCountable($value);
+            $this->setCountable(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
     }
 }

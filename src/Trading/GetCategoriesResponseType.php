@@ -425,7 +425,7 @@ class GetCategoriesResponseType extends AbstractResponseType
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReservePriceAllowed');
         if (null !== $value) {
-            $this->setReservePriceAllowed($value);
+            $this->setReservePriceAllowed(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MinimumReservePrice');
         if (null !== $value) {
@@ -433,7 +433,7 @@ class GetCategoriesResponseType extends AbstractResponseType
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReduceReserveAllowed');
         if (null !== $value) {
-            $this->setReduceReserveAllowed($value);
+            $this->setReduceReserveAllowed(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
     }
 }

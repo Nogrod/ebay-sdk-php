@@ -900,7 +900,7 @@ class SimpleUserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeedbackPrivate');
         if (null !== $value) {
-            $this->setFeedbackPrivate($value);
+            $this->setFeedbackPrivate(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeedbackRatingStar');
         if (null !== $value) {
@@ -912,11 +912,11 @@ class SimpleUserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UserAnonymized');
         if (null !== $value) {
-            $this->setUserAnonymized($value);
+            $this->setUserAnonymized(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}NewUser');
         if (null !== $value) {
-            $this->setNewUser($value);
+            $this->setNewUser(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RegistrationDate');
         if (null !== $value) {
@@ -980,7 +980,7 @@ class SimpleUserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TopRatedSeller');
         if (null !== $value) {
-            $this->setTopRatedSeller($value);
+            $this->setTopRatedSeller(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
     }
 }

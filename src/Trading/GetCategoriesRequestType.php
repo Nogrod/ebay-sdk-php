@@ -309,7 +309,7 @@ class GetCategoriesRequestType extends AbstractRequestType
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ViewAllNodes');
         if (null !== $value) {
-            $this->setViewAllNodes($value);
+            $this->setViewAllNodes(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
     }
 }

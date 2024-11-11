@@ -511,7 +511,7 @@ class ContactHoursDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Hours1AnyTime');
         if (null !== $value) {
-            $this->setHours1AnyTime($value);
+            $this->setHours1AnyTime(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Hours1From');
         if (null !== $value) {
@@ -527,7 +527,7 @@ class ContactHoursDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Hours2AnyTime');
         if (null !== $value) {
-            $this->setHours2AnyTime($value);
+            $this->setHours2AnyTime(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Hours2From');
         if (null !== $value) {

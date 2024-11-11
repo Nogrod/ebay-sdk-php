@@ -682,7 +682,7 @@ class GetOrdersRequestType extends AbstractRequestType
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}IncludeFinalValueFee');
         if (null !== $value) {
-            $this->setIncludeFinalValueFee($value);
+            $this->setIncludeFinalValueFee(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SortingOrder');
         if (null !== $value) {

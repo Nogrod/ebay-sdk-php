@@ -169,7 +169,7 @@ class SellerProfilePreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre
     {
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerProfileOptedIn');
         if (null !== $value) {
-            $this->setSellerProfileOptedIn($value);
+            $this->setSellerProfileOptedIn(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SupportedSellerProfiles', true);
         if (null !== $value && !empty($value)) {

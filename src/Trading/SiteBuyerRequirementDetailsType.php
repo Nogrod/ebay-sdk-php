@@ -403,7 +403,7 @@ class SiteBuyerRequirementDetailsType implements \Sabre\Xml\XmlSerializable, \Sa
     {
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LinkedPayPalAccount');
         if (null !== $value) {
-            $this->setLinkedPayPalAccount($value);
+            $this->setLinkedPayPalAccount(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MaximumBuyerPolicyViolations');
         if (null !== $value) {
@@ -423,7 +423,7 @@ class SiteBuyerRequirementDetailsType implements \Sabre\Xml\XmlSerializable, \Sa
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShipToRegistrationCountry');
         if (null !== $value) {
-            $this->setShipToRegistrationCountry($value);
+            $this->setShipToRegistrationCountry(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DetailVersion');
         if (null !== $value) {

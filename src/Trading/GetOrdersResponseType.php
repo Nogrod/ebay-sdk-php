@@ -270,7 +270,7 @@ class GetOrdersResponseType extends AbstractResponseType
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}HasMoreOrders');
         if (null !== $value) {
-            $this->setHasMoreOrders($value);
+            $this->setHasMoreOrders(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}OrderArray');
         if (null !== $value) {

@@ -335,7 +335,7 @@ class GetVeROReportStatusRequestType extends AbstractRequestType
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}IncludeReportedItemDetails');
         if (null !== $value) {
-            $this->setIncludeReportedItemDetails($value);
+            $this->setIncludeReportedItemDetails(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TimeFrom');
         if (null !== $value) {

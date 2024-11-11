@@ -200,7 +200,7 @@ class ExternalProductIDType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReturnSearchResultOnDuplicates');
         if (null !== $value) {
-            $this->setReturnSearchResultOnDuplicates($value);
+            $this->setReturnSearchResultOnDuplicates(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Type');
         if (null !== $value) {

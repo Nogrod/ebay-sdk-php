@@ -204,11 +204,11 @@ class BuyerRequirementDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\
     {
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShipToRegistrationCountry');
         if (null !== $value) {
-            $this->setShipToRegistrationCountry($value);
+            $this->setShipToRegistrationCountry(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ZeroFeedbackScore');
         if (null !== $value) {
-            $this->setZeroFeedbackScore($value);
+            $this->setZeroFeedbackScore(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MaximumItemRequirements');
         if (null !== $value) {

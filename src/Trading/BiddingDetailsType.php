@@ -242,7 +242,7 @@ class BiddingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Winning');
         if (null !== $value) {
-            $this->setWinning($value);
+            $this->setWinning(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
     }
 }

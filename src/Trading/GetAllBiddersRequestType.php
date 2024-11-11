@@ -157,7 +157,7 @@ class GetAllBiddersRequestType extends AbstractRequestType
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}IncludeBiddingSummary');
         if (null !== $value) {
-            $this->setIncludeBiddingSummary($value);
+            $this->setIncludeBiddingSummary(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
     }
 }

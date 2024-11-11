@@ -615,19 +615,19 @@ class GetAccountRequestType extends AbstractRequestType
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExcludeBalance');
         if (null !== $value) {
-            $this->setExcludeBalance($value);
+            $this->setExcludeBalance(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExcludeSummary');
         if (null !== $value) {
-            $this->setExcludeSummary($value);
+            $this->setExcludeSummary(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}IncludeConversionRate');
         if (null !== $value) {
-            $this->setIncludeConversionRate($value);
+            $this->setIncludeConversionRate(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}IncludeNettedEntries');
         if (null !== $value) {
-            $this->setIncludeNettedEntries($value);
+            $this->setIncludeNettedEntries(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AccountEntrySortType');
         if (null !== $value) {

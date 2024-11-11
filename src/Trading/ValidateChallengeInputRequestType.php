@@ -157,7 +157,7 @@ class ValidateChallengeInputRequestType extends AbstractRequestType
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}KeepTokenValid');
         if (null !== $value) {
-            $this->setKeepTokenValid($value);
+            $this->setKeepTokenValid(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
     }
 }

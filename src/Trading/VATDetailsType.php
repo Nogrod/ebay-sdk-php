@@ -288,11 +288,11 @@ class VATDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
     {
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BusinessSeller');
         if (null !== $value) {
-            $this->setBusinessSeller($value);
+            $this->setBusinessSeller(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RestrictedToBusiness');
         if (null !== $value) {
-            $this->setRestrictedToBusiness($value);
+            $this->setRestrictedToBusiness(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}VATPercent');
         if (null !== $value) {

@@ -225,23 +225,23 @@ class ReviseStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     {
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemRevised');
         if (null !== $value) {
-            $this->setItemRevised($value);
+            $this->setItemRevised(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BuyItNowAdded');
         if (null !== $value) {
-            $this->setBuyItNowAdded($value);
+            $this->setBuyItNowAdded(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BuyItNowLowered');
         if (null !== $value) {
-            $this->setBuyItNowLowered($value);
+            $this->setBuyItNowLowered(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReserveLowered');
         if (null !== $value) {
-            $this->setReserveLowered($value);
+            $this->setReserveLowered(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReserveRemoved');
         if (null !== $value) {
-            $this->setReserveRemoved($value);
+            $this->setReserveRemoved(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
     }
 }

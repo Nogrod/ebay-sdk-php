@@ -769,7 +769,7 @@ class SendInvoiceRequestType extends AbstractRequestType
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EmailCopyToSeller');
         if (null !== $value) {
-            $this->setEmailCopyToSeller($value);
+            $this->setEmailCopyToSeller(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SKU');
         if (null !== $value) {

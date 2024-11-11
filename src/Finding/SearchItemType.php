@@ -2001,7 +2001,7 @@ class SearchItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
         }
         $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}autoPay');
         if (null !== $value) {
-            $this->setAutoPay($value);
+            $this->setAutoPay(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}postalCode');
         if (null !== $value) {
@@ -2037,7 +2037,7 @@ class SearchItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
         }
         $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}returnsAccepted');
         if (null !== $value) {
-            $this->setReturnsAccepted($value);
+            $this->setReturnsAccepted(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}galleryPlusPictureURL', true);
         if (null !== $value && !empty($value)) {
@@ -2057,7 +2057,7 @@ class SearchItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
         }
         $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}isMultiVariationListing');
         if (null !== $value) {
-            $this->setIsMultiVariationListing($value);
+            $this->setIsMultiVariationListing(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}discountPriceInfo');
         if (null !== $value) {
@@ -2081,7 +2081,7 @@ class SearchItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
         }
         $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}topRatedListing');
         if (null !== $value) {
-            $this->setTopRatedListing($value);
+            $this->setTopRatedListing(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}delimiter');
         if (null !== $value) {
@@ -2093,7 +2093,7 @@ class SearchItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
         }
         $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}eBayPlusEnabled');
         if (null !== $value) {
-            $this->setEBayPlusEnabled($value);
+            $this->setEBayPlusEnabled(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
     }
 }

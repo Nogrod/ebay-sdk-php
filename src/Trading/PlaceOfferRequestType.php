@@ -301,7 +301,7 @@ class PlaceOfferRequestType extends AbstractRequestType
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BlockOnWarning');
         if (null !== $value) {
-            $this->setBlockOnWarning($value);
+            $this->setBlockOnWarning(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AffiliateTrackingDetails');
         if (null !== $value) {

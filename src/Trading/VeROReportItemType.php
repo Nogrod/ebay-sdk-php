@@ -493,7 +493,7 @@ class VeROReportItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CopyEmailToRightsOwner');
         if (null !== $value) {
-            $this->setCopyEmailToRightsOwner($value);
+            $this->setCopyEmailToRightsOwner(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Region', true);
         if (null !== $value && !empty($value)) {

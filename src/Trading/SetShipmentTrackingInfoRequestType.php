@@ -264,11 +264,11 @@ class SetShipmentTrackingInfoRequestType implements \Sabre\Xml\XmlSerializable, 
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}IsShipped');
         if (null !== $value) {
-            $this->setIsShipped($value);
+            $this->setIsShipped(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}IsPaid');
         if (null !== $value) {
-            $this->setIsPaid($value);
+            $this->setIsPaid(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
     }
 }

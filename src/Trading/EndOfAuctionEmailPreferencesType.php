@@ -362,19 +362,19 @@ class EndOfAuctionEmailPreferencesType implements \Sabre\Xml\XmlSerializable, \S
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EmailCustomized');
         if (null !== $value) {
-            $this->setEmailCustomized($value);
+            $this->setEmailCustomized(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TextCustomized');
         if (null !== $value) {
-            $this->setTextCustomized($value);
+            $this->setTextCustomized(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LogoCustomized');
         if (null !== $value) {
-            $this->setLogoCustomized($value);
+            $this->setLogoCustomized(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CopyEmail');
         if (null !== $value) {
-            $this->setCopyEmail($value);
+            $this->setCopyEmail(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
     }
 }

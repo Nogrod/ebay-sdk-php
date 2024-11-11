@@ -175,7 +175,7 @@ class GetDescriptionTemplatesRequestType extends AbstractRequestType
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MotorVehicles');
         if (null !== $value) {
-            $this->setMotorVehicles($value);
+            $this->setMotorVehicles(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
     }
 }

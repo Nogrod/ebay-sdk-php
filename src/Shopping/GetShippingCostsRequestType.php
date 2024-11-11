@@ -261,7 +261,7 @@ class GetShippingCostsRequestType extends AbstractRequestType
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}IncludeDetails');
         if (null !== $value) {
-            $this->setIncludeDetails($value);
+            $this->setIncludeDetails(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
     }
 }

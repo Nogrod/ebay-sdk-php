@@ -77,7 +77,7 @@ class DigitalGoodInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     {
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DigitalDelivery');
         if (null !== $value) {
-            $this->setDigitalDelivery($value);
+            $this->setDigitalDelivery(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
     }
 }

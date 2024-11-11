@@ -374,7 +374,7 @@ class SellerPaymentPreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre
     {
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AlwaysUseThisPaymentAddress');
         if (null !== $value) {
-            $this->setAlwaysUseThisPaymentAddress($value);
+            $this->setAlwaysUseThisPaymentAddress(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DisplayPayNowButton');
         if (null !== $value) {
@@ -382,7 +382,7 @@ class SellerPaymentPreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PayPalPreferred');
         if (null !== $value) {
-            $this->setPayPalPreferred($value);
+            $this->setPayPalPreferred(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DefaultPayPalEmailAddress');
         if (null !== $value) {
@@ -390,7 +390,7 @@ class SellerPaymentPreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PayPalAlwaysOn');
         if (null !== $value) {
-            $this->setPayPalAlwaysOn($value);
+            $this->setPayPalAlwaysOn(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerPaymentAddress');
         if (null !== $value) {

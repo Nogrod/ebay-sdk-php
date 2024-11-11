@@ -444,7 +444,7 @@ class GetAccountResponseType extends AbstractResponseType
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}HasMoreEntries');
         if (null !== $value) {
-            $this->setHasMoreEntries($value);
+            $this->setHasMoreEntries(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EntriesPerPage');
         if (null !== $value) {

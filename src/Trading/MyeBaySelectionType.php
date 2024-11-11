@@ -413,19 +413,19 @@ class MyeBaySelectionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     {
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Include');
         if (null !== $value) {
-            $this->setInclude($value);
+            $this->setInclude(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}IncludeItemCount');
         if (null !== $value) {
-            $this->setIncludeItemCount($value);
+            $this->setIncludeItemCount(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}IncludeFavoriteSearcheCount');
         if (null !== $value) {
-            $this->setIncludeFavoriteSearcheCount($value);
+            $this->setIncludeFavoriteSearcheCount(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}IncludeFavoriteSellerCount');
         if (null !== $value) {
-            $this->setIncludeFavoriteSellerCount($value);
+            $this->setIncludeFavoriteSellerCount(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Sort');
         if (null !== $value) {
@@ -441,7 +441,7 @@ class MyeBaySelectionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}IncludeListContents');
         if (null !== $value) {
-            $this->setIncludeListContents($value);
+            $this->setIncludeListContents(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
     }
 }

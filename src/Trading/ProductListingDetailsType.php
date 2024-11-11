@@ -856,11 +856,11 @@ class ProductListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     {
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}IncludeStockPhotoURL');
         if (null !== $value) {
-            $this->setIncludeStockPhotoURL($value);
+            $this->setIncludeStockPhotoURL(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UseStockPhotoURLAsGallery');
         if (null !== $value) {
-            $this->setUseStockPhotoURLAsGallery($value);
+            $this->setUseStockPhotoURLAsGallery(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}StockPhotoURL');
         if (null !== $value) {
@@ -884,7 +884,7 @@ class ProductListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReturnSearchResultOnDuplicates');
         if (null !== $value) {
-            $this->setReturnSearchResultOnDuplicates($value);
+            $this->setReturnSearchResultOnDuplicates(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ISBN');
         if (null !== $value) {
@@ -904,11 +904,11 @@ class ProductListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UseFirstProduct');
         if (null !== $value) {
-            $this->setUseFirstProduct($value);
+            $this->setUseFirstProduct(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}IncludeeBayProductDetails');
         if (null !== $value) {
-            $this->setIncludeeBayProductDetails($value);
+            $this->setIncludeeBayProductDetails(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}NameValueList', true);
         if (null !== $value && !empty($value)) {

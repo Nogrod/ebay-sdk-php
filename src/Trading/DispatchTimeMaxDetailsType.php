@@ -280,7 +280,7 @@ class DispatchTimeMaxDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExtendedHandling');
         if (null !== $value) {
-            $this->setExtendedHandling($value);
+            $this->setExtendedHandling(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
     }
 }

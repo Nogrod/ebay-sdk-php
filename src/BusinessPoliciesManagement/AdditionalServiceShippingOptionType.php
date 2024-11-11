@@ -112,7 +112,7 @@ class AdditionalServiceShippingOptionType implements \Sabre\Xml\XmlSerializable,
         }
         $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}value');
         if (null !== $value) {
-            $this->setValue($value);
+            $this->setValue(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
     }
 }

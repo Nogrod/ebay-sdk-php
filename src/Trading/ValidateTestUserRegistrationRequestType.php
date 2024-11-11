@@ -210,11 +210,11 @@ class ValidateTestUserRegistrationRequestType extends AbstractRequestType
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SubscribeSM');
         if (null !== $value) {
-            $this->setSubscribeSM($value);
+            $this->setSubscribeSM(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SubscribeSMPro');
         if (null !== $value) {
-            $this->setSubscribeSMPro($value);
+            $this->setSubscribeSMPro(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
     }
 }

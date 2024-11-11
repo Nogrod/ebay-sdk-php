@@ -334,7 +334,7 @@ class ReviseItemRequestType extends AbstractRequestType
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}VerifyOnly');
         if (null !== $value) {
-            $this->setVerifyOnly($value);
+            $this->setVerifyOnly(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
     }
 }

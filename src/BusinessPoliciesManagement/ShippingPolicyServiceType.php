@@ -733,7 +733,7 @@ class ShippingPolicyServiceType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
         }
         $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}freeShipping');
         if (null !== $value) {
-            $this->setFreeShipping($value);
+            $this->setFreeShipping(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}codFee');
         if (null !== $value) {
@@ -741,7 +741,7 @@ class ShippingPolicyServiceType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
         }
         $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}fastShipping');
         if (null !== $value) {
-            $this->setFastShipping($value);
+            $this->setFastShipping(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}shippingServiceAdditionalCost');
         if (null !== $value) {
@@ -761,7 +761,7 @@ class ShippingPolicyServiceType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
         }
         $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}buyerResponsibleForShipping');
         if (null !== $value) {
-            $this->setBuyerResponsibleForShipping($value);
+            $this->setBuyerResponsibleForShipping(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
     }
 }

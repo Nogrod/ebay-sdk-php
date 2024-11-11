@@ -146,7 +146,7 @@ class CategoryGroupType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
     {
         $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}default');
         if (null !== $value) {
-            $this->setDefault($value);
+            $this->setDefault(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}name');
         if (null !== $value) {
@@ -154,7 +154,7 @@ class CategoryGroupType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
         }
         $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}ETRS');
         if (null !== $value) {
-            $this->setETRS($value);
+            $this->setETRS(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
     }
 }

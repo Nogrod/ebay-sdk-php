@@ -1102,7 +1102,7 @@ class VariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Delete');
         if (null !== $value) {
-            $this->setDelete($value);
+            $this->setDelete(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}WatchCount');
         if (null !== $value) {

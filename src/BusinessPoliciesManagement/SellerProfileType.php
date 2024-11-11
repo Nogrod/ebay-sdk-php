@@ -413,7 +413,7 @@ class SellerProfileType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
     {
         $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}forceDuplicate');
         if (null !== $value) {
-            $this->setForceDuplicate($value);
+            $this->setForceDuplicate(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}profileName');
         if (null !== $value) {

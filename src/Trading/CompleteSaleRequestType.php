@@ -507,11 +507,11 @@ class CompleteSaleRequestType extends AbstractRequestType
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Shipped');
         if (null !== $value) {
-            $this->setShipped($value);
+            $this->setShipped(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Paid');
         if (null !== $value) {
-            $this->setPaid($value);
+            $this->setPaid(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ListingType');
         if (null !== $value) {

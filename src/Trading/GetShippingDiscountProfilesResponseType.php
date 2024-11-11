@@ -306,7 +306,7 @@ class GetShippingDiscountProfilesResponseType extends AbstractResponseType
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PromotionalShippingDiscount');
         if (null !== $value) {
-            $this->setPromotionalShippingDiscount($value);
+            $this->setPromotionalShippingDiscount(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CalculatedHandlingDiscount');
         if (null !== $value) {
