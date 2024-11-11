@@ -381,7 +381,7 @@ class GetAccountResponseType extends AbstractResponseType
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Currency", $value);
         }
         $value = $this->getAccountEntries();
-        if (null !== $value && !empty($this->getAccountEntries())) {
+        if (null !== $value && [] !== $this->getAccountEntries()) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}AccountEntries", array_map(function ($v) {return ["AccountEntry" => $v];}, $value));
         }
         $value = $this->getPaginationResult();

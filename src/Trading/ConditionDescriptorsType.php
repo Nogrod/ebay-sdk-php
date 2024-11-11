@@ -121,7 +121,7 @@ class ConditionDescriptorsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getConditionDescriptor();
-        if (null !== $value && !empty($this->getConditionDescriptor())) {
+        if (null !== $value && [] !== $this->getConditionDescriptor()) {
             $writer->write(array_map(function ($v) {return ["ConditionDescriptor" => $v];}, $value));
         }
     }

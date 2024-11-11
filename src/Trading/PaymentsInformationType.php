@@ -198,11 +198,11 @@ class PaymentsInformationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getPayments();
-        if (null !== $value && !empty($this->getPayments())) {
+        if (null !== $value && [] !== $this->getPayments()) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Payments", array_map(function ($v) {return ["Payment" => $v];}, $value));
         }
         $value = $this->getRefunds();
-        if (null !== $value && !empty($this->getRefunds())) {
+        if (null !== $value && [] !== $this->getRefunds()) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Refunds", array_map(function ($v) {return ["Refund" => $v];}, $value));
         }
     }

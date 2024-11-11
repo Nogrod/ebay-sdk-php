@@ -474,11 +474,11 @@ class RegulatoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Manufacturer", $value);
         }
         $value = $this->getResponsiblePersons();
-        if (null !== $value && !empty($this->getResponsiblePersons())) {
+        if (null !== $value && [] !== $this->getResponsiblePersons()) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ResponsiblePersons", array_map(function ($v) {return ["ResponsiblePerson" => $v];}, $value));
         }
         $value = $this->getDocuments();
-        if (null !== $value && !empty($this->getDocuments())) {
+        if (null !== $value && [] !== $this->getDocuments()) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Documents", array_map(function ($v) {return ["Document" => $v];}, $value));
         }
     }

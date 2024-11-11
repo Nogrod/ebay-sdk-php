@@ -92,7 +92,7 @@ class VeROReportedItemDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getReportedItem();
-        if (null !== $value && !empty($this->getReportedItem())) {
+        if (null !== $value && [] !== $this->getReportedItem()) {
             $writer->write(array_map(function ($v) {return ["ReportedItem" => $v];}, $value));
         }
     }

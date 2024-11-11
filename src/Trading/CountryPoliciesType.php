@@ -155,7 +155,7 @@ class CountryPoliciesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Country", $value);
         }
         $value = $this->getPolicyID();
-        if (null !== $value && !empty($this->getPolicyID())) {
+        if (null !== $value && [] !== $this->getPolicyID()) {
             $writer->write(array_map(function ($v) {return ["PolicyID" => $v];}, $value));
         }
     }
@@ -178,7 +178,7 @@ class CountryPoliciesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
         if (null !== $value) {
             $this->setCountry($value);
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}PolicyID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PolicyID');
         if (null !== $value) {
             $this->setPolicyID($value);
         }

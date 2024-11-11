@@ -1104,11 +1104,11 @@ class ShippingServiceDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippingTimeMin", $value);
         }
         $value = $this->getServiceType();
-        if (null !== $value && !empty($this->getServiceType())) {
+        if (null !== $value && [] !== $this->getServiceType()) {
             $writer->write(array_map(function ($v) {return ["ServiceType" => $v];}, $value));
         }
         $value = $this->getShippingPackage();
-        if (null !== $value && !empty($this->getShippingPackage())) {
+        if (null !== $value && [] !== $this->getShippingPackage()) {
             $writer->write(array_map(function ($v) {return ["ShippingPackage" => $v];}, $value));
         }
         $value = $this->getDimensionsRequired();
@@ -1127,7 +1127,7 @@ class ShippingServiceDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SurchargeApplicable", $value);
         }
         $value = $this->getShippingCarrier();
-        if (null !== $value && !empty($this->getShippingCarrier())) {
+        if (null !== $value && [] !== $this->getShippingCarrier()) {
             $writer->write(array_map(function ($v) {return ["ShippingCarrier" => $v];}, $value));
         }
         $value = $this->getCODService();
@@ -1136,7 +1136,7 @@ class ShippingServiceDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CODService", $value);
         }
         $value = $this->getDeprecationDetails();
-        if (null !== $value && !empty($this->getDeprecationDetails())) {
+        if (null !== $value && [] !== $this->getDeprecationDetails()) {
             $writer->write(array_map(function ($v) {return ["DeprecationDetails" => $v];}, $value));
         }
         $value = $this->getMappedToShippingServiceID();
@@ -1148,7 +1148,7 @@ class ShippingServiceDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CostGroupFlat", $value);
         }
         $value = $this->getShippingServicePackageDetails();
-        if (null !== $value && !empty($this->getShippingServicePackageDetails())) {
+        if (null !== $value && [] !== $this->getShippingServicePackageDetails()) {
             $writer->write(array_map(function ($v) {return ["ShippingServicePackageDetails" => $v];}, $value));
         }
         $value = $this->getWeightRequired();
@@ -1212,11 +1212,11 @@ class ShippingServiceDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
         if (null !== $value) {
             $this->setShippingTimeMin($value);
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ServiceType');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ServiceType');
         if (null !== $value) {
             $this->setServiceType($value);
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingPackage');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingPackage');
         if (null !== $value) {
             $this->setShippingPackage($value);
         }
@@ -1232,7 +1232,7 @@ class ShippingServiceDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
         if (null !== $value) {
             $this->setSurchargeApplicable(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingCarrier');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingCarrier');
         if (null !== $value) {
             $this->setShippingCarrier($value);
         }

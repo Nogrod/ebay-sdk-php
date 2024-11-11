@@ -253,11 +253,11 @@ class ReviseMyMessagesFoldersRequestType extends AbstractRequestType
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Operation", $value);
         }
         $value = $this->getFolderID();
-        if (null !== $value && !empty($this->getFolderID())) {
+        if (null !== $value && [] !== $this->getFolderID()) {
             $writer->write(array_map(function ($v) {return ["FolderID" => $v];}, $value));
         }
         $value = $this->getFolderName();
-        if (null !== $value && !empty($this->getFolderName())) {
+        if (null !== $value && [] !== $this->getFolderName()) {
             $writer->write(array_map(function ($v) {return ["FolderName" => $v];}, $value));
         }
     }
@@ -281,11 +281,11 @@ class ReviseMyMessagesFoldersRequestType extends AbstractRequestType
         if (null !== $value) {
             $this->setOperation($value);
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}FolderID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FolderID');
         if (null !== $value) {
             $this->setFolderID($value);
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}FolderName');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FolderName');
         if (null !== $value) {
             $this->setFolderName($value);
         }

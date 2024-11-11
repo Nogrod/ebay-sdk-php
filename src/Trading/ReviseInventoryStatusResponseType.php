@@ -202,11 +202,11 @@ class ReviseInventoryStatusResponseType extends AbstractResponseType
     {
         parent::xmlSerialize($writer);
         $value = $this->getInventoryStatus();
-        if (null !== $value && !empty($this->getInventoryStatus())) {
+        if (null !== $value && [] !== $this->getInventoryStatus()) {
             $writer->write(array_map(function ($v) {return ["InventoryStatus" => $v];}, $value));
         }
         $value = $this->getFees();
-        if (null !== $value && !empty($this->getFees())) {
+        if (null !== $value && [] !== $this->getFees()) {
             $writer->write(array_map(function ($v) {return ["Fees" => $v];}, $value));
         }
     }

@@ -126,7 +126,7 @@ class VariationKeyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ItemID", $value);
         }
         $value = $this->getVariationSpecifics();
-        if (null !== $value && !empty($this->getVariationSpecifics())) {
+        if (null !== $value && [] !== $this->getVariationSpecifics()) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}VariationSpecifics", array_map(function ($v) {return ["NameValueList" => $v];}, $value));
         }
     }

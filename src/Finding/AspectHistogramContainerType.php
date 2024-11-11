@@ -363,7 +363,7 @@ class AspectHistogramContainerType implements \Sabre\Xml\XmlSerializable, \Sabre
             $writer->writeElement("{http://www.ebay.com/marketplace/search/v1/services}domainDisplayName", $value);
         }
         $value = $this->getAspect();
-        if (null !== $value && !empty($this->getAspect())) {
+        if (null !== $value && [] !== $this->getAspect()) {
             $writer->write(array_map(function ($v) {return ["aspect" => $v];}, $value));
         }
         $value = $this->getDelimiter();

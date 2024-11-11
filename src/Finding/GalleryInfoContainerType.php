@@ -91,7 +91,7 @@ class GalleryInfoContainerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
     {
         $writer->writeAttribute("xmlns", "http://www.ebay.com/marketplace/search/v1/services");
         $value = $this->getGalleryURL();
-        if (null !== $value && !empty($this->getGalleryURL())) {
+        if (null !== $value && [] !== $this->getGalleryURL()) {
             $writer->write(array_map(function ($v) {return ["galleryURL" => $v];}, $value));
         }
     }

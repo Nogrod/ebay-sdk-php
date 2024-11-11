@@ -91,7 +91,7 @@ class GetItemStatusRequestType extends AbstractRequestType
     {
         parent::xmlSerialize($writer);
         $value = $this->getItemID();
-        if (null !== $value && !empty($this->getItemID())) {
+        if (null !== $value && [] !== $this->getItemID()) {
             $writer->write(array_map(function ($v) {return ["ItemID" => $v];}, $value));
         }
     }
@@ -111,7 +111,7 @@ class GetItemStatusRequestType extends AbstractRequestType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemID');
         if (null !== $value) {
             $this->setItemID($value);
         }

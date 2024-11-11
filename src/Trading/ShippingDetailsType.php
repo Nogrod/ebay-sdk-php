@@ -2394,11 +2394,11 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippingRateType", $value);
         }
         $value = $this->getShippingServiceOptions();
-        if (null !== $value && !empty($this->getShippingServiceOptions())) {
+        if (null !== $value && [] !== $this->getShippingServiceOptions()) {
             $writer->write(array_map(function ($v) {return ["ShippingServiceOptions" => $v];}, $value));
         }
         $value = $this->getInternationalShippingServiceOption();
-        if (null !== $value && !empty($this->getInternationalShippingServiceOption())) {
+        if (null !== $value && [] !== $this->getInternationalShippingServiceOption()) {
             $writer->write(array_map(function ($v) {return ["InternationalShippingServiceOption" => $v];}, $value));
         }
         $value = $this->getShippingType();
@@ -2415,7 +2415,7 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ThirdPartyCheckout", $value);
         }
         $value = $this->getTaxTable();
-        if (null !== $value && !empty($this->getTaxTable())) {
+        if (null !== $value && [] !== $this->getTaxTable()) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TaxTable", array_map(function ($v) {return ["TaxJurisdiction" => $v];}, $value));
         }
         $value = $this->getGetItFast();
@@ -2470,7 +2470,7 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PromotionalShippingDiscountDetails", $value);
         }
         $value = $this->getExcludeShipToLocation();
-        if (null !== $value && !empty($this->getExcludeShipToLocation())) {
+        if (null !== $value && [] !== $this->getExcludeShipToLocation()) {
             $writer->write(array_map(function ($v) {return ["ExcludeShipToLocation" => $v];}, $value));
         }
         $value = $this->getEBayEstimatedLabelCost();
@@ -2483,7 +2483,7 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SellerExcludeShipToLocationsPreference", $value);
         }
         $value = $this->getShipmentTrackingDetails();
-        if (null !== $value && !empty($this->getShipmentTrackingDetails())) {
+        if (null !== $value && [] !== $this->getShipmentTrackingDetails()) {
             $writer->write(array_map(function ($v) {return ["ShipmentTrackingDetails" => $v];}, $value));
         }
         $value = $this->getRateTableDetails();
@@ -2614,7 +2614,7 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
         if (null !== $value) {
             $this->setPromotionalShippingDiscountDetails(\Nogrod\eBaySDK\Trading\PromotionalShippingDiscountDetailsType::fromKeyValue($value));
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExcludeShipToLocation');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExcludeShipToLocation');
         if (null !== $value) {
             $this->setExcludeShipToLocation($value);
         }

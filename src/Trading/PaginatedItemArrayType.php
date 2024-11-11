@@ -122,7 +122,7 @@ class PaginatedItemArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getItemArray();
-        if (null !== $value && !empty($this->getItemArray())) {
+        if (null !== $value && [] !== $this->getItemArray()) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ItemArray", array_map(function ($v) {return ["Item" => $v];}, $value));
         }
         $value = $this->getPaginationResult();

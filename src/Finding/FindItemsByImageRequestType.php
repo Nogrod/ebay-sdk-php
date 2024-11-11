@@ -695,23 +695,23 @@ class FindItemsByImageRequestType extends BestMatchFindingServiceRequestType
             $writer->writeElement("{http://www.ebay.com/marketplace/search/v1/services}itemId", $value);
         }
         $value = $this->getCategoryId();
-        if (null !== $value && !empty($this->getCategoryId())) {
+        if (null !== $value && [] !== $this->getCategoryId()) {
             $writer->write(array_map(function ($v) {return ["categoryId" => $v];}, $value));
         }
         $value = $this->getItemFilter();
-        if (null !== $value && !empty($this->getItemFilter())) {
+        if (null !== $value && [] !== $this->getItemFilter()) {
             $writer->write(array_map(function ($v) {return ["itemFilter" => $v];}, $value));
         }
         $value = $this->getAspectFilter();
-        if (null !== $value && !empty($this->getAspectFilter())) {
+        if (null !== $value && [] !== $this->getAspectFilter()) {
             $writer->write(array_map(function ($v) {return ["aspectFilter" => $v];}, $value));
         }
         $value = $this->getDomainFilter();
-        if (null !== $value && !empty($this->getDomainFilter())) {
+        if (null !== $value && [] !== $this->getDomainFilter()) {
             $writer->write(array_map(function ($v) {return ["domainFilter" => $v];}, $value));
         }
         $value = $this->getOutputSelector();
-        if (null !== $value && !empty($this->getOutputSelector())) {
+        if (null !== $value && [] !== $this->getOutputSelector()) {
             $writer->write(array_map(function ($v) {return ["outputSelector" => $v];}, $value));
         }
     }
@@ -735,7 +735,7 @@ class FindItemsByImageRequestType extends BestMatchFindingServiceRequestType
         if (null !== $value) {
             $this->setItemId($value);
         }
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}categoryId');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}categoryId');
         if (null !== $value) {
             $this->setCategoryId($value);
         }
@@ -751,7 +751,7 @@ class FindItemsByImageRequestType extends BestMatchFindingServiceRequestType
         if (null !== $value) {
             $this->setDomainFilter(array_map(function ($v) {return \Nogrod\eBaySDK\Finding\DomainFilterType::fromKeyValue($v);}, $value));
         }
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}outputSelector');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}outputSelector');
         if (null !== $value) {
             $this->setOutputSelector($value);
         }

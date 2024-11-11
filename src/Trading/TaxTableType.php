@@ -151,7 +151,7 @@ class TaxTableType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getTaxJurisdiction();
-        if (null !== $value && !empty($this->getTaxJurisdiction())) {
+        if (null !== $value && [] !== $this->getTaxJurisdiction()) {
             $writer->write(array_map(function ($v) {return ["TaxJurisdiction" => $v];}, $value));
         }
     }

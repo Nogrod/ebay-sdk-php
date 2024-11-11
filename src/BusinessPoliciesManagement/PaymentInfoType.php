@@ -355,7 +355,7 @@ class PaymentInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     {
         $writer->writeAttribute("xmlns", "http://www.ebay.com/marketplace/selling/v1/services");
         $value = $this->getAcceptedPaymentMethod();
-        if (null !== $value && !empty($this->getAcceptedPaymentMethod())) {
+        if (null !== $value && [] !== $this->getAcceptedPaymentMethod()) {
             $writer->write(array_map(function ($v) {return ["acceptedPaymentMethod" => $v];}, $value));
         }
         $value = $this->getImmediatePay();
@@ -395,7 +395,7 @@ class PaymentInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}acceptedPaymentMethod');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}acceptedPaymentMethod');
         if (null !== $value) {
             $this->setAcceptedPaymentMethod($value);
         }

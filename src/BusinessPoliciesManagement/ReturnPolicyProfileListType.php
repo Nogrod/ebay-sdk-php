@@ -91,7 +91,7 @@ class ReturnPolicyProfileListType implements \Sabre\Xml\XmlSerializable, \Sabre\
     {
         $writer->writeAttribute("xmlns", "http://www.ebay.com/marketplace/selling/v1/services");
         $value = $this->getReturnPolicyProfile();
-        if (null !== $value && !empty($this->getReturnPolicyProfile())) {
+        if (null !== $value && [] !== $this->getReturnPolicyProfile()) {
             $writer->write(array_map(function ($v) {return ["ReturnPolicyProfile" => $v];}, $value));
         }
     }

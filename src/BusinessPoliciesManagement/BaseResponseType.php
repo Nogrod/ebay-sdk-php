@@ -267,7 +267,7 @@ class BaseResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
             $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}ack", $value);
         }
         $value = $this->getErrorMessage();
-        if (null !== $value && !empty($this->getErrorMessage())) {
+        if (null !== $value && [] !== $this->getErrorMessage()) {
             $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}errorMessage", array_map(function ($v) {return ["error" => $v];}, $value));
         }
         $value = $this->getVersion();
@@ -279,7 +279,7 @@ class BaseResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
             $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}timestamp", $value);
         }
         $value = $this->getExtension();
-        if (null !== $value && !empty($this->getExtension())) {
+        if (null !== $value && [] !== $this->getExtension()) {
             $writer->write(array_map(function ($v) {return ["extension" => $v];}, $value));
         }
     }

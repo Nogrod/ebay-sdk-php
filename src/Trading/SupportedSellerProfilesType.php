@@ -104,7 +104,7 @@ class SupportedSellerProfilesType implements \Sabre\Xml\XmlSerializable, \Sabre\
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getSupportedSellerProfile();
-        if (null !== $value && !empty($this->getSupportedSellerProfile())) {
+        if (null !== $value && [] !== $this->getSupportedSellerProfile()) {
             $writer->write(array_map(function ($v) {return ["SupportedSellerProfile" => $v];}, $value));
         }
     }

@@ -179,7 +179,7 @@ class CategoryHistogramType extends CategoryType
             $writer->writeElement("{http://www.ebay.com/marketplace/search/v1/services}count", $value);
         }
         $value = $this->getChildCategoryHistogram();
-        if (null !== $value && !empty($this->getChildCategoryHistogram())) {
+        if (null !== $value && [] !== $this->getChildCategoryHistogram()) {
             $writer->write(array_map(function ($v) {return ["childCategoryHistogram" => $v];}, $value));
         }
         $value = $this->getDelimiter();

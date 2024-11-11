@@ -363,7 +363,7 @@ class GetMyMessagesRequestType extends AbstractRequestType
     {
         parent::xmlSerialize($writer);
         $value = $this->getMessageIDs();
-        if (null !== $value && !empty($this->getMessageIDs())) {
+        if (null !== $value && [] !== $this->getMessageIDs()) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MessageIDs", array_map(function ($v) {return ["MessageID" => $v];}, $value));
         }
         $value = $this->getFolderID();
@@ -379,7 +379,7 @@ class GetMyMessagesRequestType extends AbstractRequestType
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}EndTime", $value);
         }
         $value = $this->getExternalMessageIDs();
-        if (null !== $value && !empty($this->getExternalMessageIDs())) {
+        if (null !== $value && [] !== $this->getExternalMessageIDs()) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ExternalMessageIDs", array_map(function ($v) {return ["ExternalMessageID" => $v];}, $value));
         }
         $value = $this->getPagination();
@@ -408,9 +408,9 @@ class GetMyMessagesRequestType extends AbstractRequestType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}MessageIDs');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MessageIDs');
         if (null !== $value) {
-            $this->setMessageIDs($value);
+            $this->setMessageIDs(array_map(function ($v) {return Func::mapValue($v, '{urn:ebay:apis:eBLBaseComponents}MessageID');}, $value));
         }
         $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}FolderID');
         if (null !== $value) {
@@ -424,9 +424,9 @@ class GetMyMessagesRequestType extends AbstractRequestType
         if (null !== $value) {
             $this->setEndTime(new \DateTime($value));
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExternalMessageIDs');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExternalMessageIDs');
         if (null !== $value) {
-            $this->setExternalMessageIDs($value);
+            $this->setExternalMessageIDs(array_map(function ($v) {return Func::mapValue($v, '{urn:ebay:apis:eBLBaseComponents}ExternalMessageID');}, $value));
         }
         $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}Pagination');
         if (null !== $value) {

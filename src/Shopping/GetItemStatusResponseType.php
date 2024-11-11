@@ -91,7 +91,7 @@ class GetItemStatusResponseType extends AbstractResponseType
     {
         parent::xmlSerialize($writer);
         $value = $this->getItem();
-        if (null !== $value && !empty($this->getItem())) {
+        if (null !== $value && [] !== $this->getItem()) {
             $writer->write(array_map(function ($v) {return ["Item" => $v];}, $value));
         }
     }

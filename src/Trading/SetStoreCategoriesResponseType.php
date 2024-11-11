@@ -193,7 +193,7 @@ class SetStoreCategoriesResponseType extends AbstractResponseType
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Status", $value);
         }
         $value = $this->getCustomCategory();
-        if (null !== $value && !empty($this->getCustomCategory())) {
+        if (null !== $value && [] !== $this->getCustomCategory()) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CustomCategory", array_map(function ($v) {return ["CustomCategory" => $v];}, $value));
         }
     }

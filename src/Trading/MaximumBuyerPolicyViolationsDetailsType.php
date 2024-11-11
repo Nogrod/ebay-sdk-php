@@ -164,11 +164,11 @@ class MaximumBuyerPolicyViolationsDetailsType implements \Sabre\Xml\XmlSerializa
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getNumberOfPolicyViolations();
-        if (null !== $value && !empty($this->getNumberOfPolicyViolations())) {
+        if (null !== $value && [] !== $this->getNumberOfPolicyViolations()) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}NumberOfPolicyViolations", array_map(function ($v) {return ["Count" => $v];}, $value));
         }
         $value = $this->getPolicyViolationDuration();
-        if (null !== $value && !empty($this->getPolicyViolationDuration())) {
+        if (null !== $value && [] !== $this->getPolicyViolationDuration()) {
             $writer->write(array_map(function ($v) {return ["PolicyViolationDuration" => $v];}, $value));
         }
     }
@@ -187,9 +187,9 @@ class MaximumBuyerPolicyViolationsDetailsType implements \Sabre\Xml\XmlSerializa
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}NumberOfPolicyViolations');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}NumberOfPolicyViolations');
         if (null !== $value) {
-            $this->setNumberOfPolicyViolations($value);
+            $this->setNumberOfPolicyViolations(array_map(function ($v) {return Func::mapValue($v, '{urn:ebay:apis:eBLBaseComponents}Count');}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PolicyViolationDuration');
         if (null !== $value) {

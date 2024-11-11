@@ -92,7 +92,7 @@ class PaymentProfileListType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     {
         $writer->writeAttribute("xmlns", "http://www.ebay.com/marketplace/selling/v1/services");
         $value = $this->getPaymentProfile();
-        if (null !== $value && !empty($this->getPaymentProfile())) {
+        if (null !== $value && [] !== $this->getPaymentProfile()) {
             $writer->write(array_map(function ($v) {return ["PaymentProfile" => $v];}, $value));
         }
     }

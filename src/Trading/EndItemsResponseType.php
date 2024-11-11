@@ -91,7 +91,7 @@ class EndItemsResponseType extends AbstractResponseType
     {
         parent::xmlSerialize($writer);
         $value = $this->getEndItemResponseContainer();
-        if (null !== $value && !empty($this->getEndItemResponseContainer())) {
+        if (null !== $value && [] !== $this->getEndItemResponseContainer()) {
             $writer->write(array_map(function ($v) {return ["EndItemResponseContainer" => $v];}, $value));
         }
     }

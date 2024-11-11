@@ -220,7 +220,7 @@ class StoreCustomCategoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Order", $value);
         }
         $value = $this->getChildCategory();
-        if (null !== $value && !empty($this->getChildCategory())) {
+        if (null !== $value && [] !== $this->getChildCategory()) {
             $writer->write(array_map(function ($v) {return ["ChildCategory" => $v];}, $value));
         }
     }

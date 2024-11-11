@@ -1307,7 +1307,7 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SafePaymentExempt", $value);
         }
         $value = $this->getCharityAffiliationDetails();
-        if (null !== $value && !empty($this->getCharityAffiliationDetails())) {
+        if (null !== $value && [] !== $this->getCharityAffiliationDetails()) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CharityAffiliationDetails", array_map(function ($v) {return ["CharityAffiliationDetail" => $v];}, $value));
         }
         $value = $this->getTransactionPercent();
@@ -1324,11 +1324,11 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TopRatedSeller", $value);
         }
         $value = $this->getTopRatedSellerDetails();
-        if (null !== $value && !empty($this->getTopRatedSellerDetails())) {
+        if (null !== $value && [] !== $this->getTopRatedSellerDetails()) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TopRatedSellerDetails", array_map(function ($v) {return ["TopRatedProgram" => $v];}, $value));
         }
         $value = $this->getRecoupmentPolicyConsent();
-        if (null !== $value && !empty($this->getRecoupmentPolicyConsent())) {
+        if (null !== $value && [] !== $this->getRecoupmentPolicyConsent()) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}RecoupmentPolicyConsent", array_map(function ($v) {return ["Site" => $v];}, $value));
         }
         $value = $this->getDomesticRateTable();
@@ -1449,13 +1449,13 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
         if (null !== $value) {
             $this->setTopRatedSeller(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}TopRatedSellerDetails');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TopRatedSellerDetails');
         if (null !== $value) {
-            $this->setTopRatedSellerDetails($value);
+            $this->setTopRatedSellerDetails(array_map(function ($v) {return Func::mapValue($v, '{urn:ebay:apis:eBLBaseComponents}TopRatedProgram');}, $value));
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}RecoupmentPolicyConsent');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RecoupmentPolicyConsent');
         if (null !== $value) {
-            $this->setRecoupmentPolicyConsent($value);
+            $this->setRecoupmentPolicyConsent(array_map(function ($v) {return Func::mapValue($v, '{urn:ebay:apis:eBLBaseComponents}Site');}, $value));
         }
         $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}DomesticRateTable');
         if (null !== $value) {

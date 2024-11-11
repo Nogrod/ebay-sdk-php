@@ -355,7 +355,7 @@ class SiteHostedPictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BaseURL", $value);
         }
         $value = $this->getPictureSetMember();
-        if (null !== $value && !empty($this->getPictureSetMember())) {
+        if (null !== $value && [] !== $this->getPictureSetMember()) {
             $writer->write(array_map(function ($v) {return ["PictureSetMember" => $v];}, $value));
         }
         $value = $this->getExternalPictureURL();

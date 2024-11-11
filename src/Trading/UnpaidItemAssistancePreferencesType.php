@@ -347,7 +347,7 @@ class UnpaidItemAssistancePreferencesType implements \Sabre\Xml\XmlSerializable,
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}RemoveAllExcludedUsers", $value);
         }
         $value = $this->getExcludedUser();
-        if (null !== $value && !empty($this->getExcludedUser())) {
+        if (null !== $value && [] !== $this->getExcludedUser()) {
             $writer->write(array_map(function ($v) {return ["ExcludedUser" => $v];}, $value));
         }
     }
@@ -382,7 +382,7 @@ class UnpaidItemAssistancePreferencesType implements \Sabre\Xml\XmlSerializable,
         if (null !== $value) {
             $this->setRemoveAllExcludedUsers(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExcludedUser');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExcludedUser');
         if (null !== $value) {
             $this->setExcludedUser($value);
         }

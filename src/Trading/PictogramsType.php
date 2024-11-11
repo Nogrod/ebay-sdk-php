@@ -109,7 +109,7 @@ class PictogramsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getPictogram();
-        if (null !== $value && !empty($this->getPictogram())) {
+        if (null !== $value && [] !== $this->getPictogram()) {
             $writer->write(array_map(function ($v) {return ["Pictogram" => $v];}, $value));
         }
     }
@@ -128,7 +128,7 @@ class PictogramsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Pictogram');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Pictogram');
         if (null !== $value) {
             $this->setPictogram($value);
         }

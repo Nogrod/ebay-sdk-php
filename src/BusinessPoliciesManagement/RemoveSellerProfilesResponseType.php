@@ -91,7 +91,7 @@ class RemoveSellerProfilesResponseType extends BaseResponseType
     {
         parent::xmlSerialize($writer);
         $value = $this->getSellerProfileResponseStatus();
-        if (null !== $value && !empty($this->getSellerProfileResponseStatus())) {
+        if (null !== $value && [] !== $this->getSellerProfileResponseStatus()) {
             $writer->write(array_map(function ($v) {return ["sellerProfileResponseStatus" => $v];}, $value));
         }
     }

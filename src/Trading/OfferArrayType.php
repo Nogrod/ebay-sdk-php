@@ -91,7 +91,7 @@ class OfferArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getOffer();
-        if (null !== $value && !empty($this->getOffer())) {
+        if (null !== $value && [] !== $this->getOffer()) {
             $writer->write(array_map(function ($v) {return ["Offer" => $v];}, $value));
         }
     }

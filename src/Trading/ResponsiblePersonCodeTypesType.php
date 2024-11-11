@@ -103,7 +103,7 @@ class ResponsiblePersonCodeTypesType implements \Sabre\Xml\XmlSerializable, \Sab
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getType();
-        if (null !== $value && !empty($this->getType())) {
+        if (null !== $value && [] !== $this->getType()) {
             $writer->write(array_map(function ($v) {return ["Type" => $v];}, $value));
         }
     }
@@ -122,7 +122,7 @@ class ResponsiblePersonCodeTypesType implements \Sabre\Xml\XmlSerializable, \Sab
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Type');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Type');
         if (null !== $value) {
             $this->setType($value);
         }

@@ -1031,7 +1031,7 @@ class MyMessagesMessageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ItemTitle", $value);
         }
         $value = $this->getMessageMedia();
-        if (null !== $value && !empty($this->getMessageMedia())) {
+        if (null !== $value && [] !== $this->getMessageMedia()) {
             $writer->write(array_map(function ($v) {return ["MessageMedia" => $v];}, $value));
         }
     }

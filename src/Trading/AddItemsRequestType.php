@@ -91,7 +91,7 @@ class AddItemsRequestType extends AbstractRequestType
     {
         parent::xmlSerialize($writer);
         $value = $this->getAddItemRequestContainer();
-        if (null !== $value && !empty($this->getAddItemRequestContainer())) {
+        if (null !== $value && [] !== $this->getAddItemRequestContainer()) {
             $writer->write(array_map(function ($v) {return ["AddItemRequestContainer" => $v];}, $value));
         }
     }

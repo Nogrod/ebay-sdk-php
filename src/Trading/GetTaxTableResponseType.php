@@ -126,7 +126,7 @@ class GetTaxTableResponseType extends AbstractResponseType
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}LastUpdateTime", $value);
         }
         $value = $this->getTaxTable();
-        if (null !== $value && !empty($this->getTaxTable())) {
+        if (null !== $value && [] !== $this->getTaxTable()) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TaxTable", array_map(function ($v) {return ["TaxJurisdiction" => $v];}, $value));
         }
     }

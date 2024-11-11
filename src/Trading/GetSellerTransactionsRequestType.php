@@ -536,7 +536,7 @@ class GetSellerTransactionsRequestType extends AbstractRequestType
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}IncludeContainingOrder", $value);
         }
         $value = $this->getSKUArray();
-        if (null !== $value && !empty($this->getSKUArray())) {
+        if (null !== $value && [] !== $this->getSKUArray()) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SKUArray", array_map(function ($v) {return ["SKU" => $v];}, $value));
         }
         $value = $this->getPlatform();
@@ -593,9 +593,9 @@ class GetSellerTransactionsRequestType extends AbstractRequestType
         if (null !== $value) {
             $this->setIncludeContainingOrder(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}SKUArray');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SKUArray');
         if (null !== $value) {
-            $this->setSKUArray($value);
+            $this->setSKUArray(array_map(function ($v) {return Func::mapValue($v, '{urn:ebay:apis:eBLBaseComponents}SKU');}, $value));
         }
         $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Platform');
         if (null !== $value) {

@@ -103,7 +103,7 @@ class ItemRatingDetailArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getItemRatingDetails();
-        if (null !== $value && !empty($this->getItemRatingDetails())) {
+        if (null !== $value && [] !== $this->getItemRatingDetails()) {
             $writer->write(array_map(function ($v) {return ["ItemRatingDetails" => $v];}, $value));
         }
     }

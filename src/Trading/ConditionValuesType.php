@@ -175,7 +175,7 @@ class ConditionValuesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getCondition();
-        if (null !== $value && !empty($this->getCondition())) {
+        if (null !== $value && [] !== $this->getCondition()) {
             $writer->write(array_map(function ($v) {return ["Condition" => $v];}, $value));
         }
         $value = $this->getConditionHelpURL();

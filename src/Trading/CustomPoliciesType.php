@@ -367,15 +367,15 @@ class CustomPoliciesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TakeBackPolicyID", $value);
         }
         $value = $this->getRegionalTakeBackPolicies();
-        if (null !== $value && !empty($this->getRegionalTakeBackPolicies())) {
+        if (null !== $value && [] !== $this->getRegionalTakeBackPolicies()) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}RegionalTakeBackPolicies", array_map(function ($v) {return ["CountryPolicies" => $v];}, $value));
         }
         $value = $this->getProductCompliancePolicyID();
-        if (null !== $value && !empty($this->getProductCompliancePolicyID())) {
+        if (null !== $value && [] !== $this->getProductCompliancePolicyID()) {
             $writer->write(array_map(function ($v) {return ["ProductCompliancePolicyID" => $v];}, $value));
         }
         $value = $this->getRegionalProductCompliancePolicies();
-        if (null !== $value && !empty($this->getRegionalProductCompliancePolicies())) {
+        if (null !== $value && [] !== $this->getRegionalProductCompliancePolicies()) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}RegionalProductCompliancePolicies", array_map(function ($v) {return ["CountryPolicies" => $v];}, $value));
         }
     }
@@ -402,7 +402,7 @@ class CustomPoliciesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
         if (null !== $value) {
             $this->setRegionalTakeBackPolicies(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\CountryPoliciesType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}CountryPolicies'));}, $value));
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ProductCompliancePolicyID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ProductCompliancePolicyID');
         if (null !== $value) {
             $this->setProductCompliancePolicyID($value);
         }

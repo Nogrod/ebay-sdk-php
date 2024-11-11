@@ -596,7 +596,7 @@ class AddItemResponseContainerType implements \Sabre\Xml\XmlSerializable, \Sabre
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}EndTime", $value);
         }
         $value = $this->getFees();
-        if (null !== $value && !empty($this->getFees())) {
+        if (null !== $value && [] !== $this->getFees()) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Fees", array_map(function ($v) {return ["Fee" => $v];}, $value));
         }
         $value = $this->getCategoryID();
@@ -612,7 +612,7 @@ class AddItemResponseContainerType implements \Sabre\Xml\XmlSerializable, \Sabre
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CorrelationID", $value);
         }
         $value = $this->getErrors();
-        if (null !== $value && !empty($this->getErrors())) {
+        if (null !== $value && [] !== $this->getErrors()) {
             $writer->write(array_map(function ($v) {return ["Errors" => $v];}, $value));
         }
         $value = $this->getMessage();
@@ -620,7 +620,7 @@ class AddItemResponseContainerType implements \Sabre\Xml\XmlSerializable, \Sabre
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Message", $value);
         }
         $value = $this->getDiscountReason();
-        if (null !== $value && !empty($this->getDiscountReason())) {
+        if (null !== $value && [] !== $this->getDiscountReason()) {
             $writer->write(array_map(function ($v) {return ["DiscountReason" => $v];}, $value));
         }
     }
@@ -675,7 +675,7 @@ class AddItemResponseContainerType implements \Sabre\Xml\XmlSerializable, \Sabre
         if (null !== $value) {
             $this->setMessage($value);
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}DiscountReason');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DiscountReason');
         if (null !== $value) {
             $this->setDiscountReason($value);
         }

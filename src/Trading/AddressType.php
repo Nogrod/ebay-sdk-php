@@ -1287,7 +1287,7 @@ class AddressType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ReferenceID", $value);
         }
         $value = $this->getAddressAttribute();
-        if (null !== $value && !empty($this->getAddressAttribute())) {
+        if (null !== $value && [] !== $this->getAddressAttribute()) {
             $writer->write(array_map(function ($v) {return ["AddressAttribute" => $v];}, $value));
         }
     }

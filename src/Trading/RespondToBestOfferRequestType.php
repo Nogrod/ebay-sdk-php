@@ -267,7 +267,7 @@ class RespondToBestOfferRequestType extends AbstractRequestType
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ItemID", $value);
         }
         $value = $this->getBestOfferID();
-        if (null !== $value && !empty($this->getBestOfferID())) {
+        if (null !== $value && [] !== $this->getBestOfferID()) {
             $writer->write(array_map(function ($v) {return ["BestOfferID" => $v];}, $value));
         }
         $value = $this->getAction();
@@ -307,7 +307,7 @@ class RespondToBestOfferRequestType extends AbstractRequestType
         if (null !== $value) {
             $this->setItemID($value);
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}BestOfferID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BestOfferID');
         if (null !== $value) {
             $this->setBestOfferID($value);
         }

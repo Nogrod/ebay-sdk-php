@@ -1306,7 +1306,7 @@ class MyeBayFavoriteSearchType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BidCountMin", $value);
         }
         $value = $this->getSearchFlag();
-        if (null !== $value && !empty($this->getSearchFlag())) {
+        if (null !== $value && [] !== $this->getSearchFlag()) {
             $writer->write(array_map(function ($v) {return ["SearchFlag" => $v];}, $value));
         }
         $value = $this->getPreferredLocation();
@@ -1314,11 +1314,11 @@ class MyeBayFavoriteSearchType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PreferredLocation", $value);
         }
         $value = $this->getSellerID();
-        if (null !== $value && !empty($this->getSellerID())) {
+        if (null !== $value && [] !== $this->getSellerID()) {
             $writer->write(array_map(function ($v) {return ["SellerID" => $v];}, $value));
         }
         $value = $this->getSellerIDExclude();
-        if (null !== $value && !empty($this->getSellerIDExclude())) {
+        if (null !== $value && [] !== $this->getSellerIDExclude()) {
             $writer->write(array_map(function ($v) {return ["SellerIDExclude" => $v];}, $value));
         }
         $value = $this->getItemsAvailableTo();
@@ -1425,7 +1425,7 @@ class MyeBayFavoriteSearchType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
         if (null !== $value) {
             $this->setBidCountMin($value);
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}SearchFlag');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SearchFlag');
         if (null !== $value) {
             $this->setSearchFlag($value);
         }
@@ -1433,11 +1433,11 @@ class MyeBayFavoriteSearchType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
         if (null !== $value) {
             $this->setPreferredLocation($value);
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerID');
         if (null !== $value) {
             $this->setSellerID($value);
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerIDExclude');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerIDExclude');
         if (null !== $value) {
             $this->setSellerIDExclude($value);
         }

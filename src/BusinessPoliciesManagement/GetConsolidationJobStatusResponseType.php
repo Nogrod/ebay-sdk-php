@@ -91,7 +91,7 @@ class GetConsolidationJobStatusResponseType extends BaseResponseType
     {
         parent::xmlSerialize($writer);
         $value = $this->getJob();
-        if (null !== $value && !empty($this->getJob())) {
+        if (null !== $value && [] !== $this->getJob()) {
             $writer->write(array_map(function ($v) {return ["Job" => $v];}, $value));
         }
     }

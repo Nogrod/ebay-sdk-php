@@ -91,7 +91,7 @@ class AddMemberMessagesAAQToBidderRequestType extends AbstractRequestType
     {
         parent::xmlSerialize($writer);
         $value = $this->getAddMemberMessagesAAQToBidderRequestContainer();
-        if (null !== $value && !empty($this->getAddMemberMessagesAAQToBidderRequestContainer())) {
+        if (null !== $value && [] !== $this->getAddMemberMessagesAAQToBidderRequestContainer()) {
             $writer->write(array_map(function ($v) {return ["AddMemberMessagesAAQToBidderRequestContainer" => $v];}, $value));
         }
     }

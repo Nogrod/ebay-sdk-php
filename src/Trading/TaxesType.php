@@ -180,7 +180,7 @@ class TaxesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TotalTaxAmount", $value);
         }
         $value = $this->getTaxDetails();
-        if (null !== $value && !empty($this->getTaxDetails())) {
+        if (null !== $value && [] !== $this->getTaxDetails()) {
             $writer->write(array_map(function ($v) {return ["TaxDetails" => $v];}, $value));
         }
     }

@@ -299,11 +299,11 @@ class GetNotificationsUsageResponseType extends AbstractResponseType
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}EndTime", $value);
         }
         $value = $this->getNotificationDetailsArray();
-        if (null !== $value && !empty($this->getNotificationDetailsArray())) {
+        if (null !== $value && [] !== $this->getNotificationDetailsArray()) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}NotificationDetailsArray", array_map(function ($v) {return ["NotificationDetails" => $v];}, $value));
         }
         $value = $this->getMarkUpMarkDownHistory();
-        if (null !== $value && !empty($this->getMarkUpMarkDownHistory())) {
+        if (null !== $value && [] !== $this->getMarkUpMarkDownHistory()) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MarkUpMarkDownHistory", array_map(function ($v) {return ["MarkUpMarkDownEvent" => $v];}, $value));
         }
         $value = $this->getNotificationStatistics();

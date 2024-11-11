@@ -318,11 +318,11 @@ class FindItemsByProductRequestType extends BaseFindingServiceRequestType
             $writer->writeElement("{http://www.ebay.com/marketplace/search/v1/services}productId", $value);
         }
         $value = $this->getItemFilter();
-        if (null !== $value && !empty($this->getItemFilter())) {
+        if (null !== $value && [] !== $this->getItemFilter()) {
             $writer->write(array_map(function ($v) {return ["itemFilter" => $v];}, $value));
         }
         $value = $this->getOutputSelector();
-        if (null !== $value && !empty($this->getOutputSelector())) {
+        if (null !== $value && [] !== $this->getOutputSelector()) {
             $writer->write(array_map(function ($v) {return ["outputSelector" => $v];}, $value));
         }
     }
@@ -350,7 +350,7 @@ class FindItemsByProductRequestType extends BaseFindingServiceRequestType
         if (null !== $value) {
             $this->setItemFilter(array_map(function ($v) {return \Nogrod\eBaySDK\Finding\ItemFilterType::fromKeyValue($v);}, $value));
         }
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}outputSelector');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}outputSelector');
         if (null !== $value) {
             $this->setOutputSelector($value);
         }

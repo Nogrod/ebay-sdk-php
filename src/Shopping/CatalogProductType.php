@@ -579,7 +579,7 @@ class CatalogProductType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DisplayStockPhotos", $value);
         }
         $value = $this->getProductID();
-        if (null !== $value && !empty($this->getProductID())) {
+        if (null !== $value && [] !== $this->getProductID()) {
             $writer->write(array_map(function ($v) {return ["ProductID" => $v];}, $value));
         }
         $value = $this->getItemCount();
@@ -587,7 +587,7 @@ class CatalogProductType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ItemCount", $value);
         }
         $value = $this->getItemSpecifics();
-        if (null !== $value && !empty($this->getItemSpecifics())) {
+        if (null !== $value && [] !== $this->getItemSpecifics()) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ItemSpecifics", array_map(function ($v) {return ["NameValueList" => $v];}, $value));
         }
         $value = $this->getReviewCount();

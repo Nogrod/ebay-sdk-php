@@ -91,7 +91,7 @@ class VeROReasonCodeDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getVeROSiteDetail();
-        if (null !== $value && !empty($this->getVeROSiteDetail())) {
+        if (null !== $value && [] !== $this->getVeROSiteDetail()) {
             $writer->write(array_map(function ($v) {return ["VeROSiteDetail" => $v];}, $value));
         }
     }

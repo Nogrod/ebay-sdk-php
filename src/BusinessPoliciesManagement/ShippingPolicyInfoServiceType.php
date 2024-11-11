@@ -835,7 +835,7 @@ class ShippingPolicyInfoServiceType implements \Sabre\Xml\XmlSerializable, \Sabr
     {
         $writer->writeAttribute("xmlns", "http://www.ebay.com/marketplace/selling/v1/services");
         $value = $this->getShipToLocation();
-        if (null !== $value && !empty($this->getShipToLocation())) {
+        if (null !== $value && [] !== $this->getShipToLocation()) {
             $writer->write(array_map(function ($v) {return ["shipToLocation" => $v];}, $value));
         }
         $value = $this->getShippingService();
@@ -898,7 +898,7 @@ class ShippingPolicyInfoServiceType implements \Sabre\Xml\XmlSerializable, \Sabr
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}shipToLocation');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}shipToLocation');
         if (null !== $value) {
             $this->setShipToLocation($value);
         }

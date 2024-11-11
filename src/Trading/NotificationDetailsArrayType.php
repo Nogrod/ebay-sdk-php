@@ -93,7 +93,7 @@ class NotificationDetailsArrayType implements \Sabre\Xml\XmlSerializable, \Sabre
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getNotificationDetails();
-        if (null !== $value && !empty($this->getNotificationDetails())) {
+        if (null !== $value && [] !== $this->getNotificationDetails()) {
             $writer->write(array_map(function ($v) {return ["NotificationDetails" => $v];}, $value));
         }
     }

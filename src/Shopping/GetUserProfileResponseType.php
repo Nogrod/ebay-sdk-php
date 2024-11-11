@@ -180,7 +180,7 @@ class GetUserProfileResponseType extends AbstractResponseType
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}FeedbackHistory", $value);
         }
         $value = $this->getFeedbackDetails();
-        if (null !== $value && !empty($this->getFeedbackDetails())) {
+        if (null !== $value && [] !== $this->getFeedbackDetails()) {
             $writer->write(array_map(function ($v) {return ["FeedbackDetails" => $v];}, $value));
         }
     }

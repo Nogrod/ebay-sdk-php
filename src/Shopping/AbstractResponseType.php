@@ -397,7 +397,7 @@ class AbstractResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Ack", $value);
         }
         $value = $this->getErrors();
-        if (null !== $value && !empty($this->getErrors())) {
+        if (null !== $value && [] !== $this->getErrors()) {
             $writer->write(array_map(function ($v) {return ["Errors" => $v];}, $value));
         }
         $value = $this->getBuild();

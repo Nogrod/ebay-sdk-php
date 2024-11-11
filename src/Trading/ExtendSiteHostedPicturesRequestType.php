@@ -127,7 +127,7 @@ class ExtendSiteHostedPicturesRequestType extends AbstractRequestType
     {
         parent::xmlSerialize($writer);
         $value = $this->getPictureURL();
-        if (null !== $value && !empty($this->getPictureURL())) {
+        if (null !== $value && [] !== $this->getPictureURL()) {
             $writer->write(array_map(function ($v) {return ["PictureURL" => $v];}, $value));
         }
         $value = $this->getExtensionInDays();
@@ -151,7 +151,7 @@ class ExtendSiteHostedPicturesRequestType extends AbstractRequestType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}PictureURL');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PictureURL');
         if (null !== $value) {
             $this->setPictureURL($value);
         }

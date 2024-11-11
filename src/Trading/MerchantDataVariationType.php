@@ -320,7 +320,7 @@ class MerchantDataVariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Quantity", $value);
         }
         $value = $this->getVariationSpecifics();
-        if (null !== $value && !empty($this->getVariationSpecifics())) {
+        if (null !== $value && [] !== $this->getVariationSpecifics()) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}VariationSpecifics", array_map(function ($v) {return ["NameValueList" => $v];}, $value));
         }
     }

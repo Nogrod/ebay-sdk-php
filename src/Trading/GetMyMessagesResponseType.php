@@ -140,7 +140,7 @@ class GetMyMessagesResponseType extends AbstractResponseType
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Summary", $value);
         }
         $value = $this->getMessages();
-        if (null !== $value && !empty($this->getMessages())) {
+        if (null !== $value && [] !== $this->getMessages()) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Messages", array_map(function ($v) {return ["Message" => $v];}, $value));
         }
     }

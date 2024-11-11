@@ -91,7 +91,7 @@ class TopRatedSellerDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getTopRatedProgram();
-        if (null !== $value && !empty($this->getTopRatedProgram())) {
+        if (null !== $value && [] !== $this->getTopRatedProgram()) {
             $writer->write(array_map(function ($v) {return ["TopRatedProgram" => $v];}, $value));
         }
     }
@@ -110,7 +110,7 @@ class TopRatedSellerDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}TopRatedProgram');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TopRatedProgram');
         if (null !== $value) {
             $this->setTopRatedProgram($value);
         }

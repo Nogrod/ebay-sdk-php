@@ -148,7 +148,7 @@ class SellerProfilePreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SellerProfileOptedIn", $value);
         }
         $value = $this->getSupportedSellerProfiles();
-        if (null !== $value && !empty($this->getSupportedSellerProfiles())) {
+        if (null !== $value && [] !== $this->getSupportedSellerProfiles()) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SupportedSellerProfiles", array_map(function ($v) {return ["SupportedSellerProfile" => $v];}, $value));
         }
     }

@@ -447,7 +447,7 @@ class SKUDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ReserveMet", $value);
         }
         $value = $this->getVariations();
-        if (null !== $value && !empty($this->getVariations())) {
+        if (null !== $value && [] !== $this->getVariations()) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Variations", array_map(function ($v) {return ["Variation" => $v];}, $value));
         }
     }

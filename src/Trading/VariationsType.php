@@ -791,19 +791,19 @@ class VariationsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getVariation();
-        if (null !== $value && !empty($this->getVariation())) {
+        if (null !== $value && [] !== $this->getVariation()) {
             $writer->write(array_map(function ($v) {return ["Variation" => $v];}, $value));
         }
         $value = $this->getPictures();
-        if (null !== $value && !empty($this->getPictures())) {
+        if (null !== $value && [] !== $this->getPictures()) {
             $writer->write(array_map(function ($v) {return ["Pictures" => $v];}, $value));
         }
         $value = $this->getVariationSpecificsSet();
-        if (null !== $value && !empty($this->getVariationSpecificsSet())) {
+        if (null !== $value && [] !== $this->getVariationSpecificsSet()) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}VariationSpecificsSet", array_map(function ($v) {return ["NameValueList" => $v];}, $value));
         }
         $value = $this->getModifyNameList();
-        if (null !== $value && !empty($this->getModifyNameList())) {
+        if (null !== $value && [] !== $this->getModifyNameList()) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ModifyNameList", array_map(function ($v) {return ["ModifyName" => $v];}, $value));
         }
     }

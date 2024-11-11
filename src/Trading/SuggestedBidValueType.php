@@ -91,7 +91,7 @@ class SuggestedBidValueType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getBidValue();
-        if (null !== $value && !empty($this->getBidValue())) {
+        if (null !== $value && [] !== $this->getBidValue()) {
             $writer->write(array_map(function ($v) {return ["BidValue" => $v];}, $value));
         }
     }

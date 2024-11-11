@@ -302,7 +302,7 @@ class GetSellerListResponseType extends AbstractResponseType
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}HasMoreItems", $value);
         }
         $value = $this->getItemArray();
-        if (null !== $value && !empty($this->getItemArray())) {
+        if (null !== $value && [] !== $this->getItemArray()) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ItemArray", array_map(function ($v) {return ["Item" => $v];}, $value));
         }
         $value = $this->getItemsPerPage();

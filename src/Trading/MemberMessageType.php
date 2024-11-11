@@ -618,7 +618,7 @@ class MemberMessageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SenderEmail", $value);
         }
         $value = $this->getRecipientID();
-        if (null !== $value && !empty($this->getRecipientID())) {
+        if (null !== $value && [] !== $this->getRecipientID()) {
             $writer->write(array_map(function ($v) {return ["RecipientID" => $v];}, $value));
         }
         $value = $this->getSubject();
@@ -638,7 +638,7 @@ class MemberMessageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ParentMessageID", $value);
         }
         $value = $this->getMessageMedia();
-        if (null !== $value && !empty($this->getMessageMedia())) {
+        if (null !== $value && [] !== $this->getMessageMedia()) {
             $writer->write(array_map(function ($v) {return ["MessageMedia" => $v];}, $value));
         }
     }
@@ -681,7 +681,7 @@ class MemberMessageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
         if (null !== $value) {
             $this->setSenderEmail($value);
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}RecipientID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RecipientID');
         if (null !== $value) {
             $this->setRecipientID($value);
         }

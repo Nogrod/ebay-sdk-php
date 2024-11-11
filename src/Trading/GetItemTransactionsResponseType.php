@@ -395,7 +395,7 @@ class GetItemTransactionsResponseType extends AbstractResponseType
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Item", $value);
         }
         $value = $this->getTransactionArray();
-        if (null !== $value && !empty($this->getTransactionArray())) {
+        if (null !== $value && [] !== $this->getTransactionArray()) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TransactionArray", array_map(function ($v) {return ["Transaction" => $v];}, $value));
         }
     }

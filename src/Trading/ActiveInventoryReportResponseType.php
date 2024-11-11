@@ -93,7 +93,7 @@ class ActiveInventoryReportResponseType extends AbstractResponseType
     {
         parent::xmlSerialize($writer);
         $value = $this->getSKUDetails();
-        if (null !== $value && !empty($this->getSKUDetails())) {
+        if (null !== $value && [] !== $this->getSKUDetails()) {
             $writer->write(array_map(function ($v) {return ["SKUDetails" => $v];}, $value));
         }
     }

@@ -91,7 +91,7 @@ class AddMemberMessagesAAQToBidderResponseType extends AbstractResponseType
     {
         parent::xmlSerialize($writer);
         $value = $this->getAddMemberMessagesAAQToBidderResponseContainer();
-        if (null !== $value && !empty($this->getAddMemberMessagesAAQToBidderResponseContainer())) {
+        if (null !== $value && [] !== $this->getAddMemberMessagesAAQToBidderResponseContainer()) {
             $writer->write(array_map(function ($v) {return ["AddMemberMessagesAAQToBidderResponseContainer" => $v];}, $value));
         }
     }

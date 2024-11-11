@@ -444,11 +444,11 @@ class VeROReportItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CopyEmailToRightsOwner", $value);
         }
         $value = $this->getRegion();
-        if (null !== $value && !empty($this->getRegion())) {
+        if (null !== $value && [] !== $this->getRegion()) {
             $writer->write(array_map(function ($v) {return ["Region" => $v];}, $value));
         }
         $value = $this->getCountry();
-        if (null !== $value && !empty($this->getCountry())) {
+        if (null !== $value && [] !== $this->getCountry()) {
             $writer->write(array_map(function ($v) {return ["Country" => $v];}, $value));
         }
         $value = $this->getPatent();
@@ -495,11 +495,11 @@ class VeROReportItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
         if (null !== $value) {
             $this->setCopyEmailToRightsOwner(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Region');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Region');
         if (null !== $value) {
             $this->setRegion($value);
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Country');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Country');
         if (null !== $value) {
             $this->setCountry($value);
         }

@@ -501,9 +501,9 @@ class ResponsiblePersonType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
         if (null !== $value) {
             $this->setEmail($value);
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Types');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Types');
         if (null !== $value) {
-            $this->setTypes($value);
+            $this->setTypes(array_map(function ($v) {return Func::mapValue($v, '{urn:ebay:apis:eBLBaseComponents}Type');}, $value));
         }
     }
 }

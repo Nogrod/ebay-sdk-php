@@ -149,7 +149,7 @@ class NameValueListType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Name", $value);
         }
         $value = $this->getValue();
-        if (null !== $value && !empty($this->getValue())) {
+        if (null !== $value && [] !== $this->getValue()) {
             $writer->write(array_map(function ($v) {return ["Value" => $v];}, $value));
         }
     }
@@ -172,7 +172,7 @@ class NameValueListType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
         if (null !== $value) {
             $this->setName($value);
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Value');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Value');
         if (null !== $value) {
             $this->setValue($value);
         }

@@ -349,7 +349,7 @@ class PaymentTransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}FeeOrCreditAmount", $value);
         }
         $value = $this->getPaymentReferenceID();
-        if (null !== $value && !empty($this->getPaymentReferenceID())) {
+        if (null !== $value && [] !== $this->getPaymentReferenceID()) {
             $writer->write(array_map(function ($v) {return ["PaymentReferenceID" => $v];}, $value));
         }
     }

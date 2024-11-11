@@ -615,23 +615,23 @@ class FeedbackHistoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getBidRetractionFeedbackPeriods();
-        if (null !== $value && !empty($this->getBidRetractionFeedbackPeriods())) {
+        if (null !== $value && [] !== $this->getBidRetractionFeedbackPeriods()) {
             $writer->write(array_map(function ($v) {return ["BidRetractionFeedbackPeriods" => $v];}, $value));
         }
         $value = $this->getNegativeFeedbackPeriods();
-        if (null !== $value && !empty($this->getNegativeFeedbackPeriods())) {
+        if (null !== $value && [] !== $this->getNegativeFeedbackPeriods()) {
             $writer->write(array_map(function ($v) {return ["NegativeFeedbackPeriods" => $v];}, $value));
         }
         $value = $this->getNeutralFeedbackPeriods();
-        if (null !== $value && !empty($this->getNeutralFeedbackPeriods())) {
+        if (null !== $value && [] !== $this->getNeutralFeedbackPeriods()) {
             $writer->write(array_map(function ($v) {return ["NeutralFeedbackPeriods" => $v];}, $value));
         }
         $value = $this->getPositiveFeedbackPeriods();
-        if (null !== $value && !empty($this->getPositiveFeedbackPeriods())) {
+        if (null !== $value && [] !== $this->getPositiveFeedbackPeriods()) {
             $writer->write(array_map(function ($v) {return ["PositiveFeedbackPeriods" => $v];}, $value));
         }
         $value = $this->getTotalFeedbackPeriods();
-        if (null !== $value && !empty($this->getTotalFeedbackPeriods())) {
+        if (null !== $value && [] !== $this->getTotalFeedbackPeriods()) {
             $writer->write(array_map(function ($v) {return ["TotalFeedbackPeriods" => $v];}, $value));
         }
         $value = $this->getUniqueNegativeFeedbackCount();
@@ -643,7 +643,7 @@ class FeedbackHistoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}UniquePositiveFeedbackCount", $value);
         }
         $value = $this->getAverageRatingDetails();
-        if (null !== $value && !empty($this->getAverageRatingDetails())) {
+        if (null !== $value && [] !== $this->getAverageRatingDetails()) {
             $writer->write(array_map(function ($v) {return ["AverageRatingDetails" => $v];}, $value));
         }
         $value = $this->getNeutralCommentCountFromSuspendedUsers();

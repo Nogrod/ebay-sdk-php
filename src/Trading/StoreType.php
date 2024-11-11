@@ -415,7 +415,7 @@ class StoreType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Logo", $value);
         }
         $value = $this->getCustomCategories();
-        if (null !== $value && !empty($this->getCustomCategories())) {
+        if (null !== $value && [] !== $this->getCustomCategories()) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CustomCategories", array_map(function ($v) {return ["CustomCategory" => $v];}, $value));
         }
         $value = $this->getMerchDisplay();

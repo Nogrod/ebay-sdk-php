@@ -434,7 +434,7 @@ class ApplicationDeliveryPreferencesType implements \Sabre\Xml\XmlSerializable, 
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PayloadVersion", $value);
         }
         $value = $this->getDeliveryURLDetails();
-        if (null !== $value && !empty($this->getDeliveryURLDetails())) {
+        if (null !== $value && [] !== $this->getDeliveryURLDetails()) {
             $writer->write(array_map(function ($v) {return ["DeliveryURLDetails" => $v];}, $value));
         }
     }

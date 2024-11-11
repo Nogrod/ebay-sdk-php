@@ -164,11 +164,11 @@ class MaximumUnpaidItemStrikesInfoDetailsType implements \Sabre\Xml\XmlSerializa
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getMaximumUnpaidItemStrikesCount();
-        if (null !== $value && !empty($this->getMaximumUnpaidItemStrikesCount())) {
+        if (null !== $value && [] !== $this->getMaximumUnpaidItemStrikesCount()) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MaximumUnpaidItemStrikesCount", array_map(function ($v) {return ["Count" => $v];}, $value));
         }
         $value = $this->getMaximumUnpaidItemStrikesDuration();
-        if (null !== $value && !empty($this->getMaximumUnpaidItemStrikesDuration())) {
+        if (null !== $value && [] !== $this->getMaximumUnpaidItemStrikesDuration()) {
             $writer->write(array_map(function ($v) {return ["MaximumUnpaidItemStrikesDuration" => $v];}, $value));
         }
     }
@@ -187,9 +187,9 @@ class MaximumUnpaidItemStrikesInfoDetailsType implements \Sabre\Xml\XmlSerializa
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}MaximumUnpaidItemStrikesCount');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MaximumUnpaidItemStrikesCount');
         if (null !== $value) {
-            $this->setMaximumUnpaidItemStrikesCount($value);
+            $this->setMaximumUnpaidItemStrikesCount(array_map(function ($v) {return Func::mapValue($v, '{urn:ebay:apis:eBLBaseComponents}Count');}, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MaximumUnpaidItemStrikesDuration');
         if (null !== $value) {

@@ -109,7 +109,7 @@ class PaymentInformationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getPayment();
-        if (null !== $value && !empty($this->getPayment())) {
+        if (null !== $value && [] !== $this->getPayment()) {
             $writer->write(array_map(function ($v) {return ["Payment" => $v];}, $value));
         }
     }

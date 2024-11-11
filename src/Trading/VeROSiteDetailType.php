@@ -128,7 +128,7 @@ class VeROSiteDetailType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Site", $value);
         }
         $value = $this->getReasonCodeDetail();
-        if (null !== $value && !empty($this->getReasonCodeDetail())) {
+        if (null !== $value && [] !== $this->getReasonCodeDetail()) {
             $writer->write(array_map(function ($v) {return ["ReasonCodeDetail" => $v];}, $value));
         }
     }

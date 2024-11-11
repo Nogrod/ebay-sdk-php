@@ -146,7 +146,7 @@ class GetAdFormatLeadsResponseType extends AbstractResponseType
     {
         parent::xmlSerialize($writer);
         $value = $this->getAdFormatLead();
-        if (null !== $value && !empty($this->getAdFormatLead())) {
+        if (null !== $value && [] !== $this->getAdFormatLead()) {
             $writer->write(array_map(function ($v) {return ["AdFormatLead" => $v];}, $value));
         }
         $value = $this->getAdFormatLeadCount();

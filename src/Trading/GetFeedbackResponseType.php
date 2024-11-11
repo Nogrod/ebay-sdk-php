@@ -313,7 +313,7 @@ class GetFeedbackResponseType extends AbstractResponseType
     {
         parent::xmlSerialize($writer);
         $value = $this->getFeedbackDetailArray();
-        if (null !== $value && !empty($this->getFeedbackDetailArray())) {
+        if (null !== $value && [] !== $this->getFeedbackDetailArray()) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}FeedbackDetailArray", array_map(function ($v) {return ["FeedbackDetail" => $v];}, $value));
         }
         $value = $this->getFeedbackDetailItemTotal();

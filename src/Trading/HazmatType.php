@@ -228,7 +228,7 @@ class HazmatType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getPictograms();
-        if (null !== $value && !empty($this->getPictograms())) {
+        if (null !== $value && [] !== $this->getPictograms()) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Pictograms", array_map(function ($v) {return ["Pictogram" => $v];}, $value));
         }
         $value = $this->getSignalWord();
@@ -236,7 +236,7 @@ class HazmatType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SignalWord", $value);
         }
         $value = $this->getStatements();
-        if (null !== $value && !empty($this->getStatements())) {
+        if (null !== $value && [] !== $this->getStatements()) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Statements", array_map(function ($v) {return ["Statement" => $v];}, $value));
         }
         $value = $this->getComponent();
@@ -259,17 +259,17 @@ class HazmatType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Pictograms');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Pictograms');
         if (null !== $value) {
-            $this->setPictograms($value);
+            $this->setPictograms(array_map(function ($v) {return Func::mapValue($v, '{urn:ebay:apis:eBLBaseComponents}Pictogram');}, $value));
         }
         $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}SignalWord');
         if (null !== $value) {
             $this->setSignalWord($value);
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Statements');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Statements');
         if (null !== $value) {
-            $this->setStatements($value);
+            $this->setStatements(array_map(function ($v) {return Func::mapValue($v, '{urn:ebay:apis:eBLBaseComponents}Statement');}, $value));
         }
         $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Component');
         if (null !== $value) {

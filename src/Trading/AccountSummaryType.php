@@ -746,7 +746,7 @@ class AccountSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}InvoiceNewFee", $value);
         }
         $value = $this->getAdditionalAccount();
-        if (null !== $value && !empty($this->getAdditionalAccount())) {
+        if (null !== $value && [] !== $this->getAdditionalAccount()) {
             $writer->write(array_map(function ($v) {return ["AdditionalAccount" => $v];}, $value));
         }
         $value = $this->getAmountPastDue();

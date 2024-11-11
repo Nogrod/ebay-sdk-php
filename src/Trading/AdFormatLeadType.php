@@ -844,7 +844,7 @@ class AdFormatLeadType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}UserID", $value);
         }
         $value = $this->getMemberMessage();
-        if (null !== $value && !empty($this->getMemberMessage())) {
+        if (null !== $value && [] !== $this->getMemberMessage()) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MemberMessage", array_map(function ($v) {return ["MemberMessageExchange" => $v];}, $value));
         }
         $value = $this->getStatus();

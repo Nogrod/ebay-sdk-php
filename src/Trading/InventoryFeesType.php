@@ -140,7 +140,7 @@ class InventoryFeesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ItemID", $value);
         }
         $value = $this->getFee();
-        if (null !== $value && !empty($this->getFee())) {
+        if (null !== $value && [] !== $this->getFee()) {
             $writer->write(array_map(function ($v) {return ["Fee" => $v];}, $value));
         }
     }

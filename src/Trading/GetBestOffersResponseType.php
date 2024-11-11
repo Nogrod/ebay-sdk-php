@@ -264,7 +264,7 @@ class GetBestOffersResponseType extends AbstractResponseType
     {
         parent::xmlSerialize($writer);
         $value = $this->getBestOfferArray();
-        if (null !== $value && !empty($this->getBestOfferArray())) {
+        if (null !== $value && [] !== $this->getBestOfferArray()) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BestOfferArray", array_map(function ($v) {return ["BestOffer" => $v];}, $value));
         }
         $value = $this->getItem();
@@ -272,7 +272,7 @@ class GetBestOffersResponseType extends AbstractResponseType
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Item", $value);
         }
         $value = $this->getItemBestOffersArray();
-        if (null !== $value && !empty($this->getItemBestOffersArray())) {
+        if (null !== $value && [] !== $this->getItemBestOffersArray()) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ItemBestOffersArray", array_map(function ($v) {return ["ItemBestOffers" => $v];}, $value));
         }
         $value = $this->getPageNumber();

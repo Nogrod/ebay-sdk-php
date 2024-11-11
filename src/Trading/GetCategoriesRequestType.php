@@ -266,7 +266,7 @@ class GetCategoriesRequestType extends AbstractRequestType
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CategorySiteID", $value);
         }
         $value = $this->getCategoryParent();
-        if (null !== $value && !empty($this->getCategoryParent())) {
+        if (null !== $value && [] !== $this->getCategoryParent()) {
             $writer->write(array_map(function ($v) {return ["CategoryParent" => $v];}, $value));
         }
         $value = $this->getLevelLimit();
@@ -299,7 +299,7 @@ class GetCategoriesRequestType extends AbstractRequestType
         if (null !== $value) {
             $this->setCategorySiteID($value);
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}CategoryParent');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CategoryParent');
         if (null !== $value) {
             $this->setCategoryParent($value);
         }

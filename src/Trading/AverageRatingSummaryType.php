@@ -134,7 +134,7 @@ class AverageRatingSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}FeedbackSummaryPeriod", $value);
         }
         $value = $this->getAverageRatingDetails();
-        if (null !== $value && !empty($this->getAverageRatingDetails())) {
+        if (null !== $value && [] !== $this->getAverageRatingDetails()) {
             $writer->write(array_map(function ($v) {return ["AverageRatingDetails" => $v];}, $value));
         }
     }

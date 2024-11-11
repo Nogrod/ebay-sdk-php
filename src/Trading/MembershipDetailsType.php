@@ -94,7 +94,7 @@ class MembershipDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getProgram();
-        if (null !== $value && !empty($this->getProgram())) {
+        if (null !== $value && [] !== $this->getProgram()) {
             $writer->write(array_map(function ($v) {return ["Program" => $v];}, $value));
         }
     }

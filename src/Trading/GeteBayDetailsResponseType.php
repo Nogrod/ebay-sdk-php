@@ -2623,63 +2623,63 @@ class GeteBayDetailsResponseType extends AbstractResponseType
     {
         parent::xmlSerialize($writer);
         $value = $this->getCountryDetails();
-        if (null !== $value && !empty($this->getCountryDetails())) {
+        if (null !== $value && [] !== $this->getCountryDetails()) {
             $writer->write(array_map(function ($v) {return ["CountryDetails" => $v];}, $value));
         }
         $value = $this->getCurrencyDetails();
-        if (null !== $value && !empty($this->getCurrencyDetails())) {
+        if (null !== $value && [] !== $this->getCurrencyDetails()) {
             $writer->write(array_map(function ($v) {return ["CurrencyDetails" => $v];}, $value));
         }
         $value = $this->getDispatchTimeMaxDetails();
-        if (null !== $value && !empty($this->getDispatchTimeMaxDetails())) {
+        if (null !== $value && [] !== $this->getDispatchTimeMaxDetails()) {
             $writer->write(array_map(function ($v) {return ["DispatchTimeMaxDetails" => $v];}, $value));
         }
         $value = $this->getPaymentOptionDetails();
-        if (null !== $value && !empty($this->getPaymentOptionDetails())) {
+        if (null !== $value && [] !== $this->getPaymentOptionDetails()) {
             $writer->write(array_map(function ($v) {return ["PaymentOptionDetails" => $v];}, $value));
         }
         $value = $this->getRegionDetails();
-        if (null !== $value && !empty($this->getRegionDetails())) {
+        if (null !== $value && [] !== $this->getRegionDetails()) {
             $writer->write(array_map(function ($v) {return ["RegionDetails" => $v];}, $value));
         }
         $value = $this->getShippingLocationDetails();
-        if (null !== $value && !empty($this->getShippingLocationDetails())) {
+        if (null !== $value && [] !== $this->getShippingLocationDetails()) {
             $writer->write(array_map(function ($v) {return ["ShippingLocationDetails" => $v];}, $value));
         }
         $value = $this->getShippingServiceDetails();
-        if (null !== $value && !empty($this->getShippingServiceDetails())) {
+        if (null !== $value && [] !== $this->getShippingServiceDetails()) {
             $writer->write(array_map(function ($v) {return ["ShippingServiceDetails" => $v];}, $value));
         }
         $value = $this->getSiteDetails();
-        if (null !== $value && !empty($this->getSiteDetails())) {
+        if (null !== $value && [] !== $this->getSiteDetails()) {
             $writer->write(array_map(function ($v) {return ["SiteDetails" => $v];}, $value));
         }
         $value = $this->getTaxJurisdiction();
-        if (null !== $value && !empty($this->getTaxJurisdiction())) {
+        if (null !== $value && [] !== $this->getTaxJurisdiction()) {
             $writer->write(array_map(function ($v) {return ["TaxJurisdiction" => $v];}, $value));
         }
         $value = $this->getURLDetails();
-        if (null !== $value && !empty($this->getURLDetails())) {
+        if (null !== $value && [] !== $this->getURLDetails()) {
             $writer->write(array_map(function ($v) {return ["URLDetails" => $v];}, $value));
         }
         $value = $this->getTimeZoneDetails();
-        if (null !== $value && !empty($this->getTimeZoneDetails())) {
+        if (null !== $value && [] !== $this->getTimeZoneDetails()) {
             $writer->write(array_map(function ($v) {return ["TimeZoneDetails" => $v];}, $value));
         }
         $value = $this->getItemSpecificDetails();
-        if (null !== $value && !empty($this->getItemSpecificDetails())) {
+        if (null !== $value && [] !== $this->getItemSpecificDetails()) {
             $writer->write(array_map(function ($v) {return ["ItemSpecificDetails" => $v];}, $value));
         }
         $value = $this->getRegionOfOriginDetails();
-        if (null !== $value && !empty($this->getRegionOfOriginDetails())) {
+        if (null !== $value && [] !== $this->getRegionOfOriginDetails()) {
             $writer->write(array_map(function ($v) {return ["RegionOfOriginDetails" => $v];}, $value));
         }
         $value = $this->getShippingPackageDetails();
-        if (null !== $value && !empty($this->getShippingPackageDetails())) {
+        if (null !== $value && [] !== $this->getShippingPackageDetails()) {
             $writer->write(array_map(function ($v) {return ["ShippingPackageDetails" => $v];}, $value));
         }
         $value = $this->getShippingCarrierDetails();
-        if (null !== $value && !empty($this->getShippingCarrierDetails())) {
+        if (null !== $value && [] !== $this->getShippingCarrierDetails()) {
             $writer->write(array_map(function ($v) {return ["ShippingCarrierDetails" => $v];}, $value));
         }
         $value = $this->getReturnPolicyDetails();
@@ -2687,15 +2687,15 @@ class GeteBayDetailsResponseType extends AbstractResponseType
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ReturnPolicyDetails", $value);
         }
         $value = $this->getListingStartPriceDetails();
-        if (null !== $value && !empty($this->getListingStartPriceDetails())) {
+        if (null !== $value && [] !== $this->getListingStartPriceDetails()) {
             $writer->write(array_map(function ($v) {return ["ListingStartPriceDetails" => $v];}, $value));
         }
         $value = $this->getBuyerRequirementDetails();
-        if (null !== $value && !empty($this->getBuyerRequirementDetails())) {
+        if (null !== $value && [] !== $this->getBuyerRequirementDetails()) {
             $writer->write(array_map(function ($v) {return ["BuyerRequirementDetails" => $v];}, $value));
         }
         $value = $this->getListingFeatureDetails();
-        if (null !== $value && !empty($this->getListingFeatureDetails())) {
+        if (null !== $value && [] !== $this->getListingFeatureDetails()) {
             $writer->write(array_map(function ($v) {return ["ListingFeatureDetails" => $v];}, $value));
         }
         $value = $this->getVariationDetails();
@@ -2703,7 +2703,7 @@ class GeteBayDetailsResponseType extends AbstractResponseType
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}VariationDetails", $value);
         }
         $value = $this->getExcludeShippingLocationDetails();
-        if (null !== $value && !empty($this->getExcludeShippingLocationDetails())) {
+        if (null !== $value && [] !== $this->getExcludeShippingLocationDetails()) {
             $writer->write(array_map(function ($v) {return ["ExcludeShippingLocationDetails" => $v];}, $value));
         }
         $value = $this->getUpdateTime();
@@ -2711,11 +2711,11 @@ class GeteBayDetailsResponseType extends AbstractResponseType
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}UpdateTime", $value);
         }
         $value = $this->getRecoupmentPolicyDetails();
-        if (null !== $value && !empty($this->getRecoupmentPolicyDetails())) {
+        if (null !== $value && [] !== $this->getRecoupmentPolicyDetails()) {
             $writer->write(array_map(function ($v) {return ["RecoupmentPolicyDetails" => $v];}, $value));
         }
         $value = $this->getShippingCategoryDetails();
-        if (null !== $value && !empty($this->getShippingCategoryDetails())) {
+        if (null !== $value && [] !== $this->getShippingCategoryDetails()) {
             $writer->write(array_map(function ($v) {return ["ShippingCategoryDetails" => $v];}, $value));
         }
         $value = $this->getProductDetails();

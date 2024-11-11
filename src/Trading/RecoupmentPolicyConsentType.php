@@ -91,7 +91,7 @@ class RecoupmentPolicyConsentType implements \Sabre\Xml\XmlSerializable, \Sabre\
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getSite();
-        if (null !== $value && !empty($this->getSite())) {
+        if (null !== $value && [] !== $this->getSite()) {
             $writer->write(array_map(function ($v) {return ["Site" => $v];}, $value));
         }
     }
@@ -110,7 +110,7 @@ class RecoupmentPolicyConsentType implements \Sabre\Xml\XmlSerializable, \Sabre\
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Site');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Site');
         if (null !== $value) {
             $this->setSite($value);
         }

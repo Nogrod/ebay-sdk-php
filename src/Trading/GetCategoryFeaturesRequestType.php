@@ -348,7 +348,7 @@ class GetCategoryFeaturesRequestType extends AbstractRequestType
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ViewAllNodes", $value);
         }
         $value = $this->getFeatureID();
-        if (null !== $value && !empty($this->getFeatureID())) {
+        if (null !== $value && [] !== $this->getFeatureID()) {
             $writer->write(array_map(function ($v) {return ["FeatureID" => $v];}, $value));
         }
         $value = $this->getAllFeaturesForCategory();
@@ -385,7 +385,7 @@ class GetCategoryFeaturesRequestType extends AbstractRequestType
         if (null !== $value) {
             $this->setViewAllNodes(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeatureID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeatureID');
         if (null !== $value) {
             $this->setFeatureID($value);
         }

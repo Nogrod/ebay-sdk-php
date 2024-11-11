@@ -200,7 +200,7 @@ class ItemArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getItem();
-        if (null !== $value && !empty($this->getItem())) {
+        if (null !== $value && [] !== $this->getItem()) {
             $writer->write(array_map(function ($v) {return ["Item" => $v];}, $value));
         }
     }

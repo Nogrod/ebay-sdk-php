@@ -456,7 +456,7 @@ class InternationalShippingServiceOptionType implements \Sabre\Xml\XmlSerializab
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippingServicePriority", $value);
         }
         $value = $this->getShipsTo();
-        if (null !== $value && !empty($this->getShipsTo())) {
+        if (null !== $value && [] !== $this->getShipsTo()) {
             $writer->write(array_map(function ($v) {return ["ShipsTo" => $v];}, $value));
         }
         $value = $this->getEstimatedDeliveryMinTime();
@@ -511,7 +511,7 @@ class InternationalShippingServiceOptionType implements \Sabre\Xml\XmlSerializab
         if (null !== $value) {
             $this->setShippingServicePriority($value);
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShipsTo');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShipsTo');
         if (null !== $value) {
             $this->setShipsTo($value);
         }

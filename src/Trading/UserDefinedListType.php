@@ -317,7 +317,7 @@ class UserDefinedListType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}FavoriteSellerCount", $value);
         }
         $value = $this->getItemArray();
-        if (null !== $value && !empty($this->getItemArray())) {
+        if (null !== $value && [] !== $this->getItemArray()) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ItemArray", array_map(function ($v) {return ["Item" => $v];}, $value));
         }
         $value = $this->getFavoriteSearches();

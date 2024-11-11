@@ -91,7 +91,7 @@ class DomesticReturnsShipmentPayeeCodeType implements \Sabre\Xml\XmlSerializable
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getDomesticReturnsShipmentPayee();
-        if (null !== $value && !empty($this->getDomesticReturnsShipmentPayee())) {
+        if (null !== $value && [] !== $this->getDomesticReturnsShipmentPayee()) {
             $writer->write(array_map(function ($v) {return ["DomesticReturnsShipmentPayee" => $v];}, $value));
         }
     }
@@ -110,7 +110,7 @@ class DomesticReturnsShipmentPayeeCodeType implements \Sabre\Xml\XmlSerializable
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}DomesticReturnsShipmentPayee');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DomesticReturnsShipmentPayee');
         if (null !== $value) {
             $this->setDomesticReturnsShipmentPayee($value);
         }

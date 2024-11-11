@@ -135,7 +135,7 @@ class FlatShippingDiscountType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DiscountName", $value);
         }
         $value = $this->getDiscountProfile();
-        if (null !== $value && !empty($this->getDiscountProfile())) {
+        if (null !== $value && [] !== $this->getDiscountProfile()) {
             $writer->write(array_map(function ($v) {return ["DiscountProfile" => $v];}, $value));
         }
     }

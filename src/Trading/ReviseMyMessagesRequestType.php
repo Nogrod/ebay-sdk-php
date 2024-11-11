@@ -257,7 +257,7 @@ class ReviseMyMessagesRequestType extends AbstractRequestType
     {
         parent::xmlSerialize($writer);
         $value = $this->getMessageIDs();
-        if (null !== $value && !empty($this->getMessageIDs())) {
+        if (null !== $value && [] !== $this->getMessageIDs()) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MessageIDs", array_map(function ($v) {return ["MessageID" => $v];}, $value));
         }
         $value = $this->getRead();
@@ -291,9 +291,9 @@ class ReviseMyMessagesRequestType extends AbstractRequestType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}MessageIDs');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MessageIDs');
         if (null !== $value) {
-            $this->setMessageIDs($value);
+            $this->setMessageIDs(array_map(function ($v) {return Func::mapValue($v, '{urn:ebay:apis:eBLBaseComponents}MessageID');}, $value));
         }
         $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Read');
         if (null !== $value) {

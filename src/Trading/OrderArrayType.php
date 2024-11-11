@@ -166,11 +166,11 @@ class OrderArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getOrder();
-        if (null !== $value && !empty($this->getOrder())) {
+        if (null !== $value && [] !== $this->getOrder()) {
             $writer->write(array_map(function ($v) {return ["Order" => $v];}, $value));
         }
         $value = $this->getErrors();
-        if (null !== $value && !empty($this->getErrors())) {
+        if (null !== $value && [] !== $this->getErrors()) {
             $writer->write(array_map(function ($v) {return ["Errors" => $v];}, $value));
         }
     }

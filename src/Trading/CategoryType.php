@@ -661,7 +661,7 @@ class CategoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CategoryName", $value);
         }
         $value = $this->getCategoryParentID();
-        if (null !== $value && !empty($this->getCategoryParentID())) {
+        if (null !== $value && [] !== $this->getCategoryParentID()) {
             $writer->write(array_map(function ($v) {return ["CategoryParentID" => $v];}, $value));
         }
         $value = $this->getExpired();
@@ -742,7 +742,7 @@ class CategoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
         if (null !== $value) {
             $this->setCategoryName($value);
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}CategoryParentID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CategoryParentID');
         if (null !== $value) {
             $this->setCategoryParentID($value);
         }

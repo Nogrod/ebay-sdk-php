@@ -91,7 +91,7 @@ class ShipmentLineItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getLineItem();
-        if (null !== $value && !empty($this->getLineItem())) {
+        if (null !== $value && [] !== $this->getLineItem()) {
             $writer->write(array_map(function ($v) {return ["LineItem" => $v];}, $value));
         }
     }

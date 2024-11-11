@@ -91,7 +91,7 @@ class CountryPoliciesArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getCountryPolicies();
-        if (null !== $value && !empty($this->getCountryPolicies())) {
+        if (null !== $value && [] !== $this->getCountryPolicies()) {
             $writer->write(array_map(function ($v) {return ["CountryPolicies" => $v];}, $value));
         }
     }

@@ -91,7 +91,7 @@ class InternationalRefundMethodCodeType implements \Sabre\Xml\XmlSerializable, \
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getInternationalRefundMethod();
-        if (null !== $value && !empty($this->getInternationalRefundMethod())) {
+        if (null !== $value && [] !== $this->getInternationalRefundMethod()) {
             $writer->write(array_map(function ($v) {return ["InternationalRefundMethod" => $v];}, $value));
         }
     }
@@ -110,7 +110,7 @@ class InternationalRefundMethodCodeType implements \Sabre\Xml\XmlSerializable, \
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}InternationalRefundMethod');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}InternationalRefundMethod');
         if (null !== $value) {
             $this->setInternationalRefundMethod($value);
         }

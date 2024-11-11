@@ -93,7 +93,7 @@ class ErrorMessageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     {
         $writer->writeAttribute("xmlns", "http://www.ebay.com/marketplace/search/v1/services");
         $value = $this->getError();
-        if (null !== $value && !empty($this->getError())) {
+        if (null !== $value && [] !== $this->getError()) {
             $writer->write(array_map(function ($v) {return ["error" => $v];}, $value));
         }
     }

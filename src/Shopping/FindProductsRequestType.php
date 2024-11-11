@@ -629,7 +629,7 @@ class FindProductsRequestType extends AbstractRequestType
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}AvailableItemsOnly", $value);
         }
         $value = $this->getDomainName();
-        if (null !== $value && !empty($this->getDomainName())) {
+        if (null !== $value && [] !== $this->getDomainName()) {
             $writer->write(array_map(function ($v) {return ["DomainName" => $v];}, $value));
         }
         $value = $this->getProductID();
@@ -690,7 +690,7 @@ class FindProductsRequestType extends AbstractRequestType
         if (null !== $value) {
             $this->setAvailableItemsOnly(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}DomainName');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DomainName');
         if (null !== $value) {
             $this->setDomainName($value);
         }

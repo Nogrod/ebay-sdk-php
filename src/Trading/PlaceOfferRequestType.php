@@ -271,7 +271,7 @@ class PlaceOfferRequestType extends AbstractRequestType
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}AffiliateTrackingDetails", $value);
         }
         $value = $this->getVariationSpecifics();
-        if (null !== $value && !empty($this->getVariationSpecifics())) {
+        if (null !== $value && [] !== $this->getVariationSpecifics()) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}VariationSpecifics", array_map(function ($v) {return ["NameValueList" => $v];}, $value));
         }
     }

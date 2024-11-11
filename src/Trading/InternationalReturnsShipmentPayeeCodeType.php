@@ -91,7 +91,7 @@ class InternationalReturnsShipmentPayeeCodeType implements \Sabre\Xml\XmlSeriali
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getInternationalReturnsShipmentPayee();
-        if (null !== $value && !empty($this->getInternationalReturnsShipmentPayee())) {
+        if (null !== $value && [] !== $this->getInternationalReturnsShipmentPayee()) {
             $writer->write(array_map(function ($v) {return ["InternationalReturnsShipmentPayee" => $v];}, $value));
         }
     }
@@ -110,7 +110,7 @@ class InternationalReturnsShipmentPayeeCodeType implements \Sabre\Xml\XmlSeriali
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}InternationalReturnsShipmentPayee');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}InternationalReturnsShipmentPayee');
         if (null !== $value) {
             $this->setInternationalReturnsShipmentPayee($value);
         }

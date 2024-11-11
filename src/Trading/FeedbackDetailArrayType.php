@@ -91,7 +91,7 @@ class FeedbackDetailArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getFeedbackDetail();
-        if (null !== $value && !empty($this->getFeedbackDetail())) {
+        if (null !== $value && [] !== $this->getFeedbackDetail()) {
             $writer->write(array_map(function ($v) {return ["FeedbackDetail" => $v];}, $value));
         }
     }

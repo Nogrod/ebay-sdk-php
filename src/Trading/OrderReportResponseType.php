@@ -240,7 +240,7 @@ class OrderReportResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Version", $value);
         }
         $value = $this->getErrors();
-        if (null !== $value && !empty($this->getErrors())) {
+        if (null !== $value && [] !== $this->getErrors()) {
             $writer->write(array_map(function ($v) {return ["Errors" => $v];}, $value));
         }
         $value = $this->getOrderArray();

@@ -91,7 +91,7 @@ class RemoveSellerProfilesRequestType extends BaseRequestType
     {
         parent::xmlSerialize($writer);
         $value = $this->getProfileIds();
-        if (null !== $value && !empty($this->getProfileIds())) {
+        if (null !== $value && [] !== $this->getProfileIds()) {
             $writer->write(array_map(function ($v) {return ["profileIds" => $v];}, $value));
         }
     }
@@ -111,7 +111,7 @@ class RemoveSellerProfilesRequestType extends BaseRequestType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}profileIds');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}profileIds');
         if (null !== $value) {
             $this->setProfileIds($value);
         }

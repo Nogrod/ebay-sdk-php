@@ -109,7 +109,7 @@ class StatementsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getStatement();
-        if (null !== $value && !empty($this->getStatement())) {
+        if (null !== $value && [] !== $this->getStatement()) {
             $writer->write(array_map(function ($v) {return ["Statement" => $v];}, $value));
         }
     }
@@ -128,7 +128,7 @@ class StatementsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Statement');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Statement');
         if (null !== $value) {
             $this->setStatement($value);
         }

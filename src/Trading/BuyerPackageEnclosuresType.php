@@ -91,7 +91,7 @@ class BuyerPackageEnclosuresType implements \Sabre\Xml\XmlSerializable, \Sabre\X
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getBuyerPackageEnclosure();
-        if (null !== $value && !empty($this->getBuyerPackageEnclosure())) {
+        if (null !== $value && [] !== $this->getBuyerPackageEnclosure()) {
             $writer->write(array_map(function ($v) {return ["BuyerPackageEnclosure" => $v];}, $value));
         }
     }

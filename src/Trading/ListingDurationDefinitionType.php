@@ -128,7 +128,7 @@ class ListingDurationDefinitionType implements \Sabre\Xml\XmlSerializable, \Sabr
             $writer->writeAttribute("durationSetID", $value);
         }
         $value = $this->getDuration();
-        if (null !== $value && !empty($this->getDuration())) {
+        if (null !== $value && [] !== $this->getDuration()) {
             $writer->write(array_map(function ($v) {return ["Duration" => $v];}, $value));
         }
     }
@@ -151,7 +151,7 @@ class ListingDurationDefinitionType implements \Sabre\Xml\XmlSerializable, \Sabr
         if (null !== $value) {
             $this->setDurationSetID($value);
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Duration');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Duration');
         if (null !== $value) {
             $this->setDuration($value);
         }

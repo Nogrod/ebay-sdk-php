@@ -91,7 +91,7 @@ class AddItemsResponseType extends AbstractResponseType
     {
         parent::xmlSerialize($writer);
         $value = $this->getAddItemResponseContainer();
-        if (null !== $value && !empty($this->getAddItemResponseContainer())) {
+        if (null !== $value && [] !== $this->getAddItemResponseContainer()) {
             $writer->write(array_map(function ($v) {return ["AddItemResponseContainer" => $v];}, $value));
         }
     }

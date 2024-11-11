@@ -417,7 +417,7 @@ class ItemFilterType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
             $writer->writeElement("{http://www.ebay.com/marketplace/search/v1/services}name", $value);
         }
         $value = $this->getValue();
-        if (null !== $value && !empty($this->getValue())) {
+        if (null !== $value && [] !== $this->getValue()) {
             $writer->write(array_map(function ($v) {return ["value" => $v];}, $value));
         }
         $value = $this->getDelimiter();
@@ -452,7 +452,7 @@ class ItemFilterType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
         if (null !== $value) {
             $this->setName($value);
         }
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}value');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}value');
         if (null !== $value) {
             $this->setValue($value);
         }

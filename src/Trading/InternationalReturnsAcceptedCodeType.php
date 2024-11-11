@@ -91,7 +91,7 @@ class InternationalReturnsAcceptedCodeType implements \Sabre\Xml\XmlSerializable
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getInternationalReturnsAccepted();
-        if (null !== $value && !empty($this->getInternationalReturnsAccepted())) {
+        if (null !== $value && [] !== $this->getInternationalReturnsAccepted()) {
             $writer->write(array_map(function ($v) {return ["InternationalReturnsAccepted" => $v];}, $value));
         }
     }
@@ -110,7 +110,7 @@ class InternationalReturnsAcceptedCodeType implements \Sabre\Xml\XmlSerializable
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}InternationalReturnsAccepted');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}InternationalReturnsAccepted');
         if (null !== $value) {
             $this->setInternationalReturnsAccepted($value);
         }

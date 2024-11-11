@@ -267,7 +267,7 @@ class EndItemResponseContainerType implements \Sabre\Xml\XmlSerializable, \Sabre
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CorrelationID", $value);
         }
         $value = $this->getErrors();
-        if (null !== $value && !empty($this->getErrors())) {
+        if (null !== $value && [] !== $this->getErrors()) {
             $writer->write(array_map(function ($v) {return ["Errors" => $v];}, $value));
         }
     }

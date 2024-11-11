@@ -788,7 +788,7 @@ class ProductListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}StockPhotoURL", $value);
         }
         $value = $this->getCopyright();
-        if (null !== $value && !empty($this->getCopyright())) {
+        if (null !== $value && [] !== $this->getCopyright()) {
             $writer->write(array_map(function ($v) {return ["Copyright" => $v];}, $value));
         }
         $value = $this->getProductReferenceID();
@@ -835,7 +835,7 @@ class ProductListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}IncludeeBayProductDetails", $value);
         }
         $value = $this->getNameValueList();
-        if (null !== $value && !empty($this->getNameValueList())) {
+        if (null !== $value && [] !== $this->getNameValueList()) {
             $writer->write(array_map(function ($v) {return ["NameValueList" => $v];}, $value));
         }
     }
@@ -866,7 +866,7 @@ class ProductListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
         if (null !== $value) {
             $this->setStockPhotoURL($value);
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Copyright');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Copyright');
         if (null !== $value) {
             $this->setCopyright($value);
         }

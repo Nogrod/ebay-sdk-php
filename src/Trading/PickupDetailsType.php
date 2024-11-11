@@ -131,7 +131,7 @@ class PickupDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getPickupOptions();
-        if (null !== $value && !empty($this->getPickupOptions())) {
+        if (null !== $value && [] !== $this->getPickupOptions()) {
             $writer->write(array_map(function ($v) {return ["PickupOptions" => $v];}, $value));
         }
     }

@@ -392,7 +392,7 @@ class SellerProfileType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
             $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}siteId", $value);
         }
         $value = $this->getCategoryGroups();
-        if (null !== $value && !empty($this->getCategoryGroups())) {
+        if (null !== $value && [] !== $this->getCategoryGroups()) {
             $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}categoryGroups", array_map(function ($v) {return ["categoryGroup" => $v];}, $value));
         }
     }

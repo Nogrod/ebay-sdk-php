@@ -89,7 +89,7 @@ class GetVeROReasonCodeDetailsResponseType extends AbstractResponseType
     {
         parent::xmlSerialize($writer);
         $value = $this->getVeROReasonCodeDetails();
-        if (null !== $value && !empty($this->getVeROReasonCodeDetails())) {
+        if (null !== $value && [] !== $this->getVeROReasonCodeDetails()) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}VeROReasonCodeDetails", array_map(function ($v) {return ["VeROSiteDetail" => $v];}, $value));
         }
     }

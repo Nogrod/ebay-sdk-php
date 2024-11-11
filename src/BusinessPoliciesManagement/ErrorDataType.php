@@ -368,7 +368,7 @@ class ErrorDataType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
             $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}exceptionId", $value);
         }
         $value = $this->getParameter();
-        if (null !== $value && !empty($this->getParameter())) {
+        if (null !== $value && [] !== $this->getParameter()) {
             $writer->write(array_map(function ($v) {return ["parameter" => $v];}, $value));
         }
     }

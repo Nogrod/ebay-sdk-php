@@ -349,7 +349,7 @@ class BiddingSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BidRetractions", $value);
         }
         $value = $this->getItemBidDetails();
-        if (null !== $value && !empty($this->getItemBidDetails())) {
+        if (null !== $value && [] !== $this->getItemBidDetails()) {
             $writer->write(array_map(function ($v) {return ["ItemBidDetails" => $v];}, $value));
         }
     }

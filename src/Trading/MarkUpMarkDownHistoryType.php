@@ -95,7 +95,7 @@ class MarkUpMarkDownHistoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getMarkUpMarkDownEvent();
-        if (null !== $value && !empty($this->getMarkUpMarkDownEvent())) {
+        if (null !== $value && [] !== $this->getMarkUpMarkDownEvent()) {
             $writer->write(array_map(function ($v) {return ["MarkUpMarkDownEvent" => $v];}, $value));
         }
     }

@@ -230,7 +230,7 @@ class ShipmentTrackingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShipmentTrackingNumber", $value);
         }
         $value = $this->getShipmentLineItem();
-        if (null !== $value && !empty($this->getShipmentLineItem())) {
+        if (null !== $value && [] !== $this->getShipmentLineItem()) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShipmentLineItem", array_map(function ($v) {return ["LineItem" => $v];}, $value));
         }
     }

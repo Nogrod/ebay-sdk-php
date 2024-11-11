@@ -177,7 +177,7 @@ class TaxIdentifierType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ID", $value);
         }
         $value = $this->getAttribute();
-        if (null !== $value && !empty($this->getAttribute())) {
+        if (null !== $value && [] !== $this->getAttribute()) {
             $writer->write(array_map(function ($v) {return ["Attribute" => $v];}, $value));
         }
     }

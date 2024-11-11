@@ -366,7 +366,7 @@ class MemberMessageExchangeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Question", $value);
         }
         $value = $this->getResponse();
-        if (null !== $value && !empty($this->getResponse())) {
+        if (null !== $value && [] !== $this->getResponse()) {
             $writer->write(array_map(function ($v) {return ["Response" => $v];}, $value));
         }
         $value = $this->getMessageStatus();
@@ -382,7 +382,7 @@ class MemberMessageExchangeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}LastModifiedDate", $value);
         }
         $value = $this->getMessageMedia();
-        if (null !== $value && !empty($this->getMessageMedia())) {
+        if (null !== $value && [] !== $this->getMessageMedia()) {
             $writer->write(array_map(function ($v) {return ["MessageMedia" => $v];}, $value));
         }
     }
@@ -409,7 +409,7 @@ class MemberMessageExchangeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
         if (null !== $value) {
             $this->setQuestion(\Nogrod\eBaySDK\Trading\MemberMessageType::fromKeyValue($value));
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Response');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Response');
         if (null !== $value) {
             $this->setResponse($value);
         }

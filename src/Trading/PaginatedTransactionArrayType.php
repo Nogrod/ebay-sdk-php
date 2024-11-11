@@ -131,7 +131,7 @@ class PaginatedTransactionArrayType implements \Sabre\Xml\XmlSerializable, \Sabr
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getTransactionArray();
-        if (null !== $value && !empty($this->getTransactionArray())) {
+        if (null !== $value && [] !== $this->getTransactionArray()) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TransactionArray", array_map(function ($v) {return ["Transaction" => $v];}, $value));
         }
         $value = $this->getPaginationResult();

@@ -336,7 +336,7 @@ class GetCategoryFeaturesResponseType extends AbstractResponseType
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}UpdateTime", $value);
         }
         $value = $this->getCategory();
-        if (null !== $value && !empty($this->getCategory())) {
+        if (null !== $value && [] !== $this->getCategory()) {
             $writer->write(array_map(function ($v) {return ["Category" => $v];}, $value));
         }
         $value = $this->getSiteDefaults();

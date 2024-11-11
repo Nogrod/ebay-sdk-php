@@ -91,7 +91,7 @@ class StoreCustomCategoryArrayType implements \Sabre\Xml\XmlSerializable, \Sabre
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getCustomCategory();
-        if (null !== $value && !empty($this->getCustomCategory())) {
+        if (null !== $value && [] !== $this->getCustomCategory()) {
             $writer->write(array_map(function ($v) {return ["CustomCategory" => $v];}, $value));
         }
     }

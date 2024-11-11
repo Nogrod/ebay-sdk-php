@@ -91,7 +91,7 @@ class StoreOwnerExtendedListingDurationsType implements \Sabre\Xml\XmlSerializab
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getDuration();
-        if (null !== $value && !empty($this->getDuration())) {
+        if (null !== $value && [] !== $this->getDuration()) {
             $writer->write(array_map(function ($v) {return ["Duration" => $v];}, $value));
         }
     }
@@ -110,7 +110,7 @@ class StoreOwnerExtendedListingDurationsType implements \Sabre\Xml\XmlSerializab
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Duration');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Duration');
         if (null !== $value) {
             $this->setDuration($value);
         }

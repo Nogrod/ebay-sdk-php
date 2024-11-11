@@ -579,15 +579,15 @@ class ReturnPolicyDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getRefund();
-        if (null !== $value && !empty($this->getRefund())) {
+        if (null !== $value && [] !== $this->getRefund()) {
             $writer->write(array_map(function ($v) {return ["Refund" => $v];}, $value));
         }
         $value = $this->getReturnsWithin();
-        if (null !== $value && !empty($this->getReturnsWithin())) {
+        if (null !== $value && [] !== $this->getReturnsWithin()) {
             $writer->write(array_map(function ($v) {return ["ReturnsWithin" => $v];}, $value));
         }
         $value = $this->getReturnsAccepted();
-        if (null !== $value && !empty($this->getReturnsAccepted())) {
+        if (null !== $value && [] !== $this->getReturnsAccepted()) {
             $writer->write(array_map(function ($v) {return ["ReturnsAccepted" => $v];}, $value));
         }
         $value = $this->getDescription();
@@ -596,11 +596,11 @@ class ReturnPolicyDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Description", $value);
         }
         $value = $this->getShippingCostPaidBy();
-        if (null !== $value && !empty($this->getShippingCostPaidBy())) {
+        if (null !== $value && [] !== $this->getShippingCostPaidBy()) {
             $writer->write(array_map(function ($v) {return ["ShippingCostPaidBy" => $v];}, $value));
         }
         $value = $this->getRestockingFeeValue();
-        if (null !== $value && !empty($this->getRestockingFeeValue())) {
+        if (null !== $value && [] !== $this->getRestockingFeeValue()) {
             $writer->write(array_map(function ($v) {return ["RestockingFeeValue" => $v];}, $value));
         }
         $value = $this->getDetailVersion();

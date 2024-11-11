@@ -91,7 +91,7 @@ class MyMessagesMessageIDArrayType implements \Sabre\Xml\XmlSerializable, \Sabre
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getMessageID();
-        if (null !== $value && !empty($this->getMessageID())) {
+        if (null !== $value && [] !== $this->getMessageID()) {
             $writer->write(array_map(function ($v) {return ["MessageID" => $v];}, $value));
         }
     }
@@ -110,7 +110,7 @@ class MyMessagesMessageIDArrayType implements \Sabre\Xml\XmlSerializable, \Sabre
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}MessageID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MessageID');
         if (null !== $value) {
             $this->setMessageID($value);
         }

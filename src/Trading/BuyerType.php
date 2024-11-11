@@ -290,7 +290,7 @@ class BuyerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippingAddress", $value);
         }
         $value = $this->getBuyerTaxIdentifier();
-        if (null !== $value && !empty($this->getBuyerTaxIdentifier())) {
+        if (null !== $value && [] !== $this->getBuyerTaxIdentifier()) {
             $writer->write(array_map(function ($v) {return ["BuyerTaxIdentifier" => $v];}, $value));
         }
     }

@@ -94,7 +94,7 @@ class ReviseInventoryStatusRequestType extends AbstractRequestType
     {
         parent::xmlSerialize($writer);
         $value = $this->getInventoryStatus();
-        if (null !== $value && !empty($this->getInventoryStatus())) {
+        if (null !== $value && [] !== $this->getInventoryStatus()) {
             $writer->write(array_map(function ($v) {return ["InventoryStatus" => $v];}, $value));
         }
     }

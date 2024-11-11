@@ -147,7 +147,7 @@ class GetCategoryMappingsResponseType extends AbstractResponseType
     {
         parent::xmlSerialize($writer);
         $value = $this->getCategoryMapping();
-        if (null !== $value && !empty($this->getCategoryMapping())) {
+        if (null !== $value && [] !== $this->getCategoryMapping()) {
             $writer->write(array_map(function ($v) {return ["CategoryMapping" => $v];}, $value));
         }
         $value = $this->getCategoryVersion();

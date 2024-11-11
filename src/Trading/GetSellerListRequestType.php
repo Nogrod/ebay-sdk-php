@@ -622,7 +622,7 @@ class GetSellerListRequestType extends AbstractRequestType
     {
         parent::xmlSerialize($writer);
         $value = $this->getMotorsDealerUsers();
-        if (null !== $value && !empty($this->getMotorsDealerUsers())) {
+        if (null !== $value && [] !== $this->getMotorsDealerUsers()) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MotorsDealerUsers", array_map(function ($v) {return ["UserID" => $v];}, $value));
         }
         $value = $this->getEndTimeFrom();
@@ -654,7 +654,7 @@ class GetSellerListRequestType extends AbstractRequestType
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}GranularityLevel", $value);
         }
         $value = $this->getSKUArray();
-        if (null !== $value && !empty($this->getSKUArray())) {
+        if (null !== $value && [] !== $this->getSKUArray()) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SKUArray", array_map(function ($v) {return ["SKU" => $v];}, $value));
         }
         $value = $this->getIncludeWatchCount();
@@ -693,9 +693,9 @@ class GetSellerListRequestType extends AbstractRequestType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}MotorsDealerUsers');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MotorsDealerUsers');
         if (null !== $value) {
-            $this->setMotorsDealerUsers($value);
+            $this->setMotorsDealerUsers(array_map(function ($v) {return Func::mapValue($v, '{urn:ebay:apis:eBLBaseComponents}UserID');}, $value));
         }
         $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}EndTimeFrom');
         if (null !== $value) {
@@ -725,9 +725,9 @@ class GetSellerListRequestType extends AbstractRequestType
         if (null !== $value) {
             $this->setGranularityLevel($value);
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}SKUArray');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SKUArray');
         if (null !== $value) {
-            $this->setSKUArray($value);
+            $this->setSKUArray(array_map(function ($v) {return Func::mapValue($v, '{urn:ebay:apis:eBLBaseComponents}SKU');}, $value));
         }
         $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}IncludeWatchCount');
         if (null !== $value) {

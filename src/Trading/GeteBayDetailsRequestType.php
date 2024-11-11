@@ -93,7 +93,7 @@ class GeteBayDetailsRequestType extends AbstractRequestType
     {
         parent::xmlSerialize($writer);
         $value = $this->getDetailName();
-        if (null !== $value && !empty($this->getDetailName())) {
+        if (null !== $value && [] !== $this->getDetailName()) {
             $writer->write(array_map(function ($v) {return ["DetailName" => $v];}, $value));
         }
     }
@@ -113,7 +113,7 @@ class GeteBayDetailsRequestType extends AbstractRequestType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}DetailName');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DetailName');
         if (null !== $value) {
             $this->setDetailName($value);
         }

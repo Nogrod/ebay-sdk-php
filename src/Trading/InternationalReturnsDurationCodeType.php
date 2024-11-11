@@ -91,7 +91,7 @@ class InternationalReturnsDurationCodeType implements \Sabre\Xml\XmlSerializable
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getInternationalReturnsDuration();
-        if (null !== $value && !empty($this->getInternationalReturnsDuration())) {
+        if (null !== $value && [] !== $this->getInternationalReturnsDuration()) {
             $writer->write(array_map(function ($v) {return ["InternationalReturnsDuration" => $v];}, $value));
         }
     }
@@ -110,7 +110,7 @@ class InternationalReturnsDurationCodeType implements \Sabre\Xml\XmlSerializable
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}InternationalReturnsDuration');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}InternationalReturnsDuration');
         if (null !== $value) {
             $this->setInternationalReturnsDuration($value);
         }

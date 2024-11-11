@@ -137,7 +137,7 @@ class GetSearchKeywordsRecommendationResponseType extends BaseServiceResponseTyp
             $writer->writeElement("{http://www.ebay.com/marketplace/search/v1/services}keywords", $value);
         }
         $value = $this->getExtension();
-        if (null !== $value && !empty($this->getExtension())) {
+        if (null !== $value && [] !== $this->getExtension()) {
             $writer->write(array_map(function ($v) {return ["extension" => $v];}, $value));
         }
     }

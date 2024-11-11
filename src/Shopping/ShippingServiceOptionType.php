@@ -654,7 +654,7 @@ class ShippingServiceOptionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippingSurcharge", $value);
         }
         $value = $this->getShipsTo();
-        if (null !== $value && !empty($this->getShipsTo())) {
+        if (null !== $value && [] !== $this->getShipsTo()) {
             $writer->write(array_map(function ($v) {return ["ShipsTo" => $v];}, $value));
         }
         $value = $this->getEstimatedDeliveryMinTime();
@@ -730,7 +730,7 @@ class ShippingServiceOptionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
         if (null !== $value) {
             $this->setShippingSurcharge(\Nogrod\eBaySDK\Shopping\AmountType::fromKeyValue($value));
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShipsTo');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShipsTo');
         if (null !== $value) {
             $this->setShipsTo($value);
         }

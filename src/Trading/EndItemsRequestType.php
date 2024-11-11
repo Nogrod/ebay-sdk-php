@@ -91,7 +91,7 @@ class EndItemsRequestType extends AbstractRequestType
     {
         parent::xmlSerialize($writer);
         $value = $this->getEndItemRequestContainer();
-        if (null !== $value && !empty($this->getEndItemRequestContainer())) {
+        if (null !== $value && [] !== $this->getEndItemRequestContainer()) {
             $writer->write(array_map(function ($v) {return ["EndItemRequestContainer" => $v];}, $value));
         }
     }

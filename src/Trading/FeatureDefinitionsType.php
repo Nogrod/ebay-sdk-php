@@ -5412,11 +5412,11 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}InternationalReturnsShipmentPayeeValues", $value);
         }
         $value = $this->getDomesticRefundMethodValues();
-        if (null !== $value && !empty($this->getDomesticRefundMethodValues())) {
+        if (null !== $value && [] !== $this->getDomesticRefundMethodValues()) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DomesticRefundMethodValues", array_map(function ($v) {return ["DomesticRefundMethod" => $v];}, $value));
         }
         $value = $this->getInternationalRefundMethodValues();
-        if (null !== $value && !empty($this->getInternationalRefundMethodValues())) {
+        if (null !== $value && [] !== $this->getInternationalRefundMethodValues()) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}InternationalRefundMethodValues", array_map(function ($v) {return ["InternationalRefundMethod" => $v];}, $value));
         }
         $value = $this->getReturnPolicyDescriptionEnabled();
@@ -5979,13 +5979,13 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
         if (null !== $value) {
             $this->setInternationalReturnsShipmentPayeeValues(\Nogrod\eBaySDK\Trading\InternationalReturnsShipmentPayeeDefinitionType::fromKeyValue($value));
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}DomesticRefundMethodValues');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DomesticRefundMethodValues');
         if (null !== $value) {
-            $this->setDomesticRefundMethodValues($value);
+            $this->setDomesticRefundMethodValues(array_map(function ($v) {return Func::mapValue($v, '{urn:ebay:apis:eBLBaseComponents}DomesticRefundMethod');}, $value));
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}InternationalRefundMethodValues');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}InternationalRefundMethodValues');
         if (null !== $value) {
-            $this->setInternationalRefundMethodValues($value);
+            $this->setInternationalRefundMethodValues(array_map(function ($v) {return Func::mapValue($v, '{urn:ebay:apis:eBLBaseComponents}InternationalRefundMethod');}, $value));
         }
         $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReturnPolicyDescriptionEnabled');
         if (null !== $value) {

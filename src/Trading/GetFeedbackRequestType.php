@@ -416,7 +416,7 @@ class GetFeedbackRequestType extends AbstractRequestType
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TransactionID", $value);
         }
         $value = $this->getCommentType();
-        if (null !== $value && !empty($this->getCommentType())) {
+        if (null !== $value && [] !== $this->getCommentType()) {
             $writer->write(array_map(function ($v) {return ["CommentType" => $v];}, $value));
         }
         $value = $this->getFeedbackType();
@@ -464,7 +464,7 @@ class GetFeedbackRequestType extends AbstractRequestType
         if (null !== $value) {
             $this->setTransactionID($value);
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}CommentType');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CommentType');
         if (null !== $value) {
             $this->setCommentType($value);
         }

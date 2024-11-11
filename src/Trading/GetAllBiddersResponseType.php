@@ -188,7 +188,7 @@ class GetAllBiddersResponseType extends AbstractResponseType
     {
         parent::xmlSerialize($writer);
         $value = $this->getBidArray();
-        if (null !== $value && !empty($this->getBidArray())) {
+        if (null !== $value && [] !== $this->getBidArray()) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BidArray", array_map(function ($v) {return ["Offer" => $v];}, $value));
         }
         $value = $this->getHighBidder();

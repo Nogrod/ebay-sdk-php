@@ -128,7 +128,7 @@ class ListingDurationDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sab
             $writer->writeAttribute("Version", $value);
         }
         $value = $this->getListingDuration();
-        if (null !== $value && !empty($this->getListingDuration())) {
+        if (null !== $value && [] !== $this->getListingDuration()) {
             $writer->write(array_map(function ($v) {return ["ListingDuration" => $v];}, $value));
         }
     }

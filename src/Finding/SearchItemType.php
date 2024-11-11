@@ -1815,7 +1815,7 @@ class SearchItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
             $writer->writeElement("{http://www.ebay.com/marketplace/search/v1/services}galleryURL", $value);
         }
         $value = $this->getGalleryInfoContainer();
-        if (null !== $value && !empty($this->getGalleryInfoContainer())) {
+        if (null !== $value && [] !== $this->getGalleryInfoContainer()) {
             $writer->writeElement("{http://www.ebay.com/marketplace/search/v1/services}galleryInfoContainer", array_map(function ($v) {return ["galleryURL" => $v];}, $value));
         }
         $value = $this->getViewItemURL();
@@ -1831,7 +1831,7 @@ class SearchItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
             $writer->writeElement("{http://www.ebay.com/marketplace/search/v1/services}productId", $value);
         }
         $value = $this->getPaymentMethod();
-        if (null !== $value && !empty($this->getPaymentMethod())) {
+        if (null !== $value && [] !== $this->getPaymentMethod()) {
             $writer->write(array_map(function ($v) {return ["paymentMethod" => $v];}, $value));
         }
         $value = $this->getAutoPay();
@@ -1877,7 +1877,7 @@ class SearchItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
             $writer->writeElement("{http://www.ebay.com/marketplace/search/v1/services}returnsAccepted", $value);
         }
         $value = $this->getGalleryPlusPictureURL();
-        if (null !== $value && !empty($this->getGalleryPlusPictureURL())) {
+        if (null !== $value && [] !== $this->getGalleryPlusPictureURL()) {
             $writer->write(array_map(function ($v) {return ["galleryPlusPictureURL" => $v];}, $value));
         }
         $value = $this->getCompatibility();
@@ -1914,7 +1914,7 @@ class SearchItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
             $writer->writeElement("{http://www.ebay.com/marketplace/search/v1/services}unitPrice", $value);
         }
         $value = $this->getAttribute();
-        if (null !== $value && !empty($this->getAttribute())) {
+        if (null !== $value && [] !== $this->getAttribute()) {
             $writer->write(array_map(function ($v) {return ["attribute" => $v];}, $value));
         }
         $value = $this->getTopRatedListing();
@@ -1927,7 +1927,7 @@ class SearchItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
             $writer->writeElement("{http://www.ebay.com/marketplace/search/v1/services}delimiter", $value);
         }
         $value = $this->getEekStatus();
-        if (null !== $value && !empty($this->getEekStatus())) {
+        if (null !== $value && [] !== $this->getEekStatus()) {
             $writer->write(array_map(function ($v) {return ["eekStatus" => $v];}, $value));
         }
         $value = $this->getEBayPlusEnabled();
@@ -1995,7 +1995,7 @@ class SearchItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
         if (null !== $value) {
             $this->setProductId(\Nogrod\eBaySDK\Finding\ProductIdType::fromKeyValue($value));
         }
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}paymentMethod');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}paymentMethod');
         if (null !== $value) {
             $this->setPaymentMethod($value);
         }
@@ -2039,7 +2039,7 @@ class SearchItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
         if (null !== $value) {
             $this->setReturnsAccepted(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}galleryPlusPictureURL');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}galleryPlusPictureURL');
         if (null !== $value) {
             $this->setGalleryPlusPictureURL($value);
         }
@@ -2087,7 +2087,7 @@ class SearchItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
         if (null !== $value) {
             $this->setDelimiter($value);
         }
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}eekStatus');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}eekStatus');
         if (null !== $value) {
             $this->setEekStatus($value);
         }

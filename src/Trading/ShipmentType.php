@@ -168,7 +168,7 @@ class ShipmentType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippedTime", $value);
         }
         $value = $this->getShipmentTrackingDetails();
-        if (null !== $value && !empty($this->getShipmentTrackingDetails())) {
+        if (null !== $value && [] !== $this->getShipmentTrackingDetails()) {
             $writer->write(array_map(function ($v) {return ["ShipmentTrackingDetails" => $v];}, $value));
         }
     }

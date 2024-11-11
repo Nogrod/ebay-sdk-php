@@ -168,7 +168,7 @@ class SearchResultType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
             $writer->writeAttribute("count", $value);
         }
         $value = $this->getItem();
-        if (null !== $value && !empty($this->getItem())) {
+        if (null !== $value && [] !== $this->getItem()) {
             $writer->write(array_map(function ($v) {return ["item" => $v];}, $value));
         }
         $value = $this->getDelimiter();

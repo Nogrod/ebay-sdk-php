@@ -91,7 +91,7 @@ class DomesticReturnsAcceptedCodeType implements \Sabre\Xml\XmlSerializable, \Sa
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getDomesticReturnsAccepted();
-        if (null !== $value && !empty($this->getDomesticReturnsAccepted())) {
+        if (null !== $value && [] !== $this->getDomesticReturnsAccepted()) {
             $writer->write(array_map(function ($v) {return ["DomesticReturnsAccepted" => $v];}, $value));
         }
     }
@@ -110,7 +110,7 @@ class DomesticReturnsAcceptedCodeType implements \Sabre\Xml\XmlSerializable, \Sa
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}DomesticReturnsAccepted');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DomesticReturnsAccepted');
         if (null !== $value) {
             $this->setDomesticReturnsAccepted($value);
         }

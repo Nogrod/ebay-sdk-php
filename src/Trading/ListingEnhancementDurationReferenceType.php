@@ -125,7 +125,7 @@ class ListingEnhancementDurationReferenceType implements \Sabre\Xml\XmlSerializa
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getDuration();
-        if (null !== $value && !empty($this->getDuration())) {
+        if (null !== $value && [] !== $this->getDuration()) {
             $writer->write(array_map(function ($v) {return ["Duration" => $v];}, $value));
         }
     }
@@ -144,7 +144,7 @@ class ListingEnhancementDurationReferenceType implements \Sabre\Xml\XmlSerializa
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Duration');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Duration');
         if (null !== $value) {
             $this->setDuration($value);
         }

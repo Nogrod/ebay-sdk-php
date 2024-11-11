@@ -2772,7 +2772,7 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MonetaryDetails", $value);
         }
         $value = $this->getPickupDetails();
-        if (null !== $value && !empty($this->getPickupDetails())) {
+        if (null !== $value && [] !== $this->getPickupDetails()) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PickupDetails", array_map(function ($v) {return ["PickupOptions" => $v];}, $value));
         }
         $value = $this->getPickupMethodSelected();
@@ -2784,7 +2784,7 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}LogisticsPlanType", $value);
         }
         $value = $this->getBuyerPackageEnclosures();
-        if (null !== $value && !empty($this->getBuyerPackageEnclosures())) {
+        if (null !== $value && [] !== $this->getBuyerPackageEnclosures()) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BuyerPackageEnclosures", array_map(function ($v) {return ["BuyerPackageEnclosure" => $v];}, $value));
         }
         $value = $this->getInventoryReservationID();
@@ -2837,7 +2837,7 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Program", $value);
         }
         $value = $this->getLinkedLineItemArray();
-        if (null !== $value && !empty($this->getLinkedLineItemArray())) {
+        if (null !== $value && [] !== $this->getLinkedLineItemArray()) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}LinkedLineItemArray", array_map(function ($v) {return ["LinkedLineItem" => $v];}, $value));
         }
     }

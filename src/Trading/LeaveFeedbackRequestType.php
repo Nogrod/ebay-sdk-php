@@ -470,7 +470,7 @@ class LeaveFeedbackRequestType extends AbstractRequestType
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TargetUser", $value);
         }
         $value = $this->getSellerItemRatingDetailArray();
-        if (null !== $value && !empty($this->getSellerItemRatingDetailArray())) {
+        if (null !== $value && [] !== $this->getSellerItemRatingDetailArray()) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SellerItemRatingDetailArray", array_map(function ($v) {return ["ItemRatingDetails" => $v];}, $value));
         }
         $value = $this->getOrderLineItemID();

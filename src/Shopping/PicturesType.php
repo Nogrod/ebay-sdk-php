@@ -134,7 +134,7 @@ class PicturesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}VariationSpecificName", $value);
         }
         $value = $this->getVariationSpecificPictureSet();
-        if (null !== $value && !empty($this->getVariationSpecificPictureSet())) {
+        if (null !== $value && [] !== $this->getVariationSpecificPictureSet()) {
             $writer->write(array_map(function ($v) {return ["VariationSpecificPictureSet" => $v];}, $value));
         }
     }

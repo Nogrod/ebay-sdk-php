@@ -850,7 +850,7 @@ class GetUserPreferencesResponseType extends AbstractResponseType
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}UnpaidItemAssistancePreferences", $value);
         }
         $value = $this->getSellerExcludeShipToLocationPreferences();
-        if (null !== $value && !empty($this->getSellerExcludeShipToLocationPreferences())) {
+        if (null !== $value && [] !== $this->getSellerExcludeShipToLocationPreferences()) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SellerExcludeShipToLocationPreferences", array_map(function ($v) {return ["ExcludeShipToLocation" => $v];}, $value));
         }
         $value = $this->getPurchaseReminderEmailPreferences();
@@ -895,7 +895,7 @@ class GetUserPreferencesResponseType extends AbstractResponseType
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}OutOfStockControlPreference", $value);
         }
         $value = $this->getEBayPLUSPreference();
-        if (null !== $value && !empty($this->getEBayPLUSPreference())) {
+        if (null !== $value && [] !== $this->getEBayPLUSPreference()) {
             $writer->write(array_map(function ($v) {return ["eBayPLUSPreference" => $v];}, $value));
         }
     }
@@ -947,9 +947,9 @@ class GetUserPreferencesResponseType extends AbstractResponseType
         if (null !== $value) {
             $this->setUnpaidItemAssistancePreferences(\Nogrod\eBaySDK\Trading\UnpaidItemAssistancePreferencesType::fromKeyValue($value));
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerExcludeShipToLocationPreferences');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerExcludeShipToLocationPreferences');
         if (null !== $value) {
-            $this->setSellerExcludeShipToLocationPreferences($value);
+            $this->setSellerExcludeShipToLocationPreferences(array_map(function ($v) {return Func::mapValue($v, '{urn:ebay:apis:eBLBaseComponents}ExcludeShipToLocation');}, $value));
         }
         $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}PurchaseReminderEmailPreferences');
         if (null !== $value) {

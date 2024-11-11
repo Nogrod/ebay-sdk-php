@@ -91,7 +91,7 @@ class NumberOfPolicyViolationsDetailsType implements \Sabre\Xml\XmlSerializable,
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getCount();
-        if (null !== $value && !empty($this->getCount())) {
+        if (null !== $value && [] !== $this->getCount()) {
             $writer->write(array_map(function ($v) {return ["Count" => $v];}, $value));
         }
     }
@@ -110,7 +110,7 @@ class NumberOfPolicyViolationsDetailsType implements \Sabre\Xml\XmlSerializable,
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Count');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Count');
         if (null !== $value) {
             $this->setCount($value);
         }

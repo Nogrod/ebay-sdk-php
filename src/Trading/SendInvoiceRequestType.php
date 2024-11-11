@@ -682,11 +682,11 @@ class SendInvoiceRequestType extends AbstractRequestType
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}OrderID", $value);
         }
         $value = $this->getInternationalShippingServiceOptions();
-        if (null !== $value && !empty($this->getInternationalShippingServiceOptions())) {
+        if (null !== $value && [] !== $this->getInternationalShippingServiceOptions()) {
             $writer->write(array_map(function ($v) {return ["InternationalShippingServiceOptions" => $v];}, $value));
         }
         $value = $this->getShippingServiceOptions();
-        if (null !== $value && !empty($this->getShippingServiceOptions())) {
+        if (null !== $value && [] !== $this->getShippingServiceOptions()) {
             $writer->write(array_map(function ($v) {return ["ShippingServiceOptions" => $v];}, $value));
         }
         $value = $this->getSalesTax();
@@ -694,7 +694,7 @@ class SendInvoiceRequestType extends AbstractRequestType
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SalesTax", $value);
         }
         $value = $this->getPaymentMethods();
-        if (null !== $value && !empty($this->getPaymentMethods())) {
+        if (null !== $value && [] !== $this->getPaymentMethods()) {
             $writer->write(array_map(function ($v) {return ["PaymentMethods" => $v];}, $value));
         }
         $value = $this->getCheckoutInstructions();
@@ -759,7 +759,7 @@ class SendInvoiceRequestType extends AbstractRequestType
         if (null !== $value) {
             $this->setSalesTax(\Nogrod\eBaySDK\Trading\SalesTaxType::fromKeyValue($value));
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaymentMethods');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaymentMethods');
         if (null !== $value) {
             $this->setPaymentMethods($value);
         }

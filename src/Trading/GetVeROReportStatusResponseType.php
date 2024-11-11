@@ -336,7 +336,7 @@ class GetVeROReportStatusResponseType extends AbstractResponseType
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}VeROReportPacketStatus", $value);
         }
         $value = $this->getReportedItemDetails();
-        if (null !== $value && !empty($this->getReportedItemDetails())) {
+        if (null !== $value && [] !== $this->getReportedItemDetails()) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ReportedItemDetails", array_map(function ($v) {return ["ReportedItem" => $v];}, $value));
         }
     }

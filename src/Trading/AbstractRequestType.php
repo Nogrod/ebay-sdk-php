@@ -1254,7 +1254,7 @@ class AbstractRequestType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getDetailLevel();
-        if (null !== $value && !empty($this->getDetailLevel())) {
+        if (null !== $value && [] !== $this->getDetailLevel()) {
             $writer->write(array_map(function ($v) {return ["DetailLevel" => $v];}, $value));
         }
         $value = $this->getErrorLanguage();
@@ -1282,7 +1282,7 @@ class AbstractRequestType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}InvocationID", $value);
         }
         $value = $this->getOutputSelector();
-        if (null !== $value && !empty($this->getOutputSelector())) {
+        if (null !== $value && [] !== $this->getOutputSelector()) {
             $writer->write(array_map(function ($v) {return ["OutputSelector" => $v];}, $value));
         }
         $value = $this->getWarningLevel();
@@ -1313,7 +1313,7 @@ class AbstractRequestType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}DetailLevel');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DetailLevel');
         if (null !== $value) {
             $this->setDetailLevel($value);
         }
@@ -1341,7 +1341,7 @@ class AbstractRequestType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
         if (null !== $value) {
             $this->setInvocationID($value);
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}OutputSelector');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}OutputSelector');
         if (null !== $value) {
             $this->setOutputSelector($value);
         }

@@ -111,7 +111,7 @@ class FeedbackPeriodArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getFeedbackPeriod();
-        if (null !== $value && !empty($this->getFeedbackPeriod())) {
+        if (null !== $value && [] !== $this->getFeedbackPeriod()) {
             $writer->write(array_map(function ($v) {return ["FeedbackPeriod" => $v];}, $value));
         }
     }

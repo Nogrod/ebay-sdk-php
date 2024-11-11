@@ -109,7 +109,7 @@ class DomainHistogramType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getDomain();
-        if (null !== $value && !empty($this->getDomain())) {
+        if (null !== $value && [] !== $this->getDomain()) {
             $writer->write(array_map(function ($v) {return ["Domain" => $v];}, $value));
         }
     }

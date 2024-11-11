@@ -382,7 +382,7 @@ class VerifyAddFixedPriceItemResponseType extends AbstractResponseType
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SKU", $value);
         }
         $value = $this->getFees();
-        if (null !== $value && !empty($this->getFees())) {
+        if (null !== $value && [] !== $this->getFees()) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Fees", array_map(function ($v) {return ["Fee" => $v];}, $value));
         }
         $value = $this->getCategoryID();
@@ -394,7 +394,7 @@ class VerifyAddFixedPriceItemResponseType extends AbstractResponseType
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Category2ID", $value);
         }
         $value = $this->getDiscountReason();
-        if (null !== $value && !empty($this->getDiscountReason())) {
+        if (null !== $value && [] !== $this->getDiscountReason()) {
             $writer->write(array_map(function ($v) {return ["DiscountReason" => $v];}, $value));
         }
     }
@@ -434,7 +434,7 @@ class VerifyAddFixedPriceItemResponseType extends AbstractResponseType
         if (null !== $value) {
             $this->setCategory2ID($value);
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}DiscountReason');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DiscountReason');
         if (null !== $value) {
             $this->setDiscountReason($value);
         }

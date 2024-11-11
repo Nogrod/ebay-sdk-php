@@ -208,7 +208,7 @@ class AspectType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
             $writer->writeAttribute("name", $value);
         }
         $value = $this->getValueHistogram();
-        if (null !== $value && !empty($this->getValueHistogram())) {
+        if (null !== $value && [] !== $this->getValueHistogram()) {
             $writer->write(array_map(function ($v) {return ["valueHistogram" => $v];}, $value));
         }
         $value = $this->getDelimiter();

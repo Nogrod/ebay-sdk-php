@@ -93,7 +93,7 @@ class DocumentsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getDocument();
-        if (null !== $value && !empty($this->getDocument())) {
+        if (null !== $value && [] !== $this->getDocument()) {
             $writer->write(array_map(function ($v) {return ["Document" => $v];}, $value));
         }
     }

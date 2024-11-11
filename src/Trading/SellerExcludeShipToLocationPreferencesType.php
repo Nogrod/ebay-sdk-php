@@ -205,7 +205,7 @@ class SellerExcludeShipToLocationPreferencesType implements \Sabre\Xml\XmlSerial
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getExcludeShipToLocation();
-        if (null !== $value && !empty($this->getExcludeShipToLocation())) {
+        if (null !== $value && [] !== $this->getExcludeShipToLocation()) {
             $writer->write(array_map(function ($v) {return ["ExcludeShipToLocation" => $v];}, $value));
         }
     }
@@ -224,7 +224,7 @@ class SellerExcludeShipToLocationPreferencesType implements \Sabre\Xml\XmlSerial
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExcludeShipToLocation');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExcludeShipToLocation');
         if (null !== $value) {
             $this->setExcludeShipToLocation($value);
         }

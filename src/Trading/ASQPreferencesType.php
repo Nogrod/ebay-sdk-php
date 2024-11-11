@@ -189,7 +189,7 @@ class ASQPreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ResetDefaultSubjects", $value);
         }
         $value = $this->getSubject();
-        if (null !== $value && !empty($this->getSubject())) {
+        if (null !== $value && [] !== $this->getSubject()) {
             $writer->write(array_map(function ($v) {return ["Subject" => $v];}, $value));
         }
     }
@@ -212,7 +212,7 @@ class ASQPreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
         if (null !== $value) {
             $this->setResetDefaultSubjects(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Subject');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Subject');
         if (null !== $value) {
             $this->setSubject($value);
         }

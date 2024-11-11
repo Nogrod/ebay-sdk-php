@@ -621,7 +621,7 @@ class GetMyeBayBuyingResponseType extends AbstractResponseType
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}FavoriteSellers", $value);
         }
         $value = $this->getSecondChanceOffer();
-        if (null !== $value && !empty($this->getSecondChanceOffer())) {
+        if (null !== $value && [] !== $this->getSecondChanceOffer()) {
             $writer->write(array_map(function ($v) {return ["SecondChanceOffer" => $v];}, $value));
         }
         $value = $this->getDeletedFromWonList();
@@ -633,7 +633,7 @@ class GetMyeBayBuyingResponseType extends AbstractResponseType
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DeletedFromLostList", $value);
         }
         $value = $this->getUserDefinedList();
-        if (null !== $value && !empty($this->getUserDefinedList())) {
+        if (null !== $value && [] !== $this->getUserDefinedList()) {
             $writer->write(array_map(function ($v) {return ["UserDefinedList" => $v];}, $value));
         }
     }

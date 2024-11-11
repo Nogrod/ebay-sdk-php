@@ -431,7 +431,7 @@ class FindProductsResponseType extends AbstractResponseType
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MoreResults", $value);
         }
         $value = $this->getDomainHistogram();
-        if (null !== $value && !empty($this->getDomainHistogram())) {
+        if (null !== $value && [] !== $this->getDomainHistogram()) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DomainHistogram", array_map(function ($v) {return ["Domain" => $v];}, $value));
         }
         $value = $this->getPageNumber();
@@ -439,7 +439,7 @@ class FindProductsResponseType extends AbstractResponseType
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PageNumber", $value);
         }
         $value = $this->getProduct();
-        if (null !== $value && !empty($this->getProduct())) {
+        if (null !== $value && [] !== $this->getProduct()) {
             $writer->write(array_map(function ($v) {return ["Product" => $v];}, $value));
         }
         $value = $this->getTotalProducts();

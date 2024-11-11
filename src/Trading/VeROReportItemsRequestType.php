@@ -135,7 +135,7 @@ class VeROReportItemsRequestType extends AbstractRequestType
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}RightsOwnerID", $value);
         }
         $value = $this->getReportItems();
-        if (null !== $value && !empty($this->getReportItems())) {
+        if (null !== $value && [] !== $this->getReportItems()) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ReportItems", array_map(function ($v) {return ["ReportItem" => $v];}, $value));
         }
     }

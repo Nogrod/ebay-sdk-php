@@ -176,7 +176,7 @@ class VerifyRelistItemRequestType extends AbstractRequestType
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Item", $value);
         }
         $value = $this->getDeletedField();
-        if (null !== $value && !empty($this->getDeletedField())) {
+        if (null !== $value && [] !== $this->getDeletedField()) {
             $writer->write(array_map(function ($v) {return ["DeletedField" => $v];}, $value));
         }
     }
@@ -200,7 +200,7 @@ class VerifyRelistItemRequestType extends AbstractRequestType
         if (null !== $value) {
             $this->setItem(\Nogrod\eBaySDK\Trading\ItemType::fromKeyValue($value));
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}DeletedField');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DeletedField');
         if (null !== $value) {
             $this->setDeletedField($value);
         }

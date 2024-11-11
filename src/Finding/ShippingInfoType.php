@@ -573,7 +573,7 @@ class ShippingInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
             $writer->writeElement("{http://www.ebay.com/marketplace/search/v1/services}shippingType", $value);
         }
         $value = $this->getShipToLocations();
-        if (null !== $value && !empty($this->getShipToLocations())) {
+        if (null !== $value && [] !== $this->getShipToLocations()) {
             $writer->write(array_map(function ($v) {return ["shipToLocations" => $v];}, $value));
         }
         $value = $this->getExpeditedShipping();
@@ -623,7 +623,7 @@ class ShippingInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
         if (null !== $value) {
             $this->setShippingType($value);
         }
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}shipToLocations');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}shipToLocations');
         if (null !== $value) {
             $this->setShipToLocations($value);
         }

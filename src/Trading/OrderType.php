@@ -2220,7 +2220,7 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CreatedTime", $value);
         }
         $value = $this->getPaymentMethods();
-        if (null !== $value && !empty($this->getPaymentMethods())) {
+        if (null !== $value && [] !== $this->getPaymentMethods()) {
             $writer->write(array_map(function ($v) {return ["PaymentMethods" => $v];}, $value));
         }
         $value = $this->getSellerEmail();
@@ -2244,7 +2244,7 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Total", $value);
         }
         $value = $this->getTransactionArray();
-        if (null !== $value && !empty($this->getTransactionArray())) {
+        if (null !== $value && [] !== $this->getTransactionArray()) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TransactionArray", array_map(function ($v) {return ["Transaction" => $v];}, $value));
         }
         $value = $this->getBuyerUserID();
@@ -2298,7 +2298,7 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MonetaryDetails", $value);
         }
         $value = $this->getPickupDetails();
-        if (null !== $value && !empty($this->getPickupDetails())) {
+        if (null !== $value && [] !== $this->getPickupDetails()) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PickupDetails", array_map(function ($v) {return ["PickupOptions" => $v];}, $value));
         }
         $value = $this->getPickupMethodSelected();
@@ -2326,11 +2326,11 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}LogisticsPlanType", $value);
         }
         $value = $this->getBuyerTaxIdentifier();
-        if (null !== $value && !empty($this->getBuyerTaxIdentifier())) {
+        if (null !== $value && [] !== $this->getBuyerTaxIdentifier()) {
             $writer->write(array_map(function ($v) {return ["BuyerTaxIdentifier" => $v];}, $value));
         }
         $value = $this->getBuyerPackageEnclosures();
-        if (null !== $value && !empty($this->getBuyerPackageEnclosures())) {
+        if (null !== $value && [] !== $this->getBuyerPackageEnclosures()) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BuyerPackageEnclosures", array_map(function ($v) {return ["BuyerPackageEnclosure" => $v];}, $value));
         }
         $value = $this->getExtendedOrderID();
@@ -2403,7 +2403,7 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
         if (null !== $value) {
             $this->setCreatedTime(new \DateTime($value));
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaymentMethods');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaymentMethods');
         if (null !== $value) {
             $this->setPaymentMethods($value);
         }

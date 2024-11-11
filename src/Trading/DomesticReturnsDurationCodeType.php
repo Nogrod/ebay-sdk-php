@@ -91,7 +91,7 @@ class DomesticReturnsDurationCodeType implements \Sabre\Xml\XmlSerializable, \Sa
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getDomesticReturnsDuration();
-        if (null !== $value && !empty($this->getDomesticReturnsDuration())) {
+        if (null !== $value && [] !== $this->getDomesticReturnsDuration()) {
             $writer->write(array_map(function ($v) {return ["DomesticReturnsDuration" => $v];}, $value));
         }
     }
@@ -110,7 +110,7 @@ class DomesticReturnsDurationCodeType implements \Sabre\Xml\XmlSerializable, \Sa
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}DomesticReturnsDuration');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DomesticReturnsDuration');
         if (null !== $value) {
             $this->setDomesticReturnsDuration($value);
         }

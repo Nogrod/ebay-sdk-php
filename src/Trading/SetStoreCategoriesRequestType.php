@@ -221,7 +221,7 @@ class SetStoreCategoriesRequestType extends AbstractRequestType
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DestinationParentCategoryID", $value);
         }
         $value = $this->getStoreCategories();
-        if (null !== $value && !empty($this->getStoreCategories())) {
+        if (null !== $value && [] !== $this->getStoreCategories()) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}StoreCategories", array_map(function ($v) {return ["CustomCategory" => $v];}, $value));
         }
     }

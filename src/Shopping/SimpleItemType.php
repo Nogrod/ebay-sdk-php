@@ -3838,7 +3838,7 @@ class SimpleItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Location", $value);
         }
         $value = $this->getPaymentMethods();
-        if (null !== $value && !empty($this->getPaymentMethods())) {
+        if (null !== $value && [] !== $this->getPaymentMethods()) {
             $writer->write(array_map(function ($v) {return ["PaymentMethods" => $v];}, $value));
         }
         $value = $this->getGalleryURL();
@@ -3846,7 +3846,7 @@ class SimpleItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}GalleryURL", $value);
         }
         $value = $this->getPictureURL();
-        if (null !== $value && !empty($this->getPictureURL())) {
+        if (null !== $value && [] !== $this->getPictureURL()) {
             $writer->write(array_map(function ($v) {return ["PictureURL" => $v];}, $value));
         }
         $value = $this->getPostalCode();
@@ -3899,7 +3899,7 @@ class SimpleItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ReserveMet", $value);
         }
         $value = $this->getShipToLocations();
-        if (null !== $value && !empty($this->getShipToLocations())) {
+        if (null !== $value && [] !== $this->getShipToLocations()) {
             $writer->write(array_map(function ($v) {return ["ShipToLocations" => $v];}, $value));
         }
         $value = $this->getSite();
@@ -3919,7 +3919,7 @@ class SimpleItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippingCostSummary", $value);
         }
         $value = $this->getItemSpecifics();
-        if (null !== $value && !empty($this->getItemSpecifics())) {
+        if (null !== $value && [] !== $this->getItemSpecifics()) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ItemSpecifics", array_map(function ($v) {return ["NameValueList" => $v];}, $value));
         }
         $value = $this->getHitCount();
@@ -4017,7 +4017,7 @@ class SimpleItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BusinessSellerDetails", $value);
         }
         $value = $this->getPaymentAllowedSite();
-        if (null !== $value && !empty($this->getPaymentAllowedSite())) {
+        if (null !== $value && [] !== $this->getPaymentAllowedSite()) {
             $writer->write(array_map(function ($v) {return ["PaymentAllowedSite" => $v];}, $value));
         }
         $value = $this->getIntegratedMerchantCreditCardEnabled();
@@ -4058,7 +4058,7 @@ class SimpleItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DiscountPriceInfo", $value);
         }
         $value = $this->getExcludeShipToLocation();
-        if (null !== $value && !empty($this->getExcludeShipToLocation())) {
+        if (null !== $value && [] !== $this->getExcludeShipToLocation()) {
             $writer->write(array_map(function ($v) {return ["ExcludeShipToLocation" => $v];}, $value));
         }
         $value = $this->getTopRatedListing();
@@ -4097,7 +4097,7 @@ class SimpleItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ItemCompatibilityCount", $value);
         }
         $value = $this->getItemCompatibilityList();
-        if (null !== $value && !empty($this->getItemCompatibilityList())) {
+        if (null !== $value && [] !== $this->getItemCompatibilityList()) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ItemCompatibilityList", array_map(function ($v) {return ["Compatibility" => $v];}, $value));
         }
         $value = $this->getQuantitySoldByPickupInStore();
@@ -4198,7 +4198,7 @@ class SimpleItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
         if (null !== $value) {
             $this->setLocation($value);
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaymentMethods');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaymentMethods');
         if (null !== $value) {
             $this->setPaymentMethods($value);
         }
@@ -4206,7 +4206,7 @@ class SimpleItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
         if (null !== $value) {
             $this->setGalleryURL($value);
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}PictureURL');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PictureURL');
         if (null !== $value) {
             $this->setPictureURL($value);
         }
@@ -4258,7 +4258,7 @@ class SimpleItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
         if (null !== $value) {
             $this->setReserveMet(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShipToLocations');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShipToLocations');
         if (null !== $value) {
             $this->setShipToLocations($value);
         }
@@ -4370,7 +4370,7 @@ class SimpleItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
         if (null !== $value) {
             $this->setBusinessSellerDetails(\Nogrod\eBaySDK\Shopping\BusinessSellerDetailsType::fromKeyValue($value));
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaymentAllowedSite');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaymentAllowedSite');
         if (null !== $value) {
             $this->setPaymentAllowedSite($value);
         }
@@ -4410,7 +4410,7 @@ class SimpleItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
         if (null !== $value) {
             $this->setDiscountPriceInfo(\Nogrod\eBaySDK\Shopping\DiscountPriceInfoType::fromKeyValue($value));
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExcludeShipToLocation');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExcludeShipToLocation');
         if (null !== $value) {
             $this->setExcludeShipToLocation($value);
         }

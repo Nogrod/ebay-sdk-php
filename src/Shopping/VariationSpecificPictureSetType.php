@@ -188,7 +188,7 @@ class VariationSpecificPictureSetType implements \Sabre\Xml\XmlSerializable, \Sa
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}VariationSpecificValue", $value);
         }
         $value = $this->getPictureURL();
-        if (null !== $value && !empty($this->getPictureURL())) {
+        if (null !== $value && [] !== $this->getPictureURL()) {
             $writer->write(array_map(function ($v) {return ["PictureURL" => $v];}, $value));
         }
         $value = $this->getGalleryURL();
@@ -215,7 +215,7 @@ class VariationSpecificPictureSetType implements \Sabre\Xml\XmlSerializable, \Sa
         if (null !== $value) {
             $this->setVariationSpecificValue($value);
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}PictureURL');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PictureURL');
         if (null !== $value) {
             $this->setPictureURL($value);
         }

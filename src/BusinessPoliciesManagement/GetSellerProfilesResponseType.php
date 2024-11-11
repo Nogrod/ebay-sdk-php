@@ -235,15 +235,15 @@ class GetSellerProfilesResponseType extends BaseResponseType
     {
         parent::xmlSerialize($writer);
         $value = $this->getPaymentProfileList();
-        if (null !== $value && !empty($this->getPaymentProfileList())) {
+        if (null !== $value && [] !== $this->getPaymentProfileList()) {
             $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}paymentProfileList", array_map(function ($v) {return ["PaymentProfile" => $v];}, $value));
         }
         $value = $this->getReturnPolicyProfileList();
-        if (null !== $value && !empty($this->getReturnPolicyProfileList())) {
+        if (null !== $value && [] !== $this->getReturnPolicyProfileList()) {
             $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}returnPolicyProfileList", array_map(function ($v) {return ["ReturnPolicyProfile" => $v];}, $value));
         }
         $value = $this->getShippingPolicyProfile();
-        if (null !== $value && !empty($this->getShippingPolicyProfile())) {
+        if (null !== $value && [] !== $this->getShippingPolicyProfile()) {
             $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}shippingPolicyProfile", array_map(function ($v) {return ["ShippingPolicyProfile" => $v];}, $value));
         }
     }

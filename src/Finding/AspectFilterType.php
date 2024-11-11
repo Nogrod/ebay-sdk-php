@@ -181,7 +181,7 @@ class AspectFilterType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
             $writer->writeElement("{http://www.ebay.com/marketplace/search/v1/services}aspectName", $value);
         }
         $value = $this->getAspectValueName();
-        if (null !== $value && !empty($this->getAspectValueName())) {
+        if (null !== $value && [] !== $this->getAspectValueName()) {
             $writer->write(array_map(function ($v) {return ["aspectValueName" => $v];}, $value));
         }
         $value = $this->getDelimiter();
@@ -208,7 +208,7 @@ class AspectFilterType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
         if (null !== $value) {
             $this->setAspectName($value);
         }
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}aspectValueName');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}aspectValueName');
         if (null !== $value) {
             $this->setAspectValueName($value);
         }

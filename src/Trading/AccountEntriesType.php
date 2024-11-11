@@ -91,7 +91,7 @@ class AccountEntriesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getAccountEntry();
-        if (null !== $value && !empty($this->getAccountEntry())) {
+        if (null !== $value && [] !== $this->getAccountEntry()) {
             $writer->write(array_map(function ($v) {return ["AccountEntry" => $v];}, $value));
         }
     }

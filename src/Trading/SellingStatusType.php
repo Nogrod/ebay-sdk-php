@@ -1095,7 +1095,7 @@ class SellingStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}QuantitySoldByPickupInStore", $value);
         }
         $value = $this->getSuggestedBidValues();
-        if (null !== $value && !empty($this->getSuggestedBidValues())) {
+        if (null !== $value && [] !== $this->getSuggestedBidValues()) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SuggestedBidValues", array_map(function ($v) {return ["BidValue" => $v];}, $value));
         }
         $value = $this->getListingOnHold();

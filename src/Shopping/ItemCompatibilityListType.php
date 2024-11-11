@@ -93,7 +93,7 @@ class ItemCompatibilityListType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getCompatibility();
-        if (null !== $value && !empty($this->getCompatibility())) {
+        if (null !== $value && [] !== $this->getCompatibility()) {
             $writer->write(array_map(function ($v) {return ["Compatibility" => $v];}, $value));
         }
     }

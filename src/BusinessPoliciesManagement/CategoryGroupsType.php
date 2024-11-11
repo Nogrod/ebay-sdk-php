@@ -91,7 +91,7 @@ class CategoryGroupsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
     {
         $writer->writeAttribute("xmlns", "http://www.ebay.com/marketplace/selling/v1/services");
         $value = $this->getCategoryGroup();
-        if (null !== $value && !empty($this->getCategoryGroup())) {
+        if (null !== $value && [] !== $this->getCategoryGroup()) {
             $writer->write(array_map(function ($v) {return ["categoryGroup" => $v];}, $value));
         }
     }

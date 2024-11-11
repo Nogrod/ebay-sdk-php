@@ -373,7 +373,7 @@ class UploadSiteHostedPicturesRequestType extends AbstractRequestType
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PictureUploadPolicy", $value);
         }
         $value = $this->getExternalPictureURL();
-        if (null !== $value && !empty($this->getExternalPictureURL())) {
+        if (null !== $value && [] !== $this->getExternalPictureURL()) {
             $writer->write(array_map(function ($v) {return ["ExternalPictureURL" => $v];}, $value));
         }
         $value = $this->getExtensionInDays();
@@ -417,7 +417,7 @@ class UploadSiteHostedPicturesRequestType extends AbstractRequestType
         if (null !== $value) {
             $this->setPictureUploadPolicy($value);
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExternalPictureURL');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExternalPictureURL');
         if (null !== $value) {
             $this->setExternalPictureURL($value);
         }

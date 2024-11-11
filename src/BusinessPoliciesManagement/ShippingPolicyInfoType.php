@@ -1231,7 +1231,7 @@ class ShippingPolicyInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
             $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}shippingOption", $value);
         }
         $value = $this->getExcludeShipToLocation();
-        if (null !== $value && !empty($this->getExcludeShipToLocation())) {
+        if (null !== $value && [] !== $this->getExcludeShipToLocation()) {
             $writer->write(array_map(function ($v) {return ["excludeShipToLocation" => $v];}, $value));
         }
         $value = $this->getShippingProfileDiscountInfo();
@@ -1243,15 +1243,15 @@ class ShippingPolicyInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
             $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}freightShipping", $value);
         }
         $value = $this->getShipToLocations();
-        if (null !== $value && !empty($this->getShipToLocations())) {
+        if (null !== $value && [] !== $this->getShipToLocations()) {
             $writer->write(array_map(function ($v) {return ["shipToLocations" => $v];}, $value));
         }
         $value = $this->getDomesticShippingPolicyInfoService();
-        if (null !== $value && !empty($this->getDomesticShippingPolicyInfoService())) {
+        if (null !== $value && [] !== $this->getDomesticShippingPolicyInfoService()) {
             $writer->write(array_map(function ($v) {return ["domesticShippingPolicyInfoService" => $v];}, $value));
         }
         $value = $this->getIntlShippingPolicyInfoService();
-        if (null !== $value && !empty($this->getIntlShippingPolicyInfoService())) {
+        if (null !== $value && [] !== $this->getIntlShippingPolicyInfoService()) {
             $writer->write(array_map(function ($v) {return ["intlShippingPolicyInfoService" => $v];}, $value));
         }
         $value = $this->getInsurance();
@@ -1332,7 +1332,7 @@ class ShippingPolicyInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
         if (null !== $value) {
             $this->setShippingOption($value);
         }
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}excludeShipToLocation');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}excludeShipToLocation');
         if (null !== $value) {
             $this->setExcludeShipToLocation($value);
         }
@@ -1344,7 +1344,7 @@ class ShippingPolicyInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
         if (null !== $value) {
             $this->setFreightShipping(\Nogrod\eBaySDK\BusinessPoliciesManagement\FreightShippingType::fromKeyValue($value));
         }
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}shipToLocations');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}shipToLocations');
         if (null !== $value) {
             $this->setShipToLocations($value);
         }

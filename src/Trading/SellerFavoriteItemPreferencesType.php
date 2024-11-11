@@ -313,7 +313,7 @@ class SellerFavoriteItemPreferencesType implements \Sabre\Xml\XmlSerializable, \
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MaxPrice", $value);
         }
         $value = $this->getFavoriteItemID();
-        if (null !== $value && !empty($this->getFavoriteItemID())) {
+        if (null !== $value && [] !== $this->getFavoriteItemID()) {
             $writer->write(array_map(function ($v) {return ["FavoriteItemID" => $v];}, $value));
         }
     }
@@ -356,7 +356,7 @@ class SellerFavoriteItemPreferencesType implements \Sabre\Xml\XmlSerializable, \
         if (null !== $value) {
             $this->setMaxPrice(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}FavoriteItemID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FavoriteItemID');
         if (null !== $value) {
             $this->setFavoriteItemID($value);
         }

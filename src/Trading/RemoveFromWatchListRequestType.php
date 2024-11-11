@@ -216,7 +216,7 @@ class RemoveFromWatchListRequestType extends AbstractRequestType
     {
         parent::xmlSerialize($writer);
         $value = $this->getItemID();
-        if (null !== $value && !empty($this->getItemID())) {
+        if (null !== $value && [] !== $this->getItemID()) {
             $writer->write(array_map(function ($v) {return ["ItemID" => $v];}, $value));
         }
         $value = $this->getRemoveAllItems();
@@ -225,7 +225,7 @@ class RemoveFromWatchListRequestType extends AbstractRequestType
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}RemoveAllItems", $value);
         }
         $value = $this->getVariationKey();
-        if (null !== $value && !empty($this->getVariationKey())) {
+        if (null !== $value && [] !== $this->getVariationKey()) {
             $writer->write(array_map(function ($v) {return ["VariationKey" => $v];}, $value));
         }
     }
@@ -245,7 +245,7 @@ class RemoveFromWatchListRequestType extends AbstractRequestType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemID');
         if (null !== $value) {
             $this->setItemID($value);
         }

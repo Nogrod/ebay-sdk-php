@@ -872,55 +872,55 @@ class BulkDataExchangeRequestsType implements \Sabre\Xml\XmlSerializable, \Sabre
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Header", $value);
         }
         $value = $this->getAddFixedPriceItemRequest();
-        if (null !== $value && !empty($this->getAddFixedPriceItemRequest())) {
+        if (null !== $value && [] !== $this->getAddFixedPriceItemRequest()) {
             $writer->write(array_map(function ($v) {return ["AddFixedPriceItemRequest" => $v];}, $value));
         }
         $value = $this->getAddItemRequest();
-        if (null !== $value && !empty($this->getAddItemRequest())) {
+        if (null !== $value && [] !== $this->getAddItemRequest()) {
             $writer->write(array_map(function ($v) {return ["AddItemRequest" => $v];}, $value));
         }
         $value = $this->getEndFixedPriceItemRequest();
-        if (null !== $value && !empty($this->getEndFixedPriceItemRequest())) {
+        if (null !== $value && [] !== $this->getEndFixedPriceItemRequest()) {
             $writer->write(array_map(function ($v) {return ["EndFixedPriceItemRequest" => $v];}, $value));
         }
         $value = $this->getEndItemRequest();
-        if (null !== $value && !empty($this->getEndItemRequest())) {
+        if (null !== $value && [] !== $this->getEndItemRequest()) {
             $writer->write(array_map(function ($v) {return ["EndItemRequest" => $v];}, $value));
         }
         $value = $this->getOrderAckRequest();
-        if (null !== $value && !empty($this->getOrderAckRequest())) {
+        if (null !== $value && [] !== $this->getOrderAckRequest()) {
             $writer->write(array_map(function ($v) {return ["OrderAckRequest" => $v];}, $value));
         }
         $value = $this->getRelistFixedPriceItemRequest();
-        if (null !== $value && !empty($this->getRelistFixedPriceItemRequest())) {
+        if (null !== $value && [] !== $this->getRelistFixedPriceItemRequest()) {
             $writer->write(array_map(function ($v) {return ["RelistFixedPriceItemRequest" => $v];}, $value));
         }
         $value = $this->getRelistItemRequest();
-        if (null !== $value && !empty($this->getRelistItemRequest())) {
+        if (null !== $value && [] !== $this->getRelistItemRequest()) {
             $writer->write(array_map(function ($v) {return ["RelistItemRequest" => $v];}, $value));
         }
         $value = $this->getReviseFixedPriceItemRequest();
-        if (null !== $value && !empty($this->getReviseFixedPriceItemRequest())) {
+        if (null !== $value && [] !== $this->getReviseFixedPriceItemRequest()) {
             $writer->write(array_map(function ($v) {return ["ReviseFixedPriceItemRequest" => $v];}, $value));
         }
         $value = $this->getReviseInventoryStatusRequest();
-        if (null !== $value && !empty($this->getReviseInventoryStatusRequest())) {
+        if (null !== $value && [] !== $this->getReviseInventoryStatusRequest()) {
             $writer->write(array_map(function ($v) {return ["ReviseInventoryStatusRequest" => $v];}, $value));
         }
         $value = $this->getReviseItemRequest();
-        if (null !== $value && !empty($this->getReviseItemRequest())) {
+        if (null !== $value && [] !== $this->getReviseItemRequest()) {
             $writer->write(array_map(function ($v) {return ["ReviseItemRequest" => $v];}, $value));
         }
         $value = $this->getSetShipmentTrackingInfoRequest();
-        if (null !== $value && !empty($this->getSetShipmentTrackingInfoRequest())) {
+        if (null !== $value && [] !== $this->getSetShipmentTrackingInfoRequest()) {
             $writer->write(array_map(function ($v) {return ["SetShipmentTrackingInfoRequest" => $v];}, $value));
         }
         $value = $this->getVerifyAddFixedPriceItemRequest();
-        if (null !== $value && !empty($this->getVerifyAddFixedPriceItemRequest())) {
+        if (null !== $value && [] !== $this->getVerifyAddFixedPriceItemRequest()) {
             $writer->write(array_map(function ($v) {return ["VerifyAddFixedPriceItemRequest" => $v];}, $value));
         }
         $value = $this->getVerifyAddItemRequest();
-        if (null !== $value && !empty($this->getVerifyAddItemRequest())) {
+        if (null !== $value && [] !== $this->getVerifyAddItemRequest()) {
             $writer->write(array_map(function ($v) {return ["VerifyAddItemRequest" => $v];}, $value));
         }
     }

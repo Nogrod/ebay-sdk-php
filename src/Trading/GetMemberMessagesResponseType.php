@@ -155,7 +155,7 @@ class GetMemberMessagesResponseType extends AbstractResponseType
     {
         parent::xmlSerialize($writer);
         $value = $this->getMemberMessage();
-        if (null !== $value && !empty($this->getMemberMessage())) {
+        if (null !== $value && [] !== $this->getMemberMessage()) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MemberMessage", array_map(function ($v) {return ["MemberMessageExchange" => $v];}, $value));
         }
         $value = $this->getPaginationResult();

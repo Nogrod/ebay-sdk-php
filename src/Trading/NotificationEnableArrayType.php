@@ -115,7 +115,7 @@ class NotificationEnableArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getNotificationEnable();
-        if (null !== $value && !empty($this->getNotificationEnable())) {
+        if (null !== $value && [] !== $this->getNotificationEnable()) {
             $writer->write(array_map(function ($v) {return ["NotificationEnable" => $v];}, $value));
         }
     }

@@ -195,7 +195,7 @@ class GetSellerEventsResponseType extends AbstractResponseType
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TimeTo", $value);
         }
         $value = $this->getItemArray();
-        if (null !== $value && !empty($this->getItemArray())) {
+        if (null !== $value && [] !== $this->getItemArray()) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ItemArray", array_map(function ($v) {return ["Item" => $v];}, $value));
         }
     }

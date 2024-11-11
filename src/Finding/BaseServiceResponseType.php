@@ -235,7 +235,7 @@ class BaseServiceResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
             $writer->writeElement("{http://www.ebay.com/marketplace/search/v1/services}ack", $value);
         }
         $value = $this->getErrorMessage();
-        if (null !== $value && !empty($this->getErrorMessage())) {
+        if (null !== $value && [] !== $this->getErrorMessage()) {
             $writer->writeElement("{http://www.ebay.com/marketplace/search/v1/services}errorMessage", array_map(function ($v) {return ["error" => $v];}, $value));
         }
         $value = $this->getVersion();

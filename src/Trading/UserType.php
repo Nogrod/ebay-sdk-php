@@ -2020,7 +2020,7 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BusinessRole", $value);
         }
         $value = $this->getUserSubscription();
-        if (null !== $value && !empty($this->getUserSubscription())) {
+        if (null !== $value && [] !== $this->getUserSubscription()) {
             $writer->write(array_map(function ($v) {return ["UserSubscription" => $v];}, $value));
         }
         $value = $this->getEBayWikiReadOnly();
@@ -2064,7 +2064,7 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippingAddress", $value);
         }
         $value = $this->getMembership();
-        if (null !== $value && !empty($this->getMembership())) {
+        if (null !== $value && [] !== $this->getMembership()) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Membership", array_map(function ($v) {return ["Program" => $v];}, $value));
         }
         $value = $this->getUserFirstName();
@@ -2183,7 +2183,7 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         if (null !== $value) {
             $this->setBusinessRole($value);
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}UserSubscription');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UserSubscription');
         if (null !== $value) {
             $this->setUserSubscription($value);
         }

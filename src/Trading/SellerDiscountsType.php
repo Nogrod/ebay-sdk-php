@@ -210,7 +210,7 @@ class SellerDiscountsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}OriginalShippingService", $value);
         }
         $value = $this->getSellerDiscount();
-        if (null !== $value && !empty($this->getSellerDiscount())) {
+        if (null !== $value && [] !== $this->getSellerDiscount()) {
             $writer->write(array_map(function ($v) {return ["SellerDiscount" => $v];}, $value));
         }
     }

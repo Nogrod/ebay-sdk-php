@@ -121,7 +121,7 @@ class DiscountDetailType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getDiscount();
-        if (null !== $value && !empty($this->getDiscount())) {
+        if (null !== $value && [] !== $this->getDiscount()) {
             $writer->write(array_map(function ($v) {return ["Discount" => $v];}, $value));
         }
     }

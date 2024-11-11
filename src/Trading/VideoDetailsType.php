@@ -159,7 +159,7 @@ class VideoDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getVideoID();
-        if (null !== $value && !empty($this->getVideoID())) {
+        if (null !== $value && [] !== $this->getVideoID()) {
             $writer->write(array_map(function ($v) {return ["VideoID" => $v];}, $value));
         }
     }
@@ -178,7 +178,7 @@ class VideoDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}VideoID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}VideoID');
         if (null !== $value) {
             $this->setVideoID($value);
         }

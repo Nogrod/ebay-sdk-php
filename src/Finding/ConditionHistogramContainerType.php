@@ -226,7 +226,7 @@ class ConditionHistogramContainerType implements \Sabre\Xml\XmlSerializable, \Sa
     {
         $writer->writeAttribute("xmlns", "http://www.ebay.com/marketplace/search/v1/services");
         $value = $this->getConditionHistogram();
-        if (null !== $value && !empty($this->getConditionHistogram())) {
+        if (null !== $value && [] !== $this->getConditionHistogram()) {
             $writer->write(array_map(function ($v) {return ["conditionHistogram" => $v];}, $value));
         }
         $value = $this->getDelimiter();

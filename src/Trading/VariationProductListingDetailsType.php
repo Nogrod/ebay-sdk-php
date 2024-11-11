@@ -278,7 +278,7 @@ class VariationProductListingDetailsType implements \Sabre\Xml\XmlSerializable, 
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ProductReferenceID", $value);
         }
         $value = $this->getNameValueList();
-        if (null !== $value && !empty($this->getNameValueList())) {
+        if (null !== $value && [] !== $this->getNameValueList()) {
             $writer->write(array_map(function ($v) {return ["NameValueList" => $v];}, $value));
         }
     }

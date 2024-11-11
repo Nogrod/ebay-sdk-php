@@ -128,7 +128,7 @@ class MyeBayFavoriteSearchListType implements \Sabre\Xml\XmlSerializable, \Sabre
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TotalAvailable", $value);
         }
         $value = $this->getFavoriteSearch();
-        if (null !== $value && !empty($this->getFavoriteSearch())) {
+        if (null !== $value && [] !== $this->getFavoriteSearch()) {
             $writer->write(array_map(function ($v) {return ["FavoriteSearch" => $v];}, $value));
         }
     }

@@ -5601,7 +5601,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CategoryID", $value);
         }
         $value = $this->getListingDuration();
-        if (null !== $value && !empty($this->getListingDuration())) {
+        if (null !== $value && [] !== $this->getListingDuration()) {
             $writer->write(array_map(function ($v) {return ["ListingDuration" => $v];}, $value));
         }
         $value = $this->getShippingTermsRequired();
@@ -5765,7 +5765,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BuyerGuaranteeEnabled", $value);
         }
         $value = $this->getGalleryFeaturedDurations();
-        if (null !== $value && !empty($this->getGalleryFeaturedDurations())) {
+        if (null !== $value && [] !== $this->getGalleryFeaturedDurations()) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}GalleryFeaturedDurations", array_map(function ($v) {return ["Duration" => $v];}, $value));
         }
         $value = $this->getEBayMotorsProAdFormatEnabled();
@@ -5952,7 +5952,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}StoreOwnerExtendedListingDurationsEnabled", $value);
         }
         $value = $this->getStoreOwnerExtendedListingDurations();
-        if (null !== $value && !empty($this->getStoreOwnerExtendedListingDurations())) {
+        if (null !== $value && [] !== $this->getStoreOwnerExtendedListingDurations()) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}StoreOwnerExtendedListingDurations", array_map(function ($v) {return ["Duration" => $v];}, $value));
         }
         $value = $this->getReturnPolicyEnabled();
@@ -5982,7 +5982,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Group3MaxFlatShippingCost", $value);
         }
         $value = $this->getPaymentMethod();
-        if (null !== $value && !empty($this->getPaymentMethod())) {
+        if (null !== $value && [] !== $this->getPaymentMethod()) {
             $writer->write(array_map(function ($v) {return ["PaymentMethod" => $v];}, $value));
         }
         $value = $this->getVariationsEnabled();
@@ -6116,35 +6116,35 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}KTypeSupported", $value);
         }
         $value = $this->getDomesticReturnsAcceptedValues();
-        if (null !== $value && !empty($this->getDomesticReturnsAcceptedValues())) {
+        if (null !== $value && [] !== $this->getDomesticReturnsAcceptedValues()) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DomesticReturnsAcceptedValues", array_map(function ($v) {return ["DomesticReturnsAccepted" => $v];}, $value));
         }
         $value = $this->getInternationalReturnsAcceptedValues();
-        if (null !== $value && !empty($this->getInternationalReturnsAcceptedValues())) {
+        if (null !== $value && [] !== $this->getInternationalReturnsAcceptedValues()) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}InternationalReturnsAcceptedValues", array_map(function ($v) {return ["InternationalReturnsAccepted" => $v];}, $value));
         }
         $value = $this->getDomesticReturnsDurationValues();
-        if (null !== $value && !empty($this->getDomesticReturnsDurationValues())) {
+        if (null !== $value && [] !== $this->getDomesticReturnsDurationValues()) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DomesticReturnsDurationValues", array_map(function ($v) {return ["DomesticReturnsDuration" => $v];}, $value));
         }
         $value = $this->getInternationalReturnsDurationValues();
-        if (null !== $value && !empty($this->getInternationalReturnsDurationValues())) {
+        if (null !== $value && [] !== $this->getInternationalReturnsDurationValues()) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}InternationalReturnsDurationValues", array_map(function ($v) {return ["InternationalReturnsDuration" => $v];}, $value));
         }
         $value = $this->getDomesticReturnsShipmentPayeeValues();
-        if (null !== $value && !empty($this->getDomesticReturnsShipmentPayeeValues())) {
+        if (null !== $value && [] !== $this->getDomesticReturnsShipmentPayeeValues()) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DomesticReturnsShipmentPayeeValues", array_map(function ($v) {return ["DomesticReturnsShipmentPayee" => $v];}, $value));
         }
         $value = $this->getInternationalReturnsShipmentPayeeValues();
-        if (null !== $value && !empty($this->getInternationalReturnsShipmentPayeeValues())) {
+        if (null !== $value && [] !== $this->getInternationalReturnsShipmentPayeeValues()) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}InternationalReturnsShipmentPayeeValues", array_map(function ($v) {return ["InternationalReturnsShipmentPayee" => $v];}, $value));
         }
         $value = $this->getDomesticRefundMethodValues();
-        if (null !== $value && !empty($this->getDomesticRefundMethodValues())) {
+        if (null !== $value && [] !== $this->getDomesticRefundMethodValues()) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DomesticRefundMethodValues", array_map(function ($v) {return ["DomesticRefundMethod" => $v];}, $value));
         }
         $value = $this->getInternationalRefundMethodValues();
-        if (null !== $value && !empty($this->getInternationalRefundMethodValues())) {
+        if (null !== $value && [] !== $this->getInternationalRefundMethodValues()) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}InternationalRefundMethodValues", array_map(function ($v) {return ["InternationalRefundMethod" => $v];}, $value));
         }
         $value = $this->getReturnPolicyDescriptionEnabled();
@@ -6308,9 +6308,9 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
         if (null !== $value) {
             $this->setBuyerGuaranteeEnabled(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}GalleryFeaturedDurations');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}GalleryFeaturedDurations');
         if (null !== $value) {
-            $this->setGalleryFeaturedDurations($value);
+            $this->setGalleryFeaturedDurations(array_map(function ($v) {return Func::mapValue($v, '{urn:ebay:apis:eBLBaseComponents}Duration');}, $value));
         }
         $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}eBayMotorsProAdFormatEnabled');
         if (null !== $value) {
@@ -6472,9 +6472,9 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
         if (null !== $value) {
             $this->setStoreOwnerExtendedListingDurationsEnabled(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}StoreOwnerExtendedListingDurations');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}StoreOwnerExtendedListingDurations');
         if (null !== $value) {
-            $this->setStoreOwnerExtendedListingDurations($value);
+            $this->setStoreOwnerExtendedListingDurations(array_map(function ($v) {return Func::mapValue($v, '{urn:ebay:apis:eBLBaseComponents}Duration');}, $value));
         }
         $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReturnPolicyEnabled');
         if (null !== $value) {
@@ -6500,7 +6500,7 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
         if (null !== $value) {
             $this->setGroup3MaxFlatShippingCost(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaymentMethod');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaymentMethod');
         if (null !== $value) {
             $this->setPaymentMethod($value);
         }
@@ -6620,37 +6620,37 @@ class CategoryFeatureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
         if (null !== $value) {
             $this->setKTypeSupported(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}DomesticReturnsAcceptedValues');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DomesticReturnsAcceptedValues');
         if (null !== $value) {
-            $this->setDomesticReturnsAcceptedValues($value);
+            $this->setDomesticReturnsAcceptedValues(array_map(function ($v) {return Func::mapValue($v, '{urn:ebay:apis:eBLBaseComponents}DomesticReturnsAccepted');}, $value));
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}InternationalReturnsAcceptedValues');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}InternationalReturnsAcceptedValues');
         if (null !== $value) {
-            $this->setInternationalReturnsAcceptedValues($value);
+            $this->setInternationalReturnsAcceptedValues(array_map(function ($v) {return Func::mapValue($v, '{urn:ebay:apis:eBLBaseComponents}InternationalReturnsAccepted');}, $value));
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}DomesticReturnsDurationValues');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DomesticReturnsDurationValues');
         if (null !== $value) {
-            $this->setDomesticReturnsDurationValues($value);
+            $this->setDomesticReturnsDurationValues(array_map(function ($v) {return Func::mapValue($v, '{urn:ebay:apis:eBLBaseComponents}DomesticReturnsDuration');}, $value));
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}InternationalReturnsDurationValues');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}InternationalReturnsDurationValues');
         if (null !== $value) {
-            $this->setInternationalReturnsDurationValues($value);
+            $this->setInternationalReturnsDurationValues(array_map(function ($v) {return Func::mapValue($v, '{urn:ebay:apis:eBLBaseComponents}InternationalReturnsDuration');}, $value));
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}DomesticReturnsShipmentPayeeValues');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DomesticReturnsShipmentPayeeValues');
         if (null !== $value) {
-            $this->setDomesticReturnsShipmentPayeeValues($value);
+            $this->setDomesticReturnsShipmentPayeeValues(array_map(function ($v) {return Func::mapValue($v, '{urn:ebay:apis:eBLBaseComponents}DomesticReturnsShipmentPayee');}, $value));
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}InternationalReturnsShipmentPayeeValues');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}InternationalReturnsShipmentPayeeValues');
         if (null !== $value) {
-            $this->setInternationalReturnsShipmentPayeeValues($value);
+            $this->setInternationalReturnsShipmentPayeeValues(array_map(function ($v) {return Func::mapValue($v, '{urn:ebay:apis:eBLBaseComponents}InternationalReturnsShipmentPayee');}, $value));
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}DomesticRefundMethodValues');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DomesticRefundMethodValues');
         if (null !== $value) {
-            $this->setDomesticRefundMethodValues($value);
+            $this->setDomesticRefundMethodValues(array_map(function ($v) {return Func::mapValue($v, '{urn:ebay:apis:eBLBaseComponents}DomesticRefundMethod');}, $value));
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}InternationalRefundMethodValues');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}InternationalRefundMethodValues');
         if (null !== $value) {
-            $this->setInternationalRefundMethodValues($value);
+            $this->setInternationalRefundMethodValues(array_map(function ($v) {return Func::mapValue($v, '{urn:ebay:apis:eBLBaseComponents}InternationalRefundMethod');}, $value));
         }
         $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReturnPolicyDescriptionEnabled');
         if (null !== $value) {

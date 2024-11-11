@@ -369,7 +369,7 @@ class SiteBuyerRequirementDetailsType implements \Sabre\Xml\XmlSerializable, \Sa
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MaximumUnpaidItemStrikesInfo", $value);
         }
         $value = $this->getMinimumFeedbackScore();
-        if (null !== $value && !empty($this->getMinimumFeedbackScore())) {
+        if (null !== $value && [] !== $this->getMinimumFeedbackScore()) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MinimumFeedbackScore", array_map(function ($v) {return ["FeedbackScore" => $v];}, $value));
         }
         $value = $this->getShipToRegistrationCountry();
@@ -417,9 +417,9 @@ class SiteBuyerRequirementDetailsType implements \Sabre\Xml\XmlSerializable, \Sa
         if (null !== $value) {
             $this->setMaximumUnpaidItemStrikesInfo(\Nogrod\eBaySDK\Trading\MaximumUnpaidItemStrikesInfoDetailsType::fromKeyValue($value));
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}MinimumFeedbackScore');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MinimumFeedbackScore');
         if (null !== $value) {
-            $this->setMinimumFeedbackScore($value);
+            $this->setMinimumFeedbackScore(array_map(function ($v) {return Func::mapValue($v, '{urn:ebay:apis:eBLBaseComponents}FeedbackScore');}, $value));
         }
         $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShipToRegistrationCountry');
         if (null !== $value) {

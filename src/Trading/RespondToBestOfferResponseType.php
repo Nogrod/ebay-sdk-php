@@ -89,7 +89,7 @@ class RespondToBestOfferResponseType extends AbstractResponseType
     {
         parent::xmlSerialize($writer);
         $value = $this->getRespondToBestOffer();
-        if (null !== $value && !empty($this->getRespondToBestOffer())) {
+        if (null !== $value && [] !== $this->getRespondToBestOffer()) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}RespondToBestOffer", array_map(function ($v) {return ["BestOffer" => $v];}, $value));
         }
     }

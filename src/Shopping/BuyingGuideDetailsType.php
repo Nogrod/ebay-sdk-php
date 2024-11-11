@@ -135,7 +135,7 @@ class BuyingGuideDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getBuyingGuide();
-        if (null !== $value && !empty($this->getBuyingGuide())) {
+        if (null !== $value && [] !== $this->getBuyingGuide()) {
             $writer->write(array_map(function ($v) {return ["BuyingGuide" => $v];}, $value));
         }
         $value = $this->getBuyingGuideHub();

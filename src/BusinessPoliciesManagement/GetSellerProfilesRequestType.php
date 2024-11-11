@@ -325,15 +325,15 @@ class GetSellerProfilesRequestType extends BaseRequestType
     {
         parent::xmlSerialize($writer);
         $value = $this->getProfileType();
-        if (null !== $value && !empty($this->getProfileType())) {
+        if (null !== $value && [] !== $this->getProfileType()) {
             $writer->write(array_map(function ($v) {return ["profileType" => $v];}, $value));
         }
         $value = $this->getProfileId();
-        if (null !== $value && !empty($this->getProfileId())) {
+        if (null !== $value && [] !== $this->getProfileId()) {
             $writer->write(array_map(function ($v) {return ["profileId" => $v];}, $value));
         }
         $value = $this->getProfileName();
-        if (null !== $value && !empty($this->getProfileName())) {
+        if (null !== $value && [] !== $this->getProfileName()) {
             $writer->write(array_map(function ($v) {return ["profileName" => $v];}, $value));
         }
         $value = $this->getIncludeDetails();
@@ -358,15 +358,15 @@ class GetSellerProfilesRequestType extends BaseRequestType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}profileType');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}profileType');
         if (null !== $value) {
             $this->setProfileType($value);
         }
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}profileId');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}profileId');
         if (null !== $value) {
             $this->setProfileId($value);
         }
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}profileName');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}profileName');
         if (null !== $value) {
             $this->setProfileName($value);
         }

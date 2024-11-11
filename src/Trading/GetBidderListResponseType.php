@@ -127,7 +127,7 @@ class GetBidderListResponseType extends AbstractResponseType
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Bidder", $value);
         }
         $value = $this->getBidItemArray();
-        if (null !== $value && !empty($this->getBidItemArray())) {
+        if (null !== $value && [] !== $this->getBidItemArray()) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BidItemArray", array_map(function ($v) {return ["Item" => $v];}, $value));
         }
     }

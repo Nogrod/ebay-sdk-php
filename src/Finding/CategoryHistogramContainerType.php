@@ -220,7 +220,7 @@ class CategoryHistogramContainerType implements \Sabre\Xml\XmlSerializable, \Sab
     {
         $writer->writeAttribute("xmlns", "http://www.ebay.com/marketplace/search/v1/services");
         $value = $this->getCategoryHistogram();
-        if (null !== $value && !empty($this->getCategoryHistogram())) {
+        if (null !== $value && [] !== $this->getCategoryHistogram()) {
             $writer->write(array_map(function ($v) {return ["categoryHistogram" => $v];}, $value));
         }
         $value = $this->getDelimiter();

@@ -198,7 +198,7 @@ class ItemBestOffersType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Role", $value);
         }
         $value = $this->getBestOfferArray();
-        if (null !== $value && !empty($this->getBestOfferArray())) {
+        if (null !== $value && [] !== $this->getBestOfferArray()) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BestOfferArray", array_map(function ($v) {return ["BestOffer" => $v];}, $value));
         }
         $value = $this->getItem();

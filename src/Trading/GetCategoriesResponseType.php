@@ -361,7 +361,7 @@ class GetCategoriesResponseType extends AbstractResponseType
     {
         parent::xmlSerialize($writer);
         $value = $this->getCategoryArray();
-        if (null !== $value && !empty($this->getCategoryArray())) {
+        if (null !== $value && [] !== $this->getCategoryArray()) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CategoryArray", array_map(function ($v) {return ["Category" => $v];}, $value));
         }
         $value = $this->getCategoryCount();

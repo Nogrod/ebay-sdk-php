@@ -277,7 +277,7 @@ class GetNotificationPreferencesResponseType extends AbstractResponseType
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DeliveryURLName", $value);
         }
         $value = $this->getUserDeliveryPreferenceArray();
-        if (null !== $value && !empty($this->getUserDeliveryPreferenceArray())) {
+        if (null !== $value && [] !== $this->getUserDeliveryPreferenceArray()) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}UserDeliveryPreferenceArray", array_map(function ($v) {return ["NotificationEnable" => $v];}, $value));
         }
         $value = $this->getUserData();
@@ -285,7 +285,7 @@ class GetNotificationPreferencesResponseType extends AbstractResponseType
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}UserData", $value);
         }
         $value = $this->getEventProperty();
-        if (null !== $value && !empty($this->getEventProperty())) {
+        if (null !== $value && [] !== $this->getEventProperty()) {
             $writer->write(array_map(function ($v) {return ["EventProperty" => $v];}, $value));
         }
     }

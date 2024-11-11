@@ -717,7 +717,7 @@ class ShippingServiceOptionsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ImportCharge", $value);
         }
         $value = $this->getShippingPackageInfo();
-        if (null !== $value && !empty($this->getShippingPackageInfo())) {
+        if (null !== $value && [] !== $this->getShippingPackageInfo()) {
             $writer->write(array_map(function ($v) {return ["ShippingPackageInfo" => $v];}, $value));
         }
         $value = $this->getShippingServiceCutOffTime();

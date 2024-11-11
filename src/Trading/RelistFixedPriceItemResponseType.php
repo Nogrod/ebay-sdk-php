@@ -506,7 +506,7 @@ class RelistFixedPriceItemResponseType extends AbstractResponseType
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SKU", $value);
         }
         $value = $this->getFees();
-        if (null !== $value && !empty($this->getFees())) {
+        if (null !== $value && [] !== $this->getFees()) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Fees", array_map(function ($v) {return ["Fee" => $v];}, $value));
         }
         $value = $this->getStartTime();
@@ -526,11 +526,11 @@ class RelistFixedPriceItemResponseType extends AbstractResponseType
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Category2ID", $value);
         }
         $value = $this->getDiscountReason();
-        if (null !== $value && !empty($this->getDiscountReason())) {
+        if (null !== $value && [] !== $this->getDiscountReason()) {
             $writer->write(array_map(function ($v) {return ["DiscountReason" => $v];}, $value));
         }
         $value = $this->getProductSuggestions();
-        if (null !== $value && !empty($this->getProductSuggestions())) {
+        if (null !== $value && [] !== $this->getProductSuggestions()) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ProductSuggestions", array_map(function ($v) {return ["ProductSuggestion" => $v];}, $value));
         }
     }
@@ -578,7 +578,7 @@ class RelistFixedPriceItemResponseType extends AbstractResponseType
         if (null !== $value) {
             $this->setCategory2ID($value);
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}DiscountReason');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DiscountReason');
         if (null !== $value) {
             $this->setDiscountReason($value);
         }

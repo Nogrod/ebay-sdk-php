@@ -91,7 +91,7 @@ class CategoryArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getCategory();
-        if (null !== $value && !empty($this->getCategory())) {
+        if (null !== $value && [] !== $this->getCategory()) {
             $writer->write(array_map(function ($v) {return ["Category" => $v];}, $value));
         }
     }

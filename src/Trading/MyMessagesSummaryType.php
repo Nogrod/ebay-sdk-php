@@ -271,7 +271,7 @@ class MyMessagesSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getFolderSummary();
-        if (null !== $value && !empty($this->getFolderSummary())) {
+        if (null !== $value && [] !== $this->getFolderSummary()) {
             $writer->write(array_map(function ($v) {return ["FolderSummary" => $v];}, $value));
         }
         $value = $this->getNewMessageCount();

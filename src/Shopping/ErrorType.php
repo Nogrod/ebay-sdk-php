@@ -423,7 +423,7 @@ class ErrorType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SeverityCode", $value);
         }
         $value = $this->getErrorParameters();
-        if (null !== $value && !empty($this->getErrorParameters())) {
+        if (null !== $value && [] !== $this->getErrorParameters()) {
             $writer->write(array_map(function ($v) {return ["ErrorParameters" => $v];}, $value));
         }
         $value = $this->getErrorClassification();

@@ -385,7 +385,7 @@ class GetDescriptionTemplatesResponseType extends AbstractResponseType
     {
         parent::xmlSerialize($writer);
         $value = $this->getDescriptionTemplate();
-        if (null !== $value && !empty($this->getDescriptionTemplate())) {
+        if (null !== $value && [] !== $this->getDescriptionTemplate()) {
             $writer->write(array_map(function ($v) {return ["DescriptionTemplate" => $v];}, $value));
         }
         $value = $this->getLayoutTotal();
@@ -393,15 +393,15 @@ class GetDescriptionTemplatesResponseType extends AbstractResponseType
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}LayoutTotal", $value);
         }
         $value = $this->getObsoleteLayoutID();
-        if (null !== $value && !empty($this->getObsoleteLayoutID())) {
+        if (null !== $value && [] !== $this->getObsoleteLayoutID()) {
             $writer->write(array_map(function ($v) {return ["ObsoleteLayoutID" => $v];}, $value));
         }
         $value = $this->getObsoleteThemeID();
-        if (null !== $value && !empty($this->getObsoleteThemeID())) {
+        if (null !== $value && [] !== $this->getObsoleteThemeID()) {
             $writer->write(array_map(function ($v) {return ["ObsoleteThemeID" => $v];}, $value));
         }
         $value = $this->getThemeGroup();
-        if (null !== $value && !empty($this->getThemeGroup())) {
+        if (null !== $value && [] !== $this->getThemeGroup()) {
             $writer->write(array_map(function ($v) {return ["ThemeGroup" => $v];}, $value));
         }
         $value = $this->getThemeTotal();
@@ -433,11 +433,11 @@ class GetDescriptionTemplatesResponseType extends AbstractResponseType
         if (null !== $value) {
             $this->setLayoutTotal($value);
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ObsoleteLayoutID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ObsoleteLayoutID');
         if (null !== $value) {
             $this->setObsoleteLayoutID($value);
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ObsoleteThemeID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ObsoleteThemeID');
         if (null !== $value) {
             $this->setObsoleteThemeID($value);
         }

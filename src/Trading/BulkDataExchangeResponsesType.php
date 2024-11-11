@@ -920,19 +920,19 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ActiveInventoryReport", $value);
         }
         $value = $this->getAddFixedPriceItemResponse();
-        if (null !== $value && !empty($this->getAddFixedPriceItemResponse())) {
+        if (null !== $value && [] !== $this->getAddFixedPriceItemResponse()) {
             $writer->write(array_map(function ($v) {return ["AddFixedPriceItemResponse" => $v];}, $value));
         }
         $value = $this->getAddItemResponse();
-        if (null !== $value && !empty($this->getAddItemResponse())) {
+        if (null !== $value && [] !== $this->getAddItemResponse()) {
             $writer->write(array_map(function ($v) {return ["AddItemResponse" => $v];}, $value));
         }
         $value = $this->getEndFixedPriceItemResponse();
-        if (null !== $value && !empty($this->getEndFixedPriceItemResponse())) {
+        if (null !== $value && [] !== $this->getEndFixedPriceItemResponse()) {
             $writer->write(array_map(function ($v) {return ["EndFixedPriceItemResponse" => $v];}, $value));
         }
         $value = $this->getEndItemResponse();
-        if (null !== $value && !empty($this->getEndItemResponse())) {
+        if (null !== $value && [] !== $this->getEndItemResponse()) {
             $writer->write(array_map(function ($v) {return ["EndItemResponse" => $v];}, $value));
         }
         $value = $this->getFeeSettlementReport();
@@ -940,7 +940,7 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}FeeSettlementReport", $value);
         }
         $value = $this->getOrderAckResponse();
-        if (null !== $value && !empty($this->getOrderAckResponse())) {
+        if (null !== $value && [] !== $this->getOrderAckResponse()) {
             $writer->write(array_map(function ($v) {return ["OrderAckResponse" => $v];}, $value));
         }
         $value = $this->getOrderReport();
@@ -948,35 +948,35 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}OrderReport", $value);
         }
         $value = $this->getRelistFixedPriceItemResponse();
-        if (null !== $value && !empty($this->getRelistFixedPriceItemResponse())) {
+        if (null !== $value && [] !== $this->getRelistFixedPriceItemResponse()) {
             $writer->write(array_map(function ($v) {return ["RelistFixedPriceItemResponse" => $v];}, $value));
         }
         $value = $this->getRelistItemResponse();
-        if (null !== $value && !empty($this->getRelistItemResponse())) {
+        if (null !== $value && [] !== $this->getRelistItemResponse()) {
             $writer->write(array_map(function ($v) {return ["RelistItemResponse" => $v];}, $value));
         }
         $value = $this->getReviseFixedPriceItemResponse();
-        if (null !== $value && !empty($this->getReviseFixedPriceItemResponse())) {
+        if (null !== $value && [] !== $this->getReviseFixedPriceItemResponse()) {
             $writer->write(array_map(function ($v) {return ["ReviseFixedPriceItemResponse" => $v];}, $value));
         }
         $value = $this->getReviseInventoryStatusResponse();
-        if (null !== $value && !empty($this->getReviseInventoryStatusResponse())) {
+        if (null !== $value && [] !== $this->getReviseInventoryStatusResponse()) {
             $writer->write(array_map(function ($v) {return ["ReviseInventoryStatusResponse" => $v];}, $value));
         }
         $value = $this->getReviseItemResponse();
-        if (null !== $value && !empty($this->getReviseItemResponse())) {
+        if (null !== $value && [] !== $this->getReviseItemResponse()) {
             $writer->write(array_map(function ($v) {return ["ReviseItemResponse" => $v];}, $value));
         }
         $value = $this->getSetShipmentTrackingInfoResponse();
-        if (null !== $value && !empty($this->getSetShipmentTrackingInfoResponse())) {
+        if (null !== $value && [] !== $this->getSetShipmentTrackingInfoResponse()) {
             $writer->write(array_map(function ($v) {return ["SetShipmentTrackingInfoResponse" => $v];}, $value));
         }
         $value = $this->getVerifyAddFixedPriceItemResponse();
-        if (null !== $value && !empty($this->getVerifyAddFixedPriceItemResponse())) {
+        if (null !== $value && [] !== $this->getVerifyAddFixedPriceItemResponse()) {
             $writer->write(array_map(function ($v) {return ["VerifyAddFixedPriceItemResponse" => $v];}, $value));
         }
         $value = $this->getVerifyAddItemResponse();
-        if (null !== $value && !empty($this->getVerifyAddItemResponse())) {
+        if (null !== $value && [] !== $this->getVerifyAddItemResponse()) {
             $writer->write(array_map(function ($v) {return ["VerifyAddItemResponse" => $v];}, $value));
         }
     }

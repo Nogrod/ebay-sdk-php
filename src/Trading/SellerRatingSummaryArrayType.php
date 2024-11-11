@@ -121,7 +121,7 @@ class SellerRatingSummaryArrayType implements \Sabre\Xml\XmlSerializable, \Sabre
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getAverageRatingSummary();
-        if (null !== $value && !empty($this->getAverageRatingSummary())) {
+        if (null !== $value && [] !== $this->getAverageRatingSummary()) {
             $writer->write(array_map(function ($v) {return ["AverageRatingSummary" => $v];}, $value));
         }
     }
