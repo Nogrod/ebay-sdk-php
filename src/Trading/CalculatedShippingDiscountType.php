@@ -201,12 +201,12 @@ class CalculatedShippingDiscountType implements \Sabre\Xml\XmlSerializable, \Sab
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DiscountName');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}DiscountName');
         if (null !== $value) {
             $this->setDiscountName($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DiscountProfile', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DiscountProfile');
+        if (null !== $value) {
             $this->setDiscountProfile(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\DiscountProfileType::fromKeyValue($v);}, $value));
         }
     }

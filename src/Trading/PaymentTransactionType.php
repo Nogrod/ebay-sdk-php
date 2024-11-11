@@ -368,32 +368,32 @@ class PaymentTransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Payer');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}Payer');
         if (null !== $value) {
             $this->setPayer(\Nogrod\eBaySDK\Trading\UserIdentityType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Payee');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}Payee');
         if (null !== $value) {
             $this->setPayee(\Nogrod\eBaySDK\Trading\UserIdentityType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaymentTime');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaymentTime');
         if (null !== $value) {
             $this->setPaymentTime(new \DateTime($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaymentAmount');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaymentAmount');
         if (null !== $value) {
             $this->setPaymentAmount(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReferenceID');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReferenceID');
         if (null !== $value) {
             $this->setReferenceID(\Nogrod\eBaySDK\Trading\TransactionReferenceType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeeOrCreditAmount');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeeOrCreditAmount');
         if (null !== $value) {
             $this->setFeeOrCreditAmount(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaymentReferenceID', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaymentReferenceID');
+        if (null !== $value) {
             $this->setPaymentReferenceID(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\TransactionReferenceType::fromKeyValue($v);}, $value));
         }
     }

@@ -464,43 +464,43 @@ class ReturnPolicyInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}description');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}description');
         if (null !== $value) {
             $this->setDescription($value);
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}refundOption');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}refundOption');
         if (null !== $value) {
             $this->setRefundOption($value);
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}shippingCostPaidByOption');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}shippingCostPaidByOption');
         if (null !== $value) {
             $this->setShippingCostPaidByOption($value);
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}returnsWithinOption');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}returnsWithinOption');
         if (null !== $value) {
             $this->setReturnsWithinOption($value);
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}returnsAcceptedOption');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}returnsAcceptedOption');
         if (null !== $value) {
             $this->setReturnsAcceptedOption($value);
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}warrantyOfferedOption');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}warrantyOfferedOption');
         if (null !== $value) {
             $this->setWarrantyOfferedOption($value);
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}warrantyTypeOption');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}warrantyTypeOption');
         if (null !== $value) {
             $this->setWarrantyTypeOption($value);
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}warrantyDurationOption');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}warrantyDurationOption');
         if (null !== $value) {
             $this->setWarrantyDurationOption($value);
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}restockingFeeValue');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}restockingFeeValue');
         if (null !== $value) {
             $this->setRestockingFeeValue($value);
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}holidayReturns');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}holidayReturns');
         if (null !== $value) {
             $this->setHolidayReturns($value);
         }

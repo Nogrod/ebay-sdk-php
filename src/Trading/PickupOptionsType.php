@@ -145,11 +145,11 @@ class PickupOptionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PickupMethod');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}PickupMethod');
         if (null !== $value) {
             $this->setPickupMethod($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PickupPriority');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}PickupPriority');
         if (null !== $value) {
             $this->setPickupPriority($value);
         }

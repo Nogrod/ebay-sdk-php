@@ -690,63 +690,63 @@ class ShippingServiceOptionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingInsuranceCost');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingInsuranceCost');
         if (null !== $value) {
             $this->setShippingInsuranceCost(\Nogrod\eBaySDK\Shopping\AmountType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingServiceName');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingServiceName');
         if (null !== $value) {
             $this->setShippingServiceName($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LogisticPlanType');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}LogisticPlanType');
         if (null !== $value) {
             $this->setLogisticPlanType($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingServiceCost');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingServiceCost');
         if (null !== $value) {
             $this->setShippingServiceCost(\Nogrod\eBaySDK\Shopping\AmountType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingServiceAdditionalCost');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingServiceAdditionalCost');
         if (null !== $value) {
             $this->setShippingServiceAdditionalCost(\Nogrod\eBaySDK\Shopping\AmountType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingServicePriority');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingServicePriority');
         if (null !== $value) {
             $this->setShippingServicePriority($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExpeditedService');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExpeditedService');
         if (null !== $value) {
             $this->setExpeditedService(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingTimeMin');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingTimeMin');
         if (null !== $value) {
             $this->setShippingTimeMin($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingTimeMax');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingTimeMax');
         if (null !== $value) {
             $this->setShippingTimeMax($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingSurcharge');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingSurcharge');
         if (null !== $value) {
             $this->setShippingSurcharge(\Nogrod\eBaySDK\Shopping\AmountType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShipsTo', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShipsTo');
+        if (null !== $value) {
             $this->setShipsTo($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EstimatedDeliveryMinTime');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}EstimatedDeliveryMinTime');
         if (null !== $value) {
             $this->setEstimatedDeliveryMinTime(new \DateTime($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EstimatedDeliveryMaxTime');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}EstimatedDeliveryMaxTime');
         if (null !== $value) {
             $this->setEstimatedDeliveryMaxTime(new \DateTime($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FastAndFree');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}FastAndFree');
         if (null !== $value) {
             $this->setFastAndFree(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingServiceCutOffTime');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingServiceCutOffTime');
         if (null !== $value) {
             $this->setShippingServiceCutOffTime(new \DateTime($value));
         }

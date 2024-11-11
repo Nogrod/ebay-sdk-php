@@ -110,11 +110,11 @@ class UploadSiteHostedPicturesResponseType extends AbstractResponseType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PictureSystemVersion');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}PictureSystemVersion');
         if (null !== $value) {
             $this->setPictureSystemVersion($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SiteHostedPictureDetails');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}SiteHostedPictureDetails');
         if (null !== $value) {
             $this->setSiteHostedPictureDetails(\Nogrod\eBaySDK\Trading\SiteHostedPictureDetailsType::fromKeyValue($value));
         }

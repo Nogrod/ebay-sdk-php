@@ -344,31 +344,31 @@ class UserDefinedListType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Name');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Name');
         if (null !== $value) {
             $this->setName($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemCount');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemCount');
         if (null !== $value) {
             $this->setItemCount($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FavoriteSearcheCount');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}FavoriteSearcheCount');
         if (null !== $value) {
             $this->setFavoriteSearcheCount($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FavoriteSellerCount');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}FavoriteSellerCount');
         if (null !== $value) {
             $this->setFavoriteSellerCount($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemArray', true);
-        if (null !== $value && !empty($value)) {
-            $this->setItemArray(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\ItemType::fromKeyValue(Func::mapArray($v, '{urn:ebay:apis:eBLBaseComponents}Item'));}, $value));
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemArray');
+        if (null !== $value) {
+            $this->setItemArray(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\ItemType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}Item'));}, $value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FavoriteSearches');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}FavoriteSearches');
         if (null !== $value) {
             $this->setFavoriteSearches(\Nogrod\eBaySDK\Trading\MyeBayFavoriteSearchListType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FavoriteSellers');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}FavoriteSellers');
         if (null !== $value) {
             $this->setFavoriteSellers(\Nogrod\eBaySDK\Trading\MyeBayFavoriteSellerListType::fromKeyValue($value));
         }

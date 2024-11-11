@@ -174,12 +174,12 @@ class CountryPoliciesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Country');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Country');
         if (null !== $value) {
             $this->setCountry($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PolicyID', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}PolicyID');
+        if (null !== $value) {
             $this->setPolicyID($value);
         }
     }

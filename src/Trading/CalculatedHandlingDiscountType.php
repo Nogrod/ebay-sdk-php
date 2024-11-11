@@ -327,23 +327,23 @@ class CalculatedHandlingDiscountType implements \Sabre\Xml\XmlSerializable, \Sab
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DiscountName');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}DiscountName');
         if (null !== $value) {
             $this->setDiscountName($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}OrderHandlingAmount');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}OrderHandlingAmount');
         if (null !== $value) {
             $this->setOrderHandlingAmount(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EachAdditionalAmount');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}EachAdditionalAmount');
         if (null !== $value) {
             $this->setEachAdditionalAmount(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EachAdditionalOffAmount');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}EachAdditionalOffAmount');
         if (null !== $value) {
             $this->setEachAdditionalOffAmount(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EachAdditionalPercentOff');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}EachAdditionalPercentOff');
         if (null !== $value) {
             $this->setEachAdditionalPercentOff($value);
         }

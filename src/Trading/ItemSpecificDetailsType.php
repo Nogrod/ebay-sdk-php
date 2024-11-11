@@ -259,27 +259,27 @@ class ItemSpecificDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MaxItemSpecificsPerItem');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}MaxItemSpecificsPerItem');
         if (null !== $value) {
             $this->setMaxItemSpecificsPerItem($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MaxValuesPerName');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}MaxValuesPerName');
         if (null !== $value) {
             $this->setMaxValuesPerName($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MaxCharactersPerValue');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}MaxCharactersPerValue');
         if (null !== $value) {
             $this->setMaxCharactersPerValue($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MaxCharactersPerName');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}MaxCharactersPerName');
         if (null !== $value) {
             $this->setMaxCharactersPerName($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DetailVersion');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}DetailVersion');
         if (null !== $value) {
             $this->setDetailVersion($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UpdateTime');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}UpdateTime');
         if (null !== $value) {
             $this->setUpdateTime(new \DateTime($value));
         }

@@ -129,11 +129,11 @@ class CalculatedShippingRateType implements \Sabre\Xml\XmlSerializable, \Sabre\X
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PackagingHandlingCosts');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}PackagingHandlingCosts');
         if (null !== $value) {
             $this->setPackagingHandlingCosts(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}InternationalPackagingHandlingCosts');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}InternationalPackagingHandlingCosts');
         if (null !== $value) {
             $this->setInternationalPackagingHandlingCosts(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
         }

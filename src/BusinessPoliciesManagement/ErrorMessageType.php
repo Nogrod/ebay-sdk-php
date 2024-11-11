@@ -110,8 +110,8 @@ class ErrorMessageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}error', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}error');
+        if (null !== $value) {
             $this->setError(array_map(function ($v) {return \Nogrod\eBaySDK\BusinessPoliciesManagement\ErrorDataType::fromKeyValue($v);}, $value));
         }
     }

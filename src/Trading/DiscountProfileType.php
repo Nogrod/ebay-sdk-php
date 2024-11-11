@@ -341,31 +341,31 @@ class DiscountProfileType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DiscountProfileID');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}DiscountProfileID');
         if (null !== $value) {
             $this->setDiscountProfileID($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DiscountProfileName');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}DiscountProfileName');
         if (null !== $value) {
             $this->setDiscountProfileName($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EachAdditionalAmount');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}EachAdditionalAmount');
         if (null !== $value) {
             $this->setEachAdditionalAmount(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EachAdditionalAmountOff');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}EachAdditionalAmountOff');
         if (null !== $value) {
             $this->setEachAdditionalAmountOff(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EachAdditionalPercentOff');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}EachAdditionalPercentOff');
         if (null !== $value) {
             $this->setEachAdditionalPercentOff($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}WeightOff');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}WeightOff');
         if (null !== $value) {
             $this->setWeightOff(\Nogrod\eBaySDK\Trading\MeasureType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MappedDiscountProfileID');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}MappedDiscountProfileID');
         if (null !== $value) {
             $this->setMappedDiscountProfileID($value);
         }

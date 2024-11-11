@@ -366,24 +366,24 @@ class UnpaidItemAssistancePreferencesType implements \Sabre\Xml\XmlSerializable,
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DelayBeforeOpeningDispute');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}DelayBeforeOpeningDispute');
         if (null !== $value) {
             $this->setDelayBeforeOpeningDispute($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}OptInStatus');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}OptInStatus');
         if (null !== $value) {
             $this->setOptInStatus(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AutoRelist');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}AutoRelist');
         if (null !== $value) {
             $this->setAutoRelist(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RemoveAllExcludedUsers');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}RemoveAllExcludedUsers');
         if (null !== $value) {
             $this->setRemoveAllExcludedUsers(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExcludedUser', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExcludedUser');
+        if (null !== $value) {
             $this->setExcludedUser($value);
         }
     }

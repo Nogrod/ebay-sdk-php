@@ -150,8 +150,8 @@ class PickupDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PickupOptions', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PickupOptions');
+        if (null !== $value) {
             $this->setPickupOptions(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\PickupOptionsType::fromKeyValue($v);}, $value));
         }
     }

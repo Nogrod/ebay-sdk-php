@@ -961,99 +961,99 @@ class AddressType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Name');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Name');
         if (null !== $value) {
             $this->setName($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Street');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Street');
         if (null !== $value) {
             $this->setStreet($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Street1');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Street1');
         if (null !== $value) {
             $this->setStreet1($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Street2');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Street2');
         if (null !== $value) {
             $this->setStreet2($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CityName');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}CityName');
         if (null !== $value) {
             $this->setCityName($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}County');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}County');
         if (null !== $value) {
             $this->setCounty($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}StateOrProvince');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}StateOrProvince');
         if (null !== $value) {
             $this->setStateOrProvince($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CountryName');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}CountryName');
         if (null !== $value) {
             $this->setCountryName($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Phone');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Phone');
         if (null !== $value) {
             $this->setPhone($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PhoneCountryPrefix');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}PhoneCountryPrefix');
         if (null !== $value) {
             $this->setPhoneCountryPrefix($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PhoneAreaOrCityCode');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}PhoneAreaOrCityCode');
         if (null !== $value) {
             $this->setPhoneAreaOrCityCode($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PhoneLocalNumber');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}PhoneLocalNumber');
         if (null !== $value) {
             $this->setPhoneLocalNumber($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Phone2CountryPrefix');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Phone2CountryPrefix');
         if (null !== $value) {
             $this->setPhone2CountryPrefix($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Phone2AreaOrCityCode');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Phone2AreaOrCityCode');
         if (null !== $value) {
             $this->setPhone2AreaOrCityCode($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Phone2LocalNumber');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Phone2LocalNumber');
         if (null !== $value) {
             $this->setPhone2LocalNumber($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PostalCode');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}PostalCode');
         if (null !== $value) {
             $this->setPostalCode($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AddressID');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}AddressID');
         if (null !== $value) {
             $this->setAddressID($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExternalAddressID');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExternalAddressID');
         if (null !== $value) {
             $this->setExternalAddressID($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}InternationalName');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}InternationalName');
         if (null !== $value) {
             $this->setInternationalName($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}InternationalStateAndCity');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}InternationalStateAndCity');
         if (null !== $value) {
             $this->setInternationalStateAndCity($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}InternationalStreet');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}InternationalStreet');
         if (null !== $value) {
             $this->setInternationalStreet($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CompanyName');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}CompanyName');
         if (null !== $value) {
             $this->setCompanyName($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FirstName');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}FirstName');
         if (null !== $value) {
             $this->setFirstName($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LastName');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}LastName');
         if (null !== $value) {
             $this->setLastName($value);
         }

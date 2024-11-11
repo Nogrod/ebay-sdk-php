@@ -145,15 +145,15 @@ class DuplicateInvocationDetailsType implements \Sabre\Xml\XmlSerializable, \Sab
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DuplicateInvocationID');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}DuplicateInvocationID');
         if (null !== $value) {
             $this->setDuplicateInvocationID($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Status');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Status');
         if (null !== $value) {
             $this->setStatus($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}InvocationTrackingID');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}InvocationTrackingID');
         if (null !== $value) {
             $this->setInvocationTrackingID($value);
         }

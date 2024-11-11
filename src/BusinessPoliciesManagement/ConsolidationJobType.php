@@ -93,19 +93,19 @@ class ConsolidationJobType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}JobId');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}JobId');
         if (null !== $value) {
             $this->setJobId($value);
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}JobType');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}JobType');
         if (null !== $value) {
             $this->setJobType($value);
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}JobStatus');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}JobStatus');
         if (null !== $value) {
             $this->setJobStatus($value);
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}SiteId');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}SiteId');
         if (null !== $value) {
             $this->setSiteId($value);
         }

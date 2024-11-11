@@ -200,16 +200,16 @@ class GetUserProfileResponseType extends AbstractResponseType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}User');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}User');
         if (null !== $value) {
             $this->setUser(\Nogrod\eBaySDK\Shopping\SimpleUserType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeedbackHistory');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeedbackHistory');
         if (null !== $value) {
             $this->setFeedbackHistory(\Nogrod\eBaySDK\Shopping\FeedbackHistoryType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeedbackDetails', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeedbackDetails');
+        if (null !== $value) {
             $this->setFeedbackDetails(array_map(function ($v) {return \Nogrod\eBaySDK\Shopping\FeedbackDetailType::fromKeyValue($v);}, $value));
         }
     }

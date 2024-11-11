@@ -106,11 +106,11 @@ class ExtendedContactDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ContactHoursDetails');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}ContactHoursDetails');
         if (null !== $value) {
             $this->setContactHoursDetails(\Nogrod\eBaySDK\Trading\ContactHoursDetailsType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ClassifiedAdContactByEmailEnabled');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ClassifiedAdContactByEmailEnabled');
         if (null !== $value) {
             $this->setClassifiedAdContactByEmailEnabled(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }

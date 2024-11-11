@@ -337,31 +337,31 @@ class ItemListCustomizationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Include');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Include');
         if (null !== $value) {
             $this->setInclude(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ListingType');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ListingType');
         if (null !== $value) {
             $this->setListingType($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Sort');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Sort');
         if (null !== $value) {
             $this->setSort($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DurationInDays');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}DurationInDays');
         if (null !== $value) {
             $this->setDurationInDays($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}IncludeNotes');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}IncludeNotes');
         if (null !== $value) {
             $this->setIncludeNotes(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Pagination');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}Pagination');
         if (null !== $value) {
             $this->setPagination(\Nogrod\eBaySDK\Trading\PaginationType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}OrderStatusFilter');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}OrderStatusFilter');
         if (null !== $value) {
             $this->setOrderStatusFilter($value);
         }

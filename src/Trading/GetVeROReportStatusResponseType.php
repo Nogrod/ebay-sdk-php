@@ -356,33 +356,33 @@ class GetVeROReportStatusResponseType extends AbstractResponseType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaginationResult');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaginationResult');
         if (null !== $value) {
             $this->setPaginationResult(\Nogrod\eBaySDK\Trading\PaginationResultType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}HasMoreItems');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}HasMoreItems');
         if (null !== $value) {
             $this->setHasMoreItems(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemsPerPage');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemsPerPage');
         if (null !== $value) {
             $this->setItemsPerPage($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PageNumber');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}PageNumber');
         if (null !== $value) {
             $this->setPageNumber($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}VeROReportPacketID');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}VeROReportPacketID');
         if (null !== $value) {
             $this->setVeROReportPacketID($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}VeROReportPacketStatus');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}VeROReportPacketStatus');
         if (null !== $value) {
             $this->setVeROReportPacketStatus($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReportedItemDetails', true);
-        if (null !== $value && !empty($value)) {
-            $this->setReportedItemDetails(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\VeROReportedItemType::fromKeyValue(Func::mapArray($v, '{urn:ebay:apis:eBLBaseComponents}ReportedItem'));}, $value));
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReportedItemDetails');
+        if (null !== $value) {
+            $this->setReportedItemDetails(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\VeROReportedItemType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}ReportedItem'));}, $value));
         }
     }
 }

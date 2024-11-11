@@ -110,8 +110,8 @@ class BuyerPackageEnclosuresType implements \Sabre\Xml\XmlSerializable, \Sabre\X
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BuyerPackageEnclosure', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BuyerPackageEnclosure');
+        if (null !== $value) {
             $this->setBuyerPackageEnclosure(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\BuyerPackageEnclosureType::fromKeyValue($v);}, $value));
         }
     }

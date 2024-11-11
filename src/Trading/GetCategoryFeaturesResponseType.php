@@ -364,23 +364,23 @@ class GetCategoryFeaturesResponseType extends AbstractResponseType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CategoryVersion');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}CategoryVersion');
         if (null !== $value) {
             $this->setCategoryVersion($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UpdateTime');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}UpdateTime');
         if (null !== $value) {
             $this->setUpdateTime(new \DateTime($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Category', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Category');
+        if (null !== $value) {
             $this->setCategory(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\CategoryFeatureType::fromKeyValue($v);}, $value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SiteDefaults');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}SiteDefaults');
         if (null !== $value) {
             $this->setSiteDefaults(\Nogrod\eBaySDK\Trading\SiteDefaultsType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeatureDefinitions');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeatureDefinitions');
         if (null !== $value) {
             $this->setFeatureDefinitions(\Nogrod\eBaySDK\Trading\FeatureDefinitionsType::fromKeyValue($value));
         }

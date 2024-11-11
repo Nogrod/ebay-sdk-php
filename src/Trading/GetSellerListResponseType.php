@@ -338,31 +338,31 @@ class GetSellerListResponseType extends AbstractResponseType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaginationResult');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaginationResult');
         if (null !== $value) {
             $this->setPaginationResult(\Nogrod\eBaySDK\Trading\PaginationResultType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}HasMoreItems');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}HasMoreItems');
         if (null !== $value) {
             $this->setHasMoreItems(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemArray', true);
-        if (null !== $value && !empty($value)) {
-            $this->setItemArray(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\ItemType::fromKeyValue(Func::mapArray($v, '{urn:ebay:apis:eBLBaseComponents}Item'));}, $value));
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemArray');
+        if (null !== $value) {
+            $this->setItemArray(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\ItemType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}Item'));}, $value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemsPerPage');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemsPerPage');
         if (null !== $value) {
             $this->setItemsPerPage($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PageNumber');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}PageNumber');
         if (null !== $value) {
             $this->setPageNumber($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReturnedItemCountActual');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReturnedItemCountActual');
         if (null !== $value) {
             $this->setReturnedItemCountActual($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Seller');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}Seller');
         if (null !== $value) {
             $this->setSeller(\Nogrod\eBaySDK\Trading\UserType::fromKeyValue($value));
         }

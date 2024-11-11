@@ -204,15 +204,15 @@ class AspectFilterType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}aspectName');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}aspectName');
         if (null !== $value) {
             $this->setAspectName($value);
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}aspectValueName', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}aspectValueName');
+        if (null !== $value) {
             $this->setAspectValueName($value);
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}delimiter');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}delimiter');
         if (null !== $value) {
             $this->setDelimiter($value);
         }

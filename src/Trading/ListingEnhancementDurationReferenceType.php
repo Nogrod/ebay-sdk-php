@@ -144,8 +144,8 @@ class ListingEnhancementDurationReferenceType implements \Sabre\Xml\XmlSerializa
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Duration', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Duration');
+        if (null !== $value) {
             $this->setDuration($value);
         }
     }

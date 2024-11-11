@@ -213,17 +213,17 @@ class SetStoreCategoriesResponseType extends AbstractResponseType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TaskID');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}TaskID');
         if (null !== $value) {
             $this->setTaskID($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Status');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Status');
         if (null !== $value) {
             $this->setStatus($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CustomCategory', true);
-        if (null !== $value && !empty($value)) {
-            $this->setCustomCategory(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\StoreCustomCategoryType::fromKeyValue(Func::mapArray($v, '{urn:ebay:apis:eBLBaseComponents}CustomCategory'));}, $value));
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CustomCategory');
+        if (null !== $value) {
+            $this->setCustomCategory(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\StoreCustomCategoryType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}CustomCategory'));}, $value));
         }
     }
 }

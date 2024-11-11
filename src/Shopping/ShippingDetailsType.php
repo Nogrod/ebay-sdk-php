@@ -678,52 +678,52 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}GetItFast');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}GetItFast');
         if (null !== $value) {
             $this->setGetItFast(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}InsuranceCost');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}InsuranceCost');
         if (null !== $value) {
             $this->setInsuranceCost(\Nogrod\eBaySDK\Shopping\AmountType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}InsuranceOption');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}InsuranceOption');
         if (null !== $value) {
             $this->setInsuranceOption($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}InternationalShippingServiceOption', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}InternationalShippingServiceOption');
+        if (null !== $value) {
             $this->setInternationalShippingServiceOption(array_map(function ($v) {return \Nogrod\eBaySDK\Shopping\InternationalShippingServiceOptionType::fromKeyValue($v);}, $value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SalesTax');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}SalesTax');
         if (null !== $value) {
             $this->setSalesTax(\Nogrod\eBaySDK\Shopping\SalesTaxType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingRateErrorMessage');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingRateErrorMessage');
         if (null !== $value) {
             $this->setShippingRateErrorMessage($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingServiceOption', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingServiceOption');
+        if (null !== $value) {
             $this->setShippingServiceOption(array_map(function ($v) {return \Nogrod\eBaySDK\Shopping\ShippingServiceOptionType::fromKeyValue($v);}, $value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TaxTable', true);
-        if (null !== $value && !empty($value)) {
-            $this->setTaxTable(array_map(function ($v) {return \Nogrod\eBaySDK\Shopping\TaxJurisdictionType::fromKeyValue(Func::mapArray($v, '{urn:ebay:apis:eBLBaseComponents}TaxJurisdiction'));}, $value));
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TaxTable');
+        if (null !== $value) {
+            $this->setTaxTable(array_map(function ($v) {return \Nogrod\eBaySDK\Shopping\TaxJurisdictionType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}TaxJurisdiction'));}, $value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}InternationalInsuranceCost');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}InternationalInsuranceCost');
         if (null !== $value) {
             $this->setInternationalInsuranceCost(\Nogrod\eBaySDK\Shopping\AmountType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}InternationalInsuranceOption');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}InternationalInsuranceOption');
         if (null !== $value) {
             $this->setInternationalInsuranceOption($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CODCost');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}CODCost');
         if (null !== $value) {
             $this->setCODCost(\Nogrod\eBaySDK\Shopping\AmountType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExcludeShipToLocation', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExcludeShipToLocation');
+        if (null !== $value) {
             $this->setExcludeShipToLocation($value);
         }
     }

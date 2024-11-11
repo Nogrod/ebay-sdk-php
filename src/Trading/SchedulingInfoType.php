@@ -142,15 +142,15 @@ class SchedulingInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MaxScheduledMinutes');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}MaxScheduledMinutes');
         if (null !== $value) {
             $this->setMaxScheduledMinutes($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MinScheduledMinutes');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}MinScheduledMinutes');
         if (null !== $value) {
             $this->setMinScheduledMinutes($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MaxScheduledItems');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}MaxScheduledItems');
         if (null !== $value) {
             $this->setMaxScheduledItems($value);
         }

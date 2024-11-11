@@ -200,19 +200,19 @@ class SellingStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ConvertedCurrentPrice');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}ConvertedCurrentPrice');
         if (null !== $value) {
             $this->setConvertedCurrentPrice(\Nogrod\eBaySDK\Shopping\AmountType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CurrentPrice');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}CurrentPrice');
         if (null !== $value) {
             $this->setCurrentPrice(\Nogrod\eBaySDK\Shopping\AmountType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}QuantitySold');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}QuantitySold');
         if (null !== $value) {
             $this->setQuantitySold($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}QuantitySoldByPickupInStore');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}QuantitySoldByPickupInStore');
         if (null !== $value) {
             $this->setQuantitySoldByPickupInStore($value);
         }

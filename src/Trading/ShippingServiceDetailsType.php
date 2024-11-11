@@ -1184,91 +1184,91 @@ class ShippingServiceDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Description');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Description');
         if (null !== $value) {
             $this->setDescription($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExpeditedService');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExpeditedService');
         if (null !== $value) {
             $this->setExpeditedService(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}InternationalService');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}InternationalService');
         if (null !== $value) {
             $this->setInternationalService(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingService');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingService');
         if (null !== $value) {
             $this->setShippingService($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingServiceID');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingServiceID');
         if (null !== $value) {
             $this->setShippingServiceID($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingTimeMax');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingTimeMax');
         if (null !== $value) {
             $this->setShippingTimeMax($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingTimeMin');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingTimeMin');
         if (null !== $value) {
             $this->setShippingTimeMin($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ServiceType', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ServiceType');
+        if (null !== $value) {
             $this->setServiceType($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingPackage', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingPackage');
+        if (null !== $value) {
             $this->setShippingPackage($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DimensionsRequired');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}DimensionsRequired');
         if (null !== $value) {
             $this->setDimensionsRequired(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ValidForSellingFlow');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ValidForSellingFlow');
         if (null !== $value) {
             $this->setValidForSellingFlow(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SurchargeApplicable');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}SurchargeApplicable');
         if (null !== $value) {
             $this->setSurchargeApplicable(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingCarrier', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingCarrier');
+        if (null !== $value) {
             $this->setShippingCarrier($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CODService');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}CODService');
         if (null !== $value) {
             $this->setCODService(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DeprecationDetails', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DeprecationDetails');
+        if (null !== $value) {
             $this->setDeprecationDetails(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\AnnouncementMessageType::fromKeyValue($v);}, $value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MappedToShippingServiceID');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}MappedToShippingServiceID');
         if (null !== $value) {
             $this->setMappedToShippingServiceID($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CostGroupFlat');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}CostGroupFlat');
         if (null !== $value) {
             $this->setCostGroupFlat($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingServicePackageDetails', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingServicePackageDetails');
+        if (null !== $value) {
             $this->setShippingServicePackageDetails(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\ShippingServicePackageDetailsType::fromKeyValue($v);}, $value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}WeightRequired');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}WeightRequired');
         if (null !== $value) {
             $this->setWeightRequired(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DetailVersion');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}DetailVersion');
         if (null !== $value) {
             $this->setDetailVersion($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UpdateTime');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}UpdateTime');
         if (null !== $value) {
             $this->setUpdateTime(new \DateTime($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingCategory');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingCategory');
         if (null !== $value) {
             $this->setShippingCategory($value);
         }

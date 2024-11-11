@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Trading;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing TaxIdentifierAttributeType
  *
@@ -107,5 +109,13 @@ class TaxIdentifierAttributeType implements \Sabre\Xml\XmlSerializable, \Sabre\X
 
     public function setKeyValue($keyValue)
     {
+        $value = Func::mapValue($keyValue, 'value');
+        if (null !== $value) {
+            $this->value($value);
+        }
+        $value = Func::mapValue($keyValue, 'name');
+        if (null !== $value) {
+            $this->setName($value);
+        }
     }
 }

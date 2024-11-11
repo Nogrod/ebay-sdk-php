@@ -105,11 +105,11 @@ class ShippingPolicyIdentityType implements \Sabre\Xml\XmlSerializable, \Sabre\X
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}shippingPolicyId');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}shippingPolicyId');
         if (null !== $value) {
             $this->setShippingPolicyId($value);
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}shippingPolicyVersionId');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}shippingPolicyVersionId');
         if (null !== $value) {
             $this->setShippingPolicyVersionId($value);
         }

@@ -127,11 +127,11 @@ class GetCategoryInfoRequestType extends AbstractRequestType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CategoryID');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}CategoryID');
         if (null !== $value) {
             $this->setCategoryID($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}IncludeSelector');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}IncludeSelector');
         if (null !== $value) {
             $this->setIncludeSelector($value);
         }

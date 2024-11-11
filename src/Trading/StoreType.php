@@ -442,35 +442,35 @@ class StoreType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Name');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Name');
         if (null !== $value) {
             $this->setName($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}URLPath');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}URLPath');
         if (null !== $value) {
             $this->setURLPath($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}URL');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}URL');
         if (null !== $value) {
             $this->setURL($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Description');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Description');
         if (null !== $value) {
             $this->setDescription($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Logo');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}Logo');
         if (null !== $value) {
             $this->setLogo(\Nogrod\eBaySDK\Trading\StoreLogoType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CustomCategories', true);
-        if (null !== $value && !empty($value)) {
-            $this->setCustomCategories(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\StoreCustomCategoryType::fromKeyValue(Func::mapArray($v, '{urn:ebay:apis:eBLBaseComponents}CustomCategory'));}, $value));
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CustomCategories');
+        if (null !== $value) {
+            $this->setCustomCategories(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\StoreCustomCategoryType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}CustomCategory'));}, $value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MerchDisplay');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}MerchDisplay');
         if (null !== $value) {
             $this->setMerchDisplay($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LastOpenedTime');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}LastOpenedTime');
         if (null !== $value) {
             $this->setLastOpenedTime(new \DateTime($value));
         }

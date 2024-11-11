@@ -122,8 +122,8 @@ class ItemRatingDetailArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemRatingDetails', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemRatingDetails');
+        if (null !== $value) {
             $this->setItemRatingDetails(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\ItemRatingDetailsType::fromKeyValue($v);}, $value));
         }
     }

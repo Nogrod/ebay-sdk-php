@@ -211,15 +211,15 @@ class VariationSpecificPictureSetType implements \Sabre\Xml\XmlSerializable, \Sa
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}VariationSpecificValue');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}VariationSpecificValue');
         if (null !== $value) {
             $this->setVariationSpecificValue($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PictureURL', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}PictureURL');
+        if (null !== $value) {
             $this->setPictureURL($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}GalleryURL');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}GalleryURL');
         if (null !== $value) {
             $this->setGalleryURL($value);
         }

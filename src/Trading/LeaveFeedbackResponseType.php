@@ -69,7 +69,7 @@ class LeaveFeedbackResponseType extends AbstractResponseType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeedbackID');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeedbackID');
         if (null !== $value) {
             $this->setFeedbackID($value);
         }

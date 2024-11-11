@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Finding;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing ProductIdType
  *
@@ -236,5 +238,13 @@ class ProductIdType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
 
     public function setKeyValue($keyValue)
     {
+        $value = Func::mapValue($keyValue, 'value');
+        if (null !== $value) {
+            $this->value($value);
+        }
+        $value = Func::mapValue($keyValue, 'type');
+        if (null !== $value) {
+            $this->setType($value);
+        }
     }
 }

@@ -111,8 +111,8 @@ class ItemBestOffersArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemBestOffers', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemBestOffers');
+        if (null !== $value) {
             $this->setItemBestOffers(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\ItemBestOffersType::fromKeyValue($v);}, $value));
         }
     }

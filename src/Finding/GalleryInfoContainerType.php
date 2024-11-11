@@ -110,8 +110,8 @@ class GalleryInfoContainerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}galleryURL', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}galleryURL');
+        if (null !== $value) {
             $this->setGalleryURL(array_map(function ($v) {return \Nogrod\eBaySDK\Finding\GalleryURLType::fromKeyValue($v);}, $value));
         }
     }

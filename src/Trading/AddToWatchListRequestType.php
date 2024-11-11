@@ -214,12 +214,12 @@ class AddToWatchListRequestType extends AbstractRequestType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemID', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemID');
+        if (null !== $value) {
             $this->setItemID($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}VariationKey', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}VariationKey');
+        if (null !== $value) {
             $this->setVariationKey(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\VariationKeyType::fromKeyValue($v);}, $value));
         }
     }

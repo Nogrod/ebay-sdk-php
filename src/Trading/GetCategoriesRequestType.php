@@ -295,19 +295,19 @@ class GetCategoriesRequestType extends AbstractRequestType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CategorySiteID');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}CategorySiteID');
         if (null !== $value) {
             $this->setCategorySiteID($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CategoryParent', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}CategoryParent');
+        if (null !== $value) {
             $this->setCategoryParent($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LevelLimit');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}LevelLimit');
         if (null !== $value) {
             $this->setLevelLimit($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ViewAllNodes');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ViewAllNodes');
         if (null !== $value) {
             $this->setViewAllNodes(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }

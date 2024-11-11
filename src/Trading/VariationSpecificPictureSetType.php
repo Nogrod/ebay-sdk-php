@@ -555,21 +555,21 @@ class VariationSpecificPictureSetType implements \Sabre\Xml\XmlSerializable, \Sa
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}VariationSpecificValue');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}VariationSpecificValue');
         if (null !== $value) {
             $this->setVariationSpecificValue($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PictureURL', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}PictureURL');
+        if (null !== $value) {
             $this->setPictureURL($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExternalPictureURL', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExternalPictureURL');
+        if (null !== $value) {
             $this->setExternalPictureURL($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExtendedPictureDetails', true);
-        if (null !== $value && !empty($value)) {
-            $this->setExtendedPictureDetails(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\PictureURLsType::fromKeyValue(Func::mapArray($v, '{urn:ebay:apis:eBLBaseComponents}PictureURLs'));}, $value));
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExtendedPictureDetails');
+        if (null !== $value) {
+            $this->setExtendedPictureDetails(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\PictureURLsType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}PictureURLs'));}, $value));
         }
     }
 }

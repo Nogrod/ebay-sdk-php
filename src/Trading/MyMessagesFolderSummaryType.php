@@ -274,27 +274,27 @@ class MyMessagesFolderSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FolderID');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}FolderID');
         if (null !== $value) {
             $this->setFolderID($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FolderName');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}FolderName');
         if (null !== $value) {
             $this->setFolderName($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}NewMessageCount');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}NewMessageCount');
         if (null !== $value) {
             $this->setNewMessageCount($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TotalMessageCount');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}TotalMessageCount');
         if (null !== $value) {
             $this->setTotalMessageCount($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}NewHighPriorityCount');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}NewHighPriorityCount');
         if (null !== $value) {
             $this->setNewHighPriorityCount($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TotalHighPriorityCount');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}TotalHighPriorityCount');
         if (null !== $value) {
             $this->setTotalHighPriorityCount($value);
         }

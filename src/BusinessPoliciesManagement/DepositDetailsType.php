@@ -178,15 +178,15 @@ class DepositDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}daysToFullPayment');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}daysToFullPayment');
         if (null !== $value) {
             $this->setDaysToFullPayment($value);
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}hoursToDeposit');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}hoursToDeposit');
         if (null !== $value) {
             $this->setHoursToDeposit($value);
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}depositAmount');
+        $value = Func::mapObject($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}depositAmount');
         if (null !== $value) {
             $this->setDepositAmount(\Nogrod\eBaySDK\BusinessPoliciesManagement\AmountType::fromKeyValue($value));
         }

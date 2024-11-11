@@ -106,11 +106,11 @@ class ItemPolicyViolationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PolicyID');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}PolicyID');
         if (null !== $value) {
             $this->setPolicyID($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PolicyText');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}PolicyText');
         if (null !== $value) {
             $this->setPolicyText($value);
         }

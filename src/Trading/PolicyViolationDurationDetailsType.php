@@ -93,11 +93,11 @@ class PolicyViolationDurationDetailsType implements \Sabre\Xml\XmlSerializable, 
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Period');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Period');
         if (null !== $value) {
             $this->setPeriod($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Description');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Description');
         if (null !== $value) {
             $this->setDescription($value);
         }

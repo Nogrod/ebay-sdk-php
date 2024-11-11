@@ -428,27 +428,27 @@ class AbstractResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Timestamp');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Timestamp');
         if (null !== $value) {
             $this->setTimestamp(new \DateTime($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Ack');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Ack');
         if (null !== $value) {
             $this->setAck($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Errors', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Errors');
+        if (null !== $value) {
             $this->setErrors(array_map(function ($v) {return \Nogrod\eBaySDK\Shopping\ErrorType::fromKeyValue($v);}, $value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Build');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Build');
         if (null !== $value) {
             $this->setBuild($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Version');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Version');
         if (null !== $value) {
             $this->setVersion($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CorrelationID');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}CorrelationID');
         if (null !== $value) {
             $this->setCorrelationID($value);
         }

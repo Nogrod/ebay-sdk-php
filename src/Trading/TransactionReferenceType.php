@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Trading;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing TransactionReferenceType
  *
@@ -107,5 +109,13 @@ class TransactionReferenceType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
 
     public function setKeyValue($keyValue)
     {
+        $value = Func::mapValue($keyValue, 'value');
+        if (null !== $value) {
+            $this->value($value);
+        }
+        $value = Func::mapValue($keyValue, 'type');
+        if (null !== $value) {
+            $this->setType($value);
+        }
     }
 }

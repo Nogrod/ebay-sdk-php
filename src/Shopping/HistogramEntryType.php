@@ -109,11 +109,11 @@ class HistogramEntryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Name');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Name');
         if (null !== $value) {
             $this->setName($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Count');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Count');
         if (null !== $value) {
             $this->setCount($value);
         }

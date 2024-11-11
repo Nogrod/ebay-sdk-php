@@ -211,19 +211,19 @@ class InternationalReturnPolicyInfoType implements \Sabre\Xml\XmlSerializable, \
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}returnsAcceptedOption');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}returnsAcceptedOption');
         if (null !== $value) {
             $this->setReturnsAcceptedOption($value);
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}returnsWithinOption');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}returnsWithinOption');
         if (null !== $value) {
             $this->setReturnsWithinOption($value);
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}shippingCostPaidByOption');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}shippingCostPaidByOption');
         if (null !== $value) {
             $this->setShippingCostPaidByOption($value);
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}refundOption');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}refundOption');
         if (null !== $value) {
             $this->setRefundOption($value);
         }

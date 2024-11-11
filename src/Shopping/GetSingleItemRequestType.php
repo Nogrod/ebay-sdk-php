@@ -450,19 +450,19 @@ class GetSingleItemRequestType extends AbstractRequestType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemID');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemID');
         if (null !== $value) {
             $this->setItemID($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}VariationSKU');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}VariationSKU');
         if (null !== $value) {
             $this->setVariationSKU($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}VariationSpecifics', true);
-        if (null !== $value && !empty($value)) {
-            $this->setVariationSpecifics(array_map(function ($v) {return \Nogrod\eBaySDK\Shopping\NameValueListType::fromKeyValue(Func::mapArray($v, '{urn:ebay:apis:eBLBaseComponents}NameValueList'));}, $value));
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}VariationSpecifics');
+        if (null !== $value) {
+            $this->setVariationSpecifics(array_map(function ($v) {return \Nogrod\eBaySDK\Shopping\NameValueListType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}NameValueList'));}, $value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}IncludeSelector');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}IncludeSelector');
         if (null !== $value) {
             $this->setIncludeSelector($value);
         }

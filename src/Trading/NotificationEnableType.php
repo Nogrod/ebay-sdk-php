@@ -106,11 +106,11 @@ class NotificationEnableType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EventType');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}EventType');
         if (null !== $value) {
             $this->setEventType($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EventEnable');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}EventEnable');
         if (null !== $value) {
             $this->setEventEnable($value);
         }

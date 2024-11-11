@@ -119,11 +119,11 @@ class BuyerProtectionDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BuyerProtectionSource');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}BuyerProtectionSource');
         if (null !== $value) {
             $this->setBuyerProtectionSource($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BuyerProtectionStatus');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}BuyerProtectionStatus');
         if (null !== $value) {
             $this->setBuyerProtectionStatus($value);
         }

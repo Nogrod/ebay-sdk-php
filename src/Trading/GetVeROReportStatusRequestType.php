@@ -325,27 +325,27 @@ class GetVeROReportStatusRequestType extends AbstractRequestType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}VeROReportPacketID');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}VeROReportPacketID');
         if (null !== $value) {
             $this->setVeROReportPacketID($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemID');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemID');
         if (null !== $value) {
             $this->setItemID($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}IncludeReportedItemDetails');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}IncludeReportedItemDetails');
         if (null !== $value) {
             $this->setIncludeReportedItemDetails(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TimeFrom');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}TimeFrom');
         if (null !== $value) {
             $this->setTimeFrom(new \DateTime($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TimeTo');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}TimeTo');
         if (null !== $value) {
             $this->setTimeTo(new \DateTime($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Pagination');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}Pagination');
         if (null !== $value) {
             $this->setPagination(\Nogrod\eBaySDK\Trading\PaginationType::fromKeyValue($value));
         }

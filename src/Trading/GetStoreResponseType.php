@@ -69,7 +69,7 @@ class GetStoreResponseType extends AbstractResponseType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Store');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}Store');
         if (null !== $value) {
             $this->setStore(\Nogrod\eBaySDK\Trading\StoreType::fromKeyValue($value));
         }

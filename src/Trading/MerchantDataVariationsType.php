@@ -145,8 +145,8 @@ class MerchantDataVariationsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Variation', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Variation');
+        if (null !== $value) {
             $this->setVariation(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\MerchantDataVariationType::fromKeyValue($v);}, $value));
         }
     }

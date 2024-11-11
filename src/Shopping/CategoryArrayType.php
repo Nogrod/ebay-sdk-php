@@ -122,8 +122,8 @@ class CategoryArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Category', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Category');
+        if (null !== $value) {
             $this->setCategory(array_map(function ($v) {return \Nogrod\eBaySDK\Shopping\CategoryType::fromKeyValue($v);}, $value));
         }
     }

@@ -225,23 +225,23 @@ class FeatureEligibilityType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}QualifiesForBuyItNow');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}QualifiesForBuyItNow');
         if (null !== $value) {
             $this->setQualifiesForBuyItNow(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}QualifiesForBuyItNowMultiple');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}QualifiesForBuyItNowMultiple');
         if (null !== $value) {
             $this->setQualifiesForBuyItNowMultiple(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}QualifiedForFixedPriceOneDayDuration');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}QualifiedForFixedPriceOneDayDuration');
         if (null !== $value) {
             $this->setQualifiedForFixedPriceOneDayDuration(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}QualifiesForVariations');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}QualifiesForVariations');
         if (null !== $value) {
             $this->setQualifiesForVariations(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}QualifiedForAuctionOneDayDuration');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}QualifiedForAuctionOneDayDuration');
         if (null !== $value) {
             $this->setQualifiedForAuctionOneDayDuration(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }

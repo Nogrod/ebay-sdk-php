@@ -110,8 +110,8 @@ class SuggestedBidValueType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BidValue', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BidValue');
+        if (null !== $value) {
             $this->setBidValue(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($v);}, $value));
         }
     }

@@ -401,35 +401,35 @@ class SiteBuyerRequirementDetailsType implements \Sabre\Xml\XmlSerializable, \Sa
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LinkedPayPalAccount');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}LinkedPayPalAccount');
         if (null !== $value) {
             $this->setLinkedPayPalAccount(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MaximumBuyerPolicyViolations');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}MaximumBuyerPolicyViolations');
         if (null !== $value) {
             $this->setMaximumBuyerPolicyViolations(\Nogrod\eBaySDK\Trading\MaximumBuyerPolicyViolationsDetailsType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MaximumItemRequirements');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}MaximumItemRequirements');
         if (null !== $value) {
             $this->setMaximumItemRequirements(\Nogrod\eBaySDK\Trading\MaximumItemRequirementsDetailsType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MaximumUnpaidItemStrikesInfo');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}MaximumUnpaidItemStrikesInfo');
         if (null !== $value) {
             $this->setMaximumUnpaidItemStrikesInfo(\Nogrod\eBaySDK\Trading\MaximumUnpaidItemStrikesInfoDetailsType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MinimumFeedbackScore', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}MinimumFeedbackScore');
+        if (null !== $value) {
             $this->setMinimumFeedbackScore($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShipToRegistrationCountry');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShipToRegistrationCountry');
         if (null !== $value) {
             $this->setShipToRegistrationCountry(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DetailVersion');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}DetailVersion');
         if (null !== $value) {
             $this->setDetailVersion($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UpdateTime');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}UpdateTime');
         if (null !== $value) {
             $this->setUpdateTime(new \DateTime($value));
         }

@@ -342,16 +342,16 @@ class FindItemsByProductRequestType extends BaseFindingServiceRequestType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}productId');
+        $value = Func::mapObject($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}productId');
         if (null !== $value) {
             $this->setProductId(\Nogrod\eBaySDK\Finding\ProductIdType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}itemFilter', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}itemFilter');
+        if (null !== $value) {
             $this->setItemFilter(array_map(function ($v) {return \Nogrod\eBaySDK\Finding\ItemFilterType::fromKeyValue($v);}, $value));
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}outputSelector', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}outputSelector');
+        if (null !== $value) {
             $this->setOutputSelector($value);
         }
     }

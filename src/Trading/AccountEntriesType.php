@@ -110,8 +110,8 @@ class AccountEntriesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AccountEntry', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AccountEntry');
+        if (null !== $value) {
             $this->setAccountEntry(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\AccountEntryType::fromKeyValue($v);}, $value));
         }
     }

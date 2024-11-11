@@ -146,15 +146,15 @@ class FetchTokenResponseType extends AbstractResponseType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}eBayAuthToken');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}eBayAuthToken');
         if (null !== $value) {
             $this->setEBayAuthToken($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}HardExpirationTime');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}HardExpirationTime');
         if (null !== $value) {
             $this->setHardExpirationTime(new \DateTime($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RESTToken');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}RESTToken');
         if (null !== $value) {
             $this->setRESTToken($value);
         }

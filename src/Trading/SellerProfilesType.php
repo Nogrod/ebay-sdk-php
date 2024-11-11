@@ -184,15 +184,15 @@ class SellerProfilesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerShippingProfile');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerShippingProfile');
         if (null !== $value) {
             $this->setSellerShippingProfile(\Nogrod\eBaySDK\Trading\SellerShippingProfileType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerReturnProfile');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerReturnProfile');
         if (null !== $value) {
             $this->setSellerReturnProfile(\Nogrod\eBaySDK\Trading\SellerReturnProfileType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerPaymentProfile');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerPaymentProfile');
         if (null !== $value) {
             $this->setSellerPaymentProfile(\Nogrod\eBaySDK\Trading\SellerPaymentProfileType::fromKeyValue($value));
         }

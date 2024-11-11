@@ -479,43 +479,43 @@ class ShippingPackageInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}StoreID');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}StoreID');
         if (null !== $value) {
             $this->setStoreID($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingTrackingEvent');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingTrackingEvent');
         if (null !== $value) {
             $this->setShippingTrackingEvent($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ScheduledDeliveryTimeMin');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ScheduledDeliveryTimeMin');
         if (null !== $value) {
             $this->setScheduledDeliveryTimeMin(new \DateTime($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ScheduledDeliveryTimeMax');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ScheduledDeliveryTimeMax');
         if (null !== $value) {
             $this->setScheduledDeliveryTimeMax(new \DateTime($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ActualDeliveryTime');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ActualDeliveryTime');
         if (null !== $value) {
             $this->setActualDeliveryTime(new \DateTime($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EstimatedDeliveryTimeMin');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}EstimatedDeliveryTimeMin');
         if (null !== $value) {
             $this->setEstimatedDeliveryTimeMin(new \DateTime($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EstimatedDeliveryTimeMax');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}EstimatedDeliveryTimeMax');
         if (null !== $value) {
             $this->setEstimatedDeliveryTimeMax(new \DateTime($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}HandleByTime');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}HandleByTime');
         if (null !== $value) {
             $this->setHandleByTime(new \DateTime($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MinNativeEstimatedDeliveryTime');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}MinNativeEstimatedDeliveryTime');
         if (null !== $value) {
             $this->setMinNativeEstimatedDeliveryTime(new \DateTime($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MaxNativeEstimatedDeliveryTime');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}MaxNativeEstimatedDeliveryTime');
         if (null !== $value) {
             $this->setMaxNativeEstimatedDeliveryTime(new \DateTime($value));
         }

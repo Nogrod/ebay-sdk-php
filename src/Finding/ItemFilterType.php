@@ -440,23 +440,23 @@ class ItemFilterType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}paramName');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}paramName');
         if (null !== $value) {
             $this->setParamName($value);
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}paramValue');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}paramValue');
         if (null !== $value) {
             $this->setParamValue($value);
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}name');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}name');
         if (null !== $value) {
             $this->setName($value);
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}value', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}value');
+        if (null !== $value) {
             $this->setValue($value);
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}delimiter');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}delimiter');
         if (null !== $value) {
             $this->setDelimiter($value);
         }

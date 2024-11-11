@@ -123,11 +123,11 @@ class NettedTransactionSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TotalNettedChargeAmount');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}TotalNettedChargeAmount');
         if (null !== $value) {
             $this->setTotalNettedChargeAmount(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TotalNettedCreditAmount');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}TotalNettedCreditAmount');
         if (null !== $value) {
             $this->setTotalNettedCreditAmount(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
         }

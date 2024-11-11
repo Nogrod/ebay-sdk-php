@@ -110,8 +110,8 @@ class CharityAffiliationDetailsType implements \Sabre\Xml\XmlSerializable, \Sabr
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CharityAffiliationDetail', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CharityAffiliationDetail');
+        if (null !== $value) {
             $this->setCharityAffiliationDetail(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\CharityAffiliationDetailType::fromKeyValue($v);}, $value));
         }
     }

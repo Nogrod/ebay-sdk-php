@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Trading;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing MeasureType
  *
@@ -177,5 +179,17 @@ class MeasureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
 
     public function setKeyValue($keyValue)
     {
+        $value = Func::mapValue($keyValue, 'value');
+        if (null !== $value) {
+            $this->value($value);
+        }
+        $value = Func::mapValue($keyValue, 'unit');
+        if (null !== $value) {
+            $this->setUnit($value);
+        }
+        $value = Func::mapValue($keyValue, 'measurementSystem');
+        if (null !== $value) {
+            $this->setMeasurementSystem($value);
+        }
     }
 }

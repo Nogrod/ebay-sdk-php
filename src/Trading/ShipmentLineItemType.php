@@ -110,8 +110,8 @@ class ShipmentLineItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LineItem', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LineItem');
+        if (null !== $value) {
             $this->setLineItem(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\LineItemType::fromKeyValue($v);}, $value));
         }
     }

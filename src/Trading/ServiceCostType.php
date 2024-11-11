@@ -105,11 +105,11 @@ class ServiceCostType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Amount');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}Amount');
         if (null !== $value) {
             $this->setAmount(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ConvertedFromAmount');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}ConvertedFromAmount');
         if (null !== $value) {
             $this->setConvertedFromAmount(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
         }

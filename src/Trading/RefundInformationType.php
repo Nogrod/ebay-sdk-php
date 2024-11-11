@@ -138,8 +138,8 @@ class RefundInformationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Refund', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Refund');
+        if (null !== $value) {
             $this->setRefund(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\RefundTransactionInfoType::fromKeyValue($v);}, $value));
         }
     }

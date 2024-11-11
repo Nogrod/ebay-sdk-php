@@ -249,17 +249,17 @@ class ShipmentTrackingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingCarrierUsed');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingCarrierUsed');
         if (null !== $value) {
             $this->setShippingCarrierUsed($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShipmentTrackingNumber');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShipmentTrackingNumber');
         if (null !== $value) {
             $this->setShipmentTrackingNumber($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShipmentLineItem', true);
-        if (null !== $value && !empty($value)) {
-            $this->setShipmentLineItem(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\LineItemType::fromKeyValue(Func::mapArray($v, '{urn:ebay:apis:eBLBaseComponents}LineItem'));}, $value));
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShipmentLineItem');
+        if (null !== $value) {
+            $this->setShipmentLineItem(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\LineItemType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}LineItem'));}, $value));
         }
     }
 }

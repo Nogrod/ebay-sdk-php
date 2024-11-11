@@ -123,11 +123,11 @@ class SellerReturnProfileType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReturnProfileID');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReturnProfileID');
         if (null !== $value) {
             $this->setReturnProfileID($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReturnProfileName');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReturnProfileName');
         if (null !== $value) {
             $this->setReturnProfileName($value);
         }

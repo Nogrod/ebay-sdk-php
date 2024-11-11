@@ -128,8 +128,8 @@ class DomainHistogramType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Domain', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Domain');
+        if (null !== $value) {
             $this->setDomain(array_map(function ($v) {return \Nogrod\eBaySDK\Shopping\HistogramEntryType::fromKeyValue($v);}, $value));
         }
     }

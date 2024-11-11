@@ -145,15 +145,15 @@ class MembershipDetailType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ProgramName');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ProgramName');
         if (null !== $value) {
             $this->setProgramName($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Site');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Site');
         if (null !== $value) {
             $this->setSite($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExpiryDate');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExpiryDate');
         if (null !== $value) {
             $this->setExpiryDate(new \DateTime($value));
         }

@@ -129,11 +129,11 @@ class MessageMediaType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MediaURL');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}MediaURL');
         if (null !== $value) {
             $this->setMediaURL($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MediaName');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}MediaName');
         if (null !== $value) {
             $this->setMediaName($value);
         }

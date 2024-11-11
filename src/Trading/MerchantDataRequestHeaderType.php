@@ -111,11 +111,11 @@ class MerchantDataRequestHeaderType implements \Sabre\Xml\XmlSerializable, \Sabr
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SiteID');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}SiteID');
         if (null !== $value) {
             $this->setSiteID($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Version');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Version');
         if (null !== $value) {
             $this->setVersion($value);
         }

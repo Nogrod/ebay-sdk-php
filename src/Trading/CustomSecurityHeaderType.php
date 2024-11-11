@@ -263,19 +263,19 @@ class CustomSecurityHeaderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}eBayAuthToken');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}eBayAuthToken');
         if (null !== $value) {
             $this->setEBayAuthToken($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}HardExpirationWarning');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}HardExpirationWarning');
         if (null !== $value) {
             $this->setHardExpirationWarning($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Credentials');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}Credentials');
         if (null !== $value) {
             $this->setCredentials(\Nogrod\eBaySDK\Trading\UserIdPasswordType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}NotificationSignature');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}NotificationSignature');
         if (null !== $value) {
             $this->setNotificationSignature($value);
         }

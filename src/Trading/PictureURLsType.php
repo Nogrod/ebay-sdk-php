@@ -111,11 +111,11 @@ class PictureURLsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}eBayPictureURL');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}eBayPictureURL');
         if (null !== $value) {
             $this->setEBayPictureURL($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExternalPictureURL');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExternalPictureURL');
         if (null !== $value) {
             $this->setExternalPictureURL($value);
         }

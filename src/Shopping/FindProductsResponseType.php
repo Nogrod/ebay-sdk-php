@@ -468,31 +468,31 @@ class FindProductsResponseType extends AbstractResponseType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ApproximatePages');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ApproximatePages');
         if (null !== $value) {
             $this->setApproximatePages($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MoreResults');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}MoreResults');
         if (null !== $value) {
             $this->setMoreResults(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DomainHistogram', true);
-        if (null !== $value && !empty($value)) {
-            $this->setDomainHistogram(array_map(function ($v) {return \Nogrod\eBaySDK\Shopping\HistogramEntryType::fromKeyValue(Func::mapArray($v, '{urn:ebay:apis:eBLBaseComponents}Domain'));}, $value));
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DomainHistogram');
+        if (null !== $value) {
+            $this->setDomainHistogram(array_map(function ($v) {return \Nogrod\eBaySDK\Shopping\HistogramEntryType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}Domain'));}, $value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PageNumber');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}PageNumber');
         if (null !== $value) {
             $this->setPageNumber($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Product', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Product');
+        if (null !== $value) {
             $this->setProduct(array_map(function ($v) {return \Nogrod\eBaySDK\Shopping\CatalogProductType::fromKeyValue($v);}, $value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TotalProducts');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}TotalProducts');
         if (null !== $value) {
             $this->setTotalProducts($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DuplicateItems');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}DuplicateItems');
         if (null !== $value) {
             $this->setDuplicateItems(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }

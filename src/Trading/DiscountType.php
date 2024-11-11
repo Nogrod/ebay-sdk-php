@@ -122,11 +122,11 @@ class DiscountType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DiscountType');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}DiscountType');
         if (null !== $value) {
             $this->setDiscountType($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Amount');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}Amount');
         if (null !== $value) {
             $this->setAmount(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
         }

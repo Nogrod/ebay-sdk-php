@@ -111,8 +111,8 @@ class RemoveSellerProfilesResponseType extends BaseResponseType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}sellerProfileResponseStatus', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}sellerProfileResponseStatus');
+        if (null !== $value) {
             $this->setSellerProfileResponseStatus(array_map(function ($v) {return \Nogrod\eBaySDK\BusinessPoliciesManagement\SellerProfileResponseStatusType::fromKeyValue($v);}, $value));
         }
     }

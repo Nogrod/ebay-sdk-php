@@ -121,11 +121,11 @@ class MyMessagesResponseDetailsType implements \Sabre\Xml\XmlSerializable, \Sabr
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ResponseEnabled');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ResponseEnabled');
         if (null !== $value) {
             $this->setResponseEnabled(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ResponseURL');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ResponseURL');
         if (null !== $value) {
             $this->setResponseURL($value);
         }

@@ -112,11 +112,11 @@ class GetClientAlertsAuthTokenResponseType extends AbstractResponseType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ClientAlertsAuthToken');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ClientAlertsAuthToken');
         if (null !== $value) {
             $this->setClientAlertsAuthToken($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}HardExpirationTime');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}HardExpirationTime');
         if (null !== $value) {
             $this->setHardExpirationTime(new \DateTime($value));
         }

@@ -128,8 +128,8 @@ class PaymentInformationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Payment', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Payment');
+        if (null !== $value) {
             $this->setPayment(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\PaymentTransactionType::fromKeyValue($v);}, $value));
         }
     }

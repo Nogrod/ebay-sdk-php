@@ -227,15 +227,15 @@ class BestMatchFindingServiceRequestType extends BaseServiceRequestType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}paginationInput');
+        $value = Func::mapObject($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}paginationInput');
         if (null !== $value) {
             $this->setPaginationInput(\Nogrod\eBaySDK\Finding\PaginationInputType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}buyerPostalCode');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}buyerPostalCode');
         if (null !== $value) {
             $this->setBuyerPostalCode($value);
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}affiliate');
+        $value = Func::mapObject($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}affiliate');
         if (null !== $value) {
             $this->setAffiliate(\Nogrod\eBaySDK\Finding\AffiliateType::fromKeyValue($value));
         }

@@ -113,8 +113,8 @@ class ActiveInventoryReportResponseType extends AbstractResponseType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SKUDetails', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SKUDetails');
+        if (null !== $value) {
             $this->setSKUDetails(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\SKUDetailsType::fromKeyValue($v);}, $value));
         }
     }

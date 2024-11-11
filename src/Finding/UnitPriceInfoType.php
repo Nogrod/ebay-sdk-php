@@ -93,11 +93,11 @@ class UnitPriceInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}type');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}type');
         if (null !== $value) {
             $this->setType($value);
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}quantity');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}quantity');
         if (null !== $value) {
             $this->setQuantity($value);
         }

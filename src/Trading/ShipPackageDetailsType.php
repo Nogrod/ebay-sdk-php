@@ -745,35 +745,35 @@ class ShipPackageDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MeasurementUnit');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}MeasurementUnit');
         if (null !== $value) {
             $this->setMeasurementUnit($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PackageDepth');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}PackageDepth');
         if (null !== $value) {
             $this->setPackageDepth(\Nogrod\eBaySDK\Trading\MeasureType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PackageLength');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}PackageLength');
         if (null !== $value) {
             $this->setPackageLength(\Nogrod\eBaySDK\Trading\MeasureType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PackageWidth');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}PackageWidth');
         if (null !== $value) {
             $this->setPackageWidth(\Nogrod\eBaySDK\Trading\MeasureType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingIrregular');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingIrregular');
         if (null !== $value) {
             $this->setShippingIrregular(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingPackage');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingPackage');
         if (null !== $value) {
             $this->setShippingPackage($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}WeightMajor');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}WeightMajor');
         if (null !== $value) {
             $this->setWeightMajor(\Nogrod\eBaySDK\Trading\MeasureType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}WeightMinor');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}WeightMinor');
         if (null !== $value) {
             $this->setWeightMinor(\Nogrod\eBaySDK\Trading\MeasureType::fromKeyValue($value));
         }

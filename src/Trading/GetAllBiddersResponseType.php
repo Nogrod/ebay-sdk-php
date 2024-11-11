@@ -220,19 +220,19 @@ class GetAllBiddersResponseType extends AbstractResponseType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BidArray', true);
-        if (null !== $value && !empty($value)) {
-            $this->setBidArray(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\OfferType::fromKeyValue(Func::mapArray($v, '{urn:ebay:apis:eBLBaseComponents}Offer'));}, $value));
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BidArray');
+        if (null !== $value) {
+            $this->setBidArray(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\OfferType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}Offer'));}, $value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}HighBidder');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}HighBidder');
         if (null !== $value) {
             $this->setHighBidder($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}HighestBid');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}HighestBid');
         if (null !== $value) {
             $this->setHighestBid(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ListingStatus');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ListingStatus');
         if (null !== $value) {
             $this->setListingStatus($value);
         }

@@ -182,15 +182,15 @@ class GetShippingCostsResponseType extends AbstractResponseType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingDetails');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingDetails');
         if (null !== $value) {
             $this->setShippingDetails(\Nogrod\eBaySDK\Shopping\ShippingDetailsType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingCostSummary');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingCostSummary');
         if (null !== $value) {
             $this->setShippingCostSummary(\Nogrod\eBaySDK\Shopping\ShippingCostSummaryType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PickUpInStoreDetails');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}PickUpInStoreDetails');
         if (null !== $value) {
             $this->setPickUpInStoreDetails(\Nogrod\eBaySDK\Shopping\PickUpInStoreDetailsType::fromKeyValue($value));
         }

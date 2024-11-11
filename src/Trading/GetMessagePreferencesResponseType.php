@@ -84,7 +84,7 @@ class GetMessagePreferencesResponseType extends AbstractResponseType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ASQPreferences');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}ASQPreferences');
         if (null !== $value) {
             $this->setASQPreferences(\Nogrod\eBaySDK\Trading\ASQPreferencesType::fromKeyValue($value));
         }

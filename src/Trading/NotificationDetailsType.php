@@ -419,43 +419,43 @@ class NotificationDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DeliveryURL');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}DeliveryURL');
         if (null !== $value) {
             $this->setDeliveryURL($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReferenceID');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReferenceID');
         if (null !== $value) {
             $this->setReferenceID($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExpirationTime');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExpirationTime');
         if (null !== $value) {
             $this->setExpirationTime(new \DateTime($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Type');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Type');
         if (null !== $value) {
             $this->setType($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Retries');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Retries');
         if (null !== $value) {
             $this->setRetries($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DeliveryStatus');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}DeliveryStatus');
         if (null !== $value) {
             $this->setDeliveryStatus($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}NextRetryTime');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}NextRetryTime');
         if (null !== $value) {
             $this->setNextRetryTime(new \DateTime($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DeliveryTime');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}DeliveryTime');
         if (null !== $value) {
             $this->setDeliveryTime(new \DateTime($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ErrorMessage');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ErrorMessage');
         if (null !== $value) {
             $this->setErrorMessage($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DeliveryURLName');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}DeliveryURLName');
         if (null !== $value) {
             $this->setDeliveryURLName($value);
         }

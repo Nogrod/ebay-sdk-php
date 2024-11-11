@@ -231,11 +231,15 @@ class AspectType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}valueHistogram', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapValue($keyValue, 'name');
+        if (null !== $value) {
+            $this->setName($value);
+        }
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}valueHistogram');
+        if (null !== $value) {
             $this->setValueHistogram(array_map(function ($v) {return \Nogrod\eBaySDK\Finding\AspectValueHistogramType::fromKeyValue($v);}, $value));
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}delimiter');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}delimiter');
         if (null !== $value) {
             $this->setDelimiter($value);
         }

@@ -664,63 +664,63 @@ class ReturnPolicyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Refund');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Refund');
         if (null !== $value) {
             $this->setRefund($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReturnsWithin');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReturnsWithin');
         if (null !== $value) {
             $this->setReturnsWithin($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReturnsAccepted');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReturnsAccepted');
         if (null !== $value) {
             $this->setReturnsAccepted($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Description');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Description');
         if (null !== $value) {
             $this->setDescription($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}WarrantyOffered');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}WarrantyOffered');
         if (null !== $value) {
             $this->setWarrantyOffered($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}WarrantyType');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}WarrantyType');
         if (null !== $value) {
             $this->setWarrantyType($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}WarrantyDuration');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}WarrantyDuration');
         if (null !== $value) {
             $this->setWarrantyDuration($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EAN');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}EAN');
         if (null !== $value) {
             $this->setEAN($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingCostPaidBy');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingCostPaidBy');
         if (null !== $value) {
             $this->setShippingCostPaidBy($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RestockingFeeValue');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}RestockingFeeValue');
         if (null !== $value) {
             $this->setRestockingFeeValue($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RestockingFeeValueOption');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}RestockingFeeValueOption');
         if (null !== $value) {
             $this->setRestockingFeeValueOption($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}InternationalRefund');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}InternationalRefund');
         if (null !== $value) {
             $this->setInternationalRefund($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}InternationalReturnsWithin');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}InternationalReturnsWithin');
         if (null !== $value) {
             $this->setInternationalReturnsWithin($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}InternationalReturnsAccepted');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}InternationalReturnsAccepted');
         if (null !== $value) {
             $this->setInternationalReturnsAccepted($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}InternationalShippingCostPaidBy');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}InternationalShippingCostPaidBy');
         if (null !== $value) {
             $this->setInternationalShippingCostPaidBy($value);
         }

@@ -136,15 +136,15 @@ class StorefrontType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}storeName');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}storeName');
         if (null !== $value) {
             $this->setStoreName($value);
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}storeURL');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}storeURL');
         if (null !== $value) {
             $this->setStoreURL($value);
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}delimiter');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}delimiter');
         if (null !== $value) {
             $this->setDelimiter($value);
         }

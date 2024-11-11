@@ -111,8 +111,8 @@ class EndItemsResponseType extends AbstractResponseType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EndItemResponseContainer', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EndItemResponseContainer');
+        if (null !== $value) {
             $this->setEndItemResponseContainer(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\EndItemResponseContainerType::fromKeyValue($v);}, $value));
         }
     }

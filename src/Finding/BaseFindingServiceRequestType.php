@@ -69,7 +69,7 @@ class BaseFindingServiceRequestType extends BestMatchFindingServiceRequestType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}sortOrder');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}sortOrder');
         if (null !== $value) {
             $this->setSortOrder($value);
         }

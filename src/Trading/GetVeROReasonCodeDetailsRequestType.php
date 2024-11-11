@@ -111,11 +111,11 @@ class GetVeROReasonCodeDetailsRequestType extends AbstractRequestType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReasonCodeID');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReasonCodeID');
         if (null !== $value) {
             $this->setReasonCodeID($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReturnAllSites');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReturnAllSites');
         if (null !== $value) {
             $this->setReturnAllSites(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }

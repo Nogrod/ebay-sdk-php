@@ -69,7 +69,7 @@ class GetTokenStatusResponseType extends AbstractResponseType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TokenStatus');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}TokenStatus');
         if (null !== $value) {
             $this->setTokenStatus(\Nogrod\eBaySDK\Trading\TokenStatusType::fromKeyValue($value));
         }

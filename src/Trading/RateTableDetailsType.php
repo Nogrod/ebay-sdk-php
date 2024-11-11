@@ -313,19 +313,19 @@ class RateTableDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DomesticRateTable');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}DomesticRateTable');
         if (null !== $value) {
             $this->setDomesticRateTable($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}InternationalRateTable');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}InternationalRateTable');
         if (null !== $value) {
             $this->setInternationalRateTable($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DomesticRateTableId');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}DomesticRateTableId');
         if (null !== $value) {
             $this->setDomesticRateTableId($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}InternationalRateTableId');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}InternationalRateTableId');
         if (null !== $value) {
             $this->setInternationalRateTableId($value);
         }

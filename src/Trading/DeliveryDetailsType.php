@@ -117,11 +117,11 @@ class DeliveryDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Recipient');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}Recipient');
         if (null !== $value) {
             $this->setRecipient(\Nogrod\eBaySDK\Trading\DigitalDeliveryUserType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Sender');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}Sender');
         if (null !== $value) {
             $this->setSender(\Nogrod\eBaySDK\Trading\DigitalDeliveryUserType::fromKeyValue($value));
         }

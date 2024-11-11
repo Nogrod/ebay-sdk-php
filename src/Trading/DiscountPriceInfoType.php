@@ -429,31 +429,31 @@ class DiscountPriceInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}OriginalRetailPrice');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}OriginalRetailPrice');
         if (null !== $value) {
             $this->setOriginalRetailPrice(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MinimumAdvertisedPrice');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}MinimumAdvertisedPrice');
         if (null !== $value) {
             $this->setMinimumAdvertisedPrice(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MinimumAdvertisedPriceExposure');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}MinimumAdvertisedPriceExposure');
         if (null !== $value) {
             $this->setMinimumAdvertisedPriceExposure($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PricingTreatment');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}PricingTreatment');
         if (null !== $value) {
             $this->setPricingTreatment($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SoldOneBay');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}SoldOneBay');
         if (null !== $value) {
             $this->setSoldOneBay(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SoldOffeBay');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}SoldOffeBay');
         if (null !== $value) {
             $this->setSoldOffeBay(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MadeForOutletComparisonPrice');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}MadeForOutletComparisonPrice');
         if (null !== $value) {
             $this->setMadeForOutletComparisonPrice(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
         }

@@ -196,16 +196,16 @@ class TaxIdentifierType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Type');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Type');
         if (null !== $value) {
             $this->setType($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ID');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ID');
         if (null !== $value) {
             $this->setID($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Attribute', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Attribute');
+        if (null !== $value) {
             $this->setAttribute(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\TaxIdentifierAttributeType::fromKeyValue($v);}, $value));
         }
     }

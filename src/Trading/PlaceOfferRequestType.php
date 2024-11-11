@@ -291,25 +291,25 @@ class PlaceOfferRequestType extends AbstractRequestType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Offer');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}Offer');
         if (null !== $value) {
             $this->setOffer(\Nogrod\eBaySDK\Trading\OfferType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemID');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemID');
         if (null !== $value) {
             $this->setItemID($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BlockOnWarning');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}BlockOnWarning');
         if (null !== $value) {
             $this->setBlockOnWarning(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AffiliateTrackingDetails');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}AffiliateTrackingDetails');
         if (null !== $value) {
             $this->setAffiliateTrackingDetails(\Nogrod\eBaySDK\Trading\AffiliateTrackingDetailsType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}VariationSpecifics', true);
-        if (null !== $value && !empty($value)) {
-            $this->setVariationSpecifics(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\NameValueListType::fromKeyValue(Func::mapArray($v, '{urn:ebay:apis:eBLBaseComponents}NameValueList'));}, $value));
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}VariationSpecifics');
+        if (null !== $value) {
+            $this->setVariationSpecifics(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\NameValueListType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}NameValueList'));}, $value));
         }
     }
 }

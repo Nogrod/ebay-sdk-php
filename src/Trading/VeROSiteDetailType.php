@@ -147,12 +147,12 @@ class VeROSiteDetailType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Site');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Site');
         if (null !== $value) {
             $this->setSite($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReasonCodeDetail', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReasonCodeDetail');
+        if (null !== $value) {
             $this->setReasonCodeDetail(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\ReasonCodeDetailType::fromKeyValue($v);}, $value));
         }
     }

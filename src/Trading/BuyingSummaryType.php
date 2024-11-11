@@ -296,31 +296,31 @@ class BuyingSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BiddingCount');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}BiddingCount');
         if (null !== $value) {
             $this->setBiddingCount($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}WinningCount');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}WinningCount');
         if (null !== $value) {
             $this->setWinningCount($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TotalWinningCost');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}TotalWinningCost');
         if (null !== $value) {
             $this->setTotalWinningCost(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}WonCount');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}WonCount');
         if (null !== $value) {
             $this->setWonCount($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TotalWonCost');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}TotalWonCost');
         if (null !== $value) {
             $this->setTotalWonCost(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}WonDurationInDays');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}WonDurationInDays');
         if (null !== $value) {
             $this->setWonDurationInDays($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BestOfferCount');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}BestOfferCount');
         if (null !== $value) {
             $this->setBestOfferCount($value);
         }

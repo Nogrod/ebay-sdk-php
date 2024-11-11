@@ -106,11 +106,11 @@ class NotificationMessageType extends AbstractResponseType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MessageBody');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}MessageBody');
         if (null !== $value) {
             $this->setMessageBody($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EIAS');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}EIAS');
         if (null !== $value) {
             $this->setEIAS($value);
         }

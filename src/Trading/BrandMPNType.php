@@ -146,11 +146,11 @@ class BrandMPNType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Brand');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Brand');
         if (null !== $value) {
             $this->setBrand($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MPN');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}MPN');
         if (null !== $value) {
             $this->setMPN($value);
         }

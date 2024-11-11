@@ -165,15 +165,15 @@ class GetDescriptionTemplatesRequestType extends AbstractRequestType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CategoryID');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}CategoryID');
         if (null !== $value) {
             $this->setCategoryID($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LastModifiedTime');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}LastModifiedTime');
         if (null !== $value) {
             $this->setLastModifiedTime(new \DateTime($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MotorVehicles');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}MotorVehicles');
         if (null !== $value) {
             $this->setMotorVehicles(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }

@@ -939,60 +939,60 @@ class BulkDataExchangeRequestsType implements \Sabre\Xml\XmlSerializable, \Sabre
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Header');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}Header');
         if (null !== $value) {
             $this->setHeader(\Nogrod\eBaySDK\Trading\MerchantDataRequestHeaderType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AddFixedPriceItemRequest', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AddFixedPriceItemRequest');
+        if (null !== $value) {
             $this->setAddFixedPriceItemRequest(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\AddFixedPriceItemRequestType::fromKeyValue($v);}, $value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AddItemRequest', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AddItemRequest');
+        if (null !== $value) {
             $this->setAddItemRequest(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\AddItemRequestType::fromKeyValue($v);}, $value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EndFixedPriceItemRequest', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EndFixedPriceItemRequest');
+        if (null !== $value) {
             $this->setEndFixedPriceItemRequest(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\EndFixedPriceItemRequestType::fromKeyValue($v);}, $value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EndItemRequest', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EndItemRequest');
+        if (null !== $value) {
             $this->setEndItemRequest(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\EndItemRequestType::fromKeyValue($v);}, $value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}OrderAckRequest', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}OrderAckRequest');
+        if (null !== $value) {
             $this->setOrderAckRequest(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\OrderAckRequestType::fromKeyValue($v);}, $value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RelistFixedPriceItemRequest', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RelistFixedPriceItemRequest');
+        if (null !== $value) {
             $this->setRelistFixedPriceItemRequest(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\RelistFixedPriceItemRequestType::fromKeyValue($v);}, $value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RelistItemRequest', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RelistItemRequest');
+        if (null !== $value) {
             $this->setRelistItemRequest(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\RelistItemRequestType::fromKeyValue($v);}, $value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReviseFixedPriceItemRequest', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReviseFixedPriceItemRequest');
+        if (null !== $value) {
             $this->setReviseFixedPriceItemRequest(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\ReviseFixedPriceItemRequestType::fromKeyValue($v);}, $value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReviseInventoryStatusRequest', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReviseInventoryStatusRequest');
+        if (null !== $value) {
             $this->setReviseInventoryStatusRequest(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\ReviseInventoryStatusRequestType::fromKeyValue($v);}, $value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReviseItemRequest', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReviseItemRequest');
+        if (null !== $value) {
             $this->setReviseItemRequest(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\ReviseItemRequestType::fromKeyValue($v);}, $value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SetShipmentTrackingInfoRequest', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SetShipmentTrackingInfoRequest');
+        if (null !== $value) {
             $this->setSetShipmentTrackingInfoRequest(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\SetShipmentTrackingInfoRequestType::fromKeyValue($v);}, $value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}VerifyAddFixedPriceItemRequest', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}VerifyAddFixedPriceItemRequest');
+        if (null !== $value) {
             $this->setVerifyAddFixedPriceItemRequest(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\VerifyAddFixedPriceItemRequestType::fromKeyValue($v);}, $value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}VerifyAddItemRequest', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}VerifyAddItemRequest');
+        if (null !== $value) {
             $this->setVerifyAddItemRequest(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\VerifyAddItemRequestType::fromKeyValue($v);}, $value));
         }
     }

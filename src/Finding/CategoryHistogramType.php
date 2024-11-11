@@ -203,15 +203,15 @@ class CategoryHistogramType extends CategoryType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}count');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}count');
         if (null !== $value) {
             $this->setCount($value);
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}childCategoryHistogram', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}childCategoryHistogram');
+        if (null !== $value) {
             $this->setChildCategoryHistogram(array_map(function ($v) {return \Nogrod\eBaySDK\Finding\CategoryHistogramType::fromKeyValue($v);}, $value));
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}delimiter');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}delimiter');
         if (null !== $value) {
             $this->setDelimiter($value);
         }

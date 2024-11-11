@@ -453,36 +453,36 @@ class ApplicationDeliveryPreferencesType implements \Sabre\Xml\XmlSerializable, 
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ApplicationURL');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ApplicationURL');
         if (null !== $value) {
             $this->setApplicationURL($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ApplicationEnable');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ApplicationEnable');
         if (null !== $value) {
             $this->setApplicationEnable($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AlertEmail');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}AlertEmail');
         if (null !== $value) {
             $this->setAlertEmail($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AlertEnable');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}AlertEnable');
         if (null !== $value) {
             $this->setAlertEnable($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}NotificationPayloadType');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}NotificationPayloadType');
         if (null !== $value) {
             $this->setNotificationPayloadType($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DeviceType');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}DeviceType');
         if (null !== $value) {
             $this->setDeviceType($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PayloadVersion');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}PayloadVersion');
         if (null !== $value) {
             $this->setPayloadVersion($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DeliveryURLDetails', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DeliveryURLDetails');
+        if (null !== $value) {
             $this->setDeliveryURLDetails(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\DeliveryURLDetailType::fromKeyValue($v);}, $value));
         }
     }

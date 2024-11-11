@@ -115,11 +115,11 @@ class PaginationResultType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TotalNumberOfPages');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}TotalNumberOfPages');
         if (null !== $value) {
             $this->setTotalNumberOfPages($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TotalNumberOfEntries');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}TotalNumberOfEntries');
         if (null !== $value) {
             $this->setTotalNumberOfEntries($value);
         }

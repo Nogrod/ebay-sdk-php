@@ -69,7 +69,7 @@ class GetConsolidationJobStatusRequestType extends BaseRequestType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}JobId');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}JobId');
         if (null !== $value) {
             $this->setJobId($value);
         }

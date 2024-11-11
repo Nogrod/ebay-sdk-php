@@ -110,8 +110,8 @@ class DomesticRefundMethodCodeType implements \Sabre\Xml\XmlSerializable, \Sabre
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DomesticRefundMethod', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}DomesticRefundMethod');
+        if (null !== $value) {
             $this->setDomesticRefundMethod($value);
         }
     }

@@ -111,8 +111,8 @@ class AddMemberMessagesAAQToBidderResponseType extends AbstractResponseType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AddMemberMessagesAAQToBidderResponseContainer', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AddMemberMessagesAAQToBidderResponseContainer');
+        if (null !== $value) {
             $this->setAddMemberMessagesAAQToBidderResponseContainer(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\AddMemberMessagesAAQToBidderResponseContainerType::fromKeyValue($v);}, $value));
         }
     }

@@ -122,8 +122,8 @@ class ResponsiblePersonCodeTypesType implements \Sabre\Xml\XmlSerializable, \Sab
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Type', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Type');
+        if (null !== $value) {
             $this->setType($value);
         }
     }

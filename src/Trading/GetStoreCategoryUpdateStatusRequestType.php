@@ -78,7 +78,7 @@ class GetStoreCategoryUpdateStatusRequestType extends AbstractRequestType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TaskID');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}TaskID');
         if (null !== $value) {
             $this->setTaskID($value);
         }

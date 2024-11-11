@@ -105,11 +105,11 @@ class TransactionProgramType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AuthenticityVerification');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}AuthenticityVerification');
         if (null !== $value) {
             $this->setAuthenticityVerification(\Nogrod\eBaySDK\Trading\AuthenticityVerificationType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Fulfillment');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}Fulfillment');
         if (null !== $value) {
             $this->setFulfillment(\Nogrod\eBaySDK\Trading\FulfillmentType::fromKeyValue($value));
         }

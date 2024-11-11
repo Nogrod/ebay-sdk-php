@@ -70,7 +70,7 @@ class ConfirmIdentityRequestType extends AbstractRequestType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SessionID');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}SessionID');
         if (null !== $value) {
             $this->setSessionID($value);
         }

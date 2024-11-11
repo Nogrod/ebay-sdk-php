@@ -707,43 +707,43 @@ class ListingInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}bestOfferEnabled');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}bestOfferEnabled');
         if (null !== $value) {
             $this->setBestOfferEnabled(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}buyItNowAvailable');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}buyItNowAvailable');
         if (null !== $value) {
             $this->setBuyItNowAvailable(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}buyItNowPrice');
+        $value = Func::mapObject($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}buyItNowPrice');
         if (null !== $value) {
             $this->setBuyItNowPrice(\Nogrod\eBaySDK\Finding\AmountType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}convertedBuyItNowPrice');
+        $value = Func::mapObject($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}convertedBuyItNowPrice');
         if (null !== $value) {
             $this->setConvertedBuyItNowPrice(\Nogrod\eBaySDK\Finding\AmountType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}startTime');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}startTime');
         if (null !== $value) {
             $this->setStartTime(new \DateTime($value));
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}endTime');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}endTime');
         if (null !== $value) {
             $this->setEndTime(new \DateTime($value));
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}listingType');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}listingType');
         if (null !== $value) {
             $this->setListingType($value);
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}gift');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}gift');
         if (null !== $value) {
             $this->setGift(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}watchCount');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}watchCount');
         if (null !== $value) {
             $this->setWatchCount($value);
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}delimiter');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}delimiter');
         if (null !== $value) {
             $this->setDelimiter($value);
         }

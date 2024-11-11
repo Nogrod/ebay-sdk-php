@@ -81,7 +81,7 @@ class CombinedPaymentPreferencesType implements \Sabre\Xml\XmlSerializable, \Sab
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CombinedPaymentOption');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}CombinedPaymentOption');
         if (null !== $value) {
             $this->setCombinedPaymentOption($value);
         }

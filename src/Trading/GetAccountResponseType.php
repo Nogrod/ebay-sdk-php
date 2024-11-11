@@ -418,39 +418,39 @@ class GetAccountResponseType extends AbstractResponseType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AccountID');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}AccountID');
         if (null !== $value) {
             $this->setAccountID($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeeNettingStatus');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeeNettingStatus');
         if (null !== $value) {
             $this->setFeeNettingStatus($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AccountSummary');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}AccountSummary');
         if (null !== $value) {
             $this->setAccountSummary(\Nogrod\eBaySDK\Trading\AccountSummaryType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Currency');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Currency');
         if (null !== $value) {
             $this->setCurrency($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AccountEntries', true);
-        if (null !== $value && !empty($value)) {
-            $this->setAccountEntries(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\AccountEntryType::fromKeyValue(Func::mapArray($v, '{urn:ebay:apis:eBLBaseComponents}AccountEntry'));}, $value));
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AccountEntries');
+        if (null !== $value) {
+            $this->setAccountEntries(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\AccountEntryType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}AccountEntry'));}, $value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaginationResult');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaginationResult');
         if (null !== $value) {
             $this->setPaginationResult(\Nogrod\eBaySDK\Trading\PaginationResultType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}HasMoreEntries');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}HasMoreEntries');
         if (null !== $value) {
             $this->setHasMoreEntries(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EntriesPerPage');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}EntriesPerPage');
         if (null !== $value) {
             $this->setEntriesPerPage($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PageNumber');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}PageNumber');
         if (null !== $value) {
             $this->setPageNumber($value);
         }

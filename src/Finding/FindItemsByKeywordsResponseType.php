@@ -197,15 +197,15 @@ class FindItemsByKeywordsResponseType extends BaseFindingServiceResponseType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}categoryHistogramContainer');
+        $value = Func::mapObject($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}categoryHistogramContainer');
         if (null !== $value) {
             $this->setCategoryHistogramContainer(\Nogrod\eBaySDK\Finding\CategoryHistogramContainerType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}aspectHistogramContainer');
+        $value = Func::mapObject($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}aspectHistogramContainer');
         if (null !== $value) {
             $this->setAspectHistogramContainer(\Nogrod\eBaySDK\Finding\AspectHistogramContainerType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}conditionHistogramContainer');
+        $value = Func::mapObject($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}conditionHistogramContainer');
         if (null !== $value) {
             $this->setConditionHistogramContainer(\Nogrod\eBaySDK\Finding\ConditionHistogramContainerType::fromKeyValue($value));
         }

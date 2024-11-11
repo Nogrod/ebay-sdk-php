@@ -359,35 +359,35 @@ class TaxDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Imposition');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Imposition');
         if (null !== $value) {
             $this->setImposition($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TaxDescription');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}TaxDescription');
         if (null !== $value) {
             $this->setTaxDescription($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TaxAmount');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}TaxAmount');
         if (null !== $value) {
             $this->setTaxAmount(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TaxOnSubtotalAmount');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}TaxOnSubtotalAmount');
         if (null !== $value) {
             $this->setTaxOnSubtotalAmount(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TaxOnShippingAmount');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}TaxOnShippingAmount');
         if (null !== $value) {
             $this->setTaxOnShippingAmount(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TaxOnHandlingAmount');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}TaxOnHandlingAmount');
         if (null !== $value) {
             $this->setTaxOnHandlingAmount(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TaxCode');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}TaxCode');
         if (null !== $value) {
             $this->setTaxCode($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CollectionMethod');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}CollectionMethod');
         if (null !== $value) {
             $this->setCollectionMethod($value);
         }

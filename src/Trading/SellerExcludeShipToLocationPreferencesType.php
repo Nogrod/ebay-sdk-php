@@ -224,8 +224,8 @@ class SellerExcludeShipToLocationPreferencesType implements \Sabre\Xml\XmlSerial
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExcludeShipToLocation', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExcludeShipToLocation');
+        if (null !== $value) {
             $this->setExcludeShipToLocation($value);
         }
     }

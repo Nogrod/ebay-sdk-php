@@ -111,8 +111,8 @@ class GetConsolidationJobStatusResponseType extends BaseResponseType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}Job', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}Job');
+        if (null !== $value) {
             $this->setJob(array_map(function ($v) {return \Nogrod\eBaySDK\BusinessPoliciesManagement\ConsolidationJobType::fromKeyValue($v);}, $value));
         }
     }

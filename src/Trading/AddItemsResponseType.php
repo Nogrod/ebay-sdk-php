@@ -111,8 +111,8 @@ class AddItemsResponseType extends AbstractResponseType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AddItemResponseContainer', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AddItemResponseContainer');
+        if (null !== $value) {
             $this->setAddItemResponseContainer(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\AddItemResponseContainerType::fromKeyValue($v);}, $value));
         }
     }

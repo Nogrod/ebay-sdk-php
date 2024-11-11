@@ -158,11 +158,11 @@ class BuyingGuideDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BuyingGuide', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BuyingGuide');
+        if (null !== $value) {
             $this->setBuyingGuide(array_map(function ($v) {return \Nogrod\eBaySDK\Shopping\BuyingGuideType::fromKeyValue($v);}, $value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BuyingGuideHub');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}BuyingGuideHub');
         if (null !== $value) {
             $this->setBuyingGuideHub($value);
         }

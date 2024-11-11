@@ -2,13 +2,15 @@
 
 namespace Nogrod\eBaySDK\Trading;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing Base64BinaryType
  *
  * Base64 is a binary-to-text encoding scheme that represents binary data in an ASCII string format by translating it into a radix-64 representation. The term "Base64" originates from a specific MIME content transfer encoding.
  *  <br/><br/>
  *  <span class="tablenote">
- *  <strong>Note:</strong> This type contains the name or reference ID of the binary attachment, not the attachment data.
+ *  <strong>Note:</strong> This type contains the name or reference ID of the binary attachment, not the attachment data. 
  *  </span>
  * XSD Type: Base64BinaryType
  */
@@ -86,15 +88,14 @@ class Base64BinaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
         return $this;
     }
 
-    public function xmlSerialize(\Sabre\Xml\Writer $writer): void
+    public function xmlSerialize(\Sabre\Xml\Writer $writer) : void
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->value();
         $writer->write($value);
         $value = $this->getContentType();
-        if (null !== $value) {
-            $writer->writeAttribute("contentType", $value);
-        }
+        if (null !== $value)
+        $writer->writeAttribute("contentType", $value);
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader)
@@ -111,5 +112,12 @@ class Base64BinaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
 
     public function setKeyValue($keyValue)
     {
+        $value = Func::mapObject($keyValue, 'value');
+        if (null !== $value)
+        $this->value(\\AnySimpleType::fromKeyValue($value));
+        $value = Func::mapValue($keyValue, 'contentType');
+        if (null !== $value)
+        $this->setContentType($value);
     }
 }
+

@@ -241,21 +241,21 @@ class SetStoreCategoriesRequestType extends AbstractRequestType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Action');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Action');
         if (null !== $value) {
             $this->setAction($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemDestinationCategoryID');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemDestinationCategoryID');
         if (null !== $value) {
             $this->setItemDestinationCategoryID($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DestinationParentCategoryID');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}DestinationParentCategoryID');
         if (null !== $value) {
             $this->setDestinationParentCategoryID($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}StoreCategories', true);
-        if (null !== $value && !empty($value)) {
-            $this->setStoreCategories(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\StoreCustomCategoryType::fromKeyValue(Func::mapArray($v, '{urn:ebay:apis:eBLBaseComponents}CustomCategory'));}, $value));
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}StoreCategories');
+        if (null !== $value) {
+            $this->setStoreCategories(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\StoreCustomCategoryType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}CustomCategory'));}, $value));
         }
     }
 }

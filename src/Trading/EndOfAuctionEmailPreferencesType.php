@@ -348,31 +348,31 @@ class EndOfAuctionEmailPreferencesType implements \Sabre\Xml\XmlSerializable, \S
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TemplateText');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}TemplateText');
         if (null !== $value) {
             $this->setTemplateText($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LogoURL');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}LogoURL');
         if (null !== $value) {
             $this->setLogoURL($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LogoType');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}LogoType');
         if (null !== $value) {
             $this->setLogoType($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EmailCustomized');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}EmailCustomized');
         if (null !== $value) {
             $this->setEmailCustomized(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TextCustomized');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}TextCustomized');
         if (null !== $value) {
             $this->setTextCustomized(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LogoCustomized');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}LogoCustomized');
         if (null !== $value) {
             $this->setLogoCustomized(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CopyEmail');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}CopyEmail');
         if (null !== $value) {
             $this->setCopyEmail(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }

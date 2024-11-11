@@ -205,19 +205,19 @@ class ShippingProfileDiscountInfoType implements \Sabre\Xml\XmlSerializable, \Sa
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}domesticFlatCalcDiscountProfileId');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}domesticFlatCalcDiscountProfileId');
         if (null !== $value) {
             $this->setDomesticFlatCalcDiscountProfileId($value);
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}intlFlatCalcDiscountProfileId');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}intlFlatCalcDiscountProfileId');
         if (null !== $value) {
             $this->setIntlFlatCalcDiscountProfileId($value);
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}applyDomesticPromoShippingProfile');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}applyDomesticPromoShippingProfile');
         if (null !== $value) {
             $this->setApplyDomesticPromoShippingProfile(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}applyIntlPromoShippingProfile');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}applyIntlPromoShippingProfile');
         if (null !== $value) {
             $this->setApplyIntlPromoShippingProfile(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }

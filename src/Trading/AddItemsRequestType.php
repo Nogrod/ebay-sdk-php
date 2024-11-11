@@ -111,8 +111,8 @@ class AddItemsRequestType extends AbstractRequestType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AddItemRequestContainer', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AddItemRequestContainer');
+        if (null !== $value) {
             $this->setAddItemRequestContainer(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\AddItemRequestContainerType::fromKeyValue($v);}, $value));
         }
     }

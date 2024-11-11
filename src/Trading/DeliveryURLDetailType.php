@@ -181,15 +181,15 @@ class DeliveryURLDetailType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DeliveryURLName');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}DeliveryURLName');
         if (null !== $value) {
             $this->setDeliveryURLName($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DeliveryURL');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}DeliveryURL');
         if (null !== $value) {
             $this->setDeliveryURL($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Status');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Status');
         if (null !== $value) {
             $this->setStatus($value);
         }

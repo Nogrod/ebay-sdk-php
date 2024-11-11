@@ -397,31 +397,31 @@ class UploadSiteHostedPicturesRequestType extends AbstractRequestType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PictureName');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}PictureName');
         if (null !== $value) {
             $this->setPictureName($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PictureSystemVersion');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}PictureSystemVersion');
         if (null !== $value) {
             $this->setPictureSystemVersion($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PictureSet');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}PictureSet');
         if (null !== $value) {
             $this->setPictureSet($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PictureData');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}PictureData');
         if (null !== $value) {
             $this->setPictureData(\Nogrod\eBaySDK\Trading\Base64BinaryType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PictureUploadPolicy');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}PictureUploadPolicy');
         if (null !== $value) {
             $this->setPictureUploadPolicy($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExternalPictureURL', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExternalPictureURL');
+        if (null !== $value) {
             $this->setExternalPictureURL($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExtensionInDays');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExtensionInDays');
         if (null !== $value) {
             $this->setExtensionInDays($value);
         }

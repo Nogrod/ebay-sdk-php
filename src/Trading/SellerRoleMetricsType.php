@@ -404,43 +404,43 @@ class SellerRoleMetricsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PositiveFeedbackLeftCount');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}PositiveFeedbackLeftCount');
         if (null !== $value) {
             $this->setPositiveFeedbackLeftCount($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}NegativeFeedbackLeftCount');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}NegativeFeedbackLeftCount');
         if (null !== $value) {
             $this->setNegativeFeedbackLeftCount($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}NeutralFeedbackLeftCount');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}NeutralFeedbackLeftCount');
         if (null !== $value) {
             $this->setNeutralFeedbackLeftCount($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeedbackLeftPercent');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeedbackLeftPercent');
         if (null !== $value) {
             $this->setFeedbackLeftPercent($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RepeatBuyerCount');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}RepeatBuyerCount');
         if (null !== $value) {
             $this->setRepeatBuyerCount($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RepeatBuyerPercent');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}RepeatBuyerPercent');
         if (null !== $value) {
             $this->setRepeatBuyerPercent($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UniqueBuyerCount');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}UniqueBuyerCount');
         if (null !== $value) {
             $this->setUniqueBuyerCount($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TransactionPercent');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}TransactionPercent');
         if (null !== $value) {
             $this->setTransactionPercent($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CrossBorderTransactionCount');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}CrossBorderTransactionCount');
         if (null !== $value) {
             $this->setCrossBorderTransactionCount($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CrossBorderTransactionPercent');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}CrossBorderTransactionPercent');
         if (null !== $value) {
             $this->setCrossBorderTransactionPercent($value);
         }

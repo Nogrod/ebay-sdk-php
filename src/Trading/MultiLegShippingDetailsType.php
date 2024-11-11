@@ -109,11 +109,11 @@ class MultiLegShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerShipmentToLogisticsProvider');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerShipmentToLogisticsProvider');
         if (null !== $value) {
             $this->setSellerShipmentToLogisticsProvider(\Nogrod\eBaySDK\Trading\MultiLegShipmentType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LogisticsProviderShipmentToBuyer');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}LogisticsProviderShipmentToBuyer');
         if (null !== $value) {
             $this->setLogisticsProviderShipmentToBuyer(\Nogrod\eBaySDK\Trading\MultiLegShipmentType::fromKeyValue($value));
         }

@@ -187,12 +187,12 @@ class MaximumBuyerPolicyViolationsDetailsType implements \Sabre\Xml\XmlSerializa
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}NumberOfPolicyViolations', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}NumberOfPolicyViolations');
+        if (null !== $value) {
             $this->setNumberOfPolicyViolations($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PolicyViolationDuration', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PolicyViolationDuration');
+        if (null !== $value) {
             $this->setPolicyViolationDuration(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\PolicyViolationDurationDetailsType::fromKeyValue($v);}, $value));
         }
     }

@@ -213,19 +213,19 @@ class SellerDiscountType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CampaignID');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}CampaignID');
         if (null !== $value) {
             $this->setCampaignID($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CampaignDisplayName');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}CampaignDisplayName');
         if (null !== $value) {
             $this->setCampaignDisplayName($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemDiscountAmount');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemDiscountAmount');
         if (null !== $value) {
             $this->setItemDiscountAmount(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingDiscountAmount');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingDiscountAmount');
         if (null !== $value) {
             $this->setShippingDiscountAmount(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
         }

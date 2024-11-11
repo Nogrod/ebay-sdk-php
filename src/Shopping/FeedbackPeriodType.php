@@ -105,11 +105,11 @@ class FeedbackPeriodType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PeriodInDays');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}PeriodInDays');
         if (null !== $value) {
             $this->setPeriodInDays($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Count');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Count');
         if (null !== $value) {
             $this->setCount($value);
         }

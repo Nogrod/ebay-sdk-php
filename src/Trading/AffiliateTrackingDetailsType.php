@@ -245,19 +245,19 @@ class AffiliateTrackingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TrackingID');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}TrackingID');
         if (null !== $value) {
             $this->setTrackingID($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TrackingPartnerCode');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}TrackingPartnerCode');
         if (null !== $value) {
             $this->setTrackingPartnerCode($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ApplicationDeviceType');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ApplicationDeviceType');
         if (null !== $value) {
             $this->setApplicationDeviceType($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AffiliateUserID');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}AffiliateUserID');
         if (null !== $value) {
             $this->setAffiliateUserID($value);
         }

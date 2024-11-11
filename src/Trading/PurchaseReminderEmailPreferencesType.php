@@ -69,7 +69,7 @@ class PurchaseReminderEmailPreferencesType implements \Sabre\Xml\XmlSerializable
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PurchaseReminderEmailPreferences');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}PurchaseReminderEmailPreferences');
         if (null !== $value) {
             $this->setPurchaseReminderEmailPreferences(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }

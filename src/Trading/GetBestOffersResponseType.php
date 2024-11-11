@@ -300,23 +300,23 @@ class GetBestOffersResponseType extends AbstractResponseType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BestOfferArray', true);
-        if (null !== $value && !empty($value)) {
-            $this->setBestOfferArray(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\BestOfferType::fromKeyValue(Func::mapArray($v, '{urn:ebay:apis:eBLBaseComponents}BestOffer'));}, $value));
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BestOfferArray');
+        if (null !== $value) {
+            $this->setBestOfferArray(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\BestOfferType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}BestOffer'));}, $value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Item');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}Item');
         if (null !== $value) {
             $this->setItem(\Nogrod\eBaySDK\Trading\ItemType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemBestOffersArray', true);
-        if (null !== $value && !empty($value)) {
-            $this->setItemBestOffersArray(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\ItemBestOffersType::fromKeyValue(Func::mapArray($v, '{urn:ebay:apis:eBLBaseComponents}ItemBestOffers'));}, $value));
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemBestOffersArray');
+        if (null !== $value) {
+            $this->setItemBestOffersArray(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\ItemBestOffersType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}ItemBestOffers'));}, $value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PageNumber');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}PageNumber');
         if (null !== $value) {
             $this->setPageNumber($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaginationResult');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaginationResult');
         if (null !== $value) {
             $this->setPaginationResult(\Nogrod\eBaySDK\Trading\PaginationResultType::fromKeyValue($value));
         }

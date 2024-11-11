@@ -113,8 +113,8 @@ class MembershipDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Program', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Program');
+        if (null !== $value) {
             $this->setProgram(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\MembershipDetailType::fromKeyValue($v);}, $value));
         }
     }

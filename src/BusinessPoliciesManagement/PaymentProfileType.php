@@ -75,7 +75,7 @@ class PaymentProfileType extends SellerProfileType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}paymentInfo');
+        $value = Func::mapObject($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}paymentInfo');
         if (null !== $value) {
             $this->setPaymentInfo(\Nogrod\eBaySDK\BusinessPoliciesManagement\PaymentInfoType::fromKeyValue($value));
         }

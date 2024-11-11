@@ -229,20 +229,20 @@ class SellerDiscountsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}OriginalItemPrice');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}OriginalItemPrice');
         if (null !== $value) {
             $this->setOriginalItemPrice(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}OriginalItemShippingCost');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}OriginalItemShippingCost');
         if (null !== $value) {
             $this->setOriginalItemShippingCost(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}OriginalShippingService');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}OriginalShippingService');
         if (null !== $value) {
             $this->setOriginalShippingService($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerDiscount', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerDiscount');
+        if (null !== $value) {
             $this->setSellerDiscount(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\SellerDiscountType::fromKeyValue($v);}, $value));
         }
     }

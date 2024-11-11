@@ -142,15 +142,15 @@ class CharityAffiliationDetailType implements \Sabre\Xml\XmlSerializable, \Sabre
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CharityID');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}CharityID');
         if (null !== $value) {
             $this->setCharityID($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AffiliationType');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}AffiliationType');
         if (null !== $value) {
             $this->setAffiliationType($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LastUsedTime');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}LastUsedTime');
         if (null !== $value) {
             $this->setLastUsedTime(new \DateTime($value));
         }

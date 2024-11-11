@@ -279,27 +279,27 @@ class GetMyeBaySellingResponseType extends AbstractResponseType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellingSummary');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellingSummary');
         if (null !== $value) {
             $this->setSellingSummary(\Nogrod\eBaySDK\Trading\SellingSummaryType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ScheduledList');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}ScheduledList');
         if (null !== $value) {
             $this->setScheduledList(\Nogrod\eBaySDK\Trading\PaginatedItemArrayType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ActiveList');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}ActiveList');
         if (null !== $value) {
             $this->setActiveList(\Nogrod\eBaySDK\Trading\PaginatedItemArrayType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SoldList');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}SoldList');
         if (null !== $value) {
             $this->setSoldList(\Nogrod\eBaySDK\Trading\PaginatedOrderTransactionArrayType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UnsoldList');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}UnsoldList');
         if (null !== $value) {
             $this->setUnsoldList(\Nogrod\eBaySDK\Trading\PaginatedItemArrayType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Summary');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}Summary');
         if (null !== $value) {
             $this->setSummary(\Nogrod\eBaySDK\Trading\MyeBaySellingSummaryType::fromKeyValue($value));
         }

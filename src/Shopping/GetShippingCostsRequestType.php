@@ -243,23 +243,23 @@ class GetShippingCostsRequestType extends AbstractRequestType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemID');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemID');
         if (null !== $value) {
             $this->setItemID($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}QuantitySold');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}QuantitySold');
         if (null !== $value) {
             $this->setQuantitySold($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DestinationPostalCode');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}DestinationPostalCode');
         if (null !== $value) {
             $this->setDestinationPostalCode($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DestinationCountryCode');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}DestinationCountryCode');
         if (null !== $value) {
             $this->setDestinationCountryCode($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}IncludeDetails');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}IncludeDetails');
         if (null !== $value) {
             $this->setIncludeDetails(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }

@@ -246,19 +246,19 @@ class SalesTaxType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SalesTaxPercent');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}SalesTaxPercent');
         if (null !== $value) {
             $this->setSalesTaxPercent($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SalesTaxState');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}SalesTaxState');
         if (null !== $value) {
             $this->setSalesTaxState($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingIncludedInTax');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingIncludedInTax');
         if (null !== $value) {
             $this->setShippingIncludedInTax(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SalesTaxAmount');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}SalesTaxAmount');
         if (null !== $value) {
             $this->setSalesTaxAmount(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
         }

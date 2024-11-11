@@ -147,8 +147,12 @@ class ListingDurationDefinitionType implements \Sabre\Xml\XmlSerializable, \Sabr
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Duration', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapValue($keyValue, 'durationSetID');
+        if (null !== $value) {
+            $this->setDurationSetID($value);
+        }
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Duration');
+        if (null !== $value) {
             $this->setDuration($value);
         }
     }

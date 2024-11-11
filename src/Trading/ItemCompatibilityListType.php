@@ -188,11 +188,11 @@ class ItemCompatibilityListType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Compatibility', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Compatibility');
+        if (null !== $value) {
             $this->setCompatibility(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\ItemCompatibilityType::fromKeyValue($v);}, $value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReplaceAll');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReplaceAll');
         if (null !== $value) {
             $this->setReplaceAll(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }

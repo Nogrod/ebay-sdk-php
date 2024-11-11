@@ -182,17 +182,17 @@ class SellerProfileResponseStatusType implements \Sabre\Xml\XmlSerializable, \Sa
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}profileId');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}profileId');
         if (null !== $value) {
             $this->setProfileId($value);
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}ack');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}ack');
         if (null !== $value) {
             $this->setAck($value);
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}errorMessage', true);
-        if (null !== $value && !empty($value)) {
-            $this->setErrorMessage(array_map(function ($v) {return \Nogrod\eBaySDK\BusinessPoliciesManagement\ErrorDataType::fromKeyValue(Func::mapArray($v, '{http://www.ebay.com/marketplace/selling/v1/services}error'));}, $value));
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}errorMessage');
+        if (null !== $value) {
+            $this->setErrorMessage(array_map(function ($v) {return \Nogrod\eBaySDK\BusinessPoliciesManagement\ErrorDataType::fromKeyValue(Func::mapObject($v, '{http://www.ebay.com/marketplace/selling/v1/services}error'));}, $value));
         }
     }
 }

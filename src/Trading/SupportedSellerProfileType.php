@@ -239,23 +239,23 @@ class SupportedSellerProfileType implements \Sabre\Xml\XmlSerializable, \Sabre\X
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ProfileID');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ProfileID');
         if (null !== $value) {
             $this->setProfileID($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ProfileType');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ProfileType');
         if (null !== $value) {
             $this->setProfileType($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ProfileName');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ProfileName');
         if (null !== $value) {
             $this->setProfileName($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShortSummary');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShortSummary');
         if (null !== $value) {
             $this->setShortSummary($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CategoryGroup');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}CategoryGroup');
         if (null !== $value) {
             $this->setCategoryGroup(\Nogrod\eBaySDK\Trading\CategoryGroupType::fromKeyValue($value));
         }

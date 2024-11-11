@@ -149,15 +149,15 @@ class GetChallengeTokenResponseType extends AbstractResponseType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ChallengeToken');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ChallengeToken');
         if (null !== $value) {
             $this->setChallengeToken($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ImageChallengeURL');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ImageChallengeURL');
         if (null !== $value) {
             $this->setImageChallengeURL($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AudioChallengeURL');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}AudioChallengeURL');
         if (null !== $value) {
             $this->setAudioChallengeURL($value);
         }

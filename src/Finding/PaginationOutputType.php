@@ -312,23 +312,23 @@ class PaginationOutputType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}pageNumber');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}pageNumber');
         if (null !== $value) {
             $this->setPageNumber($value);
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}entriesPerPage');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}entriesPerPage');
         if (null !== $value) {
             $this->setEntriesPerPage($value);
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}totalPages');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}totalPages');
         if (null !== $value) {
             $this->setTotalPages($value);
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}totalEntries');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}totalEntries');
         if (null !== $value) {
             $this->setTotalEntries($value);
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}delimiter');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}delimiter');
         if (null !== $value) {
             $this->setDelimiter($value);
         }

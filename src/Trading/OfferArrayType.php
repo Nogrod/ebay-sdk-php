@@ -110,8 +110,8 @@ class OfferArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Offer', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Offer');
+        if (null !== $value) {
             $this->setOffer(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\OfferType::fromKeyValue($v);}, $value));
         }
     }

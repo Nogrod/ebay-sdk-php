@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Trading;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing AmountType
  *
@@ -149,5 +151,13 @@ class AmountType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
 
     public function setKeyValue($keyValue)
     {
+        $value = Func::mapValue($keyValue, 'value');
+        if (null !== $value) {
+            $this->value($value);
+        }
+        $value = Func::mapValue($keyValue, 'currencyID');
+        if (null !== $value) {
+            $this->setCurrencyID($value);
+        }
     }
 }

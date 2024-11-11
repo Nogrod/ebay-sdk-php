@@ -271,19 +271,19 @@ class PaymentDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}HoursToDeposit');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}HoursToDeposit');
         if (null !== $value) {
             $this->setHoursToDeposit($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DaysToFullPayment');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}DaysToFullPayment');
         if (null !== $value) {
             $this->setDaysToFullPayment($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DepositAmount');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}DepositAmount');
         if (null !== $value) {
             $this->setDepositAmount(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DepositType');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}DepositType');
         if (null !== $value) {
             $this->setDepositType($value);
         }

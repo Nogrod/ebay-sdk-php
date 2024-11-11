@@ -109,9 +109,9 @@ class RespondToBestOfferResponseType extends AbstractResponseType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RespondToBestOffer', true);
-        if (null !== $value && !empty($value)) {
-            $this->setRespondToBestOffer(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\BestOfferType::fromKeyValue(Func::mapArray($v, '{urn:ebay:apis:eBLBaseComponents}BestOffer'));}, $value));
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RespondToBestOffer');
+        if (null !== $value) {
+            $this->setRespondToBestOffer(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\BestOfferType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}BestOffer'));}, $value));
         }
     }
 }

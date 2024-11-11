@@ -145,15 +145,15 @@ class PictureSetMemberType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MemberURL');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}MemberURL');
         if (null !== $value) {
             $this->setMemberURL($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PictureHeight');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}PictureHeight');
         if (null !== $value) {
             $this->setPictureHeight($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PictureWidth');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}PictureWidth');
         if (null !== $value) {
             $this->setPictureWidth($value);
         }

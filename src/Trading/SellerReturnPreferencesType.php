@@ -72,7 +72,7 @@ class SellerReturnPreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre\
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}OptedIn');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}OptedIn');
         if (null !== $value) {
             $this->setOptedIn(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }

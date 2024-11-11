@@ -110,8 +110,8 @@ class DomesticReturnsShipmentPayeeCodeType implements \Sabre\Xml\XmlSerializable
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DomesticReturnsShipmentPayee', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}DomesticReturnsShipmentPayee');
+        if (null !== $value) {
             $this->setDomesticReturnsShipmentPayee($value);
         }
     }

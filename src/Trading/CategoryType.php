@@ -718,63 +718,63 @@ class CategoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BestOfferEnabled');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}BestOfferEnabled');
         if (null !== $value) {
             $this->setBestOfferEnabled(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AutoPayEnabled');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}AutoPayEnabled');
         if (null !== $value) {
             $this->setAutoPayEnabled(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}B2BVATEnabled');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}B2BVATEnabled');
         if (null !== $value) {
             $this->setB2BVATEnabled(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CategoryID');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}CategoryID');
         if (null !== $value) {
             $this->setCategoryID($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CategoryLevel');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}CategoryLevel');
         if (null !== $value) {
             $this->setCategoryLevel($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CategoryName');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}CategoryName');
         if (null !== $value) {
             $this->setCategoryName($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CategoryParentID', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}CategoryParentID');
+        if (null !== $value) {
             $this->setCategoryParentID($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Expired');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Expired');
         if (null !== $value) {
             $this->setExpired(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LeafCategory');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}LeafCategory');
         if (null !== $value) {
             $this->setLeafCategory(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Virtual');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Virtual');
         if (null !== $value) {
             $this->setVirtual(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}NumOfItems');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}NumOfItems');
         if (null !== $value) {
             $this->setNumOfItems($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ORPA');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ORPA');
         if (null !== $value) {
             $this->setORPA(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ORRA');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ORRA');
         if (null !== $value) {
             $this->setORRA(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LSD');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}LSD');
         if (null !== $value) {
             $this->setLSD(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Keywords');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Keywords');
         if (null !== $value) {
             $this->setKeywords($value);
         }

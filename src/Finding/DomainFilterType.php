@@ -159,11 +159,11 @@ class DomainFilterType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}domainName', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}domainName');
+        if (null !== $value) {
             $this->setDomainName($value);
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}delimiter');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}delimiter');
         if (null !== $value) {
             $this->setDelimiter($value);
         }

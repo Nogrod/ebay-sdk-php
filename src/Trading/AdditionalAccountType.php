@@ -150,15 +150,15 @@ class AdditionalAccountType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Balance');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}Balance');
         if (null !== $value) {
             $this->setBalance(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Currency');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Currency');
         if (null !== $value) {
             $this->setCurrency($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AccountCode');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}AccountCode');
         if (null !== $value) {
             $this->setAccountCode($value);
         }

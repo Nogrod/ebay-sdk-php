@@ -721,37 +721,37 @@ class PictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}GalleryType');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}GalleryType');
         if (null !== $value) {
             $this->setGalleryType($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}GalleryURL');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}GalleryURL');
         if (null !== $value) {
             $this->setGalleryURL($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PictureURL', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}PictureURL');
+        if (null !== $value) {
             $this->setPictureURL($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PictureSource');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}PictureSource');
         if (null !== $value) {
             $this->setPictureSource($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}GalleryStatus');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}GalleryStatus');
         if (null !== $value) {
             $this->setGalleryStatus($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}GalleryErrorInfo');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}GalleryErrorInfo');
         if (null !== $value) {
             $this->setGalleryErrorInfo($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExternalPictureURL', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExternalPictureURL');
+        if (null !== $value) {
             $this->setExternalPictureURL($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExtendedPictureDetails', true);
-        if (null !== $value && !empty($value)) {
-            $this->setExtendedPictureDetails(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\PictureURLsType::fromKeyValue(Func::mapArray($v, '{urn:ebay:apis:eBLBaseComponents}PictureURLs'));}, $value));
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExtendedPictureDetails');
+        if (null !== $value) {
+            $this->setExtendedPictureDetails(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\PictureURLsType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}PictureURLs'));}, $value));
         }
     }
 }

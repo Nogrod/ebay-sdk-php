@@ -281,23 +281,23 @@ class AffiliateType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}trackingId');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}trackingId');
         if (null !== $value) {
             $this->setTrackingId($value);
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}networkId');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}networkId');
         if (null !== $value) {
             $this->setNetworkId($value);
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}customId');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}customId');
         if (null !== $value) {
             $this->setCustomId($value);
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}geoTargeting');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}geoTargeting');
         if (null !== $value) {
             $this->setGeoTargeting(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}delimiter');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}delimiter');
         if (null !== $value) {
             $this->setDelimiter($value);
         }

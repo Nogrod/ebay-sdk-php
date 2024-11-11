@@ -250,23 +250,23 @@ class SetShipmentTrackingInfoRequestType implements \Sabre\Xml\XmlSerializable, 
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}OrderID');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}OrderID');
         if (null !== $value) {
             $this->setOrderID($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}OrderLineItemID');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}OrderLineItemID');
         if (null !== $value) {
             $this->setOrderLineItemID($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Shipment');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}Shipment');
         if (null !== $value) {
             $this->setShipment(\Nogrod\eBaySDK\Trading\ShipmentType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}IsShipped');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}IsShipped');
         if (null !== $value) {
             $this->setIsShipped(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}IsPaid');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}IsPaid');
         if (null !== $value) {
             $this->setIsPaid(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }

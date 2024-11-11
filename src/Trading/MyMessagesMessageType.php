@@ -1050,96 +1050,96 @@ class MyMessagesMessageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Sender');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Sender');
         if (null !== $value) {
             $this->setSender($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RecipientUserID');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}RecipientUserID');
         if (null !== $value) {
             $this->setRecipientUserID($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SendToName');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}SendToName');
         if (null !== $value) {
             $this->setSendToName($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Subject');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Subject');
         if (null !== $value) {
             $this->setSubject($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MessageID');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}MessageID');
         if (null !== $value) {
             $this->setMessageID($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExternalMessageID');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExternalMessageID');
         if (null !== $value) {
             $this->setExternalMessageID($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Text');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Text');
         if (null !== $value) {
             $this->setText($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Flagged');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Flagged');
         if (null !== $value) {
             $this->setFlagged(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Read');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Read');
         if (null !== $value) {
             $this->setRead(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReceiveDate');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReceiveDate');
         if (null !== $value) {
             $this->setReceiveDate(new \DateTime($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExpirationDate');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExpirationDate');
         if (null !== $value) {
             $this->setExpirationDate(new \DateTime($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemID');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemID');
         if (null !== $value) {
             $this->setItemID($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ResponseDetails');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}ResponseDetails');
         if (null !== $value) {
             $this->setResponseDetails(\Nogrod\eBaySDK\Trading\MyMessagesResponseDetailsType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Folder');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}Folder');
         if (null !== $value) {
             $this->setFolder(\Nogrod\eBaySDK\Trading\MyMessagesFolderType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Content');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Content');
         if (null !== $value) {
             $this->setContent($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MessageType');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}MessageType');
         if (null !== $value) {
             $this->setMessageType($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ListingStatus');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ListingStatus');
         if (null !== $value) {
             $this->setListingStatus($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}QuestionType');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}QuestionType');
         if (null !== $value) {
             $this->setQuestionType($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Replied');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Replied');
         if (null !== $value) {
             $this->setReplied(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}HighPriority');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}HighPriority');
         if (null !== $value) {
             $this->setHighPriority(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemEndTime');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemEndTime');
         if (null !== $value) {
             $this->setItemEndTime(new \DateTime($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemTitle');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemTitle');
         if (null !== $value) {
             $this->setItemTitle($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MessageMedia', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MessageMedia');
+        if (null !== $value) {
             $this->setMessageMedia(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\MessageMediaType::fromKeyValue($v);}, $value));
         }
     }

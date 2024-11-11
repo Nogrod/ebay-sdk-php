@@ -283,15 +283,15 @@ class ConditionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}conditionId');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}conditionId');
         if (null !== $value) {
             $this->setConditionId($value);
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}conditionDisplayName');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}conditionDisplayName');
         if (null !== $value) {
             $this->setConditionDisplayName($value);
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}delimiter');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}delimiter');
         if (null !== $value) {
             $this->setDelimiter($value);
         }

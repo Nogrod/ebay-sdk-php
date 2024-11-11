@@ -311,27 +311,27 @@ class PickupMethodSelectedType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PickupMethod');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}PickupMethod');
         if (null !== $value) {
             $this->setPickupMethod($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PickupStoreID');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}PickupStoreID');
         if (null !== $value) {
             $this->setPickupStoreID($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PickupStatus');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}PickupStatus');
         if (null !== $value) {
             $this->setPickupStatus($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MerchantPickupCode');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}MerchantPickupCode');
         if (null !== $value) {
             $this->setMerchantPickupCode($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PickupFulfillmentTime');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}PickupFulfillmentTime');
         if (null !== $value) {
             $this->setPickupFulfillmentTime(new \DateTime($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PickupLocationUUID');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}PickupLocationUUID');
         if (null !== $value) {
             $this->setPickupLocationUUID($value);
         }

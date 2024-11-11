@@ -310,27 +310,27 @@ class MyMessagesSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FolderSummary', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FolderSummary');
+        if (null !== $value) {
             $this->setFolderSummary(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\MyMessagesFolderSummaryType::fromKeyValue($v);}, $value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}NewMessageCount');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}NewMessageCount');
         if (null !== $value) {
             $this->setNewMessageCount($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FlaggedMessageCount');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}FlaggedMessageCount');
         if (null !== $value) {
             $this->setFlaggedMessageCount($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TotalMessageCount');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}TotalMessageCount');
         if (null !== $value) {
             $this->setTotalMessageCount($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}NewHighPriorityCount');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}NewHighPriorityCount');
         if (null !== $value) {
             $this->setNewHighPriorityCount($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TotalHighPriorityCount');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}TotalHighPriorityCount');
         if (null !== $value) {
             $this->setTotalHighPriorityCount($value);
         }

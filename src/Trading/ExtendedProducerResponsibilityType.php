@@ -69,7 +69,7 @@ class ExtendedProducerResponsibilityType implements \Sabre\Xml\XmlSerializable, 
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EcoParticipationFee');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}EcoParticipationFee');
         if (null !== $value) {
             $this->setEcoParticipationFee(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
         }

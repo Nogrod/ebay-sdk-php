@@ -121,11 +121,11 @@ class ItemRatingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RatingDetail');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}RatingDetail');
         if (null !== $value) {
             $this->setRatingDetail($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Rating');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Rating');
         if (null !== $value) {
             $this->setRating($value);
         }

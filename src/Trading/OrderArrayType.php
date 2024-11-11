@@ -189,12 +189,12 @@ class OrderArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Order', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Order');
+        if (null !== $value) {
             $this->setOrder(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\OrderType::fromKeyValue($v);}, $value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Errors', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Errors');
+        if (null !== $value) {
             $this->setErrors(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\ErrorType::fromKeyValue($v);}, $value));
         }
     }

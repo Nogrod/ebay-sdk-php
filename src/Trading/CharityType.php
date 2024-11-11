@@ -351,31 +351,31 @@ class CharityType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CharityName');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}CharityName');
         if (null !== $value) {
             $this->setCharityName($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DonationPercent');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}DonationPercent');
         if (null !== $value) {
             $this->setDonationPercent($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CharityID');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}CharityID');
         if (null !== $value) {
             $this->setCharityID($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Mission');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Mission');
         if (null !== $value) {
             $this->setMission($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LogoURL');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}LogoURL');
         if (null !== $value) {
             $this->setLogoURL($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Status');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Status');
         if (null !== $value) {
             $this->setStatus($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CharityListing');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}CharityListing');
         if (null !== $value) {
             $this->setCharityListing(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }

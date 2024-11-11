@@ -105,11 +105,11 @@ class MyMessagesFolderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FolderID');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}FolderID');
         if (null !== $value) {
             $this->setFolderID($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FolderName');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}FolderName');
         if (null !== $value) {
             $this->setFolderName($value);
         }

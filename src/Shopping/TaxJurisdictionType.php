@@ -167,15 +167,15 @@ class TaxJurisdictionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}JurisdictionID');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}JurisdictionID');
         if (null !== $value) {
             $this->setJurisdictionID($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SalesTaxPercent');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}SalesTaxPercent');
         if (null !== $value) {
             $this->setSalesTaxPercent($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingIncludedInTax');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingIncludedInTax');
         if (null !== $value) {
             $this->setShippingIncludedInTax(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }

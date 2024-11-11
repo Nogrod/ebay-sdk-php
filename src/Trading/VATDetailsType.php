@@ -286,23 +286,23 @@ class VATDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BusinessSeller');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}BusinessSeller');
         if (null !== $value) {
             $this->setBusinessSeller(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RestrictedToBusiness');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}RestrictedToBusiness');
         if (null !== $value) {
             $this->setRestrictedToBusiness(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}VATPercent');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}VATPercent');
         if (null !== $value) {
             $this->setVATPercent($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}VATSite');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}VATSite');
         if (null !== $value) {
             $this->setVATSite($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}VATID');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}VATID');
         if (null !== $value) {
             $this->setVATID($value);
         }

@@ -155,13 +155,13 @@ class VeROReportItemsRequestType extends AbstractRequestType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RightsOwnerID');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}RightsOwnerID');
         if (null !== $value) {
             $this->setRightsOwnerID($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReportItems', true);
-        if (null !== $value && !empty($value)) {
-            $this->setReportItems(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\VeROReportItemType::fromKeyValue(Func::mapArray($v, '{urn:ebay:apis:eBLBaseComponents}ReportItem'));}, $value));
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReportItems');
+        if (null !== $value) {
+            $this->setReportItems(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\VeROReportItemType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}ReportItem'));}, $value));
         }
     }
 }

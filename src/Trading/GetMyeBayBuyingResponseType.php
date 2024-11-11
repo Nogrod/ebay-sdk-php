@@ -653,52 +653,52 @@ class GetMyeBayBuyingResponseType extends AbstractResponseType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BuyingSummary');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}BuyingSummary');
         if (null !== $value) {
             $this->setBuyingSummary(\Nogrod\eBaySDK\Trading\BuyingSummaryType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}WatchList');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}WatchList');
         if (null !== $value) {
             $this->setWatchList(\Nogrod\eBaySDK\Trading\PaginatedItemArrayType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BidList');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}BidList');
         if (null !== $value) {
             $this->setBidList(\Nogrod\eBaySDK\Trading\PaginatedItemArrayType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BestOfferList');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}BestOfferList');
         if (null !== $value) {
             $this->setBestOfferList(\Nogrod\eBaySDK\Trading\PaginatedItemArrayType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}WonList');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}WonList');
         if (null !== $value) {
             $this->setWonList(\Nogrod\eBaySDK\Trading\PaginatedOrderTransactionArrayType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LostList');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}LostList');
         if (null !== $value) {
             $this->setLostList(\Nogrod\eBaySDK\Trading\PaginatedItemArrayType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FavoriteSearches');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}FavoriteSearches');
         if (null !== $value) {
             $this->setFavoriteSearches(\Nogrod\eBaySDK\Trading\MyeBayFavoriteSearchListType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FavoriteSellers');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}FavoriteSellers');
         if (null !== $value) {
             $this->setFavoriteSellers(\Nogrod\eBaySDK\Trading\MyeBayFavoriteSellerListType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SecondChanceOffer', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SecondChanceOffer');
+        if (null !== $value) {
             $this->setSecondChanceOffer(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\ItemType::fromKeyValue($v);}, $value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DeletedFromWonList');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}DeletedFromWonList');
         if (null !== $value) {
             $this->setDeletedFromWonList(\Nogrod\eBaySDK\Trading\PaginatedOrderTransactionArrayType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DeletedFromLostList');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}DeletedFromLostList');
         if (null !== $value) {
             $this->setDeletedFromLostList(\Nogrod\eBaySDK\Trading\PaginatedItemArrayType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UserDefinedList', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UserDefinedList');
+        if (null !== $value) {
             $this->setUserDefinedList(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\UserDefinedListType::fromKeyValue($v);}, $value));
         }
     }

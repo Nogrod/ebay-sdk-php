@@ -199,19 +199,19 @@ class ProductSuggestionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Title');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Title');
         if (null !== $value) {
             $this->setTitle($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EPID');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}EPID');
         if (null !== $value) {
             $this->setEPID($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}StockPhoto');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}StockPhoto');
         if (null !== $value) {
             $this->setStockPhoto($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Recommended');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Recommended');
         if (null !== $value) {
             $this->setRecommended(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }

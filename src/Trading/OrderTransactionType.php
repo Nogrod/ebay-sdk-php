@@ -107,11 +107,11 @@ class OrderTransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Order');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}Order');
         if (null !== $value) {
             $this->setOrder(\Nogrod\eBaySDK\Trading\OrderType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Transaction');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}Transaction');
         if (null !== $value) {
             $this->setTransaction(\Nogrod\eBaySDK\Trading\TransactionType::fromKeyValue($value));
         }

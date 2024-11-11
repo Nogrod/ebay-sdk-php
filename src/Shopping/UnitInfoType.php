@@ -120,11 +120,11 @@ class UnitInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UnitType');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}UnitType');
         if (null !== $value) {
             $this->setUnitType($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UnitQuantity');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}UnitQuantity');
         if (null !== $value) {
             $this->setUnitQuantity($value);
         }

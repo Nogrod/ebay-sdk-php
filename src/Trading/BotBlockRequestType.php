@@ -105,11 +105,11 @@ class BotBlockRequestType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BotBlockToken');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}BotBlockToken');
         if (null !== $value) {
             $this->setBotBlockToken($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BotBlockUserInput');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}BotBlockUserInput');
         if (null !== $value) {
             $this->setBotBlockUserInput($value);
         }

@@ -292,31 +292,31 @@ class GetShippingDiscountProfilesResponseType extends AbstractResponseType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CurrencyID');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}CurrencyID');
         if (null !== $value) {
             $this->setCurrencyID($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FlatShippingDiscount');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}FlatShippingDiscount');
         if (null !== $value) {
             $this->setFlatShippingDiscount(\Nogrod\eBaySDK\Trading\FlatShippingDiscountType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CalculatedShippingDiscount');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}CalculatedShippingDiscount');
         if (null !== $value) {
             $this->setCalculatedShippingDiscount(\Nogrod\eBaySDK\Trading\CalculatedShippingDiscountType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PromotionalShippingDiscount');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}PromotionalShippingDiscount');
         if (null !== $value) {
             $this->setPromotionalShippingDiscount(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CalculatedHandlingDiscount');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}CalculatedHandlingDiscount');
         if (null !== $value) {
             $this->setCalculatedHandlingDiscount(\Nogrod\eBaySDK\Trading\CalculatedHandlingDiscountType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PromotionalShippingDiscountDetails');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}PromotionalShippingDiscountDetails');
         if (null !== $value) {
             $this->setPromotionalShippingDiscountDetails(\Nogrod\eBaySDK\Trading\PromotionalShippingDiscountDetailsType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CombinedDuration');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}CombinedDuration');
         if (null !== $value) {
             $this->setCombinedDuration($value);
         }

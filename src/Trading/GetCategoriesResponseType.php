@@ -407,31 +407,31 @@ class GetCategoriesResponseType extends AbstractResponseType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CategoryArray', true);
-        if (null !== $value && !empty($value)) {
-            $this->setCategoryArray(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\CategoryType::fromKeyValue(Func::mapArray($v, '{urn:ebay:apis:eBLBaseComponents}Category'));}, $value));
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CategoryArray');
+        if (null !== $value) {
+            $this->setCategoryArray(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\CategoryType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}Category'));}, $value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CategoryCount');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}CategoryCount');
         if (null !== $value) {
             $this->setCategoryCount($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UpdateTime');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}UpdateTime');
         if (null !== $value) {
             $this->setUpdateTime(new \DateTime($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CategoryVersion');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}CategoryVersion');
         if (null !== $value) {
             $this->setCategoryVersion($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReservePriceAllowed');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReservePriceAllowed');
         if (null !== $value) {
             $this->setReservePriceAllowed(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MinimumReservePrice');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}MinimumReservePrice');
         if (null !== $value) {
             $this->setMinimumReservePrice($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReduceReserveAllowed');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReduceReserveAllowed');
         if (null !== $value) {
             $this->setReduceReserveAllowed(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }

@@ -208,12 +208,12 @@ class ASQPreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ResetDefaultSubjects');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ResetDefaultSubjects');
         if (null !== $value) {
             $this->setResetDefaultSubjects(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Subject', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Subject');
+        if (null !== $value) {
             $this->setSubject($value);
         }
     }

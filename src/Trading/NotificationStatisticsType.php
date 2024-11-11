@@ -232,23 +232,23 @@ class NotificationStatisticsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DeliveredCount');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}DeliveredCount');
         if (null !== $value) {
             $this->setDeliveredCount($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}QueuedNewCount');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}QueuedNewCount');
         if (null !== $value) {
             $this->setQueuedNewCount($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}QueuedPendingCount');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}QueuedPendingCount');
         if (null !== $value) {
             $this->setQueuedPendingCount($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExpiredCount');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExpiredCount');
         if (null !== $value) {
             $this->setExpiredCount($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ErrorCount');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ErrorCount');
         if (null !== $value) {
             $this->setErrorCount($value);
         }

@@ -130,11 +130,11 @@ class CategoryGroupType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Name');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Name');
         if (null !== $value) {
             $this->setName($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}IsDefault');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}IsDefault');
         if (null !== $value) {
             $this->setIsDefault(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }

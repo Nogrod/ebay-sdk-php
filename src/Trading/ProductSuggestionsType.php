@@ -129,8 +129,8 @@ class ProductSuggestionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ProductSuggestion', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ProductSuggestion');
+        if (null !== $value) {
             $this->setProductSuggestion(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\ProductSuggestionType::fromKeyValue($v);}, $value));
         }
     }

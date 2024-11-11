@@ -69,7 +69,7 @@ class ConsolidateShippingProfilesResponseType extends BaseResponseType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}Job');
+        $value = Func::mapObject($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}Job');
         if (null !== $value) {
             $this->setJob(\Nogrod\eBaySDK\BusinessPoliciesManagement\ConsolidationJobType::fromKeyValue($value));
         }

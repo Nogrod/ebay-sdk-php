@@ -267,23 +267,23 @@ class UserIdPasswordType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AppId');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}AppId');
         if (null !== $value) {
             $this->setAppId($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DevId');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}DevId');
         if (null !== $value) {
             $this->setDevId($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AuthCert');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}AuthCert');
         if (null !== $value) {
             $this->setAuthCert($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Username');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Username');
         if (null !== $value) {
             $this->setUsername($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Password');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Password');
         if (null !== $value) {
             $this->setPassword($value);
         }

@@ -135,7 +135,7 @@ class GetSearchKeywordsRecommendationRequestType extends BaseServiceRequestType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}keywords');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}keywords');
         if (null !== $value) {
             $this->setKeywords($value);
         }

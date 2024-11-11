@@ -105,11 +105,11 @@ class MultiLegShippingServiceType implements \Sabre\Xml\XmlSerializable, \Sabre\
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingService');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingService');
         if (null !== $value) {
             $this->setShippingService($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TotalShippingCost');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}TotalShippingCost');
         if (null !== $value) {
             $this->setTotalShippingCost(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
         }

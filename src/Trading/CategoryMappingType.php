@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Trading;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing CategoryMappingType
  *
@@ -115,5 +117,13 @@ class CategoryMappingType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     public function setKeyValue($keyValue)
     {
+        $value = Func::mapValue($keyValue, 'oldID');
+        if (null !== $value) {
+            $this->setOldID($value);
+        }
+        $value = Func::mapValue($keyValue, 'id');
+        if (null !== $value) {
+            $this->setId($value);
+        }
     }
 }

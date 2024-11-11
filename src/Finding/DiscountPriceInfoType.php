@@ -188,23 +188,23 @@ class DiscountPriceInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}originalRetailPrice');
+        $value = Func::mapObject($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}originalRetailPrice');
         if (null !== $value) {
             $this->setOriginalRetailPrice(\Nogrod\eBaySDK\Finding\AmountType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}minimumAdvertisedPriceExposure');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}minimumAdvertisedPriceExposure');
         if (null !== $value) {
             $this->setMinimumAdvertisedPriceExposure($value);
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}pricingTreatment');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}pricingTreatment');
         if (null !== $value) {
             $this->setPricingTreatment($value);
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}soldOnEbay');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}soldOnEbay');
         if (null !== $value) {
             $this->setSoldOnEbay(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}soldOffEbay');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}soldOffEbay');
         if (null !== $value) {
             $this->setSoldOffEbay(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }

@@ -93,11 +93,11 @@ class ItemAttributeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}name');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}name');
         if (null !== $value) {
             $this->setName($value);
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}value');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}value');
         if (null !== $value) {
             $this->setValue($value);
         }

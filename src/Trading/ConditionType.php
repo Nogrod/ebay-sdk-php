@@ -117,11 +117,11 @@ class ConditionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ID');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ID');
         if (null !== $value) {
             $this->setID($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DisplayName');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}DisplayName');
         if (null !== $value) {
             $this->setDisplayName($value);
         }

@@ -411,35 +411,35 @@ class MyeBaySelectionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Include');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Include');
         if (null !== $value) {
             $this->setInclude(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}IncludeItemCount');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}IncludeItemCount');
         if (null !== $value) {
             $this->setIncludeItemCount(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}IncludeFavoriteSearcheCount');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}IncludeFavoriteSearcheCount');
         if (null !== $value) {
             $this->setIncludeFavoriteSearcheCount(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}IncludeFavoriteSellerCount');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}IncludeFavoriteSellerCount');
         if (null !== $value) {
             $this->setIncludeFavoriteSellerCount(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Sort');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Sort');
         if (null !== $value) {
             $this->setSort($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MaxResults');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}MaxResults');
         if (null !== $value) {
             $this->setMaxResults($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UserDefinedListName');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}UserDefinedListName');
         if (null !== $value) {
             $this->setUserDefinedListName($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}IncludeListContents');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}IncludeListContents');
         if (null !== $value) {
             $this->setIncludeListContents(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }

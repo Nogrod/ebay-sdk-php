@@ -110,8 +110,8 @@ class MyMessagesMessageArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\X
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Message', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Message');
+        if (null !== $value) {
             $this->setMessage(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\MyMessagesMessageType::fromKeyValue($v);}, $value));
         }
     }

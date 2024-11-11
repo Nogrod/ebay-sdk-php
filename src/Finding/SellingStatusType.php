@@ -415,27 +415,27 @@ class SellingStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}currentPrice');
+        $value = Func::mapObject($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}currentPrice');
         if (null !== $value) {
             $this->setCurrentPrice(\Nogrod\eBaySDK\Finding\AmountType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}convertedCurrentPrice');
+        $value = Func::mapObject($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}convertedCurrentPrice');
         if (null !== $value) {
             $this->setConvertedCurrentPrice(\Nogrod\eBaySDK\Finding\AmountType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}bidCount');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}bidCount');
         if (null !== $value) {
             $this->setBidCount($value);
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}sellingState');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}sellingState');
         if (null !== $value) {
             $this->setSellingState($value);
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}timeLeft');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}timeLeft');
         if (null !== $value) {
             $this->setTimeLeft(new \DateInterval($value));
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}delimiter');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}delimiter');
         if (null !== $value) {
             $this->setDelimiter($value);
         }

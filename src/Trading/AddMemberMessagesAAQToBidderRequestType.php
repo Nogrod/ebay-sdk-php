@@ -111,8 +111,8 @@ class AddMemberMessagesAAQToBidderRequestType extends AbstractRequestType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AddMemberMessagesAAQToBidderRequestContainer', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AddMemberMessagesAAQToBidderRequestContainer');
+        if (null !== $value) {
             $this->setAddMemberMessagesAAQToBidderRequestContainer(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\AddMemberMessagesAAQToBidderRequestContainerType::fromKeyValue($v);}, $value));
         }
     }

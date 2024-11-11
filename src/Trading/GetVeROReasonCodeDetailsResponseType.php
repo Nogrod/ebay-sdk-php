@@ -109,9 +109,9 @@ class GetVeROReasonCodeDetailsResponseType extends AbstractResponseType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}VeROReasonCodeDetails', true);
-        if (null !== $value && !empty($value)) {
-            $this->setVeROReasonCodeDetails(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\VeROSiteDetailType::fromKeyValue(Func::mapArray($v, '{urn:ebay:apis:eBLBaseComponents}VeROSiteDetail'));}, $value));
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}VeROReasonCodeDetails');
+        if (null !== $value) {
+            $this->setVeROReasonCodeDetails(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\VeROSiteDetailType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}VeROSiteDetail'));}, $value));
         }
     }
 }

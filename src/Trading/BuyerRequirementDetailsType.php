@@ -202,19 +202,19 @@ class BuyerRequirementDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShipToRegistrationCountry');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShipToRegistrationCountry');
         if (null !== $value) {
             $this->setShipToRegistrationCountry(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ZeroFeedbackScore');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ZeroFeedbackScore');
         if (null !== $value) {
             $this->setZeroFeedbackScore(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MaximumItemRequirements');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}MaximumItemRequirements');
         if (null !== $value) {
             $this->setMaximumItemRequirements(\Nogrod\eBaySDK\Trading\MaximumItemRequirementsType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MaximumUnpaidItemStrikesInfo');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}MaximumUnpaidItemStrikesInfo');
         if (null !== $value) {
             $this->setMaximumUnpaidItemStrikesInfo(\Nogrod\eBaySDK\Trading\MaximumUnpaidItemStrikesInfoType::fromKeyValue($value));
         }

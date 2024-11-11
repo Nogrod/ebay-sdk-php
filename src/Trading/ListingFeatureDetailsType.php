@@ -488,43 +488,43 @@ class ListingFeatureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BoldTitle');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}BoldTitle');
         if (null !== $value) {
             $this->setBoldTitle($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Border');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Border');
         if (null !== $value) {
             $this->setBorder($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Highlight');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Highlight');
         if (null !== $value) {
             $this->setHighlight($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}GiftIcon');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}GiftIcon');
         if (null !== $value) {
             $this->setGiftIcon($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}HomePageFeatured');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}HomePageFeatured');
         if (null !== $value) {
             $this->setHomePageFeatured($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeaturedFirst');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeaturedFirst');
         if (null !== $value) {
             $this->setFeaturedFirst($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeaturedPlus');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeaturedPlus');
         if (null !== $value) {
             $this->setFeaturedPlus($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ProPack');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ProPack');
         if (null !== $value) {
             $this->setProPack($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DetailVersion');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}DetailVersion');
         if (null !== $value) {
             $this->setDetailVersion($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UpdateTime');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}UpdateTime');
         if (null !== $value) {
             $this->setUpdateTime(new \DateTime($value));
         }

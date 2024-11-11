@@ -307,27 +307,27 @@ class StorefrontType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}StoreCategoryID');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}StoreCategoryID');
         if (null !== $value) {
             $this->setStoreCategoryID($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}StoreCategory2ID');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}StoreCategory2ID');
         if (null !== $value) {
             $this->setStoreCategory2ID($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}StoreCategoryName');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}StoreCategoryName');
         if (null !== $value) {
             $this->setStoreCategoryName($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}StoreCategory2Name');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}StoreCategory2Name');
         if (null !== $value) {
             $this->setStoreCategory2Name($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}StoreURL');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}StoreURL');
         if (null !== $value) {
             $this->setStoreURL($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}StoreName');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}StoreName');
         if (null !== $value) {
             $this->setStoreName($value);
         }

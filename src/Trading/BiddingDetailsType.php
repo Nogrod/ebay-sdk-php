@@ -224,23 +224,23 @@ class BiddingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ConvertedMaxBid');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}ConvertedMaxBid');
         if (null !== $value) {
             $this->setConvertedMaxBid(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MaxBid');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}MaxBid');
         if (null !== $value) {
             $this->setMaxBid(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}QuantityBid');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}QuantityBid');
         if (null !== $value) {
             $this->setQuantityBid($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}QuantityWon');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}QuantityWon');
         if (null !== $value) {
             $this->setQuantityWon($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Winning');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Winning');
         if (null !== $value) {
             $this->setWinning(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }

@@ -425,27 +425,27 @@ class GetDescriptionTemplatesResponseType extends AbstractResponseType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DescriptionTemplate', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DescriptionTemplate');
+        if (null !== $value) {
             $this->setDescriptionTemplate(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\DescriptionTemplateType::fromKeyValue($v);}, $value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LayoutTotal');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}LayoutTotal');
         if (null !== $value) {
             $this->setLayoutTotal($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ObsoleteLayoutID', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ObsoleteLayoutID');
+        if (null !== $value) {
             $this->setObsoleteLayoutID($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ObsoleteThemeID', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ObsoleteThemeID');
+        if (null !== $value) {
             $this->setObsoleteThemeID($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ThemeGroup', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ThemeGroup');
+        if (null !== $value) {
             $this->setThemeGroup(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\ThemeGroupType::fromKeyValue($v);}, $value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ThemeTotal');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ThemeTotal');
         if (null !== $value) {
             $this->setThemeTotal($value);
         }

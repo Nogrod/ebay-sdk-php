@@ -175,15 +175,15 @@ class PaginationInputType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}pageNumber');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}pageNumber');
         if (null !== $value) {
             $this->setPageNumber($value);
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}entriesPerPage');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}entriesPerPage');
         if (null !== $value) {
             $this->setEntriesPerPage($value);
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}delimiter');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}delimiter');
         if (null !== $value) {
             $this->setDelimiter($value);
         }

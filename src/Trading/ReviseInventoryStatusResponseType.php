@@ -226,12 +226,12 @@ class ReviseInventoryStatusResponseType extends AbstractResponseType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}InventoryStatus', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}InventoryStatus');
+        if (null !== $value) {
             $this->setInventoryStatus(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\InventoryStatusType::fromKeyValue($v);}, $value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Fees', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Fees');
+        if (null !== $value) {
             $this->setFees(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\InventoryFeesType::fromKeyValue($v);}, $value));
         }
     }

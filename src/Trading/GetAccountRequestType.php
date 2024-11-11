@@ -593,55 +593,55 @@ class GetAccountRequestType extends AbstractRequestType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AccountHistorySelection');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}AccountHistorySelection');
         if (null !== $value) {
             $this->setAccountHistorySelection($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}InvoiceDate');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}InvoiceDate');
         if (null !== $value) {
             $this->setInvoiceDate(new \DateTime($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BeginDate');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}BeginDate');
         if (null !== $value) {
             $this->setBeginDate(new \DateTime($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EndDate');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}EndDate');
         if (null !== $value) {
             $this->setEndDate(new \DateTime($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Pagination');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}Pagination');
         if (null !== $value) {
             $this->setPagination(\Nogrod\eBaySDK\Trading\PaginationType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExcludeBalance');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExcludeBalance');
         if (null !== $value) {
             $this->setExcludeBalance(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExcludeSummary');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExcludeSummary');
         if (null !== $value) {
             $this->setExcludeSummary(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}IncludeConversionRate');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}IncludeConversionRate');
         if (null !== $value) {
             $this->setIncludeConversionRate(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}IncludeNettedEntries');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}IncludeNettedEntries');
         if (null !== $value) {
             $this->setIncludeNettedEntries(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AccountEntrySortType');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}AccountEntrySortType');
         if (null !== $value) {
             $this->setAccountEntrySortType($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Currency');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Currency');
         if (null !== $value) {
             $this->setCurrency($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemID');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemID');
         if (null !== $value) {
             $this->setItemID($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}OrderID');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}OrderID');
         if (null !== $value) {
             $this->setOrderID($value);
         }

@@ -161,15 +161,15 @@ class FeeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializabl
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Name');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Name');
         if (null !== $value) {
             $this->setName($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Fee');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}Fee');
         if (null !== $value) {
             $this->setFee(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PromotionalDiscount');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}PromotionalDiscount');
         if (null !== $value) {
             $this->setPromotionalDiscount(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
         }

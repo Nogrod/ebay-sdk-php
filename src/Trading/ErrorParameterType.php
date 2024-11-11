@@ -105,7 +105,11 @@ class ErrorParameterType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Value');
+        $value = Func::mapValue($keyValue, 'ParamID');
+        if (null !== $value) {
+            $this->setParamID($value);
+        }
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Value');
         if (null !== $value) {
             $this->setValue($value);
         }

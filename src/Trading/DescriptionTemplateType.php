@@ -253,27 +253,27 @@ class DescriptionTemplateType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}GroupID');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}GroupID');
         if (null !== $value) {
             $this->setGroupID($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ID');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ID');
         if (null !== $value) {
             $this->setID($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ImageURL');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ImageURL');
         if (null !== $value) {
             $this->setImageURL($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Name');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Name');
         if (null !== $value) {
             $this->setName($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TemplateXML');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}TemplateXML');
         if (null !== $value) {
             $this->setTemplateXML($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Type');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Type');
         if (null !== $value) {
             $this->setType($value);
         }

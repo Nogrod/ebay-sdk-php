@@ -110,8 +110,8 @@ class InternationalRefundMethodCodeType implements \Sabre\Xml\XmlSerializable, \
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}InternationalRefundMethod', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}InternationalRefundMethod');
+        if (null !== $value) {
             $this->setInternationalRefundMethod($value);
         }
     }

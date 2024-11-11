@@ -118,7 +118,11 @@ class AspectValueHistogramType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}count');
+        $value = Func::mapValue($keyValue, 'valueName');
+        if (null !== $value) {
+            $this->setValueName($value);
+        }
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}count');
         if (null !== $value) {
             $this->setCount($value);
         }

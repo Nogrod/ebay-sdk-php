@@ -170,11 +170,11 @@ class GetAdFormatLeadsResponseType extends AbstractResponseType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AdFormatLead', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AdFormatLead');
+        if (null !== $value) {
             $this->setAdFormatLead(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\AdFormatLeadType::fromKeyValue($v);}, $value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AdFormatLeadCount');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}AdFormatLeadCount');
         if (null !== $value) {
             $this->setAdFormatLeadCount($value);
         }

@@ -133,11 +133,11 @@ class FetchTokenRequestType extends AbstractRequestType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SecretID');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}SecretID');
         if (null !== $value) {
             $this->setSecretID($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SessionID');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}SessionID');
         if (null !== $value) {
             $this->setSessionID($value);
         }

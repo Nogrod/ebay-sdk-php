@@ -615,35 +615,35 @@ class ShippingInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}shippingServiceCost');
+        $value = Func::mapObject($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}shippingServiceCost');
         if (null !== $value) {
             $this->setShippingServiceCost(\Nogrod\eBaySDK\Finding\AmountType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}shippingType');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}shippingType');
         if (null !== $value) {
             $this->setShippingType($value);
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}shipToLocations', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}shipToLocations');
+        if (null !== $value) {
             $this->setShipToLocations($value);
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}expeditedShipping');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}expeditedShipping');
         if (null !== $value) {
             $this->setExpeditedShipping(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}oneDayShippingAvailable');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}oneDayShippingAvailable');
         if (null !== $value) {
             $this->setOneDayShippingAvailable(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}handlingTime');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}handlingTime');
         if (null !== $value) {
             $this->setHandlingTime($value);
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}intermediatedShipping');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}intermediatedShipping');
         if (null !== $value) {
             $this->setIntermediatedShipping(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}delimiter');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}delimiter');
         if (null !== $value) {
             $this->setDelimiter($value);
         }

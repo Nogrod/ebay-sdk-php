@@ -147,13 +147,13 @@ class GetBidderListResponseType extends AbstractResponseType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Bidder');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}Bidder');
         if (null !== $value) {
             $this->setBidder(\Nogrod\eBaySDK\Trading\UserType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BidItemArray', true);
-        if (null !== $value && !empty($value)) {
-            $this->setBidItemArray(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\ItemType::fromKeyValue(Func::mapArray($v, '{urn:ebay:apis:eBLBaseComponents}Item'));}, $value));
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BidItemArray');
+        if (null !== $value) {
+            $this->setBidItemArray(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\ItemType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}Item'));}, $value));
         }
     }
 }

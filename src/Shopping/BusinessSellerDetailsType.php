@@ -328,35 +328,35 @@ class BusinessSellerDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Address');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}Address');
         if (null !== $value) {
             $this->setAddress(\Nogrod\eBaySDK\Shopping\AddressType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Fax');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Fax');
         if (null !== $value) {
             $this->setFax($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Email');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Email');
         if (null !== $value) {
             $this->setEmail($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AdditionalContactInformation');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}AdditionalContactInformation');
         if (null !== $value) {
             $this->setAdditionalContactInformation($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TradeRegistrationNumber');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}TradeRegistrationNumber');
         if (null !== $value) {
             $this->setTradeRegistrationNumber($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LegalInvoice');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}LegalInvoice');
         if (null !== $value) {
             $this->setLegalInvoice(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TermsAndConditions');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}TermsAndConditions');
         if (null !== $value) {
             $this->setTermsAndConditions($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}VATDetails');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}VATDetails');
         if (null !== $value) {
             $this->setVATDetails(\Nogrod\eBaySDK\Shopping\VATDetailsType::fromKeyValue($value));
         }

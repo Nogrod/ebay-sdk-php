@@ -69,7 +69,7 @@ class GetSessionIDRequestType extends AbstractRequestType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RuName');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}RuName');
         if (null !== $value) {
             $this->setRuName($value);
         }

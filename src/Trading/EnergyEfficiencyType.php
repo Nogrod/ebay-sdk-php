@@ -142,15 +142,15 @@ class EnergyEfficiencyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ImageURL');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ImageURL');
         if (null !== $value) {
             $this->setImageURL($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ImageDescription');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ImageDescription');
         if (null !== $value) {
             $this->setImageDescription($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ProductInformationsheet');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ProductInformationsheet');
         if (null !== $value) {
             $this->setProductInformationsheet($value);
         }

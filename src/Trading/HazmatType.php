@@ -259,19 +259,19 @@ class HazmatType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Pictograms', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Pictograms');
+        if (null !== $value) {
             $this->setPictograms($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SignalWord');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}SignalWord');
         if (null !== $value) {
             $this->setSignalWord($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Statements', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Statements');
+        if (null !== $value) {
             $this->setStatements($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Component');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Component');
         if (null !== $value) {
             $this->setComponent($value);
         }

@@ -106,11 +106,11 @@ class VeROReportItemsResponseType extends AbstractResponseType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}VeROReportPacketID');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}VeROReportPacketID');
         if (null !== $value) {
             $this->setVeROReportPacketID($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}VeROReportPacketStatus');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}VeROReportPacketStatus');
         if (null !== $value) {
             $this->setVeROReportPacketStatus($value);
         }

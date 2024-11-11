@@ -215,15 +215,15 @@ class AuthenticityVerificationType implements \Sabre\Xml\XmlSerializable, \Sabre
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Status');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Status');
         if (null !== $value) {
             $this->setStatus($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}OutcomeReason');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}OutcomeReason');
         if (null !== $value) {
             $this->setOutcomeReason($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ServiceCost');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}ServiceCost');
         if (null !== $value) {
             $this->setServiceCost(\Nogrod\eBaySDK\Trading\ServiceCostType::fromKeyValue($value));
         }

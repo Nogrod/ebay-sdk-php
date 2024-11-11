@@ -497,37 +497,37 @@ class RegulatoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EnergyEfficiencyLabel');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}EnergyEfficiencyLabel');
         if (null !== $value) {
             $this->setEnergyEfficiencyLabel(\Nogrod\eBaySDK\Trading\EnergyEfficiencyType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EconomicOperator');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}EconomicOperator');
         if (null !== $value) {
             $this->setEconomicOperator(\Nogrod\eBaySDK\Trading\EconomicOperatorType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Hazmat');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}Hazmat');
         if (null !== $value) {
             $this->setHazmat(\Nogrod\eBaySDK\Trading\HazmatType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ProductSafety');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}ProductSafety');
         if (null !== $value) {
             $this->setProductSafety(\Nogrod\eBaySDK\Trading\ProductSafetyType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RepairScore');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}RepairScore');
         if (null !== $value) {
             $this->setRepairScore($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Manufacturer');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}Manufacturer');
         if (null !== $value) {
             $this->setManufacturer(\Nogrod\eBaySDK\Trading\ManufacturerType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ResponsiblePersons', true);
-        if (null !== $value && !empty($value)) {
-            $this->setResponsiblePersons(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\ResponsiblePersonType::fromKeyValue(Func::mapArray($v, '{urn:ebay:apis:eBLBaseComponents}ResponsiblePerson'));}, $value));
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ResponsiblePersons');
+        if (null !== $value) {
+            $this->setResponsiblePersons(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\ResponsiblePersonType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}ResponsiblePerson'));}, $value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Documents', true);
-        if (null !== $value && !empty($value)) {
-            $this->setDocuments(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\DocumentType::fromKeyValue(Func::mapArray($v, '{urn:ebay:apis:eBLBaseComponents}Document'));}, $value));
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Documents');
+        if (null !== $value) {
+            $this->setDocuments(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\DocumentType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}Document'));}, $value));
         }
     }
 }

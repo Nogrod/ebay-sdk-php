@@ -373,23 +373,23 @@ class GetCategoryFeaturesRequestType extends AbstractRequestType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CategoryID');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}CategoryID');
         if (null !== $value) {
             $this->setCategoryID($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LevelLimit');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}LevelLimit');
         if (null !== $value) {
             $this->setLevelLimit($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ViewAllNodes');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ViewAllNodes');
         if (null !== $value) {
             $this->setViewAllNodes(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeatureID', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeatureID');
+        if (null !== $value) {
             $this->setFeatureID($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AllFeaturesForCategory');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}AllFeaturesForCategory');
         if (null !== $value) {
             $this->setAllFeaturesForCategory(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }

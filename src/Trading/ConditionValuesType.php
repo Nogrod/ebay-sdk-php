@@ -198,11 +198,11 @@ class ConditionValuesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Condition', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Condition');
+        if (null !== $value) {
             $this->setCondition(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\ConditionType::fromKeyValue($v);}, $value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ConditionHelpURL');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ConditionHelpURL');
         if (null !== $value) {
             $this->setConditionHelpURL($value);
         }

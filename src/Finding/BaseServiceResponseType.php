@@ -262,19 +262,19 @@ class BaseServiceResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}ack');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}ack');
         if (null !== $value) {
             $this->setAck($value);
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}errorMessage', true);
-        if (null !== $value && !empty($value)) {
-            $this->setErrorMessage(array_map(function ($v) {return \Nogrod\eBaySDK\Finding\ErrorDataType::fromKeyValue(Func::mapArray($v, '{http://www.ebay.com/marketplace/search/v1/services}error'));}, $value));
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}errorMessage');
+        if (null !== $value) {
+            $this->setErrorMessage(array_map(function ($v) {return \Nogrod\eBaySDK\Finding\ErrorDataType::fromKeyValue(Func::mapObject($v, '{http://www.ebay.com/marketplace/search/v1/services}error'));}, $value));
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}version');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}version');
         if (null !== $value) {
             $this->setVersion($value);
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}timestamp');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}timestamp');
         if (null !== $value) {
             $this->setTimestamp(new \DateTime($value));
         }

@@ -174,19 +174,19 @@ class FindItemsForFavoriteSearchRequestType extends BaseServiceRequestType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}searchId');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}searchId');
         if (null !== $value) {
             $this->setSearchId($value);
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}searchName');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}searchName');
         if (null !== $value) {
             $this->setSearchName($value);
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}startTimeFrom');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}startTimeFrom');
         if (null !== $value) {
             $this->setStartTimeFrom(new \DateTime($value));
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}paginationInput');
+        $value = Func::mapObject($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}paginationInput');
         if (null !== $value) {
             $this->setPaginationInput(\Nogrod\eBaySDK\Finding\PaginationInputType::fromKeyValue($value));
         }

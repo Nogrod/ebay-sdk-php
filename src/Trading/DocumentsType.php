@@ -112,8 +112,8 @@ class DocumentsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Document', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Document');
+        if (null !== $value) {
             $this->setDocument(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\DocumentType::fromKeyValue($v);}, $value));
         }
     }

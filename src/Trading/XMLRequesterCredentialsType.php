@@ -169,15 +169,15 @@ class XMLRequesterCredentialsType implements \Sabre\Xml\XmlSerializable, \Sabre\
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Username');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Username');
         if (null !== $value) {
             $this->setUsername($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Password');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Password');
         if (null !== $value) {
             $this->setPassword($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}eBayAuthToken');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}eBayAuthToken');
         if (null !== $value) {
             $this->setEBayAuthToken($value);
         }

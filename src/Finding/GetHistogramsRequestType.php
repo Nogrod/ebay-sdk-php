@@ -96,7 +96,7 @@ class GetHistogramsRequestType extends BaseServiceRequestType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}categoryId');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}categoryId');
         if (null !== $value) {
             $this->setCategoryId($value);
         }

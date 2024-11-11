@@ -142,15 +142,15 @@ class ConditionHistogramType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}condition');
+        $value = Func::mapObject($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}condition');
         if (null !== $value) {
             $this->setCondition(\Nogrod\eBaySDK\Finding\ConditionType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}count');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}count');
         if (null !== $value) {
             $this->setCount($value);
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}delimiter');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}delimiter');
         if (null !== $value) {
             $this->setDelimiter($value);
         }

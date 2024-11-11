@@ -111,11 +111,11 @@ class FulfillmentType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FulfillmentBy');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}FulfillmentBy');
         if (null !== $value) {
             $this->setFulfillmentBy($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FulfillmentRefId');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}FulfillmentRefId');
         if (null !== $value) {
             $this->setFulfillmentRefId($value);
         }

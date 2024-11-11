@@ -187,12 +187,12 @@ class MaximumUnpaidItemStrikesInfoDetailsType implements \Sabre\Xml\XmlSerializa
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MaximumUnpaidItemStrikesCount', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}MaximumUnpaidItemStrikesCount');
+        if (null !== $value) {
             $this->setMaximumUnpaidItemStrikesCount($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MaximumUnpaidItemStrikesDuration', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MaximumUnpaidItemStrikesDuration');
+        if (null !== $value) {
             $this->setMaximumUnpaidItemStrikesDuration(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\MaximumUnpaidItemStrikesDurationDetailsType::fromKeyValue($v);}, $value));
         }
     }

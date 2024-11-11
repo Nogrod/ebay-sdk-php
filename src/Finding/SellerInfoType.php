@@ -542,27 +542,27 @@ class SellerInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}sellerUserName');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}sellerUserName');
         if (null !== $value) {
             $this->setSellerUserName($value);
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}feedbackScore');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}feedbackScore');
         if (null !== $value) {
             $this->setFeedbackScore($value);
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}positiveFeedbackPercent');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}positiveFeedbackPercent');
         if (null !== $value) {
             $this->setPositiveFeedbackPercent($value);
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}feedbackRatingStar');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}feedbackRatingStar');
         if (null !== $value) {
             $this->setFeedbackRatingStar($value);
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}topRatedSeller');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}topRatedSeller');
         if (null !== $value) {
             $this->setTopRatedSeller(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}delimiter');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}delimiter');
         if (null !== $value) {
             $this->setDelimiter($value);
         }

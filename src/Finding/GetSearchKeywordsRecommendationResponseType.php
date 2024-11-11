@@ -157,12 +157,12 @@ class GetSearchKeywordsRecommendationResponseType extends BaseServiceResponseTyp
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}keywords');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}keywords');
         if (null !== $value) {
             $this->setKeywords($value);
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}extension', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}extension');
+        if (null !== $value) {
             $this->setExtension(array_map(function ($v) {return \Nogrod\eBaySDK\Finding\ExtensionTypeType::fromKeyValue($v);}, $value));
         }
     }

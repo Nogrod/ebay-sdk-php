@@ -147,12 +147,12 @@ class MyeBayFavoriteSellerListType implements \Sabre\Xml\XmlSerializable, \Sabre
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TotalAvailable');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}TotalAvailable');
         if (null !== $value) {
             $this->setTotalAvailable($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FavoriteSeller', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FavoriteSeller');
+        if (null !== $value) {
             $this->setFavoriteSeller(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\MyeBayFavoriteSellerType::fromKeyValue($v);}, $value));
         }
     }

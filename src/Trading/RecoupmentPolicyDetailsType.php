@@ -191,19 +191,19 @@ class RecoupmentPolicyDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EnforcedOnListingSite');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}EnforcedOnListingSite');
         if (null !== $value) {
             $this->setEnforcedOnListingSite(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EnforcedOnRegistrationSite');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}EnforcedOnRegistrationSite');
         if (null !== $value) {
             $this->setEnforcedOnRegistrationSite(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DetailVersion');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}DetailVersion');
         if (null !== $value) {
             $this->setDetailVersion($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UpdateTime');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}UpdateTime');
         if (null !== $value) {
             $this->setUpdateTime(new \DateTime($value));
         }

@@ -368,31 +368,31 @@ class ErrorType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShortMessage');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShortMessage');
         if (null !== $value) {
             $this->setShortMessage($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LongMessage');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}LongMessage');
         if (null !== $value) {
             $this->setLongMessage($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ErrorCode');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ErrorCode');
         if (null !== $value) {
             $this->setErrorCode($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UserDisplayHint');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}UserDisplayHint');
         if (null !== $value) {
             $this->setUserDisplayHint(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SeverityCode');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}SeverityCode');
         if (null !== $value) {
             $this->setSeverityCode($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ErrorParameters', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ErrorParameters');
+        if (null !== $value) {
             $this->setErrorParameters(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\ErrorParameterType::fromKeyValue($v);}, $value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ErrorClassification');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ErrorClassification');
         if (null !== $value) {
             $this->setErrorClassification($value);
         }

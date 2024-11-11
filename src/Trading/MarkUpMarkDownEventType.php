@@ -160,15 +160,15 @@ class MarkUpMarkDownEventType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Type');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Type');
         if (null !== $value) {
             $this->setType($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Time');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Time');
         if (null !== $value) {
             $this->setTime(new \DateTime($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Reason');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Reason');
         if (null !== $value) {
             $this->setReason($value);
         }

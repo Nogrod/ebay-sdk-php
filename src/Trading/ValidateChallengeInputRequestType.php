@@ -147,15 +147,15 @@ class ValidateChallengeInputRequestType extends AbstractRequestType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ChallengeToken');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ChallengeToken');
         if (null !== $value) {
             $this->setChallengeToken($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UserInput');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}UserInput');
         if (null !== $value) {
             $this->setUserInput($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}KeepTokenValid');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}KeepTokenValid');
         if (null !== $value) {
             $this->setKeepTokenValid(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }

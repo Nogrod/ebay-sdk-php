@@ -200,19 +200,19 @@ class ValidateTestUserRegistrationRequestType extends AbstractRequestType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeedbackScore');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeedbackScore');
         if (null !== $value) {
             $this->setFeedbackScore($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RegistrationDate');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}RegistrationDate');
         if (null !== $value) {
             $this->setRegistrationDate(new \DateTime($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SubscribeSM');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}SubscribeSM');
         if (null !== $value) {
             $this->setSubscribeSM(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SubscribeSMPro');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}SubscribeSMPro');
         if (null !== $value) {
             $this->setSubscribeSMPro(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }

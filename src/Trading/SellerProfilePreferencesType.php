@@ -167,13 +167,13 @@ class SellerProfilePreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerProfileOptedIn');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerProfileOptedIn');
         if (null !== $value) {
             $this->setSellerProfileOptedIn(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SupportedSellerProfiles', true);
-        if (null !== $value && !empty($value)) {
-            $this->setSupportedSellerProfiles(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\SupportedSellerProfileType::fromKeyValue(Func::mapArray($v, '{urn:ebay:apis:eBLBaseComponents}SupportedSellerProfile'));}, $value));
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SupportedSellerProfiles');
+        if (null !== $value) {
+            $this->setSupportedSellerProfiles(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\SupportedSellerProfileType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}SupportedSellerProfile'));}, $value));
         }
     }
 }

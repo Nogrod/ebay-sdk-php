@@ -134,8 +134,8 @@ class NotificationEnableArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}NotificationEnable', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}NotificationEnable');
+        if (null !== $value) {
             $this->setNotificationEnable(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\NotificationEnableType::fromKeyValue($v);}, $value));
         }
     }

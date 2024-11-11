@@ -179,19 +179,19 @@ class BuyerRoleMetricsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PositiveFeedbackLeftCount');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}PositiveFeedbackLeftCount');
         if (null !== $value) {
             $this->setPositiveFeedbackLeftCount($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}NegativeFeedbackLeftCount');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}NegativeFeedbackLeftCount');
         if (null !== $value) {
             $this->setNegativeFeedbackLeftCount($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}NeutralFeedbackLeftCount');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}NeutralFeedbackLeftCount');
         if (null !== $value) {
             $this->setNeutralFeedbackLeftCount($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeedbackLeftPercent');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeedbackLeftPercent');
         if (null !== $value) {
             $this->setFeedbackLeftPercent($value);
         }

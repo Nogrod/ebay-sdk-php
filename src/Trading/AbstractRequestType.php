@@ -1313,47 +1313,47 @@ class AbstractRequestType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DetailLevel', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}DetailLevel');
+        if (null !== $value) {
             $this->setDetailLevel($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ErrorLanguage');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ErrorLanguage');
         if (null !== $value) {
             $this->setErrorLanguage($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MessageID');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}MessageID');
         if (null !== $value) {
             $this->setMessageID($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Version');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Version');
         if (null !== $value) {
             $this->setVersion($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EndUserIP');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}EndUserIP');
         if (null !== $value) {
             $this->setEndUserIP($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ErrorHandling');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ErrorHandling');
         if (null !== $value) {
             $this->setErrorHandling($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}InvocationID');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}InvocationID');
         if (null !== $value) {
             $this->setInvocationID($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}OutputSelector', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}OutputSelector');
+        if (null !== $value) {
             $this->setOutputSelector($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}WarningLevel');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}WarningLevel');
         if (null !== $value) {
             $this->setWarningLevel($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BotBlock');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}BotBlock');
         if (null !== $value) {
             $this->setBotBlock(\Nogrod\eBaySDK\Trading\BotBlockRequestType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RequesterCredentials');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}RequesterCredentials');
         if (null !== $value) {
             $this->setRequesterCredentials(\Nogrod\eBaySDK\Trading\XMLRequesterCredentialsType::fromKeyValue($value));
         }

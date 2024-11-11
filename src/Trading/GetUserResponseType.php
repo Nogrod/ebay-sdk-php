@@ -75,7 +75,7 @@ class GetUserResponseType extends AbstractResponseType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}User');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}User');
         if (null !== $value) {
             $this->setUser(\Nogrod\eBaySDK\Trading\UserType::fromKeyValue($value));
         }

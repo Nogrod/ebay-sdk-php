@@ -110,8 +110,8 @@ class LinkedLineItemArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LinkedLineItem', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}LinkedLineItem');
+        if (null !== $value) {
             $this->setLinkedLineItem(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\LinkedLineItemType::fromKeyValue($v);}, $value));
         }
     }

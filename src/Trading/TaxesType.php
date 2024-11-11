@@ -199,16 +199,16 @@ class TaxesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}eBayReference');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}eBayReference');
         if (null !== $value) {
             $this->setEBayReference(\Nogrod\eBaySDK\Trading\EBayTaxReferenceValueType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TotalTaxAmount');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}TotalTaxAmount');
         if (null !== $value) {
             $this->setTotalTaxAmount(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TaxDetails', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TaxDetails');
+        if (null !== $value) {
             $this->setTaxDetails(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\TaxDetailsType::fromKeyValue($v);}, $value));
         }
     }

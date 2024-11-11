@@ -191,11 +191,15 @@ class SearchResultType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}item', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapValue($keyValue, 'count');
+        if (null !== $value) {
+            $this->setCount($value);
+        }
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}item');
+        if (null !== $value) {
             $this->setItem(array_map(function ($v) {return \Nogrod\eBaySDK\Finding\SearchItemType::fromKeyValue($v);}, $value));
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}delimiter');
+        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}delimiter');
         if (null !== $value) {
             $this->setDelimiter($value);
         }

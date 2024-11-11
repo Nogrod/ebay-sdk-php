@@ -147,8 +147,12 @@ class ListingDurationDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sab
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ListingDuration', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapValue($keyValue, 'Version');
+        if (null !== $value) {
+            $this->setVersion($value);
+        }
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ListingDuration');
+        if (null !== $value) {
             $this->setListingDuration(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\ListingDurationDefinitionType::fromKeyValue($v);}, $value));
         }
     }

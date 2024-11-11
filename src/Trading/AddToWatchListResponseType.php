@@ -106,11 +106,11 @@ class AddToWatchListResponseType extends AbstractResponseType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}WatchListCount');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}WatchListCount');
         if (null !== $value) {
             $this->setWatchListCount($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}WatchListMaximum');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}WatchListMaximum');
         if (null !== $value) {
             $this->setWatchListMaximum($value);
         }

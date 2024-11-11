@@ -142,11 +142,15 @@ class ReasonCodeDetailType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BriefText');
+        $value = Func::mapValue($keyValue, 'codeID');
+        if (null !== $value) {
+            $this->setCodeID($value);
+        }
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}BriefText');
         if (null !== $value) {
             $this->setBriefText($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DetailedText');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}DetailedText');
         if (null !== $value) {
             $this->setDetailedText($value);
         }

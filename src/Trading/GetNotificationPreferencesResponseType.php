@@ -305,24 +305,24 @@ class GetNotificationPreferencesResponseType extends AbstractResponseType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ApplicationDeliveryPreferences');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}ApplicationDeliveryPreferences');
         if (null !== $value) {
             $this->setApplicationDeliveryPreferences(\Nogrod\eBaySDK\Trading\ApplicationDeliveryPreferencesType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DeliveryURLName');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}DeliveryURLName');
         if (null !== $value) {
             $this->setDeliveryURLName($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UserDeliveryPreferenceArray', true);
-        if (null !== $value && !empty($value)) {
-            $this->setUserDeliveryPreferenceArray(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\NotificationEnableType::fromKeyValue(Func::mapArray($v, '{urn:ebay:apis:eBLBaseComponents}NotificationEnable'));}, $value));
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UserDeliveryPreferenceArray');
+        if (null !== $value) {
+            $this->setUserDeliveryPreferenceArray(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\NotificationEnableType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}NotificationEnable'));}, $value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UserData');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}UserData');
         if (null !== $value) {
             $this->setUserData(\Nogrod\eBaySDK\Trading\NotificationUserDataType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EventProperty', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EventProperty');
+        if (null !== $value) {
             $this->setEventProperty(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\NotificationEventPropertyType::fromKeyValue($v);}, $value));
         }
     }

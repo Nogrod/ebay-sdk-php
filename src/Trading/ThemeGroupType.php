@@ -231,19 +231,19 @@ class ThemeGroupType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}GroupID');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}GroupID');
         if (null !== $value) {
             $this->setGroupID($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}GroupName');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}GroupName');
         if (null !== $value) {
             $this->setGroupName($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ThemeID', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ThemeID');
+        if (null !== $value) {
             $this->setThemeID($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ThemeTotal');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ThemeTotal');
         if (null !== $value) {
             $this->setThemeTotal($value);
         }

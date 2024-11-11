@@ -75,7 +75,7 @@ class GetNotificationPreferencesRequestType extends AbstractRequestType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PreferenceLevel');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}PreferenceLevel');
         if (null !== $value) {
             $this->setPreferenceLevel($value);
         }

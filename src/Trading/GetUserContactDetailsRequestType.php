@@ -143,15 +143,15 @@ class GetUserContactDetailsRequestType extends AbstractRequestType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemID');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemID');
         if (null !== $value) {
             $this->setItemID($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ContactID');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ContactID');
         if (null !== $value) {
             $this->setContactID($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RequesterID');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}RequesterID');
         if (null !== $value) {
             $this->setRequesterID($value);
         }

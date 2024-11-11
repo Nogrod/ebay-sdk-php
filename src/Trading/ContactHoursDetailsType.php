@@ -501,39 +501,39 @@ class ContactHoursDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TimeZoneID');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}TimeZoneID');
         if (null !== $value) {
             $this->setTimeZoneID($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Hours1Days');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Hours1Days');
         if (null !== $value) {
             $this->setHours1Days($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Hours1AnyTime');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Hours1AnyTime');
         if (null !== $value) {
             $this->setHours1AnyTime(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Hours1From');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Hours1From');
         if (null !== $value) {
             $this->setHours1From($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Hours1To');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Hours1To');
         if (null !== $value) {
             $this->setHours1To($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Hours2Days');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Hours2Days');
         if (null !== $value) {
             $this->setHours2Days($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Hours2AnyTime');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Hours2AnyTime');
         if (null !== $value) {
             $this->setHours2AnyTime(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Hours2From');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Hours2From');
         if (null !== $value) {
             $this->setHours2From($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Hours2To');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Hours2To');
         if (null !== $value) {
             $this->setHours2To($value);
         }

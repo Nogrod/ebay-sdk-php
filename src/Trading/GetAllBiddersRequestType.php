@@ -147,15 +147,15 @@ class GetAllBiddersRequestType extends AbstractRequestType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemID');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemID');
         if (null !== $value) {
             $this->setItemID($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CallMode');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}CallMode');
         if (null !== $value) {
             $this->setCallMode($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}IncludeBiddingSummary');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}IncludeBiddingSummary');
         if (null !== $value) {
             $this->setIncludeBiddingSummary(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }

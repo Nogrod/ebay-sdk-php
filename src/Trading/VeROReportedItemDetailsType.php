@@ -111,8 +111,8 @@ class VeROReportedItemDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReportedItem', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReportedItem');
+        if (null !== $value) {
             $this->setReportedItem(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\VeROReportedItemType::fromKeyValue($v);}, $value));
         }
     }

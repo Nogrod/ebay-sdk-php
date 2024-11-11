@@ -110,8 +110,8 @@ class FeedbackDetailArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeedbackDetail', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeedbackDetail');
+        if (null !== $value) {
             $this->setFeedbackDetail(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\FeedbackDetailType::fromKeyValue($v);}, $value));
         }
     }

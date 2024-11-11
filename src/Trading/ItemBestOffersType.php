@@ -221,15 +221,15 @@ class ItemBestOffersType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Role');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Role');
         if (null !== $value) {
             $this->setRole($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BestOfferArray', true);
-        if (null !== $value && !empty($value)) {
-            $this->setBestOfferArray(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\BestOfferType::fromKeyValue(Func::mapArray($v, '{urn:ebay:apis:eBLBaseComponents}BestOffer'));}, $value));
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BestOfferArray');
+        if (null !== $value) {
+            $this->setBestOfferArray(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\BestOfferType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}BestOffer'));}, $value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Item');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}Item');
         if (null !== $value) {
             $this->setItem(\Nogrod\eBaySDK\Trading\ItemType::fromKeyValue($value));
         }

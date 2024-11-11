@@ -68,7 +68,7 @@ class DocumentType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DocumentID');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}DocumentID');
         if (null !== $value) {
             $this->setDocumentID($value);
         }

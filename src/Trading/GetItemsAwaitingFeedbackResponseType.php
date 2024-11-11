@@ -75,7 +75,7 @@ class GetItemsAwaitingFeedbackResponseType extends AbstractResponseType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemsAwaitingFeedback');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemsAwaitingFeedback');
         if (null !== $value) {
             $this->setItemsAwaitingFeedback(\Nogrod\eBaySDK\Trading\PaginatedTransactionArrayType::fromKeyValue($value));
         }

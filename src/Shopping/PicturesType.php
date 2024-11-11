@@ -153,12 +153,12 @@ class PicturesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}VariationSpecificName');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}VariationSpecificName');
         if (null !== $value) {
             $this->setVariationSpecificName($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}VariationSpecificPictureSet', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}VariationSpecificPictureSet');
+        if (null !== $value) {
             $this->setVariationSpecificPictureSet(array_map(function ($v) {return \Nogrod\eBaySDK\Shopping\VariationSpecificPictureSetType::fromKeyValue($v);}, $value));
         }
     }

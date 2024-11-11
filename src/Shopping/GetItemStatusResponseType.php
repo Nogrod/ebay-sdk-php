@@ -111,8 +111,8 @@ class GetItemStatusResponseType extends AbstractResponseType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Item', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Item');
+        if (null !== $value) {
             $this->setItem(array_map(function ($v) {return \Nogrod\eBaySDK\Shopping\SimpleItemType::fromKeyValue($v);}, $value));
         }
     }

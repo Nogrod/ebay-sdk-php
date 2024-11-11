@@ -142,15 +142,15 @@ class DigitalDeliverySelectedType implements \Sabre\Xml\XmlSerializable, \Sabre\
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DeliveryMethod');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}DeliveryMethod');
         if (null !== $value) {
             $this->setDeliveryMethod($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DeliveryStatus');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}DeliveryStatus');
         if (null !== $value) {
             $this->setDeliveryStatus(\Nogrod\eBaySDK\Trading\DeliveryStatusType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DeliveryDetails');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}DeliveryDetails');
         if (null !== $value) {
             $this->setDeliveryDetails(\Nogrod\eBaySDK\Trading\DeliveryDetailsType::fromKeyValue($value));
         }

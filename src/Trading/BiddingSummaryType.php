@@ -368,32 +368,32 @@ class BiddingSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SummaryDays');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}SummaryDays');
         if (null !== $value) {
             $this->setSummaryDays($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TotalBids');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}TotalBids');
         if (null !== $value) {
             $this->setTotalBids($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BidActivityWithSeller');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}BidActivityWithSeller');
         if (null !== $value) {
             $this->setBidActivityWithSeller($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BidsToUniqueSellers');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}BidsToUniqueSellers');
         if (null !== $value) {
             $this->setBidsToUniqueSellers($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BidsToUniqueCategories');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}BidsToUniqueCategories');
         if (null !== $value) {
             $this->setBidsToUniqueCategories($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BidRetractions');
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}BidRetractions');
         if (null !== $value) {
             $this->setBidRetractions($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemBidDetails', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemBidDetails');
+        if (null !== $value) {
             $this->setItemBidDetails(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\ItemBidDetailsType::fromKeyValue($v);}, $value));
         }
     }

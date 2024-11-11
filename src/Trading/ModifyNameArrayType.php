@@ -134,8 +134,8 @@ class ModifyNameArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ModifyName', true);
-        if (null !== $value && !empty($value)) {
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ModifyName');
+        if (null !== $value) {
             $this->setModifyName(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\ModifyNameType::fromKeyValue($v);}, $value));
         }
     }
