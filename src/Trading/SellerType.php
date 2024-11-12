@@ -1449,11 +1449,11 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
         if (null !== $value) {
             $this->setTopRatedSeller(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TopRatedSellerDetails');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TopRatedSellerDetails', true);
         if (null !== $value) {
             $this->setTopRatedSellerDetails(array_map(function ($v) {return Func::mapValue($v, '{urn:ebay:apis:eBLBaseComponents}TopRatedProgram');}, $value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RecoupmentPolicyConsent');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RecoupmentPolicyConsent', true);
         if (null !== $value) {
             $this->setRecoupmentPolicyConsent(array_map(function ($v) {return Func::mapValue($v, '{urn:ebay:apis:eBLBaseComponents}Site');}, $value));
         }

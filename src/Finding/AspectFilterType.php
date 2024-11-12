@@ -208,7 +208,7 @@ class AspectFilterType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
         if (null !== $value) {
             $this->setAspectName($value);
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}aspectValueName');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}aspectValueName', true);
         if (null !== $value) {
             $this->setAspectValueName($value);
         }

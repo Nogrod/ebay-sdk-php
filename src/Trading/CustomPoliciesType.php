@@ -402,7 +402,7 @@ class CustomPoliciesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
         if (null !== $value) {
             $this->setRegionalTakeBackPolicies(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\CountryPoliciesType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}CountryPolicies'));}, $value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ProductCompliancePolicyID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ProductCompliancePolicyID', true);
         if (null !== $value) {
             $this->setProductCompliancePolicyID($value);
         }

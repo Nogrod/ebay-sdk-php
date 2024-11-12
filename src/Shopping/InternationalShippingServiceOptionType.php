@@ -511,7 +511,7 @@ class InternationalShippingServiceOptionType implements \Sabre\Xml\XmlSerializab
         if (null !== $value) {
             $this->setShippingServicePriority($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShipsTo');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShipsTo', true);
         if (null !== $value) {
             $this->setShipsTo($value);
         }

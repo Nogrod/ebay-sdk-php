@@ -722,7 +722,7 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
         if (null !== $value) {
             $this->setCODCost(\Nogrod\eBaySDK\Shopping\AmountType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExcludeShipToLocation');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExcludeShipToLocation', true);
         if (null !== $value) {
             $this->setExcludeShipToLocation($value);
         }

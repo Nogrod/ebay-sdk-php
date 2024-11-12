@@ -110,7 +110,7 @@ class DomesticReturnsAcceptedCodeType implements \Sabre\Xml\XmlSerializable, \Sa
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DomesticReturnsAccepted');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DomesticReturnsAccepted', true);
         if (null !== $value) {
             $this->setDomesticReturnsAccepted($value);
         }

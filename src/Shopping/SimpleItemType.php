@@ -4198,7 +4198,7 @@ class SimpleItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
         if (null !== $value) {
             $this->setLocation($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaymentMethods');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaymentMethods', true);
         if (null !== $value) {
             $this->setPaymentMethods($value);
         }
@@ -4206,7 +4206,7 @@ class SimpleItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
         if (null !== $value) {
             $this->setGalleryURL($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PictureURL');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PictureURL', true);
         if (null !== $value) {
             $this->setPictureURL($value);
         }
@@ -4258,7 +4258,7 @@ class SimpleItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
         if (null !== $value) {
             $this->setReserveMet(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShipToLocations');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShipToLocations', true);
         if (null !== $value) {
             $this->setShipToLocations($value);
         }
@@ -4370,7 +4370,7 @@ class SimpleItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
         if (null !== $value) {
             $this->setBusinessSellerDetails(\Nogrod\eBaySDK\Shopping\BusinessSellerDetailsType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaymentAllowedSite');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaymentAllowedSite', true);
         if (null !== $value) {
             $this->setPaymentAllowedSite($value);
         }
@@ -4410,7 +4410,7 @@ class SimpleItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
         if (null !== $value) {
             $this->setDiscountPriceInfo(\Nogrod\eBaySDK\Shopping\DiscountPriceInfoType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExcludeShipToLocation');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExcludeShipToLocation', true);
         if (null !== $value) {
             $this->setExcludeShipToLocation($value);
         }

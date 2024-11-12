@@ -308,7 +308,7 @@ class ReviseFixedPriceItemRequestType extends AbstractRequestType
         if (null !== $value) {
             $this->setItem(\Nogrod\eBaySDK\Trading\ItemType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DeletedField');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DeletedField', true);
         if (null !== $value) {
             $this->setDeletedField($value);
         }

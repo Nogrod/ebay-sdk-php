@@ -623,7 +623,7 @@ class ShippingInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
         if (null !== $value) {
             $this->setShippingType($value);
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}shipToLocations');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}shipToLocations', true);
         if (null !== $value) {
             $this->setShipToLocations($value);
         }

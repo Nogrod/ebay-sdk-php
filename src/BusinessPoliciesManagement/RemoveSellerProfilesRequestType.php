@@ -111,7 +111,7 @@ class RemoveSellerProfilesRequestType extends BaseRequestType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}profileIds');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}profileIds', true);
         if (null !== $value) {
             $this->setProfileIds($value);
         }

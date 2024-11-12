@@ -417,7 +417,7 @@ class UploadSiteHostedPicturesRequestType extends AbstractRequestType
         if (null !== $value) {
             $this->setPictureUploadPolicy($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExternalPictureURL');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExternalPictureURL', true);
         if (null !== $value) {
             $this->setExternalPictureURL($value);
         }

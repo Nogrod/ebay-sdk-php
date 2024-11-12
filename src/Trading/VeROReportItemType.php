@@ -495,11 +495,11 @@ class VeROReportItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
         if (null !== $value) {
             $this->setCopyEmailToRightsOwner(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Region');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Region', true);
         if (null !== $value) {
             $this->setRegion($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Country');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Country', true);
         if (null !== $value) {
             $this->setCountry($value);
         }

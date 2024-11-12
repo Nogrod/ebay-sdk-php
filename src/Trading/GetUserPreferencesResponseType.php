@@ -947,7 +947,7 @@ class GetUserPreferencesResponseType extends AbstractResponseType
         if (null !== $value) {
             $this->setUnpaidItemAssistancePreferences(\Nogrod\eBaySDK\Trading\UnpaidItemAssistancePreferencesType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerExcludeShipToLocationPreferences');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerExcludeShipToLocationPreferences', true);
         if (null !== $value) {
             $this->setSellerExcludeShipToLocationPreferences(array_map(function ($v) {return Func::mapValue($v, '{urn:ebay:apis:eBLBaseComponents}ExcludeShipToLocation');}, $value));
         }

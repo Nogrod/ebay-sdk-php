@@ -417,7 +417,7 @@ class SiteBuyerRequirementDetailsType implements \Sabre\Xml\XmlSerializable, \Sa
         if (null !== $value) {
             $this->setMaximumUnpaidItemStrikesInfo(\Nogrod\eBaySDK\Trading\MaximumUnpaidItemStrikesInfoDetailsType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MinimumFeedbackScore');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MinimumFeedbackScore', true);
         if (null !== $value) {
             $this->setMinimumFeedbackScore(array_map(function ($v) {return Func::mapValue($v, '{urn:ebay:apis:eBLBaseComponents}FeedbackScore');}, $value));
         }

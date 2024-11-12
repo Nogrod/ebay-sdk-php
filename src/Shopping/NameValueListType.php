@@ -172,7 +172,7 @@ class NameValueListType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
         if (null !== $value) {
             $this->setName($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Value');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Value', true);
         if (null !== $value) {
             $this->setValue($value);
         }

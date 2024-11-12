@@ -307,7 +307,7 @@ class RespondToBestOfferRequestType extends AbstractRequestType
         if (null !== $value) {
             $this->setItemID($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BestOfferID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BestOfferID', true);
         if (null !== $value) {
             $this->setBestOfferID($value);
         }

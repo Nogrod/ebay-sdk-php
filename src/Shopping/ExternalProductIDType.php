@@ -206,7 +206,7 @@ class ExternalProductIDType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
         if (null !== $value) {
             $this->setType($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AlternateValue');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AlternateValue', true);
         if (null !== $value) {
             $this->setAlternateValue($value);
         }

@@ -524,7 +524,7 @@ class AddItemResponseType extends AbstractResponseType
         if (null !== $value) {
             $this->setCategory2ID($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DiscountReason');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DiscountReason', true);
         if (null !== $value) {
             $this->setDiscountReason($value);
         }

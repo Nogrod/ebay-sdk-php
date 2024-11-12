@@ -128,7 +128,7 @@ class PictogramsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Pictogram');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Pictogram', true);
         if (null !== $value) {
             $this->setPictogram($value);
         }

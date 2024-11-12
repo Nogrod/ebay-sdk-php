@@ -1212,11 +1212,11 @@ class ShippingServiceDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
         if (null !== $value) {
             $this->setShippingTimeMin($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ServiceType');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ServiceType', true);
         if (null !== $value) {
             $this->setServiceType($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingPackage');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingPackage', true);
         if (null !== $value) {
             $this->setShippingPackage($value);
         }
@@ -1232,7 +1232,7 @@ class ShippingServiceDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
         if (null !== $value) {
             $this->setSurchargeApplicable(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingCarrier');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingCarrier', true);
         if (null !== $value) {
             $this->setShippingCarrier($value);
         }

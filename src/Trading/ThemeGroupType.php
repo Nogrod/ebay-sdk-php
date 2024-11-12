@@ -239,7 +239,7 @@ class ThemeGroupType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
         if (null !== $value) {
             $this->setGroupName($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ThemeID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ThemeID', true);
         if (null !== $value) {
             $this->setThemeID($value);
         }

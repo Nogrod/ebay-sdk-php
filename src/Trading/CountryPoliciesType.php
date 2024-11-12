@@ -178,7 +178,7 @@ class CountryPoliciesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
         if (null !== $value) {
             $this->setCountry($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PolicyID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PolicyID', true);
         if (null !== $value) {
             $this->setPolicyID($value);
         }

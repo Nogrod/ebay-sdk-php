@@ -178,7 +178,7 @@ class VideoDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}VideoID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}VideoID', true);
         if (null !== $value) {
             $this->setVideoID($value);
         }

@@ -593,7 +593,7 @@ class GetSellerTransactionsRequestType extends AbstractRequestType
         if (null !== $value) {
             $this->setIncludeContainingOrder(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SKUArray');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SKUArray', true);
         if (null !== $value) {
             $this->setSKUArray(array_map(function ($v) {return Func::mapValue($v, '{urn:ebay:apis:eBLBaseComponents}SKU');}, $value));
         }

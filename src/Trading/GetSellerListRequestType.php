@@ -693,7 +693,7 @@ class GetSellerListRequestType extends AbstractRequestType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MotorsDealerUsers');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MotorsDealerUsers', true);
         if (null !== $value) {
             $this->setMotorsDealerUsers(array_map(function ($v) {return Func::mapValue($v, '{urn:ebay:apis:eBLBaseComponents}UserID');}, $value));
         }
@@ -725,7 +725,7 @@ class GetSellerListRequestType extends AbstractRequestType
         if (null !== $value) {
             $this->setGranularityLevel($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SKUArray');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SKUArray', true);
         if (null !== $value) {
             $this->setSKUArray(array_map(function ($v) {return Func::mapValue($v, '{urn:ebay:apis:eBLBaseComponents}SKU');}, $value));
         }

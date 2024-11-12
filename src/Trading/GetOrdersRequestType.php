@@ -640,7 +640,7 @@ class GetOrdersRequestType extends AbstractRequestType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}OrderIDArray');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}OrderIDArray', true);
         if (null !== $value) {
             $this->setOrderIDArray(array_map(function ($v) {return Func::mapValue($v, '{urn:ebay:apis:eBLBaseComponents}OrderID');}, $value));
         }

@@ -113,7 +113,7 @@ class MinimumFeedbackScoreDetailsType implements \Sabre\Xml\XmlSerializable, \Sa
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeedbackScore');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeedbackScore', true);
         if (null !== $value) {
             $this->setFeedbackScore($value);
         }

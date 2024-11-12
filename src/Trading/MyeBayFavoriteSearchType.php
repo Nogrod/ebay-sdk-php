@@ -1425,7 +1425,7 @@ class MyeBayFavoriteSearchType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
         if (null !== $value) {
             $this->setBidCountMin($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SearchFlag');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SearchFlag', true);
         if (null !== $value) {
             $this->setSearchFlag($value);
         }
@@ -1433,11 +1433,11 @@ class MyeBayFavoriteSearchType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
         if (null !== $value) {
             $this->setPreferredLocation($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerID', true);
         if (null !== $value) {
             $this->setSellerID($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerIDExclude');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerIDExclude', true);
         if (null !== $value) {
             $this->setSellerIDExclude($value);
         }

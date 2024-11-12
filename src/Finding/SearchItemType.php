@@ -1995,7 +1995,7 @@ class SearchItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
         if (null !== $value) {
             $this->setProductId(\Nogrod\eBaySDK\Finding\ProductIdType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}paymentMethod');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}paymentMethod', true);
         if (null !== $value) {
             $this->setPaymentMethod($value);
         }
@@ -2039,7 +2039,7 @@ class SearchItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
         if (null !== $value) {
             $this->setReturnsAccepted(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}galleryPlusPictureURL');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}galleryPlusPictureURL', true);
         if (null !== $value) {
             $this->setGalleryPlusPictureURL($value);
         }
@@ -2087,7 +2087,7 @@ class SearchItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
         if (null !== $value) {
             $this->setDelimiter($value);
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}eekStatus');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}eekStatus', true);
         if (null !== $value) {
             $this->setEekStatus($value);
         }

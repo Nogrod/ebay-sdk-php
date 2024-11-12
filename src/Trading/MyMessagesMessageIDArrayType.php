@@ -110,7 +110,7 @@ class MyMessagesMessageIDArrayType implements \Sabre\Xml\XmlSerializable, \Sabre
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MessageID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MessageID', true);
         if (null !== $value) {
             $this->setMessageID($value);
         }

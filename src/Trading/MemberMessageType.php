@@ -681,7 +681,7 @@ class MemberMessageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
         if (null !== $value) {
             $this->setSenderEmail($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RecipientID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RecipientID', true);
         if (null !== $value) {
             $this->setRecipientID($value);
         }

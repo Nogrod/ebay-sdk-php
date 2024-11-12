@@ -110,7 +110,7 @@ class RecoupmentPolicyConsentType implements \Sabre\Xml\XmlSerializable, \Sabre\
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Site');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Site', true);
         if (null !== $value) {
             $this->setSite($value);
         }

@@ -690,7 +690,7 @@ class FindProductsRequestType extends AbstractRequestType
         if (null !== $value) {
             $this->setAvailableItemsOnly(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DomainName');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DomainName', true);
         if (null !== $value) {
             $this->setDomainName($value);
         }

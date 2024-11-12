@@ -281,11 +281,11 @@ class ReviseMyMessagesFoldersRequestType extends AbstractRequestType
         if (null !== $value) {
             $this->setOperation($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FolderID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FolderID', true);
         if (null !== $value) {
             $this->setFolderID($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FolderName');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FolderName', true);
         if (null !== $value) {
             $this->setFolderName($value);
         }

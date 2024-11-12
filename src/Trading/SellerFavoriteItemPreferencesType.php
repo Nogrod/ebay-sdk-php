@@ -356,7 +356,7 @@ class SellerFavoriteItemPreferencesType implements \Sabre\Xml\XmlSerializable, \
         if (null !== $value) {
             $this->setMaxPrice(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FavoriteItemID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FavoriteItemID', true);
         if (null !== $value) {
             $this->setFavoriteItemID($value);
         }

@@ -452,7 +452,7 @@ class ItemFilterType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
         if (null !== $value) {
             $this->setName($value);
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}value');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}value', true);
         if (null !== $value) {
             $this->setValue($value);
         }

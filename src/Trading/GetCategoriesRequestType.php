@@ -299,7 +299,7 @@ class GetCategoriesRequestType extends AbstractRequestType
         if (null !== $value) {
             $this->setCategorySiteID($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CategoryParent');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CategoryParent', true);
         if (null !== $value) {
             $this->setCategoryParent($value);
         }

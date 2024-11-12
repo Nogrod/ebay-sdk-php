@@ -434,7 +434,7 @@ class VerifyRelistItemResponseType extends AbstractResponseType
         if (null !== $value) {
             $this->setEndTime(new \DateTime($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DiscountReason');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DiscountReason', true);
         if (null !== $value) {
             $this->setDiscountReason($value);
         }

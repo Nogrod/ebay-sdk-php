@@ -1332,7 +1332,7 @@ class ShippingPolicyInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
         if (null !== $value) {
             $this->setShippingOption($value);
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}excludeShipToLocation');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}excludeShipToLocation', true);
         if (null !== $value) {
             $this->setExcludeShipToLocation($value);
         }
@@ -1344,7 +1344,7 @@ class ShippingPolicyInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
         if (null !== $value) {
             $this->setFreightShipping(\Nogrod\eBaySDK\BusinessPoliciesManagement\FreightShippingType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}shipToLocations');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}shipToLocations', true);
         if (null !== $value) {
             $this->setShipToLocations($value);
         }

@@ -191,7 +191,7 @@ class ConditionDescriptorType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
         if (null !== $value) {
             $this->setName($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Value');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Value', true);
         if (null !== $value) {
             $this->setValue($value);
         }

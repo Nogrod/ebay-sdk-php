@@ -110,7 +110,7 @@ class StoreOwnerExtendedListingDurationsType implements \Sabre\Xml\XmlSerializab
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Duration');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Duration', true);
         if (null !== $value) {
             $this->setDuration($value);
         }

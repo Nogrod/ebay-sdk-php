@@ -759,7 +759,7 @@ class SendInvoiceRequestType extends AbstractRequestType
         if (null !== $value) {
             $this->setSalesTax(\Nogrod\eBaySDK\Trading\SalesTaxType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaymentMethods');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaymentMethods', true);
         if (null !== $value) {
             $this->setPaymentMethods($value);
         }

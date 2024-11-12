@@ -2183,7 +2183,7 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         if (null !== $value) {
             $this->setBusinessRole($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UserSubscription');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UserSubscription', true);
         if (null !== $value) {
             $this->setUserSubscription($value);
         }

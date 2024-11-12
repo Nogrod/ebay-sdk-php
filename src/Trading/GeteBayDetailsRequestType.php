@@ -113,7 +113,7 @@ class GeteBayDetailsRequestType extends AbstractRequestType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DetailName');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DetailName', true);
         if (null !== $value) {
             $this->setDetailName($value);
         }

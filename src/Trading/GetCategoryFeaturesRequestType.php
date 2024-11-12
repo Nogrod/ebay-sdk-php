@@ -385,7 +385,7 @@ class GetCategoryFeaturesRequestType extends AbstractRequestType
         if (null !== $value) {
             $this->setViewAllNodes(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeatureID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeatureID', true);
         if (null !== $value) {
             $this->setFeatureID($value);
         }

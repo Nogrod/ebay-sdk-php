@@ -128,7 +128,7 @@ class MyMessagesExternalMessageIDArrayType implements \Sabre\Xml\XmlSerializable
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExternalMessageID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExternalMessageID', true);
         if (null !== $value) {
             $this->setExternalMessageID($value);
         }

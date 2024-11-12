@@ -864,7 +864,7 @@ class FindItemsIneBayStoresRequestType extends BaseFindingServiceRequestType
         if (null !== $value) {
             $this->setItemFilter(array_map(function ($v) {return \Nogrod\eBaySDK\Finding\ItemFilterType::fromKeyValue($v);}, $value));
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}outputSelector');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}outputSelector', true);
         if (null !== $value) {
             $this->setOutputSelector($value);
         }
@@ -876,7 +876,7 @@ class FindItemsIneBayStoresRequestType extends BaseFindingServiceRequestType
         if (null !== $value) {
             $this->setDomainFilter(array_map(function ($v) {return \Nogrod\eBaySDK\Finding\DomainFilterType::fromKeyValue($v);}, $value));
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}categoryId');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}categoryId', true);
         if (null !== $value) {
             $this->setCategoryId($value);
         }

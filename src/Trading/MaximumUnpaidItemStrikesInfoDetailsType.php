@@ -187,7 +187,7 @@ class MaximumUnpaidItemStrikesInfoDetailsType implements \Sabre\Xml\XmlSerializa
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MaximumUnpaidItemStrikesCount');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MaximumUnpaidItemStrikesCount', true);
         if (null !== $value) {
             $this->setMaximumUnpaidItemStrikesCount(array_map(function ($v) {return Func::mapValue($v, '{urn:ebay:apis:eBLBaseComponents}Count');}, $value));
         }

@@ -110,7 +110,7 @@ class InternationalReturnsAcceptedCodeType implements \Sabre\Xml\XmlSerializable
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}InternationalReturnsAccepted');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}InternationalReturnsAccepted', true);
         if (null !== $value) {
             $this->setInternationalReturnsAccepted($value);
         }

@@ -395,7 +395,7 @@ class PaymentInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}acceptedPaymentMethod');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}acceptedPaymentMethod', true);
         if (null !== $value) {
             $this->setAcceptedPaymentMethod($value);
         }

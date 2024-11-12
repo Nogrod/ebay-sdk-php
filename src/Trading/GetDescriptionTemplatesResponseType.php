@@ -433,11 +433,11 @@ class GetDescriptionTemplatesResponseType extends AbstractResponseType
         if (null !== $value) {
             $this->setLayoutTotal($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ObsoleteLayoutID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ObsoleteLayoutID', true);
         if (null !== $value) {
             $this->setObsoleteLayoutID($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ObsoleteThemeID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ObsoleteThemeID', true);
         if (null !== $value) {
             $this->setObsoleteThemeID($value);
         }

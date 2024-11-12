@@ -730,7 +730,7 @@ class ShippingServiceOptionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
         if (null !== $value) {
             $this->setShippingSurcharge(\Nogrod\eBaySDK\Shopping\AmountType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShipsTo');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShipsTo', true);
         if (null !== $value) {
             $this->setShipsTo($value);
         }

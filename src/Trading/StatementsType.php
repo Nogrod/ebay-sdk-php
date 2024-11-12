@@ -128,7 +128,7 @@ class StatementsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Statement');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Statement', true);
         if (null !== $value) {
             $this->setStatement($value);
         }

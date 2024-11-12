@@ -464,7 +464,7 @@ class GetFeedbackRequestType extends AbstractRequestType
         if (null !== $value) {
             $this->setTransactionID($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CommentType');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CommentType', true);
         if (null !== $value) {
             $this->setCommentType($value);
         }

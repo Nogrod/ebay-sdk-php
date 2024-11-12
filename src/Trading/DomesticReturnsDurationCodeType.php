@@ -110,7 +110,7 @@ class DomesticReturnsDurationCodeType implements \Sabre\Xml\XmlSerializable, \Sa
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DomesticReturnsDuration');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DomesticReturnsDuration', true);
         if (null !== $value) {
             $this->setDomesticReturnsDuration($value);
         }

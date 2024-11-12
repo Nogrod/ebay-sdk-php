@@ -5979,11 +5979,11 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
         if (null !== $value) {
             $this->setInternationalReturnsShipmentPayeeValues(\Nogrod\eBaySDK\Trading\InternationalReturnsShipmentPayeeDefinitionType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DomesticRefundMethodValues');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DomesticRefundMethodValues', true);
         if (null !== $value) {
             $this->setDomesticRefundMethodValues(array_map(function ($v) {return Func::mapValue($v, '{urn:ebay:apis:eBLBaseComponents}DomesticRefundMethod');}, $value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}InternationalRefundMethodValues');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}InternationalRefundMethodValues', true);
         if (null !== $value) {
             $this->setInternationalRefundMethodValues(array_map(function ($v) {return Func::mapValue($v, '{urn:ebay:apis:eBLBaseComponents}InternationalRefundMethod');}, $value));
         }

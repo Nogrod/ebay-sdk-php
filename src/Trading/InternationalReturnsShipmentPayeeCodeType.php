@@ -110,7 +110,7 @@ class InternationalReturnsShipmentPayeeCodeType implements \Sabre\Xml\XmlSeriali
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}InternationalReturnsShipmentPayee');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}InternationalReturnsShipmentPayee', true);
         if (null !== $value) {
             $this->setInternationalReturnsShipmentPayee($value);
         }

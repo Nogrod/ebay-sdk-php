@@ -742,7 +742,7 @@ class CategoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
         if (null !== $value) {
             $this->setCategoryName($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CategoryParentID');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CategoryParentID', true);
         if (null !== $value) {
             $this->setCategoryParentID($value);
         }

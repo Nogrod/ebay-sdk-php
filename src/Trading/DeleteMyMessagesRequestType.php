@@ -109,7 +109,7 @@ class DeleteMyMessagesRequestType extends AbstractRequestType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MessageIDs');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MessageIDs', true);
         if (null !== $value) {
             $this->setMessageIDs(array_map(function ($v) {return Func::mapValue($v, '{urn:ebay:apis:eBLBaseComponents}MessageID');}, $value));
         }

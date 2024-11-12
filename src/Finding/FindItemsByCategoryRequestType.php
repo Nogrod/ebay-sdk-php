@@ -680,7 +680,7 @@ class FindItemsByCategoryRequestType extends BaseFindingServiceRequestType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}categoryId');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}categoryId', true);
         if (null !== $value) {
             $this->setCategoryId($value);
         }
@@ -692,7 +692,7 @@ class FindItemsByCategoryRequestType extends BaseFindingServiceRequestType
         if (null !== $value) {
             $this->setAspectFilter(array_map(function ($v) {return \Nogrod\eBaySDK\Finding\AspectFilterType::fromKeyValue($v);}, $value));
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}outputSelector');
+        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/search/v1/services}outputSelector', true);
         if (null !== $value) {
             $this->setOutputSelector($value);
         }

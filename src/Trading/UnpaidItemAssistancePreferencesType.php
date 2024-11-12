@@ -382,7 +382,7 @@ class UnpaidItemAssistancePreferencesType implements \Sabre\Xml\XmlSerializable,
         if (null !== $value) {
             $this->setRemoveAllExcludedUsers(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExcludedUser');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExcludedUser', true);
         if (null !== $value) {
             $this->setExcludedUser($value);
         }

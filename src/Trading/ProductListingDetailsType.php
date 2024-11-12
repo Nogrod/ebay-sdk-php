@@ -866,7 +866,7 @@ class ProductListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
         if (null !== $value) {
             $this->setStockPhotoURL($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Copyright');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Copyright', true);
         if (null !== $value) {
             $this->setCopyright($value);
         }

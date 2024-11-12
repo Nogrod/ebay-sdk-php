@@ -1313,7 +1313,7 @@ class AbstractRequestType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     public function setKeyValue($keyValue)
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DetailLevel');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DetailLevel', true);
         if (null !== $value) {
             $this->setDetailLevel($value);
         }
@@ -1341,7 +1341,7 @@ class AbstractRequestType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
         if (null !== $value) {
             $this->setInvocationID($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}OutputSelector');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}OutputSelector', true);
         if (null !== $value) {
             $this->setOutputSelector($value);
         }

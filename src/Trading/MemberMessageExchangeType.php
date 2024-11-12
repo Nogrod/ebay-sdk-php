@@ -409,7 +409,7 @@ class MemberMessageExchangeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
         if (null !== $value) {
             $this->setQuestion(\Nogrod\eBaySDK\Trading\MemberMessageType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Response');
+        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Response', true);
         if (null !== $value) {
             $this->setResponse($value);
         }
