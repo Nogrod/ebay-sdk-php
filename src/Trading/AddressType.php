@@ -99,9 +99,7 @@ class AddressType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
 
     /**
      * User's primary phone number. This may return a value of
-     *  <code>Invalid Request</code> if you are not authorized to see the
-     *  user's phone number.
-     *  <br/><br/>
+     *  <code>Invalid Request</code> if:<ul><li>the seller has not enabled the preference for the <a href="https://developer.ebay.com/Devzone/XML/docs/Reference/eBay/SetUserPreferences.html#Request.RequiredShipPhoneNumberPreference">RequiredShipPhoneNumberPreference</a> field</li><li>the buyer did not provide a phone number in the shipping address during the checkout process</li></ul>
      *  In the US, the area code (3 digits), the prefix (3 digits), the line number (4
      *  digits), and phone extension (if specified by the user) are returned in this field.
      *  The extension can be one or more digits. Non-breaking spaces are used as delimiters
@@ -551,9 +549,7 @@ class AddressType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
      * Gets as phone
      *
      * User's primary phone number. This may return a value of
-     *  <code>Invalid Request</code> if you are not authorized to see the
-     *  user's phone number.
-     *  <br/><br/>
+     *  <code>Invalid Request</code> if:<ul><li>the seller has not enabled the preference for the <a href="https://developer.ebay.com/Devzone/XML/docs/Reference/eBay/SetUserPreferences.html#Request.RequiredShipPhoneNumberPreference">RequiredShipPhoneNumberPreference</a> field</li><li>the buyer did not provide a phone number in the shipping address during the checkout process</li></ul>
      *  In the US, the area code (3 digits), the prefix (3 digits), the line number (4
      *  digits), and phone extension (if specified by the user) are returned in this field.
      *  The extension can be one or more digits. Non-breaking spaces are used as delimiters
@@ -571,9 +567,7 @@ class AddressType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
      * Sets a new phone
      *
      * User's primary phone number. This may return a value of
-     *  <code>Invalid Request</code> if you are not authorized to see the
-     *  user's phone number.
-     *  <br/><br/>
+     *  <code>Invalid Request</code> if:<ul><li>the seller has not enabled the preference for the <a href="https://developer.ebay.com/Devzone/XML/docs/Reference/eBay/SetUserPreferences.html#Request.RequiredShipPhoneNumberPreference">RequiredShipPhoneNumberPreference</a> field</li><li>the buyer did not provide a phone number in the shipping address during the checkout process</li></ul>
      *  In the US, the area code (3 digits), the prefix (3 digits), the line number (4
      *  digits), and phone extension (if specified by the user) are returned in this field.
      *  The extension can be one or more digits. Non-breaking spaces are used as delimiters

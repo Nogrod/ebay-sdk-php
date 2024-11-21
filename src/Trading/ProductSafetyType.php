@@ -15,8 +15,9 @@ use Nogrod\XMLClientRuntime\Func;
 class ProductSafetyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
     /**
-     * This container is used by the seller to provide product safety pictograms for the listing. This field is required if product safety information is supplied.
-     *  <br /><br />
+     * This container is used by the seller to provide product safety pictograms for the listing. This field is conditionally required if product safety information is supplied.
+     *  <br />
+     *  <span class="tablenote"><b>Note:</b> When supplying product safety information, one of the following elements is required: <b>Pictograms</b> or <b>Statements</b>. Both elements can be included on a listing, but only one is required.</span>
      *  A maximum of 2 pictograms are allowed for product safety.
      *
      * @var string[] $pictograms
@@ -24,8 +25,9 @@ class ProductSafetyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
     private $pictograms = null;
 
     /**
-     * This container is used by the seller to provide product safety statements for the listing. This field is required if product safety information is supplied.
-     *  <br /><br />
+     * This container is used by the seller to provide product safety statements for the listing. This field is conditionally required if product safety information is supplied.
+     *  <br />
+     *  <span class="tablenote"><b>Note:</b> When supplying product safety information, one of the following elements is required: <b>Pictograms</b> or <b>Statements</b>. Both elements can be included on a listing, but only one is required.</span>
      *  A maximum of 8 statements are allowed for product safety.
      *
      * @var string[] $statements
@@ -35,7 +37,7 @@ class ProductSafetyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
     /**
      * This field is used by the seller to provide product safety component information for the listing. For example, component information can include specific warnings related to product safety, such as 'Tipping hazard'. This field is optional for Product Safety.
      *  <br />
-     *  <span class="tablenote"><b>Note: </b> Component information can only be specified if used with the <b>Pictograms</b> and <b>Statements</b> fields; if the component is provided without these fields, an error will occur. </span>
+     *  <span class="tablenote"><b>Note: </b> Component information can only be specified if used with the <b>Pictograms</b> and/or <b>Statements</b> field; if the component is provided without one or both of these fields, an error will occur. </span>
      *
      * @var string $component
      */
@@ -44,8 +46,9 @@ class ProductSafetyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
     /**
      * Adds as pictogram
      *
-     * This container is used by the seller to provide product safety pictograms for the listing. This field is required if product safety information is supplied.
-     *  <br /><br />
+     * This container is used by the seller to provide product safety pictograms for the listing. This field is conditionally required if product safety information is supplied.
+     *  <br />
+     *  <span class="tablenote"><b>Note:</b> When supplying product safety information, one of the following elements is required: <b>Pictograms</b> or <b>Statements</b>. Both elements can be included on a listing, but only one is required.</span>
      *  A maximum of 2 pictograms are allowed for product safety.
      *
      * @return self
@@ -60,8 +63,9 @@ class ProductSafetyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
     /**
      * isset pictograms
      *
-     * This container is used by the seller to provide product safety pictograms for the listing. This field is required if product safety information is supplied.
-     *  <br /><br />
+     * This container is used by the seller to provide product safety pictograms for the listing. This field is conditionally required if product safety information is supplied.
+     *  <br />
+     *  <span class="tablenote"><b>Note:</b> When supplying product safety information, one of the following elements is required: <b>Pictograms</b> or <b>Statements</b>. Both elements can be included on a listing, but only one is required.</span>
      *  A maximum of 2 pictograms are allowed for product safety.
      *
      * @param int|string $index
@@ -75,8 +79,9 @@ class ProductSafetyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
     /**
      * unset pictograms
      *
-     * This container is used by the seller to provide product safety pictograms for the listing. This field is required if product safety information is supplied.
-     *  <br /><br />
+     * This container is used by the seller to provide product safety pictograms for the listing. This field is conditionally required if product safety information is supplied.
+     *  <br />
+     *  <span class="tablenote"><b>Note:</b> When supplying product safety information, one of the following elements is required: <b>Pictograms</b> or <b>Statements</b>. Both elements can be included on a listing, but only one is required.</span>
      *  A maximum of 2 pictograms are allowed for product safety.
      *
      * @param int|string $index
@@ -90,8 +95,9 @@ class ProductSafetyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
     /**
      * Gets as pictograms
      *
-     * This container is used by the seller to provide product safety pictograms for the listing. This field is required if product safety information is supplied.
-     *  <br /><br />
+     * This container is used by the seller to provide product safety pictograms for the listing. This field is conditionally required if product safety information is supplied.
+     *  <br />
+     *  <span class="tablenote"><b>Note:</b> When supplying product safety information, one of the following elements is required: <b>Pictograms</b> or <b>Statements</b>. Both elements can be included on a listing, but only one is required.</span>
      *  A maximum of 2 pictograms are allowed for product safety.
      *
      * @return string[]
@@ -104,8 +110,9 @@ class ProductSafetyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
     /**
      * Sets a new pictograms
      *
-     * This container is used by the seller to provide product safety pictograms for the listing. This field is required if product safety information is supplied.
-     *  <br /><br />
+     * This container is used by the seller to provide product safety pictograms for the listing. This field is conditionally required if product safety information is supplied.
+     *  <br />
+     *  <span class="tablenote"><b>Note:</b> When supplying product safety information, one of the following elements is required: <b>Pictograms</b> or <b>Statements</b>. Both elements can be included on a listing, but only one is required.</span>
      *  A maximum of 2 pictograms are allowed for product safety.
      *
      * @param string[] $pictograms
@@ -120,8 +127,9 @@ class ProductSafetyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
     /**
      * Adds as statement
      *
-     * This container is used by the seller to provide product safety statements for the listing. This field is required if product safety information is supplied.
-     *  <br /><br />
+     * This container is used by the seller to provide product safety statements for the listing. This field is conditionally required if product safety information is supplied.
+     *  <br />
+     *  <span class="tablenote"><b>Note:</b> When supplying product safety information, one of the following elements is required: <b>Pictograms</b> or <b>Statements</b>. Both elements can be included on a listing, but only one is required.</span>
      *  A maximum of 8 statements are allowed for product safety.
      *
      * @return self
@@ -136,8 +144,9 @@ class ProductSafetyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
     /**
      * isset statements
      *
-     * This container is used by the seller to provide product safety statements for the listing. This field is required if product safety information is supplied.
-     *  <br /><br />
+     * This container is used by the seller to provide product safety statements for the listing. This field is conditionally required if product safety information is supplied.
+     *  <br />
+     *  <span class="tablenote"><b>Note:</b> When supplying product safety information, one of the following elements is required: <b>Pictograms</b> or <b>Statements</b>. Both elements can be included on a listing, but only one is required.</span>
      *  A maximum of 8 statements are allowed for product safety.
      *
      * @param int|string $index
@@ -151,8 +160,9 @@ class ProductSafetyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
     /**
      * unset statements
      *
-     * This container is used by the seller to provide product safety statements for the listing. This field is required if product safety information is supplied.
-     *  <br /><br />
+     * This container is used by the seller to provide product safety statements for the listing. This field is conditionally required if product safety information is supplied.
+     *  <br />
+     *  <span class="tablenote"><b>Note:</b> When supplying product safety information, one of the following elements is required: <b>Pictograms</b> or <b>Statements</b>. Both elements can be included on a listing, but only one is required.</span>
      *  A maximum of 8 statements are allowed for product safety.
      *
      * @param int|string $index
@@ -166,8 +176,9 @@ class ProductSafetyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
     /**
      * Gets as statements
      *
-     * This container is used by the seller to provide product safety statements for the listing. This field is required if product safety information is supplied.
-     *  <br /><br />
+     * This container is used by the seller to provide product safety statements for the listing. This field is conditionally required if product safety information is supplied.
+     *  <br />
+     *  <span class="tablenote"><b>Note:</b> When supplying product safety information, one of the following elements is required: <b>Pictograms</b> or <b>Statements</b>. Both elements can be included on a listing, but only one is required.</span>
      *  A maximum of 8 statements are allowed for product safety.
      *
      * @return string[]
@@ -180,8 +191,9 @@ class ProductSafetyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
     /**
      * Sets a new statements
      *
-     * This container is used by the seller to provide product safety statements for the listing. This field is required if product safety information is supplied.
-     *  <br /><br />
+     * This container is used by the seller to provide product safety statements for the listing. This field is conditionally required if product safety information is supplied.
+     *  <br />
+     *  <span class="tablenote"><b>Note:</b> When supplying product safety information, one of the following elements is required: <b>Pictograms</b> or <b>Statements</b>. Both elements can be included on a listing, but only one is required.</span>
      *  A maximum of 8 statements are allowed for product safety.
      *
      * @param string[] $statements
@@ -198,7 +210,7 @@ class ProductSafetyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
      *
      * This field is used by the seller to provide product safety component information for the listing. For example, component information can include specific warnings related to product safety, such as 'Tipping hazard'. This field is optional for Product Safety.
      *  <br />
-     *  <span class="tablenote"><b>Note: </b> Component information can only be specified if used with the <b>Pictograms</b> and <b>Statements</b> fields; if the component is provided without these fields, an error will occur. </span>
+     *  <span class="tablenote"><b>Note: </b> Component information can only be specified if used with the <b>Pictograms</b> and/or <b>Statements</b> field; if the component is provided without one or both of these fields, an error will occur. </span>
      *
      * @return string
      */
@@ -212,7 +224,7 @@ class ProductSafetyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
      *
      * This field is used by the seller to provide product safety component information for the listing. For example, component information can include specific warnings related to product safety, such as 'Tipping hazard'. This field is optional for Product Safety.
      *  <br />
-     *  <span class="tablenote"><b>Note: </b> Component information can only be specified if used with the <b>Pictograms</b> and <b>Statements</b> fields; if the component is provided without these fields, an error will occur. </span>
+     *  <span class="tablenote"><b>Note: </b> Component information can only be specified if used with the <b>Pictograms</b> and/or <b>Statements</b> field; if the component is provided without one or both of these fields, an error will occur. </span>
      *
      * @param string $component
      * @return self

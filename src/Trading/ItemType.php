@@ -115,7 +115,8 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  using CDATA if you want to use HTML or XML-reserved characters in the
      *  description. However, a seller can not use any active content in their listing description. Active content includes animation or video via JavaScript, Flash, plug-ins, or form actions. All active content will be blocked/removed from a listing. Removing/blocking active content will lead to faster load times of listings, make listings more mobile-friendly, improve SEO performance, and lead to a more secure eBay Marketplace.
      *  <br><br>
-     *  <span class="tablenote"><b>Note: </b> To ensure that their listing description is optimized when viewed on mobile devices, sellers should strongly consider using eBay's <a href="https://pages.ebay.com/sell/itemdescription/customizeyoursummary.html" target="_blank">View Item description summary feature</a> when listing their item. Using HTML div and span tag attributes, this feature allows sellers to customize and fully control the listing description that is displayed for prospective buyers when viewing the item on a mobile device. The listing description on mobile devices is limited to 800 characters, and whenever the listing description exceeds this limit, eBay uses a special algorithm to derive the best possible description within the 800-character limit. However, due to some description content being removed, it is definitely not ideal for the seller, and could possibly lead to a bad buyer experience and a Significantly not as described (SNAD) case, since the buyer may not get complete details on the item. See the eBay help page for more details on using the HTML div and span tags, and for more tips on creating listings that are mobile-friendly, see this <a href="https://pages.ebay.com/sell/itemdescription/mobilefriendlyguidelines.html" target="_blank">Best practices</a> document.
+     *  <span class="tablenote"><b>Note: </b> To ensure that a listing description is optimized to be viewed on a mobile devices, see <a href="/api-docs/user-guides/static/trading-user-guide/mobile.html" target="_blank">Mobile device optimization</a> in the Trading User Guide. <br><br>
+     *  Note that the mobile-friendly description snippet feature described in this topic is currently only available in the following eBay marketplaces: US, UK, Australia, France, Germany, Italy, Spain, and eBay Motors.
      *  </span>
      *  <br>
      *  In the listing description, sellers are only allowed to provide links to product videos, freight shipping services, or other legally required information, and when providing these links in the listing description, the secure 'https' protocol must be used instead of 'http'. In addition, any valid links to sites outside of eBay should use the <em>target="_blank"</em> attribute in the <b>a href</b> tag so a new browser window will be loaded when the link is clicked instead of buyers being redirected off of eBay. For more information on using links in the listing description, see eBay's <a href="http://pages.ebay.com/help/policies/listing-links.html" target="_blank">Links policy</a>. For more information about the stronger security standards that eBay is using, see the <a href="https://pages.ebay.com/seller-center/seller-updates/2018-fall/marketplace-update.html#use-secure-https" target="_blank">Use secure HTTPS for enhanced browser security</a> topic in the 2018 Fall Seller Update. The <a href="https://developer.ebay.com/api-docs/sell/compliance/resources/listing_violation/methods/getListingViolations" target="_blank">getListingViolations</a> method of the Compliance API can be used to see if any of the seller's active listings are not 'HTTPS' compliant.
@@ -536,7 +537,13 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <br>
      *  If you <i>do not</i> use a fulfillment business policy, many of the fields under this <b>ShippingDetails</b> container become required in your request.
      *  </span>
-     *  <br>
+     *
+     *
+     *  <span class="tablenote"><b>Note:</b>
+     *  <b>For ReviseItem and ReviseFixedPriceItem calls: </b>
+     *  If you are updating any field under the <b>ShippingDetails</b> container, you must include all containers and fields set under this container even if their values are not changing. If you do not do this, some fields may be removed from the listing. To find out the values included in the current listing, call <a href="https://developer.ebay.com/devzone/xml/docs/Reference/eBay/GetItem.html#GetItem">GetItem</a> and look through the <b>ShippingDetails</b> container in the response. For additional information, see <a href="https://developer.ebay.com/api-docs/user-guides/static/trading-user-guide/shipping-revise.html" target="_blank">Revise shipping details</a>.
+     *  </span>
+     *
      *  New users who list their first items in selected categories on the US site
      *  must specify at least one domestic shipping service. This applies to a
      *  category if <b>GetCategoryFeatures</b> returns <code>true</code> for
@@ -1594,6 +1601,11 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Container consisting of dimension and size details related to a shipping package in which an item will be sent. The information in this container is applicable if the seller is using calculated shipping or flat rate shipping using shipping rate tables with weight surcharges. This container is only returned in the <b>Get</b> calls if specified for the item.
      *  <br>
+     *  <span class="tablenote"><b>Note:</b>
+     *  <b>For ReviseItem and ReviseFixedPriceItem calls: </b>
+     *  For <a href ="https://developer.ebay.com/api-docs/user-guides/static/trading-user-guide/shipping-flat-rate.html">flat-rate</a> shipping, if any of the <b>ShippingPackageDetails</b> fields are defined for the current listing, those fields must be included again in the revise call even if their values are not changing. If you do not do this, some/all of the fields under this container may be removed from the listing. To find out the values included in the current listing, call <a href="https://developer.ebay.com/devzone/xml/docs/Reference/eBay/GetItem.html#GetItem">GetItem</a> and look through the <b>ShippingPackageDetails</b> container in the response.
+     *  </span>
+     *  <br>
      *  <span class="tablenote"><b>Note: </b> Package weight and dimensions are only supported for the following marketplaces: AU, CA, DE, IT, UK, US, and Motors. If this information is provided on other marketplaces, it will be ignored.
      *  </span>
      *
@@ -2096,7 +2108,8 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  using CDATA if you want to use HTML or XML-reserved characters in the
      *  description. However, a seller can not use any active content in their listing description. Active content includes animation or video via JavaScript, Flash, plug-ins, or form actions. All active content will be blocked/removed from a listing. Removing/blocking active content will lead to faster load times of listings, make listings more mobile-friendly, improve SEO performance, and lead to a more secure eBay Marketplace.
      *  <br><br>
-     *  <span class="tablenote"><b>Note: </b> To ensure that their listing description is optimized when viewed on mobile devices, sellers should strongly consider using eBay's <a href="https://pages.ebay.com/sell/itemdescription/customizeyoursummary.html" target="_blank">View Item description summary feature</a> when listing their item. Using HTML div and span tag attributes, this feature allows sellers to customize and fully control the listing description that is displayed for prospective buyers when viewing the item on a mobile device. The listing description on mobile devices is limited to 800 characters, and whenever the listing description exceeds this limit, eBay uses a special algorithm to derive the best possible description within the 800-character limit. However, due to some description content being removed, it is definitely not ideal for the seller, and could possibly lead to a bad buyer experience and a Significantly not as described (SNAD) case, since the buyer may not get complete details on the item. See the eBay help page for more details on using the HTML div and span tags, and for more tips on creating listings that are mobile-friendly, see this <a href="https://pages.ebay.com/sell/itemdescription/mobilefriendlyguidelines.html" target="_blank">Best practices</a> document.
+     *  <span class="tablenote"><b>Note: </b> To ensure that a listing description is optimized to be viewed on a mobile devices, see <a href="/api-docs/user-guides/static/trading-user-guide/mobile.html" target="_blank">Mobile device optimization</a> in the Trading User Guide. <br><br>
+     *  Note that the mobile-friendly description snippet feature described in this topic is currently only available in the following eBay marketplaces: US, UK, Australia, France, Germany, Italy, Spain, and eBay Motors.
      *  </span>
      *  <br>
      *  In the listing description, sellers are only allowed to provide links to product videos, freight shipping services, or other legally required information, and when providing these links in the listing description, the secure 'https' protocol must be used instead of 'http'. In addition, any valid links to sites outside of eBay should use the <em>target="_blank"</em> attribute in the <b>a href</b> tag so a new browser window will be loaded when the link is clicked instead of buyers being redirected off of eBay. For more information on using links in the listing description, see eBay's <a href="http://pages.ebay.com/help/policies/listing-links.html" target="_blank">Links policy</a>. For more information about the stronger security standards that eBay is using, see the <a href="https://pages.ebay.com/seller-center/seller-updates/2018-fall/marketplace-update.html#use-secure-https" target="_blank">Use secure HTTPS for enhanced browser security</a> topic in the 2018 Fall Seller Update. The <a href="https://developer.ebay.com/api-docs/sell/compliance/resources/listing_violation/methods/getListingViolations" target="_blank">getListingViolations</a> method of the Compliance API can be used to see if any of the seller's active listings are not 'HTTPS' compliant.
@@ -2124,7 +2137,8 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  using CDATA if you want to use HTML or XML-reserved characters in the
      *  description. However, a seller can not use any active content in their listing description. Active content includes animation or video via JavaScript, Flash, plug-ins, or form actions. All active content will be blocked/removed from a listing. Removing/blocking active content will lead to faster load times of listings, make listings more mobile-friendly, improve SEO performance, and lead to a more secure eBay Marketplace.
      *  <br><br>
-     *  <span class="tablenote"><b>Note: </b> To ensure that their listing description is optimized when viewed on mobile devices, sellers should strongly consider using eBay's <a href="https://pages.ebay.com/sell/itemdescription/customizeyoursummary.html" target="_blank">View Item description summary feature</a> when listing their item. Using HTML div and span tag attributes, this feature allows sellers to customize and fully control the listing description that is displayed for prospective buyers when viewing the item on a mobile device. The listing description on mobile devices is limited to 800 characters, and whenever the listing description exceeds this limit, eBay uses a special algorithm to derive the best possible description within the 800-character limit. However, due to some description content being removed, it is definitely not ideal for the seller, and could possibly lead to a bad buyer experience and a Significantly not as described (SNAD) case, since the buyer may not get complete details on the item. See the eBay help page for more details on using the HTML div and span tags, and for more tips on creating listings that are mobile-friendly, see this <a href="https://pages.ebay.com/sell/itemdescription/mobilefriendlyguidelines.html" target="_blank">Best practices</a> document.
+     *  <span class="tablenote"><b>Note: </b> To ensure that a listing description is optimized to be viewed on a mobile devices, see <a href="/api-docs/user-guides/static/trading-user-guide/mobile.html" target="_blank">Mobile device optimization</a> in the Trading User Guide. <br><br>
+     *  Note that the mobile-friendly description snippet feature described in this topic is currently only available in the following eBay marketplaces: US, UK, Australia, France, Germany, Italy, Spain, and eBay Motors.
      *  </span>
      *  <br>
      *  In the listing description, sellers are only allowed to provide links to product videos, freight shipping services, or other legally required information, and when providing these links in the listing description, the secure 'https' protocol must be used instead of 'http'. In addition, any valid links to sites outside of eBay should use the <em>target="_blank"</em> attribute in the <b>a href</b> tag so a new browser window will be loaded when the link is clicked instead of buyers being redirected off of eBay. For more information on using links in the listing description, see eBay's <a href="http://pages.ebay.com/help/policies/listing-links.html" target="_blank">Links policy</a>. For more information about the stronger security standards that eBay is using, see the <a href="https://pages.ebay.com/seller-center/seller-updates/2018-fall/marketplace-update.html#use-secure-https" target="_blank">Use secure HTTPS for enhanced browser security</a> topic in the 2018 Fall Seller Update. The <a href="https://developer.ebay.com/api-docs/sell/compliance/resources/listing_violation/methods/getListingViolations" target="_blank">getListingViolations</a> method of the Compliance API can be used to see if any of the seller's active listings are not 'HTTPS' compliant.
@@ -3370,7 +3384,13 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <br>
      *  If you <i>do not</i> use a fulfillment business policy, many of the fields under this <b>ShippingDetails</b> container become required in your request.
      *  </span>
-     *  <br>
+     *
+     *
+     *  <span class="tablenote"><b>Note:</b>
+     *  <b>For ReviseItem and ReviseFixedPriceItem calls: </b>
+     *  If you are updating any field under the <b>ShippingDetails</b> container, you must include all containers and fields set under this container even if their values are not changing. If you do not do this, some fields may be removed from the listing. To find out the values included in the current listing, call <a href="https://developer.ebay.com/devzone/xml/docs/Reference/eBay/GetItem.html#GetItem">GetItem</a> and look through the <b>ShippingDetails</b> container in the response. For additional information, see <a href="https://developer.ebay.com/api-docs/user-guides/static/trading-user-guide/shipping-revise.html" target="_blank">Revise shipping details</a>.
+     *  </span>
+     *
      *  New users who list their first items in selected categories on the US site
      *  must specify at least one domestic shipping service. This applies to a
      *  category if <b>GetCategoryFeatures</b> returns <code>true</code> for
@@ -3415,7 +3435,13 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <br>
      *  If you <i>do not</i> use a fulfillment business policy, many of the fields under this <b>ShippingDetails</b> container become required in your request.
      *  </span>
-     *  <br>
+     *
+     *
+     *  <span class="tablenote"><b>Note:</b>
+     *  <b>For ReviseItem and ReviseFixedPriceItem calls: </b>
+     *  If you are updating any field under the <b>ShippingDetails</b> container, you must include all containers and fields set under this container even if their values are not changing. If you do not do this, some fields may be removed from the listing. To find out the values included in the current listing, call <a href="https://developer.ebay.com/devzone/xml/docs/Reference/eBay/GetItem.html#GetItem">GetItem</a> and look through the <b>ShippingDetails</b> container in the response. For additional information, see <a href="https://developer.ebay.com/api-docs/user-guides/static/trading-user-guide/shipping-revise.html" target="_blank">Revise shipping details</a>.
+     *  </span>
+     *
      *  New users who list their first items in selected categories on the US site
      *  must specify at least one domestic shipping service. This applies to a
      *  category if <b>GetCategoryFeatures</b> returns <code>true</code> for
@@ -6846,6 +6872,11 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *
      * Container consisting of dimension and size details related to a shipping package in which an item will be sent. The information in this container is applicable if the seller is using calculated shipping or flat rate shipping using shipping rate tables with weight surcharges. This container is only returned in the <b>Get</b> calls if specified for the item.
      *  <br>
+     *  <span class="tablenote"><b>Note:</b>
+     *  <b>For ReviseItem and ReviseFixedPriceItem calls: </b>
+     *  For <a href ="https://developer.ebay.com/api-docs/user-guides/static/trading-user-guide/shipping-flat-rate.html">flat-rate</a> shipping, if any of the <b>ShippingPackageDetails</b> fields are defined for the current listing, those fields must be included again in the revise call even if their values are not changing. If you do not do this, some/all of the fields under this container may be removed from the listing. To find out the values included in the current listing, call <a href="https://developer.ebay.com/devzone/xml/docs/Reference/eBay/GetItem.html#GetItem">GetItem</a> and look through the <b>ShippingPackageDetails</b> container in the response.
+     *  </span>
+     *  <br>
      *  <span class="tablenote"><b>Note: </b> Package weight and dimensions are only supported for the following marketplaces: AU, CA, DE, IT, UK, US, and Motors. If this information is provided on other marketplaces, it will be ignored.
      *  </span>
      *
@@ -6860,6 +6891,11 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      * Sets a new shippingPackageDetails
      *
      * Container consisting of dimension and size details related to a shipping package in which an item will be sent. The information in this container is applicable if the seller is using calculated shipping or flat rate shipping using shipping rate tables with weight surcharges. This container is only returned in the <b>Get</b> calls if specified for the item.
+     *  <br>
+     *  <span class="tablenote"><b>Note:</b>
+     *  <b>For ReviseItem and ReviseFixedPriceItem calls: </b>
+     *  For <a href ="https://developer.ebay.com/api-docs/user-guides/static/trading-user-guide/shipping-flat-rate.html">flat-rate</a> shipping, if any of the <b>ShippingPackageDetails</b> fields are defined for the current listing, those fields must be included again in the revise call even if their values are not changing. If you do not do this, some/all of the fields under this container may be removed from the listing. To find out the values included in the current listing, call <a href="https://developer.ebay.com/devzone/xml/docs/Reference/eBay/GetItem.html#GetItem">GetItem</a> and look through the <b>ShippingPackageDetails</b> container in the response.
+     *  </span>
      *  <br>
      *  <span class="tablenote"><b>Note: </b> Package weight and dimensions are only supported for the following marketplaces: AU, CA, DE, IT, UK, US, and Motors. If this information is provided on other marketplaces, it will be ignored.
      *  </span>

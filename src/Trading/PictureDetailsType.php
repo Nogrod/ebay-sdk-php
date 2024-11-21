@@ -80,10 +80,11 @@ class PictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
     ];
 
     /**
-     * The service hosting the pictures in <b>PictureURL</b>, if any. This information is
-     *  primarily useful for Picture Manager subscribers, who pay a flat subscription
-     *  fee instead of individual picture fees per listing. Only returned when <b>PictureURL</b> is returned.
-     *  <br/>
+     * The value in this field indicates if the listing contains image files uploaded to the eBay Picture Server (EPS), or externally-hosted images for which eBay created EPS equivalents.<br><br>This value defaults to <code>EPS</code>, so if a seller is going to upload externally-hosted image URLs, this field must be included and set to <code>Vendor</code>.
+     *  <br/><br/>
+     *  <span class="tablenote">
+     *  <strong>Note:</strong> Original EPS and externally-hosted images cannot be mixed, so this value cannot be changed if a listing already has one or more images.
+     *  </span>
      *
      * @var string $pictureSource
      */
@@ -120,7 +121,7 @@ class PictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
     ];
 
     /**
-     * This container returns the URLs of the seller's self-hosted (hosted outside of eBay) pictures and the URL for the corresponding eBay Picture Services (EPS), that was generated when the self-hosted picture was uploaded.
+     * The <b>ExtendedPictureDetails</b> container and its child fields are no longer returned under any circumstances, including when self-hosted pictures are used for the item. When self-hosted pictures are used by the seller, only the external URL of the gallery image is shown in the PictureDetails.ExternalPictureURL field, and only the equivalent eBay Picture Server (EPS) URLs are shown for the rest of the item's images in separate <b>PictureDetails.PictureURL</b> fields.
      *
      * @var \Nogrod\eBaySDK\Trading\PictureURLsType[] $extendedPictureDetails
      */
@@ -440,10 +441,11 @@ class PictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
     /**
      * Gets as pictureSource
      *
-     * The service hosting the pictures in <b>PictureURL</b>, if any. This information is
-     *  primarily useful for Picture Manager subscribers, who pay a flat subscription
-     *  fee instead of individual picture fees per listing. Only returned when <b>PictureURL</b> is returned.
-     *  <br/>
+     * The value in this field indicates if the listing contains image files uploaded to the eBay Picture Server (EPS), or externally-hosted images for which eBay created EPS equivalents.<br><br>This value defaults to <code>EPS</code>, so if a seller is going to upload externally-hosted image URLs, this field must be included and set to <code>Vendor</code>.
+     *  <br/><br/>
+     *  <span class="tablenote">
+     *  <strong>Note:</strong> Original EPS and externally-hosted images cannot be mixed, so this value cannot be changed if a listing already has one or more images.
+     *  </span>
      *
      * @return string
      */
@@ -455,10 +457,11 @@ class PictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
     /**
      * Sets a new pictureSource
      *
-     * The service hosting the pictures in <b>PictureURL</b>, if any. This information is
-     *  primarily useful for Picture Manager subscribers, who pay a flat subscription
-     *  fee instead of individual picture fees per listing. Only returned when <b>PictureURL</b> is returned.
-     *  <br/>
+     * The value in this field indicates if the listing contains image files uploaded to the eBay Picture Server (EPS), or externally-hosted images for which eBay created EPS equivalents.<br><br>This value defaults to <code>EPS</code>, so if a seller is going to upload externally-hosted image URLs, this field must be included and set to <code>Vendor</code>.
+     *  <br/><br/>
+     *  <span class="tablenote">
+     *  <strong>Note:</strong> Original EPS and externally-hosted images cannot be mixed, so this value cannot be changed if a listing already has one or more images.
+     *  </span>
      *
      * @param string $pictureSource
      * @return self
@@ -607,7 +610,7 @@ class PictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
     /**
      * Adds as pictureURLs
      *
-     * This container returns the URLs of the seller's self-hosted (hosted outside of eBay) pictures and the URL for the corresponding eBay Picture Services (EPS), that was generated when the self-hosted picture was uploaded.
+     * The <b>ExtendedPictureDetails</b> container and its child fields are no longer returned under any circumstances, including when self-hosted pictures are used for the item. When self-hosted pictures are used by the seller, only the external URL of the gallery image is shown in the PictureDetails.ExternalPictureURL field, and only the equivalent eBay Picture Server (EPS) URLs are shown for the rest of the item's images in separate <b>PictureDetails.PictureURL</b> fields.
      *
      * @return self
      * @param \Nogrod\eBaySDK\Trading\PictureURLsType $pictureURLs
@@ -621,7 +624,7 @@ class PictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
     /**
      * isset extendedPictureDetails
      *
-     * This container returns the URLs of the seller's self-hosted (hosted outside of eBay) pictures and the URL for the corresponding eBay Picture Services (EPS), that was generated when the self-hosted picture was uploaded.
+     * The <b>ExtendedPictureDetails</b> container and its child fields are no longer returned under any circumstances, including when self-hosted pictures are used for the item. When self-hosted pictures are used by the seller, only the external URL of the gallery image is shown in the PictureDetails.ExternalPictureURL field, and only the equivalent eBay Picture Server (EPS) URLs are shown for the rest of the item's images in separate <b>PictureDetails.PictureURL</b> fields.
      *
      * @param int|string $index
      * @return bool
@@ -634,7 +637,7 @@ class PictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
     /**
      * unset extendedPictureDetails
      *
-     * This container returns the URLs of the seller's self-hosted (hosted outside of eBay) pictures and the URL for the corresponding eBay Picture Services (EPS), that was generated when the self-hosted picture was uploaded.
+     * The <b>ExtendedPictureDetails</b> container and its child fields are no longer returned under any circumstances, including when self-hosted pictures are used for the item. When self-hosted pictures are used by the seller, only the external URL of the gallery image is shown in the PictureDetails.ExternalPictureURL field, and only the equivalent eBay Picture Server (EPS) URLs are shown for the rest of the item's images in separate <b>PictureDetails.PictureURL</b> fields.
      *
      * @param int|string $index
      * @return void
@@ -647,7 +650,7 @@ class PictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
     /**
      * Gets as extendedPictureDetails
      *
-     * This container returns the URLs of the seller's self-hosted (hosted outside of eBay) pictures and the URL for the corresponding eBay Picture Services (EPS), that was generated when the self-hosted picture was uploaded.
+     * The <b>ExtendedPictureDetails</b> container and its child fields are no longer returned under any circumstances, including when self-hosted pictures are used for the item. When self-hosted pictures are used by the seller, only the external URL of the gallery image is shown in the PictureDetails.ExternalPictureURL field, and only the equivalent eBay Picture Server (EPS) URLs are shown for the rest of the item's images in separate <b>PictureDetails.PictureURL</b> fields.
      *
      * @return \Nogrod\eBaySDK\Trading\PictureURLsType[]
      */
@@ -659,7 +662,7 @@ class PictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
     /**
      * Sets a new extendedPictureDetails
      *
-     * This container returns the URLs of the seller's self-hosted (hosted outside of eBay) pictures and the URL for the corresponding eBay Picture Services (EPS), that was generated when the self-hosted picture was uploaded.
+     * The <b>ExtendedPictureDetails</b> container and its child fields are no longer returned under any circumstances, including when self-hosted pictures are used for the item. When self-hosted pictures are used by the seller, only the external URL of the gallery image is shown in the PictureDetails.ExternalPictureURL field, and only the equivalent eBay Picture Server (EPS) URLs are shown for the rest of the item's images in separate <b>PictureDetails.PictureURL</b> fields.
      *
      * @param \Nogrod\eBaySDK\Trading\PictureURLsType[] $extendedPictureDetails
      * @return self

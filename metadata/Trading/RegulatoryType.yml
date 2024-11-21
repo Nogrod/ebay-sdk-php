@@ -16,17 +16,6 @@ Nogrod\eBaySDK\Trading\RegulatoryType:
                 getter: getEnergyEfficiencyLabel
                 setter: setEnergyEfficiencyLabel
             type: Nogrod\eBaySDK\Trading\EnergyEfficiencyType
-        economicOperator:
-            expose: true
-            access_type: public_method
-            serialized_name: EconomicOperator
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getEconomicOperator
-                setter: setEconomicOperator
-            type: Nogrod\eBaySDK\Trading\EconomicOperatorType
         hazmat:
             expose: true
             access_type: public_method

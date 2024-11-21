@@ -7,15 +7,13 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing ExtendedPictureDetailsType
  *
- * This container returns the URLs of the seller's self-hosted (hosted outside of eBay) pictures and the URL for the corresponding eBay
- *  Picture Services (EPS), that was generated when the self-hosted picture was uploaded.
+ * This type is used by the <b>ExtendedPictureDetails</b> container, which is no longer returned under any circumstances, including when self-hosted pictures are used for the item. When self-hosted pictures are used by the seller, only the external URL of the gallery image is shown in the <b>PictureDetails.ExternalPictureURL</b> field, and only the equivalent eBay Picture Server (EPS) URLs are shown for the rest of the item's images in separate <b>PictureDetails.PictureURL</b> fields.
  * XSD Type: ExtendedPictureDetailsType
  */
 class ExtendedPictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
     /**
-     * This container returns the <b>eBayPictureURL</b> (images hosted by eBay
-     *  Picture Services) and the <b>ExternalPictureURL</b> (images hosted outside of eBay) fields.
+     * The <b>ExtendedPictureDetails</b> container and its child fields are no longer returned under any circumstances, including when self-hosted pictures are used for the item. When self-hosted pictures are used by the seller, only the external URL of the gallery image is shown in the <b>PictureDetails.ExternalPictureURL</b> field, and only the equivalent eBay Picture Server (EPS) URLs are shown for the rest of the item's images in separate <b>PictureDetails.PictureURL</b> fields.
      *
      * @var \Nogrod\eBaySDK\Trading\PictureURLsType[] $pictureURLs
      */
@@ -26,8 +24,7 @@ class ExtendedPictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
     /**
      * Adds as pictureURLs
      *
-     * This container returns the <b>eBayPictureURL</b> (images hosted by eBay
-     *  Picture Services) and the <b>ExternalPictureURL</b> (images hosted outside of eBay) fields.
+     * The <b>ExtendedPictureDetails</b> container and its child fields are no longer returned under any circumstances, including when self-hosted pictures are used for the item. When self-hosted pictures are used by the seller, only the external URL of the gallery image is shown in the <b>PictureDetails.ExternalPictureURL</b> field, and only the equivalent eBay Picture Server (EPS) URLs are shown for the rest of the item's images in separate <b>PictureDetails.PictureURL</b> fields.
      *
      * @return self
      * @param \Nogrod\eBaySDK\Trading\PictureURLsType $pictureURLs
@@ -41,8 +38,7 @@ class ExtendedPictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
     /**
      * isset pictureURLs
      *
-     * This container returns the <b>eBayPictureURL</b> (images hosted by eBay
-     *  Picture Services) and the <b>ExternalPictureURL</b> (images hosted outside of eBay) fields.
+     * The <b>ExtendedPictureDetails</b> container and its child fields are no longer returned under any circumstances, including when self-hosted pictures are used for the item. When self-hosted pictures are used by the seller, only the external URL of the gallery image is shown in the <b>PictureDetails.ExternalPictureURL</b> field, and only the equivalent eBay Picture Server (EPS) URLs are shown for the rest of the item's images in separate <b>PictureDetails.PictureURL</b> fields.
      *
      * @param int|string $index
      * @return bool
@@ -55,8 +51,7 @@ class ExtendedPictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
     /**
      * unset pictureURLs
      *
-     * This container returns the <b>eBayPictureURL</b> (images hosted by eBay
-     *  Picture Services) and the <b>ExternalPictureURL</b> (images hosted outside of eBay) fields.
+     * The <b>ExtendedPictureDetails</b> container and its child fields are no longer returned under any circumstances, including when self-hosted pictures are used for the item. When self-hosted pictures are used by the seller, only the external URL of the gallery image is shown in the <b>PictureDetails.ExternalPictureURL</b> field, and only the equivalent eBay Picture Server (EPS) URLs are shown for the rest of the item's images in separate <b>PictureDetails.PictureURL</b> fields.
      *
      * @param int|string $index
      * @return void
@@ -69,8 +64,7 @@ class ExtendedPictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
     /**
      * Gets as pictureURLs
      *
-     * This container returns the <b>eBayPictureURL</b> (images hosted by eBay
-     *  Picture Services) and the <b>ExternalPictureURL</b> (images hosted outside of eBay) fields.
+     * The <b>ExtendedPictureDetails</b> container and its child fields are no longer returned under any circumstances, including when self-hosted pictures are used for the item. When self-hosted pictures are used by the seller, only the external URL of the gallery image is shown in the <b>PictureDetails.ExternalPictureURL</b> field, and only the equivalent eBay Picture Server (EPS) URLs are shown for the rest of the item's images in separate <b>PictureDetails.PictureURL</b> fields.
      *
      * @return \Nogrod\eBaySDK\Trading\PictureURLsType[]
      */
@@ -82,8 +76,7 @@ class ExtendedPictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
     /**
      * Sets a new pictureURLs
      *
-     * This container returns the <b>eBayPictureURL</b> (images hosted by eBay
-     *  Picture Services) and the <b>ExternalPictureURL</b> (images hosted outside of eBay) fields.
+     * The <b>ExtendedPictureDetails</b> container and its child fields are no longer returned under any circumstances, including when self-hosted pictures are used for the item. When self-hosted pictures are used by the seller, only the external URL of the gallery image is shown in the <b>PictureDetails.ExternalPictureURL</b> field, and only the equivalent eBay Picture Server (EPS) URLs are shown for the rest of the item's images in separate <b>PictureDetails.PictureURL</b> fields.
      *
      * @param \Nogrod\eBaySDK\Trading\PictureURLsType[] $pictureURLs
      * @return self

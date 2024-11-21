@@ -305,17 +305,6 @@ class EBayAPIBaseClient extends \Nogrod\XMLClientRuntime\Client
     }
 
     /**
-     * Call GetClientAlertsAuthToken
-     *
-     * @param \Nogrod\eBaySDK\Trading\GetClientAlertsAuthTokenRequest $getClientAlertsAuthTokenRequest
-     * @return \Nogrod\eBaySDK\Trading\GetClientAlertsAuthTokenResponse
-     */
-    public function getClientAlertsAuthToken(\Nogrod\eBaySDK\Trading\GetClientAlertsAuthTokenRequest $getClientAlertsAuthTokenRequest): \Nogrod\eBaySDK\Trading\GetClientAlertsAuthTokenResponse
-    {
-        return $this->call('GetClientAlertsAuthToken', 'Nogrod\eBaySDK\Trading\GetClientAlertsAuthTokenResponse', $getClientAlertsAuthTokenRequest);
-    }
-
-    /**
      * Call GetDescriptionTemplates
      *
      * @param \Nogrod\eBaySDK\Trading\GetDescriptionTemplatesRequest $getDescriptionTemplatesRequest

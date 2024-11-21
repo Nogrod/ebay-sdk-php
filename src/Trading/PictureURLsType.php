@@ -13,16 +13,14 @@ use Nogrod\XMLClientRuntime\Func;
 class PictureURLsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
     /**
-     * The URL of an eBay Picture Services (EPS) image. This image is created when a seller uploads a self-hosted image using the <b>UploadSiteHostedPictures</b>, <b>AddItem</b> or <b>AddFixedPriceItem</b> call.
-     *  <br>
+     * The <b>ExtendedPictureDetails</b> container and its child fields are no longer returned under any circumstances, including when self-hosted pictures are used for the item. When self-hosted pictures are used by the seller, only the external URL of the gallery image is shown in the <b>PictureDetails.ExternalPictureURL</b> field, and only the equivalent eBay Picture Server (EPS) URLs are shown for the rest of the item's images in separate <b>PictureDetails.PictureURL</b> fields.
      *
      * @var string $eBayPictureURL
      */
     private $eBayPictureURL = null;
 
     /**
-     * The URL of a seller's self-hosted image(s).
-     *  <br>
+     * The <b>ExtendedPictureDetails</b> container and its child fields are no longer returned under any circumstances, including when self-hosted pictures are used for the item. When self-hosted pictures are used by the seller, only the external URL of the gallery image is shown in the <b>PictureDetails.ExternalPictureURL</b> field, and only the equivalent eBay Picture Server (EPS) URLs are shown for the rest of the item's images in separate <b>PictureDetails.PictureURL</b> fields.
      *
      * @var string $externalPictureURL
      */
@@ -31,8 +29,7 @@ class PictureURLsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     /**
      * Gets as eBayPictureURL
      *
-     * The URL of an eBay Picture Services (EPS) image. This image is created when a seller uploads a self-hosted image using the <b>UploadSiteHostedPictures</b>, <b>AddItem</b> or <b>AddFixedPriceItem</b> call.
-     *  <br>
+     * The <b>ExtendedPictureDetails</b> container and its child fields are no longer returned under any circumstances, including when self-hosted pictures are used for the item. When self-hosted pictures are used by the seller, only the external URL of the gallery image is shown in the <b>PictureDetails.ExternalPictureURL</b> field, and only the equivalent eBay Picture Server (EPS) URLs are shown for the rest of the item's images in separate <b>PictureDetails.PictureURL</b> fields.
      *
      * @return string
      */
@@ -44,8 +41,7 @@ class PictureURLsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     /**
      * Sets a new eBayPictureURL
      *
-     * The URL of an eBay Picture Services (EPS) image. This image is created when a seller uploads a self-hosted image using the <b>UploadSiteHostedPictures</b>, <b>AddItem</b> or <b>AddFixedPriceItem</b> call.
-     *  <br>
+     * The <b>ExtendedPictureDetails</b> container and its child fields are no longer returned under any circumstances, including when self-hosted pictures are used for the item. When self-hosted pictures are used by the seller, only the external URL of the gallery image is shown in the <b>PictureDetails.ExternalPictureURL</b> field, and only the equivalent eBay Picture Server (EPS) URLs are shown for the rest of the item's images in separate <b>PictureDetails.PictureURL</b> fields.
      *
      * @param string $eBayPictureURL
      * @return self
@@ -59,8 +55,7 @@ class PictureURLsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     /**
      * Gets as externalPictureURL
      *
-     * The URL of a seller's self-hosted image(s).
-     *  <br>
+     * The <b>ExtendedPictureDetails</b> container and its child fields are no longer returned under any circumstances, including when self-hosted pictures are used for the item. When self-hosted pictures are used by the seller, only the external URL of the gallery image is shown in the <b>PictureDetails.ExternalPictureURL</b> field, and only the equivalent eBay Picture Server (EPS) URLs are shown for the rest of the item's images in separate <b>PictureDetails.PictureURL</b> fields.
      *
      * @return string
      */
@@ -72,8 +67,7 @@ class PictureURLsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     /**
      * Sets a new externalPictureURL
      *
-     * The URL of a seller's self-hosted image(s).
-     *  <br>
+     * The <b>ExtendedPictureDetails</b> container and its child fields are no longer returned under any circumstances, including when self-hosted pictures are used for the item. When self-hosted pictures are used by the seller, only the external URL of the gallery image is shown in the <b>PictureDetails.ExternalPictureURL</b> field, and only the equivalent eBay Picture Server (EPS) URLs are shown for the rest of the item's images in separate <b>PictureDetails.PictureURL</b> fields.
      *
      * @param string $externalPictureURL
      * @return self

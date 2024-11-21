@@ -58,7 +58,7 @@ class ShipPackageDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      *  For calculated shipping only. Only returned if the seller
      *  specified the value for the item. (In many cases, the seller
      *  only specifies the weight fields.)
-     *  <br><br>
+     *
      *  <b>Developer impact:</b> UPS requires dimensions for any Ground packages that are 3
      *  cubic feet or larger and for all air packages, if they are to provide correct
      *  shipping cost. If package dimensions are not included for an item listed with
@@ -292,7 +292,7 @@ class ShipPackageDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      *  For calculated shipping only. Only returned if the seller
      *  specified the value for the item. (In many cases, the seller
      *  only specifies the weight fields.)
-     *  <br><br>
+     *
      *  <b>Developer impact:</b> UPS requires dimensions for any Ground packages that are 3
      *  cubic feet or larger and for all air packages, if they are to provide correct
      *  shipping cost. If package dimensions are not included for an item listed with
@@ -323,7 +323,7 @@ class ShipPackageDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      *  For calculated shipping only. Only returned if the seller
      *  specified the value for the item. (In many cases, the seller
      *  only specifies the weight fields.)
-     *  <br><br>
+     *
      *  <b>Developer impact:</b> UPS requires dimensions for any Ground packages that are 3
      *  cubic feet or larger and for all air packages, if they are to provide correct
      *  shipping cost. If package dimensions are not included for an item listed with

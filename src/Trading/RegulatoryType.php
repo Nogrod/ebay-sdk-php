@@ -22,15 +22,6 @@ class RegulatoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
     private $energyEfficiencyLabel = null;
 
     /**
-     * <span class="tablenote"><b>Note: </b> Economic Operator and its associated fields have been deprecated for the Add/Revise/Relist/Verify and GetItem family of calls and will be decommissioned on October 21, 2024. It has been replaced by the <b>Manufacturer</b> and <b>ResponsiblePersons</b> containers. Economic Operator related fields should no longer be used for the Add/Revise/Relist and VerifyItem family of calls. As it is currently still supported, Economic Operator-related fields will be returned if applicable for the GetItem call.
-     *  </span>
-     *  This container provides Economic Operator (EO) information about the manufacturer and/or supplier of the item. The EO is a corporate entity that is related to, has some responsibility for, the product being listed for sale. For additional information, see <a href = "https://www.ebay.com/help/selling/selling/CE-mark-EU?id=5225#operator" target="_blank">What is an economic operator?</a>.
-     *
-     * @var \Nogrod\eBaySDK\Trading\EconomicOperatorType $economicOperator
-     */
-    private $economicOperator = null;
-
-    /**
      * This container is used by the seller to provide hazardous material information for the listing. Three elements are required to complete the Hazmat section of a listing: <b>Pictograms</b>, <b>SignalWord</b>, and <b>Statements</b>. The fourth element, <b>Component</b>, is optional. For more information, see <a href=" /api-docs/sell/static/metadata/feature-regulatorhazmatcontainer.html" target="_blank">Specifying hazardous material related information</a>.
      *  <br />
      *  <span class="tablenote"><b>Note: </b> Hazmat information is not required for all categories. Use the <a href = "/api-docs/sell/metadata/resources/marketplace/methods/getRegulatoryPolicies" target="_blank">getRegulatoryPolicies</a> method of the <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/methods">Metadata API</a> to return metadata on the eBay categories that recommend or require Hazmat-related fields. </span>
@@ -40,7 +31,7 @@ class RegulatoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
     private $hazmat = null;
 
     /**
-     * This container is used to provide product safety information for the listing. Two elements are required to complete the product safety section for a listing: <b>Pictograms</b> and <b>Statements</b>. The <b>Component</b> element is optional.
+     * This container is used to provide product safety information for the listing. One of the following elements is required to complete the product safety section for a listing: <b>Pictograms</b> or <b>Statements</b>. The <b>Component</b> element is optional.
      *  <br /> <br />
      *  <b>For Revise and Relist calls:</b> To delete all product safety information when you revise or relist, specify <b>Item.Regulatory.ProductSafety</b> in <b>DeletedField</b>, and don't pass <b>ProductSafety</b> in the request.
      *  <br />
@@ -121,36 +112,6 @@ class RegulatoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
     }
 
     /**
-     * Gets as economicOperator
-     *
-     * <span class="tablenote"><b>Note: </b> Economic Operator and its associated fields have been deprecated for the Add/Revise/Relist/Verify and GetItem family of calls and will be decommissioned on October 21, 2024. It has been replaced by the <b>Manufacturer</b> and <b>ResponsiblePersons</b> containers. Economic Operator related fields should no longer be used for the Add/Revise/Relist and VerifyItem family of calls. As it is currently still supported, Economic Operator-related fields will be returned if applicable for the GetItem call.
-     *  </span>
-     *  This container provides Economic Operator (EO) information about the manufacturer and/or supplier of the item. The EO is a corporate entity that is related to, has some responsibility for, the product being listed for sale. For additional information, see <a href = "https://www.ebay.com/help/selling/selling/CE-mark-EU?id=5225#operator" target="_blank">What is an economic operator?</a>.
-     *
-     * @return \Nogrod\eBaySDK\Trading\EconomicOperatorType
-     */
-    public function getEconomicOperator()
-    {
-        return $this->economicOperator;
-    }
-
-    /**
-     * Sets a new economicOperator
-     *
-     * <span class="tablenote"><b>Note: </b> Economic Operator and its associated fields have been deprecated for the Add/Revise/Relist/Verify and GetItem family of calls and will be decommissioned on October 21, 2024. It has been replaced by the <b>Manufacturer</b> and <b>ResponsiblePersons</b> containers. Economic Operator related fields should no longer be used for the Add/Revise/Relist and VerifyItem family of calls. As it is currently still supported, Economic Operator-related fields will be returned if applicable for the GetItem call.
-     *  </span>
-     *  This container provides Economic Operator (EO) information about the manufacturer and/or supplier of the item. The EO is a corporate entity that is related to, has some responsibility for, the product being listed for sale. For additional information, see <a href = "https://www.ebay.com/help/selling/selling/CE-mark-EU?id=5225#operator" target="_blank">What is an economic operator?</a>.
-     *
-     * @param \Nogrod\eBaySDK\Trading\EconomicOperatorType $economicOperator
-     * @return self
-     */
-    public function setEconomicOperator(\Nogrod\eBaySDK\Trading\EconomicOperatorType $economicOperator)
-    {
-        $this->economicOperator = $economicOperator;
-        return $this;
-    }
-
-    /**
      * Gets as hazmat
      *
      * This container is used by the seller to provide hazardous material information for the listing. Three elements are required to complete the Hazmat section of a listing: <b>Pictograms</b>, <b>SignalWord</b>, and <b>Statements</b>. The fourth element, <b>Component</b>, is optional. For more information, see <a href=" /api-docs/sell/static/metadata/feature-regulatorhazmatcontainer.html" target="_blank">Specifying hazardous material related information</a>.
@@ -183,7 +144,7 @@ class RegulatoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
     /**
      * Gets as productSafety
      *
-     * This container is used to provide product safety information for the listing. Two elements are required to complete the product safety section for a listing: <b>Pictograms</b> and <b>Statements</b>. The <b>Component</b> element is optional.
+     * This container is used to provide product safety information for the listing. One of the following elements is required to complete the product safety section for a listing: <b>Pictograms</b> or <b>Statements</b>. The <b>Component</b> element is optional.
      *  <br /> <br />
      *  <b>For Revise and Relist calls:</b> To delete all product safety information when you revise or relist, specify <b>Item.Regulatory.ProductSafety</b> in <b>DeletedField</b>, and don't pass <b>ProductSafety</b> in the request.
      *  <br />
@@ -199,7 +160,7 @@ class RegulatoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
     /**
      * Sets a new productSafety
      *
-     * This container is used to provide product safety information for the listing. Two elements are required to complete the product safety section for a listing: <b>Pictograms</b> and <b>Statements</b>. The <b>Component</b> element is optional.
+     * This container is used to provide product safety information for the listing. One of the following elements is required to complete the product safety section for a listing: <b>Pictograms</b> or <b>Statements</b>. The <b>Component</b> element is optional.
      *  <br /> <br />
      *  <b>For Revise and Relist calls:</b> To delete all product safety information when you revise or relist, specify <b>Item.Regulatory.ProductSafety</b> in <b>DeletedField</b>, and don't pass <b>ProductSafety</b> in the request.
      *  <br />
@@ -453,10 +414,6 @@ class RegulatoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}EnergyEfficiencyLabel", $value);
         }
-        $value = $this->getEconomicOperator();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}EconomicOperator", $value);
-        }
         $value = $this->getHazmat();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Hazmat", $value);
@@ -500,10 +457,6 @@ class RegulatoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
         $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}EnergyEfficiencyLabel');
         if (null !== $value) {
             $this->setEnergyEfficiencyLabel(\Nogrod\eBaySDK\Trading\EnergyEfficiencyType::fromKeyValue($value));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}EconomicOperator');
-        if (null !== $value) {
-            $this->setEconomicOperator(\Nogrod\eBaySDK\Trading\EconomicOperatorType::fromKeyValue($value));
         }
         $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}Hazmat');
         if (null !== $value) {

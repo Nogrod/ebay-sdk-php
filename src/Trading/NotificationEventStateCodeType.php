@@ -27,7 +27,8 @@ class NotificationEventStateCodeType
     /**
      * Constant for 'MarkedDown' value.
      *
-     * Status indicating the end user application is marked down
+     * This enumeration value is deprecated and should no longer be used.<br><br>Status
+     * indicating the end user application is marked down.
      */
     public const VAL_MARKED_DOWN = 'MarkedDown';
 
@@ -48,7 +49,8 @@ class NotificationEventStateCodeType
     /**
      * Constant for 'MarkedDownPending' value.
      *
-     * Status indicating the notification is marked down pending
+     * This enumeration value is deprecated and should no longer be used.
+     * <br><br>Status indicating the notification is marked down pending
      */
     public const VAL_MARKED_DOWN_PENDING = 'MarkedDownPending';
 
@@ -76,7 +78,8 @@ class NotificationEventStateCodeType
     /**
      * Constant for 'Canceled' value.
      *
-     * Status indicating the notification was cancelled
+     * Status indicating the notification was cancelled. This can be caused by multiple
+     * reasons, such as the destination being marked down or an unknown system error.
      */
     public const VAL_CANCELED = 'Canceled';
 
