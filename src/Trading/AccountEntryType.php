@@ -769,8 +769,8 @@ class AccountEntryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}OrderId", $value);
         }
         $value = $this->getDiscountDetail();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DiscountDetail", $value);
+        if (null !== $value && [] !== $this->getDiscountDetail()) {
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DiscountDetail", array_map(function ($v) {return ["Discount" => $v];}, $value));
         }
         $value = $this->getNetted();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;

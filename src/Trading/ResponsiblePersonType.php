@@ -446,8 +446,8 @@ class ResponsiblePersonType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Email", $value);
         }
         $value = $this->getTypes();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Types", $value);
+        if (null !== $value && [] !== $this->getTypes()) {
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Types", array_map(function ($v) {return ["Type" => $v];}, $value));
         }
     }
 
