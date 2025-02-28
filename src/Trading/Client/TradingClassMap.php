@@ -179,7 +179,7 @@ class TradingClassMap
         '{urn:ebay:apis:eBLBaseComponents}SetMessagePreferencesResponse' => 'Nogrod\eBaySDK\Trading\SetMessagePreferencesResponse',
         '{urn:ebay:apis:eBLBaseComponents}SetNotificationPreferencesRequest' => 'Nogrod\eBaySDK\Trading\SetNotificationPreferencesRequest',
         '{urn:ebay:apis:eBLBaseComponents}SetNotificationPreferencesResponse' => 'Nogrod\eBaySDK\Trading\SetNotificationPreferencesResponse',
-        '{urn:ebay:apis:eBLBaseComponents}SetShipmentTrackingInfoRequest' => 'Nogrod\eBaySDK\Trading\SetShipmentTrackingInfoRequest'
+        '{urn:ebay:apis:eBLBaseComponents}SetShipmentTrackingInfoRequest' => 'Nogrod\eBaySDK\Trading\SetShipmentTrackingInfoRequest',
         '{urn:ebay:apis:eBLBaseComponents}SetShipmentTrackingInfoResponse' => 'Nogrod\eBaySDK\Trading\SetShipmentTrackingInfoResponse',
         '{urn:ebay:apis:eBLBaseComponents}SetShippingDiscountProfilesRequest' => 'Nogrod\eBaySDK\Trading\SetShippingDiscountProfilesRequest',
         '{urn:ebay:apis:eBLBaseComponents}SetShippingDiscountProfilesResponse' => 'Nogrod\eBaySDK\Trading\SetShippingDiscountProfilesResponse',
