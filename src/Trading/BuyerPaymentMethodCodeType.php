@@ -32,6 +32,12 @@ class BuyerPaymentMethodCodeType
      * This enumeration value indicates that a money order or cashiers check is
      * accepted for payment. This value is only applicable for offline payments and is
      * not supported on all marketplaces.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b>
+     *  To see if this enumeration value is a supported payment method for a site and
+     * category, call <b>GetCategoryFeatures</b> specifying the listing category ID and
+     * including the <b>FeatureID</b> field set to <code>PaymentMethods</code>.
+     *  </span>
      */
     public const VAL_MOCC = 'MOCC';
 
@@ -65,8 +71,29 @@ class BuyerPaymentMethodCodeType
      * This enumeration value indicates that a personal check is accepted for payment.
      * This value is only applicable for offline payments and is not supported on all
      * marketplaces.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b>
+     *  To see if this enumeration value is a supported payment method for a site and
+     * category, call <b>GetCategoryFeatures</b> specifying the listing category ID and
+     * including the <b>FeatureID</b> field set to <code>PaymentMethods</code>.
+     *  </span>
      */
     public const VAL_PERSONAL_CHECK = 'PersonalCheck';
+
+    /**
+     * Constant for 'COD' value.
+     *
+     * This enumeration value indicates that a COD (Cash On Delivery) is accepted for
+     * payment. This value is only applicable for offline payments and is not supported
+     * on all marketplaces.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b>
+     *  To see if this enumeration value is a supported payment method for a site and
+     * category, call <b>GetCategoryFeatures</b> specifying the listing category ID and
+     * including the <b>FeatureID</b> field set to <code>PaymentMethods</code>.
+     *  </span>
+     */
+    public const VAL_COD = 'COD';
 
     /**
      * Constant for 'VisaMC' value.
@@ -112,6 +139,12 @@ class BuyerPaymentMethodCodeType
      *
      * This enumeration value indicates that cash on pickup is accepted for payment.
      * This value is only applicable for offline payments.
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b>
+     *  To see if this enumeration value is a supported payment method for a site and
+     * category, call <b>GetCategoryFeatures</b> specifying the listing category ID and
+     * including the <b>FeatureID</b> field set to <code>PaymentMethods</code>.
+     *  </span>
      */
     public const VAL_CASH_ON_PICKUP = 'CashOnPickup';
 

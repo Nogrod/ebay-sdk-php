@@ -1,7 +1,0 @@
-Nogrod\eBaySDK\Finding\BaseServiceRequestType:
-    virtual_properties:
-        ns_prop:
-            exp: '"http://www.ebay.com/marketplace/search/v1/services"'
-            serialized_name: xmlns
-            xml_attribute: true
-    properties: {  }

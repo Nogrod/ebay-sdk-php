@@ -15,6 +15,7 @@ class RegulatoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
     /**
      * This container provides information about the energy efficiency for certain durable goods.<br />
      *  <span class="tablenote"><b>Note: </b> As a part of Digital Services Act (DSA) requirements, all sellers who list products in Germany (DE) must provide Energy Efficiency Label information and Product Information Sheets for listings for certain durable goods.</span>
+     *  <span class="tablenote"><b>Note: </b> Sellers in the EU and UK can use this container to provide European energy efficiency (EEK) information for listings in the <b>Tyres</b> and <b>Appliance</b> categories. If no EEK information is specified through this container, it will be retrieved through a third party vendor. For more information, see <a href = "/api-docs/sell/static/inventory/energy-efficiency.html" target="_blank">Energy efficiency information</a>.</span>
      *  <span class="tablenote"><b>Note: </b> Energy efficiency information is not required for all categories. Use the <a href = "/api-docs/sell/metadata/resources/marketplace/methods/getRegulatoryPolicies" target="_blank">getRegulatoryPolicies</a> method of the <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/methods">Metadata API</a> to return metadata on the eBay categories that recommend or require energy efficiency-related fields. </span>
      *
      * @var \Nogrod\eBaySDK\Trading\EnergyEfficiencyType $energyEfficiencyLabel
@@ -22,7 +23,7 @@ class RegulatoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
     private $energyEfficiencyLabel = null;
 
     /**
-     * This container is used by the seller to provide hazardous material information for the listing. Three elements are required to complete the Hazmat section of a listing: <b>Pictograms</b>, <b>SignalWord</b>, and <b>Statements</b>. The fourth element, <b>Component</b>, is optional. For more information, see <a href=" /api-docs/sell/static/metadata/feature-regulatorhazmatcontainer.html" target="_blank">Specifying hazardous material related information</a>.
+     * This container is used by the seller to provide hazardous material information for the listing. Only the <b>Statements</b> element is required to complete the Hazmat section of a listing. The <b>Pictograms</b>, <b>SignalWord</b>, and <b>Component</b> elements are optional. For more information, see <a href=" /api-docs/sell/static/metadata/feature-regulatorhazmatcontainer.html" target="_blank">Specifying hazardous material related information</a>.
      *  <br />
      *  <span class="tablenote"><b>Note: </b> Hazmat information is not required for all categories. Use the <a href = "/api-docs/sell/metadata/resources/marketplace/methods/getRegulatoryPolicies" target="_blank">getRegulatoryPolicies</a> method of the <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/methods">Metadata API</a> to return metadata on the eBay categories that recommend or require Hazmat-related fields. </span>
      *
@@ -86,6 +87,7 @@ class RegulatoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      *
      * This container provides information about the energy efficiency for certain durable goods.<br />
      *  <span class="tablenote"><b>Note: </b> As a part of Digital Services Act (DSA) requirements, all sellers who list products in Germany (DE) must provide Energy Efficiency Label information and Product Information Sheets for listings for certain durable goods.</span>
+     *  <span class="tablenote"><b>Note: </b> Sellers in the EU and UK can use this container to provide European energy efficiency (EEK) information for listings in the <b>Tyres</b> and <b>Appliance</b> categories. If no EEK information is specified through this container, it will be retrieved through a third party vendor. For more information, see <a href = "/api-docs/sell/static/inventory/energy-efficiency.html" target="_blank">Energy efficiency information</a>.</span>
      *  <span class="tablenote"><b>Note: </b> Energy efficiency information is not required for all categories. Use the <a href = "/api-docs/sell/metadata/resources/marketplace/methods/getRegulatoryPolicies" target="_blank">getRegulatoryPolicies</a> method of the <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/methods">Metadata API</a> to return metadata on the eBay categories that recommend or require energy efficiency-related fields. </span>
      *
      * @return \Nogrod\eBaySDK\Trading\EnergyEfficiencyType
@@ -100,6 +102,7 @@ class RegulatoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      *
      * This container provides information about the energy efficiency for certain durable goods.<br />
      *  <span class="tablenote"><b>Note: </b> As a part of Digital Services Act (DSA) requirements, all sellers who list products in Germany (DE) must provide Energy Efficiency Label information and Product Information Sheets for listings for certain durable goods.</span>
+     *  <span class="tablenote"><b>Note: </b> Sellers in the EU and UK can use this container to provide European energy efficiency (EEK) information for listings in the <b>Tyres</b> and <b>Appliance</b> categories. If no EEK information is specified through this container, it will be retrieved through a third party vendor. For more information, see <a href = "/api-docs/sell/static/inventory/energy-efficiency.html" target="_blank">Energy efficiency information</a>.</span>
      *  <span class="tablenote"><b>Note: </b> Energy efficiency information is not required for all categories. Use the <a href = "/api-docs/sell/metadata/resources/marketplace/methods/getRegulatoryPolicies" target="_blank">getRegulatoryPolicies</a> method of the <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/methods">Metadata API</a> to return metadata on the eBay categories that recommend or require energy efficiency-related fields. </span>
      *
      * @param \Nogrod\eBaySDK\Trading\EnergyEfficiencyType $energyEfficiencyLabel
@@ -114,7 +117,7 @@ class RegulatoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
     /**
      * Gets as hazmat
      *
-     * This container is used by the seller to provide hazardous material information for the listing. Three elements are required to complete the Hazmat section of a listing: <b>Pictograms</b>, <b>SignalWord</b>, and <b>Statements</b>. The fourth element, <b>Component</b>, is optional. For more information, see <a href=" /api-docs/sell/static/metadata/feature-regulatorhazmatcontainer.html" target="_blank">Specifying hazardous material related information</a>.
+     * This container is used by the seller to provide hazardous material information for the listing. Only the <b>Statements</b> element is required to complete the Hazmat section of a listing. The <b>Pictograms</b>, <b>SignalWord</b>, and <b>Component</b> elements are optional. For more information, see <a href=" /api-docs/sell/static/metadata/feature-regulatorhazmatcontainer.html" target="_blank">Specifying hazardous material related information</a>.
      *  <br />
      *  <span class="tablenote"><b>Note: </b> Hazmat information is not required for all categories. Use the <a href = "/api-docs/sell/metadata/resources/marketplace/methods/getRegulatoryPolicies" target="_blank">getRegulatoryPolicies</a> method of the <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/methods">Metadata API</a> to return metadata on the eBay categories that recommend or require Hazmat-related fields. </span>
      *
@@ -128,7 +131,7 @@ class RegulatoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
     /**
      * Sets a new hazmat
      *
-     * This container is used by the seller to provide hazardous material information for the listing. Three elements are required to complete the Hazmat section of a listing: <b>Pictograms</b>, <b>SignalWord</b>, and <b>Statements</b>. The fourth element, <b>Component</b>, is optional. For more information, see <a href=" /api-docs/sell/static/metadata/feature-regulatorhazmatcontainer.html" target="_blank">Specifying hazardous material related information</a>.
+     * This container is used by the seller to provide hazardous material information for the listing. Only the <b>Statements</b> element is required to complete the Hazmat section of a listing. The <b>Pictograms</b>, <b>SignalWord</b>, and <b>Component</b> elements are optional. For more information, see <a href=" /api-docs/sell/static/metadata/feature-regulatorhazmatcontainer.html" target="_blank">Specifying hazardous material related information</a>.
      *  <br />
      *  <span class="tablenote"><b>Note: </b> Hazmat information is not required for all categories. Use the <a href = "/api-docs/sell/metadata/resources/marketplace/methods/getRegulatoryPolicies" target="_blank">getRegulatoryPolicies</a> method of the <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/methods">Metadata API</a> to return metadata on the eBay categories that recommend or require Hazmat-related fields. </span>
      *

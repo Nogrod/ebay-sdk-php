@@ -1,3 +1,0 @@
-Nogrod\eBaySDK\Shopping\GetMultipleItemsRequest:
-    xml_root_name: GetMultipleItemsRequest
-    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

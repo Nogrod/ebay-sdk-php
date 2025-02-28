@@ -13,14 +13,14 @@ use Nogrod\XMLClientRuntime\Func;
 class HazmatType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
     /**
-     * This container is used by the seller to provide pictograms for the listing. This field is required if hazmat information is supplied.
+     * This container is used by the seller to provide pictograms for the listing.
      *
      * @var string[] $pictograms
      */
     private $pictograms = null;
 
     /**
-     * This field sets the signal word for hazardous materials in the listing. If your product contains hazardous substances or mixtures, please select a value corresponding to the signal word that is stated on your product's Safety Data Sheet. The selected hazard information will be displayed on your listing. This field is required if hazmat information is supplied. Example values include: <br> <ul><li> <code>Danger</code></li><li> <code>Warning</code></li></ul><span class="tablenote"><strong>Note:</strong> Use the <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getHazardousMaterialsLabels">getHazardousMaterialsLabels</a> method in the <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/methods">Metadata API</a> to find supported values for a specific marketplace/site. For additional information, see <a href="https://developer.ebay.com/api-docs/sell/static/metadata/feature-regulatorhazmatcontainer.html#Signal" target="_blank">Signal word information</a>.
+     * This field sets the signal word for hazardous materials in the listing. If your product contains hazardous substances or mixtures, please select a value corresponding to the signal word that is stated on your product's Safety Data Sheet. The selected hazard information will be displayed on your listing. Example values include: <br> <ul><li> <code>Danger</code></li><li> <code>Warning</code></li></ul><span class="tablenote"><strong>Note:</strong> Use the <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getHazardousMaterialsLabels">getHazardousMaterialsLabels</a> method in the <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/methods">Metadata API</a> to find supported values for a specific marketplace/site. For additional information, see <a href="https://developer.ebay.com/api-docs/sell/static/metadata/feature-regulatorhazmatcontainer.html#Signal" target="_blank">Signal word information</a>.
      *
      * @var string $signalWord
      */
@@ -43,7 +43,7 @@ class HazmatType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
     /**
      * Adds as pictogram
      *
-     * This container is used by the seller to provide pictograms for the listing. This field is required if hazmat information is supplied.
+     * This container is used by the seller to provide pictograms for the listing.
      *
      * @return self
      * @param string $pictogram
@@ -57,7 +57,7 @@ class HazmatType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
     /**
      * isset pictograms
      *
-     * This container is used by the seller to provide pictograms for the listing. This field is required if hazmat information is supplied.
+     * This container is used by the seller to provide pictograms for the listing.
      *
      * @param int|string $index
      * @return bool
@@ -70,7 +70,7 @@ class HazmatType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
     /**
      * unset pictograms
      *
-     * This container is used by the seller to provide pictograms for the listing. This field is required if hazmat information is supplied.
+     * This container is used by the seller to provide pictograms for the listing.
      *
      * @param int|string $index
      * @return void
@@ -83,7 +83,7 @@ class HazmatType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
     /**
      * Gets as pictograms
      *
-     * This container is used by the seller to provide pictograms for the listing. This field is required if hazmat information is supplied.
+     * This container is used by the seller to provide pictograms for the listing.
      *
      * @return string[]
      */
@@ -95,7 +95,7 @@ class HazmatType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
     /**
      * Sets a new pictograms
      *
-     * This container is used by the seller to provide pictograms for the listing. This field is required if hazmat information is supplied.
+     * This container is used by the seller to provide pictograms for the listing.
      *
      * @param string[] $pictograms
      * @return self
@@ -109,7 +109,7 @@ class HazmatType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
     /**
      * Gets as signalWord
      *
-     * This field sets the signal word for hazardous materials in the listing. If your product contains hazardous substances or mixtures, please select a value corresponding to the signal word that is stated on your product's Safety Data Sheet. The selected hazard information will be displayed on your listing. This field is required if hazmat information is supplied. Example values include: <br> <ul><li> <code>Danger</code></li><li> <code>Warning</code></li></ul><span class="tablenote"><strong>Note:</strong> Use the <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getHazardousMaterialsLabels">getHazardousMaterialsLabels</a> method in the <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/methods">Metadata API</a> to find supported values for a specific marketplace/site. For additional information, see <a href="https://developer.ebay.com/api-docs/sell/static/metadata/feature-regulatorhazmatcontainer.html#Signal" target="_blank">Signal word information</a>.
+     * This field sets the signal word for hazardous materials in the listing. If your product contains hazardous substances or mixtures, please select a value corresponding to the signal word that is stated on your product's Safety Data Sheet. The selected hazard information will be displayed on your listing. Example values include: <br> <ul><li> <code>Danger</code></li><li> <code>Warning</code></li></ul><span class="tablenote"><strong>Note:</strong> Use the <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getHazardousMaterialsLabels">getHazardousMaterialsLabels</a> method in the <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/methods">Metadata API</a> to find supported values for a specific marketplace/site. For additional information, see <a href="https://developer.ebay.com/api-docs/sell/static/metadata/feature-regulatorhazmatcontainer.html#Signal" target="_blank">Signal word information</a>.
      *
      * @return string
      */
@@ -121,7 +121,7 @@ class HazmatType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
     /**
      * Sets a new signalWord
      *
-     * This field sets the signal word for hazardous materials in the listing. If your product contains hazardous substances or mixtures, please select a value corresponding to the signal word that is stated on your product's Safety Data Sheet. The selected hazard information will be displayed on your listing. This field is required if hazmat information is supplied. Example values include: <br> <ul><li> <code>Danger</code></li><li> <code>Warning</code></li></ul><span class="tablenote"><strong>Note:</strong> Use the <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getHazardousMaterialsLabels">getHazardousMaterialsLabels</a> method in the <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/methods">Metadata API</a> to find supported values for a specific marketplace/site. For additional information, see <a href="https://developer.ebay.com/api-docs/sell/static/metadata/feature-regulatorhazmatcontainer.html#Signal" target="_blank">Signal word information</a>.
+     * This field sets the signal word for hazardous materials in the listing. If your product contains hazardous substances or mixtures, please select a value corresponding to the signal word that is stated on your product's Safety Data Sheet. The selected hazard information will be displayed on your listing. Example values include: <br> <ul><li> <code>Danger</code></li><li> <code>Warning</code></li></ul><span class="tablenote"><strong>Note:</strong> Use the <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getHazardousMaterialsLabels">getHazardousMaterialsLabels</a> method in the <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/methods">Metadata API</a> to find supported values for a specific marketplace/site. For additional information, see <a href="https://developer.ebay.com/api-docs/sell/static/metadata/feature-regulatorhazmatcontainer.html#Signal" target="_blank">Signal word information</a>.
      *
      * @param string $signalWord
      * @return self

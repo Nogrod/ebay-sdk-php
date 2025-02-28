@@ -178,6 +178,36 @@ class ValueTypeCodeType
     public const VAL_VATIN = 'VATIN';
 
     /**
+     * Constant for 'CURP' value.
+     *
+     * This value indicates that the tax ID in the <b>ID</b> field is a CURP number,
+     * which is one identifier used by the Mexican tax authorities (SAT) to identify
+     * taxpayers in Mexico. In Spanish, this ID is known as the 'Clave Única de
+     * Registro de Población'.
+     */
+    public const VAL_CURP = 'CURP';
+
+    /**
+     * Constant for 'RFC' value.
+     *
+     * This value indicates that the tax ID in the <b>ID</b> field is a RFC number,
+     * which is one identifier used by the Mexican tax authorities (SAT) to identify
+     * taxpayers in Mexico. In Spanish, this ID is known as the 'Registro Federal de
+     * Contribuyentes'.
+     */
+    public const VAL_RFC = 'RFC';
+
+    /**
+     * Constant for 'RUT' value.
+     *
+     * This value indicates that the tax ID in the <b>ID</b> field is a Tax
+     * Registration Number, which is an identifier used by the Chileans government to
+     * identify taxpayers in Chile. In Spanish, this ID is known as the 'Rol Único
+     * Tributario'.
+     */
+    public const VAL_RUT = 'RUT';
+
+    /**
      * Constant for 'CustomCode' value.
      *
      * Reserved for future use.

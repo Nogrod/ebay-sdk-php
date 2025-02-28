@@ -14,8 +14,9 @@ use Nogrod\XMLClientRuntime\Func;
 class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
     /**
-     * The total amount the buyer paid for the order line item. This
-     *  amount includes all costs such as item cost, shipping/handling charges, and sales tax that is applied to the order by the seller. If the
+     * The total amount the buyer paid for the order line item. This amount includes the sale price of
+     *  each line item, shipping and handling charges, additional services, sales tax, and any Buyer Protection
+     *  fees + tax against this fee for the line item in the order. <br><br>If the
      *  seller allowed the buyer to change the total for an order, the buyer is
      *  able to change the total up until the time when Checkout status is
      *  Complete. Determine whether the buyer changed the amount by retrieving the
@@ -149,7 +150,7 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     private $transactionID = null;
 
     /**
-     * The sale price for one unit of the line item. This price does not include any other costs like shipping charges or sales tax, and its value will remain the same before and after payment. If multiple units were purchased through a single-variation, fixed-price listing, to get the subtotal of the units purchased, the <b>TransactionPrice</b> value would have to be multiplied by the <b>Transaction.QuantityPurchased</b> value. <br><br>
+     * The sale price for one unit of the line item. This price does not include any other costs like shipping/handling costs, sales tax costs, or any discounts, and its value will remain the same before and after payment. If multiple units were purchased through a single-variation, fixed-price listing, to get the subtotal of the units purchased, the <b>TransactionPrice</b> value would have to be multiplied by the <b>Transaction.QuantityPurchased</b> value. <br><br>
      *  For a motor vehicle listing that required a deposit/down payment, the amount in the <b>TransactionPrice</b> is actually the deposit amount. <br><br>
      *  <strong>For GetMyeBaySelling</strong>: this field is only returned if the transaction came as a result of a buyer's Best Offer accepted by the seller. Otherwise, the <b>Transaction.TotalPrice</b> field should be viewed instead.
      *
@@ -545,7 +546,7 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      *  <br/><br/>
      *  Australian 'Goods and Services' tax (GST) is automatically charged to buyers outside of Australia when they purchase items on the eBay Australia site. Sellers on the Australia site do not have to take any extra steps to enable the collection of GST, as this tax is collected by eBay and remitted to the Australian government. For more information about Australian GST, see the <a href="https://www.ebay.com.au/help/selling/fees-credits-invoices/taxes-import-charges?id=4121">Taxes and import charges</a> help topic.
      *  <br/><br/>
-     *  As of January 2023, buyers in all US states will automatically be charged sales tax for purchases, and the seller does not set this rate. eBay will collect and remit this sales tax to the proper taxing authority on the buyer's behalf. For more US state-level information on sales tax, see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section4">eBay sales tax collection</a> help topic.
+     *  Buyers in all US states will automatically be charged sales tax for purchases, and the seller does not set this rate. eBay will collect and remit this sales tax to the proper taxing authority on the buyer's behalf. For more US state-level information on sales tax, see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section4">eBay sales tax collection</a> help topic.
      *
      * @var bool $eBayCollectAndRemitTax
      */
@@ -556,7 +557,7 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      *  <br/><br/>
      *  Australian 'Goods and Services' tax (GST) is automatically charged to buyers outside of Australia when they purchase items on the eBay Australia site. Sellers on the Australia site do not have to take any extra steps to enable the collection of GST, as this tax is collected by eBay and remitted to the Australian government. For more information about Australian GST, see the <a href="https://www.ebay.com.au/help/selling/fees-credits-invoices/taxes-import-charges?id=4121">Taxes and import charges</a> help topic.
      *  <br/><br/>
-     *  As of January 2023, buyers in all US states will automatically be charged sales tax for purchases, and the seller does not set this rate. eBay will collect and remit this sales tax to the proper taxing authority on the buyer's behalf. For more US state-level information on sales tax, see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section4">eBay sales tax collection</a> help topic.
+     *  Buyers in all US states will automatically be charged sales tax for purchases, and the seller does not set this rate. eBay will collect and remit this sales tax to the proper taxing authority on the buyer's behalf. For more US state-level information on sales tax, see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section4">eBay sales tax collection</a> help topic.
      *
      * @var \Nogrod\eBaySDK\Trading\TaxesType $eBayCollectAndRemitTaxes
      */
@@ -582,8 +583,9 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     /**
      * Gets as amountPaid
      *
-     * The total amount the buyer paid for the order line item. This
-     *  amount includes all costs such as item cost, shipping/handling charges, and sales tax that is applied to the order by the seller. If the
+     * The total amount the buyer paid for the order line item. This amount includes the sale price of
+     *  each line item, shipping and handling charges, additional services, sales tax, and any Buyer Protection
+     *  fees + tax against this fee for the line item in the order. <br><br>If the
      *  seller allowed the buyer to change the total for an order, the buyer is
      *  able to change the total up until the time when Checkout status is
      *  Complete. Determine whether the buyer changed the amount by retrieving the
@@ -605,8 +607,9 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     /**
      * Sets a new amountPaid
      *
-     * The total amount the buyer paid for the order line item. This
-     *  amount includes all costs such as item cost, shipping/handling charges, and sales tax that is applied to the order by the seller. If the
+     * The total amount the buyer paid for the order line item. This amount includes the sale price of
+     *  each line item, shipping and handling charges, additional services, sales tax, and any Buyer Protection
+     *  fees + tax against this fee for the line item in the order. <br><br>If the
      *  seller allowed the buyer to change the total for an order, the buyer is
      *  able to change the total up until the time when Checkout status is
      *  Complete. Determine whether the buyer changed the amount by retrieving the
@@ -1008,7 +1011,7 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     /**
      * Gets as transactionPrice
      *
-     * The sale price for one unit of the line item. This price does not include any other costs like shipping charges or sales tax, and its value will remain the same before and after payment. If multiple units were purchased through a single-variation, fixed-price listing, to get the subtotal of the units purchased, the <b>TransactionPrice</b> value would have to be multiplied by the <b>Transaction.QuantityPurchased</b> value. <br><br>
+     * The sale price for one unit of the line item. This price does not include any other costs like shipping/handling costs, sales tax costs, or any discounts, and its value will remain the same before and after payment. If multiple units were purchased through a single-variation, fixed-price listing, to get the subtotal of the units purchased, the <b>TransactionPrice</b> value would have to be multiplied by the <b>Transaction.QuantityPurchased</b> value. <br><br>
      *  For a motor vehicle listing that required a deposit/down payment, the amount in the <b>TransactionPrice</b> is actually the deposit amount. <br><br>
      *  <strong>For GetMyeBaySelling</strong>: this field is only returned if the transaction came as a result of a buyer's Best Offer accepted by the seller. Otherwise, the <b>Transaction.TotalPrice</b> field should be viewed instead.
      *
@@ -1022,7 +1025,7 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     /**
      * Sets a new transactionPrice
      *
-     * The sale price for one unit of the line item. This price does not include any other costs like shipping charges or sales tax, and its value will remain the same before and after payment. If multiple units were purchased through a single-variation, fixed-price listing, to get the subtotal of the units purchased, the <b>TransactionPrice</b> value would have to be multiplied by the <b>Transaction.QuantityPurchased</b> value. <br><br>
+     * The sale price for one unit of the line item. This price does not include any other costs like shipping/handling costs, sales tax costs, or any discounts, and its value will remain the same before and after payment. If multiple units were purchased through a single-variation, fixed-price listing, to get the subtotal of the units purchased, the <b>TransactionPrice</b> value would have to be multiplied by the <b>Transaction.QuantityPurchased</b> value. <br><br>
      *  For a motor vehicle listing that required a deposit/down payment, the amount in the <b>TransactionPrice</b> is actually the deposit amount. <br><br>
      *  <strong>For GetMyeBaySelling</strong>: this field is only returned if the transaction came as a result of a buyer's Best Offer accepted by the seller. Otherwise, the <b>Transaction.TotalPrice</b> field should be viewed instead.
      *
@@ -2422,7 +2425,7 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      *  <br/><br/>
      *  Australian 'Goods and Services' tax (GST) is automatically charged to buyers outside of Australia when they purchase items on the eBay Australia site. Sellers on the Australia site do not have to take any extra steps to enable the collection of GST, as this tax is collected by eBay and remitted to the Australian government. For more information about Australian GST, see the <a href="https://www.ebay.com.au/help/selling/fees-credits-invoices/taxes-import-charges?id=4121">Taxes and import charges</a> help topic.
      *  <br/><br/>
-     *  As of January 2023, buyers in all US states will automatically be charged sales tax for purchases, and the seller does not set this rate. eBay will collect and remit this sales tax to the proper taxing authority on the buyer's behalf. For more US state-level information on sales tax, see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section4">eBay sales tax collection</a> help topic.
+     *  Buyers in all US states will automatically be charged sales tax for purchases, and the seller does not set this rate. eBay will collect and remit this sales tax to the proper taxing authority on the buyer's behalf. For more US state-level information on sales tax, see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section4">eBay sales tax collection</a> help topic.
      *
      * @return bool
      */
@@ -2438,7 +2441,7 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      *  <br/><br/>
      *  Australian 'Goods and Services' tax (GST) is automatically charged to buyers outside of Australia when they purchase items on the eBay Australia site. Sellers on the Australia site do not have to take any extra steps to enable the collection of GST, as this tax is collected by eBay and remitted to the Australian government. For more information about Australian GST, see the <a href="https://www.ebay.com.au/help/selling/fees-credits-invoices/taxes-import-charges?id=4121">Taxes and import charges</a> help topic.
      *  <br/><br/>
-     *  As of January 2023, buyers in all US states will automatically be charged sales tax for purchases, and the seller does not set this rate. eBay will collect and remit this sales tax to the proper taxing authority on the buyer's behalf. For more US state-level information on sales tax, see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section4">eBay sales tax collection</a> help topic.
+     *  Buyers in all US states will automatically be charged sales tax for purchases, and the seller does not set this rate. eBay will collect and remit this sales tax to the proper taxing authority on the buyer's behalf. For more US state-level information on sales tax, see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section4">eBay sales tax collection</a> help topic.
      *
      * @param bool $eBayCollectAndRemitTax
      * @return self
@@ -2456,7 +2459,7 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      *  <br/><br/>
      *  Australian 'Goods and Services' tax (GST) is automatically charged to buyers outside of Australia when they purchase items on the eBay Australia site. Sellers on the Australia site do not have to take any extra steps to enable the collection of GST, as this tax is collected by eBay and remitted to the Australian government. For more information about Australian GST, see the <a href="https://www.ebay.com.au/help/selling/fees-credits-invoices/taxes-import-charges?id=4121">Taxes and import charges</a> help topic.
      *  <br/><br/>
-     *  As of January 2023, buyers in all US states will automatically be charged sales tax for purchases, and the seller does not set this rate. eBay will collect and remit this sales tax to the proper taxing authority on the buyer's behalf. For more US state-level information on sales tax, see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section4">eBay sales tax collection</a> help topic.
+     *  Buyers in all US states will automatically be charged sales tax for purchases, and the seller does not set this rate. eBay will collect and remit this sales tax to the proper taxing authority on the buyer's behalf. For more US state-level information on sales tax, see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section4">eBay sales tax collection</a> help topic.
      *
      * @return \Nogrod\eBaySDK\Trading\TaxesType
      */
@@ -2472,7 +2475,7 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      *  <br/><br/>
      *  Australian 'Goods and Services' tax (GST) is automatically charged to buyers outside of Australia when they purchase items on the eBay Australia site. Sellers on the Australia site do not have to take any extra steps to enable the collection of GST, as this tax is collected by eBay and remitted to the Australian government. For more information about Australian GST, see the <a href="https://www.ebay.com.au/help/selling/fees-credits-invoices/taxes-import-charges?id=4121">Taxes and import charges</a> help topic.
      *  <br/><br/>
-     *  As of January 2023, buyers in all US states will automatically be charged sales tax for purchases, and the seller does not set this rate. eBay will collect and remit this sales tax to the proper taxing authority on the buyer's behalf. For more US state-level information on sales tax, see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section4">eBay sales tax collection</a> help topic.
+     *  Buyers in all US states will automatically be charged sales tax for purchases, and the seller does not set this rate. eBay will collect and remit this sales tax to the proper taxing authority on the buyer's behalf. For more US state-level information on sales tax, see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section4">eBay sales tax collection</a> help topic.
      *
      * @param \Nogrod\eBaySDK\Trading\TaxesType $eBayCollectAndRemitTaxes
      * @return self

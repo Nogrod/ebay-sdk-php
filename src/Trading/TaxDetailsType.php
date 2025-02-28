@@ -30,9 +30,9 @@ class TaxDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
 
     /**
      * This value is the total amount of tax charges for the order line item for the
-     *  corresponding tax type (see <b>Imposition</b> value).
+     *  corresponding tax type (see <b>Imposition</b> value), and includes taxes that are applied against the <a href="https://www.ebay.co.uk/help/buying/paying-items/buyer-protection-fee?id=5594" target="_blank">Buyer Protection fee</a>.
      *  <br><br>
-     *  <b>TaxAmount</b> = <b>TaxOnSubtotalAmount</b> + <b>TaxOnShippingAmount</b> + <b>TaxOnHandlingAmount</b>
+     *  <b>TaxAmount</b> = <b>TaxOnSubtotalAmount</b> + <b>TaxOnShippingAmount</b> + <b>TaxOnHandlingAmount</b> + the tax on the <a href="https://www.ebay.co.uk/help/buying/paying-items/buyer-protection-fee?id=5594" target="_blank">Buyer Protection fee</a>
      *
      * @var \Nogrod\eBaySDK\Trading\AmountType $taxAmount
      */
@@ -40,7 +40,7 @@ class TaxDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
 
     /**
      * This value is the amount of sales tax applied based on the unit cost of the
-     *  order line item for the corresponding impositiion (tax type).
+     *  order line item for the corresponding imposition (tax type) and includes taxes that are applied against the <a href="https://www.ebay.co.uk/help/buying/paying-items/buyer-protection-fee?id=5594" target="_blank">Buyer Protection fee</a>.
      *
      * @var \Nogrod\eBaySDK\Trading\AmountType $taxOnSubtotalAmount
      */
@@ -136,9 +136,9 @@ class TaxDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      * Gets as taxAmount
      *
      * This value is the total amount of tax charges for the order line item for the
-     *  corresponding tax type (see <b>Imposition</b> value).
+     *  corresponding tax type (see <b>Imposition</b> value), and includes taxes that are applied against the <a href="https://www.ebay.co.uk/help/buying/paying-items/buyer-protection-fee?id=5594" target="_blank">Buyer Protection fee</a>.
      *  <br><br>
-     *  <b>TaxAmount</b> = <b>TaxOnSubtotalAmount</b> + <b>TaxOnShippingAmount</b> + <b>TaxOnHandlingAmount</b>
+     *  <b>TaxAmount</b> = <b>TaxOnSubtotalAmount</b> + <b>TaxOnShippingAmount</b> + <b>TaxOnHandlingAmount</b> + the tax on the <a href="https://www.ebay.co.uk/help/buying/paying-items/buyer-protection-fee?id=5594" target="_blank">Buyer Protection fee</a>
      *
      * @return \Nogrod\eBaySDK\Trading\AmountType
      */
@@ -151,9 +151,9 @@ class TaxDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      * Sets a new taxAmount
      *
      * This value is the total amount of tax charges for the order line item for the
-     *  corresponding tax type (see <b>Imposition</b> value).
+     *  corresponding tax type (see <b>Imposition</b> value), and includes taxes that are applied against the <a href="https://www.ebay.co.uk/help/buying/paying-items/buyer-protection-fee?id=5594" target="_blank">Buyer Protection fee</a>.
      *  <br><br>
-     *  <b>TaxAmount</b> = <b>TaxOnSubtotalAmount</b> + <b>TaxOnShippingAmount</b> + <b>TaxOnHandlingAmount</b>
+     *  <b>TaxAmount</b> = <b>TaxOnSubtotalAmount</b> + <b>TaxOnShippingAmount</b> + <b>TaxOnHandlingAmount</b> + the tax on the <a href="https://www.ebay.co.uk/help/buying/paying-items/buyer-protection-fee?id=5594" target="_blank">Buyer Protection fee</a>
      *
      * @param \Nogrod\eBaySDK\Trading\AmountType $taxAmount
      * @return self
@@ -168,7 +168,7 @@ class TaxDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      * Gets as taxOnSubtotalAmount
      *
      * This value is the amount of sales tax applied based on the unit cost of the
-     *  order line item for the corresponding impositiion (tax type).
+     *  order line item for the corresponding imposition (tax type) and includes taxes that are applied against the <a href="https://www.ebay.co.uk/help/buying/paying-items/buyer-protection-fee?id=5594" target="_blank">Buyer Protection fee</a>.
      *
      * @return \Nogrod\eBaySDK\Trading\AmountType
      */
@@ -181,7 +181,7 @@ class TaxDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      * Sets a new taxOnSubtotalAmount
      *
      * This value is the amount of sales tax applied based on the unit cost of the
-     *  order line item for the corresponding impositiion (tax type).
+     *  order line item for the corresponding imposition (tax type) and includes taxes that are applied against the <a href="https://www.ebay.co.uk/help/buying/paying-items/buyer-protection-fee?id=5594" target="_blank">Buyer Protection fee</a>.
      *
      * @param \Nogrod\eBaySDK\Trading\AmountType $taxOnSubtotalAmount
      * @return self

@@ -15,6 +15,8 @@ class PaymentInformationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * This container consists of detailed information about each payment made by the buyer to pay for an order. In many cases, there may be only one payment - the payment made from the buyer to the seller, but in the case of an order going through the Global Shipping Program, one payment goes to the seller for the price of the order, and then an import charge and a portion of the shipping charges may go to eBay Global Shipping Program partner. In the case of an order that is subject to Australia import tax, one payment goes to the seller for the total price of the order, and the import tax goes to eBay for remittance to the Australian government.
      *  <br><br>
+     *  A <b>Payment</b> container will be returned that shows the <a href="https://www.ebay.co.uk/help/buying/paying-items/buyer-protection-fee?id=5594" target="_blank">Buyer Protection fees</a>, plus the tax applied against that fee. Please note that the additional <b>Payment</b> container will show <code>eBay</code> as the <b>Payee</b> instead of the seller. The <b>FeeOrCreditAmount</b> container will reflect the amount.
+     *  <br><br>
      *  <span class="tablenote"><b>Note: </b> Australia import tax is only applicable to the Australia site.
      *  </span>
      *
@@ -28,6 +30,8 @@ class PaymentInformationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      * Adds as payment
      *
      * This container consists of detailed information about each payment made by the buyer to pay for an order. In many cases, there may be only one payment - the payment made from the buyer to the seller, but in the case of an order going through the Global Shipping Program, one payment goes to the seller for the price of the order, and then an import charge and a portion of the shipping charges may go to eBay Global Shipping Program partner. In the case of an order that is subject to Australia import tax, one payment goes to the seller for the total price of the order, and the import tax goes to eBay for remittance to the Australian government.
+     *  <br><br>
+     *  A <b>Payment</b> container will be returned that shows the <a href="https://www.ebay.co.uk/help/buying/paying-items/buyer-protection-fee?id=5594" target="_blank">Buyer Protection fees</a>, plus the tax applied against that fee. Please note that the additional <b>Payment</b> container will show <code>eBay</code> as the <b>Payee</b> instead of the seller. The <b>FeeOrCreditAmount</b> container will reflect the amount.
      *  <br><br>
      *  <span class="tablenote"><b>Note: </b> Australia import tax is only applicable to the Australia site.
      *  </span>
@@ -46,6 +50,8 @@ class PaymentInformationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      *
      * This container consists of detailed information about each payment made by the buyer to pay for an order. In many cases, there may be only one payment - the payment made from the buyer to the seller, but in the case of an order going through the Global Shipping Program, one payment goes to the seller for the price of the order, and then an import charge and a portion of the shipping charges may go to eBay Global Shipping Program partner. In the case of an order that is subject to Australia import tax, one payment goes to the seller for the total price of the order, and the import tax goes to eBay for remittance to the Australian government.
      *  <br><br>
+     *  A <b>Payment</b> container will be returned that shows the <a href="https://www.ebay.co.uk/help/buying/paying-items/buyer-protection-fee?id=5594" target="_blank">Buyer Protection fees</a>, plus the tax applied against that fee. Please note that the additional <b>Payment</b> container will show <code>eBay</code> as the <b>Payee</b> instead of the seller. The <b>FeeOrCreditAmount</b> container will reflect the amount.
+     *  <br><br>
      *  <span class="tablenote"><b>Note: </b> Australia import tax is only applicable to the Australia site.
      *  </span>
      *
@@ -61,6 +67,8 @@ class PaymentInformationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      * unset payment
      *
      * This container consists of detailed information about each payment made by the buyer to pay for an order. In many cases, there may be only one payment - the payment made from the buyer to the seller, but in the case of an order going through the Global Shipping Program, one payment goes to the seller for the price of the order, and then an import charge and a portion of the shipping charges may go to eBay Global Shipping Program partner. In the case of an order that is subject to Australia import tax, one payment goes to the seller for the total price of the order, and the import tax goes to eBay for remittance to the Australian government.
+     *  <br><br>
+     *  A <b>Payment</b> container will be returned that shows the <a href="https://www.ebay.co.uk/help/buying/paying-items/buyer-protection-fee?id=5594" target="_blank">Buyer Protection fees</a>, plus the tax applied against that fee. Please note that the additional <b>Payment</b> container will show <code>eBay</code> as the <b>Payee</b> instead of the seller. The <b>FeeOrCreditAmount</b> container will reflect the amount.
      *  <br><br>
      *  <span class="tablenote"><b>Note: </b> Australia import tax is only applicable to the Australia site.
      *  </span>
@@ -78,6 +86,8 @@ class PaymentInformationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      *
      * This container consists of detailed information about each payment made by the buyer to pay for an order. In many cases, there may be only one payment - the payment made from the buyer to the seller, but in the case of an order going through the Global Shipping Program, one payment goes to the seller for the price of the order, and then an import charge and a portion of the shipping charges may go to eBay Global Shipping Program partner. In the case of an order that is subject to Australia import tax, one payment goes to the seller for the total price of the order, and the import tax goes to eBay for remittance to the Australian government.
      *  <br><br>
+     *  A <b>Payment</b> container will be returned that shows the <a href="https://www.ebay.co.uk/help/buying/paying-items/buyer-protection-fee?id=5594" target="_blank">Buyer Protection fees</a>, plus the tax applied against that fee. Please note that the additional <b>Payment</b> container will show <code>eBay</code> as the <b>Payee</b> instead of the seller. The <b>FeeOrCreditAmount</b> container will reflect the amount.
+     *  <br><br>
      *  <span class="tablenote"><b>Note: </b> Australia import tax is only applicable to the Australia site.
      *  </span>
      *
@@ -92,6 +102,8 @@ class PaymentInformationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      * Sets a new payment
      *
      * This container consists of detailed information about each payment made by the buyer to pay for an order. In many cases, there may be only one payment - the payment made from the buyer to the seller, but in the case of an order going through the Global Shipping Program, one payment goes to the seller for the price of the order, and then an import charge and a portion of the shipping charges may go to eBay Global Shipping Program partner. In the case of an order that is subject to Australia import tax, one payment goes to the seller for the total price of the order, and the import tax goes to eBay for remittance to the Australian government.
+     *  <br><br>
+     *  A <b>Payment</b> container will be returned that shows the <a href="https://www.ebay.co.uk/help/buying/paying-items/buyer-protection-fee?id=5594" target="_blank">Buyer Protection fees</a>, plus the tax applied against that fee. Please note that the additional <b>Payment</b> container will show <code>eBay</code> as the <b>Payee</b> instead of the seller. The <b>FeeOrCreditAmount</b> container will reflect the amount.
      *  <br><br>
      *  <span class="tablenote"><b>Note: </b> Australia import tax is only applicable to the Australia site.
      *  </span>

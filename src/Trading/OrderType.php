@@ -46,7 +46,7 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
     private $adjustmentAmount = null;
 
     /**
-     * This value indicates the total amount paid by the buyer for the order. This amount includes the sale price of each line item, shipping and handling charges, additional services, and any sales tax applied towards the order. This value is only returned after the buyer has paid for the order.
+     * This value indicates the total amount paid by the buyer for the order. This amount includes the sale price of each line item, shipping and handling charges, additional services, sales tax, and any <a href="https://www.ebay.co.uk/help/buying/paying-items/buyer-protection-fee?id=5594" target="_blank">Buyer Protection fee</a>s + tax against this fee for any line items in the order. This value is only returned after the buyer has paid for the order.
      *  <br>
      *  <span class="tablenote"><b>Note:</b>
      *  <b>For GetOrders only</b>: If using Trading WSDL Version 1307 or above, the amount in this field will include sales tax. If using a Trading WSDL older than Version 1307, the amount in this field will not include sales tax. To incorporate the new logic while using a Trading WSDL that is older than 1307, developers can also use the X-EBAY-API-COMPATIBILITY-LEVEL header and set its value to 1307 or higher.
@@ -191,13 +191,17 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
 
     /**
      * The cumulative item cost for all line items in the order. This value does not take into account any shipping/handling costs, sales tax costs, or any discounts. For a single line item order, the amount in this field should be the same as the amount in the <strong>Transaction.TransactionPrice</strong> field. For a multiple line item order, the amount in this field should equal the cumulative amount of each <strong>Transaction.TransactionPrice</strong> fields for each order line item.
+     *  <br>
+     *  <span class="tablenote"><b>Note:</b>
+     *  <b>For GetOrders only:</b> This field, for backward compatibility, includes discounts from the <b>TransactionPrice</b> value and <b>Order.Subtotal</b> value.
+     *  </span>
      *
      * @var \Nogrod\eBaySDK\Trading\AmountType $subtotal
      */
     private $subtotal = null;
 
     /**
-     * The <b>Total</b> amount shows the total cost for the order, including total item cost (shown in <b>Subtotal</b> field), shipping charges (shown in <b>ShippingServiceSelected.ShippingServiceCost</b> field), and sales tax (shown in <b>SalesTax.SalesTaxAmount</b> field).
+     * The <b>Total</b> amount shows the total cost for the order, including total item cost (shown in <b>Subtotal</b> field), shipping charges (shown in <b>ShippingServiceSelected.ShippingServiceCost</b> field), sales tax (shown in <b>SalesTax.SalesTaxAmount</b> field), and any <a href="https://www.ebay.co.uk/help/buying/paying-items/buyer-protection-fee?id=5594" target="_blank">Buyer Protection fee</a>s + any taxes applied against this fee for any line items in the order.
      *  <br>
      *  <span class="tablenote"><b>Note:</b>
      *  <b>For GetOrders only</b>: If using Trading WSDL Version 1307 or above, the amount in this field will include sales tax. If using a Trading WSDL older than Version 1307, the amount in this field will not include sales tax. To incorporate the new logic while using a Trading WSDL that is older than 1307, developers can also use the X-EBAY-API-COMPATIBILITY-LEVEL header and set its value to 1307 or higher.
@@ -464,7 +468,7 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      *  <br/><br/>
      *  Australian 'Goods and Services' tax (GST) is automatically charged to buyers outside of Australia when they purchase items on the eBay Australia site. Sellers on the Australia site do not have to take any extra steps to enable the collection of GST, as this tax is collected by eBay and remitted to the Australian government. For more information about Australian GST, see the <a href="https://www.ebay.com.au/help/selling/fees-credits-invoices/taxes-import-charges?id=4121">Taxes and import charges</a> help topic.
      *  <br/><br/>
-     *  As of January 2023, buyers in all US states will automatically be charged sales tax for purchases, and the seller does not set this rate. eBay will collect and remit this sales tax to the proper taxing authority on the buyer's behalf. For more US state-level information on sales tax, see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section3">eBay sales tax collection</a> help topic.
+     *  Buyers in all US states will automatically be charged sales tax for purchases, and the seller does not set this rate. eBay will collect and remit this sales tax to the proper taxing authority on the buyer's behalf. For more US state-level information on sales tax, see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section3">eBay sales tax collection</a> help topic.
      *  <br>
      *  <span class="tablenote"><b>Note: </b> The <b>ContainingOrder.eBayCollectAndRemitTax</b> field will stop being returned by <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
      *  </span>
@@ -572,7 +576,7 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
     /**
      * Gets as amountPaid
      *
-     * This value indicates the total amount paid by the buyer for the order. This amount includes the sale price of each line item, shipping and handling charges, additional services, and any sales tax applied towards the order. This value is only returned after the buyer has paid for the order.
+     * This value indicates the total amount paid by the buyer for the order. This amount includes the sale price of each line item, shipping and handling charges, additional services, sales tax, and any <a href="https://www.ebay.co.uk/help/buying/paying-items/buyer-protection-fee?id=5594" target="_blank">Buyer Protection fee</a>s + tax against this fee for any line items in the order. This value is only returned after the buyer has paid for the order.
      *  <br>
      *  <span class="tablenote"><b>Note:</b>
      *  <b>For GetOrders only</b>: If using Trading WSDL Version 1307 or above, the amount in this field will include sales tax. If using a Trading WSDL older than Version 1307, the amount in this field will not include sales tax. To incorporate the new logic while using a Trading WSDL that is older than 1307, developers can also use the X-EBAY-API-COMPATIBILITY-LEVEL header and set its value to 1307 or higher.
@@ -588,7 +592,7 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
     /**
      * Sets a new amountPaid
      *
-     * This value indicates the total amount paid by the buyer for the order. This amount includes the sale price of each line item, shipping and handling charges, additional services, and any sales tax applied towards the order. This value is only returned after the buyer has paid for the order.
+     * This value indicates the total amount paid by the buyer for the order. This amount includes the sale price of each line item, shipping and handling charges, additional services, sales tax, and any <a href="https://www.ebay.co.uk/help/buying/paying-items/buyer-protection-fee?id=5594" target="_blank">Buyer Protection fee</a>s + tax against this fee for any line items in the order. This value is only returned after the buyer has paid for the order.
      *  <br>
      *  <span class="tablenote"><b>Note:</b>
      *  <b>For GetOrders only</b>: If using Trading WSDL Version 1307 or above, the amount in this field will include sales tax. If using a Trading WSDL older than Version 1307, the amount in this field will not include sales tax. To incorporate the new logic while using a Trading WSDL that is older than 1307, developers can also use the X-EBAY-API-COMPATIBILITY-LEVEL header and set its value to 1307 or higher.
@@ -1038,6 +1042,10 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      * Gets as subtotal
      *
      * The cumulative item cost for all line items in the order. This value does not take into account any shipping/handling costs, sales tax costs, or any discounts. For a single line item order, the amount in this field should be the same as the amount in the <strong>Transaction.TransactionPrice</strong> field. For a multiple line item order, the amount in this field should equal the cumulative amount of each <strong>Transaction.TransactionPrice</strong> fields for each order line item.
+     *  <br>
+     *  <span class="tablenote"><b>Note:</b>
+     *  <b>For GetOrders only:</b> This field, for backward compatibility, includes discounts from the <b>TransactionPrice</b> value and <b>Order.Subtotal</b> value.
+     *  </span>
      *
      * @return \Nogrod\eBaySDK\Trading\AmountType
      */
@@ -1050,6 +1058,10 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      * Sets a new subtotal
      *
      * The cumulative item cost for all line items in the order. This value does not take into account any shipping/handling costs, sales tax costs, or any discounts. For a single line item order, the amount in this field should be the same as the amount in the <strong>Transaction.TransactionPrice</strong> field. For a multiple line item order, the amount in this field should equal the cumulative amount of each <strong>Transaction.TransactionPrice</strong> fields for each order line item.
+     *  <br>
+     *  <span class="tablenote"><b>Note:</b>
+     *  <b>For GetOrders only:</b> This field, for backward compatibility, includes discounts from the <b>TransactionPrice</b> value and <b>Order.Subtotal</b> value.
+     *  </span>
      *
      * @param \Nogrod\eBaySDK\Trading\AmountType $subtotal
      * @return self
@@ -1063,7 +1075,7 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
     /**
      * Gets as total
      *
-     * The <b>Total</b> amount shows the total cost for the order, including total item cost (shown in <b>Subtotal</b> field), shipping charges (shown in <b>ShippingServiceSelected.ShippingServiceCost</b> field), and sales tax (shown in <b>SalesTax.SalesTaxAmount</b> field).
+     * The <b>Total</b> amount shows the total cost for the order, including total item cost (shown in <b>Subtotal</b> field), shipping charges (shown in <b>ShippingServiceSelected.ShippingServiceCost</b> field), sales tax (shown in <b>SalesTax.SalesTaxAmount</b> field), and any <a href="https://www.ebay.co.uk/help/buying/paying-items/buyer-protection-fee?id=5594" target="_blank">Buyer Protection fee</a>s + any taxes applied against this fee for any line items in the order.
      *  <br>
      *  <span class="tablenote"><b>Note:</b>
      *  <b>For GetOrders only</b>: If using Trading WSDL Version 1307 or above, the amount in this field will include sales tax. If using a Trading WSDL older than Version 1307, the amount in this field will not include sales tax. To incorporate the new logic while using a Trading WSDL that is older than 1307, developers can also use the X-EBAY-API-COMPATIBILITY-LEVEL header and set its value to 1307 or higher.
@@ -1081,7 +1093,7 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
     /**
      * Sets a new total
      *
-     * The <b>Total</b> amount shows the total cost for the order, including total item cost (shown in <b>Subtotal</b> field), shipping charges (shown in <b>ShippingServiceSelected.ShippingServiceCost</b> field), and sales tax (shown in <b>SalesTax.SalesTaxAmount</b> field).
+     * The <b>Total</b> amount shows the total cost for the order, including total item cost (shown in <b>Subtotal</b> field), shipping charges (shown in <b>ShippingServiceSelected.ShippingServiceCost</b> field), sales tax (shown in <b>SalesTax.SalesTaxAmount</b> field), and any <a href="https://www.ebay.co.uk/help/buying/paying-items/buyer-protection-fee?id=5594" target="_blank">Buyer Protection fee</a>s + any taxes applied against this fee for any line items in the order.
      *  <br>
      *  <span class="tablenote"><b>Note:</b>
      *  <b>For GetOrders only</b>: If using Trading WSDL Version 1307 or above, the amount in this field will include sales tax. If using a Trading WSDL older than Version 1307, the amount in this field will not include sales tax. To incorporate the new logic while using a Trading WSDL that is older than 1307, developers can also use the X-EBAY-API-COMPATIBILITY-LEVEL header and set its value to 1307 or higher.
@@ -2114,7 +2126,7 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      *  <br/><br/>
      *  Australian 'Goods and Services' tax (GST) is automatically charged to buyers outside of Australia when they purchase items on the eBay Australia site. Sellers on the Australia site do not have to take any extra steps to enable the collection of GST, as this tax is collected by eBay and remitted to the Australian government. For more information about Australian GST, see the <a href="https://www.ebay.com.au/help/selling/fees-credits-invoices/taxes-import-charges?id=4121">Taxes and import charges</a> help topic.
      *  <br/><br/>
-     *  As of January 2023, buyers in all US states will automatically be charged sales tax for purchases, and the seller does not set this rate. eBay will collect and remit this sales tax to the proper taxing authority on the buyer's behalf. For more US state-level information on sales tax, see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section3">eBay sales tax collection</a> help topic.
+     *  Buyers in all US states will automatically be charged sales tax for purchases, and the seller does not set this rate. eBay will collect and remit this sales tax to the proper taxing authority on the buyer's behalf. For more US state-level information on sales tax, see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section3">eBay sales tax collection</a> help topic.
      *  <br>
      *  <span class="tablenote"><b>Note: </b> The <b>ContainingOrder.eBayCollectAndRemitTax</b> field will stop being returned by <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
      *  </span>
@@ -2134,7 +2146,7 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      *  <br/><br/>
      *  Australian 'Goods and Services' tax (GST) is automatically charged to buyers outside of Australia when they purchase items on the eBay Australia site. Sellers on the Australia site do not have to take any extra steps to enable the collection of GST, as this tax is collected by eBay and remitted to the Australian government. For more information about Australian GST, see the <a href="https://www.ebay.com.au/help/selling/fees-credits-invoices/taxes-import-charges?id=4121">Taxes and import charges</a> help topic.
      *  <br/><br/>
-     *  As of January 2023, buyers in all US states will automatically be charged sales tax for purchases, and the seller does not set this rate. eBay will collect and remit this sales tax to the proper taxing authority on the buyer's behalf. For more US state-level information on sales tax, see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section3">eBay sales tax collection</a> help topic.
+     *  Buyers in all US states will automatically be charged sales tax for purchases, and the seller does not set this rate. eBay will collect and remit this sales tax to the proper taxing authority on the buyer's behalf. For more US state-level information on sales tax, see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section3">eBay sales tax collection</a> help topic.
      *  <br>
      *  <span class="tablenote"><b>Note: </b> The <b>ContainingOrder.eBayCollectAndRemitTax</b> field will stop being returned by <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
      *  </span>

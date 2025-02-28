@@ -591,8 +591,10 @@ class NotificationEventTypeCodeType
     /**
      * Constant for 'BestOfferPlaced' value.
      *
-     * This notification is sent to a subscribed seller each time a prospective buyer
-     * places a Best Offer on an item.
+     * This notification is sent to third parties subscribed on the buyer's behalf each
+     * time a prospective buyer places a Best Offer on an item. See <a
+     * href="/api-docs/static/pn_best-offer-placed.html"
+     * target="_blank">BestOfferPlaced</a> for additional information.
      */
     public const VAL_BEST_OFFER_PLACED = 'BestOfferPlaced';
 

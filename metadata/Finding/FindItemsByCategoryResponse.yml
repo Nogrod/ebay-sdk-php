@@ -1,3 +1,0 @@
-Nogrod\eBaySDK\Finding\FindItemsByCategoryResponse:
-    xml_root_name: findItemsByCategoryResponse
-    xml_root_namespace: 'http://www.ebay.com/marketplace/search/v1/services'

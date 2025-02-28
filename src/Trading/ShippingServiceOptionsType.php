@@ -41,8 +41,9 @@ class ShippingServiceOptionsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
      *  <br>
      *  <br>
      *  <span class="tablenote"><strong>Note:</strong>
-     *  If the corresponding shipping service option is set as a 'free shipping' option (<b>FreeShipping=true</b>), the seller still needs to include this <b>ShippingServiceCost</b> field and set its value to <code>0.0</code>, as eBay will not do this automatically.
+     *  If the corresponding shipping service option is set as a 'free shipping' option (<b>FreeShipping</b> set to <code>true</code>) and flat-rate shipping is being used domestically (<b>ShippingType</b> is set to <code>Flat</code> or <code>FlatDomesticCalculatedInternational</code>), the seller must still include this <b>ShippingServiceCost</b> field and set its value to <code>0.0</code>, as eBay will not do this automatically. Do not include <b>ShippingServiceCost</b> when the domestic shipping service option is set to represent domestic calculated shipping (<b>ShippingType</b> is set to <code>Calculated</code> or <code>CalculatedDomesticFlatInternational</code>), as error 10019 occurs.
      *  </span>
+     *  <br>
      *  When returned by <b>GetItemShipping</b>, it includes the packaging and
      *  handling cost.
      *  <br>
@@ -230,8 +231,9 @@ class ShippingServiceOptionsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
      *  <br>
      *  <br>
      *  <span class="tablenote"><strong>Note:</strong>
-     *  If the corresponding shipping service option is set as a 'free shipping' option (<b>FreeShipping=true</b>), the seller still needs to include this <b>ShippingServiceCost</b> field and set its value to <code>0.0</code>, as eBay will not do this automatically.
+     *  If the corresponding shipping service option is set as a 'free shipping' option (<b>FreeShipping</b> set to <code>true</code>) and flat-rate shipping is being used domestically (<b>ShippingType</b> is set to <code>Flat</code> or <code>FlatDomesticCalculatedInternational</code>), the seller must still include this <b>ShippingServiceCost</b> field and set its value to <code>0.0</code>, as eBay will not do this automatically. Do not include <b>ShippingServiceCost</b> when the domestic shipping service option is set to represent domestic calculated shipping (<b>ShippingType</b> is set to <code>Calculated</code> or <code>CalculatedDomesticFlatInternational</code>), as error 10019 occurs.
      *  </span>
+     *  <br>
      *  When returned by <b>GetItemShipping</b>, it includes the packaging and
      *  handling cost.
      *  <br>
@@ -261,8 +263,9 @@ class ShippingServiceOptionsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
      *  <br>
      *  <br>
      *  <span class="tablenote"><strong>Note:</strong>
-     *  If the corresponding shipping service option is set as a 'free shipping' option (<b>FreeShipping=true</b>), the seller still needs to include this <b>ShippingServiceCost</b> field and set its value to <code>0.0</code>, as eBay will not do this automatically.
+     *  If the corresponding shipping service option is set as a 'free shipping' option (<b>FreeShipping</b> set to <code>true</code>) and flat-rate shipping is being used domestically (<b>ShippingType</b> is set to <code>Flat</code> or <code>FlatDomesticCalculatedInternational</code>), the seller must still include this <b>ShippingServiceCost</b> field and set its value to <code>0.0</code>, as eBay will not do this automatically. Do not include <b>ShippingServiceCost</b> when the domestic shipping service option is set to represent domestic calculated shipping (<b>ShippingType</b> is set to <code>Calculated</code> or <code>CalculatedDomesticFlatInternational</code>), as error 10019 occurs.
      *  </span>
+     *  <br>
      *  When returned by <b>GetItemShipping</b>, it includes the packaging and
      *  handling cost.
      *  <br>

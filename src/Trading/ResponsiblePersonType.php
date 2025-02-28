@@ -84,6 +84,14 @@ class ResponsiblePersonType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
     private $email = null;
 
     /**
+     * The Responsible Person's contact URL.
+     *  <br />
+     *
+     * @var string $contactURL
+     */
+    private $contactURL = null;
+
+    /**
      * The type(s) associated with the Responsible Person or entity.
      *
      * @var string[] $types
@@ -341,6 +349,34 @@ class ResponsiblePersonType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
     }
 
     /**
+     * Gets as contactURL
+     *
+     * The Responsible Person's contact URL.
+     *  <br />
+     *
+     * @return string
+     */
+    public function getContactURL()
+    {
+        return $this->contactURL;
+    }
+
+    /**
+     * Sets a new contactURL
+     *
+     * The Responsible Person's contact URL.
+     *  <br />
+     *
+     * @param string $contactURL
+     * @return self
+     */
+    public function setContactURL($contactURL)
+    {
+        $this->contactURL = $contactURL;
+        return $this;
+    }
+
+    /**
      * Adds as type
      *
      * The type(s) associated with the Responsible Person or entity.
@@ -445,6 +481,10 @@ class ResponsiblePersonType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Email", $value);
         }
+        $value = $this->getContactURL();
+        if (null !== $value) {
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ContactURL", $value);
+        }
         $value = $this->getTypes();
         if (null !== $value && [] !== $this->getTypes()) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Types", array_map(function ($v) {return ["Type" => $v];}, $value));
@@ -500,6 +540,10 @@ class ResponsiblePersonType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
         $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Email');
         if (null !== $value) {
             $this->setEmail($value);
+        }
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ContactURL');
+        if (null !== $value) {
+            $this->setContactURL($value);
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Types', true);
         if (null !== $value) {

@@ -86,6 +86,14 @@ class ManufacturerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     private $email = null;
 
     /**
+     * The product manufacturer's business contact URL.
+     *  <br />
+     *
+     * @var string $contactURL
+     */
+    private $contactURL = null;
+
+    /**
      * Gets as companyName
      *
      * The company name of the product manufacturer.
@@ -335,6 +343,34 @@ class ManufacturerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
         return $this;
     }
 
+    /**
+     * Gets as contactURL
+     *
+     * The product manufacturer's business contact URL.
+     *  <br />
+     *
+     * @return string
+     */
+    public function getContactURL()
+    {
+        return $this->contactURL;
+    }
+
+    /**
+     * Sets a new contactURL
+     *
+     * The product manufacturer's business contact URL.
+     *  <br />
+     *
+     * @param string $contactURL
+     * @return self
+     */
+    public function setContactURL($contactURL)
+    {
+        $this->contactURL = $contactURL;
+        return $this;
+    }
+
     public function xmlSerialize(\Sabre\Xml\Writer $writer): void
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
@@ -373,6 +409,10 @@ class ManufacturerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
         $value = $this->getEmail();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Email", $value);
+        }
+        $value = $this->getContactURL();
+        if (null !== $value) {
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ContactURL", $value);
         }
     }
 
@@ -425,6 +465,10 @@ class ManufacturerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
         $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Email');
         if (null !== $value) {
             $this->setEmail($value);
+        }
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ContactURL');
+        if (null !== $value) {
+            $this->setContactURL($value);
         }
     }
 }

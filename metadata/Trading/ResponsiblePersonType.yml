@@ -104,6 +104,17 @@ Nogrod\eBaySDK\Trading\ResponsiblePersonType:
                 getter: getEmail
                 setter: setEmail
             type: string
+        contactURL:
+            expose: true
+            access_type: public_method
+            serialized_name: ContactURL
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getContactURL
+                setter: setContactURL
+            type: string
         types:
             expose: true
             access_type: public_method

@@ -1,3 +1,0 @@
-Nogrod\eBaySDK\Finding\GetVersionRequest:
-    xml_root_name: getVersionRequest
-    xml_root_namespace: 'http://www.ebay.com/marketplace/search/v1/services'

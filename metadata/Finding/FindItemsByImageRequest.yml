@@ -1,3 +1,0 @@
-Nogrod\eBaySDK\Finding\FindItemsByImageRequest:
-    xml_root_name: findItemsByImageRequest
-    xml_root_namespace: 'http://www.ebay.com/marketplace/search/v1/services'

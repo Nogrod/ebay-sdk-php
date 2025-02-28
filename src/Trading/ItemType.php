@@ -227,6 +227,8 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  specify a postal code, but do not specify a location, then the location is
      *  given a default value derived from the postal code.
      *  <br><br>
+     *  <b>For Revise/Relist calls:</b> When updating an <b>Item.Location</b>, you must also include the <b>Item.PostalCode</b> corresponding to the <b>Item.Location</b> in the revise/relist call; otherwise, the location will not be updated.
+     *  <br><br>
      *  For the Classified Ad format for motors vehicle listings, the value
      *  provided in the <b>Location</b> field is used as item location only if the
      *  <b>SellerContactDetails.Street</b> and the <b>SellerContactDetails.Street2</b> are empty.
@@ -262,8 +264,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     private $paymentDetails = null;
 
     /**
-     * <br>
-     *  <b>For Add/Revise/Relist calls</b>: A <b>PaymentMethods</b> field is required for each offline payment method supported by the seller for the listing.
+     * <b>For Add/Revise/Relist calls</b>: A <b>PaymentMethods</b> field is required for each offline payment method supported by the seller for the listing.
      *  <br>
      *  <span class="tablenote"><b>Note: </b> Sellers no longer have to specify any electronic payment methods for listings, so one or more <b>PaymentMethods</b> fields will only be needed for listings that require/support payments off of eBay's platform. If an electronic payment is supplied in a <b>PaymentMethods</b> field, a warning will be triggered and the payment method will be dropped.
      *  </span>
@@ -2460,6 +2461,8 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  specify a postal code, but do not specify a location, then the location is
      *  given a default value derived from the postal code.
      *  <br><br>
+     *  <b>For Revise/Relist calls:</b> When updating an <b>Item.Location</b>, you must also include the <b>Item.PostalCode</b> corresponding to the <b>Item.Location</b> in the revise/relist call; otherwise, the location will not be updated.
+     *  <br><br>
      *  For the Classified Ad format for motors vehicle listings, the value
      *  provided in the <b>Location</b> field is used as item location only if the
      *  <b>SellerContactDetails.Street</b> and the <b>SellerContactDetails.Street2</b> are empty.
@@ -2485,6 +2488,8 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  If you do not specify <b>Location</b>, you must specify <b>Item.PostalCode</b>. If you
      *  specify a postal code, but do not specify a location, then the location is
      *  given a default value derived from the postal code.
+     *  <br><br>
+     *  <b>For Revise/Relist calls:</b> When updating an <b>Item.Location</b>, you must also include the <b>Item.PostalCode</b> corresponding to the <b>Item.Location</b> in the revise/relist call; otherwise, the location will not be updated.
      *  <br><br>
      *  For the Classified Ad format for motors vehicle listings, the value
      *  provided in the <b>Location</b> field is used as item location only if the
@@ -2575,8 +2580,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Adds as paymentMethods
      *
-     * <br>
-     *  <b>For Add/Revise/Relist calls</b>: A <b>PaymentMethods</b> field is required for each offline payment method supported by the seller for the listing.
+     * <b>For Add/Revise/Relist calls</b>: A <b>PaymentMethods</b> field is required for each offline payment method supported by the seller for the listing.
      *  <br>
      *  <span class="tablenote"><b>Note: </b> Sellers no longer have to specify any electronic payment methods for listings, so one or more <b>PaymentMethods</b> fields will only be needed for listings that require/support payments off of eBay's platform. If an electronic payment is supplied in a <b>PaymentMethods</b> field, a warning will be triggered and the payment method will be dropped.
      *  </span>
@@ -2602,8 +2606,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * isset paymentMethods
      *
-     * <br>
-     *  <b>For Add/Revise/Relist calls</b>: A <b>PaymentMethods</b> field is required for each offline payment method supported by the seller for the listing.
+     * <b>For Add/Revise/Relist calls</b>: A <b>PaymentMethods</b> field is required for each offline payment method supported by the seller for the listing.
      *  <br>
      *  <span class="tablenote"><b>Note: </b> Sellers no longer have to specify any electronic payment methods for listings, so one or more <b>PaymentMethods</b> fields will only be needed for listings that require/support payments off of eBay's platform. If an electronic payment is supplied in a <b>PaymentMethods</b> field, a warning will be triggered and the payment method will be dropped.
      *  </span>
@@ -2628,8 +2631,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * unset paymentMethods
      *
-     * <br>
-     *  <b>For Add/Revise/Relist calls</b>: A <b>PaymentMethods</b> field is required for each offline payment method supported by the seller for the listing.
+     * <b>For Add/Revise/Relist calls</b>: A <b>PaymentMethods</b> field is required for each offline payment method supported by the seller for the listing.
      *  <br>
      *  <span class="tablenote"><b>Note: </b> Sellers no longer have to specify any electronic payment methods for listings, so one or more <b>PaymentMethods</b> fields will only be needed for listings that require/support payments off of eBay's platform. If an electronic payment is supplied in a <b>PaymentMethods</b> field, a warning will be triggered and the payment method will be dropped.
      *  </span>
@@ -2654,8 +2656,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Gets as paymentMethods
      *
-     * <br>
-     *  <b>For Add/Revise/Relist calls</b>: A <b>PaymentMethods</b> field is required for each offline payment method supported by the seller for the listing.
+     * <b>For Add/Revise/Relist calls</b>: A <b>PaymentMethods</b> field is required for each offline payment method supported by the seller for the listing.
      *  <br>
      *  <span class="tablenote"><b>Note: </b> Sellers no longer have to specify any electronic payment methods for listings, so one or more <b>PaymentMethods</b> fields will only be needed for listings that require/support payments off of eBay's platform. If an electronic payment is supplied in a <b>PaymentMethods</b> field, a warning will be triggered and the payment method will be dropped.
      *  </span>
@@ -2679,8 +2680,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Sets a new paymentMethods
      *
-     * <br>
-     *  <b>For Add/Revise/Relist calls</b>: A <b>PaymentMethods</b> field is required for each offline payment method supported by the seller for the listing.
+     * <b>For Add/Revise/Relist calls</b>: A <b>PaymentMethods</b> field is required for each offline payment method supported by the seller for the listing.
      *  <br>
      *  <span class="tablenote"><b>Note: </b> Sellers no longer have to specify any electronic payment methods for listings, so one or more <b>PaymentMethods</b> fields will only be needed for listings that require/support payments off of eBay's platform. If an electronic payment is supplied in a <b>PaymentMethods</b> field, a warning will be triggered and the payment method will be dropped.
      *  </span>

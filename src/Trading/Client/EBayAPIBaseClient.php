@@ -294,17 +294,6 @@ class EBayAPIBaseClient extends \Nogrod\XMLClientRuntime\Client
     }
 
     /**
-     * Call GetChallengeToken
-     *
-     * @param \Nogrod\eBaySDK\Trading\GetChallengeTokenRequest $getChallengeTokenRequest
-     * @return \Nogrod\eBaySDK\Trading\GetChallengeTokenResponse
-     */
-    public function getChallengeToken(\Nogrod\eBaySDK\Trading\GetChallengeTokenRequest $getChallengeTokenRequest): \Nogrod\eBaySDK\Trading\GetChallengeTokenResponse
-    {
-        return $this->call('GetChallengeToken', 'Nogrod\eBaySDK\Trading\GetChallengeTokenResponse', $getChallengeTokenRequest);
-    }
-
-    /**
      * Call GetDescriptionTemplates
      *
      * @param \Nogrod\eBaySDK\Trading\GetDescriptionTemplatesRequest $getDescriptionTemplatesRequest
@@ -624,17 +613,6 @@ class EBayAPIBaseClient extends \Nogrod\XMLClientRuntime\Client
     }
 
     /**
-     * Call GeteBayOfficialTime
-     *
-     * @param \Nogrod\eBaySDK\Trading\GeteBayOfficialTimeRequest $geteBayOfficialTimeRequest
-     * @return \Nogrod\eBaySDK\Trading\GeteBayOfficialTimeResponse
-     */
-    public function geteBayOfficialTime(\Nogrod\eBaySDK\Trading\GeteBayOfficialTimeRequest $geteBayOfficialTimeRequest): \Nogrod\eBaySDK\Trading\GeteBayOfficialTimeResponse
-    {
-        return $this->call('GeteBayOfficialTime', 'Nogrod\eBaySDK\Trading\GeteBayOfficialTimeResponse', $geteBayOfficialTimeRequest);
-    }
-
-    /**
      * Call LeaveFeedback
      *
      * @param \Nogrod\eBaySDK\Trading\LeaveFeedbackRequest $leaveFeedbackRequest
@@ -874,28 +852,6 @@ class EBayAPIBaseClient extends \Nogrod\XMLClientRuntime\Client
     public function uploadSiteHostedPictures(\Nogrod\eBaySDK\Trading\UploadSiteHostedPicturesRequest $uploadSiteHostedPicturesRequest): \Nogrod\eBaySDK\Trading\UploadSiteHostedPicturesResponse
     {
         return $this->call('UploadSiteHostedPictures', 'Nogrod\eBaySDK\Trading\UploadSiteHostedPicturesResponse', $uploadSiteHostedPicturesRequest);
-    }
-
-    /**
-     * Call ValidateChallengeInput
-     *
-     * @param \Nogrod\eBaySDK\Trading\ValidateChallengeInputRequest $validateChallengeInputRequest
-     * @return \Nogrod\eBaySDK\Trading\ValidateChallengeInputResponse
-     */
-    public function validateChallengeInput(\Nogrod\eBaySDK\Trading\ValidateChallengeInputRequest $validateChallengeInputRequest): \Nogrod\eBaySDK\Trading\ValidateChallengeInputResponse
-    {
-        return $this->call('ValidateChallengeInput', 'Nogrod\eBaySDK\Trading\ValidateChallengeInputResponse', $validateChallengeInputRequest);
-    }
-
-    /**
-     * Call ValidateTestUserRegistration
-     *
-     * @param \Nogrod\eBaySDK\Trading\ValidateTestUserRegistrationRequest $validateTestUserRegistrationRequest
-     * @return \Nogrod\eBaySDK\Trading\ValidateTestUserRegistrationResponse
-     */
-    public function validateTestUserRegistration(\Nogrod\eBaySDK\Trading\ValidateTestUserRegistrationRequest $validateTestUserRegistrationRequest): \Nogrod\eBaySDK\Trading\ValidateTestUserRegistrationResponse
-    {
-        return $this->call('ValidateTestUserRegistration', 'Nogrod\eBaySDK\Trading\ValidateTestUserRegistrationResponse', $validateTestUserRegistrationRequest);
     }
 
     /**
