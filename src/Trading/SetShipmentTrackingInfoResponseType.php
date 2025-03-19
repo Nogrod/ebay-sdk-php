@@ -14,6 +14,16 @@ use Nogrod\XMLClientRuntime\Func;
 class SetShipmentTrackingInfoResponseType extends AbstractResponseType
 {
     /**
+     * OrderID is always returned in the
+     *  response. You can use this field to track whether or not a response is
+     *  returned for every request, and to match specific responses to
+     *  Specific requests.
+     *
+     * @var string $orderID
+     */
+    private $orderID = null;
+
+    /**
      * OrderLineItemID is required upon input and always returned in the
      *  response. You can use this field to track whether or not a response is
      *  returned for every request, and to match specific responses to
@@ -22,6 +32,38 @@ class SetShipmentTrackingInfoResponseType extends AbstractResponseType
      * @var string $orderLineItemID
      */
     private $orderLineItemID = null;
+
+    /**
+     * Gets as orderID
+     *
+     * OrderID is always returned in the
+     *  response. You can use this field to track whether or not a response is
+     *  returned for every request, and to match specific responses to
+     *  Specific requests.
+     *
+     * @return string
+     */
+    public function getOrderID()
+    {
+        return $this->orderID;
+    }
+
+    /**
+     * Sets a new orderID
+     *
+     * OrderID is always returned in the
+     *  response. You can use this field to track whether or not a response is
+     *  returned for every request, and to match specific responses to
+     *  Specific requests.
+     *
+     * @param string $orderID
+     * @return self
+     */
+    public function setOrderID($orderID)
+    {
+        $this->orderID = $orderID;
+        return $this;
+    }
 
     /**
      * Gets as orderLineItemID
@@ -58,6 +100,10 @@ class SetShipmentTrackingInfoResponseType extends AbstractResponseType
     public function xmlSerialize(\Sabre\Xml\Writer $writer): void
     {
         parent::xmlSerialize($writer);
+        $value = $this->getOrderID();
+        if (null !== $value) {
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}OrderID", $value);
+        }
         $value = $this->getOrderLineItemID();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}OrderLineItemID", $value);
@@ -79,6 +125,10 @@ class SetShipmentTrackingInfoResponseType extends AbstractResponseType
     public function setKeyValue($keyValue)
     {
         parent::setKeyValue($keyValue);
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}OrderID');
+        if (null !== $value) {
+            $this->setOrderID($value);
+        }
         $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}OrderLineItemID');
         if (null !== $value) {
             $this->setOrderLineItemID($value);
