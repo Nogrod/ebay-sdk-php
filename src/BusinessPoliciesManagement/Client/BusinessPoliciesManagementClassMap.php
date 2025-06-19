@@ -6,7 +6,7 @@ use Sabre\Xml\Writer;
 
 class BusinessPoliciesManagementClassMap
 {
-    public static function Get()
+    public static function Get(): array
     {
         return ['Time' => function (Writer $writer, $elem) {
             $value = $elem->format('H:i:s');
@@ -18,7 +18,7 @@ class BusinessPoliciesManagementClassMap
         'Date' => function (Writer $writer, $elem) {$writer->write($elem->format('Y-m-d'));},];
     }
 
-    public static function GetElements()
+    public static function GetElements(): array
     {
         return [
         '{http://www.ebay.com/marketplace/selling/v1/services}addSellerProfileRequest' => 'Nogrod\eBaySDK\BusinessPoliciesManagement\AddSellerProfileRequest',
@@ -42,7 +42,7 @@ class BusinessPoliciesManagementClassMap
         ];
     }
 
-    public static function GetNamespaces()
+    public static function GetNamespaces(): array
     {
         return ['http://www.ebay.com/marketplace/selling/v1/services' => '',];
     }

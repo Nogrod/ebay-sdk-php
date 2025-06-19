@@ -132,19 +132,19 @@ class GetBidderListResponseType extends AbstractResponseType
         }
     }
 
-    public static function xmlDeserialize(\Sabre\Xml\Reader $reader)
+    public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
         return self::fromKeyValue($reader->parseInnerTree([]));
     }
 
-    public static function fromKeyValue($keyValue)
+    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\GetBidderListResponseType
     {
         $self = new self();
         $self->setKeyValue($keyValue);
         return $self;
     }
 
-    public function setKeyValue($keyValue)
+    public function setKeyValue($keyValue): void
     {
         parent::setKeyValue($keyValue);
         $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}Bidder');

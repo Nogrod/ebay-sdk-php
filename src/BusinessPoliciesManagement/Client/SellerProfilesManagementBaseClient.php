@@ -108,14 +108,14 @@ class SellerProfilesManagementBaseClient extends \Nogrod\XMLClientRuntime\Client
         return $this->call('removeOverrides', 'Nogrod\eBaySDK\BusinessPoliciesManagement\RemoveOverridesResponse', $params);
     }
 
-    protected function getJmsMetaPath()
+    protected function getJmsMetaPath(): array
     {
         return [
             'Nogrod\eBaySDK\BusinessPoliciesManagement' => __DIR__.'/../../../metadata/BusinessPoliciesManagement',
         ];
     }
 
-    protected function getSabre()
+    protected function getSabre(): \Sabre\Xml\Service
     {
         $service = new \Sabre\Xml\Service();
         $service->classMap = BusinessPoliciesManagementClassMap::Get();

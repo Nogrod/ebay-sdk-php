@@ -6,7 +6,7 @@ use Sabre\Xml\Writer;
 
 class TradingClassMap
 {
-    public static function Get()
+    public static function Get(): array
     {
         return ['Time' => function (Writer $writer, $elem) {
             $value = $elem->format('H:i:s');
@@ -18,7 +18,7 @@ class TradingClassMap
         'Date' => function (Writer $writer, $elem) {$writer->write($elem->format('Y-m-d'));},];
     }
 
-    public static function GetElements()
+    public static function GetElements(): array
     {
         return [
         '{urn:ebay:apis:eBLBaseComponents}ActiveInventoryReport' => 'Nogrod\eBaySDK\Trading\ActiveInventoryReport',
@@ -210,7 +210,7 @@ class TradingClassMap
         ];
     }
 
-    public static function GetNamespaces()
+    public static function GetNamespaces(): array
     {
         return ['urn:ebay:apis:eBLBaseComponents' => '',];
     }

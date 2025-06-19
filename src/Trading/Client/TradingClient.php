@@ -44,12 +44,12 @@ class TradingClient extends EBayAPIBaseClient
         parent::__construct($config, $serializer, $messageFactory, $client);
     }
 
-    protected function getUrl()
+    protected function getUrl(): ?string
     {
         return $this->getConfig('sandbox') ? self::SANDBOX_URL : self::PRODUCTION_URL;
     }
 
-    protected function prepareMessage($operation, $message)
+    protected function prepareMessage(string $operation, object $message): object
     {
         if ($message instanceof AbstractRequestType) {
             if ($this->getConfig('oauth') === null && $this->getConfig('auth') !== null) {
@@ -71,7 +71,7 @@ class TradingClient extends EBayAPIBaseClient
         return parent::prepareMessage($operation, $message);
     }
 
-    protected function buildHeaders(string $operation)
+    protected function buildHeaders(string $operation): array
     {
         $headers = [];
         $headers[self::X_EBAY_API_CALL_NAME] = $operation;

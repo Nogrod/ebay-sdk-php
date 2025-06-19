@@ -95,19 +95,19 @@ class UploadSiteHostedPicturesResponseType extends AbstractResponseType
         }
     }
 
-    public static function xmlDeserialize(\Sabre\Xml\Reader $reader)
+    public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
         return self::fromKeyValue($reader->parseInnerTree([]));
     }
 
-    public static function fromKeyValue($keyValue)
+    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\UploadSiteHostedPicturesResponseType
     {
         $self = new self();
         $self->setKeyValue($keyValue);
         return $self;
     }
 
-    public function setKeyValue($keyValue)
+    public function setKeyValue($keyValue): void
     {
         parent::setKeyValue($keyValue);
         $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}PictureSystemVersion');

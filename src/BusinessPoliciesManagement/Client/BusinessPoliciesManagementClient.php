@@ -33,12 +33,12 @@ class BusinessPoliciesManagementClient extends SellerProfilesManagementBaseClien
         parent::__construct($config, $serializer, $messageFactory, $client);
     }
 
-    protected function getUrl()
+    protected function getUrl(): ?string
     {
         return $this->getConfig('sandbox') ? self::SANDBOX_URL : self::PRODUCTION_URL;
     }
 
-    protected function buildHeaders(string $operation)
+    protected function buildHeaders(string $operation): array
     {
         $headers = [];
         $headers[self::X_EBAY_SOA_SECURITY_TOKEN] = $this->getConfig('auth');

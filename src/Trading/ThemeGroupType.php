@@ -217,19 +217,19 @@ class ThemeGroupType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
         }
     }
 
-    public static function xmlDeserialize(\Sabre\Xml\Reader $reader)
+    public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
         return self::fromKeyValue($reader->parseInnerTree([]));
     }
 
-    public static function fromKeyValue($keyValue)
+    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\ThemeGroupType
     {
         $self = new self();
         $self->setKeyValue($keyValue);
         return $self;
     }
 
-    public function setKeyValue($keyValue)
+    public function setKeyValue($keyValue): void
     {
         $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}GroupID');
         if (null !== $value) {
