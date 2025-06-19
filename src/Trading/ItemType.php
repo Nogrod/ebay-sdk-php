@@ -134,7 +134,8 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     private $description = null;
 
     /**
-     * This field is conditionally required if the listing is being revised through a Revise call, and the <b>Item.Description</b> field is one of the fields being changed. The enumeration value passed in this field specifies whether the text provided in the <b>Item.Description</b> field will prepend, append, or replace the existing text in the current <b>Item.Description</b> field.
+     * <span class="tablenote"><span style="color:#004680"><strong>Note: </strong>This field should no longer be used since it no longer supports the ability to append or prepend text using the <b>Append</b> or <b>Prepend</b> values, but only supports the <b>Replace</b> value. If this field is used and set to <b>Append</b> or <b>Prepend</b>, it will default to <b>Replace</b>, and whatever text is supplied in the <b>Item.Description</b> field will completely overwrite the current description for the active listing. If you wish to update the description for an active listing using a revise call, just provide the full description in the <b>Item.Description</b> field and do not use this field at all. This field will be completely removed from the WSDL within a few months.</span><br/>
+     *  This field no longer has an effect on the listing being revised through a <b>ReviseItem</b> or <b>ReviseFixedPrice</b> item call.
      *
      * @var string $descriptionReviseMode
      */
@@ -1056,7 +1057,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     private $newLeadCount = null;
 
     /**
-     * This container is a list of Item Specific <b>Name</b>/<b>Value</b> pairs used by the seller to provide desciptive details of an item in a structured manner.
+     * This container is a list of Item Specific <b>Name</b>/<b>Value</b> pairs used by the seller to provide descriptive details of an item in a structured manner.
      *
      *  <br><br>
      *  If creating, revising, or relisting an item with an <b>Add</b>, <b>Revise</b>, or <b>Relist</b> call, it is recommended that you use the <a href="/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API to retrieve mandatory and recommended Item Specifics for a category.
@@ -1372,12 +1373,6 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <br>
      *  <span class="tablenote"><b>Important: </b>
      *  For trading card listings in <b>Non-Sport Trading Card Singles (<code>183050</code>)</b>, <b>CCG Individual Cards (<code>183454</code>)</b>, and <b>Sports Trading Card Singles (<code>261328</code>)</b> categories, Condition ID 2750 can be used to specify the card as a <b>Graded</b> card and Condition ID 4000 can be used to specify the card as an <b>Ungraded</b> card. If either of these condition IDs are used, the seller is required to use the <b>ConditionDescriptors</b> container to provide one or more applicable Condition Descriptor name-value pairs. See the <a href="/Devzone/XML/docs/Reference/eBay/AddItem.html#Request.Item.ConditionDescriptors">ConditionDescriptors</a> field description for more information.
-     *  <br>
-     *  <br>
-     *  Beginning on October 23rd, 2023, trading card listings in the affected categories must either use Condition ID 2750 or Condition ID 4000, and no other item conditions will be accepted. These Condition IDs and the <b>ConditionDescriptors</b> container will be required for all new listings. If not provided after this date, the following calls will fail: <b>AddItem</b>, <b>AddFixedPriceItem</b>, <b>AddItems</b>, <b>VerifyAddItem</b>, and <b>VerifyAddFixedPriceItem</b>.
-     *  <br>
-     *  <br>
-     *  By January 22, 2024, all existing listings must be modified with either Condition ID 2750 or Condition ID 4000 and applicable <b>ConditionDescriptors</b> name-value pairs. This adds <b>ReviseItem</b>, <b>ReviseFixedPriceItem</b>, <b>RelistItem</b>, <b>RelistFixedPriceItem</b>, and <b>VerifyRelistItem</b> calls to the requirement.
      *  </span>
      *  Most eBay listing categories require an item condition, but a few eBay categories do not (such as Digital Gift Cards or Antiques categories). To verify if the listing category requires an item condition, and if so, what are the supported item condition and <b>ConditionID</b> values, you can call <b>GetCategoryFeatures</b>. In this <b>GetCategoryFeatures</b> call, you'd pass in the listing <b>CategoryID</b> value and two <b>FeatureID</b> fields - one of these fields set to <code>ConditionEnabled</code>, and the other field set to <code>ConditionValues</code>.
      *  <br><br>
@@ -1411,16 +1406,8 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
 
     /**
      * This container is used in <b>Add/Revise/Relist/Verify</b> listing calls to designate the condition descriptors for the listing. It is also returned in <b>GetItem</b> to indicate the condition descriptors applied to the listing.
-     *  <br>
-     *  <span class="tablenote"><b>Important: </b>
-     *  For trading card listings in <b>Non-Sport Trading Card Singles (<code>183050</code>)</b>, <b>CCG Individual Cards (<code>183454</code>)</b>, and <b>Sports Trading Card Singles (<code>261328</code>)</b> categories, Condition ID 2750 can be used to specify the card as a <b>Graded</b> card and Condition ID 4000 can be used to specify the card as an <b>Ungraded</b> card. If either of these condition IDs are used, the seller is required to use the <b>ConditionDescriptors</b> container to provide one or more applicable Condition Descriptor name-value pairs.
-     *  <br>
-     *  <br>
-     *  Beginning on October 23rd, 2023, trading card listings in the affected categories must either use Condition ID 2750 or Condition ID 4000, and no other item conditions will be accepted. These Condition IDs and the <b>ConditionDescriptors</b> container will be required for all new listings. If not provided after this date, the following calls will fail: <b>AddItem</b>, <b>AddFixedPriceItem</b>, <b>AddItems</b>, <b>VerifyAddItem</b>, and <b>VerifyAddFixedPriceItem</b>.
-     *  <br>
-     *  <br>
-     *  By January 22, 2024, all existing listings must be modified with either Condition ID 2750 or Condition ID 4000 and applicable <b>ConditionDescriptors</b> name-value pairs. This adds <b>ReviseItem</b>, <b>ReviseFixedPriceItem</b>, <b>RelistItem</b>, <b>RelistFixedPriceItem</b>, and <b>VerifyRelistItem</b> calls to the requirement.
-     *  </span>
+     *  <br><br>
+     *  For trading card listings in <b>Non-Sport Trading Card Singles (<code>183050</code>)</b>, <b>CCG Individual Cards (<code>183454</code>)</b>, and <b>Sports Trading Card Singles (<code>261328</code>)</b> categories, Condition ID <code>2750</code> can be used to specify the card as a <b>Graded</b> card and Condition ID <code>4000</code> can be used to specify the card as an <b>Ungraded</b> card. If either of these condition IDs are used, the seller is required to use this container to provide one or more applicable Condition Descriptor name-value pairs.
      *
      * @var \Nogrod\eBaySDK\Trading\ConditionDescriptorType[] $conditionDescriptors
      */
@@ -2164,7 +2151,8 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Gets as descriptionReviseMode
      *
-     * This field is conditionally required if the listing is being revised through a Revise call, and the <b>Item.Description</b> field is one of the fields being changed. The enumeration value passed in this field specifies whether the text provided in the <b>Item.Description</b> field will prepend, append, or replace the existing text in the current <b>Item.Description</b> field.
+     * <span class="tablenote"><span style="color:#004680"><strong>Note: </strong>This field should no longer be used since it no longer supports the ability to append or prepend text using the <b>Append</b> or <b>Prepend</b> values, but only supports the <b>Replace</b> value. If this field is used and set to <b>Append</b> or <b>Prepend</b>, it will default to <b>Replace</b>, and whatever text is supplied in the <b>Item.Description</b> field will completely overwrite the current description for the active listing. If you wish to update the description for an active listing using a revise call, just provide the full description in the <b>Item.Description</b> field and do not use this field at all. This field will be completely removed from the WSDL within a few months.</span><br/>
+     *  This field no longer has an effect on the listing being revised through a <b>ReviseItem</b> or <b>ReviseFixedPrice</b> item call.
      *
      * @return string
      */
@@ -2176,7 +2164,8 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Sets a new descriptionReviseMode
      *
-     * This field is conditionally required if the listing is being revised through a Revise call, and the <b>Item.Description</b> field is one of the fields being changed. The enumeration value passed in this field specifies whether the text provided in the <b>Item.Description</b> field will prepend, append, or replace the existing text in the current <b>Item.Description</b> field.
+     * <span class="tablenote"><span style="color:#004680"><strong>Note: </strong>This field should no longer be used since it no longer supports the ability to append or prepend text using the <b>Append</b> or <b>Prepend</b> values, but only supports the <b>Replace</b> value. If this field is used and set to <b>Append</b> or <b>Prepend</b>, it will default to <b>Replace</b>, and whatever text is supplied in the <b>Item.Description</b> field will completely overwrite the current description for the active listing. If you wish to update the description for an active listing using a revise call, just provide the full description in the <b>Item.Description</b> field and do not use this field at all. This field will be completely removed from the WSDL within a few months.</span><br/>
+     *  This field no longer has an effect on the listing being revised through a <b>ReviseItem</b> or <b>ReviseFixedPrice</b> item call.
      *
      * @param string $descriptionReviseMode
      * @return self
@@ -5035,7 +5024,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Adds as nameValueList
      *
-     * This container is a list of Item Specific <b>Name</b>/<b>Value</b> pairs used by the seller to provide desciptive details of an item in a structured manner.
+     * This container is a list of Item Specific <b>Name</b>/<b>Value</b> pairs used by the seller to provide descriptive details of an item in a structured manner.
      *
      *  <br><br>
      *  If creating, revising, or relisting an item with an <b>Add</b>, <b>Revise</b>, or <b>Relist</b> call, it is recommended that you use the <a href="/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API to retrieve mandatory and recommended Item Specifics for a category.
@@ -5073,7 +5062,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * isset itemSpecifics
      *
-     * This container is a list of Item Specific <b>Name</b>/<b>Value</b> pairs used by the seller to provide desciptive details of an item in a structured manner.
+     * This container is a list of Item Specific <b>Name</b>/<b>Value</b> pairs used by the seller to provide descriptive details of an item in a structured manner.
      *
      *  <br><br>
      *  If creating, revising, or relisting an item with an <b>Add</b>, <b>Revise</b>, or <b>Relist</b> call, it is recommended that you use the <a href="/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API to retrieve mandatory and recommended Item Specifics for a category.
@@ -5110,7 +5099,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * unset itemSpecifics
      *
-     * This container is a list of Item Specific <b>Name</b>/<b>Value</b> pairs used by the seller to provide desciptive details of an item in a structured manner.
+     * This container is a list of Item Specific <b>Name</b>/<b>Value</b> pairs used by the seller to provide descriptive details of an item in a structured manner.
      *
      *  <br><br>
      *  If creating, revising, or relisting an item with an <b>Add</b>, <b>Revise</b>, or <b>Relist</b> call, it is recommended that you use the <a href="/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API to retrieve mandatory and recommended Item Specifics for a category.
@@ -5147,7 +5136,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Gets as itemSpecifics
      *
-     * This container is a list of Item Specific <b>Name</b>/<b>Value</b> pairs used by the seller to provide desciptive details of an item in a structured manner.
+     * This container is a list of Item Specific <b>Name</b>/<b>Value</b> pairs used by the seller to provide descriptive details of an item in a structured manner.
      *
      *  <br><br>
      *  If creating, revising, or relisting an item with an <b>Add</b>, <b>Revise</b>, or <b>Relist</b> call, it is recommended that you use the <a href="/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API to retrieve mandatory and recommended Item Specifics for a category.
@@ -5183,7 +5172,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Sets a new itemSpecifics
      *
-     * This container is a list of Item Specific <b>Name</b>/<b>Value</b> pairs used by the seller to provide desciptive details of an item in a structured manner.
+     * This container is a list of Item Specific <b>Name</b>/<b>Value</b> pairs used by the seller to provide descriptive details of an item in a structured manner.
      *
      *  <br><br>
      *  If creating, revising, or relisting an item with an <b>Add</b>, <b>Revise</b>, or <b>Relist</b> call, it is recommended that you use the <a href="/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API to retrieve mandatory and recommended Item Specifics for a category.
@@ -6084,12 +6073,6 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <br>
      *  <span class="tablenote"><b>Important: </b>
      *  For trading card listings in <b>Non-Sport Trading Card Singles (<code>183050</code>)</b>, <b>CCG Individual Cards (<code>183454</code>)</b>, and <b>Sports Trading Card Singles (<code>261328</code>)</b> categories, Condition ID 2750 can be used to specify the card as a <b>Graded</b> card and Condition ID 4000 can be used to specify the card as an <b>Ungraded</b> card. If either of these condition IDs are used, the seller is required to use the <b>ConditionDescriptors</b> container to provide one or more applicable Condition Descriptor name-value pairs. See the <a href="/Devzone/XML/docs/Reference/eBay/AddItem.html#Request.Item.ConditionDescriptors">ConditionDescriptors</a> field description for more information.
-     *  <br>
-     *  <br>
-     *  Beginning on October 23rd, 2023, trading card listings in the affected categories must either use Condition ID 2750 or Condition ID 4000, and no other item conditions will be accepted. These Condition IDs and the <b>ConditionDescriptors</b> container will be required for all new listings. If not provided after this date, the following calls will fail: <b>AddItem</b>, <b>AddFixedPriceItem</b>, <b>AddItems</b>, <b>VerifyAddItem</b>, and <b>VerifyAddFixedPriceItem</b>.
-     *  <br>
-     *  <br>
-     *  By January 22, 2024, all existing listings must be modified with either Condition ID 2750 or Condition ID 4000 and applicable <b>ConditionDescriptors</b> name-value pairs. This adds <b>ReviseItem</b>, <b>ReviseFixedPriceItem</b>, <b>RelistItem</b>, <b>RelistFixedPriceItem</b>, and <b>VerifyRelistItem</b> calls to the requirement.
      *  </span>
      *  Most eBay listing categories require an item condition, but a few eBay categories do not (such as Digital Gift Cards or Antiques categories). To verify if the listing category requires an item condition, and if so, what are the supported item condition and <b>ConditionID</b> values, you can call <b>GetCategoryFeatures</b>. In this <b>GetCategoryFeatures</b> call, you'd pass in the listing <b>CategoryID</b> value and two <b>FeatureID</b> fields - one of these fields set to <code>ConditionEnabled</code>, and the other field set to <code>ConditionValues</code>.
      *  <br><br>
@@ -6131,12 +6114,6 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <br>
      *  <span class="tablenote"><b>Important: </b>
      *  For trading card listings in <b>Non-Sport Trading Card Singles (<code>183050</code>)</b>, <b>CCG Individual Cards (<code>183454</code>)</b>, and <b>Sports Trading Card Singles (<code>261328</code>)</b> categories, Condition ID 2750 can be used to specify the card as a <b>Graded</b> card and Condition ID 4000 can be used to specify the card as an <b>Ungraded</b> card. If either of these condition IDs are used, the seller is required to use the <b>ConditionDescriptors</b> container to provide one or more applicable Condition Descriptor name-value pairs. See the <a href="/Devzone/XML/docs/Reference/eBay/AddItem.html#Request.Item.ConditionDescriptors">ConditionDescriptors</a> field description for more information.
-     *  <br>
-     *  <br>
-     *  Beginning on October 23rd, 2023, trading card listings in the affected categories must either use Condition ID 2750 or Condition ID 4000, and no other item conditions will be accepted. These Condition IDs and the <b>ConditionDescriptors</b> container will be required for all new listings. If not provided after this date, the following calls will fail: <b>AddItem</b>, <b>AddFixedPriceItem</b>, <b>AddItems</b>, <b>VerifyAddItem</b>, and <b>VerifyAddFixedPriceItem</b>.
-     *  <br>
-     *  <br>
-     *  By January 22, 2024, all existing listings must be modified with either Condition ID 2750 or Condition ID 4000 and applicable <b>ConditionDescriptors</b> name-value pairs. This adds <b>ReviseItem</b>, <b>ReviseFixedPriceItem</b>, <b>RelistItem</b>, <b>RelistFixedPriceItem</b>, and <b>VerifyRelistItem</b> calls to the requirement.
      *  </span>
      *  Most eBay listing categories require an item condition, but a few eBay categories do not (such as Digital Gift Cards or Antiques categories). To verify if the listing category requires an item condition, and if so, what are the supported item condition and <b>ConditionID</b> values, you can call <b>GetCategoryFeatures</b>. In this <b>GetCategoryFeatures</b> call, you'd pass in the listing <b>CategoryID</b> value and two <b>FeatureID</b> fields - one of these fields set to <code>ConditionEnabled</code>, and the other field set to <code>ConditionValues</code>.
      *  <br><br>
@@ -6177,16 +6154,8 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      * Adds as conditionDescriptor
      *
      * This container is used in <b>Add/Revise/Relist/Verify</b> listing calls to designate the condition descriptors for the listing. It is also returned in <b>GetItem</b> to indicate the condition descriptors applied to the listing.
-     *  <br>
-     *  <span class="tablenote"><b>Important: </b>
-     *  For trading card listings in <b>Non-Sport Trading Card Singles (<code>183050</code>)</b>, <b>CCG Individual Cards (<code>183454</code>)</b>, and <b>Sports Trading Card Singles (<code>261328</code>)</b> categories, Condition ID 2750 can be used to specify the card as a <b>Graded</b> card and Condition ID 4000 can be used to specify the card as an <b>Ungraded</b> card. If either of these condition IDs are used, the seller is required to use the <b>ConditionDescriptors</b> container to provide one or more applicable Condition Descriptor name-value pairs.
-     *  <br>
-     *  <br>
-     *  Beginning on October 23rd, 2023, trading card listings in the affected categories must either use Condition ID 2750 or Condition ID 4000, and no other item conditions will be accepted. These Condition IDs and the <b>ConditionDescriptors</b> container will be required for all new listings. If not provided after this date, the following calls will fail: <b>AddItem</b>, <b>AddFixedPriceItem</b>, <b>AddItems</b>, <b>VerifyAddItem</b>, and <b>VerifyAddFixedPriceItem</b>.
-     *  <br>
-     *  <br>
-     *  By January 22, 2024, all existing listings must be modified with either Condition ID 2750 or Condition ID 4000 and applicable <b>ConditionDescriptors</b> name-value pairs. This adds <b>ReviseItem</b>, <b>ReviseFixedPriceItem</b>, <b>RelistItem</b>, <b>RelistFixedPriceItem</b>, and <b>VerifyRelistItem</b> calls to the requirement.
-     *  </span>
+     *  <br><br>
+     *  For trading card listings in <b>Non-Sport Trading Card Singles (<code>183050</code>)</b>, <b>CCG Individual Cards (<code>183454</code>)</b>, and <b>Sports Trading Card Singles (<code>261328</code>)</b> categories, Condition ID <code>2750</code> can be used to specify the card as a <b>Graded</b> card and Condition ID <code>4000</code> can be used to specify the card as an <b>Ungraded</b> card. If either of these condition IDs are used, the seller is required to use this container to provide one or more applicable Condition Descriptor name-value pairs.
      *
      * @return self
      * @param \Nogrod\eBaySDK\Trading\ConditionDescriptorType $conditionDescriptor
@@ -6201,16 +6170,8 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      * isset conditionDescriptors
      *
      * This container is used in <b>Add/Revise/Relist/Verify</b> listing calls to designate the condition descriptors for the listing. It is also returned in <b>GetItem</b> to indicate the condition descriptors applied to the listing.
-     *  <br>
-     *  <span class="tablenote"><b>Important: </b>
-     *  For trading card listings in <b>Non-Sport Trading Card Singles (<code>183050</code>)</b>, <b>CCG Individual Cards (<code>183454</code>)</b>, and <b>Sports Trading Card Singles (<code>261328</code>)</b> categories, Condition ID 2750 can be used to specify the card as a <b>Graded</b> card and Condition ID 4000 can be used to specify the card as an <b>Ungraded</b> card. If either of these condition IDs are used, the seller is required to use the <b>ConditionDescriptors</b> container to provide one or more applicable Condition Descriptor name-value pairs.
-     *  <br>
-     *  <br>
-     *  Beginning on October 23rd, 2023, trading card listings in the affected categories must either use Condition ID 2750 or Condition ID 4000, and no other item conditions will be accepted. These Condition IDs and the <b>ConditionDescriptors</b> container will be required for all new listings. If not provided after this date, the following calls will fail: <b>AddItem</b>, <b>AddFixedPriceItem</b>, <b>AddItems</b>, <b>VerifyAddItem</b>, and <b>VerifyAddFixedPriceItem</b>.
-     *  <br>
-     *  <br>
-     *  By January 22, 2024, all existing listings must be modified with either Condition ID 2750 or Condition ID 4000 and applicable <b>ConditionDescriptors</b> name-value pairs. This adds <b>ReviseItem</b>, <b>ReviseFixedPriceItem</b>, <b>RelistItem</b>, <b>RelistFixedPriceItem</b>, and <b>VerifyRelistItem</b> calls to the requirement.
-     *  </span>
+     *  <br><br>
+     *  For trading card listings in <b>Non-Sport Trading Card Singles (<code>183050</code>)</b>, <b>CCG Individual Cards (<code>183454</code>)</b>, and <b>Sports Trading Card Singles (<code>261328</code>)</b> categories, Condition ID <code>2750</code> can be used to specify the card as a <b>Graded</b> card and Condition ID <code>4000</code> can be used to specify the card as an <b>Ungraded</b> card. If either of these condition IDs are used, the seller is required to use this container to provide one or more applicable Condition Descriptor name-value pairs.
      *
      * @param int|string $index
      * @return bool
@@ -6224,16 +6185,8 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      * unset conditionDescriptors
      *
      * This container is used in <b>Add/Revise/Relist/Verify</b> listing calls to designate the condition descriptors for the listing. It is also returned in <b>GetItem</b> to indicate the condition descriptors applied to the listing.
-     *  <br>
-     *  <span class="tablenote"><b>Important: </b>
-     *  For trading card listings in <b>Non-Sport Trading Card Singles (<code>183050</code>)</b>, <b>CCG Individual Cards (<code>183454</code>)</b>, and <b>Sports Trading Card Singles (<code>261328</code>)</b> categories, Condition ID 2750 can be used to specify the card as a <b>Graded</b> card and Condition ID 4000 can be used to specify the card as an <b>Ungraded</b> card. If either of these condition IDs are used, the seller is required to use the <b>ConditionDescriptors</b> container to provide one or more applicable Condition Descriptor name-value pairs.
-     *  <br>
-     *  <br>
-     *  Beginning on October 23rd, 2023, trading card listings in the affected categories must either use Condition ID 2750 or Condition ID 4000, and no other item conditions will be accepted. These Condition IDs and the <b>ConditionDescriptors</b> container will be required for all new listings. If not provided after this date, the following calls will fail: <b>AddItem</b>, <b>AddFixedPriceItem</b>, <b>AddItems</b>, <b>VerifyAddItem</b>, and <b>VerifyAddFixedPriceItem</b>.
-     *  <br>
-     *  <br>
-     *  By January 22, 2024, all existing listings must be modified with either Condition ID 2750 or Condition ID 4000 and applicable <b>ConditionDescriptors</b> name-value pairs. This adds <b>ReviseItem</b>, <b>ReviseFixedPriceItem</b>, <b>RelistItem</b>, <b>RelistFixedPriceItem</b>, and <b>VerifyRelistItem</b> calls to the requirement.
-     *  </span>
+     *  <br><br>
+     *  For trading card listings in <b>Non-Sport Trading Card Singles (<code>183050</code>)</b>, <b>CCG Individual Cards (<code>183454</code>)</b>, and <b>Sports Trading Card Singles (<code>261328</code>)</b> categories, Condition ID <code>2750</code> can be used to specify the card as a <b>Graded</b> card and Condition ID <code>4000</code> can be used to specify the card as an <b>Ungraded</b> card. If either of these condition IDs are used, the seller is required to use this container to provide one or more applicable Condition Descriptor name-value pairs.
      *
      * @param int|string $index
      * @return void
@@ -6247,16 +6200,8 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      * Gets as conditionDescriptors
      *
      * This container is used in <b>Add/Revise/Relist/Verify</b> listing calls to designate the condition descriptors for the listing. It is also returned in <b>GetItem</b> to indicate the condition descriptors applied to the listing.
-     *  <br>
-     *  <span class="tablenote"><b>Important: </b>
-     *  For trading card listings in <b>Non-Sport Trading Card Singles (<code>183050</code>)</b>, <b>CCG Individual Cards (<code>183454</code>)</b>, and <b>Sports Trading Card Singles (<code>261328</code>)</b> categories, Condition ID 2750 can be used to specify the card as a <b>Graded</b> card and Condition ID 4000 can be used to specify the card as an <b>Ungraded</b> card. If either of these condition IDs are used, the seller is required to use the <b>ConditionDescriptors</b> container to provide one or more applicable Condition Descriptor name-value pairs.
-     *  <br>
-     *  <br>
-     *  Beginning on October 23rd, 2023, trading card listings in the affected categories must either use Condition ID 2750 or Condition ID 4000, and no other item conditions will be accepted. These Condition IDs and the <b>ConditionDescriptors</b> container will be required for all new listings. If not provided after this date, the following calls will fail: <b>AddItem</b>, <b>AddFixedPriceItem</b>, <b>AddItems</b>, <b>VerifyAddItem</b>, and <b>VerifyAddFixedPriceItem</b>.
-     *  <br>
-     *  <br>
-     *  By January 22, 2024, all existing listings must be modified with either Condition ID 2750 or Condition ID 4000 and applicable <b>ConditionDescriptors</b> name-value pairs. This adds <b>ReviseItem</b>, <b>ReviseFixedPriceItem</b>, <b>RelistItem</b>, <b>RelistFixedPriceItem</b>, and <b>VerifyRelistItem</b> calls to the requirement.
-     *  </span>
+     *  <br><br>
+     *  For trading card listings in <b>Non-Sport Trading Card Singles (<code>183050</code>)</b>, <b>CCG Individual Cards (<code>183454</code>)</b>, and <b>Sports Trading Card Singles (<code>261328</code>)</b> categories, Condition ID <code>2750</code> can be used to specify the card as a <b>Graded</b> card and Condition ID <code>4000</code> can be used to specify the card as an <b>Ungraded</b> card. If either of these condition IDs are used, the seller is required to use this container to provide one or more applicable Condition Descriptor name-value pairs.
      *
      * @return \Nogrod\eBaySDK\Trading\ConditionDescriptorType[]
      */
@@ -6269,16 +6214,8 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      * Sets a new conditionDescriptors
      *
      * This container is used in <b>Add/Revise/Relist/Verify</b> listing calls to designate the condition descriptors for the listing. It is also returned in <b>GetItem</b> to indicate the condition descriptors applied to the listing.
-     *  <br>
-     *  <span class="tablenote"><b>Important: </b>
-     *  For trading card listings in <b>Non-Sport Trading Card Singles (<code>183050</code>)</b>, <b>CCG Individual Cards (<code>183454</code>)</b>, and <b>Sports Trading Card Singles (<code>261328</code>)</b> categories, Condition ID 2750 can be used to specify the card as a <b>Graded</b> card and Condition ID 4000 can be used to specify the card as an <b>Ungraded</b> card. If either of these condition IDs are used, the seller is required to use the <b>ConditionDescriptors</b> container to provide one or more applicable Condition Descriptor name-value pairs.
-     *  <br>
-     *  <br>
-     *  Beginning on October 23rd, 2023, trading card listings in the affected categories must either use Condition ID 2750 or Condition ID 4000, and no other item conditions will be accepted. These Condition IDs and the <b>ConditionDescriptors</b> container will be required for all new listings. If not provided after this date, the following calls will fail: <b>AddItem</b>, <b>AddFixedPriceItem</b>, <b>AddItems</b>, <b>VerifyAddItem</b>, and <b>VerifyAddFixedPriceItem</b>.
-     *  <br>
-     *  <br>
-     *  By January 22, 2024, all existing listings must be modified with either Condition ID 2750 or Condition ID 4000 and applicable <b>ConditionDescriptors</b> name-value pairs. This adds <b>ReviseItem</b>, <b>ReviseFixedPriceItem</b>, <b>RelistItem</b>, <b>RelistFixedPriceItem</b>, and <b>VerifyRelistItem</b> calls to the requirement.
-     *  </span>
+     *  <br><br>
+     *  For trading card listings in <b>Non-Sport Trading Card Singles (<code>183050</code>)</b>, <b>CCG Individual Cards (<code>183454</code>)</b>, and <b>Sports Trading Card Singles (<code>261328</code>)</b> categories, Condition ID <code>2750</code> can be used to specify the card as a <b>Graded</b> card and Condition ID <code>4000</code> can be used to specify the card as an <b>Ungraded</b> card. If either of these condition IDs are used, the seller is required to use this container to provide one or more applicable Condition Descriptor name-value pairs.
      *
      * @param \Nogrod\eBaySDK\Trading\ConditionDescriptorType[] $conditionDescriptors
      * @return self

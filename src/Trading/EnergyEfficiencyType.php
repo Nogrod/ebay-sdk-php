@@ -7,7 +7,7 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing EnergyEfficiencyType
  *
- * Type defining the <b>ImageURL</b>, <b>ImageDescription</b>, and <b>ProductInformationsheet</b> regulatory fields that are used at the listing level to provide Energy Efficiency Label related information.<br>
+ * Type defining the <b>ImageURL</b>, <b>ImageDescription</b>, and <b>ProductInformationsheet</b> regulatory fields that are used at the listing level to provide Energy Efficiency Label related information.<br><span class="tablenote"><b>Important: </b> When providing energy efficiency information on an appliance listing, the energy efficiency <b>rating</b> and <b>range</b> of the item must be specified through the <a href = "/devzone/xml/docs/reference/ebay/additem.html#Request.Item.ItemSpecifics" target="_blank">ItemSpecifics</a> container. Use the <a href = "/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API to retrieve applicable rating and range values for a specified category.</span>
  * XSD Type: EnergyEfficiencyType
  */
 class EnergyEfficiencyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable

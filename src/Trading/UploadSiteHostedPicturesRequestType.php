@@ -72,7 +72,10 @@ class UploadSiteHostedPicturesRequestType extends AbstractRequestType
     ];
 
     /**
-     * By default, an unpublished picture will be hosted on the EPS server for five days before being purged. However, the seller has the option of using this field to set an expiration date further into the future (up to 30 days). Similarly, when a listing ends or expires, the images associated with the listing remain on the EPS server for an additional 90 days. The value in this field will add on to those 90 days.
+     * <span class="tablenote"><b>Note: </b>
+     *  This field is deprecated and will be decommissioned along with the <a href="https://developer.ebay.com/devzone/xml/docs/reference/ebay/ExtendSiteHostedPictures.html" target="_blank">ExtendSiteHostedPictures</a> call on July 28th, 2025.
+     *  </span>
+     *  By default, an unpublished picture will be hosted on the EPS server for 30 days before being purged. However, the seller has the option of using this field to set an expiration date further into the future (up to 30 days). Similarly, when a listing ends or expires, the images associated with the listing remain on the EPS server for an additional 90 days. The value in this field will add on to those 90 days.
      *  <br/><br/>
      *  <span class="tablenote"><b>Note: </b>
      *  This field is restricted to applications that have been granted permission. Contact the eBay Developers Program to request permission.
@@ -318,7 +321,10 @@ class UploadSiteHostedPicturesRequestType extends AbstractRequestType
     /**
      * Gets as extensionInDays
      *
-     * By default, an unpublished picture will be hosted on the EPS server for five days before being purged. However, the seller has the option of using this field to set an expiration date further into the future (up to 30 days). Similarly, when a listing ends or expires, the images associated with the listing remain on the EPS server for an additional 90 days. The value in this field will add on to those 90 days.
+     * <span class="tablenote"><b>Note: </b>
+     *  This field is deprecated and will be decommissioned along with the <a href="https://developer.ebay.com/devzone/xml/docs/reference/ebay/ExtendSiteHostedPictures.html" target="_blank">ExtendSiteHostedPictures</a> call on July 28th, 2025.
+     *  </span>
+     *  By default, an unpublished picture will be hosted on the EPS server for 30 days before being purged. However, the seller has the option of using this field to set an expiration date further into the future (up to 30 days). Similarly, when a listing ends or expires, the images associated with the listing remain on the EPS server for an additional 90 days. The value in this field will add on to those 90 days.
      *  <br/><br/>
      *  <span class="tablenote"><b>Note: </b>
      *  This field is restricted to applications that have been granted permission. Contact the eBay Developers Program to request permission.
@@ -334,7 +340,10 @@ class UploadSiteHostedPicturesRequestType extends AbstractRequestType
     /**
      * Sets a new extensionInDays
      *
-     * By default, an unpublished picture will be hosted on the EPS server for five days before being purged. However, the seller has the option of using this field to set an expiration date further into the future (up to 30 days). Similarly, when a listing ends or expires, the images associated with the listing remain on the EPS server for an additional 90 days. The value in this field will add on to those 90 days.
+     * <span class="tablenote"><b>Note: </b>
+     *  This field is deprecated and will be decommissioned along with the <a href="https://developer.ebay.com/devzone/xml/docs/reference/ebay/ExtendSiteHostedPictures.html" target="_blank">ExtendSiteHostedPictures</a> call on July 28th, 2025.
+     *  </span>
+     *  By default, an unpublished picture will be hosted on the EPS server for 30 days before being purged. However, the seller has the option of using this field to set an expiration date further into the future (up to 30 days). Similarly, when a listing ends or expires, the images associated with the listing remain on the EPS server for an additional 90 days. The value in this field will add on to those 90 days.
      *  <br/><br/>
      *  <span class="tablenote"><b>Note: </b>
      *  This field is restricted to applications that have been granted permission. Contact the eBay Developers Program to request permission.

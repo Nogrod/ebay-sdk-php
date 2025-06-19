@@ -78,7 +78,7 @@ class ProductListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     private $productDetailsURL = null;
 
     /**
-     * If the seller attempts to use <b>ProductListingDetails</b> in an Add/Revise/Relist call to find an eBay catalog product match, and multiple matches are found, the call will actually fail. This field can be included and set to <code>true</code> if the seller wants to see the eBay catalog products that were found through error messages in the call response. This flag will not have an effect if only one catalog product matchi is found, or if the <b>UseFirstProduct</b> field is used and set to <code>true</code> and a catalog product is found to create/revise the listing. <br>
+     * If the seller attempts to use <b>ProductListingDetails</b> in an Add/Revise/Relist call to find an eBay catalog product match, and multiple matches are found, the call will actually fail. This field can be included and set to <code>true</code> if the seller wants to see the eBay catalog products that were found through error messages in the call response. This flag will not have an effect if only one catalog product match is found, or if the <b>UseFirstProduct</b> field is used and set to <code>true</code> and a catalog product is found to create/revise the listing. <br>
      *  <br>
      *  If this field is omitted or set to <code>false</code>, and multiple catalog products are found, the call will fail and no information about the matching catalog products will be returned.
      *  <br>
@@ -429,7 +429,7 @@ class ProductListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     /**
      * Gets as returnSearchResultOnDuplicates
      *
-     * If the seller attempts to use <b>ProductListingDetails</b> in an Add/Revise/Relist call to find an eBay catalog product match, and multiple matches are found, the call will actually fail. This field can be included and set to <code>true</code> if the seller wants to see the eBay catalog products that were found through error messages in the call response. This flag will not have an effect if only one catalog product matchi is found, or if the <b>UseFirstProduct</b> field is used and set to <code>true</code> and a catalog product is found to create/revise the listing. <br>
+     * If the seller attempts to use <b>ProductListingDetails</b> in an Add/Revise/Relist call to find an eBay catalog product match, and multiple matches are found, the call will actually fail. This field can be included and set to <code>true</code> if the seller wants to see the eBay catalog products that were found through error messages in the call response. This flag will not have an effect if only one catalog product match is found, or if the <b>UseFirstProduct</b> field is used and set to <code>true</code> and a catalog product is found to create/revise the listing. <br>
      *  <br>
      *  If this field is omitted or set to <code>false</code>, and multiple catalog products are found, the call will fail and no information about the matching catalog products will be returned.
      *  <br>
@@ -444,7 +444,7 @@ class ProductListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     /**
      * Sets a new returnSearchResultOnDuplicates
      *
-     * If the seller attempts to use <b>ProductListingDetails</b> in an Add/Revise/Relist call to find an eBay catalog product match, and multiple matches are found, the call will actually fail. This field can be included and set to <code>true</code> if the seller wants to see the eBay catalog products that were found through error messages in the call response. This flag will not have an effect if only one catalog product matchi is found, or if the <b>UseFirstProduct</b> field is used and set to <code>true</code> and a catalog product is found to create/revise the listing. <br>
+     * If the seller attempts to use <b>ProductListingDetails</b> in an Add/Revise/Relist call to find an eBay catalog product match, and multiple matches are found, the call will actually fail. This field can be included and set to <code>true</code> if the seller wants to see the eBay catalog products that were found through error messages in the call response. This flag will not have an effect if only one catalog product match is found, or if the <b>UseFirstProduct</b> field is used and set to <code>true</code> and a catalog product is found to create/revise the listing. <br>
      *  <br>
      *  If this field is omitted or set to <code>false</code>, and multiple catalog products are found, the call will fail and no information about the matching catalog products will be returned.
      *  <br>

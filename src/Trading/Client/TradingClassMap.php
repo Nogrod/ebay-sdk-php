@@ -77,8 +77,6 @@ class TradingClassMap
         '{urn:ebay:apis:eBLBaseComponents}GetCategoriesResponse' => 'Nogrod\eBaySDK\Trading\GetCategoriesResponse',
         '{urn:ebay:apis:eBLBaseComponents}GetCategoryFeaturesRequest' => 'Nogrod\eBaySDK\Trading\GetCategoryFeaturesRequest',
         '{urn:ebay:apis:eBLBaseComponents}GetCategoryFeaturesResponse' => 'Nogrod\eBaySDK\Trading\GetCategoryFeaturesResponse',
-        '{urn:ebay:apis:eBLBaseComponents}GetCategoryMappingsRequest' => 'Nogrod\eBaySDK\Trading\GetCategoryMappingsRequest',
-        '{urn:ebay:apis:eBLBaseComponents}GetCategoryMappingsResponse' => 'Nogrod\eBaySDK\Trading\GetCategoryMappingsResponse',
         '{urn:ebay:apis:eBLBaseComponents}GetChallengeTokenRequest' => 'Nogrod\eBaySDK\Trading\GetChallengeTokenRequest',
         '{urn:ebay:apis:eBLBaseComponents}GetChallengeTokenResponse' => 'Nogrod\eBaySDK\Trading\GetChallengeTokenResponse',
         '{urn:ebay:apis:eBLBaseComponents}GetDescriptionTemplatesRequest' => 'Nogrod\eBaySDK\Trading\GetDescriptionTemplatesRequest',

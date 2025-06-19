@@ -53,8 +53,12 @@ class PictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      *  All images, whether they are hosted by EPS or self-hosted, must comply with eBay picture requirements, including the requirement that all images must be at least 500 pixels on its longest side. If the image does not satisfy the 500 pixels requirement, the listing may be blocked. For more information about other requirements and tips for adding pictures to listings, see the <a href="https://www.ebay.com/help/selling/listings/adding-pictures-listings?id=4148">Adding pictures to your listings</a> help page.
      *  </span>
      *  To specify multiple pictures, send each URL in a separate, <b>PictureDetails.PictureURL</b> element. The first URL passed in defaults to be the 'gallery image', and will be the first picture that is shown when a user lands on the View Item page.
-     *
      *  <br><br>
+     *  <span class="tablenote"><b>Note: </b>
+     *  The total length of all <b>PictureURL</b> values associated with a listing must not exceed 3975 characters.
+     *  </span>
+     *
+     *  <br>
      *  If a listing uses a single, self-hosted picture (except in the case of a multiple-variation listing), the picture will be copied to eBay Picture Services (EPS) and the <b>PictureDetails.PictureURL</b> value returned by <b>GetItem</b> will be an EPS URL.
      *
      *  <br/><br/>
@@ -217,8 +221,12 @@ class PictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      *  All images, whether they are hosted by EPS or self-hosted, must comply with eBay picture requirements, including the requirement that all images must be at least 500 pixels on its longest side. If the image does not satisfy the 500 pixels requirement, the listing may be blocked. For more information about other requirements and tips for adding pictures to listings, see the <a href="https://www.ebay.com/help/selling/listings/adding-pictures-listings?id=4148">Adding pictures to your listings</a> help page.
      *  </span>
      *  To specify multiple pictures, send each URL in a separate, <b>PictureDetails.PictureURL</b> element. The first URL passed in defaults to be the 'gallery image', and will be the first picture that is shown when a user lands on the View Item page.
-     *
      *  <br><br>
+     *  <span class="tablenote"><b>Note: </b>
+     *  The total length of all <b>PictureURL</b> values associated with a listing must not exceed 3975 characters.
+     *  </span>
+     *
+     *  <br>
      *  If a listing uses a single, self-hosted picture (except in the case of a multiple-variation listing), the picture will be copied to eBay Picture Services (EPS) and the <b>PictureDetails.PictureURL</b> value returned by <b>GetItem</b> will be an EPS URL.
      *
      *  <br/><br/>
@@ -266,8 +274,12 @@ class PictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      *  All images, whether they are hosted by EPS or self-hosted, must comply with eBay picture requirements, including the requirement that all images must be at least 500 pixels on its longest side. If the image does not satisfy the 500 pixels requirement, the listing may be blocked. For more information about other requirements and tips for adding pictures to listings, see the <a href="https://www.ebay.com/help/selling/listings/adding-pictures-listings?id=4148">Adding pictures to your listings</a> help page.
      *  </span>
      *  To specify multiple pictures, send each URL in a separate, <b>PictureDetails.PictureURL</b> element. The first URL passed in defaults to be the 'gallery image', and will be the first picture that is shown when a user lands on the View Item page.
-     *
      *  <br><br>
+     *  <span class="tablenote"><b>Note: </b>
+     *  The total length of all <b>PictureURL</b> values associated with a listing must not exceed 3975 characters.
+     *  </span>
+     *
+     *  <br>
      *  If a listing uses a single, self-hosted picture (except in the case of a multiple-variation listing), the picture will be copied to eBay Picture Services (EPS) and the <b>PictureDetails.PictureURL</b> value returned by <b>GetItem</b> will be an EPS URL.
      *
      *  <br/><br/>
@@ -314,8 +326,12 @@ class PictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      *  All images, whether they are hosted by EPS or self-hosted, must comply with eBay picture requirements, including the requirement that all images must be at least 500 pixels on its longest side. If the image does not satisfy the 500 pixels requirement, the listing may be blocked. For more information about other requirements and tips for adding pictures to listings, see the <a href="https://www.ebay.com/help/selling/listings/adding-pictures-listings?id=4148">Adding pictures to your listings</a> help page.
      *  </span>
      *  To specify multiple pictures, send each URL in a separate, <b>PictureDetails.PictureURL</b> element. The first URL passed in defaults to be the 'gallery image', and will be the first picture that is shown when a user lands on the View Item page.
-     *
      *  <br><br>
+     *  <span class="tablenote"><b>Note: </b>
+     *  The total length of all <b>PictureURL</b> values associated with a listing must not exceed 3975 characters.
+     *  </span>
+     *
+     *  <br>
      *  If a listing uses a single, self-hosted picture (except in the case of a multiple-variation listing), the picture will be copied to eBay Picture Services (EPS) and the <b>PictureDetails.PictureURL</b> value returned by <b>GetItem</b> will be an EPS URL.
      *
      *  <br/><br/>
@@ -362,8 +378,12 @@ class PictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      *  All images, whether they are hosted by EPS or self-hosted, must comply with eBay picture requirements, including the requirement that all images must be at least 500 pixels on its longest side. If the image does not satisfy the 500 pixels requirement, the listing may be blocked. For more information about other requirements and tips for adding pictures to listings, see the <a href="https://www.ebay.com/help/selling/listings/adding-pictures-listings?id=4148">Adding pictures to your listings</a> help page.
      *  </span>
      *  To specify multiple pictures, send each URL in a separate, <b>PictureDetails.PictureURL</b> element. The first URL passed in defaults to be the 'gallery image', and will be the first picture that is shown when a user lands on the View Item page.
-     *
      *  <br><br>
+     *  <span class="tablenote"><b>Note: </b>
+     *  The total length of all <b>PictureURL</b> values associated with a listing must not exceed 3975 characters.
+     *  </span>
+     *
+     *  <br>
      *  If a listing uses a single, self-hosted picture (except in the case of a multiple-variation listing), the picture will be copied to eBay Picture Services (EPS) and the <b>PictureDetails.PictureURL</b> value returned by <b>GetItem</b> will be an EPS URL.
      *
      *  <br/><br/>
@@ -409,8 +429,12 @@ class PictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      *  All images, whether they are hosted by EPS or self-hosted, must comply with eBay picture requirements, including the requirement that all images must be at least 500 pixels on its longest side. If the image does not satisfy the 500 pixels requirement, the listing may be blocked. For more information about other requirements and tips for adding pictures to listings, see the <a href="https://www.ebay.com/help/selling/listings/adding-pictures-listings?id=4148">Adding pictures to your listings</a> help page.
      *  </span>
      *  To specify multiple pictures, send each URL in a separate, <b>PictureDetails.PictureURL</b> element. The first URL passed in defaults to be the 'gallery image', and will be the first picture that is shown when a user lands on the View Item page.
-     *
      *  <br><br>
+     *  <span class="tablenote"><b>Note: </b>
+     *  The total length of all <b>PictureURL</b> values associated with a listing must not exceed 3975 characters.
+     *  </span>
+     *
+     *  <br>
      *  If a listing uses a single, self-hosted picture (except in the case of a multiple-variation listing), the picture will be copied to eBay Picture Services (EPS) and the <b>PictureDetails.PictureURL</b> value returned by <b>GetItem</b> will be an EPS URL.
      *
      *  <br/><br/>

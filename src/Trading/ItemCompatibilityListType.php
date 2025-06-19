@@ -11,7 +11,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  assembly with which a part is compatible (i.e., parts compatibility by application). For
  *  example, to specify a part's compatibility with a vehicle, the name would map to
  *  standard vehicle characteristics (e.g., Year, Make, Model, Trim, and Engine). The
- *  values would desribe the specific vehicle, such as a 2006 Honda Accord.
+ *  values would describe the specific vehicle, such as a 2006 Honda Accord.
  * XSD Type: ItemCompatibilityListType
  */
 class ItemCompatibilityListType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable

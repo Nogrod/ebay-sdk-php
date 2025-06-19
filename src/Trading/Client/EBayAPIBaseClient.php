@@ -283,17 +283,6 @@ class EBayAPIBaseClient extends \Nogrod\XMLClientRuntime\Client
     }
 
     /**
-     * Call GetCategoryMappings
-     *
-     * @param \Nogrod\eBaySDK\Trading\GetCategoryMappingsRequest $getCategoryMappingsRequest
-     * @return \Nogrod\eBaySDK\Trading\GetCategoryMappingsResponse
-     */
-    public function getCategoryMappings(\Nogrod\eBaySDK\Trading\GetCategoryMappingsRequest $getCategoryMappingsRequest): \Nogrod\eBaySDK\Trading\GetCategoryMappingsResponse
-    {
-        return $this->call('GetCategoryMappings', 'Nogrod\eBaySDK\Trading\GetCategoryMappingsResponse', $getCategoryMappingsRequest);
-    }
-
-    /**
      * Call GetDescriptionTemplates
      *
      * @param \Nogrod\eBaySDK\Trading\GetDescriptionTemplatesRequest $getDescriptionTemplatesRequest
