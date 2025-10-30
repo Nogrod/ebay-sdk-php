@@ -26,5 +26,35 @@ xcopy /y src\MerchantData\SetShipmentTrackingInfoRequest.php src\Trading\
 xcopy /y src\MerchantData\SetShipmentTrackingInfoRequestType.php src\Trading\
 xcopy /y src\MerchantData\SetShipmentTrackingInfoResponse.php src\Trading\
 xcopy /y src\MerchantData\SetShipmentTrackingInfoResponseType.php src\Trading\
+
+xcopy /y metadata\MerchantData\ActiveInventoryReport.yml metadata\Trading\
+xcopy /y metadata\MerchantData\ActiveInventoryReportRequest.yml metadata\Trading\
+xcopy /y metadata\MerchantData\ActiveInventoryReportRequestType.yml metadata\Trading\
+xcopy /y metadata\MerchantData\ActiveInventoryReportResponseType.yml metadata\Trading\
+xcopy /y metadata\MerchantData\BulkDataExchangeRequests.yml metadata\Trading\
+xcopy /y metadata\MerchantData\BulkDataExchangeRequestsType.yml metadata\Trading\
+xcopy /y metadata\MerchantData\BulkDataExchangeResponses.yml metadata\Trading\
+xcopy /y metadata\MerchantData\BulkDataExchangeResponsesType.yml metadata\Trading\
+xcopy /y metadata\MerchantData\FeeSettlementReport.yml metadata\Trading\
+xcopy /y metadata\MerchantData\FeeSettlementReportRequest.yml metadata\Trading\
+xcopy /y metadata\MerchantData\FeeSettlementReportRequestType.yml metadata\Trading\
+xcopy /y metadata\MerchantData\FeeSettlementReportResponseType.yml metadata\Trading\
+xcopy /y metadata\MerchantData\MerchantDataRequestHeaderType.yml metadata\Trading\
+xcopy /y metadata\MerchantData\MerchantDataVariationType.yml metadata\Trading\
+xcopy /y metadata\MerchantData\MerchantDataVariationsType.yml metadata\Trading\
+xcopy /y metadata\MerchantData\OrderAckRequest.yml metadata\Trading\
+xcopy /y metadata\MerchantData\OrderAckRequestType.yml metadata\Trading\
+xcopy /y metadata\MerchantData\OrderAckResponse.yml metadata\Trading\
+xcopy /y metadata\MerchantData\OrderAckResponseType.yml metadata\Trading\
+xcopy /y metadata\MerchantData\OrderReport.yml metadata\Trading\
+xcopy /y metadata\MerchantData\OrderReportRequest.yml metadata\Trading\
+xcopy /y metadata\MerchantData\OrderReportRequestType.yml metadata\Trading\
+xcopy /y metadata\MerchantData\OrderReportResponseType.yml metadata\Trading\
+xcopy /y metadata\MerchantData\SKUDetailsType.yml metadata\Trading\
+xcopy /y metadata\MerchantData\SetShipmentTrackingInfoRequest.yml metadata\Trading\
+xcopy /y metadata\MerchantData\SetShipmentTrackingInfoRequestType.yml metadata\Trading\
+xcopy /y metadata\MerchantData\SetShipmentTrackingInfoResponse.yml metadata\Trading\
+xcopy /y metadata\MerchantData\SetShipmentTrackingInfoResponseType.yml metadata\Trading\
+
 rmdir /s /q src\MerchantData
 rmdir /s /q metadata\MerchantData
