@@ -7,7 +7,10 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing GetVeROReportStatusRequestType
  *
- * Retrieves status information about VeRO reported items you have submitted. You
+ * <span class="tablenote">
+ *  <strong>Note:</strong> This call has been deprecated and will be decommissioned on February 2nd, 2026. Users are recommended to migrate to the <a href="https://developer.ebay.com/api-docs/commerce/vero/resources/methods" target="_blank">VeRO API</a> to create and manage VeRO reports.
+ *  </span>
+ *  Retrieves status information about VeRO reported items you have submitted. You
  *  can receive the status of individual items you have reported or, by specifying
  *  <strong>VeROReportPacketID</strong>, you can retrieve status for all items reported with a given
  *  <strong>VeROReportItems</strong> request. You can also retrieve items that were reported during a

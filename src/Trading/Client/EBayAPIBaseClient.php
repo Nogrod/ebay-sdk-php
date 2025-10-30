@@ -184,17 +184,6 @@ class EBayAPIBaseClient extends \Nogrod\XMLClientRuntime\Client
     }
 
     /**
-     * Call ExtendSiteHostedPictures
-     *
-     * @param \Nogrod\eBaySDK\Trading\ExtendSiteHostedPicturesRequest $extendSiteHostedPicturesRequest
-     * @return \Nogrod\eBaySDK\Trading\ExtendSiteHostedPicturesResponse
-     */
-    public function extendSiteHostedPictures(\Nogrod\eBaySDK\Trading\ExtendSiteHostedPicturesRequest $extendSiteHostedPicturesRequest): \Nogrod\eBaySDK\Trading\ExtendSiteHostedPicturesResponse
-    {
-        return $this->call('ExtendSiteHostedPictures', 'Nogrod\eBaySDK\Trading\ExtendSiteHostedPicturesResponse', $extendSiteHostedPicturesRequest);
-    }
-
-    /**
      * Call FetchToken
      *
      * @param \Nogrod\eBaySDK\Trading\FetchTokenRequest $fetchTokenRequest

@@ -75,14 +75,3 @@ Nogrod\eBaySDK\Trading\UploadSiteHostedPicturesRequestType:
                 entry_name: ExternalPictureURL
                 namespace: 'urn:ebay:apis:eBLBaseComponents'
             type: array<string>
-        extensionInDays:
-            expose: true
-            access_type: public_method
-            serialized_name: ExtensionInDays
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getExtensionInDays
-                setter: setExtensionInDays
-            type: int

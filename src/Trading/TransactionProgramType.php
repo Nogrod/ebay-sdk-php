@@ -27,6 +27,13 @@ class TransactionProgramType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     private $fulfillment = null;
 
     /**
+     * This container provides details on a motor vehicle being purchased using Secure Purchase. It is only applicable and returned for motor vehicle listings on eBay Motors.<br><br>For more information about using Secure Purchase to purchase a vehicle, see <a href="https://pages.ebay.com/secure-purchase/" target="_blank">Secure Purchase</a>.
+     *
+     * @var \Nogrod\eBaySDK\Trading\MotorPurchaseType $motorPurchase
+     */
+    private $motorPurchase = null;
+
+    /**
      * Gets as authenticityVerification
      *
      * This container gives status on whether the order line item has passed or failed the authenticity inspection.
@@ -78,6 +85,32 @@ class TransactionProgramType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
         return $this;
     }
 
+    /**
+     * Gets as motorPurchase
+     *
+     * This container provides details on a motor vehicle being purchased using Secure Purchase. It is only applicable and returned for motor vehicle listings on eBay Motors.<br><br>For more information about using Secure Purchase to purchase a vehicle, see <a href="https://pages.ebay.com/secure-purchase/" target="_blank">Secure Purchase</a>.
+     *
+     * @return \Nogrod\eBaySDK\Trading\MotorPurchaseType
+     */
+    public function getMotorPurchase()
+    {
+        return $this->motorPurchase;
+    }
+
+    /**
+     * Sets a new motorPurchase
+     *
+     * This container provides details on a motor vehicle being purchased using Secure Purchase. It is only applicable and returned for motor vehicle listings on eBay Motors.<br><br>For more information about using Secure Purchase to purchase a vehicle, see <a href="https://pages.ebay.com/secure-purchase/" target="_blank">Secure Purchase</a>.
+     *
+     * @param \Nogrod\eBaySDK\Trading\MotorPurchaseType $motorPurchase
+     * @return self
+     */
+    public function setMotorPurchase(\Nogrod\eBaySDK\Trading\MotorPurchaseType $motorPurchase)
+    {
+        $this->motorPurchase = $motorPurchase;
+        return $this;
+    }
+
     public function xmlSerialize(\Sabre\Xml\Writer $writer): void
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
@@ -88,6 +121,10 @@ class TransactionProgramType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
         $value = $this->getFulfillment();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Fulfillment", $value);
+        }
+        $value = $this->getMotorPurchase();
+        if (null !== $value) {
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MotorPurchase", $value);
         }
     }
 
@@ -112,6 +149,10 @@ class TransactionProgramType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
         $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}Fulfillment');
         if (null !== $value) {
             $this->setFulfillment(\Nogrod\eBaySDK\Trading\FulfillmentType::fromKeyValue($value));
+        }
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}MotorPurchase');
+        if (null !== $value) {
+            $this->setMotorPurchase(\Nogrod\eBaySDK\Trading\MotorPurchaseType::fromKeyValue($value));
         }
     }
 }

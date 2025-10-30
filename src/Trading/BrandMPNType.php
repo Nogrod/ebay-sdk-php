@@ -33,9 +33,11 @@ class BrandMPNType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
      * The manufacturer part number of the product. Use the
      *  value specified by the manufacturer. Both <b>Brand</b> and <b>MPN</b> must be specified if the <b>BrandMPN</b> container is used or an error may occur.
      *  <br/><br/>
-     *  If the listing is being posted to a category that expects an MPN value, but one doesn't exist for the product, the seller must pass in the text that can be found in the <b>ProductDetails.ProductIdentifierUnavailableText</b> field of the <b>GeteBayDetails</b> response. To get the <b>ProductDetails</b> container to return in the <b>GeteBayDetails</b> response, <code>ProductDetails</code> should be included as a <b>DetailName</b> value in the call request.
-     *  <br><br>
-     *  <span class="tablenote"><b>Note:</b>
+     *  <span class="tablenote"><b>Note: </b>
+     *  If the listing is being posted to a category that expects an MPN value, but one doesn't exist for the product, the seller must provide a string indicating that the product identifier is unavailable. This text varies by marketplace. Refer to <a href="https://developer.ebay.com/api-docs/sell/static/inventory/product-identifier-text.html" target="_blank">Product Identifier Text</a> for the specific text based on the listing marketplace.
+     *  </span>
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b>
      *  The <b>BrandMPN</b> container is not applicable for multiple-variation listings. For multiple-variation listings that use MPNs, the <b>Brand</b> value should be specified through an <b>ItemSpecifics.NameValueList</b> container, and the Manufacturer Part Numbers (MPNs) for each product variation should be specified through a <b>VariationSpecifics.NameValueList</b> container.
      *  </span>
      *
@@ -85,9 +87,11 @@ class BrandMPNType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
      * The manufacturer part number of the product. Use the
      *  value specified by the manufacturer. Both <b>Brand</b> and <b>MPN</b> must be specified if the <b>BrandMPN</b> container is used or an error may occur.
      *  <br/><br/>
-     *  If the listing is being posted to a category that expects an MPN value, but one doesn't exist for the product, the seller must pass in the text that can be found in the <b>ProductDetails.ProductIdentifierUnavailableText</b> field of the <b>GeteBayDetails</b> response. To get the <b>ProductDetails</b> container to return in the <b>GeteBayDetails</b> response, <code>ProductDetails</code> should be included as a <b>DetailName</b> value in the call request.
-     *  <br><br>
-     *  <span class="tablenote"><b>Note:</b>
+     *  <span class="tablenote"><b>Note: </b>
+     *  If the listing is being posted to a category that expects an MPN value, but one doesn't exist for the product, the seller must provide a string indicating that the product identifier is unavailable. This text varies by marketplace. Refer to <a href="https://developer.ebay.com/api-docs/sell/static/inventory/product-identifier-text.html" target="_blank">Product Identifier Text</a> for the specific text based on the listing marketplace.
+     *  </span>
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b>
      *  The <b>BrandMPN</b> container is not applicable for multiple-variation listings. For multiple-variation listings that use MPNs, the <b>Brand</b> value should be specified through an <b>ItemSpecifics.NameValueList</b> container, and the Manufacturer Part Numbers (MPNs) for each product variation should be specified through a <b>VariationSpecifics.NameValueList</b> container.
      *  </span>
      *
@@ -104,9 +108,11 @@ class BrandMPNType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
      * The manufacturer part number of the product. Use the
      *  value specified by the manufacturer. Both <b>Brand</b> and <b>MPN</b> must be specified if the <b>BrandMPN</b> container is used or an error may occur.
      *  <br/><br/>
-     *  If the listing is being posted to a category that expects an MPN value, but one doesn't exist for the product, the seller must pass in the text that can be found in the <b>ProductDetails.ProductIdentifierUnavailableText</b> field of the <b>GeteBayDetails</b> response. To get the <b>ProductDetails</b> container to return in the <b>GeteBayDetails</b> response, <code>ProductDetails</code> should be included as a <b>DetailName</b> value in the call request.
-     *  <br><br>
-     *  <span class="tablenote"><b>Note:</b>
+     *  <span class="tablenote"><b>Note: </b>
+     *  If the listing is being posted to a category that expects an MPN value, but one doesn't exist for the product, the seller must provide a string indicating that the product identifier is unavailable. This text varies by marketplace. Refer to <a href="https://developer.ebay.com/api-docs/sell/static/inventory/product-identifier-text.html" target="_blank">Product Identifier Text</a> for the specific text based on the listing marketplace.
+     *  </span>
+     *  <br>
+     *  <span class="tablenote"><b>Note: </b>
      *  The <b>BrandMPN</b> container is not applicable for multiple-variation listings. For multiple-variation listings that use MPNs, the <b>Brand</b> value should be specified through an <b>ItemSpecifics.NameValueList</b> container, and the Manufacturer Part Numbers (MPNs) for each product variation should be specified through a <b>VariationSpecifics.NameValueList</b> container.
      *  </span>
      *

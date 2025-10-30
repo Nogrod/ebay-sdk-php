@@ -82,7 +82,7 @@ class GetItemTransactionsResponseType extends AbstractResponseType
      *  returned because the <b>Item</b> object is returned at the root level of the response.
      *  See the reference guide for more information about the fields that are returned.
      *  <span class="tablenote"><strong>Note:</strong>
-     *  The <b>GetItemTransactions</b> call does not support <a href ="https://www.ebay.com/sellercenter/ebay-for-business/multi-user-account-access" target="_blank" >Multi-user account access</a>. Transactions are only returned for the user that makes the call. You cannot use <b>GetItemTransactions</b> to return transactions for another user. The call succeeds but returns an empty <code>&lt;TransactionArray/&gt;</code>.
+     *  The <b>GetItemTransactions</b> call does not support <a href ="https://www.ebay.com/sellercenter/ebay-for-business/multi-user-account-access" target="_blank" >Team Access (formerly multi-user account access)</a>. Transactions are only returned for the user that makes the call. You cannot use <b>GetItemTransactions</b> to return transactions for another user. The call succeeds but returns an empty <code>&lt;TransactionArray/&gt;</code>.
      *  </span>
      *
      * @var \Nogrod\eBaySDK\Trading\TransactionType[] $transactionArray
@@ -274,7 +274,7 @@ class GetItemTransactionsResponseType extends AbstractResponseType
      *  returned because the <b>Item</b> object is returned at the root level of the response.
      *  See the reference guide for more information about the fields that are returned.
      *  <span class="tablenote"><strong>Note:</strong>
-     *  The <b>GetItemTransactions</b> call does not support <a href ="https://www.ebay.com/sellercenter/ebay-for-business/multi-user-account-access" target="_blank" >Multi-user account access</a>. Transactions are only returned for the user that makes the call. You cannot use <b>GetItemTransactions</b> to return transactions for another user. The call succeeds but returns an empty <code>&lt;TransactionArray/&gt;</code>.
+     *  The <b>GetItemTransactions</b> call does not support <a href ="https://www.ebay.com/sellercenter/ebay-for-business/multi-user-account-access" target="_blank" >Team Access (formerly multi-user account access)</a>. Transactions are only returned for the user that makes the call. You cannot use <b>GetItemTransactions</b> to return transactions for another user. The call succeeds but returns an empty <code>&lt;TransactionArray/&gt;</code>.
      *  </span>
      *
      * @return self
@@ -295,7 +295,7 @@ class GetItemTransactionsResponseType extends AbstractResponseType
      *  returned because the <b>Item</b> object is returned at the root level of the response.
      *  See the reference guide for more information about the fields that are returned.
      *  <span class="tablenote"><strong>Note:</strong>
-     *  The <b>GetItemTransactions</b> call does not support <a href ="https://www.ebay.com/sellercenter/ebay-for-business/multi-user-account-access" target="_blank" >Multi-user account access</a>. Transactions are only returned for the user that makes the call. You cannot use <b>GetItemTransactions</b> to return transactions for another user. The call succeeds but returns an empty <code>&lt;TransactionArray/&gt;</code>.
+     *  The <b>GetItemTransactions</b> call does not support <a href ="https://www.ebay.com/sellercenter/ebay-for-business/multi-user-account-access" target="_blank" >Team Access (formerly multi-user account access)</a>. Transactions are only returned for the user that makes the call. You cannot use <b>GetItemTransactions</b> to return transactions for another user. The call succeeds but returns an empty <code>&lt;TransactionArray/&gt;</code>.
      *  </span>
      *
      * @param int|string $index
@@ -315,7 +315,7 @@ class GetItemTransactionsResponseType extends AbstractResponseType
      *  returned because the <b>Item</b> object is returned at the root level of the response.
      *  See the reference guide for more information about the fields that are returned.
      *  <span class="tablenote"><strong>Note:</strong>
-     *  The <b>GetItemTransactions</b> call does not support <a href ="https://www.ebay.com/sellercenter/ebay-for-business/multi-user-account-access" target="_blank" >Multi-user account access</a>. Transactions are only returned for the user that makes the call. You cannot use <b>GetItemTransactions</b> to return transactions for another user. The call succeeds but returns an empty <code>&lt;TransactionArray/&gt;</code>.
+     *  The <b>GetItemTransactions</b> call does not support <a href ="https://www.ebay.com/sellercenter/ebay-for-business/multi-user-account-access" target="_blank" >Team Access (formerly multi-user account access)</a>. Transactions are only returned for the user that makes the call. You cannot use <b>GetItemTransactions</b> to return transactions for another user. The call succeeds but returns an empty <code>&lt;TransactionArray/&gt;</code>.
      *  </span>
      *
      * @param int|string $index
@@ -335,7 +335,7 @@ class GetItemTransactionsResponseType extends AbstractResponseType
      *  returned because the <b>Item</b> object is returned at the root level of the response.
      *  See the reference guide for more information about the fields that are returned.
      *  <span class="tablenote"><strong>Note:</strong>
-     *  The <b>GetItemTransactions</b> call does not support <a href ="https://www.ebay.com/sellercenter/ebay-for-business/multi-user-account-access" target="_blank" >Multi-user account access</a>. Transactions are only returned for the user that makes the call. You cannot use <b>GetItemTransactions</b> to return transactions for another user. The call succeeds but returns an empty <code>&lt;TransactionArray/&gt;</code>.
+     *  The <b>GetItemTransactions</b> call does not support <a href ="https://www.ebay.com/sellercenter/ebay-for-business/multi-user-account-access" target="_blank" >Team Access (formerly multi-user account access)</a>. Transactions are only returned for the user that makes the call. You cannot use <b>GetItemTransactions</b> to return transactions for another user. The call succeeds but returns an empty <code>&lt;TransactionArray/&gt;</code>.
      *  </span>
      *
      * @return \Nogrod\eBaySDK\Trading\TransactionType[]
@@ -354,7 +354,7 @@ class GetItemTransactionsResponseType extends AbstractResponseType
      *  returned because the <b>Item</b> object is returned at the root level of the response.
      *  See the reference guide for more information about the fields that are returned.
      *  <span class="tablenote"><strong>Note:</strong>
-     *  The <b>GetItemTransactions</b> call does not support <a href ="https://www.ebay.com/sellercenter/ebay-for-business/multi-user-account-access" target="_blank" >Multi-user account access</a>. Transactions are only returned for the user that makes the call. You cannot use <b>GetItemTransactions</b> to return transactions for another user. The call succeeds but returns an empty <code>&lt;TransactionArray/&gt;</code>.
+     *  The <b>GetItemTransactions</b> call does not support <a href ="https://www.ebay.com/sellercenter/ebay-for-business/multi-user-account-access" target="_blank" >Team Access (formerly multi-user account access)</a>. Transactions are only returned for the user that makes the call. You cannot use <b>GetItemTransactions</b> to return transactions for another user. The call succeeds but returns an empty <code>&lt;TransactionArray/&gt;</code>.
      *  </span>
      *
      * @param \Nogrod\eBaySDK\Trading\TransactionType[] $transactionArray

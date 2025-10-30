@@ -36,9 +36,7 @@ class PictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
     private $galleryURL = null;
 
     /**
-     * Contains the URL for a picture of the item.
-     *  The URL can be from the eBay Picture Services (images previously uploaded) or from a server outside of eBay (self-hosted).
-     *  You can pass in up to 24 picture URLs for each listing, but you cannot mix self-hosted and EPS-hosted URLs in the same listing. The <b>UploadSiteHostedPictures</b> call can be used to upload pictures to EPS. Note that if pictures are externally-hosted, they must be hosted on a site that is using the 'https' protocol. URLs using the 'http' protocol will not be allowed.
+     * The <b>PictureURL</b> field contains a picture URL of the item, which can be sourced from eBay Picture Services (EPS-hosted) or an external server (self-hosted). A listing can include up to 24 picture URLs, but these URLs cannot be mixed between self-hosted and EPS-hosted within the same listing. Use the <b>UploadSiteHostedPictures</b> call to upload images to EPS. All URLs must use the 'https' protocol; URLs using the 'http' protocol are not permitted.
      *  <br/><br/>
      *  Sellers can have up to 24 pictures in almost any category at no cost. Motor vehicle listings are an exception. The number of included pictures in motor vehicle listings depend on the selected vehicle package (see <a href="https://www.ebay.com/help/selling/fees-credits-invoices/motors-fees?id=4127">Fees for selling vehicles on eBay Motors</a>).
      *  <br/><br/>
@@ -204,9 +202,7 @@ class PictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
     /**
      * Adds as pictureURL
      *
-     * Contains the URL for a picture of the item.
-     *  The URL can be from the eBay Picture Services (images previously uploaded) or from a server outside of eBay (self-hosted).
-     *  You can pass in up to 24 picture URLs for each listing, but you cannot mix self-hosted and EPS-hosted URLs in the same listing. The <b>UploadSiteHostedPictures</b> call can be used to upload pictures to EPS. Note that if pictures are externally-hosted, they must be hosted on a site that is using the 'https' protocol. URLs using the 'http' protocol will not be allowed.
+     * The <b>PictureURL</b> field contains a picture URL of the item, which can be sourced from eBay Picture Services (EPS-hosted) or an external server (self-hosted). A listing can include up to 24 picture URLs, but these URLs cannot be mixed between self-hosted and EPS-hosted within the same listing. Use the <b>UploadSiteHostedPictures</b> call to upload images to EPS. All URLs must use the 'https' protocol; URLs using the 'http' protocol are not permitted.
      *  <br/><br/>
      *  Sellers can have up to 24 pictures in almost any category at no cost. Motor vehicle listings are an exception. The number of included pictures in motor vehicle listings depend on the selected vehicle package (see <a href="https://www.ebay.com/help/selling/fees-credits-invoices/motors-fees?id=4127">Fees for selling vehicles on eBay Motors</a>).
      *  <br/><br/>
@@ -257,9 +253,7 @@ class PictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
     /**
      * isset pictureURL
      *
-     * Contains the URL for a picture of the item.
-     *  The URL can be from the eBay Picture Services (images previously uploaded) or from a server outside of eBay (self-hosted).
-     *  You can pass in up to 24 picture URLs for each listing, but you cannot mix self-hosted and EPS-hosted URLs in the same listing. The <b>UploadSiteHostedPictures</b> call can be used to upload pictures to EPS. Note that if pictures are externally-hosted, they must be hosted on a site that is using the 'https' protocol. URLs using the 'http' protocol will not be allowed.
+     * The <b>PictureURL</b> field contains a picture URL of the item, which can be sourced from eBay Picture Services (EPS-hosted) or an external server (self-hosted). A listing can include up to 24 picture URLs, but these URLs cannot be mixed between self-hosted and EPS-hosted within the same listing. Use the <b>UploadSiteHostedPictures</b> call to upload images to EPS. All URLs must use the 'https' protocol; URLs using the 'http' protocol are not permitted.
      *  <br/><br/>
      *  Sellers can have up to 24 pictures in almost any category at no cost. Motor vehicle listings are an exception. The number of included pictures in motor vehicle listings depend on the selected vehicle package (see <a href="https://www.ebay.com/help/selling/fees-credits-invoices/motors-fees?id=4127">Fees for selling vehicles on eBay Motors</a>).
      *  <br/><br/>
@@ -309,9 +303,7 @@ class PictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
     /**
      * unset pictureURL
      *
-     * Contains the URL for a picture of the item.
-     *  The URL can be from the eBay Picture Services (images previously uploaded) or from a server outside of eBay (self-hosted).
-     *  You can pass in up to 24 picture URLs for each listing, but you cannot mix self-hosted and EPS-hosted URLs in the same listing. The <b>UploadSiteHostedPictures</b> call can be used to upload pictures to EPS. Note that if pictures are externally-hosted, they must be hosted on a site that is using the 'https' protocol. URLs using the 'http' protocol will not be allowed.
+     * The <b>PictureURL</b> field contains a picture URL of the item, which can be sourced from eBay Picture Services (EPS-hosted) or an external server (self-hosted). A listing can include up to 24 picture URLs, but these URLs cannot be mixed between self-hosted and EPS-hosted within the same listing. Use the <b>UploadSiteHostedPictures</b> call to upload images to EPS. All URLs must use the 'https' protocol; URLs using the 'http' protocol are not permitted.
      *  <br/><br/>
      *  Sellers can have up to 24 pictures in almost any category at no cost. Motor vehicle listings are an exception. The number of included pictures in motor vehicle listings depend on the selected vehicle package (see <a href="https://www.ebay.com/help/selling/fees-credits-invoices/motors-fees?id=4127">Fees for selling vehicles on eBay Motors</a>).
      *  <br/><br/>
@@ -361,9 +353,7 @@ class PictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
     /**
      * Gets as pictureURL
      *
-     * Contains the URL for a picture of the item.
-     *  The URL can be from the eBay Picture Services (images previously uploaded) or from a server outside of eBay (self-hosted).
-     *  You can pass in up to 24 picture URLs for each listing, but you cannot mix self-hosted and EPS-hosted URLs in the same listing. The <b>UploadSiteHostedPictures</b> call can be used to upload pictures to EPS. Note that if pictures are externally-hosted, they must be hosted on a site that is using the 'https' protocol. URLs using the 'http' protocol will not be allowed.
+     * The <b>PictureURL</b> field contains a picture URL of the item, which can be sourced from eBay Picture Services (EPS-hosted) or an external server (self-hosted). A listing can include up to 24 picture URLs, but these URLs cannot be mixed between self-hosted and EPS-hosted within the same listing. Use the <b>UploadSiteHostedPictures</b> call to upload images to EPS. All URLs must use the 'https' protocol; URLs using the 'http' protocol are not permitted.
      *  <br/><br/>
      *  Sellers can have up to 24 pictures in almost any category at no cost. Motor vehicle listings are an exception. The number of included pictures in motor vehicle listings depend on the selected vehicle package (see <a href="https://www.ebay.com/help/selling/fees-credits-invoices/motors-fees?id=4127">Fees for selling vehicles on eBay Motors</a>).
      *  <br/><br/>
@@ -412,9 +402,7 @@ class PictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
     /**
      * Sets a new pictureURL
      *
-     * Contains the URL for a picture of the item.
-     *  The URL can be from the eBay Picture Services (images previously uploaded) or from a server outside of eBay (self-hosted).
-     *  You can pass in up to 24 picture URLs for each listing, but you cannot mix self-hosted and EPS-hosted URLs in the same listing. The <b>UploadSiteHostedPictures</b> call can be used to upload pictures to EPS. Note that if pictures are externally-hosted, they must be hosted on a site that is using the 'https' protocol. URLs using the 'http' protocol will not be allowed.
+     * The <b>PictureURL</b> field contains a picture URL of the item, which can be sourced from eBay Picture Services (EPS-hosted) or an external server (self-hosted). A listing can include up to 24 picture URLs, but these URLs cannot be mixed between self-hosted and EPS-hosted within the same listing. Use the <b>UploadSiteHostedPictures</b> call to upload images to EPS. All URLs must use the 'https' protocol; URLs using the 'http' protocol are not permitted.
      *  <br/><br/>
      *  Sellers can have up to 24 pictures in almost any category at no cost. Motor vehicle listings are an exception. The number of included pictures in motor vehicle listings depend on the selected vehicle package (see <a href="https://www.ebay.com/help/selling/fees-credits-invoices/motors-fees?id=4127">Fees for selling vehicles on eBay Motors</a>).
      *  <br/><br/>

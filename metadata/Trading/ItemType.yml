@@ -1409,3 +1409,14 @@ Nogrod\eBaySDK\Trading\ItemType:
                 getter: getIsSecureDescription
                 setter: setIsSecureDescription
             type: bool
+        mappingReferenceId:
+            expose: true
+            access_type: public_method
+            serialized_name: MappingReferenceId
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getMappingReferenceId
+                setter: setMappingReferenceId
+            type: string

@@ -27,3 +27,14 @@ Nogrod\eBaySDK\Trading\TransactionProgramType:
                 getter: getFulfillment
                 setter: setFulfillment
             type: Nogrod\eBaySDK\Trading\FulfillmentType
+        motorPurchase:
+            expose: true
+            access_type: public_method
+            serialized_name: MotorPurchase
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getMotorPurchase
+                setter: setMotorPurchase
+            type: Nogrod\eBaySDK\Trading\MotorPurchaseType

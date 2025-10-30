@@ -71,6 +71,10 @@ class LeaveFeedbackRequestType extends AbstractRequestType
 
     /**
      * Specifies the recipient user about whom the Feedback is being left.
+     *  <br/><br/>
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  Effective September 26, 2025, both usernames and public user IDs will be accepted in this field. For more information, please refer to <a href="/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.
+     *  </span>
      *
      * @var string $targetUser
      */
@@ -272,6 +276,10 @@ class LeaveFeedbackRequestType extends AbstractRequestType
      * Gets as targetUser
      *
      * Specifies the recipient user about whom the Feedback is being left.
+     *  <br/><br/>
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  Effective September 26, 2025, both usernames and public user IDs will be accepted in this field. For more information, please refer to <a href="/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.
+     *  </span>
      *
      * @return string
      */
@@ -284,6 +292,10 @@ class LeaveFeedbackRequestType extends AbstractRequestType
      * Sets a new targetUser
      *
      * Specifies the recipient user about whom the Feedback is being left.
+     *  <br/><br/>
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  Effective September 26, 2025, both usernames and public user IDs will be accepted in this field. For more information, please refer to <a href="/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.
+     *  </span>
      *
      * @param string $targetUser
      * @return self

@@ -19,6 +19,10 @@ class GetSellerListRequestType extends AbstractRequestType
     /**
      * Specifies the list of Motors Dealer sellers for which a special set of
      *  metrics can be requested. Applies to eBay Motors Pro applications only.
+     *  <br><br>
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  Effective September 26, 2025, both usernames and public user IDs will be accepted in this field. For more information, please refer to <a href="/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.
+     *  </span>
      *
      * @var string[] $motorsDealerUsers
      */
@@ -136,6 +140,10 @@ class GetSellerListRequestType extends AbstractRequestType
      *
      * Specifies the list of Motors Dealer sellers for which a special set of
      *  metrics can be requested. Applies to eBay Motors Pro applications only.
+     *  <br><br>
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  Effective September 26, 2025, both usernames and public user IDs will be accepted in this field. For more information, please refer to <a href="/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.
+     *  </span>
      *
      * @return self
      * @param string $userID
@@ -151,6 +159,10 @@ class GetSellerListRequestType extends AbstractRequestType
      *
      * Specifies the list of Motors Dealer sellers for which a special set of
      *  metrics can be requested. Applies to eBay Motors Pro applications only.
+     *  <br><br>
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  Effective September 26, 2025, both usernames and public user IDs will be accepted in this field. For more information, please refer to <a href="/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.
+     *  </span>
      *
      * @param int|string $index
      * @return bool
@@ -165,6 +177,10 @@ class GetSellerListRequestType extends AbstractRequestType
      *
      * Specifies the list of Motors Dealer sellers for which a special set of
      *  metrics can be requested. Applies to eBay Motors Pro applications only.
+     *  <br><br>
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  Effective September 26, 2025, both usernames and public user IDs will be accepted in this field. For more information, please refer to <a href="/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.
+     *  </span>
      *
      * @param int|string $index
      * @return void
@@ -179,6 +195,10 @@ class GetSellerListRequestType extends AbstractRequestType
      *
      * Specifies the list of Motors Dealer sellers for which a special set of
      *  metrics can be requested. Applies to eBay Motors Pro applications only.
+     *  <br><br>
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  Effective September 26, 2025, both usernames and public user IDs will be accepted in this field. For more information, please refer to <a href="/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.
+     *  </span>
      *
      * @return string[]
      */
@@ -192,6 +212,10 @@ class GetSellerListRequestType extends AbstractRequestType
      *
      * Specifies the list of Motors Dealer sellers for which a special set of
      *  metrics can be requested. Applies to eBay Motors Pro applications only.
+     *  <br><br>
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  Effective September 26, 2025, both usernames and public user IDs will be accepted in this field. For more information, please refer to <a href="/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.
+     *  </span>
      *
      * @param string $motorsDealerUsers
      * @return self

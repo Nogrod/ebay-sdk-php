@@ -18,10 +18,6 @@ class ItemCompatibilityListType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
 {
     /**
      * Details for an individual compatible application, consisting of the name-value pair and related parts compatibility notes. When revising or relisting, the <b>Delete</b> field can be used to delete individual parts compatibility nodes.
-     *  <br/><br/>
-     *  <span class="tablenote">
-     *  <strong>Note:</strong> For the <b>GetItem</b> call, <strong>Compatibility</strong> includes only parts compatibility details that were specified manually; that is, they do not correspond to an eBay catalog product. To retrieve parts compatibility details that <em>do</em> correspond to eBay catalog products, use the eBay Product API's <b>getProductCompatibilities</b> call.
-     *  </span>
      *
      * @var \Nogrod\eBaySDK\Trading\ItemCompatibilityType[] $compatibility
      */
@@ -44,10 +40,6 @@ class ItemCompatibilityListType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
      * Adds as compatibility
      *
      * Details for an individual compatible application, consisting of the name-value pair and related parts compatibility notes. When revising or relisting, the <b>Delete</b> field can be used to delete individual parts compatibility nodes.
-     *  <br/><br/>
-     *  <span class="tablenote">
-     *  <strong>Note:</strong> For the <b>GetItem</b> call, <strong>Compatibility</strong> includes only parts compatibility details that were specified manually; that is, they do not correspond to an eBay catalog product. To retrieve parts compatibility details that <em>do</em> correspond to eBay catalog products, use the eBay Product API's <b>getProductCompatibilities</b> call.
-     *  </span>
      *
      * @return self
      * @param \Nogrod\eBaySDK\Trading\ItemCompatibilityType $compatibility
@@ -62,10 +54,6 @@ class ItemCompatibilityListType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
      * isset compatibility
      *
      * Details for an individual compatible application, consisting of the name-value pair and related parts compatibility notes. When revising or relisting, the <b>Delete</b> field can be used to delete individual parts compatibility nodes.
-     *  <br/><br/>
-     *  <span class="tablenote">
-     *  <strong>Note:</strong> For the <b>GetItem</b> call, <strong>Compatibility</strong> includes only parts compatibility details that were specified manually; that is, they do not correspond to an eBay catalog product. To retrieve parts compatibility details that <em>do</em> correspond to eBay catalog products, use the eBay Product API's <b>getProductCompatibilities</b> call.
-     *  </span>
      *
      * @param int|string $index
      * @return bool
@@ -79,10 +67,6 @@ class ItemCompatibilityListType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
      * unset compatibility
      *
      * Details for an individual compatible application, consisting of the name-value pair and related parts compatibility notes. When revising or relisting, the <b>Delete</b> field can be used to delete individual parts compatibility nodes.
-     *  <br/><br/>
-     *  <span class="tablenote">
-     *  <strong>Note:</strong> For the <b>GetItem</b> call, <strong>Compatibility</strong> includes only parts compatibility details that were specified manually; that is, they do not correspond to an eBay catalog product. To retrieve parts compatibility details that <em>do</em> correspond to eBay catalog products, use the eBay Product API's <b>getProductCompatibilities</b> call.
-     *  </span>
      *
      * @param int|string $index
      * @return void
@@ -96,10 +80,6 @@ class ItemCompatibilityListType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
      * Gets as compatibility
      *
      * Details for an individual compatible application, consisting of the name-value pair and related parts compatibility notes. When revising or relisting, the <b>Delete</b> field can be used to delete individual parts compatibility nodes.
-     *  <br/><br/>
-     *  <span class="tablenote">
-     *  <strong>Note:</strong> For the <b>GetItem</b> call, <strong>Compatibility</strong> includes only parts compatibility details that were specified manually; that is, they do not correspond to an eBay catalog product. To retrieve parts compatibility details that <em>do</em> correspond to eBay catalog products, use the eBay Product API's <b>getProductCompatibilities</b> call.
-     *  </span>
      *
      * @return \Nogrod\eBaySDK\Trading\ItemCompatibilityType[]
      */
@@ -112,10 +92,6 @@ class ItemCompatibilityListType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
      * Sets a new compatibility
      *
      * Details for an individual compatible application, consisting of the name-value pair and related parts compatibility notes. When revising or relisting, the <b>Delete</b> field can be used to delete individual parts compatibility nodes.
-     *  <br/><br/>
-     *  <span class="tablenote">
-     *  <strong>Note:</strong> For the <b>GetItem</b> call, <strong>Compatibility</strong> includes only parts compatibility details that were specified manually; that is, they do not correspond to an eBay catalog product. To retrieve parts compatibility details that <em>do</em> correspond to eBay catalog products, use the eBay Product API's <b>getProductCompatibilities</b> call.
-     *  </span>
      *
      * @param \Nogrod\eBaySDK\Trading\ItemCompatibilityType[] $compatibility
      * @return self

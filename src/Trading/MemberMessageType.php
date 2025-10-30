@@ -46,6 +46,10 @@ class MemberMessageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
     /**
      * The eBay user ID of the person who asked the question or sent
      *  the message.
+     *  <br/><br/>
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  Effective September 26, 2025, select developers will no longer receive username data for U.S. users through this field. Instead, an immutable user ID will be returned in its place. For more information, please refer to <a href="/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.
+     *  </span>
      *
      * @var string $senderID
      */
@@ -74,6 +78,10 @@ class MemberMessageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
      *  element and needs to be unbounded for AddMemberMessagesAAQToBidder.
      *  For AddMemberMessageRTQ, this field is mandatory if ItemID is not in the request.
      *  For all other uses, there can only be one RecipientID.
+     *  <br/><br/>
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  Effective September 26, 2025, both usernames and public user IDs will be accepted in this field. For more information, please refer to <a href="/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.
+     *  </span>
      *
      * @var string[] $recipientID
      */
@@ -241,6 +249,10 @@ class MemberMessageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
      *
      * The eBay user ID of the person who asked the question or sent
      *  the message.
+     *  <br/><br/>
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  Effective September 26, 2025, select developers will no longer receive username data for U.S. users through this field. Instead, an immutable user ID will be returned in its place. For more information, please refer to <a href="/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.
+     *  </span>
      *
      * @return string
      */
@@ -254,6 +266,10 @@ class MemberMessageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
      *
      * The eBay user ID of the person who asked the question or sent
      *  the message.
+     *  <br/><br/>
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  Effective September 26, 2025, select developers will no longer receive username data for U.S. users through this field. Instead, an immutable user ID will be returned in its place. For more information, please refer to <a href="/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.
+     *  </span>
      *
      * @param string $senderID
      * @return self
@@ -316,6 +332,10 @@ class MemberMessageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
      *  element and needs to be unbounded for AddMemberMessagesAAQToBidder.
      *  For AddMemberMessageRTQ, this field is mandatory if ItemID is not in the request.
      *  For all other uses, there can only be one RecipientID.
+     *  <br/><br/>
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  Effective September 26, 2025, both usernames and public user IDs will be accepted in this field. For more information, please refer to <a href="/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.
+     *  </span>
      *
      * @return self
      * @param string $recipientID
@@ -336,6 +356,10 @@ class MemberMessageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
      *  element and needs to be unbounded for AddMemberMessagesAAQToBidder.
      *  For AddMemberMessageRTQ, this field is mandatory if ItemID is not in the request.
      *  For all other uses, there can only be one RecipientID.
+     *  <br/><br/>
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  Effective September 26, 2025, both usernames and public user IDs will be accepted in this field. For more information, please refer to <a href="/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.
+     *  </span>
      *
      * @param int|string $index
      * @return bool
@@ -355,6 +379,10 @@ class MemberMessageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
      *  element and needs to be unbounded for AddMemberMessagesAAQToBidder.
      *  For AddMemberMessageRTQ, this field is mandatory if ItemID is not in the request.
      *  For all other uses, there can only be one RecipientID.
+     *  <br/><br/>
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  Effective September 26, 2025, both usernames and public user IDs will be accepted in this field. For more information, please refer to <a href="/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.
+     *  </span>
      *
      * @param int|string $index
      * @return void
@@ -374,6 +402,10 @@ class MemberMessageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
      *  element and needs to be unbounded for AddMemberMessagesAAQToBidder.
      *  For AddMemberMessageRTQ, this field is mandatory if ItemID is not in the request.
      *  For all other uses, there can only be one RecipientID.
+     *  <br/><br/>
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  Effective September 26, 2025, both usernames and public user IDs will be accepted in this field. For more information, please refer to <a href="/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.
+     *  </span>
      *
      * @return string[]
      */
@@ -392,6 +424,10 @@ class MemberMessageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
      *  element and needs to be unbounded for AddMemberMessagesAAQToBidder.
      *  For AddMemberMessageRTQ, this field is mandatory if ItemID is not in the request.
      *  For all other uses, there can only be one RecipientID.
+     *  <br/><br/>
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  Effective September 26, 2025, both usernames and public user IDs will be accepted in this field. For more information, please refer to <a href="/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.
+     *  </span>
      *
      * @param string[] $recipientID
      * @return self

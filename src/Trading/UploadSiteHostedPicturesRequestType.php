@@ -72,20 +72,6 @@ class UploadSiteHostedPicturesRequestType extends AbstractRequestType
     ];
 
     /**
-     * <span class="tablenote"><b>Note: </b>
-     *  This field is deprecated and will be decommissioned along with the <a href="https://developer.ebay.com/devzone/xml/docs/reference/ebay/ExtendSiteHostedPictures.html" target="_blank">ExtendSiteHostedPictures</a> call on July 28th, 2025.
-     *  </span>
-     *  By default, an unpublished picture will be hosted on the EPS server for 30 days before being purged. However, the seller has the option of using this field to set an expiration date further into the future (up to 30 days). Similarly, when a listing ends or expires, the images associated with the listing remain on the EPS server for an additional 90 days. The value in this field will add on to those 90 days.
-     *  <br/><br/>
-     *  <span class="tablenote"><b>Note: </b>
-     *  This field is restricted to applications that have been granted permission. Contact the eBay Developers Program to request permission.
-     *  </span>
-     *
-     * @var int $extensionInDays
-     */
-    private $extensionInDays = null;
-
-    /**
      * Gets as pictureName
      *
      * A seller-defined name for the picture. This field is optional, but can make it easier for a seller to track than an arbitrary, eBay-assigned URL.
@@ -318,46 +304,6 @@ class UploadSiteHostedPicturesRequestType extends AbstractRequestType
         return $this;
     }
 
-    /**
-     * Gets as extensionInDays
-     *
-     * <span class="tablenote"><b>Note: </b>
-     *  This field is deprecated and will be decommissioned along with the <a href="https://developer.ebay.com/devzone/xml/docs/reference/ebay/ExtendSiteHostedPictures.html" target="_blank">ExtendSiteHostedPictures</a> call on July 28th, 2025.
-     *  </span>
-     *  By default, an unpublished picture will be hosted on the EPS server for 30 days before being purged. However, the seller has the option of using this field to set an expiration date further into the future (up to 30 days). Similarly, when a listing ends or expires, the images associated with the listing remain on the EPS server for an additional 90 days. The value in this field will add on to those 90 days.
-     *  <br/><br/>
-     *  <span class="tablenote"><b>Note: </b>
-     *  This field is restricted to applications that have been granted permission. Contact the eBay Developers Program to request permission.
-     *  </span>
-     *
-     * @return int
-     */
-    public function getExtensionInDays()
-    {
-        return $this->extensionInDays;
-    }
-
-    /**
-     * Sets a new extensionInDays
-     *
-     * <span class="tablenote"><b>Note: </b>
-     *  This field is deprecated and will be decommissioned along with the <a href="https://developer.ebay.com/devzone/xml/docs/reference/ebay/ExtendSiteHostedPictures.html" target="_blank">ExtendSiteHostedPictures</a> call on July 28th, 2025.
-     *  </span>
-     *  By default, an unpublished picture will be hosted on the EPS server for 30 days before being purged. However, the seller has the option of using this field to set an expiration date further into the future (up to 30 days). Similarly, when a listing ends or expires, the images associated with the listing remain on the EPS server for an additional 90 days. The value in this field will add on to those 90 days.
-     *  <br/><br/>
-     *  <span class="tablenote"><b>Note: </b>
-     *  This field is restricted to applications that have been granted permission. Contact the eBay Developers Program to request permission.
-     *  </span>
-     *
-     * @param int $extensionInDays
-     * @return self
-     */
-    public function setExtensionInDays($extensionInDays)
-    {
-        $this->extensionInDays = $extensionInDays;
-        return $this;
-    }
-
     public function xmlSerialize(\Sabre\Xml\Writer $writer): void
     {
         parent::xmlSerialize($writer);
@@ -384,10 +330,6 @@ class UploadSiteHostedPicturesRequestType extends AbstractRequestType
         $value = $this->getExternalPictureURL();
         if (null !== $value && [] !== $this->getExternalPictureURL()) {
             $writer->write(array_map(function ($v) {return ["ExternalPictureURL" => $v];}, $value));
-        }
-        $value = $this->getExtensionInDays();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ExtensionInDays", $value);
         }
     }
 
@@ -429,10 +371,6 @@ class UploadSiteHostedPicturesRequestType extends AbstractRequestType
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExternalPictureURL', true);
         if (null !== $value) {
             $this->setExternalPictureURL($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExtensionInDays');
-        if (null !== $value) {
-            $this->setExtensionInDays($value);
         }
     }
 }

@@ -59,6 +59,10 @@ class ItemBidDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      *  from. For example, if the seller is the third seller that
      *  the user has purchased items from, the value "Seller 3" is
      *  returned.
+     *  <br><br>
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  Effective September 26, 2025, select developers will no longer receive username data for U.S. users through this field. Instead, an immutable user ID will be returned in its place. For more information, please refer to <a href="/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.
+     *  </span>
      *
      * @var string $sellerID
      */
@@ -194,6 +198,10 @@ class ItemBidDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      *  from. For example, if the seller is the third seller that
      *  the user has purchased items from, the value "Seller 3" is
      *  returned.
+     *  <br><br>
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  Effective September 26, 2025, select developers will no longer receive username data for U.S. users through this field. Instead, an immutable user ID will be returned in its place. For more information, please refer to <a href="/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.
+     *  </span>
      *
      * @return string
      */
@@ -213,6 +221,10 @@ class ItemBidDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      *  from. For example, if the seller is the third seller that
      *  the user has purchased items from, the value "Seller 3" is
      *  returned.
+     *  <br><br>
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  Effective September 26, 2025, select developers will no longer receive username data for U.S. users through this field. Instead, an immutable user ID will be returned in its place. For more information, please refer to <a href="/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.
+     *  </span>
      *
      * @param string $sellerID
      * @return self

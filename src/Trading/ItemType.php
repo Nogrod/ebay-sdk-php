@@ -20,7 +20,6 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  a part number. For a SKU in an eBay.com listing, use the <b>SKU</b>
      *  element instead. To remove this value when revising or relisting an
      *  item, use <b>DeletedField</b>.
-     *  <br/>
      *
      * @var string $applicationData
      */
@@ -115,7 +114,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  using CDATA if you want to use HTML or XML-reserved characters in the
      *  description. However, a seller can not use any active content in their listing description. Active content includes animation or video via JavaScript, Flash, plug-ins, or form actions. All active content will be blocked/removed from a listing. Removing/blocking active content will lead to faster load times of listings, make listings more mobile-friendly, improve SEO performance, and lead to a more secure eBay Marketplace.
      *  <br><br>
-     *  <span class="tablenote"><b>Note: </b> To ensure that a listing description is optimized to be viewed on a mobile devices, see <a href="/api-docs/user-guides/static/trading-user-guide/mobile.html" target="_blank">Mobile device optimization</a> in the Trading User Guide. <br><br>
+     *  <span class="tablenote"><b>Note: </b> To ensure that a listing description is optimized to be viewed on a mobile devices, see <a href="https://developer.ebay.com/api-docs/user-guides/static/trading-user-guide/mobile.html" target="_blank">Mobile device optimization</a> in the Trading User Guide. <br><br>
      *  Note that the mobile-friendly description snippet feature described in this topic is currently only available in the following eBay marketplaces: US, UK, Australia, France, Germany, Italy, Spain, and eBay Motors.
      *  </span>
      *  <br>
@@ -228,13 +227,12 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  specify a postal code, but do not specify a location, then the location is
      *  given a default value derived from the postal code.
      *  <br><br>
+     *  <b>For GetOrders, GetItemTransactions, GetSellerTransactions:</b> If the item is shipped from a fulfillment center location through the Multi-Warehouse Program, this field will return the location details (including the country and zip code) of the fulfillment center closest to the buyer.
+     *  <br><br>
      *  <b>For Revise/Relist calls:</b> When updating an <b>Item.Location</b>, you must also include the <b>Item.PostalCode</b> corresponding to the <b>Item.Location</b> in the revise/relist call; otherwise, the location will not be updated.
      *  <br><br>
-     *  For the Classified Ad format for motors vehicle listings, the value
-     *  provided in the <b>Location</b> field is used as item location only if the
-     *  <b>SellerContactDetails.Street</b> and the <b>SellerContactDetails.Street2</b> are empty.
-     *  Else, the <b>SellerContactDetails.Street</b> and the <b>SellerContactDetails.Street2</b>
-     *  will be used for item location.
+     *  <span class="tablenote"><b>Note: </b> For the Classified Ad format for motors vehicle listings, the value provided in the <b>Location</b> field is used as item location only if the <b>SellerContactDetails.Street</b> and the <b>SellerContactDetails.Street2</b> are empty. Else, the <b>SellerContactDetails.Street</b> and the <b>SellerContactDetails.Street2</b> will be used for item location.
+     *  </span>
      *  <br>
      *
      * @var string $location
@@ -296,7 +294,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      * This container is used in an Add/Revise/Relist call to set the primary listing category. This field is conditionally required in an Add call unless the seller successfully uses the <b>ProductListingDetails</b> container to find an eBay catalog product match. When the seller successfully uses an eBay catalog product to create a listing, the listing title, listing description, Item Specifics, listing category, and stock photo defined in the catalog product is used to create the listing.<br>
      *  <br>
      *  Once you determine the appropriate eBay category for your product, and want to know which listing features it supports, you can use the
-     *  <b>GetCategoryFeatures</b> call. To discover required, recommended, and optional Item Specifics for a category, use the <a href="/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API.
+     *  <b>GetCategoryFeatures</b> call. To discover required, recommended, and optional Item Specifics for a category, use the <a href="https://developer.ebay.com/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API.
      *  <br>
      *  <br>
      *  If you do use an eBay catalog product, it is advised that you do not include this field, as any primary category ID you specify in this field may get dropped if this category is different than the primary category defined in the eBay catalog product.
@@ -390,7 +388,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  variation (quantity available plus quantity sold).
      *  <br>
      *  <br>
-     *  <span class="tablenote"><b>Note: </b> For the US site, new eBay sellers are subject to <a href="/api-docs/user-guides/static/make-a-call/fg-replaced.html">Seller Limits</a>, which limit the quantity of items that may be listed and/or the total cumulative value of these listings. While subject to these selling limits, an eBay seller can use the <b>GetMyeBaySelling</b> call to retrieve both the remaining number of listings they can create and the remaining cumulative value of these listings. These values are shown in the <b>Summary.QuantityLimitRemaining</b> and <b>Summary.AmountLimitRemaining</b> fields in the <b>GetMyeBaySelling</b> response. If a call to add an item or revise an item would result in the exceeding of these limits, the add item or revise item call will fail. These fields will only be returned if the seller is subject to seller limits.
+     *  <span class="tablenote"><b>Note: </b> For the US site, new eBay sellers are subject to <a href="https://developer.ebay.com/api-docs/user-guides/static/make-a-call/fg-replaced.html">Seller Limits</a>, which limit the quantity of items that may be listed and/or the total cumulative value of these listings. While subject to these selling limits, an eBay seller can use the <b>GetMyeBaySelling</b> call to retrieve both the remaining number of listings they can create and the remaining cumulative value of these listings. These values are shown in the <b>Summary.QuantityLimitRemaining</b> and <b>Summary.AmountLimitRemaining</b> fields in the <b>GetMyeBaySelling</b> response. If a call to add an item or revise an item would result in the exceeding of these limits, the add item or revise item call will fail. These fields will only be returned if the seller is subject to seller limits.
      *  </span>
      *
      * @var int $quantity
@@ -456,15 +454,6 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  format. In <b>GetItem</b> and related calls, the scheduled time is returned in
      *  <b>StartTime</b>. For <b>ReviseItem</b>, you can modify this value if the currently
      *  scheduled start time is in the future (listing has yet to go live).
-     *  <br><br>
-     *  When you schedule a start time, the start time is randomized within 15-minute
-     *  intervals. Randomized start times applies to the following sites:
-     *  <br>
-     *  <code>AT, BEFR, BENL, CH, DE, ES, FR, IE, IT, NL, PL, UK</code>
-     *  <br><br>
-     *  Also see the following article in the Knowledge Base: <a href=
-     *  "https://developer.ebay.com/support/kb-article?KBid=1473" target="_blank"
-     *  >Why scheduled time is sometimes getting reset</a>.
      *
      * @var \DateTime $scheduleTime
      */
@@ -659,7 +648,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <b>For Revise calls:</b>
      *  If the <b>StartPrice</b> value for a fixed-price item is changed with a Revise call, the <b>MinimumBestOfferPrice</b> and <b>BestOfferAutoAcceptPrice</b> fields in the <b>ListingDetails</b> container will be dropped (if set), basically turning off the Best Offer Auto Accept and/or Auto Decline features. If the seller wanted to reintroduce either of these Best Offer threshold values in the listing again, an additional Revise call would have to be made, passing in the desired threshold values.
      *  <br><br>
-     *  <span class="tablenote"><b>Note: </b> For the US site, new eBay sellers are subject to <a href="/api-docs/user-guides/static/make-a-call/fg-replaced.html">Seller Limits</a>, which limit the quantity of items that may be listed and/or the total cumulative value of these listings. While subject to these selling limits, an eBay seller can use the <b>GetMyeBaySelling</b> call to retrieve both the remaining number of listings they can create and the remaining cumulative value of these listings. These values are shown in the <b>Summary.QuantityLimitRemaining</b> and <b>Summary.AmountLimitRemaining</b> fields in the <b>GetMyeBaySelling</b> response. If a call to add an item or revise an item would result in the exceeding of these limits, the add item or revise item call will fail. These fields will only be returned if the seller is subject to seller limits.
+     *  <span class="tablenote"><b>Note: </b> For the US site, new eBay sellers are subject to <a href="https://developer.ebay.com/api-docs/user-guides/static/make-a-call/fg-replaced.html">Seller Limits</a>, which limit the quantity of items that may be listed and/or the total cumulative value of these listings. While subject to these selling limits, an eBay seller can use the <b>GetMyeBaySelling</b> call to retrieve both the remaining number of listings they can create and the remaining cumulative value of these listings. These values are shown in the <b>Summary.QuantityLimitRemaining</b> and <b>Summary.AmountLimitRemaining</b> fields in the <b>GetMyeBaySelling</b> response. If a call to add an item or revise an item would result in the exceeding of these limits, the add item or revise item call will fail. These fields will only be returned if the seller is subject to seller limits.
      *  </span>
      *
      * @var \Nogrod\eBaySDK\Trading\AmountType $startPrice
@@ -1060,10 +1049,13 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      * This container is a list of Item Specific <b>Name</b>/<b>Value</b> pairs used by the seller to provide descriptive details of an item in a structured manner.
      *
      *  <br><br>
-     *  If creating, revising, or relisting an item with an <b>Add</b>, <b>Revise</b>, or <b>Relist</b> call, it is recommended that you use the <a href="/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API to retrieve mandatory and recommended Item Specifics for a category.
+     *  If creating, revising, or relisting an item with an <b>Add</b>, <b>Revise</b>, or <b>Relist</b> call, it is recommended that you use the <a href="https://developer.ebay.com/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API to retrieve mandatory and recommended Item Specifics for a category.
      *
-     *  <br><br>
-     *  <b>For ReviseItem only:</b> When you revise a listing, if an auction listing has one or more bids and ends within 12 hours, you cannot change or add Item Ppecifics. If the auction listing has bids but ends in more than 12 hours, you cannot change existing Item Specifics, but you can add Item Specifics that were not previously included.
+     *  <br>
+     *  <span class="tablenote"><b>Important:</b> Effective from December 28th, 2024, sellers offering certain rechargeable devices in EU and Northern Ireland markets must comply with the Common Charger Directive (CCD) and list appropriate charger-related item specifics on their listings. See <a href="https://developer.ebay.com/api-docs/sell/static/inventory/common-charger-directive.html" target="_blank">Common Charger Directive</a> for more information.
+     *  </span>
+     *
+     *  <b>For ReviseItem only:</b> When you revise a listing, if an auction listing has one or more bids and ends within 12 hours, you cannot change or add Item Specifics. If the auction listing has bids but ends in more than 12 hours, you cannot change existing Item Specifics, but you can add Item Specifics that were not previously included.
      *
      *  <br><br>
      *  If your listing is in a eBay product catalog-enabled category, certain <b>Name</b>/<b>Value</b> pairs will be accepted as product identifying information. The <b>Name</b> can be <code>Brand</code>, <code>MPN</code>, or a Global Trade Item Number (GTIN). GTINs are a set of globally recognized identifiers, including <code>EAN</code>, <code>ISBN</code>, and <code>UPC</code>. However, the <b>Values</b> provided for these <b>Name</b>s must comply with eBay's constraints or they will not be recognized as product identifiers. The <b>Value</b> for Brand must be an actual brand name (except that if the item is not branded, <b>Value</b> can be <code>Unbranded</code>.) The <b>Value</b> for Brand or MPN cannot contain only special characters (e.g. <code>%$*#@</code>). All GTINs must comply with international formatting standards. For more details, see <a href="https://developer.ebay.com/api-docs/user-guides/static/trading-user-guide/item-specifics.html" target="_blank">Item Specifics</a>.
@@ -1071,14 +1063,17 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <br><br>
      *  If the <b>ProductListingDetails</b> container in an Add/Revise/Relist call is successfully used to find and use an eBay catalog product to create/revise listing, the seller should not remove or change the value of any Item Specific name or value that is defined as part of the eBay catalog product definition.
      *
-     *  <br><br>
-     *  <span class="tablenote"><b>Note:</b> If a listing is associated with an eBay catalog product, the seller does not need to pass in any Item Specifics that are already defined in the eBay catalog product. Sellers can make a call to the <a href="/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API to see if the category supports any 'instance aspects', which can be thought of as Item Specifics that are unique to the specific item that is being listed. Instance aspects are indicated if the corresponding <a href="/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory#response.aspects.aspectConstraint.aspectApplicableTo" target="_blank">aspectApplicableTo</a> field of the <b>getItemAspectsForCategory</b> response shows a value of <code>ITEM</code> (and not <code>PRODUCT</code>). Many categories support the following instance aspects: <em>Custom Bundle</em>, <em>Bundle Description</em>, <em>Modified Item</em>, <em>Modification Description</em>, and <em>California Prop 65 Warning</em>. These instance aspects allow the seller to provide more information about product bundles or modified products in a structured way. Depending on the category, there are other instance aspects as well.
+     *  <br>
+     *  <span class="tablenote"><b>Note:</b> If a listing is associated with an eBay catalog product, the seller does not need to pass in any Item Specifics that are already defined in the eBay catalog product. Sellers can make a call to the <a href="https://developer.ebay.com/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API to see if the category supports any 'instance aspects', which can be thought of as Item Specifics that are unique to the specific item that is being listed. Instance aspects are indicated if the corresponding <a href="https://developer.ebay.com/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory#response.aspects.aspectConstraint.aspectApplicableTo" target="_blank">aspectApplicableTo</a> field of the <b>getItemAspectsForCategory</b> response shows a value of <code>ITEM</code> (and not <code>PRODUCT</code>). Many categories support the following instance aspects: <em>Custom Bundle</em>, <em>Bundle Description</em>, <em>Modified Item</em>, <em>Modification Description</em>, and <em>California Prop 65 Warning</em>. These instance aspects allow the seller to provide more information about product bundles or modified products in a structured way. Depending on the category, there are other instance aspects as well.
      *  </span>
      *
      *  <span class="tablenote"><b>Note:</b> To specify an item's condition, use the <b>ConditionID</b> field instead of a condition Item Specific. Use <b>GetCategoryFeatures</b> to see which categories support <b>ConditionID</b> and to get a list of valid condition IDs. (If you specify <b>ConditionID</b> and you also specify <b>Condition</b> as a Item Specific, eBay drops the condition Item Specific.)
      *  </span>
      *
      *  <b>For GetItem</b>: This list is returned only when you specify <b>IncludeItemSpecifics</b> in the request (and the seller included Item Specifics in their listing).
+     *
+     *  <br><br>
+     *  If this container is included when revising or relisting an item, it will do a complete replace of the item's Item Specific values. This means that all newly input Item Specifics will replace all existing Item Specific values, regardless of if the values changed. It is advised that the seller run a <a href="https://developer.ebay.com/Devzone/xml/docs/reference/ebay/getitem.html" target="_blank">GetItem</a> call to see its current item specifics before attempting to update them.
      *
      *  <br><br>
      *  To delete all Item Specifics when you revise or relist, specify <b>Item.ItemSpecifics</b> in <b>DeletedField</b>, and don't pass <b>ItemSpecifics</b> in the request.
@@ -1343,7 +1338,10 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  seller included item compatibility in the listing and <b
      *  class="con">IncludeItemCompatibilityList</b> is set to <code>true</code> in the
      *  <b>GetItem</b> request.
-     *  <br><br>
+     *  <br/>
+     *  <span class="tablenote">
+     *  <strong>Note:</strong> <strong>Compatibility</strong> includes only parts compatibility details that were specified manually; that is, they do not correspond to an eBay catalog product (listings not associated with a <a href="https://developer.ebay.com/devzone/XML/docs/Reference/eBay/GetItem.html#Response.Item.ProductListingDetails.ProductReferenceID" target="_blank">ProductReferenceID</a>). To retrieve parts compatibility details that <em>do</em> correspond to eBay catalog products, use the eBay Product API's <b>getProductCompatibilities</b> call.
+     *  </span>
      *
      * @var \Nogrod\eBaySDK\Trading\ItemCompatibilityListType $itemCompatibilityList
      */
@@ -1372,7 +1370,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      * This is a numeric identifier for an item's condition. All numeric Condition ID values map to an item condition string value. For example, numeric identifier <code>1000</code> maps to <code>New</code> condition.
      *  <br>
      *  <span class="tablenote"><b>Important: </b>
-     *  For trading card listings in <b>Non-Sport Trading Card Singles (<code>183050</code>)</b>, <b>CCG Individual Cards (<code>183454</code>)</b>, and <b>Sports Trading Card Singles (<code>261328</code>)</b> categories, Condition ID 2750 can be used to specify the card as a <b>Graded</b> card and Condition ID 4000 can be used to specify the card as an <b>Ungraded</b> card. If either of these condition IDs are used, the seller is required to use the <b>ConditionDescriptors</b> container to provide one or more applicable Condition Descriptor name-value pairs. See the <a href="/Devzone/XML/docs/Reference/eBay/AddItem.html#Request.Item.ConditionDescriptors">ConditionDescriptors</a> field description for more information.
+     *  For trading card listings in <b>Non-Sport Trading Card Singles (<code>183050</code>)</b>, <b>CCG Individual Cards (<code>183454</code>)</b>, and <b>Sports Trading Card Singles (<code>261328</code>)</b> categories, Condition ID 2750 can be used to specify the card as a <b>Graded</b> card and Condition ID 4000 can be used to specify the card as an <b>Ungraded</b> card. If either of these condition IDs are used, the seller is required to use the <b>ConditionDescriptors</b> container to provide one or more applicable Condition Descriptor name-value pairs. See the <a href="https://developer.ebay.com/devzone/XML/docs/Reference/eBay/AddItem.html#Request.Item.ConditionDescriptors">ConditionDescriptors</a> field description for more information.
      *  </span>
      *  Most eBay listing categories require an item condition, but a few eBay categories do not (such as Digital Gift Cards or Antiques categories). To verify if the listing category requires an item condition, and if so, what are the supported item condition and <b>ConditionID</b> values, you can call <b>GetCategoryFeatures</b>. In this <b>GetCategoryFeatures</b> call, you'd pass in the listing <b>CategoryID</b> value and two <b>FeatureID</b> fields - one of these fields set to <code>ConditionEnabled</code>, and the other field set to <code>ConditionValues</code>.
      *  <br><br>
@@ -1392,7 +1390,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <br>
      *  <br>
      *  <span class="tablenote"><strong>Note:</strong>
-     *  On the US, Canada, UK, Germany, France, Italy, and Australia marketplaces, condition ID 2500 ('Seller Refurbished') can no longer be used in numerous categories. See <a href="/api-docs/sell/static/metadata/condition-id-values.html#Category" target="_blank">Category and marketplace support for the eBay Refurbished Program</a> for the full list. In these categories, the 'Seller Refurbished' item condition has been replaced by one of three new refurbished values, which include condition ID 2010 ('Excellent - Refurbished'), condition ID 2020 ('Very Good - Refurbished'), and condition ID 2030 ('Good - Refurbished'). To use any of these new refurbished item conditions, sellers must go through an application and qualification process. Any seller who is not eligible to use these new refurbished item conditions in these three categories will be blocked if they try to create a new listing or revise an existing listing with any of these three new item conditions. Sellers who are not eligible to list with the new refurbished item conditions, will need to use another item condition supported in these categories, such as condition ID 3000 ('Used').
+     *  On the US, Canada, UK, Germany, France, Italy, and Australia marketplaces, condition ID 2500 ('Seller Refurbished') can no longer be used in numerous categories. See <a href="https://developer.ebay.com/api-docs/sell/static/metadata/condition-id-values.html#Category" target="_blank">Category and marketplace support for the eBay Refurbished Program</a> for the full list. In these categories, the 'Seller Refurbished' item condition has been replaced by one of three new refurbished values, which include condition ID 2010 ('Excellent - Refurbished'), condition ID 2020 ('Very Good - Refurbished'), and condition ID 2030 ('Good - Refurbished'). To use any of these new refurbished item conditions, sellers must go through an application and qualification process. Any seller who is not eligible to use these new refurbished item conditions in these three categories will be blocked if they try to create a new listing or revise an existing listing with any of these three new item conditions. Sellers who are not eligible to list with the new refurbished item conditions, will need to use another item condition supported in these categories, such as condition ID 3000 ('Used').
      *  <br>
      *  <br>
      *  Any seller that is interested in eligibility requirements to list with any refurbished item condition, including condition ID 2000 ('Certified - Refurbished'), should see the <a href="https://pages.ebay.com/seller-center/listing-and-marketing/ebay-refurbished-program.html" target="_blank">eBay Refurbished Program</a> page in Seller Center.
@@ -1519,7 +1517,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * This field displays the Vehicle Identification Number, which is a unique serial number for a motor vehicle.
      *  <br><br>
-     *  This field is applicable to listings in US eBay Motors Cars and Trucks (6001), Motorcycles (6024), Commercial Trucks (63732), RVs and Campers (50054), ATVs (6723), Snowmobiles (42595), and UTVs (173665); and to Cars and Trucks listings in CA, CAFR and AU eBay Motors. For vehicle categories that do not use VIN, make a call to the <a href="/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API to determine applicable Item Specifics (such as 'Hull ID Number' for Boats).
+     *  This field is applicable to listings in US eBay Motors Cars and Trucks (6001), Motorcycles (6024), Commercial Trucks (63732), RVs and Campers (50054), ATVs (6723), Snowmobiles (42595), and UTVs (173665); and to Cars and Trucks listings in CA, CAFR and AU eBay Motors. For vehicle categories that do not use VIN, make a call to the <a href="https://developer.ebay.com/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API to determine applicable Item Specifics (such as 'Hull ID Number' for Boats).
      *  <br><br>
      *  For the US, CA, and CA-FR eBay Motors categories, required for cars and trucks from model year 1981 and later. (The US developed national standards for VIN values in 1981.)
      *  <br><br>
@@ -1787,6 +1785,13 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     private $isSecureDescription = null;
 
     /**
+     * A reference identifier used to attribute the source of data across API families. This ID is returned in the response of a call to the <b>Inventory Mapping API</b>. To ensure continuity and traceability of the data flow, you must include this reference ID in any Add, Revise, or Relist item request. Using this ID associates requests with the original source used to create the listing.<br>
+     *
+     * @var string $mappingReferenceId
+     */
+    private $mappingReferenceId = null;
+
+    /**
      * Gets as applicationData
      *
      * Return custom, application-specific data associated with the item.
@@ -1796,7 +1801,6 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  a part number. For a SKU in an eBay.com listing, use the <b>SKU</b>
      *  element instead. To remove this value when revising or relisting an
      *  item, use <b>DeletedField</b>.
-     *  <br/>
      *
      * @return string
      */
@@ -1815,7 +1819,6 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  a part number. For a SKU in an eBay.com listing, use the <b>SKU</b>
      *  element instead. To remove this value when revising or relisting an
      *  item, use <b>DeletedField</b>.
-     *  <br/>
      *
      * @param string $applicationData
      * @return self
@@ -2096,7 +2099,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  using CDATA if you want to use HTML or XML-reserved characters in the
      *  description. However, a seller can not use any active content in their listing description. Active content includes animation or video via JavaScript, Flash, plug-ins, or form actions. All active content will be blocked/removed from a listing. Removing/blocking active content will lead to faster load times of listings, make listings more mobile-friendly, improve SEO performance, and lead to a more secure eBay Marketplace.
      *  <br><br>
-     *  <span class="tablenote"><b>Note: </b> To ensure that a listing description is optimized to be viewed on a mobile devices, see <a href="/api-docs/user-guides/static/trading-user-guide/mobile.html" target="_blank">Mobile device optimization</a> in the Trading User Guide. <br><br>
+     *  <span class="tablenote"><b>Note: </b> To ensure that a listing description is optimized to be viewed on a mobile devices, see <a href="https://developer.ebay.com/api-docs/user-guides/static/trading-user-guide/mobile.html" target="_blank">Mobile device optimization</a> in the Trading User Guide. <br><br>
      *  Note that the mobile-friendly description snippet feature described in this topic is currently only available in the following eBay marketplaces: US, UK, Australia, France, Germany, Italy, Spain, and eBay Motors.
      *  </span>
      *  <br>
@@ -2125,7 +2128,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  using CDATA if you want to use HTML or XML-reserved characters in the
      *  description. However, a seller can not use any active content in their listing description. Active content includes animation or video via JavaScript, Flash, plug-ins, or form actions. All active content will be blocked/removed from a listing. Removing/blocking active content will lead to faster load times of listings, make listings more mobile-friendly, improve SEO performance, and lead to a more secure eBay Marketplace.
      *  <br><br>
-     *  <span class="tablenote"><b>Note: </b> To ensure that a listing description is optimized to be viewed on a mobile devices, see <a href="/api-docs/user-guides/static/trading-user-guide/mobile.html" target="_blank">Mobile device optimization</a> in the Trading User Guide. <br><br>
+     *  <span class="tablenote"><b>Note: </b> To ensure that a listing description is optimized to be viewed on a mobile devices, see <a href="https://developer.ebay.com/api-docs/user-guides/static/trading-user-guide/mobile.html" target="_blank">Mobile device optimization</a> in the Trading User Guide. <br><br>
      *  Note that the mobile-friendly description snippet feature described in this topic is currently only available in the following eBay marketplaces: US, UK, Australia, France, Germany, Italy, Spain, and eBay Motors.
      *  </span>
      *  <br>
@@ -2450,13 +2453,12 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  specify a postal code, but do not specify a location, then the location is
      *  given a default value derived from the postal code.
      *  <br><br>
+     *  <b>For GetOrders, GetItemTransactions, GetSellerTransactions:</b> If the item is shipped from a fulfillment center location through the Multi-Warehouse Program, this field will return the location details (including the country and zip code) of the fulfillment center closest to the buyer.
+     *  <br><br>
      *  <b>For Revise/Relist calls:</b> When updating an <b>Item.Location</b>, you must also include the <b>Item.PostalCode</b> corresponding to the <b>Item.Location</b> in the revise/relist call; otherwise, the location will not be updated.
      *  <br><br>
-     *  For the Classified Ad format for motors vehicle listings, the value
-     *  provided in the <b>Location</b> field is used as item location only if the
-     *  <b>SellerContactDetails.Street</b> and the <b>SellerContactDetails.Street2</b> are empty.
-     *  Else, the <b>SellerContactDetails.Street</b> and the <b>SellerContactDetails.Street2</b>
-     *  will be used for item location.
+     *  <span class="tablenote"><b>Note: </b> For the Classified Ad format for motors vehicle listings, the value provided in the <b>Location</b> field is used as item location only if the <b>SellerContactDetails.Street</b> and the <b>SellerContactDetails.Street2</b> are empty. Else, the <b>SellerContactDetails.Street</b> and the <b>SellerContactDetails.Street2</b> will be used for item location.
+     *  </span>
      *  <br>
      *
      * @return string
@@ -2478,13 +2480,12 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  specify a postal code, but do not specify a location, then the location is
      *  given a default value derived from the postal code.
      *  <br><br>
+     *  <b>For GetOrders, GetItemTransactions, GetSellerTransactions:</b> If the item is shipped from a fulfillment center location through the Multi-Warehouse Program, this field will return the location details (including the country and zip code) of the fulfillment center closest to the buyer.
+     *  <br><br>
      *  <b>For Revise/Relist calls:</b> When updating an <b>Item.Location</b>, you must also include the <b>Item.PostalCode</b> corresponding to the <b>Item.Location</b> in the revise/relist call; otherwise, the location will not be updated.
      *  <br><br>
-     *  For the Classified Ad format for motors vehicle listings, the value
-     *  provided in the <b>Location</b> field is used as item location only if the
-     *  <b>SellerContactDetails.Street</b> and the <b>SellerContactDetails.Street2</b> are empty.
-     *  Else, the <b>SellerContactDetails.Street</b> and the <b>SellerContactDetails.Street2</b>
-     *  will be used for item location.
+     *  <span class="tablenote"><b>Note: </b> For the Classified Ad format for motors vehicle listings, the value provided in the <b>Location</b> field is used as item location only if the <b>SellerContactDetails.Street</b> and the <b>SellerContactDetails.Street2</b> are empty. Else, the <b>SellerContactDetails.Street</b> and the <b>SellerContactDetails.Street2</b> will be used for item location.
+     *  </span>
      *  <br>
      *
      * @param string $location
@@ -2724,7 +2725,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      * This container is used in an Add/Revise/Relist call to set the primary listing category. This field is conditionally required in an Add call unless the seller successfully uses the <b>ProductListingDetails</b> container to find an eBay catalog product match. When the seller successfully uses an eBay catalog product to create a listing, the listing title, listing description, Item Specifics, listing category, and stock photo defined in the catalog product is used to create the listing.<br>
      *  <br>
      *  Once you determine the appropriate eBay category for your product, and want to know which listing features it supports, you can use the
-     *  <b>GetCategoryFeatures</b> call. To discover required, recommended, and optional Item Specifics for a category, use the <a href="/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API.
+     *  <b>GetCategoryFeatures</b> call. To discover required, recommended, and optional Item Specifics for a category, use the <a href="https://developer.ebay.com/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API.
      *  <br>
      *  <br>
      *  If you do use an eBay catalog product, it is advised that you do not include this field, as any primary category ID you specify in this field may get dropped if this category is different than the primary category defined in the eBay catalog product.
@@ -2752,7 +2753,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      * This container is used in an Add/Revise/Relist call to set the primary listing category. This field is conditionally required in an Add call unless the seller successfully uses the <b>ProductListingDetails</b> container to find an eBay catalog product match. When the seller successfully uses an eBay catalog product to create a listing, the listing title, listing description, Item Specifics, listing category, and stock photo defined in the catalog product is used to create the listing.<br>
      *  <br>
      *  Once you determine the appropriate eBay category for your product, and want to know which listing features it supports, you can use the
-     *  <b>GetCategoryFeatures</b> call. To discover required, recommended, and optional Item Specifics for a category, use the <a href="/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API.
+     *  <b>GetCategoryFeatures</b> call. To discover required, recommended, and optional Item Specifics for a category, use the <a href="https://developer.ebay.com/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API.
      *  <br>
      *  <br>
      *  If you do use an eBay catalog product, it is advised that you do not include this field, as any primary category ID you specify in this field may get dropped if this category is different than the primary category defined in the eBay catalog product.
@@ -2914,7 +2915,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  variation (quantity available plus quantity sold).
      *  <br>
      *  <br>
-     *  <span class="tablenote"><b>Note: </b> For the US site, new eBay sellers are subject to <a href="/api-docs/user-guides/static/make-a-call/fg-replaced.html">Seller Limits</a>, which limit the quantity of items that may be listed and/or the total cumulative value of these listings. While subject to these selling limits, an eBay seller can use the <b>GetMyeBaySelling</b> call to retrieve both the remaining number of listings they can create and the remaining cumulative value of these listings. These values are shown in the <b>Summary.QuantityLimitRemaining</b> and <b>Summary.AmountLimitRemaining</b> fields in the <b>GetMyeBaySelling</b> response. If a call to add an item or revise an item would result in the exceeding of these limits, the add item or revise item call will fail. These fields will only be returned if the seller is subject to seller limits.
+     *  <span class="tablenote"><b>Note: </b> For the US site, new eBay sellers are subject to <a href="https://developer.ebay.com/api-docs/user-guides/static/make-a-call/fg-replaced.html">Seller Limits</a>, which limit the quantity of items that may be listed and/or the total cumulative value of these listings. While subject to these selling limits, an eBay seller can use the <b>GetMyeBaySelling</b> call to retrieve both the remaining number of listings they can create and the remaining cumulative value of these listings. These values are shown in the <b>Summary.QuantityLimitRemaining</b> and <b>Summary.AmountLimitRemaining</b> fields in the <b>GetMyeBaySelling</b> response. If a call to add an item or revise an item would result in the exceeding of these limits, the add item or revise item call will fail. These fields will only be returned if the seller is subject to seller limits.
      *  </span>
      *
      * @return int
@@ -2964,7 +2965,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  variation (quantity available plus quantity sold).
      *  <br>
      *  <br>
-     *  <span class="tablenote"><b>Note: </b> For the US site, new eBay sellers are subject to <a href="/api-docs/user-guides/static/make-a-call/fg-replaced.html">Seller Limits</a>, which limit the quantity of items that may be listed and/or the total cumulative value of these listings. While subject to these selling limits, an eBay seller can use the <b>GetMyeBaySelling</b> call to retrieve both the remaining number of listings they can create and the remaining cumulative value of these listings. These values are shown in the <b>Summary.QuantityLimitRemaining</b> and <b>Summary.AmountLimitRemaining</b> fields in the <b>GetMyeBaySelling</b> response. If a call to add an item or revise an item would result in the exceeding of these limits, the add item or revise item call will fail. These fields will only be returned if the seller is subject to seller limits.
+     *  <span class="tablenote"><b>Note: </b> For the US site, new eBay sellers are subject to <a href="https://developer.ebay.com/api-docs/user-guides/static/make-a-call/fg-replaced.html">Seller Limits</a>, which limit the quantity of items that may be listed and/or the total cumulative value of these listings. While subject to these selling limits, an eBay seller can use the <b>GetMyeBaySelling</b> call to retrieve both the remaining number of listings they can create and the remaining cumulative value of these listings. These values are shown in the <b>Summary.QuantityLimitRemaining</b> and <b>Summary.AmountLimitRemaining</b> fields in the <b>GetMyeBaySelling</b> response. If a call to add an item or revise an item would result in the exceeding of these limits, the add item or revise item call will fail. These fields will only be returned if the seller is subject to seller limits.
      *  </span>
      *
      * @param int $quantity
@@ -3150,15 +3151,6 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  format. In <b>GetItem</b> and related calls, the scheduled time is returned in
      *  <b>StartTime</b>. For <b>ReviseItem</b>, you can modify this value if the currently
      *  scheduled start time is in the future (listing has yet to go live).
-     *  <br><br>
-     *  When you schedule a start time, the start time is randomized within 15-minute
-     *  intervals. Randomized start times applies to the following sites:
-     *  <br>
-     *  <code>AT, BEFR, BENL, CH, DE, ES, FR, IE, IT, NL, PL, UK</code>
-     *  <br><br>
-     *  Also see the following article in the Knowledge Base: <a href=
-     *  "https://developer.ebay.com/support/kb-article?KBid=1473" target="_blank"
-     *  >Why scheduled time is sometimes getting reset</a>.
      *
      * @return \DateTime
      */
@@ -3175,15 +3167,6 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  format. In <b>GetItem</b> and related calls, the scheduled time is returned in
      *  <b>StartTime</b>. For <b>ReviseItem</b>, you can modify this value if the currently
      *  scheduled start time is in the future (listing has yet to go live).
-     *  <br><br>
-     *  When you schedule a start time, the start time is randomized within 15-minute
-     *  intervals. Randomized start times applies to the following sites:
-     *  <br>
-     *  <code>AT, BEFR, BENL, CH, DE, ES, FR, IE, IT, NL, PL, UK</code>
-     *  <br><br>
-     *  Also see the following article in the Knowledge Base: <a href=
-     *  "https://developer.ebay.com/support/kb-article?KBid=1473" target="_blank"
-     *  >Why scheduled time is sometimes getting reset</a>.
      *
      * @param \DateTime $scheduleTime
      * @return self
@@ -3757,7 +3740,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <b>For Revise calls:</b>
      *  If the <b>StartPrice</b> value for a fixed-price item is changed with a Revise call, the <b>MinimumBestOfferPrice</b> and <b>BestOfferAutoAcceptPrice</b> fields in the <b>ListingDetails</b> container will be dropped (if set), basically turning off the Best Offer Auto Accept and/or Auto Decline features. If the seller wanted to reintroduce either of these Best Offer threshold values in the listing again, an additional Revise call would have to be made, passing in the desired threshold values.
      *  <br><br>
-     *  <span class="tablenote"><b>Note: </b> For the US site, new eBay sellers are subject to <a href="/api-docs/user-guides/static/make-a-call/fg-replaced.html">Seller Limits</a>, which limit the quantity of items that may be listed and/or the total cumulative value of these listings. While subject to these selling limits, an eBay seller can use the <b>GetMyeBaySelling</b> call to retrieve both the remaining number of listings they can create and the remaining cumulative value of these listings. These values are shown in the <b>Summary.QuantityLimitRemaining</b> and <b>Summary.AmountLimitRemaining</b> fields in the <b>GetMyeBaySelling</b> response. If a call to add an item or revise an item would result in the exceeding of these limits, the add item or revise item call will fail. These fields will only be returned if the seller is subject to seller limits.
+     *  <span class="tablenote"><b>Note: </b> For the US site, new eBay sellers are subject to <a href="https://developer.ebay.com/api-docs/user-guides/static/make-a-call/fg-replaced.html">Seller Limits</a>, which limit the quantity of items that may be listed and/or the total cumulative value of these listings. While subject to these selling limits, an eBay seller can use the <b>GetMyeBaySelling</b> call to retrieve both the remaining number of listings they can create and the remaining cumulative value of these listings. These values are shown in the <b>Summary.QuantityLimitRemaining</b> and <b>Summary.AmountLimitRemaining</b> fields in the <b>GetMyeBaySelling</b> response. If a call to add an item or revise an item would result in the exceeding of these limits, the add item or revise item call will fail. These fields will only be returned if the seller is subject to seller limits.
      *  </span>
      *
      * @return \Nogrod\eBaySDK\Trading\AmountType
@@ -3793,7 +3776,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <b>For Revise calls:</b>
      *  If the <b>StartPrice</b> value for a fixed-price item is changed with a Revise call, the <b>MinimumBestOfferPrice</b> and <b>BestOfferAutoAcceptPrice</b> fields in the <b>ListingDetails</b> container will be dropped (if set), basically turning off the Best Offer Auto Accept and/or Auto Decline features. If the seller wanted to reintroduce either of these Best Offer threshold values in the listing again, an additional Revise call would have to be made, passing in the desired threshold values.
      *  <br><br>
-     *  <span class="tablenote"><b>Note: </b> For the US site, new eBay sellers are subject to <a href="/api-docs/user-guides/static/make-a-call/fg-replaced.html">Seller Limits</a>, which limit the quantity of items that may be listed and/or the total cumulative value of these listings. While subject to these selling limits, an eBay seller can use the <b>GetMyeBaySelling</b> call to retrieve both the remaining number of listings they can create and the remaining cumulative value of these listings. These values are shown in the <b>Summary.QuantityLimitRemaining</b> and <b>Summary.AmountLimitRemaining</b> fields in the <b>GetMyeBaySelling</b> response. If a call to add an item or revise an item would result in the exceeding of these limits, the add item or revise item call will fail. These fields will only be returned if the seller is subject to seller limits.
+     *  <span class="tablenote"><b>Note: </b> For the US site, new eBay sellers are subject to <a href="https://developer.ebay.com/api-docs/user-guides/static/make-a-call/fg-replaced.html">Seller Limits</a>, which limit the quantity of items that may be listed and/or the total cumulative value of these listings. While subject to these selling limits, an eBay seller can use the <b>GetMyeBaySelling</b> call to retrieve both the remaining number of listings they can create and the remaining cumulative value of these listings. These values are shown in the <b>Summary.QuantityLimitRemaining</b> and <b>Summary.AmountLimitRemaining</b> fields in the <b>GetMyeBaySelling</b> response. If a call to add an item or revise an item would result in the exceeding of these limits, the add item or revise item call will fail. These fields will only be returned if the seller is subject to seller limits.
      *  </span>
      *
      * @param \Nogrod\eBaySDK\Trading\AmountType $startPrice
@@ -5027,10 +5010,13 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      * This container is a list of Item Specific <b>Name</b>/<b>Value</b> pairs used by the seller to provide descriptive details of an item in a structured manner.
      *
      *  <br><br>
-     *  If creating, revising, or relisting an item with an <b>Add</b>, <b>Revise</b>, or <b>Relist</b> call, it is recommended that you use the <a href="/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API to retrieve mandatory and recommended Item Specifics for a category.
+     *  If creating, revising, or relisting an item with an <b>Add</b>, <b>Revise</b>, or <b>Relist</b> call, it is recommended that you use the <a href="https://developer.ebay.com/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API to retrieve mandatory and recommended Item Specifics for a category.
      *
-     *  <br><br>
-     *  <b>For ReviseItem only:</b> When you revise a listing, if an auction listing has one or more bids and ends within 12 hours, you cannot change or add Item Ppecifics. If the auction listing has bids but ends in more than 12 hours, you cannot change existing Item Specifics, but you can add Item Specifics that were not previously included.
+     *  <br>
+     *  <span class="tablenote"><b>Important:</b> Effective from December 28th, 2024, sellers offering certain rechargeable devices in EU and Northern Ireland markets must comply with the Common Charger Directive (CCD) and list appropriate charger-related item specifics on their listings. See <a href="https://developer.ebay.com/api-docs/sell/static/inventory/common-charger-directive.html" target="_blank">Common Charger Directive</a> for more information.
+     *  </span>
+     *
+     *  <b>For ReviseItem only:</b> When you revise a listing, if an auction listing has one or more bids and ends within 12 hours, you cannot change or add Item Specifics. If the auction listing has bids but ends in more than 12 hours, you cannot change existing Item Specifics, but you can add Item Specifics that were not previously included.
      *
      *  <br><br>
      *  If your listing is in a eBay product catalog-enabled category, certain <b>Name</b>/<b>Value</b> pairs will be accepted as product identifying information. The <b>Name</b> can be <code>Brand</code>, <code>MPN</code>, or a Global Trade Item Number (GTIN). GTINs are a set of globally recognized identifiers, including <code>EAN</code>, <code>ISBN</code>, and <code>UPC</code>. However, the <b>Values</b> provided for these <b>Name</b>s must comply with eBay's constraints or they will not be recognized as product identifiers. The <b>Value</b> for Brand must be an actual brand name (except that if the item is not branded, <b>Value</b> can be <code>Unbranded</code>.) The <b>Value</b> for Brand or MPN cannot contain only special characters (e.g. <code>%$*#@</code>). All GTINs must comply with international formatting standards. For more details, see <a href="https://developer.ebay.com/api-docs/user-guides/static/trading-user-guide/item-specifics.html" target="_blank">Item Specifics</a>.
@@ -5038,14 +5024,17 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <br><br>
      *  If the <b>ProductListingDetails</b> container in an Add/Revise/Relist call is successfully used to find and use an eBay catalog product to create/revise listing, the seller should not remove or change the value of any Item Specific name or value that is defined as part of the eBay catalog product definition.
      *
-     *  <br><br>
-     *  <span class="tablenote"><b>Note:</b> If a listing is associated with an eBay catalog product, the seller does not need to pass in any Item Specifics that are already defined in the eBay catalog product. Sellers can make a call to the <a href="/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API to see if the category supports any 'instance aspects', which can be thought of as Item Specifics that are unique to the specific item that is being listed. Instance aspects are indicated if the corresponding <a href="/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory#response.aspects.aspectConstraint.aspectApplicableTo" target="_blank">aspectApplicableTo</a> field of the <b>getItemAspectsForCategory</b> response shows a value of <code>ITEM</code> (and not <code>PRODUCT</code>). Many categories support the following instance aspects: <em>Custom Bundle</em>, <em>Bundle Description</em>, <em>Modified Item</em>, <em>Modification Description</em>, and <em>California Prop 65 Warning</em>. These instance aspects allow the seller to provide more information about product bundles or modified products in a structured way. Depending on the category, there are other instance aspects as well.
+     *  <br>
+     *  <span class="tablenote"><b>Note:</b> If a listing is associated with an eBay catalog product, the seller does not need to pass in any Item Specifics that are already defined in the eBay catalog product. Sellers can make a call to the <a href="https://developer.ebay.com/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API to see if the category supports any 'instance aspects', which can be thought of as Item Specifics that are unique to the specific item that is being listed. Instance aspects are indicated if the corresponding <a href="https://developer.ebay.com/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory#response.aspects.aspectConstraint.aspectApplicableTo" target="_blank">aspectApplicableTo</a> field of the <b>getItemAspectsForCategory</b> response shows a value of <code>ITEM</code> (and not <code>PRODUCT</code>). Many categories support the following instance aspects: <em>Custom Bundle</em>, <em>Bundle Description</em>, <em>Modified Item</em>, <em>Modification Description</em>, and <em>California Prop 65 Warning</em>. These instance aspects allow the seller to provide more information about product bundles or modified products in a structured way. Depending on the category, there are other instance aspects as well.
      *  </span>
      *
      *  <span class="tablenote"><b>Note:</b> To specify an item's condition, use the <b>ConditionID</b> field instead of a condition Item Specific. Use <b>GetCategoryFeatures</b> to see which categories support <b>ConditionID</b> and to get a list of valid condition IDs. (If you specify <b>ConditionID</b> and you also specify <b>Condition</b> as a Item Specific, eBay drops the condition Item Specific.)
      *  </span>
      *
      *  <b>For GetItem</b>: This list is returned only when you specify <b>IncludeItemSpecifics</b> in the request (and the seller included Item Specifics in their listing).
+     *
+     *  <br><br>
+     *  If this container is included when revising or relisting an item, it will do a complete replace of the item's Item Specific values. This means that all newly input Item Specifics will replace all existing Item Specific values, regardless of if the values changed. It is advised that the seller run a <a href="https://developer.ebay.com/Devzone/xml/docs/reference/ebay/getitem.html" target="_blank">GetItem</a> call to see its current item specifics before attempting to update them.
      *
      *  <br><br>
      *  To delete all Item Specifics when you revise or relist, specify <b>Item.ItemSpecifics</b> in <b>DeletedField</b>, and don't pass <b>ItemSpecifics</b> in the request.
@@ -5065,10 +5054,13 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      * This container is a list of Item Specific <b>Name</b>/<b>Value</b> pairs used by the seller to provide descriptive details of an item in a structured manner.
      *
      *  <br><br>
-     *  If creating, revising, or relisting an item with an <b>Add</b>, <b>Revise</b>, or <b>Relist</b> call, it is recommended that you use the <a href="/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API to retrieve mandatory and recommended Item Specifics for a category.
+     *  If creating, revising, or relisting an item with an <b>Add</b>, <b>Revise</b>, or <b>Relist</b> call, it is recommended that you use the <a href="https://developer.ebay.com/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API to retrieve mandatory and recommended Item Specifics for a category.
      *
-     *  <br><br>
-     *  <b>For ReviseItem only:</b> When you revise a listing, if an auction listing has one or more bids and ends within 12 hours, you cannot change or add Item Ppecifics. If the auction listing has bids but ends in more than 12 hours, you cannot change existing Item Specifics, but you can add Item Specifics that were not previously included.
+     *  <br>
+     *  <span class="tablenote"><b>Important:</b> Effective from December 28th, 2024, sellers offering certain rechargeable devices in EU and Northern Ireland markets must comply with the Common Charger Directive (CCD) and list appropriate charger-related item specifics on their listings. See <a href="https://developer.ebay.com/api-docs/sell/static/inventory/common-charger-directive.html" target="_blank">Common Charger Directive</a> for more information.
+     *  </span>
+     *
+     *  <b>For ReviseItem only:</b> When you revise a listing, if an auction listing has one or more bids and ends within 12 hours, you cannot change or add Item Specifics. If the auction listing has bids but ends in more than 12 hours, you cannot change existing Item Specifics, but you can add Item Specifics that were not previously included.
      *
      *  <br><br>
      *  If your listing is in a eBay product catalog-enabled category, certain <b>Name</b>/<b>Value</b> pairs will be accepted as product identifying information. The <b>Name</b> can be <code>Brand</code>, <code>MPN</code>, or a Global Trade Item Number (GTIN). GTINs are a set of globally recognized identifiers, including <code>EAN</code>, <code>ISBN</code>, and <code>UPC</code>. However, the <b>Values</b> provided for these <b>Name</b>s must comply with eBay's constraints or they will not be recognized as product identifiers. The <b>Value</b> for Brand must be an actual brand name (except that if the item is not branded, <b>Value</b> can be <code>Unbranded</code>.) The <b>Value</b> for Brand or MPN cannot contain only special characters (e.g. <code>%$*#@</code>). All GTINs must comply with international formatting standards. For more details, see <a href="https://developer.ebay.com/api-docs/user-guides/static/trading-user-guide/item-specifics.html" target="_blank">Item Specifics</a>.
@@ -5076,14 +5068,17 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <br><br>
      *  If the <b>ProductListingDetails</b> container in an Add/Revise/Relist call is successfully used to find and use an eBay catalog product to create/revise listing, the seller should not remove or change the value of any Item Specific name or value that is defined as part of the eBay catalog product definition.
      *
-     *  <br><br>
-     *  <span class="tablenote"><b>Note:</b> If a listing is associated with an eBay catalog product, the seller does not need to pass in any Item Specifics that are already defined in the eBay catalog product. Sellers can make a call to the <a href="/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API to see if the category supports any 'instance aspects', which can be thought of as Item Specifics that are unique to the specific item that is being listed. Instance aspects are indicated if the corresponding <a href="/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory#response.aspects.aspectConstraint.aspectApplicableTo" target="_blank">aspectApplicableTo</a> field of the <b>getItemAspectsForCategory</b> response shows a value of <code>ITEM</code> (and not <code>PRODUCT</code>). Many categories support the following instance aspects: <em>Custom Bundle</em>, <em>Bundle Description</em>, <em>Modified Item</em>, <em>Modification Description</em>, and <em>California Prop 65 Warning</em>. These instance aspects allow the seller to provide more information about product bundles or modified products in a structured way. Depending on the category, there are other instance aspects as well.
+     *  <br>
+     *  <span class="tablenote"><b>Note:</b> If a listing is associated with an eBay catalog product, the seller does not need to pass in any Item Specifics that are already defined in the eBay catalog product. Sellers can make a call to the <a href="https://developer.ebay.com/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API to see if the category supports any 'instance aspects', which can be thought of as Item Specifics that are unique to the specific item that is being listed. Instance aspects are indicated if the corresponding <a href="https://developer.ebay.com/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory#response.aspects.aspectConstraint.aspectApplicableTo" target="_blank">aspectApplicableTo</a> field of the <b>getItemAspectsForCategory</b> response shows a value of <code>ITEM</code> (and not <code>PRODUCT</code>). Many categories support the following instance aspects: <em>Custom Bundle</em>, <em>Bundle Description</em>, <em>Modified Item</em>, <em>Modification Description</em>, and <em>California Prop 65 Warning</em>. These instance aspects allow the seller to provide more information about product bundles or modified products in a structured way. Depending on the category, there are other instance aspects as well.
      *  </span>
      *
      *  <span class="tablenote"><b>Note:</b> To specify an item's condition, use the <b>ConditionID</b> field instead of a condition Item Specific. Use <b>GetCategoryFeatures</b> to see which categories support <b>ConditionID</b> and to get a list of valid condition IDs. (If you specify <b>ConditionID</b> and you also specify <b>Condition</b> as a Item Specific, eBay drops the condition Item Specific.)
      *  </span>
      *
      *  <b>For GetItem</b>: This list is returned only when you specify <b>IncludeItemSpecifics</b> in the request (and the seller included Item Specifics in their listing).
+     *
+     *  <br><br>
+     *  If this container is included when revising or relisting an item, it will do a complete replace of the item's Item Specific values. This means that all newly input Item Specifics will replace all existing Item Specific values, regardless of if the values changed. It is advised that the seller run a <a href="https://developer.ebay.com/Devzone/xml/docs/reference/ebay/getitem.html" target="_blank">GetItem</a> call to see its current item specifics before attempting to update them.
      *
      *  <br><br>
      *  To delete all Item Specifics when you revise or relist, specify <b>Item.ItemSpecifics</b> in <b>DeletedField</b>, and don't pass <b>ItemSpecifics</b> in the request.
@@ -5102,10 +5097,13 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      * This container is a list of Item Specific <b>Name</b>/<b>Value</b> pairs used by the seller to provide descriptive details of an item in a structured manner.
      *
      *  <br><br>
-     *  If creating, revising, or relisting an item with an <b>Add</b>, <b>Revise</b>, or <b>Relist</b> call, it is recommended that you use the <a href="/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API to retrieve mandatory and recommended Item Specifics for a category.
+     *  If creating, revising, or relisting an item with an <b>Add</b>, <b>Revise</b>, or <b>Relist</b> call, it is recommended that you use the <a href="https://developer.ebay.com/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API to retrieve mandatory and recommended Item Specifics for a category.
      *
-     *  <br><br>
-     *  <b>For ReviseItem only:</b> When you revise a listing, if an auction listing has one or more bids and ends within 12 hours, you cannot change or add Item Ppecifics. If the auction listing has bids but ends in more than 12 hours, you cannot change existing Item Specifics, but you can add Item Specifics that were not previously included.
+     *  <br>
+     *  <span class="tablenote"><b>Important:</b> Effective from December 28th, 2024, sellers offering certain rechargeable devices in EU and Northern Ireland markets must comply with the Common Charger Directive (CCD) and list appropriate charger-related item specifics on their listings. See <a href="https://developer.ebay.com/api-docs/sell/static/inventory/common-charger-directive.html" target="_blank">Common Charger Directive</a> for more information.
+     *  </span>
+     *
+     *  <b>For ReviseItem only:</b> When you revise a listing, if an auction listing has one or more bids and ends within 12 hours, you cannot change or add Item Specifics. If the auction listing has bids but ends in more than 12 hours, you cannot change existing Item Specifics, but you can add Item Specifics that were not previously included.
      *
      *  <br><br>
      *  If your listing is in a eBay product catalog-enabled category, certain <b>Name</b>/<b>Value</b> pairs will be accepted as product identifying information. The <b>Name</b> can be <code>Brand</code>, <code>MPN</code>, or a Global Trade Item Number (GTIN). GTINs are a set of globally recognized identifiers, including <code>EAN</code>, <code>ISBN</code>, and <code>UPC</code>. However, the <b>Values</b> provided for these <b>Name</b>s must comply with eBay's constraints or they will not be recognized as product identifiers. The <b>Value</b> for Brand must be an actual brand name (except that if the item is not branded, <b>Value</b> can be <code>Unbranded</code>.) The <b>Value</b> for Brand or MPN cannot contain only special characters (e.g. <code>%$*#@</code>). All GTINs must comply with international formatting standards. For more details, see <a href="https://developer.ebay.com/api-docs/user-guides/static/trading-user-guide/item-specifics.html" target="_blank">Item Specifics</a>.
@@ -5113,14 +5111,17 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <br><br>
      *  If the <b>ProductListingDetails</b> container in an Add/Revise/Relist call is successfully used to find and use an eBay catalog product to create/revise listing, the seller should not remove or change the value of any Item Specific name or value that is defined as part of the eBay catalog product definition.
      *
-     *  <br><br>
-     *  <span class="tablenote"><b>Note:</b> If a listing is associated with an eBay catalog product, the seller does not need to pass in any Item Specifics that are already defined in the eBay catalog product. Sellers can make a call to the <a href="/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API to see if the category supports any 'instance aspects', which can be thought of as Item Specifics that are unique to the specific item that is being listed. Instance aspects are indicated if the corresponding <a href="/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory#response.aspects.aspectConstraint.aspectApplicableTo" target="_blank">aspectApplicableTo</a> field of the <b>getItemAspectsForCategory</b> response shows a value of <code>ITEM</code> (and not <code>PRODUCT</code>). Many categories support the following instance aspects: <em>Custom Bundle</em>, <em>Bundle Description</em>, <em>Modified Item</em>, <em>Modification Description</em>, and <em>California Prop 65 Warning</em>. These instance aspects allow the seller to provide more information about product bundles or modified products in a structured way. Depending on the category, there are other instance aspects as well.
+     *  <br>
+     *  <span class="tablenote"><b>Note:</b> If a listing is associated with an eBay catalog product, the seller does not need to pass in any Item Specifics that are already defined in the eBay catalog product. Sellers can make a call to the <a href="https://developer.ebay.com/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API to see if the category supports any 'instance aspects', which can be thought of as Item Specifics that are unique to the specific item that is being listed. Instance aspects are indicated if the corresponding <a href="https://developer.ebay.com/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory#response.aspects.aspectConstraint.aspectApplicableTo" target="_blank">aspectApplicableTo</a> field of the <b>getItemAspectsForCategory</b> response shows a value of <code>ITEM</code> (and not <code>PRODUCT</code>). Many categories support the following instance aspects: <em>Custom Bundle</em>, <em>Bundle Description</em>, <em>Modified Item</em>, <em>Modification Description</em>, and <em>California Prop 65 Warning</em>. These instance aspects allow the seller to provide more information about product bundles or modified products in a structured way. Depending on the category, there are other instance aspects as well.
      *  </span>
      *
      *  <span class="tablenote"><b>Note:</b> To specify an item's condition, use the <b>ConditionID</b> field instead of a condition Item Specific. Use <b>GetCategoryFeatures</b> to see which categories support <b>ConditionID</b> and to get a list of valid condition IDs. (If you specify <b>ConditionID</b> and you also specify <b>Condition</b> as a Item Specific, eBay drops the condition Item Specific.)
      *  </span>
      *
      *  <b>For GetItem</b>: This list is returned only when you specify <b>IncludeItemSpecifics</b> in the request (and the seller included Item Specifics in their listing).
+     *
+     *  <br><br>
+     *  If this container is included when revising or relisting an item, it will do a complete replace of the item's Item Specific values. This means that all newly input Item Specifics will replace all existing Item Specific values, regardless of if the values changed. It is advised that the seller run a <a href="https://developer.ebay.com/Devzone/xml/docs/reference/ebay/getitem.html" target="_blank">GetItem</a> call to see its current item specifics before attempting to update them.
      *
      *  <br><br>
      *  To delete all Item Specifics when you revise or relist, specify <b>Item.ItemSpecifics</b> in <b>DeletedField</b>, and don't pass <b>ItemSpecifics</b> in the request.
@@ -5139,10 +5140,13 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      * This container is a list of Item Specific <b>Name</b>/<b>Value</b> pairs used by the seller to provide descriptive details of an item in a structured manner.
      *
      *  <br><br>
-     *  If creating, revising, or relisting an item with an <b>Add</b>, <b>Revise</b>, or <b>Relist</b> call, it is recommended that you use the <a href="/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API to retrieve mandatory and recommended Item Specifics for a category.
+     *  If creating, revising, or relisting an item with an <b>Add</b>, <b>Revise</b>, or <b>Relist</b> call, it is recommended that you use the <a href="https://developer.ebay.com/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API to retrieve mandatory and recommended Item Specifics for a category.
      *
-     *  <br><br>
-     *  <b>For ReviseItem only:</b> When you revise a listing, if an auction listing has one or more bids and ends within 12 hours, you cannot change or add Item Ppecifics. If the auction listing has bids but ends in more than 12 hours, you cannot change existing Item Specifics, but you can add Item Specifics that were not previously included.
+     *  <br>
+     *  <span class="tablenote"><b>Important:</b> Effective from December 28th, 2024, sellers offering certain rechargeable devices in EU and Northern Ireland markets must comply with the Common Charger Directive (CCD) and list appropriate charger-related item specifics on their listings. See <a href="https://developer.ebay.com/api-docs/sell/static/inventory/common-charger-directive.html" target="_blank">Common Charger Directive</a> for more information.
+     *  </span>
+     *
+     *  <b>For ReviseItem only:</b> When you revise a listing, if an auction listing has one or more bids and ends within 12 hours, you cannot change or add Item Specifics. If the auction listing has bids but ends in more than 12 hours, you cannot change existing Item Specifics, but you can add Item Specifics that were not previously included.
      *
      *  <br><br>
      *  If your listing is in a eBay product catalog-enabled category, certain <b>Name</b>/<b>Value</b> pairs will be accepted as product identifying information. The <b>Name</b> can be <code>Brand</code>, <code>MPN</code>, or a Global Trade Item Number (GTIN). GTINs are a set of globally recognized identifiers, including <code>EAN</code>, <code>ISBN</code>, and <code>UPC</code>. However, the <b>Values</b> provided for these <b>Name</b>s must comply with eBay's constraints or they will not be recognized as product identifiers. The <b>Value</b> for Brand must be an actual brand name (except that if the item is not branded, <b>Value</b> can be <code>Unbranded</code>.) The <b>Value</b> for Brand or MPN cannot contain only special characters (e.g. <code>%$*#@</code>). All GTINs must comply with international formatting standards. For more details, see <a href="https://developer.ebay.com/api-docs/user-guides/static/trading-user-guide/item-specifics.html" target="_blank">Item Specifics</a>.
@@ -5150,14 +5154,17 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <br><br>
      *  If the <b>ProductListingDetails</b> container in an Add/Revise/Relist call is successfully used to find and use an eBay catalog product to create/revise listing, the seller should not remove or change the value of any Item Specific name or value that is defined as part of the eBay catalog product definition.
      *
-     *  <br><br>
-     *  <span class="tablenote"><b>Note:</b> If a listing is associated with an eBay catalog product, the seller does not need to pass in any Item Specifics that are already defined in the eBay catalog product. Sellers can make a call to the <a href="/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API to see if the category supports any 'instance aspects', which can be thought of as Item Specifics that are unique to the specific item that is being listed. Instance aspects are indicated if the corresponding <a href="/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory#response.aspects.aspectConstraint.aspectApplicableTo" target="_blank">aspectApplicableTo</a> field of the <b>getItemAspectsForCategory</b> response shows a value of <code>ITEM</code> (and not <code>PRODUCT</code>). Many categories support the following instance aspects: <em>Custom Bundle</em>, <em>Bundle Description</em>, <em>Modified Item</em>, <em>Modification Description</em>, and <em>California Prop 65 Warning</em>. These instance aspects allow the seller to provide more information about product bundles or modified products in a structured way. Depending on the category, there are other instance aspects as well.
+     *  <br>
+     *  <span class="tablenote"><b>Note:</b> If a listing is associated with an eBay catalog product, the seller does not need to pass in any Item Specifics that are already defined in the eBay catalog product. Sellers can make a call to the <a href="https://developer.ebay.com/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API to see if the category supports any 'instance aspects', which can be thought of as Item Specifics that are unique to the specific item that is being listed. Instance aspects are indicated if the corresponding <a href="https://developer.ebay.com/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory#response.aspects.aspectConstraint.aspectApplicableTo" target="_blank">aspectApplicableTo</a> field of the <b>getItemAspectsForCategory</b> response shows a value of <code>ITEM</code> (and not <code>PRODUCT</code>). Many categories support the following instance aspects: <em>Custom Bundle</em>, <em>Bundle Description</em>, <em>Modified Item</em>, <em>Modification Description</em>, and <em>California Prop 65 Warning</em>. These instance aspects allow the seller to provide more information about product bundles or modified products in a structured way. Depending on the category, there are other instance aspects as well.
      *  </span>
      *
      *  <span class="tablenote"><b>Note:</b> To specify an item's condition, use the <b>ConditionID</b> field instead of a condition Item Specific. Use <b>GetCategoryFeatures</b> to see which categories support <b>ConditionID</b> and to get a list of valid condition IDs. (If you specify <b>ConditionID</b> and you also specify <b>Condition</b> as a Item Specific, eBay drops the condition Item Specific.)
      *  </span>
      *
      *  <b>For GetItem</b>: This list is returned only when you specify <b>IncludeItemSpecifics</b> in the request (and the seller included Item Specifics in their listing).
+     *
+     *  <br><br>
+     *  If this container is included when revising or relisting an item, it will do a complete replace of the item's Item Specific values. This means that all newly input Item Specifics will replace all existing Item Specific values, regardless of if the values changed. It is advised that the seller run a <a href="https://developer.ebay.com/Devzone/xml/docs/reference/ebay/getitem.html" target="_blank">GetItem</a> call to see its current item specifics before attempting to update them.
      *
      *  <br><br>
      *  To delete all Item Specifics when you revise or relist, specify <b>Item.ItemSpecifics</b> in <b>DeletedField</b>, and don't pass <b>ItemSpecifics</b> in the request.
@@ -5175,10 +5182,13 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      * This container is a list of Item Specific <b>Name</b>/<b>Value</b> pairs used by the seller to provide descriptive details of an item in a structured manner.
      *
      *  <br><br>
-     *  If creating, revising, or relisting an item with an <b>Add</b>, <b>Revise</b>, or <b>Relist</b> call, it is recommended that you use the <a href="/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API to retrieve mandatory and recommended Item Specifics for a category.
+     *  If creating, revising, or relisting an item with an <b>Add</b>, <b>Revise</b>, or <b>Relist</b> call, it is recommended that you use the <a href="https://developer.ebay.com/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API to retrieve mandatory and recommended Item Specifics for a category.
      *
-     *  <br><br>
-     *  <b>For ReviseItem only:</b> When you revise a listing, if an auction listing has one or more bids and ends within 12 hours, you cannot change or add Item Ppecifics. If the auction listing has bids but ends in more than 12 hours, you cannot change existing Item Specifics, but you can add Item Specifics that were not previously included.
+     *  <br>
+     *  <span class="tablenote"><b>Important:</b> Effective from December 28th, 2024, sellers offering certain rechargeable devices in EU and Northern Ireland markets must comply with the Common Charger Directive (CCD) and list appropriate charger-related item specifics on their listings. See <a href="https://developer.ebay.com/api-docs/sell/static/inventory/common-charger-directive.html" target="_blank">Common Charger Directive</a> for more information.
+     *  </span>
+     *
+     *  <b>For ReviseItem only:</b> When you revise a listing, if an auction listing has one or more bids and ends within 12 hours, you cannot change or add Item Specifics. If the auction listing has bids but ends in more than 12 hours, you cannot change existing Item Specifics, but you can add Item Specifics that were not previously included.
      *
      *  <br><br>
      *  If your listing is in a eBay product catalog-enabled category, certain <b>Name</b>/<b>Value</b> pairs will be accepted as product identifying information. The <b>Name</b> can be <code>Brand</code>, <code>MPN</code>, or a Global Trade Item Number (GTIN). GTINs are a set of globally recognized identifiers, including <code>EAN</code>, <code>ISBN</code>, and <code>UPC</code>. However, the <b>Values</b> provided for these <b>Name</b>s must comply with eBay's constraints or they will not be recognized as product identifiers. The <b>Value</b> for Brand must be an actual brand name (except that if the item is not branded, <b>Value</b> can be <code>Unbranded</code>.) The <b>Value</b> for Brand or MPN cannot contain only special characters (e.g. <code>%$*#@</code>). All GTINs must comply with international formatting standards. For more details, see <a href="https://developer.ebay.com/api-docs/user-guides/static/trading-user-guide/item-specifics.html" target="_blank">Item Specifics</a>.
@@ -5186,14 +5196,17 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <br><br>
      *  If the <b>ProductListingDetails</b> container in an Add/Revise/Relist call is successfully used to find and use an eBay catalog product to create/revise listing, the seller should not remove or change the value of any Item Specific name or value that is defined as part of the eBay catalog product definition.
      *
-     *  <br><br>
-     *  <span class="tablenote"><b>Note:</b> If a listing is associated with an eBay catalog product, the seller does not need to pass in any Item Specifics that are already defined in the eBay catalog product. Sellers can make a call to the <a href="/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API to see if the category supports any 'instance aspects', which can be thought of as Item Specifics that are unique to the specific item that is being listed. Instance aspects are indicated if the corresponding <a href="/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory#response.aspects.aspectConstraint.aspectApplicableTo" target="_blank">aspectApplicableTo</a> field of the <b>getItemAspectsForCategory</b> response shows a value of <code>ITEM</code> (and not <code>PRODUCT</code>). Many categories support the following instance aspects: <em>Custom Bundle</em>, <em>Bundle Description</em>, <em>Modified Item</em>, <em>Modification Description</em>, and <em>California Prop 65 Warning</em>. These instance aspects allow the seller to provide more information about product bundles or modified products in a structured way. Depending on the category, there are other instance aspects as well.
+     *  <br>
+     *  <span class="tablenote"><b>Note:</b> If a listing is associated with an eBay catalog product, the seller does not need to pass in any Item Specifics that are already defined in the eBay catalog product. Sellers can make a call to the <a href="https://developer.ebay.com/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API to see if the category supports any 'instance aspects', which can be thought of as Item Specifics that are unique to the specific item that is being listed. Instance aspects are indicated if the corresponding <a href="https://developer.ebay.com/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory#response.aspects.aspectConstraint.aspectApplicableTo" target="_blank">aspectApplicableTo</a> field of the <b>getItemAspectsForCategory</b> response shows a value of <code>ITEM</code> (and not <code>PRODUCT</code>). Many categories support the following instance aspects: <em>Custom Bundle</em>, <em>Bundle Description</em>, <em>Modified Item</em>, <em>Modification Description</em>, and <em>California Prop 65 Warning</em>. These instance aspects allow the seller to provide more information about product bundles or modified products in a structured way. Depending on the category, there are other instance aspects as well.
      *  </span>
      *
      *  <span class="tablenote"><b>Note:</b> To specify an item's condition, use the <b>ConditionID</b> field instead of a condition Item Specific. Use <b>GetCategoryFeatures</b> to see which categories support <b>ConditionID</b> and to get a list of valid condition IDs. (If you specify <b>ConditionID</b> and you also specify <b>Condition</b> as a Item Specific, eBay drops the condition Item Specific.)
      *  </span>
      *
      *  <b>For GetItem</b>: This list is returned only when you specify <b>IncludeItemSpecifics</b> in the request (and the seller included Item Specifics in their listing).
+     *
+     *  <br><br>
+     *  If this container is included when revising or relisting an item, it will do a complete replace of the item's Item Specific values. This means that all newly input Item Specifics will replace all existing Item Specific values, regardless of if the values changed. It is advised that the seller run a <a href="https://developer.ebay.com/Devzone/xml/docs/reference/ebay/getitem.html" target="_blank">GetItem</a> call to see its current item specifics before attempting to update them.
      *
      *  <br><br>
      *  To delete all Item Specifics when you revise or relist, specify <b>Item.ItemSpecifics</b> in <b>DeletedField</b>, and don't pass <b>ItemSpecifics</b> in the request.
@@ -5968,7 +5981,10 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  seller included item compatibility in the listing and <b
      *  class="con">IncludeItemCompatibilityList</b> is set to <code>true</code> in the
      *  <b>GetItem</b> request.
-     *  <br><br>
+     *  <br/>
+     *  <span class="tablenote">
+     *  <strong>Note:</strong> <strong>Compatibility</strong> includes only parts compatibility details that were specified manually; that is, they do not correspond to an eBay catalog product (listings not associated with a <a href="https://developer.ebay.com/devzone/XML/docs/Reference/eBay/GetItem.html#Response.Item.ProductListingDetails.ProductReferenceID" target="_blank">ProductReferenceID</a>). To retrieve parts compatibility details that <em>do</em> correspond to eBay catalog products, use the eBay Product API's <b>getProductCompatibilities</b> call.
+     *  </span>
      *
      * @return \Nogrod\eBaySDK\Trading\ItemCompatibilityListType
      */
@@ -6005,7 +6021,10 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  seller included item compatibility in the listing and <b
      *  class="con">IncludeItemCompatibilityList</b> is set to <code>true</code> in the
      *  <b>GetItem</b> request.
-     *  <br><br>
+     *  <br/>
+     *  <span class="tablenote">
+     *  <strong>Note:</strong> <strong>Compatibility</strong> includes only parts compatibility details that were specified manually; that is, they do not correspond to an eBay catalog product (listings not associated with a <a href="https://developer.ebay.com/devzone/XML/docs/Reference/eBay/GetItem.html#Response.Item.ProductListingDetails.ProductReferenceID" target="_blank">ProductReferenceID</a>). To retrieve parts compatibility details that <em>do</em> correspond to eBay catalog products, use the eBay Product API's <b>getProductCompatibilities</b> call.
+     *  </span>
      *
      * @param \Nogrod\eBaySDK\Trading\ItemCompatibilityListType $itemCompatibilityList
      * @return self
@@ -6072,7 +6091,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      * This is a numeric identifier for an item's condition. All numeric Condition ID values map to an item condition string value. For example, numeric identifier <code>1000</code> maps to <code>New</code> condition.
      *  <br>
      *  <span class="tablenote"><b>Important: </b>
-     *  For trading card listings in <b>Non-Sport Trading Card Singles (<code>183050</code>)</b>, <b>CCG Individual Cards (<code>183454</code>)</b>, and <b>Sports Trading Card Singles (<code>261328</code>)</b> categories, Condition ID 2750 can be used to specify the card as a <b>Graded</b> card and Condition ID 4000 can be used to specify the card as an <b>Ungraded</b> card. If either of these condition IDs are used, the seller is required to use the <b>ConditionDescriptors</b> container to provide one or more applicable Condition Descriptor name-value pairs. See the <a href="/Devzone/XML/docs/Reference/eBay/AddItem.html#Request.Item.ConditionDescriptors">ConditionDescriptors</a> field description for more information.
+     *  For trading card listings in <b>Non-Sport Trading Card Singles (<code>183050</code>)</b>, <b>CCG Individual Cards (<code>183454</code>)</b>, and <b>Sports Trading Card Singles (<code>261328</code>)</b> categories, Condition ID 2750 can be used to specify the card as a <b>Graded</b> card and Condition ID 4000 can be used to specify the card as an <b>Ungraded</b> card. If either of these condition IDs are used, the seller is required to use the <b>ConditionDescriptors</b> container to provide one or more applicable Condition Descriptor name-value pairs. See the <a href="https://developer.ebay.com/devzone/XML/docs/Reference/eBay/AddItem.html#Request.Item.ConditionDescriptors">ConditionDescriptors</a> field description for more information.
      *  </span>
      *  Most eBay listing categories require an item condition, but a few eBay categories do not (such as Digital Gift Cards or Antiques categories). To verify if the listing category requires an item condition, and if so, what are the supported item condition and <b>ConditionID</b> values, you can call <b>GetCategoryFeatures</b>. In this <b>GetCategoryFeatures</b> call, you'd pass in the listing <b>CategoryID</b> value and two <b>FeatureID</b> fields - one of these fields set to <code>ConditionEnabled</code>, and the other field set to <code>ConditionValues</code>.
      *  <br><br>
@@ -6092,7 +6111,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <br>
      *  <br>
      *  <span class="tablenote"><strong>Note:</strong>
-     *  On the US, Canada, UK, Germany, France, Italy, and Australia marketplaces, condition ID 2500 ('Seller Refurbished') can no longer be used in numerous categories. See <a href="/api-docs/sell/static/metadata/condition-id-values.html#Category" target="_blank">Category and marketplace support for the eBay Refurbished Program</a> for the full list. In these categories, the 'Seller Refurbished' item condition has been replaced by one of three new refurbished values, which include condition ID 2010 ('Excellent - Refurbished'), condition ID 2020 ('Very Good - Refurbished'), and condition ID 2030 ('Good - Refurbished'). To use any of these new refurbished item conditions, sellers must go through an application and qualification process. Any seller who is not eligible to use these new refurbished item conditions in these three categories will be blocked if they try to create a new listing or revise an existing listing with any of these three new item conditions. Sellers who are not eligible to list with the new refurbished item conditions, will need to use another item condition supported in these categories, such as condition ID 3000 ('Used').
+     *  On the US, Canada, UK, Germany, France, Italy, and Australia marketplaces, condition ID 2500 ('Seller Refurbished') can no longer be used in numerous categories. See <a href="https://developer.ebay.com/api-docs/sell/static/metadata/condition-id-values.html#Category" target="_blank">Category and marketplace support for the eBay Refurbished Program</a> for the full list. In these categories, the 'Seller Refurbished' item condition has been replaced by one of three new refurbished values, which include condition ID 2010 ('Excellent - Refurbished'), condition ID 2020 ('Very Good - Refurbished'), and condition ID 2030 ('Good - Refurbished'). To use any of these new refurbished item conditions, sellers must go through an application and qualification process. Any seller who is not eligible to use these new refurbished item conditions in these three categories will be blocked if they try to create a new listing or revise an existing listing with any of these three new item conditions. Sellers who are not eligible to list with the new refurbished item conditions, will need to use another item condition supported in these categories, such as condition ID 3000 ('Used').
      *  <br>
      *  <br>
      *  Any seller that is interested in eligibility requirements to list with any refurbished item condition, including condition ID 2000 ('Certified - Refurbished'), should see the <a href="https://pages.ebay.com/seller-center/listing-and-marketing/ebay-refurbished-program.html" target="_blank">eBay Refurbished Program</a> page in Seller Center.
@@ -6113,7 +6132,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      * This is a numeric identifier for an item's condition. All numeric Condition ID values map to an item condition string value. For example, numeric identifier <code>1000</code> maps to <code>New</code> condition.
      *  <br>
      *  <span class="tablenote"><b>Important: </b>
-     *  For trading card listings in <b>Non-Sport Trading Card Singles (<code>183050</code>)</b>, <b>CCG Individual Cards (<code>183454</code>)</b>, and <b>Sports Trading Card Singles (<code>261328</code>)</b> categories, Condition ID 2750 can be used to specify the card as a <b>Graded</b> card and Condition ID 4000 can be used to specify the card as an <b>Ungraded</b> card. If either of these condition IDs are used, the seller is required to use the <b>ConditionDescriptors</b> container to provide one or more applicable Condition Descriptor name-value pairs. See the <a href="/Devzone/XML/docs/Reference/eBay/AddItem.html#Request.Item.ConditionDescriptors">ConditionDescriptors</a> field description for more information.
+     *  For trading card listings in <b>Non-Sport Trading Card Singles (<code>183050</code>)</b>, <b>CCG Individual Cards (<code>183454</code>)</b>, and <b>Sports Trading Card Singles (<code>261328</code>)</b> categories, Condition ID 2750 can be used to specify the card as a <b>Graded</b> card and Condition ID 4000 can be used to specify the card as an <b>Ungraded</b> card. If either of these condition IDs are used, the seller is required to use the <b>ConditionDescriptors</b> container to provide one or more applicable Condition Descriptor name-value pairs. See the <a href="https://developer.ebay.com/devzone/XML/docs/Reference/eBay/AddItem.html#Request.Item.ConditionDescriptors">ConditionDescriptors</a> field description for more information.
      *  </span>
      *  Most eBay listing categories require an item condition, but a few eBay categories do not (such as Digital Gift Cards or Antiques categories). To verify if the listing category requires an item condition, and if so, what are the supported item condition and <b>ConditionID</b> values, you can call <b>GetCategoryFeatures</b>. In this <b>GetCategoryFeatures</b> call, you'd pass in the listing <b>CategoryID</b> value and two <b>FeatureID</b> fields - one of these fields set to <code>ConditionEnabled</code>, and the other field set to <code>ConditionValues</code>.
      *  <br><br>
@@ -6133,7 +6152,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <br>
      *  <br>
      *  <span class="tablenote"><strong>Note:</strong>
-     *  On the US, Canada, UK, Germany, France, Italy, and Australia marketplaces, condition ID 2500 ('Seller Refurbished') can no longer be used in numerous categories. See <a href="/api-docs/sell/static/metadata/condition-id-values.html#Category" target="_blank">Category and marketplace support for the eBay Refurbished Program</a> for the full list. In these categories, the 'Seller Refurbished' item condition has been replaced by one of three new refurbished values, which include condition ID 2010 ('Excellent - Refurbished'), condition ID 2020 ('Very Good - Refurbished'), and condition ID 2030 ('Good - Refurbished'). To use any of these new refurbished item conditions, sellers must go through an application and qualification process. Any seller who is not eligible to use these new refurbished item conditions in these three categories will be blocked if they try to create a new listing or revise an existing listing with any of these three new item conditions. Sellers who are not eligible to list with the new refurbished item conditions, will need to use another item condition supported in these categories, such as condition ID 3000 ('Used').
+     *  On the US, Canada, UK, Germany, France, Italy, and Australia marketplaces, condition ID 2500 ('Seller Refurbished') can no longer be used in numerous categories. See <a href="https://developer.ebay.com/api-docs/sell/static/metadata/condition-id-values.html#Category" target="_blank">Category and marketplace support for the eBay Refurbished Program</a> for the full list. In these categories, the 'Seller Refurbished' item condition has been replaced by one of three new refurbished values, which include condition ID 2010 ('Excellent - Refurbished'), condition ID 2020 ('Very Good - Refurbished'), and condition ID 2030 ('Good - Refurbished'). To use any of these new refurbished item conditions, sellers must go through an application and qualification process. Any seller who is not eligible to use these new refurbished item conditions in these three categories will be blocked if they try to create a new listing or revise an existing listing with any of these three new item conditions. Sellers who are not eligible to list with the new refurbished item conditions, will need to use another item condition supported in these categories, such as condition ID 3000 ('Used').
      *  <br>
      *  <br>
      *  Any seller that is interested in eligibility requirements to list with any refurbished item condition, including condition ID 2000 ('Certified - Refurbished'), should see the <a href="https://pages.ebay.com/seller-center/listing-and-marketing/ebay-refurbished-program.html" target="_blank">eBay Refurbished Program</a> page in Seller Center.
@@ -6533,7 +6552,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *
      * This field displays the Vehicle Identification Number, which is a unique serial number for a motor vehicle.
      *  <br><br>
-     *  This field is applicable to listings in US eBay Motors Cars and Trucks (6001), Motorcycles (6024), Commercial Trucks (63732), RVs and Campers (50054), ATVs (6723), Snowmobiles (42595), and UTVs (173665); and to Cars and Trucks listings in CA, CAFR and AU eBay Motors. For vehicle categories that do not use VIN, make a call to the <a href="/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API to determine applicable Item Specifics (such as 'Hull ID Number' for Boats).
+     *  This field is applicable to listings in US eBay Motors Cars and Trucks (6001), Motorcycles (6024), Commercial Trucks (63732), RVs and Campers (50054), ATVs (6723), Snowmobiles (42595), and UTVs (173665); and to Cars and Trucks listings in CA, CAFR and AU eBay Motors. For vehicle categories that do not use VIN, make a call to the <a href="https://developer.ebay.com/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API to determine applicable Item Specifics (such as 'Hull ID Number' for Boats).
      *  <br><br>
      *  For the US, CA, and CA-FR eBay Motors categories, required for cars and trucks from model year 1981 and later. (The US developed national standards for VIN values in 1981.)
      *  <br><br>
@@ -6555,7 +6574,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *
      * This field displays the Vehicle Identification Number, which is a unique serial number for a motor vehicle.
      *  <br><br>
-     *  This field is applicable to listings in US eBay Motors Cars and Trucks (6001), Motorcycles (6024), Commercial Trucks (63732), RVs and Campers (50054), ATVs (6723), Snowmobiles (42595), and UTVs (173665); and to Cars and Trucks listings in CA, CAFR and AU eBay Motors. For vehicle categories that do not use VIN, make a call to the <a href="/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API to determine applicable Item Specifics (such as 'Hull ID Number' for Boats).
+     *  This field is applicable to listings in US eBay Motors Cars and Trucks (6001), Motorcycles (6024), Commercial Trucks (63732), RVs and Campers (50054), ATVs (6723), Snowmobiles (42595), and UTVs (173665); and to Cars and Trucks listings in CA, CAFR and AU eBay Motors. For vehicle categories that do not use VIN, make a call to the <a href="https://developer.ebay.com/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API to determine applicable Item Specifics (such as 'Hull ID Number' for Boats).
      *  <br><br>
      *  For the US, CA, and CA-FR eBay Motors categories, required for cars and trucks from model year 1981 and later. (The US developed national standards for VIN values in 1981.)
      *  <br><br>
@@ -7444,6 +7463,32 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         return $this;
     }
 
+    /**
+     * Gets as mappingReferenceId
+     *
+     * A reference identifier used to attribute the source of data across API families. This ID is returned in the response of a call to the <b>Inventory Mapping API</b>. To ensure continuity and traceability of the data flow, you must include this reference ID in any Add, Revise, or Relist item request. Using this ID associates requests with the original source used to create the listing.<br>
+     *
+     * @return string
+     */
+    public function getMappingReferenceId()
+    {
+        return $this->mappingReferenceId;
+    }
+
+    /**
+     * Sets a new mappingReferenceId
+     *
+     * A reference identifier used to attribute the source of data across API families. This ID is returned in the response of a call to the <b>Inventory Mapping API</b>. To ensure continuity and traceability of the data flow, you must include this reference ID in any Add, Revise, or Relist item request. Using this ID associates requests with the original source used to create the listing.<br>
+     *
+     * @param string $mappingReferenceId
+     * @return self
+     */
+    public function setMappingReferenceId($mappingReferenceId)
+    {
+        $this->mappingReferenceId = $mappingReferenceId;
+        return $this;
+    }
+
     public function xmlSerialize(\Sabre\Xml\Writer $writer): void
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
@@ -7967,6 +8012,10 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}IsSecureDescription", $value);
         }
+        $value = $this->getMappingReferenceId();
+        if (null !== $value) {
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MappingReferenceId", $value);
+        }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
@@ -8478,6 +8527,10 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}IsSecureDescription');
         if (null !== $value) {
             $this->setIsSecureDescription(filter_var($value, FILTER_VALIDATE_BOOLEAN));
+        }
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}MappingReferenceId');
+        if (null !== $value) {
+            $this->setMappingReferenceId($value);
         }
     }
 }

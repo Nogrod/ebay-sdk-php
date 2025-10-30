@@ -19,6 +19,8 @@ class VerifyAddSecondChanceItemRequestType extends AbstractRequestType
      *  <b>RecipientBidderUserID</b> per call. If multiple users are specified (each in a
      *  <b>RecipientBidderUserID</b> node), only the last one specified receives the
      *  offer.
+     *  <br><br>
+     *  <span class="tablenote"><strong>Note:</strong> Effective September 26, 2025, both usernames and public user IDs will be accepted in this field. For more information, please refer to <a href="/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.</span>
      *
      * @var string $recipientBidderUserID
      */
@@ -69,6 +71,8 @@ class VerifyAddSecondChanceItemRequestType extends AbstractRequestType
      *  <b>RecipientBidderUserID</b> per call. If multiple users are specified (each in a
      *  <b>RecipientBidderUserID</b> node), only the last one specified receives the
      *  offer.
+     *  <br><br>
+     *  <span class="tablenote"><strong>Note:</strong> Effective September 26, 2025, both usernames and public user IDs will be accepted in this field. For more information, please refer to <a href="/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.</span>
      *
      * @return string
      */
@@ -85,6 +89,8 @@ class VerifyAddSecondChanceItemRequestType extends AbstractRequestType
      *  <b>RecipientBidderUserID</b> per call. If multiple users are specified (each in a
      *  <b>RecipientBidderUserID</b> node), only the last one specified receives the
      *  offer.
+     *  <br><br>
+     *  <span class="tablenote"><strong>Note:</strong> Effective September 26, 2025, both usernames and public user IDs will be accepted in this field. For more information, please refer to <a href="/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.</span>
      *
      * @param string $recipientBidderUserID
      * @return self

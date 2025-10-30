@@ -62,6 +62,10 @@ class UnpaidItemAssistancePreferencesType implements \Sabre\Xml\XmlSerializable,
     /**
      * An eBay User ID to which the seller's Unpaid Item preferences do not apply. A seller may want to create an excluded user list if that seller prefers to work directly with those buyers to work out the unpaid order situation.
      *  <br/><br/>
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  Effective September 26, 2025, select developers will no longer receive username data for U.S. users through this field. Instead, an immutable user ID will be returned in its place. For more information, please refer to <a href="/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.
+     *  </span>
+     *  <br/><br/>
      *  One or more <b>ExcludedUser</b> fields are used in
      *  <b>SetUserPreferences</b> to add users to Unpaid Item preferences Exclusion
      *  list. Any and all <b>ExcludedUser</b> fields are ignored if the
@@ -213,6 +217,10 @@ class UnpaidItemAssistancePreferencesType implements \Sabre\Xml\XmlSerializable,
      *
      * An eBay User ID to which the seller's Unpaid Item preferences do not apply. A seller may want to create an excluded user list if that seller prefers to work directly with those buyers to work out the unpaid order situation.
      *  <br/><br/>
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  Effective September 26, 2025, select developers will no longer receive username data for U.S. users through this field. Instead, an immutable user ID will be returned in its place. For more information, please refer to <a href="/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.
+     *  </span>
+     *  <br/><br/>
      *  One or more <b>ExcludedUser</b> fields are used in
      *  <b>SetUserPreferences</b> to add users to Unpaid Item preferences Exclusion
      *  list. Any and all <b>ExcludedUser</b> fields are ignored if the
@@ -237,6 +245,10 @@ class UnpaidItemAssistancePreferencesType implements \Sabre\Xml\XmlSerializable,
      *
      * An eBay User ID to which the seller's Unpaid Item preferences do not apply. A seller may want to create an excluded user list if that seller prefers to work directly with those buyers to work out the unpaid order situation.
      *  <br/><br/>
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  Effective September 26, 2025, select developers will no longer receive username data for U.S. users through this field. Instead, an immutable user ID will be returned in its place. For more information, please refer to <a href="/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.
+     *  </span>
+     *  <br/><br/>
      *  One or more <b>ExcludedUser</b> fields are used in
      *  <b>SetUserPreferences</b> to add users to Unpaid Item preferences Exclusion
      *  list. Any and all <b>ExcludedUser</b> fields are ignored if the
@@ -259,6 +271,10 @@ class UnpaidItemAssistancePreferencesType implements \Sabre\Xml\XmlSerializable,
      * unset excludedUser
      *
      * An eBay User ID to which the seller's Unpaid Item preferences do not apply. A seller may want to create an excluded user list if that seller prefers to work directly with those buyers to work out the unpaid order situation.
+     *  <br/><br/>
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  Effective September 26, 2025, select developers will no longer receive username data for U.S. users through this field. Instead, an immutable user ID will be returned in its place. For more information, please refer to <a href="/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.
+     *  </span>
      *  <br/><br/>
      *  One or more <b>ExcludedUser</b> fields are used in
      *  <b>SetUserPreferences</b> to add users to Unpaid Item preferences Exclusion
@@ -283,6 +299,10 @@ class UnpaidItemAssistancePreferencesType implements \Sabre\Xml\XmlSerializable,
      *
      * An eBay User ID to which the seller's Unpaid Item preferences do not apply. A seller may want to create an excluded user list if that seller prefers to work directly with those buyers to work out the unpaid order situation.
      *  <br/><br/>
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  Effective September 26, 2025, select developers will no longer receive username data for U.S. users through this field. Instead, an immutable user ID will be returned in its place. For more information, please refer to <a href="/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.
+     *  </span>
+     *  <br/><br/>
      *  One or more <b>ExcludedUser</b> fields are used in
      *  <b>SetUserPreferences</b> to add users to Unpaid Item preferences Exclusion
      *  list. Any and all <b>ExcludedUser</b> fields are ignored if the
@@ -304,6 +324,10 @@ class UnpaidItemAssistancePreferencesType implements \Sabre\Xml\XmlSerializable,
      * Sets a new excludedUser
      *
      * An eBay User ID to which the seller's Unpaid Item preferences do not apply. A seller may want to create an excluded user list if that seller prefers to work directly with those buyers to work out the unpaid order situation.
+     *  <br/><br/>
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  Effective September 26, 2025, select developers will no longer receive username data for U.S. users through this field. Instead, an immutable user ID will be returned in its place. For more information, please refer to <a href="/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.
+     *  </span>
      *  <br/><br/>
      *  One or more <b>ExcludedUser</b> fields are used in
      *  <b>SetUserPreferences</b> to add users to Unpaid Item preferences Exclusion

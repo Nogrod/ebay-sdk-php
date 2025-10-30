@@ -209,6 +209,10 @@ class MyeBayFavoriteSearchType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
     /**
      * The SellerID value in a My eBay Favorite Search. The SellerID is the eBay ID of a
      *  specific seller.
+     *  <br><br>
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  Effective September 26, 2025, select developers will no longer receive username data for U.S. users through this field. Instead, an immutable user ID will be returned in its place. For more information, please refer to <a href="/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.
+     *  </span>
      *
      * @var string[] $sellerID
      */
@@ -219,6 +223,10 @@ class MyeBayFavoriteSearchType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
     /**
      * The SellerIDExclude value in a My eBay Favorite Search. The SellerIDExclude limits
      *  the search results to exclude items sold by a specific seller or by specific sellers.
+     *  <br><br>
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  Effective September 26, 2025, select developers will no longer receive username data for U.S. users through this field. Instead, an immutable user ID will be returned in its place. For more information, please refer to <a href="/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.
+     *  </span>
      *
      * @var string[] $sellerIDExclude
      */
@@ -921,6 +929,10 @@ class MyeBayFavoriteSearchType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
      *
      * The SellerID value in a My eBay Favorite Search. The SellerID is the eBay ID of a
      *  specific seller.
+     *  <br><br>
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  Effective September 26, 2025, select developers will no longer receive username data for U.S. users through this field. Instead, an immutable user ID will be returned in its place. For more information, please refer to <a href="/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.
+     *  </span>
      *
      * @return self
      * @param string $sellerID
@@ -936,6 +948,10 @@ class MyeBayFavoriteSearchType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
      *
      * The SellerID value in a My eBay Favorite Search. The SellerID is the eBay ID of a
      *  specific seller.
+     *  <br><br>
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  Effective September 26, 2025, select developers will no longer receive username data for U.S. users through this field. Instead, an immutable user ID will be returned in its place. For more information, please refer to <a href="/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.
+     *  </span>
      *
      * @param int|string $index
      * @return bool
@@ -950,6 +966,10 @@ class MyeBayFavoriteSearchType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
      *
      * The SellerID value in a My eBay Favorite Search. The SellerID is the eBay ID of a
      *  specific seller.
+     *  <br><br>
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  Effective September 26, 2025, select developers will no longer receive username data for U.S. users through this field. Instead, an immutable user ID will be returned in its place. For more information, please refer to <a href="/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.
+     *  </span>
      *
      * @param int|string $index
      * @return void
@@ -964,6 +984,10 @@ class MyeBayFavoriteSearchType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
      *
      * The SellerID value in a My eBay Favorite Search. The SellerID is the eBay ID of a
      *  specific seller.
+     *  <br><br>
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  Effective September 26, 2025, select developers will no longer receive username data for U.S. users through this field. Instead, an immutable user ID will be returned in its place. For more information, please refer to <a href="/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.
+     *  </span>
      *
      * @return string[]
      */
@@ -977,6 +1001,10 @@ class MyeBayFavoriteSearchType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
      *
      * The SellerID value in a My eBay Favorite Search. The SellerID is the eBay ID of a
      *  specific seller.
+     *  <br><br>
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  Effective September 26, 2025, select developers will no longer receive username data for U.S. users through this field. Instead, an immutable user ID will be returned in its place. For more information, please refer to <a href="/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.
+     *  </span>
      *
      * @param string[] $sellerID
      * @return self
@@ -992,6 +1020,10 @@ class MyeBayFavoriteSearchType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
      *
      * The SellerIDExclude value in a My eBay Favorite Search. The SellerIDExclude limits
      *  the search results to exclude items sold by a specific seller or by specific sellers.
+     *  <br><br>
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  Effective September 26, 2025, select developers will no longer receive username data for U.S. users through this field. Instead, an immutable user ID will be returned in its place. For more information, please refer to <a href="/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.
+     *  </span>
      *
      * @return self
      * @param string $sellerIDExclude
@@ -1007,6 +1039,10 @@ class MyeBayFavoriteSearchType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
      *
      * The SellerIDExclude value in a My eBay Favorite Search. The SellerIDExclude limits
      *  the search results to exclude items sold by a specific seller or by specific sellers.
+     *  <br><br>
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  Effective September 26, 2025, select developers will no longer receive username data for U.S. users through this field. Instead, an immutable user ID will be returned in its place. For more information, please refer to <a href="/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.
+     *  </span>
      *
      * @param int|string $index
      * @return bool
@@ -1021,6 +1057,10 @@ class MyeBayFavoriteSearchType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
      *
      * The SellerIDExclude value in a My eBay Favorite Search. The SellerIDExclude limits
      *  the search results to exclude items sold by a specific seller or by specific sellers.
+     *  <br><br>
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  Effective September 26, 2025, select developers will no longer receive username data for U.S. users through this field. Instead, an immutable user ID will be returned in its place. For more information, please refer to <a href="/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.
+     *  </span>
      *
      * @param int|string $index
      * @return void
@@ -1035,6 +1075,10 @@ class MyeBayFavoriteSearchType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
      *
      * The SellerIDExclude value in a My eBay Favorite Search. The SellerIDExclude limits
      *  the search results to exclude items sold by a specific seller or by specific sellers.
+     *  <br><br>
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  Effective September 26, 2025, select developers will no longer receive username data for U.S. users through this field. Instead, an immutable user ID will be returned in its place. For more information, please refer to <a href="/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.
+     *  </span>
      *
      * @return string[]
      */
@@ -1048,6 +1092,10 @@ class MyeBayFavoriteSearchType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
      *
      * The SellerIDExclude value in a My eBay Favorite Search. The SellerIDExclude limits
      *  the search results to exclude items sold by a specific seller or by specific sellers.
+     *  <br><br>
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  Effective September 26, 2025, select developers will no longer receive username data for U.S. users through this field. Instead, an immutable user ID will be returned in its place. For more information, please refer to <a href="/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.
+     *  </span>
      *
      * @param string[] $sellerIDExclude
      * @return self

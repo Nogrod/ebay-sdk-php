@@ -1,0 +1,73 @@
+Nogrod\eBaySDK\Trading\MotorPurchaseType:
+    virtual_properties:
+        ns_prop:
+            exp: '"urn:ebay:apis:eBLBaseComponents"'
+            serialized_name: xmlns
+            xml_attribute: true
+    properties:
+        facilitator:
+            expose: true
+            access_type: public_method
+            serialized_name: Facilitator
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getFacilitator
+                setter: setFacilitator
+            type: string
+        facilitatorRefId:
+            expose: true
+            access_type: public_method
+            serialized_name: FacilitatorRefId
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getFacilitatorRefId
+                setter: setFacilitatorRefId
+            type: string
+        serviceCost:
+            expose: true
+            access_type: public_method
+            serialized_name: ServiceCost
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getServiceCost
+                setter: setServiceCost
+            type: Nogrod\eBaySDK\Trading\ServiceCostType
+        buyerStep:
+            expose: true
+            access_type: public_method
+            serialized_name: BuyerStep
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getBuyerStep
+                setter: setBuyerStep
+            type: string
+        sellerStep:
+            expose: true
+            access_type: public_method
+            serialized_name: SellerStep
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getSellerStep
+                setter: setSellerStep
+            type: string
+        status:
+            expose: true
+            access_type: public_method
+            serialized_name: Status
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getStatus
+                setter: setStatus
+            type: string

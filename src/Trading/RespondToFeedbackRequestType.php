@@ -65,7 +65,11 @@ class RespondToFeedbackRequestType extends AbstractRequestType
 
     /**
      * The eBay user ID of the caller's order partner. The caller is either
-     *  replyting to or following up on this user's Feedback comment.
+     *  replying to or following up on this user's Feedback comment.
+     *  <br/><br/>
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  Effective September 26, 2025, both usernames and public user IDs will be accepted in this field. For more information, please refer to <a href="/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.
+     *  </span>
      *
      * @var string $targetUserID
      */
@@ -243,7 +247,11 @@ class RespondToFeedbackRequestType extends AbstractRequestType
      * Gets as targetUserID
      *
      * The eBay user ID of the caller's order partner. The caller is either
-     *  replyting to or following up on this user's Feedback comment.
+     *  replying to or following up on this user's Feedback comment.
+     *  <br/><br/>
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  Effective September 26, 2025, both usernames and public user IDs will be accepted in this field. For more information, please refer to <a href="/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.
+     *  </span>
      *
      * @return string
      */
@@ -256,7 +264,11 @@ class RespondToFeedbackRequestType extends AbstractRequestType
      * Sets a new targetUserID
      *
      * The eBay user ID of the caller's order partner. The caller is either
-     *  replyting to or following up on this user's Feedback comment.
+     *  replying to or following up on this user's Feedback comment.
+     *  <br/><br/>
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  Effective September 26, 2025, both usernames and public user IDs will be accepted in this field. For more information, please refer to <a href="/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.
+     *  </span>
      *
      * @param string $targetUserID
      * @return self

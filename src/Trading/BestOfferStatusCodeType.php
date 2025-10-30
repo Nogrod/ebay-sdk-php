@@ -23,9 +23,9 @@ class BestOfferStatusCodeType
     /**
      * Constant for 'Accepted' value.
      *
-     * Depending on context, this value can indicate that the buyer's Best Offer was
-     *  accepted by the seller, or that the seller's or buyer's counter offer was
-     * accepted by the other party.
+     * Depending on context, this value can indicate that the buyer's offer or Best
+     * Offer was accepted by the seller, or that the seller's or buyer's counter offer
+     * was accepted by the other party, and the buyer completed the payment.
      */
     public const VAL_ACCEPTED = 'Accepted';
 
@@ -81,6 +81,14 @@ class BestOfferStatusCodeType
      * countered by the other party.
      */
     public const VAL_COUNTERED = 'Countered';
+
+    /**
+     * Constant for 'SellerAccept' value.
+     *
+     * This value indicates that the seller has accepted the buyers offer. The status
+     * will change to <b>Accepted</b> once the buyer completes payment.
+     */
+    public const VAL_SELLER_ACCEPT = 'SellerAccept';
 
     /**
      * Constant for 'All' value.

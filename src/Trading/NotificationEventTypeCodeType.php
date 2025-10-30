@@ -11,66 +11,78 @@ namespace Nogrod\eBaySDK\Trading;
 class NotificationEventTypeCodeType
 {
     /**
-     * Constant for 'None' value.
-     *
-     * This notification is for internal or future use.
-     */
-    public const VAL_NONE = 'None';
-
-    /**
      * Constant for 'OutBid' value.
      *
-     * This notification is sent to a subscribed buyer when another buyer has outbid
+     * This buyer-facing notification is sent when another buyer has outbid
      *  (placed a higher bid) the subscribed buyer on an auction listing, and
-     *  the subscribed buyer is no longer the current high bidder.
+     *  the subscribed buyer is no longer the current high bidder. This notification is
+     * only applicable for auction listings.
      *  <br><br>
-     *  This notification is only applicable for auction listings.
+     *  This notification will appear in the <b>GetItem</b> call response. See <a
+     * href="https://developer.ebay.com/api-docs/static/pn_outbid.html"
+     * target="_blank">OutBid</a> for additional information about this notification.
      */
     public const VAL_OUT_BID = 'OutBid';
 
     /**
      * Constant for 'EndOfAuction' value.
      *
-     * This notification is sent to all subscribed bidders of an auction item and to
-     *  the subscribed seller of the auction item as soon as the auction listing ends
-     *  with or without a winning bidder. This notification will also be sent to
-     *  subscribed bidders and the subscribed seller if the auction ends as a
-     *  result of a buyer using the auction listing's Buy It Now feature.
+     * This notification is applicable to both buyers and sellers and is sent as soon
+     * as an auction listing ends with or without a winning bidder. This notification
+     * will also be sent if the auction ends as a result of a buyer using the auction
+     * listing's Buy It Now feature. This notification is only applicable for auction
+     * listings.
      *  <br><br>
-     *  This notification is only applicable for auction listings.
+     *  This notification will appear in the <b>GetItemTransactions</b> call response.
+     * See <a href="https://developer.ebay.com/api-docs/static/pn_end-of-auction.html"
+     * target="_blank">EndOfAuction</a> for additional information about this
+     * notification.
      */
     public const VAL_END_OF_AUCTION = 'EndOfAuction';
 
     /**
      * Constant for 'AuctionCheckoutComplete' value.
      *
-     * This notification is sent to the subscribed seller when the winning bidder
-     *  or buyer has paid for the auction or fixed-price item and completed the
-     * checkout process.
+     * This seller-facing notification is sent when the winning bidder or buyer has
+     * paid for the auction or fixed-price item and completed the checkout process. For
+     * multiple line item orders, an <b>AuctionCheckoutComplete</b> notification is
+     * only generated for one of the line items in the order.
      *  <br><br>
-     *  For multiple line item orders, an <b>AuctionCheckoutComplete</b> notification
-     * is only generated for one of the line items in the order.
+     *  This notification will appear in the <b>GetItemTransactions</b> call response.
+     * See <a
+     * href="https://developer.ebay.com/api-docs/static/pn_auction-checkout-complete.html"
+     * target="_blank">AuctionCheckoutComplete</a> for additional information about
+     * this notification.
      */
     public const VAL_AUCTION_CHECKOUT_COMPLETE = 'AuctionCheckoutComplete';
 
     /**
      * Constant for 'CheckoutBuyerRequestsTotal' value.
      *
-     * This notification is sent to a subscribed seller when a buyer/winning bidder
-     *  is requesting a total price before paying for the item.
+     * This seller-facing notification is sent when a buyer/winning bidder is
+     * requesting a total price before paying for the item. This notification is
+     * applicable for auction listings and for fixed-price listings that do not require
+     * immediate payment.
      *  <br><br>
-     *  This notification is applicable for auction listings and for fixed-price
-     * listings that do not require immediate payment.
+     *  This notification will appear in the <b>GetItemTransactions</b> call response.
+     * See <a
+     * href="https://developer.ebay.com/api-docs/static/pn_buyer-requests-total.html"
+     * target="_blank">CheckoutBuyerRequestsTotal</a> for additional information about
+     * this notification.
      */
     public const VAL_CHECKOUT_BUYER_REQUESTS_TOTAL = 'CheckoutBuyerRequestsTotal';
 
     /**
      * Constant for 'Feedback' value.
      *
-     * This notification is sent to a subscribed buyer or seller when that buyer or
-     * seller has left Feedback for the other party in the order, or has received
-     * Feedback from the other party in the order. Feedback is given at the order line
-     * item level.
+     * This notification is applicable to both buyers and sellers and is sent when that
+     * buyer or seller has left Feedback for the other party in the order, or has
+     * received Feedback from the other party in the order. Feedback is given at the
+     * order line item level.
+     *  <br><br>
+     *  This notification will appear in the <b>GetFeedback</b> call response. See <a
+     * href="https://developer.ebay.com/api-docs/static/pn_feedback.html"
+     * target="_blank">Feedback</a> for additional information about this notification.
      */
     public const VAL_FEEDBACK = 'Feedback';
 
@@ -84,118 +96,83 @@ class NotificationEventTypeCodeType
     /**
      * Constant for 'FixedPriceTransaction' value.
      *
-     * This notification is sent to a subscribed seller each time a buyer purchases an
-     * item in a single or multiple-quantity, fixed-price listing.
+     * This seller-facing notification is sent each time a buyer purchases an item in a
+     * single or multiple-quantity, fixed-price listing. This notification is only
+     * applicable for fixed-price listings.
      *  <br><br>
-     *  This notification is only applicable for fixed-price listings.
+     *  This notification will appear in the <b>GetFeedback</b> call response. See <a
+     * href="https://developer.ebay.com/api-docs/static/pn_fixed-price-transaction.html"
+     * target="_blank">GetItemTransactions</a> for additional information about this
+     * notification.
      */
     public const VAL_FIXED_PRICE_TRANSACTION = 'FixedPriceTransaction';
 
     /**
      * Constant for 'SecondChanceOffer' value.
      *
-     * This notification is sent to a subscribed buyer when that buyer is offered a
-     * Second Chance Offer from the seller, after that buyer failed to win the original
-     * auction of the item.
+     * This buyer-facing notification is sent when the buyer is offered a Second Chance
+     * Offer from the seller, after that buyer failed to win the original auction of
+     * the item.
      *  <br><br>
-     *  If subscribed to by a buyer and when applicable, this notification will appear
-     * in the <b>GetItem</b> call response.
+     *  This notification will appear in the <b>GetItem</b> call response. See <a
+     * href="https://developer.ebay.com/api-docs/static/pn_second-chance.html"
+     * target="_blank">SecondChanceOffer</a> for additional information about this
+     * notification.
      */
     public const VAL_SECOND_CHANCE_OFFER = 'SecondChanceOffer';
 
     /**
      * Constant for 'AskSellerQuestion' value.
      *
-     * This notification is sent to a subscribed seller when an eBay user has used the
+     * This is a seller-facing notification that is sent when an eBay user has used the
      * Ask a Question feature on the seller's active listing. An eBay user does not
      * have to be an active bidder on an auction listing to ask a seller a question.
      *  <br><br>
-     *  If subscribed to by a seller and when applicable, this notification will appear
-     * in the <b>GetMemberMessages</b> call response.
+     *  This notification will appear in the <b>GetMemberMessages</b> call response.
+     * See <a
+     * href="https://developer.ebay.com/api-docs/static/pn_ask-seller-question.html"
+     * target="_blank">AskSellerQuestion</a> for additional information about this
+     * notification.
      */
     public const VAL_ASK_SELLER_QUESTION = 'AskSellerQuestion';
 
     /**
      * Constant for 'ItemListed' value.
      *
-     * This notification is sent to a subscribed seller each time one of the subscribed
-     * seller's items is listed or relisted. This notification is also triggered when
-     * the Unpaid Item preferences relists an item for the seller.
+     * This seller-facing notification is sent each time one of the subscribed seller's
+     * items is listed or relisted. This notification is also triggered when the Unpaid
+     * Item preferences relists an item for the seller.
+     *  <br><br>
+     *  This notification will appear in the <b>GetItem</b> call response. See <a
+     * href="https://developer.ebay.com/api-docs/static/pn_item-listed.html"
+     * target="_blank">ItemListed</a> for additional information about this
+     * notification.
      */
     public const VAL_ITEM_LISTED = 'ItemListed';
 
     /**
      * Constant for 'ItemRevised' value.
      *
-     * This notification is sent to a subscribed seller when one of the subscribed
-     * seller's items is revised.
+     * This seller-facing notification is sent when one of the subscribed seller's
+     * items is revised.
      *  <br><br>
-     *  If subscribed to by a seller and when applicable, this notification will appear
-     * in the <b>GetItem</b> call response.
+     *  This notification will appear in the <b>GetItem</b> call response. See <a
+     * href="https://developer.ebay.com/api-docs/static/pn_item-revised.html"
+     * target="_blank">ItemRevised</a> for additional information about this
+     * notification.
      */
     public const VAL_ITEM_REVISED = 'ItemRevised';
 
     /**
-     * Constant for 'BuyerResponseDispute' value.
-     *
-     * <span class="tablenote"><b>Note: </b> This notification is no longer supported
-     * since the Trading API no longer supports seller-initiated cancellation requests.
-     *  </span>
-     *  This notification is sent to a subscribed seller each time a buyer responds to
-     * a Cancel Transaction request.
-     */
-    public const VAL_BUYER_RESPONSE_DISPUTE = 'BuyerResponseDispute';
-
-    /**
-     * Constant for 'SellerOpenedDispute' value.
-     *
-     * <span class="tablenote"><b>Note: </b> This notification is no longer supported
-     * since the Trading API no longer supports seller-initiated cancellation requests.
-     *  </span>
-     *  This notification is sent to a subscribed buyer if a seller initiates a Cancel
-     * Transaction request.
-     */
-    public const VAL_SELLER_OPENED_DISPUTE = 'SellerOpenedDispute';
-
-    /**
-     * Constant for 'SellerRespondedToDispute' value.
-     *
-     * <span class="tablenote"><b>Note: </b> This notification is no longer supported
-     * since dispute calls in the Trading API are deprecated.
-     *  </span>
-     *  This notification is sent to a subscribed buyer each time a seller responds to
-     * an Item Not Received or Return case that the subscribed buyer has opened up
-     * against the seller.
-     */
-    public const VAL_SELLER_RESPONDED_TO_DISPUTE = 'SellerRespondedToDispute';
-
-    /**
-     * Constant for 'SellerClosedDispute' value.
-     *
-     * <span class="tablenote"><b>Note: </b> This notification is no longer supported
-     * since dispute calls in the Trading API are deprecated.
-     *  </span>
-     *  This notification is sent to the subscribed buyer and seller if the seller
-     * closes a Cancel Transaction request.
-     */
-    public const VAL_SELLER_CLOSED_DISPUTE = 'SellerClosedDispute';
-
-    /**
      * Constant for 'BestOffer' value.
      *
-     * This notification is sent to a subscribed seller if a potential buyer has made a
-     * Best Offer on a Best Offer-enabled listing.
+     * This seller-facing notification is sent if a potential buyer has made a Best
+     * Offer on a Best Offer-enabled listing.
      *  <br><br>
-     *  If subscribed to by a seller and when applicable, this notification will appear
-     * in the <b>GetBestOffers</b> call response.
-     *  <br/><br/>
-     *  <span class="tablenote"><b>Note: </b>
-     *  The Best Offer feature can be set for auction listings on the US, Canada, UK,
-     * Germany, Australia, France, Italy, and Spain marketplaces, but keep in mind that
-     * Best Offer and Buy It Now cannot be used simultaneously in a listing. Also, once
-     * a qualifying bid is made on an auction listing, the Best Offer feature is
-     * disabled, and any pending offer or counteroffers are no longer valid.
-     *  </span>
+     *  This notification will appear in the <b>GetBestOffers</b> call response. See <a
+     * href="https://developer.ebay.com/api-docs/static/pn_best-offer.html"
+     * target="_blank">BestOffer</a> for additional information about this
+     * notification.
      */
     public const VAL_BEST_OFFER = 'BestOffer';
 
@@ -321,18 +298,28 @@ class NotificationEventTypeCodeType
     /**
      * Constant for 'WatchedItemEndingSoon' value.
      *
-     * This notification is sent to a subscribed buyer when a listing that the buyer is
-     * watching is ending soon. This event has a <b>TimeLeft</b> property that defines
-     * the 'ending soon' threshold value.
+     * This buyer-facing notification is sent when a listing that the buyer is watching
+     * is ending soon. This event has a <b>TimeLeft</b> property that defines the
+     * 'ending soon' threshold value.
+     *  <br><br>
+     *  This notification will appear in the <b>GetItem</b> call response. See <a
+     * href="https://developer.ebay.com/api-docs/static/pn_watched-item-ending-soon.html"
+     * target="_blank">WatchedItemEndingSoon</a> for additional information about this
+     * notification.
      */
     public const VAL_WATCHED_ITEM_ENDING_SOON = 'WatchedItemEndingSoon';
 
     /**
      * Constant for 'ItemClosed' value.
      *
-     * This notification is sent to a subscribed buyer or seller when a listing ends.
-     * This notification can be triggered by an
+     * This notification is applicable to both buyers and sellers and is sent when a
+     * listing ends. This notification can be triggered by an
      *  <b>ItemWon</b>, an <b>ItemSold</b>, or an <b>ItemUnsold</b> event.
+     *  <br><br>
+     *  This notification will appear in the <b>GetItem</b> call response. See <a
+     * href="https://developer.ebay.com/api-docs/static/pn_item-closed.html"
+     * target="_blank">ItemClosed</a> for additional information about this
+     * notification.
      */
     public const VAL_ITEM_CLOSED = 'ItemClosed';
 
@@ -347,8 +334,11 @@ class NotificationEventTypeCodeType
     /**
      * Constant for 'ItemSold' value.
      *
-     * This notification is sent to a subscribed seller when an eBay listing ends in a
-     * sale.
+     * This seller-facing notification is sent when an eBay listing ends in a sale.
+     *  <br><br>
+     *  This notification will appear in the <b>GetItem</b> call response. See <a
+     * href="https://developer.ebay.com/api-docs/static/pn_item-sold.html"
+     * target="_blank">ItemSold</a> for additional information about this notification.
      */
     public const VAL_ITEM_SOLD = 'ItemSold';
 
@@ -366,64 +356,6 @@ class NotificationEventTypeCodeType
      * This notification is no longer applicable.
      */
     public const VAL_USER_IDCHANGED = 'UserIDChanged';
-
-    /**
-     * Constant for 'EmailAddressChanged' value.
-     *
-     * This notification is sent to a subscribed buyer or seller when that user has
-     * changed the email address associated with the user account. This notification is
-     * available for Client Alerts and for SMS only. Not applicable to Platform
-     * Notifications.
-     */
-    public const VAL_EMAIL_ADDRESS_CHANGED = 'EmailAddressChanged';
-
-    /**
-     * Constant for 'PasswordChanged' value.
-     *
-     * This notification is sent to a subscribed buyer or seller when that user has
-     * changed the password used for login. This notification is available for Client
-     * Alerts and for SMS only. Not applicable to Platform Notifications.
-     */
-    public const VAL_PASSWORD_CHANGED = 'PasswordChanged';
-
-    /**
-     * Constant for 'PasswordHintChanged' value.
-     *
-     * This notification is sent to a subscribed buyer or seller when that user has
-     * changed the password hint. This notification is available for Client Alerts and
-     * for SMS only. Not applicable to Platform Notifications.
-     */
-    public const VAL_PASSWORD_HINT_CHANGED = 'PasswordHintChanged';
-
-    /**
-     * Constant for 'PaymentDetailChanged' value.
-     *
-     * This notification is sent to a subscribed seller when that seller has changed
-     * the payment methods used to pay seller fees for the account. This notification
-     * is available for Client Alerts and for SMS only. Not applicable to Platform
-     * Notifications.
-     */
-    public const VAL_PAYMENT_DETAIL_CHANGED = 'PaymentDetailChanged';
-
-    /**
-     * Constant for 'AccountSuspended' value.
-     *
-     * This notification is sent to a subscribed buyer or seller when that eBay user's
-     * account is suspended. This notification is available for Client Alerts and for
-     * SMS only. Not applicable to Platform Notifications.
-     */
-    public const VAL_ACCOUNT_SUSPENDED = 'AccountSuspended';
-
-    /**
-     * Constant for 'AccountSummary' value.
-     *
-     * An informational alert about account activity. A buyer or seller can subscribe
-     * to receive an account activity summary via SMS or Client Alerts. The user can
-     * specify the period (time range) for the account summary and can select how often
-     * the summary is to be sent. It is not triggered by an event but rather by an eBay
-     * daemon process that monitors a schedule database.
-     */
-    public const VAL_ACCOUNT_SUMMARY = 'AccountSummary';
 
     /**
      * Constant for 'ThirdPartyCartCheckout' value.
@@ -444,22 +376,26 @@ class NotificationEventTypeCodeType
     /**
      * Constant for 'ItemAddedToWatchList' value.
      *
-     * This notification is sent to a subscribed buyer when that buyer adds an item to
-     * the Watch List.
+     * This buyer-facing notification is sent when that buyer adds an item to the Watch
+     * List.
      *  <br><br>
-     *  If subscribed to by a buyer and when applicable, this notification will appear
-     * in the <b>GetItem</b> call response.
+     *  This notification will appear in the <b>GetItem</b> call response. See <a
+     * href="https://developer.ebay.com/api-docs/static/pn_item-added-to-watch-list.html"
+     * target="_blank">ItemAddedToWatchList</a> for additional information about this
+     * notification.
      */
     public const VAL_ITEM_ADDED_TO_WATCH_LIST = 'ItemAddedToWatchList';
 
     /**
      * Constant for 'ItemRemovedFromWatchList' value.
      *
-     * This notification is sent to a subscribed buyer when that buyer removes an item
-     * from the Watch List.
+     * This buyer-facing notification is sent when that buyer removes an item from the
+     * Watch List.
      *  <br><br>
-     *  If subscribed to by a buyer and when applicable, this notification will appear
-     * in the <b>GetItem</b> call response.
+     *  This notification will appear in the <b>GetItem</b> call response. See <a
+     * href="https://developer.ebay.com/api-docs/static/pn_item-removed-from-watch-list.html"
+     * target="_blank">ItemRemovedFromWatchList</a> for additional information about
+     * this notification.
      */
     public const VAL_ITEM_REMOVED_FROM_WATCH_LIST = 'ItemRemovedFromWatchList';
 
@@ -480,120 +416,140 @@ class NotificationEventTypeCodeType
     /**
      * Constant for 'FeedbackLeft' value.
      *
-     * This notification is sent to a subscribed buyer or seller when that user leaves
-     * feedback for an order partner.
+     * This notification is applicable to both buyers and sellers and is sent when that
+     * user leaves feedback for an order partner.
      *  <br><br>
-     *  If subscribed to by a buyer or seller, and when applicable, this notification
-     * will appear in the <b>GetFeedback</b> call response.
+     *  This notification will appear in the <b>GetFeedback</b> call response. See <a
+     * href="https://developer.ebay.com/api-docs/static/pn_feedback-left.html"
+     * target="_blank">FeedbackLeft</a> for additional information about this
+     * notification.
      */
     public const VAL_FEEDBACK_LEFT = 'FeedbackLeft';
 
     /**
      * Constant for 'FeedbackReceived' value.
      *
-     * This notification is sent to a subscribed buyer or seller when that user
-     * receives feedback from an order partner.
+     * This notification is applicable to both buyers and sellers and is sent when that
+     * user receives feedback from an order partner.
      *  <br><br>
-     *  If subscribed to by a buyer or seller, and when applicable, this notification
-     * will appear in the <b>GetFeedback</b> call response.
+     *  This notification will appear in the <b>GetFeedback</b> call response. See <a
+     * href="https://developer.ebay.com/api-docs/static/pn_feedback-received.html"
+     * target="_blank">FeedbackReceived</a> for additional information about this
+     * notification.
      */
     public const VAL_FEEDBACK_RECEIVED = 'FeedbackReceived';
 
     /**
      * Constant for 'FeedbackStarChanged' value.
      *
-     * This notification is sent to a subscribed buyer or seller when that user's
-     * Feedback star has changed.
+     * This notification is applicable to both buyers and sellers and is sent when that
+     * user's Feedback star has changed.
      *  Sent to a subscribing third party when a user's Feedback star level changes.
      *  <br><br>
-     *  If subscribed to by a buyer or seller, and when applicable, this notification
-     * will appear in the <b>GetUser</b> call response.
+     *  This notification will appear in the <b>GetUser</b> call response. See <a
+     * href="https://developer.ebay.com/api-docs/static/pn_feedback-star-changed.html"
+     * target="_blank">FeedbackStarChanged</a> for additional information about this
+     * notification.
      */
     public const VAL_FEEDBACK_STAR_CHANGED = 'FeedbackStarChanged';
 
     /**
      * Constant for 'BidPlaced' value.
      *
-     * This notification is sent to a subscribed buyer when that buyer places a bid for
-     * an auction item.
+     * This buyer-facing notification is sent when the buyer places a bid for an
+     * auction item.
      *  <br><br>
-     *  If subscribed to by a buyer and when applicable, this notification will appear
-     * in the <b>GetItem</b> call response.
+     *  This notification will appear in the <b>GetItem</b> call response. See <a
+     * href="https://developer.ebay.com/api-docs/static/pn_bid-placed.html"
+     * target="_blank">BidPlaced</a> for additional information about this
+     * notification.
      */
     public const VAL_BID_PLACED = 'BidPlaced';
 
     /**
      * Constant for 'BidReceived' value.
      *
-     * This notification is sent to a subscribed seller each time a prospective buyer
-     * places a bid for the seller's auction item.
+     * This seller-facing notification is sent each time a prospective buyer places a
+     * bid for the seller's auction item.
      *  <br><br>
-     *  If subscribed to by a seller and when applicable, this notification will appear
-     * in the <b>GetItem</b> call response.
+     *  This notification will appear in the <b>GetItem</b> call response. See <a
+     * href="https://developer.ebay.com/api-docs/static/pn_bid-received.html"
+     * target="_blank">BidReceived</a> for additional information about this
+     * notification.
      */
     public const VAL_BID_RECEIVED = 'BidReceived';
 
     /**
      * Constant for 'ItemWon' value.
      *
-     * This notification is sent to a subscribed buyer if that buyer is the winner of
-     * an auction item.
+     * This buyer-facing notification is sent if the buyer is the winner of an auction
+     * item.
      *  <br><br>
-     *  If subscribed to by a buyer and when applicable, this notification will appear
-     * in the <b>GetItem</b> call response.
+     *  This notification will appear in the <b>GetItem</b> call response. See <a
+     * href="https://developer.ebay.com/api-docs/static/pn_item-won.html"
+     * target="_blank">ItemWon</a> for additional information about this notification.
      */
     public const VAL_ITEM_WON = 'ItemWon';
 
     /**
      * Constant for 'ItemLost' value.
      *
-     * This notification is sent to a subscribed buyer if that buyer did not end up as
-     * the highest bidder for an auction item.
+     * This buyer-facing notification is sent if that buyer did not end up as the
+     * highest bidder for an auction item.
      *  <br><br>
-     *  If subscribed to by a buyer and when applicable, this notification will appear
-     * in the <b>GetItem</b> call response.
+     *  This notification will appear in the <b>GetItem</b> call response. See <a
+     * href="https://developer.ebay.com/api-docs/static/pn_item-lost.html"
+     * target="_blank">ItemLost</a> for additional information about this notification.
      */
     public const VAL_ITEM_LOST = 'ItemLost';
 
     /**
      * Constant for 'ItemUnsold' value.
      *
-     * This notification is sent to a subscribed seller when an auction listing ends
-     * with no winning bidder or when a fixed-price listing ends with no sale(s).
+     * This seller-facing notification is sent when an auction listing ends with no
+     * winning bidder or when a fixed-price listing ends with no sale(s).
      *  <br><br>
-     *  If subscribed to by a seller and when applicable, this notification will appear
-     * in the <b>GetItem</b> call response.
+     *  This notification will appear in the <b>GetItem</b> call response. See <a
+     * href="https://developer.ebay.com/api-docs/static/pn_item-unsold.html"
+     * target="_blank">ItemUnsold</a> for additional information about this
+     * notification.
      */
     public const VAL_ITEM_UNSOLD = 'ItemUnsold';
 
     /**
      * Constant for 'CounterOfferReceived' value.
      *
-     * This notification is sent to a subscribed buyer when a seller makes a counter
-     * offer to the buyer's Best Offer on an item.
+     * This buyer-facing notification is sent when a seller makes a counter offer to
+     * the buyer's Best Offer on an item.
      *  <br><br>
-     *  If subscribed to by a buyer and when applicable, this notification will appear
-     * in the <b>GetBestOffers</b> call response.
+     *  This notification will appear in the <b>GetBestOffers</b> call response. See <a
+     * href="https://developer.ebay.com/api-docs/static/pn_counter-offer-recd.html"
+     * target="_blank">CounterOfferReceived</a> for additional information about this
+     * notification.
      */
     public const VAL_COUNTER_OFFER_RECEIVED = 'CounterOfferReceived';
 
     /**
      * Constant for 'BestOfferDeclined' value.
      *
-     * This notification is sent to a subscribed buyer when a seller declines the
-     * buyer's Best Offer on an item.
+     * This buyer-facing notification is sent when a seller declines the buyer's Best
+     * Offer on an item.
      *  <br><br>
-     *  If subscribed to by a buyer and when applicable, this notification will appear
-     * in the <b>GetBestOffers</b> call response.
+     *  This notification will appear in the <b>GetBestOffers</b> call response. See <a
+     * href="https://developer.ebay.com/api-docs/static/pn_best-offer-declined.html"
+     * target="_blank">BestOfferDeclined</a> for additional information about this
+     * notification.
      */
     public const VAL_BEST_OFFER_DECLINED = 'BestOfferDeclined';
 
     /**
      * Constant for 'BestOfferPlaced' value.
      *
-     * This notification is sent to third parties subscribed on the buyer's behalf each
-     * time a prospective buyer places a Best Offer on an item. See <a
-     * href="/api-docs/static/pn_best-offer-placed.html"
+     * This buyer-facing notification is sent each time a prospective buyer places a
+     * Best Offer on an item.
+     *  <br><br>
+     *  This notification will appear in the <b>GetBestOffer</b> call response. See <a
+     * href="https://developer.ebay.com/api-docs/static/pn_best-offer-placed.html"
      * target="_blank">BestOfferPlaced</a> for additional information.
      */
     public const VAL_BEST_OFFER_PLACED = 'BestOfferPlaced';
@@ -645,21 +601,15 @@ class NotificationEventTypeCodeType
     /**
      * Constant for 'TokenRevocation' value.
      *
-     * This notification is sent to a subscribed buyer or seller if that user's
-     * authentication token is revoked.
+     * This notification is applicable to both buyers and sellers and is sent if that
+     * user's authentication token is revoked.
      *  <br><br>
-     *  If subscribed to by a buyer or seller, and when applicable, this notification
-     * will appear in the <b>GetTokenStatus</b> call response.
+     *  This notification will appear in the <b>GetTokenStatus</b> call response. See
+     * <a href="https://developer.ebay.com/api-docs/static/pn_token-revocation.html"
+     * target="_blank">TokenRevocation</a> for additional information about this
+     * notification.
      */
     public const VAL_TOKEN_REVOCATION = 'TokenRevocation';
-
-    /**
-     * Constant for 'BulkDataExchangeJobCompleted' value.
-     *
-     * This notification is sent to a subscribed seller when that seller's Bulk Data
-     * Exchange job completes.
-     */
-    public const VAL_BULK_DATA_EXCHANGE_JOB_COMPLETED = 'BulkDataExchangeJobCompleted';
 
     /**
      * Constant for 'CustomCode' value.
@@ -687,74 +637,115 @@ class NotificationEventTypeCodeType
     /**
      * Constant for 'EBPMyResponseDue' value.
      *
-     * This notification is sent to a subscribing buyer or seller when a response to
-     * the eBay Money Back Guarantee case is due from that user. When an eBay Money
-     * Back Guarantee case is opened, this notification is only sent to the seller
-     * involved in the case and not the buyer.<br><br>This notification is also sent to
-     * a subscribed seller when the buyer has opened up either of the
+     * This notification is applicable to both buyers and sellers and is sent when a
+     * response to the eBay Money Back Guarantee case is due from that user. When an
+     * eBay Money Back Guarantee case is opened, this notification is only sent to the
+     * seller involved in the case and not the buyer.<br><br>This notification is also
+     * sent to a subscribed seller when the buyer has opened up either of the
      * following:<ul><li>an Item Not Received inquiry against an order line
      * item</li><li>an Item Not Received case against that seller.</li></ul>
+     *  This notification will appear in the <b>getEBPCaseDetail</b> call response. See
+     * <a href="https://developer.ebay.com/api-docs/static/pn_ebp-my-response-due.html"
+     * target="_blank">EBPMyResponseDue</a> for additional information about this
+     * notification.
      */
     public const VAL_EBPMY_RESPONSE_DUE = 'EBPMyResponseDue';
 
     /**
      * Constant for 'EBPOtherPartyResponseDue' value.
      *
-     * This notification is sent to the subscribed buyer or seller when a response to
-     * the eBay Money Back Guarantee case is due from the other party in the case.
+     * This notification is applicable to both buyers and sellers and is sent when a
+     * response to the eBay Money Back Guarantee case is due from the other party in
+     * the case.
+     *  <br><br>
+     *  This notification will appear in the <b>getEBPCaseDetail</b> call response. See
+     * <a
+     * href="https://developer.ebay.com/api-docs/static/pn_ebp-other-party-response-due.html"
+     * target="_blank">EBPOtherPartyResponseDue</a> for additional information about
+     * this notification.
      */
     public const VAL_EBPOTHER_PARTY_RESPONSE_DUE = 'EBPOtherPartyResponseDue';
 
     /**
      * Constant for 'EBPEscalatedCase' value.
      *
-     * This notification is sent to the subscribed buyer or seller when an eBay Money
-     * Back Guarantee case is escalated to eBay customer support.<br>This notification
-     * is also sent to a subscribed seller when an Item Not Received inquiry against an
-     * order line item has been escalated to an eBay Money Back Guarantee case.
+     * This notification is applicable to both buyers an sellers and is sent when an
+     * eBay Money Back Guarantee case is escalated to eBay customer support. This
+     * notification is also sent to a subscribed seller when an Item Not Received
+     * inquiry against an order line item has been escalated to an eBay Money Back
+     * Guarantee case.
+     *  <br><br>
+     *  This notification will appear in the <b>getEBPCaseDetail</b> call response. See
+     * <a href="https://developer.ebay.com/api-docs/static/pn_ebp-escalated-case.html"
+     * target="_blank">EBPEscalatedCase</a> for additional information about this
+     * notification.
      */
     public const VAL_EBPESCALATED_CASE = 'EBPEscalatedCase';
 
     /**
      * Constant for 'EBPAppealedCase' value.
      *
-     * This notification is sent to the subscribed buyer or seller when the decision of
-     * an eBay Money Back Guarantee case is appealed.
+     * This notification is applicable to both buyers and sellers and is sent when the
+     * decision of an eBay Money Back Guarantee case is appealed.
+     *  <br><br>
+     *  This notification will appear in the <b>getEBPCaseDetail</b> call response. See
+     * <a href="https://developer.ebay.com/api-docs/static/pn_ebp-appealed-case.html"
+     * target="_blank">EBPAppealedCase</a> for additional information about this
+     * notification.
      */
     public const VAL_EBPAPPEALED_CASE = 'EBPAppealedCase';
 
     /**
      * Constant for 'EBPMyPaymentDue' value.
      *
-     * This notification is sent to the subscribed seller when payment (to eBay or
-     * buyer) related to the outcome of an eBay Money Back Guarantee case is due.
+     * This seller-facing notification is sent when payment (to eBay or buyer) related
+     * to the outcome of an eBay Money Back Guarantee case is due.
+     *  <br><br>
+     *  This notification will appear in the <b>getEBPCaseDetail</b> call response. See
+     * <a href="https://developer.ebay.com/api-docs/static/pn_ebp-my-payment-due.html"
+     * target="_blank">EBPMyPaymentDue</a> for additional information about this
+     * notification.
      */
     public const VAL_EBPMY_PAYMENT_DUE = 'EBPMyPaymentDue';
 
     /**
      * Constant for 'EBPPaymentDone' value.
      *
-     * This notification is sent to the subscribed seller when payment (to eBay or
-     * buyer) related to the outcome of an eBay Money Back Guarantee case is processed.
+     * This seller-facing notification is sent when payment (to eBay or buyer) related
+     * to the outcome of an eBay Money Back Guarantee case is processed.
+     *  <br><br>
+     *  This notification will appear in the <b>getEBPCaseDetail</b> call response. See
+     * <a href="https://developer.ebay.com/api-docs/static/pn_ebp-my-payment-done.html"
+     * target="_blank">EBPPaymentDone</a> for additional information about this
+     * notification.
      */
     public const VAL_EBPPAYMENT_DONE = 'EBPPaymentDone';
 
     /**
      * Constant for 'EBPClosedAppeal' value.
      *
-     * This notification is sent to the subscribed buyer or seller when an appeal of an
-     * eBay Money Back Guarantee case decision has been closed.
+     * This notification is applicable to both buyers and sellers and is sent when an
+     * appeal of an eBay Money Back Guarantee case decision has been closed.
+     *  <br><br>
+     *  This notification will appear in the <b>getEBPCaseDetail</b> call response. See
+     * <a href="https://developer.ebay.com/api-docs/static/pn_ebp-closed-appeal.html"
+     * target="_blank">EBPClosedAppeal</a> for additional information about this
+     * notification.
      */
     public const VAL_EBPCLOSED_APPEAL = 'EBPClosedAppeal';
 
     /**
      * Constant for 'EBPClosedCase' value.
      *
-     * This notification is sent to the subscribed buyer or seller when an eBay Money
-     * Back Guarantee case has been closed.<br><br>This notification can also be sent
-     * to the subscribed seller when the buyer has closed either of the
+     * This notification is is applicable to both buyers and sellers and is sent when
+     * an eBay Money Back Guarantee case has been closed.<br><br>This notification can
+     * also be sent to the subscribed seller when the buyer has closed either of the
      * following:<ul><li>an Item Not Received inquiry against an order line
      * item</li><li>an Item Not Received case opened by that buyer</li></ul>
+     *  This notification will appear in the <b>getEBPCaseDetail</b> call response. See
+     * <a href="https://developer.ebay.com/api-docs/static/pn_ebp-closed-case.html"
+     * target="_blank">EBPClosedCase</a> for additional information about this
+     * notification.
      */
     public const VAL_EBPCLOSED_CASE = 'EBPClosedCase';
 
@@ -795,8 +786,13 @@ class NotificationEventTypeCodeType
     /**
      * Constant for 'EBPOnHoldCase' value.
      *
-     * This notification is sent to a subscribed buyer or seller when an eBay Money
-     * Back Guarantee case has been put on hold by eBay customer support.
+     * This notification is is applicable to both buyers and sellers and is sent when
+     * an eBay Money Back Guarantee case has been put on hold by eBay customer support.
+     *  <br><br>
+     *  This notification will appear in the <b>getEBPCaseDetail</b> call response. See
+     * <a href="https://developer.ebay.com/api-docs/static/pn_ebp-on-hold-case.html"
+     * target="_blank">EBPOnHoldCase</a> for additional information about this
+     * notification.
      */
     public const VAL_EBPON_HOLD_CASE = 'EBPOnHoldCase';
 
@@ -839,65 +835,109 @@ class NotificationEventTypeCodeType
     /**
      * Constant for 'ReturnCreated' value.
      *
-     * This notification is sent to a subscribed buyer or seller when a return request
-     * involving those users is created.
+     * This notification is applicable to both buyers and sellers and is sent when a
+     * return request involving those users is created.
+     *  <br><br>
+     *  This notification will appear in the <b>getReturnDetail</b> call response. See
+     * <a href="https://developer.ebay.com/api-docs/static/pn_return-created.html"
+     * target="_blank">ReturnCreated</a> for additional information about this
+     * notification.
      */
     public const VAL_RETURN_CREATED = 'ReturnCreated';
 
     /**
      * Constant for 'ReturnWaitingForSellerInfo' value.
      *
-     * This notification is sent to a subscribed seller when a return request is
-     * waiting for information from the seller, like a Return Merchandise Authorization
-     * (RMA) number or a correct return address.
+     * This seller-facing notification is sent when a return request is waiting for
+     * information from the seller, like a Return Merchandise Authorization (RMA)
+     * number or a correct return address.
+     *  <br><br>
+     *  IThis notification will appear in the <b>getReturnDetail</b> call response. See
+     * <a
+     * href="https://developer.ebay.com/api-docs/static/pn_return-wait-for-seller-info.html"
+     * target="_blank">ReturnWaitingForSellerInfo</a> for additional information about
+     * this notification.
      */
     public const VAL_RETURN_WAITING_FOR_SELLER_INFO = 'ReturnWaitingForSellerInfo';
 
     /**
      * Constant for 'ReturnSellerInfoOverdue' value.
      *
-     * This notification is sent to a subscribed buyer or seller when information from
-     * the seller (e.g. a Return Merchandise Authorization number) is overdue.
+     * This notification is applicable to both buyers and sellers and is sent when
+     * information from the seller (e.g. a Return Merchandise Authorization number) is
+     * overdue.
+     *  <br><br>
+     *  This notification will appear in the <b>getReturnDetail</b> call response. See
+     * <a
+     * href="https://developer.ebay.com/api-docs/static/pn_return-seller-info-overdue.html"
+     * target="_blank">ReturnSellerInfoOverdue</a> for additional information about
+     * this notification.
      */
     public const VAL_RETURN_SELLER_INFO_OVERDUE = 'ReturnSellerInfoOverdue';
 
     /**
      * Constant for 'ReturnShipped' value.
      *
-     * This notification is sent to a subscribed buyer or seller when the buyer has
-     * shipped a return item back to the seller.
+     * This notification is applicable to both buyers and sellers and is sent when the
+     * buyer has shipped a return item back to the seller.
+     *  <br><br>
+     *  This notification will appear in the <b>getReturnDetail</b> call response. See
+     * <a href="https://developer.ebay.com/api-docs/static/pn_return-shipped.html"
+     * target="_blank">ReturnShipped</a> for additional information about this
+     * notification.
      */
     public const VAL_RETURN_SHIPPED = 'ReturnShipped';
 
     /**
      * Constant for 'ReturnDelivered' value.
      *
-     * This notification is sent to a subscribed buyer or seller when a return item is
-     * received by the seller.
+     * This notification is applicable to both buyers and sellers and is sent when a
+     * return item is received by the seller.
+     *  <br><br>
+     *  This notification will appear in the <b>getReturnDetail</b> call response. See
+     * <a href="https://developer.ebay.com/api-docs/static/pn_return-delivered.html"
+     * target="_blank">ReturnDelivered</a> for additional information about this
+     * notification.
      */
     public const VAL_RETURN_DELIVERED = 'ReturnDelivered';
 
     /**
      * Constant for 'ReturnRefundOverdue' value.
      *
-     * This notification is sent to a subscribed buyer or seller when a refund to the
-     * buyer is overdue on a return.
+     * This notification is applicable to both buyers and sellers and is sent when a
+     * refund to the buyer is overdue on a return.
+     *  <br><br>
+     *  This notification will appear in the <b>getReturnDetail</b> call response. See
+     * <a
+     * href="https://developer.ebay.com/api-docs/static/pn_return-refund-overdue.html"
+     * target="_blank">ReturnRefundOverdue</a> for additional information about this
+     * notification.
      */
     public const VAL_RETURN_REFUND_OVERDUE = 'ReturnRefundOverdue';
 
     /**
      * Constant for 'ReturnClosed' value.
      *
-     * This notification is sent to a subscribed buyer or seller when a return request
-     * is closed.
+     * This notification is applicable to both buyers and sellers and is sent when a
+     * return request is closed.
+     *  <br><br>
+     *  This notification will appear in the <b>getReturnDetail</b> call response. See
+     * <a href="https://developer.ebay.com/api-docs/static/pn_return-closed.html"
+     * target="_blank">ReturnClosed</a> for additional information about this
+     * notification.
      */
     public const VAL_RETURN_CLOSED = 'ReturnClosed';
 
     /**
      * Constant for 'ReturnEscalated' value.
      *
-     * This notification is sent to a subscribed buyer or seller when a return request
-     * is escalated into a eBay Money Back Guarantee case.
+     * This notification is applicable to both buyers and sellers and is sent when a
+     * return request is escalated into a eBay Money Back Guarantee case.
+     *  <br><br>
+     *  This notification will appear in the <b>getReturnDetail</b> call response. See
+     * <a href="https://developer.ebay.com/api-docs/static/pn_return-escalated.html"
+     * target="_blank">ReturnEscalated</a> for additional information about this
+     * notification.
      */
     public const VAL_RETURN_ESCALATED = 'ReturnEscalated';
 
@@ -991,48 +1031,12 @@ class NotificationEventTypeCodeType
     public const VAL_ITEM_OUT_OF_STOCK = 'ItemOutOfStock';
 
     /**
-     * Constant for 'BuyerNoShow' value.
-     *
-     * This notification is sent to a subscribed seller if an eBay courier was unable
-     * to deliver an eBay Scheduled Delivery order to a buyer. This notification is
-     * only applicable for eBay Scheduled Delivery orders, which are only available in
-     * the London (UK) area.
-     */
-    public const VAL_BUYER_NO_SHOW = 'BuyerNoShow';
-
-    /**
-     * Constant for 'WebnextMobilePhotoSync' value.
-     *
-     * This notification is no longer applicable.
-     */
-    public const VAL_WEBNEXT_MOBILE_PHOTO_SYNC = 'WebnextMobilePhotoSync';
-
-    /**
      * Constant for 'PaymentReminder' value.
      *
      * This notification is sent to a subscribed buyer if payment is still due for an
      * order.
      */
     public const VAL_PAYMENT_REMINDER = 'PaymentReminder';
-
-    /**
-     * Constant for 'EBNOrderPickedUp' value.
-     *
-     * This notification is sent to a subscribed seller if an eBay courier has picked
-     * up an eBay On Demand Delivery order from a store for delivery to a buyer. This
-     * notification is only applicable for eBay On Demand Delivery orders, which are
-     * only available in the London (UK) area.
-     */
-    public const VAL_EBNORDER_PICKED_UP = 'EBNOrderPickedUp';
-
-    /**
-     * Constant for 'EBNOrderCanceled' value.
-     *
-     * This notification is sent to a subscribed seller if an eBay On Demand Delivery
-     * order has been cancelled. This notification is only applicable for eBay On
-     * Demand Delivery orders, which are only available in the London (UK) area.
-     */
-    public const VAL_EBNORDER_CANCELED = 'EBNOrderCanceled';
 
     /**
      * Constant for 'M2MMessageStatusChange' value.

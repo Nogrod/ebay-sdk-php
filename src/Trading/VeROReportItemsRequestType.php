@@ -7,7 +7,10 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing VeROReportItemsRequestType
  *
- * Reports items that allegedly infringe your copyright, trademark, or other
+ * <span class="tablenote">
+ *  <strong>Note:</strong> This call has been deprecated and will be decommissioned on February 2nd, 2026. Users are recommended to migrate to the <a href="https://developer.ebay.com/api-docs/commerce/vero/resources/methods" target="_blank">VeRO API</a> to create and manage VeRO reports.
+ *  </span>
+ *  Reports items that allegedly infringe your copyright, trademark, or other
  *  intellectual property rights. You can report one or more items at a time with this
  *  call. You must be a member of the Verified Rights Owner (VeRO) Program to use this
  *  call.

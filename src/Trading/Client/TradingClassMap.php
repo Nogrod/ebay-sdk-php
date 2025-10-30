@@ -57,8 +57,6 @@ class TradingClassMap
         '{urn:ebay:apis:eBLBaseComponents}EndItemResponse' => 'Nogrod\eBaySDK\Trading\EndItemResponse',
         '{urn:ebay:apis:eBLBaseComponents}EndItemsRequest' => 'Nogrod\eBaySDK\Trading\EndItemsRequest',
         '{urn:ebay:apis:eBLBaseComponents}EndItemsResponse' => 'Nogrod\eBaySDK\Trading\EndItemsResponse',
-        '{urn:ebay:apis:eBLBaseComponents}ExtendSiteHostedPicturesRequest' => 'Nogrod\eBaySDK\Trading\ExtendSiteHostedPicturesRequest',
-        '{urn:ebay:apis:eBLBaseComponents}ExtendSiteHostedPicturesResponse' => 'Nogrod\eBaySDK\Trading\ExtendSiteHostedPicturesResponse',
         '{urn:ebay:apis:eBLBaseComponents}FeeSettlementReport' => 'Nogrod\eBaySDK\Trading\FeeSettlementReport',
         '{urn:ebay:apis:eBLBaseComponents}FeeSettlementReportRequest' => 'Nogrod\eBaySDK\Trading\FeeSettlementReportRequest',
         '{urn:ebay:apis:eBLBaseComponents}FetchTokenRequest' => 'Nogrod\eBaySDK\Trading\FetchTokenRequest',

@@ -95,7 +95,7 @@ class ProductListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
      *  This field is only applicable for single-variation listings. For multiple-variation listings, if the category/product requires an ISBN value, this value should be passed into the <b>Variation.VariationProductListingDetails.ISBN</b> field instead.
      *  <br/><br/>
      *  <span class="tablenote"><b>Note: </b>
-     *  If the listing is being posted to a category that expects an ISBN value, but one doesn't exist for the product, the seller must pass in the text that can be found in the <b>ProductDetails.ProductIdentifierUnavailableText</b> field of the <b>GeteBayDetails</b> response. To get the <b>ProductDetails</b> container to return in the <b>GeteBayDetails</b> response, <code>ProductDetails</code> should be included as a <b>DetailName</b> value in the call request.
+     *  If the listing is being posted to a category that expects an ISBN value, but one doesn't exist for the product, the seller must provide a string indicating that the product identifier is unavailable. This text varies by marketplace. Refer to <a href="https://developer.ebay.com/api-docs/sell/static/inventory/product-identifier-text.html" target="_blank">Product Identifier Text</a> for the specific text based on the listing marketplace.
      *  </span>
      *
      * @var string $iSBN
@@ -114,7 +114,7 @@ class ProductListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
      *  This field is only applicable for single-variation listings. For multiple-variation listings, if the category/product requires a UPC value, this value should be passed into the <b>Variation.VariationProductListingDetails.UPC</b> field instead.
      *  <br/><br/>
      *  <span class="tablenote"><b>Note: </b>
-     *  If the listing is being posted to a category that expects a UPC value, but one doesn't exist for the product, the seller must pass in the text that can be found in the <b>ProductDetails.ProductIdentifierUnavailableText</b> field of the <b>GeteBayDetails</b> response. To get the <b>ProductDetails</b> container to return in the <b>GeteBayDetails</b> response, <code>ProductDetails</code> should be included as a <b>DetailName</b> value in the call request.
+     *  If the listing is being posted to a category that expects a UPC value, but one doesn't exist for the product, the seller must provide a string indicating that the product identifier is unavailable. This text varies by marketplace. Refer to <a href="https://developer.ebay.com/api-docs/sell/static/inventory/product-identifier-text.html" target="_blank">Product Identifier Text</a> for the specific text based on the listing marketplace.
      *  </span>
      *
      * @var string $uPC
@@ -133,7 +133,7 @@ class ProductListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
      *  This field is only applicable for single-variation listings. For multiple-variation listings, if the category/product requires an EAN value, this value should be passed into the <b>Variation.VariationProductListingDetails.EAN</b> field instead.
      *  <br/><br/>
      *  <span class="tablenote"><b>Note: </b>
-     *  If the listing is being posted to a category that expects an EAN value, but one doesn't exist for the product, the seller must pass in the text that can be found in the <b>ProductDetails.ProductIdentifierUnavailableText</b> field of the <b>GeteBayDetails</b> response. To get the <b>ProductDetails</b> container to return in the <b>GeteBayDetails</b> response, <code>ProductDetails</code> should be included as a <b>DetailName</b> value in the call request.
+     *  If the listing is being posted to a category that requires an EAN value, but one doesn't exist for the product, the seller must provide a string indicating that the product identifier is unavailable. This text varies by marketplace. Refer to <a href="https://developer.ebay.com/api-docs/sell/static/inventory/product-identifier-text.html" target="_blank">Product Identifier Text</a> for the specific text based on the listing marketplace.
      *  </span>
      *
      * @var string $eAN
@@ -148,7 +148,7 @@ class ProductListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
      *  This container is only applicable for single-variation listings. For multiple-variation listings, if the category requires Brand/MPN pairs, the product brand (shared by all variations in this listing) is passed in through the item-level item specifics (<b>Item.ItemSpecifics.NameValueList</b>), and the MPN value for each variation in the listing is passed in through the variation-level item specifics (<b>Variation.VariationSpecifics.NameValueList</b>).
      *  <br/><br/>
      *  <span class="tablenote"><b>Note: </b>
-     *  If the listing is being posted to a category that requires or recommends a Brand and MPN value, the Brand and MPN values for the product should always be passed in through separate <b>ItemSpecifics.NameValueList</b> containers since the Brand and MPN values passed in through the <b>ProductListingDetails.BrandMPN</b> will not get picked up by the generated/revised listing unless the the Brand/MPN pair is successfully matched to an eBay catalog product. If an MPN doesn't exist for a product, or the seller does not have it available, the seller must pass in the text that can be found in the <b>ProductDetails.ProductIdentifierUnavailableText</b> field of the <b>GeteBayDetails</b> response. To get the <b>ProductDetails</b> container to return in the <b>GeteBayDetails</b> response, <code>ProductDetails</code> should be included as a <b>DetailName</b> value in the call request.
+     *  If the listing is being posted to a category that requires or recommends a Brand and MPN value, the Brand and MPN values for the product should always be passed in through separate <b>ItemSpecifics.NameValueList</b> containers since the Brand and MPN values passed in through the <b>ProductListingDetails.BrandMPN</b> will not get picked up by the generated/revised listing unless the the Brand/MPN pair is successfully matched to an eBay catalog product. If an MPN doesn't exist for a product, the seller must provide a string indicating that the product identifier is unavailable. This text varies by marketplace. Refer to <a href="https://developer.ebay.com/api-docs/sell/static/inventory/product-identifier-text.html" target="_blank">Product Identifier Text</a> for the specific text based on the listing marketplace.
      *  </span>
      *  <br>
      *
@@ -468,7 +468,7 @@ class ProductListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
      *  This field is only applicable for single-variation listings. For multiple-variation listings, if the category/product requires an ISBN value, this value should be passed into the <b>Variation.VariationProductListingDetails.ISBN</b> field instead.
      *  <br/><br/>
      *  <span class="tablenote"><b>Note: </b>
-     *  If the listing is being posted to a category that expects an ISBN value, but one doesn't exist for the product, the seller must pass in the text that can be found in the <b>ProductDetails.ProductIdentifierUnavailableText</b> field of the <b>GeteBayDetails</b> response. To get the <b>ProductDetails</b> container to return in the <b>GeteBayDetails</b> response, <code>ProductDetails</code> should be included as a <b>DetailName</b> value in the call request.
+     *  If the listing is being posted to a category that expects an ISBN value, but one doesn't exist for the product, the seller must provide a string indicating that the product identifier is unavailable. This text varies by marketplace. Refer to <a href="https://developer.ebay.com/api-docs/sell/static/inventory/product-identifier-text.html" target="_blank">Product Identifier Text</a> for the specific text based on the listing marketplace.
      *  </span>
      *
      * @return string
@@ -488,7 +488,7 @@ class ProductListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
      *  This field is only applicable for single-variation listings. For multiple-variation listings, if the category/product requires an ISBN value, this value should be passed into the <b>Variation.VariationProductListingDetails.ISBN</b> field instead.
      *  <br/><br/>
      *  <span class="tablenote"><b>Note: </b>
-     *  If the listing is being posted to a category that expects an ISBN value, but one doesn't exist for the product, the seller must pass in the text that can be found in the <b>ProductDetails.ProductIdentifierUnavailableText</b> field of the <b>GeteBayDetails</b> response. To get the <b>ProductDetails</b> container to return in the <b>GeteBayDetails</b> response, <code>ProductDetails</code> should be included as a <b>DetailName</b> value in the call request.
+     *  If the listing is being posted to a category that expects an ISBN value, but one doesn't exist for the product, the seller must provide a string indicating that the product identifier is unavailable. This text varies by marketplace. Refer to <a href="https://developer.ebay.com/api-docs/sell/static/inventory/product-identifier-text.html" target="_blank">Product Identifier Text</a> for the specific text based on the listing marketplace.
      *  </span>
      *
      * @param string $iSBN
@@ -514,7 +514,7 @@ class ProductListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
      *  This field is only applicable for single-variation listings. For multiple-variation listings, if the category/product requires a UPC value, this value should be passed into the <b>Variation.VariationProductListingDetails.UPC</b> field instead.
      *  <br/><br/>
      *  <span class="tablenote"><b>Note: </b>
-     *  If the listing is being posted to a category that expects a UPC value, but one doesn't exist for the product, the seller must pass in the text that can be found in the <b>ProductDetails.ProductIdentifierUnavailableText</b> field of the <b>GeteBayDetails</b> response. To get the <b>ProductDetails</b> container to return in the <b>GeteBayDetails</b> response, <code>ProductDetails</code> should be included as a <b>DetailName</b> value in the call request.
+     *  If the listing is being posted to a category that expects a UPC value, but one doesn't exist for the product, the seller must provide a string indicating that the product identifier is unavailable. This text varies by marketplace. Refer to <a href="https://developer.ebay.com/api-docs/sell/static/inventory/product-identifier-text.html" target="_blank">Product Identifier Text</a> for the specific text based on the listing marketplace.
      *  </span>
      *
      * @return string
@@ -538,7 +538,7 @@ class ProductListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
      *  This field is only applicable for single-variation listings. For multiple-variation listings, if the category/product requires a UPC value, this value should be passed into the <b>Variation.VariationProductListingDetails.UPC</b> field instead.
      *  <br/><br/>
      *  <span class="tablenote"><b>Note: </b>
-     *  If the listing is being posted to a category that expects a UPC value, but one doesn't exist for the product, the seller must pass in the text that can be found in the <b>ProductDetails.ProductIdentifierUnavailableText</b> field of the <b>GeteBayDetails</b> response. To get the <b>ProductDetails</b> container to return in the <b>GeteBayDetails</b> response, <code>ProductDetails</code> should be included as a <b>DetailName</b> value in the call request.
+     *  If the listing is being posted to a category that expects a UPC value, but one doesn't exist for the product, the seller must provide a string indicating that the product identifier is unavailable. This text varies by marketplace. Refer to <a href="https://developer.ebay.com/api-docs/sell/static/inventory/product-identifier-text.html" target="_blank">Product Identifier Text</a> for the specific text based on the listing marketplace.
      *  </span>
      *
      * @param string $uPC
@@ -564,7 +564,7 @@ class ProductListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
      *  This field is only applicable for single-variation listings. For multiple-variation listings, if the category/product requires an EAN value, this value should be passed into the <b>Variation.VariationProductListingDetails.EAN</b> field instead.
      *  <br/><br/>
      *  <span class="tablenote"><b>Note: </b>
-     *  If the listing is being posted to a category that expects an EAN value, but one doesn't exist for the product, the seller must pass in the text that can be found in the <b>ProductDetails.ProductIdentifierUnavailableText</b> field of the <b>GeteBayDetails</b> response. To get the <b>ProductDetails</b> container to return in the <b>GeteBayDetails</b> response, <code>ProductDetails</code> should be included as a <b>DetailName</b> value in the call request.
+     *  If the listing is being posted to a category that requires an EAN value, but one doesn't exist for the product, the seller must provide a string indicating that the product identifier is unavailable. This text varies by marketplace. Refer to <a href="https://developer.ebay.com/api-docs/sell/static/inventory/product-identifier-text.html" target="_blank">Product Identifier Text</a> for the specific text based on the listing marketplace.
      *  </span>
      *
      * @return string
@@ -588,7 +588,7 @@ class ProductListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
      *  This field is only applicable for single-variation listings. For multiple-variation listings, if the category/product requires an EAN value, this value should be passed into the <b>Variation.VariationProductListingDetails.EAN</b> field instead.
      *  <br/><br/>
      *  <span class="tablenote"><b>Note: </b>
-     *  If the listing is being posted to a category that expects an EAN value, but one doesn't exist for the product, the seller must pass in the text that can be found in the <b>ProductDetails.ProductIdentifierUnavailableText</b> field of the <b>GeteBayDetails</b> response. To get the <b>ProductDetails</b> container to return in the <b>GeteBayDetails</b> response, <code>ProductDetails</code> should be included as a <b>DetailName</b> value in the call request.
+     *  If the listing is being posted to a category that requires an EAN value, but one doesn't exist for the product, the seller must provide a string indicating that the product identifier is unavailable. This text varies by marketplace. Refer to <a href="https://developer.ebay.com/api-docs/sell/static/inventory/product-identifier-text.html" target="_blank">Product Identifier Text</a> for the specific text based on the listing marketplace.
      *  </span>
      *
      * @param string $eAN
@@ -610,7 +610,7 @@ class ProductListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
      *  This container is only applicable for single-variation listings. For multiple-variation listings, if the category requires Brand/MPN pairs, the product brand (shared by all variations in this listing) is passed in through the item-level item specifics (<b>Item.ItemSpecifics.NameValueList</b>), and the MPN value for each variation in the listing is passed in through the variation-level item specifics (<b>Variation.VariationSpecifics.NameValueList</b>).
      *  <br/><br/>
      *  <span class="tablenote"><b>Note: </b>
-     *  If the listing is being posted to a category that requires or recommends a Brand and MPN value, the Brand and MPN values for the product should always be passed in through separate <b>ItemSpecifics.NameValueList</b> containers since the Brand and MPN values passed in through the <b>ProductListingDetails.BrandMPN</b> will not get picked up by the generated/revised listing unless the the Brand/MPN pair is successfully matched to an eBay catalog product. If an MPN doesn't exist for a product, or the seller does not have it available, the seller must pass in the text that can be found in the <b>ProductDetails.ProductIdentifierUnavailableText</b> field of the <b>GeteBayDetails</b> response. To get the <b>ProductDetails</b> container to return in the <b>GeteBayDetails</b> response, <code>ProductDetails</code> should be included as a <b>DetailName</b> value in the call request.
+     *  If the listing is being posted to a category that requires or recommends a Brand and MPN value, the Brand and MPN values for the product should always be passed in through separate <b>ItemSpecifics.NameValueList</b> containers since the Brand and MPN values passed in through the <b>ProductListingDetails.BrandMPN</b> will not get picked up by the generated/revised listing unless the the Brand/MPN pair is successfully matched to an eBay catalog product. If an MPN doesn't exist for a product, the seller must provide a string indicating that the product identifier is unavailable. This text varies by marketplace. Refer to <a href="https://developer.ebay.com/api-docs/sell/static/inventory/product-identifier-text.html" target="_blank">Product Identifier Text</a> for the specific text based on the listing marketplace.
      *  </span>
      *  <br>
      *
@@ -631,7 +631,7 @@ class ProductListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
      *  This container is only applicable for single-variation listings. For multiple-variation listings, if the category requires Brand/MPN pairs, the product brand (shared by all variations in this listing) is passed in through the item-level item specifics (<b>Item.ItemSpecifics.NameValueList</b>), and the MPN value for each variation in the listing is passed in through the variation-level item specifics (<b>Variation.VariationSpecifics.NameValueList</b>).
      *  <br/><br/>
      *  <span class="tablenote"><b>Note: </b>
-     *  If the listing is being posted to a category that requires or recommends a Brand and MPN value, the Brand and MPN values for the product should always be passed in through separate <b>ItemSpecifics.NameValueList</b> containers since the Brand and MPN values passed in through the <b>ProductListingDetails.BrandMPN</b> will not get picked up by the generated/revised listing unless the the Brand/MPN pair is successfully matched to an eBay catalog product. If an MPN doesn't exist for a product, or the seller does not have it available, the seller must pass in the text that can be found in the <b>ProductDetails.ProductIdentifierUnavailableText</b> field of the <b>GeteBayDetails</b> response. To get the <b>ProductDetails</b> container to return in the <b>GeteBayDetails</b> response, <code>ProductDetails</code> should be included as a <b>DetailName</b> value in the call request.
+     *  If the listing is being posted to a category that requires or recommends a Brand and MPN value, the Brand and MPN values for the product should always be passed in through separate <b>ItemSpecifics.NameValueList</b> containers since the Brand and MPN values passed in through the <b>ProductListingDetails.BrandMPN</b> will not get picked up by the generated/revised listing unless the the Brand/MPN pair is successfully matched to an eBay catalog product. If an MPN doesn't exist for a product, the seller must provide a string indicating that the product identifier is unavailable. This text varies by marketplace. Refer to <a href="https://developer.ebay.com/api-docs/sell/static/inventory/product-identifier-text.html" target="_blank">Product Identifier Text</a> for the specific text based on the listing marketplace.
      *  </span>
      *  <br>
      *

@@ -35,7 +35,7 @@ class SiteHostedPictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre
     private $pictureFormat = null;
 
     /**
-     * This is the full URL for the uploaded picture on the EPS server. This value should be stored by the seller, as this URL will be needed when create, revise, or relist an item and add this image to the listing. This URL will also be needed for unpublished pictures whose expiration date must be extended through an <b>ExtendSiteHostedPictures</b> call.
+     * This is the full URL for the uploaded picture on the EPS server. This value should be stored by the seller, as this URL will be needed when create, revise, or relist an item and add this image to the listing.
      *
      * @var string $fullURL
      */
@@ -69,7 +69,7 @@ class SiteHostedPictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre
      * This timestamp indicates when the picture must be uploaded with an eBay listing before it is purged from the EPS server.
      *  <br>
      *  <br>
-     *  By default, unpublished pictures (not associated with an active eBay listing) are kept on the EPS server for five days, but a seller can use the <b>ExtensionInDays</b> field in the request to make the expiration date further into the future (a maximum of 30 days). The seller can also use the <b>ExtendSiteHostedPictures</b> to extend the expiration date of the picture.
+     *  By default, unpublished pictures (not associated with an active eBay listing) are kept on the EPS server for thirty days.
      *
      * @var \DateTime $useByDate
      */
@@ -156,7 +156,7 @@ class SiteHostedPictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre
     /**
      * Gets as fullURL
      *
-     * This is the full URL for the uploaded picture on the EPS server. This value should be stored by the seller, as this URL will be needed when create, revise, or relist an item and add this image to the listing. This URL will also be needed for unpublished pictures whose expiration date must be extended through an <b>ExtendSiteHostedPictures</b> call.
+     * This is the full URL for the uploaded picture on the EPS server. This value should be stored by the seller, as this URL will be needed when create, revise, or relist an item and add this image to the listing.
      *
      * @return string
      */
@@ -168,7 +168,7 @@ class SiteHostedPictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre
     /**
      * Sets a new fullURL
      *
-     * This is the full URL for the uploaded picture on the EPS server. This value should be stored by the seller, as this URL will be needed when create, revise, or relist an item and add this image to the listing. This URL will also be needed for unpublished pictures whose expiration date must be extended through an <b>ExtendSiteHostedPictures</b> call.
+     * This is the full URL for the uploaded picture on the EPS server. This value should be stored by the seller, as this URL will be needed when create, revise, or relist an item and add this image to the listing.
      *
      * @param string $fullURL
      * @return self
@@ -305,7 +305,7 @@ class SiteHostedPictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre
      * This timestamp indicates when the picture must be uploaded with an eBay listing before it is purged from the EPS server.
      *  <br>
      *  <br>
-     *  By default, unpublished pictures (not associated with an active eBay listing) are kept on the EPS server for five days, but a seller can use the <b>ExtensionInDays</b> field in the request to make the expiration date further into the future (a maximum of 30 days). The seller can also use the <b>ExtendSiteHostedPictures</b> to extend the expiration date of the picture.
+     *  By default, unpublished pictures (not associated with an active eBay listing) are kept on the EPS server for thirty days.
      *
      * @return \DateTime
      */
@@ -320,7 +320,7 @@ class SiteHostedPictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre
      * This timestamp indicates when the picture must be uploaded with an eBay listing before it is purged from the EPS server.
      *  <br>
      *  <br>
-     *  By default, unpublished pictures (not associated with an active eBay listing) are kept on the EPS server for five days, but a seller can use the <b>ExtensionInDays</b> field in the request to make the expiration date further into the future (a maximum of 30 days). The seller can also use the <b>ExtendSiteHostedPictures</b> to extend the expiration date of the picture.
+     *  By default, unpublished pictures (not associated with an active eBay listing) are kept on the EPS server for thirty days.
      *
      * @param \DateTime $useByDate
      * @return self

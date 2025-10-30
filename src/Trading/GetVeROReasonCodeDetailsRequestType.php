@@ -7,7 +7,10 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing GetVeROReasonCodeDetailsRequestType
  *
- * Retrieves details for VeRO reason codes and their descriptions. You can specify a
+ * <span class="tablenote">
+ *  <strong>Note:</strong> This call has been deprecated and will be decommissioned on February 2nd, 2026. Users are recommended to migrate to the <a href="https://developer.ebay.com/api-docs/commerce/vero/resources/methods" target="_blank">VeRO API</a> to create and manage VeRO reports.
+ *  </span>
+ *  Retrieves details for VeRO reason codes and their descriptions. You can specify a
  *  reason code ID to get details for a specific reason on the site specified in the
  *  request header. If <strong>ReasonCodeID</strong> is not passed in the request, all reason codes are
  *  returned. Set <strong>ReturnAllSites</strong> to <code>true</code> to retrieve reason codes for all sites.
