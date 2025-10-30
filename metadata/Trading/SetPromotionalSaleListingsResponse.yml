@@ -1,3 +1,0 @@
-Nogrod\eBaySDK\Trading\SetPromotionalSaleListingsResponse:
-    xml_root_name: SetPromotionalSaleListingsResponse
-    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

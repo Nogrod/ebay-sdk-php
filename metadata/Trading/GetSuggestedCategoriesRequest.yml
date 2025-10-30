@@ -1,3 +1,0 @@
-Nogrod\eBaySDK\Trading\GetSuggestedCategoriesRequest:
-    xml_root_name: GetSuggestedCategoriesRequest
-    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

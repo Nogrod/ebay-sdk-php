@@ -1,3 +1,0 @@
-Nogrod\eBaySDK\Trading\OrderReport:
-    xml_root_name: OrderReport
-    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

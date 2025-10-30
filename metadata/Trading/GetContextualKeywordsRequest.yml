@@ -1,3 +1,0 @@
-Nogrod\eBaySDK\Trading\GetContextualKeywordsRequest:
-    xml_root_name: GetContextualKeywordsRequest
-    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'
